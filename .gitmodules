@@ -1,0 +1,6 @@
+[submodule "ext-deps/fmt"]
+	path = ext-deps/fmt
+	url = https://github.com/fmtlib/fmt.git
+[submodule "ext-deps/gtest"]
+	path = ext-deps/gtest
+	url = https://github.com/google/googletest.git
