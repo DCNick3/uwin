@@ -21,7 +21,7 @@ target_include_directories(uwin PUBLIC /home/dcnick3/trash/homm3-switch/lifting/
 function(uwin_sources)
     set(options)
     set(singleValueArgs NAME)
-    set(multiValueArgs PORTABLE POSIX LINUX)
+    set(multiValueArgs PORTABLE POSIX LINUX DEPENDS)
     cmake_parse_arguments(PARSE_ARGV 0 "ARG" "${options}" "${singleValueArgs}" "${multiValueArgs}")
 
     list(FILTER ARG_PORTABLE EXCLUDE REGEX "^$")
@@ -37,7 +37,7 @@ function(uwin_sources)
 
     # we wrap files into OBJECT library to work around cmake quirks with generated source files not being properly exposed from subdirectory
     # https://gitlab.kitware.com/cmake/cmake/-/issues/18399
-    add_library(${ARG_NAME} OBJECT ${ARG_PORTABLE})
+    add_library(${ARG_NAME} STATIC ${ARG_PORTABLE})
     if (UWIN_POSIX)
         target_sources(${ARG_NAME} PRIVATE ${ARG_POSIX})
     endif()
@@ -45,10 +45,11 @@ function(uwin_sources)
         target_sources(${ARG_NAME} PRIVATE ${ARG_LINUX})
     endif()
 
-    target_link_libraries(${ARG_NAME} PRIVATE uwin-base)
+    target_link_libraries(${ARG_NAME} uwin-base)
 
     target_link_libraries(uwin ${ARG_NAME})
-    target_sources(uwin PRIVATE $<TARGET_OBJECTS:${ARG_NAME}>)
+
+    target_link_libraries(${ARG_NAME} ${ARG_DEPENDS})
 
 endfunction()
 
@@ -60,7 +61,7 @@ add_subdirectory(win32)
 add_subdirectory(xcute)
 
 # TODO: this should definitely be integrated into the build system
-target_sources(uwin PRIVATE /home/dcnick3/trash/homm3-switch/lifting/remill/cmake-build-debug-clang/tools/uwin-lift/lifted.o)
+target_sources(uwin PUBLIC /home/dcnick3/trash/homm3-switch/lifting/remill/cmake-build-debug-clang/tools/uwin-lift/lifted.o)
 
 target_link_libraries(uwin fmt)
 

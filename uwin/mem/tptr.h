@@ -10,12 +10,13 @@
 
 namespace uwin {
     namespace mem {
-
-        template<typename T>
+        template<typename T, bool C = false>
         class tptr {
         public:
             using tvalue = std::uint32_t;
             using tsvalue = std::int32_t;
+
+            static constexpr bool constant = C;
 
         private:
             tvalue _value;
@@ -28,7 +29,8 @@ namespace uwin {
             constexpr inline tptr operator+(tvalue o) const { return _value + o; }
             constexpr inline tptr operator-(tvalue o) const { return _value - o; }
 
-            constexpr inline tsvalue operator-(tptr<T> o) const { return _value - o._value; }
+            template<bool C1>
+            constexpr inline tsvalue operator-(tptr<T, C1> o) const { return _value - o._value; }
 
             constexpr inline tvalue operator%(tvalue o) const { return _value % o; }
             constexpr inline tvalue operator/(tvalue o) const { return _value / o; }
@@ -43,26 +45,47 @@ namespace uwin {
             constexpr inline tptr& operator++() { return operator+=(1); }
             constexpr inline tptr& operator--() { return operator-=(1); }
 
-            constexpr inline bool operator==(tptr<T> o) const { return _value == o._value; }
+            template<bool C1>
+            constexpr inline bool operator==(tptr<T, C1> o) const { return _value == o._value; }
             constexpr inline bool operator==(tvalue o) const { return _value == o; }
-            constexpr inline bool operator!=(tptr<T> o) const { return _value != o._value; }
+
+            template<bool C1>
+            constexpr inline bool operator!=(tptr<T, C1> o) const { return _value != o._value; }
             constexpr inline bool operator!=(tvalue o) const { return _value != o; }
 
-            constexpr inline bool operator<(tptr<T> o) const { return _value < o._value; }
+            template<bool C1>
+            constexpr inline bool operator<(tptr<T, C1> o) const { return _value < o._value; }
             constexpr inline bool operator<(tvalue o) const { return _value < o; }
-            constexpr inline bool operator<=(tptr<T> o) const { return _value <= o._value; }
+
+            template<bool C1>
+            constexpr inline bool operator<=(tptr<T, C1> o) const { return _value <= o._value; }
             constexpr inline bool operator<=(tvalue o) const { return _value <= o; }
-            constexpr inline bool operator>(tptr<T> o) const { return _value > o._value; }
+
+            template<bool C1>
+            constexpr inline bool operator>(tptr<T, C1> o) const { return _value > o._value; }
             constexpr inline bool operator>(tvalue o) const { return _value > o; }
-            constexpr inline bool operator>=(tptr<T> o) const { return _value >= o._value; }
+
+            template<bool C1>
+            constexpr inline bool operator>=(tptr<T, C1> o) const { return _value >= o._value; }
             constexpr inline bool operator>=(tvalue o) const { return _value >= o; }
 
             template<typename DT>
-            constexpr inline tptr<DT> as() const { return tptr<DT>(_value); }
+            constexpr inline tptr<DT, C> as() const { return tptr<DT, C>(_value); }
 
-            inline tptr<std::uint8_t> as_taddr() const { return as<std::uint8_t>(); }
+            inline auto as_taddr() const { return as<std::uint8_t>(); }
+
+            template<typename MGR>
+            inline auto to_host(MGR const& mgr) const { return mgr.guest_to_host(*this); }
+
+            template<typename MGR>
+            inline auto deref(MGR const& mgr) const { return mgr.deref(*this); }
         };
 
         using taddr = tptr<std::uint8_t>;
+
+        template<typename T>
+        using tcptr = tptr<T, true>;
+
+        using tcaddr = tcptr<std::uint8_t>;
     }
 }

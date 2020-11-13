@@ -4,6 +4,7 @@
 
 #include "xcute/remill/remill_state.h"
 #include "xcute/remill/remill_rt.h"
+#include "win32/dll/dispatcher.h"
 
 #include <exception>
 
@@ -17,7 +18,7 @@ namespace uwin {
 
             extern "C" Memory *uwin_remill_dispatch(State *st, uint32_t pc, Memory *mem) {
                 if (pc & 0x80000000) {
-                    ::std::terminate();
+                    return win32::dll::dispatch(st, pc, mem);
                 } else {
                     switch (pc) {
                         case 0x401000:

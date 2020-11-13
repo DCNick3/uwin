@@ -17,11 +17,23 @@
 #define HAS_FEATURE_AVX512 0
 #define ADDRESS_SIZE_BITS 32
 namespace uwin {
+    namespace ctx {
+        class process;
+    }
+
     namespace xcute {
         namespace remill {
 
 #include <remill/Arch/X86/Runtime/State.h>
 
+            struct StateEx {
+                State base;
+                ctx::process* process_ctx;
+            };
+
+            inline ctx::process& get_process_ctx(State* state) {
+                return *reinterpret_cast<StateEx*>(state)->process_ctx;
+            }
         }
     }
 }

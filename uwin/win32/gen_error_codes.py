@@ -1,6 +1,5 @@
 import os
 import csv
-import html
 import sys
 import json
 

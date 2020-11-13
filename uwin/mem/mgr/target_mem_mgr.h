@@ -66,19 +66,31 @@ namespace uwin {
                 tmem_region uncommit_whole_reserved_region(taddr start_addr);
 
                 template<typename T>
-                inline T *guest_to_host(taddr addr) {
+                inline auto guest_to_host(tptr<T> addr) const {
                     auto res = _host_region.begin() + addr.value();
                     assert(res < _host_region.end());
                     return reinterpret_cast<T *>(res);
                 }
 
-                inline hmem_region guest_to_host(tmem_region const& region) {
+                template<typename T>
+                inline auto guest_to_host(tcptr<T> addr) const {
+                    auto res = _host_region.begin() + addr.value();
+                    assert(res < _host_region.end());
+                    return reinterpret_cast<T const*>(res);
+                }
+
+                inline hmem_region guest_to_host(tmem_region const& region) const {
                     return {guest_to_host<std::uint8_t>(region.begin()), region.size()};
                 }
 
                 template<typename T>
-                inline T &deref(tptr<T> ptr) {
-                    return *guest_to_host<T>(ptr.as_taddr());
+                inline T& deref(tptr<T, false> ptr) const {
+                    return *guest_to_host<T>(ptr);
+                }
+
+                template<typename T>
+                inline T const& deref(tptr<T, true> ptr) const {
+                    return *guest_to_host<T>(ptr);
                 }
 
                 inline std::uint8_t* get_region_base() const { return _host_region.begin(); }
