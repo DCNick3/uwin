@@ -11,4 +11,4 @@ uwin_sources(NAME win32-dll
         TEST/impl.cpp
         ${DLLGEN_FILES}
 
-        DEPENDS win32)
+        DEPENDS win32 dllgen)

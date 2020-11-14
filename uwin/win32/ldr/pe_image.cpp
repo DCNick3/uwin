@@ -13,7 +13,7 @@ namespace uwin::win32::ldr {
 
     }
 
-    void pe_image::pe_assert(bool condition) {
+    static void pe_assert(bool condition, std::experimental::source_location loc = std::experimental::source_location()) {
         throw pe_format_exception();
     }
 }
