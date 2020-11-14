@@ -27,23 +27,23 @@ function(uwin_sources)
     list(FILTER ARG_PORTABLE EXCLUDE REGEX "^$")
     list(FILTER ARG_POSIX EXCLUDE REGEX "^$")
 
-    if(NOT ARG_NAME)
+    if (NOT ARG_NAME)
         message(FATAL_ERROR "uwin_sources with no name")
-    endif()
+    endif ()
 
-    if(NOT ARG_PORTABLE AND ARG_POSIX AND ARG_LINUX)
+    if (NOT ARG_PORTABLE AND ARG_POSIX AND ARG_LINUX)
         message(FATAL_ERROR "uwin_sources with no sources specified")
-    endif()
+    endif ()
 
     # we wrap files into OBJECT library to work around cmake quirks with generated source files not being properly exposed from subdirectory
     # https://gitlab.kitware.com/cmake/cmake/-/issues/18399
     add_library(${ARG_NAME} STATIC ${ARG_PORTABLE})
     if (UWIN_POSIX)
         target_sources(${ARG_NAME} PRIVATE ${ARG_POSIX})
-    endif()
+    endif ()
     if (UWIN_LINUX)
         target_sources(${ARG_NAME} PRIVATE ${ARG_LINUX})
-    endif()
+    endif ()
 
     target_link_libraries(${ARG_NAME} uwin-base)
 

@@ -14,16 +14,14 @@
 
 #include <cstring>
 
-namespace uwin {
-    namespace posix {
-        exception::exception(const std::string &what_failed, int err) : std::runtime_error("meh") {
-            char buffer[256];
+namespace uwin::posix {
+    exception::exception(const std::string &what_failed, int err) : std::runtime_error("meh") {
+        char buffer[256];
 
-            int r = strerror_r(err, buffer, sizeof(buffer));
-            if (r != 0)
-                std::terminate();
+        int r = strerror_r(err, buffer, sizeof(buffer));
+        if (r != 0)
+            std::terminate();
 
-            _what = what_failed + " failed: " + buffer;
-        }
+        _what = what_failed + " failed: " + buffer;
     }
 }

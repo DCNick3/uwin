@@ -20,7 +20,7 @@ int main() {
         process_ctx._mem_mgr = std::make_unique<mem::mgr::target_mem_mgr>(mapper);
         process_ctx._dll = std::make_unique<ctx::dll>(process_ctx);
 
-        mem::mgr::target_mem_mgr& mgr = *process_ctx._mem_mgr;
+        mem::mgr::target_mem_mgr &mgr = *process_ctx._mem_mgr;
 
         auto base_addr = mgr.get_region_base();
 
@@ -44,7 +44,7 @@ int main() {
         state.base.gpr.rsp.dword = (stack_region.end() - 20).value();
 
 
-        xcute::remill::uwin_remill_dispatch(&state.base, 0x401000, (uwin::xcute::remill::Memory*)base_addr);
+        xcute::remill::uwin_remill_dispatch(&state.base, 0x401000, (uwin::xcute::remill::Memory *) base_addr);
 
     } catch (const std::exception &exc) {
         fmt::print("{} caught:\n    {}", util::get_nice_current_exception_type_name(), exc.what());

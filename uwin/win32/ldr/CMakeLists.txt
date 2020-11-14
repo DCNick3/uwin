@@ -1,5 +1,4 @@
 uwin_sources(NAME win32-ldr
         PORTABLE
-            ldr.cpp
-            pe_image.cpp
-        DEPENDS nonstd::span-lite)
+        ldr.cpp
+        pe_image.cpp)

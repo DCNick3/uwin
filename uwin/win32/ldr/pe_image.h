@@ -9,21 +9,19 @@
 #include <vector>
 #include <cstdint>
 
-namespace uwin {
-    namespace win32 {
-        namespace ldr {
-            class pe_image {
-                nonstd::span<std::uint8_t> _data;
+namespace uwin::win32::ldr {
+    class pe_image {
+        nonstd::span<std::uint8_t> _data;
 
-                void parse();
-                void pe_assert(bool condition);
-            public:
-                explicit pe_image(nonstd::span<std::uint8_t> data) : _data(data) {
-                    parse();
-                }
+        void parse();
 
+        static void pe_assert(bool condition);
 
-            };
+    public:
+        explicit pe_image(nonstd::span<std::uint8_t> data) : _data(data) {
+            parse();
         }
-    }
+
+
+    };
 }

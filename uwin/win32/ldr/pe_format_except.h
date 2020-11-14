@@ -6,12 +6,9 @@
 
 #include <stdexcept>
 
-namespace uwin {
-    namespace win32 {
-        namespace ldr {
-            class pe_format_exception : public std::runtime_error {
-
-            };
-        }
-    }
+namespace uwin::win32::ldr {
+    class pe_format_exception : public std::runtime_error {
+    public:
+        pe_format_exception() : runtime_error("Attempt to load PE file with invalid format was made") {}
+    };
 }

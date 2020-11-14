@@ -8,13 +8,15 @@ errors = []
 
 with open(dir + "/winerror.csv") as f:
     reader = csv.reader(f)
-    next(reader) # skip header
+    next(reader)  # skip header
     for code, slug, desc in reader:
         code = int(code, 10)
         errors.append((code, slug, desc))
 
+
 def cstr(s):
-    return json.dumps(s) # well, all JSON strings are valid C string literals
+    return json.dumps(s)  # well, all JSON strings are valid C string literals
+
 
 os.makedirs(os.path.dirname(sys.argv[1]), exist_ok=True)
 os.makedirs(os.path.dirname(sys.argv[2]), exist_ok=True)
@@ -30,11 +32,10 @@ namespace uwin {
 
 for code, slug, desc in errors:
     print("            %s = %s," % (slug, code))
-            
+
 print("""        };
     }
 }""")
-
 
 sys.stdout = open(sys.argv[2], 'w')
 print("""#include "win32/error_code.h"
@@ -48,7 +49,6 @@ namespace uwin {
 
 for code, slug, desc in errors:
     print("                case %s: return %s;" % (code, cstr(slug)))
-
 
 print("""                default: std::terminate();
             }

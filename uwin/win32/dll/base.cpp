@@ -2,12 +2,8 @@
 // Created by dcnick3 on 11/11/20.
 //
 
-#include "base.h"
+#include "win32/dll/base.h"
 
-namespace uwin {
-    namespace win32 {
-        namespace dll {
+namespace uwin::win32::dll {
 
-        }
-    }
 }

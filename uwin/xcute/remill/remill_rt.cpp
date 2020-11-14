@@ -8,25 +8,19 @@
 
 #include <exception>
 
-namespace uwin {
-    namespace xcute {
-        namespace remill {
+namespace uwin::xcute::remill {
 
+    extern "C" Memory *sub_401000(State *st, uint32_t pc, Memory *mem);
 
-
-            extern "C" Memory *sub_401000(State *st, uint32_t pc, Memory *mem);
-
-            extern "C" Memory *uwin_remill_dispatch(State *st, uint32_t pc, Memory *mem) {
-                if (pc & 0x80000000) {
-                    return win32::dll::dispatch(st, pc, mem);
-                } else {
-                    switch (pc) {
-                        case 0x401000:
-                            return sub_401000(st, pc, mem);
-                        default:
-                            ::std::terminate();
-                    }
-                }
+    extern "C" Memory *uwin_remill_dispatch(State *st, uint32_t pc, Memory *mem) {
+        if (pc & 0x80000000) {
+            return win32::dll::dispatch(st, pc, mem);
+        } else {
+            switch (pc) {
+                case 0x401000:
+                    return sub_401000(st, pc, mem);
+                default:
+                    ::std::terminate();
             }
         }
     }

@@ -6,8 +6,6 @@
 
 #include <string>
 
-namespace uwin {
-    namespace util {
-        std::string get_nice_current_exception_type_name();
-    }
+namespace uwin::util {
+    std::string get_nice_current_exception_type_name();
 }

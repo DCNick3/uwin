@@ -21,19 +21,17 @@ namespace uwin {
         class process;
     }
 
-    namespace xcute {
-        namespace remill {
+    namespace xcute::remill {
 
 #include <remill/Arch/X86/Runtime/State.h>
 
-            struct StateEx {
-                State base;
-                ctx::process* process_ctx;
-            };
+        struct StateEx {
+            State base;
+            ctx::process *process_ctx;
+        };
 
-            inline ctx::process& get_process_ctx(State* state) {
-                return *reinterpret_cast<StateEx*>(state)->process_ctx;
-            }
+        inline ctx::process &get_process_ctx(State *state) {
+            return *reinterpret_cast<StateEx *>(state)->process_ctx;
         }
     }
 }

@@ -4,11 +4,9 @@
 
 #include "win32/error.h"
 
-namespace uwin {
-    namespace win32 {
+namespace uwin::win32 {
 
-        const char *error::what() const noexcept {
-            return _what.c_str();
-        }
+    const char *error::what() const noexcept {
+        return _what.c_str();
     }
 }

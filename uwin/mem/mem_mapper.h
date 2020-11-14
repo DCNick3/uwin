@@ -7,10 +7,8 @@
 #include "mem/base_mem_mapper.h"
 
 
-namespace uwin {
-    namespace mem {
-        std::shared_ptr<base_mem_mapper> create_host_mem_mapper();
-    }
+namespace uwin::mem {
+    std::shared_ptr<base_mem_mapper> create_host_mem_mapper();
 }
 
 /*
