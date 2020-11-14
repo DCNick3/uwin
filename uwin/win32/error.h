@@ -9,14 +9,14 @@
 #include <cstdint>
 
 #include <string>
-#include <exception>
+#include <stdexcept>
 
 #include <fmt/core.h>
 
 namespace uwin {
     namespace win32 {
 
-        class error : public std::exception {
+        class error : public std::runtime_error {
             error_code _code;
             const char* _slug;
             const char* _desc;
@@ -29,7 +29,8 @@ namespace uwin {
             }
 
             inline explicit error(error_code code)
-                    : _code(code), _slug(error_code_to_slug(code)), _desc(error_code_to_desc(code)) {
+                    : _code(code), _slug(error_code_to_slug(code)), _desc(error_code_to_desc(code)),
+                        std::runtime_error("") {
                 _what = fmt::format("win32 error ({}): {}", _slug, _desc);
             }
 

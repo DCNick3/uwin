@@ -48,6 +48,12 @@ namespace uwin {
                     state->gpr.rsp.dword += 4 + 4 * argument_number;
                 }
 
+                inline std::string str(mem::tcptr<char> tstr) const {
+                    return std::string(_process_ctx._mem_mgr->guest_to_host(tstr));
+                }
+
+                virtual mem::taddr::tvalue resolve(std::string& name) const = 0;
+
                 virtual ~base() = default;
             };
         }

@@ -17,11 +17,11 @@ namespace uwin {
     namespace mem {
         namespace mgr {
 
-            class pages_region_container_nonconformant_containing_region_requested : std::exception {
-                const char *what() const noexcept override {
-                    return "A containing pages_region was requested from pages_region_container, but only intersected"
-                           " region found.";
-                }
+            class pages_region_container_nonconformant_containing_region_requested : std::runtime_error {
+            public:
+                pages_region_container_nonconformant_containing_region_requested()
+                        : runtime_error("A containing pages_region was requested from pages_region_container, but only intersected"
+                                        " region found.") {}
             };
 
             class pages_regions_container {

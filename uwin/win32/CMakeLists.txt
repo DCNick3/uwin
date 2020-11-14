@@ -16,3 +16,4 @@ uwin_sources(NAME win32
         PORTABLE error.cpp ${ERROR_CODE_GEN_H} ${ERROR_CODE_GEN_CXX})
 
 add_subdirectory(dll)
+add_subdirectory(ldr)

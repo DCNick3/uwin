@@ -123,7 +123,7 @@ else:
     for k in dlls:
         dllname = get_dllname(k)
         dll = dlls[k]
-        h, cpp = render_dll(dllname, [ x for i, x in dll ])
+        h, cpp = render_dll(dllname, dll)
         out_file(cpp, INTERFACE_CPP_OUT_FILE_TEMPLATE % dllname)
         out_file(h, INTERFACE_H_OUT_FILE_TEMPLATE % dllname)
 

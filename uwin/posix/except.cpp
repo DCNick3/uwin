@@ -16,7 +16,7 @@
 
 namespace uwin {
     namespace posix {
-        exception::exception(const std::string &what_failed, int err) {
+        exception::exception(const std::string &what_failed, int err) : std::runtime_error("meh") {
             char buffer[256];
 
             int r = strerror_r(err, buffer, sizeof(buffer));

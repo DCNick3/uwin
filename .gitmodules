@@ -7,3 +7,6 @@
 [submodule "ext-deps/GreatCMakeCookOff"]
 	path = ext-deps/GreatCMakeCookOff
 	url = https://github.com/DCNick3/GreatCMakeCookOff.git
+[submodule "ext-deps/span-lite"]
+	path = ext-deps/span-lite
+	url = https://github.com/martinmoene/span-lite.git

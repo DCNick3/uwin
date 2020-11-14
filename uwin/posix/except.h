@@ -4,13 +4,13 @@
 
 #pragma once
 
-#include <exception>
+#include <stdexcept>
 #include <string>
 
 namespace uwin {
     namespace posix {
 
-        class exception : public std::exception {
+        class exception : public std::runtime_error {
             std::string _what;
         public:
             exception(std::string const& what_failed, int err);

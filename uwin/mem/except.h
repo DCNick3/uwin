@@ -4,14 +4,13 @@
 
 #pragma once
 
-#include <exception>
+#include <stdexcept>
 
 namespace uwin {
     namespace mem {
-        class out_of_target_address_space : std::exception {
-            inline const char* what() const noexcept override {
-                return "out of target address space";
-            }
+        class out_of_target_address_space : std::runtime_error {
+        public:
+            out_of_target_address_space() : runtime_error("out of target address space") {}
         };
     }
 }

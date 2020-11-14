@@ -7,6 +7,8 @@ dllgen(DEFDIR ${CMAKE_CURRENT_LIST_DIR}/defs
 message("DLLGEN_FILES: ${DLLGEN_FILES}")
 
 uwin_sources(NAME win32-dll
-        PORTABLE base.cpp stub_exception.cpp ${DLLGEN_FILES}
+        PORTABLE base.cpp
+        TEST/impl.cpp
+        ${DLLGEN_FILES}
 
         DEPENDS win32)
