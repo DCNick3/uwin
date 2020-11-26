@@ -6,7 +6,10 @@
 
 #include "util/align.h"
 
+#include <fmt/format.h>
+
 #include <cstdint>
+#include <type_traits>
 
 namespace uwin::mem {
     template<typename T, bool C = false>
@@ -94,7 +97,7 @@ namespace uwin::mem {
         inline auto as_taddr() const { return as<std::uint8_t>(); }
 
         template<typename MGR>
-        inline auto to_host(MGR const &mgr) const { return mgr.guest_to_host(*this); }
+        inline auto to_host(MGR const &mgr) const { return mgr.ptr(*this); }
 
         template<typename MGR>
         inline auto deref(MGR const &mgr) const { return mgr.deref(*this); }
@@ -102,8 +105,45 @@ namespace uwin::mem {
 
     using taddr = tptr<std::uint8_t>;
 
+    // This is a (somewhat hacky) way to get target pointers as members of win32 api structures, yet with static typing
+    template<typename T, bool C = false>
+    class tptrpod {
+    public:
+        taddr::tvalue value;
+
+        inline explicit tptrpod()= default;
+
+        inline explicit tptrpod(tptr<T, C> tptr) : value(tptr.value()) {
+        }
+
+        inline tptr<T, C> as_taddr() {
+            return {value};
+        }
+    };
+
+    using taddrpod = tptrpod<std::uint8_t>;
+
+    static_assert(sizeof(taddrpod) == 4, "unexpected taddrpod size");
+    static_assert(alignof(taddrpod) == 4, "unexpected taddrpod alignment");
+    static_assert(std::is_trivial_v<taddrpod> && std::is_standard_layout_v<taddrpod>,
+            "expected taddrpod to be pod");
+
     template<typename T>
     using tcptr = tptr<T, true>;
+    template<typename T>
+    using tcptrpod = tptrpod<T, true>;
 
     using tcaddr = tcptr<std::uint8_t>;
+    using tcaddrpod = tcptrpod<std::uint8_t>;
 }
+
+
+template<typename T, bool C>
+struct fmt::formatter<uwin::mem::tptr<T, C>> : formatter<string_view> {
+    // parse is inherited from formatter<string_view>.
+    template<typename FormatContext>
+    auto format(uwin::mem::tptr<T, C> c, FormatContext &ctx) {
+        std::string name = fmt::format("0x{0:x}", c.value());
+        return formatter<string_view>::format(name, ctx);
+    }
+};

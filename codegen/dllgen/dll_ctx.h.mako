@@ -1,6 +1,7 @@
-#pragma one
+#pragma once
 
 #include <memory>
+#include <cctype>
 
 <%!
 import json
@@ -33,14 +34,14 @@ namespace uwin::ctx {
         inline win32::dll::${dll_name}_iface& get_${dll_name}() { return *_dll_${dll_name}; }
         % endfor
 
-        inline win32::dll::base& resolve(std::string& name) {
+        inline win32::dll::base* try_resolve(const std::string& name) {
             if (false) {}
             % for dll_name in dll_names:
             else if (name == ${cstr(dll_name)})
-                return get_${dll_name}();
+                return &get_${dll_name}();
             % endfor
             else
-                std::terminate();
+                return nullptr;
         }
     };
 }

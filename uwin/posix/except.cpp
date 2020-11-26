@@ -13,6 +13,7 @@
 #include "posix/except.h"
 
 #include <cstring>
+#include <stdexcept>
 
 namespace uwin::posix {
     exception::exception(const std::string &what_failed, int err) : std::runtime_error("meh") {

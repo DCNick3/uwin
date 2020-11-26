@@ -14,5 +14,9 @@ namespace uwin::win32::dll {
         int32_t
         MessageBoxA(uwin::win32::types::handle<uwin::win32::types::wnd> hWnd, uwin::mem::tcptr<char> lpText,
                     uwin::mem::tcptr<char> lpCaption, std::uint32_t uType) override;
+
+        void VoidTest() override;
+
+        uint32_t SubTest(std::uint32_t a, std::uint32_t b) override;
     };
 }

@@ -9,20 +9,22 @@
 
 namespace uwin::ctx {
     class dll;
+    class ldr;
 
     class process {
     public:
         std::unique_ptr<mem::mgr::target_mem_mgr> _mem_mgr;
         std::unique_ptr<dll> _dll;
+        std::unique_ptr<ldr> _ldr;
 
         template<typename T>
-        inline auto guest_to_host(mem::tptr<T> addr) const { return _mem_mgr->guest_to_host(addr); }
+        inline auto guest_to_host(mem::tptr<T> addr) const { return _mem_mgr->ptr(addr); }
 
         template<typename T>
-        inline auto guest_to_host(mem::tcptr<T> addr) const { return _mem_mgr->guest_to_host(addr); }
+        inline auto guest_to_host(mem::tcptr<T> addr) const { return _mem_mgr->ptr(addr); }
 
         [[nodiscard]] inline mem::hmem_region
-        guest_to_host(mem::tmem_region const &region) const { return _mem_mgr->guest_to_host(region); }
+        guest_to_host(mem::tmem_region const &region) const { return _mem_mgr->ptr(region); }
 
         template<typename T>
         inline T &deref(mem::tptr<T, false> ptr) const { return _mem_mgr->deref(ptr); }

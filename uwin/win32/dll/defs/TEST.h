@@ -8,9 +8,4 @@ int WINAPI MessageBoxA(
 
 void WINAPI VoidTest();
 
-/*BOOL WINAPI WeirdTest(
-  const FILETIME *lpFileTime,
-  LPFILETIME lpLocalFileTime
-);*/
-
-//char * strcat ( char * destination, const char * source );
+DWORD WINAPI SubTest(DWORD a, DWORD b);

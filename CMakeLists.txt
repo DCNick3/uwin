@@ -14,6 +14,7 @@ include(CodeGen)
 
 add_subdirectory(ext-deps/fmt)
 add_subdirectory(ext-deps/gtest)
+add_subdirectory(kaitai-rt)
 
 add_subdirectory(test)
 add_subdirectory(uwin)

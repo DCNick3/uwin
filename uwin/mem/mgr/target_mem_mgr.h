@@ -71,31 +71,38 @@ namespace uwin::mem::mgr {
         tmem_region uncommit_whole_reserved_region(taddr start_addr);
 
         template<typename T>
-        [[nodiscard]] inline auto guest_to_host(tptr<T> addr) const {
+        [[nodiscard]] inline auto ptr(tptr<T> addr) const {
             auto res = _host_region.begin() + addr.value();
             assert(res < _host_region.end());
             return reinterpret_cast<T *>(res);
         }
 
         template<typename T>
-        inline auto guest_to_host(tcptr<T> addr) const {
+        inline auto ptr(tcptr<T> addr) const {
             auto res = _host_region.begin() + addr.value();
             assert(res < _host_region.end());
             return reinterpret_cast<T const *>(res);
         }
 
-        [[nodiscard]] inline hmem_region guest_to_host(tmem_region const &region) const {
-            return {guest_to_host<std::uint8_t>(region.begin()), region.size()};
+        [[nodiscard]] inline hmem_region ptr(tmem_region const &region) const {
+            return {ptr<std::uint8_t>(region.begin()), region.size()};
         }
 
         template<typename T>
-        inline T &deref(tptr<T, false> ptr) const {
-            return *guest_to_host<T>(ptr);
+        inline T &deref(tptr<T, false> tptr) const {
+            return *ptr<T>(tptr);
         }
 
         template<typename T>
-        inline T const &deref(tptr<T, true> ptr) const {
-            return *guest_to_host<T>(ptr);
+        inline T const &deref(tptr<T, true> tptr) const {
+            return *ptr<T>(tptr);
+        }
+
+        template<bool C>
+        inline std::string_view str(tptr<char, C> tptr) const {
+            auto ptr = &deref(tptr);
+            auto size = strlen(ptr); // this can blow up. Add a length limit? Something else?
+            return std::string_view(ptr, size);
         }
 
         [[nodiscard]] inline std::uint8_t *get_region_base() const { return _host_region.begin(); }

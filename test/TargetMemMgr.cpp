@@ -73,7 +73,7 @@ TEST(TargetMemMgr, Integration) {
 
     mgr.commit(rg, tprot::rw);
 
-    memset(mgr.guest_to_host(rg).begin(), 0xce, rg.size());
+    memset(mgr.ptr(rg).begin(), 0xce, rg.size());
 
     mgr.reprotect(tmem_region(rg.begin(), consts::page_size * 3), tprot::r);
 

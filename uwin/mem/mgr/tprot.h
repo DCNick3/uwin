@@ -4,6 +4,10 @@
 
 #pragma once
 
+#include "util/enumu.h"
+
+#include <fmt/format.h>
+
 #include <cstdint>
 
 namespace uwin::mem::mgr {
@@ -17,6 +21,23 @@ namespace uwin::mem::mgr {
         wx = w | x, // does this even make sense? =)
         rwx = r | w | x,
     };
-
-
 }
+
+template<>
+struct uwin::EnableBitMaskOperators<uwin::mem::mgr::tprot> {
+    static const bool enable = true;
+};
+
+template<>
+struct fmt::formatter<uwin::mem::mgr::tprot> : formatter<string_view> {
+    using tprot = uwin::mem::mgr::tprot;
+    // parse is inherited from formatter<string_view>.
+    template<typename FormatContext>
+    auto format(uwin::mem::mgr::tprot c, FormatContext &ctx) {
+        std::string name = fmt::format("{}{}{}",
+                                       c % tprot::r ? 'r' : '-',
+                                       c % tprot::w ? 'w' : '-',
+                                       c % tprot::x ? 'x' : '-');
+        return formatter<string_view>::format(name, ctx);
+    }
+};

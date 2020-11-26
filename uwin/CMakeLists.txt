@@ -18,6 +18,9 @@ target_include_directories(uwin PUBLIC ${CMAKE_CURRENT_LIST_DIR} ${CMAKE_CURRENT
 # TODO: make it into a normal package
 target_include_directories(uwin PUBLIC /home/dcnick3/trash/homm3-switch/lifting/remill/)
 
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fmacro-prefix-map=${CMAKE_SOURCE_DIR}=src")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fmacro-prefix-map=${CMAKE_BINARY_DIR}=bin")
+
 function(uwin_sources)
     set(options)
     set(singleValueArgs NAME)
@@ -59,6 +62,7 @@ add_subdirectory(posix)
 add_subdirectory(util)
 add_subdirectory(win32)
 add_subdirectory(xcute)
+add_subdirectory(log)
 
 # TODO: this should definitely be integrated into the build system
 target_sources(uwin PUBLIC /home/dcnick3/trash/homm3-switch/lifting/remill/cmake-build-debug-clang/tools/uwin-lift/lifted.o)

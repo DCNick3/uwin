@@ -16,4 +16,10 @@ namespace uwin::win32::dll {
 
         return 0;
     }
+
+    void TEST_impl::VoidTest() {}
+
+    uint32_t TEST_impl::SubTest(std::uint32_t a, std::uint32_t b) {
+        return a - b;
+    }
 }

@@ -2,53 +2,63 @@
 
 #include "mem/mgr/target_mem_mgr.h"
 #include "util/except.h"
+#include "util/file.h"
 #include "win32/error_code.h"
 #include "xcute/remill/remill_rt.h"
 #include "ctx/process.h"
 #include "ctx/dll.h"
+#include "ctx/ldr.h"
+#include "win32/ldr/module_loader.h"
+#include "log/log.h"
 
 
 using namespace uwin;
 
+int main(int argc, char** argv) {
 
-int main() {
-    try {
-        auto mapper = mem::create_host_mem_mapper();
+    log::info("Starting...");
 
-        ctx::process process_ctx;
+    auto mapper = mem::create_host_mem_mapper();
 
-        process_ctx._mem_mgr = std::make_unique<mem::mgr::target_mem_mgr>(mapper);
-        process_ctx._dll = std::make_unique<ctx::dll>(process_ctx);
+    ctx::process process_ctx;
 
-        mem::mgr::target_mem_mgr &mgr = *process_ctx._mem_mgr;
+    // Who needs proper dependency managements anyways
+    // (Jokes aside, using Dependency Injection would be cool, but, IMO, quite difficult to implement,
+    // considering all weird places where you need those dependencies)
+    process_ctx._mem_mgr = std::make_unique<mem::mgr::target_mem_mgr>(mapper);
+    process_ctx._dll = std::make_unique<ctx::dll>(process_ctx);
+    process_ctx._ldr = std::make_unique<ctx::ldr>(*process_ctx._dll);
 
-        auto base_addr = mgr.get_region_base();
+    assert(argc >= 2);
+    const char *exe_path = argv[1];
+    auto exe_data = util::read_file(exe_path);
 
-        uwin::xcute::remill::StateEx state{};
-
-        state.process_ctx = &process_ctx;
-
-        // reserve the executable image region
-        auto image_region = mgr.reserve_fixed(mem::tmem_region(0x00400000, 0x41ff));
-        mgr.commit(mem::tmem_region(0x404000, 0x1000), mem::mgr::tprot::rw);
-
-        // MessageBoxA reference
-        mgr.deref(mem::tptr<std::uint32_t>(0x404030)) = 0x80000000;
-
-        auto stack_region = mgr.reserve_dynamic(0x10000);
-
-        mgr.commit(stack_region, mem::mgr::tprot::rw);
-
-        mgr.deref((stack_region.end() - 20).as<std::uint32_t>()) = 0x81337227;
-
-        state.base.gpr.rsp.dword = (stack_region.end() - 20).value();
+    auto& module = win32::ldr::module_loader::load(*process_ctx._ldr,
+            *process_ctx._mem_mgr, mem::taddr(0x00400000), "MAIN",
+            {exe_data.data(), exe_data.size()});
 
 
-        xcute::remill::uwin_remill_dispatch(&state.base, 0x401000, (uwin::xcute::remill::Memory *) base_addr);
+    mem::mgr::target_mem_mgr &mgr = *process_ctx._mem_mgr;
 
-    } catch (const std::exception &exc) {
+    auto base_addr = mgr.get_region_base();
+
+    uwin::xcute::remill::StateEx state{};
+
+    state.process_ctx = &process_ctx;
+
+    auto stack_region = mgr.reserve_dynamic(0x10000);
+
+    mgr.commit(stack_region, mem::mgr::tprot::rw);
+
+    mgr.deref((stack_region.end() - 20).as<std::uint32_t>()) = 0x81337227;
+
+    state.base.gpr.rsp.dword = (stack_region.end() - 20).value();
+
+    xcute::remill::uwin_remill_dispatch(&state.base, module.entrypoint().value(), (uwin::xcute::remill::Memory *) base_addr);
+
+    /*} catch (const std::exception &exc) {
         fmt::print("{} caught:\n    {}", util::get_nice_current_exception_type_name(), exc.what());
-    }
+    }*/
 
     return 0;
 }

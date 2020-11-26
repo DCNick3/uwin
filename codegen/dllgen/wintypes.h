@@ -7,6 +7,7 @@ typedef void* HWND;
 typedef const char* LPCSTR;
 typedef unsigned int UINT;
 typedef int BOOL;
+typedef UINT DWORD;
 
 typedef struct FILETIME FILETIME, *LPFILETIME;
 

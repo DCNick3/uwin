@@ -12,6 +12,7 @@
 #include <cstdlib>
 #include <cstdint>
 #include <cassert>
+#include <span>
 
 namespace uwin::mem {
 
@@ -83,6 +84,15 @@ namespace uwin::mem {
         }
 
         inline bool operator!=(generic_mem_region<B, S> const &o) const { return !operator==(o); }
+
+        template<typename T = std::uint8_t, typename B1 = B, typename S1 = S>
+        auto as_span() const -> typename std::enable_if<
+                std::is_same_v<B1, std::uint8_t*> && std::is_same_v<S1, std::size_t>,
+                std::span<T>>::type {
+            assert(util::is_aligned(_size, sizeof(T)));
+            assert(util::is_aligned(reinterpret_cast<std::uintptr_t>(_base), alignof(T)));
+            return std::span<T>(reinterpret_cast<T*>(_base), _size / sizeof(T));
+        }
     };
 
     using hmem_region = generic_mem_region<std::uint8_t *, std::size_t>;
@@ -96,7 +106,7 @@ struct fmt::formatter<uwin::mem::hmem_region> : formatter<string_view> {
     // parse is inherited from formatter<string_view>.
     template<typename FormatContext>
     auto format(uwin::mem::hmem_region c, FormatContext &ctx) {
-        std::string name = fmt::format("mem_region({0:p}, 0x{1:x})", fmt::ptr(c.begin()), c.size());
+        std::string name = fmt::format("{{{0:p}, 0x{1:x}}}", fmt::ptr(c.begin()), c.size());
         return formatter<string_view>::format(name, ctx);
     }
 };
@@ -106,7 +116,7 @@ struct fmt::formatter<uwin::mem::tmem_region> : formatter<string_view> {
     // parse is inherited from formatter<string_view>.
     template<typename FormatContext>
     auto format(uwin::mem::tmem_region c, FormatContext &ctx) {
-        std::string name = fmt::format("mem_region(0x{0:x}, 0x{1:x})", c.begin(), c.size());
+        std::string name = fmt::format("{{{0}, 0x{1:x}}}", c.begin(), c.size());
         return formatter<string_view>::format(name, ctx);
     }
 };

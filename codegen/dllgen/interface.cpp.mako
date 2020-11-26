@@ -34,13 +34,13 @@ namespace uwin::win32::dll {
         return memory;
     }
 % endfor
-    mem::taddr::tvalue ${class_name}::resolve(std::string& name) const {
+    [[nodiscard]] mem::tcaddr ${class_name}::try_resolve(const std::string& name) const {
         if (false) {}
         % for i, fun in funs:
         else if (name == ${cstr(fun.name)})
-            return ${hex(i)};
+            return mem::tcaddr(${hex(i)});
         % endfor
         else
-            std::terminate();
+            return mem::tcaddr(0);
     }
 }

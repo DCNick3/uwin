@@ -28,6 +28,6 @@ namespace uwin::win32::dll {
             std::uint32_t pc, uwin::xcute::remill::Memory* memory);
     % endfor
 
-        virtual mem::taddr::tvalue resolve(std::string& name) const;
+        [[nodiscard]] virtual mem::tcaddr try_resolve(const std::string& symbol_name) const override;
     };
 }

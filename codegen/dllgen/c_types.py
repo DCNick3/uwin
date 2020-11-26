@@ -61,6 +61,7 @@ alias('BOOL', '_Bool')
 
 alias('INT', 'int')
 alias('UINT', 'unsigned int')
+alias('DWORD', 'UINT')
 
 hndl('HWND', 'uwin::win32::types::wnd')
 

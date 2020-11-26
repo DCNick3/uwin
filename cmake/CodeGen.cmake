@@ -66,7 +66,8 @@ function(dllgen)
 
     add_custom_command(OUTPUT ${GENFILES_LIST}
             COMMAND "${LOCAL_PYTHON_EXECUTABLE}" "${CODEGEN_DLLGEN_PY}"
-            "${CMAKE_BINARY_DIR}/uwin" ${ARG_DEFS})
+            "${CMAKE_BINARY_DIR}/uwin" ${ARG_DEFS}
+            DEPENDS ${ARG_DEFS})
 
     add_custom_target(dllgen-target
             DEPENDS ${GENFILES_LIST})
