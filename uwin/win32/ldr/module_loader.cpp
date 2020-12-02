@@ -99,7 +99,7 @@ namespace uwin::win32::ldr {
 
             auto data = _image.subspan(sec->pointer_to_raw_data(), sec->size_of_raw_data());
 
-            assert(data.size() < host_region.size());
+            assert(data.size() <= host_region.size());
 
             memset(host_region.begin(), 0, host_region.size());
             memcpy(host_region.begin(), data.data(), data.size());
@@ -194,10 +194,11 @@ namespace uwin::win32::ldr {
 
             auto plookup_table = ptr(entry.plookup_table);
             for (int i = 0; plookup_table[i].value != 0; i++) {
-                if (plookup_table->is_ordinal())
+                auto& lookup = plookup_table[i];
+                if (lookup.is_ordinal())
                     throw loader_exception("Import by ordinal is not implemented.");
 
-                std::string symbol_name(deref(plookup_table->get_hint_name()).name);
+                std::string symbol_name(deref(lookup.get_hint_name()).name);
 
                 log::debug("  {}", symbol_name);
 

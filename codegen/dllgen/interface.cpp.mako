@@ -22,12 +22,12 @@ namespace uwin::win32::dll {
         throw stub_exception("${dll_name}::${fun.name}");
     }
 
-    void ${class_name}::${fun.name}_raw_call(uwin::xcute::remill::State *st) {
+    void ${class_name}::${fun.name}_raw_call(uwin::xcute::remill::State& st) {
         ## here we do conversion of parameters
         ${codeutils.gen_remill_entry(fun)}
     }
 
-    uwin::xcute::remill::Memory *${class_name}::${fun.name}_remill_entry(uwin::xcute::remill::State *st,
+    uwin::xcute::remill::Memory *${class_name}::${fun.name}_remill_entry(uwin::xcute::remill::State& st,
         std::uint32_t pc, uwin::xcute::remill::Memory* memory) {
 
         xcute::remill::get_process_ctx(st)._dll->get_${dll_name}().${fun.name}_raw_call(st);

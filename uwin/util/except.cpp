@@ -4,6 +4,8 @@
 
 #include "util/except.h"
 
+#include <fmt/core.h>
+
 #if defined(__GNUC__) || defined(__clang_major__)
 
 #include <cxxabi.h>
@@ -24,4 +26,12 @@ namespace uwin::util {
         return typeid(std::current_exception()).name();
 #endif
     }
+
+    not_implemented_error::not_implemented_error() : not_implemented_error("The requested functionality") {
+    }
+
+    not_implemented_error::not_implemented_error(const std::string &arg)
+        : runtime_error(fmt::format("{} is not implemented", arg)) {
+    }
+
 }

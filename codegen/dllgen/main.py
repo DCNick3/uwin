@@ -10,7 +10,7 @@ from mako.template import Template
 
 from pycparserext.ext_c_parser import GnuCParser, FuncDeclExt
 
-from pycparser.c_ast import Typedef, Decl
+from pycparser.c_ast import Typedef, Decl, Struct
 
 from model import FUN
 
@@ -60,6 +60,8 @@ def parse_dll(h_filename):
         elif type(x) is Decl:
             if type(x.type) is FuncDeclExt:
                 funs.append(FUN(x.type, x.funcspec))
+            elif type(x.type) is Struct:
+                pass
             else:
                 raise RuntimeError("Unsopported declaration type: " + str(type(x.type)))
         else:

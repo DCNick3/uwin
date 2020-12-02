@@ -10,10 +10,10 @@ def stdcall_arg(type: CTYPECONV, varname: str, index: int):
         raise NotImplementedError()
 
 def stdcall_result(type: CTYPECONV, varname: str):
-    if type.ctouw == 'constr':
+    if type.uwtoc == 'constr':
         return 'stdcall_set_result_%s(st, %s);\n' % (type.rawtype, varname)
-    elif type.ctouw == 'value':
-        return 'stdcall_set_result_%s(st, %s.value);\n' % (type.rawtype, varname)
+    elif type.uwtoc == 'value':
+        return 'stdcall_set_result_%s(st, %s.value());\n' % (type.rawtype, varname)
     else:
         raise NotImplementedError()
 

@@ -40,9 +40,11 @@ class FUN:
 
         self.args = []
 
-        if decl.args != None:
+        if decl.args is not None:
             for arg in decl.args:
-                self.args.append(ARG(arg))
+                arg = ARG(arg)
+                if arg.argtype is not None:
+                    self.args.append(arg)
 
     def proto(self, namespace) -> str:
         return '%s %s(%s)' % (

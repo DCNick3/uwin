@@ -1,4 +1,4 @@
-//
+    //
 // Created by dcnick3 on 10/25/20.
 //
 
@@ -25,13 +25,12 @@ namespace uwin {
 
 #include <remill/Arch/X86/Runtime/State.h>
 
-        struct StateEx {
-            State base;
+        struct StateEx : public State {
             ctx::process *process_ctx;
         };
 
-        inline ctx::process &get_process_ctx(State *state) {
-            return *reinterpret_cast<StateEx *>(state)->process_ctx;
+        inline ctx::process &get_process_ctx(State& state) {
+            return *static_cast<StateEx&>(state).process_ctx;
         }
     }
 }

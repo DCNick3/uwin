@@ -8,6 +8,8 @@
 #include "mem/mem_region.h"
 #include "mem/mgr/consts.h"
 #include "mem/mgr/tprot.h"
+#include "util/nocopy.h"
+#include "util/nomove.h"
 
 #include <cassert>
 
@@ -19,7 +21,7 @@ namespace uwin::mem::mgr {
     // Here comes the hack: _page_states is declared mutable to allow its modification even through const ptr
 
     // It provides only data structure and does not do any actual virtual memory operations
-    class pages_region : public tmem_region {
+    class pages_region : public tmem_region, util::nocopy, util::nomove {
 
         struct page {
             // Bitfields are used here
@@ -89,10 +91,6 @@ namespace uwin::mem::mgr {
         bool uncommit_pages(tmem_region region) const;
 
         void reprotect_pages(tmem_region region, tprot prot) const;
-
-        pages_region(const pages_region &o) = delete;
-
-        pages_region &operator=(const pages_region &o) = delete;
     };
 
 }

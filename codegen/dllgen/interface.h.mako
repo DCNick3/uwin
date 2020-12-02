@@ -5,6 +5,8 @@
 #include "win32/error.h"
 #include "win32/types/types.h"
 #include "win32/dll/base.h"
+#include "ht/handle.h"
+#include "ht/kobj.h"
 
 #include "xcute/remill/remill_state.h"
 #include "xcute/remill/remill_rt.h"
@@ -20,11 +22,11 @@ namespace uwin::win32::dll {
     % endfor
 
     % for i, fun in funs:
-        void ${fun.name}_raw_call(uwin::xcute::remill::State *st);
+        void ${fun.name}_raw_call(uwin::xcute::remill::State& st);
     % endfor
 
     % for i, fun in funs:
-        static uwin::xcute::remill::Memory *${fun.name}_remill_entry(uwin::xcute::remill::State *st,
+        static uwin::xcute::remill::Memory *${fun.name}_remill_entry(uwin::xcute::remill::State& st,
             std::uint32_t pc, uwin::xcute::remill::Memory* memory);
     % endfor
 

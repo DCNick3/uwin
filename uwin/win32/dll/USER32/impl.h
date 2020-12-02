@@ -11,7 +11,7 @@ namespace uwin::win32::dll {
     public:
         explicit USER32_impl(ctx::process &process_ctx) : USER32_iface(process_ctx) {}
 
-        std::int32_t MessageBoxA(uwin::win32::types::handle<uwin::win32::types::wnd> hWnd, uwin::mem::tcptr<char> lpText,
+        std::int32_t MessageBoxA(uwin::ht::handle<uwin::win32::types::wnd> hWnd, uwin::mem::tcptr<char> lpText,
                     uwin::mem::tcptr<char> lpCaption, std::uint32_t uType) override;
     };
 }

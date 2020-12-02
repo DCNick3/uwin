@@ -7,7 +7,7 @@ from typing import Tuple, Optional
 # supporting big endian is quite ambitious, but not too useful
 typetable = dict()
 
-RAWTYPES = {'s32', 'u32'}
+RAWTYPES = {'s16', 'u16', 's32', 'u32', 'void'}
 CTOUW = {'constr'}
 UWTOC = {'constr', 'value'}
 
@@ -35,11 +35,11 @@ def alias(ctype, ref):
     typetable[ctype] = ref
 
 def ptr(ctype, uwtype):
-    add(ctype + ' *', 'uwin::mem::tptr<%s>' % uwtype, 'u32', 'constr', 'constr')
-    add(ctype + ' const *', 'uwin::mem::tcptr<%s>' % uwtype, 'u32', 'constr', 'constr')
+    add(ctype + ' *', 'uwin::mem::tptr<%s>' % uwtype, 'u32', 'constr', 'value')
+    add(ctype + ' const *', 'uwin::mem::tcptr<%s>' % uwtype, 'u32', 'constr', 'value')
 
 def hndl(ctype, uwobj):
-    add(ctype, 'uwin::win32::types::handle<%s>' % uwobj, 'u32', 'constr', 'constr')
+    add(ctype, 'uwin::ht::handle<%s>' % uwobj, 'u32', 'constr', 'value')
 
 def winstruct(ctype, uwtype):
     ptr(ctype, uwtype)
@@ -52,24 +52,65 @@ def winstruct(ctype, uwtype):
 
 add('unsigned int', 'std::uint32_t', 'u32')
 add('signed int', 'std::int32_t', 'u32')
+add('unsigned long', 'std::uint32_t', 'u32')
+add('signed long', 'std::int32_t', 'u32')
+add('wchar_t', 'std::uint16_t', 'u16')
+add('unsigned short', 'std::uint16_t', 'u16')
+add('signed short', 'std::int16_t', 's16')
 add('_Bool', 'bool', 'u32')
+add('void', 'void', 'void')
 
 alias('int', 'signed int')
 alias('signed', 'signed int')
 alias('unsigned', 'unsigned int')
-alias('BOOL', '_Bool')
+alias('short', 'signed short')
+alias('long', 'signed long')
 
+alias('BOOL', '_Bool')
 alias('INT', 'int')
+alias('LONG', 'long')
 alias('UINT', 'unsigned int')
+alias('USHORT', 'unsigned short')
+alias('ULONG', 'unsigned long')
+alias('WORD', 'USHORT')
 alias('DWORD', 'UINT')
+alias('VOID', 'void')
 
 hndl('HWND', 'uwin::win32::types::wnd')
+hndl('HANDLE', 'uwin::ht::kobj')
+
+add('HMODULE', 'uwin::win32::types::hmodule', 'u32')
 
 ptr('char', 'char')
+ptr('wchar_t', 'wchar_t')
+ptr('void', 'void')
+ptr('WORD', 'uint16_t')
+ptr('DWORD', 'uint32_t')
+ptr('LONG', 'int32_t')
+ptr('_Bool', 'uwin::win32::types::BOOL')
+
 alias('LPSTR', 'char *')
 alias('LPCSTR', 'char const *')
+alias('LPWSTR', 'wchar_t *')
+alias('LPCWSTR', 'wchar_t const *')
+alias('PVOID', 'void *')
+alias('LPVOID', 'void *')
+alias('LPCVOID', 'void const *')
+alias('PDWORD', 'DWORD *')
+alias('LPDWORD', 'DWORD *')
+alias('PLONG', 'LONG *')
+alias('FARPROC', 'LPVOID')
+alias('PBOOL', '_Bool *')
+alias('LPBOOL', '_Bool *')
+alias('LCID', 'DWORD')
+alias('LPWORD', 'WORD *')
 
 winstruct('FILETIME', 'uwin::win32::types::FILETIME')
+winstruct('STARTUPINFOA', 'uwin::win32::types::STARTUPINFOA')
+winstruct('_EXCEPTION_POINTERS', 'uwin::win32::types::EXCEPTION_POINTERS')
+winstruct('OVERLAPPED', 'uwin::win32::types::OVERLAPPED')
+winstruct('EXCEPTION_RECORD', 'uwin::win32::types::EXCEPTION_RECORD')
+winstruct('CPINFO', 'uwin::win32::types::CPINFO')
 
 """
 ========================================================================================================================
@@ -109,6 +150,7 @@ def resolve_decl_intrnl(decl):
 
 def resolve_decl(decl) -> Tuple[Optional[CTYPECONV], str]:
     type, name = resolve_decl_intrnl(decl)
-    if type == 'void':
-        return None, name
-    return typetable[type], name
+    type = typetable[type]
+    if type.rawtype == 'void':
+        type = None
+    return type, name

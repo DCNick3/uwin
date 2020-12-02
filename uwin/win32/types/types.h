@@ -4,17 +4,24 @@
 
 #pragma once
 
+#include "mem/tptr.h"
+#include "win32/types/wnd.h"
+
 #include <cstdint>
 
 namespace uwin::win32::types {
-    class wnd;
+    // names in CAPS are POD types that can be directly embedded into structures or pointed to in target memory
+    // they must have the same layout as in the target
 
-    template<typename T>
-    class handle {
-        std::uint32_t _value;
-    public:
-        [[nodiscard]] inline std::uint32_t value() const { return _value; }
+    typedef uwin::mem::taddr::tvalue hmodule;
 
-        explicit inline handle(std::uint32_t value) : _value(value) {}
-    };
+    class obj {};
+
+    typedef std::uint32_t BOOL;
+
+    class STARTUPINFOA {};
+    class EXCEPTION_POINTERS {};
+    class OVERLAPPED {};
+    class EXCEPTION_RECORD {};
+    class CPINFO {};
 }

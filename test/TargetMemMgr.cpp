@@ -7,6 +7,7 @@
 #include "mem/mem_mapper.h"
 #include "mem/mgr/pages_regions_container.h"
 #include "mem/mgr/target_mem_mgr.h"
+#include "mem/mgr/region_holder.h"
 #include "util/align.h"
 #include "win32/error.h"
 
@@ -93,4 +94,51 @@ TEST(TargetMemMgr, Integration) {
     mgr.uncommit_whole_reserved_region(rg.begin());
 
     mgr.unreserve(rg.begin());
+}
+
+TEST(TargetMemMgr, Holder) {
+    auto mem_mapper = create_host_mem_mapper();
+    target_mem_mgr mgr(mem_mapper);
+
+    {
+        tmem_region rg(0,0);
+        {
+            auto holder = region_holder::reserve_dynamic(mgr, 0x1000);
+            rg = holder.get();
+        }
+        ASSERT_THROW(mgr.unreserve(rg.begin()), win32::error);
+    }
+
+    {
+        tmem_region rg(0,0);
+        {
+            auto holder = region_holder::reserve_and_commit(mgr, 0x1000, tprot::rw);
+            rg = holder.get();
+        }
+        ASSERT_THROW(mgr.uncommit(rg), win32::error);
+        ASSERT_THROW(mgr.unreserve(rg.begin()), win32::error);
+    }
+    {
+        tmem_region rg = mgr.reserve_dynamic(0x1000);
+        {
+            auto holder = region_holder::commit(mgr, rg, tprot::rw);
+            ASSERT_EQ(rg, holder.get());
+        }
+        // commit of uncommited, but reserved memory is no-op
+        ASSERT_NO_THROW(mgr.uncommit(rg));
+        ASSERT_NO_THROW(mgr.unreserve(rg.begin()));
+    }
+
+    {
+        tmem_region rg(0,0);
+        {
+            region_holder holder1;
+            {
+                auto holder = region_holder::reserve_dynamic(mgr, 0x1000);
+                rg = holder.get();
+                holder1 = std::move(holder);
+            }
+        }
+        ASSERT_THROW(mgr.unreserve(rg.begin()), win32::error);
+    }
 }

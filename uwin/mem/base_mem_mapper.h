@@ -5,6 +5,8 @@
 #pragma once
 
 #include "mem/mem_region.h"
+#include "util/nocopy.h"
+#include "util/nomove.h"
 
 #include <fmt/format.h>
 
@@ -20,7 +22,7 @@ namespace uwin::mem {
         rx,
     };
 
-    class base_mem_mapper {
+    class base_mem_mapper : util::nocopy, util::nomove {
     public:
         inline base_mem_mapper() = default;
         // All of those functions should not return error codes, but fail by raising an exception
@@ -55,11 +57,6 @@ namespace uwin::mem {
         virtual std::size_t page_size() = 0;
 
         virtual ~base_mem_mapper() = default;
-
-        // no copying
-        base_mem_mapper(const base_mem_mapper &) = delete;
-
-        base_mem_mapper &operator=(const base_mem_mapper &) = delete;
 
         // TODO: write a middleware that checks those conditions
     };

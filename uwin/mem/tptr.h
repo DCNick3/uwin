@@ -94,7 +94,7 @@ namespace uwin::mem {
         template<typename DT>
         constexpr inline tptr<DT, C> as() const { return tptr<DT, C>(_value); }
 
-        inline auto as_taddr() const { return as<std::uint8_t>(); }
+        [[nodiscard]] inline auto as_taddr() const { return as<std::uint8_t>(); }
 
         template<typename MGR>
         inline auto to_host(MGR const &mgr) const { return mgr.ptr(*this); }

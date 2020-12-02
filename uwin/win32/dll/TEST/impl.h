@@ -12,7 +12,7 @@ namespace uwin::win32::dll {
         explicit TEST_impl(ctx::process &process_ctx) : TEST_iface(process_ctx) {}
 
         int32_t
-        MessageBoxA(uwin::win32::types::handle<uwin::win32::types::wnd> hWnd, uwin::mem::tcptr<char> lpText,
+        MessageBoxA(uwin::ht::handle<uwin::win32::types::wnd> hWnd, uwin::mem::tcptr<char> lpText,
                     uwin::mem::tcptr<char> lpCaption, std::uint32_t uType) override;
 
         void VoidTest() override;

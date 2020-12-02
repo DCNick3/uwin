@@ -10,7 +10,7 @@ add_library(uwin-base INTERFACE)
 target_include_directories(uwin-base INTERFACE ${CMAKE_CURRENT_LIST_DIR} ${CMAKE_CURRENT_BINARY_DIR})
 
 # TODO: make it into a normal package
-target_include_directories(uwin-base INTERFACE /home/dcnick3/trash/homm3-switch/lifting/remill/)
+target_include_directories(uwin-base INTERFACE /home/dcnick3/trash/homm3-switch/code/lifting/remill/include/)
 
 add_library(uwin STATIC)
 
@@ -48,11 +48,11 @@ function(uwin_sources)
         target_sources(${ARG_NAME} PRIVATE ${ARG_LINUX})
     endif ()
 
-    target_link_libraries(${ARG_NAME} uwin-base)
+    target_link_libraries(${ARG_NAME} PUBLIC uwin-base)
 
     target_link_libraries(uwin ${ARG_NAME})
 
-    target_link_libraries(${ARG_NAME} ${ARG_DEPENDS})
+    target_link_libraries(${ARG_NAME} PUBLIC ${ARG_DEPENDS})
 
 endfunction()
 
@@ -63,11 +63,13 @@ add_subdirectory(util)
 add_subdirectory(win32)
 add_subdirectory(xcute)
 add_subdirectory(log)
+add_subdirectory(ht)
+add_subdirectory(heap)
 
 # TODO: this should definitely be integrated into the build system
-target_sources(uwin PUBLIC /home/dcnick3/trash/homm3-switch/lifting/remill/cmake-build-debug-clang/tools/uwin-lift/lifted.o)
+target_sources(uwin PUBLIC /home/dcnick3/trash/homm3-switch/code/lifting/remill/cmake-build-debug-clang/bin/uwin-lift/lifted.o)
 
-target_link_libraries(uwin fmt)
+target_link_libraries(uwin-base INTERFACE fmt kaitai-rt)
 
 add_executable(uwin-main main.cpp)
 target_link_libraries(uwin-main uwin)

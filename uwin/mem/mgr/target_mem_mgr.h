@@ -89,17 +89,31 @@ namespace uwin::mem::mgr {
         }
 
         template<typename T>
-        inline T &deref(tptr<T, false> tptr) const {
+        inline auto tptr(T* ptr) const {
+            auto bptr = reinterpret_cast<std::uint8_t*>(ptr);
+            assert(_host_region.begin() <= bptr && _host_region.end() > bptr);
+            return mem::tptr<T>(bptr - _host_region.begin());
+        }
+
+        template<typename T>
+        inline auto tptr(T const* ptr) const {
+            auto bptr = reinterpret_cast<std::uint8_t const*>(ptr);
+            assert(_host_region.begin() <= bptr && _host_region.end() > bptr);
+            return mem::tcptr<T>(bptr - _host_region.begin());
+        }
+
+        template<typename T>
+        inline T &deref(mem::tptr<T, false> tptr) const {
             return *ptr<T>(tptr);
         }
 
         template<typename T>
-        inline T const &deref(tptr<T, true> tptr) const {
+        inline T const &deref(mem::tptr<T, true> tptr) const {
             return *ptr<T>(tptr);
         }
 
         template<bool C>
-        inline std::string_view str(tptr<char, C> tptr) const {
+        inline std::string_view str(mem::tptr<char, C> tptr) const {
             auto ptr = &deref(tptr);
             auto size = strlen(ptr); // this can blow up. Add a length limit? Something else?
             return std::string_view(ptr, size);

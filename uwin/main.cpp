@@ -28,6 +28,8 @@ int main(int argc, char** argv) {
     process_ctx._mem_mgr = std::make_unique<mem::mgr::target_mem_mgr>(mapper);
     process_ctx._dll = std::make_unique<ctx::dll>(process_ctx);
     process_ctx._ldr = std::make_unique<ctx::ldr>(*process_ctx._dll);
+    process_ctx._handlelike_allocator = std::make_unique<ht::handlelike_allocator>();
+    process_ctx._handle_table = std::make_unique<ht::handletable>(*process_ctx._handlelike_allocator);
 
     assert(argc >= 2);
     const char *exe_path = argv[1];
@@ -52,9 +54,14 @@ int main(int argc, char** argv) {
 
     mgr.deref((stack_region.end() - 20).as<std::uint32_t>()) = 0x81337227;
 
-    state.base.gpr.rsp.dword = (stack_region.end() - 20).value();
+    state.gpr.rsp.dword = (stack_region.end() - 20).value();
 
-    xcute::remill::uwin_remill_dispatch(&state.base, module.entrypoint().value(), (uwin::xcute::remill::Memory *) base_addr);
+    auto teb_region = mgr.reserve_dynamic(0x1000);
+    mgr.commit(teb_region, mem::mgr::tprot::rw);
+
+    state.addr.fs_base.dword = teb_region.begin().value();
+
+    uwin_xcute_remill_dispatch(state, module.entrypoint().value(), (uwin::xcute::remill::Memory *) base_addr);
 
     /*} catch (const std::exception &exc) {
         fmt::print("{} caught:\n    {}", util::get_nice_current_exception_type_name(), exc.what());

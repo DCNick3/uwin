@@ -8,7 +8,7 @@
 namespace uwin::win32::dll {
 
 
-    std::int32_t USER32_impl::MessageBoxA(uwin::win32::types::handle<uwin::win32::types::wnd> hWnd, uwin::mem::tcptr<char> lpText,
+    std::int32_t USER32_impl::MessageBoxA(uwin::ht::handle<uwin::win32::types::wnd> hWnd, uwin::mem::tcptr<char> lpText,
                              uwin::mem::tcptr<char> lpCaption, std::uint32_t uType) {
         auto text = str(lpText);
         auto caption = str(lpCaption);
