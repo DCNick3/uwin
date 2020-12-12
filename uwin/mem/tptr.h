@@ -107,13 +107,11 @@ namespace uwin::mem {
 
     // This is a (somewhat hacky) way to get target pointers as members of win32 api structures, yet with static typing
     template<typename T, bool C = false>
-    class tptrpod {
-    public:
+    struct tptrpod {
         taddr::tvalue value;
 
-        inline explicit tptrpod()= default;
-
-        inline explicit tptrpod(tptr<T, C> tptr) : value(tptr.value()) {
+        static inline tptrpod from_tptr(tptr<T, C> tptr) {
+            return {tptr.value()};
         }
 
         inline tptr<T, C> as_taddr() {

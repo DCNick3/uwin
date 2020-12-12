@@ -30,5 +30,53 @@ namespace uwin::win32::dll {
 
         uint32_t
         HeapSize(uwin::ht::handle<uwin::ht::kobj> hHeap, std::uint32_t dwFlags, uwin::mem::tcptr<void> lpMem) override;
+
+        mem::tptr<void>
+        VirtualAlloc(uwin::mem::tptr<void> lpAddress, std::uint32_t dwSize, std::uint32_t flAllocationType,
+                     std::uint32_t flProtect) override;
+
+        bool VirtualFree(uwin::mem::tptr<void> lpAddress, std::uint32_t dwSize, std::uint32_t dwFreeType) override;
+
+        bool VirtualProtect(uwin::mem::tptr<void> lpAddress, std::uint32_t dwSize, std::uint32_t flNewProtect,
+                            uwin::mem::tptr<uint32_t> lpflOldProtect) override;
+
+        void GetStartupInfoA(uwin::mem::tptr<uwin::win32::types::STARTUPINFOA> lpStartupInfo) override;
+
+        ht::handle <uwin::ht::kobj> GetStdHandle(std::uint32_t nStdHandle) override;
+
+        uint32_t SetHandleCount(std::uint32_t uNumber) override;
+
+        mem::tptr<char> GetCommandLineA() override;
+
+        mem::tptr<wchar_t> GetEnvironmentStringsW() override;
+        mem::tptr<char> GetEnvironmentStrings() override;
+        bool FreeEnvironmentStringsA(uwin::mem::tptr<char> arg0) override;
+
+        uint32_t GetACP() override;
+
+        bool GetCPInfo(std::uint32_t CodePage, uwin::mem::tptr<uwin::win32::types::CPINFO> lpCPInfo) override;
+
+        bool GetStringTypeW(std::uint32_t dwInfoType, uwin::mem::tcptr<wchar_t> lpSrcStr, std::int32_t cchSrc,
+                            uwin::mem::tptr<uint16_t> lpCharType) override;
+
+        bool GetStringTypeA(std::uint32_t Locale, std::uint32_t dwInfoType, uwin::mem::tcptr<char> lpSrcStr,
+                            std::int32_t cchSrc, uwin::mem::tptr<uint16_t> lpCharType) override;
+
+        int32_t LCMapStringA(std::uint32_t Locale, std::uint32_t dwMapFlags, uwin::mem::tcptr<char> lpSrcStr,
+                             std::int32_t cchSrc, uwin::mem::tptr<char> lpDestStr, std::int32_t cchDest) override;
+
+        int32_t LCMapStringW(std::uint32_t Locale, std::uint32_t dwMapFlags, uwin::mem::tcptr<wchar_t> lpSrcStr,
+                             std::int32_t cchSrc, uwin::mem::tptr<wchar_t> lpDestStr, std::int32_t cchDest) override;
+
+        uint32_t GetModuleFileNameA(uwin::win32::types::hmodule hModule, uwin::mem::tptr<char> lpFilename,
+                                    std::uint32_t nSize) override;
+
+        bool IsBadReadPtr(uwin::mem::tcptr<void> lp, std::uint32_t ucb) override;
+
+        bool IsBadWritePtr(uwin::mem::tptr<void> lp, std::uint32_t ucb) override;
+
+        types::hmodule GetModuleHandleA(uwin::mem::tcptr<char> lpModuleName) override;
+
+        void ExitProcess(std::uint32_t uExitCode) override;
     };
 }

@@ -25,6 +25,12 @@ namespace uwin::ht {
 
         explicit inline handle(tvalue value) : _value(value) {}
 
+        static constexpr tvalue invalid_value = 0xffffffff;
+
+        [[nodiscard]] static handle invalid() { return handle(invalid_value); }
+
+        [[nodiscard]] inline bool is_invalid() const { return _value == invalid_value; }
+
         template<typename D>
         [[nodiscard]] handle<D> cast() const {
             static_cast<D*>(static_cast<T*>(nullptr));

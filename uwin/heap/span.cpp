@@ -9,7 +9,7 @@
 
 namespace uwin::heap {
 
-    span::iterator span::ptr_to_iterator(mem::taddr ptr) const {
+    span::iterator span::ptr_to_iterator(mem::mgr::target_mem_mgr &mem_mgr, mem::taddr ptr) {
         // a small bit of voodoo magic is used here
         // (basically from https://stackoverflow.com/questions/44929500/how-to-get-a-stdlisttiterator-from-an-element-of-that-list)
         // TODO: implement own linked list not to deal with this scary stuff
@@ -21,7 +21,8 @@ namespace uwin::heap {
         iterator it{nullptr};
         auto iteroffset = reinterpret_cast<size_t>(&*it);
 
-        auto mypointer = _holder.get_mgr()->ptr((ptr - sizeof(block_hdr)).as<block_hdr>())->p_block_obj;
+        auto block_header = mem_mgr.ptr((ptr - sizeof(block_hdr)).as<block_hdr>());
+        auto mypointer = block_header->p_block_obj;
 
         iterator ret_iter;
         *(reinterpret_cast<intptr_t*>(&ret_iter)) =
@@ -37,10 +38,11 @@ namespace uwin::heap {
     span::span(mem::mgr::region_holder memory_region)
             : _holder(std::move(memory_region)) {
         assert(_holder.get().size() == consts::span_size);
+        assert(_holder.get().begin().is_aligned(consts::span_size));
 
         auto ptr = _holder.get_mgr()->ptr(_holder.get().begin());
 
-        auto span_header = new (ptr) span_hdr{this};
+        new (ptr) span_hdr{this};
 
         auto block_ptr = ptr + span_header_size;
 
@@ -111,7 +113,8 @@ namespace uwin::heap {
     }
 
     span::span(mem::mgr::target_mem_mgr& mem_mgr)
-        : span(mem::mgr::region_holder::reserve_and_commit(mem_mgr, consts::span_size, mem::mgr::tprot::rw)) {
+        : span(mem::mgr::region_holder::reserve_and_commit_aligned(mem_mgr, consts::span_size,
+                                                                   consts::span_size, mem::mgr::tprot::rw)) {
     }
 
     span::iterator span::merge_blocks(span::iterator one, span::iterator another) {

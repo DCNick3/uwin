@@ -55,6 +55,15 @@ HeapSize(
 WINBASEAPI
 BOOL
 WINAPI
+HeapValidate(
+    HANDLE hHeap,
+    DWORD dwFlags,
+    LPCVOID lpMem
+    );
+
+WINBASEAPI
+BOOL
+WINAPI
 CloseHandle(
     HANDLE hObject
     );
@@ -346,3 +355,53 @@ GetStringTypeW(
     LPCWSTR  lpSrcStr,
     int      cchSrc,
     LPWORD   lpCharType);
+
+WINBASEAPI
+VOID
+WINAPI
+DebugBreak(
+    VOID
+    );
+
+LONG
+WINAPI
+InterlockedIncrement(
+    LPLONG lpAddend
+    );
+
+LONG
+WINAPI
+InterlockedDecrement(
+    LPLONG lpAddend
+    );
+
+WINBASEAPI
+VOID
+WINAPI
+OutputDebugStringA(
+    LPCSTR lpOutputString
+    );
+
+WINBASEAPI
+BOOL
+WINAPI
+SetConsoleCtrlHandler(
+    PHANDLER_ROUTINE HandlerRoutine,
+    BOOL Add
+    );
+
+WINBASEAPI
+BOOL
+WINAPI
+IsBadReadPtr(
+    CONST VOID *lp,
+    UINT ucb
+    );
+
+WINBASEAPI
+BOOL
+WINAPI
+IsBadWritePtr(
+    LPVOID lp,
+    UINT ucb
+    );

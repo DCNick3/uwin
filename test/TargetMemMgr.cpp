@@ -19,17 +19,19 @@ using namespace uwin;
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "cert-err58-cpp"
 
+// TODO: I feel that this needs more fuzzing...
+
 TEST(TargetMemMgr, TestRegionContainer) {
 
     pages_regions_container rmgr;
 
-    auto reg1 = rmgr.alloc(0x1000);
+    auto reg1 = rmgr.alloc(0x1000, consts::allocation_granularity);
     ASSERT_TRUE(is_aligned(reg1->begin(), consts::allocation_granularity));
 
-    auto reg2 = rmgr.alloc(0x2000);
+    auto reg2 = rmgr.alloc(0x2000, consts::allocation_granularity);
     ASSERT_TRUE(is_aligned(reg2->begin(), consts::allocation_granularity));
 
-    auto reg3 = rmgr.alloc(0x3000);
+    auto reg3 = rmgr.alloc(0x3000, consts::allocation_granularity);
     ASSERT_TRUE(is_aligned(reg3->begin(), consts::allocation_granularity));
 
     auto reg4 = rmgr.insert(tmem_region(align_up(reg3->end(), consts::allocation_granularity), 0x10000));
@@ -54,7 +56,7 @@ TEST(TargetMemMgr, TestRegionContainer) {
 
     ASSERT_EQ(rmgr.size(), 3);
 
-    reg1 = rmgr.alloc(0x1000);
+    reg1 = rmgr.alloc(0x1000, consts::allocation_granularity);
     ASSERT_TRUE(is_aligned(reg1->begin(), consts::allocation_granularity));
 
     ASSERT_EQ(rmgr.size(), 4);
@@ -94,6 +96,13 @@ TEST(TargetMemMgr, Integration) {
     mgr.uncommit_whole_reserved_region(rg.begin());
 
     mgr.unreserve(rg.begin());
+}
+
+TEST(TargetMemMgr, IntegrationFuzz) {
+    auto mem_mapper = create_host_mem_mapper();
+    target_mem_mgr mgr(mem_mapper);
+
+
 }
 
 TEST(TargetMemMgr, Holder) {

@@ -10,6 +10,7 @@
 namespace uwin::win32::dll {
 
     enum class OPTIONS : std::uint32_t {
+        HEAP_REALLOC_IN_PLACE_ONLY = 0x00000010,
         HEAP_ZERO_MEMORY = 0x00000008,
         HEAP_GENERATE_EXCEPTIONS = 0x00000004,
         HEAP_NO_SERIALIZE = 0x00000001,
@@ -61,9 +62,13 @@ namespace uwin::win32::dll {
 
         auto& heap = *_process_ctx.ht_get(hHeap.cast<heap::heap>());
 
+        auto res = heap.alloc(dwBytes);
 
+        if (zero_memory) {
+            memset(this->_process_ctx._mem_mgr->ptr(res), 0, heap.size(res));
+        }
 
-        return KERNEL32_iface::HeapAlloc(hHeap, dwFlags, dwBytes);
+        return res.as<void>();
     }
 
     mem::tptr<void> KERNEL32_impl::HeapReAlloc(uwin::ht::handle<uwin::ht::kobj> hHeap, std::uint32_t dwFlags,

@@ -32,7 +32,12 @@ namespace uwin::mem::mgr {
 
         static region_holder commit(target_mem_mgr& mem_mgr, tmem_region region, tprot prot);
 
-        static region_holder reserve_and_commit(target_mem_mgr& mem_mgr, taddr::tvalue size, tprot prot);
+        static region_holder reserve_and_commit_aligned(target_mem_mgr& mem_mgr, taddr::tvalue size,
+                                                        taddr::tvalue alignment, tprot prot);
+
+        static inline region_holder reserve_and_commit(target_mem_mgr& mem_mgr, taddr::tvalue size, tprot prot) {
+            return reserve_and_commit_aligned(mem_mgr, size, 1, prot);
+        }
 
         [[nodiscard]] tmem_region release();
 

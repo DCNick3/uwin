@@ -10,6 +10,7 @@
 #include "mem/mgr/target_mem_mgr.h"
 #include "mem/mgr/region_holder.h"
 #include "util/nocopy.h"
+#include "consts.h"
 
 #include <list>
 
@@ -33,7 +34,10 @@ namespace uwin::heap {
         static constexpr std::size_t block_header_size = sizeof(block_hdr);
         static constexpr std::size_t span_header_size = sizeof(span_hdr);
 
-        [[nodiscard]] iterator ptr_to_iterator(mem::taddr ptr) const;
+        [[nodiscard]] static iterator ptr_to_iterator(mem::mgr::target_mem_mgr& mem_mgr, mem::taddr ptr);
+        [[nodiscard]] inline iterator ptr_to_iterator(mem::taddr ptr) const {
+            return ptr_to_iterator(*_holder.get_mgr(), ptr);
+        }
         [[nodiscard]] static mem::taddr iterator_to_ptr(iterator it);
 
     public:
@@ -48,8 +52,25 @@ namespace uwin::heap {
 
         [[nodiscard]] std::pair<iterator, mem::taddr::tvalue> best_fit(mem::taddr::tvalue size);
 
+        [[nodiscard]] inline static span& from_ptr(mem::mgr::target_mem_mgr& mem_mgr, mem::taddr ptr) {
+            auto header = mem_mgr.ptr(ptr.align_down(consts::span_size).as<span_hdr>());
+            return *header->p_span_obj;
+        }
+
+        [[nodiscard]] inline bool empty() const {
+            return _max_hole_size == consts::span_size - block_header_size - span_header_size;
+        }
+
         [[nodiscard]] mem::taddr alloc(mem::taddr::tvalue size);
         void free(mem::taddr ptr);
+
+        [[nodiscard]] static inline mem::taddr::tvalue size(mem::mgr::target_mem_mgr& mem_mgr, mem::taddr ptr) {
+            auto it = ptr_to_iterator(mem_mgr, ptr);
+            return it->size();
+        }
+        [[nodiscard]] inline mem::taddr::tvalue size(mem::taddr ptr) const {
+            return size(*_holder.get_mgr(), ptr);
+        }
 
         [[nodiscard]] inline mem::taddr::tvalue max_hole_size() const {
             return _max_hole_size;

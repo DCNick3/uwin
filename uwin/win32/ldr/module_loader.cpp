@@ -207,7 +207,7 @@ namespace uwin::win32::ldr {
                 if (res == 0)
                     throw loader_exception(fmt::format("Could not import {} from {}.", symbol_name, dll_name));
 
-                ptr(entry.address_table)[i] = mem::tcaddrpod(res);
+                ptr(entry.address_table)[i] = mem::tcaddrpod::from_tptr(res);
             }
 
         }

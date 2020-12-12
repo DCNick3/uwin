@@ -15,6 +15,7 @@ uwin_sources(NAME win32-dll
         USER32/impl.cpp
         KERNEL32/impl.cpp
         KERNEL32/heap.cpp
+        KERNEL32/virtual.cpp
         ${DLLGEN_FILES}
 
         DEPENDS win32 dllgen util)

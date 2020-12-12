@@ -3,6 +3,12 @@
 
 // actually those are dummy definitions; the type mapping is hard-coded into the parser
 
+#define WINAPI __attribute__((stdcall))
+#define WINBASEAPI
+#define NTSYSAPI
+#define CONST const
+#define VOID void
+
 typedef void* HWND;
 typedef void* HANDLE;
 typedef void* LPVOID;
@@ -13,11 +19,10 @@ typedef char* LPWSTR;
 typedef const char* LPCWSTR;
 typedef void* HMODULE;
 typedef void* LPSTARTUPINFOA;
-typedef void VOID;
 typedef unsigned int UINT;
 typedef int BOOL;
 typedef UINT DWORD;
-typedef long LONG;
+typedef long LONG, *LPLONG;
 typedef DWORD *PDWORD, *LPDWORD;
 typedef void *LPOVERLAPPED;
 typedef LONG *PLONG;
@@ -33,6 +38,9 @@ typedef struct _EXCEPTION_POINTERS _EXCEPTION_POINTERS;
 typedef struct EXCEPTION_RECORD EXCEPTION_RECORD, *PEXCEPTION_RECORD;
 typedef struct CPINFO CPINFO, *LPCPINFO;
 
-#define WINAPI __attribute__((stdcall))
-#define WINBASEAPI
-#define NTSYSAPI
+typedef
+BOOL
+// TODO: implement attributes at function pointer definitions
+(/*WINAPI*/ *PHANDLER_ROUTINE)(
+DWORD CtrlType
+);

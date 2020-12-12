@@ -43,8 +43,10 @@ namespace uwin::mem::mgr {
         return {mem_mgr, holder_type::commit, region};
     }
 
-    region_holder region_holder::reserve_and_commit(target_mem_mgr &mem_mgr, taddr::tvalue size, tprot prot) {
-        auto region = mem_mgr.reserve_dynamic(size);
+    region_holder
+    region_holder::reserve_and_commit_aligned(target_mem_mgr &mem_mgr, taddr::tvalue size, taddr::tvalue alignment,
+                                              tprot prot) {
+        auto region = mem_mgr.reserve_dynamic_aligned(size, alignment);
         mem_mgr.commit(region, prot);
 
         return {mem_mgr, holder_type::reserve_and_commit, region};

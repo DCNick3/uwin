@@ -7,6 +7,7 @@
 #include "mem/except.h"
 #include "win32/error.h"
 #include "log/log.h"
+#include "util/except.h"
 
 #include <utility>
 #include <memory>
@@ -17,7 +18,8 @@ namespace uwin::mem::mgr {
     target_mem_mgr::target_mem_mgr(std::shared_ptr<base_mem_mapper> mapper) :
             _mapper(std::move(mapper)),
             _host_region(_mapper->host_reserve(consts::address_space_size)) {
-        assert(_mapper->page_size() == consts::page_size);
+        if (_mapper->page_size() != consts::page_size)
+            throw util::not_implemented_error("Supporting different host and target page size");
     }
 
 
@@ -40,9 +42,9 @@ namespace uwin::mem::mgr {
         return it;
     }
 
-    tmem_region target_mem_mgr::reserve_dynamic(taddr::tvalue size) {
+    tmem_region target_mem_mgr::reserve_dynamic_aligned(taddr::tvalue size, taddr::tvalue alignment) {
         log::debug("reserve_dynamic(0x{:x})", size);
-        return *_regions_container.alloc(util::align_up(size, consts::page_size)); // NOLINT(cppcoreguidelines-slicing)
+        return *_regions_container.alloc(util::align_up(size, consts::page_size), alignment); // NOLINT(cppcoreguidelines-slicing)
         // object slicing is intended here
     }
 
@@ -126,5 +128,6 @@ namespace uwin::mem::mgr {
             if (region.has_commited_pages(region)) // NOLINT(cppcoreguidelines-slicing)
                 _mapper->host_unmap(ptr(region));
         }
+        _mapper->host_unreserve(_host_region);
     }
 }

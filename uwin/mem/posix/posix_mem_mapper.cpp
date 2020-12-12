@@ -120,9 +120,11 @@ namespace uwin::mem {
     }
 
     void posix_mem_mapper::host_unmap(hmem_region region) {
+        // unmap (remove all the data) and map it back with no access (to preserve reservation)
         if (munmap(region.begin(), region.size()) != 0)
-            throw posix_mem_mapper_except(fmt::format("munmap for posix_mem_mapper::host_unmap({})",
-                                                      region), errno);
+            throw posix_mem_mapper_except(
+                    fmt::format("munmap for posix_mem_mapper::host_unmap({})", region), errno);
+        host_map_fixed(region, hprot::none);
     }
 
     std::size_t posix_mem_mapper::page_size() {

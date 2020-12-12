@@ -40,7 +40,7 @@ namespace uwin::mem::mgr {
 
     public:
 
-        iterator alloc(taddr::tvalue size);
+        iterator alloc(taddr::tvalue size, taddr::tvalue alignment);
 
         iterator insert(tmem_region region);
 

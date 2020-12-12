@@ -9,8 +9,10 @@ class ARG:
     argtype: CTYPECONV
     argname: str
 
-    def __init__(self, decl):
+    def __init__(self, decl, num):
         self.argtype, self.argname = resolve_decl(decl.type)
+        if self.argname is None:
+            self.argname = "arg%d" % num
 
     def __repr__(self) -> str:
         return '%s %s' % (self.argtype.uwtype, self.argname)
@@ -41,8 +43,8 @@ class FUN:
         self.args = []
 
         if decl.args is not None:
-            for arg in decl.args:
-                arg = ARG(arg)
+            for i, arg in enumerate(decl.args):
+                arg = ARG(arg, i)
                 if arg.argtype is not None:
                     self.args.append(arg)
 

@@ -11,17 +11,45 @@
 
 namespace uwin::win32::types {
     // names in CAPS are POD types that can be directly embedded into structures or pointed to in target memory
-    // they must have the same layout as in the target
+    // of course they must have the same layout as in the target, so marking them with [[gnu::packed]] might be a good idea
 
     typedef uwin::mem::taddr::tvalue hmodule;
 
-    class obj {};
+    // it's an object that is closable with CloseHandle
+    class kgenericobj : public ht::kobj {};
 
     typedef std::uint32_t BOOL;
 
-    class STARTUPINFOA {};
-    class EXCEPTION_POINTERS {};
-    class OVERLAPPED {};
-    class EXCEPTION_RECORD {};
-    class CPINFO {};
+    struct [[gnu::packed]] STARTUPINFOA {
+        std::uint32_t cb;
+        mem::tptrpod<char> lpReserved;
+        mem::tptrpod<char> lpDesktop;
+        mem::tptrpod<char> lpTitle;
+        std::uint32_t dwX;
+        std::uint32_t dwY;
+        std::uint32_t dwXSize;
+        std::uint32_t dwYSize;
+        std::uint32_t dwXCountChars;
+        std::uint32_t dwYCountChars;
+        std::uint32_t dwFillAttribute;
+        std::uint32_t dwFlags;
+        std::uint16_t wShowWindow;
+        std::uint16_t cbReserved2;
+        mem::tptrpod<std::uint8_t> lpReserved2;
+        ht::handle_tvalue hStdInput;
+        ht::handle_tvalue hStdOutput;
+        ht::handle_tvalue hStdError;
+    };
+    static_assert(sizeof(STARTUPINFOA) == 17 * 4, "Unexpected STARTUPINFOA size");
+
+    struct EXCEPTION_POINTERS {};
+    struct OVERLAPPED {};
+    struct EXCEPTION_RECORD {};
+    struct [[gnu::packed]] CPINFO {
+        std::uint32_t MaxCharSize;
+        char DefaultChar[2];
+        char LeadByte[12];
+        char padding[2];
+    };
+    static_assert(sizeof(CPINFO) == 20, "Unexpected CPINFO size");
 }

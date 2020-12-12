@@ -56,7 +56,9 @@ namespace uwin::mem::mgr {
 
         explicit target_mem_mgr(std::shared_ptr<base_mem_mapper> mapper);
 
-        tmem_region reserve_dynamic(taddr::tvalue size);
+        tmem_region reserve_dynamic_aligned(taddr::tvalue size, taddr::tvalue alignment);
+
+        inline tmem_region reserve_dynamic(taddr::tvalue size) { return reserve_dynamic_aligned(size, 1); }
 
         tmem_region reserve_fixed(tmem_region region);
 

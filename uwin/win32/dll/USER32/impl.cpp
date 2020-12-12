@@ -4,6 +4,7 @@
 
 
 #include "impl.h"
+#include "log/log.h"
 
 namespace uwin::win32::dll {
 
@@ -13,6 +14,7 @@ namespace uwin::win32::dll {
         auto text = str(lpText);
         auto caption = str(lpCaption);
 
+        log::info("MsgBox: {} / {}", text, caption);
 
         return 0;
     }

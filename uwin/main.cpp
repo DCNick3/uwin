@@ -1,4 +1,5 @@
 #include <fmt/core.h>
+#include <xcute/except.h>
 
 #include "mem/mgr/target_mem_mgr.h"
 #include "util/except.h"
@@ -30,6 +31,11 @@ int main(int argc, char** argv) {
     process_ctx._ldr = std::make_unique<ctx::ldr>(*process_ctx._dll);
     process_ctx._handlelike_allocator = std::make_unique<ht::handlelike_allocator>();
     process_ctx._handle_table = std::make_unique<ht::handletable>(*process_ctx._handlelike_allocator);
+    process_ctx._process_heap = ht::handle_holder(*process_ctx._handle_table,
+            process_ctx._handle_table->emplace<heap::heap>(*process_ctx._mem_mgr, 0, 0));
+    process_ctx._command_line = process_ctx.alloc_str("C:\\EXECUTABLE.EXE");
+    process_ctx._current_thread = std::make_unique<ctx::thread>();
+    process_ctx._environment = std::vector<std::uint8_t>({0, 0});
 
     assert(argc >= 2);
     const char *exe_path = argv[1];
@@ -52,16 +58,24 @@ int main(int argc, char** argv) {
 
     mgr.commit(stack_region, mem::mgr::tprot::rw);
 
-    mgr.deref((stack_region.end() - 20).as<std::uint32_t>()) = 0x81337227;
-
-    state.gpr.rsp.dword = (stack_region.end() - 20).value();
-
     auto teb_region = mgr.reserve_dynamic(0x1000);
     mgr.commit(teb_region, mem::mgr::tprot::rw);
 
+
     state.addr.fs_base.dword = teb_region.begin().value();
 
-    uwin_xcute_remill_dispatch(state, module.entrypoint().value(), (uwin::xcute::remill::Memory *) base_addr);
+    // those are set as per https://stackoverflow.com/questions/6028849/windows-initial-execution-context/6029691#6029691
+    state.gpr.rax.dword = module.entrypoint().value();
+    state.gpr.rbx.dword = teb_region.begin().value();
+
+    state.gpr.rsp.dword = stack_region.end().value();
+    state.gpr.rip.dword = module.entrypoint().value();
+
+    try {
+        xcute::remill::enter_target_code(mgr, state);
+    } catch (xcute::process_exit& e) {
+        log::info("Target process terminated with exit code {}", e._exit_code);
+    }
 
     /*} catch (const std::exception &exc) {
         fmt::print("{} caught:\n    {}", util::get_nice_current_exception_type_name(), exc.what());

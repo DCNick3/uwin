@@ -26,7 +26,7 @@ namespace uwin::mem::mgr {
         return end();
     }
 
-    pages_regions_container::iterator pages_regions_container::alloc(taddr::tvalue size) {
+    pages_regions_container::iterator pages_regions_container::alloc(taddr::tvalue size, taddr::tvalue alignment) {
         assert(util::is_aligned(size, consts::page_size));
         // Here we just do a dumb O(n) first fit search
 
@@ -34,14 +34,15 @@ namespace uwin::mem::mgr {
                       "initial_reserved_space is not aligned to allocation_granularity");
 
         auto addr = taddr(consts::initial_reserved_space);
+        addr = addr.align_up(std::max(consts::allocation_granularity, alignment));
         for (auto const &region : _regions) {
             auto diff = region.begin() - addr;
-            assert(diff >= 0);
-            if (diff >= size) {
-                // we found a hole =)
-                return alloc_at(addr, size);
-            } else
-                addr = util::align_up(region.end(), consts::allocation_granularity);
+            if (diff >= 0) { // might happen when some alignment is enforced
+                if (diff >= size)
+                    // we found a hole =)
+                    return alloc_at(addr, size);
+            }
+            addr = util::align_up(region.end(), std::max(consts::allocation_granularity, alignment));
         }
         // we didn't find a hole, but reached the end of the list.
         // it means that there are no regions past the addr
