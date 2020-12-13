@@ -12,7 +12,7 @@ def cstr(s):
 
 % for dll_name in dll_names:
 #include "win32/dll/${dll_name}_iface.h"
-#include "win32/dll/${dll_name}/impl.h"
+//#include "win32/dll/${dll_name}/impl.h"
 % endfor
 #include "ctx/process.h"
 
@@ -20,18 +20,22 @@ def cstr(s):
 namespace uwin::ctx {
     class dll {
         % for dll_name in dll_names:
-            std::unique_ptr<win32::dll::${dll_name}_iface> _dll_${dll_name};
+        win32::dll::${dll_name}_iface& _dll_${dll_name};
         % endfor
     public:
-        explicit inline dll(ctx::process &process_ctx)
+        explicit inline dll(
+        % for i, dll_name in enumerate(dll_names):
+            ${',' if i != 0 else ''}win32::dll::${dll_name}_iface& dll_${dll_name}
+        % endfor
+        )
             :
         % for i, dll_name in enumerate(dll_names):
-            ${',' if i != 0 else ''}_dll_${dll_name}(new win32::dll::${dll_name}_impl(process_ctx))
+            ${',' if i != 0 else ''}_dll_${dll_name}(dll_${dll_name})
         % endfor
         {}
 
         % for dll_name in dll_names:
-        inline win32::dll::${dll_name}_iface& get_${dll_name}() { return *_dll_${dll_name}; }
+        inline win32::dll::${dll_name}_iface& get_${dll_name}() { return _dll_${dll_name}; }
         % endfor
 
         inline win32::dll::base* try_resolve(const std::string& name) {

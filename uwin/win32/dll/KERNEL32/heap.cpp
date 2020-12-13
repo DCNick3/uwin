@@ -37,13 +37,13 @@ namespace uwin::win32::dll {
         if (generate_exceptions)
             throw util::not_implemented_error("HEAP_GENERATE_EXCEPTIONS");
 
-        return _process_ctx.ht_emplace<heap::heap>(*_process_ctx._mem_mgr,
-                                                   util::align_up(dwInitialSize, mem::mgr::consts::page_size),
-                                                   util::align_up(dwMaximumSize, mem::mgr::consts::page_size)).as_kobj();
+        return _handletable.emplace<heap::heap>(_mem_mgr,
+                                                util::align_up(dwInitialSize, mem::mgr::consts::page_size),
+                                                util::align_up(dwMaximumSize, mem::mgr::consts::page_size)).as_kobj();
     }
 
     bool KERNEL32_impl::HeapDestroy(uwin::ht::handle<uwin::ht::kobj> hHeap) {
-        _process_ctx.ht_close(hHeap);
+        _handletable.close(hHeap);
         return true;
     }
 
@@ -60,13 +60,12 @@ namespace uwin::win32::dll {
         if (generate_exceptions)
             throw util::not_implemented_error("HEAP_GENERATE_EXCEPTIONS");
 
-        auto& heap = *_process_ctx.ht_get(hHeap.cast<heap::heap>());
+        auto heap = _handletable.get(hHeap.cast<heap::heap>());
 
-        auto res = heap.alloc(dwBytes);
+        auto res = heap->alloc(dwBytes);
 
-        if (zero_memory) {
-            memset(this->_process_ctx._mem_mgr->ptr(res), 0, heap.size(res));
-        }
+        if (zero_memory)
+            memset(_mem_mgr.ptr(res), 0, heap->size(res));
 
         return res.as<void>();
     }

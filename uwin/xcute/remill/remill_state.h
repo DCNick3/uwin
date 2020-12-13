@@ -20,6 +20,7 @@
 namespace uwin {
     namespace ctx {
         class process;
+        class thread;
     }
 
     namespace xcute::remill {
@@ -40,11 +41,8 @@ namespace uwin {
 
         struct StateEx : public State {
             ctx::process *process_ctx;
+            ctx::thread *thread_ctx;
             std::stack<longjmp_frame> frame_stack;
         };
-
-        inline ctx::process &get_process_ctx(State& state) {
-            return *static_cast<StateEx&>(state).process_ctx;
-        }
     }
 }

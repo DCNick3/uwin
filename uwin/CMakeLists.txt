@@ -69,7 +69,7 @@ add_subdirectory(heap)
 # TODO: this should definitely be integrated into the build system
 target_sources(uwin PUBLIC /home/dcnick3/trash/homm3-switch/code/lifting/remill/cmake-build-debug-clang/bin/uwin-lift/lifted.o)
 
-target_link_libraries(uwin-base INTERFACE fmt kaitai-rt)
+target_link_libraries(uwin-base INTERFACE fmt kaitai-rt Boost.DI)
 
 add_executable(uwin-main main.cpp)
 target_link_libraries(uwin-main uwin)

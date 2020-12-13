@@ -9,7 +9,7 @@
 namespace uwin::win32::dll {
     class TEST_impl : public TEST_iface {
     public:
-        explicit TEST_impl(ctx::process &process_ctx) : TEST_iface(process_ctx) {}
+        explicit TEST_impl(mem::mgr::target_mem_mgr &target_mem_mgr) : TEST_iface(target_mem_mgr) {}
 
         int32_t
         MessageBoxA(uwin::ht::handle<uwin::win32::types::wnd> hWnd, uwin::mem::tcptr<char> lpText,

@@ -14,6 +14,9 @@ namespace uwin::log {
     void log(level level, std::string_view tag, std::string const& message, source_location location) {
         std::string_view level_text;
         switch (level) {
+            case level::trace:
+                level_text = "TRC";
+                break;
             case level::debug:
                 level_text = "DBG";
                 break;

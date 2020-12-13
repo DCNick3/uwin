@@ -15,7 +15,7 @@ namespace uwin::ht {
     class handlelike_allocator : util::nocopy, util::nomove {
         static_assert(std::is_same_v<handle_tvalue,
                 std::remove_cv_t<decltype(mem::mgr::consts::address_space_reserved_start)>>,
-                "a");
+                "decltype(mem::mgr::consts::address_space_reserved_start) should be handle_tvalue");
 
         static const handle_tvalue start = mem::mgr::consts::address_space_reserved_start;
 

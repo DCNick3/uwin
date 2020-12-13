@@ -13,6 +13,7 @@ namespace uwin::log {
     using source_location = std::experimental::source_location;
 
     enum class level {
+        trace,
         debug,
         info,
         warning,
@@ -21,6 +22,15 @@ namespace uwin::log {
     };
 
     void log(level level, std::string_view tag, std::string const& message, source_location location = source_location::current());
+
+    template <typename... Ts>
+    struct trace {
+        inline explicit trace(std::string_view fmt, Ts... args, source_location location = source_location::current()) {
+            log(level::trace, "", fmt::format(fmt, args...), location);
+        }
+    };
+    template <typename... Ts>
+    trace(std::string_view, Ts&&...) -> trace<Ts...>;
 
     template <typename... Ts>
     struct debug {

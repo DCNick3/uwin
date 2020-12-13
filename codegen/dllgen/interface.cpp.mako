@@ -14,6 +14,7 @@ class_name = f"{dll_name}_iface"
 #include "win32/dll/${dll_name}_iface.h"
 #include "win32/dll/stub_exception.h"
 #include "ctx/dll.h"
+#include "log/log.h"
 #include <utility>
 
 namespace uwin::win32::dll {
@@ -22,15 +23,17 @@ namespace uwin::win32::dll {
         throw stub_exception("${dll_name}::${fun.name}");
     }
 
-    void ${class_name}::${fun.name}_raw_call(uwin::xcute::remill::State& st) {
+    void ${class_name}::${fun.name}_raw_call(uwin::xcute::remill::StateEx& st) {
         ## here we do conversion of parameters
+        _current_thread = st.thread_ctx;
+        log::trace("${dll_name}!${fun.name}(...)");
         ${codeutils.gen_remill_entry(fun)}
     }
 
-    uwin::xcute::remill::Memory *${class_name}::${fun.name}_remill_entry(uwin::xcute::remill::State& st,
+    /* static */ uwin::xcute::remill::Memory *${class_name}::${fun.name}_remill_entry(uwin::xcute::remill::StateEx& st,
         std::uint32_t pc, uwin::xcute::remill::Memory* memory) {
 
-        xcute::remill::get_process_ctx(st)._dll->get_${dll_name}().${fun.name}_raw_call(st);
+        st.process_ctx->_dll.get_${dll_name}().${fun.name}_raw_call(st);
         return memory;
     }
 % endfor

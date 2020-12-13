@@ -20,7 +20,7 @@ namespace uwin::win32::dll {
     }
 
     void KERNEL32_impl::GetStartupInfoA(uwin::mem::tptr<uwin::win32::types::STARTUPINFOA> lpStartupInfo) {
-        auto res = _process_ctx._mem_mgr->ptr(lpStartupInfo);
+        auto res = _mem_mgr.ptr(lpStartupInfo);
 
         memset(res, 0, sizeof(*res));
         res->cb = sizeof(*res);
@@ -35,21 +35,21 @@ namespace uwin::win32::dll {
     }
 
     mem::tptr<char> KERNEL32_impl::GetCommandLineA() {
-        return _process_ctx._command_line;
+        return _env._command_line;
     }
 
     mem::tptr<wchar_t> KERNEL32_impl::GetEnvironmentStringsW() {
         // We emulate Win95, so no unicode
-        _process_ctx.set_last_error(error_code::ERROR_CALL_NOT_IMPLEMENTED);
+        _current_thread->set_last_error(error_code::ERROR_CALL_NOT_IMPLEMENTED);
         return mem::tptr<wchar_t>(0);
     }
 
     mem::tptr<char> KERNEL32_impl::GetEnvironmentStrings() {
-        return _process_ctx.alloc_bytes(_process_ctx._environment).as<char>();
+        return _process_heap->alloc_bytes(_env._environment).as<char>();
     }
 
     bool KERNEL32_impl::FreeEnvironmentStringsA(uwin::mem::tptr<char> arg0) {
-        _process_ctx._process_heap->free(arg0.as_taddr());
+        _process_heap->free(arg0.as_taddr());
         return true;
     }
 
@@ -63,7 +63,7 @@ namespace uwin::win32::dll {
     bool KERNEL32_impl::GetCPInfo(std::uint32_t CodePage, uwin::mem::tptr<uwin::win32::types::CPINFO> lpCPInfo) {
         if (CodePage != 1252)
             throw util::not_implemented_error("Any codepage other than 1251");
-        auto hptr = _process_ctx._mem_mgr->ptr(lpCPInfo);
+        auto hptr = _mem_mgr.ptr(lpCPInfo);
         hptr->MaxCharSize = 1;
         hptr->DefaultChar[0] = '?';
         hptr->DefaultChar[1] = '\0';
@@ -75,7 +75,7 @@ namespace uwin::win32::dll {
     KERNEL32_impl::GetStringTypeW(std::uint32_t dwInfoType, uwin::mem::tcptr<wchar_t> lpSrcStr, std::int32_t cchSrc,
                                   uwin::mem::tptr<uint16_t> lpCharType) {
         // We emulate Win95, so no unicode
-        _process_ctx.set_last_error(error_code::ERROR_CALL_NOT_IMPLEMENTED);
+        _current_thread->set_last_error(error_code::ERROR_CALL_NOT_IMPLEMENTED);
         return false;
     }
 
@@ -152,9 +152,9 @@ namespace uwin::win32::dll {
             throw util::not_implemented_error("dwInfoType != 1");
 
         for (std::uint32_t i = 0; i < cchSrc; i++)
-            _process_ctx._mem_mgr->ptr(lpCharType)[i] =
+            _mem_mgr.ptr(lpCharType)[i] =
                     ctype_1[
-                            _process_ctx._mem_mgr->ptr(lpSrcStr)[i]
+                            _mem_mgr.ptr(lpSrcStr)[i]
                             ];
 
         return true;
@@ -164,7 +164,7 @@ namespace uwin::win32::dll {
     KERNEL32_impl::LCMapStringW(std::uint32_t Locale, std::uint32_t dwMapFlags, uwin::mem::tcptr<wchar_t> lpSrcStr,
                                 std::int32_t cchSrc, uwin::mem::tptr<wchar_t> lpDestStr, std::int32_t cchDest) {
         // We emulate Win95, so no unicode
-        _process_ctx.set_last_error(error_code::ERROR_CALL_NOT_IMPLEMENTED);
+        _current_thread->set_last_error(error_code::ERROR_CALL_NOT_IMPLEMENTED);
         return false;
     }
 
@@ -178,18 +178,18 @@ namespace uwin::win32::dll {
         auto mapping = static_cast<LCMAP>(dwMapFlags);
 
         if (cchDest != 0 && cchDest < cchSrc) {
-            _process_ctx.set_last_error(error_code::ERROR_INSUFFICIENT_BUFFER);
+            _current_thread->set_last_error(error_code::ERROR_INSUFFICIENT_BUFFER);
             return 0;
         }
 
-        _process_ctx.set_last_error(win32::error_code::ERROR_SUCCESS);
+        _current_thread->set_last_error(win32::error_code::ERROR_SUCCESS);
 
         if (mapping == LCMAP::LOWERCASE) {
             if (cchDest != 0) {
                 for (std::uint32_t i = 0; i < cchSrc; i++)
-                    _process_ctx._mem_mgr->ptr(lpDestStr)[i] =
+                    _mem_mgr.ptr(lpDestStr)[i] =
                             map_lo[
-                                    _process_ctx._mem_mgr->ptr(lpSrcStr)[i]
+                                    _mem_mgr.ptr(lpSrcStr)[i]
                             ];
             }
 
@@ -198,9 +198,9 @@ namespace uwin::win32::dll {
 
             if (cchDest != 0) {
                 for (std::uint32_t i = 0; i < cchSrc; i++)
-                    _process_ctx._mem_mgr->ptr(lpDestStr)[i] =
+                    _mem_mgr.ptr(lpDestStr)[i] =
                             map_up[
-                                    _process_ctx._mem_mgr->ptr(lpSrcStr)[i]
+                                    _mem_mgr.ptr(lpSrcStr)[i]
                             ];
             }
 
@@ -218,7 +218,7 @@ namespace uwin::win32::dll {
         if (hModule != 0)
             throw util::not_implemented_error("hModule != 0");
         std::string self_module_file_name = "C:\\MAIN.EXE"; // Very dumb way to implement this
-        auto output_buffer = _process_ctx._mem_mgr->ptr(lpFilename);
+        auto output_buffer = _mem_mgr.ptr(lpFilename);
 
         auto last = std::min(std::uint32_t(self_module_file_name.size()), nSize - 1);
         for (std::uint32_t i = 0; i < last; i++) {
@@ -226,9 +226,9 @@ namespace uwin::win32::dll {
         }
         output_buffer[last] = '\0';
         if (nSize - 1 < self_module_file_name.size()) {
-            _process_ctx.set_last_error(win32::error_code::ERROR_INSUFFICIENT_BUFFER);
+            _current_thread->set_last_error(win32::error_code::ERROR_INSUFFICIENT_BUFFER);
         } else {
-            _process_ctx.set_last_error(win32::error_code::ERROR_SUCCESS);
+            _current_thread->set_last_error(win32::error_code::ERROR_SUCCESS);
         }
         return last - 1;
     }

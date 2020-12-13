@@ -42,6 +42,34 @@ namespace uwin::heap {
 
         void free(mem::taddr ptr);
 
+
+        [[nodiscard]] inline mem::tptr<char> alloc_str(std::string const& s) {
+            auto tptr = alloc(s.size() + 1);
+            auto hptr = _mem_mgr.ptr(tptr);
+            memcpy(hptr, s.c_str(), s.size() + 1);
+            return tptr.as<char>();
+        }
+
+        [[nodiscard]] inline mem::tptr<std::uint8_t> alloc_bytes(std::initializer_list<std::uint8_t> l) {
+            auto tptr = alloc(l.size());
+            auto hptr = _mem_mgr.ptr(tptr);
+            for (auto v : l) {
+                *hptr = v;
+                hptr++;
+            }
+            return tptr;
+        }
+
+        [[nodiscard]] inline mem::tptr<std::uint8_t> alloc_bytes(std::vector<std::uint8_t> const& l) {
+            auto tptr = alloc(l.size());
+            auto hptr = _mem_mgr.ptr(tptr);
+            for (auto v : l) {
+                *hptr = v;
+                hptr++;
+            }
+            return tptr;
+        }
+
         ~heap() override;
     };
 }

@@ -72,16 +72,16 @@ namespace uwin::win32::dll {
 
         if (allocation_type % ALLOCATION_TYPE::RESERVE) {
             if (region.begin() == 0) {
-                region = _process_ctx._mem_mgr->reserve_dynamic(region.size());
+                region = _mem_mgr.reserve_dynamic(region.size());
             } else {
-                region = _process_ctx._mem_mgr->reserve_fixed(region);
+                region = _mem_mgr.reserve_fixed(region);
             }
         }
 
         if (allocation_type % ALLOCATION_TYPE::COMMIT) {
             if (region.begin() == 0)
                 throw win32::error(win32::error_code::ERROR_INVALID_ADDRESS);
-            _process_ctx._mem_mgr->commit(region, convert_protection(flProtect));
+            _mem_mgr.commit(region, convert_protection(flProtect));
         }
 
         return region.begin().as<void>();

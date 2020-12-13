@@ -7,3 +7,6 @@
 [submodule "ext-deps/GreatCMakeCookOff"]
 	path = ext-deps/GreatCMakeCookOff
 	url = https://github.com/DCNick3/GreatCMakeCookOff.git
+[submodule "ext-deps/di"]
+	path = ext-deps/di
+	url = https://github.com/boost-ext/di.git

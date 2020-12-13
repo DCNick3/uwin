@@ -5,11 +5,21 @@
 #pragma once
 
 #include "win32/dll/KERNEL32_iface.h"
+#include "ctx/process_heap.h"
 
 namespace uwin::win32::dll {
     class KERNEL32_impl : public KERNEL32_iface {
+    private:
+        ht::handletable& _handletable;
+        ctx::env& _env;
+        ctx::process_heap& _process_heap;
+
     public:
-        explicit KERNEL32_impl(ctx::process &process_ctx) : KERNEL32_iface(process_ctx) {}
+        explicit KERNEL32_impl(mem::mgr::target_mem_mgr &target_mem_mgr, ht::handletable &handletable, ctx::env &env,
+                               ctx::process_heap &process_heap)
+            : KERNEL32_iface(target_mem_mgr),
+              _handletable(handletable),
+              _env(env), _process_heap(process_heap) {}
 
         uint32_t GetVersion() override;
 

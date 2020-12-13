@@ -1,26 +1,28 @@
 #pragma once
 
 #include "ctx/process.h"
+#include "ctx/thread.h"
 #include "xcute/remill/remill_rt.h"
 #include "win32/ldr/linkable.h"
 
 namespace uwin::win32::dll {
     class base : public ldr::linkable {
     public:
-        explicit base(ctx::process &process_ctx) : _process_ctx(process_ctx) {}
+        explicit base(mem::mgr::target_mem_mgr &target_mem_mgr) : _mem_mgr(target_mem_mgr) {}
 
     protected:
-        uwin::ctx::process &_process_ctx;
+        mem::mgr::target_mem_mgr &_mem_mgr;
+        ctx::thread* _current_thread{};
 
         inline std::uint32_t get_esp_u32(xcute::remill::State& state, mem::taddr::tsvalue esp_offset) const {
-            return _process_ctx.deref(
+            return _mem_mgr.deref(
                     mem::tptr<std::uint32_t>(
                             state.gpr.rsp.dword + esp_offset
                     ));
         }
 
         inline std::int32_t get_esp_s32(xcute::remill::State& state, mem::taddr::tsvalue esp_offset) const {
-            return _process_ctx.deref(
+            return _mem_mgr.deref(
                     mem::tptr<std::int32_t>(
                             state.gpr.rsp.dword + esp_offset
                     ));
@@ -49,7 +51,7 @@ namespace uwin::win32::dll {
         }
 
         [[nodiscard]] inline std::string_view str(mem::tcptr<char> tstr) const {
-            return _process_ctx._mem_mgr->str(tstr);
+            return _mem_mgr.str(tstr);
         }
 
         virtual ~base() = default;
