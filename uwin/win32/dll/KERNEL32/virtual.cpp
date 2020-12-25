@@ -60,31 +60,33 @@ namespace uwin::win32::dll {
     mem::tptr<void>
     KERNEL32_impl::VirtualAlloc(uwin::mem::tptr<void> lpAddress, std::uint32_t dwSize, std::uint32_t flAllocationType,
                                 std::uint32_t flProtect) {
-        auto allocation_type = static_cast<ALLOCATION_TYPE>(flAllocationType);
+        return handle_error({0}, [&]() {
+            auto allocation_type = static_cast<ALLOCATION_TYPE>(flAllocationType);
 
-        if (allocation_type % ALLOCATION_TYPE::TOP_DOWN ||
-           allocation_type % ALLOCATION_TYPE::PHYSICAL ||
-           allocation_type % ALLOCATION_TYPE::WRITE_WATCH ||
-           allocation_type % ALLOCATION_TYPE::RESET)
-            throw util::not_implemented_error("Specified flAllocationType");
+            if (allocation_type % ALLOCATION_TYPE::TOP_DOWN ||
+                allocation_type % ALLOCATION_TYPE::PHYSICAL ||
+                allocation_type % ALLOCATION_TYPE::WRITE_WATCH ||
+                allocation_type % ALLOCATION_TYPE::RESET)
+                throw util::not_implemented_error("Specified flAllocationType");
 
-        auto region = mem::tmem_region(lpAddress.as_taddr(), dwSize);
+            auto region = mem::tmem_region(lpAddress.as_taddr(), dwSize);
 
-        if (allocation_type % ALLOCATION_TYPE::RESERVE) {
-            if (region.begin() == 0) {
-                region = _mem_mgr.reserve_dynamic(region.size());
-            } else {
-                region = _mem_mgr.reserve_fixed(region);
+            if (allocation_type % ALLOCATION_TYPE::RESERVE) {
+                if (region.begin() == 0) {
+                    region = _mem_mgr.reserve_dynamic(region.size());
+                } else {
+                    region = _mem_mgr.reserve_fixed(region);
+                }
             }
-        }
 
-        if (allocation_type % ALLOCATION_TYPE::COMMIT) {
-            if (region.begin() == 0)
-                throw win32::error(win32::error_code::ERROR_INVALID_ADDRESS);
-            _mem_mgr.commit(region, convert_protection(flProtect));
-        }
+            if (allocation_type % ALLOCATION_TYPE::COMMIT) {
+                if (region.begin() == 0)
+                    throw win32::error(win32::error_code::ERROR_INVALID_ADDRESS);
+                _mem_mgr.commit(region, convert_protection(flProtect));
+            }
 
-        return region.begin().as<void>();
+            return region.begin().as<void>();
+        });
     }
 
     bool KERNEL32_impl::VirtualFree(uwin::mem::tptr<void> lpAddress, std::uint32_t dwSize, std::uint32_t dwFreeType) {

@@ -25,49 +25,55 @@ namespace uwin {
 }
 
 namespace uwin::win32::dll {
-    ht::handle<uwin::ht::kobj>
+    ht::handle<ht::kobj>
     KERNEL32_impl::HeapCreate(std::uint32_t flOptions, std::uint32_t dwInitialSize, std::uint32_t dwMaximumSize) {
-        auto options = static_cast<OPTIONS>(flOptions);
+        return handle_error(ht::handle<ht::kobj>(0), [&]() {
+            auto options = static_cast<OPTIONS>(flOptions);
 
-        // TODO: check invalid flags?
+            // TODO: check invalid flags?
 
-        auto generate_exceptions = options % OPTIONS::HEAP_GENERATE_EXCEPTIONS;
-        auto no_serialize = options % OPTIONS::HEAP_NO_SERIALIZE;
+            auto generate_exceptions = options % OPTIONS::HEAP_GENERATE_EXCEPTIONS;
+            auto no_serialize = options % OPTIONS::HEAP_NO_SERIALIZE;
 
-        if (generate_exceptions)
-            throw util::not_implemented_error("HEAP_GENERATE_EXCEPTIONS");
+            if (generate_exceptions)
+                throw util::not_implemented_error("HEAP_GENERATE_EXCEPTIONS");
 
-        return _handletable.emplace<heap::heap>(_mem_mgr,
-                                                util::align_up(dwInitialSize, mem::mgr::consts::page_size),
-                                                util::align_up(dwMaximumSize, mem::mgr::consts::page_size)).as_kobj();
+            return _handletable.emplace<heap::heap>(_mem_mgr,
+                                                    util::align_up(dwInitialSize, mem::mgr::consts::page_size),
+                                                    util::align_up(dwMaximumSize, mem::mgr::consts::page_size)).as_kobj();
+        });
     }
 
     bool KERNEL32_impl::HeapDestroy(uwin::ht::handle<uwin::ht::kobj> hHeap) {
-        _handletable.close(hHeap);
-        return true;
+        return handle_error(false, [&]() {
+            _handletable.close(hHeap);
+            return true;
+        });
     }
 
     mem::tptr<void>
     KERNEL32_impl::HeapAlloc(uwin::ht::handle<uwin::ht::kobj> hHeap, std::uint32_t dwFlags, std::uint32_t dwBytes) {
-        auto options = static_cast<OPTIONS>(dwFlags);
+        return handle_error({0}, [&]() {
+            auto options = static_cast<OPTIONS>(dwFlags);
 
-        // TODO: check invalid flags?
+            // TODO: check invalid flags?
 
-        auto generate_exceptions = options % OPTIONS::HEAP_GENERATE_EXCEPTIONS;
-        auto no_serialize = options % OPTIONS::HEAP_NO_SERIALIZE;
-        auto zero_memory = options % OPTIONS::HEAP_ZERO_MEMORY;
+            auto generate_exceptions = options % OPTIONS::HEAP_GENERATE_EXCEPTIONS;
+            auto no_serialize = options % OPTIONS::HEAP_NO_SERIALIZE;
+            auto zero_memory = options % OPTIONS::HEAP_ZERO_MEMORY;
 
-        if (generate_exceptions)
-            throw util::not_implemented_error("HEAP_GENERATE_EXCEPTIONS");
+            if (generate_exceptions)
+                throw util::not_implemented_error("HEAP_GENERATE_EXCEPTIONS");
 
-        auto heap = _handletable.get(hHeap.cast<heap::heap>());
+            auto heap = _handletable.get(hHeap.cast<heap::heap>());
 
-        auto res = heap->alloc(dwBytes);
+            auto res = heap->alloc(dwBytes);
 
-        if (zero_memory)
-            memset(_mem_mgr.ptr(res), 0, heap->size(res));
+            if (zero_memory)
+                memset(_mem_mgr.ptr(res), 0, heap->size(res));
 
-        return res.as<void>();
+            return res.as<void>();
+        });
     }
 
     mem::tptr<void> KERNEL32_impl::HeapReAlloc(uwin::ht::handle<uwin::ht::kobj> hHeap, std::uint32_t dwFlags,

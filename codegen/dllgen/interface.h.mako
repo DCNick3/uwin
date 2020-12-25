@@ -16,7 +16,8 @@
 namespace uwin::win32::dll {
     class ${dll_name}_iface : public base {
     public:
-        explicit inline ${dll_name}_iface(mem::mgr::target_mem_mgr &target_mem_mgr) : base(target_mem_mgr) {}
+        explicit inline ${dll_name}_iface(mem::mgr::target_mem_mgr &target_mem_mgr, svc::locale &locale)
+            : base(target_mem_mgr, locale) {}
     % for i, fun in funs:
         virtual ${repr(fun)};
     % endfor

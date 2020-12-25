@@ -15,9 +15,9 @@ namespace uwin::win32::dll {
         ctx::process_heap& _process_heap;
 
     public:
-        explicit KERNEL32_impl(mem::mgr::target_mem_mgr &target_mem_mgr, ht::handletable &handletable, ctx::env &env,
-                               ctx::process_heap &process_heap)
-            : KERNEL32_iface(target_mem_mgr),
+        explicit inline KERNEL32_impl(mem::mgr::target_mem_mgr &target_mem_mgr, ht::handletable &handletable, ctx::env &env,
+                               ctx::process_heap &process_heap, svc::locale &locale)
+            : KERNEL32_iface(target_mem_mgr, locale),
               _handletable(handletable),
               _env(env), _process_heap(process_heap) {}
 

@@ -17,3 +17,4 @@ uwin_sources(NAME win32
 
 add_subdirectory(dll)
 add_subdirectory(ldr)
+add_subdirectory(svc)

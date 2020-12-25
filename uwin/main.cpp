@@ -12,6 +12,8 @@
 #include "ctx/ldr.h"
 #include "ctx/thread.h"
 #include "win32/ldr/module_loader.h"
+#include "win32/svc/basic_mbox.h"
+#include "win32/svc/dummy_locale.h"
 #include "log/log.h"
 
 #include "win32/dll/KERNEL32/impl.h"
@@ -33,7 +35,9 @@ int main(int argc, char** argv) {
                 di::bind<mem::base_mem_mapper>.to(mapper),
                 di::bind<ctx::env_param>.to(env_param),
                 di::bind<win32::dll::KERNEL32_iface>.in(di::singleton).to<win32::dll::KERNEL32_impl>(),
-                di::bind<win32::dll::USER32_iface>.in(di::singleton).to<win32::dll::USER32_impl>()
+                di::bind<win32::dll::USER32_iface>.in(di::singleton).to<win32::dll::USER32_impl>(),
+                di::bind<win32::svc::mbox>.in(di::singleton).to<win32::svc::basic_mbox>(),
+                di::bind<win32::svc::locale>.in(di::singleton).to<win32::svc::dummy_locale>()
                 );
 
         auto& thread_ctx = inj.create<ctx::thread&>();
