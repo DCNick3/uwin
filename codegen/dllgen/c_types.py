@@ -59,6 +59,7 @@ add('unsigned short', 'std::uint16_t', 'u16')
 add('signed short', 'std::int16_t', 's16')
 add('_Bool', 'bool', 'u32')
 add('void', 'void', 'void')
+add('HRESULT', 'uwin::win32::types::HRESULT', 's32')
 
 alias('int', 'signed int')
 alias('signed', 'signed int')
@@ -76,13 +77,19 @@ alias('WORD', 'USHORT')
 alias('DWORD', 'UINT')
 
 hndl('HWND', 'uwin::win32::types::wnd')
+hndl('HCURSOR', 'uwin::win32::types::cursor')
+hndl('HICON', 'uwin::win32::types::icon')
+hndl('HMENU', 'uwin::win32::types::menu')
 hndl('HANDLE', 'uwin::ht::kobj')
 
+# https://devblogs.microsoft.com/oldnewthing/20040614-00/?p=38903
 add('HMODULE', 'uwin::win32::types::hmodule', 'u32')
+alias('HINSTANCE', 'HMODULE')
 
 ptr('char', 'char')
 ptr('wchar_t', 'wchar_t')
 ptr('void', 'void')
+ptr('void *', 'uwin::mem::tptrpod<void>')
 ptr('WORD', 'uint16_t')
 ptr('DWORD', 'uint32_t')
 ptr('LONG', 'int32_t')
@@ -105,6 +112,10 @@ alias('LPBOOL', '_Bool *')
 alias('LCID', 'DWORD')
 alias('LPWORD', 'WORD *')
 alias('PHANDLER_ROUTINE', 'void *') # TODO: implement function pointers
+alias('ATOM', 'WORD') # TODO: implement atoms in more general way
+alias('LRESULT', 'LONG')
+alias('WPARAM', 'DWORD')
+alias('LPARAM', 'LONG')
 
 winstruct('FILETIME', 'uwin::win32::types::FILETIME')
 winstruct('STARTUPINFOA', 'uwin::win32::types::STARTUPINFOA')
@@ -112,6 +123,9 @@ winstruct('_EXCEPTION_POINTERS', 'uwin::win32::types::EXCEPTION_POINTERS')
 winstruct('OVERLAPPED', 'uwin::win32::types::OVERLAPPED')
 winstruct('EXCEPTION_RECORD', 'uwin::win32::types::EXCEPTION_RECORD')
 winstruct('CPINFO', 'uwin::win32::types::CPINFO')
+winstruct('WNDCLASSA', 'uwin::win32::types::WNDCLASSA')
+winstruct('MSG', 'uwin::win32::types::MSG')
+winstruct('GUID', 'uwin::win32::types::GUID')
 
 """
 ========================================================================================================================

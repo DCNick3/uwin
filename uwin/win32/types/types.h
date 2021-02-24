@@ -6,6 +6,9 @@
 
 #include "mem/tptr.h"
 #include "win32/types/wnd.h"
+#include "win32/types/cursor.h"
+#include "win32/types/icon.h"
+#include "win32/types/menu.h"
 
 #include <cstdint>
 
@@ -19,6 +22,7 @@ namespace uwin::win32::types {
     class kgenericobj : public ht::kobj {};
 
     typedef std::uint32_t BOOL;
+    typedef std::int32_t HRESULT;
 
     struct [[gnu::packed]] STARTUPINFOA {
         std::uint32_t cb;
@@ -52,4 +56,13 @@ namespace uwin::win32::types {
         char padding[2];
     };
     static_assert(sizeof(CPINFO) == 20, "Unexpected CPINFO size");
+
+    struct WNDCLASSA {};
+    struct MSG {};
+    struct [[gnu::packed]] GUID {
+        std::uint32_t Data1;
+        std::uint16_t Data2;
+        std::uint16_t Data3;
+        std::uint8_t Data4[8];
+    };
 }

@@ -5,6 +5,7 @@
 #include "xcute/remill/remill_rt.h"
 #include "win32/ldr/linkable.h"
 #include "win32/svc/locale.h"
+#include "win32/dll/vararg_ctx.h"
 
 namespace uwin::win32::dll {
     class base : public ldr::linkable {
@@ -47,10 +48,41 @@ namespace uwin::win32::dll {
             stdcall_set_result_u32(state, *reinterpret_cast<std::uint32_t *>(&value));
         }
 
+        static inline void stdcall_set_result_u16(xcute::remill::State&  state, std::uint16_t value) {
+            stdcall_set_result_u32(state, value);
+        }
+
         inline void stdcall_ret(xcute::remill::State& state, std::int32_t argument_number) const {
             auto new_eip = get_esp_u32(state, 0);
             state.gpr.rip.dword = new_eip;
             state.gpr.rsp.dword += 4 + 4 * argument_number;
+        }
+
+        inline vararg_ctx cdecl_get_vararg_ctx(xcute::remill::State& state, std::int32_t non_vararg_arg_count) const {
+            auto tptr = state.gpr.rsp.dword + 4 + non_vararg_arg_count * 4;
+            return vararg_ctx(_mem_mgr.ptr(mem::tcptr<std::uint32_t>(tptr)));
+        }
+
+        inline std::uint32_t get_cdecl_u32(xcute::remill::State& state, std::int32_t index) const {
+            return get_esp_u32(state, index * 4 + 4); // skip ret address
+        }
+
+        inline std::uint32_t get_cdecl_s32(xcute::remill::State&  state, std::int32_t index) const {
+            return get_esp_s32(state, index * 4 + 4); // skip ret address
+        }
+
+        static inline void cdecl_set_result_u32(xcute::remill::State&  state, std::uint32_t value) {
+            state.gpr.rax.dword = value;
+        }
+
+        static inline void cdecl_set_result_s32(xcute::remill::State& state, std::int32_t value) {
+            stdcall_set_result_u32(state, *reinterpret_cast<std::uint32_t *>(&value));
+        }
+
+        inline void cdecl_ret(xcute::remill::State& state, std::int32_t argument_number) const {
+            auto new_eip = get_esp_u32(state, 0);
+            state.gpr.rip.dword = new_eip;
+            state.gpr.rsp.dword += 4;
         }
 
         [[nodiscard]] inline std::string_view tstr(mem::tcptr<char> ptr) const {
