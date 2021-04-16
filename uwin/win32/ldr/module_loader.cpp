@@ -9,8 +9,8 @@
 #include "win32/ldr/except.h"
 #include "mem/mgr/consts.h"
 #include "ctx/dll.h"
-#include "ctx/ldr.h"
 #include "util/enumu.h"
+#include "util/str.h"
 #include "log/log.h"
 
 #include <cassert>
@@ -55,7 +55,7 @@ namespace uwin::win32::ldr {
         }
     }
 
-    module &ldr::module_loader::load_impl() {
+    target_module &ldr::module_loader::load_impl() {
         log::debug("loading {}", _module_name);
 
         auto pe = _pe_image.pe();
@@ -121,7 +121,7 @@ namespace uwin::win32::ldr {
         // TODO: implement auto conversion of tcaddr to taddr
         auto entrypoint = mem::tcaddr((_image_base + pe->optional_hdr()->std()->address_of_entry_point()).value());
 
-        return _ldr_ctx.emplace_module(_image_region, _module_name, entrypoint);
+        return _module_table.emplace_target_module(_image_region, _module_name, entrypoint);
     }
 
     template<typename T>
@@ -186,9 +186,10 @@ namespace uwin::win32::ldr {
             if (entry.name.value == 0)
                 break; // end-of-table
 
-            auto dll_name = std::string(str(entry.name));
+            // TODO: should we use the same normalization algorithm as GetModuleHandle does?
+            auto dll_name = util::ascii_to_upper(str(entry.name));
 
-            auto& linkable = _ldr_ctx.resolve(dll_name);
+            auto& module = _module_table.get_module(dll_name);
 
             log::debug("importing {}", dll_name);
 
@@ -202,7 +203,7 @@ namespace uwin::win32::ldr {
 
                 log::debug("  {}", symbol_name);
 
-                auto res = linkable.try_resolve(symbol_name);
+                auto res = module.try_resolve(symbol_name);
 
                 if (res == 0)
                     throw loader_exception(fmt::format("Could not import {} from {}.", symbol_name, dll_name));

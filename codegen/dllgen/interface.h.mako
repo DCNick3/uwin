@@ -4,7 +4,7 @@
 #include "mem/tptr.h"
 #include "win32/error.h"
 #include "win32/types/types.h"
-#include "win32/dll/base.h"
+#include "win32/dll/native_module.h"
 #include "ht/handle.h"
 #include "ht/kobj.h"
 
@@ -14,10 +14,10 @@
 #include <cstdint>
 
 namespace uwin::win32::dll {
-    class ${dll_name}_iface : public base {
+    class ${dll_name}_iface : public native_module {
     public:
         explicit inline ${dll_name}_iface(mem::mgr::target_mem_mgr &target_mem_mgr, svc::locale &locale)
-            : base(target_mem_mgr, locale) {}
+            : native_module(target_mem_mgr, locale, "${dll_name}.DLL") {}
     % for i, fun in funs:
         virtual ${repr(fun)};
     % endfor

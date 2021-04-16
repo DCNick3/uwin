@@ -5,6 +5,7 @@
 #pragma once
 
 #include "win32/dll/KERNEL32_iface.h"
+#include "win32/ldr/module_table.h"
 #include "ctx/process_heap.h"
 
 namespace uwin::win32::dll {
@@ -13,13 +14,16 @@ namespace uwin::win32::dll {
         ht::handletable& _handletable;
         ctx::env& _env;
         ctx::process_heap& _process_heap;
+        ldr::module_table& _module_table;
 
     public:
         explicit inline KERNEL32_impl(mem::mgr::target_mem_mgr &target_mem_mgr, ht::handletable &handletable, ctx::env &env,
-                               ctx::process_heap &process_heap, svc::locale &locale)
+                               ctx::process_heap &process_heap, svc::locale &locale,
+                                      ldr::module_table& module_table)
             : KERNEL32_iface(target_mem_mgr, locale),
               _handletable(handletable),
-              _env(env), _process_heap(process_heap) {}
+              _env(env), _process_heap(process_heap),
+              _module_table(module_table) {}
 
         uint32_t GetVersion() override;
 
@@ -87,6 +91,10 @@ namespace uwin::win32::dll {
 
         types::hmodule GetModuleHandleA(uwin::mem::tcptr<char> lpModuleName) override;
 
+        mem::tptr<void> GetProcAddress(uwin::win32::types::hmodule hModule, uwin::mem::tcptr<char> lpProcName) override;
+
         void ExitProcess(std::uint32_t uExitCode) override;
+
+        static std::string normalize_module_name(std::string_view unnormalized);
     };
 }

@@ -10,6 +10,8 @@
 namespace kaitai {
     class kin {
     public:
+        virtual ~kin() = default;
+
         virtual void close() = 0;
         /** @name Stream positioning */
         //@{

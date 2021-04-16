@@ -9,6 +9,7 @@
 #include "win32/types/cursor.h"
 #include "win32/types/icon.h"
 #include "win32/types/menu.h"
+#include "win32/types/hmodule.h"
 
 #include <cstdint>
 
@@ -16,7 +17,6 @@ namespace uwin::win32::types {
     // names in CAPS are POD types that can be directly embedded into structures or pointed to in target memory
     // of course they must have the same layout as in the target, so marking them with [[gnu::packed]] might be a good idea
 
-    typedef uwin::mem::taddr::tvalue hmodule;
 
     // it's an object that is closable with CloseHandle
     class kgenericobj : public ht::kobj {};

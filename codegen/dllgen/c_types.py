@@ -83,7 +83,7 @@ hndl('HMENU', 'uwin::win32::types::menu')
 hndl('HANDLE', 'uwin::ht::kobj')
 
 # https://devblogs.microsoft.com/oldnewthing/20040614-00/?p=38903
-add('HMODULE', 'uwin::win32::types::hmodule', 'u32')
+add('HMODULE', 'uwin::win32::types::hmodule', 'u32', 'constr', 'value')
 alias('HINSTANCE', 'HMODULE')
 
 ptr('char', 'char')

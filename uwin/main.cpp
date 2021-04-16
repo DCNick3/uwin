@@ -9,7 +9,6 @@
 #include "xcute/remill/remill_rt.h"
 #include "ctx/process.h"
 #include "ctx/dll.h"
-#include "ctx/ldr.h"
 #include "ctx/thread.h"
 #include "win32/ldr/module_loader.h"
 #include "win32/svc/basic_mbox.h"
@@ -31,21 +30,37 @@ int main(int argc, char** argv) {
 
         ctx::env_param env_param{"C:\\EXECUTABLE.EXE", {}};
 
+        // Here a lot of objects are created implicitly as singletons.
+        // This really reduces amount of boilerplate code. All hail dependency injection
         auto inj = di::make_injector(
+                // bind some core objects
                 di::bind<mem::base_mem_mapper>.to(mapper),
                 di::bind<ctx::env_param>.to(env_param),
+
+                // bind dll implementations
                 di::bind<win32::dll::KERNEL32_iface>.in(di::singleton).to<win32::dll::KERNEL32_impl>(),
                 di::bind<win32::dll::USER32_iface>.in(di::singleton).to<win32::dll::USER32_impl>(),
+
+                // bind win32 svc implementations
                 di::bind<win32::svc::mbox>.in(di::singleton).to<win32::svc::basic_mbox>(),
                 di::bind<win32::svc::locale>.in(di::singleton).to<win32::svc::dummy_locale>()
-                );
+            );
+
+        auto& process_ctx = inj.create<ctx::process&>();
+
+        // TODO: how do we split thread-owned and process-owned objects?
+        /*auto t_inj = di::make_injector(
+                di::bind<>.to(process_ctx)
+        );*/
 
         auto& thread_ctx = inj.create<ctx::thread&>();
-        auto& process_ctx = thread_ctx._process;
+
+        auto& module_table = inj.create<win32::ldr::module_table&>();
 
         // Who needs proper dependency managements anyways
         // (Jokes aside, using Dependency Injection would be cool, but, IMO, quite difficult to implement,
         // considering all weird places where you need those dependencies)
+        // UPD: Now I use it... Oh well
         /*process_ctx._mem_mgr = std::make_unique<mem::mgr::target_mem_mgr>(mapper);
         process_ctx._dll = std::make_unique<ctx::dll>(process_ctx);
         process_ctx._ldr = std::make_unique<ctx::ldr>(*process_ctx._dll);
@@ -61,7 +76,7 @@ int main(int argc, char** argv) {
         const char *exe_path = argv[1];
         auto exe_data = util::read_file(exe_path);
 
-        auto& module = win32::ldr::module_loader::load(process_ctx._ldr,
+        auto& module = win32::ldr::module_loader::load(module_table,
                 process_ctx._mem_mgr, mem::taddr(0x00400000), "MAIN",
                 {exe_data.data(), exe_data.size()});
 

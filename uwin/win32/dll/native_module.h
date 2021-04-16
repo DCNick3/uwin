@@ -3,20 +3,32 @@
 #include "ctx/process.h"
 #include "ctx/thread.h"
 #include "xcute/remill/remill_rt.h"
-#include "win32/ldr/linkable.h"
+#include "win32/ldr/module.h"
 #include "win32/svc/locale.h"
 #include "win32/dll/vararg_ctx.h"
 
 namespace uwin::win32::dll {
-    class base : public ldr::linkable {
+    class native_module : public ldr::module {
+        mem::tmem_region _memory_region;
+
     public:
-        explicit base(mem::mgr::target_mem_mgr &target_mem_mgr, svc::locale &locale)
-                : _mem_mgr(target_mem_mgr), _locale(locale) {}
+        explicit native_module(mem::mgr::target_mem_mgr &target_mem_mgr, svc::locale &locale, std::string name)
+                : _mem_mgr(target_mem_mgr), _locale(locale), _name(std::move(name)),
+                    // TODO: put some useful info into this region so that it looks more like genuine PE image
+                    _memory_region(target_mem_mgr.reserve_dynamic(mem::mgr::consts::page_size)){
+        }
+
+        [[nodiscard]] inline types::hmodule handle() const override {
+            return _memory_region.begin().as_const().as<types::module_tag>();
+        }
+
+        [[nodiscard]] const std::string &name() const override { return _name; }
 
     protected:
         mem::mgr::target_mem_mgr &_mem_mgr;
         svc::locale& _locale;
         ctx::thread* _current_thread{};
+        std::string _name;
 
         inline std::uint32_t get_esp_u32(xcute::remill::State& state, mem::taddr::tsvalue esp_offset) const {
             return _mem_mgr.deref(
@@ -93,8 +105,8 @@ namespace uwin::win32::dll {
             return _locale.ascii_to_native(tstr(ptr));
         }
 
-        template<typename Fun>
-        [[nodiscard]] auto inline handle_error_ex(auto error_result, Fun fun) {
+        template<typename TRes>
+        [[nodiscard]] TRes inline handle_error_ex(TRes error_result, auto fun) {
             auto& thread_ctx = *_current_thread;
             thread_ctx.set_last_error(error_code::ERROR_SUCCESS);
 
@@ -112,6 +124,6 @@ namespace uwin::win32::dll {
             return handle_error_ex(error_result, [&](R& err) mutable { return fun(); });
         }
 
-        virtual ~base() = default;
+        virtual ~native_module() = default;
     };
 }

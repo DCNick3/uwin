@@ -14,8 +14,10 @@ namespace uwin::xcute::remill {
 
     extern "C" Memory *uwin_xcute_remill_dispatch(State& st, uint32_t pc, Memory *mem) {
         if (pc & 0x80000000) {
-            return leave_target_code(win32::dll::dispatch, st, pc, mem);
+            // if we have pc address in upper part of the address space - we are dispatching to the native dll implementation
+            return leave_target_code(win32::dll::dispatch_native, st, pc, mem);
         } else {
+            // else - to the recompiled code
             return uwin_xcute_remill_dispatch_recompiled(st, pc, mem);
         }
     }
@@ -25,6 +27,12 @@ namespace uwin::xcute::remill {
     }
 
     extern "C" Memory *uwin_xcute_remill_async_hyper_call(State& st, uint32_t pc, Memory *mem) {
+        std::terminate();
+    }
+    extern "C" [[noreturn]] void uwin_xcute_remill_abort(const char* reason) {
+        std::terminate();
+    }
+    extern "C" [[noreturn]] Memory *uwin_xcute_remill_sync_hyper_call(State &st, uint32_t pc, Memory *mem) {
         std::terminate();
     }
 

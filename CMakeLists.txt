@@ -10,6 +10,7 @@ initialize_cookoff()
 
 
 include(CodeGen)
+include(FindASan)
 
 
 add_subdirectory(ext-deps/fmt)

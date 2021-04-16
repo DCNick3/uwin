@@ -6,7 +6,8 @@
 
 #include "ctx/process.h"
 #include "win32/ldr/microsoft_pe.h"
-#include "win32/ldr/module.h"
+#include "win32/ldr/target_module.h"
+#include "win32/ldr/module_table.h"
 #include "util/span.h"
 
 #include <span>
@@ -25,8 +26,7 @@ namespace uwin::win32::ldr {
                   "expected rva to be pod");
 
     class module_loader {
-
-        ctx::ldr& _ldr_ctx;
+        module_table& _module_table;
         mem::mgr::target_mem_mgr &_mem_mgr;
 
         // kaitai-generated code is quite inefficient... But oh well
@@ -42,13 +42,13 @@ namespace uwin::win32::ldr {
 
         std::string _module_name;
 
-        module_loader(ctx::ldr& ldr_ctx,
+        module_loader(ldr::module_table& module_table,
                       mem::mgr::target_mem_mgr &mem_mgr,
                       mem::taddr image_base,
                       std::span<const std::uint8_t> image,
                       std::string module_name)
                 :
-                _ldr_ctx(ldr_ctx),
+                _module_table(module_table),
                 _mem_mgr(mem_mgr),
                 _kaitai_stream(image),
                 _pe_image(&_kaitai_stream),
@@ -86,16 +86,16 @@ namespace uwin::win32::ldr {
         void apply_relocs();
         void resolve_imports();
 
-        module& load_impl();
+        target_module& load_impl();
 
     public:
 
-        static inline module& load(ctx::ldr& ldr_ctx,
-                     mem::mgr::target_mem_mgr &mem_mgr,
-                     mem::taddr image_base,
-                     std::string name,
-                     std::span<std::uint8_t> const &image) {
-            module_loader ldr(ldr_ctx, mem_mgr, image_base, image, std::move(name));
+        static inline target_module& load(ldr::module_table& module_table,
+                                          mem::mgr::target_mem_mgr &mem_mgr,
+                                          mem::taddr image_base,
+                                          std::string name,
+                                          std::span<std::uint8_t> const &image) {
+            module_loader ldr(module_table, mem_mgr, image_base, image, std::move(name));
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "EndlessLoop"
             return ldr.load_impl();

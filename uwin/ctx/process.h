@@ -15,13 +15,11 @@
 
 namespace uwin::ctx {
     class dll;
-    class ldr;
 
     class process {
     public:
         mem::mgr::target_mem_mgr& _mem_mgr;
         dll& _dll;
-        ldr& _ldr;
         ht::handlelike_allocator& _handlelike_allocator;
         ht::handletable& _handle_table;
         process_heap _process_heap;

@@ -5,6 +5,8 @@
 #include "impl.h"
 #include "util/enumu.h"
 #include "xcute/except.h"
+#include "log/log.h"
+#include "util/str.h"
 
 namespace uwin::win32::dll {
     enum class LCMAP : std::uint32_t {
@@ -151,11 +153,11 @@ namespace uwin::win32::dll {
         if (dwInfoType != 1)
             throw util::not_implemented_error("dwInfoType != 1");
 
-        for (std::uint32_t i = 0; i < cchSrc; i++)
-            _mem_mgr.ptr(lpCharType)[i] =
-                    ctype_1[
-                            _mem_mgr.ptr(lpSrcStr)[i]
-                            ];
+        for (std::uint32_t i = 0; i < cchSrc; i++) {
+            // convert to unsigned here
+            std::uint8_t c =  _mem_mgr.ptr(lpSrcStr)[i];
+            _mem_mgr.ptr(lpCharType)[i] = ctype_1[c];
+        }
 
         return true;
     }
@@ -170,74 +172,124 @@ namespace uwin::win32::dll {
 
     int32_t KERNEL32_impl::LCMapStringA(std::uint32_t Locale, std::uint32_t dwMapFlags, uwin::mem::tcptr<char> lpSrcStr,
                                         std::int32_t cchSrc, uwin::mem::tptr<char> lpDestStr, std::int32_t cchDest) {
-        if (Locale != 0)
-            throw util::not_implemented_error("Locale != 0");
-        if (cchSrc == 0)
-            throw util::not_implemented_error("cchSrc == 0");
+        return handle_error(0, [&]() {
+            if (Locale != 0)
+                throw util::not_implemented_error("Locale != 0");
+            if (cchSrc == 0)
+                throw util::not_implemented_error("cchSrc == 0");
 
-        auto mapping = static_cast<LCMAP>(dwMapFlags);
+            auto mapping = static_cast<LCMAP>(dwMapFlags);
 
-        if (cchDest != 0 && cchDest < cchSrc) {
-            _current_thread->set_last_error(error_code::ERROR_INSUFFICIENT_BUFFER);
-            return 0;
-        }
+            if (cchDest != 0 && cchDest < cchSrc)
+                throw error(error_code::ERROR_INSUFFICIENT_BUFFER);
 
-        _current_thread->set_last_error(win32::error_code::ERROR_SUCCESS);
+            if (mapping == LCMAP::LOWERCASE) {
+                if (cchDest != 0) {
+                    for (std::uint32_t i = 0; i < cchSrc; i++) {
+                        // convert to unsigned here
+                        std::uint8_t c = _mem_mgr.ptr(lpSrcStr)[i];
+                        _mem_mgr.ptr(lpDestStr)[i] = map_lo[c];
+                    }
+                }
 
-        if (mapping == LCMAP::LOWERCASE) {
-            if (cchDest != 0) {
-                for (std::uint32_t i = 0; i < cchSrc; i++)
-                    _mem_mgr.ptr(lpDestStr)[i] =
-                            map_lo[
-                                    _mem_mgr.ptr(lpSrcStr)[i]
-                            ];
+                return cchSrc;
+            } else if (mapping == LCMAP::UPPERCASE) {
+
+                if (cchDest != 0) {
+                    for (std::uint32_t i = 0; i < cchSrc; i++) {
+                        // convert to unsigned here
+                        std::uint8_t c = _mem_mgr.ptr(lpSrcStr)[i];
+                        _mem_mgr.ptr(lpDestStr)[i] = map_up[c];
+                    }
+                }
+
+                return cchSrc;
+            } else {
+                throw util::not_implemented_error("specified mapping");
             }
-
-            return cchSrc;
-        } else if (mapping == LCMAP::UPPERCASE) {
-
-            if (cchDest != 0) {
-                for (std::uint32_t i = 0; i < cchSrc; i++)
-                    _mem_mgr.ptr(lpDestStr)[i] =
-                            map_up[
-                                    _mem_mgr.ptr(lpSrcStr)[i]
-                            ];
-            }
-
-            return cchSrc;
-        }
-        else {
-            throw util::not_implemented_error("specified mapping");
-        }
+        });
     }
 
     uint32_t KERNEL32_impl::GetModuleFileNameA(uwin::win32::types::hmodule hModule, uwin::mem::tptr<char> lpFilename,
                                                std::uint32_t nSize) {
         // TODO: implement a proper module table
         // TODO: 8.3 paths?
-        if (hModule != 0)
-            throw util::not_implemented_error("hModule != 0");
-        std::string self_module_file_name = "C:\\MAIN.EXE"; // Very dumb way to implement this
-        auto output_buffer = _mem_mgr.ptr(lpFilename);
+        return handle_error_ex<uint32_t>(0, [&](uint32_t& result) {
+            if (hModule != 0)
+                throw util::not_implemented_error("hModule != 0");
+            std::string self_module_file_name = "C:\\MAIN.EXE"; // Very dumb way to implement this
+            auto output_buffer = _mem_mgr.ptr(lpFilename);
 
-        auto last = std::min(std::uint32_t(self_module_file_name.size()), nSize - 1);
-        for (std::uint32_t i = 0; i < last; i++) {
-            output_buffer[i] = self_module_file_name[i];
-        }
-        output_buffer[last] = '\0';
-        if (nSize - 1 < self_module_file_name.size()) {
-            _current_thread->set_last_error(win32::error_code::ERROR_INSUFFICIENT_BUFFER);
+            auto last = std::min(std::uint32_t(self_module_file_name.size()), nSize - 1);
+            for (std::uint32_t i = 0; i < last; i++) {
+                output_buffer[i] = self_module_file_name[i];
+            }
+            output_buffer[last] = '\0';
+            if (nSize - 1 < self_module_file_name.size())
+                throw error(error_code::ERROR_INSUFFICIENT_BUFFER);
+            return result;
+        });
+        //return last - 1;
+    }
+
+    std::string KERNEL32_impl::normalize_module_name(std::string_view unnormalized) {
+        std::string module_name = util::ascii_to_upper(unnormalized);
+
+        // the logic is carefully reconstructed according to win95's kernel32.dll
+        auto extension_pos = module_name.find_last_of('.');
+        if (extension_pos != std::string::npos) {
+            if (extension_pos + 1 == module_name.size())
+                module_name.erase(extension_pos);
         } else {
-            _current_thread->set_last_error(win32::error_code::ERROR_SUCCESS);
+            module_name += ".DLL";
         }
-        return last - 1;
+
+        return module_name;
     }
 
     types::hmodule KERNEL32_impl::GetModuleHandleA(uwin::mem::tcptr<char> lpModuleName) {
-        if (lpModuleName != 0)
-            throw util::not_implemented_error("Specified flAllocationType");
+        return handle_error(types::hmodule(0), [&]() {
+            if (lpModuleName == 0) {
+                // TODO: actually return a main module handle
+                return types::hmodule(0);
+            } else {
+                auto module_name = normalize_module_name(tstr(lpModuleName));
 
-        return 0; // A big dirty kludge
+                // TODO: allow to use full paths
+
+                auto module = _module_table.try_get_module(module_name);
+
+                if (module == nullptr)
+                    throw error(error_code::ERROR_MOD_NOT_FOUND);
+
+                return module->handle();
+            }
+        });
+    }
+
+    mem::tptr<void>
+    KERNEL32_impl::GetProcAddress(uwin::win32::types::hmodule hModule, uwin::mem::tcptr<char> lpProcName) {
+        return handle_error(mem::tptr<void>(0), [&]() {
+            if (hModule == 0)
+                // FIXME: assuming there are no exports in the main module (can't get object for main module)
+                throw error(error_code::ERROR_PROC_NOT_FOUND);
+
+            auto module = _module_table.try_get_module(hModule);
+            if (module == nullptr)
+                throw error(error_code::ERROR_INVALID_HANDLE);
+
+            if ((lpProcName.value() & 0xffff0000) == 0)
+                throw util::not_implemented_error("GetProcAddress by ordinal");
+
+            auto name = std::string(tstr(lpProcName));
+
+            auto result = module->try_resolve(name);
+
+            if (result.value() == 0)
+                throw error(error_code::ERROR_PROC_NOT_FOUND);
+
+            return result.as<void>().as_non_const();
+        });
     }
 
     void KERNEL32_impl::ExitProcess(std::uint32_t uExitCode) {

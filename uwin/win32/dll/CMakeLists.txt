@@ -11,7 +11,7 @@ dllgen(DEFDIR ${CMAKE_CURRENT_LIST_DIR}/defs
 message("DLLGEN_FILES: ${DLLGEN_FILES}")
 
 uwin_sources(NAME win32-dll
-        PORTABLE base.cpp
+        PORTABLE native_module.cpp
         USER32/impl.cpp
         KERNEL32/impl.cpp
         KERNEL32/heap.cpp

@@ -96,6 +96,12 @@ namespace uwin::mem {
 
         [[nodiscard]] inline auto as_taddr() const { return as<std::uint8_t>(); }
 
+        template<bool C1 = C, typename = std::enable_if_t<!C1>>
+        [[nodiscard]] inline auto as_const() const { return tptr<T, true>(_value); }
+
+        template<bool C1 = C, typename = std::enable_if_t<C1>>
+        [[nodiscard]] inline auto as_non_const() const { return tptr<T, false>(_value); }
+
         template<typename MGR>
         inline auto to_host(MGR const &mgr) const { return mgr.ptr(*this); }
 
