@@ -33,7 +33,7 @@ namespace uwin::ht {
 
         template<typename D>
         [[nodiscard]] handle<D> cast() const {
-            static_cast<D*>(static_cast<T*>(nullptr));
+            (void)static_cast<D*>(static_cast<T*>(nullptr));
             return handle<D>(value());
         }
 

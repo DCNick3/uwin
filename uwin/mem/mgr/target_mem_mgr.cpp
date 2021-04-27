@@ -2,12 +2,14 @@
 // Created by dcnick3 on 10/25/20.
 //
 
-#include "target_mem_mgr.h"
-#include "util/align.h"
+#include "mem/mgr/target_mem_mgr.h"
+#include "mem/mgr/query_results.h"
 #include "mem/except.h"
 #include "win32/error.h"
 #include "log/log.h"
+#include "util/align.h"
 #include "util/except.h"
+#include "util/visit.h"
 
 #include <utility>
 #include <memory>
@@ -20,6 +22,7 @@ namespace uwin::mem::mgr {
             _host_region(_mapper->host_reserve(consts::address_space_size)) {
         if (_mapper->page_size() != consts::page_size)
             throw util::not_implemented_error("Supporting different host and target page size");
+        log::debug("Creating target_mem_mgr...");
     }
 
 
@@ -103,6 +106,28 @@ namespace uwin::mem::mgr {
         return region;
     }
 
+    target_mem_mgr::query_result target_mem_mgr::query(taddr ptr) const {
+        log::debug("query({})", ptr);
+        ptr = util::align_down(ptr, consts::page_size);
+        auto region_var = _regions_container.query(ptr);
+
+        return util::visit(region_var,
+                [&](pages_regions_container::query_results::free &free) -> query_result {
+                    return query_results::free{{ptr, taddr::tvalue(free.region.end() - ptr)}};
+                },
+                [&](pages_regions_container::query_results::reserved &reserved) -> query_result {
+                    auto r = reserved.region_it->query(ptr);
+                    return util::visit(r,
+                        [&](query_results::reserved &reserved) -> query_result {
+                            return reserved;
+                        },
+                        [&](query_results::committed &committed) -> query_result {
+                            return committed;
+                        });
+                }
+        );
+    }
+
     hprot target_mem_mgr::to_hprot(tprot prot) {
         switch (prot) {
             case tprot::none:
@@ -129,5 +154,33 @@ namespace uwin::mem::mgr {
                 _mapper->host_unmap(ptr(region));
         }
         _mapper->host_unreserve(_host_region);
+    }
+
+    std::string target_mem_mgr::dump_memory_map() const {
+        std::string map;
+        taddr p(0);
+        while (true) {
+            auto res_var = query(p);
+            util::visit(res_var, [&](query_results::committed& committed) {
+                auto& rg = committed.region;
+                map += fmt::format("C {:#010x}-{:#010x} ({:#010x}) {}\n",
+                                   rg.begin().value(), rg.end().value(), rg.size(), committed.protection);
+                p = rg.end();
+            }, [&](query_results::reserved& reserved) {
+                auto& rg = reserved.region;
+                map += fmt::format("R {:#010x}-{:#010x} ({:#010x})\n",
+                                   rg.begin().value(), rg.end().value(), rg.size());
+                p = rg.end();
+            }, [&](query_results::free& free) {
+                auto& rg = free.region;
+                map += fmt::format("F {:#010x}-{:#010x} ({:#010x})\n", rg.begin().value(), rg.end().value(), rg.size());
+                p = rg.end();
+            });
+            if (p.value() == 0)
+                break;
+        }
+        if (!map.empty())
+            map.erase(map.size() - 1);
+        return map;
     }
 }

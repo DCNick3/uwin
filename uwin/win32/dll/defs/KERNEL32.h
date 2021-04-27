@@ -153,6 +153,13 @@ GetEnvironmentStrings(
     );
 
 WINBASEAPI
+LPSTR
+WINAPI
+GetEnvironmentStringsA(
+    VOID
+    );
+
+WINBASEAPI
 LPWSTR
 WINAPI
 GetEnvironmentStringsW(
@@ -404,4 +411,74 @@ WINAPI
 IsBadWritePtr(
     LPVOID lp,
     UINT ucb
+    );
+
+WINBASEAPI
+HANDLE
+WINAPI
+CreateEventA(
+   LPSECURITY_ATTRIBUTES lpEventAttributes,
+   BOOL bManualReset,
+   BOOL bInitialState,
+   LPCSTR lpName
+   );
+
+WINBASEAPI
+HANDLE
+WINAPI
+CreateFileA(
+    LPCSTR lpFileName,
+    DWORD dwDesiredAccess,
+    DWORD dwShareMode,
+    LPSECURITY_ATTRIBUTES lpSecurityAttributes,
+    DWORD dwCreationDisposition,
+    DWORD dwFlagsAndAttributes,
+    HANDLE hTemplateFile
+    );
+
+WINBASEAPI
+LPWSTR
+WINAPI
+GetCommandLineW(
+    VOID
+    );
+
+WINBASEAPI
+DWORD
+WINAPI
+GetCurrentThreadId(
+    VOID
+    );
+
+WINBASEAPI
+DWORD
+WINAPI
+GetModuleFileNameW(
+    HMODULE hModule,
+    LPWSTR lpFilename,
+    DWORD nSize
+    );
+
+WINBASEAPI
+BOOL
+WINAPI
+SetEnvironmentVariableA(
+    LPCSTR lpName,
+    LPCSTR lpValue
+    );
+
+WINBASEAPI
+LPTOP_LEVEL_EXCEPTION_FILTER
+WINAPI
+SetUnhandledExceptionFilter(
+    LPTOP_LEVEL_EXCEPTION_FILTER lpTopLevelExceptionFilter
+    );
+
+WINBASEAPI
+DWORD
+WINAPI
+VirtualQuery(
+    LPCVOID lpAddress,
+    PMEMORY_BASIC_INFORMATION lpBuffer,
+    DWORD dwLength
     );

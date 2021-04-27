@@ -18,9 +18,6 @@ namespace uwin::win32::types {
     // of course they must have the same layout as in the target, so marking them with [[gnu::packed]] might be a good idea
 
 
-    // it's an object that is closable with CloseHandle
-    class kgenericobj : public ht::kobj {};
-
     typedef std::uint32_t BOOL;
     typedef std::int32_t HRESULT;
 
@@ -51,9 +48,9 @@ namespace uwin::win32::types {
     struct EXCEPTION_RECORD {};
     struct [[gnu::packed]] CPINFO {
         std::uint32_t MaxCharSize;
-        char DefaultChar[2];
-        char LeadByte[12];
-        char padding[2];
+        std::uint8_t DefaultChar[2];
+        std::uint8_t LeadByte[12];
+        std::uint8_t padding[2];
     };
     static_assert(sizeof(CPINFO) == 20, "Unexpected CPINFO size");
 
@@ -65,4 +62,15 @@ namespace uwin::win32::types {
         std::uint16_t Data3;
         std::uint8_t Data4[8];
     };
+    struct SECURITY_ATTRIBUTES {};
+    struct [[gnu::packed]] MEMORY_BASIC_INFORMATION {
+        mem::tcaddrpod BaseAddress;
+        mem::tcaddrpod AllocationBase;
+        std::uint32_t  AllocationProtect;
+        std::uint32_t  RegionSize;
+        std::uint32_t  State;
+        std::uint32_t  Protect;
+        std::uint32_t  Type;
+    };
+    static_assert(sizeof(MEMORY_BASIC_INFORMATION) == 28, "Unexpected MEMORY_BASIC_INFORMATION size");
 }

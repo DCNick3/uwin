@@ -8,10 +8,12 @@
 #include "mem/mem_region.h"
 #include "mem/mgr/consts.h"
 #include "mem/mgr/tprot.h"
+#include "mem/mgr/query_results.h"
 #include "util/nocopy.h"
 #include "util/nomove.h"
 
 #include <cassert>
+#include <variant>
 
 namespace uwin::mem::mgr {
     // here we have several hacks going on
@@ -42,6 +44,41 @@ namespace uwin::mem::mgr {
                 access_w = (prot_int & static_cast<std::uint8_t>(tprot::w)) != 0;
                 access_x = (prot_int & static_cast<std::uint8_t>(tprot::x)) != 0;
                 commited = true;
+            }
+
+            inline bool operator==(page const& o) const {
+                if (!commited)
+                    return !o.commited;
+                return o.commited && access_r == o.access_r && access_w == o.access_w && access_x == o.access_x;
+            }
+
+            inline bool operator!=(page const& o) const {
+                return !(*this == o);
+            }
+
+            [[nodiscard]] inline tprot prot() const {
+                if (!commited)
+                    // or should we throw?
+                    return tprot::none;
+
+                if (!access_r && !access_w && !access_x)
+                    return tprot::none;
+                if (!access_r && !access_w &&  access_x)
+                    return tprot::x;
+                if (!access_r &&  access_w && !access_x)
+                    return tprot::w;
+                if (!access_r &&  access_w &&  access_x)
+                    return tprot::wx;
+                if ( access_r && !access_w && !access_x)
+                    return tprot::r;
+                if ( access_r && !access_w &&  access_x)
+                    return tprot::rx;
+                if ( access_r &&  access_w && !access_x)
+                    return tprot::rw;
+                if ( access_r &&  access_w &&  access_x)
+                    return tprot::rwx;
+
+                std::terminate();
             }
         };
 
@@ -81,6 +118,9 @@ namespace uwin::mem::mgr {
             }
         }
 
+
+        typedef std::variant<query_results::reserved, query_results::committed> query_result;
+
         // precondition: passed region is fully contained within this pages_region
         bool has_uncommited_pages(tmem_region region) const;
 
@@ -91,6 +131,8 @@ namespace uwin::mem::mgr {
         bool uncommit_pages(tmem_region region) const;
 
         void reprotect_pages(tmem_region region, tprot prot) const;
+
+        query_result query(taddr ptr) const;
     };
 
 }

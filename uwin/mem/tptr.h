@@ -39,9 +39,11 @@ namespace uwin::mem {
 
         constexpr inline tvalue operator/(tvalue o) const { return _value / o; }
 
-        constexpr inline tptr align_up(tvalue alignment) const { return util::align_up(*this, alignment); }
+        constexpr inline tvalue operator*(tvalue o) const { return _value * o; }
 
-        constexpr inline tptr align_down(tvalue alignment) const { return util::align_down(*this, alignment); }
+        [[nodiscard]] constexpr inline tptr align_up(tvalue alignment) const { return util::align_up(*this, alignment); }
+
+        [[nodiscard]] constexpr inline tptr align_down(tvalue alignment) const { return util::align_down(*this, alignment); }
 
         [[nodiscard]] constexpr inline bool is_aligned(tvalue alignment) const {
             return util::is_aligned(*this, alignment);
@@ -122,6 +124,16 @@ namespace uwin::mem {
 
         inline tptr<T, C> as_taddr() {
             return {value};
+        }
+
+        inline tptrpod& operator=(tptr<T, C> const& o) {
+            value = o.value;
+            return *this;
+        }
+
+        inline tptrpod& operator=(taddr::tvalue o) {
+            value = o;
+            return *this;
         }
     };
 

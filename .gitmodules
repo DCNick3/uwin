@@ -9,4 +9,4 @@
 	url = https://github.com/DCNick3/GreatCMakeCookOff.git
 [submodule "ext-deps/di"]
 	path = ext-deps/di
-	url = https://github.com/boost-ext/di.git
+	url = https://github.com/DCNick3/di.git

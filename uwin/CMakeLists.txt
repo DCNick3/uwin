@@ -9,14 +9,10 @@ add_library(uwin-base INTERFACE)
 
 target_include_directories(uwin-base INTERFACE ${CMAKE_CURRENT_LIST_DIR} ${CMAKE_CURRENT_BINARY_DIR})
 
-# TODO: make it into a normal package
+# TODO: make it into a normal package or add it to the source tree
 target_include_directories(uwin-base INTERFACE /home/dcnick3/trash/homm3-switch/code/lifting/remill/include/)
 
-add_library(uwin STATIC)
-
-target_include_directories(uwin PUBLIC ${CMAKE_CURRENT_LIST_DIR} ${CMAKE_CURRENT_BINARY_DIR})
-# TODO: make it into a normal package
-target_include_directories(uwin PUBLIC /home/dcnick3/trash/homm3-switch/lifting/remill/)
+add_library(uwin INTERFACE)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fmacro-prefix-map=${CMAKE_SOURCE_DIR}=src")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fmacro-prefix-map=${CMAKE_BINARY_DIR}=bin")
@@ -50,7 +46,7 @@ function(uwin_sources)
 
     target_link_libraries(${ARG_NAME} PUBLIC uwin-base)
 
-    target_link_libraries(uwin ${ARG_NAME})
+    target_link_libraries(uwin INTERFACE ${ARG_NAME})
 
     target_link_libraries(${ARG_NAME} PUBLIC ${ARG_DEPENDS})
 
@@ -65,12 +61,21 @@ add_subdirectory(xcute)
 add_subdirectory(log)
 add_subdirectory(ht)
 add_subdirectory(heap)
+add_subdirectory(str)
 
 # TODO: this should definitely be integrated into the build system
-target_sources(uwin PUBLIC /home/dcnick3/trash/homm3-switch/code/lifting/remill/cmake-build-relwithdebinfo-clang/bin/uwin-lift/lifted-FloatTest.o)
+#target_sources(uwin PUBLIC /home/dcnick3/trash/homm3-switch/code/lifting/remill/cmake-build-relwithdebinfo-clang/bin/uwin-lift/lifted-FloatTest.o)
 
-target_link_libraries(uwin-base INTERFACE fmt kaitai-rt Boost.DI)
+target_link_libraries(uwin-base INTERFACE fmt kaitai-rt Boost.DI icu)
 
-add_executable(uwin-main main.cpp)
+add_library(uwin-main STATIC main.cpp)
 target_link_libraries(uwin-main uwin)
+
+target_link_libraries(uwin INTERFACE uwin-base)
+
+include(UWinEntry)
+
+uwin_entry(NAME FloatTest EXE /home/dcnick3/trash/homm3-switch/code/test-exe/msvc/FloatTest/Release/FloatTest.exe)
+uwin_entry(NAME SortTest EXE /home/dcnick3/trash/homm3-switch/code/test-exe/msvc/SortTest/Release/SortTest.exe)
+uwin_entry(NAME OpenWatcomHelloWorld EXE /home/dcnick3/trash/homm3-switch/code/test-exe/owc/hello_world.exe)
 

@@ -28,6 +28,7 @@ namespace uwin::ht {
             auto it = _table.find(handle.value());
             if (it == _table.end())
                 return std::shared_ptr<T>(nullptr);
+            // TODO: use static_cast for performance?
             auto res = std::dynamic_pointer_cast<T>(it->second);
             assert(res.get() != nullptr);
             return res;
@@ -38,12 +39,13 @@ namespace uwin::ht {
             static_assert(std::is_base_of<kobj, T>::value, "T must be a descendant of kobj");
             auto res = try_get(handle);
             if (res.get() == nullptr)
+                // TODO: attach a more detailed description: either the pointer object is not found or the type is mismatched
                 throw win32::error(win32::error_code::ERROR_INVALID_HANDLE);
             return res;
         }
 
 
-        // note: put does not increase the refcount
+        // note: put does not increase the refcount, taking the shared_ptr ownership
         template<typename T>
         [[nodiscard]] handle<T> put(std::shared_ptr<T> obj) noexcept {
             static_assert(std::is_base_of<kobj, T>::value, "T must be a descendant of kobj");

@@ -36,6 +36,12 @@ namespace uwin::mem {
             return begin() <= region.begin() && end() >= region.end();
         }
 
+        // checks whether the passed address is fully contained within this region
+        // (region \subset this)
+        [[nodiscard]] constexpr inline bool does_contain(B const &addr) const {
+            return begin() <= addr && end() > addr;
+        }
+
         // checks whether this region is fully contained within the passed region
         // (this \subset region)
         [[nodiscard]] constexpr inline bool is_contained(generic_mem_region<B, S> const &region) const {
@@ -67,6 +73,11 @@ namespace uwin::mem {
         template<typename T>
         constexpr inline auto operator/(T o) const {
             return generic_mem_region(begin() / o, size() / o);
+        }
+
+        template<typename T>
+        constexpr inline auto operator*(T o) const {
+            return generic_mem_region(begin() * o, size() * o);
         }
 
         template<typename T1, typename T2>

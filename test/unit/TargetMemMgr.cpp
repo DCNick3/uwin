@@ -47,6 +47,10 @@ TEST(TargetMemMgr, TestRegionContainer) {
     ASSERT_EQ(reg4, rmgr.find_starting_with(reg4->begin()));
     ASSERT_EQ(rmgr.find_starting_with(0x1337 * consts::allocation_granularity), rmgr.end());
 
+    // test query with it
+    auto map = rmgr.dump_reservation_map();
+    ASSERT_EQ(map, "F 0x00000000-0x00010000 (0x00010000)\nR 0x00010000-0x00011000 (0x00001000)\nF 0x00011000-0x00020000 (0x0000f000)\nR 0x00020000-0x00022000 (0x00002000)\nF 0x00022000-0x00030000 (0x0000e000)\nR 0x00030000-0x00033000 (0x00003000)\nF 0x00033000-0x00040000 (0x0000d000)\nR 0x00040000-0x00050000 (0x00010000)\nF 0x00050000-0x00000000 (0xfffb0000)");
+
     int cnt = 0;
     for (auto& rg : rmgr) { cnt++; }
     ASSERT_EQ(cnt, rmgr.size());
@@ -80,8 +84,28 @@ TEST(TargetMemMgr, Integration) {
 
     mgr.reprotect(tmem_region(rg.begin(), consts::page_size * 3), tprot::r);
 
+    ASSERT_EQ(mgr.dump_memory_map(), "F 0x00000000-0x00010000 (0x00010000)\n"
+                                     "C 0x00010000-0x00013000 (0x00003000) r--\n"
+                                     "C 0x00013000-0x00074000 (0x00061000) rw-\n"
+                                     "F 0x00074000-0x00000000 (0xfff8c000)");
+
     mgr.uncommit(tmem_region(rg.begin() + consts::page_size, consts::page_size));
+
+    ASSERT_EQ(mgr.dump_memory_map(), "F 0x00000000-0x00010000 (0x00010000)\n"
+                                     "C 0x00010000-0x00011000 (0x00001000) r--\n"
+                                     "R 0x00011000-0x00012000 (0x00001000)\n"
+                                     "C 0x00012000-0x00013000 (0x00001000) r--\n"
+                                     "C 0x00013000-0x00074000 (0x00061000) rw-\n"
+                                     "F 0x00074000-0x00000000 (0xfff8c000)");
+
     mgr.uncommit(tmem_region(rg.begin() + consts::page_size, consts::page_size));
+
+    ASSERT_EQ(mgr.dump_memory_map(), "F 0x00000000-0x00010000 (0x00010000)\n"
+                                     "C 0x00010000-0x00011000 (0x00001000) r--\n"
+                                     "R 0x00011000-0x00012000 (0x00001000)\n"
+                                     "C 0x00012000-0x00013000 (0x00001000) r--\n"
+                                     "C 0x00013000-0x00074000 (0x00061000) rw-\n"
+                                     "F 0x00074000-0x00000000 (0xfff8c000)");
 
     ASSERT_THROW(mgr.reprotect(tmem_region(rg.begin(), consts::page_size * 3), tprot::r), win32::error);
     ASSERT_THROW(mgr.commit(tmem_region(rg.end(), consts::page_size), tprot::rw), win32::error);
@@ -93,16 +117,34 @@ TEST(TargetMemMgr, Integration) {
     ASSERT_THROW(mgr.uncommit_whole_reserved_region(rg.end()), win32::error);
     ASSERT_THROW(mgr.reprotect(tmem_region(rg.end(), consts::page_size), tprot::rw), win32::error);
 
+    ASSERT_EQ(mgr.dump_memory_map(), "F 0x00000000-0x00010000 (0x00010000)\n"
+                                     "C 0x00010000-0x00011000 (0x00001000) r--\n"
+                                     "R 0x00011000-0x00012000 (0x00001000)\n"
+                                     "C 0x00012000-0x00013000 (0x00001000) r--\n"
+                                     "C 0x00013000-0x00074000 (0x00061000) rw-\n"
+                                     "F 0x00074000-0x00080000 (0x0000c000)\n"
+                                     "R 0x00080000-0x00081000 (0x00001000)\n"
+                                     "F 0x00081000-0x00000000 (0xfff7f000)");
+
     mgr.uncommit_whole_reserved_region(rg.begin());
 
+    ASSERT_EQ(mgr.dump_memory_map(), "F 0x00000000-0x00010000 (0x00010000)\n"
+                                     "R 0x00010000-0x00074000 (0x00064000)\n"
+                                     "F 0x00074000-0x00080000 (0x0000c000)\n"
+                                     "R 0x00080000-0x00081000 (0x00001000)\n"
+                                     "F 0x00081000-0x00000000 (0xfff7f000)");
+
     mgr.unreserve(rg.begin());
+    mgr.unreserve(align_up(rg.end(), consts::allocation_granularity));
+
+    ASSERT_EQ(mgr.dump_memory_map(), "F 0x00000000-0x00000000 (0x00000000)");
 }
 
 TEST(TargetMemMgr, IntegrationFuzz) {
     auto mem_mapper = create_host_mem_mapper();
     target_mem_mgr mgr(mem_mapper);
 
-
+    // TODO: implement
 }
 
 TEST(TargetMemMgr, Holder) {

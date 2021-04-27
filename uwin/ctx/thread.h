@@ -13,6 +13,8 @@ namespace uwin::ctx {
         win32::error_code _win32_last_error{win32::error_code::ERROR_SUCCESS};
         process& _process;
 
+        inline explicit thread(process &process) : _process(process) {}
+
         inline void set_last_error(win32::error_code error_code) {
             _win32_last_error = error_code;
         }

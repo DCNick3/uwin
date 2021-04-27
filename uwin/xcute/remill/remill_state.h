@@ -42,7 +42,6 @@ namespace uwin {
         struct StateEx : public State {
             ctx::process *process_ctx;
             ctx::thread *thread_ctx;
-            std::stack<longjmp_frame> frame_stack;
         };
     }
 }

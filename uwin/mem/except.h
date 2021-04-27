@@ -7,7 +7,7 @@
 #include <stdexcept>
 
 namespace uwin::mem {
-    class out_of_target_address_space : std::runtime_error {
+    class out_of_target_address_space : public std::runtime_error {
     public:
         out_of_target_address_space() : runtime_error("out of target address space") {}
     };

@@ -10,7 +10,7 @@
 #include <string>
 
 namespace uwin::win32::dll {
-    class stub_exception : std::runtime_error {
+    class stub_exception : public std::runtime_error {
     public:
         inline explicit stub_exception(const char *unimplemented_fun_name) :
                 std::runtime_error(fmt::format("Called a DLL function {}, which is not implemented",

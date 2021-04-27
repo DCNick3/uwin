@@ -119,3 +119,9 @@ HCURSOR
 WINAPI
 SetCursor(
     HCURSOR hCursor);
+
+WINUSERAPI
+LPSTR
+WINAPI
+CharUpperA(
+    LPSTR lpsz);

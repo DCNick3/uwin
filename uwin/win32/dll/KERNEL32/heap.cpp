@@ -2,7 +2,7 @@
 // Created by dcnick3 on 12/1/20.
 //
 
-#include "impl.h"
+#include "win32/dll/KERNEL32/impl.h"
 #include "util/enumu.h"
 #include "util/except.h"
 #include "heap/heap.h"
@@ -37,6 +37,9 @@ namespace uwin::win32::dll {
 
             if (generate_exceptions)
                 throw util::not_implemented_error("HEAP_GENERATE_EXCEPTIONS");
+
+            // in win95 (and probably NT too) heap handle is not a handle, but a heap pointer
+            // TODO: do we care?..
 
             return _handletable.emplace<heap::heap>(_mem_mgr,
                                                     util::align_up(dwInitialSize, mem::mgr::consts::page_size),

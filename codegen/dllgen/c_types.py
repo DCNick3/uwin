@@ -112,7 +112,8 @@ alias('LPBOOL', '_Bool *')
 alias('LCID', 'DWORD')
 alias('LPWORD', 'WORD *')
 alias('PHANDLER_ROUTINE', 'void *') # TODO: implement function pointers
-alias('ATOM', 'WORD') # TODO: implement atoms in more general way
+alias('LPTOP_LEVEL_EXCEPTION_FILTER', 'void *') # TODO: implement function pointers
+alias('ATOM', 'WORD') # TODO: implement atoms in more general way (maybe)
 alias('LRESULT', 'LONG')
 alias('WPARAM', 'DWORD')
 alias('LPARAM', 'LONG')
@@ -126,6 +127,8 @@ winstruct('CPINFO', 'uwin::win32::types::CPINFO')
 winstruct('WNDCLASSA', 'uwin::win32::types::WNDCLASSA')
 winstruct('MSG', 'uwin::win32::types::MSG')
 winstruct('GUID', 'uwin::win32::types::GUID')
+winstruct('SECURITY_ATTRIBUTES', 'uwin::win32::types::SECURITY_ATTRIBUTES')
+winstruct('MEMORY_BASIC_INFORMATION', 'uwin::win32::types::MEMORY_BASIC_INFORMATION')
 
 """
 ========================================================================================================================

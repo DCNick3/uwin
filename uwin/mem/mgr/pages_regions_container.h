@@ -8,6 +8,7 @@
 
 #include <vector>
 #include <set>
+#include <variant>
 
 #include <cstdlib>
 
@@ -40,11 +41,25 @@ namespace uwin::mem::mgr {
 
     public:
 
+        struct query_results {
+            struct free {
+                tmem_region region;
+            };
+            struct reserved {
+                iterator region_it;
+            };
+        };
+
+        typedef std::variant<query_results::reserved, query_results::free> query_result;
+
         iterator alloc(taddr::tvalue size, taddr::tvalue alignment);
 
         iterator insert(tmem_region region);
 
         [[nodiscard]] iterator find_starting_with(taddr addr) const;
+
+        // returns either a page region containing an address or a free region containing addr
+        [[nodiscard]] query_result query(taddr addr) const;
 
         [[nodiscard]] iterator find_containing(tmem_region region) const;
 
@@ -55,6 +70,8 @@ namespace uwin::mem::mgr {
         [[nodiscard]] inline std::size_t size() const { return _regions.size(); }
 
         void erase(iterator it);
+
+        [[nodiscard]] std::string dump_reservation_map() const;
 
         // check the overlap invariant. Raise if the invariant is broken
         void check_overlaps() const;

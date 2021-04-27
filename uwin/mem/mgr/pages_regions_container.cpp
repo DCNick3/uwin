@@ -5,6 +5,7 @@
 #include "pages_regions_container.h"
 #include "mem/except.h"
 #include "win32/error.h"
+#include "util/visit.h"
 
 #include <cassert>
 
@@ -13,6 +14,23 @@ namespace uwin::mem::mgr {
     pages_regions_container::iterator pages_regions_container::find_starting_with(taddr addr) const {
         assert(util::is_aligned(addr, consts::allocation_granularity));
         return _regions.find(addr);
+    }
+
+    pages_regions_container::query_result pages_regions_container::query(taddr addr) const {
+        assert(util::is_aligned(addr, consts::page_size));
+        auto it = _regions.upper_bound(addr);
+        if (it == _regions.begin()) // it means that even the first region begins (strictly) after our region
+            return query_results::free{{0, it->begin().value()}};
+        it--;
+        if (it->does_contain(addr)) {
+            return query_results::reserved{it};
+        } else {
+            auto begin = it->begin() + it->size();
+            it++;
+            if (it == _regions.end())
+                return query_results::free{{begin, std::numeric_limits<taddr::tvalue>::max() - begin.value() + 1}};
+            return query_results::free{{begin, taddr::tvalue(it->begin() - begin)}};
+        }
     }
 
     pages_regions_container::iterator pages_regions_container::find_containing(tmem_region region) const {
@@ -77,5 +95,29 @@ namespace uwin::mem::mgr {
 
     void pages_regions_container::erase(pages_regions_container::iterator it) {
         _regions.erase(it);
+    }
+
+    std::string pages_regions_container::dump_reservation_map() const {
+        std::string map;
+        taddr p(0);
+        bool cont = true;
+        while (cont) {
+            auto res_var = query(p);
+            util::visit(res_var, [&](query_results::reserved& reserved) {
+                auto& rg = *reserved.region_it;
+                map += fmt::format("R {:#010x}-{:#010x} ({:#010x})\n",
+                                   rg.begin().value(), rg.end().value(), rg.size());
+                p = rg.end();
+            }, [&](query_results::free& free) {
+                auto& rg = free.region;
+                map += fmt::format("F {:#010x}-{:#010x} ({:#010x})\n", rg.begin().value(), rg.end().value(), rg.size());
+                if (rg.end().value() == 0)
+                    cont = false;
+                p = rg.end();
+            });
+        }
+        if (!map.empty())
+            map.erase(map.size() - 1);
+        return map;
     }
 }

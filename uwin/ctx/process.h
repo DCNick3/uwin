@@ -13,6 +13,9 @@
 #include "ctx/process_heap.h"
 #include "heap/heap.h"
 
+namespace uwin::win32::ldr {
+    class module_table;
+}
 namespace uwin::ctx {
     class dll;
 
@@ -22,7 +25,7 @@ namespace uwin::ctx {
         dll& _dll;
         ht::handlelike_allocator& _handlelike_allocator;
         ht::handletable& _handle_table;
-        process_heap _process_heap;
+        process_heap& _process_heap;
         env& _env;
     };
 }

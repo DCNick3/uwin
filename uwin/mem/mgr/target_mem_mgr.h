@@ -8,6 +8,8 @@
 #include "mem/mem_region.h"
 #include "pages_regions_container.h"
 #include "mem/tptr.h"
+#include "mem/mgr/query_results.h"
+#include "win32/types/types.h"
 
 #include <memory>
 #include <set>
@@ -26,6 +28,9 @@ namespace uwin::mem::mgr {
     // This implies that if, for example, you allocate a region with size=4KiB, you lose 60KiB of address space
     // due to internal fragmentation: no other reservation can use that space, as there are no 64KiB aligned
     // addresses there.
+    // Windows 95 has a bit different semantics: it rounds up your reservation request to 64 KiB so you do not lose that memory
+    // you can commit it. I do not (yet) implement this semantic and go with the NT one (cuz meh, does anything that is not system program rely on it?)
+    // (can be studied with VirtualQuery)
     //
     // Commiting, on the other hand, is done with page (4KiB) granularity, you can commit and uncommit any 4 KiB
     // (or more) of the reserved region. Changing page protection can also be done at individual page basis
@@ -39,8 +44,6 @@ namespace uwin::mem::mgr {
     // This api tries to save winapi semantics, but splitting various paths in VirtualAlloc and VirtualFree
 
     class target_mem_mgr {
-
-
         std::shared_ptr<base_mem_mapper> _mapper;
         hmem_region _host_region;
         pages_regions_container _regions_container;
@@ -53,6 +56,12 @@ namespace uwin::mem::mgr {
 
     public:
         ~target_mem_mgr();
+
+        typedef std::variant<
+                query_results::free,
+                query_results::reserved,
+                query_results::committed
+        > query_result;
 
         explicit target_mem_mgr(std::shared_ptr<base_mem_mapper> mapper);
 
@@ -71,6 +80,10 @@ namespace uwin::mem::mgr {
         tmem_region uncommit(tmem_region region);
 
         tmem_region uncommit_whole_reserved_region(taddr start_addr);
+
+        query_result query(taddr ptr) const;
+
+        [[nodiscard]] std::string dump_memory_map() const;
 
         template<typename T>
         [[nodiscard]] inline auto ptr(tptr<T> addr) const {

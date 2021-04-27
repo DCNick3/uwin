@@ -11,6 +11,7 @@
 #include "ctx/dll.h"
 #include "util/enumu.h"
 #include "util/str.h"
+#include "util/align.h"
 #include "log/log.h"
 
 #include <cassert>
@@ -92,6 +93,9 @@ namespace uwin::win32::ldr {
         for (auto const& sec : *pe->sections()) {
             auto alloc_size = util::align_up(sec->virtual_size(), section_alignment);
 
+            if (alloc_size == 0)
+                continue;
+
             auto virtual_region = mem::tmem_region(_image_base + sec->virtual_address(), alloc_size);
             _mem_mgr.commit(virtual_region, mem::mgr::tprot::rw);
 
@@ -126,7 +130,9 @@ namespace uwin::win32::ldr {
 
     template<typename T>
     std::span<T> module_loader::get_loaded_directory_data(const microsoft_pe_t::data_dir_t &dir) {
-        mem::tmem_region rg(_image_base + dir.virtual_address(), dir.size());
+        // OpenWatcom quirk: import directory size not divisible by entry size. Not sure what is there,
+        //   ignoring leftover data for now by rounding it down
+        mem::tmem_region rg(_image_base + dir.virtual_address(), util::align_down(dir.size(), sizeof(T)));
         assert(rg.is_contained(_image_region));
         return _mem_mgr.ptr(rg).as_span<T>();
     }
@@ -193,6 +199,8 @@ namespace uwin::win32::ldr {
 
             log::debug("importing {}", dll_name);
 
+            std::vector<std::string> missing_imports;
+
             auto plookup_table = ptr(entry.plookup_table);
             for (int i = 0; plookup_table[i].value != 0; i++) {
                 auto& lookup = plookup_table[i];
@@ -206,9 +214,20 @@ namespace uwin::win32::ldr {
                 auto res = module.try_resolve(symbol_name);
 
                 if (res == 0)
-                    throw loader_exception(fmt::format("Could not import {} from {}.", symbol_name, dll_name));
+                    missing_imports.emplace_back(symbol_name);
 
                 ptr(entry.address_table)[i] = mem::tcaddrpod::from_tptr(res);
+            }
+
+            if (!missing_imports.empty()) {
+                std::string r;
+                for (auto const& v : missing_imports) {
+                    r += fmt::format("{}\n", v);
+                }
+                if (!r.empty())
+                    r.erase(r.size() - 1);
+
+                throw loader_exception(fmt::format("Missing imports from {}:\n{}", dll_name, r));
             }
 
         }

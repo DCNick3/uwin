@@ -54,6 +54,10 @@ namespace uwin::win32::dll {
         bool VirtualProtect(uwin::mem::tptr<void> lpAddress, std::uint32_t dwSize, std::uint32_t flNewProtect,
                             uwin::mem::tptr<uint32_t> lpflOldProtect) override;
 
+        uint32_t VirtualQuery(uwin::mem::tcptr<void> committed,
+                              uwin::mem::tptr<uwin::win32::types::MEMORY_BASIC_INFORMATION> lpBuffer,
+                              std::uint32_t dwLength) override;
+
         void GetStartupInfoA(uwin::mem::tptr<uwin::win32::types::STARTUPINFOA> lpStartupInfo) override;
 
         ht::handle <uwin::ht::kobj> GetStdHandle(std::uint32_t nStdHandle) override;
@@ -64,6 +68,9 @@ namespace uwin::win32::dll {
 
         mem::tptr<wchar_t> GetEnvironmentStringsW() override;
         mem::tptr<char> GetEnvironmentStrings() override;
+
+        mem::tptr<char> GetEnvironmentStringsA() override;
+
         bool FreeEnvironmentStringsA(uwin::mem::tptr<char> arg0) override;
 
         uint32_t GetACP() override;
@@ -94,6 +101,14 @@ namespace uwin::win32::dll {
         mem::tptr<void> GetProcAddress(uwin::win32::types::hmodule hModule, uwin::mem::tcptr<char> lpProcName) override;
 
         void ExitProcess(std::uint32_t uExitCode) override;
+
+        uint32_t GetCurrentThreadId() override;
+
+        mem::tptr<void> SetUnhandledExceptionFilter(uwin::mem::tptr<void> lpTopLevelExceptionFilter) override;
+
+        ht::handle<uwin::ht::kobj>
+        CreateEventA(uwin::mem::tptr<uwin::win32::types::SECURITY_ATTRIBUTES> lpEventAttributes, bool bManualReset,
+                     bool bInitialState, uwin::mem::tcptr<char> lpName) override;
 
         static std::string normalize_module_name(std::string_view unnormalized);
     };
