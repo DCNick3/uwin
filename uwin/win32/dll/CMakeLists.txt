@@ -18,7 +18,7 @@ uwin_sources(NAME win32-dll
         KERNEL32/impl.cpp
         KERNEL32/heap.cpp
         KERNEL32/virtual.cpp
-        KERNEL32/locale.cpp
+        KERNEL32/nls.cpp
         DDRAW/impl.cpp
         ${DLLGEN_FILES}
 

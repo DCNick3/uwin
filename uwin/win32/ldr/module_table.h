@@ -63,7 +63,7 @@ namespace uwin::win32::ldr {
         // module handle is the primary key, module name - secondary
         // TODO: how does windows 95 handle duplicate module names?
         std::set<module_entry, comp> _modules;
-        std::map<std::string, decltype(_modules)::iterator> _name_to_module;
+        std::map<str::native, decltype(_modules)::iterator> _name_to_module;
 
     public:
         inline module_table() = default;
@@ -78,9 +78,9 @@ namespace uwin::win32::ldr {
         }
 
         module* try_get_module(types::hmodule hmodule);
-        module* try_get_module(std::string const& name);
+        module* try_get_module(str::native const& name);
 
-        win32::ldr::module& get_module(const std::string& name);
+        win32::ldr::module& get_module(str::native const& name);
         win32::ldr::module& get_module(types::hmodule hmodule);
     };
 }

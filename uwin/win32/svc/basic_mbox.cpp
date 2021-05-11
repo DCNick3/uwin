@@ -10,7 +10,7 @@
 namespace uwin::win32::svc {
 
     mbox::RESULT
-    basic_mbox::show(std::string text, std::string caption, mbox::TYPE type) {
+    basic_mbox::show(str::native text, str::native caption, TYPE type) {
         sanitize_type(type);
 
         if (type != mbox::TYPE::TYPE_OK)

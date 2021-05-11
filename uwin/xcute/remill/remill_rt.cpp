@@ -5,6 +5,7 @@
 #include "xcute/remill/remill_state.h"
 #include "xcute/remill/remill_rt.h"
 #include "win32/dll/dispatcher.h"
+#include "util/str.h"
 
 #include <exception>
 
@@ -29,7 +30,14 @@ namespace uwin::xcute::remill {
     extern "C" Memory *uwin_xcute_remill_async_hyper_call(State& st, uint32_t pc, Memory *mem) {
         std::terminate();
     }
-    extern "C" [[noreturn]] void uwin_xcute_remill_abort(const char* reason) {
+    extern "C" [[noreturn]] void uwin_xcute_remill_abort(const char* format, ...) {
+        va_list arg;
+        va_start(arg, format);
+        auto str = util::format_printf_style_vl(format, arg);
+        va_end(arg);
+
+        throw std::runtime_error("remill_abort: " + str);
+
         std::terminate();
     }
     extern "C" [[noreturn]] Memory *uwin_xcute_remill_sync_hyper_call(State &st, uint32_t pc, Memory *mem) {

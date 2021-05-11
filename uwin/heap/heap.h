@@ -8,6 +8,7 @@
 #include "mem/tptr.h"
 #include "mem/mgr/target_mem_mgr.h"
 #include "util/except.h"
+#include "str/str.h"
 #include "heap/consts.h"
 #include "heap/span_group.h"
 
@@ -43,11 +44,18 @@ namespace uwin::heap {
         void free(mem::taddr ptr);
 
 
-        [[nodiscard]] inline mem::tptr<char> alloc_str(std::string const& s) {
+        [[nodiscard]] inline mem::tptr<char> alloc_str(str::narrow const& s) {
             auto tptr = alloc(s.size() + 1);
             auto hptr = _mem_mgr.ptr(tptr);
             memcpy(hptr, s.c_str(), s.size() + 1);
             return tptr.as<char>();
+        }
+        [[nodiscard]] inline mem::tptr<char16_t> alloc_str(str::wide const& s) {
+            static_assert(sizeof(char16_t) == 2);
+            auto tptr = alloc(s.size() * 2 + 2);
+            auto hptr = _mem_mgr.ptr(tptr);
+            memcpy(hptr, s.c_str(), s.size() + 2);
+            return tptr.as<char16_t>();
         }
 
         [[nodiscard]] inline mem::tptr<std::uint8_t> alloc_bytes(std::initializer_list<std::uint8_t> l) {

@@ -11,7 +11,7 @@ using uwin::win32::dll::KERNEL32_impl;
 
 TEST(Modules, NameNormalization) {
     auto test = [](const std::string& inp) {
-        return KERNEL32_impl::normalize_module_name(inp);
+        return KERNEL32_impl::normalize_module_name(uwin::str::native(inp)).raw_str();
     };
 
     ASSERT_EQ(test("kernel32"), "KERNEL32.DLL");

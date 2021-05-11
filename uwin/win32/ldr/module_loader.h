@@ -9,6 +9,7 @@
 #include "win32/ldr/target_module.h"
 #include "win32/ldr/module_table.h"
 #include "util/span.h"
+#include "str/str.h"
 
 #include <span>
 #include <sstream>
@@ -28,6 +29,7 @@ namespace uwin::win32::ldr {
     class module_loader {
         module_table& _module_table;
         mem::mgr::target_mem_mgr &_mem_mgr;
+        uconv const& _uconv;
 
         // kaitai-generated code is quite inefficient... But oh well
         kaitai::kstream _kaitai_stream;
@@ -44,12 +46,14 @@ namespace uwin::win32::ldr {
 
         module_loader(ldr::module_table& module_table,
                       mem::mgr::target_mem_mgr &mem_mgr,
+                      uconv const& uconv,
                       mem::taddr image_base,
                       std::span<const std::uint8_t> image,
                       std::string module_name)
                 :
                 _module_table(module_table),
                 _mem_mgr(mem_mgr),
+                _uconv(uconv),
                 _kaitai_stream(image),
                 _pe_image(&_kaitai_stream),
                 _image_base(image_base),
@@ -79,7 +83,7 @@ namespace uwin::win32::ldr {
             return *ptr(rva);
         }
 
-        inline std::string_view str(rva<char> rva) {
+        inline str::narrow_view str(rva<char> rva) {
             return _mem_mgr.str(resolve(rva));
         }
 
@@ -92,10 +96,11 @@ namespace uwin::win32::ldr {
 
         static inline target_module& load(ldr::module_table& module_table,
                                           mem::mgr::target_mem_mgr &mem_mgr,
+                                          uconv const& uconv,
                                           mem::taddr image_base,
                                           std::string name,
                                           std::span<std::uint8_t> const &image) {
-            module_loader ldr(module_table, mem_mgr, image_base, image, std::move(name));
+            module_loader ldr(module_table, mem_mgr, uconv, image_base, image, std::move(name));
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "EndlessLoop"
             return ldr.load_impl();

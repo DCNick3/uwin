@@ -9,7 +9,8 @@ add_executable(uwin-unit-tests
         HandleTable.cpp
         Heap.cpp
         Modules.cpp
-        String.cpp)
+        String.cpp
+        remill_stubs.cpp)
 
 target_link_libraries(uwin-unit-tests gtest_main uwin)
 add_test(NAME uwin-unit-tests COMMAND uwin-unit-tests)

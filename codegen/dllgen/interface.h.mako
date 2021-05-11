@@ -7,6 +7,7 @@
 #include "win32/dll/native_module.h"
 #include "ht/handle.h"
 #include "ht/kobj.h"
+#include "win32/uconv.h"
 
 #include "xcute/remill/remill_state.h"
 #include "xcute/remill/remill_rt.h"
@@ -16,8 +17,8 @@
 namespace uwin::win32::dll {
     class ${dll_name}_iface : public native_module {
     public:
-        explicit inline ${dll_name}_iface(mem::mgr::target_mem_mgr &target_mem_mgr, svc::locale &locale)
-            : native_module(target_mem_mgr, locale, "${dll_name}.DLL") {}
+        explicit inline ${dll_name}_iface(mem::mgr::target_mem_mgr &target_mem_mgr, uconv &uconv)
+            : native_module(target_mem_mgr, uconv, "${dll_name}.DLL") {}
     % for i, fun in funs:
         virtual ${repr(fun)};
     % endfor

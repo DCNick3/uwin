@@ -17,22 +17,37 @@ namespace uwin::win32::dll {
     // I should consider using some library for this, as it's quite... complicated
 
     uint32_t KERNEL32_impl::GetACP() {
-        return 1252; // Windows 3.1 Latin 1 (U.S., Western Europe)
+        return _uconv.get_ansi_codepage();
+
+    }
+
+    uint32_t KERNEL32_impl::GetOEMCP() {
+        return _uconv.get_oem_codepage();
     }
 
     bool KERNEL32_impl::GetCPInfo(std::uint32_t CodePage, uwin::mem::tptr<uwin::win32::types::CPINFO> lpCPInfo) {
-        if (CodePage != 1252)
-            throw util::not_implemented_error("Any codepage other than 1251");
+        if (CodePage == 0)
+            CodePage = GetACP();
+        if (CodePage == 1)
+            CodePage = GetOEMCP();
+
         auto hptr = _mem_mgr.ptr(lpCPInfo);
-        hptr->MaxCharSize = 1;
-        hptr->DefaultChar[0] = '?';
-        hptr->DefaultChar[1] = '\0';
-        memset(hptr->LeadByte, 0, sizeof(hptr->LeadByte));
-        return true;
+
+        switch (CodePage) {
+            case 1252:
+            case 437:
+                hptr->MaxCharSize = 1;
+                hptr->DefaultChar[0] = '?';
+                hptr->DefaultChar[1] = '\0';
+                memset(hptr->LeadByte, 0, sizeof(hptr->LeadByte));
+                return true;
+            default:
+                throw util::not_implemented_error(fmt::format("GetCPInfo for codepage {}", CodePage));
+        }
     }
 
     bool
-    KERNEL32_impl::GetStringTypeW(std::uint32_t dwInfoType, uwin::mem::tcptr<wchar_t> lpSrcStr, std::int32_t cchSrc,
+    KERNEL32_impl::GetStringTypeW(std::uint32_t dwInfoType, uwin::mem::tcptr<char16_t> lpSrcStr, std::int32_t cchSrc,
                                   uwin::mem::tptr<uint16_t> lpCharType) {
         // We emulate Win95, so no unicode
         _current_thread->set_last_error(error_code::ERROR_CALL_NOT_IMPLEMENTED);
@@ -122,8 +137,8 @@ namespace uwin::win32::dll {
     }
 
     int32_t
-    KERNEL32_impl::LCMapStringW(std::uint32_t Locale, std::uint32_t dwMapFlags, uwin::mem::tcptr<wchar_t> lpSrcStr,
-                                std::int32_t cchSrc, uwin::mem::tptr<wchar_t> lpDestStr, std::int32_t cchDest) {
+    KERNEL32_impl::LCMapStringW(std::uint32_t Locale, std::uint32_t dwMapFlags, uwin::mem::tcptr<char16_t> lpSrcStr,
+                                std::int32_t cchSrc, uwin::mem::tptr<char16_t> lpDestStr, std::int32_t cchDest) {
         // We emulate Win95, so no unicode
         _current_thread->set_last_error(error_code::ERROR_CALL_NOT_IMPLEMENTED);
         return false;

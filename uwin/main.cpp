@@ -14,7 +14,6 @@
 #include "ctx/thread.h"
 #include "win32/ldr/module_loader.h"
 #include "win32/svc/basic_mbox.h"
-#include "win32/svc/dummy_locale.h"
 #include "win32/dll/stub_exception.h"
 #include "log/log.h"
 #include "str/uconv.h"
@@ -137,7 +136,12 @@ int main(int argc, char** argv) {
 
         auto mapper = mem::create_host_mem_mapper();
 
-        ctx::env_param env_param{"C:\\EXECUTABLE.EXE", {}};
+        ctx::env_param env_param{
+            str::native("C:\\EXECUTABLE.EXE"),
+            {},
+            1252, // Windows 3.1 Latin 1 (U.S., Western Europe)
+            437, // OEM codepage corresponding to the ANSI 1252
+        };
 
         // Here a lot of objects are created implicitly as singletons.
         // This really reduces amount of boilerplate code. All hail dependency injection
@@ -154,8 +158,7 @@ int main(int argc, char** argv) {
                 di::bind<win32::dll::USER32_iface>.to<win32::dll::USER32_impl>(),
 
                 // bind win32 svc implementations
-                di::bind<win32::svc::mbox>.to<win32::svc::basic_mbox>(),
-                di::bind<win32::svc::locale>.to<win32::svc::dummy_locale>()
+                di::bind<win32::svc::mbox>.to<win32::svc::basic_mbox>()
         );
 
         auto &process_ctx = inj.create<ctx::process &>();
@@ -200,7 +203,8 @@ int main(int argc, char** argv) {
             auto exe_data = util::read_file(exe_path);
 
             auto &module = win32::ldr::module_loader::load(module_table,
-                                                           process_ctx._mem_mgr, mem::taddr(0x00400000), "MAIN",
+                                                           process_ctx._mem_mgr,
+                                                           process_ctx._uconv, mem::taddr(0x00400000), "MAIN",
                                                            {exe_data.data(), exe_data.size()});
 
 

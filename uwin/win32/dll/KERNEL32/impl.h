@@ -18,9 +18,9 @@ namespace uwin::win32::dll {
 
     public:
         explicit inline KERNEL32_impl(mem::mgr::target_mem_mgr &target_mem_mgr, ht::handletable &handletable, ctx::env &env,
-                               ctx::process_heap &process_heap, svc::locale &locale,
+                               ctx::process_heap &process_heap, uconv &uconv,
                                       ldr::module_table& module_table)
-            : KERNEL32_iface(target_mem_mgr, locale),
+            : KERNEL32_iface(target_mem_mgr, uconv),
               _handletable(handletable),
               _env(env), _process_heap(process_heap),
               _module_table(module_table) {}
@@ -66,18 +66,20 @@ namespace uwin::win32::dll {
 
         mem::tptr<char> GetCommandLineA() override;
 
-        mem::tptr<wchar_t> GetEnvironmentStringsW() override;
+        mem::tptr<char16_t> GetEnvironmentStringsW() override;
         mem::tptr<char> GetEnvironmentStrings() override;
 
         mem::tptr<char> GetEnvironmentStringsA() override;
 
         bool FreeEnvironmentStringsA(uwin::mem::tptr<char> arg0) override;
 
+        uint32_t GetOEMCP() override;
+
         uint32_t GetACP() override;
 
         bool GetCPInfo(std::uint32_t CodePage, uwin::mem::tptr<uwin::win32::types::CPINFO> lpCPInfo) override;
 
-        bool GetStringTypeW(std::uint32_t dwInfoType, uwin::mem::tcptr<wchar_t> lpSrcStr, std::int32_t cchSrc,
+        bool GetStringTypeW(std::uint32_t dwInfoType, uwin::mem::tcptr<char16_t> lpSrcStr, std::int32_t cchSrc,
                             uwin::mem::tptr<uint16_t> lpCharType) override;
 
         bool GetStringTypeA(std::uint32_t Locale, std::uint32_t dwInfoType, uwin::mem::tcptr<char> lpSrcStr,
@@ -86,8 +88,8 @@ namespace uwin::win32::dll {
         int32_t LCMapStringA(std::uint32_t Locale, std::uint32_t dwMapFlags, uwin::mem::tcptr<char> lpSrcStr,
                              std::int32_t cchSrc, uwin::mem::tptr<char> lpDestStr, std::int32_t cchDest) override;
 
-        int32_t LCMapStringW(std::uint32_t Locale, std::uint32_t dwMapFlags, uwin::mem::tcptr<wchar_t> lpSrcStr,
-                             std::int32_t cchSrc, uwin::mem::tptr<wchar_t> lpDestStr, std::int32_t cchDest) override;
+        int32_t LCMapStringW(std::uint32_t Locale, std::uint32_t dwMapFlags, uwin::mem::tcptr<char16_t> lpSrcStr,
+                             std::int32_t cchSrc, uwin::mem::tptr<char16_t> lpDestStr, std::int32_t cchDest) override;
 
         uint32_t GetModuleFileNameA(uwin::win32::types::hmodule hModule, uwin::mem::tptr<char> lpFilename,
                                     std::uint32_t nSize) override;
@@ -110,6 +112,8 @@ namespace uwin::win32::dll {
         CreateEventA(uwin::mem::tptr<uwin::win32::types::SECURITY_ATTRIBUTES> lpEventAttributes, bool bManualReset,
                      bool bInitialState, uwin::mem::tcptr<char> lpName) override;
 
-        static std::string normalize_module_name(std::string_view unnormalized);
+        mem::tptr<char16_t> GetCommandLineW() override;
+
+        static str::native normalize_module_name(str::native_view unnormalized);
     };
 }

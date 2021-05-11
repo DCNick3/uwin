@@ -31,13 +31,13 @@ namespace uwin::win32::dll {
     }
 
     mem::tptr<char> KERNEL32_impl::GetCommandLineA() {
-        return _env._command_line;
+        return _env._command_line_ansi_ptr;
     }
 
-    mem::tptr<wchar_t> KERNEL32_impl::GetEnvironmentStringsW() {
+    mem::tptr<char16_t> KERNEL32_impl::GetEnvironmentStringsW() {
         // We emulate Win95, so no unicode
         _current_thread->set_last_error(error_code::ERROR_CALL_NOT_IMPLEMENTED);
-        return mem::tptr<wchar_t>(0);
+        return mem::tptr<char16_t>(0);
     }
 
     mem::tptr<char> KERNEL32_impl::GetEnvironmentStrings() {
@@ -51,6 +51,10 @@ namespace uwin::win32::dll {
     bool KERNEL32_impl::FreeEnvironmentStringsA(uwin::mem::tptr<char> arg0) {
         _process_heap->free(arg0.as_taddr());
         return true;
+    }
+
+    mem::tptr<char16_t> KERNEL32_impl::GetCommandLineW() {
+        return _env._command_line_wide_ptr;
     }
 
     uint32_t KERNEL32_impl::GetModuleFileNameA(uwin::win32::types::hmodule hModule, uwin::mem::tptr<char> lpFilename,
@@ -75,8 +79,9 @@ namespace uwin::win32::dll {
         //return last - 1;
     }
 
-    std::string KERNEL32_impl::normalize_module_name(std::string_view unnormalized) {
-        std::string module_name = util::ascii_to_upper(unnormalized);
+    str::native KERNEL32_impl::normalize_module_name(str::native_view unnormalized) {
+        // TODO: handle non-ascii characters too
+        std::string module_name = util::ascii_to_upper(unnormalized.raw_view());
 
         // the logic is carefully reconstructed according to win95's kernel32.dll
         auto extension_pos = module_name.find_last_of('.');
@@ -87,7 +92,7 @@ namespace uwin::win32::dll {
             module_name += ".DLL";
         }
 
-        return module_name;
+        return str::native(module_name);
     }
 
     types::hmodule KERNEL32_impl::GetModuleHandleA(uwin::mem::tcptr<char> lpModuleName) {
@@ -96,7 +101,7 @@ namespace uwin::win32::dll {
                 // TODO: actually return a main module handle
                 return types::hmodule(0);
             } else {
-                auto module_name = normalize_module_name(tstr(lpModuleName));
+                auto module_name = normalize_module_name(nstr(lpModuleName));
 
                 // TODO: allow to use full paths
 
@@ -124,7 +129,8 @@ namespace uwin::win32::dll {
             if ((lpProcName.value() & 0xffff0000) == 0)
                 throw util::not_implemented_error("GetProcAddress by ordinal");
 
-            auto name = std::string(tstr(lpProcName));
+            // this is not an ANSI name, just plain old bytes
+            std::string name(tstr(lpProcName).raw_view());
 
             auto result = module->try_resolve(name);
 

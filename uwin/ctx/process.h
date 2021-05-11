@@ -13,6 +13,9 @@
 #include "ctx/process_heap.h"
 #include "heap/heap.h"
 
+namespace uwin::win32 {
+    class uconv;
+}
 namespace uwin::win32::ldr {
     class module_table;
 }
@@ -22,6 +25,7 @@ namespace uwin::ctx {
     class process {
     public:
         mem::mgr::target_mem_mgr& _mem_mgr;
+        win32::uconv const& _uconv;
         dll& _dll;
         ht::handlelike_allocator& _handlelike_allocator;
         ht::handletable& _handle_table;

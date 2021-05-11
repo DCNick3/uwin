@@ -10,6 +10,7 @@
 #include "mem/tptr.h"
 #include "mem/mgr/query_results.h"
 #include "win32/types/types.h"
+#include "str/str.h"
 
 #include <memory>
 #include <set>
@@ -128,10 +129,10 @@ namespace uwin::mem::mgr {
         }
 
         template<bool C>
-        inline std::string_view str(mem::tptr<char, C> tptr) const {
+        inline str::narrow_view str(mem::tptr<char, C> tptr) const {
             auto ptr = &deref(tptr);
             auto size = strlen(ptr); // this can blow up. Add a length limit? Something else?
-            return std::string_view(ptr, size);
+            return str::narrow_view(ptr, size);
         }
 
         [[nodiscard]] inline std::uint8_t *get_region_base() const { return _host_region.begin(); }

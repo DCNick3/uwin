@@ -6,6 +6,7 @@
 
 #include "util/enumu.h"
 #include "win32/error.h"
+#include "str/str.h"
 
 #include <string>
 
@@ -56,7 +57,7 @@ namespace uwin::win32::svc {
 
         // How do we handle windows, again?
         // For now I will not put the hWnd parameter here, as windows implementation (will be)is a stub anyways
-        virtual RESULT show(std::string text, std::string caption, TYPE type) = 0;
+        virtual RESULT show(str::native text, str::native caption, TYPE type) = 0;
 
     protected:
         static inline void sanitize_type(TYPE type_composite);

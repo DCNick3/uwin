@@ -32,8 +32,10 @@ namespace uwin::str {
         return wide(std::move(res));
     }
 
-    // TODO: are they REALLY the same as MS?
+    // TODO: are encodings in the icu REALLY the same as MS?
     // Maybe I should use MS data?...
+    // Overall, it seems that doing something similar to what what wine is doing with their make_unicode script might be a good idea
+    // But it's too much to implement; kludges will be enough for now
     static std::int32_t codepage_to_ccsid(std::uint32_t cp) {
         switch (cp) {
             case 1251: return 5347; // use euro-extended page
@@ -77,7 +79,7 @@ namespace uwin::str {
 
             if (status == U_BUFFER_OVERFLOW_ERROR) {
                 target_str.resize(target_str.size() * 2);
-                target_end = target_str.data() + target_str.capacity();
+                continue;
             } else if (status.isFailure()) {
                 throw icu_error(status.errorName());
             }
@@ -91,5 +93,41 @@ namespace uwin::str {
 
     native narrow_to_native(std::uint32_t codepage, narrow_view src) {
         return wide_to_native(narrow_to_wide(codepage, src));
+    }
+
+
+    narrow wide_to_narrow(std::uint32_t codepage, wide_view src_view) {
+        auto conv = open_converter(codepage_to_ccsid(codepage));
+
+        std::string target_str;
+        target_str.resize(src_view.size());
+
+        auto src = src_view.data();
+        auto src_end = src_view.data() + src_view.size();
+
+        std::size_t pos = 0;
+        icu::ErrorCode status;
+        while (true) {
+            auto target = target_str.data();
+            auto target_end = target_str.data() + target_str.size();
+            ucnv_fromUnicode(conv.get(), &target, target_end, &src, src_end, nullptr, true, status);
+            pos = target - target_str.data();
+
+            if (status == U_BUFFER_OVERFLOW_ERROR) {
+                target_str.resize(target_str.size() * 2);
+                continue;
+            } else if (status.isFailure()) {
+                throw icu_error(status.errorName());
+            }
+            break;
+        }
+
+        target_str.resize(pos);
+
+        return narrow(std::move(target_str));
+    }
+
+    narrow native_to_narrow(std::uint32_t codepage, native_view src) {
+        return wide_to_narrow(codepage, native_to_wide(src));
     }
 }

@@ -18,7 +18,7 @@ namespace uwin::win32::ldr {
         return &get_module(const_cast<module_entry&>(*it));
     }
 
-    module *module_table::try_get_module(const std::string &name) {
+    module *module_table::try_get_module(const str::native& name) {
         auto it = _name_to_module.find(name);
         if (it == _name_to_module.end())
             return nullptr;
@@ -26,7 +26,7 @@ namespace uwin::win32::ldr {
         return &get_module(const_cast<module_entry&>(*it->second));
     }
 
-    win32::ldr::module &module_table::get_module(const std::string &name) {
+    win32::ldr::module &module_table::get_module(const str::native& name) {
         auto res = try_get_module(name);
         if (res == nullptr)
             throw uwin::win32::ldr::loader_exception(fmt::format("can't find module with name {}", name));

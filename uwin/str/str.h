@@ -4,7 +4,10 @@
 
 #pragma once
 
+#include "fmt/format.h"
+
 #include <string>
+#include <compare>
 
 namespace uwin::str {
     namespace detail {
@@ -19,6 +22,7 @@ namespace uwin::str {
             {
             public:
                 inline explicit view(V s) : V(s) {}
+                inline view(C const* p, std::size_t count) : V(p, count) {}
                 [[nodiscard]] inline V raw_view() const { return *this; }
 
                 using V::size;
@@ -31,6 +35,14 @@ namespace uwin::str {
 
             using S::size;
             using S::data;
+            using S::c_str;
+            using S::begin;
+            using S::end;
+
+            // can't using it for some reason
+            auto operator<=>(generic_str const& other) const {
+                return raw_str() <=> other.raw_str();
+            }
 
             inline bool operator==(generic_str const& o) {
                 return raw_view() == o.raw_view();
@@ -68,3 +80,19 @@ namespace uwin::str {
     using wide_view = wide::view;
 
 }
+
+// Hack!! (we are a descendant of std::string, so the provided implementation breaks in attempt to convert it to std::string_view)
+template<>
+struct fmt::v7::detail::is_string<uwin::str::native>
+{
+    static constexpr const bool value = false;
+};
+
+template<>
+struct fmt::formatter<uwin::str::native> : formatter<string_view> {
+    // parse is inherited from formatter<string_view>.
+    template<typename FormatContext>
+    auto format(uwin::str::native const& s, FormatContext &ctx) {
+        return formatter<string_view>::format(s.raw_view(), ctx);
+    }
+};

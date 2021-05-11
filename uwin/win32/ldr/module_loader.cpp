@@ -193,7 +193,11 @@ namespace uwin::win32::ldr {
                 break; // end-of-table
 
             // TODO: should we use the same normalization algorithm as GetModuleHandle does?
-            auto dll_name = util::ascii_to_upper(str(entry.name));
+            // TODO: unicode? how does windows loader handle this?
+            auto dll_name =
+                    _uconv.ansi_to_native(
+                            str::narrow(util::ascii_to_upper(str(entry.name).raw_view()))
+                    );
 
             auto& module = _module_table.get_module(dll_name);
 

@@ -9,6 +9,6 @@
 namespace uwin::win32::svc {
     class basic_mbox : public mbox {
     public:
-        RESULT show(std::string text, std::string caption, TYPE type) override;
+        RESULT show(str::native text, str::native caption, TYPE type) override;
     };
 }

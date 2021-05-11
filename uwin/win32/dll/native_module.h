@@ -4,16 +4,16 @@
 #include "ctx/thread.h"
 #include "xcute/remill/remill_rt.h"
 #include "win32/ldr/module.h"
-#include "win32/svc/locale.h"
 #include "win32/dll/vararg_ctx.h"
+#include "win32/uconv.h"
 
 namespace uwin::win32::dll {
     class native_module : public ldr::module {
         mem::tmem_region _memory_region;
 
     public:
-        explicit native_module(mem::mgr::target_mem_mgr &target_mem_mgr, svc::locale &locale, std::string name)
-                : _mem_mgr(target_mem_mgr), _locale(locale), _name(std::move(name)),
+        explicit native_module(mem::mgr::target_mem_mgr &target_mem_mgr, uconv const &uconv, std::string name)
+                : _mem_mgr(target_mem_mgr), _uconv(uconv), _name(std::move(name)),
                     // TODO: put some useful info into this region so that it looks more like genuine PE image
                     _memory_region(target_mem_mgr.reserve_dynamic(mem::mgr::consts::page_size)){
         }
@@ -26,7 +26,7 @@ namespace uwin::win32::dll {
 
     protected:
         mem::mgr::target_mem_mgr &_mem_mgr;
-        svc::locale& _locale;
+        uconv const& _uconv;
         ctx::thread* _current_thread{};
         std::string _name;
 
@@ -97,12 +97,19 @@ namespace uwin::win32::dll {
             state.gpr.rsp.dword += 4;
         }
 
-        [[nodiscard]] inline std::string_view tstr(mem::tcptr<char> ptr) const {
+        // TODO: implementing COM projections might facilitate moving those helpers to other class
+        //  (or even making it a shared one, without storing all the references?..)
+
+        [[nodiscard]] inline str::narrow_view tstr(mem::tcptr<char> ptr) const {
             return _mem_mgr.str(ptr);
         }
 
-        [[nodiscard]] inline std::string nstr(mem::tcptr<char> ptr) const {
-            return _locale.ascii_to_native(tstr(ptr));
+        [[nodiscard]] inline str::native nstr(mem::tcptr<char> ptr) const {
+            return _uconv.ansi_to_native(tstr(ptr));
+        }
+
+        [[nodiscard]] inline str::native noemstr(mem::tcptr<char> ptr) const {
+            return _uconv.oem_to_native(tstr(ptr));
         }
 
         template<typename TRes>
