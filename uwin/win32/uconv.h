@@ -6,7 +6,7 @@
 
 #include <cstdint>
 
-#include "ctx/env.h"
+#include "ctx/codepages.h"
 #include "str/uconv.h"
 
 namespace uwin::win32 {
@@ -14,9 +14,9 @@ namespace uwin::win32 {
         std::uint32_t _ansi_codepage;
         std::uint32_t _oem_codepage;
     public:
-        inline explicit uconv(ctx::env_param const& env_param)
-            : _ansi_codepage(env_param.ansi_codepage),
-              _oem_codepage(env_param.oem_codepage) {
+        inline explicit uconv(ctx::codepages const& cp)
+            : _ansi_codepage(cp.ansi_codepage),
+              _oem_codepage(cp.oem_codepage) {
         }
         static inline str::native wide_to_native(str::wide_view src) {
             return str::wide_to_native(src);

@@ -9,7 +9,5 @@ namespace uwin::ctx {
         // TODO: make sure that boost::di will not inject it automagically
         str::native command_line;
         std::vector<str::narrow> environment;
-        std::uint32_t ansi_codepage;
-        std::uint32_t oem_codepage;
     };
 }

@@ -138,7 +138,9 @@ int main(int argc, char** argv) {
 
         ctx::env_param env_param{
             str::native("C:\\EXECUTABLE.EXE"),
-            {},
+            {}
+        };
+        ctx::codepages codepages{
             1252, // Windows 3.1 Latin 1 (U.S., Western Europe)
             437, // OEM codepage corresponding to the ANSI 1252
         };
@@ -149,6 +151,7 @@ int main(int argc, char** argv) {
                 // bind some core objects
                 di::bind<mem::base_mem_mapper>.to(mapper),
                 di::bind<ctx::env_param>.to(env_param),
+                di::bind<ctx::codepages>.to(codepages),
 
                 di::bind<ctx::process_heap>,
                 di::bind<ctx::process>,
