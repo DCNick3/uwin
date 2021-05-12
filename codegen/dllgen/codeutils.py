@@ -34,33 +34,34 @@ def cdecl_result(type: CTYPECONV, varname: str):
 
 def gen_remill_entry(fun: FUN):
     res = ''
+    pad = '        '
     if fun.calling_convention == 'stdcall':
         assert not fun.vararg
         for i, arg in enumerate(fun.args):
-            res += stdcall_arg(arg.argtype, arg.argname, i)
+            res += pad + stdcall_arg(arg.argtype, arg.argname, i)
         res += '\n'
         call_str = f'{fun.name}({", ".join(f"std::move({x.argname})" for x in fun.args)})'
         if fun.ret_type is None:
-            res += f'{call_str};\n'
+            res += pad + f'{call_str};\n'
         else:
-            res += f'{fun.ret_type.uwtype} result = {call_str};\n'
-            res += stdcall_result(fun.ret_type, 'result')
+            res += pad + f'{fun.ret_type.uwtype} result = {call_str};\n'
+            res += pad + stdcall_result(fun.ret_type, 'result')
         res += '\n'
-        res += 'stdcall_ret(st, %d);\n' % len(fun.args)
+        res += pad + 'stdcall_ret(st, %d);\n' % len(fun.args)
         return res
     elif fun.calling_convention == 'cdecl':
         for i, arg in enumerate(fun.args):
-            res += cdecl_arg(arg.argtype, arg.argname, i)
+            res += pad + cdecl_arg(arg.argtype, arg.argname, i)
         res += '\n'
         call_str = f'{fun.name}({", ".join(f"std::move({x.argname})" for x in fun.args)}' + \
             f'{"" if not fun.vararg else ", cdecl_get_vararg_ctx(st, " + str(len(fun.args)) + ")"})'
         if fun.ret_type is None:
-            res += f'{call_str};\n'
+            res += pad + f'{call_str};\n'
         else:
-            res += f'{fun.ret_type.uwtype} result = {call_str};\n'
-            res += cdecl_result(fun.ret_type, 'result')
+            res += pad + f'{fun.ret_type.uwtype} result = {call_str};\n'
+            res += pad + cdecl_result(fun.ret_type, 'result')
         res += '\n'
-        res += 'cdecl_ret(st, %d);\n' % len(fun.args)
+        res += pad + 'cdecl_ret(st, %d);\n' % len(fun.args)
         return res
     else:
         raise RuntimeError("Unknown calling convention: " + fun.calling_convention)

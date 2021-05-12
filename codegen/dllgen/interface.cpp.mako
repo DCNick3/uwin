@@ -27,7 +27,7 @@ namespace uwin::win32::dll {
         ## here we do conversion of parameters
         _current_thread = st.thread_ctx;
         log::trace("${dll_name}!${fun.name}(...)");
-        ${codeutils.gen_remill_entry(fun)}
+${codeutils.gen_remill_entry(fun)}
     }
 
     /* static */ uwin::xcute::remill::Memory *${class_name}::${fun.name}_remill_entry(uwin::xcute::remill::StateEx& st,
