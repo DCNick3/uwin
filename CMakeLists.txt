@@ -20,5 +20,6 @@ add_subdirectory(kaitai-rt)
 
 add_subdirectory(test)
 add_subdirectory(uwin)
+add_subdirectory(tools/winerr)
 
 

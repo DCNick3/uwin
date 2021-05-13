@@ -28,4 +28,13 @@ namespace uwin::win32 {
             default: std::terminate();
         }
     }
+
+    bool error_code_known(error_code code) {
+        switch (static_cast<long>(code)) {
+        % for code, slug, desc in errors:
+            case ${code}: return true;
+        % endfor
+            default: return false;
+        }
+    }
 }
