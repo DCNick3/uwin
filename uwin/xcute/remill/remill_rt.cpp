@@ -25,17 +25,17 @@ namespace uwin::xcute::remill {
     }
 
     extern "C" Memory *uwin_xcute_remill_error(State& st, uint32_t pc, Memory *mem) {
-        std::terminate();
+        util::runtime_error("uwin_xcute_remill_error called");
     }
 
     extern "C" Memory *uwin_xcute_remill_async_hyper_call(State& st, uint32_t pc, Memory *mem) {
-        std::terminate();
+        util::runtime_error("uwin_xcute_remill_async_hyper_call called");
     }
     extern "C" [[noreturn]] void uwin_xcute_remill_abort(const char* message) {
         util::runtime_error("remill_abort: {}", message);
     }
     extern "C" Memory *uwin_xcute_remill_sync_hyper_call(State &st, uint32_t pc, Memory *mem) {
-        std::terminate();
+        util::runtime_error("uwin_xcute_remill_sync_hyper_call called");
     }
 
     extern "C" Memory *uwin_xcute_remill_dispatch_unknown(State &st, uint32_t pc, Memory *mem) {
