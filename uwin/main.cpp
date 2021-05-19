@@ -220,12 +220,16 @@ int main(int argc, char** argv) {
             state.process_ctx = &process_ctx;
             state.thread_ctx = &thread_ctx;
 
-            auto stack_region = mgr.reserve_dynamic(0x10000);
+            auto stack_region = mgr.reserve_dynamic(0x400000 /* 4 MiB */);
 
             mgr.commit(stack_region, mem::mgr::tprot::rw);
 
+            log::debug("Allocated stack region: {}", stack_region);
+
             auto teb_region = mgr.reserve_dynamic(0x1000);
             mgr.commit(teb_region, mem::mgr::tprot::rw);
+
+            log::debug("Allocated teb region: {}", teb_region);
 
 
             state.addr.fs_base.dword = teb_region.begin().value();

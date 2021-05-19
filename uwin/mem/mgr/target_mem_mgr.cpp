@@ -183,4 +183,8 @@ namespace uwin::mem::mgr {
             map.erase(map.size() - 1);
         return map;
     }
+
+    void *target_mem_mgr::ptr_raw(taddr::tvalue addr) const {
+        return ptr(taddr(addr));
+    }
 }
