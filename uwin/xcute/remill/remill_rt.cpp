@@ -6,6 +6,7 @@
 #include "xcute/remill/remill_rt.h"
 #include "win32/dll/dispatcher.h"
 #include "util/str.h"
+#include "util/except.h"
 
 #include <exception>
 
@@ -30,18 +31,19 @@ namespace uwin::xcute::remill {
     extern "C" Memory *uwin_xcute_remill_async_hyper_call(State& st, uint32_t pc, Memory *mem) {
         std::terminate();
     }
-    extern "C" [[noreturn]] void uwin_xcute_remill_abort(const char* format, ...) {
-        va_list arg;
-        va_start(arg, format);
-        auto str = util::format_printf_style_vl(format, arg);
-        va_end(arg);
-
-        throw std::runtime_error("remill_abort: " + str);
-
+    extern "C" [[noreturn]] void uwin_xcute_remill_abort(const char* message) {
+        util::runtime_error("remill_abort: {}", message);
+    }
+    extern "C" Memory *uwin_xcute_remill_sync_hyper_call(State &st, uint32_t pc, Memory *mem) {
         std::terminate();
     }
-    extern "C" [[noreturn]] Memory *uwin_xcute_remill_sync_hyper_call(State &st, uint32_t pc, Memory *mem) {
-        std::terminate();
+
+    extern "C" Memory *uwin_xcute_remill_dispatch_unknown(State &st, uint32_t pc, Memory *mem) {
+        util::runtime_error("remill execution was dispatched to 0x{:08x}, but this address was not recompiled", pc);
+    }
+
+    extern "C" Memory *uwin_xcute_remill_missing_block(State &st, uint32_t pc, Memory *mem) {
+        util::runtime_error("uwin_xcute_remill_missing_block at 0x{:08x}", pc);
     }
 
     Memory* enter_target_code(mem::mgr::target_mem_mgr &mem_mgr, StateEx &remill_state) {

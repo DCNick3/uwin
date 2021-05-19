@@ -20,6 +20,8 @@ namespace uwin::xcute::remill {
     extern "C" Memory *uwin_xcute_remill_dispatch(State& st, uint32_t pc, Memory *mem);
     extern "C" Memory *uwin_xcute_remill_error(State& st, uint32_t pc, Memory *mem);
     extern "C" Memory *uwin_xcute_remill_async_hyper_call(State& st, uint32_t pc, Memory *mem);
-    extern "C" [[noreturn]] void uwin_xcute_remill_abort(const char* reason, ...);
-    extern "C" [[noreturn]] Memory *uwin_xcute_remill_sync_hyper_call(State &st, uint32_t pc, Memory *mem);
+    extern "C" [[noreturn]] void uwin_xcute_remill_abort(const char* reason);
+    extern "C" Memory *uwin_xcute_remill_sync_hyper_call(State &st, uint32_t pc, Memory *mem);
+    extern "C" Memory *uwin_xcute_remill_dispatch_unknown(State &st, uint32_t pc, Memory *mem);
+    extern "C" Memory *uwin_xcute_remill_missing_block(State &st, uint32_t pc, Memory *mem);
 }

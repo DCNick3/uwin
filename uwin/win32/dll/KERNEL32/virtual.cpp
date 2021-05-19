@@ -71,7 +71,7 @@ namespace uwin::win32::dll {
             case mem::mgr::tprot::rx:   res = PROTECTION::EXECUTE_READ; break;
             case mem::mgr::tprot::rwx:  res = PROTECTION::EXECUTE_READWRITE; break;
             default:
-                throw std::runtime_error(fmt::format("Unmappable tprot: {}", prot));
+                util::runtime_error("Unmappable tprot: {}", prot);
         }
 
         return static_cast<std::uint32_t>(res);
