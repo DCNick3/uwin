@@ -14,6 +14,7 @@
 
 #include <cassert>
 #include <variant>
+#include <vector>
 
 namespace uwin::mem::mgr {
     // here we have several hacks going on

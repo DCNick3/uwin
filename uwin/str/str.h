@@ -18,6 +18,10 @@ namespace uwin::str {
             using S = std::basic_string<C>;
             using V = std::basic_string_view<C>;
         public:
+            using raw_string_t = S;
+            using raw_view_t = V;
+            using char_t = C;
+
             class view : V
             {
             public:
