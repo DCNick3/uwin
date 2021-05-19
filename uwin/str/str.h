@@ -86,8 +86,14 @@ namespace uwin::str {
 }
 
 // Hack!! (we are a descendant of std::string, so the provided implementation breaks in attempt to convert it to std::string_view)
+// TODO: report upstream
 template<>
 struct fmt::v7::detail::is_string<uwin::str::native>
+{
+    static constexpr const bool value = false;
+};
+template<>
+struct fmt::v7::detail::is_string<uwin::str::native_view>
 {
     static constexpr const bool value = false;
 };
@@ -97,6 +103,15 @@ struct fmt::formatter<uwin::str::native> : formatter<string_view> {
     // parse is inherited from formatter<string_view>.
     template<typename FormatContext>
     auto format(uwin::str::native const& s, FormatContext &ctx) {
+        return formatter<string_view>::format(s.raw_view(), ctx);
+    }
+};
+
+template<>
+struct fmt::formatter<uwin::str::native_view> : formatter<string_view> {
+    // parse is inherited from formatter<string_view>.
+    template<typename FormatContext>
+    auto format(uwin::str::native_view const& s, FormatContext &ctx) {
         return formatter<string_view>::format(s.raw_view(), ctx);
     }
 };
