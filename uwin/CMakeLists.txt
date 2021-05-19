@@ -78,4 +78,5 @@ include(UWinEntry)
 uwin_entry(NAME FloatTest EXE /home/dcnick3/trash/homm3-switch/code/test-exe/msvc/FloatTest/Release/FloatTest.exe)
 uwin_entry(NAME SortTest EXE /home/dcnick3/trash/homm3-switch/code/test-exe/msvc/SortTest/Release/SortTest.exe)
 uwin_entry(NAME OpenWatcomHelloWorld EXE /home/dcnick3/trash/homm3-switch/code/test-exe/owc/hello_world.exe)
+uwin_entry(NAME OpenWatcomMatrix EXE /home/dcnick3/trash/homm3-switch/code/test-exe/owc-new/build/matrix.exe)
 
