@@ -76,19 +76,21 @@ namespace uwin::mem::mgr {
 
     pages_region::query_result pages_region::query(taddr ptr) const {
         assert(util::is_aligned(ptr, consts::page_size));
-        auto first_page = tmem_region(ptr, consts::page_size).relative_to(*this) / consts::page_size;
-        auto first_page_state = _page_states[first_page.begin().value()];
-        taddr::tvalue end_page_index = first_page.begin().value() + 1;
-        while (end_page_index < size() / consts::page_size && _page_states[end_page_index] == first_page_state)
+        auto first_page_index = (tmem_region(ptr, consts::page_size).relative_to(*this) / consts::page_size).begin().value();
+        auto poked_page_state = _page_states[first_page_index];
+        taddr::tvalue end_page_index = first_page_index + 1;
+        while (end_page_index < size() / consts::page_size && _page_states[end_page_index] == poked_page_state)
             end_page_index++;
+        while (first_page_index > 0 && _page_states[first_page_index - 1] == poked_page_state)
+            first_page_index--;
 
-        auto pages_size = end_page_index - first_page.begin().value();
+        auto pages_size = end_page_index - first_page_index;
 
         tmem_region base_region(*this); // NOLINT(cppcoreguidelines-slicing)
 
-        auto region = tmem_region(ptr, pages_size * consts::page_size);
-        if (first_page_state.commited)
-            return query_results::committed{region, base_region, first_page_state.prot()};
+        auto region = tmem_region(this->begin() + first_page_index * consts::page_size, pages_size * consts::page_size);
+        if (poked_page_state.commited)
+            return query_results::committed{region, base_region, poked_page_state.prot()};
         return query_results::reserved{region, base_region};
     }
 }

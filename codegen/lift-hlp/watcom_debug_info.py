@@ -35,7 +35,7 @@ def try_get_watcom_debug_info(pe, filename) -> None or list:
 
         f.seek(-info_size, 2)
 
-        # we could have pyelftools, but openwatcom seems to generate somewhat broken DWARF info
+        # we could have used pyelftools, but openwatcom seems to generate somewhat broken DWARF info
         #       and pyelftools doesn't handle it well
         # so, instead we rely on readelf and parse it's output :shrug:
 

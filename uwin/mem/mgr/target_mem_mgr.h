@@ -94,11 +94,13 @@ namespace uwin::mem::mgr {
         }
 
         template<typename T>
-        inline auto ptr(tcptr<T> addr) const {
+        [[nodiscard]] inline auto ptr(tcptr<T> addr) const {
             auto res = _host_region.begin() + addr.value();
             assert(res < _host_region.end());
             return reinterpret_cast<T const *>(res);
         }
+
+        [[nodiscard]] [[maybe_unused]] void* ptr_raw(taddr::tvalue addr) const;
 
         [[nodiscard]] inline hmem_region ptr(tmem_region const &region) const {
             return {ptr<std::uint8_t>(region.begin()), region.size()};
