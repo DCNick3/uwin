@@ -166,4 +166,8 @@ namespace uwin::win32::dll {
             return _handletable.emplace<kobj::event>().as_kobj();
         });
     }
+
+    bool KERNEL32_impl::CloseHandle(uwin::ht::handle<uwin::ht::kobj> hObject) {
+        return _handletable.close(hObject);
+    }
 }

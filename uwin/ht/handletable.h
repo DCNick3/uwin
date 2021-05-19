@@ -72,10 +72,10 @@ namespace uwin::ht {
         }
 
         template<typename T>
-        void close(handle<T> handle) {
+        bool close(handle<T> handle) {
             static_assert(std::is_base_of<kobj, T>::value, "T must be a descendant of kobj");
 
-            _table.erase(handle.value());
+            return _table.erase(handle.value()) > 0;
         }
 
     };

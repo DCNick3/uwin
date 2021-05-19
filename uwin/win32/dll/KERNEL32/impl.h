@@ -114,6 +114,8 @@ namespace uwin::win32::dll {
 
         mem::tptr<char16_t> GetCommandLineW() override;
 
+        bool CloseHandle(uwin::ht::handle<uwin::ht::kobj> hObject) override;
+
         static str::native normalize_module_name(str::native_view unnormalized);
     };
 }
