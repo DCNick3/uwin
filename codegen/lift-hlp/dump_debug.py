@@ -9,4 +9,5 @@ if __name__ == '__main__':
     pe = pefile.PE(fname)
     debug = try_get_watcom_debug_info(pe, fname)
     for x in debug:
-        print(f"0x{debug[x]:00000000x} {x}")
+        lo, hi = debug[x]
+        print(f"0x{lo:00000000x}{'             ' if not hi else f' - 0x{hi:00000000x}'} {x}")

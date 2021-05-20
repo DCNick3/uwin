@@ -92,7 +92,7 @@ def extract_code_and_debug_info(exe_name):
 
             debug_info = try_get_watcom_debug_info(pe, exe_name)
 
-            extra_code_addresses = list(set(debug_info.values()))
+            extra_code_addresses = list(set(map(lambda x: x[0],debug_info.values())))
             name_map = {v: k for k, v in debug_info.items()}
 
             spinner.ok("✓")
@@ -146,7 +146,7 @@ def do_the_thing(exe_name, extra_code_addresses, o_path):
         with open(bbs_path, 'w') as f:
             f.write('\n'.join(map(str, bbs)))
         with open(nm_path, 'w') as f:
-            f.write('\n'.join(map(lambda x: ' '.join(map(str, x)), name_map.items())))
+            f.write('\n'.join(map(lambda x: f"{x[0][0]} {x[0][1]} {x[1]}", name_map.items())))
         with open(code_path, 'wb') as f:
             f.write(code_data)
 

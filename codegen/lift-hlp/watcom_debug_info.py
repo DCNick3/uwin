@@ -4,6 +4,7 @@ import subprocess
 import tempfile
 import re
 from pathlib import Path
+import bisect
 
 # master_dbg_header from https://github.com/open-watcom/open-watcom-v2/blob/047386398d3b538c8ba9792714e6143b1f44f0ca/bld/watcom/h/wdbginfo.h#L101
 master_dbg_header_format = "<HBBBBHHI"
@@ -53,11 +54,25 @@ def try_get_watcom_debug_info(pe, filename) -> None or list:
         funs = dict()
 
         pc_offset = pe.OPTIONAL_HEADER.ImageBase + pe.OPTIONAL_HEADER.BaseOfCode
+        pc_size = pe.OPTIONAL_HEADER.SizeOfCode
+
+        # a dummy sentinel
+        fun_addrs = [pc_offset + pc_size]
 
         for tag, attrs in dies:
             if tag == 'DW_TAG_label' or tag == 'DW_TAG_subprogram':
                 attrs_dict = dict(READELF_DWARF_DIE_ATTR_REGEX.findall(attrs))
-                funs[attrs_dict['DW_AT_name']] = pc_offset + int(attrs_dict['DW_AT_low_pc'], 16)
+                lo = pc_offset + int(attrs_dict['DW_AT_low_pc'], 16)
+                funs[attrs_dict['DW_AT_name']] = lo
+                fun_addrs.append(lo)
+
+        fun_addrs.sort()
+
+        for fname in funs:
+            lo = funs[fname]
+            idx = bisect.bisect_right(fun_addrs, lo)
+            hi = fun_addrs[idx]
+            funs[fname] = (lo, hi)
 
         return funs
 
