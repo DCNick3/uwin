@@ -1,10 +1,8 @@
 
 include(PythonVirtualEnv)
 
-set(LIFT_HLP_DIR "${CMAKE_SOURCE_DIR}/codegen/lift-hlp")
-set(LIFT_HLP_PY "${LIFT_HLP_DIR}/main.py")
+set(LIFT_HLP "${CONAN_BIN_DIRS_UWIN-REMILL}/uwin-lift-hlp")
 
-add_requirements_txt_to_virtualenv("${LIFT_HLP_DIR}/requirements.txt")
 
 function(uwin_entry)
     set(options)
@@ -21,9 +19,10 @@ function(uwin_entry)
 
     add_custom_command(
             OUTPUT "${lifted_obj}"
-            DEPENDS "${LIFT_HLP_PY}" "${ARG_EXE}"
+            DEPENDS "${ARG_EXE}" "${LIFT_HLP}"
             COMMAND ${CMAKE_COMMAND} -E make_directory "${lifted_dir}" &&
-                "${LOCAL_PYTHON_EXECUTABLE}" "${LIFT_HLP_PY}" "--silent" "${ARG_EXE}" "${lifted_obj}"
+                ${CMAKE_COMMAND} -E env "GHIDRA=${CONAN_GHIDRA_ROOT}"
+                    "${LIFT_HLP}" "--silent" "${ARG_EXE}" "${lifted_obj}"
             WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
     )
 
