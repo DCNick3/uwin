@@ -63,10 +63,11 @@ add_subdirectory(ht)
 add_subdirectory(heap)
 add_subdirectory(str)
 
-# TODO: this should definitely be integrated into the build system
-#target_sources(uwin PUBLIC /home/dcnick3/trash/homm3-switch/code/lifting/remill/cmake-build-relwithdebinfo-clang/bin/uwin-lift/lifted-FloatTest.o)
-
-target_link_libraries(uwin-base INTERFACE CONAN_PKG::fmt kaitai-rt Boost.DI CONAN_PKG::icu)
+target_link_libraries(uwin-base INTERFACE
+        CONAN_PKG::fmt
+        CONAN_PKG::di
+        CONAN_PKG::icu
+        kaitai-rt)
 
 add_library(uwin-main STATIC main.cpp)
 target_link_libraries(uwin-main uwin)
