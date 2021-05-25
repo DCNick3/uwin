@@ -12,5 +12,5 @@ add_executable(uwin-unit-tests
         String.cpp
         remill_stubs.cpp)
 
-target_link_libraries(uwin-unit-tests gtest_main uwin)
+target_link_libraries(uwin-unit-tests CONAN_PKG::gtest uwin)
 add_test(NAME uwin-unit-tests COMMAND uwin-unit-tests)

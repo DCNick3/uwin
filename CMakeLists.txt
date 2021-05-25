@@ -15,7 +15,6 @@ initialize_cookoff()
 include(CodeGen)
 include(FindASan)
 
-add_subdirectory(ext-deps/gtest)
 add_subdirectory(ext-deps/di)
 add_subdirectory(ext-deps/icu)
 add_subdirectory(kaitai-rt)

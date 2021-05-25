@@ -1,6 +1,3 @@
-[submodule "ext-deps/gtest"]
-	path = ext-deps/gtest
-	url = https://github.com/google/googletest.git
 [submodule "ext-deps/GreatCMakeCookOff"]
 	path = ext-deps/GreatCMakeCookOff
 	url = https://github.com/DCNick3/GreatCMakeCookOff.git

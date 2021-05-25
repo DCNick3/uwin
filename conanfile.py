@@ -16,7 +16,8 @@ class UwinConan(ConanFile):
                      "openwatcom-v2/2021-04-02@uwin/stable", \
                      "ghidra/9.2.3@uwin/stable"
 
-    requires = "fmt/7.1.3@uwin/stable"
+    requires = "fmt/7.1.3@uwin/stable", \
+               "gtest/1.10.0@uwin/stable",
 
     def _configure_cmake(self):
         cmake = CMake(self)
