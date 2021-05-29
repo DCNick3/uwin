@@ -12,7 +12,7 @@ class UwinConan(ConanFile):
     generators = "cmake"
 
     # those must work in the host context & are not required in order to run stuff, so they are build_requires
-    build_requires = "uwin-remill/master_fafd91d1bd0942e4c5ed1d9f3032feb61fd27434@uwin/stable", \
+    build_requires = "uwin-remill/master_c83a54faf54e32f6c9b76580e47e62088ff5f817@uwin/stable", \
                      "openwatcom-v2/2021-04-02@uwin/stable", \
                      "ghidra/9.2.3@uwin/stable"
 
