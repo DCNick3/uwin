@@ -19,6 +19,8 @@ TEST(String, UConv) {
                        "    Nous avoir parole la nous moussant. Superpos\xe9s tatillon exprimer voler St Emilion ressemblant "
                        "\xe9ph\xe9m\xe8re bourguignon. Bourguignon penser c\xe2lin mill\xe9sime peripherique annoncer enfants "
                        "enfants vachement nuit formidable encombr\xe9 \xe9panoui chiots. Arc truc cacato\xe8s lorem fl\xe2ner.");
+    // TODO: expand the test suite for this; check the stream convertors
+
     auto native_1 = str::wide_to_native(wide_1);
     auto wide_2 = str::narrow_to_wide(1252, narrow_2);
     auto native_2 = str::narrow_to_native(1252, narrow_2);
