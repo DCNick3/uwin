@@ -10,7 +10,7 @@ add_library(uwin-base INTERFACE)
 target_include_directories(uwin-base INTERFACE ${CMAKE_CURRENT_LIST_DIR} ${CMAKE_CURRENT_BINARY_DIR})
 
 # TODO: make it into a normal package or add it to the source tree
-target_include_directories(uwin-base INTERFACE /home/dcnick3/trash/homm3-switch/code/lifting/remill/include/)
+target_include_directories(uwin-base INTERFACE ${CONAN_INCLUDE_DIRS_UWIN-REMILL})
 
 add_library(uwin INTERFACE)
 
@@ -73,11 +73,3 @@ add_library(uwin-main STATIC main.cpp)
 target_link_libraries(uwin-main uwin)
 
 target_link_libraries(uwin INTERFACE uwin-base)
-
-include(UWinEntry)
-
-uwin_entry(NAME FloatTest EXE /home/dcnick3/trash/homm3-switch/code/test-exe/msvc/FloatTest/Release/FloatTest.exe)
-uwin_entry(NAME SortTest EXE /home/dcnick3/trash/homm3-switch/code/test-exe/msvc/SortTest/Release/SortTest.exe)
-uwin_entry(NAME OpenWatcomHelloWorld EXE /home/dcnick3/trash/homm3-switch/code/test-exe/owc/hello_world.exe)
-uwin_entry(NAME OpenWatcomMatrix EXE /home/dcnick3/trash/homm3-switch/code/test-exe/owc-new/build/matrix.exe)
-
