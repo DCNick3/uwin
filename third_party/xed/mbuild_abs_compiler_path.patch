@@ -1,0 +1,34 @@
+diff --git mbuild/env.py mbuild/env.py
+index 7c942aa..c555ec7 100755
+--- mbuild/env.py
++++ mbuild/env.py
+@@ -30,6 +30,8 @@ import optparse
+ import time
+ import copy
+ 
++from os.path import abspath
++
+ from   .base import *
+ from . import util
+ from . import build_env
+@@ -1275,15 +1277,15 @@ class env_t(object):
+         # real ones that we use.
+ 
+         if self.env['cxx'] != '':
+-            self.env['CXX'] = self.env['cxx']
++            self.env['CXX'] = abspath(self.env['cxx'])
+         if self.env['cc'] != '':
+-            self.env['CC'] = self.env['cc']
++            self.env['CC'] = abspath(self.env['cc'])
+         if self.env['linker'] != '':
+-            self.env['LINK'] = self.env['linker']
++            self.env['LINK'] = abspath(self.env['linker'])
+         if self.env['ar'] != '':
+-            self.env['AR'] = self.env['ar']
++            self.env['AR'] = abspath(self.env['ar'])
+         if self.env['as'] != '':
+-            self.env['AS'] = self.env['as']
++            self.env['AS'] = abspath(self.env['as'])
+             
+         if compiler_family == None:
+             if 'compiler' in self.env:
