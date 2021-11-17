@@ -16,6 +16,22 @@ load("//third_party/toolchain:setup.bzl", toolchain_setup = "setup")
 toolchain_setup()
 
 # =====
+# python
+# =====
+load("//third_party/python:workspace.bzl", python_repo = "repo")
+python_repo()
+load("//third_party/python:setup.bzl", python_setup = "setup")
+python_setup()
+
+# =====
+# python libraries
+# =====
+load("//third_party/python_libraries:workspace.bzl", python_libraries_repo = "repo")
+python_libraries_repo()
+load("//third_party/python_libraries:setup.bzl", python_libraries_setup = "setup")
+python_libraries_setup()
+
+# =====
 # gtest, glog, gflags
 # =====
 load("//third_party/google_libs:workspace.bzl", google_libs_repo = "repo")
