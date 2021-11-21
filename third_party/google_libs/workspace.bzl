@@ -22,5 +22,6 @@ def repo():
   http_archive(
     name = "com_google_googletest",
     strip_prefix = "googletest-release-{version}".format(version=GTEST_VERSION),
+    sha256 = "b4870bf121ff7795ba20d20bcdd8627b8e088f2d1dab299a031c1034eddc93d5",
     urls = ["https://github.com/google/googletest/archive/refs/tags/release-{version}.tar.gz".format(version=GTEST_VERSION)],
   )

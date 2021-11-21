@@ -1,0 +1,3 @@
+#!/bin/bash
+cd "$(bazel info workspace)"
+bazel run //third_party/python_libraries:requirements.update
