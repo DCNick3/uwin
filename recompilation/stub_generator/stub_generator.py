@@ -24,6 +24,9 @@ from def_parser import DefExportsEntry, DefFile, parse_def_string
 #  - a mapping between functions and their ids (basically adresses used in CALL FAR instructions)
 #  - function rvas: a mapping between function and and rva (Relative Virtual Address) for each dll
 
+# the generated dlls contain stubs that use far call instructions to call into uwin native code
+# they also contain custom debug information, specifying regions for the stubs and their type
+
 # TODO: ordinal-oriented libraries (like winsock)
 # probably want to take a .def file
 
@@ -62,6 +65,8 @@ for def_file in args.in_module_definitions:
 MAPPING_BASE = 0x120000
 UWIN_MAGIC_SEGMENT = 0x7775
 
+UWIN_DEBUG_TYPE = 0x6e697775
+
 next_mapped_id = MAPPING_BASE
 
 mapping = dict[str, int]()
@@ -76,12 +81,26 @@ inv_mapping = {v: k for k, v in mapping.items()}
 
 assert len(mapping) == len(inv_mapping)
 
-def generate_code(dll_def: DefFile, mapping: dict[str, int]):
+class FunctionInfo(dict):
+  def __init__(self, offset, size, is_data):
+    dict.__init__(self,
+      offset=offset,
+      size=size,
+      is_data=is_data)
+  
+  @property
+  def offset(self) -> int: return self['offset']
+  @property
+  def size(self) -> int: return self['size']
+  @property
+  def is_data(self) -> bool: return self['is_data']
+
+def generate_code(dll_def: DefFile, mapping: dict[str, int]) -> tuple[bytes, dict[str, FunctionInfo]]:
   out = BytesIO()
-  offsets = dict[str, int]()
+  function_info = dict[str, FunctionInfo]()
 
   for export in dll_def.exports.values():
-    offsets[export.entryname] = out.tell()
+    sta = out.tell()
     if export.data:
       out.write(export.data)
     elif not export.redirect_to:
@@ -90,11 +109,14 @@ def generate_code(dll_def: DefFile, mapping: dict[str, int]):
       out.write(b'\x9a' + struct.pack('<IH', fun_id, UWIN_MAGIC_SEGMENT))
       # ret
       out.write(b'\xc3')
+    fin = out.tell()
 
-  return out.getvalue(), offsets
+    function_info[export.entryname] = FunctionInfo(sta, fin - sta, not not export.data )
+
+  return out.getvalue(), function_info
   
 
-def generate_pe(code: bytes, dll_def: DefFile, function_offsets: dict[str, int], out: BinaryIO):
+def generate_pe(code: bytes, dll_def: DefFile, functions_info: dict[str, FunctionInfo], out: BinaryIO):
   # some helper routines
   def pack_u8(v):
     return struct.pack('<B', v)
@@ -128,6 +150,8 @@ def generate_pe(code: bytes, dll_def: DefFile, function_offsets: dict[str, int],
 
   FileAlignment = 0x200
   SectionAlignment = 0x1000
+
+  DebugInfoEntries = 1
 
   @contextmanager
   def devnull():
@@ -208,7 +232,7 @@ def generate_pe(code: bytes, dll_def: DefFile, function_offsets: dict[str, int],
       if function.redirect_to:
         u32(put_str('.'.join(function.redirect_to)))
       else:
-        u32(CodeBase + function_offsets[function.entryname])
+        u32(CodeBase + functions_info[function.entryname].offset)
 
     assert tell() - export_table_start == name_pointer_table_offset
 
@@ -226,9 +250,33 @@ def generate_pe(code: bytes, dll_def: DefFile, function_offsets: dict[str, int],
 
     out.write(strings_builder.getvalue())
 
+  def generate_uwin_debug_info():
+    res = []
+    for name, function in functions_info.items():
+      res.append([CodeBase+function.offset, function.size, name, function.is_data])
+    return bytes(json.dumps(res), 'utf8')
+
+  def output_debug_info(debug_info_offset: int, debug_info_directory_size: int):
+    debug_info = generate_uwin_debug_info()
+
+    debug_info_start = tell()
+
+    # first - output the directory information
+    u32(0) # Characteristics
+    u32(0) # TimeDateStamp
+    u16(0) # MajorVersion
+    u16(0) # MinorVersion
+    u32(UWIN_DEBUG_TYPE) # Type
+    u32(len(debug_info)) # SizeOfData
+    u32(0) # AddressOfRawData (not loaded, so no address)
+    u32(debug_info_offset + debug_info_directory_size) # PointerToRawData
+
+    assert tell() - debug_info_start == debug_info_directory_size
+    
+    out.write(debug_info)
 
 
-  def output_headers(export_table_size: int):
+  def output_headers(export_table_size: int, debug_directory_size: int):
     # first goes DOS header & DOS stub with PE header offset at 0x3C
     # just write out the hard-coded DOS program =)
     # as for PE header offset - it points directly afterwards itself
@@ -283,8 +331,8 @@ def generate_pe(code: bytes, dll_def: DefFile, function_offsets: dict[str, int],
     u16(0) # MinorImageVersion
     u32(0) # Win32VersionValue (Reserved, must be zero)
     u32(HeadersSizeInMemory + \
-        align_up(len(code) + export_table_size, SectionAlignment)
-      ) # SizeOfImage () TODO TODO
+        align_up(len(code) + export_table_size + debug_directory_size, SectionAlignment)
+      ) # SizeOfImage
     u32(0x400) # SizeOfHeaders (I hope it's enough)
     u32(0) # CheckSum (nah, that's useless)
     u16(2) # Subsystem (IMAGE_SUBSYSTEM_WINDOWS_GUI)
@@ -298,13 +346,16 @@ def generate_pe(code: bytes, dll_def: DefFile, function_offsets: dict[str, int],
     u32(0) # LoaderFlags (Reserved, must be zero.)
     u32(16) # NumberOfRvaAndSizes (# of data-directory entries); we fill out all for extra measure
 
-    # Export Table Data Directory
-    u32(CodeBase + len(code)) # RVA
-    u32(export_table_size) # Size
+    directories = [ (0, 0) for x in range(0, 16)]
 
-    # we fill all other directories with zeroes
-    for x in range(15):
-      u32(0); u32(0)
+    # Export Table Data Directory
+    directories[0] = (CodeBase + len(code), export_table_size)
+
+    # Debug
+    directories[6] = (CodeBase + len(code) + export_table_size, debug_directory_size)
+
+    for rva, size in directories:
+      u32(rva); u32(size)
 
     opt_hdr_end = tell()
 
@@ -312,11 +363,11 @@ def generate_pe(code: bytes, dll_def: DefFile, function_offsets: dict[str, int],
 
     # Section table
     # the only section - .text
-    # it will contain both code and export table
+    # it will contain both code, export table & debug info
     out.write(b'.text\0\0\0') # Name (8 bytes)
-    u32(align_up(len(code) + export_table_size, SectionAlignment)) # VirtualSize
+    u32(align_up(len(code) + export_table_size + debug_directory_size, SectionAlignment)) # VirtualSize
     u32(HeadersSizeInMemory) # VirtualAddress
-    u32(align_up(len(code) + export_table_size, FileAlignment)) # SizeOfRawData
+    u32(align_up(len(code) + export_table_size + debug_directory_size, FileAlignment)) # SizeOfRawData
     u32(HeadersSizeInFile) # PointerToRawData
     u32(0) # PointerToRelocations (section relocs are not for us)
     u32(0) # PointerToLinenumbers
@@ -337,10 +388,14 @@ def generate_pe(code: bytes, dll_def: DefFile, function_offsets: dict[str, int],
   
   file_start = tell()
 
+  export_table_size = len(tmp.getbuffer())
+  debug_info_directory_size = DebugInfoEntries * 28
+
   code_offset = HeadersSizeInFile
   export_table_offset = code_offset + len(code)
+  debug_info_offset = code_offset + len(code) + export_table_size
 
-  output_headers(len(tmp.getbuffer()))
+  output_headers(export_table_size, debug_info_directory_size)
 
   assert tell() - file_start == code_offset
 
@@ -349,6 +404,10 @@ def generate_pe(code: bytes, dll_def: DefFile, function_offsets: dict[str, int],
   assert tell() - file_start == export_table_offset
 
   generate_export_table(CodeBase + len(code))
+
+  assert tell() - file_start == debug_info_offset
+
+  output_debug_info(debug_info_offset, debug_info_directory_size)
 
   pad_size = align_up(tell() - file_start, FileAlignment) - (tell() - file_start)
   out.write(b'\0' * pad_size)
