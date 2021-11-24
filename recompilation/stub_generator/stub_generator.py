@@ -5,6 +5,7 @@ import struct
 import os
 import tarfile
 import shutil
+import sys
 from io import BytesIO
 from collections import OrderedDict
 from pathlib import Path
@@ -13,6 +14,7 @@ from contextlib import contextmanager
 from typing import IO, BinaryIO, Union
 
 
+import pyparsing
 import pefile
 
 from def_parser import DefExportsEntry, DefFile, parse_def_string
@@ -51,7 +53,12 @@ dlls: dict[str, DefFile] = dict()
 
 for def_file in args.in_module_definitions:
   with open(def_file) as f:
-    def_file = parse_def_string(f.read())
+    try:
+      def_file = parse_def_string(f.read())
+    except pyparsing.ParseBaseException as e:
+      print("While parsing", def_file)
+      print(e.explain())
+      sys.exit(1)
   def_file['library_name'] = def_file.library_name.lower()
 
   assert def_file.library_name.endswith('.dll')
@@ -298,7 +305,7 @@ def generate_pe(code: bytes, dll_def: DefFile, functions_info: dict[str, Functio
     u32(0) # PointerToSymbolTable
     u32(0) # NumberOfSymbolTable
     u16(SizeOfOptionalHeader) # SizeOfOptionalHeader (size of Standard fields + size of Windows-specific fields + size of Data directories)
-    u16(0x102) # Characteristics (IMAGE_FILE_EXECUTABLE_IMAGE = 0x2 | IMAGE_FILE_32BIT_MACHINE = 0x100)
+    u16(0x2102) # Characteristics (IMAGE_FILE_EXECUTABLE_IMAGE = 0x2 | IMAGE_FILE_32BIT_MACHINE = 0x100 | IMAGE_FILE_DLL = 0x2000)
     
     opt_hdr_start = tell()
 
@@ -371,8 +378,8 @@ def generate_pe(code: bytes, dll_def: DefFile, functions_info: dict[str, Functio
     u32(HeadersSizeInFile) # PointerToRawData
     u32(0) # PointerToRelocations (section relocs are not for us)
     u32(0) # PointerToLinenumbers
-    u32(0) # NumberOfRelocations
-    u32(0) # NumberOfLinenumbers
+    u16(0) # NumberOfRelocations
+    u16(0) # NumberOfLinenumbers
     u32(0x60000020) # Characteristics (IMAGE_SCN_CNT_CODE | IMAGE_SCN_MEM_EXECUTE | IMAGE_SCN_MEM_READ)
 
     # pad with zeroes up be aligned up to FileAlignment
