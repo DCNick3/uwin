@@ -4,8 +4,8 @@ from os import error
 import tarfile
 import sys
 from pathlib import Path
+from makeelf.elfsect import STT
 from makeelf.elfstruct import PF, PT, SHF, SHT, Elf32_Phdr
-import functools
 import json
 
 from pefile import PE, ImportData, SectionStructure
@@ -193,21 +193,42 @@ segment2section = dict[int,int]()
 UWIN_DEBUG_TYPE = 0x6E697775
 
 def enrich_debug(module: PE, pe_section2elf_section: dict[int, int]):
-  
+  found_uwin_debug = False
 
   # first try to add info harvested from uwin stubs
   if hasattr(module, 'DIRECTORY_ENTRY_DEBUG'):
     for debug in module.DIRECTORY_ENTRY_DEBUG:
       debug = debug.struct
       if debug.Type == UWIN_DEBUG_TYPE:
-        # I didn't find this exposed =(
+        found_uwin_debug = True
+        vprint(f"Found uwin debug info for module {module.name}")
+        # I didn't find the data by file pointer exposed =(
         data = module.__data__[debug.PointerToRawData:debug.PointerToRawData+debug.SizeOfData]
-        data = json.loads(str(data, 'utf8'))
-        # TODO
+        data = json.loads(data)
         
+        for offset, size, name, is_data in data:
+          addr = module.OPTIONAL_HEADER.ImageBase + offset
+          name = bytes(name, 'ascii')
+          # just so happens that uwin stubs have only valid ascii in them (because json)
+          # but for dlls we don't control this might not be the case
+          full_name = module.name + b'!' + name
+
+          pe_sec = module.get_section_by_rva(offset)
+          pe_sec_id = [ i for i, x in enumerate(module.sections) if x == pe_sec ][0]
+          elf_sec_id = pe_section2elf_section[pe_sec_id]
+
+          type = STT.STT_OBJECT if is_data else STT.STT_FUNC
+
+          e.append_symbol(full_name, elf_sec_id, addr, size, sym_type=type)
+          pass
+
         #vprint(data)
+        #symname = module.name + b"!" + 
+  
   # if it's not our stub - just add info about exported symbols & thunks
-  # TODO
+  if not found_uwin_debug:
+    pass
+    # TODO
 
 for module in sorted(modules, key=lambda x: x.OPTIONAL_HEADER.ImageBase):
   base = module.OPTIONAL_HEADER.ImageBase
@@ -269,6 +290,8 @@ for module in sorted(modules, key=lambda x: x.OPTIONAL_HEADER.ImageBase):
     vprint(f"elf section {str(new_name):24} @ 0x{addr:08x} ({virt_size:08x}) [{access:3}] -> {sec_id}")
   
   enrich_debug(module, pe_section2elf_section)
+
+e.Elf.Ehdr.e_entry = the_exe.OPTIONAL_HEADER.ImageBase + the_exe.OPTIONAL_HEADER.AddressOfEntryPoint
 
 # update section offsets...
 bytes(e)
