@@ -34,22 +34,22 @@ python_libraries_setup()
 # =====
 # gtest, glog, gflags
 # =====
-load("//third_party/google_libs:workspace.bzl", google_libs_repo = "repo")
+load("//third_party/cpp/google_libs:workspace.bzl", google_libs_repo = "repo")
 google_libs_repo()
 
 
 # =====
 # llvm
 # =====
-load("//third_party/llvm:workspace.bzl", llvm_repo = "repo")
+load("//third_party/cpp/llvm:workspace.bzl", llvm_repo = "repo")
 llvm_repo()
-load("//third_party/llvm:setup.bzl", llvm_setup = "setup")
+load("//third_party/cpp/llvm:setup.bzl", llvm_setup = "setup")
 llvm_setup()
 
 # =====
 # intel xed
 # =====
-load("//third_party/xed:workspace.bzl", xed_repo = "repo")
+load("//third_party/cpp/xed:workspace.bzl", xed_repo = "repo")
 xed_repo()
 
 # =====
@@ -61,5 +61,11 @@ sysroots_repo()
 # =====
 # remill
 # =====
-load("//third_party/remill:workspace.bzl", remill_repo = "repo")
+load("//third_party/cpp/remill:workspace.bzl", remill_repo = "repo")
 remill_repo()
+
+# =====
+# elfio
+# =====
+load("//third_party/cpp/elfio:workspace.bzl", elfio_repo = "repo")
+elfio_repo()

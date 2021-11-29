@@ -14,5 +14,5 @@ def repo():
         urls = [
             "https://github.com/llvm/llvm-project/archive/{commit}.tar.gz".format(commit = LLVM_COMMIT),
         ],
-        build_file = "//third_party/llvm:llvm.BUILD",
+        build_file = "//third_party/cpp/llvm:llvm.BUILD",
     )

@@ -1,5 +1,5 @@
 
-load("@uwin//third_party/xed:xed_rule.bzl", "compile_xed")
+load("@uwin//third_party/cpp/xed:xed_rule.bzl", "compile_xed")
 
 exports_files([ "." ])
 

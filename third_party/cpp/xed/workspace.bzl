@@ -17,9 +17,9 @@ def repo():
         urls = [
             "https://github.com/intelxed/mbuild/archive/{commit}.tar.gz".format(commit = MBUILD_COMMIT),
         ],
-        build_file = "//third_party/xed:mbuild.BUILD",
+        build_file = "//third_party/cpp/xed:mbuild.BUILD",
         patches = [
-            "//third_party/xed:mbuild_abs_compiler_path.patch"
+            "//third_party/cpp/xed:mbuild_abs_compiler_path.patch"
         ]
     )
 
@@ -30,5 +30,5 @@ def repo():
         urls = [
             "https://github.com/intelxed/xed/archive/{commit}.tar.gz".format(commit = XED_COMMIT),
         ],
-        build_file = "//third_party/xed:xed.BUILD",
+        build_file = "//third_party/cpp/xed:xed.BUILD",
     )
