@@ -206,6 +206,10 @@ def enrich_debug(module: PE, pe_section2elf_section: dict[int, int]):
         data = module.__data__[debug.PointerToRawData:debug.PointerToRawData+debug.SizeOfData]
         data = json.loads(data)
         
+        # check if the data has expected format marker
+        assert data[0] == "uwin_stub_v1"
+        data = data[1:]
+
         for offset, size, name, is_data in data:
           addr = module.OPTIONAL_HEADER.ImageBase + offset
           name = bytes(name, 'ascii')

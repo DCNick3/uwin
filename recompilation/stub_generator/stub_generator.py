@@ -259,6 +259,7 @@ def generate_pe(code: bytes, dll_def: DefFile, functions_info: dict[str, Functio
 
   def generate_uwin_debug_info():
     res = []
+    res.append("uwin_stub_v1")
     for name, function in functions_info.items():
       res.append([CodeBase+function.offset, function.size, name, function.is_data])
     return bytes(json.dumps(res), 'utf8')
