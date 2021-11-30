@@ -9,9 +9,7 @@
       "type": "cppdbg",
       "request": "launch",
       "program": "${workspaceFolder}/bazel-bin/recompilation/lifter/lifter",
-      "args": [
-        "--loaded_elf_filename", "recompilation/loader/multiple_functions.elf",
-        "--bb_head_addresses_filename", "recompilation/disassembler/addresses.txt"],
+      "args": ["--elf_filename", "recompilation/disassembler/multiple_functions.elf"],
       "stopAtEntry": false,
       "cwd": "${workspaceFolder}",
       "environment": [],

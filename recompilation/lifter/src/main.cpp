@@ -25,7 +25,7 @@
 #include <map>
 #include <string_view>
 
-DEFINE_string(loaded_elf_filename, "",
+DEFINE_string(elf_filename, "",
               "Filename of loaded elf file to lift");
 
 DEFINE_string(ir_out, "", "Path to file where the LLVM IR should be saved.");
@@ -49,8 +49,8 @@ int main(int argc, char** argv) {
 
   google::SetCommandLineOption("arch", "x86");
 
-  if (FLAGS_loaded_elf_filename.empty()) {
-    LOG(FATAL) << "Please, specify --loaded_elf_filename";
+  if (FLAGS_elf_filename.empty()) {
+    LOG(FATAL) << "Please, specify --elf_filename";
   }
 
   //addOccurrence
@@ -67,7 +67,7 @@ int main(int argc, char** argv) {
 
   std::unique_ptr<llvm::Module> module(remill::LoadArchSemantics(arch));
 
-  Executable executable(FLAGS_loaded_elf_filename);
+  Executable executable(FLAGS_elf_filename);
 
   SimpleTraceManager manager(module.get(), executable);
   remill::IntrinsicTable intrinsics(module);

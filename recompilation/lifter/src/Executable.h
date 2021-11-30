@@ -5,6 +5,7 @@
 
 class Executable {
   ELFIO::elfio _elfio;
+  std::vector<std::uint64_t> _disas_addresses;
 
 public:
   // Try to read an executable byte of memory. Returns `true` of the byte
