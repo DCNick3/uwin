@@ -74,6 +74,8 @@ int main(int argc, char** argv) {
   remill::InstructionLifter inst_lifter(arch, intrinsics);
   remill::TraceLifter trace_lifter(inst_lifter, manager);
 
+  LOG(INFO) << "Ready to start lifting!";
+
   // Lift all discoverable traces with addresses taken from file
   
   // TODO: lift ALL possible addresses from the file

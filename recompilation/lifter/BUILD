@@ -31,6 +31,8 @@ cc_binary(
     "@com_github_serge1_elfio//:elfio",
     "@remill//:remill",
     "@llvm-project//llvm:Core",
+    "@com_github_nlohmann_json//:json",
+    "//vendor/range_map",
   ],
   srcs = glob(["src/*.cpp", "src/*.h"]),
 )

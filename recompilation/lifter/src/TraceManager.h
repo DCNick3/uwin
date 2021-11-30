@@ -11,16 +11,11 @@ class SimpleTraceManager : public remill::TraceManager {
  public:
   ~SimpleTraceManager() override = default;
 
-  explicit SimpleTraceManager(
-      llvm::Module *module,
-      Executable& executable)
-      : _executable(executable) {}
+  explicit SimpleTraceManager(llvm::Module *module, Executable &executable);
 
-  std::string TraceName(uint64_t addr) override {
-    std::terminate();
-  }
+  std::string TraceName(uint64_t addr) override;
 
- protected:
+protected:
   // Called when we have lifted, i.e. defined the contents, of a new trace.
   // The derived class is expected to do something useful with this.
    void SetLiftedTraceDefinition(uint64_t addr,

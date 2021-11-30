@@ -1,5 +1,8 @@
 #include "TraceManager.h"
 
+#include <remill/BC/Util.h>
+#include <sstream>
+
 void SimpleTraceManager::SetLiftedTraceDefinition(uint64_t addr,
                                                   llvm::Function *lifted_func) {
   auto &trace = traces[addr];
@@ -35,4 +38,29 @@ SimpleTraceManager::GetDeclaredTraces() {
     }
   }
   return res;
+}
+
+std::string SimpleTraceManager::TraceName(uint64_t addr) { 
+  constexpr std::string_view prefix = "recomp_";
+  
+  auto name = _executable.TryGetFunctionNameAt(addr);
+  
+  std::stringstream ss;
+  ss << prefix;
+  if (name) {
+    ss << name->first << "+0x" << std::hex << name->second << "_";
+  }
+  ss << std::hex << "0x" << addr;
+
+  return ss.str();
+}
+
+SimpleTraceManager::SimpleTraceManager(llvm::Module *module,
+                                       Executable &executable)
+      : _executable(executable) 
+{
+  for (auto const& addr : _executable.GetDisassembledAddresses())
+  {
+    traces[addr].function = remill::DeclareLiftedFunction(module, TraceName(addr));
+  }
 }
