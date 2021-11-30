@@ -140,7 +140,7 @@ debian_sysroot = repository_rule(
         doc = "Packages to extract into the sysroot",
       ),
       "indices_release_url": attr.string(
-        default = "https://github.com/DCNick3/debian-listing-archive/releases/download/2021-41-15T181136",
+        default = "https://github.com/DCNick3/debian-listing-archive/releases/download/2021-11-15T204144",
         doc = "Base url of the indices release",
       ),
       "indices_hashes_sha256": attr.string(
