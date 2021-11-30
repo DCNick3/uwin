@@ -1,0 +1,16 @@
+LIBRARY "version.dll"
+EXPORTS
+GetFileVersionInfoA
+GetFileVersionInfoSizeA
+GetFileVersionInfoSizeW
+GetFileVersionInfoW
+VerFindFileA
+VerFindFileW
+VerInstallFileA
+VerInstallFileW
+VerLanguageNameA
+VerLanguageNameW
+VerQueryValueA
+VerQueryValueIndexA
+VerQueryValueIndexW
+VerQueryValueW

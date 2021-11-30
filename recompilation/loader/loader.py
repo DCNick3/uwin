@@ -65,7 +65,7 @@ for pe in executables:
   if pe.is_dll() and hasattr(pe, 'DIRECTORY_ENTRY_EXPORT'):
     name = pe.get_string_at_rva(pe.DIRECTORY_ENTRY_EXPORT.struct.Name)
     assert name, "All dlls should have a name"
-    pe.name = name
+    pe.name = name.lower()
 the_exe.name = bytes(args.exe_name, 'ascii')
 
 assert len(set(x.name.lower() for x in executables)) == len(executables), "Some modules have the same name"
@@ -91,7 +91,9 @@ def perform_load():
     def intersect(a, b):
       a1, a2 = a
       b1, b2 = b
-      return a2 > b1 and b2 > a1
+      res = a2 > b1 and b2 > a1
+      #print(f"0x{a1:08x}-0x{a2:08x}) vs 0x{b1:08x}-{b2:08x} -> {res}")
+      return res
     # PERF: another linear search
     assert mod.OPTIONAL_HEADER.ImageBase % LOAD_ALIGN == 0
     assert mod.OPTIONAL_HEADER.SizeOfImage % SECTION_ALIGN == 0
@@ -111,6 +113,8 @@ def perform_load():
 
     vprint(f"Relocating {mod.name} to 0x{base:08x}")
     mod.relocate_image(base)
+    mod.OPTIONAL_HEADER.ImageBase = base
+    assert mod.OPTIONAL_HEADER.ImageBase == base
     return mod
 
   def str_imp(imp: tuple[str, int]):
@@ -134,6 +138,7 @@ def perform_load():
 
 
   def load(name) -> PE:
+    name = name.lower()
     if name not in name2module:
       errors.append("Cannot find module: " + str(name))
       return None
@@ -161,8 +166,9 @@ def perform_load():
         for imp in dep.imports:
           # bind it!
           imp_addr = lookup_import(dep_mod, (imp.name, imp.ordinal))
-          vprint(f" - bound {str(imp.name):20} -> 0x{imp_addr:08x} (thunk @ 0x{imp.address:08x})")
-          assert mod.set_dword_at_rva(imp.address - mod.OPTIONAL_HEADER.ImageBase, imp_addr)
+          if imp_addr:
+            vprint(f" - bound {str(imp.name):20} -> 0x{imp_addr:08x} (thunk @ 0x{imp.address:08x})")
+            assert mod.set_dword_at_rva(imp.address - mod.OPTIONAL_HEADER.ImageBase, imp_addr)
 
     loaded.add(mod.name)
     modules_to_load.append(mod)
@@ -298,6 +304,7 @@ for module in sorted(modules, key=lambda x: x.OPTIONAL_HEADER.ImageBase):
 e.Elf.Ehdr.e_entry = the_exe.OPTIONAL_HEADER.ImageBase + the_exe.OPTIONAL_HEADER.AddressOfEntryPoint
 
 # update section offsets...
+vprint("Doing the first pass...")
 bytes(e)
 # ... and point the segments to them
 for i, h in enumerate(e.Elf.Phdr_table):
@@ -308,5 +315,6 @@ for i, h in enumerate(e.Elf.Phdr_table):
 
 # now we (finally) can save the resulting elf file
 
+vprint("Writing the file with fixed segment offsets...")
 with open(args.out_elf, 'wb') as f:
   f.write(bytes(e))

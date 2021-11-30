@@ -1567,3 +1567,6 @@ uaw_wcscpy
 uaw_wcsicmp
 uaw_wcslen
 uaw_wcsrchr
+InterlockedIncrement
+InterlockedExchange
+InterlockedDecrement
