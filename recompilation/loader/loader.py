@@ -292,7 +292,8 @@ for module in sorted(modules, key=lambda x: x.OPTIONAL_HEADER.ImageBase):
 
     e.Elf.Phdr_table.append(Elf32_Phdr(p_type=PT.PT_LOAD, p_offset=0, p_vaddr=addr,
                 p_paddr=0, p_filesz=len(data), p_memsz=virt_size,
-                p_flags=phdr_flags, p_align=0x1000, little=e.little))
+                p_flags=phdr_flags, p_align=0x1000, little=e.little,
+                sections=[sec_id]))
 
     # !! KLUDGE: makeelf does not handle p_offset of Elf32_Phdr at all
     # that's why mapping from segments to sections is saved to later fix the shit
@@ -303,18 +304,6 @@ for module in sorted(modules, key=lambda x: x.OPTIONAL_HEADER.ImageBase):
 
 e.Elf.Ehdr.e_entry = the_exe.OPTIONAL_HEADER.ImageBase + the_exe.OPTIONAL_HEADER.AddressOfEntryPoint
 
-# update section offsets...
-vprint("Doing the first pass...")
-bytes(e)
-# ... and point the segments to them
-for i, h in enumerate(e.Elf.Phdr_table):
-  if i == 0:
-    continue
-  offset = e.Elf.Shdr_table[segment2section[i]].sh_offset
-  h.p_offset = offset
-
-# now we (finally) can save the resulting elf file
-
-vprint("Writing the file with fixed segment offsets...")
+vprint("Writing the elf file...")
 with open(args.out_elf, 'wb') as f:
   f.write(bytes(e))
