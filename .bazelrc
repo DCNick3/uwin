@@ -15,3 +15,5 @@ build --experimental_sandbox_base=/dev/shm
 
 # use the (relatively) modern c++ version =)
 build --features=c++17
+
+build --experimental_strict_action_env
