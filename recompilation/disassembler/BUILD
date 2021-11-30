@@ -5,7 +5,7 @@ py_binary(
   srcs = ["disassembler.py"],
   deps = [
     requirement("iced-x86"),
-    requirement("makeelf"),
+    "//vendor/makeelf",
     requirement("bitarray"),
   ],
 )

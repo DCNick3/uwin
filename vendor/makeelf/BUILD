@@ -3,6 +3,7 @@ py_library(
   deps = [],
   srcs = glob(["makeelf/**/*.py"]),
   imports = [":."],
+  visibility = ["//visibility:public"],
 )
 
 py_test(

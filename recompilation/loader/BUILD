@@ -5,6 +5,6 @@ py_binary(
   srcs = ["loader.py"],
   deps = [
     requirement("pefile"),
-    requirement("makeelf"),
+    "//vendor/makeelf",
   ],
 )
