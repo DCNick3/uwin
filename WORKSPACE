@@ -69,3 +69,9 @@ remill_repo()
 # =====
 load("//third_party/cpp/elfio:workspace.bzl", elfio_repo = "repo")
 elfio_repo()
+
+# =====
+# json
+# =====
+load("//third_party/cpp/json:workspace.bzl", json_repo = "repo")
+json_repo()
