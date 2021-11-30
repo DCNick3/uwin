@@ -456,7 +456,7 @@ namespace beneficii {
             //RETURN VALUE = stack of iterators (deepest at top) to starting point
             //    of ranges that intersect val (const_iterator)
             std::stack<const_iterator> find_ranges(const key_type& _val) const {
-                if(*_root == nullptr) return std::stack<iterator>();
+                if(*_root == nullptr) return std::stack<const_iterator>();
                 std::stack<const_iterator> _ret;
                 _nodeptr _n = *_root;
                 while(1) {
@@ -723,7 +723,7 @@ namespace beneficii {
             
             // see lower_bound for details
             bool _lbound(const key_type& _val, _nodeptr* _nod) const {
-                if(*_root == nullptr) return nullptr;
+                if(*_root == nullptr) return false;
                 _nodeptr _n = *_root;
                 _nodeptr _last = _n;
                 bool _ret = false;
@@ -764,7 +764,7 @@ namespace beneficii {
             }
             
             bool _ubound(const key_type& _val, _nodeptr* _nod) const {
-                if(*_root == nullptr) return nullptr;
+                if(*_root == nullptr) return false;
                 _nodeptr _n = *_root;
                 _nodeptr _last = _n;
                 bool _ret = false;
@@ -1328,7 +1328,7 @@ namespace beneficii {
 }
 
 template<class _kty, class _ty, class _compare, class _alloc_type>
-void swap(range_map<_kty, _ty, _compare, _alloc_type>& A, range_map<_kty, _ty, _compare, _alloc_type>& B) {
+void swap(beneficii::range_map<_kty, _ty, _compare, _alloc_type>& A, beneficii::range_map<_kty, _ty, _compare, _alloc_type>& B) {
     A.swap(B);
 }
 

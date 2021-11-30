@@ -47,7 +47,6 @@ struct make_indices
 //passed to the constructor
 
 struct length_construct_type {};
-length_construct_type length_construct;
 
 // range_map_item; basic range_type stored in range_map; here the left key and the
 // right key delimiting the range [left, right) are stored, as well as the mapped
