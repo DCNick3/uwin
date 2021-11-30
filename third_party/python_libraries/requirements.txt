@@ -3,3 +3,5 @@ pefile==2021.9.3
 pyparsing==3.0.6
 pytest==6.2.5
 makeelf==0.3.4
+iced-x86==1.15.0
+bitarray==2.3.4
