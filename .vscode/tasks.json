@@ -1,0 +1,18 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "buildLifterDebug",
+      "command": "bazel build //recompilation/lifter -c dbg",
+      "type": "shell",
+      "args": [],
+      "problemMatcher": [
+        "$tsc"
+      ],
+      "presentation": {
+        "reveal": "always"
+      },
+      "group": "build"
+    }
+  ]
+}
