@@ -1,5 +1,6 @@
 
 import argparse
+import json
 from pathlib import Path
 
 from iced_x86 import Decoder, Instruction, FlowControl
@@ -15,8 +16,11 @@ parser = argparse.ArgumentParser()
 parser.add_argument("--in_loaded_elf", type=Path, required=True,
   help="Path to elf file from the loader")
 
-parser.add_argument("--out_addresses", type=Path, required=True,
-  help="Path to output file that will contain addresses of basic blocks possibly containing some code")
+parser.add_argument("--out_addresses", type=Path,
+  help="Path to output file that will get addresses of basic blocks possibly containing some code dumped to")
+
+parser.add_argument("--out_elf", type=Path,
+  help="Path to output elf file enriched with information on basic blocks possibly containing some code")
 
 parser.add_argument('--verbose', '-v', action='store_true')
 
@@ -122,6 +126,25 @@ for i, section in enumerate(elf.Elf.Shdr_table[1:], 1):
     for offset in valid.itersearch(1):
       addresses.append(section.sh_addr + offset)
 
-with open(args.out_addresses, 'w') as f:
-  for addr in addresses:
-    f.write(f"0x{addr:x}\n")
+addresses.sort()
+
+if args.out_addresses:
+  with open(args.out_addresses, 'w') as f:
+    for addr in addresses:
+      f.write(f"0x{addr:x}\n")
+
+if args.out_elf:
+  cur_address = addresses[0]
+
+  # use delta encoding to save some space
+  delta_addresses = [cur_address]
+  for x in addresses[1:]:
+    delta_addresses.append(x - cur_address)
+    cur_address = x
+
+  data = ['uwin_disas_v1'] + delta_addresses
+  data = bytes(json.dumps(data, separators=(',', ':')), 'utf8')
+  elf._append_section(b'.uwin_bbaddrs', data, 0)
+  
+  with open(args.out_elf, 'wb') as f:
+    f.write(bytes(elf))

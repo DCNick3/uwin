@@ -8,7 +8,7 @@
   "C_Cpp.errorSquiggles": "Disabled", // So you don't get error squiggles from both extensions (clangd's seem to be more reliable anyway).
   "python.analysis.extraPaths": [
     "./bazel-uwin/external/pip_parsed_deps_pypi__iced_x86",
-    "./bazel-uwin/external/pip_parsed_deps_pypi__makeelf",
     "./bazel-uwin/external/pip_parsed_deps_pypi__bitarray",
+    "./vendor/makeelf",
   ],
 }
