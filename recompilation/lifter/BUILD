@@ -34,5 +34,5 @@ cc_binary(
     "@com_github_nlohmann_json//:json",
     "//vendor/range_map",
   ],
-  srcs = glob(["src/*.cpp", "src/*.h"]),
+  srcs = glob(["src/**/*.cpp", "src/**/*.h"]),
 )

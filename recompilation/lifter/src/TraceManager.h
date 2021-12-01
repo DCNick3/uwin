@@ -3,11 +3,11 @@
 
 #include <cassert>
 
-#include <remill/BC/TraceLifter.h>
-
 #include "Executable.h"
 
-class SimpleTraceManager : public remill::TraceManager {
+#include "remill_vendor/TraceLifter.h"
+
+class SimpleTraceManager : public remill::uwin::TraceManager {
  public:
   ~SimpleTraceManager() override = default;
 

@@ -9,7 +9,10 @@
       "type": "lldb",
       "request": "launch",
       "program": "${workspaceFolder}/bazel-bin/recompilation/lifter/lifter",
-      "args": ["--elf_filename", "recompilation/disassembler/multiple_functions.elf"],
+      "args": [
+        "--elf_filename", "recompilation/disassembler/multiple_functions.elf",
+        "--bc_out", "recompilation/lifter/heroes3.bc"
+      ],
       "stopAtEntry": false,
       "cwd": "${workspaceFolder}",
       "sourceMap": {"/proc/self/cwd/": "${workspaceFolder}", "/proc/self/cwd/external": "${workspaceFolder}/bazel-uwin/external"},

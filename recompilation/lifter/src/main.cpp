@@ -19,6 +19,8 @@
 #include "recompilation/lifter/uwin_intrinsics.h"
 #include "Executable.h"
 #include "TraceManager.h"
+#include "remill_vendor/TraceLifter.h"
+#include "remill_vendor/InstructionLifter.h"
 
 #include <fstream>
 #include <iostream>
@@ -71,8 +73,8 @@ int main(int argc, char** argv) {
 
   SimpleTraceManager manager(module.get(), executable);
   remill::IntrinsicTable intrinsics(module);
-  remill::InstructionLifter inst_lifter(arch, intrinsics);
-  remill::TraceLifter trace_lifter(inst_lifter, manager);
+  remill::uwin::InstructionLifter inst_lifter(arch, intrinsics);
+  remill::uwin::TraceLifter trace_lifter(inst_lifter, manager);
 
   LOG(INFO) << "Ready to start lifting!";
 
@@ -102,6 +104,7 @@ int main(int argc, char** argv) {
   // This is a good JITing strategy: optimize the lifted code in the semantics
   // module, move it to a new module, instrument it there, then JIT compile it.
   for (auto &lifted_entry : manager.traces) {
+    CHECK(lifted_entry.second.lifted); // assert it is lifted
     remill::MoveFunctionIntoModule(lifted_entry.second.function, intermediate_module.get());
   }
 
