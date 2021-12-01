@@ -9,6 +9,7 @@ class Executable {
   ELFIO::elfio _elfio;
   std::vector<std::uint64_t> _disas_addresses;
   beneficii::range_map<std::uint64_t, std::string> _fun_name_ranges;
+  beneficii::range_map<std::uint64_t, ELFIO::segment*> _segment_ranges;
 
 public:
   // Try to read an executable byte of memory. Returns `true` of the byte

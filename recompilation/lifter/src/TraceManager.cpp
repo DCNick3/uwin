@@ -29,7 +29,7 @@ llvm::Function *SimpleTraceManager::GetLiftedTraceDefinition(uint64_t addr) {
 bool SimpleTraceManager::TryReadExecutableByte(uint64_t addr, uint8_t *byte) {
   return _executable.TryReadExecutableByte(addr, byte);
 }
-std::unordered_map<std::uint64_t, llvm::Function *>
+std::map<std::uint64_t, llvm::Function *>
 SimpleTraceManager::GetDeclaredTraces() {
   decltype(GetDeclaredTraces()) res;
   for (auto &trace : traces) {

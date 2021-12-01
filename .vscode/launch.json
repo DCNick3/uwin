@@ -11,7 +11,7 @@
       "program": "${workspaceFolder}/bazel-bin/recompilation/lifter/lifter",
       "args": [
         "--elf_filename", "recompilation/disassembler/multiple_functions.elf",
-        "--bc_out", "recompilation/lifter/heroes3.bc"
+        "--bc_out", "recompilation/lifter/multiple_functions.bc"
       ],
       "stopAtEntry": false,
       "cwd": "${workspaceFolder}",

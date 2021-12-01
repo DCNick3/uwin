@@ -48,8 +48,8 @@ protected:
     bool lifted{false};
   };
 
-  std::unordered_map<std::uint64_t, llvm::Function *> GetDeclaredTraces();
+  std::map<std::uint64_t, llvm::Function *> GetDeclaredTraces();
 
   Executable& _executable;
-  std::unordered_map<uint64_t, Trace> traces;
+  std::map<uint64_t, Trace> traces;
 };

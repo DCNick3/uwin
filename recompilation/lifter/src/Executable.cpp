@@ -87,6 +87,14 @@ Executable::Executable(std::string const& path) {
     }
   }
 
+  for (auto seg : _elfio.segments) {
+    if (seg->get_type() == PT_LOAD) {
+      auto addr = seg->get_virtual_address();
+      auto size = seg->get_memory_size();
+      _segment_ranges.emplace(false, addr, addr+size, seg);
+    }
+  }
+
   DLOG(INFO) << "Symbols loaded!";
 }
 
@@ -102,5 +110,25 @@ std::optional<std::pair<std::string, std::uint64_t>> Executable::TryGetFunctionN
 }
 
 bool Executable::TryReadExecutableByte(uint64_t addr, uint8_t *byte) const {
-  std::terminate();
+  auto s = _segment_ranges.find_ranges(addr);
+  if (s.empty())
+    return false;
+
+  CHECK(s.size() == 1);
+
+  auto seg = s.top()->range().mapped();
+
+  if ((seg->get_flags() & PF_X) == 0 || (seg->get_flags() & PF_R) == 0)
+    return false; // not executable; /ban
+
+  auto offset = addr - seg->get_virtual_address();
+  auto initializedSize = seg->get_file_size();
+
+  if (offset >= initializedSize) {
+    *byte = 0;
+  } else {
+    *byte = seg->get_data()[offset];
+  }
+
+  return true;
 }
