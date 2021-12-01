@@ -110,13 +110,11 @@ class InstructionLifter {
   // Lift a single instruction into a basic block. `is_delayed` signifies that
   // this instruction will execute within the delay slot of another instruction.
   virtual LiftStatus LiftIntoBlock(Instruction &inst, llvm::BasicBlock *block,
-                                   llvm::Value *state_ptr,
-                                   bool is_delayed = false);
+                                   llvm::Value *state_ptr);
 
   // Lift a single instruction into a basic block. `is_delayed` signifies that
   // this instruction will execute within the delay slot of another instruction.
-  LiftStatus LiftIntoBlock(Instruction &inst, llvm::BasicBlock *block,
-                           bool is_delayed = false);
+  LiftStatus LiftIntoBlock(Instruction &inst, llvm::BasicBlock *block);
 
   // Load the address of a register.
   llvm::Value *LoadRegAddress(llvm::BasicBlock *block, llvm::Value *state_ptr,

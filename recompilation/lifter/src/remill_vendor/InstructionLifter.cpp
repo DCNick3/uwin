@@ -74,19 +74,15 @@ InstructionLifter::InstructionLifter(const Arch *arch_,
 // Lift a single instruction into a basic block. `is_delayed` signifies that
 // this instruction will execute within the delay slot of another instruction.
 LiftStatus InstructionLifter::LiftIntoBlock(Instruction &inst,
-                                            llvm::BasicBlock *block,
-                                            bool is_delayed) {
+                                            llvm::BasicBlock *block) {
   return LiftIntoBlock(inst, block,
-                       NthArgument(block->getParent(), kStatePointerArgNum),
-                       is_delayed);
+                       NthArgument(block->getParent(), kStatePointerArgNum));
 }
 
 // Lift a single instruction into a basic block.
 LiftStatus InstructionLifter::LiftIntoBlock(Instruction &arch_inst,
                                             llvm::BasicBlock *block,
-                                            llvm::Value *state_ptr,
-                                            bool is_delayed) {
-
+                                            llvm::Value *state_ptr) {
   llvm::Function *const func = block->getParent();
   llvm::Module *const module = func->getParent();
   llvm::Function *isel_func = nullptr;
@@ -124,31 +120,14 @@ LiftStatus InstructionLifter::LiftIntoBlock(Instruction &arch_inst,
       LoadRegAddress(block, state_ptr, kNextPCVariableName);
   const auto next_pc = ir.CreateLoad(next_pc_ref);
 
-  // If this instruction appears within a delay slot, then we're going to assume
-  // that the prior instruction updated `PC` to the target of the CTI, and that
-  // the value in `NEXT_PC` on entry to this instruction represents the actual
-  // address of this instruction, so we'll swap `PC` and `NEXT_PC`.
-  //
-  // TODO(pag): An alternate approach may be to call some kind of `DELAY_SLOT`
-  //            semantics function.
-  if (is_delayed) {
-    llvm::Value *temp_args[] = {ir.CreateLoad(mem_ptr_ref)};
-    ir.CreateStore(ir.CreateCall(impl->intrinsics->delay_slot_begin, temp_args),
-                   mem_ptr_ref);
 
-    // Leave `PC` and `NEXT_PC` alone; we assume that the semantics have done
-    // the right thing initializing `PC` and `NEXT_PC` for the delay slots.
-
-  } else {
-
-    // Update the current program counter. Control-flow instructions may update
-    // the program counter in the semantics code.
-    ir.CreateStore(next_pc, pc_ref);
-    ir.CreateStore(
-        ir.CreateAdd(next_pc, llvm::ConstantInt::get(impl->word_type,
-                                                     arch_inst.bytes.size())),
-        next_pc_ref);
-  }
+  // Update the current program counter. Control-flow instructions may update
+  // the program counter in the semantics code.
+  ir.CreateStore(next_pc, pc_ref);
+  ir.CreateStore(
+      ir.CreateAdd(next_pc, llvm::ConstantInt::get(impl->word_type,
+                                                    arch_inst.bytes.size())),
+      next_pc_ref);
 
   // Begin an atomic block.
   if (arch_inst.is_atomic_read_modify_write) {
@@ -197,23 +176,6 @@ LiftStatus InstructionLifter::LiftIntoBlock(Instruction &arch_inst,
   if (arch_inst.is_atomic_read_modify_write) {
     llvm::Value *temp_args[] = {ir.CreateLoad(mem_ptr_ref)};
     ir.CreateStore(ir.CreateCall(impl->intrinsics->atomic_end, temp_args),
-                   mem_ptr_ref);
-  }
-
-  // Restore the true target of the delayed branch.
-  if (is_delayed) {
-
-    // This is the delayed update of the program counter.
-    ir.CreateStore(next_pc, pc_ref);
-
-    // We don't know what the `NEXT_PC` is going to be because of the next
-    // instruction size is unknown (really, it's likely to be
-    // `arch->MaxInstructionSize()`), and for normal instructions, before they
-    // are lifted, we do the `PC = NEXT_PC + size`, so this is fine.
-    ir.CreateStore(next_pc, next_pc_ref);
-
-    llvm::Value *temp_args[] = {ir.CreateLoad(mem_ptr_ref)};
-    ir.CreateStore(ir.CreateCall(impl->intrinsics->delay_slot_end, temp_args),
                    mem_ptr_ref);
   }
 

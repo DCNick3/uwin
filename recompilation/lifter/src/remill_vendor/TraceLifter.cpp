@@ -362,37 +362,6 @@ bool TraceLifter::Impl::Lift(
         continue;
       }
 
-      // Handle lifting a delayed instruction.
-      auto try_delay = arch->MayHaveDelaySlot(inst);
-      if (try_delay) {
-        delayed_inst.Reset();
-        if (!ReadInstructionBytes(inst.delayed_pc) ||
-            !arch->DecodeDelayedInstruction(inst.delayed_pc, inst_bytes,
-                                            delayed_inst)) {
-          LOG(ERROR) << "Couldn't read delayed inst "
-                     << delayed_inst.Serialize();
-          AddTerminatingTailCall(block, intrinsics->error);
-          continue;
-        }
-      }
-
-      // Functor used to add in a delayed instruction.
-      auto try_add_delay_slot = [&](bool on_branch_taken_path,
-                                    llvm::BasicBlock *into_block) -> void {
-        if (!try_delay) {
-          return;
-        }
-        if (!arch->NextInstructionIsDelayed(inst, delayed_inst,
-                                            on_branch_taken_path)) {
-          return;
-        }
-        lift_status = inst_lifter.LiftIntoBlock(
-            delayed_inst, into_block, state_ptr, true /* is_delayed */);
-        if (kLiftedInstruction != lift_status) {
-          AddTerminatingTailCall(block, intrinsics->error);
-        }
-      };
-
       // Connect together the basic blocks.
       switch (inst.category) {
         case Instruction::kCategoryInvalid:
@@ -412,12 +381,10 @@ bool TraceLifter::Impl::Lift(
         // trace, or we'll just extend out the current trace. Either way, no
         // sacrifice in correctness is made.
         case Instruction::kCategoryDirectJump:
-          try_add_delay_slot(true, block);
           llvm::BranchInst::Create(GetOrCreateBranchTakenBlock(), block);
           break;
 
         case Instruction::kCategoryIndirectJump: {
-          try_add_delay_slot(true, block);
           AddTerminatingTailCall(block, intrinsics->jump);
           break;
         }
@@ -427,7 +394,6 @@ bool TraceLifter::Impl::Lift(
           goto check_call_return;
 
         case Instruction::kCategoryIndirectFunctionCall: {
-          try_add_delay_slot(true, block);
           const auto fall_through_block =
               llvm::BasicBlock::Create(context, "", func);
 
@@ -449,19 +415,6 @@ bool TraceLifter::Impl::Lift(
           auto taken_block = llvm::BasicBlock::Create(context, "", func);
           auto not_taken_block = GetOrCreateBranchNotTakenBlock();
           const auto orig_not_taken_block = not_taken_block;
-
-          // If we might need to add delay slots, then try to lift the delayed
-          // instruction on each side of the conditional branch, injecting in
-          // new blocks (for the delayed instruction) between the branch
-          // and its original targets.
-          if (try_delay) {
-            not_taken_block = llvm::BasicBlock::Create(context, "", func);
-
-            try_add_delay_slot(true, taken_block);
-            try_add_delay_slot(false, not_taken_block);
-
-            llvm::BranchInst::Create(orig_not_taken_block, not_taken_block);
-          }
 
           llvm::BranchInst::Create(taken_block, not_taken_block,
                                    LoadBranchTaken(block), block);
@@ -487,7 +440,6 @@ bool TraceLifter::Impl::Lift(
         // trace for this function without sacrificing correctness.
         case Instruction::kCategoryDirectFunctionCall: {
         direct_func_call:
-          try_add_delay_slot(true, block);
           if (inst.branch_not_taken_pc != inst.branch_taken_pc) {
             trace_work_list.insert(inst.branch_taken_pc);
             auto target_trace = get_trace_decl(inst.branch_taken_pc);
@@ -511,19 +463,6 @@ bool TraceLifter::Impl::Lift(
           auto taken_block = llvm::BasicBlock::Create(context, "", func);
           auto not_taken_block = GetOrCreateBranchNotTakenBlock();
           const auto orig_not_taken_block = not_taken_block;
-
-          // If we might need to add delay slots, then try to lift the delayed
-          // instruction on each side of the conditional branch, injecting in
-          // new blocks (for the delayed instruction) between the branch
-          // and its original targets.
-          if (try_delay) {
-            not_taken_block = llvm::BasicBlock::Create(context, "", func);
-
-            try_add_delay_slot(true, taken_block);
-            try_add_delay_slot(false, not_taken_block);
-
-            llvm::BranchInst::Create(orig_not_taken_block, not_taken_block);
-          }
 
           llvm::BranchInst::Create(taken_block, not_taken_block,
                                    LoadBranchTaken(block), block);
@@ -577,7 +516,6 @@ bool TraceLifter::Impl::Lift(
           break;
 
         case Instruction::kCategoryFunctionReturn:
-          try_add_delay_slot(true, block);
           AddTerminatingTailCall(block, intrinsics->function_return);
           break;
 
@@ -585,19 +523,6 @@ bool TraceLifter::Impl::Lift(
           auto taken_block = llvm::BasicBlock::Create(context, "", func);
           auto not_taken_block = GetOrCreateBranchNotTakenBlock();
           const auto orig_not_taken_block = not_taken_block;
-
-          // If we might need to add delay slots, then try to lift the delayed
-          // instruction on each side of the conditional branch, injecting in
-          // new blocks (for the delayed instruction) between the branch
-          // and its original targets.
-          if (try_delay) {
-            not_taken_block = llvm::BasicBlock::Create(context, "", func);
-
-            try_add_delay_slot(true, taken_block);
-            try_add_delay_slot(false, not_taken_block);
-
-            llvm::BranchInst::Create(orig_not_taken_block, not_taken_block);
-          }
 
           llvm::BranchInst::Create(taken_block, not_taken_block,
                                    LoadBranchTaken(block), block);
@@ -611,25 +536,6 @@ bool TraceLifter::Impl::Lift(
           auto taken_block = GetOrCreateBranchTakenBlock();
           auto not_taken_block = GetOrCreateBranchNotTakenBlock();
 
-          // If we might need to add delay slots, then try to lift the delayed
-          // instruction on each side of the conditional branch, injecting in
-          // new blocks (for the delayed instruction) between the branch
-          // and its original targets.
-          if (try_delay) {
-            auto new_taken_block = llvm::BasicBlock::Create(context, "", func);
-            auto new_not_taken_block =
-                llvm::BasicBlock::Create(context, "", func);
-
-            try_add_delay_slot(true, new_taken_block);
-            try_add_delay_slot(false, new_not_taken_block);
-
-            llvm::BranchInst::Create(taken_block, new_taken_block);
-            llvm::BranchInst::Create(not_taken_block, new_not_taken_block);
-
-            taken_block = new_taken_block;
-            not_taken_block = new_not_taken_block;
-          }
-
           llvm::BranchInst::Create(taken_block, not_taken_block,
                                    LoadBranchTaken(block), block);
           break;
@@ -638,19 +544,6 @@ bool TraceLifter::Impl::Lift(
           auto taken_block = llvm::BasicBlock::Create(context, "", func);
           auto not_taken_block = GetOrCreateBranchNotTakenBlock();
           const auto orig_not_taken_block = not_taken_block;
-
-          // If we might need to add delay slots, then try to lift the delayed
-          // instruction on each side of the conditional branch, injecting in
-          // new blocks (for the delayed instruction) between the branch
-          // and its original targets.
-          if (try_delay) {
-            not_taken_block = llvm::BasicBlock::Create(context, "", func);
-
-            try_add_delay_slot(true, taken_block);
-            try_add_delay_slot(false, not_taken_block);
-
-            llvm::BranchInst::Create(orig_not_taken_block, not_taken_block);
-          }
 
           llvm::BranchInst::Create(taken_block, not_taken_block,
                                    LoadBranchTaken(block), block);
