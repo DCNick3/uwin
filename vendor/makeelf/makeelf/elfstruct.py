@@ -545,7 +545,10 @@ class PF(Enum):
 class Elf32_Phdr:
 
     def __init__(self, p_type=0, p_offset=0, p_vaddr=0, p_paddr=0, p_filesz=0,
-                 p_memsz=0, p_flags=0, p_align=0, little=False, sections=[]):
+                 p_memsz=0, p_flags=0, p_align=0, little=False, sections=None):
+        if sections is None:
+            sections = []
+        
         ## Type of segment
         self.p_type = p_type
         ## Offset in file, where first byte of segment resides

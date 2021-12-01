@@ -384,7 +384,10 @@ class ELF:
         return self._append_segment(ptype=PT.PT_LOAD, vaddr=addr, paddr=0,
                 file_size=Shdr.sh_size, mem_size=mem_size, flags=p_flags)
 
-    def _append_segment(self, ptype, vaddr, paddr, file_size, mem_size, flags=0, sections=[]):
+    def _append_segment(self, ptype, vaddr, paddr, file_size, mem_size, flags=0, sections=None):
+        if sections is None:
+            sections = []
+        
         # create instance of Phdr
         Phdr = Elf32_Phdr(p_type=ptype, p_offset=0, p_vaddr=vaddr,
                 p_paddr=paddr, p_filesz=file_size, p_memsz=mem_size,
@@ -473,3 +476,28 @@ class ELF:
 
         # return index of new symbol
         return sym_id
+
+    ## Try to find a mapping from sections to segments to allow to move them around
+    def map_sections_to_segments(self):
+        def intersects(a, b):
+            a1, a2 = a
+            b1, b2 = b
+            res = a2 > b1 and b2 > a1
+            return res
+
+        sec: Elf32_Shdr
+        seg: Elf32_Phdr
+        for i, sec in enumerate(self.Elf.Shdr_table[1:], 1):
+            if sec.sh_flags & SHF.SHF_ALLOC == 0:
+                continue
+            sec_rg = (sec.sh_addr, sec.sh_addr + sec.sh_size)
+            for j, seg in enumerate(self.Elf.Phdr_table[1:], 1):
+                if seg.p_type != PT.PT_LOAD:
+                    continue
+                seg_rg = (seg.p_vaddr, seg.p_vaddr + seg.p_memsz)
+                if not intersects(sec_rg, seg_rg):
+                    continue
+                assert sec_rg[0] >= seg_rg[0] and sec_rg[1] <= seg_rg[1], "Sections cannot span multiple segments!"
+                
+                seg.sections.append(i)
+                break

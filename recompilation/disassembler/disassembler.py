@@ -33,6 +33,8 @@ def vprint(*args_, **kwargs):
 with open(args.in_loaded_elf, 'rb') as f:
   elf, _ = ELF.from_bytes(f.read())
 
+elf.map_sections_to_segments()
+
 segment: Elf32_Phdr
 for segment in elf.Elf.Phdr_table[1:]:
   rwx = PF.PF_R | PF.PF_W | PF.PF_X
