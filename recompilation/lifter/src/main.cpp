@@ -4,9 +4,19 @@
 #include <gflags/gflags.h>
 #include <glog/logging.h>
 #include <llvm/IR/LLVMContext.h>
+#include <llvm/IR/Dominators.h>
+#include <llvm/IR/Verifier.h>
 #include <llvm/Linker/Linker.h>
 #include <llvm/Support/CommandLine.h>
-#include <llvm/IR/Verifier.h>
+#include <llvm/Transforms/IPO.h>
+#include <llvm/Transforms/IPO/AlwaysInliner.h>
+#include <llvm/Analysis/ProfileSummaryInfo.h>
+#include <llvm/Analysis/BranchProbabilityInfo.h>
+#include <llvm/Analysis/LoopInfo.h>
+#include <llvm/Analysis/TargetLibraryInfo.h>
+#include <llvm/Analysis/PostDominators.h>
+#include <llvm/Analysis/AliasAnalysis.h>
+
 #include <memory>
 #include <remill/Arch/Arch.h>
 #include <remill/Arch/Name.h>
@@ -110,16 +120,45 @@ int main(int argc, char** argv) {
   //   remill::MoveFunctionIntoModule(lifted_entry.second.function, intermediate_module.get());
   // }
 
-  auto intrinsics_module = LoadIntrinsics(&context);
+  LOG(INFO) << "Lifting done. Now we inline all the semantics and intrinsics...";
 
-  // Here we do some voodoo magic. We link modules with different target
-  // triples and data layouts. But this is okay, as there are no pointers
-  // inside remill-generated code besides State& and Memory*. They are fine,
-  // as they are using fixed-size types, ensuring no padding in-between
-  // structure elements, and avoiding arch-specific types like long double.
-  // intermediate_module->setDataLayout(intrinsics_module->getDataLayout());
-  // intermediate_module->setTargetTriple(intrinsics_module->getTargetTriple());
-  // llvm::Linker::linkModules(*intrinsics_module, std::move(intermediate_module));
+  auto intrinsics_module = LoadIntrinsics(&context);
+  // trick LLVM to think the targets are the same (it does not matter anyway)
+  intrinsics_module->setDataLayout(module->getDataLayout());
+  intrinsics_module->setTargetTriple(module->getTargetTriple());
+
+  // load the uwin-specific intrinsics implementations
+  llvm::Linker::linkModules(*module, std::move(intrinsics_module));
+
+  llvm::ModuleAnalysisManager MAM;
+  llvm::FunctionAnalysisManager FAM;
+
+  MAM.registerPass([&](){return llvm::PassInstrumentationAnalysis();});
+  MAM.registerPass([&](){return llvm::InnerAnalysisManagerProxy<llvm::FunctionAnalysisManager, llvm::Module>(FAM);});
+  MAM.registerPass([&](){return llvm::ProfileSummaryAnalysis();});
+
+  FAM.registerPass([&](){return llvm::PassInstrumentationAnalysis();});
+  FAM.registerPass([&](){return llvm::AssumptionAnalysis();});
+  FAM.registerPass([&](){return llvm::BlockFrequencyAnalysis();});
+  FAM.registerPass([&](){return llvm::BranchProbabilityAnalysis();});
+  FAM.registerPass([&](){return llvm::LoopAnalysis();});
+  FAM.registerPass([&](){return llvm::DominatorTreeAnalysis();});
+  FAM.registerPass([&](){return llvm::PostDominatorTreeAnalysis();});
+  FAM.registerPass([&](){return llvm::TargetLibraryAnalysis();});
+  FAM.registerPass([&](){return llvm::AAManager();});
+
+  llvm::ModulePassManager MPM;
+
+  // inline all intrinsics and semantics
+  // don't want lifetime information as not to bloat the bitcode
+  MPM.addPass(llvm::AlwaysInlinerPass(false));
+
+  MPM.run(*module, MAM);
+
+  LOG(INFO) << "Happy!";
+
+  // create inliner with really low threshold
+  // this (theoretically) should inline only alwaysinline functions
 
   //guide.slp_vectorize = false;
   //guide.loop_vectorize = false;
