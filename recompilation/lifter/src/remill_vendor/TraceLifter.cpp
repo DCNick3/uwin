@@ -301,229 +301,231 @@ bool TraceLifter::Impl::Lift(
     llvm::BranchInst::Create(block, entry_block);
   }
 
-  // Decode instruction.
-  const auto inst_addr = trace_addr;
+  do {
+    // Decode instruction.
+    const auto inst_addr = trace_addr;
 
-  block = GetOrCreateBlock(inst_addr);
-  switch_inst = nullptr;
+    block = GetOrCreateBlock(inst_addr);
+    switch_inst = nullptr;
 
-  // We have already lifted this instruction block.
-  CHECK(block->empty());
-  
-  // No executable bytes here.
-  if (!ReadInstructionBytes(inst_addr)) {
-    AddTerminatingTailCall(block, intrinsics->missing_block);
-    return true;
-  }
+    // We have already lifted this instruction block.
+    CHECK(block->empty());
+    
+    // No executable bytes here.
+    if (!ReadInstructionBytes(inst_addr)) {
+      AddTerminatingTailCall(block, intrinsics->missing_block);
+      break;
+    }
 
-  inst.Reset();
+    inst.Reset();
 
-  (void) arch->DecodeInstruction(inst_addr, inst_bytes, inst);
+    (void) arch->DecodeInstruction(inst_addr, inst_bytes, inst);
 
-  auto lift_status = inst_lifter.LiftIntoBlock(inst, block, state_ptr);
-  if (kLiftedInstruction != lift_status) {
-    AddTerminatingTailCall(block, intrinsics->error);
-    return true;
-  }
-
-  // Connect together the basic blocks.
-  switch (inst.category) {
-    case Instruction::kCategoryInvalid:
-    case Instruction::kCategoryError:
+    auto lift_status = inst_lifter.LiftIntoBlock(inst, block, state_ptr);
+    if (kLiftedInstruction != lift_status) {
       AddTerminatingTailCall(block, intrinsics->error);
       break;
-
-    case Instruction::kCategoryNormal:
-    case Instruction::kCategoryNoOp:
-      llvm::BranchInst::Create(GetOrCreateNextBlock(), block);
-      break;
-
-    // Direct jumps could either be local or could be tail-calls. In the
-    // case of a tail call, we'll assume that the trace manager contains
-    // advanced knowledge of this, and so when we go to make a block for
-    // the targeted instruction, we'll either tail call to the target
-    // trace, or we'll just extend out the current trace. Either way, no
-    // sacrifice in correctness is made.
-    case Instruction::kCategoryDirectJump:
-      llvm::BranchInst::Create(GetOrCreateBranchTakenBlock(), block);
-      break;
-
-    case Instruction::kCategoryIndirectJump: {
-      AddTerminatingTailCall(block, intrinsics->jump);
-      break;
     }
 
-    case Instruction::kCategoryAsyncHyperCall:
-      AddCall(block, intrinsics->async_hyper_call);
-      goto check_call_return;
+    // Connect together the basic blocks.
+    switch (inst.category) {
+      case Instruction::kCategoryInvalid:
+      case Instruction::kCategoryError:
+        AddTerminatingTailCall(block, intrinsics->error);
+        break;
 
-    case Instruction::kCategoryIndirectFunctionCall: {
-      const auto fall_through_block =
-          llvm::BasicBlock::Create(context, "", func);
+      case Instruction::kCategoryNormal:
+      case Instruction::kCategoryNoOp:
+        llvm::BranchInst::Create(GetOrCreateNextBlock(), block);
+        break;
 
-      const auto ret_pc_ref =
-          LoadReturnProgramCounterRef(fall_through_block);
-      const auto next_pc_ref =
-          LoadNextProgramCounterRef(fall_through_block);
-      llvm::IRBuilder<> ir(fall_through_block);
-      ir.CreateStore(ir.CreateLoad(ret_pc_ref), next_pc_ref);
-      ir.CreateBr(GetOrCreateBranchNotTakenBlock());
+      // Direct jumps could either be local or could be tail-calls. In the
+      // case of a tail call, we'll assume that the trace manager contains
+      // advanced knowledge of this, and so when we go to make a block for
+      // the targeted instruction, we'll either tail call to the target
+      // trace, or we'll just extend out the current trace. Either way, no
+      // sacrifice in correctness is made.
+      case Instruction::kCategoryDirectJump:
+        llvm::BranchInst::Create(GetOrCreateBranchTakenBlock(), block);
+        break;
 
-      AddCall(block, intrinsics->function_call);
-      llvm::BranchInst::Create(fall_through_block, block);
-      block = fall_through_block;
-      break;
-    }
-
-    case Instruction::kCategoryConditionalIndirectFunctionCall: {
-      auto taken_block = llvm::BasicBlock::Create(context, "", func);
-      auto not_taken_block = GetOrCreateBranchNotTakenBlock();
-      const auto orig_not_taken_block = not_taken_block;
-
-      llvm::BranchInst::Create(taken_block, not_taken_block,
-                                LoadBranchTaken(block), block);
-
-      AddCall(taken_block, intrinsics->function_call);
-
-      const auto ret_pc_ref = LoadReturnProgramCounterRef(taken_block);
-      const auto next_pc_ref = LoadNextProgramCounterRef(taken_block);
-      llvm::IRBuilder<> ir(taken_block);
-      ir.CreateStore(ir.CreateLoad(ret_pc_ref), next_pc_ref);
-      ir.CreateBr(orig_not_taken_block);
-      block = orig_not_taken_block;
-      break;
-    }
-
-    // In the case of a direct function call, we try to handle the
-    // pattern of a call to the next PC as a way of getting access to
-    // an instruction pointer. It is the case where a call to the next
-    // PC could also be something more like a call to a `noreturn` function
-    // and that is OK, because either a user of the trace manager has
-    // already told us that the next PC is a trace head (and we'll pick
-    // that up when trying to lift it), or we'll just have a really big
-    // trace for this function without sacrificing correctness.
-    case Instruction::kCategoryDirectFunctionCall: {
-    direct_func_call:
-      // in case of a call branch_not_taken_pc tells the return address
-      // branch_taken_pc tells the call target
-      if (inst.branch_not_taken_pc != inst.branch_taken_pc) {
-        auto target_trace = get_trace_decl(inst.branch_taken_pc);
-        if (target_trace)
-          AddCall(block, target_trace);
-        else
-          AddCall(block, intrinsics->missing_block);
+      case Instruction::kCategoryIndirectJump: {
+        AddTerminatingTailCall(block, intrinsics->jump);
+        break;
       }
 
-      const auto ret_pc_ref = LoadReturnProgramCounterRef(block);
-      const auto next_pc_ref = LoadNextProgramCounterRef(block);
-      llvm::IRBuilder<> ir(block);
-      ir.CreateStore(ir.CreateLoad(ret_pc_ref), next_pc_ref);
-      ir.CreateBr(GetOrCreateBranchNotTakenBlock());
+      case Instruction::kCategoryAsyncHyperCall:
+        AddCall(block, intrinsics->async_hyper_call);
+        goto check_call_return;
 
-      break;
-    }
-
-    case Instruction::kCategoryConditionalDirectFunctionCall: {
-      if (inst.branch_not_taken_pc == inst.branch_taken_pc) {
-        goto direct_func_call;
-      }
-
-      auto taken_block = llvm::BasicBlock::Create(context, "", func);
-      auto not_taken_block = GetOrCreateBranchNotTakenBlock();
-      const auto orig_not_taken_block = not_taken_block;
-
-      llvm::BranchInst::Create(taken_block, not_taken_block,
-                                LoadBranchTaken(block), block);
-
-      auto target_trace = get_trace_decl(inst.branch_taken_pc);
-
-      AddCall(taken_block, intrinsics->function_call);
-      AddCall(taken_block, target_trace);
-
-      const auto ret_pc_ref = LoadReturnProgramCounterRef(taken_block);
-      const auto next_pc_ref = LoadNextProgramCounterRef(taken_block);
-      llvm::IRBuilder<> ir(taken_block);
-      ir.CreateStore(ir.CreateLoad(ret_pc_ref), next_pc_ref);
-      ir.CreateBr(orig_not_taken_block);
-      block = orig_not_taken_block;
-      break;
-    }
-
-    // Lift an async hyper call to check if it should do the hypercall.
-    // If so, it will jump to the `do_hyper_call` block, otherwise it will
-    // jump to the block associated with the next PC. In the case of the
-    // `do_hyper_call` block, we assign it to `state.block`, then go
-    // to `check_call_return` to add the hyper call into that block,
-    // checking if the hyper call returns to the next PC or not.
-    //
-    // TODO(pag): Delay slots?
-    case Instruction::kCategoryConditionalAsyncHyperCall: {
-      auto do_hyper_call = llvm::BasicBlock::Create(context, "", func);
-      llvm::BranchInst::Create(do_hyper_call, GetOrCreateNextBlock(),
-                                LoadBranchTaken(block), block);
-      block = do_hyper_call;
-      AddCall(block, intrinsics->async_hyper_call);
-      goto check_call_return;
-    }
-
-    check_call_return:
-      do {
-        auto pc = LoadProgramCounter(block);
-        auto ret_pc = llvm::ConstantInt::get(inst_lifter.impl->word_type,
-                                              inst.next_pc);
-
-        llvm::IRBuilder<> ir(block);
-        auto eq = ir.CreateICmpEQ(pc, ret_pc);
-        auto unexpected_ret_pc =
+      case Instruction::kCategoryIndirectFunctionCall: {
+        const auto fall_through_block =
             llvm::BasicBlock::Create(context, "", func);
-        ir.CreateCondBr(eq, GetOrCreateNextBlock(), unexpected_ret_pc);
-        AddTerminatingTailCall(unexpected_ret_pc,
-                                intrinsics->missing_block);
-      } while (false);
-      break;
 
-    case Instruction::kCategoryFunctionReturn:
-      AddTerminatingTailCall(block, intrinsics->function_return);
-      break;
+        const auto ret_pc_ref =
+            LoadReturnProgramCounterRef(fall_through_block);
+        const auto next_pc_ref =
+            LoadNextProgramCounterRef(fall_through_block);
+        llvm::IRBuilder<> ir(fall_through_block);
+        ir.CreateStore(ir.CreateLoad(ret_pc_ref), next_pc_ref);
+        ir.CreateBr(GetOrCreateBranchNotTakenBlock());
 
-    case Instruction::kCategoryConditionalFunctionReturn: {
-      auto taken_block = llvm::BasicBlock::Create(context, "", func);
-      auto not_taken_block = GetOrCreateBranchNotTakenBlock();
-      const auto orig_not_taken_block = not_taken_block;
+        AddCall(block, intrinsics->function_call);
+        llvm::BranchInst::Create(fall_through_block, block);
+        block = fall_through_block;
+        break;
+      }
 
-      llvm::BranchInst::Create(taken_block, not_taken_block,
-                                LoadBranchTaken(block), block);
+      case Instruction::kCategoryConditionalIndirectFunctionCall: {
+        auto taken_block = llvm::BasicBlock::Create(context, "", func);
+        auto not_taken_block = GetOrCreateBranchNotTakenBlock();
+        const auto orig_not_taken_block = not_taken_block;
 
-      AddTerminatingTailCall(taken_block, intrinsics->function_return);
-      block = orig_not_taken_block;
-      break;
+        llvm::BranchInst::Create(taken_block, not_taken_block,
+                                  LoadBranchTaken(block), block);
+
+        AddCall(taken_block, intrinsics->function_call);
+
+        const auto ret_pc_ref = LoadReturnProgramCounterRef(taken_block);
+        const auto next_pc_ref = LoadNextProgramCounterRef(taken_block);
+        llvm::IRBuilder<> ir(taken_block);
+        ir.CreateStore(ir.CreateLoad(ret_pc_ref), next_pc_ref);
+        ir.CreateBr(orig_not_taken_block);
+        block = orig_not_taken_block;
+        break;
+      }
+
+      // In the case of a direct function call, we try to handle the
+      // pattern of a call to the next PC as a way of getting access to
+      // an instruction pointer. It is the case where a call to the next
+      // PC could also be something more like a call to a `noreturn` function
+      // and that is OK, because either a user of the trace manager has
+      // already told us that the next PC is a trace head (and we'll pick
+      // that up when trying to lift it), or we'll just have a really big
+      // trace for this function without sacrificing correctness.
+      case Instruction::kCategoryDirectFunctionCall: {
+      direct_func_call:
+        // in case of a call branch_not_taken_pc tells the return address
+        // branch_taken_pc tells the call target
+        if (inst.branch_not_taken_pc != inst.branch_taken_pc) {
+          auto target_trace = get_trace_decl(inst.branch_taken_pc);
+          if (target_trace)
+            AddCall(block, target_trace);
+          else
+            AddCall(block, intrinsics->missing_block);
+        }
+
+        const auto ret_pc_ref = LoadReturnProgramCounterRef(block);
+        const auto next_pc_ref = LoadNextProgramCounterRef(block);
+        llvm::IRBuilder<> ir(block);
+        ir.CreateStore(ir.CreateLoad(ret_pc_ref), next_pc_ref);
+        ir.CreateBr(GetOrCreateBranchNotTakenBlock());
+
+        break;
+      }
+
+      case Instruction::kCategoryConditionalDirectFunctionCall: {
+        if (inst.branch_not_taken_pc == inst.branch_taken_pc) {
+          goto direct_func_call;
+        }
+
+        auto taken_block = llvm::BasicBlock::Create(context, "", func);
+        auto not_taken_block = GetOrCreateBranchNotTakenBlock();
+        const auto orig_not_taken_block = not_taken_block;
+
+        llvm::BranchInst::Create(taken_block, not_taken_block,
+                                  LoadBranchTaken(block), block);
+
+        auto target_trace = get_trace_decl(inst.branch_taken_pc);
+
+        AddCall(taken_block, intrinsics->function_call);
+        AddCall(taken_block, target_trace);
+
+        const auto ret_pc_ref = LoadReturnProgramCounterRef(taken_block);
+        const auto next_pc_ref = LoadNextProgramCounterRef(taken_block);
+        llvm::IRBuilder<> ir(taken_block);
+        ir.CreateStore(ir.CreateLoad(ret_pc_ref), next_pc_ref);
+        ir.CreateBr(orig_not_taken_block);
+        block = orig_not_taken_block;
+        break;
+      }
+
+      // Lift an async hyper call to check if it should do the hypercall.
+      // If so, it will jump to the `do_hyper_call` block, otherwise it will
+      // jump to the block associated with the next PC. In the case of the
+      // `do_hyper_call` block, we assign it to `state.block`, then go
+      // to `check_call_return` to add the hyper call into that block,
+      // checking if the hyper call returns to the next PC or not.
+      //
+      // TODO(pag): Delay slots?
+      case Instruction::kCategoryConditionalAsyncHyperCall: {
+        auto do_hyper_call = llvm::BasicBlock::Create(context, "", func);
+        llvm::BranchInst::Create(do_hyper_call, GetOrCreateNextBlock(),
+                                  LoadBranchTaken(block), block);
+        block = do_hyper_call;
+        AddCall(block, intrinsics->async_hyper_call);
+        goto check_call_return;
+      }
+
+      check_call_return:
+        do {
+          auto pc = LoadProgramCounter(block);
+          auto ret_pc = llvm::ConstantInt::get(inst_lifter.impl->word_type,
+                                                inst.next_pc);
+
+          llvm::IRBuilder<> ir(block);
+          auto eq = ir.CreateICmpEQ(pc, ret_pc);
+          auto unexpected_ret_pc =
+              llvm::BasicBlock::Create(context, "", func);
+          ir.CreateCondBr(eq, GetOrCreateNextBlock(), unexpected_ret_pc);
+          AddTerminatingTailCall(unexpected_ret_pc,
+                                  intrinsics->missing_block);
+        } while (false);
+        break;
+
+      case Instruction::kCategoryFunctionReturn:
+        AddTerminatingTailCall(block, intrinsics->function_return);
+        break;
+
+      case Instruction::kCategoryConditionalFunctionReturn: {
+        auto taken_block = llvm::BasicBlock::Create(context, "", func);
+        auto not_taken_block = GetOrCreateBranchNotTakenBlock();
+        const auto orig_not_taken_block = not_taken_block;
+
+        llvm::BranchInst::Create(taken_block, not_taken_block,
+                                  LoadBranchTaken(block), block);
+
+        AddTerminatingTailCall(taken_block, intrinsics->function_return);
+        block = orig_not_taken_block;
+        break;
+      }
+
+      case Instruction::kCategoryConditionalBranch: {
+        auto taken_block = GetOrCreateBranchTakenBlock();
+        auto not_taken_block = GetOrCreateBranchNotTakenBlock();
+
+        llvm::BranchInst::Create(taken_block, not_taken_block,
+                                  LoadBranchTaken(block), block);
+        break;
+      }
+
+      
+      case Instruction::kCategoryConditionalIndirectJump: {
+        auto taken_block = llvm::BasicBlock::Create(context, "", func);
+        auto not_taken_block = GetOrCreateBranchNotTakenBlock();
+        const auto orig_not_taken_block = not_taken_block;
+
+        llvm::BranchInst::Create(taken_block, not_taken_block,
+                                  LoadBranchTaken(block), block);
+
+        AddTerminatingTailCall(taken_block, intrinsics->jump);
+        block = orig_not_taken_block;
+        break;
+      }
+      default:
+        LOG(FATAL) << "Unsupported control flow: " << inst.category;
     }
-
-    case Instruction::kCategoryConditionalBranch: {
-      auto taken_block = GetOrCreateBranchTakenBlock();
-      auto not_taken_block = GetOrCreateBranchNotTakenBlock();
-
-      llvm::BranchInst::Create(taken_block, not_taken_block,
-                                LoadBranchTaken(block), block);
-      break;
-    }
-
-    
-    case Instruction::kCategoryConditionalIndirectJump: {
-      auto taken_block = llvm::BasicBlock::Create(context, "", func);
-      auto not_taken_block = GetOrCreateBranchNotTakenBlock();
-      const auto orig_not_taken_block = not_taken_block;
-
-      llvm::BranchInst::Create(taken_block, not_taken_block,
-                                LoadBranchTaken(block), block);
-
-      AddTerminatingTailCall(taken_block, intrinsics->jump);
-      block = orig_not_taken_block;
-      break;
-    }
-    default:
-      LOG(FATAL) << "Unsupported control flow: " << inst.category;
-  }
+  } while (false);
 
   for (auto &block : *func) {
     if (!block.getTerminator()) {

@@ -4,31 +4,22 @@
 #include <gflags/gflags.h>
 #include <glog/logging.h>
 #include <llvm/IR/LLVMContext.h>
-#include <llvm/IR/Dominators.h>
 #include <llvm/IR/Verifier.h>
 #include <llvm/Linker/Linker.h>
 #include <llvm/Support/CommandLine.h>
-#include <llvm/Transforms/IPO.h>
-#include <llvm/Transforms/IPO/AlwaysInliner.h>
-#include <llvm/Analysis/ProfileSummaryInfo.h>
-#include <llvm/Analysis/BranchProbabilityInfo.h>
-#include <llvm/Analysis/LoopInfo.h>
-#include <llvm/Analysis/TargetLibraryInfo.h>
-#include <llvm/Analysis/PostDominators.h>
-#include <llvm/Analysis/AliasAnalysis.h>
 
 #include <memory>
 #include <remill/Arch/Arch.h>
 #include <remill/Arch/Name.h>
 #include <remill/BC/IntrinsicTable.h>
 #include <remill/BC/Lifter.h>
-#include <remill/BC/Optimizer.h>
 #include <remill/BC/Util.h>
 #include <remill/OS/OS.h>
 
 #include "recompilation/lifter/uwin_intrinsics.h"
 #include "Executable.h"
 #include "TraceManager.h"
+#include "Optimize.h"
 #include "remill_vendor/TraceLifter.h"
 #include "remill_vendor/InstructionLifter.h"
 
@@ -111,14 +102,11 @@ int main(int argc, char** argv) {
 
   // arch->PrepareModuleDataLayout(intermediate_module);
 
-  // Move the lifted code into a new module. This module will be much smaller
-  // because it won't be bogged down with all of the semantics definitions.
-  // This is a good JITing strategy: optimize the lifted code in the semantics
-  // module, move it to a new module, instrument it there, then JIT compile it.
-  // for (auto &lifted_entry : manager.traces) {
-  //   CHECK(lifted_entry.second.lifted); // assert it is lifted
-  //   remill::MoveFunctionIntoModule(lifted_entry.second.function, intermediate_module.get());
-  // }
+  std::set<std::string> lifted_functions;
+  for (auto &lifted_entry : manager.traces) {
+    if (lifted_entry.second.lifted) // assert it is lifted
+      lifted_functions.emplace(lifted_entry.second.function->getName().str());
+  }
 
   LOG(INFO) << "Lifting done. Now we inline all the semantics and intrinsics...";
 
@@ -130,30 +118,7 @@ int main(int argc, char** argv) {
   // load the uwin-specific intrinsics implementations
   llvm::Linker::linkModules(*module, std::move(intrinsics_module));
 
-  llvm::ModuleAnalysisManager MAM;
-  llvm::FunctionAnalysisManager FAM;
-
-  MAM.registerPass([&](){return llvm::PassInstrumentationAnalysis();});
-  MAM.registerPass([&](){return llvm::InnerAnalysisManagerProxy<llvm::FunctionAnalysisManager, llvm::Module>(FAM);});
-  MAM.registerPass([&](){return llvm::ProfileSummaryAnalysis();});
-
-  FAM.registerPass([&](){return llvm::PassInstrumentationAnalysis();});
-  FAM.registerPass([&](){return llvm::AssumptionAnalysis();});
-  FAM.registerPass([&](){return llvm::BlockFrequencyAnalysis();});
-  FAM.registerPass([&](){return llvm::BranchProbabilityAnalysis();});
-  FAM.registerPass([&](){return llvm::LoopAnalysis();});
-  FAM.registerPass([&](){return llvm::DominatorTreeAnalysis();});
-  FAM.registerPass([&](){return llvm::PostDominatorTreeAnalysis();});
-  FAM.registerPass([&](){return llvm::TargetLibraryAnalysis();});
-  FAM.registerPass([&](){return llvm::AAManager();});
-
-  llvm::ModulePassManager MPM;
-
-  // inline all intrinsics and semantics
-  // don't want lifetime information as not to bloat the bitcode
-  MPM.addPass(llvm::AlwaysInlinerPass(false));
-
-  MPM.run(*module, MAM);
+  remill::uwin::OptimizeUwinModule(*module, lifted_functions);
 
   LOG(INFO) << "Happy!";
 

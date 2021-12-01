@@ -12,7 +12,12 @@ bc_object(
   include_directories = [
     "@remill//include:."
   ],
-  target = "x86_64"
+  target = "x86_64",
+  opts = [
+    "-O3",
+    "-g0",
+    "-m32",
+  ],
 )
 
 cc_embed_data(

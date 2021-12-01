@@ -1,11 +1,16 @@
 load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
 
 def repo():
-  REMILL_COMMIT = "0c5a22f9fb79b0a491092a3c7759d75aa340e2e4"
+  REMILL_COMMIT = "1434c3e102b781690c764fb8a21cdba3380a8b06"
+
+  # native.local_repository(
+  #   name = "remill",
+  #   path = "/home/dcnick3/trash/homm3-switch/code/lifting/remill",
+  # )
 
   git_repository(
       name = "remill",
       commit = REMILL_COMMIT,
       remote = "https://github.com/DCNick3/uwin-remill.git",
-      shallow_since = "1638269500 +0300",
+      shallow_since = "1638394651 +0300",
   )
