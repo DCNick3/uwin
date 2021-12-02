@@ -2,7 +2,7 @@ load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
 
 
 def repo():
-  TOOLCHAIN_COMMIT = "02e19d5a3559370982cc8849b151a824079c2eec"
+  TOOLCHAIN_COMMIT = "808d43016de6795a94635257d948d21280399fae"
 
   # native.local_repository(
   #   name = "rules_cc_toolchain",
@@ -14,5 +14,5 @@ def repo():
       name = "rules_cc_toolchain",
       commit = TOOLCHAIN_COMMIT,
       remote = "https://github.com/DCNick3/bazel_rules_cc_toolchain",
-      shallow_since = "1638387355 +0300",
+      shallow_since = "1638453785 +0300",
   )
