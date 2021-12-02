@@ -82,14 +82,15 @@ auto BuildFunctionSimplificationPipeline() {
 
   FPM.addPass(llvm::SCCPPass()); // constant propagation and merging
 
-  return FPM;
+  return std::move(FPM);
 }
 
 }
 
 void OptimizeUwinModule(llvm::Module &module, std::set<std::string> const& lifted_functions) {
-  llvm::ModuleAnalysisManager MAM;
+  // order is important (for some reason)
   llvm::FunctionAnalysisManager FAM;
+  llvm::ModuleAnalysisManager MAM;
 
   MAM.registerPass([&](){return llvm::InnerAnalysisManagerProxy<llvm::FunctionAnalysisManager, llvm::Module>(FAM);});
   MAM.registerPass([&](){return llvm::PassInstrumentationAnalysis();});
