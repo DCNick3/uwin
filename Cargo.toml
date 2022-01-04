@@ -6,3 +6,10 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+iced-x86 = "1.15.0"
+
+# TODO: do not depend on inkwell if a particular feature is set
+inkwell = "0.1.0-beta.4"
+
+[dev-dependencies]
+dynasmrt = "1.2.1"
