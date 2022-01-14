@@ -65,7 +65,19 @@ pub enum Register {
     DL,
 }
 
-#[derive(Debug)]
+impl Register {
+    pub fn size(self) -> IntType {
+        use IntType::*;
+        use Register::*;
+        match self {
+            EAX | EBX | ECX | EDX | ESP | EBP | ESI | EDI => I32,
+            AX | BX | CX | DX | SP | BP | SI | DI => I16,
+            AH | BH | CH | DH | AL | BL | CL | DL => I8,
+        }
+    }
+}
+
+#[derive(Debug, Clone, Copy)]
 pub enum SegmentRegister {
     CS,
     DS,
@@ -80,7 +92,7 @@ pub struct CpuContext {
     pub gp_regs: [u32; 8],
 }
 
-#[derive(Debug)]
+#[derive(Debug, Clone, Copy, PartialEq)]
 pub enum IntType {
     I8,
     I16,
@@ -88,17 +100,39 @@ pub enum IntType {
     I64
 }
 
-#[derive(Debug)]
+impl IntType {
+    pub fn double_sized(self) -> Self {
+        use IntType::*;
+        match self {
+            I8 => I16,
+            I16 => I32,
+            I32 => I64,
+            I64 => panic!("Can't created a double-sided type for I64"),
+        }
+    }
+
+    pub fn bit_width(self) -> u8 {
+        use IntType::*;
+        match self {
+            I8 => 8,
+            I16 => 16,
+            I32 => 32,
+            I64 => 64,
+        }
+    }
+}
+
+#[derive(Debug, Clone, Copy)]
 pub struct MemoryOperand {
     pub base: Option<Register>,
     pub displacement: i64,
     pub scale: u8,
     pub index: Option<Register>,
-    pub size: IntType,
+    pub size: Option<IntType>,
     pub segment: Option<SegmentRegister>,
 }
 
-#[derive(Debug)]
+#[derive(Debug, Clone, Copy)]
 pub enum Operand {
     Register(Register),
 
@@ -110,4 +144,18 @@ pub enum Operand {
     FarBranch(u16, u32),
 
     Memory(MemoryOperand),
+}
+
+impl Operand {
+    pub fn size(&self) -> IntType {
+        match self {
+            Operand::Register(reg) => reg.size(),
+            Operand::Immediate8(_) => IntType::I8,
+            Operand::Immediate16(_) => IntType::I16,
+            Operand::Immediate32(_) => IntType::I32,
+            Operand::Immediate64(_) => IntType::I64,
+            Operand::FarBranch(_, _) => todo!(),
+            Operand::Memory(m) => m.size.unwrap(),
+        }
+    }
 }

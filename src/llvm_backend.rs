@@ -99,22 +99,35 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
                                       &*(reg.to_string() + "_ptr"))
         }
     }
+
+    fn int_type(&self, ty: IntType) -> LlvmIntType<'ctx> {
+        match ty {
+            IntType::I8 => self.types.i8,
+            IntType::I16 => self.types.i16,
+            IntType::I32 => self.types.i32,
+            IntType::I64 => self.types.i64,
+        }
+    }
 }
 
 impl IntValue for LlvmIntValue<'_> {
-
+    fn size(&self) -> IntType {
+        use IntType::*;
+        match self.get_type().get_bit_width() {
+            8 => I8,
+            16 => I16,
+            32 => I32,
+            64 => I64,
+            _ => unreachable!(),
+        }
+    }
 }
 
 impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
     type IntValue = LlvmIntValue<'ctx>;
 
-    fn make_int_value(&mut self, ty: IntType, value: u64, sign_extend: bool) -> Self::IntValue {
-        match ty {
-            IntType::I8 => self.types.i8.const_int(value, sign_extend),
-            IntType::I16 => self.types.i16.const_int(value, sign_extend),
-            IntType::I32 => self.types.i32.const_int(value, sign_extend),
-            IntType::I64 => self.types.i64.const_int(value, sign_extend),
-        }
+    fn make_int_value(&self, ty: IntType, value: u64, sign_extend: bool) -> Self::IntValue {
+        self.int_type(ty).const_int(value, sign_extend)
     }
 
     fn load_register(&mut self, register: Register) -> Self::IntValue {
@@ -136,10 +149,65 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
     }
 
     fn load_memory(&mut self, size: IntType, address: Self::IntValue) -> Self::IntValue {
-        todo!()
+        // TODO: actually implement memory fetching from the target address space, not the host space (as it is done now)
+        let hptr = self.builder.build_int_to_ptr(address,
+                                                 self.int_type(size).ptr_type(AddressSpace::Generic), "hptr");
+        self.builder.build_load(hptr, "").into_int_value()
     }
 
     fn store_memory(&mut self, size: IntType, address: Self::IntValue, value: Self::IntValue) {
         todo!()
+    }
+
+    fn add(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue {
+        self.builder.build_int_add(lhs, rhs, "")
+    }
+
+    fn neg(&mut self, val: Self::IntValue) -> Self::IntValue {
+        self.builder.build_int_neg(val, "")
+    }
+
+    fn sub(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue {
+        self.builder.build_int_sub(lhs, rhs, "")
+    }
+
+    fn mul(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue {
+        self.builder.build_int_mul(lhs, rhs, "")
+    }
+
+    fn xor(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue {
+        self.builder.build_xor(lhs, rhs, "")
+    }
+
+    fn or(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue {
+        self.builder.build_or(lhs, rhs, "")
+    }
+
+    fn shl(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue {
+        self.builder.build_left_shift(lhs, rhs, "")
+    }
+
+    fn lshr(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue {
+        todo!()
+    }
+
+    fn ashr(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue {
+        todo!()
+    }
+
+    fn udiv(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue {
+        self.builder.build_int_unsigned_div(lhs, rhs, "")
+    }
+
+    fn zext(&mut self, val: Self::IntValue, to: IntType) -> Self::IntValue {
+        self.builder.build_int_z_extend(val, self.int_type(to), "")
+    }
+
+    fn sext(&mut self, val: Self::IntValue, to: IntType) -> Self::IntValue {
+        self.builder.build_int_s_extend(val, self.int_type(to), "")
+    }
+
+    fn trunc(&mut self, val: Self::IntValue, to: IntType) -> Self::IntValue {
+        self.builder.build_int_truncate(val, self.int_type(to), "")
     }
 }

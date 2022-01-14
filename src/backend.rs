@@ -1,14 +1,14 @@
 
-use crate::types::{IntType, Operand, Register};
+use crate::types::{IntType, MemoryOperand, Operand, Register};
 
-pub trait IntValue {
-
+pub trait IntValue: Clone {
+    fn size(&self) -> IntType;
 }
 
 pub trait Builder {
     type IntValue: IntValue;
 
-    fn make_int_value(&mut self, ty: IntType, value: u64, sign_extend: bool) -> Self::IntValue;
+    fn make_int_value(&self, ty: IntType, value: u64, sign_extend: bool) -> Self::IntValue;
 
     // TODO: implement all the variants with all the sizes
     fn make_u8(&mut self, value: u8) -> Self::IntValue {
@@ -31,6 +31,35 @@ pub trait Builder {
     fn load_memory(&mut self, size: IntType, address: Self::IntValue) -> Self::IntValue;
     fn store_memory(&mut self, size: IntType, address: Self::IntValue, value: Self::IntValue);
 
+    fn add(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue;
+    fn neg(&mut self, val: Self::IntValue) -> Self::IntValue;
+    fn sub(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue;
+    fn mul(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue;
+    fn xor(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue;
+    fn or(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue;
+    fn shl(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue;
+    fn lshr(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue;
+    fn ashr(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue;
+    fn udiv(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue;
+
+    fn zext(&mut self, val: Self::IntValue, to: IntType) -> Self::IntValue;
+    fn sext(&mut self, val: Self::IntValue, to: IntType) -> Self::IntValue;
+    fn trunc(&mut self, val: Self::IntValue, to: IntType) -> Self::IntValue;
+
+    fn compute_memory_operand_address(&mut self, op: MemoryOperand) -> Self::IntValue {
+        assert!(op.index.is_none());
+        assert!(op.segment.is_none());
+
+        let mut res = self.make_u32(i32::try_from(op.displacement).unwrap() as u32);
+
+        if let Some(base) = op.base {
+            let base_val = self.load_register(base);
+            res = self.add(res, base_val);
+        }
+
+        res
+    }
+
     fn load_operand(&mut self, operand: Operand) -> Self::IntValue {
         match operand {
             Operand::Register(reg) => self.load_register(reg),
@@ -38,14 +67,20 @@ pub trait Builder {
             Operand::Immediate16(v) => self.make_u16(v),
             Operand::Immediate32(v) => self.make_u32(v),
             Operand::Immediate64(v) => self.make_u64(v),
-            Operand::Memory(_) => todo!(), // this is damn hard actually
+            Operand::Memory(op) => {
+                let addr = self.compute_memory_operand_address(op);
+                self.load_memory(op.size.unwrap(), addr)
+            },
             op => panic!("Unsupported load operand: {:?}", op),
         }
     }
     fn store_operand(&mut self, operand: Operand, value: Self::IntValue) {
         match operand {
             Operand::Register(reg) => self.store_register(reg, value),
-            Operand::Memory(_) => todo!(),
+            Operand::Memory(op) => {
+                let addr = self.compute_memory_operand_address(op);
+                self.store_memory(op.size.unwrap(), addr, value)
+            },
             op => panic!("Unsupported store operand: {:?}", op),
         }
     }

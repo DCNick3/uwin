@@ -1,6 +1,6 @@
 
-use iced_x86::{Decoder, Instruction, OpKind, Register as IcedRegister};
-use crate::types::{Operand, Register};
+use iced_x86::{Decoder, Instruction, MemorySize, OpKind, Register as IcedRegister};
+use crate::types::{IntType, MemoryOperand, Operand, Register};
 
 fn get_register(iced_register: IcedRegister) -> Register {
     use Register::*;
@@ -46,6 +46,13 @@ fn get_register(iced_register: IcedRegister) -> Register {
     }
 }
 
+fn get_opt_register(iced_register: IcedRegister) -> Option<Register> {
+    match iced_register {
+        IcedRegister::None => None,
+        reg => Some(get_register(reg)),
+    }
+}
+
 pub fn get_operand(instr: &Instruction, operand: u32) -> Operand {
     use crate::types::Operand::*;
 
@@ -70,7 +77,35 @@ pub fn get_operand(instr: &Instruction, operand: u32) -> Operand {
         OpKind::Immediate8to64 => Immediate64(instr.immediate8to64() as u64),
         OpKind::Immediate32to64 => Immediate64(instr.immediate32to64() as u64),
 
-        OpKind::Memory => todo!(),
+        OpKind::Memory => {
+            let memory_size = match instr.memory_size() {
+                MemorySize::UInt8 => Some(IntType::I8),
+                MemorySize::UInt16 => Some(IntType::I16),
+                MemorySize::UInt32 => Some(IntType::I32),
+                MemorySize::UInt64 => Some(IntType::I64),
+
+                MemorySize::Int8 => Some(IntType::I8),
+                MemorySize::Int16 => Some(IntType::I16),
+                MemorySize::Int32 => Some(IntType::I32),
+                MemorySize::Int64 => Some(IntType::I64),
+
+                MemorySize::Unknown => None,
+
+                s => panic!("Unsupported memory size: {:?}", s),
+            };
+
+            assert!(instr.segment_prefix() == IcedRegister::None); // TODO: segments (they are not that interesting, honestly)
+
+            let op = MemoryOperand {
+                base: get_opt_register(instr.memory_base()),
+                displacement: instr.memory_displacement64() as i64, // TODO: is this signedness OK?
+                scale: instr.memory_index_scale() as u8,
+                index: get_opt_register(instr.memory_index()),
+                size: memory_size,
+                segment: None,
+            };
+            Memory(op)
+        },
         k => panic!("Unsupported operand kind: {:?}", k)
     }
 }
