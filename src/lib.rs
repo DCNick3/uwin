@@ -330,20 +330,23 @@ mod tests {
             // and recompile it into this
             // isn't it nice?
             let expected_result = assemble_aarch64!(
+                ; sub sp, sp, #0x10
                 ; ldr w8, [x0, #0x10] // load ESP
                 ; add w9, w8, #4
-                ; ldr w9, [x9] // load [ESP+4] (a) TODO: memory accesses are not done as they are ought to be (add base ptr and stuff)
+                ; ldr w9, [x1, w9, sxtw] // load [ESP+4] (a)
                 ; add w8, w8, #8
                 ; str w9, [x0, #0xc] // store [ESP+4] as EDX
-                ; ldr w8, [x8] // load [ESP+8] (b)
+                ; ldr w8, [x1, w8, sxtw] // load [ESP+8] (b)
                 ; add w10, w9, #0xd // compute EDX+13
                 ; str w10, [x0, #8] // store EDX+13 as ECX
+                ; stp w8, w9, [sp, #8] // ??? why ???
                 ; sub w8, w8, w9 // compute b-a
                 ; mul w8, w8, w9 // compute a*(b-a)
                 ; udiv x9, x8, x10 // compute division of a*(b-a)/(13+a)
                 ; msub x8, x9, x10, x8 // compute remainder
                 ; str x9, [x0] // store div result in EAX
                 ; stur x8, [x0, #0xc] // store remainder in EDX
+                ; add sp, sp, #0x10
                 ; ret
             );
 

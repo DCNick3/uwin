@@ -120,6 +120,10 @@ impl IntType {
             I64 => 64,
         }
     }
+
+    pub fn byte_width(self) -> u8 {
+        self.bit_width() / 8
+    }
 }
 
 #[derive(Debug, Clone, Copy)]
