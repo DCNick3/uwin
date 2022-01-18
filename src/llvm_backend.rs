@@ -1,11 +1,11 @@
-use inkwell::AddressSpace;
+use crate::backend::IntValue;
+use crate::types::{FullSizeGeneralPurposeRegister, IntType, Register};
 use inkwell::builder::Builder;
 use inkwell::context::Context;
 use inkwell::module::Module;
-use inkwell::values::{FunctionValue, IntValue as LlvmIntValue, PointerValue};
 use inkwell::types::{FunctionType, IntType as LlvmIntType, PointerType, StructType, VoidType};
-use crate::types::{FullSizeGeneralPurposeRegister, IntType, Register};
-use crate::backend::IntValue;
+use inkwell::values::{FunctionValue, IntValue as LlvmIntValue, PointerValue};
+use inkwell::AddressSpace;
 
 pub struct LlvmBuilder<'ctx, 'a> {
     context: &'ctx Context,
@@ -39,16 +39,22 @@ impl<'ctx> Types<'ctx> {
         let i64 = context.i64_type();
 
         let ctx = context.opaque_struct_type("context");
-        ctx.set_body(&[
-            i32.array_type(8).into() // general-purpose registers
-        ], false);
+        ctx.set_body(
+            &[
+                i32.array_type(8).into(), // general-purpose registers
+            ],
+            false,
+        );
         let ctx_ptr = ctx.ptr_type(AddressSpace::Generic);
         let mem_ptr = i8.ptr_type(AddressSpace::Generic);
 
-        let bb_fn = void.fn_type(&[
-            ctx_ptr.into(),
-            mem_ptr.into(), // pointer to start of guest address space (same trick as qemu does)
-        ], false);
+        let bb_fn = void.fn_type(
+            &[
+                ctx_ptr.into(),
+                mem_ptr.into(), // pointer to start of guest address space (same trick as qemu does)
+            ],
+            false,
+        );
 
         Self {
             void,
@@ -64,8 +70,12 @@ impl<'ctx> Types<'ctx> {
 }
 
 impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
-    pub fn new(context: &'ctx Context, module: &'a Module<'ctx>, types: Types<'ctx>, fn_name: &str) -> Self {
-
+    pub fn new(
+        context: &'ctx Context,
+        module: &'a Module<'ctx>,
+        types: Types<'ctx>,
+        fn_name: &str,
+    ) -> Self {
         let function = module.add_function(fn_name, types.bb_fn, None);
         let bb = context.append_basic_block(function, "entry");
 
@@ -90,18 +100,24 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
         &self.builder
     }
 
-    fn build_ctx_gp_gep(&mut self, ctx_ptr: PointerValue<'ctx>, reg: FullSizeGeneralPurposeRegister) -> PointerValue<'ctx> {
+    fn build_ctx_gp_gep(
+        &mut self,
+        ctx_ptr: PointerValue<'ctx>,
+        reg: FullSizeGeneralPurposeRegister,
+    ) -> PointerValue<'ctx> {
         // hopefully this is safe...
         // TODO: cache the pointers at (generated) function level
         let i32_type = self.context.i32_type();
         unsafe {
-            self.builder.build_gep(ctx_ptr,
-                                      &[
-                                          i32_type.const_zero(), // deref the pointer itself
-                                          i32_type.const_zero(), // select the gep array
-                                          i32_type.const_int(reg as u64, false) // then select the concrete register
-                                      ],
-                                      &*(reg.to_string() + "_ptr"))
+            self.builder.build_gep(
+                ctx_ptr,
+                &[
+                    i32_type.const_zero(),                 // deref the pointer itself
+                    i32_type.const_zero(),                 // select the gep array
+                    i32_type.const_int(reg as u64, false), // then select the concrete register
+                ],
+                &*(reg.to_string() + "_ptr"),
+            )
         }
     }
 
@@ -115,11 +131,7 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
     }
 
     fn get_host_pointer(&mut self, target_ptr: LlvmIntValue<'ctx>) -> PointerValue<'ctx> {
-        unsafe {
-            self.builder.build_gep(self.mem_ptr, &[
-                target_ptr
-            ], "hptr")
-        }
+        unsafe { self.builder.build_gep(self.mem_ptr, &[target_ptr], "hptr") }
     }
 }
 
@@ -146,7 +158,9 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
     fn load_register(&mut self, register: Register) -> Self::IntValue {
         if let Ok(gp) = FullSizeGeneralPurposeRegister::try_from(register) {
             let ptr = self.build_ctx_gp_gep(self.ctx_ptr, gp);
-            self.builder.build_load(ptr, &*gp.to_string()).into_int_value()
+            self.builder
+                .build_load(ptr, &*gp.to_string())
+                .into_int_value()
         } else {
             todo!()
         }
@@ -162,7 +176,6 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
     }
 
     fn load_memory(&mut self, size: IntType, address: Self::IntValue) -> Self::IntValue {
-        // TODO: actually implement memory fetching from the target address space, not the host space (as it is done now)
         let hptr = self.get_host_pointer(address);
         // we can't issue load directly due to inkwell not exposing APIs to set alignment
         // simulated with memcpy for now (it's optimized anyways)
@@ -170,14 +183,23 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
         let size = size.byte_width() as u64;
         let size_value = self.make_u64(size); // TODO: u64 should actually be a pointer-sized integer. Works for now
 
-        self.builder.build_memcpy(aligned_ptr,
-                                  size as u32,
-                                  hptr, 1, size_value);
+        self.builder
+            .build_memcpy(aligned_ptr, size as u32, hptr, 1, size_value).unwrap();
         self.builder.build_load(aligned_ptr, "").into_int_value()
     }
 
-    fn store_memory(&mut self, size: IntType, address: Self::IntValue, value: Self::IntValue) {
-        todo!()
+    fn store_memory(&mut self, address: Self::IntValue, value: Self::IntValue) {
+        let hptr = self.get_host_pointer(address);
+        // we can't issue load directly due to inkwell not exposing APIs to set alignment
+        // simulated with memcpy for now (it's optimized anyways)
+        let aligned_ptr = self.builder.build_alloca(value.get_type(), "");
+        let size = IntValue::size(&value).byte_width() as u64;
+        let size_value = self.make_u64(size); // TODO: u64 should actually be a pointer-sized integer. Works for now
+
+        self.builder.build_store(aligned_ptr, value);
+
+        self.builder
+            .build_memcpy(hptr, 1, aligned_ptr, size as u32, size_value).unwrap();
     }
 
     fn add(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue {

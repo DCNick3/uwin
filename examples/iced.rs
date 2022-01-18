@@ -1,7 +1,6 @@
 use iced_x86::{
     ConditionCode, Decoder, DecoderOptions, Instruction, InstructionInfoFactory, OpKind, RflagsBits,
 };
-use iced_x86::OpKind::FarBranch32;
 
 pub(crate) fn main() {
     let mut decoder = Decoder::with_ip(
@@ -55,7 +54,11 @@ pub(crate) fn main() {
             }
             println!(
                 "    FPU TOP cond write: {}",
-                if fpu_info.conditional() { "true" } else { "false" }
+                if fpu_info.conditional() {
+                    "true"
+                } else {
+                    "false"
+                }
             );
         }
         if offsets.has_displacement() {
@@ -171,6 +174,4 @@ fn flags(rf: u32) -> String {
 
 const EXAMPLE_CODE_BITNESS: u32 = 32;
 const EXAMPLE_CODE_RIP: u64 = 0x0000_0000_AAAA_1337;
-static EXAMPLE_CODE: &[u8] = &[
-    0x9A, 0x37, 0x13, 0x00, 0x00, 0x13, 0x00
-];
+static EXAMPLE_CODE: &[u8] = &[0x9A, 0x37, 0x13, 0x00, 0x00, 0x13, 0x00];

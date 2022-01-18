@@ -1,7 +1,6 @@
-
 use crate::types::{IntType, MemoryOperand, Operand, Register};
 
-pub trait IntValue: Clone {
+pub trait IntValue: Clone + Copy {
     fn size(&self) -> IntType;
 }
 
@@ -29,7 +28,7 @@ pub trait Builder {
 
     // TODO: not everything fits into IntType box... like 80-bit floats, for example.......
     fn load_memory(&mut self, size: IntType, address: Self::IntValue) -> Self::IntValue;
-    fn store_memory(&mut self, size: IntType, address: Self::IntValue, value: Self::IntValue);
+    fn store_memory(&mut self, address: Self::IntValue, value: Self::IntValue);
 
     fn add(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue;
     fn neg(&mut self, val: Self::IntValue) -> Self::IntValue;
@@ -70,7 +69,7 @@ pub trait Builder {
             Operand::Memory(op) => {
                 let addr = self.compute_memory_operand_address(op);
                 self.load_memory(op.size.unwrap(), addr)
-            },
+            }
             op => panic!("Unsupported load operand: {:?}", op),
         }
     }
@@ -79,12 +78,12 @@ pub trait Builder {
             Operand::Register(reg) => self.store_register(reg, value),
             Operand::Memory(op) => {
                 let addr = self.compute_memory_operand_address(op);
-                self.store_memory(op.size.unwrap(), addr, value)
-            },
+                assert_eq!(op.size.unwrap(), value.size());
+                self.store_memory(addr, value)
+            }
             op => panic!("Unsupported store operand: {:?}", op),
         }
     }
-
 
     // TODO: maybe (probably?) we will need a way to express branches here. Not the branch instructions, but conditional execution in the context of the instruction itself
 }

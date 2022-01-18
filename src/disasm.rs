@@ -1,6 +1,5 @@
-
-use iced_x86::{Decoder, Instruction, MemorySize, OpKind, Register as IcedRegister};
 use crate::types::{IntType, MemoryOperand, Operand, Register};
+use iced_x86::{Instruction, MemorySize, OpKind, Register as IcedRegister};
 
 fn get_register(iced_register: IcedRegister) -> Register {
     use Register::*;
@@ -17,7 +16,6 @@ fn get_register(iced_register: IcedRegister) -> Register {
         IcedRegister::DH => DH,
         IcedRegister::BH => BH,
 
-
         IcedRegister::AX => AX,
         IcedRegister::CX => CX,
         IcedRegister::DX => DX,
@@ -27,7 +25,6 @@ fn get_register(iced_register: IcedRegister) -> Register {
         IcedRegister::BP => BP,
         IcedRegister::SI => SI,
         IcedRegister::DI => DI,
-
 
         IcedRegister::EAX => EAX,
         IcedRegister::ECX => ECX,
@@ -41,7 +38,6 @@ fn get_register(iced_register: IcedRegister) -> Register {
 
         // accessing EIP is TODO (it's kinda special, you know)
         //IcedRegister::EIP => {}
-
         _ => panic!("Unsupported register: {:?}", iced_register),
     }
 }
@@ -105,7 +101,42 @@ pub fn get_operand(instr: &Instruction, operand: u32) -> Operand {
                 segment: None,
             };
             Memory(op)
-        },
-        k => panic!("Unsupported operand kind: {:?}", k)
+        }
+        k => panic!("Unsupported operand kind: {:?}", k),
+    }
+}
+
+#[macro_export]
+macro_rules! operands_ty {
+    // just discard the argument
+    // used to construct the tuple (type) of $crate::types::Operand the same length as passed pattern
+    ($x:tt) => {
+        $crate::types::Operand
+    };
+}
+#[macro_export]
+macro_rules! operands {
+    ([$($pattern:tt),*], $instr:expr) => {
+        let ($($pattern),*,): ( $(operands_ty!($pattern)),*, ) = {
+            match *$crate::disasm::Operands::get_operands(($instr)).as_slice() {
+                [$($pattern),*] => ($($pattern),*,),
+                _ => panic!("Instruction operand matching failed"),
+            }
+        };
+    }
+}
+
+pub trait Operands {
+    fn get_operands(&self) -> Vec<Operand>;
+}
+
+impl Operands for Instruction {
+    fn get_operands(&self) -> Vec<Operand> {
+        let mut res = Vec::new();
+        res.reserve(self.op_count() as usize);
+        for i in 0..self.op_count() {
+            res.push(get_operand(self, i))
+        }
+        res
     }
 }

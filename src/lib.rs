@@ -1,12 +1,14 @@
 pub mod backend;
-pub mod llvm_backend;
 pub mod disasm;
+pub mod llvm_backend;
 pub mod types;
 
-use iced_x86::{Decoder, Instruction};
 use crate::backend::{Builder, IntValue};
-use crate::types::{IntType, Operand};
+use crate::disasm::Operands;
 use crate::types::Register::*;
+use crate::types::{IntType, Operand};
+use iced_x86::{Instruction};
+//use crate::disasm::;
 
 //fn get_
 
@@ -24,26 +26,35 @@ pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) {
     match instr.mnemonic() {
         // TODO: there is (going to be) a ton of opcodes, we would want to handle this nicely (a bit of macromagic?)
         Mov => {
-            let dst = disasm::get_operand(&instr, 0);
-            let src = disasm::get_operand(&instr, 1);
+            operands!([dst, src], &instr);
 
             let val = builder.load_operand(src);
             builder.store_operand(dst, val);
-        },
+        }
         Sub => {
-            let dst = disasm::get_operand(&instr, 0);
-            let src = disasm::get_operand(&instr, 1);
+            operands!([dst, src], &instr);
 
             let lhs = builder.load_operand(dst);
             let rhs = builder.load_operand(src);
             let res = builder.sub(lhs, rhs);
 
-            // TODO: set flags
+            // TODO: flags
             builder.store_operand(dst, res);
-        },
+        }
+        Cmp => {
+            operands!([src1, src2], &instr);
+
+            let src1 = builder.load_operand(src1);
+            let src2 = builder.load_operand(src2);
+
+            let src2 = builder.sext(src2, src1.size());
+
+            let _tmp = builder.sub(src1, src2);
+
+            // TODO: flags
+        }
         Lea => {
-            let dst = disasm::get_operand(&instr, 0);
-            let src = disasm::get_operand(&instr, 1);
+            operands!([dst, src], &instr);
 
             let addr = match src {
                 Operand::Memory(m) => builder.compute_memory_operand_address(m),
@@ -53,16 +64,13 @@ pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) {
             // TODO: size conversion (store 32-bit address as 16-bit value for example)
             assert_eq!(dst.size(), addr.size());
             builder.store_operand(dst, addr);
-        },
+        }
         Imul => {
-            match instr.op_count() {
-                1 => {
+            match *instr.get_operands().as_slice() {
+                [_] => {
                     todo!()
-                },
-                2 => {
-                    let dst = disasm::get_operand(&instr, 0);
-                    let src = disasm::get_operand(&instr, 1);
-
+                }
+                [dst, src] => {
                     assert_eq!(dst.size(), src.size());
                     let double_size = dst.size().double_sized();
 
@@ -72,22 +80,20 @@ pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) {
                     let rhs = builder.load_operand(src);
                     let rhs = builder.sext(rhs, double_size);
 
-
                     let res = builder.mul(lhs, rhs);
                     let res_trunc = builder.trunc(res, dst.size());
                     // TODO: flags (based on comparison of res and sext(res_trunc))
 
                     builder.store_operand(dst, res_trunc)
-                },
-                3 => {
+                }
+                [_, _, _] => {
                     todo!()
-                },
+                }
                 _ => unreachable!(),
             }
-        },
+        }
         Xor => {
-            let dst = disasm::get_operand(&instr, 0);
-            let src = disasm::get_operand(&instr, 1);
+            operands!([dst, src], &instr);
 
             let lhs = builder.load_operand(dst);
             let rhs = builder.load_operand(src);
@@ -97,9 +103,9 @@ pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) {
             // TODO: flags
 
             builder.store_operand(dst, res)
-        },
+        }
         Div => {
-            let src = disasm::get_operand(&instr, 0);
+            operands!([src], &instr);
 
             let double_size = src.size().double_sized();
 
@@ -117,21 +123,37 @@ pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) {
 
             let lo = builder.zext(lo, double_size);
             let hi = builder.zext(hi, double_size);
-            let hi = builder.shl(hi,
-                                 builder.make_int_value(double_size, src.size().bit_width() as u64, false));
+            let hi = builder.shl(
+                hi,
+                builder.make_int_value(double_size, src.size().bit_width() as u64, false),
+            );
             let dividend = builder.or(lo, hi);
 
             let divisor = builder.load_operand(src);
             let divisor = builder.zext(divisor, double_size);
-            let quotient = builder.udiv(dividend.clone(), divisor.clone());
+            let quotient = builder.udiv(dividend, divisor);
 
             // calculate the remainder
-            let whole = builder.mul(quotient.clone(), divisor);
+            let whole = builder.mul(quotient, divisor);
             let remainder = builder.sub(dividend, whole);
 
             builder.store_register(quo_dst, quotient);
             builder.store_register(rem_dst, remainder);
-        },
+        }
+        Push => {
+            let src = disasm::get_operand(&instr, 0);
+
+            let val = builder.load_operand(src);
+
+            let size = val.size().byte_width();
+            let size = builder.make_u32(size as u32);
+
+            let esp = builder.load_register(ESP);
+            let esp = builder.sub(esp, size);
+            builder.store_register(ESP, esp);
+
+            builder.store_memory(esp, val);
+        }
         Ret => {
             // TODO: control flow, no-op for now
         }
@@ -204,18 +226,19 @@ mod tests {
     }
 
     mod llvm {
-        use std::io;
-        use std::io::Write;
-        use iced_x86::{Decoder, DecoderOptions};
-        use inkwell::context::Context;
-        use inkwell::OptimizationLevel;
-        use inkwell::targets::{CodeModel, FileType, InitializationConfig, RelocMode, Target, TargetMachine, TargetTriple};
         use crate::codegen_instr;
         use crate::llvm_backend::{LlvmBuilder, Types};
+        use iced_x86::{Decoder, DecoderOptions};
+        use inkwell::context::Context;
+        use inkwell::targets::{
+            CodeModel, FileType, InitializationConfig, RelocMode, Target, TargetMachine,
+            TargetTriple,
+        };
+        use inkwell::OptimizationLevel;
 
         fn get_aarch64_target_machine() -> TargetMachine {
             Target::initialize_aarch64(&InitializationConfig::default());
-                //.expect("Failed to initialize aarch64 target");
+            //.expect("Failed to initialize aarch64 target");
             let target_triple = TargetTriple::create("aarch64");
             let target = Target::from_triple(&target_triple).unwrap();
             target
@@ -261,8 +284,6 @@ mod tests {
                     .unwrap();
 
                 let object_file = memory_buffer.create_object_file().unwrap();
-
-                let secit = object_file.get_sections();
 
                 let mut contents: Option<Vec<u8>> = None;
                 for sec in object_file.get_sections() {
@@ -313,19 +334,19 @@ mod tests {
             );
 
             /*  ; ->fact:
-                ; mov     eax, DWORD [esp+4]
-                ; mov     edx, 1
-                ; cmp     eax, 1
-                ; jbe     ->L1
-                ; ->L2:
-                ; mov     ecx, eax
-                ; sub     eax, 1
-                ; imul    edx, ecx
-                ; cmp     eax, 1
-                ; jne     ->L2
-                ; ->L1:
-                ; mov     eax, edx
-                ; ret*/
+            ; mov     eax, DWORD [esp+4]
+            ; mov     edx, 1
+            ; cmp     eax, 1
+            ; jbe     ->L1
+            ; ->L2:
+            ; mov     ecx, eax
+            ; sub     eax, 1
+            ; imul    edx, ecx
+            ; cmp     eax, 1
+            ; jne     ->L2
+            ; ->L1:
+            ; mov     eax, edx
+            ; ret*/
 
             // and recompile it into this
             // isn't it nice?
@@ -354,7 +375,35 @@ mod tests {
 
             assert_eq!(result, expected_result);
         }
+
+        #[test]
+        fn answer_llvm() {
+            // int answer(int a) {
+            //     if (a == 1)
+            //         return 42;
+            //     return -1;
+            // }
+            let code = assemble_x86!(
+                ; push ebp
+                ; mov ebp, esp
+                ; cmp DWORD [ebp+8], 1
+                ; jne ->L2
+                ; mov eax, 42
+                ; jmp ->L3
+                ; ->L2:
+                ; mov eax, -1
+                ; ->L3:
+                ; pop ebp
+                ; ret
+            );
+
+            let expected_result = assemble_aarch64!(
+                ; ret
+            );
+
+            let result = recompile(code.as_slice());
+
+            assert_eq!(result, expected_result);
+        }
     }
-
-
 }

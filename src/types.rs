@@ -27,7 +27,7 @@ impl TryFrom<Register> for FullSizeGeneralPurposeRegister {
             Register::EBP => Ok(EBP),
             Register::ESI => Ok(ESI),
             Register::EDI => Ok(EDI),
-            _ => Err(())
+            _ => Err(()),
         }
     }
 }
@@ -84,7 +84,7 @@ pub enum SegmentRegister {
     ES,
     FS,
     GS,
-    SS
+    SS,
 }
 
 #[repr(C)] // for interoperability with llvm-generated functions
@@ -97,7 +97,7 @@ pub enum IntType {
     I8,
     I16,
     I32,
-    I64
+    I64,
 }
 
 impl IntType {
