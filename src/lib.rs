@@ -6,14 +6,28 @@ pub mod types;
 use crate::backend::{Builder, IntValue};
 use crate::disasm::Operands;
 use crate::types::Register::*;
-use crate::types::{IntType, Operand};
-use iced_x86::{Instruction};
+use crate::types::{ControlFlow, Flag, IntType, Operand};
+use iced_x86::{ConditionCode, Instruction};
 //use crate::disasm::;
 
 //fn get_
 
+fn compute_condition_code<B: Builder>(builder: &mut B, condition_code: ConditionCode) -> B::BoolValue {
+    use ConditionCode::*;
+    match condition_code {
+        None => panic!("Can't compute None condition"),
+
+        ne => {
+            let zf = builder.load_flag(Flag::Zero);
+            builder.bool_neg(zf)
+        },
+
+        _ => todo!("condition code {:?}", condition_code),
+    }
+}
+
 // TODO: handle control flow
-pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) {
+pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) -> ControlFlow<B> {
     use iced_x86::Mnemonic::*;
 
     assert!(!instr.has_lock_prefix());
@@ -23,141 +37,179 @@ pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) {
     assert!(!instr.has_xacquire_prefix());
     assert!(!instr.has_xrelease_prefix());
 
-    match instr.mnemonic() {
-        // TODO: there is (going to be) a ton of opcodes, we would want to handle this nicely (a bit of macromagic?)
-        Mov => {
-            operands!([dst, src], &instr);
+    if instr.is_jcc_short_or_near() {
+        operands!([target], &instr);
 
-            let val = builder.load_operand(src);
-            builder.store_operand(dst, val);
-        }
-        Sub => {
-            operands!([dst, src], &instr);
+        let code = instr.condition_code();
+        let cond = compute_condition_code(builder, code);
 
-            let lhs = builder.load_operand(dst);
-            let rhs = builder.load_operand(src);
-            let res = builder.sub(lhs, rhs);
+        builder.ifelse(cond, |_builder| {
+            // jump!
+            ControlFlow::DirectJump(target.as_imm32())
+        }, |_builder| {
+            // do not jump
+            ControlFlow::NextInstruction
+        })
+    } else {
+        match instr.mnemonic() {
+            // TODO: there is (going to be) a ton of opcodes, we would want to handle this nicely (a bit of macromagic?)
+            Mov => {
+                operands!([dst, src], &instr);
 
-            // TODO: flags
-            builder.store_operand(dst, res);
-        }
-        Cmp => {
-            operands!([src1, src2], &instr);
-
-            let src1 = builder.load_operand(src1);
-            let src2 = builder.load_operand(src2);
-
-            let src2 = builder.sext(src2, src1.size());
-
-            let _tmp = builder.sub(src1, src2);
-
-            // TODO: flags
-        }
-        Lea => {
-            operands!([dst, src], &instr);
-
-            let addr = match src {
-                Operand::Memory(m) => builder.compute_memory_operand_address(m),
-                _ => panic!("Expected 2nd lea operand to be memory reference"),
-            };
-
-            // TODO: size conversion (store 32-bit address as 16-bit value for example)
-            assert_eq!(dst.size(), addr.size());
-            builder.store_operand(dst, addr);
-        }
-        Imul => {
-            match *instr.get_operands().as_slice() {
-                [_] => {
-                    todo!()
-                }
-                [dst, src] => {
-                    assert_eq!(dst.size(), src.size());
-                    let double_size = dst.size().double_sized();
-
-                    let lhs = builder.load_operand(dst);
-                    let lhs = builder.sext(lhs, double_size);
-
-                    let rhs = builder.load_operand(src);
-                    let rhs = builder.sext(rhs, double_size);
-
-                    let res = builder.mul(lhs, rhs);
-                    let res_trunc = builder.trunc(res, dst.size());
-                    // TODO: flags (based on comparison of res and sext(res_trunc))
-
-                    builder.store_operand(dst, res_trunc)
-                }
-                [_, _, _] => {
-                    todo!()
-                }
-                _ => unreachable!(),
+                let val = builder.load_operand(src);
+                builder.store_operand(dst, val);
             }
-        }
-        Xor => {
-            operands!([dst, src], &instr);
+            Sub => {
+                operands!([dst, src], &instr);
 
-            let lhs = builder.load_operand(dst);
-            let rhs = builder.load_operand(src);
+                let lhs = builder.load_operand(dst);
+                let rhs = builder.load_operand(src);
+                let res = builder.sub(lhs, rhs);
 
-            let res = builder.xor(lhs, rhs);
+                // TODO: flags
+                builder.store_operand(dst, res);
+            }
+            Cmp => {
+                operands!([src1, src2], &instr);
 
-            // TODO: flags
+                let src1 = builder.load_operand(src1);
+                let src2 = builder.load_operand(src2);
 
-            builder.store_operand(dst, res)
-        }
-        Div => {
-            operands!([src], &instr);
+                let src2 = builder.sext(src2, src1.size());
 
-            let double_size = src.size().double_sized();
+                let _tmp = builder.sub(src1, src2);
 
-            let (lo, hi, quo_dst, rem_dst) = match src.size() {
-                IntType::I8 => todo!(),
-                IntType::I16 => todo!(),
-                IntType::I32 => (EAX, EDX, EAX, EDX),
-                _ => unreachable!(),
-            };
+                // TODO: flags
+            }
+            Lea => {
+                operands!([dst, src], &instr);
 
-            assert_eq!(lo.size(), hi.size());
+                let addr = match src {
+                    Operand::Memory(m) => builder.compute_memory_operand_address(m),
+                    _ => panic!("Expected 2nd lea operand to be memory reference"),
+                };
 
-            let lo = builder.load_register(lo);
-            let hi = builder.load_register(hi);
+                // TODO: size conversion (store 32-bit address as 16-bit value for example)
+                assert_eq!(dst.size(), addr.size());
+                builder.store_operand(dst, addr);
+            }
+            Imul => {
+                match *instr.get_operands().as_slice() {
+                    [_] => {
+                        todo!()
+                    }
+                    [dst, src] => {
+                        assert_eq!(dst.size(), src.size());
+                        let double_size = dst.size().double_sized();
 
-            let lo = builder.zext(lo, double_size);
-            let hi = builder.zext(hi, double_size);
-            let hi = builder.shl(
-                hi,
-                builder.make_int_value(double_size, src.size().bit_width() as u64, false),
-            );
-            let dividend = builder.or(lo, hi);
+                        let lhs = builder.load_operand(dst);
+                        let lhs = builder.sext(lhs, double_size);
 
-            let divisor = builder.load_operand(src);
-            let divisor = builder.zext(divisor, double_size);
-            let quotient = builder.udiv(dividend, divisor);
+                        let rhs = builder.load_operand(src);
+                        let rhs = builder.sext(rhs, double_size);
 
-            // calculate the remainder
-            let whole = builder.mul(quotient, divisor);
-            let remainder = builder.sub(dividend, whole);
+                        let res = builder.mul(lhs, rhs);
+                        let res_trunc = builder.trunc(res, dst.size());
+                        // TODO: flags (based on comparison of res and sext(res_trunc))
 
-            builder.store_register(quo_dst, quotient);
-            builder.store_register(rem_dst, remainder);
-        }
-        Push => {
-            let src = disasm::get_operand(&instr, 0);
+                        builder.store_operand(dst, res_trunc)
+                    }
+                    [_, _, _] => {
+                        todo!()
+                    }
+                    _ => unreachable!(),
+                }
+            }
+            Xor => {
+                operands!([dst, src], &instr);
 
-            let val = builder.load_operand(src);
+                let lhs = builder.load_operand(dst);
+                let rhs = builder.load_operand(src);
 
-            let size = val.size().byte_width();
-            let size = builder.make_u32(size as u32);
+                let res = builder.xor(lhs, rhs);
 
-            let esp = builder.load_register(ESP);
-            let esp = builder.sub(esp, size);
-            builder.store_register(ESP, esp);
+                // TODO: flags
 
-            builder.store_memory(esp, val);
-        }
-        Ret => {
-            // TODO: control flow, no-op for now
-        }
-        m => panic!("Unknown instruction mnemonic: {:?}", m),
+                builder.store_operand(dst, res)
+            }
+            Div => {
+                operands!([src], &instr);
+
+                let double_size = src.size().double_sized();
+
+                let (lo, hi, quo_dst, rem_dst) = match src.size() {
+                    IntType::I8 => todo!(),
+                    IntType::I16 => todo!(),
+                    IntType::I32 => (EAX, EDX, EAX, EDX),
+                    _ => unreachable!(),
+                };
+
+                assert_eq!(lo.size(), hi.size());
+
+                let lo = builder.load_register(lo);
+                let hi = builder.load_register(hi);
+
+                let lo = builder.zext(lo, double_size);
+                let hi = builder.zext(hi, double_size);
+                let hi = builder.shl(
+                    hi,
+                    builder.make_int_value(double_size, src.size().bit_width() as u64, false),
+                );
+                let dividend = builder.or(lo, hi);
+
+                let divisor = builder.load_operand(src);
+                let divisor = builder.zext(divisor, double_size);
+                let quotient = builder.udiv(dividend, divisor);
+
+                // calculate the remainder
+                let whole = builder.mul(quotient, divisor);
+                let remainder = builder.sub(dividend, whole);
+
+                builder.store_register(quo_dst, quotient);
+                builder.store_register(rem_dst, remainder);
+            }
+            Push => {
+                operands!([src], &instr);
+
+                let val = builder.load_operand(src);
+
+                let size = val.size().byte_width();
+                let size = builder.make_u32(size as u32);
+
+                let esp = builder.load_register(ESP);
+                let esp = builder.sub(esp, size);
+                builder.store_register(ESP, esp);
+
+                builder.store_memory(esp, val);
+            }
+            Pop => {
+                operands!([dst], &instr);
+
+                let size = dst.size().byte_width();
+                let size = builder.make_u32(size as u32);
+
+
+                let esp = builder.load_register(ESP);
+
+                let val = builder.load_memory(dst.size(), esp);
+
+                let esp = builder.add(esp, size);
+                builder.store_register(ESP, esp);
+
+                builder.store_operand(dst, val);
+            }
+            Ret => {
+                // TODO: control flow, no-op for now
+            }
+            Jmp => {
+                operands!([target], &instr);
+
+                return ControlFlow::DirectJump(target.as_imm32());
+            }
+            m => panic!("Unknown instruction mnemonic: {:?}", m),
+        };
+
+        ControlFlow::NextInstruction
     }
 }
 
@@ -398,6 +450,19 @@ mod tests {
             );
 
             let expected_result = assemble_aarch64!(
+                // note: this has no branching, as we don't actually store any flags in instructions like cmp
+                // we need to do this in order to make branches work though =)
+                ; sub sp, sp, #0x10
+                ; ldp w8, w9, [x0, #0x10]
+                ; sub w8, w8, #4
+                ; str w8, [x0, #0x10]
+                ; str w9, [x1, w8, sxtw]
+                ; ldr w8, [x0, #0x10]
+                ; str w8, [x0, #0x14]
+                ; add w8, w8, #8
+                ; ldr w8, [x1, w8, sxtw]
+                ; stp w8, w9, [sp, #8]
+                ; add sp, sp, #0x10
                 ; ret
             );
 

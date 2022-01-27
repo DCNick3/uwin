@@ -1,11 +1,17 @@
-use crate::types::{IntType, MemoryOperand, Operand, Register};
+use crate::ControlFlow;
+use crate::types::{Flag, IntType, MemoryOperand, Operand, Register};
 
 pub trait IntValue: Clone + Copy {
     fn size(&self) -> IntType;
 }
 
+pub trait BoolValue: Clone + Copy {
+
+}
+
 pub trait Builder {
     type IntValue: IntValue;
+    type BoolValue: BoolValue;
 
     fn make_int_value(&self, ty: IntType, value: u64, sign_extend: bool) -> Self::IntValue;
 
@@ -26,12 +32,16 @@ pub trait Builder {
     fn load_register(&mut self, register: Register) -> Self::IntValue;
     fn store_register(&mut self, register: Register, value: Self::IntValue);
 
+    fn load_flag(&mut self, flag: Flag) -> Self::BoolValue;
+    fn store_flag(&mut self, flag: Flag, value: Self::BoolValue);
+
     // TODO: not everything fits into IntType box... like 80-bit floats, for example.......
     fn load_memory(&mut self, size: IntType, address: Self::IntValue) -> Self::IntValue;
     fn store_memory(&mut self, address: Self::IntValue, value: Self::IntValue);
 
     fn add(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue;
-    fn neg(&mut self, val: Self::IntValue) -> Self::IntValue;
+    fn int_neg(&mut self, val: Self::IntValue) -> Self::IntValue;
+    fn bool_neg(&mut self, val: Self::BoolValue) -> Self::BoolValue;
     fn sub(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue;
     fn mul(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue;
     fn xor(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue;
@@ -44,6 +54,16 @@ pub trait Builder {
     fn zext(&mut self, val: Self::IntValue, to: IntType) -> Self::IntValue;
     fn sext(&mut self, val: Self::IntValue, to: IntType) -> Self::IntValue;
     fn trunc(&mut self, val: Self::IntValue, to: IntType) -> Self::IntValue;
+
+    fn ifelse<L, R>(&mut self,
+                    cond: Self::BoolValue,
+                    iftrue: L,
+                    iffalse: R)
+        -> ControlFlow<Self>
+    where
+        L: FnOnce(&mut Self) -> ControlFlow<Self>,
+        R: FnOnce(&mut Self) -> ControlFlow<Self>,
+        Self: Sized;
 
     fn compute_memory_operand_address(&mut self, op: MemoryOperand) -> Self::IntValue {
         assert!(op.index.is_none());

@@ -1,7 +1,8 @@
 use derive_more::Display;
+use crate::Builder;
 
 // the numbers correspond to register numbers in ModR/M encoding
-#[derive(Debug, Display, Clone, Copy)]
+#[derive(Debug, Clone, Copy)]
 pub enum FullSizeGeneralPurposeRegister {
     EAX = 0,
     EBX = 1,
@@ -34,7 +35,7 @@ impl TryFrom<Register> for FullSizeGeneralPurposeRegister {
 
 // TODO add more registers
 // TODO add subregisters metainfo (stuff like AX is the lower 16 bits of EAX)
-#[derive(Debug, Display, Clone, Copy)]
+#[derive(Debug, Clone, Copy)]
 pub enum Register {
     EAX,
     EBX,
@@ -87,9 +88,22 @@ pub enum SegmentRegister {
     SS,
 }
 
+#[derive(Debug, Display, Clone, Copy)]
+pub enum Flag {
+    Carry = 0,
+    Parity = 1,
+    AuxiliaryCarry = 2, // quite a special one, as it's almost never used in modern (non-DOS) code
+    Zero = 3,
+    Sign = 4,
+    Overflow = 5,
+}
+
 #[repr(C)] // for interoperability with llvm-generated functions
 pub struct CpuContext {
+    // !!! If changing this struct - don't forget to update Types::new in llvm_backend.rs
+    // also it would be best not to move fields around, as this breaks indices in build_ctx_*_gep
     pub gp_regs: [u32; 8],
+    pub flags: [u8; 8],
 }
 
 #[derive(Debug, Clone, Copy, PartialEq)]
@@ -151,7 +165,7 @@ pub enum Operand {
 }
 
 impl Operand {
-    pub fn size(&self) -> IntType {
+    pub fn size(self) -> IntType {
         match self {
             Operand::Register(reg) => reg.size(),
             Operand::Immediate8(_) => IntType::I8,
@@ -162,4 +176,22 @@ impl Operand {
             Operand::Memory(m) => m.size.unwrap(),
         }
     }
+
+    pub fn as_imm32(self) -> u32 {
+        match self {
+            Operand::Immediate32(r) => r,
+            _ => panic!("Attempt to use smth not being a imm32 as one"),
+        }
+    }
+}
+
+
+#[derive(Debug)]
+pub enum ControlFlow<B: Builder> {
+    NextInstruction /* Just execute the next instruction, no need to touch EIP at all */,
+    DirectJump(u32 /* next EIP is known and stored */),
+    IndirectJump(B::IntValue  /* next EIP is dynamic and stored */),
+    Return /* return from a function. Value should be popped from the stack by the instruction implementation */,
+
+    Conditional(Vec<ControlFlow<B>>) /* stores possible branches (does not provide full info though) */,
 }

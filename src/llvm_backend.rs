@@ -1,11 +1,11 @@
-use crate::backend::IntValue;
-use crate::types::{FullSizeGeneralPurposeRegister, IntType, Register};
+use crate::backend::{BoolValue, IntValue};
+use crate::types::{ControlFlow, Flag, FullSizeGeneralPurposeRegister, IntType, Register};
 use inkwell::builder::Builder;
 use inkwell::context::Context;
 use inkwell::module::Module;
 use inkwell::types::{FunctionType, IntType as LlvmIntType, PointerType, StructType, VoidType};
 use inkwell::values::{FunctionValue, IntValue as LlvmIntValue, PointerValue};
-use inkwell::AddressSpace;
+use inkwell::{AddressSpace, IntPredicate};
 
 pub struct LlvmBuilder<'ctx, 'a> {
     context: &'ctx Context,
@@ -20,6 +20,7 @@ pub struct LlvmBuilder<'ctx, 'a> {
 #[derive(Clone, Copy)]
 pub struct Types<'ctx> {
     void: VoidType<'ctx>,
+    i1: LlvmIntType<'ctx>,
     i8: LlvmIntType<'ctx>,
     i16: LlvmIntType<'ctx>,
     i32: LlvmIntType<'ctx>,
@@ -33,6 +34,7 @@ impl<'ctx> Types<'ctx> {
     pub fn new(context: &'ctx Context) -> Self {
         let void = context.void_type();
 
+        let i1 = context.bool_type();
         let i8 = context.i8_type();
         let i16 = context.i16_type();
         let i32 = context.i32_type();
@@ -42,6 +44,7 @@ impl<'ctx> Types<'ctx> {
         ctx.set_body(
             &[
                 i32.array_type(8).into(), // general-purpose registers
+                i8.array_type(8).into(), // general-purpose registers
             ],
             false,
         );
@@ -58,6 +61,7 @@ impl<'ctx> Types<'ctx> {
 
         Self {
             void,
+            i1,
             i8,
             i16,
             i32,
@@ -105,20 +109,46 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
         ctx_ptr: PointerValue<'ctx>,
         reg: FullSizeGeneralPurposeRegister,
     ) -> PointerValue<'ctx> {
-        // hopefully this is safe...
         // TODO: cache the pointers at (generated) function level
         let i32_type = self.context.i32_type();
-        unsafe {
+        // SAFETY: ¯\_(ツ)_/¯
+        let r = unsafe {
             self.builder.build_gep(
                 ctx_ptr,
                 &[
                     i32_type.const_zero(),                 // deref the pointer itself
-                    i32_type.const_zero(),                 // select the gep array
+                    i32_type.const_zero(),                 // select the gp array
                     i32_type.const_int(reg as u64, false), // then select the concrete register
                 ],
-                &*(reg.to_string() + "_ptr"),
+                &*(format!("{:?}_ptr", reg)),
             )
-        }
+        };
+        debug_assert_eq!(r.get_type().get_element_type().into_int_type(), i32_type);
+        r
+    }
+
+    fn build_ctx_flag_gep(
+        &mut self,
+        ctx_ptr: PointerValue<'ctx>,
+        flag: Flag,
+    ) -> PointerValue<'ctx> {
+        // TODO: cache the pointers at (generated) function level
+        // SAFETY: ¯\_(ツ)_/¯
+        let i8_type = self.context.i8_type();
+        let i32_type = self.context.i32_type();
+        let r = unsafe {
+            self.builder.build_gep(
+                ctx_ptr,
+                &[
+                    i32_type.const_zero(),                                 // deref the pointer itself
+                    i32_type.const_int(1, false),          // select the flags array
+                    i32_type.const_int(flag as u64, false), // then select the concrete flag
+                ],
+                &*format!("flag_{:?}_ptr", flag),
+            )
+        };
+        debug_assert_eq!(r.get_type().get_element_type().into_int_type(), i8_type);
+        r
     }
 
     fn int_type(&self, ty: IntType) -> LlvmIntType<'ctx> {
@@ -148,8 +178,18 @@ impl IntValue for LlvmIntValue<'_> {
     }
 }
 
+impl BoolValue for LlvmIntValue<'_> {
+
+}
+
 impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
+    // kinda meh that we alias them, but this way we are fine without any newtype wrappers
+
+    // this represents i{8,16,32,64}
     type IntValue = LlvmIntValue<'ctx>;
+
+    // this represents i1
+    type BoolValue = LlvmIntValue<'ctx>;
 
     fn make_int_value(&self, ty: IntType, value: u64, sign_extend: bool) -> Self::IntValue {
         self.int_type(ty).const_int(value, sign_extend)
@@ -159,7 +199,7 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
         if let Ok(gp) = FullSizeGeneralPurposeRegister::try_from(register) {
             let ptr = self.build_ctx_gp_gep(self.ctx_ptr, gp);
             self.builder
-                .build_load(ptr, &*gp.to_string())
+                .build_load(ptr, &*format!("{:?}", gp))
                 .into_int_value()
         } else {
             todo!()
@@ -173,6 +213,22 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
         } else {
             todo!()
         }
+    }
+
+    fn load_flag(&mut self, flag: Flag) -> Self::BoolValue {
+        let ptr = self.build_ctx_flag_gep(self.ctx_ptr, flag);
+        let i8_val = self.builder.build_load(ptr, "")
+            .into_int_value();
+
+        let zero = self.make_u8(0);
+
+        self.builder.build_int_compare(IntPredicate::NE, i8_val, zero, &*format!("{:?}", flag))
+    }
+
+    fn store_flag(&mut self, flag: Flag, value: Self::BoolValue) {
+        todo!();
+        //let ptr = self.build_ctx_flag_gep(self.ctx_ptr, flag);
+        //self.builder.build_store(ptr, value);
     }
 
     fn load_memory(&mut self, size: IntType, address: Self::IntValue) -> Self::IntValue {
@@ -206,9 +262,11 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
         self.builder.build_int_add(lhs, rhs, "")
     }
 
-    fn neg(&mut self, val: Self::IntValue) -> Self::IntValue {
+    fn int_neg(&mut self, val: Self::IntValue) -> Self::IntValue {
         self.builder.build_int_neg(val, "")
     }
+
+    fn bool_neg(&mut self, val: Self::BoolValue) -> Self::BoolValue { self.int_neg(val) }
 
     fn sub(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue {
         self.builder.build_int_sub(lhs, rhs, "")
@@ -252,5 +310,32 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
 
     fn trunc(&mut self, val: Self::IntValue, to: IntType) -> Self::IntValue {
         self.builder.build_int_truncate(val, self.int_type(to), "")
+    }
+
+    fn ifelse<T, F>(&mut self,
+                    cond: Self::BoolValue,
+                    iftrue: T,
+                    iffalse: F)
+                    -> ControlFlow<Self>
+    where
+        T: FnOnce(&mut Self) -> ControlFlow<Self>,
+        F: FnOnce(&mut Self) -> ControlFlow<Self>
+    {
+        let true_bb = self.context.append_basic_block(self.function, "");
+        let false_bb = self.context.append_basic_block(self.function, "");
+
+        self.builder.build_conditional_branch(cond, true_bb, false_bb);
+
+        self.builder.position_at_end(true_bb);
+        let left_flow = (iftrue)(self);
+        // TODO: this is actually a stub
+        self.builder.build_return(None);
+
+        self.builder.position_at_end(false_bb);
+        let right_flow = (iffalse)(self);
+        // TODO: this is actually a stub
+        self.builder.build_return(None);
+
+        return ControlFlow::Conditional(vec![left_flow, right_flow]);
     }
 }
