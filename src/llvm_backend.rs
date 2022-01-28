@@ -233,29 +233,22 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
 
     fn load_memory(&mut self, size: IntType, address: Self::IntValue) -> Self::IntValue {
         let hptr = self.get_host_pointer(address);
-        // we can't issue load directly due to inkwell not exposing APIs to set alignment
-        // simulated with memcpy for now (it's optimized anyways)
-        let aligned_ptr = self.builder.build_alloca(self.int_type(size), "");
-        let size = size.byte_width() as u64;
-        let size_value = self.make_u64(size); // TODO: u64 should actually be a pointer-sized integer. Works for now
+        let hptr = self.builder.build_pointer_cast(hptr,
+                                                   self.int_type(size)
+                                                       .ptr_type(AddressSpace::Generic),
+                                                   "");
 
-        self.builder
-            .build_memcpy(aligned_ptr, size as u32, hptr, 1, size_value).unwrap();
-        self.builder.build_load(aligned_ptr, "").into_int_value()
+        self.builder.build_load_aligned(hptr, 1, "").into_int_value()
     }
 
     fn store_memory(&mut self, address: Self::IntValue, value: Self::IntValue) {
         let hptr = self.get_host_pointer(address);
-        // we can't issue load directly due to inkwell not exposing APIs to set alignment
-        // simulated with memcpy for now (it's optimized anyways)
-        let aligned_ptr = self.builder.build_alloca(value.get_type(), "");
-        let size = IntValue::size(&value).byte_width() as u64;
-        let size_value = self.make_u64(size); // TODO: u64 should actually be a pointer-sized integer. Works for now
+        let hptr = self.builder.build_pointer_cast(hptr,
+                                                   value.get_type()
+                                                       .ptr_type(AddressSpace::Generic),
+                                                   "");
 
-        self.builder.build_store(aligned_ptr, value);
-
-        self.builder
-            .build_memcpy(hptr, 1, aligned_ptr, size as u32, size_value).unwrap();
+        self.builder.build_store_aligned(hptr, value, 1);
     }
 
     fn add(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue {
@@ -323,19 +316,42 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
     {
         let true_bb = self.context.append_basic_block(self.function, "");
         let false_bb = self.context.append_basic_block(self.function, "");
+        let cont_bb = self.context.append_basic_block(self.function, "");
 
         self.builder.build_conditional_branch(cond, true_bb, false_bb);
 
+        let mut res = vec![];
+
+        let mut handle_flow = |builder: &Builder, flow: ControlFlow<Self>| {
+            match flow {
+                ControlFlow::NextInstruction => {
+                    builder.build_unconditional_branch(cont_bb);
+                },
+                ControlFlow::DirectJump(target) => {
+                    // stub
+                    // TODO: how do we tell the codegen that we should continue codegen here?
+                    builder.build_return(None);
+                },
+                _ => todo!(),
+            };
+
+            if let ControlFlow::Conditional(mut cc) = flow {
+                res.append(&mut cc);
+            } else {
+                res.push(flow);
+            };
+        };
+
         self.builder.position_at_end(true_bb);
         let left_flow = (iftrue)(self);
-        // TODO: this is actually a stub
-        self.builder.build_return(None);
+        handle_flow(&self.builder, left_flow);
 
         self.builder.position_at_end(false_bb);
         let right_flow = (iffalse)(self);
-        // TODO: this is actually a stub
-        self.builder.build_return(None);
+        handle_flow(&self.builder, right_flow);
 
-        return ControlFlow::Conditional(vec![left_flow, right_flow]);
+        self.builder.position_at_end(cont_bb);
+
+        return ControlFlow::Conditional(res);
     }
 }

@@ -10,7 +10,10 @@ derive_more = "0.99.17"
 iced-x86 = "1.15.0"
 
 # TODO: do not depend on inkwell if a particular feature is set
-inkwell = { git = "https://github.com/TheDan64/inkwell", branch = "master", features = ["llvm13-0", "target-all"] }
+[dependencies.inkwell]
+git = "https://github.com/DCNick3/inkwell"
+branch = "master"
+features = ["llvm13-0", "target-all"]
 
 [dev-dependencies]
 dynasmrt = "1.2.1"

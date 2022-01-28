@@ -403,7 +403,6 @@ mod tests {
             // and recompile it into this
             // isn't it nice?
             let expected_result = assemble_aarch64!(
-                ; sub sp, sp, #0x10
                 ; ldr w8, [x0, #0x10] // load ESP
                 ; add w9, w8, #4
                 ; ldr w9, [x1, w9, sxtw] // load [ESP+4] (a)
@@ -412,14 +411,12 @@ mod tests {
                 ; ldr w8, [x1, w8, sxtw] // load [ESP+8] (b)
                 ; add w10, w9, #0xd // compute EDX+13
                 ; str w10, [x0, #8] // store EDX+13 as ECX
-                ; stp w8, w9, [sp, #8] // ??? why ???
                 ; sub w8, w8, w9 // compute b-a
                 ; mul w8, w8, w9 // compute a*(b-a)
                 ; udiv x9, x8, x10 // compute division of a*(b-a)/(13+a)
                 ; msub x8, x9, x10, x8 // compute remainder
                 ; str x9, [x0] // store div result in EAX
                 ; stur x8, [x0, #0xc] // store remainder in EDX
-                ; add sp, sp, #0x10
                 ; ret
             );
 
@@ -452,17 +449,23 @@ mod tests {
             let expected_result = assemble_aarch64!(
                 // note: this has no branching, as we don't actually store any flags in instructions like cmp
                 // we need to do this in order to make branches work though =)
-                ; sub sp, sp, #0x10
-                ; ldp w8, w9, [x0, #0x10]
+                ; ldp w8, w9, [x0, #0x10] // load ESP, EBP
                 ; sub w8, w8, #4
-                ; str w8, [x0, #0x10]
-                ; str w9, [x1, w8, sxtw]
-                ; ldr w8, [x0, #0x10]
-                ; str w8, [x0, #0x14]
-                ; add w8, w8, #8
-                ; ldr w8, [x1, w8, sxtw]
-                ; stp w8, w9, [sp, #8]
-                ; add sp, sp, #0x10
+                ; str w8, [x0, #0x10] // store ESP
+                ; str w9, [x1, w8, sxtw] // store EBP at [ESP+
+                ; ldrb w8, [x0, #0x23]
+                ; ldr w9, [x0, #0x10] // load ESP
+                ; cmp w8, #0
+                ; mov w8, #2
+                ; csinc w8, w8, wzr, ne
+                ; str w9, [x0, #0x14]
+                ; tbz w8, #0, #0x44
+                ; ldrsw x8, [x0, #0x10]
+                ; mov w9, #-1
+                ; str w9, [x0]
+                ; ldr w9, [x1, x8]
+                ; add w8, w8, #4
+                ; stp w8, w9, [x0, #0x10]
                 ; ret
             );
 
