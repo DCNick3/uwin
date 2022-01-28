@@ -195,3 +195,19 @@ pub enum ControlFlow<B: Builder> {
 
     Conditional(Vec<ControlFlow<B>>) /* stores possible branches (does not provide full info though) */,
 }
+
+impl<B: Builder> ControlFlow<B> {
+    pub fn can_reach_next_instruction(&self) -> bool {
+        match self {
+            ControlFlow::NextInstruction => true,
+            ControlFlow::DirectJump(_) => false,
+            ControlFlow::IndirectJump(_) => false,
+            ControlFlow::Return => false,
+            ControlFlow::Conditional(v) => {
+                v.iter().any(|c| c.can_reach_next_instruction())
+            }
+        }
+    }
+
+    //pub fn get_external_jumps
+}

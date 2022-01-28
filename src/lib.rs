@@ -278,15 +278,19 @@ mod tests {
     }
 
     mod llvm {
+        use std::collections::{HashSet, VecDeque};
         use crate::codegen_instr;
         use crate::llvm_backend::{LlvmBuilder, Types};
-        use iced_x86::{Decoder, DecoderOptions};
+        use iced_x86::{Decoder, DecoderOptions, FlowControl};
         use inkwell::context::Context;
         use inkwell::targets::{
             CodeModel, FileType, InitializationConfig, RelocMode, Target, TargetMachine,
             TargetTriple,
         };
         use inkwell::OptimizationLevel;
+        use test_log::test;
+        #[allow(dead_code)]
+        use log::{info, warn, error, debug, trace};
 
         fn get_aarch64_target_machine() -> TargetMachine {
             Target::initialize_aarch64(&InitializationConfig::default());
@@ -299,8 +303,8 @@ mod tests {
                     &"generic",
                     &"",
                     OptimizationLevel::Aggressive,
-                    RelocMode::Default,
-                    CodeModel::Default,
+                    RelocMode::Static,
+                    CodeModel::Small,
                 )
                 .unwrap()
         }
@@ -310,43 +314,79 @@ mod tests {
             let context = &context;
             let module = context.create_module("test");
             let mut module = &module;
-            let types = Types::new(context);
+            let types = &Types::new(context);
 
-            {
-                let mut builder = LlvmBuilder::new(context, module, types, "dickenson");
+            let mut decoder = Decoder::new(32, code, DecoderOptions::NONE);
 
-                let mut decoder = Decoder::new(32, code, DecoderOptions::NONE);
+            let mut queue = VecDeque::new();
+            let mut processing = HashSet::new();
+            queue.push_back(0u32);
 
-                while decoder.can_decode() {
-                    // TODO: control flow =)
-                    codegen_instr(&mut builder, decoder.decode());
+            while !queue.is_empty() {
+                let address = queue.pop_front().unwrap();
+                processing.insert(address);
+
+                debug!("processing bb at 0x{:08x}", address);
+
+                let mut builder = LlvmBuilder::new(context, module, types, address);
+                decoder.set_ip(address as u64);
+                decoder.set_position(address as usize);
+
+                loop {
+                    assert!(decoder.can_decode());
+                    let instr = decoder.decode();
+                    codegen_instr(&mut builder, instr);
+
+                    let (next, ext) = match instr.flow_control() {
+                        FlowControl::Next =>                (true, None),
+                        FlowControl::ConditionalBranch =>   (true, Some(instr.near_branch32())),
+                        FlowControl::Call =>                (true, Some(instr.near_branch32())),
+                        FlowControl::IndirectCall =>        (true, None),
+
+                        FlowControl::UnconditionalBranch => (false, None),
+                        FlowControl::IndirectBranch =>      (false, None),
+                        FlowControl::Return =>              (false, None),
+                        _ => unreachable!(),
+                    };
+
+                    if let Some(ext) = ext {
+                        if !processing.contains(&ext) {
+                            queue.push_back(ext);
+                        }
+                    }
+
+                    if !next {
+                        break
+                    }
                 }
 
                 let llvm_builder = builder.get_builder();
                 llvm_builder.build_return(None);
-
-                let target_machine = get_aarch64_target_machine();
-
-                let ir = module.print_to_string().to_string();
-
-                println!("{}", ir);
-
-                let memory_buffer = target_machine
-                    .write_to_memory_buffer(&mut module, FileType::Object)
-                    .unwrap();
-
-                let object_file = memory_buffer.create_object_file().unwrap();
-
-                let mut contents: Option<Vec<u8>> = None;
-                for sec in object_file.get_sections() {
-                    let name = sec.get_name().and_then(|x| x.to_str().ok());
-                    if name == Some(".text") {
-                        contents = Some(Vec::from(sec.get_contents()));
-                    }
-                }
-
-                contents.unwrap()
             }
+
+            let target_machine = get_aarch64_target_machine();
+
+            let ir = module.print_to_string().to_string();
+
+            println!("{}", ir);
+
+            let memory_buffer = target_machine
+                .write_to_memory_buffer(&mut module, FileType::Object)
+                .unwrap();
+
+            let raw_buffer = format!("{:?}", memory_buffer.as_slice());
+
+            let object_file = memory_buffer.create_object_file().unwrap();
+
+            let mut contents: Option<Vec<u8>> = None;
+            for sec in object_file.get_sections() {
+                let name = sec.get_name().and_then(|x| x.to_str().ok());
+                if name == Some(".text") {
+                    contents = Some(Vec::from(sec.get_contents()));
+                }
+            }
+
+            contents.unwrap()
         }
 
         #[test]
@@ -354,6 +394,7 @@ mod tests {
             // we get this
             let code = assemble_x86!(
                 ; mov ebx, 42
+                ; ret
             );
 
             // and recompile it into this
@@ -366,7 +407,7 @@ mod tests {
 
             let result = recompile(code.as_slice());
 
-            assert_eq!(result, expected_result);
+            assert_eq!(expected_result, result);
         }
 
         #[test]
@@ -422,7 +463,7 @@ mod tests {
 
             let result = recompile(code.as_slice());
 
-            assert_eq!(result, expected_result);
+            assert_eq!(expected_result, result);
         }
 
         #[test]
@@ -447,21 +488,29 @@ mod tests {
             );
 
             let expected_result = assemble_aarch64!(
-                // note: this has no branching, as we don't actually store any flags in instructions like cmp
-                // we need to do this in order to make branches work though =)
-                ; ldp w8, w9, [x0, #0x10] // load ESP, EBP
+                ; ->basic_block_00000000:
+                ; ldp w8, w9, [x0, #0x10]
                 ; sub w8, w8, #4
-                ; str w8, [x0, #0x10] // store ESP
-                ; str w9, [x1, w8, sxtw] // store EBP at [ESP+
+                ; str w8, [x0, #0x10]
+                ; str w9, [x1, w8, sxtw]
                 ; ldrb w8, [x0, #0x23]
-                ; ldr w9, [x0, #0x10] // load ESP
+                ; ldr w9, [x0, #0x10]
                 ; cmp w8, #0
                 ; mov w8, #2
                 ; csinc w8, w8, wzr, ne
                 ; str w9, [x0, #0x14]
-                ; tbz w8, #0, #0x44
+                ; tbnz w8, #0, ->FALSE
+
+                ; b #0
+
+                ; ->FALSE:
+                ; mov w8, #0x2a
+                ; str w8, [x0]
+                ; ret
+
+                ; ->basic_block_00000010:
                 ; ldrsw x8, [x0, #0x10]
-                ; mov w9, #-1
+                ; movn w9, #0
                 ; str w9, [x0]
                 ; ldr w9, [x1, x8]
                 ; add w8, w8, #4
@@ -471,7 +520,7 @@ mod tests {
 
             let result = recompile(code.as_slice());
 
-            assert_eq!(result, expected_result);
+            assert_eq!(expected_result, result);
         }
     }
 }

@@ -12,7 +12,7 @@ pub struct LlvmBuilder<'ctx, 'a> {
     module: &'a Module<'ctx>,
     function: FunctionValue<'ctx>,
     builder: Builder<'ctx>,
-    types: Types<'ctx>,
+    types: &'a Types<'ctx>,
     ctx_ptr: PointerValue<'ctx>,
     mem_ptr: PointerValue<'ctx>,
 }
@@ -73,14 +73,16 @@ impl<'ctx> Types<'ctx> {
     }
 }
 
+const FASTCC_CALLING_CONVENTION: u32 = 8;
+
 impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
     pub fn new(
         context: &'ctx Context,
         module: &'a Module<'ctx>,
-        types: Types<'ctx>,
-        fn_name: &str,
+        types: &'a Types<'ctx>,
+        basic_block_addr: u32,
     ) -> Self {
-        let function = module.add_function(fn_name, types.bb_fn, None);
+        let function = Self::get_basic_block_fun_internal(module, types, basic_block_addr);
         let bb = context.append_basic_block(function, "entry");
 
         let builder = context.create_builder();
@@ -162,6 +164,34 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
 
     fn get_host_pointer(&mut self, target_ptr: LlvmIntValue<'ctx>) -> PointerValue<'ctx> {
         unsafe { self.builder.build_gep(self.mem_ptr, &[target_ptr], "hptr") }
+    }
+
+    // TODO: name map
+    pub fn get_name_for(addr: u32) -> String {
+        format!("sub_{:08x}", addr)
+    }
+
+    fn get_basic_block_fun_internal(module: &'a Module<'ctx>, types: &'a Types<'ctx>, addr: u32) -> FunctionValue<'ctx> {
+        let name = Self::get_name_for(addr);
+        if let Some(fun) = module.get_function(name.as_str()) {
+            return fun
+        } else {
+            let res = module.add_function(name.as_str(), types.bb_fn, None);
+            res.set_call_conventions(FASTCC_CALLING_CONVENTION);
+            res
+        }
+    }
+
+    fn get_basic_block_fun(&mut self, addr: u32) -> FunctionValue<'ctx> {
+        Self::get_basic_block_fun_internal(self.module, self.types, addr)
+    }
+
+    fn call_basic_block(&mut self, target: u32, tail_call: bool) {
+        let target = self.get_basic_block_fun(target);
+        let args = &[ self.ctx_ptr.into(), self.mem_ptr.into() ];
+        let call = self.builder.build_call(target, args, "");
+        call.set_call_convention(FASTCC_CALLING_CONVENTION);
+        call.set_tail_call(tail_call)
     }
 }
 
@@ -322,15 +352,14 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
 
         let mut res = vec![];
 
-        let mut handle_flow = |builder: &Builder, flow: ControlFlow<Self>| {
+        let mut handle_flow = |self_: &mut Self, flow: ControlFlow<Self>| {
             match flow {
                 ControlFlow::NextInstruction => {
-                    builder.build_unconditional_branch(cont_bb);
+                    self_.builder.build_unconditional_branch(cont_bb);
                 },
                 ControlFlow::DirectJump(target) => {
-                    // stub
-                    // TODO: how do we tell the codegen that we should continue codegen here?
-                    builder.build_return(None);
+                    self_.call_basic_block(target, true);
+                    self_.builder.build_return(None);
                 },
                 _ => todo!(),
             };
@@ -344,11 +373,11 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
 
         self.builder.position_at_end(true_bb);
         let left_flow = (iftrue)(self);
-        handle_flow(&self.builder, left_flow);
+        handle_flow(self, left_flow);
 
         self.builder.position_at_end(false_bb);
         let right_flow = (iffalse)(self);
-        handle_flow(&self.builder, right_flow);
+        handle_flow(self, right_flow);
 
         self.builder.position_at_end(cont_bb);
 
