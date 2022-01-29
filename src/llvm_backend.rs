@@ -19,13 +19,16 @@ pub struct LlvmBuilder<'ctx, 'a> {
 
 #[derive(Clone, Copy)]
 pub struct Types<'ctx> {
+    #[allow(unused)]
     void: VoidType<'ctx>,
     i1: LlvmIntType<'ctx>,
     i8: LlvmIntType<'ctx>,
     i16: LlvmIntType<'ctx>,
     i32: LlvmIntType<'ctx>,
     i64: LlvmIntType<'ctx>,
+    #[allow(unused)]
     ctx: StructType<'ctx>,
+    #[allow(unused)]
     ctx_ptr: PointerType<'ctx>,
     bb_fn: FunctionType<'ctx>,
 }
@@ -82,7 +85,7 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
         types: &'a Types<'ctx>,
         basic_block_addr: u32,
     ) -> Self {
-        let function = Self::get_basic_block_fun_internal(module, types, basic_block_addr);
+        let function = Self::get_basic_block_fun_internal(context, module, types, basic_block_addr);
         let bb = context.append_basic_block(function, "entry");
 
         let builder = context.create_builder();
@@ -163,7 +166,9 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
     }
 
     fn get_host_pointer(&mut self, target_ptr: LlvmIntValue<'ctx>) -> PointerValue<'ctx> {
-        unsafe { self.builder.build_gep(self.mem_ptr, &[target_ptr], "hptr") }
+        let target_ptr_ext = self.builder.build_int_z_extend(target_ptr, self.types.i64, "");
+
+        unsafe { self.builder.build_gep(self.mem_ptr, &[target_ptr_ext], "hptr") }
     }
 
     // TODO: name map
@@ -171,7 +176,7 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
         format!("sub_{:08x}", addr)
     }
 
-    fn get_basic_block_fun_internal(context: &'ctx Context,
+    fn get_basic_block_fun_internal(_context: &'ctx Context,
                                     module: &'a Module<'ctx>,
                                     types: &'a Types<'ctx>,
                                     addr: u32) -> FunctionValue<'ctx> {
@@ -248,6 +253,14 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
         self.int_type(ty).const_int(value, sign_extend)
     }
 
+    fn make_true(&self) -> Self::BoolValue {
+        self.types.i1.const_int(1, false)
+    }
+
+    fn make_false(&self) -> Self::BoolValue {
+        self.types.i1.const_int(0, false)
+    }
+
     fn load_register(&mut self, register: Register) -> Self::IntValue {
         if let Ok(gp) = FullSizeGeneralPurposeRegister::try_from(register) {
             let ptr = self.build_ctx_gp_gep(self.ctx_ptr, gp);
@@ -269,6 +282,15 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
     }
 
     fn load_flag(&mut self, flag: Flag) -> Self::BoolValue {
+        match flag {
+            Flag::Carry => todo!(),
+            Flag::Parity => unimplemented!(),
+            Flag::AuxiliaryCarry => unimplemented!(),
+            Flag::Zero => {}
+            Flag::Sign => {}
+            Flag::Overflow => todo!(),
+        };
+
         let ptr = self.build_ctx_flag_gep(self.ctx_ptr, flag);
         let i8_val = self.builder.build_load(ptr, "")
             .into_int_value();
@@ -279,9 +301,9 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
     }
 
     fn store_flag(&mut self, flag: Flag, value: Self::BoolValue) {
-        todo!();
-        //let ptr = self.build_ctx_flag_gep(self.ctx_ptr, flag);
-        //self.builder.build_store(ptr, value);
+        let ptr = self.build_ctx_flag_gep(self.ctx_ptr, flag);
+        let value = self.zext(value, IntType::I8);
+        self.builder.build_store(ptr, value);
     }
 
     fn load_memory(&mut self, size: IntType, address: Self::IntValue) -> Self::IntValue {
@@ -335,11 +357,11 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
     }
 
     fn lshr(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue {
-        todo!()
+        self.builder.build_right_shift(lhs, rhs, false, "")
     }
 
     fn ashr(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue {
-        todo!()
+        self.builder.build_right_shift(lhs, rhs, true, "")
     }
 
     fn udiv(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue {

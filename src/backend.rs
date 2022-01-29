@@ -29,18 +29,21 @@ pub trait Builder {
     fn make_int_value(&self, ty: IntType, value: u64, sign_extend: bool) -> Self::IntValue;
 
     // TODO: implement all the variants with all the sizes
-    fn make_u8(&mut self, value: u8) -> Self::IntValue {
+    fn make_u8(&self, value: u8) -> Self::IntValue {
         self.make_int_value(IntType::I8, value as u64, false)
     }
-    fn make_u16(&mut self, value: u16) -> Self::IntValue {
+    fn make_u16(&self, value: u16) -> Self::IntValue {
         self.make_int_value(IntType::I16, value as u64, false)
     }
-    fn make_u32(&mut self, value: u32) -> Self::IntValue {
+    fn make_u32(&self, value: u32) -> Self::IntValue {
         self.make_int_value(IntType::I32, value as u64, false)
     }
-    fn make_u64(&mut self, value: u64) -> Self::IntValue {
+    fn make_u64(&self, value: u64) -> Self::IntValue {
         self.make_int_value(IntType::I64, value as u64, false)
     }
+
+    fn make_true(&self) -> Self::BoolValue;
+    fn make_false(&self) -> Self::BoolValue;
 
     fn load_register(&mut self, register: Register) -> Self::IntValue;
     fn store_register(&mut self, register: Register, value: Self::IntValue);
@@ -132,10 +135,10 @@ pub trait Builder {
     fn compute_and_store_sf(&mut self, value: Self::IntValue) {
         let zero = self.make_int_value(value.size(), 0, false);
         let shift = self.make_int_value(value.size(), (value.size().bit_width() - 1) as u64, false);
-        let sign = self.ashr(value, shift);
+        let sign = self.lshr(value, shift);
         // TODO: we may be fine just casting the sign bit, without comparison
         let sign = self.icmp(ComparisonType::NotEqual, sign, zero);
-        self.store_flag(Flag::Sign, zf)
+        self.store_flag(Flag::Sign, sign)
     }
 
 
