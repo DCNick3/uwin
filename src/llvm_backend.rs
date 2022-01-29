@@ -1,4 +1,4 @@
-use crate::backend::{BoolValue, IntValue};
+use crate::backend::{BoolValue, ComparisonType, IntValue};
 use crate::types::{ControlFlow, Flag, FullSizeGeneralPurposeRegister, IntType, Register};
 use inkwell::builder::Builder;
 use inkwell::context::Context;
@@ -171,19 +171,23 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
         format!("sub_{:08x}", addr)
     }
 
-    fn get_basic_block_fun_internal(module: &'a Module<'ctx>, types: &'a Types<'ctx>, addr: u32) -> FunctionValue<'ctx> {
+    fn get_basic_block_fun_internal(context: &'ctx Context,
+                                    module: &'a Module<'ctx>,
+                                    types: &'a Types<'ctx>,
+                                    addr: u32) -> FunctionValue<'ctx> {
         let name = Self::get_name_for(addr);
         if let Some(fun) = module.get_function(name.as_str()) {
             return fun
         } else {
             let res = module.add_function(name.as_str(), types.bb_fn, None);
             res.set_call_conventions(FASTCC_CALLING_CONVENTION);
+            // TODO: I really want to attach metadata telling that this a basic block function and it's (original) address
             res
         }
     }
 
     fn get_basic_block_fun(&mut self, addr: u32) -> FunctionValue<'ctx> {
-        Self::get_basic_block_fun_internal(self.module, self.types, addr)
+        Self::get_basic_block_fun_internal(self.context, self.module, self.types, addr)
     }
 
     fn call_basic_block(&mut self, target: u32, tail_call: bool) {
@@ -210,6 +214,25 @@ impl IntValue for LlvmIntValue<'_> {
 
 impl BoolValue for LlvmIntValue<'_> {
 
+}
+
+impl Into<IntPredicate> for ComparisonType {
+    fn into(self) -> IntPredicate {
+        use ComparisonType::*;
+        use IntPredicate::*;
+        match self {
+            Equal => EQ,
+            NotEqual => NE,
+            UnsignedGreater => UGT,
+            UnsignedGreaterOrEqual => UGE,
+            UnsignedLess => ULT,
+            UnsignedLessOrEqual => ULE,
+            SignedGreater => SGT,
+            SignedGreaterOrEqual => SGE,
+            SignedLess => SLT,
+            SignedLessOrEqual => SLE,
+        }
+    }
 }
 
 impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
@@ -333,6 +356,10 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
 
     fn trunc(&mut self, val: Self::IntValue, to: IntType) -> Self::IntValue {
         self.builder.build_int_truncate(val, self.int_type(to), "")
+    }
+
+    fn icmp(&mut self, cmp: ComparisonType, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::BoolValue {
+        self.builder.build_int_compare(cmp.into(), lhs, rhs, "")
     }
 
     fn ifelse<T, F>(&mut self,

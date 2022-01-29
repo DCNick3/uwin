@@ -9,6 +9,19 @@ pub trait BoolValue: Clone + Copy {
 
 }
 
+pub enum ComparisonType {
+    Equal,
+    NotEqual,
+    UnsignedGreater,
+    UnsignedGreaterOrEqual,
+    UnsignedLess,
+    UnsignedLessOrEqual,
+    SignedGreater,
+    SignedGreaterOrEqual,
+    SignedLess,
+    SignedLessOrEqual,
+}
+
 pub trait Builder {
     type IntValue: IntValue;
     type BoolValue: BoolValue;
@@ -54,6 +67,8 @@ pub trait Builder {
     fn zext(&mut self, val: Self::IntValue, to: IntType) -> Self::IntValue;
     fn sext(&mut self, val: Self::IntValue, to: IntType) -> Self::IntValue;
     fn trunc(&mut self, val: Self::IntValue, to: IntType) -> Self::IntValue;
+
+    fn icmp(&mut self, cmp: ComparisonType, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::BoolValue;
 
     fn ifelse<L, R>(&mut self,
                     cond: Self::BoolValue,
@@ -105,7 +120,25 @@ pub trait Builder {
         }
     }
 
-    // TODO: maybe (probably?) we will need a way to express branches here. Not the branch instructions, but conditional execution in the context of the instruction itself
+    // TODO: computing the flags eagerly is kind of inefficient actually
+    // it might be beneficial to move to lazy computation like https://github.com/nepx/halfix does
+
+    fn compute_and_store_zf(&mut self, value: Self::IntValue) {
+        let zero = self.make_int_value(value.size(), 0, false);
+        let zf = self.icmp(ComparisonType::Equal, value, zero);
+        self.store_flag(Flag::Zero, zf)
+    }
+
+    fn compute_and_store_sf(&mut self, value: Self::IntValue) {
+        let zero = self.make_int_value(value.size(), 0, false);
+        let shift = self.make_int_value(value.size(), (value.size().bit_width() - 1) as u64, false);
+        let sign = self.ashr(value, shift);
+        // TODO: we may be fine just casting the sign bit, without comparison
+        let sign = self.icmp(ComparisonType::NotEqual, sign, zero);
+        self.store_flag(Flag::Sign, zf)
+    }
+
+
 }
 
 // trait Backend {

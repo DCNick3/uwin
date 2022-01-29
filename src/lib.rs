@@ -289,7 +289,7 @@ mod tests {
         };
         use inkwell::OptimizationLevel;
         use test_log::test;
-        #[allow(dead_code)]
+        #[allow(unused_imports)]
         use log::{info, warn, error, debug, trace};
 
         fn get_aarch64_target_machine() -> TargetMachine {
@@ -330,7 +330,7 @@ mod tests {
 
                 let mut builder = LlvmBuilder::new(context, module, types, address);
                 decoder.set_ip(address as u64);
-                decoder.set_position(address as usize);
+                decoder.set_position(address as usize).unwrap();
 
                 loop {
                     assert!(decoder.can_decode());
@@ -374,7 +374,7 @@ mod tests {
                 .write_to_memory_buffer(&mut module, FileType::Object)
                 .unwrap();
 
-            let raw_buffer = format!("{:?}", memory_buffer.as_slice());
+            let _raw_buffer = format!("{:?}", memory_buffer.as_slice());
 
             let object_file = memory_buffer.create_object_file().unwrap();
 

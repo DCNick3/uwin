@@ -91,8 +91,8 @@ pub enum SegmentRegister {
 #[derive(Debug, Display, Clone, Copy)]
 pub enum Flag {
     Carry = 0,
-    Parity = 1,
-    AuxiliaryCarry = 2, // quite a special one, as it's almost never used in modern (non-DOS) code
+    Parity = 1,         // almost definitely can be ignored, not used much
+    AuxiliaryCarry = 2, // definitely can be ignored, as it's almost never used in modern (non-DOS) code
     Zero = 3,
     Sign = 4,
     Overflow = 5,
