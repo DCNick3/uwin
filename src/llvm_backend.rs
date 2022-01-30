@@ -4,7 +4,7 @@ use inkwell::builder::Builder;
 use inkwell::context::Context;
 use inkwell::module::Module;
 use inkwell::types::{FunctionType, IntType as LlvmIntType, PointerType, StructType, VoidType};
-use inkwell::values::{FunctionValue, IntValue as LlvmIntValue, PointerValue};
+use inkwell::values::{BasicValue, FunctionValue, IntValue as LlvmIntValue, PointerValue};
 use inkwell::{AddressSpace, IntPredicate};
 
 pub struct LlvmBuilder<'ctx, 'a> {
@@ -313,7 +313,12 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
                                                        .ptr_type(AddressSpace::Generic),
                                                    "");
 
-        self.builder.build_load_aligned(hptr, 1, "").into_int_value()
+        let val = self.builder.build_load(hptr, "");
+        val.as_instruction_value()
+            .unwrap()
+            .set_alignment(1)
+            .unwrap();
+        val.into_int_value()
     }
 
     fn store_memory(&mut self, address: Self::IntValue, value: Self::IntValue) {
@@ -323,7 +328,9 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
                                                        .ptr_type(AddressSpace::Generic),
                                                    "");
 
-        self.builder.build_store_aligned(hptr, value, 1);
+        self.builder.build_store(hptr, value)
+            .set_alignment(1)
+            .unwrap();
     }
 
     fn add(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue {

@@ -13,7 +13,7 @@ env_logger = "0.9.0"
 
 # TODO: do not depend on inkwell if a particular feature is set
 [dependencies.inkwell]
-git = "https://github.com/DCNick3/inkwell"
+git = "https://github.com/TheDan64/inkwell"
 branch = "master"
 features = ["llvm13-0", "target-all"]
 
