@@ -322,6 +322,34 @@ mod cmp {
             ; mov ecx, 2
             ; cmovz ebx, ecx
         ) [CF ZF SF OF],
+        cmp_less: (
+            ; mov eax, 11
+            ; cmp eax, 13
+        ) [CF ZF SF OF],
+        cmp_neg_1: (
+            ; mov eax, -1
+            ; cmp eax, -2
+        ) [CF ZF SF OF],
+        cmp_neg_2: (
+            ; mov eax, 0
+            ; cmp eax, 1
+        ) [CF ZF SF OF],
+        cmp_neg_3: (
+            ; mov eax, -0x80000000
+            ; cmp eax, 1
+        ) [CF ZF SF OF],
+        cmp_rnd_1: (
+            ; mov eax, 0x3e9c87ab
+            ; cmp eax, 0x47f38608
+        ) [CF ZF SF OF],
+        cmp_rnd_2: (
+            ; mov eax, -0x403f0352
+            ; cmp eax, -0x4440a37e
+        ) [CF ZF SF OF],
+        cmp_rnd_3: (
+            ; mov eax, 0x2600bb16
+            ; cmp eax, 0x73fc32b6
+        ) [CF ZF SF OF],
     }
 }
 
