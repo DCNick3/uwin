@@ -1,5 +1,6 @@
+use std::ffi::c_void;
 use crate::backend::{BoolValue, ComparisonType, IntValue};
-use crate::types::{ControlFlow, Flag, FullSizeGeneralPurposeRegister, IntType, Register};
+use crate::types::{ControlFlow, CpuContext, Flag, FullSizeGeneralPurposeRegister, IntType, Register};
 use inkwell::builder::Builder;
 use inkwell::context::Context;
 use inkwell::module::Module;
@@ -20,17 +21,17 @@ pub struct LlvmBuilder<'ctx, 'a> {
 #[derive(Clone, Copy)]
 pub struct Types<'ctx> {
     #[allow(unused)]
-    void: VoidType<'ctx>,
-    i1: LlvmIntType<'ctx>,
-    i8: LlvmIntType<'ctx>,
-    i16: LlvmIntType<'ctx>,
-    i32: LlvmIntType<'ctx>,
-    i64: LlvmIntType<'ctx>,
+    pub void: VoidType<'ctx>,
+    pub i1: LlvmIntType<'ctx>,
+    pub i8: LlvmIntType<'ctx>,
+    pub i16: LlvmIntType<'ctx>,
+    pub i32: LlvmIntType<'ctx>,
+    pub i64: LlvmIntType<'ctx>,
     #[allow(unused)]
-    ctx: StructType<'ctx>,
+    pub ctx: StructType<'ctx>,
     #[allow(unused)]
-    ctx_ptr: PointerType<'ctx>,
-    bb_fn: FunctionType<'ctx>,
+    pub ctx_ptr: PointerType<'ctx>,
+    pub bb_fn: FunctionType<'ctx>,
 }
 
 impl<'ctx> Types<'ctx> {
@@ -76,7 +77,9 @@ impl<'ctx> Types<'ctx> {
     }
 }
 
-const FASTCC_CALLING_CONVENTION: u32 = 8;
+pub const FASTCC_CALLING_CONVENTION: u32 = 8;
+
+pub type BbFunc = unsafe extern "C" fn(*mut CpuContext, *mut u8) -> c_void;
 
 impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
     pub fn new(

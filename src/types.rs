@@ -1,8 +1,11 @@
+use std::fmt::Formatter;
 use derive_more::Display;
+use strum::IntoEnumIterator;
+use strum_macros::EnumIter;
 use crate::Builder;
 
 // the numbers correspond to register numbers in ModR/M encoding
-#[derive(Debug, Clone, Copy)]
+#[derive(Debug, Clone, Copy, EnumIter, Eq, PartialEq, Hash, Ord, PartialOrd)]
 pub enum FullSizeGeneralPurposeRegister {
     EAX = 0,
     EBX = 1,
@@ -99,11 +102,50 @@ pub enum Flag {
 }
 
 #[repr(C)] // for interoperability with llvm-generated functions
+#[derive(Eq, PartialEq)]
 pub struct CpuContext {
     // !!! If changing this struct - don't forget to update Types::new in llvm_backend.rs
     // also it would be best not to move fields around, as this breaks indices in build_ctx_*_gep
     pub gp_regs: [u32; 8],
     pub flags: [u8; 8],
+}
+
+impl Default for CpuContext {
+    fn default() -> Self {
+        CpuContext {
+            gp_regs: [0u32; 8],
+            flags: [0u8; 8],
+        }
+    }
+}
+
+impl std::fmt::Display for CpuContext {
+    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+        let mut s = f.debug_struct("CpuContext");
+        for gp in FullSizeGeneralPurposeRegister::iter() {
+            s.field(format!("{:?}", gp).as_str(), &self.get_gp_reg(gp));
+        }
+        s.finish_non_exhaustive()?;
+        Ok(())
+    }
+}
+
+impl CpuContext {
+    pub fn get_gp_reg(&self, reg: FullSizeGeneralPurposeRegister) -> u32 {
+        self.gp_regs[reg as usize]
+    }
+
+    pub fn set_gp_reg(&mut self, reg: FullSizeGeneralPurposeRegister, val: u32) {
+        self.gp_regs[reg as usize] = val
+    }
+
+    pub fn get_flag(&self, flag: Flag) -> bool {
+        self.flags[flag as usize] != 0
+    }
+
+    pub fn set_flag(&mut self, flag: Flag, val: bool) {
+        self.flags[flag as usize] = if val { 1 } else { 0 }
+    }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq)]

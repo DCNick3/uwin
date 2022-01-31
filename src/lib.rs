@@ -1,13 +1,13 @@
 pub mod backend;
 pub mod disasm;
-pub mod llvm_backend;
 pub mod types;
+pub mod llvm;
 
 use crate::backend::{Builder, IntValue};
 use crate::disasm::Operands;
 use crate::types::Register::*;
 use crate::types::{ControlFlow, Flag, IntType, Operand};
-use iced_x86::{ConditionCode, Instruction};
+use iced_x86::{ConditionCode, Instruction, Mnemonic};
 //use crate::disasm::;
 
 //fn get_
@@ -17,12 +17,50 @@ fn compute_condition_code<B: Builder>(builder: &mut B, condition_code: Condition
     match condition_code {
         None => panic!("Can't compute None condition"),
 
+        e => {
+            let zf = builder.load_flag(Flag::Zero);
+            zf
+        }
         ne => {
             let zf = builder.load_flag(Flag::Zero);
             builder.bool_neg(zf)
         },
 
+        s => {
+            let sf = builder.load_flag(Flag::Sign);
+            sf
+        },
+        ns => {
+            let sf = builder.load_flag(Flag::Sign);
+            builder.bool_neg(sf)
+        }
+
         _ => todo!("condition code {:?}", condition_code),
+    }
+}
+
+fn is_cmovcc(mnemonic: Mnemonic) -> bool {
+    use Mnemonic::*;
+    match mnemonic {
+        Cmova |
+        Cmovae |
+        Cmovb |
+        Cmovbe |
+        Cmove |
+        Cmovg |
+        Cmovge |
+        Cmovl |
+        Cmovle |
+        Cmovne |
+        Cmovno |
+        Cmovnp |
+        Cmovns |
+        Cmovo |
+        Cmovp |
+        Cmovs  => {
+            true
+        },
+        _ => false,
     }
 }
 
@@ -50,9 +88,27 @@ pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) -> Control
             // do not jump
             ControlFlow::NextInstruction
         })
+    } else if is_cmovcc(instr.mnemonic()) {
+        operands!([dst, src], &instr);
+
+        let code = instr.condition_code();
+        let cond = compute_condition_code(builder, code);
+
+        builder.ifelse(cond, |builder| {
+            // move!
+            let val = builder.load_operand(src);
+            builder.store_operand(dst, val);
+            ControlFlow::NextInstruction
+        }, |_builder| {
+            // do not move
+            ControlFlow::NextInstruction
+        })
     } else {
         match instr.mnemonic() {
             // TODO: there is (going to be) a ton of opcodes, we would want to handle this nicely (a bit of macromagic?)
+            Nop => {
+                // fuf, this was easy
+            }
             Mov => {
                 operands!([dst, src], &instr);
 
@@ -236,45 +292,47 @@ pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) -> Control
     }
 }
 
+/// use dynasm to assemble the provided code to a Vec<u8>
+#[macro_export]
+macro_rules! assemble_x86 {
+    ($($assembly:tt)*) => {
+        {
+            #[allow(unused)]
+            use dynasmrt::{dynasm, DynasmApi, DynasmLabelApi};
+            let mut ops = dynasmrt::x86::Assembler::new().unwrap();
+
+            dynasm!(ops
+                ; .arch x86
+                $($assembly)*
+            );
+
+            let result: Vec<u8> = ops.finalize().unwrap().to_vec();
+            result
+        }
+    }
+}
+
+#[macro_export]
+macro_rules! assemble_aarch64 {
+    ($($assembly:tt)*) => {
+        {
+            #[allow(unused)]
+            use dynasmrt::{dynasm, DynasmApi, DynasmLabelApi};
+            let mut ops = dynasmrt::aarch64::Assembler::new().unwrap();
+
+            dynasm!(ops
+                ; .arch aarch64
+                $($assembly)*
+            );
+
+            let result: Vec<u8> = ops.finalize().unwrap().to_vec();
+            result
+        }
+    }
+}
+
 #[cfg(test)]
 mod tests {
-    /// use dynasm to assemble the provided code to a Vec<u8>
-    macro_rules! assemble_x86 {
-        ($($assembly:tt)*) => {
-            {
-                #[allow(unused)]
-                use dynasmrt::{dynasm, DynasmApi, DynasmLabelApi};
-                let mut ops = dynasmrt::x86::Assembler::new().unwrap();
-
-                dynasm!(ops
-                    ; .arch x86
-                    $($assembly)*
-                );
-
-                let result: Vec<u8> = ops.finalize().unwrap().to_vec();
-                result
-            }
-        }
-    }
-
-    macro_rules! assemble_aarch64 {
-        ($($assembly:tt)*) => {
-            {
-                #[allow(unused)]
-                use dynasmrt::{dynasm, DynasmApi, DynasmLabelApi};
-                let mut ops = dynasmrt::aarch64::Assembler::new().unwrap();
-
-                dynasm!(ops
-                    ; .arch aarch64
-                    $($assembly)*
-                );
-
-                let result: Vec<u8> = ops.finalize().unwrap().to_vec();
-                result
-            }
-        }
-    }
-
     // test that above helper macro works =)
     mod assembly {
         #[test]
@@ -301,93 +359,19 @@ mod tests {
     }
 
     mod llvm {
-        use std::collections::{HashSet, VecDeque};
-        use crate::codegen_instr;
-        use crate::llvm_backend::{LlvmBuilder, Types};
-        use iced_x86::{Decoder, DecoderOptions, FlowControl};
+        use crate::llvm;
         use inkwell::context::Context;
-        use inkwell::targets::{
-            CodeModel, FileType, InitializationConfig, RelocMode, Target, TargetMachine,
-            TargetTriple,
-        };
-        use inkwell::OptimizationLevel;
+        use inkwell::targets::FileType;
         use test_log::test;
         #[allow(unused_imports)]
-        use log::{info, warn, error, debug, trace};
-
-        fn get_aarch64_target_machine() -> TargetMachine {
-            Target::initialize_aarch64(&InitializationConfig::default());
-            //.expect("Failed to initialize aarch64 target");
-            let target_triple = TargetTriple::create("aarch64");
-            let target = Target::from_triple(&target_triple).unwrap();
-            target
-                .create_target_machine(
-                    &target_triple,
-                    &"generic",
-                    &"",
-                    OptimizationLevel::Aggressive,
-                    RelocMode::Static,
-                    CodeModel::Small,
-                )
-                .unwrap()
-        }
+        use log::{debug, error, info, trace, warn};
 
         fn recompile(code: &[u8]) -> Vec<u8> {
-            let context = Context::create();
-            let context = &context;
-            let module = context.create_module("test");
-            let mut module = &module;
-            let types = &Types::new(context);
+            let context = &Context::create();
+            let mut module = llvm::recompile(context, 0, code);
 
-            let mut decoder = Decoder::new(32, code, DecoderOptions::NONE);
 
-            let mut queue = VecDeque::new();
-            let mut processing = HashSet::new();
-            queue.push_back(0u32);
-
-            while !queue.is_empty() {
-                let address = queue.pop_front().unwrap();
-                processing.insert(address);
-
-                debug!("processing bb at 0x{:08x}", address);
-
-                let mut builder = LlvmBuilder::new(context, module, types, address);
-                decoder.set_ip(address as u64);
-                decoder.set_position(address as usize).unwrap();
-
-                loop {
-                    assert!(decoder.can_decode());
-                    let instr = decoder.decode();
-                    codegen_instr(&mut builder, instr);
-
-                    let (next, ext) = match instr.flow_control() {
-                        FlowControl::Next =>                (true, None),
-                        FlowControl::ConditionalBranch =>   (true, Some(instr.near_branch32())),
-                        FlowControl::Call =>                (true, Some(instr.near_branch32())),
-                        FlowControl::IndirectCall =>        (true, None),
-
-                        FlowControl::UnconditionalBranch => (false, None),
-                        FlowControl::IndirectBranch =>      (false, None),
-                        FlowControl::Return =>              (false, None),
-                        _ => unreachable!(),
-                    };
-
-                    if let Some(ext) = ext {
-                        if !processing.contains(&ext) {
-                            queue.push_back(ext);
-                        }
-                    }
-
-                    if !next {
-                        break
-                    }
-                }
-
-                let llvm_builder = builder.get_builder();
-                llvm_builder.build_return(None);
-            }
-
-            let target_machine = get_aarch64_target_machine();
+            let target_machine = llvm::get_aarch64_target_machine();
 
             let ir = module.print_to_string().to_string();
 
