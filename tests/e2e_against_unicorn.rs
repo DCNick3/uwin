@@ -13,7 +13,7 @@ const CODE_ADDR: u32 = 0x200000;
 const MEM_ADDR: u32 = 0x100000;
 const MEM_SIZE: u32 = 0x10000;
 
-fn execute_unicorn(code: &[u8]) -> CpuContext {
+fn execute_unicorn(code: &[u8]) -> (CpuContext, Vec<u8>) {
     let pad = (0x1000 - (code.len() % 0x1000)) % 0x1000;
     let code_page_size = code.len() + pad;
 
@@ -37,8 +37,10 @@ fn execute_unicorn(code: &[u8]) -> CpuContext {
     )
     .unwrap();
 
+    emu.reg_write(RegisterX86::ESP, (MEM_ADDR + MEM_SIZE - 4) as u64)
+        .unwrap();
+
     // TODO: can we stop on return? Maybe hooks?
-    // TODO: setup stack?
     emu.emu_start(
         base_addr,
         base_addr + code.len() as u64,
@@ -47,54 +49,58 @@ fn execute_unicorn(code: &[u8]) -> CpuContext {
     )
     .unwrap();
 
-    let mut res = CpuContext::default();
+    let mut ctx = CpuContext::default();
 
-    res.set_gp_reg(
+    ctx.set_gp_reg(
         FullSizeGeneralPurposeRegister::EAX,
         emu.reg_read(RegisterX86::EAX).unwrap() as u32,
     );
-    res.set_gp_reg(
+    ctx.set_gp_reg(
         FullSizeGeneralPurposeRegister::EBX,
         emu.reg_read(RegisterX86::EBX).unwrap() as u32,
     );
-    res.set_gp_reg(
+    ctx.set_gp_reg(
         FullSizeGeneralPurposeRegister::ECX,
         emu.reg_read(RegisterX86::ECX).unwrap() as u32,
     );
-    res.set_gp_reg(
+    ctx.set_gp_reg(
         FullSizeGeneralPurposeRegister::EDX,
         emu.reg_read(RegisterX86::EDX).unwrap() as u32,
     );
-    res.set_gp_reg(
+    ctx.set_gp_reg(
         FullSizeGeneralPurposeRegister::ESP,
         emu.reg_read(RegisterX86::ESP).unwrap() as u32,
     );
-    res.set_gp_reg(
+    ctx.set_gp_reg(
         FullSizeGeneralPurposeRegister::EBP,
         emu.reg_read(RegisterX86::EBP).unwrap() as u32,
     );
-    res.set_gp_reg(
+    ctx.set_gp_reg(
         FullSizeGeneralPurposeRegister::ESI,
         emu.reg_read(RegisterX86::ESI).unwrap() as u32,
     );
-    res.set_gp_reg(
+    ctx.set_gp_reg(
         FullSizeGeneralPurposeRegister::EDI,
         emu.reg_read(RegisterX86::EDI).unwrap() as u32,
     );
 
     let flags = emu.reg_read(RegisterX86::EFLAGS).unwrap() as u32;
 
-    res.set_flag(Flag::Carry, flags & 0x1 != 0);
-    res.set_flag(Flag::Parity, flags & 0x2 != 0);
-    res.set_flag(Flag::AuxiliaryCarry, flags & 0x10 != 0);
-    res.set_flag(Flag::Zero, flags & 0x40 != 0);
-    res.set_flag(Flag::Sign, flags & 0x80 != 0);
-    res.set_flag(Flag::Overflow, flags & 0x800 != 0);
+    ctx.set_flag(Flag::Carry, flags & 0x1 != 0);
+    ctx.set_flag(Flag::Parity, flags & 0x2 != 0);
+    ctx.set_flag(Flag::AuxiliaryCarry, flags & 0x10 != 0);
+    ctx.set_flag(Flag::Zero, flags & 0x40 != 0);
+    ctx.set_flag(Flag::Sign, flags & 0x80 != 0);
+    ctx.set_flag(Flag::Overflow, flags & 0x800 != 0);
 
-    res
+    let mem = emu
+        .mem_read_as_vec(MEM_ADDR as u64, MEM_SIZE as usize)
+        .unwrap();
+
+    (ctx, mem)
 }
 
-fn execute_rusty_x86(code: &[u8]) -> CpuContext {
+fn execute_rusty_x86(code: &[u8]) -> (CpuContext, Vec<u8>) {
     let context = inkwell::context::Context::create();
     let types = &rusty_x86::llvm::backend::Types::new(&context);
     let module = rusty_x86::llvm::recompile(&context, types, CODE_ADDR, code);
@@ -142,18 +148,36 @@ fn execute_rusty_x86(code: &[u8]) -> CpuContext {
     let mut cpu_context = CpuContext::default();
 
     // TODO: this is a simplification
-    let mut mem = [0u8; MEM_SIZE as usize];
+    //let mut mem = [0u8; MEM_SIZE as usize];
 
-    // !!! we can't really ensure that memory accesses are safe w/o implementing softmmu
-    // implementing it helps with portability & safety, but increases complexity & decreases performance
+    cpu_context.set_gp_reg(FullSizeGeneralPurposeRegister::ESP, MEM_ADDR + MEM_SIZE - 4);
+
+    // SAFETY: dragons ahead
+    // map 4 GiB of memory with no protection
+    // this way we can control all mappings in the whole virtualized 32-bit address space
+    let mut target_mem_region = region::alloc(0x100000000, region::Protection::NONE).unwrap();
+
+    // map a small region of memory
+    let mapped_start = unsafe { target_mem_region.as_ptr::<u8>().add(MEM_ADDR as usize) };
+
+    let mut mapped = region::alloc_at(
+        mapped_start,
+        MEM_SIZE as usize,
+        region::Protection::READ_WRITE,
+    )
+    .unwrap();
+
+    // fill the mapped memory with zeroes (is it necessary?)
+    unsafe { std::slice::from_raw_parts_mut(mapped.as_mut_ptr(), mapped.len()).fill(0u8) }
+
     unsafe {
-        fun.call(
-            &mut cpu_context,
-            mem.as_mut_ptr().offset(-(MEM_ADDR as isize)),
-        );
+        // do the thing!
+        fun.call(&mut cpu_context, target_mem_region.as_mut_ptr());
     };
 
-    cpu_context
+    let mem = unsafe { std::slice::from_raw_parts(mapped_start, MEM_SIZE as usize) };
+
+    (cpu_context, mem.into())
 }
 
 fn context_to_gp_map(context: &CpuContext) -> BTreeMap<FullSizeGeneralPurposeRegister, u32> {
@@ -177,24 +201,28 @@ fn test_code(code: &[u8], flags: Vec<Flag>) {
     let rusty_x86 = execute_rusty_x86(code);
     let unicorn = execute_unicorn(code);
 
-    debug!("RESULT rusty_x86 = {:?}", rusty_x86);
-    debug!("RESULT unicorn   = {:?}", unicorn);
+    debug!("RESULT rusty_x86 = {:?}", rusty_x86.0);
+    debug!("RESULT unicorn   = {:?}", unicorn.0);
 
     // We can't directly compare contexts because of flags (sometimes they are undefined on x86)
     // So we compare separately the values of registers and specified flags
-    let rusty_x86_gp = context_to_gp_map(&rusty_x86);
-    let unicorn_gp = context_to_gp_map(&unicorn);
+    let rusty_x86_gp = context_to_gp_map(&rusty_x86.0);
+    let unicorn_gp = context_to_gp_map(&unicorn.0);
 
     assert_eq!(rusty_x86_gp, unicorn_gp);
 
-    let rusty_x86_flags = context_to_flag_list(&rusty_x86, flags.as_slice());
-    let unicorn_flags = context_to_flag_list(&unicorn, flags.as_slice());
+    let rusty_x86_flags = context_to_flag_list(&rusty_x86.0, flags.as_slice());
+    let unicorn_flags = context_to_flag_list(&unicorn.0, flags.as_slice());
 
     debug!("FLAGS (filtered) unicorn   = {:?}", unicorn_flags);
     debug!("FLAGS (filtered) rusty_x86 = {:?}", rusty_x86_flags);
 
     assert_eq!(rusty_x86_flags, unicorn_flags);
-    // TODO: flags? (they are sometimes undefined...)
+
+    let rusty_x86_mem = pretty_hex::pretty_hex(&rusty_x86.1);
+    let unicorn_mem = pretty_hex::pretty_hex(&unicorn.1);
+
+    assert_eq!(rusty_x86_mem, unicorn_mem);
 }
 
 macro_rules! parse_flag {
@@ -434,6 +462,21 @@ mod div {
             ; mov eax, 0x3a64b162
             ; mov ebx, -0x502df7b4
             ; div ebx
+        ),
+    );
+}
+
+mod stack {
+    test_cases!(
+        push_eax_pop_ebx: (
+            ; mov eax, 42
+            ; push eax
+            ; pop ebx
+        ),
+        push_eax_ebx: (
+            ; mov eax, 42
+            ; push eax
+            ; push ebx
         ),
     );
 }
