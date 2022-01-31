@@ -11,7 +11,9 @@ use test_log::test;
 use unicorn;
 use unicorn::{Cpu, CpuX86, Protection, RegisterX86};
 
-const BASE_ADDR: u32 = 0x1000;
+const CODE_ADDR: u32 = 0x200000;
+const MEM_ADDR: u32 = 0x100000;
+const MEM_SIZE: u32 = 0x10000;
 
 fn execute_unicorn(code: &[u8]) -> CpuContext {
     let pad = (0x1000 - (code.len() % 0x1000)) % 0x1000;
@@ -19,7 +21,7 @@ fn execute_unicorn(code: &[u8]) -> CpuContext {
 
     let emu = CpuX86::new(unicorn::Mode::MODE_32).unwrap();
 
-    let base_addr = BASE_ADDR as u64;
+    let base_addr = CODE_ADDR as u64;
 
     // map the code
     emu.mem_map(
@@ -29,6 +31,13 @@ fn execute_unicorn(code: &[u8]) -> CpuContext {
     )
     .unwrap();
     emu.mem_write(base_addr, code).unwrap();
+
+    emu.mem_map(
+        MEM_ADDR as u64,
+        MEM_SIZE as usize,
+        Protection::READ | Protection::WRITE,
+    )
+    .unwrap();
 
     // TODO: can we stop on return? Maybe hooks?
     // TODO: setup stack?
@@ -82,11 +91,11 @@ fn execute_unicorn(code: &[u8]) -> CpuContext {
 
 fn execute_rusty_x86(code: &[u8]) -> CpuContext {
     let context = inkwell::context::Context::create();
-    let module = rusty_x86::llvm::recompile(&context, BASE_ADDR, code);
+    let module = rusty_x86::llvm::recompile(&context, CODE_ADDR, code);
 
     let types = rusty_x86::llvm::backend::Types::new(&context);
 
-    let entry_name = rusty_x86::llvm::backend::LlvmBuilder::get_name_for(BASE_ADDR);
+    let entry_name = rusty_x86::llvm::backend::LlvmBuilder::get_name_for(CODE_ADDR);
 
     const ENTRY_NAME: &str = "entry";
 
@@ -124,10 +133,15 @@ fn execute_rusty_x86(code: &[u8]) -> CpuContext {
     let mut cpu_context = CpuContext::default();
 
     // TODO: this is a simplification
-    let mut mem = [0u8; 0x1000];
+    let mut mem = [0u8; MEM_SIZE];
 
+    // !!! we can't really ensure that memory accesses are safe w/o implementing softmmu
+    // implementing it helps with portability & safety, but increases complexity & decreases performance
     unsafe {
-        fun.call(&mut cpu_context, mem.as_mut_ptr());
+        fun.call(
+            &mut cpu_context,
+            mem.as_mut_ptr().offset(-(MEM_ADDR as isize)),
+        );
     };
 
     cpu_context
@@ -229,5 +243,10 @@ test_cases! {
         ; mov eax, 1228
         ; mov ebx, 337
         ; lea ecx, [eax + ebx*4 + 7]
+    ),
+    mem_basic_rw: (
+        ; mov eax, 42
+        ; mov eax, [MEM_ADDR as i32]
+        ; mov [MEM_ADDR as i32], ebx
     ),
 }
