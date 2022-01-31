@@ -9,14 +9,11 @@ edition = "2021"
 derive_more = "0.99.17"
 iced-x86 = "1.15.0"
 log = "0.4.14"
-env_logger = "0.9.0"
 strum = "0.23.0"
 strum_macros = "0.23.1"
-bad64 = "0.6.0"
-pretty-hex = "0.2.1"
-region = "3.0.0"
 
-# TODO: do not depend on inkwell if a particular feature is set
+# TODO: add an llvm feature gate that will disable an llvm backend
+# though, need to implement any other backend first ;)
 [dependencies.inkwell]
 git = "https://github.com/TheDan64/inkwell"
 branch = "master"
@@ -26,3 +23,7 @@ features = ["llvm13-0", "target-all"]
 dynasmrt = "1.2.1"
 test-log = "0.2.8"
 unicorn = "0.9.1"
+bad64 = "0.6.0"
+pretty-hex = "0.2.1"
+region = "3.0.0"
+env_logger = "0.9.0"
