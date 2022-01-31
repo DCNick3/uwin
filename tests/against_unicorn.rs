@@ -1,11 +1,13 @@
+use iced_x86::{Formatter, Instruction, NasmFormatter};
 use inkwell::execution_engine::JitFunction;
 use inkwell::values::BasicMetadataValueEnum;
 use inkwell::OptimizationLevel;
 use log::{debug, info};
 use rusty_x86::assemble_x86;
 use rusty_x86::llvm::backend::{BbFunc, FASTCC_CALLING_CONVENTION};
-use rusty_x86::types::{CpuContext, FullSizeGeneralPurposeRegister};
+use rusty_x86::types::{CpuContext, Flag, FullSizeGeneralPurposeRegister};
 use std::collections::BTreeMap;
+use std::fmt::Write;
 use strum::IntoEnumIterator;
 use test_log::test;
 use unicorn;
@@ -84,7 +86,14 @@ fn execute_unicorn(code: &[u8]) -> CpuContext {
         emu.reg_read(RegisterX86::EDI).unwrap() as u32,
     );
 
-    // TODO: read & set flags
+    let flags = emu.reg_read(RegisterX86::EFLAGS).unwrap() as u32;
+
+    res.set_flag(Flag::Carry, flags & 0x1 != 0);
+    res.set_flag(Flag::Parity, flags & 0x2 != 0);
+    res.set_flag(Flag::AuxiliaryCarry, flags & 0x10 != 0);
+    res.set_flag(Flag::Zero, flags & 0x40 != 0);
+    res.set_flag(Flag::Sign, flags & 0x80 != 0);
+    res.set_flag(Flag::Overflow, flags & 0x800 != 0);
 
     res
 }
@@ -133,7 +142,7 @@ fn execute_rusty_x86(code: &[u8]) -> CpuContext {
     let mut cpu_context = CpuContext::default();
 
     // TODO: this is a simplification
-    let mut mem = [0u8; MEM_SIZE];
+    let mut mem = [0u8; MEM_SIZE as usize];
 
     // !!! we can't really ensure that memory accesses are safe w/o implementing softmmu
     // implementing it helps with portability & safety, but increases complexity & decreases performance
@@ -147,44 +156,101 @@ fn execute_rusty_x86(code: &[u8]) -> CpuContext {
     cpu_context
 }
 
-fn context_to_map(context: CpuContext) -> BTreeMap<FullSizeGeneralPurposeRegister, u32> {
+fn context_to_gp_map(context: &CpuContext) -> BTreeMap<FullSizeGeneralPurposeRegister, u32> {
     FullSizeGeneralPurposeRegister::iter()
         .map(|reg| (reg, context.get_gp_reg(reg)))
         .collect()
 }
 
-fn test_code(code: &[u8]) {
+fn context_to_flag_list(context: &CpuContext, flags: &[Flag]) -> Vec<Flag> {
+    Flag::iter()
+        .filter(|flag| flags.contains(flag) && context.get_flag(*flag))
+        .collect()
+}
+
+fn disassemble(code: &[u8]) -> String {
+    let mut decoder = iced_x86::Decoder::with_ip(32, code, CODE_ADDR as u64, 0);
+    let mut formatter = NasmFormatter::new();
+    let mut output = String::new();
+    let mut instruction = Instruction::default();
+    while decoder.can_decode() {
+        decoder.decode_out(&mut instruction);
+        write!(output, "{:08X} ", instruction.ip()).unwrap();
+
+        formatter.format(&instruction, &mut output);
+
+        writeln!(output).unwrap();
+    }
+    output
+}
+
+fn test_code(code: &[u8], flags: Vec<Flag>) {
+    debug!("CODE:\n{}", disassemble(code));
+
     let unicorn = execute_unicorn(code);
     let rusty_x86 = execute_rusty_x86(code);
 
-    debug!("unicorn   = {}", unicorn);
-    debug!("rusty_x86 = {}", rusty_x86);
+    debug!("RESULT unicorn   = {:?}", unicorn);
+    debug!("RESULT rusty_x86 = {:?}", rusty_x86);
 
     //rusty_x86.set_gp_reg(FullSizeGeneralPurposeRegister::EBX, 32);
 
     // convert it to BTreeMap for better debugging view
     // or maybe we would be better off implementing Debug?..
-    let unicorn = context_to_map(unicorn);
-    let rusty_x86 = context_to_map(rusty_x86);
+    let unicorn_gp = context_to_gp_map(&unicorn);
+    let rusty_x86_gp = context_to_gp_map(&rusty_x86);
 
-    assert_eq!(unicorn, rusty_x86);
+    assert_eq!(unicorn_gp, rusty_x86_gp);
 
+    let unicorn_flags = context_to_flag_list(&unicorn, flags.as_slice());
+    let rusty_x86_flags = context_to_flag_list(&rusty_x86, flags.as_slice());
+
+    debug!("FLAGS (filtered) unicorn   = {:?}", unicorn_flags);
+    debug!("FLAGS (filtered) rusty_x86 = {:?}", rusty_x86_flags);
+
+    assert_eq!(unicorn_flags, rusty_x86_flags);
     // TODO: flags? (they are sometimes undefined...)
 }
 
-macro_rules! test_cases {
-    ($($name:ident: ($($value:tt)*),)*) => {
-    $(
+#[allow(unused_macros)]
+macro_rules! parse_flag {
+    (CF) => {
+        Flag::Carry
+    };
+    (ZF) => {
+        Flag::Zero
+    };
+    (SF) => {
+        Flag::Sign
+    };
+    (OF) => {
+        Flag::Overflow
+    };
+}
+
+macro_rules! test_case {
+    ($name:ident: ($($value:tt)*) [$($flags:ident),*]) => {
         #[test]
         fn $name() {
             info!("Running {}", stringify!($name));
             let code = assemble_x86!(
                 $($value)*
             );
-            test_code(code.as_slice());
+            test_code(code.as_slice(), vec![$(parse_flag!($flags)),*]);
         }
-    )*
-    }
+    };
+}
+
+macro_rules! test_cases {
+    () => {};
+    ($name:ident: ($($value:tt)*) [$($flags:ident),*], $($xs:tt)*) => {
+        test_case!($name: ($($value)*) [$($flags),*]);
+        test_cases!($($xs)*);
+    };
+    ($name:ident: ($($value:tt)*), $($xs:tt)*) => {
+        test_case!($name: ($($value)*) []);
+        test_cases!($($xs)*);
+    };
 }
 
 test_cases! {
@@ -194,7 +260,7 @@ test_cases! {
     sub_borrow: (
         ; mov eax, 1
         ; sub eax, 2
-    ),
+    ) [CF, ZF, SF, OF],
     sub_branch_sign: (
         ; mov eax, 1
         ; sub eax, 2
@@ -204,32 +270,32 @@ test_cases! {
         ; ->L1:
         ; mov ebx, 2
         ; ->R:
-        ; nop // necessary because of funky control flow at the end of test snippets...
-    ),
+        ; mov edx, 1 // necessary because of funky control flow at the end of test snippets...
+    ) [CF, ZF, SF, OF],
     sub_cmov_sign: (
         ; mov eax, 1
         ; sub eax, 2
         ; mov ecx, 2
         ; cmovs ebx, ecx
-    ),
+    ) [CF, ZF, SF, OF],
     sub_cmov_sign_2: (
         ; mov eax, 3
         ; sub eax, 2
         ; mov ecx, 2
         ; cmovs ebx, ecx
-    ),
+    ) [CF, ZF, SF, OF],
     cmp_cmov_eq: (
         ; mov eax, 12
         ; cmp eax, 12
         ; mov ecx, 2
         ; cmovz ebx, ecx
-    ),
+    ) [CF, ZF, SF, OF],
     cmp_cmov_eq_2: (
         ; mov eax, 12
         ; cmp eax, 13
         ; mov ecx, 2
         ; cmovz ebx, ecx
-    ),
+    ) [CF, ZF, SF, OF],
     lea_disp: (
         ; mov eax, 1228
         ; lea ecx, [eax + 7]

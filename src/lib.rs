@@ -567,5 +567,25 @@ mod tests {
 
             assert_eq!(expected_result, result);
         }
+
+        #[test]
+        fn jump_over_llvm() {
+            let code = assemble_x86!(
+                ; jmp ->LABEL
+                ; add eax, 1
+                ; ->LABEL:
+                ; mov eax, 42
+            );
+
+            let expected_result = assemble_aarch64!(
+                ; mov w8, #0x2a
+                ; str w8, [x0, #0]
+                ; ret
+            );
+
+            let result = recompile(code.as_slice());
+
+            assert_eq!(expected_result, result);
+        }
     }
 }

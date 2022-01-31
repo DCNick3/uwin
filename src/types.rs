@@ -1,6 +1,6 @@
 use crate::Builder;
 use derive_more::Display;
-use std::fmt::Formatter;
+use std::fmt::{Debug, Formatter};
 use strum::IntoEnumIterator;
 use strum_macros::EnumIter;
 
@@ -91,7 +91,7 @@ pub enum SegmentRegister {
     SS,
 }
 
-#[derive(Debug, Display, Clone, Copy)]
+#[derive(Debug, Display, Clone, Copy, EnumIter, PartialEq, Eq, Ord, PartialOrd)]
 pub enum Flag {
     Carry = 0,
     Parity = 1,         // almost definitely can be ignored, not used much
@@ -102,7 +102,7 @@ pub enum Flag {
 }
 
 #[repr(C)] // for interoperability with llvm-generated functions
-#[derive(Eq, PartialEq)]
+#[derive(Eq, PartialEq, Clone)]
 pub struct CpuContext {
     // !!! If changing this struct - don't forget to update Types::new in llvm_backend.rs
     // also it would be best not to move fields around, as this breaks indices in build_ctx_*_gep
@@ -119,14 +119,27 @@ impl Default for CpuContext {
     }
 }
 
-impl std::fmt::Display for CpuContext {
+impl std::fmt::Debug for CpuContext {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+        struct FlagsDebug(CpuContext);
+        impl std::fmt::Debug for FlagsDebug {
+            fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+                let mut s = f.debug_list();
+                for flag in Flag::iter() {
+                    if self.0.get_flag(flag) {
+                        s.entry(&flag);
+                    }
+                }
+                s.finish()
+            }
+        }
+
         let mut s = f.debug_struct("CpuContext");
         for gp in FullSizeGeneralPurposeRegister::iter() {
             s.field(format!("{:?}", gp).as_str(), &self.get_gp_reg(gp));
         }
-        s.finish_non_exhaustive()?;
-        Ok(())
+        s.field("flags", &FlagsDebug { 0: self.clone() });
+        s.finish()
     }
 }
 
