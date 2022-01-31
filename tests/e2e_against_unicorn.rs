@@ -191,10 +191,8 @@ fn test_code(code: &[u8], flags: Vec<Flag>) {
     debug!("RESULT rusty_x86 = {:?}", rusty_x86);
     debug!("RESULT unicorn   = {:?}", unicorn);
 
-    //rusty_x86.set_gp_reg(FullSizeGeneralPurposeRegister::EBX, 32);
-
-    // convert it to BTreeMap for better debugging view
-    // or maybe we would be better off implementing Debug?..
+    // We can't directly compare contexts because of flags (sometimes they are undefined on x86)
+    // So we compare separately the values of registers and specified flags
     let rusty_x86_gp = context_to_gp_map(&rusty_x86);
     let unicorn_gp = context_to_gp_map(&unicorn);
 
