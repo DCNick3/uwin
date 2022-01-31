@@ -1,5 +1,8 @@
 use crate::types::{IntType, MemoryOperand, Operand, Register};
-use iced_x86::{Instruction, MemorySize, OpKind, Register as IcedRegister};
+use iced_x86::{
+    Formatter, Instruction, MemorySize, NasmFormatter, OpKind, Register as IcedRegister,
+};
+use std::fmt::Write;
 
 fn get_register(iced_register: IcedRegister) -> Register {
     use Register::*;
@@ -139,4 +142,20 @@ impl Operands for Instruction {
         }
         res
     }
+}
+
+pub fn disassemble(code: &[u8], base_addr: u64) -> String {
+    let mut decoder = iced_x86::Decoder::with_ip(32, code, base_addr, 0);
+    let mut formatter = NasmFormatter::new();
+    let mut output = String::new();
+    let mut instruction = Instruction::default();
+    while decoder.can_decode() {
+        decoder.decode_out(&mut instruction);
+        write!(output, "{:08X} ", instruction.ip()).unwrap();
+
+        formatter.format(&instruction, &mut output);
+
+        writeln!(output).unwrap();
+    }
+    output
 }

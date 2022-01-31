@@ -4,7 +4,7 @@ use crate::types::{
 };
 use inkwell::builder::Builder;
 use inkwell::context::Context;
-use inkwell::module::Module;
+use inkwell::module::{Linkage, Module};
 use inkwell::types::{FunctionType, IntType as LlvmIntType, PointerType, StructType, VoidType};
 use inkwell::values::{BasicValue, FunctionValue, IntValue as LlvmIntValue, PointerValue};
 use inkwell::{AddressSpace, IntPredicate};
@@ -196,7 +196,7 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
         if let Some(fun) = module.get_function(name.as_str()) {
             return fun;
         } else {
-            let res = module.add_function(name.as_str(), types.bb_fn, None);
+            let res = module.add_function(name.as_str(), types.bb_fn, Some(Linkage::Internal));
             res.set_call_conventions(FASTCC_CALLING_CONVENTION);
             // TODO: I really want to attach metadata telling that this a basic block function and it's (original) address
             res

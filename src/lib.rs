@@ -8,9 +8,6 @@ use crate::disasm::Operands;
 use crate::types::Register::*;
 use crate::types::{ControlFlow, Flag, IntType, Operand};
 use iced_x86::{ConditionCode, Instruction, Mnemonic};
-//use crate::disasm::;
-
-//fn get_
 
 fn compute_condition_code<B: Builder>(
     builder: &mut B,
@@ -256,6 +253,9 @@ pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) -> Control
                 let whole = builder.mul(quotient, divisor);
                 let remainder = builder.sub(dividend, whole);
 
+                let quotient = builder.trunc(quotient, src.size());
+                let remainder = builder.trunc(remainder, src.size());
+
                 builder.store_register(quo_dst, quotient);
                 builder.store_register(rem_dst, remainder);
             }
@@ -375,17 +375,21 @@ mod tests {
         use inkwell::targets::FileType;
         #[allow(unused_imports)]
         use log::{debug, error, info, trace, warn};
+        use std::fmt::Write;
         use test_log::test;
 
         fn recompile(code: &[u8]) -> Vec<u8> {
             let context = &Context::create();
-            let mut module = llvm::recompile(context, 0, code);
+            let types = &llvm::backend::Types::new(&context);
+            let mut module = llvm::recompile(context, types, 0x1000, code);
 
             let target_machine = llvm::get_aarch64_target_machine();
 
             let ir = module.print_to_string().to_string();
 
-            println!("{}", ir);
+            debug!("llvm ir:\n{}", ir);
+
+            module.verify().unwrap();
 
             let memory_buffer = target_machine
                 .write_to_memory_buffer(&mut module, FileType::Object)
@@ -406,6 +410,32 @@ mod tests {
             contents.unwrap()
         }
 
+        fn test_recomp(x86_code: Vec<u8>, expected_aarch64_code: Vec<u8>) {
+            debug!(
+                "CODE:\n{}",
+                crate::disasm::disassemble(x86_code.as_slice(), 0x1000)
+            );
+
+            let result = recompile(x86_code.as_slice());
+
+            fn disasm_aarch64(aarch64_code: Vec<u8>) -> String {
+                let mut res = String::new();
+                for maybe_decoded in bad64::disasm(aarch64_code.as_slice(), 0x1000) {
+                    let decoded = maybe_decoded.unwrap();
+                    writeln!(res, "{:08x} {}", decoded.address(), decoded).unwrap();
+                }
+                res
+            }
+
+            let result = disasm_aarch64(result);
+            let expected = disasm_aarch64(expected_aarch64_code);
+
+            debug!("expected aarch64:\n{}", expected);
+            debug!("actual aarch64:\n{}", result);
+
+            assert_eq!(result, expected);
+        }
+
         #[test]
         fn simple_llvm() {
             // we get this
@@ -422,9 +452,7 @@ mod tests {
                 ; ret
             );
 
-            let result = recompile(code.as_slice());
-
-            assert_eq!(expected_result, result);
+            test_recomp(code, expected_result);
         }
 
         #[test]
@@ -478,9 +506,9 @@ mod tests {
                 // ; ret
 
                 ; ldr w8, [x0, #0x10]
-                ; add w9, w8, #4
-                ; ldr w9, [x1, w9, uxtw]
-                ; add w8, w8, #8
+                ; add w9, w8, #0x4
+                ; ldrsw x9, [x1, w9, uxtw]
+                ; add w8, w8, #0x8
                 ; str w9, [x0, #0xc]
                 ; ldr w8, [x1, w8, uxtw]
                 ; strb wzr, [x0, #0x20]
@@ -488,23 +516,22 @@ mod tests {
                 ; cset w10, eq
                 ; strb w10, [x0, #0x23]
                 ; lsr w10, w8, #0x1f
+                ; sxtw x8, w8
                 ; strb w10, [x0, #0x24]
-                ; mov w10, #1
-                ; mul w8, w8, w9
+                ; mov w10, #0x1
+                ; mul x8, x8, x9
                 ; add w9, w9, #0xd
                 ; sturh w10, [x0, #0x23]
-                ; udiv x10, x8, x9
-                ; msub x8, x10, x9, x8
-                ; str w9, [x0, #8]
+                ; and x10, x8, #0xffffffff
+                ; udiv x10, x10, x9
+                ; msub w8, w10, w9, w8
                 ; strh wzr, [x0, #0x24]
-                ; str x10, [x0]
-                ; stur x8, [x0, #0xc]
+                ; str w10, [x0]
+                ; stp w9, w8, [x0, #0x8]
                 ; ret
             );
 
-            let result = recompile(code.as_slice());
-
-            assert_eq!(expected_result, result);
+            test_recomp(code, expected_result);
         }
 
         #[test]
@@ -546,7 +573,7 @@ mod tests {
                 ; strb w8, [x0, #0x24]
                 ; tbnz w9, #0, ->FALSE
 
-                ; b #0
+                ; b ->basic_block_00000010
 
                 ; ->FALSE:
                 ; mov w8, #0x2a
@@ -563,9 +590,7 @@ mod tests {
                 ; ret
             );
 
-            let result = recompile(code.as_slice());
-
-            assert_eq!(expected_result, result);
+            test_recomp(code, expected_result);
         }
 
         #[test]
@@ -583,9 +608,29 @@ mod tests {
                 ; ret
             );
 
-            let result = recompile(code.as_slice());
+            test_recomp(code, expected_result);
+        }
 
-            assert_eq!(expected_result, result);
+        #[test]
+        fn div_llvm() {
+            let code = assemble_x86!(
+                ; mov eax, 1
+                ; mov ebx, 2
+                ; div ebx
+            );
+
+            let expected_result = assemble_aarch64!(
+                ; ldr w8, [x0, #0xc]  // load EDX
+                ; mov w9, #0x2
+                ; mov w10, #0x1
+                ; str w10, [x0, #0xc] // store 0x1 to EDX
+                ; lsl w8, w8, #0x1f   // it was division of EDX:EAX by 2, so the lo bit of EDX becomes the MSB of EAX
+                ; stp w8, w9, [x0]    // store w8->EAX, 2->EBX
+                ; ret
+
+            );
+
+            test_recomp(code, expected_result);
         }
     }
 }

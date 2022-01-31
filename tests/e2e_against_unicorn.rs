@@ -1,4 +1,3 @@
-use iced_x86::{Formatter, Instruction, NasmFormatter};
 use inkwell::execution_engine::JitFunction;
 use inkwell::values::BasicMetadataValueEnum;
 use inkwell::OptimizationLevel;
@@ -6,7 +5,6 @@ use log::debug;
 use rusty_x86::llvm::backend::{BbFunc, FASTCC_CALLING_CONVENTION};
 use rusty_x86::types::{CpuContext, Flag, FullSizeGeneralPurposeRegister};
 use std::collections::BTreeMap;
-use std::fmt::Write;
 use strum::IntoEnumIterator;
 use unicorn;
 use unicorn::{Cpu, CpuX86, Protection, RegisterX86};
@@ -98,9 +96,8 @@ fn execute_unicorn(code: &[u8]) -> CpuContext {
 
 fn execute_rusty_x86(code: &[u8]) -> CpuContext {
     let context = inkwell::context::Context::create();
-    let module = rusty_x86::llvm::recompile(&context, CODE_ADDR, code);
-
-    let types = rusty_x86::llvm::backend::Types::new(&context);
+    let types = &rusty_x86::llvm::backend::Types::new(&context);
+    let module = rusty_x86::llvm::recompile(&context, types, CODE_ADDR, code);
 
     let entry_name = rusty_x86::llvm::backend::LlvmBuilder::get_name_for(CODE_ADDR);
 
@@ -128,6 +125,11 @@ fn execute_rusty_x86(code: &[u8]) -> CpuContext {
 
         builder.build_return(None);
     }
+
+    let ir = module.print_to_string().to_string();
+    debug!("llvm ir:\n{}", ir);
+
+    module.verify().unwrap();
 
     let execution_engine = module
         .create_jit_execution_engine(
@@ -166,24 +168,11 @@ fn context_to_flag_list(context: &CpuContext, flags: &[Flag]) -> Vec<Flag> {
         .collect()
 }
 
-fn disassemble(code: &[u8]) -> String {
-    let mut decoder = iced_x86::Decoder::with_ip(32, code, CODE_ADDR as u64, 0);
-    let mut formatter = NasmFormatter::new();
-    let mut output = String::new();
-    let mut instruction = Instruction::default();
-    while decoder.can_decode() {
-        decoder.decode_out(&mut instruction);
-        write!(output, "{:08X} ", instruction.ip()).unwrap();
-
-        formatter.format(&instruction, &mut output);
-
-        writeln!(output).unwrap();
-    }
-    output
-}
-
 fn test_code(code: &[u8], flags: Vec<Flag>) {
-    debug!("CODE:\n{}", disassemble(code));
+    debug!(
+        "CODE:\n{}",
+        rusty_x86::disasm::disassemble(code, CODE_ADDR as u64)
+    );
 
     let rusty_x86 = execute_rusty_x86(code);
     let unicorn = execute_unicorn(code);
@@ -208,7 +197,6 @@ fn test_code(code: &[u8], flags: Vec<Flag>) {
     // TODO: flags? (they are sometimes undefined...)
 }
 
-#[allow(unused_macros)]
 macro_rules! parse_flag {
     (CF) => {
         rusty_x86::types::Flag::Carry
@@ -253,6 +241,9 @@ mod mov {
     test_cases! {
         mov_eax_42: (
             ; mov eax, 42
+        ),
+        mov_ebx_42: (
+            ; mov ebx, 42
         ),
     }
 }
@@ -381,4 +372,68 @@ mod imul {
             ; imul eax, ebx, 0x7fffffff
         ) [CF OF],
     }
+}
+
+mod xor {
+    test_cases! {
+        xor_zero_eax: (
+            ; mov eax, 228
+            ; xor eax, eax
+        ) [CF ZF SF OF],
+        xor_zero_eax_with_ebx: (
+            ; mov eax, 228
+            ; mov ebx, 228
+            ; xor eax, ebx
+        ) [CF ZF SF OF],
+        xor_eax_ebx_rnd1: (
+            ; mov eax, 0x79d1e0e9
+            ; mov ebx, -0x16d29593
+            ; xor eax, ebx
+        ) [CF ZF SF OF],
+        xor_eax_ebx_rnd2: (
+            ; mov eax, 0x79f9322a
+            ; mov ebx, 0x801efd8
+            ; xor eax, ebx
+        ) [CF ZF SF OF],
+    }
+}
+
+mod div {
+    test_cases!(
+        div_basic1: (
+            ; mov eax, 42
+            ; mov ebx, 24
+            ; div ebx
+        ),
+        div_basic2: (
+            ; mov eax, 1
+            ; mov ebx, 888
+            ; div ebx
+        ),
+        div_basic3: (
+            ; mov eax, 888
+            ; mov ebx, 1
+            ; div ebx
+        ),
+        div_basic4: (
+            ; mov eax, 1
+            ; mov ebx, 2
+            ; div ebx
+        ),
+        div_rnd1: (
+            ; mov eax, -0x57549d35
+            ; mov ebx, 0x4003cb02
+            ; div ebx
+        ),
+        div_rnd2: (
+            ; mov eax, 0x37ab7947
+            ; mov ebx, -0x6d61d34
+            ; div ebx
+        ),
+        div_rnd3: (
+            ; mov eax, 0x3a64b162
+            ; mov ebx, -0x502df7b4
+            ; div ebx
+        ),
+    );
 }

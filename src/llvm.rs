@@ -29,10 +29,14 @@ pub fn get_aarch64_target_machine() -> TargetMachine {
         .unwrap()
 }
 
-pub fn recompile<'ctx>(context: &'ctx Context, base_address: u32, code: &[u8]) -> Module<'ctx> {
+pub fn recompile<'ctx>(
+    context: &'ctx Context,
+    types: &'ctx Types,
+    base_address: u32,
+    code: &[u8],
+) -> Module<'ctx> {
     let module_obj = context.create_module("test");
     let module = &module_obj;
-    let types = &Types::new(context);
 
     let mut decoder = Decoder::new(32, code, DecoderOptions::NONE);
 
