@@ -2,14 +2,12 @@ use iced_x86::{Formatter, Instruction, NasmFormatter};
 use inkwell::execution_engine::JitFunction;
 use inkwell::values::BasicMetadataValueEnum;
 use inkwell::OptimizationLevel;
-use log::{debug, info};
-use rusty_x86::assemble_x86;
+use log::debug;
 use rusty_x86::llvm::backend::{BbFunc, FASTCC_CALLING_CONVENTION};
 use rusty_x86::types::{CpuContext, Flag, FullSizeGeneralPurposeRegister};
 use std::collections::BTreeMap;
 use std::fmt::Write;
 use strum::IntoEnumIterator;
-use test_log::test;
 use unicorn;
 use unicorn::{Cpu, CpuX86, Protection, RegisterX86};
 
@@ -187,64 +185,64 @@ fn disassemble(code: &[u8]) -> String {
 fn test_code(code: &[u8], flags: Vec<Flag>) {
     debug!("CODE:\n{}", disassemble(code));
 
-    let unicorn = execute_unicorn(code);
     let rusty_x86 = execute_rusty_x86(code);
+    let unicorn = execute_unicorn(code);
 
-    debug!("RESULT unicorn   = {:?}", unicorn);
     debug!("RESULT rusty_x86 = {:?}", rusty_x86);
+    debug!("RESULT unicorn   = {:?}", unicorn);
 
     //rusty_x86.set_gp_reg(FullSizeGeneralPurposeRegister::EBX, 32);
 
     // convert it to BTreeMap for better debugging view
     // or maybe we would be better off implementing Debug?..
-    let unicorn_gp = context_to_gp_map(&unicorn);
     let rusty_x86_gp = context_to_gp_map(&rusty_x86);
+    let unicorn_gp = context_to_gp_map(&unicorn);
 
-    assert_eq!(unicorn_gp, rusty_x86_gp);
+    assert_eq!(rusty_x86_gp, unicorn_gp);
 
-    let unicorn_flags = context_to_flag_list(&unicorn, flags.as_slice());
     let rusty_x86_flags = context_to_flag_list(&rusty_x86, flags.as_slice());
+    let unicorn_flags = context_to_flag_list(&unicorn, flags.as_slice());
 
     debug!("FLAGS (filtered) unicorn   = {:?}", unicorn_flags);
     debug!("FLAGS (filtered) rusty_x86 = {:?}", rusty_x86_flags);
 
-    assert_eq!(unicorn_flags, rusty_x86_flags);
+    assert_eq!(rusty_x86_flags, unicorn_flags);
     // TODO: flags? (they are sometimes undefined...)
 }
 
 #[allow(unused_macros)]
 macro_rules! parse_flag {
     (CF) => {
-        Flag::Carry
+        rusty_x86::types::Flag::Carry
     };
     (ZF) => {
-        Flag::Zero
+        rusty_x86::types::Flag::Zero
     };
     (SF) => {
-        Flag::Sign
+        rusty_x86::types::Flag::Sign
     };
     (OF) => {
-        Flag::Overflow
+        rusty_x86::types::Flag::Overflow
     };
 }
 
 macro_rules! test_case {
-    ($name:ident: ($($value:tt)*) [$($flags:ident),*]) => {
-        #[test]
+    ($name:ident: ($($value:tt)*) [$($flags:ident)*]) => {
+        #[test_log::test]
         fn $name() {
-            info!("Running {}", stringify!($name));
-            let code = assemble_x86!(
+            log::info!("Running {}", stringify!($name));
+            let code = rusty_x86::assemble_x86!(
                 $($value)*
             );
-            test_code(code.as_slice(), vec![$(parse_flag!($flags)),*]);
+            crate::test_code(code.as_slice(), vec![$(parse_flag!($flags)),*]);
         }
     };
 }
 
 macro_rules! test_cases {
     () => {};
-    ($name:ident: ($($value:tt)*) [$($flags:ident),*], $($xs:tt)*) => {
-        test_case!($name: ($($value)*) [$($flags),*]);
+    ($name:ident: ($($value:tt)*) [$($flags:ident)*], $($xs:tt)*) => {
+        test_case!($name: ($($value)*) [$($flags)*]);
         test_cases!($($xs)*);
     };
     ($name:ident: ($($value:tt)*), $($xs:tt)*) => {
@@ -253,66 +251,136 @@ macro_rules! test_cases {
     };
 }
 
-test_cases! {
-    mov_eax_42: (
-        ; mov eax, 42
-    ),
-    sub_borrow: (
-        ; mov eax, 1
-        ; sub eax, 2
-    ) [CF, ZF, SF, OF],
-    sub_branch_sign: (
-        ; mov eax, 1
-        ; sub eax, 2
-        ; js ->L1 // TODO: cmov is more concise?
-        ; mov ebx, 1
-        ; jmp ->R
-        ; ->L1:
-        ; mov ebx, 2
-        ; ->R:
-        ; mov edx, 1 // necessary because of funky control flow at the end of test snippets...
-    ) [CF, ZF, SF, OF],
-    sub_cmov_sign: (
-        ; mov eax, 1
-        ; sub eax, 2
-        ; mov ecx, 2
-        ; cmovs ebx, ecx
-    ) [CF, ZF, SF, OF],
-    sub_cmov_sign_2: (
-        ; mov eax, 3
-        ; sub eax, 2
-        ; mov ecx, 2
-        ; cmovs ebx, ecx
-    ) [CF, ZF, SF, OF],
-    cmp_cmov_eq: (
-        ; mov eax, 12
-        ; cmp eax, 12
-        ; mov ecx, 2
-        ; cmovz ebx, ecx
-    ) [CF, ZF, SF, OF],
-    cmp_cmov_eq_2: (
-        ; mov eax, 12
-        ; cmp eax, 13
-        ; mov ecx, 2
-        ; cmovz ebx, ecx
-    ) [CF, ZF, SF, OF],
-    lea_disp: (
-        ; mov eax, 1228
-        ; lea ecx, [eax + 7]
-    ),
-    lea_idx: (
-        ; mov eax, 1228
-        ; mov ebx, 337
-        ; lea ecx, [eax + ebx*4]
-    ),
-    lea_idx_disp: (
-        ; mov eax, 1228
-        ; mov ebx, 337
-        ; lea ecx, [eax + ebx*4 + 7]
-    ),
-    mem_basic_rw: (
-        ; mov eax, 42
-        ; mov eax, [MEM_ADDR as i32]
-        ; mov [MEM_ADDR as i32], ebx
-    ),
+mod mov {
+    test_cases! {
+        mov_eax_42: (
+            ; mov eax, 42
+        ),
+    }
+}
+
+mod sub {
+    test_cases! {
+        sub_borrow: (
+            ; mov eax, 1
+            ; sub eax, 2
+        ) [CF ZF SF OF],
+        sub_branch_sign: (
+            ; mov eax, 1
+            ; sub eax, 2
+            ; js ->L1 // TODO: cmov is more concise?
+            ; mov ebx, 1
+            ; jmp ->R
+            ; ->L1:
+            ; mov ebx, 2
+            ; ->R:
+            ; mov edx, 1 // necessary because of funky control flow at the end of test snippets...
+        ) [CF ZF SF OF],
+        sub_cmov_sign: (
+            ; mov eax, 1
+            ; sub eax, 2
+            ; mov ecx, 2
+            ; cmovs ebx, ecx
+        ) [CF ZF SF OF],
+        sub_cmov_sign_2: (
+            ; mov eax, 3
+            ; sub eax, 2
+            ; mov ecx, 2
+            ; cmovs ebx, ecx
+        ) [CF ZF SF OF],
+    }
+}
+
+mod cmp {
+    test_cases! {
+        cmp_cmov_eq: (
+            ; mov eax, 12
+            ; cmp eax, 12
+            ; mov ecx, 2
+            ; cmovz ebx, ecx
+        ) [CF ZF SF OF],
+        cmp_cmov_eq_2: (
+            ; mov eax, 12
+            ; cmp eax, 13
+            ; mov ecx, 2
+            ; cmovz ebx, ecx
+        ) [CF ZF SF OF],
+    }
+}
+
+mod lea {
+    test_cases! {
+        lea_disp: (
+            ; mov eax, 1228
+            ; lea ecx, [eax + 7]
+        ),
+        lea_idx: (
+            ; mov eax, 1228
+            ; mov ebx, 337
+            ; lea ecx, [eax + ebx*4]
+        ),
+        lea_idx_disp: (
+            ; mov eax, 1228
+            ; mov ebx, 337
+            ; lea ecx, [eax + ebx*4 + 7]
+        ),
+    }
+}
+
+mod mem {
+    test_cases! {
+        mem_basic_rw: (
+            ; mov eax, 42
+            ; mov eax, [crate::MEM_ADDR as i32]
+            ; mov [crate::MEM_ADDR as i32], ebx
+        ),
+    }
+}
+
+mod imul {
+    test_cases! {
+        imul_1op_eax_eax: (
+            ; mov eax, 23
+            ; imul eax
+        ) [CF OF],
+        imul_1op: (
+            ; mov eax, 23
+            ; mov ebx, 24
+            ; imul ebx
+        ) [CF OF],
+        imul_1op_overflow: (
+            ; mov eax, 0x7fffffff
+            ; mov ebx, 0x7fffffff
+            ; imul ebx
+        ) [CF OF],
+
+        imul_2op_eax_eax: (
+            ; mov eax, 23
+            ; imul eax, eax
+        ) [CF OF],
+        imul_2op: (
+            ; mov eax, 23
+            ; mov ebx, 24
+            ; imul eax, ebx
+        ) [CF OF],
+        imul_2op_overflow: (
+            ; mov eax, 0x7fffffff
+            ; mov ebx, 0x7fffffff
+            ; imul eax, ebx
+
+        ) [CF OF],
+
+        imul_3op_eax_eax: (
+            ; mov eax, 23
+            ; imul eax, eax, 24
+        ) [CF OF],
+        imul_3op: (
+            ; mov ebx, 24
+            ; imul eax, ebx, 23
+        ) [CF OF],
+        imul_3op_overflow: (
+            ; mov ebx, 0x7fffffff
+            ; imul eax, ebx, 0x7fffffff
+        ) [CF OF],
+    }
 }
