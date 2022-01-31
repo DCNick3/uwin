@@ -1,13 +1,11 @@
-use crate::ControlFlow;
 use crate::types::{Flag, IntType, MemoryOperand, Operand, Register};
+use crate::ControlFlow;
 
 pub trait IntValue: Clone + Copy {
     fn size(&self) -> IntType;
 }
 
-pub trait BoolValue: Clone + Copy {
-
-}
+pub trait BoolValue: Clone + Copy {}
 
 pub enum ComparisonType {
     Equal,
@@ -71,13 +69,14 @@ pub trait Builder {
     fn sext(&mut self, val: Self::IntValue, to: IntType) -> Self::IntValue;
     fn trunc(&mut self, val: Self::IntValue, to: IntType) -> Self::IntValue;
 
-    fn icmp(&mut self, cmp: ComparisonType, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::BoolValue;
+    fn icmp(
+        &mut self,
+        cmp: ComparisonType,
+        lhs: Self::IntValue,
+        rhs: Self::IntValue,
+    ) -> Self::BoolValue;
 
-    fn ifelse<L, R>(&mut self,
-                    cond: Self::BoolValue,
-                    iftrue: L,
-                    iffalse: R)
-        -> ControlFlow<Self>
+    fn ifelse<L, R>(&mut self, cond: Self::BoolValue, iftrue: L, iffalse: R) -> ControlFlow<Self>
     where
         L: FnOnce(&mut Self) -> ControlFlow<Self>,
         R: FnOnce(&mut Self) -> ControlFlow<Self>,
@@ -140,8 +139,6 @@ pub trait Builder {
         let sign = self.icmp(ComparisonType::NotEqual, sign, zero);
         self.store_flag(Flag::Sign, sign)
     }
-
-
 }
 
 // trait Backend {

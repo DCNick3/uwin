@@ -1,12 +1,14 @@
-use inkwell::targets::{CodeModel, InitializationConfig, RelocMode, Target, TargetMachine, TargetTriple};
-use inkwell::OptimizationLevel;
-use inkwell::context::Context;
-use iced_x86::{Decoder, DecoderOptions, FlowControl};
-use std::collections::{HashSet, VecDeque};
-use inkwell::module::Module;
-use log::debug;
 use crate::codegen_instr;
 use crate::llvm::backend::{LlvmBuilder, Types};
+use iced_x86::{Decoder, DecoderOptions, FlowControl};
+use inkwell::context::Context;
+use inkwell::module::Module;
+use inkwell::targets::{
+    CodeModel, InitializationConfig, RelocMode, Target, TargetMachine, TargetTriple,
+};
+use inkwell::OptimizationLevel;
+use log::debug;
+use std::collections::{HashSet, VecDeque};
 
 pub mod backend;
 
@@ -62,6 +64,7 @@ pub fn recompile<'ctx>(context: &'ctx Context, base_address: u32, code: &[u8]) -
             let instr = decoder.decode();
             codegen_instr(&mut builder, instr);
 
+            #[rustfmt::skip]
             let (next, ext) = match instr.flow_control() {
                 FlowControl::Next =>                (true, None),
                 FlowControl::ConditionalBranch =>   (true, Some(instr.near_branch32())),
@@ -81,7 +84,7 @@ pub fn recompile<'ctx>(context: &'ctx Context, base_address: u32, code: &[u8]) -
             }
 
             if !next {
-                break
+                break;
             }
         }
 

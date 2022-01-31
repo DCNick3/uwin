@@ -1,7 +1,7 @@
 pub mod backend;
 pub mod disasm;
-pub mod types;
 pub mod llvm;
+pub mod types;
 
 use crate::backend::{Builder, IntValue};
 use crate::disasm::Operands;
@@ -12,7 +12,10 @@ use iced_x86::{ConditionCode, Instruction, Mnemonic};
 
 //fn get_
 
-fn compute_condition_code<B: Builder>(builder: &mut B, condition_code: ConditionCode) -> B::BoolValue {
+fn compute_condition_code<B: Builder>(
+    builder: &mut B,
+    condition_code: ConditionCode,
+) -> B::BoolValue {
     use ConditionCode::*;
     match condition_code {
         None => panic!("Can't compute None condition"),
@@ -24,12 +27,12 @@ fn compute_condition_code<B: Builder>(builder: &mut B, condition_code: Condition
         ne => {
             let zf = builder.load_flag(Flag::Zero);
             builder.bool_neg(zf)
-        },
+        }
 
         s => {
             let sf = builder.load_flag(Flag::Sign);
             sf
-        },
+        }
         ns => {
             let sf = builder.load_flag(Flag::Sign);
             builder.bool_neg(sf)
@@ -39,6 +42,7 @@ fn compute_condition_code<B: Builder>(builder: &mut B, condition_code: Condition
     }
 }
 
+#[rustfmt::skip]
 fn is_cmovcc(mnemonic: Mnemonic) -> bool {
     use Mnemonic::*;
     match mnemonic {
@@ -81,28 +85,36 @@ pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) -> Control
         let code = instr.condition_code();
         let cond = compute_condition_code(builder, code);
 
-        builder.ifelse(cond, |_builder| {
-            // jump!
-            ControlFlow::DirectJump(target.as_imm32())
-        }, |_builder| {
-            // do not jump
-            ControlFlow::NextInstruction
-        })
+        builder.ifelse(
+            cond,
+            |_builder| {
+                // jump!
+                ControlFlow::DirectJump(target.as_imm32())
+            },
+            |_builder| {
+                // do not jump
+                ControlFlow::NextInstruction
+            },
+        )
     } else if is_cmovcc(instr.mnemonic()) {
         operands!([dst, src], &instr);
 
         let code = instr.condition_code();
         let cond = compute_condition_code(builder, code);
 
-        builder.ifelse(cond, |builder| {
-            // move!
-            let val = builder.load_operand(src);
-            builder.store_operand(dst, val);
-            ControlFlow::NextInstruction
-        }, |_builder| {
-            // do not move
-            ControlFlow::NextInstruction
-        })
+        builder.ifelse(
+            cond,
+            |builder| {
+                // move!
+                let val = builder.load_operand(src);
+                builder.store_operand(dst, val);
+                ControlFlow::NextInstruction
+            },
+            |_builder| {
+                // do not move
+                ControlFlow::NextInstruction
+            },
+        )
     } else {
         match instr.mnemonic() {
             // TODO: there is (going to be) a ton of opcodes, we would want to handle this nicely (a bit of macromagic?)
@@ -267,7 +279,6 @@ pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) -> Control
                 let size = dst.size().byte_width();
                 let size = builder.make_u32(size as u32);
 
-
                 let esp = builder.load_register(ESP);
 
                 let val = builder.load_memory(dst.size(), esp);
@@ -362,14 +373,13 @@ mod tests {
         use crate::llvm;
         use inkwell::context::Context;
         use inkwell::targets::FileType;
-        use test_log::test;
         #[allow(unused_imports)]
         use log::{debug, error, info, trace, warn};
+        use test_log::test;
 
         fn recompile(code: &[u8]) -> Vec<u8> {
             let context = &Context::create();
             let mut module = llvm::recompile(context, 0, code);
-
 
             let target_machine = llvm::get_aarch64_target_machine();
 

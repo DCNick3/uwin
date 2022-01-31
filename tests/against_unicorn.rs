@@ -1,15 +1,15 @@
-use std::collections::BTreeMap;
 use inkwell::execution_engine::JitFunction;
-use inkwell::OptimizationLevel;
 use inkwell::values::BasicMetadataValueEnum;
-use log::{info, debug};
-use unicorn;
-use unicorn::{Cpu, CpuX86, Protection, RegisterX86};
-use rusty_x86::types::{CpuContext, FullSizeGeneralPurposeRegister};
+use inkwell::OptimizationLevel;
+use log::{debug, info};
 use rusty_x86::assemble_x86;
 use rusty_x86::llvm::backend::{BbFunc, FASTCC_CALLING_CONVENTION};
-use test_log::test;
+use rusty_x86::types::{CpuContext, FullSizeGeneralPurposeRegister};
+use std::collections::BTreeMap;
 use strum::IntoEnumIterator;
+use test_log::test;
+use unicorn;
+use unicorn::{Cpu, CpuX86, Protection, RegisterX86};
 
 const BASE_ADDR: u32 = 0x1000;
 
@@ -22,23 +22,58 @@ fn execute_unicorn(code: &[u8]) -> CpuContext {
     let base_addr = BASE_ADDR as u64;
 
     // map the code
-    emu.mem_map(base_addr, code_page_size, Protection::READ | Protection::EXEC).unwrap();
+    emu.mem_map(
+        base_addr,
+        code_page_size,
+        Protection::READ | Protection::EXEC,
+    )
+    .unwrap();
     emu.mem_write(base_addr, code).unwrap();
 
     // TODO: can we stop on return? Maybe hooks?
     // TODO: setup stack?
-    emu.emu_start(base_addr, base_addr + code.len() as u64, 10 * unicorn::SECOND_SCALE, 0).unwrap();
+    emu.emu_start(
+        base_addr,
+        base_addr + code.len() as u64,
+        10 * unicorn::SECOND_SCALE,
+        0,
+    )
+    .unwrap();
 
     let mut res = CpuContext::default();
 
-    res.set_gp_reg(FullSizeGeneralPurposeRegister::EAX, emu.reg_read(RegisterX86::EAX).unwrap() as u32);
-    res.set_gp_reg(FullSizeGeneralPurposeRegister::EBX, emu.reg_read(RegisterX86::EBX).unwrap() as u32);
-    res.set_gp_reg(FullSizeGeneralPurposeRegister::ECX, emu.reg_read(RegisterX86::ECX).unwrap() as u32);
-    res.set_gp_reg(FullSizeGeneralPurposeRegister::EDX, emu.reg_read(RegisterX86::EDX).unwrap() as u32);
-    res.set_gp_reg(FullSizeGeneralPurposeRegister::ESP, emu.reg_read(RegisterX86::ESP).unwrap() as u32);
-    res.set_gp_reg(FullSizeGeneralPurposeRegister::EBP, emu.reg_read(RegisterX86::EBP).unwrap() as u32);
-    res.set_gp_reg(FullSizeGeneralPurposeRegister::ESI, emu.reg_read(RegisterX86::ESI).unwrap() as u32);
-    res.set_gp_reg(FullSizeGeneralPurposeRegister::EDI, emu.reg_read(RegisterX86::EDI).unwrap() as u32);
+    res.set_gp_reg(
+        FullSizeGeneralPurposeRegister::EAX,
+        emu.reg_read(RegisterX86::EAX).unwrap() as u32,
+    );
+    res.set_gp_reg(
+        FullSizeGeneralPurposeRegister::EBX,
+        emu.reg_read(RegisterX86::EBX).unwrap() as u32,
+    );
+    res.set_gp_reg(
+        FullSizeGeneralPurposeRegister::ECX,
+        emu.reg_read(RegisterX86::ECX).unwrap() as u32,
+    );
+    res.set_gp_reg(
+        FullSizeGeneralPurposeRegister::EDX,
+        emu.reg_read(RegisterX86::EDX).unwrap() as u32,
+    );
+    res.set_gp_reg(
+        FullSizeGeneralPurposeRegister::ESP,
+        emu.reg_read(RegisterX86::ESP).unwrap() as u32,
+    );
+    res.set_gp_reg(
+        FullSizeGeneralPurposeRegister::EBP,
+        emu.reg_read(RegisterX86::EBP).unwrap() as u32,
+    );
+    res.set_gp_reg(
+        FullSizeGeneralPurposeRegister::ESI,
+        emu.reg_read(RegisterX86::ESI).unwrap() as u32,
+    );
+    res.set_gp_reg(
+        FullSizeGeneralPurposeRegister::EDI,
+        emu.reg_read(RegisterX86::EDI).unwrap() as u32,
+    );
 
     // TODO: read & set flags
 
@@ -62,22 +97,26 @@ fn execute_rusty_x86(code: &[u8]) -> CpuContext {
         let builder = context.create_builder();
         builder.position_at_end(bb);
 
-        let args: Vec<BasicMetadataValueEnum> = entry.get_params()
+        let args: Vec<BasicMetadataValueEnum> = entry
+            .get_params()
             .iter()
             .map(|f| f.clone().into())
             .collect();
 
-        let call = builder.build_call(module.get_function(entry_name.as_str()).unwrap(),
-                                      args.as_slice(), "res");
+        let call = builder.build_call(
+            module.get_function(entry_name.as_str()).unwrap(),
+            args.as_slice(),
+            "res",
+        );
         call.set_call_convention(FASTCC_CALLING_CONVENTION);
 
         builder.build_return(None);
     }
 
-
-
     let execution_engine = module
-        .create_jit_execution_engine(OptimizationLevel::None /* TODO: do we want optimizations? */)
+        .create_jit_execution_engine(
+            OptimizationLevel::None, /* TODO: do we want optimizations? */
+        )
         .unwrap();
 
     let fun: JitFunction<BbFunc> = unsafe { execution_engine.get_function(ENTRY_NAME).unwrap() };

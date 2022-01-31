@@ -1,12 +1,14 @@
-use std::ffi::c_void;
 use crate::backend::{BoolValue, ComparisonType, IntValue};
-use crate::types::{ControlFlow, CpuContext, Flag, FullSizeGeneralPurposeRegister, IntType, Register};
+use crate::types::{
+    ControlFlow, CpuContext, Flag, FullSizeGeneralPurposeRegister, IntType, Register,
+};
 use inkwell::builder::Builder;
 use inkwell::context::Context;
 use inkwell::module::Module;
 use inkwell::types::{FunctionType, IntType as LlvmIntType, PointerType, StructType, VoidType};
 use inkwell::values::{BasicValue, FunctionValue, IntValue as LlvmIntValue, PointerValue};
 use inkwell::{AddressSpace, IntPredicate};
+use std::ffi::c_void;
 
 pub struct LlvmBuilder<'ctx, 'a> {
     context: &'ctx Context,
@@ -48,7 +50,7 @@ impl<'ctx> Types<'ctx> {
         ctx.set_body(
             &[
                 i32.array_type(8).into(), // general-purpose registers
-                i8.array_type(8).into(), // general-purpose registers
+                i8.array_type(8).into(),  // general-purpose registers
             ],
             false,
         );
@@ -148,8 +150,8 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
             self.builder.build_gep(
                 ctx_ptr,
                 &[
-                    i32_type.const_zero(),                                 // deref the pointer itself
-                    i32_type.const_int(1, false),          // select the flags array
+                    i32_type.const_zero(),                  // deref the pointer itself
+                    i32_type.const_int(1, false),           // select the flags array
                     i32_type.const_int(flag as u64, false), // then select the concrete flag
                 ],
                 &*format!("flag_{:?}_ptr", flag),
@@ -169,9 +171,14 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
     }
 
     fn get_host_pointer(&mut self, target_ptr: LlvmIntValue<'ctx>) -> PointerValue<'ctx> {
-        let target_ptr_ext = self.builder.build_int_z_extend(target_ptr, self.types.i64, "");
+        let target_ptr_ext = self
+            .builder
+            .build_int_z_extend(target_ptr, self.types.i64, "");
 
-        unsafe { self.builder.build_gep(self.mem_ptr, &[target_ptr_ext], "hptr") }
+        unsafe {
+            self.builder
+                .build_gep(self.mem_ptr, &[target_ptr_ext], "hptr")
+        }
     }
 
     // TODO: name map
@@ -179,13 +186,15 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
         format!("sub_{:08x}", addr)
     }
 
-    fn get_basic_block_fun_internal(_context: &'ctx Context,
-                                    module: &'a Module<'ctx>,
-                                    types: &'a Types<'ctx>,
-                                    addr: u32) -> FunctionValue<'ctx> {
+    fn get_basic_block_fun_internal(
+        _context: &'ctx Context,
+        module: &'a Module<'ctx>,
+        types: &'a Types<'ctx>,
+        addr: u32,
+    ) -> FunctionValue<'ctx> {
         let name = Self::get_name_for(addr);
         if let Some(fun) = module.get_function(name.as_str()) {
-            return fun
+            return fun;
         } else {
             let res = module.add_function(name.as_str(), types.bb_fn, None);
             res.set_call_conventions(FASTCC_CALLING_CONVENTION);
@@ -200,7 +209,7 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
 
     fn call_basic_block(&mut self, target: u32, tail_call: bool) {
         let target = self.get_basic_block_fun(target);
-        let args = &[ self.ctx_ptr.into(), self.mem_ptr.into() ];
+        let args = &[self.ctx_ptr.into(), self.mem_ptr.into()];
         let call = self.builder.build_call(target, args, "");
         call.set_call_convention(FASTCC_CALLING_CONVENTION);
         call.set_tail_call(tail_call)
@@ -220,9 +229,7 @@ impl IntValue for LlvmIntValue<'_> {
     }
 }
 
-impl BoolValue for LlvmIntValue<'_> {
-
-}
+impl BoolValue for LlvmIntValue<'_> {}
 
 impl Into<IntPredicate> for ComparisonType {
     fn into(self) -> IntPredicate {
@@ -295,12 +302,12 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
         };
 
         let ptr = self.build_ctx_flag_gep(self.ctx_ptr, flag);
-        let i8_val = self.builder.build_load(ptr, "")
-            .into_int_value();
+        let i8_val = self.builder.build_load(ptr, "").into_int_value();
 
         let zero = self.make_u8(0);
 
-        self.builder.build_int_compare(IntPredicate::NE, i8_val, zero, &*format!("{:?}", flag))
+        self.builder
+            .build_int_compare(IntPredicate::NE, i8_val, zero, &*format!("{:?}", flag))
     }
 
     fn store_flag(&mut self, flag: Flag, value: Self::BoolValue) {
@@ -311,10 +318,11 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
 
     fn load_memory(&mut self, size: IntType, address: Self::IntValue) -> Self::IntValue {
         let hptr = self.get_host_pointer(address);
-        let hptr = self.builder.build_pointer_cast(hptr,
-                                                   self.int_type(size)
-                                                       .ptr_type(AddressSpace::Generic),
-                                                   "");
+        let hptr = self.builder.build_pointer_cast(
+            hptr,
+            self.int_type(size).ptr_type(AddressSpace::Generic),
+            "",
+        );
 
         let val = self.builder.build_load(hptr, "");
         val.as_instruction_value()
@@ -326,12 +334,14 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
 
     fn store_memory(&mut self, address: Self::IntValue, value: Self::IntValue) {
         let hptr = self.get_host_pointer(address);
-        let hptr = self.builder.build_pointer_cast(hptr,
-                                                   value.get_type()
-                                                       .ptr_type(AddressSpace::Generic),
-                                                   "");
+        let hptr = self.builder.build_pointer_cast(
+            hptr,
+            value.get_type().ptr_type(AddressSpace::Generic),
+            "",
+        );
 
-        self.builder.build_store(hptr, value)
+        self.builder
+            .build_store(hptr, value)
             .set_alignment(1)
             .unwrap();
     }
@@ -344,7 +354,9 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
         self.builder.build_int_neg(val, "")
     }
 
-    fn bool_neg(&mut self, val: Self::BoolValue) -> Self::BoolValue { self.int_neg(val) }
+    fn bool_neg(&mut self, val: Self::BoolValue) -> Self::BoolValue {
+        self.int_neg(val)
+    }
 
     fn sub(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue {
         self.builder.build_int_sub(lhs, rhs, "")
@@ -390,24 +402,26 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
         self.builder.build_int_truncate(val, self.int_type(to), "")
     }
 
-    fn icmp(&mut self, cmp: ComparisonType, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::BoolValue {
+    fn icmp(
+        &mut self,
+        cmp: ComparisonType,
+        lhs: Self::IntValue,
+        rhs: Self::IntValue,
+    ) -> Self::BoolValue {
         self.builder.build_int_compare(cmp.into(), lhs, rhs, "")
     }
 
-    fn ifelse<T, F>(&mut self,
-                    cond: Self::BoolValue,
-                    iftrue: T,
-                    iffalse: F)
-                    -> ControlFlow<Self>
+    fn ifelse<T, F>(&mut self, cond: Self::BoolValue, iftrue: T, iffalse: F) -> ControlFlow<Self>
     where
         T: FnOnce(&mut Self) -> ControlFlow<Self>,
-        F: FnOnce(&mut Self) -> ControlFlow<Self>
+        F: FnOnce(&mut Self) -> ControlFlow<Self>,
     {
         let true_bb = self.context.append_basic_block(self.function, "");
         let false_bb = self.context.append_basic_block(self.function, "");
         let cont_bb = self.context.append_basic_block(self.function, "");
 
-        self.builder.build_conditional_branch(cond, true_bb, false_bb);
+        self.builder
+            .build_conditional_branch(cond, true_bb, false_bb);
 
         let mut res = vec![];
 
@@ -415,11 +429,11 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
             match flow {
                 ControlFlow::NextInstruction => {
                     self_.builder.build_unconditional_branch(cont_bb);
-                },
+                }
                 ControlFlow::DirectJump(target) => {
                     self_.call_basic_block(target, true);
                     self_.builder.build_return(None);
-                },
+                }
                 _ => todo!(),
             };
 

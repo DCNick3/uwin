@@ -1,8 +1,8 @@
-use std::fmt::Formatter;
+use crate::Builder;
 use derive_more::Display;
+use std::fmt::Formatter;
 use strum::IntoEnumIterator;
 use strum_macros::EnumIter;
-use crate::Builder;
 
 // the numbers correspond to register numbers in ModR/M encoding
 #[derive(Debug, Clone, Copy, EnumIter, Eq, PartialEq, Hash, Ord, PartialOrd)]
@@ -227,15 +227,14 @@ impl Operand {
     }
 }
 
-
 #[derive(Debug)]
 pub enum ControlFlow<B: Builder> {
-    NextInstruction /* Just execute the next instruction, no need to touch EIP at all */,
+    NextInstruction, /* Just execute the next instruction, no need to touch EIP at all */
     DirectJump(u32 /* next EIP is known and stored */),
-    IndirectJump(B::IntValue  /* next EIP is dynamic and stored */),
-    Return /* return from a function. Value should be popped from the stack by the instruction implementation */,
+    IndirectJump(B::IntValue /* next EIP is dynamic and stored */),
+    Return, /* return from a function. Value should be popped from the stack by the instruction implementation */
 
-    Conditional(Vec<ControlFlow<B>>) /* stores possible branches (does not provide full info though) */,
+    Conditional(Vec<ControlFlow<B>>), /* stores possible branches (does not provide full info though) */
 }
 
 impl<B: Builder> ControlFlow<B> {
@@ -245,11 +244,7 @@ impl<B: Builder> ControlFlow<B> {
             ControlFlow::DirectJump(_) => false,
             ControlFlow::IndirectJump(_) => false,
             ControlFlow::Return => false,
-            ControlFlow::Conditional(v) => {
-                v.iter().any(|c| c.can_reach_next_instruction())
-            }
+            ControlFlow::Conditional(v) => v.iter().any(|c| c.can_reach_next_instruction()),
         }
     }
-
-    //pub fn get_external_jumps
 }
