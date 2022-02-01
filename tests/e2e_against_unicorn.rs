@@ -491,6 +491,39 @@ mod div {
             ; mov ebx, -0x502df7b4
             ; div ebx
         ),
+        div_big1: (
+            ; mov eax, 0
+            ; mov edx, 1
+            ; mov ebx, 2
+            ; div ebx
+        ),
+        // this should cause a division error
+        // TODO: how can we test this? (it's not how it behaves rn btw)
+        // ditto for division by zero
+        // div_big2: (
+        //     ; mov eax, 0
+        //     ; mov edx, 1
+        //     ; mov ebx, 1
+        //     ; div ebx
+        // ),
+        div_big_rnd1: (
+            ; mov eax, -0x1895c25a
+            ; mov edx, 0x6c8300d6
+            ; mov ebx, 0x70a45624
+            ; div ebx
+        ),
+        div_big_rnd2: (
+            ; mov eax, -0x21c0f
+            ; mov edx, 0x338001
+            ; mov ebx, 0x90ed24d
+            ; div ebx
+        ),
+        div_big_rnd3: (
+            ; mov eax, 0x74f1d28c
+            ; mov edx, 0x7507473a
+            ; mov ebx, -0x7d79c77f
+            ; div ebx
+        ),
     );
 }
 
