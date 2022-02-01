@@ -1,5 +1,4 @@
 use crate::types::{Flag, IntType, MemoryOperand, Operand, Register};
-use crate::ControlFlow;
 
 pub trait IntValue: Clone + Copy {
     fn size(&self) -> IntType;
@@ -76,10 +75,10 @@ pub trait Builder {
         rhs: Self::IntValue,
     ) -> Self::BoolValue;
 
-    fn ifelse<L, R>(&mut self, cond: Self::BoolValue, iftrue: L, iffalse: R) -> ControlFlow<Self>
+    fn ifelse<T, F>(&mut self, cond: Self::BoolValue, iftrue: T, iffalse: F)
     where
-        L: FnOnce(&mut Self) -> ControlFlow<Self>,
-        R: FnOnce(&mut Self) -> ControlFlow<Self>,
+        T: FnOnce(&mut Self),
+        F: FnOnce(&mut Self),
         Self: Sized;
 
     fn compute_memory_operand_address(&mut self, op: MemoryOperand) -> Self::IntValue {

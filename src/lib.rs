@@ -82,17 +82,7 @@ pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) -> Control
         let code = instr.condition_code();
         let cond = compute_condition_code(builder, code);
 
-        builder.ifelse(
-            cond,
-            |_builder| {
-                // jump!
-                ControlFlow::DirectJump(target.as_imm32())
-            },
-            |_builder| {
-                // do not jump
-                ControlFlow::NextInstruction
-            },
-        )
+        ControlFlow::Conditional(cond, target.as_imm32())
     } else if is_cmovcc(instr.mnemonic()) {
         operands!([dst, src], &instr);
 
@@ -105,13 +95,11 @@ pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) -> Control
                 // move!
                 let val = builder.load_operand(src);
                 builder.store_operand(dst, val);
-                ControlFlow::NextInstruction
             },
-            |_builder| {
-                // do not move
-                ControlFlow::NextInstruction
-            },
-        )
+            |_builder| {}, // nuff to do,
+        );
+
+        ControlFlow::NextInstruction
     } else {
         match instr.mnemonic() {
             // TODO: there is (going to be) a ton of opcodes, we would want to handle this nicely (a bit of macromagic?)
@@ -290,6 +278,7 @@ pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) -> Control
             }
             Ret => {
                 // TODO: control flow, no-op for now
+                return ControlFlow::Return;
             }
             Jmp => {
                 operands!([target], &instr);
@@ -573,19 +562,26 @@ mod tests {
                 ; strb w8, [x0, #0x24]
                 ; tbnz w9, #0, ->FALSE
 
-                ; b ->basic_block_00000010
+                ; b ->basic_block_0000101A
 
                 ; ->FALSE:
                 ; mov w8, #0x2a
                 ; str w8, [x0]
-                ; ret
+                ; b ->basic_block_0000101F
 
-                ; ->basic_block_00000010:
+                ; ->basic_block_0000101A:
                 ; ldr w8, [x0, #0x10]
                 ; movn w9, #0
                 ; str w9, [x0]
                 ; ldr w9, [x1, x8]
                 ; add w8, w8, #4
+                ; stp w8, w9, [x0, #0x10]
+                ; ret
+
+                ; ->basic_block_0000101F:
+                ; ldr w8, [x0, #0x10]
+                ; ldr w9, [x1, x8]
+                ; add w8, w8, #0x4
                 ; stp w8, w9, [x0, #0x10]
                 ; ret
             );
@@ -603,6 +599,10 @@ mod tests {
             );
 
             let expected_result = assemble_aarch64!(
+                ; ->bb_0x1000:
+                ; b ->bb_0x1005
+
+                ; ->bb_0x1005:
                 ; mov w8, #0x2a
                 ; str w8, [x0, #0]
                 ; ret

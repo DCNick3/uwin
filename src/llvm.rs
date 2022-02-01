@@ -1,6 +1,6 @@
-use crate::codegen_instr;
-use crate::llvm::backend::{LlvmBuilder, Types};
-use iced_x86::{Decoder, DecoderOptions, FlowControl};
+use std::collections::{HashSet, VecDeque};
+
+use iced_x86::{Decoder, DecoderOptions};
 use inkwell::context::Context;
 use inkwell::module::Module;
 use inkwell::targets::{
@@ -8,7 +8,9 @@ use inkwell::targets::{
 };
 use inkwell::OptimizationLevel;
 use log::debug;
-use std::collections::{HashSet, VecDeque};
+
+use crate::codegen_instr;
+use crate::llvm::backend::{LlvmBuilder, Types};
 
 pub mod backend;
 
@@ -66,33 +68,23 @@ pub fn recompile<'ctx>(
             //assert!(decoder.can_decode());
 
             let instr = decoder.decode();
-            codegen_instr(&mut builder, instr);
 
-            #[rustfmt::skip]
-            let (next, ext) = match instr.flow_control() {
-                FlowControl::Next =>                (true, None),
-                FlowControl::ConditionalBranch =>   (true, Some(instr.near_branch32())),
-                FlowControl::Call =>                (true, Some(instr.near_branch32())),
-                FlowControl::IndirectCall =>        (true, None),
+            let flow = codegen_instr(&mut builder, instr);
 
-                FlowControl::UnconditionalBranch => (false, None),
-                FlowControl::IndirectBranch =>      (false, None),
-                FlowControl::Return =>              (false, None),
-                _ => unreachable!(),
-            };
+            builder.handle_flow(instr.next_ip32(), flow.clone());
 
-            if let Some(ext) = ext {
-                if !processing.contains(&ext) {
-                    queue.push_back(ext);
+            if let Some(addr) = flow.outer_jump_ref() {
+                if !processing.contains(&addr) {
+                    queue.push_back(addr);
                 }
             }
 
-            if !next {
+            if !flow.can_reach_next_instruction() {
                 break;
             }
         }
 
-        let llvm_builder = builder.get_builder();
+        let llvm_builder = builder.get_raw_builder();
         llvm_builder.build_return(None);
     }
 

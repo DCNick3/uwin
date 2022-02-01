@@ -1,8 +1,10 @@
-use crate::Builder;
-use derive_more::Display;
 use std::fmt::{Debug, Formatter};
+
+use derive_more::Display;
 use strum::IntoEnumIterator;
 use strum_macros::EnumIter;
+
+use crate::Builder;
 
 // the numbers correspond to register numbers in ModR/M encoding
 #[derive(Debug, Clone, Copy, EnumIter, Eq, PartialEq, Hash, Ord, PartialOrd)]
@@ -246,8 +248,7 @@ pub enum ControlFlow<B: Builder> {
     DirectJump(u32 /* next EIP is known and stored */),
     IndirectJump(B::IntValue /* next EIP is dynamic and stored */),
     Return, /* return from a function. Value should be popped from the stack by the instruction implementation */
-
-    Conditional(Vec<ControlFlow<B>>), /* stores possible branches (does not provide full info though) */
+    Conditional(B::BoolValue, u32), /* if cond is true - jump to u32,  */
 }
 
 impl<B: Builder> ControlFlow<B> {
@@ -257,7 +258,31 @@ impl<B: Builder> ControlFlow<B> {
             ControlFlow::DirectJump(_) => false,
             ControlFlow::IndirectJump(_) => false,
             ControlFlow::Return => false,
-            ControlFlow::Conditional(v) => v.iter().any(|c| c.can_reach_next_instruction()),
+            ControlFlow::Conditional(_, _) => true,
+        }
+    }
+
+    pub fn outer_jump_ref(&self) -> Option<u32> {
+        match self {
+            ControlFlow::NextInstruction => None,
+            ControlFlow::DirectJump(r) => Some(*r),
+            ControlFlow::IndirectJump(_) => None, /* can't statically know the addr*/
+            ControlFlow::Return => None,
+            ControlFlow::Conditional(_, r) => Some(*r),
+        }
+    }
+}
+
+// for some reason #[derive(Clone)] doesn't work (TODO: why?)
+impl<B: Builder> Clone for ControlFlow<B> {
+    fn clone(&self) -> Self {
+        use ControlFlow::*;
+        match self {
+            NextInstruction => NextInstruction,
+            DirectJump(r) => DirectJump(*r),
+            IndirectJump(r) => IndirectJump(r.clone()),
+            Return => Return,
+            Conditional(cond, r) => Conditional(cond.clone(), *r),
         }
     }
 }

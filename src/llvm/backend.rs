@@ -1,7 +1,6 @@
 use crate::backend::{BoolValue, ComparisonType, IntValue};
-use crate::types::{
-    ControlFlow, CpuContext, Flag, FullSizeGeneralPurposeRegister, IntType, Register,
-};
+use crate::types::{CpuContext, Flag, FullSizeGeneralPurposeRegister, IntType, Register};
+use crate::ControlFlow;
 use inkwell::builder::Builder;
 use inkwell::context::Context;
 use inkwell::module::{Linkage, Module};
@@ -110,8 +109,12 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
         }
     }
 
-    pub fn get_builder(&self) -> &Builder<'ctx> {
+    pub fn get_raw_builder(&self) -> &Builder<'ctx> {
         &self.builder
+    }
+
+    pub fn get_function(&self) -> FunctionValue<'ctx> {
+        self.function
     }
 
     fn build_ctx_gp_gep(
@@ -203,16 +206,58 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
         }
     }
 
-    fn get_basic_block_fun(&mut self, addr: u32) -> FunctionValue<'ctx> {
+    pub fn get_basic_block_fun(&mut self, addr: u32) -> FunctionValue<'ctx> {
         Self::get_basic_block_fun_internal(self.context, self.module, self.types, addr)
     }
 
-    fn call_basic_block(&mut self, target: u32, tail_call: bool) {
+    pub fn call_basic_block(&mut self, target: u32, tail_call: bool) {
         let target = self.get_basic_block_fun(target);
         let args = &[self.ctx_ptr.into(), self.mem_ptr.into()];
         let call = self.builder.build_call(target, args, "");
         call.set_call_convention(FASTCC_CALLING_CONVENTION);
         call.set_tail_call(tail_call)
+    }
+
+    pub fn handle_flow(&mut self, next_ip: u32, flow: ControlFlow<LlvmBuilder>) {
+        match flow {
+            ControlFlow::NextInstruction => {
+                // create a new basic block for ease of reading ir
+                let next_bb = self
+                    .context
+                    .append_basic_block(self.function, format!("bb_{:08x}", next_ip).as_str());
+
+                self.builder.build_unconditional_branch(next_bb);
+                self.builder.position_at_end(next_bb);
+            }
+            ControlFlow::DirectJump(addr) => {
+                self.call_basic_block(addr, true);
+                // no need for ret; all recompiled funs are terminated with ret
+            }
+            ControlFlow::IndirectJump(_) => {
+                todo!();
+            }
+            ControlFlow::Return => {
+                // no need for ret; all recompiled funs are terminated with ret
+            }
+            ControlFlow::Conditional(cond, target) => {
+                let branch_to = self
+                    .context
+                    .append_basic_block(self.function, format!("br_to_{:08x}", target).as_str());
+
+                let next_bb = self
+                    .context
+                    .append_basic_block(self.function, format!("bb_{:08x}", next_ip).as_str());
+
+                self.builder
+                    .build_conditional_branch(cond, branch_to, next_bb);
+
+                self.builder.position_at_end(branch_to);
+                self.call_basic_block(target, true);
+                self.builder.build_return(None);
+
+                self.builder.position_at_end(next_bb);
+            }
+        }
     }
 }
 
@@ -411,10 +456,10 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
         self.builder.build_int_compare(cmp.into(), lhs, rhs, "")
     }
 
-    fn ifelse<T, F>(&mut self, cond: Self::BoolValue, iftrue: T, iffalse: F) -> ControlFlow<Self>
+    fn ifelse<T, F>(&mut self, cond: Self::BoolValue, iftrue: T, iffalse: F)
     where
-        T: FnOnce(&mut Self) -> ControlFlow<Self>,
-        F: FnOnce(&mut Self) -> ControlFlow<Self>,
+        T: FnOnce(&mut Self),
+        F: FnOnce(&mut Self),
     {
         let true_bb = self.context.append_basic_block(self.function, "");
         let false_bb = self.context.append_basic_block(self.function, "");
@@ -423,37 +468,14 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
         self.builder
             .build_conditional_branch(cond, true_bb, false_bb);
 
-        let mut res = vec![];
-
-        let mut handle_flow = |self_: &mut Self, flow: ControlFlow<Self>| {
-            match flow {
-                ControlFlow::NextInstruction => {
-                    self_.builder.build_unconditional_branch(cont_bb);
-                }
-                ControlFlow::DirectJump(target) => {
-                    self_.call_basic_block(target, true);
-                    self_.builder.build_return(None);
-                }
-                _ => todo!(),
-            };
-
-            if let ControlFlow::Conditional(mut cc) = flow {
-                res.append(&mut cc);
-            } else {
-                res.push(flow);
-            };
-        };
-
         self.builder.position_at_end(true_bb);
-        let left_flow = (iftrue)(self);
-        handle_flow(self, left_flow);
+        (iftrue)(self);
+        self.builder.build_unconditional_branch(cont_bb);
 
         self.builder.position_at_end(false_bb);
-        let right_flow = (iffalse)(self);
-        handle_flow(self, right_flow);
+        (iffalse)(self);
+        self.builder.build_unconditional_branch(cont_bb);
 
         self.builder.position_at_end(cont_bb);
-
-        return ControlFlow::Conditional(res);
     }
 }
