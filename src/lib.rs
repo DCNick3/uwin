@@ -278,6 +278,13 @@ pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) -> Control
             }
             Ret => {
                 // TODO: control flow, no-op for now
+                // Pop the return address (TODO: where to store it? we don't have EIP yet)
+
+                let size = builder.make_u32(4 as u32);
+                let esp = builder.load_register(ESP);
+                let esp = builder.add(esp, size);
+                builder.store_register(ESP, esp);
+
                 return ControlFlow::Return;
             }
             Jmp => {
