@@ -121,10 +121,17 @@ pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) -> Control
 
                 builder.store_operand(dst, res);
 
+                let of = builder.ssub_overflow(lhs, rhs);
+                let cf = builder.usub_overflow(lhs, rhs);
+
                 // TODO: flags
                 // The OF, SF, ZF, AF, PF, and CF flags are set according to the result.
+                // AF and PF are not implemented rn
+                // not that they are actually useful...
                 builder.compute_and_store_zf(res);
                 builder.compute_and_store_sf(res);
+                builder.store_flag(Flag::Overflow, of);
+                builder.store_flag(Flag::Carry, cf);
             }
             Cmp => {
                 operands!([src1, src2], &instr);
@@ -136,10 +143,17 @@ pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) -> Control
 
                 let tmp = builder.sub(src1, src2);
 
+                let of = builder.ssub_overflow(src1, src2);
+                let cf = builder.usub_overflow(src1, src2);
+
                 // TODO: flags
                 // The OF, SF, ZF, AF, PF, and CF flags are set according to the result.
+                // AF and PF are not implemented rn
+                // not that they are actually useful...
                 builder.compute_and_store_zf(tmp);
                 builder.compute_and_store_sf(tmp);
+                builder.store_flag(Flag::Overflow, of);
+                builder.store_flag(Flag::Carry, cf);
             }
             Lea => {
                 operands!([dst, src], &instr);
@@ -246,6 +260,8 @@ pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) -> Control
 
                 builder.store_register(quo_dst, quotient);
                 builder.store_register(rem_dst, remainder);
+
+                // all flags are undefined
             }
             Push => {
                 operands!([src], &instr);
@@ -561,16 +577,20 @@ mod tests {
                 ; str w8, [x0, #0x10]
                 ; str w9, [x1, w8, uxtw]
                 ; ldr w8, [x0, #0x10]
+                ; mov w9, #0x2
                 ; str w8, [x0, #0x14]
                 ; add w8, w8, #8
                 ; ldr w8, [x1, w8, uxtw]
                 ; subs w8, w8, #1
-                ; cset w9, eq
-                ; strb w9, [x0, #0x23]
-                ; mov w9, #2
+                ; cset w11, eq
+                ; cset w10, vs
+                ; strb w11, [x0, #0x23]
+                ; cset w11, cc
                 ; lsr w8, w8, #0x1f
                 ; csinc w9, w9, wzr, eq
                 ; strb w8, [x0, #0x24]
+                ; strb w10, [x0, #0x25]
+                ; strb w11, [x0, #0x20]
                 ; tbnz w9, #0, ->FALSE
 
                 ; b ->basic_block_0000101A

@@ -15,8 +15,9 @@ strum_macros = "0.23.1"
 # TODO: add an llvm feature gate that will disable an llvm backend
 # though, need to implement any other backend first ;)
 [dependencies.inkwell]
-git = "https://github.com/TheDan64/inkwell"
+git = "https://github.com/DCNick3/inkwell"
 branch = "master"
+#path = "/home/dcnick3/git_cloned/inkwell"
 features = ["llvm13-0", "target-all"]
 
 [dev-dependencies]

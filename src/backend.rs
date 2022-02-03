@@ -64,6 +64,11 @@ pub trait Builder {
     fn ashr(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue;
     fn udiv(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue;
 
+    fn uadd_overflow(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::BoolValue;
+    fn sadd_overflow(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::BoolValue;
+    fn usub_overflow(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::BoolValue;
+    fn ssub_overflow(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::BoolValue;
+
     fn zext(&mut self, val: Self::IntValue, to: IntType) -> Self::IntValue;
     fn sext(&mut self, val: Self::IntValue, to: IntType) -> Self::IntValue;
     fn trunc(&mut self, val: Self::IntValue, to: IntType) -> Self::IntValue;

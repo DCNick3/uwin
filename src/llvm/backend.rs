@@ -3,6 +3,7 @@ use crate::types::{CpuContext, Flag, FullSizeGeneralPurposeRegister, IntType, Re
 use crate::ControlFlow;
 use inkwell::builder::Builder;
 use inkwell::context::Context;
+use inkwell::intrinsics::Intrinsic;
 use inkwell::module::{Linkage, Module};
 use inkwell::types::{FunctionType, IntType as LlvmIntType, PointerType, StructType, VoidType};
 use inkwell::values::{BasicValue, FunctionValue, IntValue as LlvmIntValue, PointerValue};
@@ -15,6 +16,7 @@ pub struct LlvmBuilder<'ctx, 'a> {
     function: FunctionValue<'ctx>,
     builder: Builder<'ctx>,
     types: &'a Types<'ctx>,
+    intrinsics: Intrinsics,
     ctx_ptr: PointerValue<'ctx>,
     mem_ptr: PointerValue<'ctx>,
 }
@@ -78,6 +80,24 @@ impl<'ctx> Types<'ctx> {
     }
 }
 
+pub struct Intrinsics {
+    pub sadd_with_overflow: Intrinsic,
+    pub uadd_with_overflow: Intrinsic,
+    pub ssub_with_overflow: Intrinsic,
+    pub usub_with_overflow: Intrinsic,
+}
+
+impl Intrinsics {
+    pub fn new() -> Self {
+        Self {
+            sadd_with_overflow: Intrinsic::find("llvm.sadd.with.overflow").unwrap(),
+            uadd_with_overflow: Intrinsic::find("llvm.uadd.with.overflow").unwrap(),
+            ssub_with_overflow: Intrinsic::find("llvm.ssub.with.overflow").unwrap(),
+            usub_with_overflow: Intrinsic::find("llvm.usub.with.overflow").unwrap(),
+        }
+    }
+}
+
 pub const FASTCC_CALLING_CONVENTION: u32 = 8;
 
 pub type BbFunc = unsafe extern "C" fn(*mut CpuContext, *mut u8) -> c_void;
@@ -95,6 +115,8 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
         let builder = context.create_builder();
         builder.position_at_end(bb);
 
+        let intrinsics = Intrinsics::new();
+
         let ctx_ptr = function.get_nth_param(0).unwrap().into_pointer_value();
         let mem_ptr = function.get_nth_param(1).unwrap().into_pointer_value();
 
@@ -104,6 +126,7 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
             function,
             builder,
             types,
+            intrinsics,
             ctx_ptr,
             mem_ptr,
         }
@@ -258,6 +281,29 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
                 self.builder.position_at_end(next_bb);
             }
         }
+    }
+
+    fn call_binary_overflow_intrinsic(
+        &mut self,
+        intrinsic: Intrinsic,
+        lhs: LlvmIntValue<'ctx>,
+        rhs: LlvmIntValue<'ctx>,
+    ) -> LlvmIntValue<'ctx> {
+        let usub = intrinsic
+            .get_declaration(self.module, &[lhs.get_type().into()])
+            .unwrap();
+
+        let r = self
+            .builder
+            .build_call(usub, &[lhs.into(), rhs.into()], "")
+            .try_as_basic_value()
+            .unwrap_left()
+            .into_struct_value();
+        return self
+            .builder
+            .build_extract_value(r, 1, "")
+            .unwrap()
+            .into_int_value();
     }
 }
 
@@ -433,6 +479,22 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
 
     fn udiv(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue {
         self.builder.build_int_unsigned_div(lhs, rhs, "")
+    }
+
+    fn uadd_overflow(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::BoolValue {
+        self.call_binary_overflow_intrinsic(self.intrinsics.uadd_with_overflow, lhs, rhs)
+    }
+
+    fn sadd_overflow(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::BoolValue {
+        self.call_binary_overflow_intrinsic(self.intrinsics.sadd_with_overflow, lhs, rhs)
+    }
+
+    fn usub_overflow(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::BoolValue {
+        self.call_binary_overflow_intrinsic(self.intrinsics.usub_with_overflow, lhs, rhs)
+    }
+
+    fn ssub_overflow(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::BoolValue {
+        self.call_binary_overflow_intrinsic(self.intrinsics.ssub_with_overflow, lhs, rhs)
     }
 
     fn zext(&mut self, val: Self::IntValue, to: IntType) -> Self::IntValue {
