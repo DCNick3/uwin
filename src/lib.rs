@@ -149,7 +149,6 @@ pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) -> Control
                 let of = builder.sadd_overflow(lhs, rhs);
                 let cf = builder.uadd_overflow(lhs, rhs);
 
-                // TODO: flags
                 // The OF, SF, ZF, AF, PF, and CF flags are set according to the result.
                 // AF and PF are not implemented rn
                 // not that they are actually useful...
@@ -172,7 +171,6 @@ pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) -> Control
                 let of = builder.ssub_overflow(lhs, rhs);
                 let cf = builder.usub_overflow(lhs, rhs);
 
-                // TODO: flags
                 // The OF, SF, ZF, AF, PF, and CF flags are set according to the result.
                 // AF and PF are not implemented rn
                 // not that they are actually useful...
@@ -210,16 +208,26 @@ pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) -> Control
 
                         let res = builder.mul(lhs, rhs);
                         let res_trunc = builder.trunc(res, dst.size());
+
+                        let res_trunc_ext = builder.sext(res_trunc, res.size());
+                        let overflow = builder.icmp(ComparisonType::NotEqual, res, res_trunc_ext);
+
                         // TODO: flags (based on comparison of res and sext(res_trunc))
-                        // For the one operand form of the instruction, the CF and OF flags are set when significant bits are carried into the
-                        // upper half of the result and cleared when the result fits exactly in the lower half of the result. For the two- and
-                        // three-operand forms of the instruction, the CF and OF flags are set when the result must be truncated to fit in the
-                        // destination operand size and cleared when the result fits exactly in the destination operand size.
+                        // For the one operand form of the instruction, the CF and OF flags are set
+                        // when significant bits are carried into the upper half of the result and
+                        // cleared when the result fits exactly in the lower half of the result.
+
+                        // For the two- and three-operand forms of the instruction,
+                        // the CF and OF flags are set when the result must be truncated to fit in the
+                        // destination operand size and cleared when the result fits exactly
+                        // in the destination operand size.
 
                         // The SF, ZF, AF, and PF flags are undefined.
                         // TODO: do we want to represent ub here? leaving as zero for now
                         builder.store_flag(Flag::Zero, builder.make_false());
                         builder.store_flag(Flag::Sign, builder.make_false());
+                        builder.store_flag(Flag::Overflow, overflow);
+                        builder.store_flag(Flag::Carry, overflow);
 
                         builder.store_operand(dst, res_trunc)
                     }
@@ -681,21 +689,19 @@ mod tests {
                 ; str w8, [x0, #0x10]
                 ; str w9, [x1, w8, uxtw]
                 ; ldr w8, [x0, #0x10]
-                ; mov w9, #0x2
                 ; str w8, [x0, #0x14]
                 ; add w8, w8, #8
                 ; ldr w8, [x1, w8, uxtw]
                 ; subs w8, w8, #1
                 ; cset w11, eq
-                ; cset w10, vs
+                ; cset w9, vs
+                ; cset w10, cc
                 ; strb w11, [x0, #0x23]
-                ; cset w11, cc
-                ; lsr w8, w8, #0x1f
-                ; csinc w9, w9, wzr, eq
-                ; strb w8, [x0, #0x24]
-                ; strb w10, [x0, #0x25]
-                ; strb w11, [x0, #0x20]
-                ; tbnz w9, #0, ->FALSE
+                ; lsr w11, w8, #0x1f
+                ; strb w11, [x0, #0x24]
+                ; strb w9, [x0, #0x25]
+                ; strb w10, [x0, #0x20]
+                ; cbz w8, ->FALSE
 
                 ; b ->basic_block_0000101A
 

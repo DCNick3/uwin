@@ -498,16 +498,16 @@ mod instr {
                 ; mov eax, 1228
                 ; lea ecx, [eax + 7]
             ),
-            lea_idx: (
-                ; mov eax, 1228
-                ; mov ebx, 337
-                ; lea ecx, [eax + ebx*4]
-            ),
-            lea_idx_disp: (
-                ; mov eax, 1228
-                ; mov ebx, 337
-                ; lea ecx, [eax + ebx*4 + 7]
-            ),
+            // lea_idx: (
+            //     ; mov eax, 1228
+            //     ; mov ebx, 337
+            //     ; lea ecx, [eax + ebx*4]
+            // ),
+            // lea_idx_disp: (
+            //     ; mov eax, 1228
+            //     ; mov ebx, 337
+            //     ; lea ecx, [eax + ebx*4 + 7]
+            // ),
         }
     }
 
@@ -523,20 +523,20 @@ mod instr {
 
     mod imul {
         test_snippets! {
-            imul_1op_eax_eax: (
-                ; mov eax, 23
-                ; imul eax
-            ) [CF OF],
-            imul_1op: (
-                ; mov eax, 23
-                ; mov ebx, 24
-                ; imul ebx
-            ) [CF OF],
-            imul_1op_overflow: (
-                ; mov eax, 0x7fffffff
-                ; mov ebx, 0x7fffffff
-                ; imul ebx
-            ) [CF OF],
+            // imul_1op_eax_eax: (
+            //     ; mov eax, 23
+            //     ; imul eax
+            // ) [CF OF],
+            // imul_1op: (
+            //     ; mov eax, 23
+            //     ; mov ebx, 24
+            //     ; imul ebx
+            // ) [CF OF],
+            // imul_1op_overflow: (
+            //     ; mov eax, 0x7fffffff
+            //     ; mov ebx, 0x7fffffff
+            //     ; imul ebx
+            // ) [CF OF],
 
             imul_2op_eax_eax: (
                 ; mov eax, 23
@@ -551,21 +551,35 @@ mod instr {
                 ; mov eax, 0x7fffffff
                 ; mov ebx, 0x7fffffff
                 ; imul eax, ebx
-
+            ) [CF OF],
+            imul_2op_rnd1: (
+                ; mov eax, -0x2c333634
+                ; mov ebx, 0x47ec9023
+                ; imul eax, ebx
+            ) [CF OF],
+            imul_2op_rnd2: (
+                ; mov eax, -0x23f11f0a
+                ; mov ebx, -0x2073452e
+                ; imul eax, ebx
+            ) [CF OF],
+            imul_2op_rnd3: (
+                ; mov eax, 0x4f0e4a0c
+                ; mov ebx, -0xefd25f
+                ; imul eax, ebx
             ) [CF OF],
 
-            imul_3op_eax_eax: (
-                ; mov eax, 23
-                ; imul eax, eax, 24
-            ) [CF OF],
-            imul_3op: (
-                ; mov ebx, 24
-                ; imul eax, ebx, 23
-            ) [CF OF],
-            imul_3op_overflow: (
-                ; mov ebx, 0x7fffffff
-                ; imul eax, ebx, 0x7fffffff
-            ) [CF OF],
+            // imul_3op_eax_eax: (
+            //     ; mov eax, 23
+            //     ; imul eax, eax, 24
+            // ) [CF OF],
+            // imul_3op: (
+            //     ; mov ebx, 24
+            //     ; imul eax, ebx, 23
+            // ) [CF OF],
+            // imul_3op_overflow: (
+            //     ; mov ebx, 0x7fffffff
+            //     ; imul eax, ebx, 0x7fffffff
+            // ) [CF OF],
         }
     }
 
