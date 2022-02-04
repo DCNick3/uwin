@@ -107,7 +107,6 @@ pub trait Builder {
         Self: Sized;
 
     fn compute_memory_operand_address(&mut self, op: MemoryOperand) -> Self::IntValue {
-        assert!(op.index.is_none());
         assert!(op.segment.is_none());
 
         let mut res = self.make_i32(i32::try_from(op.displacement).unwrap());
@@ -115,6 +114,14 @@ pub trait Builder {
         if let Some(base) = op.base {
             let base_val = self.load_register(base);
             res = self.add(res, base_val);
+        }
+
+        if let Some(index) = op.index {
+            let scale = op.scale;
+            let scale = self.make_int_value(index.size(), scale as u64, false);
+            let index_val = self.load_register(index);
+            let scaled_val = self.mul(scale, index_val);
+            res = self.add(res, scaled_val);
         }
 
         res
