@@ -1,5 +1,6 @@
 use std::collections::{HashSet, VecDeque};
 
+use iced_x86::Code::Call_rel32_32;
 use iced_x86::{Decoder, DecoderOptions};
 use inkwell::context::Context;
 use inkwell::module::Module;
@@ -76,6 +77,13 @@ pub fn recompile<'ctx>(
             if let Some(addr) = flow.outer_jump_ref() {
                 if !processing.contains(&addr) {
                     queue.push_back(addr);
+                }
+            }
+            // kinda meh
+            if instr.op_code().code() == Call_rel32_32 {
+                let target = instr.near_branch32();
+                if !processing.contains(&target) {
+                    queue.push_back(target);
                 }
             }
 

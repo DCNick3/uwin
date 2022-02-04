@@ -3,7 +3,7 @@ pub mod disasm;
 pub mod llvm;
 pub mod types;
 
-use crate::backend::{Builder, IntValue};
+use crate::backend::{Builder, ComparisonType, IntValue};
 use crate::disasm::Operands;
 use crate::types::Register::*;
 use crate::types::{ControlFlow, Flag, IntType, Operand};
@@ -23,7 +23,7 @@ fn compute_condition_code<B: Builder>(
         }
         ne => {
             let zf = builder.load_flag(Flag::Zero);
-            builder.bool_neg(zf)
+            builder.bool_not(zf)
         }
 
         s => {
@@ -32,7 +32,30 @@ fn compute_condition_code<B: Builder>(
         }
         ns => {
             let sf = builder.load_flag(Flag::Sign);
-            builder.bool_neg(sf)
+            builder.bool_not(sf)
+        }
+
+        b => {
+            let cf = builder.load_flag(Flag::Carry);
+            cf
+        }
+        ae => {
+            let cf = builder.load_flag(Flag::Carry);
+            builder.bool_not(cf)
+        }
+
+        be => {
+            let cf = builder.load_flag(Flag::Carry);
+            let zf = builder.load_flag(Flag::Zero);
+            let r = builder.bool_or(cf, zf);
+            r
+        }
+        a => {
+            let cf = builder.load_flag(Flag::Carry);
+            let zf = builder.load_flag(Flag::Zero);
+            let r = builder.bool_or(cf, zf);
+            let r = builder.bool_not(r);
+            r
         }
 
         _ => todo!("condition code {:?}", condition_code),
@@ -76,6 +99,8 @@ pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) -> Control
     assert!(!instr.has_xacquire_prefix());
     assert!(!instr.has_xrelease_prefix());
 
+    let mnemonic = instr.mnemonic();
+
     if instr.is_jcc_short_or_near() {
         operands!([target], &instr);
 
@@ -101,7 +126,7 @@ pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) -> Control
 
         ControlFlow::NextInstruction
     } else {
-        match instr.mnemonic() {
+        match mnemonic {
             // TODO: there is (going to be) a ton of opcodes, we would want to handle this nicely (a bit of macromagic?)
             Nop => {
                 // fuf, this was easy
@@ -112,17 +137,17 @@ pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) -> Control
                 let val = builder.load_operand(src);
                 builder.store_operand(dst, val);
             }
-            Sub => {
+            Add => {
                 operands!([dst, src], &instr);
 
                 let lhs = builder.load_operand(dst);
                 let rhs = builder.load_operand(src);
-                let res = builder.sub(lhs, rhs);
+                let res = builder.add(lhs, rhs);
 
                 builder.store_operand(dst, res);
 
-                let of = builder.ssub_overflow(lhs, rhs);
-                let cf = builder.usub_overflow(lhs, rhs);
+                let of = builder.sadd_overflow(lhs, rhs);
+                let cf = builder.uadd_overflow(lhs, rhs);
 
                 // TODO: flags
                 // The OF, SF, ZF, AF, PF, and CF flags are set according to the result.
@@ -133,25 +158,26 @@ pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) -> Control
                 builder.store_flag(Flag::Overflow, of);
                 builder.store_flag(Flag::Carry, cf);
             }
-            Cmp => {
-                operands!([src1, src2], &instr);
+            Sub | Cmp => {
+                operands!([dst, src], &instr);
 
-                let src1 = builder.load_operand(src1);
-                let src2 = builder.load_operand(src2);
+                let lhs = builder.load_operand(dst);
+                let rhs = builder.load_operand(src);
+                let res = builder.sub(lhs, rhs);
 
-                let src2 = builder.sext(src2, src1.size());
+                if mnemonic == Sub {
+                    builder.store_operand(dst, res);
+                }
 
-                let tmp = builder.sub(src1, src2);
-
-                let of = builder.ssub_overflow(src1, src2);
-                let cf = builder.usub_overflow(src1, src2);
+                let of = builder.ssub_overflow(lhs, rhs);
+                let cf = builder.usub_overflow(lhs, rhs);
 
                 // TODO: flags
                 // The OF, SF, ZF, AF, PF, and CF flags are set according to the result.
                 // AF and PF are not implemented rn
                 // not that they are actually useful...
-                builder.compute_and_store_zf(tmp);
-                builder.compute_and_store_sf(tmp);
+                builder.compute_and_store_zf(res);
+                builder.compute_and_store_sf(res);
                 builder.store_flag(Flag::Overflow, of);
                 builder.store_flag(Flag::Carry, cf);
             }
@@ -209,11 +235,10 @@ pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) -> Control
                 let lhs = builder.load_operand(dst);
                 let rhs = builder.load_operand(src);
 
-                let res = builder.xor(lhs, rhs);
+                let res = builder.int_xor(lhs, rhs);
 
                 builder.store_operand(dst, res);
 
-                // TODO: flags
                 // The OF and CF flags are cleared; the SF, ZF, and PF flags are set according to the result.
                 // The state of the AF flag is undefined.
                 // TODO: do we want to represent ub here? leaving as zero for now
@@ -221,6 +246,81 @@ pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) -> Control
                 builder.compute_and_store_sf(res);
                 builder.store_flag(Flag::Carry, builder.make_false());
                 builder.store_flag(Flag::Overflow, builder.make_false());
+            }
+            And | Test => {
+                operands!([dst, src], &instr);
+
+                let lhs = builder.load_operand(dst);
+                let rhs = builder.load_operand(src);
+
+                let res = builder.int_and(lhs, rhs);
+
+                if mnemonic == And {
+                    builder.store_operand(dst, res);
+                }
+                // The OF and CF flags are cleared; the SF, ZF, and PF flags are set according to the result. The state of the AF flag is
+                // undefined.
+                builder.compute_and_store_zf(res);
+                builder.compute_and_store_sf(res);
+                builder.store_flag(Flag::Carry, builder.make_false());
+                builder.store_flag(Flag::Overflow, builder.make_false());
+            }
+            Shr | Sar => {
+                operands!([dst, count], &instr);
+
+                let count = builder.load_operand(count);
+
+                let count_mask = builder.make_int_value(count.size(), 0x1f, false);
+                let count = builder.int_and(count, count_mask);
+                let count = builder.zext(count, dst.size());
+
+                let not_zero = builder.icmp(
+                    ComparisonType::NotEqual,
+                    count,
+                    builder.make_int_value(count.size(), 0, false),
+                );
+
+                builder.ifelse(
+                    not_zero,
+                    |builder| {
+                        let val = builder.load_operand(dst);
+
+                        let res = if mnemonic == Shr {
+                            builder.lshr(val, count)
+                        } else {
+                            builder.ashr(val, count)
+                        };
+                        let count_cf =
+                            builder.sub(count, builder.make_int_value(count.size(), 1, false));
+
+                        builder.store_operand(dst, res);
+
+                        let cf = builder.extract_bit(val, count_cf);
+                        // OF is defined only for 1-bit shifts, but we'll compute it anyways
+                        // maybe we can get better by telling LLVM it's undef?
+                        let of = if mnemonic == Shr {
+                            builder.extract_msb(val)
+                        } else {
+                            builder.make_false()
+                        };
+
+                        // The CF flag contains the value of the last bit shifted out of the
+                        // destination operand; it is undefined for SHL and SHR instructions where
+                        // the count is greater than or equal to the size (in bits) of the
+                        // destination operand (TODO: add undef?). The OF flag is affected only
+                        // for 1-bit shifts (see “Description” above); otherwise, it is undefined.
+                        // The SF, ZF, and PF flags are set according to the result.
+                        // If the count is 0, the flags are not affected.
+                        // For a non-zero count, the AF flag is undefined.
+                        builder.compute_and_store_zf(res);
+                        builder.compute_and_store_sf(res);
+                        builder.store_flag(Flag::Carry, cf);
+                        builder.store_flag(Flag::Overflow, of);
+                    },
+                    |_| {
+                        // nuff to do
+                    },
+                );
             }
             Div => {
                 operands!([src], &instr);
@@ -245,7 +345,7 @@ pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) -> Control
                     hi,
                     builder.make_int_value(double_size, src.size().bit_width() as u64, false),
                 );
-                let dividend = builder.or(lo, hi);
+                let dividend = builder.int_or(lo, hi);
 
                 let divisor = builder.load_operand(src);
                 let divisor = builder.zext(divisor, double_size);
@@ -268,27 +368,12 @@ pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) -> Control
 
                 let val = builder.load_operand(src);
 
-                let size = val.size().byte_width();
-                let size = builder.make_u32(size as u32);
-
-                let esp = builder.load_register(ESP);
-                let esp = builder.sub(esp, size);
-                builder.store_register(ESP, esp);
-
-                builder.store_memory(esp, val);
+                builder.push(val);
             }
             Pop => {
                 operands!([dst], &instr);
 
-                let size = dst.size().byte_width();
-                let size = builder.make_u32(size as u32);
-
-                let esp = builder.load_register(ESP);
-
-                let val = builder.load_memory(dst.size(), esp);
-
-                let esp = builder.add(esp, size);
-                builder.store_register(ESP, esp);
+                let val = builder.pop(dst.size());
 
                 builder.store_operand(dst, val);
             }
@@ -296,17 +381,36 @@ pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) -> Control
                 // TODO: control flow, no-op for now
                 // Pop the return address (TODO: where to store it? we don't have EIP yet)
 
-                let size = builder.make_u32(4 as u32);
-                let esp = builder.load_register(ESP);
-                let esp = builder.add(esp, size);
-                builder.store_register(ESP, esp);
+                let _raddr = builder.pop(IntType::I32);
 
                 return ControlFlow::Return;
             }
             Jmp => {
                 operands!([target], &instr);
 
-                return ControlFlow::DirectJump(target.as_imm32());
+                return match target {
+                    Operand::Immediate8(_) | Operand::Immediate16(_) | Operand::Immediate64(_) => {
+                        panic!("Jump to unsupported immediate size")
+                    }
+                    Operand::Immediate32(target) => ControlFlow::DirectJump(target),
+                    _ => todo!(),
+                };
+            }
+            Call => {
+                operands!([target], &instr);
+
+                let ret = instr.next_ip32();
+                builder.push(builder.make_u32(ret));
+
+                match target {
+                    Operand::Immediate8(_) | Operand::Immediate16(_) | Operand::Immediate64(_) => {
+                        panic!("Call to unsupported immediate size")
+                    }
+                    Operand::Immediate32(target) => {
+                        builder.direct_call(target, instr.next_ip32());
+                    }
+                    _ => todo!(),
+                }
             }
             m => panic!("Unknown instruction mnemonic: {:?}", m),
         };

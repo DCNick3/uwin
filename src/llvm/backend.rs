@@ -1,6 +1,5 @@
-use crate::backend::{BoolValue, ComparisonType, IntValue};
-use crate::types::{CpuContext, Flag, FullSizeGeneralPurposeRegister, IntType, Register};
-use crate::ControlFlow;
+use std::ffi::c_void;
+
 use inkwell::builder::Builder;
 use inkwell::context::Context;
 use inkwell::intrinsics::Intrinsic;
@@ -8,7 +7,10 @@ use inkwell::module::{Linkage, Module};
 use inkwell::types::{FunctionType, IntType as LlvmIntType, PointerType, StructType, VoidType};
 use inkwell::values::{BasicValue, FunctionValue, IntValue as LlvmIntValue, PointerValue};
 use inkwell::{AddressSpace, IntPredicate};
-use std::ffi::c_void;
+
+use crate::backend::{BoolValue, ComparisonType, IntValue};
+use crate::types::{CpuContext, Flag, FullSizeGeneralPurposeRegister, IntType, Register};
+use crate::ControlFlow;
 
 pub struct LlvmBuilder<'ctx, 'a> {
     context: &'ctx Context,
@@ -384,12 +386,12 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
 
     fn load_flag(&mut self, flag: Flag) -> Self::BoolValue {
         match flag {
-            Flag::Carry => todo!(),
+            Flag::Carry => {}
             Flag::Parity => unimplemented!(),
             Flag::AuxiliaryCarry => unimplemented!(),
             Flag::Zero => {}
             Flag::Sign => {}
-            Flag::Overflow => todo!(),
+            Flag::Overflow => {}
         };
 
         let ptr = self.build_ctx_flag_gep(self.ctx_ptr, flag);
@@ -445,10 +447,6 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
         self.builder.build_int_neg(val, "")
     }
 
-    fn bool_neg(&mut self, val: Self::BoolValue) -> Self::BoolValue {
-        self.int_neg(val)
-    }
-
     fn sub(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue {
         self.builder.build_int_sub(lhs, rhs, "")
     }
@@ -457,12 +455,16 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
         self.builder.build_int_mul(lhs, rhs, "")
     }
 
-    fn xor(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue {
-        self.builder.build_xor(lhs, rhs, "")
+    fn int_or(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue {
+        self.builder.build_or(lhs, rhs, "")
     }
 
-    fn or(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue {
-        self.builder.build_or(lhs, rhs, "")
+    fn int_and(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue {
+        self.builder.build_and(lhs, rhs, "")
+    }
+
+    fn int_xor(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue {
+        self.builder.build_xor(lhs, rhs, "")
     }
 
     fn shl(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue {
@@ -479,6 +481,23 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
 
     fn udiv(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue {
         self.builder.build_int_unsigned_div(lhs, rhs, "")
+    }
+
+    fn extract_bit(&mut self, val: Self::IntValue, bit: Self::IntValue) -> Self::BoolValue {
+        let shifted = self.builder.build_right_shift(val, bit, false, "");
+        self.builder.build_int_truncate(shifted, self.types.i1, "")
+    }
+
+    fn bool_not(&mut self, val: Self::BoolValue) -> Self::BoolValue {
+        self.builder.build_not(val, "")
+    }
+
+    fn bool_xor(&mut self, lhs: Self::BoolValue, rhs: Self::BoolValue) -> Self::BoolValue {
+        self.builder.build_xor(lhs, rhs, "")
+    }
+
+    fn bool_or(&mut self, lhs: Self::BoolValue, rhs: Self::BoolValue) -> Self::BoolValue {
+        self.builder.build_or(lhs, rhs, "")
     }
 
     fn uadd_overflow(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::BoolValue {
@@ -516,6 +535,13 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
         rhs: Self::IntValue,
     ) -> Self::BoolValue {
         self.builder.build_int_compare(cmp.into(), lhs, rhs, "")
+    }
+
+    fn direct_call(&mut self, target: u32, _next_eip: u32) {
+        self.call_basic_block(target, false);
+        // TODO: compare EIP to expected return address
+        // else we fail in case the binary mis-uses call or ret
+        //todo!()
     }
 
     fn ifelse<T, F>(&mut self, cond: Self::BoolValue, iftrue: T, iffalse: F)

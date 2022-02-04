@@ -97,7 +97,7 @@ pub fn get_operand(instr: &Instruction, operand: u32) -> Operand {
 
             let op = MemoryOperand {
                 base: get_opt_register(instr.memory_base()),
-                displacement: instr.memory_displacement64() as i64, // TODO: is this signedness OK?
+                displacement: instr.memory_displacement32() as i32 as i64,
                 scale: instr.memory_index_scale() as u8,
                 index: get_opt_register(instr.memory_index()),
                 size: memory_size,
