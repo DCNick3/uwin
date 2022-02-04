@@ -385,11 +385,34 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
     }
 
     fn store_register(&mut self, register: Register, value: Self::IntValue) {
-        if let Ok(gp) = FullSizeGeneralPurposeRegister::try_from(register) {
-            let ptr = self.build_ctx_gp_gep(self.ctx_ptr, gp);
-            self.builder.build_store(ptr, value);
+        let base = register.base_register();
+        let base_ptr = self.build_ctx_gp_gep(self.ctx_ptr, base);
+
+        if let Ok(_) = FullSizeGeneralPurposeRegister::try_from(register) {
+            self.builder.build_store(base_ptr, value);
         } else {
-            todo!()
+            assert!(!register.is_hi_reg());
+
+            // ehh, this is kinda ugly. Maybe we can index directly into the base value? how 'bout aliasing?
+            let base_val = self
+                .builder
+                .build_load(base_ptr, &*format!("{:?}", base))
+                .into_int_value();
+
+            let zero = self.make_int_value(register.size(), 0, false);
+            let ones = self.builder.build_not(zero, "");
+            let ext = self.zext(ones, IntType::I32);
+            let mask = self.builder.build_not(ext, "");
+            // the mask is smth like FFFF0000 (for 16-bit case, for example)
+            // It allows to clear the lower half of the register
+
+            let base_clean_val = self.int_and(base_val, mask);
+
+            let val_ext = self.zext(value, IntType::I32);
+
+            let res = self.int_or(base_clean_val, val_ext);
+
+            self.builder.build_store(base_ptr, res);
         }
     }
 

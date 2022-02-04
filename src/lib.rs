@@ -805,5 +805,37 @@ mod tests {
 
             test_recomp(code, expected_result);
         }
+
+        #[test]
+        fn mov_al_42_llvm() {
+            let code = assemble_x86!(
+                ; mov al, 42
+            );
+
+            let expected_result = assemble_aarch64!(
+                // it's all optimized down to just storing a byte, nice
+                ; mov w8, #0x2a
+                ; strb w8, [x0]
+                ; ret
+            );
+
+            test_recomp(code, expected_result);
+        }
+
+        #[test]
+        fn mov_ax_42_llvm() {
+            let code = assemble_x86!(
+                ; mov ax, 42
+            );
+
+            let expected_result = assemble_aarch64!(
+                // it's all optimized down to just storing a half-word, nice
+                ; mov w8, #0x2a
+                ; strh w8, [x0]
+                ; ret
+            );
+
+            test_recomp(code, expected_result);
+        }
     }
 }

@@ -11,6 +11,25 @@ mod mov {
         mov_ebx_42: (
             ; mov ebx, 42
         ) [CF ZF SF OF],
+
+        mov_al_42: (
+            ; mov al, 42
+        ) [CF ZF SF OF],
+
+        mov_al_42_dirty: (
+            ; mov eax, 0x41424344
+            ; mov al, 42
+        ) [CF ZF SF OF],
+
+        mov_ax_42_dirty: (
+            ; mov eax, 0x41424344
+            ; mov ax, 42
+        ) [CF ZF SF OF],
+
+        // mov_ah_42_dirty: (
+        //     ; mov eax, 0x41424344
+        //     ; mov ah, 42
+        // ) [CF ZF SF OF],
     }
 }
 
