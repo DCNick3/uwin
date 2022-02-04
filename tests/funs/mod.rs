@@ -1,6 +1,7 @@
 mod fib;
-
 mod sort;
+
+use crate::common::MEM_ADDR;
 
 test_functions! {
     // test name
@@ -14,6 +15,7 @@ test_functions! {
         ; mov eax, 42
         ; ret
     ),
+
     min: [
         // negative values can't be put here because it can't be part of a valid identifier
         // TODO: maybe we can patch the crate that does it/find another/???
@@ -45,5 +47,30 @@ test_functions! {
         ; cmp     eax, edx
         ; cmovl   eax, edx
         ; ret
+    ),
+
+    byte_fiddle: [
+        (MEM_ADDR, 0),
+        (MEM_ADDR, 1),
+        (MEM_ADDR, 0xff00),
+        (MEM_ADDR, 0x0102),
+        (MEM_ADDR, 0x01020304),
+        (MEM_ADDR, 0xfffe1234)
+    ] (
+        ; ->byte_fiddle:
+        ;         mov     eax, DWORD [esp+8]
+        ;         mov     edx, DWORD [esp+4]
+        ;         mov     ecx, eax
+        ;         shr     ecx, 25
+        ;         mov     BYTE [edx], cl
+        ;         mov     ecx, eax
+        ;         shr     ecx, 17
+        ;         mov     BYTE [edx+1], cl
+        ;         mov     ecx, eax
+        ;         shr     eax, 1
+        ;         shr     ecx, 9
+        ;         mov     BYTE [edx+3], al
+        ;         mov     BYTE [edx+2], cl
+        ;         ret
     ),
 }

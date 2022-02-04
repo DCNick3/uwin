@@ -352,7 +352,11 @@ macro_rules! test_functions {
             $(
                 paste::paste! {
                     #[test_log::test]
+                    #[allow(non_snake_case)]
                     fn [<on_ $($arg)_*>] () {
+                        #[allow(unused)]
+                        use super::*; // hygiene???
+
                         let args: &[u32] = &[$($arg as u32),*];
                         log::info!("Running {} on {:?}", stringify!($name), args);
 

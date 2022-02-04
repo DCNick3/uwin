@@ -81,6 +81,28 @@ impl Register {
             AH | BH | CH | DH | AL | BL | CL | DL => I8,
         }
     }
+
+    pub fn base_register(self) -> FullSizeGeneralPurposeRegister {
+        use Register::*;
+        match self {
+            EAX | AX | AL | AH => FullSizeGeneralPurposeRegister::EAX,
+            EBX | BX | BL | BH => FullSizeGeneralPurposeRegister::EBX,
+            ECX | CX | CL | CH => FullSizeGeneralPurposeRegister::ECX,
+            EDX | DX | DL | DH => FullSizeGeneralPurposeRegister::EDX,
+            ESP | SP => FullSizeGeneralPurposeRegister::ESP,
+            EBP | BP => FullSizeGeneralPurposeRegister::EBP,
+            ESI | SI => FullSizeGeneralPurposeRegister::ESI,
+            EDI | DI => FullSizeGeneralPurposeRegister::EDI,
+        }
+    }
+
+    pub fn is_hi_reg(self) -> bool {
+        use Register::*;
+        match self {
+            AH | BH | CH | DH => true,
+            _ => false,
+        }
+    }
 }
 
 #[derive(Debug, Clone, Copy)]

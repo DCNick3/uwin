@@ -365,13 +365,22 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
     }
 
     fn load_register(&mut self, register: Register) -> Self::IntValue {
-        if let Ok(gp) = FullSizeGeneralPurposeRegister::try_from(register) {
-            let ptr = self.build_ctx_gp_gep(self.ctx_ptr, gp);
-            self.builder
-                .build_load(ptr, &*format!("{:?}", gp))
-                .into_int_value()
+        let base = register.base_register();
+        let base_ptr = self.build_ctx_gp_gep(self.ctx_ptr, base);
+        let base_val = self
+            .builder
+            .build_load(base_ptr, &*format!("{:?}", base))
+            .into_int_value();
+
+        if let Ok(_) = FullSizeGeneralPurposeRegister::try_from(register) {
+            base_val
         } else {
-            todo!()
+            assert!(!register.is_hi_reg());
+            self.builder.build_int_truncate(
+                base_val,
+                self.int_type(register.size()),
+                &*format!("{:?}", register),
+            )
         }
     }
 
