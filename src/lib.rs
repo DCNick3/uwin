@@ -309,10 +309,10 @@ pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) -> Control
                 operands!([dst, count], &instr);
 
                 let count = builder.load_operand(count);
+                let count = builder.zext(count, IntType::I32);
 
-                let count_mask = builder.make_int_value(count.size(), 0x1f, false);
+                let count_mask = builder.make_u32(0x1f);
                 let count = builder.int_and(count, count_mask);
-                let count = builder.zext(count, dst.size());
 
                 let not_zero = builder.icmp(
                     ComparisonType::NotEqual,
@@ -324,15 +324,20 @@ pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) -> Control
                     not_zero,
                     |builder| {
                         let val = builder.load_operand(dst);
+                        let val = if mnemonic == Shr {
+                            builder.zext(val, IntType::I32)
+                        } else {
+                            builder.sext(val, IntType::I32)
+                        };
 
                         let res = if mnemonic == Shr {
                             builder.lshr(val, count)
                         } else {
                             builder.ashr(val, count)
                         };
-                        let count_cf =
-                            builder.sub(count, builder.make_int_value(count.size(), 1, false));
+                        let count_cf = builder.sub(count, builder.make_u32(1));
 
+                        let res = builder.trunc(res, dst.size());
                         builder.store_operand(dst, res);
 
                         let cf = builder.extract_bit(val, count_cf);
@@ -543,7 +548,7 @@ mod tests {
 
             let ir = module.print_to_string().to_string();
 
-            debug!("llvm ir:\n{}", ir);
+            trace!("llvm ir:\n{}", ir);
 
             module.verify().unwrap();
 

@@ -1,7 +1,7 @@
 use inkwell::execution_engine::JitFunction;
 use inkwell::values::BasicMetadataValueEnum;
 use inkwell::OptimizationLevel;
-use log::debug;
+use log::{debug, trace};
 use rusty_x86::llvm::backend::{BbFunc, FASTCC_CALLING_CONVENTION};
 use rusty_x86::types::{CpuContext, Flag, FullSizeGeneralPurposeRegister};
 use std::collections::BTreeMap;
@@ -184,7 +184,7 @@ fn execute_rusty_x86(code: CodeToTest) -> (CpuContext, Vec<u8>) {
 
     let _ir = module.print_to_string().to_string();
     // CLion is overwhelmed by this output and breaks
-    //debug!("llvm ir:\n{}", _ir);
+    trace!("llvm ir:\n{}", _ir);
 
     module.verify().unwrap();
 

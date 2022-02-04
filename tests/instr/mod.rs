@@ -468,6 +468,20 @@ mod sar {
             ; mov eax, -229
             ; sar eax, 34
         ) [CF ZF SF],
+
+        // basically https://github.com/nepx/halfix/issues/7
+        sar_edge_case_byte: (
+            ; mov al, -0x08
+            ; sar al, 0x09
+        ) [CF ZF SF],
+        sar_edge_case_word: (
+            ; mov ax, -0x0888
+            ; sar ax, 0x11
+        ) [CF ZF SF],
+        sar_edge_case_dword: (
+            ; mov eax, -0x08888888
+            ; sar eax, 0x21
+        ) [CF ZF SF],
     }
 }
 

@@ -385,6 +385,8 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
     }
 
     fn store_register(&mut self, register: Register, value: Self::IntValue) {
+        assert_eq!(register.size(), IntValue::size(&value));
+
         let base = register.base_register();
         let base_ptr = self.build_ctx_gp_gep(self.ctx_ptr, base);
 
