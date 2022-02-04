@@ -13,26 +13,19 @@ fn compute_condition_code<B: Builder>(
     builder: &mut B,
     condition_code: ConditionCode,
 ) -> B::BoolValue {
+    let mut comp = |cc| compute_condition_code(builder, cc);
+
     use ConditionCode::*;
     match condition_code {
         None => panic!("Can't compute None condition"),
 
-        e => {
-            let zf = builder.load_flag(Flag::Zero);
-            zf
+        o => {
+            let of = builder.load_flag(Flag::Overflow);
+            of
         }
-        ne => {
-            let zf = builder.load_flag(Flag::Zero);
-            builder.bool_not(zf)
-        }
-
-        s => {
-            let sf = builder.load_flag(Flag::Sign);
-            sf
-        }
-        ns => {
-            let sf = builder.load_flag(Flag::Sign);
-            builder.bool_not(sf)
+        no => {
+            let of = builder.load_flag(Flag::Overflow);
+            builder.bool_not(of)
         }
 
         b => {
@@ -44,6 +37,15 @@ fn compute_condition_code<B: Builder>(
             builder.bool_not(cf)
         }
 
+        e => {
+            let zf = builder.load_flag(Flag::Zero);
+            zf
+        }
+        ne => {
+            let zf = builder.load_flag(Flag::Zero);
+            builder.bool_not(zf)
+        }
+
         be => {
             let cf = builder.load_flag(Flag::Carry);
             let zf = builder.load_flag(Flag::Zero);
@@ -51,14 +53,44 @@ fn compute_condition_code<B: Builder>(
             r
         }
         a => {
-            let cf = builder.load_flag(Flag::Carry);
-            let zf = builder.load_flag(Flag::Zero);
-            let r = builder.bool_or(cf, zf);
+            let r = comp(be);
             let r = builder.bool_not(r);
             r
         }
 
-        _ => todo!("condition code {:?}", condition_code),
+        s => {
+            let sf = builder.load_flag(Flag::Sign);
+            sf
+        }
+        ns => {
+            let sf = builder.load_flag(Flag::Sign);
+            builder.bool_not(sf)
+        }
+
+        p | np => unimplemented!("condition code {:?}", condition_code),
+
+        l => {
+            let sf = builder.load_flag(Flag::Sign);
+            let of = builder.load_flag(Flag::Overflow);
+            builder.bool_xor(sf, of)
+        }
+        ge => {
+            let r = comp(l);
+            builder.bool_not(r)
+        }
+
+        le => {
+            let sf = builder.load_flag(Flag::Sign);
+            let of = builder.load_flag(Flag::Overflow);
+            let zf = builder.load_flag(Flag::Zero);
+            let is_l = builder.bool_xor(sf, of);
+            let r = builder.bool_or(is_l, zf);
+            r
+        }
+        g => {
+            let r = comp(le);
+            builder.bool_not(r)
+        }
     }
 }
 
