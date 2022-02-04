@@ -123,6 +123,9 @@ pub enum Flag {
     Zero = 3,
     Sign = 4,
     Overflow = 5,
+    Direction = 6,
+    Id = 7,
+    // !!! Make sure not to go out of bounds of CpuContext::flags
 }
 
 #[repr(C)] // for interoperability with llvm-generated functions

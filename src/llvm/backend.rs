@@ -426,6 +426,8 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
             Flag::Zero => {}
             Flag::Sign => {}
             Flag::Overflow => {}
+            Flag::Direction => {}
+            Flag::Id => {}
         };
 
         let ptr = self.build_ctx_flag_gep(self.ctx_ptr, flag);
@@ -489,6 +491,10 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
         self.builder.build_int_mul(lhs, rhs, "")
     }
 
+    fn int_not(&mut self, val: Self::IntValue) -> Self::IntValue {
+        self.builder.build_not(val, "")
+    }
+
     fn int_or(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue {
         self.builder.build_or(lhs, rhs, "")
     }
@@ -526,12 +532,16 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
         self.builder.build_not(val, "")
     }
 
-    fn bool_xor(&mut self, lhs: Self::BoolValue, rhs: Self::BoolValue) -> Self::BoolValue {
-        self.builder.build_xor(lhs, rhs, "")
-    }
-
     fn bool_or(&mut self, lhs: Self::BoolValue, rhs: Self::BoolValue) -> Self::BoolValue {
         self.builder.build_or(lhs, rhs, "")
+    }
+
+    fn bool_and(&mut self, lhs: Self::BoolValue, rhs: Self::BoolValue) -> Self::BoolValue {
+        self.builder.build_and(lhs, rhs, "")
+    }
+
+    fn bool_xor(&mut self, lhs: Self::BoolValue, rhs: Self::BoolValue) -> Self::BoolValue {
+        self.builder.build_xor(lhs, rhs, "")
     }
 
     fn uadd_overflow(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::BoolValue {
@@ -599,5 +609,25 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
         self.builder.build_unconditional_branch(cont_bb);
 
         self.builder.position_at_end(cont_bb);
+    }
+
+    fn repeat_until<B>(&mut self, body: B)
+    where
+        B: Fn(&mut Self) -> Self::BoolValue,
+        Self: Sized,
+    {
+        let loop_bb = self.context.append_basic_block(self.function, "repeat");
+
+        self.builder.build_unconditional_branch(loop_bb);
+
+        self.builder.position_at_end(loop_bb);
+
+        let cont = (body)(self);
+
+        let exit_bb = self.context.append_basic_block(self.function, "");
+        self.builder
+            .build_conditional_branch(cont, loop_bb, exit_bb);
+
+        self.builder.position_at_end(exit_bb);
     }
 }

@@ -6,7 +6,7 @@ pub mod types;
 use crate::backend::{Builder, ComparisonType, IntValue};
 use crate::disasm::Operands;
 use crate::types::Register::*;
-use crate::types::{ControlFlow, Flag, IntType, Operand};
+use crate::types::{ControlFlow, Flag, IntType, Operand, Register};
 use iced_x86::{ConditionCode, Instruction, Mnemonic};
 
 fn compute_condition_code<B: Builder>(
@@ -120,16 +120,133 @@ fn is_cmovcc(mnemonic: Mnemonic) -> bool {
     }
 }
 
+fn codegen_string_instr<B: Builder>(builder: &mut B, instr: Instruction) {
+    let execute_instr = |builder: &mut B| {
+        use Mnemonic::*;
+        // this handles the core instruction
+        match instr.mnemonic() {
+            Insb | Insw | Insd | Outsb | Outsw | Outsd => unimplemented!(),
+
+            Movsb | Movsw | Movsd | Lodsb | Lodsw | Lodsd | Stosb | Stosw | Stosd | Cmpsb
+            | Cmpsw | Cmpsd => todo!(),
+
+            Scasb | Scasw | Scasd => {
+                operands!([cmp, src], &instr);
+
+                // this code duplicates Sub & Cmp...
+                let lhs = builder.load_operand(cmp);
+                let rhs = builder.load_operand(src);
+                let res = builder.sub(lhs, rhs);
+
+                let of = builder.ssub_overflow(lhs, rhs);
+                let cf = builder.usub_overflow(lhs, rhs);
+
+                // The OF, SF, ZF, AF, PF, and CF flags are set according
+                //   to the temporary result of the comparison.
+                // AF and PF are not implemented rn
+                // not that they are actually useful...
+                builder.compute_and_store_zf(res);
+                builder.compute_and_store_sf(res);
+                builder.store_flag(Flag::Overflow, of);
+                builder.store_flag(Flag::Carry, cf);
+
+                let edi = builder.load_register(Register::EDI);
+
+                let size = builder.make_u32(src.size().byte_width() as u32);
+
+                // if DF = 1 => EDI += size, else => EDI -= size
+                let df = builder.load_flag(Flag::Direction);
+                builder.ifelse(
+                    df,
+                    |builder| {
+                        let edi = builder.sub(edi, size);
+                        builder.store_register(Register::EDI, edi);
+                    },
+                    |builder| {
+                        let edi = builder.add(edi, size);
+                        builder.store_register(Register::EDI, edi);
+                    },
+                );
+            }
+            _ => unreachable!(),
+        }
+    };
+
+    // those handle the repetition
+    enum Prefix {
+        Rep,
+        Repe,
+        Repne,
+    }
+
+    // REP and REPE are actually encoded the same way
+    // Semantics depend on the instruction encoded
+    let prefix = if instr.has_rep_prefix() {
+        use Mnemonic::*;
+        match instr.mnemonic() {
+            Scasb | Scasw | Scasd | Cmpsb | Cmpsw | Cmpsd => Some(Prefix::Repe),
+            _ => Some(Prefix::Rep),
+        }
+    } else if instr.has_repne_prefix() {
+        Some(Prefix::Repne)
+    } else {
+        None
+    };
+
+    if let Some(prefix) = prefix {
+        let count_reg = Register::ECX;
+
+        let start_count = builder.load_register(count_reg);
+        let should_enter = builder.icmp(ComparisonType::NotEqual, start_count, builder.make_u32(0));
+        builder.ifelse(
+            should_enter,
+            |builder| {
+                builder.repeat_until(|builder| {
+                    execute_instr(builder);
+
+                    let counter = builder.load_register(count_reg);
+                    let counter = builder.sub(counter, builder.make_u32(1));
+
+                    builder.store_register(count_reg, counter);
+
+                    let counter_continue =
+                        builder.icmp(ComparisonType::NotEqual, counter, builder.make_u32(0));
+
+                    let additional_continue = match prefix {
+                        Prefix::Rep => builder.make_true(),
+                        Prefix::Repe => builder.load_flag(Flag::Zero),
+                        Prefix::Repne => {
+                            let zf = builder.load_flag(Flag::Zero);
+                            builder.bool_not(zf)
+                        }
+                    };
+
+                    builder.bool_and(counter_continue, additional_continue)
+                });
+            },
+            |_| {},
+        );
+    } else {
+        execute_instr(builder)
+    }
+}
+
 // TODO: handle control flow
 pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) -> ControlFlow<B> {
     use iced_x86::Mnemonic::*;
 
     assert!(!instr.has_lock_prefix());
+    assert!(!instr.has_xacquire_prefix());
+    assert!(!instr.has_xrelease_prefix());
+
+    if instr.is_string_instruction() {
+        codegen_string_instr(builder, instr);
+        return ControlFlow::NextInstruction;
+    }
+
     assert!(!instr.has_rep_prefix());
     assert!(!instr.has_repe_prefix());
     assert!(!instr.has_repne_prefix());
-    assert!(!instr.has_xacquire_prefix());
-    assert!(!instr.has_xrelease_prefix());
 
     let mnemonic = instr.mnemonic();
 
@@ -223,6 +340,24 @@ pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) -> Control
                 assert_eq!(dst.size(), addr.size());
                 builder.store_operand(dst, addr);
             }
+            Dec => {
+                operands!([dst], &instr);
+
+                let val = builder.load_operand(dst);
+
+                let one = builder.make_int_value(val.size(), 1, false);
+
+                let res = builder.sub(val, one);
+
+                builder.store_operand(dst, res);
+
+                let of = builder.ssub_overflow(val, one);
+
+                // The CF flag is not affected. The OF, SF, ZF, AF, and PF flags are set according to the result.
+                builder.compute_and_store_zf(res);
+                builder.compute_and_store_sf(res);
+                builder.store_flag(Flag::Overflow, of);
+            }
             Imul => {
                 match *instr.get_operands().as_slice() {
                     [_] => {
@@ -286,6 +421,14 @@ pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) -> Control
                 builder.compute_and_store_sf(res);
                 builder.store_flag(Flag::Carry, builder.make_false());
                 builder.store_flag(Flag::Overflow, builder.make_false());
+            }
+            Not => {
+                operands!([dst], &instr);
+
+                let val = builder.load_operand(dst);
+                let val = builder.int_not(val);
+
+                builder.store_operand(dst, val);
             }
             And | Test => {
                 operands!([dst, src], &instr);

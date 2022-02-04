@@ -1,4 +1,4 @@
-use crate::types::{Flag, IntType, MemoryOperand, Operand, Register};
+use crate::types::{Flag, IntType, MemoryOperand, Operand, Register, SegmentRegister};
 
 pub trait IntValue: Clone + Copy {
     fn size(&self) -> IntType;
@@ -67,6 +67,7 @@ pub trait Builder {
     fn int_neg(&mut self, val: Self::IntValue) -> Self::IntValue;
     fn sub(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue;
     fn mul(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue;
+    fn int_not(&mut self, val: Self::IntValue) -> Self::IntValue;
     fn int_or(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue;
     fn int_and(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue;
     fn int_xor(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue;
@@ -79,8 +80,9 @@ pub trait Builder {
     fn extract_bit(&mut self, val: Self::IntValue, bit: Self::IntValue) -> Self::BoolValue;
 
     fn bool_not(&mut self, val: Self::BoolValue) -> Self::BoolValue;
-    fn bool_xor(&mut self, lhs: Self::BoolValue, rhs: Self::BoolValue) -> Self::BoolValue;
     fn bool_or(&mut self, lhs: Self::BoolValue, rhs: Self::BoolValue) -> Self::BoolValue;
+    fn bool_and(&mut self, lhs: Self::BoolValue, rhs: Self::BoolValue) -> Self::BoolValue;
+    fn bool_xor(&mut self, lhs: Self::BoolValue, rhs: Self::BoolValue) -> Self::BoolValue;
 
     fn uadd_overflow(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::BoolValue;
     fn sadd_overflow(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::BoolValue;
@@ -106,8 +108,26 @@ pub trait Builder {
         F: FnOnce(&mut Self),
         Self: Sized;
 
+    // fn r#while<C, B>(&mut self, cond: C, body: B)
+    // where
+    //     C: FnOnce(&mut Self) -> Self::BoolValue,
+    //     B: Fn(&mut Self),
+    //     Self: Sized;
+
+    fn repeat_until<B>(&mut self, body: B)
+    where
+        B: Fn(&mut Self) -> Self::BoolValue,
+        Self: Sized;
+
     fn compute_memory_operand_address(&mut self, op: MemoryOperand) -> Self::IntValue {
-        assert!(op.segment.is_none());
+        use SegmentRegister::*;
+        match op.segment {
+            None => {}
+            // we assume that those segments are mapped __as usual__
+            Some(CS | DS | ES | SS) => {}
+            // and those map to special regions (TLS, TEB, whatever, it depends on OS)
+            Some(FS | GS) => todo!(),
+        }
 
         let mut res = self.make_i32(i32::try_from(op.displacement).unwrap());
 

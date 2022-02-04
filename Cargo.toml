@@ -21,7 +21,6 @@ branch = "master"
 features = ["llvm13-0", "target-all"]
 
 [dev-dependencies]
-dynasmrt = "1.2.1"
 test-log = "0.2.8"
 unicorn = "0.9.1"
 bad64 = "0.6.0"
@@ -29,3 +28,8 @@ pretty-hex = "0.2.1"
 region = "3.0.0"
 env_logger = "0.9.0"
 paste = "1.0.6"
+
+[dev-dependencies.dynasmrt]
+version = "1.2.1"
+git = "https://github.com/DCNick3/dynasm-rs"
+branch = "master"

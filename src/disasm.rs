@@ -1,4 +1,4 @@
-use crate::types::{IntType, MemoryOperand, Operand, Register};
+use crate::types::{IntType, MemoryOperand, Operand, Register, SegmentRegister};
 use iced_x86::{
     Formatter, Instruction, MemorySize, NasmFormatter, OpKind, Register as IcedRegister,
 };
@@ -55,7 +55,9 @@ fn get_opt_register(iced_register: IcedRegister) -> Option<Register> {
 pub fn get_operand(instr: &Instruction, operand: u32) -> Operand {
     use crate::types::Operand::*;
 
-    match instr.op_kind(operand) {
+    let op_kind = instr.op_kind(operand);
+
+    match op_kind {
         OpKind::Register => Register(get_register(instr.op_register(operand))),
 
         OpKind::NearBranch16 => panic!("unsupported branch address size (16)"),
@@ -76,7 +78,7 @@ pub fn get_operand(instr: &Instruction, operand: u32) -> Operand {
         OpKind::Immediate8to64 => Immediate64(instr.immediate8to64() as u64),
         OpKind::Immediate32to64 => Immediate64(instr.immediate32to64() as u64),
 
-        OpKind::Memory => {
+        OpKind::Memory | OpKind::MemoryESEDI => {
             let memory_size = match instr.memory_size() {
                 MemorySize::UInt8 => Some(IntType::I8),
                 MemorySize::UInt16 => Some(IntType::I16),
@@ -93,15 +95,26 @@ pub fn get_operand(instr: &Instruction, operand: u32) -> Operand {
                 s => panic!("Unsupported memory size: {:?}", s),
             };
 
-            assert!(instr.segment_prefix() == IcedRegister::None); // TODO: segments (they are not that interesting, honestly)
+            let op = if op_kind == OpKind::Memory {
+                assert_eq!(instr.segment_prefix(), IcedRegister::None); // TODO: segments (they are not that interesting, honestly)
 
-            let op = MemoryOperand {
-                base: get_opt_register(instr.memory_base()),
-                displacement: instr.memory_displacement32() as i32 as i64,
-                scale: instr.memory_index_scale() as u8,
-                index: get_opt_register(instr.memory_index()),
-                size: memory_size,
-                segment: None,
+                MemoryOperand {
+                    base: get_opt_register(instr.memory_base()),
+                    displacement: instr.memory_displacement32() as i32 as i64,
+                    scale: instr.memory_index_scale() as u8,
+                    index: get_opt_register(instr.memory_index()),
+                    size: memory_size,
+                    segment: None,
+                }
+            } else {
+                MemoryOperand {
+                    base: Some(super::Register::EDI),
+                    displacement: 0,
+                    scale: 0,
+                    index: None,
+                    size: memory_size,
+                    segment: Some(SegmentRegister::ES),
+                }
             };
             Memory(op)
         }
