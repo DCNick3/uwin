@@ -359,50 +359,59 @@ pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) -> Control
                 builder.store_flag(Flag::Overflow, of);
             }
             Imul => {
-                match *instr.get_operands().as_slice() {
+                let (dst, lhs, rhs) = match *instr.get_operands().as_slice() {
                     [_] => {
                         todo!()
                     }
                     [dst, src] => {
                         assert_eq!(dst.size(), src.size());
-                        let double_size = dst.size().double_sized();
-
                         let lhs = builder.load_operand(dst);
-                        let lhs = builder.sext(lhs, double_size);
-
                         let rhs = builder.load_operand(src);
-                        let rhs = builder.sext(rhs, double_size);
 
-                        let res = builder.mul(lhs, rhs);
-                        let res_trunc = builder.trunc(res, dst.size());
-
-                        let res_trunc_ext = builder.sext(res_trunc, res.size());
-                        let overflow = builder.icmp(ComparisonType::NotEqual, res, res_trunc_ext);
-
-                        // TODO: flags (based on comparison of res and sext(res_trunc))
-                        // For the one operand form of the instruction, the CF and OF flags are set
-                        // when significant bits are carried into the upper half of the result and
-                        // cleared when the result fits exactly in the lower half of the result.
-
-                        // For the two- and three-operand forms of the instruction,
-                        // the CF and OF flags are set when the result must be truncated to fit in the
-                        // destination operand size and cleared when the result fits exactly
-                        // in the destination operand size.
-
-                        // The SF, ZF, AF, and PF flags are undefined.
-                        // TODO: do we want to represent ub here? leaving as zero for now
-                        builder.store_flag(Flag::Zero, builder.make_false());
-                        builder.store_flag(Flag::Sign, builder.make_false());
-                        builder.store_flag(Flag::Overflow, overflow);
-                        builder.store_flag(Flag::Carry, overflow);
-
-                        builder.store_operand(dst, res_trunc)
+                        (dst, lhs, rhs)
                     }
-                    [_, _, _] => {
-                        todo!()
+                    [dst, src1, src2] => {
+                        assert_eq!(dst.size(), src1.size());
+                        assert_eq!(src1.size(), src2.size());
+
+                        let lhs = builder.load_operand(src1);
+                        let rhs = builder.load_operand(src2);
+
+                        (dst, lhs, rhs)
                     }
                     _ => unreachable!(),
-                }
+                };
+
+                let double_size = dst.size().double_sized();
+
+                let lhs = builder.sext(lhs, double_size);
+
+                let rhs = builder.sext(rhs, double_size);
+
+                let res = builder.mul(lhs, rhs);
+                let res_trunc = builder.trunc(res, dst.size());
+
+                let res_trunc_ext = builder.sext(res_trunc, res.size());
+                let overflow = builder.icmp(ComparisonType::NotEqual, res, res_trunc_ext);
+
+                // TODO: flags (based on comparison of res and sext(res_trunc))
+                // For the one operand form of the instruction, the CF and OF flags are set
+                // when significant bits are carried into the upper half of the result and
+                // cleared when the result fits exactly in the lower half of the result.
+
+                // For the two- and three-operand forms of the instruction,
+                // the CF and OF flags are set when the result must be truncated to fit in the
+                // destination operand size and cleared when the result fits exactly
+                // in the destination operand size.
+
+                // The SF, ZF, AF, and PF flags are undefined.
+                // TODO: do we want to represent ub here? leaving as zero for now
+                builder.store_flag(Flag::Zero, builder.make_false());
+                builder.store_flag(Flag::Sign, builder.make_false());
+                builder.store_flag(Flag::Overflow, overflow);
+                builder.store_flag(Flag::Carry, overflow);
+
+                builder.store_operand(dst, res_trunc)
             }
             Xor => {
                 operands!([dst, src], &instr);
