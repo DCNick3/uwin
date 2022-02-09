@@ -1,61 +1,188 @@
+use elfloader::{ElfBinary, ElfLoader, ElfLoaderErr, Flags, LoadableHeaders, Rela, VAddr, P64};
 use inkwell::execution_engine::JitFunction;
 use inkwell::values::BasicMetadataValueEnum;
 use inkwell::OptimizationLevel;
 use log::{debug, trace};
+use region::Allocation;
 use rusty_x86::llvm::backend::{BbFunc, FASTCC_CALLING_CONVENTION};
+use rusty_x86::memory_image::{MemoryImage, MemoryImageItem, Protection};
 use rusty_x86::types::{CpuContext, Flag, FullSizeGeneralPurposeRegister};
 use std::collections::BTreeMap;
-use std::io::Write;
 use strum::IntoEnumIterator;
 use unicorn;
 use unicorn::Error::ETCH_UNMAPPED;
-use unicorn::{Cpu, CpuX86, MemHookType, Protection, RegisterX86};
+use unicorn::{Cpu, CpuX86, Protection as UniProtection, RegisterX86};
 
 pub const CODE_ADDR: u32 = 0x200000;
 pub const MEM_ADDR: u32 = 0x100000;
 pub const MEM_SIZE: u32 = 0x10000;
+
+const STACK_ADDR: u32 = 0x38000000;
+const STACK_SIZE: u32 = 0x10000; // 64 KiB
+
 pub const MAGIC_RETURN_ADDR: u32 = 0xCAFEBABE;
+pub const PAGE_ALIGN: u32 = 0x1000;
 
 #[derive(Clone)]
 pub enum CodeToTest<'a> {
-    Snippet(&'a [u8]),             // just the code
-    Function(&'a [u8], &'a [u32]), // code & args
+    Snippet(&'a [u8]),                // just the code
+    Function(&'a [u8], &'a [u32]),    // code & args
+    ElfFunction(&'a [u8], &'a [u32]), // elf contents & args
 }
 
 impl<'a> CodeToTest<'a> {
-    pub fn get_code(&self) -> &'a [u8] {
+    pub fn get_code(&self) -> (MemoryImage, u32) {
+        let mut image = MemoryImage::new();
+        let entry;
         match self {
-            CodeToTest::Snippet(c) => c,
-            CodeToTest::Function(c, _) => c,
+            CodeToTest::Snippet(c) | CodeToTest::Function(c, _) => {
+                image.add_region(CODE_ADDR, Protection::READ_EXECUTE, c.to_vec());
+                image.add_zero_region(MEM_ADDR, Protection::READ_WRITE, MEM_SIZE);
+                entry = CODE_ADDR;
+            }
+            CodeToTest::ElfFunction(elf, _) => {
+                let elf = ElfBinary::new(elf).unwrap();
+                let mut builder_wrap = MemoryImageWrap(image);
+                elf.load(&mut builder_wrap).unwrap();
+                image = builder_wrap.0;
+                entry = elf.entry_point() as u32;
+            }
+        };
+        (image, entry)
+    }
+
+    pub fn get_args(&self) -> Vec<u32> {
+        match self {
+            CodeToTest::Snippet(_) => vec![],
+            CodeToTest::Function(_, args) => args.to_vec(),
+            CodeToTest::ElfFunction(_, args) => args.to_vec(),
         }
     }
 }
 
-fn execute_unicorn(code: CodeToTest) -> (CpuContext, Vec<u8>) {
-    let pad = (0x1000 - (code.get_code().len() % 0x1000)) % 0x1000;
-    let code_page_size = code.get_code().len() + pad;
+struct MemoryImageWrap(MemoryImage);
 
-    let mut emu = CpuX86::new(unicorn::Mode::MODE_32).unwrap();
+impl<'a> ElfLoader for MemoryImageWrap {
+    fn allocate(&mut self, _: LoadableHeaders) -> Result<(), ElfLoaderErr> {
+        Ok(()) // ignore
+    }
 
-    let base_addr = CODE_ADDR as u64;
+    fn load(&mut self, flags: Flags, base: VAddr, region: &[u8]) -> Result<(), ElfLoaderErr> {
+        // add to the list
+        let mut prot = Protection::NONE;
+        if flags.is_read() {
+            prot |= Protection::READ;
+        }
+        if flags.is_write() {
+            prot |= Protection::WRITE;
+        }
+        if flags.is_execute() {
+            prot |= Protection::EXECUTE;
+        }
+        self.0.add_region(base as u32, prot, region.to_vec());
+        Ok(())
+    }
 
-    // map the code
+    fn relocate(&mut self, _: &Rela<P64>) -> Result<(), ElfLoaderErr> {
+        Ok(()) // ignore
+    }
+}
+
+// impl<'a> ElfLoader for UnicornEmu<'a> {
+//     fn allocate(&mut self, load_headers: LoadableHeaders) -> Result<(), ElfLoaderErr> {
+//         for header in load_headers {
+//             debug!(
+//                 "LOAD addr = 0x{:08x} size = 0x{:08x} flags = {}",
+//                 header.virtual_addr(),
+//                 header.mem_size(),
+//                 header.flags()
+//             );
+//
+//             let mut prot = UniProtection::NONE;
+//             if header.flags().is_read() {
+//                 prot |= UniProtection::READ
+//             }
+//             if header.flags().is_write() {
+//                 prot |= UniProtection::WRITE
+//             }
+//             if header.flags().is_execute() {
+//                 prot |= UniProtection::EXEC
+//             }
+//
+//             // enforce W^X
+//             assert!(!(header.flags().is_write() && header.flags().is_execute()));
+//
+//             // align up to page size
+//             const PAGE_SIZE: u64 = 0x1000;
+//             let mut mem_size = header.mem_size();
+//             if mem_size % PAGE_SIZE != 0 {
+//                 mem_size += PAGE_SIZE - (mem_size % PAGE_SIZE);
+//             }
+//
+//             self.0
+//                 .mem_map(header.virtual_addr(), mem_size as usize, prot)
+//                 .unwrap()
+//         }
+//         Ok(())
+//     }
+//
+//     fn load(&mut self, flags: Flags, base: VAddr, region: &[u8]) -> Result<(), ElfLoaderErr> {
+//         self.0.mem_write(base, region).unwrap();
+//         Ok(())
+//     }
+//
+//     fn relocate(&mut self, entry: &Rela<P64>) -> Result<(), ElfLoaderErr> {
+//         // don't relocate, we can always load at exact address
+//         Ok(())
+//     }
+// }
+
+fn load_unicorn(
+    emu: &mut CpuX86,
+    code_and_args: CodeToTest,
+) -> (u64, Option<u64>, Vec<(u64, u64)>) {
+    let (image, entry) = code_and_args.get_code();
+
+    for MemoryImageItem {
+        addr,
+        protection,
+        data,
+    } in image.iter()
+    {
+        let mut uprot = UniProtection::NONE;
+        if protection.contains(Protection::READ) {
+            uprot |= UniProtection::READ
+        }
+        if protection.contains(Protection::WRITE) {
+            uprot |= UniProtection::WRITE
+        }
+        if protection.contains(Protection::EXECUTE) {
+            uprot |= UniProtection::EXEC
+        }
+        let mut len = data.len();
+        while len % PAGE_ALIGN as usize != 0 {
+            len += 1;
+        }
+
+        emu.mem_map(*addr as u64, len, uprot).unwrap();
+        emu.mem_write(*addr as u64, data.as_slice()).unwrap()
+    }
+
     emu.mem_map(
-        base_addr,
-        code_page_size,
-        Protection::READ | Protection::EXEC,
+        STACK_ADDR as u64,
+        STACK_SIZE as usize,
+        UniProtection::READ | UniProtection::WRITE,
     )
     .unwrap();
-    emu.mem_write(base_addr, code.get_code()).unwrap();
+    let mut esp = STACK_ADDR + STACK_SIZE - 4;
 
-    emu.mem_map(
-        MEM_ADDR as u64,
-        MEM_SIZE as usize,
-        Protection::READ | Protection::WRITE,
-    )
-    .unwrap();
-
-    let mut esp = MEM_ADDR + MEM_SIZE - 4;
+    let exec_range = match code_and_args {
+        CodeToTest::Snippet(code) | CodeToTest::Function(code, _) => {
+            let base_addr = entry as u64;
+            (base_addr, Some(base_addr + code.len() as u64))
+        }
+        CodeToTest::ElfFunction(_, _) => (entry as u64, None),
+    };
 
     let mut push = |v: u32| {
         esp = esp - 4;
@@ -63,36 +190,43 @@ fn execute_unicorn(code: CodeToTest) -> (CpuContext, Vec<u8>) {
     };
 
     // now write all the args (if any)
-    if let CodeToTest::Function(_, args) = code {
-        for arg in args.iter().rev() {
-            push(*arg)
-        }
+    for arg in code_and_args.get_args().iter().rev() {
+        push(*arg)
     }
     push(MAGIC_RETURN_ADDR); // return address
-
     emu.reg_write(RegisterX86::ESP, esp as u64).unwrap();
 
-    emu.add_mem_hook(
-        MemHookType::MEM_FETCH,
-        MAGIC_RETURN_ADDR as u64,
-        MAGIC_RETURN_ADDR as u64,
-        |emu, _, _, _, _| {
-            emu.emu_stop().unwrap();
-            false
-        },
-    )
-    .unwrap();
+    let mut mem: Vec<(u64, u64)> = image
+        .iter()
+        .filter(|h| h.protection.contains(Protection::WRITE))
+        .map(|h| (h.addr as u64, h.data.len() as u64))
+        .collect();
 
-    // TODO: can we stop on return? Maybe hooks?
-    let res = emu.emu_start(
-        base_addr,
-        base_addr + code.get_code().len() as u64,
-        10 * unicorn::SECOND_SCALE,
-        0,
-    );
+    mem.push((STACK_ADDR as u64, STACK_SIZE as u64));
+
+    (exec_range.0, exec_range.1, mem)
+}
+
+fn execute_unicorn(code: CodeToTest) -> (CpuContext, Vec<(u32, Vec<u8>)>) {
+    let mut emu = CpuX86::new(unicorn::Mode::MODE_32).unwrap();
+
+    // emu.add_mem_hook(
+    //     MemHookType::MEM_FETCH,
+    //     MAGIC_RETURN_ADDR as u64,
+    //     MAGIC_RETURN_ADDR as u64,
+    //     |emu, _, _, _, _| {
+    //         emu.emu_stop().unwrap();
+    //         false
+    //     },
+    // )
+    // .unwrap();
+
+    let (base_addr, end, regions) = load_unicorn(&mut emu, code);
+
+    let res = emu.emu_start(base_addr, end.unwrap_or(0), 10 * unicorn::SECOND_SCALE, 0);
+    let eip = emu.reg_read(RegisterX86::EIP).unwrap();
     if let Err(e) = res {
-        if e == ETCH_UNMAPPED && emu.reg_read(RegisterX86::EIP).unwrap() as u32 == MAGIC_RETURN_ADDR
-        {
+        if e == ETCH_UNMAPPED && eip as u32 == MAGIC_RETURN_ADDR {
             // all good
         } else {
             res.unwrap();
@@ -143,17 +277,19 @@ fn execute_unicorn(code: CodeToTest) -> (CpuContext, Vec<u8>) {
     ctx.set_flag(Flag::Sign, flags & 0x80 != 0);
     ctx.set_flag(Flag::Overflow, flags & 0x800 != 0);
 
-    let mem = emu
-        .mem_read_as_vec(MEM_ADDR as u64, MEM_SIZE as usize)
-        .unwrap();
+    let mem = regions
+        .iter()
+        .map(|r| (r.0 as u32, emu.mem_read_as_vec(r.0, r.1 as usize).unwrap()))
+        .collect();
 
     (ctx, mem)
 }
 
-fn execute_rusty_x86(code: CodeToTest) -> (CpuContext, Vec<u8>) {
+fn execute_rusty_x86(code_and_args: CodeToTest) -> (CpuContext, Vec<(u32, Vec<u8>)>) {
     let context = inkwell::context::Context::create();
     let types = &rusty_x86::llvm::backend::Types::new(&context);
-    let module = rusty_x86::llvm::recompile(&context, types, CODE_ADDR, code.get_code());
+    let (image, entry) = code_and_args.get_code();
+    let module = rusty_x86::llvm::recompile(&context, types, &image, entry);
 
     let entry_name = rusty_x86::llvm::backend::LlvmBuilder::get_name_for(CODE_ADDR);
 
@@ -190,7 +326,7 @@ fn execute_rusty_x86(code: CodeToTest) -> (CpuContext, Vec<u8>) {
 
     let execution_engine = module
         .create_jit_execution_engine(
-            OptimizationLevel::None, /* TODO: do we want optimizations? */
+            OptimizationLevel::Aggressive, /* TODO: do we want optimizations? */
         )
         .unwrap();
 
@@ -203,36 +339,64 @@ fn execute_rusty_x86(code: CodeToTest) -> (CpuContext, Vec<u8>) {
     // this way we can control all mappings in the whole virtualized 32-bit address space
     let mut target_mem_region = region::alloc(0x100000000, region::Protection::NONE).unwrap();
 
-    // map a small region of memory
-    // TODO: add is UB if we somehow get out of bounds of allocated object. What is object exactly in this case?
-    let mapped_start = unsafe { target_mem_region.as_ptr::<u8>().add(MEM_ADDR as usize) };
+    let map_region = |addr: u32, protection: Protection, data: &[u8]| -> Allocation {
+        let addr = unsafe { target_mem_region.as_ptr::<u8>().add(addr as usize) };
 
-    let mut mapped = region::alloc_at(
-        mapped_start,
-        MEM_SIZE as usize,
-        region::Protection::READ_WRITE,
-    )
-    .unwrap();
+        let mut rprot = region::Protection::NONE;
+        if protection.contains(Protection::READ) {
+            rprot |= region::Protection::READ
+        }
+        if protection.contains(Protection::WRITE) {
+            rprot |= region::Protection::WRITE
+        }
+        let mut len = data.len();
+        while len % PAGE_ALIGN as usize != 0 {
+            len += 1;
+        }
 
-    // fill the mapped memory with zeroes (is it necessary?)
-    // TODO: do we break any language rules by shuffling pointers around this way?
-    unsafe { std::slice::from_raw_parts_mut(mapped.as_mut_ptr(), mapped.len()).fill(0u8) }
+        // firstly map the page as read-write to pre-fill it with our data
+        let mut alloc = region::alloc_at(addr, len, region::Protection::READ_WRITE).unwrap();
 
-    let mut esp = MEM_ADDR + MEM_SIZE - 4;
+        unsafe {
+            std::slice::from_raw_parts_mut(alloc.as_mut_ptr(), data.len()).copy_from_slice(data)
+        };
+
+        // now map the page as it will be used by the target
+        unsafe { region::protect(alloc.as_ptr::<u8>(), alloc.len(), rprot).unwrap() };
+
+        alloc
+    };
+
+    let mut allocated_regions: Vec<Allocation> = image
+        .iter()
+        .map(
+            |MemoryImageItem {
+                 addr,
+                 protection,
+                 data,
+             }| { map_region(*addr, *protection, data.as_slice()) },
+        )
+        .collect();
+
+    allocated_regions.push(map_region(
+        STACK_ADDR,
+        Protection::READ_WRITE,
+        &[0u8; STACK_SIZE as usize],
+    ));
+
+    let mut esp = STACK_ADDR + STACK_SIZE - 4;
 
     let mut push = |v: u32| {
         esp = esp - 4;
         unsafe {
             // TODO: do we break any language rules by shuffling pointers around this way?
             let ptr = target_mem_region.as_mut_ptr::<u8>().add(esp as usize);
-            std::slice::from_raw_parts_mut(ptr, 4)
-                .write(&v.to_le_bytes())
-                .unwrap();
+            std::slice::from_raw_parts_mut(ptr, 4).copy_from_slice(&v.to_le_bytes());
         }
     };
 
     // now write all the args (if any)
-    if let CodeToTest::Function(_, args) = code {
+    if let CodeToTest::Function(_, args) = code_and_args {
         for arg in args.iter().rev() {
             push(*arg)
         }
@@ -246,9 +410,25 @@ fn execute_rusty_x86(code: CodeToTest) -> (CpuContext, Vec<u8>) {
         fun.call(&mut cpu_context, target_mem_region.as_mut_ptr());
     };
 
-    let mem = unsafe { std::slice::from_raw_parts(mapped_start, MEM_SIZE as usize) };
+    let mem = image
+        .iter()
+        .filter(|h| h.protection.contains(Protection::WRITE))
+        .chain(
+            [MemoryImageItem {
+                addr: STACK_ADDR,
+                protection: Protection::READ_WRITE,
+                data: vec![0u8; STACK_SIZE as usize],
+            }]
+            .iter(),
+        )
+        .map(|h| unsafe {
+            let ptr = target_mem_region.as_mut_ptr::<u8>().add(h.addr as usize);
+            let mem = std::slice::from_raw_parts(ptr, h.data.len());
+            (h.addr, mem.to_vec())
+        })
+        .collect();
 
-    (cpu_context, mem.into())
+    (cpu_context, mem)
 }
 
 fn context_to_gp_map(context: &CpuContext) -> BTreeMap<FullSizeGeneralPurposeRegister, u32> {
@@ -264,13 +444,30 @@ fn context_to_flag_list(context: &CpuContext, flags: &[Flag]) -> Vec<Flag> {
 }
 
 pub fn test_code(code: CodeToTest, flags: Vec<Flag>) {
-    debug!(
-        "CODE:\n{}",
-        rusty_x86::disasm::disassemble(code.get_code(), CODE_ADDR as u64)
-    );
+    // TODO: make it work
+    // debug!(
+    //     "CODE:\n{}",
+    //     rusty_x86::disasm::disassemble(code.get_code())
+    // );
 
     let unicorn = execute_unicorn(code.clone());
+
+    // TODO: custom dumps with more control (over addresses, for example)
+    let unicorn_mem = unicorn
+        .1
+        .iter()
+        .map(|mem| format!("0x{:08x}:\n{}\n", mem.0, pretty_hex::pretty_hex(&mem.1)))
+        .fold("".to_string(), |acc, el| acc + el.as_str());
+
+    //debug!("MEM:\n{}", unicorn_mem);
+
     let rusty_x86 = execute_rusty_x86(code);
+
+    let rusty_x86_mem = rusty_x86
+        .1
+        .iter()
+        .map(|mem| format!("0x{:08x}:\n{}\n", mem.0, pretty_hex::pretty_hex(&mem.1)))
+        .fold("".to_string(), |acc, el| acc + el.as_str());
 
     debug!("RESULT rusty_x86 = {:?}", rusty_x86.0);
     debug!("RESULT unicorn   = {:?}", unicorn.0);
@@ -289,9 +486,6 @@ pub fn test_code(code: CodeToTest, flags: Vec<Flag>) {
     debug!("FLAGS (filtered) rusty_x86 = {:?}", rusty_x86_flags);
 
     assert_eq!(rusty_x86_flags, unicorn_flags);
-
-    let rusty_x86_mem = pretty_hex::pretty_hex(&rusty_x86.1);
-    let unicorn_mem = pretty_hex::pretty_hex(&unicorn.1);
 
     assert_eq!(rusty_x86_mem, unicorn_mem);
 }

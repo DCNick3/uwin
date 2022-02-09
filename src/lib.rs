@@ -1,6 +1,9 @@
+extern crate core;
+
 pub mod backend;
 pub mod disasm;
 pub mod llvm;
+pub mod memory_image;
 pub mod types;
 
 use crate::backend::{Builder, ComparisonType, IntValue};
@@ -684,6 +687,7 @@ mod tests {
 
     mod llvm {
         use crate::llvm;
+        use crate::memory_image::MemoryImage;
         use inkwell::context::Context;
         use inkwell::targets::FileType;
         #[allow(unused_imports)]
@@ -694,7 +698,10 @@ mod tests {
         fn recompile(code: &[u8]) -> Vec<u8> {
             let context = &Context::create();
             let types = &llvm::backend::Types::new(&context);
-            let mut module = llvm::recompile(context, types, 0x1000, code);
+
+            let code = MemoryImage::from_code_region(0x1000, code);
+
+            let mut module = llvm::recompile(context, types, &code, 0x1000);
 
             let target_machine = llvm::get_aarch64_target_machine();
 

@@ -12,6 +12,7 @@ use log::debug;
 
 use crate::codegen_instr;
 use crate::llvm::backend::{LlvmBuilder, Types};
+use crate::memory_image::MemoryImage;
 
 pub mod backend;
 
@@ -35,29 +36,29 @@ pub fn get_aarch64_target_machine() -> TargetMachine {
 pub fn recompile<'ctx>(
     context: &'ctx Context,
     types: &'ctx Types,
-    base_address: u32,
-    code: &[u8],
+    image: &MemoryImage,
+    entrypoint: u32,
 ) -> Module<'ctx> {
     let module_obj = context.create_module("test");
     let module = &module_obj;
 
-    let mut decoder = Decoder::new(32, code, DecoderOptions::NONE);
-
     let mut queue = VecDeque::new();
     let mut processing = HashSet::new();
-    queue.push_back(base_address);
+    queue.push_back(entrypoint);
 
     while !queue.is_empty() {
         let address = queue.pop_front().unwrap();
         processing.insert(address);
 
-        let offset = address.checked_sub(base_address).unwrap();
+        //let offset = address.checked_sub(base_address).unwrap();
 
         debug!("processing bb at 0x{:08x}", address);
 
         let mut builder = LlvmBuilder::new(context, module, types, address);
+
+        // this might be kinda expensive. TODO: how can we recycle decoders? Maybe create one for each region?
+        let mut decoder = Decoder::new(32, image.execute_all_at(address), DecoderOptions::NONE);
         decoder.set_ip(address as u64);
-        decoder.set_position(offset as usize).unwrap();
 
         loop {
             // kinda want to assert that we should be able to decode, but some tests without ret's don't work then

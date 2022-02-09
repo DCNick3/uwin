@@ -1,4 +1,5 @@
 mod fib;
+mod msvc;
 mod sort;
 
 use crate::common::MEM_ADDR;
@@ -189,16 +190,4 @@ test_functions! {
         ;         ret
     ),
 
-    msvc_rand: [
-        (0), (1), (2), (3),
-        (100), (200), (300),
-        (0xffffffff)
-    ] (
-        ; mov     eax, [esp+4]
-        ; imul    eax, eax, 0x343FD
-        ; add     eax, 0x269EC3
-        ; sar     eax, 0x10
-        ; and     eax, 0x7FFF
-        ; retn
-    ),
 }
