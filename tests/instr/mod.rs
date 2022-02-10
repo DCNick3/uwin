@@ -33,6 +33,50 @@ mod mov {
     }
 }
 
+mod movzx {
+    test_snippets! {
+        movzx_16_0: (
+            ; mov ax, 0
+            ; movzx eax, ax
+        ) [CF ZF SF OF],
+
+        movzx_16_0xffff: (
+            ; mov ax, -1
+            ; movzx eax, ax
+        ) [CF ZF SF OF],
+
+        movzx_16_0x8000: (
+            ; mov ax, -0x8000
+            ; movzx eax, ax
+        ) [CF ZF SF OF],
+
+        movzx_16_0x1337: (
+            ; mov ax, 0x1337
+            ; movzx eax, ax
+        ) [CF ZF SF OF],
+
+        movzx_8_0: (
+            ; mov al, 0
+            ; movzx eax, al
+        ) [CF ZF SF OF],
+
+        movzx_8_0xff: (
+            ; mov al, -1
+            ; movzx eax, al
+        ) [CF ZF SF OF],
+
+        movzx_8_0x80: (
+            ; mov al, -0x80
+            ; movzx eax, al
+        ) [CF ZF SF OF],
+
+        movzx_8_0x37: (
+            ; mov al, 0x37
+            ; movzx eax, al
+        ) [CF ZF SF OF],
+    }
+}
+
 // TODO: do we test all flag combinations (ditto for and)?
 mod sub {
     test_snippets! {
