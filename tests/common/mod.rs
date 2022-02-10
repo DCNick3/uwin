@@ -288,8 +288,9 @@ fn execute_unicorn(code: CodeToTest) -> (CpuContext, Vec<(u32, Vec<u8>)>) {
 fn execute_rusty_x86(code_and_args: CodeToTest) -> (CpuContext, Vec<(u32, Vec<u8>)>) {
     let context = inkwell::context::Context::create();
     let types = &rusty_x86::llvm::backend::Types::new(&context);
+    let rt_funs = &rusty_x86::llvm::backend::RuntimeHelpers::dummy(types);
     let (image, entry) = code_and_args.get_code();
-    let module = rusty_x86::llvm::recompile(&context, types, &image, entry);
+    let module = rusty_x86::llvm::recompile(&context, types, &rt_funs, &image, entry);
 
     let entry_name = rusty_x86::llvm::backend::LlvmBuilder::get_name_for(CODE_ADDR);
 

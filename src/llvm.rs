@@ -3,7 +3,7 @@ use std::collections::{HashSet, VecDeque};
 use iced_x86::Code::Call_rel32_32;
 use iced_x86::{Decoder, DecoderOptions};
 use inkwell::context::Context;
-use inkwell::module::Module;
+use inkwell::module::{Linkage, Module};
 use inkwell::targets::{
     CodeModel, InitializationConfig, RelocMode, Target, TargetMachine, TargetTriple,
 };
@@ -11,7 +11,9 @@ use inkwell::OptimizationLevel;
 use log::debug;
 
 use crate::codegen_instr;
-use crate::llvm::backend::{LlvmBuilder, Types};
+use crate::llvm::backend::{
+    Intrinsics, LlvmBuilder, RuntimeHelpers, Types, FASTCC_CALLING_CONVENTION,
+};
 use crate::memory_image::MemoryImage;
 
 pub mod backend;
@@ -36,11 +38,19 @@ pub fn get_aarch64_target_machine() -> TargetMachine {
 pub fn recompile<'ctx>(
     context: &'ctx Context,
     types: &'ctx Types,
+    rt_funs: &'ctx RuntimeHelpers<'ctx>,
     image: &MemoryImage,
     entrypoint: u32,
 ) -> Module<'ctx> {
     let module_obj = context.create_module("test");
     let module = &module_obj;
+
+    let indirect_bb_call = module.add_function(
+        "indirect_bb_call",
+        types.indirect_bb_call,
+        Some(Linkage::Internal),
+    );
+    indirect_bb_call.set_call_conventions(FASTCC_CALLING_CONVENTION);
 
     let mut queue = VecDeque::new();
     let mut processing = HashSet::new();
@@ -50,11 +60,10 @@ pub fn recompile<'ctx>(
         let address = queue.pop_front().unwrap();
         processing.insert(address);
 
-        //let offset = address.checked_sub(base_address).unwrap();
-
         debug!("processing bb at 0x{:08x}", address);
 
-        let mut builder = LlvmBuilder::new(context, module, types, address);
+        let mut builder =
+            LlvmBuilder::new(context, module, types, rt_funs, indirect_bb_call, address);
 
         // this might be kinda expensive. TODO: how can we recycle decoders? Maybe create one for each region?
         let mut decoder = Decoder::new(32, image.execute_all_at(address), DecoderOptions::NONE);
@@ -95,6 +104,18 @@ pub fn recompile<'ctx>(
 
         let llvm_builder = builder.get_raw_builder();
         llvm_builder.build_return(None);
+    }
+
+    // codegen for indirect_bb_call
+    {
+        let intrinsics = Intrinsics::new();
+        let bb = context.append_basic_block(indirect_bb_call, "entry");
+        let builder = context.create_builder();
+        builder.position_at_end(bb);
+
+        let trap = intrinsics.trap.get_declaration(module, &[]).unwrap();
+        builder.build_call(trap, &[], "");
+        builder.build_return(None);
     }
 
     module_obj

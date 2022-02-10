@@ -87,7 +87,7 @@ pub fn get_operand(instr: &Instruction, operand: u32) -> Operand {
 
                 MemorySize::Int8 => Some(IntType::I8),
                 MemorySize::Int16 => Some(IntType::I16),
-                MemorySize::Int32 => Some(IntType::I32),
+                MemorySize::Int32 | MemorySize::DwordOffset => Some(IntType::I32),
                 MemorySize::Int64 => Some(IntType::I64),
 
                 MemorySize::Unknown => None,
@@ -132,6 +132,13 @@ macro_rules! operands_ty {
 }
 #[macro_export]
 macro_rules! operands {
+    ([], $instr:expr) => {
+        match *$crate::disasm::Operands::get_operands(($instr)).as_slice() {
+            [] => (),
+            _ => panic!("Instruction operand matching failed"),
+        };
+    };
+
     ([$($pattern:tt),*], $instr:expr) => {
         let ($($pattern),*,): ( $(operands_ty!($pattern)),*, ) = {
             match *$crate::disasm::Operands::get_operands(($instr)).as_slice() {

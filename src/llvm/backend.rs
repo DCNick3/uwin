@@ -1,4 +1,5 @@
 use std::ffi::c_void;
+use std::marker::PhantomData;
 
 use inkwell::builder::Builder;
 use inkwell::context::Context;
@@ -21,6 +22,12 @@ pub struct LlvmBuilder<'ctx, 'a> {
     intrinsics: Intrinsics,
     ctx_ptr: PointerValue<'ctx>,
     mem_ptr: PointerValue<'ctx>,
+
+    // this function should dispatch execution to a bb with address computed in runtime
+    indirect_bb_call: FunctionValue<'ctx>,
+    // this is for functions to be implemented by a runtime
+    #[allow(unused)]
+    rt_funs: &'a RuntimeHelpers<'ctx>,
 }
 
 #[derive(Clone, Copy)]
@@ -36,7 +43,9 @@ pub struct Types<'ctx> {
     pub ctx: StructType<'ctx>,
     #[allow(unused)]
     pub ctx_ptr: PointerType<'ctx>,
-    pub bb_fn: FunctionType<'ctx>,
+
+    pub bb_fn: FunctionType<'ctx>,            // ctx: Context*, mem: u8*
+    pub indirect_bb_call: FunctionType<'ctx>, // ctx: Context*, mem: u8*, eip: u32
 }
 
 impl<'ctx> Types<'ctx> {
@@ -62,8 +71,17 @@ impl<'ctx> Types<'ctx> {
 
         let bb_fn = void.fn_type(
             &[
-                ctx_ptr.into(),
-                mem_ptr.into(), // pointer to start of guest address space (same trick as qemu does)
+                ctx_ptr.into(), // ctx
+                mem_ptr.into(), // mem - pointer to start of guest address space (same trick as qemu does)
+            ],
+            false,
+        );
+
+        let rt_indirect_bb_call = void.fn_type(
+            &[
+                ctx_ptr.into(), // ctx
+                mem_ptr.into(), // mem
+                i32.into(),     // eip
             ],
             false,
         );
@@ -77,7 +95,9 @@ impl<'ctx> Types<'ctx> {
             i64,
             ctx,
             ctx_ptr,
+
             bb_fn,
+            indirect_bb_call: rt_indirect_bb_call,
         }
     }
 }
@@ -87,6 +107,7 @@ pub struct Intrinsics {
     pub uadd_with_overflow: Intrinsic,
     pub ssub_with_overflow: Intrinsic,
     pub usub_with_overflow: Intrinsic,
+    pub trap: Intrinsic,
 }
 
 impl Intrinsics {
@@ -96,6 +117,21 @@ impl Intrinsics {
             uadd_with_overflow: Intrinsic::find("llvm.uadd.with.overflow").unwrap(),
             ssub_with_overflow: Intrinsic::find("llvm.ssub.with.overflow").unwrap(),
             usub_with_overflow: Intrinsic::find("llvm.usub.with.overflow").unwrap(),
+            trap: Intrinsic::find("llvm.trap").unwrap(),
+        }
+    }
+}
+
+pub struct RuntimeHelpers<'ctx> {
+    // TODO: kinda want strong typing here...
+    // types are available in Types structure
+    pub phantom: PhantomData<&'ctx ()>,
+}
+
+impl<'ctx> RuntimeHelpers<'ctx> {
+    pub fn dummy(_types: &'ctx Types) -> Self {
+        Self {
+            phantom: PhantomData::default(),
         }
     }
 }
@@ -109,6 +145,8 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
         context: &'ctx Context,
         module: &'a Module<'ctx>,
         types: &'a Types<'ctx>,
+        rt_funs: &'a RuntimeHelpers<'ctx>,
+        indirect_bb_call: FunctionValue<'ctx>,
         basic_block_addr: u32,
     ) -> Self {
         let function = Self::get_basic_block_fun_internal(context, module, types, basic_block_addr);
@@ -131,6 +169,9 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
             intrinsics,
             ctx_ptr,
             mem_ptr,
+
+            indirect_bb_call,
+            rt_funs,
         }
     }
 
@@ -243,7 +284,14 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
         call.set_tail_call(tail_call)
     }
 
-    pub fn handle_flow(&mut self, next_ip: u32, flow: ControlFlow<LlvmBuilder>) {
+    pub fn call_basic_block_indirect(&mut self, target: LlvmIntValue<'ctx>, tail_call: bool) {
+        let args = &[self.ctx_ptr.into(), self.mem_ptr.into(), target.into()];
+        let call = self.builder.build_call(self.indirect_bb_call, args, "");
+        call.set_call_convention(FASTCC_CALLING_CONVENTION);
+        call.set_tail_call(tail_call)
+    }
+
+    pub fn handle_flow(&mut self, next_ip: u32, flow: ControlFlow<Self>) {
         match flow {
             ControlFlow::NextInstruction => {
                 // create a new basic block for ease of reading ir
@@ -258,8 +306,8 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
                 self.call_basic_block(addr, true);
                 // no need for ret; all recompiled funs are terminated with ret
             }
-            ControlFlow::IndirectJump(_) => {
-                todo!();
+            ControlFlow::IndirectJump(addr) => {
+                self.call_basic_block_indirect(addr, true);
             }
             ControlFlow::Return => {
                 // no need for ret; all recompiled funs are terminated with ret

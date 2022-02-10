@@ -184,6 +184,10 @@ mod dec {
             ; mov eax, -0x80000000
             ; dec eax
         ),
+        dec_0x7fffffff: (
+            ; mov eax, 0x7fffffff
+            ; dec eax
+        ),
     }
     test_snippets! {
         dec_16_0: (
@@ -204,6 +208,10 @@ mod dec {
         ),
         dec_16_neg_0x8000: (
             ; mov ax, -0x8000
+            ; dec ax
+        ),
+        dec_16_0x7fff: (
+            ; mov ax, 0x7fff
             ; dec ax
         ),
     }
@@ -227,6 +235,91 @@ mod dec {
         dec_8_neg_0x80: (
             ; mov al, -0x80
             ; dec al
+        ),
+        dec_8_0x7f: (
+            ; mov al, 0x7f
+            ; dec al
+        ),
+    }
+}
+
+mod inc {
+    test_snippets! {
+        inc_0: (
+            ; mov eax, 0
+            ; inc eax
+        ),
+        inc_1: (
+            ; mov eax, 1
+            ; inc eax
+        ),
+        inc_neg_1: (
+            ; mov eax, -1
+            ; inc eax
+        ),
+        inc_neg_2: (
+            ; mov eax, -2
+            ; inc eax
+        ),
+        inc_neg_0x80000000: (
+            ; mov eax, -0x80000000
+            ; inc eax
+        ),
+        inc_0x7fffffff: (
+            ; mov eax, 0x7fffffff
+            ; inc eax
+        ),
+    }
+    test_snippets! {
+        inc_16_0: (
+            ; mov ax, 0
+            ; inc ax
+        ),
+        inc_16_1: (
+            ; mov ax, 1
+            ; inc ax
+        ),
+        inc_16_neg_1: (
+            ; mov ax, -1
+            ; inc ax
+        ),
+        inc_16_neg_2: (
+            ; mov ax, -2
+            ; inc ax
+        ),
+        inc_16_neg_0x8000: (
+            ; mov ax, -0x8000
+            ; inc ax
+        ),
+        inc_16_0x7fff: (
+            ; mov ax, 0x7fff
+            ; inc ax
+        ),
+    }
+    test_snippets! {
+        inc_8_0: (
+            ; mov al, 0
+            ; inc al
+        ),
+        inc_8_1: (
+            ; mov al, 1
+            ; inc al
+        ),
+        inc_8_neg_1: (
+            ; mov al, -1
+            ; inc al
+        ),
+        inc_8_neg_2: (
+            ; mov al, -2
+            ; inc al
+        ),
+        inc_8_neg_0x80: (
+            ; mov al, -0x80
+            ; inc al
+        ),
+        inc_8_0x7f: (
+            ; mov al, 0x7f
+            ; inc al
         ),
     }
 }
@@ -662,12 +755,29 @@ mod stack {
             ; mov eax, 42
             ; push eax
             ; pop ebx
-        ),
+        ) [CF ZF SF OF],
         push_eax_ebx: (
             ; mov eax, 42
             ; push eax
             ; push ebx
-        ),
+        ) [CF ZF SF OF],
+
+        // TODO: test leave instruction
+        leave_fixed: (
+            ; push DWORD 0x1337
+            ; mov ebp, esp
+            ; leave
+            ; ret
+        ) [CF ZF SF OF],
+
+        enter_leave: (
+            ; push ebp
+            ; mov ebp, esp
+            ; sub esp, 0x100
+
+            ; leave
+            ; ret
+        ) [CF ZF SF OF],
     );
 }
 

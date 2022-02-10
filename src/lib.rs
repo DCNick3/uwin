@@ -361,6 +361,24 @@ pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) -> Control
                 builder.compute_and_store_sf(res);
                 builder.store_flag(Flag::Overflow, of);
             }
+            Inc => {
+                operands!([dst], &instr);
+
+                let val = builder.load_operand(dst);
+
+                let one = builder.make_int_value(val.size(), 1, false);
+
+                let res = builder.add(val, one);
+
+                builder.store_operand(dst, res);
+
+                let of = builder.sadd_overflow(val, one);
+
+                // The CF flag is not affected. The OF, SF, ZF, AF, and PF flags are set according to the result.
+                builder.compute_and_store_zf(res);
+                builder.compute_and_store_sf(res);
+                builder.store_flag(Flag::Overflow, of);
+            }
             Imul => {
                 let (dst, lhs, rhs) = match *instr.get_operands().as_slice() {
                     [_] => {
@@ -577,6 +595,16 @@ pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) -> Control
 
                 builder.store_operand(dst, val);
             }
+            Leave => {
+                operands!([], &instr);
+
+                let old_ebp = builder.load_register(EBP);
+                builder.store_register(ESP, old_ebp);
+
+                let new_ebp = builder.pop(IntType::I32);
+
+                builder.store_register(EBP, new_ebp);
+            }
             Ret => {
                 // TODO: control flow, no-op for now
                 // Pop the return address (TODO: where to store it? we don't have EIP yet)
@@ -593,7 +621,10 @@ pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) -> Control
                         panic!("Jump to unsupported immediate size")
                     }
                     Operand::Immediate32(target) => ControlFlow::DirectJump(target),
-                    _ => todo!(),
+                    target => {
+                        let target = builder.load_operand(target);
+                        ControlFlow::IndirectJump(target)
+                    }
                 };
             }
             Call => {
@@ -698,10 +729,11 @@ mod tests {
         fn recompile(code: &[u8]) -> Vec<u8> {
             let context = &Context::create();
             let types = &llvm::backend::Types::new(&context);
+            let rt_funs = &llvm::backend::RuntimeHelpers::dummy(types);
 
             let code = MemoryImage::from_code_region(0x1000, code);
 
-            let mut module = llvm::recompile(context, types, &code, 0x1000);
+            let mut module = llvm::recompile(context, types, &rt_funs, &code, 0x1000);
 
             let target_machine = llvm::get_aarch64_target_machine();
 
@@ -767,6 +799,9 @@ mod tests {
             // and recompile it into this
             // isn't it nice?
             let expected_result = assemble_aarch64!(
+                ; ->indirect_bb_call:
+                ; brk #0x1
+
                 ; ldr w8, [x0, #0x10]
                 ; mov w9, #0x2a
                 ; str w9, [x0, #0x4]
@@ -812,6 +847,9 @@ mod tests {
             // and recompile it into this
             // isn't it nice?
             let expected_result = assemble_aarch64!(
+                ; ->indirect_bb_call:
+                ; brk #0x1
+
                 // ; ldr w8, [x0, #0x10] // load ESP
                 // ; add w9, w8, #4
                 // ; ldr w9, [x1, w9, sxtw] // load [ESP+4] (a)
@@ -880,6 +918,9 @@ mod tests {
             );
 
             let expected_result = assemble_aarch64!(
+                ; ->indirect_bb_call:
+                ; brk #0x1
+
                 ; ldp w8, w9, [x0, #0x10]
                 ; sub w8, w8, #4
                 ; str w8, [x0, #0x10]
@@ -936,6 +977,9 @@ mod tests {
             );
 
             let expected_result = assemble_aarch64!(
+                ; ->indirect_bb_call:
+                ; brk #0x1
+
                 ; ->bb_0x1000:
                 ; b ->bb_0x1005
 
@@ -957,6 +1001,9 @@ mod tests {
             );
 
             let expected_result = assemble_aarch64!(
+                ; ->indirect_bb_call:
+                ; brk #0x1
+
                 ; ldr w8, [x0, #0xc]  // load EDX
                 ; mov w9, #0x2
                 ; mov w10, #0x1
@@ -977,6 +1024,9 @@ mod tests {
             );
 
             let expected_result = assemble_aarch64!(
+                ; ->indirect_bb_call:
+                ; brk #0x1
+
                 // it's all optimized down to just storing a byte, nice
                 ; mov w8, #0x2a
                 ; strb w8, [x0]
@@ -993,6 +1043,9 @@ mod tests {
             );
 
             let expected_result = assemble_aarch64!(
+                ; ->indirect_bb_call:
+                ; brk #0x1
+
                 // it's all optimized down to just storing a half-word, nice
                 ; mov w8, #0x2a
                 ; strh w8, [x0]
