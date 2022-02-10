@@ -720,6 +720,117 @@ mod sar {
     }
 }
 
+mod shl {
+    test_snippets! {
+        shl_zero: (
+            ; mov eax, 228
+            ; shl eax, 0
+        ) [CF ZF SF OF],
+
+        shl_228_one: (
+            ; mov eax, 228
+            ; shl eax, 1
+        ) [CF ZF SF OF],
+        shl_229_one: (
+            ; mov eax, 229
+            ; shl eax, 1
+        ) [CF ZF SF OF],
+        shl_neg_228_one: (
+            ; mov eax, -228
+            ; shl eax, 1
+        ) [CF ZF SF OF],
+        shl_neg_229_one: (
+            ; mov eax, -229
+            ; shl eax, 1
+        ) [CF ZF SF OF],
+        shl_neg_64_one: (
+            ; mov eax, -64
+            ; shl eax, 1
+        ) [CF ZF SF OF],
+
+        shl_228_two: (
+            ; mov eax, 228
+            ; shl eax, 2
+        ) [CF ZF SF],
+        shl_229_two: (
+            ; mov eax, 229
+            ; shl eax, 2
+        ) [CF ZF SF],
+        shl_neg_228_two: (
+            ; mov eax, -228
+            ; shl eax, 2
+        ) [CF ZF SF],
+        shl_neg_229_two: (
+            ; mov eax, -229
+            ; shl eax, 2
+        ) [CF ZF SF],
+        shl_neg_64_two: (
+            ; mov eax, -64
+            ; shl eax, 2
+        ) [CF ZF SF],
+
+        shl_228_zero_wrap: (
+            ; mov eax, 228
+            ; shl eax, 32
+        ) [CF ZF SF OF],
+
+        shl_228_one_wrap: (
+            ; mov eax, 228
+            ; shl eax, 33
+        ) [CF ZF SF OF],
+        shl_229_one_wrap: (
+            ; mov eax, 229
+            ; shl eax, 33
+        ) [CF ZF SF OF],
+        shl_neg_228_one_wrap: (
+            ; mov eax, -228
+            ; shl eax, 33
+        ) [CF ZF SF OF],
+        shl_neg_229_one_wrap: (
+            ; mov eax, -229
+            ; shl eax, 33
+        ) [CF ZF SF OF],
+        shl_neg_64_one_wrap: (
+            ; mov eax, -64
+            ; shl eax, 33
+        ) [CF ZF SF OF],
+
+        shl_228_two_wrap: (
+            ; mov eax, 228
+            ; shl eax, 34
+        ) [CF ZF SF],
+        shl_229_two_wrap: (
+            ; mov eax, 229
+            ; shl eax, 34
+        ) [CF ZF SF],
+        shl_neg_228_two_wrap: (
+            ; mov eax, -228
+            ; shl eax, 34
+        ) [CF ZF SF],
+        shl_neg_229_two_wrap: (
+            ; mov eax, -229
+            ; shl eax, 34
+        ) [CF ZF SF],
+        shl_neg_64_two_wrap: (
+            ; mov eax, -64
+            ; shl eax, 34
+        ) [CF ZF SF],
+
+        shl_edge_case_byte: (
+            ; mov al, -0x08
+            ; shl al, 0x09
+        ) [CF ZF SF],
+        shl_edge_case_word: (
+            ; mov ax, -0x0888
+            ; shl ax, 0x11
+        ) [CF ZF SF],
+        shl_edge_case_dword: (
+            ; mov eax, -0x08888888
+            ; shl eax, 0x21
+        ) [CF ZF SF],
+    }
+}
+
 mod div {
     test_snippets!(
         div_basic1: (

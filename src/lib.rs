@@ -485,7 +485,7 @@ pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) -> Control
                 builder.store_flag(Flag::Carry, builder.make_false());
                 builder.store_flag(Flag::Overflow, builder.make_false());
             }
-            Shr | Sar => {
+            Shr | Sar | Shl => {
                 operands!([dst, count], &instr);
 
                 let count = builder.load_operand(count);
@@ -500,34 +500,55 @@ pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) -> Control
                     builder.make_int_value(count.size(), 0, false),
                 );
 
+                let (arithmetic, right) = match mnemonic {
+                    Shr => (false, true),
+                    Sar => (true, true),
+                    Shl => (false, false),
+                    _ => unreachable!(),
+                };
+
                 builder.ifelse(
                     not_zero,
                     |builder| {
                         let val = builder.load_operand(dst);
-                        let val = if mnemonic == Shr {
-                            builder.zext(val, IntType::I32)
-                        } else {
+                        let val = if arithmetic {
                             builder.sext(val, IntType::I32)
+                        } else {
+                            builder.zext(val, IntType::I32)
                         };
 
-                        let res = if mnemonic == Shr {
-                            builder.lshr(val, count)
-                        } else {
-                            builder.ashr(val, count)
+                        let res = match mnemonic {
+                            Shr => builder.lshr(val, count),
+                            Sar => builder.ashr(val, count),
+                            Shl => builder.shl(val, count),
+                            _ => unreachable!(),
                         };
-                        let count_cf = builder.sub(count, builder.make_u32(1));
+
+                        let count_sub_1 = builder.sub(count, builder.make_u32(1));
+
+                        let res_msb_bit_number =
+                            builder.make_u32((dst.size().bit_width() - 1) as u32);
+                        let cf = if right {
+                            builder.extract_bit(val, count_sub_1)
+                        } else {
+                            let shifted_one_less = builder.shl(val, count_sub_1);
+                            builder.extract_bit(shifted_one_less, res_msb_bit_number)
+                        };
+
+                        // OF is defined only for 1-bit shifts, but we'll compute it anyways
+                        // maybe we can get better by telling LLVM it's undef?
+                        let of = match mnemonic {
+                            Shr => builder.extract_msb(val),
+                            Sar => builder.make_false(),
+                            Shl => {
+                                let msb = builder.extract_bit(res, res_msb_bit_number);
+                                builder.bool_xor(msb, cf)
+                            }
+                            _ => unreachable!(),
+                        };
 
                         let res = builder.trunc(res, dst.size());
                         builder.store_operand(dst, res);
-
-                        let cf = builder.extract_bit(val, count_cf);
-                        // OF is defined only for 1-bit shifts, but we'll compute it anyways
-                        // maybe we can get better by telling LLVM it's undef?
-                        let of = if mnemonic == Shr {
-                            builder.extract_msb(val)
-                        } else {
-                            builder.make_false()
-                        };
 
                         // The CF flag contains the value of the last bit shifted out of the
                         // destination operand; it is undefined for SHL and SHR instructions where
