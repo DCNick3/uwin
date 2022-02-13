@@ -39,7 +39,7 @@ impl TryFrom<Register> for FullSizeGeneralPurposeRegister {
 }
 
 // TODO add more registers
-// TODO add subregisters metainfo (stuff like AX is the lower 16 bits of EAX)
+// TODO add sub-registers meta-info (stuff like AX is the lower 16 bits of EAX)
 #[derive(Debug, Clone, Copy)]
 pub enum Register {
     EAX,
@@ -98,10 +98,7 @@ impl Register {
 
     pub fn is_hi_reg(self) -> bool {
         use Register::*;
-        match self {
-            AH | BH | CH | DH => true,
-            _ => false,
-        }
+        matches!(self, AH | BH | CH | DH)
     }
 }
 
@@ -129,21 +126,12 @@ pub enum Flag {
 }
 
 #[repr(C)] // for interoperability with llvm-generated functions
-#[derive(Eq, PartialEq, Clone)]
+#[derive(Eq, PartialEq, Clone, Default)]
 pub struct CpuContext {
     // !!! If changing this struct - don't forget to update Types::new in llvm_backend.rs
     // also it would be best not to move fields around, as this breaks indices in build_ctx_*_gep
     pub gp_regs: [u32; 8],
     pub flags: [u8; 8],
-}
-
-impl Default for CpuContext {
-    fn default() -> Self {
-        CpuContext {
-            gp_regs: [0u32; 8],
-            flags: [0u8; 8],
-        }
-    }
 }
 
 impl std::fmt::Debug for CpuContext {
@@ -291,7 +279,7 @@ impl<B: Builder> ControlFlow<B> {
         match self {
             ControlFlow::NextInstruction => None,
             ControlFlow::DirectJump(r) => Some(*r),
-            ControlFlow::IndirectJump(_) => None, /* can't statically know the addr*/
+            ControlFlow::IndirectJump(_) => None, /* can't statically know the addr */
             ControlFlow::Return => None,
             ControlFlow::Conditional(_, r) => Some(*r),
         }
@@ -305,9 +293,9 @@ impl<B: Builder> Clone for ControlFlow<B> {
         match self {
             NextInstruction => NextInstruction,
             DirectJump(r) => DirectJump(*r),
-            IndirectJump(r) => IndirectJump(r.clone()),
+            IndirectJump(r) => IndirectJump(*r),
             Return => Return,
-            Conditional(cond, r) => Conditional(cond.clone(), *r),
+            Conditional(cond, r) => Conditional(*cond, *r),
         }
     }
 }

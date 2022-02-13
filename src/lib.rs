@@ -12,6 +12,7 @@ use crate::types::Register::*;
 use crate::types::{ControlFlow, Flag, IntType, Operand, Register};
 use iced_x86::{ConditionCode, Instruction, Mnemonic};
 
+#[allow(clippy::let_and_return)]
 fn compute_condition_code<B: Builder>(
     builder: &mut B,
     condition_code: ConditionCode,
@@ -756,12 +757,12 @@ mod tests {
 
         fn recompile(code: &[u8]) -> Vec<u8> {
             let context = &Context::create();
-            let types = &llvm::backend::Types::new(&context);
+            let types = &llvm::backend::Types::new(context);
             let rt_funs = &llvm::backend::RuntimeHelpers::dummy(types);
 
             let code = MemoryImage::from_code_region(0x1000, code);
 
-            let mut module = llvm::recompile(context, types, &rt_funs, &code, 0x1000);
+            let module = llvm::recompile(context, types, rt_funs, &code, 0x1000);
 
             let target_machine = llvm::get_aarch64_target_machine();
 
@@ -772,7 +773,7 @@ mod tests {
             module.verify().unwrap();
 
             let memory_buffer = target_machine
-                .write_to_memory_buffer(&mut module, FileType::Object)
+                .write_to_memory_buffer(&module, FileType::Object)
                 .unwrap();
 
             let _raw_buffer = format!("{:?}", memory_buffer.as_slice());

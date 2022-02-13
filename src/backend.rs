@@ -173,23 +173,27 @@ pub trait Builder {
         }
     }
 
+    #[allow(clippy::clone_on_copy)]
     fn push(&mut self, val: Self::IntValue) {
         let size = val.size().byte_width();
         let size = self.make_u32(size as u32);
 
         let esp = self.load_register(Register::ESP);
         let esp = self.sub(esp, size);
+        // clone is unneeded, but Clion doesn't have a clue
         self.store_register(Register::ESP, esp.clone());
 
         self.store_memory(esp, val);
     }
 
+    #[allow(clippy::clone_on_copy)]
     fn pop(&mut self, size: IntType) -> Self::IntValue {
         let size_bytes = size.byte_width();
         let size_bytes = self.make_u32(size_bytes as u32);
 
         let esp = self.load_register(Register::ESP);
 
+        // clone is unneeded, but Clion doesn't have a clue
         let val = self.load_memory(size, esp.clone());
 
         let esp = self.add(esp, size_bytes);
@@ -201,8 +205,7 @@ pub trait Builder {
     fn extract_msb(&mut self, value: Self::IntValue) -> Self::BoolValue {
         let bit_number =
             self.make_int_value(value.size(), (value.size().bit_width() - 1) as u64, false);
-        let msb = self.extract_bit(value, bit_number);
-        msb
+        self.extract_bit(value, bit_number)
     }
 
     // TODO: computing the flags eagerly is kind of inefficient actually

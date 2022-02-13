@@ -131,6 +131,12 @@ impl MemoryImage {
     }
 }
 
+impl Default for MemoryImage {
+    fn default() -> Self {
+        MemoryImage::new()
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::MemoryImage;
@@ -147,7 +153,7 @@ mod tests {
         .collect()
     }
 
-    // fn readexecute_image() -> MemoryImage {
+    // fn read_execute_image() -> MemoryImage {
     //     [
     //         MemoryImageItem::new(0, Protection::READ_EXECUTE, vec![1, 2, 3]),
     //         MemoryImageItem::new(5, Protection::READ_EXECUTE, vec![5, 6, 7]),
@@ -162,9 +168,9 @@ mod tests {
     fn iter() {
         let image: MemoryImage = readonly_image();
 
-        let vecvec: Vec<MemoryImageItem> = image.iter().cloned().collect();
+        let image_vec: Vec<MemoryImageItem> = image.iter().cloned().collect();
 
-        assert_eq!(*vecvec.as_slice(), [
+        assert_eq!(*image_vec.as_slice(), [
             MemoryImageItem::new(0, Protection::READ, vec![1, 2, 3]),
             MemoryImageItem::new(5, Protection::READ, vec![5, 6, 7]),
             MemoryImageItem::new(8, Protection::READ, vec![8])

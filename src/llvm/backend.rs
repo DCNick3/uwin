@@ -122,6 +122,12 @@ impl Intrinsics {
     }
 }
 
+impl Default for Intrinsics {
+    fn default() -> Self {
+        Intrinsics::new()
+    }
+}
+
 pub struct RuntimeHelpers<'ctx> {
     // TODO: kinda want strong typing here...
     // types are available in Types structure
@@ -263,7 +269,7 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
     ) -> FunctionValue<'ctx> {
         let name = Self::get_name_for(addr);
         if let Some(fun) = module.get_function(name.as_str()) {
-            return fun;
+            fun
         } else {
             let res = module.add_function(name.as_str(), types.bb_fn, Some(Linkage::Internal));
             res.set_call_conventions(FASTCC_CALLING_CONVENTION);
@@ -372,11 +378,11 @@ impl IntValue for LlvmIntValue<'_> {
 
 impl BoolValue for LlvmIntValue<'_> {}
 
-impl Into<IntPredicate> for ComparisonType {
-    fn into(self) -> IntPredicate {
+impl From<ComparisonType> for IntPredicate {
+    fn from(comp: ComparisonType) -> Self {
         use ComparisonType::*;
         use IntPredicate::*;
-        match self {
+        match comp {
             Equal => EQ,
             NotEqual => NE,
             UnsignedGreater => UGT,
@@ -420,7 +426,7 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
             .build_load(base_ptr, &*format!("{:?}", base))
             .into_int_value();
 
-        if let Ok(_) = FullSizeGeneralPurposeRegister::try_from(register) {
+        if FullSizeGeneralPurposeRegister::try_from(register).is_ok() {
             base_val
         } else {
             assert!(!register.is_hi_reg());
@@ -438,7 +444,7 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
         let base = register.base_register();
         let base_ptr = self.build_ctx_gp_gep(self.ctx_ptr, base);
 
-        if let Ok(_) = FullSizeGeneralPurposeRegister::try_from(register) {
+        if FullSizeGeneralPurposeRegister::try_from(register).is_ok() {
             self.builder.build_store(base_ptr, value);
         } else {
             assert!(!register.is_hi_reg());

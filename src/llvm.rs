@@ -26,8 +26,8 @@ pub fn get_aarch64_target_machine() -> TargetMachine {
     target
         .create_target_machine(
             &target_triple,
-            &"generic",
-            &"",
+            "generic",
+            "",
             OptimizationLevel::Aggressive,
             RelocMode::Static,
             CodeModel::Small,

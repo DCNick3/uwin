@@ -185,7 +185,7 @@ fn load_unicorn(
     };
 
     let mut push = |v: u32| {
-        esp = esp - 4;
+        esp -= 4;
         emu.mem_write(esp as u64, &v.to_le_bytes()).unwrap();
     };
 
@@ -290,7 +290,7 @@ fn execute_rusty_x86(code_and_args: CodeToTest) -> (CpuContext, Vec<(u32, Vec<u8
     let types = &rusty_x86::llvm::backend::Types::new(&context);
     let rt_funs = &rusty_x86::llvm::backend::RuntimeHelpers::dummy(types);
     let (image, entry) = code_and_args.get_code();
-    let module = rusty_x86::llvm::recompile(&context, types, &rt_funs, &image, entry);
+    let module = rusty_x86::llvm::recompile(&context, types, rt_funs, &image, entry);
 
     let entry_name = rusty_x86::llvm::backend::LlvmBuilder::get_name_for(CODE_ADDR);
 
@@ -303,11 +303,8 @@ fn execute_rusty_x86(code_and_args: CodeToTest) -> (CpuContext, Vec<(u32, Vec<u8
         let builder = context.create_builder();
         builder.position_at_end(bb);
 
-        let args: Vec<BasicMetadataValueEnum> = entry
-            .get_params()
-            .iter()
-            .map(|f| f.clone().into())
-            .collect();
+        let args: Vec<BasicMetadataValueEnum> =
+            entry.get_params().iter().map(|f| (*f).into()).collect();
 
         let call = builder.build_call(
             module.get_function(entry_name.as_str()).unwrap(),
@@ -388,7 +385,7 @@ fn execute_rusty_x86(code_and_args: CodeToTest) -> (CpuContext, Vec<(u32, Vec<u8
     let mut esp = STACK_ADDR + STACK_SIZE - 4;
 
     let mut push = |v: u32| {
-        esp = esp - 4;
+        esp -= 4;
         unsafe {
             // TODO: do we break any language rules by shuffling pointers around this way?
             let ptr = target_mem_region.as_mut_ptr::<u8>().add(esp as usize);
