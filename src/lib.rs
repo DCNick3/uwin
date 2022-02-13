@@ -237,6 +237,7 @@ fn codegen_string_instr<B: Builder>(builder: &mut B, instr: Instruction) {
 
 // TODO: handle control flow
 pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) -> ControlFlow<B> {
+    use crate::Flag::*;
     use iced_x86::Mnemonic::*;
 
     assert!(!instr.has_lock_prefix());
@@ -330,6 +331,35 @@ pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) -> Control
 
                 let of = builder.ssub_overflow(lhs, rhs);
                 let cf = builder.usub_overflow(lhs, rhs);
+
+                // The OF, SF, ZF, AF, PF, and CF flags are set according to the result.
+                // AF and PF are not implemented rn
+                // not that they are actually useful...
+                builder.compute_and_store_zf(res);
+                builder.compute_and_store_sf(res);
+                builder.store_flag(Flag::Overflow, of);
+                builder.store_flag(Flag::Carry, cf);
+            }
+            Sbb => {
+                operands!([dst, src], &instr);
+
+                let lhs = builder.load_operand(dst);
+                let rhs = builder.load_operand(src);
+                let borrow = builder.load_flag(Carry);
+                let borrow = builder.bool_to_int(borrow, lhs.size());
+
+                let res = builder.sub(lhs, rhs);
+
+                let of_base = builder.ssub_overflow(lhs, rhs);
+                let of_borrow = builder.ssub_overflow(res, borrow);
+                let of = builder.bool_or(of_base, of_borrow);
+
+                let cf_base = builder.usub_overflow(lhs, rhs);
+                let cf_borrow = builder.usub_overflow(res, borrow);
+                let cf = builder.bool_or(cf_base, cf_borrow);
+
+                let res = builder.sub(res, borrow);
+                builder.store_operand(dst, res);
 
                 // The OF, SF, ZF, AF, PF, and CF flags are set according to the result.
                 // AF and PF are not implemented rn
@@ -691,6 +721,11 @@ pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) -> Control
                     _ => todo!(),
                 }
             }
+            Stc => builder.store_flag(Carry, builder.make_true()),
+            Clc => builder.store_flag(Carry, builder.make_false()),
+            // TODO: uncomment when unit tests for different direction of string operations will be in place
+            //Std => builder.store_flag(Direction, builder.make_true()),
+            //Cld => builder.store_flag(Direction, builder.make_false()),
             m => panic!("Unknown instruction mnemonic: {:?}", m),
         };
 

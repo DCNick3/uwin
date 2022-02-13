@@ -77,35 +77,162 @@ mod movzx {
     }
 }
 
-// TODO: do we test all flag combinations (ditto for and)?
 mod sub {
     test_snippets! {
-        sub_borrow: (
+        sub_1_2: (
             ; mov eax, 1
             ; sub eax, 2
         ) [CF ZF SF OF],
-        sub_branch_sign: (
-            ; mov eax, 1
-            ; sub eax, 2
-            ; js ->L1 // TODO: cmov is more concise?
-            ; mov ebx, 1
-            ; jmp ->R
-            ; ->L1:
-            ; mov ebx, 2
-            ; ->R:
-            ; mov edx, 1 // necessary because of funky control flow at the end of test snippets...
+        sub_2_1: (
+            ; mov eax, 2
+            ; sub eax, 1
         ) [CF ZF SF OF],
-        sub_cmov_sign: (
-            ; mov eax, 1
-            ; sub eax, 2
-            ; mov ecx, 2
-            ; cmovs ebx, ecx
+        sub_0_1: (
+            ; mov eax, 0
+            ; sub eax, 1
         ) [CF ZF SF OF],
-        sub_cmov_sign_2: (
-            ; mov eax, 3
-            ; sub eax, 2
-            ; mov ecx, 2
-            ; cmovs ebx, ecx
+        sub_1_1: (
+            ; mov eax, 1
+            ; sub eax, 1
+        ) [CF ZF SF OF],
+        sub_neg_1_1: (
+            ; mov eax, -1
+            ; sub eax, 1
+        ) [CF ZF SF OF],
+        sub_1_neg_1: (
+            ; mov eax, 1
+            ; sub eax, -1
+        ) [CF ZF SF OF],
+        sub_0x7fffffff_1: (
+            ; mov eax, 0x7fffffff
+            ; sub eax, 1
+        ) [CF ZF SF OF],
+        sub_1_0x7fffffff: (
+            ; mov eax, 1
+            ; sub eax, 0x7fffffff
+        ) [CF ZF SF OF],
+        sub_neg_0x80000000_1: (
+            ; mov eax, -0x80000000
+            ; sub eax, 1
+        ) [CF ZF SF OF],
+        sub_sbb_neg_0x80000000_0: (
+            ; mov eax, -0x80000000
+            ; sub eax, 0
+        ) [CF ZF SF OF],
+    }
+}
+
+mod stc_clc {
+    test_snippets! {
+        stc: (
+            ; stc
+        ) [CF ZF SF OF],
+        clc: (
+            ; clc
+        ) [CF ZF SF OF],
+        clc_stc: (
+            ; clc
+            ; stc
+        ) [CF ZF SF OF],
+        stc_clc: (
+            ; stc
+            ; clc
+        ) [CF ZF SF OF],
+    }
+}
+
+mod sbb {
+    test_snippets! {
+        sbb_1_2: (
+            ; mov eax, 1
+            ; sbb eax, 2
+        ) [CF ZF SF OF],
+        sbb_2_1: (
+            ; mov eax, 2
+            ; sbb eax, 1
+        ) [CF ZF SF OF],
+        sbb_0_1: (
+            ; mov eax, 0
+            ; sbb eax, 1
+        ) [CF ZF SF OF],
+        sbb_1_1: (
+            ; mov eax, 1
+            ; sbb eax, 1
+        ) [CF ZF SF OF],
+        sbb_neg_1_1: (
+            ; mov eax, -1
+            ; sbb eax, 1
+        ) [CF ZF SF OF],
+        sbb_1_neg_1: (
+            ; mov eax, 1
+            ; sbb eax, -1
+        ) [CF ZF SF OF],
+        sbb_0x7fffffff_1: (
+            ; mov eax, 0x7fffffff
+            ; sbb eax, 1
+        ) [CF ZF SF OF],
+        sbb_1_0x7fffffff: (
+            ; mov eax, 1
+            ; sbb eax, 0x7fffffff
+        ) [CF ZF SF OF],
+        sbb_neg_0x80000000_0: (
+            ; mov eax, -0x80000000
+            ; sbb eax, 0
+        ) [CF ZF SF OF],
+        sbb_neg_0x80000000_1: (
+            ; mov eax, -0x80000000
+            ; sbb eax, 1
+        ) [CF ZF SF OF],
+
+        stc_sbb_1_2: (
+            ; stc
+            ; mov eax, 1
+            ; sbb eax, 2
+        ) [CF ZF SF OF],
+        stc_sbb_2_1: (
+            ; stc
+            ; mov eax, 2
+            ; sbb eax, 1
+        ) [CF ZF SF OF],
+        stc_sbb_0_1: (
+            ; stc
+            ; mov eax, 0
+            ; sbb eax, 1
+        ) [CF ZF SF OF],
+        stc_sbb_1_1: (
+            ; stc
+            ; mov eax, 1
+            ; sbb eax, 1
+        ) [CF ZF SF OF],
+        stc_sbb_neg_1_1: (
+            ; stc
+            ; mov eax, -1
+            ; sbb eax, 1
+        ) [CF ZF SF OF],
+        stc_sbb_1_neg_1: (
+            ; stc
+            ; mov eax, 1
+            ; sbb eax, -1
+        ) [CF ZF SF OF],
+        stc_sbb_0x7fffffff_1: (
+            ; stc
+            ; mov eax, 0x7fffffff
+            ; sbb eax, 1
+        ) [CF ZF SF OF],
+        stc_sbb_1_0x7fffffff: (
+            ; stc
+            ; mov eax, 1
+            ; sbb eax, 0x7fffffff
+        ) [CF ZF SF OF],
+        stc_sbb_neg_0x80000000_0: (
+            ; stc
+            ; mov eax, -0x80000000
+            ; sbb eax, 0
+        ) [CF ZF SF OF],
+        stc_sbb_neg_0x80000000_1: (
+            ; stc
+            ; mov eax, -0x80000000
+            ; sbb eax, 1
         ) [CF ZF SF OF],
     }
 }

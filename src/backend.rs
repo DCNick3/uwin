@@ -79,6 +79,13 @@ pub trait Builder {
     // bit should be in bounds! otherwise results in ub
     fn extract_bit(&mut self, val: Self::IntValue, bit: Self::IntValue) -> Self::BoolValue;
 
+    fn bool_to_int(&mut self, val: Self::BoolValue, size: IntType) -> Self::IntValue {
+        self.select(
+            val,
+            self.make_int_value(size, 1, false),
+            self.make_int_value(size, 0, false),
+        )
+    }
     fn bool_not(&mut self, val: Self::BoolValue) -> Self::BoolValue;
     fn bool_or(&mut self, lhs: Self::BoolValue, rhs: Self::BoolValue) -> Self::BoolValue;
     fn bool_and(&mut self, lhs: Self::BoolValue, rhs: Self::BoolValue) -> Self::BoolValue;
@@ -101,6 +108,13 @@ pub trait Builder {
     ) -> Self::BoolValue;
 
     fn direct_call(&mut self, target: u32, next_eip: u32);
+
+    fn select(
+        &mut self,
+        cond: Self::BoolValue,
+        iftrue: Self::IntValue,
+        iffalse: Self::IntValue,
+    ) -> Self::IntValue;
 
     fn ifelse<T, F>(&mut self, cond: Self::BoolValue, iftrue: T, iffalse: F)
     where

@@ -642,6 +642,17 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
         //todo!()
     }
 
+    fn select(
+        &mut self,
+        cond: Self::BoolValue,
+        iftrue: Self::IntValue,
+        iffalse: Self::IntValue,
+    ) -> Self::IntValue {
+        self.builder
+            .build_select(cond, iftrue, iffalse, "")
+            .into_int_value()
+    }
+
     fn ifelse<T, F>(&mut self, cond: Self::BoolValue, iftrue: T, iffalse: F)
     where
         T: FnOnce(&mut Self),
