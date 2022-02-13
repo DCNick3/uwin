@@ -421,7 +421,7 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
     fn load_register(&mut self, register: Register) -> Self::IntValue {
         let base = register.base_register();
         let base_ptr = self.build_ctx_gp_gep(self.ctx_ptr, base);
-        let base_val = self
+        let mut base_val = self
             .builder
             .build_load(base_ptr, &*format!("{:?}", base))
             .into_int_value();
@@ -429,7 +429,9 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
         if FullSizeGeneralPurposeRegister::try_from(register).is_ok() {
             base_val
         } else {
-            assert!(!register.is_hi_reg());
+            if register.is_hi_reg() {
+                base_val = self.lshr(base_val, self.make_u32(8));
+            }
             self.builder.build_int_truncate(
                 base_val,
                 self.int_type(register.size()),
@@ -447,24 +449,28 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
         if FullSizeGeneralPurposeRegister::try_from(register).is_ok() {
             self.builder.build_store(base_ptr, value);
         } else {
-            assert!(!register.is_hi_reg());
-
             // ehh, this is kinda ugly. Maybe we can index directly into the base value? how 'bout aliasing?
-            let base_val = self
+            let mut base_val = self
                 .builder
                 .build_load(base_ptr, &*format!("{:?}", base))
                 .into_int_value();
 
             let zero = self.make_int_value(register.size(), 0, false);
             let ones = self.builder.build_not(zero, "");
-            let ext = self.zext(ones, IntType::I32);
+            let mut ext = self.zext(ones, IntType::I32);
+            if register.is_hi_reg() {
+                ext = self.shl(ext, self.make_u32(8));
+            }
             let mask = self.builder.build_not(ext, "");
             // the mask is smth like FFFF0000 (for 16-bit case, for example)
             // It allows to clear the lower half of the register
 
             let base_clean_val = self.int_and(base_val, mask);
 
-            let val_ext = self.zext(value, IntType::I32);
+            let mut val_ext = self.zext(value, IntType::I32);
+            if register.is_hi_reg() {
+                val_ext = self.shl(val_ext, self.make_u32(8));
+            }
 
             let res = self.int_or(base_clean_val, val_ext);
 

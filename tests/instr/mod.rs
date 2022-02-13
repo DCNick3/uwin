@@ -1,3 +1,16 @@
+mod hireg {
+    test_snippets! {
+        mov_shit_ah: (
+            ; mov eax, 0x12345678
+            ; mov ah, -0x66
+        ) [CF ZF SF OF],
+        mov_ah_shit: (
+            ; mov eax, 0x12345678
+            ; mov bl, ah
+        ) [CF ZF SF OF],
+    }
+}
+
 mod mov {
     test_snippets! {
 
