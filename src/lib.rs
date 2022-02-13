@@ -125,14 +125,43 @@ fn is_cmovcc(mnemonic: Mnemonic) -> bool {
 }
 
 fn codegen_string_instr<B: Builder>(builder: &mut B, instr: Instruction) {
+    let advance_edi = |builder: &mut B, size: IntType| {
+        let size = builder.make_u32(size.byte_width() as u32);
+        let edi = builder.load_register(Register::EDI);
+
+        // if DF = 1 => EDI += size, else => EDI -= size
+        let df = builder.load_flag(Flag::Direction);
+        builder.ifelse(
+            df,
+            |builder| {
+                let edi = builder.sub(edi, size);
+                builder.store_register(Register::EDI, edi);
+            },
+            |builder| {
+                let edi = builder.add(edi, size);
+                builder.store_register(Register::EDI, edi);
+            },
+        );
+    };
+
     let execute_instr = |builder: &mut B| {
         use Mnemonic::*;
         // this handles the core instruction
         match instr.mnemonic() {
             Insb | Insw | Insd | Outsb | Outsw | Outsd => unimplemented!(),
 
-            Movsb | Movsw | Movsd | Lodsb | Lodsw | Lodsd | Stosb | Stosw | Stosd | Cmpsb
-            | Cmpsw | Cmpsd => todo!("{:?}", instr.mnemonic()),
+            Movsb | Movsw | Movsd | Lodsb | Lodsw | Lodsd | Cmpsb | Cmpsw | Cmpsd => {
+                todo!("{:?}", instr.mnemonic())
+            }
+
+            Stosb | Stosw | Stosd => {
+                operands!([dst, val], &instr);
+
+                let val = builder.load_operand(val);
+                builder.store_operand(dst, val);
+
+                advance_edi(builder, dst.size());
+            }
 
             Scasb | Scasw | Scasd => {
                 operands!([cmp, src], &instr);
@@ -154,23 +183,7 @@ fn codegen_string_instr<B: Builder>(builder: &mut B, instr: Instruction) {
                 builder.store_flag(Flag::Overflow, of);
                 builder.store_flag(Flag::Carry, cf);
 
-                let edi = builder.load_register(Register::EDI);
-
-                let size = builder.make_u32(src.size().byte_width() as u32);
-
-                // if DF = 1 => EDI += size, else => EDI -= size
-                let df = builder.load_flag(Flag::Direction);
-                builder.ifelse(
-                    df,
-                    |builder| {
-                        let edi = builder.sub(edi, size);
-                        builder.store_register(Register::EDI, edi);
-                    },
-                    |builder| {
-                        let edi = builder.add(edi, size);
-                        builder.store_register(Register::EDI, edi);
-                    },
-                );
+                advance_edi(builder, src.size());
             }
             _ => unreachable!(),
         }

@@ -1383,4 +1383,146 @@ mod string {
             ) [CF ZF SF OF],
         }
     }
+
+    mod stos {
+        use crate::common::MEM_ADDR;
+
+        test_snippets! {
+            stosb_zero: (
+                ; mov BYTE [MEM_ADDR as i32], 0x11
+                ; mov edi, MEM_ADDR as i32
+                ; mov al, 0x0
+                ; stosb
+            ) [CF ZF SF OF],
+            stosb_0x11: (
+                ; mov edi, MEM_ADDR as i32
+                ; mov al, 0x11
+                ; stosb
+            ) [CF ZF SF OF],
+            stosb_0x11_twice: (
+                ; mov edi, MEM_ADDR as i32
+                ; mov al, 0x11
+                ; stosb
+                ; stosb
+            ) [CF ZF SF OF],
+
+            stosb_rep_0: (
+                ; mov DWORD [MEM_ADDR as i32], 0x11121111
+                ; mov edi, MEM_ADDR as i32
+                ; mov al, 0x13
+                ; mov ecx, 0x0
+                ; rep stosb
+            ) [CF ZF SF OF],
+            stosb_rep_2: (
+                ; mov DWORD [MEM_ADDR as i32], 0x11121111
+                ; mov edi, MEM_ADDR as i32
+                ; mov al, 0x13
+                ; mov ecx, 0x2
+                ; rep stosb
+            ) [CF ZF SF OF],
+            stosb_rep_4: (
+                ; mov DWORD [MEM_ADDR as i32], 0x11121111
+                ; mov edi, MEM_ADDR as i32
+                ; mov al, 0x13
+                ; mov ecx, 0x4
+                ; rep stosb
+            ) [CF ZF SF OF],
+        }
+
+        test_snippets! {
+            stosw_zero: (
+                ; mov WORD [MEM_ADDR as i32], 0x1112
+                ; mov edi, MEM_ADDR as i32
+                ; mov ax, 0x0
+                ; stosw
+            ) [CF ZF SF OF],
+            stosw_0x1112: (
+                ; mov edi, MEM_ADDR as i32
+                ; mov ax, 0x1112
+                ; stosw
+            ) [CF ZF SF OF],
+            stosw_0x1112_twice: (
+                ; mov edi, MEM_ADDR as i32
+                ; mov ax, 0x1112
+                ; stosw
+                ; stosw
+            ) [CF ZF SF OF],
+
+            stosw_rep_0: (
+                ; mov DWORD [MEM_ADDR as i32], 0x11121111
+                ; mov DWORD [MEM_ADDR as i32 + 4], 0x11121111
+                ; mov edi, MEM_ADDR as i32
+                ; mov ax, 0x1314
+                ; mov ecx, 0x0
+                ; rep stosw
+            ) [CF ZF SF OF],
+            stosw_rep_2: (
+                ; mov DWORD [MEM_ADDR as i32], 0x11121111
+                ; mov DWORD [MEM_ADDR as i32 + 4], 0x11121111
+                ; mov edi, MEM_ADDR as i32
+                ; mov ax, 0x1314
+                ; mov ecx, 0x2
+                ; rep stosw
+            ) [CF ZF SF OF],
+            stosw_rep_4: (
+                ; mov DWORD [MEM_ADDR as i32], 0x11121111
+                ; mov DWORD [MEM_ADDR as i32 + 4], 0x11121111
+                ; mov edi, MEM_ADDR as i32
+                ; mov ax, 0x1314
+                ; mov ecx, 0x4
+                ; rep stosw
+            ) [CF ZF SF OF],
+        }
+
+        test_snippets! {
+            stosd_zero: (
+                ; mov DWORD [MEM_ADDR as i32], 0x11121314
+                ; mov edi, MEM_ADDR as i32
+                ; mov eax, 0x0
+                ; stosd
+            ) [CF ZF SF OF],
+            stosd_0x11121314: (
+                ; mov edi, MEM_ADDR as i32
+                ; mov eax, 0x11121314
+                ; stosd
+            ) [CF ZF SF OF],
+            stosd_0x11121314_twice: (
+                ; mov edi, MEM_ADDR as i32
+                ; mov eax, 0x11121314
+                ; stosd
+                ; stosd
+            ) [CF ZF SF OF],
+
+            stosd_rep_0: (
+                ; mov DWORD [MEM_ADDR as i32], 0x11121111
+                ; mov DWORD [MEM_ADDR as i32 + 4], 0x11121111
+                ; mov DWORD [MEM_ADDR as i32 + 8], 0x11121111
+                ; mov DWORD [MEM_ADDR as i32 + 12], 0x11121111
+                ; mov edi, MEM_ADDR as i32
+                ; mov eax, 0x13141516
+                ; mov ecx, 0x0
+                ; rep stosd
+            ) [CF ZF SF OF],
+            stosd_rep_2: (
+                ; mov DWORD [MEM_ADDR as i32], 0x11121111
+                ; mov DWORD [MEM_ADDR as i32 + 8], 0x11121111
+                ; mov DWORD [MEM_ADDR as i32 + 8], 0x11121111
+                ; mov DWORD [MEM_ADDR as i32 + 12], 0x11121111
+                ; mov edi, MEM_ADDR as i32
+                ; mov eax, 0x13141516
+                ; mov ecx, 0x2
+                ; rep stosd
+            ) [CF ZF SF OF],
+            stosd_rep_4: (
+                ; mov DWORD [MEM_ADDR as i32], 0x11121111
+                ; mov DWORD [MEM_ADDR as i32 + 4], 0x11121111
+                ; mov DWORD [MEM_ADDR as i32 + 8], 0x11121111
+                ; mov DWORD [MEM_ADDR as i32 + 12], 0x11121111
+                ; mov edi, MEM_ADDR as i32
+                ; mov eax, 0x13141516
+                ; mov ecx, 0x4
+                ; rep stosd
+            ) [CF ZF SF OF],
+        }
+    }
 }
