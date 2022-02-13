@@ -449,6 +449,18 @@ pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) -> Control
                 builder.store_flag(Flag::Overflow, of);
                 builder.store_flag(Flag::Carry, cf);
             }
+            Cwd | Cdq => {
+                let (hi, lo) = match mnemonic {
+                    Cwd => (DX, AX),
+                    Cdq => (EDX, EAX),
+                    _ => unreachable!(),
+                };
+                let val = builder.load_register(lo);
+                let extended = builder.extract_msb(val);
+                let extended = builder.bool_to_int(extended, val.size());
+                let extended = builder.int_neg(extended);
+                builder.store_register(hi, extended);
+            }
             Imul => {
                 let (dst, lhs, rhs) = match *instr.get_operands().as_slice() {
                     [_] => {

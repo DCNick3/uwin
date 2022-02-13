@@ -563,6 +563,53 @@ mod neg {
     }
 }
 
+mod cdq {
+    test_snippets! {
+        cdq_zero: (
+            ; mov eax, 0
+            ; mov edx, 1337
+            ; cdq
+        ) [CF ZF SF OF],
+        cdq_1: (
+            ; mov eax, 1
+            ; mov edx, 1337
+            ; cdq
+        ) [CF ZF SF OF],
+        cdq_neg_1: (
+            ; mov eax, -1
+            ; mov edx, 1337
+            ; cdq
+        ) [CF ZF SF OF],
+        cdq_neg_0x80000000: (
+            ; mov eax, -0x80000000
+            ; mov edx, 1337
+            ; cdq
+        ) [CF ZF SF OF],
+    }
+    test_snippets! {
+        cwd_zero: (
+            ; mov ax, 0
+            ; mov dx, 1337
+            ; cwd
+        ) [CF ZF SF OF],
+        cwd_1: (
+            ; mov ax, 1
+            ; mov dx, 1337
+            ; cwd
+        ) [CF ZF SF OF],
+        cwd_neg_1: (
+            ; mov ax, -1
+            ; mov dx, 1337
+            ; cwd
+        ) [CF ZF SF OF],
+        cwd_neg_0x8000: (
+            ; mov ax, -0x8000
+            ; mov dx, 1337
+            ; cwd
+        ) [CF ZF SF OF],
+    }
+}
+
 mod mem {
     use crate::common::MEM_ADDR;
     test_snippets! {
