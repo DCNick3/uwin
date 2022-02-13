@@ -470,6 +470,8 @@ pub fn test_code(code: CodeToTest, flags: Vec<Flag>) {
     debug!("RESULT rusty_x86 = {:?}", rusty_x86.0);
     debug!("RESULT unicorn   = {:?}", unicorn.0);
 
+    debug!("Limiting flags to the following: {:?}", flags);
+
     // We can't directly compare contexts because of flags (sometimes they are undefined on x86)
     // So we compare separately the values of registers and specified flags
     let rusty_x86_gp = context_to_gp_map(&rusty_x86.0);

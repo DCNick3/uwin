@@ -368,6 +368,74 @@ mod inc {
     }
 }
 
+mod neg {
+    test_snippets! {
+        neg_0: (
+            ; mov eax, 0
+            ; neg eax
+        ) [CF ZF SF OF],
+        neg_neg_1: (
+            ; mov eax, -1
+            ; neg eax
+        ) [CF ZF SF OF],
+        neg_228: (
+            ; mov eax, 228
+            ; neg eax
+        ) [CF ZF SF OF],
+        neg_neg_228: (
+            ; mov eax, -228
+            ; neg eax
+        ) [CF ZF SF OF],
+
+        neg_16_0: (
+            ; mov ax, 0
+            ; neg ax
+        ) [CF ZF SF OF],
+        neg_16_neg_1: (
+            ; mov ax, -1
+            ; neg ax
+        ) [CF ZF SF OF],
+        neg_16_228: (
+            ; mov ax, 228
+            ; neg ax
+        ) [CF ZF SF OF],
+        neg_16_neg_228: (
+            ; mov ax, -228
+            ; neg ax
+        ) [CF ZF SF OF],
+
+        neg_8_0: (
+            ; mov al, 0
+            ; neg al
+        ) [CF ZF SF OF],
+        neg_8_neg_1: (
+            ; mov al, -1
+            ; neg al
+        ) [CF ZF SF OF],
+        neg_8_42: (
+            ; mov al, 42
+            ; neg al
+        ) [CF ZF SF OF],
+        neg_8_neg_42: (
+            ; mov al, -42
+            ; neg al
+        ) [CF ZF SF OF],
+
+        neg_rnd: (
+            ; mov eax, 0x79f9322a
+            ; neg eax
+        ) [CF ZF SF OF],
+        neg_16_rnd: (
+            ; mov eax, 0x79f9322a
+            ; neg ax
+        ) [CF ZF SF OF],
+        neg_8_rnd: (
+            ; mov eax, 0x79f9322a
+            ; neg al
+        ) [CF ZF SF OF],
+    }
+}
+
 mod mem {
     use crate::common::MEM_ADDR;
     test_snippets! {
@@ -708,15 +776,15 @@ mod sar {
         sar_edge_case_byte: (
             ; mov al, -0x08
             ; sar al, 0x09
-        ) [CF ZF SF],
+        ) [CF ZF SF OF],
         sar_edge_case_word: (
             ; mov ax, -0x0888
             ; sar ax, 0x11
-        ) [CF ZF SF],
+        ) [CF ZF SF OF],
         sar_edge_case_dword: (
             ; mov eax, -0x08888888
             ; sar eax, 0x21
-        ) [CF ZF SF],
+        ) [CF ZF SF OF],
     }
 }
 
@@ -819,15 +887,15 @@ mod shl {
         shl_edge_case_byte: (
             ; mov al, -0x08
             ; shl al, 0x09
-        ) [CF ZF SF],
+        ) [CF ZF SF OF],
         shl_edge_case_word: (
             ; mov ax, -0x0888
             ; shl ax, 0x11
-        ) [CF ZF SF],
+        ) [CF ZF SF OF],
         shl_edge_case_dword: (
             ; mov eax, -0x08888888
             ; shl eax, 0x21
-        ) [CF ZF SF],
+        ) [CF ZF SF OF],
     }
 }
 

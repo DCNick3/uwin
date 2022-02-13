@@ -387,6 +387,25 @@ pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) -> Control
                 builder.compute_and_store_sf(res);
                 builder.store_flag(Flag::Overflow, of);
             }
+            Neg => {
+                operands!([dst], &instr);
+
+                let val = builder.load_operand(dst);
+
+                let zero = builder.make_int_value(val.size(), 0, false);
+
+                let res = builder.int_neg(val);
+                builder.store_operand(dst, res);
+
+                let of = builder.ssub_overflow(zero, val);
+                let cf = builder.usub_overflow(zero, val);
+                // https://stackoverflow.com/questions/44837231/how-does-the-neg-instruction-affect-the-flags-on-x86
+                // flags are equivalent to sub 0, dst
+                builder.compute_and_store_zf(res);
+                builder.compute_and_store_sf(res);
+                builder.store_flag(Flag::Overflow, of);
+                builder.store_flag(Flag::Carry, cf);
+            }
             Imul => {
                 let (dst, lhs, rhs) = match *instr.get_operands().as_slice() {
                     [_] => {
