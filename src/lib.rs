@@ -132,7 +132,7 @@ fn codegen_string_instr<B: Builder>(builder: &mut B, instr: Instruction) {
             Insb | Insw | Insd | Outsb | Outsw | Outsd => unimplemented!(),
 
             Movsb | Movsw | Movsd | Lodsb | Lodsw | Lodsd | Stosb | Stosw | Stosd | Cmpsb
-            | Cmpsw | Cmpsd => todo!(),
+            | Cmpsw | Cmpsd => todo!("{:?}", instr.mnemonic()),
 
             Scasb | Scasw | Scasd => {
                 operands!([cmp, src], &instr);
@@ -528,6 +528,23 @@ pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) -> Control
                 if mnemonic == And {
                     builder.store_operand(dst, res);
                 }
+                // The OF and CF flags are cleared; the SF, ZF, and PF flags are set according to the result. The state of the AF flag is
+                // undefined.
+                builder.compute_and_store_zf(res);
+                builder.compute_and_store_sf(res);
+                builder.store_flag(Flag::Carry, builder.make_false());
+                builder.store_flag(Flag::Overflow, builder.make_false());
+            }
+            Or => {
+                operands!([dst, src], &instr);
+
+                let lhs = builder.load_operand(dst);
+                let rhs = builder.load_operand(src);
+
+                let res = builder.int_or(lhs, rhs);
+
+                builder.store_operand(dst, res);
+
                 // The OF and CF flags are cleared; the SF, ZF, and PF flags are set according to the result. The state of the AF flag is
                 // undefined.
                 builder.compute_and_store_zf(res);

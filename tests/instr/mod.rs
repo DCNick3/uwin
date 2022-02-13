@@ -737,6 +737,42 @@ mod test {
     }
 }
 
+mod or {
+    test_snippets! {
+        or_same_eax_eax: (
+            ; mov eax, 228
+            ; or eax, eax
+        ) [CF ZF SF OF],
+        or_same_eax_ebx: (
+            ; mov eax, 228
+            ; mov ebx, 228
+            ; or eax, ebx
+        ) [CF ZF SF OF],
+        or_0_0: (
+            ; mov eax, 0
+            ; or eax, 0
+        ) [CF ZF SF OF],
+        or_0_1: (
+            ; mov eax, 0
+            ; or eax, 1
+        ) [CF ZF SF OF],
+        or_1_0: (
+            ; mov eax, 1
+            ; or eax, 0
+        ) [CF ZF SF OF],
+        or_eax_ebx_rnd1: (
+            ; mov eax, 0x79d1e0e9
+            ; mov ebx, -0x16d29593
+            ; or eax, ebx
+        ) [CF ZF SF OF],
+        or_eax_ebx_rnd2: (
+            ; mov eax, 0x79f9322a
+            ; mov ebx, 0x801efd8
+            ; or eax, ebx
+        ) [CF ZF SF OF],
+    }
+}
+
 mod shr {
     test_snippets! {
         shr_zero: (
