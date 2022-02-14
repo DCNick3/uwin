@@ -325,6 +325,13 @@ pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) -> Control
                 let val = builder.zext(val, dst.size());
                 builder.store_operand(dst, val);
             }
+            Movsx => {
+                operands!([dst, src], &instr);
+
+                let val = builder.load_operand(src);
+                let val = builder.sext(val, dst.size());
+                builder.store_operand(dst, val);
+            }
             Add => {
                 operands!([dst, src], &instr);
 

@@ -90,6 +90,50 @@ mod movzx {
     }
 }
 
+mod movsx {
+    test_snippets! {
+        movsx_16_0: (
+            ; mov ax, 0
+            ; movsx eax, ax
+        ) [CF ZF SF OF],
+
+        movsx_16_0xffff: (
+            ; mov ax, -1
+            ; movsx eax, ax
+        ) [CF ZF SF OF],
+
+        movsx_16_0x8000: (
+            ; mov ax, -0x8000
+            ; movsx eax, ax
+        ) [CF ZF SF OF],
+
+        movsx_16_0x1337: (
+            ; mov ax, 0x1337
+            ; movsx eax, ax
+        ) [CF ZF SF OF],
+
+        movsx_8_0: (
+            ; mov al, 0
+            ; movsx eax, al
+        ) [CF ZF SF OF],
+
+        movsx_8_0xff: (
+            ; mov al, -1
+            ; movsx eax, al
+        ) [CF ZF SF OF],
+
+        movsx_8_0x80: (
+            ; mov al, -0x80
+            ; movsx eax, al
+        ) [CF ZF SF OF],
+
+        movsx_8_0x37: (
+            ; mov al, 0x37
+            ; movsx eax, al
+        ) [CF ZF SF OF],
+    }
+}
+
 mod sub {
     test_snippets! {
         sub_1_2: (
