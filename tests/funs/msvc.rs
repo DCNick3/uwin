@@ -22,7 +22,11 @@ test_functions!(
     msvc_memset: [
         (MEM_ADDR, 0, 14),
         (MEM_ADDR, 12, 18),
-        (MEM_ADDR, 255, 133)
+        (MEM_ADDR, 255, 133),
+        (MEM_ADDR, 0, 16),
+        (MEM_ADDR, 12, 15),
+        (MEM_ADDR, 255, 14),
+        (MEM_ADDR, 255, 13)
     ] (
         ; mov     al, BYTE [esp-4+12]
         ; mov     ecx, DWORD [esp-4+16]
@@ -46,6 +50,55 @@ test_functions!(
         ; pop     edi
         ; pop     esi
         ; pop     ebx
+        ; ret     0
+    ),
+);
+
+test_functions!(
+    // void* my_memcpy(unsigned char* buf, unsigned seed, size_t ln) {
+    //     int i;
+    //     for (i = 0; i < ln; i++) {
+    //         buf[i] = seed % 256;
+    //         // https://en.wikipedia.org/wiki/Linear_congruential_generator#Parameters_in_common_use
+    //         // Borland C++
+    //         seed = 22695477 * seed + 1;
+    //     }
+    //
+    //     return memcpy(buf + ln, buf, ln);
+    // }
+    msvc_memcpy: [
+        (MEM_ADDR, 0, 16),
+        (MEM_ADDR, 12, 15),
+        (MEM_ADDR, 255, 14),
+        (MEM_ADDR, 255, 13)
+    ] (
+;->my_memcpy:
+        ; mov     ecx, DWORD [esp-4+16]
+        ; xor     eax, eax
+        ; push    esi
+        ; mov     esi, DWORD [esp+8]
+        ; test    ecx, ecx
+        ; push    edi
+        ; jbe     ->L355
+        ; mov     edx, DWORD [esp+4+12]
+    ;->L353:
+        ; mov     BYTE [eax+esi], dl
+        ; imul    edx, edx, 0x15a4e35
+        ; inc     edx
+        ; inc     eax
+        ; cmp     eax, ecx
+        ; jb      ->L353
+    ;->L355:
+        ; lea     edi, [esi+ecx]
+        ; mov     edx, ecx
+        ; mov     eax, edi
+        ; shr     ecx, 2
+        ; rep movsd
+        ; mov     ecx, edx
+        ; and     ecx, 3
+        ; rep movsb
+        ; pop     edi
+        ; pop     esi
         ; ret     0
     ),
 );

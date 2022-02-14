@@ -1680,4 +1680,183 @@ mod string {
             ) [CF ZF SF OF],
         }
     }
+
+    mod movs {
+        use crate::common::MEM_ADDR;
+
+        test_snippets! {
+            movsb_0x11: (
+                ; mov BYTE [MEM_ADDR as i32], 0x11
+                ; mov esi, MEM_ADDR as i32
+                ; mov edi, MEM_ADDR as i32 + 1
+                ; movsb
+            ) [CF ZF SF OF],
+            movsb_0x00: (
+                ; mov BYTE [MEM_ADDR as i32], 0x11
+                ; mov esi, MEM_ADDR as i32 + 1
+                ; mov edi, MEM_ADDR as i32
+                ; movsb
+            ) [CF ZF SF OF],
+
+            movsb_rep_0: (
+                ; mov DWORD [MEM_ADDR as i32], 0x11121314
+                ; mov esi, MEM_ADDR as i32
+                ; mov edi, MEM_ADDR as i32 + 4
+                ; mov ecx, 0x0
+                ; rep movsb
+            ) [CF ZF SF OF],
+            movsb_rep_2: (
+                ; mov DWORD [MEM_ADDR as i32], 0x11121314
+                ; mov esi, MEM_ADDR as i32
+                ; mov edi, MEM_ADDR as i32 + 4
+                ; mov ecx, 0x2
+                ; rep movsb
+            ) [CF ZF SF OF],
+            movsb_rep_4: (
+                ; mov DWORD [MEM_ADDR as i32], 0x11121314
+                ; mov esi, MEM_ADDR as i32
+                ; mov edi, MEM_ADDR as i32 + 4
+                ; mov ecx, 0x4
+                ; rep movsb
+            ) [CF ZF SF OF],
+            // this should start wrapping
+            movsb_rep_8: (
+                ; mov DWORD [MEM_ADDR as i32], 0x11121314
+                ; mov esi, MEM_ADDR as i32
+                ; mov edi, MEM_ADDR as i32 + 4
+                ; mov ecx, 0x4
+                ; rep movsb
+            ) [CF ZF SF OF],
+            movsb_rep_420: (
+                ; mov DWORD [MEM_ADDR as i32], 0x11121314
+                ; mov esi, MEM_ADDR as i32
+                ; mov edi, MEM_ADDR as i32 + 4
+                ; mov ecx, 420
+                ; rep movsb
+            ) [CF ZF SF OF],
+        }
+
+        test_snippets! {
+            movsw_0x11: (
+                ; mov WORD [MEM_ADDR as i32], 0x1112
+                ; mov esi, MEM_ADDR as i32
+                ; mov edi, MEM_ADDR as i32 + 2
+                ; movsw
+            ) [CF ZF SF OF],
+            movsw_0x00: (
+                ; mov WORD [MEM_ADDR as i32], 0x1112
+                ; mov esi, MEM_ADDR as i32 + 2
+                ; mov edi, MEM_ADDR as i32
+                ; movsw
+            ) [CF ZF SF OF],
+
+            movsw_rep_0: (
+                ; mov DWORD [MEM_ADDR as i32], 0x11121314
+                ; mov DWORD [MEM_ADDR as i32 + 4], 0x15161718
+                ; mov esi, MEM_ADDR as i32
+                ; mov edi, MEM_ADDR as i32 + 8
+                ; mov ecx, 0x0
+                ; rep movsw
+            ) [CF ZF SF OF],
+            movsw_rep_2: (
+                ; mov DWORD [MEM_ADDR as i32], 0x11121314
+                ; mov DWORD [MEM_ADDR as i32 + 4], 0x15161718
+                ; mov esi, MEM_ADDR as i32
+                ; mov edi, MEM_ADDR as i32 + 8
+                ; mov ecx, 0x2
+                ; rep movsw
+            ) [CF ZF SF OF],
+            movsw_rep_4: (
+                ; mov DWORD [MEM_ADDR as i32], 0x11121314
+                ; mov esi, MEM_ADDR as i32
+                ; mov edi, MEM_ADDR as i32 + 4
+                ; mov ecx, 0x4
+                ; rep movsw
+            ) [CF ZF SF OF],
+            // this should start wrapping
+            movsw_rep_8: (
+                ; mov DWORD [MEM_ADDR as i32], 0x11121314
+                ; mov DWORD [MEM_ADDR as i32 + 4], 0x15161718
+                ; mov esi, MEM_ADDR as i32
+                ; mov edi, MEM_ADDR as i32 + 8
+                ; mov ecx, 0x4
+                ; rep movsw
+            ) [CF ZF SF OF],
+            movsw_rep_420: (
+                ; mov DWORD [MEM_ADDR as i32], 0x11121314
+                ; mov DWORD [MEM_ADDR as i32 + 4], 0x15161718
+                ; mov esi, MEM_ADDR as i32
+                ; mov edi, MEM_ADDR as i32 + 8
+                ; mov ecx, 420
+                ; rep movsw
+            ) [CF ZF SF OF],
+        }
+
+        test_snippets! {
+            movsd_0x11: (
+                ; mov DWORD [MEM_ADDR as i32], 0x11121314
+                ; mov esi, MEM_ADDR as i32
+                ; mov edi, MEM_ADDR as i32 + 4
+                ; movsd
+            ) [CF ZF SF OF],
+            movsd_0x00: (
+                ; mov DWORD [MEM_ADDR as i32], 0x11121314
+                ; mov esi, MEM_ADDR as i32 + 4
+                ; mov edi, MEM_ADDR as i32
+                ; movsd
+            ) [CF ZF SF OF],
+
+            movsd_rep_0: (
+                ; mov DWORD [MEM_ADDR as i32], 0x11121314
+                ; mov DWORD [MEM_ADDR as i32+4], 0x15161718
+                ; mov DWORD [MEM_ADDR as i32+8], 0x191a1b1c
+                ; mov DWORD [MEM_ADDR as i32+12], 0x1d1e1f20
+                ; mov esi, MEM_ADDR as i32
+                ; mov edi, MEM_ADDR as i32 + 16
+                ; mov ecx, 0x0
+                ; rep movsd
+            ) [CF ZF SF OF],
+            movsd_rep_2: (
+                ; mov DWORD [MEM_ADDR as i32], 0x11121314
+                ; mov DWORD [MEM_ADDR as i32+4], 0x15161718
+                ; mov DWORD [MEM_ADDR as i32+8], 0x191a1b1c
+                ; mov DWORD [MEM_ADDR as i32+12], 0x1d1e1f20
+                ; mov esi, MEM_ADDR as i32
+                ; mov edi, MEM_ADDR as i32 + 16
+                ; mov ecx, 0x2
+                ; rep movsd
+            ) [CF ZF SF OF],
+            movsd_rep_4: (
+                ; mov DWORD [MEM_ADDR as i32], 0x11121314
+                ; mov DWORD [MEM_ADDR as i32+4], 0x15161718
+                ; mov DWORD [MEM_ADDR as i32+8], 0x191a1b1c
+                ; mov DWORD [MEM_ADDR as i32+12], 0x1d1e1f20
+                ; mov esi, MEM_ADDR as i32
+                ; mov edi, MEM_ADDR as i32 + 16
+                ; mov ecx, 0x4
+                ; rep movsd
+            ) [CF ZF SF OF],
+            // this should start wrapping
+            movsd_rep_8: (
+                ; mov DWORD [MEM_ADDR as i32], 0x11121314
+                ; mov DWORD [MEM_ADDR as i32+4], 0x15161718
+                ; mov DWORD [MEM_ADDR as i32+8], 0x191a1b1c
+                ; mov DWORD [MEM_ADDR as i32+12], 0x1d1e1f20
+                ; mov esi, MEM_ADDR as i32
+                ; mov edi, MEM_ADDR as i32 + 16
+                ; mov ecx, 0x4
+                ; rep movsd
+            ) [CF ZF SF OF],
+            movsd_rep_420: (
+                ; mov DWORD [MEM_ADDR as i32], 0x11121314
+                ; mov DWORD [MEM_ADDR as i32+4], 0x15161718
+                ; mov DWORD [MEM_ADDR as i32+8], 0x191a1b1c
+                ; mov DWORD [MEM_ADDR as i32+12], 0x1d1e1f20
+                ; mov esi, MEM_ADDR as i32
+                ; mov edi, MEM_ADDR as i32 + 16
+                ; mov ecx, 420
+                ; rep movsd
+            ) [CF ZF SF OF],
+        }
+    }
 }

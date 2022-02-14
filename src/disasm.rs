@@ -52,6 +52,19 @@ fn get_opt_register(iced_register: IcedRegister) -> Option<Register> {
     }
 }
 
+fn get_opt_segment(iced_segment: IcedRegister) -> Option<SegmentRegister> {
+    match iced_segment {
+        IcedRegister::None => None,
+        IcedRegister::CS => Some(SegmentRegister::CS),
+        IcedRegister::DS => Some(SegmentRegister::DS),
+        IcedRegister::ES => Some(SegmentRegister::ES),
+        IcedRegister::FS => Some(SegmentRegister::FS),
+        IcedRegister::GS => Some(SegmentRegister::GS),
+        IcedRegister::SS => Some(SegmentRegister::SS),
+        _ => unreachable!(),
+    }
+}
+
 pub fn get_operand(instr: &Instruction, operand: u32) -> Operand {
     use crate::types::Operand::*;
 
@@ -78,7 +91,7 @@ pub fn get_operand(instr: &Instruction, operand: u32) -> Operand {
         OpKind::Immediate8to64 => Immediate64(instr.immediate8to64() as u64),
         OpKind::Immediate32to64 => Immediate64(instr.immediate32to64() as u64),
 
-        OpKind::Memory | OpKind::MemoryESEDI => {
+        OpKind::Memory | OpKind::MemoryESEDI | OpKind::MemorySegESI => {
             let memory_size = match instr.memory_size() {
                 MemorySize::UInt8 => Some(IntType::I8),
                 MemorySize::UInt16 => Some(IntType::I16),
@@ -95,26 +108,32 @@ pub fn get_operand(instr: &Instruction, operand: u32) -> Operand {
                 s => panic!("Unsupported memory size: {:?}", s),
             };
 
-            let op = if op_kind == OpKind::Memory {
-                assert_eq!(instr.segment_prefix(), IcedRegister::None); // TODO: segments (they are not that interesting, honestly)
-
-                MemoryOperand {
+            let op = match op_kind {
+                OpKind::Memory => MemoryOperand {
                     base: get_opt_register(instr.memory_base()),
                     displacement: instr.memory_displacement32() as i32 as i64,
                     scale: instr.memory_index_scale() as u8,
                     index: get_opt_register(instr.memory_index()),
                     size: memory_size,
-                    segment: None,
-                }
-            } else {
-                MemoryOperand {
+                    segment: get_opt_segment(instr.segment_prefix()),
+                },
+                OpKind::MemoryESEDI => MemoryOperand {
                     base: Some(super::Register::EDI),
                     displacement: 0,
                     scale: 0,
                     index: None,
                     size: memory_size,
                     segment: Some(SegmentRegister::ES),
-                }
+                },
+                OpKind::MemorySegESI => MemoryOperand {
+                    base: Some(super::Register::ESI),
+                    displacement: 0,
+                    scale: 0,
+                    index: None,
+                    size: memory_size,
+                    segment: get_opt_segment(instr.segment_prefix()),
+                },
+                _ => unreachable!(),
             };
             Memory(op)
         }

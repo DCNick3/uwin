@@ -125,9 +125,9 @@ fn is_cmovcc(mnemonic: Mnemonic) -> bool {
 }
 
 fn codegen_string_instr<B: Builder>(builder: &mut B, instr: Instruction) {
-    let advance_edi = |builder: &mut B, size: IntType| {
+    let advance_reg = |builder: &mut B, size: IntType, reg: Register| {
         let size = builder.make_u32(size.byte_width() as u32);
-        let edi = builder.load_register(Register::EDI);
+        let edi = builder.load_register(reg);
 
         // if DF = 1 => EDI += size, else => EDI -= size
         let df = builder.load_flag(Flag::Direction);
@@ -135,23 +135,37 @@ fn codegen_string_instr<B: Builder>(builder: &mut B, instr: Instruction) {
             df,
             |builder| {
                 let edi = builder.sub(edi, size);
-                builder.store_register(Register::EDI, edi);
+                builder.store_register(reg, edi);
             },
             |builder| {
                 let edi = builder.add(edi, size);
-                builder.store_register(Register::EDI, edi);
+                builder.store_register(reg, edi);
             },
         );
     };
+
+    let advance_edi = |builder: &mut B, size: IntType| advance_reg(builder, size, Register::EDI);
+    let advance_esi = |builder: &mut B, size: IntType| advance_reg(builder, size, Register::ESI);
 
     let execute_instr = |builder: &mut B| {
         use Mnemonic::*;
         // this handles the core instruction
         match instr.mnemonic() {
+            // no port IO for you
             Insb | Insw | Insd | Outsb | Outsw | Outsd => unimplemented!(),
 
-            Movsb | Movsw | Movsd | Lodsb | Lodsw | Lodsd | Cmpsb | Cmpsw | Cmpsd => {
+            Lodsb | Lodsw | Lodsd | Cmpsb | Cmpsw | Cmpsd => {
                 todo!("{:?}", instr.mnemonic())
+            }
+
+            Movsb | Movsw | Movsd => {
+                operands!([dst, src], &instr);
+
+                let val = builder.load_operand(src);
+                builder.store_operand(dst, val);
+
+                advance_esi(builder, dst.size());
+                advance_edi(builder, dst.size());
             }
 
             Stosb | Stosw | Stosd => {
