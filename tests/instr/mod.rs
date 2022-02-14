@@ -1195,6 +1195,101 @@ mod div {
     );
 }
 
+mod idiv {
+    test_snippets!(
+        idiv_basic1: (
+            ; mov eax, 42
+            ; mov ebx, 24
+            ; idiv ebx
+        ),
+        idiv_basic2: (
+            ; mov eax, 1
+            ; mov ebx, 888
+            ; idiv ebx
+        ),
+        idiv_basic3: (
+            ; mov eax, 888
+            ; mov ebx, 1
+            ; idiv ebx
+        ),
+        idiv_basic4: (
+            ; mov eax, 1
+            ; mov ebx, 2
+            ; idiv ebx
+        ),
+
+        idiv_basic1_neg: (
+            ; mov eax, -42
+            ; mov ebx, 24
+            ; idiv ebx
+        ),
+        idiv_basic2_neg: (
+            ; mov eax, 1
+            ; mov ebx, -888
+            ; idiv ebx
+        ),
+        idiv_basic3_neg: (
+            ; mov eax, -888
+            ; mov ebx, 2
+            ; idiv ebx
+        ),
+        idiv_basic4_neg: (
+            ; mov eax, -1
+            ; mov ebx, 2
+            ; idiv ebx
+        ),
+
+        idiv_rnd1: (
+            ; mov eax, -0x57549d35
+            ; mov ebx, 0x4003cb02
+            ; idiv ebx
+        ),
+        idiv_rnd2: (
+            ; mov eax, 0x37ab7947
+            ; mov ebx, -0x6d61d34
+            ; idiv ebx
+        ),
+        idiv_rnd3: (
+            ; mov eax, 0x3a64b162
+            ; mov ebx, -0x502df7b4
+            ; idiv ebx
+        ),
+        idiv_big1: (
+            ; mov eax, 0
+            ; mov edx, 1
+            ; mov ebx, 3
+            ; idiv ebx
+        ),
+        // this should cause a idivision error
+        // TODO: how can we test this? (it's not how it behaves rn btw)
+        // ditto for idivision by zero
+        // idiv_big2: (
+        //     ; mov eax, 0
+        //     ; mov edx, 1
+        //     ; mov ebx, 1
+        //     ; idiv ebx
+        // ),
+        idiv_big_rnd1: (
+            ; mov eax, -0x1895c25a
+            ; mov edx, -0x0c8300d6
+            ; mov ebx, 0x70a45624
+            ; idiv ebx
+        ),
+        idiv_big_rnd2: (
+            ; mov eax, -0x21c0f
+            ; mov edx, 0x338001
+            ; mov ebx, 0x90ed24d
+            ; idiv ebx
+        ),
+        idiv_big_rnd3: (
+            ; mov eax, 0x74f1d28c
+            ; mov edx, -0x0507473a
+            ; mov ebx, -0x7d79c77f
+            ; idiv ebx
+        ),
+    );
+}
+
 mod stack {
     test_snippets!(
         push_eax_pop_ebx: (

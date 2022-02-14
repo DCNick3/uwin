@@ -450,7 +450,7 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
             self.builder.build_store(base_ptr, value);
         } else {
             // ehh, this is kinda ugly. Maybe we can index directly into the base value? how 'bout aliasing?
-            let mut base_val = self
+            let base_val = self
                 .builder
                 .build_load(base_ptr, &*format!("{:?}", base))
                 .into_int_value();
@@ -581,6 +581,10 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
 
     fn udiv(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue {
         self.builder.build_int_unsigned_div(lhs, rhs, "")
+    }
+
+    fn sdiv(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue {
+        self.builder.build_int_signed_div(lhs, rhs, "")
     }
 
     fn extract_bit(&mut self, val: Self::IntValue, bit: Self::IntValue) -> Self::BoolValue {

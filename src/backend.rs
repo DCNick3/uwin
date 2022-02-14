@@ -75,6 +75,7 @@ pub trait Builder {
     fn lshr(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue;
     fn ashr(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue;
     fn udiv(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue;
+    fn sdiv(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue;
 
     // bit should be in bounds! otherwise results in ub
     fn extract_bit(&mut self, val: Self::IntValue, bit: Self::IntValue) -> Self::BoolValue;

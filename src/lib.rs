@@ -660,7 +660,7 @@ pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) -> Control
                     },
                 );
             }
-            Div => {
+            Div | Idiv => {
                 operands!([src], &instr);
 
                 let double_size = src.size().double_sized();
@@ -686,8 +686,19 @@ pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) -> Control
                 let dividend = builder.int_or(lo, hi);
 
                 let divisor = builder.load_operand(src);
-                let divisor = builder.zext(divisor, double_size);
-                let quotient = builder.udiv(dividend, divisor);
+                let divisor = if mnemonic == Div {
+                    builder.zext(divisor, double_size)
+                } else {
+                    builder.sext(divisor, double_size)
+                };
+
+                let quotient = if mnemonic == Div {
+                    builder.udiv(dividend, divisor)
+                } else {
+                    builder.sdiv(dividend, divisor)
+                };
+
+                // TODO: test overflow and trap if out of bounds
 
                 // calculate the remainder
                 let whole = builder.mul(quotient, divisor);
