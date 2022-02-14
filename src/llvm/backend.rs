@@ -686,6 +686,15 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
         self.builder.position_at_end(cont_bb);
     }
 
+    fn trap(&mut self) {
+        let trap = self
+            .intrinsics
+            .trap
+            .get_declaration(self.module, &[])
+            .unwrap();
+        self.builder.build_call(trap, &[], "");
+    }
+
     fn repeat_until<B>(&mut self, body: B)
     where
         B: Fn(&mut Self) -> Self::BoolValue,

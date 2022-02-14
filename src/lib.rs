@@ -797,6 +797,12 @@ pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) -> Control
             }
             Stc => builder.store_flag(Carry, builder.make_true()),
             Clc => builder.store_flag(Carry, builder.make_false()),
+            Int => {
+                // TODO: maybe try to handle int 3 and other stuff differently?
+                // Also wanna have runtime info on WTF has happened
+                builder.trap();
+            }
+
             // TODO: uncomment when unit tests for different direction of string operations will be in place
             //Std => builder.store_flag(Direction, builder.make_true()),
             //Cld => builder.store_flag(Direction, builder.make_false()),
@@ -890,7 +896,7 @@ mod tests {
 
             let code = MemoryImage::from_code_region(0x1000, code);
 
-            let module = llvm::recompile(context, types, rt_funs, &code, 0x1000);
+            let module = llvm::recompile(context, types, rt_funs, &code, &[0x1000]);
 
             let target_machine = llvm::get_aarch64_target_machine();
 
@@ -956,9 +962,14 @@ mod tests {
             // and recompile it into this
             // isn't it nice?
             let expected_result = assemble_aarch64!(
-                ; ->indirect_bb_call:
+            ; ->indirect_bb_call:
+                ; cmp w2, #0x1, lsl #0xc
+                ; b.ne >FAIL
+                ; b ->bb_0x1000
+                ; FAIL:
                 ; brk #0x1
 
+            ; ->bb_0x1000:
                 ; ldr w8, [x0, #0x10]
                 ; mov w9, #0x2a
                 ; str w9, [x0, #0x4]
@@ -1004,7 +1015,11 @@ mod tests {
             // and recompile it into this
             // isn't it nice?
             let expected_result = assemble_aarch64!(
-                ; ->indirect_bb_call:
+            ; ->indirect_bb_call:
+                ; cmp w2, #0x1, lsl #0xc
+                ; b.ne >FAIL
+                ; b ->bb_0x1000
+                ; FAIL:
                 ; brk #0x1
 
                 // ; ldr w8, [x0, #0x10] // load ESP
@@ -1023,6 +1038,7 @@ mod tests {
                 // ; stur x8, [x0, #0xc] // store remainder in EDX
                 // ; ret
 
+            ; ->bb_0x1000:
                 ; ldr w8, [x0, #0x10]
                 ; add w9, w8, #0x4
                 ; ldrsw x10, [x1, w9, uxtw]
@@ -1076,8 +1092,23 @@ mod tests {
 
             let expected_result = assemble_aarch64!(
                 ; ->indirect_bb_call:
+                ; cmp w2, #0x1, lsl #0xc
+                ; b.eq >L1
+                ; mov w8, #0x101a
+                ; cmp w2, w8
+                ; b.eq >L2
+                ; mov w8, #0x101f
+                ; cmp w2, w8
+                ; b.ne >FAIL
+                ; b ->basic_block_0000101F
+                ;L1:
+                ; b ->basic_block_00001000
+                ;L2:
+                ; b ->basic_block_0000101A
+                ;FAIL:
                 ; brk #0x1
 
+                ;->basic_block_00001000:
                 ; ldp w8, w9, [x0, #0x10]
                 ; sub w8, w8, #4
                 ; str w8, [x0, #0x10]
@@ -1134,13 +1165,22 @@ mod tests {
             );
 
             let expected_result = assemble_aarch64!(
-                ; ->indirect_bb_call:
+            ; ->indirect_bb_call:
+                ; cmp w2, #0x1, lsl #0xc
+                ; b.eq >jump_bb_0x1000
+                ; mov w8, #0x1008
+                ; cmp w2, w8
+                ; b.ne >FAIL
+                ; b ->bb_0x1005
+            ; jump_bb_0x1000:
+                ; b ->bb_0x1000
+                ; FAIL:
                 ; brk #0x1
 
-                ; ->bb_0x1000:
+            ; ->bb_0x1000:
                 ; b ->bb_0x1005
 
-                ; ->bb_0x1005:
+            ; ->bb_0x1005:
                 ; mov w8, #0x2a
                 ; str w8, [x0, #0]
                 ; ret
@@ -1159,8 +1199,13 @@ mod tests {
 
             let expected_result = assemble_aarch64!(
                 ; ->indirect_bb_call:
+                ; cmp w2, #0x1, lsl #0xc
+                ; b.ne >FAIL
+                ; b ->bb_0x1000
+                ; FAIL:
                 ; brk #0x1
 
+                ; ->bb_0x1000:
                 ; ldr w8, [x0, #0xc]  // load EDX
                 ; mov w9, #0x2
                 ; mov w10, #0x1
@@ -1182,9 +1227,14 @@ mod tests {
 
             let expected_result = assemble_aarch64!(
                 ; ->indirect_bb_call:
+                ; cmp w2, #0x1, lsl #0xc
+                ; b.ne >FAIL
+                ; b ->bb_0x1000
+                ; FAIL:
                 ; brk #0x1
 
                 // it's all optimized down to just storing a byte, nice
+                ; ->bb_0x1000:
                 ; mov w8, #0x2a
                 ; strb w8, [x0]
                 ; ret
@@ -1201,9 +1251,14 @@ mod tests {
 
             let expected_result = assemble_aarch64!(
                 ; ->indirect_bb_call:
+                ; cmp w2, #0x1, lsl #0xc
+                ; b.ne >FAIL
+                ; b ->bb_0x1000
+                ; FAIL:
                 ; brk #0x1
 
                 // it's all optimized down to just storing a half-word, nice
+                ; ->bb_0x1000:
                 ; mov w8, #0x2a
                 ; strh w8, [x0]
                 ; ret

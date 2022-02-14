@@ -202,7 +202,15 @@ fn bla() {
     let args: &[u32] = &[5, '1' as u32, '1' as u32, '.' as u32, '3' as u32, 0];
     log::info!("Running {} on {:?}", stringify!($name), args);
 
-    let elf = include_bytes!("msvc_float");
+    let elf = include_bytes!("msvc_float/msvc_float");
+    let basic_blocks = include_str!("msvc_float/msvc_float_bb.txt");
+    let basic_blocks: Vec<u32> = basic_blocks
+        .lines()
+        .map(|l| u32::from_str_radix(l, 16).unwrap())
+        .collect();
 
-    crate::common::test_code(crate::common::CodeToTest::ElfFunction(elf, args), vec![]);
+    crate::common::test_code(
+        crate::common::CodeToTest::ElfFunction(elf, args, Some(&basic_blocks)),
+        vec![],
+    );
 }

@@ -25,9 +25,9 @@ pub const PAGE_ALIGN: u32 = 0x1000;
 
 #[derive(Clone)]
 pub enum CodeToTest<'a> {
-    Snippet(&'a [u8]),                // just the code
-    Function(&'a [u8], &'a [u32]),    // code & args
-    ElfFunction(&'a [u8], &'a [u32]), // elf contents & args
+    Snippet(&'a [u8]),                                   // just the code
+    Function(&'a [u8], &'a [u32]),                       // code & args
+    ElfFunction(&'a [u8], &'a [u32], Option<&'a [u32]>), // elf contents, args and (optional) basic block addresses
 }
 
 impl<'a> CodeToTest<'a> {
@@ -40,7 +40,7 @@ impl<'a> CodeToTest<'a> {
                 image.add_zero_region(MEM_ADDR, Protection::READ_WRITE, MEM_SIZE);
                 entry = CODE_ADDR;
             }
-            CodeToTest::ElfFunction(elf, _) => {
+            CodeToTest::ElfFunction(elf, _, _) => {
                 let elf = ElfBinary::new(elf).unwrap();
                 let mut builder_wrap = MemoryImageWrap(image);
                 elf.load(&mut builder_wrap).unwrap();
@@ -51,11 +51,19 @@ impl<'a> CodeToTest<'a> {
         (image, entry)
     }
 
+    pub fn get_basic_blocks(&self) -> Option<&'a [u32]> {
+        match self {
+            CodeToTest::Snippet(_) => None,
+            CodeToTest::Function(_, _) => None,
+            CodeToTest::ElfFunction(_, _, bb) => *bb,
+        }
+    }
+
     pub fn get_args(&self) -> Vec<u32> {
         match self {
             CodeToTest::Snippet(_) => vec![],
             CodeToTest::Function(_, args) => args.to_vec(),
-            CodeToTest::ElfFunction(_, args) => args.to_vec(),
+            CodeToTest::ElfFunction(_, args, _) => args.to_vec(),
         }
     }
 }
@@ -181,7 +189,7 @@ fn load_unicorn(
             let base_addr = entry as u64;
             (base_addr, Some(base_addr + code.len() as u64))
         }
-        CodeToTest::ElfFunction(_, _) => (entry as u64, None),
+        CodeToTest::ElfFunction(_, _, _) => (entry as u64, None),
     };
 
     let mut push = |v: u32| {
@@ -290,9 +298,11 @@ fn execute_rusty_x86(code_and_args: CodeToTest) -> (CpuContext, Vec<(u32, Vec<u8
     let types = &rusty_x86::llvm::backend::Types::new(&context);
     let rt_funs = &rusty_x86::llvm::backend::RuntimeHelpers::dummy(types);
     let (image, entry) = code_and_args.get_code();
-    let module = rusty_x86::llvm::recompile(&context, types, rt_funs, &image, entry);
+    let entries = &[entry];
+    let basic_blocks = code_and_args.get_basic_blocks().unwrap_or(entries);
+    let module = rusty_x86::llvm::recompile(&context, types, rt_funs, &image, basic_blocks);
 
-    let entry_name = rusty_x86::llvm::backend::LlvmBuilder::get_name_for(CODE_ADDR);
+    let entry_name = rusty_x86::llvm::backend::LlvmBuilder::get_name_for(entry);
 
     const ENTRY_NAME: &str = "entry";
 
@@ -394,10 +404,8 @@ fn execute_rusty_x86(code_and_args: CodeToTest) -> (CpuContext, Vec<(u32, Vec<u8
     };
 
     // now write all the args (if any)
-    if let CodeToTest::Function(_, args) = code_and_args {
-        for arg in args.iter().rev() {
-            push(*arg)
-        }
+    for arg in code_and_args.get_args().iter().rev() {
+        push(*arg)
     }
     push(MAGIC_RETURN_ADDR); // return address
 

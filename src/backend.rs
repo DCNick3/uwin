@@ -123,6 +123,8 @@ pub trait Builder {
         F: FnOnce(&mut Self),
         Self: Sized;
 
+    fn trap(&mut self);
+
     // fn r#while<C, B>(&mut self, cond: C, body: B)
     // where
     //     C: FnOnce(&mut Self) -> Self::BoolValue,
