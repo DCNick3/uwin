@@ -528,3 +528,33 @@ macro_rules! test_functions {
         test_functions!($($xs)*);
     };
 }
+
+#[macro_export]
+macro_rules! test_elf_functions {
+    () => {};
+    ($name:ident: [$(($($arg:expr),*)),*] ($elf_path:literal), $($xs:tt)*) => {
+        mod $name {
+
+            fn get_elf() -> &'static [u8] {
+                include_bytes!($elf_path)
+            }
+
+            $(
+                paste::paste! {
+                    #[test_log::test]
+                    #[allow(non_snake_case)]
+                    fn [<on_ $($arg)_*>] () {
+                        let args: &[u32] = &[$($arg as u32),*];
+                        log::info!("Running {} on {:?}", stringify!($name), args);
+
+                        let elf = get_elf();
+
+                        crate::common::test_code(crate::common::CodeToTest::ElfFunction(elf, args), vec![]);
+                    }
+                }
+            )*
+        }
+
+        test_elf_functions!($($xs)*);
+    };
+}

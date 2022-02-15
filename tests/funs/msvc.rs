@@ -198,13 +198,12 @@ mod funs {
     );
 }
 
-#[test_log::test]
-#[allow(non_snake_case)]
-fn bla() {
-    let args: &[u32] = &[5, '1' as u32, '1' as u32, '.' as u32, '3' as u32, 0];
-    log::info!("Running {} on {:?}", stringify!($name), args);
-
-    let elf = include_bytes!("msvc_objs/float/msvc_float");
-
-    crate::common::test_code(crate::common::CodeToTest::ElfFunction(elf, args), vec![]);
+test_elf_functions! {
+    msvc_float: [
+        (5, 0x31, 0x31, 0x2e, 0x33, 0),
+        (2, 0x31, 0),
+        (2, 0x33, 0),
+        (5, 0x33, 0x31, 0x2e, 0x31, 0)
+    ]
+    ("msvc_objs/float/msvc_float"),
 }
