@@ -1,0 +1,40 @@
+[package]
+name = "rusty-x86"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+derive_more = "0.99.17"
+iced-x86 = "1.15.0"
+log = "0.4.14"
+strum = "0.23.0"
+strum_macros = "0.23.1"
+bitflags = "1.3.2"
+
+# TODO: add an llvm feature gate that will disable an llvm backend
+# though, need to implement any other backend first ;)
+[dependencies.inkwell]
+git = "https://github.com/DCNick3/inkwell"
+branch = "master"
+#path = "/home/dcnick3/git_cloned/inkwell"
+features = ["llvm13-0", "target-all"]
+
+[dev-dependencies]
+test-log = "0.2.8"
+unicorn = "0.9.1"
+bad64 = "0.6.0"
+pretty-hex = "0.2.1"
+region = "3.0.0"
+env_logger = "0.9.0"
+paste = "1.0.6"
+
+[dev-dependencies.elfloader]
+git = "https://github.com/DCNick3/rust-elfloader"
+branch = "master"
+
+[dev-dependencies.dynasmrt]
+version = "1.2.1"
+git = "https://github.com/DCNick3/dynasm-rs"
+branch = "master"
