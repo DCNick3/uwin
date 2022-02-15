@@ -4,6 +4,8 @@ mod sort;
 
 use crate::common::MEM_ADDR;
 
+static_assertions::const_assert_eq!(MEM_ADDR, 0x100000);
+
 test_functions! {
     // test name
     test: [
@@ -18,14 +20,12 @@ test_functions! {
     ),
 
     min: [
-        // negative values can't be put here because it can't be part of a valid identifier
-        // TODO: maybe we can patch the crate that does it/find another/???
         (0, 0),
-        (0xffffffff, 0xfffffffe),
+        (-1, -2),
         (100, 200),
-        (0xffffff9c, 0xffffff38),
-        (0xffffffff, 0xffffffff),
-        (0xffffffff, 0x80000000)
+        (-100, -200),
+        (-1, -1),
+        (-1, -0x80000000)
     ] (
         ; ->min:
         ;   mov     eax, DWORD [esp+4]
@@ -36,11 +36,11 @@ test_functions! {
     ),
     max: [
         (0, 0),
-        (0xffffffff, 0xfffffffe),
+        (-1, -2),
         (100, 200),
-        (0xffffff9c, 0xffffff38),
-        (0xffffffff, 0xffffffff),
-        (0xffffffff, 0x80000000)
+        (-100, -200),
+        (-1, -1),
+        (-1, -0x80000000)
     ] (
         ; ->max:
         ; mov     eax, DWORD [esp+4]
@@ -51,12 +51,12 @@ test_functions! {
     ),
 
     byte_fiddle: [
-        (MEM_ADDR, 0),
-        (MEM_ADDR, 1),
-        (MEM_ADDR, 0xff00),
-        (MEM_ADDR, 0x0102),
-        (MEM_ADDR, 0x01020304),
-        (MEM_ADDR, 0xfffe1234)
+        (0x100000, 0),
+        (0x100000, 1),
+        (0x100000, 0xff00),
+        (0x100000, 0x0102),
+        (0x100000, 0x01020304),
+        (0x100000, 0xfffe1234)
     ] (
         ; ->byte_fiddle:
         ;         mov     eax, DWORD [esp+8]
@@ -76,12 +76,11 @@ test_functions! {
     ),
 
     strlen: [
-        (0),
-        (1, 1),
-        (1, 0),
-        (4, 1, 2, 3, 4),
-        (4, 1, 2, 3, 0),
-        (4, 1, 0, 0, 4)
+        b"\0",
+        b"1\0",
+        b"123\0",
+        b"1234\0",
+        b"1\0\04",
     ] (
         ;         jmp ->strlen
 
@@ -133,12 +132,11 @@ test_functions! {
     ),
 
     strlen_scasb: [
-        (0),
-        (1, 1),
-        (1, 0),
-        (4, 1, 2, 3, 4),
-        (4, 1, 2, 3, 0),
-        (4, 1, 0, 0, 4)
+        b"\0",
+        b"1\0",
+        b"123\0",
+        b"1234\0",
+        b"1\0\04",
     ] (
         ;         jmp ->strlen
 

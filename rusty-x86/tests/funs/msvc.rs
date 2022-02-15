@@ -1,11 +1,13 @@
 mod funs {
     use crate::common::MEM_ADDR;
 
-    test_functions!(
+    static_assertions::const_assert_eq!(MEM_ADDR, 0x100000);
+
+    test_functions! {
         msvc_rand: [
             (0), (1), (2), (3),
             (100), (200), (300),
-            (0xffffffff)
+            (-1)
         ] (
             ; mov     eax, [esp+4]
             ; imul    eax, eax, 0x343FD
@@ -14,20 +16,20 @@ mod funs {
             ; and     eax, 0x7FFF
             ; retn
         ),
-    );
+    }
 
-    test_functions!(
+    test_functions! {
         // void* my_memset(void* dst, int v, size_t ln) {
         //     return memset(dst, v, ln);
         // }
         msvc_memset: [
-            (MEM_ADDR, 0, 14),
-            (MEM_ADDR, 12, 18),
-            (MEM_ADDR, 255, 133),
-            (MEM_ADDR, 0, 16),
-            (MEM_ADDR, 12, 15),
-            (MEM_ADDR, 255, 14),
-            (MEM_ADDR, 255, 13)
+            (0x100000, 0, 14),
+            (0x100000, 12, 18),
+            (0x100000, 255, 133),
+            (0x100000, 0, 16),
+            (0x100000, 12, 15),
+            (0x100000, 255, 14),
+            (0x100000, 255, 13)
         ] (
             ; mov     al, BYTE [esp-4+12]
             ; mov     ecx, DWORD [esp-4+16]
@@ -53,9 +55,9 @@ mod funs {
             ; pop     ebx
             ; ret     0
         ),
-    );
+    }
 
-    test_functions!(
+    test_functions! {
         // void* my_memcpy(unsigned char* buf, unsigned seed, size_t ln) {
         //     int i;
         //     for (i = 0; i < ln; i++) {
@@ -68,10 +70,10 @@ mod funs {
         //     return memcpy(buf + ln, buf, ln);
         // }
         msvc_memcpy: [
-            (MEM_ADDR, 0, 16),
-            (MEM_ADDR, 12, 15),
-            (MEM_ADDR, 255, 14),
-            (MEM_ADDR, 255, 13)
+            (0x100000, 0, 16),
+            (0x100000, 12, 15),
+            (0x100000, 255, 14),
+            (0x100000, 255, 13)
         ] (
     ;->my_memcpy:
             ; mov     ecx, DWORD [esp-4+16]
@@ -102,9 +104,9 @@ mod funs {
             ; pop     esi
             ; ret     0
         ),
-    );
+    }
 
-    test_functions!(
+    test_functions! {
         // size_t my_strlen(size_t count, ...) {
         //     char* buffer;
         //     va_list argp;
@@ -124,12 +126,12 @@ mod funs {
         //     return r;
         // }
         msvc_strlen: [
-            (0),
-            (1, 1),
-            (1, 0),
-            (5, 1, 2, 3, 4, 0),
-            (4, 1, 2, 3, 0),
-            (4, 1, 0, 0, 4)
+            b"1\0",
+            b"12\0",
+            b"1\02",
+            b"123456\02",
+            b"123456\0",
+            b"123456\0\0",
         ] (
     ; ->my_strlen:
             ; push    ebp
@@ -195,15 +197,17 @@ mod funs {
                                               // ...probe in case a page was crossed
             ; ret
         ),
-    );
+    }
 }
 
 test_elf_functions! {
     msvc_float: [
-        (5, 0x31, 0x31, 0x2e, 0x33, 0),
-        (2, 0x31, 0),
-        (2, 0x33, 0),
-        (5, 0x33, 0x31, 0x2e, 0x31, 0)
+        b"11.3\0",
+        b"1\0",
+        b"31.1\0",
+        b"1e44\0",
+        b"-1.87e44\0",
+        b"uwu\0",
     ]
     ("msvc_objs/float/msvc_float"),
 }

@@ -376,17 +376,17 @@ mod lea {
         lea_disp: (
             ; mov eax, 1228
             ; lea ecx, [eax + 7]
-        ),
+        ) [CF ZF SF OF],
         lea_idx: (
             ; mov eax, 1228
             ; mov ebx, 337
             ; lea ecx, [eax + ebx*4]
-        ),
+        ) [CF ZF SF OF],
         lea_idx_disp: (
             ; mov eax, 1228
             ; mov ebx, 337
             ; lea ecx, [eax + ebx*4 + 7]
-        ),
+        ) [CF ZF SF OF],
     }
 }
 
@@ -395,79 +395,79 @@ mod dec {
         dec_0: (
             ; mov eax, 0
             ; dec eax
-        ),
+        ) [CF ZF SF OF],
         dec_1: (
             ; mov eax, 1
             ; dec eax
-        ),
+        ) [CF ZF SF OF],
         dec_neg_1: (
             ; mov eax, -1
             ; dec eax
-        ),
+        ) [CF ZF SF OF],
         dec_neg_2: (
             ; mov eax, -2
             ; dec eax
-        ),
+        ) [CF ZF SF OF],
         dec_neg_0x80000000: (
             ; mov eax, -0x80000000
             ; dec eax
-        ),
+        ) [CF ZF SF OF],
         dec_0x7fffffff: (
             ; mov eax, 0x7fffffff
             ; dec eax
-        ),
+        ) [CF ZF SF OF],
     }
     test_snippets! {
         dec_16_0: (
             ; mov ax, 0
             ; dec ax
-        ),
+        ) [CF ZF SF OF],
         dec_16_1: (
             ; mov ax, 1
             ; dec ax
-        ),
+        ) [CF ZF SF OF],
         dec_16_neg_1: (
             ; mov ax, -1
             ; dec ax
-        ),
+        ) [CF ZF SF OF],
         dec_16_neg_2: (
             ; mov ax, -2
             ; dec ax
-        ),
+        ) [CF ZF SF OF],
         dec_16_neg_0x8000: (
             ; mov ax, -0x8000
             ; dec ax
-        ),
+        ) [CF ZF SF OF],
         dec_16_0x7fff: (
             ; mov ax, 0x7fff
             ; dec ax
-        ),
+        ) [CF ZF SF OF],
     }
     test_snippets! {
         dec_8_0: (
             ; mov al, 0
             ; dec al
-        ),
+        ) [CF ZF SF OF],
         dec_8_1: (
             ; mov al, 1
             ; dec al
-        ),
+        ) [CF ZF SF OF],
         dec_8_neg_1: (
             ; mov al, -1
             ; dec al
-        ),
+        ) [CF ZF SF OF],
         dec_8_neg_2: (
             ; mov al, -2
             ; dec al
-        ),
+        ) [CF ZF SF OF],
         dec_8_neg_0x80: (
             ; mov al, -0x80
             ; dec al
-        ),
+        ) [CF ZF SF OF],
         dec_8_0x7f: (
             ; mov al, 0x7f
             ; dec al
-        ),
+        ) [CF ZF SF OF],
     }
 }
 
@@ -476,79 +476,79 @@ mod inc {
         inc_0: (
             ; mov eax, 0
             ; inc eax
-        ),
+        ) [CF ZF SF OF],
         inc_1: (
             ; mov eax, 1
             ; inc eax
-        ),
+        ) [CF ZF SF OF],
         inc_neg_1: (
             ; mov eax, -1
             ; inc eax
-        ),
+        ) [CF ZF SF OF],
         inc_neg_2: (
             ; mov eax, -2
             ; inc eax
-        ),
+        ) [CF ZF SF OF],
         inc_neg_0x80000000: (
             ; mov eax, -0x80000000
             ; inc eax
-        ),
+        ) [CF ZF SF OF],
         inc_0x7fffffff: (
             ; mov eax, 0x7fffffff
             ; inc eax
-        ),
+        ) [CF ZF SF OF],
     }
     test_snippets! {
         inc_16_0: (
             ; mov ax, 0
             ; inc ax
-        ),
+        ) [CF ZF SF OF],
         inc_16_1: (
             ; mov ax, 1
             ; inc ax
-        ),
+        ) [CF ZF SF OF],
         inc_16_neg_1: (
             ; mov ax, -1
             ; inc ax
-        ),
+        ) [CF ZF SF OF],
         inc_16_neg_2: (
             ; mov ax, -2
             ; inc ax
-        ),
+        ) [CF ZF SF OF],
         inc_16_neg_0x8000: (
             ; mov ax, -0x8000
             ; inc ax
-        ),
+        ) [CF ZF SF OF],
         inc_16_0x7fff: (
             ; mov ax, 0x7fff
             ; inc ax
-        ),
+        ) [CF ZF SF OF],
     }
     test_snippets! {
         inc_8_0: (
             ; mov al, 0
             ; inc al
-        ),
+        ) [CF ZF SF OF],
         inc_8_1: (
             ; mov al, 1
             ; inc al
-        ),
+        ) [CF ZF SF OF],
         inc_8_neg_1: (
             ; mov al, -1
             ; inc al
-        ),
+        ) [CF ZF SF OF],
         inc_8_neg_2: (
             ; mov al, -2
             ; inc al
-        ),
+        ) [CF ZF SF OF],
         inc_8_neg_0x80: (
             ; mov al, -0x80
             ; inc al
-        ),
+        ) [CF ZF SF OF],
         inc_8_0x7f: (
             ; mov al, 0x7f
             ; inc al
-        ),
+        ) [CF ZF SF OF],
     }
 }
 
@@ -674,7 +674,7 @@ mod mem {
             ; mov eax, 42
             ; mov eax, [MEM_ADDR as i32]
             ; mov [MEM_ADDR as i32], ebx
-        ),
+        ) [CF ZF SF OF],
     }
 }
 
@@ -1172,43 +1172,43 @@ mod div {
             ; mov eax, 42
             ; mov ebx, 24
             ; div ebx
-        ),
+        ) [],
         div_basic2: (
             ; mov eax, 1
             ; mov ebx, 888
             ; div ebx
-        ),
+        ) [],
         div_basic3: (
             ; mov eax, 888
             ; mov ebx, 1
             ; div ebx
-        ),
+        ) [],
         div_basic4: (
             ; mov eax, 1
             ; mov ebx, 2
             ; div ebx
-        ),
+        ) [],
         div_rnd1: (
             ; mov eax, -0x57549d35
             ; mov ebx, 0x4003cb02
             ; div ebx
-        ),
+        ) [],
         div_rnd2: (
             ; mov eax, 0x37ab7947
             ; mov ebx, -0x6d61d34
             ; div ebx
-        ),
+        ) [],
         div_rnd3: (
             ; mov eax, 0x3a64b162
             ; mov ebx, -0x502df7b4
             ; div ebx
-        ),
+        ) [],
         div_big1: (
             ; mov eax, 0
             ; mov edx, 1
             ; mov ebx, 2
             ; div ebx
-        ),
+        ) [],
         // this should cause a division error
         // TODO: how can we test this? (it's not how it behaves rn btw)
         // ditto for division by zero
@@ -1223,19 +1223,19 @@ mod div {
             ; mov edx, 0x6c8300d6
             ; mov ebx, 0x70a45624
             ; div ebx
-        ),
+        ) [],
         div_big_rnd2: (
             ; mov eax, -0x21c0f
             ; mov edx, 0x338001
             ; mov ebx, 0x90ed24d
             ; div ebx
-        ),
+        ) [],
         div_big_rnd3: (
             ; mov eax, 0x74f1d28c
             ; mov edx, 0x7507473a
             ; mov ebx, -0x7d79c77f
             ; div ebx
-        ),
+        ) [],
     );
 }
 
@@ -1245,65 +1245,65 @@ mod idiv {
             ; mov eax, 42
             ; mov ebx, 24
             ; idiv ebx
-        ),
+        ) [],
         idiv_basic2: (
             ; mov eax, 1
             ; mov ebx, 888
             ; idiv ebx
-        ),
+        ) [],
         idiv_basic3: (
             ; mov eax, 888
             ; mov ebx, 1
             ; idiv ebx
-        ),
+        ) [],
         idiv_basic4: (
             ; mov eax, 1
             ; mov ebx, 2
             ; idiv ebx
-        ),
+        ) [],
 
         idiv_basic1_neg: (
             ; mov eax, -42
             ; mov ebx, 24
             ; idiv ebx
-        ),
+        ) [],
         idiv_basic2_neg: (
             ; mov eax, 1
             ; mov ebx, -888
             ; idiv ebx
-        ),
+        ) [],
         idiv_basic3_neg: (
             ; mov eax, -888
             ; mov ebx, 2
             ; idiv ebx
-        ),
+        ) [],
         idiv_basic4_neg: (
             ; mov eax, -1
             ; mov ebx, 2
             ; idiv ebx
-        ),
+        ) [],
 
         idiv_rnd1: (
             ; mov eax, -0x57549d35
             ; mov ebx, 0x4003cb02
             ; idiv ebx
-        ),
+        ) [],
         idiv_rnd2: (
             ; mov eax, 0x37ab7947
             ; mov ebx, -0x6d61d34
             ; idiv ebx
-        ),
+        ) [],
         idiv_rnd3: (
             ; mov eax, 0x3a64b162
             ; mov ebx, -0x502df7b4
             ; idiv ebx
-        ),
+        ) [],
         idiv_big1: (
             ; mov eax, 0
             ; mov edx, 1
             ; mov ebx, 3
             ; idiv ebx
-        ),
+        ) [],
         // this should cause a idivision error
         // TODO: how can we test this? (it's not how it behaves rn btw)
         // ditto for idivision by zero
@@ -1318,19 +1318,19 @@ mod idiv {
             ; mov edx, -0x0c8300d6
             ; mov ebx, 0x70a45624
             ; idiv ebx
-        ),
+        ) [],
         idiv_big_rnd2: (
             ; mov eax, -0x21c0f
             ; mov edx, 0x338001
             ; mov ebx, 0x90ed24d
             ; idiv ebx
-        ),
+        ) [],
         idiv_big_rnd3: (
             ; mov eax, 0x74f1d28c
             ; mov edx, -0x0507473a
             ; mov ebx, -0x7d79c77f
             ; idiv ebx
-        ),
+        ) [],
     );
 }
 
