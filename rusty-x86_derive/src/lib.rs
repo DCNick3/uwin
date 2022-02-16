@@ -22,3 +22,10 @@ pub fn test_elf_functions(input: TokenStream) -> TokenStream {
         .unwrap_or_else(syn::Error::into_compile_error)
         .into()
 }
+
+#[proc_macro]
+pub fn test_pe_functions(input: TokenStream) -> TokenStream {
+    r#impl::test_pe_functions_impl(input.into())
+        .unwrap_or_else(syn::Error::into_compile_error)
+        .into()
+}

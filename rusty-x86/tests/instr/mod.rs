@@ -680,20 +680,20 @@ mod mem {
 
 mod imul {
     test_snippets! {
-        // imul_1op_eax_eax: (
-        //     ; mov eax, 23
-        //     ; imul eax
-        // ) [CF OF],
-        // imul_1op: (
-        //     ; mov eax, 23
-        //     ; mov ebx, 24
-        //     ; imul ebx
-        // ) [CF OF],
-        // imul_1op_overflow: (
-        //     ; mov eax, 0x7fffffff
-        //     ; mov ebx, 0x7fffffff
-        //     ; imul ebx
-        // ) [CF OF],
+        imul_1op_eax_eax: (
+            ; mov eax, 23
+            ; imul eax
+        ) [CF OF],
+        imul_1op: (
+            ; mov eax, 23
+            ; mov ebx, 24
+            ; imul ebx
+        ) [CF OF],
+        imul_1op_overflow: (
+            ; mov eax, 0x7fffffff
+            ; mov ebx, 0x7fffffff
+            ; imul ebx
+        ) [CF OF],
 
         imul_2op_eax_eax: (
             ; mov eax, 23
@@ -725,18 +725,18 @@ mod imul {
             ; imul eax, ebx
         ) [CF OF],
 
-        // imul_3op_eax_eax: (
-        //     ; mov eax, 23
-        //     ; imul eax, eax, 24
-        // ) [CF OF],
-        // imul_3op: (
-        //     ; mov ebx, 24
-        //     ; imul eax, ebx, 23
-        // ) [CF OF],
-        // imul_3op_overflow: (
-        //     ; mov ebx, 0x7fffffff
-        //     ; imul eax, ebx, 0x7fffffff
-        // ) [CF OF],
+        imul_3op_eax_eax: (
+            ; mov eax, 23
+            ; imul eax, eax, 24
+        ) [CF OF],
+        imul_3op: (
+            ; mov ebx, 24
+            ; imul eax, ebx, 23
+        ) [CF OF],
+        imul_3op_overflow: (
+            ; mov ebx, 0x7fffffff
+            ; imul eax, ebx, 0x7fffffff
+        ) [CF OF],
     }
 }
 

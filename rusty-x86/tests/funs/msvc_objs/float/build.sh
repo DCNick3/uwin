@@ -1,6 +1,6 @@
 #!/bin/bash
 set -ex
 
-# TODO:
-nasm -felf32 -w+ptr msvc_float.asm
-ld -melf_i386 msvc_float.o -o msvc_float
+nasm -fwin32 msvc_float.asm -o msvc_float.obj
+../vc98.sh link msvc_float.obj /NODEFAULTLIB /ENTRY:start /SUBSYSTEM:NATIVE,117.119 /OUT:main.exe /MAP:main.map
+rm ./*.obj

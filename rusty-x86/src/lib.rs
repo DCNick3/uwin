@@ -483,37 +483,44 @@ pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) -> Control
                 builder.store_register(hi, extended);
             }
             Imul => {
-                let (dst, lhs, rhs) = match *instr.get_operands().as_slice() {
-                    [_] => {
-                        todo!()
-                    }
+                let (dst, src1, src2) = match *instr.get_operands().as_slice() {
+                    [src] => match src.size() {
+                        IntType::I8 => (Operand::Register(AX), Operand::Register(AL), src),
+                        IntType::I16 => (Operand::RegisterPair(DX, AX), Operand::Register(AX), src),
+                        IntType::I32 => {
+                            (Operand::RegisterPair(EDX, EAX), Operand::Register(EAX), src)
+                        }
+                        IntType::I64 => unimplemented!(),
+                    },
                     [dst, src] => {
                         assert_eq!(dst.size(), src.size());
-                        let lhs = builder.load_operand(dst);
-                        let rhs = builder.load_operand(src);
 
-                        (dst, lhs, rhs)
+                        (dst, dst, src)
                     }
                     [dst, src1, src2] => {
                         assert_eq!(dst.size(), src1.size());
                         assert_eq!(src1.size(), src2.size());
 
-                        let lhs = builder.load_operand(src1);
-                        let rhs = builder.load_operand(src2);
-
-                        (dst, lhs, rhs)
+                        (dst, src1, src2)
                     }
                     _ => unreachable!(),
                 };
 
-                let double_size = dst.size().double_sized();
+                let lhs = builder.load_operand(src1);
+                let rhs = builder.load_operand(src2);
+
+                let double_size = lhs.size().double_sized();
 
                 let lhs = builder.sext(lhs, double_size);
 
                 let rhs = builder.sext(rhs, double_size);
 
                 let res = builder.mul(lhs, rhs);
-                let res_trunc = builder.trunc(res, dst.size());
+
+                // this one might be single sized or double-sized depending on form of imul used
+                let res_stored = builder.trunc(res, dst.size());
+                // this one will always be signled sized and is used for overflow computation
+                let res_trunc = builder.trunc(res, src1.size());
 
                 let res_trunc_ext = builder.sext(res_trunc, res.size());
                 let overflow = builder.icmp(ComparisonType::NotEqual, res, res_trunc_ext);
@@ -535,7 +542,7 @@ pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) -> Control
                 builder.store_flag(Flag::Overflow, overflow);
                 builder.store_flag(Flag::Carry, overflow);
 
-                builder.store_operand(dst, res_trunc)
+                builder.store_operand(dst, res_stored)
             }
             Xor => {
                 operands!([dst, src], &instr);
@@ -695,16 +702,7 @@ pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) -> Control
 
                 assert_eq!(lo.size(), hi.size());
 
-                let lo = builder.load_register(lo);
-                let hi = builder.load_register(hi);
-
-                let lo = builder.zext(lo, double_size);
-                let hi = builder.zext(hi, double_size);
-                let hi = builder.shl(
-                    hi,
-                    builder.make_int_value(double_size, src.size().bit_width() as u64, false),
-                );
-                let dividend = builder.int_or(lo, hi);
+                let dividend = builder.load_operand(Operand::RegisterPair(hi, lo));
 
                 let divisor = builder.load_operand(src);
                 let divisor = if mnemonic == Div {

@@ -200,7 +200,7 @@ mod funs {
     }
 }
 
-test_elf_functions! {
+test_pe_functions! {
     msvc_float: [
         b"11.3\0",
         b"1\0",
@@ -209,5 +209,12 @@ test_elf_functions! {
         b"-1.87e44\0",
         b"uwu\0",
     ]
-    ("msvc_objs/float/msvc_float"),
+    ("msvc_objs/float/main.exe"),
+}
+
+test_pe_functions! {
+    msvc_base45: [
+        (1, 0), (2, 1), (3, 64), (4, 128), (5, 256), (6, 512), (7, 1024), (8, 2048), (9, 4096),
+    ]
+    ("msvc_objs/base45/main.exe"),
 }

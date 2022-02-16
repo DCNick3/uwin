@@ -1,8 +1,9 @@
-use elfloader::{ElfBinary, ElfLoader, ElfLoaderErr, Flags, LoadableHeaders, Rela, VAddr, P64};
+mod loader;
+
 use inkwell::execution_engine::JitFunction;
 use inkwell::values::BasicMetadataValueEnum;
 use inkwell::OptimizationLevel;
-use log::{debug, trace};
+use log::{debug, error, trace};
 use region::Allocation;
 use rusty_x86::llvm::backend::{BbFunc, FASTCC_CALLING_CONVENTION};
 use rusty_x86::memory_image::{MemoryImage, MemoryImageItem, Protection};
@@ -30,6 +31,7 @@ pub enum CodeToTest<'a> {
     Snippet(&'a [u8]),                // just the code
     Function(&'a [u8], &'a [u32]),    // code & args
     ElfFunction(&'a [u8], &'a [u32]), // elf contents, args
+    PeFunction(&'a [u8], &'a [u32]),  // pe contents, args
 }
 
 impl<'a> CodeToTest<'a> {
@@ -43,58 +45,26 @@ impl<'a> CodeToTest<'a> {
                 entry = CODE_ADDR;
             }
             CodeToTest::ElfFunction(elf, _) => {
-                let elf = ElfBinary::new(elf).unwrap();
-                let mut builder_wrap = MemoryImageWrap(image);
-                elf.load(&mut builder_wrap).unwrap();
-                image = builder_wrap.0;
-                entry = elf.entry_point() as u32;
+                let (entry_, image_) = loader::load_elf(elf).unwrap();
+                image = image_;
+                entry = entry_;
+            }
+            CodeToTest::PeFunction(pe, _) => {
+                let (entry_, image_) = loader::load_pe(pe).unwrap();
+                image = image_;
+                entry = entry_;
             }
         };
         (image, entry)
     }
 
-    pub fn get_basic_blocks(&self) -> Option<&'a [u32]> {
-        match self {
-            CodeToTest::Snippet(_) => None,
-            CodeToTest::Function(_, _) => None,
-            CodeToTest::ElfFunction(_, _) => None,
-        }
-    }
-
     pub fn get_args(&self) -> Vec<u32> {
         match self {
             CodeToTest::Snippet(_) => vec![],
-            CodeToTest::Function(_, args) => args.to_vec(),
-            CodeToTest::ElfFunction(_, args) => args.to_vec(),
+            CodeToTest::Function(_, args)
+            | CodeToTest::ElfFunction(_, args)
+            | CodeToTest::PeFunction(_, args) => args.to_vec(),
         }
-    }
-}
-
-struct MemoryImageWrap(MemoryImage);
-
-impl<'a> ElfLoader for MemoryImageWrap {
-    fn allocate(&mut self, _: LoadableHeaders) -> Result<(), ElfLoaderErr> {
-        Ok(()) // ignore
-    }
-
-    fn load(&mut self, flags: Flags, base: VAddr, region: &[u8]) -> Result<(), ElfLoaderErr> {
-        // add to the list
-        let mut prot = Protection::NONE;
-        if flags.is_read() {
-            prot |= Protection::READ;
-        }
-        if flags.is_write() {
-            prot |= Protection::WRITE;
-        }
-        if flags.is_execute() {
-            prot |= Protection::EXECUTE;
-        }
-        self.0.add_region(base as u32, prot, region.to_vec());
-        Ok(())
-    }
-
-    fn relocate(&mut self, _: &Rela<P64>) -> Result<(), ElfLoaderErr> {
-        Ok(()) // ignore
     }
 }
 
@@ -125,7 +95,13 @@ fn load_unicorn(
             len += 1;
         }
 
-        emu.mem_map(*addr as u64, len, uprot).unwrap();
+        // actually, elf allows addresses that are not aligned
+        // https://stackoverflow.com/questions/46117065/required-alignment-of-text-versus-data
+        // the alignment between offset and addr just should be the same
+        // so here we go...
+        let addr_aligned = *addr - *addr % PAGE_ALIGN;
+
+        emu.mem_map(addr_aligned as u64, len, uprot).unwrap();
         emu.mem_write(*addr as u64, data.as_slice()).unwrap()
     }
 
@@ -142,7 +118,7 @@ fn load_unicorn(
             let base_addr = entry as u64;
             (base_addr, Some(base_addr + code.len() as u64))
         }
-        CodeToTest::ElfFunction(_, _) => (entry as u64, None),
+        CodeToTest::ElfFunction(_, _) | CodeToTest::PeFunction(_, _) => (entry as u64, None),
     };
 
     let mut push = |v: u32| {
@@ -188,6 +164,7 @@ fn execute_unicorn(code: CodeToTest) -> (CpuContext, Vec<(u32, Vec<u8>)>, Vec<u3
         if e == ETCH_UNMAPPED && eip as u32 == MAGIC_RETURN_ADDR {
             // all good
         } else {
+            error!("Something bad happened with eip @ 0x{eip:08x}");
             res.unwrap();
         }
     };

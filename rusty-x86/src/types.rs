@@ -224,6 +224,9 @@ pub struct MemoryOperand {
 pub enum Operand {
     Register(Register),
 
+    // pair of HI:LO registers
+    RegisterPair(Register, Register),
+
     Immediate8(u8),
     Immediate16(u16),
     Immediate32(u32),
@@ -238,6 +241,10 @@ impl Operand {
     pub fn size(self) -> IntType {
         match self {
             Operand::Register(reg) => reg.size(),
+            Operand::RegisterPair(reg1, reg2) => {
+                assert_eq!(reg1.size(), reg2.size());
+                reg1.size().double_sized()
+            }
             Operand::Immediate8(_) => IntType::I8,
             Operand::Immediate16(_) => IntType::I16,
             Operand::Immediate32(_) => IntType::I32,

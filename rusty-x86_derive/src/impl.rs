@@ -44,6 +44,15 @@ struct TestElfFunction {
     path: LitStr,
 }
 
+struct TestPeFunction {
+    name: Ident,
+    _colon: Token![:],
+    _bracket_token: token::Bracket,
+    args: Punctuated<Arg, Token![,]>,
+    _paren_token: token::Paren,
+    path: LitStr,
+}
+
 impl Parse for CpuFlag {
     fn parse(input: ParseStream) -> syn::Result<Self> {
         let id: Ident = input.parse()?;
@@ -177,6 +186,22 @@ impl Parse for TestElfFunction {
     }
 }
 
+impl Parse for TestPeFunction {
+    #[allow(clippy::eval_order_dependence)]
+    fn parse(input: ParseStream) -> syn::Result<Self> {
+        let args;
+        let path;
+        Ok(Self {
+            name: input.parse()?,
+            _colon: input.parse()?,
+            _bracket_token: bracketed!(args in input),
+            args: args.parse_terminated(Arg::parse)?,
+            _paren_token: parenthesized!(path in input),
+            path: path.parse()?,
+        })
+    }
+}
+
 impl ToTokens for CpuFlag {
     fn to_tokens(&self, tokens: &mut TokenStream) {
         let id = Ident::new(&format!("{:?}", self), Span::call_site());
@@ -275,6 +300,40 @@ impl ToTokens for TestElfFunction {
     }
 }
 
+impl ToTokens for TestPeFunction {
+    fn to_tokens(&self, tokens: &mut TokenStream) {
+        let name = &self.name;
+        let path = &self.path;
+
+        let args: Vec<TokenStream> = self.args.iter().map(|args| {
+            let name = &args.name;
+            let args = &args.data;
+            quote! {
+                #[test_log::test]
+                fn #name () {
+                    let args: &[u32] = &[#(#args),*];
+                    log::info!("Running {} on {:?}", stringify!(#name), args);
+
+                    let pe = get_pe();
+
+                    crate::common::test_code(crate::common::CodeToTest::PeFunction(pe, args), vec![]);
+                }
+            }
+        }).collect();
+
+        tokens.append_all(quote! {
+            mod #name {
+
+                fn get_pe() -> &'static [u8] {
+                    include_bytes!(#path)
+                }
+
+                #(#args)*
+            }
+        })
+    }
+}
+
 pub fn test_snippets_impl(input: TokenStream) -> syn::Result<TokenStream> {
     let parser = Punctuated::<TestSnippet, Token![,]>::parse_terminated;
     let input = parser.parse(input.into())?;
@@ -299,6 +358,17 @@ pub fn test_functions_impl(input: TokenStream) -> syn::Result<TokenStream> {
 
 pub fn test_elf_functions_impl(input: TokenStream) -> syn::Result<TokenStream> {
     let parser = Punctuated::<TestElfFunction, Token![,]>::parse_terminated;
+    let input = parser.parse(input.into())?;
+
+    let functions = input.into_iter();
+
+    Ok(quote! {
+        #(#functions)*
+    })
+}
+
+pub fn test_pe_functions_impl(input: TokenStream) -> syn::Result<TokenStream> {
+    let parser = Punctuated::<TestPeFunction, Token![,]>::parse_terminated;
     let input = parser.parse(input.into())?;
 
     let functions = input.into_iter();

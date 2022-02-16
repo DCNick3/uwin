@@ -167,6 +167,22 @@ pub trait Builder {
     fn load_operand(&mut self, operand: Operand) -> Self::IntValue {
         match operand {
             Operand::Register(reg) => self.load_register(reg),
+            Operand::RegisterPair(hi, lo) => {
+                assert_eq!(lo.size(), hi.size());
+                let size = lo.size();
+                let double_size = lo.size().double_sized();
+
+                let lo = self.load_register(lo);
+                let hi = self.load_register(hi);
+
+                let lo = self.zext(lo, double_size);
+                let hi = self.zext(hi, double_size);
+                let hi = self.shl(
+                    hi,
+                    self.make_int_value(double_size, size.bit_width() as u64, false),
+                );
+                self.int_or(lo, hi)
+            }
             Operand::Immediate8(v) => self.make_u8(v),
             Operand::Immediate16(v) => self.make_u16(v),
             Operand::Immediate32(v) => self.make_u32(v),
@@ -185,6 +201,19 @@ pub trait Builder {
                 let addr = self.compute_memory_operand_address(op);
                 assert_eq!(op.size.unwrap(), value.size());
                 self.store_memory(addr, value)
+            }
+            Operand::RegisterPair(hireg, loreg) => {
+                assert_eq!(value.size(), loreg.size().double_sized());
+                let lopart = self.trunc(value.clone(), loreg.size());
+
+                let hipart = self.lshr(
+                    value,
+                    self.make_int_value(value.size(), loreg.size().bit_width() as u64, false),
+                );
+                let hipart = self.trunc(hipart, loreg.size());
+
+                self.store_register(loreg, lopart);
+                self.store_register(hireg, hipart);
             }
             op => panic!("Unsupported store operand: {:?}", op),
         }
