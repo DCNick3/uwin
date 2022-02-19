@@ -1,0 +1,32 @@
+ main
+
+ Timestamp is 620d56d3 (Wed Feb 16 22:56:03 2022)
+
+ Preferred load address is 00400000
+
+ Start         Length     Name                   Class
+ 0001:00000000 00000330H .text                   CODE
+ 0002:00000000 0000002eH .rdata                  DATA
+ 0003:00000000 0000010cH .data                   DATA
+ 0003:0000010c 00001020H .bss                    DATA
+
+  Address         Publics by Value              Rva+Base     Lib:Object
+
+ 0001:00000000       _base45_encode             00401000 f   base45.obj
+ 0001:00000180       _base45_decode             00401180 f   base45.obj
+ 0001:000002d0       _start                     004012d0 f   base45.obj
+ 0003:00000100       _encoded_size              00403100     base45.obj
+ 0003:00000104       _decoded_size              00403104     base45.obj
+ 0003:00000108       _reencoded_size            00403108     base45.obj
+ 0003:00000120       _rawbytes                  00403120     <common>
+ 0003:00000520       _decoded                   00403520     <common>
+ 0003:00000920       _encoded                   00403920     <common>
+ 0003:00000d20       _reencoded                 00403d20     <common>
+ 0003:00001120       _encode_ret                00404120     <common>
+ 0003:00001124       _decode_ret                00404124     <common>
+ 0003:00001128       _reencode_ret              00404128     <common>
+
+ entry point at        0001:000002d0
+
+ Static symbols
+
