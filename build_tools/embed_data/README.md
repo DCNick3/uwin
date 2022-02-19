@@ -1,1 +1,0 @@
-API influenced by https://github.com/google/iree/commit/4be1097dd2722ed0119e9b4b7784077e4970f3c3, but implementation changed to use `ld` to be able to process larger files.

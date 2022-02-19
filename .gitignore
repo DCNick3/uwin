@@ -1,5 +1,0 @@
-.directory
-bazel-*
-.cache
-compile_commands.json
-*.code-workspace
