@@ -1,5 +1,10 @@
 [workspace]
 members = [
     "rusty-x86",
-    "rusty-x86_derive"
+    "rusty-x86_derive",
+
+    "msvc_parse",
+    "uwin-win32-core",
+
+    "windows-metadata",
 ]
