@@ -1,6 +1,84 @@
+use std::ptr::copy_nonoverlapping;
 
 type TargetPtrRepr = u32;
 type TargetPtrDiffRepr = i32;
+
+// many ideas borrowed from wonderful crate "scroll", but API tailored for uwin use-case
+
+macro_rules! from_mem_impl {
+    ($typ:tt, $size:expr) => {
+        impl<'a> FromMemory<()> for $typ {
+            type Error = ();
+
+            #[inline]
+            fn try_from_ctx(src: &[u8], _: ()) -> Result<Self, Self::Error> {
+                Ok($typ::from_le_bytes(src.try_into().unwrap()))
+            }
+
+            #[inline]
+            fn size_with(_: &()) -> usize {
+                $size
+            }
+        }
+    };
+}
+
+from_mem_impl!(u8, 1);
+from_mem_impl!(i8, 1);
+from_mem_impl!(u16, 2);
+from_mem_impl!(i16, 2);
+from_mem_impl!(u32, 4);
+from_mem_impl!(i32, 4);
+from_mem_impl!(u64, 8);
+from_mem_impl!(i64, 8);
+from_mem_impl!(u128, 16);
+from_mem_impl!(i128, 16);
+
+macro_rules! into_mem_impl {
+    ($typ:tt, $size:expr) => {
+        impl<'a> IntoMemory<()> for $typ {
+            type Error = ();
+
+            #[inline]
+            fn try_into_ctx(self, dst: &mut [u8], _: ()) -> Result<(), Self::Error> {
+                assert!(dst.len() >= $size);
+                unsafe {
+                    let bytes = self.to_le_bytes();
+                    copy_nonoverlapping((&bytes).as_ptr(), dst.as_mut_ptr(), $size);
+                }
+                Ok(())
+            }
+
+            #[inline]
+            fn size_with(_: &()) -> usize {
+                $size
+            }
+        }
+    };
+}
+
+into_mem_impl!(u8, 1);
+into_mem_impl!(i8, 1);
+into_mem_impl!(u16, 2);
+into_mem_impl!(i16, 2);
+into_mem_impl!(u32, 4);
+into_mem_impl!(i32, 4);
+into_mem_impl!(u64, 8);
+into_mem_impl!(i64, 8);
+into_mem_impl!(u128, 16);
+into_mem_impl!(i128, 16);
+
+pub trait FromMemory<Ctx: Copy>: Sized {
+    type Error;
+    fn try_from_ctx(from: &[u8], ctx: Ctx) -> Result<Self, Self::Error>;
+    fn size_with(ctx: &Ctx) -> usize;
+}
+
+pub trait IntoMemory<Ctx: Copy>: Sized {
+    type Error;
+    fn try_into_ctx(self, into: &mut [u8], ctx: Ctx) -> Result<(), Self::Error>;
+    fn size_with(ctx: &Ctx) -> usize;
+}
 
 /// Read from and write to a native pointer (u32 basically)
 ///
@@ -14,8 +92,17 @@ pub trait MemoryCtx: Copy {
     // segfaults in this case are __kind of__ deterministic, so no UB there
     // otherwise every glue operation with the target address space would have
     // to be unsafe which is noisy
-    fn read(&self, ptr: TargetPtrRepr, into: &mut [u8]);
-    fn write(&self, from: &[u8], ptr: TargetPtrRepr);
+    fn read_with<N: FromMemory<Ctx>, Ctx: Copy>(
+        &self,
+        ctx: Ctx,
+        ptr: TargetPtrRepr,
+    ) -> Result<N, N::Error>;
+    fn write_with<N: IntoMemory<Ctx>, Ctx: Copy>(
+        &self,
+        ctx: Ctx,
+        value: N,
+        ptr: TargetPtrRepr,
+    ) -> Result<(), N::Error>;
 }
 
 /// Untyped fat target pointer
@@ -23,17 +110,21 @@ pub trait MemoryCtx: Copy {
 /// Stores memory context inside, along with the pointer value
 /// Needs wrapping to provide any meaningful
 #[derive(Copy, Clone)]
-struct RawPtr<Ctx: MemoryCtx> {
-    pub context: Ctx,
+struct RawPtr<MCtx: MemoryCtx> {
+    pub context: MCtx,
     pub value: TargetPtrRepr,
 }
 
-impl<Ctx: MemoryCtx> RawPtr<Ctx> {
-    pub fn read(&self, into: &mut [u8]) {
-        self.context.read(self.value, into)
+impl<MCtx: MemoryCtx> RawPtr<MCtx> {
+    pub fn read_with<N: FromMemory<Ctx>, Ctx: Copy>(&self, ctx: Ctx) -> Result<N, N::Error> {
+        self.context.read_with(ctx, self.value)
     }
-    pub fn write(&self, from: &[u8]) {
-        self.context.write(from, self.value)
+    pub fn write_with<N: IntoMemory<Ctx>, Ctx: Copy>(
+        &self,
+        ctx: Ctx,
+        value: N,
+    ) -> Result<(), N::Error> {
+        self.context.write_with::<N, Ctx>(ctx, value, self.value)
     }
 
     pub fn offset(&self, offset: TargetPtrDiffRepr) -> Self {
@@ -50,18 +141,41 @@ impl<Ctx: MemoryCtx> RawPtr<Ctx> {
     }
 }
 
+#[derive(Copy, Clone)]
+struct MutPtr<MCtx: MemoryCtx>(RawPtr<MCtx>);
+
+impl<MCtx: MemoryCtx> MutPtr<MCtx> {}
+
 #[cfg(test)]
 mod tests {
-    use crate::{MemoryCtx, RawPtr, TargetPtrRepr};
+    use crate::{FromMemory, IntoMemory, MemoryCtx, RawPtr, TargetPtrRepr};
 
     #[derive(Clone, Copy)]
     struct DummyCtx();
+
     impl MemoryCtx for DummyCtx {
-        fn read(&self, _ptr: TargetPtrRepr, into: &mut [u8]) {
-            into.fill(0)
+        fn read_with<N: FromMemory<Ctx>, Ctx: Copy>(
+            &self,
+            ctx: Ctx,
+            _ptr: TargetPtrRepr,
+        ) -> Result<N, N::Error> {
+            let size = N::size_with(&ctx);
+            let data = vec![0u8; size];
+            let data = data.leak(); // really dummy impl...
+            N::try_from_ctx(data, ctx)
         }
 
-        fn write(&self, _from: &[u8], _ptr: TargetPtrRepr) {}
+        fn write_with<N: IntoMemory<Ctx>, Ctx: Copy>(
+            &self,
+            ctx: Ctx,
+            value: N,
+            _ptr: TargetPtrRepr,
+        ) -> Result<(), N::Error> {
+            let size = N::size_with(&ctx);
+            let mut data = vec![0u8; size];
+
+            value.try_into_ctx(data.as_mut_slice(), ctx)
+        }
     }
 
     #[test]
@@ -69,23 +183,15 @@ mod tests {
         let ctx = DummyCtx();
         let ptr = RawPtr {
             value: 0,
-            context: ctx
+            context: ctx,
         };
 
-        let mut data = [12u8; 12];
-
-        ptr.read(&mut data);
-        assert_eq!(data, [0u8; 12]);
-
-        ptr.write(&data);
+        assert_eq!(ptr.read_with::<u32, ()>(()).unwrap(), 0);
+        ptr.write_with((), 12u32).unwrap();
 
         let ptr1 = ptr.offset(12);
 
-        let mut data = [12u8; 12];
-
-        ptr1.read(&mut data);
-        assert_eq!(data, [0u8; 12]);
-
-        ptr1.write(&data);
+        assert_eq!(ptr1.read_with::<u32, ()>(()).unwrap(), 0);
+        ptr1.write_with((), 12u32).unwrap();
     }
 }
