@@ -1,5 +1,6 @@
 use crate::conv::FromIntoMemory;
 use crate::ptr::TargetPtrRepr;
+use smallvec::{smallvec, SmallVec};
 use std::marker::PhantomData;
 
 pub trait MemoryCtx<'a>: Copy + 'a {
@@ -11,29 +12,34 @@ pub trait MemoryCtx<'a>: Copy + 'a {
     // segfaults in this case are __kind of__ deterministic, so no UB there
     // otherwise every glue operation with the target address space would have
     // to be unsafe which is noisy
+    // TODO: does it make sense to return error sometimes? Maybe straight away panic is better?
     fn read<N: FromIntoMemory>(&self, ptr: TargetPtrRepr) -> Result<N, N::Error>;
     fn write<N: FromIntoMemory>(&self, value: N, ptr: TargetPtrRepr) -> Result<(), N::Error>;
 }
 
-// this wouldn't work with 32-bit architectures
+/// Memory context represented as one contiguous virtual memory space allocation of 2^32 bytes
+///
+/// Not that not all the bytes are addressable; they are merely reserved for possible allocations
+///
+/// The lifetime denotes the period of validity of the allocated virtual space
 #[cfg(target_pointer_width = "64")]
 #[derive(Copy, Clone)]
-struct FlatMemoryCtx<'a> {
+pub struct FlatMemoryCtx<'a> {
     base: *mut u8,
     _phantom: PhantomData<&'a ()>,
 }
 
 #[cfg(target_pointer_width = "64")]
 impl<'a> FlatMemoryCtx<'a> {
-    // SAFETY: don't do stupid things. Do not store references to the returned slice between yields to recompiled code
-    // The thing is that this mut is not actually exclusive...
-    #[inline]
-    unsafe fn to_slice_mut(&self, ptr: TargetPtrRepr, len: usize) -> &'a mut [u8] {
-        std::slice::from_raw_parts_mut(self.to_host_ptr(ptr), len)
+    pub fn new(base: *mut u8) -> Self {
+        Self {
+            base,
+            _phantom: Default::default(),
+        }
     }
 
     #[inline]
-    pub fn to_host_ptr(&self, ptr: TargetPtrRepr) -> *mut u8 {
+    pub fn to_native_ptr(&self, ptr: TargetPtrRepr) -> *mut u8 {
         // SAFETY: we are on 64-bit platform and allocated base ptr should point to 2 ** 32 bytes of addressable vitual address space
         // thus there would be no overflow and .add should work
         // It is also arguably part of the same "allocated object" but how to defined it is a bit hard to answer
@@ -45,25 +51,24 @@ impl<'a> FlatMemoryCtx<'a> {
 impl<'a> MemoryCtx<'a> for FlatMemoryCtx<'a> {
     fn read<N: FromIntoMemory>(&self, ptr: TargetPtrRepr) -> Result<N, N::Error> {
         let size = N::size();
-        // TBH, this is probably filled with UB, but I am not sure if it is even defined as UB...
-        // rust wants slice to come from one allocation, but the flat memory context comes from
-        let unsafe_data = unsafe { self.to_slice_mut(ptr, size) };
-        // we could pass unsafe_data slice directly, but it's inherently unsafe slice (it can be changed by recompiled code),
-        // so we copy it before allowing other code to work with it
-        // TODO: optimize for small cases (prolly alloc on stack for size < 256 or smth)
-        let data = unsafe_data.to_vec();
+        let unsafe_data = self.to_native_ptr(ptr);
+
+        // Using SmallVec here actually allows rustc to optimize most cases down to just simple copy operation
+        // size is subject to change (is there even a penalty for it being too large, with rustc optimizing stuff out?)
+        let mut data: SmallVec<[_; 0x800]> = smallvec![0u8; size];
+        unsafe { std::ptr::copy_nonoverlapping(unsafe_data, data.as_mut_ptr(), size) }
         N::try_from_bytes(&data)
     }
 
     fn write<N: FromIntoMemory>(&self, value: N, ptr: TargetPtrRepr) -> Result<(), N::Error> {
         let size = N::size();
-        let mut data = vec![0u8; size];
+        let mut data: SmallVec<[_; 0x800]> = smallvec![0u8; size];
         value.try_into_bytes(&mut data)?;
-        let unsafe_data = unsafe { self.to_slice_mut(ptr, size) };
-        unsafe_data.copy_from_slice(&data);
+        let unsafe_data = self.to_native_ptr(ptr);
+        unsafe { std::ptr::copy_nonoverlapping(data.as_ptr(), unsafe_data, size) }
         Ok(())
     }
 }
 
 // TODO: lifetimes?
-type DefaultMemoryCtx<'a> = FlatMemoryCtx<'a>;
+pub type DefaultMemoryCtx<'a> = FlatMemoryCtx<'a>;

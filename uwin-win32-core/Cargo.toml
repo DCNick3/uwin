@@ -3,5 +3,9 @@ name = "uwin-win32-core"
 version = "0.1.0"
 edition = "2021"
 
+[dependencies]
+smallvec = { version = "1.8.0", features = [ "const_new" ] }
+
 [dev-dependencies]
+bencher = "0.1.5"
 region = "3.0.0"

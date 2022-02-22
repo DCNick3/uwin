@@ -1,3 +1,9 @@
+
+[profile.release]
+opt-level = 3
+debug = true
+lto = "thin"
+
 [workspace]
 members = [
     "rusty-x86",
