@@ -13,8 +13,8 @@ pub trait MemoryCtx<'a>: Copy + 'a {
     // otherwise every glue operation with the target address space would have
     // to be unsafe which is noisy
     // TODO: does it make sense to return error sometimes? Maybe straight away panic is better?
-    fn read<N: FromIntoMemory>(&self, ptr: TargetPtrRepr) -> Result<N, N::Error>;
-    fn write<N: FromIntoMemory>(&self, value: N, ptr: TargetPtrRepr) -> Result<(), N::Error>;
+    fn read<N: FromIntoMemory>(&self, ptr: TargetPtrRepr) -> N;
+    fn write<N: FromIntoMemory>(&self, value: N, ptr: TargetPtrRepr);
 }
 
 /// Memory context represented as one contiguous virtual memory space allocation of 2^32 bytes
@@ -49,7 +49,7 @@ impl<'a> FlatMemoryCtx<'a> {
 
 #[cfg(target_pointer_width = "64")]
 impl<'a> MemoryCtx<'a> for FlatMemoryCtx<'a> {
-    fn read<N: FromIntoMemory>(&self, ptr: TargetPtrRepr) -> Result<N, N::Error> {
+    fn read<N: FromIntoMemory>(&self, ptr: TargetPtrRepr) -> N {
         let size = N::size();
         let unsafe_data = self.to_native_ptr(ptr);
 
@@ -60,13 +60,12 @@ impl<'a> MemoryCtx<'a> for FlatMemoryCtx<'a> {
         N::try_from_bytes(&data)
     }
 
-    fn write<N: FromIntoMemory>(&self, value: N, ptr: TargetPtrRepr) -> Result<(), N::Error> {
+    fn write<N: FromIntoMemory>(&self, value: N, ptr: TargetPtrRepr) {
         let size = N::size();
         let mut data: SmallVec<[_; 0x800]> = smallvec![0u8; size];
-        value.try_into_bytes(&mut data)?;
+        value.try_into_bytes(&mut data);
         let unsafe_data = self.to_native_ptr(ptr);
         unsafe { std::ptr::copy_nonoverlapping(data.as_ptr(), unsafe_data, size) }
-        Ok(())
     }
 }
 

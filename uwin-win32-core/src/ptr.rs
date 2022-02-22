@@ -27,10 +27,10 @@ impl<'a, MCtx: MemoryCtx<'a>> RawPtr<'a, MCtx> {
 }
 
 impl<'a, MCtx: MemoryCtx<'a>> RawPtr<'a, MCtx> {
-    pub fn read<N: FromIntoMemory>(&self) -> Result<N, N::Error> {
+    pub fn read<N: FromIntoMemory>(&self) -> N {
         self.context.read(self.value)
     }
-    pub fn write<N: FromIntoMemory>(&self, value: N) -> Result<(), N::Error> {
+    pub fn write<N: FromIntoMemory>(&self, value: N) {
         self.context.write::<N>(value, self.value)
     }
 
@@ -63,11 +63,11 @@ impl<'a, MCtx: MemoryCtx<'a>, T: FromIntoMemory> MutPtr<'a, T, MCtx> {
         }
     }
 
-    pub fn read(&self) -> Result<T, T::Error> {
+    pub fn read(&self) -> T {
         self.0.read::<T>()
     }
 
-    pub fn write(&self, value: T) -> Result<(), T::Error> {
+    pub fn write(&self, value: T) {
         self.0.write::<T>(value)
     }
 }
@@ -86,7 +86,7 @@ impl<'a, MCtx: MemoryCtx<'a>, T: FromIntoMemory> ConstPtr<'a, T, MCtx> {
         }
     }
 
-    pub fn read(&self) -> Result<T, T::Error> {
+    pub fn read(&self) -> T {
         self.0.read::<T>()
     }
 }

@@ -47,22 +47,19 @@ struct TestStruct {
 }
 
 impl FromIntoMemory for TestStruct {
-    type Error = ();
-
-    fn try_from_bytes(from: &[u8]) -> Result<Self, Self::Error> {
+    fn try_from_bytes(from: &[u8]) -> Self {
         // TODO: probably want some helpers to make this less verbose
-        Ok(Self {
-            val1: u8::try_from_bytes(&from[0..1])?,
-            val2: u32::try_from_bytes(&from[1..5])?,
-            val3: u64::try_from_bytes(&from[5..13])?,
-        })
+        Self {
+            val1: u8::try_from_bytes(&from[0..1]),
+            val2: u32::try_from_bytes(&from[1..5]),
+            val3: u64::try_from_bytes(&from[5..13]),
+        }
     }
 
-    fn try_into_bytes(self, into: &mut [u8]) -> Result<(), Self::Error> {
-        self.val1.try_into_bytes(&mut into[0..1])?;
-        self.val2.try_into_bytes(&mut into[1..5])?;
-        self.val3.try_into_bytes(&mut into[5..13])?;
-        Ok(())
+    fn try_into_bytes(self, into: &mut [u8]) {
+        self.val1.try_into_bytes(&mut into[0..1]);
+        self.val2.try_into_bytes(&mut into[1..5]);
+        self.val3.try_into_bytes(&mut into[5..13]);
     }
 
     fn size() -> usize {
@@ -77,7 +74,7 @@ impl FromIntoMemory for TestStruct {
 /// (nice)
 #[inline(never)]
 fn write_int(mut_ptr: &MutPtr<u32>, val: u32) {
-    mut_ptr.write(val).unwrap();
+    mut_ptr.write(val);
 }
 
 /// rust optimizes this down to
@@ -87,7 +84,7 @@ fn write_int(mut_ptr: &MutPtr<u32>, val: u32) {
 /// (nice)
 #[inline(never)]
 fn read_int(mut_ptr: &MutPtr<u32>) -> u32 {
-    mut_ptr.read().unwrap()
+    mut_ptr.read()
 }
 
 /// rust optimizes this down to
@@ -102,7 +99,7 @@ fn read_int(mut_ptr: &MutPtr<u32>) -> u32 {
 /// note: on aarch64 the result is actually suboptimal (the compiler generates dead stores to the stack)
 #[inline(never)]
 fn write_struct(mut_ptr: &MutPtr<TestStruct>, val: TestStruct) {
-    mut_ptr.write(val).unwrap()
+    mut_ptr.write(val)
 }
 
 /// rust optimizes this down to
@@ -116,7 +113,7 @@ fn write_struct(mut_ptr: &MutPtr<TestStruct>, val: TestStruct) {
 /// (nice)
 #[inline(never)]
 fn read_struct(mut_ptr: &MutPtr<TestStruct>) -> TestStruct {
-    mut_ptr.read().unwrap()
+    mut_ptr.read()
 }
 
 #[test]

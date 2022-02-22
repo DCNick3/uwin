@@ -3,30 +3,26 @@ use std::ptr::copy_nonoverlapping;
 // many ideas borrowed from wonderful crate "scroll", but API tailored for uwin use-case
 
 pub trait FromIntoMemory: Sized {
-    type Error;
-    fn try_from_bytes(from: &[u8]) -> Result<Self, Self::Error>;
-    fn try_into_bytes(self, into: &mut [u8]) -> Result<(), Self::Error>;
+    fn try_from_bytes(from: &[u8]) -> Self;
+    fn try_into_bytes(self, into: &mut [u8]);
     fn size() -> usize;
 }
 
 macro_rules! from_into_mem_impl {
     ($typ:tt, $size:expr) => {
         impl<'a> FromIntoMemory for $typ {
-            type Error = ();
-
             #[inline]
-            fn try_into_bytes(self, dst: &mut [u8]) -> Result<(), Self::Error> {
+            fn try_into_bytes(self, dst: &mut [u8]) {
                 assert!(dst.len() >= $size);
                 unsafe {
                     let bytes = self.to_le_bytes();
                     copy_nonoverlapping((&bytes).as_ptr(), dst.as_mut_ptr(), $size);
                 }
-                Ok(())
             }
 
             #[inline]
-            fn try_from_bytes(src: &[u8]) -> Result<Self, Self::Error> {
-                Ok($typ::from_le_bytes(src.try_into().unwrap()))
+            fn try_from_bytes(src: &[u8]) -> Self {
+                $typ::from_le_bytes(src.try_into().unwrap())
             }
 
             #[inline]

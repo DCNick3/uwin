@@ -12,14 +12,14 @@ mod tests {
     struct DummyCtx();
 
     impl MemoryCtx<'_> for DummyCtx {
-        fn read<N: FromIntoMemory>(&self, _ptr: TargetPtrRepr) -> Result<N, N::Error> {
+        fn read<N: FromIntoMemory>(&self, _ptr: TargetPtrRepr) -> N {
             let size = N::size();
             let data = vec![0u8; size];
             let data = data.leak(); // really dummy impl...
             N::try_from_bytes(data)
         }
 
-        fn write<N: FromIntoMemory>(&self, value: N, _ptr: TargetPtrRepr) -> Result<(), N::Error> {
+        fn write<N: FromIntoMemory>(&self, value: N, _ptr: TargetPtrRepr) {
             let size = N::size();
             let mut data = vec![0u8; size];
 
@@ -36,12 +36,12 @@ mod tests {
             _phantom: Default::default(),
         };
 
-        assert_eq!(ptr.read::<u32>().unwrap(), 0);
-        ptr.write(12u32).unwrap();
+        assert_eq!(ptr.read::<u32>(), 0);
+        ptr.write(12u32);
 
         let ptr1 = ptr.offset(12);
 
-        assert_eq!(ptr1.read::<u32>().unwrap(), 0);
-        ptr1.write(12u32).unwrap();
+        assert_eq!(ptr1.read::<u32>(), 0);
+        ptr1.write(12u32);
     }
 }
