@@ -2,3 +2,6 @@
 name = "uwin-win32-core"
 version = "0.1.0"
 edition = "2021"
+
+[dev-dependencies]
+region = "3.0.0"
