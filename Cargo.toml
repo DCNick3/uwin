@@ -13,4 +13,5 @@ members = [
     "uwin-win32-core",
 
     "windows-metadata",
+    "windows-tokens",
 ]
