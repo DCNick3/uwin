@@ -4,7 +4,6 @@ mod classes;
 mod constants;
 mod delegates;
 mod enums;
-mod extensions;
 mod functions;
 mod gen;
 mod handles;
@@ -35,7 +34,11 @@ pub fn gen_type(name: &str, gen: &Gen) -> String {
     let reader = TypeReader::get();
     let mut tokens = String::new();
 
-    for def in reader.get_type_entry(TypeName::parse(name)).iter().flat_map(|entry| entry.iter()) {
+    for def in reader
+        .get_type_entry(TypeName::parse(name))
+        .iter()
+        .flat_map(|entry| entry.iter())
+    {
         tokens.push_str(gen_type_impl(def, gen).as_str());
     }
 
@@ -44,7 +47,9 @@ pub fn gen_type(name: &str, gen: &Gen) -> String {
 }
 
 pub fn gen_namespace(gen: &Gen) -> String {
-    let tree = TypeReader::get().get_namespace(gen.namespace).expect("Namespace not found");
+    let tree = TypeReader::get()
+        .get_namespace(gen.namespace)
+        .expect("Namespace not found");
 
     let namespaces = tree.namespaces.iter().map(move |(name, tree)| {
         if tree.namespace == "Windows.Win32.Interop" {
@@ -54,7 +59,7 @@ pub fn gen_namespace(gen: &Gen) -> String {
         let name = gen_ident(name);
         let namespace = tree.namespace[tree.namespace.find('.').unwrap() + 1..].replace('.', "_");
         quote! {
-            #[cfg(feature = #namespace)] pub mod #name;
+            pub mod #name;
         }
     });
 
@@ -72,7 +77,9 @@ pub fn gen_namespace(gen: &Gen) -> String {
 }
 
 pub fn gen_namespace_impl(gen: &Gen) -> String {
-    let tree = TypeReader::get().get_namespace(gen.namespace).expect("Namespace not found");
+    let tree = TypeReader::get()
+        .get_namespace(gen.namespace)
+        .expect("Namespace not found");
     let mut tokens = TokenStream::new();
 
     for entry in tree.types.values() {

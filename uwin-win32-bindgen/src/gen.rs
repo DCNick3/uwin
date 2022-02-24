@@ -57,55 +57,12 @@ impl Gen<'_> {
         }
     }
 
-    pub(crate) fn cfg(&self, cfg: &Cfg) -> TokenStream {
-        if !self.cfg {
-            quote! {}
-        } else {
-            let arches = cfg.arches();
-            let arch = match arches.len() {
-                0 => quote! {},
-                1 => {
-                    quote! { #[cfg(#(target_arch = #arches),*)] }
-                }
-                _ => {
-                    quote! { #[cfg(any(#(target_arch = #arches),*))] }
-                }
-            };
-
-            let features = &cfg.features(self.namespace);
-            let features = match features.len() {
-                0 => quote! {},
-                1 => {
-                    let features = features.iter().cloned().map(to_feature);
-                    quote! { #[cfg(#(feature = #features)*)] }
-                }
-                _ => {
-                    let features = features.iter().cloned().map(to_feature);
-                    quote! { #[cfg(all( #(feature = #features),* ))] }
-                }
-            };
-
-            quote! { #arch #features }
-        }
+    pub(crate) fn cfg(&self, _cfg: &Cfg) -> TokenStream {
+        quote! {}
     }
 
-    pub(crate) fn not_cfg(&self, cfg: &Cfg) -> TokenStream {
-        let features = &cfg.features(self.namespace);
-        if !self.cfg || features.is_empty() {
-            quote! {}
-        } else {
-            match features.len() {
-                0 => quote! {},
-                1 => {
-                    let features = features.iter().cloned().map(to_feature);
-                    quote! { #[cfg(not(#(feature = #features)*))] }
-                }
-                _ => {
-                    let features = features.iter().cloned().map(to_feature);
-                    quote! { #[cfg(not(all( #(feature = #features),* )))] }
-                }
-            }
-        }
+    pub(crate) fn not_cfg(&self, _cfg: &Cfg) -> TokenStream {
+        quote! {}
     }
 }
 

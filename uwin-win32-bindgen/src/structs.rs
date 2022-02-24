@@ -83,8 +83,6 @@ fn gen_struct_with_name(def: &TypeDef, struct_name: &str, cfg: &Cfg, gen: &Gen) 
                 }
             }
         });
-
-        tokens.combine(&extensions::gen(def));
     }
 
     if let Some(nested_types) = def.nested_types() {

@@ -2,18 +2,10 @@ use super::*;
 
 pub fn gen() -> TokenStream {
     quote! {
-        pub struct HANDLE(pub isize);
+        pub struct HANDLE(pub TargetPtrRepr);
         impl HANDLE {
             pub fn is_invalid(&self) -> bool {
                 self.0 == 0 || self.0 == -1
-            }
-
-            pub fn ok(self) -> ::windows::core::Result<Self> {
-                if self.is_invalid() {
-                    Err(::windows::core::Error::from_win32())
-                } else {
-                    Ok(self)
-                }
             }
         }
         impl ::core::default::Default for HANDLE {
@@ -37,9 +29,6 @@ pub fn gen() -> TokenStream {
             fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
                 f.debug_tuple("HANDLE").field(&self.0).finish()
             }
-        }
-        unsafe impl ::windows::core::Abi for HANDLE {
-            type Abi = Self;
         }
     }
 }
