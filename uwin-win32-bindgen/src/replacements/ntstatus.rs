@@ -2,7 +2,6 @@ use super::*;
 
 pub fn gen() -> TokenStream {
     quote! {
-        #[repr(transparent)]
         pub struct NTSTATUS(pub i32);
         impl NTSTATUS {
             #[inline]

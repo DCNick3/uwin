@@ -27,14 +27,25 @@ fn gen_class(def: &TypeDef, gen: &Gen) -> TokenStream {
     let features = gen.cfg(&cfg);
 
     for (def, kind) in &interfaces {
-        if gen.min_xaml && *kind == InterfaceKind::Base && gen.namespace.starts_with("Windows.UI.Xaml") && !def.namespace().starts_with("Windows.Foundation") {
+        if gen.min_xaml
+            && *kind == InterfaceKind::Base
+            && gen.namespace.starts_with("Windows.UI.Xaml")
+            && !def.namespace().starts_with("Windows.Foundation")
+        {
             continue;
         }
 
         let mut virtual_names = MethodNames::new();
 
         for method in def.methods() {
-            methods.combine(&gen_winrt_method(def, *kind, &method, &mut method_names, &mut virtual_names, gen));
+            methods.combine(&gen_winrt_method(
+                def,
+                *kind,
+                &method,
+                &mut method_names,
+                &mut virtual_names,
+                gen,
+            ));
         }
     }
 
@@ -90,7 +101,6 @@ fn gen_class(def: &TypeDef, gen: &Gen) -> TokenStream {
         let mut tokens = quote! {
             #doc
             #features
-            #[repr(transparent)]
             pub struct #name(::windows::core::IUnknown);
             #features
             impl #name {
@@ -181,7 +191,10 @@ fn gen_conversions(def: &TypeDef, cfg: &Cfg, gen: &Gen) -> TokenStream {
             continue;
         }
 
-        if kind != InterfaceKind::Default && kind != InterfaceKind::NonDefault && kind != InterfaceKind::Base {
+        if kind != InterfaceKind::Default
+            && kind != InterfaceKind::NonDefault
+            && kind != InterfaceKind::Base
+        {
             continue;
         }
 

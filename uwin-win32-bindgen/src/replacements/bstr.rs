@@ -2,7 +2,6 @@ use super::*;
 
 pub fn gen() -> TokenStream {
     quote! {
-        #[repr(transparent)]
         pub struct BSTR(*const u16);
         impl BSTR {
             pub fn new() -> Self {

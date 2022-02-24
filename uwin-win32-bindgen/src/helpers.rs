@@ -98,10 +98,18 @@ pub fn gen_vtbl_signature(def: &TypeDef, method: &MethodDef, gen: &Gen) -> Token
         if let Some(return_type) = &signature.return_type {
             if let Type::WinrtArray(kind) = return_type {
                 let tokens = gen_abi_element_name(kind, gen);
-                (quote! { result_size__: *mut u32, result__: *mut *mut #tokens }, quote! { -> #hresult }, quote! {})
+                (
+                    quote! { result_size__: *mut u32, result__: *mut *mut #tokens },
+                    quote! { -> #hresult },
+                    quote! {},
+                )
             } else {
                 let tokens = gen_abi_element_name(return_type, gen);
-                (quote! { result__: *mut #tokens }, quote! { -> #hresult }, quote! {})
+                (
+                    quote! { result__: *mut #tokens },
+                    quote! { -> #hresult },
+                    quote! {},
+                )
             }
         } else {
             (quote! {}, quote! { -> #hresult }, quote! {})
@@ -158,8 +166,12 @@ pub fn gen_vtbl(def: &TypeDef, cfg: &Cfg, gen: &Gen) -> TokenStream {
     method_names.add_vtable_types(def);
 
     match def.vtable_types().last() {
-        Some(Type::IUnknown) => methods.combine(&quote! { pub base: ::windows::core::IUnknownVtbl, }),
-        Some(Type::IInspectable) => methods.combine(&quote! { pub base: ::windows::core::IInspectableVtbl, }),
+        Some(Type::IUnknown) => {
+            methods.combine(&quote! { pub base: ::windows::core::IUnknownVtbl, })
+        }
+        Some(Type::IInspectable) => {
+            methods.combine(&quote! { pub base: ::windows::core::IInspectableVtbl, })
+        }
         Some(Type::TypeDef(def)) => {
             let vtbl = gen_vtbl_ident(def, gen);
             let namespace = gen.namespace(def.namespace());
@@ -196,7 +208,7 @@ pub fn gen_vtbl(def: &TypeDef, cfg: &Cfg, gen: &Gen) -> TokenStream {
 
     quote! {
         #cfg
-        #[repr(C)] #[doc(hidden)] pub struct #vtbl where #(#constraints)* {
+        #[doc(hidden)] pub struct #vtbl where #(#constraints)* {
             #methods
             #(pub #phantoms)*
         }
@@ -325,7 +337,9 @@ pub fn gen_runtime_name(def: &TypeDef, cfg: &Cfg, gen: &Gen) -> TokenStream {
 pub fn gen_win32_upcall(sig: &Signature, inner: TokenStream) -> TokenStream {
     match sig.kind() {
         SignatureKind::ResultValue => {
-            let invoke_args = sig.params[..sig.params.len() - 1].iter().map(gen_win32_invoke_arg);
+            let invoke_args = sig.params[..sig.params.len() - 1]
+                .iter()
+                .map(gen_win32_invoke_arg);
 
             let result = gen_param_name(&sig.params[sig.params.len() - 1].def);
 
@@ -401,7 +415,9 @@ pub fn gen_winrt_upcall(sig: &Signature, inner: TokenStream) -> TokenStream {
 fn gen_win32_invoke_arg(param: &MethodParam) -> TokenStream {
     let name = gen_param_name(&param.def);
 
-    if (!param.ty.is_pointer() && param.ty.is_nullable()) || (param.def.flags().input() && !param.ty.is_primitive()) {
+    if (!param.ty.is_pointer() && param.ty.is_nullable())
+        || (param.def.flags().input() && !param.ty.is_primitive())
+    {
         quote! { ::core::mem::transmute(&#name) }
     } else {
         quote! { ::core::mem::transmute_copy(&#name) }
@@ -436,7 +452,10 @@ pub fn gen_impl_signature(def: &TypeDef, method: &MethodDef, gen: &Gen) -> Token
 
     if def.is_winrt() {
         let is_delegate = def.kind() == TypeKind::Delegate;
-        let params = signature.params.iter().map(|p| gen_winrt_produce_type(p, !is_delegate, gen));
+        let params = signature
+            .params
+            .iter()
+            .map(|p| gen_winrt_produce_type(p, !is_delegate, gen));
 
         let return_type = if let Some(return_type) = &signature.return_type {
             let tokens = gen_element_name(return_type, gen);
@@ -473,7 +492,9 @@ pub fn gen_impl_signature(def: &TypeDef, method: &MethodDef, gen: &Gen) -> Token
 
         let return_type = match signature_kind {
             SignatureKind::ReturnVoid => quote! {},
-            SignatureKind::Query | SignatureKind::QueryOptional | SignatureKind::ResultVoid => quote! { -> ::windows::core::Result<()> },
+            SignatureKind::Query | SignatureKind::QueryOptional | SignatureKind::ResultVoid => {
+                quote! { -> ::windows::core::Result<()> }
+            }
             SignatureKind::ResultValue => {
                 let return_type = signature.params[signature.params.len() - 1].ty.deref();
                 let return_type = gen_element_name(&return_type, gen);
@@ -514,7 +535,11 @@ pub fn gen_default_type(def: &Type, gen: &Gen) -> TokenStream {
     }
 }
 
-fn gen_winrt_produce_type(param: &MethodParam, include_param_names: bool, gen: &Gen) -> TokenStream {
+fn gen_winrt_produce_type(
+    param: &MethodParam,
+    include_param_names: bool,
+    gen: &Gen,
+) -> TokenStream {
     let default_type = gen_default_type(&param.ty, gen);
 
     let sig = if param.def.flags().input() {

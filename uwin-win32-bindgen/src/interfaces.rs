@@ -40,7 +40,6 @@ fn gen_win_interface(def: &TypeDef, gen: &Gen) -> TokenStream {
 
     tokens.combine(&quote! {
         #features
-        #[repr(transparent)]
         pub struct #name(::windows::core::IUnknown, #(#phantoms)*) where #(#constraints)*;
     });
 
@@ -74,7 +73,14 @@ fn gen_methods(def: &TypeDef, cfg: &Cfg, gen: &Gen) -> TokenStream {
         match def {
             Type::IUnknown | Type::IInspectable => {}
             Type::TypeDef(def) => {
-                methods.combine(&gen_methods_impl(&def, InterfaceKind::Default, &mut method_names, &mut virtual_names, bases, gen));
+                methods.combine(&gen_methods_impl(
+                    &def,
+                    InterfaceKind::Default,
+                    &mut method_names,
+                    &mut virtual_names,
+                    bases,
+                    gen,
+                ));
             }
             _ => unimplemented!(),
         }
@@ -83,11 +89,25 @@ fn gen_methods(def: &TypeDef, cfg: &Cfg, gen: &Gen) -> TokenStream {
     }
 
     // Methods for vtable bases are added first (above) so that any overloads are renamed accordingly.
-    methods.combine(&gen_methods_impl(def, InterfaceKind::Default, &mut method_names, &mut virtual_names, 0, gen));
+    methods.combine(&gen_methods_impl(
+        def,
+        InterfaceKind::Default,
+        &mut method_names,
+        &mut virtual_names,
+        0,
+        gen,
+    ));
 
     if is_winrt && !gen.min_inherit {
         for def in def.required_interfaces() {
-            methods.combine(&gen_methods_impl(&def, InterfaceKind::NonDefault, &mut method_names, &mut virtual_names, 0, gen));
+            methods.combine(&gen_methods_impl(
+                &def,
+                InterfaceKind::NonDefault,
+                &mut method_names,
+                &mut virtual_names,
+                0,
+                gen,
+            ));
         }
     }
 
@@ -99,15 +119,36 @@ fn gen_methods(def: &TypeDef, cfg: &Cfg, gen: &Gen) -> TokenStream {
     }
 }
 
-fn gen_methods_impl(def: &TypeDef, kind: InterfaceKind, method_names: &mut MethodNames, virtual_names: &mut MethodNames, bases: usize, gen: &Gen) -> TokenStream {
+fn gen_methods_impl(
+    def: &TypeDef,
+    kind: InterfaceKind,
+    method_names: &mut MethodNames,
+    virtual_names: &mut MethodNames,
+    bases: usize,
+    gen: &Gen,
+) -> TokenStream {
     let mut methods = quote! {};
     let is_winrt = def.is_winrt();
 
     for method in def.methods() {
         if is_winrt {
-            methods.combine(&gen_winrt_method(def, kind, &method, method_names, virtual_names, gen));
+            methods.combine(&gen_winrt_method(
+                def,
+                kind,
+                &method,
+                method_names,
+                virtual_names,
+                gen,
+            ));
         } else {
-            methods.combine(&gen_com_method(def, &method, method_names, virtual_names, bases, gen));
+            methods.combine(&gen_com_method(
+                def,
+                &method,
+                method_names,
+                virtual_names,
+                bases,
+                gen,
+            ));
         }
     }
 

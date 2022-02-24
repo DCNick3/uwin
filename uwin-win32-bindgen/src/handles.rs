@@ -23,7 +23,6 @@ pub fn gen_win_handle(def: &TypeDef, gen: &Gen) -> TokenStream {
     let signature = gen_signature(def, gen);
 
     let mut tokens = quote! {
-        #[repr(transparent)]
         // Unfortunately, Rust requires these to be derived to allow constant patterns.
         #[derive(::core::cmp::PartialEq, ::core::cmp::Eq)]
         pub struct #ident(pub #signature);
@@ -79,6 +78,10 @@ pub fn gen_win_handle(def: &TypeDef, gen: &Gen) -> TokenStream {
 }
 
 fn gen_signature(def: &TypeDef, gen: &Gen) -> TokenStream {
-    let def = def.fields().next().map(|field| field.get_type(Some(def))).unwrap();
+    let def = def
+        .fields()
+        .next()
+        .map(|field| field.get_type(Some(def)))
+        .unwrap();
     gen_default_type(&def, gen)
 }

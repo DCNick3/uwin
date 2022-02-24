@@ -29,13 +29,19 @@ fn gen_win_delegate(def: &TypeDef, gen: &Gen) -> TokenStream {
     let doc = gen.doc(&cfg);
     let features = gen.cfg(&cfg);
     let vtbl_signature = gen_vtbl_signature(def, &method, gen);
-    let invoke = gen_winrt_method(def, InterfaceKind::Default, &method, &mut MethodNames::new(), &mut MethodNames::new(), gen);
+    let invoke = gen_winrt_method(
+        def,
+        InterfaceKind::Default,
+        &method,
+        &mut MethodNames::new(),
+        &mut MethodNames::new(),
+        gen,
+    );
     let invoke_upcall = gen_winrt_upcall(&signature, quote! { ((*this).invoke) });
 
     let mut tokens = quote! {
         #doc
         #features
-        #[repr(transparent)]
         pub struct #name<#(#generics)*>(pub ::windows::core::IUnknown, #(#phantoms)*) where #(#constraints)*;
         #features
         impl<#(#constraints)*> #name<#(#generics)*> {
@@ -52,7 +58,6 @@ fn gen_win_delegate(def: &TypeDef, gen: &Gen) -> TokenStream {
             #invoke
         }
         #features
-        #[repr(C)]
         struct #boxed<#(#generics)* #fn_constraint> where #(#constraints)* {
             vtable: *const #vtbl<#(#generics)*>,
             invoke: F,

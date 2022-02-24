@@ -2,7 +2,6 @@ use super::*;
 
 pub fn gen() -> TokenStream {
     quote! {
-        #[repr(transparent)]
         pub struct HANDLE(pub isize);
         impl HANDLE {
             pub fn is_invalid(&self) -> bool {

@@ -24,7 +24,6 @@ pub fn gen() -> TokenStream {
                 }
             }
             pub fn rotation(angle: f32, x: f32, y: f32) -> Self {
-                #[repr(C)]
                 pub struct D2D_POINT_2F {
                     pub x: f32,
                     pub y: f32,

@@ -31,7 +31,6 @@ fn gen_struct_with_name(def: &TypeDef, struct_name: &str, cfg: &Cfg, gen: &Gen) 
             return quote! {};
         } else {
             return quote! {
-                #[repr(C)]
                 pub struct #name(pub u8);
             };
         }
@@ -39,13 +38,6 @@ fn gen_struct_with_name(def: &TypeDef, struct_name: &str, cfg: &Cfg, gen: &Gen) 
 
     let is_union = def.is_union();
     let cfg = cfg.union(&def.cfg());
-
-    let repr = if let Some(layout) = def.class_layout() {
-        let packing = Literal::u32_unsuffixed(layout.packing_size());
-        quote! { #[repr(C, packed(#packing))] }
-    } else {
-        quote! { #[repr(C)] }
-    };
 
     let fields = def.fields().map(|f| {
         let name = gen_ident(f.name());
@@ -71,7 +63,6 @@ fn gen_struct_with_name(def: &TypeDef, struct_name: &str, cfg: &Cfg, gen: &Gen) 
     let features = gen.cfg(&cfg);
 
     let mut tokens = quote! {
-        #repr
         #doc
         #features
         pub #struct_or_union #name {#(#fields)*}
@@ -282,7 +273,12 @@ fn gen_copy_clone(def: &TypeDef, name: &TokenStream, cfg: &Cfg, gen: &Gen) -> To
     }
 }
 
-fn gen_struct_constants(def: &TypeDef, struct_name: &TokenStream, cfg: &Cfg, gen: &Gen) -> TokenStream {
+fn gen_struct_constants(
+    def: &TypeDef,
+    struct_name: &TokenStream,
+    cfg: &Cfg,
+    gen: &Gen,
+) -> TokenStream {
     let features = gen.cfg(cfg);
 
     let constants = def.fields().filter_map(|f| {

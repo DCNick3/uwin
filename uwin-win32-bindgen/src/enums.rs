@@ -42,7 +42,6 @@ pub fn gen(def: &TypeDef, gen: &Gen) -> TokenStream {
         quote! {
             #doc
             #features
-            #[repr(transparent)]
             #eq
             pub struct #ident(pub #underlying_type);
         }
