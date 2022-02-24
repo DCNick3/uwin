@@ -1,0 +1,9 @@
+[package]
+name = "uwin-win32-bindgen"
+version = "0.0.1"
+edition = "2021"
+
+
+[dependencies]
+tokens = { package = "windows-tokens", path = "../windows-tokens", version = "0.32.0" }
+metadata = { package = "windows-metadata", path = "../windows-metadata", version = "0.32.0" }
