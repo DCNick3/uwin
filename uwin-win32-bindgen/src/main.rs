@@ -50,6 +50,16 @@ fn main() {
         // "Windows.Win32.System.Threading.WaitForSingleObject",
     ];
 
+    // stuff to change:
+    // - namespace (there are a lot of refs to ::windows::code)
+    // - fix generation of code with different namespaces (it should actually work!)
+    // - plain old pointers (also need a wrapper type, though this one is implemented)
+    // - generate conversion trait implementations
+
+    // questions to answer:
+    // - representation of function pointers
+    // - representation of COM interface implementations (extra hard!)
+
     let mut tokens = "#![allow(non_snake_case, non_upper_case_globals, dead_code, non_camel_case_types, clippy::upper_case_acronyms, clippy::derivable_impls)]".to_string();
 
     let gen = Gen {

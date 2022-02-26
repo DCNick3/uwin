@@ -1,5 +1,6 @@
 use super::*;
 
+#[allow(unused)]
 pub fn gen_std_traits(def: &TypeDef, cfg: &Cfg, gen: &Gen) -> TokenStream {
     let ident = gen_type_ident(def, gen);
     let name = ident.as_str();
@@ -28,64 +29,6 @@ pub fn gen_std_traits(def: &TypeDef, cfg: &Cfg, gen: &Gen) -> TokenStream {
                 f.debug_tuple(#name).field(&self.0).finish()
             }
         }
-    }
-}
-
-pub fn gen_interface_trait(def: &TypeDef, cfg: &Cfg, gen: &Gen) -> TokenStream {
-    let cfg = gen.cfg(cfg);
-    if let Some(default) = def.default_interface() {
-        let name = gen_type_ident(def, gen);
-        let default_name = gen_type_ident(&default, gen);
-        let vtbl = gen_vtbl_ident(&default, gen);
-        let namespace = gen.namespace(default.namespace());
-
-        quote! {
-            #cfg
-            unsafe impl ::windows::core::Interface for #name {
-                type Vtable = #namespace #vtbl;
-                const IID: ::windows::core::GUID = <#namespace #default_name as ::windows::core::Interface>::IID;
-            }
-        }
-    } else {
-        let name = gen_type_ident(def, gen);
-        let constraints = gen_type_constraints(def, gen);
-        let vtbl = gen_vtbl_ident(def, gen);
-        let guid = gen_type_guid(def, gen, &"Self".into());
-
-        quote! {
-            #cfg
-            unsafe impl<#(#constraints)*> ::windows::core::Interface for #name {
-                type Vtable = #vtbl;
-                const IID: ::windows::core::GUID = #guid;
-            }
-        }
-    }
-}
-
-pub fn gen_runtime_trait(def: &TypeDef, cfg: &Cfg, gen: &Gen) -> TokenStream {
-    let cfg = gen.cfg(cfg);
-    if def.is_winrt() {
-        let name = gen_type_ident(def, gen);
-        let constraints = gen_type_constraints(def, gen);
-        let type_signature = if def.kind() == TypeKind::Class {
-            let type_signature = Literal::byte_string(def.type_signature().as_bytes());
-            quote! { ::windows::core::ConstBuffer::from_slice(#type_signature) }
-        } else {
-            gen_guid_signature(def, &format!("{{{:#?}}}", def.guid()), gen)
-        };
-
-        quote! {
-            #cfg
-            unsafe impl<#(#constraints)*> ::windows::core::RuntimeType for #name {
-                const SIGNATURE: ::windows::core::ConstBuffer = #type_signature;
-                type DefaultType = ::core::option::Option<Self>;
-                fn from_default(from: &Self::DefaultType) -> ::windows::core::Result<Self> {
-                    from.as_ref().cloned().ok_or(::windows::core::Error::OK)
-                }
-            }
-        }
-    } else {
-        quote! {}
     }
 }
 
@@ -156,65 +99,6 @@ pub fn gen_vtbl_signature(def: &TypeDef, method: &MethodDef, gen: &Gen) -> Token
     quote! { (this: *mut ::core::ffi::c_void, #udt_return_type #(#params)* #trailing_return_type) #return_type }
 }
 
-pub fn gen_vtbl(def: &TypeDef, cfg: &Cfg, gen: &Gen) -> TokenStream {
-    let cfg = gen.cfg(cfg);
-    let vtbl = gen_vtbl_ident(def, gen);
-    let phantoms = gen_named_phantoms(def, gen);
-    let constraints = gen_type_constraints(def, gen);
-    let mut methods = quote! {};
-    let mut method_names = MethodNames::new();
-    method_names.add_vtable_types(def);
-
-    match def.vtable_types().last() {
-        Some(Type::IUnknown) => {
-            methods.combine(&quote! { pub base: ::windows::core::IUnknownVtbl, })
-        }
-        Some(Type::IInspectable) => {
-            methods.combine(&quote! { pub base: ::windows::core::IInspectableVtbl, })
-        }
-        Some(Type::TypeDef(def)) => {
-            let vtbl = gen_vtbl_ident(def, gen);
-            let namespace = gen.namespace(def.namespace());
-            methods.combine(&quote! { pub base: #namespace #vtbl, });
-        }
-        _ => {}
-    }
-
-    for method in def.methods() {
-        if method.name() == ".ctor" {
-            continue;
-        }
-
-        let name = method_names.add(&method);
-        let signature = gen_vtbl_signature(def, &method, gen);
-        let mut cfg = method.cfg();
-        cfg.add_feature(def.namespace());
-        let cfg_all = gen.cfg(&cfg);
-        let cfg_not = gen.not_cfg(&cfg);
-
-        let signature = quote! { pub #name: unsafe extern "system" fn #signature, };
-
-        if cfg_all.is_empty() {
-            methods.combine(&signature);
-        } else {
-            methods.combine(&quote! {
-                #cfg_all
-                #signature
-                #cfg_not
-                #name: usize,
-            });
-        }
-    }
-
-    quote! {
-        #cfg
-        #[doc(hidden)] pub struct #vtbl where #(#constraints)* {
-            #methods
-            #(pub #phantoms)*
-        }
-    }
-}
-
 fn gen_string_literal(value: &str) -> TokenStream {
     let mut tokens = "\"".to_string();
 
@@ -224,23 +108,6 @@ fn gen_string_literal(value: &str) -> TokenStream {
 
     tokens.push('\"');
     tokens.into()
-}
-
-fn gen_type_guid(def: &TypeDef, gen: &Gen, type_name: &TokenStream) -> TokenStream {
-    if def.generics.is_empty() {
-        match GUID::from_attributes(def.attributes()) {
-            Some(guid) => gen_guid(&guid, gen),
-            None => {
-                quote! {
-                    ::windows::core::GUID::zeroed()
-                }
-            }
-        }
-    } else {
-        quote! {
-            ::windows::core::GUID::from_signature(<#type_name as ::windows::core::RuntimeType>::SIGNATURE)
-        }
-    }
 }
 
 pub fn gen_constant_type_value(value: &ConstantValue) -> TokenStream {

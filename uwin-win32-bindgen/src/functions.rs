@@ -23,7 +23,7 @@ pub fn gen_sys_functions(tree: &TypeTree, gen: &Gen) -> TokenStream {
     }
 }
 
-pub fn gen_function(def: &MethodDef, gen: &Gen) -> TokenStream {
+pub fn gen_function(_def: &MethodDef, _gen: &Gen) -> TokenStream {
     // TODO: this should actually be really different
     // if gen.sys {
     //     let function = gen_sys_function(def, gen);

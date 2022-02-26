@@ -18,25 +18,19 @@ pub fn gen_sys_handle(def: &TypeDef, gen: &Gen) -> TokenStream {
 }
 
 pub fn gen_win_handle(def: &TypeDef, gen: &Gen) -> TokenStream {
+    // TODO: what is it used for?
+
     let name = def.name();
     let ident = gen_ident(def.name());
     let signature = gen_signature(def, gen);
 
-    let mut tokens = quote! {
+    let tokens = quote! {
         // Unfortunately, Rust requires these to be derived to allow constant patterns.
         #[derive(::core::cmp::PartialEq, ::core::cmp::Eq)]
         pub struct #ident(pub #signature);
         impl #ident {
             pub fn is_invalid(&self) -> bool {
                 *self == unsafe { ::core::mem::zeroed() }
-            }
-
-            pub fn ok(self) -> ::windows::core::Result<Self> {
-                if !self.is_invalid() {
-                    Ok(self)
-                } else {
-                    Err(::windows::core::Error::from_win32())
-                }
             }
         }
         impl ::core::default::Default for #ident {
@@ -55,24 +49,7 @@ pub fn gen_win_handle(def: &TypeDef, gen: &Gen) -> TokenStream {
                 f.debug_tuple(#name).field(&self.0).finish()
             }
         }
-        unsafe impl ::windows::core::Abi for #ident {
-            type Abi = Self;
-        }
     };
-
-    if let Some(dependency) = def.is_convertible_to() {
-        let type_name = dependency.type_name();
-        let mut dependency = gen.namespace(type_name.namespace());
-        dependency.push_str(type_name.name());
-
-        tokens.combine(&quote! {
-            impl<'a> ::windows::core::IntoParam<'a, #dependency> for #ident {
-                fn into_param(self) -> ::windows::core::Param<'a, #dependency> {
-                    ::windows::core::Param::Owned(#dependency(self.0))
-                }
-            }
-        });
-    }
 
     tokens
 }

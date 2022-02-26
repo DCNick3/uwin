@@ -1,8 +1,6 @@
-mod r#async;
 mod callbacks;
 mod classes;
 mod constants;
-mod delegates;
 mod enums;
 mod functions;
 mod gen;
@@ -10,7 +8,6 @@ mod handles;
 mod helpers;
 mod implements;
 mod interfaces;
-mod iterator;
 mod method_names;
 mod methods;
 mod names;
@@ -21,12 +18,10 @@ mod structs;
 use functions::*;
 pub use gen::*;
 use helpers::*;
-use iterator::*;
 use metadata::*;
 use method_names::*;
 use methods::*;
 use names::*;
-use r#async::*;
 use signatures::*;
 use tokens::*;
 
@@ -57,7 +52,8 @@ pub fn gen_namespace(gen: &Gen) -> String {
         }
 
         let name = gen_ident(name);
-        let namespace = tree.namespace[tree.namespace.find('.').unwrap() + 1..].replace('.', "_");
+        let _namespace = tree.namespace[tree.namespace.find('.').unwrap() + 1..].replace('.', "_");
+        // TODO: we probably actually want the namespace separation. It just didn't work for some reason
         quote! {
             pub mod #name;
         }
@@ -76,6 +72,8 @@ pub fn gen_namespace(gen: &Gen) -> String {
     tokens.into_string()
 }
 
+// TODO: wtf is this?
+#[allow(unused)]
 pub fn gen_namespace_impl(gen: &Gen) -> String {
     let tree = TypeReader::get()
         .get_namespace(gen.namespace)
@@ -117,11 +115,8 @@ fn gen_type_impl(def: &Type, gen: &Gen) -> TokenStream {
                 TypeKind::Enum => enums::gen(def, gen),
                 TypeKind::Struct => structs::gen(def, gen),
                 TypeKind::Delegate => {
-                    if def.is_winrt() {
-                        delegates::gen(def, gen)
-                    } else {
-                        callbacks::gen(def, gen)
-                    }
+                    assert!(!def.is_winrt());
+                    callbacks::gen(def, gen)
                 }
             }
         }

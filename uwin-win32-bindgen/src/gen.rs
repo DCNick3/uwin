@@ -60,10 +60,6 @@ impl Gen<'_> {
     pub(crate) fn cfg(&self, _cfg: &Cfg) -> TokenStream {
         quote! {}
     }
-
-    pub(crate) fn not_cfg(&self, _cfg: &Cfg) -> TokenStream {
-        quote! {}
-    }
 }
 
 fn to_feature(name: &str) -> String {

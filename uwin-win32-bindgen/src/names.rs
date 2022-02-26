@@ -89,41 +89,6 @@ pub fn gen_type_constraints(def: &TypeDef, gen: &Gen) -> Vec<TokenStream> {
         .collect()
 }
 
-pub fn gen_guid_signature(def: &TypeDef, signature: &str, gen: &Gen) -> TokenStream {
-    let signature = Literal::byte_string(signature.as_bytes());
-
-    if def.generics.is_empty() {
-        return quote! { ::windows::core::ConstBuffer::from_slice(#signature) };
-    }
-
-    let generics = def.generics.iter().enumerate().map(|(index, g)| {
-        let g = gen_element_name(g, gen);
-        let semi = if index != def.generics.len() - 1 {
-            Some(quote! {
-                .push_slice(b";")
-            })
-        } else {
-            None
-        };
-
-        quote! {
-            .push_other(<#g as ::windows::core::RuntimeType>::SIGNATURE)
-            #semi
-        }
-    });
-
-    quote! {
-        {
-            ::windows::core::ConstBuffer::new()
-            .push_slice(b"pinterface(")
-            .push_slice(#signature)
-            .push_slice(b";")
-            #(#generics)*
-            .push_slice(b")")
-        }
-    }
-}
-
 pub fn gen_param_name(param: &Param) -> TokenStream {
     gen_ident(&param.name().to_lowercase())
 }
@@ -233,9 +198,10 @@ fn gen_abi_element_name_impl(ty: &Type, ptr: bool, gen: &Gen) -> TokenStream {
             let len = Literal::u32_unsuffixed(*len);
             quote! { [#name; #len] }
         }
-        Type::GenericParam(generic) => {
-            let name = gen_ident(generic);
-            quote! { <#name as ::windows::core::Abi>::Abi }
+        Type::GenericParam(_) => {
+            unimplemented!();
+            //let name = gen_ident(generic);
+            //quote! { <#name as ::windows::core::Abi>::Abi }
         }
         Type::TypeDef(def) => match def.kind() {
             TypeKind::Enum => gen_type_name(def, gen),

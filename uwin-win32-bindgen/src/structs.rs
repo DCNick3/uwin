@@ -99,20 +99,11 @@ fn gen_windows_traits(def: &TypeDef, name: &TokenStream, cfg: &Cfg, gen: &Gen) -
     if gen.sys {
         quote! {}
     } else {
-        let abi = if def.is_blittable() {
-            quote! { Self }
-        } else {
-            quote! { ::core::mem::ManuallyDrop<Self> }
-        };
-
         let features = gen.cfg(cfg);
 
-        let mut tokens = quote! {
-            #features
-            unsafe impl ::windows::core::Abi for #name {
-                type Abi = #abi;
-            }
-        };
+        let mut tokens = quote! {};
+
+        assert!(!def.is_winrt());
 
         if def.is_winrt() {
             let signature = Literal::byte_string(def.type_signature().as_bytes());

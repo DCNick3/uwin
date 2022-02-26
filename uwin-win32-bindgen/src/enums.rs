@@ -119,10 +119,6 @@ pub fn gen(def: &TypeDef, gen: &Gen) -> TokenStream {
     if !gen.sys {
         tokens.combine(&quote! {
             #features
-            unsafe impl ::windows::core::Abi for #ident {
-                type Abi = Self;
-            }
-            #features
             impl ::core::fmt::Debug for #ident {
                 fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
                     f.debug_tuple(#name).field(&self.0).finish()
@@ -166,20 +162,7 @@ pub fn gen(def: &TypeDef, gen: &Gen) -> TokenStream {
             });
         }
 
-        if def.is_winrt() {
-            let signature = Literal::byte_string(def.type_signature().as_bytes());
-
-            tokens.combine(&quote! {
-                #features
-                unsafe impl ::windows::core::RuntimeType for #ident {
-                    const SIGNATURE: ::windows::core::ConstBuffer = ::windows::core::ConstBuffer::from_slice(#signature);
-                    type DefaultType = Self;
-                    fn from_default(from: &Self::DefaultType) -> ::windows::core::Result<Self> {
-                        Ok(*from)
-                    }
-                }
-            });
-        }
+        assert!(def.is_winrt());
     }
 
     tokens
