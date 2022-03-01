@@ -162,7 +162,7 @@ pub fn gen(def: &TypeDef, gen: &Gen) -> TokenStream {
             });
         }
 
-        assert!(def.is_winrt());
+        assert!(!def.is_winrt());
     }
 
     tokens

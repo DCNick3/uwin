@@ -8,10 +8,10 @@ lto = "thin"
 members = [
     "rusty-x86",
     "rusty-x86_derive",
+    "win32-core",
 
-    "uwin-win32-bindgen",
-    "uwin-win32-core",
-
-    "windows-metadata",
-    "windows-tokens",
+    "win32-bindgen/bindgen",
+    "win32-bindgen/bindgenlib",
+    "win32-bindgen/metadata",
+    "win32-bindgen/tokens",
 ]

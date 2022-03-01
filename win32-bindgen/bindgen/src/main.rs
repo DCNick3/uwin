@@ -1,7 +1,9 @@
+use rayon::prelude::*;
 use std::error::Error;
+use std::io::prelude::*;
 use std::io::Write;
 use std::process::{Command, Stdio};
-use uwin_win32_bindgen::{gen_type, Gen};
+use win32_bindgenlib::{gen_type, Gen};
 
 fn reformat(text: impl std::fmt::Display) -> Result<String, Box<dyn Error>> {
     let mut rustfmt = Command::new("rustfmt")

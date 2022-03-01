@@ -1,0 +1,12 @@
+[package]
+name = "win32-bindgen"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+tokens = { package = "windows-tokens", path = "../tokens", version = "0.32.0" }
+metadata = { package = "windows-metadata", path = "../metadata", version = "0.32.0" }
+win32-bindgenlib = { package = "win32-bindgenlib", path = "../bindgenlib", version = "0.0.1" }
+rayon = "1.5.1"
