@@ -2,12 +2,7 @@ use super::*;
 
 pub fn gen() -> TokenStream {
     quote! {
-        pub struct HANDLE(pub TargetPtrRepr);
-        impl HANDLE {
-            pub fn is_invalid(&self) -> bool {
-                self.0 == 0 || self.0 == -1
-            }
-        }
+        pub struct HANDLE(pub PtrRepr);
         impl ::core::default::Default for HANDLE {
             fn default() -> Self {
                 Self(0)

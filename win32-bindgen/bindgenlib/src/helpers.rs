@@ -204,21 +204,23 @@ pub fn gen_runtime_name(def: &TypeDef, cfg: &Cfg, gen: &Gen) -> TokenStream {
 pub fn gen_win32_upcall(sig: &Signature, inner: TokenStream) -> TokenStream {
     match sig.kind() {
         SignatureKind::ResultValue => {
-            let invoke_args = sig.params[..sig.params.len() - 1]
-                .iter()
-                .map(gen_win32_invoke_arg);
+            todo!()
 
-            let result = gen_param_name(&sig.params[sig.params.len() - 1].def);
-
-            quote! {
-                match #inner(#(#invoke_args,)*) {
-                    ::core::result::Result::Ok(ok__) => {
-                        *#result = ::core::mem::transmute(ok__);
-                        ::windows::core::HRESULT(0)
-                    }
-                    ::core::result::Result::Err(err) => err.into()
-                }
-            }
+            // let invoke_args = sig.params[..sig.params.len() - 1]
+            //     .iter()
+            //     .map(gen_win32_invoke_arg);
+            //
+            // let result = gen_param_name(&sig.params[sig.params.len() - 1].def);
+            //
+            // quote! {
+            //     match #inner(#(#invoke_args,)*) {
+            //         ::::core::result::Result::Ok(ok__) => {
+            //             *#result = ::core::mem::transmute(ok__);
+            //             ::#crate_name::core::HRESULT(0)
+            //         }
+            //         ::core::result::Result::Err(err) => err.into()
+            //     }
+            // }
         }
         SignatureKind::Query | SignatureKind::QueryOptional | SignatureKind::ResultVoid => {
             let invoke_args = sig.params.iter().map(gen_win32_invoke_arg);
@@ -249,29 +251,31 @@ pub fn gen_winrt_upcall(sig: &Signature, inner: TokenStream) -> TokenStream {
 
     match &sig.return_type {
         Some(return_type) if return_type.is_winrt_array() => {
-            quote! {
-                match #inner(#(#invoke_args,)*) {
-                    ::core::result::Result::Ok(ok__) => {
-                        let (ok_data__, ok_data_len__) = ok__.into_abi();
-                        *result__ = ok_data__;
-                        *result_size__ = ok_data_len__;
-                        ::windows::core::HRESULT(0)
-                    }
-                    ::core::result::Result::Err(err) => err.into()
-                }
-            }
+            unimplemented!()
+            // quote! {
+            //     match #inner(#(#invoke_args,)*) {
+            //         ::core::result::Result::Ok(ok__) => {
+            //             let (ok_data__, ok_data_len__) = ok__.into_abi();
+            //             *result__ = ok_data__;
+            //             *result_size__ = ok_data_len__;
+            //             ::#crate_name::core::HRESULT(0)
+            //         }
+            //         ::core::result::Result::Err(err) => err.into()
+            //     }
+            // }
         }
         Some(_) => {
-            quote! {
-                match #inner(#(#invoke_args,)*) {
-                    ::core::result::Result::Ok(ok__) => {
-                        *result__ = ::core::mem::transmute_copy(&ok__);
-                        ::core::mem::forget(ok__);
-                        ::windows::core::HRESULT(0)
-                    }
-                    ::core::result::Result::Err(err) => err.into()
-                }
-            }
+            todo!()
+            // quote! {
+            //     match #inner(#(#invoke_args,)*) {
+            //         ::core::result::Result::Ok(ok__) => {
+            //             *result__ = ::core::mem::transmute_copy(&ok__);
+            //             ::core::mem::forget(ok__);
+            //             ::#crate_name::core::HRESULT(0)
+            //         }
+            //         ::core::result::Result::Err(err) => err.into()
+            //     }
+            // }
         }
         None => quote! {
             #inner(#(#invoke_args,)*).into()

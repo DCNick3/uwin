@@ -1,7 +1,7 @@
 use super::*;
 
 pub fn gen(_def: &TypeDef, _gen: &Gen) -> TokenStream {
-    todo!()
+    quote! {}
 
     // if gen.sys {
     //     gen_sys_interface(def, gen)

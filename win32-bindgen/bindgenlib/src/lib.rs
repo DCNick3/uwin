@@ -41,19 +41,14 @@ pub fn gen_type(name: &str, gen: &Gen) -> String {
     tokens
 }
 
-pub fn gen_namespace(gen: &Gen) -> String {
+pub fn gen_namespace(gen: &Gen, child_namespaces: &Vec<String>) -> String {
     let tree = TypeReader::get()
         .get_namespace(gen.namespace)
         .expect("Namespace not found");
 
-    let namespaces = tree.namespaces.iter().map(move |(name, tree)| {
-        if tree.namespace == "Windows.Win32.Interop" {
-            return quote! {};
-        }
+    let namespaces = child_namespaces.iter().map(|child| {
+        let name = gen_ident(child);
 
-        let name = gen_ident(name);
-        let _namespace = tree.namespace[tree.namespace.find('.').unwrap() + 1..].replace('.', "_");
-        // TODO: we probably actually want the namespace separation. It just didn't work for some reason
         quote! {
             pub mod #name;
         }
@@ -64,6 +59,8 @@ pub fn gen_namespace(gen: &Gen) -> String {
 
     let tokens = quote! {
         #![allow(non_snake_case, non_camel_case_types, non_upper_case_globals, clashing_extern_declarations, clippy::all)]
+        #[allow(unused)]
+        use ::win32::core::prelude::*;
         #(#namespaces)*
         #functions
         #types

@@ -1,9 +1,9 @@
 use crate::conv::FromIntoMemory;
-use crate::ptr::TargetPtrRepr;
+use crate::ptr::PtrRepr;
 use smallvec::{smallvec, SmallVec};
 use std::marker::PhantomData;
 
-pub trait MemoryCtx<'a>: Copy + 'a {
+pub trait MemoryCtx: Copy {
     // TODO: should those be safe?
     // On one hand, they are unsafe, because they allow non-memory safe stuff to happen,
     //   like segfaulting and writing to random regions of the memory
@@ -13,9 +13,11 @@ pub trait MemoryCtx<'a>: Copy + 'a {
     // otherwise every glue operation with the target address space would have
     // to be unsafe which is noisy
     // TODO: does it make sense to return error sometimes? Maybe straight away panic is better?
-    fn read<N: FromIntoMemory>(&self, ptr: TargetPtrRepr) -> N;
-    fn write<N: FromIntoMemory>(&self, value: N, ptr: TargetPtrRepr);
+    fn read<N: FromIntoMemory>(&self, ptr: PtrRepr) -> N;
+    fn write<N: FromIntoMemory>(&self, value: N, ptr: PtrRepr);
 }
+
+// A future idea: make
 
 /// Memory context represented as one contiguous virtual memory space allocation of 2^32 bytes
 ///
@@ -24,22 +26,20 @@ pub trait MemoryCtx<'a>: Copy + 'a {
 /// The lifetime denotes the period of validity of the allocated virtual space
 #[cfg(target_pointer_width = "64")]
 #[derive(Copy, Clone)]
-pub struct FlatMemoryCtx<'a> {
+pub struct FlatMemoryCtx {
     base: *mut u8,
-    _phantom: PhantomData<&'a ()>,
 }
 
 #[cfg(target_pointer_width = "64")]
-impl<'a> FlatMemoryCtx<'a> {
-    pub fn new(base: *mut u8) -> Self {
-        Self {
-            base,
-            _phantom: Default::default(),
-        }
+impl FlatMemoryCtx {
+    /// # Safety
+    /// You must ensure that lifetime of FlatMemoryCtx will not outlive the memory mapping
+    pub unsafe fn new(base: *mut u8) -> Self {
+        Self { base }
     }
 
     #[inline]
-    pub fn to_native_ptr(&self, ptr: TargetPtrRepr) -> *mut u8 {
+    pub fn to_native_ptr(&self, ptr: PtrRepr) -> *mut u8 {
         // SAFETY: we are on 64-bit platform and allocated base ptr should point to 2 ** 32 bytes of addressable vitual address space
         // thus there would be no overflow and .add should work
         // It is also arguably part of the same "allocated object" but how to defined it is a bit hard to answer
@@ -48,8 +48,8 @@ impl<'a> FlatMemoryCtx<'a> {
 }
 
 #[cfg(target_pointer_width = "64")]
-impl<'a> MemoryCtx<'a> for FlatMemoryCtx<'a> {
-    fn read<N: FromIntoMemory>(&self, ptr: TargetPtrRepr) -> N {
+impl MemoryCtx for FlatMemoryCtx {
+    fn read<N: FromIntoMemory>(&self, ptr: PtrRepr) -> N {
         let size = N::size();
         let unsafe_data = self.to_native_ptr(ptr);
 
@@ -60,7 +60,7 @@ impl<'a> MemoryCtx<'a> for FlatMemoryCtx<'a> {
         N::try_from_bytes(&data)
     }
 
-    fn write<N: FromIntoMemory>(&self, value: N, ptr: TargetPtrRepr) {
+    fn write<N: FromIntoMemory>(&self, value: N, ptr: PtrRepr) {
         let size = N::size();
         let mut data: SmallVec<[_; 0x800]> = smallvec![0u8; size];
         value.try_into_bytes(&mut data);
@@ -69,5 +69,4 @@ impl<'a> MemoryCtx<'a> for FlatMemoryCtx<'a> {
     }
 }
 
-// TODO: lifetimes?
-pub type DefaultMemoryCtx<'a> = FlatMemoryCtx<'a>;
+pub type DefaultMemoryCtx = FlatMemoryCtx;

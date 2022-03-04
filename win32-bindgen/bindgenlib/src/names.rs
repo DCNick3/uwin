@@ -232,11 +232,7 @@ fn gen_abi_element_name_impl(ty: &Type, ptr: bool, gen: &Gen) -> TokenStream {
 }
 
 pub fn gen_crate_name(gen: &Gen) -> TokenStream {
-    if gen.sys {
-        "windows_sys".into()
-    } else {
-        "windows".into()
-    }
+    "win32".into()
 }
 
 pub fn gen_type_name(def: &TypeDef, gen: &Gen) -> TokenStream {

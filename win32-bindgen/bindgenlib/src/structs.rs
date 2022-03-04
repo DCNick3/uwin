@@ -130,24 +130,28 @@ fn gen_windows_traits(def: &TypeDef, name: &TokenStream, cfg: &Cfg, gen: &Gen) -
     }
 }
 
+#[allow(clippy::if_same_then_else)]
 fn gen_compare_traits(def: &TypeDef, name: &TokenStream, cfg: &Cfg, gen: &Gen) -> TokenStream {
     let features = gen.cfg(cfg);
 
     if gen.sys {
         quote! {}
     } else if def.is_blittable() || def.is_union() || def.class_layout().is_some() {
-        quote! {
-            #features
-            impl ::core::cmp::PartialEq for #name {
-                fn eq(&self, other: &Self) -> bool {
-                    unsafe {
-                        ::windows::core::memcmp(self as *const _ as _, other as *const _ as _, core::mem::size_of::<#name>()) == 0
-                    }
-                }
-            }
-            #features
-            impl ::core::cmp::Eq for #name {}
-        }
+        // TODO: do we actually care about comparisons?
+        // doesn't work due to lack of ::windows crate
+        quote! {}
+        // quote! {
+        //     #features
+        //     impl ::core::cmp::PartialEq for #name {
+        //         fn eq(&self, other: &Self) -> bool {
+        //             unsafe {
+        //                 ::windows::core::memcmp(self as *const _ as _, other as *const _ as _, core::mem::size_of::<#name>()) == 0
+        //             }
+        //         }
+        //     }
+        //     #features
+        //     impl ::core::cmp::Eq for #name {}
+        // }
     } else {
         let fields = def.fields().map(|f| {
             let name = gen_ident(f.name());

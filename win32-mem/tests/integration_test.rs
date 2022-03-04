@@ -1,8 +1,8 @@
 use bencher::black_box;
 use region::{Allocation, Protection};
-use uwin_win32_core::conv::FromIntoMemory;
-use uwin_win32_core::ctx::FlatMemoryCtx;
-use uwin_win32_core::ptr::{MutPtr, TargetPtrRepr};
+use win32_mem::conv::FromIntoMemory;
+use win32_mem::ctx::FlatMemoryCtx;
+use win32_mem::ptr::{MutPtr, PtrRepr};
 
 // TODO: most probably the region crate does not provide the level of control required
 // should research if it is so and maybe create smth NIH that fits
@@ -22,11 +22,11 @@ impl DummyFlatMemoryManager {
         }
     }
 
-    fn to_native_ptr(&self, ptr: TargetPtrRepr) -> *mut u8 {
+    fn to_native_ptr(&self, ptr: PtrRepr) -> *mut u8 {
         self.get_ctx().to_native_ptr(ptr)
     }
 
-    fn map_rw(&mut self, ptr: TargetPtrRepr, len: TargetPtrRepr) -> TargetPtrRepr {
+    fn map_rw(&mut self, ptr: PtrRepr, len: PtrRepr) -> PtrRepr {
         let addr = self.to_native_ptr(ptr);
         let alloc = region::alloc_at(addr, len as usize, Protection::READ_WRITE).unwrap();
         self.child_allocations.push(alloc);

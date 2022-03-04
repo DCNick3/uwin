@@ -43,18 +43,9 @@ impl Gen<'_> {
         }
     }
 
-    pub(crate) fn doc(&self, cfg: &Cfg) -> TokenStream {
-        if !self.doc {
-            quote! {}
-        } else {
-            let mut tokens = format!("'{}'", to_feature(self.namespace));
-
-            for features in &cfg.features(self.namespace) {
-                tokens.push_str(&format!(", '{}'", to_feature(features)));
-            }
-
-            format!(r#"#[doc = "*Required features: {}*"]"#, tokens).into()
-        }
+    pub(crate) fn doc(&self, _cfg: &Cfg) -> TokenStream {
+        // Required Features was generated here. In uwin we don't care
+        quote! {}
     }
 
     pub(crate) fn cfg(&self, _cfg: &Cfg) -> TokenStream {

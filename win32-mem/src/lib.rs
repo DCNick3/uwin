@@ -6,20 +6,20 @@ pub mod ptr;
 mod tests {
     use crate::conv::FromIntoMemory;
     use crate::ctx::MemoryCtx;
-    use crate::ptr::{RawPtr, TargetPtrRepr};
+    use crate::ptr::{PtrRepr, RawPtr};
 
     #[derive(Clone, Copy)]
     struct DummyCtx();
 
-    impl MemoryCtx<'_> for DummyCtx {
-        fn read<N: FromIntoMemory>(&self, _ptr: TargetPtrRepr) -> N {
+    impl MemoryCtx for DummyCtx {
+        fn read<N: FromIntoMemory>(&self, _ptr: PtrRepr) -> N {
             let size = N::size();
             let data = vec![0u8; size];
             let data = data.leak(); // really dummy impl...
             N::try_from_bytes(data)
         }
 
-        fn write<N: FromIntoMemory>(&self, value: N, _ptr: TargetPtrRepr) {
+        fn write<N: FromIntoMemory>(&self, value: N, _ptr: PtrRepr) {
             let size = N::size();
             let mut data = vec![0u8; size];
 
@@ -33,7 +33,6 @@ mod tests {
         let ptr = RawPtr {
             value: 0,
             context: ctx,
-            _phantom: Default::default(),
         };
 
         assert_eq!(ptr.read::<u32>(), 0);

@@ -1,0 +1,9 @@
+[package]
+name = "win32-bindgenlib"
+version = "0.0.1"
+edition = "2021"
+
+
+[dependencies]
+tokens = { package = "windows-tokens", path = "../tokens", version = "0.32.0" }
+metadata = { package = "windows-metadata", path = "../metadata", version = "0.32.0" }
