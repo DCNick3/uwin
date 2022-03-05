@@ -3,10 +3,9 @@ use std::io::Write;
 use win32_bindgenlib as bindgen;
 
 const EXCLUDE_NAMESPACES: [&str; 1] = ["Windows.Win32.Interop"];
-const INCLUDE_NAMESPACES: [&str; 3] = [
+const INCLUDE_NAMESPACES: [&str; 2] = [
     "Windows.Win32.Foundation",
     "Windows.Win32.System.SystemInformation",
-    "Windows.Win32.System.Diagnostics.Debug",
 ];
 
 fn main() {
@@ -92,6 +91,7 @@ fn gen_tree(output: &std::path::Path, _root: &'static str, tree: &TypeTreeGen) {
 
     let path = std::path::PathBuf::from(output).join(tree.namespace.replace('.', "/"));
     let gen = bindgen::Gen {
+        enabled_namespaces: &INCLUDE_NAMESPACES,
         namespace: tree.namespace,
         min_xaml: true,
         cfg: true,

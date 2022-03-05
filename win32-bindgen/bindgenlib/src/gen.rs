@@ -2,6 +2,7 @@ use super::*;
 
 #[derive(Default)]
 pub struct Gen<'a> {
+    pub enabled_namespaces: &'a [&'a str],
     pub namespace: &'a str,
     pub sys: bool,
     pub flatten: bool,
@@ -48,24 +49,27 @@ impl Gen<'_> {
         quote! {}
     }
 
-    pub(crate) fn cfg(&self, _cfg: &Cfg) -> TokenStream {
-        quote! {}
+    pub(crate) fn cfg(&self, cfg: &Cfg) -> TokenStream {
+        if !self.cfg {
+            quote! {}
+        } else {
+            let arches = cfg.arches();
+            let features = cfg.features(self.namespace);
+
+            let arch_enabled = arches.is_empty() || arches.contains("x86");
+            let features_enabled =
+                features.is_empty() || features.iter().all(|f| self.enabled_namespaces.contains(f));
+
+            let enabled = if arch_enabled && features_enabled {
+                quote! {}
+            } else {
+                quote! {
+                    // not for x86
+                    #[cfg(dummy_option_that_does_not_exist)]
+                }
+            };
+
+            quote! { #enabled }
+        }
     }
-}
-
-fn to_feature(name: &str) -> String {
-    let mut feature = String::new();
-
-    for name in name.split('.').skip(1) {
-        feature.push_str(name);
-        feature.push('_');
-    }
-
-    if feature.is_empty() {
-        feature = name.to_string();
-    } else {
-        feature.truncate(feature.len() - 1);
-    }
-
-    feature
 }

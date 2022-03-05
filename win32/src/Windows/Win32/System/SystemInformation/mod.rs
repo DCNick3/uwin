@@ -1098,6 +1098,7 @@ pub const SYSTEM_CPU_SET_INFORMATION_ALLOCATED: u32 = 2u32;
 pub const SYSTEM_CPU_SET_INFORMATION_ALLOCATED_TO_TARGET_PROCESS: u32 = 4u32;
 pub const SYSTEM_CPU_SET_INFORMATION_PARKED: u32 = 1u32;
 pub const SYSTEM_CPU_SET_INFORMATION_REALTIME: u32 = 8u32;
+#[cfg(dummy_option_that_does_not_exist)]
 pub struct SYSTEM_INFO {
     pub Anonymous: SYSTEM_INFO_0,
     pub dwPageSize: u32,
@@ -1110,42 +1111,53 @@ pub struct SYSTEM_INFO {
     pub wProcessorLevel: u16,
     pub wProcessorRevision: u16,
 }
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for SYSTEM_INFO {}
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for SYSTEM_INFO {
     fn clone(&self) -> Self {
         *self
     }
 }
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::default::Default for SYSTEM_INFO {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }
     }
 }
+#[cfg(dummy_option_that_does_not_exist)]
 pub union SYSTEM_INFO_0 {
     pub dwOemId: u32,
     pub Anonymous: SYSTEM_INFO_0_0,
 }
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for SYSTEM_INFO_0 {}
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for SYSTEM_INFO_0 {
     fn clone(&self) -> Self {
         *self
     }
 }
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::default::Default for SYSTEM_INFO_0 {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }
     }
 }
+#[cfg(dummy_option_that_does_not_exist)]
 pub struct SYSTEM_INFO_0_0 {
     pub wProcessorArchitecture: super::Diagnostics::Debug::PROCESSOR_ARCHITECTURE,
     pub wReserved: u16,
 }
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for SYSTEM_INFO_0_0 {}
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for SYSTEM_INFO_0_0 {
     fn clone(&self) -> Self {
         *self
     }
 }
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for SYSTEM_INFO_0_0 {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_struct("SYSTEM_INFO_0_0")
@@ -1154,6 +1166,7 @@ impl ::core::fmt::Debug for SYSTEM_INFO_0_0 {
             .finish()
     }
 }
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::default::Default for SYSTEM_INFO_0_0 {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }

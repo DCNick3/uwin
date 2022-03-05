@@ -1,7 +1,6 @@
 use crate::conv::FromIntoMemory;
 use crate::ptr::PtrRepr;
 use smallvec::{smallvec, SmallVec};
-use std::marker::PhantomData;
 
 pub trait MemoryCtx: Copy {
     // TODO: should those be safe?

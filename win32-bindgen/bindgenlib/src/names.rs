@@ -231,7 +231,7 @@ fn gen_abi_element_name_impl(ty: &Type, ptr: bool, gen: &Gen) -> TokenStream {
     }
 }
 
-pub fn gen_crate_name(gen: &Gen) -> TokenStream {
+pub fn gen_crate_name(_gen: &Gen) -> TokenStream {
     "win32".into()
 }
 
