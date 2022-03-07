@@ -60,11 +60,17 @@ impl Gen<'_> {
             let features_enabled =
                 features.is_empty() || features.iter().all(|f| self.enabled_namespaces.contains(f));
 
+            let features: Vec<String> = features.into_iter().map(|f| format!("'{}'", f)).collect();
+            let tokens = features.join(", ");
+
+            let required_namespaces: TokenStream =
+                format!(r#"#[doc = "*Required namespaces: {}*"]"#, tokens).into();
+
             let enabled = if arch_enabled && features_enabled {
                 quote! {}
             } else {
                 quote! {
-                    // not for x86
+                    #required_namespaces
                     #[cfg(dummy_option_that_does_not_exist)]
                 }
             };

@@ -7,4 +7,5 @@
 )]
 #[allow(unused)]
 use win32::core::prelude::*;
+pub mod Diagnostics;
 pub mod SystemInformation;

@@ -77,6 +77,12 @@ impl ::core::fmt::Debug for APP_LOCAL_DEVICE_ID {
             .finish()
     }
 }
+impl ::core::cmp::PartialEq for APP_LOCAL_DEVICE_ID {
+    fn eq(&self, other: &Self) -> bool {
+        self.value == other.value
+    }
+}
+impl ::core::cmp::Eq for APP_LOCAL_DEVICE_ID {}
 impl ::core::default::Default for APP_LOCAL_DEVICE_ID {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }
@@ -1071,6 +1077,15 @@ impl ::core::clone::Clone for DECIMAL {
         *self
     }
 }
+impl ::core::cmp::PartialEq for DECIMAL {
+    fn eq(&self, other: &Self) -> bool {
+        self.wReserved == other.wReserved
+            && self.Anonymous1 == other.Anonymous1
+            && self.Hi32 == other.Hi32
+            && self.Anonymous2 == other.Anonymous2
+    }
+}
+impl ::core::cmp::Eq for DECIMAL {}
 impl ::core::default::Default for DECIMAL {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }
@@ -1086,6 +1101,12 @@ impl ::core::clone::Clone for DECIMAL_0 {
         *self
     }
 }
+impl ::core::cmp::PartialEq for DECIMAL_0 {
+    fn eq(&self, other: &Self) -> bool {
+        self.Anonymous == other.Anonymous && self.signscale == other.signscale
+    }
+}
+impl ::core::cmp::Eq for DECIMAL_0 {}
 impl ::core::default::Default for DECIMAL_0 {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }
@@ -1109,6 +1130,12 @@ impl ::core::fmt::Debug for DECIMAL_0_0 {
             .finish()
     }
 }
+impl ::core::cmp::PartialEq for DECIMAL_0_0 {
+    fn eq(&self, other: &Self) -> bool {
+        self.scale == other.scale && self.sign == other.sign
+    }
+}
+impl ::core::cmp::Eq for DECIMAL_0_0 {}
 impl ::core::default::Default for DECIMAL_0_0 {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }
@@ -1124,6 +1151,12 @@ impl ::core::clone::Clone for DECIMAL_1 {
         *self
     }
 }
+impl ::core::cmp::PartialEq for DECIMAL_1 {
+    fn eq(&self, other: &Self) -> bool {
+        self.Anonymous == other.Anonymous && self.Lo64 == other.Lo64
+    }
+}
+impl ::core::cmp::Eq for DECIMAL_1 {}
 impl ::core::default::Default for DECIMAL_1 {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }
@@ -1147,6 +1180,12 @@ impl ::core::fmt::Debug for DECIMAL_1_0 {
             .finish()
     }
 }
+impl ::core::cmp::PartialEq for DECIMAL_1_0 {
+    fn eq(&self, other: &Self) -> bool {
+        self.Lo32 == other.Lo32 && self.Mid32 == other.Mid32
+    }
+}
+impl ::core::cmp::Eq for DECIMAL_1_0 {}
 impl ::core::default::Default for DECIMAL_1_0 {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }
@@ -2372,6 +2411,12 @@ impl ::core::fmt::Debug for FILETIME {
             .finish()
     }
 }
+impl ::core::cmp::PartialEq for FILETIME {
+    fn eq(&self, other: &Self) -> bool {
+        self.dwLowDateTime == other.dwLowDateTime && self.dwHighDateTime == other.dwHighDateTime
+    }
+}
+impl ::core::cmp::Eq for FILETIME {}
 impl ::core::default::Default for FILETIME {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }
@@ -2416,6 +2461,12 @@ impl ::core::fmt::Debug for FLOAT128 {
             .finish()
     }
 }
+impl ::core::cmp::PartialEq for FLOAT128 {
+    fn eq(&self, other: &Self) -> bool {
+        self.LowPart == other.LowPart && self.HighPart == other.HighPart
+    }
+}
+impl ::core::cmp::Eq for FLOAT128 {}
 impl ::core::default::Default for FLOAT128 {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }
@@ -3160,6 +3211,12 @@ impl ::core::fmt::Debug for HLSURF__ {
             .finish()
     }
 }
+impl ::core::cmp::PartialEq for HLSURF__ {
+    fn eq(&self, other: &Self) -> bool {
+        self.unused == other.unused
+    }
+}
+impl ::core::cmp::Eq for HLSURF__ {}
 impl ::core::default::Default for HLSURF__ {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }
@@ -3204,6 +3261,12 @@ impl ::core::fmt::Debug for HSPRITE__ {
             .finish()
     }
 }
+impl ::core::cmp::PartialEq for HSPRITE__ {
+    fn eq(&self, other: &Self) -> bool {
+        self.unused == other.unused
+    }
+}
+impl ::core::cmp::Eq for HSPRITE__ {}
 impl ::core::default::Default for HSPRITE__ {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }
@@ -3260,6 +3323,12 @@ impl ::core::fmt::Debug for HSTR__ {
             .finish()
     }
 }
+impl ::core::cmp::PartialEq for HSTR__ {
+    fn eq(&self, other: &Self) -> bool {
+        self.unused == other.unused
+    }
+}
+impl ::core::cmp::Eq for HSTR__ {}
 impl ::core::default::Default for HSTR__ {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }
@@ -3340,6 +3409,12 @@ impl ::core::fmt::Debug for HUMPD__ {
             .finish()
     }
 }
+impl ::core::cmp::PartialEq for HUMPD__ {
+    fn eq(&self, other: &Self) -> bool {
+        self.unused == other.unused
+    }
+}
+impl ::core::cmp::Eq for HUMPD__ {}
 impl ::core::default::Default for HUMPD__ {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }
@@ -3466,6 +3541,12 @@ impl ::core::fmt::Debug for LUID {
             .finish()
     }
 }
+impl ::core::cmp::PartialEq for LUID {
+    fn eq(&self, other: &Self) -> bool {
+        self.LowPart == other.LowPart && self.HighPart == other.HighPart
+    }
+}
+impl ::core::cmp::Eq for LUID {}
 impl ::core::default::Default for LUID {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }
@@ -4171,6 +4252,12 @@ impl ::core::fmt::Debug for POINT {
             .finish()
     }
 }
+impl ::core::cmp::PartialEq for POINT {
+    fn eq(&self, other: &Self) -> bool {
+        self.x == other.x && self.y == other.y
+    }
+}
+impl ::core::cmp::Eq for POINT {}
 impl ::core::default::Default for POINT {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }
@@ -4194,6 +4281,12 @@ impl ::core::fmt::Debug for POINTL {
             .finish()
     }
 }
+impl ::core::cmp::PartialEq for POINTL {
+    fn eq(&self, other: &Self) -> bool {
+        self.x == other.x && self.y == other.y
+    }
+}
+impl ::core::cmp::Eq for POINTL {}
 impl ::core::default::Default for POINTL {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }
@@ -4217,6 +4310,12 @@ impl ::core::fmt::Debug for POINTS {
             .finish()
     }
 }
+impl ::core::cmp::PartialEq for POINTS {
+    fn eq(&self, other: &Self) -> bool {
+        self.x == other.x && self.y == other.y
+    }
+}
+impl ::core::cmp::Eq for POINTS {}
 impl ::core::default::Default for POINTS {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }
@@ -4355,6 +4454,15 @@ impl ::core::fmt::Debug for RECT {
             .finish()
     }
 }
+impl ::core::cmp::PartialEq for RECT {
+    fn eq(&self, other: &Self) -> bool {
+        self.left == other.left
+            && self.top == other.top
+            && self.right == other.right
+            && self.bottom == other.bottom
+    }
+}
+impl ::core::cmp::Eq for RECT {}
 impl ::core::default::Default for RECT {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }
@@ -4382,6 +4490,15 @@ impl ::core::fmt::Debug for RECTL {
             .finish()
     }
 }
+impl ::core::cmp::PartialEq for RECTL {
+    fn eq(&self, other: &Self) -> bool {
+        self.left == other.left
+            && self.top == other.top
+            && self.right == other.right
+            && self.bottom == other.bottom
+    }
+}
+impl ::core::cmp::Eq for RECTL {}
 impl ::core::default::Default for RECTL {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }
@@ -4949,6 +5066,12 @@ impl ::core::fmt::Debug for SIZE {
             .finish()
     }
 }
+impl ::core::cmp::PartialEq for SIZE {
+    fn eq(&self, other: &Self) -> bool {
+        self.cx == other.cx && self.cy == other.cy
+    }
+}
+impl ::core::cmp::Eq for SIZE {}
 impl ::core::default::Default for SIZE {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }
@@ -8058,6 +8181,19 @@ impl ::core::fmt::Debug for SYSTEMTIME {
             .finish()
     }
 }
+impl ::core::cmp::PartialEq for SYSTEMTIME {
+    fn eq(&self, other: &Self) -> bool {
+        self.wYear == other.wYear
+            && self.wMonth == other.wMonth
+            && self.wDayOfWeek == other.wDayOfWeek
+            && self.wDay == other.wDay
+            && self.wHour == other.wHour
+            && self.wMinute == other.wMinute
+            && self.wSecond == other.wSecond
+            && self.wMilliseconds == other.wMilliseconds
+    }
+}
+impl ::core::cmp::Eq for SYSTEMTIME {}
 impl ::core::default::Default for SYSTEMTIME {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }
@@ -8689,6 +8825,14 @@ impl ::core::fmt::Debug for UNICODE_STRING {
             .finish()
     }
 }
+impl ::core::cmp::PartialEq for UNICODE_STRING {
+    fn eq(&self, other: &Self) -> bool {
+        self.Length == other.Length
+            && self.MaximumLength == other.MaximumLength
+            && self.Buffer == other.Buffer
+    }
+}
+impl ::core::cmp::Eq for UNICODE_STRING {}
 impl ::core::default::Default for UNICODE_STRING {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }

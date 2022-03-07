@@ -31,6 +31,16 @@ impl ::core::fmt::Debug for CACHE_DESCRIPTOR {
             .finish()
     }
 }
+impl ::core::cmp::PartialEq for CACHE_DESCRIPTOR {
+    fn eq(&self, other: &Self) -> bool {
+        self.Level == other.Level
+            && self.Associativity == other.Associativity
+            && self.LineSize == other.LineSize
+            && self.Size == other.Size
+            && self.Type == other.Type
+    }
+}
+impl ::core::cmp::Eq for CACHE_DESCRIPTOR {}
 impl ::core::default::Default for CACHE_DESCRIPTOR {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }
@@ -52,6 +62,19 @@ impl ::core::clone::Clone for CACHE_RELATIONSHIP {
         *self
     }
 }
+impl ::core::cmp::PartialEq for CACHE_RELATIONSHIP {
+    fn eq(&self, other: &Self) -> bool {
+        self.Level == other.Level
+            && self.Associativity == other.Associativity
+            && self.LineSize == other.LineSize
+            && self.CacheSize == other.CacheSize
+            && self.Type == other.Type
+            && self.Reserved == other.Reserved
+            && self.GroupCount == other.GroupCount
+            && self.Anonymous == other.Anonymous
+    }
+}
+impl ::core::cmp::Eq for CACHE_RELATIONSHIP {}
 impl ::core::default::Default for CACHE_RELATIONSHIP {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }
@@ -67,6 +90,12 @@ impl ::core::clone::Clone for CACHE_RELATIONSHIP_0 {
         *self
     }
 }
+impl ::core::cmp::PartialEq for CACHE_RELATIONSHIP_0 {
+    fn eq(&self, other: &Self) -> bool {
+        self.GroupMask == other.GroupMask && self.GroupMasks == other.GroupMasks
+    }
+}
+impl ::core::cmp::Eq for CACHE_RELATIONSHIP_0 {}
 impl ::core::default::Default for CACHE_RELATIONSHIP_0 {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }
@@ -366,6 +395,12 @@ impl ::core::fmt::Debug for GROUP_AFFINITY {
             .finish()
     }
 }
+impl ::core::cmp::PartialEq for GROUP_AFFINITY {
+    fn eq(&self, other: &Self) -> bool {
+        self.Mask == other.Mask && self.Group == other.Group && self.Reserved == other.Reserved
+    }
+}
+impl ::core::cmp::Eq for GROUP_AFFINITY {}
 impl ::core::default::Default for GROUP_AFFINITY {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }
@@ -393,6 +428,15 @@ impl ::core::fmt::Debug for GROUP_RELATIONSHIP {
             .finish()
     }
 }
+impl ::core::cmp::PartialEq for GROUP_RELATIONSHIP {
+    fn eq(&self, other: &Self) -> bool {
+        self.MaximumGroupCount == other.MaximumGroupCount
+            && self.ActiveGroupCount == other.ActiveGroupCount
+            && self.Reserved == other.Reserved
+            && self.GroupInfo == other.GroupInfo
+    }
+}
+impl ::core::cmp::Eq for GROUP_RELATIONSHIP {}
 impl ::core::default::Default for GROUP_RELATIONSHIP {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }
@@ -461,6 +505,19 @@ impl ::core::fmt::Debug for MEMORYSTATUS {
             .finish()
     }
 }
+impl ::core::cmp::PartialEq for MEMORYSTATUS {
+    fn eq(&self, other: &Self) -> bool {
+        self.dwLength == other.dwLength
+            && self.dwMemoryLoad == other.dwMemoryLoad
+            && self.dwTotalPhys == other.dwTotalPhys
+            && self.dwAvailPhys == other.dwAvailPhys
+            && self.dwTotalPageFile == other.dwTotalPageFile
+            && self.dwAvailPageFile == other.dwAvailPageFile
+            && self.dwTotalVirtual == other.dwTotalVirtual
+            && self.dwAvailVirtual == other.dwAvailVirtual
+    }
+}
+impl ::core::cmp::Eq for MEMORYSTATUS {}
 impl ::core::default::Default for MEMORYSTATUS {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }
@@ -498,6 +555,20 @@ impl ::core::fmt::Debug for MEMORYSTATUSEX {
             .finish()
     }
 }
+impl ::core::cmp::PartialEq for MEMORYSTATUSEX {
+    fn eq(&self, other: &Self) -> bool {
+        self.dwLength == other.dwLength
+            && self.dwMemoryLoad == other.dwMemoryLoad
+            && self.ullTotalPhys == other.ullTotalPhys
+            && self.ullAvailPhys == other.ullAvailPhys
+            && self.ullTotalPageFile == other.ullTotalPageFile
+            && self.ullAvailPageFile == other.ullAvailPageFile
+            && self.ullTotalVirtual == other.ullTotalVirtual
+            && self.ullAvailVirtual == other.ullAvailVirtual
+            && self.ullAvailExtendedVirtual == other.ullAvailExtendedVirtual
+    }
+}
+impl ::core::cmp::Eq for MEMORYSTATUSEX {}
 impl ::core::default::Default for MEMORYSTATUSEX {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }
@@ -563,6 +634,15 @@ impl ::core::clone::Clone for NUMA_NODE_RELATIONSHIP {
         *self
     }
 }
+impl ::core::cmp::PartialEq for NUMA_NODE_RELATIONSHIP {
+    fn eq(&self, other: &Self) -> bool {
+        self.NodeNumber == other.NodeNumber
+            && self.Reserved == other.Reserved
+            && self.GroupCount == other.GroupCount
+            && self.Anonymous == other.Anonymous
+    }
+}
+impl ::core::cmp::Eq for NUMA_NODE_RELATIONSHIP {}
 impl ::core::default::Default for NUMA_NODE_RELATIONSHIP {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }
@@ -578,6 +658,12 @@ impl ::core::clone::Clone for NUMA_NODE_RELATIONSHIP_0 {
         *self
     }
 }
+impl ::core::cmp::PartialEq for NUMA_NODE_RELATIONSHIP_0 {
+    fn eq(&self, other: &Self) -> bool {
+        self.GroupMask == other.GroupMask && self.GroupMasks == other.GroupMasks
+    }
+}
+impl ::core::cmp::Eq for NUMA_NODE_RELATIONSHIP_0 {}
 impl ::core::default::Default for NUMA_NODE_RELATIONSHIP_0 {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }
@@ -609,6 +695,17 @@ impl ::core::fmt::Debug for OSVERSIONINFOA {
             .finish()
     }
 }
+impl ::core::cmp::PartialEq for OSVERSIONINFOA {
+    fn eq(&self, other: &Self) -> bool {
+        self.dwOSVersionInfoSize == other.dwOSVersionInfoSize
+            && self.dwMajorVersion == other.dwMajorVersion
+            && self.dwMinorVersion == other.dwMinorVersion
+            && self.dwBuildNumber == other.dwBuildNumber
+            && self.dwPlatformId == other.dwPlatformId
+            && self.szCSDVersion == other.szCSDVersion
+    }
+}
+impl ::core::cmp::Eq for OSVERSIONINFOA {}
 impl ::core::default::Default for OSVERSIONINFOA {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }
@@ -650,6 +747,22 @@ impl ::core::fmt::Debug for OSVERSIONINFOEXA {
             .finish()
     }
 }
+impl ::core::cmp::PartialEq for OSVERSIONINFOEXA {
+    fn eq(&self, other: &Self) -> bool {
+        self.dwOSVersionInfoSize == other.dwOSVersionInfoSize
+            && self.dwMajorVersion == other.dwMajorVersion
+            && self.dwMinorVersion == other.dwMinorVersion
+            && self.dwBuildNumber == other.dwBuildNumber
+            && self.dwPlatformId == other.dwPlatformId
+            && self.szCSDVersion == other.szCSDVersion
+            && self.wServicePackMajor == other.wServicePackMajor
+            && self.wServicePackMinor == other.wServicePackMinor
+            && self.wSuiteMask == other.wSuiteMask
+            && self.wProductType == other.wProductType
+            && self.wReserved == other.wReserved
+    }
+}
+impl ::core::cmp::Eq for OSVERSIONINFOEXA {}
 impl ::core::default::Default for OSVERSIONINFOEXA {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }
@@ -691,6 +804,22 @@ impl ::core::fmt::Debug for OSVERSIONINFOEXW {
             .finish()
     }
 }
+impl ::core::cmp::PartialEq for OSVERSIONINFOEXW {
+    fn eq(&self, other: &Self) -> bool {
+        self.dwOSVersionInfoSize == other.dwOSVersionInfoSize
+            && self.dwMajorVersion == other.dwMajorVersion
+            && self.dwMinorVersion == other.dwMinorVersion
+            && self.dwBuildNumber == other.dwBuildNumber
+            && self.dwPlatformId == other.dwPlatformId
+            && self.szCSDVersion == other.szCSDVersion
+            && self.wServicePackMajor == other.wServicePackMajor
+            && self.wServicePackMinor == other.wServicePackMinor
+            && self.wSuiteMask == other.wSuiteMask
+            && self.wProductType == other.wProductType
+            && self.wReserved == other.wReserved
+    }
+}
+impl ::core::cmp::Eq for OSVERSIONINFOEXW {}
 impl ::core::default::Default for OSVERSIONINFOEXW {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }
@@ -722,6 +851,17 @@ impl ::core::fmt::Debug for OSVERSIONINFOW {
             .finish()
     }
 }
+impl ::core::cmp::PartialEq for OSVERSIONINFOW {
+    fn eq(&self, other: &Self) -> bool {
+        self.dwOSVersionInfoSize == other.dwOSVersionInfoSize
+            && self.dwMajorVersion == other.dwMajorVersion
+            && self.dwMinorVersion == other.dwMinorVersion
+            && self.dwBuildNumber == other.dwBuildNumber
+            && self.dwPlatformId == other.dwPlatformId
+            && self.szCSDVersion == other.szCSDVersion
+    }
+}
+impl ::core::cmp::Eq for OSVERSIONINFOW {}
 impl ::core::default::Default for OSVERSIONINFOW {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }
@@ -916,6 +1056,15 @@ impl ::core::fmt::Debug for PROCESSOR_GROUP_INFO {
             .finish()
     }
 }
+impl ::core::cmp::PartialEq for PROCESSOR_GROUP_INFO {
+    fn eq(&self, other: &Self) -> bool {
+        self.MaximumProcessorCount == other.MaximumProcessorCount
+            && self.ActiveProcessorCount == other.ActiveProcessorCount
+            && self.Reserved == other.Reserved
+            && self.ActiveProcessorMask == other.ActiveProcessorMask
+    }
+}
+impl ::core::cmp::Eq for PROCESSOR_GROUP_INFO {}
 impl ::core::default::Default for PROCESSOR_GROUP_INFO {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }
@@ -945,6 +1094,16 @@ impl ::core::fmt::Debug for PROCESSOR_RELATIONSHIP {
             .finish()
     }
 }
+impl ::core::cmp::PartialEq for PROCESSOR_RELATIONSHIP {
+    fn eq(&self, other: &Self) -> bool {
+        self.Flags == other.Flags
+            && self.EfficiencyClass == other.EfficiencyClass
+            && self.Reserved == other.Reserved
+            && self.GroupCount == other.GroupCount
+            && self.GroupMask == other.GroupMask
+    }
+}
+impl ::core::cmp::Eq for PROCESSOR_RELATIONSHIP {}
 impl ::core::default::Default for PROCESSOR_RELATIONSHIP {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }
@@ -1001,6 +1160,12 @@ impl ::core::clone::Clone for SYSTEM_CPU_SET_INFORMATION {
         *self
     }
 }
+impl ::core::cmp::PartialEq for SYSTEM_CPU_SET_INFORMATION {
+    fn eq(&self, other: &Self) -> bool {
+        self.Size == other.Size && self.Type == other.Type && self.Anonymous == other.Anonymous
+    }
+}
+impl ::core::cmp::Eq for SYSTEM_CPU_SET_INFORMATION {}
 impl ::core::default::Default for SYSTEM_CPU_SET_INFORMATION {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }
@@ -1015,6 +1180,12 @@ impl ::core::clone::Clone for SYSTEM_CPU_SET_INFORMATION_0 {
         *self
     }
 }
+impl ::core::cmp::PartialEq for SYSTEM_CPU_SET_INFORMATION_0 {
+    fn eq(&self, other: &Self) -> bool {
+        self.CpuSet == other.CpuSet
+    }
+}
+impl ::core::cmp::Eq for SYSTEM_CPU_SET_INFORMATION_0 {}
 impl ::core::default::Default for SYSTEM_CPU_SET_INFORMATION_0 {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }
@@ -1038,6 +1209,21 @@ impl ::core::clone::Clone for SYSTEM_CPU_SET_INFORMATION_0_0 {
         *self
     }
 }
+impl ::core::cmp::PartialEq for SYSTEM_CPU_SET_INFORMATION_0_0 {
+    fn eq(&self, other: &Self) -> bool {
+        self.Id == other.Id
+            && self.Group == other.Group
+            && self.LogicalProcessorIndex == other.LogicalProcessorIndex
+            && self.CoreIndex == other.CoreIndex
+            && self.LastLevelCacheIndex == other.LastLevelCacheIndex
+            && self.NumaNodeIndex == other.NumaNodeIndex
+            && self.EfficiencyClass == other.EfficiencyClass
+            && self.Anonymous1 == other.Anonymous1
+            && self.Anonymous2 == other.Anonymous2
+            && self.AllocationTag == other.AllocationTag
+    }
+}
+impl ::core::cmp::Eq for SYSTEM_CPU_SET_INFORMATION_0_0 {}
 impl ::core::default::Default for SYSTEM_CPU_SET_INFORMATION_0_0 {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }
@@ -1053,6 +1239,12 @@ impl ::core::clone::Clone for SYSTEM_CPU_SET_INFORMATION_0_0_0 {
         *self
     }
 }
+impl ::core::cmp::PartialEq for SYSTEM_CPU_SET_INFORMATION_0_0_0 {
+    fn eq(&self, other: &Self) -> bool {
+        self.AllFlags == other.AllFlags && self.Anonymous == other.Anonymous
+    }
+}
+impl ::core::cmp::Eq for SYSTEM_CPU_SET_INFORMATION_0_0_0 {}
 impl ::core::default::Default for SYSTEM_CPU_SET_INFORMATION_0_0_0 {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }
@@ -1074,6 +1266,12 @@ impl ::core::fmt::Debug for SYSTEM_CPU_SET_INFORMATION_0_0_0_0 {
             .finish()
     }
 }
+impl ::core::cmp::PartialEq for SYSTEM_CPU_SET_INFORMATION_0_0_0_0 {
+    fn eq(&self, other: &Self) -> bool {
+        self._bitfield == other._bitfield
+    }
+}
+impl ::core::cmp::Eq for SYSTEM_CPU_SET_INFORMATION_0_0_0_0 {}
 impl ::core::default::Default for SYSTEM_CPU_SET_INFORMATION_0_0_0_0 {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }
@@ -1089,6 +1287,12 @@ impl ::core::clone::Clone for SYSTEM_CPU_SET_INFORMATION_0_0_1 {
         *self
     }
 }
+impl ::core::cmp::PartialEq for SYSTEM_CPU_SET_INFORMATION_0_0_1 {
+    fn eq(&self, other: &Self) -> bool {
+        self.Reserved == other.Reserved && self.SchedulingClass == other.SchedulingClass
+    }
+}
+impl ::core::cmp::Eq for SYSTEM_CPU_SET_INFORMATION_0_0_1 {}
 impl ::core::default::Default for SYSTEM_CPU_SET_INFORMATION_0_0_1 {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }
@@ -1098,7 +1302,6 @@ pub const SYSTEM_CPU_SET_INFORMATION_ALLOCATED: u32 = 2u32;
 pub const SYSTEM_CPU_SET_INFORMATION_ALLOCATED_TO_TARGET_PROCESS: u32 = 4u32;
 pub const SYSTEM_CPU_SET_INFORMATION_PARKED: u32 = 1u32;
 pub const SYSTEM_CPU_SET_INFORMATION_REALTIME: u32 = 8u32;
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct SYSTEM_INFO {
     pub Anonymous: SYSTEM_INFO_0,
     pub dwPageSize: u32,
@@ -1111,53 +1314,63 @@ pub struct SYSTEM_INFO {
     pub wProcessorLevel: u16,
     pub wProcessorRevision: u16,
 }
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for SYSTEM_INFO {}
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for SYSTEM_INFO {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[cfg(dummy_option_that_does_not_exist)]
+impl ::core::cmp::PartialEq for SYSTEM_INFO {
+    fn eq(&self, other: &Self) -> bool {
+        self.Anonymous == other.Anonymous
+            && self.dwPageSize == other.dwPageSize
+            && self.lpMinimumApplicationAddress == other.lpMinimumApplicationAddress
+            && self.lpMaximumApplicationAddress == other.lpMaximumApplicationAddress
+            && self.dwActiveProcessorMask == other.dwActiveProcessorMask
+            && self.dwNumberOfProcessors == other.dwNumberOfProcessors
+            && self.dwProcessorType == other.dwProcessorType
+            && self.dwAllocationGranularity == other.dwAllocationGranularity
+            && self.wProcessorLevel == other.wProcessorLevel
+            && self.wProcessorRevision == other.wProcessorRevision
+    }
+}
+impl ::core::cmp::Eq for SYSTEM_INFO {}
 impl ::core::default::Default for SYSTEM_INFO {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }
     }
 }
-#[cfg(dummy_option_that_does_not_exist)]
 pub union SYSTEM_INFO_0 {
     pub dwOemId: u32,
     pub Anonymous: SYSTEM_INFO_0_0,
 }
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for SYSTEM_INFO_0 {}
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for SYSTEM_INFO_0 {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[cfg(dummy_option_that_does_not_exist)]
+impl ::core::cmp::PartialEq for SYSTEM_INFO_0 {
+    fn eq(&self, other: &Self) -> bool {
+        self.dwOemId == other.dwOemId && self.Anonymous == other.Anonymous
+    }
+}
+impl ::core::cmp::Eq for SYSTEM_INFO_0 {}
 impl ::core::default::Default for SYSTEM_INFO_0 {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }
     }
 }
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct SYSTEM_INFO_0_0 {
     pub wProcessorArchitecture: super::Diagnostics::Debug::PROCESSOR_ARCHITECTURE,
     pub wReserved: u16,
 }
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for SYSTEM_INFO_0_0 {}
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for SYSTEM_INFO_0_0 {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for SYSTEM_INFO_0_0 {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_struct("SYSTEM_INFO_0_0")
@@ -1166,7 +1379,13 @@ impl ::core::fmt::Debug for SYSTEM_INFO_0_0 {
             .finish()
     }
 }
-#[cfg(dummy_option_that_does_not_exist)]
+impl ::core::cmp::PartialEq for SYSTEM_INFO_0_0 {
+    fn eq(&self, other: &Self) -> bool {
+        self.wProcessorArchitecture == other.wProcessorArchitecture
+            && self.wReserved == other.wReserved
+    }
+}
+impl ::core::cmp::Eq for SYSTEM_INFO_0_0 {}
 impl ::core::default::Default for SYSTEM_INFO_0_0 {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }
@@ -1183,6 +1402,14 @@ impl ::core::clone::Clone for SYSTEM_LOGICAL_PROCESSOR_INFORMATION {
         *self
     }
 }
+impl ::core::cmp::PartialEq for SYSTEM_LOGICAL_PROCESSOR_INFORMATION {
+    fn eq(&self, other: &Self) -> bool {
+        self.ProcessorMask == other.ProcessorMask
+            && self.Relationship == other.Relationship
+            && self.Anonymous == other.Anonymous
+    }
+}
+impl ::core::cmp::Eq for SYSTEM_LOGICAL_PROCESSOR_INFORMATION {}
 impl ::core::default::Default for SYSTEM_LOGICAL_PROCESSOR_INFORMATION {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }
@@ -1200,6 +1427,15 @@ impl ::core::clone::Clone for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0 {
         *self
     }
 }
+impl ::core::cmp::PartialEq for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0 {
+    fn eq(&self, other: &Self) -> bool {
+        self.ProcessorCore == other.ProcessorCore
+            && self.NumaNode == other.NumaNode
+            && self.Cache == other.Cache
+            && self.Reserved == other.Reserved
+    }
+}
+impl ::core::cmp::Eq for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0 {}
 impl ::core::default::Default for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0 {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }
@@ -1221,6 +1457,12 @@ impl ::core::fmt::Debug for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0_0 {
             .finish()
     }
 }
+impl ::core::cmp::PartialEq for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0_0 {
+    fn eq(&self, other: &Self) -> bool {
+        self.NodeNumber == other.NodeNumber
+    }
+}
+impl ::core::cmp::Eq for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0_0 {}
 impl ::core::default::Default for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0_0 {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }
@@ -1242,6 +1484,12 @@ impl ::core::fmt::Debug for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0_1 {
             .finish()
     }
 }
+impl ::core::cmp::PartialEq for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0_1 {
+    fn eq(&self, other: &Self) -> bool {
+        self.Flags == other.Flags
+    }
+}
+impl ::core::cmp::Eq for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0_1 {}
 impl ::core::default::Default for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0_1 {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }
@@ -1258,6 +1506,14 @@ impl ::core::clone::Clone for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX {
         *self
     }
 }
+impl ::core::cmp::PartialEq for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX {
+    fn eq(&self, other: &Self) -> bool {
+        self.Relationship == other.Relationship
+            && self.Size == other.Size
+            && self.Anonymous == other.Anonymous
+    }
+}
+impl ::core::cmp::Eq for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX {}
 impl ::core::default::Default for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }
@@ -1275,6 +1531,15 @@ impl ::core::clone::Clone for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX_0 {
         *self
     }
 }
+impl ::core::cmp::PartialEq for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX_0 {
+    fn eq(&self, other: &Self) -> bool {
+        self.Processor == other.Processor
+            && self.NumaNode == other.NumaNode
+            && self.Cache == other.Cache
+            && self.Group == other.Group
+    }
+}
+impl ::core::cmp::Eq for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX_0 {}
 impl ::core::default::Default for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX_0 {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }
@@ -1296,6 +1561,12 @@ impl ::core::fmt::Debug for SYSTEM_POOL_ZEROING_INFORMATION {
             .finish()
     }
 }
+impl ::core::cmp::PartialEq for SYSTEM_POOL_ZEROING_INFORMATION {
+    fn eq(&self, other: &Self) -> bool {
+        self.PoolZeroingSupportPresent == other.PoolZeroingSupportPresent
+    }
+}
+impl ::core::cmp::Eq for SYSTEM_POOL_ZEROING_INFORMATION {}
 impl ::core::default::Default for SYSTEM_POOL_ZEROING_INFORMATION {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }
@@ -1317,6 +1588,12 @@ impl ::core::fmt::Debug for SYSTEM_PROCESSOR_CYCLE_TIME_INFORMATION {
             .finish()
     }
 }
+impl ::core::cmp::PartialEq for SYSTEM_PROCESSOR_CYCLE_TIME_INFORMATION {
+    fn eq(&self, other: &Self) -> bool {
+        self.CycleTime == other.CycleTime
+    }
+}
+impl ::core::cmp::Eq for SYSTEM_PROCESSOR_CYCLE_TIME_INFORMATION {}
 impl ::core::default::Default for SYSTEM_PROCESSOR_CYCLE_TIME_INFORMATION {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }
@@ -1338,6 +1615,12 @@ impl ::core::fmt::Debug for SYSTEM_SUPPORTED_PROCESSOR_ARCHITECTURES_INFORMATION
             .finish()
     }
 }
+impl ::core::cmp::PartialEq for SYSTEM_SUPPORTED_PROCESSOR_ARCHITECTURES_INFORMATION {
+    fn eq(&self, other: &Self) -> bool {
+        self._bitfield == other._bitfield
+    }
+}
+impl ::core::cmp::Eq for SYSTEM_SUPPORTED_PROCESSOR_ARCHITECTURES_INFORMATION {}
 impl ::core::default::Default for SYSTEM_SUPPORTED_PROCESSOR_ARCHITECTURES_INFORMATION {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }

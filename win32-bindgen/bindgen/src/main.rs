@@ -3,9 +3,10 @@ use std::io::Write;
 use win32_bindgenlib as bindgen;
 
 const EXCLUDE_NAMESPACES: [&str; 1] = ["Windows.Win32.Interop"];
-const INCLUDE_NAMESPACES: [&str; 2] = [
+const INCLUDE_NAMESPACES: [&str; 3] = [
     "Windows.Win32.Foundation",
     "Windows.Win32.System.SystemInformation",
+    "Windows.Win32.System.Diagnostics.Debug",
 ];
 
 fn main() {
