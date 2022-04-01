@@ -2,7 +2,7 @@ use crate::conv::FromIntoMemory;
 use crate::ptr::PtrRepr;
 use smallvec::{smallvec, SmallVec};
 
-pub trait MemoryCtx: Copy {
+pub trait MemoryCtx: Copy + PartialEq {
     // TODO: should those be safe?
     // On one hand, they are unsafe, because they allow non-memory safe stuff to happen,
     //   like segfaulting and writing to random regions of the memory
@@ -24,7 +24,7 @@ pub trait MemoryCtx: Copy {
 ///
 /// The lifetime denotes the period of validity of the allocated virtual space
 #[cfg(target_pointer_width = "64")]
-#[derive(Copy, Clone)]
+#[derive(Copy, Clone, PartialEq, Eq)]
 pub struct FlatMemoryCtx {
     base: *mut u8,
 }

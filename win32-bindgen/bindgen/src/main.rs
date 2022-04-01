@@ -384,6 +384,9 @@ const EXCLUDE_ITEMS: &[(&str, &[&str])] = &[
             "DnsHostnameToComputerNameExW",
             "EnumSystemFirmwareTables",
             "GetFirmwareType",
+            "GetIntegratedDisplaySize",
+            "IsWow64GuestMachineSupported",
+            "IsUserCetAvailableInEnvironment",
         ],
     ),
 ];

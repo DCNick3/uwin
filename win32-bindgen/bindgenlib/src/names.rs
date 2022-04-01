@@ -90,7 +90,7 @@ pub fn gen_type_constraints(def: &TypeDef, gen: &Gen) -> Vec<TokenStream> {
 }
 
 pub fn gen_param_name(param: &Param) -> TokenStream {
-    gen_ident(&param.name().to_lowercase())
+    gen_ident(&param.name())
 }
 
 pub fn gen_element_name(def: &Type, gen: &Gen) -> TokenStream {
@@ -156,14 +156,14 @@ pub fn gen_element_name(def: &Type, gen: &Gen) -> TokenStream {
         Type::Field(field) => field.name().into(),
         Type::TypeDef(t) => gen_type_name(t, gen),
         Type::MutPtr((kind, pointers)) => {
-            let pointers = gen_mut_ptrs(*pointers);
             let kind = gen_default_type(kind, gen);
-            quote! { #pointers #kind }
+            let pointers = gen_mut_ptrs(*pointers, kind);
+            quote! { #pointers }
         }
         Type::ConstPtr((kind, pointers)) => {
-            let pointers = gen_const_ptrs(*pointers);
             let kind = gen_default_type(kind, gen);
-            quote! { #pointers #kind }
+            let pointers = gen_const_ptrs(*pointers, kind);
+            quote! { #pointers }
         }
         Type::WinrtArray(kind) => gen_element_name(kind, gen),
         Type::WinrtArrayRef(kind) => gen_element_name(kind, gen),
@@ -172,64 +172,75 @@ pub fn gen_element_name(def: &Type, gen: &Gen) -> TokenStream {
     }
 }
 
-fn gen_mut_ptrs(pointers: usize) -> TokenStream {
-    "*mut ".repeat(pointers).into()
+fn gen_mut_ptrs(pointers: usize, kind: TokenStream) -> TokenStream {
+    if pointers == 0 {
+        return kind;
+    }
+    let kind = gen_const_ptrs(pointers - 1, kind);
+    return quote! {MutPtr<#kind>};
 }
 
-fn gen_const_ptrs(pointers: usize) -> TokenStream {
-    "*const ".repeat(pointers).into()
+fn gen_const_ptrs(pointers: usize, kind: TokenStream) -> TokenStream {
+    if pointers == 0 {
+        return kind;
+    }
+    let kind = gen_const_ptrs(pointers - 1, kind);
+    return quote! {ConstPtr<#kind>};
 }
 
-pub fn gen_abi_element_name(ty: &Type, gen: &Gen) -> TokenStream {
-    gen_abi_element_name_impl(ty, false, gen)
-}
+// pub fn gen_abi_element_name(ty: &Type, gen: &Gen) -> TokenStream {
+//     gen_abi_element_name_impl(ty, false, gen)
+// }
 
 // TODO: this is only because we're trying to avoid the ManuallyDrop below - I don't think that matters so may want to scrap this once we have parity.
-fn gen_abi_element_name_impl(ty: &Type, ptr: bool, gen: &Gen) -> TokenStream {
-    match ty {
-        Type::String => {
-            quote! { ::core::mem::ManuallyDrop<::windows::core::HSTRING> }
-        }
-        Type::IUnknown | Type::IInspectable => {
-            quote! { *mut ::core::ffi::c_void }
-        }
-        Type::Win32Array((kind, len)) => {
-            let name = gen_abi_element_name_impl(kind, ptr, gen);
-            let len = Literal::u32_unsuffixed(*len);
-            quote! { [#name; #len] }
-        }
-        Type::GenericParam(_) => {
-            unimplemented!();
-            //let name = gen_ident(generic);
-            //quote! { <#name as ::windows::core::Abi>::Abi }
-        }
-        Type::TypeDef(def) => match def.kind() {
-            TypeKind::Enum => gen_type_name(def, gen),
-            TypeKind::Struct => {
-                let tokens = gen_type_name(def, gen);
-                if def.is_blittable() || ptr {
-                    tokens
-                } else {
-                    quote! { ::core::mem::ManuallyDrop<#tokens> }
-                }
-            }
-            _ => quote! { ::windows::core::RawPtr },
-        },
-        Type::MutPtr((kind, pointers)) => {
-            let pointers = gen_mut_ptrs(*pointers);
-            let kind = gen_abi_element_name_impl(kind, true, gen);
-            quote! { #pointers #kind }
-        }
-        Type::ConstPtr((kind, pointers)) => {
-            let pointers = gen_const_ptrs(*pointers);
-            let kind = gen_abi_element_name_impl(kind, true, gen);
-            quote! { #pointers #kind }
-        }
-        Type::WinrtArray(kind) => gen_abi_element_name_impl(kind, ptr, gen),
-        Type::WinrtArrayRef(kind) => gen_abi_element_name_impl(kind, ptr, gen),
-        _ => gen_element_name(ty, gen),
-    }
-}
+// fn gen_abi_element_name_impl(ty: &Type, ptr: bool, gen: &Gen) -> TokenStream {
+//     match ty {
+//         Type::String => {
+//             todo!()
+//             // quote! { ::core::mem::ManuallyDrop<::windows::core::HSTRING> }
+//         }
+//         Type::IUnknown | Type::IInspectable => {
+//             todo!()
+//             // quote! { *mut ::core::ffi::c_void }
+//         }
+//         Type::Win32Array((kind, len)) => {
+//             todo!()
+//             // let name = gen_abi_element_name_impl(kind, ptr, gen);
+//             // let len = Literal::u32_unsuffixed(*len);
+//             // quote! { [#name; #len] }
+//         }
+//         Type::GenericParam(_) => {
+//             unimplemented!();
+//             //let name = gen_ident(generic);
+//             //quote! { <#name as ::windows::core::Abi>::Abi }
+//         }
+//         Type::TypeDef(def) => match def.kind() {
+//             TypeKind::Enum => gen_type_name(def, gen),
+//             TypeKind::Struct => {
+//                 let tokens = gen_type_name(def, gen);
+//                 if def.is_blittable() || ptr {
+//                     tokens
+//                 } else {
+//                     quote! { ::core::mem::ManuallyDrop<#tokens> }
+//                 }
+//             }
+//             _ => quote! { ::windows::core::RawPtr },
+//         },
+//         Type::MutPtr((kind, pointers)) => {
+//             let pointers = gen_mut_ptrs(*pointers);
+//             let kind = gen_abi_element_name_impl(kind, true, gen);
+//             quote! { #pointers #kind }
+//         }
+//         Type::ConstPtr((kind, pointers)) => {
+//             let pointers = gen_const_ptrs(*pointers);
+//             let kind = gen_abi_element_name_impl(kind, true, gen);
+//             quote! { #pointers #kind }
+//         }
+//         Type::WinrtArray(kind) => gen_abi_element_name_impl(kind, ptr, gen),
+//         Type::WinrtArrayRef(kind) => gen_abi_element_name_impl(kind, ptr, gen),
+//         _ => gen_element_name(ty, gen),
+//     }
+// }
 
 pub fn gen_crate_name(_gen: &Gen) -> TokenStream {
     "win32".into()

@@ -77,16 +77,16 @@ fn gen_struct_with_name(def: &TypeDef, struct_name: &str, cfg: &Cfg, gen: &Gen) 
     tokens.combine(&gen_debug(def, &name, &cfg, gen));
     tokens.combine(&gen_compare_traits(def, &name, &cfg, gen));
 
-    if !gen.sys {
-        tokens.combine(&quote! {
-            #features
-            impl ::core::default::Default for #name {
-                fn default() -> Self {
-                    unsafe { ::core::mem::zeroed() }
-                }
-            }
-        });
-    }
+    // if !gen.sys {
+    //     tokens.combine(&quote! {
+    //         #features
+    //         impl ::core::default::Default for #name {
+    //             fn default() -> Self {
+    //                 unsafe { ::core::mem::zeroed() }
+    //             }
+    //         }
+    //     });
+    // }
 
     if let Some(nested_types) = def.nested_types() {
         for (index, (_, nested_type)) in nested_types.iter().enumerate() {

@@ -26,7 +26,11 @@ impl Signature {
                         let guid = &self.params[self.params.len() - 2];
                         let object = &self.params[self.params.len() - 1];
 
-                        if guid.ty == Type::ConstPtr((Box::new(Type::GUID), 1)) && !guid.def.flags().output() && object.ty == Type::MutPtr((Box::new(Type::Void), 2)) && object.def.is_com_out_ptr() {
+                        if guid.ty == Type::ConstPtr((Box::new(Type::GUID), 1))
+                            && !guid.def.flags().output()
+                            && object.ty == Type::MutPtr((Box::new(Type::Void), 2))
+                            && object.def.is_com_out_ptr()
+                        {
                             if object.def.flags().optional() {
                                 return SignatureKind::QueryOptional;
                             } else {
@@ -35,14 +39,14 @@ impl Signature {
                         }
                     }
 
-                    if self.params.last().map_or(false, |param| param.is_retval())
-                        && self.params[..self.params.len() - 1].iter().all(|param| {
-                            let flags = param.def.flags();
-                            flags.input() && !flags.output()
-                        })
-                    {
-                        return SignatureKind::ResultValue;
-                    }
+                    // if self.params.last().map_or(false, |param| param.is_retval())
+                    //     && self.params[..self.params.len() - 1].iter().all(|param| {
+                    //         let flags = param.def.flags();
+                    //         flags.input() && !flags.output()
+                    //     })
+                    // {
+                    //     return SignatureKind::ResultValue;
+                    // }
 
                     return SignatureKind::ResultVoid;
                 }
@@ -50,7 +54,9 @@ impl Signature {
                     return SignatureKind::ResultVoid;
                 }
                 _ if return_type.is_udt() => {
-                    return SignatureKind::ReturnStruct;
+                    // ehh, kinda wat
+                    todo!()
+                    // return SignatureKind::ReturnStruct;
                 }
                 _ => return SignatureKind::PreserveSig,
             }
@@ -60,7 +66,9 @@ impl Signature {
     }
 
     pub fn size(&self) -> usize {
-        self.params.iter().fold(0, |sum, param| sum + param.ty.size())
+        self.params
+            .iter()
+            .fold(0, |sum, param| sum + param.ty.size())
     }
 
     pub(crate) fn combine_cfg(&self, cfg: &mut Cfg) {
@@ -98,6 +106,9 @@ impl MethodParam {
     }
 
     pub fn is_convertible(&self) -> bool {
-        self.def.flags().input() && !self.ty.is_winrt_array() && !self.ty.is_pointer() && self.ty.is_convertible()
+        self.def.flags().input()
+            && !self.ty.is_winrt_array()
+            && !self.ty.is_pointer()
+            && self.ty.is_convertible()
     }
 }

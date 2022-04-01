@@ -41,11 +41,6 @@ impl ::core::cmp::PartialEq for CACHE_DESCRIPTOR {
     }
 }
 impl ::core::cmp::Eq for CACHE_DESCRIPTOR {}
-impl ::core::default::Default for CACHE_DESCRIPTOR {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct CACHE_RELATIONSHIP {
     pub Level: u8,
     pub Associativity: u8,
@@ -75,11 +70,6 @@ impl ::core::cmp::PartialEq for CACHE_RELATIONSHIP {
     }
 }
 impl ::core::cmp::Eq for CACHE_RELATIONSHIP {}
-impl ::core::default::Default for CACHE_RELATIONSHIP {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct CACHE_RELATIONSHIP_0 {
     pub GroupMask: GROUP_AFFINITY,
     pub GroupMasks: [GROUP_AFFINITY; 1],
@@ -96,11 +86,6 @@ impl ::core::cmp::PartialEq for CACHE_RELATIONSHIP_0 {
     }
 }
 impl ::core::cmp::Eq for CACHE_RELATIONSHIP_0 {}
-impl ::core::default::Default for CACHE_RELATIONSHIP_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct COMPUTER_NAME_FORMAT(pub i32);
 pub const ComputerNameNetBIOS: COMPUTER_NAME_FORMAT = COMPUTER_NAME_FORMAT(0i32);
@@ -401,11 +386,6 @@ impl ::core::cmp::PartialEq for GROUP_AFFINITY {
     }
 }
 impl ::core::cmp::Eq for GROUP_AFFINITY {}
-impl ::core::default::Default for GROUP_AFFINITY {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct GROUP_RELATIONSHIP {
     pub MaximumGroupCount: u16,
     pub ActiveGroupCount: u16,
@@ -437,11 +417,6 @@ impl ::core::cmp::PartialEq for GROUP_RELATIONSHIP {
     }
 }
 impl ::core::cmp::Eq for GROUP_RELATIONSHIP {}
-impl ::core::default::Default for GROUP_RELATIONSHIP {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct LOGICAL_PROCESSOR_RELATIONSHIP(pub i32);
 pub const RelationProcessorCore: LOGICAL_PROCESSOR_RELATIONSHIP =
@@ -518,11 +493,6 @@ impl ::core::cmp::PartialEq for MEMORYSTATUS {
     }
 }
 impl ::core::cmp::Eq for MEMORYSTATUS {}
-impl ::core::default::Default for MEMORYSTATUS {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct MEMORYSTATUSEX {
     pub dwLength: u32,
     pub dwMemoryLoad: u32,
@@ -569,11 +539,6 @@ impl ::core::cmp::PartialEq for MEMORYSTATUSEX {
     }
 }
 impl ::core::cmp::Eq for MEMORYSTATUSEX {}
-impl ::core::default::Default for MEMORYSTATUSEX {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const NTDDI_LONGHORN: u32 = 100663296u32;
 pub const NTDDI_VERSION: u32 = 167772171u32;
 pub const NTDDI_VISTA: u32 = 100663296u32;
@@ -643,11 +608,6 @@ impl ::core::cmp::PartialEq for NUMA_NODE_RELATIONSHIP {
     }
 }
 impl ::core::cmp::Eq for NUMA_NODE_RELATIONSHIP {}
-impl ::core::default::Default for NUMA_NODE_RELATIONSHIP {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct NUMA_NODE_RELATIONSHIP_0 {
     pub GroupMask: GROUP_AFFINITY,
     pub GroupMasks: [GROUP_AFFINITY; 1],
@@ -664,11 +624,6 @@ impl ::core::cmp::PartialEq for NUMA_NODE_RELATIONSHIP_0 {
     }
 }
 impl ::core::cmp::Eq for NUMA_NODE_RELATIONSHIP_0 {}
-impl ::core::default::Default for NUMA_NODE_RELATIONSHIP_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct OSVERSIONINFOA {
     pub dwOSVersionInfoSize: u32,
     pub dwMajorVersion: u32,
@@ -706,11 +661,6 @@ impl ::core::cmp::PartialEq for OSVERSIONINFOA {
     }
 }
 impl ::core::cmp::Eq for OSVERSIONINFOA {}
-impl ::core::default::Default for OSVERSIONINFOA {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct OSVERSIONINFOEXA {
     pub dwOSVersionInfoSize: u32,
     pub dwMajorVersion: u32,
@@ -763,11 +713,6 @@ impl ::core::cmp::PartialEq for OSVERSIONINFOEXA {
     }
 }
 impl ::core::cmp::Eq for OSVERSIONINFOEXA {}
-impl ::core::default::Default for OSVERSIONINFOEXA {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct OSVERSIONINFOEXW {
     pub dwOSVersionInfoSize: u32,
     pub dwMajorVersion: u32,
@@ -820,11 +765,6 @@ impl ::core::cmp::PartialEq for OSVERSIONINFOEXW {
     }
 }
 impl ::core::cmp::Eq for OSVERSIONINFOEXW {}
-impl ::core::default::Default for OSVERSIONINFOEXW {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct OSVERSIONINFOW {
     pub dwOSVersionInfoSize: u32,
     pub dwMajorVersion: u32,
@@ -862,11 +802,6 @@ impl ::core::cmp::PartialEq for OSVERSIONINFOW {
     }
 }
 impl ::core::cmp::Eq for OSVERSIONINFOW {}
-impl ::core::default::Default for OSVERSIONINFOW {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const OSVERSION_MASK: u32 = 4294901760u32;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct OS_DEPLOYEMENT_STATE_VALUES(pub i32);
@@ -1005,10 +940,10 @@ impl ::core::fmt::Debug for OS_PRODUCT_TYPE {
     }
 }
 pub type PGET_SYSTEM_WOW64_DIRECTORY_A = ::core::option::Option<
-    unsafe extern "system" fn(lpbuffer: ::win32::core::PSTR, usize: u32) -> u32,
+    unsafe extern "system" fn(lpBuffer: ::win32::core::PSTR, uSize: u32) -> u32,
 >;
 pub type PGET_SYSTEM_WOW64_DIRECTORY_W = ::core::option::Option<
-    unsafe extern "system" fn(lpbuffer: ::win32::core::PWSTR, usize: u32) -> u32,
+    unsafe extern "system" fn(lpBuffer: ::win32::core::PWSTR, uSize: u32) -> u32,
 >;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct PROCESSOR_CACHE_TYPE(pub i32);
@@ -1065,11 +1000,6 @@ impl ::core::cmp::PartialEq for PROCESSOR_GROUP_INFO {
     }
 }
 impl ::core::cmp::Eq for PROCESSOR_GROUP_INFO {}
-impl ::core::default::Default for PROCESSOR_GROUP_INFO {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct PROCESSOR_RELATIONSHIP {
     pub Flags: u8,
     pub EfficiencyClass: u8,
@@ -1104,11 +1034,6 @@ impl ::core::cmp::PartialEq for PROCESSOR_RELATIONSHIP {
     }
 }
 impl ::core::cmp::Eq for PROCESSOR_RELATIONSHIP {}
-impl ::core::default::Default for PROCESSOR_RELATIONSHIP {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct RTL_SYSTEM_GLOBAL_DATA_ID(pub i32);
 pub const GlobalDataIdUnknown: RTL_SYSTEM_GLOBAL_DATA_ID = RTL_SYSTEM_GLOBAL_DATA_ID(0i32);
@@ -1166,11 +1091,6 @@ impl ::core::cmp::PartialEq for SYSTEM_CPU_SET_INFORMATION {
     }
 }
 impl ::core::cmp::Eq for SYSTEM_CPU_SET_INFORMATION {}
-impl ::core::default::Default for SYSTEM_CPU_SET_INFORMATION {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct SYSTEM_CPU_SET_INFORMATION_0 {
     pub CpuSet: SYSTEM_CPU_SET_INFORMATION_0_0,
 }
@@ -1186,11 +1106,6 @@ impl ::core::cmp::PartialEq for SYSTEM_CPU_SET_INFORMATION_0 {
     }
 }
 impl ::core::cmp::Eq for SYSTEM_CPU_SET_INFORMATION_0 {}
-impl ::core::default::Default for SYSTEM_CPU_SET_INFORMATION_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct SYSTEM_CPU_SET_INFORMATION_0_0 {
     pub Id: u32,
     pub Group: u16,
@@ -1224,11 +1139,6 @@ impl ::core::cmp::PartialEq for SYSTEM_CPU_SET_INFORMATION_0_0 {
     }
 }
 impl ::core::cmp::Eq for SYSTEM_CPU_SET_INFORMATION_0_0 {}
-impl ::core::default::Default for SYSTEM_CPU_SET_INFORMATION_0_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct SYSTEM_CPU_SET_INFORMATION_0_0_0 {
     pub AllFlags: u8,
     pub Anonymous: SYSTEM_CPU_SET_INFORMATION_0_0_0_0,
@@ -1245,11 +1155,6 @@ impl ::core::cmp::PartialEq for SYSTEM_CPU_SET_INFORMATION_0_0_0 {
     }
 }
 impl ::core::cmp::Eq for SYSTEM_CPU_SET_INFORMATION_0_0_0 {}
-impl ::core::default::Default for SYSTEM_CPU_SET_INFORMATION_0_0_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct SYSTEM_CPU_SET_INFORMATION_0_0_0_0 {
     pub _bitfield: u8,
 }
@@ -1272,11 +1177,6 @@ impl ::core::cmp::PartialEq for SYSTEM_CPU_SET_INFORMATION_0_0_0_0 {
     }
 }
 impl ::core::cmp::Eq for SYSTEM_CPU_SET_INFORMATION_0_0_0_0 {}
-impl ::core::default::Default for SYSTEM_CPU_SET_INFORMATION_0_0_0_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct SYSTEM_CPU_SET_INFORMATION_0_0_1 {
     pub Reserved: u32,
     pub SchedulingClass: u8,
@@ -1293,11 +1193,6 @@ impl ::core::cmp::PartialEq for SYSTEM_CPU_SET_INFORMATION_0_0_1 {
     }
 }
 impl ::core::cmp::Eq for SYSTEM_CPU_SET_INFORMATION_0_0_1 {}
-impl ::core::default::Default for SYSTEM_CPU_SET_INFORMATION_0_0_1 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const SYSTEM_CPU_SET_INFORMATION_ALLOCATED: u32 = 2u32;
 pub const SYSTEM_CPU_SET_INFORMATION_ALLOCATED_TO_TARGET_PROCESS: u32 = 4u32;
 pub const SYSTEM_CPU_SET_INFORMATION_PARKED: u32 = 1u32;
@@ -1305,8 +1200,8 @@ pub const SYSTEM_CPU_SET_INFORMATION_REALTIME: u32 = 8u32;
 pub struct SYSTEM_INFO {
     pub Anonymous: SYSTEM_INFO_0,
     pub dwPageSize: u32,
-    pub lpMinimumApplicationAddress: *mut ::core::ffi::c_void,
-    pub lpMaximumApplicationAddress: *mut ::core::ffi::c_void,
+    pub lpMinimumApplicationAddress: MutPtr<::core::ffi::c_void>,
+    pub lpMaximumApplicationAddress: MutPtr<::core::ffi::c_void>,
     pub dwActiveProcessorMask: usize,
     pub dwNumberOfProcessors: u32,
     pub dwProcessorType: u32,
@@ -1335,11 +1230,6 @@ impl ::core::cmp::PartialEq for SYSTEM_INFO {
     }
 }
 impl ::core::cmp::Eq for SYSTEM_INFO {}
-impl ::core::default::Default for SYSTEM_INFO {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct SYSTEM_INFO_0 {
     pub dwOemId: u32,
     pub Anonymous: SYSTEM_INFO_0_0,
@@ -1356,11 +1246,6 @@ impl ::core::cmp::PartialEq for SYSTEM_INFO_0 {
     }
 }
 impl ::core::cmp::Eq for SYSTEM_INFO_0 {}
-impl ::core::default::Default for SYSTEM_INFO_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct SYSTEM_INFO_0_0 {
     pub wProcessorArchitecture: super::Diagnostics::Debug::PROCESSOR_ARCHITECTURE,
     pub wReserved: u16,
@@ -1386,11 +1271,6 @@ impl ::core::cmp::PartialEq for SYSTEM_INFO_0_0 {
     }
 }
 impl ::core::cmp::Eq for SYSTEM_INFO_0_0 {}
-impl ::core::default::Default for SYSTEM_INFO_0_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct SYSTEM_LOGICAL_PROCESSOR_INFORMATION {
     pub ProcessorMask: usize,
     pub Relationship: LOGICAL_PROCESSOR_RELATIONSHIP,
@@ -1410,11 +1290,6 @@ impl ::core::cmp::PartialEq for SYSTEM_LOGICAL_PROCESSOR_INFORMATION {
     }
 }
 impl ::core::cmp::Eq for SYSTEM_LOGICAL_PROCESSOR_INFORMATION {}
-impl ::core::default::Default for SYSTEM_LOGICAL_PROCESSOR_INFORMATION {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0 {
     pub ProcessorCore: SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0_1,
     pub NumaNode: SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0_0,
@@ -1436,11 +1311,6 @@ impl ::core::cmp::PartialEq for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0 {
     }
 }
 impl ::core::cmp::Eq for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0 {}
-impl ::core::default::Default for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0_0 {
     pub NodeNumber: u32,
 }
@@ -1463,11 +1333,6 @@ impl ::core::cmp::PartialEq for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0_0 {
     }
 }
 impl ::core::cmp::Eq for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0_0 {}
-impl ::core::default::Default for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0_1 {
     pub Flags: u8,
 }
@@ -1490,11 +1355,6 @@ impl ::core::cmp::PartialEq for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0_1 {
     }
 }
 impl ::core::cmp::Eq for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0_1 {}
-impl ::core::default::Default for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0_1 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX {
     pub Relationship: LOGICAL_PROCESSOR_RELATIONSHIP,
     pub Size: u32,
@@ -1514,11 +1374,6 @@ impl ::core::cmp::PartialEq for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX {
     }
 }
 impl ::core::cmp::Eq for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX {}
-impl ::core::default::Default for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX_0 {
     pub Processor: PROCESSOR_RELATIONSHIP,
     pub NumaNode: NUMA_NODE_RELATIONSHIP,
@@ -1540,11 +1395,6 @@ impl ::core::cmp::PartialEq for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX_0 {
     }
 }
 impl ::core::cmp::Eq for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX_0 {}
-impl ::core::default::Default for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct SYSTEM_POOL_ZEROING_INFORMATION {
     pub PoolZeroingSupportPresent: super::super::Foundation::BOOLEAN,
 }
@@ -1567,11 +1417,6 @@ impl ::core::cmp::PartialEq for SYSTEM_POOL_ZEROING_INFORMATION {
     }
 }
 impl ::core::cmp::Eq for SYSTEM_POOL_ZEROING_INFORMATION {}
-impl ::core::default::Default for SYSTEM_POOL_ZEROING_INFORMATION {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct SYSTEM_PROCESSOR_CYCLE_TIME_INFORMATION {
     pub CycleTime: u64,
 }
@@ -1594,11 +1439,6 @@ impl ::core::cmp::PartialEq for SYSTEM_PROCESSOR_CYCLE_TIME_INFORMATION {
     }
 }
 impl ::core::cmp::Eq for SYSTEM_PROCESSOR_CYCLE_TIME_INFORMATION {}
-impl ::core::default::Default for SYSTEM_PROCESSOR_CYCLE_TIME_INFORMATION {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct SYSTEM_SUPPORTED_PROCESSOR_ARCHITECTURES_INFORMATION {
     pub _bitfield: u32,
 }
@@ -1621,11 +1461,6 @@ impl ::core::cmp::PartialEq for SYSTEM_SUPPORTED_PROCESSOR_ARCHITECTURES_INFORMA
     }
 }
 impl ::core::cmp::Eq for SYSTEM_SUPPORTED_PROCESSOR_ARCHITECTURES_INFORMATION {}
-impl ::core::default::Default for SYSTEM_SUPPORTED_PROCESSOR_ARCHITECTURES_INFORMATION {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct USER_CET_ENVIRONMENT(pub u32);
 pub const USER_CET_ENVIRONMENT_WIN32_PROCESS: USER_CET_ENVIRONMENT = USER_CET_ENVIRONMENT(0u32);
@@ -1762,3 +1597,177 @@ pub const _WIN32_WINNT_WINTHRESHOLD: u32 = 2560u32;
 pub const _WIN32_WINNT_WINXP: u32 = 1281u32;
 pub const _WIN32_WINNT_WS03: u32 = 1282u32;
 pub const _WIN32_WINNT_WS08: u32 = 1536u32;
+pub trait Api {
+    fn GetComputerNameExA(
+        NameType: COMPUTER_NAME_FORMAT,
+        lpBuffer: ::win32::core::PSTR,
+        nSize: MutPtr<u32>,
+    ) -> super::super::Foundation::BOOL;
+    fn GetComputerNameExW(
+        NameType: COMPUTER_NAME_FORMAT,
+        lpBuffer: ::win32::core::PWSTR,
+        nSize: MutPtr<u32>,
+    ) -> super::super::Foundation::BOOL;
+    fn GetLocalTime(lpSystemTime: MutPtr<super::super::Foundation::SYSTEMTIME>);
+    fn GetLogicalProcessorInformation(
+        Buffer: MutPtr<SYSTEM_LOGICAL_PROCESSOR_INFORMATION>,
+        ReturnedLength: MutPtr<u32>,
+    ) -> super::super::Foundation::BOOL;
+    fn GetLogicalProcessorInformationEx(
+        RelationshipType: LOGICAL_PROCESSOR_RELATIONSHIP,
+        Buffer: MutPtr<SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX>,
+        ReturnedLength: MutPtr<u32>,
+    ) -> super::super::Foundation::BOOL;
+    fn GetNativeSystemInfo(lpSystemInfo: MutPtr<SYSTEM_INFO>);
+    fn GetOsManufacturingMode(
+        pbEnabled: MutPtr<super::super::Foundation::BOOL>,
+    ) -> super::super::Foundation::BOOL;
+    fn GetOsSafeBootMode(Flags: MutPtr<u32>) -> super::super::Foundation::BOOL;
+    fn GetPhysicallyInstalledSystemMemory(
+        TotalMemoryInKilobytes: MutPtr<u64>,
+    ) -> super::super::Foundation::BOOL;
+    fn GetProcessorSystemCycleTime(
+        Group: u16,
+        Buffer: MutPtr<SYSTEM_PROCESSOR_CYCLE_TIME_INFORMATION>,
+        ReturnedLength: MutPtr<u32>,
+    ) -> super::super::Foundation::BOOL;
+    fn GetProductInfo(
+        dwOSMajorVersion: u32,
+        dwOSMinorVersion: u32,
+        dwSpMajorVersion: u32,
+        dwSpMinorVersion: u32,
+        pdwReturnedProductType: MutPtr<OS_PRODUCT_TYPE>,
+    ) -> super::super::Foundation::BOOL;
+    fn GetSystemCpuSetInformation(
+        Information: MutPtr<SYSTEM_CPU_SET_INFORMATION>,
+        BufferLength: u32,
+        ReturnedLength: MutPtr<u32>,
+        Process: super::super::Foundation::HANDLE,
+        Flags: u32,
+    ) -> super::super::Foundation::BOOL;
+    fn GetSystemDEPPolicy() -> DEP_SYSTEM_POLICY_TYPE;
+    fn GetSystemDirectoryA(lpBuffer: ::win32::core::PSTR, uSize: u32) -> u32;
+    fn GetSystemDirectoryW(lpBuffer: ::win32::core::PWSTR, uSize: u32) -> u32;
+    fn GetSystemFirmwareTable(
+        FirmwareTableProviderSignature: FIRMWARE_TABLE_PROVIDER,
+        FirmwareTableID: FIRMWARE_TABLE_ID,
+        pFirmwareTableBuffer: MutPtr<::core::ffi::c_void>,
+        BufferSize: u32,
+    ) -> u32;
+    fn GetSystemInfo(lpSystemInfo: MutPtr<SYSTEM_INFO>);
+    fn GetSystemLeapSecondInformation(
+        Enabled: MutPtr<super::super::Foundation::BOOL>,
+        Flags: MutPtr<u32>,
+    ) -> super::super::Foundation::BOOL;
+    fn GetSystemTime(lpSystemTime: MutPtr<super::super::Foundation::SYSTEMTIME>);
+    fn GetSystemTimeAdjustment(
+        lpTimeAdjustment: MutPtr<u32>,
+        lpTimeIncrement: MutPtr<u32>,
+        lpTimeAdjustmentDisabled: MutPtr<super::super::Foundation::BOOL>,
+    ) -> super::super::Foundation::BOOL;
+    fn GetSystemTimeAdjustmentPrecise(
+        lpTimeAdjustment: MutPtr<u64>,
+        lpTimeIncrement: MutPtr<u64>,
+        lpTimeAdjustmentDisabled: MutPtr<super::super::Foundation::BOOL>,
+    ) -> super::super::Foundation::BOOL;
+    fn GetSystemTimeAsFileTime(lpSystemTimeAsFileTime: MutPtr<super::super::Foundation::FILETIME>);
+    fn GetSystemTimePreciseAsFileTime(
+        lpSystemTimeAsFileTime: MutPtr<super::super::Foundation::FILETIME>,
+    );
+    fn GetSystemWindowsDirectoryA(lpBuffer: ::win32::core::PSTR, uSize: u32) -> u32;
+    fn GetSystemWindowsDirectoryW(lpBuffer: ::win32::core::PWSTR, uSize: u32) -> u32;
+    fn GetSystemWow64Directory2A(
+        lpBuffer: ::win32::core::PSTR,
+        uSize: u32,
+        ImageFileMachineType: u16,
+    ) -> u32;
+    fn GetSystemWow64Directory2W(
+        lpBuffer: ::win32::core::PWSTR,
+        uSize: u32,
+        ImageFileMachineType: u16,
+    ) -> u32;
+    fn GetSystemWow64DirectoryA(lpBuffer: ::win32::core::PSTR, uSize: u32) -> u32;
+    fn GetSystemWow64DirectoryW(lpBuffer: ::win32::core::PWSTR, uSize: u32) -> u32;
+    fn GetTickCount() -> u32;
+    fn GetTickCount64() -> u64;
+    fn GetVersion() -> u32;
+    fn GetVersionExA(
+        lpVersionInformation: MutPtr<OSVERSIONINFOA>,
+    ) -> super::super::Foundation::BOOL;
+    fn GetVersionExW(
+        lpVersionInformation: MutPtr<OSVERSIONINFOW>,
+    ) -> super::super::Foundation::BOOL;
+    fn GetWindowsDirectoryA(lpBuffer: ::win32::core::PSTR, uSize: u32) -> u32;
+    fn GetWindowsDirectoryW(lpBuffer: ::win32::core::PWSTR, uSize: u32) -> u32;
+    fn GlobalMemoryStatus(lpBuffer: MutPtr<MEMORYSTATUS>);
+    fn GlobalMemoryStatusEx(lpBuffer: MutPtr<MEMORYSTATUSEX>) -> super::super::Foundation::BOOL;
+    fn RtlConvertDeviceFamilyInfoToString(
+        pulDeviceFamilyBufferSize: MutPtr<u32>,
+        pulDeviceFormBufferSize: MutPtr<u32>,
+        DeviceFamily: ::win32::core::PWSTR,
+        DeviceForm: ::win32::core::PWSTR,
+    ) -> u32;
+    fn RtlGetDeviceFamilyInfoEnum(
+        pullUAPInfo: MutPtr<u64>,
+        pulDeviceFamily: MutPtr<DEVICEFAMILYINFOENUM>,
+        pulDeviceForm: MutPtr<DEVICEFAMILYDEVICEFORM>,
+    );
+    fn RtlGetProductInfo(
+        OSMajorVersion: u32,
+        OSMinorVersion: u32,
+        SpMajorVersion: u32,
+        SpMinorVersion: u32,
+        ReturnedProductType: MutPtr<u32>,
+    ) -> super::super::Foundation::BOOLEAN;
+    fn RtlGetSystemGlobalData(
+        DataId: RTL_SYSTEM_GLOBAL_DATA_ID,
+        Buffer: MutPtr<::core::ffi::c_void>,
+        Size: u32,
+    ) -> u32;
+    fn RtlOsDeploymentState(Flags: u32) -> OS_DEPLOYEMENT_STATE_VALUES;
+    fn RtlSwitchedVVI(
+        VersionInfo: ConstPtr<OSVERSIONINFOEXW>,
+        TypeMask: u32,
+        ConditionMask: u64,
+    ) -> u32;
+    fn SetComputerNameA(lpComputerName: ::win32::core::PCSTR) -> super::super::Foundation::BOOL;
+    fn SetComputerNameEx2W(
+        NameType: COMPUTER_NAME_FORMAT,
+        Flags: u32,
+        lpBuffer: ::win32::core::PCWSTR,
+    ) -> super::super::Foundation::BOOL;
+    fn SetComputerNameExA(
+        NameType: COMPUTER_NAME_FORMAT,
+        lpBuffer: ::win32::core::PCSTR,
+    ) -> super::super::Foundation::BOOL;
+    fn SetComputerNameExW(
+        NameType: COMPUTER_NAME_FORMAT,
+        lpBuffer: ::win32::core::PCWSTR,
+    ) -> super::super::Foundation::BOOL;
+    fn SetComputerNameW(lpComputerName: ::win32::core::PCWSTR) -> super::super::Foundation::BOOL;
+    fn SetLocalTime(
+        lpSystemTime: ConstPtr<super::super::Foundation::SYSTEMTIME>,
+    ) -> super::super::Foundation::BOOL;
+    fn SetSystemTime(
+        lpSystemTime: ConstPtr<super::super::Foundation::SYSTEMTIME>,
+    ) -> super::super::Foundation::BOOL;
+    fn SetSystemTimeAdjustment(
+        dwTimeAdjustment: u32,
+        bTimeAdjustmentDisabled: super::super::Foundation::BOOL,
+    ) -> super::super::Foundation::BOOL;
+    fn SetSystemTimeAdjustmentPrecise(
+        dwTimeAdjustment: u64,
+        bTimeAdjustmentDisabled: super::super::Foundation::BOOL,
+    ) -> super::super::Foundation::BOOL;
+    fn VerSetConditionMask(ConditionMask: u64, TypeMask: VER_FLAGS, Condition: u8) -> u64;
+    fn VerifyVersionInfoA(
+        lpVersionInformation: MutPtr<OSVERSIONINFOEXA>,
+        dwTypeMask: VER_FLAGS,
+        dwlConditionMask: u64,
+    ) -> super::super::Foundation::BOOL;
+    fn VerifyVersionInfoW(
+        lpVersionInformation: MutPtr<OSVERSIONINFOEXW>,
+        dwTypeMask: VER_FLAGS,
+        dwlConditionMask: u64,
+    ) -> super::super::Foundation::BOOL;
+}

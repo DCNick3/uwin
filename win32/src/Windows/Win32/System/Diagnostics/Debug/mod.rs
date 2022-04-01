@@ -39,11 +39,6 @@ impl ::core::cmp::PartialEq for ADDRESS {
     }
 }
 impl ::core::cmp::Eq for ADDRESS {}
-impl ::core::default::Default for ADDRESS {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct ADDRESS64 {
     pub Offset: u64,
     pub Segment: u16,
@@ -70,11 +65,6 @@ impl ::core::cmp::PartialEq for ADDRESS64 {
     }
 }
 impl ::core::cmp::Eq for ADDRESS64 {}
-impl ::core::default::Default for ADDRESS64 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct ADDRESS_MODE(pub i32);
 pub const AddrMode1616: ADDRESS_MODE = ADDRESS_MODE(0i32);
@@ -114,11 +104,6 @@ impl ::core::cmp::PartialEq for AER_BRIDGE_DESCRIPTOR_FLAGS {
     }
 }
 impl ::core::cmp::Eq for AER_BRIDGE_DESCRIPTOR_FLAGS {}
-impl ::core::default::Default for AER_BRIDGE_DESCRIPTOR_FLAGS {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct AER_BRIDGE_DESCRIPTOR_FLAGS_0 {
     pub _bitfield: u16,
 }
@@ -134,11 +119,6 @@ impl ::core::cmp::PartialEq for AER_BRIDGE_DESCRIPTOR_FLAGS_0 {
     }
 }
 impl ::core::cmp::Eq for AER_BRIDGE_DESCRIPTOR_FLAGS_0 {}
-impl ::core::default::Default for AER_BRIDGE_DESCRIPTOR_FLAGS_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct AER_ENDPOINT_DESCRIPTOR_FLAGS {
     pub Anonymous: AER_ENDPOINT_DESCRIPTOR_FLAGS_0,
     pub AsUSHORT: u16,
@@ -155,11 +135,6 @@ impl ::core::cmp::PartialEq for AER_ENDPOINT_DESCRIPTOR_FLAGS {
     }
 }
 impl ::core::cmp::Eq for AER_ENDPOINT_DESCRIPTOR_FLAGS {}
-impl ::core::default::Default for AER_ENDPOINT_DESCRIPTOR_FLAGS {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct AER_ENDPOINT_DESCRIPTOR_FLAGS_0 {
     pub _bitfield: u16,
 }
@@ -175,11 +150,6 @@ impl ::core::cmp::PartialEq for AER_ENDPOINT_DESCRIPTOR_FLAGS_0 {
     }
 }
 impl ::core::cmp::Eq for AER_ENDPOINT_DESCRIPTOR_FLAGS_0 {}
-impl ::core::default::Default for AER_ENDPOINT_DESCRIPTOR_FLAGS_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct AER_ROOTPORT_DESCRIPTOR_FLAGS {
     pub Anonymous: AER_ROOTPORT_DESCRIPTOR_FLAGS_0,
     pub AsUSHORT: u16,
@@ -196,11 +166,6 @@ impl ::core::cmp::PartialEq for AER_ROOTPORT_DESCRIPTOR_FLAGS {
     }
 }
 impl ::core::cmp::Eq for AER_ROOTPORT_DESCRIPTOR_FLAGS {}
-impl ::core::default::Default for AER_ROOTPORT_DESCRIPTOR_FLAGS {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct AER_ROOTPORT_DESCRIPTOR_FLAGS_0 {
     pub _bitfield: u16,
 }
@@ -216,11 +181,6 @@ impl ::core::cmp::PartialEq for AER_ROOTPORT_DESCRIPTOR_FLAGS_0 {
     }
 }
 impl ::core::cmp::Eq for AER_ROOTPORT_DESCRIPTOR_FLAGS_0 {}
-impl ::core::default::Default for AER_ROOTPORT_DESCRIPTOR_FLAGS_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct API_VERSION {
     pub MajorVersion: u16,
     pub MinorVersion: u16,
@@ -252,11 +212,6 @@ impl ::core::cmp::PartialEq for API_VERSION {
     }
 }
 impl ::core::cmp::Eq for API_VERSION {}
-impl ::core::default::Default for API_VERSION {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const API_VERSION_NUMBER: u32 = 12u32;
 pub const APPBREAKFLAG_DEBUGGER_BLOCK: u32 = 1u32;
 pub const APPBREAKFLAG_DEBUGGER_HALT: u32 = 2u32;
@@ -330,11 +285,6 @@ impl ::core::cmp::PartialEq for ARM64_NT_CONTEXT {
     }
 }
 impl ::core::cmp::Eq for ARM64_NT_CONTEXT {}
-impl ::core::default::Default for ARM64_NT_CONTEXT {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct ARM64_NT_CONTEXT_0 {
     pub Anonymous: ARM64_NT_CONTEXT_0_0,
     pub X: [u64; 31],
@@ -351,11 +301,6 @@ impl ::core::cmp::PartialEq for ARM64_NT_CONTEXT_0 {
     }
 }
 impl ::core::cmp::Eq for ARM64_NT_CONTEXT_0 {}
-impl ::core::default::Default for ARM64_NT_CONTEXT_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct ARM64_NT_CONTEXT_0_0 {
     pub X0: u64,
     pub X1: u64,
@@ -468,11 +413,6 @@ impl ::core::cmp::PartialEq for ARM64_NT_CONTEXT_0_0 {
     }
 }
 impl ::core::cmp::Eq for ARM64_NT_CONTEXT_0_0 {}
-impl ::core::default::Default for ARM64_NT_CONTEXT_0_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct ARM64_NT_NEON128 {
     pub Anonymous: ARM64_NT_NEON128_0,
     pub D: [f64; 2],
@@ -496,11 +436,6 @@ impl ::core::cmp::PartialEq for ARM64_NT_NEON128 {
     }
 }
 impl ::core::cmp::Eq for ARM64_NT_NEON128 {}
-impl ::core::default::Default for ARM64_NT_NEON128 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct ARM64_NT_NEON128_0 {
     pub Low: u64,
     pub High: i64,
@@ -525,11 +460,6 @@ impl ::core::cmp::PartialEq for ARM64_NT_NEON128_0 {
     }
 }
 impl ::core::cmp::Eq for ARM64_NT_NEON128_0 {}
-impl ::core::default::Default for ARM64_NT_NEON128_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct ArrayDimension {
     pub LowerBound: i64,
     pub Length: u64,
@@ -558,11 +488,6 @@ impl ::core::cmp::PartialEq for ArrayDimension {
     }
 }
 impl ::core::cmp::Eq for ArrayDimension {}
-impl ::core::default::Default for ArrayDimension {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const BIND_ALL_IMAGES: u32 = 4u32;
 pub const BIND_CACHE_IMPORT_DLLS: u32 = 8u32;
 pub const BIND_NO_BOUND_IMPORTS: u32 = 1u32;
@@ -1276,13 +1201,6 @@ impl ::core::cmp::PartialEq for CONTEXT {
 impl ::core::cmp::Eq for CONTEXT {}
 #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-impl ::core::default::Default for CONTEXT {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct CONTEXT_0 {
     pub Anonymous: CONTEXT_0_0,
     pub X: [u64; 31],
@@ -1307,13 +1225,6 @@ impl ::core::cmp::PartialEq for CONTEXT_0 {
 #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for CONTEXT_0 {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl ::core::default::Default for CONTEXT_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct CONTEXT_0_0 {
@@ -1440,13 +1351,6 @@ impl ::core::cmp::PartialEq for CONTEXT_0_0 {
 impl ::core::cmp::Eq for CONTEXT_0_0 {}
 #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-impl ::core::default::Default for CONTEXT_0_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct CONTEXT {
     pub P1Home: u64,
     pub P2Home: u64,
@@ -1562,13 +1466,6 @@ impl ::core::cmp::PartialEq for CONTEXT {
 impl ::core::cmp::Eq for CONTEXT {}
 #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-impl ::core::default::Default for CONTEXT {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct CONTEXT_0 {
     pub FltSave: XSAVE_FORMAT,
     pub Anonymous: CONTEXT_0_0,
@@ -1593,13 +1490,6 @@ impl ::core::cmp::PartialEq for CONTEXT_0 {
 #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for CONTEXT_0 {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl ::core::default::Default for CONTEXT_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct CONTEXT_0_0 {
@@ -1687,13 +1577,6 @@ impl ::core::cmp::PartialEq for CONTEXT_0_0 {
 impl ::core::cmp::Eq for CONTEXT_0_0 {}
 #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-impl ::core::default::Default for CONTEXT_0_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct CONTEXT {
     pub ContextFlags: u32,
     pub Dr0: u32,
@@ -1765,13 +1648,6 @@ impl ::core::cmp::PartialEq for CONTEXT {
 #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for CONTEXT {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl ::core::default::Default for CONTEXT {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct CPU_INFORMATION {
     pub X86CpuInfo: CPU_INFORMATION_1,
     pub OtherCpuInfo: CPU_INFORMATION_0,
@@ -1788,11 +1664,6 @@ impl ::core::cmp::PartialEq for CPU_INFORMATION {
     }
 }
 impl ::core::cmp::Eq for CPU_INFORMATION {}
-impl ::core::default::Default for CPU_INFORMATION {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct CPU_INFORMATION_0 {
     pub ProcessorFeatures: [u64; 2],
 }
@@ -1808,11 +1679,6 @@ impl ::core::cmp::PartialEq for CPU_INFORMATION_0 {
     }
 }
 impl ::core::cmp::Eq for CPU_INFORMATION_0 {}
-impl ::core::default::Default for CPU_INFORMATION_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct CPU_INFORMATION_1 {
     pub VendorId: [u32; 3],
     pub VersionInformation: u32,
@@ -1844,23 +1710,18 @@ impl ::core::cmp::PartialEq for CPU_INFORMATION_1 {
     }
 }
 impl ::core::cmp::Eq for CPU_INFORMATION_1 {}
-impl ::core::default::Default for CPU_INFORMATION_1 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Threading'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct CREATE_PROCESS_DEBUG_INFO {
     pub hFile: super::super::super::Foundation::HANDLE,
     pub hProcess: super::super::super::Foundation::HANDLE,
     pub hThread: super::super::super::Foundation::HANDLE,
-    pub lpBaseOfImage: *mut ::core::ffi::c_void,
+    pub lpBaseOfImage: MutPtr<::core::ffi::c_void>,
     pub dwDebugInfoFileOffset: u32,
     pub nDebugInfoSize: u32,
-    pub lpThreadLocalBase: *mut ::core::ffi::c_void,
+    pub lpThreadLocalBase: MutPtr<::core::ffi::c_void>,
     pub lpStartAddress: super::super::Threading::LPTHREAD_START_ROUTINE,
-    pub lpImageName: *mut ::core::ffi::c_void,
+    pub lpImageName: MutPtr<::core::ffi::c_void>,
     pub fUnicode: u16,
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Threading'*"]
@@ -1912,16 +1773,9 @@ impl ::core::cmp::PartialEq for CREATE_PROCESS_DEBUG_INFO {
 impl ::core::cmp::Eq for CREATE_PROCESS_DEBUG_INFO {}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Threading'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-impl ::core::default::Default for CREATE_PROCESS_DEBUG_INFO {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Threading'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct CREATE_THREAD_DEBUG_INFO {
     pub hThread: super::super::super::Foundation::HANDLE,
-    pub lpThreadLocalBase: *mut ::core::ffi::c_void,
+    pub lpThreadLocalBase: MutPtr<::core::ffi::c_void>,
     pub lpStartAddress: super::super::Threading::LPTHREAD_START_ROUTINE,
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Threading'*"]
@@ -1957,13 +1811,6 @@ impl ::core::cmp::PartialEq for CREATE_THREAD_DEBUG_INFO {
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Threading'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for CREATE_THREAD_DEBUG_INFO {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Threading'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl ::core::default::Default for CREATE_THREAD_DEBUG_INFO {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const CROSS_PLATFORM_MAXIMUM_PROCESSORS: u32 = 2048u32;
 pub const CURRENT_KD_SECONDARY_VERSION: u32 = 2u32;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -2017,11 +1864,6 @@ impl ::core::cmp::PartialEq for DBGHELP_DATA_REPORT_STRUCT {
     }
 }
 impl ::core::cmp::Eq for DBGHELP_DATA_REPORT_STRUCT {}
-impl ::core::default::Default for DBGHELP_DATA_REPORT_STRUCT {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct DBGKD_DEBUG_DATA_HEADER32 {
@@ -2062,13 +1904,6 @@ impl ::core::cmp::PartialEq for DBGKD_DEBUG_DATA_HEADER32 {
 impl ::core::cmp::Eq for DBGKD_DEBUG_DATA_HEADER32 {}
 #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-impl ::core::default::Default for DBGKD_DEBUG_DATA_HEADER32 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct DBGKD_DEBUG_DATA_HEADER64 {
     pub List: super::super::Kernel::LIST_ENTRY64,
     pub OwnerTag: u32,
@@ -2105,13 +1940,6 @@ impl ::core::cmp::PartialEq for DBGKD_DEBUG_DATA_HEADER64 {
 #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for DBGKD_DEBUG_DATA_HEADER64 {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl ::core::default::Default for DBGKD_DEBUG_DATA_HEADER64 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct DBGKD_GET_VERSION32 {
     pub MajorVersion: u16,
     pub MinorVersion: u16,
@@ -2173,11 +2001,6 @@ impl ::core::cmp::PartialEq for DBGKD_GET_VERSION32 {
     }
 }
 impl ::core::cmp::Eq for DBGKD_GET_VERSION32 {}
-impl ::core::default::Default for DBGKD_GET_VERSION32 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct DBGKD_GET_VERSION64 {
     pub MajorVersion: u16,
     pub MinorVersion: u16,
@@ -2239,11 +2062,6 @@ impl ::core::cmp::PartialEq for DBGKD_GET_VERSION64 {
     }
 }
 impl ::core::cmp::Eq for DBGKD_GET_VERSION64 {}
-impl ::core::default::Default for DBGKD_GET_VERSION64 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct DBGKD_MAJOR_TYPES(pub i32);
 pub const DBGKD_MAJOR_NT: DBGKD_MAJOR_TYPES = DBGKD_MAJOR_TYPES(0i32);
@@ -2536,11 +2354,6 @@ impl ::core::cmp::PartialEq for DEBUG_BREAKPOINT_PARAMETERS {
     }
 }
 impl ::core::cmp::Eq for DEBUG_BREAKPOINT_PARAMETERS {}
-impl ::core::default::Default for DEBUG_BREAKPOINT_PARAMETERS {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const DEBUG_BREAKPOINT_TIME: u32 = 2u32;
 pub const DEBUG_BREAK_EXECUTE: u32 = 4u32;
 pub const DEBUG_BREAK_IO: u32 = 8u32;
@@ -2580,11 +2393,6 @@ impl ::core::cmp::PartialEq for DEBUG_CACHED_SYMBOL_INFO {
     }
 }
 impl ::core::cmp::Eq for DEBUG_CACHED_SYMBOL_INFO {}
-impl ::core::default::Default for DEBUG_CACHED_SYMBOL_INFO {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const DEBUG_CDS_ALL: u32 = 4294967295u32;
 pub const DEBUG_CDS_DATA: u32 = 2u32;
 pub const DEBUG_CDS_REFRESH: u32 = 4u32;
@@ -2651,11 +2459,6 @@ impl ::core::cmp::PartialEq for DEBUG_CLIENT_CONTEXT {
     }
 }
 impl ::core::cmp::Eq for DEBUG_CLIENT_CONTEXT {}
-impl ::core::default::Default for DEBUG_CLIENT_CONTEXT {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const DEBUG_CLIENT_KD: u32 = 5u32;
 pub const DEBUG_CLIENT_NTKD: u32 = 3u32;
 pub const DEBUG_CLIENT_NTSD: u32 = 2u32;
@@ -2701,11 +2504,6 @@ impl ::core::cmp::PartialEq for DEBUG_CREATE_PROCESS_OPTIONS {
     }
 }
 impl ::core::cmp::Eq for DEBUG_CREATE_PROCESS_OPTIONS {}
-impl ::core::default::Default for DEBUG_CREATE_PROCESS_OPTIONS {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const DEBUG_CSS_ALL: u32 = 4294967295u32;
 pub const DEBUG_CSS_COLLAPSE_CHILDREN: u32 = 64u32;
 pub const DEBUG_CSS_LOADS: u32 = 1u32;
@@ -2933,13 +2731,6 @@ impl ::core::cmp::PartialEq for DEBUG_EVENT {
 impl ::core::cmp::Eq for DEBUG_EVENT {}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Threading'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-impl ::core::default::Default for DEBUG_EVENT {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Threading'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct DEBUG_EVENT_0 {
     pub Exception: EXCEPTION_DEBUG_INFO,
     pub CreateThread: CREATE_THREAD_DEBUG_INFO,
@@ -2979,13 +2770,6 @@ impl ::core::cmp::PartialEq for DEBUG_EVENT_0 {
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Threading'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for DEBUG_EVENT_0 {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Threading'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl ::core::default::Default for DEBUG_EVENT_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const DEBUG_EVENT_BREAKPOINT: u32 = 1u32;
 pub const DEBUG_EVENT_CHANGE_DEBUGGEE_STATE: u32 = 1024u32;
 pub const DEBUG_EVENT_CHANGE_ENGINE_STATE: u32 = 2048u32;
@@ -3048,11 +2832,6 @@ impl ::core::cmp::PartialEq for DEBUG_EVENT_CONTEXT {
     }
 }
 impl ::core::cmp::Eq for DEBUG_EVENT_CONTEXT {}
-impl ::core::default::Default for DEBUG_EVENT_CONTEXT {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const DEBUG_EVENT_CREATE_PROCESS: u32 = 16u32;
 pub const DEBUG_EVENT_CREATE_THREAD: u32 = 4u32;
 pub const DEBUG_EVENT_EXCEPTION: u32 = 2u32;
@@ -3124,11 +2903,6 @@ impl ::core::cmp::PartialEq for DEBUG_EXCEPTION_FILTER_PARAMETERS {
     }
 }
 impl ::core::cmp::Eq for DEBUG_EXCEPTION_FILTER_PARAMETERS {}
-impl ::core::default::Default for DEBUG_EXCEPTION_FILTER_PARAMETERS {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const DEBUG_EXECUTE_DEFAULT: u32 = 0u32;
 pub const DEBUG_EXECUTE_ECHO: u32 = 1u32;
 pub const DEBUG_EXECUTE_EVENT: u32 = 2048u32;
@@ -3240,11 +3014,6 @@ impl ::core::cmp::PartialEq for DEBUG_GET_TEXT_COMPLETIONS_IN {
     }
 }
 impl ::core::cmp::Eq for DEBUG_GET_TEXT_COMPLETIONS_IN {}
-impl ::core::default::Default for DEBUG_GET_TEXT_COMPLETIONS_IN {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const DEBUG_GET_TEXT_COMPLETIONS_IS_DOT_COMMAND: u32 = 1u32;
 pub const DEBUG_GET_TEXT_COMPLETIONS_IS_EXTENSION_COMMAND: u32 = 2u32;
 pub const DEBUG_GET_TEXT_COMPLETIONS_IS_SYMBOL: u32 = 4u32;
@@ -3285,11 +3054,6 @@ impl ::core::cmp::PartialEq for DEBUG_GET_TEXT_COMPLETIONS_OUT {
     }
 }
 impl ::core::cmp::Eq for DEBUG_GET_TEXT_COMPLETIONS_OUT {}
-impl ::core::default::Default for DEBUG_GET_TEXT_COMPLETIONS_OUT {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const DEBUG_GSEL_ALLOW_HIGHER: u32 = 4u32;
 pub const DEBUG_GSEL_ALLOW_LOWER: u32 = 2u32;
 pub const DEBUG_GSEL_DEFAULT: u32 = 0u32;
@@ -3333,11 +3097,6 @@ impl ::core::cmp::PartialEq for DEBUG_HANDLE_DATA_BASIC {
     }
 }
 impl ::core::cmp::Eq for DEBUG_HANDLE_DATA_BASIC {}
-impl ::core::default::Default for DEBUG_HANDLE_DATA_BASIC {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const DEBUG_HANDLE_DATA_TYPE_ALL_HANDLE_OPERATIONS: u32 = 10u32;
 pub const DEBUG_HANDLE_DATA_TYPE_BASIC: u32 = 0u32;
 pub const DEBUG_HANDLE_DATA_TYPE_HANDLE_COUNT: u32 = 3u32;
@@ -3398,11 +3157,6 @@ impl ::core::cmp::PartialEq for DEBUG_LAST_EVENT_INFO_BREAKPOINT {
     }
 }
 impl ::core::cmp::Eq for DEBUG_LAST_EVENT_INFO_BREAKPOINT {}
-impl ::core::default::Default for DEBUG_LAST_EVENT_INFO_BREAKPOINT {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct DEBUG_LAST_EVENT_INFO_EXCEPTION {
     pub ExceptionRecord: EXCEPTION_RECORD64,
     pub FirstChance: u32,
@@ -3427,11 +3181,6 @@ impl ::core::cmp::PartialEq for DEBUG_LAST_EVENT_INFO_EXCEPTION {
     }
 }
 impl ::core::cmp::Eq for DEBUG_LAST_EVENT_INFO_EXCEPTION {}
-impl ::core::default::Default for DEBUG_LAST_EVENT_INFO_EXCEPTION {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct DEBUG_LAST_EVENT_INFO_EXIT_PROCESS {
     pub ExitCode: u32,
 }
@@ -3454,11 +3203,6 @@ impl ::core::cmp::PartialEq for DEBUG_LAST_EVENT_INFO_EXIT_PROCESS {
     }
 }
 impl ::core::cmp::Eq for DEBUG_LAST_EVENT_INFO_EXIT_PROCESS {}
-impl ::core::default::Default for DEBUG_LAST_EVENT_INFO_EXIT_PROCESS {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct DEBUG_LAST_EVENT_INFO_EXIT_THREAD {
     pub ExitCode: u32,
 }
@@ -3481,11 +3225,6 @@ impl ::core::cmp::PartialEq for DEBUG_LAST_EVENT_INFO_EXIT_THREAD {
     }
 }
 impl ::core::cmp::Eq for DEBUG_LAST_EVENT_INFO_EXIT_THREAD {}
-impl ::core::default::Default for DEBUG_LAST_EVENT_INFO_EXIT_THREAD {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct DEBUG_LAST_EVENT_INFO_LOAD_MODULE {
     pub Base: u64,
 }
@@ -3508,11 +3247,6 @@ impl ::core::cmp::PartialEq for DEBUG_LAST_EVENT_INFO_LOAD_MODULE {
     }
 }
 impl ::core::cmp::Eq for DEBUG_LAST_EVENT_INFO_LOAD_MODULE {}
-impl ::core::default::Default for DEBUG_LAST_EVENT_INFO_LOAD_MODULE {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct DEBUG_LAST_EVENT_INFO_SERVICE_EXCEPTION {
     pub Kind: u32,
     pub DataSize: u32,
@@ -3539,11 +3273,6 @@ impl ::core::cmp::PartialEq for DEBUG_LAST_EVENT_INFO_SERVICE_EXCEPTION {
     }
 }
 impl ::core::cmp::Eq for DEBUG_LAST_EVENT_INFO_SERVICE_EXCEPTION {}
-impl ::core::default::Default for DEBUG_LAST_EVENT_INFO_SERVICE_EXCEPTION {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct DEBUG_LAST_EVENT_INFO_SYSTEM_ERROR {
     pub Error: u32,
     pub Level: u32,
@@ -3568,11 +3297,6 @@ impl ::core::cmp::PartialEq for DEBUG_LAST_EVENT_INFO_SYSTEM_ERROR {
     }
 }
 impl ::core::cmp::Eq for DEBUG_LAST_EVENT_INFO_SYSTEM_ERROR {}
-impl ::core::default::Default for DEBUG_LAST_EVENT_INFO_SYSTEM_ERROR {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct DEBUG_LAST_EVENT_INFO_UNLOAD_MODULE {
     pub Base: u64,
 }
@@ -3595,11 +3319,6 @@ impl ::core::cmp::PartialEq for DEBUG_LAST_EVENT_INFO_UNLOAD_MODULE {
     }
 }
 impl ::core::cmp::Eq for DEBUG_LAST_EVENT_INFO_UNLOAD_MODULE {}
-impl ::core::default::Default for DEBUG_LAST_EVENT_INFO_UNLOAD_MODULE {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const DEBUG_LEVEL_ASSEMBLY: u32 = 1u32;
 pub const DEBUG_LEVEL_SOURCE: u32 = 0u32;
 pub const DEBUG_LIVE_USER_NON_INVASIVE: u32 = 33u32;
@@ -3644,11 +3363,6 @@ impl ::core::cmp::PartialEq for DEBUG_MODULE_AND_ID {
     }
 }
 impl ::core::cmp::Eq for DEBUG_MODULE_AND_ID {}
-impl ::core::default::Default for DEBUG_MODULE_AND_ID {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const DEBUG_MODULE_EXE_MODULE: u32 = 4u32;
 pub const DEBUG_MODULE_EXPLICIT: u32 = 8u32;
 pub const DEBUG_MODULE_LOADED: u32 = 0u32;
@@ -3707,11 +3421,6 @@ impl ::core::cmp::PartialEq for DEBUG_MODULE_PARAMETERS {
     }
 }
 impl ::core::cmp::Eq for DEBUG_MODULE_PARAMETERS {}
-impl ::core::default::Default for DEBUG_MODULE_PARAMETERS {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const DEBUG_MODULE_SECONDARY: u32 = 16u32;
 pub const DEBUG_MODULE_SYM_BAD_CHECKSUM: u32 = 65536u32;
 pub const DEBUG_MODULE_SYNTHETIC: u32 = 32u32;
@@ -3745,11 +3454,6 @@ impl ::core::cmp::PartialEq for DEBUG_OFFSET_REGION {
     }
 }
 impl ::core::cmp::Eq for DEBUG_OFFSET_REGION {}
-impl ::core::default::Default for DEBUG_OFFSET_REGION {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const DEBUG_OFFSINFO_VIRTUAL_SOURCE: u32 = 1u32;
 pub const DEBUG_OUTCBF_COMBINED_EXPLICIT_FLUSH: u32 = 1u32;
 pub const DEBUG_OUTCBF_DML_HAS_SPECIAL_CHARACTERS: u32 = 4u32;
@@ -3845,11 +3549,6 @@ impl ::core::cmp::PartialEq for DEBUG_PROCESSOR_IDENTIFICATION_ALL {
     }
 }
 impl ::core::cmp::Eq for DEBUG_PROCESSOR_IDENTIFICATION_ALL {}
-impl ::core::default::Default for DEBUG_PROCESSOR_IDENTIFICATION_ALL {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct DEBUG_PROCESSOR_IDENTIFICATION_ALPHA {
     pub Type: u32,
     pub Revision: u32,
@@ -3874,11 +3573,6 @@ impl ::core::cmp::PartialEq for DEBUG_PROCESSOR_IDENTIFICATION_ALPHA {
     }
 }
 impl ::core::cmp::Eq for DEBUG_PROCESSOR_IDENTIFICATION_ALPHA {}
-impl ::core::default::Default for DEBUG_PROCESSOR_IDENTIFICATION_ALPHA {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct DEBUG_PROCESSOR_IDENTIFICATION_AMD64 {
     pub Family: u32,
     pub Model: u32,
@@ -3910,11 +3604,6 @@ impl ::core::cmp::PartialEq for DEBUG_PROCESSOR_IDENTIFICATION_AMD64 {
     }
 }
 impl ::core::cmp::Eq for DEBUG_PROCESSOR_IDENTIFICATION_AMD64 {}
-impl ::core::default::Default for DEBUG_PROCESSOR_IDENTIFICATION_AMD64 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct DEBUG_PROCESSOR_IDENTIFICATION_ARM {
     pub Model: u32,
     pub Revision: u32,
@@ -3943,11 +3632,6 @@ impl ::core::cmp::PartialEq for DEBUG_PROCESSOR_IDENTIFICATION_ARM {
     }
 }
 impl ::core::cmp::Eq for DEBUG_PROCESSOR_IDENTIFICATION_ARM {}
-impl ::core::default::Default for DEBUG_PROCESSOR_IDENTIFICATION_ARM {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct DEBUG_PROCESSOR_IDENTIFICATION_ARM64 {
     pub Model: u32,
     pub Revision: u32,
@@ -3976,11 +3660,6 @@ impl ::core::cmp::PartialEq for DEBUG_PROCESSOR_IDENTIFICATION_ARM64 {
     }
 }
 impl ::core::cmp::Eq for DEBUG_PROCESSOR_IDENTIFICATION_ARM64 {}
-impl ::core::default::Default for DEBUG_PROCESSOR_IDENTIFICATION_ARM64 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct DEBUG_PROCESSOR_IDENTIFICATION_IA64 {
     pub Model: u32,
     pub Revision: u32,
@@ -4015,11 +3694,6 @@ impl ::core::cmp::PartialEq for DEBUG_PROCESSOR_IDENTIFICATION_IA64 {
     }
 }
 impl ::core::cmp::Eq for DEBUG_PROCESSOR_IDENTIFICATION_IA64 {}
-impl ::core::default::Default for DEBUG_PROCESSOR_IDENTIFICATION_IA64 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct DEBUG_PROCESSOR_IDENTIFICATION_X86 {
     pub Family: u32,
     pub Model: u32,
@@ -4051,11 +3725,6 @@ impl ::core::cmp::PartialEq for DEBUG_PROCESSOR_IDENTIFICATION_X86 {
     }
 }
 impl ::core::cmp::Eq for DEBUG_PROCESSOR_IDENTIFICATION_X86 {}
-impl ::core::default::Default for DEBUG_PROCESSOR_IDENTIFICATION_X86 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const DEBUG_PROCESS_DETACH_ON_EXIT: u32 = 1u32;
 pub const DEBUG_PROCESS_ONLY_THIS_PROCESS: u32 = 2u32;
 pub const DEBUG_PROC_DESC_DEFAULT: u32 = 0u32;
@@ -4070,7 +3739,7 @@ pub struct DEBUG_READ_USER_MINIDUMP_STREAM {
     pub StreamType: u32,
     pub Flags: u32,
     pub Offset: u64,
-    pub Buffer: *mut ::core::ffi::c_void,
+    pub Buffer: MutPtr<::core::ffi::c_void>,
     pub BufferSize: u32,
     pub BufferUsed: u32,
 }
@@ -4103,11 +3772,6 @@ impl ::core::cmp::PartialEq for DEBUG_READ_USER_MINIDUMP_STREAM {
     }
 }
 impl ::core::cmp::Eq for DEBUG_READ_USER_MINIDUMP_STREAM {}
-impl ::core::default::Default for DEBUG_READ_USER_MINIDUMP_STREAM {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const DEBUG_REGISTERS_ALL: u32 = 7u32;
 pub const DEBUG_REGISTERS_DEFAULT: u32 = 0u32;
 pub const DEBUG_REGISTERS_FLOAT: u32 = 4u32;
@@ -4153,11 +3817,6 @@ impl ::core::cmp::PartialEq for DEBUG_REGISTER_DESCRIPTION {
     }
 }
 impl ::core::cmp::Eq for DEBUG_REGISTER_DESCRIPTION {}
-impl ::core::default::Default for DEBUG_REGISTER_DESCRIPTION {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const DEBUG_REGISTER_SUB_REGISTER: u32 = 1u32;
 pub const DEBUG_REGSRC_DEBUGGEE: u32 = 0u32;
 pub const DEBUG_REGSRC_EXPLICIT: u32 = 1u32;
@@ -4250,11 +3909,6 @@ impl ::core::cmp::PartialEq for DEBUG_SPECIFIC_FILTER_PARAMETERS {
     }
 }
 impl ::core::cmp::Eq for DEBUG_SPECIFIC_FILTER_PARAMETERS {}
-impl ::core::default::Default for DEBUG_SPECIFIC_FILTER_PARAMETERS {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const DEBUG_SRCFILE_SYMBOL_CHECKSUMINFO: u32 = 2u32;
 pub const DEBUG_SRCFILE_SYMBOL_TOKEN: u32 = 0u32;
 pub const DEBUG_SRCFILE_SYMBOL_TOKEN_SOURCE_COMMAND_WIDE: u32 = 1u32;
@@ -4330,11 +3984,6 @@ impl ::core::cmp::PartialEq for DEBUG_STACK_FRAME {
     }
 }
 impl ::core::cmp::Eq for DEBUG_STACK_FRAME {}
-impl ::core::default::Default for DEBUG_STACK_FRAME {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const DEBUG_STACK_FRAME_ADDRESSES: u32 = 8u32;
 pub const DEBUG_STACK_FRAME_ADDRESSES_RA_ONLY: u32 = 256u32;
 pub const DEBUG_STACK_FRAME_ARCH: u32 = 16384u32;
@@ -4390,11 +4039,6 @@ impl ::core::cmp::PartialEq for DEBUG_STACK_FRAME_EX {
     }
 }
 impl ::core::cmp::Eq for DEBUG_STACK_FRAME_EX {}
-impl ::core::default::Default for DEBUG_STACK_FRAME_EX {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const DEBUG_STACK_FRAME_MEMORY_USAGE: u32 = 512u32;
 pub const DEBUG_STACK_FRAME_NUMBERS: u32 = 64u32;
 pub const DEBUG_STACK_FRAME_OFFSETS: u32 = 4096u32;
@@ -4480,11 +4124,6 @@ impl ::core::cmp::PartialEq for DEBUG_SYMBOL_ENTRY {
     }
 }
 impl ::core::cmp::Eq for DEBUG_SYMBOL_ENTRY {}
-impl ::core::default::Default for DEBUG_SYMBOL_ENTRY {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const DEBUG_SYMBOL_EXPANDED: u32 = 16u32;
 pub const DEBUG_SYMBOL_EXPANSION_LEVEL_MASK: u32 = 15u32;
 pub const DEBUG_SYMBOL_IS_ARGUMENT: u32 = 256u32;
@@ -4528,11 +4167,6 @@ impl ::core::cmp::PartialEq for DEBUG_SYMBOL_PARAMETERS {
     }
 }
 impl ::core::cmp::Eq for DEBUG_SYMBOL_PARAMETERS {}
-impl ::core::default::Default for DEBUG_SYMBOL_PARAMETERS {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const DEBUG_SYMBOL_READ_ONLY: u32 = 32u32;
 pub struct DEBUG_SYMBOL_SOURCE_ENTRY {
     pub ModuleBase: u64,
@@ -4589,11 +4223,6 @@ impl ::core::cmp::PartialEq for DEBUG_SYMBOL_SOURCE_ENTRY {
     }
 }
 impl ::core::cmp::Eq for DEBUG_SYMBOL_SOURCE_ENTRY {}
-impl ::core::default::Default for DEBUG_SYMBOL_SOURCE_ENTRY {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const DEBUG_SYMENT_IS_CODE: u32 = 1u32;
 pub const DEBUG_SYMENT_IS_DATA: u32 = 2u32;
 pub const DEBUG_SYMENT_IS_LOCAL: u32 = 8u32;
@@ -4680,11 +4309,6 @@ impl ::core::cmp::PartialEq for DEBUG_THREAD_BASIC_INFORMATION {
     }
 }
 impl ::core::cmp::Eq for DEBUG_THREAD_BASIC_INFORMATION {}
-impl ::core::default::Default for DEBUG_THREAD_BASIC_INFORMATION {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct DEBUG_TYPED_DATA {
     pub ModBase: u64,
     pub Offset: u64,
@@ -4737,11 +4361,6 @@ impl ::core::cmp::PartialEq for DEBUG_TYPED_DATA {
     }
 }
 impl ::core::cmp::Eq for DEBUG_TYPED_DATA {}
-impl ::core::default::Default for DEBUG_TYPED_DATA {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const DEBUG_TYPED_DATA_IS_IN_MEMORY: u32 = 1u32;
 pub const DEBUG_TYPED_DATA_PHYSICAL_CACHED: u32 = 4u32;
 pub const DEBUG_TYPED_DATA_PHYSICAL_DEFAULT: u32 = 2u32;
@@ -4778,11 +4397,6 @@ impl ::core::cmp::PartialEq for DEBUG_VALUE {
     }
 }
 impl ::core::cmp::Eq for DEBUG_VALUE {}
-impl ::core::default::Default for DEBUG_VALUE {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct DEBUG_VALUE_0 {
     pub I8: u8,
     pub I16: u16,
@@ -4832,11 +4446,6 @@ impl ::core::cmp::PartialEq for DEBUG_VALUE_0 {
     }
 }
 impl ::core::cmp::Eq for DEBUG_VALUE_0 {}
-impl ::core::default::Default for DEBUG_VALUE_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct DEBUG_VALUE_0_0 {
     pub I64: u64,
     pub Nat: super::super::super::Foundation::BOOL,
@@ -4861,11 +4470,6 @@ impl ::core::cmp::PartialEq for DEBUG_VALUE_0_0 {
     }
 }
 impl ::core::cmp::Eq for DEBUG_VALUE_0_0 {}
-impl ::core::default::Default for DEBUG_VALUE_0_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct DEBUG_VALUE_0_1 {
     pub LowPart: u64,
     pub HighPart: i64,
@@ -4890,11 +4494,6 @@ impl ::core::cmp::PartialEq for DEBUG_VALUE_0_1 {
     }
 }
 impl ::core::cmp::Eq for DEBUG_VALUE_0_1 {}
-impl ::core::default::Default for DEBUG_VALUE_0_1 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct DEBUG_VALUE_0_2 {
     pub LowPart: u32,
     pub HighPart: u32,
@@ -4919,11 +4518,6 @@ impl ::core::cmp::PartialEq for DEBUG_VALUE_0_2 {
     }
 }
 impl ::core::cmp::Eq for DEBUG_VALUE_0_2 {}
-impl ::core::default::Default for DEBUG_VALUE_0_2 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const DEBUG_VALUE_FLOAT128: u32 = 9u32;
 pub const DEBUG_VALUE_FLOAT32: u32 = 5u32;
 pub const DEBUG_VALUE_FLOAT64: u32 = 6u32;
@@ -4946,9 +4540,9 @@ pub const DEBUG_VSOURCE_MAPPED_IMAGE: u32 = 2u32;
 pub const DEBUG_WAIT_DEFAULT: u32 = 0u32;
 pub type DIGEST_FUNCTION = ::core::option::Option<
     unsafe extern "system" fn(
-        refdata: *mut ::core::ffi::c_void,
-        pdata: *mut u8,
-        dwlength: u32,
+        refdata: MutPtr<::core::ffi::c_void>,
+        pData: MutPtr<u8>,
+        dwLength: u32,
     ) -> super::super::super::Foundation::BOOL,
 >;
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
@@ -4956,16 +4550,16 @@ pub type DIGEST_FUNCTION = ::core::option::Option<
 pub struct DISPATCHER_CONTEXT {
     pub ControlPc: usize,
     pub ImageBase: usize,
-    pub FunctionEntry: *mut IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY,
+    pub FunctionEntry: MutPtr<IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY>,
     pub EstablisherFrame: usize,
     pub TargetPc: usize,
-    pub ContextRecord: *mut CONTEXT,
+    pub ContextRecord: MutPtr<CONTEXT>,
     pub LanguageHandler: super::super::Kernel::EXCEPTION_ROUTINE,
-    pub HandlerData: *mut ::core::ffi::c_void,
-    pub HistoryTable: *mut UNWIND_HISTORY_TABLE,
+    pub HandlerData: MutPtr<::core::ffi::c_void>,
+    pub HistoryTable: MutPtr<UNWIND_HISTORY_TABLE>,
     pub ScopeIndex: u32,
     pub ControlPcIsUnwound: super::super::super::Foundation::BOOLEAN,
-    pub NonVolatileRegisters: *mut u8,
+    pub NonVolatileRegisters: MutPtr<u8>,
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
@@ -5020,23 +4614,16 @@ impl ::core::cmp::PartialEq for DISPATCHER_CONTEXT {
 impl ::core::cmp::Eq for DISPATCHER_CONTEXT {}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-impl ::core::default::Default for DISPATCHER_CONTEXT {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct DISPATCHER_CONTEXT {
     pub ControlPc: u64,
     pub ImageBase: u64,
-    pub FunctionEntry: *mut IMAGE_RUNTIME_FUNCTION_ENTRY,
+    pub FunctionEntry: MutPtr<IMAGE_RUNTIME_FUNCTION_ENTRY>,
     pub EstablisherFrame: u64,
     pub TargetIp: u64,
-    pub ContextRecord: *mut CONTEXT,
+    pub ContextRecord: MutPtr<CONTEXT>,
     pub LanguageHandler: super::super::Kernel::EXCEPTION_ROUTINE,
-    pub HandlerData: *mut ::core::ffi::c_void,
-    pub HistoryTable: *mut UNWIND_HISTORY_TABLE,
+    pub HandlerData: MutPtr<::core::ffi::c_void>,
+    pub HistoryTable: MutPtr<UNWIND_HISTORY_TABLE>,
     pub ScopeIndex: u32,
     pub Fill0: u32,
 }
@@ -5089,13 +4676,6 @@ impl ::core::cmp::PartialEq for DISPATCHER_CONTEXT {
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for DISPATCHER_CONTEXT {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl ::core::default::Default for DISPATCHER_CONTEXT {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const DMP_CONTEXT_RECORD_SIZE_32: u32 = 1200u32;
 pub const DMP_CONTEXT_RECORD_SIZE_64: u32 = 3000u32;
 pub const DMP_HEADER_COMMENT_SIZE: u32 = 128u32;
@@ -5147,11 +4727,6 @@ impl ::core::cmp::PartialEq for DUMP_FILE_ATTRIBUTES {
     }
 }
 impl ::core::cmp::Eq for DUMP_FILE_ATTRIBUTES {}
-impl ::core::default::Default for DUMP_FILE_ATTRIBUTES {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct DUMP_FILE_ATTRIBUTES_0 {
     pub _bitfield: u32,
 }
@@ -5174,11 +4749,6 @@ impl ::core::cmp::PartialEq for DUMP_FILE_ATTRIBUTES_0 {
     }
 }
 impl ::core::cmp::Eq for DUMP_FILE_ATTRIBUTES_0 {}
-impl ::core::default::Default for DUMP_FILE_ATTRIBUTES_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct DUMP_HEADER32 {
     pub Signature: u32,
     pub ValidDump: u32,
@@ -5268,11 +4838,6 @@ impl ::core::cmp::PartialEq for DUMP_HEADER32 {
     }
 }
 impl ::core::cmp::Eq for DUMP_HEADER32 {}
-impl ::core::default::Default for DUMP_HEADER32 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct DUMP_HEADER32_0 {
     pub PhysicalMemoryBlock: PHYSICAL_MEMORY_DESCRIPTOR32,
     pub PhysicalMemoryBlockBuffer: [u8; 700],
@@ -5290,11 +4855,6 @@ impl ::core::cmp::PartialEq for DUMP_HEADER32_0 {
     }
 }
 impl ::core::cmp::Eq for DUMP_HEADER32_0 {}
-impl ::core::default::Default for DUMP_HEADER32_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct DUMP_HEADER64 {
     pub Signature: u32,
     pub ValidDump: u32,
@@ -5380,11 +4940,6 @@ impl ::core::cmp::PartialEq for DUMP_HEADER64 {
     }
 }
 impl ::core::cmp::Eq for DUMP_HEADER64 {}
-impl ::core::default::Default for DUMP_HEADER64 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct DUMP_HEADER64_0 {
     pub PhysicalMemoryBlock: PHYSICAL_MEMORY_DESCRIPTOR64,
     pub PhysicalMemoryBlockBuffer: [u8; 700],
@@ -5402,11 +4957,6 @@ impl ::core::cmp::PartialEq for DUMP_HEADER64_0 {
     }
 }
 impl ::core::cmp::Eq for DUMP_HEADER64_0 {}
-impl ::core::default::Default for DUMP_HEADER64_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const DUMP_SUMMARY_VALID_CURRENT_USER_VA: u32 = 2u32;
 pub const DUMP_SUMMARY_VALID_KERNEL_VA: u32 = 1u32;
 pub const DefaultDebugSessionProvider: ::win32::core::GUID =
@@ -5470,16 +5020,11 @@ impl ::core::cmp::PartialEq for EXCEPTION_DEBUG_INFO {
     }
 }
 impl ::core::cmp::Eq for EXCEPTION_DEBUG_INFO {}
-impl ::core::default::Default for EXCEPTION_DEBUG_INFO {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct EXCEPTION_POINTERS {
-    pub ExceptionRecord: *mut EXCEPTION_RECORD,
-    pub ContextRecord: *mut CONTEXT,
+    pub ExceptionRecord: MutPtr<EXCEPTION_RECORD>,
+    pub ContextRecord: MutPtr<CONTEXT>,
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
@@ -5511,18 +5056,11 @@ impl ::core::cmp::PartialEq for EXCEPTION_POINTERS {
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for EXCEPTION_POINTERS {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl ::core::default::Default for EXCEPTION_POINTERS {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct EXCEPTION_RECORD {
     pub ExceptionCode: super::super::super::Foundation::NTSTATUS,
     pub ExceptionFlags: u32,
-    pub ExceptionRecord: *mut EXCEPTION_RECORD,
-    pub ExceptionAddress: *mut ::core::ffi::c_void,
+    pub ExceptionRecord: MutPtr<EXCEPTION_RECORD>,
+    pub ExceptionAddress: MutPtr<::core::ffi::c_void>,
     pub NumberParameters: u32,
     pub ExceptionInformation: [usize; 15],
 }
@@ -5555,11 +5093,6 @@ impl ::core::cmp::PartialEq for EXCEPTION_RECORD {
     }
 }
 impl ::core::cmp::Eq for EXCEPTION_RECORD {}
-impl ::core::default::Default for EXCEPTION_RECORD {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct EXCEPTION_RECORD32 {
     pub ExceptionCode: super::super::super::Foundation::NTSTATUS,
     pub ExceptionFlags: u32,
@@ -5597,11 +5130,6 @@ impl ::core::cmp::PartialEq for EXCEPTION_RECORD32 {
     }
 }
 impl ::core::cmp::Eq for EXCEPTION_RECORD32 {}
-impl ::core::default::Default for EXCEPTION_RECORD32 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct EXCEPTION_RECORD64 {
     pub ExceptionCode: super::super::super::Foundation::NTSTATUS,
     pub ExceptionFlags: u32,
@@ -5642,11 +5170,6 @@ impl ::core::cmp::PartialEq for EXCEPTION_RECORD64 {
     }
 }
 impl ::core::cmp::Eq for EXCEPTION_RECORD64 {}
-impl ::core::default::Default for EXCEPTION_RECORD64 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const EXIT_ON_CONTROLC: u32 = 8u32;
 pub struct EXIT_PROCESS_DEBUG_INFO {
     pub dwExitCode: u32,
@@ -5670,11 +5193,6 @@ impl ::core::cmp::PartialEq for EXIT_PROCESS_DEBUG_INFO {
     }
 }
 impl ::core::cmp::Eq for EXIT_PROCESS_DEBUG_INFO {}
-impl ::core::default::Default for EXIT_PROCESS_DEBUG_INFO {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct EXIT_THREAD_DEBUG_INFO {
     pub dwExitCode: u32,
 }
@@ -5697,11 +5215,6 @@ impl ::core::cmp::PartialEq for EXIT_THREAD_DEBUG_INFO {
     }
 }
 impl ::core::cmp::Eq for EXIT_THREAD_DEBUG_INFO {}
-impl ::core::default::Default for EXIT_THREAD_DEBUG_INFO {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct EXTSTACKTRACE {
     pub FramePointer: u32,
     pub ProgramCounter: u32,
@@ -5733,11 +5246,6 @@ impl ::core::cmp::PartialEq for EXTSTACKTRACE {
     }
 }
 impl ::core::cmp::Eq for EXTSTACKTRACE {}
-impl ::core::default::Default for EXTSTACKTRACE {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct EXTSTACKTRACE32 {
     pub FramePointer: u32,
     pub ProgramCounter: u32,
@@ -5769,11 +5277,6 @@ impl ::core::cmp::PartialEq for EXTSTACKTRACE32 {
     }
 }
 impl ::core::cmp::Eq for EXTSTACKTRACE32 {}
-impl ::core::default::Default for EXTSTACKTRACE32 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct EXTSTACKTRACE64 {
     pub FramePointer: u64,
     pub ProgramCounter: u64,
@@ -5805,11 +5308,6 @@ impl ::core::cmp::PartialEq for EXTSTACKTRACE64 {
     }
 }
 impl ::core::cmp::Eq for EXTSTACKTRACE64 {}
-impl ::core::default::Default for EXTSTACKTRACE64 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct EXT_API_VERSION {
     pub MajorVersion: u16,
     pub MinorVersion: u16,
@@ -5841,11 +5339,6 @@ impl ::core::cmp::PartialEq for EXT_API_VERSION {
     }
 }
 impl ::core::cmp::Eq for EXT_API_VERSION {}
-impl ::core::default::Default for EXT_API_VERSION {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const EXT_API_VERSION_NUMBER: u32 = 5u32;
 pub const EXT_API_VERSION_NUMBER32: u32 = 5u32;
 pub const EXT_API_VERSION_NUMBER64: u32 = 6u32;
@@ -5854,10 +5347,10 @@ pub struct EXT_FIND_FILE {
     pub IndexedSize: u64,
     pub ImageTimeDateStamp: u32,
     pub ImageCheckSum: u32,
-    pub ExtraInfo: *mut ::core::ffi::c_void,
+    pub ExtraInfo: MutPtr<::core::ffi::c_void>,
     pub ExtraInfoSize: u32,
     pub Flags: u32,
-    pub FileMapping: *mut ::core::ffi::c_void,
+    pub FileMapping: MutPtr<::core::ffi::c_void>,
     pub FileMappingSize: u64,
     pub FileHandle: super::super::super::Foundation::HANDLE,
     pub FoundFileName: ::win32::core::PWSTR,
@@ -5904,11 +5397,6 @@ impl ::core::cmp::PartialEq for EXT_FIND_FILE {
     }
 }
 impl ::core::cmp::Eq for EXT_FIND_FILE {}
-impl ::core::default::Default for EXT_FIND_FILE {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const EXT_FIND_FILE_ALLOW_GIVEN_PATH: u32 = 1u32;
 pub struct EXT_MATCH_PATTERN_A {
     pub Str: ::win32::core::PCSTR,
@@ -5938,11 +5426,6 @@ impl ::core::cmp::PartialEq for EXT_MATCH_PATTERN_A {
     }
 }
 impl ::core::cmp::Eq for EXT_MATCH_PATTERN_A {}
-impl ::core::default::Default for EXT_MATCH_PATTERN_A {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const EXT_OUTPUT_VER: u32 = 1u32;
 pub const EXT_TDF_PHYSICAL_CACHED: u32 = 4u32;
 pub const EXT_TDF_PHYSICAL_DEFAULT: u32 = 2u32;
@@ -6057,11 +5540,6 @@ impl ::core::cmp::PartialEq for EXT_TYPED_DATA {
     }
 }
 impl ::core::cmp::Eq for EXT_TYPED_DATA {}
-impl ::core::default::Default for EXT_TYPED_DATA {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct EX_PROP_INFO_FLAGS(pub i32);
 pub const EX_PROP_INFO_ID: EX_PROP_INFO_FLAGS = EX_PROP_INFO_FLAGS(256i32);
@@ -6124,12 +5602,12 @@ pub struct ExtendedDebugPropertyInfo {
     pub pszValue: ::win32::core::PWSTR,
     pub pszFullName: ::win32::core::PWSTR,
     pub dwAttrib: u32,
-    pub pDebugProp: ::core::option::Option<IDebugProperty>,
+    pub pDebugProp: IDebugProperty,
     pub nDISPID: u32,
     pub nType: u32,
     pub varValue: super::super::Com::VARIANT,
-    pub plbValue: ::core::option::Option<super::super::Com::StructuredStorage::ILockBytes>,
-    pub pDebugExtProp: ::core::option::Option<IDebugExtendedProperty>,
+    pub plbValue: super::super::Com::StructuredStorage::ILockBytes,
+    pub pDebugExtProp: IDebugExtendedProperty,
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
@@ -6172,13 +5650,6 @@ impl ::core::cmp::PartialEq for ExtendedDebugPropertyInfo {
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for ExtendedDebugPropertyInfo {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.System.Ole'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl ::core::default::Default for ExtendedDebugPropertyInfo {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct FACILITY_CODE(pub u32);
 pub const FACILITY_NULL: FACILITY_CODE = FACILITY_CODE(0u32);
@@ -6353,8 +5824,8 @@ impl ::core::fmt::Debug for FACILITY_CODE {
 pub const FACILITY_JsDEBUG: u32 = 3527u32;
 pub const FIELDS_DID_NOT_MATCH: u32 = 4u32;
 pub struct FIELD_INFO {
-    pub fName: *mut u8,
-    pub printName: *mut u8,
+    pub fName: MutPtr<u8>,
+    pub printName: MutPtr<u8>,
     pub size: u32,
     pub fOptions: u32,
     pub address: u64,
@@ -6387,14 +5858,9 @@ impl ::core::cmp::PartialEq for FIELD_INFO {
     }
 }
 impl ::core::cmp::Eq for FIELD_INFO {}
-impl ::core::default::Default for FIELD_INFO {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct FIELD_INFO_0 {
-    pub fieldCallBack: *mut ::core::ffi::c_void,
-    pub pBuffer: *mut ::core::ffi::c_void,
+    pub fieldCallBack: MutPtr<::core::ffi::c_void>,
+    pub pBuffer: MutPtr<::core::ffi::c_void>,
 }
 impl ::core::marker::Copy for FIELD_INFO_0 {}
 impl ::core::clone::Clone for FIELD_INFO_0 {
@@ -6408,11 +5874,6 @@ impl ::core::cmp::PartialEq for FIELD_INFO_0 {
     }
 }
 impl ::core::cmp::Eq for FIELD_INFO_0 {}
-impl ::core::default::Default for FIELD_INFO_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct FIELD_INFO_1 {
     pub Position: u16,
     pub Size: u16,
@@ -6437,11 +5898,6 @@ impl ::core::cmp::PartialEq for FIELD_INFO_1 {
     }
 }
 impl ::core::cmp::Eq for FIELD_INFO_1 {}
-impl ::core::default::Default for FIELD_INFO_1 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const FLAG_ENGINE_PRESENT: u32 = 4u32;
 pub const FLAG_ENGOPT_DISALLOW_NETWORK_PATHS: u32 = 8u32;
 pub const FLAG_OVERRIDE_ARM_MACHINE_TYPE: u32 = 16u32;
@@ -6533,11 +5989,6 @@ impl ::core::cmp::PartialEq for FPO_DATA {
     }
 }
 impl ::core::cmp::Eq for FPO_DATA {}
-impl ::core::default::Default for FPO_DATA {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const GETATTRFLAG_HUMANTEXT: u32 = 32768u32;
 pub const GETATTRFLAG_THIS: u32 = 256u32;
 pub const GETATTRTYPE_DEPSCAN: u32 = 1u32;
@@ -6545,7 +5996,7 @@ pub const GETATTRTYPE_NORMAL: u32 = 0u32;
 pub struct GET_CONTEXT_EX {
     pub Status: u32,
     pub ContextSize: u32,
-    pub pContext: *mut ::core::ffi::c_void,
+    pub pContext: MutPtr<::core::ffi::c_void>,
 }
 impl ::core::marker::Copy for GET_CONTEXT_EX {}
 impl ::core::clone::Clone for GET_CONTEXT_EX {
@@ -6570,11 +6021,6 @@ impl ::core::cmp::PartialEq for GET_CONTEXT_EX {
     }
 }
 impl ::core::cmp::Eq for GET_CONTEXT_EX {}
-impl ::core::default::Default for GET_CONTEXT_EX {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct GET_CURRENT_PROCESS_ADDRESS {
     pub Processor: u32,
     pub CurrentThread: u64,
@@ -6603,11 +6049,6 @@ impl ::core::cmp::PartialEq for GET_CURRENT_PROCESS_ADDRESS {
     }
 }
 impl ::core::cmp::Eq for GET_CURRENT_PROCESS_ADDRESS {}
-impl ::core::default::Default for GET_CURRENT_PROCESS_ADDRESS {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct GET_CURRENT_THREAD_ADDRESS {
     pub Processor: u32,
     pub Address: u64,
@@ -6632,11 +6073,6 @@ impl ::core::cmp::PartialEq for GET_CURRENT_THREAD_ADDRESS {
     }
 }
 impl ::core::cmp::Eq for GET_CURRENT_THREAD_ADDRESS {}
-impl ::core::default::Default for GET_CURRENT_THREAD_ADDRESS {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct GET_EXPRESSION_EX {
     pub Expression: ::win32::core::PCSTR,
     pub Remainder: ::win32::core::PCSTR,
@@ -6665,11 +6101,6 @@ impl ::core::cmp::PartialEq for GET_EXPRESSION_EX {
     }
 }
 impl ::core::cmp::Eq for GET_EXPRESSION_EX {}
-impl ::core::default::Default for GET_EXPRESSION_EX {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct GET_INPUT_LINE {
     pub Prompt: ::win32::core::PCSTR,
     pub Buffer: ::win32::core::PSTR,
@@ -6701,11 +6132,6 @@ impl ::core::cmp::PartialEq for GET_INPUT_LINE {
     }
 }
 impl ::core::cmp::Eq for GET_INPUT_LINE {}
-impl ::core::default::Default for GET_INPUT_LINE {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct GET_PEB_ADDRESS {
     pub CurrentThread: u64,
     pub Address: u64,
@@ -6730,11 +6156,6 @@ impl ::core::cmp::PartialEq for GET_PEB_ADDRESS {
     }
 }
 impl ::core::cmp::Eq for GET_PEB_ADDRESS {}
-impl ::core::default::Default for GET_PEB_ADDRESS {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct GET_SET_SYMPATH {
     pub Args: ::win32::core::PCSTR,
     pub Result: ::win32::core::PSTR,
@@ -6761,11 +6182,6 @@ impl ::core::cmp::PartialEq for GET_SET_SYMPATH {
     }
 }
 impl ::core::cmp::Eq for GET_SET_SYMPATH {}
-impl ::core::default::Default for GET_SET_SYMPATH {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct GET_TEB_ADDRESS {
     pub Address: u64,
 }
@@ -6788,11 +6204,6 @@ impl ::core::cmp::PartialEq for GET_TEB_ADDRESS {
     }
 }
 impl ::core::cmp::Eq for GET_TEB_ADDRESS {}
-impl ::core::default::Default for GET_TEB_ADDRESS {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const IG_DISASSEMBLE_BUFFER: u32 = 44u32;
 pub const IG_DUMP_SYMBOL_INFO: u32 = 22u32;
 pub const IG_FIND_FILE: u32 = 40u32;
@@ -6847,7 +6258,7 @@ pub struct IMAGEHLP_CBA_EVENT {
     pub severity: IMAGEHLP_CBA_EVENT_SEVERITY,
     pub code: u32,
     pub desc: ::win32::core::PSTR,
-    pub object: *mut ::core::ffi::c_void,
+    pub object: MutPtr<::core::ffi::c_void>,
 }
 impl ::core::marker::Copy for IMAGEHLP_CBA_EVENT {}
 impl ::core::clone::Clone for IMAGEHLP_CBA_EVENT {
@@ -6874,16 +6285,11 @@ impl ::core::cmp::PartialEq for IMAGEHLP_CBA_EVENT {
     }
 }
 impl ::core::cmp::Eq for IMAGEHLP_CBA_EVENT {}
-impl ::core::default::Default for IMAGEHLP_CBA_EVENT {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct IMAGEHLP_CBA_EVENTW {
     pub severity: IMAGEHLP_CBA_EVENT_SEVERITY,
     pub code: u32,
     pub desc: ::win32::core::PCWSTR,
-    pub object: *mut ::core::ffi::c_void,
+    pub object: MutPtr<::core::ffi::c_void>,
 }
 impl ::core::marker::Copy for IMAGEHLP_CBA_EVENTW {}
 impl ::core::clone::Clone for IMAGEHLP_CBA_EVENTW {
@@ -6910,11 +6316,6 @@ impl ::core::cmp::PartialEq for IMAGEHLP_CBA_EVENTW {
     }
 }
 impl ::core::cmp::Eq for IMAGEHLP_CBA_EVENTW {}
-impl ::core::default::Default for IMAGEHLP_CBA_EVENTW {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct IMAGEHLP_CBA_EVENT_SEVERITY(pub u32);
 pub const sevInfo: IMAGEHLP_CBA_EVENT_SEVERITY = IMAGEHLP_CBA_EVENT_SEVERITY(0u32);
@@ -6941,9 +6342,9 @@ impl ::core::fmt::Debug for IMAGEHLP_CBA_EVENT_SEVERITY {
 }
 pub struct IMAGEHLP_CBA_READ_MEMORY {
     pub addr: u64,
-    pub buf: *mut ::core::ffi::c_void,
+    pub buf: MutPtr<::core::ffi::c_void>,
     pub bytes: u32,
-    pub bytesread: *mut u32,
+    pub bytesread: MutPtr<u32>,
 }
 impl ::core::marker::Copy for IMAGEHLP_CBA_READ_MEMORY {}
 impl ::core::clone::Clone for IMAGEHLP_CBA_READ_MEMORY {
@@ -6970,11 +6371,6 @@ impl ::core::cmp::PartialEq for IMAGEHLP_CBA_READ_MEMORY {
     }
 }
 impl ::core::cmp::Eq for IMAGEHLP_CBA_READ_MEMORY {}
-impl ::core::default::Default for IMAGEHLP_CBA_READ_MEMORY {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct IMAGEHLP_DEFERRED_SYMBOL_LOAD {
     pub SizeOfStruct: u32,
     pub BaseOfImage: u32,
@@ -7015,11 +6411,6 @@ impl ::core::cmp::PartialEq for IMAGEHLP_DEFERRED_SYMBOL_LOAD {
     }
 }
 impl ::core::cmp::Eq for IMAGEHLP_DEFERRED_SYMBOL_LOAD {}
-impl ::core::default::Default for IMAGEHLP_DEFERRED_SYMBOL_LOAD {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct IMAGEHLP_DEFERRED_SYMBOL_LOAD64 {
     pub SizeOfStruct: u32,
     pub BaseOfImage: u64,
@@ -7063,11 +6454,6 @@ impl ::core::cmp::PartialEq for IMAGEHLP_DEFERRED_SYMBOL_LOAD64 {
     }
 }
 impl ::core::cmp::Eq for IMAGEHLP_DEFERRED_SYMBOL_LOAD64 {}
-impl ::core::default::Default for IMAGEHLP_DEFERRED_SYMBOL_LOAD64 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct IMAGEHLP_DEFERRED_SYMBOL_LOADW64 {
     pub SizeOfStruct: u32,
     pub BaseOfImage: u64,
@@ -7111,15 +6497,10 @@ impl ::core::cmp::PartialEq for IMAGEHLP_DEFERRED_SYMBOL_LOADW64 {
     }
 }
 impl ::core::cmp::Eq for IMAGEHLP_DEFERRED_SYMBOL_LOADW64 {}
-impl ::core::default::Default for IMAGEHLP_DEFERRED_SYMBOL_LOADW64 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct IMAGEHLP_DUPLICATE_SYMBOL {
     pub SizeOfStruct: u32,
     pub NumberOfDups: u32,
-    pub Symbol: *mut IMAGEHLP_SYMBOL,
+    pub Symbol: MutPtr<IMAGEHLP_SYMBOL>,
     pub SelectedSymbol: u32,
 }
 impl ::core::marker::Copy for IMAGEHLP_DUPLICATE_SYMBOL {}
@@ -7147,15 +6528,10 @@ impl ::core::cmp::PartialEq for IMAGEHLP_DUPLICATE_SYMBOL {
     }
 }
 impl ::core::cmp::Eq for IMAGEHLP_DUPLICATE_SYMBOL {}
-impl ::core::default::Default for IMAGEHLP_DUPLICATE_SYMBOL {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct IMAGEHLP_DUPLICATE_SYMBOL64 {
     pub SizeOfStruct: u32,
     pub NumberOfDups: u32,
-    pub Symbol: *mut IMAGEHLP_SYMBOL64,
+    pub Symbol: MutPtr<IMAGEHLP_SYMBOL64>,
     pub SelectedSymbol: u32,
 }
 impl ::core::marker::Copy for IMAGEHLP_DUPLICATE_SYMBOL64 {}
@@ -7183,11 +6559,6 @@ impl ::core::cmp::PartialEq for IMAGEHLP_DUPLICATE_SYMBOL64 {
     }
 }
 impl ::core::cmp::Eq for IMAGEHLP_DUPLICATE_SYMBOL64 {}
-impl ::core::default::Default for IMAGEHLP_DUPLICATE_SYMBOL64 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct IMAGEHLP_EXTENDED_OPTIONS(pub i32);
 pub const SYMOPT_EX_DISABLEACCESSTIMEUPDATE: IMAGEHLP_EXTENDED_OPTIONS =
@@ -7244,21 +6615,21 @@ pub struct IMAGEHLP_GET_TYPE_INFO_PARAMS {
     pub SizeOfStruct: u32,
     pub Flags: IMAGEHLP_GET_TYPE_INFO_FLAGS,
     pub NumIds: u32,
-    pub TypeIds: *mut u32,
+    pub TypeIds: MutPtr<u32>,
     pub TagFilter: u64,
     pub NumReqs: u32,
-    pub ReqKinds: *mut IMAGEHLP_SYMBOL_TYPE_INFO,
-    pub ReqOffsets: *mut usize,
-    pub ReqSizes: *mut u32,
+    pub ReqKinds: MutPtr<IMAGEHLP_SYMBOL_TYPE_INFO>,
+    pub ReqOffsets: MutPtr<usize>,
+    pub ReqSizes: MutPtr<u32>,
     pub ReqStride: usize,
     pub BufferSize: usize,
-    pub Buffer: *mut ::core::ffi::c_void,
+    pub Buffer: MutPtr<::core::ffi::c_void>,
     pub EntriesMatched: u32,
     pub EntriesFilled: u32,
     pub TagsFound: u64,
     pub AllReqsValid: u64,
     pub NumReqsValid: u32,
-    pub ReqsValid: *mut u64,
+    pub ReqsValid: MutPtr<u64>,
 }
 impl ::core::marker::Copy for IMAGEHLP_GET_TYPE_INFO_PARAMS {}
 impl ::core::clone::Clone for IMAGEHLP_GET_TYPE_INFO_PARAMS {
@@ -7313,11 +6684,6 @@ impl ::core::cmp::PartialEq for IMAGEHLP_GET_TYPE_INFO_PARAMS {
     }
 }
 impl ::core::cmp::Eq for IMAGEHLP_GET_TYPE_INFO_PARAMS {}
-impl ::core::default::Default for IMAGEHLP_GET_TYPE_INFO_PARAMS {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct IMAGEHLP_HD_TYPE(pub i32);
 pub const hdBase: IMAGEHLP_HD_TYPE = IMAGEHLP_HD_TYPE(0i32);
@@ -7342,7 +6708,7 @@ impl ::core::fmt::Debug for IMAGEHLP_HD_TYPE {
 }
 pub struct IMAGEHLP_LINE {
     pub SizeOfStruct: u32,
-    pub Key: *mut ::core::ffi::c_void,
+    pub Key: MutPtr<::core::ffi::c_void>,
     pub LineNumber: u32,
     pub FileName: ::win32::core::PSTR,
     pub Address: u32,
@@ -7374,14 +6740,9 @@ impl ::core::cmp::PartialEq for IMAGEHLP_LINE {
     }
 }
 impl ::core::cmp::Eq for IMAGEHLP_LINE {}
-impl ::core::default::Default for IMAGEHLP_LINE {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct IMAGEHLP_LINE64 {
     pub SizeOfStruct: u32,
-    pub Key: *mut ::core::ffi::c_void,
+    pub Key: MutPtr<::core::ffi::c_void>,
     pub LineNumber: u32,
     pub FileName: ::win32::core::PSTR,
     pub Address: u64,
@@ -7413,14 +6774,9 @@ impl ::core::cmp::PartialEq for IMAGEHLP_LINE64 {
     }
 }
 impl ::core::cmp::Eq for IMAGEHLP_LINE64 {}
-impl ::core::default::Default for IMAGEHLP_LINE64 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct IMAGEHLP_LINEW {
     pub SizeOfStruct: u32,
-    pub Key: *mut ::core::ffi::c_void,
+    pub Key: MutPtr<::core::ffi::c_void>,
     pub LineNumber: u32,
     pub FileName: ::win32::core::PSTR,
     pub Address: u64,
@@ -7452,14 +6808,9 @@ impl ::core::cmp::PartialEq for IMAGEHLP_LINEW {
     }
 }
 impl ::core::cmp::Eq for IMAGEHLP_LINEW {}
-impl ::core::default::Default for IMAGEHLP_LINEW {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct IMAGEHLP_LINEW64 {
     pub SizeOfStruct: u32,
-    pub Key: *mut ::core::ffi::c_void,
+    pub Key: MutPtr<::core::ffi::c_void>,
     pub LineNumber: u32,
     pub FileName: ::win32::core::PWSTR,
     pub Address: u64,
@@ -7491,11 +6842,6 @@ impl ::core::cmp::PartialEq for IMAGEHLP_LINEW64 {
     }
 }
 impl ::core::cmp::Eq for IMAGEHLP_LINEW64 {}
-impl ::core::default::Default for IMAGEHLP_LINEW64 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct IMAGEHLP_MODULE {
     pub SizeOfStruct: u32,
     pub BaseOfImage: u32,
@@ -7545,11 +6891,6 @@ impl ::core::cmp::PartialEq for IMAGEHLP_MODULE {
     }
 }
 impl ::core::cmp::Eq for IMAGEHLP_MODULE {}
-impl ::core::default::Default for IMAGEHLP_MODULE {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct IMAGEHLP_MODULE64 {
     pub SizeOfStruct: u32,
     pub BaseOfImage: u64,
@@ -7644,11 +6985,6 @@ impl ::core::cmp::PartialEq for IMAGEHLP_MODULE64 {
     }
 }
 impl ::core::cmp::Eq for IMAGEHLP_MODULE64 {}
-impl ::core::default::Default for IMAGEHLP_MODULE64 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct IMAGEHLP_MODULE64_EX {
     pub Module: IMAGEHLP_MODULE64,
     pub RegionFlags: u32,
@@ -7673,11 +7009,6 @@ impl ::core::cmp::PartialEq for IMAGEHLP_MODULE64_EX {
     }
 }
 impl ::core::cmp::Eq for IMAGEHLP_MODULE64_EX {}
-impl ::core::default::Default for IMAGEHLP_MODULE64_EX {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct IMAGEHLP_MODULEW {
     pub SizeOfStruct: u32,
     pub BaseOfImage: u32,
@@ -7727,11 +7058,6 @@ impl ::core::cmp::PartialEq for IMAGEHLP_MODULEW {
     }
 }
 impl ::core::cmp::Eq for IMAGEHLP_MODULEW {}
-impl ::core::default::Default for IMAGEHLP_MODULEW {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct IMAGEHLP_MODULEW64 {
     pub SizeOfStruct: u32,
     pub BaseOfImage: u64,
@@ -7826,11 +7152,6 @@ impl ::core::cmp::PartialEq for IMAGEHLP_MODULEW64 {
     }
 }
 impl ::core::cmp::Eq for IMAGEHLP_MODULEW64 {}
-impl ::core::default::Default for IMAGEHLP_MODULEW64 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct IMAGEHLP_MODULEW64_EX {
     pub Module: IMAGEHLP_MODULEW64,
     pub RegionFlags: u32,
@@ -7855,11 +7176,6 @@ impl ::core::cmp::PartialEq for IMAGEHLP_MODULEW64_EX {
     }
 }
 impl ::core::cmp::Eq for IMAGEHLP_MODULEW64_EX {}
-impl ::core::default::Default for IMAGEHLP_MODULEW64_EX {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const IMAGEHLP_MODULE_REGION_ADDITIONAL: u32 = 4u32;
 pub const IMAGEHLP_MODULE_REGION_ALL: u32 = 255u32;
 pub const IMAGEHLP_MODULE_REGION_DLLBASE: u32 = 1u32;
@@ -7944,11 +7260,6 @@ impl ::core::cmp::PartialEq for IMAGEHLP_STACK_FRAME {
     }
 }
 impl ::core::cmp::Eq for IMAGEHLP_STACK_FRAME {}
-impl ::core::default::Default for IMAGEHLP_STACK_FRAME {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct IMAGEHLP_STATUS_REASON(pub i32);
 pub const BindOutOfMemory: IMAGEHLP_STATUS_REASON = IMAGEHLP_STATUS_REASON(0i32);
@@ -8026,11 +7337,6 @@ impl ::core::cmp::PartialEq for IMAGEHLP_SYMBOL {
     }
 }
 impl ::core::cmp::Eq for IMAGEHLP_SYMBOL {}
-impl ::core::default::Default for IMAGEHLP_SYMBOL {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct IMAGEHLP_SYMBOL64 {
     pub SizeOfStruct: u32,
     pub Address: u64,
@@ -8068,11 +7374,6 @@ impl ::core::cmp::PartialEq for IMAGEHLP_SYMBOL64 {
     }
 }
 impl ::core::cmp::Eq for IMAGEHLP_SYMBOL64 {}
-impl ::core::default::Default for IMAGEHLP_SYMBOL64 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct IMAGEHLP_SYMBOL64_PACKAGE {
     pub sym: IMAGEHLP_SYMBOL64,
     pub name: [super::super::super::Foundation::CHAR; 2001],
@@ -8097,11 +7398,6 @@ impl ::core::cmp::PartialEq for IMAGEHLP_SYMBOL64_PACKAGE {
     }
 }
 impl ::core::cmp::Eq for IMAGEHLP_SYMBOL64_PACKAGE {}
-impl ::core::default::Default for IMAGEHLP_SYMBOL64_PACKAGE {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct IMAGEHLP_SYMBOLW {
     pub SizeOfStruct: u32,
     pub Address: u32,
@@ -8139,11 +7435,6 @@ impl ::core::cmp::PartialEq for IMAGEHLP_SYMBOLW {
     }
 }
 impl ::core::cmp::Eq for IMAGEHLP_SYMBOLW {}
-impl ::core::default::Default for IMAGEHLP_SYMBOLW {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct IMAGEHLP_SYMBOLW64 {
     pub SizeOfStruct: u32,
     pub Address: u64,
@@ -8181,11 +7472,6 @@ impl ::core::cmp::PartialEq for IMAGEHLP_SYMBOLW64 {
     }
 }
 impl ::core::cmp::Eq for IMAGEHLP_SYMBOLW64 {}
-impl ::core::default::Default for IMAGEHLP_SYMBOLW64 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct IMAGEHLP_SYMBOLW64_PACKAGE {
     pub sym: IMAGEHLP_SYMBOLW64,
     pub name: [u16; 2001],
@@ -8210,11 +7496,6 @@ impl ::core::cmp::PartialEq for IMAGEHLP_SYMBOLW64_PACKAGE {
     }
 }
 impl ::core::cmp::Eq for IMAGEHLP_SYMBOLW64_PACKAGE {}
-impl ::core::default::Default for IMAGEHLP_SYMBOLW64_PACKAGE {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct IMAGEHLP_SYMBOLW_PACKAGE {
     pub sym: IMAGEHLP_SYMBOLW,
     pub name: [u16; 2001],
@@ -8239,11 +7520,6 @@ impl ::core::cmp::PartialEq for IMAGEHLP_SYMBOLW_PACKAGE {
     }
 }
 impl ::core::cmp::Eq for IMAGEHLP_SYMBOLW_PACKAGE {}
-impl ::core::default::Default for IMAGEHLP_SYMBOLW_PACKAGE {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const IMAGEHLP_SYMBOL_FUNCTION: u32 = 2048u32;
 pub const IMAGEHLP_SYMBOL_INFO_CONSTANT: u32 = 256u32;
 pub const IMAGEHLP_SYMBOL_INFO_FRAMERELATIVE: u32 = 32u32;
@@ -8277,11 +7553,6 @@ impl ::core::cmp::PartialEq for IMAGEHLP_SYMBOL_PACKAGE {
     }
 }
 impl ::core::cmp::Eq for IMAGEHLP_SYMBOL_PACKAGE {}
-impl ::core::default::Default for IMAGEHLP_SYMBOL_PACKAGE {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct IMAGEHLP_SYMBOL_SRC {
     pub sizeofstruct: u32,
     pub r#type: u32,
@@ -8310,11 +7581,6 @@ impl ::core::cmp::PartialEq for IMAGEHLP_SYMBOL_SRC {
     }
 }
 impl ::core::cmp::Eq for IMAGEHLP_SYMBOL_SRC {}
-impl ::core::default::Default for IMAGEHLP_SYMBOL_SRC {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const IMAGEHLP_SYMBOL_THUNK: u32 = 8192u32;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct IMAGEHLP_SYMBOL_TYPE_INFO(pub i32);
@@ -8392,11 +7658,6 @@ impl ::core::cmp::PartialEq for IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY {
     }
 }
 impl ::core::cmp::Eq for IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY {}
-impl ::core::default::Default for IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY_0 {
     pub UnwindData: u32,
     pub Anonymous: IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY_0_0,
@@ -8413,11 +7674,6 @@ impl ::core::cmp::PartialEq for IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY_0 {
     }
 }
 impl ::core::cmp::Eq for IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY_0 {}
-impl ::core::default::Default for IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY_0_0 {
     pub _bitfield: u32,
 }
@@ -8440,11 +7696,6 @@ impl ::core::cmp::PartialEq for IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY_0_0 {
     }
 }
 impl ::core::cmp::Eq for IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY_0_0 {}
-impl ::core::default::Default for IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY_0_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct IMAGE_COFF_SYMBOLS_HEADER {
     pub NumberOfSymbols: u32,
     pub LvaToFirstSymbol: u32,
@@ -8488,11 +7739,6 @@ impl ::core::cmp::PartialEq for IMAGE_COFF_SYMBOLS_HEADER {
     }
 }
 impl ::core::cmp::Eq for IMAGE_COFF_SYMBOLS_HEADER {}
-impl ::core::default::Default for IMAGE_COFF_SYMBOLS_HEADER {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct IMAGE_COR20_HEADER {
     pub cb: u32,
     pub MajorRuntimeVersion: u16,
@@ -8530,11 +7776,6 @@ impl ::core::cmp::PartialEq for IMAGE_COR20_HEADER {
     }
 }
 impl ::core::cmp::Eq for IMAGE_COR20_HEADER {}
-impl ::core::default::Default for IMAGE_COR20_HEADER {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct IMAGE_COR20_HEADER_0 {
     pub EntryPointToken: u32,
     pub EntryPointRVA: u32,
@@ -8551,11 +7792,6 @@ impl ::core::cmp::PartialEq for IMAGE_COR20_HEADER_0 {
     }
 }
 impl ::core::cmp::Eq for IMAGE_COR20_HEADER_0 {}
-impl ::core::default::Default for IMAGE_COR20_HEADER_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct IMAGE_DATA_DIRECTORY {
     pub VirtualAddress: u32,
     pub Size: u32,
@@ -8580,11 +7816,6 @@ impl ::core::cmp::PartialEq for IMAGE_DATA_DIRECTORY {
     }
 }
 impl ::core::cmp::Eq for IMAGE_DATA_DIRECTORY {}
-impl ::core::default::Default for IMAGE_DATA_DIRECTORY {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct IMAGE_DEBUG_DIRECTORY {
     pub Characteristics: u32,
     pub TimeDateStamp: u32,
@@ -8628,42 +7859,37 @@ impl ::core::cmp::PartialEq for IMAGE_DEBUG_DIRECTORY {
     }
 }
 impl ::core::cmp::Eq for IMAGE_DEBUG_DIRECTORY {}
-impl ::core::default::Default for IMAGE_DEBUG_DIRECTORY {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct IMAGE_DEBUG_INFORMATION {
     pub List: super::super::Kernel::LIST_ENTRY,
     pub ReservedSize: u32,
-    pub ReservedMappedBase: *mut ::core::ffi::c_void,
+    pub ReservedMappedBase: MutPtr<::core::ffi::c_void>,
     pub ReservedMachine: u16,
     pub ReservedCharacteristics: u16,
     pub ReservedCheckSum: u32,
     pub ImageBase: u32,
     pub SizeOfImage: u32,
     pub ReservedNumberOfSections: u32,
-    pub ReservedSections: *mut IMAGE_SECTION_HEADER,
+    pub ReservedSections: MutPtr<IMAGE_SECTION_HEADER>,
     pub ReservedExportedNamesSize: u32,
     pub ReservedExportedNames: ::win32::core::PSTR,
     pub ReservedNumberOfFunctionTableEntries: u32,
-    pub ReservedFunctionTableEntries: *mut IMAGE_FUNCTION_ENTRY,
+    pub ReservedFunctionTableEntries: MutPtr<IMAGE_FUNCTION_ENTRY>,
     pub ReservedLowestFunctionStartingAddress: u32,
     pub ReservedHighestFunctionEndingAddress: u32,
     pub ReservedNumberOfFpoTableEntries: u32,
-    pub ReservedFpoTableEntries: *mut FPO_DATA,
+    pub ReservedFpoTableEntries: MutPtr<FPO_DATA>,
     pub SizeOfCoffSymbols: u32,
-    pub CoffSymbols: *mut IMAGE_COFF_SYMBOLS_HEADER,
+    pub CoffSymbols: MutPtr<IMAGE_COFF_SYMBOLS_HEADER>,
     pub ReservedSizeOfCodeViewSymbols: u32,
-    pub ReservedCodeViewSymbols: *mut ::core::ffi::c_void,
+    pub ReservedCodeViewSymbols: MutPtr<::core::ffi::c_void>,
     pub ImageFilePath: ::win32::core::PSTR,
     pub ImageFileName: ::win32::core::PSTR,
     pub ReservedDebugFilePath: ::win32::core::PSTR,
     pub ReservedTimeDateStamp: u32,
     pub ReservedRomImage: super::super::super::Foundation::BOOL,
-    pub ReservedDebugDirectory: *mut IMAGE_DEBUG_DIRECTORY,
+    pub ReservedDebugDirectory: MutPtr<IMAGE_DEBUG_DIRECTORY>,
     pub ReservedNumberOfDebugDirectories: u32,
     pub ReservedOriginalFunctionTableBaseAddress: u32,
     pub Reserved: [u32; 2],
@@ -8785,13 +8011,6 @@ impl ::core::cmp::PartialEq for IMAGE_DEBUG_INFORMATION {
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for IMAGE_DEBUG_INFORMATION {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl ::core::default::Default for IMAGE_DEBUG_INFORMATION {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct IMAGE_DEBUG_TYPE(pub u32);
 pub const IMAGE_DEBUG_TYPE_UNKNOWN: IMAGE_DEBUG_TYPE = IMAGE_DEBUG_TYPE(0u32);
@@ -9126,11 +8345,6 @@ impl ::core::cmp::PartialEq for IMAGE_FILE_HEADER {
     }
 }
 impl ::core::cmp::Eq for IMAGE_FILE_HEADER {}
-impl ::core::default::Default for IMAGE_FILE_HEADER {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct IMAGE_FILE_MACHINE(pub u16);
 pub const IMAGE_FILE_MACHINE_AXP64: IMAGE_FILE_MACHINE = IMAGE_FILE_MACHINE(644u16);
@@ -9209,11 +8423,6 @@ impl ::core::cmp::PartialEq for IMAGE_FUNCTION_ENTRY {
     }
 }
 impl ::core::cmp::Eq for IMAGE_FUNCTION_ENTRY {}
-impl ::core::default::Default for IMAGE_FUNCTION_ENTRY {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct IMAGE_FUNCTION_ENTRY64 {
     pub StartingAddress: u64,
     pub EndingAddress: u64,
@@ -9233,11 +8442,6 @@ impl ::core::cmp::PartialEq for IMAGE_FUNCTION_ENTRY64 {
     }
 }
 impl ::core::cmp::Eq for IMAGE_FUNCTION_ENTRY64 {}
-impl ::core::default::Default for IMAGE_FUNCTION_ENTRY64 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct IMAGE_FUNCTION_ENTRY64_0 {
     pub EndOfPrologue: u64,
     pub UnwindInfoAddress: u64,
@@ -9255,11 +8459,6 @@ impl ::core::cmp::PartialEq for IMAGE_FUNCTION_ENTRY64_0 {
     }
 }
 impl ::core::cmp::Eq for IMAGE_FUNCTION_ENTRY64_0 {}
-impl ::core::default::Default for IMAGE_FUNCTION_ENTRY64_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct IMAGE_LOAD_CONFIG_CODE_INTEGRITY {
     pub Flags: u16,
     pub Catalog: u16,
@@ -9291,11 +8490,6 @@ impl ::core::cmp::PartialEq for IMAGE_LOAD_CONFIG_CODE_INTEGRITY {
     }
 }
 impl ::core::cmp::Eq for IMAGE_LOAD_CONFIG_CODE_INTEGRITY {}
-impl ::core::default::Default for IMAGE_LOAD_CONFIG_CODE_INTEGRITY {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct IMAGE_LOAD_CONFIG_DIRECTORY32 {
     pub Size: u32,
     pub TimeDateStamp: u32,
@@ -9510,11 +8704,6 @@ impl ::core::cmp::PartialEq for IMAGE_LOAD_CONFIG_DIRECTORY32 {
     }
 }
 impl ::core::cmp::Eq for IMAGE_LOAD_CONFIG_DIRECTORY32 {}
-impl ::core::default::Default for IMAGE_LOAD_CONFIG_DIRECTORY32 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct IMAGE_LOAD_CONFIG_DIRECTORY64 {
     pub Size: u32,
     pub TimeDateStamp: u32,
@@ -9627,11 +8816,6 @@ impl ::core::cmp::PartialEq for IMAGE_LOAD_CONFIG_DIRECTORY64 {
     }
 }
 impl ::core::cmp::Eq for IMAGE_LOAD_CONFIG_DIRECTORY64 {}
-impl ::core::default::Default for IMAGE_LOAD_CONFIG_DIRECTORY64 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct IMAGE_NT_HEADERS32 {
     pub Signature: u32,
     pub FileHeader: IMAGE_FILE_HEADER,
@@ -9660,11 +8844,6 @@ impl ::core::cmp::PartialEq for IMAGE_NT_HEADERS32 {
     }
 }
 impl ::core::cmp::Eq for IMAGE_NT_HEADERS32 {}
-impl ::core::default::Default for IMAGE_NT_HEADERS32 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct IMAGE_NT_HEADERS64 {
     pub Signature: u32,
     pub FileHeader: IMAGE_FILE_HEADER,
@@ -9684,11 +8863,6 @@ impl ::core::cmp::PartialEq for IMAGE_NT_HEADERS64 {
     }
 }
 impl ::core::cmp::Eq for IMAGE_NT_HEADERS64 {}
-impl ::core::default::Default for IMAGE_NT_HEADERS64 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct IMAGE_OPTIONAL_HEADER32 {
     pub Magic: IMAGE_OPTIONAL_HEADER_MAGIC,
     pub MajorLinkerVersion: u8,
@@ -9807,11 +8981,6 @@ impl ::core::cmp::PartialEq for IMAGE_OPTIONAL_HEADER32 {
     }
 }
 impl ::core::cmp::Eq for IMAGE_OPTIONAL_HEADER32 {}
-impl ::core::default::Default for IMAGE_OPTIONAL_HEADER32 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct IMAGE_OPTIONAL_HEADER64 {
     pub Magic: IMAGE_OPTIONAL_HEADER_MAGIC,
     pub MajorLinkerVersion: u8,
@@ -9885,11 +9054,6 @@ impl ::core::cmp::PartialEq for IMAGE_OPTIONAL_HEADER64 {
     }
 }
 impl ::core::cmp::Eq for IMAGE_OPTIONAL_HEADER64 {}
-impl ::core::default::Default for IMAGE_OPTIONAL_HEADER64 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct IMAGE_OPTIONAL_HEADER_MAGIC(pub u16);
 pub const IMAGE_NT_OPTIONAL_HDR_MAGIC: IMAGE_OPTIONAL_HEADER_MAGIC =
@@ -9942,11 +9106,6 @@ impl ::core::cmp::PartialEq for IMAGE_ROM_HEADERS {
     }
 }
 impl ::core::cmp::Eq for IMAGE_ROM_HEADERS {}
-impl ::core::default::Default for IMAGE_ROM_HEADERS {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct IMAGE_ROM_OPTIONAL_HEADER {
     pub Magic: u16,
     pub MajorLinkerVersion: u8,
@@ -10005,11 +9164,6 @@ impl ::core::cmp::PartialEq for IMAGE_ROM_OPTIONAL_HEADER {
     }
 }
 impl ::core::cmp::Eq for IMAGE_ROM_OPTIONAL_HEADER {}
-impl ::core::default::Default for IMAGE_ROM_OPTIONAL_HEADER {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct IMAGE_RUNTIME_FUNCTION_ENTRY {
     pub BeginAddress: u32,
     pub EndAddress: u32,
@@ -10029,11 +9183,6 @@ impl ::core::cmp::PartialEq for IMAGE_RUNTIME_FUNCTION_ENTRY {
     }
 }
 impl ::core::cmp::Eq for IMAGE_RUNTIME_FUNCTION_ENTRY {}
-impl ::core::default::Default for IMAGE_RUNTIME_FUNCTION_ENTRY {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct IMAGE_RUNTIME_FUNCTION_ENTRY_0 {
     pub UnwindInfoAddress: u32,
     pub UnwindData: u32,
@@ -10050,11 +9199,6 @@ impl ::core::cmp::PartialEq for IMAGE_RUNTIME_FUNCTION_ENTRY_0 {
     }
 }
 impl ::core::cmp::Eq for IMAGE_RUNTIME_FUNCTION_ENTRY_0 {}
-impl ::core::default::Default for IMAGE_RUNTIME_FUNCTION_ENTRY_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct IMAGE_SECTION_CHARACTERISTICS(pub u32);
 pub const IMAGE_SCN_TYPE_NO_PAD: IMAGE_SECTION_CHARACTERISTICS =
@@ -10211,11 +9355,6 @@ impl ::core::cmp::PartialEq for IMAGE_SECTION_HEADER {
     }
 }
 impl ::core::cmp::Eq for IMAGE_SECTION_HEADER {}
-impl ::core::default::Default for IMAGE_SECTION_HEADER {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct IMAGE_SECTION_HEADER_0 {
     pub PhysicalAddress: u32,
     pub VirtualSize: u32,
@@ -10232,11 +9371,6 @@ impl ::core::cmp::PartialEq for IMAGE_SECTION_HEADER_0 {
     }
 }
 impl ::core::cmp::Eq for IMAGE_SECTION_HEADER_0 {}
-impl ::core::default::Default for IMAGE_SECTION_HEADER_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct IMAGE_SUBSYSTEM(pub u16);
 pub const IMAGE_SUBSYSTEM_UNKNOWN: IMAGE_SUBSYSTEM = IMAGE_SUBSYSTEM(0u16);
@@ -10287,11 +9421,6 @@ impl ::core::cmp::PartialEq for INLINE_FRAME_CONTEXT {
     }
 }
 impl ::core::cmp::Eq for INLINE_FRAME_CONTEXT {}
-impl ::core::default::Default for INLINE_FRAME_CONTEXT {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct INLINE_FRAME_CONTEXT_0 {
     pub FrameId: u8,
     pub FrameType: u8,
@@ -10320,11 +9449,6 @@ impl ::core::cmp::PartialEq for INLINE_FRAME_CONTEXT_0 {
     }
 }
 impl ::core::cmp::Eq for INLINE_FRAME_CONTEXT_0 {}
-impl ::core::default::Default for INLINE_FRAME_CONTEXT_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const INLINE_FRAME_CONTEXT_IGNORE: u32 = 4294967295u32;
 pub const INLINE_FRAME_CONTEXT_INIT: u32 = 0u32;
 pub const INSUFFICIENT_SPACE_TO_COPY: u32 = 10u32;
@@ -10359,11 +9483,6 @@ impl ::core::cmp::PartialEq for IOSPACE {
     }
 }
 impl ::core::cmp::Eq for IOSPACE {}
-impl ::core::default::Default for IOSPACE {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct IOSPACE32 {
     pub Address: u32,
     pub Length: u32,
@@ -10390,11 +9509,6 @@ impl ::core::cmp::PartialEq for IOSPACE32 {
     }
 }
 impl ::core::cmp::Eq for IOSPACE32 {}
-impl ::core::default::Default for IOSPACE32 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct IOSPACE64 {
     pub Address: u64,
     pub Length: u32,
@@ -10421,11 +9535,6 @@ impl ::core::cmp::PartialEq for IOSPACE64 {
     }
 }
 impl ::core::cmp::Eq for IOSPACE64 {}
-impl ::core::default::Default for IOSPACE64 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct IOSPACE_EX {
     pub Address: u32,
     pub Length: u32,
@@ -10463,11 +9572,6 @@ impl ::core::cmp::PartialEq for IOSPACE_EX {
     }
 }
 impl ::core::cmp::Eq for IOSPACE_EX {}
-impl ::core::default::Default for IOSPACE_EX {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct IOSPACE_EX32 {
     pub Address: u32,
     pub Length: u32,
@@ -10505,11 +9609,6 @@ impl ::core::cmp::PartialEq for IOSPACE_EX32 {
     }
 }
 impl ::core::cmp::Eq for IOSPACE_EX32 {}
-impl ::core::default::Default for IOSPACE_EX32 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct IOSPACE_EX64 {
     pub Address: u64,
     pub Length: u32,
@@ -10547,11 +9646,6 @@ impl ::core::cmp::PartialEq for IOSPACE_EX64 {
     }
 }
 impl ::core::cmp::Eq for IOSPACE_EX64 {}
-impl ::core::default::Default for IOSPACE_EX64 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const IPMI_IOCTL_INDEX: u32 = 1024u32;
 pub struct IPMI_OS_SEL_RECORD {
     pub Signature: u32,
@@ -10578,11 +9672,6 @@ impl ::core::cmp::PartialEq for IPMI_OS_SEL_RECORD {
     }
 }
 impl ::core::cmp::Eq for IPMI_OS_SEL_RECORD {}
-impl ::core::default::Default for IPMI_OS_SEL_RECORD {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const IPMI_OS_SEL_RECORD_MASK: u32 = 65535u32;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct IPMI_OS_SEL_RECORD_TYPE(pub i32);
@@ -10738,11 +9827,6 @@ impl ::core::cmp::PartialEq for JsDebugPropertyInfo {
     }
 }
 impl ::core::cmp::Eq for JsDebugPropertyInfo {}
-impl ::core::default::Default for JsDebugPropertyInfo {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct JsDebugReadMemoryFlags(pub i32);
 impl JsDebugReadMemoryFlags {
@@ -11005,13 +10089,6 @@ impl ::core::cmp::PartialEq for KDDEBUGGER_DATA32 {
 #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for KDDEBUGGER_DATA32 {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl ::core::default::Default for KDDEBUGGER_DATA32 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct KDDEBUGGER_DATA64 {
@@ -11559,13 +10636,6 @@ impl ::core::cmp::PartialEq for KDDEBUGGER_DATA64 {
 #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for KDDEBUGGER_DATA64 {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl ::core::default::Default for KDDEBUGGER_DATA64 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct KDHELP {
     pub Thread: u32,
     pub ThCallbackStack: u32,
@@ -11621,11 +10691,6 @@ impl ::core::cmp::PartialEq for KDHELP {
     }
 }
 impl ::core::cmp::Eq for KDHELP {}
-impl ::core::default::Default for KDHELP {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct KDHELP64 {
     pub Thread: u64,
     pub ThCallbackStack: u32,
@@ -11702,11 +10767,6 @@ impl ::core::cmp::PartialEq for KDHELP64 {
     }
 }
 impl ::core::cmp::Eq for KDHELP64 {}
-impl ::core::default::Default for KDHELP64 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const KD_SECONDARY_VERSION_AMD64_CONTEXT: u32 = 2u32;
 pub const KD_SECONDARY_VERSION_AMD64_OBSOLETE_CONTEXT_1: u32 = 0u32;
 pub const KD_SECONDARY_VERSION_AMD64_OBSOLETE_CONTEXT_2: u32 = 1u32;
@@ -11739,15 +10799,8 @@ impl ::core::cmp::PartialEq for KNONVOLATILE_CONTEXT_POINTERS {
 impl ::core::cmp::Eq for KNONVOLATILE_CONTEXT_POINTERS {}
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
-impl ::core::default::Default for KNONVOLATILE_CONTEXT_POINTERS {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
-#[doc = "*Required namespaces: *"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct KNONVOLATILE_CONTEXT_POINTERS_0 {
-    pub FloatingContext: [*mut M128A; 16],
+    pub FloatingContext: [MutPtr<M128A>; 16],
     pub Anonymous: KNONVOLATILE_CONTEXT_POINTERS_0_0,
 }
 #[doc = "*Required namespaces: *"]
@@ -11772,30 +10825,23 @@ impl ::core::cmp::PartialEq for KNONVOLATILE_CONTEXT_POINTERS_0 {
 impl ::core::cmp::Eq for KNONVOLATILE_CONTEXT_POINTERS_0 {}
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
-impl ::core::default::Default for KNONVOLATILE_CONTEXT_POINTERS_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
-#[doc = "*Required namespaces: *"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct KNONVOLATILE_CONTEXT_POINTERS_0_0 {
-    pub Xmm0: *mut M128A,
-    pub Xmm1: *mut M128A,
-    pub Xmm2: *mut M128A,
-    pub Xmm3: *mut M128A,
-    pub Xmm4: *mut M128A,
-    pub Xmm5: *mut M128A,
-    pub Xmm6: *mut M128A,
-    pub Xmm7: *mut M128A,
-    pub Xmm8: *mut M128A,
-    pub Xmm9: *mut M128A,
-    pub Xmm10: *mut M128A,
-    pub Xmm11: *mut M128A,
-    pub Xmm12: *mut M128A,
-    pub Xmm13: *mut M128A,
-    pub Xmm14: *mut M128A,
-    pub Xmm15: *mut M128A,
+    pub Xmm0: MutPtr<M128A>,
+    pub Xmm1: MutPtr<M128A>,
+    pub Xmm2: MutPtr<M128A>,
+    pub Xmm3: MutPtr<M128A>,
+    pub Xmm4: MutPtr<M128A>,
+    pub Xmm5: MutPtr<M128A>,
+    pub Xmm6: MutPtr<M128A>,
+    pub Xmm7: MutPtr<M128A>,
+    pub Xmm8: MutPtr<M128A>,
+    pub Xmm9: MutPtr<M128A>,
+    pub Xmm10: MutPtr<M128A>,
+    pub Xmm11: MutPtr<M128A>,
+    pub Xmm12: MutPtr<M128A>,
+    pub Xmm13: MutPtr<M128A>,
+    pub Xmm14: MutPtr<M128A>,
+    pub Xmm15: MutPtr<M128A>,
 }
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
@@ -11858,15 +10904,8 @@ impl ::core::cmp::PartialEq for KNONVOLATILE_CONTEXT_POINTERS_0_0 {
 impl ::core::cmp::Eq for KNONVOLATILE_CONTEXT_POINTERS_0_0 {}
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
-impl ::core::default::Default for KNONVOLATILE_CONTEXT_POINTERS_0_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
-#[doc = "*Required namespaces: *"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct KNONVOLATILE_CONTEXT_POINTERS_1 {
-    pub IntegerContext: [*mut u64; 16],
+    pub IntegerContext: [MutPtr<u64>; 16],
     pub Anonymous: KNONVOLATILE_CONTEXT_POINTERS_1_0,
 }
 #[doc = "*Required namespaces: *"]
@@ -11891,30 +10930,23 @@ impl ::core::cmp::PartialEq for KNONVOLATILE_CONTEXT_POINTERS_1 {
 impl ::core::cmp::Eq for KNONVOLATILE_CONTEXT_POINTERS_1 {}
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
-impl ::core::default::Default for KNONVOLATILE_CONTEXT_POINTERS_1 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
-#[doc = "*Required namespaces: *"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct KNONVOLATILE_CONTEXT_POINTERS_1_0 {
-    pub Rax: *mut u64,
-    pub Rcx: *mut u64,
-    pub Rdx: *mut u64,
-    pub Rbx: *mut u64,
-    pub Rsp: *mut u64,
-    pub Rbp: *mut u64,
-    pub Rsi: *mut u64,
-    pub Rdi: *mut u64,
-    pub R8: *mut u64,
-    pub R9: *mut u64,
-    pub R10: *mut u64,
-    pub R11: *mut u64,
-    pub R12: *mut u64,
-    pub R13: *mut u64,
-    pub R14: *mut u64,
-    pub R15: *mut u64,
+    pub Rax: MutPtr<u64>,
+    pub Rcx: MutPtr<u64>,
+    pub Rdx: MutPtr<u64>,
+    pub Rbx: MutPtr<u64>,
+    pub Rsp: MutPtr<u64>,
+    pub Rbp: MutPtr<u64>,
+    pub Rsi: MutPtr<u64>,
+    pub Rdi: MutPtr<u64>,
+    pub R8: MutPtr<u64>,
+    pub R9: MutPtr<u64>,
+    pub R10: MutPtr<u64>,
+    pub R11: MutPtr<u64>,
+    pub R12: MutPtr<u64>,
+    pub R13: MutPtr<u64>,
+    pub R14: MutPtr<u64>,
+    pub R15: MutPtr<u64>,
 }
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
@@ -11975,13 +11007,6 @@ impl ::core::cmp::PartialEq for KNONVOLATILE_CONTEXT_POINTERS_1_0 {
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for KNONVOLATILE_CONTEXT_POINTERS_1_0 {}
-#[doc = "*Required namespaces: *"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl ::core::default::Default for KNONVOLATILE_CONTEXT_POINTERS_1_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct KNONVOLATILE_CONTEXT_POINTERS {
     pub Dummy: u32,
 }
@@ -11997,34 +11022,29 @@ impl ::core::cmp::PartialEq for KNONVOLATILE_CONTEXT_POINTERS {
     }
 }
 impl ::core::cmp::Eq for KNONVOLATILE_CONTEXT_POINTERS {}
-impl ::core::default::Default for KNONVOLATILE_CONTEXT_POINTERS {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct KNONVOLATILE_CONTEXT_POINTERS_ARM64 {
-    pub X19: *mut u64,
-    pub X20: *mut u64,
-    pub X21: *mut u64,
-    pub X22: *mut u64,
-    pub X23: *mut u64,
-    pub X24: *mut u64,
-    pub X25: *mut u64,
-    pub X26: *mut u64,
-    pub X27: *mut u64,
-    pub X28: *mut u64,
-    pub Fp: *mut u64,
-    pub Lr: *mut u64,
-    pub D8: *mut u64,
-    pub D9: *mut u64,
-    pub D10: *mut u64,
-    pub D11: *mut u64,
-    pub D12: *mut u64,
-    pub D13: *mut u64,
-    pub D14: *mut u64,
-    pub D15: *mut u64,
+    pub X19: MutPtr<u64>,
+    pub X20: MutPtr<u64>,
+    pub X21: MutPtr<u64>,
+    pub X22: MutPtr<u64>,
+    pub X23: MutPtr<u64>,
+    pub X24: MutPtr<u64>,
+    pub X25: MutPtr<u64>,
+    pub X26: MutPtr<u64>,
+    pub X27: MutPtr<u64>,
+    pub X28: MutPtr<u64>,
+    pub Fp: MutPtr<u64>,
+    pub Lr: MutPtr<u64>,
+    pub D8: MutPtr<u64>,
+    pub D9: MutPtr<u64>,
+    pub D10: MutPtr<u64>,
+    pub D11: MutPtr<u64>,
+    pub D12: MutPtr<u64>,
+    pub D13: MutPtr<u64>,
+    pub D14: MutPtr<u64>,
+    pub D15: MutPtr<u64>,
 }
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
@@ -12093,13 +11113,6 @@ impl ::core::cmp::PartialEq for KNONVOLATILE_CONTEXT_POINTERS_ARM64 {
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for KNONVOLATILE_CONTEXT_POINTERS_ARM64 {}
-#[doc = "*Required namespaces: *"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl ::core::default::Default for KNONVOLATILE_CONTEXT_POINTERS_ARM64 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct LDT_ENTRY {
     pub LimitLow: u16,
     pub BaseLow: u16,
@@ -12119,11 +11132,6 @@ impl ::core::cmp::PartialEq for LDT_ENTRY {
     }
 }
 impl ::core::cmp::Eq for LDT_ENTRY {}
-impl ::core::default::Default for LDT_ENTRY {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct LDT_ENTRY_0 {
     pub Bytes: LDT_ENTRY_0_1,
     pub Bits: LDT_ENTRY_0_0,
@@ -12140,11 +11148,6 @@ impl ::core::cmp::PartialEq for LDT_ENTRY_0 {
     }
 }
 impl ::core::cmp::Eq for LDT_ENTRY_0 {}
-impl ::core::default::Default for LDT_ENTRY_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct LDT_ENTRY_0_0 {
     pub _bitfield: u32,
 }
@@ -12167,11 +11170,6 @@ impl ::core::cmp::PartialEq for LDT_ENTRY_0_0 {
     }
 }
 impl ::core::cmp::Eq for LDT_ENTRY_0_0 {}
-impl ::core::default::Default for LDT_ENTRY_0_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct LDT_ENTRY_0_1 {
     pub BaseMid: u8,
     pub Flags1: u8,
@@ -12203,21 +11201,16 @@ impl ::core::cmp::PartialEq for LDT_ENTRY_0_1 {
     }
 }
 impl ::core::cmp::Eq for LDT_ENTRY_0_1 {}
-impl ::core::default::Default for LDT_ENTRY_0_1 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct LOADED_IMAGE {
     pub ModuleName: ::win32::core::PSTR,
     pub hFile: super::super::super::Foundation::HANDLE,
-    pub MappedAddress: *mut u8,
-    pub FileHeader: *mut IMAGE_NT_HEADERS64,
-    pub LastRvaSection: *mut IMAGE_SECTION_HEADER,
+    pub MappedAddress: MutPtr<u8>,
+    pub FileHeader: MutPtr<IMAGE_NT_HEADERS64>,
+    pub LastRvaSection: MutPtr<IMAGE_SECTION_HEADER>,
     pub NumberOfSections: u32,
-    pub Sections: *mut IMAGE_SECTION_HEADER,
+    pub Sections: MutPtr<IMAGE_SECTION_HEADER>,
     pub Characteristics: IMAGE_FILE_CHARACTERISTICS2,
     pub fSystemImage: super::super::super::Foundation::BOOLEAN,
     pub fDOSImage: super::super::super::Foundation::BOOLEAN,
@@ -12283,21 +11276,14 @@ impl ::core::cmp::PartialEq for LOADED_IMAGE {
 impl ::core::cmp::Eq for LOADED_IMAGE {}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-impl ::core::default::Default for LOADED_IMAGE {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct LOADED_IMAGE {
     pub ModuleName: ::win32::core::PSTR,
     pub hFile: super::super::super::Foundation::HANDLE,
-    pub MappedAddress: *mut u8,
-    pub FileHeader: *mut IMAGE_NT_HEADERS32,
-    pub LastRvaSection: *mut IMAGE_SECTION_HEADER,
+    pub MappedAddress: MutPtr<u8>,
+    pub FileHeader: MutPtr<IMAGE_NT_HEADERS32>,
+    pub LastRvaSection: MutPtr<IMAGE_SECTION_HEADER>,
     pub NumberOfSections: u32,
-    pub Sections: *mut IMAGE_SECTION_HEADER,
+    pub Sections: MutPtr<IMAGE_SECTION_HEADER>,
     pub Characteristics: IMAGE_FILE_CHARACTERISTICS2,
     pub fSystemImage: super::super::super::Foundation::BOOLEAN,
     pub fDOSImage: super::super::super::Foundation::BOOLEAN,
@@ -12361,19 +11347,12 @@ impl ::core::cmp::PartialEq for LOADED_IMAGE {
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for LOADED_IMAGE {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl ::core::default::Default for LOADED_IMAGE {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct LOAD_DLL_DEBUG_INFO {
     pub hFile: super::super::super::Foundation::HANDLE,
-    pub lpBaseOfDll: *mut ::core::ffi::c_void,
+    pub lpBaseOfDll: MutPtr<::core::ffi::c_void>,
     pub dwDebugInfoFileOffset: u32,
     pub nDebugInfoSize: u32,
-    pub lpImageName: *mut ::core::ffi::c_void,
+    pub lpImageName: MutPtr<::core::ffi::c_void>,
     pub fUnicode: u16,
 }
 impl ::core::marker::Copy for LOAD_DLL_DEBUG_INFO {}
@@ -12405,17 +11384,12 @@ impl ::core::cmp::PartialEq for LOAD_DLL_DEBUG_INFO {
     }
 }
 impl ::core::cmp::Eq for LOAD_DLL_DEBUG_INFO {}
-impl ::core::default::Default for LOAD_DLL_DEBUG_INFO {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub type LPCALL_BACK_USER_INTERRUPT_ROUTINE =
     ::core::option::Option<unsafe extern "system" fn() -> u32>;
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub type LPTOP_LEVEL_EXCEPTION_FILTER = ::core::option::Option<
-    unsafe extern "system" fn(exceptioninfo: *const EXCEPTION_POINTERS) -> i32,
+    unsafe extern "system" fn(ExceptionInfo: ConstPtr<EXCEPTION_POINTERS>) -> i32,
 >;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct LanguageKind(pub i32);
@@ -12463,11 +11437,6 @@ impl ::core::cmp::PartialEq for Location {
     }
 }
 impl ::core::cmp::Eq for Location {}
-impl ::core::default::Default for Location {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct LocationKind(pub i32);
 pub const LocationMember: LocationKind = LocationKind(0i32);
@@ -12514,18 +11483,13 @@ impl ::core::cmp::PartialEq for M128A {
     }
 }
 impl ::core::cmp::Eq for M128A {}
-impl ::core::default::Default for M128A {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const MAX_SYM_NAME: u32 = 2000u32;
 pub const MEMORY_READ_ERROR: u32 = 1u32;
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Storage.FileSystem', 'Windows.Win32.System.Kernel', 'Windows.Win32.System.Memory'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_CALLBACK_INFORMATION {
     pub CallbackRoutine: MINIDUMP_CALLBACK_ROUTINE,
-    pub CallbackParam: *mut ::core::ffi::c_void,
+    pub CallbackParam: MutPtr<::core::ffi::c_void>,
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Storage.FileSystem', 'Windows.Win32.System.Kernel', 'Windows.Win32.System.Memory'*"]
 #[cfg(dummy_option_that_does_not_exist)]
@@ -12548,13 +11512,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_CALLBACK_INFORMATION {
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Storage.FileSystem', 'Windows.Win32.System.Kernel', 'Windows.Win32.System.Memory'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for MINIDUMP_CALLBACK_INFORMATION {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Storage.FileSystem', 'Windows.Win32.System.Kernel', 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl ::core::default::Default for MINIDUMP_CALLBACK_INFORMATION {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Storage.FileSystem', 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_CALLBACK_INPUT {
@@ -12586,13 +11543,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_CALLBACK_INPUT {
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Storage.FileSystem', 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for MINIDUMP_CALLBACK_INPUT {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Storage.FileSystem', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl ::core::default::Default for MINIDUMP_CALLBACK_INPUT {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Storage.FileSystem', 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_CALLBACK_INPUT_0 {
@@ -12640,13 +11590,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_CALLBACK_INPUT_0 {
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Storage.FileSystem', 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for MINIDUMP_CALLBACK_INPUT_0 {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Storage.FileSystem', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl ::core::default::Default for MINIDUMP_CALLBACK_INPUT_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_CALLBACK_OUTPUT {
@@ -12672,13 +11615,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_CALLBACK_OUTPUT {
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for MINIDUMP_CALLBACK_OUTPUT {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl ::core::default::Default for MINIDUMP_CALLBACK_OUTPUT {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_CALLBACK_OUTPUT_0 {
@@ -12724,13 +11660,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_CALLBACK_OUTPUT_0 {
 impl ::core::cmp::Eq for MINIDUMP_CALLBACK_OUTPUT_0 {}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-impl ::core::default::Default for MINIDUMP_CALLBACK_OUTPUT_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_CALLBACK_OUTPUT_0_0 {
     pub MemoryBase: u64,
     pub MemorySize: u32,
@@ -12755,13 +11684,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_CALLBACK_OUTPUT_0_0 {
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for MINIDUMP_CALLBACK_OUTPUT_0_0 {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl ::core::default::Default for MINIDUMP_CALLBACK_OUTPUT_0_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_CALLBACK_OUTPUT_0_1 {
@@ -12800,13 +11722,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_CALLBACK_OUTPUT_0_1 {
 impl ::core::cmp::Eq for MINIDUMP_CALLBACK_OUTPUT_0_1 {}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-impl ::core::default::Default for MINIDUMP_CALLBACK_OUTPUT_0_1 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_CALLBACK_OUTPUT_0_2 {
     pub VmRegion: MINIDUMP_MEMORY_INFO,
     pub Continue: super::super::super::Foundation::BOOL,
@@ -12833,13 +11748,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_CALLBACK_OUTPUT_0_2 {
 impl ::core::cmp::Eq for MINIDUMP_CALLBACK_OUTPUT_0_2 {}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-impl ::core::default::Default for MINIDUMP_CALLBACK_OUTPUT_0_2 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_CALLBACK_OUTPUT_0_3 {
     pub VmQueryStatus: ::win32::core::HRESULT,
     pub VmQueryResult: MINIDUMP_MEMORY_INFO,
@@ -12864,13 +11772,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_CALLBACK_OUTPUT_0_3 {
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for MINIDUMP_CALLBACK_OUTPUT_0_3 {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl ::core::default::Default for MINIDUMP_CALLBACK_OUTPUT_0_3 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_CALLBACK_OUTPUT_0_4 {
@@ -12908,20 +11809,13 @@ impl ::core::cmp::PartialEq for MINIDUMP_CALLBACK_OUTPUT_0_4 {
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for MINIDUMP_CALLBACK_OUTPUT_0_4 {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl ::core::default::Default for MINIDUMP_CALLBACK_OUTPUT_0_4 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Storage.FileSystem', 'Windows.Win32.System.Kernel', 'Windows.Win32.System.Memory'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub type MINIDUMP_CALLBACK_ROUTINE = ::core::option::Option<
     unsafe extern "system" fn(
-        callbackparam: *mut ::core::ffi::c_void,
-        callbackinput: *const MINIDUMP_CALLBACK_INPUT,
-        callbackoutput: *mut MINIDUMP_CALLBACK_OUTPUT,
+        CallbackParam: MutPtr<::core::ffi::c_void>,
+        CallbackInput: ConstPtr<MINIDUMP_CALLBACK_INPUT>,
+        CallbackOutput: MutPtr<MINIDUMP_CALLBACK_OUTPUT>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -12989,11 +11883,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_DIRECTORY {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_DIRECTORY {}
-impl ::core::default::Default for MINIDUMP_DIRECTORY {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct MINIDUMP_EXCEPTION {
     pub ExceptionCode: u32,
     pub ExceptionFlags: u32,
@@ -13021,16 +11910,11 @@ impl ::core::cmp::PartialEq for MINIDUMP_EXCEPTION {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_EXCEPTION {}
-impl ::core::default::Default for MINIDUMP_EXCEPTION {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_EXCEPTION_INFORMATION {
     pub ThreadId: u32,
-    pub ExceptionPointers: *mut EXCEPTION_POINTERS,
+    pub ExceptionPointers: MutPtr<EXCEPTION_POINTERS>,
     pub ClientPointers: super::super::super::Foundation::BOOL,
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
@@ -13055,13 +11939,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_EXCEPTION_INFORMATION {
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for MINIDUMP_EXCEPTION_INFORMATION {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl ::core::default::Default for MINIDUMP_EXCEPTION_INFORMATION {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct MINIDUMP_EXCEPTION_INFORMATION64 {
     pub ThreadId: u32,
     pub ExceptionRecord: u64,
@@ -13083,11 +11960,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_EXCEPTION_INFORMATION64 {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_EXCEPTION_INFORMATION64 {}
-impl ::core::default::Default for MINIDUMP_EXCEPTION_INFORMATION64 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct MINIDUMP_EXCEPTION_STREAM {
     pub ThreadId: u32,
     pub __alignment: u32,
@@ -13109,11 +11981,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_EXCEPTION_STREAM {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_EXCEPTION_STREAM {}
-impl ::core::default::Default for MINIDUMP_EXCEPTION_STREAM {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct MINIDUMP_FUNCTION_TABLE_DESCRIPTOR {
     pub MinimumAddress: u64,
     pub MaximumAddress: u64,
@@ -13137,11 +12004,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_FUNCTION_TABLE_DESCRIPTOR {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_FUNCTION_TABLE_DESCRIPTOR {}
-impl ::core::default::Default for MINIDUMP_FUNCTION_TABLE_DESCRIPTOR {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct MINIDUMP_FUNCTION_TABLE_STREAM {
     pub SizeOfHeader: u32,
     pub SizeOfDescriptor: u32,
@@ -13179,11 +12041,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_FUNCTION_TABLE_STREAM {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_FUNCTION_TABLE_STREAM {}
-impl ::core::default::Default for MINIDUMP_FUNCTION_TABLE_STREAM {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct MINIDUMP_HANDLE_DATA_STREAM {
     pub SizeOfHeader: u32,
     pub SizeOfDescriptor: u32,
@@ -13215,11 +12072,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_HANDLE_DATA_STREAM {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_HANDLE_DATA_STREAM {}
-impl ::core::default::Default for MINIDUMP_HANDLE_DATA_STREAM {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct MINIDUMP_HANDLE_DESCRIPTOR {
     pub Handle: u64,
     pub TypeNameRva: u32,
@@ -13247,11 +12099,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_HANDLE_DESCRIPTOR {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_HANDLE_DESCRIPTOR {}
-impl ::core::default::Default for MINIDUMP_HANDLE_DESCRIPTOR {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct MINIDUMP_HANDLE_DESCRIPTOR_2 {
     pub Handle: u64,
     pub TypeNameRva: u32,
@@ -13283,11 +12130,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_HANDLE_DESCRIPTOR_2 {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_HANDLE_DESCRIPTOR_2 {}
-impl ::core::default::Default for MINIDUMP_HANDLE_DESCRIPTOR_2 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct MINIDUMP_HANDLE_OBJECT_INFORMATION {
     pub NextInfoRva: u32,
     pub InfoType: u32,
@@ -13316,11 +12158,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_HANDLE_OBJECT_INFORMATION {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_HANDLE_OBJECT_INFORMATION {}
-impl ::core::default::Default for MINIDUMP_HANDLE_OBJECT_INFORMATION {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct MINIDUMP_HANDLE_OBJECT_INFORMATION_TYPE(pub i32);
 pub const MiniHandleObjectInformationNone: MINIDUMP_HANDLE_OBJECT_INFORMATION_TYPE =
@@ -13392,11 +12229,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_HANDLE_OPERATION_LIST {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_HANDLE_OPERATION_LIST {}
-impl ::core::default::Default for MINIDUMP_HANDLE_OPERATION_LIST {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct MINIDUMP_HEADER {
     pub Signature: u32,
     pub Version: u32,
@@ -13424,11 +12256,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_HEADER {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_HEADER {}
-impl ::core::default::Default for MINIDUMP_HEADER {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct MINIDUMP_HEADER_0 {
     pub Reserved: u32,
     pub TimeDateStamp: u32,
@@ -13445,11 +12272,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_HEADER_0 {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_HEADER_0 {}
-impl ::core::default::Default for MINIDUMP_HEADER_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct MINIDUMP_INCLUDE_MODULE_CALLBACK {
     pub BaseOfImage: u64,
 }
@@ -13465,11 +12287,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_INCLUDE_MODULE_CALLBACK {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_INCLUDE_MODULE_CALLBACK {}
-impl ::core::default::Default for MINIDUMP_INCLUDE_MODULE_CALLBACK {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct MINIDUMP_INCLUDE_THREAD_CALLBACK {
     pub ThreadId: u32,
 }
@@ -13492,15 +12309,10 @@ impl ::core::cmp::PartialEq for MINIDUMP_INCLUDE_THREAD_CALLBACK {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_INCLUDE_THREAD_CALLBACK {}
-impl ::core::default::Default for MINIDUMP_INCLUDE_THREAD_CALLBACK {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct MINIDUMP_IO_CALLBACK {
     pub Handle: super::super::super::Foundation::HANDLE,
     pub Offset: u64,
-    pub Buffer: *mut ::core::ffi::c_void,
+    pub Buffer: MutPtr<::core::ffi::c_void>,
     pub BufferBytes: u32,
 }
 impl ::core::marker::Copy for MINIDUMP_IO_CALLBACK {}
@@ -13518,11 +12330,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_IO_CALLBACK {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_IO_CALLBACK {}
-impl ::core::default::Default for MINIDUMP_IO_CALLBACK {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct MINIDUMP_LOCATION_DESCRIPTOR {
     pub DataSize: u32,
     pub Rva: u32,
@@ -13547,11 +12354,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_LOCATION_DESCRIPTOR {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_LOCATION_DESCRIPTOR {}
-impl ::core::default::Default for MINIDUMP_LOCATION_DESCRIPTOR {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct MINIDUMP_LOCATION_DESCRIPTOR64 {
     pub DataSize: u64,
     pub Rva: u64,
@@ -13568,11 +12370,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_LOCATION_DESCRIPTOR64 {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_LOCATION_DESCRIPTOR64 {}
-impl ::core::default::Default for MINIDUMP_LOCATION_DESCRIPTOR64 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct MINIDUMP_MEMORY64_LIST {
     pub NumberOfMemoryRanges: u64,
     pub BaseRva: u64,
@@ -13592,11 +12389,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_MEMORY64_LIST {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_MEMORY64_LIST {}
-impl ::core::default::Default for MINIDUMP_MEMORY64_LIST {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct MINIDUMP_MEMORY_DESCRIPTOR {
     pub StartOfMemoryRange: u64,
     pub Memory: MINIDUMP_LOCATION_DESCRIPTOR,
@@ -13613,11 +12405,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_MEMORY_DESCRIPTOR {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_MEMORY_DESCRIPTOR {}
-impl ::core::default::Default for MINIDUMP_MEMORY_DESCRIPTOR {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct MINIDUMP_MEMORY_DESCRIPTOR64 {
     pub StartOfMemoryRange: u64,
     pub DataSize: u64,
@@ -13634,11 +12421,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_MEMORY_DESCRIPTOR64 {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_MEMORY_DESCRIPTOR64 {}
-impl ::core::default::Default for MINIDUMP_MEMORY_DESCRIPTOR64 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[doc = "*Required namespaces: 'Windows.Win32.System.Memory'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_MEMORY_INFO {
@@ -13680,13 +12462,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_MEMORY_INFO {
 #[doc = "*Required namespaces: 'Windows.Win32.System.Memory'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for MINIDUMP_MEMORY_INFO {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl ::core::default::Default for MINIDUMP_MEMORY_INFO {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct MINIDUMP_MEMORY_INFO_LIST {
     pub SizeOfHeader: u32,
     pub SizeOfEntry: u32,
@@ -13706,11 +12481,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_MEMORY_INFO_LIST {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_MEMORY_INFO_LIST {}
-impl ::core::default::Default for MINIDUMP_MEMORY_INFO_LIST {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct MINIDUMP_MEMORY_LIST {
     pub NumberOfMemoryRanges: u32,
     pub MemoryRanges: [MINIDUMP_MEMORY_DESCRIPTOR; 1],
@@ -13728,11 +12498,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_MEMORY_LIST {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_MEMORY_LIST {}
-impl ::core::default::Default for MINIDUMP_MEMORY_LIST {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const MINIDUMP_MISC1_PROCESSOR_POWER_INFO: u32 = 4u32;
 pub const MINIDUMP_MISC3_PROCESS_EXECUTE_FLAGS: u32 = 32u32;
 pub const MINIDUMP_MISC3_PROCESS_INTEGRITY: u32 = 16u32;
@@ -13777,11 +12542,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_MISC_INFO {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_MISC_INFO {}
-impl ::core::default::Default for MINIDUMP_MISC_INFO {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct MINIDUMP_MISC_INFO_2 {
     pub SizeOfInfo: u32,
     pub Flags1: u32,
@@ -13834,11 +12594,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_MISC_INFO_2 {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_MISC_INFO_2 {}
-impl ::core::default::Default for MINIDUMP_MISC_INFO_2 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Time'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_MISC_INFO_3 {
@@ -13918,13 +12673,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_MISC_INFO_3 {
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Time'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for MINIDUMP_MISC_INFO_3 {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Time'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl ::core::default::Default for MINIDUMP_MISC_INFO_3 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Time'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_MISC_INFO_4 {
@@ -14012,13 +12760,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_MISC_INFO_4 {
 impl ::core::cmp::Eq for MINIDUMP_MISC_INFO_4 {}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Time'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-impl ::core::default::Default for MINIDUMP_MISC_INFO_4 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Time'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_MISC_INFO_5 {
     pub SizeOfInfo: u32,
     pub Flags1: u32,
@@ -14080,13 +12821,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_MISC_INFO_5 {
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Time'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for MINIDUMP_MISC_INFO_5 {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Time'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl ::core::default::Default for MINIDUMP_MISC_INFO_5 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct MINIDUMP_MISC_INFO_FLAGS(pub u32);
 pub const MINIDUMP_MISC1_PROCESS_ID: MINIDUMP_MISC_INFO_FLAGS = MINIDUMP_MISC_INFO_FLAGS(1u32);
@@ -14182,13 +12916,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_MODULE {
 impl ::core::cmp::Eq for MINIDUMP_MODULE {}
 #[doc = "*Required namespaces: 'Windows.Win32.Storage.FileSystem'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-impl ::core::default::Default for MINIDUMP_MODULE {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
-#[doc = "*Required namespaces: 'Windows.Win32.Storage.FileSystem'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_MODULE_CALLBACK {
     pub FullPath: ::win32::core::PWSTR,
     pub BaseOfImage: u64,
@@ -14196,9 +12923,9 @@ pub struct MINIDUMP_MODULE_CALLBACK {
     pub CheckSum: u32,
     pub TimeDateStamp: u32,
     pub VersionInfo: super::super::super::Storage::FileSystem::VS_FIXEDFILEINFO,
-    pub CvRecord: *mut ::core::ffi::c_void,
+    pub CvRecord: MutPtr<::core::ffi::c_void>,
     pub SizeOfCvRecord: u32,
-    pub MiscRecord: *mut ::core::ffi::c_void,
+    pub MiscRecord: MutPtr<::core::ffi::c_void>,
     pub SizeOfMiscRecord: u32,
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Storage.FileSystem'*"]
@@ -14232,13 +12959,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_MODULE_CALLBACK {
 impl ::core::cmp::Eq for MINIDUMP_MODULE_CALLBACK {}
 #[doc = "*Required namespaces: 'Windows.Win32.Storage.FileSystem'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-impl ::core::default::Default for MINIDUMP_MODULE_CALLBACK {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
-#[doc = "*Required namespaces: 'Windows.Win32.Storage.FileSystem'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_MODULE_LIST {
     pub NumberOfModules: u32,
     pub Modules: [MINIDUMP_MODULE; 1],
@@ -14263,13 +12983,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_MODULE_LIST {
 #[doc = "*Required namespaces: 'Windows.Win32.Storage.FileSystem'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for MINIDUMP_MODULE_LIST {}
-#[doc = "*Required namespaces: 'Windows.Win32.Storage.FileSystem'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl ::core::default::Default for MINIDUMP_MODULE_LIST {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const MINIDUMP_PROCESS_VM_COUNTERS: u32 = 1u32;
 pub struct MINIDUMP_PROCESS_VM_COUNTERS_1 {
     pub Revision: u16,
@@ -14306,11 +13019,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_PROCESS_VM_COUNTERS_1 {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_PROCESS_VM_COUNTERS_1 {}
-impl ::core::default::Default for MINIDUMP_PROCESS_VM_COUNTERS_1 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct MINIDUMP_PROCESS_VM_COUNTERS_2 {
     pub Revision: u16,
     pub Flags: u16,
@@ -14366,11 +13074,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_PROCESS_VM_COUNTERS_2 {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_PROCESS_VM_COUNTERS_2 {}
-impl ::core::default::Default for MINIDUMP_PROCESS_VM_COUNTERS_2 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const MINIDUMP_PROCESS_VM_COUNTERS_EX: u32 = 4u32;
 pub const MINIDUMP_PROCESS_VM_COUNTERS_EX2: u32 = 8u32;
 pub const MINIDUMP_PROCESS_VM_COUNTERS_JOB: u32 = 16u32;
@@ -14394,11 +13097,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_READ_MEMORY_FAILURE_CALLBACK {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_READ_MEMORY_FAILURE_CALLBACK {}
-impl ::core::default::Default for MINIDUMP_READ_MEMORY_FAILURE_CALLBACK {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct MINIDUMP_SECONDARY_FLAGS(pub i32);
 pub const MiniSecondaryWithoutPowerInfo: MINIDUMP_SECONDARY_FLAGS = MINIDUMP_SECONDARY_FLAGS(1i32);
@@ -14504,11 +13202,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_STRING {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_STRING {}
-impl ::core::default::Default for MINIDUMP_STRING {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const MINIDUMP_SYSMEMINFO1_BASICPERF: u32 = 2u32;
 pub const MINIDUMP_SYSMEMINFO1_FILECACHE_TRANSITIONREPURPOSECOUNT_FLAGS: u32 = 1u32;
 pub const MINIDUMP_SYSMEMINFO1_PERF_CCTOTALDIRTYPAGES_CCDIRTYPAGETHRESHOLD: u32 = 4u32;
@@ -14546,11 +13239,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_SYSTEM_BASIC_INFORMATION {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_SYSTEM_BASIC_INFORMATION {}
-impl ::core::default::Default for MINIDUMP_SYSTEM_BASIC_INFORMATION {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct MINIDUMP_SYSTEM_BASIC_PERFORMANCE_INFORMATION {
     pub AvailablePages: u64,
     pub CommittedPages: u64,
@@ -14572,11 +13260,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_SYSTEM_BASIC_PERFORMANCE_INFORMATION {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_SYSTEM_BASIC_PERFORMANCE_INFORMATION {}
-impl ::core::default::Default for MINIDUMP_SYSTEM_BASIC_PERFORMANCE_INFORMATION {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct MINIDUMP_SYSTEM_FILECACHE_INFORMATION {
     pub CurrentSize: u64,
     pub PeakSize: u64,
@@ -14609,11 +13292,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_SYSTEM_FILECACHE_INFORMATION {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_SYSTEM_FILECACHE_INFORMATION {}
-impl ::core::default::Default for MINIDUMP_SYSTEM_FILECACHE_INFORMATION {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct MINIDUMP_SYSTEM_INFO {
     pub ProcessorArchitecture: PROCESSOR_ARCHITECTURE,
     pub ProcessorLevel: u16,
@@ -14649,11 +13327,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_SYSTEM_INFO {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_SYSTEM_INFO {}
-impl ::core::default::Default for MINIDUMP_SYSTEM_INFO {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct MINIDUMP_SYSTEM_INFO_0 {
     pub Reserved0: u16,
     pub Anonymous: MINIDUMP_SYSTEM_INFO_0_0,
@@ -14670,11 +13343,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_SYSTEM_INFO_0 {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_SYSTEM_INFO_0 {}
-impl ::core::default::Default for MINIDUMP_SYSTEM_INFO_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct MINIDUMP_SYSTEM_INFO_0_0 {
     pub NumberOfProcessors: u8,
     pub ProductType: u8,
@@ -14699,11 +13367,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_SYSTEM_INFO_0_0 {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_SYSTEM_INFO_0_0 {}
-impl ::core::default::Default for MINIDUMP_SYSTEM_INFO_0_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct MINIDUMP_SYSTEM_INFO_1 {
     pub Reserved1: u32,
     pub Anonymous: MINIDUMP_SYSTEM_INFO_1_0,
@@ -14720,11 +13383,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_SYSTEM_INFO_1 {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_SYSTEM_INFO_1 {}
-impl ::core::default::Default for MINIDUMP_SYSTEM_INFO_1 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct MINIDUMP_SYSTEM_INFO_1_0 {
     pub SuiteMask: u16,
     pub Reserved2: u16,
@@ -14749,11 +13407,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_SYSTEM_INFO_1_0 {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_SYSTEM_INFO_1_0 {}
-impl ::core::default::Default for MINIDUMP_SYSTEM_INFO_1_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct MINIDUMP_SYSTEM_MEMORY_INFO_1 {
     pub Revision: u16,
     pub Flags: u16,
@@ -14779,11 +13432,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_SYSTEM_MEMORY_INFO_1 {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_SYSTEM_MEMORY_INFO_1 {}
-impl ::core::default::Default for MINIDUMP_SYSTEM_MEMORY_INFO_1 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct MINIDUMP_SYSTEM_PERFORMANCE_INFORMATION {
     pub IdleProcessTime: u64,
     pub IoReadTransferCount: u64,
@@ -14953,11 +13601,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_SYSTEM_PERFORMANCE_INFORMATION {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_SYSTEM_PERFORMANCE_INFORMATION {}
-impl ::core::default::Default for MINIDUMP_SYSTEM_PERFORMANCE_INFORMATION {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct MINIDUMP_THREAD {
     pub ThreadId: u32,
     pub SuspendCount: u32,
@@ -14985,11 +13628,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_THREAD {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_THREAD {}
-impl ::core::default::Default for MINIDUMP_THREAD {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_THREAD_CALLBACK {
@@ -15029,13 +13667,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_THREAD_CALLBACK {
 impl ::core::cmp::Eq for MINIDUMP_THREAD_CALLBACK {}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-impl ::core::default::Default for MINIDUMP_THREAD_CALLBACK {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_THREAD_CALLBACK {
     pub ThreadId: u32,
     pub ThreadHandle: super::super::super::Foundation::HANDLE,
@@ -15071,13 +13702,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_THREAD_CALLBACK {
 impl ::core::cmp::Eq for MINIDUMP_THREAD_CALLBACK {}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-impl ::core::default::Default for MINIDUMP_THREAD_CALLBACK {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_THREAD_CALLBACK {
     pub ThreadId: u32,
     pub ThreadHandle: super::super::super::Foundation::HANDLE,
@@ -15111,13 +13735,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_THREAD_CALLBACK {
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for MINIDUMP_THREAD_CALLBACK {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl ::core::default::Default for MINIDUMP_THREAD_CALLBACK {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct MINIDUMP_THREAD_EX {
     pub ThreadId: u32,
     pub SuspendCount: u32,
@@ -15147,11 +13764,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_THREAD_EX {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_THREAD_EX {}
-impl ::core::default::Default for MINIDUMP_THREAD_EX {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_THREAD_EX_CALLBACK {
@@ -15195,13 +13807,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_THREAD_EX_CALLBACK {
 impl ::core::cmp::Eq for MINIDUMP_THREAD_EX_CALLBACK {}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-impl ::core::default::Default for MINIDUMP_THREAD_EX_CALLBACK {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_THREAD_EX_CALLBACK {
     pub ThreadId: u32,
     pub ThreadHandle: super::super::super::Foundation::HANDLE,
@@ -15241,13 +13846,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_THREAD_EX_CALLBACK {
 impl ::core::cmp::Eq for MINIDUMP_THREAD_EX_CALLBACK {}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-impl ::core::default::Default for MINIDUMP_THREAD_EX_CALLBACK {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_THREAD_EX_CALLBACK {
     pub ThreadId: u32,
     pub ThreadHandle: super::super::super::Foundation::HANDLE,
@@ -15285,13 +13883,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_THREAD_EX_CALLBACK {
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for MINIDUMP_THREAD_EX_CALLBACK {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl ::core::default::Default for MINIDUMP_THREAD_EX_CALLBACK {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct MINIDUMP_THREAD_EX_LIST {
     pub NumberOfThreads: u32,
     pub Threads: [MINIDUMP_THREAD_EX; 1],
@@ -15308,11 +13899,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_THREAD_EX_LIST {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_THREAD_EX_LIST {}
-impl ::core::default::Default for MINIDUMP_THREAD_EX_LIST {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct MINIDUMP_THREAD_INFO {
     pub ThreadId: u32,
     pub DumpFlags: MINIDUMP_THREAD_INFO_DUMP_FLAGS,
@@ -15346,11 +13932,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_THREAD_INFO {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_THREAD_INFO {}
-impl ::core::default::Default for MINIDUMP_THREAD_INFO {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct MINIDUMP_THREAD_INFO_DUMP_FLAGS(pub u32);
 pub const MINIDUMP_THREAD_INFO_ERROR_THREAD: MINIDUMP_THREAD_INFO_DUMP_FLAGS =
@@ -15411,11 +13992,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_THREAD_INFO_LIST {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_THREAD_INFO_LIST {}
-impl ::core::default::Default for MINIDUMP_THREAD_INFO_LIST {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct MINIDUMP_THREAD_LIST {
     pub NumberOfThreads: u32,
     pub Threads: [MINIDUMP_THREAD; 1],
@@ -15432,11 +14008,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_THREAD_LIST {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_THREAD_LIST {}
-impl ::core::default::Default for MINIDUMP_THREAD_LIST {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct MINIDUMP_THREAD_NAME {
     pub ThreadId: u32,
     pub RvaOfThreadName: u64,
@@ -15453,11 +14024,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_THREAD_NAME {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_THREAD_NAME {}
-impl ::core::default::Default for MINIDUMP_THREAD_NAME {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct MINIDUMP_THREAD_NAME_LIST {
     pub NumberOfThreadNames: u32,
     pub ThreadNames: [MINIDUMP_THREAD_NAME; 1],
@@ -15475,11 +14041,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_THREAD_NAME_LIST {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_THREAD_NAME_LIST {}
-impl ::core::default::Default for MINIDUMP_THREAD_NAME_LIST {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct MINIDUMP_TOKEN_INFO_HEADER {
     pub TokenSize: u32,
     pub TokenId: u32,
@@ -15499,11 +14060,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_TOKEN_INFO_HEADER {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_TOKEN_INFO_HEADER {}
-impl ::core::default::Default for MINIDUMP_TOKEN_INFO_HEADER {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct MINIDUMP_TOKEN_INFO_LIST {
     pub TokenListSize: u32,
     pub TokenListEntries: u32,
@@ -15535,11 +14091,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_TOKEN_INFO_LIST {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_TOKEN_INFO_LIST {}
-impl ::core::default::Default for MINIDUMP_TOKEN_INFO_LIST {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct MINIDUMP_TYPE(pub u32);
 pub const MiniDumpNormal: MINIDUMP_TYPE = MINIDUMP_TYPE(0u32);
@@ -15636,11 +14187,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_UNLOADED_MODULE {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_UNLOADED_MODULE {}
-impl ::core::default::Default for MINIDUMP_UNLOADED_MODULE {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct MINIDUMP_UNLOADED_MODULE_LIST {
     pub SizeOfHeader: u32,
     pub SizeOfEntry: u32,
@@ -15669,11 +14215,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_UNLOADED_MODULE_LIST {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_UNLOADED_MODULE_LIST {}
-impl ::core::default::Default for MINIDUMP_UNLOADED_MODULE_LIST {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct MINIDUMP_USER_RECORD {
     pub Type: u32,
     pub Memory: MINIDUMP_LOCATION_DESCRIPTOR,
@@ -15698,15 +14239,10 @@ impl ::core::cmp::PartialEq for MINIDUMP_USER_RECORD {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_USER_RECORD {}
-impl ::core::default::Default for MINIDUMP_USER_RECORD {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct MINIDUMP_USER_STREAM {
     pub Type: u32,
     pub BufferSize: u32,
-    pub Buffer: *mut ::core::ffi::c_void,
+    pub Buffer: MutPtr<::core::ffi::c_void>,
 }
 impl ::core::marker::Copy for MINIDUMP_USER_STREAM {}
 impl ::core::clone::Clone for MINIDUMP_USER_STREAM {
@@ -15722,14 +14258,9 @@ impl ::core::cmp::PartialEq for MINIDUMP_USER_STREAM {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_USER_STREAM {}
-impl ::core::default::Default for MINIDUMP_USER_STREAM {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct MINIDUMP_USER_STREAM_INFORMATION {
     pub UserStreamCount: u32,
-    pub UserStreamArray: *mut MINIDUMP_USER_STREAM,
+    pub UserStreamArray: MutPtr<MINIDUMP_USER_STREAM>,
 }
 impl ::core::marker::Copy for MINIDUMP_USER_STREAM_INFORMATION {}
 impl ::core::clone::Clone for MINIDUMP_USER_STREAM_INFORMATION {
@@ -15744,15 +14275,10 @@ impl ::core::cmp::PartialEq for MINIDUMP_USER_STREAM_INFORMATION {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_USER_STREAM_INFORMATION {}
-impl ::core::default::Default for MINIDUMP_USER_STREAM_INFORMATION {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const MINIDUMP_VERSION: u32 = 42899u32;
 pub struct MINIDUMP_VM_POST_READ_CALLBACK {
     pub Offset: u64,
-    pub Buffer: *mut ::core::ffi::c_void,
+    pub Buffer: MutPtr<::core::ffi::c_void>,
     pub Size: u32,
     pub Completed: u32,
     pub Status: ::win32::core::HRESULT,
@@ -15773,14 +14299,9 @@ impl ::core::cmp::PartialEq for MINIDUMP_VM_POST_READ_CALLBACK {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_VM_POST_READ_CALLBACK {}
-impl ::core::default::Default for MINIDUMP_VM_POST_READ_CALLBACK {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct MINIDUMP_VM_PRE_READ_CALLBACK {
     pub Offset: u64,
-    pub Buffer: *mut ::core::ffi::c_void,
+    pub Buffer: MutPtr<::core::ffi::c_void>,
     pub Size: u32,
 }
 impl ::core::marker::Copy for MINIDUMP_VM_PRE_READ_CALLBACK {}
@@ -15795,11 +14316,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_VM_PRE_READ_CALLBACK {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_VM_PRE_READ_CALLBACK {}
-impl ::core::default::Default for MINIDUMP_VM_PRE_READ_CALLBACK {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct MINIDUMP_VM_QUERY_CALLBACK {
     pub Offset: u64,
 }
@@ -15815,11 +14331,6 @@ impl ::core::cmp::PartialEq for MINIDUMP_VM_QUERY_CALLBACK {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_VM_QUERY_CALLBACK {}
-impl ::core::default::Default for MINIDUMP_VM_QUERY_CALLBACK {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct MODLOAD_CVMISC {
     pub oCV: u32,
     pub cCV: usize,
@@ -15857,15 +14368,10 @@ impl ::core::cmp::PartialEq for MODLOAD_CVMISC {
     }
 }
 impl ::core::cmp::Eq for MODLOAD_CVMISC {}
-impl ::core::default::Default for MODLOAD_CVMISC {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct MODLOAD_DATA {
     pub ssize: u32,
     pub ssig: MODLOAD_DATA_TYPE,
-    pub data: *mut ::core::ffi::c_void,
+    pub data: MutPtr<::core::ffi::c_void>,
     pub size: u32,
     pub flags: u32,
 }
@@ -15896,11 +14402,6 @@ impl ::core::cmp::PartialEq for MODLOAD_DATA {
     }
 }
 impl ::core::cmp::Eq for MODLOAD_DATA {}
-impl ::core::default::Default for MODLOAD_DATA {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct MODLOAD_DATA_TYPE(pub u32);
 pub const DBHHEADER_DEBUGDIRS: MODLOAD_DATA_TYPE = MODLOAD_DATA_TYPE(1u32);
@@ -15945,11 +14446,6 @@ impl ::core::cmp::PartialEq for MODLOAD_PDBGUID_PDBAGE {
     }
 }
 impl ::core::cmp::Eq for MODLOAD_PDBGUID_PDBAGE {}
-impl ::core::default::Default for MODLOAD_PDBGUID_PDBAGE {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const MODULE_ORDERS_LOADTIME: u32 = 268435456u32;
 pub const MODULE_ORDERS_MASK: u32 = 4026531840u32;
 pub const MODULE_ORDERS_MODULENAME: u32 = 536870912u32;
@@ -15979,11 +14475,6 @@ impl ::core::cmp::PartialEq for MODULE_TYPE_INFO {
     }
 }
 impl ::core::cmp::Eq for MODULE_TYPE_INFO {}
-impl ::core::default::Default for MODULE_TYPE_INFO {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct MODULE_WRITE_FLAGS(pub i32);
 pub const ModuleWriteModule: MODULE_WRITE_FLAGS = MODULE_WRITE_FLAGS(1i32);
@@ -16155,11 +14646,6 @@ impl ::core::cmp::PartialEq for OMAP {
     }
 }
 impl ::core::cmp::Eq for OMAP {}
-impl ::core::default::Default for OMAP {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct OPEN_THREAD_WAIT_CHAIN_SESSION_FLAGS(pub u32);
 pub const WCT_ASYNC_OPEN_FLAG: OPEN_THREAD_WAIT_CHAIN_SESSION_FLAGS =
@@ -16210,191 +14696,186 @@ impl ::core::cmp::PartialEq for OUTPUT_DEBUG_STRING_INFO {
     }
 }
 impl ::core::cmp::Eq for OUTPUT_DEBUG_STRING_INFO {}
-impl ::core::default::Default for OUTPUT_DEBUG_STRING_INFO {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub type PCOGETACTIVATIONSTATE = ::core::option::Option<
     unsafe extern "system" fn(
         param0: ::win32::core::GUID,
         param1: u32,
-        param2: *mut u32,
+        param2: MutPtr<u32>,
     ) -> ::win32::core::HRESULT,
 >;
 pub type PCOGETCALLSTATE = ::core::option::Option<
-    unsafe extern "system" fn(param0: i32, param1: *mut u32) -> ::win32::core::HRESULT,
+    unsafe extern "system" fn(param0: i32, param1: MutPtr<u32>) -> ::win32::core::HRESULT,
 >;
 pub type PDBGHELP_CREATE_USER_DUMP_CALLBACK = ::core::option::Option<
     unsafe extern "system" fn(
-        datatype: u32,
-        data: *const *const ::core::ffi::c_void,
-        datalength: *mut u32,
-        userdata: *const ::core::ffi::c_void,
+        DataType: u32,
+        Data: ConstPtr<ConstPtr<::core::ffi::c_void>>,
+        DataLength: MutPtr<u32>,
+        UserData: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PDEBUG_EXTENSION_CANUNLOAD =
     ::core::option::Option<unsafe extern "system" fn() -> ::win32::core::HRESULT>;
 pub type PDEBUG_EXTENSION_INITIALIZE = ::core::option::Option<
-    unsafe extern "system" fn(version: *mut u32, flags: *mut u32) -> ::win32::core::HRESULT,
+    unsafe extern "system" fn(Version: MutPtr<u32>, Flags: MutPtr<u32>) -> ::win32::core::HRESULT,
 >;
 pub type PDEBUG_EXTENSION_KNOWN_STRUCT = ::core::option::Option<
     unsafe extern "system" fn(
-        flags: u32,
-        offset: u64,
-        typename: ::win32::core::PCSTR,
-        buffer: ::win32::core::PSTR,
-        bufferchars: *mut u32,
+        Flags: u32,
+        Offset: u64,
+        TypeName: ::win32::core::PCSTR,
+        Buffer: ::win32::core::PSTR,
+        BufferChars: MutPtr<u32>,
     ) -> ::win32::core::HRESULT,
 >;
 pub type PDEBUG_EXTENSION_NOTIFY =
-    ::core::option::Option<unsafe extern "system" fn(notify: u32, argument: u64)>;
+    ::core::option::Option<unsafe extern "system" fn(Notify: u32, Argument: u64)>;
 pub type PDEBUG_EXTENSION_UNINITIALIZE = ::core::option::Option<unsafe extern "system" fn()>;
 pub type PDEBUG_EXTENSION_UNLOAD = ::core::option::Option<unsafe extern "system" fn()>;
 pub type PDEBUG_STACK_PROVIDER_BEGINTHREADSTACKRECONSTRUCTION = ::core::option::Option<
     unsafe extern "system" fn(
-        streamtype: u32,
-        minidumpstreambuffer: *const ::core::ffi::c_void,
-        buffersize: u32,
+        StreamType: u32,
+        MiniDumpStreamBuffer: ConstPtr<::core::ffi::c_void>,
+        BufferSize: u32,
     ) -> ::win32::core::HRESULT,
 >;
 pub type PDEBUG_STACK_PROVIDER_ENDTHREADSTACKRECONSTRUCTION =
     ::core::option::Option<unsafe extern "system" fn() -> ::win32::core::HRESULT>;
 pub type PDEBUG_STACK_PROVIDER_FREESTACKSYMFRAMES = ::core::option::Option<
     unsafe extern "system" fn(
-        stacksymframes: *const STACK_SYM_FRAME_INFO,
+        StackSymFrames: ConstPtr<STACK_SYM_FRAME_INFO>,
     ) -> ::win32::core::HRESULT,
 >;
 pub type PDEBUG_STACK_PROVIDER_RECONSTRUCTSTACK = ::core::option::Option<
     unsafe extern "system" fn(
-        systemthreadid: u32,
-        nativeframes: *const DEBUG_STACK_FRAME_EX,
-        countnativeframes: u32,
-        stacksymframes: *mut *mut STACK_SYM_FRAME_INFO,
-        stacksymframesfilled: *mut u32,
+        SystemThreadId: u32,
+        NativeFrames: ConstPtr<DEBUG_STACK_FRAME_EX>,
+        CountNativeFrames: u32,
+        StackSymFrames: MutPtr<ConstPtr<STACK_SYM_FRAME_INFO>>,
+        StackSymFramesFilled: MutPtr<u32>,
     ) -> ::win32::core::HRESULT,
 >;
 pub type PENUMDIRTREE_CALLBACK = ::core::option::Option<
     unsafe extern "system" fn(
-        filepath: ::win32::core::PCSTR,
-        callerdata: *const ::core::ffi::c_void,
+        FilePath: ::win32::core::PCSTR,
+        CallerData: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PENUMDIRTREE_CALLBACKW = ::core::option::Option<
     unsafe extern "system" fn(
-        filepath: ::win32::core::PCWSTR,
-        callerdata: *const ::core::ffi::c_void,
+        FilePath: ::win32::core::PCWSTR,
+        CallerData: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PENUMLOADED_MODULES_CALLBACK = ::core::option::Option<
     unsafe extern "system" fn(
-        modulename: ::win32::core::PCSTR,
-        modulebase: u32,
-        modulesize: u32,
-        usercontext: *const ::core::ffi::c_void,
+        ModuleName: ::win32::core::PCSTR,
+        ModuleBase: u32,
+        ModuleSize: u32,
+        UserContext: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PENUMLOADED_MODULES_CALLBACK64 = ::core::option::Option<
     unsafe extern "system" fn(
-        modulename: ::win32::core::PCSTR,
-        modulebase: u64,
-        modulesize: u32,
-        usercontext: *const ::core::ffi::c_void,
+        ModuleName: ::win32::core::PCSTR,
+        ModuleBase: u64,
+        ModuleSize: u32,
+        UserContext: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PENUMLOADED_MODULES_CALLBACKW64 = ::core::option::Option<
     unsafe extern "system" fn(
-        modulename: ::win32::core::PCWSTR,
-        modulebase: u64,
-        modulesize: u32,
-        usercontext: *const ::core::ffi::c_void,
+        ModuleName: ::win32::core::PCWSTR,
+        ModuleBase: u64,
+        ModuleSize: u32,
+        UserContext: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PENUMSOURCEFILETOKENSCALLBACK = ::core::option::Option<
     unsafe extern "system" fn(
-        token: *const ::core::ffi::c_void,
+        token: ConstPtr<::core::ffi::c_void>,
         size: usize,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PFINDFILEINPATHCALLBACK = ::core::option::Option<
     unsafe extern "system" fn(
         filename: ::win32::core::PCSTR,
-        context: *const ::core::ffi::c_void,
+        context: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PFINDFILEINPATHCALLBACKW = ::core::option::Option<
     unsafe extern "system" fn(
         filename: ::win32::core::PCWSTR,
-        context: *const ::core::ffi::c_void,
+        context: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PFIND_DEBUG_FILE_CALLBACK = ::core::option::Option<
     unsafe extern "system" fn(
-        filehandle: super::super::super::Foundation::HANDLE,
-        filename: ::win32::core::PCSTR,
-        callerdata: *const ::core::ffi::c_void,
+        FileHandle: super::super::super::Foundation::HANDLE,
+        FileName: ::win32::core::PCSTR,
+        CallerData: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PFIND_DEBUG_FILE_CALLBACKW = ::core::option::Option<
     unsafe extern "system" fn(
-        filehandle: super::super::super::Foundation::HANDLE,
-        filename: ::win32::core::PCWSTR,
-        callerdata: *const ::core::ffi::c_void,
+        FileHandle: super::super::super::Foundation::HANDLE,
+        FileName: ::win32::core::PCWSTR,
+        CallerData: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PFIND_EXE_FILE_CALLBACK = ::core::option::Option<
     unsafe extern "system" fn(
-        filehandle: super::super::super::Foundation::HANDLE,
-        filename: ::win32::core::PCSTR,
-        callerdata: *const ::core::ffi::c_void,
+        FileHandle: super::super::super::Foundation::HANDLE,
+        FileName: ::win32::core::PCSTR,
+        CallerData: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PFIND_EXE_FILE_CALLBACKW = ::core::option::Option<
     unsafe extern "system" fn(
-        filehandle: super::super::super::Foundation::HANDLE,
-        filename: ::win32::core::PCWSTR,
-        callerdata: *const ::core::ffi::c_void,
+        FileHandle: super::super::super::Foundation::HANDLE,
+        FileName: ::win32::core::PCWSTR,
+        CallerData: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PFUNCTION_TABLE_ACCESS_ROUTINE = ::core::option::Option<
     unsafe extern "system" fn(
-        hprocess: super::super::super::Foundation::HANDLE,
-        addrbase: u32,
-    ) -> *mut ::core::ffi::c_void,
+        hProcess: super::super::super::Foundation::HANDLE,
+        AddrBase: u32,
+    ) -> MutPtr<::core::ffi::c_void>,
 >;
 pub type PFUNCTION_TABLE_ACCESS_ROUTINE64 = ::core::option::Option<
     unsafe extern "system" fn(
-        ahprocess: super::super::super::Foundation::HANDLE,
-        addrbase: u64,
-    ) -> *mut ::core::ffi::c_void,
+        ahProcess: super::super::super::Foundation::HANDLE,
+        AddrBase: u64,
+    ) -> MutPtr<::core::ffi::c_void>,
 >;
 pub type PGET_MODULE_BASE_ROUTINE = ::core::option::Option<
     unsafe extern "system" fn(
-        hprocess: super::super::super::Foundation::HANDLE,
-        address: u32,
+        hProcess: super::super::super::Foundation::HANDLE,
+        Address: u32,
     ) -> u32,
 >;
 pub type PGET_MODULE_BASE_ROUTINE64 = ::core::option::Option<
     unsafe extern "system" fn(
-        hprocess: super::super::super::Foundation::HANDLE,
-        address: u64,
+        hProcess: super::super::super::Foundation::HANDLE,
+        Address: u64,
     ) -> u64,
 >;
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub type PGET_RUNTIME_FUNCTION_CALLBACK = ::core::option::Option<
     unsafe extern "system" fn(
-        controlpc: u64,
-        context: *const ::core::ffi::c_void,
-    ) -> *mut IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY,
+        ControlPc: u64,
+        Context: ConstPtr<::core::ffi::c_void>,
+    ) -> MutPtr<IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY>,
 >;
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub type PGET_RUNTIME_FUNCTION_CALLBACK = ::core::option::Option<
     unsafe extern "system" fn(
-        controlpc: u64,
-        context: *const ::core::ffi::c_void,
-    ) -> *mut IMAGE_RUNTIME_FUNCTION_ENTRY,
+        ControlPc: u64,
+        Context: ConstPtr<::core::ffi::c_void>,
+    ) -> MutPtr<IMAGE_RUNTIME_FUNCTION_ENTRY>,
 >;
 pub struct PHYSICAL {
     pub Address: u64,
@@ -16422,11 +14903,6 @@ impl ::core::cmp::PartialEq for PHYSICAL {
     }
 }
 impl ::core::cmp::Eq for PHYSICAL {}
-impl ::core::default::Default for PHYSICAL {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct PHYSICAL_MEMORY_DESCRIPTOR32 {
     pub NumberOfRuns: u32,
     pub NumberOfPages: u32,
@@ -16455,11 +14931,6 @@ impl ::core::cmp::PartialEq for PHYSICAL_MEMORY_DESCRIPTOR32 {
     }
 }
 impl ::core::cmp::Eq for PHYSICAL_MEMORY_DESCRIPTOR32 {}
-impl ::core::default::Default for PHYSICAL_MEMORY_DESCRIPTOR32 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct PHYSICAL_MEMORY_DESCRIPTOR64 {
     pub NumberOfRuns: u32,
     pub NumberOfPages: u64,
@@ -16488,11 +14959,6 @@ impl ::core::cmp::PartialEq for PHYSICAL_MEMORY_DESCRIPTOR64 {
     }
 }
 impl ::core::cmp::Eq for PHYSICAL_MEMORY_DESCRIPTOR64 {}
-impl ::core::default::Default for PHYSICAL_MEMORY_DESCRIPTOR64 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct PHYSICAL_MEMORY_RUN32 {
     pub BasePage: u32,
     pub PageCount: u32,
@@ -16517,11 +14983,6 @@ impl ::core::cmp::PartialEq for PHYSICAL_MEMORY_RUN32 {
     }
 }
 impl ::core::cmp::Eq for PHYSICAL_MEMORY_RUN32 {}
-impl ::core::default::Default for PHYSICAL_MEMORY_RUN32 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct PHYSICAL_MEMORY_RUN64 {
     pub BasePage: u64,
     pub PageCount: u64,
@@ -16546,11 +15007,6 @@ impl ::core::cmp::PartialEq for PHYSICAL_MEMORY_RUN64 {
     }
 }
 impl ::core::cmp::Eq for PHYSICAL_MEMORY_RUN64 {}
-impl ::core::default::Default for PHYSICAL_MEMORY_RUN64 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct PHYSICAL_TO_VIRTUAL {
     pub Status: u32,
     pub Size: u32,
@@ -16579,11 +15035,6 @@ impl ::core::cmp::PartialEq for PHYSICAL_TO_VIRTUAL {
     }
 }
 impl ::core::cmp::Eq for PHYSICAL_TO_VIRTUAL {}
-impl ::core::default::Default for PHYSICAL_TO_VIRTUAL {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct PHYSICAL_WITH_FLAGS {
     pub Address: u64,
     pub BufLen: u32,
@@ -16615,40 +15066,35 @@ impl ::core::cmp::PartialEq for PHYSICAL_WITH_FLAGS {
     }
 }
 impl ::core::cmp::Eq for PHYSICAL_WITH_FLAGS {}
-impl ::core::default::Default for PHYSICAL_WITH_FLAGS {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const PHYS_FLAG_CACHED: u32 = 1u32;
 pub const PHYS_FLAG_DEFAULT: u32 = 0u32;
 pub const PHYS_FLAG_UNCACHED: u32 = 2u32;
 pub const PHYS_FLAG_WRITE_COMBINED: u32 = 3u32;
 pub type PIMAGEHLP_STATUS_ROUTINE = ::core::option::Option<
     unsafe extern "system" fn(
-        reason: IMAGEHLP_STATUS_REASON,
-        imagename: ::win32::core::PCSTR,
-        dllname: ::win32::core::PCSTR,
-        va: usize,
-        parameter: usize,
+        Reason: IMAGEHLP_STATUS_REASON,
+        ImageName: ::win32::core::PCSTR,
+        DllName: ::win32::core::PCSTR,
+        Va: usize,
+        Parameter: usize,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PIMAGEHLP_STATUS_ROUTINE32 = ::core::option::Option<
     unsafe extern "system" fn(
-        reason: IMAGEHLP_STATUS_REASON,
-        imagename: ::win32::core::PCSTR,
-        dllname: ::win32::core::PCSTR,
-        va: u32,
-        parameter: usize,
+        Reason: IMAGEHLP_STATUS_REASON,
+        ImageName: ::win32::core::PCSTR,
+        DllName: ::win32::core::PCSTR,
+        Va: u32,
+        Parameter: usize,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PIMAGEHLP_STATUS_ROUTINE64 = ::core::option::Option<
     unsafe extern "system" fn(
-        reason: IMAGEHLP_STATUS_REASON,
-        imagename: ::win32::core::PCSTR,
-        dllname: ::win32::core::PCSTR,
-        va: u64,
-        parameter: usize,
+        Reason: IMAGEHLP_STATUS_REASON,
+        ImageName: ::win32::core::PCSTR,
+        DllName: ::win32::core::PCSTR,
+        Va: u64,
+        Parameter: usize,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub struct POINTER_SEARCH_PHYSICAL {
@@ -16657,7 +15103,7 @@ pub struct POINTER_SEARCH_PHYSICAL {
     pub PointerMin: u64,
     pub PointerMax: u64,
     pub Flags: u32,
-    pub MatchOffsets: *mut u64,
+    pub MatchOffsets: MutPtr<u64>,
     pub MatchOffsetsSize: u32,
     pub MatchOffsetsCount: u32,
 }
@@ -16694,27 +15140,22 @@ impl ::core::cmp::PartialEq for POINTER_SEARCH_PHYSICAL {
     }
 }
 impl ::core::cmp::Eq for POINTER_SEARCH_PHYSICAL {}
-impl ::core::default::Default for POINTER_SEARCH_PHYSICAL {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub type PREAD_PROCESS_MEMORY_ROUTINE = ::core::option::Option<
     unsafe extern "system" fn(
-        hprocess: super::super::super::Foundation::HANDLE,
-        lpbaseaddress: u32,
-        lpbuffer: *mut ::core::ffi::c_void,
-        nsize: u32,
-        lpnumberofbytesread: *mut u32,
+        hProcess: super::super::super::Foundation::HANDLE,
+        lpBaseAddress: u32,
+        lpBuffer: MutPtr<::core::ffi::c_void>,
+        nSize: u32,
+        lpNumberOfBytesRead: MutPtr<u32>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PREAD_PROCESS_MEMORY_ROUTINE64 = ::core::option::Option<
     unsafe extern "system" fn(
-        hprocess: super::super::super::Foundation::HANDLE,
-        qwbaseaddress: u64,
-        lpbuffer: *mut ::core::ffi::c_void,
-        nsize: u32,
-        lpnumberofbytesread: *mut u32,
+        hProcess: super::super::super::Foundation::HANDLE,
+        qwBaseAddress: u64,
+        lpBuffer: MutPtr<::core::ffi::c_void>,
+        nSize: u32,
+        lpNumberOfBytesRead: MutPtr<u32>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub struct PROCESSORINFO {
@@ -16741,11 +15182,6 @@ impl ::core::cmp::PartialEq for PROCESSORINFO {
     }
 }
 impl ::core::cmp::Eq for PROCESSORINFO {}
-impl ::core::default::Default for PROCESSORINFO {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct PROCESSOR_ARCHITECTURE(pub u16);
 pub const PROCESSOR_ARCHITECTURE_AMD64: PROCESSOR_ARCHITECTURE = PROCESSOR_ARCHITECTURE(9u16);
@@ -16802,11 +15238,6 @@ impl ::core::cmp::PartialEq for PROCESS_NAME_ENTRY {
     }
 }
 impl ::core::cmp::Eq for PROCESS_NAME_ENTRY {}
-impl ::core::default::Default for PROCESS_NAME_ENTRY {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct PROFILER_EVENT_MASK(pub u32);
 pub const PROFILER_EVENT_MASK_TRACE_SCRIPT_FUNCTION_CALL: PROFILER_EVENT_MASK =
@@ -16941,14 +15372,9 @@ impl ::core::cmp::PartialEq for PROFILER_HEAP_OBJECT {
     }
 }
 impl ::core::cmp::Eq for PROFILER_HEAP_OBJECT {}
-impl ::core::default::Default for PROFILER_HEAP_OBJECT {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct PROFILER_HEAP_OBJECT_0 {
     pub objectId: usize,
-    pub externalObjectAddress: *mut ::core::ffi::c_void,
+    pub externalObjectAddress: MutPtr<::core::ffi::c_void>,
 }
 impl ::core::marker::Copy for PROFILER_HEAP_OBJECT_0 {}
 impl ::core::clone::Clone for PROFILER_HEAP_OBJECT_0 {
@@ -16962,11 +15388,6 @@ impl ::core::cmp::PartialEq for PROFILER_HEAP_OBJECT_0 {
     }
 }
 impl ::core::cmp::Eq for PROFILER_HEAP_OBJECT_0 {}
-impl ::core::default::Default for PROFILER_HEAP_OBJECT_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct PROFILER_HEAP_OBJECT_FLAGS(pub u32);
 pub const PROFILER_HEAP_OBJECT_FLAGS_NEW_OBJECT: PROFILER_HEAP_OBJECT_FLAGS =
@@ -17172,11 +15593,6 @@ impl ::core::cmp::PartialEq for PROFILER_HEAP_OBJECT_SCOPE_LIST {
     }
 }
 impl ::core::cmp::Eq for PROFILER_HEAP_OBJECT_SCOPE_LIST {}
-impl ::core::default::Default for PROFILER_HEAP_OBJECT_SCOPE_LIST {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct PROFILER_HEAP_SUMMARY {
     pub version: PROFILER_HEAP_SUMMARY_VERSION,
     pub totalHeapSize: u32,
@@ -17201,11 +15617,6 @@ impl ::core::cmp::PartialEq for PROFILER_HEAP_SUMMARY {
     }
 }
 impl ::core::cmp::Eq for PROFILER_HEAP_SUMMARY {}
-impl ::core::default::Default for PROFILER_HEAP_SUMMARY {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct PROFILER_HEAP_SUMMARY_VERSION(pub i32);
 pub const PROFILER_HEAP_SUMMARY_VERSION_1: PROFILER_HEAP_SUMMARY_VERSION =
@@ -17252,11 +15663,6 @@ impl ::core::cmp::PartialEq for PROFILER_PROPERTY_TYPE_SUBSTRING_INFO {
     }
 }
 impl ::core::cmp::Eq for PROFILER_PROPERTY_TYPE_SUBSTRING_INFO {}
-impl ::core::default::Default for PROFILER_PROPERTY_TYPE_SUBSTRING_INFO {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct PROFILER_RELATIONSHIP_INFO(pub i32);
 pub const PROFILER_PROPERTY_TYPE_NUMBER: PROFILER_RELATIONSHIP_INFO =
@@ -17374,10 +15780,10 @@ pub type PSYMBOLSERVERCLOSEPROC =
 pub type PSYMBOLSERVERDELTANAME = ::core::option::Option<
     unsafe extern "system" fn(
         param0: ::win32::core::PCSTR,
-        param1: *mut ::core::ffi::c_void,
+        param1: MutPtr<::core::ffi::c_void>,
         param2: u32,
         param3: u32,
-        param4: *mut ::core::ffi::c_void,
+        param4: MutPtr<::core::ffi::c_void>,
         param5: u32,
         param6: u32,
         param7: ::win32::core::PCSTR,
@@ -17387,10 +15793,10 @@ pub type PSYMBOLSERVERDELTANAME = ::core::option::Option<
 pub type PSYMBOLSERVERDELTANAMEW = ::core::option::Option<
     unsafe extern "system" fn(
         param0: ::win32::core::PCWSTR,
-        param1: *mut ::core::ffi::c_void,
+        param1: MutPtr<::core::ffi::c_void>,
         param2: u32,
         param3: u32,
-        param4: *mut ::core::ffi::c_void,
+        param4: MutPtr<::core::ffi::c_void>,
         param5: u32,
         param6: u32,
         param7: ::win32::core::PCWSTR,
@@ -17399,7 +15805,7 @@ pub type PSYMBOLSERVERDELTANAMEW = ::core::option::Option<
 >;
 pub type PSYMBOLSERVERGETINDEXSTRING = ::core::option::Option<
     unsafe extern "system" fn(
-        param0: *mut ::core::ffi::c_void,
+        param0: MutPtr<::core::ffi::c_void>,
         param1: u32,
         param2: u32,
         param3: ::win32::core::PCSTR,
@@ -17408,7 +15814,7 @@ pub type PSYMBOLSERVERGETINDEXSTRING = ::core::option::Option<
 >;
 pub type PSYMBOLSERVERGETINDEXSTRINGW = ::core::option::Option<
     unsafe extern "system" fn(
-        param0: *mut ::core::ffi::c_void,
+        param0: MutPtr<::core::ffi::c_void>,
         param1: u32,
         param2: u32,
         param3: ::win32::core::PCWSTR,
@@ -17418,7 +15824,7 @@ pub type PSYMBOLSERVERGETINDEXSTRINGW = ::core::option::Option<
 pub type PSYMBOLSERVERGETOPTIONDATAPROC = ::core::option::Option<
     unsafe extern "system" fn(
         param0: usize,
-        param1: *mut u64,
+        param1: MutPtr<u64>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOLSERVERGETOPTIONSPROC = ::core::option::Option<unsafe extern "system" fn() -> usize>;
@@ -17441,7 +15847,7 @@ pub type PSYMBOLSERVERGETSUPPLEMENTW = ::core::option::Option<
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOLSERVERGETVERSION = ::core::option::Option<
-    unsafe extern "system" fn(param0: *mut API_VERSION) -> super::super::super::Foundation::BOOL,
+    unsafe extern "system" fn(param0: MutPtr<API_VERSION>) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOLSERVERISSTORE = ::core::option::Option<
     unsafe extern "system" fn(
@@ -17486,7 +15892,7 @@ pub type PSYMBOLSERVERPROC = ::core::option::Option<
     unsafe extern "system" fn(
         param0: ::win32::core::PCSTR,
         param1: ::win32::core::PCSTR,
-        param2: *mut ::core::ffi::c_void,
+        param2: MutPtr<::core::ffi::c_void>,
         param3: u32,
         param4: u32,
         param5: ::win32::core::PCSTR,
@@ -17496,7 +15902,7 @@ pub type PSYMBOLSERVERPROCA = ::core::option::Option<
     unsafe extern "system" fn(
         param0: ::win32::core::PCSTR,
         param1: ::win32::core::PCSTR,
-        param2: *mut ::core::ffi::c_void,
+        param2: MutPtr<::core::ffi::c_void>,
         param3: u32,
         param4: u32,
         param5: ::win32::core::PCSTR,
@@ -17506,7 +15912,7 @@ pub type PSYMBOLSERVERPROCW = ::core::option::Option<
     unsafe extern "system" fn(
         param0: ::win32::core::PCWSTR,
         param1: ::win32::core::PCWSTR,
-        param2: *mut ::core::ffi::c_void,
+        param2: MutPtr<::core::ffi::c_void>,
         param3: u32,
         param4: u32,
         param5: ::win32::core::PCWSTR,
@@ -17514,7 +15920,7 @@ pub type PSYMBOLSERVERPROCW = ::core::option::Option<
 >;
 pub type PSYMBOLSERVERSETHTTPAUTHHEADER = ::core::option::Option<
     unsafe extern "system" fn(
-        pszauthheader: ::win32::core::PCWSTR,
+        pszAuthHeader: ::win32::core::PCWSTR,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOLSERVERSETOPTIONSPROC = ::core::option::Option<
@@ -17527,7 +15933,7 @@ pub type PSYMBOLSERVERSTOREFILE = ::core::option::Option<
     unsafe extern "system" fn(
         param0: ::win32::core::PCSTR,
         param1: ::win32::core::PCSTR,
-        param2: *mut ::core::ffi::c_void,
+        param2: MutPtr<::core::ffi::c_void>,
         param3: u32,
         param4: u32,
         param5: ::win32::core::PCSTR,
@@ -17539,7 +15945,7 @@ pub type PSYMBOLSERVERSTOREFILEW = ::core::option::Option<
     unsafe extern "system" fn(
         param0: ::win32::core::PCWSTR,
         param1: ::win32::core::PCWSTR,
-        param2: *mut ::core::ffi::c_void,
+        param2: MutPtr<::core::ffi::c_void>,
         param3: u32,
         param4: u32,
         param5: ::win32::core::PCWSTR,
@@ -17572,158 +15978,158 @@ pub type PSYMBOLSERVERWEXPROC = ::core::option::Option<
     unsafe extern "system" fn(
         param0: ::win32::core::PCWSTR,
         param1: ::win32::core::PCWSTR,
-        param2: *mut ::core::ffi::c_void,
+        param2: MutPtr<::core::ffi::c_void>,
         param3: u32,
         param4: u32,
         param5: ::win32::core::PCWSTR,
-        param6: *mut SYMSRV_EXTENDED_OUTPUT_DATA,
+        param6: MutPtr<SYMSRV_EXTENDED_OUTPUT_DATA>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOL_FUNCENTRY_CALLBACK = ::core::option::Option<
     unsafe extern "system" fn(
-        hprocess: super::super::super::Foundation::HANDLE,
-        addrbase: u32,
-        usercontext: *const ::core::ffi::c_void,
-    ) -> *mut ::core::ffi::c_void,
+        hProcess: super::super::super::Foundation::HANDLE,
+        AddrBase: u32,
+        UserContext: ConstPtr<::core::ffi::c_void>,
+    ) -> MutPtr<::core::ffi::c_void>,
 >;
 pub type PSYMBOL_FUNCENTRY_CALLBACK64 = ::core::option::Option<
     unsafe extern "system" fn(
-        hprocess: super::super::super::Foundation::HANDLE,
-        addrbase: u64,
-        usercontext: u64,
-    ) -> *mut ::core::ffi::c_void,
+        hProcess: super::super::super::Foundation::HANDLE,
+        AddrBase: u64,
+        UserContext: u64,
+    ) -> MutPtr<::core::ffi::c_void>,
 >;
 pub type PSYMBOL_REGISTERED_CALLBACK = ::core::option::Option<
     unsafe extern "system" fn(
-        hprocess: super::super::super::Foundation::HANDLE,
-        actioncode: u32,
-        callbackdata: *const ::core::ffi::c_void,
-        usercontext: *const ::core::ffi::c_void,
+        hProcess: super::super::super::Foundation::HANDLE,
+        ActionCode: u32,
+        CallbackData: ConstPtr<::core::ffi::c_void>,
+        UserContext: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOL_REGISTERED_CALLBACK64 = ::core::option::Option<
     unsafe extern "system" fn(
-        hprocess: super::super::super::Foundation::HANDLE,
-        actioncode: u32,
-        callbackdata: u64,
-        usercontext: u64,
+        hProcess: super::super::super::Foundation::HANDLE,
+        ActionCode: u32,
+        CallbackData: u64,
+        UserContext: u64,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYM_DUMP_FIELD_CALLBACK = ::core::option::Option<
     unsafe extern "system" fn(
-        pfield: *mut FIELD_INFO,
-        usercontext: *mut ::core::ffi::c_void,
+        pField: MutPtr<FIELD_INFO>,
+        UserContext: MutPtr<::core::ffi::c_void>,
     ) -> u32,
 >;
 pub type PSYM_ENUMERATESYMBOLS_CALLBACK = ::core::option::Option<
     unsafe extern "system" fn(
-        psyminfo: *const SYMBOL_INFO,
-        symbolsize: u32,
-        usercontext: *const ::core::ffi::c_void,
+        pSymInfo: ConstPtr<SYMBOL_INFO>,
+        SymbolSize: u32,
+        UserContext: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYM_ENUMERATESYMBOLS_CALLBACKW = ::core::option::Option<
     unsafe extern "system" fn(
-        psyminfo: *const SYMBOL_INFOW,
-        symbolsize: u32,
-        usercontext: *const ::core::ffi::c_void,
+        pSymInfo: ConstPtr<SYMBOL_INFOW>,
+        SymbolSize: u32,
+        UserContext: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYM_ENUMLINES_CALLBACK = ::core::option::Option<
     unsafe extern "system" fn(
-        lineinfo: *const SRCCODEINFO,
-        usercontext: *const ::core::ffi::c_void,
+        LineInfo: ConstPtr<SRCCODEINFO>,
+        UserContext: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYM_ENUMLINES_CALLBACKW = ::core::option::Option<
     unsafe extern "system" fn(
-        lineinfo: *const SRCCODEINFOW,
-        usercontext: *const ::core::ffi::c_void,
+        LineInfo: ConstPtr<SRCCODEINFOW>,
+        UserContext: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYM_ENUMMODULES_CALLBACK = ::core::option::Option<
     unsafe extern "system" fn(
-        modulename: ::win32::core::PCSTR,
-        baseofdll: u32,
-        usercontext: *const ::core::ffi::c_void,
+        ModuleName: ::win32::core::PCSTR,
+        BaseOfDll: u32,
+        UserContext: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYM_ENUMMODULES_CALLBACK64 = ::core::option::Option<
     unsafe extern "system" fn(
-        modulename: ::win32::core::PCSTR,
-        baseofdll: u64,
-        usercontext: *const ::core::ffi::c_void,
+        ModuleName: ::win32::core::PCSTR,
+        BaseOfDll: u64,
+        UserContext: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYM_ENUMMODULES_CALLBACKW64 = ::core::option::Option<
     unsafe extern "system" fn(
-        modulename: ::win32::core::PCWSTR,
-        baseofdll: u64,
-        usercontext: *const ::core::ffi::c_void,
+        ModuleName: ::win32::core::PCWSTR,
+        BaseOfDll: u64,
+        UserContext: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYM_ENUMPROCESSES_CALLBACK = ::core::option::Option<
     unsafe extern "system" fn(
-        hprocess: super::super::super::Foundation::HANDLE,
-        usercontext: *const ::core::ffi::c_void,
+        hProcess: super::super::super::Foundation::HANDLE,
+        UserContext: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYM_ENUMSOURCEFILES_CALLBACK = ::core::option::Option<
     unsafe extern "system" fn(
-        psourcefile: *const SOURCEFILE,
-        usercontext: *const ::core::ffi::c_void,
+        pSourceFile: ConstPtr<SOURCEFILE>,
+        UserContext: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYM_ENUMSOURCEFILES_CALLBACKW = ::core::option::Option<
     unsafe extern "system" fn(
-        psourcefile: *const SOURCEFILEW,
-        usercontext: *const ::core::ffi::c_void,
+        pSourceFile: ConstPtr<SOURCEFILEW>,
+        UserContext: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYM_ENUMSYMBOLS_CALLBACK = ::core::option::Option<
     unsafe extern "system" fn(
-        symbolname: ::win32::core::PCSTR,
-        symboladdress: u32,
-        symbolsize: u32,
-        usercontext: *const ::core::ffi::c_void,
+        SymbolName: ::win32::core::PCSTR,
+        SymbolAddress: u32,
+        SymbolSize: u32,
+        UserContext: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYM_ENUMSYMBOLS_CALLBACK64 = ::core::option::Option<
     unsafe extern "system" fn(
-        symbolname: ::win32::core::PCSTR,
-        symboladdress: u64,
-        symbolsize: u32,
-        usercontext: *const ::core::ffi::c_void,
+        SymbolName: ::win32::core::PCSTR,
+        SymbolAddress: u64,
+        SymbolSize: u32,
+        UserContext: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYM_ENUMSYMBOLS_CALLBACK64W = ::core::option::Option<
     unsafe extern "system" fn(
-        symbolname: ::win32::core::PCWSTR,
-        symboladdress: u64,
-        symbolsize: u32,
-        usercontext: *const ::core::ffi::c_void,
+        SymbolName: ::win32::core::PCWSTR,
+        SymbolAddress: u64,
+        SymbolSize: u32,
+        UserContext: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYM_ENUMSYMBOLS_CALLBACKW = ::core::option::Option<
     unsafe extern "system" fn(
-        symbolname: ::win32::core::PCWSTR,
-        symboladdress: u32,
-        symbolsize: u32,
-        usercontext: *const ::core::ffi::c_void,
+        SymbolName: ::win32::core::PCWSTR,
+        SymbolAddress: u32,
+        SymbolSize: u32,
+        UserContext: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PTRANSLATE_ADDRESS_ROUTINE = ::core::option::Option<
     unsafe extern "system" fn(
-        hprocess: super::super::super::Foundation::HANDLE,
-        hthread: super::super::super::Foundation::HANDLE,
-        lpaddr: *mut ADDRESS,
+        hProcess: super::super::super::Foundation::HANDLE,
+        hThread: super::super::super::Foundation::HANDLE,
+        lpaddr: MutPtr<ADDRESS>,
     ) -> u32,
 >;
 pub type PTRANSLATE_ADDRESS_ROUTINE64 = ::core::option::Option<
     unsafe extern "system" fn(
-        hprocess: super::super::super::Foundation::HANDLE,
-        hthread: super::super::super::Foundation::HANDLE,
-        lpaddr: *const ADDRESS64,
+        hProcess: super::super::super::Foundation::HANDLE,
+        hThread: super::super::super::Foundation::HANDLE,
+        lpaddr: ConstPtr<ADDRESS64>,
     ) -> u64,
 >;
 pub const PTR_SEARCH_NO_SYMBOL_CHECK: u32 = 2147483648u32;
@@ -17734,248 +16140,256 @@ pub const PTR_SEARCH_PHYS_SIZE_SHIFT: u32 = 3u32;
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub type PVECTORED_EXCEPTION_HANDLER = ::core::option::Option<
-    unsafe extern "system" fn(exceptioninfo: *mut EXCEPTION_POINTERS) -> i32,
+    unsafe extern "system" fn(ExceptionInfo: MutPtr<EXCEPTION_POINTERS>) -> i32,
 >;
 pub type PWAITCHAINCALLBACK = ::core::option::Option<
     unsafe extern "system" fn(
-        wcthandle: *mut ::core::ffi::c_void,
-        context: usize,
-        callbackstatus: u32,
-        nodecount: *mut u32,
-        nodeinfoarray: *mut WAITCHAIN_NODE_INFO,
-        iscycle: *mut i32,
+        WctHandle: MutPtr<::core::ffi::c_void>,
+        Context: usize,
+        CallbackStatus: u32,
+        NodeCount: MutPtr<u32>,
+        NodeInfoArray: MutPtr<WAITCHAIN_NODE_INFO>,
+        IsCycle: MutPtr<i32>,
     ),
 >;
 pub type PWINDBG_CHECK_CONTROL_C = ::core::option::Option<unsafe extern "system" fn() -> u32>;
 pub type PWINDBG_CHECK_VERSION = ::core::option::Option<unsafe extern "system" fn() -> u32>;
 pub type PWINDBG_DISASM = ::core::option::Option<
     unsafe extern "system" fn(
-        lpoffset: *mut usize,
-        lpbuffer: ::win32::core::PCSTR,
-        fshoweffectiveaddress: u32,
+        lpOffset: MutPtr<usize>,
+        lpBuffer: ::win32::core::PCSTR,
+        fShowEffectiveAddress: u32,
     ) -> u32,
 >;
 pub type PWINDBG_DISASM32 = ::core::option::Option<
     unsafe extern "system" fn(
-        lpoffset: *mut u32,
-        lpbuffer: ::win32::core::PCSTR,
-        fshoweffectiveaddress: u32,
+        lpOffset: MutPtr<u32>,
+        lpBuffer: ::win32::core::PCSTR,
+        fShowEffectiveAddress: u32,
     ) -> u32,
 >;
 pub type PWINDBG_DISASM64 = ::core::option::Option<
     unsafe extern "system" fn(
-        lpoffset: *mut u64,
-        lpbuffer: ::win32::core::PCSTR,
-        fshoweffectiveaddress: u32,
+        lpOffset: MutPtr<u64>,
+        lpBuffer: ::win32::core::PCSTR,
+        fShowEffectiveAddress: u32,
     ) -> u32,
 >;
 pub type PWINDBG_EXTENSION_API_VERSION =
-    ::core::option::Option<unsafe extern "system" fn() -> *mut EXT_API_VERSION>;
+    ::core::option::Option<unsafe extern "system" fn() -> MutPtr<EXT_API_VERSION>>;
 #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub type PWINDBG_EXTENSION_DLL_INIT = ::core::option::Option<
     unsafe extern "system" fn(
-        lpextensionapis: *mut WINDBG_EXTENSION_APIS,
-        majorversion: u16,
-        minorversion: u16,
+        lpExtensionApis: MutPtr<WINDBG_EXTENSION_APIS>,
+        MajorVersion: u16,
+        MinorVersion: u16,
     ),
 >;
 #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub type PWINDBG_EXTENSION_DLL_INIT32 = ::core::option::Option<
     unsafe extern "system" fn(
-        lpextensionapis: *mut WINDBG_EXTENSION_APIS32,
-        majorversion: u16,
-        minorversion: u16,
+        lpExtensionApis: MutPtr<WINDBG_EXTENSION_APIS32>,
+        MajorVersion: u16,
+        MinorVersion: u16,
     ),
 >;
 #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub type PWINDBG_EXTENSION_DLL_INIT64 = ::core::option::Option<
     unsafe extern "system" fn(
-        lpextensionapis: *mut WINDBG_EXTENSION_APIS64,
-        majorversion: u16,
-        minorversion: u16,
+        lpExtensionApis: MutPtr<WINDBG_EXTENSION_APIS64>,
+        MajorVersion: u16,
+        MinorVersion: u16,
     ),
 >;
 pub type PWINDBG_EXTENSION_ROUTINE = ::core::option::Option<
     unsafe extern "system" fn(
-        hcurrentprocess: super::super::super::Foundation::HANDLE,
-        hcurrentthread: super::super::super::Foundation::HANDLE,
-        dwcurrentpc: u32,
-        dwprocessor: u32,
-        lpargumentstring: ::win32::core::PCSTR,
+        hCurrentProcess: super::super::super::Foundation::HANDLE,
+        hCurrentThread: super::super::super::Foundation::HANDLE,
+        dwCurrentPc: u32,
+        dwProcessor: u32,
+        lpArgumentString: ::win32::core::PCSTR,
     ),
 >;
 pub type PWINDBG_EXTENSION_ROUTINE32 = ::core::option::Option<
     unsafe extern "system" fn(
-        hcurrentprocess: super::super::super::Foundation::HANDLE,
-        hcurrentthread: super::super::super::Foundation::HANDLE,
-        dwcurrentpc: u32,
-        dwprocessor: u32,
-        lpargumentstring: ::win32::core::PCSTR,
+        hCurrentProcess: super::super::super::Foundation::HANDLE,
+        hCurrentThread: super::super::super::Foundation::HANDLE,
+        dwCurrentPc: u32,
+        dwProcessor: u32,
+        lpArgumentString: ::win32::core::PCSTR,
     ),
 >;
 pub type PWINDBG_EXTENSION_ROUTINE64 = ::core::option::Option<
     unsafe extern "system" fn(
-        hcurrentprocess: super::super::super::Foundation::HANDLE,
-        hcurrentthread: super::super::super::Foundation::HANDLE,
-        dwcurrentpc: u64,
-        dwprocessor: u32,
-        lpargumentstring: ::win32::core::PCSTR,
+        hCurrentProcess: super::super::super::Foundation::HANDLE,
+        hCurrentThread: super::super::super::Foundation::HANDLE,
+        dwCurrentPc: u64,
+        dwProcessor: u32,
+        lpArgumentString: ::win32::core::PCSTR,
     ),
 >;
 pub type PWINDBG_GET_EXPRESSION =
-    ::core::option::Option<unsafe extern "system" fn(lpexpression: ::win32::core::PCSTR) -> usize>;
+    ::core::option::Option<unsafe extern "system" fn(lpExpression: ::win32::core::PCSTR) -> usize>;
 pub type PWINDBG_GET_EXPRESSION32 =
-    ::core::option::Option<unsafe extern "system" fn(lpexpression: ::win32::core::PCSTR) -> u32>;
+    ::core::option::Option<unsafe extern "system" fn(lpExpression: ::win32::core::PCSTR) -> u32>;
 pub type PWINDBG_GET_EXPRESSION64 =
-    ::core::option::Option<unsafe extern "system" fn(lpexpression: ::win32::core::PCSTR) -> u64>;
+    ::core::option::Option<unsafe extern "system" fn(lpExpression: ::win32::core::PCSTR) -> u64>;
 pub type PWINDBG_GET_SYMBOL = ::core::option::Option<
     unsafe extern "system" fn(
-        offset: *mut ::core::ffi::c_void,
-        pchbuffer: ::win32::core::PCSTR,
-        pdisplacement: *mut usize,
+        offset: MutPtr<::core::ffi::c_void>,
+        pchBuffer: ::win32::core::PCSTR,
+        pDisplacement: MutPtr<usize>,
     ),
 >;
 pub type PWINDBG_GET_SYMBOL32 = ::core::option::Option<
     unsafe extern "system" fn(
         offset: u32,
-        pchbuffer: ::win32::core::PCSTR,
-        pdisplacement: *mut u32,
+        pchBuffer: ::win32::core::PCSTR,
+        pDisplacement: MutPtr<u32>,
     ),
 >;
 pub type PWINDBG_GET_SYMBOL64 = ::core::option::Option<
     unsafe extern "system" fn(
         offset: u64,
-        pchbuffer: ::win32::core::PCSTR,
-        pdisplacement: *mut u64,
+        pchBuffer: ::win32::core::PCSTR,
+        pDisplacement: MutPtr<u64>,
     ),
 >;
 #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub type PWINDBG_GET_THREAD_CONTEXT_ROUTINE = ::core::option::Option<
-    unsafe extern "system" fn(processor: u32, lpcontext: *mut CONTEXT, cbsizeofcontext: u32) -> u32,
+    unsafe extern "system" fn(
+        Processor: u32,
+        lpContext: MutPtr<CONTEXT>,
+        cbSizeOfContext: u32,
+    ) -> u32,
 >;
 pub type PWINDBG_IOCTL_ROUTINE = ::core::option::Option<
     unsafe extern "system" fn(
-        ioctltype: u16,
-        lpvdata: *mut ::core::ffi::c_void,
-        cbsize: u32,
+        IoctlType: u16,
+        lpvData: MutPtr<::core::ffi::c_void>,
+        cbSize: u32,
     ) -> u32,
 >;
 pub type PWINDBG_OLDKD_EXTENSION_ROUTINE = ::core::option::Option<
     unsafe extern "system" fn(
-        dwcurrentpc: u32,
-        lpextensionapis: *mut WINDBG_OLDKD_EXTENSION_APIS,
-        lpargumentstring: ::win32::core::PCSTR,
+        dwCurrentPc: u32,
+        lpExtensionApis: MutPtr<WINDBG_OLDKD_EXTENSION_APIS>,
+        lpArgumentString: ::win32::core::PCSTR,
     ),
 >;
 pub type PWINDBG_OLDKD_READ_PHYSICAL_MEMORY = ::core::option::Option<
     unsafe extern "system" fn(
         address: u64,
-        buffer: *mut ::core::ffi::c_void,
+        buffer: MutPtr<::core::ffi::c_void>,
         count: u32,
-        bytesread: *mut u32,
+        bytesread: MutPtr<u32>,
     ) -> u32,
 >;
 pub type PWINDBG_OLDKD_WRITE_PHYSICAL_MEMORY = ::core::option::Option<
     unsafe extern "system" fn(
         address: u64,
-        buffer: *mut ::core::ffi::c_void,
+        buffer: MutPtr<::core::ffi::c_void>,
         length: u32,
-        byteswritten: *mut u32,
+        byteswritten: MutPtr<u32>,
     ) -> u32,
 >;
 #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub type PWINDBG_OLD_EXTENSION_ROUTINE = ::core::option::Option<
     unsafe extern "system" fn(
-        dwcurrentpc: u32,
-        lpextensionapis: *mut WINDBG_EXTENSION_APIS,
-        lpargumentstring: ::win32::core::PCSTR,
+        dwCurrentPc: u32,
+        lpExtensionApis: MutPtr<WINDBG_EXTENSION_APIS>,
+        lpArgumentString: ::win32::core::PCSTR,
     ),
 >;
 pub type PWINDBG_OUTPUT_ROUTINE =
-    ::core::option::Option<unsafe extern "system" fn(lpformat: ::win32::core::PCSTR)>;
+    ::core::option::Option<unsafe extern "system" fn(lpFormat: ::win32::core::PCSTR)>;
 pub type PWINDBG_READ_PROCESS_MEMORY_ROUTINE = ::core::option::Option<
     unsafe extern "system" fn(
         offset: usize,
-        lpbuffer: *mut ::core::ffi::c_void,
+        lpBuffer: MutPtr<::core::ffi::c_void>,
         cb: u32,
-        lpcbbytesread: *mut u32,
+        lpcbBytesRead: MutPtr<u32>,
     ) -> u32,
 >;
 pub type PWINDBG_READ_PROCESS_MEMORY_ROUTINE32 = ::core::option::Option<
     unsafe extern "system" fn(
         offset: u32,
-        lpbuffer: *mut ::core::ffi::c_void,
+        lpBuffer: MutPtr<::core::ffi::c_void>,
         cb: u32,
-        lpcbbytesread: *mut u32,
+        lpcbBytesRead: MutPtr<u32>,
     ) -> u32,
 >;
 pub type PWINDBG_READ_PROCESS_MEMORY_ROUTINE64 = ::core::option::Option<
     unsafe extern "system" fn(
         offset: u64,
-        lpbuffer: *mut ::core::ffi::c_void,
+        lpBuffer: MutPtr<::core::ffi::c_void>,
         cb: u32,
-        lpcbbytesread: *mut u32,
+        lpcbBytesRead: MutPtr<u32>,
     ) -> u32,
 >;
 #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub type PWINDBG_SET_THREAD_CONTEXT_ROUTINE = ::core::option::Option<
-    unsafe extern "system" fn(processor: u32, lpcontext: *mut CONTEXT, cbsizeofcontext: u32) -> u32,
+    unsafe extern "system" fn(
+        Processor: u32,
+        lpContext: MutPtr<CONTEXT>,
+        cbSizeOfContext: u32,
+    ) -> u32,
 >;
 pub type PWINDBG_STACKTRACE_ROUTINE = ::core::option::Option<
     unsafe extern "system" fn(
-        framepointer: u32,
-        stackpointer: u32,
-        programcounter: u32,
-        stackframes: *mut EXTSTACKTRACE,
-        frames: u32,
+        FramePointer: u32,
+        StackPointer: u32,
+        ProgramCounter: u32,
+        StackFrames: MutPtr<EXTSTACKTRACE>,
+        Frames: u32,
     ) -> u32,
 >;
 pub type PWINDBG_STACKTRACE_ROUTINE32 = ::core::option::Option<
     unsafe extern "system" fn(
-        framepointer: u32,
-        stackpointer: u32,
-        programcounter: u32,
-        stackframes: *mut EXTSTACKTRACE32,
-        frames: u32,
+        FramePointer: u32,
+        StackPointer: u32,
+        ProgramCounter: u32,
+        StackFrames: MutPtr<EXTSTACKTRACE32>,
+        Frames: u32,
     ) -> u32,
 >;
 pub type PWINDBG_STACKTRACE_ROUTINE64 = ::core::option::Option<
     unsafe extern "system" fn(
-        framepointer: u64,
-        stackpointer: u64,
-        programcounter: u64,
-        stackframes: *mut EXTSTACKTRACE64,
-        frames: u32,
+        FramePointer: u64,
+        StackPointer: u64,
+        ProgramCounter: u64,
+        StackFrames: MutPtr<EXTSTACKTRACE64>,
+        Frames: u32,
     ) -> u32,
 >;
 pub type PWINDBG_WRITE_PROCESS_MEMORY_ROUTINE = ::core::option::Option<
     unsafe extern "system" fn(
         offset: usize,
-        lpbuffer: *const ::core::ffi::c_void,
+        lpBuffer: ConstPtr<::core::ffi::c_void>,
         cb: u32,
-        lpcbbyteswritten: *mut u32,
+        lpcbBytesWritten: MutPtr<u32>,
     ) -> u32,
 >;
 pub type PWINDBG_WRITE_PROCESS_MEMORY_ROUTINE32 = ::core::option::Option<
     unsafe extern "system" fn(
         offset: u32,
-        lpbuffer: *const ::core::ffi::c_void,
+        lpBuffer: ConstPtr<::core::ffi::c_void>,
         cb: u32,
-        lpcbbyteswritten: *mut u32,
+        lpcbBytesWritten: MutPtr<u32>,
     ) -> u32,
 >;
 pub type PWINDBG_WRITE_PROCESS_MEMORY_ROUTINE64 = ::core::option::Option<
     unsafe extern "system" fn(
         offset: u64,
-        lpbuffer: *const ::core::ffi::c_void,
+        lpBuffer: ConstPtr<::core::ffi::c_void>,
         cb: u32,
-        lpcbbyteswritten: *mut u32,
+        lpcbBytesWritten: MutPtr<u32>,
     ) -> u32,
 >;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -18068,11 +16482,6 @@ impl ::core::cmp::PartialEq for READCONTROLSPACE {
     }
 }
 impl ::core::cmp::Eq for READCONTROLSPACE {}
-impl ::core::default::Default for READCONTROLSPACE {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct READCONTROLSPACE32 {
     pub Processor: u16,
     pub Address: u32,
@@ -18104,11 +16513,6 @@ impl ::core::cmp::PartialEq for READCONTROLSPACE32 {
     }
 }
 impl ::core::cmp::Eq for READCONTROLSPACE32 {}
-impl ::core::default::Default for READCONTROLSPACE32 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct READCONTROLSPACE64 {
     pub Processor: u16,
     pub Address: u64,
@@ -18140,11 +16544,6 @@ impl ::core::cmp::PartialEq for READCONTROLSPACE64 {
     }
 }
 impl ::core::cmp::Eq for READCONTROLSPACE64 {}
-impl ::core::default::Default for READCONTROLSPACE64 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct READ_WRITE_MSR {
     pub Msr: u32,
     pub Value: i64,
@@ -18169,11 +16568,6 @@ impl ::core::cmp::PartialEq for READ_WRITE_MSR {
     }
 }
 impl ::core::cmp::Eq for READ_WRITE_MSR {}
-impl ::core::default::Default for READ_WRITE_MSR {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const RESTORE_LAST_ERROR_NAME: &'static str = "RestoreLastError";
 pub const RESTORE_LAST_ERROR_NAME_A: &'static str = "RestoreLastError";
 pub const RESTORE_LAST_ERROR_NAME_W: &'static str = "RestoreLastError";
@@ -18201,11 +16595,6 @@ impl ::core::cmp::PartialEq for RIP_INFO {
     }
 }
 impl ::core::cmp::Eq for RIP_INFO {}
-impl ::core::default::Default for RIP_INFO {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct RIP_INFO_TYPE(pub u32);
 pub const SLE_ERROR: RIP_INFO_TYPE = RIP_INFO_TYPE(1u32);
@@ -18582,7 +16971,7 @@ pub struct SEARCHMEMORY {
     pub SearchLength: u64,
     pub FoundAddress: u64,
     pub PatternLength: u32,
-    pub Pattern: *mut ::core::ffi::c_void,
+    pub Pattern: MutPtr<::core::ffi::c_void>,
 }
 impl ::core::marker::Copy for SEARCHMEMORY {}
 impl ::core::clone::Clone for SEARCHMEMORY {
@@ -18611,11 +17000,6 @@ impl ::core::cmp::PartialEq for SEARCHMEMORY {
     }
 }
 impl ::core::cmp::Eq for SEARCHMEMORY {}
-impl ::core::default::Default for SEARCHMEMORY {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct SOURCEFILE {
     pub ModBase: u64,
     pub FileName: ::win32::core::PSTR,
@@ -18640,11 +17024,6 @@ impl ::core::cmp::PartialEq for SOURCEFILE {
     }
 }
 impl ::core::cmp::Eq for SOURCEFILE {}
-impl ::core::default::Default for SOURCEFILE {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct SOURCEFILEW {
     pub ModBase: u64,
     pub FileName: ::win32::core::PWSTR,
@@ -18669,11 +17048,6 @@ impl ::core::cmp::PartialEq for SOURCEFILEW {
     }
 }
 impl ::core::cmp::Eq for SOURCEFILEW {}
-impl ::core::default::Default for SOURCEFILEW {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const SOURCETEXT_ATTR_COMMENT: u32 = 2u32;
 pub const SOURCETEXT_ATTR_FUNCTION_START: u32 = 64u32;
 pub const SOURCETEXT_ATTR_HUMANTEXT: u32 = 32768u32;
@@ -18690,7 +17064,7 @@ pub const SPLITSYM_REMOVE_PRIVATE: u32 = 1u32;
 pub const SPLITSYM_SYMBOLPATH_IS_SRC: u32 = 4u32;
 pub struct SRCCODEINFO {
     pub SizeOfStruct: u32,
-    pub Key: *mut ::core::ffi::c_void,
+    pub Key: MutPtr<::core::ffi::c_void>,
     pub ModBase: u64,
     pub Obj: [super::super::super::Foundation::CHAR; 261],
     pub FileName: [super::super::super::Foundation::CHAR; 261],
@@ -18728,14 +17102,9 @@ impl ::core::cmp::PartialEq for SRCCODEINFO {
     }
 }
 impl ::core::cmp::Eq for SRCCODEINFO {}
-impl ::core::default::Default for SRCCODEINFO {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct SRCCODEINFOW {
     pub SizeOfStruct: u32,
-    pub Key: *mut ::core::ffi::c_void,
+    pub Key: MutPtr<::core::ffi::c_void>,
     pub ModBase: u64,
     pub Obj: [u16; 261],
     pub FileName: [u16; 261],
@@ -18773,11 +17142,6 @@ impl ::core::cmp::PartialEq for SRCCODEINFOW {
     }
 }
 impl ::core::cmp::Eq for SRCCODEINFOW {}
-impl ::core::default::Default for SRCCODEINFOW {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const SSRVACTION_CHECKSUMSTATUS: u32 = 8u32;
 pub const SSRVACTION_EVENT: u32 = 3u32;
 pub const SSRVACTION_EVENTW: u32 = 4u32;
@@ -18834,7 +17198,7 @@ pub struct STACKFRAME {
     pub AddrReturn: ADDRESS,
     pub AddrFrame: ADDRESS,
     pub AddrStack: ADDRESS,
-    pub FuncTableEntry: *mut ::core::ffi::c_void,
+    pub FuncTableEntry: MutPtr<::core::ffi::c_void>,
     pub Params: [u32; 4],
     pub Far: super::super::super::Foundation::BOOL,
     pub Virtual: super::super::super::Foundation::BOOL,
@@ -18881,18 +17245,13 @@ impl ::core::cmp::PartialEq for STACKFRAME {
     }
 }
 impl ::core::cmp::Eq for STACKFRAME {}
-impl ::core::default::Default for STACKFRAME {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct STACKFRAME64 {
     pub AddrPC: ADDRESS64,
     pub AddrReturn: ADDRESS64,
     pub AddrFrame: ADDRESS64,
     pub AddrStack: ADDRESS64,
     pub AddrBStore: ADDRESS64,
-    pub FuncTableEntry: *mut ::core::ffi::c_void,
+    pub FuncTableEntry: MutPtr<::core::ffi::c_void>,
     pub Params: [u64; 4],
     pub Far: super::super::super::Foundation::BOOL,
     pub Virtual: super::super::super::Foundation::BOOL,
@@ -18938,18 +17297,13 @@ impl ::core::cmp::PartialEq for STACKFRAME64 {
     }
 }
 impl ::core::cmp::Eq for STACKFRAME64 {}
-impl ::core::default::Default for STACKFRAME64 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct STACKFRAME_EX {
     pub AddrPC: ADDRESS64,
     pub AddrReturn: ADDRESS64,
     pub AddrFrame: ADDRESS64,
     pub AddrStack: ADDRESS64,
     pub AddrBStore: ADDRESS64,
-    pub FuncTableEntry: *mut ::core::ffi::c_void,
+    pub FuncTableEntry: MutPtr<::core::ffi::c_void>,
     pub Params: [u64; 4],
     pub Far: super::super::super::Foundation::BOOL,
     pub Virtual: super::super::super::Foundation::BOOL,
@@ -19001,11 +17355,6 @@ impl ::core::cmp::PartialEq for STACKFRAME_EX {
     }
 }
 impl ::core::cmp::Eq for STACKFRAME_EX {}
-impl ::core::default::Default for STACKFRAME_EX {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const STACK_FRAME_TYPE_IGNORE: u32 = 255u32;
 pub const STACK_FRAME_TYPE_INIT: u32 = 0u32;
 pub const STACK_FRAME_TYPE_INLINE: u32 = 2u32;
@@ -19048,11 +17397,6 @@ impl ::core::cmp::PartialEq for STACK_SRC_INFO {
     }
 }
 impl ::core::cmp::Eq for STACK_SRC_INFO {}
-impl ::core::default::Default for STACK_SRC_INFO {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct STACK_SYM_FRAME_INFO {
     pub StackFrameEx: DEBUG_STACK_FRAME_EX,
     pub SrcInfo: STACK_SRC_INFO,
@@ -19077,17 +17421,12 @@ impl ::core::cmp::PartialEq for STACK_SYM_FRAME_INFO {
     }
 }
 impl ::core::cmp::Eq for STACK_SYM_FRAME_INFO {}
-impl ::core::default::Default for STACK_SYM_FRAME_INFO {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub type SYMADDSOURCESTREAM = ::core::option::Option<
     unsafe extern "system" fn(
         param0: super::super::super::Foundation::HANDLE,
         param1: u64,
         param2: ::win32::core::PCSTR,
-        param3: *mut u8,
+        param3: MutPtr<u8>,
         param4: usize,
     ) -> super::super::super::Foundation::BOOL,
 >;
@@ -19096,7 +17435,7 @@ pub type SYMADDSOURCESTREAMA = ::core::option::Option<
         param0: super::super::super::Foundation::HANDLE,
         param1: u64,
         param2: ::win32::core::PCSTR,
-        param3: *mut u8,
+        param3: MutPtr<u8>,
         param4: usize,
     ) -> super::super::super::Foundation::BOOL,
 >;
@@ -19164,11 +17503,6 @@ impl ::core::cmp::PartialEq for SYMBOL_INFO {
     }
 }
 impl ::core::cmp::Eq for SYMBOL_INFO {}
-impl ::core::default::Default for SYMBOL_INFO {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct SYMBOL_INFOW {
     pub SizeOfStruct: u32,
     pub TypeIndex: u32,
@@ -19233,11 +17567,6 @@ impl ::core::cmp::PartialEq for SYMBOL_INFOW {
     }
 }
 impl ::core::cmp::Eq for SYMBOL_INFOW {}
-impl ::core::default::Default for SYMBOL_INFOW {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct SYMBOL_INFO_EX {
     pub SizeOfStruct: u32,
     pub TypeOfInfo: u32,
@@ -19275,11 +17604,6 @@ impl ::core::cmp::PartialEq for SYMBOL_INFO_EX {
     }
 }
 impl ::core::cmp::Eq for SYMBOL_INFO_EX {}
-impl ::core::default::Default for SYMBOL_INFO_EX {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct SYMBOL_INFO_FLAGS(pub u32);
 pub const SYMFLAG_CLR_TOKEN: SYMBOL_INFO_FLAGS = SYMBOL_INFO_FLAGS(262144u32);
@@ -19367,11 +17691,6 @@ impl ::core::cmp::PartialEq for SYMBOL_INFO_PACKAGE {
     }
 }
 impl ::core::cmp::Eq for SYMBOL_INFO_PACKAGE {}
-impl ::core::default::Default for SYMBOL_INFO_PACKAGE {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct SYMBOL_INFO_PACKAGEW {
     pub si: SYMBOL_INFOW,
     pub name: [u16; 2001],
@@ -19396,11 +17715,6 @@ impl ::core::cmp::PartialEq for SYMBOL_INFO_PACKAGEW {
     }
 }
 impl ::core::cmp::Eq for SYMBOL_INFO_PACKAGEW {}
-impl ::core::default::Default for SYMBOL_INFO_PACKAGEW {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const SYMBOL_TYPE_INDEX_NOT_FOUND: u32 = 2u32;
 pub const SYMBOL_TYPE_INFO_NOT_FOUND: u32 = 3u32;
 pub const SYMENUM_OPTIONS_DEFAULT: u32 = 1u32;
@@ -19491,11 +17805,6 @@ impl ::core::cmp::PartialEq for SYMSRV_EXTENDED_OUTPUT_DATA {
     }
 }
 impl ::core::cmp::Eq for SYMSRV_EXTENDED_OUTPUT_DATA {}
-impl ::core::default::Default for SYMSRV_EXTENDED_OUTPUT_DATA {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct SYMSRV_INDEX_INFO {
     pub sizeofstruct: u32,
     pub file: [super::super::super::Foundation::CHAR; 261],
@@ -19545,11 +17854,6 @@ impl ::core::cmp::PartialEq for SYMSRV_INDEX_INFO {
     }
 }
 impl ::core::cmp::Eq for SYMSRV_INDEX_INFO {}
-impl ::core::default::Default for SYMSRV_INDEX_INFO {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct SYMSRV_INDEX_INFOW {
     pub sizeofstruct: u32,
     pub file: [u16; 261],
@@ -19599,24 +17903,19 @@ impl ::core::cmp::PartialEq for SYMSRV_INDEX_INFOW {
     }
 }
 impl ::core::cmp::Eq for SYMSRV_INDEX_INFOW {}
-impl ::core::default::Default for SYMSRV_INDEX_INFOW {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const SYMSRV_VERSION: u32 = 2u32;
 pub const SYMSTOREOPT_ALT_INDEX: u32 = 16u32;
 pub const SYMSTOREOPT_UNICODE: u32 = 32u32;
 pub struct SYM_DUMP_PARAM {
     pub size: u32,
-    pub sName: *mut u8,
+    pub sName: MutPtr<u8>,
     pub Options: u32,
     pub addr: u64,
-    pub listLink: *mut FIELD_INFO,
+    pub listLink: MutPtr<FIELD_INFO>,
     pub Anonymous: SYM_DUMP_PARAM_0,
     pub CallbackRoutine: PSYM_DUMP_FIELD_CALLBACK,
     pub nFields: u32,
-    pub Fields: *mut FIELD_INFO,
+    pub Fields: MutPtr<FIELD_INFO>,
     pub ModBase: u64,
     pub TypeId: u32,
     pub TypeSize: u32,
@@ -19648,14 +17947,9 @@ impl ::core::cmp::PartialEq for SYM_DUMP_PARAM {
     }
 }
 impl ::core::cmp::Eq for SYM_DUMP_PARAM {}
-impl ::core::default::Default for SYM_DUMP_PARAM {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct SYM_DUMP_PARAM_0 {
-    pub Context: *mut ::core::ffi::c_void,
-    pub pBuffer: *mut ::core::ffi::c_void,
+    pub Context: MutPtr<::core::ffi::c_void>,
+    pub pBuffer: MutPtr<::core::ffi::c_void>,
 }
 impl ::core::marker::Copy for SYM_DUMP_PARAM_0 {}
 impl ::core::clone::Clone for SYM_DUMP_PARAM_0 {
@@ -19669,11 +17963,6 @@ impl ::core::cmp::PartialEq for SYM_DUMP_PARAM_0 {
     }
 }
 impl ::core::cmp::Eq for SYM_DUMP_PARAM_0 {}
-impl ::core::default::Default for SYM_DUMP_PARAM_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct SYM_FIND_ID_OPTION(pub u32);
 pub const SSRVOPT_DWORD: SYM_FIND_ID_OPTION = SYM_FIND_ID_OPTION(2u32);
@@ -19894,11 +18183,6 @@ impl ::core::cmp::PartialEq for ScriptDebugEventInformation {
     }
 }
 impl ::core::cmp::Eq for ScriptDebugEventInformation {}
-impl ::core::default::Default for ScriptDebugEventInformation {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct ScriptDebugEventInformation_0 {
     pub ExceptionInformation: ScriptDebugEventInformation_0_1,
     pub BreakpointInformation: ScriptDebugEventInformation_0_0,
@@ -19916,11 +18200,6 @@ impl ::core::cmp::PartialEq for ScriptDebugEventInformation_0 {
     }
 }
 impl ::core::cmp::Eq for ScriptDebugEventInformation_0 {}
-impl ::core::default::Default for ScriptDebugEventInformation_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct ScriptDebugEventInformation_0_0 {
     pub BreakpointId: u64,
 }
@@ -19943,11 +18222,6 @@ impl ::core::cmp::PartialEq for ScriptDebugEventInformation_0_0 {
     }
 }
 impl ::core::cmp::Eq for ScriptDebugEventInformation_0_0 {}
-impl ::core::default::Default for ScriptDebugEventInformation_0_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct ScriptDebugEventInformation_0_1 {
     pub IsUncaught: bool,
 }
@@ -19970,11 +18244,6 @@ impl ::core::cmp::PartialEq for ScriptDebugEventInformation_0_1 {
     }
 }
 impl ::core::cmp::Eq for ScriptDebugEventInformation_0_1 {}
-impl ::core::default::Default for ScriptDebugEventInformation_0_1 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct ScriptDebugPosition {
     pub Line: u32,
     pub Column: u32,
@@ -19999,11 +18268,6 @@ impl ::core::cmp::PartialEq for ScriptDebugPosition {
     }
 }
 impl ::core::cmp::Eq for ScriptDebugPosition {}
-impl ::core::default::Default for ScriptDebugPosition {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct ScriptDebugState(pub i32);
 pub const ScriptDebugNoDebugger: ScriptDebugState = ScriptDebugState(0i32);
@@ -20229,11 +18493,6 @@ impl ::core::cmp::PartialEq for TI_FINDCHILDREN_PARAMS {
     }
 }
 impl ::core::cmp::Eq for TI_FINDCHILDREN_PARAMS {}
-impl ::core::default::Default for TI_FINDCHILDREN_PARAMS {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct TRANSLATE_VIRTUAL_TO_PHYSICAL {
     pub Virtual: u64,
     pub Physical: u64,
@@ -20258,11 +18517,6 @@ impl ::core::cmp::PartialEq for TRANSLATE_VIRTUAL_TO_PHYSICAL {
     }
 }
 impl ::core::cmp::Eq for TRANSLATE_VIRTUAL_TO_PHYSICAL {}
-impl ::core::default::Default for TRANSLATE_VIRTUAL_TO_PHYSICAL {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct TypeKind(pub i32);
 pub const TypeUDT: TypeKind = TypeKind(0i32);
@@ -20309,7 +18563,7 @@ pub const UNDNAME_NO_SPECIAL_SYMS: u32 = 16384u32;
 pub const UNDNAME_NO_THISTYPE: u32 = 96u32;
 pub const UNDNAME_NO_THROW_SIGNATURES: u32 = 256u32;
 pub struct UNLOAD_DLL_DEBUG_INFO {
-    pub lpBaseOfDll: *mut ::core::ffi::c_void,
+    pub lpBaseOfDll: MutPtr<::core::ffi::c_void>,
 }
 impl ::core::marker::Copy for UNLOAD_DLL_DEBUG_INFO {}
 impl ::core::clone::Clone for UNLOAD_DLL_DEBUG_INFO {
@@ -20330,11 +18584,6 @@ impl ::core::cmp::PartialEq for UNLOAD_DLL_DEBUG_INFO {
     }
 }
 impl ::core::cmp::Eq for UNLOAD_DLL_DEBUG_INFO {}
-impl ::core::default::Default for UNLOAD_DLL_DEBUG_INFO {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct UNWIND_HISTORY_TABLE {
@@ -20392,16 +18641,9 @@ impl ::core::cmp::PartialEq for UNWIND_HISTORY_TABLE {
 impl ::core::cmp::Eq for UNWIND_HISTORY_TABLE {}
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
-impl ::core::default::Default for UNWIND_HISTORY_TABLE {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
-#[doc = "*Required namespaces: *"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct UNWIND_HISTORY_TABLE_ENTRY {
     pub ImageBase: usize,
-    pub FunctionEntry: *mut IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY,
+    pub FunctionEntry: MutPtr<IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY>,
 }
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
@@ -20435,16 +18677,9 @@ impl ::core::cmp::PartialEq for UNWIND_HISTORY_TABLE_ENTRY {
 impl ::core::cmp::Eq for UNWIND_HISTORY_TABLE_ENTRY {}
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
-impl ::core::default::Default for UNWIND_HISTORY_TABLE_ENTRY {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
-#[doc = "*Required namespaces: *"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct UNWIND_HISTORY_TABLE_ENTRY {
     pub ImageBase: usize,
-    pub FunctionEntry: *mut IMAGE_RUNTIME_FUNCTION_ENTRY,
+    pub FunctionEntry: MutPtr<IMAGE_RUNTIME_FUNCTION_ENTRY>,
 }
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
@@ -20476,13 +18711,6 @@ impl ::core::cmp::PartialEq for UNWIND_HISTORY_TABLE_ENTRY {
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for UNWIND_HISTORY_TABLE_ENTRY {}
-#[doc = "*Required namespaces: *"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl ::core::default::Default for UNWIND_HISTORY_TABLE_ENTRY {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct VER_PLATFORM(pub u32);
 pub const VER_PLATFORM_WIN32s: VER_PLATFORM = VER_PLATFORM(0u32);
@@ -20538,11 +18766,6 @@ impl ::core::cmp::PartialEq for VIRTUAL_TO_PHYSICAL {
     }
 }
 impl ::core::cmp::Eq for VIRTUAL_TO_PHYSICAL {}
-impl ::core::default::Default for VIRTUAL_TO_PHYSICAL {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct VarArgsKind(pub i32);
 pub const VarArgsNone: VarArgsKind = VarArgsKind(0i32);
@@ -20582,11 +18805,6 @@ impl ::core::cmp::PartialEq for WAITCHAIN_NODE_INFO {
     }
 }
 impl ::core::cmp::Eq for WAITCHAIN_NODE_INFO {}
-impl ::core::default::Default for WAITCHAIN_NODE_INFO {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct WAITCHAIN_NODE_INFO_0 {
     pub LockObject: WAITCHAIN_NODE_INFO_0_0,
     pub ThreadObject: WAITCHAIN_NODE_INFO_0_1,
@@ -20603,11 +18821,6 @@ impl ::core::cmp::PartialEq for WAITCHAIN_NODE_INFO_0 {
     }
 }
 impl ::core::cmp::Eq for WAITCHAIN_NODE_INFO_0 {}
-impl ::core::default::Default for WAITCHAIN_NODE_INFO_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct WAITCHAIN_NODE_INFO_0_0 {
     pub ObjectName: [u16; 128],
     pub Timeout: i64,
@@ -20636,11 +18849,6 @@ impl ::core::cmp::PartialEq for WAITCHAIN_NODE_INFO_0_0 {
     }
 }
 impl ::core::cmp::Eq for WAITCHAIN_NODE_INFO_0_0 {}
-impl ::core::default::Default for WAITCHAIN_NODE_INFO_0_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct WAITCHAIN_NODE_INFO_0_1 {
     pub ProcessId: u32,
     pub ThreadId: u32,
@@ -20672,11 +18880,6 @@ impl ::core::cmp::PartialEq for WAITCHAIN_NODE_INFO_0_1 {
     }
 }
 impl ::core::cmp::Eq for WAITCHAIN_NODE_INFO_0_1 {}
-impl ::core::default::Default for WAITCHAIN_NODE_INFO_0_1 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct WAIT_CHAIN_THREAD_OPTIONS(pub u32);
 pub const WCT_OUT_OF_PROC_COM_FLAG: WAIT_CHAIN_THREAD_OPTIONS = WAIT_CHAIN_THREAD_OPTIONS(2u32);
@@ -20768,8 +18971,8 @@ pub const WDBGEXTS_ADDRESS_RESERVED0: u32 = 2147483648u32;
 pub const WDBGEXTS_ADDRESS_SEG16: u32 = 1u32;
 pub const WDBGEXTS_ADDRESS_SEG32: u32 = 2u32;
 pub struct WDBGEXTS_CLR_DATA_INTERFACE {
-    pub Iid: *const ::win32::core::GUID,
-    pub Iface: *mut ::core::ffi::c_void,
+    pub Iid: ConstPtr<::win32::core::GUID>,
+    pub Iface: MutPtr<::core::ffi::c_void>,
 }
 impl ::core::marker::Copy for WDBGEXTS_CLR_DATA_INTERFACE {}
 impl ::core::clone::Clone for WDBGEXTS_CLR_DATA_INTERFACE {
@@ -20791,11 +18994,6 @@ impl ::core::cmp::PartialEq for WDBGEXTS_CLR_DATA_INTERFACE {
     }
 }
 impl ::core::cmp::Eq for WDBGEXTS_CLR_DATA_INTERFACE {}
-impl ::core::default::Default for WDBGEXTS_CLR_DATA_INTERFACE {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct WDBGEXTS_DISASSEMBLE_BUFFER {
     pub InOffset: u64,
     pub OutOffset: u64,
@@ -20803,7 +19001,7 @@ pub struct WDBGEXTS_DISASSEMBLE_BUFFER {
     pub FormatFlags: u32,
     pub DataBufferBytes: u32,
     pub DisasmBufferChars: u32,
-    pub DataBuffer: *mut ::core::ffi::c_void,
+    pub DataBuffer: MutPtr<::core::ffi::c_void>,
     pub DisasmBuffer: ::win32::core::PWSTR,
     pub Reserved0: [u64; 3],
 }
@@ -20842,11 +19040,6 @@ impl ::core::cmp::PartialEq for WDBGEXTS_DISASSEMBLE_BUFFER {
     }
 }
 impl ::core::cmp::Eq for WDBGEXTS_DISASSEMBLE_BUFFER {}
-impl ::core::default::Default for WDBGEXTS_DISASSEMBLE_BUFFER {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct WDBGEXTS_MODULE_IN_RANGE {
     pub Start: u64,
     pub End: u64,
@@ -20878,14 +19071,9 @@ impl ::core::cmp::PartialEq for WDBGEXTS_MODULE_IN_RANGE {
     }
 }
 impl ::core::cmp::Eq for WDBGEXTS_MODULE_IN_RANGE {}
-impl ::core::default::Default for WDBGEXTS_MODULE_IN_RANGE {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct WDBGEXTS_QUERY_INTERFACE {
-    pub Iid: *const ::win32::core::GUID,
-    pub Iface: *mut ::core::ffi::c_void,
+    pub Iid: ConstPtr<::win32::core::GUID>,
+    pub Iface: MutPtr<::core::ffi::c_void>,
 }
 impl ::core::marker::Copy for WDBGEXTS_QUERY_INTERFACE {}
 impl ::core::clone::Clone for WDBGEXTS_QUERY_INTERFACE {
@@ -20907,11 +19095,6 @@ impl ::core::cmp::PartialEq for WDBGEXTS_QUERY_INTERFACE {
     }
 }
 impl ::core::cmp::Eq for WDBGEXTS_QUERY_INTERFACE {}
-impl ::core::default::Default for WDBGEXTS_QUERY_INTERFACE {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct WDBGEXTS_THREAD_OS_INFO {
     pub ThreadId: u32,
     pub ExitStatus: u32,
@@ -20961,11 +19144,6 @@ impl ::core::cmp::PartialEq for WDBGEXTS_THREAD_OS_INFO {
     }
 }
 impl ::core::cmp::Eq for WDBGEXTS_THREAD_OS_INFO {}
-impl ::core::default::Default for WDBGEXTS_THREAD_OS_INFO {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct WHEA_AER_BRIDGE_DESCRIPTOR {
     pub Type: u16,
     pub Enabled: super::super::super::Foundation::BOOLEAN,
@@ -21007,11 +19185,6 @@ impl ::core::cmp::PartialEq for WHEA_AER_BRIDGE_DESCRIPTOR {
     }
 }
 impl ::core::cmp::Eq for WHEA_AER_BRIDGE_DESCRIPTOR {}
-impl ::core::default::Default for WHEA_AER_BRIDGE_DESCRIPTOR {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct WHEA_AER_ENDPOINT_DESCRIPTOR {
     pub Type: u16,
     pub Enabled: super::super::super::Foundation::BOOLEAN,
@@ -21047,11 +19220,6 @@ impl ::core::cmp::PartialEq for WHEA_AER_ENDPOINT_DESCRIPTOR {
     }
 }
 impl ::core::cmp::Eq for WHEA_AER_ENDPOINT_DESCRIPTOR {}
-impl ::core::default::Default for WHEA_AER_ENDPOINT_DESCRIPTOR {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct WHEA_AER_ROOTPORT_DESCRIPTOR {
     pub Type: u16,
     pub Enabled: super::super::super::Foundation::BOOLEAN,
@@ -21089,11 +19257,6 @@ impl ::core::cmp::PartialEq for WHEA_AER_ROOTPORT_DESCRIPTOR {
     }
 }
 impl ::core::cmp::Eq for WHEA_AER_ROOTPORT_DESCRIPTOR {}
-impl ::core::default::Default for WHEA_AER_ROOTPORT_DESCRIPTOR {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const WHEA_BAD_PAGE_LIST_LOCATION: u32 = 15u32;
 pub const WHEA_BAD_PAGE_LIST_MAX_SIZE: u32 = 14u32;
 pub const WHEA_CMCI_THRESHOLD_COUNT: u32 = 10u32;
@@ -21115,13 +19278,13 @@ pub struct WHEA_DEVICE_DRIVER_DESCRIPTOR {
     pub Reserved2: u16,
     pub PacketLength: u32,
     pub PacketCount: u32,
-    pub PacketBuffer: *mut u8,
+    pub PacketBuffer: MutPtr<u8>,
     pub Config: WHEA_ERROR_SOURCE_CONFIGURATION_DD,
     pub CreatorId: ::win32::core::GUID,
     pub PartitionId: ::win32::core::GUID,
     pub MaxSectionDataLength: u32,
     pub MaxSectionsPerRecord: u32,
-    pub PacketStateBuffer: *mut u8,
+    pub PacketStateBuffer: MutPtr<u8>,
     pub OpenHandles: i32,
 }
 impl ::core::marker::Copy for WHEA_DEVICE_DRIVER_DESCRIPTOR {}
@@ -21151,20 +19314,15 @@ impl ::core::cmp::PartialEq for WHEA_DEVICE_DRIVER_DESCRIPTOR {
     }
 }
 impl ::core::cmp::Eq for WHEA_DEVICE_DRIVER_DESCRIPTOR {}
-impl ::core::default::Default for WHEA_DEVICE_DRIVER_DESCRIPTOR {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const WHEA_DISABLE_DUMMY_WRITE: u32 = 6u32;
 pub const WHEA_DISABLE_OFFLINE: u32 = 0u32;
 pub struct WHEA_DRIVER_BUFFER_SET {
     pub Version: u32,
-    pub Data: *mut u8,
+    pub Data: MutPtr<u8>,
     pub DataSize: u32,
-    pub SectionTypeGuid: *mut ::win32::core::GUID,
-    pub SectionFriendlyName: *mut u8,
-    pub Flags: *mut u8,
+    pub SectionTypeGuid: MutPtr<::win32::core::GUID>,
+    pub SectionFriendlyName: MutPtr<u8>,
+    pub Flags: MutPtr<u8>,
 }
 impl ::core::marker::Copy for WHEA_DRIVER_BUFFER_SET {}
 impl ::core::clone::Clone for WHEA_DRIVER_BUFFER_SET {
@@ -21183,11 +19341,6 @@ impl ::core::cmp::PartialEq for WHEA_DRIVER_BUFFER_SET {
     }
 }
 impl ::core::cmp::Eq for WHEA_DRIVER_BUFFER_SET {}
-impl ::core::default::Default for WHEA_DRIVER_BUFFER_SET {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct WHEA_ERROR_SOURCE_CONFIGURATION_DD {
     pub Initialize: WHEA_ERROR_SOURCE_INITIALIZE_DEVICE_DRIVER,
     pub Uninitialize: WHEA_ERROR_SOURCE_UNINITIALIZE_DEVICE_DRIVER,
@@ -21207,11 +19360,6 @@ impl ::core::cmp::PartialEq for WHEA_ERROR_SOURCE_CONFIGURATION_DD {
     }
 }
 impl ::core::cmp::Eq for WHEA_ERROR_SOURCE_CONFIGURATION_DD {}
-impl ::core::default::Default for WHEA_ERROR_SOURCE_CONFIGURATION_DD {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct WHEA_ERROR_SOURCE_CONFIGURATION_DEVICE_DRIVER {
     pub Version: u32,
     pub SourceGuid: ::win32::core::GUID,
@@ -21245,11 +19393,6 @@ impl ::core::cmp::PartialEq for WHEA_ERROR_SOURCE_CONFIGURATION_DEVICE_DRIVER {
     }
 }
 impl ::core::cmp::Eq for WHEA_ERROR_SOURCE_CONFIGURATION_DEVICE_DRIVER {}
-impl ::core::default::Default for WHEA_ERROR_SOURCE_CONFIGURATION_DEVICE_DRIVER {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct WHEA_ERROR_SOURCE_CONFIGURATION_DEVICE_DRIVER_V1 {
     pub Version: u32,
     pub SourceGuid: ::win32::core::GUID,
@@ -21275,15 +19418,10 @@ impl ::core::cmp::PartialEq for WHEA_ERROR_SOURCE_CONFIGURATION_DEVICE_DRIVER_V1
     }
 }
 impl ::core::cmp::Eq for WHEA_ERROR_SOURCE_CONFIGURATION_DEVICE_DRIVER_V1 {}
-impl ::core::default::Default for WHEA_ERROR_SOURCE_CONFIGURATION_DEVICE_DRIVER_V1 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub type WHEA_ERROR_SOURCE_CORRECT_DEVICE_DRIVER = ::core::option::Option<
     unsafe extern "system" fn(
-        errorsourcedesc: *mut ::core::ffi::c_void,
-        maximumsectionlength: *mut u32,
+        ErrorSourceDesc: MutPtr<::core::ffi::c_void>,
+        MaximumSectionLength: MutPtr<u32>,
     ) -> super::super::super::Foundation::NTSTATUS,
 >;
 pub struct WHEA_ERROR_SOURCE_DESCRIPTOR {
@@ -21321,11 +19459,6 @@ impl ::core::cmp::PartialEq for WHEA_ERROR_SOURCE_DESCRIPTOR {
     }
 }
 impl ::core::cmp::Eq for WHEA_ERROR_SOURCE_DESCRIPTOR {}
-impl ::core::default::Default for WHEA_ERROR_SOURCE_DESCRIPTOR {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct WHEA_ERROR_SOURCE_DESCRIPTOR_0 {
     pub XpfMceDescriptor: WHEA_XPF_MCE_DESCRIPTOR,
     pub XpfCmcDescriptor: WHEA_XPF_CMC_DESCRIPTOR,
@@ -21363,11 +19496,6 @@ impl ::core::cmp::PartialEq for WHEA_ERROR_SOURCE_DESCRIPTOR_0 {
     }
 }
 impl ::core::cmp::Eq for WHEA_ERROR_SOURCE_DESCRIPTOR_0 {}
-impl ::core::default::Default for WHEA_ERROR_SOURCE_DESCRIPTOR_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const WHEA_ERROR_SOURCE_DESCRIPTOR_TYPE_AERBRIDGE: u32 = 8u32;
 pub const WHEA_ERROR_SOURCE_DESCRIPTOR_TYPE_AERENDPOINT: u32 = 7u32;
 pub const WHEA_ERROR_SOURCE_DESCRIPTOR_TYPE_AERROOTPORT: u32 = 6u32;
@@ -21387,8 +19515,8 @@ pub const WHEA_ERROR_SOURCE_FLAG_GHES_ASSIST: u32 = 4u32;
 pub const WHEA_ERROR_SOURCE_FLAG_GLOBAL: u32 = 2u32;
 pub type WHEA_ERROR_SOURCE_INITIALIZE_DEVICE_DRIVER = ::core::option::Option<
     unsafe extern "system" fn(
-        context: *mut ::core::ffi::c_void,
-        errorsourceid: u32,
+        Context: MutPtr<::core::ffi::c_void>,
+        ErrorSourceId: u32,
     ) -> super::super::super::Foundation::NTSTATUS,
 >;
 pub const WHEA_ERROR_SOURCE_INVALID_RELATED_SOURCE: u32 = 65535u32;
@@ -21455,7 +19583,7 @@ impl ::core::fmt::Debug for WHEA_ERROR_SOURCE_TYPE {
     }
 }
 pub type WHEA_ERROR_SOURCE_UNINITIALIZE_DEVICE_DRIVER =
-    ::core::option::Option<unsafe extern "system" fn(context: *mut ::core::ffi::c_void)>;
+    ::core::option::Option<unsafe extern "system" fn(Context: MutPtr<::core::ffi::c_void>)>;
 pub struct WHEA_GENERIC_ERROR_DESCRIPTOR {
     pub Type: u16,
     pub Reserved: u8,
@@ -21491,11 +19619,6 @@ impl ::core::cmp::PartialEq for WHEA_GENERIC_ERROR_DESCRIPTOR {
     }
 }
 impl ::core::cmp::Eq for WHEA_GENERIC_ERROR_DESCRIPTOR {}
-impl ::core::default::Default for WHEA_GENERIC_ERROR_DESCRIPTOR {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct WHEA_GENERIC_ERROR_DESCRIPTOR_V2 {
     pub Type: u16,
     pub Reserved: u8,
@@ -21545,11 +19668,6 @@ impl ::core::cmp::PartialEq for WHEA_GENERIC_ERROR_DESCRIPTOR_V2 {
     }
 }
 impl ::core::cmp::Eq for WHEA_GENERIC_ERROR_DESCRIPTOR_V2 {}
-impl ::core::default::Default for WHEA_GENERIC_ERROR_DESCRIPTOR_V2 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct WHEA_IPF_CMC_DESCRIPTOR {
     pub Type: u16,
     pub Enabled: u8,
@@ -21567,11 +19685,6 @@ impl ::core::cmp::PartialEq for WHEA_IPF_CMC_DESCRIPTOR {
     }
 }
 impl ::core::cmp::Eq for WHEA_IPF_CMC_DESCRIPTOR {}
-impl ::core::default::Default for WHEA_IPF_CMC_DESCRIPTOR {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct WHEA_IPF_CPE_DESCRIPTOR {
     pub Type: u16,
     pub Enabled: u8,
@@ -21589,11 +19702,6 @@ impl ::core::cmp::PartialEq for WHEA_IPF_CPE_DESCRIPTOR {
     }
 }
 impl ::core::cmp::Eq for WHEA_IPF_CPE_DESCRIPTOR {}
-impl ::core::default::Default for WHEA_IPF_CPE_DESCRIPTOR {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct WHEA_IPF_MCA_DESCRIPTOR {
     pub Type: u16,
     pub Enabled: u8,
@@ -21611,11 +19719,6 @@ impl ::core::cmp::PartialEq for WHEA_IPF_MCA_DESCRIPTOR {
     }
 }
 impl ::core::cmp::Eq for WHEA_IPF_MCA_DESCRIPTOR {}
-impl ::core::default::Default for WHEA_IPF_MCA_DESCRIPTOR {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const WHEA_MAX_MC_BANKS: u32 = 32u32;
 pub const WHEA_MEM_PERSISTOFFLINE: u32 = 1u32;
 pub const WHEA_MEM_PFA_DISABLE: u32 = 2u32;
@@ -21643,11 +19746,6 @@ impl ::core::cmp::PartialEq for WHEA_NOTIFICATION_DESCRIPTOR {
     }
 }
 impl ::core::cmp::Eq for WHEA_NOTIFICATION_DESCRIPTOR {}
-impl ::core::default::Default for WHEA_NOTIFICATION_DESCRIPTOR {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct WHEA_NOTIFICATION_DESCRIPTOR_0 {
     pub Polled: WHEA_NOTIFICATION_DESCRIPTOR_0_4,
     pub Interrupt: WHEA_NOTIFICATION_DESCRIPTOR_0_1,
@@ -21677,11 +19775,6 @@ impl ::core::cmp::PartialEq for WHEA_NOTIFICATION_DESCRIPTOR_0 {
     }
 }
 impl ::core::cmp::Eq for WHEA_NOTIFICATION_DESCRIPTOR_0 {}
-impl ::core::default::Default for WHEA_NOTIFICATION_DESCRIPTOR_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct WHEA_NOTIFICATION_DESCRIPTOR_0_0 {
     pub PollInterval: u32,
     pub Vector: u32,
@@ -21707,11 +19800,6 @@ impl ::core::cmp::PartialEq for WHEA_NOTIFICATION_DESCRIPTOR_0_0 {
     }
 }
 impl ::core::cmp::Eq for WHEA_NOTIFICATION_DESCRIPTOR_0_0 {}
-impl ::core::default::Default for WHEA_NOTIFICATION_DESCRIPTOR_0_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct WHEA_NOTIFICATION_DESCRIPTOR_0_1 {
     pub PollInterval: u32,
     pub Vector: u32,
@@ -21737,11 +19825,6 @@ impl ::core::cmp::PartialEq for WHEA_NOTIFICATION_DESCRIPTOR_0_1 {
     }
 }
 impl ::core::cmp::Eq for WHEA_NOTIFICATION_DESCRIPTOR_0_1 {}
-impl ::core::default::Default for WHEA_NOTIFICATION_DESCRIPTOR_0_1 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct WHEA_NOTIFICATION_DESCRIPTOR_0_2 {
     pub PollInterval: u32,
     pub Vector: u32,
@@ -21767,11 +19850,6 @@ impl ::core::cmp::PartialEq for WHEA_NOTIFICATION_DESCRIPTOR_0_2 {
     }
 }
 impl ::core::cmp::Eq for WHEA_NOTIFICATION_DESCRIPTOR_0_2 {}
-impl ::core::default::Default for WHEA_NOTIFICATION_DESCRIPTOR_0_2 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct WHEA_NOTIFICATION_DESCRIPTOR_0_3 {
     pub PollInterval: u32,
     pub Vector: u32,
@@ -21797,11 +19875,6 @@ impl ::core::cmp::PartialEq for WHEA_NOTIFICATION_DESCRIPTOR_0_3 {
     }
 }
 impl ::core::cmp::Eq for WHEA_NOTIFICATION_DESCRIPTOR_0_3 {}
-impl ::core::default::Default for WHEA_NOTIFICATION_DESCRIPTOR_0_3 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct WHEA_NOTIFICATION_DESCRIPTOR_0_4 {
     pub PollInterval: u32,
 }
@@ -21817,11 +19890,6 @@ impl ::core::cmp::PartialEq for WHEA_NOTIFICATION_DESCRIPTOR_0_4 {
     }
 }
 impl ::core::cmp::Eq for WHEA_NOTIFICATION_DESCRIPTOR_0_4 {}
-impl ::core::default::Default for WHEA_NOTIFICATION_DESCRIPTOR_0_4 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct WHEA_NOTIFICATION_DESCRIPTOR_0_5 {
     pub PollInterval: u32,
     pub Vector: u32,
@@ -21847,11 +19915,6 @@ impl ::core::cmp::PartialEq for WHEA_NOTIFICATION_DESCRIPTOR_0_5 {
     }
 }
 impl ::core::cmp::Eq for WHEA_NOTIFICATION_DESCRIPTOR_0_5 {}
-impl ::core::default::Default for WHEA_NOTIFICATION_DESCRIPTOR_0_5 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct WHEA_NOTIFICATION_DESCRIPTOR_0_6 {
     pub PollInterval: u32,
     pub Vector: u32,
@@ -21877,11 +19940,6 @@ impl ::core::cmp::PartialEq for WHEA_NOTIFICATION_DESCRIPTOR_0_6 {
     }
 }
 impl ::core::cmp::Eq for WHEA_NOTIFICATION_DESCRIPTOR_0_6 {}
-impl ::core::default::Default for WHEA_NOTIFICATION_DESCRIPTOR_0_6 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct WHEA_NOTIFICATION_DESCRIPTOR_0_7 {
     pub PollInterval: u32,
     pub Vector: u32,
@@ -21907,11 +19965,6 @@ impl ::core::cmp::PartialEq for WHEA_NOTIFICATION_DESCRIPTOR_0_7 {
     }
 }
 impl ::core::cmp::Eq for WHEA_NOTIFICATION_DESCRIPTOR_0_7 {}
-impl ::core::default::Default for WHEA_NOTIFICATION_DESCRIPTOR_0_7 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct WHEA_NOTIFICATION_FLAGS {
     pub Anonymous: WHEA_NOTIFICATION_FLAGS_0,
     pub AsUSHORT: u16,
@@ -21928,11 +19981,6 @@ impl ::core::cmp::PartialEq for WHEA_NOTIFICATION_FLAGS {
     }
 }
 impl ::core::cmp::Eq for WHEA_NOTIFICATION_FLAGS {}
-impl ::core::default::Default for WHEA_NOTIFICATION_FLAGS {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct WHEA_NOTIFICATION_FLAGS_0 {
     pub _bitfield: u16,
 }
@@ -21948,11 +19996,6 @@ impl ::core::cmp::PartialEq for WHEA_NOTIFICATION_FLAGS_0 {
     }
 }
 impl ::core::cmp::Eq for WHEA_NOTIFICATION_FLAGS_0 {}
-impl ::core::default::Default for WHEA_NOTIFICATION_FLAGS_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const WHEA_NOTIFICATION_TYPE_ARMV8_SEA: u32 = 8u32;
 pub const WHEA_NOTIFICATION_TYPE_ARMV8_SEI: u32 = 9u32;
 pub const WHEA_NOTIFICATION_TYPE_CMCI: u32 = 5u32;
@@ -21981,11 +20024,6 @@ impl ::core::cmp::PartialEq for WHEA_PCI_SLOT_NUMBER {
     }
 }
 impl ::core::cmp::Eq for WHEA_PCI_SLOT_NUMBER {}
-impl ::core::default::Default for WHEA_PCI_SLOT_NUMBER {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct WHEA_PCI_SLOT_NUMBER_0 {
     pub bits: WHEA_PCI_SLOT_NUMBER_0_0,
     pub AsULONG: u32,
@@ -22002,11 +20040,6 @@ impl ::core::cmp::PartialEq for WHEA_PCI_SLOT_NUMBER_0 {
     }
 }
 impl ::core::cmp::Eq for WHEA_PCI_SLOT_NUMBER_0 {}
-impl ::core::default::Default for WHEA_PCI_SLOT_NUMBER_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct WHEA_PCI_SLOT_NUMBER_0_0 {
     pub _bitfield: u32,
 }
@@ -22022,11 +20055,6 @@ impl ::core::cmp::PartialEq for WHEA_PCI_SLOT_NUMBER_0_0 {
     }
 }
 impl ::core::cmp::Eq for WHEA_PCI_SLOT_NUMBER_0_0 {}
-impl ::core::default::Default for WHEA_PCI_SLOT_NUMBER_0_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const WHEA_PENDING_PAGE_LIST_SZ: u32 = 13u32;
 pub const WHEA_RESTORE_CMCI_ATTEMPTS: u32 = 8u32;
 pub const WHEA_RESTORE_CMCI_ENABLED: u32 = 7u32;
@@ -22056,11 +20084,6 @@ impl ::core::cmp::PartialEq for WHEA_XPF_CMC_DESCRIPTOR {
     }
 }
 impl ::core::cmp::Eq for WHEA_XPF_CMC_DESCRIPTOR {}
-impl ::core::default::Default for WHEA_XPF_CMC_DESCRIPTOR {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct WHEA_XPF_MCE_DESCRIPTOR {
     pub Type: u16,
     pub Enabled: u8,
@@ -22088,11 +20111,6 @@ impl ::core::cmp::PartialEq for WHEA_XPF_MCE_DESCRIPTOR {
     }
 }
 impl ::core::cmp::Eq for WHEA_XPF_MCE_DESCRIPTOR {}
-impl ::core::default::Default for WHEA_XPF_MCE_DESCRIPTOR {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct WHEA_XPF_MC_BANK_DESCRIPTOR {
     pub BankNumber: u8,
     pub ClearOnInitialization: super::super::super::Foundation::BOOLEAN,
@@ -22124,11 +20142,6 @@ impl ::core::cmp::PartialEq for WHEA_XPF_MC_BANK_DESCRIPTOR {
     }
 }
 impl ::core::cmp::Eq for WHEA_XPF_MC_BANK_DESCRIPTOR {}
-impl ::core::default::Default for WHEA_XPF_MC_BANK_DESCRIPTOR {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const WHEA_XPF_MC_BANK_STATUSFORMAT_AMD64MCA: u32 = 2u32;
 pub const WHEA_XPF_MC_BANK_STATUSFORMAT_IA32MCA: u32 = 0u32;
 pub const WHEA_XPF_MC_BANK_STATUSFORMAT_Intel64MCA: u32 = 1u32;
@@ -22148,11 +20161,6 @@ impl ::core::cmp::PartialEq for WHEA_XPF_NMI_DESCRIPTOR {
     }
 }
 impl ::core::cmp::Eq for WHEA_XPF_NMI_DESCRIPTOR {}
-impl ::core::default::Default for WHEA_XPF_NMI_DESCRIPTOR {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct WINDBG_EXTENSION_APIS {
@@ -22254,13 +20262,6 @@ impl ::core::cmp::PartialEq for WINDBG_EXTENSION_APIS {
 impl ::core::cmp::Eq for WINDBG_EXTENSION_APIS {}
 #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-impl ::core::default::Default for WINDBG_EXTENSION_APIS {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct WINDBG_EXTENSION_APIS32 {
     pub nSize: u32,
     pub lpOutputRoutine: PWINDBG_OUTPUT_ROUTINE,
@@ -22360,13 +20361,6 @@ impl ::core::cmp::PartialEq for WINDBG_EXTENSION_APIS32 {
 impl ::core::cmp::Eq for WINDBG_EXTENSION_APIS32 {}
 #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-impl ::core::default::Default for WINDBG_EXTENSION_APIS32 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct WINDBG_EXTENSION_APIS64 {
     pub nSize: u32,
     pub lpOutputRoutine: PWINDBG_OUTPUT_ROUTINE,
@@ -22464,13 +20458,6 @@ impl ::core::cmp::PartialEq for WINDBG_EXTENSION_APIS64 {
 #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for WINDBG_EXTENSION_APIS64 {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl ::core::default::Default for WINDBG_EXTENSION_APIS64 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct WINDBG_OLDKD_EXTENSION_APIS {
     pub nSize: u32,
     pub lpOutputRoutine: PWINDBG_OUTPUT_ROUTINE,
@@ -22548,11 +20535,6 @@ impl ::core::cmp::PartialEq for WINDBG_OLDKD_EXTENSION_APIS {
     }
 }
 impl ::core::cmp::Eq for WINDBG_OLDKD_EXTENSION_APIS {}
-impl ::core::default::Default for WINDBG_OLDKD_EXTENSION_APIS {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct WINDBG_OLD_EXTENSION_APIS {
     pub nSize: u32,
     pub lpOutputRoutine: PWINDBG_OUTPUT_ROUTINE,
@@ -22602,11 +20584,6 @@ impl ::core::cmp::PartialEq for WINDBG_OLD_EXTENSION_APIS {
     }
 }
 impl ::core::cmp::Eq for WINDBG_OLD_EXTENSION_APIS {}
-impl ::core::default::Default for WINDBG_OLD_EXTENSION_APIS {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct WOW64_CONTEXT {
     pub ContextFlags: u32,
     pub Dr0: u32,
@@ -22701,11 +20678,6 @@ impl ::core::cmp::PartialEq for WOW64_CONTEXT {
     }
 }
 impl ::core::cmp::Eq for WOW64_CONTEXT {}
-impl ::core::default::Default for WOW64_CONTEXT {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const WOW64_CONTEXT_EXCEPTION_ACTIVE: u32 = 134217728u32;
 pub const WOW64_CONTEXT_EXCEPTION_REPORTING: u32 = 2147483648u32;
 pub const WOW64_CONTEXT_EXCEPTION_REQUEST: u32 = 1073741824u32;
@@ -22728,11 +20700,6 @@ impl ::core::cmp::PartialEq for WOW64_DESCRIPTOR_TABLE_ENTRY {
     }
 }
 impl ::core::cmp::Eq for WOW64_DESCRIPTOR_TABLE_ENTRY {}
-impl ::core::default::Default for WOW64_DESCRIPTOR_TABLE_ENTRY {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct WOW64_FLOATING_SAVE_AREA {
     pub ControlWord: u32,
     pub StatusWord: u32,
@@ -22779,11 +20746,6 @@ impl ::core::cmp::PartialEq for WOW64_FLOATING_SAVE_AREA {
     }
 }
 impl ::core::cmp::Eq for WOW64_FLOATING_SAVE_AREA {}
-impl ::core::default::Default for WOW64_FLOATING_SAVE_AREA {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct WOW64_LDT_ENTRY {
     pub LimitLow: u16,
     pub BaseLow: u16,
@@ -22803,11 +20765,6 @@ impl ::core::cmp::PartialEq for WOW64_LDT_ENTRY {
     }
 }
 impl ::core::cmp::Eq for WOW64_LDT_ENTRY {}
-impl ::core::default::Default for WOW64_LDT_ENTRY {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct WOW64_LDT_ENTRY_0 {
     pub Bytes: WOW64_LDT_ENTRY_0_1,
     pub Bits: WOW64_LDT_ENTRY_0_0,
@@ -22824,11 +20781,6 @@ impl ::core::cmp::PartialEq for WOW64_LDT_ENTRY_0 {
     }
 }
 impl ::core::cmp::Eq for WOW64_LDT_ENTRY_0 {}
-impl ::core::default::Default for WOW64_LDT_ENTRY_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct WOW64_LDT_ENTRY_0_0 {
     pub _bitfield: u32,
 }
@@ -22851,11 +20803,6 @@ impl ::core::cmp::PartialEq for WOW64_LDT_ENTRY_0_0 {
     }
 }
 impl ::core::cmp::Eq for WOW64_LDT_ENTRY_0_0 {}
-impl ::core::default::Default for WOW64_LDT_ENTRY_0_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct WOW64_LDT_ENTRY_0_1 {
     pub BaseMid: u8,
     pub Flags1: u8,
@@ -22887,11 +20834,6 @@ impl ::core::cmp::PartialEq for WOW64_LDT_ENTRY_0_1 {
     }
 }
 impl ::core::cmp::Eq for WOW64_LDT_ENTRY_0_1 {}
-impl ::core::default::Default for WOW64_LDT_ENTRY_0_1 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const WOW64_MAXIMUM_SUPPORTED_EXTENSION: u32 = 512u32;
 pub const WOW64_SIZE_OF_80387_REGISTERS: u32 = 80u32;
 pub struct XPF_MCE_FLAGS {
@@ -22910,11 +20852,6 @@ impl ::core::cmp::PartialEq for XPF_MCE_FLAGS {
     }
 }
 impl ::core::cmp::Eq for XPF_MCE_FLAGS {}
-impl ::core::default::Default for XPF_MCE_FLAGS {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct XPF_MCE_FLAGS_0 {
     pub _bitfield: u32,
 }
@@ -22930,11 +20867,6 @@ impl ::core::cmp::PartialEq for XPF_MCE_FLAGS_0 {
     }
 }
 impl ::core::cmp::Eq for XPF_MCE_FLAGS_0 {}
-impl ::core::default::Default for XPF_MCE_FLAGS_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct XPF_MC_BANK_FLAGS {
     pub Anonymous: XPF_MC_BANK_FLAGS_0,
     pub AsUCHAR: u8,
@@ -22951,11 +20883,6 @@ impl ::core::cmp::PartialEq for XPF_MC_BANK_FLAGS {
     }
 }
 impl ::core::cmp::Eq for XPF_MC_BANK_FLAGS {}
-impl ::core::default::Default for XPF_MC_BANK_FLAGS {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct XPF_MC_BANK_FLAGS_0 {
     pub _bitfield: u8,
 }
@@ -22978,11 +20905,6 @@ impl ::core::cmp::PartialEq for XPF_MC_BANK_FLAGS_0 {
     }
 }
 impl ::core::cmp::Eq for XPF_MC_BANK_FLAGS_0 {}
-impl ::core::default::Default for XPF_MC_BANK_FLAGS_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct XSAVE_AREA {
     pub LegacyState: XSAVE_FORMAT,
     pub Header: XSAVE_AREA_HEADER,
@@ -23007,11 +20929,6 @@ impl ::core::cmp::PartialEq for XSAVE_AREA {
     }
 }
 impl ::core::cmp::Eq for XSAVE_AREA {}
-impl ::core::default::Default for XSAVE_AREA {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct XSAVE_AREA_HEADER {
     pub Mask: u64,
     pub CompactionMask: u64,
@@ -23040,11 +20957,6 @@ impl ::core::cmp::PartialEq for XSAVE_AREA_HEADER {
     }
 }
 impl ::core::cmp::Eq for XSAVE_AREA_HEADER {}
-impl ::core::default::Default for XSAVE_AREA_HEADER {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct XSAVE_FORMAT {
@@ -23124,13 +21036,6 @@ impl ::core::cmp::PartialEq for XSAVE_FORMAT {
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for XSAVE_FORMAT {}
-#[doc = "*Required namespaces: *"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl ::core::default::Default for XSAVE_FORMAT {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct XSAVE_FORMAT {
     pub ControlWord: u16,
     pub StatusWord: u16,
@@ -23198,11 +21103,6 @@ impl ::core::cmp::PartialEq for XSAVE_FORMAT {
     }
 }
 impl ::core::cmp::Eq for XSAVE_FORMAT {}
-impl ::core::default::Default for XSAVE_FORMAT {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct XSTATE_CONFIGURATION {
     pub EnabledFeatures: u64,
     pub EnabledVolatileFeatures: u64,
@@ -23243,11 +21143,6 @@ impl ::core::cmp::PartialEq for XSTATE_CONFIGURATION {
     }
 }
 impl ::core::cmp::Eq for XSTATE_CONFIGURATION {}
-impl ::core::default::Default for XSTATE_CONFIGURATION {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct XSTATE_CONFIGURATION_0 {
     pub ControlFlags: u32,
     pub Anonymous: XSTATE_CONFIGURATION_0_0,
@@ -23264,11 +21159,6 @@ impl ::core::cmp::PartialEq for XSTATE_CONFIGURATION_0 {
     }
 }
 impl ::core::cmp::Eq for XSTATE_CONFIGURATION_0 {}
-impl ::core::default::Default for XSTATE_CONFIGURATION_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct XSTATE_CONFIGURATION_0_0 {
     pub _bitfield: u32,
 }
@@ -23291,11 +21181,6 @@ impl ::core::cmp::PartialEq for XSTATE_CONFIGURATION_0_0 {
     }
 }
 impl ::core::cmp::Eq for XSTATE_CONFIGURATION_0_0 {}
-impl ::core::default::Default for XSTATE_CONFIGURATION_0_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct XSTATE_CONFIG_FEATURE_MSC_INFO {
     pub SizeOfInfo: u32,
     pub ContextSize: u32,
@@ -23317,19 +21202,14 @@ impl ::core::cmp::PartialEq for XSTATE_CONFIG_FEATURE_MSC_INFO {
     }
 }
 impl ::core::cmp::Eq for XSTATE_CONFIG_FEATURE_MSC_INFO {}
-impl ::core::default::Default for XSTATE_CONFIG_FEATURE_MSC_INFO {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct XSTATE_CONTEXT {
     pub Mask: u64,
     pub Length: u32,
     pub Reserved1: u32,
-    pub Area: *mut XSAVE_AREA,
-    pub Buffer: *mut ::core::ffi::c_void,
+    pub Area: MutPtr<XSAVE_AREA>,
+    pub Buffer: MutPtr<::core::ffi::c_void>,
 }
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
@@ -23368,20 +21248,13 @@ impl ::core::cmp::PartialEq for XSTATE_CONTEXT {
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for XSTATE_CONTEXT {}
-#[doc = "*Required namespaces: *"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl ::core::default::Default for XSTATE_CONTEXT {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct XSTATE_CONTEXT {
     pub Mask: u64,
     pub Length: u32,
     pub Reserved1: u32,
-    pub Area: *mut XSAVE_AREA,
+    pub Area: MutPtr<XSAVE_AREA>,
     pub Reserved2: u32,
-    pub Buffer: *mut ::core::ffi::c_void,
+    pub Buffer: MutPtr<::core::ffi::c_void>,
     pub Reserved3: u32,
 }
 impl ::core::marker::Copy for XSTATE_CONTEXT {}
@@ -23415,11 +21288,6 @@ impl ::core::cmp::PartialEq for XSTATE_CONTEXT {
     }
 }
 impl ::core::cmp::Eq for XSTATE_CONTEXT {}
-impl ::core::default::Default for XSTATE_CONTEXT {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct XSTATE_FEATURE {
     pub Offset: u32,
     pub Size: u32,
@@ -23444,11 +21312,6 @@ impl ::core::cmp::PartialEq for XSTATE_FEATURE {
     }
 }
 impl ::core::cmp::Eq for XSTATE_FEATURE {}
-impl ::core::default::Default for XSTATE_FEATURE {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct _DUMP_TYPES(pub i32);
 pub const DUMP_TYPE_INVALID: _DUMP_TYPES = _DUMP_TYPES(-1i32);
@@ -23480,7 +21343,7 @@ pub struct _GETSETBUSDATA {
     pub BusDataType: u32,
     pub BusNumber: u32,
     pub SlotNumber: u32,
-    pub Buffer: *mut ::core::ffi::c_void,
+    pub Buffer: MutPtr<::core::ffi::c_void>,
     pub Offset: u32,
     pub Length: u32,
 }
@@ -23513,11 +21376,6 @@ impl ::core::cmp::PartialEq for _GETSETBUSDATA {
     }
 }
 impl ::core::cmp::Eq for _GETSETBUSDATA {}
-impl ::core::default::Default for _GETSETBUSDATA {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct _IMAGEHLP_JIT_SYMBOL_MAP {
     pub SizeOfStruct: u32,
     pub Address: u64,
@@ -23546,11 +21404,6 @@ impl ::core::cmp::PartialEq for _IMAGEHLP_JIT_SYMBOL_MAP {
     }
 }
 impl ::core::cmp::Eq for _IMAGEHLP_JIT_SYMBOL_MAP {}
-impl ::core::default::Default for _IMAGEHLP_JIT_SYMBOL_MAP {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct __MIDL___MIDL_itf_jscript9diag_0000_0007_0001 {
     pub InstructionOffset: u64,
     pub ReturnOffset: u64,
@@ -23582,12 +21435,8 @@ impl ::core::cmp::PartialEq for __MIDL___MIDL_itf_jscript9diag_0000_0007_0001 {
     }
 }
 impl ::core::cmp::Eq for __MIDL___MIDL_itf_jscript9diag_0000_0007_0001 {}
-impl ::core::default::Default for __MIDL___MIDL_itf_jscript9diag_0000_0007_0001 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const fasaCaseSensitive: u32 = 4u32;
 pub const fasaPreferInternalHandler: u32 = 1u32;
 pub const fasaSupportInternalHandler: u32 = 2u32;
 pub const sevMax: i32 = 4i32;
+pub trait Api {}

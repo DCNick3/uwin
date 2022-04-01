@@ -1,10 +1,10 @@
-#[derive(PartialEq)]
+#[derive(PartialEq, Debug)]
 pub enum SignatureKind {
     Query,
     QueryOptional,
-    ResultValue,
+    // ResultValue,
     ResultVoid,
-    ReturnStruct,
+    // ReturnStruct,
     ReturnVoid,
     PreserveSig,
 }

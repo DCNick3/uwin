@@ -83,11 +83,6 @@ impl ::core::cmp::PartialEq for APP_LOCAL_DEVICE_ID {
     }
 }
 impl ::core::cmp::Eq for APP_LOCAL_DEVICE_ID {}
-impl ::core::default::Default for APP_LOCAL_DEVICE_ID {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const APP_LOCAL_DEVICE_ID_SIZE: u32 = 32u32;
 pub struct BOOL(pub i32);
 impl BOOL {
@@ -186,7 +181,7 @@ impl ::core::fmt::Debug for BOOLEAN {
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
-pub struct BSTR(pub *mut u16);
+pub struct BSTR(pub MutPtr<u16>);
 impl BSTR {
     pub fn is_invalid(&self) -> bool {
         *self == unsafe { ::core::mem::zeroed() }
@@ -1086,11 +1081,6 @@ impl ::core::cmp::PartialEq for DECIMAL {
     }
 }
 impl ::core::cmp::Eq for DECIMAL {}
-impl ::core::default::Default for DECIMAL {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct DECIMAL_0 {
     pub Anonymous: DECIMAL_0_0,
     pub signscale: u16,
@@ -1107,11 +1097,6 @@ impl ::core::cmp::PartialEq for DECIMAL_0 {
     }
 }
 impl ::core::cmp::Eq for DECIMAL_0 {}
-impl ::core::default::Default for DECIMAL_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct DECIMAL_0_0 {
     pub scale: u8,
     pub sign: u8,
@@ -1136,11 +1121,6 @@ impl ::core::cmp::PartialEq for DECIMAL_0_0 {
     }
 }
 impl ::core::cmp::Eq for DECIMAL_0_0 {}
-impl ::core::default::Default for DECIMAL_0_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct DECIMAL_1 {
     pub Anonymous: DECIMAL_1_0,
     pub Lo64: u64,
@@ -1157,11 +1137,6 @@ impl ::core::cmp::PartialEq for DECIMAL_1 {
     }
 }
 impl ::core::cmp::Eq for DECIMAL_1 {}
-impl ::core::default::Default for DECIMAL_1 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct DECIMAL_1_0 {
     pub Lo32: u32,
     pub Mid32: u32,
@@ -1186,11 +1161,6 @@ impl ::core::cmp::PartialEq for DECIMAL_1_0 {
     }
 }
 impl ::core::cmp::Eq for DECIMAL_1_0 {}
-impl ::core::default::Default for DECIMAL_1_0 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const DIGSIG_E_CRYPTO: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146762744i32);
 pub const DIGSIG_E_DECODE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146762746i32);
 pub const DIGSIG_E_ENCODE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146762747i32);
@@ -2417,11 +2387,6 @@ impl ::core::cmp::PartialEq for FILETIME {
     }
 }
 impl ::core::cmp::Eq for FILETIME {}
-impl ::core::default::Default for FILETIME {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const FILTER_E_ALREADY_OPEN: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215562i32);
 pub const FILTER_E_CONTENTINDEXCORRUPT: ::win32::core::HRESULT =
     ::win32::core::HRESULT(-1073473740i32);
@@ -2467,11 +2432,6 @@ impl ::core::cmp::PartialEq for FLOAT128 {
     }
 }
 impl ::core::cmp::Eq for FLOAT128 {}
-impl ::core::default::Default for FLOAT128 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const FRS_ERR_AUTHENTICATION: i32 = 8008i32;
 pub const FRS_ERR_CHILD_TO_PARENT_COMM: i32 = 8011i32;
 pub const FRS_ERR_INSUFFICIENT_PRIV: i32 = 8007i32;
@@ -3217,11 +3177,6 @@ impl ::core::cmp::PartialEq for HLSURF__ {
     }
 }
 impl ::core::cmp::Eq for HLSURF__ {}
-impl ::core::default::Default for HLSURF__ {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct HRSRC(pub isize);
 impl HRSRC {
@@ -3267,11 +3222,6 @@ impl ::core::cmp::PartialEq for HSPRITE__ {
     }
 }
 impl ::core::cmp::Eq for HSPRITE__ {}
-impl ::core::default::Default for HSPRITE__ {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const HSP_BASE_ERROR_MASK: ::win32::core::HRESULT = ::win32::core::HRESULT(-2128019200i32);
 pub const HSP_BASE_INTERNAL_ERROR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2128018945i32);
 pub const HSP_BS_ERROR_MASK: ::win32::core::HRESULT = ::win32::core::HRESULT(-2128080896i32);
@@ -3329,11 +3279,6 @@ impl ::core::cmp::PartialEq for HSTR__ {
     }
 }
 impl ::core::cmp::Eq for HSTR__ {}
-impl ::core::default::Default for HSTR__ {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const HTTP_E_STATUS_AMBIGUOUS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2145844948i32);
 pub const HTTP_E_STATUS_BAD_GATEWAY: ::win32::core::HRESULT =
     ::win32::core::HRESULT(-2145844746i32);
@@ -3415,11 +3360,6 @@ impl ::core::cmp::PartialEq for HUMPD__ {
     }
 }
 impl ::core::cmp::Eq for HUMPD__ {}
-impl ::core::default::Default for HUMPD__ {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct HWND(pub isize);
 impl HWND {
@@ -3547,11 +3487,6 @@ impl ::core::cmp::PartialEq for LUID {
     }
 }
 impl ::core::cmp::Eq for LUID {}
-impl ::core::default::Default for LUID {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const MARSHAL_E_FIRST: i32 = -2147221216i32;
 pub const MARSHAL_E_LAST: i32 = -2147221201i32;
 pub const MARSHAL_S_FIRST: i32 = 262432i32;
@@ -4048,7 +3983,7 @@ pub const OSS_TRACE_FILE_ALREADY_OPEN: ::win32::core::HRESULT =
 pub const OSS_TYPE_NOT_SUPPORTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881506i32);
 pub const OSS_UNAVAIL_ENCRULES: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881513i32);
 pub const OSS_UNIMPLEMENTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881511i32);
-pub type PAPCFUNC = ::core::option::Option<unsafe extern "system" fn(parameter: usize)>;
+pub type PAPCFUNC = ::core::option::Option<unsafe extern "system" fn(Parameter: usize)>;
 pub const PEERDIST_ERROR_ALREADY_COMPLETED: i32 = 4060i32;
 pub const PEERDIST_ERROR_ALREADY_EXISTS: i32 = 4058i32;
 pub const PEERDIST_ERROR_ALREADY_INITIALIZED: i32 = 4055i32;
@@ -4258,11 +4193,6 @@ impl ::core::cmp::PartialEq for POINT {
     }
 }
 impl ::core::cmp::Eq for POINT {}
-impl ::core::default::Default for POINT {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct POINTL {
     pub x: i32,
     pub y: i32,
@@ -4287,11 +4217,6 @@ impl ::core::cmp::PartialEq for POINTL {
     }
 }
 impl ::core::cmp::Eq for POINTL {}
-impl ::core::default::Default for POINTL {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct POINTS {
     pub x: i16,
     pub y: i16,
@@ -4316,11 +4241,6 @@ impl ::core::cmp::PartialEq for POINTS {
     }
 }
 impl ::core::cmp::Eq for POINTS {}
-impl ::core::default::Default for POINTS {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const PRESENTATION_ERROR_LOST: ::win32::core::HRESULT = ::win32::core::HRESULT(-2004811775i32);
 pub type PROC = ::core::option::Option<unsafe extern "system" fn() -> isize>;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -4463,11 +4383,6 @@ impl ::core::cmp::PartialEq for RECT {
     }
 }
 impl ::core::cmp::Eq for RECT {}
-impl ::core::default::Default for RECT {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub struct RECTL {
     pub left: i32,
     pub top: i32,
@@ -4499,11 +4414,6 @@ impl ::core::cmp::PartialEq for RECTL {
     }
 }
 impl ::core::cmp::Eq for RECTL {}
-impl ::core::default::Default for RECTL {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const REGDB_E_BADTHREADINGMODEL: ::win32::core::HRESULT =
     ::win32::core::HRESULT(-2147221162i32);
 pub const REGDB_E_CLASSNOTREG: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221164i32);
@@ -5072,11 +4982,6 @@ impl ::core::cmp::PartialEq for SIZE {
     }
 }
 impl ::core::cmp::Eq for SIZE {}
-impl ::core::default::Default for SIZE {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const SPAPI_E_AUTHENTICODE_DISALLOWED: ::win32::core::HRESULT =
     ::win32::core::HRESULT(-2146500032i32);
 pub const SPAPI_E_AUTHENTICODE_PUBLISHER_NOT_TRUSTED: ::win32::core::HRESULT =
@@ -8194,11 +8099,6 @@ impl ::core::cmp::PartialEq for SYSTEMTIME {
     }
 }
 impl ::core::cmp::Eq for SYSTEMTIME {}
-impl ::core::default::Default for SYSTEMTIME {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const S_APPLICATION_ACTIVATION_ERROR_HANDLED_BY_DIALOG: ::win32::core::HRESULT =
     ::win32::core::HRESULT(2556505i32);
 pub const S_FALSE: ::win32::core::HRESULT = ::win32::core::HRESULT(1i32);
@@ -8833,11 +8733,6 @@ impl ::core::cmp::PartialEq for UNICODE_STRING {
     }
 }
 impl ::core::cmp::Eq for UNICODE_STRING {}
-impl ::core::default::Default for UNICODE_STRING {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 pub const UTC_E_ACTION_NOT_SUPPORTED_IN_DESTINATION: ::win32::core::HRESULT =
     ::win32::core::HRESULT(-2017128380i32);
 pub const UTC_E_AGENT_DIAGNOSTICS_TOO_LARGE: ::win32::core::HRESULT =
@@ -12782,3 +12677,20 @@ pub const _WIN32_IE_MAXVER: u32 = 2560u32;
 pub const _WIN32_MAXVER: u32 = 2560u32;
 pub const _WIN32_WINDOWS_MAXVER: u32 = 2560u32;
 pub const _WIN32_WINNT_MAXVER: u32 = 2560u32;
+pub trait Api {
+    fn CloseHandle(hObject: HANDLE) -> BOOL;
+    fn CompareObjectHandles(hFirstObjectHandle: HANDLE, hSecondObjectHandle: HANDLE) -> BOOL;
+    fn DuplicateHandle(
+        hSourceProcessHandle: HANDLE,
+        hSourceHandle: HANDLE,
+        hTargetProcessHandle: HANDLE,
+        lpTargetHandle: MutPtr<HANDLE>,
+        dwDesiredAccess: u32,
+        bInheritHandle: BOOL,
+        dwOptions: DUPLICATE_HANDLE_OPTIONS,
+    ) -> BOOL;
+    fn GetHandleInformation(hObject: HANDLE, lpdwFlags: MutPtr<u32>) -> BOOL;
+    fn GetLastError() -> WIN32_ERROR;
+    fn SetHandleInformation(hObject: HANDLE, dwMask: u32, dwFlags: HANDLE_FLAGS) -> BOOL;
+    fn SetLastError(dwErrCode: WIN32_ERROR);
+}
