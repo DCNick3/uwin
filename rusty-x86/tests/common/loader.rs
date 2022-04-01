@@ -1,4 +1,4 @@
-use rusty_x86::memory_image::{MemoryImage, Protection};
+use memory_image::{MemoryImage, Protection};
 use std::error::Error;
 
 use goblin::elf::Elf;

@@ -16,7 +16,7 @@ use crate::codegen_instr;
 use crate::llvm::backend::{
     Intrinsics, LlvmBuilder, RuntimeHelpers, Types, FASTCC_CALLING_CONVENTION,
 };
-use crate::memory_image::MemoryImage;
+use memory_image::MemoryImage;
 
 pub mod backend;
 

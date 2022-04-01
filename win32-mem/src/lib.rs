@@ -8,7 +8,7 @@ mod tests {
     use crate::ctx::MemoryCtx;
     use crate::ptr::{PtrRepr, RawPtr};
 
-    #[derive(Clone, Copy)]
+    #[derive(Clone, Copy, PartialEq)]
     struct DummyCtx();
 
     impl MemoryCtx for DummyCtx {

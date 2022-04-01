@@ -3,7 +3,6 @@ extern crate core;
 pub mod backend;
 pub mod disasm;
 pub mod llvm;
-pub mod memory_image;
 pub mod types;
 
 use crate::backend::{Builder, ComparisonType, IntValue};
@@ -879,11 +878,11 @@ mod tests {
 
     mod llvm {
         use crate::llvm;
-        use crate::memory_image::MemoryImage;
         use inkwell::context::Context;
         use inkwell::targets::FileType;
         #[allow(unused_imports)]
         use log::{debug, error, info, trace, warn};
+        use memory_image::MemoryImage;
         use std::fmt::Write;
         use test_log::test;
 

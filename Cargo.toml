@@ -15,4 +15,7 @@ members = [
     "win32-bindgen/bindgenlib",
     "win32-bindgen/metadata",
     "win32-bindgen/tokens",
+
+    "recompiler",
+    "memory-image",
 ]

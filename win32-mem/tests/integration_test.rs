@@ -35,7 +35,7 @@ impl DummyFlatMemoryManager {
     }
 
     fn get_ctx(&self) -> FlatMemoryCtx {
-        FlatMemoryCtx::new(self.base_allocation.as_ptr::<u8>() as *mut u8)
+        unsafe { FlatMemoryCtx::new(self.base_allocation.as_ptr::<u8>() as *mut u8) }
     }
 }
 

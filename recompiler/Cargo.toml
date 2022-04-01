@@ -1,0 +1,17 @@
+[package]
+name = "recompiler"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+log = "0.4.14"
+rusty-x86 = { path = "../rusty-x86" }
+object = "0.28.3"
+clap = { version = "3.1.7", features = ["derive"] }
+memmap2 = "0.5.3"
+
+[dependencies.inkwell]
+git = "https://github.com/DCNick3/inkwell"
+branch = "master"
+#path = "/home/dcnick3/git_cloned/inkwell"
+features = ["llvm13-0", "target-all"]

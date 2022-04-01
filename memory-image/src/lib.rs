@@ -85,9 +85,7 @@ impl MemoryImage {
     }
 
     pub fn iter(&self) -> impl Iterator<Item = &MemoryImageItem> {
-        MemoryImageIter {
-            0: self.regions.iter(),
-        }
+        MemoryImageIter(self.regions.iter())
     }
 
     // TODO: maybe we want to merge the regions that are next to each other
@@ -141,7 +139,7 @@ impl Default for MemoryImage {
 mod tests {
     use super::MemoryImage;
     use super::MemoryImageItem;
-    use crate::memory_image::Protection;
+    use crate::Protection;
 
     fn readonly_image() -> MemoryImage {
         [
@@ -163,7 +161,7 @@ mod tests {
     //     .collect()
     // }
 
-    #[test_log::test]
+    #[test]
     #[rustfmt::skip]
     fn iter() {
         let image: MemoryImage = readonly_image();
@@ -177,7 +175,7 @@ mod tests {
         ]);
     }
 
-    #[test_log::test]
+    #[test]
     #[rustfmt::skip]
     fn access() {
         let image: MemoryImage = readonly_image();
@@ -195,7 +193,7 @@ mod tests {
         assert_eq!(*image.read_all_at(10), []);
     }
 
-    #[test_log::test]
+    #[test]
     #[rustfmt::skip]
     fn access_bad() {
         let image: MemoryImage = readonly_image();
@@ -213,7 +211,7 @@ mod tests {
         assert_eq!(*image.execute_all_at(10), []);
     }
 
-    #[test_log::test]
+    #[test]
     #[rustfmt::skip]
     fn from_region() {
         let image = MemoryImage::from_code_region(13, &[1, 2, 3]);

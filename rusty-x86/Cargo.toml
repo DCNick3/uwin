@@ -11,9 +11,9 @@ iced-x86 = "1.15.0"
 log = "0.4.14"
 strum = "0.23.0"
 strum_macros = "0.23.1"
-bitflags = "1.3.2"
 
 rusty-x86_derive = { path = "../rusty-x86_derive" }
+memory-image = { path = "../memory-image" }
 
 # TODO: add an llvm feature gate that will disable an llvm backend
 # though, need to implement any other backend first ;)
