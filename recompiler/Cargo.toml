@@ -5,10 +5,13 @@ edition = "2021"
 
 [dependencies]
 log = "0.4.14"
-rusty-x86 = { path = "../rusty-x86" }
-object = "0.28.3"
+object = { version = "0.28.3", features = ["write"] }
 clap = { version = "3.1.7", features = ["derive"] }
 memmap2 = "0.5.3"
+
+rusty-x86 = { path = "../rusty-x86" }
+memory-image = { path = "../memory-image" }
+num = "0.4.0"
 
 [dependencies.inkwell]
 git = "https://github.com/DCNick3/inkwell"

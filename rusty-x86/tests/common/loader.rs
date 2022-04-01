@@ -25,7 +25,12 @@ pub fn load_elf(elf_data: &[u8]) -> Result<(u32, MemoryImage), Box<dyn Error>> {
 
         let base = section.sh_addr as u32;
         let region = section.file_range().map_or(&[] as &[u8], |r| &elf_data[r]);
-        res.add_region(base, prot, region.to_vec());
+        res.add_region(
+            base,
+            prot,
+            region.to_vec(),
+            elf.strtab.get_at(section.sh_name).unwrap().to_string(),
+        );
     }
 
     Ok((elf.entry as u32, res))
@@ -65,7 +70,12 @@ pub fn load_pe(pe_data: &[u8]) -> Result<(u32, MemoryImage), Box<dyn Error>> {
             region.extend(vec![0u8; virt_size - region.len()]);
         }
 
-        res.add_region(image_base + base, prot, region);
+        res.add_region(
+            image_base + base,
+            prot,
+            region,
+            section.name().unwrap().to_string(),
+        );
     }
 
     Ok((image_base + pe.entry as u32, res))

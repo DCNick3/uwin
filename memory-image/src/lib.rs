@@ -1,5 +1,5 @@
 use bitflags::bitflags;
-use std::slice::Iter;
+use std::fmt::{Display, Formatter};
 
 bitflags! {
   #[derive(Default)]
@@ -23,19 +23,45 @@ bitflags! {
   }
 }
 
+impl Display for Protection {
+    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+        write!(
+            f,
+            "{}{}{}",
+            if self.intersects(Protection::READ) {
+                "r"
+            } else {
+                "-"
+            },
+            if self.intersects(Protection::WRITE) {
+                "w"
+            } else {
+                "-"
+            },
+            if self.intersects(Protection::EXECUTE) {
+                "x"
+            } else {
+                "-"
+            }
+        )
+    }
+}
+
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct MemoryImageItem {
     pub addr: u32,
     pub protection: Protection,
     pub data: Vec<u8>,
+    pub comment: String,
 }
 
 impl MemoryImageItem {
-    pub fn new(addr: u32, protection: Protection, data: Vec<u8>) -> Self {
+    pub fn new(addr: u32, protection: Protection, data: Vec<u8>, comment: String) -> Self {
         Self {
             addr,
             protection,
             data,
+            comment,
         }
     }
 
@@ -67,12 +93,14 @@ impl MemoryImage {
                 address,
                 Protection::READ_EXECUTE,
                 contents.to_vec(),
+                "<code>".to_string(),
             )],
         }
     }
 }
 
 impl<'a> FromIterator<&'a MemoryImageItem> for MemoryImage {
+    // TODO: validate that we have no intersecting regions
     fn from_iter<T: IntoIterator<Item = &'a MemoryImageItem>>(iter: T) -> Self {
         Self {
             regions: iter.into_iter().cloned().collect(),
@@ -81,7 +109,6 @@ impl<'a> FromIterator<&'a MemoryImageItem> for MemoryImage {
 }
 
 impl MemoryImage {
-    // TODO: validate that we have no intersecting regions
     pub fn new() -> Self {
         MemoryImage {
             regions: Vec::new(),
@@ -151,18 +178,51 @@ impl MemoryImage {
         self.regions.push(value)
     }
 
-    pub fn add_region(&mut self, base_addr: u32, prot: Protection, data: Vec<u8>) {
-        self.push(MemoryImageItem::new(base_addr, prot, data))
+    pub fn add_region(&mut self, base_addr: u32, prot: Protection, data: Vec<u8>, comment: String) {
+        self.push(MemoryImageItem::new(base_addr, prot, data, comment))
     }
 
-    pub fn add_zeroed_region(&mut self, base_addr: u32, prot: Protection, len: u32) {
-        self.add_region(base_addr, prot, vec![0; len as usize])
+    pub fn add_zeroed_region(
+        &mut self,
+        base_addr: u32,
+        prot: Protection,
+        len: u32,
+        comment: String,
+    ) {
+        self.add_region(base_addr, prot, vec![0; len as usize], comment)
+    }
+
+    pub fn map(&self) -> MemoryImageMap {
+        MemoryImageMap(self)
     }
 }
 
 impl Default for MemoryImage {
     fn default() -> Self {
         MemoryImage::new()
+    }
+}
+
+pub struct MemoryImageMap<'a>(&'a MemoryImage);
+
+impl<'a> Display for MemoryImageMap<'a> {
+    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+        for (i, region) in self.0.iter().enumerate() {
+            if i > 0 {
+                writeln!(f)?
+            }
+            let prot = region.protection;
+            write!(
+                f,
+                "{:#010x}-{:#010x} ({:#010x}) {}: {}",
+                region.addr,
+                region.end(),
+                region.data.len(),
+                prot,
+                region.comment
+            )?;
+        }
+        Ok(())
     }
 }
 
@@ -174,9 +234,9 @@ mod tests {
 
     fn readonly_image() -> MemoryImage {
         [
-            MemoryImageItem::new(0, Protection::READ, vec![1, 2, 3]),
-            MemoryImageItem::new(5, Protection::READ, vec![5, 6, 7]),
-            MemoryImageItem::new(8, Protection::READ, vec![8]),
+            MemoryImageItem::new(0, Protection::READ, vec![1, 2, 3], "".to_string()),
+            MemoryImageItem::new(5, Protection::READ, vec![5, 6, 7], "".to_string()),
+            MemoryImageItem::new(8, Protection::READ, vec![8], "".to_string()),
         ]
         .iter()
         .collect()
@@ -200,9 +260,9 @@ mod tests {
         let image_vec: Vec<MemoryImageItem> = image.iter().cloned().collect();
 
         assert_eq!(*image_vec.as_slice(), [
-            MemoryImageItem::new(0, Protection::READ, vec![1, 2, 3]),
-            MemoryImageItem::new(5, Protection::READ, vec![5, 6, 7]),
-            MemoryImageItem::new(8, Protection::READ, vec![8])
+            MemoryImageItem::new(0, Protection::READ, vec![1, 2, 3], "".to_string()),
+            MemoryImageItem::new(5, Protection::READ, vec![5, 6, 7], "".to_string()),
+            MemoryImageItem::new(8, Protection::READ, vec![8], "".to_string())
         ]);
     }
 

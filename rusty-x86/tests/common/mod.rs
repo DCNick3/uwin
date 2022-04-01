@@ -40,8 +40,18 @@ impl<'a> CodeToTest<'a> {
         let entry;
         match self {
             CodeToTest::Snippet(c) | CodeToTest::Function(c, _) => {
-                image.add_region(CODE_ADDR, Protection::READ_EXECUTE, c.to_vec());
-                image.add_zeroed_region(MEM_ADDR, Protection::READ_WRITE, MEM_SIZE);
+                image.add_region(
+                    CODE_ADDR,
+                    Protection::READ_EXECUTE,
+                    c.to_vec(),
+                    "code".to_string(),
+                );
+                image.add_zeroed_region(
+                    MEM_ADDR,
+                    Protection::READ_WRITE,
+                    MEM_SIZE,
+                    "data".to_string(),
+                );
                 entry = CODE_ADDR;
             }
             CodeToTest::ElfFunction(elf, _) => {
@@ -78,6 +88,7 @@ fn load_unicorn(
         addr,
         protection,
         data,
+        ..
     } in image.iter()
     {
         let mut uprot = UniProtection::NONE;
@@ -314,6 +325,7 @@ fn execute_rusty_x86(
                  addr,
                  protection,
                  data,
+                 ..
              }| { map_region(*addr, *protection, data.as_slice()) },
         )
         .collect();
@@ -356,6 +368,7 @@ fn execute_rusty_x86(
                 addr: STACK_ADDR,
                 protection: Protection::READ_WRITE,
                 data: vec![0u8; STACK_SIZE as usize],
+                comment: "stack".to_string(),
             }]
             .iter(),
         )
