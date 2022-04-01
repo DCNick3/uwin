@@ -41,7 +41,7 @@ impl<'a> CodeToTest<'a> {
         match self {
             CodeToTest::Snippet(c) | CodeToTest::Function(c, _) => {
                 image.add_region(CODE_ADDR, Protection::READ_EXECUTE, c.to_vec());
-                image.add_zero_region(MEM_ADDR, Protection::READ_WRITE, MEM_SIZE);
+                image.add_zeroed_region(MEM_ADDR, Protection::READ_WRITE, MEM_SIZE);
                 entry = CODE_ADDR;
             }
             CodeToTest::ElfFunction(elf, _) => {

@@ -38,6 +38,20 @@ impl MemoryImageItem {
             data,
         }
     }
+
+    pub fn contains(&self, addr: u32) -> bool {
+        self.addr <= addr && addr < self.end()
+    }
+
+    pub fn end(&self) -> u32 {
+        self.addr
+            .checked_add(self.data.len() as u32)
+            .expect("The end of the region is out of bounds")
+    }
+
+    pub fn intersects(&self, other: &MemoryImageItem) -> bool {
+        std::cmp::max(self.addr, other.addr) < std::cmp::min(self.end(), other.end())
+    }
 }
 
 /// Represents a executable image
@@ -66,16 +80,6 @@ impl<'a> FromIterator<&'a MemoryImageItem> for MemoryImage {
     }
 }
 
-struct MemoryImageIter<'a>(Iter<'a, MemoryImageItem>);
-
-impl<'a> Iterator for MemoryImageIter<'a> {
-    type Item = &'a MemoryImageItem;
-
-    fn next(&mut self) -> Option<Self::Item> {
-        self.0.next()
-    }
-}
-
 impl MemoryImage {
     // TODO: validate that we have no intersecting regions
     pub fn new() -> Self {
@@ -85,38 +89,65 @@ impl MemoryImage {
     }
 
     pub fn iter(&self) -> impl Iterator<Item = &MemoryImageItem> {
-        MemoryImageIter(self.regions.iter())
+        self.regions.iter()
+    }
+
+    pub fn iter_mut(&mut self) -> impl Iterator<Item = &mut MemoryImageItem> {
+        self.regions.iter_mut()
+    }
+
+    fn find_region(&self, addr: u32) -> Option<&MemoryImageItem> {
+        // TODO: this may be made more optimal, but we may as well not care =)
+        self.iter().find(|item| item.contains(addr))
+    }
+
+    fn find_region_mut(&mut self, addr: u32) -> Option<&mut MemoryImageItem> {
+        self.iter_mut().find(|item| item.contains(addr))
     }
 
     // TODO: maybe we want to merge the regions that are next to each other
     // this is kinda corner-case, but it will not allow us to recompile code between memory rg boundaries as of now
-    fn access_all_at(&self, access_addr: u32, required_prot: Protection) -> &[u8] {
-        // TODO: this may be made more optimal, but we may as well not care
-        for MemoryImageItem {
-            addr,
-            protection,
-            data,
-        } in self.regions.iter()
-        {
-            if protection.contains(required_prot)
-                && *addr <= access_addr
-                && access_addr < *addr + data.len() as u32
-            {
-                return &data.as_slice()[(access_addr - addr) as usize..];
-            }
-        }
-        &[]
+    fn access_all_at_prot(&self, access_addr: u32, required_prot: Protection) -> &[u8] {
+        self.find_region(access_addr)
+            .filter(|item| item.protection.contains(required_prot))
+            .map(|item| &item.data[(access_addr - item.addr) as usize..])
+            .unwrap_or(&[])
     }
 
+    /// Get slice containing data from the specified address
+    ///
+    /// Returns an empty slice if the protection doesn't have READ flag
     pub fn read_all_at(&self, addr: u32) -> &[u8] {
-        self.access_all_at(addr, Protection::READ)
+        self.access_all_at_prot(addr, Protection::READ)
     }
 
+    /// Get slice containing data from the specified address
+    ///
+    /// Returns an empty slice if the protection doesn't have EXECUTE flag
     pub fn execute_all_at(&self, addr: u32) -> &[u8] {
-        self.access_all_at(addr, Protection::EXECUTE)
+        self.access_all_at_prot(addr, Protection::EXECUTE)
+    }
+
+    /// Get slice containing data from the specified address
+    ///
+    /// Does not perform any protection checks
+    pub fn access_all_at(&self, addr: u32) -> &[u8] {
+        self.find_region(addr)
+            .map(|item| &item.data[(addr - item.addr) as usize..])
+            .unwrap_or(&[])
+    }
+
+    /// Get mutable slice containing data from the specified address
+    ///
+    /// Does not perform any protection checks
+    pub fn modify_all_at(&mut self, addr: u32) -> &mut [u8] {
+        self.find_region_mut(addr)
+            .map(|item| &mut item.data[(addr - item.addr) as usize..])
+            .unwrap_or(&mut [])
     }
 
     pub fn push(&mut self, value: MemoryImageItem) {
+        assert!(!self.iter().any(|region| region.intersects(&value)));
         self.regions.push(value)
     }
 
@@ -124,7 +155,7 @@ impl MemoryImage {
         self.push(MemoryImageItem::new(base_addr, prot, data))
     }
 
-    pub fn add_zero_region(&mut self, base_addr: u32, prot: Protection, len: u32) {
+    pub fn add_zeroed_region(&mut self, base_addr: u32, prot: Protection, len: u32) {
         self.add_region(base_addr, prot, vec![0; len as usize])
     }
 }
@@ -222,5 +253,20 @@ mod tests {
         assert_eq!(*image.read_all_at(15), [3]);
         assert_eq!(*image.read_all_at(16), []);
         assert_eq!(*image.read_all_at(17), []);
+    }
+
+    #[test]
+    #[rustfmt::skip]
+    fn modify_region() {
+        let mut image = readonly_image();
+        let rg = image.modify_all_at(6);
+        rg[0] = 12;
+        rg[1] = 13;
+        
+        assert_eq!(*image.read_all_at(4), []);
+        assert_eq!(*image.read_all_at(5), [5, 12, 13]);
+        assert_eq!(*image.read_all_at(6), [12, 13]);
+        assert_eq!(*image.read_all_at(7), [13]);
+        assert_eq!(*image.read_all_at(8), [8]);
     }
 }
