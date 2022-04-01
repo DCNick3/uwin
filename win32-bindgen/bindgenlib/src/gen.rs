@@ -1,8 +1,10 @@
 use super::*;
+use std::collections::HashSet;
 
 #[derive(Default)]
 pub struct Gen<'a> {
     pub enabled_namespaces: &'a [&'a str],
+    pub excluded_items: HashSet<&'a str>,
     pub namespace: &'a str,
     pub sys: bool,
     pub flatten: bool,

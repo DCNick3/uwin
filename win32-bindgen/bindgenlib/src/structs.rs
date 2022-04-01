@@ -44,20 +44,24 @@ fn gen_struct_with_name(def: &TypeDef, struct_name: &str, cfg: &Cfg, gen: &Gen) 
         let ty = f.get_type(Some(def));
         let ty = gen_default_type(&ty, gen);
 
+        #[allow(clippy::if_same_then_else)]
         if f.is_literal() {
             quote! {}
         } else if !gen.sys && is_union && !f.is_blittable(Some(def)) {
-            quote! { pub #name: ::core::mem::ManuallyDrop<#ty>, }
+            // TODO: unions are funky
+            quote! {}
         } else {
             quote! { pub #name: #ty, }
         }
     });
 
-    let struct_or_union = if is_union {
-        quote! { union }
-    } else {
-        quote! { struct }
-    };
+    // TODO: unions are funky
+    // let struct_or_union = if is_union {
+    //     quote! { union }
+    // } else {
+    //     quote! { struct }
+    // };
+    let struct_or_union = quote! { struct };
 
     let doc = gen.doc(&cfg);
     let features = gen.cfg(&cfg);
@@ -71,7 +75,6 @@ fn gen_struct_with_name(def: &TypeDef, struct_name: &str, cfg: &Cfg, gen: &Gen) 
     tokens.combine(&gen_struct_constants(def, &name, &cfg, gen));
     tokens.combine(&gen_copy_clone(def, &name, &cfg, gen));
     tokens.combine(&gen_debug(def, &name, &cfg, gen));
-    tokens.combine(&gen_windows_traits(def, &name, &cfg, gen));
     tokens.combine(&gen_compare_traits(def, &name, &cfg, gen));
 
     if !gen.sys {
@@ -93,41 +96,6 @@ fn gen_struct_with_name(def: &TypeDef, struct_name: &str, cfg: &Cfg, gen: &Gen) 
     }
 
     tokens
-}
-
-fn gen_windows_traits(def: &TypeDef, name: &TokenStream, cfg: &Cfg, gen: &Gen) -> TokenStream {
-    if gen.sys {
-        quote! {}
-    } else {
-        let features = gen.cfg(cfg);
-
-        let mut tokens = quote! {};
-
-        assert!(!def.is_winrt());
-
-        if def.is_winrt() {
-            let signature = Literal::byte_string(def.type_signature().as_bytes());
-
-            let clone = if def.is_blittable() {
-                quote! { *from }
-            } else {
-                quote! { from.clone() }
-            };
-
-            tokens.combine(&quote! {
-                #features
-                unsafe impl ::windows::core::RuntimeType for #name {
-                    const SIGNATURE: ::windows::core::ConstBuffer = ::windows::core::ConstBuffer::from_slice(#signature);
-                    type DefaultType = Self;
-                    fn from_default(from: &Self::DefaultType) -> ::windows::core::Result<Self> {
-                        Ok(#clone)
-                    }
-                }
-            });
-        }
-
-        tokens
-    }
 }
 
 #[allow(clippy::if_same_then_else)]

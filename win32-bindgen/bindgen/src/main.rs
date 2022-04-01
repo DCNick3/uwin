@@ -2,11 +2,29 @@ use rayon::prelude::*;
 use std::io::Write;
 use win32_bindgenlib as bindgen;
 
-const EXCLUDE_NAMESPACES: [&str; 1] = ["Windows.Win32.Interop"];
-const INCLUDE_NAMESPACES: [&str; 3] = [
+const EXCLUDE_NAMESPACES: &[&str] = &["Windows.Win32.Interop"];
+const INCLUDE_NAMESPACES: &[&str] = &[
     "Windows.Win32.Foundation",
     "Windows.Win32.System.SystemInformation",
     "Windows.Win32.System.Diagnostics.Debug",
+];
+
+const EXCLUDE_ITEMS: &[&str] = &[
+    "Windows.Win32.System.Diagnostics.Debug.DebugPropertyInfo",
+    "Windows.Win32.System.Diagnostics.Debug.DebugHelper",
+    "Windows.Win32.System.Diagnostics.Debug.DebugStackFrameDescriptor",
+    "Windows.Win32.System.Diagnostics.Debug.DebugStackFrameDescriptor64",
+    "Windows.Win32.System.Diagnostics.Debug.DebugPropertyInfo",
+    "Windows.Win32.System.Diagnostics.Debug.PDEBUG_EXTENSION_CALL",
+    "Windows.Win32.System.Diagnostics.Debug.PDEBUG_EXTENSION_KNOWN_STRUCT_EX",
+    "Windows.Win32.System.Diagnostics.Debug.PDEBUG_EXTENSION_PROVIDE_VALUE",
+    "Windows.Win32.System.Diagnostics.Debug.PDEBUG_EXTENSION_QUERY_VALUE_NAMES",
+    "Windows.Win32.System.Diagnostics.Debug.TEXT_DOCUMENT_ARRAY",
+    "Windows.Win32.System.Diagnostics.Debug.PROFILER_HEAP_OBJECT_RELATIONSHIP",
+    "Windows.Win32.System.Diagnostics.Debug.PROFILER_HEAP_OBJECT_RELATIONSHIP_LIST",
+    "Windows.Win32.System.Diagnostics.Debug.PROFILER_HEAP_OBJECT_OPTIONAL_INFO",
+    // "Windows.Win32.System.Diagnostics.Debug.PROFILER_HEAP_OBJECT_RELATIONSHIP_LIST",
+    // "Windows.Win32.System.Diagnostics.Debug.PROFILER_HEAP_OBJECT_RELATIONSHIP_LIST",
 ];
 
 fn main() {
@@ -93,6 +111,16 @@ fn gen_tree(output: &std::path::Path, _root: &'static str, tree: &TypeTreeGen) {
     let path = std::path::PathBuf::from(output).join(tree.namespace.replace('.', "/"));
     let gen = bindgen::Gen {
         enabled_namespaces: &INCLUDE_NAMESPACES,
+        excluded_items: EXCLUDE_ITEMS
+            .iter()
+            .filter(|p| p.starts_with(tree.namespace))
+            .filter(|p| {
+                p.len() > tree.namespace.len()
+                    && &p[tree.namespace.len()..tree.namespace.len() + 1] == "."
+            })
+            .map(|p| &p[tree.namespace.len() + 1..])
+            .filter(|p| !p.contains("."))
+            .collect(),
         namespace: tree.namespace,
         min_xaml: true,
         cfg: true,

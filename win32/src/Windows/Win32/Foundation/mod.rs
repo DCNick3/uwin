@@ -1091,7 +1091,7 @@ impl ::core::default::Default for DECIMAL {
         unsafe { ::core::mem::zeroed() }
     }
 }
-pub union DECIMAL_0 {
+pub struct DECIMAL_0 {
     pub Anonymous: DECIMAL_0_0,
     pub signscale: u16,
 }
@@ -1141,7 +1141,7 @@ impl ::core::default::Default for DECIMAL_0_0 {
         unsafe { ::core::mem::zeroed() }
     }
 }
-pub union DECIMAL_1 {
+pub struct DECIMAL_1 {
     pub Anonymous: DECIMAL_1_0,
     pub Lo64: u64,
 }

@@ -80,7 +80,7 @@ impl ::core::default::Default for CACHE_RELATIONSHIP {
         unsafe { ::core::mem::zeroed() }
     }
 }
-pub union CACHE_RELATIONSHIP_0 {
+pub struct CACHE_RELATIONSHIP_0 {
     pub GroupMask: GROUP_AFFINITY,
     pub GroupMasks: [GROUP_AFFINITY; 1],
 }
@@ -648,7 +648,7 @@ impl ::core::default::Default for NUMA_NODE_RELATIONSHIP {
         unsafe { ::core::mem::zeroed() }
     }
 }
-pub union NUMA_NODE_RELATIONSHIP_0 {
+pub struct NUMA_NODE_RELATIONSHIP_0 {
     pub GroupMask: GROUP_AFFINITY,
     pub GroupMasks: [GROUP_AFFINITY; 1],
 }
@@ -1171,7 +1171,7 @@ impl ::core::default::Default for SYSTEM_CPU_SET_INFORMATION {
         unsafe { ::core::mem::zeroed() }
     }
 }
-pub union SYSTEM_CPU_SET_INFORMATION_0 {
+pub struct SYSTEM_CPU_SET_INFORMATION_0 {
     pub CpuSet: SYSTEM_CPU_SET_INFORMATION_0_0,
 }
 impl ::core::marker::Copy for SYSTEM_CPU_SET_INFORMATION_0 {}
@@ -1229,7 +1229,7 @@ impl ::core::default::Default for SYSTEM_CPU_SET_INFORMATION_0_0 {
         unsafe { ::core::mem::zeroed() }
     }
 }
-pub union SYSTEM_CPU_SET_INFORMATION_0_0_0 {
+pub struct SYSTEM_CPU_SET_INFORMATION_0_0_0 {
     pub AllFlags: u8,
     pub Anonymous: SYSTEM_CPU_SET_INFORMATION_0_0_0_0,
 }
@@ -1277,7 +1277,7 @@ impl ::core::default::Default for SYSTEM_CPU_SET_INFORMATION_0_0_0_0 {
         unsafe { ::core::mem::zeroed() }
     }
 }
-pub union SYSTEM_CPU_SET_INFORMATION_0_0_1 {
+pub struct SYSTEM_CPU_SET_INFORMATION_0_0_1 {
     pub Reserved: u32,
     pub SchedulingClass: u8,
 }
@@ -1340,7 +1340,7 @@ impl ::core::default::Default for SYSTEM_INFO {
         unsafe { ::core::mem::zeroed() }
     }
 }
-pub union SYSTEM_INFO_0 {
+pub struct SYSTEM_INFO_0 {
     pub dwOemId: u32,
     pub Anonymous: SYSTEM_INFO_0_0,
 }
@@ -1415,7 +1415,7 @@ impl ::core::default::Default for SYSTEM_LOGICAL_PROCESSOR_INFORMATION {
         unsafe { ::core::mem::zeroed() }
     }
 }
-pub union SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0 {
+pub struct SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0 {
     pub ProcessorCore: SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0_1,
     pub NumaNode: SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0_0,
     pub Cache: CACHE_DESCRIPTOR,
@@ -1519,7 +1519,7 @@ impl ::core::default::Default for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX {
         unsafe { ::core::mem::zeroed() }
     }
 }
-pub union SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX_0 {
+pub struct SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX_0 {
     pub Processor: PROCESSOR_RELATIONSHIP,
     pub NumaNode: NUMA_NODE_RELATIONSHIP,
     pub Cache: CACHE_RELATIONSHIP,

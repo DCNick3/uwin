@@ -103,8 +103,16 @@ fn gen_non_sys_function_types(tree: &TypeTree, gen: &Gen) -> TokenStream {
 
 fn gen_type_impl(def: &Type, gen: &Gen) -> TokenStream {
     match def {
-        Type::Field(def) => constants::gen(def, gen),
+        Type::Field(def) => {
+            if gen.excluded_items.contains(def.name()) {
+                return quote! {};
+            }
+            constants::gen(def, gen)
+        }
         Type::TypeDef(def) => {
+            if gen.excluded_items.contains(def.name()) {
+                return quote! {};
+            }
             let def = &def.clone().with_generics();
             match def.kind() {
                 TypeKind::Class => classes::gen(def, gen),
@@ -118,6 +126,9 @@ fn gen_type_impl(def: &Type, gen: &Gen) -> TokenStream {
             }
         }
         Type::MethodDef(def) => {
+            if gen.excluded_items.contains(def.name()) {
+                return quote! {};
+            }
             if !gen.sys {
                 gen_function(def, gen)
             } else {
