@@ -1,10 +1,17 @@
+extern crate core;
+
 use clap::Parser;
+use itertools::Itertools;
+use lazy_static::lazy_static;
 use memmap2::Mmap;
-use memory_image::{MemoryImage, Protection};
-use num::Integer;
-use object::read::pe::{ImageNtHeaders, PeFile32};
-use object::{pe, LittleEndian, Object};
+use memory_image::MemoryImage;
+use object::read::pe::{ImportTable, PeFile32};
+use object::{Object, ReadRef};
+use recompiler::{make_dll_stub, LE};
+use std::collections::{BTreeMap, HashSet};
+use std::ops::{Deref, Range};
 use std::path::{Path, PathBuf};
+use std::sync::Arc;
 
 #[derive(Parser, Debug)]
 #[clap(author, version, about, long_about = None)]
@@ -24,74 +31,29 @@ fn read_file(path: &Path) -> Mmap {
     unsafe { Mmap::map(&file) }.expect("Cannot mmap file")
 }
 
-const LE: LittleEndian = LittleEndian {};
-
-const PAGE_ALIGNMENT: u32 = 0x1000;
-
-fn align_up<T: Integer + Copy>(mut value: T, alignment: T) -> T {
-    while value % alignment != T::zero() {
-        value = value + T::one();
-    }
-    value
+lazy_static! {
+    static ref STUBBUABLE_DLLS: HashSet<&'static str> =
+        HashSet::from(["kernel32.dll", "user32.dll"]);
 }
 
-fn characteristics_to_prot(characteristics: u32) -> Protection {
-    let mut prot = Protection::empty();
+fn import_libraries(pe: &PeFile32) -> Vec<String> {
+    match pe.import_table().unwrap() {
+        None => Vec::new(),
+        Some(import_table) => {
+            let mut res = Vec::new();
 
-    if characteristics & pe::IMAGE_SCN_MEM_READ != 0 {
-        prot |= Protection::READ;
+            let mut iter = import_table.descriptors().unwrap();
+            while let Some(desc) = iter.next().unwrap() {
+                res.push(
+                    std::str::from_utf8(import_table.name(desc.name.get(LE)).unwrap())
+                        .unwrap()
+                        .to_string(),
+                );
+            }
+
+            res
+        }
     }
-    if characteristics & pe::IMAGE_SCN_MEM_WRITE != 0 {
-        prot |= Protection::WRITE;
-    }
-    if characteristics & pe::IMAGE_SCN_MEM_EXECUTE != 0 {
-        prot |= Protection::EXECUTE;
-    }
-
-    prot
-}
-
-fn load_into(image: &mut MemoryImage, addr: u32, pe: &PeFile32, pe_name: &str) {
-    let headers_size = pe.nt_headers().optional_header.size_of_headers.get(LE) as usize;
-    let headers_mem_size = align_up(headers_size, PAGE_ALIGNMENT as usize);
-
-    // first of all - map the headers
-    {
-        let mut headers = Vec::from(&pe.data()[..headers_size]);
-        headers.resize(headers_mem_size, 0);
-        image.add_region(
-            addr,
-            Protection::READ,
-            headers,
-            format!("{}:headers", pe_name),
-        )
-    }
-
-    let image_base_diff = addr.wrapping_sub(pe.relative_address_base() as u32);
-
-    let strings = pe.nt_headers().symbols(pe.data()).unwrap().strings();
-    for section in pe.section_table().iter() {
-        let name = section.name(strings).unwrap();
-        let name = std::str::from_utf8(name).expect("Non UTF-8 PE section name");
-
-        let addr = section.virtual_address.get(LE).wrapping_add(addr);
-        let data = section.pe_data(pe.data()).unwrap();
-
-        let size = align_up(section.virtual_size.get(LE) as u32, PAGE_ALIGNMENT);
-
-        let mut data = Vec::from(data);
-        data.resize(size as usize, 0);
-
-        image.add_region(
-            addr,
-            characteristics_to_prot(section.characteristics.get(LE)),
-            data,
-            format!("{}:{}", pe_name, name),
-        );
-    }
-
-    // no relocations for now
-    assert_eq!(image_base_diff, 0);
 }
 
 fn main() {
@@ -100,13 +62,94 @@ fn main() {
     let exe = read_file(&args.executable);
     let exe = PeFile32::parse(&*exe).expect("Parsing the exe file");
 
+    let dlls = args
+        .dlls
+        .iter()
+        .map(|f| {
+            (
+                f.file_name()
+                    .unwrap()
+                    .to_str()
+                    .unwrap()
+                    .to_ascii_lowercase(),
+                read_file(f),
+            )
+        })
+        .collect::<Vec<_>>();
+    let mut dlls = dlls
+        .iter()
+        .map(|(f, mmap)| (f.clone(), PeFile32::parse(&**mmap).expect("Parsing a dll")))
+        .collect::<BTreeMap<_, _>>();
+
+    let mut required_dlls = BTreeMap::new();
+
+    for (dll, group) in &dlls
+        .values()
+        .chain([&exe])
+        .flat_map(|f| f.imports().unwrap())
+        .map(|import| {
+            (
+                std::str::from_utf8(import.library())
+                    .unwrap()
+                    .to_ascii_lowercase(),
+                std::str::from_utf8(import.name()).unwrap(),
+            )
+        })
+        .sorted_by_key(|(dll, _)| dll.clone()) // clone here is just me vs the borrow checker
+        .group_by(|(dll, _)| dll.clone())
+    {
+        let functions = group.map(|(_, name)| name).unique().collect::<Vec<_>>();
+        required_dlls.insert(dll, functions);
+    }
+
+    let fn_indices = required_dlls
+        .values()
+        .flatten()
+        .unique()
+        .enumerate()
+        .map(|(i, name)| (name.to_string(), i as u32))
+        .collect::<BTreeMap<_, _>>();
+
+    println!("All dep dlls collected: {:#?}", required_dlls);
+
+    // let mut stub_storage = Vec::new();
+    for (dll_name, fns) in required_dlls {
+        if dlls.contains_key(dll_name.as_str()) {
+            println!("LOAD {}", dll_name)
+        } else if STUBBUABLE_DLLS.contains(dll_name.as_str()) {
+            println!("STUB {}", dll_name);
+            let fns = fns
+                .iter()
+                .map(|&name| (name.to_string(), *fn_indices.get(name).unwrap()))
+                .collect();
+
+            let stub = make_dll_stub(&dll_name, &fns).unwrap();
+            let stub = stub.leak() as &[u8]; // FIXME !!! ah, shit, lifetimes are hard
+            let stub = PeFile32::parse(stub).expect("Parsing the stub");
+            dlls.insert(dll_name, stub);
+        } else {
+            println!("WHER {}", dll_name);
+            panic!("Can't find dll with name {}. It was not provided as an input & is not included in stubbable allow-list", dll_name)
+        }
+    }
+
     let mut image = MemoryImage::new();
-    load_into(
+    recompiler::load_into(
         &mut image,
         exe.nt_headers().optional_header.image_base.get(LE),
         &exe,
         args.executable.file_name().unwrap().to_str().unwrap(),
     );
 
-    println!("{}", image.map())
+    println!("{}", image.map());
+
+    // let stub = make_dll_stub(
+    //     "kernel32.dll",
+    //     &BTreeMap::from(
+    //         [("GetLastError", 1), ("SetLastError", 2)].map(|(nm, idx)| (nm.to_string(), idx)),
+    //     ),
+    // )
+    // .unwrap();
+
+    // std::fs::write("kernel32.dll", &stub).unwrap();
 }
