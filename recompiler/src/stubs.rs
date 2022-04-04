@@ -1,4 +1,4 @@
-use crate::PAGE_ALIGNMENT;
+use crate::loader::PAGE_ALIGNMENT;
 use object::pe;
 use object::write::pe::{NtHeaders, SectionRange, Writer};
 use object::write::Result;

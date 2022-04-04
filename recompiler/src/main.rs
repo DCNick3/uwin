@@ -6,8 +6,8 @@ use lazy_static::lazy_static;
 use memmap2::Mmap;
 use memory_image::MemoryImage;
 use object::read::pe::PeFile32;
-use object::Object;
-use recompiler::{make_dll_stub, LE};
+use object::{LittleEndian, Object};
+use recompiler::{make_dll_stub, PeFile};
 
 use std::collections::{BTreeMap, HashSet};
 use std::path::{Path, PathBuf};
@@ -29,6 +29,8 @@ fn read_file(path: &Path) -> Mmap {
     // SAFETY: the file is (hopefully) not modified during the execution
     unsafe { Mmap::map(&file) }.expect("Cannot mmap file")
 }
+
+pub const LE: LittleEndian = LittleEndian {};
 
 lazy_static! {
     static ref STUBBUABLE_DLLS: HashSet<&'static str> =
@@ -58,8 +60,7 @@ lazy_static! {
 fn main() {
     let args = Args::parse();
 
-    let exe = read_file(&args.executable);
-    let exe = PeFile32::parse(&*exe).expect("Parsing the exe file");
+    let exe = PeFile::load_from_path(&args.executable).expect("Loading exe file");
 
     let dlls = args
         .dlls
@@ -71,13 +72,13 @@ fn main() {
                     .to_str()
                     .unwrap()
                     .to_ascii_lowercase(),
-                read_file(f),
+                PeFile::load_from_path(f).expect("Loading a dll"),
             )
         })
         .collect::<Vec<_>>();
     let mut dlls = dlls
-        .iter()
-        .map(|(f, mmap)| (f.clone(), PeFile32::parse(&**mmap).expect("Parsing a dll")))
+        .into_iter()
+        .map(|(f, pe)| (f.clone(), pe))
         .collect::<BTreeMap<_, _>>();
 
     let mut required_dlls = BTreeMap::new();
@@ -85,7 +86,7 @@ fn main() {
     for (dll, group) in &dlls
         .values()
         .chain([&exe])
-        .flat_map(|f| f.imports().unwrap())
+        .flat_map(|f| f.get().imports().unwrap())
         .map(|import| {
             (
                 std::str::from_utf8(import.library())
@@ -97,7 +98,10 @@ fn main() {
         .sorted_by_key(|(dll, _)| dll.clone()) // clone here is just me vs the borrow checker
         .group_by(|(dll, _)| dll.clone())
     {
-        let functions = group.map(|(_, name)| name).unique().collect::<Vec<_>>();
+        let functions = group
+            .map(|(_, name)| name.to_string())
+            .unique()
+            .collect::<Vec<_>>();
         required_dlls.insert(dll, functions);
     }
 
@@ -119,12 +123,12 @@ fn main() {
             println!("STUB  {}", dll_name);
             let fns = fns
                 .iter()
-                .map(|&name| (name.to_string(), *fn_indices.get(name).unwrap()))
+                .map(|name| (name.to_string(), *fn_indices.get(name).unwrap()))
                 .collect();
 
             let stub = make_dll_stub(&dll_name, &fns).unwrap();
-            let stub = stub.leak() as &[u8]; // FIXME !!! ah, shit, lifetimes are hard
-            let stub = PeFile32::parse(stub).expect("Parsing the stub");
+            let stub =
+                PeFile::load_from_memory(dll_name.to_string(), stub).expect("Parsing the stub");
             dlls.insert(dll_name.clone(), stub);
         } else {
             println!("WHERE {}", dll_name);
@@ -132,7 +136,7 @@ fn main() {
         }
     }
 
-    let mut free_addr = exe.nt_headers().optional_header.image_base.get(LE);
+    let mut free_addr = exe.get().nt_headers().optional_header.image_base.get(LE);
 
     let mut memory = MemoryImage::new();
 
@@ -144,11 +148,14 @@ fn main() {
         free_addr += pe.nt_headers().optional_header.size_of_image.get(LE); // Do we want to rely on this? It might kinda lie...
     };
 
-    load_free(&exe, args.executable.file_name().unwrap().to_str().unwrap());
+    load_free(
+        exe.get(),
+        args.executable.file_name().unwrap().to_str().unwrap(),
+    );
 
     for (dll_name, _) in required_dlls.iter() {
         if let Some(dll) = dlls.get(dll_name) {
-            load_free(dll, dll_name)
+            load_free(dll.get(), dll_name)
         }
     }
 

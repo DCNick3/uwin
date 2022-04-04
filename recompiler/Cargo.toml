@@ -7,13 +7,16 @@ edition = "2021"
 log = "0.4.14"
 object = { version = "0.28.3", features = ["write"] }
 clap = { version = "3.1.7", features = ["derive"] }
-memmap2 = "0.5.3"
+memmap2 = { version = "0.5.3", features = [ "stable_deref_trait" ] }
 num = "0.4.0"
+itertools = "0.10.3"
+lazy_static = "1.4.0"
+yoke = "0.4.0"
+thiserror = "1.0.30"
+stable_deref_trait = "1.2.0"
 
 rusty-x86 = { path = "../rusty-x86" }
 memory-image = { path = "../memory-image" }
-itertools = "0.10.3"
-lazy_static = "1.4.0"
 
 [dependencies.inkwell]
 git = "https://github.com/TheDan64/inkwell.git"
