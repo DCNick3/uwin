@@ -5,13 +5,12 @@ use itertools::Itertools;
 use lazy_static::lazy_static;
 use memmap2::Mmap;
 use memory_image::MemoryImage;
-use object::read::pe::{ImportTable, PeFile32};
-use object::{Object, ReadRef};
+use object::read::pe::PeFile32;
+use object::Object;
 use recompiler::{make_dll_stub, LE};
+
 use std::collections::{BTreeMap, HashSet};
-use std::ops::{Deref, Range};
 use std::path::{Path, PathBuf};
-use std::sync::Arc;
 
 #[derive(Parser, Debug)]
 #[clap(author, version, about, long_about = None)]
@@ -36,25 +35,25 @@ lazy_static! {
         HashSet::from(["kernel32.dll", "user32.dll"]);
 }
 
-fn import_libraries(pe: &PeFile32) -> Vec<String> {
-    match pe.import_table().unwrap() {
-        None => Vec::new(),
-        Some(import_table) => {
-            let mut res = Vec::new();
-
-            let mut iter = import_table.descriptors().unwrap();
-            while let Some(desc) = iter.next().unwrap() {
-                res.push(
-                    std::str::from_utf8(import_table.name(desc.name.get(LE)).unwrap())
-                        .unwrap()
-                        .to_string(),
-                );
-            }
-
-            res
-        }
-    }
-}
+// fn import_libraries(pe: &PeFile32) -> Vec<String> {
+//     match pe.import_table().unwrap() {
+//         None => Vec::new(),
+//         Some(import_table) => {
+//             let mut res = Vec::new();
+//
+//             let mut iter = import_table.descriptors().unwrap();
+//             while let Some(desc) = iter.next().unwrap() {
+//                 res.push(
+//                     std::str::from_utf8(import_table.name(desc.name.get(LE)).unwrap())
+//                         .unwrap()
+//                         .to_string(),
+//                 );
+//             }
+//
+//             res
+//         }
+//     }
+// }
 
 fn main() {
     let args = Args::parse();
@@ -113,11 +112,11 @@ fn main() {
     println!("All dep dlls collected: {:#?}", required_dlls);
 
     // let mut stub_storage = Vec::new();
-    for (dll_name, fns) in required_dlls {
+    for (dll_name, fns) in required_dlls.iter() {
         if dlls.contains_key(dll_name.as_str()) {
-            println!("LOAD {}", dll_name)
+            println!("FOUND {}", dll_name)
         } else if STUBBUABLE_DLLS.contains(dll_name.as_str()) {
-            println!("STUB {}", dll_name);
+            println!("STUB  {}", dll_name);
             let fns = fns
                 .iter()
                 .map(|&name| (name.to_string(), *fn_indices.get(name).unwrap()))
@@ -126,22 +125,41 @@ fn main() {
             let stub = make_dll_stub(&dll_name, &fns).unwrap();
             let stub = stub.leak() as &[u8]; // FIXME !!! ah, shit, lifetimes are hard
             let stub = PeFile32::parse(stub).expect("Parsing the stub");
-            dlls.insert(dll_name, stub);
+            dlls.insert(dll_name.clone(), stub);
         } else {
-            println!("WHER {}", dll_name);
+            println!("WHERE {}", dll_name);
             panic!("Can't find dll with name {}. It was not provided as an input & is not included in stubbable allow-list", dll_name)
         }
     }
 
-    let mut image = MemoryImage::new();
-    recompiler::load_into(
-        &mut image,
-        exe.nt_headers().optional_header.image_base.get(LE),
-        &exe,
-        args.executable.file_name().unwrap().to_str().unwrap(),
-    );
+    let mut free_addr = exe.nt_headers().optional_header.image_base.get(LE);
 
-    println!("{}", image.map());
+    let mut memory = MemoryImage::new();
+
+    let mut load_free = |pe: &PeFile32, name: &str| {
+        println!("LOAD {}", name);
+        // TODO: store it somewhere
+        recompiler::load_into(&mut memory, free_addr, pe, name);
+
+        free_addr += pe.nt_headers().optional_header.size_of_image.get(LE); // Do we want to rely on this? It might kinda lie...
+    };
+
+    load_free(&exe, args.executable.file_name().unwrap().to_str().unwrap());
+
+    for (dll_name, _) in required_dlls.iter() {
+        if let Some(dll) = dlls.get(dll_name) {
+            load_free(dll, dll_name)
+        }
+    }
+
+    // recompiler::load_into(
+    //     &mut memory,
+    //     free_addr,
+    //     &exe,
+    //     args.executable.file_name().unwrap().to_str().unwrap(),
+    // );
+
+    println!("{}", memory.map());
 
     // let stub = make_dll_stub(
     //     "kernel32.dll",

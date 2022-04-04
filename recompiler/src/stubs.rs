@@ -48,7 +48,7 @@ fn gen_edata_stringtable(name: &str, text_labels: &BTreeMap<String, u32>) -> Str
     (res, positions)
 }
 
-fn edata_len(name: &str, text_labels: &BTreeMap<String, u32>, string_table: &StringTable) -> u32 {
+fn edata_len(_name: &str, text_labels: &BTreeMap<String, u32>, string_table: &StringTable) -> u32 {
     let res = 10 * 4 /* header */
         + text_labels.len()
             * (4 + /* Export Address Table */

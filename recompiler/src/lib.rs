@@ -46,7 +46,7 @@ pub fn load_into(image: &mut MemoryImage, addr: u32, pe: &PeFile32, pe_name: &st
             addr,
             Protection::READ,
             headers,
-            format!("{}:headers", pe_name),
+            format!("{:>20}: headers", pe_name),
         )
     }
 
@@ -69,10 +69,19 @@ pub fn load_into(image: &mut MemoryImage, addr: u32, pe: &PeFile32, pe_name: &st
             addr,
             characteristics_to_prot(section.characteristics.get(LE)),
             data,
-            format!("{}:{}", pe_name, name),
+            format!("{:>20}:{}", pe_name, name),
         );
     }
 
     // no relocations for now
-    assert_eq!(image_base_diff, 0);
+    if image_base_diff != 0 {
+        // "handle" relocations
+        if let Some(_reloc) = pe
+            .data_directories()
+            .relocation_blocks(pe.data(), &pe.section_table())
+            .unwrap()
+        {
+            todo!("relocations")
+        }
+    }
 }
