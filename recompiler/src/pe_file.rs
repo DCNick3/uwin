@@ -125,6 +125,14 @@ impl PeFile {
         self.get().nt_headers().optional_header.image_base.get(LE)
     }
 
+    pub fn entry(&self) -> u32 {
+        self.get()
+            .nt_headers()
+            .optional_header
+            .address_of_entry_point
+            .get(LE)
+    }
+
     #[allow(unused)]
     pub fn collect_symbols(&self) -> Option<BTreeMap<u32, PeSymbol>> {
         // TODO: should we merge the tables if multiple are found?

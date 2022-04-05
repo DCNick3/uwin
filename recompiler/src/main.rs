@@ -1,8 +1,5 @@
-extern crate core;
-
 use clap::Parser;
-use object::LittleEndian;
-use recompiler::load_process_image;
+use recompiler::{find_basic_blocks, load_process_image};
 
 use itertools::Itertools;
 use recompiler::PeFile;
@@ -19,8 +16,6 @@ struct Args {
     #[clap(short, long)]
     dlls: Vec<PathBuf>,
 }
-
-pub const LE: LittleEndian = LittleEndian {};
 
 fn main() {
     let args = Args::parse();
@@ -49,4 +44,10 @@ fn main() {
     println!("Memory map:");
 
     println!("{}", image.memory.map());
+
+    println!();
+    println!("Basic blocks:");
+    for addr in find_basic_blocks(&image).into_iter().sorted_by_key(|f| *f) {
+        println!("  {:#010x}", addr)
+    }
 }
