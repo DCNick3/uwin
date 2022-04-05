@@ -9,6 +9,9 @@ pub enum Error {
 
     #[error("Couldn't parse pe file")]
     PeParse(#[from] object::Error),
+
+    #[error("Couldn't generate pe file")]
+    PeWrite(#[from] object::write::Error),
 }
 
 pub type Result<T> = std::result::Result<T, Error>;

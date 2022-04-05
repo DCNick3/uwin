@@ -1,9 +1,11 @@
+use itertools::Itertools;
 use memmap2::Mmap;
 use memory_image::{MemoryImage, Protection};
 use num::Integer;
 use object::read::pe::{ImageNtHeaders, PeFile32};
-use object::{pe, LittleEndian, Object};
+use object::{pe, LittleEndian, Object, ObjectSymbol, ObjectSymbolTable, SymbolKind};
 use std::cmp::max;
+use std::collections::BTreeMap;
 use std::fs::File;
 use std::ops::Deref;
 use std::path::Path;
@@ -90,6 +92,7 @@ type PeFileYoke = Yoke<PeFileWrapper<'static>, EitherCart<Mmap, Vec<u8>>>;
 pub struct PeFile {
     yoke: PeFileYoke,
     name: String,
+    externally_supplied_symbols: Option<BTreeMap<u32, String>>,
 }
 
 impl PeFile {
@@ -112,7 +115,11 @@ impl PeFile {
             Ok(PeFileWrapper(PeFile32::parse(c)?))
         })?;
         let yoke = yoke.wrap_cart_in_either_a();
-        Ok(PeFile { yoke, name })
+        Ok(PeFile {
+            yoke,
+            name,
+            externally_supplied_symbols: None,
+        })
     }
 
     pub fn parse_from_memory(name: String, data: Vec<u8>) -> Result<Self> {
@@ -120,7 +127,18 @@ impl PeFile {
             Ok(PeFileWrapper(PeFile32::parse(c)?))
         })?;
         let yoke = yoke.wrap_cart_in_either_b();
-        Ok(PeFile { yoke, name })
+        Ok(PeFile {
+            yoke,
+            name,
+            externally_supplied_symbols: None,
+        })
+    }
+
+    pub fn with_symbols(self, symbols: BTreeMap<u32, String>) -> Self {
+        Self {
+            externally_supplied_symbols: Some(symbols),
+            ..self
+        }
     }
 
     pub fn get(&self) -> &PeFile32 {
@@ -198,6 +216,36 @@ impl PeFile {
         }
 
         Ok(LoadedPeInfo::new(addr, max_rva))
+    }
+
+    #[allow(unused)]
+    pub fn collect_symbols(&self) -> Option<BTreeMap<u32, String>> {
+        // TODO: should we merge the tables if multiple are found?
+        if let Some(symbols) = &self.externally_supplied_symbols {
+            return Some(symbols.clone());
+        }
+
+        if let Some(symtable) = self.get().symbol_table() {
+            return Some(
+                symtable
+                    .symbols()
+                    .filter(|sym| {
+                        sym.address() != 0
+                            && matches!(sym.kind(), SymbolKind::Data | SymbolKind::Text)
+                    })
+                    .map(|sym| {
+                        (
+                            sym.address() as u32 - self.base_addr(),
+                            sym.name().unwrap().to_string(),
+                        )
+                    })
+                    .sorted_by_key(|(addr, _)| *addr)
+                    .unique()
+                    .collect::<BTreeMap<_, _>>(),
+            );
+        }
+
+        None
     }
 }
 

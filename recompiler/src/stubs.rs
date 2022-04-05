@@ -1,7 +1,8 @@
+use crate::error::Result;
 use crate::loader::PAGE_ALIGNMENT;
+use crate::PeFile;
 use object::pe;
 use object::write::pe::{NtHeaders, SectionRange, Writer};
-use object::write::Result;
 use std::collections::{BTreeMap, HashMap};
 
 fn gen_text_section(stubs: &BTreeMap<String, u32>) -> (Vec<u8>, BTreeMap<String, u32>) {
@@ -137,7 +138,10 @@ fn gen_edata(
     output
 }
 
-pub fn make_dll_stub(name: &str, stubs: &BTreeMap<String, u32>) -> Result<Vec<u8>> {
+fn make_dll_stub_impl(
+    name: &str,
+    stubs: &BTreeMap<String, u32>,
+) -> Result<(Vec<u8>, BTreeMap<u32, String>)> {
     let mut out_data = Vec::new();
     let mut writer = Writer::new(false, PAGE_ALIGNMENT, 0x200, &mut out_data);
 
@@ -188,7 +192,17 @@ pub fn make_dll_stub(name: &str, stubs: &BTreeMap<String, u32>) -> Result<Vec<u8
     writer.write_section(text_range.file_offset, &text_data);
     writer.write_section(edata_range.file_offset, &edata);
 
-    // writer.name
+    let symbols = text_labels
+        .into_iter()
+        .map(|(name, addr)| (text_range.virtual_address + addr, name))
+        .collect();
+    Ok((out_data, symbols))
+}
 
-    Ok(out_data)
+pub fn make_dll_stub(name: &str, stubs: &BTreeMap<String, u32>) -> Result<PeFile> {
+    let (bytes, symbols) = make_dll_stub_impl(name, stubs)?;
+
+    let pe = PeFile::parse_from_memory(name.to_string(), bytes)?.with_symbols(symbols);
+
+    Ok(pe)
 }

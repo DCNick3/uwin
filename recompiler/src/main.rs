@@ -92,8 +92,6 @@ fn main() {
                 .collect();
 
             let stub = make_dll_stub(dll_name, &fns).unwrap();
-            let stub =
-                PeFile::parse_from_memory(dll_name.to_string(), stub).expect("Parsing the stub");
             dlls.insert(dll_name.clone(), stub);
         } else {
             println!("WHERE {}", dll_name);
@@ -123,22 +121,5 @@ fn main() {
         }
     }
 
-    // recompiler::load_into(
-    //     &mut memory,
-    //     free_addr,
-    //     &exe,
-    //     args.executable.file_name().unwrap().to_str().unwrap(),
-    // );
-
     println!("{}", memory.map());
-
-    // let stub = make_dll_stub(
-    //     "kernel32.dll",
-    //     &BTreeMap::from(
-    //         [("GetLastError", 1), ("SetLastError", 2)].map(|(nm, idx)| (nm.to_string(), idx)),
-    //     ),
-    // )
-    // .unwrap();
-
-    // std::fs::write("kernel32.dll", &stub).unwrap();
 }
