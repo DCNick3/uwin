@@ -5,8 +5,9 @@ use itertools::Itertools;
 use lazy_static::lazy_static;
 use memory_image::MemoryImage;
 use object::{LittleEndian, Object};
-use recompiler::{make_dll_stub, PeFile};
+use recompiler::make_dll_stub;
 
+use recompiler::PeFile;
 use std::collections::{BTreeMap, HashSet};
 use std::path::PathBuf;
 
@@ -80,7 +81,6 @@ fn main() {
 
     println!("All dep dlls collected: {:#?}", required_dlls);
 
-    // let mut stub_storage = Vec::new();
     for (dll_name, fns) in required_dlls.iter() {
         if dlls.contains_key(dll_name.as_str()) {
             println!("FOUND {}", dll_name)

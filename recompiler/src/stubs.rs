@@ -1,6 +1,6 @@
 use crate::error::Result;
 use crate::loader::PAGE_ALIGNMENT;
-use crate::PeFile;
+use crate::pe_file::PeFile;
 use object::pe;
 use object::write::pe::{NtHeaders, SectionRange, Writer};
 use std::collections::{BTreeMap, HashMap};
