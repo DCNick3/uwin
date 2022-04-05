@@ -3,14 +3,12 @@ extern crate core;
 use clap::Parser;
 use itertools::Itertools;
 use lazy_static::lazy_static;
-use memmap2::Mmap;
 use memory_image::MemoryImage;
-use object::read::pe::PeFile32;
 use object::{LittleEndian, Object};
 use recompiler::{make_dll_stub, PeFile};
 
 use std::collections::{BTreeMap, HashSet};
-use std::path::{Path, PathBuf};
+use std::path::PathBuf;
 
 #[derive(Parser, Debug)]
 #[clap(author, version, about, long_about = None)]
@@ -24,12 +22,6 @@ struct Args {
     dlls: Vec<PathBuf>,
 }
 
-fn read_file(path: &Path) -> Mmap {
-    let file = std::fs::File::open(path).expect("Cannot open file to read");
-    // SAFETY: the file is (hopefully) not modified during the execution
-    unsafe { Mmap::map(&file) }.expect("Cannot mmap file")
-}
-
 pub const LE: LittleEndian = LittleEndian {};
 
 lazy_static! {
@@ -37,48 +29,21 @@ lazy_static! {
         HashSet::from(["kernel32.dll", "user32.dll"]);
 }
 
-// fn import_libraries(pe: &PeFile32) -> Vec<String> {
-//     match pe.import_table().unwrap() {
-//         None => Vec::new(),
-//         Some(import_table) => {
-//             let mut res = Vec::new();
-//
-//             let mut iter = import_table.descriptors().unwrap();
-//             while let Some(desc) = iter.next().unwrap() {
-//                 res.push(
-//                     std::str::from_utf8(import_table.name(desc.name.get(LE)).unwrap())
-//                         .unwrap()
-//                         .to_string(),
-//                 );
-//             }
-//
-//             res
-//         }
-//     }
-// }
-
 fn main() {
     let args = Args::parse();
 
-    let exe = PeFile::load_from_path(&args.executable).expect("Loading exe file");
+    let exe = PeFile::parse_from_path(&args.executable).expect("Loading exe file");
 
     let dlls = args
         .dlls
         .iter()
-        .map(|f| {
-            (
-                f.file_name()
-                    .unwrap()
-                    .to_str()
-                    .unwrap()
-                    .to_ascii_lowercase(),
-                PeFile::load_from_path(f).expect("Loading a dll"),
-            )
-        })
-        .collect::<Vec<_>>();
+        .map(|f| PeFile::parse_from_path(f))
+        .collect::<Result<Vec<_>, _>>()
+        .expect("Loading dlls");
+
     let mut dlls = dlls
         .into_iter()
-        .map(|(f, pe)| (f.clone(), pe))
+        .map(|pe| (pe.name().to_string(), pe))
         .collect::<BTreeMap<_, _>>();
 
     let mut required_dlls = BTreeMap::new();
@@ -90,9 +55,9 @@ fn main() {
         .map(|import| {
             (
                 std::str::from_utf8(import.library())
-                    .unwrap()
+                    .expect("Library with non-ascii name")
                     .to_ascii_lowercase(),
-                std::str::from_utf8(import.name()).unwrap(),
+                std::str::from_utf8(import.name()).expect("Imported function with non-ascii name"),
             )
         })
         .sorted_by_key(|(dll, _)| dll.clone()) // clone here is just me vs the borrow checker
@@ -126,9 +91,9 @@ fn main() {
                 .map(|name| (name.to_string(), *fn_indices.get(name).unwrap()))
                 .collect();
 
-            let stub = make_dll_stub(&dll_name, &fns).unwrap();
+            let stub = make_dll_stub(dll_name, &fns).unwrap();
             let stub =
-                PeFile::load_from_memory(dll_name.to_string(), stub).expect("Parsing the stub");
+                PeFile::parse_from_memory(dll_name.to_string(), stub).expect("Parsing the stub");
             dlls.insert(dll_name.clone(), stub);
         } else {
             println!("WHERE {}", dll_name);
@@ -136,26 +101,25 @@ fn main() {
         }
     }
 
-    let mut free_addr = exe.get().nt_headers().optional_header.image_base.get(LE);
+    let mut free_addr = exe.base_addr();
 
     let mut memory = MemoryImage::new();
 
-    let mut load_free = |pe: &PeFile32, name: &str| {
-        println!("LOAD {}", name);
+    let mut load_free = |pe: &PeFile| {
+        println!("LOAD {}", pe.name());
         // TODO: store it somewhere
-        recompiler::load_into(&mut memory, free_addr, pe, name);
+        let info = pe
+            .load_into(free_addr, &mut memory, pe.name())
+            .expect("Loading a PE file");
 
-        free_addr += pe.nt_headers().optional_header.size_of_image.get(LE); // Do we want to rely on this? It might kinda lie...
+        free_addr += info.image_size();
     };
 
-    load_free(
-        exe.get(),
-        args.executable.file_name().unwrap().to_str().unwrap(),
-    );
+    load_free(&exe);
 
-    for (dll_name, _) in required_dlls.iter() {
-        if let Some(dll) = dlls.get(dll_name) {
-            load_free(dll.get(), dll_name)
+    for (dll, _) in required_dlls.iter() {
+        if let Some(dll) = dlls.get(dll) {
+            load_free(dll)
         }
     }
 

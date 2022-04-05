@@ -3,9 +3,8 @@ use memory_image::{MemoryImage, Protection};
 use num::Integer;
 use object::read::pe::{ImageNtHeaders, PeFile32};
 use object::{pe, LittleEndian, Object};
-use stable_deref_trait::StableDeref;
+use std::cmp::max;
 use std::fs::File;
-use std::io::ErrorKind;
 use std::ops::Deref;
 use std::path::Path;
 use yoke::either::EitherCart;
@@ -38,58 +37,6 @@ fn characteristics_to_prot(characteristics: u32) -> Protection {
     }
 
     prot
-}
-
-pub fn load_into(image: &mut MemoryImage, addr: u32, pe: &PeFile32, pe_name: &str) {
-    let headers_size = pe.nt_headers().optional_header.size_of_headers.get(LE) as usize;
-    let headers_mem_size = align_up(headers_size, PAGE_ALIGNMENT as usize);
-
-    // first of all - map the headers
-    {
-        let mut headers = Vec::from(&pe.data()[..headers_size]);
-        headers.resize(headers_mem_size, 0);
-        image.add_region(
-            addr,
-            Protection::READ,
-            headers,
-            format!("{:>20}: headers", pe_name),
-        )
-    }
-
-    let image_base_diff = addr.wrapping_sub(pe.relative_address_base() as u32);
-
-    let strings = pe.nt_headers().symbols(pe.data()).unwrap().strings();
-    for section in pe.section_table().iter() {
-        let name = section.name(strings).unwrap();
-        let name = std::str::from_utf8(name).expect("Non UTF-8 PE section name");
-
-        let addr = section.virtual_address.get(LE).wrapping_add(addr);
-        let data = section.pe_data(pe.data()).unwrap();
-
-        let size = align_up(section.virtual_size.get(LE) as u32, PAGE_ALIGNMENT);
-
-        let mut data = Vec::from(data);
-        data.resize(size as usize, 0);
-
-        image.add_region(
-            addr,
-            characteristics_to_prot(section.characteristics.get(LE)),
-            data,
-            format!("{:>20}:{}", pe_name, name),
-        );
-    }
-
-    // no relocations for now
-    if image_base_diff != 0 {
-        // "handle" relocations
-        if let Some(_reloc) = pe
-            .data_directories()
-            .relocation_blocks(pe.data(), &pe.section_table())
-            .unwrap()
-        {
-            todo!("relocations")
-        }
-    }
 }
 
 struct PeFileWrapper<'a>(pub PeFile32<'a>);
@@ -146,9 +93,9 @@ pub struct PeFile {
 }
 
 impl PeFile {
-    pub fn load_from_path(path: &Path) -> Result<Self> {
+    pub fn parse_from_path(path: &Path) -> Result<Self> {
         let file = std::fs::File::open(path).map_err(Error::FileOpen)?;
-        Self::load_from_file(
+        Self::parse_from_file(
             path.file_name()
                 .unwrap()
                 .to_str()
@@ -158,7 +105,7 @@ impl PeFile {
         )
     }
 
-    pub fn load_from_file(name: String, file: &File) -> Result<Self> {
+    pub fn parse_from_file(name: String, file: &File) -> Result<Self> {
         // SAFETY: the file is (hopefully) not modified during the execution
         let mmap = unsafe { Mmap::map(file) }.map_err(Error::FileMmap)?;
         let yoke = Yoke::try_attach_to_cart_badly::<object::Error>(mmap, |c| {
@@ -168,7 +115,7 @@ impl PeFile {
         Ok(PeFile { yoke, name })
     }
 
-    pub fn load_from_memory(name: String, data: Vec<u8>) -> Result<Self> {
+    pub fn parse_from_memory(name: String, data: Vec<u8>) -> Result<Self> {
         let yoke = Yoke::try_attach_to_cart_badly::<object::Error>(data, |c| {
             Ok(PeFileWrapper(PeFile32::parse(c)?))
         })?;
@@ -182,5 +129,96 @@ impl PeFile {
 
     pub fn name(&self) -> &str {
         &self.name
+    }
+
+    pub fn base_addr(&self) -> u32 {
+        self.get().nt_headers().optional_header.image_base.get(LE)
+    }
+
+    pub fn load_into(
+        &self,
+        addr: u32,
+        image: &mut MemoryImage,
+        pe_name: &str,
+    ) -> Result<LoadedPeInfo> {
+        let pe = self.yoke.get();
+
+        let headers_size = pe.nt_headers().optional_header.size_of_headers.get(LE) as usize;
+        let headers_mem_size = align_up(headers_size, PAGE_ALIGNMENT as usize);
+
+        // first of all - map the headers
+        {
+            let mut headers = Vec::from(&pe.data()[..headers_size]);
+            headers.resize(headers_mem_size, 0);
+            image.add_region(
+                addr,
+                Protection::READ,
+                headers,
+                format!("{:>20}: headers", pe_name),
+            )
+        }
+
+        let image_base_diff = addr.wrapping_sub(pe.relative_address_base() as u32);
+
+        let mut max_rva = 0;
+
+        let strings = pe.nt_headers().symbols(pe.data())?.strings();
+        for section in pe.section_table().iter() {
+            let name = section.name(strings)?;
+            let name = std::str::from_utf8(name).expect("Non UTF-8 PE section name");
+
+            let section_rva = section.virtual_address.get(LE);
+            let addr = section_rva.wrapping_add(addr);
+            let data = section.pe_data(pe.data())?;
+
+            let size = align_up(section.virtual_size.get(LE) as u32, PAGE_ALIGNMENT);
+
+            max_rva = max(max_rva, section_rva + size);
+
+            let mut data = Vec::from(data);
+            data.resize(size as usize, 0);
+
+            image.add_region(
+                addr,
+                characteristics_to_prot(section.characteristics.get(LE)),
+                data,
+                format!("{:>20}:{}", pe_name, name),
+            );
+        }
+
+        // no relocations for now
+        if image_base_diff != 0 {
+            // "handle" relocations
+            if let Some(_reloc) = pe
+                .data_directories()
+                .relocation_blocks(pe.data(), &pe.section_table())?
+            {
+                todo!("relocations")
+            }
+        }
+
+        Ok(LoadedPeInfo::new(addr, max_rva))
+    }
+}
+
+pub struct LoadedPeInfo {
+    base_addr: u32,
+    image_size: u32,
+}
+
+impl LoadedPeInfo {
+    pub fn new(base_addr: u32, image_size: u32) -> Self {
+        Self {
+            base_addr,
+            image_size,
+        }
+    }
+
+    pub fn base_addr(&self) -> u32 {
+        self.base_addr
+    }
+
+    pub fn image_size(&self) -> u32 {
+        self.image_size
     }
 }
