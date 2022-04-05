@@ -4,6 +4,7 @@ use clap::Parser;
 use object::LittleEndian;
 use recompiler::load_process_image;
 
+use itertools::Itertools;
 use recompiler::PeFile;
 use std::path::PathBuf;
 
@@ -33,7 +34,16 @@ fn main() {
         .collect::<Result<Vec<_>, _>>()
         .expect("Loading dlls");
 
-    let memory = load_process_image(exe, dlls).expect("Loading process image");
+    let image = load_process_image(exe, dlls).expect("Loading process image");
 
-    println!("{}", memory.map());
+    println!();
+    println!("Symbols:");
+    for (&addr, sym) in image.symbols.iter().sorted_by_key(|(&addr, _)| addr) {
+        println!("{:#010x} {:>10}!{}", addr, sym.module, sym.symbol)
+    }
+
+    println!();
+    println!("Memory map:");
+
+    println!("{}", image.memory.map());
 }

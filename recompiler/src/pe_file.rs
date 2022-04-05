@@ -7,6 +7,7 @@ use std::collections::BTreeMap;
 use std::fs::File;
 use std::ops::Deref;
 use std::path::Path;
+use std::sync::Arc;
 use yoke::either::EitherCart;
 use yoke::{Yoke, Yokeable};
 
@@ -156,23 +157,11 @@ impl PeFile {
 }
 
 pub struct LoadedPeInfo {
-    base_addr: u32,
-    image_size: u32,
+    pub base_addr: u32,
+    pub image_size: u32,
 }
 
-impl LoadedPeInfo {
-    pub fn new(base_addr: u32, image_size: u32) -> Self {
-        Self {
-            base_addr,
-            image_size,
-        }
-    }
-
-    pub fn base_addr(&self) -> u32 {
-        self.base_addr
-    }
-
-    pub fn image_size(&self) -> u32 {
-        self.image_size
-    }
+pub struct ProcessImageSymbol {
+    pub module: Arc<str>,
+    pub symbol: String,
 }

@@ -6,10 +6,11 @@ use object::read::pe::ImageNtHeaders;
 use object::{pe, LittleEndian, Object};
 use std::cmp::max;
 use std::collections::{BTreeMap, HashSet};
+use std::sync::Arc;
 
 use crate::error::Result;
 use crate::make_dll_stub;
-use crate::pe_file::{LoadedPeInfo, PeFile};
+use crate::pe_file::{LoadedPeInfo, PeFile, ProcessImageSymbol};
 
 pub const LE: LittleEndian = LittleEndian {};
 
@@ -101,7 +102,10 @@ impl PeFile {
             }
         }
 
-        Ok(LoadedPeInfo::new(addr, max_rva))
+        Ok(LoadedPeInfo {
+            base_addr: addr,
+            image_size: max_rva,
+        })
     }
 }
 
@@ -111,7 +115,13 @@ lazy_static! {
         HashSet::from(["kernel32.dll", "user32.dll"]);
 }
 
-pub fn load_process_image(executable: PeFile, dlls: Vec<PeFile>) -> Result<MemoryImage> {
+pub struct LoadedProcessImage {
+    pub memory: MemoryImage,
+    pub modules: Vec<(PeFile, LoadedPeInfo)>,
+    pub symbols: BTreeMap<u32, ProcessImageSymbol>,
+}
+
+pub fn load_process_image(executable: PeFile, dlls: Vec<PeFile>) -> Result<LoadedProcessImage> {
     let mut dlls = dlls
         .into_iter()
         .map(|pe| (pe.name().to_string(), pe))
@@ -172,26 +182,52 @@ pub fn load_process_image(executable: PeFile, dlls: Vec<PeFile>) -> Result<Memor
     // start from the base image of the executable.
     // the executable will be loaded at the requested address this way, as we load it first
     let mut free_addr = executable.base_addr();
-
     let mut memory = MemoryImage::new();
+    let mut modules = Vec::new();
 
-    let mut load_into_first_free = |pe: &PeFile| -> Result<_> {
+    let mut load_into_first_free = |pe: PeFile| -> Result<_> {
         println!("LOAD {}", pe.name());
         // TODO: store it somewhere
         let info = pe.load_into(free_addr, &mut memory, pe.name())?;
 
-        free_addr += info.image_size();
+        free_addr += info.image_size;
+        modules.push((pe, info));
 
         Ok(())
     };
 
-    load_into_first_free(&executable)?;
+    load_into_first_free(executable)?;
 
     for (dll, _) in required_dlls.iter() {
-        if let Some(dll) = dlls.get(dll) {
-            load_into_first_free(dll)?
-        }
+        let dll = dlls.remove(dll).unwrap();
+        load_into_first_free(dll)?;
     }
 
-    Ok(memory)
+    let symbols = modules
+        .iter()
+        .map(|(pe, info)| (pe, info, pe.name().into()))
+        .flat_map(|(pe, info, name): (&PeFile, &LoadedPeInfo, Arc<str>)| {
+            if let Some(sym) = pe.collect_symbols() {
+                sym.into_iter()
+                    .map(|(addr, nm)| {
+                        (
+                            addr + info.base_addr,
+                            ProcessImageSymbol {
+                                module: name.clone(),
+                                symbol: nm,
+                            },
+                        )
+                    })
+                    .collect::<Vec<_>>()
+            } else {
+                vec![]
+            }
+        })
+        .collect::<BTreeMap<_, _>>();
+
+    Ok(LoadedProcessImage {
+        memory,
+        modules,
+        symbols,
+    })
 }
