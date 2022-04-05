@@ -195,6 +195,9 @@ impl MemoryImage {
     pub fn map(&self) -> MemoryImageMap {
         MemoryImageMap(self)
     }
+    pub fn dump(&self) -> MemoryImageDump {
+        MemoryImageDump(self)
+    }
 }
 
 impl Default for MemoryImage {
@@ -221,6 +224,55 @@ impl<'a> Display for MemoryImageMap<'a> {
                 prot,
                 region.comment
             )?;
+        }
+        Ok(())
+    }
+}
+
+pub struct MemoryImageDump<'a>(&'a MemoryImage);
+
+impl<'a> Display for MemoryImageDump<'a> {
+    fn fmt(&self, writer: &mut Formatter<'_>) -> std::fmt::Result {
+        // writeln!(writer, "Length: {0} (0x{0:x}) bytes", source.as_ref().len())?;
+
+        for (
+            i,
+            MemoryImageItem {
+                addr,
+                protection,
+                data,
+                comment,
+            },
+        ) in self.0.iter().enumerate()
+        {
+            if i != 0 {
+                writeln!(writer)?;
+            }
+
+            writeln!(
+                writer,
+                "Region ({} pages, {}): {}",
+                (data.len() + 0xfff) / 0x1000,
+                protection,
+                comment
+            )?;
+
+            let width = 32;
+
+            for (i, row) in data.chunks(width).enumerate() {
+                let addr = *addr as usize + i * width;
+                if i != 0 {
+                    writeln!(writer)?;
+                }
+
+                write!(writer, "{:08x}:   ", addr)?;
+                for (i, x) in row.iter().enumerate() {
+                    if i != 0 {
+                        write!(writer, " ")?;
+                    }
+                    write!(writer, "{:02x}", x)?;
+                }
+            }
         }
         Ok(())
     }

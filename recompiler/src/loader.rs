@@ -148,7 +148,6 @@ fn bind_imports(
 
             while let Some(thunk) = thunks.next::<ImageNtHeaders32>()? {
                 let import = import_table.import::<ImageNtHeaders32>(thunk)?;
-                thunk_addr += 4;
 
                 match import {
                     Import::Ordinal(_) => todo!("Ordinal imports"),
@@ -164,6 +163,8 @@ fn bind_imports(
                         }
                     }
                 }
+
+                thunk_addr += 4;
             }
         }
     }

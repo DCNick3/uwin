@@ -50,4 +50,8 @@ fn main() {
     for addr in find_basic_blocks(&image).into_iter().sorted_by_key(|f| *f) {
         println!("  {:#010x}", addr)
     }
+
+    println!();
+    println!("Memory dump:");
+    println!("{}", image.memory.dump());
 }
