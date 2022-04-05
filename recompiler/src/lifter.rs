@@ -12,7 +12,7 @@ pub fn find_basic_blocks(image: &LoadedProcessImage) -> Vec<u32> {
     let entry_heads = image
         .modules
         .iter()
-        .map(|(pe, info)| (info, pe.entry()))
+        .map(|(_, (pe, info))| (info, pe.entry()))
         .filter(|(_, entry)| *entry != 0)
         .map(|(info, entry)| info.base_addr + entry);
 

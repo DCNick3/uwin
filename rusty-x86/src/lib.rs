@@ -261,7 +261,6 @@ fn codegen_string_instr<B: Builder>(builder: &mut B, instr: Instruction) {
     }
 }
 
-// TODO: handle control flow
 pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) -> ControlFlow<B> {
     use crate::Flag::*;
     use iced_x86::Mnemonic::*;

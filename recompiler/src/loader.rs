@@ -2,13 +2,15 @@ use itertools::Itertools;
 use lazy_static::lazy_static;
 use memory_image::{MemoryImage, Protection};
 use num::Integer;
-use object::read::pe::ImageNtHeaders;
+use object::pe::ImageNtHeaders32;
+use object::read::pe::{ExportTarget, ImageNtHeaders, Import};
 use object::{pe, LittleEndian, Object};
 use std::cmp::max;
 use std::collections::{BTreeMap, HashSet};
+use std::io::Write;
 use std::sync::Arc;
 
-use crate::error::Result;
+use crate::error::{Error, Result};
 use crate::make_dll_stub;
 use crate::pe_file::{LoadedPeInfo, PeFile, ProcessImageSymbol};
 
@@ -117,8 +119,91 @@ lazy_static! {
 
 pub struct LoadedProcessImage {
     pub memory: MemoryImage,
-    pub modules: Vec<(PeFile, LoadedPeInfo)>,
+    pub modules: BTreeMap<String, (PeFile, LoadedPeInfo)>,
     pub symbols: BTreeMap<u32, ProcessImageSymbol>,
+}
+
+fn bind_imports(
+    memory: &mut MemoryImage,
+    (pe, info): &(PeFile, LoadedPeInfo),
+    exports: &BTreeMap<String, BTreeMap<String, u32>>,
+) -> Result<Vec<(String, String)>> {
+    let mut missing_imports = Vec::new();
+
+    if let Some(import_table) = pe
+        .get()
+        .data_directories()
+        .import_table(pe.get().data(), &pe.get().section_table())?
+    {
+        let mut it = import_table.descriptors()?;
+        while let Some(desc) = it.next()? {
+            // TODO: write datetime into the descriptor or smth
+            let dll_name = std::str::from_utf8(import_table.name(desc.name.get(LE))?)
+                .unwrap()
+                .to_ascii_lowercase();
+            let exports = exports.get(&dll_name).unwrap();
+
+            let mut thunk_addr = desc.first_thunk.get(LE);
+            let mut thunks = import_table.thunks(thunk_addr)?;
+
+            while let Some(thunk) = thunks.next::<ImageNtHeaders32>()? {
+                let import = import_table.import::<ImageNtHeaders32>(thunk)?;
+                thunk_addr += 4;
+
+                match import {
+                    Import::Ordinal(_) => todo!("Ordinal imports"),
+                    Import::Name(_, name) => {
+                        let name = std::str::from_utf8(name).unwrap();
+
+                        if let Some(&addr) = exports.get(name) {
+                            let mut target =
+                                &mut memory.modify_all_at(info.base_addr + thunk_addr)[..4];
+                            target.write_all(&addr.to_le_bytes()).unwrap();
+                        } else {
+                            missing_imports.push((dll_name.to_string(), name.to_string()))
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    Ok(missing_imports)
+}
+
+fn build_exports_index(
+    modules: &BTreeMap<String, (PeFile, LoadedPeInfo)>,
+) -> Result<BTreeMap<String, BTreeMap<String, u32>>> {
+    let exports = modules
+        .iter()
+        .map(|(dll_name, (pe, info))| -> Result<_> {
+            Ok(
+                match pe
+                    .get()
+                    .data_directories()
+                    .export_table(pe.get().data(), &pe.get().section_table())?
+                {
+                    Some(table) => Some((
+                        dll_name.to_string(),
+                        table
+                            .exports()?
+                            .into_iter()
+                            .filter_map(|export| match export.target {
+                                ExportTarget::Address(addr) => Some((
+                                    std::str::from_utf8(export.name?).unwrap().to_string(),
+                                    info.base_addr + addr,
+                                )),
+                                ExportTarget::ForwardByOrdinal(_, _)
+                                | ExportTarget::ForwardByName(_, _) => todo!("Forwarding exports"),
+                            })
+                            .collect::<BTreeMap<_, _>>(),
+                    )),
+                    None => None,
+                },
+            )
+        })
+        .collect::<Result<Vec<_>>>()?;
+    Ok(exports.into_iter().flatten().collect())
 }
 
 pub fn load_process_image(executable: PeFile, dlls: Vec<PeFile>) -> Result<LoadedProcessImage> {
@@ -183,7 +268,7 @@ pub fn load_process_image(executable: PeFile, dlls: Vec<PeFile>) -> Result<Loade
     // the executable will be loaded at the requested address this way, as we load it first
     let mut free_addr = executable.base_addr();
     let mut memory = MemoryImage::new();
-    let mut modules = Vec::new();
+    let mut modules = BTreeMap::new();
 
     let mut load_into_first_free = |pe: PeFile| -> Result<_> {
         println!("LOAD {}", pe.name());
@@ -191,7 +276,7 @@ pub fn load_process_image(executable: PeFile, dlls: Vec<PeFile>) -> Result<Loade
         let info = pe.load_into(free_addr, &mut memory, pe.name())?;
 
         free_addr += info.image_size;
-        modules.push((pe, info));
+        modules.insert(pe.name().to_string(), (pe, info));
 
         Ok(())
     };
@@ -203,8 +288,18 @@ pub fn load_process_image(executable: PeFile, dlls: Vec<PeFile>) -> Result<Loade
         load_into_first_free(dll)?;
     }
 
+    let exports = build_exports_index(&modules)?;
+
+    let mut missing_imports = Vec::new();
+    for (_, module) in modules.iter() {
+        missing_imports.append(&mut bind_imports(&mut memory, module, &exports)?);
+    }
+    if !missing_imports.is_empty() {
+        return Err(Error::DllExportsNotFound(missing_imports));
+    }
+
     let symbols = modules
-        .iter()
+        .values()
         .map(|(pe, info)| (pe, info, pe.name().into()))
         .flat_map(|(pe, info, name): (&PeFile, &LoadedPeInfo, Arc<str>)| {
             if let Some(sym) = pe.collect_symbols() {
