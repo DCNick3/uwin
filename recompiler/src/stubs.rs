@@ -1,6 +1,6 @@
 use crate::error::Result;
 use crate::loader::PAGE_ALIGNMENT;
-use crate::pe_file::PeFile;
+use crate::pe_file::{PeFile, PeSymbol, SymbolKind};
 use object::pe;
 use object::write::pe::{NtHeaders, SectionRange, Writer};
 use std::collections::{BTreeMap, HashMap};
@@ -141,7 +141,7 @@ fn gen_edata(
 fn make_dll_stub_impl(
     name: &str,
     stubs: &BTreeMap<String, u32>,
-) -> Result<(Vec<u8>, BTreeMap<u32, String>)> {
+) -> Result<(Vec<u8>, BTreeMap<u32, PeSymbol>)> {
     let mut out_data = Vec::new();
     let mut writer = Writer::new(false, PAGE_ALIGNMENT, 0x200, &mut out_data);
 
@@ -194,7 +194,15 @@ fn make_dll_stub_impl(
 
     let symbols = text_labels
         .into_iter()
-        .map(|(name, addr)| (text_range.virtual_address + addr, name))
+        .map(|(name, addr)| {
+            (
+                text_range.virtual_address + addr,
+                PeSymbol {
+                    name,
+                    kind: SymbolKind::Code,
+                },
+            )
+        })
         .collect();
     Ok((out_data, symbols))
 }

@@ -2,7 +2,7 @@ use crate::error::{Error, Result};
 use itertools::Itertools;
 use memmap2::Mmap;
 use object::read::pe::PeFile32;
-use object::{LittleEndian, Object, ObjectSymbol, ObjectSymbolTable, SymbolKind};
+use object::{LittleEndian, Object, ObjectSymbol, ObjectSymbolTable, SymbolKind as ObjSymbolKind};
 use std::collections::BTreeMap;
 use std::fs::File;
 use std::ops::Deref;
@@ -64,7 +64,7 @@ type PeFileYoke = Yoke<PeFileWrapper<'static>, EitherCart<Mmap, Vec<u8>>>;
 pub struct PeFile {
     yoke: PeFileYoke,
     name: String,
-    externally_supplied_symbols: Option<BTreeMap<u32, String>>,
+    externally_supplied_symbols: Option<BTreeMap<u32, PeSymbol>>,
 }
 
 impl PeFile {
@@ -106,7 +106,7 @@ impl PeFile {
         })
     }
 
-    pub fn with_symbols(self, symbols: BTreeMap<u32, String>) -> Self {
+    pub fn with_symbols(self, symbols: BTreeMap<u32, PeSymbol>) -> Self {
         Self {
             externally_supplied_symbols: Some(symbols),
             ..self
@@ -126,7 +126,7 @@ impl PeFile {
     }
 
     #[allow(unused)]
-    pub fn collect_symbols(&self) -> Option<BTreeMap<u32, String>> {
+    pub fn collect_symbols(&self) -> Option<BTreeMap<u32, PeSymbol>> {
         // TODO: should we merge the tables if multiple are found?
         if let Some(symbols) = &self.externally_supplied_symbols {
             return Some(symbols.clone());
@@ -138,12 +138,19 @@ impl PeFile {
                     .symbols()
                     .filter(|sym| {
                         sym.address() != 0
-                            && matches!(sym.kind(), SymbolKind::Data | SymbolKind::Text)
+                            && matches!(sym.kind(), ObjSymbolKind::Data | ObjSymbolKind::Text)
                     })
                     .map(|sym| {
                         (
                             sym.address() as u32 - self.base_addr(),
-                            sym.name().unwrap().to_string(),
+                            PeSymbol {
+                                name: sym.name().unwrap().to_string(),
+                                kind: match sym.kind() {
+                                    ObjSymbolKind::Text => SymbolKind::Code,
+                                    ObjSymbolKind::Data => SymbolKind::Data,
+                                    _ => unreachable!(),
+                                },
+                            },
                         )
                     })
                     .sorted_by_key(|(addr, _)| *addr)
@@ -156,12 +163,27 @@ impl PeFile {
     }
 }
 
+#[derive(Debug, Clone, PartialEq, Eq, Hash)]
 pub struct LoadedPeInfo {
     pub base_addr: u32,
     pub image_size: u32,
 }
 
+#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+pub enum SymbolKind {
+    Code,
+    Data,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+pub struct PeSymbol {
+    pub name: String,
+    pub kind: SymbolKind,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Hash)]
 pub struct ProcessImageSymbol {
     pub module: Arc<str>,
     pub symbol: String,
+    pub kind: SymbolKind,
 }

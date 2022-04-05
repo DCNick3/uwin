@@ -214,7 +214,8 @@ pub fn load_process_image(executable: PeFile, dlls: Vec<PeFile>) -> Result<Loade
                             addr + info.base_addr,
                             ProcessImageSymbol {
                                 module: name.clone(),
-                                symbol: nm,
+                                symbol: nm.name,
+                                kind: nm.kind,
                             },
                         )
                     })

@@ -39,7 +39,10 @@ fn main() {
     println!();
     println!("Symbols:");
     for (&addr, sym) in image.symbols.iter().sorted_by_key(|(&addr, _)| addr) {
-        println!("{:#010x} {:>10}!{}", addr, sym.module, sym.symbol)
+        println!(
+            "{:#010x} {:?} {:>10}!{}",
+            addr, sym.kind, sym.module, sym.symbol
+        )
     }
 
     println!();
