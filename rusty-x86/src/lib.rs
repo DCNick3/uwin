@@ -786,9 +786,21 @@ pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) -> Control
                         panic!("Call to unsupported immediate size")
                     }
                     Operand::Immediate32(target) => {
-                        builder.direct_call(target, instr.next_ip32());
+                        builder.direct_call(target, ret);
                     }
-                    _ => todo!(),
+                    Operand::FarBranch(segment, offset) => {
+                        if segment != 0x7775
+                        // magic value encoded as "uw" in little endian (for uwin)
+                        // recompiler uses it when it generates stubs
+                        {
+                            unimplemented!("Far calls that are not targeting uwin magic segment")
+                        }
+                        builder.magic_call(offset, ret);
+                    }
+                    target => {
+                        let target = builder.load_operand(target);
+                        builder.indirect_call(target, ret);
+                    }
                 }
             }
             Stc => builder.store_flag(Carry, builder.make_true()),
@@ -882,17 +894,20 @@ mod tests {
         #[allow(unused_imports)]
         use log::{debug, error, info, trace, warn};
         use memory_image::MemoryImage;
+        use std::collections::BTreeMap;
         use std::fmt::Write;
         use test_log::test;
 
         fn recompile(code: &[u8]) -> Vec<u8> {
             let context = &Context::create();
-            let types = &llvm::backend::Types::new(context);
-            let rt_funs = &llvm::backend::RuntimeHelpers::dummy(types);
+            let types = llvm::backend::Types::new(context);
+            let rt_funs = &llvm::backend::RuntimeHelpers::dummy(types.clone());
+            let magic_functions = &BTreeMap::new();
 
             let code = MemoryImage::from_code_region(0x1000, code);
 
-            let module = llvm::recompile(context, types, rt_funs, &code, &[0x1000]);
+            let module =
+                llvm::recompile(context, types, rt_funs, magic_functions, &code, &[0x1000]);
 
             let target_machine = llvm::get_aarch64_target_machine();
 

@@ -1,12 +1,17 @@
+use std::collections::BTreeMap;
 use std::ffi::c_void;
 use std::marker::PhantomData;
+use std::sync::Arc;
 
 use inkwell::builder::Builder;
 use inkwell::context::Context;
 use inkwell::intrinsics::Intrinsic;
 use inkwell::module::{Linkage, Module};
 use inkwell::types::{FunctionType, IntType as LlvmIntType, PointerType, StructType, VoidType};
-use inkwell::values::{BasicValue, FunctionValue, IntValue as LlvmIntValue, PointerValue};
+use inkwell::values::{
+    BasicMetadataValueEnum, BasicValue, CallSiteValue, FunctionValue, IntValue as LlvmIntValue,
+    PointerValue,
+};
 use inkwell::{AddressSpace, IntPredicate};
 
 use crate::backend::{BoolValue, ComparisonType, IntValue};
@@ -18,7 +23,7 @@ pub struct LlvmBuilder<'ctx, 'a> {
     module: &'a Module<'ctx>,
     function: FunctionValue<'ctx>,
     builder: Builder<'ctx>,
-    types: &'a Types<'ctx>,
+    types: Arc<Types<'ctx>>,
     intrinsics: Intrinsics,
     ctx_ptr: PointerValue<'ctx>,
     mem_ptr: PointerValue<'ctx>,
@@ -28,6 +33,7 @@ pub struct LlvmBuilder<'ctx, 'a> {
     // this is for functions to be implemented by a runtime
     #[allow(unused)]
     rt_funs: &'a RuntimeHelpers<'ctx>,
+    magic_functions: &'a BTreeMap<u32, String>,
 }
 
 #[derive(Clone, Copy)]
@@ -49,7 +55,7 @@ pub struct Types<'ctx> {
 }
 
 impl<'ctx> Types<'ctx> {
-    pub fn new(context: &'ctx Context) -> Self {
+    pub fn new(context: &'ctx Context) -> Arc<Self> {
         let void = context.void_type();
 
         let i1 = context.bool_type();
@@ -86,7 +92,7 @@ impl<'ctx> Types<'ctx> {
             false,
         );
 
-        Self {
+        Arc::new(Self {
             void,
             i1,
             i8,
@@ -98,7 +104,7 @@ impl<'ctx> Types<'ctx> {
 
             bb_fn,
             indirect_bb_call: rt_indirect_bb_call,
-        }
+        })
     }
 }
 
@@ -135,7 +141,7 @@ pub struct RuntimeHelpers<'ctx> {
 }
 
 impl<'ctx> RuntimeHelpers<'ctx> {
-    pub fn dummy(_types: &'ctx Types) -> Self {
+    pub fn dummy(_types: Arc<Types<'ctx>>) -> Self {
         Self {
             phantom: PhantomData::default(),
         }
@@ -150,12 +156,14 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
     pub fn new(
         context: &'ctx Context,
         module: &'a Module<'ctx>,
-        types: &'a Types<'ctx>,
+        types: Arc<Types<'ctx>>,
         rt_funs: &'a RuntimeHelpers<'ctx>,
+        magic_functions: &'a BTreeMap<u32, String>,
         indirect_bb_call: FunctionValue<'ctx>,
         basic_block_addr: u32,
     ) -> Self {
-        let function = Self::get_basic_block_fun_internal(context, module, types, basic_block_addr);
+        let function =
+            Self::get_basic_block_fun_internal(context, module, types.clone(), basic_block_addr);
         let bb = context.append_basic_block(function, "entry");
 
         let builder = context.create_builder();
@@ -178,6 +186,7 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
 
             indirect_bb_call,
             rt_funs,
+            magic_functions,
         }
     }
 
@@ -264,7 +273,7 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
     fn get_basic_block_fun_internal(
         _context: &'ctx Context,
         module: &'a Module<'ctx>,
-        types: &'a Types<'ctx>,
+        types: Arc<Types<'ctx>>,
         addr: u32,
     ) -> FunctionValue<'ctx> {
         let name = Self::get_name_for(addr);
@@ -279,22 +288,45 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
     }
 
     pub fn get_basic_block_fun(&mut self, addr: u32) -> FunctionValue<'ctx> {
-        Self::get_basic_block_fun_internal(self.context, self.module, self.types, addr)
+        Self::get_basic_block_fun_internal(self.context, self.module, self.types.clone(), addr)
+    }
+
+    fn fastcall(
+        &mut self,
+        target: FunctionValue<'ctx>,
+        args: &[BasicMetadataValueEnum<'ctx>],
+    ) -> CallSiteValue<'ctx> {
+        let call = self.builder.build_call(target, args, "");
+        call.set_call_convention(FASTCC_CALLING_CONVENTION);
+        call
     }
 
     pub fn call_basic_block(&mut self, target: u32, tail_call: bool) {
         let target = self.get_basic_block_fun(target);
         let args = &[self.ctx_ptr.into(), self.mem_ptr.into()];
-        let call = self.builder.build_call(target, args, "");
-        call.set_call_convention(FASTCC_CALLING_CONVENTION);
+        let call = self.fastcall(target, args);
         call.set_tail_call(tail_call)
     }
 
     pub fn call_basic_block_indirect(&mut self, target: LlvmIntValue<'ctx>, tail_call: bool) {
         let args = &[self.ctx_ptr.into(), self.mem_ptr.into(), target.into()];
-        let call = self.builder.build_call(self.indirect_bb_call, args, "");
-        call.set_call_convention(FASTCC_CALLING_CONVENTION);
+        let call = self.fastcall(self.indirect_bb_call, args);
         call.set_tail_call(tail_call)
+    }
+
+    pub fn find_magic_function(&mut self, index: u32) -> FunctionValue<'ctx> {
+        let name = self
+            .magic_functions
+            .get(&index)
+            .expect("Call to unknown magic function");
+
+        if let Some(function) = self.module.get_function(name) {
+            function
+        } else {
+            self.module
+                // TODO: which linkage?
+                .add_function(&format!("magic_{}", name), self.types.bb_fn, None)
+        }
     }
 
     pub fn handle_flow(&mut self, next_ip: u32, flow: ControlFlow<Self>) {
@@ -649,7 +681,21 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
         self.call_basic_block(target, false);
         // TODO: compare EIP to expected return address
         // else we fail in case the binary mis-uses call or ret
-        //todo!()
+    }
+
+    fn indirect_call(&mut self, target: Self::IntValue, _next_eip: u32) {
+        self.call_basic_block_indirect(target, false);
+        // TODO: compare EIP to expected return address
+        // else we fail in case the binary mis-uses call or ret
+    }
+
+    fn magic_call(&mut self, target: u32, _next_eip: u32) {
+        let function = self.find_magic_function(target);
+
+        let args = &[self.ctx_ptr.into(), self.mem_ptr.into()];
+        self.builder.build_call(function, args, "");
+
+        // No need to compare next_eip with the real one because ¿I think? we don't change it in any native code?
     }
 
     fn select(

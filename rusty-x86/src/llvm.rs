@@ -1,4 +1,5 @@
-use std::collections::{HashMap, VecDeque};
+use std::collections::{BTreeMap, HashMap, VecDeque};
+use std::sync::Arc;
 
 use iced_x86::Code::Call_rel32_32;
 use iced_x86::{Decoder, DecoderOptions};
@@ -37,10 +38,10 @@ pub fn get_aarch64_target_machine() -> TargetMachine {
         .unwrap()
 }
 
-fn codegen_dynamic_dispatcher<'ctx>(
+fn codegen_dynamic_dispatcher<'ctx, 'a>(
     context: &'ctx Context,
-    module: &'ctx Module,
-    types: &'ctx Types,
+    module: &'a Module,
+    types: Arc<Types<'ctx>>,
     lifted_functions: &HashMap<u32, FunctionValue<'ctx>>,
     indirect_bb_call: FunctionValue<'ctx>,
 ) {
@@ -90,11 +91,12 @@ fn codegen_dynamic_dispatcher<'ctx>(
     builder.build_switch(eip, else_bb, &cases);
 }
 
-pub fn recompile<'ctx>(
+pub fn recompile<'ctx, 'a>(
     context: &'ctx Context,
-    types: &'ctx Types,
-    rt_funs: &'ctx RuntimeHelpers<'ctx>,
-    image: &MemoryImage,
+    types: Arc<Types<'ctx>>,
+    rt_funs: &'a RuntimeHelpers<'ctx>,
+    magic_functions: &'a BTreeMap<u32, String>,
+    image: &'a MemoryImage,
     basic_blocks: &[u32],
 ) -> Module<'ctx> {
     let module_obj = context.create_module("test");
@@ -107,7 +109,7 @@ pub fn recompile<'ctx>(
     );
     indirect_bb_call.set_call_conventions(FASTCC_CALLING_CONVENTION);
 
-    let mut queue = VecDeque::new();
+    let mut queue = VecDeque::<u32>::new();
     let mut lifted_functions = HashMap::new();
     queue.extend(basic_blocks);
 
@@ -116,8 +118,15 @@ pub fn recompile<'ctx>(
 
         debug!("processing bb at 0x{:08x}", address);
 
-        let mut builder =
-            LlvmBuilder::new(context, module, types, rt_funs, indirect_bb_call, address);
+        let mut builder = LlvmBuilder::new(
+            context,
+            module,
+            types.clone(),
+            rt_funs,
+            magic_functions,
+            indirect_bb_call,
+            address,
+        );
 
         lifted_functions.insert(address, builder.get_function());
 

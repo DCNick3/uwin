@@ -123,6 +123,7 @@ pub struct LoadedProcessImage {
     pub memory: MemoryImage,
     pub modules: BTreeMap<String, (PeFile, LoadedPeInfo)>,
     pub symbols: BTreeMap<u32, ProcessImageSymbol>,
+    pub magic_functions: BTreeMap<u32, String>,
 }
 
 fn bind_imports(
@@ -239,7 +240,7 @@ pub fn load_process_image(executable: PeFile, dlls: Vec<PeFile>) -> Result<Loade
         required_dlls.insert(dll, functions);
     }
 
-    let fn_indices = required_dlls
+    let magic_function_indices = required_dlls
         .values()
         .flatten()
         .unique()
@@ -256,7 +257,7 @@ pub fn load_process_image(executable: PeFile, dlls: Vec<PeFile>) -> Result<Loade
             println!("STUB  {}", dll_name);
             let fns = fns
                 .iter()
-                .map(|name| (name.to_string(), *fn_indices.get(name).unwrap()))
+                .map(|name| (name.to_string(), *magic_function_indices.get(name).unwrap()))
                 .collect();
 
             let stub = make_dll_stub(dll_name, &fns).unwrap();
@@ -266,6 +267,11 @@ pub fn load_process_image(executable: PeFile, dlls: Vec<PeFile>) -> Result<Loade
             panic!("Can't find dll with name {}. It was not provided as an input & is not included in stubbable allow-list", dll_name)
         }
     }
+
+    let magic_functions = magic_function_indices
+        .into_iter()
+        .map(|(name, idx)| (idx, name))
+        .collect::<BTreeMap<_, _>>();
 
     // start from the base image of the executable.
     // the executable will be loaded at the requested address this way, as we load it first
@@ -328,5 +334,6 @@ pub fn load_process_image(executable: PeFile, dlls: Vec<PeFile>) -> Result<Loade
         memory,
         modules,
         symbols,
+        magic_functions,
     })
 }

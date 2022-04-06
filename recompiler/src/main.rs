@@ -1,7 +1,8 @@
 use clap::{Args, Parser, Subcommand};
-use recompiler::{find_basic_blocks, load_process_image, LoadedProcessImage};
+use recompiler::{find_basic_blocks, lift, load_process_image, LoadedProcessImage};
 use std::fs::File;
 
+use inkwell::context::Context;
 use itertools::Itertools;
 use recompiler::PeFile;
 use std::path::PathBuf;
@@ -20,6 +21,9 @@ enum Commands {
 
     /// Inspects serialized process image and dumps some info
     Dump(Dump),
+
+    /// Load the executable with its DLLs into an process image and recompile it to LLVM module
+    Recompile(Recompile),
 }
 
 #[derive(Args, Debug)]
@@ -39,6 +43,19 @@ struct Load {
 struct Dump {
     /// Path to process image file
     process_image: PathBuf,
+}
+
+#[derive(Args, Debug)]
+struct Recompile {
+    /// (main) Executable file to load
+    executable: PathBuf,
+
+    /// Path to output llvm module (bitcode)
+    output: PathBuf,
+
+    /// Dll files to load into the process image. Stubs will be generated automagically, so no need for system libs here
+    #[clap(short, long)]
+    dlls: Vec<PathBuf>,
 }
 
 fn load(args: Load) {
@@ -88,11 +105,35 @@ fn dump(args: Dump) {
     println!("{}", image.memory.dump());
 }
 
+fn recompile(args: Recompile) {
+    let exe = PeFile::parse_from_path(&args.executable).expect("Loading exe file");
+
+    let dlls = args
+        .dlls
+        .iter()
+        .map(|f| PeFile::parse_from_path(f))
+        .collect::<Result<Vec<_>, _>>()
+        .expect("Loading dlls");
+
+    let image = load_process_image(exe, dlls).expect("Loading process image");
+
+    let ctx = Context::create();
+
+    let module = lift(&ctx, &image);
+
+    assert!(
+        module.write_bitcode_to_path(&args.output),
+        "Could not write the bitcode file"
+    );
+}
+
 fn main() {
     let args = Cli::parse();
 
+    use Commands::*;
     match args.command {
-        Commands::Load(args) => load(args),
-        Commands::Dump(args) => dump(args),
+        Load(args) => load(args),
+        Dump(args) => dump(args),
+        Recompile(args) => recompile(args),
     }
 }

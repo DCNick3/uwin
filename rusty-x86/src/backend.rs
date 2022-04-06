@@ -110,6 +110,10 @@ pub trait Builder {
 
     fn direct_call(&mut self, target: u32, next_eip: u32);
 
+    fn indirect_call(&mut self, target: Self::IntValue, next_eip: u32);
+
+    fn magic_call(&mut self, target: u32, next_eip: u32);
+
     fn select(
         &mut self,
         cond: Self::BoolValue,
