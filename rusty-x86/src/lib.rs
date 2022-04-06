@@ -11,6 +11,8 @@ use crate::types::Register::*;
 use crate::types::{ControlFlow, Flag, IntType, Operand, Register};
 use iced_x86::{ConditionCode, Instruction, Mnemonic};
 
+pub use inkwell;
+
 #[allow(clippy::let_and_return)]
 fn compute_condition_code<B: Builder>(
     builder: &mut B,

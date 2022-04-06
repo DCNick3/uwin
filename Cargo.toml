@@ -17,5 +17,6 @@ members = [
     "win32-bindgen/tokens",
 
     "recompiler",
+    "recomputil",
     "memory-image",
 ]

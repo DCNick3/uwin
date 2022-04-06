@@ -5,9 +5,7 @@ edition = "2021"
 
 [dependencies]
 log = "0.4.14"
-object = { version = "0.28.3", features = ["write"] }
-clap = { version = "3.1.7", features = ["derive"] }
-memmap2 = { version = "0.5.3", features = [ "stable_deref_trait" ] }
+object = { version = "0.28.3", features = ["write_std", "read_core", "pe"], default-features = false }
 num = "0.4.0"
 itertools = "0.10.3"
 lazy_static = "1.4.0"
@@ -15,15 +13,16 @@ yoke = "0.4.0"
 thiserror = "1.0.30"
 stable_deref_trait = "1.2.0"
 
+memmap2 = { version = "0.5.3", features = [ "stable_deref_trait" ], optional = true }
+
 serde = { version = "1.0.136", features = ["derive", "rc"] }
 serde_bytes = "0.11.5"
 rmp-serde = "1.0.0"
 
 
-rusty-x86 = { path = "../rusty-x86" }
+rusty-x86 = { path = "../rusty-x86", optional = true }
 memory-image = { path = "../memory-image" }
 
-[dependencies.inkwell]
-git = "https://github.com/TheDan64/inkwell.git"
-rev = "83c81336b19b7180b55724a46656f84260203212"
-features = ["llvm13-0", "target-all"]
+[features]
+recompilation = [ "rusty-x86" ]
+mmap = [ "memmap2" ]

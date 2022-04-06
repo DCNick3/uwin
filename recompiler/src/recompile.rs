@@ -1,9 +1,9 @@
 use crate::error::Result;
 use crate::pe_file::SymbolKind;
 use crate::LoadedProcessImage;
-use inkwell::context::Context;
-use inkwell::module::Module;
 use itertools::Itertools;
+use rusty_x86::inkwell::context::Context;
+use rusty_x86::inkwell::module::Module;
 use rusty_x86::llvm::backend::{RuntimeHelpers, Types};
 
 pub fn find_basic_blocks(image: &LoadedProcessImage) -> Vec<u32> {

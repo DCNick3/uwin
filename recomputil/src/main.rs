@@ -2,8 +2,8 @@ use clap::{Args, Parser, Subcommand};
 use recompiler::{find_basic_blocks, load_process_image, recompile_image, LoadedProcessImage};
 use std::fs::File;
 
-use inkwell::context::Context;
 use itertools::Itertools;
+use recompiler::inkwell::context::Context;
 use recompiler::PeFile;
 use std::path::PathBuf;
 

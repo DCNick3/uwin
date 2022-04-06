@@ -1,16 +1,19 @@
-use crate::error::{Error, Result};
+#[cfg(feature = "mmap")]
+use crate::error::Error;
+use crate::error::Result;
 use itertools::Itertools;
+#[cfg(feature = "mmap")]
 use memmap2::Mmap;
 use object::read::pe::PeFile32;
 use object::{LittleEndian, Object, ObjectSymbol, ObjectSymbolTable, SymbolKind as ObjSymbolKind};
 use serde::{Deserialize, Serialize};
 use serde_bytes::ByteBuf;
+use stable_deref_trait::StableDeref;
 use std::collections::BTreeMap;
-use std::fs::File;
 use std::ops::Deref;
-use std::path::Path;
 use std::sync::Arc;
-use yoke::either::EitherCart;
+#[cfg(feature = "mmap")]
+use std::{fs::File, path::Path};
 use yoke::{Yoke, Yokeable};
 
 pub const LE: LittleEndian = LittleEndian {};
@@ -61,19 +64,57 @@ impl<'a> Deref for PeFileWrapper<'a> {
     }
 }
 
-type PeFileYoke = Yoke<PeFileWrapper<'static>, EitherCart<Mmap, Vec<u8>>>;
+enum PeFileCart {
+    #[cfg(feature = "mmap")]
+    Mmap(Mmap),
+    Vec(Vec<u8>),
+    StaticBuf(&'static [u8]),
+}
 
-fn get_data(yoke: &PeFileYoke) -> ByteBuf {
-    match yoke.backing_cart() {
-        EitherCart::A(mmap) => ByteBuf::from((&*mmap).to_vec()),
-        EitherCart::B(vec) => ByteBuf::from(vec.clone()),
+impl Deref for PeFileCart {
+    type Target = [u8];
+
+    fn deref(&self) -> &Self::Target {
+        match self {
+            #[cfg(feature = "mmap")]
+            PeFileCart::Mmap(mmap) => &*mmap,
+            PeFileCart::Vec(vec) => vec,
+            PeFileCart::StaticBuf(buf) => buf,
+        }
     }
+}
+
+unsafe impl StableDeref for PeFileCart {}
+
+impl From<Vec<u8>> for PeFileCart {
+    fn from(vec: Vec<u8>) -> Self {
+        PeFileCart::Vec(vec)
+    }
+}
+
+#[cfg(feature = "mmap")]
+impl From<Mmap> for PeFileCart {
+    fn from(mmap: Mmap) -> Self {
+        PeFileCart::Mmap(mmap)
+    }
+}
+
+impl From<&'static [u8]> for PeFileCart {
+    fn from(buf: &'static [u8]) -> Self {
+        PeFileCart::StaticBuf(buf)
+    }
+}
+
+type PeFileYoke = Yoke<PeFileWrapper<'static>, PeFileCart>;
+
+fn copy_data(yoke: &PeFileYoke) -> ByteBuf {
+    ByteBuf::from(yoke.backing_cart().deref().to_vec())
 }
 
 #[derive(Serialize, Deserialize)]
 #[serde(remote = "PeFileYoke")]
 struct PeFileYokeDef {
-    #[serde(getter = "get_data")]
+    #[serde(getter = "copy_data")]
     data: ByteBuf,
 }
 
@@ -81,12 +122,10 @@ impl From<PeFileYokeDef> for PeFileYoke {
     fn from(def: PeFileYokeDef) -> Self {
         let data = def.data.into_vec();
 
-        let yoke = Yoke::try_attach_to_cart_badly::<object::Error>(data, |c| {
+        Yoke::try_attach_to_cart_badly::<object::Error>(PeFileCart::from(data), |c| {
             Ok(PeFileWrapper(PeFile32::parse(c)?))
         })
-        .expect("Could not parse the serialized PE file");
-
-        yoke.wrap_cart_in_either_b()
+        .expect("Could not parse the serialized PE file")
     }
 }
 
@@ -102,6 +141,21 @@ pub struct PeFile {
 }
 
 impl PeFile {
+    fn parse_from<T>(name: String, data: T) -> Result<Self>
+    where
+        PeFileCart: From<T>,
+    {
+        let yoke = Yoke::try_attach_to_cart_badly::<object::Error>(PeFileCart::from(data), |c| {
+            Ok(PeFileWrapper(PeFile32::parse(c)?))
+        })?;
+        Ok(PeFile {
+            yoke,
+            name,
+            externally_supplied_symbols: None,
+        })
+    }
+
+    #[cfg(feature = "mmap")]
     pub fn parse_from_path(path: &Path) -> Result<Self> {
         let file = std::fs::File::open(path).map_err(Error::FileOpen)?;
         Self::parse_from_file(
@@ -114,30 +168,19 @@ impl PeFile {
         )
     }
 
+    #[cfg(feature = "mmap")]
     pub fn parse_from_file(name: String, file: &File) -> Result<Self> {
         // SAFETY: the file is (hopefully) not modified during the execution
         let mmap = unsafe { Mmap::map(file) }.map_err(Error::FileMmap)?;
-        let yoke = Yoke::try_attach_to_cart_badly::<object::Error>(mmap, |c| {
-            Ok(PeFileWrapper(PeFile32::parse(c)?))
-        })?;
-        let yoke = yoke.wrap_cart_in_either_a();
-        Ok(PeFile {
-            yoke,
-            name,
-            externally_supplied_symbols: None,
-        })
+        Self::parse_from(name, mmap)
     }
 
     pub fn parse_from_memory(name: String, data: Vec<u8>) -> Result<Self> {
-        let yoke = Yoke::try_attach_to_cart_badly::<object::Error>(data, |c| {
-            Ok(PeFileWrapper(PeFile32::parse(c)?))
-        })?;
-        let yoke = yoke.wrap_cart_in_either_b();
-        Ok(PeFile {
-            yoke,
-            name,
-            externally_supplied_symbols: None,
-        })
+        Self::parse_from(name, data)
+    }
+
+    pub fn parse_from_static_memory(name: String, data: &'static [u8]) -> Result<Self> {
+        Self::parse_from(name, data)
     }
 
     pub fn with_symbols(self, symbols: BTreeMap<u32, PeSymbol>) -> Self {
