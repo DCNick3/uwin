@@ -15,6 +15,9 @@ pub enum Error {
 
     #[error("Missing exports")]
     DllExportsNotFound(Vec<(String, String)>),
+
+    #[error("MessagePack serialization error")]
+    MessagePackSerializationError(#[from] rmp_serde::encode::Error),
 }
 
 pub type Result<T> = std::result::Result<T, Error>;

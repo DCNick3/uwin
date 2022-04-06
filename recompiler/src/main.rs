@@ -1,5 +1,5 @@
 use clap::{Args, Parser, Subcommand};
-use recompiler::{find_basic_blocks, lift, load_process_image, LoadedProcessImage};
+use recompiler::{find_basic_blocks, load_process_image, recompile_image, LoadedProcessImage};
 use std::fs::File;
 
 use inkwell::context::Context;
@@ -119,7 +119,9 @@ fn recompile(args: Recompile) {
 
     let ctx = Context::create();
 
-    let module = lift(&ctx, &image);
+    let module = recompile_image(&ctx, &image).expect("Recompilation failed");
+
+    module.verify().expect("Module validation failed");
 
     assert!(
         module.write_bitcode_to_path(&args.output),

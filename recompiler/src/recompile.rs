@@ -1,3 +1,4 @@
+use crate::error::Result;
 use crate::pe_file::SymbolKind;
 use crate::LoadedProcessImage;
 use inkwell::context::Context;
@@ -26,18 +27,44 @@ pub fn find_basic_blocks(image: &LoadedProcessImage) -> Vec<u32> {
     heads
 }
 
-pub fn lift<'ctx>(llvm_context: &'ctx Context, image: &LoadedProcessImage) -> Module<'ctx> {
+pub fn recompile_image<'ctx>(
+    llvm_context: &'ctx Context,
+    image: &LoadedProcessImage,
+) -> Result<Module<'ctx>> {
     let types = Types::new(llvm_context);
     let runtime_helpers = RuntimeHelpers::dummy(types.clone());
 
     let basic_blocks = find_basic_blocks(image);
 
-    rusty_x86::llvm::recompile(
+    let module = rusty_x86::llvm::recompile(
         llvm_context,
-        types,
+        types.clone(),
         &runtime_helpers,
         &image.magic_functions,
         &image.memory,
         &basic_blocks,
-    )
+    );
+
+    let serialized_process_image = rmp_serde::to_vec(&image)?;
+
+    let ty = types.i8.array_type(
+        serialized_process_image
+            .len()
+            .try_into()
+            .expect("Serialized process image too large"),
+    );
+
+    module
+        .add_global(ty, None, "uwin_serialized_address_space")
+        .set_initializer(&llvm_context.const_string(&serialized_process_image, false));
+
+    module
+        .add_global(types.i32, None, "uwin_serialized_address_space_size")
+        .set_initializer(
+            &types
+                .i32
+                .const_int(serialized_process_image.len() as u64, false),
+        );
+
+    Ok(module)
 }

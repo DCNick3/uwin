@@ -323,9 +323,11 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
         if let Some(function) = self.module.get_function(name) {
             function
         } else {
-            self.module
-                // TODO: which linkage?
-                .add_function(&format!("magic_{}", name), self.types.bb_fn, None)
+            self.module.add_function(
+                &format!("magic_{}", name),
+                self.types.bb_fn,
+                Some(Linkage::External),
+            )
         }
     }
 

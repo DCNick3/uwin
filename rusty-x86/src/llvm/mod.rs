@@ -43,27 +43,30 @@ fn codegen_dynamic_dispatcher<'ctx, 'a>(
     module: &'a Module,
     types: Arc<Types<'ctx>>,
     lifted_functions: &HashMap<u32, FunctionValue<'ctx>>,
-    indirect_bb_call: FunctionValue<'ctx>,
+    indirect_bb_call_impl: FunctionValue<'ctx>,
 ) {
     let intrinsics = Intrinsics::new();
-    let bb = context.append_basic_block(indirect_bb_call, "entry");
+    let bb = context.append_basic_block(indirect_bb_call_impl, "entry");
     let builder = context.create_builder();
 
-    let ctx_ptr = indirect_bb_call
+    let ctx_ptr = indirect_bb_call_impl
         .get_nth_param(0)
         .unwrap()
         .into_pointer_value();
-    let mem_ptr = indirect_bb_call
+    let mem_ptr = indirect_bb_call_impl
         .get_nth_param(1)
         .unwrap()
         .into_pointer_value();
-    let eip = indirect_bb_call.get_nth_param(2).unwrap().into_int_value();
+    let eip = indirect_bb_call_impl
+        .get_nth_param(2)
+        .unwrap()
+        .into_int_value();
 
     // for now - just generate a switch
     // this doesn't really scale for bigger executables, so we'll need to do some custom stuff
     // but it works for now
 
-    let else_bb = context.append_basic_block(indirect_bb_call, "not_found");
+    let else_bb = context.append_basic_block(indirect_bb_call_impl, "not_found");
 
     builder.position_at_end(else_bb);
     let trap = intrinsics.trap.get_declaration(module, &[]).unwrap();
@@ -75,7 +78,7 @@ fn codegen_dynamic_dispatcher<'ctx, 'a>(
     let cases: Vec<(IntValue, BasicBlock)> = lifted_functions
         .iter()
         .map(|(&addr, &fun)| {
-            let bb = context.append_basic_block(indirect_bb_call, &format!("bb_{addr:08x}"));
+            let bb = context.append_basic_block(indirect_bb_call_impl, &format!("bb_{addr:08x}"));
             builder.position_at_end(bb);
 
             let call = builder.build_call(fun, &args, "");
@@ -91,6 +94,44 @@ fn codegen_dynamic_dispatcher<'ctx, 'a>(
     builder.build_switch(eip, else_bb, &cases);
 }
 
+fn codegen_dynamic_dispatcher_wrapper<'ctx, 'a>(
+    context: &'ctx Context,
+    module: &'a Module<'ctx>,
+    types: Arc<Types<'ctx>>,
+    indirect_bb_call_impl: FunctionValue<'ctx>,
+) -> FunctionValue<'ctx> {
+    let indirect_bb_call = module.add_function(
+        "uwin_indirect_bb_call",
+        types.indirect_bb_call,
+        Some(Linkage::External),
+    );
+    let bb = context.append_basic_block(indirect_bb_call, "entry");
+    let builder = context.create_builder();
+
+    let ctx_ptr = indirect_bb_call
+        .get_nth_param(0)
+        .unwrap()
+        .into_pointer_value();
+    let mem_ptr = indirect_bb_call
+        .get_nth_param(1)
+        .unwrap()
+        .into_pointer_value();
+    let eip = indirect_bb_call.get_nth_param(2).unwrap().into_int_value();
+
+    builder.position_at_end(bb);
+
+    builder
+        .build_call(
+            indirect_bb_call_impl,
+            &[ctx_ptr.into(), mem_ptr.into(), eip.into()],
+            "",
+        )
+        .set_call_convention(FASTCC_CALLING_CONVENTION);
+    builder.build_return(None);
+
+    indirect_bb_call
+}
+
 pub fn recompile<'ctx, 'a>(
     context: &'ctx Context,
     types: Arc<Types<'ctx>>,
@@ -102,12 +143,12 @@ pub fn recompile<'ctx, 'a>(
     let module_obj = context.create_module("test");
     let module = &module_obj;
 
-    let indirect_bb_call = module.add_function(
-        "indirect_bb_call",
+    let indirect_bb_call_impl = module.add_function(
+        "indirect_bb_call_impl",
         types.indirect_bb_call,
         Some(Linkage::Internal),
     );
-    indirect_bb_call.set_call_conventions(FASTCC_CALLING_CONVENTION);
+    indirect_bb_call_impl.set_call_conventions(FASTCC_CALLING_CONVENTION);
 
     let mut queue = VecDeque::<u32>::new();
     let mut lifted_functions = HashMap::new();
@@ -124,7 +165,7 @@ pub fn recompile<'ctx, 'a>(
             types.clone(),
             rt_funs,
             magic_functions,
-            indirect_bb_call,
+            indirect_bb_call_impl,
             address,
         );
 
@@ -171,8 +212,20 @@ pub fn recompile<'ctx, 'a>(
         llvm_builder.build_return(None);
     }
 
-    // codegen for indirect_bb_call
-    codegen_dynamic_dispatcher(context, module, types, &lifted_functions, indirect_bb_call);
+    // codegen indirect_bb_call_impl
+    // the difference between indirect_bb_call and indirect_bb_call_impl is the calling convention
+    // indirect_bb_call_impl is fastcc and is eligible for tail call optimization (very important for generated code)
+    // indirect_bb_call (exported as uwin_indirect_bb_call) has c calling convention and is used as an exported entrypoint into the recompiled code
+    codegen_dynamic_dispatcher(
+        context,
+        module,
+        types.clone(),
+        &lifted_functions,
+        indirect_bb_call_impl,
+    );
+
+    // codegen indirect_bb_call (exported as uwin_indirect_bb_call)
+    codegen_dynamic_dispatcher_wrapper(context, module, types, indirect_bb_call_impl);
 
     module_obj
 }
