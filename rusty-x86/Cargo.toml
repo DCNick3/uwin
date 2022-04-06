@@ -21,6 +21,10 @@ memory-image = { path = "../memory-image" }
 git = "https://github.com/TheDan64/inkwell.git"
 rev = "83c81336b19b7180b55724a46656f84260203212"
 features = ["llvm13-0", "target-all"]
+optional = true
+
+[features]
+llvm = ["inkwell"]
 
 [dev-dependencies]
 test-log = "0.2.8"
@@ -33,4 +37,11 @@ paste = "1.0.6"
 static_assertions = "1.1.0"
 goblin = "0.5.1"
 dynasmrt = "1.2.3"
+# a hack to enable llvm feature when running tests
+# https://github.com/rust-lang/cargo/issues/2911#issuecomment-749580481
+rusty-x86 = { path = ".", features = ["llvm"]}
 
+[[test]]
+name = "e2e_against_unicorn"
+path = "tests/e2e_against_unicorn.rs"
+required-features = ["llvm"]

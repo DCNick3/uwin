@@ -2,6 +2,7 @@ extern crate core;
 
 pub mod backend;
 pub mod disasm;
+#[cfg(feature = "llvm")]
 pub mod llvm;
 pub mod types;
 
@@ -11,6 +12,7 @@ use crate::types::Register::*;
 use crate::types::{ControlFlow, Flag, IntType, Operand, Register};
 use iced_x86::{ConditionCode, Instruction, Mnemonic};
 
+#[cfg(feature = "llvm")]
 pub use inkwell;
 
 #[allow(clippy::let_and_return)]
@@ -889,6 +891,7 @@ mod tests {
         }
     }
 
+    #[cfg(feature = "llvm")]
     mod llvm {
         use crate::llvm;
         use inkwell::context::Context;
@@ -975,7 +978,7 @@ mod tests {
             // and recompile it into this
             // isn't it nice?
             let expected_result = assemble_aarch64!(
-            ; ->indirect_bb_call:
+            ; ->indirect_bb_call_impl:
                 ; cmp w2, #0x1, lsl #0xc
                 ; b.ne >FAIL
                 ; b ->bb_0x1000
@@ -988,6 +991,12 @@ mod tests {
                 ; str w9, [x0, #0x4]
                 ; add w8, w8, #0x4
                 ; str w8, [x0, #0x10]
+                ; ret
+
+            ; ->uwin_indirect_bb_call:
+                ; str x30, [sp, #-0x10]!
+                ; bl ->indirect_bb_call_impl
+                ; ldr x30, [sp], #0x10
                 ; ret
             );
 
@@ -1028,7 +1037,7 @@ mod tests {
             // and recompile it into this
             // isn't it nice?
             let expected_result = assemble_aarch64!(
-            ; ->indirect_bb_call:
+            ; ->indirect_bb_call_impl:
                 ; cmp w2, #0x1, lsl #0xc
                 ; b.ne >FAIL
                 ; b ->bb_0x1000
@@ -1077,6 +1086,12 @@ mod tests {
                 ; str w11, [x0]
                 ; stp w10, w8, [x0, #0x8]
                 ; ret
+
+            ; ->uwin_indirect_bb_call:
+                ; str x30, [sp, #-0x10]!
+                ; bl ->indirect_bb_call_impl
+                ; ldr x30, [sp], #0x10
+                ; ret
             );
 
             test_recomp(code, expected_result);
@@ -1104,7 +1119,7 @@ mod tests {
             );
 
             let expected_result = assemble_aarch64!(
-                ; ->indirect_bb_call:
+                ; ->indirect_bb_call_impl:
                 ; cmp w2, #0x1, lsl #0xc
                 ; b.eq >L1
                 ; mov w8, #0x101a
@@ -1163,6 +1178,12 @@ mod tests {
                 ; add w8, w8, #0x8
                 ; stp w8, w9, [x0, #0x10]
                 ; ret
+
+                ; ->uwin_indirect_bb_call:
+                ; str x30, [sp, #-0x10]!
+                ; bl ->indirect_bb_call_impl
+                ; ldr x30, [sp], #0x10
+                ; ret
             );
 
             test_recomp(code, expected_result);
@@ -1178,7 +1199,7 @@ mod tests {
             );
 
             let expected_result = assemble_aarch64!(
-            ; ->indirect_bb_call:
+            ; ->indirect_bb_call_impl:
                 ; cmp w2, #0x1, lsl #0xc
                 ; b.eq >jump_bb_0x1000
                 ; mov w8, #0x1008
@@ -1197,6 +1218,12 @@ mod tests {
                 ; mov w8, #0x2a
                 ; str w8, [x0, #0]
                 ; ret
+
+            ; ->uwin_indirect_bb_call:
+                ; str x30, [sp, #-0x10]!
+                ; bl ->indirect_bb_call_impl
+                ; ldr x30, [sp], #0x10
+                ; ret
             );
 
             test_recomp(code, expected_result);
@@ -1211,7 +1238,7 @@ mod tests {
             );
 
             let expected_result = assemble_aarch64!(
-                ; ->indirect_bb_call:
+                ; ->indirect_bb_call_impl:
                 ; cmp w2, #0x1, lsl #0xc
                 ; b.ne >FAIL
                 ; b ->bb_0x1000
@@ -1227,6 +1254,11 @@ mod tests {
                 ; stp w8, w9, [x0]    // store w8->EAX, 2->EBX
                 ; ret
 
+                ; ->uwin_indirect_bb_call:
+                ; str x30, [sp, #-0x10]!
+                ; bl ->indirect_bb_call_impl
+                ; ldr x30, [sp], #0x10
+                ; ret
             );
 
             test_recomp(code, expected_result);
@@ -1239,7 +1271,7 @@ mod tests {
             );
 
             let expected_result = assemble_aarch64!(
-                ; ->indirect_bb_call:
+                ; ->indirect_bb_call_impl:
                 ; cmp w2, #0x1, lsl #0xc
                 ; b.ne >FAIL
                 ; b ->bb_0x1000
@@ -1250,6 +1282,12 @@ mod tests {
                 ; ->bb_0x1000:
                 ; mov w8, #0x2a
                 ; strb w8, [x0]
+                ; ret
+
+                ; ->uwin_indirect_bb_call:
+                ; str x30, [sp, #-0x10]!
+                ; bl ->indirect_bb_call_impl
+                ; ldr x30, [sp], #0x10
                 ; ret
             );
 
@@ -1263,7 +1301,7 @@ mod tests {
             );
 
             let expected_result = assemble_aarch64!(
-                ; ->indirect_bb_call:
+                ; ->indirect_bb_call_impl:
                 ; cmp w2, #0x1, lsl #0xc
                 ; b.ne >FAIL
                 ; b ->bb_0x1000
@@ -1274,6 +1312,12 @@ mod tests {
                 ; ->bb_0x1000:
                 ; mov w8, #0x2a
                 ; strh w8, [x0]
+                ; ret
+
+                ; ->uwin_indirect_bb_call:
+                ; str x30, [sp, #-0x10]!
+                ; bl ->indirect_bb_call_impl
+                ; ldr x30, [sp], #0x10
                 ; ret
             );
 

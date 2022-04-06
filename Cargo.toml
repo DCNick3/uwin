@@ -16,6 +16,7 @@ members = [
     "win32-bindgen/metadata",
     "win32-bindgen/tokens",
 
+    "runtime",
     "recompiler",
     "recomputil",
     "memory-image",
