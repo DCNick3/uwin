@@ -3,6 +3,8 @@ use itertools::Itertools;
 use memmap2::Mmap;
 use object::read::pe::PeFile32;
 use object::{LittleEndian, Object, ObjectSymbol, ObjectSymbolTable, SymbolKind as ObjSymbolKind};
+use serde::{Deserialize, Serialize};
+use serde_bytes::ByteBuf;
 use std::collections::BTreeMap;
 use std::fs::File;
 use std::ops::Deref;
@@ -61,7 +63,39 @@ impl<'a> Deref for PeFileWrapper<'a> {
 
 type PeFileYoke = Yoke<PeFileWrapper<'static>, EitherCart<Mmap, Vec<u8>>>;
 
+fn get_data(yoke: &PeFileYoke) -> ByteBuf {
+    match yoke.backing_cart() {
+        EitherCart::A(mmap) => ByteBuf::from((&*mmap).to_vec()),
+        EitherCart::B(vec) => ByteBuf::from(vec.clone()),
+    }
+}
+
+#[derive(Serialize, Deserialize)]
+#[serde(remote = "PeFileYoke")]
+struct PeFileYokeDef {
+    #[serde(getter = "get_data")]
+    data: ByteBuf,
+}
+
+impl From<PeFileYokeDef> for PeFileYoke {
+    fn from(def: PeFileYokeDef) -> Self {
+        let data = def.data.into_vec();
+
+        let yoke = Yoke::try_attach_to_cart_badly::<object::Error>(data, |c| {
+            Ok(PeFileWrapper(PeFile32::parse(c)?))
+        })
+        .expect("Could not parse the serialized PE file");
+
+        yoke.wrap_cart_in_either_b()
+    }
+}
+
+#[derive(Serialize, Deserialize)]
 pub struct PeFile {
+    // kinda ugly, huh?
+    // we serialize PeFileYoke as a backing bytes in the PE file and parse it on deserialization
+    // this can panic on bad inputs be we don't __precisely__ care about them... =)
+    #[serde(with = "PeFileYokeDef")]
     yoke: PeFileYoke,
     name: String,
     externally_supplied_symbols: Option<BTreeMap<u32, PeSymbol>>,
@@ -171,26 +205,28 @@ impl PeFile {
     }
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone, PartialEq, Eq, Hash, Serialize, Deserialize)]
 pub struct LoadedPeInfo {
     pub base_addr: u32,
     pub image_size: u32,
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone, PartialEq, Eq, Hash, Serialize, Deserialize)]
 pub enum SymbolKind {
     Code,
     Data,
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone, PartialEq, Eq, Hash, Serialize, Deserialize)]
 pub struct PeSymbol {
     pub name: String,
     pub kind: SymbolKind,
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone, PartialEq, Eq, Hash, Serialize, Deserialize)]
 pub struct ProcessImageSymbol {
+    // serde will dedup these Arc's on deserialization =(
+    // maybe writing a custom Deserialize will help :shrug:
     pub module: Arc<str>,
     pub symbol: String,
     pub kind: SymbolKind,

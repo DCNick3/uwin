@@ -5,6 +5,7 @@ use num::Integer;
 use object::pe::ImageNtHeaders32;
 use object::read::pe::{ExportTarget, ImageNtHeaders, Import};
 use object::{pe, LittleEndian, Object};
+use serde::{Deserialize, Serialize};
 use std::cmp::max;
 use std::collections::{BTreeMap, HashSet};
 use std::io::Write;
@@ -117,6 +118,7 @@ lazy_static! {
         HashSet::from(["kernel32.dll", "user32.dll"]);
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct LoadedProcessImage {
     pub memory: MemoryImage,
     pub modules: BTreeMap<String, (PeFile, LoadedPeInfo)>,

@@ -1,8 +1,9 @@
 use bitflags::bitflags;
+use serde::{Deserialize, Serialize};
 use std::fmt::{Display, Formatter};
 
 bitflags! {
-  #[derive(Default)]
+  #[derive(Default, Serialize, Deserialize)]
   pub struct Protection: usize {
     /// No access allowed at all.
     const NONE = 0;
@@ -47,10 +48,11 @@ impl Display for Protection {
     }
 }
 
-#[derive(Clone, Debug, PartialEq, Eq)]
+#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
 pub struct MemoryImageItem {
     pub addr: u32,
     pub protection: Protection,
+    #[serde(with = "serde_bytes")]
     pub data: Vec<u8>,
     pub comment: String,
 }
@@ -82,6 +84,7 @@ impl MemoryImageItem {
 
 /// Represents a executable image
 /// Is implemented as a collection of memory regions & references to their contents
+#[derive(Serialize, Deserialize)]
 pub struct MemoryImage {
     regions: Vec<MemoryImageItem>,
 }
