@@ -1,0 +1,16 @@
+[package]
+name = "test_fixture"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+runtime = { path = "../runtime" }
+recompiler = { path = "../recompiler" }
+win32-mem = { path = "../win32-mem" }
+
+region = "3.0.0"
+
+[build-dependencies]
+recompiler = { path = "../recompiler", features = ["recompilation", "mmap"] }

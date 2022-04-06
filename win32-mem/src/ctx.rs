@@ -25,6 +25,7 @@ pub trait MemoryCtx: Copy + PartialEq {
 /// The lifetime denotes the period of validity of the allocated virtual space
 #[cfg(target_pointer_width = "64")]
 #[derive(Copy, Clone, PartialEq, Eq)]
+#[repr(transparent)] // to pass FlatMemoryCtx into recompiled functions instead of raw pointers
 pub struct FlatMemoryCtx {
     base: *mut u8,
 }
@@ -43,6 +44,12 @@ impl FlatMemoryCtx {
         // thus there would be no overflow and .add should work
         // It is also arguably part of the same "allocated object" but how to defined it is a bit hard to answer
         unsafe { self.base.add(ptr as usize) }
+    }
+}
+
+impl From<FlatMemoryCtx> for *mut u8 {
+    fn from(ctx: FlatMemoryCtx) -> Self {
+        ctx.base
     }
 }
 

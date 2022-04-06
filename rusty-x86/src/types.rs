@@ -1,3 +1,4 @@
+use std::ffi::c_void;
 use std::fmt::{Debug, Formatter};
 
 use derive_more::Display;
@@ -306,3 +307,5 @@ impl<B: Builder> Clone for ControlFlow<B> {
         }
     }
 }
+
+pub type BbFunc = unsafe extern "C" fn(*mut CpuContext, *mut u8) -> c_void;

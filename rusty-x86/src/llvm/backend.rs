@@ -1,5 +1,4 @@
 use std::collections::BTreeMap;
-use std::ffi::c_void;
 use std::marker::PhantomData;
 use std::sync::Arc;
 
@@ -15,7 +14,7 @@ use inkwell::values::{
 use inkwell::{AddressSpace, IntPredicate};
 
 use crate::backend::{BoolValue, ComparisonType, IntValue};
-use crate::types::{CpuContext, Flag, FullSizeGeneralPurposeRegister, IntType, Register};
+use crate::types::{Flag, FullSizeGeneralPurposeRegister, IntType, Register};
 use crate::ControlFlow;
 
 pub struct LlvmBuilder<'ctx, 'a> {
@@ -149,8 +148,6 @@ impl<'ctx> RuntimeHelpers<'ctx> {
 }
 
 pub const FASTCC_CALLING_CONVENTION: u32 = 8;
-
-pub type BbFunc = unsafe extern "C" fn(*mut CpuContext, *mut u8) -> c_void;
 
 impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
     pub fn new(

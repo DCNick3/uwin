@@ -124,6 +124,7 @@ pub struct LoadedProcessImage {
     pub modules: BTreeMap<String, (PeFile, LoadedPeInfo)>,
     pub symbols: BTreeMap<u32, ProcessImageSymbol>,
     pub magic_functions: BTreeMap<u32, String>,
+    pub exe_entrypoint: u32,
 }
 
 fn bind_imports(
@@ -273,6 +274,8 @@ pub fn load_process_image(executable: PeFile, dlls: Vec<PeFile>) -> Result<Loade
         .map(|(name, idx)| (idx, name))
         .collect::<BTreeMap<_, _>>();
 
+    let exe_entrypoint = executable.entry() + executable.base_addr();
+
     // start from the base image of the executable.
     // the executable will be loaded at the requested address this way, as we load it first
     let mut free_addr = executable.base_addr();
@@ -335,5 +338,6 @@ pub fn load_process_image(executable: PeFile, dlls: Vec<PeFile>) -> Result<Loade
         modules,
         symbols,
         magic_functions,
+        exe_entrypoint,
     })
 }

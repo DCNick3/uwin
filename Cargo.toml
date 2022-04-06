@@ -1,3 +1,8 @@
+[package]
+name = "dummy"
+version = "0.0.0"
+resolver = "2"
+edition = "2021"
 
 [profile.release]
 opt-level = 3
@@ -15,6 +20,8 @@ members = [
     "win32-bindgen/bindgenlib",
     "win32-bindgen/metadata",
     "win32-bindgen/tokens",
+
+    "test_fixture",
 
     "runtime",
     "recompiler",

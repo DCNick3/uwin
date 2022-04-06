@@ -1,0 +1,14 @@
+[package]
+name = "runtime"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+recompiler = { path = "../recompiler" }
+rusty-x86 = { path = "../rusty-x86" }
+win32-mem = { path = "../win32-mem" }
+
+lazy_static = "1.4.0"
+rmp-serde = "1.0.0"
