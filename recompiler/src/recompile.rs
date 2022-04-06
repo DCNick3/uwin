@@ -54,17 +54,21 @@ pub fn recompile_image<'ctx>(
             .expect("Serialized process image too large"),
     );
 
-    module
-        .add_global(ty, None, "uwin_serialized_address_space")
-        .set_initializer(&llvm_context.const_string(&serialized_process_image, false));
+    let address_space_glob = module.add_global(ty, None, "uwin_serialized_address_space");
 
-    module
-        .add_global(types.i32, None, "uwin_serialized_address_space_size")
-        .set_initializer(
-            &types
-                .i32
-                .const_int(serialized_process_image.len() as u64, false),
-        );
+    address_space_glob
+        .set_initializer(&llvm_context.const_string(&serialized_process_image, false));
+    address_space_glob.set_constant(true);
+
+    let address_space_size_glob =
+        module.add_global(types.i32, None, "uwin_serialized_address_space_size");
+
+    address_space_size_glob.set_initializer(
+        &types
+            .i32
+            .const_int(serialized_process_image.len() as u64, false),
+    );
+    address_space_size_glob.set_constant(true);
 
     Ok(module)
 }
