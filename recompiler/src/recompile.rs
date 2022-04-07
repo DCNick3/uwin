@@ -4,7 +4,7 @@ use crate::LoadedProcessImage;
 use itertools::Itertools;
 use rusty_x86::inkwell::context::Context;
 use rusty_x86::inkwell::module::Module;
-use rusty_x86::llvm::backend::{RuntimeHelpers, Types};
+use rusty_x86::llvm::backend::Types;
 
 pub fn find_basic_blocks(image: &LoadedProcessImage) -> Vec<u32> {
     let sym_heads = image
@@ -32,14 +32,12 @@ pub fn recompile_image<'ctx>(
     image: &LoadedProcessImage,
 ) -> Result<Module<'ctx>> {
     let types = Types::new(llvm_context);
-    let runtime_helpers = RuntimeHelpers::dummy(types.clone());
 
     let basic_blocks = find_basic_blocks(image);
 
     let module = rusty_x86::llvm::recompile(
         llvm_context,
         types.clone(),
-        &runtime_helpers,
         &image.magic_functions,
         &image.memory,
         &basic_blocks,

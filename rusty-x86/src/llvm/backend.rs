@@ -1,5 +1,4 @@
 use std::collections::BTreeMap;
-use std::marker::PhantomData;
 use std::sync::Arc;
 
 use inkwell::builder::Builder;
@@ -134,15 +133,17 @@ impl Default for Intrinsics {
 }
 
 pub struct RuntimeHelpers<'ctx> {
-    // TODO: kinda want strong typing here...
-    // types are available in Types structure
-    pub phantom: PhantomData<&'ctx ()>,
+    pub missing_bb: FunctionValue<'ctx>,
 }
 
 impl<'ctx> RuntimeHelpers<'ctx> {
-    pub fn dummy(_types: Arc<Types<'ctx>>) -> Self {
+    pub fn new(module: &Module<'ctx>, types: Arc<Types<'ctx>>) -> Self {
         Self {
-            phantom: PhantomData::default(),
+            missing_bb: module.add_function(
+                "uwin_missing_bb",
+                types.indirect_bb_call,
+                Some(Linkage::External),
+            ),
         }
     }
 }

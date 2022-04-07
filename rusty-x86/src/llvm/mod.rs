@@ -17,6 +17,7 @@ use crate::codegen_instr;
 use crate::llvm::backend::{
     Intrinsics, LlvmBuilder, RuntimeHelpers, Types, FASTCC_CALLING_CONVENTION,
 };
+use crate::llvm::BasicBlockSource::{DiscoveryCall, DiscoveryJump};
 use memory_image::MemoryImage;
 
 pub mod backend;
@@ -132,16 +133,24 @@ fn codegen_dynamic_dispatcher_wrapper<'ctx, 'a>(
     indirect_bb_call
 }
 
+#[derive(Debug)]
+enum BasicBlockSource {
+    DiscoveryJump(u32),
+    DiscoveryCall(u32),
+    Provided,
+}
+
 pub fn recompile<'ctx, 'a>(
     context: &'ctx Context,
     types: Arc<Types<'ctx>>,
-    rt_funs: &'a RuntimeHelpers<'ctx>,
     magic_functions: &'a BTreeMap<u32, String>,
     image: &'a MemoryImage,
     basic_blocks: &[u32],
 ) -> Module<'ctx> {
     let module_obj = context.create_module("test");
     let module = &module_obj;
+
+    let rt_funs = RuntimeHelpers::new(module, types.clone());
 
     let indirect_bb_call_impl = module.add_function(
         "indirect_bb_call_impl",
@@ -150,20 +159,24 @@ pub fn recompile<'ctx, 'a>(
     );
     indirect_bb_call_impl.set_call_conventions(FASTCC_CALLING_CONVENTION);
 
-    let mut queue = VecDeque::<u32>::new();
+    let mut queue = VecDeque::<(u32, BasicBlockSource)>::new();
     let mut lifted_functions = HashMap::new();
-    queue.extend(basic_blocks);
+    queue.extend(
+        basic_blocks
+            .iter()
+            .map(|&addr| (addr, BasicBlockSource::Provided)),
+    );
 
     while !queue.is_empty() {
-        let address = queue.pop_front().unwrap();
+        let (address, source) = queue.pop_front().unwrap();
 
-        debug!("processing bb at 0x{:08x}", address);
+        debug!("processing bb at 0x{:08x} (source = {:?})", address, source);
 
         let mut builder = LlvmBuilder::new(
             context,
             module,
             types.clone(),
-            rt_funs,
+            &rt_funs,
             magic_functions,
             indirect_bb_call_impl,
             address,
@@ -192,14 +205,17 @@ pub fn recompile<'ctx, 'a>(
 
             if let Some(addr) = flow.outer_jump_ref() {
                 if !lifted_functions.contains_key(&addr) {
-                    queue.push_back(addr);
+                    queue.push_back((addr, DiscoveryJump(instr.next_ip32() - instr.len() as u32)));
                 }
             }
             // kinda meh
             if instr.op_code().code() == Call_rel32_32 {
                 let target = instr.near_branch32();
                 if !lifted_functions.contains_key(&target) {
-                    queue.push_back(target);
+                    queue.push_back((
+                        target,
+                        DiscoveryCall(instr.next_ip32() - instr.len() as u32),
+                    ));
                 }
             }
 

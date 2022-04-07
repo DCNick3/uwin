@@ -309,3 +309,8 @@ impl<B: Builder> Clone for ControlFlow<B> {
 }
 
 pub type BbFunc = unsafe extern "C" fn(*mut CpuContext, *mut u8) -> c_void;
+
+#[repr(u32)]
+pub enum RuntimeError {
+    Generic,
+}

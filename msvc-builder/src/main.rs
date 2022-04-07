@@ -1,5 +1,5 @@
+use crate::fixups::fixup_msvc_pe;
 use crate::msvc::Msvc;
-use crate::reproducible::zero_out_pe_timestamps;
 use crate::wine::{WinePrefix, WineTool};
 use anyhow::{Context, Result};
 use colored::Colorize;
@@ -9,8 +9,8 @@ use std::env;
 use std::path::{Path, PathBuf};
 use tempdir::TempDir;
 
+mod fixups;
 mod msvc;
-mod reproducible;
 mod wine;
 
 enum WinePrefixPath {
@@ -83,7 +83,7 @@ fn main() -> Result<()> {
 
                 debug!("Zero out the timestamps...");
 
-                zero_out_pe_timestamps(&output).context("Zeroing out the timestamps")?;
+                fixup_msvc_pe(&output).context("Zeroing out the timestamps")?;
             }
         } else if file_type.is_dir() {
             warn!("Ignoring directory {:?}", path);

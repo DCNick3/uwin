@@ -130,6 +130,7 @@ fn recompile(args: Recompile) {
 }
 
 fn main() {
+    env_logger::init();
     let args = Cli::parse();
 
     use Commands::*;

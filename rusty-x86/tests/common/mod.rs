@@ -241,13 +241,11 @@ fn execute_rusty_x86(
 ) -> (CpuContext, Vec<(u32, Vec<u8>)>) {
     let context = inkwell::context::Context::create();
     let types = rusty_x86::llvm::backend::Types::new(&context);
-    let rt_funs = &rusty_x86::llvm::backend::RuntimeHelpers::dummy(types.clone());
     let magic_functions = &BTreeMap::new();
     let (image, entry) = code_and_args.get_code();
     let module = rusty_x86::llvm::recompile(
         &context,
         types.clone(),
-        rt_funs,
         magic_functions,
         &image,
         basic_blocks,
