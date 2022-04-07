@@ -27,4 +27,6 @@ members = [
     "recompiler",
     "recomputil",
     "memory-image",
+
+    "msvc-builder",
 ]
