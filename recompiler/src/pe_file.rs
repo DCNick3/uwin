@@ -5,9 +5,7 @@ use itertools::Itertools;
 #[cfg(feature = "mmap")]
 use memmap2::Mmap;
 use object::read::pe::PeFile32;
-use object::{
-    LittleEndian, Object, ObjectSymbol, ObjectSymbolTable, SymbolIndex, SymbolKind as ObjSymbolKind,
-};
+use object::{LittleEndian, Object, ObjectSymbol, ObjectSymbolTable, SymbolKind as ObjSymbolKind};
 use serde::{Deserialize, Serialize};
 use serde_bytes::ByteBuf;
 use stable_deref_trait::StableDeref;

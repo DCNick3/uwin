@@ -906,7 +906,6 @@ mod tests {
         fn recompile(code: &[u8]) -> Vec<u8> {
             let context = &Context::create();
             let types = llvm::backend::Types::new(context);
-            let rt_funs = &llvm::backend::RuntimeHelpers::new(types.clone());
             let magic_functions = &BTreeMap::new();
 
             let code = MemoryImage::from_code_region(0x1000, code);
