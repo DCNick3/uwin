@@ -7,6 +7,7 @@ const INCLUDE_NAMESPACES: &[&str] = &[
     "Windows.Win32.Foundation",
     "Windows.Win32.System.SystemInformation",
     "Windows.Win32.System.Diagnostics.Debug",
+    "Windows.Win32.UI.WindowsAndMessaging",
 ];
 
 const EXCLUDE_ITEMS: &[(&str, &[&str])] = &[

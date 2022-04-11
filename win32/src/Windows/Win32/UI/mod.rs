@@ -7,7 +7,5 @@
 )]
 #[allow(unused)]
 use win32::core::prelude::*;
-pub mod Foundation;
-pub mod System;
-pub mod UI;
+pub mod WindowsAndMessaging;
 pub trait Api {}

@@ -52,7 +52,13 @@ pub fn gen_function(def: &MethodDef, gen: &Gen) -> TokenStream {
     //     gen_win_function(def, gen)
     // }
 
-    let res = quote! { fn #name(#(#params),*) #return_type; };
+    let cfg = def.cfg();
+    let features = gen.cfg(&cfg);
+
+    let res = quote! {
+        #features
+        fn #name(#(#params),*) #return_type;
+    };
 
     res
 }
