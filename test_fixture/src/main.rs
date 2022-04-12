@@ -1,44 +1,55 @@
 use recompiler::memory_image::{MemoryImageItem, Protection};
 use region::Allocation;
 use runtime::{CpuContext, FlatMemoryCtx, PROGRAM_IMAGE};
+use std::any::Any;
 use std::ffi::CStr;
 use std::io::Write;
 use std::os::raw::c_char;
+use std::panic::{catch_unwind, AssertUnwindSafe};
+use std::process::abort;
 use win32_mem::ctx::MemoryCtx;
 
 #[no_mangle]
 extern "C" fn magic_MessageBoxA(context: &mut CpuContext, memory: FlatMemoryCtx) {
-    // !!! DON'T FORGET: DON'T PANIC !!!
+    let result = catch_unwind(AssertUnwindSafe(|| {
+        let esp = context.gp_regs[4];
 
-    let esp = context.gp_regs[4];
+        let h_wnd_ptr = esp + 8;
+        let lp_text_ptr = esp + 12;
+        let lp_caption_ptr = esp + 16;
+        let u_type_ptr = esp + 20;
 
-    let h_wnd_ptr = esp + 8;
-    let lp_text_ptr = esp + 12;
-    let lp_caption_ptr = esp + 16;
-    let u_type_ptr = esp + 20;
+        let h_wnd = memory.read::<u32>(h_wnd_ptr);
 
-    let h_wnd = memory.read::<u32>(h_wnd_ptr);
+        // these are pointers, so our wrapper would work. But API is currently broken =)
+        let lp_text = memory.read::<u32>(lp_text_ptr);
+        let lp_caption = memory.read::<u32>(lp_caption_ptr);
 
-    // these are pointers, so our wrapper would work. But API is currently broken =)
-    let lp_text = memory.read::<u32>(lp_text_ptr);
-    let lp_caption = memory.read::<u32>(lp_caption_ptr);
+        let u_type_ptr = memory.read::<u32>(u_type_ptr);
 
-    let u_type_ptr = memory.read::<u32>(u_type_ptr);
+        let text = unsafe { CStr::from_ptr(memory.to_native_ptr(lp_text) as *const c_char) }
+            .to_str()
+            .unwrap();
+        let caption = unsafe { CStr::from_ptr(memory.to_native_ptr(lp_caption) as *const c_char) }
+            .to_str()
+            .unwrap();
 
-    let text = unsafe { CStr::from_ptr(memory.to_native_ptr(lp_text) as *const c_char) }
-        .to_str()
-        .unwrap();
-    let caption = unsafe { CStr::from_ptr(memory.to_native_ptr(lp_caption) as *const c_char) }
-        .to_str()
-        .unwrap();
+        println!(
+            "MessageBoxA({:?}, {:?}, {:?}, {:?})",
+            h_wnd, text, caption, u_type_ptr
+        );
 
-    println!(
-        "MessageBoxA({:?}, {:?}, {:?}, {:?})",
-        h_wnd, text, caption, u_type_ptr
-    );
+        //panic!("Hello, I am a panic, {}", 4);
 
-    // pop args from the stack
-    context.gp_regs[4] -= 5 * 4;
+        // pop args from the stack
+        context.gp_regs[4] -= 5 * 4;
+    }));
+
+    if let Err(_) = result {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+
+        abort();
+    }
 }
 
 pub struct MemoryMapper {
