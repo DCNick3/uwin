@@ -6,26 +6,38 @@ use std::io::Write;
 use std::os::raw::c_char;
 use std::panic::{catch_unwind, AssertUnwindSafe};
 use std::process::abort;
-use win32_mem::ctx::MemoryCtx;
+use win32_mem::ptr::{ConstPtr, PtrRepr};
+use win32_mem::thread_ctx::set_thread_ctx;
+
+#[allow(non_snake_case)]
+#[inline(never)]
+fn MessageBoxA(h_wnd: u32, lp_text: &str, lp_caption: &str, u_type: u32) {
+    println!(
+        "MessageBoxA({:?}, {:?}, {:?}, {:?})",
+        h_wnd, lp_text, lp_caption, u_type
+    );
+}
 
 #[no_mangle]
 extern "C" fn magic_MessageBoxA(context: &mut CpuContext, memory: FlatMemoryCtx) {
     let result = catch_unwind(AssertUnwindSafe(|| {
-        let esp = context.gp_regs[4];
+        let esp = ConstPtr::<PtrRepr>::new(context.gp_regs[4]);
 
-        let h_wnd_ptr = esp + 8;
-        let lp_text_ptr = esp + 12;
-        let lp_caption_ptr = esp + 16;
-        let u_type_ptr = esp + 20;
+        // TODO: use stronger typing
+        let h_wnd_ptr = esp.offset(8);
+        let lp_text_ptr = esp.offset(12);
+        let lp_caption_ptr = esp.offset(16);
+        let u_type_ptr = esp.offset(20);
 
-        let h_wnd = memory.read::<u32>(h_wnd_ptr);
+        let h_wnd = h_wnd_ptr.read_with(memory);
 
         // these are pointers, so our wrapper would work. But API is currently broken =)
-        let lp_text = memory.read::<u32>(lp_text_ptr);
-        let lp_caption = memory.read::<u32>(lp_caption_ptr);
+        let lp_text = lp_text_ptr.read_with(memory);
+        let lp_caption = lp_caption_ptr.read_with(memory);
 
-        let u_type_ptr = memory.read::<u32>(u_type_ptr);
+        let u_type_ptr = u_type_ptr.read_with(memory);
 
+        // TODO: add a wrapper type for LPCSTR (and LPSTR)
         let text = unsafe { CStr::from_ptr(memory.to_native_ptr(lp_text) as *const c_char) }
             .to_str()
             .unwrap();
@@ -33,12 +45,7 @@ extern "C" fn magic_MessageBoxA(context: &mut CpuContext, memory: FlatMemoryCtx)
             .to_str()
             .unwrap();
 
-        println!(
-            "MessageBoxA({:?}, {:?}, {:?}, {:?})",
-            h_wnd, text, caption, u_type_ptr
-        );
-
-        //panic!("Hello, I am a panic, {}", 4);
+        MessageBoxA(h_wnd, text, caption, u_type_ptr);
 
         // pop args from the stack
         context.gp_regs[4] -= 5 * 4;
@@ -112,6 +119,9 @@ impl MemoryMapper {
 fn main() {
     let mut mapper = MemoryMapper::new().expect("Mapping the base region");
 
+    let memory_ctx = unsafe { mapper.flat_memory_ctx() };
+    set_thread_ctx(memory_ctx);
+
     for item in PROGRAM_IMAGE.memory.iter() {
         mapper.map_item(item).expect("Mapping program memory")
     }
@@ -127,5 +137,5 @@ fn main() {
     // set ESP to the bottom of the stack
     context.gp_regs[4] = stack_top + stack_size;
 
-    runtime::execute_recompiled_code(&mut context, unsafe { mapper.flat_memory_ctx() }, entry);
+    runtime::execute_recompiled_code(&mut context, memory_ctx, entry);
 }

@@ -1,6 +1,7 @@
 pub mod conv;
 pub mod ctx;
 pub mod ptr;
+pub mod thread_ctx;
 
 #[cfg(test)]
 mod tests {
@@ -30,17 +31,14 @@ mod tests {
     #[test]
     fn read_write() {
         let ctx = DummyCtx();
-        let ptr = RawPtr {
-            value: 0,
-            context: ctx,
-        };
+        let ptr = RawPtr { value: 0 };
 
-        assert_eq!(ptr.read::<u32>(), 0);
-        ptr.write(12u32);
+        assert_eq!(ptr.read_with::<u32, _>(ctx), 0u32);
+        ptr.write_with(ctx, 12u32);
 
         let ptr1 = ptr.offset(12);
 
-        assert_eq!(ptr1.read::<u32>(), 0);
-        ptr1.write(12u32);
+        assert_eq!(ptr1.read_with::<u32, _>(ctx), 0u32);
+        ptr1.write_with(ctx, 12u32);
     }
 }

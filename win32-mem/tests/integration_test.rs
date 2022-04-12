@@ -3,6 +3,7 @@ use region::{Allocation, Protection};
 use win32_mem::conv::FromIntoMemory;
 use win32_mem::ctx::FlatMemoryCtx;
 use win32_mem::ptr::{MutPtr, PtrRepr};
+use win32_mem::thread_ctx::set_thread_ctx;
 
 // TODO: most probably the region crate does not provide the level of control required
 // should research if it is so and maybe create smth NIH that fits
@@ -72,6 +73,8 @@ impl FromIntoMemory for TestStruct {
 ///  mov [rdi + rax], edx
 ///  ret
 /// (nice)
+/// !!! this is no longer true when thread-local context was introduced
+/// TODO: investigate possible improvements
 #[inline(never)]
 fn write_int(mut_ptr: &MutPtr<u32>, val: u32) {
     mut_ptr.write(val);
@@ -82,6 +85,8 @@ fn write_int(mut_ptr: &MutPtr<u32>, val: u32) {
 ///  mov eax, [rdi + rax]
 ///  ret
 /// (nice)
+/// !!! this is no longer true when thread-local context was introduced
+/// TODO: investigate possible improvements
 #[inline(never)]
 fn read_int(mut_ptr: &MutPtr<u32>) -> u32 {
     mut_ptr.read()
@@ -97,6 +102,8 @@ fn read_int(mut_ptr: &MutPtr<u32>) -> u32 {
 ///  ret
 /// (nice)
 /// note: on aarch64 the result is actually suboptimal (the compiler generates dead stores to the stack)
+/// !!! this is no longer true when thread-local context was introduced
+/// TODO: investigate possible improvements
 #[inline(never)]
 fn write_struct(mut_ptr: &MutPtr<TestStruct>, val: TestStruct) {
     mut_ptr.write(val)
@@ -111,6 +118,8 @@ fn write_struct(mut_ptr: &MutPtr<TestStruct>, val: TestStruct) {
 ///  or    rdx, rcx
 ///  ret
 /// (nice)
+/// !!! this is no longer true when thread-local context was introduced
+/// TODO: investigate possible improvements
 #[inline(never)]
 fn read_struct(mut_ptr: &MutPtr<TestStruct>) -> TestStruct {
     mut_ptr.read()
@@ -120,10 +129,12 @@ fn read_struct(mut_ptr: &MutPtr<TestStruct>) -> TestStruct {
 fn simple_int_fiddle() {
     let mut mgr = DummyFlatMemoryManager::new();
 
+    set_thread_ctx(mgr.get_ctx());
+
     // map one page to play around with
     let page = mgr.map_rw(0x37000, 0x1000);
 
-    let mut_ptr = MutPtr::<u32>::new(mgr.get_ctx(), page);
+    let mut_ptr = MutPtr::<u32>::new(page);
 
     write_int(black_box(&mut_ptr), black_box(12));
     assert_eq!(read_int(black_box(&mut_ptr)), 12);
@@ -133,10 +144,12 @@ fn simple_int_fiddle() {
 fn simple_struct_fiddle() {
     let mut mgr = DummyFlatMemoryManager::new();
 
+    set_thread_ctx(mgr.get_ctx());
+
     // map one page to play around with
     let page = mgr.map_rw(0x37000, 0x1000);
 
-    let mut_ptr = MutPtr::<TestStruct>::new(mgr.get_ctx(), page);
+    let mut_ptr = MutPtr::<TestStruct>::new(page);
 
     let test_struct = TestStruct {
         val1: 12,

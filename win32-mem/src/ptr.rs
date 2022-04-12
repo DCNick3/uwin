@@ -1,5 +1,6 @@
 use crate::conv::FromIntoMemory;
-use crate::ctx::{DefaultMemoryCtx, MemoryCtx};
+use crate::ctx::MemoryCtx;
+use crate::thread_ctx::get_thread_ctx;
 use std::fmt::{Debug, Formatter};
 use std::marker::PhantomData;
 
@@ -11,32 +12,28 @@ pub type PtrDiffRepr = i32;
 /// Stores memory context inside, along with the pointer value
 /// Needs wrapping to provide any meaningful
 #[derive(Copy, Clone, PartialEq, Eq)]
-pub struct RawPtr<MCtx: MemoryCtx = DefaultMemoryCtx> {
-    pub context: MCtx,
+pub struct RawPtr {
     pub value: PtrRepr,
 }
 
-impl<MCtx: MemoryCtx> Debug for RawPtr<MCtx> {
+impl Debug for RawPtr {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
         write!(f, "Ptr {:#010x}", self.value)
     }
 }
 
-impl<MCtx: MemoryCtx> RawPtr<MCtx> {
-    fn new(ctx: MCtx, ptr: PtrRepr) -> Self {
-        Self {
-            context: ctx,
-            value: ptr,
-        }
+impl RawPtr {
+    fn new(ptr: PtrRepr) -> Self {
+        Self { value: ptr }
     }
 }
 
-impl<MCtx: MemoryCtx> RawPtr<MCtx> {
-    pub fn read<N: FromIntoMemory>(&self) -> N {
-        self.context.read(self.value)
+impl RawPtr {
+    pub fn read_with<N: FromIntoMemory, MCtx: MemoryCtx>(&self, ctx: MCtx) -> N {
+        ctx.read(self.value)
     }
-    pub fn write<N: FromIntoMemory>(&self, value: N) {
-        self.context.write::<N>(value, self.value)
+    pub fn write_with<N: FromIntoMemory, MCtx: MemoryCtx>(&self, ctx: MCtx, value: N) {
+        ctx.write::<N>(value, self.value)
     }
 
     pub fn offset(&self, offset: PtrDiffRepr) -> Self {
@@ -46,74 +43,95 @@ impl<MCtx: MemoryCtx> RawPtr<MCtx> {
             self.value + (offset as u32)
         };
 
-        Self {
-            context: self.context,
-            value: res,
-        }
+        Self { value: res }
     }
 }
 
-#[derive(Eq)]
-pub struct MutPtr<T, MCtx: MemoryCtx = DefaultMemoryCtx>(RawPtr<MCtx>, PhantomData<T>);
+pub struct MutPtr<T>(RawPtr, PhantomData<T>);
 
-impl<T, MCtx: MemoryCtx> MutPtr<T, MCtx> {
-    pub fn new(ctx: MCtx, val: PtrRepr) -> Self {
-        Self(RawPtr::new(ctx, val), Default::default())
+impl<T> MutPtr<T> {
+    pub fn new(val: PtrRepr) -> Self {
+        Self(RawPtr::new(val), Default::default())
     }
 }
-impl<T: FromIntoMemory, MCtx: MemoryCtx> MutPtr<T, MCtx> {
+impl<T: FromIntoMemory> MutPtr<T> {
+    pub fn read_with<N: FromIntoMemory, MCtx: MemoryCtx>(&self, ctx: MCtx) -> N {
+        self.0.read_with(ctx)
+    }
+    pub fn write_with<N: FromIntoMemory, MCtx: MemoryCtx>(&self, ctx: MCtx, value: N) {
+        self.0.write_with(ctx, value)
+    }
+
     pub fn read(&self) -> T {
-        self.0.read::<T>()
+        self.read_with(get_thread_ctx())
+    }
+    pub fn write(&self, value: T) {
+        self.write_with(get_thread_ctx(), value)
     }
 
-    pub fn write(&self, value: T) {
-        self.0.write::<T>(value)
+    pub fn offset(&self, offset: PtrDiffRepr) -> Self {
+        Self(self.0.offset(offset), Default::default())
+    }
+
+    pub fn pun<T1>(&self) -> ConstPtr<T1> {
+        ConstPtr(self.0, Default::default())
     }
 }
 
-impl<T, MCtx: MemoryCtx> Copy for MutPtr<T, MCtx> {}
-impl<T, MCtx: MemoryCtx> Clone for MutPtr<T, MCtx> {
+impl<T> Copy for MutPtr<T> {}
+impl<T> Clone for MutPtr<T> {
     fn clone(&self) -> Self {
         *self
     }
 }
-impl<T, MCtx: MemoryCtx> PartialEq for MutPtr<T, MCtx> {
+impl<T> PartialEq for MutPtr<T> {
     fn eq(&self, other: &Self) -> bool {
         self.0 == other.0
     }
 }
-impl<T, MCtx: MemoryCtx> Debug for MutPtr<T, MCtx> {
+impl<T> Eq for MutPtr<T> {}
+impl<T> Debug for MutPtr<T> {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
         self.0.fmt(f)
     }
 }
 
-#[derive(Eq)]
-pub struct ConstPtr<T, MCtx: MemoryCtx = DefaultMemoryCtx>(RawPtr<MCtx>, PhantomData<T>);
+pub struct ConstPtr<T>(RawPtr, PhantomData<T>);
 
-impl<T, MCtx: MemoryCtx> ConstPtr<T, MCtx> {
-    pub fn new(ctx: MCtx, val: PtrRepr) -> Self {
-        Self(RawPtr::new(ctx, val), Default::default())
+impl<T> ConstPtr<T> {
+    pub fn new(val: PtrRepr) -> Self {
+        Self(RawPtr::new(val), Default::default())
     }
 }
-impl<T: FromIntoMemory, MCtx: MemoryCtx> ConstPtr<T, MCtx> {
+impl<T: FromIntoMemory> ConstPtr<T> {
+    pub fn read_with<N: FromIntoMemory, MCtx: MemoryCtx>(&self, ctx: MCtx) -> N {
+        self.0.read_with(ctx)
+    }
     pub fn read(&self) -> T {
-        self.0.read::<T>()
+        self.read_with(get_thread_ctx())
+    }
+
+    pub fn offset(&self, offset: PtrDiffRepr) -> Self {
+        Self(self.0.offset(offset), Default::default())
+    }
+
+    pub fn pun<T1>(&self) -> ConstPtr<T1> {
+        ConstPtr(self.0, Default::default())
     }
 }
 
-impl<T, MCtx: MemoryCtx> Copy for ConstPtr<T, MCtx> {}
-impl<T, MCtx: MemoryCtx> Clone for ConstPtr<T, MCtx> {
+impl<T> Copy for ConstPtr<T> {}
+impl<T> Clone for ConstPtr<T> {
     fn clone(&self) -> Self {
         *self
     }
 }
-impl<T, MCtx: MemoryCtx> PartialEq for ConstPtr<T, MCtx> {
+impl<T> PartialEq for ConstPtr<T> {
     fn eq(&self, other: &Self) -> bool {
         self.0 == other.0
     }
 }
-impl<T, MCtx: MemoryCtx> Debug for ConstPtr<T, MCtx> {
+impl<T> Debug for ConstPtr<T> {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
         self.0.fmt(f)
     }
