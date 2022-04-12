@@ -1,7 +1,6 @@
 use recompiler::memory_image::{MemoryImageItem, Protection};
 use region::Allocation;
 use runtime::{CpuContext, FlatMemoryCtx, PROGRAM_IMAGE};
-use std::any::Any;
 use std::ffi::CStr;
 use std::io::Write;
 use std::os::raw::c_char;

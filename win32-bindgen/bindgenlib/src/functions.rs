@@ -228,6 +228,7 @@ pub fn gen_function(def: &MethodDef, gen: &Gen) -> TokenStream {
 //     }
 // }
 
+#[allow(unused)]
 fn does_not_return(def: &MethodDef) -> TokenStream {
     if def.does_not_return() {
         quote! { -> ! }

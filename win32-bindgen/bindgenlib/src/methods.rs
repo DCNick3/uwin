@@ -1,5 +1,6 @@
 use super::*;
 
+#[allow(unused)]
 pub fn gen_win32_params(params: &[MethodParam], gen: &Gen) -> TokenStream {
     let mut tokens = quote! {};
 
@@ -16,6 +17,7 @@ pub fn gen_win32_params(params: &[MethodParam], gen: &Gen) -> TokenStream {
     tokens
 }
 
+#[allow(unused)]
 pub fn gen_win32_abi_arg(param: &MethodParam) -> TokenStream {
     let name = gen_param_name(&param.def);
 

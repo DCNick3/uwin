@@ -175,6 +175,7 @@ pub fn gen_constant_value(value: &ConstantValue) -> TokenStream {
     }
 }
 
+#[allow(unused)]
 pub fn gen_runtime_name(def: &TypeDef, cfg: &Cfg, gen: &Gen) -> TokenStream {
     let name = gen_type_ident(def, gen);
     let cfg = gen.cfg(cfg);
@@ -201,6 +202,7 @@ pub fn gen_runtime_name(def: &TypeDef, cfg: &Cfg, gen: &Gen) -> TokenStream {
     }
 }
 
+#[allow(unused)]
 pub fn gen_win32_upcall(sig: &Signature, inner: TokenStream) -> TokenStream {
     match sig.kind() {
         // SignatureKind::ResultValue => {
@@ -246,6 +248,7 @@ pub fn gen_win32_upcall(sig: &Signature, inner: TokenStream) -> TokenStream {
     }
 }
 
+#[allow(unused)]
 pub fn gen_winrt_upcall(sig: &Signature, inner: TokenStream) -> TokenStream {
     let invoke_args = sig.params.iter().map(gen_winrt_invoke_arg);
 
@@ -283,6 +286,7 @@ pub fn gen_winrt_upcall(sig: &Signature, inner: TokenStream) -> TokenStream {
     }
 }
 
+#[allow(unused)]
 fn gen_win32_invoke_arg(param: &MethodParam) -> TokenStream {
     let name = gen_param_name(&param.def);
 
@@ -295,6 +299,7 @@ fn gen_win32_invoke_arg(param: &MethodParam) -> TokenStream {
     }
 }
 
+#[allow(unused)]
 fn gen_winrt_invoke_arg(param: &MethodParam) -> TokenStream {
     let name = gen_param_name(&param.def);
     let abi_size_name: TokenStream = format!("{}_array_size", param.def.name()).into();
@@ -379,6 +384,7 @@ fn gen_winrt_invoke_arg(param: &MethodParam) -> TokenStream {
 //     }
 // }
 
+#[allow(unused)]
 fn gen_win32_produce_type(param: &MethodParam, gen: &Gen) -> TokenStream {
     let name = gen_param_name(&param.def);
     let kind = gen_default_type(&param.ty, gen);
@@ -391,7 +397,7 @@ fn gen_win32_produce_type(param: &MethodParam, gen: &Gen) -> TokenStream {
 }
 
 pub fn gen_default_type(def: &Type, gen: &Gen) -> TokenStream {
-    if let Type::WinrtArray(def) = def {
+    if let Type::WinrtArray(_) = def {
         todo!()
         // gen_default_type(def, gen)
     } else {
@@ -407,6 +413,7 @@ pub fn gen_default_type(def: &Type, gen: &Gen) -> TokenStream {
     }
 }
 
+#[allow(unused)]
 fn gen_winrt_produce_type(
     param: &MethodParam,
     include_param_names: bool,

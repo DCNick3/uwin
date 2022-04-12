@@ -78,6 +78,7 @@ impl Signature {
 }
 
 impl MethodParam {
+    #[allow(unused)]
     fn is_retval(&self) -> bool {
         // The Win32 metadata uses `RetValAttribute` to call out retval methods but it is employed
         // very sparingly, so this heuristic is used to apply the transformation more uniformly.

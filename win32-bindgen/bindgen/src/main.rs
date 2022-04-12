@@ -1,3 +1,4 @@
+#[allow(unused)]
 use rayon::prelude::*;
 use std::io::Write;
 use win32_bindgenlib as bindgen;

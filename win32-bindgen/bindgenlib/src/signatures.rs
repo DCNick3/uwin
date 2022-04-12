@@ -10,6 +10,7 @@ pub fn gen_return_sig(signature: &Signature, gen: &Gen) -> TokenStream {
     }
 }
 
+#[allow(unused)]
 pub fn gen_param_constraints(params: &[MethodParam], gen: &Gen) -> TokenStream {
     let mut tokens = quote! {};
 

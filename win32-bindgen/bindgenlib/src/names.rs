@@ -21,11 +21,13 @@ pub fn gen_type_ident(def: &TypeDef, gen: &Gen) -> TokenStream {
 }
 
 // TODO: use above instead
+#[allow(unused)]
 pub fn gen_vtbl_ident(def: &TypeDef, gen: &Gen) -> TokenStream {
     gen_type_ident_impl(def, gen, "_Vtbl")
 }
 
 // TODO: use above instead
+#[allow(unused)]
 pub fn gen_impl_ident(def: &TypeDef, gen: &Gen) -> TokenStream {
     gen_type_ident_impl(def, gen, "_Impl")
 }
@@ -59,6 +61,7 @@ pub fn gen_phantoms(def: &TypeDef, gen: &Gen) -> Vec<TokenStream> {
         .collect()
 }
 
+#[allow(unused)]
 pub fn gen_named_phantoms(def: &TypeDef, gen: &Gen) -> Vec<TokenStream> {
     def.generics
         .iter()
@@ -69,6 +72,7 @@ pub fn gen_named_phantoms(def: &TypeDef, gen: &Gen) -> Vec<TokenStream> {
         .collect()
 }
 
+#[allow(unused)]
 pub fn gen_type_generics(def: &TypeDef, gen: &Gen) -> Vec<TokenStream> {
     def.generics
         .iter()
