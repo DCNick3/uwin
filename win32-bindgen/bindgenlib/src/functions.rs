@@ -57,7 +57,9 @@ pub fn gen_function(def: &MethodDef, gen: &Gen) -> TokenStream {
 
     let res = quote! {
         #features
-        fn #name(#(#params),*) #return_type;
+        fn #name(#(#params),*) #return_type {
+            todo!()
+        }
     };
 
     res

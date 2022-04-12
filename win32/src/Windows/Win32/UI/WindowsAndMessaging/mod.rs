@@ -7629,184 +7629,288 @@ pub trait Api {
         lpRect: MutPtr<super::super::Foundation::RECT>,
         dwStyle: WINDOW_STYLE,
         bMenu: super::super::Foundation::BOOL,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn AdjustWindowRectEx(
         lpRect: MutPtr<super::super::Foundation::RECT>,
         dwStyle: WINDOW_STYLE,
         bMenu: super::super::Foundation::BOOL,
         dwExStyle: WINDOW_EX_STYLE,
-    ) -> super::super::Foundation::BOOL;
-    fn AllowSetForegroundWindow(dwProcessId: u32) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn AllowSetForegroundWindow(dwProcessId: u32) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn AnimateWindow(
         hWnd: super::super::Foundation::HWND,
         dwTime: u32,
         dwFlags: ANIMATE_WINDOW_FLAGS,
-    ) -> super::super::Foundation::BOOL;
-    fn AnyPopup() -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn AnyPopup() -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn AppendMenuA(
         hMenu: HMENU,
         uFlags: MENU_ITEM_FLAGS,
         uIDNewItem: usize,
         lpNewItem: ::win32::core::PCSTR,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn AppendMenuW(
         hMenu: HMENU,
         uFlags: MENU_ITEM_FLAGS,
         uIDNewItem: usize,
         lpNewItem: ::win32::core::PCWSTR,
-    ) -> super::super::Foundation::BOOL;
-    fn ArrangeIconicWindows(hWnd: super::super::Foundation::HWND) -> u32;
-    fn BeginDeferWindowPos(nNumWindows: i32) -> isize;
-    fn BringWindowToTop(hWnd: super::super::Foundation::HWND) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn ArrangeIconicWindows(hWnd: super::super::Foundation::HWND) -> u32 {
+        todo!()
+    }
+    fn BeginDeferWindowPos(nNumWindows: i32) -> isize {
+        todo!()
+    }
+    fn BringWindowToTop(hWnd: super::super::Foundation::HWND) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn CalculatePopupWindowPosition(
         anchorPoint: ConstPtr<super::super::Foundation::POINT>,
         windowSize: ConstPtr<super::super::Foundation::SIZE>,
         flags: u32,
         excludeRect: ConstPtr<super::super::Foundation::RECT>,
         popupWindowPosition: MutPtr<super::super::Foundation::RECT>,
-    ) -> super::super::Foundation::BOOL;
-    fn CallMsgFilterA(lpMsg: ConstPtr<MSG>, nCode: i32) -> super::super::Foundation::BOOL;
-    fn CallMsgFilterW(lpMsg: ConstPtr<MSG>, nCode: i32) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn CallMsgFilterA(lpMsg: ConstPtr<MSG>, nCode: i32) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn CallMsgFilterW(lpMsg: ConstPtr<MSG>, nCode: i32) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn CallNextHookEx(
         hhk: HHOOK,
         nCode: i32,
         wParam: super::super::Foundation::WPARAM,
         lParam: super::super::Foundation::LPARAM,
-    ) -> super::super::Foundation::LRESULT;
+    ) -> super::super::Foundation::LRESULT {
+        todo!()
+    }
     fn CallWindowProcA(
         lpPrevWndFunc: WNDPROC,
         hWnd: super::super::Foundation::HWND,
         Msg: u32,
         wParam: super::super::Foundation::WPARAM,
         lParam: super::super::Foundation::LPARAM,
-    ) -> super::super::Foundation::LRESULT;
+    ) -> super::super::Foundation::LRESULT {
+        todo!()
+    }
     fn CallWindowProcW(
         lpPrevWndFunc: WNDPROC,
         hWnd: super::super::Foundation::HWND,
         Msg: u32,
         wParam: super::super::Foundation::WPARAM,
         lParam: super::super::Foundation::LPARAM,
-    ) -> super::super::Foundation::LRESULT;
-    fn CancelShutdown() -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::LRESULT {
+        todo!()
+    }
+    fn CancelShutdown() -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn CascadeWindows(
         hwndParent: super::super::Foundation::HWND,
         wHow: CASCADE_WINDOWS_HOW,
         lpRect: ConstPtr<super::super::Foundation::RECT>,
         cKids: u32,
         lpKids: ConstPtr<super::super::Foundation::HWND>,
-    ) -> u16;
+    ) -> u16 {
+        todo!()
+    }
     fn ChangeMenuA(
         hMenu: HMENU,
         cmd: u32,
         lpszNewItem: ::win32::core::PCSTR,
         cmdInsert: u32,
         flags: u32,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn ChangeMenuW(
         hMenu: HMENU,
         cmd: u32,
         lpszNewItem: ::win32::core::PCWSTR,
         cmdInsert: u32,
         flags: u32,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn ChangeWindowMessageFilter(
         message: u32,
         dwFlag: CHANGE_WINDOW_MESSAGE_FILTER_FLAGS,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn ChangeWindowMessageFilterEx(
         hwnd: super::super::Foundation::HWND,
         message: u32,
         action: WINDOW_MESSAGE_FILTER_ACTION,
         pChangeFilterStruct: MutPtr<CHANGEFILTERSTRUCT>,
-    ) -> super::super::Foundation::BOOL;
-    fn CharLowerA(lpsz: ::win32::core::PSTR) -> ::win32::core::PSTR;
-    fn CharLowerBuffA(lpsz: ::win32::core::PSTR, cchLength: u32) -> u32;
-    fn CharLowerBuffW(lpsz: ::win32::core::PWSTR, cchLength: u32) -> u32;
-    fn CharLowerW(lpsz: ::win32::core::PWSTR) -> ::win32::core::PWSTR;
-    fn CharNextA(lpsz: ::win32::core::PCSTR) -> ::win32::core::PSTR;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn CharLowerA(lpsz: ::win32::core::PSTR) -> ::win32::core::PSTR {
+        todo!()
+    }
+    fn CharLowerBuffA(lpsz: ::win32::core::PSTR, cchLength: u32) -> u32 {
+        todo!()
+    }
+    fn CharLowerBuffW(lpsz: ::win32::core::PWSTR, cchLength: u32) -> u32 {
+        todo!()
+    }
+    fn CharLowerW(lpsz: ::win32::core::PWSTR) -> ::win32::core::PWSTR {
+        todo!()
+    }
+    fn CharNextA(lpsz: ::win32::core::PCSTR) -> ::win32::core::PSTR {
+        todo!()
+    }
     fn CharNextExA(
         CodePage: u16,
         lpCurrentChar: ::win32::core::PCSTR,
         dwFlags: u32,
-    ) -> ::win32::core::PSTR;
-    fn CharNextW(lpsz: ::win32::core::PCWSTR) -> ::win32::core::PWSTR;
+    ) -> ::win32::core::PSTR {
+        todo!()
+    }
+    fn CharNextW(lpsz: ::win32::core::PCWSTR) -> ::win32::core::PWSTR {
+        todo!()
+    }
     fn CharPrevA(
         lpszStart: ::win32::core::PCSTR,
         lpszCurrent: ::win32::core::PCSTR,
-    ) -> ::win32::core::PSTR;
+    ) -> ::win32::core::PSTR {
+        todo!()
+    }
     fn CharPrevExA(
         CodePage: u16,
         lpStart: ::win32::core::PCSTR,
         lpCurrentChar: ::win32::core::PCSTR,
         dwFlags: u32,
-    ) -> ::win32::core::PSTR;
+    ) -> ::win32::core::PSTR {
+        todo!()
+    }
     fn CharPrevW(
         lpszStart: ::win32::core::PCWSTR,
         lpszCurrent: ::win32::core::PCWSTR,
-    ) -> ::win32::core::PWSTR;
+    ) -> ::win32::core::PWSTR {
+        todo!()
+    }
     fn CharToOemA(
         pSrc: ::win32::core::PCSTR,
         pDst: ::win32::core::PSTR,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn CharToOemBuffA(
         lpszSrc: ::win32::core::PCSTR,
         lpszDst: ::win32::core::PSTR,
         cchDstLength: u32,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn CharToOemBuffW(
         lpszSrc: ::win32::core::PCWSTR,
         lpszDst: ::win32::core::PSTR,
         cchDstLength: u32,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn CharToOemW(
         pSrc: ::win32::core::PCWSTR,
         pDst: ::win32::core::PSTR,
-    ) -> super::super::Foundation::BOOL;
-    fn CharUpperA(lpsz: ::win32::core::PSTR) -> ::win32::core::PSTR;
-    fn CharUpperBuffA(lpsz: ::win32::core::PSTR, cchLength: u32) -> u32;
-    fn CharUpperBuffW(lpsz: ::win32::core::PWSTR, cchLength: u32) -> u32;
-    fn CharUpperW(lpsz: ::win32::core::PWSTR) -> ::win32::core::PWSTR;
-    fn CheckMenuItem(hMenu: HMENU, uIDCheckItem: u32, uCheck: u32) -> u32;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn CharUpperA(lpsz: ::win32::core::PSTR) -> ::win32::core::PSTR {
+        todo!()
+    }
+    fn CharUpperBuffA(lpsz: ::win32::core::PSTR, cchLength: u32) -> u32 {
+        todo!()
+    }
+    fn CharUpperBuffW(lpsz: ::win32::core::PWSTR, cchLength: u32) -> u32 {
+        todo!()
+    }
+    fn CharUpperW(lpsz: ::win32::core::PWSTR) -> ::win32::core::PWSTR {
+        todo!()
+    }
+    fn CheckMenuItem(hMenu: HMENU, uIDCheckItem: u32, uCheck: u32) -> u32 {
+        todo!()
+    }
     fn CheckMenuRadioItem(
         hmenu: HMENU,
         first: u32,
         last: u32,
         check: u32,
         flags: u32,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn ChildWindowFromPoint(
         hWndParent: super::super::Foundation::HWND,
         Point: super::super::Foundation::POINT,
-    ) -> super::super::Foundation::HWND;
+    ) -> super::super::Foundation::HWND {
+        todo!()
+    }
     fn ChildWindowFromPointEx(
         hwnd: super::super::Foundation::HWND,
         pt: super::super::Foundation::POINT,
         flags: CWP_FLAGS,
-    ) -> super::super::Foundation::HWND;
+    ) -> super::super::Foundation::HWND {
+        todo!()
+    }
     fn ClipCursor(
         lpRect: ConstPtr<super::super::Foundation::RECT>,
-    ) -> super::super::Foundation::BOOL;
-    fn CloseWindow(hWnd: super::super::Foundation::HWND) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn CloseWindow(hWnd: super::super::Foundation::HWND) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn CopyAcceleratorTableA(
         hAccelSrc: HACCEL,
         lpAccelDst: MutPtr<ACCEL>,
         cAccelEntries: i32,
-    ) -> i32;
+    ) -> i32 {
+        todo!()
+    }
     fn CopyAcceleratorTableW(
         hAccelSrc: HACCEL,
         lpAccelDst: MutPtr<ACCEL>,
         cAccelEntries: i32,
-    ) -> i32;
-    fn CopyIcon(hIcon: HICON) -> HICON;
+    ) -> i32 {
+        todo!()
+    }
+    fn CopyIcon(hIcon: HICON) -> HICON {
+        todo!()
+    }
     fn CopyImage(
         h: super::super::Foundation::HANDLE,
         r#type: GDI_IMAGE_TYPE,
         cx: i32,
         cy: i32,
         flags: IMAGE_FLAGS,
-    ) -> super::super::Foundation::HANDLE;
-    fn CreateAcceleratorTableA(paccel: ConstPtr<ACCEL>, cAccel: i32) -> HACCEL;
-    fn CreateAcceleratorTableW(paccel: ConstPtr<ACCEL>, cAccel: i32) -> HACCEL;
+    ) -> super::super::Foundation::HANDLE {
+        todo!()
+    }
+    fn CreateAcceleratorTableA(paccel: ConstPtr<ACCEL>, cAccel: i32) -> HACCEL {
+        todo!()
+    }
+    fn CreateAcceleratorTableW(paccel: ConstPtr<ACCEL>, cAccel: i32) -> HACCEL {
+        todo!()
+    }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
     #[cfg(dummy_option_that_does_not_exist)]
     fn CreateCaret(
@@ -7814,7 +7918,9 @@ pub trait Api {
         hBitmap: super::super::Graphics::Gdi::HBITMAP,
         nWidth: i32,
         nHeight: i32,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn CreateCursor(
         hInst: super::super::Foundation::HINSTANCE,
         xHotSpot: i32,
@@ -7823,35 +7929,45 @@ pub trait Api {
         nHeight: i32,
         pvANDPlane: ConstPtr<::core::ffi::c_void>,
         pvXORPlane: ConstPtr<::core::ffi::c_void>,
-    ) -> HCURSOR;
+    ) -> HCURSOR {
+        todo!()
+    }
     fn CreateDialogIndirectParamA(
         hInstance: super::super::Foundation::HINSTANCE,
         lpTemplate: ConstPtr<DLGTEMPLATE>,
         hWndParent: super::super::Foundation::HWND,
         lpDialogFunc: DLGPROC,
         dwInitParam: super::super::Foundation::LPARAM,
-    ) -> super::super::Foundation::HWND;
+    ) -> super::super::Foundation::HWND {
+        todo!()
+    }
     fn CreateDialogIndirectParamW(
         hInstance: super::super::Foundation::HINSTANCE,
         lpTemplate: ConstPtr<DLGTEMPLATE>,
         hWndParent: super::super::Foundation::HWND,
         lpDialogFunc: DLGPROC,
         dwInitParam: super::super::Foundation::LPARAM,
-    ) -> super::super::Foundation::HWND;
+    ) -> super::super::Foundation::HWND {
+        todo!()
+    }
     fn CreateDialogParamA(
         hInstance: super::super::Foundation::HINSTANCE,
         lpTemplateName: ::win32::core::PCSTR,
         hWndParent: super::super::Foundation::HWND,
         lpDialogFunc: DLGPROC,
         dwInitParam: super::super::Foundation::LPARAM,
-    ) -> super::super::Foundation::HWND;
+    ) -> super::super::Foundation::HWND {
+        todo!()
+    }
     fn CreateDialogParamW(
         hInstance: super::super::Foundation::HINSTANCE,
         lpTemplateName: ::win32::core::PCWSTR,
         hWndParent: super::super::Foundation::HWND,
         lpDialogFunc: DLGPROC,
         dwInitParam: super::super::Foundation::LPARAM,
-    ) -> super::super::Foundation::HWND;
+    ) -> super::super::Foundation::HWND {
+        todo!()
+    }
     fn CreateIcon(
         hInstance: super::super::Foundation::HINSTANCE,
         nWidth: i32,
@@ -7860,13 +7976,17 @@ pub trait Api {
         cBitsPixel: u8,
         lpbANDbits: ConstPtr<u8>,
         lpbXORbits: ConstPtr<u8>,
-    ) -> HICON;
+    ) -> HICON {
+        todo!()
+    }
     fn CreateIconFromResource(
         presbits: ConstPtr<u8>,
         dwResSize: u32,
         fIcon: super::super::Foundation::BOOL,
         dwVer: u32,
-    ) -> HICON;
+    ) -> HICON {
+        todo!()
+    }
     fn CreateIconFromResourceEx(
         presbits: ConstPtr<u8>,
         dwResSize: u32,
@@ -7875,10 +7995,14 @@ pub trait Api {
         cxDesired: i32,
         cyDesired: i32,
         Flags: IMAGE_FLAGS,
-    ) -> HICON;
+    ) -> HICON {
+        todo!()
+    }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
     #[cfg(dummy_option_that_does_not_exist)]
-    fn CreateIconIndirect(piconinfo: ConstPtr<ICONINFO>) -> HICON;
+    fn CreateIconIndirect(piconinfo: ConstPtr<ICONINFO>) -> HICON {
+        todo!()
+    }
     fn CreateMDIWindowA(
         lpClassName: ::win32::core::PCSTR,
         lpWindowName: ::win32::core::PCSTR,
@@ -7890,7 +8014,9 @@ pub trait Api {
         hWndParent: super::super::Foundation::HWND,
         hInstance: super::super::Foundation::HINSTANCE,
         lParam: super::super::Foundation::LPARAM,
-    ) -> super::super::Foundation::HWND;
+    ) -> super::super::Foundation::HWND {
+        todo!()
+    }
     fn CreateMDIWindowW(
         lpClassName: ::win32::core::PCWSTR,
         lpWindowName: ::win32::core::PCWSTR,
@@ -7902,14 +8028,22 @@ pub trait Api {
         hWndParent: super::super::Foundation::HWND,
         hInstance: super::super::Foundation::HINSTANCE,
         lParam: super::super::Foundation::LPARAM,
-    ) -> super::super::Foundation::HWND;
-    fn CreateMenu() -> HMENU;
-    fn CreatePopupMenu() -> HMENU;
+    ) -> super::super::Foundation::HWND {
+        todo!()
+    }
+    fn CreateMenu() -> HMENU {
+        todo!()
+    }
+    fn CreatePopupMenu() -> HMENU {
+        todo!()
+    }
     fn CreateResourceIndexer(
         projectRoot: ::win32::core::PCWSTR,
         extensionDllPath: ::win32::core::PCWSTR,
         ppResourceIndexer: MutPtr<ConstPtr<::core::ffi::c_void>>,
-    ) -> ::win32::core::HRESULT;
+    ) -> ::win32::core::HRESULT {
+        todo!()
+    }
     fn CreateWindowExA(
         dwExStyle: WINDOW_EX_STYLE,
         lpClassName: ::win32::core::PCSTR,
@@ -7923,7 +8057,9 @@ pub trait Api {
         hMenu: HMENU,
         hInstance: super::super::Foundation::HINSTANCE,
         lpParam: ConstPtr<::core::ffi::c_void>,
-    ) -> super::super::Foundation::HWND;
+    ) -> super::super::Foundation::HWND {
+        todo!()
+    }
     fn CreateWindowExW(
         dwExStyle: WINDOW_EX_STYLE,
         lpClassName: ::win32::core::PCWSTR,
@@ -7937,57 +8073,75 @@ pub trait Api {
         hMenu: HMENU,
         hInstance: super::super::Foundation::HINSTANCE,
         lpParam: ConstPtr<::core::ffi::c_void>,
-    ) -> super::super::Foundation::HWND;
+    ) -> super::super::Foundation::HWND {
+        todo!()
+    }
     fn DefDlgProcA(
         hDlg: super::super::Foundation::HWND,
         Msg: u32,
         wParam: super::super::Foundation::WPARAM,
         lParam: super::super::Foundation::LPARAM,
-    ) -> super::super::Foundation::LRESULT;
+    ) -> super::super::Foundation::LRESULT {
+        todo!()
+    }
     fn DefDlgProcW(
         hDlg: super::super::Foundation::HWND,
         Msg: u32,
         wParam: super::super::Foundation::WPARAM,
         lParam: super::super::Foundation::LPARAM,
-    ) -> super::super::Foundation::LRESULT;
+    ) -> super::super::Foundation::LRESULT {
+        todo!()
+    }
     fn DefFrameProcA(
         hWnd: super::super::Foundation::HWND,
         hWndMDIClient: super::super::Foundation::HWND,
         uMsg: u32,
         wParam: super::super::Foundation::WPARAM,
         lParam: super::super::Foundation::LPARAM,
-    ) -> super::super::Foundation::LRESULT;
+    ) -> super::super::Foundation::LRESULT {
+        todo!()
+    }
     fn DefFrameProcW(
         hWnd: super::super::Foundation::HWND,
         hWndMDIClient: super::super::Foundation::HWND,
         uMsg: u32,
         wParam: super::super::Foundation::WPARAM,
         lParam: super::super::Foundation::LPARAM,
-    ) -> super::super::Foundation::LRESULT;
+    ) -> super::super::Foundation::LRESULT {
+        todo!()
+    }
     fn DefMDIChildProcA(
         hWnd: super::super::Foundation::HWND,
         uMsg: u32,
         wParam: super::super::Foundation::WPARAM,
         lParam: super::super::Foundation::LPARAM,
-    ) -> super::super::Foundation::LRESULT;
+    ) -> super::super::Foundation::LRESULT {
+        todo!()
+    }
     fn DefMDIChildProcW(
         hWnd: super::super::Foundation::HWND,
         uMsg: u32,
         wParam: super::super::Foundation::WPARAM,
         lParam: super::super::Foundation::LPARAM,
-    ) -> super::super::Foundation::LRESULT;
+    ) -> super::super::Foundation::LRESULT {
+        todo!()
+    }
     fn DefWindowProcA(
         hWnd: super::super::Foundation::HWND,
         Msg: u32,
         wParam: super::super::Foundation::WPARAM,
         lParam: super::super::Foundation::LPARAM,
-    ) -> super::super::Foundation::LRESULT;
+    ) -> super::super::Foundation::LRESULT {
+        todo!()
+    }
     fn DefWindowProcW(
         hWnd: super::super::Foundation::HWND,
         Msg: u32,
         wParam: super::super::Foundation::WPARAM,
         lParam: super::super::Foundation::LPARAM,
-    ) -> super::super::Foundation::LRESULT;
+    ) -> super::super::Foundation::LRESULT {
+        todo!()
+    }
     fn DeferWindowPos(
         hWinPosInfo: isize,
         hWnd: super::super::Foundation::HWND,
@@ -7997,65 +8151,103 @@ pub trait Api {
         cx: i32,
         cy: i32,
         uFlags: SET_WINDOW_POS_FLAGS,
-    ) -> isize;
+    ) -> isize {
+        todo!()
+    }
     fn DeleteMenu(
         hMenu: HMENU,
         uPosition: u32,
         uFlags: MENU_ITEM_FLAGS,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn DeregisterShellHookWindow(
         hwnd: super::super::Foundation::HWND,
-    ) -> super::super::Foundation::BOOL;
-    fn DestroyAcceleratorTable(hAccel: HACCEL) -> super::super::Foundation::BOOL;
-    fn DestroyCaret() -> super::super::Foundation::BOOL;
-    fn DestroyCursor(hCursor: HCURSOR) -> super::super::Foundation::BOOL;
-    fn DestroyIcon(hIcon: HICON) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn DestroyAcceleratorTable(hAccel: HACCEL) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn DestroyCaret() -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn DestroyCursor(hCursor: HCURSOR) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn DestroyIcon(hIcon: HICON) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn DestroyIndexedResults(
         resourceUri: ::win32::core::PCWSTR,
         qualifierCount: u32,
         qualifiers: ConstPtr<IndexedResourceQualifier>,
-    );
-    fn DestroyMenu(hMenu: HMENU) -> super::super::Foundation::BOOL;
-    fn DestroyResourceIndexer(resourceIndexer: ConstPtr<::core::ffi::c_void>);
-    fn DestroyWindow(hWnd: super::super::Foundation::HWND) -> super::super::Foundation::BOOL;
+    ) {
+        todo!()
+    }
+    fn DestroyMenu(hMenu: HMENU) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn DestroyResourceIndexer(resourceIndexer: ConstPtr<::core::ffi::c_void>) {
+        todo!()
+    }
+    fn DestroyWindow(hWnd: super::super::Foundation::HWND) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn DialogBoxIndirectParamA(
         hInstance: super::super::Foundation::HINSTANCE,
         hDialogTemplate: ConstPtr<DLGTEMPLATE>,
         hWndParent: super::super::Foundation::HWND,
         lpDialogFunc: DLGPROC,
         dwInitParam: super::super::Foundation::LPARAM,
-    ) -> isize;
+    ) -> isize {
+        todo!()
+    }
     fn DialogBoxIndirectParamW(
         hInstance: super::super::Foundation::HINSTANCE,
         hDialogTemplate: ConstPtr<DLGTEMPLATE>,
         hWndParent: super::super::Foundation::HWND,
         lpDialogFunc: DLGPROC,
         dwInitParam: super::super::Foundation::LPARAM,
-    ) -> isize;
+    ) -> isize {
+        todo!()
+    }
     fn DialogBoxParamA(
         hInstance: super::super::Foundation::HINSTANCE,
         lpTemplateName: ::win32::core::PCSTR,
         hWndParent: super::super::Foundation::HWND,
         lpDialogFunc: DLGPROC,
         dwInitParam: super::super::Foundation::LPARAM,
-    ) -> isize;
+    ) -> isize {
+        todo!()
+    }
     fn DialogBoxParamW(
         hInstance: super::super::Foundation::HINSTANCE,
         lpTemplateName: ::win32::core::PCWSTR,
         hWndParent: super::super::Foundation::HWND,
         lpDialogFunc: DLGPROC,
         dwInitParam: super::super::Foundation::LPARAM,
-    ) -> isize;
-    fn DisableProcessWindowsGhosting();
-    fn DispatchMessageA(lpMsg: ConstPtr<MSG>) -> super::super::Foundation::LRESULT;
-    fn DispatchMessageW(lpMsg: ConstPtr<MSG>) -> super::super::Foundation::LRESULT;
+    ) -> isize {
+        todo!()
+    }
+    fn DisableProcessWindowsGhosting() {
+        todo!()
+    }
+    fn DispatchMessageA(lpMsg: ConstPtr<MSG>) -> super::super::Foundation::LRESULT {
+        todo!()
+    }
+    fn DispatchMessageW(lpMsg: ConstPtr<MSG>) -> super::super::Foundation::LRESULT {
+        todo!()
+    }
     fn DragObject(
         hwndParent: super::super::Foundation::HWND,
         hwndFrom: super::super::Foundation::HWND,
         fmt: u32,
         data: usize,
         hcur: HCURSOR,
-    ) -> u32;
+    ) -> u32 {
+        todo!()
+    }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
     #[cfg(dummy_option_that_does_not_exist)]
     fn DrawIcon(
@@ -8063,7 +8255,9 @@ pub trait Api {
         X: i32,
         Y: i32,
         hIcon: HICON,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
     #[cfg(dummy_option_that_does_not_exist)]
     fn DrawIconEx(
@@ -8076,225 +8270,352 @@ pub trait Api {
         istepIfAniCur: u32,
         hbrFlickerFreeDraw: super::super::Graphics::Gdi::HBRUSH,
         diFlags: DI_FLAGS,
-    ) -> super::super::Foundation::BOOL;
-    fn DrawMenuBar(hWnd: super::super::Foundation::HWND) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn DrawMenuBar(hWnd: super::super::Foundation::HWND) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn EnableMenuItem(
         hMenu: HMENU,
         uIDEnableItem: u32,
         uEnable: MENU_ITEM_FLAGS,
-    ) -> super::super::Foundation::BOOL;
-    fn EndDeferWindowPos(hWinPosInfo: isize) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn EndDeferWindowPos(hWinPosInfo: isize) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn EndDialog(
         hDlg: super::super::Foundation::HWND,
         nResult: isize,
-    ) -> super::super::Foundation::BOOL;
-    fn EndMenu() -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn EndMenu() -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn EnumChildWindows(
         hWndParent: super::super::Foundation::HWND,
         lpEnumFunc: WNDENUMPROC,
         lParam: super::super::Foundation::LPARAM,
-    ) -> super::super::Foundation::BOOL;
-    fn EnumPropsA(hWnd: super::super::Foundation::HWND, lpEnumFunc: PROPENUMPROCA) -> i32;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn EnumPropsA(hWnd: super::super::Foundation::HWND, lpEnumFunc: PROPENUMPROCA) -> i32 {
+        todo!()
+    }
     fn EnumPropsExA(
         hWnd: super::super::Foundation::HWND,
         lpEnumFunc: PROPENUMPROCEXA,
         lParam: super::super::Foundation::LPARAM,
-    ) -> i32;
+    ) -> i32 {
+        todo!()
+    }
     fn EnumPropsExW(
         hWnd: super::super::Foundation::HWND,
         lpEnumFunc: PROPENUMPROCEXW,
         lParam: super::super::Foundation::LPARAM,
-    ) -> i32;
-    fn EnumPropsW(hWnd: super::super::Foundation::HWND, lpEnumFunc: PROPENUMPROCW) -> i32;
+    ) -> i32 {
+        todo!()
+    }
+    fn EnumPropsW(hWnd: super::super::Foundation::HWND, lpEnumFunc: PROPENUMPROCW) -> i32 {
+        todo!()
+    }
     fn EnumThreadWindows(
         dwThreadId: u32,
         lpfn: WNDENUMPROC,
         lParam: super::super::Foundation::LPARAM,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn EnumWindows(
         lpEnumFunc: WNDENUMPROC,
         lParam: super::super::Foundation::LPARAM,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn FindWindowA(
         lpClassName: ::win32::core::PCSTR,
         lpWindowName: ::win32::core::PCSTR,
-    ) -> super::super::Foundation::HWND;
+    ) -> super::super::Foundation::HWND {
+        todo!()
+    }
     fn FindWindowExA(
         hWndParent: super::super::Foundation::HWND,
         hWndChildAfter: super::super::Foundation::HWND,
         lpszClass: ::win32::core::PCSTR,
         lpszWindow: ::win32::core::PCSTR,
-    ) -> super::super::Foundation::HWND;
+    ) -> super::super::Foundation::HWND {
+        todo!()
+    }
     fn FindWindowExW(
         hWndParent: super::super::Foundation::HWND,
         hWndChildAfter: super::super::Foundation::HWND,
         lpszClass: ::win32::core::PCWSTR,
         lpszWindow: ::win32::core::PCWSTR,
-    ) -> super::super::Foundation::HWND;
+    ) -> super::super::Foundation::HWND {
+        todo!()
+    }
     fn FindWindowW(
         lpClassName: ::win32::core::PCWSTR,
         lpWindowName: ::win32::core::PCWSTR,
-    ) -> super::super::Foundation::HWND;
+    ) -> super::super::Foundation::HWND {
+        todo!()
+    }
     fn FlashWindow(
         hWnd: super::super::Foundation::HWND,
         bInvert: super::super::Foundation::BOOL,
-    ) -> super::super::Foundation::BOOL;
-    fn FlashWindowEx(pfwi: ConstPtr<FLASHWINFO>) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn FlashWindowEx(pfwi: ConstPtr<FLASHWINFO>) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn GetAltTabInfoA(
         hwnd: super::super::Foundation::HWND,
         iItem: i32,
         pati: MutPtr<ALTTABINFO>,
         pszItemText: ::win32::core::PSTR,
         cchItemText: u32,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn GetAltTabInfoW(
         hwnd: super::super::Foundation::HWND,
         iItem: i32,
         pati: MutPtr<ALTTABINFO>,
         pszItemText: ::win32::core::PWSTR,
         cchItemText: u32,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn GetAncestor(
         hwnd: super::super::Foundation::HWND,
         gaFlags: GET_ANCESTOR_FLAGS,
-    ) -> super::super::Foundation::HWND;
-    fn GetCaretBlinkTime() -> u32;
+    ) -> super::super::Foundation::HWND {
+        todo!()
+    }
+    fn GetCaretBlinkTime() -> u32 {
+        todo!()
+    }
     fn GetCaretPos(
         lpPoint: MutPtr<super::super::Foundation::POINT>,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
     #[cfg(dummy_option_that_does_not_exist)]
     fn GetClassInfoA(
         hInstance: super::super::Foundation::HINSTANCE,
         lpClassName: ::win32::core::PCSTR,
         lpWndClass: MutPtr<WNDCLASSA>,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
     #[cfg(dummy_option_that_does_not_exist)]
     fn GetClassInfoExA(
         hInstance: super::super::Foundation::HINSTANCE,
         lpszClass: ::win32::core::PCSTR,
         lpwcx: MutPtr<WNDCLASSEXA>,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
     #[cfg(dummy_option_that_does_not_exist)]
     fn GetClassInfoExW(
         hInstance: super::super::Foundation::HINSTANCE,
         lpszClass: ::win32::core::PCWSTR,
         lpwcx: MutPtr<WNDCLASSEXW>,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
     #[cfg(dummy_option_that_does_not_exist)]
     fn GetClassInfoW(
         hInstance: super::super::Foundation::HINSTANCE,
         lpClassName: ::win32::core::PCWSTR,
         lpWndClass: MutPtr<WNDCLASSW>,
-    ) -> super::super::Foundation::BOOL;
-    fn GetClassLongA(hWnd: super::super::Foundation::HWND, nIndex: GET_CLASS_LONG_INDEX) -> u32;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn GetClassLongA(hWnd: super::super::Foundation::HWND, nIndex: GET_CLASS_LONG_INDEX) -> u32 {
+        todo!()
+    }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation'*"]
     #[cfg(dummy_option_that_does_not_exist)]
     fn GetClassLongPtrA(
         hWnd: super::super::Foundation::HWND,
         nIndex: GET_CLASS_LONG_INDEX,
-    ) -> usize;
+    ) -> usize {
+        todo!()
+    }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation'*"]
     #[cfg(dummy_option_that_does_not_exist)]
     fn GetClassLongPtrW(
         hWnd: super::super::Foundation::HWND,
         nIndex: GET_CLASS_LONG_INDEX,
-    ) -> usize;
-    fn GetClassLongW(hWnd: super::super::Foundation::HWND, nIndex: GET_CLASS_LONG_INDEX) -> u32;
+    ) -> usize {
+        todo!()
+    }
+    fn GetClassLongW(hWnd: super::super::Foundation::HWND, nIndex: GET_CLASS_LONG_INDEX) -> u32 {
+        todo!()
+    }
     fn GetClassNameA(
         hWnd: super::super::Foundation::HWND,
         lpClassName: ::win32::core::PSTR,
         nMaxCount: i32,
-    ) -> i32;
+    ) -> i32 {
+        todo!()
+    }
     fn GetClassNameW(
         hWnd: super::super::Foundation::HWND,
         lpClassName: ::win32::core::PWSTR,
         nMaxCount: i32,
-    ) -> i32;
-    fn GetClassWord(hWnd: super::super::Foundation::HWND, nIndex: i32) -> u16;
+    ) -> i32 {
+        todo!()
+    }
+    fn GetClassWord(hWnd: super::super::Foundation::HWND, nIndex: i32) -> u16 {
+        todo!()
+    }
     fn GetClientRect(
         hWnd: super::super::Foundation::HWND,
         lpRect: MutPtr<super::super::Foundation::RECT>,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn GetClipCursor(
         lpRect: MutPtr<super::super::Foundation::RECT>,
-    ) -> super::super::Foundation::BOOL;
-    fn GetCursor() -> HCURSOR;
-    fn GetCursorInfo(pci: MutPtr<CURSORINFO>) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn GetCursor() -> HCURSOR {
+        todo!()
+    }
+    fn GetCursorInfo(pci: MutPtr<CURSORINFO>) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn GetCursorPos(
         lpPoint: MutPtr<super::super::Foundation::POINT>,
-    ) -> super::super::Foundation::BOOL;
-    fn GetDesktopWindow() -> super::super::Foundation::HWND;
-    fn GetDialogBaseUnits() -> i32;
-    fn GetDlgCtrlID(hWnd: super::super::Foundation::HWND) -> i32;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn GetDesktopWindow() -> super::super::Foundation::HWND {
+        todo!()
+    }
+    fn GetDialogBaseUnits() -> i32 {
+        todo!()
+    }
+    fn GetDlgCtrlID(hWnd: super::super::Foundation::HWND) -> i32 {
+        todo!()
+    }
     fn GetDlgItem(
         hDlg: super::super::Foundation::HWND,
         nIDDlgItem: i32,
-    ) -> super::super::Foundation::HWND;
+    ) -> super::super::Foundation::HWND {
+        todo!()
+    }
     fn GetDlgItemInt(
         hDlg: super::super::Foundation::HWND,
         nIDDlgItem: i32,
         lpTranslated: MutPtr<super::super::Foundation::BOOL>,
         bSigned: super::super::Foundation::BOOL,
-    ) -> u32;
+    ) -> u32 {
+        todo!()
+    }
     fn GetDlgItemTextA(
         hDlg: super::super::Foundation::HWND,
         nIDDlgItem: i32,
         lpString: ::win32::core::PSTR,
         cchMax: i32,
-    ) -> u32;
+    ) -> u32 {
+        todo!()
+    }
     fn GetDlgItemTextW(
         hDlg: super::super::Foundation::HWND,
         nIDDlgItem: i32,
         lpString: ::win32::core::PWSTR,
         cchMax: i32,
-    ) -> u32;
-    fn GetForegroundWindow() -> super::super::Foundation::HWND;
+    ) -> u32 {
+        todo!()
+    }
+    fn GetForegroundWindow() -> super::super::Foundation::HWND {
+        todo!()
+    }
     fn GetGUIThreadInfo(
         idThread: u32,
         pgui: MutPtr<GUITHREADINFO>,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
     #[cfg(dummy_option_that_does_not_exist)]
-    fn GetIconInfo(hIcon: HICON, piconinfo: MutPtr<ICONINFO>) -> super::super::Foundation::BOOL;
+    fn GetIconInfo(hIcon: HICON, piconinfo: MutPtr<ICONINFO>) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
     #[cfg(dummy_option_that_does_not_exist)]
     fn GetIconInfoExA(
         hicon: HICON,
         piconinfo: MutPtr<ICONINFOEXA>,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
     #[cfg(dummy_option_that_does_not_exist)]
     fn GetIconInfoExW(
         hicon: HICON,
         piconinfo: MutPtr<ICONINFOEXW>,
-    ) -> super::super::Foundation::BOOL;
-    fn GetInputState() -> super::super::Foundation::BOOL;
-    fn GetLastActivePopup(hWnd: super::super::Foundation::HWND) -> super::super::Foundation::HWND;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn GetInputState() -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn GetLastActivePopup(hWnd: super::super::Foundation::HWND) -> super::super::Foundation::HWND {
+        todo!()
+    }
     fn GetLayeredWindowAttributes(
         hwnd: super::super::Foundation::HWND,
         pcrKey: MutPtr<u32>,
         pbAlpha: MutPtr<u8>,
         pdwFlags: MutPtr<LAYERED_WINDOW_ATTRIBUTES_FLAGS>,
-    ) -> super::super::Foundation::BOOL;
-    fn GetMenu(hWnd: super::super::Foundation::HWND) -> HMENU;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn GetMenu(hWnd: super::super::Foundation::HWND) -> HMENU {
+        todo!()
+    }
     fn GetMenuBarInfo(
         hwnd: super::super::Foundation::HWND,
         idObject: OBJECT_IDENTIFIER,
         idItem: i32,
         pmbi: MutPtr<MENUBARINFO>,
-    ) -> super::super::Foundation::BOOL;
-    fn GetMenuCheckMarkDimensions() -> i32;
-    fn GetMenuDefaultItem(hMenu: HMENU, fByPos: u32, gmdiFlags: GET_MENU_DEFAULT_ITEM_FLAGS)
-        -> u32;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn GetMenuCheckMarkDimensions() -> i32 {
+        todo!()
+    }
+    fn GetMenuDefaultItem(
+        hMenu: HMENU,
+        fByPos: u32,
+        gmdiFlags: GET_MENU_DEFAULT_ITEM_FLAGS,
+    ) -> u32 {
+        todo!()
+    }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
     #[cfg(dummy_option_that_does_not_exist)]
-    fn GetMenuInfo(param0: HMENU, param1: MutPtr<MENUINFO>) -> super::super::Foundation::BOOL;
-    fn GetMenuItemCount(hMenu: HMENU) -> i32;
-    fn GetMenuItemID(hMenu: HMENU, nPos: i32) -> u32;
+    fn GetMenuInfo(param0: HMENU, param1: MutPtr<MENUINFO>) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn GetMenuItemCount(hMenu: HMENU) -> i32 {
+        todo!()
+    }
+    fn GetMenuItemID(hMenu: HMENU, nPos: i32) -> u32 {
+        todo!()
+    }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
     #[cfg(dummy_option_that_does_not_exist)]
     fn GetMenuItemInfoA(
@@ -8302,7 +8623,9 @@ pub trait Api {
         item: u32,
         fByPosition: super::super::Foundation::BOOL,
         lpmii: MutPtr<MENUITEMINFOA>,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
     #[cfg(dummy_option_that_does_not_exist)]
     fn GetMenuItemInfoW(
@@ -8310,185 +8633,291 @@ pub trait Api {
         item: u32,
         fByPosition: super::super::Foundation::BOOL,
         lpmii: MutPtr<MENUITEMINFOW>,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn GetMenuItemRect(
         hWnd: super::super::Foundation::HWND,
         hMenu: HMENU,
         uItem: u32,
         lprcItem: MutPtr<super::super::Foundation::RECT>,
-    ) -> super::super::Foundation::BOOL;
-    fn GetMenuState(hMenu: HMENU, uId: u32, uFlags: MENU_ITEM_FLAGS) -> u32;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn GetMenuState(hMenu: HMENU, uId: u32, uFlags: MENU_ITEM_FLAGS) -> u32 {
+        todo!()
+    }
     fn GetMenuStringA(
         hMenu: HMENU,
         uIDItem: u32,
         lpString: ::win32::core::PSTR,
         cchMax: i32,
         flags: MENU_ITEM_FLAGS,
-    ) -> i32;
+    ) -> i32 {
+        todo!()
+    }
     fn GetMenuStringW(
         hMenu: HMENU,
         uIDItem: u32,
         lpString: ::win32::core::PWSTR,
         cchMax: i32,
         flags: MENU_ITEM_FLAGS,
-    ) -> i32;
+    ) -> i32 {
+        todo!()
+    }
     fn GetMessageA(
         lpMsg: MutPtr<MSG>,
         hWnd: super::super::Foundation::HWND,
         wMsgFilterMin: u32,
         wMsgFilterMax: u32,
-    ) -> super::super::Foundation::BOOL;
-    fn GetMessageExtraInfo() -> super::super::Foundation::LPARAM;
-    fn GetMessagePos() -> u32;
-    fn GetMessageTime() -> i32;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn GetMessageExtraInfo() -> super::super::Foundation::LPARAM {
+        todo!()
+    }
+    fn GetMessagePos() -> u32 {
+        todo!()
+    }
+    fn GetMessageTime() -> i32 {
+        todo!()
+    }
     fn GetMessageW(
         lpMsg: MutPtr<MSG>,
         hWnd: super::super::Foundation::HWND,
         wMsgFilterMin: u32,
         wMsgFilterMax: u32,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn GetNextDlgGroupItem(
         hDlg: super::super::Foundation::HWND,
         hCtl: super::super::Foundation::HWND,
         bPrevious: super::super::Foundation::BOOL,
-    ) -> super::super::Foundation::HWND;
+    ) -> super::super::Foundation::HWND {
+        todo!()
+    }
     fn GetNextDlgTabItem(
         hDlg: super::super::Foundation::HWND,
         hCtl: super::super::Foundation::HWND,
         bPrevious: super::super::Foundation::BOOL,
-    ) -> super::super::Foundation::HWND;
-    fn GetParent(hWnd: super::super::Foundation::HWND) -> super::super::Foundation::HWND;
+    ) -> super::super::Foundation::HWND {
+        todo!()
+    }
+    fn GetParent(hWnd: super::super::Foundation::HWND) -> super::super::Foundation::HWND {
+        todo!()
+    }
     fn GetPhysicalCursorPos(
         lpPoint: MutPtr<super::super::Foundation::POINT>,
-    ) -> super::super::Foundation::BOOL;
-    fn GetProcessDefaultLayout(pdwDefaultLayout: MutPtr<u32>) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn GetProcessDefaultLayout(pdwDefaultLayout: MutPtr<u32>) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn GetPropA(
         hWnd: super::super::Foundation::HWND,
         lpString: ::win32::core::PCSTR,
-    ) -> super::super::Foundation::HANDLE;
+    ) -> super::super::Foundation::HANDLE {
+        todo!()
+    }
     fn GetPropW(
         hWnd: super::super::Foundation::HWND,
         lpString: ::win32::core::PCWSTR,
-    ) -> super::super::Foundation::HANDLE;
-    fn GetQueueStatus(flags: QUEUE_STATUS_FLAGS) -> u32;
+    ) -> super::super::Foundation::HANDLE {
+        todo!()
+    }
+    fn GetQueueStatus(flags: QUEUE_STATUS_FLAGS) -> u32 {
+        todo!()
+    }
     fn GetScrollBarInfo(
         hwnd: super::super::Foundation::HWND,
         idObject: OBJECT_IDENTIFIER,
         psbi: MutPtr<SCROLLBARINFO>,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn GetScrollInfo(
         hwnd: super::super::Foundation::HWND,
         nBar: SCROLLBAR_CONSTANTS,
         lpsi: MutPtr<SCROLLINFO>,
-    ) -> super::super::Foundation::BOOL;
-    fn GetScrollPos(hWnd: super::super::Foundation::HWND, nBar: SCROLLBAR_CONSTANTS) -> i32;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn GetScrollPos(hWnd: super::super::Foundation::HWND, nBar: SCROLLBAR_CONSTANTS) -> i32 {
+        todo!()
+    }
     fn GetScrollRange(
         hWnd: super::super::Foundation::HWND,
         nBar: SCROLLBAR_CONSTANTS,
         lpMinPos: MutPtr<i32>,
         lpMaxPos: MutPtr<i32>,
-    ) -> super::super::Foundation::BOOL;
-    fn GetShellWindow() -> super::super::Foundation::HWND;
-    fn GetSubMenu(hMenu: HMENU, nPos: i32) -> HMENU;
-    fn GetSysColor(nIndex: SYS_COLOR_INDEX) -> u32;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn GetShellWindow() -> super::super::Foundation::HWND {
+        todo!()
+    }
+    fn GetSubMenu(hMenu: HMENU, nPos: i32) -> HMENU {
+        todo!()
+    }
+    fn GetSysColor(nIndex: SYS_COLOR_INDEX) -> u32 {
+        todo!()
+    }
     fn GetSystemMenu(
         hWnd: super::super::Foundation::HWND,
         bRevert: super::super::Foundation::BOOL,
-    ) -> HMENU;
-    fn GetSystemMetrics(nIndex: SYSTEM_METRICS_INDEX) -> i32;
+    ) -> HMENU {
+        todo!()
+    }
+    fn GetSystemMetrics(nIndex: SYSTEM_METRICS_INDEX) -> i32 {
+        todo!()
+    }
     fn GetTitleBarInfo(
         hwnd: super::super::Foundation::HWND,
         pti: MutPtr<TITLEBARINFO>,
-    ) -> super::super::Foundation::BOOL;
-    fn GetTopWindow(hWnd: super::super::Foundation::HWND) -> super::super::Foundation::HWND;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn GetTopWindow(hWnd: super::super::Foundation::HWND) -> super::super::Foundation::HWND {
+        todo!()
+    }
     fn GetWindow(
         hWnd: super::super::Foundation::HWND,
         uCmd: GET_WINDOW_CMD,
-    ) -> super::super::Foundation::HWND;
+    ) -> super::super::Foundation::HWND {
+        todo!()
+    }
     fn GetWindowDisplayAffinity(
         hWnd: super::super::Foundation::HWND,
         pdwAffinity: MutPtr<u32>,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn GetWindowInfo(
         hwnd: super::super::Foundation::HWND,
         pwi: MutPtr<WINDOWINFO>,
-    ) -> super::super::Foundation::BOOL;
-    fn GetWindowLongA(hWnd: super::super::Foundation::HWND, nIndex: WINDOW_LONG_PTR_INDEX) -> i32;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn GetWindowLongA(hWnd: super::super::Foundation::HWND, nIndex: WINDOW_LONG_PTR_INDEX) -> i32 {
+        todo!()
+    }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation'*"]
     #[cfg(dummy_option_that_does_not_exist)]
     fn GetWindowLongPtrA(
         hWnd: super::super::Foundation::HWND,
         nIndex: WINDOW_LONG_PTR_INDEX,
-    ) -> isize;
+    ) -> isize {
+        todo!()
+    }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation'*"]
     #[cfg(dummy_option_that_does_not_exist)]
     fn GetWindowLongPtrW(
         hWnd: super::super::Foundation::HWND,
         nIndex: WINDOW_LONG_PTR_INDEX,
-    ) -> isize;
-    fn GetWindowLongW(hWnd: super::super::Foundation::HWND, nIndex: WINDOW_LONG_PTR_INDEX) -> i32;
+    ) -> isize {
+        todo!()
+    }
+    fn GetWindowLongW(hWnd: super::super::Foundation::HWND, nIndex: WINDOW_LONG_PTR_INDEX) -> i32 {
+        todo!()
+    }
     fn GetWindowModuleFileNameA(
         hwnd: super::super::Foundation::HWND,
         pszFileName: ::win32::core::PSTR,
         cchFileNameMax: u32,
-    ) -> u32;
+    ) -> u32 {
+        todo!()
+    }
     fn GetWindowModuleFileNameW(
         hwnd: super::super::Foundation::HWND,
         pszFileName: ::win32::core::PWSTR,
         cchFileNameMax: u32,
-    ) -> u32;
+    ) -> u32 {
+        todo!()
+    }
     fn GetWindowPlacement(
         hWnd: super::super::Foundation::HWND,
         lpwndpl: MutPtr<WINDOWPLACEMENT>,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn GetWindowRect(
         hWnd: super::super::Foundation::HWND,
         lpRect: MutPtr<super::super::Foundation::RECT>,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn GetWindowTextA(
         hWnd: super::super::Foundation::HWND,
         lpString: ::win32::core::PSTR,
         nMaxCount: i32,
-    ) -> i32;
-    fn GetWindowTextLengthA(hWnd: super::super::Foundation::HWND) -> i32;
-    fn GetWindowTextLengthW(hWnd: super::super::Foundation::HWND) -> i32;
+    ) -> i32 {
+        todo!()
+    }
+    fn GetWindowTextLengthA(hWnd: super::super::Foundation::HWND) -> i32 {
+        todo!()
+    }
+    fn GetWindowTextLengthW(hWnd: super::super::Foundation::HWND) -> i32 {
+        todo!()
+    }
     fn GetWindowTextW(
         hWnd: super::super::Foundation::HWND,
         lpString: ::win32::core::PWSTR,
         nMaxCount: i32,
-    ) -> i32;
+    ) -> i32 {
+        todo!()
+    }
     fn GetWindowThreadProcessId(
         hWnd: super::super::Foundation::HWND,
         lpdwProcessId: MutPtr<u32>,
-    ) -> u32;
-    fn GetWindowWord(hWnd: super::super::Foundation::HWND, nIndex: i32) -> u16;
-    fn HideCaret(hWnd: super::super::Foundation::HWND) -> super::super::Foundation::BOOL;
+    ) -> u32 {
+        todo!()
+    }
+    fn GetWindowWord(hWnd: super::super::Foundation::HWND, nIndex: i32) -> u16 {
+        todo!()
+    }
+    fn HideCaret(hWnd: super::super::Foundation::HWND) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn HiliteMenuItem(
         hWnd: super::super::Foundation::HWND,
         hMenu: HMENU,
         uIDHiliteItem: u32,
         uHilite: u32,
-    ) -> super::super::Foundation::BOOL;
-    fn InSendMessage() -> super::super::Foundation::BOOL;
-    fn InSendMessageEx(lpReserved: MutPtr<::core::ffi::c_void>) -> u32;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn InSendMessage() -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn InSendMessageEx(lpReserved: MutPtr<::core::ffi::c_void>) -> u32 {
+        todo!()
+    }
     fn IndexFilePath(
         resourceIndexer: ConstPtr<::core::ffi::c_void>,
         filePath: ::win32::core::PCWSTR,
         ppResourceUri: MutPtr<::win32::core::PWSTR>,
         pQualifierCount: MutPtr<u32>,
         ppQualifiers: MutPtr<ConstPtr<IndexedResourceQualifier>>,
-    ) -> ::win32::core::HRESULT;
+    ) -> ::win32::core::HRESULT {
+        todo!()
+    }
     fn InheritWindowMonitor(
         hwnd: super::super::Foundation::HWND,
         hwndInherit: super::super::Foundation::HWND,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn InsertMenuA(
         hMenu: HMENU,
         uPosition: u32,
         uFlags: MENU_ITEM_FLAGS,
         uIDNewItem: usize,
         lpNewItem: ::win32::core::PCSTR,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
     #[cfg(dummy_option_that_does_not_exist)]
     fn InsertMenuItemA(
@@ -8496,7 +8925,9 @@ pub trait Api {
         item: u32,
         fByPosition: super::super::Foundation::BOOL,
         lpmi: ConstPtr<MENUITEMINFOA>,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
     #[cfg(dummy_option_that_does_not_exist)]
     fn InsertMenuItemW(
@@ -8504,78 +8935,142 @@ pub trait Api {
         item: u32,
         fByPosition: super::super::Foundation::BOOL,
         lpmi: ConstPtr<MENUITEMINFOW>,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn InsertMenuW(
         hMenu: HMENU,
         uPosition: u32,
         uFlags: MENU_ITEM_FLAGS,
         uIDNewItem: usize,
         lpNewItem: ::win32::core::PCWSTR,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn InternalGetWindowText(
         hWnd: super::super::Foundation::HWND,
         pString: ::win32::core::PWSTR,
         cchMaxCount: i32,
-    ) -> i32;
-    fn IsCharAlphaA(ch: super::super::Foundation::CHAR) -> super::super::Foundation::BOOL;
-    fn IsCharAlphaNumericA(ch: super::super::Foundation::CHAR) -> super::super::Foundation::BOOL;
-    fn IsCharAlphaNumericW(ch: u16) -> super::super::Foundation::BOOL;
-    fn IsCharAlphaW(ch: u16) -> super::super::Foundation::BOOL;
-    fn IsCharLowerA(ch: super::super::Foundation::CHAR) -> super::super::Foundation::BOOL;
-    fn IsCharUpperA(ch: super::super::Foundation::CHAR) -> super::super::Foundation::BOOL;
-    fn IsCharUpperW(ch: u16) -> super::super::Foundation::BOOL;
+    ) -> i32 {
+        todo!()
+    }
+    fn IsCharAlphaA(ch: super::super::Foundation::CHAR) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn IsCharAlphaNumericA(ch: super::super::Foundation::CHAR) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn IsCharAlphaNumericW(ch: u16) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn IsCharAlphaW(ch: u16) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn IsCharLowerA(ch: super::super::Foundation::CHAR) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn IsCharUpperA(ch: super::super::Foundation::CHAR) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn IsCharUpperW(ch: u16) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn IsChild(
         hWndParent: super::super::Foundation::HWND,
         hWnd: super::super::Foundation::HWND,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn IsDialogMessageA(
         hDlg: super::super::Foundation::HWND,
         lpMsg: ConstPtr<MSG>,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn IsDialogMessageW(
         hDlg: super::super::Foundation::HWND,
         lpMsg: ConstPtr<MSG>,
-    ) -> super::super::Foundation::BOOL;
-    fn IsGUIThread(bConvert: super::super::Foundation::BOOL) -> super::super::Foundation::BOOL;
-    fn IsHungAppWindow(hwnd: super::super::Foundation::HWND) -> super::super::Foundation::BOOL;
-    fn IsIconic(hWnd: super::super::Foundation::HWND) -> super::super::Foundation::BOOL;
-    fn IsMenu(hMenu: HMENU) -> super::super::Foundation::BOOL;
-    fn IsProcessDPIAware() -> super::super::Foundation::BOOL;
-    fn IsWindow(hWnd: super::super::Foundation::HWND) -> super::super::Foundation::BOOL;
-    fn IsWindowUnicode(hWnd: super::super::Foundation::HWND) -> super::super::Foundation::BOOL;
-    fn IsWindowVisible(hWnd: super::super::Foundation::HWND) -> super::super::Foundation::BOOL;
-    fn IsWow64Message() -> super::super::Foundation::BOOL;
-    fn IsZoomed(hWnd: super::super::Foundation::HWND) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn IsGUIThread(bConvert: super::super::Foundation::BOOL) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn IsHungAppWindow(hwnd: super::super::Foundation::HWND) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn IsIconic(hWnd: super::super::Foundation::HWND) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn IsMenu(hMenu: HMENU) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn IsProcessDPIAware() -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn IsWindow(hWnd: super::super::Foundation::HWND) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn IsWindowUnicode(hWnd: super::super::Foundation::HWND) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn IsWindowVisible(hWnd: super::super::Foundation::HWND) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn IsWow64Message() -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn IsZoomed(hWnd: super::super::Foundation::HWND) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn KillTimer(
         hWnd: super::super::Foundation::HWND,
         uIDEvent: usize,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn LoadAcceleratorsA(
         hInstance: super::super::Foundation::HINSTANCE,
         lpTableName: ::win32::core::PCSTR,
-    ) -> HACCEL;
+    ) -> HACCEL {
+        todo!()
+    }
     fn LoadAcceleratorsW(
         hInstance: super::super::Foundation::HINSTANCE,
         lpTableName: ::win32::core::PCWSTR,
-    ) -> HACCEL;
+    ) -> HACCEL {
+        todo!()
+    }
     fn LoadCursorA(
         hInstance: super::super::Foundation::HINSTANCE,
         lpCursorName: ::win32::core::PCSTR,
-    ) -> HCURSOR;
-    fn LoadCursorFromFileA(lpFileName: ::win32::core::PCSTR) -> HCURSOR;
-    fn LoadCursorFromFileW(lpFileName: ::win32::core::PCWSTR) -> HCURSOR;
+    ) -> HCURSOR {
+        todo!()
+    }
+    fn LoadCursorFromFileA(lpFileName: ::win32::core::PCSTR) -> HCURSOR {
+        todo!()
+    }
+    fn LoadCursorFromFileW(lpFileName: ::win32::core::PCWSTR) -> HCURSOR {
+        todo!()
+    }
     fn LoadCursorW(
         hInstance: super::super::Foundation::HINSTANCE,
         lpCursorName: ::win32::core::PCWSTR,
-    ) -> HCURSOR;
+    ) -> HCURSOR {
+        todo!()
+    }
     fn LoadIconA(
         hInstance: super::super::Foundation::HINSTANCE,
         lpIconName: ::win32::core::PCSTR,
-    ) -> HICON;
+    ) -> HICON {
+        todo!()
+    }
     fn LoadIconW(
         hInstance: super::super::Foundation::HINSTANCE,
         lpIconName: ::win32::core::PCWSTR,
-    ) -> HICON;
+    ) -> HICON {
+        todo!()
+    }
     fn LoadImageA(
         hInst: super::super::Foundation::HINSTANCE,
         name: ::win32::core::PCSTR,
@@ -8583,7 +9078,9 @@ pub trait Api {
         cx: i32,
         cy: i32,
         fuLoad: IMAGE_FLAGS,
-    ) -> super::super::Foundation::HANDLE;
+    ) -> super::super::Foundation::HANDLE {
+        todo!()
+    }
     fn LoadImageW(
         hInst: super::super::Foundation::HINSTANCE,
         name: ::win32::core::PCWSTR,
@@ -8591,102 +9088,144 @@ pub trait Api {
         cx: i32,
         cy: i32,
         fuLoad: IMAGE_FLAGS,
-    ) -> super::super::Foundation::HANDLE;
+    ) -> super::super::Foundation::HANDLE {
+        todo!()
+    }
     fn LoadMenuA(
         hInstance: super::super::Foundation::HINSTANCE,
         lpMenuName: ::win32::core::PCSTR,
-    ) -> HMENU;
-    fn LoadMenuIndirectA(lpMenuTemplate: ConstPtr<::core::ffi::c_void>) -> HMENU;
-    fn LoadMenuIndirectW(lpMenuTemplate: ConstPtr<::core::ffi::c_void>) -> HMENU;
+    ) -> HMENU {
+        todo!()
+    }
+    fn LoadMenuIndirectA(lpMenuTemplate: ConstPtr<::core::ffi::c_void>) -> HMENU {
+        todo!()
+    }
+    fn LoadMenuIndirectW(lpMenuTemplate: ConstPtr<::core::ffi::c_void>) -> HMENU {
+        todo!()
+    }
     fn LoadMenuW(
         hInstance: super::super::Foundation::HINSTANCE,
         lpMenuName: ::win32::core::PCWSTR,
-    ) -> HMENU;
+    ) -> HMENU {
+        todo!()
+    }
     fn LoadStringA(
         hInstance: super::super::Foundation::HINSTANCE,
         uID: u32,
         lpBuffer: ::win32::core::PSTR,
         cchBufferMax: i32,
-    ) -> i32;
+    ) -> i32 {
+        todo!()
+    }
     fn LoadStringW(
         hInstance: super::super::Foundation::HINSTANCE,
         uID: u32,
         lpBuffer: ::win32::core::PWSTR,
         cchBufferMax: i32,
-    ) -> i32;
+    ) -> i32 {
+        todo!()
+    }
     fn LockSetForegroundWindow(
         uLockCode: FOREGROUND_WINDOW_LOCK_CODE,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn LogicalToPhysicalPoint(
         hWnd: super::super::Foundation::HWND,
         lpPoint: MutPtr<super::super::Foundation::POINT>,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn LookupIconIdFromDirectory(
         presbits: ConstPtr<u8>,
         fIcon: super::super::Foundation::BOOL,
-    ) -> i32;
+    ) -> i32 {
+        todo!()
+    }
     fn LookupIconIdFromDirectoryEx(
         presbits: ConstPtr<u8>,
         fIcon: super::super::Foundation::BOOL,
         cxDesired: i32,
         cyDesired: i32,
         Flags: IMAGE_FLAGS,
-    ) -> i32;
+    ) -> i32 {
+        todo!()
+    }
     fn MapDialogRect(
         hDlg: super::super::Foundation::HWND,
         lpRect: MutPtr<super::super::Foundation::RECT>,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn MenuItemFromPoint(
         hWnd: super::super::Foundation::HWND,
         hMenu: HMENU,
         ptScreen: super::super::Foundation::POINT,
-    ) -> i32;
+    ) -> i32 {
+        todo!()
+    }
     fn MessageBoxA(
         hWnd: super::super::Foundation::HWND,
         lpText: ::win32::core::PCSTR,
         lpCaption: ::win32::core::PCSTR,
         uType: MESSAGEBOX_STYLE,
-    ) -> MESSAGEBOX_RESULT;
+    ) -> MESSAGEBOX_RESULT {
+        todo!()
+    }
     fn MessageBoxExA(
         hWnd: super::super::Foundation::HWND,
         lpText: ::win32::core::PCSTR,
         lpCaption: ::win32::core::PCSTR,
         uType: MESSAGEBOX_STYLE,
         wLanguageId: u16,
-    ) -> MESSAGEBOX_RESULT;
+    ) -> MESSAGEBOX_RESULT {
+        todo!()
+    }
     fn MessageBoxExW(
         hWnd: super::super::Foundation::HWND,
         lpText: ::win32::core::PCWSTR,
         lpCaption: ::win32::core::PCWSTR,
         uType: MESSAGEBOX_STYLE,
         wLanguageId: u16,
-    ) -> MESSAGEBOX_RESULT;
+    ) -> MESSAGEBOX_RESULT {
+        todo!()
+    }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.UI.Shell'*"]
     #[cfg(dummy_option_that_does_not_exist)]
-    fn MessageBoxIndirectA(lpmbp: ConstPtr<MSGBOXPARAMSA>) -> MESSAGEBOX_RESULT;
+    fn MessageBoxIndirectA(lpmbp: ConstPtr<MSGBOXPARAMSA>) -> MESSAGEBOX_RESULT {
+        todo!()
+    }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.UI.Shell'*"]
     #[cfg(dummy_option_that_does_not_exist)]
-    fn MessageBoxIndirectW(lpmbp: ConstPtr<MSGBOXPARAMSW>) -> MESSAGEBOX_RESULT;
+    fn MessageBoxIndirectW(lpmbp: ConstPtr<MSGBOXPARAMSW>) -> MESSAGEBOX_RESULT {
+        todo!()
+    }
     fn MessageBoxW(
         hWnd: super::super::Foundation::HWND,
         lpText: ::win32::core::PCWSTR,
         lpCaption: ::win32::core::PCWSTR,
         uType: MESSAGEBOX_STYLE,
-    ) -> MESSAGEBOX_RESULT;
+    ) -> MESSAGEBOX_RESULT {
+        todo!()
+    }
     fn ModifyMenuA(
         hMnu: HMENU,
         uPosition: u32,
         uFlags: MENU_ITEM_FLAGS,
         uIDNewItem: usize,
         lpNewItem: ::win32::core::PCSTR,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn ModifyMenuW(
         hMnu: HMENU,
         uPosition: u32,
         uFlags: MENU_ITEM_FLAGS,
         uIDNewItem: usize,
         lpNewItem: ::win32::core::PCWSTR,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn MoveWindow(
         hWnd: super::super::Foundation::HWND,
         X: i32,
@@ -8694,45 +9233,59 @@ pub trait Api {
         nWidth: i32,
         nHeight: i32,
         bRepaint: super::super::Foundation::BOOL,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn MrmCreateConfig(
         platformVersion: MrmPlatformVersion,
         defaultQualifiers: ::win32::core::PCWSTR,
         outputXmlFile: ::win32::core::PCWSTR,
-    ) -> ::win32::core::HRESULT;
+    ) -> ::win32::core::HRESULT {
+        todo!()
+    }
     fn MrmCreateConfigInMemory(
         platformVersion: MrmPlatformVersion,
         defaultQualifiers: ::win32::core::PCWSTR,
         outputXmlData: MutPtr<ConstPtr<u8>>,
         outputXmlSize: MutPtr<u32>,
-    ) -> ::win32::core::HRESULT;
+    ) -> ::win32::core::HRESULT {
+        todo!()
+    }
     fn MrmCreateResourceFile(
         indexer: MrmResourceIndexerHandle,
         packagingMode: MrmPackagingMode,
         packagingOptions: MrmPackagingOptions,
         outputDirectory: ::win32::core::PCWSTR,
-    ) -> ::win32::core::HRESULT;
+    ) -> ::win32::core::HRESULT {
+        todo!()
+    }
     fn MrmCreateResourceFileInMemory(
         indexer: MrmResourceIndexerHandle,
         packagingMode: MrmPackagingMode,
         packagingOptions: MrmPackagingOptions,
         outputPriData: MutPtr<ConstPtr<u8>>,
         outputPriSize: MutPtr<u32>,
-    ) -> ::win32::core::HRESULT;
+    ) -> ::win32::core::HRESULT {
+        todo!()
+    }
     fn MrmCreateResourceFileWithChecksum(
         indexer: MrmResourceIndexerHandle,
         packagingMode: MrmPackagingMode,
         packagingOptions: MrmPackagingOptions,
         checksum: u32,
         outputDirectory: ::win32::core::PCWSTR,
-    ) -> ::win32::core::HRESULT;
+    ) -> ::win32::core::HRESULT {
+        todo!()
+    }
     fn MrmCreateResourceIndexer(
         packageFamilyName: ::win32::core::PCWSTR,
         projectRoot: ::win32::core::PCWSTR,
         platformVersion: MrmPlatformVersion,
         defaultQualifiers: ::win32::core::PCWSTR,
         indexer: MutPtr<MrmResourceIndexerHandle>,
-    ) -> ::win32::core::HRESULT;
+    ) -> ::win32::core::HRESULT {
+        todo!()
+    }
     fn MrmCreateResourceIndexerFromPreviousPriData(
         projectRoot: ::win32::core::PCWSTR,
         platformVersion: MrmPlatformVersion,
@@ -8740,14 +9293,18 @@ pub trait Api {
         priData: ConstPtr<u8>,
         priSize: u32,
         indexer: MutPtr<MrmResourceIndexerHandle>,
-    ) -> ::win32::core::HRESULT;
+    ) -> ::win32::core::HRESULT {
+        todo!()
+    }
     fn MrmCreateResourceIndexerFromPreviousPriFile(
         projectRoot: ::win32::core::PCWSTR,
         platformVersion: MrmPlatformVersion,
         defaultQualifiers: ::win32::core::PCWSTR,
         priFile: ::win32::core::PCWSTR,
         indexer: MutPtr<MrmResourceIndexerHandle>,
-    ) -> ::win32::core::HRESULT;
+    ) -> ::win32::core::HRESULT {
+        todo!()
+    }
     fn MrmCreateResourceIndexerFromPreviousSchemaData(
         projectRoot: ::win32::core::PCWSTR,
         platformVersion: MrmPlatformVersion,
@@ -8755,14 +9312,18 @@ pub trait Api {
         schemaXmlData: ConstPtr<u8>,
         schemaXmlSize: u32,
         indexer: MutPtr<MrmResourceIndexerHandle>,
-    ) -> ::win32::core::HRESULT;
+    ) -> ::win32::core::HRESULT {
+        todo!()
+    }
     fn MrmCreateResourceIndexerFromPreviousSchemaFile(
         projectRoot: ::win32::core::PCWSTR,
         platformVersion: MrmPlatformVersion,
         defaultQualifiers: ::win32::core::PCWSTR,
         schemaFile: ::win32::core::PCWSTR,
         indexer: MutPtr<MrmResourceIndexerHandle>,
-    ) -> ::win32::core::HRESULT;
+    ) -> ::win32::core::HRESULT {
+        todo!()
+    }
     fn MrmCreateResourceIndexerWithFlags(
         packageFamilyName: ::win32::core::PCWSTR,
         projectRoot: ::win32::core::PCWSTR,
@@ -8770,8 +9331,12 @@ pub trait Api {
         defaultQualifiers: ::win32::core::PCWSTR,
         flags: MrmIndexerFlags,
         indexer: MutPtr<MrmResourceIndexerHandle>,
-    ) -> ::win32::core::HRESULT;
-    fn MrmDestroyIndexerAndMessages(indexer: MrmResourceIndexerHandle) -> ::win32::core::HRESULT;
+    ) -> ::win32::core::HRESULT {
+        todo!()
+    }
+    fn MrmDestroyIndexerAndMessages(indexer: MrmResourceIndexerHandle) -> ::win32::core::HRESULT {
+        todo!()
+    }
     fn MrmDumpPriDataInMemory(
         inputPriData: ConstPtr<u8>,
         inputPriSize: u32,
@@ -8780,133 +9345,185 @@ pub trait Api {
         dumpType: MrmDumpType,
         outputXmlData: MutPtr<ConstPtr<u8>>,
         outputXmlSize: MutPtr<u32>,
-    ) -> ::win32::core::HRESULT;
+    ) -> ::win32::core::HRESULT {
+        todo!()
+    }
     fn MrmDumpPriFile(
         indexFileName: ::win32::core::PCWSTR,
         schemaPriFile: ::win32::core::PCWSTR,
         dumpType: MrmDumpType,
         outputXmlFile: ::win32::core::PCWSTR,
-    ) -> ::win32::core::HRESULT;
+    ) -> ::win32::core::HRESULT {
+        todo!()
+    }
     fn MrmDumpPriFileInMemory(
         indexFileName: ::win32::core::PCWSTR,
         schemaPriFile: ::win32::core::PCWSTR,
         dumpType: MrmDumpType,
         outputXmlData: MutPtr<ConstPtr<u8>>,
         outputXmlSize: MutPtr<u32>,
-    ) -> ::win32::core::HRESULT;
-    fn MrmFreeMemory(data: ConstPtr<u8>) -> ::win32::core::HRESULT;
+    ) -> ::win32::core::HRESULT {
+        todo!()
+    }
+    fn MrmFreeMemory(data: ConstPtr<u8>) -> ::win32::core::HRESULT {
+        todo!()
+    }
     fn MrmGetPriFileContentChecksum(
         priFile: ::win32::core::PCWSTR,
         checksum: MutPtr<u32>,
-    ) -> ::win32::core::HRESULT;
+    ) -> ::win32::core::HRESULT {
+        todo!()
+    }
     fn MrmIndexEmbeddedData(
         indexer: MrmResourceIndexerHandle,
         resourceUri: ::win32::core::PCWSTR,
         embeddedData: ConstPtr<u8>,
         embeddedDataSize: u32,
         qualifiers: ::win32::core::PCWSTR,
-    ) -> ::win32::core::HRESULT;
+    ) -> ::win32::core::HRESULT {
+        todo!()
+    }
     fn MrmIndexFile(
         indexer: MrmResourceIndexerHandle,
         resourceUri: ::win32::core::PCWSTR,
         filePath: ::win32::core::PCWSTR,
         qualifiers: ::win32::core::PCWSTR,
-    ) -> ::win32::core::HRESULT;
+    ) -> ::win32::core::HRESULT {
+        todo!()
+    }
     fn MrmIndexFileAutoQualifiers(
         indexer: MrmResourceIndexerHandle,
         filePath: ::win32::core::PCWSTR,
-    ) -> ::win32::core::HRESULT;
+    ) -> ::win32::core::HRESULT {
+        todo!()
+    }
     fn MrmIndexResourceContainerAutoQualifiers(
         indexer: MrmResourceIndexerHandle,
         containerPath: ::win32::core::PCWSTR,
-    ) -> ::win32::core::HRESULT;
+    ) -> ::win32::core::HRESULT {
+        todo!()
+    }
     fn MrmIndexString(
         indexer: MrmResourceIndexerHandle,
         resourceUri: ::win32::core::PCWSTR,
         resourceString: ::win32::core::PCWSTR,
         qualifiers: ::win32::core::PCWSTR,
-    ) -> ::win32::core::HRESULT;
+    ) -> ::win32::core::HRESULT {
+        todo!()
+    }
     fn MrmPeekResourceIndexerMessages(
         handle: MrmResourceIndexerHandle,
         messages: MutPtr<ConstPtr<MrmResourceIndexerMessage>>,
         numMsgs: MutPtr<u32>,
-    ) -> ::win32::core::HRESULT;
+    ) -> ::win32::core::HRESULT {
+        todo!()
+    }
     fn MsgWaitForMultipleObjects(
         nCount: u32,
         pHandles: ConstPtr<super::super::Foundation::HANDLE>,
         fWaitAll: super::super::Foundation::BOOL,
         dwMilliseconds: u32,
         dwWakeMask: QUEUE_STATUS_FLAGS,
-    ) -> u32;
+    ) -> u32 {
+        todo!()
+    }
     fn MsgWaitForMultipleObjectsEx(
         nCount: u32,
         pHandles: ConstPtr<super::super::Foundation::HANDLE>,
         dwMilliseconds: u32,
         dwWakeMask: QUEUE_STATUS_FLAGS,
         dwFlags: MSG_WAIT_FOR_MULTIPLE_OBJECTS_EX_FLAGS,
-    ) -> u32;
+    ) -> u32 {
+        todo!()
+    }
     fn OemToCharA(
         pSrc: ::win32::core::PCSTR,
         pDst: ::win32::core::PSTR,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn OemToCharBuffA(
         lpszSrc: ::win32::core::PCSTR,
         lpszDst: ::win32::core::PSTR,
         cchDstLength: u32,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn OemToCharBuffW(
         lpszSrc: ::win32::core::PCSTR,
         lpszDst: ::win32::core::PWSTR,
         cchDstLength: u32,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn OemToCharW(
         pSrc: ::win32::core::PCSTR,
         pDst: ::win32::core::PWSTR,
-    ) -> super::super::Foundation::BOOL;
-    fn OpenIcon(hWnd: super::super::Foundation::HWND) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn OpenIcon(hWnd: super::super::Foundation::HWND) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn PeekMessageA(
         lpMsg: MutPtr<MSG>,
         hWnd: super::super::Foundation::HWND,
         wMsgFilterMin: u32,
         wMsgFilterMax: u32,
         wRemoveMsg: PEEK_MESSAGE_REMOVE_TYPE,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn PeekMessageW(
         lpMsg: MutPtr<MSG>,
         hWnd: super::super::Foundation::HWND,
         wMsgFilterMin: u32,
         wMsgFilterMax: u32,
         wRemoveMsg: PEEK_MESSAGE_REMOVE_TYPE,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn PhysicalToLogicalPoint(
         hWnd: super::super::Foundation::HWND,
         lpPoint: MutPtr<super::super::Foundation::POINT>,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn PostMessageA(
         hWnd: super::super::Foundation::HWND,
         Msg: u32,
         wParam: super::super::Foundation::WPARAM,
         lParam: super::super::Foundation::LPARAM,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn PostMessageW(
         hWnd: super::super::Foundation::HWND,
         Msg: u32,
         wParam: super::super::Foundation::WPARAM,
         lParam: super::super::Foundation::LPARAM,
-    ) -> super::super::Foundation::BOOL;
-    fn PostQuitMessage(nExitCode: i32);
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn PostQuitMessage(nExitCode: i32) {
+        todo!()
+    }
     fn PostThreadMessageA(
         idThread: u32,
         Msg: u32,
         wParam: super::super::Foundation::WPARAM,
         lParam: super::super::Foundation::LPARAM,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn PostThreadMessageW(
         idThread: u32,
         Msg: u32,
         wParam: super::super::Foundation::WPARAM,
         lParam: super::super::Foundation::LPARAM,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn PrivateExtractIconsA(
         szFileName: ::win32::core::PCSTR,
         nIconIndex: i32,
@@ -8916,7 +9533,9 @@ pub trait Api {
         piconid: MutPtr<u32>,
         nIcons: u32,
         flags: u32,
-    ) -> u32;
+    ) -> u32 {
+        todo!()
+    }
     fn PrivateExtractIconsW(
         szFileName: ::win32::core::PCWSTR,
         nIconIndex: i32,
@@ -8926,66 +9545,100 @@ pub trait Api {
         piconid: MutPtr<u32>,
         nIcons: u32,
         flags: u32,
-    ) -> u32;
+    ) -> u32 {
+        todo!()
+    }
     fn RealChildWindowFromPoint(
         hwndParent: super::super::Foundation::HWND,
         ptParentClientCoords: super::super::Foundation::POINT,
-    ) -> super::super::Foundation::HWND;
+    ) -> super::super::Foundation::HWND {
+        todo!()
+    }
     fn RealGetWindowClassA(
         hwnd: super::super::Foundation::HWND,
         ptszClassName: ::win32::core::PSTR,
         cchClassNameMax: u32,
-    ) -> u32;
+    ) -> u32 {
+        todo!()
+    }
     fn RealGetWindowClassW(
         hwnd: super::super::Foundation::HWND,
         ptszClassName: ::win32::core::PWSTR,
         cchClassNameMax: u32,
-    ) -> u32;
+    ) -> u32 {
+        todo!()
+    }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
     #[cfg(dummy_option_that_does_not_exist)]
-    fn RegisterClassA(lpWndClass: ConstPtr<WNDCLASSA>) -> u16;
+    fn RegisterClassA(lpWndClass: ConstPtr<WNDCLASSA>) -> u16 {
+        todo!()
+    }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
     #[cfg(dummy_option_that_does_not_exist)]
-    fn RegisterClassExA(param0: ConstPtr<WNDCLASSEXA>) -> u16;
+    fn RegisterClassExA(param0: ConstPtr<WNDCLASSEXA>) -> u16 {
+        todo!()
+    }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
     #[cfg(dummy_option_that_does_not_exist)]
-    fn RegisterClassExW(param0: ConstPtr<WNDCLASSEXW>) -> u16;
+    fn RegisterClassExW(param0: ConstPtr<WNDCLASSEXW>) -> u16 {
+        todo!()
+    }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
     #[cfg(dummy_option_that_does_not_exist)]
-    fn RegisterClassW(lpWndClass: ConstPtr<WNDCLASSW>) -> u16;
+    fn RegisterClassW(lpWndClass: ConstPtr<WNDCLASSW>) -> u16 {
+        todo!()
+    }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Power'*"]
     #[cfg(dummy_option_that_does_not_exist)]
     fn RegisterDeviceNotificationA(
         hRecipient: super::super::Foundation::HANDLE,
         NotificationFilter: ConstPtr<::core::ffi::c_void>,
         Flags: super::super::System::Power::POWER_SETTING_REGISTER_NOTIFICATION_FLAGS,
-    ) -> MutPtr<::core::ffi::c_void>;
+    ) -> MutPtr<::core::ffi::c_void> {
+        todo!()
+    }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Power'*"]
     #[cfg(dummy_option_that_does_not_exist)]
     fn RegisterDeviceNotificationW(
         hRecipient: super::super::Foundation::HANDLE,
         NotificationFilter: ConstPtr<::core::ffi::c_void>,
         Flags: super::super::System::Power::POWER_SETTING_REGISTER_NOTIFICATION_FLAGS,
-    ) -> MutPtr<::core::ffi::c_void>;
+    ) -> MutPtr<::core::ffi::c_void> {
+        todo!()
+    }
     fn RegisterShellHookWindow(
         hwnd: super::super::Foundation::HWND,
-    ) -> super::super::Foundation::BOOL;
-    fn RegisterWindowMessageA(lpString: ::win32::core::PCSTR) -> u32;
-    fn RegisterWindowMessageW(lpString: ::win32::core::PCWSTR) -> u32;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn RegisterWindowMessageA(lpString: ::win32::core::PCSTR) -> u32 {
+        todo!()
+    }
+    fn RegisterWindowMessageW(lpString: ::win32::core::PCWSTR) -> u32 {
+        todo!()
+    }
     fn RemoveMenu(
         hMenu: HMENU,
         uPosition: u32,
         uFlags: MENU_ITEM_FLAGS,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn RemovePropA(
         hWnd: super::super::Foundation::HWND,
         lpString: ::win32::core::PCSTR,
-    ) -> super::super::Foundation::HANDLE;
+    ) -> super::super::Foundation::HANDLE {
+        todo!()
+    }
     fn RemovePropW(
         hWnd: super::super::Foundation::HWND,
         lpString: ::win32::core::PCWSTR,
-    ) -> super::super::Foundation::HANDLE;
-    fn ReplyMessage(lResult: super::super::Foundation::LRESULT) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::HANDLE {
+        todo!()
+    }
+    fn ReplyMessage(lResult: super::super::Foundation::LRESULT) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
     #[cfg(dummy_option_that_does_not_exist)]
     fn ScrollDC(
@@ -8996,14 +9649,18 @@ pub trait Api {
         lprcClip: ConstPtr<super::super::Foundation::RECT>,
         hrgnUpdate: super::super::Graphics::Gdi::HRGN,
         lprcUpdate: MutPtr<super::super::Foundation::RECT>,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn ScrollWindow(
         hWnd: super::super::Foundation::HWND,
         XAmount: i32,
         YAmount: i32,
         lpRect: ConstPtr<super::super::Foundation::RECT>,
         lpClipRect: ConstPtr<super::super::Foundation::RECT>,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
     #[cfg(dummy_option_that_does_not_exist)]
     fn ScrollWindowEx(
@@ -9015,27 +9672,35 @@ pub trait Api {
         hrgnUpdate: super::super::Graphics::Gdi::HRGN,
         prcUpdate: MutPtr<super::super::Foundation::RECT>,
         flags: SHOW_WINDOW_CMD,
-    ) -> i32;
+    ) -> i32 {
+        todo!()
+    }
     fn SendDlgItemMessageA(
         hDlg: super::super::Foundation::HWND,
         nIDDlgItem: i32,
         Msg: u32,
         wParam: super::super::Foundation::WPARAM,
         lParam: super::super::Foundation::LPARAM,
-    ) -> super::super::Foundation::LRESULT;
+    ) -> super::super::Foundation::LRESULT {
+        todo!()
+    }
     fn SendDlgItemMessageW(
         hDlg: super::super::Foundation::HWND,
         nIDDlgItem: i32,
         Msg: u32,
         wParam: super::super::Foundation::WPARAM,
         lParam: super::super::Foundation::LPARAM,
-    ) -> super::super::Foundation::LRESULT;
+    ) -> super::super::Foundation::LRESULT {
+        todo!()
+    }
     fn SendMessageA(
         hWnd: super::super::Foundation::HWND,
         Msg: u32,
         wParam: super::super::Foundation::WPARAM,
         lParam: super::super::Foundation::LPARAM,
-    ) -> super::super::Foundation::LRESULT;
+    ) -> super::super::Foundation::LRESULT {
+        todo!()
+    }
     fn SendMessageCallbackA(
         hWnd: super::super::Foundation::HWND,
         Msg: u32,
@@ -9043,7 +9708,9 @@ pub trait Api {
         lParam: super::super::Foundation::LPARAM,
         lpResultCallBack: SENDASYNCPROC,
         dwData: usize,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn SendMessageCallbackW(
         hWnd: super::super::Foundation::HWND,
         Msg: u32,
@@ -9051,7 +9718,9 @@ pub trait Api {
         lParam: super::super::Foundation::LPARAM,
         lpResultCallBack: SENDASYNCPROC,
         dwData: usize,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn SendMessageTimeoutA(
         hWnd: super::super::Foundation::HWND,
         Msg: u32,
@@ -9060,7 +9729,9 @@ pub trait Api {
         fuFlags: SEND_MESSAGE_TIMEOUT_FLAGS,
         uTimeout: u32,
         lpdwResult: MutPtr<usize>,
-    ) -> super::super::Foundation::LRESULT;
+    ) -> super::super::Foundation::LRESULT {
+        todo!()
+    }
     fn SendMessageTimeoutW(
         hWnd: super::super::Foundation::HWND,
         Msg: u32,
@@ -9069,93 +9740,139 @@ pub trait Api {
         fuFlags: SEND_MESSAGE_TIMEOUT_FLAGS,
         uTimeout: u32,
         lpdwResult: MutPtr<usize>,
-    ) -> super::super::Foundation::LRESULT;
+    ) -> super::super::Foundation::LRESULT {
+        todo!()
+    }
     fn SendMessageW(
         hWnd: super::super::Foundation::HWND,
         Msg: u32,
         wParam: super::super::Foundation::WPARAM,
         lParam: super::super::Foundation::LPARAM,
-    ) -> super::super::Foundation::LRESULT;
+    ) -> super::super::Foundation::LRESULT {
+        todo!()
+    }
     fn SendNotifyMessageA(
         hWnd: super::super::Foundation::HWND,
         Msg: u32,
         wParam: super::super::Foundation::WPARAM,
         lParam: super::super::Foundation::LPARAM,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn SendNotifyMessageW(
         hWnd: super::super::Foundation::HWND,
         Msg: u32,
         wParam: super::super::Foundation::WPARAM,
         lParam: super::super::Foundation::LPARAM,
-    ) -> super::super::Foundation::BOOL;
-    fn SetCaretBlinkTime(uMSeconds: u32) -> super::super::Foundation::BOOL;
-    fn SetCaretPos(X: i32, Y: i32) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn SetCaretBlinkTime(uMSeconds: u32) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn SetCaretPos(X: i32, Y: i32) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn SetClassLongA(
         hWnd: super::super::Foundation::HWND,
         nIndex: GET_CLASS_LONG_INDEX,
         dwNewLong: i32,
-    ) -> u32;
+    ) -> u32 {
+        todo!()
+    }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation'*"]
     #[cfg(dummy_option_that_does_not_exist)]
     fn SetClassLongPtrA(
         hWnd: super::super::Foundation::HWND,
         nIndex: GET_CLASS_LONG_INDEX,
         dwNewLong: isize,
-    ) -> usize;
+    ) -> usize {
+        todo!()
+    }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation'*"]
     #[cfg(dummy_option_that_does_not_exist)]
     fn SetClassLongPtrW(
         hWnd: super::super::Foundation::HWND,
         nIndex: GET_CLASS_LONG_INDEX,
         dwNewLong: isize,
-    ) -> usize;
+    ) -> usize {
+        todo!()
+    }
     fn SetClassLongW(
         hWnd: super::super::Foundation::HWND,
         nIndex: GET_CLASS_LONG_INDEX,
         dwNewLong: i32,
-    ) -> u32;
-    fn SetClassWord(hWnd: super::super::Foundation::HWND, nIndex: i32, wNewWord: u16) -> u16;
+    ) -> u32 {
+        todo!()
+    }
+    fn SetClassWord(hWnd: super::super::Foundation::HWND, nIndex: i32, wNewWord: u16) -> u16 {
+        todo!()
+    }
     fn SetCoalescableTimer(
         hWnd: super::super::Foundation::HWND,
         nIDEvent: usize,
         uElapse: u32,
         lpTimerFunc: TIMERPROC,
         uToleranceDelay: u32,
-    ) -> usize;
-    fn SetCursor(hCursor: HCURSOR) -> HCURSOR;
-    fn SetCursorPos(X: i32, Y: i32) -> super::super::Foundation::BOOL;
-    fn SetDebugErrorLevel(dwLevel: u32);
+    ) -> usize {
+        todo!()
+    }
+    fn SetCursor(hCursor: HCURSOR) -> HCURSOR {
+        todo!()
+    }
+    fn SetCursorPos(X: i32, Y: i32) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn SetDebugErrorLevel(dwLevel: u32) {
+        todo!()
+    }
     fn SetDlgItemInt(
         hDlg: super::super::Foundation::HWND,
         nIDDlgItem: i32,
         uValue: u32,
         bSigned: super::super::Foundation::BOOL,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn SetDlgItemTextA(
         hDlg: super::super::Foundation::HWND,
         nIDDlgItem: i32,
         lpString: ::win32::core::PCSTR,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn SetDlgItemTextW(
         hDlg: super::super::Foundation::HWND,
         nIDDlgItem: i32,
         lpString: ::win32::core::PCWSTR,
-    ) -> super::super::Foundation::BOOL;
-    fn SetForegroundWindow(hWnd: super::super::Foundation::HWND) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn SetForegroundWindow(hWnd: super::super::Foundation::HWND) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn SetLayeredWindowAttributes(
         hwnd: super::super::Foundation::HWND,
         crKey: u32,
         bAlpha: u8,
         dwFlags: LAYERED_WINDOW_ATTRIBUTES_FLAGS,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn SetMenu(
         hWnd: super::super::Foundation::HWND,
         hMenu: HMENU,
-    ) -> super::super::Foundation::BOOL;
-    fn SetMenuDefaultItem(hMenu: HMENU, uItem: u32, fByPos: u32) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn SetMenuDefaultItem(hMenu: HMENU, uItem: u32, fByPos: u32) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
     #[cfg(dummy_option_that_does_not_exist)]
-    fn SetMenuInfo(param0: HMENU, param1: ConstPtr<MENUINFO>) -> super::super::Foundation::BOOL;
+    fn SetMenuInfo(param0: HMENU, param1: ConstPtr<MENUINFO>) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
     #[cfg(dummy_option_that_does_not_exist)]
     fn SetMenuItemBitmaps(
@@ -9164,7 +9881,9 @@ pub trait Api {
         uFlags: MENU_ITEM_FLAGS,
         hBitmapUnchecked: super::super::Graphics::Gdi::HBITMAP,
         hBitmapChecked: super::super::Graphics::Gdi::HBITMAP,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
     #[cfg(dummy_option_that_does_not_exist)]
     fn SetMenuItemInfoA(
@@ -9172,7 +9891,9 @@ pub trait Api {
         item: u32,
         fByPositon: super::super::Foundation::BOOL,
         lpmii: ConstPtr<MENUITEMINFOA>,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
     #[cfg(dummy_option_that_does_not_exist)]
     fn SetMenuItemInfoW(
@@ -9180,72 +9901,108 @@ pub trait Api {
         item: u32,
         fByPositon: super::super::Foundation::BOOL,
         lpmii: ConstPtr<MENUITEMINFOW>,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn SetMessageExtraInfo(
         lParam: super::super::Foundation::LPARAM,
-    ) -> super::super::Foundation::LPARAM;
-    fn SetMessageQueue(cMessagesMax: i32) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::LPARAM {
+        todo!()
+    }
+    fn SetMessageQueue(cMessagesMax: i32) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn SetParent(
         hWndChild: super::super::Foundation::HWND,
         hWndNewParent: super::super::Foundation::HWND,
-    ) -> super::super::Foundation::HWND;
-    fn SetPhysicalCursorPos(X: i32, Y: i32) -> super::super::Foundation::BOOL;
-    fn SetProcessDPIAware() -> super::super::Foundation::BOOL;
-    fn SetProcessDefaultLayout(dwDefaultLayout: u32) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::HWND {
+        todo!()
+    }
+    fn SetPhysicalCursorPos(X: i32, Y: i32) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn SetProcessDPIAware() -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn SetProcessDefaultLayout(dwDefaultLayout: u32) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn SetPropA(
         hWnd: super::super::Foundation::HWND,
         lpString: ::win32::core::PCSTR,
         hData: super::super::Foundation::HANDLE,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn SetPropW(
         hWnd: super::super::Foundation::HWND,
         lpString: ::win32::core::PCWSTR,
         hData: super::super::Foundation::HANDLE,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn SetSysColors(
         cElements: i32,
         lpaElements: ConstPtr<i32>,
         lpaRgbValues: ConstPtr<u32>,
-    ) -> super::super::Foundation::BOOL;
-    fn SetSystemCursor(hcur: HCURSOR, id: SYSTEM_CURSOR_ID) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn SetSystemCursor(hcur: HCURSOR, id: SYSTEM_CURSOR_ID) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn SetTimer(
         hWnd: super::super::Foundation::HWND,
         nIDEvent: usize,
         uElapse: u32,
         lpTimerFunc: TIMERPROC,
-    ) -> usize;
+    ) -> usize {
+        todo!()
+    }
     fn SetWindowDisplayAffinity(
         hWnd: super::super::Foundation::HWND,
         dwAffinity: WINDOW_DISPLAY_AFFINITY,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn SetWindowLongA(
         hWnd: super::super::Foundation::HWND,
         nIndex: WINDOW_LONG_PTR_INDEX,
         dwNewLong: i32,
-    ) -> i32;
+    ) -> i32 {
+        todo!()
+    }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation'*"]
     #[cfg(dummy_option_that_does_not_exist)]
     fn SetWindowLongPtrA(
         hWnd: super::super::Foundation::HWND,
         nIndex: WINDOW_LONG_PTR_INDEX,
         dwNewLong: isize,
-    ) -> isize;
+    ) -> isize {
+        todo!()
+    }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation'*"]
     #[cfg(dummy_option_that_does_not_exist)]
     fn SetWindowLongPtrW(
         hWnd: super::super::Foundation::HWND,
         nIndex: WINDOW_LONG_PTR_INDEX,
         dwNewLong: isize,
-    ) -> isize;
+    ) -> isize {
+        todo!()
+    }
     fn SetWindowLongW(
         hWnd: super::super::Foundation::HWND,
         nIndex: WINDOW_LONG_PTR_INDEX,
         dwNewLong: i32,
-    ) -> i32;
+    ) -> i32 {
+        todo!()
+    }
     fn SetWindowPlacement(
         hWnd: super::super::Foundation::HWND,
         lpwndpl: ConstPtr<WINDOWPLACEMENT>,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn SetWindowPos(
         hWnd: super::super::Foundation::HWND,
         hWndInsertAfter: super::super::Foundation::HWND,
@@ -9254,68 +10011,104 @@ pub trait Api {
         cx: i32,
         cy: i32,
         uFlags: SET_WINDOW_POS_FLAGS,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn SetWindowTextA(
         hWnd: super::super::Foundation::HWND,
         lpString: ::win32::core::PCSTR,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn SetWindowTextW(
         hWnd: super::super::Foundation::HWND,
         lpString: ::win32::core::PCWSTR,
-    ) -> super::super::Foundation::BOOL;
-    fn SetWindowWord(hWnd: super::super::Foundation::HWND, nIndex: i32, wNewWord: u16) -> u16;
-    fn SetWindowsHookA(nFilterType: i32, pfnFilterProc: HOOKPROC) -> HHOOK;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn SetWindowWord(hWnd: super::super::Foundation::HWND, nIndex: i32, wNewWord: u16) -> u16 {
+        todo!()
+    }
+    fn SetWindowsHookA(nFilterType: i32, pfnFilterProc: HOOKPROC) -> HHOOK {
+        todo!()
+    }
     fn SetWindowsHookExA(
         idHook: WINDOWS_HOOK_ID,
         lpfn: HOOKPROC,
         hmod: super::super::Foundation::HINSTANCE,
         dwThreadId: u32,
-    ) -> HHOOK;
+    ) -> HHOOK {
+        todo!()
+    }
     fn SetWindowsHookExW(
         idHook: WINDOWS_HOOK_ID,
         lpfn: HOOKPROC,
         hmod: super::super::Foundation::HINSTANCE,
         dwThreadId: u32,
-    ) -> HHOOK;
-    fn SetWindowsHookW(nFilterType: i32, pfnFilterProc: HOOKPROC) -> HHOOK;
-    fn ShowCaret(hWnd: super::super::Foundation::HWND) -> super::super::Foundation::BOOL;
-    fn ShowCursor(bShow: super::super::Foundation::BOOL) -> i32;
+    ) -> HHOOK {
+        todo!()
+    }
+    fn SetWindowsHookW(nFilterType: i32, pfnFilterProc: HOOKPROC) -> HHOOK {
+        todo!()
+    }
+    fn ShowCaret(hWnd: super::super::Foundation::HWND) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn ShowCursor(bShow: super::super::Foundation::BOOL) -> i32 {
+        todo!()
+    }
     fn ShowOwnedPopups(
         hWnd: super::super::Foundation::HWND,
         fShow: super::super::Foundation::BOOL,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn ShowWindow(
         hWnd: super::super::Foundation::HWND,
         nCmdShow: SHOW_WINDOW_CMD,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn ShowWindowAsync(
         hWnd: super::super::Foundation::HWND,
         nCmdShow: SHOW_WINDOW_CMD,
-    ) -> super::super::Foundation::BOOL;
-    fn SoundSentry() -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn SoundSentry() -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn SwitchToThisWindow(
         hwnd: super::super::Foundation::HWND,
         fUnknown: super::super::Foundation::BOOL,
-    );
+    ) {
+        todo!()
+    }
     fn SystemParametersInfoA(
         uiAction: SYSTEM_PARAMETERS_INFO_ACTION,
         uiParam: u32,
         pvParam: MutPtr<::core::ffi::c_void>,
         fWinIni: SYSTEM_PARAMETERS_INFO_UPDATE_FLAGS,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn SystemParametersInfoW(
         uiAction: SYSTEM_PARAMETERS_INFO_ACTION,
         uiParam: u32,
         pvParam: MutPtr<::core::ffi::c_void>,
         fWinIni: SYSTEM_PARAMETERS_INFO_UPDATE_FLAGS,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn TileWindows(
         hwndParent: super::super::Foundation::HWND,
         wHow: TILE_WINDOWS_HOW,
         lpRect: ConstPtr<super::super::Foundation::RECT>,
         cKids: u32,
         lpKids: ConstPtr<super::super::Foundation::HWND>,
-    ) -> u16;
+    ) -> u16 {
+        todo!()
+    }
     fn TrackPopupMenu(
         hMenu: HMENU,
         uFlags: TRACK_POPUP_MENU_FLAGS,
@@ -9324,7 +10117,9 @@ pub trait Api {
         nReserved: i32,
         hWnd: super::super::Foundation::HWND,
         prcRect: ConstPtr<super::super::Foundation::RECT>,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn TrackPopupMenuEx(
         hMenu: HMENU,
         uFlags: u32,
@@ -9332,32 +10127,50 @@ pub trait Api {
         y: i32,
         hwnd: super::super::Foundation::HWND,
         lptpm: ConstPtr<TPMPARAMS>,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn TranslateAcceleratorA(
         hWnd: super::super::Foundation::HWND,
         hAccTable: HACCEL,
         lpMsg: ConstPtr<MSG>,
-    ) -> i32;
+    ) -> i32 {
+        todo!()
+    }
     fn TranslateAcceleratorW(
         hWnd: super::super::Foundation::HWND,
         hAccTable: HACCEL,
         lpMsg: ConstPtr<MSG>,
-    ) -> i32;
+    ) -> i32 {
+        todo!()
+    }
     fn TranslateMDISysAccel(
         hWndClient: super::super::Foundation::HWND,
         lpMsg: ConstPtr<MSG>,
-    ) -> super::super::Foundation::BOOL;
-    fn TranslateMessage(lpMsg: ConstPtr<MSG>) -> super::super::Foundation::BOOL;
-    fn UnhookWindowsHook(nCode: i32, pfnFilterProc: HOOKPROC) -> super::super::Foundation::BOOL;
-    fn UnhookWindowsHookEx(hhk: HHOOK) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn TranslateMessage(lpMsg: ConstPtr<MSG>) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn UnhookWindowsHook(nCode: i32, pfnFilterProc: HOOKPROC) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn UnhookWindowsHookEx(hhk: HHOOK) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn UnregisterClassA(
         lpClassName: ::win32::core::PCSTR,
         hInstance: super::super::Foundation::HINSTANCE,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn UnregisterClassW(
         lpClassName: ::win32::core::PCWSTR,
         hInstance: super::super::Foundation::HINSTANCE,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
     #[cfg(dummy_option_that_does_not_exist)]
     fn UpdateLayeredWindow(
@@ -9370,28 +10183,46 @@ pub trait Api {
         crKey: u32,
         pblend: ConstPtr<super::super::Graphics::Gdi::BLENDFUNCTION>,
         dwFlags: UPDATE_LAYERED_WINDOW_FLAGS,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
     #[cfg(dummy_option_that_does_not_exist)]
     fn UpdateLayeredWindowIndirect(
         hWnd: super::super::Foundation::HWND,
         pULWInfo: ConstPtr<UPDATELAYEREDWINDOWINFO>,
-    ) -> super::super::Foundation::BOOL;
-    fn WaitMessage() -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn WaitMessage() -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn WindowFromPhysicalPoint(
         Point: super::super::Foundation::POINT,
-    ) -> super::super::Foundation::HWND;
-    fn WindowFromPoint(Point: super::super::Foundation::POINT) -> super::super::Foundation::HWND;
-    fn wsprintfA(param0: ::win32::core::PSTR, param1: ::win32::core::PCSTR) -> i32;
-    fn wsprintfW(param0: ::win32::core::PWSTR, param1: ::win32::core::PCWSTR) -> i32;
+    ) -> super::super::Foundation::HWND {
+        todo!()
+    }
+    fn WindowFromPoint(Point: super::super::Foundation::POINT) -> super::super::Foundation::HWND {
+        todo!()
+    }
+    fn wsprintfA(param0: ::win32::core::PSTR, param1: ::win32::core::PCSTR) -> i32 {
+        todo!()
+    }
+    fn wsprintfW(param0: ::win32::core::PWSTR, param1: ::win32::core::PCWSTR) -> i32 {
+        todo!()
+    }
     fn wvsprintfA(
         param0: ::win32::core::PSTR,
         param1: ::win32::core::PCSTR,
         arglist: ConstPtr<i8>,
-    ) -> i32;
+    ) -> i32 {
+        todo!()
+    }
     fn wvsprintfW(
         param0: ::win32::core::PWSTR,
         param1: ::win32::core::PCWSTR,
         arglist: ConstPtr<i8>,
-    ) -> i32;
+    ) -> i32 {
+        todo!()
+    }
 }

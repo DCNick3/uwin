@@ -1602,172 +1602,284 @@ pub trait Api {
         NameType: COMPUTER_NAME_FORMAT,
         lpBuffer: ::win32::core::PSTR,
         nSize: MutPtr<u32>,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn GetComputerNameExW(
         NameType: COMPUTER_NAME_FORMAT,
         lpBuffer: ::win32::core::PWSTR,
         nSize: MutPtr<u32>,
-    ) -> super::super::Foundation::BOOL;
-    fn GetLocalTime(lpSystemTime: MutPtr<super::super::Foundation::SYSTEMTIME>);
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn GetLocalTime(lpSystemTime: MutPtr<super::super::Foundation::SYSTEMTIME>) {
+        todo!()
+    }
     fn GetLogicalProcessorInformation(
         Buffer: MutPtr<SYSTEM_LOGICAL_PROCESSOR_INFORMATION>,
         ReturnedLength: MutPtr<u32>,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn GetLogicalProcessorInformationEx(
         RelationshipType: LOGICAL_PROCESSOR_RELATIONSHIP,
         Buffer: MutPtr<SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX>,
         ReturnedLength: MutPtr<u32>,
-    ) -> super::super::Foundation::BOOL;
-    fn GetNativeSystemInfo(lpSystemInfo: MutPtr<SYSTEM_INFO>);
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn GetNativeSystemInfo(lpSystemInfo: MutPtr<SYSTEM_INFO>) {
+        todo!()
+    }
     fn GetOsManufacturingMode(
         pbEnabled: MutPtr<super::super::Foundation::BOOL>,
-    ) -> super::super::Foundation::BOOL;
-    fn GetOsSafeBootMode(Flags: MutPtr<u32>) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn GetOsSafeBootMode(Flags: MutPtr<u32>) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn GetPhysicallyInstalledSystemMemory(
         TotalMemoryInKilobytes: MutPtr<u64>,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn GetProcessorSystemCycleTime(
         Group: u16,
         Buffer: MutPtr<SYSTEM_PROCESSOR_CYCLE_TIME_INFORMATION>,
         ReturnedLength: MutPtr<u32>,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn GetProductInfo(
         dwOSMajorVersion: u32,
         dwOSMinorVersion: u32,
         dwSpMajorVersion: u32,
         dwSpMinorVersion: u32,
         pdwReturnedProductType: MutPtr<OS_PRODUCT_TYPE>,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn GetSystemCpuSetInformation(
         Information: MutPtr<SYSTEM_CPU_SET_INFORMATION>,
         BufferLength: u32,
         ReturnedLength: MutPtr<u32>,
         Process: super::super::Foundation::HANDLE,
         Flags: u32,
-    ) -> super::super::Foundation::BOOL;
-    fn GetSystemDEPPolicy() -> DEP_SYSTEM_POLICY_TYPE;
-    fn GetSystemDirectoryA(lpBuffer: ::win32::core::PSTR, uSize: u32) -> u32;
-    fn GetSystemDirectoryW(lpBuffer: ::win32::core::PWSTR, uSize: u32) -> u32;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn GetSystemDEPPolicy() -> DEP_SYSTEM_POLICY_TYPE {
+        todo!()
+    }
+    fn GetSystemDirectoryA(lpBuffer: ::win32::core::PSTR, uSize: u32) -> u32 {
+        todo!()
+    }
+    fn GetSystemDirectoryW(lpBuffer: ::win32::core::PWSTR, uSize: u32) -> u32 {
+        todo!()
+    }
     fn GetSystemFirmwareTable(
         FirmwareTableProviderSignature: FIRMWARE_TABLE_PROVIDER,
         FirmwareTableID: FIRMWARE_TABLE_ID,
         pFirmwareTableBuffer: MutPtr<::core::ffi::c_void>,
         BufferSize: u32,
-    ) -> u32;
-    fn GetSystemInfo(lpSystemInfo: MutPtr<SYSTEM_INFO>);
+    ) -> u32 {
+        todo!()
+    }
+    fn GetSystemInfo(lpSystemInfo: MutPtr<SYSTEM_INFO>) {
+        todo!()
+    }
     fn GetSystemLeapSecondInformation(
         Enabled: MutPtr<super::super::Foundation::BOOL>,
         Flags: MutPtr<u32>,
-    ) -> super::super::Foundation::BOOL;
-    fn GetSystemTime(lpSystemTime: MutPtr<super::super::Foundation::SYSTEMTIME>);
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn GetSystemTime(lpSystemTime: MutPtr<super::super::Foundation::SYSTEMTIME>) {
+        todo!()
+    }
     fn GetSystemTimeAdjustment(
         lpTimeAdjustment: MutPtr<u32>,
         lpTimeIncrement: MutPtr<u32>,
         lpTimeAdjustmentDisabled: MutPtr<super::super::Foundation::BOOL>,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn GetSystemTimeAdjustmentPrecise(
         lpTimeAdjustment: MutPtr<u64>,
         lpTimeIncrement: MutPtr<u64>,
         lpTimeAdjustmentDisabled: MutPtr<super::super::Foundation::BOOL>,
-    ) -> super::super::Foundation::BOOL;
-    fn GetSystemTimeAsFileTime(lpSystemTimeAsFileTime: MutPtr<super::super::Foundation::FILETIME>);
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn GetSystemTimeAsFileTime(lpSystemTimeAsFileTime: MutPtr<super::super::Foundation::FILETIME>) {
+        todo!()
+    }
     fn GetSystemTimePreciseAsFileTime(
         lpSystemTimeAsFileTime: MutPtr<super::super::Foundation::FILETIME>,
-    );
-    fn GetSystemWindowsDirectoryA(lpBuffer: ::win32::core::PSTR, uSize: u32) -> u32;
-    fn GetSystemWindowsDirectoryW(lpBuffer: ::win32::core::PWSTR, uSize: u32) -> u32;
+    ) {
+        todo!()
+    }
+    fn GetSystemWindowsDirectoryA(lpBuffer: ::win32::core::PSTR, uSize: u32) -> u32 {
+        todo!()
+    }
+    fn GetSystemWindowsDirectoryW(lpBuffer: ::win32::core::PWSTR, uSize: u32) -> u32 {
+        todo!()
+    }
     fn GetSystemWow64Directory2A(
         lpBuffer: ::win32::core::PSTR,
         uSize: u32,
         ImageFileMachineType: u16,
-    ) -> u32;
+    ) -> u32 {
+        todo!()
+    }
     fn GetSystemWow64Directory2W(
         lpBuffer: ::win32::core::PWSTR,
         uSize: u32,
         ImageFileMachineType: u16,
-    ) -> u32;
-    fn GetSystemWow64DirectoryA(lpBuffer: ::win32::core::PSTR, uSize: u32) -> u32;
-    fn GetSystemWow64DirectoryW(lpBuffer: ::win32::core::PWSTR, uSize: u32) -> u32;
-    fn GetTickCount() -> u32;
-    fn GetTickCount64() -> u64;
-    fn GetVersion() -> u32;
+    ) -> u32 {
+        todo!()
+    }
+    fn GetSystemWow64DirectoryA(lpBuffer: ::win32::core::PSTR, uSize: u32) -> u32 {
+        todo!()
+    }
+    fn GetSystemWow64DirectoryW(lpBuffer: ::win32::core::PWSTR, uSize: u32) -> u32 {
+        todo!()
+    }
+    fn GetTickCount() -> u32 {
+        todo!()
+    }
+    fn GetTickCount64() -> u64 {
+        todo!()
+    }
+    fn GetVersion() -> u32 {
+        todo!()
+    }
     fn GetVersionExA(
         lpVersionInformation: MutPtr<OSVERSIONINFOA>,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn GetVersionExW(
         lpVersionInformation: MutPtr<OSVERSIONINFOW>,
-    ) -> super::super::Foundation::BOOL;
-    fn GetWindowsDirectoryA(lpBuffer: ::win32::core::PSTR, uSize: u32) -> u32;
-    fn GetWindowsDirectoryW(lpBuffer: ::win32::core::PWSTR, uSize: u32) -> u32;
-    fn GlobalMemoryStatus(lpBuffer: MutPtr<MEMORYSTATUS>);
-    fn GlobalMemoryStatusEx(lpBuffer: MutPtr<MEMORYSTATUSEX>) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn GetWindowsDirectoryA(lpBuffer: ::win32::core::PSTR, uSize: u32) -> u32 {
+        todo!()
+    }
+    fn GetWindowsDirectoryW(lpBuffer: ::win32::core::PWSTR, uSize: u32) -> u32 {
+        todo!()
+    }
+    fn GlobalMemoryStatus(lpBuffer: MutPtr<MEMORYSTATUS>) {
+        todo!()
+    }
+    fn GlobalMemoryStatusEx(lpBuffer: MutPtr<MEMORYSTATUSEX>) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn RtlConvertDeviceFamilyInfoToString(
         pulDeviceFamilyBufferSize: MutPtr<u32>,
         pulDeviceFormBufferSize: MutPtr<u32>,
         DeviceFamily: ::win32::core::PWSTR,
         DeviceForm: ::win32::core::PWSTR,
-    ) -> u32;
+    ) -> u32 {
+        todo!()
+    }
     fn RtlGetDeviceFamilyInfoEnum(
         pullUAPInfo: MutPtr<u64>,
         pulDeviceFamily: MutPtr<DEVICEFAMILYINFOENUM>,
         pulDeviceForm: MutPtr<DEVICEFAMILYDEVICEFORM>,
-    );
+    ) {
+        todo!()
+    }
     fn RtlGetProductInfo(
         OSMajorVersion: u32,
         OSMinorVersion: u32,
         SpMajorVersion: u32,
         SpMinorVersion: u32,
         ReturnedProductType: MutPtr<u32>,
-    ) -> super::super::Foundation::BOOLEAN;
+    ) -> super::super::Foundation::BOOLEAN {
+        todo!()
+    }
     fn RtlGetSystemGlobalData(
         DataId: RTL_SYSTEM_GLOBAL_DATA_ID,
         Buffer: MutPtr<::core::ffi::c_void>,
         Size: u32,
-    ) -> u32;
-    fn RtlOsDeploymentState(Flags: u32) -> OS_DEPLOYEMENT_STATE_VALUES;
+    ) -> u32 {
+        todo!()
+    }
+    fn RtlOsDeploymentState(Flags: u32) -> OS_DEPLOYEMENT_STATE_VALUES {
+        todo!()
+    }
     fn RtlSwitchedVVI(
         VersionInfo: ConstPtr<OSVERSIONINFOEXW>,
         TypeMask: u32,
         ConditionMask: u64,
-    ) -> u32;
-    fn SetComputerNameA(lpComputerName: ::win32::core::PCSTR) -> super::super::Foundation::BOOL;
+    ) -> u32 {
+        todo!()
+    }
+    fn SetComputerNameA(lpComputerName: ::win32::core::PCSTR) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn SetComputerNameEx2W(
         NameType: COMPUTER_NAME_FORMAT,
         Flags: u32,
         lpBuffer: ::win32::core::PCWSTR,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn SetComputerNameExA(
         NameType: COMPUTER_NAME_FORMAT,
         lpBuffer: ::win32::core::PCSTR,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn SetComputerNameExW(
         NameType: COMPUTER_NAME_FORMAT,
         lpBuffer: ::win32::core::PCWSTR,
-    ) -> super::super::Foundation::BOOL;
-    fn SetComputerNameW(lpComputerName: ::win32::core::PCWSTR) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn SetComputerNameW(lpComputerName: ::win32::core::PCWSTR) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn SetLocalTime(
         lpSystemTime: ConstPtr<super::super::Foundation::SYSTEMTIME>,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn SetSystemTime(
         lpSystemTime: ConstPtr<super::super::Foundation::SYSTEMTIME>,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn SetSystemTimeAdjustment(
         dwTimeAdjustment: u32,
         bTimeAdjustmentDisabled: super::super::Foundation::BOOL,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn SetSystemTimeAdjustmentPrecise(
         dwTimeAdjustment: u64,
         bTimeAdjustmentDisabled: super::super::Foundation::BOOL,
-    ) -> super::super::Foundation::BOOL;
-    fn VerSetConditionMask(ConditionMask: u64, TypeMask: VER_FLAGS, Condition: u8) -> u64;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
+    fn VerSetConditionMask(ConditionMask: u64, TypeMask: VER_FLAGS, Condition: u8) -> u64 {
+        todo!()
+    }
     fn VerifyVersionInfoA(
         lpVersionInformation: MutPtr<OSVERSIONINFOEXA>,
         dwTypeMask: VER_FLAGS,
         dwlConditionMask: u64,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
     fn VerifyVersionInfoW(
         lpVersionInformation: MutPtr<OSVERSIONINFOEXW>,
         dwTypeMask: VER_FLAGS,
         dwlConditionMask: u64,
-    ) -> super::super::Foundation::BOOL;
+    ) -> super::super::Foundation::BOOL {
+        todo!()
+    }
 }

@@ -12678,8 +12678,12 @@ pub const _WIN32_MAXVER: u32 = 2560u32;
 pub const _WIN32_WINDOWS_MAXVER: u32 = 2560u32;
 pub const _WIN32_WINNT_MAXVER: u32 = 2560u32;
 pub trait Api {
-    fn CloseHandle(hObject: HANDLE) -> BOOL;
-    fn CompareObjectHandles(hFirstObjectHandle: HANDLE, hSecondObjectHandle: HANDLE) -> BOOL;
+    fn CloseHandle(hObject: HANDLE) -> BOOL {
+        todo!()
+    }
+    fn CompareObjectHandles(hFirstObjectHandle: HANDLE, hSecondObjectHandle: HANDLE) -> BOOL {
+        todo!()
+    }
     fn DuplicateHandle(
         hSourceProcessHandle: HANDLE,
         hSourceHandle: HANDLE,
@@ -12688,9 +12692,19 @@ pub trait Api {
         dwDesiredAccess: u32,
         bInheritHandle: BOOL,
         dwOptions: DUPLICATE_HANDLE_OPTIONS,
-    ) -> BOOL;
-    fn GetHandleInformation(hObject: HANDLE, lpdwFlags: MutPtr<u32>) -> BOOL;
-    fn GetLastError() -> WIN32_ERROR;
-    fn SetHandleInformation(hObject: HANDLE, dwMask: u32, dwFlags: HANDLE_FLAGS) -> BOOL;
-    fn SetLastError(dwErrCode: WIN32_ERROR);
+    ) -> BOOL {
+        todo!()
+    }
+    fn GetHandleInformation(hObject: HANDLE, lpdwFlags: MutPtr<u32>) -> BOOL {
+        todo!()
+    }
+    fn GetLastError() -> WIN32_ERROR {
+        todo!()
+    }
+    fn SetHandleInformation(hObject: HANDLE, dwMask: u32, dwFlags: HANDLE_FLAGS) -> BOOL {
+        todo!()
+    }
+    fn SetLastError(dwErrCode: WIN32_ERROR) {
+        todo!()
+    }
 }
