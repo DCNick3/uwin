@@ -103,13 +103,16 @@ fn gen_api_trait(tree: &TypeTree, gen: &Gen) -> TokenStream {
         }
     }
 
-    let ret = quote! {
-        pub trait Api {
-            #tokens
+    // do not emit an empty Api trait
+    if !tokens.is_empty() {
+        quote! {
+            pub trait Api {
+                #tokens
+            }
         }
-    };
-
-    ret
+    } else {
+        quote! {}
+    }
 }
 
 fn gen_non_sys_function_types(tree: &TypeTree, gen: &Gen) -> TokenStream {

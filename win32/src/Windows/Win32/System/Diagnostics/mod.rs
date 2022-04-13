@@ -8,4 +8,3 @@
 #[allow(unused)]
 use win32::core::prelude::*;
 pub mod Debug;
-pub trait Api {}

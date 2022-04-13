@@ -10,4 +10,3 @@ use win32::core::prelude::*;
 pub mod Foundation;
 pub mod System;
 pub mod UI;
-pub trait Api {}

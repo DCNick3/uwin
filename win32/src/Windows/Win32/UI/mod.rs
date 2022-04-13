@@ -8,4 +8,3 @@
 #[allow(unused)]
 use win32::core::prelude::*;
 pub mod WindowsAndMessaging;
-pub trait Api {}

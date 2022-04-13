@@ -21439,4 +21439,3 @@ pub const fasaCaseSensitive: u32 = 4u32;
 pub const fasaPreferInternalHandler: u32 = 1u32;
 pub const fasaSupportInternalHandler: u32 = 2u32;
 pub const sevMax: i32 = 4i32;
-pub trait Api {}
