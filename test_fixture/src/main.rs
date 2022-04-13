@@ -6,16 +6,39 @@ use std::io::Write;
 use std::os::raw::c_char;
 use std::panic::{catch_unwind, AssertUnwindSafe};
 use std::process::abort;
+use win32::core::PCSTR;
+use win32::Win32::Foundation::HWND;
+use win32::Win32::UI::WindowsAndMessaging::{Api, MESSAGEBOX_RESULT, MESSAGEBOX_STYLE};
 use win32_mem::ptr::{ConstPtr, PtrRepr};
-use win32_mem::thread_ctx::set_thread_ctx;
+use win32_mem::thread_ctx::{get_thread_ctx, set_thread_ctx};
+
+struct WindowsAndMessaging {}
 
 #[allow(non_snake_case)]
-#[inline(never)]
-fn MessageBoxA(h_wnd: u32, lp_text: &str, lp_caption: &str, u_type: u32) {
-    println!(
-        "MessageBoxA({:?}, {:?}, {:?}, {:?})",
-        h_wnd, lp_text, lp_caption, u_type
-    );
+impl win32::Win32::UI::WindowsAndMessaging::Api for WindowsAndMessaging {
+    fn MessageBoxA(
+        &self,
+        hWnd: HWND,
+        lpText: ::win32::core::PCSTR,
+        lpCaption: ::win32::core::PCSTR,
+        uType: MESSAGEBOX_STYLE,
+    ) -> MESSAGEBOX_RESULT {
+        let memory = get_thread_ctx();
+
+        let text = unsafe { CStr::from_ptr(memory.to_native_ptr(lpText.0) as *const c_char) }
+            .to_str()
+            .unwrap();
+        let caption = unsafe { CStr::from_ptr(memory.to_native_ptr(lpCaption.0) as *const c_char) }
+            .to_str()
+            .unwrap();
+
+        println!(
+            "MessageBoxA({:?}, {:?}, {:?}, {:?})",
+            hWnd, text, caption, uType
+        );
+
+        MESSAGEBOX_RESULT(0)
+    }
 }
 
 #[no_mangle]
@@ -30,28 +53,27 @@ extern "C" fn magic_MessageBoxA(context: &mut CpuContext, memory: FlatMemoryCtx)
         let u_type_ptr = esp.offset(20);
 
         let h_wnd = h_wnd_ptr.read_with(memory);
+        let h_wnd = HWND(h_wnd);
 
         // these are pointers, so our wrapper would work. But API is currently broken =)
         let lp_text = lp_text_ptr.read_with(memory);
         let lp_caption = lp_caption_ptr.read_with(memory);
 
-        let u_type_ptr = u_type_ptr.read_with(memory);
+        let u_type = u_type_ptr.read_with(memory);
+        let u_type = MESSAGEBOX_STYLE(u_type);
 
-        // TODO: add a wrapper type for LPCSTR (and LPSTR)
-        let text = unsafe { CStr::from_ptr(memory.to_native_ptr(lp_text) as *const c_char) }
-            .to_str()
-            .unwrap();
-        let caption = unsafe { CStr::from_ptr(memory.to_native_ptr(lp_caption) as *const c_char) }
-            .to_str()
-            .unwrap();
+        let api = WindowsAndMessaging {};
 
-        MessageBoxA(h_wnd, text, caption, u_type_ptr);
+        let res = api.MessageBoxA(h_wnd, PCSTR(lp_text), PCSTR(lp_caption), u_type);
+
+        // store results to EAX
+        context.gp_regs[0] = res.0 as u32;
 
         // pop args from the stack
         context.gp_regs[4] -= 5 * 4;
     }));
 
-    if let Err(_) = result {
+    if result.is_err() {
         eprintln!("Caught a panic in native code. Whoops, aborting..");
 
         abort();

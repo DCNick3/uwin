@@ -9,6 +9,7 @@ edition = "2021"
 runtime = { path = "../runtime" }
 recompiler = { path = "../recompiler" }
 win32-mem = { path = "../win32-mem" }
+win32 = { path = "../win32" }
 
 region = "3.0.0"
 
