@@ -49,6 +49,17 @@ pub fn gen_win_handle(def: &TypeDef, gen: &Gen) -> TokenStream {
                 f.debug_tuple(#name).field(&self.0).finish()
             }
         }
+        impl FromIntoMemory for #ident {
+            fn try_from_bytes(from: &[u8]) -> Self {
+                Self(<#signature as FromIntoMemory>::try_from_bytes(from))
+            }
+            fn try_into_bytes(self, into: &mut [u8]) {
+                FromIntoMemory::try_into_bytes(self.0, into)
+            }
+            fn size() -> usize {
+                std::mem::size_of::<#signature>()
+            }
+        }
     };
 
     tokens

@@ -1863,6 +1863,17 @@ impl ::core::fmt::Debug for HACCEL {
         f.debug_tuple("HACCEL").field(&self.0).finish()
     }
 }
+impl FromIntoMemory for HACCEL {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<PtrDiffRepr as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<PtrDiffRepr>()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct HANDEDNESS(pub i32);
 pub const HANDEDNESS_LEFT: HANDEDNESS = HANDEDNESS(0i32);
@@ -2004,6 +2015,17 @@ impl ::core::fmt::Debug for HCURSOR {
         f.debug_tuple("HCURSOR").field(&self.0).finish()
     }
 }
+impl FromIntoMemory for HCURSOR {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<PtrDiffRepr as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<PtrDiffRepr>()
+    }
+}
 pub const HC_ACTION: u32 = 0u32;
 pub const HC_GETNEXT: u32 = 1u32;
 pub const HC_NOREM: u32 = 3u32;
@@ -2057,6 +2079,17 @@ impl ::core::fmt::Debug for HHOOK {
         f.debug_tuple("HHOOK").field(&self.0).finish()
     }
 }
+impl FromIntoMemory for HHOOK {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<PtrDiffRepr as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<PtrDiffRepr>()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct HICON(pub PtrDiffRepr);
 impl HICON {
@@ -2078,6 +2111,17 @@ impl ::core::marker::Copy for HICON {}
 impl ::core::fmt::Debug for HICON {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("HICON").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for HICON {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<PtrDiffRepr as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<PtrDiffRepr>()
     }
 }
 pub const HIDE_WINDOW: u32 = 0u32;
@@ -2104,6 +2148,17 @@ impl ::core::marker::Copy for HMENU {}
 impl ::core::fmt::Debug for HMENU {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("HMENU").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for HMENU {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<PtrDiffRepr as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<PtrDiffRepr>()
     }
 }
 pub type HOOKPROC = ::core::option::Option<

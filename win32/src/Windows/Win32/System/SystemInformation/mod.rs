@@ -370,6 +370,17 @@ impl ::core::fmt::Debug for FIRMWARE_TABLE_ID {
         f.debug_tuple("FIRMWARE_TABLE_ID").field(&self.0).finish()
     }
 }
+impl FromIntoMemory for FIRMWARE_TABLE_ID {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct FIRMWARE_TABLE_PROVIDER(pub u32);
 pub const ACPI: FIRMWARE_TABLE_PROVIDER = FIRMWARE_TABLE_PROVIDER(1094930505u32);

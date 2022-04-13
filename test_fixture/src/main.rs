@@ -46,16 +46,13 @@ extern "C" fn magic_MessageBoxA(context: &mut CpuContext, memory: FlatMemoryCtx)
     let result = catch_unwind(AssertUnwindSafe(|| {
         let esp = ConstPtr::<PtrRepr>::new(context.gp_regs[4]);
 
-        // TODO: use stronger typing
         let h_wnd_ptr = esp.offset(8);
         let lp_text_ptr = esp.offset(12);
         let lp_caption_ptr = esp.offset(16);
         let u_type_ptr = esp.offset(20);
 
         let h_wnd = h_wnd_ptr.read_with(memory);
-        let h_wnd = HWND(h_wnd);
 
-        // these are pointers, so our wrapper would work. But API is currently broken =)
         let lp_text = lp_text_ptr.read_with(memory);
         let lp_caption = lp_caption_ptr.read_with(memory);
 

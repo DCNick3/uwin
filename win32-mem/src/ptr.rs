@@ -136,3 +136,27 @@ impl<T> Debug for ConstPtr<T> {
         self.0.fmt(f)
     }
 }
+
+impl<T> FromIntoMemory for MutPtr<T> {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        MutPtr::new(<PtrRepr as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0.value, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<PtrRepr>()
+    }
+}
+
+impl<T> FromIntoMemory for ConstPtr<T> {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        ConstPtr::new(<PtrRepr as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0.value, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<PtrRepr>()
+    }
+}

@@ -175,6 +175,17 @@ impl ::core::fmt::Debug for BOOLEAN {
         f.debug_tuple("BOOLEAN").field(&self.0).finish()
     }
 }
+impl FromIntoMemory for BOOLEAN {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u8 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u8>()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct BSTR(pub MutPtr<u16>);
 impl BSTR {
@@ -196,6 +207,17 @@ impl ::core::marker::Copy for BSTR {}
 impl ::core::fmt::Debug for BSTR {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("BSTR").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for BSTR {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<MutPtr<u16> as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<MutPtr<u16>>()
     }
 }
 pub const BT_E_SPURIOUS_ACTIVATION: crate::core::HRESULT = crate::core::HRESULT(-2146958592i32);
@@ -335,6 +357,17 @@ impl ::core::marker::Copy for CHAR {}
 impl ::core::fmt::Debug for CHAR {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("CHAR").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for CHAR {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u8 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u8>()
     }
 }
 pub const CI_CORRUPT_CATALOG: crate::core::HRESULT = crate::core::HRESULT(-1073473535i32);
@@ -2780,6 +2813,17 @@ impl ::core::fmt::Debug for HANDLE_PTR {
         f.debug_tuple("HANDLE_PTR").field(&self.0).finish()
     }
 }
+impl FromIntoMemory for HANDLE_PTR {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<PtrRepr as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<PtrRepr>()
+    }
+}
 pub const HCN_E_ADAPTER_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2143617018i32);
 pub const HCN_E_ADDR_INVALID_OR_RESERVED: crate::core::HRESULT =
     crate::core::HRESULT(-2143616977i32);
@@ -2901,6 +2945,17 @@ impl ::core::fmt::Debug for HINSTANCE {
         f.debug_tuple("HINSTANCE").field(&self.0).finish()
     }
 }
+impl FromIntoMemory for HINSTANCE {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<PtrDiffRepr as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<PtrDiffRepr>()
+    }
+}
 pub struct HLSURF__ {
     pub unused: i32,
 }
@@ -2944,6 +2999,17 @@ impl ::core::marker::Copy for HRSRC {}
 impl ::core::fmt::Debug for HRSRC {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("HRSRC").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for HRSRC {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<PtrDiffRepr as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<PtrDiffRepr>()
     }
 }
 pub struct HSPRITE__ {
@@ -3116,6 +3182,17 @@ impl ::core::fmt::Debug for HWND {
         f.debug_tuple("HWND").field(&self.0).finish()
     }
 }
+impl FromIntoMemory for HWND {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<PtrDiffRepr as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<PtrDiffRepr>()
+    }
+}
 pub const INPLACE_E_FIRST: i32 = -2147221088i32;
 pub const INPLACE_E_LAST: i32 = -2147221073i32;
 pub const INPLACE_E_NOTOOLSPACE: crate::core::HRESULT = crate::core::HRESULT(-2147221087i32);
@@ -3172,6 +3249,17 @@ impl ::core::fmt::Debug for LPARAM {
         f.debug_tuple("LPARAM").field(&self.0).finish()
     }
 }
+impl FromIntoMemory for LPARAM {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<PtrDiffRepr as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<PtrDiffRepr>()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct LRESULT(pub PtrDiffRepr);
 impl LRESULT {
@@ -3193,6 +3281,17 @@ impl ::core::marker::Copy for LRESULT {}
 impl ::core::fmt::Debug for LRESULT {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("LRESULT").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for LRESULT {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<PtrDiffRepr as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<PtrDiffRepr>()
     }
 }
 pub struct LUID {
@@ -3483,6 +3582,17 @@ impl ::core::marker::Copy for NTSTATUS {}
 impl ::core::fmt::Debug for NTSTATUS {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("NTSTATUS").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for NTSTATUS {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -3928,6 +4038,17 @@ impl ::core::marker::Copy for PSID {}
 impl ::core::fmt::Debug for PSID {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("PSID").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for PSID {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<PtrDiffRepr as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<PtrDiffRepr>()
     }
 }
 pub const PSINK_E_INDEX_ONLY: crate::core::HRESULT = crate::core::HRESULT(-2147215471i32);
@@ -4543,6 +4664,17 @@ impl ::core::marker::Copy for SHANDLE_PTR {}
 impl ::core::fmt::Debug for SHANDLE_PTR {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("SHANDLE_PTR").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for SHANDLE_PTR {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<PtrDiffRepr as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<PtrDiffRepr>()
     }
 }
 pub struct SIZE {
@@ -11864,6 +11996,17 @@ impl ::core::marker::Copy for WPARAM {}
 impl ::core::fmt::Debug for WPARAM {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("WPARAM").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for WPARAM {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<PtrRepr as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<PtrRepr>()
     }
 }
 pub const WPN_E_ACCESS_DENIED: crate::core::HRESULT = crate::core::HRESULT(-2143420137i32);
