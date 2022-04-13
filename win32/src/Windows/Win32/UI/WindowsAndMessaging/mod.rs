@@ -136,6 +136,17 @@ impl ::core::ops::Not for ANIMATE_WINDOW_FLAGS {
         Self(self.0.not())
     }
 }
+impl FromIntoMemory for ANIMATE_WINDOW_FLAGS {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
+    }
+}
 pub struct ANIMATIONINFO {
     pub cbSize: u32,
     pub iMinAnimate: i32,
@@ -296,6 +307,17 @@ impl ::core::ops::Not for CASCADE_WINDOWS_HOW {
     type Output = Self;
     fn not(self) -> Self {
         Self(self.0.not())
+    }
+}
+impl FromIntoMemory for CASCADE_WINDOWS_HOW {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
     }
 }
 pub const CBN_CLOSEUP: u32 = 8u32;
@@ -483,6 +505,17 @@ impl ::core::fmt::Debug for CHANGE_WINDOW_MESSAGE_FILTER_FLAGS {
             .finish()
     }
 }
+impl FromIntoMemory for CHANGE_WINDOW_MESSAGE_FILTER_FLAGS {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
+    }
+}
 pub const CHILDID_SELF: u32 = 0u32;
 pub struct CLIENTCREATESTRUCT {
     pub hWindowMenu: super::super::Foundation::HANDLE,
@@ -527,8 +560,8 @@ pub struct CREATESTRUCTA {
     pub y: i32,
     pub x: i32,
     pub style: i32,
-    pub lpszName: ::win32::core::PCSTR,
-    pub lpszClass: ::win32::core::PCSTR,
+    pub lpszName: crate::core::PCSTR,
+    pub lpszClass: crate::core::PCSTR,
     pub dwExStyle: u32,
 }
 impl ::core::marker::Copy for CREATESTRUCTA {}
@@ -582,8 +615,8 @@ pub struct CREATESTRUCTW {
     pub y: i32,
     pub x: i32,
     pub style: i32,
-    pub lpszName: ::win32::core::PCWSTR,
-    pub lpszClass: ::win32::core::PCWSTR,
+    pub lpszName: crate::core::PCWSTR,
+    pub lpszClass: crate::core::PCWSTR,
     pub dwExStyle: u32,
 }
 impl ::core::marker::Copy for CREATESTRUCTW {}
@@ -685,6 +718,17 @@ impl ::core::default::Default for CURSORINFO_FLAGS {
 impl ::core::fmt::Debug for CURSORINFO_FLAGS {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("CURSORINFO_FLAGS").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for CURSORINFO_FLAGS {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
     }
 }
 pub struct CURSORSHAPE {
@@ -845,6 +889,17 @@ impl ::core::ops::Not for CWP_FLAGS {
         Self(self.0.not())
     }
 }
+impl FromIntoMemory for CWP_FLAGS {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
+    }
+}
 pub const CW_USEDEFAULT: i32 = -2147483648i32;
 pub const DCX_EXCLUDEUPDATE: i32 = 256i32;
 pub const DC_HASDEFID: u32 = 21323u32;
@@ -944,6 +999,17 @@ impl ::core::ops::Not for DI_FLAGS {
     type Output = Self;
     fn not(self) -> Self {
         Self(self.0.not())
+    }
+}
+impl FromIntoMemory for DI_FLAGS {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
     }
 }
 pub const DLGC_BUTTON: u32 = 8192u32;
@@ -1114,6 +1180,17 @@ impl ::core::fmt::Debug for EDIT_CONTROL_FEATURE {
         f.debug_tuple("EDIT_CONTROL_FEATURE")
             .field(&self.0)
             .finish()
+    }
+}
+impl FromIntoMemory for EDIT_CONTROL_FEATURE {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
     }
 }
 pub const EDS_RAWMODE: u32 = 2u32;
@@ -1381,6 +1458,17 @@ impl ::core::ops::Not for FLASHWINFO_FLAGS {
         Self(self.0.not())
     }
 }
+impl FromIntoMemory for FLASHWINFO_FLAGS {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
+    }
+}
 pub const FNOINVERT: u32 = 2u32;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct FOREGROUND_WINDOW_LOCK_CODE(pub u32);
@@ -1402,6 +1490,17 @@ impl ::core::fmt::Debug for FOREGROUND_WINDOW_LOCK_CODE {
         f.debug_tuple("FOREGROUND_WINDOW_LOCK_CODE")
             .field(&self.0)
             .finish()
+    }
+}
+impl FromIntoMemory for FOREGROUND_WINDOW_LOCK_CODE {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
     }
 }
 pub const FSHIFT: u32 = 4u32;
@@ -1426,6 +1525,17 @@ impl ::core::default::Default for GDI_IMAGE_TYPE {
 impl ::core::fmt::Debug for GDI_IMAGE_TYPE {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("GDI_IMAGE_TYPE").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for GDI_IMAGE_TYPE {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
     }
 }
 pub const GESTURECONFIGMAXCOUNT: u32 = 256u32;
@@ -1455,6 +1565,17 @@ impl ::core::default::Default for GET_ANCESTOR_FLAGS {
 impl ::core::fmt::Debug for GET_ANCESTOR_FLAGS {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("GET_ANCESTOR_FLAGS").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for GET_ANCESTOR_FLAGS {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -1493,6 +1614,17 @@ impl ::core::fmt::Debug for GET_CLASS_LONG_INDEX {
         f.debug_tuple("GET_CLASS_LONG_INDEX")
             .field(&self.0)
             .finish()
+    }
+}
+impl FromIntoMemory for GET_CLASS_LONG_INDEX {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -1545,6 +1677,17 @@ impl ::core::ops::Not for GET_MENU_DEFAULT_ITEM_FLAGS {
         Self(self.0.not())
     }
 }
+impl FromIntoMemory for GET_MENU_DEFAULT_ITEM_FLAGS {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct GET_WINDOW_CMD(pub u32);
 pub const GW_CHILD: GET_WINDOW_CMD = GET_WINDOW_CMD(5u32);
@@ -1568,6 +1711,17 @@ impl ::core::default::Default for GET_WINDOW_CMD {
 impl ::core::fmt::Debug for GET_WINDOW_CMD {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("GET_WINDOW_CMD").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for GET_WINDOW_CMD {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
     }
 }
 pub const GF_BEGIN: u32 = 1u32;
@@ -1672,6 +1826,17 @@ impl ::core::ops::Not for GUITHREADINFO_FLAGS {
         Self(self.0.not())
     }
 }
+impl FromIntoMemory for GUITHREADINFO_FLAGS {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
+    }
+}
 pub const GUI_16BITTASK: u32 = 0u32;
 pub const GWFS_INCLUDE_ANCESTORS: u32 = 1u32;
 pub const GW_MAX: u32 = 5u32;
@@ -1716,6 +1881,17 @@ impl ::core::default::Default for HANDEDNESS {
 impl ::core::fmt::Debug for HANDEDNESS {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("HANDEDNESS").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for HANDEDNESS {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
     }
 }
 pub struct HARDWAREHOOKSTRUCT {
@@ -2248,24 +2424,24 @@ pub const ICON_SMALL: u32 = 0u32;
 pub const ICON_SMALL2: u32 = 2u32;
 pub const IDANI_CAPTION: u32 = 3u32;
 pub const IDANI_OPEN: u32 = 1u32;
-pub const IDC_APPSTARTING: ::win32::core::PCWSTR = ::win32::core::PCWSTR(32650i32 as _);
-pub const IDC_ARROW: ::win32::core::PCWSTR = ::win32::core::PCWSTR(32512i32 as _);
-pub const IDC_CROSS: ::win32::core::PCWSTR = ::win32::core::PCWSTR(32515i32 as _);
-pub const IDC_HAND: ::win32::core::PCWSTR = ::win32::core::PCWSTR(32649i32 as _);
-pub const IDC_HELP: ::win32::core::PCWSTR = ::win32::core::PCWSTR(32651i32 as _);
-pub const IDC_IBEAM: ::win32::core::PCWSTR = ::win32::core::PCWSTR(32513i32 as _);
-pub const IDC_ICON: ::win32::core::PCWSTR = ::win32::core::PCWSTR(32641i32 as _);
-pub const IDC_NO: ::win32::core::PCWSTR = ::win32::core::PCWSTR(32648i32 as _);
-pub const IDC_PERSON: ::win32::core::PCWSTR = ::win32::core::PCWSTR(32672i32 as _);
-pub const IDC_PIN: ::win32::core::PCWSTR = ::win32::core::PCWSTR(32671i32 as _);
-pub const IDC_SIZE: ::win32::core::PCWSTR = ::win32::core::PCWSTR(32640i32 as _);
-pub const IDC_SIZEALL: ::win32::core::PCWSTR = ::win32::core::PCWSTR(32646i32 as _);
-pub const IDC_SIZENESW: ::win32::core::PCWSTR = ::win32::core::PCWSTR(32643i32 as _);
-pub const IDC_SIZENS: ::win32::core::PCWSTR = ::win32::core::PCWSTR(32645i32 as _);
-pub const IDC_SIZENWSE: ::win32::core::PCWSTR = ::win32::core::PCWSTR(32642i32 as _);
-pub const IDC_SIZEWE: ::win32::core::PCWSTR = ::win32::core::PCWSTR(32644i32 as _);
-pub const IDC_UPARROW: ::win32::core::PCWSTR = ::win32::core::PCWSTR(32516i32 as _);
-pub const IDC_WAIT: ::win32::core::PCWSTR = ::win32::core::PCWSTR(32514i32 as _);
+pub const IDC_APPSTARTING: crate::core::PCWSTR = crate::core::PCWSTR(32650i32 as _);
+pub const IDC_ARROW: crate::core::PCWSTR = crate::core::PCWSTR(32512i32 as _);
+pub const IDC_CROSS: crate::core::PCWSTR = crate::core::PCWSTR(32515i32 as _);
+pub const IDC_HAND: crate::core::PCWSTR = crate::core::PCWSTR(32649i32 as _);
+pub const IDC_HELP: crate::core::PCWSTR = crate::core::PCWSTR(32651i32 as _);
+pub const IDC_IBEAM: crate::core::PCWSTR = crate::core::PCWSTR(32513i32 as _);
+pub const IDC_ICON: crate::core::PCWSTR = crate::core::PCWSTR(32641i32 as _);
+pub const IDC_NO: crate::core::PCWSTR = crate::core::PCWSTR(32648i32 as _);
+pub const IDC_PERSON: crate::core::PCWSTR = crate::core::PCWSTR(32672i32 as _);
+pub const IDC_PIN: crate::core::PCWSTR = crate::core::PCWSTR(32671i32 as _);
+pub const IDC_SIZE: crate::core::PCWSTR = crate::core::PCWSTR(32640i32 as _);
+pub const IDC_SIZEALL: crate::core::PCWSTR = crate::core::PCWSTR(32646i32 as _);
+pub const IDC_SIZENESW: crate::core::PCWSTR = crate::core::PCWSTR(32643i32 as _);
+pub const IDC_SIZENS: crate::core::PCWSTR = crate::core::PCWSTR(32645i32 as _);
+pub const IDC_SIZENWSE: crate::core::PCWSTR = crate::core::PCWSTR(32642i32 as _);
+pub const IDC_SIZEWE: crate::core::PCWSTR = crate::core::PCWSTR(32644i32 as _);
+pub const IDC_UPARROW: crate::core::PCWSTR = crate::core::PCWSTR(32516i32 as _);
+pub const IDC_WAIT: crate::core::PCWSTR = crate::core::PCWSTR(32514i32 as _);
 pub const IDHOT_SNAPDESKTOP: i32 = -2i32;
 pub const IDHOT_SNAPWINDOW: i32 = -1i32;
 pub const IDH_CANCEL: u32 = 28444u32;
@@ -2274,16 +2450,16 @@ pub const IDH_HELP: u32 = 28445u32;
 pub const IDH_MISSING_CONTEXT: u32 = 28441u32;
 pub const IDH_NO_HELP: u32 = 28440u32;
 pub const IDH_OK: u32 = 28443u32;
-pub const IDI_APPLICATION: ::win32::core::PCWSTR = ::win32::core::PCWSTR(32512u32 as _);
-pub const IDI_ASTERISK: ::win32::core::PCWSTR = ::win32::core::PCWSTR(32516u32 as _);
+pub const IDI_APPLICATION: crate::core::PCWSTR = crate::core::PCWSTR(32512u32 as _);
+pub const IDI_ASTERISK: crate::core::PCWSTR = crate::core::PCWSTR(32516u32 as _);
 pub const IDI_ERROR: u32 = 32513u32;
-pub const IDI_EXCLAMATION: ::win32::core::PCWSTR = ::win32::core::PCWSTR(32515u32 as _);
-pub const IDI_HAND: ::win32::core::PCWSTR = ::win32::core::PCWSTR(32513u32 as _);
+pub const IDI_EXCLAMATION: crate::core::PCWSTR = crate::core::PCWSTR(32515u32 as _);
+pub const IDI_HAND: crate::core::PCWSTR = crate::core::PCWSTR(32513u32 as _);
 pub const IDI_INFORMATION: u32 = 32516u32;
-pub const IDI_QUESTION: ::win32::core::PCWSTR = ::win32::core::PCWSTR(32514u32 as _);
-pub const IDI_SHIELD: ::win32::core::PCWSTR = ::win32::core::PCWSTR(32518u32 as _);
+pub const IDI_QUESTION: crate::core::PCWSTR = crate::core::PCWSTR(32514u32 as _);
+pub const IDI_SHIELD: crate::core::PCWSTR = crate::core::PCWSTR(32518u32 as _);
 pub const IDI_WARNING: u32 = 32515u32;
-pub const IDI_WINLOGO: ::win32::core::PCWSTR = ::win32::core::PCWSTR(32517u32 as _);
+pub const IDI_WINLOGO: crate::core::PCWSTR = crate::core::PCWSTR(32517u32 as _);
 pub const IMAGE_ENHMETAFILE: u32 = 3u32;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct IMAGE_FLAGS(pub u32);
@@ -2343,6 +2519,17 @@ impl ::core::ops::Not for IMAGE_FLAGS {
         Self(self.0.not())
     }
 }
+impl FromIntoMemory for IMAGE_FLAGS {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
+    }
+}
 pub const INDEXID_CONTAINER: u32 = 0u32;
 pub const INDEXID_OBJECT: u32 = 0u32;
 pub const INPUTLANGCHANGE_BACKWARD: u32 = 4u32;
@@ -2358,8 +2545,8 @@ pub const ISOLATIONAWARE_NOSTATICIMPORT_MANIFEST_RESOURCE_ID: u32 = 3u32;
 pub const ISOLATIONPOLICY_BROWSER_MANIFEST_RESOURCE_ID: u32 = 5u32;
 pub const ISOLATIONPOLICY_MANIFEST_RESOURCE_ID: u32 = 4u32;
 pub struct IndexedResourceQualifier {
-    pub name: ::win32::core::PWSTR,
-    pub value: ::win32::core::PWSTR,
+    pub name: crate::core::PWSTR,
+    pub value: crate::core::PWSTR,
 }
 impl ::core::marker::Copy for IndexedResourceQualifier {}
 impl ::core::clone::Clone for IndexedResourceQualifier {
@@ -2468,6 +2655,17 @@ impl ::core::ops::Not for KBDLLHOOKSTRUCT_FLAGS {
         Self(self.0.not())
     }
 }
+impl FromIntoMemory for KBDLLHOOKSTRUCT_FLAGS {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
+    }
+}
 pub const KF_ALTDOWN: u32 = 8192u32;
 pub const KF_DLGMODE: u32 = 2048u32;
 pub const KF_EXTENDED: u32 = 256u32;
@@ -2523,6 +2721,17 @@ impl ::core::ops::Not for LAYERED_WINDOW_ATTRIBUTES_FLAGS {
     type Output = Self;
     fn not(self) -> Self {
         Self(self.0.not())
+    }
+}
+impl FromIntoMemory for LAYERED_WINDOW_ATTRIBUTES_FLAGS {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
     }
 }
 pub const LBN_DBLCLK: u32 = 2u32;
@@ -2613,8 +2822,8 @@ pub const MA_ACTIVATEANDEAT: u32 = 2u32;
 pub const MA_NOACTIVATE: u32 = 3u32;
 pub const MA_NOACTIVATEANDEAT: u32 = 4u32;
 pub struct MDICREATESTRUCTA {
-    pub szClass: ::win32::core::PCSTR,
-    pub szTitle: ::win32::core::PCSTR,
+    pub szClass: crate::core::PCSTR,
+    pub szTitle: crate::core::PCSTR,
     pub hOwner: super::super::Foundation::HANDLE,
     pub x: i32,
     pub y: i32,
@@ -2659,8 +2868,8 @@ impl ::core::cmp::PartialEq for MDICREATESTRUCTA {
 }
 impl ::core::cmp::Eq for MDICREATESTRUCTA {}
 pub struct MDICREATESTRUCTW {
-    pub szClass: ::win32::core::PCWSTR,
-    pub szTitle: ::win32::core::PCWSTR,
+    pub szClass: crate::core::PCWSTR,
+    pub szTitle: crate::core::PCWSTR,
     pub hOwner: super::super::Foundation::HANDLE,
     pub x: i32,
     pub y: i32,
@@ -2823,6 +3032,17 @@ impl ::core::fmt::Debug for MENUGETOBJECTINFO_FLAGS {
             .finish()
     }
 }
+impl FromIntoMemory for MENUGETOBJECTINFO_FLAGS {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
+    }
+}
 #[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct MENUINFO {
@@ -2927,6 +3147,17 @@ impl ::core::ops::Not for MENUINFO_MASK {
         Self(self.0.not())
     }
 }
+impl FromIntoMemory for MENUINFO_MASK {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct MENUINFO_STYLE(pub u32);
 pub const MNS_AUTODISMISS: MENUINFO_STYLE = MENUINFO_STYLE(268435456u32);
@@ -2979,6 +3210,17 @@ impl ::core::ops::Not for MENUINFO_STYLE {
         Self(self.0.not())
     }
 }
+impl FromIntoMemory for MENUINFO_STYLE {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
+    }
+}
 #[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct MENUITEMINFOA {
@@ -2991,7 +3233,7 @@ pub struct MENUITEMINFOA {
     pub hbmpChecked: super::super::Graphics::Gdi::HBITMAP,
     pub hbmpUnchecked: super::super::Graphics::Gdi::HBITMAP,
     pub dwItemData: PtrRepr,
-    pub dwTypeData: ::win32::core::PSTR,
+    pub dwTypeData: crate::core::PSTR,
     pub cch: u32,
     pub hbmpItem: super::super::Graphics::Gdi::HBITMAP,
 }
@@ -3058,7 +3300,7 @@ pub struct MENUITEMINFOW {
     pub hbmpChecked: super::super::Graphics::Gdi::HBITMAP,
     pub hbmpUnchecked: super::super::Graphics::Gdi::HBITMAP,
     pub dwItemData: PtrRepr,
-    pub dwTypeData: ::win32::core::PWSTR,
+    pub dwTypeData: crate::core::PWSTR,
     pub cch: u32,
     pub hbmpItem: super::super::Graphics::Gdi::HBITMAP,
 }
@@ -3239,6 +3481,17 @@ impl ::core::ops::Not for MENU_ITEM_FLAGS {
         Self(self.0.not())
     }
 }
+impl FromIntoMemory for MENU_ITEM_FLAGS {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct MENU_ITEM_MASK(pub u32);
 pub const MIIM_BITMAP: MENU_ITEM_MASK = MENU_ITEM_MASK(128u32);
@@ -3294,6 +3547,17 @@ impl ::core::ops::Not for MENU_ITEM_MASK {
         Self(self.0.not())
     }
 }
+impl FromIntoMemory for MENU_ITEM_MASK {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct MENU_ITEM_STATE(pub u32);
 pub const MFS_GRAYED: MENU_ITEM_STATE = MENU_ITEM_STATE(3u32);
@@ -3346,6 +3610,17 @@ impl ::core::ops::Not for MENU_ITEM_STATE {
     type Output = Self;
     fn not(self) -> Self {
         Self(self.0.not())
+    }
+}
+impl FromIntoMemory for MENU_ITEM_STATE {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -3403,6 +3678,17 @@ impl ::core::ops::Not for MENU_ITEM_TYPE {
         Self(self.0.not())
     }
 }
+impl FromIntoMemory for MENU_ITEM_TYPE {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct MESSAGEBOX_RESULT(pub i32);
 pub const IDOK: MESSAGEBOX_RESULT = MESSAGEBOX_RESULT(1i32);
@@ -3432,6 +3718,17 @@ impl ::core::default::Default for MESSAGEBOX_RESULT {
 impl ::core::fmt::Debug for MESSAGEBOX_RESULT {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("MESSAGEBOX_RESULT").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for MESSAGEBOX_RESULT {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -3515,6 +3812,17 @@ impl ::core::ops::Not for MESSAGEBOX_STYLE {
     type Output = Self;
     fn not(self) -> Self {
         Self(self.0.not())
+    }
+}
+impl FromIntoMemory for MESSAGEBOX_STYLE {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
     }
 }
 pub struct MESSAGE_RESOURCE_BLOCK {
@@ -3652,6 +3960,17 @@ impl ::core::fmt::Debug for MINIMIZEDMETRICS_ARRANGE {
         f.debug_tuple("MINIMIZEDMETRICS_ARRANGE")
             .field(&self.0)
             .finish()
+    }
+}
+impl FromIntoMemory for MINIMIZEDMETRICS_ARRANGE {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
     }
 }
 pub const MINIMUM_RESERVED_MANIFEST_RESOURCE_ID: u32 = 1u32;
@@ -3829,6 +4148,17 @@ impl ::core::ops::Not for MOUSEHOOKSTRUCTEX_MOUSE_DATA {
         Self(self.0.not())
     }
 }
+impl FromIntoMemory for MOUSEHOOKSTRUCTEX_MOUSE_DATA {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
+    }
+}
 pub const MOUSEWHEEL_ROUTING_FOCUS: u32 = 0u32;
 pub const MOUSEWHEEL_ROUTING_HYBRID: u32 = 1u32;
 pub const MOUSEWHEEL_ROUTING_MOUSE_POS: u32 = 2u32;
@@ -3879,10 +4209,10 @@ pub struct MSGBOXPARAMSA {
     pub cbSize: u32,
     pub hwndOwner: super::super::Foundation::HWND,
     pub hInstance: super::super::Foundation::HINSTANCE,
-    pub lpszText: ::win32::core::PCSTR,
-    pub lpszCaption: ::win32::core::PCSTR,
+    pub lpszText: crate::core::PCSTR,
+    pub lpszCaption: crate::core::PCSTR,
     pub dwStyle: MESSAGEBOX_STYLE,
-    pub lpszIcon: ::win32::core::PCSTR,
+    pub lpszIcon: crate::core::PCSTR,
     pub dwContextHelpId: PtrRepr,
     pub lpfnMsgBoxCallback: MSGBOXCALLBACK,
     pub dwLanguageId: u32,
@@ -3944,10 +4274,10 @@ pub struct MSGBOXPARAMSW {
     pub cbSize: u32,
     pub hwndOwner: super::super::Foundation::HWND,
     pub hInstance: super::super::Foundation::HINSTANCE,
-    pub lpszText: ::win32::core::PCWSTR,
-    pub lpszCaption: ::win32::core::PCWSTR,
+    pub lpszText: crate::core::PCWSTR,
+    pub lpszCaption: crate::core::PCWSTR,
     pub dwStyle: MESSAGEBOX_STYLE,
-    pub lpszIcon: ::win32::core::PCWSTR,
+    pub lpszIcon: crate::core::PCWSTR,
     pub dwContextHelpId: PtrRepr,
     pub lpfnMsgBoxCallback: MSGBOXCALLBACK,
     pub dwLanguageId: u32,
@@ -4025,6 +4355,17 @@ impl ::core::fmt::Debug for MSGFLTINFO_STATUS {
         f.debug_tuple("MSGFLTINFO_STATUS").field(&self.0).finish()
     }
 }
+impl FromIntoMemory for MSGFLTINFO_STATUS {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
+    }
+}
 pub const MSGF_DIALOGBOX: u32 = 0u32;
 pub const MSGF_MAX: u32 = 8u32;
 pub const MSGF_MENU: u32 = 2u32;
@@ -4088,6 +4429,17 @@ impl ::core::ops::Not for MSG_WAIT_FOR_MULTIPLE_OBJECTS_EX_FLAGS {
         Self(self.0.not())
     }
 }
+impl FromIntoMemory for MSG_WAIT_FOR_MULTIPLE_OBJECTS_EX_FLAGS {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
+    }
+}
 pub struct MSLLHOOKSTRUCT {
     pub pt: super::super::Foundation::POINT,
     pub mouseData: MOUSEHOOKSTRUCTEX_MOUSE_DATA,
@@ -4143,6 +4495,17 @@ impl ::core::fmt::Debug for MrmDumpType {
         f.debug_tuple("MrmDumpType").field(&self.0).finish()
     }
 }
+impl FromIntoMemory for MrmDumpType {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct MrmIndexerFlags(pub i32);
 pub const MrmIndexerFlagsNone: MrmIndexerFlags = MrmIndexerFlags(0i32);
@@ -4164,6 +4527,17 @@ impl ::core::fmt::Debug for MrmIndexerFlags {
         f.debug_tuple("MrmIndexerFlags").field(&self.0).finish()
     }
 }
+impl FromIntoMemory for MrmIndexerFlags {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct MrmPackagingMode(pub i32);
 pub const MrmPackagingModeStandaloneFile: MrmPackagingMode = MrmPackagingMode(0i32);
@@ -4183,6 +4557,17 @@ impl ::core::default::Default for MrmPackagingMode {
 impl ::core::fmt::Debug for MrmPackagingMode {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("MrmPackagingMode").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for MrmPackagingMode {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -4207,6 +4592,17 @@ impl ::core::fmt::Debug for MrmPackagingOptions {
         f.debug_tuple("MrmPackagingOptions").field(&self.0).finish()
     }
 }
+impl FromIntoMemory for MrmPackagingOptions {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct MrmPlatformVersion(pub i32);
 pub const MrmPlatformVersion_Default: MrmPlatformVersion = MrmPlatformVersion(0i32);
@@ -4226,6 +4622,17 @@ impl ::core::default::Default for MrmPlatformVersion {
 impl ::core::fmt::Debug for MrmPlatformVersion {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("MrmPlatformVersion").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for MrmPlatformVersion {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
     }
 }
 pub struct MrmResourceIndexerHandle {
@@ -4253,7 +4660,7 @@ impl ::core::cmp::Eq for MrmResourceIndexerHandle {}
 pub struct MrmResourceIndexerMessage {
     pub severity: MrmResourceIndexerMessageSeverity,
     pub id: u32,
-    pub text: ::win32::core::PCWSTR,
+    pub text: crate::core::PCWSTR,
 }
 impl ::core::marker::Copy for MrmResourceIndexerMessage {}
 impl ::core::clone::Clone for MrmResourceIndexerMessage {
@@ -4304,15 +4711,26 @@ impl ::core::fmt::Debug for MrmResourceIndexerMessageSeverity {
             .finish()
     }
 }
+impl FromIntoMemory for MrmResourceIndexerMessageSeverity {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
+    }
+}
 pub type NAMEENUMPROCA = ::core::option::Option<
     unsafe extern "system" fn(
-        param0: ::win32::core::PCSTR,
+        param0: crate::core::PCSTR,
         param1: super::super::Foundation::LPARAM,
     ) -> super::super::Foundation::BOOL,
 >;
 pub type NAMEENUMPROCW = ::core::option::Option<
     unsafe extern "system" fn(
-        param0: ::win32::core::PCWSTR,
+        param0: crate::core::PCWSTR,
         param1: super::super::Foundation::LPARAM,
     ) -> super::super::Foundation::BOOL,
 >;
@@ -4540,6 +4958,17 @@ impl ::core::fmt::Debug for OBJECT_IDENTIFIER {
         f.debug_tuple("OBJECT_IDENTIFIER").field(&self.0).finish()
     }
 }
+impl FromIntoMemory for OBJECT_IDENTIFIER {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
+    }
+}
 pub const OBM_BTNCORNERS: u32 = 32758u32;
 pub const OBM_BTSIZE: u32 = 32761u32;
 pub const OBM_CHECK: u32 = 32760u32;
@@ -4686,6 +5115,17 @@ impl ::core::ops::Not for PEEK_MESSAGE_REMOVE_TYPE {
         Self(self.0.not())
     }
 }
+impl FromIntoMemory for PEEK_MESSAGE_REMOVE_TYPE {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
+    }
+}
 pub const PENARBITRATIONTYPE_FIS: u32 = 2u32;
 pub const PENARBITRATIONTYPE_MAX: u32 = 4u32;
 pub const PENARBITRATIONTYPE_NONE: u32 = 0u32;
@@ -4730,6 +5170,17 @@ impl ::core::fmt::Debug for POINTER_INPUT_TYPE {
         f.debug_tuple("POINTER_INPUT_TYPE").field(&self.0).finish()
     }
 }
+impl FromIntoMemory for POINTER_INPUT_TYPE {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
+    }
+}
 pub const POINTER_MESSAGE_FLAG_CANCELED: u32 = 32768u32;
 pub const POINTER_MESSAGE_FLAG_CONFIDENCE: u32 = 16384u32;
 pub const POINTER_MESSAGE_FLAG_FIFTHBUTTON: u32 = 256u32;
@@ -4744,7 +5195,7 @@ pub const POINTER_MESSAGE_FLAG_THIRDBUTTON: u32 = 64u32;
 pub const POINTER_MOD_CTRL: u32 = 8u32;
 pub const POINTER_MOD_SHIFT: u32 = 4u32;
 pub type PREGISTERCLASSNAMEW = ::core::option::Option<
-    unsafe extern "system" fn(param0: ::win32::core::PCWSTR) -> super::super::Foundation::BOOLEAN,
+    unsafe extern "system" fn(param0: crate::core::PCWSTR) -> super::super::Foundation::BOOLEAN,
 >;
 pub const PRF_CHECKVISIBLE: i32 = 1i32;
 pub const PRF_CHILDREN: i32 = 16i32;
@@ -4755,14 +5206,14 @@ pub const PRF_OWNED: i32 = 32i32;
 pub type PROPENUMPROCA = ::core::option::Option<
     unsafe extern "system" fn(
         param0: super::super::Foundation::HWND,
-        param1: ::win32::core::PCSTR,
+        param1: crate::core::PCSTR,
         param2: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL,
 >;
 pub type PROPENUMPROCEXA = ::core::option::Option<
     unsafe extern "system" fn(
         param0: super::super::Foundation::HWND,
-        param1: ::win32::core::PCSTR,
+        param1: crate::core::PCSTR,
         param2: super::super::Foundation::HANDLE,
         param3: PtrRepr,
     ) -> super::super::Foundation::BOOL,
@@ -4770,7 +5221,7 @@ pub type PROPENUMPROCEXA = ::core::option::Option<
 pub type PROPENUMPROCEXW = ::core::option::Option<
     unsafe extern "system" fn(
         param0: super::super::Foundation::HWND,
-        param1: ::win32::core::PCWSTR,
+        param1: crate::core::PCWSTR,
         param2: super::super::Foundation::HANDLE,
         param3: PtrRepr,
     ) -> super::super::Foundation::BOOL,
@@ -4778,7 +5229,7 @@ pub type PROPENUMPROCEXW = ::core::option::Option<
 pub type PROPENUMPROCW = ::core::option::Option<
     unsafe extern "system" fn(
         param0: super::super::Foundation::HWND,
-        param1: ::win32::core::PCWSTR,
+        param1: crate::core::PCWSTR,
         param2: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL,
 >;
@@ -4850,6 +5301,17 @@ impl ::core::ops::Not for QUEUE_STATUS_FLAGS {
         Self(self.0.not())
     }
 }
+impl FromIntoMemory for QUEUE_STATUS_FLAGS {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
+    }
+}
 pub const RES_CURSOR: u32 = 2u32;
 pub const RES_ICON: u32 = 1u32;
 pub const RIDEV_EXMODEMASK: u32 = 240u32;
@@ -4880,23 +5342,23 @@ pub const RI_MOUSE_MIDDLE_BUTTON_UP: u32 = 32u32;
 pub const RI_MOUSE_RIGHT_BUTTON_DOWN: u32 = 4u32;
 pub const RI_MOUSE_RIGHT_BUTTON_UP: u32 = 8u32;
 pub const RI_MOUSE_WHEEL: u32 = 1024u32;
-pub const RT_ACCELERATOR: ::win32::core::PCWSTR = ::win32::core::PCWSTR(9i32 as _);
-pub const RT_ANICURSOR: ::win32::core::PCWSTR = ::win32::core::PCWSTR(21i32 as _);
-pub const RT_ANIICON: ::win32::core::PCWSTR = ::win32::core::PCWSTR(22i32 as _);
-pub const RT_BITMAP: ::win32::core::PCWSTR = ::win32::core::PCWSTR(2i32 as _);
-pub const RT_CURSOR: ::win32::core::PCWSTR = ::win32::core::PCWSTR(1i32 as _);
-pub const RT_DIALOG: ::win32::core::PCWSTR = ::win32::core::PCWSTR(5i32 as _);
-pub const RT_DLGINCLUDE: ::win32::core::PCWSTR = ::win32::core::PCWSTR(17i32 as _);
-pub const RT_FONT: ::win32::core::PCWSTR = ::win32::core::PCWSTR(8i32 as _);
-pub const RT_FONTDIR: ::win32::core::PCWSTR = ::win32::core::PCWSTR(7i32 as _);
-pub const RT_HTML: ::win32::core::PCWSTR = ::win32::core::PCWSTR(23i32 as _);
-pub const RT_ICON: ::win32::core::PCWSTR = ::win32::core::PCWSTR(3i32 as _);
+pub const RT_ACCELERATOR: crate::core::PCWSTR = crate::core::PCWSTR(9i32 as _);
+pub const RT_ANICURSOR: crate::core::PCWSTR = crate::core::PCWSTR(21i32 as _);
+pub const RT_ANIICON: crate::core::PCWSTR = crate::core::PCWSTR(22i32 as _);
+pub const RT_BITMAP: crate::core::PCWSTR = crate::core::PCWSTR(2i32 as _);
+pub const RT_CURSOR: crate::core::PCWSTR = crate::core::PCWSTR(1i32 as _);
+pub const RT_DIALOG: crate::core::PCWSTR = crate::core::PCWSTR(5i32 as _);
+pub const RT_DLGINCLUDE: crate::core::PCWSTR = crate::core::PCWSTR(17i32 as _);
+pub const RT_FONT: crate::core::PCWSTR = crate::core::PCWSTR(8i32 as _);
+pub const RT_FONTDIR: crate::core::PCWSTR = crate::core::PCWSTR(7i32 as _);
+pub const RT_HTML: crate::core::PCWSTR = crate::core::PCWSTR(23i32 as _);
+pub const RT_ICON: crate::core::PCWSTR = crate::core::PCWSTR(3i32 as _);
 pub const RT_MANIFEST: u32 = 24u32;
-pub const RT_MENU: ::win32::core::PCWSTR = ::win32::core::PCWSTR(4i32 as _);
-pub const RT_MESSAGETABLE: ::win32::core::PCWSTR = ::win32::core::PCWSTR(11i32 as _);
-pub const RT_PLUGPLAY: ::win32::core::PCWSTR = ::win32::core::PCWSTR(19i32 as _);
-pub const RT_VERSION: ::win32::core::PCWSTR = ::win32::core::PCWSTR(16i32 as _);
-pub const RT_VXD: ::win32::core::PCWSTR = ::win32::core::PCWSTR(20i32 as _);
+pub const RT_MENU: crate::core::PCWSTR = crate::core::PCWSTR(4i32 as _);
+pub const RT_MESSAGETABLE: crate::core::PCWSTR = crate::core::PCWSTR(11i32 as _);
+pub const RT_PLUGPLAY: crate::core::PCWSTR = crate::core::PCWSTR(19i32 as _);
+pub const RT_VERSION: crate::core::PCWSTR = crate::core::PCWSTR(16i32 as _);
+pub const RT_VXD: crate::core::PCWSTR = crate::core::PCWSTR(20i32 as _);
 pub const SBM_ENABLE_ARROWS: u32 = 228u32;
 pub const SBM_GETPOS: u32 = 225u32;
 pub const SBM_GETRANGE: u32 = 227u32;
@@ -5022,6 +5484,17 @@ impl ::core::ops::Not for SCROLLBAR_CONSTANTS {
         Self(self.0.not())
     }
 }
+impl FromIntoMemory for SCROLLBAR_CONSTANTS {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
+    }
+}
 pub struct SCROLLINFO {
     pub cbSize: u32,
     pub fMask: SCROLLINFO_MASK,
@@ -5114,6 +5587,17 @@ impl ::core::ops::Not for SCROLLINFO_MASK {
         Self(self.0.not())
     }
 }
+impl FromIntoMemory for SCROLLINFO_MASK {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
+    }
+}
 pub const SC_ARRANGE: u32 = 61712u32;
 pub const SC_CLOSE: u32 = 61536u32;
 pub const SC_CONTEXTHELP: u32 = 61824u32;
@@ -5196,6 +5680,17 @@ impl ::core::ops::Not for SEND_MESSAGE_TIMEOUT_FLAGS {
         Self(self.0.not())
     }
 }
+impl FromIntoMemory for SEND_MESSAGE_TIMEOUT_FLAGS {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct SET_WINDOW_POS_FLAGS(pub u32);
 pub const SWP_ASYNCWINDOWPOS: SET_WINDOW_POS_FLAGS = SET_WINDOW_POS_FLAGS(16384u32);
@@ -5258,6 +5753,17 @@ impl ::core::ops::Not for SET_WINDOW_POS_FLAGS {
     type Output = Self;
     fn not(self) -> Self {
         Self(self.0.not())
+    }
+}
+impl FromIntoMemory for SET_WINDOW_POS_FLAGS {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
     }
 }
 pub struct SHELLHOOKINFO {
@@ -5355,6 +5861,17 @@ impl ::core::ops::Not for SHOW_WINDOW_CMD {
     type Output = Self;
     fn not(self) -> Self {
         Self(self.0.not())
+    }
+}
+impl FromIntoMemory for SHOW_WINDOW_CMD {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
     }
 }
 pub const SIZEFULLSCREEN: u32 = 2u32;
@@ -5458,11 +5975,10 @@ pub const STN_CLICKED: u32 = 0u32;
 pub const STN_DBLCLK: u32 = 1u32;
 pub const STN_DISABLE: u32 = 3u32;
 pub const STN_ENABLE: u32 = 2u32;
-pub const STRSAFE_E_END_OF_FILE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147024858i32);
-pub const STRSAFE_E_INSUFFICIENT_BUFFER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147024774i32);
-pub const STRSAFE_E_INVALID_PARAMETER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147024809i32);
+pub const STRSAFE_E_END_OF_FILE: crate::core::HRESULT = crate::core::HRESULT(-2147024858i32);
+pub const STRSAFE_E_INSUFFICIENT_BUFFER: crate::core::HRESULT =
+    crate::core::HRESULT(-2147024774i32);
+pub const STRSAFE_E_INVALID_PARAMETER: crate::core::HRESULT = crate::core::HRESULT(-2147024809i32);
 pub const STRSAFE_FILL_BEHIND_NULL: u32 = 512u32;
 pub const STRSAFE_FILL_ON_FAILURE: u32 = 1024u32;
 pub const STRSAFE_IGNORE_NULLS: u32 = 256u32;
@@ -5524,6 +6040,17 @@ impl ::core::default::Default for SYSTEM_CURSOR_ID {
 impl ::core::fmt::Debug for SYSTEM_CURSOR_ID {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("SYSTEM_CURSOR_ID").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for SYSTEM_CURSOR_ID {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -5639,6 +6166,17 @@ impl ::core::fmt::Debug for SYSTEM_METRICS_INDEX {
         f.debug_tuple("SYSTEM_METRICS_INDEX")
             .field(&self.0)
             .finish()
+    }
+}
+impl FromIntoMemory for SYSTEM_METRICS_INDEX {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -6102,6 +6640,17 @@ impl ::core::ops::Not for SYSTEM_PARAMETERS_INFO_ACTION {
         Self(self.0.not())
     }
 }
+impl FromIntoMemory for SYSTEM_PARAMETERS_INFO_ACTION {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct SYSTEM_PARAMETERS_INFO_UPDATE_FLAGS(pub u32);
 pub const SPIF_UPDATEINIFILE: SYSTEM_PARAMETERS_INFO_UPDATE_FLAGS =
@@ -6154,6 +6703,17 @@ impl ::core::ops::Not for SYSTEM_PARAMETERS_INFO_UPDATE_FLAGS {
     type Output = Self;
     fn not(self) -> Self {
         Self(self.0.not())
+    }
+}
+impl FromIntoMemory for SYSTEM_PARAMETERS_INFO_UPDATE_FLAGS {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -6210,6 +6770,17 @@ impl ::core::fmt::Debug for SYS_COLOR_INDEX {
         f.debug_tuple("SYS_COLOR_INDEX").field(&self.0).finish()
     }
 }
+impl FromIntoMemory for SYS_COLOR_INDEX {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct TILE_WINDOWS_HOW(pub u32);
 pub const MDITILE_HORIZONTAL: TILE_WINDOWS_HOW = TILE_WINDOWS_HOW(1u32);
@@ -6228,6 +6799,17 @@ impl ::core::default::Default for TILE_WINDOWS_HOW {
 impl ::core::fmt::Debug for TILE_WINDOWS_HOW {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("TILE_WINDOWS_HOW").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for TILE_WINDOWS_HOW {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
     }
 }
 pub type TIMERPROC = ::core::option::Option<
@@ -6417,6 +6999,17 @@ impl ::core::ops::Not for TRACK_POPUP_MENU_FLAGS {
         Self(self.0.not())
     }
 }
+impl FromIntoMemory for TRACK_POPUP_MENU_FLAGS {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
+    }
+}
 pub struct TouchPredictionParameters {
     pub cbSize: u32,
     pub dwLatency: u32,
@@ -6539,6 +7132,17 @@ impl ::core::fmt::Debug for UPDATE_LAYERED_WINDOW_FLAGS {
         f.debug_tuple("UPDATE_LAYERED_WINDOW_FLAGS")
             .field(&self.0)
             .finish()
+    }
+}
+impl FromIntoMemory for UPDATE_LAYERED_WINDOW_FLAGS {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
     }
 }
 pub const USER_DEFAULT_SCREEN_DPI: u32 = 96u32;
@@ -6690,6 +7294,17 @@ impl ::core::ops::Not for WINDOWPLACEMENT_FLAGS {
         Self(self.0.not())
     }
 }
+impl FromIntoMemory for WINDOWPLACEMENT_FLAGS {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
+    }
+}
 pub struct WINDOWPOS {
     pub hwnd: super::super::Foundation::HWND,
     pub hwndInsertAfter: super::super::Foundation::HWND,
@@ -6763,6 +7378,17 @@ impl ::core::fmt::Debug for WINDOWS_HOOK_ID {
         f.debug_tuple("WINDOWS_HOOK_ID").field(&self.0).finish()
     }
 }
+impl FromIntoMemory for WINDOWS_HOOK_ID {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct WINDOW_DISPLAY_AFFINITY(pub u32);
 pub const WDA_NONE: WINDOW_DISPLAY_AFFINITY = WINDOW_DISPLAY_AFFINITY(0u32);
@@ -6784,6 +7410,17 @@ impl ::core::fmt::Debug for WINDOW_DISPLAY_AFFINITY {
         f.debug_tuple("WINDOW_DISPLAY_AFFINITY")
             .field(&self.0)
             .finish()
+    }
+}
+impl FromIntoMemory for WINDOW_DISPLAY_AFFINITY {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -6859,6 +7496,17 @@ impl ::core::ops::Not for WINDOW_EX_STYLE {
         Self(self.0.not())
     }
 }
+impl FromIntoMemory for WINDOW_EX_STYLE {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct WINDOW_LONG_PTR_INDEX(pub i32);
 pub const GWL_EXSTYLE: WINDOW_LONG_PTR_INDEX = WINDOW_LONG_PTR_INDEX(-20i32);
@@ -6891,6 +7539,17 @@ impl ::core::fmt::Debug for WINDOW_LONG_PTR_INDEX {
             .finish()
     }
 }
+impl FromIntoMemory for WINDOW_LONG_PTR_INDEX {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct WINDOW_MESSAGE_FILTER_ACTION(pub u32);
 pub const MSGFLT_ALLOW: WINDOW_MESSAGE_FILTER_ACTION = WINDOW_MESSAGE_FILTER_ACTION(1u32);
@@ -6912,6 +7571,17 @@ impl ::core::fmt::Debug for WINDOW_MESSAGE_FILTER_ACTION {
         f.debug_tuple("WINDOW_MESSAGE_FILTER_ACTION")
             .field(&self.0)
             .finish()
+    }
+}
+impl FromIntoMemory for WINDOW_MESSAGE_FILTER_ACTION {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -6986,6 +7656,17 @@ impl ::core::ops::Not for WINDOW_STYLE {
     type Output = Self;
     fn not(self) -> Self {
         Self(self.0.not())
+    }
+}
+impl FromIntoMemory for WINDOW_STYLE {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
     }
 }
 pub const WINEVENT_INCONTEXT: u32 = 4u32;
@@ -7270,8 +7951,8 @@ pub struct WNDCLASSA {
     pub hIcon: HICON,
     pub hCursor: HCURSOR,
     pub hbrBackground: super::super::Graphics::Gdi::HBRUSH,
-    pub lpszMenuName: ::win32::core::PCSTR,
-    pub lpszClassName: ::win32::core::PCSTR,
+    pub lpszMenuName: crate::core::PCSTR,
+    pub lpszClassName: crate::core::PCSTR,
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
 #[cfg(dummy_option_that_does_not_exist)]
@@ -7332,8 +8013,8 @@ pub struct WNDCLASSEXA {
     pub hIcon: HICON,
     pub hCursor: HCURSOR,
     pub hbrBackground: super::super::Graphics::Gdi::HBRUSH,
-    pub lpszMenuName: ::win32::core::PCSTR,
-    pub lpszClassName: ::win32::core::PCSTR,
+    pub lpszMenuName: crate::core::PCSTR,
+    pub lpszClassName: crate::core::PCSTR,
     pub hIconSm: HICON,
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
@@ -7399,8 +8080,8 @@ pub struct WNDCLASSEXW {
     pub hIcon: HICON,
     pub hCursor: HCURSOR,
     pub hbrBackground: super::super::Graphics::Gdi::HBRUSH,
-    pub lpszMenuName: ::win32::core::PCWSTR,
-    pub lpszClassName: ::win32::core::PCWSTR,
+    pub lpszMenuName: crate::core::PCWSTR,
+    pub lpszClassName: crate::core::PCWSTR,
     pub hIconSm: HICON,
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
@@ -7465,8 +8146,8 @@ pub struct WNDCLASSW {
     pub hIcon: HICON,
     pub hCursor: HCURSOR,
     pub hbrBackground: super::super::Graphics::Gdi::HBRUSH,
-    pub lpszMenuName: ::win32::core::PCWSTR,
-    pub lpszClassName: ::win32::core::PCWSTR,
+    pub lpszMenuName: crate::core::PCWSTR,
+    pub lpszClassName: crate::core::PCWSTR,
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
 #[cfg(dummy_option_that_does_not_exist)]
@@ -7574,6 +8255,17 @@ impl ::core::ops::Not for WNDCLASS_STYLES {
         Self(self.0.not())
     }
 }
+impl FromIntoMemory for WNDCLASS_STYLES {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
+    }
+}
 pub type WNDENUMPROC = ::core::option::Option<
     unsafe extern "system" fn(
         param0: super::super::Foundation::HWND,
@@ -7661,7 +8353,7 @@ pub trait Api {
         hMenu: HMENU,
         uFlags: MENU_ITEM_FLAGS,
         uIDNewItem: PtrRepr,
-        lpNewItem: ::win32::core::PCSTR,
+        lpNewItem: crate::core::PCSTR,
     ) -> super::super::Foundation::BOOL {
         todo!()
     }
@@ -7670,7 +8362,7 @@ pub trait Api {
         hMenu: HMENU,
         uFlags: MENU_ITEM_FLAGS,
         uIDNewItem: PtrRepr,
-        lpNewItem: ::win32::core::PCWSTR,
+        lpNewItem: crate::core::PCWSTR,
     ) -> super::super::Foundation::BOOL {
         todo!()
     }
@@ -7748,7 +8440,7 @@ pub trait Api {
         &self,
         hMenu: HMENU,
         cmd: u32,
-        lpszNewItem: ::win32::core::PCSTR,
+        lpszNewItem: crate::core::PCSTR,
         cmdInsert: u32,
         flags: u32,
     ) -> super::super::Foundation::BOOL {
@@ -7758,7 +8450,7 @@ pub trait Api {
         &self,
         hMenu: HMENU,
         cmd: u32,
-        lpszNewItem: ::win32::core::PCWSTR,
+        lpszNewItem: crate::core::PCWSTR,
         cmdInsert: u32,
         flags: u32,
     ) -> super::super::Foundation::BOOL {
@@ -7780,95 +8472,95 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!()
     }
-    fn CharLowerA(&self, lpsz: ::win32::core::PSTR) -> ::win32::core::PSTR {
+    fn CharLowerA(&self, lpsz: crate::core::PSTR) -> crate::core::PSTR {
         todo!()
     }
-    fn CharLowerBuffA(&self, lpsz: ::win32::core::PSTR, cchLength: u32) -> u32 {
+    fn CharLowerBuffA(&self, lpsz: crate::core::PSTR, cchLength: u32) -> u32 {
         todo!()
     }
-    fn CharLowerBuffW(&self, lpsz: ::win32::core::PWSTR, cchLength: u32) -> u32 {
+    fn CharLowerBuffW(&self, lpsz: crate::core::PWSTR, cchLength: u32) -> u32 {
         todo!()
     }
-    fn CharLowerW(&self, lpsz: ::win32::core::PWSTR) -> ::win32::core::PWSTR {
+    fn CharLowerW(&self, lpsz: crate::core::PWSTR) -> crate::core::PWSTR {
         todo!()
     }
-    fn CharNextA(&self, lpsz: ::win32::core::PCSTR) -> ::win32::core::PSTR {
+    fn CharNextA(&self, lpsz: crate::core::PCSTR) -> crate::core::PSTR {
         todo!()
     }
     fn CharNextExA(
         &self,
         CodePage: u16,
-        lpCurrentChar: ::win32::core::PCSTR,
+        lpCurrentChar: crate::core::PCSTR,
         dwFlags: u32,
-    ) -> ::win32::core::PSTR {
+    ) -> crate::core::PSTR {
         todo!()
     }
-    fn CharNextW(&self, lpsz: ::win32::core::PCWSTR) -> ::win32::core::PWSTR {
+    fn CharNextW(&self, lpsz: crate::core::PCWSTR) -> crate::core::PWSTR {
         todo!()
     }
     fn CharPrevA(
         &self,
-        lpszStart: ::win32::core::PCSTR,
-        lpszCurrent: ::win32::core::PCSTR,
-    ) -> ::win32::core::PSTR {
+        lpszStart: crate::core::PCSTR,
+        lpszCurrent: crate::core::PCSTR,
+    ) -> crate::core::PSTR {
         todo!()
     }
     fn CharPrevExA(
         &self,
         CodePage: u16,
-        lpStart: ::win32::core::PCSTR,
-        lpCurrentChar: ::win32::core::PCSTR,
+        lpStart: crate::core::PCSTR,
+        lpCurrentChar: crate::core::PCSTR,
         dwFlags: u32,
-    ) -> ::win32::core::PSTR {
+    ) -> crate::core::PSTR {
         todo!()
     }
     fn CharPrevW(
         &self,
-        lpszStart: ::win32::core::PCWSTR,
-        lpszCurrent: ::win32::core::PCWSTR,
-    ) -> ::win32::core::PWSTR {
+        lpszStart: crate::core::PCWSTR,
+        lpszCurrent: crate::core::PCWSTR,
+    ) -> crate::core::PWSTR {
         todo!()
     }
     fn CharToOemA(
         &self,
-        pSrc: ::win32::core::PCSTR,
-        pDst: ::win32::core::PSTR,
+        pSrc: crate::core::PCSTR,
+        pDst: crate::core::PSTR,
     ) -> super::super::Foundation::BOOL {
         todo!()
     }
     fn CharToOemBuffA(
         &self,
-        lpszSrc: ::win32::core::PCSTR,
-        lpszDst: ::win32::core::PSTR,
+        lpszSrc: crate::core::PCSTR,
+        lpszDst: crate::core::PSTR,
         cchDstLength: u32,
     ) -> super::super::Foundation::BOOL {
         todo!()
     }
     fn CharToOemBuffW(
         &self,
-        lpszSrc: ::win32::core::PCWSTR,
-        lpszDst: ::win32::core::PSTR,
+        lpszSrc: crate::core::PCWSTR,
+        lpszDst: crate::core::PSTR,
         cchDstLength: u32,
     ) -> super::super::Foundation::BOOL {
         todo!()
     }
     fn CharToOemW(
         &self,
-        pSrc: ::win32::core::PCWSTR,
-        pDst: ::win32::core::PSTR,
+        pSrc: crate::core::PCWSTR,
+        pDst: crate::core::PSTR,
     ) -> super::super::Foundation::BOOL {
         todo!()
     }
-    fn CharUpperA(&self, lpsz: ::win32::core::PSTR) -> ::win32::core::PSTR {
+    fn CharUpperA(&self, lpsz: crate::core::PSTR) -> crate::core::PSTR {
         todo!()
     }
-    fn CharUpperBuffA(&self, lpsz: ::win32::core::PSTR, cchLength: u32) -> u32 {
+    fn CharUpperBuffA(&self, lpsz: crate::core::PSTR, cchLength: u32) -> u32 {
         todo!()
     }
-    fn CharUpperBuffW(&self, lpsz: ::win32::core::PWSTR, cchLength: u32) -> u32 {
+    fn CharUpperBuffW(&self, lpsz: crate::core::PWSTR, cchLength: u32) -> u32 {
         todo!()
     }
-    fn CharUpperW(&self, lpsz: ::win32::core::PWSTR) -> ::win32::core::PWSTR {
+    fn CharUpperW(&self, lpsz: crate::core::PWSTR) -> crate::core::PWSTR {
         todo!()
     }
     fn CheckMenuItem(&self, hMenu: HMENU, uIDCheckItem: u32, uCheck: u32) -> u32 {
@@ -7989,7 +8681,7 @@ pub trait Api {
     fn CreateDialogParamA(
         &self,
         hInstance: super::super::Foundation::HINSTANCE,
-        lpTemplateName: ::win32::core::PCSTR,
+        lpTemplateName: crate::core::PCSTR,
         hWndParent: super::super::Foundation::HWND,
         lpDialogFunc: DLGPROC,
         dwInitParam: super::super::Foundation::LPARAM,
@@ -7999,7 +8691,7 @@ pub trait Api {
     fn CreateDialogParamW(
         &self,
         hInstance: super::super::Foundation::HINSTANCE,
-        lpTemplateName: ::win32::core::PCWSTR,
+        lpTemplateName: crate::core::PCWSTR,
         hWndParent: super::super::Foundation::HWND,
         lpDialogFunc: DLGPROC,
         dwInitParam: super::super::Foundation::LPARAM,
@@ -8046,8 +8738,8 @@ pub trait Api {
     }
     fn CreateMDIWindowA(
         &self,
-        lpClassName: ::win32::core::PCSTR,
-        lpWindowName: ::win32::core::PCSTR,
+        lpClassName: crate::core::PCSTR,
+        lpWindowName: crate::core::PCSTR,
         dwStyle: WINDOW_STYLE,
         X: i32,
         Y: i32,
@@ -8061,8 +8753,8 @@ pub trait Api {
     }
     fn CreateMDIWindowW(
         &self,
-        lpClassName: ::win32::core::PCWSTR,
-        lpWindowName: ::win32::core::PCWSTR,
+        lpClassName: crate::core::PCWSTR,
+        lpWindowName: crate::core::PCWSTR,
         dwStyle: WINDOW_STYLE,
         X: i32,
         Y: i32,
@@ -8082,17 +8774,17 @@ pub trait Api {
     }
     fn CreateResourceIndexer(
         &self,
-        projectRoot: ::win32::core::PCWSTR,
-        extensionDllPath: ::win32::core::PCWSTR,
+        projectRoot: crate::core::PCWSTR,
+        extensionDllPath: crate::core::PCWSTR,
         ppResourceIndexer: MutPtr<ConstPtr<::core::ffi::c_void>>,
-    ) -> ::win32::core::HRESULT {
+    ) -> crate::core::HRESULT {
         todo!()
     }
     fn CreateWindowExA(
         &self,
         dwExStyle: WINDOW_EX_STYLE,
-        lpClassName: ::win32::core::PCSTR,
-        lpWindowName: ::win32::core::PCSTR,
+        lpClassName: crate::core::PCSTR,
+        lpWindowName: crate::core::PCSTR,
         dwStyle: WINDOW_STYLE,
         X: i32,
         Y: i32,
@@ -8108,8 +8800,8 @@ pub trait Api {
     fn CreateWindowExW(
         &self,
         dwExStyle: WINDOW_EX_STYLE,
-        lpClassName: ::win32::core::PCWSTR,
-        lpWindowName: ::win32::core::PCWSTR,
+        lpClassName: crate::core::PCWSTR,
+        lpWindowName: crate::core::PCWSTR,
         dwStyle: WINDOW_STYLE,
         X: i32,
         Y: i32,
@@ -8237,7 +8929,7 @@ pub trait Api {
     }
     fn DestroyIndexedResults(
         &self,
-        resourceUri: ::win32::core::PCWSTR,
+        resourceUri: crate::core::PCWSTR,
         qualifierCount: u32,
         qualifiers: ConstPtr<IndexedResourceQualifier>,
     ) {
@@ -8278,7 +8970,7 @@ pub trait Api {
     fn DialogBoxParamA(
         &self,
         hInstance: super::super::Foundation::HINSTANCE,
-        lpTemplateName: ::win32::core::PCSTR,
+        lpTemplateName: crate::core::PCSTR,
         hWndParent: super::super::Foundation::HWND,
         lpDialogFunc: DLGPROC,
         dwInitParam: super::super::Foundation::LPARAM,
@@ -8288,7 +8980,7 @@ pub trait Api {
     fn DialogBoxParamW(
         &self,
         hInstance: super::super::Foundation::HINSTANCE,
-        lpTemplateName: ::win32::core::PCWSTR,
+        lpTemplateName: crate::core::PCWSTR,
         hWndParent: super::super::Foundation::HWND,
         lpDialogFunc: DLGPROC,
         dwInitParam: super::super::Foundation::LPARAM,
@@ -8412,8 +9104,8 @@ pub trait Api {
     }
     fn FindWindowA(
         &self,
-        lpClassName: ::win32::core::PCSTR,
-        lpWindowName: ::win32::core::PCSTR,
+        lpClassName: crate::core::PCSTR,
+        lpWindowName: crate::core::PCSTR,
     ) -> super::super::Foundation::HWND {
         todo!()
     }
@@ -8421,8 +9113,8 @@ pub trait Api {
         &self,
         hWndParent: super::super::Foundation::HWND,
         hWndChildAfter: super::super::Foundation::HWND,
-        lpszClass: ::win32::core::PCSTR,
-        lpszWindow: ::win32::core::PCSTR,
+        lpszClass: crate::core::PCSTR,
+        lpszWindow: crate::core::PCSTR,
     ) -> super::super::Foundation::HWND {
         todo!()
     }
@@ -8430,15 +9122,15 @@ pub trait Api {
         &self,
         hWndParent: super::super::Foundation::HWND,
         hWndChildAfter: super::super::Foundation::HWND,
-        lpszClass: ::win32::core::PCWSTR,
-        lpszWindow: ::win32::core::PCWSTR,
+        lpszClass: crate::core::PCWSTR,
+        lpszWindow: crate::core::PCWSTR,
     ) -> super::super::Foundation::HWND {
         todo!()
     }
     fn FindWindowW(
         &self,
-        lpClassName: ::win32::core::PCWSTR,
-        lpWindowName: ::win32::core::PCWSTR,
+        lpClassName: crate::core::PCWSTR,
+        lpWindowName: crate::core::PCWSTR,
     ) -> super::super::Foundation::HWND {
         todo!()
     }
@@ -8457,7 +9149,7 @@ pub trait Api {
         hwnd: super::super::Foundation::HWND,
         iItem: i32,
         pati: MutPtr<ALTTABINFO>,
-        pszItemText: ::win32::core::PSTR,
+        pszItemText: crate::core::PSTR,
         cchItemText: u32,
     ) -> super::super::Foundation::BOOL {
         todo!()
@@ -8467,7 +9159,7 @@ pub trait Api {
         hwnd: super::super::Foundation::HWND,
         iItem: i32,
         pati: MutPtr<ALTTABINFO>,
-        pszItemText: ::win32::core::PWSTR,
+        pszItemText: crate::core::PWSTR,
         cchItemText: u32,
     ) -> super::super::Foundation::BOOL {
         todo!()
@@ -8493,7 +9185,7 @@ pub trait Api {
     fn GetClassInfoA(
         &self,
         hInstance: super::super::Foundation::HINSTANCE,
-        lpClassName: ::win32::core::PCSTR,
+        lpClassName: crate::core::PCSTR,
         lpWndClass: MutPtr<WNDCLASSA>,
     ) -> super::super::Foundation::BOOL {
         todo!()
@@ -8503,7 +9195,7 @@ pub trait Api {
     fn GetClassInfoExA(
         &self,
         hInstance: super::super::Foundation::HINSTANCE,
-        lpszClass: ::win32::core::PCSTR,
+        lpszClass: crate::core::PCSTR,
         lpwcx: MutPtr<WNDCLASSEXA>,
     ) -> super::super::Foundation::BOOL {
         todo!()
@@ -8513,7 +9205,7 @@ pub trait Api {
     fn GetClassInfoExW(
         &self,
         hInstance: super::super::Foundation::HINSTANCE,
-        lpszClass: ::win32::core::PCWSTR,
+        lpszClass: crate::core::PCWSTR,
         lpwcx: MutPtr<WNDCLASSEXW>,
     ) -> super::super::Foundation::BOOL {
         todo!()
@@ -8523,7 +9215,7 @@ pub trait Api {
     fn GetClassInfoW(
         &self,
         hInstance: super::super::Foundation::HINSTANCE,
-        lpClassName: ::win32::core::PCWSTR,
+        lpClassName: crate::core::PCWSTR,
         lpWndClass: MutPtr<WNDCLASSW>,
     ) -> super::super::Foundation::BOOL {
         todo!()
@@ -8563,7 +9255,7 @@ pub trait Api {
     fn GetClassNameA(
         &self,
         hWnd: super::super::Foundation::HWND,
-        lpClassName: ::win32::core::PSTR,
+        lpClassName: crate::core::PSTR,
         nMaxCount: i32,
     ) -> i32 {
         todo!()
@@ -8571,7 +9263,7 @@ pub trait Api {
     fn GetClassNameW(
         &self,
         hWnd: super::super::Foundation::HWND,
-        lpClassName: ::win32::core::PWSTR,
+        lpClassName: crate::core::PWSTR,
         nMaxCount: i32,
     ) -> i32 {
         todo!()
@@ -8633,7 +9325,7 @@ pub trait Api {
         &self,
         hDlg: super::super::Foundation::HWND,
         nIDDlgItem: i32,
-        lpString: ::win32::core::PSTR,
+        lpString: crate::core::PSTR,
         cchMax: i32,
     ) -> u32 {
         todo!()
@@ -8642,7 +9334,7 @@ pub trait Api {
         &self,
         hDlg: super::super::Foundation::HWND,
         nIDDlgItem: i32,
-        lpString: ::win32::core::PWSTR,
+        lpString: crate::core::PWSTR,
         cchMax: i32,
     ) -> u32 {
         todo!()
@@ -8778,7 +9470,7 @@ pub trait Api {
         &self,
         hMenu: HMENU,
         uIDItem: u32,
-        lpString: ::win32::core::PSTR,
+        lpString: crate::core::PSTR,
         cchMax: i32,
         flags: MENU_ITEM_FLAGS,
     ) -> i32 {
@@ -8788,7 +9480,7 @@ pub trait Api {
         &self,
         hMenu: HMENU,
         uIDItem: u32,
-        lpString: ::win32::core::PWSTR,
+        lpString: crate::core::PWSTR,
         cchMax: i32,
         flags: MENU_ITEM_FLAGS,
     ) -> i32 {
@@ -8855,14 +9547,14 @@ pub trait Api {
     fn GetPropA(
         &self,
         hWnd: super::super::Foundation::HWND,
-        lpString: ::win32::core::PCSTR,
+        lpString: crate::core::PCSTR,
     ) -> super::super::Foundation::HANDLE {
         todo!()
     }
     fn GetPropW(
         &self,
         hWnd: super::super::Foundation::HWND,
-        lpString: ::win32::core::PCWSTR,
+        lpString: crate::core::PCWSTR,
     ) -> super::super::Foundation::HANDLE {
         todo!()
     }
@@ -8982,7 +9674,7 @@ pub trait Api {
     fn GetWindowModuleFileNameA(
         &self,
         hwnd: super::super::Foundation::HWND,
-        pszFileName: ::win32::core::PSTR,
+        pszFileName: crate::core::PSTR,
         cchFileNameMax: u32,
     ) -> u32 {
         todo!()
@@ -8990,7 +9682,7 @@ pub trait Api {
     fn GetWindowModuleFileNameW(
         &self,
         hwnd: super::super::Foundation::HWND,
-        pszFileName: ::win32::core::PWSTR,
+        pszFileName: crate::core::PWSTR,
         cchFileNameMax: u32,
     ) -> u32 {
         todo!()
@@ -9012,7 +9704,7 @@ pub trait Api {
     fn GetWindowTextA(
         &self,
         hWnd: super::super::Foundation::HWND,
-        lpString: ::win32::core::PSTR,
+        lpString: crate::core::PSTR,
         nMaxCount: i32,
     ) -> i32 {
         todo!()
@@ -9026,7 +9718,7 @@ pub trait Api {
     fn GetWindowTextW(
         &self,
         hWnd: super::super::Foundation::HWND,
-        lpString: ::win32::core::PWSTR,
+        lpString: crate::core::PWSTR,
         nMaxCount: i32,
     ) -> i32 {
         todo!()
@@ -9062,11 +9754,11 @@ pub trait Api {
     fn IndexFilePath(
         &self,
         resourceIndexer: ConstPtr<::core::ffi::c_void>,
-        filePath: ::win32::core::PCWSTR,
-        ppResourceUri: MutPtr<::win32::core::PWSTR>,
+        filePath: crate::core::PCWSTR,
+        ppResourceUri: MutPtr<crate::core::PWSTR>,
         pQualifierCount: MutPtr<u32>,
         ppQualifiers: MutPtr<ConstPtr<IndexedResourceQualifier>>,
-    ) -> ::win32::core::HRESULT {
+    ) -> crate::core::HRESULT {
         todo!()
     }
     fn InheritWindowMonitor(
@@ -9082,7 +9774,7 @@ pub trait Api {
         uPosition: u32,
         uFlags: MENU_ITEM_FLAGS,
         uIDNewItem: PtrRepr,
-        lpNewItem: ::win32::core::PCSTR,
+        lpNewItem: crate::core::PCSTR,
     ) -> super::super::Foundation::BOOL {
         todo!()
     }
@@ -9114,14 +9806,14 @@ pub trait Api {
         uPosition: u32,
         uFlags: MENU_ITEM_FLAGS,
         uIDNewItem: PtrRepr,
-        lpNewItem: ::win32::core::PCWSTR,
+        lpNewItem: crate::core::PCWSTR,
     ) -> super::super::Foundation::BOOL {
         todo!()
     }
     fn InternalGetWindowText(
         &self,
         hWnd: super::super::Foundation::HWND,
-        pString: ::win32::core::PWSTR,
+        pString: crate::core::PWSTR,
         cchMaxCount: i32,
     ) -> i32 {
         todo!()
@@ -9223,55 +9915,55 @@ pub trait Api {
     fn LoadAcceleratorsA(
         &self,
         hInstance: super::super::Foundation::HINSTANCE,
-        lpTableName: ::win32::core::PCSTR,
+        lpTableName: crate::core::PCSTR,
     ) -> HACCEL {
         todo!()
     }
     fn LoadAcceleratorsW(
         &self,
         hInstance: super::super::Foundation::HINSTANCE,
-        lpTableName: ::win32::core::PCWSTR,
+        lpTableName: crate::core::PCWSTR,
     ) -> HACCEL {
         todo!()
     }
     fn LoadCursorA(
         &self,
         hInstance: super::super::Foundation::HINSTANCE,
-        lpCursorName: ::win32::core::PCSTR,
+        lpCursorName: crate::core::PCSTR,
     ) -> HCURSOR {
         todo!()
     }
-    fn LoadCursorFromFileA(&self, lpFileName: ::win32::core::PCSTR) -> HCURSOR {
+    fn LoadCursorFromFileA(&self, lpFileName: crate::core::PCSTR) -> HCURSOR {
         todo!()
     }
-    fn LoadCursorFromFileW(&self, lpFileName: ::win32::core::PCWSTR) -> HCURSOR {
+    fn LoadCursorFromFileW(&self, lpFileName: crate::core::PCWSTR) -> HCURSOR {
         todo!()
     }
     fn LoadCursorW(
         &self,
         hInstance: super::super::Foundation::HINSTANCE,
-        lpCursorName: ::win32::core::PCWSTR,
+        lpCursorName: crate::core::PCWSTR,
     ) -> HCURSOR {
         todo!()
     }
     fn LoadIconA(
         &self,
         hInstance: super::super::Foundation::HINSTANCE,
-        lpIconName: ::win32::core::PCSTR,
+        lpIconName: crate::core::PCSTR,
     ) -> HICON {
         todo!()
     }
     fn LoadIconW(
         &self,
         hInstance: super::super::Foundation::HINSTANCE,
-        lpIconName: ::win32::core::PCWSTR,
+        lpIconName: crate::core::PCWSTR,
     ) -> HICON {
         todo!()
     }
     fn LoadImageA(
         &self,
         hInst: super::super::Foundation::HINSTANCE,
-        name: ::win32::core::PCSTR,
+        name: crate::core::PCSTR,
         r#type: GDI_IMAGE_TYPE,
         cx: i32,
         cy: i32,
@@ -9282,7 +9974,7 @@ pub trait Api {
     fn LoadImageW(
         &self,
         hInst: super::super::Foundation::HINSTANCE,
-        name: ::win32::core::PCWSTR,
+        name: crate::core::PCWSTR,
         r#type: GDI_IMAGE_TYPE,
         cx: i32,
         cy: i32,
@@ -9293,7 +9985,7 @@ pub trait Api {
     fn LoadMenuA(
         &self,
         hInstance: super::super::Foundation::HINSTANCE,
-        lpMenuName: ::win32::core::PCSTR,
+        lpMenuName: crate::core::PCSTR,
     ) -> HMENU {
         todo!()
     }
@@ -9306,7 +9998,7 @@ pub trait Api {
     fn LoadMenuW(
         &self,
         hInstance: super::super::Foundation::HINSTANCE,
-        lpMenuName: ::win32::core::PCWSTR,
+        lpMenuName: crate::core::PCWSTR,
     ) -> HMENU {
         todo!()
     }
@@ -9314,7 +10006,7 @@ pub trait Api {
         &self,
         hInstance: super::super::Foundation::HINSTANCE,
         uID: u32,
-        lpBuffer: ::win32::core::PSTR,
+        lpBuffer: crate::core::PSTR,
         cchBufferMax: i32,
     ) -> i32 {
         todo!()
@@ -9323,7 +10015,7 @@ pub trait Api {
         &self,
         hInstance: super::super::Foundation::HINSTANCE,
         uID: u32,
-        lpBuffer: ::win32::core::PWSTR,
+        lpBuffer: crate::core::PWSTR,
         cchBufferMax: i32,
     ) -> i32 {
         todo!()
@@ -9376,8 +10068,8 @@ pub trait Api {
     fn MessageBoxA(
         &self,
         hWnd: super::super::Foundation::HWND,
-        lpText: ::win32::core::PCSTR,
-        lpCaption: ::win32::core::PCSTR,
+        lpText: crate::core::PCSTR,
+        lpCaption: crate::core::PCSTR,
         uType: MESSAGEBOX_STYLE,
     ) -> MESSAGEBOX_RESULT {
         todo!()
@@ -9385,8 +10077,8 @@ pub trait Api {
     fn MessageBoxExA(
         &self,
         hWnd: super::super::Foundation::HWND,
-        lpText: ::win32::core::PCSTR,
-        lpCaption: ::win32::core::PCSTR,
+        lpText: crate::core::PCSTR,
+        lpCaption: crate::core::PCSTR,
         uType: MESSAGEBOX_STYLE,
         wLanguageId: u16,
     ) -> MESSAGEBOX_RESULT {
@@ -9395,8 +10087,8 @@ pub trait Api {
     fn MessageBoxExW(
         &self,
         hWnd: super::super::Foundation::HWND,
-        lpText: ::win32::core::PCWSTR,
-        lpCaption: ::win32::core::PCWSTR,
+        lpText: crate::core::PCWSTR,
+        lpCaption: crate::core::PCWSTR,
         uType: MESSAGEBOX_STYLE,
         wLanguageId: u16,
     ) -> MESSAGEBOX_RESULT {
@@ -9415,8 +10107,8 @@ pub trait Api {
     fn MessageBoxW(
         &self,
         hWnd: super::super::Foundation::HWND,
-        lpText: ::win32::core::PCWSTR,
-        lpCaption: ::win32::core::PCWSTR,
+        lpText: crate::core::PCWSTR,
+        lpCaption: crate::core::PCWSTR,
         uType: MESSAGEBOX_STYLE,
     ) -> MESSAGEBOX_RESULT {
         todo!()
@@ -9427,7 +10119,7 @@ pub trait Api {
         uPosition: u32,
         uFlags: MENU_ITEM_FLAGS,
         uIDNewItem: PtrRepr,
-        lpNewItem: ::win32::core::PCSTR,
+        lpNewItem: crate::core::PCSTR,
     ) -> super::super::Foundation::BOOL {
         todo!()
     }
@@ -9437,7 +10129,7 @@ pub trait Api {
         uPosition: u32,
         uFlags: MENU_ITEM_FLAGS,
         uIDNewItem: PtrRepr,
-        lpNewItem: ::win32::core::PCWSTR,
+        lpNewItem: crate::core::PCWSTR,
     ) -> super::super::Foundation::BOOL {
         todo!()
     }
@@ -9455,18 +10147,18 @@ pub trait Api {
     fn MrmCreateConfig(
         &self,
         platformVersion: MrmPlatformVersion,
-        defaultQualifiers: ::win32::core::PCWSTR,
-        outputXmlFile: ::win32::core::PCWSTR,
-    ) -> ::win32::core::HRESULT {
+        defaultQualifiers: crate::core::PCWSTR,
+        outputXmlFile: crate::core::PCWSTR,
+    ) -> crate::core::HRESULT {
         todo!()
     }
     fn MrmCreateConfigInMemory(
         &self,
         platformVersion: MrmPlatformVersion,
-        defaultQualifiers: ::win32::core::PCWSTR,
+        defaultQualifiers: crate::core::PCWSTR,
         outputXmlData: MutPtr<ConstPtr<u8>>,
         outputXmlSize: MutPtr<u32>,
-    ) -> ::win32::core::HRESULT {
+    ) -> crate::core::HRESULT {
         todo!()
     }
     fn MrmCreateResourceFile(
@@ -9474,8 +10166,8 @@ pub trait Api {
         indexer: MrmResourceIndexerHandle,
         packagingMode: MrmPackagingMode,
         packagingOptions: MrmPackagingOptions,
-        outputDirectory: ::win32::core::PCWSTR,
-    ) -> ::win32::core::HRESULT {
+        outputDirectory: crate::core::PCWSTR,
+    ) -> crate::core::HRESULT {
         todo!()
     }
     fn MrmCreateResourceFileInMemory(
@@ -9485,7 +10177,7 @@ pub trait Api {
         packagingOptions: MrmPackagingOptions,
         outputPriData: MutPtr<ConstPtr<u8>>,
         outputPriSize: MutPtr<u32>,
-    ) -> ::win32::core::HRESULT {
+    ) -> crate::core::HRESULT {
         todo!()
     }
     fn MrmCreateResourceFileWithChecksum(
@@ -9494,77 +10186,77 @@ pub trait Api {
         packagingMode: MrmPackagingMode,
         packagingOptions: MrmPackagingOptions,
         checksum: u32,
-        outputDirectory: ::win32::core::PCWSTR,
-    ) -> ::win32::core::HRESULT {
+        outputDirectory: crate::core::PCWSTR,
+    ) -> crate::core::HRESULT {
         todo!()
     }
     fn MrmCreateResourceIndexer(
         &self,
-        packageFamilyName: ::win32::core::PCWSTR,
-        projectRoot: ::win32::core::PCWSTR,
+        packageFamilyName: crate::core::PCWSTR,
+        projectRoot: crate::core::PCWSTR,
         platformVersion: MrmPlatformVersion,
-        defaultQualifiers: ::win32::core::PCWSTR,
+        defaultQualifiers: crate::core::PCWSTR,
         indexer: MutPtr<MrmResourceIndexerHandle>,
-    ) -> ::win32::core::HRESULT {
+    ) -> crate::core::HRESULT {
         todo!()
     }
     fn MrmCreateResourceIndexerFromPreviousPriData(
         &self,
-        projectRoot: ::win32::core::PCWSTR,
+        projectRoot: crate::core::PCWSTR,
         platformVersion: MrmPlatformVersion,
-        defaultQualifiers: ::win32::core::PCWSTR,
+        defaultQualifiers: crate::core::PCWSTR,
         priData: ConstPtr<u8>,
         priSize: u32,
         indexer: MutPtr<MrmResourceIndexerHandle>,
-    ) -> ::win32::core::HRESULT {
+    ) -> crate::core::HRESULT {
         todo!()
     }
     fn MrmCreateResourceIndexerFromPreviousPriFile(
         &self,
-        projectRoot: ::win32::core::PCWSTR,
+        projectRoot: crate::core::PCWSTR,
         platformVersion: MrmPlatformVersion,
-        defaultQualifiers: ::win32::core::PCWSTR,
-        priFile: ::win32::core::PCWSTR,
+        defaultQualifiers: crate::core::PCWSTR,
+        priFile: crate::core::PCWSTR,
         indexer: MutPtr<MrmResourceIndexerHandle>,
-    ) -> ::win32::core::HRESULT {
+    ) -> crate::core::HRESULT {
         todo!()
     }
     fn MrmCreateResourceIndexerFromPreviousSchemaData(
         &self,
-        projectRoot: ::win32::core::PCWSTR,
+        projectRoot: crate::core::PCWSTR,
         platformVersion: MrmPlatformVersion,
-        defaultQualifiers: ::win32::core::PCWSTR,
+        defaultQualifiers: crate::core::PCWSTR,
         schemaXmlData: ConstPtr<u8>,
         schemaXmlSize: u32,
         indexer: MutPtr<MrmResourceIndexerHandle>,
-    ) -> ::win32::core::HRESULT {
+    ) -> crate::core::HRESULT {
         todo!()
     }
     fn MrmCreateResourceIndexerFromPreviousSchemaFile(
         &self,
-        projectRoot: ::win32::core::PCWSTR,
+        projectRoot: crate::core::PCWSTR,
         platformVersion: MrmPlatformVersion,
-        defaultQualifiers: ::win32::core::PCWSTR,
-        schemaFile: ::win32::core::PCWSTR,
+        defaultQualifiers: crate::core::PCWSTR,
+        schemaFile: crate::core::PCWSTR,
         indexer: MutPtr<MrmResourceIndexerHandle>,
-    ) -> ::win32::core::HRESULT {
+    ) -> crate::core::HRESULT {
         todo!()
     }
     fn MrmCreateResourceIndexerWithFlags(
         &self,
-        packageFamilyName: ::win32::core::PCWSTR,
-        projectRoot: ::win32::core::PCWSTR,
+        packageFamilyName: crate::core::PCWSTR,
+        projectRoot: crate::core::PCWSTR,
         platformVersion: MrmPlatformVersion,
-        defaultQualifiers: ::win32::core::PCWSTR,
+        defaultQualifiers: crate::core::PCWSTR,
         flags: MrmIndexerFlags,
         indexer: MutPtr<MrmResourceIndexerHandle>,
-    ) -> ::win32::core::HRESULT {
+    ) -> crate::core::HRESULT {
         todo!()
     }
     fn MrmDestroyIndexerAndMessages(
         &self,
         indexer: MrmResourceIndexerHandle,
-    ) -> ::win32::core::HRESULT {
+    ) -> crate::core::HRESULT {
         todo!()
     }
     fn MrmDumpPriDataInMemory(
@@ -9576,78 +10268,78 @@ pub trait Api {
         dumpType: MrmDumpType,
         outputXmlData: MutPtr<ConstPtr<u8>>,
         outputXmlSize: MutPtr<u32>,
-    ) -> ::win32::core::HRESULT {
+    ) -> crate::core::HRESULT {
         todo!()
     }
     fn MrmDumpPriFile(
         &self,
-        indexFileName: ::win32::core::PCWSTR,
-        schemaPriFile: ::win32::core::PCWSTR,
+        indexFileName: crate::core::PCWSTR,
+        schemaPriFile: crate::core::PCWSTR,
         dumpType: MrmDumpType,
-        outputXmlFile: ::win32::core::PCWSTR,
-    ) -> ::win32::core::HRESULT {
+        outputXmlFile: crate::core::PCWSTR,
+    ) -> crate::core::HRESULT {
         todo!()
     }
     fn MrmDumpPriFileInMemory(
         &self,
-        indexFileName: ::win32::core::PCWSTR,
-        schemaPriFile: ::win32::core::PCWSTR,
+        indexFileName: crate::core::PCWSTR,
+        schemaPriFile: crate::core::PCWSTR,
         dumpType: MrmDumpType,
         outputXmlData: MutPtr<ConstPtr<u8>>,
         outputXmlSize: MutPtr<u32>,
-    ) -> ::win32::core::HRESULT {
+    ) -> crate::core::HRESULT {
         todo!()
     }
-    fn MrmFreeMemory(&self, data: ConstPtr<u8>) -> ::win32::core::HRESULT {
+    fn MrmFreeMemory(&self, data: ConstPtr<u8>) -> crate::core::HRESULT {
         todo!()
     }
     fn MrmGetPriFileContentChecksum(
         &self,
-        priFile: ::win32::core::PCWSTR,
+        priFile: crate::core::PCWSTR,
         checksum: MutPtr<u32>,
-    ) -> ::win32::core::HRESULT {
+    ) -> crate::core::HRESULT {
         todo!()
     }
     fn MrmIndexEmbeddedData(
         &self,
         indexer: MrmResourceIndexerHandle,
-        resourceUri: ::win32::core::PCWSTR,
+        resourceUri: crate::core::PCWSTR,
         embeddedData: ConstPtr<u8>,
         embeddedDataSize: u32,
-        qualifiers: ::win32::core::PCWSTR,
-    ) -> ::win32::core::HRESULT {
+        qualifiers: crate::core::PCWSTR,
+    ) -> crate::core::HRESULT {
         todo!()
     }
     fn MrmIndexFile(
         &self,
         indexer: MrmResourceIndexerHandle,
-        resourceUri: ::win32::core::PCWSTR,
-        filePath: ::win32::core::PCWSTR,
-        qualifiers: ::win32::core::PCWSTR,
-    ) -> ::win32::core::HRESULT {
+        resourceUri: crate::core::PCWSTR,
+        filePath: crate::core::PCWSTR,
+        qualifiers: crate::core::PCWSTR,
+    ) -> crate::core::HRESULT {
         todo!()
     }
     fn MrmIndexFileAutoQualifiers(
         &self,
         indexer: MrmResourceIndexerHandle,
-        filePath: ::win32::core::PCWSTR,
-    ) -> ::win32::core::HRESULT {
+        filePath: crate::core::PCWSTR,
+    ) -> crate::core::HRESULT {
         todo!()
     }
     fn MrmIndexResourceContainerAutoQualifiers(
         &self,
         indexer: MrmResourceIndexerHandle,
-        containerPath: ::win32::core::PCWSTR,
-    ) -> ::win32::core::HRESULT {
+        containerPath: crate::core::PCWSTR,
+    ) -> crate::core::HRESULT {
         todo!()
     }
     fn MrmIndexString(
         &self,
         indexer: MrmResourceIndexerHandle,
-        resourceUri: ::win32::core::PCWSTR,
-        resourceString: ::win32::core::PCWSTR,
-        qualifiers: ::win32::core::PCWSTR,
-    ) -> ::win32::core::HRESULT {
+        resourceUri: crate::core::PCWSTR,
+        resourceString: crate::core::PCWSTR,
+        qualifiers: crate::core::PCWSTR,
+    ) -> crate::core::HRESULT {
         todo!()
     }
     fn MrmPeekResourceIndexerMessages(
@@ -9655,7 +10347,7 @@ pub trait Api {
         handle: MrmResourceIndexerHandle,
         messages: MutPtr<ConstPtr<MrmResourceIndexerMessage>>,
         numMsgs: MutPtr<u32>,
-    ) -> ::win32::core::HRESULT {
+    ) -> crate::core::HRESULT {
         todo!()
     }
     fn MsgWaitForMultipleObjects(
@@ -9680,31 +10372,31 @@ pub trait Api {
     }
     fn OemToCharA(
         &self,
-        pSrc: ::win32::core::PCSTR,
-        pDst: ::win32::core::PSTR,
+        pSrc: crate::core::PCSTR,
+        pDst: crate::core::PSTR,
     ) -> super::super::Foundation::BOOL {
         todo!()
     }
     fn OemToCharBuffA(
         &self,
-        lpszSrc: ::win32::core::PCSTR,
-        lpszDst: ::win32::core::PSTR,
+        lpszSrc: crate::core::PCSTR,
+        lpszDst: crate::core::PSTR,
         cchDstLength: u32,
     ) -> super::super::Foundation::BOOL {
         todo!()
     }
     fn OemToCharBuffW(
         &self,
-        lpszSrc: ::win32::core::PCSTR,
-        lpszDst: ::win32::core::PWSTR,
+        lpszSrc: crate::core::PCSTR,
+        lpszDst: crate::core::PWSTR,
         cchDstLength: u32,
     ) -> super::super::Foundation::BOOL {
         todo!()
     }
     fn OemToCharW(
         &self,
-        pSrc: ::win32::core::PCSTR,
-        pDst: ::win32::core::PWSTR,
+        pSrc: crate::core::PCSTR,
+        pDst: crate::core::PWSTR,
     ) -> super::super::Foundation::BOOL {
         todo!()
     }
@@ -9779,7 +10471,7 @@ pub trait Api {
     }
     fn PrivateExtractIconsA(
         &self,
-        szFileName: ::win32::core::PCSTR,
+        szFileName: crate::core::PCSTR,
         nIconIndex: i32,
         cxIcon: i32,
         cyIcon: i32,
@@ -9792,7 +10484,7 @@ pub trait Api {
     }
     fn PrivateExtractIconsW(
         &self,
-        szFileName: ::win32::core::PCWSTR,
+        szFileName: crate::core::PCWSTR,
         nIconIndex: i32,
         cxIcon: i32,
         cyIcon: i32,
@@ -9813,7 +10505,7 @@ pub trait Api {
     fn RealGetWindowClassA(
         &self,
         hwnd: super::super::Foundation::HWND,
-        ptszClassName: ::win32::core::PSTR,
+        ptszClassName: crate::core::PSTR,
         cchClassNameMax: u32,
     ) -> u32 {
         todo!()
@@ -9821,7 +10513,7 @@ pub trait Api {
     fn RealGetWindowClassW(
         &self,
         hwnd: super::super::Foundation::HWND,
-        ptszClassName: ::win32::core::PWSTR,
+        ptszClassName: crate::core::PWSTR,
         cchClassNameMax: u32,
     ) -> u32 {
         todo!()
@@ -9872,10 +10564,10 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!()
     }
-    fn RegisterWindowMessageA(&self, lpString: ::win32::core::PCSTR) -> u32 {
+    fn RegisterWindowMessageA(&self, lpString: crate::core::PCSTR) -> u32 {
         todo!()
     }
-    fn RegisterWindowMessageW(&self, lpString: ::win32::core::PCWSTR) -> u32 {
+    fn RegisterWindowMessageW(&self, lpString: crate::core::PCWSTR) -> u32 {
         todo!()
     }
     fn RemoveMenu(
@@ -9889,14 +10581,14 @@ pub trait Api {
     fn RemovePropA(
         &self,
         hWnd: super::super::Foundation::HWND,
-        lpString: ::win32::core::PCSTR,
+        lpString: crate::core::PCSTR,
     ) -> super::super::Foundation::HANDLE {
         todo!()
     }
     fn RemovePropW(
         &self,
         hWnd: super::super::Foundation::HWND,
-        lpString: ::win32::core::PCWSTR,
+        lpString: crate::core::PCWSTR,
     ) -> super::super::Foundation::HANDLE {
         todo!()
     }
@@ -10129,7 +10821,7 @@ pub trait Api {
         &self,
         hDlg: super::super::Foundation::HWND,
         nIDDlgItem: i32,
-        lpString: ::win32::core::PCSTR,
+        lpString: crate::core::PCSTR,
     ) -> super::super::Foundation::BOOL {
         todo!()
     }
@@ -10137,7 +10829,7 @@ pub trait Api {
         &self,
         hDlg: super::super::Foundation::HWND,
         nIDDlgItem: i32,
-        lpString: ::win32::core::PCWSTR,
+        lpString: crate::core::PCWSTR,
     ) -> super::super::Foundation::BOOL {
         todo!()
     }
@@ -10242,7 +10934,7 @@ pub trait Api {
     fn SetPropA(
         &self,
         hWnd: super::super::Foundation::HWND,
-        lpString: ::win32::core::PCSTR,
+        lpString: crate::core::PCSTR,
         hData: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
         todo!()
@@ -10250,7 +10942,7 @@ pub trait Api {
     fn SetPropW(
         &self,
         hWnd: super::super::Foundation::HWND,
-        lpString: ::win32::core::PCWSTR,
+        lpString: crate::core::PCWSTR,
         hData: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
         todo!()
@@ -10344,14 +11036,14 @@ pub trait Api {
     fn SetWindowTextA(
         &self,
         hWnd: super::super::Foundation::HWND,
-        lpString: ::win32::core::PCSTR,
+        lpString: crate::core::PCSTR,
     ) -> super::super::Foundation::BOOL {
         todo!()
     }
     fn SetWindowTextW(
         &self,
         hWnd: super::super::Foundation::HWND,
-        lpString: ::win32::core::PCWSTR,
+        lpString: crate::core::PCWSTR,
     ) -> super::super::Foundation::BOOL {
         todo!()
     }
@@ -10513,14 +11205,14 @@ pub trait Api {
     }
     fn UnregisterClassA(
         &self,
-        lpClassName: ::win32::core::PCSTR,
+        lpClassName: crate::core::PCSTR,
         hInstance: super::super::Foundation::HINSTANCE,
     ) -> super::super::Foundation::BOOL {
         todo!()
     }
     fn UnregisterClassW(
         &self,
-        lpClassName: ::win32::core::PCWSTR,
+        lpClassName: crate::core::PCWSTR,
         hInstance: super::super::Foundation::HINSTANCE,
     ) -> super::super::Foundation::BOOL {
         todo!()
@@ -10565,24 +11257,24 @@ pub trait Api {
     ) -> super::super::Foundation::HWND {
         todo!()
     }
-    fn wsprintfA(&self, param0: ::win32::core::PSTR, param1: ::win32::core::PCSTR) -> i32 {
+    fn wsprintfA(&self, param0: crate::core::PSTR, param1: crate::core::PCSTR) -> i32 {
         todo!()
     }
-    fn wsprintfW(&self, param0: ::win32::core::PWSTR, param1: ::win32::core::PCWSTR) -> i32 {
+    fn wsprintfW(&self, param0: crate::core::PWSTR, param1: crate::core::PCWSTR) -> i32 {
         todo!()
     }
     fn wvsprintfA(
         &self,
-        param0: ::win32::core::PSTR,
-        param1: ::win32::core::PCSTR,
+        param0: crate::core::PSTR,
+        param1: crate::core::PCSTR,
         arglist: ConstPtr<i8>,
     ) -> i32 {
         todo!()
     }
     fn wvsprintfW(
         &self,
-        param0: ::win32::core::PWSTR,
-        param1: ::win32::core::PCWSTR,
+        param0: crate::core::PWSTR,
+        param1: crate::core::PCWSTR,
         arglist: ConstPtr<i8>,
     ) -> i32 {
         todo!()

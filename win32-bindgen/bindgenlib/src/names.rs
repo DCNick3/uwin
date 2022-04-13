@@ -114,42 +114,15 @@ pub fn gen_element_name(def: &Type, gen: &Gen) -> TokenStream {
         Type::F64 => quote! { f64 },
         Type::ISize => quote! { PtrDiffRepr },
         Type::USize => quote! { PtrRepr },
-        Type::String => {
-            let crate_name = gen_crate_name(gen);
-            quote! { ::#crate_name::core::HSTRING }
-        }
-        Type::IInspectable => {
-            let crate_name = gen_crate_name(gen);
-            quote! { ::#crate_name::core::IInspectable }
-        }
-        Type::GUID => {
-            let crate_name = gen_crate_name(gen);
-            quote! { ::#crate_name::core::GUID }
-        }
-        Type::IUnknown => {
-            let crate_name = gen_crate_name(gen);
-            quote! { ::#crate_name::core::IUnknown }
-        }
-        Type::HRESULT => {
-            let crate_name = gen_crate_name(gen);
-            quote! { ::#crate_name::core::HRESULT }
-        }
-        Type::PSTR => {
-            let crate_name = gen_crate_name(gen);
-            quote! { ::#crate_name::core::PSTR }
-        }
-        Type::PWSTR => {
-            let crate_name = gen_crate_name(gen);
-            quote! { ::#crate_name::core::PWSTR }
-        }
-        Type::PCSTR => {
-            let crate_name = gen_crate_name(gen);
-            quote! { ::#crate_name::core::PCSTR }
-        }
-        Type::PCWSTR => {
-            let crate_name = gen_crate_name(gen);
-            quote! { ::#crate_name::core::PCWSTR }
-        }
+        Type::String => quote! { crate::core::HSTRING },
+        Type::IInspectable => quote! { crate::core::IInspectable },
+        Type::GUID => quote! { crate::core::GUID },
+        Type::IUnknown => quote! { crate::core::IUnknown },
+        Type::HRESULT => quote! { crate::core::HRESULT },
+        Type::PSTR => quote! { crate::core::PSTR },
+        Type::PWSTR => quote! { crate::core::PWSTR },
+        Type::PCSTR => quote! { crate::core::PCSTR },
+        Type::PCWSTR => quote! { crate::core::PCWSTR },
         Type::Win32Array((kind, len)) => {
             let name = gen_default_type(kind, gen);
             let len = Literal::u32_unsuffixed(*len);
@@ -245,10 +218,6 @@ fn gen_const_ptrs(pointers: usize, kind: TokenStream) -> TokenStream {
 //         _ => gen_element_name(ty, gen),
 //     }
 // }
-
-pub fn gen_crate_name(_gen: &Gen) -> TokenStream {
-    "win32".into()
-}
 
 pub fn gen_type_name(def: &TypeDef, gen: &Gen) -> TokenStream {
     format_name(def, gen, gen_ident, false)

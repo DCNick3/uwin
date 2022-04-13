@@ -15,52 +15,47 @@ pub const APPMODEL_ERROR_NO_PACKAGE: i32 = 15700i32;
 pub const APPMODEL_ERROR_PACKAGE_IDENTITY_CORRUPT: i32 = 15702i32;
 pub const APPMODEL_ERROR_PACKAGE_NOT_AVAILABLE: i32 = 15706i32;
 pub const APPMODEL_ERROR_PACKAGE_RUNTIME_CORRUPT: i32 = 15701i32;
-pub const APPX_E_BLOCK_HASH_INVALID: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146958841i32);
-pub const APPX_E_CORRUPT_CONTENT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146958842i32);
-pub const APPX_E_DELTA_APPENDED_PACKAGE_NOT_ALLOWED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146958832i32);
-pub const APPX_E_DELTA_BASELINE_VERSION_MISMATCH: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146958835i32);
-pub const APPX_E_DELTA_PACKAGE_MISSING_FILE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146958834i32);
-pub const APPX_E_FILE_COMPRESSION_MISMATCH: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146958828i32);
-pub const APPX_E_INTERLEAVING_NOT_ALLOWED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146958847i32);
-pub const APPX_E_INVALID_APPINSTALLER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146958836i32);
-pub const APPX_E_INVALID_BLOCKMAP: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146958843i32);
-pub const APPX_E_INVALID_CONTENTGROUPMAP: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146958837i32);
-pub const APPX_E_INVALID_DELTA_PACKAGE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146958833i32);
-pub const APPX_E_INVALID_ENCRYPTION_EXCLUSION_FILE_LIST: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146958826i32);
-pub const APPX_E_INVALID_KEY_INFO: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146958838i32);
-pub const APPX_E_INVALID_MANIFEST: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146958844i32);
-pub const APPX_E_INVALID_PACKAGESIGNCONFIG: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146958830i32);
-pub const APPX_E_INVALID_PACKAGE_FOLDER_ACLS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146958825i32);
-pub const APPX_E_INVALID_PACKAGING_LAYOUT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146958831i32);
-pub const APPX_E_INVALID_PAYLOAD_PACKAGE_EXTENSION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146958827i32);
-pub const APPX_E_INVALID_PUBLISHER_BRIDGING: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146958824i32);
-pub const APPX_E_INVALID_SIP_CLIENT_DATA: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146958839i32);
-pub const APPX_E_MISSING_REQUIRED_FILE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146958845i32);
-pub const APPX_E_PACKAGING_INTERNAL: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146958848i32);
-pub const APPX_E_RELATIONSHIPS_NOT_ALLOWED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146958846i32);
-pub const APPX_E_REQUESTED_RANGE_TOO_LARGE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146958840i32);
-pub const APPX_E_RESOURCESPRI_NOT_ALLOWED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146958829i32);
+pub const APPX_E_BLOCK_HASH_INVALID: crate::core::HRESULT = crate::core::HRESULT(-2146958841i32);
+pub const APPX_E_CORRUPT_CONTENT: crate::core::HRESULT = crate::core::HRESULT(-2146958842i32);
+pub const APPX_E_DELTA_APPENDED_PACKAGE_NOT_ALLOWED: crate::core::HRESULT =
+    crate::core::HRESULT(-2146958832i32);
+pub const APPX_E_DELTA_BASELINE_VERSION_MISMATCH: crate::core::HRESULT =
+    crate::core::HRESULT(-2146958835i32);
+pub const APPX_E_DELTA_PACKAGE_MISSING_FILE: crate::core::HRESULT =
+    crate::core::HRESULT(-2146958834i32);
+pub const APPX_E_FILE_COMPRESSION_MISMATCH: crate::core::HRESULT =
+    crate::core::HRESULT(-2146958828i32);
+pub const APPX_E_INTERLEAVING_NOT_ALLOWED: crate::core::HRESULT =
+    crate::core::HRESULT(-2146958847i32);
+pub const APPX_E_INVALID_APPINSTALLER: crate::core::HRESULT = crate::core::HRESULT(-2146958836i32);
+pub const APPX_E_INVALID_BLOCKMAP: crate::core::HRESULT = crate::core::HRESULT(-2146958843i32);
+pub const APPX_E_INVALID_CONTENTGROUPMAP: crate::core::HRESULT =
+    crate::core::HRESULT(-2146958837i32);
+pub const APPX_E_INVALID_DELTA_PACKAGE: crate::core::HRESULT = crate::core::HRESULT(-2146958833i32);
+pub const APPX_E_INVALID_ENCRYPTION_EXCLUSION_FILE_LIST: crate::core::HRESULT =
+    crate::core::HRESULT(-2146958826i32);
+pub const APPX_E_INVALID_KEY_INFO: crate::core::HRESULT = crate::core::HRESULT(-2146958838i32);
+pub const APPX_E_INVALID_MANIFEST: crate::core::HRESULT = crate::core::HRESULT(-2146958844i32);
+pub const APPX_E_INVALID_PACKAGESIGNCONFIG: crate::core::HRESULT =
+    crate::core::HRESULT(-2146958830i32);
+pub const APPX_E_INVALID_PACKAGE_FOLDER_ACLS: crate::core::HRESULT =
+    crate::core::HRESULT(-2146958825i32);
+pub const APPX_E_INVALID_PACKAGING_LAYOUT: crate::core::HRESULT =
+    crate::core::HRESULT(-2146958831i32);
+pub const APPX_E_INVALID_PAYLOAD_PACKAGE_EXTENSION: crate::core::HRESULT =
+    crate::core::HRESULT(-2146958827i32);
+pub const APPX_E_INVALID_PUBLISHER_BRIDGING: crate::core::HRESULT =
+    crate::core::HRESULT(-2146958824i32);
+pub const APPX_E_INVALID_SIP_CLIENT_DATA: crate::core::HRESULT =
+    crate::core::HRESULT(-2146958839i32);
+pub const APPX_E_MISSING_REQUIRED_FILE: crate::core::HRESULT = crate::core::HRESULT(-2146958845i32);
+pub const APPX_E_PACKAGING_INTERNAL: crate::core::HRESULT = crate::core::HRESULT(-2146958848i32);
+pub const APPX_E_RELATIONSHIPS_NOT_ALLOWED: crate::core::HRESULT =
+    crate::core::HRESULT(-2146958846i32);
+pub const APPX_E_REQUESTED_RANGE_TOO_LARGE: crate::core::HRESULT =
+    crate::core::HRESULT(-2146958840i32);
+pub const APPX_E_RESOURCESPRI_NOT_ALLOWED: crate::core::HRESULT =
+    crate::core::HRESULT(-2146958829i32);
 pub struct APP_LOCAL_DEVICE_ID {
     pub value: [u8; 32],
 }
@@ -203,144 +198,122 @@ impl ::core::fmt::Debug for BSTR {
         f.debug_tuple("BSTR").field(&self.0).finish()
     }
 }
-pub const BT_E_SPURIOUS_ACTIVATION: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146958592i32);
+pub const BT_E_SPURIOUS_ACTIVATION: crate::core::HRESULT = crate::core::HRESULT(-2146958592i32);
 pub const CACHE_E_FIRST: i32 = -2147221136i32;
 pub const CACHE_E_LAST: i32 = -2147221121i32;
-pub const CACHE_E_NOCACHE_UPDATED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221136i32);
+pub const CACHE_E_NOCACHE_UPDATED: crate::core::HRESULT = crate::core::HRESULT(-2147221136i32);
 pub const CACHE_S_FIRST: i32 = 262512i32;
-pub const CACHE_S_FORMATETC_NOTSUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(262512i32);
+pub const CACHE_S_FORMATETC_NOTSUPPORTED: crate::core::HRESULT = crate::core::HRESULT(262512i32);
 pub const CACHE_S_LAST: i32 = 262527i32;
-pub const CACHE_S_SAMECACHE: ::win32::core::HRESULT = ::win32::core::HRESULT(262513i32);
-pub const CACHE_S_SOMECACHES_NOTUPDATED: ::win32::core::HRESULT = ::win32::core::HRESULT(262514i32);
-pub const CAT_E_CATIDNOEXIST: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221152i32);
+pub const CACHE_S_SAMECACHE: crate::core::HRESULT = crate::core::HRESULT(262513i32);
+pub const CACHE_S_SOMECACHES_NOTUPDATED: crate::core::HRESULT = crate::core::HRESULT(262514i32);
+pub const CAT_E_CATIDNOEXIST: crate::core::HRESULT = crate::core::HRESULT(-2147221152i32);
 pub const CAT_E_FIRST: i32 = -2147221152i32;
 pub const CAT_E_LAST: i32 = -2147221151i32;
-pub const CAT_E_NODESCRIPTION: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221151i32);
-pub const CERTSRV_E_ADMIN_DENIED_REQUEST: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146877420i32);
-pub const CERTSRV_E_ALIGNMENT_FAULT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146877424i32);
-pub const CERTSRV_E_ARCHIVED_KEY_REQUIRED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146875388i32);
-pub const CERTSRV_E_ARCHIVED_KEY_UNEXPECTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146875376i32);
-pub const CERTSRV_E_BAD_RENEWAL_CERT_ATTRIBUTE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146877426i32);
-pub const CERTSRV_E_BAD_RENEWAL_SUBJECT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146875386i32);
-pub const CERTSRV_E_BAD_REQUESTSTATUS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146877437i32);
-pub const CERTSRV_E_BAD_REQUESTSUBJECT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146877439i32);
-pub const CERTSRV_E_BAD_REQUEST_KEY_ARCHIVAL: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146877428i32);
-pub const CERTSRV_E_BAD_TEMPLATE_VERSION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146875385i32);
-pub const CERTSRV_E_CERT_TYPE_OVERLAP: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146875372i32);
-pub const CERTSRV_E_CORRUPT_KEY_ATTESTATION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146875365i32);
-pub const CERTSRV_E_DOWNLEVEL_DC_SSL_OR_UPGRADE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146877421i32);
-pub const CERTSRV_E_ENCODING_LENGTH: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146877433i32);
-pub const CERTSRV_E_ENCRYPTION_CERT_REQUIRED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146877416i32);
-pub const CERTSRV_E_ENROLL_DENIED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146877423i32);
-pub const CERTSRV_E_EXPIRED_CHALLENGE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146875364i32);
-pub const CERTSRV_E_INVALID_ATTESTATION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146875367i32);
-pub const CERTSRV_E_INVALID_CA_CERTIFICATE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146877435i32);
-pub const CERTSRV_E_INVALID_EK: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146875369i32);
-pub const CERTSRV_E_INVALID_IDBINDING: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146875368i32);
-pub const CERTSRV_E_INVALID_REQUESTID: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146875362i32);
-pub const CERTSRV_E_INVALID_RESPONSE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146875363i32);
-pub const CERTSRV_E_ISSUANCE_POLICY_REQUIRED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146875380i32);
-pub const CERTSRV_E_KEY_ARCHIVAL_NOT_CONFIGURED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146877430i32);
-pub const CERTSRV_E_KEY_ATTESTATION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146875366i32);
-pub const CERTSRV_E_KEY_ATTESTATION_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146877417i32);
-pub const CERTSRV_E_KEY_LENGTH: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146875375i32);
-pub const CERTSRV_E_NO_CAADMIN_DEFINED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146877427i32);
-pub const CERTSRV_E_NO_CERT_TYPE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146875391i32);
-pub const CERTSRV_E_NO_DB_SESSIONS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146877425i32);
-pub const CERTSRV_E_NO_POLICY_SERVER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146877419i32);
-pub const CERTSRV_E_NO_REQUEST: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146877438i32);
-pub const CERTSRV_E_NO_VALID_KRA: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146877429i32);
-pub const CERTSRV_E_PENDING_CLIENT_RESPONSE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146875360i32);
-pub const CERTSRV_E_PROPERTY_EMPTY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146877436i32);
-pub const CERTSRV_E_RENEWAL_BAD_PUBLIC_KEY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146875370i32);
-pub const CERTSRV_E_REQUEST_PRECERTIFICATE_MISMATCH: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146875361i32);
-pub const CERTSRV_E_RESTRICTEDOFFICER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146877431i32);
-pub const CERTSRV_E_ROLECONFLICT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146877432i32);
-pub const CERTSRV_E_SERVER_SUSPENDED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146877434i32);
-pub const CERTSRV_E_SIGNATURE_COUNT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146875382i32);
-pub const CERTSRV_E_SIGNATURE_POLICY_REQUIRED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146875383i32);
-pub const CERTSRV_E_SIGNATURE_REJECTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146875381i32);
-pub const CERTSRV_E_SMIME_REQUIRED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146875387i32);
-pub const CERTSRV_E_SUBJECT_ALT_NAME_REQUIRED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146875389i32);
-pub const CERTSRV_E_SUBJECT_DIRECTORY_GUID_REQUIRED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146875378i32);
-pub const CERTSRV_E_SUBJECT_DNS_REQUIRED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146875377i32);
-pub const CERTSRV_E_SUBJECT_EMAIL_REQUIRED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146875374i32);
-pub const CERTSRV_E_SUBJECT_UPN_REQUIRED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146875379i32);
-pub const CERTSRV_E_TEMPLATE_CONFLICT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146875390i32);
-pub const CERTSRV_E_TEMPLATE_DENIED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146877422i32);
-pub const CERTSRV_E_TEMPLATE_POLICY_REQUIRED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146875384i32);
-pub const CERTSRV_E_TOO_MANY_SIGNATURES: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146875371i32);
-pub const CERTSRV_E_UNKNOWN_CERT_TYPE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146875373i32);
-pub const CERTSRV_E_UNSUPPORTED_CERT_TYPE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146875392i32);
-pub const CERTSRV_E_WEAK_SIGNATURE_OR_KEY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146877418i32);
-pub const CERT_E_CHAINING: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146762486i32);
-pub const CERT_E_CN_NO_MATCH: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146762481i32);
-pub const CERT_E_CRITICAL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146762491i32);
-pub const CERT_E_EXPIRED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146762495i32);
-pub const CERT_E_INVALID_NAME: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146762476i32);
-pub const CERT_E_INVALID_POLICY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146762477i32);
-pub const CERT_E_ISSUERCHAINING: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146762489i32);
-pub const CERT_E_MALFORMED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146762488i32);
-pub const CERT_E_PATHLENCONST: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146762492i32);
-pub const CERT_E_PURPOSE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146762490i32);
-pub const CERT_E_REVOCATION_FAILURE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146762482i32);
-pub const CERT_E_REVOKED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146762484i32);
-pub const CERT_E_ROLE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146762493i32);
-pub const CERT_E_UNTRUSTEDCA: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146762478i32);
-pub const CERT_E_UNTRUSTEDROOT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146762487i32);
-pub const CERT_E_UNTRUSTEDTESTROOT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146762483i32);
-pub const CERT_E_VALIDITYPERIODNESTING: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146762494i32);
-pub const CERT_E_WRONG_USAGE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146762480i32);
+pub const CAT_E_NODESCRIPTION: crate::core::HRESULT = crate::core::HRESULT(-2147221151i32);
+pub const CERTSRV_E_ADMIN_DENIED_REQUEST: crate::core::HRESULT =
+    crate::core::HRESULT(-2146877420i32);
+pub const CERTSRV_E_ALIGNMENT_FAULT: crate::core::HRESULT = crate::core::HRESULT(-2146877424i32);
+pub const CERTSRV_E_ARCHIVED_KEY_REQUIRED: crate::core::HRESULT =
+    crate::core::HRESULT(-2146875388i32);
+pub const CERTSRV_E_ARCHIVED_KEY_UNEXPECTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2146875376i32);
+pub const CERTSRV_E_BAD_RENEWAL_CERT_ATTRIBUTE: crate::core::HRESULT =
+    crate::core::HRESULT(-2146877426i32);
+pub const CERTSRV_E_BAD_RENEWAL_SUBJECT: crate::core::HRESULT =
+    crate::core::HRESULT(-2146875386i32);
+pub const CERTSRV_E_BAD_REQUESTSTATUS: crate::core::HRESULT = crate::core::HRESULT(-2146877437i32);
+pub const CERTSRV_E_BAD_REQUESTSUBJECT: crate::core::HRESULT = crate::core::HRESULT(-2146877439i32);
+pub const CERTSRV_E_BAD_REQUEST_KEY_ARCHIVAL: crate::core::HRESULT =
+    crate::core::HRESULT(-2146877428i32);
+pub const CERTSRV_E_BAD_TEMPLATE_VERSION: crate::core::HRESULT =
+    crate::core::HRESULT(-2146875385i32);
+pub const CERTSRV_E_CERT_TYPE_OVERLAP: crate::core::HRESULT = crate::core::HRESULT(-2146875372i32);
+pub const CERTSRV_E_CORRUPT_KEY_ATTESTATION: crate::core::HRESULT =
+    crate::core::HRESULT(-2146875365i32);
+pub const CERTSRV_E_DOWNLEVEL_DC_SSL_OR_UPGRADE: crate::core::HRESULT =
+    crate::core::HRESULT(-2146877421i32);
+pub const CERTSRV_E_ENCODING_LENGTH: crate::core::HRESULT = crate::core::HRESULT(-2146877433i32);
+pub const CERTSRV_E_ENCRYPTION_CERT_REQUIRED: crate::core::HRESULT =
+    crate::core::HRESULT(-2146877416i32);
+pub const CERTSRV_E_ENROLL_DENIED: crate::core::HRESULT = crate::core::HRESULT(-2146877423i32);
+pub const CERTSRV_E_EXPIRED_CHALLENGE: crate::core::HRESULT = crate::core::HRESULT(-2146875364i32);
+pub const CERTSRV_E_INVALID_ATTESTATION: crate::core::HRESULT =
+    crate::core::HRESULT(-2146875367i32);
+pub const CERTSRV_E_INVALID_CA_CERTIFICATE: crate::core::HRESULT =
+    crate::core::HRESULT(-2146877435i32);
+pub const CERTSRV_E_INVALID_EK: crate::core::HRESULT = crate::core::HRESULT(-2146875369i32);
+pub const CERTSRV_E_INVALID_IDBINDING: crate::core::HRESULT = crate::core::HRESULT(-2146875368i32);
+pub const CERTSRV_E_INVALID_REQUESTID: crate::core::HRESULT = crate::core::HRESULT(-2146875362i32);
+pub const CERTSRV_E_INVALID_RESPONSE: crate::core::HRESULT = crate::core::HRESULT(-2146875363i32);
+pub const CERTSRV_E_ISSUANCE_POLICY_REQUIRED: crate::core::HRESULT =
+    crate::core::HRESULT(-2146875380i32);
+pub const CERTSRV_E_KEY_ARCHIVAL_NOT_CONFIGURED: crate::core::HRESULT =
+    crate::core::HRESULT(-2146877430i32);
+pub const CERTSRV_E_KEY_ATTESTATION: crate::core::HRESULT = crate::core::HRESULT(-2146875366i32);
+pub const CERTSRV_E_KEY_ATTESTATION_NOT_SUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2146877417i32);
+pub const CERTSRV_E_KEY_LENGTH: crate::core::HRESULT = crate::core::HRESULT(-2146875375i32);
+pub const CERTSRV_E_NO_CAADMIN_DEFINED: crate::core::HRESULT = crate::core::HRESULT(-2146877427i32);
+pub const CERTSRV_E_NO_CERT_TYPE: crate::core::HRESULT = crate::core::HRESULT(-2146875391i32);
+pub const CERTSRV_E_NO_DB_SESSIONS: crate::core::HRESULT = crate::core::HRESULT(-2146877425i32);
+pub const CERTSRV_E_NO_POLICY_SERVER: crate::core::HRESULT = crate::core::HRESULT(-2146877419i32);
+pub const CERTSRV_E_NO_REQUEST: crate::core::HRESULT = crate::core::HRESULT(-2146877438i32);
+pub const CERTSRV_E_NO_VALID_KRA: crate::core::HRESULT = crate::core::HRESULT(-2146877429i32);
+pub const CERTSRV_E_PENDING_CLIENT_RESPONSE: crate::core::HRESULT =
+    crate::core::HRESULT(-2146875360i32);
+pub const CERTSRV_E_PROPERTY_EMPTY: crate::core::HRESULT = crate::core::HRESULT(-2146877436i32);
+pub const CERTSRV_E_RENEWAL_BAD_PUBLIC_KEY: crate::core::HRESULT =
+    crate::core::HRESULT(-2146875370i32);
+pub const CERTSRV_E_REQUEST_PRECERTIFICATE_MISMATCH: crate::core::HRESULT =
+    crate::core::HRESULT(-2146875361i32);
+pub const CERTSRV_E_RESTRICTEDOFFICER: crate::core::HRESULT = crate::core::HRESULT(-2146877431i32);
+pub const CERTSRV_E_ROLECONFLICT: crate::core::HRESULT = crate::core::HRESULT(-2146877432i32);
+pub const CERTSRV_E_SERVER_SUSPENDED: crate::core::HRESULT = crate::core::HRESULT(-2146877434i32);
+pub const CERTSRV_E_SIGNATURE_COUNT: crate::core::HRESULT = crate::core::HRESULT(-2146875382i32);
+pub const CERTSRV_E_SIGNATURE_POLICY_REQUIRED: crate::core::HRESULT =
+    crate::core::HRESULT(-2146875383i32);
+pub const CERTSRV_E_SIGNATURE_REJECTED: crate::core::HRESULT = crate::core::HRESULT(-2146875381i32);
+pub const CERTSRV_E_SMIME_REQUIRED: crate::core::HRESULT = crate::core::HRESULT(-2146875387i32);
+pub const CERTSRV_E_SUBJECT_ALT_NAME_REQUIRED: crate::core::HRESULT =
+    crate::core::HRESULT(-2146875389i32);
+pub const CERTSRV_E_SUBJECT_DIRECTORY_GUID_REQUIRED: crate::core::HRESULT =
+    crate::core::HRESULT(-2146875378i32);
+pub const CERTSRV_E_SUBJECT_DNS_REQUIRED: crate::core::HRESULT =
+    crate::core::HRESULT(-2146875377i32);
+pub const CERTSRV_E_SUBJECT_EMAIL_REQUIRED: crate::core::HRESULT =
+    crate::core::HRESULT(-2146875374i32);
+pub const CERTSRV_E_SUBJECT_UPN_REQUIRED: crate::core::HRESULT =
+    crate::core::HRESULT(-2146875379i32);
+pub const CERTSRV_E_TEMPLATE_CONFLICT: crate::core::HRESULT = crate::core::HRESULT(-2146875390i32);
+pub const CERTSRV_E_TEMPLATE_DENIED: crate::core::HRESULT = crate::core::HRESULT(-2146877422i32);
+pub const CERTSRV_E_TEMPLATE_POLICY_REQUIRED: crate::core::HRESULT =
+    crate::core::HRESULT(-2146875384i32);
+pub const CERTSRV_E_TOO_MANY_SIGNATURES: crate::core::HRESULT =
+    crate::core::HRESULT(-2146875371i32);
+pub const CERTSRV_E_UNKNOWN_CERT_TYPE: crate::core::HRESULT = crate::core::HRESULT(-2146875373i32);
+pub const CERTSRV_E_UNSUPPORTED_CERT_TYPE: crate::core::HRESULT =
+    crate::core::HRESULT(-2146875392i32);
+pub const CERTSRV_E_WEAK_SIGNATURE_OR_KEY: crate::core::HRESULT =
+    crate::core::HRESULT(-2146877418i32);
+pub const CERT_E_CHAINING: crate::core::HRESULT = crate::core::HRESULT(-2146762486i32);
+pub const CERT_E_CN_NO_MATCH: crate::core::HRESULT = crate::core::HRESULT(-2146762481i32);
+pub const CERT_E_CRITICAL: crate::core::HRESULT = crate::core::HRESULT(-2146762491i32);
+pub const CERT_E_EXPIRED: crate::core::HRESULT = crate::core::HRESULT(-2146762495i32);
+pub const CERT_E_INVALID_NAME: crate::core::HRESULT = crate::core::HRESULT(-2146762476i32);
+pub const CERT_E_INVALID_POLICY: crate::core::HRESULT = crate::core::HRESULT(-2146762477i32);
+pub const CERT_E_ISSUERCHAINING: crate::core::HRESULT = crate::core::HRESULT(-2146762489i32);
+pub const CERT_E_MALFORMED: crate::core::HRESULT = crate::core::HRESULT(-2146762488i32);
+pub const CERT_E_PATHLENCONST: crate::core::HRESULT = crate::core::HRESULT(-2146762492i32);
+pub const CERT_E_PURPOSE: crate::core::HRESULT = crate::core::HRESULT(-2146762490i32);
+pub const CERT_E_REVOCATION_FAILURE: crate::core::HRESULT = crate::core::HRESULT(-2146762482i32);
+pub const CERT_E_REVOKED: crate::core::HRESULT = crate::core::HRESULT(-2146762484i32);
+pub const CERT_E_ROLE: crate::core::HRESULT = crate::core::HRESULT(-2146762493i32);
+pub const CERT_E_UNTRUSTEDCA: crate::core::HRESULT = crate::core::HRESULT(-2146762478i32);
+pub const CERT_E_UNTRUSTEDROOT: crate::core::HRESULT = crate::core::HRESULT(-2146762487i32);
+pub const CERT_E_UNTRUSTEDTESTROOT: crate::core::HRESULT = crate::core::HRESULT(-2146762483i32);
+pub const CERT_E_VALIDITYPERIODNESTING: crate::core::HRESULT = crate::core::HRESULT(-2146762494i32);
+pub const CERT_E_WRONG_USAGE: crate::core::HRESULT = crate::core::HRESULT(-2146762480i32);
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct CHAR(pub u8);
 impl CHAR {
@@ -364,681 +337,593 @@ impl ::core::fmt::Debug for CHAR {
         f.debug_tuple("CHAR").field(&self.0).finish()
     }
 }
-pub const CI_CORRUPT_CATALOG: ::win32::core::HRESULT = ::win32::core::HRESULT(-1073473535i32);
-pub const CI_CORRUPT_DATABASE: ::win32::core::HRESULT = ::win32::core::HRESULT(-1073473536i32);
-pub const CI_CORRUPT_FILTER_BUFFER: ::win32::core::HRESULT = ::win32::core::HRESULT(-1073473529i32);
-pub const CI_E_ALREADY_INITIALIZED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215350i32);
-pub const CI_E_BUFFERTOOSMALL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215348i32);
-pub const CI_E_CARDINALITY_MISMATCH: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147215321i32);
-pub const CI_E_CLIENT_FILTER_ABORT: ::win32::core::HRESULT = ::win32::core::HRESULT(-1073473500i32);
-pub const CI_E_CONFIG_DISK_FULL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215320i32);
-pub const CI_E_DISK_FULL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215343i32);
-pub const CI_E_DISTRIBUTED_GROUPBY_UNSUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147215319i32);
-pub const CI_E_DUPLICATE_NOTIFICATION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147215337i32);
-pub const CI_E_ENUMERATION_STARTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-1073473502i32);
-pub const CI_E_FILTERING_DISABLED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215344i32);
-pub const CI_E_INVALID_FLAGS_COMBINATION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147215335i32);
-pub const CI_E_INVALID_STATE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215345i32);
-pub const CI_E_LOGON_FAILURE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215332i32);
-pub const CI_E_NOT_FOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215339i32);
-pub const CI_E_NOT_INITIALIZED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215349i32);
-pub const CI_E_NOT_RUNNING: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215328i32);
-pub const CI_E_NO_CATALOG: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215331i32);
-pub const CI_E_OUTOFSEQ_INCREMENT_DATA: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147215334i32);
-pub const CI_E_PROPERTY_NOT_CACHED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215347i32);
-pub const CI_E_PROPERTY_TOOLARGE: ::win32::core::HRESULT = ::win32::core::HRESULT(-1073473501i32);
-pub const CI_E_SHARING_VIOLATION: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215333i32);
-pub const CI_E_SHUTDOWN: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215342i32);
-pub const CI_E_STRANGE_PAGEORSECTOR_SIZE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147215330i32);
-pub const CI_E_TIMEOUT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215329i32);
-pub const CI_E_UPDATES_DISABLED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215336i32);
-pub const CI_E_USE_DEFAULT_PID: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215338i32);
-pub const CI_E_WORKID_NOTVALID: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215341i32);
-pub const CI_INCORRECT_VERSION: ::win32::core::HRESULT = ::win32::core::HRESULT(-1073473503i32);
-pub const CI_INVALID_INDEX: ::win32::core::HRESULT = ::win32::core::HRESULT(-1073473528i32);
-pub const CI_INVALID_PARTITION: ::win32::core::HRESULT = ::win32::core::HRESULT(-1073473534i32);
-pub const CI_INVALID_PRIORITY: ::win32::core::HRESULT = ::win32::core::HRESULT(-1073473533i32);
-pub const CI_NO_CATALOG: ::win32::core::HRESULT = ::win32::core::HRESULT(-1073473530i32);
-pub const CI_NO_STARTING_KEY: ::win32::core::HRESULT = ::win32::core::HRESULT(-1073473532i32);
-pub const CI_OUT_OF_INDEX_IDS: ::win32::core::HRESULT = ::win32::core::HRESULT(-1073473531i32);
-pub const CI_PROPSTORE_INCONSISTENCY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1073473527i32);
-pub const CI_S_CAT_STOPPED: ::win32::core::HRESULT = ::win32::core::HRESULT(268326i32);
-pub const CI_S_END_OF_ENUMERATION: ::win32::core::HRESULT = ::win32::core::HRESULT(268308i32);
-pub const CI_S_NO_DOCSTORE: ::win32::core::HRESULT = ::win32::core::HRESULT(268325i32);
-pub const CI_S_WORKID_DELETED: ::win32::core::HRESULT = ::win32::core::HRESULT(268302i32);
+pub const CI_CORRUPT_CATALOG: crate::core::HRESULT = crate::core::HRESULT(-1073473535i32);
+pub const CI_CORRUPT_DATABASE: crate::core::HRESULT = crate::core::HRESULT(-1073473536i32);
+pub const CI_CORRUPT_FILTER_BUFFER: crate::core::HRESULT = crate::core::HRESULT(-1073473529i32);
+pub const CI_E_ALREADY_INITIALIZED: crate::core::HRESULT = crate::core::HRESULT(-2147215350i32);
+pub const CI_E_BUFFERTOOSMALL: crate::core::HRESULT = crate::core::HRESULT(-2147215348i32);
+pub const CI_E_CARDINALITY_MISMATCH: crate::core::HRESULT = crate::core::HRESULT(-2147215321i32);
+pub const CI_E_CLIENT_FILTER_ABORT: crate::core::HRESULT = crate::core::HRESULT(-1073473500i32);
+pub const CI_E_CONFIG_DISK_FULL: crate::core::HRESULT = crate::core::HRESULT(-2147215320i32);
+pub const CI_E_DISK_FULL: crate::core::HRESULT = crate::core::HRESULT(-2147215343i32);
+pub const CI_E_DISTRIBUTED_GROUPBY_UNSUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2147215319i32);
+pub const CI_E_DUPLICATE_NOTIFICATION: crate::core::HRESULT = crate::core::HRESULT(-2147215337i32);
+pub const CI_E_ENUMERATION_STARTED: crate::core::HRESULT = crate::core::HRESULT(-1073473502i32);
+pub const CI_E_FILTERING_DISABLED: crate::core::HRESULT = crate::core::HRESULT(-2147215344i32);
+pub const CI_E_INVALID_FLAGS_COMBINATION: crate::core::HRESULT =
+    crate::core::HRESULT(-2147215335i32);
+pub const CI_E_INVALID_STATE: crate::core::HRESULT = crate::core::HRESULT(-2147215345i32);
+pub const CI_E_LOGON_FAILURE: crate::core::HRESULT = crate::core::HRESULT(-2147215332i32);
+pub const CI_E_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2147215339i32);
+pub const CI_E_NOT_INITIALIZED: crate::core::HRESULT = crate::core::HRESULT(-2147215349i32);
+pub const CI_E_NOT_RUNNING: crate::core::HRESULT = crate::core::HRESULT(-2147215328i32);
+pub const CI_E_NO_CATALOG: crate::core::HRESULT = crate::core::HRESULT(-2147215331i32);
+pub const CI_E_OUTOFSEQ_INCREMENT_DATA: crate::core::HRESULT = crate::core::HRESULT(-2147215334i32);
+pub const CI_E_PROPERTY_NOT_CACHED: crate::core::HRESULT = crate::core::HRESULT(-2147215347i32);
+pub const CI_E_PROPERTY_TOOLARGE: crate::core::HRESULT = crate::core::HRESULT(-1073473501i32);
+pub const CI_E_SHARING_VIOLATION: crate::core::HRESULT = crate::core::HRESULT(-2147215333i32);
+pub const CI_E_SHUTDOWN: crate::core::HRESULT = crate::core::HRESULT(-2147215342i32);
+pub const CI_E_STRANGE_PAGEORSECTOR_SIZE: crate::core::HRESULT =
+    crate::core::HRESULT(-2147215330i32);
+pub const CI_E_TIMEOUT: crate::core::HRESULT = crate::core::HRESULT(-2147215329i32);
+pub const CI_E_UPDATES_DISABLED: crate::core::HRESULT = crate::core::HRESULT(-2147215336i32);
+pub const CI_E_USE_DEFAULT_PID: crate::core::HRESULT = crate::core::HRESULT(-2147215338i32);
+pub const CI_E_WORKID_NOTVALID: crate::core::HRESULT = crate::core::HRESULT(-2147215341i32);
+pub const CI_INCORRECT_VERSION: crate::core::HRESULT = crate::core::HRESULT(-1073473503i32);
+pub const CI_INVALID_INDEX: crate::core::HRESULT = crate::core::HRESULT(-1073473528i32);
+pub const CI_INVALID_PARTITION: crate::core::HRESULT = crate::core::HRESULT(-1073473534i32);
+pub const CI_INVALID_PRIORITY: crate::core::HRESULT = crate::core::HRESULT(-1073473533i32);
+pub const CI_NO_CATALOG: crate::core::HRESULT = crate::core::HRESULT(-1073473530i32);
+pub const CI_NO_STARTING_KEY: crate::core::HRESULT = crate::core::HRESULT(-1073473532i32);
+pub const CI_OUT_OF_INDEX_IDS: crate::core::HRESULT = crate::core::HRESULT(-1073473531i32);
+pub const CI_PROPSTORE_INCONSISTENCY: crate::core::HRESULT = crate::core::HRESULT(-1073473527i32);
+pub const CI_S_CAT_STOPPED: crate::core::HRESULT = crate::core::HRESULT(268326i32);
+pub const CI_S_END_OF_ENUMERATION: crate::core::HRESULT = crate::core::HRESULT(268308i32);
+pub const CI_S_NO_DOCSTORE: crate::core::HRESULT = crate::core::HRESULT(268325i32);
+pub const CI_S_WORKID_DELETED: crate::core::HRESULT = crate::core::HRESULT(268302i32);
 pub const CLASSFACTORY_E_FIRST: i32 = -2147221232i32;
 pub const CLASSFACTORY_E_LAST: i32 = -2147221217i32;
 pub const CLASSFACTORY_S_FIRST: i32 = 262416i32;
 pub const CLASSFACTORY_S_LAST: i32 = 262431i32;
-pub const CLASS_E_CLASSNOTAVAILABLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147221231i32);
-pub const CLASS_E_NOAGGREGATION: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221232i32);
-pub const CLASS_E_NOTLICENSED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221230i32);
+pub const CLASS_E_CLASSNOTAVAILABLE: crate::core::HRESULT = crate::core::HRESULT(-2147221231i32);
+pub const CLASS_E_NOAGGREGATION: crate::core::HRESULT = crate::core::HRESULT(-2147221232i32);
+pub const CLASS_E_NOTLICENSED: crate::core::HRESULT = crate::core::HRESULT(-2147221230i32);
 pub const CLIENTSITE_E_FIRST: i32 = -2147221104i32;
 pub const CLIENTSITE_E_LAST: i32 = -2147221089i32;
 pub const CLIENTSITE_S_FIRST: i32 = 262544i32;
 pub const CLIENTSITE_S_LAST: i32 = 262559i32;
-pub const CLIPBRD_E_BAD_DATA: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221037i32);
-pub const CLIPBRD_E_CANT_CLOSE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221036i32);
-pub const CLIPBRD_E_CANT_EMPTY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221039i32);
-pub const CLIPBRD_E_CANT_OPEN: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221040i32);
-pub const CLIPBRD_E_CANT_SET: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221038i32);
+pub const CLIPBRD_E_BAD_DATA: crate::core::HRESULT = crate::core::HRESULT(-2147221037i32);
+pub const CLIPBRD_E_CANT_CLOSE: crate::core::HRESULT = crate::core::HRESULT(-2147221036i32);
+pub const CLIPBRD_E_CANT_EMPTY: crate::core::HRESULT = crate::core::HRESULT(-2147221039i32);
+pub const CLIPBRD_E_CANT_OPEN: crate::core::HRESULT = crate::core::HRESULT(-2147221040i32);
+pub const CLIPBRD_E_CANT_SET: crate::core::HRESULT = crate::core::HRESULT(-2147221038i32);
 pub const CLIPBRD_E_FIRST: i32 = -2147221040i32;
 pub const CLIPBRD_E_LAST: i32 = -2147221025i32;
 pub const CLIPBRD_S_FIRST: i32 = 262608i32;
 pub const CLIPBRD_S_LAST: i32 = 262623i32;
-pub const COMADMIN_E_ALREADYINSTALLED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368508i32);
-pub const COMADMIN_E_AMBIGUOUS_APPLICATION_NAME: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368420i32);
-pub const COMADMIN_E_AMBIGUOUS_PARTITION_NAME: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368419i32);
-pub const COMADMIN_E_APPDIRNOTFOUND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368481i32);
-pub const COMADMIN_E_APPLICATIONEXISTS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368501i32);
-pub const COMADMIN_E_APPLID_MATCHES_CLSID: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368442i32);
-pub const COMADMIN_E_APP_FILE_READFAIL: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368504i32);
-pub const COMADMIN_E_APP_FILE_VERSION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368503i32);
-pub const COMADMIN_E_APP_FILE_WRITEFAIL: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368505i32);
-pub const COMADMIN_E_APP_NOT_RUNNING: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146367478i32);
-pub const COMADMIN_E_AUTHENTICATIONLEVEL: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368493i32);
-pub const COMADMIN_E_BADPATH: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146368502i32);
-pub const COMADMIN_E_BADREGISTRYLIBID: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368482i32);
-pub const COMADMIN_E_BADREGISTRYPROGID: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368494i32);
-pub const COMADMIN_E_BASEPARTITION_REQUIRED_IN_SET: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146367457i32);
-pub const COMADMIN_E_BASE_PARTITION_ONLY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368432i32);
-pub const COMADMIN_E_CANNOT_ALIAS_EVENTCLASS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146367456i32);
-pub const COMADMIN_E_CANTCOPYFILE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146368499i32);
-pub const COMADMIN_E_CANTMAKEINPROCSERVICE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146367468i32);
-pub const COMADMIN_E_CANTRECYCLELIBRARYAPPS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146367473i32);
-pub const COMADMIN_E_CANTRECYCLESERVICEAPPS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146367471i32);
-pub const COMADMIN_E_CANT_SUBSCRIBE_TO_COMPONENT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368435i32);
-pub const COMADMIN_E_CAN_NOT_EXPORT_APP_PROXY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368438i32);
-pub const COMADMIN_E_CAN_NOT_EXPORT_SYS_APP: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368436i32);
-pub const COMADMIN_E_CAN_NOT_START_APP: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368437i32);
-pub const COMADMIN_E_CAT_BITNESSMISMATCH: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368382i32);
-pub const COMADMIN_E_CAT_DUPLICATE_PARTITION_NAME: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368425i32);
-pub const COMADMIN_E_CAT_IMPORTED_COMPONENTS_NOT_ALLOWED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368421i32);
-pub const COMADMIN_E_CAT_INVALID_PARTITION_NAME: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368424i32);
-pub const COMADMIN_E_CAT_PARTITION_IN_USE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368423i32);
-pub const COMADMIN_E_CAT_PAUSE_RESUME_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368379i32);
-pub const COMADMIN_E_CAT_SERVERFAULT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368378i32);
-pub const COMADMIN_E_CAT_UNACCEPTABLEBITNESS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368381i32);
-pub const COMADMIN_E_CAT_WRONGAPPBITNESS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368380i32);
-pub const COMADMIN_E_CLSIDORIIDMISMATCH: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368488i32);
-pub const COMADMIN_E_COMPFILE_BADTLB: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368472i32);
-pub const COMADMIN_E_COMPFILE_CLASSNOTAVAIL: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368473i32);
-pub const COMADMIN_E_COMPFILE_DOESNOTEXIST: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368476i32);
-pub const COMADMIN_E_COMPFILE_GETCLASSOBJ: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368474i32);
-pub const COMADMIN_E_COMPFILE_LOADDLLFAIL: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368475i32);
-pub const COMADMIN_E_COMPFILE_NOREGISTRAR: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368460i32);
-pub const COMADMIN_E_COMPFILE_NOTINSTALLABLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368471i32);
-pub const COMADMIN_E_COMPONENTEXISTS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368455i32);
-pub const COMADMIN_E_COMP_MOVE_BAD_DEST: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368466i32);
-pub const COMADMIN_E_COMP_MOVE_DEST: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146367459i32);
-pub const COMADMIN_E_COMP_MOVE_LOCKED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368467i32);
-pub const COMADMIN_E_COMP_MOVE_PRIVATE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146367458i32);
-pub const COMADMIN_E_COMP_MOVE_SOURCE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146367460i32);
-pub const COMADMIN_E_COREQCOMPINSTALLED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368459i32);
-pub const COMADMIN_E_DEFAULT_PARTITION_NOT_IN_SET: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146367466i32);
-pub const COMADMIN_E_DLLLOADFAILED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146368483i32);
-pub const COMADMIN_E_DLLREGISTERSERVER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368486i32);
-pub const COMADMIN_E_EVENTCLASS_CANT_BE_SUBSCRIBER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368434i32);
-pub const COMADMIN_E_FILE_PARTITION_DUPLICATE_FILES: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368422i32);
-pub const COMADMIN_E_INVALIDUSERIDS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368496i32);
-pub const COMADMIN_E_INVALID_PARTITION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146367477i32);
-pub const COMADMIN_E_KEYMISSING: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146368509i32);
-pub const COMADMIN_E_LEGACYCOMPS_NOT_ALLOWED_IN_1_0_FORMAT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146367462i32);
-pub const COMADMIN_E_LEGACYCOMPS_NOT_ALLOWED_IN_NONBASE_PARTITIONS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146367461i32);
-pub const COMADMIN_E_LIB_APP_PROXY_INCOMPATIBLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368433i32);
-pub const COMADMIN_E_MIG_SCHEMANOTFOUND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368383i32);
-pub const COMADMIN_E_MIG_VERSIONNOTSUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368384i32);
-pub const COMADMIN_E_NOREGISTRYCLSID: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368495i32);
-pub const COMADMIN_E_NOSERVERSHARE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146368485i32);
-pub const COMADMIN_E_NOTCHANGEABLE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146368470i32);
-pub const COMADMIN_E_NOTDELETEABLE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146368469i32);
-pub const COMADMIN_E_NOTINREGISTRY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146368450i32);
-pub const COMADMIN_E_NOUSER: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146368497i32);
-pub const COMADMIN_E_OBJECTERRORS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146368511i32);
-pub const COMADMIN_E_OBJECTEXISTS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146368456i32);
-pub const COMADMIN_E_OBJECTINVALID: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146368510i32);
-pub const COMADMIN_E_OBJECTNOTPOOLABLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368449i32);
-pub const COMADMIN_E_OBJECT_DOES_NOT_EXIST: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146367479i32);
-pub const COMADMIN_E_OBJECT_PARENT_MISSING: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146367480i32);
-pub const COMADMIN_E_PARTITIONS_DISABLED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146367452i32);
-pub const COMADMIN_E_PARTITION_ACCESSDENIED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146367464i32);
-pub const COMADMIN_E_PARTITION_MSI_ONLY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146367463i32);
-pub const COMADMIN_E_PAUSEDPROCESSMAYNOTBERECYCLED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146367469i32);
-pub const COMADMIN_E_PRIVATE_ACCESSDENIED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146367455i32);
-pub const COMADMIN_E_PROCESSALREADYRECYCLED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146367470i32);
-pub const COMADMIN_E_PROGIDINUSEBYCLSID: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146367467i32);
-pub const COMADMIN_E_PROPERTYSAVEFAILED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368457i32);
-pub const COMADMIN_E_PROPERTY_OVERFLOW: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368452i32);
-pub const COMADMIN_E_RECYCLEDPROCESSMAYNOTBEPAUSED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146367465i32);
-pub const COMADMIN_E_REGDB_ALREADYRUNNING: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368395i32);
-pub const COMADMIN_E_REGDB_NOTINITIALIZED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368398i32);
-pub const COMADMIN_E_REGDB_NOTOPEN: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146368397i32);
-pub const COMADMIN_E_REGDB_SYSTEMERR: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368396i32);
-pub const COMADMIN_E_REGFILE_CORRUPT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368453i32);
-pub const COMADMIN_E_REGISTERTLB: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146368464i32);
-pub const COMADMIN_E_REGISTRARFAILED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368477i32);
-pub const COMADMIN_E_REGISTRY_ACCESSDENIED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146367453i32);
-pub const COMADMIN_E_REMOTEINTERFACE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368487i32);
-pub const COMADMIN_E_REQUIRES_DIFFERENT_PLATFORM: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368439i32);
-pub const COMADMIN_E_ROLEEXISTS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146368500i32);
-pub const COMADMIN_E_ROLE_DOES_NOT_EXIST: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368441i32);
-pub const COMADMIN_E_SAFERINVALID: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146367454i32);
-pub const COMADMIN_E_SERVICENOTINSTALLED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368458i32);
-pub const COMADMIN_E_SESSION: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146368468i32);
-pub const COMADMIN_E_START_APP_DISABLED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368431i32);
-pub const COMADMIN_E_START_APP_NEEDS_COMPONENTS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368440i32);
-pub const COMADMIN_E_SVCAPP_NOT_POOLABLE_OR_RECYCLABLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146367475i32);
-pub const COMADMIN_E_SYSTEMAPP: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146368461i32);
-pub const COMADMIN_E_USERPASSWDNOTVALID: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368492i32);
-pub const COMADMIN_E_USER_IN_SET: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146367474i32);
-pub const COMQC_E_APPLICATION_NOT_QUEUED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146368000i32);
-pub const COMQC_E_BAD_MESSAGE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146367996i32);
-pub const COMQC_E_NO_IPERSISTSTREAM: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146367997i32);
-pub const COMQC_E_NO_QUEUEABLE_INTERFACES: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146367999i32);
-pub const COMQC_E_QUEUING_SERVICE_NOT_AVAILABLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146367998i32);
-pub const COMQC_E_UNAUTHENTICATED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146367995i32);
-pub const COMQC_E_UNTRUSTED_ENQUEUER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146367994i32);
-pub const CONTEXT_E_ABORTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147164158i32);
-pub const CONTEXT_E_ABORTING: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147164157i32);
+pub const COMADMIN_E_ALREADYINSTALLED: crate::core::HRESULT = crate::core::HRESULT(-2146368508i32);
+pub const COMADMIN_E_AMBIGUOUS_APPLICATION_NAME: crate::core::HRESULT =
+    crate::core::HRESULT(-2146368420i32);
+pub const COMADMIN_E_AMBIGUOUS_PARTITION_NAME: crate::core::HRESULT =
+    crate::core::HRESULT(-2146368419i32);
+pub const COMADMIN_E_APPDIRNOTFOUND: crate::core::HRESULT = crate::core::HRESULT(-2146368481i32);
+pub const COMADMIN_E_APPLICATIONEXISTS: crate::core::HRESULT = crate::core::HRESULT(-2146368501i32);
+pub const COMADMIN_E_APPLID_MATCHES_CLSID: crate::core::HRESULT =
+    crate::core::HRESULT(-2146368442i32);
+pub const COMADMIN_E_APP_FILE_READFAIL: crate::core::HRESULT = crate::core::HRESULT(-2146368504i32);
+pub const COMADMIN_E_APP_FILE_VERSION: crate::core::HRESULT = crate::core::HRESULT(-2146368503i32);
+pub const COMADMIN_E_APP_FILE_WRITEFAIL: crate::core::HRESULT =
+    crate::core::HRESULT(-2146368505i32);
+pub const COMADMIN_E_APP_NOT_RUNNING: crate::core::HRESULT = crate::core::HRESULT(-2146367478i32);
+pub const COMADMIN_E_AUTHENTICATIONLEVEL: crate::core::HRESULT =
+    crate::core::HRESULT(-2146368493i32);
+pub const COMADMIN_E_BADPATH: crate::core::HRESULT = crate::core::HRESULT(-2146368502i32);
+pub const COMADMIN_E_BADREGISTRYLIBID: crate::core::HRESULT = crate::core::HRESULT(-2146368482i32);
+pub const COMADMIN_E_BADREGISTRYPROGID: crate::core::HRESULT = crate::core::HRESULT(-2146368494i32);
+pub const COMADMIN_E_BASEPARTITION_REQUIRED_IN_SET: crate::core::HRESULT =
+    crate::core::HRESULT(-2146367457i32);
+pub const COMADMIN_E_BASE_PARTITION_ONLY: crate::core::HRESULT =
+    crate::core::HRESULT(-2146368432i32);
+pub const COMADMIN_E_CANNOT_ALIAS_EVENTCLASS: crate::core::HRESULT =
+    crate::core::HRESULT(-2146367456i32);
+pub const COMADMIN_E_CANTCOPYFILE: crate::core::HRESULT = crate::core::HRESULT(-2146368499i32);
+pub const COMADMIN_E_CANTMAKEINPROCSERVICE: crate::core::HRESULT =
+    crate::core::HRESULT(-2146367468i32);
+pub const COMADMIN_E_CANTRECYCLELIBRARYAPPS: crate::core::HRESULT =
+    crate::core::HRESULT(-2146367473i32);
+pub const COMADMIN_E_CANTRECYCLESERVICEAPPS: crate::core::HRESULT =
+    crate::core::HRESULT(-2146367471i32);
+pub const COMADMIN_E_CANT_SUBSCRIBE_TO_COMPONENT: crate::core::HRESULT =
+    crate::core::HRESULT(-2146368435i32);
+pub const COMADMIN_E_CAN_NOT_EXPORT_APP_PROXY: crate::core::HRESULT =
+    crate::core::HRESULT(-2146368438i32);
+pub const COMADMIN_E_CAN_NOT_EXPORT_SYS_APP: crate::core::HRESULT =
+    crate::core::HRESULT(-2146368436i32);
+pub const COMADMIN_E_CAN_NOT_START_APP: crate::core::HRESULT = crate::core::HRESULT(-2146368437i32);
+pub const COMADMIN_E_CAT_BITNESSMISMATCH: crate::core::HRESULT =
+    crate::core::HRESULT(-2146368382i32);
+pub const COMADMIN_E_CAT_DUPLICATE_PARTITION_NAME: crate::core::HRESULT =
+    crate::core::HRESULT(-2146368425i32);
+pub const COMADMIN_E_CAT_IMPORTED_COMPONENTS_NOT_ALLOWED: crate::core::HRESULT =
+    crate::core::HRESULT(-2146368421i32);
+pub const COMADMIN_E_CAT_INVALID_PARTITION_NAME: crate::core::HRESULT =
+    crate::core::HRESULT(-2146368424i32);
+pub const COMADMIN_E_CAT_PARTITION_IN_USE: crate::core::HRESULT =
+    crate::core::HRESULT(-2146368423i32);
+pub const COMADMIN_E_CAT_PAUSE_RESUME_NOT_SUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2146368379i32);
+pub const COMADMIN_E_CAT_SERVERFAULT: crate::core::HRESULT = crate::core::HRESULT(-2146368378i32);
+pub const COMADMIN_E_CAT_UNACCEPTABLEBITNESS: crate::core::HRESULT =
+    crate::core::HRESULT(-2146368381i32);
+pub const COMADMIN_E_CAT_WRONGAPPBITNESS: crate::core::HRESULT =
+    crate::core::HRESULT(-2146368380i32);
+pub const COMADMIN_E_CLSIDORIIDMISMATCH: crate::core::HRESULT =
+    crate::core::HRESULT(-2146368488i32);
+pub const COMADMIN_E_COMPFILE_BADTLB: crate::core::HRESULT = crate::core::HRESULT(-2146368472i32);
+pub const COMADMIN_E_COMPFILE_CLASSNOTAVAIL: crate::core::HRESULT =
+    crate::core::HRESULT(-2146368473i32);
+pub const COMADMIN_E_COMPFILE_DOESNOTEXIST: crate::core::HRESULT =
+    crate::core::HRESULT(-2146368476i32);
+pub const COMADMIN_E_COMPFILE_GETCLASSOBJ: crate::core::HRESULT =
+    crate::core::HRESULT(-2146368474i32);
+pub const COMADMIN_E_COMPFILE_LOADDLLFAIL: crate::core::HRESULT =
+    crate::core::HRESULT(-2146368475i32);
+pub const COMADMIN_E_COMPFILE_NOREGISTRAR: crate::core::HRESULT =
+    crate::core::HRESULT(-2146368460i32);
+pub const COMADMIN_E_COMPFILE_NOTINSTALLABLE: crate::core::HRESULT =
+    crate::core::HRESULT(-2146368471i32);
+pub const COMADMIN_E_COMPONENTEXISTS: crate::core::HRESULT = crate::core::HRESULT(-2146368455i32);
+pub const COMADMIN_E_COMP_MOVE_BAD_DEST: crate::core::HRESULT =
+    crate::core::HRESULT(-2146368466i32);
+pub const COMADMIN_E_COMP_MOVE_DEST: crate::core::HRESULT = crate::core::HRESULT(-2146367459i32);
+pub const COMADMIN_E_COMP_MOVE_LOCKED: crate::core::HRESULT = crate::core::HRESULT(-2146368467i32);
+pub const COMADMIN_E_COMP_MOVE_PRIVATE: crate::core::HRESULT = crate::core::HRESULT(-2146367458i32);
+pub const COMADMIN_E_COMP_MOVE_SOURCE: crate::core::HRESULT = crate::core::HRESULT(-2146367460i32);
+pub const COMADMIN_E_COREQCOMPINSTALLED: crate::core::HRESULT =
+    crate::core::HRESULT(-2146368459i32);
+pub const COMADMIN_E_DEFAULT_PARTITION_NOT_IN_SET: crate::core::HRESULT =
+    crate::core::HRESULT(-2146367466i32);
+pub const COMADMIN_E_DLLLOADFAILED: crate::core::HRESULT = crate::core::HRESULT(-2146368483i32);
+pub const COMADMIN_E_DLLREGISTERSERVER: crate::core::HRESULT = crate::core::HRESULT(-2146368486i32);
+pub const COMADMIN_E_EVENTCLASS_CANT_BE_SUBSCRIBER: crate::core::HRESULT =
+    crate::core::HRESULT(-2146368434i32);
+pub const COMADMIN_E_FILE_PARTITION_DUPLICATE_FILES: crate::core::HRESULT =
+    crate::core::HRESULT(-2146368422i32);
+pub const COMADMIN_E_INVALIDUSERIDS: crate::core::HRESULT = crate::core::HRESULT(-2146368496i32);
+pub const COMADMIN_E_INVALID_PARTITION: crate::core::HRESULT = crate::core::HRESULT(-2146367477i32);
+pub const COMADMIN_E_KEYMISSING: crate::core::HRESULT = crate::core::HRESULT(-2146368509i32);
+pub const COMADMIN_E_LEGACYCOMPS_NOT_ALLOWED_IN_1_0_FORMAT: crate::core::HRESULT =
+    crate::core::HRESULT(-2146367462i32);
+pub const COMADMIN_E_LEGACYCOMPS_NOT_ALLOWED_IN_NONBASE_PARTITIONS: crate::core::HRESULT =
+    crate::core::HRESULT(-2146367461i32);
+pub const COMADMIN_E_LIB_APP_PROXY_INCOMPATIBLE: crate::core::HRESULT =
+    crate::core::HRESULT(-2146368433i32);
+pub const COMADMIN_E_MIG_SCHEMANOTFOUND: crate::core::HRESULT =
+    crate::core::HRESULT(-2146368383i32);
+pub const COMADMIN_E_MIG_VERSIONNOTSUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2146368384i32);
+pub const COMADMIN_E_NOREGISTRYCLSID: crate::core::HRESULT = crate::core::HRESULT(-2146368495i32);
+pub const COMADMIN_E_NOSERVERSHARE: crate::core::HRESULT = crate::core::HRESULT(-2146368485i32);
+pub const COMADMIN_E_NOTCHANGEABLE: crate::core::HRESULT = crate::core::HRESULT(-2146368470i32);
+pub const COMADMIN_E_NOTDELETEABLE: crate::core::HRESULT = crate::core::HRESULT(-2146368469i32);
+pub const COMADMIN_E_NOTINREGISTRY: crate::core::HRESULT = crate::core::HRESULT(-2146368450i32);
+pub const COMADMIN_E_NOUSER: crate::core::HRESULT = crate::core::HRESULT(-2146368497i32);
+pub const COMADMIN_E_OBJECTERRORS: crate::core::HRESULT = crate::core::HRESULT(-2146368511i32);
+pub const COMADMIN_E_OBJECTEXISTS: crate::core::HRESULT = crate::core::HRESULT(-2146368456i32);
+pub const COMADMIN_E_OBJECTINVALID: crate::core::HRESULT = crate::core::HRESULT(-2146368510i32);
+pub const COMADMIN_E_OBJECTNOTPOOLABLE: crate::core::HRESULT = crate::core::HRESULT(-2146368449i32);
+pub const COMADMIN_E_OBJECT_DOES_NOT_EXIST: crate::core::HRESULT =
+    crate::core::HRESULT(-2146367479i32);
+pub const COMADMIN_E_OBJECT_PARENT_MISSING: crate::core::HRESULT =
+    crate::core::HRESULT(-2146367480i32);
+pub const COMADMIN_E_PARTITIONS_DISABLED: crate::core::HRESULT =
+    crate::core::HRESULT(-2146367452i32);
+pub const COMADMIN_E_PARTITION_ACCESSDENIED: crate::core::HRESULT =
+    crate::core::HRESULT(-2146367464i32);
+pub const COMADMIN_E_PARTITION_MSI_ONLY: crate::core::HRESULT =
+    crate::core::HRESULT(-2146367463i32);
+pub const COMADMIN_E_PAUSEDPROCESSMAYNOTBERECYCLED: crate::core::HRESULT =
+    crate::core::HRESULT(-2146367469i32);
+pub const COMADMIN_E_PRIVATE_ACCESSDENIED: crate::core::HRESULT =
+    crate::core::HRESULT(-2146367455i32);
+pub const COMADMIN_E_PROCESSALREADYRECYCLED: crate::core::HRESULT =
+    crate::core::HRESULT(-2146367470i32);
+pub const COMADMIN_E_PROGIDINUSEBYCLSID: crate::core::HRESULT =
+    crate::core::HRESULT(-2146367467i32);
+pub const COMADMIN_E_PROPERTYSAVEFAILED: crate::core::HRESULT =
+    crate::core::HRESULT(-2146368457i32);
+pub const COMADMIN_E_PROPERTY_OVERFLOW: crate::core::HRESULT = crate::core::HRESULT(-2146368452i32);
+pub const COMADMIN_E_RECYCLEDPROCESSMAYNOTBEPAUSED: crate::core::HRESULT =
+    crate::core::HRESULT(-2146367465i32);
+pub const COMADMIN_E_REGDB_ALREADYRUNNING: crate::core::HRESULT =
+    crate::core::HRESULT(-2146368395i32);
+pub const COMADMIN_E_REGDB_NOTINITIALIZED: crate::core::HRESULT =
+    crate::core::HRESULT(-2146368398i32);
+pub const COMADMIN_E_REGDB_NOTOPEN: crate::core::HRESULT = crate::core::HRESULT(-2146368397i32);
+pub const COMADMIN_E_REGDB_SYSTEMERR: crate::core::HRESULT = crate::core::HRESULT(-2146368396i32);
+pub const COMADMIN_E_REGFILE_CORRUPT: crate::core::HRESULT = crate::core::HRESULT(-2146368453i32);
+pub const COMADMIN_E_REGISTERTLB: crate::core::HRESULT = crate::core::HRESULT(-2146368464i32);
+pub const COMADMIN_E_REGISTRARFAILED: crate::core::HRESULT = crate::core::HRESULT(-2146368477i32);
+pub const COMADMIN_E_REGISTRY_ACCESSDENIED: crate::core::HRESULT =
+    crate::core::HRESULT(-2146367453i32);
+pub const COMADMIN_E_REMOTEINTERFACE: crate::core::HRESULT = crate::core::HRESULT(-2146368487i32);
+pub const COMADMIN_E_REQUIRES_DIFFERENT_PLATFORM: crate::core::HRESULT =
+    crate::core::HRESULT(-2146368439i32);
+pub const COMADMIN_E_ROLEEXISTS: crate::core::HRESULT = crate::core::HRESULT(-2146368500i32);
+pub const COMADMIN_E_ROLE_DOES_NOT_EXIST: crate::core::HRESULT =
+    crate::core::HRESULT(-2146368441i32);
+pub const COMADMIN_E_SAFERINVALID: crate::core::HRESULT = crate::core::HRESULT(-2146367454i32);
+pub const COMADMIN_E_SERVICENOTINSTALLED: crate::core::HRESULT =
+    crate::core::HRESULT(-2146368458i32);
+pub const COMADMIN_E_SESSION: crate::core::HRESULT = crate::core::HRESULT(-2146368468i32);
+pub const COMADMIN_E_START_APP_DISABLED: crate::core::HRESULT =
+    crate::core::HRESULT(-2146368431i32);
+pub const COMADMIN_E_START_APP_NEEDS_COMPONENTS: crate::core::HRESULT =
+    crate::core::HRESULT(-2146368440i32);
+pub const COMADMIN_E_SVCAPP_NOT_POOLABLE_OR_RECYCLABLE: crate::core::HRESULT =
+    crate::core::HRESULT(-2146367475i32);
+pub const COMADMIN_E_SYSTEMAPP: crate::core::HRESULT = crate::core::HRESULT(-2146368461i32);
+pub const COMADMIN_E_USERPASSWDNOTVALID: crate::core::HRESULT =
+    crate::core::HRESULT(-2146368492i32);
+pub const COMADMIN_E_USER_IN_SET: crate::core::HRESULT = crate::core::HRESULT(-2146367474i32);
+pub const COMQC_E_APPLICATION_NOT_QUEUED: crate::core::HRESULT =
+    crate::core::HRESULT(-2146368000i32);
+pub const COMQC_E_BAD_MESSAGE: crate::core::HRESULT = crate::core::HRESULT(-2146367996i32);
+pub const COMQC_E_NO_IPERSISTSTREAM: crate::core::HRESULT = crate::core::HRESULT(-2146367997i32);
+pub const COMQC_E_NO_QUEUEABLE_INTERFACES: crate::core::HRESULT =
+    crate::core::HRESULT(-2146367999i32);
+pub const COMQC_E_QUEUING_SERVICE_NOT_AVAILABLE: crate::core::HRESULT =
+    crate::core::HRESULT(-2146367998i32);
+pub const COMQC_E_UNAUTHENTICATED: crate::core::HRESULT = crate::core::HRESULT(-2146367995i32);
+pub const COMQC_E_UNTRUSTED_ENQUEUER: crate::core::HRESULT = crate::core::HRESULT(-2146367994i32);
+pub const CONTEXT_E_ABORTED: crate::core::HRESULT = crate::core::HRESULT(-2147164158i32);
+pub const CONTEXT_E_ABORTING: crate::core::HRESULT = crate::core::HRESULT(-2147164157i32);
 pub const CONTEXT_E_FIRST: i32 = -2147164160i32;
 pub const CONTEXT_E_LAST: i32 = -2147164113i32;
-pub const CONTEXT_E_NOCONTEXT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147164156i32);
-pub const CONTEXT_E_NOJIT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147164122i32);
-pub const CONTEXT_E_NOTRANSACTION: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147164121i32);
-pub const CONTEXT_E_OLDREF: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147164153i32);
-pub const CONTEXT_E_ROLENOTFOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147164148i32);
-pub const CONTEXT_E_SYNCH_TIMEOUT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147164154i32);
-pub const CONTEXT_E_TMNOTAVAILABLE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147164145i32);
-pub const CONTEXT_E_WOULD_DEADLOCK: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147164155i32);
+pub const CONTEXT_E_NOCONTEXT: crate::core::HRESULT = crate::core::HRESULT(-2147164156i32);
+pub const CONTEXT_E_NOJIT: crate::core::HRESULT = crate::core::HRESULT(-2147164122i32);
+pub const CONTEXT_E_NOTRANSACTION: crate::core::HRESULT = crate::core::HRESULT(-2147164121i32);
+pub const CONTEXT_E_OLDREF: crate::core::HRESULT = crate::core::HRESULT(-2147164153i32);
+pub const CONTEXT_E_ROLENOTFOUND: crate::core::HRESULT = crate::core::HRESULT(-2147164148i32);
+pub const CONTEXT_E_SYNCH_TIMEOUT: crate::core::HRESULT = crate::core::HRESULT(-2147164154i32);
+pub const CONTEXT_E_TMNOTAVAILABLE: crate::core::HRESULT = crate::core::HRESULT(-2147164145i32);
+pub const CONTEXT_E_WOULD_DEADLOCK: crate::core::HRESULT = crate::core::HRESULT(-2147164155i32);
 pub const CONTEXT_S_FIRST: i32 = 319488i32;
 pub const CONTEXT_S_LAST: i32 = 319535i32;
 pub const CONTROL_C_EXIT: NTSTATUS = NTSTATUS(-1073741510i32);
 pub const CONVERT10_E_FIRST: i32 = -2147221056i32;
 pub const CONVERT10_E_LAST: i32 = -2147221041i32;
-pub const CONVERT10_E_OLESTREAM_BITMAP_TO_DIB: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147221053i32);
-pub const CONVERT10_E_OLESTREAM_FMT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147221054i32);
-pub const CONVERT10_E_OLESTREAM_GET: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147221056i32);
-pub const CONVERT10_E_OLESTREAM_PUT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147221055i32);
-pub const CONVERT10_E_STG_DIB_TO_BITMAP: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147221050i32);
-pub const CONVERT10_E_STG_FMT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221052i32);
-pub const CONVERT10_E_STG_NO_STD_STREAM: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147221051i32);
+pub const CONVERT10_E_OLESTREAM_BITMAP_TO_DIB: crate::core::HRESULT =
+    crate::core::HRESULT(-2147221053i32);
+pub const CONVERT10_E_OLESTREAM_FMT: crate::core::HRESULT = crate::core::HRESULT(-2147221054i32);
+pub const CONVERT10_E_OLESTREAM_GET: crate::core::HRESULT = crate::core::HRESULT(-2147221056i32);
+pub const CONVERT10_E_OLESTREAM_PUT: crate::core::HRESULT = crate::core::HRESULT(-2147221055i32);
+pub const CONVERT10_E_STG_DIB_TO_BITMAP: crate::core::HRESULT =
+    crate::core::HRESULT(-2147221050i32);
+pub const CONVERT10_E_STG_FMT: crate::core::HRESULT = crate::core::HRESULT(-2147221052i32);
+pub const CONVERT10_E_STG_NO_STD_STREAM: crate::core::HRESULT =
+    crate::core::HRESULT(-2147221051i32);
 pub const CONVERT10_S_FIRST: i32 = 262592i32;
 pub const CONVERT10_S_LAST: i32 = 262607i32;
-pub const CONVERT10_S_NO_PRESENTATION: ::win32::core::HRESULT = ::win32::core::HRESULT(262592i32);
-pub const CO_E_ACCESSCHECKFAILED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147417814i32);
-pub const CO_E_ACESINWRONGORDER: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147417798i32);
-pub const CO_E_ACNOTINITIALIZED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147417793i32);
-pub const CO_E_ACTIVATIONFAILED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147164127i32);
-pub const CO_E_ACTIVATIONFAILED_CATALOGERROR: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147164125i32);
-pub const CO_E_ACTIVATIONFAILED_EVENTLOGGED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147164126i32);
-pub const CO_E_ACTIVATIONFAILED_TIMEOUT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147164124i32);
-pub const CO_E_ALREADYINITIALIZED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221007i32);
-pub const CO_E_APPDIDNTREG: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147220994i32);
-pub const CO_E_APPNOTFOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221003i32);
-pub const CO_E_APPSINGLEUSE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221002i32);
-pub const CO_E_ASYNC_WORK_REJECTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147467223i32);
-pub const CO_E_ATTEMPT_TO_CREATE_OUTSIDE_CLIENT_CONTEXT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147467228i32);
-pub const CO_E_BAD_PATH: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146959356i32);
-pub const CO_E_BAD_SERVER_NAME: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147467244i32);
-pub const CO_E_CALL_OUT_OF_TX_SCOPE_NOT_ALLOWED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147164112i32);
-pub const CO_E_CANCEL_DISABLED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147417792i32);
-pub const CO_E_CANTDETERMINECLASS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221006i32);
-pub const CO_E_CANT_REMOTE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147467245i32);
-pub const CO_E_CLASSSTRING: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221005i32);
-pub const CO_E_CLASS_CREATE_FAILED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146959359i32);
-pub const CO_E_CLASS_DISABLED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147467225i32);
-pub const CO_E_CLRNOTAVAILABLE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147467224i32);
-pub const CO_E_CLSREG_INCONSISTENT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147467233i32);
-pub const CO_E_CONVERSIONFAILED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147417810i32);
-pub const CO_E_CREATEPROCESS_FAILURE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147467240i32);
-pub const CO_E_DBERROR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147164117i32);
-pub const CO_E_DECODEFAILED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147417795i32);
-pub const CO_E_DLLNOTFOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221000i32);
-pub const CO_E_ELEVATION_DISABLED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146959337i32);
-pub const CO_E_ERRORINAPP: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221001i32);
-pub const CO_E_ERRORINDLL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147220999i32);
-pub const CO_E_EXCEEDSYSACLLIMIT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147417799i32);
-pub const CO_E_EXIT_TRANSACTION_SCOPE_NOT_CALLED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147164111i32);
-pub const CO_E_FAILEDTOCLOSEHANDLE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147417800i32);
-pub const CO_E_FAILEDTOCREATEFILE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147417801i32);
-pub const CO_E_FAILEDTOGENUUID: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147417802i32);
-pub const CO_E_FAILEDTOGETSECCTX: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147417820i32);
-pub const CO_E_FAILEDTOGETTOKENINFO: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147417818i32);
-pub const CO_E_FAILEDTOGETWINDIR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147417804i32);
-pub const CO_E_FAILEDTOIMPERSONATE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147417821i32);
-pub const CO_E_FAILEDTOOPENPROCESSTOKEN: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147417796i32);
-pub const CO_E_FAILEDTOOPENTHREADTOKEN: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147417819i32);
-pub const CO_E_FAILEDTOQUERYCLIENTBLANKET: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147417816i32);
-pub const CO_E_FAILEDTOSETDACL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147417815i32);
+pub const CONVERT10_S_NO_PRESENTATION: crate::core::HRESULT = crate::core::HRESULT(262592i32);
+pub const CO_E_ACCESSCHECKFAILED: crate::core::HRESULT = crate::core::HRESULT(-2147417814i32);
+pub const CO_E_ACESINWRONGORDER: crate::core::HRESULT = crate::core::HRESULT(-2147417798i32);
+pub const CO_E_ACNOTINITIALIZED: crate::core::HRESULT = crate::core::HRESULT(-2147417793i32);
+pub const CO_E_ACTIVATIONFAILED: crate::core::HRESULT = crate::core::HRESULT(-2147164127i32);
+pub const CO_E_ACTIVATIONFAILED_CATALOGERROR: crate::core::HRESULT =
+    crate::core::HRESULT(-2147164125i32);
+pub const CO_E_ACTIVATIONFAILED_EVENTLOGGED: crate::core::HRESULT =
+    crate::core::HRESULT(-2147164126i32);
+pub const CO_E_ACTIVATIONFAILED_TIMEOUT: crate::core::HRESULT =
+    crate::core::HRESULT(-2147164124i32);
+pub const CO_E_ALREADYINITIALIZED: crate::core::HRESULT = crate::core::HRESULT(-2147221007i32);
+pub const CO_E_APPDIDNTREG: crate::core::HRESULT = crate::core::HRESULT(-2147220994i32);
+pub const CO_E_APPNOTFOUND: crate::core::HRESULT = crate::core::HRESULT(-2147221003i32);
+pub const CO_E_APPSINGLEUSE: crate::core::HRESULT = crate::core::HRESULT(-2147221002i32);
+pub const CO_E_ASYNC_WORK_REJECTED: crate::core::HRESULT = crate::core::HRESULT(-2147467223i32);
+pub const CO_E_ATTEMPT_TO_CREATE_OUTSIDE_CLIENT_CONTEXT: crate::core::HRESULT =
+    crate::core::HRESULT(-2147467228i32);
+pub const CO_E_BAD_PATH: crate::core::HRESULT = crate::core::HRESULT(-2146959356i32);
+pub const CO_E_BAD_SERVER_NAME: crate::core::HRESULT = crate::core::HRESULT(-2147467244i32);
+pub const CO_E_CALL_OUT_OF_TX_SCOPE_NOT_ALLOWED: crate::core::HRESULT =
+    crate::core::HRESULT(-2147164112i32);
+pub const CO_E_CANCEL_DISABLED: crate::core::HRESULT = crate::core::HRESULT(-2147417792i32);
+pub const CO_E_CANTDETERMINECLASS: crate::core::HRESULT = crate::core::HRESULT(-2147221006i32);
+pub const CO_E_CANT_REMOTE: crate::core::HRESULT = crate::core::HRESULT(-2147467245i32);
+pub const CO_E_CLASSSTRING: crate::core::HRESULT = crate::core::HRESULT(-2147221005i32);
+pub const CO_E_CLASS_CREATE_FAILED: crate::core::HRESULT = crate::core::HRESULT(-2146959359i32);
+pub const CO_E_CLASS_DISABLED: crate::core::HRESULT = crate::core::HRESULT(-2147467225i32);
+pub const CO_E_CLRNOTAVAILABLE: crate::core::HRESULT = crate::core::HRESULT(-2147467224i32);
+pub const CO_E_CLSREG_INCONSISTENT: crate::core::HRESULT = crate::core::HRESULT(-2147467233i32);
+pub const CO_E_CONVERSIONFAILED: crate::core::HRESULT = crate::core::HRESULT(-2147417810i32);
+pub const CO_E_CREATEPROCESS_FAILURE: crate::core::HRESULT = crate::core::HRESULT(-2147467240i32);
+pub const CO_E_DBERROR: crate::core::HRESULT = crate::core::HRESULT(-2147164117i32);
+pub const CO_E_DECODEFAILED: crate::core::HRESULT = crate::core::HRESULT(-2147417795i32);
+pub const CO_E_DLLNOTFOUND: crate::core::HRESULT = crate::core::HRESULT(-2147221000i32);
+pub const CO_E_ELEVATION_DISABLED: crate::core::HRESULT = crate::core::HRESULT(-2146959337i32);
+pub const CO_E_ERRORINAPP: crate::core::HRESULT = crate::core::HRESULT(-2147221001i32);
+pub const CO_E_ERRORINDLL: crate::core::HRESULT = crate::core::HRESULT(-2147220999i32);
+pub const CO_E_EXCEEDSYSACLLIMIT: crate::core::HRESULT = crate::core::HRESULT(-2147417799i32);
+pub const CO_E_EXIT_TRANSACTION_SCOPE_NOT_CALLED: crate::core::HRESULT =
+    crate::core::HRESULT(-2147164111i32);
+pub const CO_E_FAILEDTOCLOSEHANDLE: crate::core::HRESULT = crate::core::HRESULT(-2147417800i32);
+pub const CO_E_FAILEDTOCREATEFILE: crate::core::HRESULT = crate::core::HRESULT(-2147417801i32);
+pub const CO_E_FAILEDTOGENUUID: crate::core::HRESULT = crate::core::HRESULT(-2147417802i32);
+pub const CO_E_FAILEDTOGETSECCTX: crate::core::HRESULT = crate::core::HRESULT(-2147417820i32);
+pub const CO_E_FAILEDTOGETTOKENINFO: crate::core::HRESULT = crate::core::HRESULT(-2147417818i32);
+pub const CO_E_FAILEDTOGETWINDIR: crate::core::HRESULT = crate::core::HRESULT(-2147417804i32);
+pub const CO_E_FAILEDTOIMPERSONATE: crate::core::HRESULT = crate::core::HRESULT(-2147417821i32);
+pub const CO_E_FAILEDTOOPENPROCESSTOKEN: crate::core::HRESULT =
+    crate::core::HRESULT(-2147417796i32);
+pub const CO_E_FAILEDTOOPENTHREADTOKEN: crate::core::HRESULT = crate::core::HRESULT(-2147417819i32);
+pub const CO_E_FAILEDTOQUERYCLIENTBLANKET: crate::core::HRESULT =
+    crate::core::HRESULT(-2147417816i32);
+pub const CO_E_FAILEDTOSETDACL: crate::core::HRESULT = crate::core::HRESULT(-2147417815i32);
 pub const CO_E_FIRST: i32 = -2147221008i32;
-pub const CO_E_IIDREG_INCONSISTENT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147467232i32);
-pub const CO_E_IIDSTRING: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221004i32);
-pub const CO_E_INCOMPATIBLESTREAMVERSION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147417797i32);
-pub const CO_E_INITIALIZATIONFAILED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147164123i32);
-pub const CO_E_INIT_CLASS_CACHE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147467255i32);
-pub const CO_E_INIT_MEMORY_ALLOCATOR: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147467256i32);
-pub const CO_E_INIT_ONLY_SINGLE_THREADED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147467246i32);
-pub const CO_E_INIT_RPC_CHANNEL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147467254i32);
-pub const CO_E_INIT_SCM_EXEC_FAILURE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147467247i32);
-pub const CO_E_INIT_SCM_FILE_MAPPING_EXISTS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147467249i32);
-pub const CO_E_INIT_SCM_MAP_VIEW_OF_FILE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147467248i32);
-pub const CO_E_INIT_SCM_MUTEX_EXISTS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147467250i32);
-pub const CO_E_INIT_SHARED_ALLOCATOR: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147467257i32);
-pub const CO_E_INIT_TLS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147467258i32);
-pub const CO_E_INIT_TLS_CHANNEL_CONTROL: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147467252i32);
-pub const CO_E_INIT_TLS_SET_CHANNEL_CONTROL: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147467253i32);
-pub const CO_E_INIT_UNACCEPTED_USER_ALLOCATOR: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147467251i32);
-pub const CO_E_INVALIDSID: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147417811i32);
-pub const CO_E_ISOLEVELMISMATCH: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147164113i32);
+pub const CO_E_IIDREG_INCONSISTENT: crate::core::HRESULT = crate::core::HRESULT(-2147467232i32);
+pub const CO_E_IIDSTRING: crate::core::HRESULT = crate::core::HRESULT(-2147221004i32);
+pub const CO_E_INCOMPATIBLESTREAMVERSION: crate::core::HRESULT =
+    crate::core::HRESULT(-2147417797i32);
+pub const CO_E_INITIALIZATIONFAILED: crate::core::HRESULT = crate::core::HRESULT(-2147164123i32);
+pub const CO_E_INIT_CLASS_CACHE: crate::core::HRESULT = crate::core::HRESULT(-2147467255i32);
+pub const CO_E_INIT_MEMORY_ALLOCATOR: crate::core::HRESULT = crate::core::HRESULT(-2147467256i32);
+pub const CO_E_INIT_ONLY_SINGLE_THREADED: crate::core::HRESULT =
+    crate::core::HRESULT(-2147467246i32);
+pub const CO_E_INIT_RPC_CHANNEL: crate::core::HRESULT = crate::core::HRESULT(-2147467254i32);
+pub const CO_E_INIT_SCM_EXEC_FAILURE: crate::core::HRESULT = crate::core::HRESULT(-2147467247i32);
+pub const CO_E_INIT_SCM_FILE_MAPPING_EXISTS: crate::core::HRESULT =
+    crate::core::HRESULT(-2147467249i32);
+pub const CO_E_INIT_SCM_MAP_VIEW_OF_FILE: crate::core::HRESULT =
+    crate::core::HRESULT(-2147467248i32);
+pub const CO_E_INIT_SCM_MUTEX_EXISTS: crate::core::HRESULT = crate::core::HRESULT(-2147467250i32);
+pub const CO_E_INIT_SHARED_ALLOCATOR: crate::core::HRESULT = crate::core::HRESULT(-2147467257i32);
+pub const CO_E_INIT_TLS: crate::core::HRESULT = crate::core::HRESULT(-2147467258i32);
+pub const CO_E_INIT_TLS_CHANNEL_CONTROL: crate::core::HRESULT =
+    crate::core::HRESULT(-2147467252i32);
+pub const CO_E_INIT_TLS_SET_CHANNEL_CONTROL: crate::core::HRESULT =
+    crate::core::HRESULT(-2147467253i32);
+pub const CO_E_INIT_UNACCEPTED_USER_ALLOCATOR: crate::core::HRESULT =
+    crate::core::HRESULT(-2147467251i32);
+pub const CO_E_INVALIDSID: crate::core::HRESULT = crate::core::HRESULT(-2147417811i32);
+pub const CO_E_ISOLEVELMISMATCH: crate::core::HRESULT = crate::core::HRESULT(-2147164113i32);
 pub const CO_E_LAST: i32 = -2147220993i32;
-pub const CO_E_LAUNCH_PERMSSION_DENIED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147467237i32);
-pub const CO_E_LOOKUPACCNAMEFAILED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147417806i32);
-pub const CO_E_LOOKUPACCSIDFAILED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147417808i32);
-pub const CO_E_MALFORMED_SPN: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147467213i32);
-pub const CO_E_MISSING_DISPLAYNAME: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146959339i32);
-pub const CO_E_MSI_ERROR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147467229i32);
-pub const CO_E_NETACCESSAPIFAILED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147417813i32);
-pub const CO_E_NOCOOKIES: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147164118i32);
-pub const CO_E_NOIISINTRINSICS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147164119i32);
-pub const CO_E_NOMATCHINGNAMEFOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147417807i32);
-pub const CO_E_NOMATCHINGSIDFOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147417809i32);
-pub const CO_E_NOSYNCHRONIZATION: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147164114i32);
-pub const CO_E_NOTCONSTRUCTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147164115i32);
-pub const CO_E_NOTINITIALIZED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221008i32);
-pub const CO_E_NOTPOOLED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147164116i32);
-pub const CO_E_NOT_SUPPORTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147467231i32);
-pub const CO_E_NO_SECCTX_IN_ACTIVATE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147467221i32);
-pub const CO_E_OBJISREG: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147220996i32);
-pub const CO_E_OBJNOTCONNECTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147220995i32);
-pub const CO_E_OBJNOTREG: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147220997i32);
-pub const CO_E_OBJSRV_RPC_FAILURE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146959354i32);
-pub const CO_E_OLE1DDE_DISABLED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147467242i32);
-pub const CO_E_PATHTOOLONG: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147417803i32);
-pub const CO_E_PREMATURE_STUB_RUNDOWN: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147467211i32);
-pub const CO_E_RELEASED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147220993i32);
-pub const CO_E_RELOAD_DLL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147467230i32);
-pub const CO_E_REMOTE_COMMUNICATION_FAILURE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147467235i32);
-pub const CO_E_RUNAS_CREATEPROCESS_FAILURE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147467239i32);
-pub const CO_E_RUNAS_LOGON_FAILURE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147467238i32);
-pub const CO_E_RUNAS_SYNTAX: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147467241i32);
-pub const CO_E_RUNAS_VALUE_MUST_BE_AAA: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146959338i32);
-pub const CO_E_SCM_ERROR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146959358i32);
-pub const CO_E_SCM_RPC_FAILURE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146959357i32);
-pub const CO_E_SERVER_EXEC_FAILURE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146959355i32);
-pub const CO_E_SERVER_INIT_TIMEOUT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147467222i32);
-pub const CO_E_SERVER_NOT_PAUSED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147467226i32);
-pub const CO_E_SERVER_PAUSED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147467227i32);
-pub const CO_E_SERVER_START_TIMEOUT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147467234i32);
-pub const CO_E_SERVER_STOPPING: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146959352i32);
-pub const CO_E_SETSERLHNDLFAILED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147417805i32);
-pub const CO_E_START_SERVICE_FAILURE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147467236i32);
-pub const CO_E_SXS_CONFIG: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147467214i32);
-pub const CO_E_THREADINGMODEL_CHANGED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147164120i32);
-pub const CO_E_THREADPOOL_CONFIG: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147467215i32);
-pub const CO_E_TRACKER_CONFIG: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147467216i32);
-pub const CO_E_TRUSTEEDOESNTMATCHCLIENT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147417817i32);
-pub const CO_E_UNREVOKED_REGISTRATION_ON_APARTMENT_SHUTDOWN: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147467212i32);
-pub const CO_E_WRONGOSFORAPP: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147220998i32);
-pub const CO_E_WRONGTRUSTEENAMESYNTAX: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147417812i32);
-pub const CO_E_WRONG_SERVER_IDENTITY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147467243i32);
+pub const CO_E_LAUNCH_PERMSSION_DENIED: crate::core::HRESULT = crate::core::HRESULT(-2147467237i32);
+pub const CO_E_LOOKUPACCNAMEFAILED: crate::core::HRESULT = crate::core::HRESULT(-2147417806i32);
+pub const CO_E_LOOKUPACCSIDFAILED: crate::core::HRESULT = crate::core::HRESULT(-2147417808i32);
+pub const CO_E_MALFORMED_SPN: crate::core::HRESULT = crate::core::HRESULT(-2147467213i32);
+pub const CO_E_MISSING_DISPLAYNAME: crate::core::HRESULT = crate::core::HRESULT(-2146959339i32);
+pub const CO_E_MSI_ERROR: crate::core::HRESULT = crate::core::HRESULT(-2147467229i32);
+pub const CO_E_NETACCESSAPIFAILED: crate::core::HRESULT = crate::core::HRESULT(-2147417813i32);
+pub const CO_E_NOCOOKIES: crate::core::HRESULT = crate::core::HRESULT(-2147164118i32);
+pub const CO_E_NOIISINTRINSICS: crate::core::HRESULT = crate::core::HRESULT(-2147164119i32);
+pub const CO_E_NOMATCHINGNAMEFOUND: crate::core::HRESULT = crate::core::HRESULT(-2147417807i32);
+pub const CO_E_NOMATCHINGSIDFOUND: crate::core::HRESULT = crate::core::HRESULT(-2147417809i32);
+pub const CO_E_NOSYNCHRONIZATION: crate::core::HRESULT = crate::core::HRESULT(-2147164114i32);
+pub const CO_E_NOTCONSTRUCTED: crate::core::HRESULT = crate::core::HRESULT(-2147164115i32);
+pub const CO_E_NOTINITIALIZED: crate::core::HRESULT = crate::core::HRESULT(-2147221008i32);
+pub const CO_E_NOTPOOLED: crate::core::HRESULT = crate::core::HRESULT(-2147164116i32);
+pub const CO_E_NOT_SUPPORTED: crate::core::HRESULT = crate::core::HRESULT(-2147467231i32);
+pub const CO_E_NO_SECCTX_IN_ACTIVATE: crate::core::HRESULT = crate::core::HRESULT(-2147467221i32);
+pub const CO_E_OBJISREG: crate::core::HRESULT = crate::core::HRESULT(-2147220996i32);
+pub const CO_E_OBJNOTCONNECTED: crate::core::HRESULT = crate::core::HRESULT(-2147220995i32);
+pub const CO_E_OBJNOTREG: crate::core::HRESULT = crate::core::HRESULT(-2147220997i32);
+pub const CO_E_OBJSRV_RPC_FAILURE: crate::core::HRESULT = crate::core::HRESULT(-2146959354i32);
+pub const CO_E_OLE1DDE_DISABLED: crate::core::HRESULT = crate::core::HRESULT(-2147467242i32);
+pub const CO_E_PATHTOOLONG: crate::core::HRESULT = crate::core::HRESULT(-2147417803i32);
+pub const CO_E_PREMATURE_STUB_RUNDOWN: crate::core::HRESULT = crate::core::HRESULT(-2147467211i32);
+pub const CO_E_RELEASED: crate::core::HRESULT = crate::core::HRESULT(-2147220993i32);
+pub const CO_E_RELOAD_DLL: crate::core::HRESULT = crate::core::HRESULT(-2147467230i32);
+pub const CO_E_REMOTE_COMMUNICATION_FAILURE: crate::core::HRESULT =
+    crate::core::HRESULT(-2147467235i32);
+pub const CO_E_RUNAS_CREATEPROCESS_FAILURE: crate::core::HRESULT =
+    crate::core::HRESULT(-2147467239i32);
+pub const CO_E_RUNAS_LOGON_FAILURE: crate::core::HRESULT = crate::core::HRESULT(-2147467238i32);
+pub const CO_E_RUNAS_SYNTAX: crate::core::HRESULT = crate::core::HRESULT(-2147467241i32);
+pub const CO_E_RUNAS_VALUE_MUST_BE_AAA: crate::core::HRESULT = crate::core::HRESULT(-2146959338i32);
+pub const CO_E_SCM_ERROR: crate::core::HRESULT = crate::core::HRESULT(-2146959358i32);
+pub const CO_E_SCM_RPC_FAILURE: crate::core::HRESULT = crate::core::HRESULT(-2146959357i32);
+pub const CO_E_SERVER_EXEC_FAILURE: crate::core::HRESULT = crate::core::HRESULT(-2146959355i32);
+pub const CO_E_SERVER_INIT_TIMEOUT: crate::core::HRESULT = crate::core::HRESULT(-2147467222i32);
+pub const CO_E_SERVER_NOT_PAUSED: crate::core::HRESULT = crate::core::HRESULT(-2147467226i32);
+pub const CO_E_SERVER_PAUSED: crate::core::HRESULT = crate::core::HRESULT(-2147467227i32);
+pub const CO_E_SERVER_START_TIMEOUT: crate::core::HRESULT = crate::core::HRESULT(-2147467234i32);
+pub const CO_E_SERVER_STOPPING: crate::core::HRESULT = crate::core::HRESULT(-2146959352i32);
+pub const CO_E_SETSERLHNDLFAILED: crate::core::HRESULT = crate::core::HRESULT(-2147417805i32);
+pub const CO_E_START_SERVICE_FAILURE: crate::core::HRESULT = crate::core::HRESULT(-2147467236i32);
+pub const CO_E_SXS_CONFIG: crate::core::HRESULT = crate::core::HRESULT(-2147467214i32);
+pub const CO_E_THREADINGMODEL_CHANGED: crate::core::HRESULT = crate::core::HRESULT(-2147164120i32);
+pub const CO_E_THREADPOOL_CONFIG: crate::core::HRESULT = crate::core::HRESULT(-2147467215i32);
+pub const CO_E_TRACKER_CONFIG: crate::core::HRESULT = crate::core::HRESULT(-2147467216i32);
+pub const CO_E_TRUSTEEDOESNTMATCHCLIENT: crate::core::HRESULT =
+    crate::core::HRESULT(-2147417817i32);
+pub const CO_E_UNREVOKED_REGISTRATION_ON_APARTMENT_SHUTDOWN: crate::core::HRESULT =
+    crate::core::HRESULT(-2147467212i32);
+pub const CO_E_WRONGOSFORAPP: crate::core::HRESULT = crate::core::HRESULT(-2147220998i32);
+pub const CO_E_WRONGTRUSTEENAMESYNTAX: crate::core::HRESULT = crate::core::HRESULT(-2147417812i32);
+pub const CO_E_WRONG_SERVER_IDENTITY: crate::core::HRESULT = crate::core::HRESULT(-2147467243i32);
 pub const CO_S_FIRST: i32 = 262640i32;
 pub const CO_S_LAST: i32 = 262655i32;
-pub const CO_S_MACHINENAMENOTFOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(524307i32);
-pub const CO_S_NOTALLINTERFACES: ::win32::core::HRESULT = ::win32::core::HRESULT(524306i32);
-pub const CRYPT_E_ALREADY_DECRYPTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146889719i32);
-pub const CRYPT_E_ASN1_BADARGS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881271i32);
-pub const CRYPT_E_ASN1_BADPDU: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881272i32);
-pub const CRYPT_E_ASN1_BADREAL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881270i32);
-pub const CRYPT_E_ASN1_BADTAG: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881269i32);
-pub const CRYPT_E_ASN1_CHOICE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881268i32);
-pub const CRYPT_E_ASN1_CONSTRAINT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881275i32);
-pub const CRYPT_E_ASN1_CORRUPT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881277i32);
-pub const CRYPT_E_ASN1_EOD: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881278i32);
-pub const CRYPT_E_ASN1_ERROR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881280i32);
-pub const CRYPT_E_ASN1_EXTENDED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881023i32);
-pub const CRYPT_E_ASN1_INTERNAL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881279i32);
-pub const CRYPT_E_ASN1_LARGE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881276i32);
-pub const CRYPT_E_ASN1_MEMORY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881274i32);
-pub const CRYPT_E_ASN1_NOEOD: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881022i32);
-pub const CRYPT_E_ASN1_NYI: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881228i32);
-pub const CRYPT_E_ASN1_OVERFLOW: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881273i32);
-pub const CRYPT_E_ASN1_PDU_TYPE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881229i32);
-pub const CRYPT_E_ASN1_RULE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881267i32);
-pub const CRYPT_E_ASN1_UTF8: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881266i32);
-pub const CRYPT_E_ATTRIBUTES_MISSING: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146889713i32);
-pub const CRYPT_E_AUTH_ATTR_MISSING: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146889722i32);
-pub const CRYPT_E_BAD_ENCODE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146885630i32);
-pub const CRYPT_E_BAD_LEN: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146885631i32);
-pub const CRYPT_E_BAD_MSG: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146885619i32);
-pub const CRYPT_E_CONTROL_TYPE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146889716i32);
-pub const CRYPT_E_DELETED_PREV: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146885624i32);
-pub const CRYPT_E_EXISTS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146885627i32);
-pub const CRYPT_E_FILERESIZED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146885595i32);
-pub const CRYPT_E_FILE_ERROR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146885629i32);
-pub const CRYPT_E_HASH_VALUE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146889721i32);
-pub const CRYPT_E_INVALID_IA5_STRING: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146885598i32);
-pub const CRYPT_E_INVALID_INDEX: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146889720i32);
-pub const CRYPT_E_INVALID_MSG_TYPE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146889724i32);
-pub const CRYPT_E_INVALID_NUMERIC_STRING: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146885600i32);
-pub const CRYPT_E_INVALID_PRINTABLE_STRING: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146885599i32);
-pub const CRYPT_E_INVALID_X500_STRING: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146885597i32);
-pub const CRYPT_E_ISSUER_SERIALNUMBER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146889715i32);
-pub const CRYPT_E_MISSING_PUBKEY_PARA: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146885588i32);
-pub const CRYPT_E_MSG_ERROR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146889727i32);
-pub const CRYPT_E_NOT_CHAR_STRING: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146885596i32);
-pub const CRYPT_E_NOT_DECRYPTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146889718i32);
-pub const CRYPT_E_NOT_FOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146885628i32);
-pub const CRYPT_E_NOT_IN_CTL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146885590i32);
-pub const CRYPT_E_NOT_IN_REVOCATION_DATABASE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146885612i32);
-pub const CRYPT_E_NO_DECRYPT_CERT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146885620i32);
-pub const CRYPT_E_NO_KEY_PROPERTY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146885621i32);
-pub const CRYPT_E_NO_MATCH: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146885623i32);
-pub const CRYPT_E_NO_PROVIDER: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146885626i32);
-pub const CRYPT_E_NO_REVOCATION_CHECK: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146885614i32);
-pub const CRYPT_E_NO_REVOCATION_DLL: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146885615i32);
-pub const CRYPT_E_NO_SIGNER: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146885618i32);
-pub const CRYPT_E_NO_TRUSTED_SIGNER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146885589i32);
-pub const CRYPT_E_NO_VERIFY_USAGE_CHECK: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146885592i32);
-pub const CRYPT_E_NO_VERIFY_USAGE_DLL: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146885593i32);
-pub const CRYPT_E_OBJECT_LOCATOR_OBJECT_NOT_FOUND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146885587i32);
-pub const CRYPT_E_OID_FORMAT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146889725i32);
-pub const CRYPT_E_OSS_ERROR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881536i32);
-pub const CRYPT_E_PENDING_CLOSE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146885617i32);
-pub const CRYPT_E_RECIPIENT_NOT_FOUND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146889717i32);
-pub const CRYPT_E_REVOCATION_OFFLINE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146885613i32);
-pub const CRYPT_E_REVOKED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146885616i32);
-pub const CRYPT_E_SECURITY_SETTINGS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146885594i32);
-pub const CRYPT_E_SELF_SIGNED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146885625i32);
-pub const CRYPT_E_SIGNER_NOT_FOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146889714i32);
-pub const CRYPT_E_STREAM_INSUFFICIENT_DATA: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146889711i32);
-pub const CRYPT_E_STREAM_MSG_NOT_READY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146889712i32);
-pub const CRYPT_E_UNEXPECTED_ENCODING: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146889723i32);
-pub const CRYPT_E_UNEXPECTED_MSG_TYPE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146885622i32);
-pub const CRYPT_E_UNKNOWN_ALGO: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146889726i32);
-pub const CRYPT_E_VERIFY_USAGE_OFFLINE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146885591i32);
-pub const CRYPT_I_NEW_PROTECTION_REQUIRED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(593938i32);
-pub const CS_E_ADMIN_LIMIT_EXCEEDED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147221139i32);
-pub const CS_E_CLASS_NOTFOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221146i32);
+pub const CO_S_MACHINENAMENOTFOUND: crate::core::HRESULT = crate::core::HRESULT(524307i32);
+pub const CO_S_NOTALLINTERFACES: crate::core::HRESULT = crate::core::HRESULT(524306i32);
+pub const CRYPT_E_ALREADY_DECRYPTED: crate::core::HRESULT = crate::core::HRESULT(-2146889719i32);
+pub const CRYPT_E_ASN1_BADARGS: crate::core::HRESULT = crate::core::HRESULT(-2146881271i32);
+pub const CRYPT_E_ASN1_BADPDU: crate::core::HRESULT = crate::core::HRESULT(-2146881272i32);
+pub const CRYPT_E_ASN1_BADREAL: crate::core::HRESULT = crate::core::HRESULT(-2146881270i32);
+pub const CRYPT_E_ASN1_BADTAG: crate::core::HRESULT = crate::core::HRESULT(-2146881269i32);
+pub const CRYPT_E_ASN1_CHOICE: crate::core::HRESULT = crate::core::HRESULT(-2146881268i32);
+pub const CRYPT_E_ASN1_CONSTRAINT: crate::core::HRESULT = crate::core::HRESULT(-2146881275i32);
+pub const CRYPT_E_ASN1_CORRUPT: crate::core::HRESULT = crate::core::HRESULT(-2146881277i32);
+pub const CRYPT_E_ASN1_EOD: crate::core::HRESULT = crate::core::HRESULT(-2146881278i32);
+pub const CRYPT_E_ASN1_ERROR: crate::core::HRESULT = crate::core::HRESULT(-2146881280i32);
+pub const CRYPT_E_ASN1_EXTENDED: crate::core::HRESULT = crate::core::HRESULT(-2146881023i32);
+pub const CRYPT_E_ASN1_INTERNAL: crate::core::HRESULT = crate::core::HRESULT(-2146881279i32);
+pub const CRYPT_E_ASN1_LARGE: crate::core::HRESULT = crate::core::HRESULT(-2146881276i32);
+pub const CRYPT_E_ASN1_MEMORY: crate::core::HRESULT = crate::core::HRESULT(-2146881274i32);
+pub const CRYPT_E_ASN1_NOEOD: crate::core::HRESULT = crate::core::HRESULT(-2146881022i32);
+pub const CRYPT_E_ASN1_NYI: crate::core::HRESULT = crate::core::HRESULT(-2146881228i32);
+pub const CRYPT_E_ASN1_OVERFLOW: crate::core::HRESULT = crate::core::HRESULT(-2146881273i32);
+pub const CRYPT_E_ASN1_PDU_TYPE: crate::core::HRESULT = crate::core::HRESULT(-2146881229i32);
+pub const CRYPT_E_ASN1_RULE: crate::core::HRESULT = crate::core::HRESULT(-2146881267i32);
+pub const CRYPT_E_ASN1_UTF8: crate::core::HRESULT = crate::core::HRESULT(-2146881266i32);
+pub const CRYPT_E_ATTRIBUTES_MISSING: crate::core::HRESULT = crate::core::HRESULT(-2146889713i32);
+pub const CRYPT_E_AUTH_ATTR_MISSING: crate::core::HRESULT = crate::core::HRESULT(-2146889722i32);
+pub const CRYPT_E_BAD_ENCODE: crate::core::HRESULT = crate::core::HRESULT(-2146885630i32);
+pub const CRYPT_E_BAD_LEN: crate::core::HRESULT = crate::core::HRESULT(-2146885631i32);
+pub const CRYPT_E_BAD_MSG: crate::core::HRESULT = crate::core::HRESULT(-2146885619i32);
+pub const CRYPT_E_CONTROL_TYPE: crate::core::HRESULT = crate::core::HRESULT(-2146889716i32);
+pub const CRYPT_E_DELETED_PREV: crate::core::HRESULT = crate::core::HRESULT(-2146885624i32);
+pub const CRYPT_E_EXISTS: crate::core::HRESULT = crate::core::HRESULT(-2146885627i32);
+pub const CRYPT_E_FILERESIZED: crate::core::HRESULT = crate::core::HRESULT(-2146885595i32);
+pub const CRYPT_E_FILE_ERROR: crate::core::HRESULT = crate::core::HRESULT(-2146885629i32);
+pub const CRYPT_E_HASH_VALUE: crate::core::HRESULT = crate::core::HRESULT(-2146889721i32);
+pub const CRYPT_E_INVALID_IA5_STRING: crate::core::HRESULT = crate::core::HRESULT(-2146885598i32);
+pub const CRYPT_E_INVALID_INDEX: crate::core::HRESULT = crate::core::HRESULT(-2146889720i32);
+pub const CRYPT_E_INVALID_MSG_TYPE: crate::core::HRESULT = crate::core::HRESULT(-2146889724i32);
+pub const CRYPT_E_INVALID_NUMERIC_STRING: crate::core::HRESULT =
+    crate::core::HRESULT(-2146885600i32);
+pub const CRYPT_E_INVALID_PRINTABLE_STRING: crate::core::HRESULT =
+    crate::core::HRESULT(-2146885599i32);
+pub const CRYPT_E_INVALID_X500_STRING: crate::core::HRESULT = crate::core::HRESULT(-2146885597i32);
+pub const CRYPT_E_ISSUER_SERIALNUMBER: crate::core::HRESULT = crate::core::HRESULT(-2146889715i32);
+pub const CRYPT_E_MISSING_PUBKEY_PARA: crate::core::HRESULT = crate::core::HRESULT(-2146885588i32);
+pub const CRYPT_E_MSG_ERROR: crate::core::HRESULT = crate::core::HRESULT(-2146889727i32);
+pub const CRYPT_E_NOT_CHAR_STRING: crate::core::HRESULT = crate::core::HRESULT(-2146885596i32);
+pub const CRYPT_E_NOT_DECRYPTED: crate::core::HRESULT = crate::core::HRESULT(-2146889718i32);
+pub const CRYPT_E_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2146885628i32);
+pub const CRYPT_E_NOT_IN_CTL: crate::core::HRESULT = crate::core::HRESULT(-2146885590i32);
+pub const CRYPT_E_NOT_IN_REVOCATION_DATABASE: crate::core::HRESULT =
+    crate::core::HRESULT(-2146885612i32);
+pub const CRYPT_E_NO_DECRYPT_CERT: crate::core::HRESULT = crate::core::HRESULT(-2146885620i32);
+pub const CRYPT_E_NO_KEY_PROPERTY: crate::core::HRESULT = crate::core::HRESULT(-2146885621i32);
+pub const CRYPT_E_NO_MATCH: crate::core::HRESULT = crate::core::HRESULT(-2146885623i32);
+pub const CRYPT_E_NO_PROVIDER: crate::core::HRESULT = crate::core::HRESULT(-2146885626i32);
+pub const CRYPT_E_NO_REVOCATION_CHECK: crate::core::HRESULT = crate::core::HRESULT(-2146885614i32);
+pub const CRYPT_E_NO_REVOCATION_DLL: crate::core::HRESULT = crate::core::HRESULT(-2146885615i32);
+pub const CRYPT_E_NO_SIGNER: crate::core::HRESULT = crate::core::HRESULT(-2146885618i32);
+pub const CRYPT_E_NO_TRUSTED_SIGNER: crate::core::HRESULT = crate::core::HRESULT(-2146885589i32);
+pub const CRYPT_E_NO_VERIFY_USAGE_CHECK: crate::core::HRESULT =
+    crate::core::HRESULT(-2146885592i32);
+pub const CRYPT_E_NO_VERIFY_USAGE_DLL: crate::core::HRESULT = crate::core::HRESULT(-2146885593i32);
+pub const CRYPT_E_OBJECT_LOCATOR_OBJECT_NOT_FOUND: crate::core::HRESULT =
+    crate::core::HRESULT(-2146885587i32);
+pub const CRYPT_E_OID_FORMAT: crate::core::HRESULT = crate::core::HRESULT(-2146889725i32);
+pub const CRYPT_E_OSS_ERROR: crate::core::HRESULT = crate::core::HRESULT(-2146881536i32);
+pub const CRYPT_E_PENDING_CLOSE: crate::core::HRESULT = crate::core::HRESULT(-2146885617i32);
+pub const CRYPT_E_RECIPIENT_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2146889717i32);
+pub const CRYPT_E_REVOCATION_OFFLINE: crate::core::HRESULT = crate::core::HRESULT(-2146885613i32);
+pub const CRYPT_E_REVOKED: crate::core::HRESULT = crate::core::HRESULT(-2146885616i32);
+pub const CRYPT_E_SECURITY_SETTINGS: crate::core::HRESULT = crate::core::HRESULT(-2146885594i32);
+pub const CRYPT_E_SELF_SIGNED: crate::core::HRESULT = crate::core::HRESULT(-2146885625i32);
+pub const CRYPT_E_SIGNER_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2146889714i32);
+pub const CRYPT_E_STREAM_INSUFFICIENT_DATA: crate::core::HRESULT =
+    crate::core::HRESULT(-2146889711i32);
+pub const CRYPT_E_STREAM_MSG_NOT_READY: crate::core::HRESULT = crate::core::HRESULT(-2146889712i32);
+pub const CRYPT_E_UNEXPECTED_ENCODING: crate::core::HRESULT = crate::core::HRESULT(-2146889723i32);
+pub const CRYPT_E_UNEXPECTED_MSG_TYPE: crate::core::HRESULT = crate::core::HRESULT(-2146885622i32);
+pub const CRYPT_E_UNKNOWN_ALGO: crate::core::HRESULT = crate::core::HRESULT(-2146889726i32);
+pub const CRYPT_E_VERIFY_USAGE_OFFLINE: crate::core::HRESULT = crate::core::HRESULT(-2146885591i32);
+pub const CRYPT_I_NEW_PROTECTION_REQUIRED: crate::core::HRESULT = crate::core::HRESULT(593938i32);
+pub const CS_E_ADMIN_LIMIT_EXCEEDED: crate::core::HRESULT = crate::core::HRESULT(-2147221139i32);
+pub const CS_E_CLASS_NOTFOUND: crate::core::HRESULT = crate::core::HRESULT(-2147221146i32);
 pub const CS_E_FIRST: i32 = -2147221148i32;
-pub const CS_E_INTERNAL_ERROR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221137i32);
-pub const CS_E_INVALID_PATH: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221141i32);
-pub const CS_E_INVALID_VERSION: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221145i32);
+pub const CS_E_INTERNAL_ERROR: crate::core::HRESULT = crate::core::HRESULT(-2147221137i32);
+pub const CS_E_INVALID_PATH: crate::core::HRESULT = crate::core::HRESULT(-2147221141i32);
+pub const CS_E_INVALID_VERSION: crate::core::HRESULT = crate::core::HRESULT(-2147221145i32);
 pub const CS_E_LAST: i32 = -2147221137i32;
-pub const CS_E_NETWORK_ERROR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221140i32);
-pub const CS_E_NOT_DELETABLE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221147i32);
-pub const CS_E_NO_CLASSSTORE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221144i32);
-pub const CS_E_OBJECT_ALREADY_EXISTS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147221142i32);
-pub const CS_E_OBJECT_NOTFOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221143i32);
-pub const CS_E_PACKAGE_NOTFOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221148i32);
-pub const CS_E_SCHEMA_MISMATCH: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221138i32);
-pub const D2DERR_BAD_NUMBER: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003238895i32);
-pub const D2DERR_BITMAP_BOUND_AS_TARGET: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003238875i32);
-pub const D2DERR_BITMAP_CANNOT_DRAW: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003238879i32);
-pub const D2DERR_CYCLIC_GRAPH: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003238880i32);
-pub const D2DERR_DISPLAY_FORMAT_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003238903i32);
-pub const D2DERR_DISPLAY_STATE_INVALID: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003238906i32);
-pub const D2DERR_EFFECT_IS_NOT_REGISTERED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003238872i32);
-pub const D2DERR_EXCEEDS_MAX_BITMAP_SIZE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003238883i32);
-pub const D2DERR_INCOMPATIBLE_BRUSH_TYPES: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003238888i32);
-pub const D2DERR_INSUFFICIENT_DEVICE_CAPABILITIES: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003238874i32);
-pub const D2DERR_INTERMEDIATE_TOO_LARGE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003238873i32);
-pub const D2DERR_INTERNAL_ERROR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003238904i32);
-pub const D2DERR_INVALID_CALL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003238902i32);
-pub const D2DERR_INVALID_GLYPH_IMAGE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003238866i32);
-pub const D2DERR_INVALID_GRAPH_CONFIGURATION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003238882i32);
-pub const D2DERR_INVALID_INTERNAL_GRAPH_CONFIGURATION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003238881i32);
-pub const D2DERR_INVALID_PROPERTY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003238871i32);
-pub const D2DERR_INVALID_TARGET: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003238876i32);
-pub const D2DERR_LAYER_ALREADY_IN_USE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003238893i32);
-pub const D2DERR_MAX_TEXTURE_SIZE_EXCEEDED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003238897i32);
-pub const D2DERR_NOT_INITIALIZED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003238910i32);
-pub const D2DERR_NO_HARDWARE_DEVICE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003238901i32);
-pub const D2DERR_NO_SUBPROPERTIES: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003238870i32);
-pub const D2DERR_ORIGINAL_TARGET_NOT_BOUND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003238877i32);
-pub const D2DERR_OUTSTANDING_BITMAP_REFERENCES: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003238878i32);
-pub const D2DERR_POP_CALL_DID_NOT_MATCH_PUSH: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003238892i32);
-pub const D2DERR_PRINT_FORMAT_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003238868i32);
-pub const D2DERR_PRINT_JOB_CLOSED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003238869i32);
-pub const D2DERR_PUSH_POP_UNBALANCED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003238890i32);
-pub const D2DERR_RECREATE_TARGET: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003238900i32);
-pub const D2DERR_RENDER_TARGET_HAS_LAYER_OR_CLIPRECT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003238889i32);
-pub const D2DERR_SCANNER_FAILED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003238908i32);
-pub const D2DERR_SCREEN_ACCESS_DENIED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003238907i32);
-pub const D2DERR_SHADER_COMPILE_FAILED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003238898i32);
-pub const D2DERR_TARGET_NOT_GDI_COMPATIBLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003238886i32);
-pub const D2DERR_TEXT_EFFECT_IS_WRONG_TYPE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003238885i32);
-pub const D2DERR_TEXT_RENDERER_NOT_RELEASED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003238884i32);
-pub const D2DERR_TOO_MANY_SHADER_ELEMENTS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003238899i32);
-pub const D2DERR_TOO_MANY_TRANSFORM_INPUTS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003238867i32);
-pub const D2DERR_UNSUPPORTED_OPERATION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003238909i32);
-pub const D2DERR_UNSUPPORTED_VERSION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003238896i32);
-pub const D2DERR_WIN32_ERROR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003238887i32);
-pub const D2DERR_WRONG_FACTORY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003238894i32);
-pub const D2DERR_WRONG_RESOURCE_DOMAIN: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003238891i32);
-pub const D2DERR_WRONG_STATE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003238911i32);
-pub const D2DERR_ZERO_VECTOR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003238905i32);
-pub const D3D10_ERROR_FILE_NOT_FOUND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2005336062i32);
-pub const D3D10_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2005336063i32);
-pub const D3D11_ERROR_DEFERRED_CONTEXT_MAP_WITHOUT_INITIAL_DISCARD: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2005139452i32);
-pub const D3D11_ERROR_FILE_NOT_FOUND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2005139454i32);
-pub const D3D11_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2005139455i32);
-pub const D3D11_ERROR_TOO_MANY_UNIQUE_VIEW_OBJECTS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2005139453i32);
-pub const D3D12_ERROR_ADAPTER_NOT_FOUND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2005008383i32);
-pub const D3D12_ERROR_DRIVER_VERSION_MISMATCH: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2005008382i32);
-pub const D3D12_ERROR_INVALID_REDIST: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2005008381i32);
+pub const CS_E_NETWORK_ERROR: crate::core::HRESULT = crate::core::HRESULT(-2147221140i32);
+pub const CS_E_NOT_DELETABLE: crate::core::HRESULT = crate::core::HRESULT(-2147221147i32);
+pub const CS_E_NO_CLASSSTORE: crate::core::HRESULT = crate::core::HRESULT(-2147221144i32);
+pub const CS_E_OBJECT_ALREADY_EXISTS: crate::core::HRESULT = crate::core::HRESULT(-2147221142i32);
+pub const CS_E_OBJECT_NOTFOUND: crate::core::HRESULT = crate::core::HRESULT(-2147221143i32);
+pub const CS_E_PACKAGE_NOTFOUND: crate::core::HRESULT = crate::core::HRESULT(-2147221148i32);
+pub const CS_E_SCHEMA_MISMATCH: crate::core::HRESULT = crate::core::HRESULT(-2147221138i32);
+pub const D2DERR_BAD_NUMBER: crate::core::HRESULT = crate::core::HRESULT(-2003238895i32);
+pub const D2DERR_BITMAP_BOUND_AS_TARGET: crate::core::HRESULT =
+    crate::core::HRESULT(-2003238875i32);
+pub const D2DERR_BITMAP_CANNOT_DRAW: crate::core::HRESULT = crate::core::HRESULT(-2003238879i32);
+pub const D2DERR_CYCLIC_GRAPH: crate::core::HRESULT = crate::core::HRESULT(-2003238880i32);
+pub const D2DERR_DISPLAY_FORMAT_NOT_SUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2003238903i32);
+pub const D2DERR_DISPLAY_STATE_INVALID: crate::core::HRESULT = crate::core::HRESULT(-2003238906i32);
+pub const D2DERR_EFFECT_IS_NOT_REGISTERED: crate::core::HRESULT =
+    crate::core::HRESULT(-2003238872i32);
+pub const D2DERR_EXCEEDS_MAX_BITMAP_SIZE: crate::core::HRESULT =
+    crate::core::HRESULT(-2003238883i32);
+pub const D2DERR_INCOMPATIBLE_BRUSH_TYPES: crate::core::HRESULT =
+    crate::core::HRESULT(-2003238888i32);
+pub const D2DERR_INSUFFICIENT_DEVICE_CAPABILITIES: crate::core::HRESULT =
+    crate::core::HRESULT(-2003238874i32);
+pub const D2DERR_INTERMEDIATE_TOO_LARGE: crate::core::HRESULT =
+    crate::core::HRESULT(-2003238873i32);
+pub const D2DERR_INTERNAL_ERROR: crate::core::HRESULT = crate::core::HRESULT(-2003238904i32);
+pub const D2DERR_INVALID_CALL: crate::core::HRESULT = crate::core::HRESULT(-2003238902i32);
+pub const D2DERR_INVALID_GLYPH_IMAGE: crate::core::HRESULT = crate::core::HRESULT(-2003238866i32);
+pub const D2DERR_INVALID_GRAPH_CONFIGURATION: crate::core::HRESULT =
+    crate::core::HRESULT(-2003238882i32);
+pub const D2DERR_INVALID_INTERNAL_GRAPH_CONFIGURATION: crate::core::HRESULT =
+    crate::core::HRESULT(-2003238881i32);
+pub const D2DERR_INVALID_PROPERTY: crate::core::HRESULT = crate::core::HRESULT(-2003238871i32);
+pub const D2DERR_INVALID_TARGET: crate::core::HRESULT = crate::core::HRESULT(-2003238876i32);
+pub const D2DERR_LAYER_ALREADY_IN_USE: crate::core::HRESULT = crate::core::HRESULT(-2003238893i32);
+pub const D2DERR_MAX_TEXTURE_SIZE_EXCEEDED: crate::core::HRESULT =
+    crate::core::HRESULT(-2003238897i32);
+pub const D2DERR_NOT_INITIALIZED: crate::core::HRESULT = crate::core::HRESULT(-2003238910i32);
+pub const D2DERR_NO_HARDWARE_DEVICE: crate::core::HRESULT = crate::core::HRESULT(-2003238901i32);
+pub const D2DERR_NO_SUBPROPERTIES: crate::core::HRESULT = crate::core::HRESULT(-2003238870i32);
+pub const D2DERR_ORIGINAL_TARGET_NOT_BOUND: crate::core::HRESULT =
+    crate::core::HRESULT(-2003238877i32);
+pub const D2DERR_OUTSTANDING_BITMAP_REFERENCES: crate::core::HRESULT =
+    crate::core::HRESULT(-2003238878i32);
+pub const D2DERR_POP_CALL_DID_NOT_MATCH_PUSH: crate::core::HRESULT =
+    crate::core::HRESULT(-2003238892i32);
+pub const D2DERR_PRINT_FORMAT_NOT_SUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2003238868i32);
+pub const D2DERR_PRINT_JOB_CLOSED: crate::core::HRESULT = crate::core::HRESULT(-2003238869i32);
+pub const D2DERR_PUSH_POP_UNBALANCED: crate::core::HRESULT = crate::core::HRESULT(-2003238890i32);
+pub const D2DERR_RECREATE_TARGET: crate::core::HRESULT = crate::core::HRESULT(-2003238900i32);
+pub const D2DERR_RENDER_TARGET_HAS_LAYER_OR_CLIPRECT: crate::core::HRESULT =
+    crate::core::HRESULT(-2003238889i32);
+pub const D2DERR_SCANNER_FAILED: crate::core::HRESULT = crate::core::HRESULT(-2003238908i32);
+pub const D2DERR_SCREEN_ACCESS_DENIED: crate::core::HRESULT = crate::core::HRESULT(-2003238907i32);
+pub const D2DERR_SHADER_COMPILE_FAILED: crate::core::HRESULT = crate::core::HRESULT(-2003238898i32);
+pub const D2DERR_TARGET_NOT_GDI_COMPATIBLE: crate::core::HRESULT =
+    crate::core::HRESULT(-2003238886i32);
+pub const D2DERR_TEXT_EFFECT_IS_WRONG_TYPE: crate::core::HRESULT =
+    crate::core::HRESULT(-2003238885i32);
+pub const D2DERR_TEXT_RENDERER_NOT_RELEASED: crate::core::HRESULT =
+    crate::core::HRESULT(-2003238884i32);
+pub const D2DERR_TOO_MANY_SHADER_ELEMENTS: crate::core::HRESULT =
+    crate::core::HRESULT(-2003238899i32);
+pub const D2DERR_TOO_MANY_TRANSFORM_INPUTS: crate::core::HRESULT =
+    crate::core::HRESULT(-2003238867i32);
+pub const D2DERR_UNSUPPORTED_OPERATION: crate::core::HRESULT = crate::core::HRESULT(-2003238909i32);
+pub const D2DERR_UNSUPPORTED_VERSION: crate::core::HRESULT = crate::core::HRESULT(-2003238896i32);
+pub const D2DERR_WIN32_ERROR: crate::core::HRESULT = crate::core::HRESULT(-2003238887i32);
+pub const D2DERR_WRONG_FACTORY: crate::core::HRESULT = crate::core::HRESULT(-2003238894i32);
+pub const D2DERR_WRONG_RESOURCE_DOMAIN: crate::core::HRESULT = crate::core::HRESULT(-2003238891i32);
+pub const D2DERR_WRONG_STATE: crate::core::HRESULT = crate::core::HRESULT(-2003238911i32);
+pub const D2DERR_ZERO_VECTOR: crate::core::HRESULT = crate::core::HRESULT(-2003238905i32);
+pub const D3D10_ERROR_FILE_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2005336062i32);
+pub const D3D10_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS: crate::core::HRESULT =
+    crate::core::HRESULT(-2005336063i32);
+pub const D3D11_ERROR_DEFERRED_CONTEXT_MAP_WITHOUT_INITIAL_DISCARD: crate::core::HRESULT =
+    crate::core::HRESULT(-2005139452i32);
+pub const D3D11_ERROR_FILE_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2005139454i32);
+pub const D3D11_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS: crate::core::HRESULT =
+    crate::core::HRESULT(-2005139455i32);
+pub const D3D11_ERROR_TOO_MANY_UNIQUE_VIEW_OBJECTS: crate::core::HRESULT =
+    crate::core::HRESULT(-2005139453i32);
+pub const D3D12_ERROR_ADAPTER_NOT_FOUND: crate::core::HRESULT =
+    crate::core::HRESULT(-2005008383i32);
+pub const D3D12_ERROR_DRIVER_VERSION_MISMATCH: crate::core::HRESULT =
+    crate::core::HRESULT(-2005008382i32);
+pub const D3D12_ERROR_INVALID_REDIST: crate::core::HRESULT = crate::core::HRESULT(-2005008381i32);
 pub const DATA_E_FIRST: i32 = -2147221200i32;
 pub const DATA_E_LAST: i32 = -2147221185i32;
 pub const DATA_S_FIRST: i32 = 262448i32;
 pub const DATA_S_LAST: i32 = 262463i32;
-pub const DATA_S_SAMEFORMATETC: ::win32::core::HRESULT = ::win32::core::HRESULT(262448i32);
+pub const DATA_S_SAMEFORMATETC: crate::core::HRESULT = crate::core::HRESULT(262448i32);
 pub const DBG_APP_NOT_IDLE: NTSTATUS = NTSTATUS(-1073676286i32);
 pub const DBG_COMMAND_EXCEPTION: NTSTATUS = NTSTATUS(1073807369i32);
 pub const DBG_CONTINUE: NTSTATUS = NTSTATUS(65538i32);
@@ -1054,12 +939,12 @@ pub const DBG_RIPEXCEPTION: NTSTATUS = NTSTATUS(1073807367i32);
 pub const DBG_TERMINATE_PROCESS: NTSTATUS = NTSTATUS(1073807364i32);
 pub const DBG_TERMINATE_THREAD: NTSTATUS = NTSTATUS(1073807363i32);
 pub const DBG_UNABLE_TO_PROVIDE_HANDLE: NTSTATUS = NTSTATUS(1073807362i32);
-pub const DCOMPOSITION_ERROR_SURFACE_BEING_RENDERED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003302399i32);
-pub const DCOMPOSITION_ERROR_SURFACE_NOT_BEING_RENDERED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003302398i32);
-pub const DCOMPOSITION_ERROR_WINDOW_ALREADY_COMPOSED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003302400i32);
+pub const DCOMPOSITION_ERROR_SURFACE_BEING_RENDERED: crate::core::HRESULT =
+    crate::core::HRESULT(-2003302399i32);
+pub const DCOMPOSITION_ERROR_SURFACE_NOT_BEING_RENDERED: crate::core::HRESULT =
+    crate::core::HRESULT(-2003302398i32);
+pub const DCOMPOSITION_ERROR_WINDOW_ALREADY_COMPOSED: crate::core::HRESULT =
+    crate::core::HRESULT(-2003302400i32);
 pub struct DECIMAL {
     pub wReserved: u16,
     pub Anonymous1: DECIMAL_0,
@@ -1161,28 +1046,28 @@ impl ::core::cmp::PartialEq for DECIMAL_1_0 {
     }
 }
 impl ::core::cmp::Eq for DECIMAL_1_0 {}
-pub const DIGSIG_E_CRYPTO: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146762744i32);
-pub const DIGSIG_E_DECODE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146762746i32);
-pub const DIGSIG_E_ENCODE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146762747i32);
-pub const DIGSIG_E_EXTENSIBILITY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146762745i32);
-pub const DISP_E_ARRAYISLOCKED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147352563i32);
-pub const DISP_E_BADCALLEE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147352560i32);
-pub const DISP_E_BADINDEX: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147352565i32);
-pub const DISP_E_BADPARAMCOUNT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147352562i32);
-pub const DISP_E_BADVARTYPE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147352568i32);
-pub const DISP_E_BUFFERTOOSMALL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147352557i32);
-pub const DISP_E_DIVBYZERO: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147352558i32);
-pub const DISP_E_EXCEPTION: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147352567i32);
-pub const DISP_E_MEMBERNOTFOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147352573i32);
-pub const DISP_E_NONAMEDARGS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147352569i32);
-pub const DISP_E_NOTACOLLECTION: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147352559i32);
-pub const DISP_E_OVERFLOW: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147352566i32);
-pub const DISP_E_PARAMNOTFOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147352572i32);
-pub const DISP_E_PARAMNOTOPTIONAL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147352561i32);
-pub const DISP_E_TYPEMISMATCH: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147352571i32);
-pub const DISP_E_UNKNOWNINTERFACE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147352575i32);
-pub const DISP_E_UNKNOWNLCID: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147352564i32);
-pub const DISP_E_UNKNOWNNAME: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147352570i32);
+pub const DIGSIG_E_CRYPTO: crate::core::HRESULT = crate::core::HRESULT(-2146762744i32);
+pub const DIGSIG_E_DECODE: crate::core::HRESULT = crate::core::HRESULT(-2146762746i32);
+pub const DIGSIG_E_ENCODE: crate::core::HRESULT = crate::core::HRESULT(-2146762747i32);
+pub const DIGSIG_E_EXTENSIBILITY: crate::core::HRESULT = crate::core::HRESULT(-2146762745i32);
+pub const DISP_E_ARRAYISLOCKED: crate::core::HRESULT = crate::core::HRESULT(-2147352563i32);
+pub const DISP_E_BADCALLEE: crate::core::HRESULT = crate::core::HRESULT(-2147352560i32);
+pub const DISP_E_BADINDEX: crate::core::HRESULT = crate::core::HRESULT(-2147352565i32);
+pub const DISP_E_BADPARAMCOUNT: crate::core::HRESULT = crate::core::HRESULT(-2147352562i32);
+pub const DISP_E_BADVARTYPE: crate::core::HRESULT = crate::core::HRESULT(-2147352568i32);
+pub const DISP_E_BUFFERTOOSMALL: crate::core::HRESULT = crate::core::HRESULT(-2147352557i32);
+pub const DISP_E_DIVBYZERO: crate::core::HRESULT = crate::core::HRESULT(-2147352558i32);
+pub const DISP_E_EXCEPTION: crate::core::HRESULT = crate::core::HRESULT(-2147352567i32);
+pub const DISP_E_MEMBERNOTFOUND: crate::core::HRESULT = crate::core::HRESULT(-2147352573i32);
+pub const DISP_E_NONAMEDARGS: crate::core::HRESULT = crate::core::HRESULT(-2147352569i32);
+pub const DISP_E_NOTACOLLECTION: crate::core::HRESULT = crate::core::HRESULT(-2147352559i32);
+pub const DISP_E_OVERFLOW: crate::core::HRESULT = crate::core::HRESULT(-2147352566i32);
+pub const DISP_E_PARAMNOTFOUND: crate::core::HRESULT = crate::core::HRESULT(-2147352572i32);
+pub const DISP_E_PARAMNOTOPTIONAL: crate::core::HRESULT = crate::core::HRESULT(-2147352561i32);
+pub const DISP_E_TYPEMISMATCH: crate::core::HRESULT = crate::core::HRESULT(-2147352571i32);
+pub const DISP_E_UNKNOWNINTERFACE: crate::core::HRESULT = crate::core::HRESULT(-2147352575i32);
+pub const DISP_E_UNKNOWNLCID: crate::core::HRESULT = crate::core::HRESULT(-2147352564i32);
+pub const DISP_E_UNKNOWNNAME: crate::core::HRESULT = crate::core::HRESULT(-2147352570i32);
 pub const DM_COPY: u32 = 2u32;
 pub const DM_IN_BUFFER: u32 = 8u32;
 pub const DM_IN_PROMPT: u32 = 4u32;
@@ -1201,19 +1086,18 @@ pub const DNS_STATUS_FQDN: i32 = 9557i32;
 pub const DNS_STATUS_SINGLE_PART_NAME: i32 = 9559i32;
 pub const DNS_WARNING_DOMAIN_UNDELETED: i32 = 9716i32;
 pub const DNS_WARNING_PTR_CREATE_FAILED: i32 = 9715i32;
-pub const DRAGDROP_E_ALREADYREGISTERED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147221247i32);
-pub const DRAGDROP_E_CONCURRENT_DRAG_ATTEMPTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147221245i32);
+pub const DRAGDROP_E_ALREADYREGISTERED: crate::core::HRESULT = crate::core::HRESULT(-2147221247i32);
+pub const DRAGDROP_E_CONCURRENT_DRAG_ATTEMPTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2147221245i32);
 pub const DRAGDROP_E_FIRST: i32 = -2147221248i32;
-pub const DRAGDROP_E_INVALIDHWND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221246i32);
+pub const DRAGDROP_E_INVALIDHWND: crate::core::HRESULT = crate::core::HRESULT(-2147221246i32);
 pub const DRAGDROP_E_LAST: i32 = -2147221233i32;
-pub const DRAGDROP_E_NOTREGISTERED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221248i32);
-pub const DRAGDROP_S_CANCEL: ::win32::core::HRESULT = ::win32::core::HRESULT(262401i32);
-pub const DRAGDROP_S_DROP: ::win32::core::HRESULT = ::win32::core::HRESULT(262400i32);
+pub const DRAGDROP_E_NOTREGISTERED: crate::core::HRESULT = crate::core::HRESULT(-2147221248i32);
+pub const DRAGDROP_S_CANCEL: crate::core::HRESULT = crate::core::HRESULT(262401i32);
+pub const DRAGDROP_S_DROP: crate::core::HRESULT = crate::core::HRESULT(262400i32);
 pub const DRAGDROP_S_FIRST: i32 = 262400i32;
 pub const DRAGDROP_S_LAST: i32 = 262415i32;
-pub const DRAGDROP_S_USEDEFAULTCURSORS: ::win32::core::HRESULT = ::win32::core::HRESULT(262402i32);
+pub const DRAGDROP_S_USEDEFAULTCURSORS: crate::core::HRESULT = crate::core::HRESULT(262402i32);
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct DUPLICATE_HANDLE_OPTIONS(pub u32);
 pub const DUPLICATE_CLOSE_SOURCE: DUPLICATE_HANDLE_OPTIONS = DUPLICATE_HANDLE_OPTIONS(1u32);
@@ -1264,101 +1148,102 @@ impl ::core::ops::Not for DUPLICATE_HANDLE_OPTIONS {
         Self(self.0.not())
     }
 }
-pub const DV_E_CLIPFORMAT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221398i32);
-pub const DV_E_DVASPECT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221397i32);
-pub const DV_E_DVTARGETDEVICE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221403i32);
-pub const DV_E_DVTARGETDEVICE_SIZE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221396i32);
-pub const DV_E_FORMATETC: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221404i32);
-pub const DV_E_LINDEX: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221400i32);
-pub const DV_E_NOIVIEWOBJECT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221395i32);
-pub const DV_E_STATDATA: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221401i32);
-pub const DV_E_STGMEDIUM: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221402i32);
-pub const DV_E_TYMED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221399i32);
-pub const DWMERR_CATASTROPHIC_FAILURE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003302654i32);
-pub const DWMERR_STATE_TRANSITION_FAILED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003302656i32);
-pub const DWMERR_THEME_FAILED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003302655i32);
-pub const DWM_E_ADAPTER_NOT_FOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144980987i32);
-pub const DWM_E_COMPOSITIONDISABLED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144980991i32);
-pub const DWM_E_NOT_QUEUING_PRESENTS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144980988i32);
-pub const DWM_E_NO_REDIRECTION_SURFACE_AVAILABLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144980989i32);
-pub const DWM_E_REMOTING_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144980990i32);
-pub const DWM_E_TEXTURE_TOO_LARGE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144980985i32);
-pub const DWM_S_GDI_REDIRECTION_SURFACE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(2502661i32);
-pub const DWM_S_GDI_REDIRECTION_SURFACE_BLT_VIA_GDI: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(2502664i32);
-pub const DWRITE_E_ALREADYREGISTERED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003283962i32);
-pub const DWRITE_E_CACHEFORMAT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003283961i32);
-pub const DWRITE_E_CACHEVERSION: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003283960i32);
-pub const DWRITE_E_FILEACCESS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003283964i32);
-pub const DWRITE_E_FILEFORMAT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003283968i32);
-pub const DWRITE_E_FILENOTFOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003283965i32);
-pub const DWRITE_E_FLOWDIRECTIONCONFLICTS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003283957i32);
-pub const DWRITE_E_FONTCOLLECTIONOBSOLETE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003283963i32);
-pub const DWRITE_E_NOCOLOR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003283956i32);
-pub const DWRITE_E_NOFONT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003283966i32);
-pub const DWRITE_E_TEXTRENDERERINCOMPATIBLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003283958i32);
-pub const DWRITE_E_UNEXPECTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003283967i32);
-pub const DWRITE_E_UNSUPPORTEDOPERATION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003283959i32);
-pub const DXCORE_ERROR_EVENT_NOT_UNREGISTERED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2004877311i32);
-pub const DXGI_DDI_ERR_NONEXCLUSIVE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2005204989i32);
-pub const DXGI_DDI_ERR_UNSUPPORTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2005204990i32);
-pub const DXGI_DDI_ERR_WASSTILLDRAWING: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2005204991i32);
-pub const DXGI_STATUS_CLIPPED: ::win32::core::HRESULT = ::win32::core::HRESULT(142213122i32);
-pub const DXGI_STATUS_DDA_WAS_STILL_DRAWING: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(142213130i32);
-pub const DXGI_STATUS_GRAPHICS_VIDPN_SOURCE_IN_USE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(142213126i32);
-pub const DXGI_STATUS_MODE_CHANGED: ::win32::core::HRESULT = ::win32::core::HRESULT(142213127i32);
-pub const DXGI_STATUS_MODE_CHANGE_IN_PROGRESS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(142213128i32);
-pub const DXGI_STATUS_NO_DESKTOP_ACCESS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(142213125i32);
-pub const DXGI_STATUS_NO_REDIRECTION: ::win32::core::HRESULT = ::win32::core::HRESULT(142213124i32);
-pub const DXGI_STATUS_OCCLUDED: ::win32::core::HRESULT = ::win32::core::HRESULT(142213121i32);
-pub const DXGI_STATUS_PRESENT_REQUIRED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(142213167i32);
-pub const DXGI_STATUS_UNOCCLUDED: ::win32::core::HRESULT = ::win32::core::HRESULT(142213129i32);
-pub const EAS_E_ADMINS_CANNOT_CHANGE_PASSWORD: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2141913080i32);
-pub const EAS_E_ADMINS_HAVE_BLANK_PASSWORD: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2141913081i32);
-pub const EAS_E_CONNECTED_ADMINS_NEED_TO_CHANGE_PASSWORD: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2141913077i32);
-pub const EAS_E_CURRENT_CONNECTED_USER_NEED_TO_CHANGE_PASSWORD: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2141913075i32);
-pub const EAS_E_CURRENT_USER_HAS_BLANK_PASSWORD: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2141913084i32);
-pub const EAS_E_LOCAL_CONTROLLED_USERS_CANNOT_CHANGE_PASSWORD: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2141913079i32);
-pub const EAS_E_PASSWORD_POLICY_NOT_ENFORCEABLE_FOR_CONNECTED_ADMINS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2141913078i32);
-pub const EAS_E_PASSWORD_POLICY_NOT_ENFORCEABLE_FOR_CURRENT_CONNECTED_USER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2141913076i32);
-pub const EAS_E_POLICY_COMPLIANT_WITH_ACTIONS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2141913086i32);
-pub const EAS_E_POLICY_NOT_MANAGED_BY_OS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2141913087i32);
-pub const EAS_E_REQUESTED_POLICY_NOT_ENFORCEABLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2141913085i32);
-pub const EAS_E_REQUESTED_POLICY_PASSWORD_EXPIRATION_INCOMPATIBLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2141913083i32);
-pub const EAS_E_USER_CANNOT_CHANGE_PASSWORD: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2141913082i32);
+impl FromIntoMemory for DUPLICATE_HANDLE_OPTIONS {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
+    }
+}
+pub const DV_E_CLIPFORMAT: crate::core::HRESULT = crate::core::HRESULT(-2147221398i32);
+pub const DV_E_DVASPECT: crate::core::HRESULT = crate::core::HRESULT(-2147221397i32);
+pub const DV_E_DVTARGETDEVICE: crate::core::HRESULT = crate::core::HRESULT(-2147221403i32);
+pub const DV_E_DVTARGETDEVICE_SIZE: crate::core::HRESULT = crate::core::HRESULT(-2147221396i32);
+pub const DV_E_FORMATETC: crate::core::HRESULT = crate::core::HRESULT(-2147221404i32);
+pub const DV_E_LINDEX: crate::core::HRESULT = crate::core::HRESULT(-2147221400i32);
+pub const DV_E_NOIVIEWOBJECT: crate::core::HRESULT = crate::core::HRESULT(-2147221395i32);
+pub const DV_E_STATDATA: crate::core::HRESULT = crate::core::HRESULT(-2147221401i32);
+pub const DV_E_STGMEDIUM: crate::core::HRESULT = crate::core::HRESULT(-2147221402i32);
+pub const DV_E_TYMED: crate::core::HRESULT = crate::core::HRESULT(-2147221399i32);
+pub const DWMERR_CATASTROPHIC_FAILURE: crate::core::HRESULT = crate::core::HRESULT(-2003302654i32);
+pub const DWMERR_STATE_TRANSITION_FAILED: crate::core::HRESULT =
+    crate::core::HRESULT(-2003302656i32);
+pub const DWMERR_THEME_FAILED: crate::core::HRESULT = crate::core::HRESULT(-2003302655i32);
+pub const DWM_E_ADAPTER_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2144980987i32);
+pub const DWM_E_COMPOSITIONDISABLED: crate::core::HRESULT = crate::core::HRESULT(-2144980991i32);
+pub const DWM_E_NOT_QUEUING_PRESENTS: crate::core::HRESULT = crate::core::HRESULT(-2144980988i32);
+pub const DWM_E_NO_REDIRECTION_SURFACE_AVAILABLE: crate::core::HRESULT =
+    crate::core::HRESULT(-2144980989i32);
+pub const DWM_E_REMOTING_NOT_SUPPORTED: crate::core::HRESULT = crate::core::HRESULT(-2144980990i32);
+pub const DWM_E_TEXTURE_TOO_LARGE: crate::core::HRESULT = crate::core::HRESULT(-2144980985i32);
+pub const DWM_S_GDI_REDIRECTION_SURFACE: crate::core::HRESULT = crate::core::HRESULT(2502661i32);
+pub const DWM_S_GDI_REDIRECTION_SURFACE_BLT_VIA_GDI: crate::core::HRESULT =
+    crate::core::HRESULT(2502664i32);
+pub const DWRITE_E_ALREADYREGISTERED: crate::core::HRESULT = crate::core::HRESULT(-2003283962i32);
+pub const DWRITE_E_CACHEFORMAT: crate::core::HRESULT = crate::core::HRESULT(-2003283961i32);
+pub const DWRITE_E_CACHEVERSION: crate::core::HRESULT = crate::core::HRESULT(-2003283960i32);
+pub const DWRITE_E_FILEACCESS: crate::core::HRESULT = crate::core::HRESULT(-2003283964i32);
+pub const DWRITE_E_FILEFORMAT: crate::core::HRESULT = crate::core::HRESULT(-2003283968i32);
+pub const DWRITE_E_FILENOTFOUND: crate::core::HRESULT = crate::core::HRESULT(-2003283965i32);
+pub const DWRITE_E_FLOWDIRECTIONCONFLICTS: crate::core::HRESULT =
+    crate::core::HRESULT(-2003283957i32);
+pub const DWRITE_E_FONTCOLLECTIONOBSOLETE: crate::core::HRESULT =
+    crate::core::HRESULT(-2003283963i32);
+pub const DWRITE_E_NOCOLOR: crate::core::HRESULT = crate::core::HRESULT(-2003283956i32);
+pub const DWRITE_E_NOFONT: crate::core::HRESULT = crate::core::HRESULT(-2003283966i32);
+pub const DWRITE_E_TEXTRENDERERINCOMPATIBLE: crate::core::HRESULT =
+    crate::core::HRESULT(-2003283958i32);
+pub const DWRITE_E_UNEXPECTED: crate::core::HRESULT = crate::core::HRESULT(-2003283967i32);
+pub const DWRITE_E_UNSUPPORTEDOPERATION: crate::core::HRESULT =
+    crate::core::HRESULT(-2003283959i32);
+pub const DXCORE_ERROR_EVENT_NOT_UNREGISTERED: crate::core::HRESULT =
+    crate::core::HRESULT(-2004877311i32);
+pub const DXGI_DDI_ERR_NONEXCLUSIVE: crate::core::HRESULT = crate::core::HRESULT(-2005204989i32);
+pub const DXGI_DDI_ERR_UNSUPPORTED: crate::core::HRESULT = crate::core::HRESULT(-2005204990i32);
+pub const DXGI_DDI_ERR_WASSTILLDRAWING: crate::core::HRESULT = crate::core::HRESULT(-2005204991i32);
+pub const DXGI_STATUS_CLIPPED: crate::core::HRESULT = crate::core::HRESULT(142213122i32);
+pub const DXGI_STATUS_DDA_WAS_STILL_DRAWING: crate::core::HRESULT =
+    crate::core::HRESULT(142213130i32);
+pub const DXGI_STATUS_GRAPHICS_VIDPN_SOURCE_IN_USE: crate::core::HRESULT =
+    crate::core::HRESULT(142213126i32);
+pub const DXGI_STATUS_MODE_CHANGED: crate::core::HRESULT = crate::core::HRESULT(142213127i32);
+pub const DXGI_STATUS_MODE_CHANGE_IN_PROGRESS: crate::core::HRESULT =
+    crate::core::HRESULT(142213128i32);
+pub const DXGI_STATUS_NO_DESKTOP_ACCESS: crate::core::HRESULT = crate::core::HRESULT(142213125i32);
+pub const DXGI_STATUS_NO_REDIRECTION: crate::core::HRESULT = crate::core::HRESULT(142213124i32);
+pub const DXGI_STATUS_OCCLUDED: crate::core::HRESULT = crate::core::HRESULT(142213121i32);
+pub const DXGI_STATUS_PRESENT_REQUIRED: crate::core::HRESULT = crate::core::HRESULT(142213167i32);
+pub const DXGI_STATUS_UNOCCLUDED: crate::core::HRESULT = crate::core::HRESULT(142213129i32);
+pub const EAS_E_ADMINS_CANNOT_CHANGE_PASSWORD: crate::core::HRESULT =
+    crate::core::HRESULT(-2141913080i32);
+pub const EAS_E_ADMINS_HAVE_BLANK_PASSWORD: crate::core::HRESULT =
+    crate::core::HRESULT(-2141913081i32);
+pub const EAS_E_CONNECTED_ADMINS_NEED_TO_CHANGE_PASSWORD: crate::core::HRESULT =
+    crate::core::HRESULT(-2141913077i32);
+pub const EAS_E_CURRENT_CONNECTED_USER_NEED_TO_CHANGE_PASSWORD: crate::core::HRESULT =
+    crate::core::HRESULT(-2141913075i32);
+pub const EAS_E_CURRENT_USER_HAS_BLANK_PASSWORD: crate::core::HRESULT =
+    crate::core::HRESULT(-2141913084i32);
+pub const EAS_E_LOCAL_CONTROLLED_USERS_CANNOT_CHANGE_PASSWORD: crate::core::HRESULT =
+    crate::core::HRESULT(-2141913079i32);
+pub const EAS_E_PASSWORD_POLICY_NOT_ENFORCEABLE_FOR_CONNECTED_ADMINS: crate::core::HRESULT =
+    crate::core::HRESULT(-2141913078i32);
+pub const EAS_E_PASSWORD_POLICY_NOT_ENFORCEABLE_FOR_CURRENT_CONNECTED_USER: crate::core::HRESULT =
+    crate::core::HRESULT(-2141913076i32);
+pub const EAS_E_POLICY_COMPLIANT_WITH_ACTIONS: crate::core::HRESULT =
+    crate::core::HRESULT(-2141913086i32);
+pub const EAS_E_POLICY_NOT_MANAGED_BY_OS: crate::core::HRESULT =
+    crate::core::HRESULT(-2141913087i32);
+pub const EAS_E_REQUESTED_POLICY_NOT_ENFORCEABLE: crate::core::HRESULT =
+    crate::core::HRESULT(-2141913085i32);
+pub const EAS_E_REQUESTED_POLICY_PASSWORD_EXPIRATION_INCOMPATIBLE: crate::core::HRESULT =
+    crate::core::HRESULT(-2141913083i32);
+pub const EAS_E_USER_CANNOT_CHANGE_PASSWORD: crate::core::HRESULT =
+    crate::core::HRESULT(-2141913082i32);
 pub const ENUM_E_FIRST: i32 = -2147221072i32;
 pub const ENUM_E_LAST: i32 = -2147221057i32;
 pub const ENUM_S_FIRST: i32 = 262576i32;
@@ -1368,521 +1253,495 @@ pub const EPT_NT_CANT_PERFORM_OP: NTSTATUS = NTSTATUS(-1073610699i32);
 pub const EPT_NT_INVALID_ENTRY: NTSTATUS = NTSTATUS(-1073610700i32);
 pub const EPT_NT_NOT_REGISTERED: NTSTATUS = NTSTATUS(-1073610698i32);
 pub const ERROR_ALLOWED_PORT_TYPE_RESTRICTION: u32 = 941u32;
-pub const ERROR_ALL_SIDS_FILTERED: ::win32::core::HRESULT = ::win32::core::HRESULT(-1073151998i32);
+pub const ERROR_ALL_SIDS_FILTERED: crate::core::HRESULT = crate::core::HRESULT(-1073151998i32);
 pub const ERROR_ALREADY_CONNECTED: u32 = 901u32;
 pub const ERROR_ALREADY_CONNECTING: u32 = 910u32;
-pub const ERROR_ATTRIBUTE_NOT_PRESENT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2138898422i32);
-pub const ERROR_AUDITING_DISABLED: ::win32::core::HRESULT = ::win32::core::HRESULT(-1073151999i32);
+pub const ERROR_ATTRIBUTE_NOT_PRESENT: crate::core::HRESULT = crate::core::HRESULT(-2138898422i32);
+pub const ERROR_AUDITING_DISABLED: crate::core::HRESULT = crate::core::HRESULT(-1073151999i32);
 pub const ERROR_AUTHENTICATOR_MISMATCH: u32 = 955u32;
 pub const ERROR_AUTH_PROTOCOL_REJECTED: u32 = 917u32;
 pub const ERROR_AUTH_PROTOCOL_RESTRICTION: u32 = 942u32;
 pub const ERROR_AUTH_SERVER_TIMEOUT: u32 = 930u32;
 pub const ERROR_BAP_DISCONNECTED: u32 = 936u32;
 pub const ERROR_BAP_REQUIRED: u32 = 943u32;
-pub const ERROR_BIZRULES_NOT_ENABLED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1073151997i32);
+pub const ERROR_BIZRULES_NOT_ENABLED: crate::core::HRESULT = crate::core::HRESULT(-1073151997i32);
 pub const ERROR_CLIENT_INTERFACE_ALREADY_EXISTS: u32 = 915u32;
-pub const ERROR_CLIP_DEVICE_LICENSE_MISSING: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1058406397i32);
-pub const ERROR_CLIP_KEYHOLDER_LICENSE_MISSING_OR_INVALID: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1058406395i32);
-pub const ERROR_CLIP_LICENSE_DEVICE_ID_MISMATCH: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1058406390i32);
-pub const ERROR_CLIP_LICENSE_EXPIRED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1058406394i32);
-pub const ERROR_CLIP_LICENSE_HARDWARE_ID_OUT_OF_TOLERANCE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1058406391i32);
-pub const ERROR_CLIP_LICENSE_INVALID_SIGNATURE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1058406396i32);
-pub const ERROR_CLIP_LICENSE_NOT_FOUND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1058406398i32);
-pub const ERROR_CLIP_LICENSE_NOT_SIGNED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1058406392i32);
-pub const ERROR_CLIP_LICENSE_SIGNED_BY_UNKNOWN_SOURCE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1058406393i32);
-pub const ERROR_CRED_REQUIRES_CONFIRMATION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146865127i32);
-pub const ERROR_DBG_ATTACH_PROCESS_FAILURE_LOCKDOWN: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2135949310i32);
-pub const ERROR_DBG_CONNECT_SERVER_FAILURE_LOCKDOWN: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2135949309i32);
-pub const ERROR_DBG_CREATE_PROCESS_FAILURE_LOCKDOWN: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2135949311i32);
-pub const ERROR_DBG_START_SERVER_FAILURE_LOCKDOWN: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2135949308i32);
+pub const ERROR_CLIP_DEVICE_LICENSE_MISSING: crate::core::HRESULT =
+    crate::core::HRESULT(-1058406397i32);
+pub const ERROR_CLIP_KEYHOLDER_LICENSE_MISSING_OR_INVALID: crate::core::HRESULT =
+    crate::core::HRESULT(-1058406395i32);
+pub const ERROR_CLIP_LICENSE_DEVICE_ID_MISMATCH: crate::core::HRESULT =
+    crate::core::HRESULT(-1058406390i32);
+pub const ERROR_CLIP_LICENSE_EXPIRED: crate::core::HRESULT = crate::core::HRESULT(-1058406394i32);
+pub const ERROR_CLIP_LICENSE_HARDWARE_ID_OUT_OF_TOLERANCE: crate::core::HRESULT =
+    crate::core::HRESULT(-1058406391i32);
+pub const ERROR_CLIP_LICENSE_INVALID_SIGNATURE: crate::core::HRESULT =
+    crate::core::HRESULT(-1058406396i32);
+pub const ERROR_CLIP_LICENSE_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-1058406398i32);
+pub const ERROR_CLIP_LICENSE_NOT_SIGNED: crate::core::HRESULT =
+    crate::core::HRESULT(-1058406392i32);
+pub const ERROR_CLIP_LICENSE_SIGNED_BY_UNKNOWN_SOURCE: crate::core::HRESULT =
+    crate::core::HRESULT(-1058406393i32);
+pub const ERROR_CRED_REQUIRES_CONFIRMATION: crate::core::HRESULT =
+    crate::core::HRESULT(-2146865127i32);
+pub const ERROR_DBG_ATTACH_PROCESS_FAILURE_LOCKDOWN: crate::core::HRESULT =
+    crate::core::HRESULT(-2135949310i32);
+pub const ERROR_DBG_CONNECT_SERVER_FAILURE_LOCKDOWN: crate::core::HRESULT =
+    crate::core::HRESULT(-2135949309i32);
+pub const ERROR_DBG_CREATE_PROCESS_FAILURE_LOCKDOWN: crate::core::HRESULT =
+    crate::core::HRESULT(-2135949311i32);
+pub const ERROR_DBG_START_SERVER_FAILURE_LOCKDOWN: crate::core::HRESULT =
+    crate::core::HRESULT(-2135949308i32);
 pub const ERROR_DDM_NOT_RUNNING: u32 = 903u32;
 pub const ERROR_DIALIN_HOURS_RESTRICTION: u32 = 940u32;
 pub const ERROR_DIALOUT_HOURS_RESTRICTION: u32 = 944u32;
-pub const ERROR_FLT_ALREADY_ENLISTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2145452005i32);
-pub const ERROR_FLT_CBDQ_DISABLED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2145452018i32);
-pub const ERROR_FLT_CONTEXT_ALLOCATION_NOT_FOUND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2145452010i32);
-pub const ERROR_FLT_CONTEXT_ALREADY_DEFINED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2145452030i32);
-pub const ERROR_FLT_CONTEXT_ALREADY_LINKED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2145452004i32);
-pub const ERROR_FLT_DELETING_OBJECT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2145452021i32);
-pub const ERROR_FLT_DISALLOW_FAST_IO: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2145452028i32);
-pub const ERROR_FLT_DO_NOT_ATTACH: ::win32::core::HRESULT = ::win32::core::HRESULT(-2145452017i32);
-pub const ERROR_FLT_DO_NOT_DETACH: ::win32::core::HRESULT = ::win32::core::HRESULT(-2145452016i32);
-pub const ERROR_FLT_DUPLICATE_ENTRY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2145452019i32);
-pub const ERROR_FLT_FILTER_NOT_FOUND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2145452013i32);
-pub const ERROR_FLT_FILTER_NOT_READY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2145452024i32);
-pub const ERROR_FLT_INSTANCE_ALTITUDE_COLLISION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2145452015i32);
-pub const ERROR_FLT_INSTANCE_NAME_COLLISION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2145452014i32);
-pub const ERROR_FLT_INSTANCE_NOT_FOUND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2145452011i32);
-pub const ERROR_FLT_INTERNAL_ERROR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2145452022i32);
-pub const ERROR_FLT_INVALID_ASYNCHRONOUS_REQUEST: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2145452029i32);
-pub const ERROR_FLT_INVALID_CONTEXT_REGISTRATION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2145452009i32);
-pub const ERROR_FLT_INVALID_NAME_REQUEST: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2145452027i32);
-pub const ERROR_FLT_IO_COMPLETE: ::win32::core::HRESULT = ::win32::core::HRESULT(2031617i32);
-pub const ERROR_FLT_MUST_BE_NONPAGED_POOL: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2145452020i32);
-pub const ERROR_FLT_NAME_CACHE_MISS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2145452008i32);
-pub const ERROR_FLT_NOT_INITIALIZED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2145452025i32);
-pub const ERROR_FLT_NOT_SAFE_TO_POST_OPERATION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2145452026i32);
-pub const ERROR_FLT_NO_DEVICE_OBJECT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2145452007i32);
-pub const ERROR_FLT_NO_HANDLER_DEFINED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2145452031i32);
-pub const ERROR_FLT_NO_WAITER_FOR_REPLY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2145452000i32);
-pub const ERROR_FLT_POST_OPERATION_CLEANUP: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2145452023i32);
-pub const ERROR_FLT_REGISTRATION_BUSY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2145451997i32);
-pub const ERROR_FLT_VOLUME_ALREADY_MOUNTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2145452006i32);
-pub const ERROR_FLT_VOLUME_NOT_FOUND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2145452012i32);
-pub const ERROR_FLT_WCOS_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2145451996i32);
-pub const ERROR_GRAPHICS_ADAPTER_ACCESS_NOT_EXCLUDED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242181i32);
-pub const ERROR_GRAPHICS_ADAPTER_CHAIN_NOT_READY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242189i32);
-pub const ERROR_GRAPHICS_ADAPTER_MUST_HAVE_AT_LEAST_ONE_SOURCE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242456i32);
-pub const ERROR_GRAPHICS_ADAPTER_MUST_HAVE_AT_LEAST_ONE_TARGET: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242455i32);
-pub const ERROR_GRAPHICS_ADAPTER_WAS_RESET: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071243261i32);
-pub const ERROR_GRAPHICS_ALLOCATION_BUSY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071243006i32);
-pub const ERROR_GRAPHICS_ALLOCATION_CLOSED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242990i32);
-pub const ERROR_GRAPHICS_ALLOCATION_CONTENT_LOST: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242986i32);
-pub const ERROR_GRAPHICS_ALLOCATION_INVALID: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071243002i32);
-pub const ERROR_GRAPHICS_CANCEL_VIDPN_TOPOLOGY_AUGMENTATION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242406i32);
-pub const ERROR_GRAPHICS_CANNOTCOLORCONVERT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071243256i32);
-pub const ERROR_GRAPHICS_CANT_ACCESS_ACTIVE_VIDPN: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242429i32);
-pub const ERROR_GRAPHICS_CANT_EVICT_PINNED_ALLOCATION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242999i32);
-pub const ERROR_GRAPHICS_CANT_LOCK_MEMORY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071243007i32);
-pub const ERROR_GRAPHICS_CANT_RENDER_LOCKED_ALLOCATION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242991i32);
-pub const ERROR_GRAPHICS_CHAINLINKS_NOT_ENUMERATED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242190i32);
-pub const ERROR_GRAPHICS_CHAINLINKS_NOT_POWERED_ON: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242187i32);
-pub const ERROR_GRAPHICS_CHAINLINKS_NOT_STARTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242188i32);
-pub const ERROR_GRAPHICS_CHILD_DESCRIPTOR_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242239i32);
-pub const ERROR_GRAPHICS_CLIENTVIDPN_NOT_SET: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242404i32);
-pub const ERROR_GRAPHICS_COPP_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071241983i32);
-pub const ERROR_GRAPHICS_DATASET_IS_EMPTY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(2499403i32);
+pub const ERROR_FLT_ALREADY_ENLISTED: crate::core::HRESULT = crate::core::HRESULT(-2145452005i32);
+pub const ERROR_FLT_CBDQ_DISABLED: crate::core::HRESULT = crate::core::HRESULT(-2145452018i32);
+pub const ERROR_FLT_CONTEXT_ALLOCATION_NOT_FOUND: crate::core::HRESULT =
+    crate::core::HRESULT(-2145452010i32);
+pub const ERROR_FLT_CONTEXT_ALREADY_DEFINED: crate::core::HRESULT =
+    crate::core::HRESULT(-2145452030i32);
+pub const ERROR_FLT_CONTEXT_ALREADY_LINKED: crate::core::HRESULT =
+    crate::core::HRESULT(-2145452004i32);
+pub const ERROR_FLT_DELETING_OBJECT: crate::core::HRESULT = crate::core::HRESULT(-2145452021i32);
+pub const ERROR_FLT_DISALLOW_FAST_IO: crate::core::HRESULT = crate::core::HRESULT(-2145452028i32);
+pub const ERROR_FLT_DO_NOT_ATTACH: crate::core::HRESULT = crate::core::HRESULT(-2145452017i32);
+pub const ERROR_FLT_DO_NOT_DETACH: crate::core::HRESULT = crate::core::HRESULT(-2145452016i32);
+pub const ERROR_FLT_DUPLICATE_ENTRY: crate::core::HRESULT = crate::core::HRESULT(-2145452019i32);
+pub const ERROR_FLT_FILTER_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2145452013i32);
+pub const ERROR_FLT_FILTER_NOT_READY: crate::core::HRESULT = crate::core::HRESULT(-2145452024i32);
+pub const ERROR_FLT_INSTANCE_ALTITUDE_COLLISION: crate::core::HRESULT =
+    crate::core::HRESULT(-2145452015i32);
+pub const ERROR_FLT_INSTANCE_NAME_COLLISION: crate::core::HRESULT =
+    crate::core::HRESULT(-2145452014i32);
+pub const ERROR_FLT_INSTANCE_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2145452011i32);
+pub const ERROR_FLT_INTERNAL_ERROR: crate::core::HRESULT = crate::core::HRESULT(-2145452022i32);
+pub const ERROR_FLT_INVALID_ASYNCHRONOUS_REQUEST: crate::core::HRESULT =
+    crate::core::HRESULT(-2145452029i32);
+pub const ERROR_FLT_INVALID_CONTEXT_REGISTRATION: crate::core::HRESULT =
+    crate::core::HRESULT(-2145452009i32);
+pub const ERROR_FLT_INVALID_NAME_REQUEST: crate::core::HRESULT =
+    crate::core::HRESULT(-2145452027i32);
+pub const ERROR_FLT_IO_COMPLETE: crate::core::HRESULT = crate::core::HRESULT(2031617i32);
+pub const ERROR_FLT_MUST_BE_NONPAGED_POOL: crate::core::HRESULT =
+    crate::core::HRESULT(-2145452020i32);
+pub const ERROR_FLT_NAME_CACHE_MISS: crate::core::HRESULT = crate::core::HRESULT(-2145452008i32);
+pub const ERROR_FLT_NOT_INITIALIZED: crate::core::HRESULT = crate::core::HRESULT(-2145452025i32);
+pub const ERROR_FLT_NOT_SAFE_TO_POST_OPERATION: crate::core::HRESULT =
+    crate::core::HRESULT(-2145452026i32);
+pub const ERROR_FLT_NO_DEVICE_OBJECT: crate::core::HRESULT = crate::core::HRESULT(-2145452007i32);
+pub const ERROR_FLT_NO_HANDLER_DEFINED: crate::core::HRESULT = crate::core::HRESULT(-2145452031i32);
+pub const ERROR_FLT_NO_WAITER_FOR_REPLY: crate::core::HRESULT =
+    crate::core::HRESULT(-2145452000i32);
+pub const ERROR_FLT_POST_OPERATION_CLEANUP: crate::core::HRESULT =
+    crate::core::HRESULT(-2145452023i32);
+pub const ERROR_FLT_REGISTRATION_BUSY: crate::core::HRESULT = crate::core::HRESULT(-2145451997i32);
+pub const ERROR_FLT_VOLUME_ALREADY_MOUNTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2145452006i32);
+pub const ERROR_FLT_VOLUME_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2145452012i32);
+pub const ERROR_FLT_WCOS_NOT_SUPPORTED: crate::core::HRESULT = crate::core::HRESULT(-2145451996i32);
+pub const ERROR_GRAPHICS_ADAPTER_ACCESS_NOT_EXCLUDED: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242181i32);
+pub const ERROR_GRAPHICS_ADAPTER_CHAIN_NOT_READY: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242189i32);
+pub const ERROR_GRAPHICS_ADAPTER_MUST_HAVE_AT_LEAST_ONE_SOURCE: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242456i32);
+pub const ERROR_GRAPHICS_ADAPTER_MUST_HAVE_AT_LEAST_ONE_TARGET: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242455i32);
+pub const ERROR_GRAPHICS_ADAPTER_WAS_RESET: crate::core::HRESULT =
+    crate::core::HRESULT(-1071243261i32);
+pub const ERROR_GRAPHICS_ALLOCATION_BUSY: crate::core::HRESULT =
+    crate::core::HRESULT(-1071243006i32);
+pub const ERROR_GRAPHICS_ALLOCATION_CLOSED: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242990i32);
+pub const ERROR_GRAPHICS_ALLOCATION_CONTENT_LOST: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242986i32);
+pub const ERROR_GRAPHICS_ALLOCATION_INVALID: crate::core::HRESULT =
+    crate::core::HRESULT(-1071243002i32);
+pub const ERROR_GRAPHICS_CANCEL_VIDPN_TOPOLOGY_AUGMENTATION: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242406i32);
+pub const ERROR_GRAPHICS_CANNOTCOLORCONVERT: crate::core::HRESULT =
+    crate::core::HRESULT(-1071243256i32);
+pub const ERROR_GRAPHICS_CANT_ACCESS_ACTIVE_VIDPN: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242429i32);
+pub const ERROR_GRAPHICS_CANT_EVICT_PINNED_ALLOCATION: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242999i32);
+pub const ERROR_GRAPHICS_CANT_LOCK_MEMORY: crate::core::HRESULT =
+    crate::core::HRESULT(-1071243007i32);
+pub const ERROR_GRAPHICS_CANT_RENDER_LOCKED_ALLOCATION: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242991i32);
+pub const ERROR_GRAPHICS_CHAINLINKS_NOT_ENUMERATED: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242190i32);
+pub const ERROR_GRAPHICS_CHAINLINKS_NOT_POWERED_ON: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242187i32);
+pub const ERROR_GRAPHICS_CHAINLINKS_NOT_STARTED: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242188i32);
+pub const ERROR_GRAPHICS_CHILD_DESCRIPTOR_NOT_SUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242239i32);
+pub const ERROR_GRAPHICS_CLIENTVIDPN_NOT_SET: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242404i32);
+pub const ERROR_GRAPHICS_COPP_NOT_SUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-1071241983i32);
+pub const ERROR_GRAPHICS_DATASET_IS_EMPTY: crate::core::HRESULT = crate::core::HRESULT(2499403i32);
 pub const ERROR_GRAPHICS_DDCCI_CURRENT_CURRENT_VALUE_GREATER_THAN_MAXIMUM_VALUE:
-    ::win32::core::HRESULT = ::win32::core::HRESULT(-1071241768i32);
-pub const ERROR_GRAPHICS_DDCCI_INVALID_DATA: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071241851i32);
-pub const ERROR_GRAPHICS_DDCCI_INVALID_MESSAGE_CHECKSUM: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071241845i32);
-pub const ERROR_GRAPHICS_DDCCI_INVALID_MESSAGE_COMMAND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071241847i32);
-pub const ERROR_GRAPHICS_DDCCI_INVALID_MESSAGE_LENGTH: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071241846i32);
-pub const ERROR_GRAPHICS_DDCCI_MONITOR_RETURNED_INVALID_TIMING_STATUS_BYTE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071241850i32);
-pub const ERROR_GRAPHICS_DDCCI_VCP_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071241852i32);
-pub const ERROR_GRAPHICS_DEPENDABLE_CHILD_STATUS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(1076241468i32);
-pub const ERROR_GRAPHICS_DISPLAY_DEVICE_NOT_ATTACHED_TO_DESKTOP: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071241758i32);
-pub const ERROR_GRAPHICS_DRIVER_MISMATCH: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071243255i32);
-pub const ERROR_GRAPHICS_EMPTY_ADAPTER_MONITOR_MODE_SUPPORT_INTERSECTION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242459i32);
-pub const ERROR_GRAPHICS_FREQUENCYRANGE_ALREADY_IN_SET: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242465i32);
-pub const ERROR_GRAPHICS_FREQUENCYRANGE_NOT_IN_SET: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242467i32);
-pub const ERROR_GRAPHICS_GAMMA_RAMP_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242424i32);
-pub const ERROR_GRAPHICS_GPU_EXCEPTION_ON_DEVICE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242752i32);
-pub const ERROR_GRAPHICS_I2C_DEVICE_DOES_NOT_EXIST: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071241855i32);
-pub const ERROR_GRAPHICS_I2C_ERROR_RECEIVING_DATA: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071241853i32);
-pub const ERROR_GRAPHICS_I2C_ERROR_TRANSMITTING_DATA: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071241854i32);
-pub const ERROR_GRAPHICS_I2C_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071241856i32);
-pub const ERROR_GRAPHICS_INCOMPATIBLE_PRIVATE_FORMAT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242411i32);
-pub const ERROR_GRAPHICS_INCONSISTENT_DEVICE_LINK_STATE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242186i32);
-pub const ERROR_GRAPHICS_INDIRECT_DISPLAY_ABANDON_SWAPCHAIN: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071243246i32);
-pub const ERROR_GRAPHICS_INDIRECT_DISPLAY_DEVICE_STOPPED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071243245i32);
-pub const ERROR_GRAPHICS_INSUFFICIENT_DMA_BUFFER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071243263i32);
-pub const ERROR_GRAPHICS_INTERNAL_ERROR: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071241753i32);
-pub const ERROR_GRAPHICS_INVALID_ACTIVE_REGION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242485i32);
-pub const ERROR_GRAPHICS_INVALID_ALLOCATION_HANDLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242988i32);
-pub const ERROR_GRAPHICS_INVALID_ALLOCATION_INSTANCE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242989i32);
-pub const ERROR_GRAPHICS_INVALID_ALLOCATION_USAGE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242992i32);
-pub const ERROR_GRAPHICS_INVALID_CLIENT_TYPE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242405i32);
-pub const ERROR_GRAPHICS_INVALID_COLORBASIS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242434i32);
-pub const ERROR_GRAPHICS_INVALID_COPYPROTECTION_TYPE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242417i32);
-pub const ERROR_GRAPHICS_INVALID_DISPLAY_ADAPTER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071243262i32);
-pub const ERROR_GRAPHICS_INVALID_DRIVER_MODEL: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071243260i32);
-pub const ERROR_GRAPHICS_INVALID_FREQUENCY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242486i32);
-pub const ERROR_GRAPHICS_INVALID_GAMMA_RAMP: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242425i32);
-pub const ERROR_GRAPHICS_INVALID_MODE_PRUNING_ALGORITHM: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242410i32);
-pub const ERROR_GRAPHICS_INVALID_MONITORDESCRIPTOR: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242453i32);
-pub const ERROR_GRAPHICS_INVALID_MONITORDESCRIPTORSET: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242454i32);
-pub const ERROR_GRAPHICS_INVALID_MONITOR_CAPABILITY_ORIGIN: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242409i32);
-pub const ERROR_GRAPHICS_INVALID_MONITOR_FREQUENCYRANGE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242468i32);
-pub const ERROR_GRAPHICS_INVALID_MONITOR_FREQUENCYRANGESET: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242469i32);
-pub const ERROR_GRAPHICS_INVALID_MONITOR_FREQUENCYRANGE_CONSTRAINT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242408i32);
-pub const ERROR_GRAPHICS_INVALID_MONITOR_SOURCEMODESET: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242463i32);
-pub const ERROR_GRAPHICS_INVALID_MONITOR_SOURCE_MODE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242462i32);
-pub const ERROR_GRAPHICS_INVALID_PATH_CONTENT_GEOMETRY_TRANSFORMATION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242427i32);
-pub const ERROR_GRAPHICS_INVALID_PATH_CONTENT_TYPE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242418i32);
-pub const ERROR_GRAPHICS_INVALID_PATH_IMPORTANCE_ORDINAL: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242428i32);
-pub const ERROR_GRAPHICS_INVALID_PHYSICAL_MONITOR_HANDLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071241844i32);
-pub const ERROR_GRAPHICS_INVALID_PIXELFORMAT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242435i32);
-pub const ERROR_GRAPHICS_INVALID_PIXELVALUEACCESSMODE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242433i32);
-pub const ERROR_GRAPHICS_INVALID_POINTER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071241756i32);
-pub const ERROR_GRAPHICS_INVALID_PRIMARYSURFACE_SIZE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242438i32);
-pub const ERROR_GRAPHICS_INVALID_SCANLINE_ORDERING: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242414i32);
-pub const ERROR_GRAPHICS_INVALID_STRIDE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242436i32);
-pub const ERROR_GRAPHICS_INVALID_TOTAL_REGION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242484i32);
-pub const ERROR_GRAPHICS_INVALID_VIDEOPRESENTSOURCESET: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242475i32);
-pub const ERROR_GRAPHICS_INVALID_VIDEOPRESENTTARGETSET: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242474i32);
-pub const ERROR_GRAPHICS_INVALID_VIDEO_PRESENT_SOURCE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242492i32);
-pub const ERROR_GRAPHICS_INVALID_VIDEO_PRESENT_SOURCE_MODE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242480i32);
-pub const ERROR_GRAPHICS_INVALID_VIDEO_PRESENT_TARGET: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242491i32);
-pub const ERROR_GRAPHICS_INVALID_VIDEO_PRESENT_TARGET_MODE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242479i32);
-pub const ERROR_GRAPHICS_INVALID_VIDPN: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242493i32);
-pub const ERROR_GRAPHICS_INVALID_VIDPN_PRESENT_PATH: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242471i32);
-pub const ERROR_GRAPHICS_INVALID_VIDPN_SOURCEMODESET: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242488i32);
-pub const ERROR_GRAPHICS_INVALID_VIDPN_TARGETMODESET: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242487i32);
-pub const ERROR_GRAPHICS_INVALID_VIDPN_TARGET_SUBSET_TYPE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242449i32);
-pub const ERROR_GRAPHICS_INVALID_VIDPN_TOPOLOGY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242496i32);
-pub const ERROR_GRAPHICS_INVALID_VIDPN_TOPOLOGY_RECOMMENDATION_REASON: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242419i32);
-pub const ERROR_GRAPHICS_INVALID_VISIBLEREGION_SIZE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242437i32);
-pub const ERROR_GRAPHICS_LEADLINK_NOT_ENUMERATED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242191i32);
-pub const ERROR_GRAPHICS_LEADLINK_START_DEFERRED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(1076241463i32);
-pub const ERROR_GRAPHICS_MAX_NUM_PATHS_REACHED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242407i32);
-pub const ERROR_GRAPHICS_MCA_INTERNAL_ERROR: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071241848i32);
-pub const ERROR_GRAPHICS_MCA_INVALID_CAPABILITIES_STRING: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071241849i32);
-pub const ERROR_GRAPHICS_MCA_INVALID_TECHNOLOGY_TYPE_RETURNED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071241762i32);
-pub const ERROR_GRAPHICS_MCA_INVALID_VCP_VERSION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071241767i32);
-pub const ERROR_GRAPHICS_MCA_MCCS_VERSION_MISMATCH: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071241765i32);
-pub const ERROR_GRAPHICS_MCA_MONITOR_VIOLATES_MCCS_SPECIFICATION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071241766i32);
-pub const ERROR_GRAPHICS_MCA_UNSUPPORTED_COLOR_TEMPERATURE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071241761i32);
-pub const ERROR_GRAPHICS_MCA_UNSUPPORTED_MCCS_VERSION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071241764i32);
-pub const ERROR_GRAPHICS_MIRRORING_DEVICES_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071241757i32);
-pub const ERROR_GRAPHICS_MODE_ALREADY_IN_MODESET: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242476i32);
-pub const ERROR_GRAPHICS_MODE_ID_MUST_BE_UNIQUE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242460i32);
-pub const ERROR_GRAPHICS_MODE_NOT_IN_MODESET: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242422i32);
-pub const ERROR_GRAPHICS_MODE_NOT_PINNED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(2499335i32);
-pub const ERROR_GRAPHICS_MONITORDESCRIPTOR_ALREADY_IN_SET: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242451i32);
-pub const ERROR_GRAPHICS_MONITORDESCRIPTOR_ID_MUST_BE_UNIQUE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242450i32);
-pub const ERROR_GRAPHICS_MONITORDESCRIPTOR_NOT_IN_SET: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242452i32);
-pub const ERROR_GRAPHICS_MONITOR_COULD_NOT_BE_ASSOCIATED_WITH_ADAPTER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242444i32);
-pub const ERROR_GRAPHICS_MONITOR_NOT_CONNECTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242440i32);
-pub const ERROR_GRAPHICS_MONITOR_NO_LONGER_EXISTS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071241843i32);
-pub const ERROR_GRAPHICS_MULTISAMPLING_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242423i32);
-pub const ERROR_GRAPHICS_NOT_A_LINKED_ADAPTER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242192i32);
-pub const ERROR_GRAPHICS_NOT_EXCLUSIVE_MODE_OWNER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071243264i32);
-pub const ERROR_GRAPHICS_NOT_POST_DEVICE_DRIVER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242184i32);
-pub const ERROR_GRAPHICS_NO_ACTIVE_VIDPN: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242442i32);
-pub const ERROR_GRAPHICS_NO_AVAILABLE_IMPORTANCE_ORDINALS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242412i32);
-pub const ERROR_GRAPHICS_NO_AVAILABLE_VIDPN_TARGET: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242445i32);
-pub const ERROR_GRAPHICS_NO_DISPLAY_DEVICE_CORRESPONDS_TO_NAME: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071241759i32);
-pub const ERROR_GRAPHICS_NO_DISPLAY_MODE_MANAGEMENT_SUPPORT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242431i32);
-pub const ERROR_GRAPHICS_NO_MONITORS_CORRESPOND_TO_DISPLAY_DEVICE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071241755i32);
-pub const ERROR_GRAPHICS_NO_MORE_ELEMENTS_IN_DATASET: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(2499404i32);
-pub const ERROR_GRAPHICS_NO_PREFERRED_MODE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(2499358i32);
-pub const ERROR_GRAPHICS_NO_RECOMMENDED_FUNCTIONAL_VIDPN: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242461i32);
-pub const ERROR_GRAPHICS_NO_RECOMMENDED_VIDPN_TOPOLOGY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242470i32);
-pub const ERROR_GRAPHICS_NO_VIDEO_MEMORY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071243008i32);
-pub const ERROR_GRAPHICS_NO_VIDPNMGR: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242443i32);
-pub const ERROR_GRAPHICS_ONLY_CONSOLE_SESSION_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071241760i32);
-pub const ERROR_GRAPHICS_OPM_ALL_HDCP_HARDWARE_ALREADY_IN_USE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071241960i32);
-pub const ERROR_GRAPHICS_OPM_DRIVER_INTERNAL_ERROR: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071241954i32);
-pub const ERROR_GRAPHICS_OPM_HDCP_SRM_NEVER_SET: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071241962i32);
-pub const ERROR_GRAPHICS_OPM_INTERNAL_ERROR: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071241973i32);
-pub const ERROR_GRAPHICS_OPM_INVALID_CONFIGURATION_REQUEST: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071241951i32);
-pub const ERROR_GRAPHICS_OPM_INVALID_ENCRYPTED_PARAMETERS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071241981i32);
-pub const ERROR_GRAPHICS_OPM_INVALID_HANDLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071241972i32);
-pub const ERROR_GRAPHICS_OPM_INVALID_INFORMATION_REQUEST: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071241955i32);
-pub const ERROR_GRAPHICS_OPM_INVALID_SRM: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071241966i32);
-pub const ERROR_GRAPHICS_OPM_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071241984i32);
-pub const ERROR_GRAPHICS_OPM_NO_VIDEO_OUTPUTS_EXIST: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071241979i32);
-pub const ERROR_GRAPHICS_OPM_OUTPUT_DOES_NOT_SUPPORT_ACP: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071241964i32);
-pub const ERROR_GRAPHICS_OPM_OUTPUT_DOES_NOT_SUPPORT_CGMSA: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071241963i32);
-pub const ERROR_GRAPHICS_OPM_OUTPUT_DOES_NOT_SUPPORT_HDCP: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071241965i32);
-pub const ERROR_GRAPHICS_OPM_RESOLUTION_TOO_HIGH: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071241961i32);
-pub const ERROR_GRAPHICS_OPM_SESSION_TYPE_CHANGE_IN_PROGRESS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071241957i32);
-pub const ERROR_GRAPHICS_OPM_SIGNALING_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071241952i32);
-pub const ERROR_GRAPHICS_OPM_SPANNING_MODE_ENABLED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071241969i32);
-pub const ERROR_GRAPHICS_OPM_THEATER_MODE_ENABLED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071241968i32);
-pub const ERROR_GRAPHICS_OPM_VIDEO_OUTPUT_DOES_NOT_HAVE_COPP_SEMANTICS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071241956i32);
-pub const ERROR_GRAPHICS_OPM_VIDEO_OUTPUT_DOES_NOT_HAVE_OPM_SEMANTICS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071241953i32);
-pub const ERROR_GRAPHICS_OPM_VIDEO_OUTPUT_NO_LONGER_EXISTS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071241958i32);
-pub const ERROR_GRAPHICS_PARAMETER_ARRAY_TOO_SMALL: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071241754i32);
-pub const ERROR_GRAPHICS_PARTIAL_DATA_POPULATED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(1076240394i32);
-pub const ERROR_GRAPHICS_PATH_ALREADY_IN_TOPOLOGY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242477i32);
-pub const ERROR_GRAPHICS_PATH_CONTENT_GEOMETRY_TRANSFORMATION_NOT_PINNED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(2499409i32);
-pub const ERROR_GRAPHICS_PATH_CONTENT_GEOMETRY_TRANSFORMATION_NOT_SUPPORTED:
-    ::win32::core::HRESULT = ::win32::core::HRESULT(-1071242426i32);
-pub const ERROR_GRAPHICS_PATH_NOT_IN_TOPOLOGY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242457i32);
-pub const ERROR_GRAPHICS_PINNED_MODE_MUST_REMAIN_IN_SET: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242478i32);
-pub const ERROR_GRAPHICS_POLLING_TOO_FREQUENTLY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(1076241465i32);
-pub const ERROR_GRAPHICS_PRESENT_BUFFER_NOT_BOUND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071243248i32);
-pub const ERROR_GRAPHICS_PRESENT_DENIED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071243257i32);
-pub const ERROR_GRAPHICS_PRESENT_INVALID_WINDOW: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071243249i32);
-pub const ERROR_GRAPHICS_PRESENT_MODE_CHANGED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071243259i32);
-pub const ERROR_GRAPHICS_PRESENT_OCCLUDED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071243258i32);
-pub const ERROR_GRAPHICS_PRESENT_REDIRECTION_DISABLED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071243253i32);
-pub const ERROR_GRAPHICS_PRESENT_UNOCCLUDED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071243252i32);
-pub const ERROR_GRAPHICS_PVP_HFS_FAILED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071241967i32);
-pub const ERROR_GRAPHICS_PVP_INVALID_CERTIFICATE_LENGTH: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071241970i32);
-pub const ERROR_GRAPHICS_RESOURCES_NOT_RELATED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242448i32);
-pub const ERROR_GRAPHICS_SESSION_TYPE_CHANGE_IN_PROGRESS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071249944i32);
-pub const ERROR_GRAPHICS_SKIP_ALLOCATION_PREPARATION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(1076240897i32);
-pub const ERROR_GRAPHICS_SOURCE_ALREADY_IN_SET: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242473i32);
-pub const ERROR_GRAPHICS_SOURCE_ID_MUST_BE_UNIQUE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242447i32);
-pub const ERROR_GRAPHICS_SOURCE_NOT_IN_TOPOLOGY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242439i32);
-pub const ERROR_GRAPHICS_SPECIFIED_CHILD_ALREADY_CONNECTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242240i32);
-pub const ERROR_GRAPHICS_STALE_MODESET: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242464i32);
-pub const ERROR_GRAPHICS_STALE_VIDPN_TOPOLOGY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242441i32);
-pub const ERROR_GRAPHICS_START_DEFERRED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(1076241466i32);
-pub const ERROR_GRAPHICS_TARGET_ALREADY_IN_SET: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242472i32);
-pub const ERROR_GRAPHICS_TARGET_ID_MUST_BE_UNIQUE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242446i32);
-pub const ERROR_GRAPHICS_TARGET_NOT_IN_TOPOLOGY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242432i32);
-pub const ERROR_GRAPHICS_TOO_MANY_REFERENCES: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071243005i32);
-pub const ERROR_GRAPHICS_TOPOLOGY_CHANGES_NOT_ALLOWED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242413i32);
-pub const ERROR_GRAPHICS_TRY_AGAIN_LATER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071243004i32);
-pub const ERROR_GRAPHICS_TRY_AGAIN_NOW: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071243003i32);
-pub const ERROR_GRAPHICS_UAB_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071241982i32);
-pub const ERROR_GRAPHICS_UNASSIGNED_MODESET_ALREADY_EXISTS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242416i32);
-pub const ERROR_GRAPHICS_UNKNOWN_CHILD_STATUS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(1076241455i32);
-pub const ERROR_GRAPHICS_UNSWIZZLING_APERTURE_UNAVAILABLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071243001i32);
-pub const ERROR_GRAPHICS_UNSWIZZLING_APERTURE_UNSUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071243000i32);
-pub const ERROR_GRAPHICS_VAIL_FAILED_TO_SEND_COMPOSITION_WINDOW_DPI_MESSAGE:
-    ::win32::core::HRESULT = ::win32::core::HRESULT(-1071243242i32);
-pub const ERROR_GRAPHICS_VAIL_FAILED_TO_SEND_CREATE_SUPERWETINK_MESSAGE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071243244i32);
-pub const ERROR_GRAPHICS_VAIL_FAILED_TO_SEND_DESTROY_SUPERWETINK_MESSAGE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071243243i32);
-pub const ERROR_GRAPHICS_VAIL_STATE_CHANGED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071243247i32);
-pub const ERROR_GRAPHICS_VIDEO_PRESENT_TARGETS_LESS_THAN_SOURCES: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242458i32);
-pub const ERROR_GRAPHICS_VIDPN_MODALITY_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242490i32);
-pub const ERROR_GRAPHICS_VIDPN_SOURCE_IN_USE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242430i32);
-pub const ERROR_GRAPHICS_VIDPN_TOPOLOGY_CURRENTLY_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242494i32);
-pub const ERROR_GRAPHICS_VIDPN_TOPOLOGY_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242495i32);
-pub const ERROR_GRAPHICS_WINDOWDC_NOT_AVAILABLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071243251i32);
-pub const ERROR_GRAPHICS_WINDOWLESS_PRESENT_DISABLED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071243250i32);
-pub const ERROR_GRAPHICS_WRONG_ALLOCATION_DEVICE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071242987i32);
-pub const ERROR_HUNG_DISPLAY_DRIVER_THREAD: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144993279i32);
+    crate::core::HRESULT = crate::core::HRESULT(-1071241768i32);
+pub const ERROR_GRAPHICS_DDCCI_INVALID_DATA: crate::core::HRESULT =
+    crate::core::HRESULT(-1071241851i32);
+pub const ERROR_GRAPHICS_DDCCI_INVALID_MESSAGE_CHECKSUM: crate::core::HRESULT =
+    crate::core::HRESULT(-1071241845i32);
+pub const ERROR_GRAPHICS_DDCCI_INVALID_MESSAGE_COMMAND: crate::core::HRESULT =
+    crate::core::HRESULT(-1071241847i32);
+pub const ERROR_GRAPHICS_DDCCI_INVALID_MESSAGE_LENGTH: crate::core::HRESULT =
+    crate::core::HRESULT(-1071241846i32);
+pub const ERROR_GRAPHICS_DDCCI_MONITOR_RETURNED_INVALID_TIMING_STATUS_BYTE: crate::core::HRESULT =
+    crate::core::HRESULT(-1071241850i32);
+pub const ERROR_GRAPHICS_DDCCI_VCP_NOT_SUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-1071241852i32);
+pub const ERROR_GRAPHICS_DEPENDABLE_CHILD_STATUS: crate::core::HRESULT =
+    crate::core::HRESULT(1076241468i32);
+pub const ERROR_GRAPHICS_DISPLAY_DEVICE_NOT_ATTACHED_TO_DESKTOP: crate::core::HRESULT =
+    crate::core::HRESULT(-1071241758i32);
+pub const ERROR_GRAPHICS_DRIVER_MISMATCH: crate::core::HRESULT =
+    crate::core::HRESULT(-1071243255i32);
+pub const ERROR_GRAPHICS_EMPTY_ADAPTER_MONITOR_MODE_SUPPORT_INTERSECTION: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242459i32);
+pub const ERROR_GRAPHICS_FREQUENCYRANGE_ALREADY_IN_SET: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242465i32);
+pub const ERROR_GRAPHICS_FREQUENCYRANGE_NOT_IN_SET: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242467i32);
+pub const ERROR_GRAPHICS_GAMMA_RAMP_NOT_SUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242424i32);
+pub const ERROR_GRAPHICS_GPU_EXCEPTION_ON_DEVICE: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242752i32);
+pub const ERROR_GRAPHICS_I2C_DEVICE_DOES_NOT_EXIST: crate::core::HRESULT =
+    crate::core::HRESULT(-1071241855i32);
+pub const ERROR_GRAPHICS_I2C_ERROR_RECEIVING_DATA: crate::core::HRESULT =
+    crate::core::HRESULT(-1071241853i32);
+pub const ERROR_GRAPHICS_I2C_ERROR_TRANSMITTING_DATA: crate::core::HRESULT =
+    crate::core::HRESULT(-1071241854i32);
+pub const ERROR_GRAPHICS_I2C_NOT_SUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-1071241856i32);
+pub const ERROR_GRAPHICS_INCOMPATIBLE_PRIVATE_FORMAT: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242411i32);
+pub const ERROR_GRAPHICS_INCONSISTENT_DEVICE_LINK_STATE: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242186i32);
+pub const ERROR_GRAPHICS_INDIRECT_DISPLAY_ABANDON_SWAPCHAIN: crate::core::HRESULT =
+    crate::core::HRESULT(-1071243246i32);
+pub const ERROR_GRAPHICS_INDIRECT_DISPLAY_DEVICE_STOPPED: crate::core::HRESULT =
+    crate::core::HRESULT(-1071243245i32);
+pub const ERROR_GRAPHICS_INSUFFICIENT_DMA_BUFFER: crate::core::HRESULT =
+    crate::core::HRESULT(-1071243263i32);
+pub const ERROR_GRAPHICS_INTERNAL_ERROR: crate::core::HRESULT =
+    crate::core::HRESULT(-1071241753i32);
+pub const ERROR_GRAPHICS_INVALID_ACTIVE_REGION: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242485i32);
+pub const ERROR_GRAPHICS_INVALID_ALLOCATION_HANDLE: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242988i32);
+pub const ERROR_GRAPHICS_INVALID_ALLOCATION_INSTANCE: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242989i32);
+pub const ERROR_GRAPHICS_INVALID_ALLOCATION_USAGE: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242992i32);
+pub const ERROR_GRAPHICS_INVALID_CLIENT_TYPE: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242405i32);
+pub const ERROR_GRAPHICS_INVALID_COLORBASIS: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242434i32);
+pub const ERROR_GRAPHICS_INVALID_COPYPROTECTION_TYPE: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242417i32);
+pub const ERROR_GRAPHICS_INVALID_DISPLAY_ADAPTER: crate::core::HRESULT =
+    crate::core::HRESULT(-1071243262i32);
+pub const ERROR_GRAPHICS_INVALID_DRIVER_MODEL: crate::core::HRESULT =
+    crate::core::HRESULT(-1071243260i32);
+pub const ERROR_GRAPHICS_INVALID_FREQUENCY: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242486i32);
+pub const ERROR_GRAPHICS_INVALID_GAMMA_RAMP: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242425i32);
+pub const ERROR_GRAPHICS_INVALID_MODE_PRUNING_ALGORITHM: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242410i32);
+pub const ERROR_GRAPHICS_INVALID_MONITORDESCRIPTOR: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242453i32);
+pub const ERROR_GRAPHICS_INVALID_MONITORDESCRIPTORSET: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242454i32);
+pub const ERROR_GRAPHICS_INVALID_MONITOR_CAPABILITY_ORIGIN: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242409i32);
+pub const ERROR_GRAPHICS_INVALID_MONITOR_FREQUENCYRANGE: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242468i32);
+pub const ERROR_GRAPHICS_INVALID_MONITOR_FREQUENCYRANGESET: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242469i32);
+pub const ERROR_GRAPHICS_INVALID_MONITOR_FREQUENCYRANGE_CONSTRAINT: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242408i32);
+pub const ERROR_GRAPHICS_INVALID_MONITOR_SOURCEMODESET: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242463i32);
+pub const ERROR_GRAPHICS_INVALID_MONITOR_SOURCE_MODE: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242462i32);
+pub const ERROR_GRAPHICS_INVALID_PATH_CONTENT_GEOMETRY_TRANSFORMATION: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242427i32);
+pub const ERROR_GRAPHICS_INVALID_PATH_CONTENT_TYPE: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242418i32);
+pub const ERROR_GRAPHICS_INVALID_PATH_IMPORTANCE_ORDINAL: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242428i32);
+pub const ERROR_GRAPHICS_INVALID_PHYSICAL_MONITOR_HANDLE: crate::core::HRESULT =
+    crate::core::HRESULT(-1071241844i32);
+pub const ERROR_GRAPHICS_INVALID_PIXELFORMAT: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242435i32);
+pub const ERROR_GRAPHICS_INVALID_PIXELVALUEACCESSMODE: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242433i32);
+pub const ERROR_GRAPHICS_INVALID_POINTER: crate::core::HRESULT =
+    crate::core::HRESULT(-1071241756i32);
+pub const ERROR_GRAPHICS_INVALID_PRIMARYSURFACE_SIZE: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242438i32);
+pub const ERROR_GRAPHICS_INVALID_SCANLINE_ORDERING: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242414i32);
+pub const ERROR_GRAPHICS_INVALID_STRIDE: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242436i32);
+pub const ERROR_GRAPHICS_INVALID_TOTAL_REGION: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242484i32);
+pub const ERROR_GRAPHICS_INVALID_VIDEOPRESENTSOURCESET: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242475i32);
+pub const ERROR_GRAPHICS_INVALID_VIDEOPRESENTTARGETSET: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242474i32);
+pub const ERROR_GRAPHICS_INVALID_VIDEO_PRESENT_SOURCE: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242492i32);
+pub const ERROR_GRAPHICS_INVALID_VIDEO_PRESENT_SOURCE_MODE: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242480i32);
+pub const ERROR_GRAPHICS_INVALID_VIDEO_PRESENT_TARGET: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242491i32);
+pub const ERROR_GRAPHICS_INVALID_VIDEO_PRESENT_TARGET_MODE: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242479i32);
+pub const ERROR_GRAPHICS_INVALID_VIDPN: crate::core::HRESULT = crate::core::HRESULT(-1071242493i32);
+pub const ERROR_GRAPHICS_INVALID_VIDPN_PRESENT_PATH: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242471i32);
+pub const ERROR_GRAPHICS_INVALID_VIDPN_SOURCEMODESET: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242488i32);
+pub const ERROR_GRAPHICS_INVALID_VIDPN_TARGETMODESET: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242487i32);
+pub const ERROR_GRAPHICS_INVALID_VIDPN_TARGET_SUBSET_TYPE: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242449i32);
+pub const ERROR_GRAPHICS_INVALID_VIDPN_TOPOLOGY: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242496i32);
+pub const ERROR_GRAPHICS_INVALID_VIDPN_TOPOLOGY_RECOMMENDATION_REASON: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242419i32);
+pub const ERROR_GRAPHICS_INVALID_VISIBLEREGION_SIZE: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242437i32);
+pub const ERROR_GRAPHICS_LEADLINK_NOT_ENUMERATED: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242191i32);
+pub const ERROR_GRAPHICS_LEADLINK_START_DEFERRED: crate::core::HRESULT =
+    crate::core::HRESULT(1076241463i32);
+pub const ERROR_GRAPHICS_MAX_NUM_PATHS_REACHED: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242407i32);
+pub const ERROR_GRAPHICS_MCA_INTERNAL_ERROR: crate::core::HRESULT =
+    crate::core::HRESULT(-1071241848i32);
+pub const ERROR_GRAPHICS_MCA_INVALID_CAPABILITIES_STRING: crate::core::HRESULT =
+    crate::core::HRESULT(-1071241849i32);
+pub const ERROR_GRAPHICS_MCA_INVALID_TECHNOLOGY_TYPE_RETURNED: crate::core::HRESULT =
+    crate::core::HRESULT(-1071241762i32);
+pub const ERROR_GRAPHICS_MCA_INVALID_VCP_VERSION: crate::core::HRESULT =
+    crate::core::HRESULT(-1071241767i32);
+pub const ERROR_GRAPHICS_MCA_MCCS_VERSION_MISMATCH: crate::core::HRESULT =
+    crate::core::HRESULT(-1071241765i32);
+pub const ERROR_GRAPHICS_MCA_MONITOR_VIOLATES_MCCS_SPECIFICATION: crate::core::HRESULT =
+    crate::core::HRESULT(-1071241766i32);
+pub const ERROR_GRAPHICS_MCA_UNSUPPORTED_COLOR_TEMPERATURE: crate::core::HRESULT =
+    crate::core::HRESULT(-1071241761i32);
+pub const ERROR_GRAPHICS_MCA_UNSUPPORTED_MCCS_VERSION: crate::core::HRESULT =
+    crate::core::HRESULT(-1071241764i32);
+pub const ERROR_GRAPHICS_MIRRORING_DEVICES_NOT_SUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-1071241757i32);
+pub const ERROR_GRAPHICS_MODE_ALREADY_IN_MODESET: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242476i32);
+pub const ERROR_GRAPHICS_MODE_ID_MUST_BE_UNIQUE: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242460i32);
+pub const ERROR_GRAPHICS_MODE_NOT_IN_MODESET: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242422i32);
+pub const ERROR_GRAPHICS_MODE_NOT_PINNED: crate::core::HRESULT = crate::core::HRESULT(2499335i32);
+pub const ERROR_GRAPHICS_MONITORDESCRIPTOR_ALREADY_IN_SET: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242451i32);
+pub const ERROR_GRAPHICS_MONITORDESCRIPTOR_ID_MUST_BE_UNIQUE: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242450i32);
+pub const ERROR_GRAPHICS_MONITORDESCRIPTOR_NOT_IN_SET: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242452i32);
+pub const ERROR_GRAPHICS_MONITOR_COULD_NOT_BE_ASSOCIATED_WITH_ADAPTER: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242444i32);
+pub const ERROR_GRAPHICS_MONITOR_NOT_CONNECTED: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242440i32);
+pub const ERROR_GRAPHICS_MONITOR_NO_LONGER_EXISTS: crate::core::HRESULT =
+    crate::core::HRESULT(-1071241843i32);
+pub const ERROR_GRAPHICS_MULTISAMPLING_NOT_SUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242423i32);
+pub const ERROR_GRAPHICS_NOT_A_LINKED_ADAPTER: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242192i32);
+pub const ERROR_GRAPHICS_NOT_EXCLUSIVE_MODE_OWNER: crate::core::HRESULT =
+    crate::core::HRESULT(-1071243264i32);
+pub const ERROR_GRAPHICS_NOT_POST_DEVICE_DRIVER: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242184i32);
+pub const ERROR_GRAPHICS_NO_ACTIVE_VIDPN: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242442i32);
+pub const ERROR_GRAPHICS_NO_AVAILABLE_IMPORTANCE_ORDINALS: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242412i32);
+pub const ERROR_GRAPHICS_NO_AVAILABLE_VIDPN_TARGET: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242445i32);
+pub const ERROR_GRAPHICS_NO_DISPLAY_DEVICE_CORRESPONDS_TO_NAME: crate::core::HRESULT =
+    crate::core::HRESULT(-1071241759i32);
+pub const ERROR_GRAPHICS_NO_DISPLAY_MODE_MANAGEMENT_SUPPORT: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242431i32);
+pub const ERROR_GRAPHICS_NO_MONITORS_CORRESPOND_TO_DISPLAY_DEVICE: crate::core::HRESULT =
+    crate::core::HRESULT(-1071241755i32);
+pub const ERROR_GRAPHICS_NO_MORE_ELEMENTS_IN_DATASET: crate::core::HRESULT =
+    crate::core::HRESULT(2499404i32);
+pub const ERROR_GRAPHICS_NO_PREFERRED_MODE: crate::core::HRESULT = crate::core::HRESULT(2499358i32);
+pub const ERROR_GRAPHICS_NO_RECOMMENDED_FUNCTIONAL_VIDPN: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242461i32);
+pub const ERROR_GRAPHICS_NO_RECOMMENDED_VIDPN_TOPOLOGY: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242470i32);
+pub const ERROR_GRAPHICS_NO_VIDEO_MEMORY: crate::core::HRESULT =
+    crate::core::HRESULT(-1071243008i32);
+pub const ERROR_GRAPHICS_NO_VIDPNMGR: crate::core::HRESULT = crate::core::HRESULT(-1071242443i32);
+pub const ERROR_GRAPHICS_ONLY_CONSOLE_SESSION_SUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-1071241760i32);
+pub const ERROR_GRAPHICS_OPM_ALL_HDCP_HARDWARE_ALREADY_IN_USE: crate::core::HRESULT =
+    crate::core::HRESULT(-1071241960i32);
+pub const ERROR_GRAPHICS_OPM_DRIVER_INTERNAL_ERROR: crate::core::HRESULT =
+    crate::core::HRESULT(-1071241954i32);
+pub const ERROR_GRAPHICS_OPM_HDCP_SRM_NEVER_SET: crate::core::HRESULT =
+    crate::core::HRESULT(-1071241962i32);
+pub const ERROR_GRAPHICS_OPM_INTERNAL_ERROR: crate::core::HRESULT =
+    crate::core::HRESULT(-1071241973i32);
+pub const ERROR_GRAPHICS_OPM_INVALID_CONFIGURATION_REQUEST: crate::core::HRESULT =
+    crate::core::HRESULT(-1071241951i32);
+pub const ERROR_GRAPHICS_OPM_INVALID_ENCRYPTED_PARAMETERS: crate::core::HRESULT =
+    crate::core::HRESULT(-1071241981i32);
+pub const ERROR_GRAPHICS_OPM_INVALID_HANDLE: crate::core::HRESULT =
+    crate::core::HRESULT(-1071241972i32);
+pub const ERROR_GRAPHICS_OPM_INVALID_INFORMATION_REQUEST: crate::core::HRESULT =
+    crate::core::HRESULT(-1071241955i32);
+pub const ERROR_GRAPHICS_OPM_INVALID_SRM: crate::core::HRESULT =
+    crate::core::HRESULT(-1071241966i32);
+pub const ERROR_GRAPHICS_OPM_NOT_SUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-1071241984i32);
+pub const ERROR_GRAPHICS_OPM_NO_VIDEO_OUTPUTS_EXIST: crate::core::HRESULT =
+    crate::core::HRESULT(-1071241979i32);
+pub const ERROR_GRAPHICS_OPM_OUTPUT_DOES_NOT_SUPPORT_ACP: crate::core::HRESULT =
+    crate::core::HRESULT(-1071241964i32);
+pub const ERROR_GRAPHICS_OPM_OUTPUT_DOES_NOT_SUPPORT_CGMSA: crate::core::HRESULT =
+    crate::core::HRESULT(-1071241963i32);
+pub const ERROR_GRAPHICS_OPM_OUTPUT_DOES_NOT_SUPPORT_HDCP: crate::core::HRESULT =
+    crate::core::HRESULT(-1071241965i32);
+pub const ERROR_GRAPHICS_OPM_RESOLUTION_TOO_HIGH: crate::core::HRESULT =
+    crate::core::HRESULT(-1071241961i32);
+pub const ERROR_GRAPHICS_OPM_SESSION_TYPE_CHANGE_IN_PROGRESS: crate::core::HRESULT =
+    crate::core::HRESULT(-1071241957i32);
+pub const ERROR_GRAPHICS_OPM_SIGNALING_NOT_SUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-1071241952i32);
+pub const ERROR_GRAPHICS_OPM_SPANNING_MODE_ENABLED: crate::core::HRESULT =
+    crate::core::HRESULT(-1071241969i32);
+pub const ERROR_GRAPHICS_OPM_THEATER_MODE_ENABLED: crate::core::HRESULT =
+    crate::core::HRESULT(-1071241968i32);
+pub const ERROR_GRAPHICS_OPM_VIDEO_OUTPUT_DOES_NOT_HAVE_COPP_SEMANTICS: crate::core::HRESULT =
+    crate::core::HRESULT(-1071241956i32);
+pub const ERROR_GRAPHICS_OPM_VIDEO_OUTPUT_DOES_NOT_HAVE_OPM_SEMANTICS: crate::core::HRESULT =
+    crate::core::HRESULT(-1071241953i32);
+pub const ERROR_GRAPHICS_OPM_VIDEO_OUTPUT_NO_LONGER_EXISTS: crate::core::HRESULT =
+    crate::core::HRESULT(-1071241958i32);
+pub const ERROR_GRAPHICS_PARAMETER_ARRAY_TOO_SMALL: crate::core::HRESULT =
+    crate::core::HRESULT(-1071241754i32);
+pub const ERROR_GRAPHICS_PARTIAL_DATA_POPULATED: crate::core::HRESULT =
+    crate::core::HRESULT(1076240394i32);
+pub const ERROR_GRAPHICS_PATH_ALREADY_IN_TOPOLOGY: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242477i32);
+pub const ERROR_GRAPHICS_PATH_CONTENT_GEOMETRY_TRANSFORMATION_NOT_PINNED: crate::core::HRESULT =
+    crate::core::HRESULT(2499409i32);
+pub const ERROR_GRAPHICS_PATH_CONTENT_GEOMETRY_TRANSFORMATION_NOT_SUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242426i32);
+pub const ERROR_GRAPHICS_PATH_NOT_IN_TOPOLOGY: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242457i32);
+pub const ERROR_GRAPHICS_PINNED_MODE_MUST_REMAIN_IN_SET: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242478i32);
+pub const ERROR_GRAPHICS_POLLING_TOO_FREQUENTLY: crate::core::HRESULT =
+    crate::core::HRESULT(1076241465i32);
+pub const ERROR_GRAPHICS_PRESENT_BUFFER_NOT_BOUND: crate::core::HRESULT =
+    crate::core::HRESULT(-1071243248i32);
+pub const ERROR_GRAPHICS_PRESENT_DENIED: crate::core::HRESULT =
+    crate::core::HRESULT(-1071243257i32);
+pub const ERROR_GRAPHICS_PRESENT_INVALID_WINDOW: crate::core::HRESULT =
+    crate::core::HRESULT(-1071243249i32);
+pub const ERROR_GRAPHICS_PRESENT_MODE_CHANGED: crate::core::HRESULT =
+    crate::core::HRESULT(-1071243259i32);
+pub const ERROR_GRAPHICS_PRESENT_OCCLUDED: crate::core::HRESULT =
+    crate::core::HRESULT(-1071243258i32);
+pub const ERROR_GRAPHICS_PRESENT_REDIRECTION_DISABLED: crate::core::HRESULT =
+    crate::core::HRESULT(-1071243253i32);
+pub const ERROR_GRAPHICS_PRESENT_UNOCCLUDED: crate::core::HRESULT =
+    crate::core::HRESULT(-1071243252i32);
+pub const ERROR_GRAPHICS_PVP_HFS_FAILED: crate::core::HRESULT =
+    crate::core::HRESULT(-1071241967i32);
+pub const ERROR_GRAPHICS_PVP_INVALID_CERTIFICATE_LENGTH: crate::core::HRESULT =
+    crate::core::HRESULT(-1071241970i32);
+pub const ERROR_GRAPHICS_RESOURCES_NOT_RELATED: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242448i32);
+pub const ERROR_GRAPHICS_SESSION_TYPE_CHANGE_IN_PROGRESS: crate::core::HRESULT =
+    crate::core::HRESULT(-1071249944i32);
+pub const ERROR_GRAPHICS_SKIP_ALLOCATION_PREPARATION: crate::core::HRESULT =
+    crate::core::HRESULT(1076240897i32);
+pub const ERROR_GRAPHICS_SOURCE_ALREADY_IN_SET: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242473i32);
+pub const ERROR_GRAPHICS_SOURCE_ID_MUST_BE_UNIQUE: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242447i32);
+pub const ERROR_GRAPHICS_SOURCE_NOT_IN_TOPOLOGY: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242439i32);
+pub const ERROR_GRAPHICS_SPECIFIED_CHILD_ALREADY_CONNECTED: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242240i32);
+pub const ERROR_GRAPHICS_STALE_MODESET: crate::core::HRESULT = crate::core::HRESULT(-1071242464i32);
+pub const ERROR_GRAPHICS_STALE_VIDPN_TOPOLOGY: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242441i32);
+pub const ERROR_GRAPHICS_START_DEFERRED: crate::core::HRESULT = crate::core::HRESULT(1076241466i32);
+pub const ERROR_GRAPHICS_TARGET_ALREADY_IN_SET: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242472i32);
+pub const ERROR_GRAPHICS_TARGET_ID_MUST_BE_UNIQUE: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242446i32);
+pub const ERROR_GRAPHICS_TARGET_NOT_IN_TOPOLOGY: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242432i32);
+pub const ERROR_GRAPHICS_TOO_MANY_REFERENCES: crate::core::HRESULT =
+    crate::core::HRESULT(-1071243005i32);
+pub const ERROR_GRAPHICS_TOPOLOGY_CHANGES_NOT_ALLOWED: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242413i32);
+pub const ERROR_GRAPHICS_TRY_AGAIN_LATER: crate::core::HRESULT =
+    crate::core::HRESULT(-1071243004i32);
+pub const ERROR_GRAPHICS_TRY_AGAIN_NOW: crate::core::HRESULT = crate::core::HRESULT(-1071243003i32);
+pub const ERROR_GRAPHICS_UAB_NOT_SUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-1071241982i32);
+pub const ERROR_GRAPHICS_UNASSIGNED_MODESET_ALREADY_EXISTS: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242416i32);
+pub const ERROR_GRAPHICS_UNKNOWN_CHILD_STATUS: crate::core::HRESULT =
+    crate::core::HRESULT(1076241455i32);
+pub const ERROR_GRAPHICS_UNSWIZZLING_APERTURE_UNAVAILABLE: crate::core::HRESULT =
+    crate::core::HRESULT(-1071243001i32);
+pub const ERROR_GRAPHICS_UNSWIZZLING_APERTURE_UNSUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-1071243000i32);
+pub const ERROR_GRAPHICS_VAIL_FAILED_TO_SEND_COMPOSITION_WINDOW_DPI_MESSAGE: crate::core::HRESULT =
+    crate::core::HRESULT(-1071243242i32);
+pub const ERROR_GRAPHICS_VAIL_FAILED_TO_SEND_CREATE_SUPERWETINK_MESSAGE: crate::core::HRESULT =
+    crate::core::HRESULT(-1071243244i32);
+pub const ERROR_GRAPHICS_VAIL_FAILED_TO_SEND_DESTROY_SUPERWETINK_MESSAGE: crate::core::HRESULT =
+    crate::core::HRESULT(-1071243243i32);
+pub const ERROR_GRAPHICS_VAIL_STATE_CHANGED: crate::core::HRESULT =
+    crate::core::HRESULT(-1071243247i32);
+pub const ERROR_GRAPHICS_VIDEO_PRESENT_TARGETS_LESS_THAN_SOURCES: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242458i32);
+pub const ERROR_GRAPHICS_VIDPN_MODALITY_NOT_SUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242490i32);
+pub const ERROR_GRAPHICS_VIDPN_SOURCE_IN_USE: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242430i32);
+pub const ERROR_GRAPHICS_VIDPN_TOPOLOGY_CURRENTLY_NOT_SUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242494i32);
+pub const ERROR_GRAPHICS_VIDPN_TOPOLOGY_NOT_SUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242495i32);
+pub const ERROR_GRAPHICS_WINDOWDC_NOT_AVAILABLE: crate::core::HRESULT =
+    crate::core::HRESULT(-1071243251i32);
+pub const ERROR_GRAPHICS_WINDOWLESS_PRESENT_DISABLED: crate::core::HRESULT =
+    crate::core::HRESULT(-1071243250i32);
+pub const ERROR_GRAPHICS_WRONG_ALLOCATION_DEVICE: crate::core::HRESULT =
+    crate::core::HRESULT(-1071242987i32);
+pub const ERROR_HUNG_DISPLAY_DRIVER_THREAD: crate::core::HRESULT =
+    crate::core::HRESULT(-2144993279i32);
 pub const ERROR_IDLE_DISCONNECTED: u32 = 926u32;
 pub const ERROR_INTERFACE_ALREADY_EXISTS: u32 = 904u32;
 pub const ERROR_INTERFACE_CONFIGURATION: u32 = 912u32;
@@ -1898,35 +1757,34 @@ pub const ERROR_INVALID_PACKET_LENGTH_OR_ID: u32 = 952u32;
 pub const ERROR_INVALID_RADIUS_RESPONSE: u32 = 939u32;
 pub const ERROR_INVALID_SIGNATURE: u32 = 950u32;
 pub const ERROR_INVALID_SIGNATURE_LENGTH: u32 = 949u32;
-pub const ERROR_IO_PREEMPTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-1996423167i32);
+pub const ERROR_IO_PREEMPTED: crate::core::HRESULT = crate::core::HRESULT(-1996423167i32);
 pub const ERROR_MAX_CLIENT_INTERFACE_LIMIT: u32 = 935u32;
 pub const ERROR_MAX_LAN_INTERFACE_LIMIT: u32 = 933u32;
 pub const ERROR_MAX_WAN_INTERFACE_LIMIT: u32 = 934u32;
-pub const ERROR_MONITOR_INVALID_DESCRIPTOR_CHECKSUM: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071247357i32);
-pub const ERROR_MONITOR_INVALID_DETAILED_TIMING_BLOCK: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071247351i32);
-pub const ERROR_MONITOR_INVALID_MANUFACTURE_DATE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071247350i32);
-pub const ERROR_MONITOR_INVALID_SERIAL_NUMBER_MONDSC_BLOCK: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071247354i32);
-pub const ERROR_MONITOR_INVALID_STANDARD_TIMING_BLOCK: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071247356i32);
-pub const ERROR_MONITOR_INVALID_USER_FRIENDLY_MONDSC_BLOCK: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071247353i32);
-pub const ERROR_MONITOR_NO_DESCRIPTOR: ::win32::core::HRESULT = ::win32::core::HRESULT(2494465i32);
-pub const ERROR_MONITOR_NO_MORE_DESCRIPTOR_DATA: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071247352i32);
-pub const ERROR_MONITOR_UNKNOWN_DESCRIPTOR_FORMAT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(2494466i32);
-pub const ERROR_MONITOR_WMI_DATABLOCK_REGISTRATION_FAILED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1071247355i32);
-pub const ERROR_NOT_A_TIERED_VOLUME: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2138898423i32);
+pub const ERROR_MONITOR_INVALID_DESCRIPTOR_CHECKSUM: crate::core::HRESULT =
+    crate::core::HRESULT(-1071247357i32);
+pub const ERROR_MONITOR_INVALID_DETAILED_TIMING_BLOCK: crate::core::HRESULT =
+    crate::core::HRESULT(-1071247351i32);
+pub const ERROR_MONITOR_INVALID_MANUFACTURE_DATE: crate::core::HRESULT =
+    crate::core::HRESULT(-1071247350i32);
+pub const ERROR_MONITOR_INVALID_SERIAL_NUMBER_MONDSC_BLOCK: crate::core::HRESULT =
+    crate::core::HRESULT(-1071247354i32);
+pub const ERROR_MONITOR_INVALID_STANDARD_TIMING_BLOCK: crate::core::HRESULT =
+    crate::core::HRESULT(-1071247356i32);
+pub const ERROR_MONITOR_INVALID_USER_FRIENDLY_MONDSC_BLOCK: crate::core::HRESULT =
+    crate::core::HRESULT(-1071247353i32);
+pub const ERROR_MONITOR_NO_DESCRIPTOR: crate::core::HRESULT = crate::core::HRESULT(2494465i32);
+pub const ERROR_MONITOR_NO_MORE_DESCRIPTOR_DATA: crate::core::HRESULT =
+    crate::core::HRESULT(-1071247352i32);
+pub const ERROR_MONITOR_UNKNOWN_DESCRIPTOR_FORMAT: crate::core::HRESULT =
+    crate::core::HRESULT(2494466i32);
+pub const ERROR_MONITOR_WMI_DATABLOCK_REGISTRATION_FAILED: crate::core::HRESULT =
+    crate::core::HRESULT(-1071247355i32);
+pub const ERROR_NOT_A_TIERED_VOLUME: crate::core::HRESULT = crate::core::HRESULT(-2138898423i32);
 pub const ERROR_NOT_CLIENT_PORT: u32 = 913u32;
 pub const ERROR_NOT_ROUTER_PORT: u32 = 914u32;
-pub const ERROR_NO_APPLICABLE_APP_LICENSES_FOUND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1058406399i32);
+pub const ERROR_NO_APPLICABLE_APP_LICENSES_FOUND: crate::core::HRESULT =
+    crate::core::HRESULT(-1058406399i32);
 pub const ERROR_NO_AUTH_PROTOCOL_AVAILABLE: u32 = 918u32;
 pub const ERROR_NO_INTERFACE_CREDENTIALS_SET: u32 = 909u32;
 pub const ERROR_NO_RADIUS_SERVERS: u32 = 938u32;
@@ -1937,21 +1795,16 @@ pub const ERROR_PORT_LIMIT_REACHED: u32 = 931u32;
 pub const ERROR_PPP_SESSION_TIMEOUT: u32 = 932u32;
 pub const ERROR_PROTOCOL_ALREADY_INSTALLED: u32 = 948u32;
 pub const ERROR_PROTOCOL_STOP_PENDING: u32 = 907u32;
-pub const ERROR_QUIC_ALPN_NEG_FAILURE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143223801i32);
-pub const ERROR_QUIC_CONNECTION_IDLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143223803i32);
-pub const ERROR_QUIC_CONNECTION_TIMEOUT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143223802i32);
-pub const ERROR_QUIC_HANDSHAKE_FAILURE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143223808i32);
-pub const ERROR_QUIC_INTERNAL_ERROR: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143223805i32);
-pub const ERROR_QUIC_PROTOCOL_VIOLATION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143223804i32);
-pub const ERROR_QUIC_USER_CANCELED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143223806i32);
-pub const ERROR_QUIC_VER_NEG_FAILURE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143223807i32);
+pub const ERROR_QUIC_ALPN_NEG_FAILURE: crate::core::HRESULT = crate::core::HRESULT(-2143223801i32);
+pub const ERROR_QUIC_CONNECTION_IDLE: crate::core::HRESULT = crate::core::HRESULT(-2143223803i32);
+pub const ERROR_QUIC_CONNECTION_TIMEOUT: crate::core::HRESULT =
+    crate::core::HRESULT(-2143223802i32);
+pub const ERROR_QUIC_HANDSHAKE_FAILURE: crate::core::HRESULT = crate::core::HRESULT(-2143223808i32);
+pub const ERROR_QUIC_INTERNAL_ERROR: crate::core::HRESULT = crate::core::HRESULT(-2143223805i32);
+pub const ERROR_QUIC_PROTOCOL_VIOLATION: crate::core::HRESULT =
+    crate::core::HRESULT(-2143223804i32);
+pub const ERROR_QUIC_USER_CANCELED: crate::core::HRESULT = crate::core::HRESULT(-2143223806i32);
+pub const ERROR_QUIC_VER_NEG_FAILURE: crate::core::HRESULT = crate::core::HRESULT(-2143223807i32);
 pub const ERROR_REMOTEACCESS_NOT_CONFIGURED: u32 = 956u32;
 pub const ERROR_REMOTE_ACCT_DISABLED: u32 = 922u32;
 pub const ERROR_REMOTE_AUTHENTICATION_FAILURE: u32 = 924u32;
@@ -1960,160 +1813,143 @@ pub const ERROR_REMOTE_PASSWD_EXPIRED: u32 = 921u32;
 pub const ERROR_REMOTE_RESTRICTED_LOGON_HOURS: u32 = 923u32;
 pub const ERROR_ROUTER_CONFIG_INCOMPATIBLE: u32 = 945u32;
 pub const ERROR_ROUTER_STOPPED: u32 = 900u32;
-pub const ERROR_SECCORE_INVALID_COMMAND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1058537472i32);
+pub const ERROR_SECCORE_INVALID_COMMAND: crate::core::HRESULT =
+    crate::core::HRESULT(-1058537472i32);
 pub const ERROR_SERVICE_IS_PAUSED: u32 = 928u32;
-pub const ERROR_SMB_BAD_CLUSTER_DIALECT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1067646975i32);
-pub const ERROR_SMB_NO_PREAUTH_INTEGRITY_HASH_OVERLAP: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1067646976i32);
-pub const ERROR_SMB_NO_SIGNING_ALGORITHM_OVERLAP: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1067646974i32);
-pub const ERROR_SPACES_ALLOCATION_SIZE_INVALID: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2132344818i32);
-pub const ERROR_SPACES_CACHE_FULL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2132344794i32);
-pub const ERROR_SPACES_CORRUPT_METADATA: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2132344808i32);
-pub const ERROR_SPACES_DRIVE_LOST_DATA: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2132344801i32);
-pub const ERROR_SPACES_DRIVE_NOT_READY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2132344803i32);
-pub const ERROR_SPACES_DRIVE_OPERATIONAL_STATE_INVALID: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2132344814i32);
-pub const ERROR_SPACES_DRIVE_REDUNDANCY_INVALID: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2132344826i32);
-pub const ERROR_SPACES_DRIVE_SECTOR_SIZE_INVALID: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2132344828i32);
-pub const ERROR_SPACES_DRIVE_SPLIT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2132344802i32);
-pub const ERROR_SPACES_DRT_FULL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2132344807i32);
-pub const ERROR_SPACES_ENCLOSURE_AWARE_INVALID: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2132344817i32);
-pub const ERROR_SPACES_ENTRY_INCOMPLETE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2132344813i32);
-pub const ERROR_SPACES_ENTRY_INVALID: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2132344812i32);
-pub const ERROR_SPACES_EXTENDED_ERROR: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2132344820i32);
-pub const ERROR_SPACES_FAULT_DOMAIN_TYPE_INVALID: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2132344831i32);
-pub const ERROR_SPACES_FLUSH_METADATA: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2132344795i32);
-pub const ERROR_SPACES_INCONSISTENCY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2132344806i32);
-pub const ERROR_SPACES_INTERLEAVE_LENGTH_INVALID: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2132344823i32);
-pub const ERROR_SPACES_INTERNAL_ERROR: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2132344830i32);
-pub const ERROR_SPACES_LOG_NOT_READY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2132344805i32);
-pub const ERROR_SPACES_MAP_REQUIRED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2132344810i32);
-pub const ERROR_SPACES_MARK_DIRTY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2132344800i32);
-pub const ERROR_SPACES_NOT_ENOUGH_DRIVES: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2132344821i32);
-pub const ERROR_SPACES_NO_REDUNDANCY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2132344804i32);
-pub const ERROR_SPACES_NUMBER_OF_COLUMNS_INVALID: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2132344822i32);
-pub const ERROR_SPACES_NUMBER_OF_DATA_COPIES_INVALID: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2132344825i32);
-pub const ERROR_SPACES_NUMBER_OF_GROUPS_INVALID: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2132344815i32);
-pub const ERROR_SPACES_PARITY_LAYOUT_INVALID: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2132344824i32);
-pub const ERROR_SPACES_POOL_WAS_DELETED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(15138817i32);
-pub const ERROR_SPACES_PROVISIONING_TYPE_INVALID: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2132344819i32);
-pub const ERROR_SPACES_RESILIENCY_TYPE_INVALID: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2132344829i32);
-pub const ERROR_SPACES_UNSUPPORTED_VERSION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2132344809i32);
-pub const ERROR_SPACES_UPDATE_COLUMN_STATE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2132344811i32);
-pub const ERROR_SPACES_WRITE_CACHE_SIZE_INVALID: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2132344816i32);
-pub const ERROR_SVHDX_ERROR_NOT_AVAILABLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1067647232i32);
-pub const ERROR_SVHDX_ERROR_STORED: ::win32::core::HRESULT = ::win32::core::HRESULT(-1067712512i32);
-pub const ERROR_SVHDX_NO_INITIATOR: ::win32::core::HRESULT = ::win32::core::HRESULT(-1067647221i32);
-pub const ERROR_SVHDX_RESERVATION_CONFLICT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1067647225i32);
-pub const ERROR_SVHDX_UNIT_ATTENTION_AVAILABLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1067647231i32);
-pub const ERROR_SVHDX_UNIT_ATTENTION_CAPACITY_DATA_CHANGED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1067647230i32);
-pub const ERROR_SVHDX_UNIT_ATTENTION_OPERATING_DEFINITION_CHANGED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1067647226i32);
-pub const ERROR_SVHDX_UNIT_ATTENTION_REGISTRATIONS_PREEMPTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1067647227i32);
-pub const ERROR_SVHDX_UNIT_ATTENTION_RESERVATIONS_PREEMPTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1067647229i32);
-pub const ERROR_SVHDX_UNIT_ATTENTION_RESERVATIONS_RELEASED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1067647228i32);
-pub const ERROR_SVHDX_VERSION_MISMATCH: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1067647223i32);
-pub const ERROR_SVHDX_WRONG_FILE_TYPE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1067647224i32);
-pub const ERROR_TIERING_ALREADY_PROCESSING: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2138898426i32);
-pub const ERROR_TIERING_CANNOT_PIN_OBJECT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2138898425i32);
-pub const ERROR_TIERING_FILE_IS_NOT_PINNED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2138898424i32);
-pub const ERROR_TIERING_INVALID_FILE_ID: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2138898428i32);
-pub const ERROR_TIERING_NOT_SUPPORTED_ON_VOLUME: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2138898431i32);
-pub const ERROR_TIERING_STORAGE_TIER_NOT_FOUND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2138898429i32);
-pub const ERROR_TIERING_VOLUME_DISMOUNT_IN_PROGRESS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2138898430i32);
-pub const ERROR_TIERING_WRONG_CLUSTER_NODE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2138898427i32);
+pub const ERROR_SMB_BAD_CLUSTER_DIALECT: crate::core::HRESULT =
+    crate::core::HRESULT(-1067646975i32);
+pub const ERROR_SMB_NO_PREAUTH_INTEGRITY_HASH_OVERLAP: crate::core::HRESULT =
+    crate::core::HRESULT(-1067646976i32);
+pub const ERROR_SMB_NO_SIGNING_ALGORITHM_OVERLAP: crate::core::HRESULT =
+    crate::core::HRESULT(-1067646974i32);
+pub const ERROR_SPACES_ALLOCATION_SIZE_INVALID: crate::core::HRESULT =
+    crate::core::HRESULT(-2132344818i32);
+pub const ERROR_SPACES_CACHE_FULL: crate::core::HRESULT = crate::core::HRESULT(-2132344794i32);
+pub const ERROR_SPACES_CORRUPT_METADATA: crate::core::HRESULT =
+    crate::core::HRESULT(-2132344808i32);
+pub const ERROR_SPACES_DRIVE_LOST_DATA: crate::core::HRESULT = crate::core::HRESULT(-2132344801i32);
+pub const ERROR_SPACES_DRIVE_NOT_READY: crate::core::HRESULT = crate::core::HRESULT(-2132344803i32);
+pub const ERROR_SPACES_DRIVE_OPERATIONAL_STATE_INVALID: crate::core::HRESULT =
+    crate::core::HRESULT(-2132344814i32);
+pub const ERROR_SPACES_DRIVE_REDUNDANCY_INVALID: crate::core::HRESULT =
+    crate::core::HRESULT(-2132344826i32);
+pub const ERROR_SPACES_DRIVE_SECTOR_SIZE_INVALID: crate::core::HRESULT =
+    crate::core::HRESULT(-2132344828i32);
+pub const ERROR_SPACES_DRIVE_SPLIT: crate::core::HRESULT = crate::core::HRESULT(-2132344802i32);
+pub const ERROR_SPACES_DRT_FULL: crate::core::HRESULT = crate::core::HRESULT(-2132344807i32);
+pub const ERROR_SPACES_ENCLOSURE_AWARE_INVALID: crate::core::HRESULT =
+    crate::core::HRESULT(-2132344817i32);
+pub const ERROR_SPACES_ENTRY_INCOMPLETE: crate::core::HRESULT =
+    crate::core::HRESULT(-2132344813i32);
+pub const ERROR_SPACES_ENTRY_INVALID: crate::core::HRESULT = crate::core::HRESULT(-2132344812i32);
+pub const ERROR_SPACES_EXTENDED_ERROR: crate::core::HRESULT = crate::core::HRESULT(-2132344820i32);
+pub const ERROR_SPACES_FAULT_DOMAIN_TYPE_INVALID: crate::core::HRESULT =
+    crate::core::HRESULT(-2132344831i32);
+pub const ERROR_SPACES_FLUSH_METADATA: crate::core::HRESULT = crate::core::HRESULT(-2132344795i32);
+pub const ERROR_SPACES_INCONSISTENCY: crate::core::HRESULT = crate::core::HRESULT(-2132344806i32);
+pub const ERROR_SPACES_INTERLEAVE_LENGTH_INVALID: crate::core::HRESULT =
+    crate::core::HRESULT(-2132344823i32);
+pub const ERROR_SPACES_INTERNAL_ERROR: crate::core::HRESULT = crate::core::HRESULT(-2132344830i32);
+pub const ERROR_SPACES_LOG_NOT_READY: crate::core::HRESULT = crate::core::HRESULT(-2132344805i32);
+pub const ERROR_SPACES_MAP_REQUIRED: crate::core::HRESULT = crate::core::HRESULT(-2132344810i32);
+pub const ERROR_SPACES_MARK_DIRTY: crate::core::HRESULT = crate::core::HRESULT(-2132344800i32);
+pub const ERROR_SPACES_NOT_ENOUGH_DRIVES: crate::core::HRESULT =
+    crate::core::HRESULT(-2132344821i32);
+pub const ERROR_SPACES_NO_REDUNDANCY: crate::core::HRESULT = crate::core::HRESULT(-2132344804i32);
+pub const ERROR_SPACES_NUMBER_OF_COLUMNS_INVALID: crate::core::HRESULT =
+    crate::core::HRESULT(-2132344822i32);
+pub const ERROR_SPACES_NUMBER_OF_DATA_COPIES_INVALID: crate::core::HRESULT =
+    crate::core::HRESULT(-2132344825i32);
+pub const ERROR_SPACES_NUMBER_OF_GROUPS_INVALID: crate::core::HRESULT =
+    crate::core::HRESULT(-2132344815i32);
+pub const ERROR_SPACES_PARITY_LAYOUT_INVALID: crate::core::HRESULT =
+    crate::core::HRESULT(-2132344824i32);
+pub const ERROR_SPACES_POOL_WAS_DELETED: crate::core::HRESULT = crate::core::HRESULT(15138817i32);
+pub const ERROR_SPACES_PROVISIONING_TYPE_INVALID: crate::core::HRESULT =
+    crate::core::HRESULT(-2132344819i32);
+pub const ERROR_SPACES_RESILIENCY_TYPE_INVALID: crate::core::HRESULT =
+    crate::core::HRESULT(-2132344829i32);
+pub const ERROR_SPACES_UNSUPPORTED_VERSION: crate::core::HRESULT =
+    crate::core::HRESULT(-2132344809i32);
+pub const ERROR_SPACES_UPDATE_COLUMN_STATE: crate::core::HRESULT =
+    crate::core::HRESULT(-2132344811i32);
+pub const ERROR_SPACES_WRITE_CACHE_SIZE_INVALID: crate::core::HRESULT =
+    crate::core::HRESULT(-2132344816i32);
+pub const ERROR_SVHDX_ERROR_NOT_AVAILABLE: crate::core::HRESULT =
+    crate::core::HRESULT(-1067647232i32);
+pub const ERROR_SVHDX_ERROR_STORED: crate::core::HRESULT = crate::core::HRESULT(-1067712512i32);
+pub const ERROR_SVHDX_NO_INITIATOR: crate::core::HRESULT = crate::core::HRESULT(-1067647221i32);
+pub const ERROR_SVHDX_RESERVATION_CONFLICT: crate::core::HRESULT =
+    crate::core::HRESULT(-1067647225i32);
+pub const ERROR_SVHDX_UNIT_ATTENTION_AVAILABLE: crate::core::HRESULT =
+    crate::core::HRESULT(-1067647231i32);
+pub const ERROR_SVHDX_UNIT_ATTENTION_CAPACITY_DATA_CHANGED: crate::core::HRESULT =
+    crate::core::HRESULT(-1067647230i32);
+pub const ERROR_SVHDX_UNIT_ATTENTION_OPERATING_DEFINITION_CHANGED: crate::core::HRESULT =
+    crate::core::HRESULT(-1067647226i32);
+pub const ERROR_SVHDX_UNIT_ATTENTION_REGISTRATIONS_PREEMPTED: crate::core::HRESULT =
+    crate::core::HRESULT(-1067647227i32);
+pub const ERROR_SVHDX_UNIT_ATTENTION_RESERVATIONS_PREEMPTED: crate::core::HRESULT =
+    crate::core::HRESULT(-1067647229i32);
+pub const ERROR_SVHDX_UNIT_ATTENTION_RESERVATIONS_RELEASED: crate::core::HRESULT =
+    crate::core::HRESULT(-1067647228i32);
+pub const ERROR_SVHDX_VERSION_MISMATCH: crate::core::HRESULT = crate::core::HRESULT(-1067647223i32);
+pub const ERROR_SVHDX_WRONG_FILE_TYPE: crate::core::HRESULT = crate::core::HRESULT(-1067647224i32);
+pub const ERROR_TIERING_ALREADY_PROCESSING: crate::core::HRESULT =
+    crate::core::HRESULT(-2138898426i32);
+pub const ERROR_TIERING_CANNOT_PIN_OBJECT: crate::core::HRESULT =
+    crate::core::HRESULT(-2138898425i32);
+pub const ERROR_TIERING_FILE_IS_NOT_PINNED: crate::core::HRESULT =
+    crate::core::HRESULT(-2138898424i32);
+pub const ERROR_TIERING_INVALID_FILE_ID: crate::core::HRESULT =
+    crate::core::HRESULT(-2138898428i32);
+pub const ERROR_TIERING_NOT_SUPPORTED_ON_VOLUME: crate::core::HRESULT =
+    crate::core::HRESULT(-2138898431i32);
+pub const ERROR_TIERING_STORAGE_TIER_NOT_FOUND: crate::core::HRESULT =
+    crate::core::HRESULT(-2138898429i32);
+pub const ERROR_TIERING_VOLUME_DISMOUNT_IN_PROGRESS: crate::core::HRESULT =
+    crate::core::HRESULT(-2138898430i32);
+pub const ERROR_TIERING_WRONG_CLUSTER_NODE: crate::core::HRESULT =
+    crate::core::HRESULT(-2138898427i32);
 pub const ERROR_UNKNOWN_PROTOCOL_ID: u32 = 902u32;
 pub const ERROR_UPDATE_IN_PROGRESS: u32 = 911u32;
 pub const ERROR_USER_LIMIT: u32 = 937u32;
-pub const ERROR_VHDSET_BACKING_STORAGE_NOT_FOUND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1067647220i32);
-pub const ERROR_VHD_SHARED: ::win32::core::HRESULT = ::win32::core::HRESULT(-1067647222i32);
-pub const ERROR_VOLSNAP_ACTIVATION_TIMEOUT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2138963966i32);
-pub const ERROR_VOLSNAP_BOOTFILE_NOT_VALID: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2138963967i32);
-pub const ERROR_VOLSNAP_NO_BYPASSIO_WITH_SNAPSHOT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2138963965i32);
-pub const EVENT_E_ALL_SUBSCRIBERS_FAILED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147220991i32);
-pub const EVENT_E_CANT_MODIFY_OR_DELETE_CONFIGURED_OBJECT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147220978i32);
-pub const EVENT_E_CANT_MODIFY_OR_DELETE_UNCONFIGURED_OBJECT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147220979i32);
-pub const EVENT_E_COMPLUS_NOT_INSTALLED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147220980i32);
+pub const ERROR_VHDSET_BACKING_STORAGE_NOT_FOUND: crate::core::HRESULT =
+    crate::core::HRESULT(-1067647220i32);
+pub const ERROR_VHD_SHARED: crate::core::HRESULT = crate::core::HRESULT(-1067647222i32);
+pub const ERROR_VOLSNAP_ACTIVATION_TIMEOUT: crate::core::HRESULT =
+    crate::core::HRESULT(-2138963966i32);
+pub const ERROR_VOLSNAP_BOOTFILE_NOT_VALID: crate::core::HRESULT =
+    crate::core::HRESULT(-2138963967i32);
+pub const ERROR_VOLSNAP_NO_BYPASSIO_WITH_SNAPSHOT: crate::core::HRESULT =
+    crate::core::HRESULT(-2138963965i32);
+pub const EVENT_E_ALL_SUBSCRIBERS_FAILED: crate::core::HRESULT =
+    crate::core::HRESULT(-2147220991i32);
+pub const EVENT_E_CANT_MODIFY_OR_DELETE_CONFIGURED_OBJECT: crate::core::HRESULT =
+    crate::core::HRESULT(-2147220978i32);
+pub const EVENT_E_CANT_MODIFY_OR_DELETE_UNCONFIGURED_OBJECT: crate::core::HRESULT =
+    crate::core::HRESULT(-2147220979i32);
+pub const EVENT_E_COMPLUS_NOT_INSTALLED: crate::core::HRESULT =
+    crate::core::HRESULT(-2147220980i32);
 pub const EVENT_E_FIRST: i32 = -2147220992i32;
-pub const EVENT_E_INTERNALERROR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147220986i32);
-pub const EVENT_E_INTERNALEXCEPTION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147220987i32);
-pub const EVENT_E_INVALID_EVENT_CLASS_PARTITION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147220977i32);
-pub const EVENT_E_INVALID_PER_USER_SID: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147220985i32);
+pub const EVENT_E_INTERNALERROR: crate::core::HRESULT = crate::core::HRESULT(-2147220986i32);
+pub const EVENT_E_INTERNALEXCEPTION: crate::core::HRESULT = crate::core::HRESULT(-2147220987i32);
+pub const EVENT_E_INVALID_EVENT_CLASS_PARTITION: crate::core::HRESULT =
+    crate::core::HRESULT(-2147220977i32);
+pub const EVENT_E_INVALID_PER_USER_SID: crate::core::HRESULT = crate::core::HRESULT(-2147220985i32);
 pub const EVENT_E_LAST: i32 = -2147220961i32;
-pub const EVENT_E_MISSING_EVENTCLASS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147220982i32);
-pub const EVENT_E_NOT_ALL_REMOVED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147220981i32);
-pub const EVENT_E_PER_USER_SID_NOT_LOGGED_ON: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147220976i32);
-pub const EVENT_E_QUERYFIELD: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147220988i32);
-pub const EVENT_E_QUERYSYNTAX: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147220989i32);
-pub const EVENT_E_TOO_MANY_METHODS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147220983i32);
-pub const EVENT_E_USER_EXCEPTION: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147220984i32);
+pub const EVENT_E_MISSING_EVENTCLASS: crate::core::HRESULT = crate::core::HRESULT(-2147220982i32);
+pub const EVENT_E_NOT_ALL_REMOVED: crate::core::HRESULT = crate::core::HRESULT(-2147220981i32);
+pub const EVENT_E_PER_USER_SID_NOT_LOGGED_ON: crate::core::HRESULT =
+    crate::core::HRESULT(-2147220976i32);
+pub const EVENT_E_QUERYFIELD: crate::core::HRESULT = crate::core::HRESULT(-2147220988i32);
+pub const EVENT_E_QUERYSYNTAX: crate::core::HRESULT = crate::core::HRESULT(-2147220989i32);
+pub const EVENT_E_TOO_MANY_METHODS: crate::core::HRESULT = crate::core::HRESULT(-2147220983i32);
+pub const EVENT_E_USER_EXCEPTION: crate::core::HRESULT = crate::core::HRESULT(-2147220984i32);
 pub const EVENT_S_FIRST: i32 = 262656i32;
 pub const EVENT_S_LAST: i32 = 262687i32;
-pub const EVENT_S_NOSUBSCRIBERS: ::win32::core::HRESULT = ::win32::core::HRESULT(262658i32);
-pub const EVENT_S_SOME_SUBSCRIBERS_FAILED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(262656i32);
+pub const EVENT_S_NOSUBSCRIBERS: crate::core::HRESULT = crate::core::HRESULT(262658i32);
+pub const EVENT_S_SOME_SUBSCRIBERS_FAILED: crate::core::HRESULT = crate::core::HRESULT(262656i32);
 pub const EXCEPTION_ACCESS_VIOLATION: NTSTATUS = NTSTATUS(-1073741819i32);
 pub const EXCEPTION_ARRAY_BOUNDS_EXCEEDED: NTSTATUS = NTSTATUS(-1073741684i32);
 pub const EXCEPTION_BREAKPOINT: NTSTATUS = NTSTATUS(-2147483645i32);
@@ -2137,232 +1973,208 @@ pub const EXCEPTION_POSSIBLE_DEADLOCK: NTSTATUS = NTSTATUS(-1073741420i32);
 pub const EXCEPTION_PRIV_INSTRUCTION: NTSTATUS = NTSTATUS(-1073741674i32);
 pub const EXCEPTION_SINGLE_STEP: NTSTATUS = NTSTATUS(-2147483644i32);
 pub const EXCEPTION_STACK_OVERFLOW: NTSTATUS = NTSTATUS(-1073741571i32);
-pub const E_ABORT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147467260i32);
-pub const E_ACCESSDENIED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147024891i32);
-pub const E_APPLICATION_ACTIVATION_EXEC_FAILURE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144927141i32);
-pub const E_APPLICATION_ACTIVATION_TIMED_OUT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144927142i32);
-pub const E_APPLICATION_EXITING: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147483622i32);
-pub const E_APPLICATION_MANAGER_NOT_RUNNING: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144927145i32);
-pub const E_APPLICATION_NOT_REGISTERED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144927148i32);
-pub const E_APPLICATION_TEMPORARY_LICENSE_ERROR: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144927140i32);
-pub const E_APPLICATION_TRIAL_LICENSE_EXPIRED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144927139i32);
-pub const E_APPLICATION_VIEW_EXITING: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147483621i32);
-pub const E_ASYNC_OPERATION_NOT_STARTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147483623i32);
-pub const E_AUDIO_ENGINE_NODE_NOT_FOUND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140798975i32);
-pub const E_BLUETOOTH_ATT_ATTRIBUTE_NOT_FOUND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140864502i32);
-pub const E_BLUETOOTH_ATT_ATTRIBUTE_NOT_LONG: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140864501i32);
-pub const E_BLUETOOTH_ATT_INSUFFICIENT_AUTHENTICATION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140864507i32);
-pub const E_BLUETOOTH_ATT_INSUFFICIENT_AUTHORIZATION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140864504i32);
-pub const E_BLUETOOTH_ATT_INSUFFICIENT_ENCRYPTION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140864497i32);
-pub const E_BLUETOOTH_ATT_INSUFFICIENT_ENCRYPTION_KEY_SIZE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140864500i32);
-pub const E_BLUETOOTH_ATT_INSUFFICIENT_RESOURCES: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140864495i32);
-pub const E_BLUETOOTH_ATT_INVALID_ATTRIBUTE_VALUE_LENGTH: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140864499i32);
-pub const E_BLUETOOTH_ATT_INVALID_HANDLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140864511i32);
-pub const E_BLUETOOTH_ATT_INVALID_OFFSET: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140864505i32);
-pub const E_BLUETOOTH_ATT_INVALID_PDU: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140864508i32);
-pub const E_BLUETOOTH_ATT_PREPARE_QUEUE_FULL: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140864503i32);
-pub const E_BLUETOOTH_ATT_READ_NOT_PERMITTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140864510i32);
-pub const E_BLUETOOTH_ATT_REQUEST_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140864506i32);
-pub const E_BLUETOOTH_ATT_UNKNOWN_ERROR: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140860416i32);
-pub const E_BLUETOOTH_ATT_UNLIKELY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2140864498i32);
-pub const E_BLUETOOTH_ATT_UNSUPPORTED_GROUP_TYPE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140864496i32);
-pub const E_BLUETOOTH_ATT_WRITE_NOT_PERMITTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140864509i32);
-pub const E_BOUNDS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147483637i32);
-pub const E_CHANGED_STATE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147483636i32);
-pub const E_ELEVATED_ACTIVATION_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144927151i32);
-pub const E_FAIL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147467259i32);
-pub const E_FULL_ADMIN_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144927149i32);
-pub const E_HANDLE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147024890i32);
-pub const E_HDAUDIO_CONNECTION_LIST_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140798973i32);
-pub const E_HDAUDIO_EMPTY_CONNECTION_LIST: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140798974i32);
-pub const E_HDAUDIO_NO_LOGICAL_DEVICES_CREATED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140798972i32);
-pub const E_HDAUDIO_NULL_LINKED_LIST_ENTRY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140798971i32);
-pub const E_ILLEGAL_DELEGATE_ASSIGNMENT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147483624i32);
-pub const E_ILLEGAL_METHOD_CALL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147483634i32);
-pub const E_ILLEGAL_STATE_CHANGE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147483635i32);
-pub const E_INVALIDARG: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147024809i32);
-pub const E_INVALID_PROTOCOL_FORMAT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2089418750i32);
-pub const E_INVALID_PROTOCOL_OPERATION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2089418751i32);
-pub const E_MBN_BAD_SIM: ::win32::core::HRESULT = ::win32::core::HRESULT(-2141945342i32);
-pub const E_MBN_CONTEXT_NOT_ACTIVATED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2141945343i32);
-pub const E_MBN_DATA_CLASS_NOT_AVAILABLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2141945341i32);
-pub const E_MBN_DEFAULT_PROFILE_EXIST: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2141945319i32);
-pub const E_MBN_FAILURE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2141945326i32);
-pub const E_MBN_INVALID_ACCESS_STRING: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2141945340i32);
-pub const E_MBN_INVALID_CACHE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2141945332i32);
-pub const E_MBN_INVALID_PROFILE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2141945320i32);
-pub const E_MBN_MAX_ACTIVATED_CONTEXTS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2141945339i32);
-pub const E_MBN_NOT_REGISTERED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2141945331i32);
-pub const E_MBN_PACKET_SVC_DETACHED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2141945338i32);
-pub const E_MBN_PIN_DISABLED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2141945327i32);
-pub const E_MBN_PIN_NOT_SUPPORTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2141945329i32);
-pub const E_MBN_PIN_REQUIRED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2141945328i32);
-pub const E_MBN_PROVIDERS_NOT_FOUND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2141945330i32);
-pub const E_MBN_PROVIDER_NOT_VISIBLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2141945337i32);
-pub const E_MBN_RADIO_POWER_OFF: ::win32::core::HRESULT = ::win32::core::HRESULT(-2141945336i32);
-pub const E_MBN_SERVICE_NOT_ACTIVATED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2141945335i32);
-pub const E_MBN_SIM_NOT_INSERTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2141945334i32);
-pub const E_MBN_SMS_ENCODING_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2141945312i32);
-pub const E_MBN_SMS_FILTER_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2141945311i32);
-pub const E_MBN_SMS_FORMAT_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2141945305i32);
-pub const E_MBN_SMS_INVALID_MEMORY_INDEX: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2141945310i32);
-pub const E_MBN_SMS_LANG_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2141945309i32);
-pub const E_MBN_SMS_MEMORY_FAILURE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2141945308i32);
-pub const E_MBN_SMS_MEMORY_FULL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2141945303i32);
-pub const E_MBN_SMS_NETWORK_TIMEOUT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2141945307i32);
-pub const E_MBN_SMS_OPERATION_NOT_ALLOWED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2141945304i32);
-pub const E_MBN_SMS_UNKNOWN_SMSC_ADDRESS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2141945306i32);
-pub const E_MBN_VOICE_CALL_IN_PROGRESS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2141945333i32);
-pub const E_MONITOR_RESOLUTION_TOO_LOW: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144927152i32);
-pub const E_MULTIPLE_EXTENSIONS_FOR_APPLICATION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144927147i32);
-pub const E_MULTIPLE_PACKAGES_FOR_FAMILY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144927146i32);
-pub const E_NOINTERFACE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147467262i32);
-pub const E_NOTIMPL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147467263i32);
-pub const E_OUTOFMEMORY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147024882i32);
-pub const E_POINTER: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147467261i32);
-pub const E_PROTOCOL_EXTENSIONS_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2089418749i32);
-pub const E_PROTOCOL_VERSION_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2089418747i32);
-pub const E_SKYDRIVE_FILE_NOT_UPLOADED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144927133i32);
-pub const E_SKYDRIVE_ROOT_TARGET_CANNOT_INDEX: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144927134i32);
-pub const E_SKYDRIVE_ROOT_TARGET_FILE_SYSTEM_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144927136i32);
-pub const E_SKYDRIVE_ROOT_TARGET_OVERLAP: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144927135i32);
-pub const E_SKYDRIVE_ROOT_TARGET_VOLUME_ROOT_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144927131i32);
-pub const E_SKYDRIVE_UPDATE_AVAILABILITY_FAIL: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144927132i32);
-pub const E_STRING_NOT_NULL_TERMINATED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147483625i32);
-pub const E_SUBPROTOCOL_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2089418748i32);
-pub const E_SYNCENGINE_CLIENT_UPDATE_NEEDED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2013081594i32);
-pub const E_SYNCENGINE_FILE_IDENTIFIER_UNKNOWN: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2013085694i32);
-pub const E_SYNCENGINE_FILE_SIZE_EXCEEDS_REMAINING_QUOTA: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2013089790i32);
-pub const E_SYNCENGINE_FILE_SIZE_OVER_LIMIT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2013089791i32);
-pub const E_SYNCENGINE_FILE_SYNC_PARTNER_ERROR: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2013089787i32);
-pub const E_SYNCENGINE_FOLDER_INACCESSIBLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2013081599i32);
-pub const E_SYNCENGINE_FOLDER_IN_REDIRECTION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2013081589i32);
-pub const E_SYNCENGINE_FOLDER_ITEM_COUNT_LIMIT_EXCEEDED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2013089788i32);
-pub const E_SYNCENGINE_PATH_LENGTH_LIMIT_EXCEEDED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2013081596i32);
-pub const E_SYNCENGINE_PROXY_AUTHENTICATION_REQUIRED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2013081593i32);
-pub const E_SYNCENGINE_REMOTE_PATH_LENGTH_LIMIT_EXCEEDED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2013081595i32);
-pub const E_SYNCENGINE_REQUEST_BLOCKED_BY_SERVICE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2013085690i32);
-pub const E_SYNCENGINE_REQUEST_BLOCKED_DUE_TO_CLIENT_ERROR: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2013085689i32);
-pub const E_SYNCENGINE_SERVICE_AUTHENTICATION_FAILED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2013085693i32);
-pub const E_SYNCENGINE_SERVICE_RETURNED_UNEXPECTED_SIZE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2013085691i32);
-pub const E_SYNCENGINE_STORAGE_SERVICE_BLOCKED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2013081590i32);
-pub const E_SYNCENGINE_STORAGE_SERVICE_PROVISIONING_FAILED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2013081592i32);
-pub const E_SYNCENGINE_SYNC_PAUSED_BY_SERVICE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2013089786i32);
-pub const E_SYNCENGINE_UNKNOWN_SERVICE_ERROR: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2013085692i32);
-pub const E_SYNCENGINE_UNSUPPORTED_FILE_NAME: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2013089789i32);
-pub const E_SYNCENGINE_UNSUPPORTED_FOLDER_NAME: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2013081598i32);
-pub const E_SYNCENGINE_UNSUPPORTED_MARKET: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2013081597i32);
-pub const E_SYNCENGINE_UNSUPPORTED_REPARSE_POINT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2013081591i32);
-pub const E_UAC_DISABLED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144927150i32);
-pub const E_UNEXPECTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147418113i32);
+pub const E_ABORT: crate::core::HRESULT = crate::core::HRESULT(-2147467260i32);
+pub const E_ACCESSDENIED: crate::core::HRESULT = crate::core::HRESULT(-2147024891i32);
+pub const E_APPLICATION_ACTIVATION_EXEC_FAILURE: crate::core::HRESULT =
+    crate::core::HRESULT(-2144927141i32);
+pub const E_APPLICATION_ACTIVATION_TIMED_OUT: crate::core::HRESULT =
+    crate::core::HRESULT(-2144927142i32);
+pub const E_APPLICATION_EXITING: crate::core::HRESULT = crate::core::HRESULT(-2147483622i32);
+pub const E_APPLICATION_MANAGER_NOT_RUNNING: crate::core::HRESULT =
+    crate::core::HRESULT(-2144927145i32);
+pub const E_APPLICATION_NOT_REGISTERED: crate::core::HRESULT = crate::core::HRESULT(-2144927148i32);
+pub const E_APPLICATION_TEMPORARY_LICENSE_ERROR: crate::core::HRESULT =
+    crate::core::HRESULT(-2144927140i32);
+pub const E_APPLICATION_TRIAL_LICENSE_EXPIRED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144927139i32);
+pub const E_APPLICATION_VIEW_EXITING: crate::core::HRESULT = crate::core::HRESULT(-2147483621i32);
+pub const E_ASYNC_OPERATION_NOT_STARTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2147483623i32);
+pub const E_AUDIO_ENGINE_NODE_NOT_FOUND: crate::core::HRESULT =
+    crate::core::HRESULT(-2140798975i32);
+pub const E_BLUETOOTH_ATT_ATTRIBUTE_NOT_FOUND: crate::core::HRESULT =
+    crate::core::HRESULT(-2140864502i32);
+pub const E_BLUETOOTH_ATT_ATTRIBUTE_NOT_LONG: crate::core::HRESULT =
+    crate::core::HRESULT(-2140864501i32);
+pub const E_BLUETOOTH_ATT_INSUFFICIENT_AUTHENTICATION: crate::core::HRESULT =
+    crate::core::HRESULT(-2140864507i32);
+pub const E_BLUETOOTH_ATT_INSUFFICIENT_AUTHORIZATION: crate::core::HRESULT =
+    crate::core::HRESULT(-2140864504i32);
+pub const E_BLUETOOTH_ATT_INSUFFICIENT_ENCRYPTION: crate::core::HRESULT =
+    crate::core::HRESULT(-2140864497i32);
+pub const E_BLUETOOTH_ATT_INSUFFICIENT_ENCRYPTION_KEY_SIZE: crate::core::HRESULT =
+    crate::core::HRESULT(-2140864500i32);
+pub const E_BLUETOOTH_ATT_INSUFFICIENT_RESOURCES: crate::core::HRESULT =
+    crate::core::HRESULT(-2140864495i32);
+pub const E_BLUETOOTH_ATT_INVALID_ATTRIBUTE_VALUE_LENGTH: crate::core::HRESULT =
+    crate::core::HRESULT(-2140864499i32);
+pub const E_BLUETOOTH_ATT_INVALID_HANDLE: crate::core::HRESULT =
+    crate::core::HRESULT(-2140864511i32);
+pub const E_BLUETOOTH_ATT_INVALID_OFFSET: crate::core::HRESULT =
+    crate::core::HRESULT(-2140864505i32);
+pub const E_BLUETOOTH_ATT_INVALID_PDU: crate::core::HRESULT = crate::core::HRESULT(-2140864508i32);
+pub const E_BLUETOOTH_ATT_PREPARE_QUEUE_FULL: crate::core::HRESULT =
+    crate::core::HRESULT(-2140864503i32);
+pub const E_BLUETOOTH_ATT_READ_NOT_PERMITTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2140864510i32);
+pub const E_BLUETOOTH_ATT_REQUEST_NOT_SUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2140864506i32);
+pub const E_BLUETOOTH_ATT_UNKNOWN_ERROR: crate::core::HRESULT =
+    crate::core::HRESULT(-2140860416i32);
+pub const E_BLUETOOTH_ATT_UNLIKELY: crate::core::HRESULT = crate::core::HRESULT(-2140864498i32);
+pub const E_BLUETOOTH_ATT_UNSUPPORTED_GROUP_TYPE: crate::core::HRESULT =
+    crate::core::HRESULT(-2140864496i32);
+pub const E_BLUETOOTH_ATT_WRITE_NOT_PERMITTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2140864509i32);
+pub const E_BOUNDS: crate::core::HRESULT = crate::core::HRESULT(-2147483637i32);
+pub const E_CHANGED_STATE: crate::core::HRESULT = crate::core::HRESULT(-2147483636i32);
+pub const E_ELEVATED_ACTIVATION_NOT_SUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144927151i32);
+pub const E_FAIL: crate::core::HRESULT = crate::core::HRESULT(-2147467259i32);
+pub const E_FULL_ADMIN_NOT_SUPPORTED: crate::core::HRESULT = crate::core::HRESULT(-2144927149i32);
+pub const E_HANDLE: crate::core::HRESULT = crate::core::HRESULT(-2147024890i32);
+pub const E_HDAUDIO_CONNECTION_LIST_NOT_SUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2140798973i32);
+pub const E_HDAUDIO_EMPTY_CONNECTION_LIST: crate::core::HRESULT =
+    crate::core::HRESULT(-2140798974i32);
+pub const E_HDAUDIO_NO_LOGICAL_DEVICES_CREATED: crate::core::HRESULT =
+    crate::core::HRESULT(-2140798972i32);
+pub const E_HDAUDIO_NULL_LINKED_LIST_ENTRY: crate::core::HRESULT =
+    crate::core::HRESULT(-2140798971i32);
+pub const E_ILLEGAL_DELEGATE_ASSIGNMENT: crate::core::HRESULT =
+    crate::core::HRESULT(-2147483624i32);
+pub const E_ILLEGAL_METHOD_CALL: crate::core::HRESULT = crate::core::HRESULT(-2147483634i32);
+pub const E_ILLEGAL_STATE_CHANGE: crate::core::HRESULT = crate::core::HRESULT(-2147483635i32);
+pub const E_INVALIDARG: crate::core::HRESULT = crate::core::HRESULT(-2147024809i32);
+pub const E_INVALID_PROTOCOL_FORMAT: crate::core::HRESULT = crate::core::HRESULT(-2089418750i32);
+pub const E_INVALID_PROTOCOL_OPERATION: crate::core::HRESULT = crate::core::HRESULT(-2089418751i32);
+pub const E_MBN_BAD_SIM: crate::core::HRESULT = crate::core::HRESULT(-2141945342i32);
+pub const E_MBN_CONTEXT_NOT_ACTIVATED: crate::core::HRESULT = crate::core::HRESULT(-2141945343i32);
+pub const E_MBN_DATA_CLASS_NOT_AVAILABLE: crate::core::HRESULT =
+    crate::core::HRESULT(-2141945341i32);
+pub const E_MBN_DEFAULT_PROFILE_EXIST: crate::core::HRESULT = crate::core::HRESULT(-2141945319i32);
+pub const E_MBN_FAILURE: crate::core::HRESULT = crate::core::HRESULT(-2141945326i32);
+pub const E_MBN_INVALID_ACCESS_STRING: crate::core::HRESULT = crate::core::HRESULT(-2141945340i32);
+pub const E_MBN_INVALID_CACHE: crate::core::HRESULT = crate::core::HRESULT(-2141945332i32);
+pub const E_MBN_INVALID_PROFILE: crate::core::HRESULT = crate::core::HRESULT(-2141945320i32);
+pub const E_MBN_MAX_ACTIVATED_CONTEXTS: crate::core::HRESULT = crate::core::HRESULT(-2141945339i32);
+pub const E_MBN_NOT_REGISTERED: crate::core::HRESULT = crate::core::HRESULT(-2141945331i32);
+pub const E_MBN_PACKET_SVC_DETACHED: crate::core::HRESULT = crate::core::HRESULT(-2141945338i32);
+pub const E_MBN_PIN_DISABLED: crate::core::HRESULT = crate::core::HRESULT(-2141945327i32);
+pub const E_MBN_PIN_NOT_SUPPORTED: crate::core::HRESULT = crate::core::HRESULT(-2141945329i32);
+pub const E_MBN_PIN_REQUIRED: crate::core::HRESULT = crate::core::HRESULT(-2141945328i32);
+pub const E_MBN_PROVIDERS_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2141945330i32);
+pub const E_MBN_PROVIDER_NOT_VISIBLE: crate::core::HRESULT = crate::core::HRESULT(-2141945337i32);
+pub const E_MBN_RADIO_POWER_OFF: crate::core::HRESULT = crate::core::HRESULT(-2141945336i32);
+pub const E_MBN_SERVICE_NOT_ACTIVATED: crate::core::HRESULT = crate::core::HRESULT(-2141945335i32);
+pub const E_MBN_SIM_NOT_INSERTED: crate::core::HRESULT = crate::core::HRESULT(-2141945334i32);
+pub const E_MBN_SMS_ENCODING_NOT_SUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2141945312i32);
+pub const E_MBN_SMS_FILTER_NOT_SUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2141945311i32);
+pub const E_MBN_SMS_FORMAT_NOT_SUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2141945305i32);
+pub const E_MBN_SMS_INVALID_MEMORY_INDEX: crate::core::HRESULT =
+    crate::core::HRESULT(-2141945310i32);
+pub const E_MBN_SMS_LANG_NOT_SUPPORTED: crate::core::HRESULT = crate::core::HRESULT(-2141945309i32);
+pub const E_MBN_SMS_MEMORY_FAILURE: crate::core::HRESULT = crate::core::HRESULT(-2141945308i32);
+pub const E_MBN_SMS_MEMORY_FULL: crate::core::HRESULT = crate::core::HRESULT(-2141945303i32);
+pub const E_MBN_SMS_NETWORK_TIMEOUT: crate::core::HRESULT = crate::core::HRESULT(-2141945307i32);
+pub const E_MBN_SMS_OPERATION_NOT_ALLOWED: crate::core::HRESULT =
+    crate::core::HRESULT(-2141945304i32);
+pub const E_MBN_SMS_UNKNOWN_SMSC_ADDRESS: crate::core::HRESULT =
+    crate::core::HRESULT(-2141945306i32);
+pub const E_MBN_VOICE_CALL_IN_PROGRESS: crate::core::HRESULT = crate::core::HRESULT(-2141945333i32);
+pub const E_MONITOR_RESOLUTION_TOO_LOW: crate::core::HRESULT = crate::core::HRESULT(-2144927152i32);
+pub const E_MULTIPLE_EXTENSIONS_FOR_APPLICATION: crate::core::HRESULT =
+    crate::core::HRESULT(-2144927147i32);
+pub const E_MULTIPLE_PACKAGES_FOR_FAMILY: crate::core::HRESULT =
+    crate::core::HRESULT(-2144927146i32);
+pub const E_NOINTERFACE: crate::core::HRESULT = crate::core::HRESULT(-2147467262i32);
+pub const E_NOTIMPL: crate::core::HRESULT = crate::core::HRESULT(-2147467263i32);
+pub const E_OUTOFMEMORY: crate::core::HRESULT = crate::core::HRESULT(-2147024882i32);
+pub const E_POINTER: crate::core::HRESULT = crate::core::HRESULT(-2147467261i32);
+pub const E_PROTOCOL_EXTENSIONS_NOT_SUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2089418749i32);
+pub const E_PROTOCOL_VERSION_NOT_SUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2089418747i32);
+pub const E_SKYDRIVE_FILE_NOT_UPLOADED: crate::core::HRESULT = crate::core::HRESULT(-2144927133i32);
+pub const E_SKYDRIVE_ROOT_TARGET_CANNOT_INDEX: crate::core::HRESULT =
+    crate::core::HRESULT(-2144927134i32);
+pub const E_SKYDRIVE_ROOT_TARGET_FILE_SYSTEM_NOT_SUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144927136i32);
+pub const E_SKYDRIVE_ROOT_TARGET_OVERLAP: crate::core::HRESULT =
+    crate::core::HRESULT(-2144927135i32);
+pub const E_SKYDRIVE_ROOT_TARGET_VOLUME_ROOT_NOT_SUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144927131i32);
+pub const E_SKYDRIVE_UPDATE_AVAILABILITY_FAIL: crate::core::HRESULT =
+    crate::core::HRESULT(-2144927132i32);
+pub const E_STRING_NOT_NULL_TERMINATED: crate::core::HRESULT = crate::core::HRESULT(-2147483625i32);
+pub const E_SUBPROTOCOL_NOT_SUPPORTED: crate::core::HRESULT = crate::core::HRESULT(-2089418748i32);
+pub const E_SYNCENGINE_CLIENT_UPDATE_NEEDED: crate::core::HRESULT =
+    crate::core::HRESULT(-2013081594i32);
+pub const E_SYNCENGINE_FILE_IDENTIFIER_UNKNOWN: crate::core::HRESULT =
+    crate::core::HRESULT(-2013085694i32);
+pub const E_SYNCENGINE_FILE_SIZE_EXCEEDS_REMAINING_QUOTA: crate::core::HRESULT =
+    crate::core::HRESULT(-2013089790i32);
+pub const E_SYNCENGINE_FILE_SIZE_OVER_LIMIT: crate::core::HRESULT =
+    crate::core::HRESULT(-2013089791i32);
+pub const E_SYNCENGINE_FILE_SYNC_PARTNER_ERROR: crate::core::HRESULT =
+    crate::core::HRESULT(-2013089787i32);
+pub const E_SYNCENGINE_FOLDER_INACCESSIBLE: crate::core::HRESULT =
+    crate::core::HRESULT(-2013081599i32);
+pub const E_SYNCENGINE_FOLDER_IN_REDIRECTION: crate::core::HRESULT =
+    crate::core::HRESULT(-2013081589i32);
+pub const E_SYNCENGINE_FOLDER_ITEM_COUNT_LIMIT_EXCEEDED: crate::core::HRESULT =
+    crate::core::HRESULT(-2013089788i32);
+pub const E_SYNCENGINE_PATH_LENGTH_LIMIT_EXCEEDED: crate::core::HRESULT =
+    crate::core::HRESULT(-2013081596i32);
+pub const E_SYNCENGINE_PROXY_AUTHENTICATION_REQUIRED: crate::core::HRESULT =
+    crate::core::HRESULT(-2013081593i32);
+pub const E_SYNCENGINE_REMOTE_PATH_LENGTH_LIMIT_EXCEEDED: crate::core::HRESULT =
+    crate::core::HRESULT(-2013081595i32);
+pub const E_SYNCENGINE_REQUEST_BLOCKED_BY_SERVICE: crate::core::HRESULT =
+    crate::core::HRESULT(-2013085690i32);
+pub const E_SYNCENGINE_REQUEST_BLOCKED_DUE_TO_CLIENT_ERROR: crate::core::HRESULT =
+    crate::core::HRESULT(-2013085689i32);
+pub const E_SYNCENGINE_SERVICE_AUTHENTICATION_FAILED: crate::core::HRESULT =
+    crate::core::HRESULT(-2013085693i32);
+pub const E_SYNCENGINE_SERVICE_RETURNED_UNEXPECTED_SIZE: crate::core::HRESULT =
+    crate::core::HRESULT(-2013085691i32);
+pub const E_SYNCENGINE_STORAGE_SERVICE_BLOCKED: crate::core::HRESULT =
+    crate::core::HRESULT(-2013081590i32);
+pub const E_SYNCENGINE_STORAGE_SERVICE_PROVISIONING_FAILED: crate::core::HRESULT =
+    crate::core::HRESULT(-2013081592i32);
+pub const E_SYNCENGINE_SYNC_PAUSED_BY_SERVICE: crate::core::HRESULT =
+    crate::core::HRESULT(-2013089786i32);
+pub const E_SYNCENGINE_UNKNOWN_SERVICE_ERROR: crate::core::HRESULT =
+    crate::core::HRESULT(-2013085692i32);
+pub const E_SYNCENGINE_UNSUPPORTED_FILE_NAME: crate::core::HRESULT =
+    crate::core::HRESULT(-2013089789i32);
+pub const E_SYNCENGINE_UNSUPPORTED_FOLDER_NAME: crate::core::HRESULT =
+    crate::core::HRESULT(-2013081598i32);
+pub const E_SYNCENGINE_UNSUPPORTED_MARKET: crate::core::HRESULT =
+    crate::core::HRESULT(-2013081597i32);
+pub const E_SYNCENGINE_UNSUPPORTED_REPARSE_POINT: crate::core::HRESULT =
+    crate::core::HRESULT(-2013081591i32);
+pub const E_UAC_DISABLED: crate::core::HRESULT = crate::core::HRESULT(-2144927150i32);
+pub const E_UNEXPECTED: crate::core::HRESULT = crate::core::HRESULT(-2147418113i32);
 pub const FACILTIY_MUI_ERROR_CODE: u32 = 11u32;
 pub type FARPROC = ::core::option::Option<unsafe extern "system" fn() -> PtrDiffRepr>;
-pub const FA_E_HOMEGROUP_NOT_AVAILABLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144927198i32);
-pub const FA_E_MAX_PERSISTED_ITEMS_REACHED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144927200i32);
-pub const FDAEMON_E_CHANGEUPDATEFAILED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147215740i32);
-pub const FDAEMON_E_FATALERROR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215742i32);
-pub const FDAEMON_E_LOWRESOURCE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215743i32);
-pub const FDAEMON_E_NOWORDLIST: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215737i32);
-pub const FDAEMON_E_PARTITIONDELETED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147215741i32);
-pub const FDAEMON_E_TOOMANYFILTEREDBLOCKS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147215736i32);
-pub const FDAEMON_E_WORDLISTCOMMITFAILED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147215738i32);
-pub const FDAEMON_W_EMPTYWORDLIST: ::win32::core::HRESULT = ::win32::core::HRESULT(267909i32);
-pub const FDAEMON_W_WORDLISTFULL: ::win32::core::HRESULT = ::win32::core::HRESULT(267904i32);
+pub const FA_E_HOMEGROUP_NOT_AVAILABLE: crate::core::HRESULT = crate::core::HRESULT(-2144927198i32);
+pub const FA_E_MAX_PERSISTED_ITEMS_REACHED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144927200i32);
+pub const FDAEMON_E_CHANGEUPDATEFAILED: crate::core::HRESULT = crate::core::HRESULT(-2147215740i32);
+pub const FDAEMON_E_FATALERROR: crate::core::HRESULT = crate::core::HRESULT(-2147215742i32);
+pub const FDAEMON_E_LOWRESOURCE: crate::core::HRESULT = crate::core::HRESULT(-2147215743i32);
+pub const FDAEMON_E_NOWORDLIST: crate::core::HRESULT = crate::core::HRESULT(-2147215737i32);
+pub const FDAEMON_E_PARTITIONDELETED: crate::core::HRESULT = crate::core::HRESULT(-2147215741i32);
+pub const FDAEMON_E_TOOMANYFILTEREDBLOCKS: crate::core::HRESULT =
+    crate::core::HRESULT(-2147215736i32);
+pub const FDAEMON_E_WORDLISTCOMMITFAILED: crate::core::HRESULT =
+    crate::core::HRESULT(-2147215738i32);
+pub const FDAEMON_W_EMPTYWORDLIST: crate::core::HRESULT = crate::core::HRESULT(267909i32);
+pub const FDAEMON_W_WORDLISTFULL: crate::core::HRESULT = crate::core::HRESULT(267904i32);
 pub struct FILETIME {
     pub dwLowDateTime: u32,
     pub dwHighDateTime: u32,
@@ -2387,27 +2199,23 @@ impl ::core::cmp::PartialEq for FILETIME {
     }
 }
 impl ::core::cmp::Eq for FILETIME {}
-pub const FILTER_E_ALREADY_OPEN: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215562i32);
-pub const FILTER_E_CONTENTINDEXCORRUPT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1073473740i32);
-pub const FILTER_E_IN_USE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215560i32);
-pub const FILTER_E_NOT_OPEN: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215559i32);
-pub const FILTER_E_NO_SUCH_PROPERTY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147215557i32);
-pub const FILTER_E_OFFLINE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215555i32);
-pub const FILTER_E_PARTIALLY_FILTERED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147215554i32);
-pub const FILTER_E_TOO_BIG: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215568i32);
-pub const FILTER_E_UNREACHABLE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215561i32);
-pub const FILTER_S_CONTENTSCAN_DELAYED: ::win32::core::HRESULT = ::win32::core::HRESULT(268083i32);
-pub const FILTER_S_DISK_FULL: ::win32::core::HRESULT = ::win32::core::HRESULT(268085i32);
-pub const FILTER_S_FULL_CONTENTSCAN_IMMEDIATE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(268082i32);
-pub const FILTER_S_NO_PROPSETS: ::win32::core::HRESULT = ::win32::core::HRESULT(268090i32);
-pub const FILTER_S_NO_SECURITY_DESCRIPTOR: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(268092i32);
-pub const FILTER_S_PARTIAL_CONTENTSCAN_IMMEDIATE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(268081i32);
+pub const FILTER_E_ALREADY_OPEN: crate::core::HRESULT = crate::core::HRESULT(-2147215562i32);
+pub const FILTER_E_CONTENTINDEXCORRUPT: crate::core::HRESULT = crate::core::HRESULT(-1073473740i32);
+pub const FILTER_E_IN_USE: crate::core::HRESULT = crate::core::HRESULT(-2147215560i32);
+pub const FILTER_E_NOT_OPEN: crate::core::HRESULT = crate::core::HRESULT(-2147215559i32);
+pub const FILTER_E_NO_SUCH_PROPERTY: crate::core::HRESULT = crate::core::HRESULT(-2147215557i32);
+pub const FILTER_E_OFFLINE: crate::core::HRESULT = crate::core::HRESULT(-2147215555i32);
+pub const FILTER_E_PARTIALLY_FILTERED: crate::core::HRESULT = crate::core::HRESULT(-2147215554i32);
+pub const FILTER_E_TOO_BIG: crate::core::HRESULT = crate::core::HRESULT(-2147215568i32);
+pub const FILTER_E_UNREACHABLE: crate::core::HRESULT = crate::core::HRESULT(-2147215561i32);
+pub const FILTER_S_CONTENTSCAN_DELAYED: crate::core::HRESULT = crate::core::HRESULT(268083i32);
+pub const FILTER_S_DISK_FULL: crate::core::HRESULT = crate::core::HRESULT(268085i32);
+pub const FILTER_S_FULL_CONTENTSCAN_IMMEDIATE: crate::core::HRESULT =
+    crate::core::HRESULT(268082i32);
+pub const FILTER_S_NO_PROPSETS: crate::core::HRESULT = crate::core::HRESULT(268090i32);
+pub const FILTER_S_NO_SECURITY_DESCRIPTOR: crate::core::HRESULT = crate::core::HRESULT(268092i32);
+pub const FILTER_S_PARTIAL_CONTENTSCAN_IMMEDIATE: crate::core::HRESULT =
+    crate::core::HRESULT(268081i32);
 pub struct FLOAT128 {
     pub LowPart: i64,
     pub HighPart: i64,
@@ -2449,479 +2257,424 @@ pub const FRS_ERR_SYSVOL_DEMOTE: i32 = 8016i32;
 pub const FRS_ERR_SYSVOL_IS_BUSY: i32 = 8015i32;
 pub const FRS_ERR_SYSVOL_POPULATE: i32 = 8013i32;
 pub const FRS_ERR_SYSVOL_POPULATE_TIMEOUT: i32 = 8014i32;
-pub const FVE_E_AAD_ENDPOINT_BUSY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272159i32);
-pub const FVE_E_ACTION_NOT_ALLOWED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272375i32);
-pub const FVE_E_ADBACKUP_NOT_ENABLED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272171i32);
-pub const FVE_E_AD_ATTR_NOT_SET: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272370i32);
-pub const FVE_E_AD_BACKUP_REQUIRED_POLICY_NOT_SET_FIXED_DRIVE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272165i32);
-pub const FVE_E_AD_BACKUP_REQUIRED_POLICY_NOT_SET_OS_DRIVE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272166i32);
-pub const FVE_E_AD_BACKUP_REQUIRED_POLICY_NOT_SET_REMOVABLE_DRIVE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272164i32);
-pub const FVE_E_AD_GUID_NOT_FOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272369i32);
-pub const FVE_E_AD_INSUFFICIENT_BUFFER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272358i32);
-pub const FVE_E_AD_INVALID_DATASIZE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272372i32);
-pub const FVE_E_AD_INVALID_DATATYPE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272373i32);
-pub const FVE_E_AD_NO_VALUES: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272371i32);
-pub const FVE_E_AD_SCHEMA_NOT_INSTALLED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272374i32);
-pub const FVE_E_AUTH_INVALID_APPLICATION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272316i32);
-pub const FVE_E_AUTH_INVALID_CONFIG: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272315i32);
-pub const FVE_E_AUTOUNLOCK_ENABLED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272343i32);
-pub const FVE_E_BAD_DATA: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272362i32);
-pub const FVE_E_BAD_INFORMATION: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272368i32);
-pub const FVE_E_BAD_PARTITION_SIZE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272364i32);
-pub const FVE_E_BCD_APPLICATIONS_PATH_INCORRECT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272302i32);
-pub const FVE_E_BOOTABLE_CDDVD: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272336i32);
-pub const FVE_E_BUFFER_TOO_LARGE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272177i32);
-pub const FVE_E_CANNOT_ENCRYPT_NO_KEY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272338i32);
-pub const FVE_E_CANNOT_SET_FVEK_ENCRYPTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272339i32);
-pub const FVE_E_CANT_LOCK_AUTOUNLOCK_ENABLED_VOLUME: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272233i32);
-pub const FVE_E_CLUSTERING_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272354i32);
-pub const FVE_E_CONV_READ: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272357i32);
-pub const FVE_E_CONV_RECOVERY_FAILED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272248i32);
-pub const FVE_E_CONV_WRITE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272356i32);
-pub const FVE_E_DEBUGGER_ENABLED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272305i32);
-pub const FVE_E_DEVICELOCKOUT_COUNTER_MISMATCH: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272178i32);
-pub const FVE_E_DEVICE_LOCKOUT_COUNTER_UNAVAILABLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272179i32);
-pub const FVE_E_DEVICE_NOT_JOINED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272160i32);
-pub const FVE_E_DE_DEVICE_LOCKEDOUT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272182i32);
-pub const FVE_E_DE_FIXED_DATA_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272187i32);
-pub const FVE_E_DE_HARDWARE_NOT_COMPLIANT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272186i32);
-pub const FVE_E_DE_OS_VOLUME_NOT_PROTECTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272183i32);
-pub const FVE_E_DE_PREVENTED_FOR_OS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272175i32);
-pub const FVE_E_DE_PROTECTION_NOT_YET_ENABLED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272181i32);
-pub const FVE_E_DE_PROTECTION_SUSPENDED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272184i32);
-pub const FVE_E_DE_VOLUME_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272173i32);
-pub const FVE_E_DE_VOLUME_OPTED_OUT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272174i32);
-pub const FVE_E_DE_WINRE_NOT_CONFIGURED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272185i32);
-pub const FVE_E_DRY_RUN_FAILED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272307i32);
-pub const FVE_E_DV_NOT_ALLOWED_BY_GP: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272271i32);
-pub const FVE_E_DV_NOT_SUPPORTED_ON_FS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272272i32);
-pub const FVE_E_EDRIVE_BAND_ENUMERATION_FAILED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272157i32);
-pub const FVE_E_EDRIVE_BAND_IN_USE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272208i32);
-pub const FVE_E_EDRIVE_DISALLOWED_BY_GP: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272207i32);
-pub const FVE_E_EDRIVE_DRY_RUN_FAILED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272196i32);
-pub const FVE_E_EDRIVE_DV_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272204i32);
-pub const FVE_E_EDRIVE_INCOMPATIBLE_FIRMWARE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272193i32);
-pub const FVE_E_EDRIVE_INCOMPATIBLE_VOLUME: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272206i32);
-pub const FVE_E_EDRIVE_NO_FAILOVER_TO_SW: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272209i32);
-pub const FVE_E_EFI_ONLY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272228i32);
-pub const FVE_E_ENH_PIN_INVALID: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272231i32);
-pub const FVE_E_EOW_NOT_SUPPORTED_IN_VERSION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272172i32);
-pub const FVE_E_EXECUTE_REQUEST_SENT_TOO_SOON: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272162i32);
-pub const FVE_E_FAILED_AUTHENTICATION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272345i32);
-pub const FVE_E_FAILED_SECTOR_SIZE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272346i32);
-pub const FVE_E_FAILED_WRONG_FS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272365i32);
-pub const FVE_E_FIPS_DISABLE_PROTECTION_NOT_ALLOWED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272314i32);
-pub const FVE_E_FIPS_HASH_KDF_NOT_ALLOWED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272232i32);
-pub const FVE_E_FIPS_PREVENTS_EXTERNAL_KEY_EXPORT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272328i32);
-pub const FVE_E_FIPS_PREVENTS_PASSPHRASE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272276i32);
-pub const FVE_E_FIPS_PREVENTS_RECOVERY_PASSWORD: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272329i32);
-pub const FVE_E_FIPS_RNG_CHECK_FAILED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272330i32);
-pub const FVE_E_FIRMWARE_TYPE_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272312i32);
-pub const FVE_E_FOREIGN_VOLUME: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272349i32);
-pub const FVE_E_FS_MOUNTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272309i32);
-pub const FVE_E_FS_NOT_EXTENDED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272313i32);
-pub const FVE_E_FULL_ENCRYPTION_NOT_ALLOWED_ON_TP_STORAGE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272219i32);
-pub const FVE_E_HIDDEN_VOLUME: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272298i32);
-pub const FVE_E_INVALID_BITLOCKER_OID: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272274i32);
-pub const FVE_E_INVALID_DATUM_TYPE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272229i32);
-pub const FVE_E_INVALID_KEY_FORMAT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272332i32);
-pub const FVE_E_INVALID_NBP_CERT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272158i32);
-pub const FVE_E_INVALID_NKP_CERT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272225i32);
-pub const FVE_E_INVALID_PASSWORD_FORMAT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272331i32);
-pub const FVE_E_INVALID_PIN_CHARS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272230i32);
-pub const FVE_E_INVALID_PIN_CHARS_DETAILED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272180i32);
-pub const FVE_E_INVALID_PROTECTOR_TYPE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272326i32);
-pub const FVE_E_INVALID_STARTUP_OPTIONS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272293i32);
-pub const FVE_E_KEYFILE_INVALID: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272323i32);
-pub const FVE_E_KEYFILE_NOT_FOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272324i32);
-pub const FVE_E_KEYFILE_NO_VMK: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272322i32);
-pub const FVE_E_KEY_LENGTH_NOT_SUPPORTED_BY_EDRIVE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272217i32);
-pub const FVE_E_KEY_PROTECTOR_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272279i32);
-pub const FVE_E_KEY_REQUIRED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272355i32);
-pub const FVE_E_KEY_ROTATION_NOT_ENABLED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272161i32);
-pub const FVE_E_KEY_ROTATION_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272163i32);
-pub const FVE_E_LIVEID_ACCOUNT_BLOCKED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272189i32);
-pub const FVE_E_LIVEID_ACCOUNT_SUSPENDED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272190i32);
-pub const FVE_E_LOCKED_VOLUME: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272384i32);
-pub const FVE_E_MOR_FAILED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272299i32);
-pub const FVE_E_MULTIPLE_NKP_CERTS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272227i32);
-pub const FVE_E_NON_BITLOCKER_KU: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272237i32);
-pub const FVE_E_NON_BITLOCKER_OID: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272251i32);
-pub const FVE_E_NOT_ACTIVATED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272376i32);
-pub const FVE_E_NOT_ALLOWED_IN_SAFE_MODE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272320i32);
-pub const FVE_E_NOT_ALLOWED_IN_VERSION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272301i32);
-pub const FVE_E_NOT_ALLOWED_ON_CLUSTER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272210i32);
-pub const FVE_E_NOT_ALLOWED_ON_CSV_STACK: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272211i32);
-pub const FVE_E_NOT_ALLOWED_TO_UPGRADE_WHILE_CONVERTING: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272205i32);
-pub const FVE_E_NOT_DATA_VOLUME: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272359i32);
-pub const FVE_E_NOT_DECRYPTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272327i32);
-pub const FVE_E_NOT_DE_VOLUME: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272169i32);
-pub const FVE_E_NOT_ENCRYPTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272383i32);
-pub const FVE_E_NOT_ON_STACK: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272310i32);
-pub const FVE_E_NOT_OS_VOLUME: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272344i32);
-pub const FVE_E_NOT_PROVISIONED_ON_ALL_VOLUMES: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272188i32);
-pub const FVE_E_NOT_SUPPORTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272363i32);
-pub const FVE_E_NO_AUTOUNLOCK_MASTER_KEY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272300i32);
-pub const FVE_E_NO_BOOTMGR_METRIC: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272379i32);
-pub const FVE_E_NO_BOOTSECTOR_METRIC: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272380i32);
-pub const FVE_E_NO_EXISTING_PASSPHRASE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272216i32);
-pub const FVE_E_NO_EXISTING_PIN: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272224i32);
-pub const FVE_E_NO_FEATURE_LICENSE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272294i32);
-pub const FVE_E_NO_LICENSE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272311i32);
-pub const FVE_E_NO_MBR_METRIC: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272381i32);
-pub const FVE_E_NO_PASSPHRASE_WITH_TPM: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272213i32);
-pub const FVE_E_NO_PREBOOT_KEYBOARD_DETECTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272203i32);
-pub const FVE_E_NO_PREBOOT_KEYBOARD_OR_WINRE_DETECTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272202i32);
-pub const FVE_E_NO_PROTECTORS_TO_TEST: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272325i32);
-pub const FVE_E_NO_SUCH_CAPABILITY_ON_TARGET: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272176i32);
-pub const FVE_E_NO_TPM_BIOS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272382i32);
-pub const FVE_E_NO_TPM_WITH_PASSPHRASE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272212i32);
-pub const FVE_E_OPERATION_NOT_SUPPORTED_ON_VISTA_VOLUME: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272234i32);
-pub const FVE_E_OSV_KSR_NOT_ALLOWED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272167i32);
-pub const FVE_E_OS_NOT_PROTECTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272352i32);
-pub const FVE_E_OS_VOLUME_PASSPHRASE_NOT_ALLOWED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272275i32);
-pub const FVE_E_OVERLAPPED_UPDATE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272348i32);
-pub const FVE_E_PASSPHRASE_PROTECTOR_CHANGE_BY_STD_USER_DISALLOWED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272191i32);
-pub const FVE_E_PASSPHRASE_TOO_LONG: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272214i32);
-pub const FVE_E_PIN_INVALID: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272317i32);
-pub const FVE_E_PIN_PROTECTOR_CHANGE_BY_STD_USER_DISALLOWED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272222i32);
-pub const FVE_E_POLICY_CONFLICT_FDV_RK_OFF_AUK_ON: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272253i32);
-pub const FVE_E_POLICY_CONFLICT_FDV_RP_OFF_ADB_ON: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272239i32);
-pub const FVE_E_POLICY_CONFLICT_OSV_RP_OFF_ADB_ON: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272240i32);
-pub const FVE_E_POLICY_CONFLICT_RDV_RK_OFF_AUK_ON: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272252i32);
-pub const FVE_E_POLICY_CONFLICT_RDV_RP_OFF_ADB_ON: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272238i32);
-pub const FVE_E_POLICY_CONFLICT_RO_AND_STARTUP_KEY_REQUIRED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272249i32);
-pub const FVE_E_POLICY_INVALID_ENHANCED_BCD_SETTINGS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272194i32);
-pub const FVE_E_POLICY_INVALID_PASSPHRASE_LENGTH: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272256i32);
-pub const FVE_E_POLICY_INVALID_PIN_LENGTH: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272280i32);
-pub const FVE_E_POLICY_ON_RDV_EXCLUSION_LIST: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272156i32);
-pub const FVE_E_POLICY_PASSPHRASE_NOT_ALLOWED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272278i32);
-pub const FVE_E_POLICY_PASSPHRASE_REQUIRED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272277i32);
-pub const FVE_E_POLICY_PASSPHRASE_REQUIRES_ASCII: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272220i32);
-pub const FVE_E_POLICY_PASSPHRASE_TOO_SIMPLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272255i32);
-pub const FVE_E_POLICY_PASSWORD_REQUIRED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272340i32);
-pub const FVE_E_POLICY_PROHIBITS_SELFSIGNED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272250i32);
-pub const FVE_E_POLICY_RECOVERY_KEY_NOT_ALLOWED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272290i32);
-pub const FVE_E_POLICY_RECOVERY_KEY_REQUIRED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272289i32);
-pub const FVE_E_POLICY_RECOVERY_PASSWORD_NOT_ALLOWED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272292i32);
-pub const FVE_E_POLICY_RECOVERY_PASSWORD_REQUIRED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272291i32);
-pub const FVE_E_POLICY_REQUIRES_RECOVERY_PASSWORD_ON_TOUCH_DEVICE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272200i32);
-pub const FVE_E_POLICY_REQUIRES_STARTUP_PIN_ON_TOUCH_DEVICE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272201i32);
-pub const FVE_E_POLICY_STARTUP_KEY_NOT_ALLOWED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272286i32);
-pub const FVE_E_POLICY_STARTUP_KEY_REQUIRED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272285i32);
-pub const FVE_E_POLICY_STARTUP_PIN_KEY_NOT_ALLOWED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272284i32);
-pub const FVE_E_POLICY_STARTUP_PIN_KEY_REQUIRED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272283i32);
-pub const FVE_E_POLICY_STARTUP_PIN_NOT_ALLOWED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272288i32);
-pub const FVE_E_POLICY_STARTUP_PIN_REQUIRED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272287i32);
-pub const FVE_E_POLICY_STARTUP_TPM_NOT_ALLOWED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272282i32);
-pub const FVE_E_POLICY_STARTUP_TPM_REQUIRED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272281i32);
-pub const FVE_E_POLICY_USER_CERTIFICATE_NOT_ALLOWED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272270i32);
-pub const FVE_E_POLICY_USER_CERTIFICATE_REQUIRED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272269i32);
-pub const FVE_E_POLICY_USER_CERT_MUST_BE_HW: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272268i32);
-pub const FVE_E_POLICY_USER_CONFIGURE_FDV_AUTOUNLOCK_NOT_ALLOWED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272267i32);
-pub const FVE_E_POLICY_USER_CONFIGURE_RDV_AUTOUNLOCK_NOT_ALLOWED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272266i32);
-pub const FVE_E_POLICY_USER_CONFIGURE_RDV_NOT_ALLOWED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272265i32);
-pub const FVE_E_POLICY_USER_DISABLE_RDV_NOT_ALLOWED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272263i32);
-pub const FVE_E_POLICY_USER_ENABLE_RDV_NOT_ALLOWED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272264i32);
-pub const FVE_E_PREDICTED_TPM_PROTECTOR_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272155i32);
-pub const FVE_E_PRIVATEKEY_AUTH_FAILED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272236i32);
-pub const FVE_E_PROTECTION_CANNOT_BE_DISABLED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272168i32);
-pub const FVE_E_PROTECTION_DISABLED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272351i32);
-pub const FVE_E_PROTECTOR_CHANGE_MAX_PASSPHRASE_CHANGE_ATTEMPTS_REACHED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272192i32);
-pub const FVE_E_PROTECTOR_CHANGE_MAX_PIN_CHANGE_ATTEMPTS_REACHED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272221i32);
-pub const FVE_E_PROTECTOR_CHANGE_PASSPHRASE_MISMATCH: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272215i32);
-pub const FVE_E_PROTECTOR_CHANGE_PIN_MISMATCH: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272223i32);
-pub const FVE_E_PROTECTOR_EXISTS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272335i32);
-pub const FVE_E_PROTECTOR_NOT_FOUND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272333i32);
-pub const FVE_E_PUBKEY_NOT_ALLOWED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272296i32);
-pub const FVE_E_RAW_ACCESS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272304i32);
-pub const FVE_E_RAW_BLOCKED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272303i32);
-pub const FVE_E_REBOOT_REQUIRED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272306i32);
-pub const FVE_E_RECOVERY_KEY_REQUIRED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272350i32);
-pub const FVE_E_RECOVERY_PARTITION: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272254i32);
-pub const FVE_E_RELATIVE_PATH: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272334i32);
-pub const FVE_E_REMOVAL_OF_DRA_FAILED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272235i32);
-pub const FVE_E_REMOVAL_OF_NKP_FAILED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272226i32);
-pub const FVE_E_SECUREBOOT_CONFIGURATION_INVALID: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272197i32);
-pub const FVE_E_SECUREBOOT_DISABLED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272198i32);
-pub const FVE_E_SECURE_KEY_REQUIRED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272377i32);
-pub const FVE_E_SETUP_TPM_CALLBACK_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272154i32);
-pub const FVE_E_SHADOW_COPY_PRESENT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272195i32);
-pub const FVE_E_SYSTEM_VOLUME: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272366i32);
-pub const FVE_E_TOKEN_NOT_IMPERSONATED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272308i32);
-pub const FVE_E_TOO_SMALL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272367i32);
-pub const FVE_E_TPM_CONTEXT_SETUP_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272153i32);
-pub const FVE_E_TPM_DISABLED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272321i32);
-pub const FVE_E_TPM_INVALID_PCR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272319i32);
-pub const FVE_E_TPM_NOT_OWNED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272360i32);
-pub const FVE_E_TPM_NO_VMK: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272318i32);
-pub const FVE_E_TPM_SRK_AUTH_NOT_ZERO: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272347i32);
-pub const FVE_E_TRANSIENT_STATE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272297i32);
-pub const FVE_E_VIRTUALIZED_SPACE_TOO_BIG: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272247i32);
-pub const FVE_E_VOLUME_BOUND_ALREADY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272353i32);
-pub const FVE_E_VOLUME_EXTEND_PREVENTS_EOW_DECRYPT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272170i32);
-pub const FVE_E_VOLUME_HANDLE_OPEN: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272295i32);
-pub const FVE_E_VOLUME_NOT_BOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272361i32);
-pub const FVE_E_VOLUME_TOO_SMALL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272273i32);
-pub const FVE_E_WIPE_CANCEL_NOT_APPLICABLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272199i32);
-pub const FVE_E_WIPE_NOT_ALLOWED_ON_TP_STORAGE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144272218i32);
-pub const FVE_E_WRONG_BOOTMGR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272378i32);
-pub const FVE_E_WRONG_BOOTSECTOR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272342i32);
-pub const FVE_E_WRONG_SYSTEM_FS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144272341i32);
-pub const FWP_E_ACTION_INCOMPATIBLE_WITH_LAYER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144206804i32);
-pub const FWP_E_ACTION_INCOMPATIBLE_WITH_SUBLAYER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144206803i32);
-pub const FWP_E_ALREADY_EXISTS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144206839i32);
-pub const FWP_E_BUILTIN_OBJECT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144206825i32);
-pub const FWP_E_CALLOUT_NOTIFICATION_FAILED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144206793i32);
-pub const FWP_E_CALLOUT_NOT_FOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144206847i32);
-pub const FWP_E_CONDITION_NOT_FOUND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144206846i32);
-pub const FWP_E_CONNECTIONS_DISABLED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144206783i32);
-pub const FWP_E_CONTEXT_INCOMPATIBLE_WITH_CALLOUT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144206801i32);
-pub const FWP_E_CONTEXT_INCOMPATIBLE_WITH_LAYER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144206802i32);
-pub const FWP_E_DROP_NOICMP: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144206588i32);
-pub const FWP_E_DUPLICATE_AUTH_METHOD: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144206788i32);
-pub const FWP_E_DUPLICATE_CONDITION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144206806i32);
-pub const FWP_E_DUPLICATE_KEYMOD: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144206805i32);
-pub const FWP_E_DYNAMIC_SESSION_IN_PROGRESS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144206837i32);
-pub const FWP_E_EM_NOT_SUPPORTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144206798i32);
-pub const FWP_E_FILTER_NOT_FOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144206845i32);
-pub const FWP_E_IKEEXT_NOT_RUNNING: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144206780i32);
-pub const FWP_E_INCOMPATIBLE_AUTH_METHOD: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144206800i32);
-pub const FWP_E_INCOMPATIBLE_CIPHER_TRANSFORM: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144206790i32);
-pub const FWP_E_INCOMPATIBLE_DH_GROUP: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144206799i32);
-pub const FWP_E_INCOMPATIBLE_LAYER: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144206828i32);
-pub const FWP_E_INCOMPATIBLE_SA_STATE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144206821i32);
-pub const FWP_E_INCOMPATIBLE_TXN: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144206831i32);
-pub const FWP_E_INVALID_ACTION_TYPE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144206812i32);
-pub const FWP_E_INVALID_AUTH_TRANSFORM: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144206792i32);
-pub const FWP_E_INVALID_CIPHER_TRANSFORM: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144206791i32);
-pub const FWP_E_INVALID_DNS_NAME: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144206782i32);
-pub const FWP_E_INVALID_ENUMERATOR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144206819i32);
-pub const FWP_E_INVALID_FLAGS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144206818i32);
-pub const FWP_E_INVALID_INTERVAL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144206815i32);
-pub const FWP_E_INVALID_NET_MASK: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144206817i32);
-pub const FWP_E_INVALID_PARAMETER: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144206795i32);
-pub const FWP_E_INVALID_RANGE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144206816i32);
-pub const FWP_E_INVALID_TRANSFORM_COMBINATION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144206789i32);
-pub const FWP_E_INVALID_TUNNEL_ENDPOINT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144206787i32);
-pub const FWP_E_INVALID_WEIGHT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144206811i32);
-pub const FWP_E_IN_USE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144206838i32);
-pub const FWP_E_KEY_DICTATION_INVALID_KEYING_MATERIAL: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144206784i32);
-pub const FWP_E_KEY_DICTATOR_ALREADY_REGISTERED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144206785i32);
-pub const FWP_E_KM_CLIENTS_ONLY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144206827i32);
-pub const FWP_E_L2_DRIVER_NOT_READY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144206786i32);
-pub const FWP_E_LAYER_NOT_FOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144206844i32);
-pub const FWP_E_LIFETIME_MISMATCH: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144206826i32);
-pub const FWP_E_MATCH_TYPE_MISMATCH: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144206810i32);
-pub const FWP_E_NET_EVENTS_DISABLED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144206829i32);
-pub const FWP_E_NEVER_MATCH: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144206797i32);
-pub const FWP_E_NOTIFICATION_DROPPED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144206823i32);
-pub const FWP_E_NOT_FOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144206840i32);
-pub const FWP_E_NO_TXN_IN_PROGRESS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144206835i32);
-pub const FWP_E_NULL_DISPLAY_NAME: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144206813i32);
-pub const FWP_E_NULL_POINTER: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144206820i32);
-pub const FWP_E_OUT_OF_BOUNDS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144206808i32);
-pub const FWP_E_PROVIDER_CONTEXT_MISMATCH: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144206796i32);
-pub const FWP_E_PROVIDER_CONTEXT_NOT_FOUND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144206842i32);
-pub const FWP_E_PROVIDER_NOT_FOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144206843i32);
-pub const FWP_E_RESERVED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144206807i32);
-pub const FWP_E_SESSION_ABORTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144206832i32);
-pub const FWP_E_STILL_ON: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144206781i32);
-pub const FWP_E_SUBLAYER_NOT_FOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144206841i32);
-pub const FWP_E_TIMEOUT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144206830i32);
-pub const FWP_E_TOO_MANY_CALLOUTS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144206824i32);
-pub const FWP_E_TOO_MANY_SUBLAYERS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144206794i32);
-pub const FWP_E_TRAFFIC_MISMATCH: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144206822i32);
-pub const FWP_E_TXN_ABORTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144206833i32);
-pub const FWP_E_TXN_IN_PROGRESS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144206834i32);
-pub const FWP_E_TYPE_MISMATCH: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144206809i32);
-pub const FWP_E_WRONG_SESSION: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144206836i32);
-pub const FWP_E_ZERO_LENGTH_ARRAY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144206814i32);
-pub const GCN_E_DEFAULTNAMESPACE_EXISTS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143616983i32);
-pub const GCN_E_MODULE_NOT_FOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143616991i32);
-pub const GCN_E_NETADAPTER_NOT_FOUND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143616986i32);
-pub const GCN_E_NETADAPTER_TIMEOUT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143616987i32);
-pub const GCN_E_NETCOMPARTMENT_NOT_FOUND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143616985i32);
-pub const GCN_E_NETINTERFACE_NOT_FOUND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143616984i32);
-pub const GCN_E_NO_REQUEST_HANDLERS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143616990i32);
-pub const GCN_E_REQUEST_UNSUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143616989i32);
-pub const GCN_E_RUNTIMEKEYS_FAILED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143616988i32);
+pub const FVE_E_AAD_ENDPOINT_BUSY: crate::core::HRESULT = crate::core::HRESULT(-2144272159i32);
+pub const FVE_E_ACTION_NOT_ALLOWED: crate::core::HRESULT = crate::core::HRESULT(-2144272375i32);
+pub const FVE_E_ADBACKUP_NOT_ENABLED: crate::core::HRESULT = crate::core::HRESULT(-2144272171i32);
+pub const FVE_E_AD_ATTR_NOT_SET: crate::core::HRESULT = crate::core::HRESULT(-2144272370i32);
+pub const FVE_E_AD_BACKUP_REQUIRED_POLICY_NOT_SET_FIXED_DRIVE: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272165i32);
+pub const FVE_E_AD_BACKUP_REQUIRED_POLICY_NOT_SET_OS_DRIVE: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272166i32);
+pub const FVE_E_AD_BACKUP_REQUIRED_POLICY_NOT_SET_REMOVABLE_DRIVE: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272164i32);
+pub const FVE_E_AD_GUID_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2144272369i32);
+pub const FVE_E_AD_INSUFFICIENT_BUFFER: crate::core::HRESULT = crate::core::HRESULT(-2144272358i32);
+pub const FVE_E_AD_INVALID_DATASIZE: crate::core::HRESULT = crate::core::HRESULT(-2144272372i32);
+pub const FVE_E_AD_INVALID_DATATYPE: crate::core::HRESULT = crate::core::HRESULT(-2144272373i32);
+pub const FVE_E_AD_NO_VALUES: crate::core::HRESULT = crate::core::HRESULT(-2144272371i32);
+pub const FVE_E_AD_SCHEMA_NOT_INSTALLED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272374i32);
+pub const FVE_E_AUTH_INVALID_APPLICATION: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272316i32);
+pub const FVE_E_AUTH_INVALID_CONFIG: crate::core::HRESULT = crate::core::HRESULT(-2144272315i32);
+pub const FVE_E_AUTOUNLOCK_ENABLED: crate::core::HRESULT = crate::core::HRESULT(-2144272343i32);
+pub const FVE_E_BAD_DATA: crate::core::HRESULT = crate::core::HRESULT(-2144272362i32);
+pub const FVE_E_BAD_INFORMATION: crate::core::HRESULT = crate::core::HRESULT(-2144272368i32);
+pub const FVE_E_BAD_PARTITION_SIZE: crate::core::HRESULT = crate::core::HRESULT(-2144272364i32);
+pub const FVE_E_BCD_APPLICATIONS_PATH_INCORRECT: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272302i32);
+pub const FVE_E_BOOTABLE_CDDVD: crate::core::HRESULT = crate::core::HRESULT(-2144272336i32);
+pub const FVE_E_BUFFER_TOO_LARGE: crate::core::HRESULT = crate::core::HRESULT(-2144272177i32);
+pub const FVE_E_CANNOT_ENCRYPT_NO_KEY: crate::core::HRESULT = crate::core::HRESULT(-2144272338i32);
+pub const FVE_E_CANNOT_SET_FVEK_ENCRYPTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272339i32);
+pub const FVE_E_CANT_LOCK_AUTOUNLOCK_ENABLED_VOLUME: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272233i32);
+pub const FVE_E_CLUSTERING_NOT_SUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272354i32);
+pub const FVE_E_CONV_READ: crate::core::HRESULT = crate::core::HRESULT(-2144272357i32);
+pub const FVE_E_CONV_RECOVERY_FAILED: crate::core::HRESULT = crate::core::HRESULT(-2144272248i32);
+pub const FVE_E_CONV_WRITE: crate::core::HRESULT = crate::core::HRESULT(-2144272356i32);
+pub const FVE_E_DEBUGGER_ENABLED: crate::core::HRESULT = crate::core::HRESULT(-2144272305i32);
+pub const FVE_E_DEVICELOCKOUT_COUNTER_MISMATCH: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272178i32);
+pub const FVE_E_DEVICE_LOCKOUT_COUNTER_UNAVAILABLE: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272179i32);
+pub const FVE_E_DEVICE_NOT_JOINED: crate::core::HRESULT = crate::core::HRESULT(-2144272160i32);
+pub const FVE_E_DE_DEVICE_LOCKEDOUT: crate::core::HRESULT = crate::core::HRESULT(-2144272182i32);
+pub const FVE_E_DE_FIXED_DATA_NOT_SUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272187i32);
+pub const FVE_E_DE_HARDWARE_NOT_COMPLIANT: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272186i32);
+pub const FVE_E_DE_OS_VOLUME_NOT_PROTECTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272183i32);
+pub const FVE_E_DE_PREVENTED_FOR_OS: crate::core::HRESULT = crate::core::HRESULT(-2144272175i32);
+pub const FVE_E_DE_PROTECTION_NOT_YET_ENABLED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272181i32);
+pub const FVE_E_DE_PROTECTION_SUSPENDED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272184i32);
+pub const FVE_E_DE_VOLUME_NOT_SUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272173i32);
+pub const FVE_E_DE_VOLUME_OPTED_OUT: crate::core::HRESULT = crate::core::HRESULT(-2144272174i32);
+pub const FVE_E_DE_WINRE_NOT_CONFIGURED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272185i32);
+pub const FVE_E_DRY_RUN_FAILED: crate::core::HRESULT = crate::core::HRESULT(-2144272307i32);
+pub const FVE_E_DV_NOT_ALLOWED_BY_GP: crate::core::HRESULT = crate::core::HRESULT(-2144272271i32);
+pub const FVE_E_DV_NOT_SUPPORTED_ON_FS: crate::core::HRESULT = crate::core::HRESULT(-2144272272i32);
+pub const FVE_E_EDRIVE_BAND_ENUMERATION_FAILED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272157i32);
+pub const FVE_E_EDRIVE_BAND_IN_USE: crate::core::HRESULT = crate::core::HRESULT(-2144272208i32);
+pub const FVE_E_EDRIVE_DISALLOWED_BY_GP: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272207i32);
+pub const FVE_E_EDRIVE_DRY_RUN_FAILED: crate::core::HRESULT = crate::core::HRESULT(-2144272196i32);
+pub const FVE_E_EDRIVE_DV_NOT_SUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272204i32);
+pub const FVE_E_EDRIVE_INCOMPATIBLE_FIRMWARE: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272193i32);
+pub const FVE_E_EDRIVE_INCOMPATIBLE_VOLUME: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272206i32);
+pub const FVE_E_EDRIVE_NO_FAILOVER_TO_SW: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272209i32);
+pub const FVE_E_EFI_ONLY: crate::core::HRESULT = crate::core::HRESULT(-2144272228i32);
+pub const FVE_E_ENH_PIN_INVALID: crate::core::HRESULT = crate::core::HRESULT(-2144272231i32);
+pub const FVE_E_EOW_NOT_SUPPORTED_IN_VERSION: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272172i32);
+pub const FVE_E_EXECUTE_REQUEST_SENT_TOO_SOON: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272162i32);
+pub const FVE_E_FAILED_AUTHENTICATION: crate::core::HRESULT = crate::core::HRESULT(-2144272345i32);
+pub const FVE_E_FAILED_SECTOR_SIZE: crate::core::HRESULT = crate::core::HRESULT(-2144272346i32);
+pub const FVE_E_FAILED_WRONG_FS: crate::core::HRESULT = crate::core::HRESULT(-2144272365i32);
+pub const FVE_E_FIPS_DISABLE_PROTECTION_NOT_ALLOWED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272314i32);
+pub const FVE_E_FIPS_HASH_KDF_NOT_ALLOWED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272232i32);
+pub const FVE_E_FIPS_PREVENTS_EXTERNAL_KEY_EXPORT: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272328i32);
+pub const FVE_E_FIPS_PREVENTS_PASSPHRASE: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272276i32);
+pub const FVE_E_FIPS_PREVENTS_RECOVERY_PASSWORD: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272329i32);
+pub const FVE_E_FIPS_RNG_CHECK_FAILED: crate::core::HRESULT = crate::core::HRESULT(-2144272330i32);
+pub const FVE_E_FIRMWARE_TYPE_NOT_SUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272312i32);
+pub const FVE_E_FOREIGN_VOLUME: crate::core::HRESULT = crate::core::HRESULT(-2144272349i32);
+pub const FVE_E_FS_MOUNTED: crate::core::HRESULT = crate::core::HRESULT(-2144272309i32);
+pub const FVE_E_FS_NOT_EXTENDED: crate::core::HRESULT = crate::core::HRESULT(-2144272313i32);
+pub const FVE_E_FULL_ENCRYPTION_NOT_ALLOWED_ON_TP_STORAGE: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272219i32);
+pub const FVE_E_HIDDEN_VOLUME: crate::core::HRESULT = crate::core::HRESULT(-2144272298i32);
+pub const FVE_E_INVALID_BITLOCKER_OID: crate::core::HRESULT = crate::core::HRESULT(-2144272274i32);
+pub const FVE_E_INVALID_DATUM_TYPE: crate::core::HRESULT = crate::core::HRESULT(-2144272229i32);
+pub const FVE_E_INVALID_KEY_FORMAT: crate::core::HRESULT = crate::core::HRESULT(-2144272332i32);
+pub const FVE_E_INVALID_NBP_CERT: crate::core::HRESULT = crate::core::HRESULT(-2144272158i32);
+pub const FVE_E_INVALID_NKP_CERT: crate::core::HRESULT = crate::core::HRESULT(-2144272225i32);
+pub const FVE_E_INVALID_PASSWORD_FORMAT: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272331i32);
+pub const FVE_E_INVALID_PIN_CHARS: crate::core::HRESULT = crate::core::HRESULT(-2144272230i32);
+pub const FVE_E_INVALID_PIN_CHARS_DETAILED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272180i32);
+pub const FVE_E_INVALID_PROTECTOR_TYPE: crate::core::HRESULT = crate::core::HRESULT(-2144272326i32);
+pub const FVE_E_INVALID_STARTUP_OPTIONS: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272293i32);
+pub const FVE_E_KEYFILE_INVALID: crate::core::HRESULT = crate::core::HRESULT(-2144272323i32);
+pub const FVE_E_KEYFILE_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2144272324i32);
+pub const FVE_E_KEYFILE_NO_VMK: crate::core::HRESULT = crate::core::HRESULT(-2144272322i32);
+pub const FVE_E_KEY_LENGTH_NOT_SUPPORTED_BY_EDRIVE: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272217i32);
+pub const FVE_E_KEY_PROTECTOR_NOT_SUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272279i32);
+pub const FVE_E_KEY_REQUIRED: crate::core::HRESULT = crate::core::HRESULT(-2144272355i32);
+pub const FVE_E_KEY_ROTATION_NOT_ENABLED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272161i32);
+pub const FVE_E_KEY_ROTATION_NOT_SUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272163i32);
+pub const FVE_E_LIVEID_ACCOUNT_BLOCKED: crate::core::HRESULT = crate::core::HRESULT(-2144272189i32);
+pub const FVE_E_LIVEID_ACCOUNT_SUSPENDED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272190i32);
+pub const FVE_E_LOCKED_VOLUME: crate::core::HRESULT = crate::core::HRESULT(-2144272384i32);
+pub const FVE_E_MOR_FAILED: crate::core::HRESULT = crate::core::HRESULT(-2144272299i32);
+pub const FVE_E_MULTIPLE_NKP_CERTS: crate::core::HRESULT = crate::core::HRESULT(-2144272227i32);
+pub const FVE_E_NON_BITLOCKER_KU: crate::core::HRESULT = crate::core::HRESULT(-2144272237i32);
+pub const FVE_E_NON_BITLOCKER_OID: crate::core::HRESULT = crate::core::HRESULT(-2144272251i32);
+pub const FVE_E_NOT_ACTIVATED: crate::core::HRESULT = crate::core::HRESULT(-2144272376i32);
+pub const FVE_E_NOT_ALLOWED_IN_SAFE_MODE: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272320i32);
+pub const FVE_E_NOT_ALLOWED_IN_VERSION: crate::core::HRESULT = crate::core::HRESULT(-2144272301i32);
+pub const FVE_E_NOT_ALLOWED_ON_CLUSTER: crate::core::HRESULT = crate::core::HRESULT(-2144272210i32);
+pub const FVE_E_NOT_ALLOWED_ON_CSV_STACK: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272211i32);
+pub const FVE_E_NOT_ALLOWED_TO_UPGRADE_WHILE_CONVERTING: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272205i32);
+pub const FVE_E_NOT_DATA_VOLUME: crate::core::HRESULT = crate::core::HRESULT(-2144272359i32);
+pub const FVE_E_NOT_DECRYPTED: crate::core::HRESULT = crate::core::HRESULT(-2144272327i32);
+pub const FVE_E_NOT_DE_VOLUME: crate::core::HRESULT = crate::core::HRESULT(-2144272169i32);
+pub const FVE_E_NOT_ENCRYPTED: crate::core::HRESULT = crate::core::HRESULT(-2144272383i32);
+pub const FVE_E_NOT_ON_STACK: crate::core::HRESULT = crate::core::HRESULT(-2144272310i32);
+pub const FVE_E_NOT_OS_VOLUME: crate::core::HRESULT = crate::core::HRESULT(-2144272344i32);
+pub const FVE_E_NOT_PROVISIONED_ON_ALL_VOLUMES: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272188i32);
+pub const FVE_E_NOT_SUPPORTED: crate::core::HRESULT = crate::core::HRESULT(-2144272363i32);
+pub const FVE_E_NO_AUTOUNLOCK_MASTER_KEY: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272300i32);
+pub const FVE_E_NO_BOOTMGR_METRIC: crate::core::HRESULT = crate::core::HRESULT(-2144272379i32);
+pub const FVE_E_NO_BOOTSECTOR_METRIC: crate::core::HRESULT = crate::core::HRESULT(-2144272380i32);
+pub const FVE_E_NO_EXISTING_PASSPHRASE: crate::core::HRESULT = crate::core::HRESULT(-2144272216i32);
+pub const FVE_E_NO_EXISTING_PIN: crate::core::HRESULT = crate::core::HRESULT(-2144272224i32);
+pub const FVE_E_NO_FEATURE_LICENSE: crate::core::HRESULT = crate::core::HRESULT(-2144272294i32);
+pub const FVE_E_NO_LICENSE: crate::core::HRESULT = crate::core::HRESULT(-2144272311i32);
+pub const FVE_E_NO_MBR_METRIC: crate::core::HRESULT = crate::core::HRESULT(-2144272381i32);
+pub const FVE_E_NO_PASSPHRASE_WITH_TPM: crate::core::HRESULT = crate::core::HRESULT(-2144272213i32);
+pub const FVE_E_NO_PREBOOT_KEYBOARD_DETECTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272203i32);
+pub const FVE_E_NO_PREBOOT_KEYBOARD_OR_WINRE_DETECTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272202i32);
+pub const FVE_E_NO_PROTECTORS_TO_TEST: crate::core::HRESULT = crate::core::HRESULT(-2144272325i32);
+pub const FVE_E_NO_SUCH_CAPABILITY_ON_TARGET: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272176i32);
+pub const FVE_E_NO_TPM_BIOS: crate::core::HRESULT = crate::core::HRESULT(-2144272382i32);
+pub const FVE_E_NO_TPM_WITH_PASSPHRASE: crate::core::HRESULT = crate::core::HRESULT(-2144272212i32);
+pub const FVE_E_OPERATION_NOT_SUPPORTED_ON_VISTA_VOLUME: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272234i32);
+pub const FVE_E_OSV_KSR_NOT_ALLOWED: crate::core::HRESULT = crate::core::HRESULT(-2144272167i32);
+pub const FVE_E_OS_NOT_PROTECTED: crate::core::HRESULT = crate::core::HRESULT(-2144272352i32);
+pub const FVE_E_OS_VOLUME_PASSPHRASE_NOT_ALLOWED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272275i32);
+pub const FVE_E_OVERLAPPED_UPDATE: crate::core::HRESULT = crate::core::HRESULT(-2144272348i32);
+pub const FVE_E_PASSPHRASE_PROTECTOR_CHANGE_BY_STD_USER_DISALLOWED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272191i32);
+pub const FVE_E_PASSPHRASE_TOO_LONG: crate::core::HRESULT = crate::core::HRESULT(-2144272214i32);
+pub const FVE_E_PIN_INVALID: crate::core::HRESULT = crate::core::HRESULT(-2144272317i32);
+pub const FVE_E_PIN_PROTECTOR_CHANGE_BY_STD_USER_DISALLOWED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272222i32);
+pub const FVE_E_POLICY_CONFLICT_FDV_RK_OFF_AUK_ON: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272253i32);
+pub const FVE_E_POLICY_CONFLICT_FDV_RP_OFF_ADB_ON: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272239i32);
+pub const FVE_E_POLICY_CONFLICT_OSV_RP_OFF_ADB_ON: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272240i32);
+pub const FVE_E_POLICY_CONFLICT_RDV_RK_OFF_AUK_ON: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272252i32);
+pub const FVE_E_POLICY_CONFLICT_RDV_RP_OFF_ADB_ON: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272238i32);
+pub const FVE_E_POLICY_CONFLICT_RO_AND_STARTUP_KEY_REQUIRED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272249i32);
+pub const FVE_E_POLICY_INVALID_ENHANCED_BCD_SETTINGS: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272194i32);
+pub const FVE_E_POLICY_INVALID_PASSPHRASE_LENGTH: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272256i32);
+pub const FVE_E_POLICY_INVALID_PIN_LENGTH: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272280i32);
+pub const FVE_E_POLICY_ON_RDV_EXCLUSION_LIST: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272156i32);
+pub const FVE_E_POLICY_PASSPHRASE_NOT_ALLOWED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272278i32);
+pub const FVE_E_POLICY_PASSPHRASE_REQUIRED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272277i32);
+pub const FVE_E_POLICY_PASSPHRASE_REQUIRES_ASCII: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272220i32);
+pub const FVE_E_POLICY_PASSPHRASE_TOO_SIMPLE: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272255i32);
+pub const FVE_E_POLICY_PASSWORD_REQUIRED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272340i32);
+pub const FVE_E_POLICY_PROHIBITS_SELFSIGNED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272250i32);
+pub const FVE_E_POLICY_RECOVERY_KEY_NOT_ALLOWED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272290i32);
+pub const FVE_E_POLICY_RECOVERY_KEY_REQUIRED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272289i32);
+pub const FVE_E_POLICY_RECOVERY_PASSWORD_NOT_ALLOWED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272292i32);
+pub const FVE_E_POLICY_RECOVERY_PASSWORD_REQUIRED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272291i32);
+pub const FVE_E_POLICY_REQUIRES_RECOVERY_PASSWORD_ON_TOUCH_DEVICE: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272200i32);
+pub const FVE_E_POLICY_REQUIRES_STARTUP_PIN_ON_TOUCH_DEVICE: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272201i32);
+pub const FVE_E_POLICY_STARTUP_KEY_NOT_ALLOWED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272286i32);
+pub const FVE_E_POLICY_STARTUP_KEY_REQUIRED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272285i32);
+pub const FVE_E_POLICY_STARTUP_PIN_KEY_NOT_ALLOWED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272284i32);
+pub const FVE_E_POLICY_STARTUP_PIN_KEY_REQUIRED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272283i32);
+pub const FVE_E_POLICY_STARTUP_PIN_NOT_ALLOWED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272288i32);
+pub const FVE_E_POLICY_STARTUP_PIN_REQUIRED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272287i32);
+pub const FVE_E_POLICY_STARTUP_TPM_NOT_ALLOWED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272282i32);
+pub const FVE_E_POLICY_STARTUP_TPM_REQUIRED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272281i32);
+pub const FVE_E_POLICY_USER_CERTIFICATE_NOT_ALLOWED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272270i32);
+pub const FVE_E_POLICY_USER_CERTIFICATE_REQUIRED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272269i32);
+pub const FVE_E_POLICY_USER_CERT_MUST_BE_HW: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272268i32);
+pub const FVE_E_POLICY_USER_CONFIGURE_FDV_AUTOUNLOCK_NOT_ALLOWED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272267i32);
+pub const FVE_E_POLICY_USER_CONFIGURE_RDV_AUTOUNLOCK_NOT_ALLOWED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272266i32);
+pub const FVE_E_POLICY_USER_CONFIGURE_RDV_NOT_ALLOWED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272265i32);
+pub const FVE_E_POLICY_USER_DISABLE_RDV_NOT_ALLOWED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272263i32);
+pub const FVE_E_POLICY_USER_ENABLE_RDV_NOT_ALLOWED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272264i32);
+pub const FVE_E_PREDICTED_TPM_PROTECTOR_NOT_SUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272155i32);
+pub const FVE_E_PRIVATEKEY_AUTH_FAILED: crate::core::HRESULT = crate::core::HRESULT(-2144272236i32);
+pub const FVE_E_PROTECTION_CANNOT_BE_DISABLED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272168i32);
+pub const FVE_E_PROTECTION_DISABLED: crate::core::HRESULT = crate::core::HRESULT(-2144272351i32);
+pub const FVE_E_PROTECTOR_CHANGE_MAX_PASSPHRASE_CHANGE_ATTEMPTS_REACHED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272192i32);
+pub const FVE_E_PROTECTOR_CHANGE_MAX_PIN_CHANGE_ATTEMPTS_REACHED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272221i32);
+pub const FVE_E_PROTECTOR_CHANGE_PASSPHRASE_MISMATCH: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272215i32);
+pub const FVE_E_PROTECTOR_CHANGE_PIN_MISMATCH: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272223i32);
+pub const FVE_E_PROTECTOR_EXISTS: crate::core::HRESULT = crate::core::HRESULT(-2144272335i32);
+pub const FVE_E_PROTECTOR_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2144272333i32);
+pub const FVE_E_PUBKEY_NOT_ALLOWED: crate::core::HRESULT = crate::core::HRESULT(-2144272296i32);
+pub const FVE_E_RAW_ACCESS: crate::core::HRESULT = crate::core::HRESULT(-2144272304i32);
+pub const FVE_E_RAW_BLOCKED: crate::core::HRESULT = crate::core::HRESULT(-2144272303i32);
+pub const FVE_E_REBOOT_REQUIRED: crate::core::HRESULT = crate::core::HRESULT(-2144272306i32);
+pub const FVE_E_RECOVERY_KEY_REQUIRED: crate::core::HRESULT = crate::core::HRESULT(-2144272350i32);
+pub const FVE_E_RECOVERY_PARTITION: crate::core::HRESULT = crate::core::HRESULT(-2144272254i32);
+pub const FVE_E_RELATIVE_PATH: crate::core::HRESULT = crate::core::HRESULT(-2144272334i32);
+pub const FVE_E_REMOVAL_OF_DRA_FAILED: crate::core::HRESULT = crate::core::HRESULT(-2144272235i32);
+pub const FVE_E_REMOVAL_OF_NKP_FAILED: crate::core::HRESULT = crate::core::HRESULT(-2144272226i32);
+pub const FVE_E_SECUREBOOT_CONFIGURATION_INVALID: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272197i32);
+pub const FVE_E_SECUREBOOT_DISABLED: crate::core::HRESULT = crate::core::HRESULT(-2144272198i32);
+pub const FVE_E_SECURE_KEY_REQUIRED: crate::core::HRESULT = crate::core::HRESULT(-2144272377i32);
+pub const FVE_E_SETUP_TPM_CALLBACK_NOT_SUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272154i32);
+pub const FVE_E_SHADOW_COPY_PRESENT: crate::core::HRESULT = crate::core::HRESULT(-2144272195i32);
+pub const FVE_E_SYSTEM_VOLUME: crate::core::HRESULT = crate::core::HRESULT(-2144272366i32);
+pub const FVE_E_TOKEN_NOT_IMPERSONATED: crate::core::HRESULT = crate::core::HRESULT(-2144272308i32);
+pub const FVE_E_TOO_SMALL: crate::core::HRESULT = crate::core::HRESULT(-2144272367i32);
+pub const FVE_E_TPM_CONTEXT_SETUP_NOT_SUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272153i32);
+pub const FVE_E_TPM_DISABLED: crate::core::HRESULT = crate::core::HRESULT(-2144272321i32);
+pub const FVE_E_TPM_INVALID_PCR: crate::core::HRESULT = crate::core::HRESULT(-2144272319i32);
+pub const FVE_E_TPM_NOT_OWNED: crate::core::HRESULT = crate::core::HRESULT(-2144272360i32);
+pub const FVE_E_TPM_NO_VMK: crate::core::HRESULT = crate::core::HRESULT(-2144272318i32);
+pub const FVE_E_TPM_SRK_AUTH_NOT_ZERO: crate::core::HRESULT = crate::core::HRESULT(-2144272347i32);
+pub const FVE_E_TRANSIENT_STATE: crate::core::HRESULT = crate::core::HRESULT(-2144272297i32);
+pub const FVE_E_VIRTUALIZED_SPACE_TOO_BIG: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272247i32);
+pub const FVE_E_VOLUME_BOUND_ALREADY: crate::core::HRESULT = crate::core::HRESULT(-2144272353i32);
+pub const FVE_E_VOLUME_EXTEND_PREVENTS_EOW_DECRYPT: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272170i32);
+pub const FVE_E_VOLUME_HANDLE_OPEN: crate::core::HRESULT = crate::core::HRESULT(-2144272295i32);
+pub const FVE_E_VOLUME_NOT_BOUND: crate::core::HRESULT = crate::core::HRESULT(-2144272361i32);
+pub const FVE_E_VOLUME_TOO_SMALL: crate::core::HRESULT = crate::core::HRESULT(-2144272273i32);
+pub const FVE_E_WIPE_CANCEL_NOT_APPLICABLE: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272199i32);
+pub const FVE_E_WIPE_NOT_ALLOWED_ON_TP_STORAGE: crate::core::HRESULT =
+    crate::core::HRESULT(-2144272218i32);
+pub const FVE_E_WRONG_BOOTMGR: crate::core::HRESULT = crate::core::HRESULT(-2144272378i32);
+pub const FVE_E_WRONG_BOOTSECTOR: crate::core::HRESULT = crate::core::HRESULT(-2144272342i32);
+pub const FVE_E_WRONG_SYSTEM_FS: crate::core::HRESULT = crate::core::HRESULT(-2144272341i32);
+pub const FWP_E_ACTION_INCOMPATIBLE_WITH_LAYER: crate::core::HRESULT =
+    crate::core::HRESULT(-2144206804i32);
+pub const FWP_E_ACTION_INCOMPATIBLE_WITH_SUBLAYER: crate::core::HRESULT =
+    crate::core::HRESULT(-2144206803i32);
+pub const FWP_E_ALREADY_EXISTS: crate::core::HRESULT = crate::core::HRESULT(-2144206839i32);
+pub const FWP_E_BUILTIN_OBJECT: crate::core::HRESULT = crate::core::HRESULT(-2144206825i32);
+pub const FWP_E_CALLOUT_NOTIFICATION_FAILED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144206793i32);
+pub const FWP_E_CALLOUT_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2144206847i32);
+pub const FWP_E_CONDITION_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2144206846i32);
+pub const FWP_E_CONNECTIONS_DISABLED: crate::core::HRESULT = crate::core::HRESULT(-2144206783i32);
+pub const FWP_E_CONTEXT_INCOMPATIBLE_WITH_CALLOUT: crate::core::HRESULT =
+    crate::core::HRESULT(-2144206801i32);
+pub const FWP_E_CONTEXT_INCOMPATIBLE_WITH_LAYER: crate::core::HRESULT =
+    crate::core::HRESULT(-2144206802i32);
+pub const FWP_E_DROP_NOICMP: crate::core::HRESULT = crate::core::HRESULT(-2144206588i32);
+pub const FWP_E_DUPLICATE_AUTH_METHOD: crate::core::HRESULT = crate::core::HRESULT(-2144206788i32);
+pub const FWP_E_DUPLICATE_CONDITION: crate::core::HRESULT = crate::core::HRESULT(-2144206806i32);
+pub const FWP_E_DUPLICATE_KEYMOD: crate::core::HRESULT = crate::core::HRESULT(-2144206805i32);
+pub const FWP_E_DYNAMIC_SESSION_IN_PROGRESS: crate::core::HRESULT =
+    crate::core::HRESULT(-2144206837i32);
+pub const FWP_E_EM_NOT_SUPPORTED: crate::core::HRESULT = crate::core::HRESULT(-2144206798i32);
+pub const FWP_E_FILTER_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2144206845i32);
+pub const FWP_E_IKEEXT_NOT_RUNNING: crate::core::HRESULT = crate::core::HRESULT(-2144206780i32);
+pub const FWP_E_INCOMPATIBLE_AUTH_METHOD: crate::core::HRESULT =
+    crate::core::HRESULT(-2144206800i32);
+pub const FWP_E_INCOMPATIBLE_CIPHER_TRANSFORM: crate::core::HRESULT =
+    crate::core::HRESULT(-2144206790i32);
+pub const FWP_E_INCOMPATIBLE_DH_GROUP: crate::core::HRESULT = crate::core::HRESULT(-2144206799i32);
+pub const FWP_E_INCOMPATIBLE_LAYER: crate::core::HRESULT = crate::core::HRESULT(-2144206828i32);
+pub const FWP_E_INCOMPATIBLE_SA_STATE: crate::core::HRESULT = crate::core::HRESULT(-2144206821i32);
+pub const FWP_E_INCOMPATIBLE_TXN: crate::core::HRESULT = crate::core::HRESULT(-2144206831i32);
+pub const FWP_E_INVALID_ACTION_TYPE: crate::core::HRESULT = crate::core::HRESULT(-2144206812i32);
+pub const FWP_E_INVALID_AUTH_TRANSFORM: crate::core::HRESULT = crate::core::HRESULT(-2144206792i32);
+pub const FWP_E_INVALID_CIPHER_TRANSFORM: crate::core::HRESULT =
+    crate::core::HRESULT(-2144206791i32);
+pub const FWP_E_INVALID_DNS_NAME: crate::core::HRESULT = crate::core::HRESULT(-2144206782i32);
+pub const FWP_E_INVALID_ENUMERATOR: crate::core::HRESULT = crate::core::HRESULT(-2144206819i32);
+pub const FWP_E_INVALID_FLAGS: crate::core::HRESULT = crate::core::HRESULT(-2144206818i32);
+pub const FWP_E_INVALID_INTERVAL: crate::core::HRESULT = crate::core::HRESULT(-2144206815i32);
+pub const FWP_E_INVALID_NET_MASK: crate::core::HRESULT = crate::core::HRESULT(-2144206817i32);
+pub const FWP_E_INVALID_PARAMETER: crate::core::HRESULT = crate::core::HRESULT(-2144206795i32);
+pub const FWP_E_INVALID_RANGE: crate::core::HRESULT = crate::core::HRESULT(-2144206816i32);
+pub const FWP_E_INVALID_TRANSFORM_COMBINATION: crate::core::HRESULT =
+    crate::core::HRESULT(-2144206789i32);
+pub const FWP_E_INVALID_TUNNEL_ENDPOINT: crate::core::HRESULT =
+    crate::core::HRESULT(-2144206787i32);
+pub const FWP_E_INVALID_WEIGHT: crate::core::HRESULT = crate::core::HRESULT(-2144206811i32);
+pub const FWP_E_IN_USE: crate::core::HRESULT = crate::core::HRESULT(-2144206838i32);
+pub const FWP_E_KEY_DICTATION_INVALID_KEYING_MATERIAL: crate::core::HRESULT =
+    crate::core::HRESULT(-2144206784i32);
+pub const FWP_E_KEY_DICTATOR_ALREADY_REGISTERED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144206785i32);
+pub const FWP_E_KM_CLIENTS_ONLY: crate::core::HRESULT = crate::core::HRESULT(-2144206827i32);
+pub const FWP_E_L2_DRIVER_NOT_READY: crate::core::HRESULT = crate::core::HRESULT(-2144206786i32);
+pub const FWP_E_LAYER_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2144206844i32);
+pub const FWP_E_LIFETIME_MISMATCH: crate::core::HRESULT = crate::core::HRESULT(-2144206826i32);
+pub const FWP_E_MATCH_TYPE_MISMATCH: crate::core::HRESULT = crate::core::HRESULT(-2144206810i32);
+pub const FWP_E_NET_EVENTS_DISABLED: crate::core::HRESULT = crate::core::HRESULT(-2144206829i32);
+pub const FWP_E_NEVER_MATCH: crate::core::HRESULT = crate::core::HRESULT(-2144206797i32);
+pub const FWP_E_NOTIFICATION_DROPPED: crate::core::HRESULT = crate::core::HRESULT(-2144206823i32);
+pub const FWP_E_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2144206840i32);
+pub const FWP_E_NO_TXN_IN_PROGRESS: crate::core::HRESULT = crate::core::HRESULT(-2144206835i32);
+pub const FWP_E_NULL_DISPLAY_NAME: crate::core::HRESULT = crate::core::HRESULT(-2144206813i32);
+pub const FWP_E_NULL_POINTER: crate::core::HRESULT = crate::core::HRESULT(-2144206820i32);
+pub const FWP_E_OUT_OF_BOUNDS: crate::core::HRESULT = crate::core::HRESULT(-2144206808i32);
+pub const FWP_E_PROVIDER_CONTEXT_MISMATCH: crate::core::HRESULT =
+    crate::core::HRESULT(-2144206796i32);
+pub const FWP_E_PROVIDER_CONTEXT_NOT_FOUND: crate::core::HRESULT =
+    crate::core::HRESULT(-2144206842i32);
+pub const FWP_E_PROVIDER_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2144206843i32);
+pub const FWP_E_RESERVED: crate::core::HRESULT = crate::core::HRESULT(-2144206807i32);
+pub const FWP_E_SESSION_ABORTED: crate::core::HRESULT = crate::core::HRESULT(-2144206832i32);
+pub const FWP_E_STILL_ON: crate::core::HRESULT = crate::core::HRESULT(-2144206781i32);
+pub const FWP_E_SUBLAYER_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2144206841i32);
+pub const FWP_E_TIMEOUT: crate::core::HRESULT = crate::core::HRESULT(-2144206830i32);
+pub const FWP_E_TOO_MANY_CALLOUTS: crate::core::HRESULT = crate::core::HRESULT(-2144206824i32);
+pub const FWP_E_TOO_MANY_SUBLAYERS: crate::core::HRESULT = crate::core::HRESULT(-2144206794i32);
+pub const FWP_E_TRAFFIC_MISMATCH: crate::core::HRESULT = crate::core::HRESULT(-2144206822i32);
+pub const FWP_E_TXN_ABORTED: crate::core::HRESULT = crate::core::HRESULT(-2144206833i32);
+pub const FWP_E_TXN_IN_PROGRESS: crate::core::HRESULT = crate::core::HRESULT(-2144206834i32);
+pub const FWP_E_TYPE_MISMATCH: crate::core::HRESULT = crate::core::HRESULT(-2144206809i32);
+pub const FWP_E_WRONG_SESSION: crate::core::HRESULT = crate::core::HRESULT(-2144206836i32);
+pub const FWP_E_ZERO_LENGTH_ARRAY: crate::core::HRESULT = crate::core::HRESULT(-2144206814i32);
+pub const GCN_E_DEFAULTNAMESPACE_EXISTS: crate::core::HRESULT =
+    crate::core::HRESULT(-2143616983i32);
+pub const GCN_E_MODULE_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2143616991i32);
+pub const GCN_E_NETADAPTER_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2143616986i32);
+pub const GCN_E_NETADAPTER_TIMEOUT: crate::core::HRESULT = crate::core::HRESULT(-2143616987i32);
+pub const GCN_E_NETCOMPARTMENT_NOT_FOUND: crate::core::HRESULT =
+    crate::core::HRESULT(-2143616985i32);
+pub const GCN_E_NETINTERFACE_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2143616984i32);
+pub const GCN_E_NO_REQUEST_HANDLERS: crate::core::HRESULT = crate::core::HRESULT(-2143616990i32);
+pub const GCN_E_REQUEST_UNSUPPORTED: crate::core::HRESULT = crate::core::HRESULT(-2143616989i32);
+pub const GCN_E_RUNTIMEKEYS_FAILED: crate::core::HRESULT = crate::core::HRESULT(-2143616988i32);
 pub struct HANDLE(pub PtrRepr);
 impl ::core::default::Default for HANDLE {
     fn default() -> Self {
@@ -2993,6 +2746,17 @@ impl ::core::ops::Not for HANDLE_FLAGS {
         Self(self.0.not())
     }
 }
+impl FromIntoMemory for HANDLE_FLAGS {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct HANDLE_PTR(pub PtrRepr);
 impl HANDLE_PTR {
@@ -3016,122 +2780,104 @@ impl ::core::fmt::Debug for HANDLE_PTR {
         f.debug_tuple("HANDLE_PTR").field(&self.0).finish()
     }
 }
-pub const HCN_E_ADAPTER_NOT_FOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143617018i32);
-pub const HCN_E_ADDR_INVALID_OR_RESERVED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143616977i32);
-pub const HCN_E_DEGRADED_OPERATION: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143617001i32);
-pub const HCN_E_ENDPOINT_ALREADY_ATTACHED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143617004i32);
-pub const HCN_E_ENDPOINT_NAMESPACE_ALREADY_EXISTS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143616981i32);
-pub const HCN_E_ENDPOINT_NOT_ATTACHED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143616972i32);
-pub const HCN_E_ENDPOINT_NOT_FOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143617022i32);
-pub const HCN_E_ENDPOINT_NOT_LOCAL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143616971i32);
-pub const HCN_E_ENDPOINT_SHARING_DISABLED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143616995i32);
-pub const HCN_E_ENTITY_HAS_REFERENCES: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143616980i32);
-pub const HCN_E_GUID_CONVERSION_FAILURE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143616999i32);
-pub const HCN_E_ICS_DISABLED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143616982i32);
-pub const HCN_E_INVALID_ENDPOINT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143617012i32);
-pub const HCN_E_INVALID_INTERNAL_PORT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143616979i32);
-pub const HCN_E_INVALID_IP: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143616994i32);
-pub const HCN_E_INVALID_IP_SUBNET: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143616973i32);
-pub const HCN_E_INVALID_JSON: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143616997i32);
-pub const HCN_E_INVALID_JSON_REFERENCE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143616996i32);
-pub const HCN_E_INVALID_NETWORK: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143617014i32);
-pub const HCN_E_INVALID_NETWORK_TYPE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143617013i32);
-pub const HCN_E_INVALID_POLICY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143617011i32);
-pub const HCN_E_INVALID_POLICY_TYPE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143617010i32);
-pub const HCN_E_INVALID_PREFIX: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143616976i32);
-pub const HCN_E_INVALID_REMOTE_ENDPOINT_OPERATION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143617009i32);
-pub const HCN_E_INVALID_SUBNET: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143616974i32);
-pub const HCN_E_LAYER_ALREADY_EXISTS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143617007i32);
-pub const HCN_E_LAYER_NOT_FOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143617021i32);
-pub const HCN_E_MANAGER_STOPPED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143616992i32);
-pub const HCN_E_MAPPING_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143617002i32);
-pub const HCN_E_NAMESPACE_ATTACH_FAILED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143616978i32);
-pub const HCN_E_NETWORK_ALREADY_EXISTS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143617008i32);
-pub const HCN_E_NETWORK_NOT_FOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143617023i32);
-pub const HCN_E_OBJECT_USED_AFTER_UNLOAD: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143616975i32);
-pub const HCN_E_POLICY_ALREADY_EXISTS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143617006i32);
-pub const HCN_E_POLICY_NOT_FOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143617016i32);
-pub const HCN_E_PORT_ALREADY_EXISTS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143617005i32);
-pub const HCN_E_PORT_NOT_FOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143617017i32);
-pub const HCN_E_REGKEY_FAILURE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143616998i32);
-pub const HCN_E_REQUEST_UNSUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143617003i32);
-pub const HCN_E_SHARED_SWITCH_MODIFICATION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143617000i32);
-pub const HCN_E_SUBNET_NOT_FOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143617019i32);
-pub const HCN_E_SWITCH_EXTENSION_NOT_FOUND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143616993i32);
-pub const HCN_E_SWITCH_NOT_FOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143617020i32);
-pub const HCN_E_VFP_NOT_ALLOWED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143616969i32);
-pub const HCN_E_VFP_PORTSETTING_NOT_FOUND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143617015i32);
-pub const HCN_INTERFACEPARAMETERS_ALREADY_APPLIED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143616970i32);
-pub const HCS_E_ACCESS_DENIED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143878885i32);
-pub const HCS_E_CONNECTION_CLOSED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143878902i32);
-pub const HCS_E_CONNECTION_TIMEOUT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143878903i32);
-pub const HCS_E_CONNECT_FAILED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143878904i32);
-pub const HCS_E_GUEST_CRITICAL_ERROR: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143878884i32);
-pub const HCS_E_HYPERV_NOT_INSTALLED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143878910i32);
-pub const HCS_E_IMAGE_MISMATCH: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143878911i32);
-pub const HCS_E_INVALID_JSON: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143878899i32);
-pub const HCS_E_INVALID_LAYER: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143878894i32);
-pub const HCS_E_INVALID_STATE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143878907i32);
-pub const HCS_E_OPERATION_ALREADY_STARTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143878890i32);
-pub const HCS_E_OPERATION_NOT_STARTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143878891i32);
-pub const HCS_E_OPERATION_PENDING: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143878889i32);
-pub const HCS_E_OPERATION_RESULT_ALLOCATION_FAILED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143878886i32);
-pub const HCS_E_OPERATION_SYSTEM_CALLBACK_ALREADY_SET: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143878887i32);
-pub const HCS_E_OPERATION_TIMEOUT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143878888i32);
-pub const HCS_E_PROCESS_ALREADY_STOPPED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143878881i32);
-pub const HCS_E_PROCESS_INFO_NOT_AVAILABLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143878883i32);
-pub const HCS_E_PROTOCOL_ERROR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143878895i32);
-pub const HCS_E_SERVICE_DISCONNECT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143878882i32);
-pub const HCS_E_SERVICE_NOT_AVAILABLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143878892i32);
-pub const HCS_E_SYSTEM_ALREADY_EXISTS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143878897i32);
-pub const HCS_E_SYSTEM_ALREADY_STOPPED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143878896i32);
-pub const HCS_E_SYSTEM_NOT_CONFIGURED_FOR_OPERATION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143878880i32);
-pub const HCS_E_SYSTEM_NOT_FOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143878898i32);
-pub const HCS_E_TERMINATED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143878905i32);
-pub const HCS_E_TERMINATED_DURING_START: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143878912i32);
-pub const HCS_E_UNEXPECTED_EXIT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143878906i32);
-pub const HCS_E_UNKNOWN_MESSAGE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143878901i32);
-pub const HCS_E_UNSUPPORTED_PROTOCOL_VERSION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143878900i32);
-pub const HCS_E_WINDOWS_INSIDER_REQUIRED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143878893i32);
+pub const HCN_E_ADAPTER_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2143617018i32);
+pub const HCN_E_ADDR_INVALID_OR_RESERVED: crate::core::HRESULT =
+    crate::core::HRESULT(-2143616977i32);
+pub const HCN_E_DEGRADED_OPERATION: crate::core::HRESULT = crate::core::HRESULT(-2143617001i32);
+pub const HCN_E_ENDPOINT_ALREADY_ATTACHED: crate::core::HRESULT =
+    crate::core::HRESULT(-2143617004i32);
+pub const HCN_E_ENDPOINT_NAMESPACE_ALREADY_EXISTS: crate::core::HRESULT =
+    crate::core::HRESULT(-2143616981i32);
+pub const HCN_E_ENDPOINT_NOT_ATTACHED: crate::core::HRESULT = crate::core::HRESULT(-2143616972i32);
+pub const HCN_E_ENDPOINT_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2143617022i32);
+pub const HCN_E_ENDPOINT_NOT_LOCAL: crate::core::HRESULT = crate::core::HRESULT(-2143616971i32);
+pub const HCN_E_ENDPOINT_SHARING_DISABLED: crate::core::HRESULT =
+    crate::core::HRESULT(-2143616995i32);
+pub const HCN_E_ENTITY_HAS_REFERENCES: crate::core::HRESULT = crate::core::HRESULT(-2143616980i32);
+pub const HCN_E_GUID_CONVERSION_FAILURE: crate::core::HRESULT =
+    crate::core::HRESULT(-2143616999i32);
+pub const HCN_E_ICS_DISABLED: crate::core::HRESULT = crate::core::HRESULT(-2143616982i32);
+pub const HCN_E_INVALID_ENDPOINT: crate::core::HRESULT = crate::core::HRESULT(-2143617012i32);
+pub const HCN_E_INVALID_INTERNAL_PORT: crate::core::HRESULT = crate::core::HRESULT(-2143616979i32);
+pub const HCN_E_INVALID_IP: crate::core::HRESULT = crate::core::HRESULT(-2143616994i32);
+pub const HCN_E_INVALID_IP_SUBNET: crate::core::HRESULT = crate::core::HRESULT(-2143616973i32);
+pub const HCN_E_INVALID_JSON: crate::core::HRESULT = crate::core::HRESULT(-2143616997i32);
+pub const HCN_E_INVALID_JSON_REFERENCE: crate::core::HRESULT = crate::core::HRESULT(-2143616996i32);
+pub const HCN_E_INVALID_NETWORK: crate::core::HRESULT = crate::core::HRESULT(-2143617014i32);
+pub const HCN_E_INVALID_NETWORK_TYPE: crate::core::HRESULT = crate::core::HRESULT(-2143617013i32);
+pub const HCN_E_INVALID_POLICY: crate::core::HRESULT = crate::core::HRESULT(-2143617011i32);
+pub const HCN_E_INVALID_POLICY_TYPE: crate::core::HRESULT = crate::core::HRESULT(-2143617010i32);
+pub const HCN_E_INVALID_PREFIX: crate::core::HRESULT = crate::core::HRESULT(-2143616976i32);
+pub const HCN_E_INVALID_REMOTE_ENDPOINT_OPERATION: crate::core::HRESULT =
+    crate::core::HRESULT(-2143617009i32);
+pub const HCN_E_INVALID_SUBNET: crate::core::HRESULT = crate::core::HRESULT(-2143616974i32);
+pub const HCN_E_LAYER_ALREADY_EXISTS: crate::core::HRESULT = crate::core::HRESULT(-2143617007i32);
+pub const HCN_E_LAYER_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2143617021i32);
+pub const HCN_E_MANAGER_STOPPED: crate::core::HRESULT = crate::core::HRESULT(-2143616992i32);
+pub const HCN_E_MAPPING_NOT_SUPPORTED: crate::core::HRESULT = crate::core::HRESULT(-2143617002i32);
+pub const HCN_E_NAMESPACE_ATTACH_FAILED: crate::core::HRESULT =
+    crate::core::HRESULT(-2143616978i32);
+pub const HCN_E_NETWORK_ALREADY_EXISTS: crate::core::HRESULT = crate::core::HRESULT(-2143617008i32);
+pub const HCN_E_NETWORK_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2143617023i32);
+pub const HCN_E_OBJECT_USED_AFTER_UNLOAD: crate::core::HRESULT =
+    crate::core::HRESULT(-2143616975i32);
+pub const HCN_E_POLICY_ALREADY_EXISTS: crate::core::HRESULT = crate::core::HRESULT(-2143617006i32);
+pub const HCN_E_POLICY_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2143617016i32);
+pub const HCN_E_PORT_ALREADY_EXISTS: crate::core::HRESULT = crate::core::HRESULT(-2143617005i32);
+pub const HCN_E_PORT_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2143617017i32);
+pub const HCN_E_REGKEY_FAILURE: crate::core::HRESULT = crate::core::HRESULT(-2143616998i32);
+pub const HCN_E_REQUEST_UNSUPPORTED: crate::core::HRESULT = crate::core::HRESULT(-2143617003i32);
+pub const HCN_E_SHARED_SWITCH_MODIFICATION: crate::core::HRESULT =
+    crate::core::HRESULT(-2143617000i32);
+pub const HCN_E_SUBNET_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2143617019i32);
+pub const HCN_E_SWITCH_EXTENSION_NOT_FOUND: crate::core::HRESULT =
+    crate::core::HRESULT(-2143616993i32);
+pub const HCN_E_SWITCH_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2143617020i32);
+pub const HCN_E_VFP_NOT_ALLOWED: crate::core::HRESULT = crate::core::HRESULT(-2143616969i32);
+pub const HCN_E_VFP_PORTSETTING_NOT_FOUND: crate::core::HRESULT =
+    crate::core::HRESULT(-2143617015i32);
+pub const HCN_INTERFACEPARAMETERS_ALREADY_APPLIED: crate::core::HRESULT =
+    crate::core::HRESULT(-2143616970i32);
+pub const HCS_E_ACCESS_DENIED: crate::core::HRESULT = crate::core::HRESULT(-2143878885i32);
+pub const HCS_E_CONNECTION_CLOSED: crate::core::HRESULT = crate::core::HRESULT(-2143878902i32);
+pub const HCS_E_CONNECTION_TIMEOUT: crate::core::HRESULT = crate::core::HRESULT(-2143878903i32);
+pub const HCS_E_CONNECT_FAILED: crate::core::HRESULT = crate::core::HRESULT(-2143878904i32);
+pub const HCS_E_GUEST_CRITICAL_ERROR: crate::core::HRESULT = crate::core::HRESULT(-2143878884i32);
+pub const HCS_E_HYPERV_NOT_INSTALLED: crate::core::HRESULT = crate::core::HRESULT(-2143878910i32);
+pub const HCS_E_IMAGE_MISMATCH: crate::core::HRESULT = crate::core::HRESULT(-2143878911i32);
+pub const HCS_E_INVALID_JSON: crate::core::HRESULT = crate::core::HRESULT(-2143878899i32);
+pub const HCS_E_INVALID_LAYER: crate::core::HRESULT = crate::core::HRESULT(-2143878894i32);
+pub const HCS_E_INVALID_STATE: crate::core::HRESULT = crate::core::HRESULT(-2143878907i32);
+pub const HCS_E_OPERATION_ALREADY_STARTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2143878890i32);
+pub const HCS_E_OPERATION_NOT_STARTED: crate::core::HRESULT = crate::core::HRESULT(-2143878891i32);
+pub const HCS_E_OPERATION_PENDING: crate::core::HRESULT = crate::core::HRESULT(-2143878889i32);
+pub const HCS_E_OPERATION_RESULT_ALLOCATION_FAILED: crate::core::HRESULT =
+    crate::core::HRESULT(-2143878886i32);
+pub const HCS_E_OPERATION_SYSTEM_CALLBACK_ALREADY_SET: crate::core::HRESULT =
+    crate::core::HRESULT(-2143878887i32);
+pub const HCS_E_OPERATION_TIMEOUT: crate::core::HRESULT = crate::core::HRESULT(-2143878888i32);
+pub const HCS_E_PROCESS_ALREADY_STOPPED: crate::core::HRESULT =
+    crate::core::HRESULT(-2143878881i32);
+pub const HCS_E_PROCESS_INFO_NOT_AVAILABLE: crate::core::HRESULT =
+    crate::core::HRESULT(-2143878883i32);
+pub const HCS_E_PROTOCOL_ERROR: crate::core::HRESULT = crate::core::HRESULT(-2143878895i32);
+pub const HCS_E_SERVICE_DISCONNECT: crate::core::HRESULT = crate::core::HRESULT(-2143878882i32);
+pub const HCS_E_SERVICE_NOT_AVAILABLE: crate::core::HRESULT = crate::core::HRESULT(-2143878892i32);
+pub const HCS_E_SYSTEM_ALREADY_EXISTS: crate::core::HRESULT = crate::core::HRESULT(-2143878897i32);
+pub const HCS_E_SYSTEM_ALREADY_STOPPED: crate::core::HRESULT = crate::core::HRESULT(-2143878896i32);
+pub const HCS_E_SYSTEM_NOT_CONFIGURED_FOR_OPERATION: crate::core::HRESULT =
+    crate::core::HRESULT(-2143878880i32);
+pub const HCS_E_SYSTEM_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2143878898i32);
+pub const HCS_E_TERMINATED: crate::core::HRESULT = crate::core::HRESULT(-2143878905i32);
+pub const HCS_E_TERMINATED_DURING_START: crate::core::HRESULT =
+    crate::core::HRESULT(-2143878912i32);
+pub const HCS_E_UNEXPECTED_EXIT: crate::core::HRESULT = crate::core::HRESULT(-2143878906i32);
+pub const HCS_E_UNKNOWN_MESSAGE: crate::core::HRESULT = crate::core::HRESULT(-2143878901i32);
+pub const HCS_E_UNSUPPORTED_PROTOCOL_VERSION: crate::core::HRESULT =
+    crate::core::HRESULT(-2143878900i32);
+pub const HCS_E_WINDOWS_INSIDER_REQUIRED: crate::core::HRESULT =
+    crate::core::HRESULT(-2143878893i32);
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct HINSTANCE(pub PtrDiffRepr);
 impl HINSTANCE {
@@ -3222,41 +2968,37 @@ impl ::core::cmp::PartialEq for HSPRITE__ {
     }
 }
 impl ::core::cmp::Eq for HSPRITE__ {}
-pub const HSP_BASE_ERROR_MASK: ::win32::core::HRESULT = ::win32::core::HRESULT(-2128019200i32);
-pub const HSP_BASE_INTERNAL_ERROR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2128018945i32);
-pub const HSP_BS_ERROR_MASK: ::win32::core::HRESULT = ::win32::core::HRESULT(-2128080896i32);
-pub const HSP_BS_INTERNAL_ERROR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2128080641i32);
-pub const HSP_DRV_ERROR_MASK: ::win32::core::HRESULT = ::win32::core::HRESULT(-2128019456i32);
-pub const HSP_DRV_INTERNAL_ERROR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2128019201i32);
-pub const HSP_E_ERROR_MASK: ::win32::core::HRESULT = ::win32::core::HRESULT(-2128084992i32);
-pub const HSP_E_INTERNAL_ERROR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2128080897i32);
-pub const HSP_KSP_ALGORITHM_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2128018935i32);
-pub const HSP_KSP_BUFFER_TOO_SMALL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2128018939i32);
-pub const HSP_KSP_DEVICE_NOT_READY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2128018943i32);
-pub const HSP_KSP_ERROR_MASK: ::win32::core::HRESULT = ::win32::core::HRESULT(-2128018944i32);
-pub const HSP_KSP_INTERNAL_ERROR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2128018689i32);
-pub const HSP_KSP_INVALID_DATA: ::win32::core::HRESULT = ::win32::core::HRESULT(-2128018937i32);
-pub const HSP_KSP_INVALID_FLAGS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2128018936i32);
-pub const HSP_KSP_INVALID_KEY_HANDLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2128018941i32);
-pub const HSP_KSP_INVALID_KEY_TYPE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2128018932i32);
-pub const HSP_KSP_INVALID_PARAMETER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2128018940i32);
-pub const HSP_KSP_INVALID_PROVIDER_HANDLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2128018942i32);
-pub const HSP_KSP_KEY_ALREADY_FINALIZED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2128018934i32);
-pub const HSP_KSP_KEY_EXISTS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2128018923i32);
-pub const HSP_KSP_KEY_LOAD_FAIL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2128018921i32);
-pub const HSP_KSP_KEY_MISSING: ::win32::core::HRESULT = ::win32::core::HRESULT(-2128018922i32);
-pub const HSP_KSP_KEY_NOT_FINALIZED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2128018933i32);
-pub const HSP_KSP_NOT_SUPPORTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2128018938i32);
-pub const HSP_KSP_NO_MEMORY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2128018928i32);
-pub const HSP_KSP_NO_MORE_ITEMS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2128018920i32);
-pub const HSP_KSP_PARAMETER_NOT_SET: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2128018927i32);
+pub const HSP_BASE_ERROR_MASK: crate::core::HRESULT = crate::core::HRESULT(-2128019200i32);
+pub const HSP_BASE_INTERNAL_ERROR: crate::core::HRESULT = crate::core::HRESULT(-2128018945i32);
+pub const HSP_BS_ERROR_MASK: crate::core::HRESULT = crate::core::HRESULT(-2128080896i32);
+pub const HSP_BS_INTERNAL_ERROR: crate::core::HRESULT = crate::core::HRESULT(-2128080641i32);
+pub const HSP_DRV_ERROR_MASK: crate::core::HRESULT = crate::core::HRESULT(-2128019456i32);
+pub const HSP_DRV_INTERNAL_ERROR: crate::core::HRESULT = crate::core::HRESULT(-2128019201i32);
+pub const HSP_E_ERROR_MASK: crate::core::HRESULT = crate::core::HRESULT(-2128084992i32);
+pub const HSP_E_INTERNAL_ERROR: crate::core::HRESULT = crate::core::HRESULT(-2128080897i32);
+pub const HSP_KSP_ALGORITHM_NOT_SUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2128018935i32);
+pub const HSP_KSP_BUFFER_TOO_SMALL: crate::core::HRESULT = crate::core::HRESULT(-2128018939i32);
+pub const HSP_KSP_DEVICE_NOT_READY: crate::core::HRESULT = crate::core::HRESULT(-2128018943i32);
+pub const HSP_KSP_ERROR_MASK: crate::core::HRESULT = crate::core::HRESULT(-2128018944i32);
+pub const HSP_KSP_INTERNAL_ERROR: crate::core::HRESULT = crate::core::HRESULT(-2128018689i32);
+pub const HSP_KSP_INVALID_DATA: crate::core::HRESULT = crate::core::HRESULT(-2128018937i32);
+pub const HSP_KSP_INVALID_FLAGS: crate::core::HRESULT = crate::core::HRESULT(-2128018936i32);
+pub const HSP_KSP_INVALID_KEY_HANDLE: crate::core::HRESULT = crate::core::HRESULT(-2128018941i32);
+pub const HSP_KSP_INVALID_KEY_TYPE: crate::core::HRESULT = crate::core::HRESULT(-2128018932i32);
+pub const HSP_KSP_INVALID_PARAMETER: crate::core::HRESULT = crate::core::HRESULT(-2128018940i32);
+pub const HSP_KSP_INVALID_PROVIDER_HANDLE: crate::core::HRESULT =
+    crate::core::HRESULT(-2128018942i32);
+pub const HSP_KSP_KEY_ALREADY_FINALIZED: crate::core::HRESULT =
+    crate::core::HRESULT(-2128018934i32);
+pub const HSP_KSP_KEY_EXISTS: crate::core::HRESULT = crate::core::HRESULT(-2128018923i32);
+pub const HSP_KSP_KEY_LOAD_FAIL: crate::core::HRESULT = crate::core::HRESULT(-2128018921i32);
+pub const HSP_KSP_KEY_MISSING: crate::core::HRESULT = crate::core::HRESULT(-2128018922i32);
+pub const HSP_KSP_KEY_NOT_FINALIZED: crate::core::HRESULT = crate::core::HRESULT(-2128018933i32);
+pub const HSP_KSP_NOT_SUPPORTED: crate::core::HRESULT = crate::core::HRESULT(-2128018938i32);
+pub const HSP_KSP_NO_MEMORY: crate::core::HRESULT = crate::core::HRESULT(-2128018928i32);
+pub const HSP_KSP_NO_MORE_ITEMS: crate::core::HRESULT = crate::core::HRESULT(-2128018920i32);
+pub const HSP_KSP_PARAMETER_NOT_SET: crate::core::HRESULT = crate::core::HRESULT(-2128018927i32);
 pub struct HSTR__ {
     pub unused: i32,
 }
@@ -3279,65 +3021,56 @@ impl ::core::cmp::PartialEq for HSTR__ {
     }
 }
 impl ::core::cmp::Eq for HSTR__ {}
-pub const HTTP_E_STATUS_AMBIGUOUS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2145844948i32);
-pub const HTTP_E_STATUS_BAD_GATEWAY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2145844746i32);
-pub const HTTP_E_STATUS_BAD_METHOD: ::win32::core::HRESULT = ::win32::core::HRESULT(-2145844843i32);
-pub const HTTP_E_STATUS_BAD_REQUEST: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2145844848i32);
-pub const HTTP_E_STATUS_CONFLICT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2145844839i32);
-pub const HTTP_E_STATUS_DENIED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2145844847i32);
-pub const HTTP_E_STATUS_EXPECTATION_FAILED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2145844831i32);
-pub const HTTP_E_STATUS_FORBIDDEN: ::win32::core::HRESULT = ::win32::core::HRESULT(-2145844845i32);
-pub const HTTP_E_STATUS_GATEWAY_TIMEOUT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2145844744i32);
-pub const HTTP_E_STATUS_GONE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2145844838i32);
-pub const HTTP_E_STATUS_LENGTH_REQUIRED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2145844837i32);
-pub const HTTP_E_STATUS_MOVED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2145844947i32);
-pub const HTTP_E_STATUS_NONE_ACCEPTABLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2145844842i32);
-pub const HTTP_E_STATUS_NOT_FOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2145844844i32);
-pub const HTTP_E_STATUS_NOT_MODIFIED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2145844944i32);
-pub const HTTP_E_STATUS_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2145844747i32);
-pub const HTTP_E_STATUS_PAYMENT_REQ: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2145844846i32);
-pub const HTTP_E_STATUS_PRECOND_FAILED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2145844836i32);
-pub const HTTP_E_STATUS_PROXY_AUTH_REQ: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2145844841i32);
-pub const HTTP_E_STATUS_RANGE_NOT_SATISFIABLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2145844832i32);
-pub const HTTP_E_STATUS_REDIRECT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2145844946i32);
-pub const HTTP_E_STATUS_REDIRECT_KEEP_VERB: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2145844941i32);
-pub const HTTP_E_STATUS_REDIRECT_METHOD: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2145844945i32);
-pub const HTTP_E_STATUS_REQUEST_TIMEOUT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2145844840i32);
-pub const HTTP_E_STATUS_REQUEST_TOO_LARGE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2145844835i32);
-pub const HTTP_E_STATUS_SERVER_ERROR: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2145844748i32);
-pub const HTTP_E_STATUS_SERVICE_UNAVAIL: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2145844745i32);
-pub const HTTP_E_STATUS_UNEXPECTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2145845247i32);
-pub const HTTP_E_STATUS_UNEXPECTED_CLIENT_ERROR: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2145845244i32);
-pub const HTTP_E_STATUS_UNEXPECTED_REDIRECTION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2145845245i32);
-pub const HTTP_E_STATUS_UNEXPECTED_SERVER_ERROR: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2145845243i32);
-pub const HTTP_E_STATUS_UNSUPPORTED_MEDIA: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2145844833i32);
-pub const HTTP_E_STATUS_URI_TOO_LONG: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2145844834i32);
-pub const HTTP_E_STATUS_USE_PROXY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2145844943i32);
-pub const HTTP_E_STATUS_VERSION_NOT_SUP: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2145844743i32);
+pub const HTTP_E_STATUS_AMBIGUOUS: crate::core::HRESULT = crate::core::HRESULT(-2145844948i32);
+pub const HTTP_E_STATUS_BAD_GATEWAY: crate::core::HRESULT = crate::core::HRESULT(-2145844746i32);
+pub const HTTP_E_STATUS_BAD_METHOD: crate::core::HRESULT = crate::core::HRESULT(-2145844843i32);
+pub const HTTP_E_STATUS_BAD_REQUEST: crate::core::HRESULT = crate::core::HRESULT(-2145844848i32);
+pub const HTTP_E_STATUS_CONFLICT: crate::core::HRESULT = crate::core::HRESULT(-2145844839i32);
+pub const HTTP_E_STATUS_DENIED: crate::core::HRESULT = crate::core::HRESULT(-2145844847i32);
+pub const HTTP_E_STATUS_EXPECTATION_FAILED: crate::core::HRESULT =
+    crate::core::HRESULT(-2145844831i32);
+pub const HTTP_E_STATUS_FORBIDDEN: crate::core::HRESULT = crate::core::HRESULT(-2145844845i32);
+pub const HTTP_E_STATUS_GATEWAY_TIMEOUT: crate::core::HRESULT =
+    crate::core::HRESULT(-2145844744i32);
+pub const HTTP_E_STATUS_GONE: crate::core::HRESULT = crate::core::HRESULT(-2145844838i32);
+pub const HTTP_E_STATUS_LENGTH_REQUIRED: crate::core::HRESULT =
+    crate::core::HRESULT(-2145844837i32);
+pub const HTTP_E_STATUS_MOVED: crate::core::HRESULT = crate::core::HRESULT(-2145844947i32);
+pub const HTTP_E_STATUS_NONE_ACCEPTABLE: crate::core::HRESULT =
+    crate::core::HRESULT(-2145844842i32);
+pub const HTTP_E_STATUS_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2145844844i32);
+pub const HTTP_E_STATUS_NOT_MODIFIED: crate::core::HRESULT = crate::core::HRESULT(-2145844944i32);
+pub const HTTP_E_STATUS_NOT_SUPPORTED: crate::core::HRESULT = crate::core::HRESULT(-2145844747i32);
+pub const HTTP_E_STATUS_PAYMENT_REQ: crate::core::HRESULT = crate::core::HRESULT(-2145844846i32);
+pub const HTTP_E_STATUS_PRECOND_FAILED: crate::core::HRESULT = crate::core::HRESULT(-2145844836i32);
+pub const HTTP_E_STATUS_PROXY_AUTH_REQ: crate::core::HRESULT = crate::core::HRESULT(-2145844841i32);
+pub const HTTP_E_STATUS_RANGE_NOT_SATISFIABLE: crate::core::HRESULT =
+    crate::core::HRESULT(-2145844832i32);
+pub const HTTP_E_STATUS_REDIRECT: crate::core::HRESULT = crate::core::HRESULT(-2145844946i32);
+pub const HTTP_E_STATUS_REDIRECT_KEEP_VERB: crate::core::HRESULT =
+    crate::core::HRESULT(-2145844941i32);
+pub const HTTP_E_STATUS_REDIRECT_METHOD: crate::core::HRESULT =
+    crate::core::HRESULT(-2145844945i32);
+pub const HTTP_E_STATUS_REQUEST_TIMEOUT: crate::core::HRESULT =
+    crate::core::HRESULT(-2145844840i32);
+pub const HTTP_E_STATUS_REQUEST_TOO_LARGE: crate::core::HRESULT =
+    crate::core::HRESULT(-2145844835i32);
+pub const HTTP_E_STATUS_SERVER_ERROR: crate::core::HRESULT = crate::core::HRESULT(-2145844748i32);
+pub const HTTP_E_STATUS_SERVICE_UNAVAIL: crate::core::HRESULT =
+    crate::core::HRESULT(-2145844745i32);
+pub const HTTP_E_STATUS_UNEXPECTED: crate::core::HRESULT = crate::core::HRESULT(-2145845247i32);
+pub const HTTP_E_STATUS_UNEXPECTED_CLIENT_ERROR: crate::core::HRESULT =
+    crate::core::HRESULT(-2145845244i32);
+pub const HTTP_E_STATUS_UNEXPECTED_REDIRECTION: crate::core::HRESULT =
+    crate::core::HRESULT(-2145845245i32);
+pub const HTTP_E_STATUS_UNEXPECTED_SERVER_ERROR: crate::core::HRESULT =
+    crate::core::HRESULT(-2145845243i32);
+pub const HTTP_E_STATUS_UNSUPPORTED_MEDIA: crate::core::HRESULT =
+    crate::core::HRESULT(-2145844833i32);
+pub const HTTP_E_STATUS_URI_TOO_LONG: crate::core::HRESULT = crate::core::HRESULT(-2145844834i32);
+pub const HTTP_E_STATUS_USE_PROXY: crate::core::HRESULT = crate::core::HRESULT(-2145844943i32);
+pub const HTTP_E_STATUS_VERSION_NOT_SUP: crate::core::HRESULT =
+    crate::core::HRESULT(-2145844743i32);
 pub struct HUMPD__ {
     pub unused: i32,
 }
@@ -3385,38 +3118,37 @@ impl ::core::fmt::Debug for HWND {
 }
 pub const INPLACE_E_FIRST: i32 = -2147221088i32;
 pub const INPLACE_E_LAST: i32 = -2147221073i32;
-pub const INPLACE_E_NOTOOLSPACE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221087i32);
-pub const INPLACE_E_NOTUNDOABLE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221088i32);
+pub const INPLACE_E_NOTOOLSPACE: crate::core::HRESULT = crate::core::HRESULT(-2147221087i32);
+pub const INPLACE_E_NOTUNDOABLE: crate::core::HRESULT = crate::core::HRESULT(-2147221088i32);
 pub const INPLACE_S_FIRST: i32 = 262560i32;
 pub const INPLACE_S_LAST: i32 = 262575i32;
-pub const INPLACE_S_TRUNCATED: ::win32::core::HRESULT = ::win32::core::HRESULT(262560i32);
-pub const INPUT_E_DEVICE_INFO: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143289338i32);
-pub const INPUT_E_DEVICE_PROPERTY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143289336i32);
-pub const INPUT_E_FRAME: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143289340i32);
-pub const INPUT_E_HISTORY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143289339i32);
-pub const INPUT_E_MULTIMODAL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143289342i32);
-pub const INPUT_E_OUT_OF_ORDER: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143289344i32);
-pub const INPUT_E_PACKET: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143289341i32);
-pub const INPUT_E_REENTRANCY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143289343i32);
-pub const INPUT_E_TRANSFORM: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143289337i32);
+pub const INPLACE_S_TRUNCATED: crate::core::HRESULT = crate::core::HRESULT(262560i32);
+pub const INPUT_E_DEVICE_INFO: crate::core::HRESULT = crate::core::HRESULT(-2143289338i32);
+pub const INPUT_E_DEVICE_PROPERTY: crate::core::HRESULT = crate::core::HRESULT(-2143289336i32);
+pub const INPUT_E_FRAME: crate::core::HRESULT = crate::core::HRESULT(-2143289340i32);
+pub const INPUT_E_HISTORY: crate::core::HRESULT = crate::core::HRESULT(-2143289339i32);
+pub const INPUT_E_MULTIMODAL: crate::core::HRESULT = crate::core::HRESULT(-2143289342i32);
+pub const INPUT_E_OUT_OF_ORDER: crate::core::HRESULT = crate::core::HRESULT(-2143289344i32);
+pub const INPUT_E_PACKET: crate::core::HRESULT = crate::core::HRESULT(-2143289341i32);
+pub const INPUT_E_REENTRANCY: crate::core::HRESULT = crate::core::HRESULT(-2143289343i32);
+pub const INPUT_E_TRANSFORM: crate::core::HRESULT = crate::core::HRESULT(-2143289337i32);
 pub const INVALID_HANDLE_VALUE: HANDLE = HANDLE(-1i32 as _);
-pub const IORING_E_COMPLETION_QUEUE_TOO_BIG: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2142896123i32);
-pub const IORING_E_CORRUPT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2142896121i32);
-pub const IORING_E_REQUIRED_FLAG_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2142896127i32);
-pub const IORING_E_SUBMISSION_QUEUE_FULL: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2142896126i32);
-pub const IORING_E_SUBMISSION_QUEUE_TOO_BIG: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2142896124i32);
-pub const IORING_E_SUBMIT_IN_PROGRESS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2142896122i32);
-pub const IORING_E_VERSION_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2142896125i32);
-pub const JSCRIPT_E_CANTEXECUTE: ::win32::core::HRESULT = ::win32::core::HRESULT(-1996357631i32);
-pub const LANGUAGE_E_DATABASE_NOT_FOUND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147215484i32);
-pub const LANGUAGE_S_LARGE_WORD: ::win32::core::HRESULT = ::win32::core::HRESULT(268161i32);
+pub const IORING_E_COMPLETION_QUEUE_TOO_BIG: crate::core::HRESULT =
+    crate::core::HRESULT(-2142896123i32);
+pub const IORING_E_CORRUPT: crate::core::HRESULT = crate::core::HRESULT(-2142896121i32);
+pub const IORING_E_REQUIRED_FLAG_NOT_SUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2142896127i32);
+pub const IORING_E_SUBMISSION_QUEUE_FULL: crate::core::HRESULT =
+    crate::core::HRESULT(-2142896126i32);
+pub const IORING_E_SUBMISSION_QUEUE_TOO_BIG: crate::core::HRESULT =
+    crate::core::HRESULT(-2142896124i32);
+pub const IORING_E_SUBMIT_IN_PROGRESS: crate::core::HRESULT = crate::core::HRESULT(-2142896122i32);
+pub const IORING_E_VERSION_NOT_SUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2142896125i32);
+pub const JSCRIPT_E_CANTEXECUTE: crate::core::HRESULT = crate::core::HRESULT(-1996357631i32);
+pub const LANGUAGE_E_DATABASE_NOT_FOUND: crate::core::HRESULT =
+    crate::core::HRESULT(-2147215484i32);
+pub const LANGUAGE_S_LARGE_WORD: crate::core::HRESULT = crate::core::HRESULT(268161i32);
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct LPARAM(pub PtrDiffRepr);
 impl LPARAM {
@@ -3492,275 +3224,244 @@ pub const MARSHAL_E_LAST: i32 = -2147221201i32;
 pub const MARSHAL_S_FIRST: i32 = 262432i32;
 pub const MARSHAL_S_LAST: i32 = 262447i32;
 pub const MAX_PATH: u32 = 260u32;
-pub const MEM_E_INVALID_LINK: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146959344i32);
-pub const MEM_E_INVALID_ROOT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146959351i32);
-pub const MEM_E_INVALID_SIZE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146959343i32);
-pub const MENROLL_S_ENROLLMENT_SUSPENDED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(1572881i32);
-pub const MILAVERR_INSUFFICIENTVIDEORESOURCES: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003303160i32);
-pub const MILAVERR_INVALIDWMPVERSION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003303161i32);
-pub const MILAVERR_MEDIAPLAYERCLOSED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003303155i32);
-pub const MILAVERR_MODULENOTLOADED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003303163i32);
-pub const MILAVERR_NOCLOCK: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003303168i32);
-pub const MILAVERR_NOMEDIATYPE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003303167i32);
-pub const MILAVERR_NOREADYFRAMES: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003303164i32);
-pub const MILAVERR_NOVIDEOMIXER: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003303166i32);
-pub const MILAVERR_NOVIDEOPRESENTER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003303165i32);
-pub const MILAVERR_REQUESTEDTEXTURETOOBIG: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003303158i32);
-pub const MILAVERR_SEEKFAILED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003303157i32);
-pub const MILAVERR_UNEXPECTEDWMPFAILURE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003303156i32);
-pub const MILAVERR_UNKNOWNHARDWAREERROR: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003303154i32);
-pub const MILAVERR_VIDEOACCELERATIONNOTAVAILABLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003303159i32);
-pub const MILAVERR_WMPFACTORYNOTREGISTERED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003303162i32);
-pub const MILEFFECTSERR_ALREADYATTACHEDTOLISTENER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003302888i32);
-pub const MILEFFECTSERR_CONNECTORNOTASSOCIATEDWITHEFFECT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003302894i32);
-pub const MILEFFECTSERR_CONNECTORNOTCONNECTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003302895i32);
-pub const MILEFFECTSERR_CYCLEDETECTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003302892i32);
-pub const MILEFFECTSERR_EFFECTALREADYINAGRAPH: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003302890i32);
-pub const MILEFFECTSERR_EFFECTHASNOCHILDREN: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003302889i32);
-pub const MILEFFECTSERR_EFFECTINMORETHANONEGRAPH: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003302891i32);
-pub const MILEFFECTSERR_EFFECTNOTPARTOFGROUP: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003302897i32);
-pub const MILEFFECTSERR_EMPTYBOUNDS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003302886i32);
-pub const MILEFFECTSERR_NOINPUTSOURCEATTACHED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003302896i32);
-pub const MILEFFECTSERR_NOTAFFINETRANSFORM: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003302887i32);
-pub const MILEFFECTSERR_OUTPUTSIZETOOLARGE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003302885i32);
-pub const MILEFFECTSERR_RESERVED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003302893i32);
-pub const MILEFFECTSERR_UNKNOWNPROPERTY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003302898i32);
-pub const MILERR_ADAPTER_NOT_FOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003304290i32);
-pub const MILERR_ALREADYLOCKED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003304314i32);
-pub const MILERR_ALREADY_INITIALIZED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003304305i32);
-pub const MILERR_BADNUMBER: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003304438i32);
-pub const MILERR_COLORSPACE_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003304289i32);
-pub const MILERR_DEVICECANNOTRENDERTEXT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003304312i32);
-pub const MILERR_DISPLAYFORMATNOTSUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003304316i32);
-pub const MILERR_DISPLAYID_ACCESS_DENIED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003304287i32);
-pub const MILERR_DISPLAYSTATEINVALID: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003304442i32);
-pub const MILERR_DXGI_ENUMERATION_OUT_OF_SYNC: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003304291i32);
-pub const MILERR_GENERIC_IGNORE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003304309i32);
-pub const MILERR_GLYPHBITMAPMISSED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003304311i32);
-pub const MILERR_INSUFFICIENTBUFFER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003304446i32);
-pub const MILERR_INTERNALERROR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003304320i32);
-pub const MILERR_INVALIDCALL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003304315i32);
-pub const MILERR_MALFORMEDGLYPHCACHE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003304310i32);
-pub const MILERR_MALFORMED_GUIDELINE_DATA: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003304308i32);
-pub const MILERR_MAX_TEXTURE_SIZE_EXCEEDED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003304294i32);
-pub const MILERR_MISMATCHED_SIZE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003304304i32);
-pub const MILERR_MROW_READLOCK_FAILED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003304297i32);
-pub const MILERR_MROW_UPDATE_FAILED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003304296i32);
-pub const MILERR_NEED_RECREATE_AND_PRESENT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003304306i32);
-pub const MILERR_NONINVERTIBLEMATRIX: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003304441i32);
-pub const MILERR_NOTLOCKED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003304313i32);
-pub const MILERR_NOT_QUEUING_PRESENTS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003304300i32);
-pub const MILERR_NO_HARDWARE_DEVICE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003304307i32);
-pub const MILERR_NO_REDIRECTION_SURFACE_AVAILABLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003304303i32);
-pub const MILERR_NO_REDIRECTION_SURFACE_RETRY_LATER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003304299i32);
-pub const MILERR_OBJECTBUSY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003304447i32);
-pub const MILERR_PREFILTER_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003304288i32);
-pub const MILERR_QPC_TIME_WENT_BACKWARD: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003304293i32);
-pub const MILERR_QUEUED_PRESENT_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003304301i32);
-pub const MILERR_REMOTING_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003304302i32);
-pub const MILERR_SCANNER_FAILED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003304444i32);
-pub const MILERR_SCREENACCESSDENIED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003304443i32);
-pub const MILERR_SHADER_COMPILE_FAILED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003304295i32);
-pub const MILERR_TERMINATED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003304439i32);
-pub const MILERR_TOOMANYSHADERELEMNTS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003304298i32);
-pub const MILERR_WIN32ERROR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003304445i32);
-pub const MILERR_ZEROVECTOR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003304440i32);
-pub const MK_E_CANTOPENFILE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221014i32);
-pub const MK_E_CONNECTMANUALLY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221024i32);
-pub const MK_E_ENUMERATION_FAILED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221009i32);
-pub const MK_E_EXCEEDEDDEADLINE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221023i32);
+pub const MEM_E_INVALID_LINK: crate::core::HRESULT = crate::core::HRESULT(-2146959344i32);
+pub const MEM_E_INVALID_ROOT: crate::core::HRESULT = crate::core::HRESULT(-2146959351i32);
+pub const MEM_E_INVALID_SIZE: crate::core::HRESULT = crate::core::HRESULT(-2146959343i32);
+pub const MENROLL_S_ENROLLMENT_SUSPENDED: crate::core::HRESULT = crate::core::HRESULT(1572881i32);
+pub const MILAVERR_INSUFFICIENTVIDEORESOURCES: crate::core::HRESULT =
+    crate::core::HRESULT(-2003303160i32);
+pub const MILAVERR_INVALIDWMPVERSION: crate::core::HRESULT = crate::core::HRESULT(-2003303161i32);
+pub const MILAVERR_MEDIAPLAYERCLOSED: crate::core::HRESULT = crate::core::HRESULT(-2003303155i32);
+pub const MILAVERR_MODULENOTLOADED: crate::core::HRESULT = crate::core::HRESULT(-2003303163i32);
+pub const MILAVERR_NOCLOCK: crate::core::HRESULT = crate::core::HRESULT(-2003303168i32);
+pub const MILAVERR_NOMEDIATYPE: crate::core::HRESULT = crate::core::HRESULT(-2003303167i32);
+pub const MILAVERR_NOREADYFRAMES: crate::core::HRESULT = crate::core::HRESULT(-2003303164i32);
+pub const MILAVERR_NOVIDEOMIXER: crate::core::HRESULT = crate::core::HRESULT(-2003303166i32);
+pub const MILAVERR_NOVIDEOPRESENTER: crate::core::HRESULT = crate::core::HRESULT(-2003303165i32);
+pub const MILAVERR_REQUESTEDTEXTURETOOBIG: crate::core::HRESULT =
+    crate::core::HRESULT(-2003303158i32);
+pub const MILAVERR_SEEKFAILED: crate::core::HRESULT = crate::core::HRESULT(-2003303157i32);
+pub const MILAVERR_UNEXPECTEDWMPFAILURE: crate::core::HRESULT =
+    crate::core::HRESULT(-2003303156i32);
+pub const MILAVERR_UNKNOWNHARDWAREERROR: crate::core::HRESULT =
+    crate::core::HRESULT(-2003303154i32);
+pub const MILAVERR_VIDEOACCELERATIONNOTAVAILABLE: crate::core::HRESULT =
+    crate::core::HRESULT(-2003303159i32);
+pub const MILAVERR_WMPFACTORYNOTREGISTERED: crate::core::HRESULT =
+    crate::core::HRESULT(-2003303162i32);
+pub const MILEFFECTSERR_ALREADYATTACHEDTOLISTENER: crate::core::HRESULT =
+    crate::core::HRESULT(-2003302888i32);
+pub const MILEFFECTSERR_CONNECTORNOTASSOCIATEDWITHEFFECT: crate::core::HRESULT =
+    crate::core::HRESULT(-2003302894i32);
+pub const MILEFFECTSERR_CONNECTORNOTCONNECTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2003302895i32);
+pub const MILEFFECTSERR_CYCLEDETECTED: crate::core::HRESULT = crate::core::HRESULT(-2003302892i32);
+pub const MILEFFECTSERR_EFFECTALREADYINAGRAPH: crate::core::HRESULT =
+    crate::core::HRESULT(-2003302890i32);
+pub const MILEFFECTSERR_EFFECTHASNOCHILDREN: crate::core::HRESULT =
+    crate::core::HRESULT(-2003302889i32);
+pub const MILEFFECTSERR_EFFECTINMORETHANONEGRAPH: crate::core::HRESULT =
+    crate::core::HRESULT(-2003302891i32);
+pub const MILEFFECTSERR_EFFECTNOTPARTOFGROUP: crate::core::HRESULT =
+    crate::core::HRESULT(-2003302897i32);
+pub const MILEFFECTSERR_EMPTYBOUNDS: crate::core::HRESULT = crate::core::HRESULT(-2003302886i32);
+pub const MILEFFECTSERR_NOINPUTSOURCEATTACHED: crate::core::HRESULT =
+    crate::core::HRESULT(-2003302896i32);
+pub const MILEFFECTSERR_NOTAFFINETRANSFORM: crate::core::HRESULT =
+    crate::core::HRESULT(-2003302887i32);
+pub const MILEFFECTSERR_OUTPUTSIZETOOLARGE: crate::core::HRESULT =
+    crate::core::HRESULT(-2003302885i32);
+pub const MILEFFECTSERR_RESERVED: crate::core::HRESULT = crate::core::HRESULT(-2003302893i32);
+pub const MILEFFECTSERR_UNKNOWNPROPERTY: crate::core::HRESULT =
+    crate::core::HRESULT(-2003302898i32);
+pub const MILERR_ADAPTER_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2003304290i32);
+pub const MILERR_ALREADYLOCKED: crate::core::HRESULT = crate::core::HRESULT(-2003304314i32);
+pub const MILERR_ALREADY_INITIALIZED: crate::core::HRESULT = crate::core::HRESULT(-2003304305i32);
+pub const MILERR_BADNUMBER: crate::core::HRESULT = crate::core::HRESULT(-2003304438i32);
+pub const MILERR_COLORSPACE_NOT_SUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2003304289i32);
+pub const MILERR_DEVICECANNOTRENDERTEXT: crate::core::HRESULT =
+    crate::core::HRESULT(-2003304312i32);
+pub const MILERR_DISPLAYFORMATNOTSUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2003304316i32);
+pub const MILERR_DISPLAYID_ACCESS_DENIED: crate::core::HRESULT =
+    crate::core::HRESULT(-2003304287i32);
+pub const MILERR_DISPLAYSTATEINVALID: crate::core::HRESULT = crate::core::HRESULT(-2003304442i32);
+pub const MILERR_DXGI_ENUMERATION_OUT_OF_SYNC: crate::core::HRESULT =
+    crate::core::HRESULT(-2003304291i32);
+pub const MILERR_GENERIC_IGNORE: crate::core::HRESULT = crate::core::HRESULT(-2003304309i32);
+pub const MILERR_GLYPHBITMAPMISSED: crate::core::HRESULT = crate::core::HRESULT(-2003304311i32);
+pub const MILERR_INSUFFICIENTBUFFER: crate::core::HRESULT = crate::core::HRESULT(-2003304446i32);
+pub const MILERR_INTERNALERROR: crate::core::HRESULT = crate::core::HRESULT(-2003304320i32);
+pub const MILERR_INVALIDCALL: crate::core::HRESULT = crate::core::HRESULT(-2003304315i32);
+pub const MILERR_MALFORMEDGLYPHCACHE: crate::core::HRESULT = crate::core::HRESULT(-2003304310i32);
+pub const MILERR_MALFORMED_GUIDELINE_DATA: crate::core::HRESULT =
+    crate::core::HRESULT(-2003304308i32);
+pub const MILERR_MAX_TEXTURE_SIZE_EXCEEDED: crate::core::HRESULT =
+    crate::core::HRESULT(-2003304294i32);
+pub const MILERR_MISMATCHED_SIZE: crate::core::HRESULT = crate::core::HRESULT(-2003304304i32);
+pub const MILERR_MROW_READLOCK_FAILED: crate::core::HRESULT = crate::core::HRESULT(-2003304297i32);
+pub const MILERR_MROW_UPDATE_FAILED: crate::core::HRESULT = crate::core::HRESULT(-2003304296i32);
+pub const MILERR_NEED_RECREATE_AND_PRESENT: crate::core::HRESULT =
+    crate::core::HRESULT(-2003304306i32);
+pub const MILERR_NONINVERTIBLEMATRIX: crate::core::HRESULT = crate::core::HRESULT(-2003304441i32);
+pub const MILERR_NOTLOCKED: crate::core::HRESULT = crate::core::HRESULT(-2003304313i32);
+pub const MILERR_NOT_QUEUING_PRESENTS: crate::core::HRESULT = crate::core::HRESULT(-2003304300i32);
+pub const MILERR_NO_HARDWARE_DEVICE: crate::core::HRESULT = crate::core::HRESULT(-2003304307i32);
+pub const MILERR_NO_REDIRECTION_SURFACE_AVAILABLE: crate::core::HRESULT =
+    crate::core::HRESULT(-2003304303i32);
+pub const MILERR_NO_REDIRECTION_SURFACE_RETRY_LATER: crate::core::HRESULT =
+    crate::core::HRESULT(-2003304299i32);
+pub const MILERR_OBJECTBUSY: crate::core::HRESULT = crate::core::HRESULT(-2003304447i32);
+pub const MILERR_PREFILTER_NOT_SUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2003304288i32);
+pub const MILERR_QPC_TIME_WENT_BACKWARD: crate::core::HRESULT =
+    crate::core::HRESULT(-2003304293i32);
+pub const MILERR_QUEUED_PRESENT_NOT_SUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2003304301i32);
+pub const MILERR_REMOTING_NOT_SUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2003304302i32);
+pub const MILERR_SCANNER_FAILED: crate::core::HRESULT = crate::core::HRESULT(-2003304444i32);
+pub const MILERR_SCREENACCESSDENIED: crate::core::HRESULT = crate::core::HRESULT(-2003304443i32);
+pub const MILERR_SHADER_COMPILE_FAILED: crate::core::HRESULT = crate::core::HRESULT(-2003304295i32);
+pub const MILERR_TERMINATED: crate::core::HRESULT = crate::core::HRESULT(-2003304439i32);
+pub const MILERR_TOOMANYSHADERELEMNTS: crate::core::HRESULT = crate::core::HRESULT(-2003304298i32);
+pub const MILERR_WIN32ERROR: crate::core::HRESULT = crate::core::HRESULT(-2003304445i32);
+pub const MILERR_ZEROVECTOR: crate::core::HRESULT = crate::core::HRESULT(-2003304440i32);
+pub const MK_E_CANTOPENFILE: crate::core::HRESULT = crate::core::HRESULT(-2147221014i32);
+pub const MK_E_CONNECTMANUALLY: crate::core::HRESULT = crate::core::HRESULT(-2147221024i32);
+pub const MK_E_ENUMERATION_FAILED: crate::core::HRESULT = crate::core::HRESULT(-2147221009i32);
+pub const MK_E_EXCEEDEDDEADLINE: crate::core::HRESULT = crate::core::HRESULT(-2147221023i32);
 pub const MK_E_FIRST: i32 = -2147221024i32;
-pub const MK_E_INTERMEDIATEINTERFACENOTSUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147221017i32);
-pub const MK_E_INVALIDEXTENSION: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221018i32);
+pub const MK_E_INTERMEDIATEINTERFACENOTSUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2147221017i32);
+pub const MK_E_INVALIDEXTENSION: crate::core::HRESULT = crate::core::HRESULT(-2147221018i32);
 pub const MK_E_LAST: i32 = -2147221009i32;
-pub const MK_E_MUSTBOTHERUSER: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221013i32);
-pub const MK_E_NEEDGENERIC: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221022i32);
-pub const MK_E_NOINVERSE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221012i32);
-pub const MK_E_NOOBJECT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221019i32);
-pub const MK_E_NOPREFIX: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221010i32);
-pub const MK_E_NOSTORAGE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221011i32);
-pub const MK_E_NOTBINDABLE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221016i32);
-pub const MK_E_NOTBOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221015i32);
-pub const MK_E_NO_NORMALIZED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146959353i32);
-pub const MK_E_SYNTAX: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221020i32);
-pub const MK_E_UNAVAILABLE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221021i32);
+pub const MK_E_MUSTBOTHERUSER: crate::core::HRESULT = crate::core::HRESULT(-2147221013i32);
+pub const MK_E_NEEDGENERIC: crate::core::HRESULT = crate::core::HRESULT(-2147221022i32);
+pub const MK_E_NOINVERSE: crate::core::HRESULT = crate::core::HRESULT(-2147221012i32);
+pub const MK_E_NOOBJECT: crate::core::HRESULT = crate::core::HRESULT(-2147221019i32);
+pub const MK_E_NOPREFIX: crate::core::HRESULT = crate::core::HRESULT(-2147221010i32);
+pub const MK_E_NOSTORAGE: crate::core::HRESULT = crate::core::HRESULT(-2147221011i32);
+pub const MK_E_NOTBINDABLE: crate::core::HRESULT = crate::core::HRESULT(-2147221016i32);
+pub const MK_E_NOTBOUND: crate::core::HRESULT = crate::core::HRESULT(-2147221015i32);
+pub const MK_E_NO_NORMALIZED: crate::core::HRESULT = crate::core::HRESULT(-2146959353i32);
+pub const MK_E_SYNTAX: crate::core::HRESULT = crate::core::HRESULT(-2147221020i32);
+pub const MK_E_UNAVAILABLE: crate::core::HRESULT = crate::core::HRESULT(-2147221021i32);
 pub const MK_S_FIRST: i32 = 262624i32;
-pub const MK_S_HIM: ::win32::core::HRESULT = ::win32::core::HRESULT(262629i32);
+pub const MK_S_HIM: crate::core::HRESULT = crate::core::HRESULT(262629i32);
 pub const MK_S_LAST: i32 = 262639i32;
-pub const MK_S_ME: ::win32::core::HRESULT = ::win32::core::HRESULT(262628i32);
-pub const MK_S_MONIKERALREADYREGISTERED: ::win32::core::HRESULT = ::win32::core::HRESULT(262631i32);
-pub const MK_S_REDUCED_TO_SELF: ::win32::core::HRESULT = ::win32::core::HRESULT(262626i32);
-pub const MK_S_US: ::win32::core::HRESULT = ::win32::core::HRESULT(262630i32);
-pub const MSDTC_E_DUPLICATE_RESOURCE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146367743i32);
-pub const MSSIPOTF_E_BADVERSION: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146865131i32);
-pub const MSSIPOTF_E_BAD_FIRST_TABLE_PLACEMENT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146865144i32);
-pub const MSSIPOTF_E_BAD_MAGICNUMBER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146865148i32);
-pub const MSSIPOTF_E_BAD_OFFSET_TABLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146865147i32);
-pub const MSSIPOTF_E_CANTGETOBJECT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146865150i32);
-pub const MSSIPOTF_E_CRYPT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146865132i32);
-pub const MSSIPOTF_E_DSIG_STRUCTURE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146865130i32);
-pub const MSSIPOTF_E_FAILED_HINTS_CHECK: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146865135i32);
-pub const MSSIPOTF_E_FAILED_POLICY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146865136i32);
-pub const MSSIPOTF_E_FILE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146865133i32);
-pub const MSSIPOTF_E_FILETOOSMALL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146865141i32);
-pub const MSSIPOTF_E_FILE_CHECKSUM: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146865139i32);
-pub const MSSIPOTF_E_NOHEADTABLE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146865149i32);
-pub const MSSIPOTF_E_NOT_OPENTYPE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146865134i32);
-pub const MSSIPOTF_E_OUTOFMEMRANGE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146865151i32);
-pub const MSSIPOTF_E_PCONST_CHECK: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146865129i32);
-pub const MSSIPOTF_E_STRUCTURE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146865128i32);
-pub const MSSIPOTF_E_TABLES_OVERLAP: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146865143i32);
-pub const MSSIPOTF_E_TABLE_CHECKSUM: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146865140i32);
-pub const MSSIPOTF_E_TABLE_LONGWORD: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146865145i32);
-pub const MSSIPOTF_E_TABLE_PADBYTES: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146865142i32);
-pub const MSSIPOTF_E_TABLE_TAGORDER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146865146i32);
-pub const NAP_E_CONFLICTING_ID: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144927741i32);
-pub const NAP_E_ENTITY_DISABLED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144927730i32);
-pub const NAP_E_ID_NOT_FOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144927734i32);
-pub const NAP_E_INVALID_PACKET: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144927743i32);
-pub const NAP_E_MAXSIZE_TOO_SMALL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144927733i32);
-pub const NAP_E_MISMATCHED_ID: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144927736i32);
-pub const NAP_E_MISSING_SOH: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144927742i32);
-pub const NAP_E_NETSH_GROUPPOLICY_ERROR: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144927729i32);
-pub const NAP_E_NOT_INITIALIZED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144927737i32);
-pub const NAP_E_NOT_PENDING: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144927735i32);
-pub const NAP_E_NOT_REGISTERED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144927738i32);
-pub const NAP_E_NO_CACHED_SOH: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144927740i32);
-pub const NAP_E_SERVICE_NOT_RUNNING: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144927732i32);
-pub const NAP_E_SHV_CONFIG_EXISTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144927727i32);
-pub const NAP_E_SHV_CONFIG_NOT_FOUND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144927726i32);
-pub const NAP_E_SHV_TIMEOUT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144927725i32);
-pub const NAP_E_STILL_BOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144927739i32);
-pub const NAP_E_TOO_MANY_CALLS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144927728i32);
-pub const NAP_S_CERT_ALREADY_PRESENT: ::win32::core::HRESULT = ::win32::core::HRESULT(2555917i32);
+pub const MK_S_ME: crate::core::HRESULT = crate::core::HRESULT(262628i32);
+pub const MK_S_MONIKERALREADYREGISTERED: crate::core::HRESULT = crate::core::HRESULT(262631i32);
+pub const MK_S_REDUCED_TO_SELF: crate::core::HRESULT = crate::core::HRESULT(262626i32);
+pub const MK_S_US: crate::core::HRESULT = crate::core::HRESULT(262630i32);
+pub const MSDTC_E_DUPLICATE_RESOURCE: crate::core::HRESULT = crate::core::HRESULT(-2146367743i32);
+pub const MSSIPOTF_E_BADVERSION: crate::core::HRESULT = crate::core::HRESULT(-2146865131i32);
+pub const MSSIPOTF_E_BAD_FIRST_TABLE_PLACEMENT: crate::core::HRESULT =
+    crate::core::HRESULT(-2146865144i32);
+pub const MSSIPOTF_E_BAD_MAGICNUMBER: crate::core::HRESULT = crate::core::HRESULT(-2146865148i32);
+pub const MSSIPOTF_E_BAD_OFFSET_TABLE: crate::core::HRESULT = crate::core::HRESULT(-2146865147i32);
+pub const MSSIPOTF_E_CANTGETOBJECT: crate::core::HRESULT = crate::core::HRESULT(-2146865150i32);
+pub const MSSIPOTF_E_CRYPT: crate::core::HRESULT = crate::core::HRESULT(-2146865132i32);
+pub const MSSIPOTF_E_DSIG_STRUCTURE: crate::core::HRESULT = crate::core::HRESULT(-2146865130i32);
+pub const MSSIPOTF_E_FAILED_HINTS_CHECK: crate::core::HRESULT =
+    crate::core::HRESULT(-2146865135i32);
+pub const MSSIPOTF_E_FAILED_POLICY: crate::core::HRESULT = crate::core::HRESULT(-2146865136i32);
+pub const MSSIPOTF_E_FILE: crate::core::HRESULT = crate::core::HRESULT(-2146865133i32);
+pub const MSSIPOTF_E_FILETOOSMALL: crate::core::HRESULT = crate::core::HRESULT(-2146865141i32);
+pub const MSSIPOTF_E_FILE_CHECKSUM: crate::core::HRESULT = crate::core::HRESULT(-2146865139i32);
+pub const MSSIPOTF_E_NOHEADTABLE: crate::core::HRESULT = crate::core::HRESULT(-2146865149i32);
+pub const MSSIPOTF_E_NOT_OPENTYPE: crate::core::HRESULT = crate::core::HRESULT(-2146865134i32);
+pub const MSSIPOTF_E_OUTOFMEMRANGE: crate::core::HRESULT = crate::core::HRESULT(-2146865151i32);
+pub const MSSIPOTF_E_PCONST_CHECK: crate::core::HRESULT = crate::core::HRESULT(-2146865129i32);
+pub const MSSIPOTF_E_STRUCTURE: crate::core::HRESULT = crate::core::HRESULT(-2146865128i32);
+pub const MSSIPOTF_E_TABLES_OVERLAP: crate::core::HRESULT = crate::core::HRESULT(-2146865143i32);
+pub const MSSIPOTF_E_TABLE_CHECKSUM: crate::core::HRESULT = crate::core::HRESULT(-2146865140i32);
+pub const MSSIPOTF_E_TABLE_LONGWORD: crate::core::HRESULT = crate::core::HRESULT(-2146865145i32);
+pub const MSSIPOTF_E_TABLE_PADBYTES: crate::core::HRESULT = crate::core::HRESULT(-2146865142i32);
+pub const MSSIPOTF_E_TABLE_TAGORDER: crate::core::HRESULT = crate::core::HRESULT(-2146865146i32);
+pub const NAP_E_CONFLICTING_ID: crate::core::HRESULT = crate::core::HRESULT(-2144927741i32);
+pub const NAP_E_ENTITY_DISABLED: crate::core::HRESULT = crate::core::HRESULT(-2144927730i32);
+pub const NAP_E_ID_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2144927734i32);
+pub const NAP_E_INVALID_PACKET: crate::core::HRESULT = crate::core::HRESULT(-2144927743i32);
+pub const NAP_E_MAXSIZE_TOO_SMALL: crate::core::HRESULT = crate::core::HRESULT(-2144927733i32);
+pub const NAP_E_MISMATCHED_ID: crate::core::HRESULT = crate::core::HRESULT(-2144927736i32);
+pub const NAP_E_MISSING_SOH: crate::core::HRESULT = crate::core::HRESULT(-2144927742i32);
+pub const NAP_E_NETSH_GROUPPOLICY_ERROR: crate::core::HRESULT =
+    crate::core::HRESULT(-2144927729i32);
+pub const NAP_E_NOT_INITIALIZED: crate::core::HRESULT = crate::core::HRESULT(-2144927737i32);
+pub const NAP_E_NOT_PENDING: crate::core::HRESULT = crate::core::HRESULT(-2144927735i32);
+pub const NAP_E_NOT_REGISTERED: crate::core::HRESULT = crate::core::HRESULT(-2144927738i32);
+pub const NAP_E_NO_CACHED_SOH: crate::core::HRESULT = crate::core::HRESULT(-2144927740i32);
+pub const NAP_E_SERVICE_NOT_RUNNING: crate::core::HRESULT = crate::core::HRESULT(-2144927732i32);
+pub const NAP_E_SHV_CONFIG_EXISTED: crate::core::HRESULT = crate::core::HRESULT(-2144927727i32);
+pub const NAP_E_SHV_CONFIG_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2144927726i32);
+pub const NAP_E_SHV_TIMEOUT: crate::core::HRESULT = crate::core::HRESULT(-2144927725i32);
+pub const NAP_E_STILL_BOUND: crate::core::HRESULT = crate::core::HRESULT(-2144927739i32);
+pub const NAP_E_TOO_MANY_CALLS: crate::core::HRESULT = crate::core::HRESULT(-2144927728i32);
+pub const NAP_S_CERT_ALREADY_PRESENT: crate::core::HRESULT = crate::core::HRESULT(2555917i32);
 pub type NEARPROC = ::core::option::Option<unsafe extern "system" fn() -> PtrDiffRepr>;
 pub const NOERROR: u32 = 0u32;
-pub const NOT_AN_ERROR1: ::win32::core::HRESULT = ::win32::core::HRESULT(529920i32);
+pub const NOT_AN_ERROR1: crate::core::HRESULT = crate::core::HRESULT(529920i32);
 pub const NTDDI_MAXVER: u32 = 2560u32;
-pub const NTE_AUTHENTICATION_IGNORED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146893775i32);
-pub const NTE_BAD_ALGID: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893816i32);
-pub const NTE_BAD_DATA: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893819i32);
-pub const NTE_BAD_FLAGS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893815i32);
-pub const NTE_BAD_HASH: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893822i32);
-pub const NTE_BAD_HASH_STATE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893812i32);
-pub const NTE_BAD_KEY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893821i32);
-pub const NTE_BAD_KEYSET: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893802i32);
-pub const NTE_BAD_KEYSET_PARAM: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893793i32);
-pub const NTE_BAD_KEY_STATE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893813i32);
-pub const NTE_BAD_LEN: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893820i32);
-pub const NTE_BAD_PROVIDER: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893805i32);
-pub const NTE_BAD_PROV_TYPE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893804i32);
-pub const NTE_BAD_PUBLIC_KEY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893803i32);
-pub const NTE_BAD_SIGNATURE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893818i32);
-pub const NTE_BAD_TYPE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893814i32);
-pub const NTE_BAD_UID: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893823i32);
-pub const NTE_BAD_VER: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893817i32);
-pub const NTE_BUFFERS_OVERLAP: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893781i32);
-pub const NTE_BUFFER_TOO_SMALL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893784i32);
-pub const NTE_DECRYPTION_FAILURE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893780i32);
-pub const NTE_DEVICE_NOT_FOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893771i32);
-pub const NTE_DEVICE_NOT_READY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893776i32);
-pub const NTE_DOUBLE_ENCRYPT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893806i32);
-pub const NTE_ENCRYPTION_FAILURE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893772i32);
-pub const NTE_EXISTS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893809i32);
-pub const NTE_FAIL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893792i32);
-pub const NTE_FIXEDPARAMETER: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893787i32);
-pub const NTE_HMAC_NOT_SUPPORTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893777i32);
-pub const NTE_INCORRECT_PASSWORD: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893773i32);
-pub const NTE_INTERNAL_ERROR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893779i32);
-pub const NTE_INVALID_HANDLE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893786i32);
-pub const NTE_INVALID_PARAMETER: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893785i32);
-pub const NTE_KEYSET_ENTRY_BAD: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893798i32);
-pub const NTE_KEYSET_NOT_DEF: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893799i32);
-pub const NTE_NOT_ACTIVE_CONSOLE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893768i32);
-pub const NTE_NOT_FOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893807i32);
-pub const NTE_NOT_SUPPORTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893783i32);
-pub const NTE_NO_KEY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893811i32);
-pub const NTE_NO_MEMORY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893810i32);
-pub const NTE_NO_MORE_ITEMS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893782i32);
+pub const NTE_AUTHENTICATION_IGNORED: crate::core::HRESULT = crate::core::HRESULT(-2146893775i32);
+pub const NTE_BAD_ALGID: crate::core::HRESULT = crate::core::HRESULT(-2146893816i32);
+pub const NTE_BAD_DATA: crate::core::HRESULT = crate::core::HRESULT(-2146893819i32);
+pub const NTE_BAD_FLAGS: crate::core::HRESULT = crate::core::HRESULT(-2146893815i32);
+pub const NTE_BAD_HASH: crate::core::HRESULT = crate::core::HRESULT(-2146893822i32);
+pub const NTE_BAD_HASH_STATE: crate::core::HRESULT = crate::core::HRESULT(-2146893812i32);
+pub const NTE_BAD_KEY: crate::core::HRESULT = crate::core::HRESULT(-2146893821i32);
+pub const NTE_BAD_KEYSET: crate::core::HRESULT = crate::core::HRESULT(-2146893802i32);
+pub const NTE_BAD_KEYSET_PARAM: crate::core::HRESULT = crate::core::HRESULT(-2146893793i32);
+pub const NTE_BAD_KEY_STATE: crate::core::HRESULT = crate::core::HRESULT(-2146893813i32);
+pub const NTE_BAD_LEN: crate::core::HRESULT = crate::core::HRESULT(-2146893820i32);
+pub const NTE_BAD_PROVIDER: crate::core::HRESULT = crate::core::HRESULT(-2146893805i32);
+pub const NTE_BAD_PROV_TYPE: crate::core::HRESULT = crate::core::HRESULT(-2146893804i32);
+pub const NTE_BAD_PUBLIC_KEY: crate::core::HRESULT = crate::core::HRESULT(-2146893803i32);
+pub const NTE_BAD_SIGNATURE: crate::core::HRESULT = crate::core::HRESULT(-2146893818i32);
+pub const NTE_BAD_TYPE: crate::core::HRESULT = crate::core::HRESULT(-2146893814i32);
+pub const NTE_BAD_UID: crate::core::HRESULT = crate::core::HRESULT(-2146893823i32);
+pub const NTE_BAD_VER: crate::core::HRESULT = crate::core::HRESULT(-2146893817i32);
+pub const NTE_BUFFERS_OVERLAP: crate::core::HRESULT = crate::core::HRESULT(-2146893781i32);
+pub const NTE_BUFFER_TOO_SMALL: crate::core::HRESULT = crate::core::HRESULT(-2146893784i32);
+pub const NTE_DECRYPTION_FAILURE: crate::core::HRESULT = crate::core::HRESULT(-2146893780i32);
+pub const NTE_DEVICE_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2146893771i32);
+pub const NTE_DEVICE_NOT_READY: crate::core::HRESULT = crate::core::HRESULT(-2146893776i32);
+pub const NTE_DOUBLE_ENCRYPT: crate::core::HRESULT = crate::core::HRESULT(-2146893806i32);
+pub const NTE_ENCRYPTION_FAILURE: crate::core::HRESULT = crate::core::HRESULT(-2146893772i32);
+pub const NTE_EXISTS: crate::core::HRESULT = crate::core::HRESULT(-2146893809i32);
+pub const NTE_FAIL: crate::core::HRESULT = crate::core::HRESULT(-2146893792i32);
+pub const NTE_FIXEDPARAMETER: crate::core::HRESULT = crate::core::HRESULT(-2146893787i32);
+pub const NTE_HMAC_NOT_SUPPORTED: crate::core::HRESULT = crate::core::HRESULT(-2146893777i32);
+pub const NTE_INCORRECT_PASSWORD: crate::core::HRESULT = crate::core::HRESULT(-2146893773i32);
+pub const NTE_INTERNAL_ERROR: crate::core::HRESULT = crate::core::HRESULT(-2146893779i32);
+pub const NTE_INVALID_HANDLE: crate::core::HRESULT = crate::core::HRESULT(-2146893786i32);
+pub const NTE_INVALID_PARAMETER: crate::core::HRESULT = crate::core::HRESULT(-2146893785i32);
+pub const NTE_KEYSET_ENTRY_BAD: crate::core::HRESULT = crate::core::HRESULT(-2146893798i32);
+pub const NTE_KEYSET_NOT_DEF: crate::core::HRESULT = crate::core::HRESULT(-2146893799i32);
+pub const NTE_NOT_ACTIVE_CONSOLE: crate::core::HRESULT = crate::core::HRESULT(-2146893768i32);
+pub const NTE_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2146893807i32);
+pub const NTE_NOT_SUPPORTED: crate::core::HRESULT = crate::core::HRESULT(-2146893783i32);
+pub const NTE_NO_KEY: crate::core::HRESULT = crate::core::HRESULT(-2146893811i32);
+pub const NTE_NO_MEMORY: crate::core::HRESULT = crate::core::HRESULT(-2146893810i32);
+pub const NTE_NO_MORE_ITEMS: crate::core::HRESULT = crate::core::HRESULT(-2146893782i32);
 pub const NTE_OP_OK: u32 = 0u32;
-pub const NTE_PASSWORD_CHANGE_REQUIRED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146893769i32);
-pub const NTE_PERM: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893808i32);
-pub const NTE_PROVIDER_DLL_FAIL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893795i32);
-pub const NTE_PROV_DLL_NOT_FOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893794i32);
-pub const NTE_PROV_TYPE_ENTRY_BAD: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893800i32);
-pub const NTE_PROV_TYPE_NOT_DEF: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893801i32);
-pub const NTE_PROV_TYPE_NO_MATCH: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893797i32);
-pub const NTE_SIGNATURE_FILE_BAD: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893796i32);
-pub const NTE_SILENT_CONTEXT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893790i32);
-pub const NTE_SYS_ERR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893791i32);
-pub const NTE_TEMPORARY_PROFILE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893788i32);
-pub const NTE_TOKEN_KEYSET_STORAGE_FULL: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146893789i32);
-pub const NTE_UI_REQUIRED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893778i32);
-pub const NTE_USER_CANCELLED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893770i32);
-pub const NTE_VALIDATION_FAILED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893774i32);
+pub const NTE_PASSWORD_CHANGE_REQUIRED: crate::core::HRESULT = crate::core::HRESULT(-2146893769i32);
+pub const NTE_PERM: crate::core::HRESULT = crate::core::HRESULT(-2146893808i32);
+pub const NTE_PROVIDER_DLL_FAIL: crate::core::HRESULT = crate::core::HRESULT(-2146893795i32);
+pub const NTE_PROV_DLL_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2146893794i32);
+pub const NTE_PROV_TYPE_ENTRY_BAD: crate::core::HRESULT = crate::core::HRESULT(-2146893800i32);
+pub const NTE_PROV_TYPE_NOT_DEF: crate::core::HRESULT = crate::core::HRESULT(-2146893801i32);
+pub const NTE_PROV_TYPE_NO_MATCH: crate::core::HRESULT = crate::core::HRESULT(-2146893797i32);
+pub const NTE_SIGNATURE_FILE_BAD: crate::core::HRESULT = crate::core::HRESULT(-2146893796i32);
+pub const NTE_SILENT_CONTEXT: crate::core::HRESULT = crate::core::HRESULT(-2146893790i32);
+pub const NTE_SYS_ERR: crate::core::HRESULT = crate::core::HRESULT(-2146893791i32);
+pub const NTE_TEMPORARY_PROFILE: crate::core::HRESULT = crate::core::HRESULT(-2146893788i32);
+pub const NTE_TOKEN_KEYSET_STORAGE_FULL: crate::core::HRESULT =
+    crate::core::HRESULT(-2146893789i32);
+pub const NTE_UI_REQUIRED: crate::core::HRESULT = crate::core::HRESULT(-2146893778i32);
+pub const NTE_USER_CANCELLED: crate::core::HRESULT = crate::core::HRESULT(-2146893770i32);
+pub const NTE_VALIDATION_FAILED: crate::core::HRESULT = crate::core::HRESULT(-2146893774i32);
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct NTSTATUS(pub i32);
 impl NTSTATUS {
@@ -3859,130 +3560,130 @@ impl ::core::fmt::Debug for NTSTATUS_FACILITY_CODE {
             .finish()
     }
 }
+impl FromIntoMemory for NTSTATUS_FACILITY_CODE {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
+    }
+}
 pub const OLEOBJ_E_FIRST: i32 = -2147221120i32;
-pub const OLEOBJ_E_INVALIDVERB: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221119i32);
+pub const OLEOBJ_E_INVALIDVERB: crate::core::HRESULT = crate::core::HRESULT(-2147221119i32);
 pub const OLEOBJ_E_LAST: i32 = -2147221105i32;
-pub const OLEOBJ_E_NOVERBS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221120i32);
-pub const OLEOBJ_S_CANNOT_DOVERB_NOW: ::win32::core::HRESULT = ::win32::core::HRESULT(262529i32);
+pub const OLEOBJ_E_NOVERBS: crate::core::HRESULT = crate::core::HRESULT(-2147221120i32);
+pub const OLEOBJ_S_CANNOT_DOVERB_NOW: crate::core::HRESULT = crate::core::HRESULT(262529i32);
 pub const OLEOBJ_S_FIRST: i32 = 262528i32;
-pub const OLEOBJ_S_INVALIDHWND: ::win32::core::HRESULT = ::win32::core::HRESULT(262530i32);
-pub const OLEOBJ_S_INVALIDVERB: ::win32::core::HRESULT = ::win32::core::HRESULT(262528i32);
+pub const OLEOBJ_S_INVALIDHWND: crate::core::HRESULT = crate::core::HRESULT(262530i32);
+pub const OLEOBJ_S_INVALIDVERB: crate::core::HRESULT = crate::core::HRESULT(262528i32);
 pub const OLEOBJ_S_LAST: i32 = 262543i32;
-pub const OLE_E_ADVF: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221503i32);
-pub const OLE_E_ADVISENOTSUPPORTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221501i32);
-pub const OLE_E_BLANK: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221497i32);
-pub const OLE_E_CANTCONVERT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221487i32);
-pub const OLE_E_CANT_BINDTOSOURCE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221494i32);
-pub const OLE_E_CANT_GETMONIKER: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221495i32);
-pub const OLE_E_CLASSDIFF: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221496i32);
-pub const OLE_E_ENUM_NOMORE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221502i32);
-pub const OLE_E_FIRST: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221504i32);
-pub const OLE_E_INVALIDHWND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221489i32);
-pub const OLE_E_INVALIDRECT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221491i32);
-pub const OLE_E_LAST: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221249i32);
-pub const OLE_E_NOCACHE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221498i32);
-pub const OLE_E_NOCONNECTION: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221500i32);
-pub const OLE_E_NOSTORAGE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221486i32);
-pub const OLE_E_NOTRUNNING: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221499i32);
-pub const OLE_E_NOT_INPLACEACTIVE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221488i32);
-pub const OLE_E_OLEVERB: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221504i32);
-pub const OLE_E_PROMPTSAVECANCELLED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147221492i32);
-pub const OLE_E_STATIC: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221493i32);
-pub const OLE_E_WRONGCOMPOBJ: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221490i32);
-pub const OLE_S_FIRST: ::win32::core::HRESULT = ::win32::core::HRESULT(262144i32);
-pub const OLE_S_LAST: ::win32::core::HRESULT = ::win32::core::HRESULT(262399i32);
-pub const OLE_S_MAC_CLIPFORMAT: ::win32::core::HRESULT = ::win32::core::HRESULT(262146i32);
-pub const OLE_S_STATIC: ::win32::core::HRESULT = ::win32::core::HRESULT(262145i32);
-pub const OLE_S_USEREG: ::win32::core::HRESULT = ::win32::core::HRESULT(262144i32);
-pub const ONL_CONNECTION_COUNT_LIMIT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2138701811i32);
-pub const ONL_E_ACCESS_DENIED_BY_TOU: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2138701822i32);
-pub const ONL_E_ACCOUNT_LOCKED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2138701817i32);
-pub const ONL_E_ACCOUNT_SUSPENDED_ABUSE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2138701813i32);
-pub const ONL_E_ACCOUNT_SUSPENDED_COMPROIMISE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2138701814i32);
-pub const ONL_E_ACCOUNT_UPDATE_REQUIRED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2138701819i32);
-pub const ONL_E_ACTION_REQUIRED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2138701812i32);
-pub const ONL_E_CONNECTED_ACCOUNT_CAN_NOT_SIGNOUT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2138701810i32);
-pub const ONL_E_EMAIL_VERIFICATION_REQUIRED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2138701815i32);
-pub const ONL_E_FORCESIGNIN: ::win32::core::HRESULT = ::win32::core::HRESULT(-2138701818i32);
-pub const ONL_E_INVALID_APPLICATION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2138701821i32);
-pub const ONL_E_INVALID_AUTHENTICATION_TARGET: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2138701823i32);
-pub const ONL_E_PARENTAL_CONSENT_REQUIRED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2138701816i32);
-pub const ONL_E_PASSWORD_UPDATE_REQUIRED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2138701820i32);
-pub const ONL_E_REQUEST_THROTTLED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2138701808i32);
-pub const ONL_E_USER_AUTHENTICATION_REQUIRED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2138701809i32);
+pub const OLE_E_ADVF: crate::core::HRESULT = crate::core::HRESULT(-2147221503i32);
+pub const OLE_E_ADVISENOTSUPPORTED: crate::core::HRESULT = crate::core::HRESULT(-2147221501i32);
+pub const OLE_E_BLANK: crate::core::HRESULT = crate::core::HRESULT(-2147221497i32);
+pub const OLE_E_CANTCONVERT: crate::core::HRESULT = crate::core::HRESULT(-2147221487i32);
+pub const OLE_E_CANT_BINDTOSOURCE: crate::core::HRESULT = crate::core::HRESULT(-2147221494i32);
+pub const OLE_E_CANT_GETMONIKER: crate::core::HRESULT = crate::core::HRESULT(-2147221495i32);
+pub const OLE_E_CLASSDIFF: crate::core::HRESULT = crate::core::HRESULT(-2147221496i32);
+pub const OLE_E_ENUM_NOMORE: crate::core::HRESULT = crate::core::HRESULT(-2147221502i32);
+pub const OLE_E_FIRST: crate::core::HRESULT = crate::core::HRESULT(-2147221504i32);
+pub const OLE_E_INVALIDHWND: crate::core::HRESULT = crate::core::HRESULT(-2147221489i32);
+pub const OLE_E_INVALIDRECT: crate::core::HRESULT = crate::core::HRESULT(-2147221491i32);
+pub const OLE_E_LAST: crate::core::HRESULT = crate::core::HRESULT(-2147221249i32);
+pub const OLE_E_NOCACHE: crate::core::HRESULT = crate::core::HRESULT(-2147221498i32);
+pub const OLE_E_NOCONNECTION: crate::core::HRESULT = crate::core::HRESULT(-2147221500i32);
+pub const OLE_E_NOSTORAGE: crate::core::HRESULT = crate::core::HRESULT(-2147221486i32);
+pub const OLE_E_NOTRUNNING: crate::core::HRESULT = crate::core::HRESULT(-2147221499i32);
+pub const OLE_E_NOT_INPLACEACTIVE: crate::core::HRESULT = crate::core::HRESULT(-2147221488i32);
+pub const OLE_E_OLEVERB: crate::core::HRESULT = crate::core::HRESULT(-2147221504i32);
+pub const OLE_E_PROMPTSAVECANCELLED: crate::core::HRESULT = crate::core::HRESULT(-2147221492i32);
+pub const OLE_E_STATIC: crate::core::HRESULT = crate::core::HRESULT(-2147221493i32);
+pub const OLE_E_WRONGCOMPOBJ: crate::core::HRESULT = crate::core::HRESULT(-2147221490i32);
+pub const OLE_S_FIRST: crate::core::HRESULT = crate::core::HRESULT(262144i32);
+pub const OLE_S_LAST: crate::core::HRESULT = crate::core::HRESULT(262399i32);
+pub const OLE_S_MAC_CLIPFORMAT: crate::core::HRESULT = crate::core::HRESULT(262146i32);
+pub const OLE_S_STATIC: crate::core::HRESULT = crate::core::HRESULT(262145i32);
+pub const OLE_S_USEREG: crate::core::HRESULT = crate::core::HRESULT(262144i32);
+pub const ONL_CONNECTION_COUNT_LIMIT: crate::core::HRESULT = crate::core::HRESULT(-2138701811i32);
+pub const ONL_E_ACCESS_DENIED_BY_TOU: crate::core::HRESULT = crate::core::HRESULT(-2138701822i32);
+pub const ONL_E_ACCOUNT_LOCKED: crate::core::HRESULT = crate::core::HRESULT(-2138701817i32);
+pub const ONL_E_ACCOUNT_SUSPENDED_ABUSE: crate::core::HRESULT =
+    crate::core::HRESULT(-2138701813i32);
+pub const ONL_E_ACCOUNT_SUSPENDED_COMPROIMISE: crate::core::HRESULT =
+    crate::core::HRESULT(-2138701814i32);
+pub const ONL_E_ACCOUNT_UPDATE_REQUIRED: crate::core::HRESULT =
+    crate::core::HRESULT(-2138701819i32);
+pub const ONL_E_ACTION_REQUIRED: crate::core::HRESULT = crate::core::HRESULT(-2138701812i32);
+pub const ONL_E_CONNECTED_ACCOUNT_CAN_NOT_SIGNOUT: crate::core::HRESULT =
+    crate::core::HRESULT(-2138701810i32);
+pub const ONL_E_EMAIL_VERIFICATION_REQUIRED: crate::core::HRESULT =
+    crate::core::HRESULT(-2138701815i32);
+pub const ONL_E_FORCESIGNIN: crate::core::HRESULT = crate::core::HRESULT(-2138701818i32);
+pub const ONL_E_INVALID_APPLICATION: crate::core::HRESULT = crate::core::HRESULT(-2138701821i32);
+pub const ONL_E_INVALID_AUTHENTICATION_TARGET: crate::core::HRESULT =
+    crate::core::HRESULT(-2138701823i32);
+pub const ONL_E_PARENTAL_CONSENT_REQUIRED: crate::core::HRESULT =
+    crate::core::HRESULT(-2138701816i32);
+pub const ONL_E_PASSWORD_UPDATE_REQUIRED: crate::core::HRESULT =
+    crate::core::HRESULT(-2138701820i32);
+pub const ONL_E_REQUEST_THROTTLED: crate::core::HRESULT = crate::core::HRESULT(-2138701808i32);
+pub const ONL_E_USER_AUTHENTICATION_REQUIRED: crate::core::HRESULT =
+    crate::core::HRESULT(-2138701809i32);
 pub const OR_INVALID_OID: i32 = 1911i32;
 pub const OR_INVALID_OXID: i32 = 1910i32;
 pub const OR_INVALID_SET: i32 = 1912i32;
-pub const OSS_ACCESS_SERIALIZATION_ERROR: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146881517i32);
-pub const OSS_API_DLL_NOT_LINKED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881495i32);
-pub const OSS_BAD_ARG: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881530i32);
-pub const OSS_BAD_ENCRULES: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881514i32);
-pub const OSS_BAD_PTR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881525i32);
-pub const OSS_BAD_TABLE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881521i32);
-pub const OSS_BAD_TIME: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881524i32);
-pub const OSS_BAD_VERSION: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881529i32);
-pub const OSS_BERDER_DLL_NOT_LINKED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146881494i32);
-pub const OSS_CANT_CLOSE_TRACE_FILE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146881490i32);
-pub const OSS_CANT_OPEN_TRACE_FILE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881509i32);
-pub const OSS_CANT_OPEN_TRACE_WINDOW: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146881512i32);
-pub const OSS_COMPARATOR_CODE_NOT_LINKED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146881499i32);
-pub const OSS_COMPARATOR_DLL_NOT_LINKED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146881500i32);
-pub const OSS_CONSTRAINT_DLL_NOT_LINKED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146881501i32);
-pub const OSS_CONSTRAINT_VIOLATED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881519i32);
-pub const OSS_COPIER_DLL_NOT_LINKED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146881502i32);
-pub const OSS_DATA_ERROR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881531i32);
-pub const OSS_FATAL_ERROR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881518i32);
-pub const OSS_INDEFINITE_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146881523i32);
-pub const OSS_LIMITED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881526i32);
-pub const OSS_MEM_ERROR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881522i32);
-pub const OSS_MEM_MGR_DLL_NOT_LINKED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146881498i32);
-pub const OSS_MORE_BUF: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881535i32);
-pub const OSS_MORE_INPUT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881532i32);
-pub const OSS_MUTEX_NOT_CREATED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881491i32);
-pub const OSS_NEGATIVE_UINTEGER: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881534i32);
-pub const OSS_NULL_FCN: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881515i32);
-pub const OSS_NULL_TBL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881516i32);
-pub const OSS_OID_DLL_NOT_LINKED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881510i32);
-pub const OSS_OPEN_TYPE_ERROR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881492i32);
-pub const OSS_OUT_MEMORY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881528i32);
-pub const OSS_OUT_OF_RANGE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881503i32);
-pub const OSS_PDU_MISMATCH: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881527i32);
-pub const OSS_PDU_RANGE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881533i32);
-pub const OSS_PDV_CODE_NOT_LINKED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881496i32);
-pub const OSS_PDV_DLL_NOT_LINKED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881497i32);
-pub const OSS_PER_DLL_NOT_LINKED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881493i32);
-pub const OSS_REAL_CODE_NOT_LINKED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881504i32);
-pub const OSS_REAL_DLL_NOT_LINKED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881505i32);
-pub const OSS_TABLE_MISMATCH: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881507i32);
-pub const OSS_TOO_LONG: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881520i32);
-pub const OSS_TRACE_FILE_ALREADY_OPEN: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146881508i32);
-pub const OSS_TYPE_NOT_SUPPORTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881506i32);
-pub const OSS_UNAVAIL_ENCRULES: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881513i32);
-pub const OSS_UNIMPLEMENTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881511i32);
+pub const OSS_ACCESS_SERIALIZATION_ERROR: crate::core::HRESULT =
+    crate::core::HRESULT(-2146881517i32);
+pub const OSS_API_DLL_NOT_LINKED: crate::core::HRESULT = crate::core::HRESULT(-2146881495i32);
+pub const OSS_BAD_ARG: crate::core::HRESULT = crate::core::HRESULT(-2146881530i32);
+pub const OSS_BAD_ENCRULES: crate::core::HRESULT = crate::core::HRESULT(-2146881514i32);
+pub const OSS_BAD_PTR: crate::core::HRESULT = crate::core::HRESULT(-2146881525i32);
+pub const OSS_BAD_TABLE: crate::core::HRESULT = crate::core::HRESULT(-2146881521i32);
+pub const OSS_BAD_TIME: crate::core::HRESULT = crate::core::HRESULT(-2146881524i32);
+pub const OSS_BAD_VERSION: crate::core::HRESULT = crate::core::HRESULT(-2146881529i32);
+pub const OSS_BERDER_DLL_NOT_LINKED: crate::core::HRESULT = crate::core::HRESULT(-2146881494i32);
+pub const OSS_CANT_CLOSE_TRACE_FILE: crate::core::HRESULT = crate::core::HRESULT(-2146881490i32);
+pub const OSS_CANT_OPEN_TRACE_FILE: crate::core::HRESULT = crate::core::HRESULT(-2146881509i32);
+pub const OSS_CANT_OPEN_TRACE_WINDOW: crate::core::HRESULT = crate::core::HRESULT(-2146881512i32);
+pub const OSS_COMPARATOR_CODE_NOT_LINKED: crate::core::HRESULT =
+    crate::core::HRESULT(-2146881499i32);
+pub const OSS_COMPARATOR_DLL_NOT_LINKED: crate::core::HRESULT =
+    crate::core::HRESULT(-2146881500i32);
+pub const OSS_CONSTRAINT_DLL_NOT_LINKED: crate::core::HRESULT =
+    crate::core::HRESULT(-2146881501i32);
+pub const OSS_CONSTRAINT_VIOLATED: crate::core::HRESULT = crate::core::HRESULT(-2146881519i32);
+pub const OSS_COPIER_DLL_NOT_LINKED: crate::core::HRESULT = crate::core::HRESULT(-2146881502i32);
+pub const OSS_DATA_ERROR: crate::core::HRESULT = crate::core::HRESULT(-2146881531i32);
+pub const OSS_FATAL_ERROR: crate::core::HRESULT = crate::core::HRESULT(-2146881518i32);
+pub const OSS_INDEFINITE_NOT_SUPPORTED: crate::core::HRESULT = crate::core::HRESULT(-2146881523i32);
+pub const OSS_LIMITED: crate::core::HRESULT = crate::core::HRESULT(-2146881526i32);
+pub const OSS_MEM_ERROR: crate::core::HRESULT = crate::core::HRESULT(-2146881522i32);
+pub const OSS_MEM_MGR_DLL_NOT_LINKED: crate::core::HRESULT = crate::core::HRESULT(-2146881498i32);
+pub const OSS_MORE_BUF: crate::core::HRESULT = crate::core::HRESULT(-2146881535i32);
+pub const OSS_MORE_INPUT: crate::core::HRESULT = crate::core::HRESULT(-2146881532i32);
+pub const OSS_MUTEX_NOT_CREATED: crate::core::HRESULT = crate::core::HRESULT(-2146881491i32);
+pub const OSS_NEGATIVE_UINTEGER: crate::core::HRESULT = crate::core::HRESULT(-2146881534i32);
+pub const OSS_NULL_FCN: crate::core::HRESULT = crate::core::HRESULT(-2146881515i32);
+pub const OSS_NULL_TBL: crate::core::HRESULT = crate::core::HRESULT(-2146881516i32);
+pub const OSS_OID_DLL_NOT_LINKED: crate::core::HRESULT = crate::core::HRESULT(-2146881510i32);
+pub const OSS_OPEN_TYPE_ERROR: crate::core::HRESULT = crate::core::HRESULT(-2146881492i32);
+pub const OSS_OUT_MEMORY: crate::core::HRESULT = crate::core::HRESULT(-2146881528i32);
+pub const OSS_OUT_OF_RANGE: crate::core::HRESULT = crate::core::HRESULT(-2146881503i32);
+pub const OSS_PDU_MISMATCH: crate::core::HRESULT = crate::core::HRESULT(-2146881527i32);
+pub const OSS_PDU_RANGE: crate::core::HRESULT = crate::core::HRESULT(-2146881533i32);
+pub const OSS_PDV_CODE_NOT_LINKED: crate::core::HRESULT = crate::core::HRESULT(-2146881496i32);
+pub const OSS_PDV_DLL_NOT_LINKED: crate::core::HRESULT = crate::core::HRESULT(-2146881497i32);
+pub const OSS_PER_DLL_NOT_LINKED: crate::core::HRESULT = crate::core::HRESULT(-2146881493i32);
+pub const OSS_REAL_CODE_NOT_LINKED: crate::core::HRESULT = crate::core::HRESULT(-2146881504i32);
+pub const OSS_REAL_DLL_NOT_LINKED: crate::core::HRESULT = crate::core::HRESULT(-2146881505i32);
+pub const OSS_TABLE_MISMATCH: crate::core::HRESULT = crate::core::HRESULT(-2146881507i32);
+pub const OSS_TOO_LONG: crate::core::HRESULT = crate::core::HRESULT(-2146881520i32);
+pub const OSS_TRACE_FILE_ALREADY_OPEN: crate::core::HRESULT = crate::core::HRESULT(-2146881508i32);
+pub const OSS_TYPE_NOT_SUPPORTED: crate::core::HRESULT = crate::core::HRESULT(-2146881506i32);
+pub const OSS_UNAVAIL_ENCRULES: crate::core::HRESULT = crate::core::HRESULT(-2146881513i32);
+pub const OSS_UNIMPLEMENTED: crate::core::HRESULT = crate::core::HRESULT(-2146881511i32);
 pub type PAPCFUNC = ::core::option::Option<unsafe extern "system" fn(Parameter: PtrRepr)>;
 pub const PEERDIST_ERROR_ALREADY_COMPLETED: i32 = 4060i32;
 pub const PEERDIST_ERROR_ALREADY_EXISTS: i32 = 4058i32;
@@ -4001,174 +3702,137 @@ pub const PEERDIST_ERROR_SERVICE_UNAVAILABLE: i32 = 4065i32;
 pub const PEERDIST_ERROR_SHUTDOWN_IN_PROGRESS: i32 = 4056i32;
 pub const PEERDIST_ERROR_TRUST_FAILURE: i32 = 4066i32;
 pub const PEERDIST_ERROR_VERSION_UNSUPPORTED: i32 = 4062i32;
-pub const PEER_E_ALREADY_LISTENING: ::win32::core::HRESULT = ::win32::core::HRESULT(-2140995321i32);
-pub const PEER_E_CANNOT_CONVERT_PEER_NAME: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140979199i32);
-pub const PEER_E_CANNOT_START_SERVICE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140995581i32);
-pub const PEER_E_CERT_STORE_CORRUPTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140993535i32);
-pub const PEER_E_CHAIN_TOO_LONG: ::win32::core::HRESULT = ::win32::core::HRESULT(-2140993789i32);
-pub const PEER_E_CIRCULAR_CHAIN_DETECTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140993786i32);
-pub const PEER_E_CLASSIFIER_TOO_LONG: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140995071i32);
-pub const PEER_E_CLOUD_NAME_AMBIGUOUS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140991483i32);
-pub const PEER_E_CONNECTION_FAILED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2140995319i32);
-pub const PEER_E_CONNECTION_NOT_AUTHENTICATED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140995318i32);
-pub const PEER_E_CONNECTION_NOT_FOUND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140995325i32);
-pub const PEER_E_CONNECTION_REFUSED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140995317i32);
-pub const PEER_E_CONNECT_SELF: ::win32::core::HRESULT = ::win32::core::HRESULT(-2140995322i32);
-pub const PEER_E_CONTACT_NOT_FOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2140971007i32);
-pub const PEER_E_DATABASE_ACCESSDENIED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140994814i32);
-pub const PEER_E_DATABASE_ALREADY_PRESENT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140994811i32);
-pub const PEER_E_DATABASE_NOT_PRESENT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140994810i32);
-pub const PEER_E_DBINITIALIZATION_FAILED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140994813i32);
-pub const PEER_E_DBNAME_CHANGED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2140995567i32);
-pub const PEER_E_DEFERRED_VALIDATION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140987344i32);
-pub const PEER_E_DUPLICATE_GRAPH: ::win32::core::HRESULT = ::win32::core::HRESULT(-2140995566i32);
-pub const PEER_E_EVENT_HANDLE_NOT_FOUND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140994303i32);
-pub const PEER_E_FW_BLOCKED_BY_POLICY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140966903i32);
-pub const PEER_E_FW_BLOCKED_BY_SHIELDS_UP: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140966902i32);
-pub const PEER_E_FW_DECLINED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2140966901i32);
-pub const PEER_E_FW_EXCEPTION_DISABLED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140966904i32);
-pub const PEER_E_GRAPH_IN_USE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2140995563i32);
-pub const PEER_E_GRAPH_NOT_READY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2140995565i32);
-pub const PEER_E_GRAPH_SHUTTING_DOWN: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140995564i32);
-pub const PEER_E_GROUPS_EXIST: ::win32::core::HRESULT = ::win32::core::HRESULT(-2140995068i32);
-pub const PEER_E_GROUP_IN_USE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2140987246i32);
-pub const PEER_E_GROUP_NOT_READY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2140987247i32);
-pub const PEER_E_IDENTITY_DELETED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2140987232i32);
-pub const PEER_E_IDENTITY_NOT_FOUND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140994559i32);
-pub const PEER_E_INVALID_ADDRESS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2140966905i32);
-pub const PEER_E_INVALID_ATTRIBUTES: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140994046i32);
-pub const PEER_E_INVALID_CLASSIFIER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140987296i32);
-pub const PEER_E_INVALID_CLASSIFIER_PROPERTY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140987278i32);
-pub const PEER_E_INVALID_CREDENTIAL: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140987262i32);
-pub const PEER_E_INVALID_CREDENTIAL_INFO: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140987263i32);
-pub const PEER_E_INVALID_DATABASE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2140995562i32);
-pub const PEER_E_INVALID_FRIENDLY_NAME: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140987280i32);
-pub const PEER_E_INVALID_GRAPH: ::win32::core::HRESULT = ::win32::core::HRESULT(-2140995568i32);
-pub const PEER_E_INVALID_GROUP: ::win32::core::HRESULT = ::win32::core::HRESULT(-2140987245i32);
-pub const PEER_E_INVALID_GROUP_PROPERTIES: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140987328i32);
-pub const PEER_E_INVALID_PEER_HOST_NAME: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140979198i32);
-pub const PEER_E_INVALID_PEER_NAME: ::win32::core::HRESULT = ::win32::core::HRESULT(-2140987312i32);
-pub const PEER_E_INVALID_RECORD: ::win32::core::HRESULT = ::win32::core::HRESULT(-2140987376i32);
-pub const PEER_E_INVALID_RECORD_EXPIRATION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140987264i32);
-pub const PEER_E_INVALID_RECORD_SIZE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140987261i32);
-pub const PEER_E_INVALID_ROLE_PROPERTY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140987279i32);
-pub const PEER_E_INVALID_SEARCH: ::win32::core::HRESULT = ::win32::core::HRESULT(-2140994047i32);
-pub const PEER_E_INVALID_TIME_PERIOD: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140993787i32);
-pub const PEER_E_INVITATION_NOT_TRUSTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140993791i32);
-pub const PEER_E_INVITE_CANCELLED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2140966912i32);
-pub const PEER_E_INVITE_RESPONSE_NOT_AVAILABLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140966911i32);
-pub const PEER_E_IPV6_NOT_INSTALLED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140995583i32);
-pub const PEER_E_MAX_RECORD_SIZE_EXCEEDED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140994812i32);
-pub const PEER_E_NODE_NOT_FOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2140995320i32);
-pub const PEER_E_NOT_AUTHORIZED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2140987360i32);
-pub const PEER_E_NOT_INITIALIZED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2140995582i32);
-pub const PEER_E_NOT_LICENSED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2140995580i32);
-pub const PEER_E_NOT_SIGNED_IN: ::win32::core::HRESULT = ::win32::core::HRESULT(-2140966909i32);
-pub const PEER_E_NO_CLOUD: ::win32::core::HRESULT = ::win32::core::HRESULT(-2140991487i32);
-pub const PEER_E_NO_KEY_ACCESS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2140995069i32);
-pub const PEER_E_NO_MEMBERS_FOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2140987244i32);
-pub const PEER_E_NO_MEMBER_CONNECTIONS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140987243i32);
-pub const PEER_E_NO_MORE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2140979197i32);
-pub const PEER_E_PASSWORD_DOES_NOT_MEET_POLICY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140987359i32);
-pub const PEER_E_PNRP_DUPLICATE_PEER_NAME: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140979195i32);
-pub const PEER_E_PRIVACY_DECLINED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2140966908i32);
-pub const PEER_E_RECORD_NOT_FOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2140994815i32);
-pub const PEER_E_SERVICE_NOT_AVAILABLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140987231i32);
-pub const PEER_E_TIMEOUT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2140966907i32);
-pub const PEER_E_TOO_MANY_ATTRIBUTES: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140995561i32);
-pub const PEER_E_TOO_MANY_IDENTITIES: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140995070i32);
-pub const PEER_E_UNABLE_TO_LISTEN: ::win32::core::HRESULT = ::win32::core::HRESULT(-2140987242i32);
-pub const PEER_E_UNSUPPORTED_VERSION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140987248i32);
-pub const PEER_S_ALREADY_A_MEMBER: ::win32::core::HRESULT = ::win32::core::HRESULT(6488070i32);
-pub const PEER_S_ALREADY_CONNECTED: ::win32::core::HRESULT = ::win32::core::HRESULT(6496256i32);
-pub const PEER_S_GRAPH_DATA_CREATED: ::win32::core::HRESULT = ::win32::core::HRESULT(6488065i32);
-pub const PEER_S_NO_CONNECTIVITY: ::win32::core::HRESULT = ::win32::core::HRESULT(6488069i32);
-pub const PEER_S_NO_EVENT_DATA: ::win32::core::HRESULT = ::win32::core::HRESULT(6488066i32);
-pub const PEER_S_SUBSCRIPTION_EXISTS: ::win32::core::HRESULT = ::win32::core::HRESULT(6512640i32);
-pub const PERSIST_E_NOTSELFSIZING: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146762741i32);
-pub const PERSIST_E_SIZEDEFINITE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146762743i32);
-pub const PERSIST_E_SIZEINDEFINITE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146762742i32);
-pub const PLA_E_CABAPI_FAILURE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144337645i32);
-pub const PLA_E_CONFLICT_INCL_EXCL_API: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144337659i32);
-pub const PLA_E_CREDENTIALS_REQUIRED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144337661i32);
-pub const PLA_E_DCS_ALREADY_EXISTS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144337737i32);
-pub const PLA_E_DCS_IN_USE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144337750i32);
-pub const PLA_E_DCS_NOT_FOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144337918i32);
-pub const PLA_E_DCS_NOT_RUNNING: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144337660i32);
-pub const PLA_E_DCS_SINGLETON_REQUIRED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144337662i32);
-pub const PLA_E_DCS_START_WAIT_TIMEOUT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144337654i32);
-pub const PLA_E_DC_ALREADY_EXISTS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144337655i32);
-pub const PLA_E_DC_START_WAIT_TIMEOUT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144337653i32);
-pub const PLA_E_EXE_ALREADY_CONFIGURED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144337657i32);
-pub const PLA_E_EXE_FULL_PATH_REQUIRED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144337650i32);
-pub const PLA_E_EXE_PATH_NOT_VALID: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144337656i32);
-pub const PLA_E_INVALID_SESSION_NAME: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144337649i32);
-pub const PLA_E_NETWORK_EXE_NOT_VALID: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144337658i32);
-pub const PLA_E_NO_DUPLICATES: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144337651i32);
-pub const PLA_E_NO_MIN_DISK: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144337808i32);
-pub const PLA_E_PLA_CHANNEL_NOT_ENABLED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144337648i32);
-pub const PLA_E_PROPERTY_CONFLICT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144337663i32);
-pub const PLA_E_REPORT_WAIT_TIMEOUT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144337652i32);
-pub const PLA_E_RULES_MANAGER_FAILED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144337646i32);
-pub const PLA_E_TASKSCHED_CHANNEL_NOT_ENABLED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144337647i32);
-pub const PLA_E_TOO_MANY_FOLDERS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144337851i32);
-pub const PLA_S_PROPERTY_IGNORED: ::win32::core::HRESULT = ::win32::core::HRESULT(3145984i32);
+pub const PEER_E_ALREADY_LISTENING: crate::core::HRESULT = crate::core::HRESULT(-2140995321i32);
+pub const PEER_E_CANNOT_CONVERT_PEER_NAME: crate::core::HRESULT =
+    crate::core::HRESULT(-2140979199i32);
+pub const PEER_E_CANNOT_START_SERVICE: crate::core::HRESULT = crate::core::HRESULT(-2140995581i32);
+pub const PEER_E_CERT_STORE_CORRUPTED: crate::core::HRESULT = crate::core::HRESULT(-2140993535i32);
+pub const PEER_E_CHAIN_TOO_LONG: crate::core::HRESULT = crate::core::HRESULT(-2140993789i32);
+pub const PEER_E_CIRCULAR_CHAIN_DETECTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2140993786i32);
+pub const PEER_E_CLASSIFIER_TOO_LONG: crate::core::HRESULT = crate::core::HRESULT(-2140995071i32);
+pub const PEER_E_CLOUD_NAME_AMBIGUOUS: crate::core::HRESULT = crate::core::HRESULT(-2140991483i32);
+pub const PEER_E_CONNECTION_FAILED: crate::core::HRESULT = crate::core::HRESULT(-2140995319i32);
+pub const PEER_E_CONNECTION_NOT_AUTHENTICATED: crate::core::HRESULT =
+    crate::core::HRESULT(-2140995318i32);
+pub const PEER_E_CONNECTION_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2140995325i32);
+pub const PEER_E_CONNECTION_REFUSED: crate::core::HRESULT = crate::core::HRESULT(-2140995317i32);
+pub const PEER_E_CONNECT_SELF: crate::core::HRESULT = crate::core::HRESULT(-2140995322i32);
+pub const PEER_E_CONTACT_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2140971007i32);
+pub const PEER_E_DATABASE_ACCESSDENIED: crate::core::HRESULT = crate::core::HRESULT(-2140994814i32);
+pub const PEER_E_DATABASE_ALREADY_PRESENT: crate::core::HRESULT =
+    crate::core::HRESULT(-2140994811i32);
+pub const PEER_E_DATABASE_NOT_PRESENT: crate::core::HRESULT = crate::core::HRESULT(-2140994810i32);
+pub const PEER_E_DBINITIALIZATION_FAILED: crate::core::HRESULT =
+    crate::core::HRESULT(-2140994813i32);
+pub const PEER_E_DBNAME_CHANGED: crate::core::HRESULT = crate::core::HRESULT(-2140995567i32);
+pub const PEER_E_DEFERRED_VALIDATION: crate::core::HRESULT = crate::core::HRESULT(-2140987344i32);
+pub const PEER_E_DUPLICATE_GRAPH: crate::core::HRESULT = crate::core::HRESULT(-2140995566i32);
+pub const PEER_E_EVENT_HANDLE_NOT_FOUND: crate::core::HRESULT =
+    crate::core::HRESULT(-2140994303i32);
+pub const PEER_E_FW_BLOCKED_BY_POLICY: crate::core::HRESULT = crate::core::HRESULT(-2140966903i32);
+pub const PEER_E_FW_BLOCKED_BY_SHIELDS_UP: crate::core::HRESULT =
+    crate::core::HRESULT(-2140966902i32);
+pub const PEER_E_FW_DECLINED: crate::core::HRESULT = crate::core::HRESULT(-2140966901i32);
+pub const PEER_E_FW_EXCEPTION_DISABLED: crate::core::HRESULT = crate::core::HRESULT(-2140966904i32);
+pub const PEER_E_GRAPH_IN_USE: crate::core::HRESULT = crate::core::HRESULT(-2140995563i32);
+pub const PEER_E_GRAPH_NOT_READY: crate::core::HRESULT = crate::core::HRESULT(-2140995565i32);
+pub const PEER_E_GRAPH_SHUTTING_DOWN: crate::core::HRESULT = crate::core::HRESULT(-2140995564i32);
+pub const PEER_E_GROUPS_EXIST: crate::core::HRESULT = crate::core::HRESULT(-2140995068i32);
+pub const PEER_E_GROUP_IN_USE: crate::core::HRESULT = crate::core::HRESULT(-2140987246i32);
+pub const PEER_E_GROUP_NOT_READY: crate::core::HRESULT = crate::core::HRESULT(-2140987247i32);
+pub const PEER_E_IDENTITY_DELETED: crate::core::HRESULT = crate::core::HRESULT(-2140987232i32);
+pub const PEER_E_IDENTITY_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2140994559i32);
+pub const PEER_E_INVALID_ADDRESS: crate::core::HRESULT = crate::core::HRESULT(-2140966905i32);
+pub const PEER_E_INVALID_ATTRIBUTES: crate::core::HRESULT = crate::core::HRESULT(-2140994046i32);
+pub const PEER_E_INVALID_CLASSIFIER: crate::core::HRESULT = crate::core::HRESULT(-2140987296i32);
+pub const PEER_E_INVALID_CLASSIFIER_PROPERTY: crate::core::HRESULT =
+    crate::core::HRESULT(-2140987278i32);
+pub const PEER_E_INVALID_CREDENTIAL: crate::core::HRESULT = crate::core::HRESULT(-2140987262i32);
+pub const PEER_E_INVALID_CREDENTIAL_INFO: crate::core::HRESULT =
+    crate::core::HRESULT(-2140987263i32);
+pub const PEER_E_INVALID_DATABASE: crate::core::HRESULT = crate::core::HRESULT(-2140995562i32);
+pub const PEER_E_INVALID_FRIENDLY_NAME: crate::core::HRESULT = crate::core::HRESULT(-2140987280i32);
+pub const PEER_E_INVALID_GRAPH: crate::core::HRESULT = crate::core::HRESULT(-2140995568i32);
+pub const PEER_E_INVALID_GROUP: crate::core::HRESULT = crate::core::HRESULT(-2140987245i32);
+pub const PEER_E_INVALID_GROUP_PROPERTIES: crate::core::HRESULT =
+    crate::core::HRESULT(-2140987328i32);
+pub const PEER_E_INVALID_PEER_HOST_NAME: crate::core::HRESULT =
+    crate::core::HRESULT(-2140979198i32);
+pub const PEER_E_INVALID_PEER_NAME: crate::core::HRESULT = crate::core::HRESULT(-2140987312i32);
+pub const PEER_E_INVALID_RECORD: crate::core::HRESULT = crate::core::HRESULT(-2140987376i32);
+pub const PEER_E_INVALID_RECORD_EXPIRATION: crate::core::HRESULT =
+    crate::core::HRESULT(-2140987264i32);
+pub const PEER_E_INVALID_RECORD_SIZE: crate::core::HRESULT = crate::core::HRESULT(-2140987261i32);
+pub const PEER_E_INVALID_ROLE_PROPERTY: crate::core::HRESULT = crate::core::HRESULT(-2140987279i32);
+pub const PEER_E_INVALID_SEARCH: crate::core::HRESULT = crate::core::HRESULT(-2140994047i32);
+pub const PEER_E_INVALID_TIME_PERIOD: crate::core::HRESULT = crate::core::HRESULT(-2140993787i32);
+pub const PEER_E_INVITATION_NOT_TRUSTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2140993791i32);
+pub const PEER_E_INVITE_CANCELLED: crate::core::HRESULT = crate::core::HRESULT(-2140966912i32);
+pub const PEER_E_INVITE_RESPONSE_NOT_AVAILABLE: crate::core::HRESULT =
+    crate::core::HRESULT(-2140966911i32);
+pub const PEER_E_IPV6_NOT_INSTALLED: crate::core::HRESULT = crate::core::HRESULT(-2140995583i32);
+pub const PEER_E_MAX_RECORD_SIZE_EXCEEDED: crate::core::HRESULT =
+    crate::core::HRESULT(-2140994812i32);
+pub const PEER_E_NODE_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2140995320i32);
+pub const PEER_E_NOT_AUTHORIZED: crate::core::HRESULT = crate::core::HRESULT(-2140987360i32);
+pub const PEER_E_NOT_INITIALIZED: crate::core::HRESULT = crate::core::HRESULT(-2140995582i32);
+pub const PEER_E_NOT_LICENSED: crate::core::HRESULT = crate::core::HRESULT(-2140995580i32);
+pub const PEER_E_NOT_SIGNED_IN: crate::core::HRESULT = crate::core::HRESULT(-2140966909i32);
+pub const PEER_E_NO_CLOUD: crate::core::HRESULT = crate::core::HRESULT(-2140991487i32);
+pub const PEER_E_NO_KEY_ACCESS: crate::core::HRESULT = crate::core::HRESULT(-2140995069i32);
+pub const PEER_E_NO_MEMBERS_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2140987244i32);
+pub const PEER_E_NO_MEMBER_CONNECTIONS: crate::core::HRESULT = crate::core::HRESULT(-2140987243i32);
+pub const PEER_E_NO_MORE: crate::core::HRESULT = crate::core::HRESULT(-2140979197i32);
+pub const PEER_E_PASSWORD_DOES_NOT_MEET_POLICY: crate::core::HRESULT =
+    crate::core::HRESULT(-2140987359i32);
+pub const PEER_E_PNRP_DUPLICATE_PEER_NAME: crate::core::HRESULT =
+    crate::core::HRESULT(-2140979195i32);
+pub const PEER_E_PRIVACY_DECLINED: crate::core::HRESULT = crate::core::HRESULT(-2140966908i32);
+pub const PEER_E_RECORD_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2140994815i32);
+pub const PEER_E_SERVICE_NOT_AVAILABLE: crate::core::HRESULT = crate::core::HRESULT(-2140987231i32);
+pub const PEER_E_TIMEOUT: crate::core::HRESULT = crate::core::HRESULT(-2140966907i32);
+pub const PEER_E_TOO_MANY_ATTRIBUTES: crate::core::HRESULT = crate::core::HRESULT(-2140995561i32);
+pub const PEER_E_TOO_MANY_IDENTITIES: crate::core::HRESULT = crate::core::HRESULT(-2140995070i32);
+pub const PEER_E_UNABLE_TO_LISTEN: crate::core::HRESULT = crate::core::HRESULT(-2140987242i32);
+pub const PEER_E_UNSUPPORTED_VERSION: crate::core::HRESULT = crate::core::HRESULT(-2140987248i32);
+pub const PEER_S_ALREADY_A_MEMBER: crate::core::HRESULT = crate::core::HRESULT(6488070i32);
+pub const PEER_S_ALREADY_CONNECTED: crate::core::HRESULT = crate::core::HRESULT(6496256i32);
+pub const PEER_S_GRAPH_DATA_CREATED: crate::core::HRESULT = crate::core::HRESULT(6488065i32);
+pub const PEER_S_NO_CONNECTIVITY: crate::core::HRESULT = crate::core::HRESULT(6488069i32);
+pub const PEER_S_NO_EVENT_DATA: crate::core::HRESULT = crate::core::HRESULT(6488066i32);
+pub const PEER_S_SUBSCRIPTION_EXISTS: crate::core::HRESULT = crate::core::HRESULT(6512640i32);
+pub const PERSIST_E_NOTSELFSIZING: crate::core::HRESULT = crate::core::HRESULT(-2146762741i32);
+pub const PERSIST_E_SIZEDEFINITE: crate::core::HRESULT = crate::core::HRESULT(-2146762743i32);
+pub const PERSIST_E_SIZEINDEFINITE: crate::core::HRESULT = crate::core::HRESULT(-2146762742i32);
+pub const PLA_E_CABAPI_FAILURE: crate::core::HRESULT = crate::core::HRESULT(-2144337645i32);
+pub const PLA_E_CONFLICT_INCL_EXCL_API: crate::core::HRESULT = crate::core::HRESULT(-2144337659i32);
+pub const PLA_E_CREDENTIALS_REQUIRED: crate::core::HRESULT = crate::core::HRESULT(-2144337661i32);
+pub const PLA_E_DCS_ALREADY_EXISTS: crate::core::HRESULT = crate::core::HRESULT(-2144337737i32);
+pub const PLA_E_DCS_IN_USE: crate::core::HRESULT = crate::core::HRESULT(-2144337750i32);
+pub const PLA_E_DCS_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2144337918i32);
+pub const PLA_E_DCS_NOT_RUNNING: crate::core::HRESULT = crate::core::HRESULT(-2144337660i32);
+pub const PLA_E_DCS_SINGLETON_REQUIRED: crate::core::HRESULT = crate::core::HRESULT(-2144337662i32);
+pub const PLA_E_DCS_START_WAIT_TIMEOUT: crate::core::HRESULT = crate::core::HRESULT(-2144337654i32);
+pub const PLA_E_DC_ALREADY_EXISTS: crate::core::HRESULT = crate::core::HRESULT(-2144337655i32);
+pub const PLA_E_DC_START_WAIT_TIMEOUT: crate::core::HRESULT = crate::core::HRESULT(-2144337653i32);
+pub const PLA_E_EXE_ALREADY_CONFIGURED: crate::core::HRESULT = crate::core::HRESULT(-2144337657i32);
+pub const PLA_E_EXE_FULL_PATH_REQUIRED: crate::core::HRESULT = crate::core::HRESULT(-2144337650i32);
+pub const PLA_E_EXE_PATH_NOT_VALID: crate::core::HRESULT = crate::core::HRESULT(-2144337656i32);
+pub const PLA_E_INVALID_SESSION_NAME: crate::core::HRESULT = crate::core::HRESULT(-2144337649i32);
+pub const PLA_E_NETWORK_EXE_NOT_VALID: crate::core::HRESULT = crate::core::HRESULT(-2144337658i32);
+pub const PLA_E_NO_DUPLICATES: crate::core::HRESULT = crate::core::HRESULT(-2144337651i32);
+pub const PLA_E_NO_MIN_DISK: crate::core::HRESULT = crate::core::HRESULT(-2144337808i32);
+pub const PLA_E_PLA_CHANNEL_NOT_ENABLED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144337648i32);
+pub const PLA_E_PROPERTY_CONFLICT: crate::core::HRESULT = crate::core::HRESULT(-2144337663i32);
+pub const PLA_E_REPORT_WAIT_TIMEOUT: crate::core::HRESULT = crate::core::HRESULT(-2144337652i32);
+pub const PLA_E_RULES_MANAGER_FAILED: crate::core::HRESULT = crate::core::HRESULT(-2144337646i32);
+pub const PLA_E_TASKSCHED_CHANNEL_NOT_ENABLED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144337647i32);
+pub const PLA_E_TOO_MANY_FOLDERS: crate::core::HRESULT = crate::core::HRESULT(-2144337851i32);
+pub const PLA_S_PROPERTY_IGNORED: crate::core::HRESULT = crate::core::HRESULT(3145984i32);
 pub struct POINT {
     pub x: i32,
     pub y: i32,
@@ -4241,7 +3905,7 @@ impl ::core::cmp::PartialEq for POINTS {
     }
 }
 impl ::core::cmp::Eq for POINTS {}
-pub const PRESENTATION_ERROR_LOST: ::win32::core::HRESULT = ::win32::core::HRESULT(-2004811775i32);
+pub const PRESENTATION_ERROR_LOST: crate::core::HRESULT = crate::core::HRESULT(-2004811775i32);
 pub type PROC = ::core::option::Option<unsafe extern "system" fn() -> PtrDiffRepr>;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct PSID(pub PtrDiffRepr);
@@ -4266,92 +3930,74 @@ impl ::core::fmt::Debug for PSID {
         f.debug_tuple("PSID").field(&self.0).finish()
     }
 }
-pub const PSINK_E_INDEX_ONLY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215471i32);
-pub const PSINK_E_LARGE_ATTACHMENT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215470i32);
-pub const PSINK_E_QUERY_ONLY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215472i32);
-pub const PSINK_S_LARGE_WORD: ::win32::core::HRESULT = ::win32::core::HRESULT(268179i32);
-pub const QPARSE_E_EXPECTING_BRACE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215770i32);
-pub const QPARSE_E_EXPECTING_COMMA: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215759i32);
-pub const QPARSE_E_EXPECTING_CURRENCY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147215772i32);
-pub const QPARSE_E_EXPECTING_DATE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215773i32);
-pub const QPARSE_E_EXPECTING_EOS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215760i32);
-pub const QPARSE_E_EXPECTING_GUID: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215771i32);
-pub const QPARSE_E_EXPECTING_INTEGER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147215775i32);
-pub const QPARSE_E_EXPECTING_PAREN: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215769i32);
-pub const QPARSE_E_EXPECTING_PHRASE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147215766i32);
-pub const QPARSE_E_EXPECTING_PROPERTY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147215768i32);
-pub const QPARSE_E_EXPECTING_REAL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215774i32);
-pub const QPARSE_E_EXPECTING_REGEX: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215764i32);
-pub const QPARSE_E_EXPECTING_REGEX_PROPERTY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147215763i32);
-pub const QPARSE_E_INVALID_GROUPING: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147215753i32);
-pub const QPARSE_E_INVALID_LITERAL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215762i32);
-pub const QPARSE_E_INVALID_QUERY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215750i32);
-pub const QPARSE_E_INVALID_RANKMETHOD: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147215749i32);
-pub const QPARSE_E_INVALID_SORT_ORDER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147215755i32);
-pub const QPARSE_E_NOT_YET_IMPLEMENTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147215767i32);
-pub const QPARSE_E_NO_SUCH_PROPERTY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147215761i32);
-pub const QPARSE_E_NO_SUCH_SORT_PROPERTY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147215756i32);
-pub const QPARSE_E_UNEXPECTED_EOS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215758i32);
-pub const QPARSE_E_UNEXPECTED_NOT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215776i32);
-pub const QPARSE_E_UNSUPPORTED_PROPERTY_TYPE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147215765i32);
-pub const QPARSE_E_WEIGHT_OUT_OF_RANGE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147215757i32);
-pub const QPLIST_E_BAD_GUID: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215783i32);
-pub const QPLIST_E_BYREF_USED_WITHOUT_PTRTYPE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147215778i32);
-pub const QPLIST_E_CANT_OPEN_FILE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215791i32);
-pub const QPLIST_E_CANT_SET_PROPERTY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147215781i32);
-pub const QPLIST_E_DUPLICATE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215780i32);
-pub const QPLIST_E_EXPECTING_CLOSE_PAREN: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147215785i32);
-pub const QPLIST_E_EXPECTING_GUID: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215784i32);
-pub const QPLIST_E_EXPECTING_INTEGER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147215786i32);
-pub const QPLIST_E_EXPECTING_NAME: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215789i32);
-pub const QPLIST_E_EXPECTING_PROP_SPEC: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147215782i32);
-pub const QPLIST_E_EXPECTING_TYPE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215788i32);
-pub const QPLIST_E_READ_ERROR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215790i32);
-pub const QPLIST_E_UNRECOGNIZED_TYPE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147215787i32);
-pub const QPLIST_E_VECTORBYREF_USED_ALONE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147215779i32);
-pub const QPLIST_S_DUPLICATE: ::win32::core::HRESULT = ::win32::core::HRESULT(267897i32);
-pub const QUERY_E_ALLNOISE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215867i32);
-pub const QUERY_E_DIR_ON_REMOVABLE_DRIVE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147215861i32);
-pub const QUERY_E_DUPLICATE_OUTPUT_COLUMN: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147215864i32);
-pub const QUERY_E_FAILED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215872i32);
-pub const QUERY_E_INVALIDCATEGORIZE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147215868i32);
-pub const QUERY_E_INVALIDQUERY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215871i32);
-pub const QUERY_E_INVALIDRESTRICTION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147215870i32);
-pub const QUERY_E_INVALIDSORT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215869i32);
-pub const QUERY_E_INVALID_DIRECTORY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147215862i32);
-pub const QUERY_E_INVALID_OUTPUT_COLUMN: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147215863i32);
-pub const QUERY_E_TIMEDOUT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215865i32);
-pub const QUERY_E_TOOCOMPLEX: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215866i32);
-pub const QUERY_S_NO_QUERY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215860i32);
-pub const QUTIL_E_CANT_CONVERT_VROOT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147215754i32);
-pub const QUTIL_E_INVALID_CODEPAGE: ::win32::core::HRESULT = ::win32::core::HRESULT(-1073473928i32);
+pub const PSINK_E_INDEX_ONLY: crate::core::HRESULT = crate::core::HRESULT(-2147215471i32);
+pub const PSINK_E_LARGE_ATTACHMENT: crate::core::HRESULT = crate::core::HRESULT(-2147215470i32);
+pub const PSINK_E_QUERY_ONLY: crate::core::HRESULT = crate::core::HRESULT(-2147215472i32);
+pub const PSINK_S_LARGE_WORD: crate::core::HRESULT = crate::core::HRESULT(268179i32);
+pub const QPARSE_E_EXPECTING_BRACE: crate::core::HRESULT = crate::core::HRESULT(-2147215770i32);
+pub const QPARSE_E_EXPECTING_COMMA: crate::core::HRESULT = crate::core::HRESULT(-2147215759i32);
+pub const QPARSE_E_EXPECTING_CURRENCY: crate::core::HRESULT = crate::core::HRESULT(-2147215772i32);
+pub const QPARSE_E_EXPECTING_DATE: crate::core::HRESULT = crate::core::HRESULT(-2147215773i32);
+pub const QPARSE_E_EXPECTING_EOS: crate::core::HRESULT = crate::core::HRESULT(-2147215760i32);
+pub const QPARSE_E_EXPECTING_GUID: crate::core::HRESULT = crate::core::HRESULT(-2147215771i32);
+pub const QPARSE_E_EXPECTING_INTEGER: crate::core::HRESULT = crate::core::HRESULT(-2147215775i32);
+pub const QPARSE_E_EXPECTING_PAREN: crate::core::HRESULT = crate::core::HRESULT(-2147215769i32);
+pub const QPARSE_E_EXPECTING_PHRASE: crate::core::HRESULT = crate::core::HRESULT(-2147215766i32);
+pub const QPARSE_E_EXPECTING_PROPERTY: crate::core::HRESULT = crate::core::HRESULT(-2147215768i32);
+pub const QPARSE_E_EXPECTING_REAL: crate::core::HRESULT = crate::core::HRESULT(-2147215774i32);
+pub const QPARSE_E_EXPECTING_REGEX: crate::core::HRESULT = crate::core::HRESULT(-2147215764i32);
+pub const QPARSE_E_EXPECTING_REGEX_PROPERTY: crate::core::HRESULT =
+    crate::core::HRESULT(-2147215763i32);
+pub const QPARSE_E_INVALID_GROUPING: crate::core::HRESULT = crate::core::HRESULT(-2147215753i32);
+pub const QPARSE_E_INVALID_LITERAL: crate::core::HRESULT = crate::core::HRESULT(-2147215762i32);
+pub const QPARSE_E_INVALID_QUERY: crate::core::HRESULT = crate::core::HRESULT(-2147215750i32);
+pub const QPARSE_E_INVALID_RANKMETHOD: crate::core::HRESULT = crate::core::HRESULT(-2147215749i32);
+pub const QPARSE_E_INVALID_SORT_ORDER: crate::core::HRESULT = crate::core::HRESULT(-2147215755i32);
+pub const QPARSE_E_NOT_YET_IMPLEMENTED: crate::core::HRESULT = crate::core::HRESULT(-2147215767i32);
+pub const QPARSE_E_NO_SUCH_PROPERTY: crate::core::HRESULT = crate::core::HRESULT(-2147215761i32);
+pub const QPARSE_E_NO_SUCH_SORT_PROPERTY: crate::core::HRESULT =
+    crate::core::HRESULT(-2147215756i32);
+pub const QPARSE_E_UNEXPECTED_EOS: crate::core::HRESULT = crate::core::HRESULT(-2147215758i32);
+pub const QPARSE_E_UNEXPECTED_NOT: crate::core::HRESULT = crate::core::HRESULT(-2147215776i32);
+pub const QPARSE_E_UNSUPPORTED_PROPERTY_TYPE: crate::core::HRESULT =
+    crate::core::HRESULT(-2147215765i32);
+pub const QPARSE_E_WEIGHT_OUT_OF_RANGE: crate::core::HRESULT = crate::core::HRESULT(-2147215757i32);
+pub const QPLIST_E_BAD_GUID: crate::core::HRESULT = crate::core::HRESULT(-2147215783i32);
+pub const QPLIST_E_BYREF_USED_WITHOUT_PTRTYPE: crate::core::HRESULT =
+    crate::core::HRESULT(-2147215778i32);
+pub const QPLIST_E_CANT_OPEN_FILE: crate::core::HRESULT = crate::core::HRESULT(-2147215791i32);
+pub const QPLIST_E_CANT_SET_PROPERTY: crate::core::HRESULT = crate::core::HRESULT(-2147215781i32);
+pub const QPLIST_E_DUPLICATE: crate::core::HRESULT = crate::core::HRESULT(-2147215780i32);
+pub const QPLIST_E_EXPECTING_CLOSE_PAREN: crate::core::HRESULT =
+    crate::core::HRESULT(-2147215785i32);
+pub const QPLIST_E_EXPECTING_GUID: crate::core::HRESULT = crate::core::HRESULT(-2147215784i32);
+pub const QPLIST_E_EXPECTING_INTEGER: crate::core::HRESULT = crate::core::HRESULT(-2147215786i32);
+pub const QPLIST_E_EXPECTING_NAME: crate::core::HRESULT = crate::core::HRESULT(-2147215789i32);
+pub const QPLIST_E_EXPECTING_PROP_SPEC: crate::core::HRESULT = crate::core::HRESULT(-2147215782i32);
+pub const QPLIST_E_EXPECTING_TYPE: crate::core::HRESULT = crate::core::HRESULT(-2147215788i32);
+pub const QPLIST_E_READ_ERROR: crate::core::HRESULT = crate::core::HRESULT(-2147215790i32);
+pub const QPLIST_E_UNRECOGNIZED_TYPE: crate::core::HRESULT = crate::core::HRESULT(-2147215787i32);
+pub const QPLIST_E_VECTORBYREF_USED_ALONE: crate::core::HRESULT =
+    crate::core::HRESULT(-2147215779i32);
+pub const QPLIST_S_DUPLICATE: crate::core::HRESULT = crate::core::HRESULT(267897i32);
+pub const QUERY_E_ALLNOISE: crate::core::HRESULT = crate::core::HRESULT(-2147215867i32);
+pub const QUERY_E_DIR_ON_REMOVABLE_DRIVE: crate::core::HRESULT =
+    crate::core::HRESULT(-2147215861i32);
+pub const QUERY_E_DUPLICATE_OUTPUT_COLUMN: crate::core::HRESULT =
+    crate::core::HRESULT(-2147215864i32);
+pub const QUERY_E_FAILED: crate::core::HRESULT = crate::core::HRESULT(-2147215872i32);
+pub const QUERY_E_INVALIDCATEGORIZE: crate::core::HRESULT = crate::core::HRESULT(-2147215868i32);
+pub const QUERY_E_INVALIDQUERY: crate::core::HRESULT = crate::core::HRESULT(-2147215871i32);
+pub const QUERY_E_INVALIDRESTRICTION: crate::core::HRESULT = crate::core::HRESULT(-2147215870i32);
+pub const QUERY_E_INVALIDSORT: crate::core::HRESULT = crate::core::HRESULT(-2147215869i32);
+pub const QUERY_E_INVALID_DIRECTORY: crate::core::HRESULT = crate::core::HRESULT(-2147215862i32);
+pub const QUERY_E_INVALID_OUTPUT_COLUMN: crate::core::HRESULT =
+    crate::core::HRESULT(-2147215863i32);
+pub const QUERY_E_TIMEDOUT: crate::core::HRESULT = crate::core::HRESULT(-2147215865i32);
+pub const QUERY_E_TOOCOMPLEX: crate::core::HRESULT = crate::core::HRESULT(-2147215866i32);
+pub const QUERY_S_NO_QUERY: crate::core::HRESULT = crate::core::HRESULT(-2147215860i32);
+pub const QUTIL_E_CANT_CONVERT_VROOT: crate::core::HRESULT = crate::core::HRESULT(-2147215754i32);
+pub const QUTIL_E_INVALID_CODEPAGE: crate::core::HRESULT = crate::core::HRESULT(-1073473928i32);
 pub struct RECT {
     pub left: i32,
     pub top: i32,
@@ -4414,111 +4060,100 @@ impl ::core::cmp::PartialEq for RECTL {
     }
 }
 impl ::core::cmp::Eq for RECTL {}
-pub const REGDB_E_BADTHREADINGMODEL: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147221162i32);
-pub const REGDB_E_CLASSNOTREG: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221164i32);
+pub const REGDB_E_BADTHREADINGMODEL: crate::core::HRESULT = crate::core::HRESULT(-2147221162i32);
+pub const REGDB_E_CLASSNOTREG: crate::core::HRESULT = crate::core::HRESULT(-2147221164i32);
 pub const REGDB_E_FIRST: i32 = -2147221168i32;
-pub const REGDB_E_IIDNOTREG: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221163i32);
-pub const REGDB_E_INVALIDVALUE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221165i32);
-pub const REGDB_E_KEYMISSING: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221166i32);
+pub const REGDB_E_IIDNOTREG: crate::core::HRESULT = crate::core::HRESULT(-2147221163i32);
+pub const REGDB_E_INVALIDVALUE: crate::core::HRESULT = crate::core::HRESULT(-2147221165i32);
+pub const REGDB_E_KEYMISSING: crate::core::HRESULT = crate::core::HRESULT(-2147221166i32);
 pub const REGDB_E_LAST: i32 = -2147221153i32;
-pub const REGDB_E_PACKAGEPOLICYVIOLATION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147221161i32);
-pub const REGDB_E_READREGDB: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221168i32);
-pub const REGDB_E_WRITEREGDB: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221167i32);
+pub const REGDB_E_PACKAGEPOLICYVIOLATION: crate::core::HRESULT =
+    crate::core::HRESULT(-2147221161i32);
+pub const REGDB_E_READREGDB: crate::core::HRESULT = crate::core::HRESULT(-2147221168i32);
+pub const REGDB_E_WRITEREGDB: crate::core::HRESULT = crate::core::HRESULT(-2147221167i32);
 pub const REGDB_S_FIRST: i32 = 262480i32;
 pub const REGDB_S_LAST: i32 = 262495i32;
 pub const ROUTEBASE: u32 = 900u32;
 pub const ROUTEBASEEND: u32 = 957u32;
-pub const RO_E_BLOCKED_CROSS_ASTA_CALL: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147483617i32);
-pub const RO_E_CANNOT_ACTIVATE_FULL_TRUST_SERVER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147483616i32);
-pub const RO_E_CANNOT_ACTIVATE_UNIVERSAL_APPLICATION_SERVER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147483615i32);
-pub const RO_E_CHANGE_NOTIFICATION_IN_PROGRESS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147483627i32);
-pub const RO_E_CLOSED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147483629i32);
-pub const RO_E_COMMITTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147483618i32);
-pub const RO_E_ERROR_STRING_NOT_FOUND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147483626i32);
-pub const RO_E_EXCLUSIVE_WRITE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147483628i32);
-pub const RO_E_INVALID_METADATA_FILE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147483630i32);
-pub const RO_E_METADATA_INVALID_TYPE_FORMAT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147483631i32);
-pub const RO_E_METADATA_NAME_IS_NAMESPACE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147483632i32);
-pub const RO_E_METADATA_NAME_NOT_FOUND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147483633i32);
-pub const RO_E_MUST_BE_AGILE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147483620i32);
-pub const RO_E_UNSUPPORTED_FROM_MTA: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147483619i32);
-pub const RPC_E_ACCESS_DENIED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147417829i32);
-pub const RPC_E_ATTEMPTED_MULTITHREAD: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147417854i32);
-pub const RPC_E_CALL_CANCELED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147418110i32);
-pub const RPC_E_CALL_COMPLETE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147417833i32);
-pub const RPC_E_CALL_REJECTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147418111i32);
-pub const RPC_E_CANTCALLOUT_AGAIN: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147418095i32);
-pub const RPC_E_CANTCALLOUT_INASYNCCALL: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147418108i32);
-pub const RPC_E_CANTCALLOUT_INEXTERNALCALL: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147418107i32);
-pub const RPC_E_CANTCALLOUT_ININPUTSYNCCALL: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147417843i32);
-pub const RPC_E_CANTPOST_INSENDCALL: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147418109i32);
-pub const RPC_E_CANTTRANSMIT_CALL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147418102i32);
-pub const RPC_E_CHANGED_MODE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147417850i32);
-pub const RPC_E_CLIENT_CANTMARSHAL_DATA: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147418101i32);
-pub const RPC_E_CLIENT_CANTUNMARSHAL_DATA: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147418100i32);
-pub const RPC_E_CLIENT_DIED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147418104i32);
-pub const RPC_E_CONNECTION_TERMINATED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147418106i32);
-pub const RPC_E_DISCONNECTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147417848i32);
-pub const RPC_E_FAULT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147417852i32);
-pub const RPC_E_FULLSIC_REQUIRED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147417823i32);
-pub const RPC_E_INVALIDMETHOD: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147417849i32);
-pub const RPC_E_INVALID_CALLDATA: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147417844i32);
-pub const RPC_E_INVALID_DATA: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147418097i32);
-pub const RPC_E_INVALID_DATAPACKET: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147418103i32);
-pub const RPC_E_INVALID_EXTENSION: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147417838i32);
-pub const RPC_E_INVALID_HEADER: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147417839i32);
-pub const RPC_E_INVALID_IPID: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147417837i32);
-pub const RPC_E_INVALID_OBJECT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147417836i32);
-pub const RPC_E_INVALID_OBJREF: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147417827i32);
-pub const RPC_E_INVALID_PARAMETER: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147418096i32);
-pub const RPC_E_INVALID_STD_NAME: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147417822i32);
-pub const RPC_E_NOT_REGISTERED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147417853i32);
-pub const RPC_E_NO_CONTEXT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147417826i32);
-pub const RPC_E_NO_GOOD_SECURITY_PACKAGES: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147417830i32);
-pub const RPC_E_NO_SYNC: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147417824i32);
-pub const RPC_E_OUT_OF_RESOURCES: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147417855i32);
-pub const RPC_E_REMOTE_DISABLED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147417828i32);
-pub const RPC_E_RETRY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147417847i32);
-pub const RPC_E_SERVERCALL_REJECTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147417845i32);
-pub const RPC_E_SERVERCALL_RETRYLATER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147417846i32);
-pub const RPC_E_SERVERFAULT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147417851i32);
-pub const RPC_E_SERVER_CANTMARSHAL_DATA: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147418099i32);
-pub const RPC_E_SERVER_CANTUNMARSHAL_DATA: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147418098i32);
-pub const RPC_E_SERVER_DIED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147418105i32);
-pub const RPC_E_SERVER_DIED_DNE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147418094i32);
-pub const RPC_E_SYS_CALL_FAILED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147417856i32);
-pub const RPC_E_THREAD_NOT_INIT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147417841i32);
-pub const RPC_E_TIMEOUT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147417825i32);
-pub const RPC_E_TOO_LATE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147417831i32);
-pub const RPC_E_UNEXPECTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147352577i32);
-pub const RPC_E_UNSECURE_CALL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147417832i32);
-pub const RPC_E_VERSION_MISMATCH: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147417840i32);
-pub const RPC_E_WRONG_THREAD: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147417842i32);
+pub const RO_E_BLOCKED_CROSS_ASTA_CALL: crate::core::HRESULT = crate::core::HRESULT(-2147483617i32);
+pub const RO_E_CANNOT_ACTIVATE_FULL_TRUST_SERVER: crate::core::HRESULT =
+    crate::core::HRESULT(-2147483616i32);
+pub const RO_E_CANNOT_ACTIVATE_UNIVERSAL_APPLICATION_SERVER: crate::core::HRESULT =
+    crate::core::HRESULT(-2147483615i32);
+pub const RO_E_CHANGE_NOTIFICATION_IN_PROGRESS: crate::core::HRESULT =
+    crate::core::HRESULT(-2147483627i32);
+pub const RO_E_CLOSED: crate::core::HRESULT = crate::core::HRESULT(-2147483629i32);
+pub const RO_E_COMMITTED: crate::core::HRESULT = crate::core::HRESULT(-2147483618i32);
+pub const RO_E_ERROR_STRING_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2147483626i32);
+pub const RO_E_EXCLUSIVE_WRITE: crate::core::HRESULT = crate::core::HRESULT(-2147483628i32);
+pub const RO_E_INVALID_METADATA_FILE: crate::core::HRESULT = crate::core::HRESULT(-2147483630i32);
+pub const RO_E_METADATA_INVALID_TYPE_FORMAT: crate::core::HRESULT =
+    crate::core::HRESULT(-2147483631i32);
+pub const RO_E_METADATA_NAME_IS_NAMESPACE: crate::core::HRESULT =
+    crate::core::HRESULT(-2147483632i32);
+pub const RO_E_METADATA_NAME_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2147483633i32);
+pub const RO_E_MUST_BE_AGILE: crate::core::HRESULT = crate::core::HRESULT(-2147483620i32);
+pub const RO_E_UNSUPPORTED_FROM_MTA: crate::core::HRESULT = crate::core::HRESULT(-2147483619i32);
+pub const RPC_E_ACCESS_DENIED: crate::core::HRESULT = crate::core::HRESULT(-2147417829i32);
+pub const RPC_E_ATTEMPTED_MULTITHREAD: crate::core::HRESULT = crate::core::HRESULT(-2147417854i32);
+pub const RPC_E_CALL_CANCELED: crate::core::HRESULT = crate::core::HRESULT(-2147418110i32);
+pub const RPC_E_CALL_COMPLETE: crate::core::HRESULT = crate::core::HRESULT(-2147417833i32);
+pub const RPC_E_CALL_REJECTED: crate::core::HRESULT = crate::core::HRESULT(-2147418111i32);
+pub const RPC_E_CANTCALLOUT_AGAIN: crate::core::HRESULT = crate::core::HRESULT(-2147418095i32);
+pub const RPC_E_CANTCALLOUT_INASYNCCALL: crate::core::HRESULT =
+    crate::core::HRESULT(-2147418108i32);
+pub const RPC_E_CANTCALLOUT_INEXTERNALCALL: crate::core::HRESULT =
+    crate::core::HRESULT(-2147418107i32);
+pub const RPC_E_CANTCALLOUT_ININPUTSYNCCALL: crate::core::HRESULT =
+    crate::core::HRESULT(-2147417843i32);
+pub const RPC_E_CANTPOST_INSENDCALL: crate::core::HRESULT = crate::core::HRESULT(-2147418109i32);
+pub const RPC_E_CANTTRANSMIT_CALL: crate::core::HRESULT = crate::core::HRESULT(-2147418102i32);
+pub const RPC_E_CHANGED_MODE: crate::core::HRESULT = crate::core::HRESULT(-2147417850i32);
+pub const RPC_E_CLIENT_CANTMARSHAL_DATA: crate::core::HRESULT =
+    crate::core::HRESULT(-2147418101i32);
+pub const RPC_E_CLIENT_CANTUNMARSHAL_DATA: crate::core::HRESULT =
+    crate::core::HRESULT(-2147418100i32);
+pub const RPC_E_CLIENT_DIED: crate::core::HRESULT = crate::core::HRESULT(-2147418104i32);
+pub const RPC_E_CONNECTION_TERMINATED: crate::core::HRESULT = crate::core::HRESULT(-2147418106i32);
+pub const RPC_E_DISCONNECTED: crate::core::HRESULT = crate::core::HRESULT(-2147417848i32);
+pub const RPC_E_FAULT: crate::core::HRESULT = crate::core::HRESULT(-2147417852i32);
+pub const RPC_E_FULLSIC_REQUIRED: crate::core::HRESULT = crate::core::HRESULT(-2147417823i32);
+pub const RPC_E_INVALIDMETHOD: crate::core::HRESULT = crate::core::HRESULT(-2147417849i32);
+pub const RPC_E_INVALID_CALLDATA: crate::core::HRESULT = crate::core::HRESULT(-2147417844i32);
+pub const RPC_E_INVALID_DATA: crate::core::HRESULT = crate::core::HRESULT(-2147418097i32);
+pub const RPC_E_INVALID_DATAPACKET: crate::core::HRESULT = crate::core::HRESULT(-2147418103i32);
+pub const RPC_E_INVALID_EXTENSION: crate::core::HRESULT = crate::core::HRESULT(-2147417838i32);
+pub const RPC_E_INVALID_HEADER: crate::core::HRESULT = crate::core::HRESULT(-2147417839i32);
+pub const RPC_E_INVALID_IPID: crate::core::HRESULT = crate::core::HRESULT(-2147417837i32);
+pub const RPC_E_INVALID_OBJECT: crate::core::HRESULT = crate::core::HRESULT(-2147417836i32);
+pub const RPC_E_INVALID_OBJREF: crate::core::HRESULT = crate::core::HRESULT(-2147417827i32);
+pub const RPC_E_INVALID_PARAMETER: crate::core::HRESULT = crate::core::HRESULT(-2147418096i32);
+pub const RPC_E_INVALID_STD_NAME: crate::core::HRESULT = crate::core::HRESULT(-2147417822i32);
+pub const RPC_E_NOT_REGISTERED: crate::core::HRESULT = crate::core::HRESULT(-2147417853i32);
+pub const RPC_E_NO_CONTEXT: crate::core::HRESULT = crate::core::HRESULT(-2147417826i32);
+pub const RPC_E_NO_GOOD_SECURITY_PACKAGES: crate::core::HRESULT =
+    crate::core::HRESULT(-2147417830i32);
+pub const RPC_E_NO_SYNC: crate::core::HRESULT = crate::core::HRESULT(-2147417824i32);
+pub const RPC_E_OUT_OF_RESOURCES: crate::core::HRESULT = crate::core::HRESULT(-2147417855i32);
+pub const RPC_E_REMOTE_DISABLED: crate::core::HRESULT = crate::core::HRESULT(-2147417828i32);
+pub const RPC_E_RETRY: crate::core::HRESULT = crate::core::HRESULT(-2147417847i32);
+pub const RPC_E_SERVERCALL_REJECTED: crate::core::HRESULT = crate::core::HRESULT(-2147417845i32);
+pub const RPC_E_SERVERCALL_RETRYLATER: crate::core::HRESULT = crate::core::HRESULT(-2147417846i32);
+pub const RPC_E_SERVERFAULT: crate::core::HRESULT = crate::core::HRESULT(-2147417851i32);
+pub const RPC_E_SERVER_CANTMARSHAL_DATA: crate::core::HRESULT =
+    crate::core::HRESULT(-2147418099i32);
+pub const RPC_E_SERVER_CANTUNMARSHAL_DATA: crate::core::HRESULT =
+    crate::core::HRESULT(-2147418098i32);
+pub const RPC_E_SERVER_DIED: crate::core::HRESULT = crate::core::HRESULT(-2147418105i32);
+pub const RPC_E_SERVER_DIED_DNE: crate::core::HRESULT = crate::core::HRESULT(-2147418094i32);
+pub const RPC_E_SYS_CALL_FAILED: crate::core::HRESULT = crate::core::HRESULT(-2147417856i32);
+pub const RPC_E_THREAD_NOT_INIT: crate::core::HRESULT = crate::core::HRESULT(-2147417841i32);
+pub const RPC_E_TIMEOUT: crate::core::HRESULT = crate::core::HRESULT(-2147417825i32);
+pub const RPC_E_TOO_LATE: crate::core::HRESULT = crate::core::HRESULT(-2147417831i32);
+pub const RPC_E_UNEXPECTED: crate::core::HRESULT = crate::core::HRESULT(-2147352577i32);
+pub const RPC_E_UNSECURE_CALL: crate::core::HRESULT = crate::core::HRESULT(-2147417832i32);
+pub const RPC_E_VERSION_MISMATCH: crate::core::HRESULT = crate::core::HRESULT(-2147417840i32);
+pub const RPC_E_WRONG_THREAD: crate::core::HRESULT = crate::core::HRESULT(-2147417842i32);
 pub const RPC_NT_ADDRESS_ERROR: NTSTATUS = NTSTATUS(-1073610683i32);
 pub const RPC_NT_ALREADY_LISTENING: NTSTATUS = NTSTATUS(-1073610738i32);
 pub const RPC_NT_ALREADY_REGISTERED: NTSTATUS = NTSTATUS(-1073610740i32);
@@ -4625,8 +4260,8 @@ pub const RPC_NT_WRONG_KIND_OF_BINDING: NTSTATUS = NTSTATUS(-1073610750i32);
 pub const RPC_NT_WRONG_PIPE_VERSION: NTSTATUS = NTSTATUS(-1073545122i32);
 pub const RPC_NT_WRONG_STUB_VERSION: NTSTATUS = NTSTATUS(-1073545125i32);
 pub const RPC_NT_ZERO_DIVIDE: NTSTATUS = NTSTATUS(-1073610684i32);
-pub const RPC_S_CALLPENDING: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147417835i32);
-pub const RPC_S_WAITONTIMER: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147417834i32);
+pub const RPC_S_CALLPENDING: crate::core::HRESULT = crate::core::HRESULT(-2147417835i32);
+pub const RPC_S_WAITONTIMER: crate::core::HRESULT = crate::core::HRESULT(-2147417834i32);
 pub const RPC_X_BAD_STUB_DATA: i32 = 1783i32;
 pub const RPC_X_BYTE_COUNT_TOO_SMALL: i32 = 1782i32;
 pub const RPC_X_ENUM_VALUE_OUT_OF_RANGE: i32 = 1781i32;
@@ -4647,149 +4282,126 @@ pub const RPC_X_WRONG_ES_VERSION: i32 = 1828i32;
 pub const RPC_X_WRONG_PIPE_ORDER: i32 = 1831i32;
 pub const RPC_X_WRONG_PIPE_VERSION: i32 = 1832i32;
 pub const RPC_X_WRONG_STUB_VERSION: i32 = 1829i32;
-pub const SCARD_E_BAD_SEEK: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146435031i32);
-pub const SCARD_E_CANCELLED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146435070i32);
-pub const SCARD_E_CANT_DISPOSE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146435058i32);
-pub const SCARD_E_CARD_UNSUPPORTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146435044i32);
-pub const SCARD_E_CERTIFICATE_UNAVAILABLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146435027i32);
-pub const SCARD_E_COMM_DATA_LOST: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146435025i32);
-pub const SCARD_E_DIR_NOT_FOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146435037i32);
-pub const SCARD_E_DUPLICATE_READER: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146435045i32);
-pub const SCARD_E_FILE_NOT_FOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146435036i32);
-pub const SCARD_E_ICC_CREATEORDER: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146435039i32);
-pub const SCARD_E_ICC_INSTALLATION: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146435040i32);
-pub const SCARD_E_INSUFFICIENT_BUFFER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146435064i32);
-pub const SCARD_E_INVALID_ATR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146435051i32);
-pub const SCARD_E_INVALID_CHV: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146435030i32);
-pub const SCARD_E_INVALID_HANDLE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146435069i32);
-pub const SCARD_E_INVALID_PARAMETER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146435068i32);
-pub const SCARD_E_INVALID_TARGET: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146435067i32);
-pub const SCARD_E_INVALID_VALUE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146435055i32);
-pub const SCARD_E_NOT_READY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146435056i32);
-pub const SCARD_E_NOT_TRANSACTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146435050i32);
-pub const SCARD_E_NO_ACCESS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146435033i32);
-pub const SCARD_E_NO_DIR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146435035i32);
-pub const SCARD_E_NO_FILE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146435034i32);
-pub const SCARD_E_NO_KEY_CONTAINER: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146435024i32);
-pub const SCARD_E_NO_MEMORY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146435066i32);
-pub const SCARD_E_NO_PIN_CACHE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146435021i32);
-pub const SCARD_E_NO_READERS_AVAILABLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146435026i32);
-pub const SCARD_E_NO_SERVICE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146435043i32);
-pub const SCARD_E_NO_SMARTCARD: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146435060i32);
-pub const SCARD_E_NO_SUCH_CERTIFICATE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146435028i32);
-pub const SCARD_E_PCI_TOO_SMALL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146435047i32);
-pub const SCARD_E_PIN_CACHE_EXPIRED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146435022i32);
-pub const SCARD_E_PROTO_MISMATCH: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146435057i32);
-pub const SCARD_E_READER_UNAVAILABLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146435049i32);
-pub const SCARD_E_READER_UNSUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146435046i32);
-pub const SCARD_E_READ_ONLY_CARD: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146435020i32);
-pub const SCARD_E_SERVER_TOO_BUSY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146435023i32);
-pub const SCARD_E_SERVICE_STOPPED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146435042i32);
-pub const SCARD_E_SHARING_VIOLATION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146435061i32);
-pub const SCARD_E_SYSTEM_CANCELLED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146435054i32);
-pub const SCARD_E_TIMEOUT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146435062i32);
-pub const SCARD_E_UNEXPECTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146435041i32);
-pub const SCARD_E_UNKNOWN_CARD: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146435059i32);
-pub const SCARD_E_UNKNOWN_READER: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146435063i32);
-pub const SCARD_E_UNKNOWN_RES_MNG: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146435029i32);
-pub const SCARD_E_UNSUPPORTED_FEATURE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146435038i32);
-pub const SCARD_E_WRITE_TOO_MANY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146435032i32);
-pub const SCARD_F_COMM_ERROR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146435053i32);
-pub const SCARD_F_INTERNAL_ERROR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146435071i32);
-pub const SCARD_F_UNKNOWN_ERROR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146435052i32);
-pub const SCARD_F_WAITED_TOO_LONG: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146435065i32);
-pub const SCARD_P_SHUTDOWN: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146435048i32);
-pub const SCARD_W_CACHE_ITEM_NOT_FOUND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146434960i32);
-pub const SCARD_W_CACHE_ITEM_STALE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146434959i32);
-pub const SCARD_W_CACHE_ITEM_TOO_BIG: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146434958i32);
-pub const SCARD_W_CANCELLED_BY_USER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146434962i32);
-pub const SCARD_W_CARD_NOT_AUTHENTICATED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146434961i32);
-pub const SCARD_W_CHV_BLOCKED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146434964i32);
-pub const SCARD_W_EOF: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146434963i32);
-pub const SCARD_W_REMOVED_CARD: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146434967i32);
-pub const SCARD_W_RESET_CARD: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146434968i32);
-pub const SCARD_W_SECURITY_VIOLATION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146434966i32);
-pub const SCARD_W_UNPOWERED_CARD: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146434969i32);
-pub const SCARD_W_UNRESPONSIVE_CARD: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146434970i32);
-pub const SCARD_W_UNSUPPORTED_CARD: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146434971i32);
-pub const SCARD_W_WRONG_CHV: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146434965i32);
-pub const SCHED_E_ACCOUNT_DBASE_CORRUPT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147216623i32);
-pub const SCHED_E_ACCOUNT_INFORMATION_NOT_SET: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147216625i32);
-pub const SCHED_E_ACCOUNT_NAME_NOT_FOUND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147216624i32);
-pub const SCHED_E_ALREADY_RUNNING: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147216609i32);
-pub const SCHED_E_CANNOT_OPEN_TASK: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147216627i32);
-pub const SCHED_E_DEPRECATED_FEATURE_USED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147216592i32);
-pub const SCHED_E_INVALIDVALUE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147216616i32);
-pub const SCHED_E_INVALID_TASK: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147216626i32);
-pub const SCHED_E_INVALID_TASK_HASH: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147216607i32);
-pub const SCHED_E_MALFORMEDXML: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147216614i32);
-pub const SCHED_E_MISSINGNODE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147216615i32);
-pub const SCHED_E_NAMESPACE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147216617i32);
-pub const SCHED_E_NO_SECURITY_SERVICES: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147216622i32);
-pub const SCHED_E_PAST_END_BOUNDARY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147216610i32);
-pub const SCHED_E_SERVICE_NOT_AVAILABLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147216606i32);
-pub const SCHED_E_SERVICE_NOT_INSTALLED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147216628i32);
+pub const SCARD_E_BAD_SEEK: crate::core::HRESULT = crate::core::HRESULT(-2146435031i32);
+pub const SCARD_E_CANCELLED: crate::core::HRESULT = crate::core::HRESULT(-2146435070i32);
+pub const SCARD_E_CANT_DISPOSE: crate::core::HRESULT = crate::core::HRESULT(-2146435058i32);
+pub const SCARD_E_CARD_UNSUPPORTED: crate::core::HRESULT = crate::core::HRESULT(-2146435044i32);
+pub const SCARD_E_CERTIFICATE_UNAVAILABLE: crate::core::HRESULT =
+    crate::core::HRESULT(-2146435027i32);
+pub const SCARD_E_COMM_DATA_LOST: crate::core::HRESULT = crate::core::HRESULT(-2146435025i32);
+pub const SCARD_E_DIR_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2146435037i32);
+pub const SCARD_E_DUPLICATE_READER: crate::core::HRESULT = crate::core::HRESULT(-2146435045i32);
+pub const SCARD_E_FILE_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2146435036i32);
+pub const SCARD_E_ICC_CREATEORDER: crate::core::HRESULT = crate::core::HRESULT(-2146435039i32);
+pub const SCARD_E_ICC_INSTALLATION: crate::core::HRESULT = crate::core::HRESULT(-2146435040i32);
+pub const SCARD_E_INSUFFICIENT_BUFFER: crate::core::HRESULT = crate::core::HRESULT(-2146435064i32);
+pub const SCARD_E_INVALID_ATR: crate::core::HRESULT = crate::core::HRESULT(-2146435051i32);
+pub const SCARD_E_INVALID_CHV: crate::core::HRESULT = crate::core::HRESULT(-2146435030i32);
+pub const SCARD_E_INVALID_HANDLE: crate::core::HRESULT = crate::core::HRESULT(-2146435069i32);
+pub const SCARD_E_INVALID_PARAMETER: crate::core::HRESULT = crate::core::HRESULT(-2146435068i32);
+pub const SCARD_E_INVALID_TARGET: crate::core::HRESULT = crate::core::HRESULT(-2146435067i32);
+pub const SCARD_E_INVALID_VALUE: crate::core::HRESULT = crate::core::HRESULT(-2146435055i32);
+pub const SCARD_E_NOT_READY: crate::core::HRESULT = crate::core::HRESULT(-2146435056i32);
+pub const SCARD_E_NOT_TRANSACTED: crate::core::HRESULT = crate::core::HRESULT(-2146435050i32);
+pub const SCARD_E_NO_ACCESS: crate::core::HRESULT = crate::core::HRESULT(-2146435033i32);
+pub const SCARD_E_NO_DIR: crate::core::HRESULT = crate::core::HRESULT(-2146435035i32);
+pub const SCARD_E_NO_FILE: crate::core::HRESULT = crate::core::HRESULT(-2146435034i32);
+pub const SCARD_E_NO_KEY_CONTAINER: crate::core::HRESULT = crate::core::HRESULT(-2146435024i32);
+pub const SCARD_E_NO_MEMORY: crate::core::HRESULT = crate::core::HRESULT(-2146435066i32);
+pub const SCARD_E_NO_PIN_CACHE: crate::core::HRESULT = crate::core::HRESULT(-2146435021i32);
+pub const SCARD_E_NO_READERS_AVAILABLE: crate::core::HRESULT = crate::core::HRESULT(-2146435026i32);
+pub const SCARD_E_NO_SERVICE: crate::core::HRESULT = crate::core::HRESULT(-2146435043i32);
+pub const SCARD_E_NO_SMARTCARD: crate::core::HRESULT = crate::core::HRESULT(-2146435060i32);
+pub const SCARD_E_NO_SUCH_CERTIFICATE: crate::core::HRESULT = crate::core::HRESULT(-2146435028i32);
+pub const SCARD_E_PCI_TOO_SMALL: crate::core::HRESULT = crate::core::HRESULT(-2146435047i32);
+pub const SCARD_E_PIN_CACHE_EXPIRED: crate::core::HRESULT = crate::core::HRESULT(-2146435022i32);
+pub const SCARD_E_PROTO_MISMATCH: crate::core::HRESULT = crate::core::HRESULT(-2146435057i32);
+pub const SCARD_E_READER_UNAVAILABLE: crate::core::HRESULT = crate::core::HRESULT(-2146435049i32);
+pub const SCARD_E_READER_UNSUPPORTED: crate::core::HRESULT = crate::core::HRESULT(-2146435046i32);
+pub const SCARD_E_READ_ONLY_CARD: crate::core::HRESULT = crate::core::HRESULT(-2146435020i32);
+pub const SCARD_E_SERVER_TOO_BUSY: crate::core::HRESULT = crate::core::HRESULT(-2146435023i32);
+pub const SCARD_E_SERVICE_STOPPED: crate::core::HRESULT = crate::core::HRESULT(-2146435042i32);
+pub const SCARD_E_SHARING_VIOLATION: crate::core::HRESULT = crate::core::HRESULT(-2146435061i32);
+pub const SCARD_E_SYSTEM_CANCELLED: crate::core::HRESULT = crate::core::HRESULT(-2146435054i32);
+pub const SCARD_E_TIMEOUT: crate::core::HRESULT = crate::core::HRESULT(-2146435062i32);
+pub const SCARD_E_UNEXPECTED: crate::core::HRESULT = crate::core::HRESULT(-2146435041i32);
+pub const SCARD_E_UNKNOWN_CARD: crate::core::HRESULT = crate::core::HRESULT(-2146435059i32);
+pub const SCARD_E_UNKNOWN_READER: crate::core::HRESULT = crate::core::HRESULT(-2146435063i32);
+pub const SCARD_E_UNKNOWN_RES_MNG: crate::core::HRESULT = crate::core::HRESULT(-2146435029i32);
+pub const SCARD_E_UNSUPPORTED_FEATURE: crate::core::HRESULT = crate::core::HRESULT(-2146435038i32);
+pub const SCARD_E_WRITE_TOO_MANY: crate::core::HRESULT = crate::core::HRESULT(-2146435032i32);
+pub const SCARD_F_COMM_ERROR: crate::core::HRESULT = crate::core::HRESULT(-2146435053i32);
+pub const SCARD_F_INTERNAL_ERROR: crate::core::HRESULT = crate::core::HRESULT(-2146435071i32);
+pub const SCARD_F_UNKNOWN_ERROR: crate::core::HRESULT = crate::core::HRESULT(-2146435052i32);
+pub const SCARD_F_WAITED_TOO_LONG: crate::core::HRESULT = crate::core::HRESULT(-2146435065i32);
+pub const SCARD_P_SHUTDOWN: crate::core::HRESULT = crate::core::HRESULT(-2146435048i32);
+pub const SCARD_W_CACHE_ITEM_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2146434960i32);
+pub const SCARD_W_CACHE_ITEM_STALE: crate::core::HRESULT = crate::core::HRESULT(-2146434959i32);
+pub const SCARD_W_CACHE_ITEM_TOO_BIG: crate::core::HRESULT = crate::core::HRESULT(-2146434958i32);
+pub const SCARD_W_CANCELLED_BY_USER: crate::core::HRESULT = crate::core::HRESULT(-2146434962i32);
+pub const SCARD_W_CARD_NOT_AUTHENTICATED: crate::core::HRESULT =
+    crate::core::HRESULT(-2146434961i32);
+pub const SCARD_W_CHV_BLOCKED: crate::core::HRESULT = crate::core::HRESULT(-2146434964i32);
+pub const SCARD_W_EOF: crate::core::HRESULT = crate::core::HRESULT(-2146434963i32);
+pub const SCARD_W_REMOVED_CARD: crate::core::HRESULT = crate::core::HRESULT(-2146434967i32);
+pub const SCARD_W_RESET_CARD: crate::core::HRESULT = crate::core::HRESULT(-2146434968i32);
+pub const SCARD_W_SECURITY_VIOLATION: crate::core::HRESULT = crate::core::HRESULT(-2146434966i32);
+pub const SCARD_W_UNPOWERED_CARD: crate::core::HRESULT = crate::core::HRESULT(-2146434969i32);
+pub const SCARD_W_UNRESPONSIVE_CARD: crate::core::HRESULT = crate::core::HRESULT(-2146434970i32);
+pub const SCARD_W_UNSUPPORTED_CARD: crate::core::HRESULT = crate::core::HRESULT(-2146434971i32);
+pub const SCARD_W_WRONG_CHV: crate::core::HRESULT = crate::core::HRESULT(-2146434965i32);
+pub const SCHED_E_ACCOUNT_DBASE_CORRUPT: crate::core::HRESULT =
+    crate::core::HRESULT(-2147216623i32);
+pub const SCHED_E_ACCOUNT_INFORMATION_NOT_SET: crate::core::HRESULT =
+    crate::core::HRESULT(-2147216625i32);
+pub const SCHED_E_ACCOUNT_NAME_NOT_FOUND: crate::core::HRESULT =
+    crate::core::HRESULT(-2147216624i32);
+pub const SCHED_E_ALREADY_RUNNING: crate::core::HRESULT = crate::core::HRESULT(-2147216609i32);
+pub const SCHED_E_CANNOT_OPEN_TASK: crate::core::HRESULT = crate::core::HRESULT(-2147216627i32);
+pub const SCHED_E_DEPRECATED_FEATURE_USED: crate::core::HRESULT =
+    crate::core::HRESULT(-2147216592i32);
+pub const SCHED_E_INVALIDVALUE: crate::core::HRESULT = crate::core::HRESULT(-2147216616i32);
+pub const SCHED_E_INVALID_TASK: crate::core::HRESULT = crate::core::HRESULT(-2147216626i32);
+pub const SCHED_E_INVALID_TASK_HASH: crate::core::HRESULT = crate::core::HRESULT(-2147216607i32);
+pub const SCHED_E_MALFORMEDXML: crate::core::HRESULT = crate::core::HRESULT(-2147216614i32);
+pub const SCHED_E_MISSINGNODE: crate::core::HRESULT = crate::core::HRESULT(-2147216615i32);
+pub const SCHED_E_NAMESPACE: crate::core::HRESULT = crate::core::HRESULT(-2147216617i32);
+pub const SCHED_E_NO_SECURITY_SERVICES: crate::core::HRESULT = crate::core::HRESULT(-2147216622i32);
+pub const SCHED_E_PAST_END_BOUNDARY: crate::core::HRESULT = crate::core::HRESULT(-2147216610i32);
+pub const SCHED_E_SERVICE_NOT_AVAILABLE: crate::core::HRESULT =
+    crate::core::HRESULT(-2147216606i32);
+pub const SCHED_E_SERVICE_NOT_INSTALLED: crate::core::HRESULT =
+    crate::core::HRESULT(-2147216628i32);
 pub const SCHED_E_SERVICE_NOT_LOCALSYSTEM: i32 = 6200i32;
-pub const SCHED_E_SERVICE_NOT_RUNNING: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147216619i32);
-pub const SCHED_E_SERVICE_TOO_BUSY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147216605i32);
-pub const SCHED_E_START_ON_DEMAND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147216600i32);
-pub const SCHED_E_TASK_ATTEMPTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147216604i32);
-pub const SCHED_E_TASK_DISABLED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147216602i32);
-pub const SCHED_E_TASK_NOT_READY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147216630i32);
-pub const SCHED_E_TASK_NOT_RUNNING: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147216629i32);
-pub const SCHED_E_TASK_NOT_UBPM_COMPAT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147216599i32);
-pub const SCHED_E_TASK_NOT_V1_COMPAT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147216601i32);
-pub const SCHED_E_TOO_MANY_NODES: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147216611i32);
-pub const SCHED_E_TRIGGER_NOT_FOUND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147216631i32);
-pub const SCHED_E_UNEXPECTEDNODE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147216618i32);
-pub const SCHED_E_UNKNOWN_OBJECT_VERSION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147216621i32);
-pub const SCHED_E_UNSUPPORTED_ACCOUNT_OPTION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147216620i32);
-pub const SCHED_E_USER_NOT_LOGGED_ON: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147216608i32);
-pub const SCHED_S_BATCH_LOGON_PROBLEM: ::win32::core::HRESULT = ::win32::core::HRESULT(267036i32);
-pub const SCHED_S_EVENT_TRIGGER: ::win32::core::HRESULT = ::win32::core::HRESULT(267016i32);
-pub const SCHED_S_SOME_TRIGGERS_FAILED: ::win32::core::HRESULT = ::win32::core::HRESULT(267035i32);
-pub const SCHED_S_TASK_DISABLED: ::win32::core::HRESULT = ::win32::core::HRESULT(267010i32);
-pub const SCHED_S_TASK_HAS_NOT_RUN: ::win32::core::HRESULT = ::win32::core::HRESULT(267011i32);
-pub const SCHED_S_TASK_NOT_SCHEDULED: ::win32::core::HRESULT = ::win32::core::HRESULT(267013i32);
-pub const SCHED_S_TASK_NO_MORE_RUNS: ::win32::core::HRESULT = ::win32::core::HRESULT(267012i32);
-pub const SCHED_S_TASK_NO_VALID_TRIGGERS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(267015i32);
-pub const SCHED_S_TASK_QUEUED: ::win32::core::HRESULT = ::win32::core::HRESULT(267045i32);
-pub const SCHED_S_TASK_READY: ::win32::core::HRESULT = ::win32::core::HRESULT(267008i32);
-pub const SCHED_S_TASK_RUNNING: ::win32::core::HRESULT = ::win32::core::HRESULT(267009i32);
-pub const SCHED_S_TASK_TERMINATED: ::win32::core::HRESULT = ::win32::core::HRESULT(267014i32);
+pub const SCHED_E_SERVICE_NOT_RUNNING: crate::core::HRESULT = crate::core::HRESULT(-2147216619i32);
+pub const SCHED_E_SERVICE_TOO_BUSY: crate::core::HRESULT = crate::core::HRESULT(-2147216605i32);
+pub const SCHED_E_START_ON_DEMAND: crate::core::HRESULT = crate::core::HRESULT(-2147216600i32);
+pub const SCHED_E_TASK_ATTEMPTED: crate::core::HRESULT = crate::core::HRESULT(-2147216604i32);
+pub const SCHED_E_TASK_DISABLED: crate::core::HRESULT = crate::core::HRESULT(-2147216602i32);
+pub const SCHED_E_TASK_NOT_READY: crate::core::HRESULT = crate::core::HRESULT(-2147216630i32);
+pub const SCHED_E_TASK_NOT_RUNNING: crate::core::HRESULT = crate::core::HRESULT(-2147216629i32);
+pub const SCHED_E_TASK_NOT_UBPM_COMPAT: crate::core::HRESULT = crate::core::HRESULT(-2147216599i32);
+pub const SCHED_E_TASK_NOT_V1_COMPAT: crate::core::HRESULT = crate::core::HRESULT(-2147216601i32);
+pub const SCHED_E_TOO_MANY_NODES: crate::core::HRESULT = crate::core::HRESULT(-2147216611i32);
+pub const SCHED_E_TRIGGER_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2147216631i32);
+pub const SCHED_E_UNEXPECTEDNODE: crate::core::HRESULT = crate::core::HRESULT(-2147216618i32);
+pub const SCHED_E_UNKNOWN_OBJECT_VERSION: crate::core::HRESULT =
+    crate::core::HRESULT(-2147216621i32);
+pub const SCHED_E_UNSUPPORTED_ACCOUNT_OPTION: crate::core::HRESULT =
+    crate::core::HRESULT(-2147216620i32);
+pub const SCHED_E_USER_NOT_LOGGED_ON: crate::core::HRESULT = crate::core::HRESULT(-2147216608i32);
+pub const SCHED_S_BATCH_LOGON_PROBLEM: crate::core::HRESULT = crate::core::HRESULT(267036i32);
+pub const SCHED_S_EVENT_TRIGGER: crate::core::HRESULT = crate::core::HRESULT(267016i32);
+pub const SCHED_S_SOME_TRIGGERS_FAILED: crate::core::HRESULT = crate::core::HRESULT(267035i32);
+pub const SCHED_S_TASK_DISABLED: crate::core::HRESULT = crate::core::HRESULT(267010i32);
+pub const SCHED_S_TASK_HAS_NOT_RUN: crate::core::HRESULT = crate::core::HRESULT(267011i32);
+pub const SCHED_S_TASK_NOT_SCHEDULED: crate::core::HRESULT = crate::core::HRESULT(267013i32);
+pub const SCHED_S_TASK_NO_MORE_RUNS: crate::core::HRESULT = crate::core::HRESULT(267012i32);
+pub const SCHED_S_TASK_NO_VALID_TRIGGERS: crate::core::HRESULT = crate::core::HRESULT(267015i32);
+pub const SCHED_S_TASK_QUEUED: crate::core::HRESULT = crate::core::HRESULT(267045i32);
+pub const SCHED_S_TASK_READY: crate::core::HRESULT = crate::core::HRESULT(267008i32);
+pub const SCHED_S_TASK_RUNNING: crate::core::HRESULT = crate::core::HRESULT(267009i32);
+pub const SCHED_S_TASK_TERMINATED: crate::core::HRESULT = crate::core::HRESULT(267014i32);
 pub const SDIAG_E_CANCELLED: i32 = -2143551232i32;
 pub const SDIAG_E_CANNOTRUN: i32 = -2143551224i32;
 pub const SDIAG_E_DISABLED: i32 = -2143551226i32;
@@ -4802,137 +4414,112 @@ pub const SDIAG_E_SCRIPT: i32 = -2143551231i32;
 pub const SDIAG_E_TRUST: i32 = -2143551225i32;
 pub const SDIAG_E_VERSION: i32 = -2143551223i32;
 pub const SDIAG_S_CANNOTRUN: i32 = 3932421i32;
-pub const SEARCH_E_NOMONIKER: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215711i32);
-pub const SEARCH_E_NOREGION: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215710i32);
-pub const SEARCH_S_NOMOREHITS: ::win32::core::HRESULT = ::win32::core::HRESULT(267936i32);
-pub const SEC_E_ALGORITHM_MISMATCH: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893007i32);
-pub const SEC_E_APPLICATION_PROTOCOL_MISMATCH: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146892953i32);
-pub const SEC_E_BAD_BINDINGS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146892986i32);
-pub const SEC_E_BAD_PKGID: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893034i32);
-pub const SEC_E_BUFFER_TOO_SMALL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893023i32);
-pub const SEC_E_CANNOT_INSTALL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893049i32);
-pub const SEC_E_CANNOT_PACK: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893047i32);
-pub const SEC_E_CERT_EXPIRED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893016i32);
-pub const SEC_E_CERT_UNKNOWN: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893017i32);
-pub const SEC_E_CERT_WRONG_USAGE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146892983i32);
-pub const SEC_E_CONTEXT_EXPIRED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893033i32);
-pub const SEC_E_CROSSREALM_DELEGATION_FAILURE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146892969i32);
-pub const SEC_E_CRYPTO_SYSTEM_INVALID: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146893001i32);
-pub const SEC_E_DECRYPT_FAILURE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893008i32);
-pub const SEC_E_DELEGATION_POLICY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146892962i32);
-pub const SEC_E_DELEGATION_REQUIRED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146892987i32);
-pub const SEC_E_DOWNGRADE_DETECTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146892976i32);
-pub const SEC_E_ENCRYPT_FAILURE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893015i32);
-pub const SEC_E_EXT_BUFFER_TOO_SMALL: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146892950i32);
-pub const SEC_E_ILLEGAL_MESSAGE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893018i32);
-pub const SEC_E_INCOMPLETE_CREDENTIALS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146893024i32);
-pub const SEC_E_INCOMPLETE_MESSAGE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893032i32);
-pub const SEC_E_INSUFFICIENT_BUFFERS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146892949i32);
-pub const SEC_E_INSUFFICIENT_MEMORY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146893056i32);
-pub const SEC_E_INTERNAL_ERROR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893052i32);
-pub const SEC_E_INVALID_HANDLE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893055i32);
-pub const SEC_E_INVALID_PARAMETER: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146892963i32);
-pub const SEC_E_INVALID_TOKEN: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893048i32);
-pub const SEC_E_INVALID_UPN_NAME: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146892951i32);
-pub const SEC_E_ISSUING_CA_UNTRUSTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146892974i32);
-pub const SEC_E_ISSUING_CA_UNTRUSTED_KDC: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146892967i32);
-pub const SEC_E_KDC_CERT_EXPIRED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146892966i32);
-pub const SEC_E_KDC_CERT_REVOKED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146892965i32);
-pub const SEC_E_KDC_INVALID_REQUEST: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146892992i32);
-pub const SEC_E_KDC_UNABLE_TO_REFER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146892991i32);
-pub const SEC_E_KDC_UNKNOWN_ETYPE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146892990i32);
-pub const SEC_E_LOGON_DENIED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893044i32);
-pub const SEC_E_MAX_REFERRALS_EXCEEDED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146893000i32);
-pub const SEC_E_MESSAGE_ALTERED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893041i32);
-pub const SEC_E_MULTIPLE_ACCOUNTS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146892985i32);
-pub const SEC_E_MUST_BE_KDC: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146892999i32);
-pub const SEC_E_MUTUAL_AUTH_FAILED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146892957i32);
-pub const SEC_E_NOT_OWNER: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893050i32);
+pub const SEARCH_E_NOMONIKER: crate::core::HRESULT = crate::core::HRESULT(-2147215711i32);
+pub const SEARCH_E_NOREGION: crate::core::HRESULT = crate::core::HRESULT(-2147215710i32);
+pub const SEARCH_S_NOMOREHITS: crate::core::HRESULT = crate::core::HRESULT(267936i32);
+pub const SEC_E_ALGORITHM_MISMATCH: crate::core::HRESULT = crate::core::HRESULT(-2146893007i32);
+pub const SEC_E_APPLICATION_PROTOCOL_MISMATCH: crate::core::HRESULT =
+    crate::core::HRESULT(-2146892953i32);
+pub const SEC_E_BAD_BINDINGS: crate::core::HRESULT = crate::core::HRESULT(-2146892986i32);
+pub const SEC_E_BAD_PKGID: crate::core::HRESULT = crate::core::HRESULT(-2146893034i32);
+pub const SEC_E_BUFFER_TOO_SMALL: crate::core::HRESULT = crate::core::HRESULT(-2146893023i32);
+pub const SEC_E_CANNOT_INSTALL: crate::core::HRESULT = crate::core::HRESULT(-2146893049i32);
+pub const SEC_E_CANNOT_PACK: crate::core::HRESULT = crate::core::HRESULT(-2146893047i32);
+pub const SEC_E_CERT_EXPIRED: crate::core::HRESULT = crate::core::HRESULT(-2146893016i32);
+pub const SEC_E_CERT_UNKNOWN: crate::core::HRESULT = crate::core::HRESULT(-2146893017i32);
+pub const SEC_E_CERT_WRONG_USAGE: crate::core::HRESULT = crate::core::HRESULT(-2146892983i32);
+pub const SEC_E_CONTEXT_EXPIRED: crate::core::HRESULT = crate::core::HRESULT(-2146893033i32);
+pub const SEC_E_CROSSREALM_DELEGATION_FAILURE: crate::core::HRESULT =
+    crate::core::HRESULT(-2146892969i32);
+pub const SEC_E_CRYPTO_SYSTEM_INVALID: crate::core::HRESULT = crate::core::HRESULT(-2146893001i32);
+pub const SEC_E_DECRYPT_FAILURE: crate::core::HRESULT = crate::core::HRESULT(-2146893008i32);
+pub const SEC_E_DELEGATION_POLICY: crate::core::HRESULT = crate::core::HRESULT(-2146892962i32);
+pub const SEC_E_DELEGATION_REQUIRED: crate::core::HRESULT = crate::core::HRESULT(-2146892987i32);
+pub const SEC_E_DOWNGRADE_DETECTED: crate::core::HRESULT = crate::core::HRESULT(-2146892976i32);
+pub const SEC_E_ENCRYPT_FAILURE: crate::core::HRESULT = crate::core::HRESULT(-2146893015i32);
+pub const SEC_E_EXT_BUFFER_TOO_SMALL: crate::core::HRESULT = crate::core::HRESULT(-2146892950i32);
+pub const SEC_E_ILLEGAL_MESSAGE: crate::core::HRESULT = crate::core::HRESULT(-2146893018i32);
+pub const SEC_E_INCOMPLETE_CREDENTIALS: crate::core::HRESULT = crate::core::HRESULT(-2146893024i32);
+pub const SEC_E_INCOMPLETE_MESSAGE: crate::core::HRESULT = crate::core::HRESULT(-2146893032i32);
+pub const SEC_E_INSUFFICIENT_BUFFERS: crate::core::HRESULT = crate::core::HRESULT(-2146892949i32);
+pub const SEC_E_INSUFFICIENT_MEMORY: crate::core::HRESULT = crate::core::HRESULT(-2146893056i32);
+pub const SEC_E_INTERNAL_ERROR: crate::core::HRESULT = crate::core::HRESULT(-2146893052i32);
+pub const SEC_E_INVALID_HANDLE: crate::core::HRESULT = crate::core::HRESULT(-2146893055i32);
+pub const SEC_E_INVALID_PARAMETER: crate::core::HRESULT = crate::core::HRESULT(-2146892963i32);
+pub const SEC_E_INVALID_TOKEN: crate::core::HRESULT = crate::core::HRESULT(-2146893048i32);
+pub const SEC_E_INVALID_UPN_NAME: crate::core::HRESULT = crate::core::HRESULT(-2146892951i32);
+pub const SEC_E_ISSUING_CA_UNTRUSTED: crate::core::HRESULT = crate::core::HRESULT(-2146892974i32);
+pub const SEC_E_ISSUING_CA_UNTRUSTED_KDC: crate::core::HRESULT =
+    crate::core::HRESULT(-2146892967i32);
+pub const SEC_E_KDC_CERT_EXPIRED: crate::core::HRESULT = crate::core::HRESULT(-2146892966i32);
+pub const SEC_E_KDC_CERT_REVOKED: crate::core::HRESULT = crate::core::HRESULT(-2146892965i32);
+pub const SEC_E_KDC_INVALID_REQUEST: crate::core::HRESULT = crate::core::HRESULT(-2146892992i32);
+pub const SEC_E_KDC_UNABLE_TO_REFER: crate::core::HRESULT = crate::core::HRESULT(-2146892991i32);
+pub const SEC_E_KDC_UNKNOWN_ETYPE: crate::core::HRESULT = crate::core::HRESULT(-2146892990i32);
+pub const SEC_E_LOGON_DENIED: crate::core::HRESULT = crate::core::HRESULT(-2146893044i32);
+pub const SEC_E_MAX_REFERRALS_EXCEEDED: crate::core::HRESULT = crate::core::HRESULT(-2146893000i32);
+pub const SEC_E_MESSAGE_ALTERED: crate::core::HRESULT = crate::core::HRESULT(-2146893041i32);
+pub const SEC_E_MULTIPLE_ACCOUNTS: crate::core::HRESULT = crate::core::HRESULT(-2146892985i32);
+pub const SEC_E_MUST_BE_KDC: crate::core::HRESULT = crate::core::HRESULT(-2146892999i32);
+pub const SEC_E_MUTUAL_AUTH_FAILED: crate::core::HRESULT = crate::core::HRESULT(-2146892957i32);
+pub const SEC_E_NOT_OWNER: crate::core::HRESULT = crate::core::HRESULT(-2146893050i32);
 pub const SEC_E_NOT_SUPPORTED: i32 = -2146893054i32;
-pub const SEC_E_NO_AUTHENTICATING_AUTHORITY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146893039i32);
-pub const SEC_E_NO_CONTEXT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146892959i32);
-pub const SEC_E_NO_CREDENTIALS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893042i32);
-pub const SEC_E_NO_IMPERSONATION: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893045i32);
-pub const SEC_E_NO_IP_ADDRESSES: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893003i32);
-pub const SEC_E_NO_KERB_KEY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146892984i32);
-pub const SEC_E_NO_PA_DATA: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146892996i32);
-pub const SEC_E_NO_S4U_PROT_SUPPORT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146892970i32);
+pub const SEC_E_NO_AUTHENTICATING_AUTHORITY: crate::core::HRESULT =
+    crate::core::HRESULT(-2146893039i32);
+pub const SEC_E_NO_CONTEXT: crate::core::HRESULT = crate::core::HRESULT(-2146892959i32);
+pub const SEC_E_NO_CREDENTIALS: crate::core::HRESULT = crate::core::HRESULT(-2146893042i32);
+pub const SEC_E_NO_IMPERSONATION: crate::core::HRESULT = crate::core::HRESULT(-2146893045i32);
+pub const SEC_E_NO_IP_ADDRESSES: crate::core::HRESULT = crate::core::HRESULT(-2146893003i32);
+pub const SEC_E_NO_KERB_KEY: crate::core::HRESULT = crate::core::HRESULT(-2146892984i32);
+pub const SEC_E_NO_PA_DATA: crate::core::HRESULT = crate::core::HRESULT(-2146892996i32);
+pub const SEC_E_NO_S4U_PROT_SUPPORT: crate::core::HRESULT = crate::core::HRESULT(-2146892970i32);
 pub const SEC_E_NO_SPM: i32 = -2146893052i32;
-pub const SEC_E_NO_TGT_REPLY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893004i32);
-pub const SEC_E_OK: ::win32::core::HRESULT = ::win32::core::HRESULT(0i32);
-pub const SEC_E_ONLY_HTTPS_ALLOWED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146892955i32);
-pub const SEC_E_OUT_OF_SEQUENCE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893040i32);
-pub const SEC_E_PKINIT_CLIENT_FAILURE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146892972i32);
-pub const SEC_E_PKINIT_NAME_MISMATCH: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146892995i32);
-pub const SEC_E_PKU2U_CERT_FAILURE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146892958i32);
-pub const SEC_E_POLICY_NLTM_ONLY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146892961i32);
-pub const SEC_E_QOP_NOT_SUPPORTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893046i32);
-pub const SEC_E_REVOCATION_OFFLINE_C: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146892973i32);
-pub const SEC_E_REVOCATION_OFFLINE_KDC: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146892968i32);
-pub const SEC_E_SECPKG_NOT_FOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893051i32);
-pub const SEC_E_SECURITY_QOS_FAILED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146893006i32);
-pub const SEC_E_SHUTDOWN_IN_PROGRESS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146892993i32);
-pub const SEC_E_SMARTCARD_CERT_EXPIRED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146892971i32);
-pub const SEC_E_SMARTCARD_CERT_REVOKED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146892975i32);
-pub const SEC_E_SMARTCARD_LOGON_REQUIRED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146892994i32);
-pub const SEC_E_STRONG_CRYPTO_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146892998i32);
-pub const SEC_E_TARGET_UNKNOWN: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893053i32);
-pub const SEC_E_TIME_SKEW: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893020i32);
-pub const SEC_E_TOO_MANY_PRINCIPALS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146892997i32);
-pub const SEC_E_UNFINISHED_CONTEXT_DELETED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146893005i32);
-pub const SEC_E_UNKNOWN_CREDENTIALS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146893043i32);
-pub const SEC_E_UNSUPPORTED_FUNCTION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146893054i32);
-pub const SEC_E_UNSUPPORTED_PREAUTH: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146892989i32);
-pub const SEC_E_UNTRUSTED_ROOT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893019i32);
-pub const SEC_E_WRONG_CREDENTIAL_HANDLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146893002i32);
-pub const SEC_E_WRONG_PRINCIPAL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146893022i32);
-pub const SEC_I_ASYNC_CALL_PENDING: ::win32::core::HRESULT = ::win32::core::HRESULT(590696i32);
-pub const SEC_I_COMPLETE_AND_CONTINUE: ::win32::core::HRESULT = ::win32::core::HRESULT(590612i32);
-pub const SEC_I_COMPLETE_NEEDED: ::win32::core::HRESULT = ::win32::core::HRESULT(590611i32);
-pub const SEC_I_CONTEXT_EXPIRED: ::win32::core::HRESULT = ::win32::core::HRESULT(590615i32);
-pub const SEC_I_CONTINUE_NEEDED: ::win32::core::HRESULT = ::win32::core::HRESULT(590610i32);
-pub const SEC_I_CONTINUE_NEEDED_MESSAGE_OK: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(590694i32);
-pub const SEC_I_GENERIC_EXTENSION_RECEIVED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(590614i32);
-pub const SEC_I_INCOMPLETE_CREDENTIALS: ::win32::core::HRESULT = ::win32::core::HRESULT(590624i32);
-pub const SEC_I_LOCAL_LOGON: ::win32::core::HRESULT = ::win32::core::HRESULT(590613i32);
-pub const SEC_I_MESSAGE_FRAGMENT: ::win32::core::HRESULT = ::win32::core::HRESULT(590692i32);
-pub const SEC_I_NO_LSA_CONTEXT: ::win32::core::HRESULT = ::win32::core::HRESULT(590627i32);
-pub const SEC_I_NO_RENEGOTIATION: ::win32::core::HRESULT = ::win32::core::HRESULT(590688i32);
-pub const SEC_I_RENEGOTIATE: ::win32::core::HRESULT = ::win32::core::HRESULT(590625i32);
-pub const SEC_I_SIGNATURE_NEEDED: ::win32::core::HRESULT = ::win32::core::HRESULT(590684i32);
+pub const SEC_E_NO_TGT_REPLY: crate::core::HRESULT = crate::core::HRESULT(-2146893004i32);
+pub const SEC_E_OK: crate::core::HRESULT = crate::core::HRESULT(0i32);
+pub const SEC_E_ONLY_HTTPS_ALLOWED: crate::core::HRESULT = crate::core::HRESULT(-2146892955i32);
+pub const SEC_E_OUT_OF_SEQUENCE: crate::core::HRESULT = crate::core::HRESULT(-2146893040i32);
+pub const SEC_E_PKINIT_CLIENT_FAILURE: crate::core::HRESULT = crate::core::HRESULT(-2146892972i32);
+pub const SEC_E_PKINIT_NAME_MISMATCH: crate::core::HRESULT = crate::core::HRESULT(-2146892995i32);
+pub const SEC_E_PKU2U_CERT_FAILURE: crate::core::HRESULT = crate::core::HRESULT(-2146892958i32);
+pub const SEC_E_POLICY_NLTM_ONLY: crate::core::HRESULT = crate::core::HRESULT(-2146892961i32);
+pub const SEC_E_QOP_NOT_SUPPORTED: crate::core::HRESULT = crate::core::HRESULT(-2146893046i32);
+pub const SEC_E_REVOCATION_OFFLINE_C: crate::core::HRESULT = crate::core::HRESULT(-2146892973i32);
+pub const SEC_E_REVOCATION_OFFLINE_KDC: crate::core::HRESULT = crate::core::HRESULT(-2146892968i32);
+pub const SEC_E_SECPKG_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2146893051i32);
+pub const SEC_E_SECURITY_QOS_FAILED: crate::core::HRESULT = crate::core::HRESULT(-2146893006i32);
+pub const SEC_E_SHUTDOWN_IN_PROGRESS: crate::core::HRESULT = crate::core::HRESULT(-2146892993i32);
+pub const SEC_E_SMARTCARD_CERT_EXPIRED: crate::core::HRESULT = crate::core::HRESULT(-2146892971i32);
+pub const SEC_E_SMARTCARD_CERT_REVOKED: crate::core::HRESULT = crate::core::HRESULT(-2146892975i32);
+pub const SEC_E_SMARTCARD_LOGON_REQUIRED: crate::core::HRESULT =
+    crate::core::HRESULT(-2146892994i32);
+pub const SEC_E_STRONG_CRYPTO_NOT_SUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2146892998i32);
+pub const SEC_E_TARGET_UNKNOWN: crate::core::HRESULT = crate::core::HRESULT(-2146893053i32);
+pub const SEC_E_TIME_SKEW: crate::core::HRESULT = crate::core::HRESULT(-2146893020i32);
+pub const SEC_E_TOO_MANY_PRINCIPALS: crate::core::HRESULT = crate::core::HRESULT(-2146892997i32);
+pub const SEC_E_UNFINISHED_CONTEXT_DELETED: crate::core::HRESULT =
+    crate::core::HRESULT(-2146893005i32);
+pub const SEC_E_UNKNOWN_CREDENTIALS: crate::core::HRESULT = crate::core::HRESULT(-2146893043i32);
+pub const SEC_E_UNSUPPORTED_FUNCTION: crate::core::HRESULT = crate::core::HRESULT(-2146893054i32);
+pub const SEC_E_UNSUPPORTED_PREAUTH: crate::core::HRESULT = crate::core::HRESULT(-2146892989i32);
+pub const SEC_E_UNTRUSTED_ROOT: crate::core::HRESULT = crate::core::HRESULT(-2146893019i32);
+pub const SEC_E_WRONG_CREDENTIAL_HANDLE: crate::core::HRESULT =
+    crate::core::HRESULT(-2146893002i32);
+pub const SEC_E_WRONG_PRINCIPAL: crate::core::HRESULT = crate::core::HRESULT(-2146893022i32);
+pub const SEC_I_ASYNC_CALL_PENDING: crate::core::HRESULT = crate::core::HRESULT(590696i32);
+pub const SEC_I_COMPLETE_AND_CONTINUE: crate::core::HRESULT = crate::core::HRESULT(590612i32);
+pub const SEC_I_COMPLETE_NEEDED: crate::core::HRESULT = crate::core::HRESULT(590611i32);
+pub const SEC_I_CONTEXT_EXPIRED: crate::core::HRESULT = crate::core::HRESULT(590615i32);
+pub const SEC_I_CONTINUE_NEEDED: crate::core::HRESULT = crate::core::HRESULT(590610i32);
+pub const SEC_I_CONTINUE_NEEDED_MESSAGE_OK: crate::core::HRESULT = crate::core::HRESULT(590694i32);
+pub const SEC_I_GENERIC_EXTENSION_RECEIVED: crate::core::HRESULT = crate::core::HRESULT(590614i32);
+pub const SEC_I_INCOMPLETE_CREDENTIALS: crate::core::HRESULT = crate::core::HRESULT(590624i32);
+pub const SEC_I_LOCAL_LOGON: crate::core::HRESULT = crate::core::HRESULT(590613i32);
+pub const SEC_I_MESSAGE_FRAGMENT: crate::core::HRESULT = crate::core::HRESULT(590692i32);
+pub const SEC_I_NO_LSA_CONTEXT: crate::core::HRESULT = crate::core::HRESULT(590627i32);
+pub const SEC_I_NO_RENEGOTIATION: crate::core::HRESULT = crate::core::HRESULT(590688i32);
+pub const SEC_I_RENEGOTIATE: crate::core::HRESULT = crate::core::HRESULT(590625i32);
+pub const SEC_I_SIGNATURE_NEEDED: crate::core::HRESULT = crate::core::HRESULT(590684i32);
 pub const SEVERITY_ERROR: u32 = 1u32;
 pub const SEVERITY_SUCCESS: u32 = 0u32;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -4982,311 +4569,267 @@ impl ::core::cmp::PartialEq for SIZE {
     }
 }
 impl ::core::cmp::Eq for SIZE {}
-pub const SPAPI_E_AUTHENTICODE_DISALLOWED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500032i32);
-pub const SPAPI_E_AUTHENTICODE_PUBLISHER_NOT_TRUSTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500029i32);
-pub const SPAPI_E_AUTHENTICODE_TRUSTED_PUBLISHER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500031i32);
-pub const SPAPI_E_AUTHENTICODE_TRUST_NOT_ESTABLISHED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500030i32);
-pub const SPAPI_E_BAD_INTERFACE_INSTALLSECT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500067i32);
-pub const SPAPI_E_BAD_SECTION_NAME_LINE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500607i32);
-pub const SPAPI_E_BAD_SERVICE_INSTALLSECT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500073i32);
-pub const SPAPI_E_CANT_LOAD_CLASS_ICON: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500084i32);
-pub const SPAPI_E_CANT_REMOVE_DEVINST: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500046i32);
-pub const SPAPI_E_CLASS_MISMATCH: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146500095i32);
-pub const SPAPI_E_DEVICE_INSTALLER_NOT_READY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500026i32);
-pub const SPAPI_E_DEVICE_INSTALL_BLOCKED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500024i32);
-pub const SPAPI_E_DEVICE_INTERFACE_ACTIVE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500069i32);
-pub const SPAPI_E_DEVICE_INTERFACE_REMOVED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500068i32);
-pub const SPAPI_E_DEVINFO_DATA_LOCKED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500077i32);
-pub const SPAPI_E_DEVINFO_LIST_LOCKED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500078i32);
-pub const SPAPI_E_DEVINFO_NOT_REGISTERED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500088i32);
-pub const SPAPI_E_DEVINSTALL_QUEUE_NONNATIVE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500048i32);
-pub const SPAPI_E_DEVINST_ALREADY_EXISTS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500089i32);
-pub const SPAPI_E_DI_BAD_PATH: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146500076i32);
-pub const SPAPI_E_DI_DONT_INSTALL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146500053i32);
-pub const SPAPI_E_DI_DO_DEFAULT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146500082i32);
-pub const SPAPI_E_DI_FUNCTION_OBSOLETE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500034i32);
-pub const SPAPI_E_DI_NOFILECOPY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146500081i32);
-pub const SPAPI_E_DI_POSTPROCESSING_REQUIRED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500058i32);
-pub const SPAPI_E_DRIVER_INSTALL_BLOCKED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500023i32);
-pub const SPAPI_E_DRIVER_NONNATIVE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146500044i32);
-pub const SPAPI_E_DRIVER_STORE_ADD_FAILED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500025i32);
-pub const SPAPI_E_DRIVER_STORE_DELETE_FAILED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500020i32);
-pub const SPAPI_E_DUPLICATE_FOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146500094i32);
-pub const SPAPI_E_ERROR_NOT_INSTALLED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146496512i32);
-pub const SPAPI_E_EXPECTED_SECTION_NAME: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500608i32);
-pub const SPAPI_E_FILEQUEUE_LOCKED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146500074i32);
-pub const SPAPI_E_FILE_HASH_NOT_IN_CATALOG: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500021i32);
-pub const SPAPI_E_GENERAL_SYNTAX: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146500605i32);
-pub const SPAPI_E_INCORRECTLY_COPIED_INF: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500041i32);
-pub const SPAPI_E_INF_IN_USE_BY_DEVICES: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500035i32);
-pub const SPAPI_E_INVALID_CLASS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146500090i32);
-pub const SPAPI_E_INVALID_CLASS_INSTALLER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500083i32);
-pub const SPAPI_E_INVALID_COINSTALLER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500057i32);
-pub const SPAPI_E_INVALID_DEVINST_NAME: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500091i32);
-pub const SPAPI_E_INVALID_FILTER_DRIVER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500052i32);
-pub const SPAPI_E_INVALID_HWPROFILE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500080i32);
-pub const SPAPI_E_INVALID_INF_LOGCONFIG: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500054i32);
-pub const SPAPI_E_INVALID_MACHINENAME: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500064i32);
-pub const SPAPI_E_INVALID_PROPPAGE_PROVIDER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500060i32);
-pub const SPAPI_E_INVALID_REFERENCE_STRING: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500065i32);
-pub const SPAPI_E_INVALID_REG_PROPERTY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500087i32);
-pub const SPAPI_E_INVALID_TARGET: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146500045i32);
-pub const SPAPI_E_IN_WOW64: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146500043i32);
-pub const SPAPI_E_KEY_DOES_NOT_EXIST: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500092i32);
-pub const SPAPI_E_LINE_NOT_FOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146500350i32);
-pub const SPAPI_E_MACHINE_UNAVAILABLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500062i32);
-pub const SPAPI_E_NON_WINDOWS_DRIVER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500050i32);
-pub const SPAPI_E_NON_WINDOWS_NT_DRIVER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500051i32);
-pub const SPAPI_E_NOT_AN_INSTALLED_OEM_INF: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500036i32);
-pub const SPAPI_E_NOT_DISABLEABLE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146500047i32);
-pub const SPAPI_E_NO_ASSOCIATED_CLASS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500096i32);
-pub const SPAPI_E_NO_ASSOCIATED_SERVICE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500071i32);
-pub const SPAPI_E_NO_AUTHENTICODE_CATALOG: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500033i32);
-pub const SPAPI_E_NO_BACKUP: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146500349i32);
-pub const SPAPI_E_NO_CATALOG_FOR_OEM_INF: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500049i32);
-pub const SPAPI_E_NO_CLASSINSTALL_PARAMS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500075i32);
-pub const SPAPI_E_NO_CLASS_DRIVER_LIST: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500072i32);
-pub const SPAPI_E_NO_COMPAT_DRIVERS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500056i32);
-pub const SPAPI_E_NO_CONFIGMGR_SERVICES: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500061i32);
-pub const SPAPI_E_NO_DEFAULT_DEVICE_INTERFACE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500070i32);
-pub const SPAPI_E_NO_DEVICE_ICON: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146500055i32);
-pub const SPAPI_E_NO_DEVICE_SELECTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500079i32);
-pub const SPAPI_E_NO_DRIVER_SELECTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500093i32);
-pub const SPAPI_E_NO_INF: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146500086i32);
-pub const SPAPI_E_NO_SUCH_DEVICE_INTERFACE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500059i32);
-pub const SPAPI_E_NO_SUCH_DEVINST: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146500085i32);
-pub const SPAPI_E_NO_SUCH_INTERFACE_CLASS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500066i32);
-pub const SPAPI_E_ONLY_VALIDATE_VIA_AUTHENTICODE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500027i32);
-pub const SPAPI_E_PNP_REGISTRY_ERROR: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500038i32);
-pub const SPAPI_E_REMOTE_COMM_FAILURE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500063i32);
-pub const SPAPI_E_REMOTE_REQUEST_UNSUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500037i32);
-pub const SPAPI_E_SCE_DISABLED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146500040i32);
-pub const SPAPI_E_SECTION_NAME_TOO_LONG: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500606i32);
-pub const SPAPI_E_SECTION_NOT_FOUND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500351i32);
-pub const SPAPI_E_SET_SYSTEM_RESTORE_POINT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500042i32);
-pub const SPAPI_E_SIGNATURE_OSATTRIBUTE_MISMATCH: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500028i32);
-pub const SPAPI_E_UNKNOWN_EXCEPTION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146500039i32);
-pub const SPAPI_E_UNRECOVERABLE_STACK_OVERFLOW: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146499840i32);
-pub const SPAPI_E_WRONG_INF_STYLE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146500352i32);
-pub const SPAPI_E_WRONG_INF_TYPE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146500022i32);
-pub const SQLITE_E_ABORT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2018574332i32);
-pub const SQLITE_E_ABORT_ROLLBACK: ::win32::core::HRESULT = ::win32::core::HRESULT(-2018573820i32);
-pub const SQLITE_E_AUTH: ::win32::core::HRESULT = ::win32::core::HRESULT(-2018574313i32);
-pub const SQLITE_E_BUSY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2018574331i32);
-pub const SQLITE_E_BUSY_RECOVERY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2018574075i32);
-pub const SQLITE_E_BUSY_SNAPSHOT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2018573819i32);
-pub const SQLITE_E_CANTOPEN: ::win32::core::HRESULT = ::win32::core::HRESULT(-2018574322i32);
-pub const SQLITE_E_CANTOPEN_CONVPATH: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2018573298i32);
-pub const SQLITE_E_CANTOPEN_FULLPATH: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2018573554i32);
-pub const SQLITE_E_CANTOPEN_ISDIR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2018573810i32);
-pub const SQLITE_E_CANTOPEN_NOTEMPDIR: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2018574066i32);
-pub const SQLITE_E_CONSTRAINT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2018574317i32);
-pub const SQLITE_E_CONSTRAINT_CHECK: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2018574061i32);
-pub const SQLITE_E_CONSTRAINT_COMMITHOOK: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2018573805i32);
-pub const SQLITE_E_CONSTRAINT_FOREIGNKEY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2018573549i32);
-pub const SQLITE_E_CONSTRAINT_FUNCTION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2018573293i32);
-pub const SQLITE_E_CONSTRAINT_NOTNULL: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2018573037i32);
-pub const SQLITE_E_CONSTRAINT_PRIMARYKEY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2018572781i32);
-pub const SQLITE_E_CONSTRAINT_ROWID: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2018571757i32);
-pub const SQLITE_E_CONSTRAINT_TRIGGER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2018572525i32);
-pub const SQLITE_E_CONSTRAINT_UNIQUE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2018572269i32);
-pub const SQLITE_E_CONSTRAINT_VTAB: ::win32::core::HRESULT = ::win32::core::HRESULT(-2018572013i32);
-pub const SQLITE_E_CORRUPT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2018574325i32);
-pub const SQLITE_E_CORRUPT_VTAB: ::win32::core::HRESULT = ::win32::core::HRESULT(-2018574069i32);
-pub const SQLITE_E_DONE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2018574235i32);
-pub const SQLITE_E_EMPTY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2018574320i32);
-pub const SQLITE_E_ERROR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2018574335i32);
-pub const SQLITE_E_FORMAT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2018574312i32);
-pub const SQLITE_E_FULL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2018574323i32);
-pub const SQLITE_E_INTERNAL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2018574334i32);
-pub const SQLITE_E_INTERRUPT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2018574327i32);
-pub const SQLITE_E_IOERR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2018574326i32);
-pub const SQLITE_E_IOERR_ACCESS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2018570998i32);
-pub const SQLITE_E_IOERR_AUTH: ::win32::core::HRESULT = ::win32::core::HRESULT(-2018567677i32);
-pub const SQLITE_E_IOERR_BLOCKED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2018571510i32);
-pub const SQLITE_E_IOERR_CHECKRESERVEDLOCK: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2018570742i32);
-pub const SQLITE_E_IOERR_CLOSE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2018570230i32);
-pub const SQLITE_E_IOERR_CONVPATH: ::win32::core::HRESULT = ::win32::core::HRESULT(-2018567670i32);
-pub const SQLITE_E_IOERR_DELETE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2018571766i32);
-pub const SQLITE_E_IOERR_DELETE_NOENT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2018568438i32);
-pub const SQLITE_E_IOERR_DIR_CLOSE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2018569974i32);
-pub const SQLITE_E_IOERR_DIR_FSYNC: ::win32::core::HRESULT = ::win32::core::HRESULT(-2018573046i32);
-pub const SQLITE_E_IOERR_FSTAT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2018572534i32);
-pub const SQLITE_E_IOERR_FSYNC: ::win32::core::HRESULT = ::win32::core::HRESULT(-2018573302i32);
-pub const SQLITE_E_IOERR_GETTEMPPATH: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2018567926i32);
-pub const SQLITE_E_IOERR_LOCK: ::win32::core::HRESULT = ::win32::core::HRESULT(-2018570486i32);
-pub const SQLITE_E_IOERR_MMAP: ::win32::core::HRESULT = ::win32::core::HRESULT(-2018568182i32);
-pub const SQLITE_E_IOERR_NOMEM: ::win32::core::HRESULT = ::win32::core::HRESULT(-2018571254i32);
-pub const SQLITE_E_IOERR_RDLOCK: ::win32::core::HRESULT = ::win32::core::HRESULT(-2018572022i32);
-pub const SQLITE_E_IOERR_READ: ::win32::core::HRESULT = ::win32::core::HRESULT(-2018574070i32);
-pub const SQLITE_E_IOERR_SEEK: ::win32::core::HRESULT = ::win32::core::HRESULT(-2018568694i32);
-pub const SQLITE_E_IOERR_SHMLOCK: ::win32::core::HRESULT = ::win32::core::HRESULT(-2018569206i32);
-pub const SQLITE_E_IOERR_SHMMAP: ::win32::core::HRESULT = ::win32::core::HRESULT(-2018568950i32);
-pub const SQLITE_E_IOERR_SHMOPEN: ::win32::core::HRESULT = ::win32::core::HRESULT(-2018569718i32);
-pub const SQLITE_E_IOERR_SHMSIZE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2018569462i32);
-pub const SQLITE_E_IOERR_SHORT_READ: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2018573814i32);
-pub const SQLITE_E_IOERR_TRUNCATE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2018572790i32);
-pub const SQLITE_E_IOERR_UNLOCK: ::win32::core::HRESULT = ::win32::core::HRESULT(-2018572278i32);
-pub const SQLITE_E_IOERR_VNODE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2018567678i32);
-pub const SQLITE_E_IOERR_WRITE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2018573558i32);
-pub const SQLITE_E_LOCKED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2018574330i32);
-pub const SQLITE_E_LOCKED_SHAREDCACHE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2018574074i32);
-pub const SQLITE_E_MISMATCH: ::win32::core::HRESULT = ::win32::core::HRESULT(-2018574316i32);
-pub const SQLITE_E_MISUSE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2018574315i32);
-pub const SQLITE_E_NOLFS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2018574314i32);
-pub const SQLITE_E_NOMEM: ::win32::core::HRESULT = ::win32::core::HRESULT(-2018574329i32);
-pub const SQLITE_E_NOTADB: ::win32::core::HRESULT = ::win32::core::HRESULT(-2018574310i32);
-pub const SQLITE_E_NOTFOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2018574324i32);
-pub const SQLITE_E_NOTICE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2018574309i32);
-pub const SQLITE_E_NOTICE_RECOVER_ROLLBACK: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2018573797i32);
-pub const SQLITE_E_NOTICE_RECOVER_WAL: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2018574053i32);
-pub const SQLITE_E_PERM: ::win32::core::HRESULT = ::win32::core::HRESULT(-2018574333i32);
-pub const SQLITE_E_PROTOCOL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2018574321i32);
-pub const SQLITE_E_RANGE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2018574311i32);
-pub const SQLITE_E_READONLY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2018574328i32);
-pub const SQLITE_E_READONLY_CANTLOCK: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2018573816i32);
-pub const SQLITE_E_READONLY_DBMOVED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2018573304i32);
-pub const SQLITE_E_READONLY_RECOVERY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2018574072i32);
-pub const SQLITE_E_READONLY_ROLLBACK: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2018573560i32);
-pub const SQLITE_E_ROW: ::win32::core::HRESULT = ::win32::core::HRESULT(-2018574236i32);
-pub const SQLITE_E_SCHEMA: ::win32::core::HRESULT = ::win32::core::HRESULT(-2018574319i32);
-pub const SQLITE_E_TOOBIG: ::win32::core::HRESULT = ::win32::core::HRESULT(-2018574318i32);
-pub const SQLITE_E_WARNING: ::win32::core::HRESULT = ::win32::core::HRESULT(-2018574308i32);
-pub const SQLITE_E_WARNING_AUTOINDEX: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2018574052i32);
-pub const STATEREPOSITORY_ERROR_CACHE_CORRUPTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140733422i32);
-pub const STATEREPOSITORY_ERROR_DICTIONARY_CORRUPTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140733435i32);
-pub const STATEREPOSITORY_E_BLOCKED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140733434i32);
-pub const STATEREPOSITORY_E_BUSY_RECOVERY_RETRY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140733432i32);
-pub const STATEREPOSITORY_E_BUSY_RECOVERY_TIMEOUT_EXCEEDED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140733427i32);
-pub const STATEREPOSITORY_E_BUSY_RETRY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140733433i32);
-pub const STATEREPOSITORY_E_BUSY_TIMEOUT_EXCEEDED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140733428i32);
-pub const STATEREPOSITORY_E_CACHE_NOT_INIITALIZED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140733419i32);
-pub const STATEREPOSITORY_E_CONCURRENCY_LOCKING_FAILURE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140733439i32);
-pub const STATEREPOSITORY_E_CONFIGURATION_INVALID: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140733437i32);
-pub const STATEREPOSITORY_E_DEPENDENCY_NOT_RESOLVED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140733418i32);
-pub const STATEREPOSITORY_E_LOCKED_RETRY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140733431i32);
-pub const STATEREPOSITORY_E_LOCKED_SHAREDCACHE_RETRY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140733430i32);
-pub const STATEREPOSITORY_E_LOCKED_SHAREDCACHE_TIMEOUT_EXCEEDED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140733425i32);
-pub const STATEREPOSITORY_E_LOCKED_TIMEOUT_EXCEEDED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140733426i32);
-pub const STATEREPOSITORY_E_SERVICE_STOP_IN_PROGRESS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140733424i32);
-pub const STATEREPOSITORY_E_STATEMENT_INPROGRESS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140733438i32);
-pub const STATEREPOSITORY_E_TRANSACTION_REQUIRED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140733429i32);
-pub const STATEREPOSITORY_E_UNKNOWN_SCHEMA_VERSION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140733436i32);
-pub const STATEREPOSITORY_TRANSACTION_CALLER_ID_CHANGED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(6750227i32);
-pub const STATEREPOSITORY_TRANSACTION_IN_PROGRESS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140733420i32);
-pub const STATEREPOSTORY_E_NESTED_TRANSACTION_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2140733423i32);
+pub const SPAPI_E_AUTHENTICODE_DISALLOWED: crate::core::HRESULT =
+    crate::core::HRESULT(-2146500032i32);
+pub const SPAPI_E_AUTHENTICODE_PUBLISHER_NOT_TRUSTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2146500029i32);
+pub const SPAPI_E_AUTHENTICODE_TRUSTED_PUBLISHER: crate::core::HRESULT =
+    crate::core::HRESULT(-2146500031i32);
+pub const SPAPI_E_AUTHENTICODE_TRUST_NOT_ESTABLISHED: crate::core::HRESULT =
+    crate::core::HRESULT(-2146500030i32);
+pub const SPAPI_E_BAD_INTERFACE_INSTALLSECT: crate::core::HRESULT =
+    crate::core::HRESULT(-2146500067i32);
+pub const SPAPI_E_BAD_SECTION_NAME_LINE: crate::core::HRESULT =
+    crate::core::HRESULT(-2146500607i32);
+pub const SPAPI_E_BAD_SERVICE_INSTALLSECT: crate::core::HRESULT =
+    crate::core::HRESULT(-2146500073i32);
+pub const SPAPI_E_CANT_LOAD_CLASS_ICON: crate::core::HRESULT = crate::core::HRESULT(-2146500084i32);
+pub const SPAPI_E_CANT_REMOVE_DEVINST: crate::core::HRESULT = crate::core::HRESULT(-2146500046i32);
+pub const SPAPI_E_CLASS_MISMATCH: crate::core::HRESULT = crate::core::HRESULT(-2146500095i32);
+pub const SPAPI_E_DEVICE_INSTALLER_NOT_READY: crate::core::HRESULT =
+    crate::core::HRESULT(-2146500026i32);
+pub const SPAPI_E_DEVICE_INSTALL_BLOCKED: crate::core::HRESULT =
+    crate::core::HRESULT(-2146500024i32);
+pub const SPAPI_E_DEVICE_INTERFACE_ACTIVE: crate::core::HRESULT =
+    crate::core::HRESULT(-2146500069i32);
+pub const SPAPI_E_DEVICE_INTERFACE_REMOVED: crate::core::HRESULT =
+    crate::core::HRESULT(-2146500068i32);
+pub const SPAPI_E_DEVINFO_DATA_LOCKED: crate::core::HRESULT = crate::core::HRESULT(-2146500077i32);
+pub const SPAPI_E_DEVINFO_LIST_LOCKED: crate::core::HRESULT = crate::core::HRESULT(-2146500078i32);
+pub const SPAPI_E_DEVINFO_NOT_REGISTERED: crate::core::HRESULT =
+    crate::core::HRESULT(-2146500088i32);
+pub const SPAPI_E_DEVINSTALL_QUEUE_NONNATIVE: crate::core::HRESULT =
+    crate::core::HRESULT(-2146500048i32);
+pub const SPAPI_E_DEVINST_ALREADY_EXISTS: crate::core::HRESULT =
+    crate::core::HRESULT(-2146500089i32);
+pub const SPAPI_E_DI_BAD_PATH: crate::core::HRESULT = crate::core::HRESULT(-2146500076i32);
+pub const SPAPI_E_DI_DONT_INSTALL: crate::core::HRESULT = crate::core::HRESULT(-2146500053i32);
+pub const SPAPI_E_DI_DO_DEFAULT: crate::core::HRESULT = crate::core::HRESULT(-2146500082i32);
+pub const SPAPI_E_DI_FUNCTION_OBSOLETE: crate::core::HRESULT = crate::core::HRESULT(-2146500034i32);
+pub const SPAPI_E_DI_NOFILECOPY: crate::core::HRESULT = crate::core::HRESULT(-2146500081i32);
+pub const SPAPI_E_DI_POSTPROCESSING_REQUIRED: crate::core::HRESULT =
+    crate::core::HRESULT(-2146500058i32);
+pub const SPAPI_E_DRIVER_INSTALL_BLOCKED: crate::core::HRESULT =
+    crate::core::HRESULT(-2146500023i32);
+pub const SPAPI_E_DRIVER_NONNATIVE: crate::core::HRESULT = crate::core::HRESULT(-2146500044i32);
+pub const SPAPI_E_DRIVER_STORE_ADD_FAILED: crate::core::HRESULT =
+    crate::core::HRESULT(-2146500025i32);
+pub const SPAPI_E_DRIVER_STORE_DELETE_FAILED: crate::core::HRESULT =
+    crate::core::HRESULT(-2146500020i32);
+pub const SPAPI_E_DUPLICATE_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2146500094i32);
+pub const SPAPI_E_ERROR_NOT_INSTALLED: crate::core::HRESULT = crate::core::HRESULT(-2146496512i32);
+pub const SPAPI_E_EXPECTED_SECTION_NAME: crate::core::HRESULT =
+    crate::core::HRESULT(-2146500608i32);
+pub const SPAPI_E_FILEQUEUE_LOCKED: crate::core::HRESULT = crate::core::HRESULT(-2146500074i32);
+pub const SPAPI_E_FILE_HASH_NOT_IN_CATALOG: crate::core::HRESULT =
+    crate::core::HRESULT(-2146500021i32);
+pub const SPAPI_E_GENERAL_SYNTAX: crate::core::HRESULT = crate::core::HRESULT(-2146500605i32);
+pub const SPAPI_E_INCORRECTLY_COPIED_INF: crate::core::HRESULT =
+    crate::core::HRESULT(-2146500041i32);
+pub const SPAPI_E_INF_IN_USE_BY_DEVICES: crate::core::HRESULT =
+    crate::core::HRESULT(-2146500035i32);
+pub const SPAPI_E_INVALID_CLASS: crate::core::HRESULT = crate::core::HRESULT(-2146500090i32);
+pub const SPAPI_E_INVALID_CLASS_INSTALLER: crate::core::HRESULT =
+    crate::core::HRESULT(-2146500083i32);
+pub const SPAPI_E_INVALID_COINSTALLER: crate::core::HRESULT = crate::core::HRESULT(-2146500057i32);
+pub const SPAPI_E_INVALID_DEVINST_NAME: crate::core::HRESULT = crate::core::HRESULT(-2146500091i32);
+pub const SPAPI_E_INVALID_FILTER_DRIVER: crate::core::HRESULT =
+    crate::core::HRESULT(-2146500052i32);
+pub const SPAPI_E_INVALID_HWPROFILE: crate::core::HRESULT = crate::core::HRESULT(-2146500080i32);
+pub const SPAPI_E_INVALID_INF_LOGCONFIG: crate::core::HRESULT =
+    crate::core::HRESULT(-2146500054i32);
+pub const SPAPI_E_INVALID_MACHINENAME: crate::core::HRESULT = crate::core::HRESULT(-2146500064i32);
+pub const SPAPI_E_INVALID_PROPPAGE_PROVIDER: crate::core::HRESULT =
+    crate::core::HRESULT(-2146500060i32);
+pub const SPAPI_E_INVALID_REFERENCE_STRING: crate::core::HRESULT =
+    crate::core::HRESULT(-2146500065i32);
+pub const SPAPI_E_INVALID_REG_PROPERTY: crate::core::HRESULT = crate::core::HRESULT(-2146500087i32);
+pub const SPAPI_E_INVALID_TARGET: crate::core::HRESULT = crate::core::HRESULT(-2146500045i32);
+pub const SPAPI_E_IN_WOW64: crate::core::HRESULT = crate::core::HRESULT(-2146500043i32);
+pub const SPAPI_E_KEY_DOES_NOT_EXIST: crate::core::HRESULT = crate::core::HRESULT(-2146500092i32);
+pub const SPAPI_E_LINE_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2146500350i32);
+pub const SPAPI_E_MACHINE_UNAVAILABLE: crate::core::HRESULT = crate::core::HRESULT(-2146500062i32);
+pub const SPAPI_E_NON_WINDOWS_DRIVER: crate::core::HRESULT = crate::core::HRESULT(-2146500050i32);
+pub const SPAPI_E_NON_WINDOWS_NT_DRIVER: crate::core::HRESULT =
+    crate::core::HRESULT(-2146500051i32);
+pub const SPAPI_E_NOT_AN_INSTALLED_OEM_INF: crate::core::HRESULT =
+    crate::core::HRESULT(-2146500036i32);
+pub const SPAPI_E_NOT_DISABLEABLE: crate::core::HRESULT = crate::core::HRESULT(-2146500047i32);
+pub const SPAPI_E_NO_ASSOCIATED_CLASS: crate::core::HRESULT = crate::core::HRESULT(-2146500096i32);
+pub const SPAPI_E_NO_ASSOCIATED_SERVICE: crate::core::HRESULT =
+    crate::core::HRESULT(-2146500071i32);
+pub const SPAPI_E_NO_AUTHENTICODE_CATALOG: crate::core::HRESULT =
+    crate::core::HRESULT(-2146500033i32);
+pub const SPAPI_E_NO_BACKUP: crate::core::HRESULT = crate::core::HRESULT(-2146500349i32);
+pub const SPAPI_E_NO_CATALOG_FOR_OEM_INF: crate::core::HRESULT =
+    crate::core::HRESULT(-2146500049i32);
+pub const SPAPI_E_NO_CLASSINSTALL_PARAMS: crate::core::HRESULT =
+    crate::core::HRESULT(-2146500075i32);
+pub const SPAPI_E_NO_CLASS_DRIVER_LIST: crate::core::HRESULT = crate::core::HRESULT(-2146500072i32);
+pub const SPAPI_E_NO_COMPAT_DRIVERS: crate::core::HRESULT = crate::core::HRESULT(-2146500056i32);
+pub const SPAPI_E_NO_CONFIGMGR_SERVICES: crate::core::HRESULT =
+    crate::core::HRESULT(-2146500061i32);
+pub const SPAPI_E_NO_DEFAULT_DEVICE_INTERFACE: crate::core::HRESULT =
+    crate::core::HRESULT(-2146500070i32);
+pub const SPAPI_E_NO_DEVICE_ICON: crate::core::HRESULT = crate::core::HRESULT(-2146500055i32);
+pub const SPAPI_E_NO_DEVICE_SELECTED: crate::core::HRESULT = crate::core::HRESULT(-2146500079i32);
+pub const SPAPI_E_NO_DRIVER_SELECTED: crate::core::HRESULT = crate::core::HRESULT(-2146500093i32);
+pub const SPAPI_E_NO_INF: crate::core::HRESULT = crate::core::HRESULT(-2146500086i32);
+pub const SPAPI_E_NO_SUCH_DEVICE_INTERFACE: crate::core::HRESULT =
+    crate::core::HRESULT(-2146500059i32);
+pub const SPAPI_E_NO_SUCH_DEVINST: crate::core::HRESULT = crate::core::HRESULT(-2146500085i32);
+pub const SPAPI_E_NO_SUCH_INTERFACE_CLASS: crate::core::HRESULT =
+    crate::core::HRESULT(-2146500066i32);
+pub const SPAPI_E_ONLY_VALIDATE_VIA_AUTHENTICODE: crate::core::HRESULT =
+    crate::core::HRESULT(-2146500027i32);
+pub const SPAPI_E_PNP_REGISTRY_ERROR: crate::core::HRESULT = crate::core::HRESULT(-2146500038i32);
+pub const SPAPI_E_REMOTE_COMM_FAILURE: crate::core::HRESULT = crate::core::HRESULT(-2146500063i32);
+pub const SPAPI_E_REMOTE_REQUEST_UNSUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2146500037i32);
+pub const SPAPI_E_SCE_DISABLED: crate::core::HRESULT = crate::core::HRESULT(-2146500040i32);
+pub const SPAPI_E_SECTION_NAME_TOO_LONG: crate::core::HRESULT =
+    crate::core::HRESULT(-2146500606i32);
+pub const SPAPI_E_SECTION_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2146500351i32);
+pub const SPAPI_E_SET_SYSTEM_RESTORE_POINT: crate::core::HRESULT =
+    crate::core::HRESULT(-2146500042i32);
+pub const SPAPI_E_SIGNATURE_OSATTRIBUTE_MISMATCH: crate::core::HRESULT =
+    crate::core::HRESULT(-2146500028i32);
+pub const SPAPI_E_UNKNOWN_EXCEPTION: crate::core::HRESULT = crate::core::HRESULT(-2146500039i32);
+pub const SPAPI_E_UNRECOVERABLE_STACK_OVERFLOW: crate::core::HRESULT =
+    crate::core::HRESULT(-2146499840i32);
+pub const SPAPI_E_WRONG_INF_STYLE: crate::core::HRESULT = crate::core::HRESULT(-2146500352i32);
+pub const SPAPI_E_WRONG_INF_TYPE: crate::core::HRESULT = crate::core::HRESULT(-2146500022i32);
+pub const SQLITE_E_ABORT: crate::core::HRESULT = crate::core::HRESULT(-2018574332i32);
+pub const SQLITE_E_ABORT_ROLLBACK: crate::core::HRESULT = crate::core::HRESULT(-2018573820i32);
+pub const SQLITE_E_AUTH: crate::core::HRESULT = crate::core::HRESULT(-2018574313i32);
+pub const SQLITE_E_BUSY: crate::core::HRESULT = crate::core::HRESULT(-2018574331i32);
+pub const SQLITE_E_BUSY_RECOVERY: crate::core::HRESULT = crate::core::HRESULT(-2018574075i32);
+pub const SQLITE_E_BUSY_SNAPSHOT: crate::core::HRESULT = crate::core::HRESULT(-2018573819i32);
+pub const SQLITE_E_CANTOPEN: crate::core::HRESULT = crate::core::HRESULT(-2018574322i32);
+pub const SQLITE_E_CANTOPEN_CONVPATH: crate::core::HRESULT = crate::core::HRESULT(-2018573298i32);
+pub const SQLITE_E_CANTOPEN_FULLPATH: crate::core::HRESULT = crate::core::HRESULT(-2018573554i32);
+pub const SQLITE_E_CANTOPEN_ISDIR: crate::core::HRESULT = crate::core::HRESULT(-2018573810i32);
+pub const SQLITE_E_CANTOPEN_NOTEMPDIR: crate::core::HRESULT = crate::core::HRESULT(-2018574066i32);
+pub const SQLITE_E_CONSTRAINT: crate::core::HRESULT = crate::core::HRESULT(-2018574317i32);
+pub const SQLITE_E_CONSTRAINT_CHECK: crate::core::HRESULT = crate::core::HRESULT(-2018574061i32);
+pub const SQLITE_E_CONSTRAINT_COMMITHOOK: crate::core::HRESULT =
+    crate::core::HRESULT(-2018573805i32);
+pub const SQLITE_E_CONSTRAINT_FOREIGNKEY: crate::core::HRESULT =
+    crate::core::HRESULT(-2018573549i32);
+pub const SQLITE_E_CONSTRAINT_FUNCTION: crate::core::HRESULT = crate::core::HRESULT(-2018573293i32);
+pub const SQLITE_E_CONSTRAINT_NOTNULL: crate::core::HRESULT = crate::core::HRESULT(-2018573037i32);
+pub const SQLITE_E_CONSTRAINT_PRIMARYKEY: crate::core::HRESULT =
+    crate::core::HRESULT(-2018572781i32);
+pub const SQLITE_E_CONSTRAINT_ROWID: crate::core::HRESULT = crate::core::HRESULT(-2018571757i32);
+pub const SQLITE_E_CONSTRAINT_TRIGGER: crate::core::HRESULT = crate::core::HRESULT(-2018572525i32);
+pub const SQLITE_E_CONSTRAINT_UNIQUE: crate::core::HRESULT = crate::core::HRESULT(-2018572269i32);
+pub const SQLITE_E_CONSTRAINT_VTAB: crate::core::HRESULT = crate::core::HRESULT(-2018572013i32);
+pub const SQLITE_E_CORRUPT: crate::core::HRESULT = crate::core::HRESULT(-2018574325i32);
+pub const SQLITE_E_CORRUPT_VTAB: crate::core::HRESULT = crate::core::HRESULT(-2018574069i32);
+pub const SQLITE_E_DONE: crate::core::HRESULT = crate::core::HRESULT(-2018574235i32);
+pub const SQLITE_E_EMPTY: crate::core::HRESULT = crate::core::HRESULT(-2018574320i32);
+pub const SQLITE_E_ERROR: crate::core::HRESULT = crate::core::HRESULT(-2018574335i32);
+pub const SQLITE_E_FORMAT: crate::core::HRESULT = crate::core::HRESULT(-2018574312i32);
+pub const SQLITE_E_FULL: crate::core::HRESULT = crate::core::HRESULT(-2018574323i32);
+pub const SQLITE_E_INTERNAL: crate::core::HRESULT = crate::core::HRESULT(-2018574334i32);
+pub const SQLITE_E_INTERRUPT: crate::core::HRESULT = crate::core::HRESULT(-2018574327i32);
+pub const SQLITE_E_IOERR: crate::core::HRESULT = crate::core::HRESULT(-2018574326i32);
+pub const SQLITE_E_IOERR_ACCESS: crate::core::HRESULT = crate::core::HRESULT(-2018570998i32);
+pub const SQLITE_E_IOERR_AUTH: crate::core::HRESULT = crate::core::HRESULT(-2018567677i32);
+pub const SQLITE_E_IOERR_BLOCKED: crate::core::HRESULT = crate::core::HRESULT(-2018571510i32);
+pub const SQLITE_E_IOERR_CHECKRESERVEDLOCK: crate::core::HRESULT =
+    crate::core::HRESULT(-2018570742i32);
+pub const SQLITE_E_IOERR_CLOSE: crate::core::HRESULT = crate::core::HRESULT(-2018570230i32);
+pub const SQLITE_E_IOERR_CONVPATH: crate::core::HRESULT = crate::core::HRESULT(-2018567670i32);
+pub const SQLITE_E_IOERR_DELETE: crate::core::HRESULT = crate::core::HRESULT(-2018571766i32);
+pub const SQLITE_E_IOERR_DELETE_NOENT: crate::core::HRESULT = crate::core::HRESULT(-2018568438i32);
+pub const SQLITE_E_IOERR_DIR_CLOSE: crate::core::HRESULT = crate::core::HRESULT(-2018569974i32);
+pub const SQLITE_E_IOERR_DIR_FSYNC: crate::core::HRESULT = crate::core::HRESULT(-2018573046i32);
+pub const SQLITE_E_IOERR_FSTAT: crate::core::HRESULT = crate::core::HRESULT(-2018572534i32);
+pub const SQLITE_E_IOERR_FSYNC: crate::core::HRESULT = crate::core::HRESULT(-2018573302i32);
+pub const SQLITE_E_IOERR_GETTEMPPATH: crate::core::HRESULT = crate::core::HRESULT(-2018567926i32);
+pub const SQLITE_E_IOERR_LOCK: crate::core::HRESULT = crate::core::HRESULT(-2018570486i32);
+pub const SQLITE_E_IOERR_MMAP: crate::core::HRESULT = crate::core::HRESULT(-2018568182i32);
+pub const SQLITE_E_IOERR_NOMEM: crate::core::HRESULT = crate::core::HRESULT(-2018571254i32);
+pub const SQLITE_E_IOERR_RDLOCK: crate::core::HRESULT = crate::core::HRESULT(-2018572022i32);
+pub const SQLITE_E_IOERR_READ: crate::core::HRESULT = crate::core::HRESULT(-2018574070i32);
+pub const SQLITE_E_IOERR_SEEK: crate::core::HRESULT = crate::core::HRESULT(-2018568694i32);
+pub const SQLITE_E_IOERR_SHMLOCK: crate::core::HRESULT = crate::core::HRESULT(-2018569206i32);
+pub const SQLITE_E_IOERR_SHMMAP: crate::core::HRESULT = crate::core::HRESULT(-2018568950i32);
+pub const SQLITE_E_IOERR_SHMOPEN: crate::core::HRESULT = crate::core::HRESULT(-2018569718i32);
+pub const SQLITE_E_IOERR_SHMSIZE: crate::core::HRESULT = crate::core::HRESULT(-2018569462i32);
+pub const SQLITE_E_IOERR_SHORT_READ: crate::core::HRESULT = crate::core::HRESULT(-2018573814i32);
+pub const SQLITE_E_IOERR_TRUNCATE: crate::core::HRESULT = crate::core::HRESULT(-2018572790i32);
+pub const SQLITE_E_IOERR_UNLOCK: crate::core::HRESULT = crate::core::HRESULT(-2018572278i32);
+pub const SQLITE_E_IOERR_VNODE: crate::core::HRESULT = crate::core::HRESULT(-2018567678i32);
+pub const SQLITE_E_IOERR_WRITE: crate::core::HRESULT = crate::core::HRESULT(-2018573558i32);
+pub const SQLITE_E_LOCKED: crate::core::HRESULT = crate::core::HRESULT(-2018574330i32);
+pub const SQLITE_E_LOCKED_SHAREDCACHE: crate::core::HRESULT = crate::core::HRESULT(-2018574074i32);
+pub const SQLITE_E_MISMATCH: crate::core::HRESULT = crate::core::HRESULT(-2018574316i32);
+pub const SQLITE_E_MISUSE: crate::core::HRESULT = crate::core::HRESULT(-2018574315i32);
+pub const SQLITE_E_NOLFS: crate::core::HRESULT = crate::core::HRESULT(-2018574314i32);
+pub const SQLITE_E_NOMEM: crate::core::HRESULT = crate::core::HRESULT(-2018574329i32);
+pub const SQLITE_E_NOTADB: crate::core::HRESULT = crate::core::HRESULT(-2018574310i32);
+pub const SQLITE_E_NOTFOUND: crate::core::HRESULT = crate::core::HRESULT(-2018574324i32);
+pub const SQLITE_E_NOTICE: crate::core::HRESULT = crate::core::HRESULT(-2018574309i32);
+pub const SQLITE_E_NOTICE_RECOVER_ROLLBACK: crate::core::HRESULT =
+    crate::core::HRESULT(-2018573797i32);
+pub const SQLITE_E_NOTICE_RECOVER_WAL: crate::core::HRESULT = crate::core::HRESULT(-2018574053i32);
+pub const SQLITE_E_PERM: crate::core::HRESULT = crate::core::HRESULT(-2018574333i32);
+pub const SQLITE_E_PROTOCOL: crate::core::HRESULT = crate::core::HRESULT(-2018574321i32);
+pub const SQLITE_E_RANGE: crate::core::HRESULT = crate::core::HRESULT(-2018574311i32);
+pub const SQLITE_E_READONLY: crate::core::HRESULT = crate::core::HRESULT(-2018574328i32);
+pub const SQLITE_E_READONLY_CANTLOCK: crate::core::HRESULT = crate::core::HRESULT(-2018573816i32);
+pub const SQLITE_E_READONLY_DBMOVED: crate::core::HRESULT = crate::core::HRESULT(-2018573304i32);
+pub const SQLITE_E_READONLY_RECOVERY: crate::core::HRESULT = crate::core::HRESULT(-2018574072i32);
+pub const SQLITE_E_READONLY_ROLLBACK: crate::core::HRESULT = crate::core::HRESULT(-2018573560i32);
+pub const SQLITE_E_ROW: crate::core::HRESULT = crate::core::HRESULT(-2018574236i32);
+pub const SQLITE_E_SCHEMA: crate::core::HRESULT = crate::core::HRESULT(-2018574319i32);
+pub const SQLITE_E_TOOBIG: crate::core::HRESULT = crate::core::HRESULT(-2018574318i32);
+pub const SQLITE_E_WARNING: crate::core::HRESULT = crate::core::HRESULT(-2018574308i32);
+pub const SQLITE_E_WARNING_AUTOINDEX: crate::core::HRESULT = crate::core::HRESULT(-2018574052i32);
+pub const STATEREPOSITORY_ERROR_CACHE_CORRUPTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2140733422i32);
+pub const STATEREPOSITORY_ERROR_DICTIONARY_CORRUPTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2140733435i32);
+pub const STATEREPOSITORY_E_BLOCKED: crate::core::HRESULT = crate::core::HRESULT(-2140733434i32);
+pub const STATEREPOSITORY_E_BUSY_RECOVERY_RETRY: crate::core::HRESULT =
+    crate::core::HRESULT(-2140733432i32);
+pub const STATEREPOSITORY_E_BUSY_RECOVERY_TIMEOUT_EXCEEDED: crate::core::HRESULT =
+    crate::core::HRESULT(-2140733427i32);
+pub const STATEREPOSITORY_E_BUSY_RETRY: crate::core::HRESULT = crate::core::HRESULT(-2140733433i32);
+pub const STATEREPOSITORY_E_BUSY_TIMEOUT_EXCEEDED: crate::core::HRESULT =
+    crate::core::HRESULT(-2140733428i32);
+pub const STATEREPOSITORY_E_CACHE_NOT_INIITALIZED: crate::core::HRESULT =
+    crate::core::HRESULT(-2140733419i32);
+pub const STATEREPOSITORY_E_CONCURRENCY_LOCKING_FAILURE: crate::core::HRESULT =
+    crate::core::HRESULT(-2140733439i32);
+pub const STATEREPOSITORY_E_CONFIGURATION_INVALID: crate::core::HRESULT =
+    crate::core::HRESULT(-2140733437i32);
+pub const STATEREPOSITORY_E_DEPENDENCY_NOT_RESOLVED: crate::core::HRESULT =
+    crate::core::HRESULT(-2140733418i32);
+pub const STATEREPOSITORY_E_LOCKED_RETRY: crate::core::HRESULT =
+    crate::core::HRESULT(-2140733431i32);
+pub const STATEREPOSITORY_E_LOCKED_SHAREDCACHE_RETRY: crate::core::HRESULT =
+    crate::core::HRESULT(-2140733430i32);
+pub const STATEREPOSITORY_E_LOCKED_SHAREDCACHE_TIMEOUT_EXCEEDED: crate::core::HRESULT =
+    crate::core::HRESULT(-2140733425i32);
+pub const STATEREPOSITORY_E_LOCKED_TIMEOUT_EXCEEDED: crate::core::HRESULT =
+    crate::core::HRESULT(-2140733426i32);
+pub const STATEREPOSITORY_E_SERVICE_STOP_IN_PROGRESS: crate::core::HRESULT =
+    crate::core::HRESULT(-2140733424i32);
+pub const STATEREPOSITORY_E_STATEMENT_INPROGRESS: crate::core::HRESULT =
+    crate::core::HRESULT(-2140733438i32);
+pub const STATEREPOSITORY_E_TRANSACTION_REQUIRED: crate::core::HRESULT =
+    crate::core::HRESULT(-2140733429i32);
+pub const STATEREPOSITORY_E_UNKNOWN_SCHEMA_VERSION: crate::core::HRESULT =
+    crate::core::HRESULT(-2140733436i32);
+pub const STATEREPOSITORY_TRANSACTION_CALLER_ID_CHANGED: crate::core::HRESULT =
+    crate::core::HRESULT(6750227i32);
+pub const STATEREPOSITORY_TRANSACTION_IN_PROGRESS: crate::core::HRESULT =
+    crate::core::HRESULT(-2140733420i32);
+pub const STATEREPOSTORY_E_NESTED_TRANSACTION_NOT_SUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2140733423i32);
 pub const STATUS_ABANDONED: NTSTATUS = NTSTATUS(128i32);
 pub const STATUS_ABANDONED_WAIT_0: NTSTATUS = NTSTATUS(128i32);
 pub const STATUS_ABANDONED_WAIT_63: NTSTATUS = NTSTATUS(191i32);
@@ -7979,76 +7522,67 @@ pub const STATUS_WX86_UNSIMULATE: NTSTATUS = NTSTATUS(1073741852i32);
 pub const STATUS_XMLDSIG_ERROR: NTSTATUS = NTSTATUS(-1073700732i32);
 pub const STATUS_XML_ENCODING_MISMATCH: NTSTATUS = NTSTATUS(-1072365535i32);
 pub const STATUS_XML_PARSE_ERROR: NTSTATUS = NTSTATUS(-1073700733i32);
-pub const STG_E_ABNORMALAPIEXIT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147286790i32);
-pub const STG_E_ACCESSDENIED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147287035i32);
-pub const STG_E_BADBASEADDRESS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147286768i32);
-pub const STG_E_CANTSAVE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147286781i32);
-pub const STG_E_CSS_AUTHENTICATION_FAILURE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147286266i32);
-pub const STG_E_CSS_KEY_NOT_ESTABLISHED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147286264i32);
-pub const STG_E_CSS_KEY_NOT_PRESENT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147286265i32);
-pub const STG_E_CSS_REGION_MISMATCH: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147286262i32);
-pub const STG_E_CSS_SCRAMBLED_SECTOR: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147286263i32);
-pub const STG_E_DEVICE_UNRESPONSIVE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147286518i32);
-pub const STG_E_DISKISWRITEPROTECTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147287021i32);
-pub const STG_E_DOCFILECORRUPT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147286775i32);
-pub const STG_E_DOCFILETOOLARGE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147286767i32);
-pub const STG_E_EXTANTMARSHALLINGS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147286776i32);
-pub const STG_E_FILEALREADYEXISTS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147286960i32);
-pub const STG_E_FILENOTFOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147287038i32);
-pub const STG_E_FIRMWARE_IMAGE_INVALID: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147286519i32);
-pub const STG_E_FIRMWARE_SLOT_INVALID: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147286520i32);
-pub const STG_E_INCOMPLETE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147286527i32);
-pub const STG_E_INSUFFICIENTMEMORY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147287032i32);
-pub const STG_E_INUSE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147286784i32);
-pub const STG_E_INVALIDFLAG: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147286785i32);
-pub const STG_E_INVALIDFUNCTION: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147287039i32);
-pub const STG_E_INVALIDHANDLE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147287034i32);
-pub const STG_E_INVALIDHEADER: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147286789i32);
-pub const STG_E_INVALIDNAME: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147286788i32);
-pub const STG_E_INVALIDPARAMETER: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147286953i32);
-pub const STG_E_INVALIDPOINTER: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147287031i32);
-pub const STG_E_LOCKVIOLATION: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147287007i32);
-pub const STG_E_MEDIUMFULL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147286928i32);
-pub const STG_E_NOMOREFILES: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147287022i32);
-pub const STG_E_NOTCURRENT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147286783i32);
-pub const STG_E_NOTFILEBASEDSTORAGE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147286777i32);
-pub const STG_E_NOTSIMPLEFORMAT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147286766i32);
-pub const STG_E_OLDDLL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147286779i32);
-pub const STG_E_OLDFORMAT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147286780i32);
-pub const STG_E_PATHNOTFOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147287037i32);
-pub const STG_E_PROPSETMISMATCHED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147286800i32);
-pub const STG_E_READFAULT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147287010i32);
-pub const STG_E_RESETS_EXHAUSTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147286261i32);
-pub const STG_E_REVERTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147286782i32);
-pub const STG_E_SEEKERROR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147287015i32);
-pub const STG_E_SHAREREQUIRED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147286778i32);
-pub const STG_E_SHAREVIOLATION: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147287008i32);
-pub const STG_E_STATUS_COPY_PROTECTION_FAILURE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147286267i32);
-pub const STG_E_TERMINATED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147286526i32);
-pub const STG_E_TOOMANYOPENFILES: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147287036i32);
-pub const STG_E_UNIMPLEMENTEDFUNCTION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147286786i32);
-pub const STG_E_UNKNOWN: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147286787i32);
-pub const STG_E_WRITEFAULT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147287011i32);
-pub const STG_S_BLOCK: ::win32::core::HRESULT = ::win32::core::HRESULT(197121i32);
-pub const STG_S_CANNOTCONSOLIDATE: ::win32::core::HRESULT = ::win32::core::HRESULT(197126i32);
-pub const STG_S_CONSOLIDATIONFAILED: ::win32::core::HRESULT = ::win32::core::HRESULT(197125i32);
-pub const STG_S_CONVERTED: ::win32::core::HRESULT = ::win32::core::HRESULT(197120i32);
-pub const STG_S_MONITORING: ::win32::core::HRESULT = ::win32::core::HRESULT(197123i32);
-pub const STG_S_MULTIPLEOPENS: ::win32::core::HRESULT = ::win32::core::HRESULT(197124i32);
-pub const STG_S_POWER_CYCLE_REQUIRED: ::win32::core::HRESULT = ::win32::core::HRESULT(197127i32);
-pub const STG_S_RETRYNOW: ::win32::core::HRESULT = ::win32::core::HRESULT(197122i32);
+pub const STG_E_ABNORMALAPIEXIT: crate::core::HRESULT = crate::core::HRESULT(-2147286790i32);
+pub const STG_E_ACCESSDENIED: crate::core::HRESULT = crate::core::HRESULT(-2147287035i32);
+pub const STG_E_BADBASEADDRESS: crate::core::HRESULT = crate::core::HRESULT(-2147286768i32);
+pub const STG_E_CANTSAVE: crate::core::HRESULT = crate::core::HRESULT(-2147286781i32);
+pub const STG_E_CSS_AUTHENTICATION_FAILURE: crate::core::HRESULT =
+    crate::core::HRESULT(-2147286266i32);
+pub const STG_E_CSS_KEY_NOT_ESTABLISHED: crate::core::HRESULT =
+    crate::core::HRESULT(-2147286264i32);
+pub const STG_E_CSS_KEY_NOT_PRESENT: crate::core::HRESULT = crate::core::HRESULT(-2147286265i32);
+pub const STG_E_CSS_REGION_MISMATCH: crate::core::HRESULT = crate::core::HRESULT(-2147286262i32);
+pub const STG_E_CSS_SCRAMBLED_SECTOR: crate::core::HRESULT = crate::core::HRESULT(-2147286263i32);
+pub const STG_E_DEVICE_UNRESPONSIVE: crate::core::HRESULT = crate::core::HRESULT(-2147286518i32);
+pub const STG_E_DISKISWRITEPROTECTED: crate::core::HRESULT = crate::core::HRESULT(-2147287021i32);
+pub const STG_E_DOCFILECORRUPT: crate::core::HRESULT = crate::core::HRESULT(-2147286775i32);
+pub const STG_E_DOCFILETOOLARGE: crate::core::HRESULT = crate::core::HRESULT(-2147286767i32);
+pub const STG_E_EXTANTMARSHALLINGS: crate::core::HRESULT = crate::core::HRESULT(-2147286776i32);
+pub const STG_E_FILEALREADYEXISTS: crate::core::HRESULT = crate::core::HRESULT(-2147286960i32);
+pub const STG_E_FILENOTFOUND: crate::core::HRESULT = crate::core::HRESULT(-2147287038i32);
+pub const STG_E_FIRMWARE_IMAGE_INVALID: crate::core::HRESULT = crate::core::HRESULT(-2147286519i32);
+pub const STG_E_FIRMWARE_SLOT_INVALID: crate::core::HRESULT = crate::core::HRESULT(-2147286520i32);
+pub const STG_E_INCOMPLETE: crate::core::HRESULT = crate::core::HRESULT(-2147286527i32);
+pub const STG_E_INSUFFICIENTMEMORY: crate::core::HRESULT = crate::core::HRESULT(-2147287032i32);
+pub const STG_E_INUSE: crate::core::HRESULT = crate::core::HRESULT(-2147286784i32);
+pub const STG_E_INVALIDFLAG: crate::core::HRESULT = crate::core::HRESULT(-2147286785i32);
+pub const STG_E_INVALIDFUNCTION: crate::core::HRESULT = crate::core::HRESULT(-2147287039i32);
+pub const STG_E_INVALIDHANDLE: crate::core::HRESULT = crate::core::HRESULT(-2147287034i32);
+pub const STG_E_INVALIDHEADER: crate::core::HRESULT = crate::core::HRESULT(-2147286789i32);
+pub const STG_E_INVALIDNAME: crate::core::HRESULT = crate::core::HRESULT(-2147286788i32);
+pub const STG_E_INVALIDPARAMETER: crate::core::HRESULT = crate::core::HRESULT(-2147286953i32);
+pub const STG_E_INVALIDPOINTER: crate::core::HRESULT = crate::core::HRESULT(-2147287031i32);
+pub const STG_E_LOCKVIOLATION: crate::core::HRESULT = crate::core::HRESULT(-2147287007i32);
+pub const STG_E_MEDIUMFULL: crate::core::HRESULT = crate::core::HRESULT(-2147286928i32);
+pub const STG_E_NOMOREFILES: crate::core::HRESULT = crate::core::HRESULT(-2147287022i32);
+pub const STG_E_NOTCURRENT: crate::core::HRESULT = crate::core::HRESULT(-2147286783i32);
+pub const STG_E_NOTFILEBASEDSTORAGE: crate::core::HRESULT = crate::core::HRESULT(-2147286777i32);
+pub const STG_E_NOTSIMPLEFORMAT: crate::core::HRESULT = crate::core::HRESULT(-2147286766i32);
+pub const STG_E_OLDDLL: crate::core::HRESULT = crate::core::HRESULT(-2147286779i32);
+pub const STG_E_OLDFORMAT: crate::core::HRESULT = crate::core::HRESULT(-2147286780i32);
+pub const STG_E_PATHNOTFOUND: crate::core::HRESULT = crate::core::HRESULT(-2147287037i32);
+pub const STG_E_PROPSETMISMATCHED: crate::core::HRESULT = crate::core::HRESULT(-2147286800i32);
+pub const STG_E_READFAULT: crate::core::HRESULT = crate::core::HRESULT(-2147287010i32);
+pub const STG_E_RESETS_EXHAUSTED: crate::core::HRESULT = crate::core::HRESULT(-2147286261i32);
+pub const STG_E_REVERTED: crate::core::HRESULT = crate::core::HRESULT(-2147286782i32);
+pub const STG_E_SEEKERROR: crate::core::HRESULT = crate::core::HRESULT(-2147287015i32);
+pub const STG_E_SHAREREQUIRED: crate::core::HRESULT = crate::core::HRESULT(-2147286778i32);
+pub const STG_E_SHAREVIOLATION: crate::core::HRESULT = crate::core::HRESULT(-2147287008i32);
+pub const STG_E_STATUS_COPY_PROTECTION_FAILURE: crate::core::HRESULT =
+    crate::core::HRESULT(-2147286267i32);
+pub const STG_E_TERMINATED: crate::core::HRESULT = crate::core::HRESULT(-2147286526i32);
+pub const STG_E_TOOMANYOPENFILES: crate::core::HRESULT = crate::core::HRESULT(-2147287036i32);
+pub const STG_E_UNIMPLEMENTEDFUNCTION: crate::core::HRESULT = crate::core::HRESULT(-2147286786i32);
+pub const STG_E_UNKNOWN: crate::core::HRESULT = crate::core::HRESULT(-2147286787i32);
+pub const STG_E_WRITEFAULT: crate::core::HRESULT = crate::core::HRESULT(-2147287011i32);
+pub const STG_S_BLOCK: crate::core::HRESULT = crate::core::HRESULT(197121i32);
+pub const STG_S_CANNOTCONSOLIDATE: crate::core::HRESULT = crate::core::HRESULT(197126i32);
+pub const STG_S_CONSOLIDATIONFAILED: crate::core::HRESULT = crate::core::HRESULT(197125i32);
+pub const STG_S_CONVERTED: crate::core::HRESULT = crate::core::HRESULT(197120i32);
+pub const STG_S_MONITORING: crate::core::HRESULT = crate::core::HRESULT(197123i32);
+pub const STG_S_MULTIPLEOPENS: crate::core::HRESULT = crate::core::HRESULT(197124i32);
+pub const STG_S_POWER_CYCLE_REQUIRED: crate::core::HRESULT = crate::core::HRESULT(197127i32);
+pub const STG_S_RETRYNOW: crate::core::HRESULT = crate::core::HRESULT(197122i32);
 pub const STILL_ACTIVE: NTSTATUS = NTSTATUS(259i32);
 pub const STORE_ERROR_LICENSE_REVOKED: i32 = 15864i32;
 pub const STORE_ERROR_PENDING_COM_TRANSACTION: i32 = 15863i32;
@@ -8099,616 +7633,528 @@ impl ::core::cmp::PartialEq for SYSTEMTIME {
     }
 }
 impl ::core::cmp::Eq for SYSTEMTIME {}
-pub const S_APPLICATION_ACTIVATION_ERROR_HANDLED_BY_DIALOG: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(2556505i32);
-pub const S_FALSE: ::win32::core::HRESULT = ::win32::core::HRESULT(1i32);
-pub const S_OK: ::win32::core::HRESULT = ::win32::core::HRESULT(0i32);
-pub const S_STORE_LAUNCHED_FOR_REMEDIATION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(2556504i32);
-pub const TBSIMP_E_BUFFER_TOO_SMALL: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144796160i32);
-pub const TBSIMP_E_CLEANUP_FAILED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144796159i32);
-pub const TBSIMP_E_COMMAND_CANCELED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144796149i32);
-pub const TBSIMP_E_COMMAND_FAILED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144796143i32);
-pub const TBSIMP_E_DUPLICATE_VHANDLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144796154i32);
-pub const TBSIMP_E_HASH_BAD_KEY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144796155i32);
-pub const TBSIMP_E_HASH_TABLE_FULL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144796138i32);
-pub const TBSIMP_E_INVALID_CONTEXT_HANDLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144796158i32);
-pub const TBSIMP_E_INVALID_CONTEXT_PARAM: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144796157i32);
-pub const TBSIMP_E_INVALID_OUTPUT_POINTER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144796153i32);
-pub const TBSIMP_E_INVALID_PARAMETER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144796152i32);
-pub const TBSIMP_E_INVALID_RESOURCE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144796140i32);
-pub const TBSIMP_E_LIST_NOT_FOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144796146i32);
-pub const TBSIMP_E_LIST_NO_MORE_ITEMS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144796147i32);
-pub const TBSIMP_E_NOTHING_TO_UNLOAD: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144796139i32);
-pub const TBSIMP_E_NOT_ENOUGH_SPACE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144796145i32);
-pub const TBSIMP_E_NOT_ENOUGH_TPM_CONTEXTS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144796144i32);
-pub const TBSIMP_E_NO_EVENT_LOG: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144796133i32);
-pub const TBSIMP_E_OUT_OF_MEMORY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144796148i32);
-pub const TBSIMP_E_PPI_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144796135i32);
-pub const TBSIMP_E_RESOURCE_EXPIRED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144796141i32);
-pub const TBSIMP_E_RPC_INIT_FAILED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144796151i32);
-pub const TBSIMP_E_SCHEDULER_NOT_RUNNING: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144796150i32);
-pub const TBSIMP_E_TOO_MANY_RESOURCES: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144796136i32);
-pub const TBSIMP_E_TOO_MANY_TBS_CONTEXTS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144796137i32);
-pub const TBSIMP_E_TPM_ERROR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144796156i32);
-pub const TBSIMP_E_TPM_INCOMPATIBLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144796134i32);
-pub const TBSIMP_E_UNKNOWN_ORDINAL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144796142i32);
-pub const TBS_E_ACCESS_DENIED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144845806i32);
-pub const TBS_E_BAD_PARAMETER: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144845822i32);
-pub const TBS_E_BUFFER_TOO_LARGE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144845810i32);
-pub const TBS_E_COMMAND_CANCELED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144845811i32);
-pub const TBS_E_INSUFFICIENT_BUFFER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144845819i32);
-pub const TBS_E_INTERNAL_ERROR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144845823i32);
-pub const TBS_E_INVALID_CONTEXT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144845820i32);
-pub const TBS_E_INVALID_CONTEXT_PARAM: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144845817i32);
-pub const TBS_E_INVALID_OUTPUT_POINTER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144845821i32);
-pub const TBS_E_IOERROR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144845818i32);
-pub const TBS_E_NO_EVENT_LOG: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144845807i32);
-pub const TBS_E_OWNERAUTH_NOT_FOUND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144845803i32);
-pub const TBS_E_PPI_FUNCTION_UNSUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144845804i32);
-pub const TBS_E_PPI_NOT_SUPPORTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144845812i32);
-pub const TBS_E_PROVISIONING_INCOMPLETE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144845802i32);
-pub const TBS_E_PROVISIONING_NOT_ALLOWED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144845805i32);
-pub const TBS_E_SERVICE_DISABLED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144845808i32);
-pub const TBS_E_SERVICE_NOT_RUNNING: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144845816i32);
-pub const TBS_E_SERVICE_START_PENDING: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144845813i32);
-pub const TBS_E_TOO_MANY_RESOURCES: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144845814i32);
-pub const TBS_E_TOO_MANY_TBS_CONTEXTS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144845815i32);
-pub const TBS_E_TPM_NOT_FOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144845809i32);
-pub const TPC_E_INITIALIZE_FAIL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147220957i32);
-pub const TPC_E_INVALID_CONFIGURATION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147220935i32);
-pub const TPC_E_INVALID_DATA_FROM_RECOGNIZER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147220934i32);
-pub const TPC_E_INVALID_INPUT_RECT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147220967i32);
-pub const TPC_E_INVALID_PACKET_DESCRIPTION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147220941i32);
-pub const TPC_E_INVALID_PROPERTY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147220927i32);
-pub const TPC_E_INVALID_RIGHTS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147220938i32);
-pub const TPC_E_INVALID_STROKE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147220958i32);
-pub const TPC_E_NOT_RELEVANT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147220942i32);
-pub const TPC_E_NO_DEFAULT_TABLET: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147220974i32);
-pub const TPC_E_OUT_OF_ORDER_CALL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147220937i32);
-pub const TPC_E_QUEUE_FULL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147220936i32);
-pub const TPC_E_RECOGNIZER_NOT_REGISTERED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147220939i32);
-pub const TPC_E_UNKNOWN_PROPERTY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147220965i32);
-pub const TPC_S_INTERRUPTED: ::win32::core::HRESULT = ::win32::core::HRESULT(262739i32);
-pub const TPC_S_NO_DATA_TO_PROCESS: ::win32::core::HRESULT = ::win32::core::HRESULT(262740i32);
-pub const TPC_S_TRUNCATED: ::win32::core::HRESULT = ::win32::core::HRESULT(262738i32);
-pub const TPMAPI_E_ACCESS_DENIED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144796408i32);
-pub const TPMAPI_E_AUTHORIZATION_FAILED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144796407i32);
-pub const TPMAPI_E_AUTHORIZATION_REVOKED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144796378i32);
-pub const TPMAPI_E_AUTHORIZING_KEY_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144796376i32);
-pub const TPMAPI_E_BUFFER_TOO_SMALL: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144796410i32);
-pub const TPMAPI_E_EMPTY_TCG_LOG: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144796390i32);
-pub const TPMAPI_E_ENCRYPTION_FAILED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144796400i32);
-pub const TPMAPI_E_ENDORSEMENT_AUTH_NOT_NULL: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144796379i32);
-pub const TPMAPI_E_FIPS_RNG_CHECK_FAILED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144796391i32);
-pub const TPMAPI_E_INTERNAL_ERROR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144796409i32);
-pub const TPMAPI_E_INVALID_AUTHORIZATION_SIGNATURE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144796375i32);
-pub const TPMAPI_E_INVALID_CONTEXT_HANDLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144796406i32);
-pub const TPMAPI_E_INVALID_CONTEXT_PARAMS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144796395i32);
-pub const TPMAPI_E_INVALID_DELEGATE_BLOB: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144796396i32);
-pub const TPMAPI_E_INVALID_ENCODING: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144796402i32);
-pub const TPMAPI_E_INVALID_KEY_BLOB: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144796394i32);
-pub const TPMAPI_E_INVALID_KEY_PARAMS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144796399i32);
-pub const TPMAPI_E_INVALID_KEY_SIZE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144796401i32);
-pub const TPMAPI_E_INVALID_MIGRATION_AUTHORIZATION_BLOB: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144796398i32);
-pub const TPMAPI_E_INVALID_OUTPUT_POINTER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144796413i32);
-pub const TPMAPI_E_INVALID_OWNER_AUTH: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144796392i32);
-pub const TPMAPI_E_INVALID_PARAMETER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144796412i32);
-pub const TPMAPI_E_INVALID_PCR_DATA: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144796393i32);
-pub const TPMAPI_E_INVALID_PCR_INDEX: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144796397i32);
-pub const TPMAPI_E_INVALID_POLICYAUTH_BLOB_TYPE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144796370i32);
-pub const TPMAPI_E_INVALID_STATE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144796416i32);
-pub const TPMAPI_E_INVALID_TCG_LOG_ENTRY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144796389i32);
-pub const TPMAPI_E_INVALID_TPM_VERSION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144796371i32);
-pub const TPMAPI_E_MALFORMED_AUTHORIZATION_KEY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144796377i32);
-pub const TPMAPI_E_MALFORMED_AUTHORIZATION_OTHER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144796373i32);
-pub const TPMAPI_E_MALFORMED_AUTHORIZATION_POLICY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144796374i32);
-pub const TPMAPI_E_MESSAGE_TOO_LARGE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144796403i32);
-pub const TPMAPI_E_NOT_ENOUGH_DATA: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144796415i32);
-pub const TPMAPI_E_NO_AUTHORIZATION_CHAIN_FOUND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144796382i32);
-pub const TPMAPI_E_NV_BITS_NOT_DEFINED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144796385i32);
-pub const TPMAPI_E_NV_BITS_NOT_READY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144796384i32);
-pub const TPMAPI_E_OUT_OF_MEMORY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144796411i32);
-pub const TPMAPI_E_OWNER_AUTH_NOT_NULL: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144796380i32);
-pub const TPMAPI_E_POLICY_DENIES_OPERATION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144796386i32);
-pub const TPMAPI_E_SEALING_KEY_CHANGED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144796372i32);
-pub const TPMAPI_E_SEALING_KEY_NOT_AVAILABLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144796383i32);
-pub const TPMAPI_E_SVN_COUNTER_NOT_AVAILABLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144796381i32);
-pub const TPMAPI_E_TBS_COMMUNICATION_ERROR: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144796405i32);
-pub const TPMAPI_E_TCG_INVALID_DIGEST_ENTRY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144796387i32);
-pub const TPMAPI_E_TCG_SEPARATOR_ABSENT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144796388i32);
-pub const TPMAPI_E_TOO_MUCH_DATA: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144796414i32);
-pub const TPMAPI_E_TPM_COMMAND_ERROR: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144796404i32);
-pub const TPM_20_E_ASYMMETRIC: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862079i32);
-pub const TPM_20_E_ATTRIBUTES: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862078i32);
-pub const TPM_20_E_AUTHSIZE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144861884i32);
-pub const TPM_20_E_AUTH_CONTEXT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144861883i32);
-pub const TPM_20_E_AUTH_FAIL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862066i32);
-pub const TPM_20_E_AUTH_MISSING: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144861915i32);
-pub const TPM_20_E_AUTH_TYPE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144861916i32);
-pub const TPM_20_E_AUTH_UNAVAILABLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144861905i32);
-pub const TPM_20_E_BAD_AUTH: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862046i32);
-pub const TPM_20_E_BAD_CONTEXT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144861872i32);
-pub const TPM_20_E_BINDING: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862043i32);
-pub const TPM_20_E_CANCELED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144859895i32);
-pub const TPM_20_E_COMMAND_CODE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144861885i32);
-pub const TPM_20_E_COMMAND_SIZE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144861886i32);
-pub const TPM_20_E_CONTEXT_GAP: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144859903i32);
-pub const TPM_20_E_CPHASH: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144861871i32);
-pub const TPM_20_E_CURVE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862042i32);
-pub const TPM_20_E_DISABLED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144861920i32);
-pub const TPM_20_E_ECC_CURVE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144861917i32);
-pub const TPM_20_E_ECC_POINT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862041i32);
-pub const TPM_20_E_EXCLUSIVE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144861919i32);
-pub const TPM_20_E_EXPIRED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862045i32);
-pub const TPM_20_E_FAILURE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144861951i32);
-pub const TPM_20_E_HANDLE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862069i32);
-pub const TPM_20_E_HASH: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862077i32);
-pub const TPM_20_E_HIERARCHY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862075i32);
-pub const TPM_20_E_HMAC: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144861927i32);
-pub const TPM_20_E_INITIALIZE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144861952i32);
-pub const TPM_20_E_INSUFFICIENT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862054i32);
-pub const TPM_20_E_INTEGRITY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862049i32);
-pub const TPM_20_E_KDF: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862068i32);
-pub const TPM_20_E_KEY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862052i32);
-pub const TPM_20_E_KEY_SIZE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862073i32);
-pub const TPM_20_E_LOCALITY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144859897i32);
-pub const TPM_20_E_LOCKOUT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144859871i32);
-pub const TPM_20_E_MEMORY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144859900i32);
-pub const TPM_20_E_MGF: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862072i32);
-pub const TPM_20_E_MODE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862071i32);
-pub const TPM_20_E_NEEDS_TEST: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144861869i32);
-pub const TPM_20_E_NONCE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862065i32);
-pub const TPM_20_E_NO_RESULT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144861868i32);
-pub const TPM_20_E_NV_AUTHORIZATION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144861879i32);
-pub const TPM_20_E_NV_DEFINED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144861876i32);
-pub const TPM_20_E_NV_LOCKED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144861880i32);
-pub const TPM_20_E_NV_RANGE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144861882i32);
-pub const TPM_20_E_NV_RATE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144859872i32);
-pub const TPM_20_E_NV_SIZE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144861881i32);
-pub const TPM_20_E_NV_SPACE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144861877i32);
-pub const TPM_20_E_NV_UNAVAILABLE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144859869i32);
-pub const TPM_20_E_NV_UNINITIALIZED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144861878i32);
-pub const TPM_20_E_OBJECT_HANDLES: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144859898i32);
-pub const TPM_20_E_OBJECT_MEMORY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144859902i32);
-pub const TPM_20_E_PARENT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144861870i32);
-pub const TPM_20_E_PCR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144861913i32);
-pub const TPM_20_E_PCR_CHANGED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144861912i32);
-pub const TPM_20_E_POLICY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144861914i32);
-pub const TPM_20_E_POLICY_CC: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862044i32);
-pub const TPM_20_E_POLICY_FAIL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862051i32);
-pub const TPM_20_E_PP: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862064i32);
-pub const TPM_20_E_PRIVATE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144861941i32);
-pub const TPM_20_E_RANGE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862067i32);
-pub const TPM_20_E_REBOOT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144861904i32);
-pub const TPM_20_E_RESERVED_BITS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862047i32);
-pub const TPM_20_E_RETRY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144859870i32);
-pub const TPM_20_E_SCHEME: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862062i32);
-pub const TPM_20_E_SELECTOR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862056i32);
-pub const TPM_20_E_SENSITIVE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144861867i32);
-pub const TPM_20_E_SEQUENCE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144861949i32);
-pub const TPM_20_E_SESSION_HANDLES: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144859899i32);
-pub const TPM_20_E_SESSION_MEMORY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144859901i32);
-pub const TPM_20_E_SIGNATURE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862053i32);
-pub const TPM_20_E_SIZE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862059i32);
-pub const TPM_20_E_SYMMETRIC: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862058i32);
-pub const TPM_20_E_TAG: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862057i32);
-pub const TPM_20_E_TESTING: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144859894i32);
-pub const TPM_20_E_TICKET: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862048i32);
-pub const TPM_20_E_TOO_MANY_CONTEXTS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144861906i32);
-pub const TPM_20_E_TYPE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862070i32);
-pub const TPM_20_E_UNBALANCED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144861903i32);
-pub const TPM_20_E_UPGRADE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144861907i32);
-pub const TPM_20_E_VALUE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862076i32);
-pub const TPM_20_E_YIELDED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144859896i32);
-pub const TPM_E_AREA_LOCKED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862148i32);
-pub const TPM_E_ATTESTATION_CHALLENGE_NOT_SET: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144795630i32);
-pub const TPM_E_AUDITFAILURE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862204i32);
-pub const TPM_E_AUDITFAIL_SUCCESSFUL: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144862159i32);
-pub const TPM_E_AUDITFAIL_UNSUCCESSFUL: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144862160i32);
-pub const TPM_E_AUTH2FAIL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862179i32);
-pub const TPM_E_AUTHFAIL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862207i32);
-pub const TPM_E_AUTH_CONFLICT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862149i32);
-pub const TPM_E_BADCONTEXT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862118i32);
-pub const TPM_E_BADINDEX: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862206i32);
-pub const TPM_E_BADTAG: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862178i32);
-pub const TPM_E_BAD_ATTRIBUTES: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862142i32);
-pub const TPM_E_BAD_COUNTER: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862139i32);
-pub const TPM_E_BAD_DATASIZE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862165i32);
-pub const TPM_E_BAD_DELEGATE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862119i32);
-pub const TPM_E_BAD_HANDLE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862120i32);
-pub const TPM_E_BAD_KEY_PROPERTY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862168i32);
-pub const TPM_E_BAD_LOCALITY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862147i32);
-pub const TPM_E_BAD_MIGRATION: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862167i32);
-pub const TPM_E_BAD_MODE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862164i32);
-pub const TPM_E_BAD_ORDINAL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862198i32);
-pub const TPM_E_BAD_PARAMETER: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862205i32);
-pub const TPM_E_BAD_PARAM_SIZE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862183i32);
-pub const TPM_E_BAD_PRESENCE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862163i32);
-pub const TPM_E_BAD_SCHEME: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862166i32);
-pub const TPM_E_BAD_SIGNATURE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862110i32);
-pub const TPM_E_BAD_TYPE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862156i32);
-pub const TPM_E_BAD_VERSION: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862162i32);
-pub const TPM_E_BUFFER_LENGTH_MISMATCH: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144795618i32);
-pub const TPM_E_CLAIM_TYPE_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144795620i32);
-pub const TPM_E_CLEAR_DISABLED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862203i32);
-pub const TPM_E_COMMAND_BLOCKED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144861184i32);
-pub const TPM_E_CONTEXT_GAP: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862137i32);
-pub const TPM_E_DAA_INPUT_DATA0: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862127i32);
-pub const TPM_E_DAA_INPUT_DATA1: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862126i32);
-pub const TPM_E_DAA_ISSUER_SETTINGS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144862125i32);
-pub const TPM_E_DAA_ISSUER_VALIDITY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144862122i32);
-pub const TPM_E_DAA_RESOURCES: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862128i32);
-pub const TPM_E_DAA_STAGE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862123i32);
-pub const TPM_E_DAA_TPM_SETTINGS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862124i32);
-pub const TPM_E_DAA_WRONG_W: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862121i32);
-pub const TPM_E_DEACTIVATED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862202i32);
-pub const TPM_E_DECRYPT_ERROR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862175i32);
-pub const TPM_E_DEFEND_LOCK_RUNNING: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144860157i32);
-pub const TPM_E_DELEGATE_ADMIN: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862131i32);
-pub const TPM_E_DELEGATE_FAMILY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862132i32);
-pub const TPM_E_DELEGATE_LOCK: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862133i32);
-pub const TPM_E_DISABLED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862201i32);
-pub const TPM_E_DISABLED_CMD: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862200i32);
-pub const TPM_E_DOING_SELFTEST: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144860158i32);
-pub const TPM_E_DUPLICATE_VHANDLE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144861182i32);
-pub const TPM_E_EMBEDDED_COMMAND_BLOCKED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144861181i32);
-pub const TPM_E_EMBEDDED_COMMAND_UNSUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144861180i32);
-pub const TPM_E_ENCRYPT_ERROR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862176i32);
-pub const TPM_E_ERROR_MASK: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862208i32);
-pub const TPM_E_FAIL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862199i32);
-pub const TPM_E_FAILEDSELFTEST: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862180i32);
-pub const TPM_E_FAMILYCOUNT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862144i32);
-pub const TPM_E_INAPPROPRIATE_ENC: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862194i32);
-pub const TPM_E_INAPPROPRIATE_SIG: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862169i32);
-pub const TPM_E_INSTALL_DISABLED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862197i32);
-pub const TPM_E_INVALID_AUTHHANDLE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862174i32);
-pub const TPM_E_INVALID_FAMILY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862153i32);
-pub const TPM_E_INVALID_HANDLE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144861183i32);
-pub const TPM_E_INVALID_KEYHANDLE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862196i32);
-pub const TPM_E_INVALID_KEYUSAGE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862172i32);
-pub const TPM_E_INVALID_OWNER_AUTH: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144795135i32);
-pub const TPM_E_INVALID_PCR_INFO: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862192i32);
-pub const TPM_E_INVALID_POSTINIT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862170i32);
-pub const TPM_E_INVALID_RESOURCE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862155i32);
-pub const TPM_E_INVALID_STRUCTURE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862141i32);
-pub const TPM_E_IOERROR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862177i32);
-pub const TPM_E_KEYNOTFOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862195i32);
-pub const TPM_E_KEY_ALREADY_FINALIZED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144795628i32);
-pub const TPM_E_KEY_NOTSUPPORTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862150i32);
-pub const TPM_E_KEY_NOT_AUTHENTICATED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144795624i32);
-pub const TPM_E_KEY_NOT_FINALIZED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144795631i32);
-pub const TPM_E_KEY_NOT_LOADED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144795633i32);
-pub const TPM_E_KEY_NOT_SIGNING_KEY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144795622i32);
-pub const TPM_E_KEY_OWNER_CONTROL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862140i32);
-pub const TPM_E_KEY_USAGE_POLICY_INVALID: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144795626i32);
-pub const TPM_E_KEY_USAGE_POLICY_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144795627i32);
-pub const TPM_E_LOCKED_OUT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144795621i32);
-pub const TPM_E_MAXNVWRITES: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862136i32);
-pub const TPM_E_MA_AUTHORITY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862113i32);
-pub const TPM_E_MA_DESTINATION: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862115i32);
-pub const TPM_E_MA_SOURCE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862114i32);
-pub const TPM_E_MA_TICKET_SIGNATURE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144862116i32);
-pub const TPM_E_MIGRATEFAIL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862193i32);
-pub const TPM_E_NEEDS_SELFTEST: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144860159i32);
-pub const TPM_E_NOCONTEXTSPACE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862109i32);
-pub const TPM_E_NOOPERATOR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862135i32);
-pub const TPM_E_NOSPACE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862191i32);
-pub const TPM_E_NOSRK: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862190i32);
-pub const TPM_E_NOTFIPS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862154i32);
-pub const TPM_E_NOTLOCAL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862157i32);
-pub const TPM_E_NOTRESETABLE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862158i32);
-pub const TPM_E_NOTSEALED_BLOB: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862189i32);
-pub const TPM_E_NOT_FULLWRITE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862138i32);
-pub const TPM_E_NOT_PCR_BOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144795629i32);
-pub const TPM_E_NO_ENDORSEMENT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862173i32);
-pub const TPM_E_NO_KEY_CERTIFICATION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144795632i32);
-pub const TPM_E_NO_NV_PERMISSION: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862152i32);
-pub const TPM_E_NO_WRAP_TRANSPORT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862161i32);
-pub const TPM_E_OWNER_CONTROL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862129i32);
-pub const TPM_E_OWNER_SET: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862188i32);
-pub const TPM_E_PCP_AUTHENTICATION_FAILED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144795640i32);
-pub const TPM_E_PCP_AUTHENTICATION_IGNORED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144795639i32);
-pub const TPM_E_PCP_BUFFER_TOO_SMALL: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144795642i32);
-pub const TPM_E_PCP_DEVICE_NOT_READY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144795647i32);
-pub const TPM_E_PCP_ERROR_MASK: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144795648i32);
-pub const TPM_E_PCP_FLAG_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144795644i32);
-pub const TPM_E_PCP_IFX_RSA_KEY_CREATION_BLOCKED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144795617i32);
-pub const TPM_E_PCP_INTERNAL_ERROR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144795641i32);
-pub const TPM_E_PCP_INVALID_HANDLE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144795646i32);
-pub const TPM_E_PCP_INVALID_PARAMETER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144795645i32);
-pub const TPM_E_PCP_KEY_HANDLE_INVALIDATED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144795614i32);
-pub const TPM_E_PCP_KEY_NOT_AIK: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144795623i32);
-pub const TPM_E_PCP_NOT_SUPPORTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144795643i32);
-pub const TPM_E_PCP_PLATFORM_CLAIM_MAY_BE_OUTDATED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(1076429860i32);
-pub const TPM_E_PCP_PLATFORM_CLAIM_OUTDATED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(1076429861i32);
-pub const TPM_E_PCP_PLATFORM_CLAIM_REBOOT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(1076429862i32);
-pub const TPM_E_PCP_POLICY_NOT_FOUND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144795638i32);
-pub const TPM_E_PCP_PROFILE_NOT_FOUND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144795637i32);
-pub const TPM_E_PCP_RAW_POLICY_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144795615i32);
-pub const TPM_E_PCP_TICKET_MISSING: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144795616i32);
-pub const TPM_E_PCP_UNSUPPORTED_PSS_SALT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(1076429859i32);
-pub const TPM_E_PCP_VALIDATION_FAILED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144795636i32);
-pub const TPM_E_PCP_WRONG_PARENT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144795634i32);
-pub const TPM_E_PERMANENTEK: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862111i32);
-pub const TPM_E_PER_NOWRITE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862145i32);
-pub const TPM_E_PPI_ACPI_FAILURE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144795904i32);
-pub const TPM_E_PPI_BIOS_FAILURE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144795902i32);
-pub const TPM_E_PPI_BLOCKED_IN_BIOS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144795900i32);
-pub const TPM_E_PPI_NOT_SUPPORTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144795901i32);
-pub const TPM_E_PPI_USER_ABORT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144795903i32);
-pub const TPM_E_PROVISIONING_INCOMPLETE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144795136i32);
-pub const TPM_E_READ_ONLY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862146i32);
-pub const TPM_E_REQUIRES_SIGN: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862151i32);
-pub const TPM_E_RESOURCEMISSING: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862134i32);
-pub const TPM_E_RESOURCES: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862187i32);
-pub const TPM_E_RETRY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144860160i32);
-pub const TPM_E_SHA_ERROR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862181i32);
-pub const TPM_E_SHA_THREAD: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862182i32);
-pub const TPM_E_SHORTRANDOM: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862186i32);
-pub const TPM_E_SIZE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862185i32);
-pub const TPM_E_SOFT_KEY_ERROR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144795625i32);
-pub const TPM_E_TOOMANYCONTEXTS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862117i32);
-pub const TPM_E_TOO_MUCH_DATA: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144795134i32);
-pub const TPM_E_TRANSPORT_NOTEXCLUSIVE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144862130i32);
-pub const TPM_E_VERSION_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144795619i32);
-pub const TPM_E_WRITE_LOCKED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862143i32);
-pub const TPM_E_WRONGPCRVAL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862184i32);
-pub const TPM_E_WRONG_ENTITYTYPE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144862171i32);
-pub const TPM_E_ZERO_EXHAUST_ENABLED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144795392i32);
-pub const TRUST_E_ACTION_UNKNOWN: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146762750i32);
-pub const TRUST_E_BAD_DIGEST: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146869232i32);
-pub const TRUST_E_BASIC_CONSTRAINTS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146869223i32);
-pub const TRUST_E_CERT_SIGNATURE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146869244i32);
-pub const TRUST_E_COUNTER_SIGNER: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146869245i32);
-pub const TRUST_E_EXPLICIT_DISTRUST: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146762479i32);
-pub const TRUST_E_FAIL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146762485i32);
-pub const TRUST_E_FINANCIAL_CRITERIA: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146869218i32);
-pub const TRUST_E_MALFORMED_SIGNATURE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146869231i32);
-pub const TRUST_E_NOSIGNATURE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146762496i32);
-pub const TRUST_E_NO_SIGNER_CERT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146869246i32);
-pub const TRUST_E_PROVIDER_UNKNOWN: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146762751i32);
-pub const TRUST_E_SUBJECT_FORM_UNKNOWN: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146762749i32);
-pub const TRUST_E_SUBJECT_NOT_TRUSTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146762748i32);
-pub const TRUST_E_SYSTEM_ERROR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146869247i32);
-pub const TRUST_E_TIME_STAMP: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146869243i32);
-pub const TYPE_E_AMBIGUOUSNAME: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147319764i32);
-pub const TYPE_E_BADMODULEKIND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147317571i32);
-pub const TYPE_E_BUFFERTOOSMALL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147319786i32);
-pub const TYPE_E_CANTCREATETMPFILE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147316573i32);
-pub const TYPE_E_CANTLOADLIBRARY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147312566i32);
-pub const TYPE_E_CIRCULARTYPE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147312508i32);
-pub const TYPE_E_DLLFUNCTIONNOTFOUND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147319761i32);
-pub const TYPE_E_DUPLICATEID: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147317562i32);
-pub const TYPE_E_ELEMENTNOTFOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147319765i32);
-pub const TYPE_E_FIELDNOTFOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147319785i32);
-pub const TYPE_E_INCONSISTENTPROPFUNCS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147312509i32);
-pub const TYPE_E_INVALIDID: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147317553i32);
-pub const TYPE_E_INVALIDSTATE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147319767i32);
-pub const TYPE_E_INVDATAREAD: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147319784i32);
-pub const TYPE_E_IOERROR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147316574i32);
-pub const TYPE_E_LIBNOTREGISTERED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147319779i32);
-pub const TYPE_E_NAMECONFLICT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147319763i32);
-pub const TYPE_E_OUTOFBOUNDS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147316575i32);
-pub const TYPE_E_QUALIFIEDNAMEDISALLOWED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147319768i32);
-pub const TYPE_E_REGISTRYACCESS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147319780i32);
-pub const TYPE_E_SIZETOOBIG: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147317563i32);
-pub const TYPE_E_TYPEMISMATCH: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147316576i32);
-pub const TYPE_E_UNDEFINEDTYPE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147319769i32);
-pub const TYPE_E_UNKNOWNLCID: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147319762i32);
-pub const TYPE_E_UNSUPFORMAT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147319783i32);
-pub const TYPE_E_WRONGTYPEKIND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147319766i32);
-pub const UCEERR_BLOCKSFULL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003303415i32);
-pub const UCEERR_CHANNELSYNCABANDONED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003303404i32);
-pub const UCEERR_CHANNELSYNCTIMEDOUT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003303405i32);
-pub const UCEERR_COMMANDTRANSPORTDENIED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003303400i32);
-pub const UCEERR_CONNECTIONIDLOOKUPFAILED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003303416i32);
-pub const UCEERR_CTXSTACKFRSTTARGETNULL: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003303417i32);
-pub const UCEERR_FEEDBACK_UNSUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003303401i32);
-pub const UCEERR_GRAPHICSSTREAMALREADYOPEN: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003303392i32);
-pub const UCEERR_GRAPHICSSTREAMUNAVAILABLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003303399i32);
-pub const UCEERR_HANDLELOOKUPFAILED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003303419i32);
-pub const UCEERR_ILLEGALHANDLE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003303420i32);
-pub const UCEERR_ILLEGALPACKET: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003303422i32);
-pub const UCEERR_ILLEGALRECORDTYPE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003303412i32);
-pub const UCEERR_INVALIDPACKETHEADER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003303424i32);
-pub const UCEERR_MALFORMEDPACKET: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003303421i32);
-pub const UCEERR_MEMORYFAILURE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003303414i32);
-pub const UCEERR_MISSINGBEGINCOMMAND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003303406i32);
-pub const UCEERR_MISSINGENDCOMMAND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003303407i32);
-pub const UCEERR_NO_MULTIPLE_WORKER_THREADS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003303409i32);
-pub const UCEERR_OUTOFHANDLES: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003303411i32);
-pub const UCEERR_PACKETRECORDOUTOFRANGE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003303413i32);
-pub const UCEERR_PARTITION_ZOMBIED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003303389i32);
-pub const UCEERR_REMOTINGNOTSUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003303408i32);
-pub const UCEERR_RENDERTHREADFAILURE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003303418i32);
-pub const UCEERR_TRANSPORTDISCONNECTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003303391i32);
-pub const UCEERR_TRANSPORTOVERLOADED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003303390i32);
-pub const UCEERR_TRANSPORTUNAVAILABLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003303402i32);
-pub const UCEERR_UNCHANGABLE_UPDATE_ATTEMPTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003303410i32);
-pub const UCEERR_UNKNOWNPACKET: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003303423i32);
-pub const UCEERR_UNSUPPORTEDTRANSPORTVERSION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003303403i32);
-pub const UI_E_AMBIGUOUS_MATCH: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144731126i32);
-pub const UI_E_BOOLEAN_EXPECTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144731128i32);
-pub const UI_E_CREATE_FAILED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144731135i32);
-pub const UI_E_DIFFERENT_OWNER: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144731127i32);
-pub const UI_E_END_KEYFRAME_NOT_DETERMINED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144730876i32);
-pub const UI_E_FP_OVERFLOW: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144731125i32);
-pub const UI_E_ILLEGAL_REENTRANCY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144731133i32);
-pub const UI_E_INVALID_DIMENSION: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144730869i32);
-pub const UI_E_INVALID_OUTPUT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144731129i32);
-pub const UI_E_LOOPS_OVERLAP: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144730875i32);
-pub const UI_E_OBJECT_SEALED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144731132i32);
-pub const UI_E_PRIMITIVE_OUT_OF_BOUNDS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144730868i32);
-pub const UI_E_SHUTDOWN_CALLED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144731134i32);
-pub const UI_E_START_KEYFRAME_AFTER_END: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144730877i32);
-pub const UI_E_STORYBOARD_ACTIVE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144730879i32);
-pub const UI_E_STORYBOARD_NOT_PLAYING: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144730878i32);
-pub const UI_E_TIMER_CLIENT_ALREADY_CONNECTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144730870i32);
-pub const UI_E_TIME_BEFORE_LAST_UPDATE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144730871i32);
-pub const UI_E_TRANSITION_ALREADY_USED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144730874i32);
-pub const UI_E_TRANSITION_ECLIPSED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144730872i32);
-pub const UI_E_TRANSITION_NOT_IN_STORYBOARD: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144730873i32);
-pub const UI_E_VALUE_NOT_DETERMINED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2144731130i32);
-pub const UI_E_VALUE_NOT_SET: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144731131i32);
-pub const UI_E_WINDOW_CLOSED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144730623i32);
-pub const UI_E_WRONG_THREAD: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144731124i32);
+pub const S_APPLICATION_ACTIVATION_ERROR_HANDLED_BY_DIALOG: crate::core::HRESULT =
+    crate::core::HRESULT(2556505i32);
+pub const S_FALSE: crate::core::HRESULT = crate::core::HRESULT(1i32);
+pub const S_OK: crate::core::HRESULT = crate::core::HRESULT(0i32);
+pub const S_STORE_LAUNCHED_FOR_REMEDIATION: crate::core::HRESULT = crate::core::HRESULT(2556504i32);
+pub const TBSIMP_E_BUFFER_TOO_SMALL: crate::core::HRESULT = crate::core::HRESULT(-2144796160i32);
+pub const TBSIMP_E_CLEANUP_FAILED: crate::core::HRESULT = crate::core::HRESULT(-2144796159i32);
+pub const TBSIMP_E_COMMAND_CANCELED: crate::core::HRESULT = crate::core::HRESULT(-2144796149i32);
+pub const TBSIMP_E_COMMAND_FAILED: crate::core::HRESULT = crate::core::HRESULT(-2144796143i32);
+pub const TBSIMP_E_DUPLICATE_VHANDLE: crate::core::HRESULT = crate::core::HRESULT(-2144796154i32);
+pub const TBSIMP_E_HASH_BAD_KEY: crate::core::HRESULT = crate::core::HRESULT(-2144796155i32);
+pub const TBSIMP_E_HASH_TABLE_FULL: crate::core::HRESULT = crate::core::HRESULT(-2144796138i32);
+pub const TBSIMP_E_INVALID_CONTEXT_HANDLE: crate::core::HRESULT =
+    crate::core::HRESULT(-2144796158i32);
+pub const TBSIMP_E_INVALID_CONTEXT_PARAM: crate::core::HRESULT =
+    crate::core::HRESULT(-2144796157i32);
+pub const TBSIMP_E_INVALID_OUTPUT_POINTER: crate::core::HRESULT =
+    crate::core::HRESULT(-2144796153i32);
+pub const TBSIMP_E_INVALID_PARAMETER: crate::core::HRESULT = crate::core::HRESULT(-2144796152i32);
+pub const TBSIMP_E_INVALID_RESOURCE: crate::core::HRESULT = crate::core::HRESULT(-2144796140i32);
+pub const TBSIMP_E_LIST_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2144796146i32);
+pub const TBSIMP_E_LIST_NO_MORE_ITEMS: crate::core::HRESULT = crate::core::HRESULT(-2144796147i32);
+pub const TBSIMP_E_NOTHING_TO_UNLOAD: crate::core::HRESULT = crate::core::HRESULT(-2144796139i32);
+pub const TBSIMP_E_NOT_ENOUGH_SPACE: crate::core::HRESULT = crate::core::HRESULT(-2144796145i32);
+pub const TBSIMP_E_NOT_ENOUGH_TPM_CONTEXTS: crate::core::HRESULT =
+    crate::core::HRESULT(-2144796144i32);
+pub const TBSIMP_E_NO_EVENT_LOG: crate::core::HRESULT = crate::core::HRESULT(-2144796133i32);
+pub const TBSIMP_E_OUT_OF_MEMORY: crate::core::HRESULT = crate::core::HRESULT(-2144796148i32);
+pub const TBSIMP_E_PPI_NOT_SUPPORTED: crate::core::HRESULT = crate::core::HRESULT(-2144796135i32);
+pub const TBSIMP_E_RESOURCE_EXPIRED: crate::core::HRESULT = crate::core::HRESULT(-2144796141i32);
+pub const TBSIMP_E_RPC_INIT_FAILED: crate::core::HRESULT = crate::core::HRESULT(-2144796151i32);
+pub const TBSIMP_E_SCHEDULER_NOT_RUNNING: crate::core::HRESULT =
+    crate::core::HRESULT(-2144796150i32);
+pub const TBSIMP_E_TOO_MANY_RESOURCES: crate::core::HRESULT = crate::core::HRESULT(-2144796136i32);
+pub const TBSIMP_E_TOO_MANY_TBS_CONTEXTS: crate::core::HRESULT =
+    crate::core::HRESULT(-2144796137i32);
+pub const TBSIMP_E_TPM_ERROR: crate::core::HRESULT = crate::core::HRESULT(-2144796156i32);
+pub const TBSIMP_E_TPM_INCOMPATIBLE: crate::core::HRESULT = crate::core::HRESULT(-2144796134i32);
+pub const TBSIMP_E_UNKNOWN_ORDINAL: crate::core::HRESULT = crate::core::HRESULT(-2144796142i32);
+pub const TBS_E_ACCESS_DENIED: crate::core::HRESULT = crate::core::HRESULT(-2144845806i32);
+pub const TBS_E_BAD_PARAMETER: crate::core::HRESULT = crate::core::HRESULT(-2144845822i32);
+pub const TBS_E_BUFFER_TOO_LARGE: crate::core::HRESULT = crate::core::HRESULT(-2144845810i32);
+pub const TBS_E_COMMAND_CANCELED: crate::core::HRESULT = crate::core::HRESULT(-2144845811i32);
+pub const TBS_E_INSUFFICIENT_BUFFER: crate::core::HRESULT = crate::core::HRESULT(-2144845819i32);
+pub const TBS_E_INTERNAL_ERROR: crate::core::HRESULT = crate::core::HRESULT(-2144845823i32);
+pub const TBS_E_INVALID_CONTEXT: crate::core::HRESULT = crate::core::HRESULT(-2144845820i32);
+pub const TBS_E_INVALID_CONTEXT_PARAM: crate::core::HRESULT = crate::core::HRESULT(-2144845817i32);
+pub const TBS_E_INVALID_OUTPUT_POINTER: crate::core::HRESULT = crate::core::HRESULT(-2144845821i32);
+pub const TBS_E_IOERROR: crate::core::HRESULT = crate::core::HRESULT(-2144845818i32);
+pub const TBS_E_NO_EVENT_LOG: crate::core::HRESULT = crate::core::HRESULT(-2144845807i32);
+pub const TBS_E_OWNERAUTH_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2144845803i32);
+pub const TBS_E_PPI_FUNCTION_UNSUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144845804i32);
+pub const TBS_E_PPI_NOT_SUPPORTED: crate::core::HRESULT = crate::core::HRESULT(-2144845812i32);
+pub const TBS_E_PROVISIONING_INCOMPLETE: crate::core::HRESULT =
+    crate::core::HRESULT(-2144845802i32);
+pub const TBS_E_PROVISIONING_NOT_ALLOWED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144845805i32);
+pub const TBS_E_SERVICE_DISABLED: crate::core::HRESULT = crate::core::HRESULT(-2144845808i32);
+pub const TBS_E_SERVICE_NOT_RUNNING: crate::core::HRESULT = crate::core::HRESULT(-2144845816i32);
+pub const TBS_E_SERVICE_START_PENDING: crate::core::HRESULT = crate::core::HRESULT(-2144845813i32);
+pub const TBS_E_TOO_MANY_RESOURCES: crate::core::HRESULT = crate::core::HRESULT(-2144845814i32);
+pub const TBS_E_TOO_MANY_TBS_CONTEXTS: crate::core::HRESULT = crate::core::HRESULT(-2144845815i32);
+pub const TBS_E_TPM_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2144845809i32);
+pub const TPC_E_INITIALIZE_FAIL: crate::core::HRESULT = crate::core::HRESULT(-2147220957i32);
+pub const TPC_E_INVALID_CONFIGURATION: crate::core::HRESULT = crate::core::HRESULT(-2147220935i32);
+pub const TPC_E_INVALID_DATA_FROM_RECOGNIZER: crate::core::HRESULT =
+    crate::core::HRESULT(-2147220934i32);
+pub const TPC_E_INVALID_INPUT_RECT: crate::core::HRESULT = crate::core::HRESULT(-2147220967i32);
+pub const TPC_E_INVALID_PACKET_DESCRIPTION: crate::core::HRESULT =
+    crate::core::HRESULT(-2147220941i32);
+pub const TPC_E_INVALID_PROPERTY: crate::core::HRESULT = crate::core::HRESULT(-2147220927i32);
+pub const TPC_E_INVALID_RIGHTS: crate::core::HRESULT = crate::core::HRESULT(-2147220938i32);
+pub const TPC_E_INVALID_STROKE: crate::core::HRESULT = crate::core::HRESULT(-2147220958i32);
+pub const TPC_E_NOT_RELEVANT: crate::core::HRESULT = crate::core::HRESULT(-2147220942i32);
+pub const TPC_E_NO_DEFAULT_TABLET: crate::core::HRESULT = crate::core::HRESULT(-2147220974i32);
+pub const TPC_E_OUT_OF_ORDER_CALL: crate::core::HRESULT = crate::core::HRESULT(-2147220937i32);
+pub const TPC_E_QUEUE_FULL: crate::core::HRESULT = crate::core::HRESULT(-2147220936i32);
+pub const TPC_E_RECOGNIZER_NOT_REGISTERED: crate::core::HRESULT =
+    crate::core::HRESULT(-2147220939i32);
+pub const TPC_E_UNKNOWN_PROPERTY: crate::core::HRESULT = crate::core::HRESULT(-2147220965i32);
+pub const TPC_S_INTERRUPTED: crate::core::HRESULT = crate::core::HRESULT(262739i32);
+pub const TPC_S_NO_DATA_TO_PROCESS: crate::core::HRESULT = crate::core::HRESULT(262740i32);
+pub const TPC_S_TRUNCATED: crate::core::HRESULT = crate::core::HRESULT(262738i32);
+pub const TPMAPI_E_ACCESS_DENIED: crate::core::HRESULT = crate::core::HRESULT(-2144796408i32);
+pub const TPMAPI_E_AUTHORIZATION_FAILED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144796407i32);
+pub const TPMAPI_E_AUTHORIZATION_REVOKED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144796378i32);
+pub const TPMAPI_E_AUTHORIZING_KEY_NOT_SUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144796376i32);
+pub const TPMAPI_E_BUFFER_TOO_SMALL: crate::core::HRESULT = crate::core::HRESULT(-2144796410i32);
+pub const TPMAPI_E_EMPTY_TCG_LOG: crate::core::HRESULT = crate::core::HRESULT(-2144796390i32);
+pub const TPMAPI_E_ENCRYPTION_FAILED: crate::core::HRESULT = crate::core::HRESULT(-2144796400i32);
+pub const TPMAPI_E_ENDORSEMENT_AUTH_NOT_NULL: crate::core::HRESULT =
+    crate::core::HRESULT(-2144796379i32);
+pub const TPMAPI_E_FIPS_RNG_CHECK_FAILED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144796391i32);
+pub const TPMAPI_E_INTERNAL_ERROR: crate::core::HRESULT = crate::core::HRESULT(-2144796409i32);
+pub const TPMAPI_E_INVALID_AUTHORIZATION_SIGNATURE: crate::core::HRESULT =
+    crate::core::HRESULT(-2144796375i32);
+pub const TPMAPI_E_INVALID_CONTEXT_HANDLE: crate::core::HRESULT =
+    crate::core::HRESULT(-2144796406i32);
+pub const TPMAPI_E_INVALID_CONTEXT_PARAMS: crate::core::HRESULT =
+    crate::core::HRESULT(-2144796395i32);
+pub const TPMAPI_E_INVALID_DELEGATE_BLOB: crate::core::HRESULT =
+    crate::core::HRESULT(-2144796396i32);
+pub const TPMAPI_E_INVALID_ENCODING: crate::core::HRESULT = crate::core::HRESULT(-2144796402i32);
+pub const TPMAPI_E_INVALID_KEY_BLOB: crate::core::HRESULT = crate::core::HRESULT(-2144796394i32);
+pub const TPMAPI_E_INVALID_KEY_PARAMS: crate::core::HRESULT = crate::core::HRESULT(-2144796399i32);
+pub const TPMAPI_E_INVALID_KEY_SIZE: crate::core::HRESULT = crate::core::HRESULT(-2144796401i32);
+pub const TPMAPI_E_INVALID_MIGRATION_AUTHORIZATION_BLOB: crate::core::HRESULT =
+    crate::core::HRESULT(-2144796398i32);
+pub const TPMAPI_E_INVALID_OUTPUT_POINTER: crate::core::HRESULT =
+    crate::core::HRESULT(-2144796413i32);
+pub const TPMAPI_E_INVALID_OWNER_AUTH: crate::core::HRESULT = crate::core::HRESULT(-2144796392i32);
+pub const TPMAPI_E_INVALID_PARAMETER: crate::core::HRESULT = crate::core::HRESULT(-2144796412i32);
+pub const TPMAPI_E_INVALID_PCR_DATA: crate::core::HRESULT = crate::core::HRESULT(-2144796393i32);
+pub const TPMAPI_E_INVALID_PCR_INDEX: crate::core::HRESULT = crate::core::HRESULT(-2144796397i32);
+pub const TPMAPI_E_INVALID_POLICYAUTH_BLOB_TYPE: crate::core::HRESULT =
+    crate::core::HRESULT(-2144796370i32);
+pub const TPMAPI_E_INVALID_STATE: crate::core::HRESULT = crate::core::HRESULT(-2144796416i32);
+pub const TPMAPI_E_INVALID_TCG_LOG_ENTRY: crate::core::HRESULT =
+    crate::core::HRESULT(-2144796389i32);
+pub const TPMAPI_E_INVALID_TPM_VERSION: crate::core::HRESULT = crate::core::HRESULT(-2144796371i32);
+pub const TPMAPI_E_MALFORMED_AUTHORIZATION_KEY: crate::core::HRESULT =
+    crate::core::HRESULT(-2144796377i32);
+pub const TPMAPI_E_MALFORMED_AUTHORIZATION_OTHER: crate::core::HRESULT =
+    crate::core::HRESULT(-2144796373i32);
+pub const TPMAPI_E_MALFORMED_AUTHORIZATION_POLICY: crate::core::HRESULT =
+    crate::core::HRESULT(-2144796374i32);
+pub const TPMAPI_E_MESSAGE_TOO_LARGE: crate::core::HRESULT = crate::core::HRESULT(-2144796403i32);
+pub const TPMAPI_E_NOT_ENOUGH_DATA: crate::core::HRESULT = crate::core::HRESULT(-2144796415i32);
+pub const TPMAPI_E_NO_AUTHORIZATION_CHAIN_FOUND: crate::core::HRESULT =
+    crate::core::HRESULT(-2144796382i32);
+pub const TPMAPI_E_NV_BITS_NOT_DEFINED: crate::core::HRESULT = crate::core::HRESULT(-2144796385i32);
+pub const TPMAPI_E_NV_BITS_NOT_READY: crate::core::HRESULT = crate::core::HRESULT(-2144796384i32);
+pub const TPMAPI_E_OUT_OF_MEMORY: crate::core::HRESULT = crate::core::HRESULT(-2144796411i32);
+pub const TPMAPI_E_OWNER_AUTH_NOT_NULL: crate::core::HRESULT = crate::core::HRESULT(-2144796380i32);
+pub const TPMAPI_E_POLICY_DENIES_OPERATION: crate::core::HRESULT =
+    crate::core::HRESULT(-2144796386i32);
+pub const TPMAPI_E_SEALING_KEY_CHANGED: crate::core::HRESULT = crate::core::HRESULT(-2144796372i32);
+pub const TPMAPI_E_SEALING_KEY_NOT_AVAILABLE: crate::core::HRESULT =
+    crate::core::HRESULT(-2144796383i32);
+pub const TPMAPI_E_SVN_COUNTER_NOT_AVAILABLE: crate::core::HRESULT =
+    crate::core::HRESULT(-2144796381i32);
+pub const TPMAPI_E_TBS_COMMUNICATION_ERROR: crate::core::HRESULT =
+    crate::core::HRESULT(-2144796405i32);
+pub const TPMAPI_E_TCG_INVALID_DIGEST_ENTRY: crate::core::HRESULT =
+    crate::core::HRESULT(-2144796387i32);
+pub const TPMAPI_E_TCG_SEPARATOR_ABSENT: crate::core::HRESULT =
+    crate::core::HRESULT(-2144796388i32);
+pub const TPMAPI_E_TOO_MUCH_DATA: crate::core::HRESULT = crate::core::HRESULT(-2144796414i32);
+pub const TPMAPI_E_TPM_COMMAND_ERROR: crate::core::HRESULT = crate::core::HRESULT(-2144796404i32);
+pub const TPM_20_E_ASYMMETRIC: crate::core::HRESULT = crate::core::HRESULT(-2144862079i32);
+pub const TPM_20_E_ATTRIBUTES: crate::core::HRESULT = crate::core::HRESULT(-2144862078i32);
+pub const TPM_20_E_AUTHSIZE: crate::core::HRESULT = crate::core::HRESULT(-2144861884i32);
+pub const TPM_20_E_AUTH_CONTEXT: crate::core::HRESULT = crate::core::HRESULT(-2144861883i32);
+pub const TPM_20_E_AUTH_FAIL: crate::core::HRESULT = crate::core::HRESULT(-2144862066i32);
+pub const TPM_20_E_AUTH_MISSING: crate::core::HRESULT = crate::core::HRESULT(-2144861915i32);
+pub const TPM_20_E_AUTH_TYPE: crate::core::HRESULT = crate::core::HRESULT(-2144861916i32);
+pub const TPM_20_E_AUTH_UNAVAILABLE: crate::core::HRESULT = crate::core::HRESULT(-2144861905i32);
+pub const TPM_20_E_BAD_AUTH: crate::core::HRESULT = crate::core::HRESULT(-2144862046i32);
+pub const TPM_20_E_BAD_CONTEXT: crate::core::HRESULT = crate::core::HRESULT(-2144861872i32);
+pub const TPM_20_E_BINDING: crate::core::HRESULT = crate::core::HRESULT(-2144862043i32);
+pub const TPM_20_E_CANCELED: crate::core::HRESULT = crate::core::HRESULT(-2144859895i32);
+pub const TPM_20_E_COMMAND_CODE: crate::core::HRESULT = crate::core::HRESULT(-2144861885i32);
+pub const TPM_20_E_COMMAND_SIZE: crate::core::HRESULT = crate::core::HRESULT(-2144861886i32);
+pub const TPM_20_E_CONTEXT_GAP: crate::core::HRESULT = crate::core::HRESULT(-2144859903i32);
+pub const TPM_20_E_CPHASH: crate::core::HRESULT = crate::core::HRESULT(-2144861871i32);
+pub const TPM_20_E_CURVE: crate::core::HRESULT = crate::core::HRESULT(-2144862042i32);
+pub const TPM_20_E_DISABLED: crate::core::HRESULT = crate::core::HRESULT(-2144861920i32);
+pub const TPM_20_E_ECC_CURVE: crate::core::HRESULT = crate::core::HRESULT(-2144861917i32);
+pub const TPM_20_E_ECC_POINT: crate::core::HRESULT = crate::core::HRESULT(-2144862041i32);
+pub const TPM_20_E_EXCLUSIVE: crate::core::HRESULT = crate::core::HRESULT(-2144861919i32);
+pub const TPM_20_E_EXPIRED: crate::core::HRESULT = crate::core::HRESULT(-2144862045i32);
+pub const TPM_20_E_FAILURE: crate::core::HRESULT = crate::core::HRESULT(-2144861951i32);
+pub const TPM_20_E_HANDLE: crate::core::HRESULT = crate::core::HRESULT(-2144862069i32);
+pub const TPM_20_E_HASH: crate::core::HRESULT = crate::core::HRESULT(-2144862077i32);
+pub const TPM_20_E_HIERARCHY: crate::core::HRESULT = crate::core::HRESULT(-2144862075i32);
+pub const TPM_20_E_HMAC: crate::core::HRESULT = crate::core::HRESULT(-2144861927i32);
+pub const TPM_20_E_INITIALIZE: crate::core::HRESULT = crate::core::HRESULT(-2144861952i32);
+pub const TPM_20_E_INSUFFICIENT: crate::core::HRESULT = crate::core::HRESULT(-2144862054i32);
+pub const TPM_20_E_INTEGRITY: crate::core::HRESULT = crate::core::HRESULT(-2144862049i32);
+pub const TPM_20_E_KDF: crate::core::HRESULT = crate::core::HRESULT(-2144862068i32);
+pub const TPM_20_E_KEY: crate::core::HRESULT = crate::core::HRESULT(-2144862052i32);
+pub const TPM_20_E_KEY_SIZE: crate::core::HRESULT = crate::core::HRESULT(-2144862073i32);
+pub const TPM_20_E_LOCALITY: crate::core::HRESULT = crate::core::HRESULT(-2144859897i32);
+pub const TPM_20_E_LOCKOUT: crate::core::HRESULT = crate::core::HRESULT(-2144859871i32);
+pub const TPM_20_E_MEMORY: crate::core::HRESULT = crate::core::HRESULT(-2144859900i32);
+pub const TPM_20_E_MGF: crate::core::HRESULT = crate::core::HRESULT(-2144862072i32);
+pub const TPM_20_E_MODE: crate::core::HRESULT = crate::core::HRESULT(-2144862071i32);
+pub const TPM_20_E_NEEDS_TEST: crate::core::HRESULT = crate::core::HRESULT(-2144861869i32);
+pub const TPM_20_E_NONCE: crate::core::HRESULT = crate::core::HRESULT(-2144862065i32);
+pub const TPM_20_E_NO_RESULT: crate::core::HRESULT = crate::core::HRESULT(-2144861868i32);
+pub const TPM_20_E_NV_AUTHORIZATION: crate::core::HRESULT = crate::core::HRESULT(-2144861879i32);
+pub const TPM_20_E_NV_DEFINED: crate::core::HRESULT = crate::core::HRESULT(-2144861876i32);
+pub const TPM_20_E_NV_LOCKED: crate::core::HRESULT = crate::core::HRESULT(-2144861880i32);
+pub const TPM_20_E_NV_RANGE: crate::core::HRESULT = crate::core::HRESULT(-2144861882i32);
+pub const TPM_20_E_NV_RATE: crate::core::HRESULT = crate::core::HRESULT(-2144859872i32);
+pub const TPM_20_E_NV_SIZE: crate::core::HRESULT = crate::core::HRESULT(-2144861881i32);
+pub const TPM_20_E_NV_SPACE: crate::core::HRESULT = crate::core::HRESULT(-2144861877i32);
+pub const TPM_20_E_NV_UNAVAILABLE: crate::core::HRESULT = crate::core::HRESULT(-2144859869i32);
+pub const TPM_20_E_NV_UNINITIALIZED: crate::core::HRESULT = crate::core::HRESULT(-2144861878i32);
+pub const TPM_20_E_OBJECT_HANDLES: crate::core::HRESULT = crate::core::HRESULT(-2144859898i32);
+pub const TPM_20_E_OBJECT_MEMORY: crate::core::HRESULT = crate::core::HRESULT(-2144859902i32);
+pub const TPM_20_E_PARENT: crate::core::HRESULT = crate::core::HRESULT(-2144861870i32);
+pub const TPM_20_E_PCR: crate::core::HRESULT = crate::core::HRESULT(-2144861913i32);
+pub const TPM_20_E_PCR_CHANGED: crate::core::HRESULT = crate::core::HRESULT(-2144861912i32);
+pub const TPM_20_E_POLICY: crate::core::HRESULT = crate::core::HRESULT(-2144861914i32);
+pub const TPM_20_E_POLICY_CC: crate::core::HRESULT = crate::core::HRESULT(-2144862044i32);
+pub const TPM_20_E_POLICY_FAIL: crate::core::HRESULT = crate::core::HRESULT(-2144862051i32);
+pub const TPM_20_E_PP: crate::core::HRESULT = crate::core::HRESULT(-2144862064i32);
+pub const TPM_20_E_PRIVATE: crate::core::HRESULT = crate::core::HRESULT(-2144861941i32);
+pub const TPM_20_E_RANGE: crate::core::HRESULT = crate::core::HRESULT(-2144862067i32);
+pub const TPM_20_E_REBOOT: crate::core::HRESULT = crate::core::HRESULT(-2144861904i32);
+pub const TPM_20_E_RESERVED_BITS: crate::core::HRESULT = crate::core::HRESULT(-2144862047i32);
+pub const TPM_20_E_RETRY: crate::core::HRESULT = crate::core::HRESULT(-2144859870i32);
+pub const TPM_20_E_SCHEME: crate::core::HRESULT = crate::core::HRESULT(-2144862062i32);
+pub const TPM_20_E_SELECTOR: crate::core::HRESULT = crate::core::HRESULT(-2144862056i32);
+pub const TPM_20_E_SENSITIVE: crate::core::HRESULT = crate::core::HRESULT(-2144861867i32);
+pub const TPM_20_E_SEQUENCE: crate::core::HRESULT = crate::core::HRESULT(-2144861949i32);
+pub const TPM_20_E_SESSION_HANDLES: crate::core::HRESULT = crate::core::HRESULT(-2144859899i32);
+pub const TPM_20_E_SESSION_MEMORY: crate::core::HRESULT = crate::core::HRESULT(-2144859901i32);
+pub const TPM_20_E_SIGNATURE: crate::core::HRESULT = crate::core::HRESULT(-2144862053i32);
+pub const TPM_20_E_SIZE: crate::core::HRESULT = crate::core::HRESULT(-2144862059i32);
+pub const TPM_20_E_SYMMETRIC: crate::core::HRESULT = crate::core::HRESULT(-2144862058i32);
+pub const TPM_20_E_TAG: crate::core::HRESULT = crate::core::HRESULT(-2144862057i32);
+pub const TPM_20_E_TESTING: crate::core::HRESULT = crate::core::HRESULT(-2144859894i32);
+pub const TPM_20_E_TICKET: crate::core::HRESULT = crate::core::HRESULT(-2144862048i32);
+pub const TPM_20_E_TOO_MANY_CONTEXTS: crate::core::HRESULT = crate::core::HRESULT(-2144861906i32);
+pub const TPM_20_E_TYPE: crate::core::HRESULT = crate::core::HRESULT(-2144862070i32);
+pub const TPM_20_E_UNBALANCED: crate::core::HRESULT = crate::core::HRESULT(-2144861903i32);
+pub const TPM_20_E_UPGRADE: crate::core::HRESULT = crate::core::HRESULT(-2144861907i32);
+pub const TPM_20_E_VALUE: crate::core::HRESULT = crate::core::HRESULT(-2144862076i32);
+pub const TPM_20_E_YIELDED: crate::core::HRESULT = crate::core::HRESULT(-2144859896i32);
+pub const TPM_E_AREA_LOCKED: crate::core::HRESULT = crate::core::HRESULT(-2144862148i32);
+pub const TPM_E_ATTESTATION_CHALLENGE_NOT_SET: crate::core::HRESULT =
+    crate::core::HRESULT(-2144795630i32);
+pub const TPM_E_AUDITFAILURE: crate::core::HRESULT = crate::core::HRESULT(-2144862204i32);
+pub const TPM_E_AUDITFAIL_SUCCESSFUL: crate::core::HRESULT = crate::core::HRESULT(-2144862159i32);
+pub const TPM_E_AUDITFAIL_UNSUCCESSFUL: crate::core::HRESULT = crate::core::HRESULT(-2144862160i32);
+pub const TPM_E_AUTH2FAIL: crate::core::HRESULT = crate::core::HRESULT(-2144862179i32);
+pub const TPM_E_AUTHFAIL: crate::core::HRESULT = crate::core::HRESULT(-2144862207i32);
+pub const TPM_E_AUTH_CONFLICT: crate::core::HRESULT = crate::core::HRESULT(-2144862149i32);
+pub const TPM_E_BADCONTEXT: crate::core::HRESULT = crate::core::HRESULT(-2144862118i32);
+pub const TPM_E_BADINDEX: crate::core::HRESULT = crate::core::HRESULT(-2144862206i32);
+pub const TPM_E_BADTAG: crate::core::HRESULT = crate::core::HRESULT(-2144862178i32);
+pub const TPM_E_BAD_ATTRIBUTES: crate::core::HRESULT = crate::core::HRESULT(-2144862142i32);
+pub const TPM_E_BAD_COUNTER: crate::core::HRESULT = crate::core::HRESULT(-2144862139i32);
+pub const TPM_E_BAD_DATASIZE: crate::core::HRESULT = crate::core::HRESULT(-2144862165i32);
+pub const TPM_E_BAD_DELEGATE: crate::core::HRESULT = crate::core::HRESULT(-2144862119i32);
+pub const TPM_E_BAD_HANDLE: crate::core::HRESULT = crate::core::HRESULT(-2144862120i32);
+pub const TPM_E_BAD_KEY_PROPERTY: crate::core::HRESULT = crate::core::HRESULT(-2144862168i32);
+pub const TPM_E_BAD_LOCALITY: crate::core::HRESULT = crate::core::HRESULT(-2144862147i32);
+pub const TPM_E_BAD_MIGRATION: crate::core::HRESULT = crate::core::HRESULT(-2144862167i32);
+pub const TPM_E_BAD_MODE: crate::core::HRESULT = crate::core::HRESULT(-2144862164i32);
+pub const TPM_E_BAD_ORDINAL: crate::core::HRESULT = crate::core::HRESULT(-2144862198i32);
+pub const TPM_E_BAD_PARAMETER: crate::core::HRESULT = crate::core::HRESULT(-2144862205i32);
+pub const TPM_E_BAD_PARAM_SIZE: crate::core::HRESULT = crate::core::HRESULT(-2144862183i32);
+pub const TPM_E_BAD_PRESENCE: crate::core::HRESULT = crate::core::HRESULT(-2144862163i32);
+pub const TPM_E_BAD_SCHEME: crate::core::HRESULT = crate::core::HRESULT(-2144862166i32);
+pub const TPM_E_BAD_SIGNATURE: crate::core::HRESULT = crate::core::HRESULT(-2144862110i32);
+pub const TPM_E_BAD_TYPE: crate::core::HRESULT = crate::core::HRESULT(-2144862156i32);
+pub const TPM_E_BAD_VERSION: crate::core::HRESULT = crate::core::HRESULT(-2144862162i32);
+pub const TPM_E_BUFFER_LENGTH_MISMATCH: crate::core::HRESULT = crate::core::HRESULT(-2144795618i32);
+pub const TPM_E_CLAIM_TYPE_NOT_SUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144795620i32);
+pub const TPM_E_CLEAR_DISABLED: crate::core::HRESULT = crate::core::HRESULT(-2144862203i32);
+pub const TPM_E_COMMAND_BLOCKED: crate::core::HRESULT = crate::core::HRESULT(-2144861184i32);
+pub const TPM_E_CONTEXT_GAP: crate::core::HRESULT = crate::core::HRESULT(-2144862137i32);
+pub const TPM_E_DAA_INPUT_DATA0: crate::core::HRESULT = crate::core::HRESULT(-2144862127i32);
+pub const TPM_E_DAA_INPUT_DATA1: crate::core::HRESULT = crate::core::HRESULT(-2144862126i32);
+pub const TPM_E_DAA_ISSUER_SETTINGS: crate::core::HRESULT = crate::core::HRESULT(-2144862125i32);
+pub const TPM_E_DAA_ISSUER_VALIDITY: crate::core::HRESULT = crate::core::HRESULT(-2144862122i32);
+pub const TPM_E_DAA_RESOURCES: crate::core::HRESULT = crate::core::HRESULT(-2144862128i32);
+pub const TPM_E_DAA_STAGE: crate::core::HRESULT = crate::core::HRESULT(-2144862123i32);
+pub const TPM_E_DAA_TPM_SETTINGS: crate::core::HRESULT = crate::core::HRESULT(-2144862124i32);
+pub const TPM_E_DAA_WRONG_W: crate::core::HRESULT = crate::core::HRESULT(-2144862121i32);
+pub const TPM_E_DEACTIVATED: crate::core::HRESULT = crate::core::HRESULT(-2144862202i32);
+pub const TPM_E_DECRYPT_ERROR: crate::core::HRESULT = crate::core::HRESULT(-2144862175i32);
+pub const TPM_E_DEFEND_LOCK_RUNNING: crate::core::HRESULT = crate::core::HRESULT(-2144860157i32);
+pub const TPM_E_DELEGATE_ADMIN: crate::core::HRESULT = crate::core::HRESULT(-2144862131i32);
+pub const TPM_E_DELEGATE_FAMILY: crate::core::HRESULT = crate::core::HRESULT(-2144862132i32);
+pub const TPM_E_DELEGATE_LOCK: crate::core::HRESULT = crate::core::HRESULT(-2144862133i32);
+pub const TPM_E_DISABLED: crate::core::HRESULT = crate::core::HRESULT(-2144862201i32);
+pub const TPM_E_DISABLED_CMD: crate::core::HRESULT = crate::core::HRESULT(-2144862200i32);
+pub const TPM_E_DOING_SELFTEST: crate::core::HRESULT = crate::core::HRESULT(-2144860158i32);
+pub const TPM_E_DUPLICATE_VHANDLE: crate::core::HRESULT = crate::core::HRESULT(-2144861182i32);
+pub const TPM_E_EMBEDDED_COMMAND_BLOCKED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144861181i32);
+pub const TPM_E_EMBEDDED_COMMAND_UNSUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144861180i32);
+pub const TPM_E_ENCRYPT_ERROR: crate::core::HRESULT = crate::core::HRESULT(-2144862176i32);
+pub const TPM_E_ERROR_MASK: crate::core::HRESULT = crate::core::HRESULT(-2144862208i32);
+pub const TPM_E_FAIL: crate::core::HRESULT = crate::core::HRESULT(-2144862199i32);
+pub const TPM_E_FAILEDSELFTEST: crate::core::HRESULT = crate::core::HRESULT(-2144862180i32);
+pub const TPM_E_FAMILYCOUNT: crate::core::HRESULT = crate::core::HRESULT(-2144862144i32);
+pub const TPM_E_INAPPROPRIATE_ENC: crate::core::HRESULT = crate::core::HRESULT(-2144862194i32);
+pub const TPM_E_INAPPROPRIATE_SIG: crate::core::HRESULT = crate::core::HRESULT(-2144862169i32);
+pub const TPM_E_INSTALL_DISABLED: crate::core::HRESULT = crate::core::HRESULT(-2144862197i32);
+pub const TPM_E_INVALID_AUTHHANDLE: crate::core::HRESULT = crate::core::HRESULT(-2144862174i32);
+pub const TPM_E_INVALID_FAMILY: crate::core::HRESULT = crate::core::HRESULT(-2144862153i32);
+pub const TPM_E_INVALID_HANDLE: crate::core::HRESULT = crate::core::HRESULT(-2144861183i32);
+pub const TPM_E_INVALID_KEYHANDLE: crate::core::HRESULT = crate::core::HRESULT(-2144862196i32);
+pub const TPM_E_INVALID_KEYUSAGE: crate::core::HRESULT = crate::core::HRESULT(-2144862172i32);
+pub const TPM_E_INVALID_OWNER_AUTH: crate::core::HRESULT = crate::core::HRESULT(-2144795135i32);
+pub const TPM_E_INVALID_PCR_INFO: crate::core::HRESULT = crate::core::HRESULT(-2144862192i32);
+pub const TPM_E_INVALID_POSTINIT: crate::core::HRESULT = crate::core::HRESULT(-2144862170i32);
+pub const TPM_E_INVALID_RESOURCE: crate::core::HRESULT = crate::core::HRESULT(-2144862155i32);
+pub const TPM_E_INVALID_STRUCTURE: crate::core::HRESULT = crate::core::HRESULT(-2144862141i32);
+pub const TPM_E_IOERROR: crate::core::HRESULT = crate::core::HRESULT(-2144862177i32);
+pub const TPM_E_KEYNOTFOUND: crate::core::HRESULT = crate::core::HRESULT(-2144862195i32);
+pub const TPM_E_KEY_ALREADY_FINALIZED: crate::core::HRESULT = crate::core::HRESULT(-2144795628i32);
+pub const TPM_E_KEY_NOTSUPPORTED: crate::core::HRESULT = crate::core::HRESULT(-2144862150i32);
+pub const TPM_E_KEY_NOT_AUTHENTICATED: crate::core::HRESULT = crate::core::HRESULT(-2144795624i32);
+pub const TPM_E_KEY_NOT_FINALIZED: crate::core::HRESULT = crate::core::HRESULT(-2144795631i32);
+pub const TPM_E_KEY_NOT_LOADED: crate::core::HRESULT = crate::core::HRESULT(-2144795633i32);
+pub const TPM_E_KEY_NOT_SIGNING_KEY: crate::core::HRESULT = crate::core::HRESULT(-2144795622i32);
+pub const TPM_E_KEY_OWNER_CONTROL: crate::core::HRESULT = crate::core::HRESULT(-2144862140i32);
+pub const TPM_E_KEY_USAGE_POLICY_INVALID: crate::core::HRESULT =
+    crate::core::HRESULT(-2144795626i32);
+pub const TPM_E_KEY_USAGE_POLICY_NOT_SUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144795627i32);
+pub const TPM_E_LOCKED_OUT: crate::core::HRESULT = crate::core::HRESULT(-2144795621i32);
+pub const TPM_E_MAXNVWRITES: crate::core::HRESULT = crate::core::HRESULT(-2144862136i32);
+pub const TPM_E_MA_AUTHORITY: crate::core::HRESULT = crate::core::HRESULT(-2144862113i32);
+pub const TPM_E_MA_DESTINATION: crate::core::HRESULT = crate::core::HRESULT(-2144862115i32);
+pub const TPM_E_MA_SOURCE: crate::core::HRESULT = crate::core::HRESULT(-2144862114i32);
+pub const TPM_E_MA_TICKET_SIGNATURE: crate::core::HRESULT = crate::core::HRESULT(-2144862116i32);
+pub const TPM_E_MIGRATEFAIL: crate::core::HRESULT = crate::core::HRESULT(-2144862193i32);
+pub const TPM_E_NEEDS_SELFTEST: crate::core::HRESULT = crate::core::HRESULT(-2144860159i32);
+pub const TPM_E_NOCONTEXTSPACE: crate::core::HRESULT = crate::core::HRESULT(-2144862109i32);
+pub const TPM_E_NOOPERATOR: crate::core::HRESULT = crate::core::HRESULT(-2144862135i32);
+pub const TPM_E_NOSPACE: crate::core::HRESULT = crate::core::HRESULT(-2144862191i32);
+pub const TPM_E_NOSRK: crate::core::HRESULT = crate::core::HRESULT(-2144862190i32);
+pub const TPM_E_NOTFIPS: crate::core::HRESULT = crate::core::HRESULT(-2144862154i32);
+pub const TPM_E_NOTLOCAL: crate::core::HRESULT = crate::core::HRESULT(-2144862157i32);
+pub const TPM_E_NOTRESETABLE: crate::core::HRESULT = crate::core::HRESULT(-2144862158i32);
+pub const TPM_E_NOTSEALED_BLOB: crate::core::HRESULT = crate::core::HRESULT(-2144862189i32);
+pub const TPM_E_NOT_FULLWRITE: crate::core::HRESULT = crate::core::HRESULT(-2144862138i32);
+pub const TPM_E_NOT_PCR_BOUND: crate::core::HRESULT = crate::core::HRESULT(-2144795629i32);
+pub const TPM_E_NO_ENDORSEMENT: crate::core::HRESULT = crate::core::HRESULT(-2144862173i32);
+pub const TPM_E_NO_KEY_CERTIFICATION: crate::core::HRESULT = crate::core::HRESULT(-2144795632i32);
+pub const TPM_E_NO_NV_PERMISSION: crate::core::HRESULT = crate::core::HRESULT(-2144862152i32);
+pub const TPM_E_NO_WRAP_TRANSPORT: crate::core::HRESULT = crate::core::HRESULT(-2144862161i32);
+pub const TPM_E_OWNER_CONTROL: crate::core::HRESULT = crate::core::HRESULT(-2144862129i32);
+pub const TPM_E_OWNER_SET: crate::core::HRESULT = crate::core::HRESULT(-2144862188i32);
+pub const TPM_E_PCP_AUTHENTICATION_FAILED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144795640i32);
+pub const TPM_E_PCP_AUTHENTICATION_IGNORED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144795639i32);
+pub const TPM_E_PCP_BUFFER_TOO_SMALL: crate::core::HRESULT = crate::core::HRESULT(-2144795642i32);
+pub const TPM_E_PCP_DEVICE_NOT_READY: crate::core::HRESULT = crate::core::HRESULT(-2144795647i32);
+pub const TPM_E_PCP_ERROR_MASK: crate::core::HRESULT = crate::core::HRESULT(-2144795648i32);
+pub const TPM_E_PCP_FLAG_NOT_SUPPORTED: crate::core::HRESULT = crate::core::HRESULT(-2144795644i32);
+pub const TPM_E_PCP_IFX_RSA_KEY_CREATION_BLOCKED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144795617i32);
+pub const TPM_E_PCP_INTERNAL_ERROR: crate::core::HRESULT = crate::core::HRESULT(-2144795641i32);
+pub const TPM_E_PCP_INVALID_HANDLE: crate::core::HRESULT = crate::core::HRESULT(-2144795646i32);
+pub const TPM_E_PCP_INVALID_PARAMETER: crate::core::HRESULT = crate::core::HRESULT(-2144795645i32);
+pub const TPM_E_PCP_KEY_HANDLE_INVALIDATED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144795614i32);
+pub const TPM_E_PCP_KEY_NOT_AIK: crate::core::HRESULT = crate::core::HRESULT(-2144795623i32);
+pub const TPM_E_PCP_NOT_SUPPORTED: crate::core::HRESULT = crate::core::HRESULT(-2144795643i32);
+pub const TPM_E_PCP_PLATFORM_CLAIM_MAY_BE_OUTDATED: crate::core::HRESULT =
+    crate::core::HRESULT(1076429860i32);
+pub const TPM_E_PCP_PLATFORM_CLAIM_OUTDATED: crate::core::HRESULT =
+    crate::core::HRESULT(1076429861i32);
+pub const TPM_E_PCP_PLATFORM_CLAIM_REBOOT: crate::core::HRESULT =
+    crate::core::HRESULT(1076429862i32);
+pub const TPM_E_PCP_POLICY_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2144795638i32);
+pub const TPM_E_PCP_PROFILE_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2144795637i32);
+pub const TPM_E_PCP_RAW_POLICY_NOT_SUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144795615i32);
+pub const TPM_E_PCP_TICKET_MISSING: crate::core::HRESULT = crate::core::HRESULT(-2144795616i32);
+pub const TPM_E_PCP_UNSUPPORTED_PSS_SALT: crate::core::HRESULT =
+    crate::core::HRESULT(1076429859i32);
+pub const TPM_E_PCP_VALIDATION_FAILED: crate::core::HRESULT = crate::core::HRESULT(-2144795636i32);
+pub const TPM_E_PCP_WRONG_PARENT: crate::core::HRESULT = crate::core::HRESULT(-2144795634i32);
+pub const TPM_E_PERMANENTEK: crate::core::HRESULT = crate::core::HRESULT(-2144862111i32);
+pub const TPM_E_PER_NOWRITE: crate::core::HRESULT = crate::core::HRESULT(-2144862145i32);
+pub const TPM_E_PPI_ACPI_FAILURE: crate::core::HRESULT = crate::core::HRESULT(-2144795904i32);
+pub const TPM_E_PPI_BIOS_FAILURE: crate::core::HRESULT = crate::core::HRESULT(-2144795902i32);
+pub const TPM_E_PPI_BLOCKED_IN_BIOS: crate::core::HRESULT = crate::core::HRESULT(-2144795900i32);
+pub const TPM_E_PPI_NOT_SUPPORTED: crate::core::HRESULT = crate::core::HRESULT(-2144795901i32);
+pub const TPM_E_PPI_USER_ABORT: crate::core::HRESULT = crate::core::HRESULT(-2144795903i32);
+pub const TPM_E_PROVISIONING_INCOMPLETE: crate::core::HRESULT =
+    crate::core::HRESULT(-2144795136i32);
+pub const TPM_E_READ_ONLY: crate::core::HRESULT = crate::core::HRESULT(-2144862146i32);
+pub const TPM_E_REQUIRES_SIGN: crate::core::HRESULT = crate::core::HRESULT(-2144862151i32);
+pub const TPM_E_RESOURCEMISSING: crate::core::HRESULT = crate::core::HRESULT(-2144862134i32);
+pub const TPM_E_RESOURCES: crate::core::HRESULT = crate::core::HRESULT(-2144862187i32);
+pub const TPM_E_RETRY: crate::core::HRESULT = crate::core::HRESULT(-2144860160i32);
+pub const TPM_E_SHA_ERROR: crate::core::HRESULT = crate::core::HRESULT(-2144862181i32);
+pub const TPM_E_SHA_THREAD: crate::core::HRESULT = crate::core::HRESULT(-2144862182i32);
+pub const TPM_E_SHORTRANDOM: crate::core::HRESULT = crate::core::HRESULT(-2144862186i32);
+pub const TPM_E_SIZE: crate::core::HRESULT = crate::core::HRESULT(-2144862185i32);
+pub const TPM_E_SOFT_KEY_ERROR: crate::core::HRESULT = crate::core::HRESULT(-2144795625i32);
+pub const TPM_E_TOOMANYCONTEXTS: crate::core::HRESULT = crate::core::HRESULT(-2144862117i32);
+pub const TPM_E_TOO_MUCH_DATA: crate::core::HRESULT = crate::core::HRESULT(-2144795134i32);
+pub const TPM_E_TRANSPORT_NOTEXCLUSIVE: crate::core::HRESULT = crate::core::HRESULT(-2144862130i32);
+pub const TPM_E_VERSION_NOT_SUPPORTED: crate::core::HRESULT = crate::core::HRESULT(-2144795619i32);
+pub const TPM_E_WRITE_LOCKED: crate::core::HRESULT = crate::core::HRESULT(-2144862143i32);
+pub const TPM_E_WRONGPCRVAL: crate::core::HRESULT = crate::core::HRESULT(-2144862184i32);
+pub const TPM_E_WRONG_ENTITYTYPE: crate::core::HRESULT = crate::core::HRESULT(-2144862171i32);
+pub const TPM_E_ZERO_EXHAUST_ENABLED: crate::core::HRESULT = crate::core::HRESULT(-2144795392i32);
+pub const TRUST_E_ACTION_UNKNOWN: crate::core::HRESULT = crate::core::HRESULT(-2146762750i32);
+pub const TRUST_E_BAD_DIGEST: crate::core::HRESULT = crate::core::HRESULT(-2146869232i32);
+pub const TRUST_E_BASIC_CONSTRAINTS: crate::core::HRESULT = crate::core::HRESULT(-2146869223i32);
+pub const TRUST_E_CERT_SIGNATURE: crate::core::HRESULT = crate::core::HRESULT(-2146869244i32);
+pub const TRUST_E_COUNTER_SIGNER: crate::core::HRESULT = crate::core::HRESULT(-2146869245i32);
+pub const TRUST_E_EXPLICIT_DISTRUST: crate::core::HRESULT = crate::core::HRESULT(-2146762479i32);
+pub const TRUST_E_FAIL: crate::core::HRESULT = crate::core::HRESULT(-2146762485i32);
+pub const TRUST_E_FINANCIAL_CRITERIA: crate::core::HRESULT = crate::core::HRESULT(-2146869218i32);
+pub const TRUST_E_MALFORMED_SIGNATURE: crate::core::HRESULT = crate::core::HRESULT(-2146869231i32);
+pub const TRUST_E_NOSIGNATURE: crate::core::HRESULT = crate::core::HRESULT(-2146762496i32);
+pub const TRUST_E_NO_SIGNER_CERT: crate::core::HRESULT = crate::core::HRESULT(-2146869246i32);
+pub const TRUST_E_PROVIDER_UNKNOWN: crate::core::HRESULT = crate::core::HRESULT(-2146762751i32);
+pub const TRUST_E_SUBJECT_FORM_UNKNOWN: crate::core::HRESULT = crate::core::HRESULT(-2146762749i32);
+pub const TRUST_E_SUBJECT_NOT_TRUSTED: crate::core::HRESULT = crate::core::HRESULT(-2146762748i32);
+pub const TRUST_E_SYSTEM_ERROR: crate::core::HRESULT = crate::core::HRESULT(-2146869247i32);
+pub const TRUST_E_TIME_STAMP: crate::core::HRESULT = crate::core::HRESULT(-2146869243i32);
+pub const TYPE_E_AMBIGUOUSNAME: crate::core::HRESULT = crate::core::HRESULT(-2147319764i32);
+pub const TYPE_E_BADMODULEKIND: crate::core::HRESULT = crate::core::HRESULT(-2147317571i32);
+pub const TYPE_E_BUFFERTOOSMALL: crate::core::HRESULT = crate::core::HRESULT(-2147319786i32);
+pub const TYPE_E_CANTCREATETMPFILE: crate::core::HRESULT = crate::core::HRESULT(-2147316573i32);
+pub const TYPE_E_CANTLOADLIBRARY: crate::core::HRESULT = crate::core::HRESULT(-2147312566i32);
+pub const TYPE_E_CIRCULARTYPE: crate::core::HRESULT = crate::core::HRESULT(-2147312508i32);
+pub const TYPE_E_DLLFUNCTIONNOTFOUND: crate::core::HRESULT = crate::core::HRESULT(-2147319761i32);
+pub const TYPE_E_DUPLICATEID: crate::core::HRESULT = crate::core::HRESULT(-2147317562i32);
+pub const TYPE_E_ELEMENTNOTFOUND: crate::core::HRESULT = crate::core::HRESULT(-2147319765i32);
+pub const TYPE_E_FIELDNOTFOUND: crate::core::HRESULT = crate::core::HRESULT(-2147319785i32);
+pub const TYPE_E_INCONSISTENTPROPFUNCS: crate::core::HRESULT = crate::core::HRESULT(-2147312509i32);
+pub const TYPE_E_INVALIDID: crate::core::HRESULT = crate::core::HRESULT(-2147317553i32);
+pub const TYPE_E_INVALIDSTATE: crate::core::HRESULT = crate::core::HRESULT(-2147319767i32);
+pub const TYPE_E_INVDATAREAD: crate::core::HRESULT = crate::core::HRESULT(-2147319784i32);
+pub const TYPE_E_IOERROR: crate::core::HRESULT = crate::core::HRESULT(-2147316574i32);
+pub const TYPE_E_LIBNOTREGISTERED: crate::core::HRESULT = crate::core::HRESULT(-2147319779i32);
+pub const TYPE_E_NAMECONFLICT: crate::core::HRESULT = crate::core::HRESULT(-2147319763i32);
+pub const TYPE_E_OUTOFBOUNDS: crate::core::HRESULT = crate::core::HRESULT(-2147316575i32);
+pub const TYPE_E_QUALIFIEDNAMEDISALLOWED: crate::core::HRESULT =
+    crate::core::HRESULT(-2147319768i32);
+pub const TYPE_E_REGISTRYACCESS: crate::core::HRESULT = crate::core::HRESULT(-2147319780i32);
+pub const TYPE_E_SIZETOOBIG: crate::core::HRESULT = crate::core::HRESULT(-2147317563i32);
+pub const TYPE_E_TYPEMISMATCH: crate::core::HRESULT = crate::core::HRESULT(-2147316576i32);
+pub const TYPE_E_UNDEFINEDTYPE: crate::core::HRESULT = crate::core::HRESULT(-2147319769i32);
+pub const TYPE_E_UNKNOWNLCID: crate::core::HRESULT = crate::core::HRESULT(-2147319762i32);
+pub const TYPE_E_UNSUPFORMAT: crate::core::HRESULT = crate::core::HRESULT(-2147319783i32);
+pub const TYPE_E_WRONGTYPEKIND: crate::core::HRESULT = crate::core::HRESULT(-2147319766i32);
+pub const UCEERR_BLOCKSFULL: crate::core::HRESULT = crate::core::HRESULT(-2003303415i32);
+pub const UCEERR_CHANNELSYNCABANDONED: crate::core::HRESULT = crate::core::HRESULT(-2003303404i32);
+pub const UCEERR_CHANNELSYNCTIMEDOUT: crate::core::HRESULT = crate::core::HRESULT(-2003303405i32);
+pub const UCEERR_COMMANDTRANSPORTDENIED: crate::core::HRESULT =
+    crate::core::HRESULT(-2003303400i32);
+pub const UCEERR_CONNECTIONIDLOOKUPFAILED: crate::core::HRESULT =
+    crate::core::HRESULT(-2003303416i32);
+pub const UCEERR_CTXSTACKFRSTTARGETNULL: crate::core::HRESULT =
+    crate::core::HRESULT(-2003303417i32);
+pub const UCEERR_FEEDBACK_UNSUPPORTED: crate::core::HRESULT = crate::core::HRESULT(-2003303401i32);
+pub const UCEERR_GRAPHICSSTREAMALREADYOPEN: crate::core::HRESULT =
+    crate::core::HRESULT(-2003303392i32);
+pub const UCEERR_GRAPHICSSTREAMUNAVAILABLE: crate::core::HRESULT =
+    crate::core::HRESULT(-2003303399i32);
+pub const UCEERR_HANDLELOOKUPFAILED: crate::core::HRESULT = crate::core::HRESULT(-2003303419i32);
+pub const UCEERR_ILLEGALHANDLE: crate::core::HRESULT = crate::core::HRESULT(-2003303420i32);
+pub const UCEERR_ILLEGALPACKET: crate::core::HRESULT = crate::core::HRESULT(-2003303422i32);
+pub const UCEERR_ILLEGALRECORDTYPE: crate::core::HRESULT = crate::core::HRESULT(-2003303412i32);
+pub const UCEERR_INVALIDPACKETHEADER: crate::core::HRESULT = crate::core::HRESULT(-2003303424i32);
+pub const UCEERR_MALFORMEDPACKET: crate::core::HRESULT = crate::core::HRESULT(-2003303421i32);
+pub const UCEERR_MEMORYFAILURE: crate::core::HRESULT = crate::core::HRESULT(-2003303414i32);
+pub const UCEERR_MISSINGBEGINCOMMAND: crate::core::HRESULT = crate::core::HRESULT(-2003303406i32);
+pub const UCEERR_MISSINGENDCOMMAND: crate::core::HRESULT = crate::core::HRESULT(-2003303407i32);
+pub const UCEERR_NO_MULTIPLE_WORKER_THREADS: crate::core::HRESULT =
+    crate::core::HRESULT(-2003303409i32);
+pub const UCEERR_OUTOFHANDLES: crate::core::HRESULT = crate::core::HRESULT(-2003303411i32);
+pub const UCEERR_PACKETRECORDOUTOFRANGE: crate::core::HRESULT =
+    crate::core::HRESULT(-2003303413i32);
+pub const UCEERR_PARTITION_ZOMBIED: crate::core::HRESULT = crate::core::HRESULT(-2003303389i32);
+pub const UCEERR_REMOTINGNOTSUPPORTED: crate::core::HRESULT = crate::core::HRESULT(-2003303408i32);
+pub const UCEERR_RENDERTHREADFAILURE: crate::core::HRESULT = crate::core::HRESULT(-2003303418i32);
+pub const UCEERR_TRANSPORTDISCONNECTED: crate::core::HRESULT = crate::core::HRESULT(-2003303391i32);
+pub const UCEERR_TRANSPORTOVERLOADED: crate::core::HRESULT = crate::core::HRESULT(-2003303390i32);
+pub const UCEERR_TRANSPORTUNAVAILABLE: crate::core::HRESULT = crate::core::HRESULT(-2003303402i32);
+pub const UCEERR_UNCHANGABLE_UPDATE_ATTEMPTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2003303410i32);
+pub const UCEERR_UNKNOWNPACKET: crate::core::HRESULT = crate::core::HRESULT(-2003303423i32);
+pub const UCEERR_UNSUPPORTEDTRANSPORTVERSION: crate::core::HRESULT =
+    crate::core::HRESULT(-2003303403i32);
+pub const UI_E_AMBIGUOUS_MATCH: crate::core::HRESULT = crate::core::HRESULT(-2144731126i32);
+pub const UI_E_BOOLEAN_EXPECTED: crate::core::HRESULT = crate::core::HRESULT(-2144731128i32);
+pub const UI_E_CREATE_FAILED: crate::core::HRESULT = crate::core::HRESULT(-2144731135i32);
+pub const UI_E_DIFFERENT_OWNER: crate::core::HRESULT = crate::core::HRESULT(-2144731127i32);
+pub const UI_E_END_KEYFRAME_NOT_DETERMINED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144730876i32);
+pub const UI_E_FP_OVERFLOW: crate::core::HRESULT = crate::core::HRESULT(-2144731125i32);
+pub const UI_E_ILLEGAL_REENTRANCY: crate::core::HRESULT = crate::core::HRESULT(-2144731133i32);
+pub const UI_E_INVALID_DIMENSION: crate::core::HRESULT = crate::core::HRESULT(-2144730869i32);
+pub const UI_E_INVALID_OUTPUT: crate::core::HRESULT = crate::core::HRESULT(-2144731129i32);
+pub const UI_E_LOOPS_OVERLAP: crate::core::HRESULT = crate::core::HRESULT(-2144730875i32);
+pub const UI_E_OBJECT_SEALED: crate::core::HRESULT = crate::core::HRESULT(-2144731132i32);
+pub const UI_E_PRIMITIVE_OUT_OF_BOUNDS: crate::core::HRESULT = crate::core::HRESULT(-2144730868i32);
+pub const UI_E_SHUTDOWN_CALLED: crate::core::HRESULT = crate::core::HRESULT(-2144731134i32);
+pub const UI_E_START_KEYFRAME_AFTER_END: crate::core::HRESULT =
+    crate::core::HRESULT(-2144730877i32);
+pub const UI_E_STORYBOARD_ACTIVE: crate::core::HRESULT = crate::core::HRESULT(-2144730879i32);
+pub const UI_E_STORYBOARD_NOT_PLAYING: crate::core::HRESULT = crate::core::HRESULT(-2144730878i32);
+pub const UI_E_TIMER_CLIENT_ALREADY_CONNECTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2144730870i32);
+pub const UI_E_TIME_BEFORE_LAST_UPDATE: crate::core::HRESULT = crate::core::HRESULT(-2144730871i32);
+pub const UI_E_TRANSITION_ALREADY_USED: crate::core::HRESULT = crate::core::HRESULT(-2144730874i32);
+pub const UI_E_TRANSITION_ECLIPSED: crate::core::HRESULT = crate::core::HRESULT(-2144730872i32);
+pub const UI_E_TRANSITION_NOT_IN_STORYBOARD: crate::core::HRESULT =
+    crate::core::HRESULT(-2144730873i32);
+pub const UI_E_VALUE_NOT_DETERMINED: crate::core::HRESULT = crate::core::HRESULT(-2144731130i32);
+pub const UI_E_VALUE_NOT_SET: crate::core::HRESULT = crate::core::HRESULT(-2144731131i32);
+pub const UI_E_WINDOW_CLOSED: crate::core::HRESULT = crate::core::HRESULT(-2144730623i32);
+pub const UI_E_WRONG_THREAD: crate::core::HRESULT = crate::core::HRESULT(-2144731124i32);
 pub struct UNICODE_STRING {
     pub Length: u16,
     pub MaximumLength: u16,
-    pub Buffer: ::win32::core::PWSTR,
+    pub Buffer: crate::core::PWSTR,
 }
 impl ::core::marker::Copy for UNICODE_STRING {}
 impl ::core::clone::Clone for UNICODE_STRING {
@@ -8733,251 +8179,227 @@ impl ::core::cmp::PartialEq for UNICODE_STRING {
     }
 }
 impl ::core::cmp::Eq for UNICODE_STRING {}
-pub const UTC_E_ACTION_NOT_SUPPORTED_IN_DESTINATION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128380i32);
-pub const UTC_E_AGENT_DIAGNOSTICS_TOO_LARGE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128363i32);
-pub const UTC_E_ALTERNATIVE_TRACE_CANNOT_PREEMPT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128446i32);
-pub const UTC_E_AOT_NOT_RUNNING: ::win32::core::HRESULT = ::win32::core::HRESULT(-2017128445i32);
-pub const UTC_E_API_BUSY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2017128405i32);
-pub const UTC_E_API_NOT_SUPPORTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2017128388i32);
-pub const UTC_E_API_RESULT_UNAVAILABLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128408i32);
-pub const UTC_E_BINARY_MISSING: ::win32::core::HRESULT = ::win32::core::HRESULT(-2017128396i32);
-pub const UTC_E_CANNOT_LOAD_SCENARIO_EDITOR_XML: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128417i32);
-pub const UTC_E_CERT_REV_FAILED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2017128385i32);
-pub const UTC_E_CHILD_PROCESS_FAILED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128419i32);
-pub const UTC_E_COMMAND_LINE_NOT_AUTHORIZED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128418i32);
-pub const UTC_E_DELAY_TERMINATED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2017128411i32);
-pub const UTC_E_DEVICE_TICKET_ERROR: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128410i32);
-pub const UTC_E_DIAGRULES_SCHEMAVERSION_MISMATCH: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128438i32);
-pub const UTC_E_ESCALATION_ALREADY_RUNNING: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128433i32);
-pub const UTC_E_ESCALATION_CANCELLED_AT_SHUTDOWN: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128358i32);
-pub const UTC_E_ESCALATION_DIRECTORY_ALREADY_EXISTS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128401i32);
-pub const UTC_E_ESCALATION_NOT_AUTHORIZED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128421i32);
-pub const UTC_E_ESCALATION_TIMED_OUT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128416i32);
-pub const UTC_E_EVENTLOG_ENTRY_MALFORMED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128439i32);
-pub const UTC_E_EXCLUSIVITY_NOT_AVAILABLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128403i32);
-pub const UTC_E_EXE_TERMINATED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2017128422i32);
-pub const UTC_E_FAILED_TO_RECEIVE_AGENT_DIAGNOSTICS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128362i32);
-pub const UTC_E_FAILED_TO_RESOLVE_CONTAINER_ID: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128394i32);
-pub const UTC_E_FAILED_TO_START_NDISCAP: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128384i32);
-pub const UTC_E_FILTER_FUNCTION_RESTRICTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128376i32);
-pub const UTC_E_FILTER_ILLEGAL_EVAL: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128365i32);
-pub const UTC_E_FILTER_INVALID_COMMAND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128366i32);
-pub const UTC_E_FILTER_INVALID_FUNCTION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128368i32);
-pub const UTC_E_FILTER_INVALID_FUNCTION_PARAMS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128367i32);
-pub const UTC_E_FILTER_INVALID_TYPE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128378i32);
-pub const UTC_E_FILTER_MISSING_ATTRIBUTE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128379i32);
-pub const UTC_E_FILTER_VARIABLE_NOT_FOUND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128377i32);
-pub const UTC_E_FILTER_VERSION_MISMATCH: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128375i32);
-pub const UTC_E_FORWARDER_ALREADY_DISABLED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128440i32);
-pub const UTC_E_FORWARDER_ALREADY_ENABLED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128441i32);
-pub const UTC_E_FORWARDER_PRODUCER_MISMATCH: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128430i32);
-pub const UTC_E_GETFILEINFOACTION_FILE_NOT_APPROVED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128357i32);
-pub const UTC_E_GETFILE_EXTERNAL_PATH_NOT_APPROVED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128387i32);
-pub const UTC_E_GETFILE_FILE_PATH_NOT_APPROVED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128402i32);
-pub const UTC_E_INSUFFICIENT_SPACE_TO_START_TRACE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128359i32);
-pub const UTC_E_INTENTIONAL_SCRIPT_FAILURE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128429i32);
-pub const UTC_E_INVALID_AGGREGATION_STRUCT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128381i32);
-pub const UTC_E_INVALID_CUSTOM_FILTER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128436i32);
-pub const UTC_E_INVALID_FILTER: ::win32::core::HRESULT = ::win32::core::HRESULT(-2017128423i32);
-pub const UTC_E_KERNELDUMP_LIMIT_REACHED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128383i32);
-pub const UTC_E_MISSING_AGGREGATE_EVENT_TAG: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128382i32);
-pub const UTC_E_MULTIPLE_TIME_TRIGGER_ON_SINGLE_STATE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128397i32);
-pub const UTC_E_NO_WER_LOGGER_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128427i32);
-pub const UTC_E_PERFTRACK_ALREADY_TRACING: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128432i32);
-pub const UTC_E_REACHED_MAX_ESCALATIONS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128431i32);
-pub const UTC_E_REESCALATED_TOO_QUICKLY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128434i32);
-pub const UTC_E_RPC_TIMEOUT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2017128407i32);
-pub const UTC_E_RPC_WAIT_FAILED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2017128406i32);
-pub const UTC_E_SCENARIODEF_NOT_FOUND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128443i32);
-pub const UTC_E_SCENARIODEF_SCHEMAVERSION_MISMATCH: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128424i32);
-pub const UTC_E_SCENARIO_HAS_NO_ACTIONS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128361i32);
-pub const UTC_E_SCENARIO_THROTTLED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2017128389i32);
-pub const UTC_E_SCRIPT_MISSING: ::win32::core::HRESULT = ::win32::core::HRESULT(-2017128390i32);
-pub const UTC_E_SCRIPT_TERMINATED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2017128437i32);
-pub const UTC_E_SCRIPT_TYPE_INVALID: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128444i32);
-pub const UTC_E_SETREGKEYACTION_TYPE_NOT_APPROVED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128356i32);
-pub const UTC_E_SETUP_NOT_AUTHORIZED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128420i32);
-pub const UTC_E_SETUP_TIMED_OUT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2017128415i32);
-pub const UTC_E_SIF_NOT_SUPPORTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2017128412i32);
-pub const UTC_E_SQM_INIT_FAILED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2017128428i32);
-pub const UTC_E_THROTTLED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2017128392i32);
-pub const UTC_E_TIME_TRIGGER_INVALID_TIME_RANGE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128398i32);
-pub const UTC_E_TIME_TRIGGER_ONLY_VALID_ON_SINGLE_TRANSITION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128399i32);
-pub const UTC_E_TIME_TRIGGER_ON_START_INVALID: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128400i32);
-pub const UTC_E_TOGGLE_TRACE_STARTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128447i32);
-pub const UTC_E_TRACEPROFILE_NOT_FOUND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128442i32);
-pub const UTC_E_TRACERS_DONT_EXIST: ::win32::core::HRESULT = ::win32::core::HRESULT(-2017128426i32);
-pub const UTC_E_TRACE_BUFFER_LIMIT_EXCEEDED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128409i32);
-pub const UTC_E_TRACE_MIN_DURATION_REQUIREMENT_NOT_MET: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128404i32);
-pub const UTC_E_TRACE_NOT_RUNNING: ::win32::core::HRESULT = ::win32::core::HRESULT(-2017128435i32);
-pub const UTC_E_TRACE_THROTTLED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2017128355i32);
-pub const UTC_E_TRIGGER_MISMATCH: ::win32::core::HRESULT = ::win32::core::HRESULT(-2017128414i32);
-pub const UTC_E_TRIGGER_NOT_FOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2017128413i32);
-pub const UTC_E_TRY_GET_SCENARIO_TIMEOUT_EXCEEDED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128386i32);
-pub const UTC_E_TTTRACER_RETURNED_ERROR: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128364i32);
-pub const UTC_E_TTTRACER_STORAGE_FULL: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128360i32);
-pub const UTC_E_UNABLE_TO_RESOLVE_SESSION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2017128393i32);
-pub const UTC_E_UNAPPROVED_SCRIPT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2017128391i32);
-pub const UTC_E_WINRT_INIT_FAILED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2017128425i32);
-pub const VIEW_E_DRAW: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147221184i32);
+pub const UTC_E_ACTION_NOT_SUPPORTED_IN_DESTINATION: crate::core::HRESULT =
+    crate::core::HRESULT(-2017128380i32);
+pub const UTC_E_AGENT_DIAGNOSTICS_TOO_LARGE: crate::core::HRESULT =
+    crate::core::HRESULT(-2017128363i32);
+pub const UTC_E_ALTERNATIVE_TRACE_CANNOT_PREEMPT: crate::core::HRESULT =
+    crate::core::HRESULT(-2017128446i32);
+pub const UTC_E_AOT_NOT_RUNNING: crate::core::HRESULT = crate::core::HRESULT(-2017128445i32);
+pub const UTC_E_API_BUSY: crate::core::HRESULT = crate::core::HRESULT(-2017128405i32);
+pub const UTC_E_API_NOT_SUPPORTED: crate::core::HRESULT = crate::core::HRESULT(-2017128388i32);
+pub const UTC_E_API_RESULT_UNAVAILABLE: crate::core::HRESULT = crate::core::HRESULT(-2017128408i32);
+pub const UTC_E_BINARY_MISSING: crate::core::HRESULT = crate::core::HRESULT(-2017128396i32);
+pub const UTC_E_CANNOT_LOAD_SCENARIO_EDITOR_XML: crate::core::HRESULT =
+    crate::core::HRESULT(-2017128417i32);
+pub const UTC_E_CERT_REV_FAILED: crate::core::HRESULT = crate::core::HRESULT(-2017128385i32);
+pub const UTC_E_CHILD_PROCESS_FAILED: crate::core::HRESULT = crate::core::HRESULT(-2017128419i32);
+pub const UTC_E_COMMAND_LINE_NOT_AUTHORIZED: crate::core::HRESULT =
+    crate::core::HRESULT(-2017128418i32);
+pub const UTC_E_DELAY_TERMINATED: crate::core::HRESULT = crate::core::HRESULT(-2017128411i32);
+pub const UTC_E_DEVICE_TICKET_ERROR: crate::core::HRESULT = crate::core::HRESULT(-2017128410i32);
+pub const UTC_E_DIAGRULES_SCHEMAVERSION_MISMATCH: crate::core::HRESULT =
+    crate::core::HRESULT(-2017128438i32);
+pub const UTC_E_ESCALATION_ALREADY_RUNNING: crate::core::HRESULT =
+    crate::core::HRESULT(-2017128433i32);
+pub const UTC_E_ESCALATION_CANCELLED_AT_SHUTDOWN: crate::core::HRESULT =
+    crate::core::HRESULT(-2017128358i32);
+pub const UTC_E_ESCALATION_DIRECTORY_ALREADY_EXISTS: crate::core::HRESULT =
+    crate::core::HRESULT(-2017128401i32);
+pub const UTC_E_ESCALATION_NOT_AUTHORIZED: crate::core::HRESULT =
+    crate::core::HRESULT(-2017128421i32);
+pub const UTC_E_ESCALATION_TIMED_OUT: crate::core::HRESULT = crate::core::HRESULT(-2017128416i32);
+pub const UTC_E_EVENTLOG_ENTRY_MALFORMED: crate::core::HRESULT =
+    crate::core::HRESULT(-2017128439i32);
+pub const UTC_E_EXCLUSIVITY_NOT_AVAILABLE: crate::core::HRESULT =
+    crate::core::HRESULT(-2017128403i32);
+pub const UTC_E_EXE_TERMINATED: crate::core::HRESULT = crate::core::HRESULT(-2017128422i32);
+pub const UTC_E_FAILED_TO_RECEIVE_AGENT_DIAGNOSTICS: crate::core::HRESULT =
+    crate::core::HRESULT(-2017128362i32);
+pub const UTC_E_FAILED_TO_RESOLVE_CONTAINER_ID: crate::core::HRESULT =
+    crate::core::HRESULT(-2017128394i32);
+pub const UTC_E_FAILED_TO_START_NDISCAP: crate::core::HRESULT =
+    crate::core::HRESULT(-2017128384i32);
+pub const UTC_E_FILTER_FUNCTION_RESTRICTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2017128376i32);
+pub const UTC_E_FILTER_ILLEGAL_EVAL: crate::core::HRESULT = crate::core::HRESULT(-2017128365i32);
+pub const UTC_E_FILTER_INVALID_COMMAND: crate::core::HRESULT = crate::core::HRESULT(-2017128366i32);
+pub const UTC_E_FILTER_INVALID_FUNCTION: crate::core::HRESULT =
+    crate::core::HRESULT(-2017128368i32);
+pub const UTC_E_FILTER_INVALID_FUNCTION_PARAMS: crate::core::HRESULT =
+    crate::core::HRESULT(-2017128367i32);
+pub const UTC_E_FILTER_INVALID_TYPE: crate::core::HRESULT = crate::core::HRESULT(-2017128378i32);
+pub const UTC_E_FILTER_MISSING_ATTRIBUTE: crate::core::HRESULT =
+    crate::core::HRESULT(-2017128379i32);
+pub const UTC_E_FILTER_VARIABLE_NOT_FOUND: crate::core::HRESULT =
+    crate::core::HRESULT(-2017128377i32);
+pub const UTC_E_FILTER_VERSION_MISMATCH: crate::core::HRESULT =
+    crate::core::HRESULT(-2017128375i32);
+pub const UTC_E_FORWARDER_ALREADY_DISABLED: crate::core::HRESULT =
+    crate::core::HRESULT(-2017128440i32);
+pub const UTC_E_FORWARDER_ALREADY_ENABLED: crate::core::HRESULT =
+    crate::core::HRESULT(-2017128441i32);
+pub const UTC_E_FORWARDER_PRODUCER_MISMATCH: crate::core::HRESULT =
+    crate::core::HRESULT(-2017128430i32);
+pub const UTC_E_GETFILEINFOACTION_FILE_NOT_APPROVED: crate::core::HRESULT =
+    crate::core::HRESULT(-2017128357i32);
+pub const UTC_E_GETFILE_EXTERNAL_PATH_NOT_APPROVED: crate::core::HRESULT =
+    crate::core::HRESULT(-2017128387i32);
+pub const UTC_E_GETFILE_FILE_PATH_NOT_APPROVED: crate::core::HRESULT =
+    crate::core::HRESULT(-2017128402i32);
+pub const UTC_E_INSUFFICIENT_SPACE_TO_START_TRACE: crate::core::HRESULT =
+    crate::core::HRESULT(-2017128359i32);
+pub const UTC_E_INTENTIONAL_SCRIPT_FAILURE: crate::core::HRESULT =
+    crate::core::HRESULT(-2017128429i32);
+pub const UTC_E_INVALID_AGGREGATION_STRUCT: crate::core::HRESULT =
+    crate::core::HRESULT(-2017128381i32);
+pub const UTC_E_INVALID_CUSTOM_FILTER: crate::core::HRESULT = crate::core::HRESULT(-2017128436i32);
+pub const UTC_E_INVALID_FILTER: crate::core::HRESULT = crate::core::HRESULT(-2017128423i32);
+pub const UTC_E_KERNELDUMP_LIMIT_REACHED: crate::core::HRESULT =
+    crate::core::HRESULT(-2017128383i32);
+pub const UTC_E_MISSING_AGGREGATE_EVENT_TAG: crate::core::HRESULT =
+    crate::core::HRESULT(-2017128382i32);
+pub const UTC_E_MULTIPLE_TIME_TRIGGER_ON_SINGLE_STATE: crate::core::HRESULT =
+    crate::core::HRESULT(-2017128397i32);
+pub const UTC_E_NO_WER_LOGGER_SUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2017128427i32);
+pub const UTC_E_PERFTRACK_ALREADY_TRACING: crate::core::HRESULT =
+    crate::core::HRESULT(-2017128432i32);
+pub const UTC_E_REACHED_MAX_ESCALATIONS: crate::core::HRESULT =
+    crate::core::HRESULT(-2017128431i32);
+pub const UTC_E_REESCALATED_TOO_QUICKLY: crate::core::HRESULT =
+    crate::core::HRESULT(-2017128434i32);
+pub const UTC_E_RPC_TIMEOUT: crate::core::HRESULT = crate::core::HRESULT(-2017128407i32);
+pub const UTC_E_RPC_WAIT_FAILED: crate::core::HRESULT = crate::core::HRESULT(-2017128406i32);
+pub const UTC_E_SCENARIODEF_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2017128443i32);
+pub const UTC_E_SCENARIODEF_SCHEMAVERSION_MISMATCH: crate::core::HRESULT =
+    crate::core::HRESULT(-2017128424i32);
+pub const UTC_E_SCENARIO_HAS_NO_ACTIONS: crate::core::HRESULT =
+    crate::core::HRESULT(-2017128361i32);
+pub const UTC_E_SCENARIO_THROTTLED: crate::core::HRESULT = crate::core::HRESULT(-2017128389i32);
+pub const UTC_E_SCRIPT_MISSING: crate::core::HRESULT = crate::core::HRESULT(-2017128390i32);
+pub const UTC_E_SCRIPT_TERMINATED: crate::core::HRESULT = crate::core::HRESULT(-2017128437i32);
+pub const UTC_E_SCRIPT_TYPE_INVALID: crate::core::HRESULT = crate::core::HRESULT(-2017128444i32);
+pub const UTC_E_SETREGKEYACTION_TYPE_NOT_APPROVED: crate::core::HRESULT =
+    crate::core::HRESULT(-2017128356i32);
+pub const UTC_E_SETUP_NOT_AUTHORIZED: crate::core::HRESULT = crate::core::HRESULT(-2017128420i32);
+pub const UTC_E_SETUP_TIMED_OUT: crate::core::HRESULT = crate::core::HRESULT(-2017128415i32);
+pub const UTC_E_SIF_NOT_SUPPORTED: crate::core::HRESULT = crate::core::HRESULT(-2017128412i32);
+pub const UTC_E_SQM_INIT_FAILED: crate::core::HRESULT = crate::core::HRESULT(-2017128428i32);
+pub const UTC_E_THROTTLED: crate::core::HRESULT = crate::core::HRESULT(-2017128392i32);
+pub const UTC_E_TIME_TRIGGER_INVALID_TIME_RANGE: crate::core::HRESULT =
+    crate::core::HRESULT(-2017128398i32);
+pub const UTC_E_TIME_TRIGGER_ONLY_VALID_ON_SINGLE_TRANSITION: crate::core::HRESULT =
+    crate::core::HRESULT(-2017128399i32);
+pub const UTC_E_TIME_TRIGGER_ON_START_INVALID: crate::core::HRESULT =
+    crate::core::HRESULT(-2017128400i32);
+pub const UTC_E_TOGGLE_TRACE_STARTED: crate::core::HRESULT = crate::core::HRESULT(-2017128447i32);
+pub const UTC_E_TRACEPROFILE_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2017128442i32);
+pub const UTC_E_TRACERS_DONT_EXIST: crate::core::HRESULT = crate::core::HRESULT(-2017128426i32);
+pub const UTC_E_TRACE_BUFFER_LIMIT_EXCEEDED: crate::core::HRESULT =
+    crate::core::HRESULT(-2017128409i32);
+pub const UTC_E_TRACE_MIN_DURATION_REQUIREMENT_NOT_MET: crate::core::HRESULT =
+    crate::core::HRESULT(-2017128404i32);
+pub const UTC_E_TRACE_NOT_RUNNING: crate::core::HRESULT = crate::core::HRESULT(-2017128435i32);
+pub const UTC_E_TRACE_THROTTLED: crate::core::HRESULT = crate::core::HRESULT(-2017128355i32);
+pub const UTC_E_TRIGGER_MISMATCH: crate::core::HRESULT = crate::core::HRESULT(-2017128414i32);
+pub const UTC_E_TRIGGER_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2017128413i32);
+pub const UTC_E_TRY_GET_SCENARIO_TIMEOUT_EXCEEDED: crate::core::HRESULT =
+    crate::core::HRESULT(-2017128386i32);
+pub const UTC_E_TTTRACER_RETURNED_ERROR: crate::core::HRESULT =
+    crate::core::HRESULT(-2017128364i32);
+pub const UTC_E_TTTRACER_STORAGE_FULL: crate::core::HRESULT = crate::core::HRESULT(-2017128360i32);
+pub const UTC_E_UNABLE_TO_RESOLVE_SESSION: crate::core::HRESULT =
+    crate::core::HRESULT(-2017128393i32);
+pub const UTC_E_UNAPPROVED_SCRIPT: crate::core::HRESULT = crate::core::HRESULT(-2017128391i32);
+pub const UTC_E_WINRT_INIT_FAILED: crate::core::HRESULT = crate::core::HRESULT(-2017128425i32);
+pub const VIEW_E_DRAW: crate::core::HRESULT = crate::core::HRESULT(-2147221184i32);
 pub const VIEW_E_FIRST: i32 = -2147221184i32;
 pub const VIEW_E_LAST: i32 = -2147221169i32;
-pub const VIEW_S_ALREADY_FROZEN: ::win32::core::HRESULT = ::win32::core::HRESULT(262464i32);
+pub const VIEW_S_ALREADY_FROZEN: crate::core::HRESULT = crate::core::HRESULT(262464i32);
 pub const VIEW_S_FIRST: i32 = 262464i32;
 pub const VIEW_S_LAST: i32 = 262479i32;
-pub const VM_SAVED_STATE_DUMP_E_GUEST_MEMORY_NOT_FOUND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1070136063i32);
-pub const VM_SAVED_STATE_DUMP_E_INVALID_VP_STATE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1070136058i32);
-pub const VM_SAVED_STATE_DUMP_E_NESTED_VIRTUALIZATION_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1070136061i32);
-pub const VM_SAVED_STATE_DUMP_E_NO_VP_FOUND_IN_PARTITION_STATE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1070136062i32);
-pub const VM_SAVED_STATE_DUMP_E_PARTITION_STATE_NOT_FOUND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1070136064i32);
-pub const VM_SAVED_STATE_DUMP_E_VA_NOT_MAPPED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1070136059i32);
-pub const VM_SAVED_STATE_DUMP_E_VP_VTL_NOT_ENABLED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1070136055i32);
-pub const VM_SAVED_STATE_DUMP_E_WINDOWS_KERNEL_IMAGE_NOT_FOUND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1070136060i32);
+pub const VM_SAVED_STATE_DUMP_E_GUEST_MEMORY_NOT_FOUND: crate::core::HRESULT =
+    crate::core::HRESULT(-1070136063i32);
+pub const VM_SAVED_STATE_DUMP_E_INVALID_VP_STATE: crate::core::HRESULT =
+    crate::core::HRESULT(-1070136058i32);
+pub const VM_SAVED_STATE_DUMP_E_NESTED_VIRTUALIZATION_NOT_SUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-1070136061i32);
+pub const VM_SAVED_STATE_DUMP_E_NO_VP_FOUND_IN_PARTITION_STATE: crate::core::HRESULT =
+    crate::core::HRESULT(-1070136062i32);
+pub const VM_SAVED_STATE_DUMP_E_PARTITION_STATE_NOT_FOUND: crate::core::HRESULT =
+    crate::core::HRESULT(-1070136064i32);
+pub const VM_SAVED_STATE_DUMP_E_VA_NOT_MAPPED: crate::core::HRESULT =
+    crate::core::HRESULT(-1070136059i32);
+pub const VM_SAVED_STATE_DUMP_E_VP_VTL_NOT_ENABLED: crate::core::HRESULT =
+    crate::core::HRESULT(-1070136055i32);
+pub const VM_SAVED_STATE_DUMP_E_WINDOWS_KERNEL_IMAGE_NOT_FOUND: crate::core::HRESULT =
+    crate::core::HRESULT(-1070136060i32);
 pub const WARNING_IPSEC_MM_POLICY_PRUNED: i32 = 13024i32;
 pub const WARNING_IPSEC_QM_POLICY_PRUNED: i32 = 13025i32;
 pub const WARNING_NO_MD5_MIGRATION: u32 = 946u32;
-pub const WBREAK_E_BUFFER_TOO_SMALL: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147215485i32);
-pub const WBREAK_E_END_OF_TEXT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215488i32);
-pub const WBREAK_E_INIT_FAILED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215483i32);
-pub const WBREAK_E_QUERY_ONLY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147215486i32);
-pub const WEB_E_INVALID_JSON_NUMBER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2089484280i32);
-pub const WEB_E_INVALID_JSON_STRING: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2089484281i32);
-pub const WEB_E_INVALID_XML: ::win32::core::HRESULT = ::win32::core::HRESULT(-2089484286i32);
-pub const WEB_E_JSON_VALUE_NOT_FOUND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2089484279i32);
-pub const WEB_E_MISSING_REQUIRED_ATTRIBUTE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2089484284i32);
-pub const WEB_E_MISSING_REQUIRED_ELEMENT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2089484285i32);
-pub const WEB_E_RESOURCE_TOO_LARGE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2089484282i32);
-pub const WEB_E_UNEXPECTED_CONTENT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2089484283i32);
-pub const WEB_E_UNSUPPORTED_FORMAT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2089484287i32);
-pub const WEP_E_BUFFER_TOO_LARGE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2013200375i32);
-pub const WEP_E_FIXED_DATA_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2013200382i32);
-pub const WEP_E_HARDWARE_NOT_COMPLIANT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2013200381i32);
-pub const WEP_E_LOCK_NOT_CONFIGURED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2013200380i32);
-pub const WEP_E_NOT_PROVISIONED_ON_ALL_VOLUMES: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2013200383i32);
-pub const WEP_E_NO_LICENSE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2013200378i32);
-pub const WEP_E_OS_NOT_PROTECTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2013200377i32);
-pub const WEP_E_PROTECTION_SUSPENDED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2013200379i32);
-pub const WEP_E_UNEXPECTED_FAIL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2013200376i32);
-pub const WER_E_ALREADY_REPORTING: ::win32::core::HRESULT = ::win32::core::HRESULT(-2145681404i32);
-pub const WER_E_CANCELED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2145681407i32);
-pub const WER_E_CRASH_FAILURE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2145681408i32);
-pub const WER_E_DUMP_THROTTLED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2145681403i32);
-pub const WER_E_INSUFFICIENT_CONSENT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2145681402i32);
-pub const WER_E_NETWORK_FAILURE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2145681406i32);
-pub const WER_E_NOT_INITIALIZED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2145681405i32);
-pub const WER_E_TOO_HEAVY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2145681401i32);
-pub const WER_S_ASSERT_CONTINUE: ::win32::core::HRESULT = ::win32::core::HRESULT(1769482i32);
-pub const WER_S_DISABLED: ::win32::core::HRESULT = ::win32::core::HRESULT(1769475i32);
-pub const WER_S_DISABLED_ARCHIVE: ::win32::core::HRESULT = ::win32::core::HRESULT(1769478i32);
-pub const WER_S_DISABLED_QUEUE: ::win32::core::HRESULT = ::win32::core::HRESULT(1769477i32);
-pub const WER_S_IGNORE_ALL_ASSERTS: ::win32::core::HRESULT = ::win32::core::HRESULT(1769481i32);
-pub const WER_S_IGNORE_ASSERT_INSTANCE: ::win32::core::HRESULT = ::win32::core::HRESULT(1769480i32);
-pub const WER_S_REPORT_ASYNC: ::win32::core::HRESULT = ::win32::core::HRESULT(1769479i32);
-pub const WER_S_REPORT_DEBUG: ::win32::core::HRESULT = ::win32::core::HRESULT(1769472i32);
-pub const WER_S_REPORT_QUEUED: ::win32::core::HRESULT = ::win32::core::HRESULT(1769474i32);
-pub const WER_S_REPORT_UPLOADED: ::win32::core::HRESULT = ::win32::core::HRESULT(1769473i32);
-pub const WER_S_REPORT_UPLOADED_CAB: ::win32::core::HRESULT = ::win32::core::HRESULT(1769484i32);
-pub const WER_S_SUSPENDED_UPLOAD: ::win32::core::HRESULT = ::win32::core::HRESULT(1769476i32);
-pub const WER_S_THROTTLED: ::win32::core::HRESULT = ::win32::core::HRESULT(1769483i32);
-pub const WHV_E_GPA_RANGE_NOT_FOUND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143878395i32);
-pub const WHV_E_INSUFFICIENT_BUFFER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143878399i32);
-pub const WHV_E_INVALID_PARTITION_CONFIG: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143878396i32);
-pub const WHV_E_INVALID_VP_REGISTER_NAME: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143878391i32);
-pub const WHV_E_INVALID_VP_STATE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143878392i32);
-pub const WHV_E_UNKNOWN_CAPABILITY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143878400i32);
-pub const WHV_E_UNKNOWN_PROPERTY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143878398i32);
-pub const WHV_E_UNSUPPORTED_HYPERVISOR_CONFIG: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143878397i32);
-pub const WHV_E_UNSUPPORTED_PROCESSOR_CONFIG: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143878384i32);
-pub const WHV_E_VP_ALREADY_EXISTS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143878394i32);
-pub const WHV_E_VP_DOES_NOT_EXIST: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143878393i32);
+pub const WBREAK_E_BUFFER_TOO_SMALL: crate::core::HRESULT = crate::core::HRESULT(-2147215485i32);
+pub const WBREAK_E_END_OF_TEXT: crate::core::HRESULT = crate::core::HRESULT(-2147215488i32);
+pub const WBREAK_E_INIT_FAILED: crate::core::HRESULT = crate::core::HRESULT(-2147215483i32);
+pub const WBREAK_E_QUERY_ONLY: crate::core::HRESULT = crate::core::HRESULT(-2147215486i32);
+pub const WEB_E_INVALID_JSON_NUMBER: crate::core::HRESULT = crate::core::HRESULT(-2089484280i32);
+pub const WEB_E_INVALID_JSON_STRING: crate::core::HRESULT = crate::core::HRESULT(-2089484281i32);
+pub const WEB_E_INVALID_XML: crate::core::HRESULT = crate::core::HRESULT(-2089484286i32);
+pub const WEB_E_JSON_VALUE_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2089484279i32);
+pub const WEB_E_MISSING_REQUIRED_ATTRIBUTE: crate::core::HRESULT =
+    crate::core::HRESULT(-2089484284i32);
+pub const WEB_E_MISSING_REQUIRED_ELEMENT: crate::core::HRESULT =
+    crate::core::HRESULT(-2089484285i32);
+pub const WEB_E_RESOURCE_TOO_LARGE: crate::core::HRESULT = crate::core::HRESULT(-2089484282i32);
+pub const WEB_E_UNEXPECTED_CONTENT: crate::core::HRESULT = crate::core::HRESULT(-2089484283i32);
+pub const WEB_E_UNSUPPORTED_FORMAT: crate::core::HRESULT = crate::core::HRESULT(-2089484287i32);
+pub const WEP_E_BUFFER_TOO_LARGE: crate::core::HRESULT = crate::core::HRESULT(-2013200375i32);
+pub const WEP_E_FIXED_DATA_NOT_SUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2013200382i32);
+pub const WEP_E_HARDWARE_NOT_COMPLIANT: crate::core::HRESULT = crate::core::HRESULT(-2013200381i32);
+pub const WEP_E_LOCK_NOT_CONFIGURED: crate::core::HRESULT = crate::core::HRESULT(-2013200380i32);
+pub const WEP_E_NOT_PROVISIONED_ON_ALL_VOLUMES: crate::core::HRESULT =
+    crate::core::HRESULT(-2013200383i32);
+pub const WEP_E_NO_LICENSE: crate::core::HRESULT = crate::core::HRESULT(-2013200378i32);
+pub const WEP_E_OS_NOT_PROTECTED: crate::core::HRESULT = crate::core::HRESULT(-2013200377i32);
+pub const WEP_E_PROTECTION_SUSPENDED: crate::core::HRESULT = crate::core::HRESULT(-2013200379i32);
+pub const WEP_E_UNEXPECTED_FAIL: crate::core::HRESULT = crate::core::HRESULT(-2013200376i32);
+pub const WER_E_ALREADY_REPORTING: crate::core::HRESULT = crate::core::HRESULT(-2145681404i32);
+pub const WER_E_CANCELED: crate::core::HRESULT = crate::core::HRESULT(-2145681407i32);
+pub const WER_E_CRASH_FAILURE: crate::core::HRESULT = crate::core::HRESULT(-2145681408i32);
+pub const WER_E_DUMP_THROTTLED: crate::core::HRESULT = crate::core::HRESULT(-2145681403i32);
+pub const WER_E_INSUFFICIENT_CONSENT: crate::core::HRESULT = crate::core::HRESULT(-2145681402i32);
+pub const WER_E_NETWORK_FAILURE: crate::core::HRESULT = crate::core::HRESULT(-2145681406i32);
+pub const WER_E_NOT_INITIALIZED: crate::core::HRESULT = crate::core::HRESULT(-2145681405i32);
+pub const WER_E_TOO_HEAVY: crate::core::HRESULT = crate::core::HRESULT(-2145681401i32);
+pub const WER_S_ASSERT_CONTINUE: crate::core::HRESULT = crate::core::HRESULT(1769482i32);
+pub const WER_S_DISABLED: crate::core::HRESULT = crate::core::HRESULT(1769475i32);
+pub const WER_S_DISABLED_ARCHIVE: crate::core::HRESULT = crate::core::HRESULT(1769478i32);
+pub const WER_S_DISABLED_QUEUE: crate::core::HRESULT = crate::core::HRESULT(1769477i32);
+pub const WER_S_IGNORE_ALL_ASSERTS: crate::core::HRESULT = crate::core::HRESULT(1769481i32);
+pub const WER_S_IGNORE_ASSERT_INSTANCE: crate::core::HRESULT = crate::core::HRESULT(1769480i32);
+pub const WER_S_REPORT_ASYNC: crate::core::HRESULT = crate::core::HRESULT(1769479i32);
+pub const WER_S_REPORT_DEBUG: crate::core::HRESULT = crate::core::HRESULT(1769472i32);
+pub const WER_S_REPORT_QUEUED: crate::core::HRESULT = crate::core::HRESULT(1769474i32);
+pub const WER_S_REPORT_UPLOADED: crate::core::HRESULT = crate::core::HRESULT(1769473i32);
+pub const WER_S_REPORT_UPLOADED_CAB: crate::core::HRESULT = crate::core::HRESULT(1769484i32);
+pub const WER_S_SUSPENDED_UPLOAD: crate::core::HRESULT = crate::core::HRESULT(1769476i32);
+pub const WER_S_THROTTLED: crate::core::HRESULT = crate::core::HRESULT(1769483i32);
+pub const WHV_E_GPA_RANGE_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2143878395i32);
+pub const WHV_E_INSUFFICIENT_BUFFER: crate::core::HRESULT = crate::core::HRESULT(-2143878399i32);
+pub const WHV_E_INVALID_PARTITION_CONFIG: crate::core::HRESULT =
+    crate::core::HRESULT(-2143878396i32);
+pub const WHV_E_INVALID_VP_REGISTER_NAME: crate::core::HRESULT =
+    crate::core::HRESULT(-2143878391i32);
+pub const WHV_E_INVALID_VP_STATE: crate::core::HRESULT = crate::core::HRESULT(-2143878392i32);
+pub const WHV_E_UNKNOWN_CAPABILITY: crate::core::HRESULT = crate::core::HRESULT(-2143878400i32);
+pub const WHV_E_UNKNOWN_PROPERTY: crate::core::HRESULT = crate::core::HRESULT(-2143878398i32);
+pub const WHV_E_UNSUPPORTED_HYPERVISOR_CONFIG: crate::core::HRESULT =
+    crate::core::HRESULT(-2143878397i32);
+pub const WHV_E_UNSUPPORTED_PROCESSOR_CONFIG: crate::core::HRESULT =
+    crate::core::HRESULT(-2143878384i32);
+pub const WHV_E_VP_ALREADY_EXISTS: crate::core::HRESULT = crate::core::HRESULT(-2143878394i32);
+pub const WHV_E_VP_DOES_NOT_EXIST: crate::core::HRESULT = crate::core::HRESULT(-2143878393i32);
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct WIN32_ERROR(pub u32);
 pub const NO_ERROR: WIN32_ERROR = WIN32_ERROR(0u32);
@@ -12227,221 +11649,198 @@ impl ::core::fmt::Debug for WIN32_ERROR {
         f.debug_tuple("WIN32_ERROR").field(&self.0).finish()
     }
 }
-pub const WINCODEC_ERR_ALREADYLOCKED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003292403i32);
-pub const WINCODEC_ERR_BADHEADER: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003292319i32);
-pub const WINCODEC_ERR_BADIMAGE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003292320i32);
-pub const WINCODEC_ERR_BADMETADATAHEADER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003292317i32);
-pub const WINCODEC_ERR_BADSTREAMDATA: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003292304i32);
-pub const WINCODEC_ERR_CODECNOTHUMBNAIL: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003292348i32);
-pub const WINCODEC_ERR_CODECPRESENT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003292349i32);
-pub const WINCODEC_ERR_CODECTOOMANYSCANLINES: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003292346i32);
-pub const WINCODEC_ERR_COMPONENTINITIALIZEFAILURE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003292277i32);
-pub const WINCODEC_ERR_COMPONENTNOTFOUND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003292336i32);
-pub const WINCODEC_ERR_DUPLICATEMETADATAPRESENT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003292275i32);
-pub const WINCODEC_ERR_FRAMEMISSING: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003292318i32);
-pub const WINCODEC_ERR_IMAGESIZEOUTOFRANGE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003292335i32);
-pub const WINCODEC_ERR_INSUFFICIENTBUFFER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003292276i32);
-pub const WINCODEC_ERR_INTERNALERROR: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003292344i32);
-pub const WINCODEC_ERR_INVALIDJPEGSCANINDEX: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003292266i32);
-pub const WINCODEC_ERR_INVALIDPROGRESSIVELEVEL: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003292267i32);
-pub const WINCODEC_ERR_INVALIDQUERYCHARACTER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003292269i32);
-pub const WINCODEC_ERR_INVALIDQUERYREQUEST: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003292272i32);
-pub const WINCODEC_ERR_INVALIDREGISTRATION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003292278i32);
-pub const WINCODEC_ERR_NOTINITIALIZED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003292404i32);
-pub const WINCODEC_ERR_PALETTEUNAVAILABLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003292347i32);
-pub const WINCODEC_ERR_PROPERTYNOTFOUND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003292352i32);
-pub const WINCODEC_ERR_PROPERTYNOTSUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003292351i32);
-pub const WINCODEC_ERR_PROPERTYSIZE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003292350i32);
-pub const WINCODEC_ERR_PROPERTYUNEXPECTEDTYPE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003292274i32);
-pub const WINCODEC_ERR_REQUESTONLYVALIDATMETADATAROOT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003292270i32);
-pub const WINCODEC_ERR_SOURCERECTDOESNOTMATCHDIMENSIONS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003292343i32);
-pub const WINCODEC_ERR_STREAMNOTAVAILABLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003292301i32);
-pub const WINCODEC_ERR_STREAMREAD: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003292302i32);
-pub const WINCODEC_ERR_STREAMWRITE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003292303i32);
-pub const WINCODEC_ERR_TOOMUCHMETADATA: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003292334i32);
-pub const WINCODEC_ERR_UNEXPECTEDMETADATATYPE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003292271i32);
-pub const WINCODEC_ERR_UNEXPECTEDSIZE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003292273i32);
-pub const WINCODEC_ERR_UNKNOWNIMAGEFORMAT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003292409i32);
-pub const WINCODEC_ERR_UNSUPPORTEDOPERATION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003292287i32);
-pub const WINCODEC_ERR_UNSUPPORTEDPIXELFORMAT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003292288i32);
-pub const WINCODEC_ERR_UNSUPPORTEDVERSION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003292405i32);
-pub const WINCODEC_ERR_VALUEOUTOFRANGE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003292411i32);
-pub const WINCODEC_ERR_WIN32ERROR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003292268i32);
-pub const WINCODEC_ERR_WRONGSTATE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003292412i32);
-pub const WININET_E_ASYNC_THREAD_FAILED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147012849i32);
-pub const WININET_E_BAD_AUTO_PROXY_SCRIPT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147012730i32);
-pub const WININET_E_BAD_OPTION_LENGTH: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147012886i32);
-pub const WININET_E_BAD_REGISTRY_PARAMETER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147012874i32);
-pub const WININET_E_CANNOT_CONNECT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147012867i32);
-pub const WININET_E_CHG_POST_IS_NON_SECURE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147012854i32);
-pub const WININET_E_CLIENT_AUTH_CERT_NEEDED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147012852i32);
-pub const WININET_E_CLIENT_AUTH_NOT_SETUP: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147012850i32);
-pub const WININET_E_CONNECTION_ABORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147012866i32);
-pub const WININET_E_CONNECTION_RESET: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147012865i32);
-pub const WININET_E_COOKIE_DECLINED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147012734i32);
-pub const WININET_E_COOKIE_NEEDS_CONFIRMATION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147012735i32);
-pub const WININET_E_DECODING_FAILED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147012721i32);
-pub const WININET_E_DIALOG_PENDING: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147012847i32);
-pub const WININET_E_DISCONNECTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147012733i32);
-pub const WININET_E_DOWNLEVEL_SERVER: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147012745i32);
-pub const WININET_E_EXTENDED_ERROR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147012893i32);
-pub const WININET_E_FAILED_DUETOSECURITYCHECK: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147012725i32);
-pub const WININET_E_FORCE_RETRY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147012864i32);
-pub const WININET_E_HANDLE_EXISTS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147012860i32);
-pub const WININET_E_HEADER_ALREADY_EXISTS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147012741i32);
-pub const WININET_E_HEADER_NOT_FOUND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147012746i32);
-pub const WININET_E_HTTPS_HTTP_SUBMIT_REDIR: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147012844i32);
-pub const WININET_E_HTTPS_TO_HTTP_ON_REDIR: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147012856i32);
-pub const WININET_E_HTTP_TO_HTTPS_ON_REDIR: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147012857i32);
-pub const WININET_E_INCORRECT_FORMAT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147012869i32);
-pub const WININET_E_INCORRECT_HANDLE_STATE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147012877i32);
-pub const WININET_E_INCORRECT_HANDLE_TYPE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147012878i32);
-pub const WININET_E_INCORRECT_PASSWORD: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147012882i32);
-pub const WININET_E_INCORRECT_USER_NAME: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147012883i32);
-pub const WININET_E_INTERNAL_ERROR: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147012892i32);
-pub const WININET_E_INVALID_CA: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147012851i32);
-pub const WININET_E_INVALID_HEADER: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147012743i32);
-pub const WININET_E_INVALID_OPERATION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147012880i32);
-pub const WININET_E_INVALID_OPTION: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147012887i32);
-pub const WININET_E_INVALID_PROXY_REQUEST: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147012863i32);
-pub const WININET_E_INVALID_QUERY_REQUEST: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147012742i32);
-pub const WININET_E_INVALID_SERVER_RESPONSE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147012744i32);
-pub const WININET_E_INVALID_URL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147012891i32);
-pub const WININET_E_ITEM_NOT_FOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147012868i32);
-pub const WININET_E_LOGIN_FAILURE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147012881i32);
-pub const WININET_E_LOGIN_FAILURE_DISPLAY_ENTITY_BODY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147012722i32);
-pub const WININET_E_MIXED_SECURITY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147012855i32);
-pub const WININET_E_NAME_NOT_RESOLVED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147012889i32);
-pub const WININET_E_NEED_UI: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147012862i32);
-pub const WININET_E_NOT_INITIALIZED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147012724i32);
-pub const WININET_E_NOT_PROXY_REQUEST: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147012876i32);
-pub const WININET_E_NOT_REDIRECTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147012736i32);
-pub const WININET_E_NO_CALLBACK: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147012871i32);
-pub const WININET_E_NO_CONTEXT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147012872i32);
-pub const WININET_E_NO_DIRECT_ACCESS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147012873i32);
-pub const WININET_E_NO_NEW_CONTAINERS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147012845i32);
-pub const WININET_E_OPERATION_CANCELLED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147012879i32);
-pub const WININET_E_OPTION_NOT_SETTABLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147012885i32);
-pub const WININET_E_OUT_OF_HANDLES: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147012895i32);
-pub const WININET_E_POST_IS_NON_SECURE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147012853i32);
-pub const WININET_E_PROTOCOL_NOT_FOUND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147012888i32);
-pub const WININET_E_PROXY_SERVER_UNREACHABLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147012731i32);
-pub const WININET_E_REDIRECT_FAILED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147012740i32);
-pub const WININET_E_REDIRECT_NEEDS_CONFIRMATION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147012728i32);
-pub const WININET_E_REDIRECT_SCHEME_CHANGE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147012848i32);
-pub const WININET_E_REGISTRY_VALUE_NOT_FOUND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147012875i32);
-pub const WININET_E_REQUEST_PENDING: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147012870i32);
-pub const WININET_E_RETRY_DIALOG: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147012846i32);
-pub const WININET_E_SECURITY_CHANNEL_ERROR: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147012739i32);
-pub const WININET_E_SEC_CERT_CN_INVALID: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147012858i32);
-pub const WININET_E_SEC_CERT_DATE_INVALID: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147012859i32);
-pub const WININET_E_SEC_CERT_ERRORS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147012841i32);
-pub const WININET_E_SEC_CERT_REVOKED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147012726i32);
-pub const WININET_E_SEC_CERT_REV_FAILED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147012839i32);
-pub const WININET_E_SEC_INVALID_CERT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147012727i32);
-pub const WININET_E_SERVER_UNREACHABLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147012732i32);
-pub const WININET_E_SHUTDOWN: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147012884i32);
-pub const WININET_E_TCPIP_NOT_INSTALLED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147012737i32);
-pub const WININET_E_TIMEOUT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147012894i32);
-pub const WININET_E_UNABLE_TO_CACHE_FILE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147012738i32);
-pub const WININET_E_UNABLE_TO_DOWNLOAD_SCRIPT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147012729i32);
-pub const WININET_E_UNRECOGNIZED_SCHEME: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147012890i32);
-pub const WINML_ERR_INVALID_BINDING: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2003828734i32);
-pub const WINML_ERR_INVALID_DEVICE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003828735i32);
-pub const WINML_ERR_SIZE_MISMATCH: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003828732i32);
-pub const WINML_ERR_VALUE_NOTFOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2003828733i32);
+impl FromIntoMemory for WIN32_ERROR {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
+    }
+}
+pub const WINCODEC_ERR_ALREADYLOCKED: crate::core::HRESULT = crate::core::HRESULT(-2003292403i32);
+pub const WINCODEC_ERR_BADHEADER: crate::core::HRESULT = crate::core::HRESULT(-2003292319i32);
+pub const WINCODEC_ERR_BADIMAGE: crate::core::HRESULT = crate::core::HRESULT(-2003292320i32);
+pub const WINCODEC_ERR_BADMETADATAHEADER: crate::core::HRESULT =
+    crate::core::HRESULT(-2003292317i32);
+pub const WINCODEC_ERR_BADSTREAMDATA: crate::core::HRESULT = crate::core::HRESULT(-2003292304i32);
+pub const WINCODEC_ERR_CODECNOTHUMBNAIL: crate::core::HRESULT =
+    crate::core::HRESULT(-2003292348i32);
+pub const WINCODEC_ERR_CODECPRESENT: crate::core::HRESULT = crate::core::HRESULT(-2003292349i32);
+pub const WINCODEC_ERR_CODECTOOMANYSCANLINES: crate::core::HRESULT =
+    crate::core::HRESULT(-2003292346i32);
+pub const WINCODEC_ERR_COMPONENTINITIALIZEFAILURE: crate::core::HRESULT =
+    crate::core::HRESULT(-2003292277i32);
+pub const WINCODEC_ERR_COMPONENTNOTFOUND: crate::core::HRESULT =
+    crate::core::HRESULT(-2003292336i32);
+pub const WINCODEC_ERR_DUPLICATEMETADATAPRESENT: crate::core::HRESULT =
+    crate::core::HRESULT(-2003292275i32);
+pub const WINCODEC_ERR_FRAMEMISSING: crate::core::HRESULT = crate::core::HRESULT(-2003292318i32);
+pub const WINCODEC_ERR_IMAGESIZEOUTOFRANGE: crate::core::HRESULT =
+    crate::core::HRESULT(-2003292335i32);
+pub const WINCODEC_ERR_INSUFFICIENTBUFFER: crate::core::HRESULT =
+    crate::core::HRESULT(-2003292276i32);
+pub const WINCODEC_ERR_INTERNALERROR: crate::core::HRESULT = crate::core::HRESULT(-2003292344i32);
+pub const WINCODEC_ERR_INVALIDJPEGSCANINDEX: crate::core::HRESULT =
+    crate::core::HRESULT(-2003292266i32);
+pub const WINCODEC_ERR_INVALIDPROGRESSIVELEVEL: crate::core::HRESULT =
+    crate::core::HRESULT(-2003292267i32);
+pub const WINCODEC_ERR_INVALIDQUERYCHARACTER: crate::core::HRESULT =
+    crate::core::HRESULT(-2003292269i32);
+pub const WINCODEC_ERR_INVALIDQUERYREQUEST: crate::core::HRESULT =
+    crate::core::HRESULT(-2003292272i32);
+pub const WINCODEC_ERR_INVALIDREGISTRATION: crate::core::HRESULT =
+    crate::core::HRESULT(-2003292278i32);
+pub const WINCODEC_ERR_NOTINITIALIZED: crate::core::HRESULT = crate::core::HRESULT(-2003292404i32);
+pub const WINCODEC_ERR_PALETTEUNAVAILABLE: crate::core::HRESULT =
+    crate::core::HRESULT(-2003292347i32);
+pub const WINCODEC_ERR_PROPERTYNOTFOUND: crate::core::HRESULT =
+    crate::core::HRESULT(-2003292352i32);
+pub const WINCODEC_ERR_PROPERTYNOTSUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2003292351i32);
+pub const WINCODEC_ERR_PROPERTYSIZE: crate::core::HRESULT = crate::core::HRESULT(-2003292350i32);
+pub const WINCODEC_ERR_PROPERTYUNEXPECTEDTYPE: crate::core::HRESULT =
+    crate::core::HRESULT(-2003292274i32);
+pub const WINCODEC_ERR_REQUESTONLYVALIDATMETADATAROOT: crate::core::HRESULT =
+    crate::core::HRESULT(-2003292270i32);
+pub const WINCODEC_ERR_SOURCERECTDOESNOTMATCHDIMENSIONS: crate::core::HRESULT =
+    crate::core::HRESULT(-2003292343i32);
+pub const WINCODEC_ERR_STREAMNOTAVAILABLE: crate::core::HRESULT =
+    crate::core::HRESULT(-2003292301i32);
+pub const WINCODEC_ERR_STREAMREAD: crate::core::HRESULT = crate::core::HRESULT(-2003292302i32);
+pub const WINCODEC_ERR_STREAMWRITE: crate::core::HRESULT = crate::core::HRESULT(-2003292303i32);
+pub const WINCODEC_ERR_TOOMUCHMETADATA: crate::core::HRESULT = crate::core::HRESULT(-2003292334i32);
+pub const WINCODEC_ERR_UNEXPECTEDMETADATATYPE: crate::core::HRESULT =
+    crate::core::HRESULT(-2003292271i32);
+pub const WINCODEC_ERR_UNEXPECTEDSIZE: crate::core::HRESULT = crate::core::HRESULT(-2003292273i32);
+pub const WINCODEC_ERR_UNKNOWNIMAGEFORMAT: crate::core::HRESULT =
+    crate::core::HRESULT(-2003292409i32);
+pub const WINCODEC_ERR_UNSUPPORTEDOPERATION: crate::core::HRESULT =
+    crate::core::HRESULT(-2003292287i32);
+pub const WINCODEC_ERR_UNSUPPORTEDPIXELFORMAT: crate::core::HRESULT =
+    crate::core::HRESULT(-2003292288i32);
+pub const WINCODEC_ERR_UNSUPPORTEDVERSION: crate::core::HRESULT =
+    crate::core::HRESULT(-2003292405i32);
+pub const WINCODEC_ERR_VALUEOUTOFRANGE: crate::core::HRESULT = crate::core::HRESULT(-2003292411i32);
+pub const WINCODEC_ERR_WIN32ERROR: crate::core::HRESULT = crate::core::HRESULT(-2003292268i32);
+pub const WINCODEC_ERR_WRONGSTATE: crate::core::HRESULT = crate::core::HRESULT(-2003292412i32);
+pub const WININET_E_ASYNC_THREAD_FAILED: crate::core::HRESULT =
+    crate::core::HRESULT(-2147012849i32);
+pub const WININET_E_BAD_AUTO_PROXY_SCRIPT: crate::core::HRESULT =
+    crate::core::HRESULT(-2147012730i32);
+pub const WININET_E_BAD_OPTION_LENGTH: crate::core::HRESULT = crate::core::HRESULT(-2147012886i32);
+pub const WININET_E_BAD_REGISTRY_PARAMETER: crate::core::HRESULT =
+    crate::core::HRESULT(-2147012874i32);
+pub const WININET_E_CANNOT_CONNECT: crate::core::HRESULT = crate::core::HRESULT(-2147012867i32);
+pub const WININET_E_CHG_POST_IS_NON_SECURE: crate::core::HRESULT =
+    crate::core::HRESULT(-2147012854i32);
+pub const WININET_E_CLIENT_AUTH_CERT_NEEDED: crate::core::HRESULT =
+    crate::core::HRESULT(-2147012852i32);
+pub const WININET_E_CLIENT_AUTH_NOT_SETUP: crate::core::HRESULT =
+    crate::core::HRESULT(-2147012850i32);
+pub const WININET_E_CONNECTION_ABORTED: crate::core::HRESULT = crate::core::HRESULT(-2147012866i32);
+pub const WININET_E_CONNECTION_RESET: crate::core::HRESULT = crate::core::HRESULT(-2147012865i32);
+pub const WININET_E_COOKIE_DECLINED: crate::core::HRESULT = crate::core::HRESULT(-2147012734i32);
+pub const WININET_E_COOKIE_NEEDS_CONFIRMATION: crate::core::HRESULT =
+    crate::core::HRESULT(-2147012735i32);
+pub const WININET_E_DECODING_FAILED: crate::core::HRESULT = crate::core::HRESULT(-2147012721i32);
+pub const WININET_E_DIALOG_PENDING: crate::core::HRESULT = crate::core::HRESULT(-2147012847i32);
+pub const WININET_E_DISCONNECTED: crate::core::HRESULT = crate::core::HRESULT(-2147012733i32);
+pub const WININET_E_DOWNLEVEL_SERVER: crate::core::HRESULT = crate::core::HRESULT(-2147012745i32);
+pub const WININET_E_EXTENDED_ERROR: crate::core::HRESULT = crate::core::HRESULT(-2147012893i32);
+pub const WININET_E_FAILED_DUETOSECURITYCHECK: crate::core::HRESULT =
+    crate::core::HRESULT(-2147012725i32);
+pub const WININET_E_FORCE_RETRY: crate::core::HRESULT = crate::core::HRESULT(-2147012864i32);
+pub const WININET_E_HANDLE_EXISTS: crate::core::HRESULT = crate::core::HRESULT(-2147012860i32);
+pub const WININET_E_HEADER_ALREADY_EXISTS: crate::core::HRESULT =
+    crate::core::HRESULT(-2147012741i32);
+pub const WININET_E_HEADER_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2147012746i32);
+pub const WININET_E_HTTPS_HTTP_SUBMIT_REDIR: crate::core::HRESULT =
+    crate::core::HRESULT(-2147012844i32);
+pub const WININET_E_HTTPS_TO_HTTP_ON_REDIR: crate::core::HRESULT =
+    crate::core::HRESULT(-2147012856i32);
+pub const WININET_E_HTTP_TO_HTTPS_ON_REDIR: crate::core::HRESULT =
+    crate::core::HRESULT(-2147012857i32);
+pub const WININET_E_INCORRECT_FORMAT: crate::core::HRESULT = crate::core::HRESULT(-2147012869i32);
+pub const WININET_E_INCORRECT_HANDLE_STATE: crate::core::HRESULT =
+    crate::core::HRESULT(-2147012877i32);
+pub const WININET_E_INCORRECT_HANDLE_TYPE: crate::core::HRESULT =
+    crate::core::HRESULT(-2147012878i32);
+pub const WININET_E_INCORRECT_PASSWORD: crate::core::HRESULT = crate::core::HRESULT(-2147012882i32);
+pub const WININET_E_INCORRECT_USER_NAME: crate::core::HRESULT =
+    crate::core::HRESULT(-2147012883i32);
+pub const WININET_E_INTERNAL_ERROR: crate::core::HRESULT = crate::core::HRESULT(-2147012892i32);
+pub const WININET_E_INVALID_CA: crate::core::HRESULT = crate::core::HRESULT(-2147012851i32);
+pub const WININET_E_INVALID_HEADER: crate::core::HRESULT = crate::core::HRESULT(-2147012743i32);
+pub const WININET_E_INVALID_OPERATION: crate::core::HRESULT = crate::core::HRESULT(-2147012880i32);
+pub const WININET_E_INVALID_OPTION: crate::core::HRESULT = crate::core::HRESULT(-2147012887i32);
+pub const WININET_E_INVALID_PROXY_REQUEST: crate::core::HRESULT =
+    crate::core::HRESULT(-2147012863i32);
+pub const WININET_E_INVALID_QUERY_REQUEST: crate::core::HRESULT =
+    crate::core::HRESULT(-2147012742i32);
+pub const WININET_E_INVALID_SERVER_RESPONSE: crate::core::HRESULT =
+    crate::core::HRESULT(-2147012744i32);
+pub const WININET_E_INVALID_URL: crate::core::HRESULT = crate::core::HRESULT(-2147012891i32);
+pub const WININET_E_ITEM_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2147012868i32);
+pub const WININET_E_LOGIN_FAILURE: crate::core::HRESULT = crate::core::HRESULT(-2147012881i32);
+pub const WININET_E_LOGIN_FAILURE_DISPLAY_ENTITY_BODY: crate::core::HRESULT =
+    crate::core::HRESULT(-2147012722i32);
+pub const WININET_E_MIXED_SECURITY: crate::core::HRESULT = crate::core::HRESULT(-2147012855i32);
+pub const WININET_E_NAME_NOT_RESOLVED: crate::core::HRESULT = crate::core::HRESULT(-2147012889i32);
+pub const WININET_E_NEED_UI: crate::core::HRESULT = crate::core::HRESULT(-2147012862i32);
+pub const WININET_E_NOT_INITIALIZED: crate::core::HRESULT = crate::core::HRESULT(-2147012724i32);
+pub const WININET_E_NOT_PROXY_REQUEST: crate::core::HRESULT = crate::core::HRESULT(-2147012876i32);
+pub const WININET_E_NOT_REDIRECTED: crate::core::HRESULT = crate::core::HRESULT(-2147012736i32);
+pub const WININET_E_NO_CALLBACK: crate::core::HRESULT = crate::core::HRESULT(-2147012871i32);
+pub const WININET_E_NO_CONTEXT: crate::core::HRESULT = crate::core::HRESULT(-2147012872i32);
+pub const WININET_E_NO_DIRECT_ACCESS: crate::core::HRESULT = crate::core::HRESULT(-2147012873i32);
+pub const WININET_E_NO_NEW_CONTAINERS: crate::core::HRESULT = crate::core::HRESULT(-2147012845i32);
+pub const WININET_E_OPERATION_CANCELLED: crate::core::HRESULT =
+    crate::core::HRESULT(-2147012879i32);
+pub const WININET_E_OPTION_NOT_SETTABLE: crate::core::HRESULT =
+    crate::core::HRESULT(-2147012885i32);
+pub const WININET_E_OUT_OF_HANDLES: crate::core::HRESULT = crate::core::HRESULT(-2147012895i32);
+pub const WININET_E_POST_IS_NON_SECURE: crate::core::HRESULT = crate::core::HRESULT(-2147012853i32);
+pub const WININET_E_PROTOCOL_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2147012888i32);
+pub const WININET_E_PROXY_SERVER_UNREACHABLE: crate::core::HRESULT =
+    crate::core::HRESULT(-2147012731i32);
+pub const WININET_E_REDIRECT_FAILED: crate::core::HRESULT = crate::core::HRESULT(-2147012740i32);
+pub const WININET_E_REDIRECT_NEEDS_CONFIRMATION: crate::core::HRESULT =
+    crate::core::HRESULT(-2147012728i32);
+pub const WININET_E_REDIRECT_SCHEME_CHANGE: crate::core::HRESULT =
+    crate::core::HRESULT(-2147012848i32);
+pub const WININET_E_REGISTRY_VALUE_NOT_FOUND: crate::core::HRESULT =
+    crate::core::HRESULT(-2147012875i32);
+pub const WININET_E_REQUEST_PENDING: crate::core::HRESULT = crate::core::HRESULT(-2147012870i32);
+pub const WININET_E_RETRY_DIALOG: crate::core::HRESULT = crate::core::HRESULT(-2147012846i32);
+pub const WININET_E_SECURITY_CHANNEL_ERROR: crate::core::HRESULT =
+    crate::core::HRESULT(-2147012739i32);
+pub const WININET_E_SEC_CERT_CN_INVALID: crate::core::HRESULT =
+    crate::core::HRESULT(-2147012858i32);
+pub const WININET_E_SEC_CERT_DATE_INVALID: crate::core::HRESULT =
+    crate::core::HRESULT(-2147012859i32);
+pub const WININET_E_SEC_CERT_ERRORS: crate::core::HRESULT = crate::core::HRESULT(-2147012841i32);
+pub const WININET_E_SEC_CERT_REVOKED: crate::core::HRESULT = crate::core::HRESULT(-2147012726i32);
+pub const WININET_E_SEC_CERT_REV_FAILED: crate::core::HRESULT =
+    crate::core::HRESULT(-2147012839i32);
+pub const WININET_E_SEC_INVALID_CERT: crate::core::HRESULT = crate::core::HRESULT(-2147012727i32);
+pub const WININET_E_SERVER_UNREACHABLE: crate::core::HRESULT = crate::core::HRESULT(-2147012732i32);
+pub const WININET_E_SHUTDOWN: crate::core::HRESULT = crate::core::HRESULT(-2147012884i32);
+pub const WININET_E_TCPIP_NOT_INSTALLED: crate::core::HRESULT =
+    crate::core::HRESULT(-2147012737i32);
+pub const WININET_E_TIMEOUT: crate::core::HRESULT = crate::core::HRESULT(-2147012894i32);
+pub const WININET_E_UNABLE_TO_CACHE_FILE: crate::core::HRESULT =
+    crate::core::HRESULT(-2147012738i32);
+pub const WININET_E_UNABLE_TO_DOWNLOAD_SCRIPT: crate::core::HRESULT =
+    crate::core::HRESULT(-2147012729i32);
+pub const WININET_E_UNRECOGNIZED_SCHEME: crate::core::HRESULT =
+    crate::core::HRESULT(-2147012890i32);
+pub const WINML_ERR_INVALID_BINDING: crate::core::HRESULT = crate::core::HRESULT(-2003828734i32);
+pub const WINML_ERR_INVALID_DEVICE: crate::core::HRESULT = crate::core::HRESULT(-2003828735i32);
+pub const WINML_ERR_SIZE_MISMATCH: crate::core::HRESULT = crate::core::HRESULT(-2003828732i32);
+pub const WINML_ERR_VALUE_NOTFOUND: crate::core::HRESULT = crate::core::HRESULT(-2003828733i32);
 pub const WINVER: u32 = 1280u32;
 pub const WINVER_MAXVER: u32 = 2560u32;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -12467,212 +11866,187 @@ impl ::core::fmt::Debug for WPARAM {
         f.debug_tuple("WPARAM").field(&self.0).finish()
     }
 }
-pub const WPN_E_ACCESS_DENIED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143420137i32);
-pub const WPN_E_ALL_URL_NOT_COMPLETED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143419901i32);
-pub const WPN_E_CALLBACK_ALREADY_REGISTERED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143419898i32);
-pub const WPN_E_CHANNEL_CLOSED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143420160i32);
-pub const WPN_E_CHANNEL_REQUEST_NOT_COMPLETE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143420159i32);
-pub const WPN_E_CLOUD_AUTH_UNAVAILABLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143420134i32);
-pub const WPN_E_CLOUD_DISABLED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143420151i32);
-pub const WPN_E_CLOUD_DISABLED_FOR_APP: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143419893i32);
-pub const WPN_E_CLOUD_INCAPABLE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143420144i32);
-pub const WPN_E_CLOUD_SERVICE_UNAVAILABLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143420133i32);
-pub const WPN_E_DEV_ID_SIZE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143420128i32);
-pub const WPN_E_DUPLICATE_CHANNEL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143420156i32);
-pub const WPN_E_DUPLICATE_REGISTRATION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143420136i32);
-pub const WPN_E_FAILED_LOCK_SCREEN_UPDATE_INTIALIZATION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143420132i32);
-pub const WPN_E_GROUP_ALPHANUMERIC: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143419894i32);
-pub const WPN_E_GROUP_SIZE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143419895i32);
-pub const WPN_E_IMAGE_NOT_FOUND_IN_CACHE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143419902i32);
-pub const WPN_E_INTERNET_INCAPABLE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143420141i32);
-pub const WPN_E_INVALID_APP: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143420158i32);
-pub const WPN_E_INVALID_CLOUD_IMAGE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143419900i32);
-pub const WPN_E_INVALID_HTTP_STATUS_CODE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143420117i32);
-pub const WPN_E_NOTIFICATION_DISABLED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143420143i32);
-pub const WPN_E_NOTIFICATION_HIDDEN: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143420153i32);
-pub const WPN_E_NOTIFICATION_ID_MATCHED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143419899i32);
-pub const WPN_E_NOTIFICATION_INCAPABLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143420142i32);
-pub const WPN_E_NOTIFICATION_NOT_POSTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143420152i32);
-pub const WPN_E_NOTIFICATION_POSTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143420154i32);
-pub const WPN_E_NOTIFICATION_SIZE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143420139i32);
-pub const WPN_E_NOTIFICATION_TYPE_DISABLED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143420140i32);
-pub const WPN_E_OUTSTANDING_CHANNEL_REQUEST: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143420157i32);
-pub const WPN_E_OUT_OF_SESSION: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143419904i32);
-pub const WPN_E_PLATFORM_UNAVAILABLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143420155i32);
-pub const WPN_E_POWER_SAVE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143419903i32);
-pub const WPN_E_PUSH_NOTIFICATION_INCAPABLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143420135i32);
-pub const WPN_E_STORAGE_LOCKED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143419896i32);
-pub const WPN_E_TAG_ALPHANUMERIC: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143420118i32);
-pub const WPN_E_TAG_SIZE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143420138i32);
-pub const WPN_E_TOAST_NOTIFICATION_DROPPED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143419897i32);
-pub const WS_E_ADDRESS_IN_USE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143485941i32);
-pub const WS_E_ADDRESS_NOT_AVAILABLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143485940i32);
-pub const WS_E_ENDPOINT_ACCESS_DENIED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143485947i32);
-pub const WS_E_ENDPOINT_ACTION_NOT_SUPPORTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143485935i32);
-pub const WS_E_ENDPOINT_DISCONNECTED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143485932i32);
-pub const WS_E_ENDPOINT_FAILURE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143485937i32);
-pub const WS_E_ENDPOINT_FAULT_RECEIVED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143485933i32);
-pub const WS_E_ENDPOINT_NOT_AVAILABLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143485938i32);
-pub const WS_E_ENDPOINT_NOT_FOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143485939i32);
-pub const WS_E_ENDPOINT_TOO_BUSY: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143485934i32);
-pub const WS_E_ENDPOINT_UNREACHABLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143485936i32);
-pub const WS_E_INVALID_ENDPOINT_URL: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143485920i32);
-pub const WS_E_INVALID_FORMAT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143485952i32);
-pub const WS_E_INVALID_OPERATION: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143485949i32);
-pub const WS_E_NOT_SUPPORTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143485929i32);
-pub const WS_E_NO_TRANSLATION_AVAILABLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143485943i32);
-pub const WS_E_NUMERIC_OVERFLOW: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143485950i32);
-pub const WS_E_OBJECT_FAULTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143485951i32);
-pub const WS_E_OPERATION_ABANDONED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143485945i32);
-pub const WS_E_OPERATION_ABORTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143485948i32);
-pub const WS_E_OPERATION_TIMED_OUT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143485946i32);
-pub const WS_E_OTHER: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143485919i32);
-pub const WS_E_PROXY_ACCESS_DENIED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143485930i32);
-pub const WS_E_PROXY_FAILURE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143485931i32);
-pub const WS_E_PROXY_REQUIRES_BASIC_AUTH: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143485928i32);
-pub const WS_E_PROXY_REQUIRES_DIGEST_AUTH: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143485927i32);
-pub const WS_E_PROXY_REQUIRES_NEGOTIATE_AUTH: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143485925i32);
-pub const WS_E_PROXY_REQUIRES_NTLM_AUTH: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143485926i32);
-pub const WS_E_QUOTA_EXCEEDED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2143485944i32);
-pub const WS_E_SECURITY_SYSTEM_FAILURE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143485917i32);
-pub const WS_E_SECURITY_TOKEN_EXPIRED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143485918i32);
-pub const WS_E_SECURITY_VERIFICATION_FAILURE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143485942i32);
-pub const WS_E_SERVER_REQUIRES_BASIC_AUTH: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143485924i32);
-pub const WS_E_SERVER_REQUIRES_DIGEST_AUTH: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143485923i32);
-pub const WS_E_SERVER_REQUIRES_NEGOTIATE_AUTH: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143485921i32);
-pub const WS_E_SERVER_REQUIRES_NTLM_AUTH: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2143485922i32);
-pub const WS_S_ASYNC: ::win32::core::HRESULT = ::win32::core::HRESULT(3997696i32);
-pub const WS_S_END: ::win32::core::HRESULT = ::win32::core::HRESULT(3997697i32);
-pub const XACT_E_ABORTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147168231i32);
-pub const XACT_E_ABORTING: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147168215i32);
-pub const XACT_E_ALREADYINPROGRESS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147168232i32);
-pub const XACT_E_ALREADYOTHERSINGLEPHASE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147168256i32);
-pub const XACT_E_CANTRETAIN: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147168255i32);
-pub const XACT_E_CLERKEXISTS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147168127i32);
-pub const XACT_E_CLERKNOTFOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147168128i32);
-pub const XACT_E_COMMITFAILED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147168254i32);
-pub const XACT_E_COMMITPREVENTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147168253i32);
-pub const XACT_E_CONNECTION_DENIED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147168227i32);
-pub const XACT_E_CONNECTION_DOWN: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147168228i32);
-pub const XACT_E_DEST_TMNOTAVAILABLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147168222i32);
+pub const WPN_E_ACCESS_DENIED: crate::core::HRESULT = crate::core::HRESULT(-2143420137i32);
+pub const WPN_E_ALL_URL_NOT_COMPLETED: crate::core::HRESULT = crate::core::HRESULT(-2143419901i32);
+pub const WPN_E_CALLBACK_ALREADY_REGISTERED: crate::core::HRESULT =
+    crate::core::HRESULT(-2143419898i32);
+pub const WPN_E_CHANNEL_CLOSED: crate::core::HRESULT = crate::core::HRESULT(-2143420160i32);
+pub const WPN_E_CHANNEL_REQUEST_NOT_COMPLETE: crate::core::HRESULT =
+    crate::core::HRESULT(-2143420159i32);
+pub const WPN_E_CLOUD_AUTH_UNAVAILABLE: crate::core::HRESULT = crate::core::HRESULT(-2143420134i32);
+pub const WPN_E_CLOUD_DISABLED: crate::core::HRESULT = crate::core::HRESULT(-2143420151i32);
+pub const WPN_E_CLOUD_DISABLED_FOR_APP: crate::core::HRESULT = crate::core::HRESULT(-2143419893i32);
+pub const WPN_E_CLOUD_INCAPABLE: crate::core::HRESULT = crate::core::HRESULT(-2143420144i32);
+pub const WPN_E_CLOUD_SERVICE_UNAVAILABLE: crate::core::HRESULT =
+    crate::core::HRESULT(-2143420133i32);
+pub const WPN_E_DEV_ID_SIZE: crate::core::HRESULT = crate::core::HRESULT(-2143420128i32);
+pub const WPN_E_DUPLICATE_CHANNEL: crate::core::HRESULT = crate::core::HRESULT(-2143420156i32);
+pub const WPN_E_DUPLICATE_REGISTRATION: crate::core::HRESULT = crate::core::HRESULT(-2143420136i32);
+pub const WPN_E_FAILED_LOCK_SCREEN_UPDATE_INTIALIZATION: crate::core::HRESULT =
+    crate::core::HRESULT(-2143420132i32);
+pub const WPN_E_GROUP_ALPHANUMERIC: crate::core::HRESULT = crate::core::HRESULT(-2143419894i32);
+pub const WPN_E_GROUP_SIZE: crate::core::HRESULT = crate::core::HRESULT(-2143419895i32);
+pub const WPN_E_IMAGE_NOT_FOUND_IN_CACHE: crate::core::HRESULT =
+    crate::core::HRESULT(-2143419902i32);
+pub const WPN_E_INTERNET_INCAPABLE: crate::core::HRESULT = crate::core::HRESULT(-2143420141i32);
+pub const WPN_E_INVALID_APP: crate::core::HRESULT = crate::core::HRESULT(-2143420158i32);
+pub const WPN_E_INVALID_CLOUD_IMAGE: crate::core::HRESULT = crate::core::HRESULT(-2143419900i32);
+pub const WPN_E_INVALID_HTTP_STATUS_CODE: crate::core::HRESULT =
+    crate::core::HRESULT(-2143420117i32);
+pub const WPN_E_NOTIFICATION_DISABLED: crate::core::HRESULT = crate::core::HRESULT(-2143420143i32);
+pub const WPN_E_NOTIFICATION_HIDDEN: crate::core::HRESULT = crate::core::HRESULT(-2143420153i32);
+pub const WPN_E_NOTIFICATION_ID_MATCHED: crate::core::HRESULT =
+    crate::core::HRESULT(-2143419899i32);
+pub const WPN_E_NOTIFICATION_INCAPABLE: crate::core::HRESULT = crate::core::HRESULT(-2143420142i32);
+pub const WPN_E_NOTIFICATION_NOT_POSTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2143420152i32);
+pub const WPN_E_NOTIFICATION_POSTED: crate::core::HRESULT = crate::core::HRESULT(-2143420154i32);
+pub const WPN_E_NOTIFICATION_SIZE: crate::core::HRESULT = crate::core::HRESULT(-2143420139i32);
+pub const WPN_E_NOTIFICATION_TYPE_DISABLED: crate::core::HRESULT =
+    crate::core::HRESULT(-2143420140i32);
+pub const WPN_E_OUTSTANDING_CHANNEL_REQUEST: crate::core::HRESULT =
+    crate::core::HRESULT(-2143420157i32);
+pub const WPN_E_OUT_OF_SESSION: crate::core::HRESULT = crate::core::HRESULT(-2143419904i32);
+pub const WPN_E_PLATFORM_UNAVAILABLE: crate::core::HRESULT = crate::core::HRESULT(-2143420155i32);
+pub const WPN_E_POWER_SAVE: crate::core::HRESULT = crate::core::HRESULT(-2143419903i32);
+pub const WPN_E_PUSH_NOTIFICATION_INCAPABLE: crate::core::HRESULT =
+    crate::core::HRESULT(-2143420135i32);
+pub const WPN_E_STORAGE_LOCKED: crate::core::HRESULT = crate::core::HRESULT(-2143419896i32);
+pub const WPN_E_TAG_ALPHANUMERIC: crate::core::HRESULT = crate::core::HRESULT(-2143420118i32);
+pub const WPN_E_TAG_SIZE: crate::core::HRESULT = crate::core::HRESULT(-2143420138i32);
+pub const WPN_E_TOAST_NOTIFICATION_DROPPED: crate::core::HRESULT =
+    crate::core::HRESULT(-2143419897i32);
+pub const WS_E_ADDRESS_IN_USE: crate::core::HRESULT = crate::core::HRESULT(-2143485941i32);
+pub const WS_E_ADDRESS_NOT_AVAILABLE: crate::core::HRESULT = crate::core::HRESULT(-2143485940i32);
+pub const WS_E_ENDPOINT_ACCESS_DENIED: crate::core::HRESULT = crate::core::HRESULT(-2143485947i32);
+pub const WS_E_ENDPOINT_ACTION_NOT_SUPPORTED: crate::core::HRESULT =
+    crate::core::HRESULT(-2143485935i32);
+pub const WS_E_ENDPOINT_DISCONNECTED: crate::core::HRESULT = crate::core::HRESULT(-2143485932i32);
+pub const WS_E_ENDPOINT_FAILURE: crate::core::HRESULT = crate::core::HRESULT(-2143485937i32);
+pub const WS_E_ENDPOINT_FAULT_RECEIVED: crate::core::HRESULT = crate::core::HRESULT(-2143485933i32);
+pub const WS_E_ENDPOINT_NOT_AVAILABLE: crate::core::HRESULT = crate::core::HRESULT(-2143485938i32);
+pub const WS_E_ENDPOINT_NOT_FOUND: crate::core::HRESULT = crate::core::HRESULT(-2143485939i32);
+pub const WS_E_ENDPOINT_TOO_BUSY: crate::core::HRESULT = crate::core::HRESULT(-2143485934i32);
+pub const WS_E_ENDPOINT_UNREACHABLE: crate::core::HRESULT = crate::core::HRESULT(-2143485936i32);
+pub const WS_E_INVALID_ENDPOINT_URL: crate::core::HRESULT = crate::core::HRESULT(-2143485920i32);
+pub const WS_E_INVALID_FORMAT: crate::core::HRESULT = crate::core::HRESULT(-2143485952i32);
+pub const WS_E_INVALID_OPERATION: crate::core::HRESULT = crate::core::HRESULT(-2143485949i32);
+pub const WS_E_NOT_SUPPORTED: crate::core::HRESULT = crate::core::HRESULT(-2143485929i32);
+pub const WS_E_NO_TRANSLATION_AVAILABLE: crate::core::HRESULT =
+    crate::core::HRESULT(-2143485943i32);
+pub const WS_E_NUMERIC_OVERFLOW: crate::core::HRESULT = crate::core::HRESULT(-2143485950i32);
+pub const WS_E_OBJECT_FAULTED: crate::core::HRESULT = crate::core::HRESULT(-2143485951i32);
+pub const WS_E_OPERATION_ABANDONED: crate::core::HRESULT = crate::core::HRESULT(-2143485945i32);
+pub const WS_E_OPERATION_ABORTED: crate::core::HRESULT = crate::core::HRESULT(-2143485948i32);
+pub const WS_E_OPERATION_TIMED_OUT: crate::core::HRESULT = crate::core::HRESULT(-2143485946i32);
+pub const WS_E_OTHER: crate::core::HRESULT = crate::core::HRESULT(-2143485919i32);
+pub const WS_E_PROXY_ACCESS_DENIED: crate::core::HRESULT = crate::core::HRESULT(-2143485930i32);
+pub const WS_E_PROXY_FAILURE: crate::core::HRESULT = crate::core::HRESULT(-2143485931i32);
+pub const WS_E_PROXY_REQUIRES_BASIC_AUTH: crate::core::HRESULT =
+    crate::core::HRESULT(-2143485928i32);
+pub const WS_E_PROXY_REQUIRES_DIGEST_AUTH: crate::core::HRESULT =
+    crate::core::HRESULT(-2143485927i32);
+pub const WS_E_PROXY_REQUIRES_NEGOTIATE_AUTH: crate::core::HRESULT =
+    crate::core::HRESULT(-2143485925i32);
+pub const WS_E_PROXY_REQUIRES_NTLM_AUTH: crate::core::HRESULT =
+    crate::core::HRESULT(-2143485926i32);
+pub const WS_E_QUOTA_EXCEEDED: crate::core::HRESULT = crate::core::HRESULT(-2143485944i32);
+pub const WS_E_SECURITY_SYSTEM_FAILURE: crate::core::HRESULT = crate::core::HRESULT(-2143485917i32);
+pub const WS_E_SECURITY_TOKEN_EXPIRED: crate::core::HRESULT = crate::core::HRESULT(-2143485918i32);
+pub const WS_E_SECURITY_VERIFICATION_FAILURE: crate::core::HRESULT =
+    crate::core::HRESULT(-2143485942i32);
+pub const WS_E_SERVER_REQUIRES_BASIC_AUTH: crate::core::HRESULT =
+    crate::core::HRESULT(-2143485924i32);
+pub const WS_E_SERVER_REQUIRES_DIGEST_AUTH: crate::core::HRESULT =
+    crate::core::HRESULT(-2143485923i32);
+pub const WS_E_SERVER_REQUIRES_NEGOTIATE_AUTH: crate::core::HRESULT =
+    crate::core::HRESULT(-2143485921i32);
+pub const WS_E_SERVER_REQUIRES_NTLM_AUTH: crate::core::HRESULT =
+    crate::core::HRESULT(-2143485922i32);
+pub const WS_S_ASYNC: crate::core::HRESULT = crate::core::HRESULT(3997696i32);
+pub const WS_S_END: crate::core::HRESULT = crate::core::HRESULT(3997697i32);
+pub const XACT_E_ABORTED: crate::core::HRESULT = crate::core::HRESULT(-2147168231i32);
+pub const XACT_E_ABORTING: crate::core::HRESULT = crate::core::HRESULT(-2147168215i32);
+pub const XACT_E_ALREADYINPROGRESS: crate::core::HRESULT = crate::core::HRESULT(-2147168232i32);
+pub const XACT_E_ALREADYOTHERSINGLEPHASE: crate::core::HRESULT =
+    crate::core::HRESULT(-2147168256i32);
+pub const XACT_E_CANTRETAIN: crate::core::HRESULT = crate::core::HRESULT(-2147168255i32);
+pub const XACT_E_CLERKEXISTS: crate::core::HRESULT = crate::core::HRESULT(-2147168127i32);
+pub const XACT_E_CLERKNOTFOUND: crate::core::HRESULT = crate::core::HRESULT(-2147168128i32);
+pub const XACT_E_COMMITFAILED: crate::core::HRESULT = crate::core::HRESULT(-2147168254i32);
+pub const XACT_E_COMMITPREVENTED: crate::core::HRESULT = crate::core::HRESULT(-2147168253i32);
+pub const XACT_E_CONNECTION_DENIED: crate::core::HRESULT = crate::core::HRESULT(-2147168227i32);
+pub const XACT_E_CONNECTION_DOWN: crate::core::HRESULT = crate::core::HRESULT(-2147168228i32);
+pub const XACT_E_DEST_TMNOTAVAILABLE: crate::core::HRESULT = crate::core::HRESULT(-2147168222i32);
 pub const XACT_E_FIRST: u32 = 2147799040u32;
-pub const XACT_E_HEURISTICABORT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147168252i32);
-pub const XACT_E_HEURISTICCOMMIT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147168251i32);
-pub const XACT_E_HEURISTICDAMAGE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147168250i32);
-pub const XACT_E_HEURISTICDANGER: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147168249i32);
-pub const XACT_E_INDOUBT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147168234i32);
-pub const XACT_E_INVALIDCOOKIE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147168235i32);
-pub const XACT_E_INVALIDLSN: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147168124i32);
-pub const XACT_E_ISOLATIONLEVEL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147168248i32);
+pub const XACT_E_HEURISTICABORT: crate::core::HRESULT = crate::core::HRESULT(-2147168252i32);
+pub const XACT_E_HEURISTICCOMMIT: crate::core::HRESULT = crate::core::HRESULT(-2147168251i32);
+pub const XACT_E_HEURISTICDAMAGE: crate::core::HRESULT = crate::core::HRESULT(-2147168250i32);
+pub const XACT_E_HEURISTICDANGER: crate::core::HRESULT = crate::core::HRESULT(-2147168249i32);
+pub const XACT_E_INDOUBT: crate::core::HRESULT = crate::core::HRESULT(-2147168234i32);
+pub const XACT_E_INVALIDCOOKIE: crate::core::HRESULT = crate::core::HRESULT(-2147168235i32);
+pub const XACT_E_INVALIDLSN: crate::core::HRESULT = crate::core::HRESULT(-2147168124i32);
+pub const XACT_E_ISOLATIONLEVEL: crate::core::HRESULT = crate::core::HRESULT(-2147168248i32);
 pub const XACT_E_LAST: u32 = 2147799083u32;
-pub const XACT_E_LOGFULL: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147168230i32);
-pub const XACT_E_LU_TX_DISABLED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147168212i32);
-pub const XACT_E_NETWORK_TX_DISABLED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147168220i32);
-pub const XACT_E_NOASYNC: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147168247i32);
-pub const XACT_E_NOENLIST: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147168246i32);
-pub const XACT_E_NOIMPORTOBJECT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147168236i32);
-pub const XACT_E_NOISORETAIN: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147168245i32);
-pub const XACT_E_NORESOURCE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147168244i32);
-pub const XACT_E_NOTCURRENT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147168243i32);
-pub const XACT_E_NOTIMEOUT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147168233i32);
-pub const XACT_E_NOTRANSACTION: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147168242i32);
-pub const XACT_E_NOTSUPPORTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147168241i32);
-pub const XACT_E_PARTNER_NETWORK_TX_DISABLED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147168219i32);
-pub const XACT_E_PULL_COMM_FAILURE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147168213i32);
-pub const XACT_E_PUSH_COMM_FAILURE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147168214i32);
-pub const XACT_E_RECOVERYINPROGRESS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147168126i32);
-pub const XACT_E_REENLISTTIMEOUT: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147168226i32);
-pub const XACT_E_REPLAYREQUEST: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147168123i32);
-pub const XACT_E_TIP_CONNECT_FAILED: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147168225i32);
-pub const XACT_E_TIP_DISABLED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147168221i32);
-pub const XACT_E_TIP_PROTOCOL_ERROR: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147168224i32);
-pub const XACT_E_TIP_PULL_FAILED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147168223i32);
-pub const XACT_E_TMNOTAVAILABLE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147168229i32);
-pub const XACT_E_TRANSACTIONCLOSED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147168125i32);
-pub const XACT_E_UNABLE_TO_LOAD_DTC_PROXY: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147168216i32);
-pub const XACT_E_UNABLE_TO_READ_DTC_CONFIG: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147168217i32);
-pub const XACT_E_UNKNOWNRMGRID: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147168240i32);
-pub const XACT_E_WRONGSTATE: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147168239i32);
-pub const XACT_E_WRONGUOW: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147168238i32);
-pub const XACT_E_XA_TX_DISABLED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147168218i32);
-pub const XACT_E_XTIONEXISTS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147168237i32);
-pub const XACT_S_ABORTING: ::win32::core::HRESULT = ::win32::core::HRESULT(315400i32);
-pub const XACT_S_ALLNORETAIN: ::win32::core::HRESULT = ::win32::core::HRESULT(315399i32);
-pub const XACT_S_ASYNC: ::win32::core::HRESULT = ::win32::core::HRESULT(315392i32);
-pub const XACT_S_DEFECT: ::win32::core::HRESULT = ::win32::core::HRESULT(315393i32);
+pub const XACT_E_LOGFULL: crate::core::HRESULT = crate::core::HRESULT(-2147168230i32);
+pub const XACT_E_LU_TX_DISABLED: crate::core::HRESULT = crate::core::HRESULT(-2147168212i32);
+pub const XACT_E_NETWORK_TX_DISABLED: crate::core::HRESULT = crate::core::HRESULT(-2147168220i32);
+pub const XACT_E_NOASYNC: crate::core::HRESULT = crate::core::HRESULT(-2147168247i32);
+pub const XACT_E_NOENLIST: crate::core::HRESULT = crate::core::HRESULT(-2147168246i32);
+pub const XACT_E_NOIMPORTOBJECT: crate::core::HRESULT = crate::core::HRESULT(-2147168236i32);
+pub const XACT_E_NOISORETAIN: crate::core::HRESULT = crate::core::HRESULT(-2147168245i32);
+pub const XACT_E_NORESOURCE: crate::core::HRESULT = crate::core::HRESULT(-2147168244i32);
+pub const XACT_E_NOTCURRENT: crate::core::HRESULT = crate::core::HRESULT(-2147168243i32);
+pub const XACT_E_NOTIMEOUT: crate::core::HRESULT = crate::core::HRESULT(-2147168233i32);
+pub const XACT_E_NOTRANSACTION: crate::core::HRESULT = crate::core::HRESULT(-2147168242i32);
+pub const XACT_E_NOTSUPPORTED: crate::core::HRESULT = crate::core::HRESULT(-2147168241i32);
+pub const XACT_E_PARTNER_NETWORK_TX_DISABLED: crate::core::HRESULT =
+    crate::core::HRESULT(-2147168219i32);
+pub const XACT_E_PULL_COMM_FAILURE: crate::core::HRESULT = crate::core::HRESULT(-2147168213i32);
+pub const XACT_E_PUSH_COMM_FAILURE: crate::core::HRESULT = crate::core::HRESULT(-2147168214i32);
+pub const XACT_E_RECOVERYINPROGRESS: crate::core::HRESULT = crate::core::HRESULT(-2147168126i32);
+pub const XACT_E_REENLISTTIMEOUT: crate::core::HRESULT = crate::core::HRESULT(-2147168226i32);
+pub const XACT_E_REPLAYREQUEST: crate::core::HRESULT = crate::core::HRESULT(-2147168123i32);
+pub const XACT_E_TIP_CONNECT_FAILED: crate::core::HRESULT = crate::core::HRESULT(-2147168225i32);
+pub const XACT_E_TIP_DISABLED: crate::core::HRESULT = crate::core::HRESULT(-2147168221i32);
+pub const XACT_E_TIP_PROTOCOL_ERROR: crate::core::HRESULT = crate::core::HRESULT(-2147168224i32);
+pub const XACT_E_TIP_PULL_FAILED: crate::core::HRESULT = crate::core::HRESULT(-2147168223i32);
+pub const XACT_E_TMNOTAVAILABLE: crate::core::HRESULT = crate::core::HRESULT(-2147168229i32);
+pub const XACT_E_TRANSACTIONCLOSED: crate::core::HRESULT = crate::core::HRESULT(-2147168125i32);
+pub const XACT_E_UNABLE_TO_LOAD_DTC_PROXY: crate::core::HRESULT =
+    crate::core::HRESULT(-2147168216i32);
+pub const XACT_E_UNABLE_TO_READ_DTC_CONFIG: crate::core::HRESULT =
+    crate::core::HRESULT(-2147168217i32);
+pub const XACT_E_UNKNOWNRMGRID: crate::core::HRESULT = crate::core::HRESULT(-2147168240i32);
+pub const XACT_E_WRONGSTATE: crate::core::HRESULT = crate::core::HRESULT(-2147168239i32);
+pub const XACT_E_WRONGUOW: crate::core::HRESULT = crate::core::HRESULT(-2147168238i32);
+pub const XACT_E_XA_TX_DISABLED: crate::core::HRESULT = crate::core::HRESULT(-2147168218i32);
+pub const XACT_E_XTIONEXISTS: crate::core::HRESULT = crate::core::HRESULT(-2147168237i32);
+pub const XACT_S_ABORTING: crate::core::HRESULT = crate::core::HRESULT(315400i32);
+pub const XACT_S_ALLNORETAIN: crate::core::HRESULT = crate::core::HRESULT(315399i32);
+pub const XACT_S_ASYNC: crate::core::HRESULT = crate::core::HRESULT(315392i32);
+pub const XACT_S_DEFECT: crate::core::HRESULT = crate::core::HRESULT(315393i32);
 pub const XACT_S_FIRST: u32 = 315392u32;
 pub const XACT_S_LAST: u32 = 315408u32;
-pub const XACT_S_LASTRESOURCEMANAGER: ::win32::core::HRESULT = ::win32::core::HRESULT(315408i32);
-pub const XACT_S_LOCALLY_OK: ::win32::core::HRESULT = ::win32::core::HRESULT(315402i32);
-pub const XACT_S_MADECHANGESCONTENT: ::win32::core::HRESULT = ::win32::core::HRESULT(315397i32);
-pub const XACT_S_MADECHANGESINFORM: ::win32::core::HRESULT = ::win32::core::HRESULT(315398i32);
-pub const XACT_S_OKINFORM: ::win32::core::HRESULT = ::win32::core::HRESULT(315396i32);
-pub const XACT_S_READONLY: ::win32::core::HRESULT = ::win32::core::HRESULT(315394i32);
-pub const XACT_S_SINGLEPHASE: ::win32::core::HRESULT = ::win32::core::HRESULT(315401i32);
-pub const XACT_S_SOMENORETAIN: ::win32::core::HRESULT = ::win32::core::HRESULT(315395i32);
-pub const XENROLL_E_CANNOT_ADD_ROOT_CERT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146873343i32);
-pub const XENROLL_E_KEYSPEC_SMIME_MISMATCH: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146873339i32);
-pub const XENROLL_E_KEY_NOT_EXPORTABLE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146873344i32);
-pub const XENROLL_E_RESPONSE_KA_HASH_MISMATCH: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146873340i32);
-pub const XENROLL_E_RESPONSE_KA_HASH_NOT_FOUND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146873342i32);
-pub const XENROLL_E_RESPONSE_UNEXPECTED_KA_HASH: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2146873341i32);
+pub const XACT_S_LASTRESOURCEMANAGER: crate::core::HRESULT = crate::core::HRESULT(315408i32);
+pub const XACT_S_LOCALLY_OK: crate::core::HRESULT = crate::core::HRESULT(315402i32);
+pub const XACT_S_MADECHANGESCONTENT: crate::core::HRESULT = crate::core::HRESULT(315397i32);
+pub const XACT_S_MADECHANGESINFORM: crate::core::HRESULT = crate::core::HRESULT(315398i32);
+pub const XACT_S_OKINFORM: crate::core::HRESULT = crate::core::HRESULT(315396i32);
+pub const XACT_S_READONLY: crate::core::HRESULT = crate::core::HRESULT(315394i32);
+pub const XACT_S_SINGLEPHASE: crate::core::HRESULT = crate::core::HRESULT(315401i32);
+pub const XACT_S_SOMENORETAIN: crate::core::HRESULT = crate::core::HRESULT(315395i32);
+pub const XENROLL_E_CANNOT_ADD_ROOT_CERT: crate::core::HRESULT =
+    crate::core::HRESULT(-2146873343i32);
+pub const XENROLL_E_KEYSPEC_SMIME_MISMATCH: crate::core::HRESULT =
+    crate::core::HRESULT(-2146873339i32);
+pub const XENROLL_E_KEY_NOT_EXPORTABLE: crate::core::HRESULT = crate::core::HRESULT(-2146873344i32);
+pub const XENROLL_E_RESPONSE_KA_HASH_MISMATCH: crate::core::HRESULT =
+    crate::core::HRESULT(-2146873340i32);
+pub const XENROLL_E_RESPONSE_KA_HASH_NOT_FOUND: crate::core::HRESULT =
+    crate::core::HRESULT(-2146873342i32);
+pub const XENROLL_E_RESPONSE_UNEXPECTED_KA_HASH: crate::core::HRESULT =
+    crate::core::HRESULT(-2146873341i32);
 pub const _WIN32_IE_MAXVER: u32 = 2560u32;
 pub const _WIN32_MAXVER: u32 = 2560u32;
 pub const _WIN32_WINDOWS_MAXVER: u32 = 2560u32;

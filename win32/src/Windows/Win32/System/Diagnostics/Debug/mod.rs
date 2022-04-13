@@ -7,12 +7,10 @@
 )]
 #[allow(unused)]
 use win32::core::prelude::*;
-pub const ACTIVPROF_E_PROFILER_ABSENT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147220991i32);
-pub const ACTIVPROF_E_PROFILER_PRESENT: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147220992i32);
-pub const ACTIVPROF_E_UNABLE_TO_APPLY_ACTION: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-2147220990i32);
+pub const ACTIVPROF_E_PROFILER_ABSENT: crate::core::HRESULT = crate::core::HRESULT(-2147220991i32);
+pub const ACTIVPROF_E_PROFILER_PRESENT: crate::core::HRESULT = crate::core::HRESULT(-2147220992i32);
+pub const ACTIVPROF_E_UNABLE_TO_APPLY_ACTION: crate::core::HRESULT =
+    crate::core::HRESULT(-2147220990i32);
 pub struct ADDRESS {
     pub Offset: u32,
     pub Segment: u16,
@@ -85,6 +83,17 @@ impl ::core::default::Default for ADDRESS_MODE {
 impl ::core::fmt::Debug for ADDRESS_MODE {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("ADDRESS_MODE").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for ADDRESS_MODE {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
     }
 }
 pub const ADDRESS_TYPE_INDEX_NOT_FOUND: u32 = 11u32;
@@ -246,6 +255,17 @@ impl ::core::fmt::Debug for APPLICATION_NODE_EVENT_FILTER {
         f.debug_tuple("APPLICATION_NODE_EVENT_FILTER")
             .field(&self.0)
             .finish()
+    }
+}
+impl FromIntoMemory for APPLICATION_NODE_EVENT_FILTER {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
     }
 }
 pub struct ARM64_NT_CONTEXT {
@@ -514,6 +534,17 @@ impl ::core::fmt::Debug for BREAKPOINT_STATE {
         f.debug_tuple("BREAKPOINT_STATE").field(&self.0).finish()
     }
 }
+impl FromIntoMemory for BREAKPOINT_STATE {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct BREAKREASON(pub i32);
 pub const BREAKREASON_STEP: BREAKREASON = BREAKREASON(0i32);
@@ -541,6 +572,17 @@ impl ::core::fmt::Debug for BREAKREASON {
         f.debug_tuple("BREAKREASON").field(&self.0).finish()
     }
 }
+impl FromIntoMemory for BREAKREASON {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct BREAKRESUME_ACTION(pub i32);
 pub const BREAKRESUMEACTION_ABORT: BREAKRESUME_ACTION = BREAKRESUME_ACTION(0i32);
@@ -564,6 +606,17 @@ impl ::core::default::Default for BREAKRESUME_ACTION {
 impl ::core::fmt::Debug for BREAKRESUME_ACTION {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("BREAKRESUME_ACTION").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for BREAKRESUME_ACTION {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -1112,15 +1165,26 @@ impl ::core::fmt::Debug for BUGCHECK_ERROR {
         f.debug_tuple("BUGCHECK_ERROR").field(&self.0).finish()
     }
 }
+impl FromIntoMemory for BUGCHECK_ERROR {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
+    }
+}
 pub const CANNOT_ALLOCATE_MEMORY: u32 = 9u32;
-pub const CATID_ActiveScript: ::win32::core::GUID =
-    ::win32::core::GUID::from_u128(0xf0b7a1a1_9847_11cf_8f20_00805f2cd064);
-pub const CATID_ActiveScriptAuthor: ::win32::core::GUID =
-    ::win32::core::GUID::from_u128(0x0aee2a92_bcbb_11d0_8c72_00c04fc2b085);
-pub const CATID_ActiveScriptEncode: ::win32::core::GUID =
-    ::win32::core::GUID::from_u128(0xf0b7a1a3_9847_11cf_8f20_00805f2cd064);
-pub const CATID_ActiveScriptParse: ::win32::core::GUID =
-    ::win32::core::GUID::from_u128(0xf0b7a1a2_9847_11cf_8f20_00805f2cd064);
+pub const CATID_ActiveScript: crate::core::GUID =
+    crate::core::GUID::from_u128(0xf0b7a1a1_9847_11cf_8f20_00805f2cd064);
+pub const CATID_ActiveScriptAuthor: crate::core::GUID =
+    crate::core::GUID::from_u128(0x0aee2a92_bcbb_11d0_8c72_00c04fc2b085);
+pub const CATID_ActiveScriptEncode: crate::core::GUID =
+    crate::core::GUID::from_u128(0xf0b7a1a3_9847_11cf_8f20_00805f2cd064);
+pub const CATID_ActiveScriptParse: crate::core::GUID =
+    crate::core::GUID::from_u128(0xf0b7a1a2_9847_11cf_8f20_00805f2cd064);
 pub const CBA_CHECK_ARM_MACHINE_THUMB_TYPE_OVERRIDE: u32 = 2147483648u32;
 pub const CBA_CHECK_ENGOPT_DISALLOW_NETWORK_PATHS: u32 = 1879048192u32;
 pub const CBA_DEBUG_INFO: u32 = 268435456u32;
@@ -1140,8 +1204,8 @@ pub const CBA_SRCSRV_INFO: u32 = 536870912u32;
 pub const CBA_SYMBOLS_UNLOADED: u32 = 4u32;
 pub const CBA_UPDATE_STATUS_BAR: u32 = 1342177280u32;
 pub const CBA_XML_LOG: u32 = 2415919104u32;
-pub const CDebugDocumentHelper: ::win32::core::GUID =
-    ::win32::core::GUID::from_u128(0x83b8bca6_687c_11d0_a405_00aa0060275c);
+pub const CDebugDocumentHelper: crate::core::GUID =
+    crate::core::GUID::from_u128(0x83b8bca6_687c_11d0_a405_00aa0060275c);
 pub const CERT_PE_IMAGE_DIGEST_ALL_IMPORT_INFO: u32 = 4u32;
 pub const CERT_PE_IMAGE_DIGEST_DEBUG_INFO: u32 = 1u32;
 pub const CERT_PE_IMAGE_DIGEST_NON_PE_INFO: u32 = 8u32;
@@ -1839,9 +1903,20 @@ impl ::core::fmt::Debug for CallingConventionKind {
             .finish()
     }
 }
+impl FromIntoMemory for CallingConventionKind {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
+    }
+}
 pub struct DBGHELP_DATA_REPORT_STRUCT {
-    pub pBinPathNonExist: ::win32::core::PCWSTR,
-    pub pSymbolPathNonExist: ::win32::core::PCWSTR,
+    pub pBinPathNonExist: crate::core::PCWSTR,
+    pub pSymbolPathNonExist: crate::core::PCWSTR,
 }
 impl ::core::marker::Copy for DBGHELP_DATA_REPORT_STRUCT {}
 impl ::core::clone::Clone for DBGHELP_DATA_REPORT_STRUCT {
@@ -2092,6 +2167,17 @@ impl ::core::fmt::Debug for DBGKD_MAJOR_TYPES {
         f.debug_tuple("DBGKD_MAJOR_TYPES").field(&self.0).finish()
     }
 }
+impl FromIntoMemory for DBGKD_MAJOR_TYPES {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
+    }
+}
 pub const DBGKD_SIMULATION_EXDI: i32 = 1i32;
 pub const DBGKD_SIMULATION_NONE: i32 = 0i32;
 pub const DBGKD_VERS_FLAG_DATA: u32 = 2u32;
@@ -2180,6 +2266,17 @@ impl ::core::ops::Not for DBGPROP_ATTRIB_FLAGS {
         Self(self.0.not())
     }
 }
+impl FromIntoMemory for DBGPROP_ATTRIB_FLAGS {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct DBGPROP_INFO(pub u32);
 pub const DBGPROP_INFO_NAME: DBGPROP_INFO = DBGPROP_INFO(1u32);
@@ -2233,6 +2330,17 @@ impl ::core::ops::Not for DBGPROP_INFO {
     type Output = Self;
     fn not(self) -> Self {
         Self(self.0.not())
+    }
+}
+impl FromIntoMemory for DBGPROP_INFO {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
     }
 }
 pub const DBG_DUMP_ADDRESS_AT_END: u32 = 131072u32;
@@ -2801,6 +2909,17 @@ impl ::core::fmt::Debug for DEBUG_EVENT_CODE {
         f.debug_tuple("DEBUG_EVENT_CODE").field(&self.0).finish()
     }
 }
+impl FromIntoMemory for DEBUG_EVENT_CODE {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
+    }
+}
 pub struct DEBUG_EVENT_CONTEXT {
     pub Size: u32,
     pub ProcessEngineId: u32,
@@ -2859,6 +2978,17 @@ impl ::core::fmt::Debug for DEBUG_EVENT_INFO_TYPE {
         f.debug_tuple("DEBUG_EVENT_INFO_TYPE")
             .field(&self.0)
             .finish()
+    }
+}
+impl FromIntoMemory for DEBUG_EVENT_INFO_TYPE {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
     }
 }
 pub const DEBUG_EVENT_LOAD_MODULE: u32 = 64u32;
@@ -3935,6 +4065,17 @@ impl ::core::fmt::Debug for DEBUG_STACKFRAME_TYPE {
             .finish()
     }
 }
+impl FromIntoMemory for DEBUG_STACKFRAME_TYPE {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
+    }
+}
 pub const DEBUG_STACK_ARGUMENTS: u32 = 1u32;
 pub const DEBUG_STACK_COLUMN_NAMES: u32 = 16u32;
 pub const DEBUG_STACK_DML: u32 = 2048u32;
@@ -4709,6 +4850,17 @@ impl ::core::fmt::Debug for DOCUMENTNAMETYPE {
         f.debug_tuple("DOCUMENTNAMETYPE").field(&self.0).finish()
     }
 }
+impl FromIntoMemory for DOCUMENTNAMETYPE {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
+    }
+}
 pub const DSLFLAG_MISMATCHED_DBG: u32 = 2u32;
 pub const DSLFLAG_MISMATCHED_PDB: u32 = 1u32;
 pub struct DUMP_FILE_ATTRIBUTES {
@@ -4959,8 +5111,8 @@ impl ::core::cmp::PartialEq for DUMP_HEADER64_0 {
 impl ::core::cmp::Eq for DUMP_HEADER64_0 {}
 pub const DUMP_SUMMARY_VALID_CURRENT_USER_VA: u32 = 2u32;
 pub const DUMP_SUMMARY_VALID_KERNEL_VA: u32 = 1u32;
-pub const DefaultDebugSessionProvider: ::win32::core::GUID =
-    ::win32::core::GUID::from_u128(0x834128a2_51f4_11d0_8f20_00805f2cd064);
+pub const DefaultDebugSessionProvider: crate::core::GUID =
+    crate::core::GUID::from_u128(0x834128a2_51f4_11d0_8f20_00805f2cd064);
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct ERRORRESUMEACTION(pub i32);
 pub const ERRORRESUMEACTION_ReexecuteErrorStatement: ERRORRESUMEACTION = ERRORRESUMEACTION(0i32);
@@ -4981,6 +5133,17 @@ impl ::core::default::Default for ERRORRESUMEACTION {
 impl ::core::fmt::Debug for ERRORRESUMEACTION {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("ERRORRESUMEACTION").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for ERRORRESUMEACTION {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
     }
 }
 pub const ERROR_DBG_CANCELLED: u32 = 3221226695u32;
@@ -5343,7 +5506,7 @@ pub const EXT_API_VERSION_NUMBER: u32 = 5u32;
 pub const EXT_API_VERSION_NUMBER32: u32 = 5u32;
 pub const EXT_API_VERSION_NUMBER64: u32 = 6u32;
 pub struct EXT_FIND_FILE {
-    pub FileName: ::win32::core::PCWSTR,
+    pub FileName: crate::core::PCWSTR,
     pub IndexedSize: u64,
     pub ImageTimeDateStamp: u32,
     pub ImageCheckSum: u32,
@@ -5353,7 +5516,7 @@ pub struct EXT_FIND_FILE {
     pub FileMapping: MutPtr<::core::ffi::c_void>,
     pub FileMappingSize: u64,
     pub FileHandle: super::super::super::Foundation::HANDLE,
-    pub FoundFileName: ::win32::core::PWSTR,
+    pub FoundFileName: crate::core::PWSTR,
     pub FoundFileNameChars: u32,
 }
 impl ::core::marker::Copy for EXT_FIND_FILE {}
@@ -5399,8 +5562,8 @@ impl ::core::cmp::PartialEq for EXT_FIND_FILE {
 impl ::core::cmp::Eq for EXT_FIND_FILE {}
 pub const EXT_FIND_FILE_ALLOW_GIVEN_PATH: u32 = 1u32;
 pub struct EXT_MATCH_PATTERN_A {
-    pub Str: ::win32::core::PCSTR,
-    pub Pattern: ::win32::core::PCSTR,
+    pub Str: crate::core::PCSTR,
+    pub Pattern: crate::core::PCSTR,
     pub CaseSensitive: u32,
 }
 impl ::core::marker::Copy for EXT_MATCH_PATTERN_A {}
@@ -5470,6 +5633,17 @@ impl ::core::fmt::Debug for EXT_TDOP {
         f.debug_tuple("EXT_TDOP").field(&self.0).finish()
     }
 }
+impl FromIntoMemory for EXT_TDOP {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
+    }
+}
 pub struct EXT_TYPED_DATA {
     pub Operation: EXT_TDOP,
     pub Flags: u32,
@@ -5486,7 +5660,7 @@ pub struct EXT_TYPED_DATA {
     pub DataBufferIndex: u32,
     pub DataBufferBytes: u32,
     pub DataBytesNeeded: u32,
-    pub Status: ::win32::core::HRESULT,
+    pub Status: crate::core::HRESULT,
     pub Reserved: [u64; 8],
 }
 impl ::core::marker::Copy for EXT_TYPED_DATA {}
@@ -5563,16 +5737,26 @@ impl ::core::fmt::Debug for EX_PROP_INFO_FLAGS {
         f.debug_tuple("EX_PROP_INFO_FLAGS").field(&self.0).finish()
     }
 }
-pub const E_JsDEBUG_INVALID_MEMORY_ADDRESS: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1916338171i32);
-pub const E_JsDEBUG_MISMATCHED_RUNTIME: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1916338175i32);
-pub const E_JsDEBUG_OUTSIDE_OF_VM: ::win32::core::HRESULT = ::win32::core::HRESULT(-1916338172i32);
-pub const E_JsDEBUG_RUNTIME_NOT_IN_DEBUG_MODE: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1916338169i32);
-pub const E_JsDEBUG_SOURCE_LOCATION_NOT_FOUND: ::win32::core::HRESULT =
-    ::win32::core::HRESULT(-1916338170i32);
-pub const E_JsDEBUG_UNKNOWN_THREAD: ::win32::core::HRESULT = ::win32::core::HRESULT(-1916338174i32);
+impl FromIntoMemory for EX_PROP_INFO_FLAGS {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
+    }
+}
+pub const E_JsDEBUG_INVALID_MEMORY_ADDRESS: crate::core::HRESULT =
+    crate::core::HRESULT(-1916338171i32);
+pub const E_JsDEBUG_MISMATCHED_RUNTIME: crate::core::HRESULT = crate::core::HRESULT(-1916338175i32);
+pub const E_JsDEBUG_OUTSIDE_OF_VM: crate::core::HRESULT = crate::core::HRESULT(-1916338172i32);
+pub const E_JsDEBUG_RUNTIME_NOT_IN_DEBUG_MODE: crate::core::HRESULT =
+    crate::core::HRESULT(-1916338169i32);
+pub const E_JsDEBUG_SOURCE_LOCATION_NOT_FOUND: crate::core::HRESULT =
+    crate::core::HRESULT(-1916338170i32);
+pub const E_JsDEBUG_UNKNOWN_THREAD: crate::core::HRESULT = crate::core::HRESULT(-1916338174i32);
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct ErrorClass(pub i32);
 pub const ErrorClassWarning: ErrorClass = ErrorClass(0i32);
@@ -5593,14 +5777,25 @@ impl ::core::fmt::Debug for ErrorClass {
         f.debug_tuple("ErrorClass").field(&self.0).finish()
     }
 }
+impl FromIntoMemory for ErrorClass {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
+    }
+}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct ExtendedDebugPropertyInfo {
     pub dwValidFields: u32,
-    pub pszName: ::win32::core::PWSTR,
-    pub pszType: ::win32::core::PWSTR,
-    pub pszValue: ::win32::core::PWSTR,
-    pub pszFullName: ::win32::core::PWSTR,
+    pub pszName: crate::core::PWSTR,
+    pub pszType: crate::core::PWSTR,
+    pub pszValue: crate::core::PWSTR,
+    pub pszFullName: crate::core::PWSTR,
     pub dwAttrib: u32,
     pub pDebugProp: IDebugProperty,
     pub nDISPID: u32,
@@ -5821,6 +6016,17 @@ impl ::core::fmt::Debug for FACILITY_CODE {
         f.debug_tuple("FACILITY_CODE").field(&self.0).finish()
     }
 }
+impl FromIntoMemory for FACILITY_CODE {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
+    }
+}
 pub const FACILITY_JsDEBUG: u32 = 3527u32;
 pub const FIELDS_DID_NOT_MATCH: u32 = 4u32;
 pub struct FIELD_INFO {
@@ -5955,6 +6161,17 @@ impl ::core::ops::Not for FORMAT_MESSAGE_OPTIONS {
         Self(self.0.not())
     }
 }
+impl FromIntoMemory for FORMAT_MESSAGE_OPTIONS {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
+    }
+}
 pub struct FPO_DATA {
     pub ulOffStart: u32,
     pub cbProcSize: u32,
@@ -6074,8 +6291,8 @@ impl ::core::cmp::PartialEq for GET_CURRENT_THREAD_ADDRESS {
 }
 impl ::core::cmp::Eq for GET_CURRENT_THREAD_ADDRESS {}
 pub struct GET_EXPRESSION_EX {
-    pub Expression: ::win32::core::PCSTR,
-    pub Remainder: ::win32::core::PCSTR,
+    pub Expression: crate::core::PCSTR,
+    pub Remainder: crate::core::PCSTR,
     pub Value: u64,
 }
 impl ::core::marker::Copy for GET_EXPRESSION_EX {}
@@ -6102,8 +6319,8 @@ impl ::core::cmp::PartialEq for GET_EXPRESSION_EX {
 }
 impl ::core::cmp::Eq for GET_EXPRESSION_EX {}
 pub struct GET_INPUT_LINE {
-    pub Prompt: ::win32::core::PCSTR,
-    pub Buffer: ::win32::core::PSTR,
+    pub Prompt: crate::core::PCSTR,
+    pub Buffer: crate::core::PSTR,
     pub BufferSize: u32,
     pub InputSize: u32,
 }
@@ -6157,8 +6374,8 @@ impl ::core::cmp::PartialEq for GET_PEB_ADDRESS {
 }
 impl ::core::cmp::Eq for GET_PEB_ADDRESS {}
 pub struct GET_SET_SYMPATH {
-    pub Args: ::win32::core::PCSTR,
-    pub Result: ::win32::core::PSTR,
+    pub Args: crate::core::PCSTR,
+    pub Result: crate::core::PSTR,
     pub Length: i32,
 }
 impl ::core::marker::Copy for GET_SET_SYMPATH {}
@@ -6257,7 +6474,7 @@ pub const IG_WRITE_PHYSICAL_WITH_FLAGS: u32 = 34u32;
 pub struct IMAGEHLP_CBA_EVENT {
     pub severity: IMAGEHLP_CBA_EVENT_SEVERITY,
     pub code: u32,
-    pub desc: ::win32::core::PSTR,
+    pub desc: crate::core::PSTR,
     pub object: MutPtr<::core::ffi::c_void>,
 }
 impl ::core::marker::Copy for IMAGEHLP_CBA_EVENT {}
@@ -6288,7 +6505,7 @@ impl ::core::cmp::Eq for IMAGEHLP_CBA_EVENT {}
 pub struct IMAGEHLP_CBA_EVENTW {
     pub severity: IMAGEHLP_CBA_EVENT_SEVERITY,
     pub code: u32,
-    pub desc: ::win32::core::PCWSTR,
+    pub desc: crate::core::PCWSTR,
     pub object: MutPtr<::core::ffi::c_void>,
 }
 impl ::core::marker::Copy for IMAGEHLP_CBA_EVENTW {}
@@ -6338,6 +6555,17 @@ impl ::core::fmt::Debug for IMAGEHLP_CBA_EVENT_SEVERITY {
         f.debug_tuple("IMAGEHLP_CBA_EVENT_SEVERITY")
             .field(&self.0)
             .finish()
+    }
+}
+impl FromIntoMemory for IMAGEHLP_CBA_EVENT_SEVERITY {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
     }
 }
 pub struct IMAGEHLP_CBA_READ_MEMORY {
@@ -6587,6 +6815,17 @@ impl ::core::fmt::Debug for IMAGEHLP_EXTENDED_OPTIONS {
             .finish()
     }
 }
+impl FromIntoMemory for IMAGEHLP_EXTENDED_OPTIONS {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct IMAGEHLP_GET_TYPE_INFO_FLAGS(pub u32);
 pub const IMAGEHLP_GET_TYPE_INFO_CHILDREN: IMAGEHLP_GET_TYPE_INFO_FLAGS =
@@ -6609,6 +6848,17 @@ impl ::core::fmt::Debug for IMAGEHLP_GET_TYPE_INFO_FLAGS {
         f.debug_tuple("IMAGEHLP_GET_TYPE_INFO_FLAGS")
             .field(&self.0)
             .finish()
+    }
+}
+impl FromIntoMemory for IMAGEHLP_GET_TYPE_INFO_FLAGS {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
     }
 }
 pub struct IMAGEHLP_GET_TYPE_INFO_PARAMS {
@@ -6706,11 +6956,22 @@ impl ::core::fmt::Debug for IMAGEHLP_HD_TYPE {
         f.debug_tuple("IMAGEHLP_HD_TYPE").field(&self.0).finish()
     }
 }
+impl FromIntoMemory for IMAGEHLP_HD_TYPE {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
+    }
+}
 pub struct IMAGEHLP_LINE {
     pub SizeOfStruct: u32,
     pub Key: MutPtr<::core::ffi::c_void>,
     pub LineNumber: u32,
-    pub FileName: ::win32::core::PSTR,
+    pub FileName: crate::core::PSTR,
     pub Address: u32,
 }
 impl ::core::marker::Copy for IMAGEHLP_LINE {}
@@ -6744,7 +7005,7 @@ pub struct IMAGEHLP_LINE64 {
     pub SizeOfStruct: u32,
     pub Key: MutPtr<::core::ffi::c_void>,
     pub LineNumber: u32,
-    pub FileName: ::win32::core::PSTR,
+    pub FileName: crate::core::PSTR,
     pub Address: u64,
 }
 impl ::core::marker::Copy for IMAGEHLP_LINE64 {}
@@ -6778,7 +7039,7 @@ pub struct IMAGEHLP_LINEW {
     pub SizeOfStruct: u32,
     pub Key: MutPtr<::core::ffi::c_void>,
     pub LineNumber: u32,
-    pub FileName: ::win32::core::PSTR,
+    pub FileName: crate::core::PSTR,
     pub Address: u64,
 }
 impl ::core::marker::Copy for IMAGEHLP_LINEW {}
@@ -6812,7 +7073,7 @@ pub struct IMAGEHLP_LINEW64 {
     pub SizeOfStruct: u32,
     pub Key: MutPtr<::core::ffi::c_void>,
     pub LineNumber: u32,
-    pub FileName: ::win32::core::PWSTR,
+    pub FileName: crate::core::PWSTR,
     pub Address: u64,
 }
 impl ::core::marker::Copy for IMAGEHLP_LINEW64 {}
@@ -6906,7 +7167,7 @@ pub struct IMAGEHLP_MODULE64 {
     pub CVSig: u32,
     pub CVData: [super::super::super::Foundation::CHAR; 780],
     pub PdbSig: u32,
-    pub PdbSig70: ::win32::core::GUID,
+    pub PdbSig70: crate::core::GUID,
     pub PdbAge: u32,
     pub PdbUnmatched: super::super::super::Foundation::BOOL,
     pub DbgUnmatched: super::super::super::Foundation::BOOL,
@@ -7073,7 +7334,7 @@ pub struct IMAGEHLP_MODULEW64 {
     pub CVSig: u32,
     pub CVData: [u16; 780],
     pub PdbSig: u32,
-    pub PdbSig70: ::win32::core::GUID,
+    pub PdbSig70: crate::core::GUID,
     pub PdbAge: u32,
     pub PdbUnmatched: super::super::super::Foundation::BOOL,
     pub DbgUnmatched: super::super::super::Foundation::BOOL,
@@ -7211,6 +7472,17 @@ impl ::core::fmt::Debug for IMAGEHLP_SF_TYPE {
         f.debug_tuple("IMAGEHLP_SF_TYPE").field(&self.0).finish()
     }
 }
+impl FromIntoMemory for IMAGEHLP_SF_TYPE {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
+    }
+}
 pub struct IMAGEHLP_STACK_FRAME {
     pub InstructionOffset: u64,
     pub ReturnOffset: u64,
@@ -7298,6 +7570,17 @@ impl ::core::fmt::Debug for IMAGEHLP_STATUS_REASON {
         f.debug_tuple("IMAGEHLP_STATUS_REASON")
             .field(&self.0)
             .finish()
+    }
+}
+impl FromIntoMemory for IMAGEHLP_STATUS_REASON {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
     }
 }
 pub struct IMAGEHLP_SYMBOL {
@@ -7641,6 +7924,17 @@ impl ::core::fmt::Debug for IMAGEHLP_SYMBOL_TYPE_INFO {
             .finish()
     }
 }
+impl FromIntoMemory for IMAGEHLP_SYMBOL_TYPE_INFO {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
+    }
+}
 pub const IMAGEHLP_SYMBOL_VIRTUAL: u32 = 4096u32;
 pub struct IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY {
     pub BeginAddress: u32,
@@ -7873,7 +8167,7 @@ pub struct IMAGE_DEBUG_INFORMATION {
     pub ReservedNumberOfSections: u32,
     pub ReservedSections: MutPtr<IMAGE_SECTION_HEADER>,
     pub ReservedExportedNamesSize: u32,
-    pub ReservedExportedNames: ::win32::core::PSTR,
+    pub ReservedExportedNames: crate::core::PSTR,
     pub ReservedNumberOfFunctionTableEntries: u32,
     pub ReservedFunctionTableEntries: MutPtr<IMAGE_FUNCTION_ENTRY>,
     pub ReservedLowestFunctionStartingAddress: u32,
@@ -7884,9 +8178,9 @@ pub struct IMAGE_DEBUG_INFORMATION {
     pub CoffSymbols: MutPtr<IMAGE_COFF_SYMBOLS_HEADER>,
     pub ReservedSizeOfCodeViewSymbols: u32,
     pub ReservedCodeViewSymbols: MutPtr<::core::ffi::c_void>,
-    pub ImageFilePath: ::win32::core::PSTR,
-    pub ImageFileName: ::win32::core::PSTR,
-    pub ReservedDebugFilePath: ::win32::core::PSTR,
+    pub ImageFilePath: crate::core::PSTR,
+    pub ImageFileName: crate::core::PSTR,
+    pub ReservedDebugFilePath: crate::core::PSTR,
     pub ReservedTimeDateStamp: u32,
     pub ReservedRomImage: super::super::super::Foundation::BOOL,
     pub ReservedDebugDirectory: MutPtr<IMAGE_DEBUG_DIRECTORY>,
@@ -8037,6 +8331,17 @@ impl ::core::fmt::Debug for IMAGE_DEBUG_TYPE {
         f.debug_tuple("IMAGE_DEBUG_TYPE").field(&self.0).finish()
     }
 }
+impl FromIntoMemory for IMAGE_DEBUG_TYPE {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct IMAGE_DIRECTORY_ENTRY(pub u32);
 pub const IMAGE_DIRECTORY_ENTRY_ARCHITECTURE: IMAGE_DIRECTORY_ENTRY = IMAGE_DIRECTORY_ENTRY(7u32);
@@ -8071,6 +8376,17 @@ impl ::core::fmt::Debug for IMAGE_DIRECTORY_ENTRY {
         f.debug_tuple("IMAGE_DIRECTORY_ENTRY")
             .field(&self.0)
             .finish()
+    }
+}
+impl FromIntoMemory for IMAGE_DIRECTORY_ENTRY {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -8155,6 +8471,17 @@ impl ::core::ops::Not for IMAGE_DLL_CHARACTERISTICS {
         Self(self.0.not())
     }
 }
+impl FromIntoMemory for IMAGE_DLL_CHARACTERISTICS {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u16 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u16>()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct IMAGE_FILE_CHARACTERISTICS(pub u16);
 pub const IMAGE_FILE_RELOCS_STRIPPED: IMAGE_FILE_CHARACTERISTICS = IMAGE_FILE_CHARACTERISTICS(1u16);
@@ -8227,6 +8554,17 @@ impl ::core::ops::Not for IMAGE_FILE_CHARACTERISTICS {
     type Output = Self;
     fn not(self) -> Self {
         Self(self.0.not())
+    }
+}
+impl FromIntoMemory for IMAGE_FILE_CHARACTERISTICS {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u16 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u16>()
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -8303,6 +8641,17 @@ impl ::core::ops::Not for IMAGE_FILE_CHARACTERISTICS2 {
     type Output = Self;
     fn not(self) -> Self {
         Self(self.0.not())
+    }
+}
+impl FromIntoMemory for IMAGE_FILE_CHARACTERISTICS2 {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
     }
 }
 pub struct IMAGE_FILE_HEADER {
@@ -8393,6 +8742,17 @@ impl ::core::default::Default for IMAGE_FILE_MACHINE {
 impl ::core::fmt::Debug for IMAGE_FILE_MACHINE {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("IMAGE_FILE_MACHINE").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IMAGE_FILE_MACHINE {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u16 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u16>()
     }
 }
 pub struct IMAGE_FUNCTION_ENTRY {
@@ -9082,6 +9442,17 @@ impl ::core::fmt::Debug for IMAGE_OPTIONAL_HEADER_MAGIC {
             .finish()
     }
 }
+impl FromIntoMemory for IMAGE_OPTIONAL_HEADER_MAGIC {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u16 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u16>()
+    }
+}
 pub struct IMAGE_ROM_HEADERS {
     pub FileHeader: IMAGE_FILE_HEADER,
     pub OptionalHeader: IMAGE_ROM_OPTIONAL_HEADER,
@@ -9322,6 +9693,17 @@ impl ::core::ops::Not for IMAGE_SECTION_CHARACTERISTICS {
         Self(self.0.not())
     }
 }
+impl FromIntoMemory for IMAGE_SECTION_CHARACTERISTICS {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
+    }
+}
 pub struct IMAGE_SECTION_HEADER {
     pub Name: [u8; 8],
     pub Misc: IMAGE_SECTION_HEADER_0,
@@ -9402,6 +9784,17 @@ impl ::core::default::Default for IMAGE_SUBSYSTEM {
 impl ::core::fmt::Debug for IMAGE_SUBSYSTEM {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("IMAGE_SUBSYSTEM").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IMAGE_SUBSYSTEM {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u16 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u16>()
     }
 }
 pub const INCORRECT_VERSION_INFO: u32 = 7u32;
@@ -9707,6 +10100,17 @@ impl ::core::fmt::Debug for IPMI_OS_SEL_RECORD_TYPE {
             .finish()
     }
 }
+impl FromIntoMemory for IPMI_OS_SEL_RECORD_TYPE {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
+    }
+}
 pub const IPMI_OS_SEL_RECORD_VERSION: u32 = 1u32;
 pub const IPMI_OS_SEL_RECORD_VERSION_1: u32 = 1u32;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -9739,6 +10143,17 @@ impl ::core::fmt::Debug for IntrinsicKind {
         f.debug_tuple("IntrinsicKind").field(&self.0).finish()
     }
 }
+impl FromIntoMemory for IntrinsicKind {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct JS_PROPERTY_ATTRIBUTES(pub i32);
 pub const JS_PROPERTY_ATTRIBUTE_NONE: JS_PROPERTY_ATTRIBUTES = JS_PROPERTY_ATTRIBUTES(0i32);
@@ -9768,6 +10183,17 @@ impl ::core::fmt::Debug for JS_PROPERTY_ATTRIBUTES {
             .finish()
     }
 }
+impl FromIntoMemory for JS_PROPERTY_ATTRIBUTES {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct JS_PROPERTY_MEMBERS(pub i32);
 pub const JS_PROPERTY_MEMBERS_ALL: JS_PROPERTY_MEMBERS = JS_PROPERTY_MEMBERS(0i32);
@@ -9786,6 +10212,17 @@ impl ::core::default::Default for JS_PROPERTY_MEMBERS {
 impl ::core::fmt::Debug for JS_PROPERTY_MEMBERS {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("JS_PROPERTY_MEMBERS").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for JS_PROPERTY_MEMBERS {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
     }
 }
 pub struct JsDebugPropertyInfo {
@@ -9849,6 +10286,17 @@ impl ::core::fmt::Debug for JsDebugReadMemoryFlags {
         f.debug_tuple("JsDebugReadMemoryFlags")
             .field(&self.0)
             .finish()
+    }
+}
+impl FromIntoMemory for JsDebugReadMemoryFlags {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
@@ -11204,7 +11652,7 @@ impl ::core::cmp::Eq for LDT_ENTRY_0_1 {}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct LOADED_IMAGE {
-    pub ModuleName: ::win32::core::PSTR,
+    pub ModuleName: crate::core::PSTR,
     pub hFile: super::super::super::Foundation::HANDLE,
     pub MappedAddress: MutPtr<u8>,
     pub FileHeader: MutPtr<IMAGE_NT_HEADERS64>,
@@ -11277,7 +11725,7 @@ impl ::core::cmp::Eq for LOADED_IMAGE {}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct LOADED_IMAGE {
-    pub ModuleName: ::win32::core::PSTR,
+    pub ModuleName: crate::core::PSTR,
     pub hFile: super::super::super::Foundation::HANDLE,
     pub MappedAddress: MutPtr<u8>,
     pub FileHeader: MutPtr<IMAGE_NT_HEADERS32>,
@@ -11413,6 +11861,17 @@ impl ::core::fmt::Debug for LanguageKind {
         f.debug_tuple("LanguageKind").field(&self.0).finish()
     }
 }
+impl FromIntoMemory for LanguageKind {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
+    }
+}
 pub struct Location {
     pub HostDefined: u64,
     pub Offset: u64,
@@ -11457,6 +11916,17 @@ impl ::core::default::Default for LocationKind {
 impl ::core::fmt::Debug for LocationKind {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("LocationKind").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for LocationKind {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
     }
 }
 pub struct M128A {
@@ -11546,7 +12016,7 @@ impl ::core::cmp::Eq for MINIDUMP_CALLBACK_INPUT {}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Storage.FileSystem', 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_CALLBACK_INPUT_0 {
-    pub Status: ::win32::core::HRESULT,
+    pub Status: crate::core::HRESULT,
     pub Thread: MINIDUMP_THREAD_CALLBACK,
     pub ThreadEx: MINIDUMP_THREAD_EX_CALLBACK,
     pub Module: MINIDUMP_MODULE_CALLBACK,
@@ -11627,7 +12097,7 @@ pub struct MINIDUMP_CALLBACK_OUTPUT_0 {
     pub Anonymous3: MINIDUMP_CALLBACK_OUTPUT_0_2,
     pub Anonymous4: MINIDUMP_CALLBACK_OUTPUT_0_3,
     pub Anonymous5: MINIDUMP_CALLBACK_OUTPUT_0_4,
-    pub Status: ::win32::core::HRESULT,
+    pub Status: crate::core::HRESULT,
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
 #[cfg(dummy_option_that_does_not_exist)]
@@ -11749,7 +12219,7 @@ impl ::core::cmp::Eq for MINIDUMP_CALLBACK_OUTPUT_0_2 {}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_CALLBACK_OUTPUT_0_3 {
-    pub VmQueryStatus: ::win32::core::HRESULT,
+    pub VmQueryStatus: crate::core::HRESULT,
     pub VmQueryResult: MINIDUMP_MEMORY_INFO,
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
@@ -11775,7 +12245,7 @@ impl ::core::cmp::Eq for MINIDUMP_CALLBACK_OUTPUT_0_3 {}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_CALLBACK_OUTPUT_0_4 {
-    pub VmReadStatus: ::win32::core::HRESULT,
+    pub VmReadStatus: crate::core::HRESULT,
     pub VmReadBytesCompleted: u32,
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
@@ -11857,6 +12327,17 @@ impl ::core::fmt::Debug for MINIDUMP_CALLBACK_TYPE {
         f.debug_tuple("MINIDUMP_CALLBACK_TYPE")
             .field(&self.0)
             .finish()
+    }
+}
+impl FromIntoMemory for MINIDUMP_CALLBACK_TYPE {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
     }
 }
 pub struct MINIDUMP_DIRECTORY {
@@ -12196,6 +12677,17 @@ impl ::core::fmt::Debug for MINIDUMP_HANDLE_OBJECT_INFORMATION_TYPE {
         f.debug_tuple("MINIDUMP_HANDLE_OBJECT_INFORMATION_TYPE")
             .field(&self.0)
             .finish()
+    }
+}
+impl FromIntoMemory for MINIDUMP_HANDLE_OBJECT_INFORMATION_TYPE {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
     }
 }
 pub struct MINIDUMP_HANDLE_OPERATION_LIST {
@@ -12871,6 +13363,17 @@ impl ::core::ops::Not for MINIDUMP_MISC_INFO_FLAGS {
         Self(self.0.not())
     }
 }
+impl FromIntoMemory for MINIDUMP_MISC_INFO_FLAGS {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
+    }
+}
 #[doc = "*Required namespaces: 'Windows.Win32.Storage.FileSystem'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_MODULE {
@@ -12917,7 +13420,7 @@ impl ::core::cmp::Eq for MINIDUMP_MODULE {}
 #[doc = "*Required namespaces: 'Windows.Win32.Storage.FileSystem'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_MODULE_CALLBACK {
-    pub FullPath: ::win32::core::PWSTR,
+    pub FullPath: crate::core::PWSTR,
     pub BaseOfImage: u64,
     pub SizeOfImage: u32,
     pub CheckSum: u32,
@@ -13081,7 +13584,7 @@ pub const MINIDUMP_PROCESS_VM_COUNTERS_VIRTUALSIZE: u32 = 2u32;
 pub struct MINIDUMP_READ_MEMORY_FAILURE_CALLBACK {
     pub Offset: u64,
     pub Bytes: u32,
-    pub FailureStatus: ::win32::core::HRESULT,
+    pub FailureStatus: crate::core::HRESULT,
 }
 impl ::core::marker::Copy for MINIDUMP_READ_MEMORY_FAILURE_CALLBACK {}
 impl ::core::clone::Clone for MINIDUMP_READ_MEMORY_FAILURE_CALLBACK {
@@ -13117,6 +13620,17 @@ impl ::core::fmt::Debug for MINIDUMP_SECONDARY_FLAGS {
         f.debug_tuple("MINIDUMP_SECONDARY_FLAGS")
             .field(&self.0)
             .finish()
+    }
+}
+impl FromIntoMemory for MINIDUMP_SECONDARY_FLAGS {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -13176,6 +13690,17 @@ impl ::core::fmt::Debug for MINIDUMP_STREAM_TYPE {
         f.debug_tuple("MINIDUMP_STREAM_TYPE")
             .field(&self.0)
             .finish()
+    }
+}
+impl FromIntoMemory for MINIDUMP_STREAM_TYPE {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
     }
 }
 pub struct MINIDUMP_STRING {
@@ -13964,6 +14489,17 @@ impl ::core::fmt::Debug for MINIDUMP_THREAD_INFO_DUMP_FLAGS {
             .finish()
     }
 }
+impl FromIntoMemory for MINIDUMP_THREAD_INFO_DUMP_FLAGS {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
+    }
+}
 pub struct MINIDUMP_THREAD_INFO_LIST {
     pub SizeOfHeader: u32,
     pub SizeOfEntry: u32,
@@ -14164,6 +14700,17 @@ impl ::core::ops::Not for MINIDUMP_TYPE {
         Self(self.0.not())
     }
 }
+impl FromIntoMemory for MINIDUMP_TYPE {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
+    }
+}
 pub struct MINIDUMP_UNLOADED_MODULE {
     pub BaseOfImage: u64,
     pub SizeOfImage: u32,
@@ -14281,7 +14828,7 @@ pub struct MINIDUMP_VM_POST_READ_CALLBACK {
     pub Buffer: MutPtr<::core::ffi::c_void>,
     pub Size: u32,
     pub Completed: u32,
-    pub Status: ::win32::core::HRESULT,
+    pub Status: crate::core::HRESULT,
 }
 impl ::core::marker::Copy for MINIDUMP_VM_POST_READ_CALLBACK {}
 impl ::core::clone::Clone for MINIDUMP_VM_POST_READ_CALLBACK {
@@ -14422,8 +14969,19 @@ impl ::core::fmt::Debug for MODLOAD_DATA_TYPE {
         f.debug_tuple("MODLOAD_DATA_TYPE").field(&self.0).finish()
     }
 }
+impl FromIntoMemory for MODLOAD_DATA_TYPE {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
+    }
+}
 pub struct MODLOAD_PDBGUID_PDBAGE {
-    pub PdbGuid: ::win32::core::GUID,
+    pub PdbGuid: crate::core::GUID,
     pub PdbAge: u32,
 }
 impl ::core::marker::Copy for MODLOAD_PDBGUID_PDBAGE {}
@@ -14500,10 +15058,21 @@ impl ::core::fmt::Debug for MODULE_WRITE_FLAGS {
         f.debug_tuple("MODULE_WRITE_FLAGS").field(&self.0).finish()
     }
 }
-pub const MachineDebugManager_DEBUG: ::win32::core::GUID =
-    ::win32::core::GUID::from_u128(0x49769cec_3a55_4bb0_b697_88fede77e8ea);
-pub const MachineDebugManager_RETAIL: ::win32::core::GUID =
-    ::win32::core::GUID::from_u128(0x0c0a3666_30c9_11d0_8f20_00805f2cd064);
+impl FromIntoMemory for MODULE_WRITE_FLAGS {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
+    }
+}
+pub const MachineDebugManager_DEBUG: crate::core::GUID =
+    crate::core::GUID::from_u128(0x49769cec_3a55_4bb0_b697_88fede77e8ea);
+pub const MachineDebugManager_RETAIL: crate::core::GUID =
+    crate::core::GUID::from_u128(0x0c0a3666_30c9_11d0_8f20_00805f2cd064);
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct ModelObjectKind(pub i32);
 pub const ObjectPropertyAccessor: ModelObjectKind = ModelObjectKind(0i32);
@@ -14530,6 +15099,17 @@ impl ::core::default::Default for ModelObjectKind {
 impl ::core::fmt::Debug for ModelObjectKind {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("ModelObjectKind").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for ModelObjectKind {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
     }
 }
 pub const NULL_FIELD_NAME: u32 = 6u32;
@@ -14616,12 +15196,23 @@ impl ::core::ops::Not for OBJECT_ATTRIB_FLAG {
         Self(self.0.not())
     }
 }
-pub const OID_JSSIP: ::win32::core::GUID =
-    ::win32::core::GUID::from_u128(0x06c9e010_38ce_11d4_a2a3_00104bd35090);
-pub const OID_VBSSIP: ::win32::core::GUID =
-    ::win32::core::GUID::from_u128(0x1629f04e_2799_4db5_8fe5_ace10f17ebab);
-pub const OID_WSFSIP: ::win32::core::GUID =
-    ::win32::core::GUID::from_u128(0x1a610570_38ce_11d4_a2a3_00104bd35090);
+impl FromIntoMemory for OBJECT_ATTRIB_FLAG {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
+    }
+}
+pub const OID_JSSIP: crate::core::GUID =
+    crate::core::GUID::from_u128(0x06c9e010_38ce_11d4_a2a3_00104bd35090);
+pub const OID_VBSSIP: crate::core::GUID =
+    crate::core::GUID::from_u128(0x1629f04e_2799_4db5_8fe5_ace10f17ebab);
+pub const OID_WSFSIP: crate::core::GUID =
+    crate::core::GUID::from_u128(0x1a610570_38ce_11d4_a2a3_00104bd35090);
 pub struct OMAP {
     pub rva: u32,
     pub rvaTo: u32,
@@ -14668,8 +15259,19 @@ impl ::core::fmt::Debug for OPEN_THREAD_WAIT_CHAIN_SESSION_FLAGS {
             .finish()
     }
 }
+impl FromIntoMemory for OPEN_THREAD_WAIT_CHAIN_SESSION_FLAGS {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
+    }
+}
 pub struct OUTPUT_DEBUG_STRING_INFO {
-    pub lpDebugStringData: ::win32::core::PSTR,
+    pub lpDebugStringData: crate::core::PSTR,
     pub fUnicode: u16,
     pub nDebugStringLength: u16,
 }
@@ -14698,13 +15300,13 @@ impl ::core::cmp::PartialEq for OUTPUT_DEBUG_STRING_INFO {
 impl ::core::cmp::Eq for OUTPUT_DEBUG_STRING_INFO {}
 pub type PCOGETACTIVATIONSTATE = ::core::option::Option<
     unsafe extern "system" fn(
-        param0: ::win32::core::GUID,
+        param0: crate::core::GUID,
         param1: u32,
         param2: MutPtr<u32>,
-    ) -> ::win32::core::HRESULT,
+    ) -> crate::core::HRESULT,
 >;
 pub type PCOGETCALLSTATE = ::core::option::Option<
-    unsafe extern "system" fn(param0: i32, param1: MutPtr<u32>) -> ::win32::core::HRESULT,
+    unsafe extern "system" fn(param0: i32, param1: MutPtr<u32>) -> crate::core::HRESULT,
 >;
 pub type PDBGHELP_CREATE_USER_DUMP_CALLBACK = ::core::option::Option<
     unsafe extern "system" fn(
@@ -14715,18 +15317,18 @@ pub type PDBGHELP_CREATE_USER_DUMP_CALLBACK = ::core::option::Option<
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PDEBUG_EXTENSION_CANUNLOAD =
-    ::core::option::Option<unsafe extern "system" fn() -> ::win32::core::HRESULT>;
+    ::core::option::Option<unsafe extern "system" fn() -> crate::core::HRESULT>;
 pub type PDEBUG_EXTENSION_INITIALIZE = ::core::option::Option<
-    unsafe extern "system" fn(Version: MutPtr<u32>, Flags: MutPtr<u32>) -> ::win32::core::HRESULT,
+    unsafe extern "system" fn(Version: MutPtr<u32>, Flags: MutPtr<u32>) -> crate::core::HRESULT,
 >;
 pub type PDEBUG_EXTENSION_KNOWN_STRUCT = ::core::option::Option<
     unsafe extern "system" fn(
         Flags: u32,
         Offset: u64,
-        TypeName: ::win32::core::PCSTR,
-        Buffer: ::win32::core::PSTR,
+        TypeName: crate::core::PCSTR,
+        Buffer: crate::core::PSTR,
         BufferChars: MutPtr<u32>,
-    ) -> ::win32::core::HRESULT,
+    ) -> crate::core::HRESULT,
 >;
 pub type PDEBUG_EXTENSION_NOTIFY =
     ::core::option::Option<unsafe extern "system" fn(Notify: u32, Argument: u64)>;
@@ -14737,14 +15339,14 @@ pub type PDEBUG_STACK_PROVIDER_BEGINTHREADSTACKRECONSTRUCTION = ::core::option::
         StreamType: u32,
         MiniDumpStreamBuffer: ConstPtr<::core::ffi::c_void>,
         BufferSize: u32,
-    ) -> ::win32::core::HRESULT,
+    ) -> crate::core::HRESULT,
 >;
 pub type PDEBUG_STACK_PROVIDER_ENDTHREADSTACKRECONSTRUCTION =
-    ::core::option::Option<unsafe extern "system" fn() -> ::win32::core::HRESULT>;
+    ::core::option::Option<unsafe extern "system" fn() -> crate::core::HRESULT>;
 pub type PDEBUG_STACK_PROVIDER_FREESTACKSYMFRAMES = ::core::option::Option<
     unsafe extern "system" fn(
         StackSymFrames: ConstPtr<STACK_SYM_FRAME_INFO>,
-    ) -> ::win32::core::HRESULT,
+    ) -> crate::core::HRESULT,
 >;
 pub type PDEBUG_STACK_PROVIDER_RECONSTRUCTSTACK = ::core::option::Option<
     unsafe extern "system" fn(
@@ -14753,23 +15355,23 @@ pub type PDEBUG_STACK_PROVIDER_RECONSTRUCTSTACK = ::core::option::Option<
         CountNativeFrames: u32,
         StackSymFrames: MutPtr<ConstPtr<STACK_SYM_FRAME_INFO>>,
         StackSymFramesFilled: MutPtr<u32>,
-    ) -> ::win32::core::HRESULT,
+    ) -> crate::core::HRESULT,
 >;
 pub type PENUMDIRTREE_CALLBACK = ::core::option::Option<
     unsafe extern "system" fn(
-        FilePath: ::win32::core::PCSTR,
+        FilePath: crate::core::PCSTR,
         CallerData: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PENUMDIRTREE_CALLBACKW = ::core::option::Option<
     unsafe extern "system" fn(
-        FilePath: ::win32::core::PCWSTR,
+        FilePath: crate::core::PCWSTR,
         CallerData: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PENUMLOADED_MODULES_CALLBACK = ::core::option::Option<
     unsafe extern "system" fn(
-        ModuleName: ::win32::core::PCSTR,
+        ModuleName: crate::core::PCSTR,
         ModuleBase: u32,
         ModuleSize: u32,
         UserContext: ConstPtr<::core::ffi::c_void>,
@@ -14777,7 +15379,7 @@ pub type PENUMLOADED_MODULES_CALLBACK = ::core::option::Option<
 >;
 pub type PENUMLOADED_MODULES_CALLBACK64 = ::core::option::Option<
     unsafe extern "system" fn(
-        ModuleName: ::win32::core::PCSTR,
+        ModuleName: crate::core::PCSTR,
         ModuleBase: u64,
         ModuleSize: u32,
         UserContext: ConstPtr<::core::ffi::c_void>,
@@ -14785,7 +15387,7 @@ pub type PENUMLOADED_MODULES_CALLBACK64 = ::core::option::Option<
 >;
 pub type PENUMLOADED_MODULES_CALLBACKW64 = ::core::option::Option<
     unsafe extern "system" fn(
-        ModuleName: ::win32::core::PCWSTR,
+        ModuleName: crate::core::PCWSTR,
         ModuleBase: u64,
         ModuleSize: u32,
         UserContext: ConstPtr<::core::ffi::c_void>,
@@ -14799,41 +15401,41 @@ pub type PENUMSOURCEFILETOKENSCALLBACK = ::core::option::Option<
 >;
 pub type PFINDFILEINPATHCALLBACK = ::core::option::Option<
     unsafe extern "system" fn(
-        filename: ::win32::core::PCSTR,
+        filename: crate::core::PCSTR,
         context: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PFINDFILEINPATHCALLBACKW = ::core::option::Option<
     unsafe extern "system" fn(
-        filename: ::win32::core::PCWSTR,
+        filename: crate::core::PCWSTR,
         context: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PFIND_DEBUG_FILE_CALLBACK = ::core::option::Option<
     unsafe extern "system" fn(
         FileHandle: super::super::super::Foundation::HANDLE,
-        FileName: ::win32::core::PCSTR,
+        FileName: crate::core::PCSTR,
         CallerData: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PFIND_DEBUG_FILE_CALLBACKW = ::core::option::Option<
     unsafe extern "system" fn(
         FileHandle: super::super::super::Foundation::HANDLE,
-        FileName: ::win32::core::PCWSTR,
+        FileName: crate::core::PCWSTR,
         CallerData: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PFIND_EXE_FILE_CALLBACK = ::core::option::Option<
     unsafe extern "system" fn(
         FileHandle: super::super::super::Foundation::HANDLE,
-        FileName: ::win32::core::PCSTR,
+        FileName: crate::core::PCSTR,
         CallerData: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PFIND_EXE_FILE_CALLBACKW = ::core::option::Option<
     unsafe extern "system" fn(
         FileHandle: super::super::super::Foundation::HANDLE,
-        FileName: ::win32::core::PCWSTR,
+        FileName: crate::core::PCWSTR,
         CallerData: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
@@ -15073,8 +15675,8 @@ pub const PHYS_FLAG_WRITE_COMBINED: u32 = 3u32;
 pub type PIMAGEHLP_STATUS_ROUTINE = ::core::option::Option<
     unsafe extern "system" fn(
         Reason: IMAGEHLP_STATUS_REASON,
-        ImageName: ::win32::core::PCSTR,
-        DllName: ::win32::core::PCSTR,
+        ImageName: crate::core::PCSTR,
+        DllName: crate::core::PCSTR,
         Va: PtrRepr,
         Parameter: PtrRepr,
     ) -> super::super::super::Foundation::BOOL,
@@ -15082,8 +15684,8 @@ pub type PIMAGEHLP_STATUS_ROUTINE = ::core::option::Option<
 pub type PIMAGEHLP_STATUS_ROUTINE32 = ::core::option::Option<
     unsafe extern "system" fn(
         Reason: IMAGEHLP_STATUS_REASON,
-        ImageName: ::win32::core::PCSTR,
-        DllName: ::win32::core::PCSTR,
+        ImageName: crate::core::PCSTR,
+        DllName: crate::core::PCSTR,
         Va: u32,
         Parameter: PtrRepr,
     ) -> super::super::super::Foundation::BOOL,
@@ -15091,8 +15693,8 @@ pub type PIMAGEHLP_STATUS_ROUTINE32 = ::core::option::Option<
 pub type PIMAGEHLP_STATUS_ROUTINE64 = ::core::option::Option<
     unsafe extern "system" fn(
         Reason: IMAGEHLP_STATUS_REASON,
-        ImageName: ::win32::core::PCSTR,
-        DllName: ::win32::core::PCSTR,
+        ImageName: crate::core::PCSTR,
+        DllName: crate::core::PCSTR,
         Va: u64,
         Parameter: PtrRepr,
     ) -> super::super::super::Foundation::BOOL,
@@ -15207,6 +15809,17 @@ impl ::core::fmt::Debug for PROCESSOR_ARCHITECTURE {
             .finish()
     }
 }
+impl FromIntoMemory for PROCESSOR_ARCHITECTURE {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u16 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u16>()
+    }
+}
 pub struct PROCESS_NAME_ENTRY {
     pub ProcessId: u32,
     pub NameOffset: u32,
@@ -15292,6 +15905,17 @@ impl ::core::ops::Not for PROFILER_EVENT_MASK {
         Self(self.0.not())
     }
 }
+impl FromIntoMemory for PROFILER_EVENT_MASK {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct PROFILER_HEAP_ENUM_FLAGS(pub u32);
 pub const PROFILER_HEAP_ENUM_FLAGS_NONE: PROFILER_HEAP_ENUM_FLAGS = PROFILER_HEAP_ENUM_FLAGS(0u32);
@@ -15345,6 +15969,17 @@ impl ::core::ops::Not for PROFILER_HEAP_ENUM_FLAGS {
     type Output = Self;
     fn not(self) -> Self {
         Self(self.0.not())
+    }
+}
+impl FromIntoMemory for PROFILER_HEAP_ENUM_FLAGS {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
     }
 }
 pub struct PROFILER_HEAP_OBJECT {
@@ -15462,6 +16097,17 @@ impl ::core::ops::Not for PROFILER_HEAP_OBJECT_FLAGS {
         Self(self.0.not())
     }
 }
+impl FromIntoMemory for PROFILER_HEAP_OBJECT_FLAGS {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
+    }
+}
 pub const PROFILER_HEAP_OBJECT_NAME_ID_UNAVAILABLE: u32 = 4294967295u32;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct PROFILER_HEAP_OBJECT_OPTIONAL_INFO_TYPE(pub i32);
@@ -15509,6 +16155,17 @@ impl ::core::fmt::Debug for PROFILER_HEAP_OBJECT_OPTIONAL_INFO_TYPE {
         f.debug_tuple("PROFILER_HEAP_OBJECT_OPTIONAL_INFO_TYPE")
             .field(&self.0)
             .finish()
+    }
+}
+impl FromIntoMemory for PROFILER_HEAP_OBJECT_OPTIONAL_INFO_TYPE {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -15567,6 +16224,17 @@ impl ::core::ops::Not for PROFILER_HEAP_OBJECT_RELATIONSHIP_FLAGS {
     type Output = Self;
     fn not(self) -> Self {
         Self(self.0.not())
+    }
+}
+impl FromIntoMemory for PROFILER_HEAP_OBJECT_RELATIONSHIP_FLAGS {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
     }
 }
 pub struct PROFILER_HEAP_OBJECT_SCOPE_LIST {
@@ -15639,9 +16307,20 @@ impl ::core::fmt::Debug for PROFILER_HEAP_SUMMARY_VERSION {
             .finish()
     }
 }
+impl FromIntoMemory for PROFILER_HEAP_SUMMARY_VERSION {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
+    }
+}
 pub struct PROFILER_PROPERTY_TYPE_SUBSTRING_INFO {
     pub length: u32,
-    pub value: ::win32::core::PCWSTR,
+    pub value: crate::core::PCWSTR,
 }
 impl ::core::marker::Copy for PROFILER_PROPERTY_TYPE_SUBSTRING_INFO {}
 impl ::core::clone::Clone for PROFILER_PROPERTY_TYPE_SUBSTRING_INFO {
@@ -15695,6 +16374,17 @@ impl ::core::fmt::Debug for PROFILER_RELATIONSHIP_INFO {
             .finish()
     }
 }
+impl FromIntoMemory for PROFILER_RELATIONSHIP_INFO {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct PROFILER_SCRIPT_TYPE(pub i32);
 pub const PROFILER_SCRIPT_TYPE_USER: PROFILER_SCRIPT_TYPE = PROFILER_SCRIPT_TYPE(0i32);
@@ -15717,6 +16407,17 @@ impl ::core::fmt::Debug for PROFILER_SCRIPT_TYPE {
         f.debug_tuple("PROFILER_SCRIPT_TYPE")
             .field(&self.0)
             .finish()
+    }
+}
+impl FromIntoMemory for PROFILER_SCRIPT_TYPE {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -15744,28 +16445,39 @@ impl ::core::fmt::Debug for PROP_INFO_FLAGS {
         f.debug_tuple("PROP_INFO_FLAGS").field(&self.0).finish()
     }
 }
+impl FromIntoMemory for PROP_INFO_FLAGS {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
+    }
+}
 pub type PSYMBOLSERVERBYINDEXPROC = ::core::option::Option<
     unsafe extern "system" fn(
-        param0: ::win32::core::PCSTR,
-        param1: ::win32::core::PCSTR,
-        param2: ::win32::core::PCSTR,
-        param3: ::win32::core::PCSTR,
+        param0: crate::core::PCSTR,
+        param1: crate::core::PCSTR,
+        param2: crate::core::PCSTR,
+        param3: crate::core::PCSTR,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOLSERVERBYINDEXPROCA = ::core::option::Option<
     unsafe extern "system" fn(
-        param0: ::win32::core::PCSTR,
-        param1: ::win32::core::PCSTR,
-        param2: ::win32::core::PCSTR,
-        param3: ::win32::core::PCSTR,
+        param0: crate::core::PCSTR,
+        param1: crate::core::PCSTR,
+        param2: crate::core::PCSTR,
+        param3: crate::core::PCSTR,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOLSERVERBYINDEXPROCW = ::core::option::Option<
     unsafe extern "system" fn(
-        param0: ::win32::core::PCWSTR,
-        param1: ::win32::core::PCWSTR,
-        param2: ::win32::core::PCWSTR,
-        param3: ::win32::core::PCWSTR,
+        param0: crate::core::PCWSTR,
+        param1: crate::core::PCWSTR,
+        param2: crate::core::PCWSTR,
+        param3: crate::core::PCWSTR,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOLSERVERCALLBACKPROC = ::core::option::Option<
@@ -15779,27 +16491,27 @@ pub type PSYMBOLSERVERCLOSEPROC =
     ::core::option::Option<unsafe extern "system" fn() -> super::super::super::Foundation::BOOL>;
 pub type PSYMBOLSERVERDELTANAME = ::core::option::Option<
     unsafe extern "system" fn(
-        param0: ::win32::core::PCSTR,
+        param0: crate::core::PCSTR,
         param1: MutPtr<::core::ffi::c_void>,
         param2: u32,
         param3: u32,
         param4: MutPtr<::core::ffi::c_void>,
         param5: u32,
         param6: u32,
-        param7: ::win32::core::PCSTR,
+        param7: crate::core::PCSTR,
         param8: PtrRepr,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOLSERVERDELTANAMEW = ::core::option::Option<
     unsafe extern "system" fn(
-        param0: ::win32::core::PCWSTR,
+        param0: crate::core::PCWSTR,
         param1: MutPtr<::core::ffi::c_void>,
         param2: u32,
         param3: u32,
         param4: MutPtr<::core::ffi::c_void>,
         param5: u32,
         param6: u32,
-        param7: ::win32::core::PCWSTR,
+        param7: crate::core::PCWSTR,
         param8: PtrRepr,
     ) -> super::super::super::Foundation::BOOL,
 >;
@@ -15808,7 +16520,7 @@ pub type PSYMBOLSERVERGETINDEXSTRING = ::core::option::Option<
         param0: MutPtr<::core::ffi::c_void>,
         param1: u32,
         param2: u32,
-        param3: ::win32::core::PCSTR,
+        param3: crate::core::PCSTR,
         param4: PtrRepr,
     ) -> super::super::super::Foundation::BOOL,
 >;
@@ -15817,7 +16529,7 @@ pub type PSYMBOLSERVERGETINDEXSTRINGW = ::core::option::Option<
         param0: MutPtr<::core::ffi::c_void>,
         param1: u32,
         param2: u32,
-        param3: ::win32::core::PCWSTR,
+        param3: crate::core::PCWSTR,
         param4: PtrRepr,
     ) -> super::super::super::Foundation::BOOL,
 >;
@@ -15831,19 +16543,19 @@ pub type PSYMBOLSERVERGETOPTIONSPROC =
     ::core::option::Option<unsafe extern "system" fn() -> PtrRepr>;
 pub type PSYMBOLSERVERGETSUPPLEMENT = ::core::option::Option<
     unsafe extern "system" fn(
-        param0: ::win32::core::PCSTR,
-        param1: ::win32::core::PCSTR,
-        param2: ::win32::core::PCSTR,
-        param3: ::win32::core::PCSTR,
+        param0: crate::core::PCSTR,
+        param1: crate::core::PCSTR,
+        param2: crate::core::PCSTR,
+        param3: crate::core::PCSTR,
         param4: PtrRepr,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOLSERVERGETSUPPLEMENTW = ::core::option::Option<
     unsafe extern "system" fn(
-        param0: ::win32::core::PCWSTR,
-        param1: ::win32::core::PCWSTR,
-        param2: ::win32::core::PCWSTR,
-        param3: ::win32::core::PCWSTR,
+        param0: crate::core::PCWSTR,
+        param1: crate::core::PCWSTR,
+        param2: crate::core::PCWSTR,
+        param3: crate::core::PCWSTR,
         param4: PtrRepr,
     ) -> super::super::super::Foundation::BOOL,
 >;
@@ -15851,14 +16563,10 @@ pub type PSYMBOLSERVERGETVERSION = ::core::option::Option<
     unsafe extern "system" fn(param0: MutPtr<API_VERSION>) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOLSERVERISSTORE = ::core::option::Option<
-    unsafe extern "system" fn(
-        param0: ::win32::core::PCSTR,
-    ) -> super::super::super::Foundation::BOOL,
+    unsafe extern "system" fn(param0: crate::core::PCSTR) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOLSERVERISSTOREW = ::core::option::Option<
-    unsafe extern "system" fn(
-        param0: ::win32::core::PCWSTR,
-    ) -> super::super::super::Foundation::BOOL,
+    unsafe extern "system" fn(param0: crate::core::PCWSTR) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOLSERVERMESSAGEPROC = ::core::option::Option<
     unsafe extern "system" fn(
@@ -15870,58 +16578,50 @@ pub type PSYMBOLSERVERMESSAGEPROC = ::core::option::Option<
 pub type PSYMBOLSERVEROPENPROC =
     ::core::option::Option<unsafe extern "system" fn() -> super::super::super::Foundation::BOOL>;
 pub type PSYMBOLSERVERPINGPROC = ::core::option::Option<
-    unsafe extern "system" fn(
-        param0: ::win32::core::PCSTR,
-    ) -> super::super::super::Foundation::BOOL,
+    unsafe extern "system" fn(param0: crate::core::PCSTR) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOLSERVERPINGPROCA = ::core::option::Option<
-    unsafe extern "system" fn(
-        param0: ::win32::core::PCSTR,
-    ) -> super::super::super::Foundation::BOOL,
+    unsafe extern "system" fn(param0: crate::core::PCSTR) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOLSERVERPINGPROCW = ::core::option::Option<
-    unsafe extern "system" fn(
-        param0: ::win32::core::PCWSTR,
-    ) -> super::super::super::Foundation::BOOL,
+    unsafe extern "system" fn(param0: crate::core::PCWSTR) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOLSERVERPINGPROCWEX = ::core::option::Option<
-    unsafe extern "system" fn(
-        param0: ::win32::core::PCWSTR,
-    ) -> super::super::super::Foundation::BOOL,
+    unsafe extern "system" fn(param0: crate::core::PCWSTR) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOLSERVERPROC = ::core::option::Option<
     unsafe extern "system" fn(
-        param0: ::win32::core::PCSTR,
-        param1: ::win32::core::PCSTR,
+        param0: crate::core::PCSTR,
+        param1: crate::core::PCSTR,
         param2: MutPtr<::core::ffi::c_void>,
         param3: u32,
         param4: u32,
-        param5: ::win32::core::PCSTR,
+        param5: crate::core::PCSTR,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOLSERVERPROCA = ::core::option::Option<
     unsafe extern "system" fn(
-        param0: ::win32::core::PCSTR,
-        param1: ::win32::core::PCSTR,
+        param0: crate::core::PCSTR,
+        param1: crate::core::PCSTR,
         param2: MutPtr<::core::ffi::c_void>,
         param3: u32,
         param4: u32,
-        param5: ::win32::core::PCSTR,
+        param5: crate::core::PCSTR,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOLSERVERPROCW = ::core::option::Option<
     unsafe extern "system" fn(
-        param0: ::win32::core::PCWSTR,
-        param1: ::win32::core::PCWSTR,
+        param0: crate::core::PCWSTR,
+        param1: crate::core::PCWSTR,
         param2: MutPtr<::core::ffi::c_void>,
         param3: u32,
         param4: u32,
-        param5: ::win32::core::PCWSTR,
+        param5: crate::core::PCWSTR,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOLSERVERSETHTTPAUTHHEADER = ::core::option::Option<
     unsafe extern "system" fn(
-        pszAuthHeader: ::win32::core::PCWSTR,
+        pszAuthHeader: crate::core::PCWSTR,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOLSERVERSETOPTIONSPROC = ::core::option::Option<
@@ -15938,44 +16638,44 @@ pub type PSYMBOLSERVERSETOPTIONSWPROC = ::core::option::Option<
 >;
 pub type PSYMBOLSERVERSTOREFILE = ::core::option::Option<
     unsafe extern "system" fn(
-        param0: ::win32::core::PCSTR,
-        param1: ::win32::core::PCSTR,
+        param0: crate::core::PCSTR,
+        param1: crate::core::PCSTR,
         param2: MutPtr<::core::ffi::c_void>,
         param3: u32,
         param4: u32,
-        param5: ::win32::core::PCSTR,
+        param5: crate::core::PCSTR,
         param6: PtrRepr,
         param7: u32,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOLSERVERSTOREFILEW = ::core::option::Option<
     unsafe extern "system" fn(
-        param0: ::win32::core::PCWSTR,
-        param1: ::win32::core::PCWSTR,
+        param0: crate::core::PCWSTR,
+        param1: crate::core::PCWSTR,
         param2: MutPtr<::core::ffi::c_void>,
         param3: u32,
         param4: u32,
-        param5: ::win32::core::PCWSTR,
+        param5: crate::core::PCWSTR,
         param6: PtrRepr,
         param7: u32,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOLSERVERSTORESUPPLEMENT = ::core::option::Option<
     unsafe extern "system" fn(
-        param0: ::win32::core::PCSTR,
-        param1: ::win32::core::PCSTR,
-        param2: ::win32::core::PCSTR,
-        param3: ::win32::core::PCSTR,
+        param0: crate::core::PCSTR,
+        param1: crate::core::PCSTR,
+        param2: crate::core::PCSTR,
+        param3: crate::core::PCSTR,
         param4: PtrRepr,
         param5: u32,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOLSERVERSTORESUPPLEMENTW = ::core::option::Option<
     unsafe extern "system" fn(
-        param0: ::win32::core::PCWSTR,
-        param1: ::win32::core::PCWSTR,
-        param2: ::win32::core::PCWSTR,
-        param3: ::win32::core::PCWSTR,
+        param0: crate::core::PCWSTR,
+        param1: crate::core::PCWSTR,
+        param2: crate::core::PCWSTR,
+        param3: crate::core::PCWSTR,
         param4: PtrRepr,
         param5: u32,
     ) -> super::super::super::Foundation::BOOL,
@@ -15983,12 +16683,12 @@ pub type PSYMBOLSERVERSTORESUPPLEMENTW = ::core::option::Option<
 pub type PSYMBOLSERVERVERSION = ::core::option::Option<unsafe extern "system" fn() -> u32>;
 pub type PSYMBOLSERVERWEXPROC = ::core::option::Option<
     unsafe extern "system" fn(
-        param0: ::win32::core::PCWSTR,
-        param1: ::win32::core::PCWSTR,
+        param0: crate::core::PCWSTR,
+        param1: crate::core::PCWSTR,
         param2: MutPtr<::core::ffi::c_void>,
         param3: u32,
         param4: u32,
-        param5: ::win32::core::PCWSTR,
+        param5: crate::core::PCWSTR,
         param6: MutPtr<SYMSRV_EXTENDED_OUTPUT_DATA>,
     ) -> super::super::super::Foundation::BOOL,
 >;
@@ -16056,21 +16756,21 @@ pub type PSYM_ENUMLINES_CALLBACKW = ::core::option::Option<
 >;
 pub type PSYM_ENUMMODULES_CALLBACK = ::core::option::Option<
     unsafe extern "system" fn(
-        ModuleName: ::win32::core::PCSTR,
+        ModuleName: crate::core::PCSTR,
         BaseOfDll: u32,
         UserContext: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYM_ENUMMODULES_CALLBACK64 = ::core::option::Option<
     unsafe extern "system" fn(
-        ModuleName: ::win32::core::PCSTR,
+        ModuleName: crate::core::PCSTR,
         BaseOfDll: u64,
         UserContext: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYM_ENUMMODULES_CALLBACKW64 = ::core::option::Option<
     unsafe extern "system" fn(
-        ModuleName: ::win32::core::PCWSTR,
+        ModuleName: crate::core::PCWSTR,
         BaseOfDll: u64,
         UserContext: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
@@ -16095,7 +16795,7 @@ pub type PSYM_ENUMSOURCEFILES_CALLBACKW = ::core::option::Option<
 >;
 pub type PSYM_ENUMSYMBOLS_CALLBACK = ::core::option::Option<
     unsafe extern "system" fn(
-        SymbolName: ::win32::core::PCSTR,
+        SymbolName: crate::core::PCSTR,
         SymbolAddress: u32,
         SymbolSize: u32,
         UserContext: ConstPtr<::core::ffi::c_void>,
@@ -16103,7 +16803,7 @@ pub type PSYM_ENUMSYMBOLS_CALLBACK = ::core::option::Option<
 >;
 pub type PSYM_ENUMSYMBOLS_CALLBACK64 = ::core::option::Option<
     unsafe extern "system" fn(
-        SymbolName: ::win32::core::PCSTR,
+        SymbolName: crate::core::PCSTR,
         SymbolAddress: u64,
         SymbolSize: u32,
         UserContext: ConstPtr<::core::ffi::c_void>,
@@ -16111,7 +16811,7 @@ pub type PSYM_ENUMSYMBOLS_CALLBACK64 = ::core::option::Option<
 >;
 pub type PSYM_ENUMSYMBOLS_CALLBACK64W = ::core::option::Option<
     unsafe extern "system" fn(
-        SymbolName: ::win32::core::PCWSTR,
+        SymbolName: crate::core::PCWSTR,
         SymbolAddress: u64,
         SymbolSize: u32,
         UserContext: ConstPtr<::core::ffi::c_void>,
@@ -16119,7 +16819,7 @@ pub type PSYM_ENUMSYMBOLS_CALLBACK64W = ::core::option::Option<
 >;
 pub type PSYM_ENUMSYMBOLS_CALLBACKW = ::core::option::Option<
     unsafe extern "system" fn(
-        SymbolName: ::win32::core::PCWSTR,
+        SymbolName: crate::core::PCWSTR,
         SymbolAddress: u32,
         SymbolSize: u32,
         UserContext: ConstPtr<::core::ffi::c_void>,
@@ -16164,21 +16864,21 @@ pub type PWINDBG_CHECK_VERSION = ::core::option::Option<unsafe extern "system" f
 pub type PWINDBG_DISASM = ::core::option::Option<
     unsafe extern "system" fn(
         lpOffset: MutPtr<PtrRepr>,
-        lpBuffer: ::win32::core::PCSTR,
+        lpBuffer: crate::core::PCSTR,
         fShowEffectiveAddress: u32,
     ) -> u32,
 >;
 pub type PWINDBG_DISASM32 = ::core::option::Option<
     unsafe extern "system" fn(
         lpOffset: MutPtr<u32>,
-        lpBuffer: ::win32::core::PCSTR,
+        lpBuffer: crate::core::PCSTR,
         fShowEffectiveAddress: u32,
     ) -> u32,
 >;
 pub type PWINDBG_DISASM64 = ::core::option::Option<
     unsafe extern "system" fn(
         lpOffset: MutPtr<u64>,
-        lpBuffer: ::win32::core::PCSTR,
+        lpBuffer: crate::core::PCSTR,
         fShowEffectiveAddress: u32,
     ) -> u32,
 >;
@@ -16217,7 +16917,7 @@ pub type PWINDBG_EXTENSION_ROUTINE = ::core::option::Option<
         hCurrentThread: super::super::super::Foundation::HANDLE,
         dwCurrentPc: u32,
         dwProcessor: u32,
-        lpArgumentString: ::win32::core::PCSTR,
+        lpArgumentString: crate::core::PCSTR,
     ),
 >;
 pub type PWINDBG_EXTENSION_ROUTINE32 = ::core::option::Option<
@@ -16226,7 +16926,7 @@ pub type PWINDBG_EXTENSION_ROUTINE32 = ::core::option::Option<
         hCurrentThread: super::super::super::Foundation::HANDLE,
         dwCurrentPc: u32,
         dwProcessor: u32,
-        lpArgumentString: ::win32::core::PCSTR,
+        lpArgumentString: crate::core::PCSTR,
     ),
 >;
 pub type PWINDBG_EXTENSION_ROUTINE64 = ::core::option::Option<
@@ -16235,34 +16935,33 @@ pub type PWINDBG_EXTENSION_ROUTINE64 = ::core::option::Option<
         hCurrentThread: super::super::super::Foundation::HANDLE,
         dwCurrentPc: u64,
         dwProcessor: u32,
-        lpArgumentString: ::win32::core::PCSTR,
+        lpArgumentString: crate::core::PCSTR,
     ),
 >;
-pub type PWINDBG_GET_EXPRESSION = ::core::option::Option<
-    unsafe extern "system" fn(lpExpression: ::win32::core::PCSTR) -> PtrRepr,
->;
+pub type PWINDBG_GET_EXPRESSION =
+    ::core::option::Option<unsafe extern "system" fn(lpExpression: crate::core::PCSTR) -> PtrRepr>;
 pub type PWINDBG_GET_EXPRESSION32 =
-    ::core::option::Option<unsafe extern "system" fn(lpExpression: ::win32::core::PCSTR) -> u32>;
+    ::core::option::Option<unsafe extern "system" fn(lpExpression: crate::core::PCSTR) -> u32>;
 pub type PWINDBG_GET_EXPRESSION64 =
-    ::core::option::Option<unsafe extern "system" fn(lpExpression: ::win32::core::PCSTR) -> u64>;
+    ::core::option::Option<unsafe extern "system" fn(lpExpression: crate::core::PCSTR) -> u64>;
 pub type PWINDBG_GET_SYMBOL = ::core::option::Option<
     unsafe extern "system" fn(
         offset: MutPtr<::core::ffi::c_void>,
-        pchBuffer: ::win32::core::PCSTR,
+        pchBuffer: crate::core::PCSTR,
         pDisplacement: MutPtr<PtrRepr>,
     ),
 >;
 pub type PWINDBG_GET_SYMBOL32 = ::core::option::Option<
     unsafe extern "system" fn(
         offset: u32,
-        pchBuffer: ::win32::core::PCSTR,
+        pchBuffer: crate::core::PCSTR,
         pDisplacement: MutPtr<u32>,
     ),
 >;
 pub type PWINDBG_GET_SYMBOL64 = ::core::option::Option<
     unsafe extern "system" fn(
         offset: u64,
-        pchBuffer: ::win32::core::PCSTR,
+        pchBuffer: crate::core::PCSTR,
         pDisplacement: MutPtr<u64>,
     ),
 >;
@@ -16286,7 +16985,7 @@ pub type PWINDBG_OLDKD_EXTENSION_ROUTINE = ::core::option::Option<
     unsafe extern "system" fn(
         dwCurrentPc: u32,
         lpExtensionApis: MutPtr<WINDBG_OLDKD_EXTENSION_APIS>,
-        lpArgumentString: ::win32::core::PCSTR,
+        lpArgumentString: crate::core::PCSTR,
     ),
 >;
 pub type PWINDBG_OLDKD_READ_PHYSICAL_MEMORY = ::core::option::Option<
@@ -16311,11 +17010,11 @@ pub type PWINDBG_OLD_EXTENSION_ROUTINE = ::core::option::Option<
     unsafe extern "system" fn(
         dwCurrentPc: u32,
         lpExtensionApis: MutPtr<WINDBG_EXTENSION_APIS>,
-        lpArgumentString: ::win32::core::PCSTR,
+        lpArgumentString: crate::core::PCSTR,
     ),
 >;
 pub type PWINDBG_OUTPUT_ROUTINE =
-    ::core::option::Option<unsafe extern "system" fn(lpFormat: ::win32::core::PCSTR)>;
+    ::core::option::Option<unsafe extern "system" fn(lpFormat: crate::core::PCSTR)>;
 pub type PWINDBG_READ_PROCESS_MEMORY_ROUTINE = ::core::option::Option<
     unsafe extern "system" fn(
         offset: PtrRepr,
@@ -16423,6 +17122,17 @@ impl ::core::fmt::Debug for PointerKind {
         f.debug_tuple("PointerKind").field(&self.0).finish()
     }
 }
+impl FromIntoMemory for PointerKind {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct PreferredFormat(pub i32);
 pub const FormatNone: PreferredFormat = PreferredFormat(0i32);
@@ -16457,8 +17167,19 @@ impl ::core::fmt::Debug for PreferredFormat {
         f.debug_tuple("PreferredFormat").field(&self.0).finish()
     }
 }
-pub const ProcessDebugManager: ::win32::core::GUID =
-    ::win32::core::GUID::from_u128(0x78a51822_51f4_11d0_8f20_00805f2cd064);
+impl FromIntoMemory for PreferredFormat {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
+    }
+}
+pub const ProcessDebugManager: crate::core::GUID =
+    crate::core::GUID::from_u128(0x78a51822_51f4_11d0_8f20_00805f2cd064);
 pub struct READCONTROLSPACE {
     pub Processor: u16,
     pub Address: u32,
@@ -16624,6 +17345,17 @@ impl ::core::fmt::Debug for RIP_INFO_TYPE {
         f.debug_tuple("RIP_INFO_TYPE").field(&self.0).finish()
     }
 }
+impl FromIntoMemory for RIP_INFO_TYPE {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct RTL_VIRTUAL_UNWIND_HANDLER_TYPE(pub u32);
 pub const UNW_FLAG_NHANDLER: RTL_VIRTUAL_UNWIND_HANDLER_TYPE =
@@ -16652,6 +17384,17 @@ impl ::core::fmt::Debug for RTL_VIRTUAL_UNWIND_HANDLER_TYPE {
             .finish()
     }
 }
+impl FromIntoMemory for RTL_VIRTUAL_UNWIND_HANDLER_TYPE {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct RawSearchFlags(pub i32);
 pub const RawSearchNone: RawSearchFlags = RawSearchFlags(0i32);
@@ -16672,6 +17415,17 @@ impl ::core::fmt::Debug for RawSearchFlags {
         f.debug_tuple("RawSearchFlags").field(&self.0).finish()
     }
 }
+impl FromIntoMemory for RawSearchFlags {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct SCRIPTGCTYPE(pub i32);
 pub const SCRIPTGCTYPE_NORMAL: SCRIPTGCTYPE = SCRIPTGCTYPE(0i32);
@@ -16690,6 +17444,17 @@ impl ::core::default::Default for SCRIPTGCTYPE {
 impl ::core::fmt::Debug for SCRIPTGCTYPE {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("SCRIPTGCTYPE").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for SCRIPTGCTYPE {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
     }
 }
 pub const SCRIPTINFO_ITYPEINFO: u32 = 2u32;
@@ -16724,6 +17489,17 @@ impl ::core::fmt::Debug for SCRIPTLANGUAGEVERSION {
         f.debug_tuple("SCRIPTLANGUAGEVERSION")
             .field(&self.0)
             .finish()
+    }
+}
+impl FromIntoMemory for SCRIPTLANGUAGEVERSION {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
     }
 }
 pub const SCRIPTPROC_HOSTMANAGESSOURCE: u32 = 128u32;
@@ -16774,6 +17550,17 @@ impl ::core::fmt::Debug for SCRIPTSTATE {
         f.debug_tuple("SCRIPTSTATE").field(&self.0).finish()
     }
 }
+impl FromIntoMemory for SCRIPTSTATE {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
+    }
+}
 pub const SCRIPTSTAT_INSTRUCTION_COUNT: u32 = 2u32;
 pub const SCRIPTSTAT_INTSTRUCTION_TIME: u32 = 3u32;
 pub const SCRIPTSTAT_STATEMENT_COUNT: u32 = 1u32;
@@ -16805,6 +17592,17 @@ impl ::core::fmt::Debug for SCRIPTTHREADSTATE {
         f.debug_tuple("SCRIPTTHREADSTATE").field(&self.0).finish()
     }
 }
+impl FromIntoMemory for SCRIPTTHREADSTATE {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct SCRIPTTRACEINFO(pub i32);
 pub const SCRIPTTRACEINFO_SCRIPTSTART: SCRIPTTRACEINFO = SCRIPTTRACEINFO(0i32);
@@ -16831,6 +17629,17 @@ impl ::core::fmt::Debug for SCRIPTTRACEINFO {
         f.debug_tuple("SCRIPTTRACEINFO").field(&self.0).finish()
     }
 }
+impl FromIntoMemory for SCRIPTTRACEINFO {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
+    }
+}
 pub const SCRIPTTYPELIB_ISCONTROL: u32 = 16u32;
 pub const SCRIPTTYPELIB_ISPERSISTENT: u32 = 64u32;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -16854,6 +17663,17 @@ impl ::core::fmt::Debug for SCRIPTUICHANDLING {
         f.debug_tuple("SCRIPTUICHANDLING").field(&self.0).finish()
     }
 }
+impl FromIntoMemory for SCRIPTUICHANDLING {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct SCRIPTUICITEM(pub i32);
 pub const SCRIPTUICITEM_INPUTBOX: SCRIPTUICITEM = SCRIPTUICITEM(1i32);
@@ -16872,6 +17692,17 @@ impl ::core::default::Default for SCRIPTUICITEM {
 impl ::core::fmt::Debug for SCRIPTUICITEM {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("SCRIPTUICITEM").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for SCRIPTUICITEM {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
     }
 }
 pub const SCRIPT_CMPL_COMMIT: u32 = 4u32;
@@ -16909,6 +17740,17 @@ impl ::core::fmt::Debug for SCRIPT_DEBUGGER_OPTIONS {
             .finish()
     }
 }
+impl FromIntoMemory for SCRIPT_DEBUGGER_OPTIONS {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
+    }
+}
 pub const SCRIPT_ENCODE_DEFAULT_LANGUAGE: u32 = 1u32;
 pub const SCRIPT_ENCODE_NO_ASP_LANGUAGE: u32 = 2u32;
 pub const SCRIPT_ENCODE_SECTION: u32 = 1u32;
@@ -16936,6 +17778,17 @@ impl ::core::fmt::Debug for SCRIPT_ERROR_DEBUG_EXCEPTION_THROWN_KIND {
         f.debug_tuple("SCRIPT_ERROR_DEBUG_EXCEPTION_THROWN_KIND")
             .field(&self.0)
             .finish()
+    }
+}
+impl FromIntoMemory for SCRIPT_ERROR_DEBUG_EXCEPTION_THROWN_KIND {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
     }
 }
 pub const SCRIPT_E_PROPAGATE: i32 = -2147352318i32;
@@ -16974,6 +17827,17 @@ impl ::core::fmt::Debug for SCRIPT_INVOCATION_CONTEXT_TYPE {
             .finish()
     }
 }
+impl FromIntoMemory for SCRIPT_INVOCATION_CONTEXT_TYPE {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
+    }
+}
 pub struct SEARCHMEMORY {
     pub SearchAddress: u64,
     pub SearchLength: u64,
@@ -17010,7 +17874,7 @@ impl ::core::cmp::PartialEq for SEARCHMEMORY {
 impl ::core::cmp::Eq for SEARCHMEMORY {}
 pub struct SOURCEFILE {
     pub ModBase: u64,
-    pub FileName: ::win32::core::PSTR,
+    pub FileName: crate::core::PSTR,
 }
 impl ::core::marker::Copy for SOURCEFILE {}
 impl ::core::clone::Clone for SOURCEFILE {
@@ -17034,7 +17898,7 @@ impl ::core::cmp::PartialEq for SOURCEFILE {
 impl ::core::cmp::Eq for SOURCEFILE {}
 pub struct SOURCEFILEW {
     pub ModBase: u64,
-    pub FileName: ::win32::core::PWSTR,
+    pub FileName: crate::core::PWSTR,
 }
 impl ::core::marker::Copy for SOURCEFILEW {}
 impl ::core::clone::Clone for SOURCEFILEW {
@@ -17369,9 +18233,9 @@ pub const STACK_FRAME_TYPE_INLINE: u32 = 2u32;
 pub const STACK_FRAME_TYPE_RA: u32 = 128u32;
 pub const STACK_FRAME_TYPE_STACK: u32 = 1u32;
 pub struct STACK_SRC_INFO {
-    pub ImagePath: ::win32::core::PCWSTR,
-    pub ModuleName: ::win32::core::PCWSTR,
-    pub Function: ::win32::core::PCWSTR,
+    pub ImagePath: crate::core::PCWSTR,
+    pub ModuleName: crate::core::PCWSTR,
+    pub Function: crate::core::PCWSTR,
     pub Displacement: u32,
     pub Row: u32,
     pub Column: u32,
@@ -17433,7 +18297,7 @@ pub type SYMADDSOURCESTREAM = ::core::option::Option<
     unsafe extern "system" fn(
         param0: super::super::super::Foundation::HANDLE,
         param1: u64,
-        param2: ::win32::core::PCSTR,
+        param2: crate::core::PCSTR,
         param3: MutPtr<u8>,
         param4: PtrRepr,
     ) -> super::super::super::Foundation::BOOL,
@@ -17442,7 +18306,7 @@ pub type SYMADDSOURCESTREAMA = ::core::option::Option<
     unsafe extern "system" fn(
         param0: super::super::super::Foundation::HANDLE,
         param1: u64,
-        param2: ::win32::core::PCSTR,
+        param2: crate::core::PCSTR,
         param3: MutPtr<u8>,
         param4: PtrRepr,
     ) -> super::super::super::Foundation::BOOL,
@@ -17675,6 +18539,17 @@ impl ::core::ops::Not for SYMBOL_INFO_FLAGS {
         Self(self.0.not())
     }
 }
+impl FromIntoMemory for SYMBOL_INFO_FLAGS {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
+    }
+}
 pub struct SYMBOL_INFO_PACKAGE {
     pub si: SYMBOL_INFO,
     pub name: [super::super::super::Foundation::CHAR; 2001],
@@ -17821,7 +18696,7 @@ pub struct SYMSRV_INDEX_INFO {
     pub size: u32,
     pub dbgfile: [super::super::super::Foundation::CHAR; 261],
     pub pdbfile: [super::super::super::Foundation::CHAR; 261],
-    pub guid: ::win32::core::GUID,
+    pub guid: crate::core::GUID,
     pub sig: u32,
     pub age: u32,
 }
@@ -17870,7 +18745,7 @@ pub struct SYMSRV_INDEX_INFOW {
     pub size: u32,
     pub dbgfile: [u16; 261],
     pub pdbfile: [u16; 261],
-    pub guid: ::win32::core::GUID,
+    pub guid: crate::core::GUID,
     pub sig: u32,
     pub age: u32,
 }
@@ -17992,6 +18867,17 @@ impl ::core::fmt::Debug for SYM_FIND_ID_OPTION {
         f.debug_tuple("SYM_FIND_ID_OPTION").field(&self.0).finish()
     }
 }
+impl FromIntoMemory for SYM_FIND_ID_OPTION {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
+    }
+}
 pub const SYM_INLINE_COMP_DIFFERENT: u32 = 5u32;
 pub const SYM_INLINE_COMP_ERROR: u32 = 0u32;
 pub const SYM_INLINE_COMP_IDENTICAL: u32 = 1u32;
@@ -18048,6 +18934,17 @@ impl ::core::ops::Not for SYM_LOAD_FLAGS {
         Self(self.0.not())
     }
 }
+impl FromIntoMemory for SYM_LOAD_FLAGS {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct SYM_SRV_STORE_FILE_FLAGS(pub u32);
 pub const SYMSTOREOPT_COMPRESS: SYM_SRV_STORE_FILE_FLAGS = SYM_SRV_STORE_FILE_FLAGS(1u32);
@@ -18071,6 +18968,17 @@ impl ::core::fmt::Debug for SYM_SRV_STORE_FILE_FLAGS {
         f.debug_tuple("SYM_SRV_STORE_FILE_FLAGS")
             .field(&self.0)
             .finish()
+    }
+}
+impl FromIntoMemory for SYM_SRV_STORE_FILE_FLAGS {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
     }
 }
 pub const SYM_STKWALK_DEFAULT: u32 = 0u32;
@@ -18104,6 +19012,17 @@ impl ::core::fmt::Debug for SYM_TYPE {
         f.debug_tuple("SYM_TYPE").field(&self.0).finish()
     }
 }
+impl FromIntoMemory for SYM_TYPE {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct ScriptChangeKind(pub i32);
 pub const ScriptRename: ScriptChangeKind = ScriptChangeKind(0i32);
@@ -18121,6 +19040,17 @@ impl ::core::default::Default for ScriptChangeKind {
 impl ::core::fmt::Debug for ScriptChangeKind {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("ScriptChangeKind").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for ScriptChangeKind {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -18143,6 +19073,17 @@ impl ::core::default::Default for ScriptDebugEvent {
 impl ::core::fmt::Debug for ScriptDebugEvent {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("ScriptDebugEvent").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for ScriptDebugEvent {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -18168,6 +19109,17 @@ impl ::core::fmt::Debug for ScriptDebugEventFilter {
         f.debug_tuple("ScriptDebugEventFilter")
             .field(&self.0)
             .finish()
+    }
+}
+impl FromIntoMemory for ScriptDebugEventFilter {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
     }
 }
 pub struct ScriptDebugEventInformation {
@@ -18298,6 +19250,17 @@ impl ::core::fmt::Debug for ScriptDebugState {
         f.debug_tuple("ScriptDebugState").field(&self.0).finish()
     }
 }
+impl FromIntoMemory for ScriptDebugState {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct ScriptExecutionKind(pub i32);
 pub const ScriptExecutionNormal: ScriptExecutionKind = ScriptExecutionKind(0i32);
@@ -18318,6 +19281,17 @@ impl ::core::default::Default for ScriptExecutionKind {
 impl ::core::fmt::Debug for ScriptExecutionKind {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("ScriptExecutionKind").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for ScriptExecutionKind {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -18341,6 +19315,17 @@ impl ::core::default::Default for SignatureComparison {
 impl ::core::fmt::Debug for SignatureComparison {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("SignatureComparison").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for SignatureComparison {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -18370,6 +19355,17 @@ impl ::core::fmt::Debug for SymbolKind {
         f.debug_tuple("SymbolKind").field(&self.0).finish()
     }
 }
+impl FromIntoMemory for SymbolKind {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct SymbolSearchOptions(pub i32);
 pub const SymbolSearchNone: SymbolSearchOptions = SymbolSearchOptions(0i32);
@@ -18389,6 +19385,17 @@ impl ::core::default::Default for SymbolSearchOptions {
 impl ::core::fmt::Debug for SymbolSearchOptions {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("SymbolSearchOptions").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for SymbolSearchOptions {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
     }
 }
 pub const TEXT_DOC_ATTR_READONLY: u32 = 1u32;
@@ -18447,6 +19454,17 @@ impl ::core::ops::Not for THREAD_ERROR_MODE {
         Self(self.0.not())
     }
 }
+impl FromIntoMemory for THREAD_ERROR_MODE {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
+    }
+}
 pub const THREAD_OUT_OF_CONTEXT: u32 = 8u32;
 pub const THREAD_STATE_RUNNING: u32 = 1u32;
 pub const THREAD_STATE_SUSPENDED: u32 = 2u32;
@@ -18473,6 +19491,17 @@ impl ::core::default::Default for THREAD_WRITE_FLAGS {
 impl ::core::fmt::Debug for THREAD_WRITE_FLAGS {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("THREAD_WRITE_FLAGS").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for THREAD_WRITE_FLAGS {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
     }
 }
 pub struct TI_FINDCHILDREN_PARAMS {
@@ -18550,6 +19579,17 @@ impl ::core::default::Default for TypeKind {
 impl ::core::fmt::Debug for TypeKind {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("TypeKind").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for TypeKind {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
     }
 }
 pub const UNAVAILABLE_ERROR: u32 = 12u32;
@@ -18740,6 +19780,17 @@ impl ::core::fmt::Debug for VER_PLATFORM {
         f.debug_tuple("VER_PLATFORM").field(&self.0).finish()
     }
 }
+impl FromIntoMemory for VER_PLATFORM {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
+    }
+}
 pub struct VIRTUAL_TO_PHYSICAL {
     pub Status: u32,
     pub Size: u32,
@@ -18792,6 +19843,17 @@ impl ::core::default::Default for VarArgsKind {
 impl ::core::fmt::Debug for VarArgsKind {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("VarArgsKind").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for VarArgsKind {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
     }
 }
 pub struct WAITCHAIN_NODE_INFO {
@@ -18911,6 +19973,17 @@ impl ::core::fmt::Debug for WAIT_CHAIN_THREAD_OPTIONS {
             .finish()
     }
 }
+impl FromIntoMemory for WAIT_CHAIN_THREAD_OPTIONS {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
+    }
+}
 pub const WCT_MAX_NODE_COUNT: u32 = 16u32;
 pub const WCT_NETWORK_IO_FLAG: u32 = 8u32;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -18940,6 +20013,17 @@ impl ::core::default::Default for WCT_OBJECT_STATUS {
 impl ::core::fmt::Debug for WCT_OBJECT_STATUS {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("WCT_OBJECT_STATUS").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for WCT_OBJECT_STATUS {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -18973,13 +20057,24 @@ impl ::core::fmt::Debug for WCT_OBJECT_TYPE {
         f.debug_tuple("WCT_OBJECT_TYPE").field(&self.0).finish()
     }
 }
+impl FromIntoMemory for WCT_OBJECT_TYPE {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
+    }
+}
 pub const WCT_OBJNAME_LENGTH: u32 = 128u32;
 pub const WDBGEXTS_ADDRESS_DEFAULT: u32 = 0u32;
 pub const WDBGEXTS_ADDRESS_RESERVED0: u32 = 2147483648u32;
 pub const WDBGEXTS_ADDRESS_SEG16: u32 = 1u32;
 pub const WDBGEXTS_ADDRESS_SEG32: u32 = 2u32;
 pub struct WDBGEXTS_CLR_DATA_INTERFACE {
-    pub Iid: ConstPtr<::win32::core::GUID>,
+    pub Iid: ConstPtr<crate::core::GUID>,
     pub Iface: MutPtr<::core::ffi::c_void>,
 }
 impl ::core::marker::Copy for WDBGEXTS_CLR_DATA_INTERFACE {}
@@ -19010,7 +20105,7 @@ pub struct WDBGEXTS_DISASSEMBLE_BUFFER {
     pub DataBufferBytes: u32,
     pub DisasmBufferChars: u32,
     pub DataBuffer: MutPtr<::core::ffi::c_void>,
-    pub DisasmBuffer: ::win32::core::PWSTR,
+    pub DisasmBuffer: crate::core::PWSTR,
     pub Reserved0: [u64; 3],
 }
 impl ::core::marker::Copy for WDBGEXTS_DISASSEMBLE_BUFFER {}
@@ -19080,7 +20175,7 @@ impl ::core::cmp::PartialEq for WDBGEXTS_MODULE_IN_RANGE {
 }
 impl ::core::cmp::Eq for WDBGEXTS_MODULE_IN_RANGE {}
 pub struct WDBGEXTS_QUERY_INTERFACE {
-    pub Iid: ConstPtr<::win32::core::GUID>,
+    pub Iid: ConstPtr<crate::core::GUID>,
     pub Iface: MutPtr<::core::ffi::c_void>,
 }
 impl ::core::marker::Copy for WDBGEXTS_QUERY_INTERFACE {}
@@ -19281,15 +20376,15 @@ pub struct WHEA_DEVICE_DRIVER_DESCRIPTOR {
     pub Type: u16,
     pub Enabled: super::super::super::Foundation::BOOLEAN,
     pub Reserved: u8,
-    pub SourceGuid: ::win32::core::GUID,
+    pub SourceGuid: crate::core::GUID,
     pub LogTag: u16,
     pub Reserved2: u16,
     pub PacketLength: u32,
     pub PacketCount: u32,
     pub PacketBuffer: MutPtr<u8>,
     pub Config: WHEA_ERROR_SOURCE_CONFIGURATION_DD,
-    pub CreatorId: ::win32::core::GUID,
-    pub PartitionId: ::win32::core::GUID,
+    pub CreatorId: crate::core::GUID,
+    pub PartitionId: crate::core::GUID,
     pub MaxSectionDataLength: u32,
     pub MaxSectionsPerRecord: u32,
     pub PacketStateBuffer: MutPtr<u8>,
@@ -19328,7 +20423,7 @@ pub struct WHEA_DRIVER_BUFFER_SET {
     pub Version: u32,
     pub Data: MutPtr<u8>,
     pub DataSize: u32,
-    pub SectionTypeGuid: MutPtr<::win32::core::GUID>,
+    pub SectionTypeGuid: MutPtr<crate::core::GUID>,
     pub SectionFriendlyName: MutPtr<u8>,
     pub Flags: MutPtr<u8>,
 }
@@ -19370,15 +20465,15 @@ impl ::core::cmp::PartialEq for WHEA_ERROR_SOURCE_CONFIGURATION_DD {
 impl ::core::cmp::Eq for WHEA_ERROR_SOURCE_CONFIGURATION_DD {}
 pub struct WHEA_ERROR_SOURCE_CONFIGURATION_DEVICE_DRIVER {
     pub Version: u32,
-    pub SourceGuid: ::win32::core::GUID,
+    pub SourceGuid: crate::core::GUID,
     pub LogTag: u16,
     pub Reserved: [u8; 6],
     pub Initialize: WHEA_ERROR_SOURCE_INITIALIZE_DEVICE_DRIVER,
     pub Uninitialize: WHEA_ERROR_SOURCE_UNINITIALIZE_DEVICE_DRIVER,
     pub MaxSectionDataLength: u32,
     pub MaxSectionsPerReport: u32,
-    pub CreatorId: ::win32::core::GUID,
-    pub PartitionId: ::win32::core::GUID,
+    pub CreatorId: crate::core::GUID,
+    pub PartitionId: crate::core::GUID,
 }
 impl ::core::marker::Copy for WHEA_ERROR_SOURCE_CONFIGURATION_DEVICE_DRIVER {}
 impl ::core::clone::Clone for WHEA_ERROR_SOURCE_CONFIGURATION_DEVICE_DRIVER {
@@ -19403,7 +20498,7 @@ impl ::core::cmp::PartialEq for WHEA_ERROR_SOURCE_CONFIGURATION_DEVICE_DRIVER {
 impl ::core::cmp::Eq for WHEA_ERROR_SOURCE_CONFIGURATION_DEVICE_DRIVER {}
 pub struct WHEA_ERROR_SOURCE_CONFIGURATION_DEVICE_DRIVER_V1 {
     pub Version: u32,
-    pub SourceGuid: ::win32::core::GUID,
+    pub SourceGuid: crate::core::GUID,
     pub LogTag: u16,
     pub Reserved: [u8; 6],
     pub Initialize: WHEA_ERROR_SOURCE_INITIALIZE_DEVICE_DRIVER,
@@ -19552,6 +20647,17 @@ impl ::core::fmt::Debug for WHEA_ERROR_SOURCE_STATE {
             .finish()
     }
 }
+impl FromIntoMemory for WHEA_ERROR_SOURCE_STATE {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct WHEA_ERROR_SOURCE_TYPE(pub i32);
 pub const WheaErrSrcTypeMCE: WHEA_ERROR_SOURCE_TYPE = WHEA_ERROR_SOURCE_TYPE(0i32);
@@ -19588,6 +20694,17 @@ impl ::core::fmt::Debug for WHEA_ERROR_SOURCE_TYPE {
         f.debug_tuple("WHEA_ERROR_SOURCE_TYPE")
             .field(&self.0)
             .finish()
+    }
+}
+impl FromIntoMemory for WHEA_ERROR_SOURCE_TYPE {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
     }
 }
 pub type WHEA_ERROR_SOURCE_UNINITIALIZE_DEVICE_DRIVER =
@@ -21345,6 +22462,17 @@ impl ::core::default::Default for _DUMP_TYPES {
 impl ::core::fmt::Debug for _DUMP_TYPES {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("_DUMP_TYPES").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for _DUMP_TYPES {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
     }
 }
 pub struct _GETSETBUSDATA {

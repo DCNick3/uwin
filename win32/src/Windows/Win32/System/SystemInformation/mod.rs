@@ -115,6 +115,17 @@ impl ::core::fmt::Debug for COMPUTER_NAME_FORMAT {
             .finish()
     }
 }
+impl FromIntoMemory for COMPUTER_NAME_FORMAT {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct CPU_SET_INFORMATION_TYPE(pub i32);
 pub const CpuSetInformation: CPU_SET_INFORMATION_TYPE = CPU_SET_INFORMATION_TYPE(0i32);
@@ -134,6 +145,17 @@ impl ::core::fmt::Debug for CPU_SET_INFORMATION_TYPE {
         f.debug_tuple("CPU_SET_INFORMATION_TYPE")
             .field(&self.0)
             .finish()
+    }
+}
+impl FromIntoMemory for CPU_SET_INFORMATION_TYPE {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -159,6 +181,17 @@ impl ::core::fmt::Debug for DEP_SYSTEM_POLICY_TYPE {
         f.debug_tuple("DEP_SYSTEM_POLICY_TYPE")
             .field(&self.0)
             .finish()
+    }
+}
+impl FromIntoMemory for DEP_SYSTEM_POLICY_TYPE {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -252,6 +285,17 @@ impl ::core::fmt::Debug for DEVICEFAMILYDEVICEFORM {
             .finish()
     }
 }
+impl FromIntoMemory for DEVICEFAMILYDEVICEFORM {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct DEVICEFAMILYINFOENUM(pub u32);
 pub const DEVICEFAMILYINFOENUM_UAP: DEVICEFAMILYINFOENUM = DEVICEFAMILYINFOENUM(0u32);
@@ -290,6 +334,17 @@ impl ::core::fmt::Debug for DEVICEFAMILYINFOENUM {
         f.debug_tuple("DEVICEFAMILYINFOENUM")
             .field(&self.0)
             .finish()
+    }
+}
+impl FromIntoMemory for DEVICEFAMILYINFOENUM {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -338,6 +393,17 @@ impl ::core::fmt::Debug for FIRMWARE_TABLE_PROVIDER {
             .finish()
     }
 }
+impl FromIntoMemory for FIRMWARE_TABLE_PROVIDER {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct FIRMWARE_TYPE(pub i32);
 pub const FirmwareTypeUnknown: FIRMWARE_TYPE = FIRMWARE_TYPE(0i32);
@@ -358,6 +424,17 @@ impl ::core::default::Default for FIRMWARE_TYPE {
 impl ::core::fmt::Debug for FIRMWARE_TYPE {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("FIRMWARE_TYPE").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for FIRMWARE_TYPE {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
     }
 }
 pub struct GROUP_AFFINITY {
@@ -448,6 +525,17 @@ impl ::core::fmt::Debug for LOGICAL_PROCESSOR_RELATIONSHIP {
         f.debug_tuple("LOGICAL_PROCESSOR_RELATIONSHIP")
             .field(&self.0)
             .finish()
+    }
+}
+impl FromIntoMemory for LOGICAL_PROCESSOR_RELATIONSHIP {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
     }
 }
 pub struct MEMORYSTATUS {
@@ -825,6 +913,17 @@ impl ::core::fmt::Debug for OS_DEPLOYEMENT_STATE_VALUES {
             .finish()
     }
 }
+impl FromIntoMemory for OS_DEPLOYEMENT_STATE_VALUES {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct OS_PRODUCT_TYPE(pub u32);
 pub const PRODUCT_BUSINESS: OS_PRODUCT_TYPE = OS_PRODUCT_TYPE(6u32);
@@ -939,11 +1038,22 @@ impl ::core::fmt::Debug for OS_PRODUCT_TYPE {
         f.debug_tuple("OS_PRODUCT_TYPE").field(&self.0).finish()
     }
 }
+impl FromIntoMemory for OS_PRODUCT_TYPE {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
+    }
+}
 pub type PGET_SYSTEM_WOW64_DIRECTORY_A = ::core::option::Option<
-    unsafe extern "system" fn(lpBuffer: ::win32::core::PSTR, uSize: u32) -> u32,
+    unsafe extern "system" fn(lpBuffer: crate::core::PSTR, uSize: u32) -> u32,
 >;
 pub type PGET_SYSTEM_WOW64_DIRECTORY_W = ::core::option::Option<
-    unsafe extern "system" fn(lpBuffer: ::win32::core::PWSTR, uSize: u32) -> u32,
+    unsafe extern "system" fn(lpBuffer: crate::core::PWSTR, uSize: u32) -> u32,
 >;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct PROCESSOR_CACHE_TYPE(pub i32);
@@ -967,6 +1077,17 @@ impl ::core::fmt::Debug for PROCESSOR_CACHE_TYPE {
         f.debug_tuple("PROCESSOR_CACHE_TYPE")
             .field(&self.0)
             .finish()
+    }
+}
+impl FromIntoMemory for PROCESSOR_CACHE_TYPE {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
     }
 }
 pub struct PROCESSOR_GROUP_INFO {
@@ -1069,6 +1190,17 @@ impl ::core::fmt::Debug for RTL_SYSTEM_GLOBAL_DATA_ID {
         f.debug_tuple("RTL_SYSTEM_GLOBAL_DATA_ID")
             .field(&self.0)
             .finish()
+    }
+}
+impl FromIntoMemory for RTL_SYSTEM_GLOBAL_DATA_ID {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
     }
 }
 pub const SCEX2_ALT_NETBIOS_NAME: u32 = 1u32;
@@ -1486,6 +1618,17 @@ impl ::core::fmt::Debug for USER_CET_ENVIRONMENT {
             .finish()
     }
 }
+impl FromIntoMemory for USER_CET_ENVIRONMENT {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct VER_FLAGS(pub u32);
 pub const VER_MINORVERSION: VER_FLAGS = VER_FLAGS(1u32);
@@ -1538,6 +1681,17 @@ impl ::core::ops::Not for VER_FLAGS {
     type Output = Self;
     fn not(self) -> Self {
         Self(self.0.not())
+    }
+}
+impl FromIntoMemory for VER_FLAGS {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<u32>()
     }
 }
 pub const WDK_NTDDI_VERSION: u32 = 167772171u32;
@@ -1601,7 +1755,7 @@ pub trait Api {
     fn GetComputerNameExA(
         &self,
         NameType: COMPUTER_NAME_FORMAT,
-        lpBuffer: ::win32::core::PSTR,
+        lpBuffer: crate::core::PSTR,
         nSize: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
         todo!()
@@ -1609,7 +1763,7 @@ pub trait Api {
     fn GetComputerNameExW(
         &self,
         NameType: COMPUTER_NAME_FORMAT,
-        lpBuffer: ::win32::core::PWSTR,
+        lpBuffer: crate::core::PWSTR,
         nSize: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
         todo!()
@@ -1681,10 +1835,10 @@ pub trait Api {
     fn GetSystemDEPPolicy(&self) -> DEP_SYSTEM_POLICY_TYPE {
         todo!()
     }
-    fn GetSystemDirectoryA(&self, lpBuffer: ::win32::core::PSTR, uSize: u32) -> u32 {
+    fn GetSystemDirectoryA(&self, lpBuffer: crate::core::PSTR, uSize: u32) -> u32 {
         todo!()
     }
-    fn GetSystemDirectoryW(&self, lpBuffer: ::win32::core::PWSTR, uSize: u32) -> u32 {
+    fn GetSystemDirectoryW(&self, lpBuffer: crate::core::PWSTR, uSize: u32) -> u32 {
         todo!()
     }
     fn GetSystemFirmwareTable(
@@ -1737,15 +1891,15 @@ pub trait Api {
     ) {
         todo!()
     }
-    fn GetSystemWindowsDirectoryA(&self, lpBuffer: ::win32::core::PSTR, uSize: u32) -> u32 {
+    fn GetSystemWindowsDirectoryA(&self, lpBuffer: crate::core::PSTR, uSize: u32) -> u32 {
         todo!()
     }
-    fn GetSystemWindowsDirectoryW(&self, lpBuffer: ::win32::core::PWSTR, uSize: u32) -> u32 {
+    fn GetSystemWindowsDirectoryW(&self, lpBuffer: crate::core::PWSTR, uSize: u32) -> u32 {
         todo!()
     }
     fn GetSystemWow64Directory2A(
         &self,
-        lpBuffer: ::win32::core::PSTR,
+        lpBuffer: crate::core::PSTR,
         uSize: u32,
         ImageFileMachineType: u16,
     ) -> u32 {
@@ -1753,16 +1907,16 @@ pub trait Api {
     }
     fn GetSystemWow64Directory2W(
         &self,
-        lpBuffer: ::win32::core::PWSTR,
+        lpBuffer: crate::core::PWSTR,
         uSize: u32,
         ImageFileMachineType: u16,
     ) -> u32 {
         todo!()
     }
-    fn GetSystemWow64DirectoryA(&self, lpBuffer: ::win32::core::PSTR, uSize: u32) -> u32 {
+    fn GetSystemWow64DirectoryA(&self, lpBuffer: crate::core::PSTR, uSize: u32) -> u32 {
         todo!()
     }
-    fn GetSystemWow64DirectoryW(&self, lpBuffer: ::win32::core::PWSTR, uSize: u32) -> u32 {
+    fn GetSystemWow64DirectoryW(&self, lpBuffer: crate::core::PWSTR, uSize: u32) -> u32 {
         todo!()
     }
     fn GetTickCount(&self) -> u32 {
@@ -1786,10 +1940,10 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!()
     }
-    fn GetWindowsDirectoryA(&self, lpBuffer: ::win32::core::PSTR, uSize: u32) -> u32 {
+    fn GetWindowsDirectoryA(&self, lpBuffer: crate::core::PSTR, uSize: u32) -> u32 {
         todo!()
     }
-    fn GetWindowsDirectoryW(&self, lpBuffer: ::win32::core::PWSTR, uSize: u32) -> u32 {
+    fn GetWindowsDirectoryW(&self, lpBuffer: crate::core::PWSTR, uSize: u32) -> u32 {
         todo!()
     }
     fn GlobalMemoryStatus(&self, lpBuffer: MutPtr<MEMORYSTATUS>) {
@@ -1805,8 +1959,8 @@ pub trait Api {
         &self,
         pulDeviceFamilyBufferSize: MutPtr<u32>,
         pulDeviceFormBufferSize: MutPtr<u32>,
-        DeviceFamily: ::win32::core::PWSTR,
-        DeviceForm: ::win32::core::PWSTR,
+        DeviceFamily: crate::core::PWSTR,
+        DeviceForm: crate::core::PWSTR,
     ) -> u32 {
         todo!()
     }
@@ -1849,7 +2003,7 @@ pub trait Api {
     }
     fn SetComputerNameA(
         &self,
-        lpComputerName: ::win32::core::PCSTR,
+        lpComputerName: crate::core::PCSTR,
     ) -> super::super::Foundation::BOOL {
         todo!()
     }
@@ -1857,27 +2011,27 @@ pub trait Api {
         &self,
         NameType: COMPUTER_NAME_FORMAT,
         Flags: u32,
-        lpBuffer: ::win32::core::PCWSTR,
+        lpBuffer: crate::core::PCWSTR,
     ) -> super::super::Foundation::BOOL {
         todo!()
     }
     fn SetComputerNameExA(
         &self,
         NameType: COMPUTER_NAME_FORMAT,
-        lpBuffer: ::win32::core::PCSTR,
+        lpBuffer: crate::core::PCSTR,
     ) -> super::super::Foundation::BOOL {
         todo!()
     }
     fn SetComputerNameExW(
         &self,
         NameType: COMPUTER_NAME_FORMAT,
-        lpBuffer: ::win32::core::PCWSTR,
+        lpBuffer: crate::core::PCWSTR,
     ) -> super::super::Foundation::BOOL {
         todo!()
     }
     fn SetComputerNameW(
         &self,
-        lpComputerName: ::win32::core::PCWSTR,
+        lpComputerName: crate::core::PCWSTR,
     ) -> super::super::Foundation::BOOL {
         todo!()
     }

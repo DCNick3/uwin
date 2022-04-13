@@ -60,7 +60,6 @@ extern "C" fn magic_MessageBoxA(context: &mut CpuContext, memory: FlatMemoryCtx)
         let lp_caption = lp_caption_ptr.read_with(memory);
 
         let u_type = u_type_ptr.read_with(memory);
-        let u_type = MESSAGEBOX_STYLE(u_type);
 
         let api = WindowsAndMessaging {};
 
