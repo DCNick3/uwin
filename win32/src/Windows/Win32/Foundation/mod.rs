@@ -2345,7 +2345,7 @@ pub const E_SYNCENGINE_UNSUPPORTED_REPARSE_POINT: ::win32::core::HRESULT =
 pub const E_UAC_DISABLED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144927150i32);
 pub const E_UNEXPECTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2147418113i32);
 pub const FACILTIY_MUI_ERROR_CODE: u32 = 11u32;
-pub type FARPROC = ::core::option::Option<unsafe extern "system" fn() -> isize>;
+pub type FARPROC = ::core::option::Option<unsafe extern "system" fn() -> PtrDiffRepr>;
 pub const FA_E_HOMEGROUP_NOT_AVAILABLE: ::win32::core::HRESULT =
     ::win32::core::HRESULT(-2144927198i32);
 pub const FA_E_MAX_PERSISTED_ITEMS_REACHED: ::win32::core::HRESULT =
@@ -2994,7 +2994,7 @@ impl ::core::ops::Not for HANDLE_FLAGS {
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
-pub struct HANDLE_PTR(pub usize);
+pub struct HANDLE_PTR(pub PtrRepr);
 impl HANDLE_PTR {
     pub fn is_invalid(&self) -> bool {
         *self == unsafe { ::core::mem::zeroed() }
@@ -3133,7 +3133,7 @@ pub const HCS_E_UNSUPPORTED_PROTOCOL_VERSION: ::win32::core::HRESULT =
 pub const HCS_E_WINDOWS_INSIDER_REQUIRED: ::win32::core::HRESULT =
     ::win32::core::HRESULT(-2143878893i32);
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
-pub struct HINSTANCE(pub isize);
+pub struct HINSTANCE(pub PtrDiffRepr);
 impl HINSTANCE {
     pub fn is_invalid(&self) -> bool {
         *self == unsafe { ::core::mem::zeroed() }
@@ -3178,7 +3178,7 @@ impl ::core::cmp::PartialEq for HLSURF__ {
 }
 impl ::core::cmp::Eq for HLSURF__ {}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
-pub struct HRSRC(pub isize);
+pub struct HRSRC(pub PtrDiffRepr);
 impl HRSRC {
     pub fn is_invalid(&self) -> bool {
         *self == unsafe { ::core::mem::zeroed() }
@@ -3361,7 +3361,7 @@ impl ::core::cmp::PartialEq for HUMPD__ {
 }
 impl ::core::cmp::Eq for HUMPD__ {}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
-pub struct HWND(pub isize);
+pub struct HWND(pub PtrDiffRepr);
 impl HWND {
     pub fn is_invalid(&self) -> bool {
         *self == unsafe { ::core::mem::zeroed() }
@@ -3418,7 +3418,7 @@ pub const LANGUAGE_E_DATABASE_NOT_FOUND: ::win32::core::HRESULT =
     ::win32::core::HRESULT(-2147215484i32);
 pub const LANGUAGE_S_LARGE_WORD: ::win32::core::HRESULT = ::win32::core::HRESULT(268161i32);
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
-pub struct LPARAM(pub isize);
+pub struct LPARAM(pub PtrDiffRepr);
 impl LPARAM {
     pub fn is_invalid(&self) -> bool {
         *self == unsafe { ::core::mem::zeroed() }
@@ -3441,7 +3441,7 @@ impl ::core::fmt::Debug for LPARAM {
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
-pub struct LRESULT(pub isize);
+pub struct LRESULT(pub PtrDiffRepr);
 impl LRESULT {
     pub fn is_invalid(&self) -> bool {
         *self == unsafe { ::core::mem::zeroed() }
@@ -3697,7 +3697,7 @@ pub const NAP_E_SHV_TIMEOUT: ::win32::core::HRESULT = ::win32::core::HRESULT(-21
 pub const NAP_E_STILL_BOUND: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144927739i32);
 pub const NAP_E_TOO_MANY_CALLS: ::win32::core::HRESULT = ::win32::core::HRESULT(-2144927728i32);
 pub const NAP_S_CERT_ALREADY_PRESENT: ::win32::core::HRESULT = ::win32::core::HRESULT(2555917i32);
-pub type NEARPROC = ::core::option::Option<unsafe extern "system" fn() -> isize>;
+pub type NEARPROC = ::core::option::Option<unsafe extern "system" fn() -> PtrDiffRepr>;
 pub const NOERROR: u32 = 0u32;
 pub const NOT_AN_ERROR1: ::win32::core::HRESULT = ::win32::core::HRESULT(529920i32);
 pub const NTDDI_MAXVER: u32 = 2560u32;
@@ -3983,7 +3983,7 @@ pub const OSS_TRACE_FILE_ALREADY_OPEN: ::win32::core::HRESULT =
 pub const OSS_TYPE_NOT_SUPPORTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881506i32);
 pub const OSS_UNAVAIL_ENCRULES: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881513i32);
 pub const OSS_UNIMPLEMENTED: ::win32::core::HRESULT = ::win32::core::HRESULT(-2146881511i32);
-pub type PAPCFUNC = ::core::option::Option<unsafe extern "system" fn(Parameter: usize)>;
+pub type PAPCFUNC = ::core::option::Option<unsafe extern "system" fn(Parameter: PtrRepr)>;
 pub const PEERDIST_ERROR_ALREADY_COMPLETED: i32 = 4060i32;
 pub const PEERDIST_ERROR_ALREADY_EXISTS: i32 = 4058i32;
 pub const PEERDIST_ERROR_ALREADY_INITIALIZED: i32 = 4055i32;
@@ -4242,9 +4242,9 @@ impl ::core::cmp::PartialEq for POINTS {
 }
 impl ::core::cmp::Eq for POINTS {}
 pub const PRESENTATION_ERROR_LOST: ::win32::core::HRESULT = ::win32::core::HRESULT(-2004811775i32);
-pub type PROC = ::core::option::Option<unsafe extern "system" fn() -> isize>;
+pub type PROC = ::core::option::Option<unsafe extern "system" fn() -> PtrDiffRepr>;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
-pub struct PSID(pub isize);
+pub struct PSID(pub PtrDiffRepr);
 impl PSID {
     pub fn is_invalid(&self) -> bool {
         *self == unsafe { ::core::mem::zeroed() }
@@ -4936,7 +4936,7 @@ pub const SEC_I_SIGNATURE_NEEDED: ::win32::core::HRESULT = ::win32::core::HRESUL
 pub const SEVERITY_ERROR: u32 = 1u32;
 pub const SEVERITY_SUCCESS: u32 = 0u32;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
-pub struct SHANDLE_PTR(pub isize);
+pub struct SHANDLE_PTR(pub PtrDiffRepr);
 impl SHANDLE_PTR {
     pub fn is_invalid(&self) -> bool {
         *self == unsafe { ::core::mem::zeroed() }
@@ -12445,7 +12445,7 @@ pub const WINML_ERR_VALUE_NOTFOUND: ::win32::core::HRESULT = ::win32::core::HRES
 pub const WINVER: u32 = 1280u32;
 pub const WINVER_MAXVER: u32 = 2560u32;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
-pub struct WPARAM(pub usize);
+pub struct WPARAM(pub PtrRepr);
 impl WPARAM {
     pub fn is_invalid(&self) -> bool {
         *self == unsafe { ::core::mem::zeroed() }

@@ -112,8 +112,8 @@ pub fn gen_element_name(def: &Type, gen: &Gen) -> TokenStream {
         Type::U64 => quote! { u64 },
         Type::F32 => quote! { f32 },
         Type::F64 => quote! { f64 },
-        Type::ISize => quote! { isize },
-        Type::USize => quote! { usize },
+        Type::ISize => quote! { PtrDiffRepr },
+        Type::USize => quote! { PtrRepr },
         Type::String => {
             let crate_name = gen_crate_name(gen);
             quote! { ::#crate_name::core::HSTRING }

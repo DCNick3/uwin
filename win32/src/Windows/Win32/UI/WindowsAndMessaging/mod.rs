@@ -990,7 +990,7 @@ pub type DLGPROC = ::core::option::Option<
         param1: u32,
         param2: super::super::Foundation::WPARAM,
         param3: super::super::Foundation::LPARAM,
-    ) -> isize,
+    ) -> PtrDiffRepr,
 >;
 pub struct DLGTEMPLATE {
     pub style: u32,
@@ -1036,7 +1036,7 @@ pub struct DROPSTRUCT {
     pub hwndSource: super::super::Foundation::HWND,
     pub hwndSink: super::super::Foundation::HWND,
     pub wFmt: u32,
-    pub dwData: usize,
+    pub dwData: PtrRepr,
     pub ptDrop: super::super::Foundation::POINT,
     pub dwControlData: u32,
 }
@@ -1676,7 +1676,7 @@ pub const GUI_16BITTASK: u32 = 0u32;
 pub const GWFS_INCLUDE_ANCESTORS: u32 = 1u32;
 pub const GW_MAX: u32 = 5u32;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
-pub struct HACCEL(pub isize);
+pub struct HACCEL(pub PtrDiffRepr);
 impl HACCEL {
     pub fn is_invalid(&self) -> bool {
         *self == unsafe { ::core::mem::zeroed() }
@@ -1806,7 +1806,7 @@ pub const HCBT_SYSCOMMAND: u32 = 8u32;
 pub const HCF_DEFAULTDESKTOP: u32 = 512u32;
 pub const HCF_LOGONDESKTOP: u32 = 256u32;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
-pub struct HCURSOR(pub isize);
+pub struct HCURSOR(pub PtrDiffRepr);
 impl HCURSOR {
     pub fn is_invalid(&self) -> bool {
         *self == unsafe { ::core::mem::zeroed() }
@@ -1859,7 +1859,7 @@ pub const HELP_TCARD_DATA: u32 = 16u32;
 pub const HELP_TCARD_OTHER_CALLER: u32 = 17u32;
 pub const HELP_WM_HELP: u32 = 12u32;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
-pub struct HHOOK(pub isize);
+pub struct HHOOK(pub PtrDiffRepr);
 impl HHOOK {
     pub fn is_invalid(&self) -> bool {
         *self == unsafe { ::core::mem::zeroed() }
@@ -1882,7 +1882,7 @@ impl ::core::fmt::Debug for HHOOK {
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
-pub struct HICON(pub isize);
+pub struct HICON(pub PtrDiffRepr);
 impl HICON {
     pub fn is_invalid(&self) -> bool {
         *self == unsafe { ::core::mem::zeroed() }
@@ -1908,7 +1908,7 @@ pub const HIDE_WINDOW: u32 = 0u32;
 pub const HKL_NEXT: u32 = 1u32;
 pub const HKL_PREV: u32 = 0u32;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
-pub struct HMENU(pub isize);
+pub struct HMENU(pub PtrDiffRepr);
 impl HMENU {
     pub fn is_invalid(&self) -> bool {
         *self == unsafe { ::core::mem::zeroed() }
@@ -2386,7 +2386,7 @@ pub struct KBDLLHOOKSTRUCT {
     pub scanCode: u32,
     pub flags: KBDLLHOOKSTRUCT_FLAGS,
     pub time: u32,
-    pub dwExtraInfo: usize,
+    pub dwExtraInfo: PtrRepr,
 }
 impl ::core::marker::Copy for KBDLLHOOKSTRUCT {}
 impl ::core::clone::Clone for KBDLLHOOKSTRUCT {
@@ -2832,7 +2832,7 @@ pub struct MENUINFO {
     pub cyMax: u32,
     pub hbrBack: super::super::Graphics::Gdi::HBRUSH,
     pub dwContextHelpID: u32,
-    pub dwMenuData: usize,
+    pub dwMenuData: PtrRepr,
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
 #[cfg(dummy_option_that_does_not_exist)]
@@ -2990,7 +2990,7 @@ pub struct MENUITEMINFOA {
     pub hSubMenu: HMENU,
     pub hbmpChecked: super::super::Graphics::Gdi::HBITMAP,
     pub hbmpUnchecked: super::super::Graphics::Gdi::HBITMAP,
-    pub dwItemData: usize,
+    pub dwItemData: PtrRepr,
     pub dwTypeData: ::win32::core::PSTR,
     pub cch: u32,
     pub hbmpItem: super::super::Graphics::Gdi::HBITMAP,
@@ -3057,7 +3057,7 @@ pub struct MENUITEMINFOW {
     pub hSubMenu: HMENU,
     pub hbmpChecked: super::super::Graphics::Gdi::HBITMAP,
     pub hbmpUnchecked: super::super::Graphics::Gdi::HBITMAP,
-    pub dwItemData: usize,
+    pub dwItemData: PtrRepr,
     pub dwTypeData: ::win32::core::PWSTR,
     pub cch: u32,
     pub hbmpItem: super::super::Graphics::Gdi::HBITMAP,
@@ -3724,7 +3724,7 @@ pub struct MOUSEHOOKSTRUCT {
     pub pt: super::super::Foundation::POINT,
     pub hwnd: super::super::Foundation::HWND,
     pub wHitTestCode: u32,
-    pub dwExtraInfo: usize,
+    pub dwExtraInfo: PtrRepr,
 }
 impl ::core::marker::Copy for MOUSEHOOKSTRUCT {}
 impl ::core::clone::Clone for MOUSEHOOKSTRUCT {
@@ -3883,7 +3883,7 @@ pub struct MSGBOXPARAMSA {
     pub lpszCaption: ::win32::core::PCSTR,
     pub dwStyle: MESSAGEBOX_STYLE,
     pub lpszIcon: ::win32::core::PCSTR,
-    pub dwContextHelpId: usize,
+    pub dwContextHelpId: PtrRepr,
     pub lpfnMsgBoxCallback: MSGBOXCALLBACK,
     pub dwLanguageId: u32,
 }
@@ -3948,7 +3948,7 @@ pub struct MSGBOXPARAMSW {
     pub lpszCaption: ::win32::core::PCWSTR,
     pub dwStyle: MESSAGEBOX_STYLE,
     pub lpszIcon: ::win32::core::PCWSTR,
-    pub dwContextHelpId: usize,
+    pub dwContextHelpId: PtrRepr,
     pub lpfnMsgBoxCallback: MSGBOXCALLBACK,
     pub dwLanguageId: u32,
 }
@@ -4093,7 +4093,7 @@ pub struct MSLLHOOKSTRUCT {
     pub mouseData: MOUSEHOOKSTRUCTEX_MOUSE_DATA,
     pub flags: u32,
     pub time: u32,
-    pub dwExtraInfo: usize,
+    pub dwExtraInfo: PtrRepr,
 }
 impl ::core::marker::Copy for MSLLHOOKSTRUCT {}
 impl ::core::clone::Clone for MSLLHOOKSTRUCT {
@@ -4764,7 +4764,7 @@ pub type PROPENUMPROCEXA = ::core::option::Option<
         param0: super::super::Foundation::HWND,
         param1: ::win32::core::PCSTR,
         param2: super::super::Foundation::HANDLE,
-        param3: usize,
+        param3: PtrRepr,
     ) -> super::super::Foundation::BOOL,
 >;
 pub type PROPENUMPROCEXW = ::core::option::Option<
@@ -4772,7 +4772,7 @@ pub type PROPENUMPROCEXW = ::core::option::Option<
         param0: super::super::Foundation::HWND,
         param1: ::win32::core::PCWSTR,
         param2: super::super::Foundation::HANDLE,
-        param3: usize,
+        param3: PtrRepr,
     ) -> super::super::Foundation::BOOL,
 >;
 pub type PROPENUMPROCW = ::core::option::Option<
@@ -5139,7 +5139,7 @@ pub type SENDASYNCPROC = ::core::option::Option<
     unsafe extern "system" fn(
         param0: super::super::Foundation::HWND,
         param1: u32,
-        param2: usize,
+        param2: PtrRepr,
         param3: super::super::Foundation::LRESULT,
     ),
 >;
@@ -6234,7 +6234,7 @@ pub type TIMERPROC = ::core::option::Option<
     unsafe extern "system" fn(
         param0: super::super::Foundation::HWND,
         param1: u32,
-        param2: usize,
+        param2: PtrRepr,
         param3: u32,
     ),
 >;
@@ -7660,7 +7660,7 @@ pub trait Api {
         &self,
         hMenu: HMENU,
         uFlags: MENU_ITEM_FLAGS,
-        uIDNewItem: usize,
+        uIDNewItem: PtrRepr,
         lpNewItem: ::win32::core::PCSTR,
     ) -> super::super::Foundation::BOOL {
         todo!()
@@ -7669,7 +7669,7 @@ pub trait Api {
         &self,
         hMenu: HMENU,
         uFlags: MENU_ITEM_FLAGS,
-        uIDNewItem: usize,
+        uIDNewItem: PtrRepr,
         lpNewItem: ::win32::core::PCWSTR,
     ) -> super::super::Foundation::BOOL {
         todo!()
@@ -7677,7 +7677,7 @@ pub trait Api {
     fn ArrangeIconicWindows(&self, hWnd: super::super::Foundation::HWND) -> u32 {
         todo!()
     }
-    fn BeginDeferWindowPos(&self, nNumWindows: i32) -> isize {
+    fn BeginDeferWindowPos(&self, nNumWindows: i32) -> PtrDiffRepr {
         todo!()
     }
     fn BringWindowToTop(
@@ -8198,7 +8198,7 @@ pub trait Api {
     }
     fn DeferWindowPos(
         &self,
-        hWinPosInfo: isize,
+        hWinPosInfo: PtrDiffRepr,
         hWnd: super::super::Foundation::HWND,
         hWndInsertAfter: super::super::Foundation::HWND,
         x: i32,
@@ -8206,7 +8206,7 @@ pub trait Api {
         cx: i32,
         cy: i32,
         uFlags: SET_WINDOW_POS_FLAGS,
-    ) -> isize {
+    ) -> PtrDiffRepr {
         todo!()
     }
     fn DeleteMenu(
@@ -8262,7 +8262,7 @@ pub trait Api {
         hWndParent: super::super::Foundation::HWND,
         lpDialogFunc: DLGPROC,
         dwInitParam: super::super::Foundation::LPARAM,
-    ) -> isize {
+    ) -> PtrDiffRepr {
         todo!()
     }
     fn DialogBoxIndirectParamW(
@@ -8272,7 +8272,7 @@ pub trait Api {
         hWndParent: super::super::Foundation::HWND,
         lpDialogFunc: DLGPROC,
         dwInitParam: super::super::Foundation::LPARAM,
-    ) -> isize {
+    ) -> PtrDiffRepr {
         todo!()
     }
     fn DialogBoxParamA(
@@ -8282,7 +8282,7 @@ pub trait Api {
         hWndParent: super::super::Foundation::HWND,
         lpDialogFunc: DLGPROC,
         dwInitParam: super::super::Foundation::LPARAM,
-    ) -> isize {
+    ) -> PtrDiffRepr {
         todo!()
     }
     fn DialogBoxParamW(
@@ -8292,7 +8292,7 @@ pub trait Api {
         hWndParent: super::super::Foundation::HWND,
         lpDialogFunc: DLGPROC,
         dwInitParam: super::super::Foundation::LPARAM,
-    ) -> isize {
+    ) -> PtrDiffRepr {
         todo!()
     }
     fn DisableProcessWindowsGhosting(&self) {
@@ -8309,7 +8309,7 @@ pub trait Api {
         hwndParent: super::super::Foundation::HWND,
         hwndFrom: super::super::Foundation::HWND,
         fmt: u32,
-        data: usize,
+        data: PtrRepr,
         hcur: HCURSOR,
     ) -> u32 {
         todo!()
@@ -8352,13 +8352,13 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!()
     }
-    fn EndDeferWindowPos(&self, hWinPosInfo: isize) -> super::super::Foundation::BOOL {
+    fn EndDeferWindowPos(&self, hWinPosInfo: PtrDiffRepr) -> super::super::Foundation::BOOL {
         todo!()
     }
     fn EndDialog(
         &self,
         hDlg: super::super::Foundation::HWND,
-        nResult: isize,
+        nResult: PtrDiffRepr,
     ) -> super::super::Foundation::BOOL {
         todo!()
     }
@@ -8541,7 +8541,7 @@ pub trait Api {
         &self,
         hWnd: super::super::Foundation::HWND,
         nIndex: GET_CLASS_LONG_INDEX,
-    ) -> usize {
+    ) -> PtrRepr {
         todo!()
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation'*"]
@@ -8550,7 +8550,7 @@ pub trait Api {
         &self,
         hWnd: super::super::Foundation::HWND,
         nIndex: GET_CLASS_LONG_INDEX,
-    ) -> usize {
+    ) -> PtrRepr {
         todo!()
     }
     fn GetClassLongW(
@@ -8960,7 +8960,7 @@ pub trait Api {
         &self,
         hWnd: super::super::Foundation::HWND,
         nIndex: WINDOW_LONG_PTR_INDEX,
-    ) -> isize {
+    ) -> PtrDiffRepr {
         todo!()
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation'*"]
@@ -8969,7 +8969,7 @@ pub trait Api {
         &self,
         hWnd: super::super::Foundation::HWND,
         nIndex: WINDOW_LONG_PTR_INDEX,
-    ) -> isize {
+    ) -> PtrDiffRepr {
         todo!()
     }
     fn GetWindowLongW(
@@ -9081,7 +9081,7 @@ pub trait Api {
         hMenu: HMENU,
         uPosition: u32,
         uFlags: MENU_ITEM_FLAGS,
-        uIDNewItem: usize,
+        uIDNewItem: PtrRepr,
         lpNewItem: ::win32::core::PCSTR,
     ) -> super::super::Foundation::BOOL {
         todo!()
@@ -9113,7 +9113,7 @@ pub trait Api {
         hMenu: HMENU,
         uPosition: u32,
         uFlags: MENU_ITEM_FLAGS,
-        uIDNewItem: usize,
+        uIDNewItem: PtrRepr,
         lpNewItem: ::win32::core::PCWSTR,
     ) -> super::super::Foundation::BOOL {
         todo!()
@@ -9216,7 +9216,7 @@ pub trait Api {
     fn KillTimer(
         &self,
         hWnd: super::super::Foundation::HWND,
-        uIDEvent: usize,
+        uIDEvent: PtrRepr,
     ) -> super::super::Foundation::BOOL {
         todo!()
     }
@@ -9426,7 +9426,7 @@ pub trait Api {
         hMnu: HMENU,
         uPosition: u32,
         uFlags: MENU_ITEM_FLAGS,
-        uIDNewItem: usize,
+        uIDNewItem: PtrRepr,
         lpNewItem: ::win32::core::PCSTR,
     ) -> super::super::Foundation::BOOL {
         todo!()
@@ -9436,7 +9436,7 @@ pub trait Api {
         hMnu: HMENU,
         uPosition: u32,
         uFlags: MENU_ITEM_FLAGS,
-        uIDNewItem: usize,
+        uIDNewItem: PtrRepr,
         lpNewItem: ::win32::core::PCWSTR,
     ) -> super::super::Foundation::BOOL {
         todo!()
@@ -9981,7 +9981,7 @@ pub trait Api {
         wParam: super::super::Foundation::WPARAM,
         lParam: super::super::Foundation::LPARAM,
         lpResultCallBack: SENDASYNCPROC,
-        dwData: usize,
+        dwData: PtrRepr,
     ) -> super::super::Foundation::BOOL {
         todo!()
     }
@@ -9992,7 +9992,7 @@ pub trait Api {
         wParam: super::super::Foundation::WPARAM,
         lParam: super::super::Foundation::LPARAM,
         lpResultCallBack: SENDASYNCPROC,
-        dwData: usize,
+        dwData: PtrRepr,
     ) -> super::super::Foundation::BOOL {
         todo!()
     }
@@ -10004,7 +10004,7 @@ pub trait Api {
         lParam: super::super::Foundation::LPARAM,
         fuFlags: SEND_MESSAGE_TIMEOUT_FLAGS,
         uTimeout: u32,
-        lpdwResult: MutPtr<usize>,
+        lpdwResult: MutPtr<PtrRepr>,
     ) -> super::super::Foundation::LRESULT {
         todo!()
     }
@@ -10016,7 +10016,7 @@ pub trait Api {
         lParam: super::super::Foundation::LPARAM,
         fuFlags: SEND_MESSAGE_TIMEOUT_FLAGS,
         uTimeout: u32,
-        lpdwResult: MutPtr<usize>,
+        lpdwResult: MutPtr<PtrRepr>,
     ) -> super::super::Foundation::LRESULT {
         todo!()
     }
@@ -10067,8 +10067,8 @@ pub trait Api {
         &self,
         hWnd: super::super::Foundation::HWND,
         nIndex: GET_CLASS_LONG_INDEX,
-        dwNewLong: isize,
-    ) -> usize {
+        dwNewLong: PtrDiffRepr,
+    ) -> PtrRepr {
         todo!()
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation'*"]
@@ -10077,8 +10077,8 @@ pub trait Api {
         &self,
         hWnd: super::super::Foundation::HWND,
         nIndex: GET_CLASS_LONG_INDEX,
-        dwNewLong: isize,
-    ) -> usize {
+        dwNewLong: PtrDiffRepr,
+    ) -> PtrRepr {
         todo!()
     }
     fn SetClassLongW(
@@ -10100,11 +10100,11 @@ pub trait Api {
     fn SetCoalescableTimer(
         &self,
         hWnd: super::super::Foundation::HWND,
-        nIDEvent: usize,
+        nIDEvent: PtrRepr,
         uElapse: u32,
         lpTimerFunc: TIMERPROC,
         uToleranceDelay: u32,
-    ) -> usize {
+    ) -> PtrRepr {
         todo!()
     }
     fn SetCursor(&self, hCursor: HCURSOR) -> HCURSOR {
@@ -10273,10 +10273,10 @@ pub trait Api {
     fn SetTimer(
         &self,
         hWnd: super::super::Foundation::HWND,
-        nIDEvent: usize,
+        nIDEvent: PtrRepr,
         uElapse: u32,
         lpTimerFunc: TIMERPROC,
-    ) -> usize {
+    ) -> PtrRepr {
         todo!()
     }
     fn SetWindowDisplayAffinity(
@@ -10300,8 +10300,8 @@ pub trait Api {
         &self,
         hWnd: super::super::Foundation::HWND,
         nIndex: WINDOW_LONG_PTR_INDEX,
-        dwNewLong: isize,
-    ) -> isize {
+        dwNewLong: PtrDiffRepr,
+    ) -> PtrDiffRepr {
         todo!()
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation'*"]
@@ -10310,8 +10310,8 @@ pub trait Api {
         &self,
         hWnd: super::super::Foundation::HWND,
         nIndex: WINDOW_LONG_PTR_INDEX,
-        dwNewLong: isize,
-    ) -> isize {
+        dwNewLong: PtrDiffRepr,
+    ) -> PtrDiffRepr {
         todo!()
     }
     fn SetWindowLongW(

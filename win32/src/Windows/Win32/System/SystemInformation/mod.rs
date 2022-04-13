@@ -361,7 +361,7 @@ impl ::core::fmt::Debug for FIRMWARE_TYPE {
     }
 }
 pub struct GROUP_AFFINITY {
-    pub Mask: usize,
+    pub Mask: PtrRepr,
     pub Group: u16,
     pub Reserved: [u16; 3],
 }
@@ -453,12 +453,12 @@ impl ::core::fmt::Debug for LOGICAL_PROCESSOR_RELATIONSHIP {
 pub struct MEMORYSTATUS {
     pub dwLength: u32,
     pub dwMemoryLoad: u32,
-    pub dwTotalPhys: usize,
-    pub dwAvailPhys: usize,
-    pub dwTotalPageFile: usize,
-    pub dwAvailPageFile: usize,
-    pub dwTotalVirtual: usize,
-    pub dwAvailVirtual: usize,
+    pub dwTotalPhys: PtrRepr,
+    pub dwAvailPhys: PtrRepr,
+    pub dwTotalPageFile: PtrRepr,
+    pub dwAvailPageFile: PtrRepr,
+    pub dwTotalVirtual: PtrRepr,
+    pub dwAvailVirtual: PtrRepr,
 }
 impl ::core::marker::Copy for MEMORYSTATUS {}
 impl ::core::clone::Clone for MEMORYSTATUS {
@@ -973,7 +973,7 @@ pub struct PROCESSOR_GROUP_INFO {
     pub MaximumProcessorCount: u8,
     pub ActiveProcessorCount: u8,
     pub Reserved: [u8; 38],
-    pub ActiveProcessorMask: usize,
+    pub ActiveProcessorMask: PtrRepr,
 }
 impl ::core::marker::Copy for PROCESSOR_GROUP_INFO {}
 impl ::core::clone::Clone for PROCESSOR_GROUP_INFO {
@@ -1202,7 +1202,7 @@ pub struct SYSTEM_INFO {
     pub dwPageSize: u32,
     pub lpMinimumApplicationAddress: MutPtr<::core::ffi::c_void>,
     pub lpMaximumApplicationAddress: MutPtr<::core::ffi::c_void>,
-    pub dwActiveProcessorMask: usize,
+    pub dwActiveProcessorMask: PtrRepr,
     pub dwNumberOfProcessors: u32,
     pub dwProcessorType: u32,
     pub dwAllocationGranularity: u32,
@@ -1272,7 +1272,7 @@ impl ::core::cmp::PartialEq for SYSTEM_INFO_0_0 {
 }
 impl ::core::cmp::Eq for SYSTEM_INFO_0_0 {}
 pub struct SYSTEM_LOGICAL_PROCESSOR_INFORMATION {
-    pub ProcessorMask: usize,
+    pub ProcessorMask: PtrRepr,
     pub Relationship: LOGICAL_PROCESSOR_RELATIONSHIP,
     pub Anonymous: SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0,
 }

@@ -4548,11 +4548,11 @@ pub type DIGEST_FUNCTION = ::core::option::Option<
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct DISPATCHER_CONTEXT {
-    pub ControlPc: usize,
-    pub ImageBase: usize,
+    pub ControlPc: PtrRepr,
+    pub ImageBase: PtrRepr,
     pub FunctionEntry: MutPtr<IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY>,
-    pub EstablisherFrame: usize,
-    pub TargetPc: usize,
+    pub EstablisherFrame: PtrRepr,
+    pub TargetPc: PtrRepr,
     pub ContextRecord: MutPtr<CONTEXT>,
     pub LanguageHandler: super::super::Kernel::EXCEPTION_ROUTINE,
     pub HandlerData: MutPtr<::core::ffi::c_void>,
@@ -5062,7 +5062,7 @@ pub struct EXCEPTION_RECORD {
     pub ExceptionRecord: MutPtr<EXCEPTION_RECORD>,
     pub ExceptionAddress: MutPtr<::core::ffi::c_void>,
     pub NumberParameters: u32,
-    pub ExceptionInformation: [usize; 15],
+    pub ExceptionInformation: [PtrRepr; 15],
 }
 impl ::core::marker::Copy for EXCEPTION_RECORD {}
 impl ::core::clone::Clone for EXCEPTION_RECORD {
@@ -6619,10 +6619,10 @@ pub struct IMAGEHLP_GET_TYPE_INFO_PARAMS {
     pub TagFilter: u64,
     pub NumReqs: u32,
     pub ReqKinds: MutPtr<IMAGEHLP_SYMBOL_TYPE_INFO>,
-    pub ReqOffsets: MutPtr<usize>,
+    pub ReqOffsets: MutPtr<PtrRepr>,
     pub ReqSizes: MutPtr<u32>,
-    pub ReqStride: usize,
-    pub BufferSize: usize,
+    pub ReqStride: PtrRepr,
+    pub BufferSize: PtrRepr,
     pub Buffer: MutPtr<::core::ffi::c_void>,
     pub EntriesMatched: u32,
     pub EntriesFilled: u32,
@@ -14333,9 +14333,9 @@ impl ::core::cmp::PartialEq for MINIDUMP_VM_QUERY_CALLBACK {
 impl ::core::cmp::Eq for MINIDUMP_VM_QUERY_CALLBACK {}
 pub struct MODLOAD_CVMISC {
     pub oCV: u32,
-    pub cCV: usize,
+    pub cCV: PtrRepr,
     pub oMisc: u32,
-    pub cMisc: usize,
+    pub cMisc: PtrRepr,
     pub dtImage: u32,
     pub cImage: u32,
 }
@@ -14794,7 +14794,7 @@ pub type PENUMLOADED_MODULES_CALLBACKW64 = ::core::option::Option<
 pub type PENUMSOURCEFILETOKENSCALLBACK = ::core::option::Option<
     unsafe extern "system" fn(
         token: ConstPtr<::core::ffi::c_void>,
-        size: usize,
+        size: PtrRepr,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PFINDFILEINPATHCALLBACK = ::core::option::Option<
@@ -15075,8 +15075,8 @@ pub type PIMAGEHLP_STATUS_ROUTINE = ::core::option::Option<
         Reason: IMAGEHLP_STATUS_REASON,
         ImageName: ::win32::core::PCSTR,
         DllName: ::win32::core::PCSTR,
-        Va: usize,
-        Parameter: usize,
+        Va: PtrRepr,
+        Parameter: PtrRepr,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PIMAGEHLP_STATUS_ROUTINE32 = ::core::option::Option<
@@ -15085,7 +15085,7 @@ pub type PIMAGEHLP_STATUS_ROUTINE32 = ::core::option::Option<
         ImageName: ::win32::core::PCSTR,
         DllName: ::win32::core::PCSTR,
         Va: u32,
-        Parameter: usize,
+        Parameter: PtrRepr,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PIMAGEHLP_STATUS_ROUTINE64 = ::core::option::Option<
@@ -15094,7 +15094,7 @@ pub type PIMAGEHLP_STATUS_ROUTINE64 = ::core::option::Option<
         ImageName: ::win32::core::PCSTR,
         DllName: ::win32::core::PCSTR,
         Va: u64,
-        Parameter: usize,
+        Parameter: PtrRepr,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub struct POINTER_SEARCH_PHYSICAL {
@@ -15373,7 +15373,7 @@ impl ::core::cmp::PartialEq for PROFILER_HEAP_OBJECT {
 }
 impl ::core::cmp::Eq for PROFILER_HEAP_OBJECT {}
 pub struct PROFILER_HEAP_OBJECT_0 {
-    pub objectId: usize,
+    pub objectId: PtrRepr,
     pub externalObjectAddress: MutPtr<::core::ffi::c_void>,
 }
 impl ::core::marker::Copy for PROFILER_HEAP_OBJECT_0 {}
@@ -15571,7 +15571,7 @@ impl ::core::ops::Not for PROFILER_HEAP_OBJECT_RELATIONSHIP_FLAGS {
 }
 pub struct PROFILER_HEAP_OBJECT_SCOPE_LIST {
     pub count: u32,
-    pub scopes: [usize; 1],
+    pub scopes: [PtrRepr; 1],
 }
 impl ::core::marker::Copy for PROFILER_HEAP_OBJECT_SCOPE_LIST {}
 impl ::core::clone::Clone for PROFILER_HEAP_OBJECT_SCOPE_LIST {
@@ -15770,7 +15770,7 @@ pub type PSYMBOLSERVERBYINDEXPROCW = ::core::option::Option<
 >;
 pub type PSYMBOLSERVERCALLBACKPROC = ::core::option::Option<
     unsafe extern "system" fn(
-        action: usize,
+        action: PtrRepr,
         data: u64,
         context: u64,
     ) -> super::super::super::Foundation::BOOL,
@@ -15787,7 +15787,7 @@ pub type PSYMBOLSERVERDELTANAME = ::core::option::Option<
         param5: u32,
         param6: u32,
         param7: ::win32::core::PCSTR,
-        param8: usize,
+        param8: PtrRepr,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOLSERVERDELTANAMEW = ::core::option::Option<
@@ -15800,7 +15800,7 @@ pub type PSYMBOLSERVERDELTANAMEW = ::core::option::Option<
         param5: u32,
         param6: u32,
         param7: ::win32::core::PCWSTR,
-        param8: usize,
+        param8: PtrRepr,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOLSERVERGETINDEXSTRING = ::core::option::Option<
@@ -15809,7 +15809,7 @@ pub type PSYMBOLSERVERGETINDEXSTRING = ::core::option::Option<
         param1: u32,
         param2: u32,
         param3: ::win32::core::PCSTR,
-        param4: usize,
+        param4: PtrRepr,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOLSERVERGETINDEXSTRINGW = ::core::option::Option<
@@ -15818,23 +15818,24 @@ pub type PSYMBOLSERVERGETINDEXSTRINGW = ::core::option::Option<
         param1: u32,
         param2: u32,
         param3: ::win32::core::PCWSTR,
-        param4: usize,
+        param4: PtrRepr,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOLSERVERGETOPTIONDATAPROC = ::core::option::Option<
     unsafe extern "system" fn(
-        param0: usize,
+        param0: PtrRepr,
         param1: MutPtr<u64>,
     ) -> super::super::super::Foundation::BOOL,
 >;
-pub type PSYMBOLSERVERGETOPTIONSPROC = ::core::option::Option<unsafe extern "system" fn() -> usize>;
+pub type PSYMBOLSERVERGETOPTIONSPROC =
+    ::core::option::Option<unsafe extern "system" fn() -> PtrRepr>;
 pub type PSYMBOLSERVERGETSUPPLEMENT = ::core::option::Option<
     unsafe extern "system" fn(
         param0: ::win32::core::PCSTR,
         param1: ::win32::core::PCSTR,
         param2: ::win32::core::PCSTR,
         param3: ::win32::core::PCSTR,
-        param4: usize,
+        param4: PtrRepr,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOLSERVERGETSUPPLEMENTW = ::core::option::Option<
@@ -15843,7 +15844,7 @@ pub type PSYMBOLSERVERGETSUPPLEMENTW = ::core::option::Option<
         param1: ::win32::core::PCWSTR,
         param2: ::win32::core::PCWSTR,
         param3: ::win32::core::PCWSTR,
-        param4: usize,
+        param4: PtrRepr,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOLSERVERGETVERSION = ::core::option::Option<
@@ -15861,7 +15862,7 @@ pub type PSYMBOLSERVERISSTOREW = ::core::option::Option<
 >;
 pub type PSYMBOLSERVERMESSAGEPROC = ::core::option::Option<
     unsafe extern "system" fn(
-        action: usize,
+        action: PtrRepr,
         data: u64,
         context: u64,
     ) -> super::super::super::Foundation::BOOL,
@@ -15924,10 +15925,16 @@ pub type PSYMBOLSERVERSETHTTPAUTHHEADER = ::core::option::Option<
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOLSERVERSETOPTIONSPROC = ::core::option::Option<
-    unsafe extern "system" fn(param0: usize, param1: u64) -> super::super::super::Foundation::BOOL,
+    unsafe extern "system" fn(
+        param0: PtrRepr,
+        param1: u64,
+    ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOLSERVERSETOPTIONSWPROC = ::core::option::Option<
-    unsafe extern "system" fn(param0: usize, param1: u64) -> super::super::super::Foundation::BOOL,
+    unsafe extern "system" fn(
+        param0: PtrRepr,
+        param1: u64,
+    ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOLSERVERSTOREFILE = ::core::option::Option<
     unsafe extern "system" fn(
@@ -15937,7 +15944,7 @@ pub type PSYMBOLSERVERSTOREFILE = ::core::option::Option<
         param3: u32,
         param4: u32,
         param5: ::win32::core::PCSTR,
-        param6: usize,
+        param6: PtrRepr,
         param7: u32,
     ) -> super::super::super::Foundation::BOOL,
 >;
@@ -15949,7 +15956,7 @@ pub type PSYMBOLSERVERSTOREFILEW = ::core::option::Option<
         param3: u32,
         param4: u32,
         param5: ::win32::core::PCWSTR,
-        param6: usize,
+        param6: PtrRepr,
         param7: u32,
     ) -> super::super::super::Foundation::BOOL,
 >;
@@ -15959,7 +15966,7 @@ pub type PSYMBOLSERVERSTORESUPPLEMENT = ::core::option::Option<
         param1: ::win32::core::PCSTR,
         param2: ::win32::core::PCSTR,
         param3: ::win32::core::PCSTR,
-        param4: usize,
+        param4: PtrRepr,
         param5: u32,
     ) -> super::super::super::Foundation::BOOL,
 >;
@@ -15969,7 +15976,7 @@ pub type PSYMBOLSERVERSTORESUPPLEMENTW = ::core::option::Option<
         param1: ::win32::core::PCWSTR,
         param2: ::win32::core::PCWSTR,
         param3: ::win32::core::PCWSTR,
-        param4: usize,
+        param4: PtrRepr,
         param5: u32,
     ) -> super::super::super::Foundation::BOOL,
 >;
@@ -16145,7 +16152,7 @@ pub type PVECTORED_EXCEPTION_HANDLER = ::core::option::Option<
 pub type PWAITCHAINCALLBACK = ::core::option::Option<
     unsafe extern "system" fn(
         WctHandle: MutPtr<::core::ffi::c_void>,
-        Context: usize,
+        Context: PtrRepr,
         CallbackStatus: u32,
         NodeCount: MutPtr<u32>,
         NodeInfoArray: MutPtr<WAITCHAIN_NODE_INFO>,
@@ -16156,7 +16163,7 @@ pub type PWINDBG_CHECK_CONTROL_C = ::core::option::Option<unsafe extern "system"
 pub type PWINDBG_CHECK_VERSION = ::core::option::Option<unsafe extern "system" fn() -> u32>;
 pub type PWINDBG_DISASM = ::core::option::Option<
     unsafe extern "system" fn(
-        lpOffset: MutPtr<usize>,
+        lpOffset: MutPtr<PtrRepr>,
         lpBuffer: ::win32::core::PCSTR,
         fShowEffectiveAddress: u32,
     ) -> u32,
@@ -16231,8 +16238,9 @@ pub type PWINDBG_EXTENSION_ROUTINE64 = ::core::option::Option<
         lpArgumentString: ::win32::core::PCSTR,
     ),
 >;
-pub type PWINDBG_GET_EXPRESSION =
-    ::core::option::Option<unsafe extern "system" fn(lpExpression: ::win32::core::PCSTR) -> usize>;
+pub type PWINDBG_GET_EXPRESSION = ::core::option::Option<
+    unsafe extern "system" fn(lpExpression: ::win32::core::PCSTR) -> PtrRepr,
+>;
 pub type PWINDBG_GET_EXPRESSION32 =
     ::core::option::Option<unsafe extern "system" fn(lpExpression: ::win32::core::PCSTR) -> u32>;
 pub type PWINDBG_GET_EXPRESSION64 =
@@ -16241,7 +16249,7 @@ pub type PWINDBG_GET_SYMBOL = ::core::option::Option<
     unsafe extern "system" fn(
         offset: MutPtr<::core::ffi::c_void>,
         pchBuffer: ::win32::core::PCSTR,
-        pDisplacement: MutPtr<usize>,
+        pDisplacement: MutPtr<PtrRepr>,
     ),
 >;
 pub type PWINDBG_GET_SYMBOL32 = ::core::option::Option<
@@ -16310,7 +16318,7 @@ pub type PWINDBG_OUTPUT_ROUTINE =
     ::core::option::Option<unsafe extern "system" fn(lpFormat: ::win32::core::PCSTR)>;
 pub type PWINDBG_READ_PROCESS_MEMORY_ROUTINE = ::core::option::Option<
     unsafe extern "system" fn(
-        offset: usize,
+        offset: PtrRepr,
         lpBuffer: MutPtr<::core::ffi::c_void>,
         cb: u32,
         lpcbBytesRead: MutPtr<u32>,
@@ -16370,7 +16378,7 @@ pub type PWINDBG_STACKTRACE_ROUTINE64 = ::core::option::Option<
 >;
 pub type PWINDBG_WRITE_PROCESS_MEMORY_ROUTINE = ::core::option::Option<
     unsafe extern "system" fn(
-        offset: usize,
+        offset: PtrRepr,
         lpBuffer: ConstPtr<::core::ffi::c_void>,
         cb: u32,
         lpcbBytesWritten: MutPtr<u32>,
@@ -17427,7 +17435,7 @@ pub type SYMADDSOURCESTREAM = ::core::option::Option<
         param1: u64,
         param2: ::win32::core::PCSTR,
         param3: MutPtr<u8>,
-        param4: usize,
+        param4: PtrRepr,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type SYMADDSOURCESTREAMA = ::core::option::Option<
@@ -17436,7 +17444,7 @@ pub type SYMADDSOURCESTREAMA = ::core::option::Option<
         param1: u64,
         param2: ::win32::core::PCSTR,
         param3: MutPtr<u8>,
-        param4: usize,
+        param4: PtrRepr,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub struct SYMBOL_INFO {
@@ -18592,8 +18600,8 @@ pub struct UNWIND_HISTORY_TABLE {
     pub GlobalHint: u8,
     pub Search: u8,
     pub Once: u8,
-    pub LowAddress: usize,
-    pub HighAddress: usize,
+    pub LowAddress: PtrRepr,
+    pub HighAddress: PtrRepr,
     pub Entry: [UNWIND_HISTORY_TABLE_ENTRY; 12],
 }
 #[doc = "*Required namespaces: *"]
@@ -18642,7 +18650,7 @@ impl ::core::cmp::Eq for UNWIND_HISTORY_TABLE {}
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct UNWIND_HISTORY_TABLE_ENTRY {
-    pub ImageBase: usize,
+    pub ImageBase: PtrRepr,
     pub FunctionEntry: MutPtr<IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY>,
 }
 #[doc = "*Required namespaces: *"]
@@ -18678,7 +18686,7 @@ impl ::core::cmp::Eq for UNWIND_HISTORY_TABLE_ENTRY {}
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct UNWIND_HISTORY_TABLE_ENTRY {
-    pub ImageBase: usize,
+    pub ImageBase: PtrRepr,
     pub FunctionEntry: MutPtr<IMAGE_RUNTIME_FUNCTION_ENTRY>,
 }
 #[doc = "*Required namespaces: *"]
