@@ -853,8 +853,8 @@ pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) -> Control
             }
 
             // TODO: uncomment when unit tests for different direction of string operations will be in place
-            //Std => builder.store_flag(Direction, builder.make_true()),
-            //Cld => builder.store_flag(Direction, builder.make_false()),
+            Std => builder.store_flag(Direction, builder.make_true()),
+            Cld => builder.store_flag(Direction, builder.make_false()),
             m => panic!("Unknown instruction mnemonic: {:?}", m),
         };
 
