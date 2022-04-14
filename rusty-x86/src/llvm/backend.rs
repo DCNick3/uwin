@@ -492,13 +492,13 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
         use SegmentRegister::*;
         match segment {
             CS | DS | ES | SS => self.make_u32(0),
-            GS => {
-                let ptr = self.build_ctx_fs_base_gep(self.ctx_ptr);
-                self.builder.build_load(ptr, "fs").into_int_value()
-            }
             FS => {
-                let ptr = self.build_ctx_gs_base_gep(self.ctx_ptr);
+                let ptr = self.build_ctx_fs_base_gep(self.ctx_ptr);
                 self.builder.build_load(ptr, "gs").into_int_value()
+            }
+            GS => {
+                let ptr = self.build_ctx_gs_base_gep(self.ctx_ptr);
+                self.builder.build_load(ptr, "fs").into_int_value()
             }
         }
     }

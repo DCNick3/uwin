@@ -41,6 +41,15 @@ impl win32::Win32::UI::WindowsAndMessaging::Api for WindowsAndMessaging {
     }
 }
 
+struct SystemInformation {}
+
+#[allow(non_snake_case)]
+impl win32::Win32::System::SystemInformation::Api for SystemInformation {
+    fn GetVersion(&self) -> u32 {
+        0x0ece0205 // (I think?) corresponds to windows 98
+    }
+}
+
 pub struct MemoryMapper {
     base_region: Allocation,
     subregions: Vec<Allocation>,
@@ -119,6 +128,13 @@ fn main() {
     context.win32.insert(
         Arc::new(WindowsAndMessaging {}) as Arc<dyn win32::Win32::UI::WindowsAndMessaging::Api>
     );
+    context.win32.insert(
+        Arc::new(SystemInformation {}) as Arc<dyn win32::Win32::System::SystemInformation::Api>
+    );
+
+    let tlb = mapper
+        .map(0x1000, Protection::READ_WRITE)
+        .expect("Mapping TLB");
 
     let stack_size = 0x10000;
     let stack_top = mapper
@@ -126,6 +142,7 @@ fn main() {
         .expect("Mapping stack");
     // set ESP to the bottom of the stack
     context.cpu.gp_regs[4] = stack_top + stack_size;
+    context.cpu.fs_base = tlb;
 
     rusty_x86_runtime::execute_recompiled_code(&mut context, memory_ctx, entry);
 }

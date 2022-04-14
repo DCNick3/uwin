@@ -73,7 +73,7 @@ impl<'a, MCtx: MemoryCtx, CpuCtx: X86Context> StdCallHelper<'a, MCtx, CpuCtx> {
         let mut bytes = [0u8; 4];
         value.into_bytes(&mut bytes);
 
-        self.cpu_ctx.set_esp(self.offset);
+        self.cpu_ctx.set_esp(self.cpu_ctx.get_esp() + self.offset);
         self.cpu_ctx.set_eax(u32::from_le_bytes(bytes));
 
         // prevent the calling of the panicking destructor

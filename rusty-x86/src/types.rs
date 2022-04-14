@@ -131,10 +131,10 @@ pub enum Flag {
 pub struct CpuContext {
     // !!! If changing this struct - don't forget to update Types::new in llvm_backend.rs
     // also it would be best not to move fields around, as this breaks indices in build_ctx_*_gep
-    pub gp_regs: [u32; 8],
-    pub flags: [u8; 8],
-    pub fs_base: u32,
-    pub gs_base: u32,
+    pub gp_regs: [u32; 8], // 0x00
+    pub flags: [u8; 8],    // 0x20
+    pub fs_base: u32,      // 0x28
+    pub gs_base: u32,      // 0x2c
 }
 
 impl std::fmt::Debug for CpuContext {
