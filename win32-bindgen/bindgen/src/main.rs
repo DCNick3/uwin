@@ -513,7 +513,7 @@ fn gen_tree(output: &std::path::Path, _root: &'static str, tree: &TypeTreeGen) -
 fn gen_magic(output: &std::path::Path, tokens: Vec<TokenStream>) {
     // output rusty_x86 magic functions separately
     let mut tokens = quote! {
-        #![allow(non_snake_case, non_camel_case_types, non_upper_case_globals, clashing_extern_declarations, clippy::all)]
+        #![allow(non_snake_case, non_camel_case_types, non_upper_case_globals, clashing_extern_declarations, clippy::all, unused_mut)]
 
         #[allow(unused)]
         use crate::ExtendedContext;

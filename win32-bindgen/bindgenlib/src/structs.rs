@@ -76,6 +76,7 @@ fn gen_struct_with_name(def: &TypeDef, struct_name: &str, cfg: &Cfg, gen: &Gen) 
     tokens.combine(&gen_copy_clone(def, &name, &cfg, gen));
     tokens.combine(&gen_debug(def, &name, &cfg, gen));
     tokens.combine(&gen_compare_traits(def, &name, &cfg, gen));
+    tokens.combine(&gen_from_into_mem(def, &name, &cfg, gen));
 
     // if !gen.sys {
     //     tokens.combine(&quote! {
@@ -96,6 +97,25 @@ fn gen_struct_with_name(def: &TypeDef, struct_name: &str, cfg: &Cfg, gen: &Gen) 
     }
 
     tokens
+}
+
+fn gen_from_into_mem(_def: &TypeDef, name: &TokenStream, cfg: &Cfg, gen: &Gen) -> TokenStream {
+    // TODO: generate actual implementation
+    let features = gen.cfg(cfg);
+    quote! {
+        #features
+        impl FromIntoMemory for #name {
+            fn from_bytes(from: &[u8]) -> Self {
+                todo!()
+            }
+            fn into_bytes(self, into: &mut [u8]) {
+                todo!()
+            }
+            fn size() -> usize {
+                todo!()
+            }
+        }
+    }
 }
 
 #[allow(clippy::if_same_then_else)]

@@ -3,7 +3,8 @@
     non_camel_case_types,
     non_upper_case_globals,
     clashing_extern_declarations,
-    clippy::all
+    clippy::all,
+    unused_mut
 )]
 #[allow(unused)]
 use crate::ExtendedContext;

@@ -37,6 +37,17 @@ impl ::core::cmp::PartialEq for ADDRESS {
     }
 }
 impl ::core::cmp::Eq for ADDRESS {}
+impl FromIntoMemory for ADDRESS {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct ADDRESS64 {
     pub Offset: u64,
     pub Segment: u16,
@@ -63,6 +74,17 @@ impl ::core::cmp::PartialEq for ADDRESS64 {
     }
 }
 impl ::core::cmp::Eq for ADDRESS64 {}
+impl FromIntoMemory for ADDRESS64 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct ADDRESS_MODE(pub i32);
 pub const AddrMode1616: ADDRESS_MODE = ADDRESS_MODE(0i32);
@@ -113,6 +135,17 @@ impl ::core::cmp::PartialEq for AER_BRIDGE_DESCRIPTOR_FLAGS {
     }
 }
 impl ::core::cmp::Eq for AER_BRIDGE_DESCRIPTOR_FLAGS {}
+impl FromIntoMemory for AER_BRIDGE_DESCRIPTOR_FLAGS {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct AER_BRIDGE_DESCRIPTOR_FLAGS_0 {
     pub _bitfield: u16,
 }
@@ -128,6 +161,17 @@ impl ::core::cmp::PartialEq for AER_BRIDGE_DESCRIPTOR_FLAGS_0 {
     }
 }
 impl ::core::cmp::Eq for AER_BRIDGE_DESCRIPTOR_FLAGS_0 {}
+impl FromIntoMemory for AER_BRIDGE_DESCRIPTOR_FLAGS_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct AER_ENDPOINT_DESCRIPTOR_FLAGS {
     pub Anonymous: AER_ENDPOINT_DESCRIPTOR_FLAGS_0,
     pub AsUSHORT: u16,
@@ -144,6 +188,17 @@ impl ::core::cmp::PartialEq for AER_ENDPOINT_DESCRIPTOR_FLAGS {
     }
 }
 impl ::core::cmp::Eq for AER_ENDPOINT_DESCRIPTOR_FLAGS {}
+impl FromIntoMemory for AER_ENDPOINT_DESCRIPTOR_FLAGS {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct AER_ENDPOINT_DESCRIPTOR_FLAGS_0 {
     pub _bitfield: u16,
 }
@@ -159,6 +214,17 @@ impl ::core::cmp::PartialEq for AER_ENDPOINT_DESCRIPTOR_FLAGS_0 {
     }
 }
 impl ::core::cmp::Eq for AER_ENDPOINT_DESCRIPTOR_FLAGS_0 {}
+impl FromIntoMemory for AER_ENDPOINT_DESCRIPTOR_FLAGS_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct AER_ROOTPORT_DESCRIPTOR_FLAGS {
     pub Anonymous: AER_ROOTPORT_DESCRIPTOR_FLAGS_0,
     pub AsUSHORT: u16,
@@ -175,6 +241,17 @@ impl ::core::cmp::PartialEq for AER_ROOTPORT_DESCRIPTOR_FLAGS {
     }
 }
 impl ::core::cmp::Eq for AER_ROOTPORT_DESCRIPTOR_FLAGS {}
+impl FromIntoMemory for AER_ROOTPORT_DESCRIPTOR_FLAGS {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct AER_ROOTPORT_DESCRIPTOR_FLAGS_0 {
     pub _bitfield: u16,
 }
@@ -190,6 +267,17 @@ impl ::core::cmp::PartialEq for AER_ROOTPORT_DESCRIPTOR_FLAGS_0 {
     }
 }
 impl ::core::cmp::Eq for AER_ROOTPORT_DESCRIPTOR_FLAGS_0 {}
+impl FromIntoMemory for AER_ROOTPORT_DESCRIPTOR_FLAGS_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct API_VERSION {
     pub MajorVersion: u16,
     pub MinorVersion: u16,
@@ -221,6 +309,17 @@ impl ::core::cmp::PartialEq for API_VERSION {
     }
 }
 impl ::core::cmp::Eq for API_VERSION {}
+impl FromIntoMemory for API_VERSION {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const API_VERSION_NUMBER: u32 = 12u32;
 pub const APPBREAKFLAG_DEBUGGER_BLOCK: u32 = 1u32;
 pub const APPBREAKFLAG_DEBUGGER_HALT: u32 = 2u32;
@@ -305,6 +404,17 @@ impl ::core::cmp::PartialEq for ARM64_NT_CONTEXT {
     }
 }
 impl ::core::cmp::Eq for ARM64_NT_CONTEXT {}
+impl FromIntoMemory for ARM64_NT_CONTEXT {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct ARM64_NT_CONTEXT_0 {
     pub Anonymous: ARM64_NT_CONTEXT_0_0,
     pub X: [u64; 31],
@@ -321,6 +431,17 @@ impl ::core::cmp::PartialEq for ARM64_NT_CONTEXT_0 {
     }
 }
 impl ::core::cmp::Eq for ARM64_NT_CONTEXT_0 {}
+impl FromIntoMemory for ARM64_NT_CONTEXT_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct ARM64_NT_CONTEXT_0_0 {
     pub X0: u64,
     pub X1: u64,
@@ -433,6 +554,17 @@ impl ::core::cmp::PartialEq for ARM64_NT_CONTEXT_0_0 {
     }
 }
 impl ::core::cmp::Eq for ARM64_NT_CONTEXT_0_0 {}
+impl FromIntoMemory for ARM64_NT_CONTEXT_0_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct ARM64_NT_NEON128 {
     pub Anonymous: ARM64_NT_NEON128_0,
     pub D: [f64; 2],
@@ -456,6 +588,17 @@ impl ::core::cmp::PartialEq for ARM64_NT_NEON128 {
     }
 }
 impl ::core::cmp::Eq for ARM64_NT_NEON128 {}
+impl FromIntoMemory for ARM64_NT_NEON128 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct ARM64_NT_NEON128_0 {
     pub Low: u64,
     pub High: i64,
@@ -480,6 +623,17 @@ impl ::core::cmp::PartialEq for ARM64_NT_NEON128_0 {
     }
 }
 impl ::core::cmp::Eq for ARM64_NT_NEON128_0 {}
+impl FromIntoMemory for ARM64_NT_NEON128_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct ArrayDimension {
     pub LowerBound: i64,
     pub Length: u64,
@@ -508,6 +662,17 @@ impl ::core::cmp::PartialEq for ArrayDimension {
     }
 }
 impl ::core::cmp::Eq for ArrayDimension {}
+impl FromIntoMemory for ArrayDimension {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const BIND_ALL_IMAGES: u32 = 4u32;
 pub const BIND_CACHE_IMPORT_DLLS: u32 = 8u32;
 pub const BIND_NO_BOUND_IMPORTS: u32 = 1u32;
@@ -1265,6 +1430,19 @@ impl ::core::cmp::PartialEq for CONTEXT {
 impl ::core::cmp::Eq for CONTEXT {}
 #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for CONTEXT {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
+#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 pub struct CONTEXT_0 {
     pub Anonymous: CONTEXT_0_0,
     pub X: [u64; 31],
@@ -1289,6 +1467,19 @@ impl ::core::cmp::PartialEq for CONTEXT_0 {
 #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for CONTEXT_0 {}
+#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
+#[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for CONTEXT_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct CONTEXT_0_0 {
@@ -1415,6 +1606,19 @@ impl ::core::cmp::PartialEq for CONTEXT_0_0 {
 impl ::core::cmp::Eq for CONTEXT_0_0 {}
 #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for CONTEXT_0_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
+#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 pub struct CONTEXT {
     pub P1Home: u64,
     pub P2Home: u64,
@@ -1530,6 +1734,19 @@ impl ::core::cmp::PartialEq for CONTEXT {
 impl ::core::cmp::Eq for CONTEXT {}
 #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for CONTEXT {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
+#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 pub struct CONTEXT_0 {
     pub FltSave: XSAVE_FORMAT,
     pub Anonymous: CONTEXT_0_0,
@@ -1554,6 +1771,19 @@ impl ::core::cmp::PartialEq for CONTEXT_0 {
 #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for CONTEXT_0 {}
+#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
+#[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for CONTEXT_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct CONTEXT_0_0 {
@@ -1641,6 +1871,19 @@ impl ::core::cmp::PartialEq for CONTEXT_0_0 {
 impl ::core::cmp::Eq for CONTEXT_0_0 {}
 #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for CONTEXT_0_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
+#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 pub struct CONTEXT {
     pub ContextFlags: u32,
     pub Dr0: u32,
@@ -1712,6 +1955,19 @@ impl ::core::cmp::PartialEq for CONTEXT {
 #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for CONTEXT {}
+#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
+#[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for CONTEXT {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct CPU_INFORMATION {
     pub X86CpuInfo: CPU_INFORMATION_1,
     pub OtherCpuInfo: CPU_INFORMATION_0,
@@ -1728,6 +1984,17 @@ impl ::core::cmp::PartialEq for CPU_INFORMATION {
     }
 }
 impl ::core::cmp::Eq for CPU_INFORMATION {}
+impl FromIntoMemory for CPU_INFORMATION {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct CPU_INFORMATION_0 {
     pub ProcessorFeatures: [u64; 2],
 }
@@ -1743,6 +2010,17 @@ impl ::core::cmp::PartialEq for CPU_INFORMATION_0 {
     }
 }
 impl ::core::cmp::Eq for CPU_INFORMATION_0 {}
+impl FromIntoMemory for CPU_INFORMATION_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct CPU_INFORMATION_1 {
     pub VendorId: [u32; 3],
     pub VersionInformation: u32,
@@ -1774,6 +2052,17 @@ impl ::core::cmp::PartialEq for CPU_INFORMATION_1 {
     }
 }
 impl ::core::cmp::Eq for CPU_INFORMATION_1 {}
+impl FromIntoMemory for CPU_INFORMATION_1 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Threading'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct CREATE_PROCESS_DEBUG_INFO {
@@ -1837,6 +2126,19 @@ impl ::core::cmp::PartialEq for CREATE_PROCESS_DEBUG_INFO {
 impl ::core::cmp::Eq for CREATE_PROCESS_DEBUG_INFO {}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Threading'*"]
 #[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for CREATE_PROCESS_DEBUG_INFO {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Threading'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 pub struct CREATE_THREAD_DEBUG_INFO {
     pub hThread: super::super::super::Foundation::HANDLE,
     pub lpThreadLocalBase: MutPtr<::core::ffi::c_void>,
@@ -1875,6 +2177,19 @@ impl ::core::cmp::PartialEq for CREATE_THREAD_DEBUG_INFO {
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Threading'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for CREATE_THREAD_DEBUG_INFO {}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Threading'*"]
+#[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for CREATE_THREAD_DEBUG_INFO {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const CROSS_PLATFORM_MAXIMUM_PROCESSORS: u32 = 2048u32;
 pub const CURRENT_KD_SECONDARY_VERSION: u32 = 2u32;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -1939,6 +2254,17 @@ impl ::core::cmp::PartialEq for DBGHELP_DATA_REPORT_STRUCT {
     }
 }
 impl ::core::cmp::Eq for DBGHELP_DATA_REPORT_STRUCT {}
+impl FromIntoMemory for DBGHELP_DATA_REPORT_STRUCT {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct DBGKD_DEBUG_DATA_HEADER32 {
@@ -1979,6 +2305,19 @@ impl ::core::cmp::PartialEq for DBGKD_DEBUG_DATA_HEADER32 {
 impl ::core::cmp::Eq for DBGKD_DEBUG_DATA_HEADER32 {}
 #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for DBGKD_DEBUG_DATA_HEADER32 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
+#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 pub struct DBGKD_DEBUG_DATA_HEADER64 {
     pub List: super::super::Kernel::LIST_ENTRY64,
     pub OwnerTag: u32,
@@ -2015,6 +2354,19 @@ impl ::core::cmp::PartialEq for DBGKD_DEBUG_DATA_HEADER64 {
 #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for DBGKD_DEBUG_DATA_HEADER64 {}
+#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
+#[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for DBGKD_DEBUG_DATA_HEADER64 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct DBGKD_GET_VERSION32 {
     pub MajorVersion: u16,
     pub MinorVersion: u16,
@@ -2076,6 +2428,17 @@ impl ::core::cmp::PartialEq for DBGKD_GET_VERSION32 {
     }
 }
 impl ::core::cmp::Eq for DBGKD_GET_VERSION32 {}
+impl FromIntoMemory for DBGKD_GET_VERSION32 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct DBGKD_GET_VERSION64 {
     pub MajorVersion: u16,
     pub MinorVersion: u16,
@@ -2137,6 +2500,17 @@ impl ::core::cmp::PartialEq for DBGKD_GET_VERSION64 {
     }
 }
 impl ::core::cmp::Eq for DBGKD_GET_VERSION64 {}
+impl FromIntoMemory for DBGKD_GET_VERSION64 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct DBGKD_MAJOR_TYPES(pub i32);
 pub const DBGKD_MAJOR_NT: DBGKD_MAJOR_TYPES = DBGKD_MAJOR_TYPES(0i32);
@@ -2462,6 +2836,17 @@ impl ::core::cmp::PartialEq for DEBUG_BREAKPOINT_PARAMETERS {
     }
 }
 impl ::core::cmp::Eq for DEBUG_BREAKPOINT_PARAMETERS {}
+impl FromIntoMemory for DEBUG_BREAKPOINT_PARAMETERS {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const DEBUG_BREAKPOINT_TIME: u32 = 2u32;
 pub const DEBUG_BREAK_EXECUTE: u32 = 4u32;
 pub const DEBUG_BREAK_IO: u32 = 8u32;
@@ -2501,6 +2886,17 @@ impl ::core::cmp::PartialEq for DEBUG_CACHED_SYMBOL_INFO {
     }
 }
 impl ::core::cmp::Eq for DEBUG_CACHED_SYMBOL_INFO {}
+impl FromIntoMemory for DEBUG_CACHED_SYMBOL_INFO {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const DEBUG_CDS_ALL: u32 = 4294967295u32;
 pub const DEBUG_CDS_DATA: u32 = 2u32;
 pub const DEBUG_CDS_REFRESH: u32 = 4u32;
@@ -2567,6 +2963,17 @@ impl ::core::cmp::PartialEq for DEBUG_CLIENT_CONTEXT {
     }
 }
 impl ::core::cmp::Eq for DEBUG_CLIENT_CONTEXT {}
+impl FromIntoMemory for DEBUG_CLIENT_CONTEXT {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const DEBUG_CLIENT_KD: u32 = 5u32;
 pub const DEBUG_CLIENT_NTKD: u32 = 3u32;
 pub const DEBUG_CLIENT_NTSD: u32 = 2u32;
@@ -2612,6 +3019,17 @@ impl ::core::cmp::PartialEq for DEBUG_CREATE_PROCESS_OPTIONS {
     }
 }
 impl ::core::cmp::Eq for DEBUG_CREATE_PROCESS_OPTIONS {}
+impl FromIntoMemory for DEBUG_CREATE_PROCESS_OPTIONS {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const DEBUG_CSS_ALL: u32 = 4294967295u32;
 pub const DEBUG_CSS_COLLAPSE_CHILDREN: u32 = 64u32;
 pub const DEBUG_CSS_LOADS: u32 = 1u32;
@@ -2839,6 +3257,19 @@ impl ::core::cmp::PartialEq for DEBUG_EVENT {
 impl ::core::cmp::Eq for DEBUG_EVENT {}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Threading'*"]
 #[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for DEBUG_EVENT {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Threading'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 pub struct DEBUG_EVENT_0 {
     pub Exception: EXCEPTION_DEBUG_INFO,
     pub CreateThread: CREATE_THREAD_DEBUG_INFO,
@@ -2878,6 +3309,19 @@ impl ::core::cmp::PartialEq for DEBUG_EVENT_0 {
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Threading'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for DEBUG_EVENT_0 {}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Threading'*"]
+#[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for DEBUG_EVENT_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const DEBUG_EVENT_BREAKPOINT: u32 = 1u32;
 pub const DEBUG_EVENT_CHANGE_DEBUGGEE_STATE: u32 = 1024u32;
 pub const DEBUG_EVENT_CHANGE_ENGINE_STATE: u32 = 2048u32;
@@ -2951,6 +3395,17 @@ impl ::core::cmp::PartialEq for DEBUG_EVENT_CONTEXT {
     }
 }
 impl ::core::cmp::Eq for DEBUG_EVENT_CONTEXT {}
+impl FromIntoMemory for DEBUG_EVENT_CONTEXT {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const DEBUG_EVENT_CREATE_PROCESS: u32 = 16u32;
 pub const DEBUG_EVENT_CREATE_THREAD: u32 = 4u32;
 pub const DEBUG_EVENT_EXCEPTION: u32 = 2u32;
@@ -3033,6 +3488,17 @@ impl ::core::cmp::PartialEq for DEBUG_EXCEPTION_FILTER_PARAMETERS {
     }
 }
 impl ::core::cmp::Eq for DEBUG_EXCEPTION_FILTER_PARAMETERS {}
+impl FromIntoMemory for DEBUG_EXCEPTION_FILTER_PARAMETERS {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const DEBUG_EXECUTE_DEFAULT: u32 = 0u32;
 pub const DEBUG_EXECUTE_ECHO: u32 = 1u32;
 pub const DEBUG_EXECUTE_EVENT: u32 = 2048u32;
@@ -3144,6 +3610,17 @@ impl ::core::cmp::PartialEq for DEBUG_GET_TEXT_COMPLETIONS_IN {
     }
 }
 impl ::core::cmp::Eq for DEBUG_GET_TEXT_COMPLETIONS_IN {}
+impl FromIntoMemory for DEBUG_GET_TEXT_COMPLETIONS_IN {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const DEBUG_GET_TEXT_COMPLETIONS_IS_DOT_COMMAND: u32 = 1u32;
 pub const DEBUG_GET_TEXT_COMPLETIONS_IS_EXTENSION_COMMAND: u32 = 2u32;
 pub const DEBUG_GET_TEXT_COMPLETIONS_IS_SYMBOL: u32 = 4u32;
@@ -3184,6 +3661,17 @@ impl ::core::cmp::PartialEq for DEBUG_GET_TEXT_COMPLETIONS_OUT {
     }
 }
 impl ::core::cmp::Eq for DEBUG_GET_TEXT_COMPLETIONS_OUT {}
+impl FromIntoMemory for DEBUG_GET_TEXT_COMPLETIONS_OUT {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const DEBUG_GSEL_ALLOW_HIGHER: u32 = 4u32;
 pub const DEBUG_GSEL_ALLOW_LOWER: u32 = 2u32;
 pub const DEBUG_GSEL_DEFAULT: u32 = 0u32;
@@ -3227,6 +3715,17 @@ impl ::core::cmp::PartialEq for DEBUG_HANDLE_DATA_BASIC {
     }
 }
 impl ::core::cmp::Eq for DEBUG_HANDLE_DATA_BASIC {}
+impl FromIntoMemory for DEBUG_HANDLE_DATA_BASIC {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const DEBUG_HANDLE_DATA_TYPE_ALL_HANDLE_OPERATIONS: u32 = 10u32;
 pub const DEBUG_HANDLE_DATA_TYPE_BASIC: u32 = 0u32;
 pub const DEBUG_HANDLE_DATA_TYPE_HANDLE_COUNT: u32 = 3u32;
@@ -3287,6 +3786,17 @@ impl ::core::cmp::PartialEq for DEBUG_LAST_EVENT_INFO_BREAKPOINT {
     }
 }
 impl ::core::cmp::Eq for DEBUG_LAST_EVENT_INFO_BREAKPOINT {}
+impl FromIntoMemory for DEBUG_LAST_EVENT_INFO_BREAKPOINT {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct DEBUG_LAST_EVENT_INFO_EXCEPTION {
     pub ExceptionRecord: EXCEPTION_RECORD64,
     pub FirstChance: u32,
@@ -3311,6 +3821,17 @@ impl ::core::cmp::PartialEq for DEBUG_LAST_EVENT_INFO_EXCEPTION {
     }
 }
 impl ::core::cmp::Eq for DEBUG_LAST_EVENT_INFO_EXCEPTION {}
+impl FromIntoMemory for DEBUG_LAST_EVENT_INFO_EXCEPTION {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct DEBUG_LAST_EVENT_INFO_EXIT_PROCESS {
     pub ExitCode: u32,
 }
@@ -3333,6 +3854,17 @@ impl ::core::cmp::PartialEq for DEBUG_LAST_EVENT_INFO_EXIT_PROCESS {
     }
 }
 impl ::core::cmp::Eq for DEBUG_LAST_EVENT_INFO_EXIT_PROCESS {}
+impl FromIntoMemory for DEBUG_LAST_EVENT_INFO_EXIT_PROCESS {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct DEBUG_LAST_EVENT_INFO_EXIT_THREAD {
     pub ExitCode: u32,
 }
@@ -3355,6 +3887,17 @@ impl ::core::cmp::PartialEq for DEBUG_LAST_EVENT_INFO_EXIT_THREAD {
     }
 }
 impl ::core::cmp::Eq for DEBUG_LAST_EVENT_INFO_EXIT_THREAD {}
+impl FromIntoMemory for DEBUG_LAST_EVENT_INFO_EXIT_THREAD {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct DEBUG_LAST_EVENT_INFO_LOAD_MODULE {
     pub Base: u64,
 }
@@ -3377,6 +3920,17 @@ impl ::core::cmp::PartialEq for DEBUG_LAST_EVENT_INFO_LOAD_MODULE {
     }
 }
 impl ::core::cmp::Eq for DEBUG_LAST_EVENT_INFO_LOAD_MODULE {}
+impl FromIntoMemory for DEBUG_LAST_EVENT_INFO_LOAD_MODULE {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct DEBUG_LAST_EVENT_INFO_SERVICE_EXCEPTION {
     pub Kind: u32,
     pub DataSize: u32,
@@ -3403,6 +3957,17 @@ impl ::core::cmp::PartialEq for DEBUG_LAST_EVENT_INFO_SERVICE_EXCEPTION {
     }
 }
 impl ::core::cmp::Eq for DEBUG_LAST_EVENT_INFO_SERVICE_EXCEPTION {}
+impl FromIntoMemory for DEBUG_LAST_EVENT_INFO_SERVICE_EXCEPTION {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct DEBUG_LAST_EVENT_INFO_SYSTEM_ERROR {
     pub Error: u32,
     pub Level: u32,
@@ -3427,6 +3992,17 @@ impl ::core::cmp::PartialEq for DEBUG_LAST_EVENT_INFO_SYSTEM_ERROR {
     }
 }
 impl ::core::cmp::Eq for DEBUG_LAST_EVENT_INFO_SYSTEM_ERROR {}
+impl FromIntoMemory for DEBUG_LAST_EVENT_INFO_SYSTEM_ERROR {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct DEBUG_LAST_EVENT_INFO_UNLOAD_MODULE {
     pub Base: u64,
 }
@@ -3449,6 +4025,17 @@ impl ::core::cmp::PartialEq for DEBUG_LAST_EVENT_INFO_UNLOAD_MODULE {
     }
 }
 impl ::core::cmp::Eq for DEBUG_LAST_EVENT_INFO_UNLOAD_MODULE {}
+impl FromIntoMemory for DEBUG_LAST_EVENT_INFO_UNLOAD_MODULE {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const DEBUG_LEVEL_ASSEMBLY: u32 = 1u32;
 pub const DEBUG_LEVEL_SOURCE: u32 = 0u32;
 pub const DEBUG_LIVE_USER_NON_INVASIVE: u32 = 33u32;
@@ -3493,6 +4080,17 @@ impl ::core::cmp::PartialEq for DEBUG_MODULE_AND_ID {
     }
 }
 impl ::core::cmp::Eq for DEBUG_MODULE_AND_ID {}
+impl FromIntoMemory for DEBUG_MODULE_AND_ID {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const DEBUG_MODULE_EXE_MODULE: u32 = 4u32;
 pub const DEBUG_MODULE_EXPLICIT: u32 = 8u32;
 pub const DEBUG_MODULE_LOADED: u32 = 0u32;
@@ -3551,6 +4149,17 @@ impl ::core::cmp::PartialEq for DEBUG_MODULE_PARAMETERS {
     }
 }
 impl ::core::cmp::Eq for DEBUG_MODULE_PARAMETERS {}
+impl FromIntoMemory for DEBUG_MODULE_PARAMETERS {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const DEBUG_MODULE_SECONDARY: u32 = 16u32;
 pub const DEBUG_MODULE_SYM_BAD_CHECKSUM: u32 = 65536u32;
 pub const DEBUG_MODULE_SYNTHETIC: u32 = 32u32;
@@ -3584,6 +4193,17 @@ impl ::core::cmp::PartialEq for DEBUG_OFFSET_REGION {
     }
 }
 impl ::core::cmp::Eq for DEBUG_OFFSET_REGION {}
+impl FromIntoMemory for DEBUG_OFFSET_REGION {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const DEBUG_OFFSINFO_VIRTUAL_SOURCE: u32 = 1u32;
 pub const DEBUG_OUTCBF_COMBINED_EXPLICIT_FLUSH: u32 = 1u32;
 pub const DEBUG_OUTCBF_DML_HAS_SPECIAL_CHARACTERS: u32 = 4u32;
@@ -3679,6 +4299,17 @@ impl ::core::cmp::PartialEq for DEBUG_PROCESSOR_IDENTIFICATION_ALL {
     }
 }
 impl ::core::cmp::Eq for DEBUG_PROCESSOR_IDENTIFICATION_ALL {}
+impl FromIntoMemory for DEBUG_PROCESSOR_IDENTIFICATION_ALL {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct DEBUG_PROCESSOR_IDENTIFICATION_ALPHA {
     pub Type: u32,
     pub Revision: u32,
@@ -3703,6 +4334,17 @@ impl ::core::cmp::PartialEq for DEBUG_PROCESSOR_IDENTIFICATION_ALPHA {
     }
 }
 impl ::core::cmp::Eq for DEBUG_PROCESSOR_IDENTIFICATION_ALPHA {}
+impl FromIntoMemory for DEBUG_PROCESSOR_IDENTIFICATION_ALPHA {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct DEBUG_PROCESSOR_IDENTIFICATION_AMD64 {
     pub Family: u32,
     pub Model: u32,
@@ -3734,6 +4376,17 @@ impl ::core::cmp::PartialEq for DEBUG_PROCESSOR_IDENTIFICATION_AMD64 {
     }
 }
 impl ::core::cmp::Eq for DEBUG_PROCESSOR_IDENTIFICATION_AMD64 {}
+impl FromIntoMemory for DEBUG_PROCESSOR_IDENTIFICATION_AMD64 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct DEBUG_PROCESSOR_IDENTIFICATION_ARM {
     pub Model: u32,
     pub Revision: u32,
@@ -3762,6 +4415,17 @@ impl ::core::cmp::PartialEq for DEBUG_PROCESSOR_IDENTIFICATION_ARM {
     }
 }
 impl ::core::cmp::Eq for DEBUG_PROCESSOR_IDENTIFICATION_ARM {}
+impl FromIntoMemory for DEBUG_PROCESSOR_IDENTIFICATION_ARM {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct DEBUG_PROCESSOR_IDENTIFICATION_ARM64 {
     pub Model: u32,
     pub Revision: u32,
@@ -3790,6 +4454,17 @@ impl ::core::cmp::PartialEq for DEBUG_PROCESSOR_IDENTIFICATION_ARM64 {
     }
 }
 impl ::core::cmp::Eq for DEBUG_PROCESSOR_IDENTIFICATION_ARM64 {}
+impl FromIntoMemory for DEBUG_PROCESSOR_IDENTIFICATION_ARM64 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct DEBUG_PROCESSOR_IDENTIFICATION_IA64 {
     pub Model: u32,
     pub Revision: u32,
@@ -3824,6 +4499,17 @@ impl ::core::cmp::PartialEq for DEBUG_PROCESSOR_IDENTIFICATION_IA64 {
     }
 }
 impl ::core::cmp::Eq for DEBUG_PROCESSOR_IDENTIFICATION_IA64 {}
+impl FromIntoMemory for DEBUG_PROCESSOR_IDENTIFICATION_IA64 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct DEBUG_PROCESSOR_IDENTIFICATION_X86 {
     pub Family: u32,
     pub Model: u32,
@@ -3855,6 +4541,17 @@ impl ::core::cmp::PartialEq for DEBUG_PROCESSOR_IDENTIFICATION_X86 {
     }
 }
 impl ::core::cmp::Eq for DEBUG_PROCESSOR_IDENTIFICATION_X86 {}
+impl FromIntoMemory for DEBUG_PROCESSOR_IDENTIFICATION_X86 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const DEBUG_PROCESS_DETACH_ON_EXIT: u32 = 1u32;
 pub const DEBUG_PROCESS_ONLY_THIS_PROCESS: u32 = 2u32;
 pub const DEBUG_PROC_DESC_DEFAULT: u32 = 0u32;
@@ -3902,6 +4599,17 @@ impl ::core::cmp::PartialEq for DEBUG_READ_USER_MINIDUMP_STREAM {
     }
 }
 impl ::core::cmp::Eq for DEBUG_READ_USER_MINIDUMP_STREAM {}
+impl FromIntoMemory for DEBUG_READ_USER_MINIDUMP_STREAM {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const DEBUG_REGISTERS_ALL: u32 = 7u32;
 pub const DEBUG_REGISTERS_DEFAULT: u32 = 0u32;
 pub const DEBUG_REGISTERS_FLOAT: u32 = 4u32;
@@ -3947,6 +4655,17 @@ impl ::core::cmp::PartialEq for DEBUG_REGISTER_DESCRIPTION {
     }
 }
 impl ::core::cmp::Eq for DEBUG_REGISTER_DESCRIPTION {}
+impl FromIntoMemory for DEBUG_REGISTER_DESCRIPTION {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const DEBUG_REGISTER_SUB_REGISTER: u32 = 1u32;
 pub const DEBUG_REGSRC_DEBUGGEE: u32 = 0u32;
 pub const DEBUG_REGSRC_EXPLICIT: u32 = 1u32;
@@ -4039,6 +4758,17 @@ impl ::core::cmp::PartialEq for DEBUG_SPECIFIC_FILTER_PARAMETERS {
     }
 }
 impl ::core::cmp::Eq for DEBUG_SPECIFIC_FILTER_PARAMETERS {}
+impl FromIntoMemory for DEBUG_SPECIFIC_FILTER_PARAMETERS {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const DEBUG_SRCFILE_SYMBOL_CHECKSUMINFO: u32 = 2u32;
 pub const DEBUG_SRCFILE_SYMBOL_TOKEN: u32 = 0u32;
 pub const DEBUG_SRCFILE_SYMBOL_TOKEN_SOURCE_COMMAND_WIDE: u32 = 1u32;
@@ -4125,6 +4855,17 @@ impl ::core::cmp::PartialEq for DEBUG_STACK_FRAME {
     }
 }
 impl ::core::cmp::Eq for DEBUG_STACK_FRAME {}
+impl FromIntoMemory for DEBUG_STACK_FRAME {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const DEBUG_STACK_FRAME_ADDRESSES: u32 = 8u32;
 pub const DEBUG_STACK_FRAME_ADDRESSES_RA_ONLY: u32 = 256u32;
 pub const DEBUG_STACK_FRAME_ARCH: u32 = 16384u32;
@@ -4180,6 +4921,17 @@ impl ::core::cmp::PartialEq for DEBUG_STACK_FRAME_EX {
     }
 }
 impl ::core::cmp::Eq for DEBUG_STACK_FRAME_EX {}
+impl FromIntoMemory for DEBUG_STACK_FRAME_EX {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const DEBUG_STACK_FRAME_MEMORY_USAGE: u32 = 512u32;
 pub const DEBUG_STACK_FRAME_NUMBERS: u32 = 64u32;
 pub const DEBUG_STACK_FRAME_OFFSETS: u32 = 4096u32;
@@ -4265,6 +5017,17 @@ impl ::core::cmp::PartialEq for DEBUG_SYMBOL_ENTRY {
     }
 }
 impl ::core::cmp::Eq for DEBUG_SYMBOL_ENTRY {}
+impl FromIntoMemory for DEBUG_SYMBOL_ENTRY {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const DEBUG_SYMBOL_EXPANDED: u32 = 16u32;
 pub const DEBUG_SYMBOL_EXPANSION_LEVEL_MASK: u32 = 15u32;
 pub const DEBUG_SYMBOL_IS_ARGUMENT: u32 = 256u32;
@@ -4308,6 +5071,17 @@ impl ::core::cmp::PartialEq for DEBUG_SYMBOL_PARAMETERS {
     }
 }
 impl ::core::cmp::Eq for DEBUG_SYMBOL_PARAMETERS {}
+impl FromIntoMemory for DEBUG_SYMBOL_PARAMETERS {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const DEBUG_SYMBOL_READ_ONLY: u32 = 32u32;
 pub struct DEBUG_SYMBOL_SOURCE_ENTRY {
     pub ModuleBase: u64,
@@ -4364,6 +5138,17 @@ impl ::core::cmp::PartialEq for DEBUG_SYMBOL_SOURCE_ENTRY {
     }
 }
 impl ::core::cmp::Eq for DEBUG_SYMBOL_SOURCE_ENTRY {}
+impl FromIntoMemory for DEBUG_SYMBOL_SOURCE_ENTRY {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const DEBUG_SYMENT_IS_CODE: u32 = 1u32;
 pub const DEBUG_SYMENT_IS_DATA: u32 = 2u32;
 pub const DEBUG_SYMENT_IS_LOCAL: u32 = 8u32;
@@ -4450,6 +5235,17 @@ impl ::core::cmp::PartialEq for DEBUG_THREAD_BASIC_INFORMATION {
     }
 }
 impl ::core::cmp::Eq for DEBUG_THREAD_BASIC_INFORMATION {}
+impl FromIntoMemory for DEBUG_THREAD_BASIC_INFORMATION {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct DEBUG_TYPED_DATA {
     pub ModBase: u64,
     pub Offset: u64,
@@ -4502,6 +5298,17 @@ impl ::core::cmp::PartialEq for DEBUG_TYPED_DATA {
     }
 }
 impl ::core::cmp::Eq for DEBUG_TYPED_DATA {}
+impl FromIntoMemory for DEBUG_TYPED_DATA {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const DEBUG_TYPED_DATA_IS_IN_MEMORY: u32 = 1u32;
 pub const DEBUG_TYPED_DATA_PHYSICAL_CACHED: u32 = 4u32;
 pub const DEBUG_TYPED_DATA_PHYSICAL_DEFAULT: u32 = 2u32;
@@ -4538,6 +5345,17 @@ impl ::core::cmp::PartialEq for DEBUG_VALUE {
     }
 }
 impl ::core::cmp::Eq for DEBUG_VALUE {}
+impl FromIntoMemory for DEBUG_VALUE {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct DEBUG_VALUE_0 {
     pub I8: u8,
     pub I16: u16,
@@ -4587,6 +5405,17 @@ impl ::core::cmp::PartialEq for DEBUG_VALUE_0 {
     }
 }
 impl ::core::cmp::Eq for DEBUG_VALUE_0 {}
+impl FromIntoMemory for DEBUG_VALUE_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct DEBUG_VALUE_0_0 {
     pub I64: u64,
     pub Nat: super::super::super::Foundation::BOOL,
@@ -4611,6 +5440,17 @@ impl ::core::cmp::PartialEq for DEBUG_VALUE_0_0 {
     }
 }
 impl ::core::cmp::Eq for DEBUG_VALUE_0_0 {}
+impl FromIntoMemory for DEBUG_VALUE_0_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct DEBUG_VALUE_0_1 {
     pub LowPart: u64,
     pub HighPart: i64,
@@ -4635,6 +5475,17 @@ impl ::core::cmp::PartialEq for DEBUG_VALUE_0_1 {
     }
 }
 impl ::core::cmp::Eq for DEBUG_VALUE_0_1 {}
+impl FromIntoMemory for DEBUG_VALUE_0_1 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct DEBUG_VALUE_0_2 {
     pub LowPart: u32,
     pub HighPart: u32,
@@ -4659,6 +5510,17 @@ impl ::core::cmp::PartialEq for DEBUG_VALUE_0_2 {
     }
 }
 impl ::core::cmp::Eq for DEBUG_VALUE_0_2 {}
+impl FromIntoMemory for DEBUG_VALUE_0_2 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const DEBUG_VALUE_FLOAT128: u32 = 9u32;
 pub const DEBUG_VALUE_FLOAT32: u32 = 5u32;
 pub const DEBUG_VALUE_FLOAT64: u32 = 6u32;
@@ -4755,6 +5617,19 @@ impl ::core::cmp::PartialEq for DISPATCHER_CONTEXT {
 impl ::core::cmp::Eq for DISPATCHER_CONTEXT {}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for DISPATCHER_CONTEXT {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 pub struct DISPATCHER_CONTEXT {
     pub ControlPc: u64,
     pub ImageBase: u64,
@@ -4817,6 +5692,19 @@ impl ::core::cmp::PartialEq for DISPATCHER_CONTEXT {
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for DISPATCHER_CONTEXT {}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
+#[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for DISPATCHER_CONTEXT {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const DMP_CONTEXT_RECORD_SIZE_32: u32 = 1200u32;
 pub const DMP_CONTEXT_RECORD_SIZE_64: u32 = 3000u32;
 pub const DMP_HEADER_COMMENT_SIZE: u32 = 128u32;
@@ -4879,6 +5767,17 @@ impl ::core::cmp::PartialEq for DUMP_FILE_ATTRIBUTES {
     }
 }
 impl ::core::cmp::Eq for DUMP_FILE_ATTRIBUTES {}
+impl FromIntoMemory for DUMP_FILE_ATTRIBUTES {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct DUMP_FILE_ATTRIBUTES_0 {
     pub _bitfield: u32,
 }
@@ -4901,6 +5800,17 @@ impl ::core::cmp::PartialEq for DUMP_FILE_ATTRIBUTES_0 {
     }
 }
 impl ::core::cmp::Eq for DUMP_FILE_ATTRIBUTES_0 {}
+impl FromIntoMemory for DUMP_FILE_ATTRIBUTES_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct DUMP_HEADER32 {
     pub Signature: u32,
     pub ValidDump: u32,
@@ -4990,6 +5900,17 @@ impl ::core::cmp::PartialEq for DUMP_HEADER32 {
     }
 }
 impl ::core::cmp::Eq for DUMP_HEADER32 {}
+impl FromIntoMemory for DUMP_HEADER32 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct DUMP_HEADER32_0 {
     pub PhysicalMemoryBlock: PHYSICAL_MEMORY_DESCRIPTOR32,
     pub PhysicalMemoryBlockBuffer: [u8; 700],
@@ -5007,6 +5928,17 @@ impl ::core::cmp::PartialEq for DUMP_HEADER32_0 {
     }
 }
 impl ::core::cmp::Eq for DUMP_HEADER32_0 {}
+impl FromIntoMemory for DUMP_HEADER32_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct DUMP_HEADER64 {
     pub Signature: u32,
     pub ValidDump: u32,
@@ -5092,6 +6024,17 @@ impl ::core::cmp::PartialEq for DUMP_HEADER64 {
     }
 }
 impl ::core::cmp::Eq for DUMP_HEADER64 {}
+impl FromIntoMemory for DUMP_HEADER64 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct DUMP_HEADER64_0 {
     pub PhysicalMemoryBlock: PHYSICAL_MEMORY_DESCRIPTOR64,
     pub PhysicalMemoryBlockBuffer: [u8; 700],
@@ -5109,6 +6052,17 @@ impl ::core::cmp::PartialEq for DUMP_HEADER64_0 {
     }
 }
 impl ::core::cmp::Eq for DUMP_HEADER64_0 {}
+impl FromIntoMemory for DUMP_HEADER64_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const DUMP_SUMMARY_VALID_CURRENT_USER_VA: u32 = 2u32;
 pub const DUMP_SUMMARY_VALID_KERNEL_VA: u32 = 1u32;
 pub const DefaultDebugSessionProvider: crate::core::GUID =
@@ -5183,6 +6137,17 @@ impl ::core::cmp::PartialEq for EXCEPTION_DEBUG_INFO {
     }
 }
 impl ::core::cmp::Eq for EXCEPTION_DEBUG_INFO {}
+impl FromIntoMemory for EXCEPTION_DEBUG_INFO {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct EXCEPTION_POINTERS {
@@ -5219,6 +6184,19 @@ impl ::core::cmp::PartialEq for EXCEPTION_POINTERS {
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for EXCEPTION_POINTERS {}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
+#[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for EXCEPTION_POINTERS {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct EXCEPTION_RECORD {
     pub ExceptionCode: super::super::super::Foundation::NTSTATUS,
     pub ExceptionFlags: u32,
@@ -5256,6 +6234,17 @@ impl ::core::cmp::PartialEq for EXCEPTION_RECORD {
     }
 }
 impl ::core::cmp::Eq for EXCEPTION_RECORD {}
+impl FromIntoMemory for EXCEPTION_RECORD {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct EXCEPTION_RECORD32 {
     pub ExceptionCode: super::super::super::Foundation::NTSTATUS,
     pub ExceptionFlags: u32,
@@ -5293,6 +6282,17 @@ impl ::core::cmp::PartialEq for EXCEPTION_RECORD32 {
     }
 }
 impl ::core::cmp::Eq for EXCEPTION_RECORD32 {}
+impl FromIntoMemory for EXCEPTION_RECORD32 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct EXCEPTION_RECORD64 {
     pub ExceptionCode: super::super::super::Foundation::NTSTATUS,
     pub ExceptionFlags: u32,
@@ -5333,6 +6333,17 @@ impl ::core::cmp::PartialEq for EXCEPTION_RECORD64 {
     }
 }
 impl ::core::cmp::Eq for EXCEPTION_RECORD64 {}
+impl FromIntoMemory for EXCEPTION_RECORD64 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const EXIT_ON_CONTROLC: u32 = 8u32;
 pub struct EXIT_PROCESS_DEBUG_INFO {
     pub dwExitCode: u32,
@@ -5356,6 +6367,17 @@ impl ::core::cmp::PartialEq for EXIT_PROCESS_DEBUG_INFO {
     }
 }
 impl ::core::cmp::Eq for EXIT_PROCESS_DEBUG_INFO {}
+impl FromIntoMemory for EXIT_PROCESS_DEBUG_INFO {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct EXIT_THREAD_DEBUG_INFO {
     pub dwExitCode: u32,
 }
@@ -5378,6 +6400,17 @@ impl ::core::cmp::PartialEq for EXIT_THREAD_DEBUG_INFO {
     }
 }
 impl ::core::cmp::Eq for EXIT_THREAD_DEBUG_INFO {}
+impl FromIntoMemory for EXIT_THREAD_DEBUG_INFO {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct EXTSTACKTRACE {
     pub FramePointer: u32,
     pub ProgramCounter: u32,
@@ -5409,6 +6442,17 @@ impl ::core::cmp::PartialEq for EXTSTACKTRACE {
     }
 }
 impl ::core::cmp::Eq for EXTSTACKTRACE {}
+impl FromIntoMemory for EXTSTACKTRACE {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct EXTSTACKTRACE32 {
     pub FramePointer: u32,
     pub ProgramCounter: u32,
@@ -5440,6 +6484,17 @@ impl ::core::cmp::PartialEq for EXTSTACKTRACE32 {
     }
 }
 impl ::core::cmp::Eq for EXTSTACKTRACE32 {}
+impl FromIntoMemory for EXTSTACKTRACE32 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct EXTSTACKTRACE64 {
     pub FramePointer: u64,
     pub ProgramCounter: u64,
@@ -5471,6 +6526,17 @@ impl ::core::cmp::PartialEq for EXTSTACKTRACE64 {
     }
 }
 impl ::core::cmp::Eq for EXTSTACKTRACE64 {}
+impl FromIntoMemory for EXTSTACKTRACE64 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct EXT_API_VERSION {
     pub MajorVersion: u16,
     pub MinorVersion: u16,
@@ -5502,6 +6568,17 @@ impl ::core::cmp::PartialEq for EXT_API_VERSION {
     }
 }
 impl ::core::cmp::Eq for EXT_API_VERSION {}
+impl FromIntoMemory for EXT_API_VERSION {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const EXT_API_VERSION_NUMBER: u32 = 5u32;
 pub const EXT_API_VERSION_NUMBER32: u32 = 5u32;
 pub const EXT_API_VERSION_NUMBER64: u32 = 6u32;
@@ -5560,6 +6637,17 @@ impl ::core::cmp::PartialEq for EXT_FIND_FILE {
     }
 }
 impl ::core::cmp::Eq for EXT_FIND_FILE {}
+impl FromIntoMemory for EXT_FIND_FILE {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const EXT_FIND_FILE_ALLOW_GIVEN_PATH: u32 = 1u32;
 pub struct EXT_MATCH_PATTERN_A {
     pub Str: crate::core::PCSTR,
@@ -5589,6 +6677,17 @@ impl ::core::cmp::PartialEq for EXT_MATCH_PATTERN_A {
     }
 }
 impl ::core::cmp::Eq for EXT_MATCH_PATTERN_A {}
+impl FromIntoMemory for EXT_MATCH_PATTERN_A {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const EXT_OUTPUT_VER: u32 = 1u32;
 pub const EXT_TDF_PHYSICAL_CACHED: u32 = 4u32;
 pub const EXT_TDF_PHYSICAL_DEFAULT: u32 = 2u32;
@@ -5714,6 +6813,17 @@ impl ::core::cmp::PartialEq for EXT_TYPED_DATA {
     }
 }
 impl ::core::cmp::Eq for EXT_TYPED_DATA {}
+impl FromIntoMemory for EXT_TYPED_DATA {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct EX_PROP_INFO_FLAGS(pub i32);
 pub const EX_PROP_INFO_ID: EX_PROP_INFO_FLAGS = EX_PROP_INFO_FLAGS(256i32);
@@ -5845,6 +6955,19 @@ impl ::core::cmp::PartialEq for ExtendedDebugPropertyInfo {
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for ExtendedDebugPropertyInfo {}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.System.Ole'*"]
+#[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for ExtendedDebugPropertyInfo {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct FACILITY_CODE(pub u32);
 pub const FACILITY_NULL: FACILITY_CODE = FACILITY_CODE(0u32);
@@ -6064,6 +7187,17 @@ impl ::core::cmp::PartialEq for FIELD_INFO {
     }
 }
 impl ::core::cmp::Eq for FIELD_INFO {}
+impl FromIntoMemory for FIELD_INFO {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct FIELD_INFO_0 {
     pub fieldCallBack: MutPtr<::core::ffi::c_void>,
     pub pBuffer: MutPtr<::core::ffi::c_void>,
@@ -6080,6 +7214,17 @@ impl ::core::cmp::PartialEq for FIELD_INFO_0 {
     }
 }
 impl ::core::cmp::Eq for FIELD_INFO_0 {}
+impl FromIntoMemory for FIELD_INFO_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct FIELD_INFO_1 {
     pub Position: u16,
     pub Size: u16,
@@ -6104,6 +7249,17 @@ impl ::core::cmp::PartialEq for FIELD_INFO_1 {
     }
 }
 impl ::core::cmp::Eq for FIELD_INFO_1 {}
+impl FromIntoMemory for FIELD_INFO_1 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const FLAG_ENGINE_PRESENT: u32 = 4u32;
 pub const FLAG_ENGOPT_DISALLOW_NETWORK_PATHS: u32 = 8u32;
 pub const FLAG_OVERRIDE_ARM_MACHINE_TYPE: u32 = 16u32;
@@ -6206,6 +7362,17 @@ impl ::core::cmp::PartialEq for FPO_DATA {
     }
 }
 impl ::core::cmp::Eq for FPO_DATA {}
+impl FromIntoMemory for FPO_DATA {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const GETATTRFLAG_HUMANTEXT: u32 = 32768u32;
 pub const GETATTRFLAG_THIS: u32 = 256u32;
 pub const GETATTRTYPE_DEPSCAN: u32 = 1u32;
@@ -6238,6 +7405,17 @@ impl ::core::cmp::PartialEq for GET_CONTEXT_EX {
     }
 }
 impl ::core::cmp::Eq for GET_CONTEXT_EX {}
+impl FromIntoMemory for GET_CONTEXT_EX {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct GET_CURRENT_PROCESS_ADDRESS {
     pub Processor: u32,
     pub CurrentThread: u64,
@@ -6266,6 +7444,17 @@ impl ::core::cmp::PartialEq for GET_CURRENT_PROCESS_ADDRESS {
     }
 }
 impl ::core::cmp::Eq for GET_CURRENT_PROCESS_ADDRESS {}
+impl FromIntoMemory for GET_CURRENT_PROCESS_ADDRESS {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct GET_CURRENT_THREAD_ADDRESS {
     pub Processor: u32,
     pub Address: u64,
@@ -6290,6 +7479,17 @@ impl ::core::cmp::PartialEq for GET_CURRENT_THREAD_ADDRESS {
     }
 }
 impl ::core::cmp::Eq for GET_CURRENT_THREAD_ADDRESS {}
+impl FromIntoMemory for GET_CURRENT_THREAD_ADDRESS {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct GET_EXPRESSION_EX {
     pub Expression: crate::core::PCSTR,
     pub Remainder: crate::core::PCSTR,
@@ -6318,6 +7518,17 @@ impl ::core::cmp::PartialEq for GET_EXPRESSION_EX {
     }
 }
 impl ::core::cmp::Eq for GET_EXPRESSION_EX {}
+impl FromIntoMemory for GET_EXPRESSION_EX {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct GET_INPUT_LINE {
     pub Prompt: crate::core::PCSTR,
     pub Buffer: crate::core::PSTR,
@@ -6349,6 +7560,17 @@ impl ::core::cmp::PartialEq for GET_INPUT_LINE {
     }
 }
 impl ::core::cmp::Eq for GET_INPUT_LINE {}
+impl FromIntoMemory for GET_INPUT_LINE {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct GET_PEB_ADDRESS {
     pub CurrentThread: u64,
     pub Address: u64,
@@ -6373,6 +7595,17 @@ impl ::core::cmp::PartialEq for GET_PEB_ADDRESS {
     }
 }
 impl ::core::cmp::Eq for GET_PEB_ADDRESS {}
+impl FromIntoMemory for GET_PEB_ADDRESS {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct GET_SET_SYMPATH {
     pub Args: crate::core::PCSTR,
     pub Result: crate::core::PSTR,
@@ -6399,6 +7632,17 @@ impl ::core::cmp::PartialEq for GET_SET_SYMPATH {
     }
 }
 impl ::core::cmp::Eq for GET_SET_SYMPATH {}
+impl FromIntoMemory for GET_SET_SYMPATH {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct GET_TEB_ADDRESS {
     pub Address: u64,
 }
@@ -6421,6 +7665,17 @@ impl ::core::cmp::PartialEq for GET_TEB_ADDRESS {
     }
 }
 impl ::core::cmp::Eq for GET_TEB_ADDRESS {}
+impl FromIntoMemory for GET_TEB_ADDRESS {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const IG_DISASSEMBLE_BUFFER: u32 = 44u32;
 pub const IG_DUMP_SYMBOL_INFO: u32 = 22u32;
 pub const IG_FIND_FILE: u32 = 40u32;
@@ -6502,6 +7757,17 @@ impl ::core::cmp::PartialEq for IMAGEHLP_CBA_EVENT {
     }
 }
 impl ::core::cmp::Eq for IMAGEHLP_CBA_EVENT {}
+impl FromIntoMemory for IMAGEHLP_CBA_EVENT {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct IMAGEHLP_CBA_EVENTW {
     pub severity: IMAGEHLP_CBA_EVENT_SEVERITY,
     pub code: u32,
@@ -6533,6 +7799,17 @@ impl ::core::cmp::PartialEq for IMAGEHLP_CBA_EVENTW {
     }
 }
 impl ::core::cmp::Eq for IMAGEHLP_CBA_EVENTW {}
+impl FromIntoMemory for IMAGEHLP_CBA_EVENTW {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct IMAGEHLP_CBA_EVENT_SEVERITY(pub u32);
 pub const sevInfo: IMAGEHLP_CBA_EVENT_SEVERITY = IMAGEHLP_CBA_EVENT_SEVERITY(0u32);
@@ -6599,6 +7876,17 @@ impl ::core::cmp::PartialEq for IMAGEHLP_CBA_READ_MEMORY {
     }
 }
 impl ::core::cmp::Eq for IMAGEHLP_CBA_READ_MEMORY {}
+impl FromIntoMemory for IMAGEHLP_CBA_READ_MEMORY {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct IMAGEHLP_DEFERRED_SYMBOL_LOAD {
     pub SizeOfStruct: u32,
     pub BaseOfImage: u32,
@@ -6639,6 +7927,17 @@ impl ::core::cmp::PartialEq for IMAGEHLP_DEFERRED_SYMBOL_LOAD {
     }
 }
 impl ::core::cmp::Eq for IMAGEHLP_DEFERRED_SYMBOL_LOAD {}
+impl FromIntoMemory for IMAGEHLP_DEFERRED_SYMBOL_LOAD {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct IMAGEHLP_DEFERRED_SYMBOL_LOAD64 {
     pub SizeOfStruct: u32,
     pub BaseOfImage: u64,
@@ -6682,6 +7981,17 @@ impl ::core::cmp::PartialEq for IMAGEHLP_DEFERRED_SYMBOL_LOAD64 {
     }
 }
 impl ::core::cmp::Eq for IMAGEHLP_DEFERRED_SYMBOL_LOAD64 {}
+impl FromIntoMemory for IMAGEHLP_DEFERRED_SYMBOL_LOAD64 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct IMAGEHLP_DEFERRED_SYMBOL_LOADW64 {
     pub SizeOfStruct: u32,
     pub BaseOfImage: u64,
@@ -6725,6 +8035,17 @@ impl ::core::cmp::PartialEq for IMAGEHLP_DEFERRED_SYMBOL_LOADW64 {
     }
 }
 impl ::core::cmp::Eq for IMAGEHLP_DEFERRED_SYMBOL_LOADW64 {}
+impl FromIntoMemory for IMAGEHLP_DEFERRED_SYMBOL_LOADW64 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct IMAGEHLP_DUPLICATE_SYMBOL {
     pub SizeOfStruct: u32,
     pub NumberOfDups: u32,
@@ -6756,6 +8077,17 @@ impl ::core::cmp::PartialEq for IMAGEHLP_DUPLICATE_SYMBOL {
     }
 }
 impl ::core::cmp::Eq for IMAGEHLP_DUPLICATE_SYMBOL {}
+impl FromIntoMemory for IMAGEHLP_DUPLICATE_SYMBOL {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct IMAGEHLP_DUPLICATE_SYMBOL64 {
     pub SizeOfStruct: u32,
     pub NumberOfDups: u32,
@@ -6787,6 +8119,17 @@ impl ::core::cmp::PartialEq for IMAGEHLP_DUPLICATE_SYMBOL64 {
     }
 }
 impl ::core::cmp::Eq for IMAGEHLP_DUPLICATE_SYMBOL64 {}
+impl FromIntoMemory for IMAGEHLP_DUPLICATE_SYMBOL64 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct IMAGEHLP_EXTENDED_OPTIONS(pub i32);
 pub const SYMOPT_EX_DISABLEACCESSTIMEUPDATE: IMAGEHLP_EXTENDED_OPTIONS =
@@ -6934,6 +8277,17 @@ impl ::core::cmp::PartialEq for IMAGEHLP_GET_TYPE_INFO_PARAMS {
     }
 }
 impl ::core::cmp::Eq for IMAGEHLP_GET_TYPE_INFO_PARAMS {}
+impl FromIntoMemory for IMAGEHLP_GET_TYPE_INFO_PARAMS {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct IMAGEHLP_HD_TYPE(pub i32);
 pub const hdBase: IMAGEHLP_HD_TYPE = IMAGEHLP_HD_TYPE(0i32);
@@ -7001,6 +8355,17 @@ impl ::core::cmp::PartialEq for IMAGEHLP_LINE {
     }
 }
 impl ::core::cmp::Eq for IMAGEHLP_LINE {}
+impl FromIntoMemory for IMAGEHLP_LINE {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct IMAGEHLP_LINE64 {
     pub SizeOfStruct: u32,
     pub Key: MutPtr<::core::ffi::c_void>,
@@ -7035,6 +8400,17 @@ impl ::core::cmp::PartialEq for IMAGEHLP_LINE64 {
     }
 }
 impl ::core::cmp::Eq for IMAGEHLP_LINE64 {}
+impl FromIntoMemory for IMAGEHLP_LINE64 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct IMAGEHLP_LINEW {
     pub SizeOfStruct: u32,
     pub Key: MutPtr<::core::ffi::c_void>,
@@ -7069,6 +8445,17 @@ impl ::core::cmp::PartialEq for IMAGEHLP_LINEW {
     }
 }
 impl ::core::cmp::Eq for IMAGEHLP_LINEW {}
+impl FromIntoMemory for IMAGEHLP_LINEW {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct IMAGEHLP_LINEW64 {
     pub SizeOfStruct: u32,
     pub Key: MutPtr<::core::ffi::c_void>,
@@ -7103,6 +8490,17 @@ impl ::core::cmp::PartialEq for IMAGEHLP_LINEW64 {
     }
 }
 impl ::core::cmp::Eq for IMAGEHLP_LINEW64 {}
+impl FromIntoMemory for IMAGEHLP_LINEW64 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct IMAGEHLP_MODULE {
     pub SizeOfStruct: u32,
     pub BaseOfImage: u32,
@@ -7152,6 +8550,17 @@ impl ::core::cmp::PartialEq for IMAGEHLP_MODULE {
     }
 }
 impl ::core::cmp::Eq for IMAGEHLP_MODULE {}
+impl FromIntoMemory for IMAGEHLP_MODULE {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct IMAGEHLP_MODULE64 {
     pub SizeOfStruct: u32,
     pub BaseOfImage: u64,
@@ -7246,6 +8655,17 @@ impl ::core::cmp::PartialEq for IMAGEHLP_MODULE64 {
     }
 }
 impl ::core::cmp::Eq for IMAGEHLP_MODULE64 {}
+impl FromIntoMemory for IMAGEHLP_MODULE64 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct IMAGEHLP_MODULE64_EX {
     pub Module: IMAGEHLP_MODULE64,
     pub RegionFlags: u32,
@@ -7270,6 +8690,17 @@ impl ::core::cmp::PartialEq for IMAGEHLP_MODULE64_EX {
     }
 }
 impl ::core::cmp::Eq for IMAGEHLP_MODULE64_EX {}
+impl FromIntoMemory for IMAGEHLP_MODULE64_EX {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct IMAGEHLP_MODULEW {
     pub SizeOfStruct: u32,
     pub BaseOfImage: u32,
@@ -7319,6 +8750,17 @@ impl ::core::cmp::PartialEq for IMAGEHLP_MODULEW {
     }
 }
 impl ::core::cmp::Eq for IMAGEHLP_MODULEW {}
+impl FromIntoMemory for IMAGEHLP_MODULEW {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct IMAGEHLP_MODULEW64 {
     pub SizeOfStruct: u32,
     pub BaseOfImage: u64,
@@ -7413,6 +8855,17 @@ impl ::core::cmp::PartialEq for IMAGEHLP_MODULEW64 {
     }
 }
 impl ::core::cmp::Eq for IMAGEHLP_MODULEW64 {}
+impl FromIntoMemory for IMAGEHLP_MODULEW64 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct IMAGEHLP_MODULEW64_EX {
     pub Module: IMAGEHLP_MODULEW64,
     pub RegionFlags: u32,
@@ -7437,6 +8890,17 @@ impl ::core::cmp::PartialEq for IMAGEHLP_MODULEW64_EX {
     }
 }
 impl ::core::cmp::Eq for IMAGEHLP_MODULEW64_EX {}
+impl FromIntoMemory for IMAGEHLP_MODULEW64_EX {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const IMAGEHLP_MODULE_REGION_ADDITIONAL: u32 = 4u32;
 pub const IMAGEHLP_MODULE_REGION_ALL: u32 = 255u32;
 pub const IMAGEHLP_MODULE_REGION_DLLBASE: u32 = 1u32;
@@ -7532,6 +8996,17 @@ impl ::core::cmp::PartialEq for IMAGEHLP_STACK_FRAME {
     }
 }
 impl ::core::cmp::Eq for IMAGEHLP_STACK_FRAME {}
+impl FromIntoMemory for IMAGEHLP_STACK_FRAME {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct IMAGEHLP_STATUS_REASON(pub i32);
 pub const BindOutOfMemory: IMAGEHLP_STATUS_REASON = IMAGEHLP_STATUS_REASON(0i32);
@@ -7620,6 +9095,17 @@ impl ::core::cmp::PartialEq for IMAGEHLP_SYMBOL {
     }
 }
 impl ::core::cmp::Eq for IMAGEHLP_SYMBOL {}
+impl FromIntoMemory for IMAGEHLP_SYMBOL {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct IMAGEHLP_SYMBOL64 {
     pub SizeOfStruct: u32,
     pub Address: u64,
@@ -7657,6 +9143,17 @@ impl ::core::cmp::PartialEq for IMAGEHLP_SYMBOL64 {
     }
 }
 impl ::core::cmp::Eq for IMAGEHLP_SYMBOL64 {}
+impl FromIntoMemory for IMAGEHLP_SYMBOL64 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct IMAGEHLP_SYMBOL64_PACKAGE {
     pub sym: IMAGEHLP_SYMBOL64,
     pub name: [super::super::super::Foundation::CHAR; 2001],
@@ -7681,6 +9178,17 @@ impl ::core::cmp::PartialEq for IMAGEHLP_SYMBOL64_PACKAGE {
     }
 }
 impl ::core::cmp::Eq for IMAGEHLP_SYMBOL64_PACKAGE {}
+impl FromIntoMemory for IMAGEHLP_SYMBOL64_PACKAGE {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct IMAGEHLP_SYMBOLW {
     pub SizeOfStruct: u32,
     pub Address: u32,
@@ -7718,6 +9226,17 @@ impl ::core::cmp::PartialEq for IMAGEHLP_SYMBOLW {
     }
 }
 impl ::core::cmp::Eq for IMAGEHLP_SYMBOLW {}
+impl FromIntoMemory for IMAGEHLP_SYMBOLW {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct IMAGEHLP_SYMBOLW64 {
     pub SizeOfStruct: u32,
     pub Address: u64,
@@ -7755,6 +9274,17 @@ impl ::core::cmp::PartialEq for IMAGEHLP_SYMBOLW64 {
     }
 }
 impl ::core::cmp::Eq for IMAGEHLP_SYMBOLW64 {}
+impl FromIntoMemory for IMAGEHLP_SYMBOLW64 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct IMAGEHLP_SYMBOLW64_PACKAGE {
     pub sym: IMAGEHLP_SYMBOLW64,
     pub name: [u16; 2001],
@@ -7779,6 +9309,17 @@ impl ::core::cmp::PartialEq for IMAGEHLP_SYMBOLW64_PACKAGE {
     }
 }
 impl ::core::cmp::Eq for IMAGEHLP_SYMBOLW64_PACKAGE {}
+impl FromIntoMemory for IMAGEHLP_SYMBOLW64_PACKAGE {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct IMAGEHLP_SYMBOLW_PACKAGE {
     pub sym: IMAGEHLP_SYMBOLW,
     pub name: [u16; 2001],
@@ -7803,6 +9344,17 @@ impl ::core::cmp::PartialEq for IMAGEHLP_SYMBOLW_PACKAGE {
     }
 }
 impl ::core::cmp::Eq for IMAGEHLP_SYMBOLW_PACKAGE {}
+impl FromIntoMemory for IMAGEHLP_SYMBOLW_PACKAGE {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const IMAGEHLP_SYMBOL_FUNCTION: u32 = 2048u32;
 pub const IMAGEHLP_SYMBOL_INFO_CONSTANT: u32 = 256u32;
 pub const IMAGEHLP_SYMBOL_INFO_FRAMERELATIVE: u32 = 32u32;
@@ -7836,6 +9388,17 @@ impl ::core::cmp::PartialEq for IMAGEHLP_SYMBOL_PACKAGE {
     }
 }
 impl ::core::cmp::Eq for IMAGEHLP_SYMBOL_PACKAGE {}
+impl FromIntoMemory for IMAGEHLP_SYMBOL_PACKAGE {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct IMAGEHLP_SYMBOL_SRC {
     pub sizeofstruct: u32,
     pub r#type: u32,
@@ -7864,6 +9427,17 @@ impl ::core::cmp::PartialEq for IMAGEHLP_SYMBOL_SRC {
     }
 }
 impl ::core::cmp::Eq for IMAGEHLP_SYMBOL_SRC {}
+impl FromIntoMemory for IMAGEHLP_SYMBOL_SRC {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const IMAGEHLP_SYMBOL_THUNK: u32 = 8192u32;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct IMAGEHLP_SYMBOL_TYPE_INFO(pub i32);
@@ -7952,6 +9526,17 @@ impl ::core::cmp::PartialEq for IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY {
     }
 }
 impl ::core::cmp::Eq for IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY {}
+impl FromIntoMemory for IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY_0 {
     pub UnwindData: u32,
     pub Anonymous: IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY_0_0,
@@ -7968,6 +9553,17 @@ impl ::core::cmp::PartialEq for IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY_0 {
     }
 }
 impl ::core::cmp::Eq for IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY_0 {}
+impl FromIntoMemory for IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY_0_0 {
     pub _bitfield: u32,
 }
@@ -7990,6 +9586,17 @@ impl ::core::cmp::PartialEq for IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY_0_0 {
     }
 }
 impl ::core::cmp::Eq for IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY_0_0 {}
+impl FromIntoMemory for IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY_0_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct IMAGE_COFF_SYMBOLS_HEADER {
     pub NumberOfSymbols: u32,
     pub LvaToFirstSymbol: u32,
@@ -8033,6 +9640,17 @@ impl ::core::cmp::PartialEq for IMAGE_COFF_SYMBOLS_HEADER {
     }
 }
 impl ::core::cmp::Eq for IMAGE_COFF_SYMBOLS_HEADER {}
+impl FromIntoMemory for IMAGE_COFF_SYMBOLS_HEADER {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct IMAGE_COR20_HEADER {
     pub cb: u32,
     pub MajorRuntimeVersion: u16,
@@ -8070,6 +9688,17 @@ impl ::core::cmp::PartialEq for IMAGE_COR20_HEADER {
     }
 }
 impl ::core::cmp::Eq for IMAGE_COR20_HEADER {}
+impl FromIntoMemory for IMAGE_COR20_HEADER {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct IMAGE_COR20_HEADER_0 {
     pub EntryPointToken: u32,
     pub EntryPointRVA: u32,
@@ -8086,6 +9715,17 @@ impl ::core::cmp::PartialEq for IMAGE_COR20_HEADER_0 {
     }
 }
 impl ::core::cmp::Eq for IMAGE_COR20_HEADER_0 {}
+impl FromIntoMemory for IMAGE_COR20_HEADER_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct IMAGE_DATA_DIRECTORY {
     pub VirtualAddress: u32,
     pub Size: u32,
@@ -8110,6 +9750,17 @@ impl ::core::cmp::PartialEq for IMAGE_DATA_DIRECTORY {
     }
 }
 impl ::core::cmp::Eq for IMAGE_DATA_DIRECTORY {}
+impl FromIntoMemory for IMAGE_DATA_DIRECTORY {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct IMAGE_DEBUG_DIRECTORY {
     pub Characteristics: u32,
     pub TimeDateStamp: u32,
@@ -8153,6 +9804,17 @@ impl ::core::cmp::PartialEq for IMAGE_DEBUG_DIRECTORY {
     }
 }
 impl ::core::cmp::Eq for IMAGE_DEBUG_DIRECTORY {}
+impl FromIntoMemory for IMAGE_DEBUG_DIRECTORY {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct IMAGE_DEBUG_INFORMATION {
@@ -8305,6 +9967,19 @@ impl ::core::cmp::PartialEq for IMAGE_DEBUG_INFORMATION {
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for IMAGE_DEBUG_INFORMATION {}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
+#[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for IMAGE_DEBUG_INFORMATION {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct IMAGE_DEBUG_TYPE(pub u32);
 pub const IMAGE_DEBUG_TYPE_UNKNOWN: IMAGE_DEBUG_TYPE = IMAGE_DEBUG_TYPE(0u32);
@@ -8694,6 +10369,17 @@ impl ::core::cmp::PartialEq for IMAGE_FILE_HEADER {
     }
 }
 impl ::core::cmp::Eq for IMAGE_FILE_HEADER {}
+impl FromIntoMemory for IMAGE_FILE_HEADER {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct IMAGE_FILE_MACHINE(pub u16);
 pub const IMAGE_FILE_MACHINE_AXP64: IMAGE_FILE_MACHINE = IMAGE_FILE_MACHINE(644u16);
@@ -8783,6 +10469,17 @@ impl ::core::cmp::PartialEq for IMAGE_FUNCTION_ENTRY {
     }
 }
 impl ::core::cmp::Eq for IMAGE_FUNCTION_ENTRY {}
+impl FromIntoMemory for IMAGE_FUNCTION_ENTRY {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct IMAGE_FUNCTION_ENTRY64 {
     pub StartingAddress: u64,
     pub EndingAddress: u64,
@@ -8802,6 +10499,17 @@ impl ::core::cmp::PartialEq for IMAGE_FUNCTION_ENTRY64 {
     }
 }
 impl ::core::cmp::Eq for IMAGE_FUNCTION_ENTRY64 {}
+impl FromIntoMemory for IMAGE_FUNCTION_ENTRY64 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct IMAGE_FUNCTION_ENTRY64_0 {
     pub EndOfPrologue: u64,
     pub UnwindInfoAddress: u64,
@@ -8819,6 +10527,17 @@ impl ::core::cmp::PartialEq for IMAGE_FUNCTION_ENTRY64_0 {
     }
 }
 impl ::core::cmp::Eq for IMAGE_FUNCTION_ENTRY64_0 {}
+impl FromIntoMemory for IMAGE_FUNCTION_ENTRY64_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct IMAGE_LOAD_CONFIG_CODE_INTEGRITY {
     pub Flags: u16,
     pub Catalog: u16,
@@ -8850,6 +10569,17 @@ impl ::core::cmp::PartialEq for IMAGE_LOAD_CONFIG_CODE_INTEGRITY {
     }
 }
 impl ::core::cmp::Eq for IMAGE_LOAD_CONFIG_CODE_INTEGRITY {}
+impl FromIntoMemory for IMAGE_LOAD_CONFIG_CODE_INTEGRITY {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct IMAGE_LOAD_CONFIG_DIRECTORY32 {
     pub Size: u32,
     pub TimeDateStamp: u32,
@@ -9064,6 +10794,17 @@ impl ::core::cmp::PartialEq for IMAGE_LOAD_CONFIG_DIRECTORY32 {
     }
 }
 impl ::core::cmp::Eq for IMAGE_LOAD_CONFIG_DIRECTORY32 {}
+impl FromIntoMemory for IMAGE_LOAD_CONFIG_DIRECTORY32 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct IMAGE_LOAD_CONFIG_DIRECTORY64 {
     pub Size: u32,
     pub TimeDateStamp: u32,
@@ -9176,6 +10917,17 @@ impl ::core::cmp::PartialEq for IMAGE_LOAD_CONFIG_DIRECTORY64 {
     }
 }
 impl ::core::cmp::Eq for IMAGE_LOAD_CONFIG_DIRECTORY64 {}
+impl FromIntoMemory for IMAGE_LOAD_CONFIG_DIRECTORY64 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct IMAGE_NT_HEADERS32 {
     pub Signature: u32,
     pub FileHeader: IMAGE_FILE_HEADER,
@@ -9204,6 +10956,17 @@ impl ::core::cmp::PartialEq for IMAGE_NT_HEADERS32 {
     }
 }
 impl ::core::cmp::Eq for IMAGE_NT_HEADERS32 {}
+impl FromIntoMemory for IMAGE_NT_HEADERS32 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct IMAGE_NT_HEADERS64 {
     pub Signature: u32,
     pub FileHeader: IMAGE_FILE_HEADER,
@@ -9223,6 +10986,17 @@ impl ::core::cmp::PartialEq for IMAGE_NT_HEADERS64 {
     }
 }
 impl ::core::cmp::Eq for IMAGE_NT_HEADERS64 {}
+impl FromIntoMemory for IMAGE_NT_HEADERS64 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct IMAGE_OPTIONAL_HEADER32 {
     pub Magic: IMAGE_OPTIONAL_HEADER_MAGIC,
     pub MajorLinkerVersion: u8,
@@ -9341,6 +11115,17 @@ impl ::core::cmp::PartialEq for IMAGE_OPTIONAL_HEADER32 {
     }
 }
 impl ::core::cmp::Eq for IMAGE_OPTIONAL_HEADER32 {}
+impl FromIntoMemory for IMAGE_OPTIONAL_HEADER32 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct IMAGE_OPTIONAL_HEADER64 {
     pub Magic: IMAGE_OPTIONAL_HEADER_MAGIC,
     pub MajorLinkerVersion: u8,
@@ -9414,6 +11199,17 @@ impl ::core::cmp::PartialEq for IMAGE_OPTIONAL_HEADER64 {
     }
 }
 impl ::core::cmp::Eq for IMAGE_OPTIONAL_HEADER64 {}
+impl FromIntoMemory for IMAGE_OPTIONAL_HEADER64 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct IMAGE_OPTIONAL_HEADER_MAGIC(pub u16);
 pub const IMAGE_NT_OPTIONAL_HDR_MAGIC: IMAGE_OPTIONAL_HEADER_MAGIC =
@@ -9477,6 +11273,17 @@ impl ::core::cmp::PartialEq for IMAGE_ROM_HEADERS {
     }
 }
 impl ::core::cmp::Eq for IMAGE_ROM_HEADERS {}
+impl FromIntoMemory for IMAGE_ROM_HEADERS {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct IMAGE_ROM_OPTIONAL_HEADER {
     pub Magic: u16,
     pub MajorLinkerVersion: u8,
@@ -9535,6 +11342,17 @@ impl ::core::cmp::PartialEq for IMAGE_ROM_OPTIONAL_HEADER {
     }
 }
 impl ::core::cmp::Eq for IMAGE_ROM_OPTIONAL_HEADER {}
+impl FromIntoMemory for IMAGE_ROM_OPTIONAL_HEADER {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct IMAGE_RUNTIME_FUNCTION_ENTRY {
     pub BeginAddress: u32,
     pub EndAddress: u32,
@@ -9554,6 +11372,17 @@ impl ::core::cmp::PartialEq for IMAGE_RUNTIME_FUNCTION_ENTRY {
     }
 }
 impl ::core::cmp::Eq for IMAGE_RUNTIME_FUNCTION_ENTRY {}
+impl FromIntoMemory for IMAGE_RUNTIME_FUNCTION_ENTRY {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct IMAGE_RUNTIME_FUNCTION_ENTRY_0 {
     pub UnwindInfoAddress: u32,
     pub UnwindData: u32,
@@ -9570,6 +11399,17 @@ impl ::core::cmp::PartialEq for IMAGE_RUNTIME_FUNCTION_ENTRY_0 {
     }
 }
 impl ::core::cmp::Eq for IMAGE_RUNTIME_FUNCTION_ENTRY_0 {}
+impl FromIntoMemory for IMAGE_RUNTIME_FUNCTION_ENTRY_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct IMAGE_SECTION_CHARACTERISTICS(pub u32);
 pub const IMAGE_SCN_TYPE_NO_PAD: IMAGE_SECTION_CHARACTERISTICS =
@@ -9737,6 +11577,17 @@ impl ::core::cmp::PartialEq for IMAGE_SECTION_HEADER {
     }
 }
 impl ::core::cmp::Eq for IMAGE_SECTION_HEADER {}
+impl FromIntoMemory for IMAGE_SECTION_HEADER {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct IMAGE_SECTION_HEADER_0 {
     pub PhysicalAddress: u32,
     pub VirtualSize: u32,
@@ -9753,6 +11604,17 @@ impl ::core::cmp::PartialEq for IMAGE_SECTION_HEADER_0 {
     }
 }
 impl ::core::cmp::Eq for IMAGE_SECTION_HEADER_0 {}
+impl FromIntoMemory for IMAGE_SECTION_HEADER_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct IMAGE_SUBSYSTEM(pub u16);
 pub const IMAGE_SUBSYSTEM_UNKNOWN: IMAGE_SUBSYSTEM = IMAGE_SUBSYSTEM(0u16);
@@ -9814,6 +11676,17 @@ impl ::core::cmp::PartialEq for INLINE_FRAME_CONTEXT {
     }
 }
 impl ::core::cmp::Eq for INLINE_FRAME_CONTEXT {}
+impl FromIntoMemory for INLINE_FRAME_CONTEXT {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct INLINE_FRAME_CONTEXT_0 {
     pub FrameId: u8,
     pub FrameType: u8,
@@ -9842,6 +11715,17 @@ impl ::core::cmp::PartialEq for INLINE_FRAME_CONTEXT_0 {
     }
 }
 impl ::core::cmp::Eq for INLINE_FRAME_CONTEXT_0 {}
+impl FromIntoMemory for INLINE_FRAME_CONTEXT_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const INLINE_FRAME_CONTEXT_IGNORE: u32 = 4294967295u32;
 pub const INLINE_FRAME_CONTEXT_INIT: u32 = 0u32;
 pub const INSUFFICIENT_SPACE_TO_COPY: u32 = 10u32;
@@ -9876,6 +11760,17 @@ impl ::core::cmp::PartialEq for IOSPACE {
     }
 }
 impl ::core::cmp::Eq for IOSPACE {}
+impl FromIntoMemory for IOSPACE {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct IOSPACE32 {
     pub Address: u32,
     pub Length: u32,
@@ -9902,6 +11797,17 @@ impl ::core::cmp::PartialEq for IOSPACE32 {
     }
 }
 impl ::core::cmp::Eq for IOSPACE32 {}
+impl FromIntoMemory for IOSPACE32 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct IOSPACE64 {
     pub Address: u64,
     pub Length: u32,
@@ -9928,6 +11834,17 @@ impl ::core::cmp::PartialEq for IOSPACE64 {
     }
 }
 impl ::core::cmp::Eq for IOSPACE64 {}
+impl FromIntoMemory for IOSPACE64 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct IOSPACE_EX {
     pub Address: u32,
     pub Length: u32,
@@ -9965,6 +11882,17 @@ impl ::core::cmp::PartialEq for IOSPACE_EX {
     }
 }
 impl ::core::cmp::Eq for IOSPACE_EX {}
+impl FromIntoMemory for IOSPACE_EX {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct IOSPACE_EX32 {
     pub Address: u32,
     pub Length: u32,
@@ -10002,6 +11930,17 @@ impl ::core::cmp::PartialEq for IOSPACE_EX32 {
     }
 }
 impl ::core::cmp::Eq for IOSPACE_EX32 {}
+impl FromIntoMemory for IOSPACE_EX32 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct IOSPACE_EX64 {
     pub Address: u64,
     pub Length: u32,
@@ -10039,6 +11978,17 @@ impl ::core::cmp::PartialEq for IOSPACE_EX64 {
     }
 }
 impl ::core::cmp::Eq for IOSPACE_EX64 {}
+impl FromIntoMemory for IOSPACE_EX64 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const IPMI_IOCTL_INDEX: u32 = 1024u32;
 pub struct IPMI_OS_SEL_RECORD {
     pub Signature: u32,
@@ -10065,6 +12015,17 @@ impl ::core::cmp::PartialEq for IPMI_OS_SEL_RECORD {
     }
 }
 impl ::core::cmp::Eq for IPMI_OS_SEL_RECORD {}
+impl FromIntoMemory for IPMI_OS_SEL_RECORD {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const IPMI_OS_SEL_RECORD_MASK: u32 = 65535u32;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct IPMI_OS_SEL_RECORD_TYPE(pub i32);
@@ -10264,6 +12225,17 @@ impl ::core::cmp::PartialEq for JsDebugPropertyInfo {
     }
 }
 impl ::core::cmp::Eq for JsDebugPropertyInfo {}
+impl FromIntoMemory for JsDebugPropertyInfo {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct JsDebugReadMemoryFlags(pub i32);
 impl JsDebugReadMemoryFlags {
@@ -10537,6 +12509,19 @@ impl ::core::cmp::PartialEq for KDDEBUGGER_DATA32 {
 #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for KDDEBUGGER_DATA32 {}
+#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
+#[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for KDDEBUGGER_DATA32 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct KDDEBUGGER_DATA64 {
@@ -11084,6 +13069,19 @@ impl ::core::cmp::PartialEq for KDDEBUGGER_DATA64 {
 #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for KDDEBUGGER_DATA64 {}
+#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
+#[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for KDDEBUGGER_DATA64 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct KDHELP {
     pub Thread: u32,
     pub ThCallbackStack: u32,
@@ -11139,6 +13137,17 @@ impl ::core::cmp::PartialEq for KDHELP {
     }
 }
 impl ::core::cmp::Eq for KDHELP {}
+impl FromIntoMemory for KDHELP {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct KDHELP64 {
     pub Thread: u64,
     pub ThCallbackStack: u32,
@@ -11215,6 +13224,17 @@ impl ::core::cmp::PartialEq for KDHELP64 {
     }
 }
 impl ::core::cmp::Eq for KDHELP64 {}
+impl FromIntoMemory for KDHELP64 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const KD_SECONDARY_VERSION_AMD64_CONTEXT: u32 = 2u32;
 pub const KD_SECONDARY_VERSION_AMD64_OBSOLETE_CONTEXT_1: u32 = 0u32;
 pub const KD_SECONDARY_VERSION_AMD64_OBSOLETE_CONTEXT_2: u32 = 1u32;
@@ -11247,6 +13267,19 @@ impl ::core::cmp::PartialEq for KNONVOLATILE_CONTEXT_POINTERS {
 impl ::core::cmp::Eq for KNONVOLATILE_CONTEXT_POINTERS {}
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for KNONVOLATILE_CONTEXT_POINTERS {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
+#[doc = "*Required namespaces: *"]
+#[cfg(dummy_option_that_does_not_exist)]
 pub struct KNONVOLATILE_CONTEXT_POINTERS_0 {
     pub FloatingContext: [MutPtr<M128A>; 16],
     pub Anonymous: KNONVOLATILE_CONTEXT_POINTERS_0_0,
@@ -11271,6 +13304,19 @@ impl ::core::cmp::PartialEq for KNONVOLATILE_CONTEXT_POINTERS_0 {
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for KNONVOLATILE_CONTEXT_POINTERS_0 {}
+#[doc = "*Required namespaces: *"]
+#[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for KNONVOLATILE_CONTEXT_POINTERS_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct KNONVOLATILE_CONTEXT_POINTERS_0_0 {
@@ -11352,6 +13398,19 @@ impl ::core::cmp::PartialEq for KNONVOLATILE_CONTEXT_POINTERS_0_0 {
 impl ::core::cmp::Eq for KNONVOLATILE_CONTEXT_POINTERS_0_0 {}
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for KNONVOLATILE_CONTEXT_POINTERS_0_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
+#[doc = "*Required namespaces: *"]
+#[cfg(dummy_option_that_does_not_exist)]
 pub struct KNONVOLATILE_CONTEXT_POINTERS_1 {
     pub IntegerContext: [MutPtr<u64>; 16],
     pub Anonymous: KNONVOLATILE_CONTEXT_POINTERS_1_0,
@@ -11376,6 +13435,19 @@ impl ::core::cmp::PartialEq for KNONVOLATILE_CONTEXT_POINTERS_1 {
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for KNONVOLATILE_CONTEXT_POINTERS_1 {}
+#[doc = "*Required namespaces: *"]
+#[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for KNONVOLATILE_CONTEXT_POINTERS_1 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct KNONVOLATILE_CONTEXT_POINTERS_1_0 {
@@ -11455,6 +13527,19 @@ impl ::core::cmp::PartialEq for KNONVOLATILE_CONTEXT_POINTERS_1_0 {
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for KNONVOLATILE_CONTEXT_POINTERS_1_0 {}
+#[doc = "*Required namespaces: *"]
+#[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for KNONVOLATILE_CONTEXT_POINTERS_1_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct KNONVOLATILE_CONTEXT_POINTERS {
     pub Dummy: u32,
 }
@@ -11470,6 +13555,17 @@ impl ::core::cmp::PartialEq for KNONVOLATILE_CONTEXT_POINTERS {
     }
 }
 impl ::core::cmp::Eq for KNONVOLATILE_CONTEXT_POINTERS {}
+impl FromIntoMemory for KNONVOLATILE_CONTEXT_POINTERS {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct KNONVOLATILE_CONTEXT_POINTERS_ARM64 {
@@ -11561,6 +13657,19 @@ impl ::core::cmp::PartialEq for KNONVOLATILE_CONTEXT_POINTERS_ARM64 {
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for KNONVOLATILE_CONTEXT_POINTERS_ARM64 {}
+#[doc = "*Required namespaces: *"]
+#[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for KNONVOLATILE_CONTEXT_POINTERS_ARM64 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct LDT_ENTRY {
     pub LimitLow: u16,
     pub BaseLow: u16,
@@ -11580,6 +13689,17 @@ impl ::core::cmp::PartialEq for LDT_ENTRY {
     }
 }
 impl ::core::cmp::Eq for LDT_ENTRY {}
+impl FromIntoMemory for LDT_ENTRY {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct LDT_ENTRY_0 {
     pub Bytes: LDT_ENTRY_0_1,
     pub Bits: LDT_ENTRY_0_0,
@@ -11596,6 +13716,17 @@ impl ::core::cmp::PartialEq for LDT_ENTRY_0 {
     }
 }
 impl ::core::cmp::Eq for LDT_ENTRY_0 {}
+impl FromIntoMemory for LDT_ENTRY_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct LDT_ENTRY_0_0 {
     pub _bitfield: u32,
 }
@@ -11618,6 +13749,17 @@ impl ::core::cmp::PartialEq for LDT_ENTRY_0_0 {
     }
 }
 impl ::core::cmp::Eq for LDT_ENTRY_0_0 {}
+impl FromIntoMemory for LDT_ENTRY_0_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct LDT_ENTRY_0_1 {
     pub BaseMid: u8,
     pub Flags1: u8,
@@ -11649,6 +13791,17 @@ impl ::core::cmp::PartialEq for LDT_ENTRY_0_1 {
     }
 }
 impl ::core::cmp::Eq for LDT_ENTRY_0_1 {}
+impl FromIntoMemory for LDT_ENTRY_0_1 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct LOADED_IMAGE {
@@ -11724,6 +13877,19 @@ impl ::core::cmp::PartialEq for LOADED_IMAGE {
 impl ::core::cmp::Eq for LOADED_IMAGE {}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for LOADED_IMAGE {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 pub struct LOADED_IMAGE {
     pub ModuleName: crate::core::PSTR,
     pub hFile: super::super::super::Foundation::HANDLE,
@@ -11795,6 +13961,19 @@ impl ::core::cmp::PartialEq for LOADED_IMAGE {
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for LOADED_IMAGE {}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
+#[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for LOADED_IMAGE {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct LOAD_DLL_DEBUG_INFO {
     pub hFile: super::super::super::Foundation::HANDLE,
     pub lpBaseOfDll: MutPtr<::core::ffi::c_void>,
@@ -11832,6 +14011,17 @@ impl ::core::cmp::PartialEq for LOAD_DLL_DEBUG_INFO {
     }
 }
 impl ::core::cmp::Eq for LOAD_DLL_DEBUG_INFO {}
+impl FromIntoMemory for LOAD_DLL_DEBUG_INFO {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub type LPCALL_BACK_USER_INTERRUPT_ROUTINE =
     ::core::option::Option<unsafe extern "system" fn() -> u32>;
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
@@ -11896,6 +14086,17 @@ impl ::core::cmp::PartialEq for Location {
     }
 }
 impl ::core::cmp::Eq for Location {}
+impl FromIntoMemory for Location {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct LocationKind(pub i32);
 pub const LocationMember: LocationKind = LocationKind(0i32);
@@ -11953,6 +14154,17 @@ impl ::core::cmp::PartialEq for M128A {
     }
 }
 impl ::core::cmp::Eq for M128A {}
+impl FromIntoMemory for M128A {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const MAX_SYM_NAME: u32 = 2000u32;
 pub const MEMORY_READ_ERROR: u32 = 1u32;
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Storage.FileSystem', 'Windows.Win32.System.Kernel', 'Windows.Win32.System.Memory'*"]
@@ -11982,6 +14194,19 @@ impl ::core::cmp::PartialEq for MINIDUMP_CALLBACK_INFORMATION {
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Storage.FileSystem', 'Windows.Win32.System.Kernel', 'Windows.Win32.System.Memory'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for MINIDUMP_CALLBACK_INFORMATION {}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Storage.FileSystem', 'Windows.Win32.System.Kernel', 'Windows.Win32.System.Memory'*"]
+#[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for MINIDUMP_CALLBACK_INFORMATION {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Storage.FileSystem', 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_CALLBACK_INPUT {
@@ -12013,6 +14238,19 @@ impl ::core::cmp::PartialEq for MINIDUMP_CALLBACK_INPUT {
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Storage.FileSystem', 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for MINIDUMP_CALLBACK_INPUT {}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Storage.FileSystem', 'Windows.Win32.System.Kernel'*"]
+#[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for MINIDUMP_CALLBACK_INPUT {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Storage.FileSystem', 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_CALLBACK_INPUT_0 {
@@ -12060,6 +14298,19 @@ impl ::core::cmp::PartialEq for MINIDUMP_CALLBACK_INPUT_0 {
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Storage.FileSystem', 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for MINIDUMP_CALLBACK_INPUT_0 {}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Storage.FileSystem', 'Windows.Win32.System.Kernel'*"]
+#[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for MINIDUMP_CALLBACK_INPUT_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_CALLBACK_OUTPUT {
@@ -12085,6 +14336,19 @@ impl ::core::cmp::PartialEq for MINIDUMP_CALLBACK_OUTPUT {
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for MINIDUMP_CALLBACK_OUTPUT {}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
+#[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for MINIDUMP_CALLBACK_OUTPUT {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_CALLBACK_OUTPUT_0 {
@@ -12130,6 +14394,19 @@ impl ::core::cmp::PartialEq for MINIDUMP_CALLBACK_OUTPUT_0 {
 impl ::core::cmp::Eq for MINIDUMP_CALLBACK_OUTPUT_0 {}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
 #[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for MINIDUMP_CALLBACK_OUTPUT_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_CALLBACK_OUTPUT_0_0 {
     pub MemoryBase: u64,
     pub MemorySize: u32,
@@ -12154,6 +14431,19 @@ impl ::core::cmp::PartialEq for MINIDUMP_CALLBACK_OUTPUT_0_0 {
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for MINIDUMP_CALLBACK_OUTPUT_0_0 {}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
+#[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for MINIDUMP_CALLBACK_OUTPUT_0_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_CALLBACK_OUTPUT_0_1 {
@@ -12192,6 +14482,19 @@ impl ::core::cmp::PartialEq for MINIDUMP_CALLBACK_OUTPUT_0_1 {
 impl ::core::cmp::Eq for MINIDUMP_CALLBACK_OUTPUT_0_1 {}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
 #[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for MINIDUMP_CALLBACK_OUTPUT_0_1 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_CALLBACK_OUTPUT_0_2 {
     pub VmRegion: MINIDUMP_MEMORY_INFO,
     pub Continue: super::super::super::Foundation::BOOL,
@@ -12218,6 +14521,19 @@ impl ::core::cmp::PartialEq for MINIDUMP_CALLBACK_OUTPUT_0_2 {
 impl ::core::cmp::Eq for MINIDUMP_CALLBACK_OUTPUT_0_2 {}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
 #[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for MINIDUMP_CALLBACK_OUTPUT_0_2 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_CALLBACK_OUTPUT_0_3 {
     pub VmQueryStatus: crate::core::HRESULT,
     pub VmQueryResult: MINIDUMP_MEMORY_INFO,
@@ -12242,6 +14558,19 @@ impl ::core::cmp::PartialEq for MINIDUMP_CALLBACK_OUTPUT_0_3 {
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for MINIDUMP_CALLBACK_OUTPUT_0_3 {}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
+#[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for MINIDUMP_CALLBACK_OUTPUT_0_3 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_CALLBACK_OUTPUT_0_4 {
@@ -12279,6 +14608,19 @@ impl ::core::cmp::PartialEq for MINIDUMP_CALLBACK_OUTPUT_0_4 {
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for MINIDUMP_CALLBACK_OUTPUT_0_4 {}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
+#[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for MINIDUMP_CALLBACK_OUTPUT_0_4 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Storage.FileSystem', 'Windows.Win32.System.Kernel', 'Windows.Win32.System.Memory'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub type MINIDUMP_CALLBACK_ROUTINE = ::core::option::Option<
@@ -12364,6 +14706,17 @@ impl ::core::cmp::PartialEq for MINIDUMP_DIRECTORY {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_DIRECTORY {}
+impl FromIntoMemory for MINIDUMP_DIRECTORY {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct MINIDUMP_EXCEPTION {
     pub ExceptionCode: u32,
     pub ExceptionFlags: u32,
@@ -12391,6 +14744,17 @@ impl ::core::cmp::PartialEq for MINIDUMP_EXCEPTION {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_EXCEPTION {}
+impl FromIntoMemory for MINIDUMP_EXCEPTION {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_EXCEPTION_INFORMATION {
@@ -12420,6 +14784,19 @@ impl ::core::cmp::PartialEq for MINIDUMP_EXCEPTION_INFORMATION {
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for MINIDUMP_EXCEPTION_INFORMATION {}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
+#[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for MINIDUMP_EXCEPTION_INFORMATION {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct MINIDUMP_EXCEPTION_INFORMATION64 {
     pub ThreadId: u32,
     pub ExceptionRecord: u64,
@@ -12441,6 +14818,17 @@ impl ::core::cmp::PartialEq for MINIDUMP_EXCEPTION_INFORMATION64 {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_EXCEPTION_INFORMATION64 {}
+impl FromIntoMemory for MINIDUMP_EXCEPTION_INFORMATION64 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct MINIDUMP_EXCEPTION_STREAM {
     pub ThreadId: u32,
     pub __alignment: u32,
@@ -12462,6 +14850,17 @@ impl ::core::cmp::PartialEq for MINIDUMP_EXCEPTION_STREAM {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_EXCEPTION_STREAM {}
+impl FromIntoMemory for MINIDUMP_EXCEPTION_STREAM {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct MINIDUMP_FUNCTION_TABLE_DESCRIPTOR {
     pub MinimumAddress: u64,
     pub MaximumAddress: u64,
@@ -12485,6 +14884,17 @@ impl ::core::cmp::PartialEq for MINIDUMP_FUNCTION_TABLE_DESCRIPTOR {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_FUNCTION_TABLE_DESCRIPTOR {}
+impl FromIntoMemory for MINIDUMP_FUNCTION_TABLE_DESCRIPTOR {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct MINIDUMP_FUNCTION_TABLE_STREAM {
     pub SizeOfHeader: u32,
     pub SizeOfDescriptor: u32,
@@ -12522,6 +14932,17 @@ impl ::core::cmp::PartialEq for MINIDUMP_FUNCTION_TABLE_STREAM {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_FUNCTION_TABLE_STREAM {}
+impl FromIntoMemory for MINIDUMP_FUNCTION_TABLE_STREAM {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct MINIDUMP_HANDLE_DATA_STREAM {
     pub SizeOfHeader: u32,
     pub SizeOfDescriptor: u32,
@@ -12553,6 +14974,17 @@ impl ::core::cmp::PartialEq for MINIDUMP_HANDLE_DATA_STREAM {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_HANDLE_DATA_STREAM {}
+impl FromIntoMemory for MINIDUMP_HANDLE_DATA_STREAM {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct MINIDUMP_HANDLE_DESCRIPTOR {
     pub Handle: u64,
     pub TypeNameRva: u32,
@@ -12580,6 +15012,17 @@ impl ::core::cmp::PartialEq for MINIDUMP_HANDLE_DESCRIPTOR {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_HANDLE_DESCRIPTOR {}
+impl FromIntoMemory for MINIDUMP_HANDLE_DESCRIPTOR {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct MINIDUMP_HANDLE_DESCRIPTOR_2 {
     pub Handle: u64,
     pub TypeNameRva: u32,
@@ -12611,6 +15054,17 @@ impl ::core::cmp::PartialEq for MINIDUMP_HANDLE_DESCRIPTOR_2 {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_HANDLE_DESCRIPTOR_2 {}
+impl FromIntoMemory for MINIDUMP_HANDLE_DESCRIPTOR_2 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct MINIDUMP_HANDLE_OBJECT_INFORMATION {
     pub NextInfoRva: u32,
     pub InfoType: u32,
@@ -12639,6 +15093,17 @@ impl ::core::cmp::PartialEq for MINIDUMP_HANDLE_OBJECT_INFORMATION {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_HANDLE_OBJECT_INFORMATION {}
+impl FromIntoMemory for MINIDUMP_HANDLE_OBJECT_INFORMATION {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct MINIDUMP_HANDLE_OBJECT_INFORMATION_TYPE(pub i32);
 pub const MiniHandleObjectInformationNone: MINIDUMP_HANDLE_OBJECT_INFORMATION_TYPE =
@@ -12721,6 +15186,17 @@ impl ::core::cmp::PartialEq for MINIDUMP_HANDLE_OPERATION_LIST {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_HANDLE_OPERATION_LIST {}
+impl FromIntoMemory for MINIDUMP_HANDLE_OPERATION_LIST {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct MINIDUMP_HEADER {
     pub Signature: u32,
     pub Version: u32,
@@ -12748,6 +15224,17 @@ impl ::core::cmp::PartialEq for MINIDUMP_HEADER {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_HEADER {}
+impl FromIntoMemory for MINIDUMP_HEADER {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct MINIDUMP_HEADER_0 {
     pub Reserved: u32,
     pub TimeDateStamp: u32,
@@ -12764,6 +15251,17 @@ impl ::core::cmp::PartialEq for MINIDUMP_HEADER_0 {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_HEADER_0 {}
+impl FromIntoMemory for MINIDUMP_HEADER_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct MINIDUMP_INCLUDE_MODULE_CALLBACK {
     pub BaseOfImage: u64,
 }
@@ -12779,6 +15277,17 @@ impl ::core::cmp::PartialEq for MINIDUMP_INCLUDE_MODULE_CALLBACK {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_INCLUDE_MODULE_CALLBACK {}
+impl FromIntoMemory for MINIDUMP_INCLUDE_MODULE_CALLBACK {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct MINIDUMP_INCLUDE_THREAD_CALLBACK {
     pub ThreadId: u32,
 }
@@ -12801,6 +15310,17 @@ impl ::core::cmp::PartialEq for MINIDUMP_INCLUDE_THREAD_CALLBACK {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_INCLUDE_THREAD_CALLBACK {}
+impl FromIntoMemory for MINIDUMP_INCLUDE_THREAD_CALLBACK {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct MINIDUMP_IO_CALLBACK {
     pub Handle: super::super::super::Foundation::HANDLE,
     pub Offset: u64,
@@ -12822,6 +15342,17 @@ impl ::core::cmp::PartialEq for MINIDUMP_IO_CALLBACK {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_IO_CALLBACK {}
+impl FromIntoMemory for MINIDUMP_IO_CALLBACK {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct MINIDUMP_LOCATION_DESCRIPTOR {
     pub DataSize: u32,
     pub Rva: u32,
@@ -12846,6 +15377,17 @@ impl ::core::cmp::PartialEq for MINIDUMP_LOCATION_DESCRIPTOR {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_LOCATION_DESCRIPTOR {}
+impl FromIntoMemory for MINIDUMP_LOCATION_DESCRIPTOR {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct MINIDUMP_LOCATION_DESCRIPTOR64 {
     pub DataSize: u64,
     pub Rva: u64,
@@ -12862,6 +15404,17 @@ impl ::core::cmp::PartialEq for MINIDUMP_LOCATION_DESCRIPTOR64 {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_LOCATION_DESCRIPTOR64 {}
+impl FromIntoMemory for MINIDUMP_LOCATION_DESCRIPTOR64 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct MINIDUMP_MEMORY64_LIST {
     pub NumberOfMemoryRanges: u64,
     pub BaseRva: u64,
@@ -12881,6 +15434,17 @@ impl ::core::cmp::PartialEq for MINIDUMP_MEMORY64_LIST {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_MEMORY64_LIST {}
+impl FromIntoMemory for MINIDUMP_MEMORY64_LIST {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct MINIDUMP_MEMORY_DESCRIPTOR {
     pub StartOfMemoryRange: u64,
     pub Memory: MINIDUMP_LOCATION_DESCRIPTOR,
@@ -12897,6 +15461,17 @@ impl ::core::cmp::PartialEq for MINIDUMP_MEMORY_DESCRIPTOR {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_MEMORY_DESCRIPTOR {}
+impl FromIntoMemory for MINIDUMP_MEMORY_DESCRIPTOR {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct MINIDUMP_MEMORY_DESCRIPTOR64 {
     pub StartOfMemoryRange: u64,
     pub DataSize: u64,
@@ -12913,6 +15488,17 @@ impl ::core::cmp::PartialEq for MINIDUMP_MEMORY_DESCRIPTOR64 {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_MEMORY_DESCRIPTOR64 {}
+impl FromIntoMemory for MINIDUMP_MEMORY_DESCRIPTOR64 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[doc = "*Required namespaces: 'Windows.Win32.System.Memory'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_MEMORY_INFO {
@@ -12954,6 +15540,19 @@ impl ::core::cmp::PartialEq for MINIDUMP_MEMORY_INFO {
 #[doc = "*Required namespaces: 'Windows.Win32.System.Memory'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for MINIDUMP_MEMORY_INFO {}
+#[doc = "*Required namespaces: 'Windows.Win32.System.Memory'*"]
+#[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for MINIDUMP_MEMORY_INFO {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct MINIDUMP_MEMORY_INFO_LIST {
     pub SizeOfHeader: u32,
     pub SizeOfEntry: u32,
@@ -12973,6 +15572,17 @@ impl ::core::cmp::PartialEq for MINIDUMP_MEMORY_INFO_LIST {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_MEMORY_INFO_LIST {}
+impl FromIntoMemory for MINIDUMP_MEMORY_INFO_LIST {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct MINIDUMP_MEMORY_LIST {
     pub NumberOfMemoryRanges: u32,
     pub MemoryRanges: [MINIDUMP_MEMORY_DESCRIPTOR; 1],
@@ -12990,6 +15600,17 @@ impl ::core::cmp::PartialEq for MINIDUMP_MEMORY_LIST {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_MEMORY_LIST {}
+impl FromIntoMemory for MINIDUMP_MEMORY_LIST {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const MINIDUMP_MISC1_PROCESSOR_POWER_INFO: u32 = 4u32;
 pub const MINIDUMP_MISC3_PROCESS_EXECUTE_FLAGS: u32 = 32u32;
 pub const MINIDUMP_MISC3_PROCESS_INTEGRITY: u32 = 16u32;
@@ -13034,6 +15655,17 @@ impl ::core::cmp::PartialEq for MINIDUMP_MISC_INFO {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_MISC_INFO {}
+impl FromIntoMemory for MINIDUMP_MISC_INFO {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct MINIDUMP_MISC_INFO_2 {
     pub SizeOfInfo: u32,
     pub Flags1: u32,
@@ -13086,6 +15718,17 @@ impl ::core::cmp::PartialEq for MINIDUMP_MISC_INFO_2 {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_MISC_INFO_2 {}
+impl FromIntoMemory for MINIDUMP_MISC_INFO_2 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Time'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_MISC_INFO_3 {
@@ -13165,6 +15808,19 @@ impl ::core::cmp::PartialEq for MINIDUMP_MISC_INFO_3 {
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Time'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for MINIDUMP_MISC_INFO_3 {}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Time'*"]
+#[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for MINIDUMP_MISC_INFO_3 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Time'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_MISC_INFO_4 {
@@ -13252,6 +15908,19 @@ impl ::core::cmp::PartialEq for MINIDUMP_MISC_INFO_4 {
 impl ::core::cmp::Eq for MINIDUMP_MISC_INFO_4 {}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Time'*"]
 #[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for MINIDUMP_MISC_INFO_4 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Time'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_MISC_INFO_5 {
     pub SizeOfInfo: u32,
     pub Flags1: u32,
@@ -13313,6 +15982,19 @@ impl ::core::cmp::PartialEq for MINIDUMP_MISC_INFO_5 {
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Time'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for MINIDUMP_MISC_INFO_5 {}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Time'*"]
+#[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for MINIDUMP_MISC_INFO_5 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct MINIDUMP_MISC_INFO_FLAGS(pub u32);
 pub const MINIDUMP_MISC1_PROCESS_ID: MINIDUMP_MISC_INFO_FLAGS = MINIDUMP_MISC_INFO_FLAGS(1u32);
@@ -13419,6 +16101,19 @@ impl ::core::cmp::PartialEq for MINIDUMP_MODULE {
 impl ::core::cmp::Eq for MINIDUMP_MODULE {}
 #[doc = "*Required namespaces: 'Windows.Win32.Storage.FileSystem'*"]
 #[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for MINIDUMP_MODULE {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
+#[doc = "*Required namespaces: 'Windows.Win32.Storage.FileSystem'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_MODULE_CALLBACK {
     pub FullPath: crate::core::PWSTR,
     pub BaseOfImage: u64,
@@ -13462,6 +16157,19 @@ impl ::core::cmp::PartialEq for MINIDUMP_MODULE_CALLBACK {
 impl ::core::cmp::Eq for MINIDUMP_MODULE_CALLBACK {}
 #[doc = "*Required namespaces: 'Windows.Win32.Storage.FileSystem'*"]
 #[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for MINIDUMP_MODULE_CALLBACK {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
+#[doc = "*Required namespaces: 'Windows.Win32.Storage.FileSystem'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_MODULE_LIST {
     pub NumberOfModules: u32,
     pub Modules: [MINIDUMP_MODULE; 1],
@@ -13486,6 +16194,19 @@ impl ::core::cmp::PartialEq for MINIDUMP_MODULE_LIST {
 #[doc = "*Required namespaces: 'Windows.Win32.Storage.FileSystem'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for MINIDUMP_MODULE_LIST {}
+#[doc = "*Required namespaces: 'Windows.Win32.Storage.FileSystem'*"]
+#[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for MINIDUMP_MODULE_LIST {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const MINIDUMP_PROCESS_VM_COUNTERS: u32 = 1u32;
 pub struct MINIDUMP_PROCESS_VM_COUNTERS_1 {
     pub Revision: u16,
@@ -13522,6 +16243,17 @@ impl ::core::cmp::PartialEq for MINIDUMP_PROCESS_VM_COUNTERS_1 {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_PROCESS_VM_COUNTERS_1 {}
+impl FromIntoMemory for MINIDUMP_PROCESS_VM_COUNTERS_1 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct MINIDUMP_PROCESS_VM_COUNTERS_2 {
     pub Revision: u16,
     pub Flags: u16,
@@ -13577,6 +16309,17 @@ impl ::core::cmp::PartialEq for MINIDUMP_PROCESS_VM_COUNTERS_2 {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_PROCESS_VM_COUNTERS_2 {}
+impl FromIntoMemory for MINIDUMP_PROCESS_VM_COUNTERS_2 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const MINIDUMP_PROCESS_VM_COUNTERS_EX: u32 = 4u32;
 pub const MINIDUMP_PROCESS_VM_COUNTERS_EX2: u32 = 8u32;
 pub const MINIDUMP_PROCESS_VM_COUNTERS_JOB: u32 = 16u32;
@@ -13600,6 +16343,17 @@ impl ::core::cmp::PartialEq for MINIDUMP_READ_MEMORY_FAILURE_CALLBACK {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_READ_MEMORY_FAILURE_CALLBACK {}
+impl FromIntoMemory for MINIDUMP_READ_MEMORY_FAILURE_CALLBACK {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct MINIDUMP_SECONDARY_FLAGS(pub i32);
 pub const MiniSecondaryWithoutPowerInfo: MINIDUMP_SECONDARY_FLAGS = MINIDUMP_SECONDARY_FLAGS(1i32);
@@ -13727,6 +16481,17 @@ impl ::core::cmp::PartialEq for MINIDUMP_STRING {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_STRING {}
+impl FromIntoMemory for MINIDUMP_STRING {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const MINIDUMP_SYSMEMINFO1_BASICPERF: u32 = 2u32;
 pub const MINIDUMP_SYSMEMINFO1_FILECACHE_TRANSITIONREPURPOSECOUNT_FLAGS: u32 = 1u32;
 pub const MINIDUMP_SYSMEMINFO1_PERF_CCTOTALDIRTYPAGES_CCDIRTYPAGETHRESHOLD: u32 = 4u32;
@@ -13764,6 +16529,17 @@ impl ::core::cmp::PartialEq for MINIDUMP_SYSTEM_BASIC_INFORMATION {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_SYSTEM_BASIC_INFORMATION {}
+impl FromIntoMemory for MINIDUMP_SYSTEM_BASIC_INFORMATION {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct MINIDUMP_SYSTEM_BASIC_PERFORMANCE_INFORMATION {
     pub AvailablePages: u64,
     pub CommittedPages: u64,
@@ -13785,6 +16561,17 @@ impl ::core::cmp::PartialEq for MINIDUMP_SYSTEM_BASIC_PERFORMANCE_INFORMATION {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_SYSTEM_BASIC_PERFORMANCE_INFORMATION {}
+impl FromIntoMemory for MINIDUMP_SYSTEM_BASIC_PERFORMANCE_INFORMATION {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct MINIDUMP_SYSTEM_FILECACHE_INFORMATION {
     pub CurrentSize: u64,
     pub PeakSize: u64,
@@ -13817,6 +16604,17 @@ impl ::core::cmp::PartialEq for MINIDUMP_SYSTEM_FILECACHE_INFORMATION {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_SYSTEM_FILECACHE_INFORMATION {}
+impl FromIntoMemory for MINIDUMP_SYSTEM_FILECACHE_INFORMATION {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct MINIDUMP_SYSTEM_INFO {
     pub ProcessorArchitecture: PROCESSOR_ARCHITECTURE,
     pub ProcessorLevel: u16,
@@ -13852,6 +16650,17 @@ impl ::core::cmp::PartialEq for MINIDUMP_SYSTEM_INFO {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_SYSTEM_INFO {}
+impl FromIntoMemory for MINIDUMP_SYSTEM_INFO {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct MINIDUMP_SYSTEM_INFO_0 {
     pub Reserved0: u16,
     pub Anonymous: MINIDUMP_SYSTEM_INFO_0_0,
@@ -13868,6 +16677,17 @@ impl ::core::cmp::PartialEq for MINIDUMP_SYSTEM_INFO_0 {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_SYSTEM_INFO_0 {}
+impl FromIntoMemory for MINIDUMP_SYSTEM_INFO_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct MINIDUMP_SYSTEM_INFO_0_0 {
     pub NumberOfProcessors: u8,
     pub ProductType: u8,
@@ -13892,6 +16712,17 @@ impl ::core::cmp::PartialEq for MINIDUMP_SYSTEM_INFO_0_0 {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_SYSTEM_INFO_0_0 {}
+impl FromIntoMemory for MINIDUMP_SYSTEM_INFO_0_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct MINIDUMP_SYSTEM_INFO_1 {
     pub Reserved1: u32,
     pub Anonymous: MINIDUMP_SYSTEM_INFO_1_0,
@@ -13908,6 +16739,17 @@ impl ::core::cmp::PartialEq for MINIDUMP_SYSTEM_INFO_1 {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_SYSTEM_INFO_1 {}
+impl FromIntoMemory for MINIDUMP_SYSTEM_INFO_1 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct MINIDUMP_SYSTEM_INFO_1_0 {
     pub SuiteMask: u16,
     pub Reserved2: u16,
@@ -13932,6 +16774,17 @@ impl ::core::cmp::PartialEq for MINIDUMP_SYSTEM_INFO_1_0 {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_SYSTEM_INFO_1_0 {}
+impl FromIntoMemory for MINIDUMP_SYSTEM_INFO_1_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct MINIDUMP_SYSTEM_MEMORY_INFO_1 {
     pub Revision: u16,
     pub Flags: u16,
@@ -13957,6 +16810,17 @@ impl ::core::cmp::PartialEq for MINIDUMP_SYSTEM_MEMORY_INFO_1 {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_SYSTEM_MEMORY_INFO_1 {}
+impl FromIntoMemory for MINIDUMP_SYSTEM_MEMORY_INFO_1 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct MINIDUMP_SYSTEM_PERFORMANCE_INFORMATION {
     pub IdleProcessTime: u64,
     pub IoReadTransferCount: u64,
@@ -14126,6 +16990,17 @@ impl ::core::cmp::PartialEq for MINIDUMP_SYSTEM_PERFORMANCE_INFORMATION {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_SYSTEM_PERFORMANCE_INFORMATION {}
+impl FromIntoMemory for MINIDUMP_SYSTEM_PERFORMANCE_INFORMATION {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct MINIDUMP_THREAD {
     pub ThreadId: u32,
     pub SuspendCount: u32,
@@ -14153,6 +17028,17 @@ impl ::core::cmp::PartialEq for MINIDUMP_THREAD {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_THREAD {}
+impl FromIntoMemory for MINIDUMP_THREAD {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_THREAD_CALLBACK {
@@ -14192,6 +17078,19 @@ impl ::core::cmp::PartialEq for MINIDUMP_THREAD_CALLBACK {
 impl ::core::cmp::Eq for MINIDUMP_THREAD_CALLBACK {}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for MINIDUMP_THREAD_CALLBACK {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_THREAD_CALLBACK {
     pub ThreadId: u32,
     pub ThreadHandle: super::super::super::Foundation::HANDLE,
@@ -14227,6 +17126,19 @@ impl ::core::cmp::PartialEq for MINIDUMP_THREAD_CALLBACK {
 impl ::core::cmp::Eq for MINIDUMP_THREAD_CALLBACK {}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for MINIDUMP_THREAD_CALLBACK {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_THREAD_CALLBACK {
     pub ThreadId: u32,
     pub ThreadHandle: super::super::super::Foundation::HANDLE,
@@ -14260,6 +17172,19 @@ impl ::core::cmp::PartialEq for MINIDUMP_THREAD_CALLBACK {
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for MINIDUMP_THREAD_CALLBACK {}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
+#[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for MINIDUMP_THREAD_CALLBACK {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct MINIDUMP_THREAD_EX {
     pub ThreadId: u32,
     pub SuspendCount: u32,
@@ -14289,6 +17214,17 @@ impl ::core::cmp::PartialEq for MINIDUMP_THREAD_EX {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_THREAD_EX {}
+impl FromIntoMemory for MINIDUMP_THREAD_EX {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_THREAD_EX_CALLBACK {
@@ -14332,6 +17268,19 @@ impl ::core::cmp::PartialEq for MINIDUMP_THREAD_EX_CALLBACK {
 impl ::core::cmp::Eq for MINIDUMP_THREAD_EX_CALLBACK {}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for MINIDUMP_THREAD_EX_CALLBACK {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_THREAD_EX_CALLBACK {
     pub ThreadId: u32,
     pub ThreadHandle: super::super::super::Foundation::HANDLE,
@@ -14371,6 +17320,19 @@ impl ::core::cmp::PartialEq for MINIDUMP_THREAD_EX_CALLBACK {
 impl ::core::cmp::Eq for MINIDUMP_THREAD_EX_CALLBACK {}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for MINIDUMP_THREAD_EX_CALLBACK {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_THREAD_EX_CALLBACK {
     pub ThreadId: u32,
     pub ThreadHandle: super::super::super::Foundation::HANDLE,
@@ -14408,6 +17370,19 @@ impl ::core::cmp::PartialEq for MINIDUMP_THREAD_EX_CALLBACK {
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for MINIDUMP_THREAD_EX_CALLBACK {}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
+#[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for MINIDUMP_THREAD_EX_CALLBACK {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct MINIDUMP_THREAD_EX_LIST {
     pub NumberOfThreads: u32,
     pub Threads: [MINIDUMP_THREAD_EX; 1],
@@ -14424,6 +17399,17 @@ impl ::core::cmp::PartialEq for MINIDUMP_THREAD_EX_LIST {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_THREAD_EX_LIST {}
+impl FromIntoMemory for MINIDUMP_THREAD_EX_LIST {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct MINIDUMP_THREAD_INFO {
     pub ThreadId: u32,
     pub DumpFlags: MINIDUMP_THREAD_INFO_DUMP_FLAGS,
@@ -14457,6 +17443,17 @@ impl ::core::cmp::PartialEq for MINIDUMP_THREAD_INFO {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_THREAD_INFO {}
+impl FromIntoMemory for MINIDUMP_THREAD_INFO {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct MINIDUMP_THREAD_INFO_DUMP_FLAGS(pub u32);
 pub const MINIDUMP_THREAD_INFO_ERROR_THREAD: MINIDUMP_THREAD_INFO_DUMP_FLAGS =
@@ -14528,6 +17525,17 @@ impl ::core::cmp::PartialEq for MINIDUMP_THREAD_INFO_LIST {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_THREAD_INFO_LIST {}
+impl FromIntoMemory for MINIDUMP_THREAD_INFO_LIST {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct MINIDUMP_THREAD_LIST {
     pub NumberOfThreads: u32,
     pub Threads: [MINIDUMP_THREAD; 1],
@@ -14544,6 +17552,17 @@ impl ::core::cmp::PartialEq for MINIDUMP_THREAD_LIST {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_THREAD_LIST {}
+impl FromIntoMemory for MINIDUMP_THREAD_LIST {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct MINIDUMP_THREAD_NAME {
     pub ThreadId: u32,
     pub RvaOfThreadName: u64,
@@ -14560,6 +17579,17 @@ impl ::core::cmp::PartialEq for MINIDUMP_THREAD_NAME {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_THREAD_NAME {}
+impl FromIntoMemory for MINIDUMP_THREAD_NAME {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct MINIDUMP_THREAD_NAME_LIST {
     pub NumberOfThreadNames: u32,
     pub ThreadNames: [MINIDUMP_THREAD_NAME; 1],
@@ -14577,6 +17607,17 @@ impl ::core::cmp::PartialEq for MINIDUMP_THREAD_NAME_LIST {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_THREAD_NAME_LIST {}
+impl FromIntoMemory for MINIDUMP_THREAD_NAME_LIST {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct MINIDUMP_TOKEN_INFO_HEADER {
     pub TokenSize: u32,
     pub TokenId: u32,
@@ -14596,6 +17637,17 @@ impl ::core::cmp::PartialEq for MINIDUMP_TOKEN_INFO_HEADER {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_TOKEN_INFO_HEADER {}
+impl FromIntoMemory for MINIDUMP_TOKEN_INFO_HEADER {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct MINIDUMP_TOKEN_INFO_LIST {
     pub TokenListSize: u32,
     pub TokenListEntries: u32,
@@ -14627,6 +17679,17 @@ impl ::core::cmp::PartialEq for MINIDUMP_TOKEN_INFO_LIST {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_TOKEN_INFO_LIST {}
+impl FromIntoMemory for MINIDUMP_TOKEN_INFO_LIST {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct MINIDUMP_TYPE(pub u32);
 pub const MiniDumpNormal: MINIDUMP_TYPE = MINIDUMP_TYPE(0u32);
@@ -14734,6 +17797,17 @@ impl ::core::cmp::PartialEq for MINIDUMP_UNLOADED_MODULE {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_UNLOADED_MODULE {}
+impl FromIntoMemory for MINIDUMP_UNLOADED_MODULE {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct MINIDUMP_UNLOADED_MODULE_LIST {
     pub SizeOfHeader: u32,
     pub SizeOfEntry: u32,
@@ -14762,6 +17836,17 @@ impl ::core::cmp::PartialEq for MINIDUMP_UNLOADED_MODULE_LIST {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_UNLOADED_MODULE_LIST {}
+impl FromIntoMemory for MINIDUMP_UNLOADED_MODULE_LIST {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct MINIDUMP_USER_RECORD {
     pub Type: u32,
     pub Memory: MINIDUMP_LOCATION_DESCRIPTOR,
@@ -14786,6 +17871,17 @@ impl ::core::cmp::PartialEq for MINIDUMP_USER_RECORD {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_USER_RECORD {}
+impl FromIntoMemory for MINIDUMP_USER_RECORD {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct MINIDUMP_USER_STREAM {
     pub Type: u32,
     pub BufferSize: u32,
@@ -14805,6 +17901,17 @@ impl ::core::cmp::PartialEq for MINIDUMP_USER_STREAM {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_USER_STREAM {}
+impl FromIntoMemory for MINIDUMP_USER_STREAM {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct MINIDUMP_USER_STREAM_INFORMATION {
     pub UserStreamCount: u32,
     pub UserStreamArray: MutPtr<MINIDUMP_USER_STREAM>,
@@ -14822,6 +17929,17 @@ impl ::core::cmp::PartialEq for MINIDUMP_USER_STREAM_INFORMATION {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_USER_STREAM_INFORMATION {}
+impl FromIntoMemory for MINIDUMP_USER_STREAM_INFORMATION {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const MINIDUMP_VERSION: u32 = 42899u32;
 pub struct MINIDUMP_VM_POST_READ_CALLBACK {
     pub Offset: u64,
@@ -14846,6 +17964,17 @@ impl ::core::cmp::PartialEq for MINIDUMP_VM_POST_READ_CALLBACK {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_VM_POST_READ_CALLBACK {}
+impl FromIntoMemory for MINIDUMP_VM_POST_READ_CALLBACK {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct MINIDUMP_VM_PRE_READ_CALLBACK {
     pub Offset: u64,
     pub Buffer: MutPtr<::core::ffi::c_void>,
@@ -14863,6 +17992,17 @@ impl ::core::cmp::PartialEq for MINIDUMP_VM_PRE_READ_CALLBACK {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_VM_PRE_READ_CALLBACK {}
+impl FromIntoMemory for MINIDUMP_VM_PRE_READ_CALLBACK {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct MINIDUMP_VM_QUERY_CALLBACK {
     pub Offset: u64,
 }
@@ -14878,6 +18018,17 @@ impl ::core::cmp::PartialEq for MINIDUMP_VM_QUERY_CALLBACK {
     }
 }
 impl ::core::cmp::Eq for MINIDUMP_VM_QUERY_CALLBACK {}
+impl FromIntoMemory for MINIDUMP_VM_QUERY_CALLBACK {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct MODLOAD_CVMISC {
     pub oCV: u32,
     pub cCV: PtrRepr,
@@ -14915,6 +18066,17 @@ impl ::core::cmp::PartialEq for MODLOAD_CVMISC {
     }
 }
 impl ::core::cmp::Eq for MODLOAD_CVMISC {}
+impl FromIntoMemory for MODLOAD_CVMISC {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct MODLOAD_DATA {
     pub ssize: u32,
     pub ssig: MODLOAD_DATA_TYPE,
@@ -14949,6 +18111,17 @@ impl ::core::cmp::PartialEq for MODLOAD_DATA {
     }
 }
 impl ::core::cmp::Eq for MODLOAD_DATA {}
+impl FromIntoMemory for MODLOAD_DATA {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct MODLOAD_DATA_TYPE(pub u32);
 pub const DBHHEADER_DEBUGDIRS: MODLOAD_DATA_TYPE = MODLOAD_DATA_TYPE(1u32);
@@ -15004,6 +18177,17 @@ impl ::core::cmp::PartialEq for MODLOAD_PDBGUID_PDBAGE {
     }
 }
 impl ::core::cmp::Eq for MODLOAD_PDBGUID_PDBAGE {}
+impl FromIntoMemory for MODLOAD_PDBGUID_PDBAGE {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const MODULE_ORDERS_LOADTIME: u32 = 268435456u32;
 pub const MODULE_ORDERS_MASK: u32 = 4026531840u32;
 pub const MODULE_ORDERS_MODULENAME: u32 = 536870912u32;
@@ -15033,6 +18217,17 @@ impl ::core::cmp::PartialEq for MODULE_TYPE_INFO {
     }
 }
 impl ::core::cmp::Eq for MODULE_TYPE_INFO {}
+impl FromIntoMemory for MODULE_TYPE_INFO {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct MODULE_WRITE_FLAGS(pub i32);
 pub const ModuleWriteModule: MODULE_WRITE_FLAGS = MODULE_WRITE_FLAGS(1i32);
@@ -15237,6 +18432,17 @@ impl ::core::cmp::PartialEq for OMAP {
     }
 }
 impl ::core::cmp::Eq for OMAP {}
+impl FromIntoMemory for OMAP {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct OPEN_THREAD_WAIT_CHAIN_SESSION_FLAGS(pub u32);
 pub const WCT_ASYNC_OPEN_FLAG: OPEN_THREAD_WAIT_CHAIN_SESSION_FLAGS =
@@ -15298,6 +18504,17 @@ impl ::core::cmp::PartialEq for OUTPUT_DEBUG_STRING_INFO {
     }
 }
 impl ::core::cmp::Eq for OUTPUT_DEBUG_STRING_INFO {}
+impl FromIntoMemory for OUTPUT_DEBUG_STRING_INFO {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub type PCOGETACTIVATIONSTATE = ::core::option::Option<
     unsafe extern "system" fn(
         param0: crate::core::GUID,
@@ -15505,6 +18722,17 @@ impl ::core::cmp::PartialEq for PHYSICAL {
     }
 }
 impl ::core::cmp::Eq for PHYSICAL {}
+impl FromIntoMemory for PHYSICAL {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct PHYSICAL_MEMORY_DESCRIPTOR32 {
     pub NumberOfRuns: u32,
     pub NumberOfPages: u32,
@@ -15533,6 +18761,17 @@ impl ::core::cmp::PartialEq for PHYSICAL_MEMORY_DESCRIPTOR32 {
     }
 }
 impl ::core::cmp::Eq for PHYSICAL_MEMORY_DESCRIPTOR32 {}
+impl FromIntoMemory for PHYSICAL_MEMORY_DESCRIPTOR32 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct PHYSICAL_MEMORY_DESCRIPTOR64 {
     pub NumberOfRuns: u32,
     pub NumberOfPages: u64,
@@ -15561,6 +18800,17 @@ impl ::core::cmp::PartialEq for PHYSICAL_MEMORY_DESCRIPTOR64 {
     }
 }
 impl ::core::cmp::Eq for PHYSICAL_MEMORY_DESCRIPTOR64 {}
+impl FromIntoMemory for PHYSICAL_MEMORY_DESCRIPTOR64 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct PHYSICAL_MEMORY_RUN32 {
     pub BasePage: u32,
     pub PageCount: u32,
@@ -15585,6 +18835,17 @@ impl ::core::cmp::PartialEq for PHYSICAL_MEMORY_RUN32 {
     }
 }
 impl ::core::cmp::Eq for PHYSICAL_MEMORY_RUN32 {}
+impl FromIntoMemory for PHYSICAL_MEMORY_RUN32 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct PHYSICAL_MEMORY_RUN64 {
     pub BasePage: u64,
     pub PageCount: u64,
@@ -15609,6 +18870,17 @@ impl ::core::cmp::PartialEq for PHYSICAL_MEMORY_RUN64 {
     }
 }
 impl ::core::cmp::Eq for PHYSICAL_MEMORY_RUN64 {}
+impl FromIntoMemory for PHYSICAL_MEMORY_RUN64 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct PHYSICAL_TO_VIRTUAL {
     pub Status: u32,
     pub Size: u32,
@@ -15637,6 +18909,17 @@ impl ::core::cmp::PartialEq for PHYSICAL_TO_VIRTUAL {
     }
 }
 impl ::core::cmp::Eq for PHYSICAL_TO_VIRTUAL {}
+impl FromIntoMemory for PHYSICAL_TO_VIRTUAL {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct PHYSICAL_WITH_FLAGS {
     pub Address: u64,
     pub BufLen: u32,
@@ -15668,6 +18951,17 @@ impl ::core::cmp::PartialEq for PHYSICAL_WITH_FLAGS {
     }
 }
 impl ::core::cmp::Eq for PHYSICAL_WITH_FLAGS {}
+impl FromIntoMemory for PHYSICAL_WITH_FLAGS {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const PHYS_FLAG_CACHED: u32 = 1u32;
 pub const PHYS_FLAG_DEFAULT: u32 = 0u32;
 pub const PHYS_FLAG_UNCACHED: u32 = 2u32;
@@ -15742,6 +19036,17 @@ impl ::core::cmp::PartialEq for POINTER_SEARCH_PHYSICAL {
     }
 }
 impl ::core::cmp::Eq for POINTER_SEARCH_PHYSICAL {}
+impl FromIntoMemory for POINTER_SEARCH_PHYSICAL {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub type PREAD_PROCESS_MEMORY_ROUTINE = ::core::option::Option<
     unsafe extern "system" fn(
         hProcess: super::super::super::Foundation::HANDLE,
@@ -15784,6 +19089,17 @@ impl ::core::cmp::PartialEq for PROCESSORINFO {
     }
 }
 impl ::core::cmp::Eq for PROCESSORINFO {}
+impl FromIntoMemory for PROCESSORINFO {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct PROCESSOR_ARCHITECTURE(pub u16);
 pub const PROCESSOR_ARCHITECTURE_AMD64: PROCESSOR_ARCHITECTURE = PROCESSOR_ARCHITECTURE(9u16);
@@ -15851,6 +19167,17 @@ impl ::core::cmp::PartialEq for PROCESS_NAME_ENTRY {
     }
 }
 impl ::core::cmp::Eq for PROCESS_NAME_ENTRY {}
+impl FromIntoMemory for PROCESS_NAME_ENTRY {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct PROFILER_EVENT_MASK(pub u32);
 pub const PROFILER_EVENT_MASK_TRACE_SCRIPT_FUNCTION_CALL: PROFILER_EVENT_MASK =
@@ -16007,6 +19334,17 @@ impl ::core::cmp::PartialEq for PROFILER_HEAP_OBJECT {
     }
 }
 impl ::core::cmp::Eq for PROFILER_HEAP_OBJECT {}
+impl FromIntoMemory for PROFILER_HEAP_OBJECT {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct PROFILER_HEAP_OBJECT_0 {
     pub objectId: PtrRepr,
     pub externalObjectAddress: MutPtr<::core::ffi::c_void>,
@@ -16023,6 +19361,17 @@ impl ::core::cmp::PartialEq for PROFILER_HEAP_OBJECT_0 {
     }
 }
 impl ::core::cmp::Eq for PROFILER_HEAP_OBJECT_0 {}
+impl FromIntoMemory for PROFILER_HEAP_OBJECT_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct PROFILER_HEAP_OBJECT_FLAGS(pub u32);
 pub const PROFILER_HEAP_OBJECT_FLAGS_NEW_OBJECT: PROFILER_HEAP_OBJECT_FLAGS =
@@ -16261,6 +19610,17 @@ impl ::core::cmp::PartialEq for PROFILER_HEAP_OBJECT_SCOPE_LIST {
     }
 }
 impl ::core::cmp::Eq for PROFILER_HEAP_OBJECT_SCOPE_LIST {}
+impl FromIntoMemory for PROFILER_HEAP_OBJECT_SCOPE_LIST {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct PROFILER_HEAP_SUMMARY {
     pub version: PROFILER_HEAP_SUMMARY_VERSION,
     pub totalHeapSize: u32,
@@ -16285,6 +19645,17 @@ impl ::core::cmp::PartialEq for PROFILER_HEAP_SUMMARY {
     }
 }
 impl ::core::cmp::Eq for PROFILER_HEAP_SUMMARY {}
+impl FromIntoMemory for PROFILER_HEAP_SUMMARY {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct PROFILER_HEAP_SUMMARY_VERSION(pub i32);
 pub const PROFILER_HEAP_SUMMARY_VERSION_1: PROFILER_HEAP_SUMMARY_VERSION =
@@ -16342,6 +19713,17 @@ impl ::core::cmp::PartialEq for PROFILER_PROPERTY_TYPE_SUBSTRING_INFO {
     }
 }
 impl ::core::cmp::Eq for PROFILER_PROPERTY_TYPE_SUBSTRING_INFO {}
+impl FromIntoMemory for PROFILER_PROPERTY_TYPE_SUBSTRING_INFO {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct PROFILER_RELATIONSHIP_INFO(pub i32);
 pub const PROFILER_PROPERTY_TYPE_NUMBER: PROFILER_RELATIONSHIP_INFO =
@@ -17211,6 +20593,17 @@ impl ::core::cmp::PartialEq for READCONTROLSPACE {
     }
 }
 impl ::core::cmp::Eq for READCONTROLSPACE {}
+impl FromIntoMemory for READCONTROLSPACE {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct READCONTROLSPACE32 {
     pub Processor: u16,
     pub Address: u32,
@@ -17242,6 +20635,17 @@ impl ::core::cmp::PartialEq for READCONTROLSPACE32 {
     }
 }
 impl ::core::cmp::Eq for READCONTROLSPACE32 {}
+impl FromIntoMemory for READCONTROLSPACE32 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct READCONTROLSPACE64 {
     pub Processor: u16,
     pub Address: u64,
@@ -17273,6 +20677,17 @@ impl ::core::cmp::PartialEq for READCONTROLSPACE64 {
     }
 }
 impl ::core::cmp::Eq for READCONTROLSPACE64 {}
+impl FromIntoMemory for READCONTROLSPACE64 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct READ_WRITE_MSR {
     pub Msr: u32,
     pub Value: i64,
@@ -17297,6 +20712,17 @@ impl ::core::cmp::PartialEq for READ_WRITE_MSR {
     }
 }
 impl ::core::cmp::Eq for READ_WRITE_MSR {}
+impl FromIntoMemory for READ_WRITE_MSR {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const RESTORE_LAST_ERROR_NAME: &'static str = "RestoreLastError";
 pub const RESTORE_LAST_ERROR_NAME_A: &'static str = "RestoreLastError";
 pub const RESTORE_LAST_ERROR_NAME_W: &'static str = "RestoreLastError";
@@ -17324,6 +20750,17 @@ impl ::core::cmp::PartialEq for RIP_INFO {
     }
 }
 impl ::core::cmp::Eq for RIP_INFO {}
+impl FromIntoMemory for RIP_INFO {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct RIP_INFO_TYPE(pub u32);
 pub const SLE_ERROR: RIP_INFO_TYPE = RIP_INFO_TYPE(1u32);
@@ -17872,6 +21309,17 @@ impl ::core::cmp::PartialEq for SEARCHMEMORY {
     }
 }
 impl ::core::cmp::Eq for SEARCHMEMORY {}
+impl FromIntoMemory for SEARCHMEMORY {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct SOURCEFILE {
     pub ModBase: u64,
     pub FileName: crate::core::PSTR,
@@ -17896,6 +21344,17 @@ impl ::core::cmp::PartialEq for SOURCEFILE {
     }
 }
 impl ::core::cmp::Eq for SOURCEFILE {}
+impl FromIntoMemory for SOURCEFILE {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct SOURCEFILEW {
     pub ModBase: u64,
     pub FileName: crate::core::PWSTR,
@@ -17920,6 +21379,17 @@ impl ::core::cmp::PartialEq for SOURCEFILEW {
     }
 }
 impl ::core::cmp::Eq for SOURCEFILEW {}
+impl FromIntoMemory for SOURCEFILEW {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const SOURCETEXT_ATTR_COMMENT: u32 = 2u32;
 pub const SOURCETEXT_ATTR_FUNCTION_START: u32 = 64u32;
 pub const SOURCETEXT_ATTR_HUMANTEXT: u32 = 32768u32;
@@ -17974,6 +21444,17 @@ impl ::core::cmp::PartialEq for SRCCODEINFO {
     }
 }
 impl ::core::cmp::Eq for SRCCODEINFO {}
+impl FromIntoMemory for SRCCODEINFO {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct SRCCODEINFOW {
     pub SizeOfStruct: u32,
     pub Key: MutPtr<::core::ffi::c_void>,
@@ -18014,6 +21495,17 @@ impl ::core::cmp::PartialEq for SRCCODEINFOW {
     }
 }
 impl ::core::cmp::Eq for SRCCODEINFOW {}
+impl FromIntoMemory for SRCCODEINFOW {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const SSRVACTION_CHECKSUMSTATUS: u32 = 8u32;
 pub const SSRVACTION_EVENT: u32 = 3u32;
 pub const SSRVACTION_EVENTW: u32 = 4u32;
@@ -18117,6 +21609,17 @@ impl ::core::cmp::PartialEq for STACKFRAME {
     }
 }
 impl ::core::cmp::Eq for STACKFRAME {}
+impl FromIntoMemory for STACKFRAME {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct STACKFRAME64 {
     pub AddrPC: ADDRESS64,
     pub AddrReturn: ADDRESS64,
@@ -18169,6 +21672,17 @@ impl ::core::cmp::PartialEq for STACKFRAME64 {
     }
 }
 impl ::core::cmp::Eq for STACKFRAME64 {}
+impl FromIntoMemory for STACKFRAME64 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct STACKFRAME_EX {
     pub AddrPC: ADDRESS64,
     pub AddrReturn: ADDRESS64,
@@ -18227,6 +21741,17 @@ impl ::core::cmp::PartialEq for STACKFRAME_EX {
     }
 }
 impl ::core::cmp::Eq for STACKFRAME_EX {}
+impl FromIntoMemory for STACKFRAME_EX {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const STACK_FRAME_TYPE_IGNORE: u32 = 255u32;
 pub const STACK_FRAME_TYPE_INIT: u32 = 0u32;
 pub const STACK_FRAME_TYPE_INLINE: u32 = 2u32;
@@ -18269,6 +21794,17 @@ impl ::core::cmp::PartialEq for STACK_SRC_INFO {
     }
 }
 impl ::core::cmp::Eq for STACK_SRC_INFO {}
+impl FromIntoMemory for STACK_SRC_INFO {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct STACK_SYM_FRAME_INFO {
     pub StackFrameEx: DEBUG_STACK_FRAME_EX,
     pub SrcInfo: STACK_SRC_INFO,
@@ -18293,6 +21829,17 @@ impl ::core::cmp::PartialEq for STACK_SYM_FRAME_INFO {
     }
 }
 impl ::core::cmp::Eq for STACK_SYM_FRAME_INFO {}
+impl FromIntoMemory for STACK_SYM_FRAME_INFO {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub type SYMADDSOURCESTREAM = ::core::option::Option<
     unsafe extern "system" fn(
         param0: super::super::super::Foundation::HANDLE,
@@ -18375,6 +21922,17 @@ impl ::core::cmp::PartialEq for SYMBOL_INFO {
     }
 }
 impl ::core::cmp::Eq for SYMBOL_INFO {}
+impl FromIntoMemory for SYMBOL_INFO {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct SYMBOL_INFOW {
     pub SizeOfStruct: u32,
     pub TypeIndex: u32,
@@ -18439,6 +21997,17 @@ impl ::core::cmp::PartialEq for SYMBOL_INFOW {
     }
 }
 impl ::core::cmp::Eq for SYMBOL_INFOW {}
+impl FromIntoMemory for SYMBOL_INFOW {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct SYMBOL_INFO_EX {
     pub SizeOfStruct: u32,
     pub TypeOfInfo: u32,
@@ -18476,6 +22045,17 @@ impl ::core::cmp::PartialEq for SYMBOL_INFO_EX {
     }
 }
 impl ::core::cmp::Eq for SYMBOL_INFO_EX {}
+impl FromIntoMemory for SYMBOL_INFO_EX {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct SYMBOL_INFO_FLAGS(pub u32);
 pub const SYMFLAG_CLR_TOKEN: SYMBOL_INFO_FLAGS = SYMBOL_INFO_FLAGS(262144u32);
@@ -18574,6 +22154,17 @@ impl ::core::cmp::PartialEq for SYMBOL_INFO_PACKAGE {
     }
 }
 impl ::core::cmp::Eq for SYMBOL_INFO_PACKAGE {}
+impl FromIntoMemory for SYMBOL_INFO_PACKAGE {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct SYMBOL_INFO_PACKAGEW {
     pub si: SYMBOL_INFOW,
     pub name: [u16; 2001],
@@ -18598,6 +22189,17 @@ impl ::core::cmp::PartialEq for SYMBOL_INFO_PACKAGEW {
     }
 }
 impl ::core::cmp::Eq for SYMBOL_INFO_PACKAGEW {}
+impl FromIntoMemory for SYMBOL_INFO_PACKAGEW {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const SYMBOL_TYPE_INDEX_NOT_FOUND: u32 = 2u32;
 pub const SYMBOL_TYPE_INFO_NOT_FOUND: u32 = 3u32;
 pub const SYMENUM_OPTIONS_DEFAULT: u32 = 1u32;
@@ -18688,6 +22290,17 @@ impl ::core::cmp::PartialEq for SYMSRV_EXTENDED_OUTPUT_DATA {
     }
 }
 impl ::core::cmp::Eq for SYMSRV_EXTENDED_OUTPUT_DATA {}
+impl FromIntoMemory for SYMSRV_EXTENDED_OUTPUT_DATA {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct SYMSRV_INDEX_INFO {
     pub sizeofstruct: u32,
     pub file: [super::super::super::Foundation::CHAR; 261],
@@ -18737,6 +22350,17 @@ impl ::core::cmp::PartialEq for SYMSRV_INDEX_INFO {
     }
 }
 impl ::core::cmp::Eq for SYMSRV_INDEX_INFO {}
+impl FromIntoMemory for SYMSRV_INDEX_INFO {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct SYMSRV_INDEX_INFOW {
     pub sizeofstruct: u32,
     pub file: [u16; 261],
@@ -18786,6 +22410,17 @@ impl ::core::cmp::PartialEq for SYMSRV_INDEX_INFOW {
     }
 }
 impl ::core::cmp::Eq for SYMSRV_INDEX_INFOW {}
+impl FromIntoMemory for SYMSRV_INDEX_INFOW {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const SYMSRV_VERSION: u32 = 2u32;
 pub const SYMSTOREOPT_ALT_INDEX: u32 = 16u32;
 pub const SYMSTOREOPT_UNICODE: u32 = 32u32;
@@ -18830,6 +22465,17 @@ impl ::core::cmp::PartialEq for SYM_DUMP_PARAM {
     }
 }
 impl ::core::cmp::Eq for SYM_DUMP_PARAM {}
+impl FromIntoMemory for SYM_DUMP_PARAM {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct SYM_DUMP_PARAM_0 {
     pub Context: MutPtr<::core::ffi::c_void>,
     pub pBuffer: MutPtr<::core::ffi::c_void>,
@@ -18846,6 +22492,17 @@ impl ::core::cmp::PartialEq for SYM_DUMP_PARAM_0 {
     }
 }
 impl ::core::cmp::Eq for SYM_DUMP_PARAM_0 {}
+impl FromIntoMemory for SYM_DUMP_PARAM_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct SYM_FIND_ID_OPTION(pub u32);
 pub const SSRVOPT_DWORD: SYM_FIND_ID_OPTION = SYM_FIND_ID_OPTION(2u32);
@@ -19143,6 +22800,17 @@ impl ::core::cmp::PartialEq for ScriptDebugEventInformation {
     }
 }
 impl ::core::cmp::Eq for ScriptDebugEventInformation {}
+impl FromIntoMemory for ScriptDebugEventInformation {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct ScriptDebugEventInformation_0 {
     pub ExceptionInformation: ScriptDebugEventInformation_0_1,
     pub BreakpointInformation: ScriptDebugEventInformation_0_0,
@@ -19160,6 +22828,17 @@ impl ::core::cmp::PartialEq for ScriptDebugEventInformation_0 {
     }
 }
 impl ::core::cmp::Eq for ScriptDebugEventInformation_0 {}
+impl FromIntoMemory for ScriptDebugEventInformation_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct ScriptDebugEventInformation_0_0 {
     pub BreakpointId: u64,
 }
@@ -19182,6 +22861,17 @@ impl ::core::cmp::PartialEq for ScriptDebugEventInformation_0_0 {
     }
 }
 impl ::core::cmp::Eq for ScriptDebugEventInformation_0_0 {}
+impl FromIntoMemory for ScriptDebugEventInformation_0_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct ScriptDebugEventInformation_0_1 {
     pub IsUncaught: bool,
 }
@@ -19204,6 +22894,17 @@ impl ::core::cmp::PartialEq for ScriptDebugEventInformation_0_1 {
     }
 }
 impl ::core::cmp::Eq for ScriptDebugEventInformation_0_1 {}
+impl FromIntoMemory for ScriptDebugEventInformation_0_1 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct ScriptDebugPosition {
     pub Line: u32,
     pub Column: u32,
@@ -19228,6 +22929,17 @@ impl ::core::cmp::PartialEq for ScriptDebugPosition {
     }
 }
 impl ::core::cmp::Eq for ScriptDebugPosition {}
+impl FromIntoMemory for ScriptDebugPosition {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct ScriptDebugState(pub i32);
 pub const ScriptDebugNoDebugger: ScriptDebugState = ScriptDebugState(0i32);
@@ -19530,6 +23242,17 @@ impl ::core::cmp::PartialEq for TI_FINDCHILDREN_PARAMS {
     }
 }
 impl ::core::cmp::Eq for TI_FINDCHILDREN_PARAMS {}
+impl FromIntoMemory for TI_FINDCHILDREN_PARAMS {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct TRANSLATE_VIRTUAL_TO_PHYSICAL {
     pub Virtual: u64,
     pub Physical: u64,
@@ -19554,6 +23277,17 @@ impl ::core::cmp::PartialEq for TRANSLATE_VIRTUAL_TO_PHYSICAL {
     }
 }
 impl ::core::cmp::Eq for TRANSLATE_VIRTUAL_TO_PHYSICAL {}
+impl FromIntoMemory for TRANSLATE_VIRTUAL_TO_PHYSICAL {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct TypeKind(pub i32);
 pub const TypeUDT: TypeKind = TypeKind(0i32);
@@ -19632,6 +23366,17 @@ impl ::core::cmp::PartialEq for UNLOAD_DLL_DEBUG_INFO {
     }
 }
 impl ::core::cmp::Eq for UNLOAD_DLL_DEBUG_INFO {}
+impl FromIntoMemory for UNLOAD_DLL_DEBUG_INFO {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct UNWIND_HISTORY_TABLE {
@@ -19689,6 +23434,19 @@ impl ::core::cmp::PartialEq for UNWIND_HISTORY_TABLE {
 impl ::core::cmp::Eq for UNWIND_HISTORY_TABLE {}
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for UNWIND_HISTORY_TABLE {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
+#[doc = "*Required namespaces: *"]
+#[cfg(dummy_option_that_does_not_exist)]
 pub struct UNWIND_HISTORY_TABLE_ENTRY {
     pub ImageBase: PtrRepr,
     pub FunctionEntry: MutPtr<IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY>,
@@ -19725,6 +23483,19 @@ impl ::core::cmp::PartialEq for UNWIND_HISTORY_TABLE_ENTRY {
 impl ::core::cmp::Eq for UNWIND_HISTORY_TABLE_ENTRY {}
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for UNWIND_HISTORY_TABLE_ENTRY {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
+#[doc = "*Required namespaces: *"]
+#[cfg(dummy_option_that_does_not_exist)]
 pub struct UNWIND_HISTORY_TABLE_ENTRY {
     pub ImageBase: PtrRepr,
     pub FunctionEntry: MutPtr<IMAGE_RUNTIME_FUNCTION_ENTRY>,
@@ -19759,6 +23530,19 @@ impl ::core::cmp::PartialEq for UNWIND_HISTORY_TABLE_ENTRY {
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for UNWIND_HISTORY_TABLE_ENTRY {}
+#[doc = "*Required namespaces: *"]
+#[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for UNWIND_HISTORY_TABLE_ENTRY {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct VER_PLATFORM(pub u32);
 pub const VER_PLATFORM_WIN32s: VER_PLATFORM = VER_PLATFORM(0u32);
@@ -19825,6 +23609,17 @@ impl ::core::cmp::PartialEq for VIRTUAL_TO_PHYSICAL {
     }
 }
 impl ::core::cmp::Eq for VIRTUAL_TO_PHYSICAL {}
+impl FromIntoMemory for VIRTUAL_TO_PHYSICAL {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct VarArgsKind(pub i32);
 pub const VarArgsNone: VarArgsKind = VarArgsKind(0i32);
@@ -19875,6 +23670,17 @@ impl ::core::cmp::PartialEq for WAITCHAIN_NODE_INFO {
     }
 }
 impl ::core::cmp::Eq for WAITCHAIN_NODE_INFO {}
+impl FromIntoMemory for WAITCHAIN_NODE_INFO {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct WAITCHAIN_NODE_INFO_0 {
     pub LockObject: WAITCHAIN_NODE_INFO_0_0,
     pub ThreadObject: WAITCHAIN_NODE_INFO_0_1,
@@ -19891,6 +23697,17 @@ impl ::core::cmp::PartialEq for WAITCHAIN_NODE_INFO_0 {
     }
 }
 impl ::core::cmp::Eq for WAITCHAIN_NODE_INFO_0 {}
+impl FromIntoMemory for WAITCHAIN_NODE_INFO_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct WAITCHAIN_NODE_INFO_0_0 {
     pub ObjectName: [u16; 128],
     pub Timeout: i64,
@@ -19919,6 +23736,17 @@ impl ::core::cmp::PartialEq for WAITCHAIN_NODE_INFO_0_0 {
     }
 }
 impl ::core::cmp::Eq for WAITCHAIN_NODE_INFO_0_0 {}
+impl FromIntoMemory for WAITCHAIN_NODE_INFO_0_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct WAITCHAIN_NODE_INFO_0_1 {
     pub ProcessId: u32,
     pub ThreadId: u32,
@@ -19950,6 +23778,17 @@ impl ::core::cmp::PartialEq for WAITCHAIN_NODE_INFO_0_1 {
     }
 }
 impl ::core::cmp::Eq for WAITCHAIN_NODE_INFO_0_1 {}
+impl FromIntoMemory for WAITCHAIN_NODE_INFO_0_1 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct WAIT_CHAIN_THREAD_OPTIONS(pub u32);
 pub const WCT_OUT_OF_PROC_COM_FLAG: WAIT_CHAIN_THREAD_OPTIONS = WAIT_CHAIN_THREAD_OPTIONS(2u32);
@@ -20097,6 +23936,17 @@ impl ::core::cmp::PartialEq for WDBGEXTS_CLR_DATA_INTERFACE {
     }
 }
 impl ::core::cmp::Eq for WDBGEXTS_CLR_DATA_INTERFACE {}
+impl FromIntoMemory for WDBGEXTS_CLR_DATA_INTERFACE {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct WDBGEXTS_DISASSEMBLE_BUFFER {
     pub InOffset: u64,
     pub OutOffset: u64,
@@ -20143,6 +23993,17 @@ impl ::core::cmp::PartialEq for WDBGEXTS_DISASSEMBLE_BUFFER {
     }
 }
 impl ::core::cmp::Eq for WDBGEXTS_DISASSEMBLE_BUFFER {}
+impl FromIntoMemory for WDBGEXTS_DISASSEMBLE_BUFFER {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct WDBGEXTS_MODULE_IN_RANGE {
     pub Start: u64,
     pub End: u64,
@@ -20174,6 +24035,17 @@ impl ::core::cmp::PartialEq for WDBGEXTS_MODULE_IN_RANGE {
     }
 }
 impl ::core::cmp::Eq for WDBGEXTS_MODULE_IN_RANGE {}
+impl FromIntoMemory for WDBGEXTS_MODULE_IN_RANGE {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct WDBGEXTS_QUERY_INTERFACE {
     pub Iid: ConstPtr<crate::core::GUID>,
     pub Iface: MutPtr<::core::ffi::c_void>,
@@ -20198,6 +24070,17 @@ impl ::core::cmp::PartialEq for WDBGEXTS_QUERY_INTERFACE {
     }
 }
 impl ::core::cmp::Eq for WDBGEXTS_QUERY_INTERFACE {}
+impl FromIntoMemory for WDBGEXTS_QUERY_INTERFACE {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct WDBGEXTS_THREAD_OS_INFO {
     pub ThreadId: u32,
     pub ExitStatus: u32,
@@ -20247,6 +24130,17 @@ impl ::core::cmp::PartialEq for WDBGEXTS_THREAD_OS_INFO {
     }
 }
 impl ::core::cmp::Eq for WDBGEXTS_THREAD_OS_INFO {}
+impl FromIntoMemory for WDBGEXTS_THREAD_OS_INFO {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct WHEA_AER_BRIDGE_DESCRIPTOR {
     pub Type: u16,
     pub Enabled: super::super::super::Foundation::BOOLEAN,
@@ -20288,6 +24182,17 @@ impl ::core::cmp::PartialEq for WHEA_AER_BRIDGE_DESCRIPTOR {
     }
 }
 impl ::core::cmp::Eq for WHEA_AER_BRIDGE_DESCRIPTOR {}
+impl FromIntoMemory for WHEA_AER_BRIDGE_DESCRIPTOR {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct WHEA_AER_ENDPOINT_DESCRIPTOR {
     pub Type: u16,
     pub Enabled: super::super::super::Foundation::BOOLEAN,
@@ -20323,6 +24228,17 @@ impl ::core::cmp::PartialEq for WHEA_AER_ENDPOINT_DESCRIPTOR {
     }
 }
 impl ::core::cmp::Eq for WHEA_AER_ENDPOINT_DESCRIPTOR {}
+impl FromIntoMemory for WHEA_AER_ENDPOINT_DESCRIPTOR {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct WHEA_AER_ROOTPORT_DESCRIPTOR {
     pub Type: u16,
     pub Enabled: super::super::super::Foundation::BOOLEAN,
@@ -20360,6 +24276,17 @@ impl ::core::cmp::PartialEq for WHEA_AER_ROOTPORT_DESCRIPTOR {
     }
 }
 impl ::core::cmp::Eq for WHEA_AER_ROOTPORT_DESCRIPTOR {}
+impl FromIntoMemory for WHEA_AER_ROOTPORT_DESCRIPTOR {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const WHEA_BAD_PAGE_LIST_LOCATION: u32 = 15u32;
 pub const WHEA_BAD_PAGE_LIST_MAX_SIZE: u32 = 14u32;
 pub const WHEA_CMCI_THRESHOLD_COUNT: u32 = 10u32;
@@ -20417,6 +24344,17 @@ impl ::core::cmp::PartialEq for WHEA_DEVICE_DRIVER_DESCRIPTOR {
     }
 }
 impl ::core::cmp::Eq for WHEA_DEVICE_DRIVER_DESCRIPTOR {}
+impl FromIntoMemory for WHEA_DEVICE_DRIVER_DESCRIPTOR {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const WHEA_DISABLE_DUMMY_WRITE: u32 = 6u32;
 pub const WHEA_DISABLE_OFFLINE: u32 = 0u32;
 pub struct WHEA_DRIVER_BUFFER_SET {
@@ -20444,6 +24382,17 @@ impl ::core::cmp::PartialEq for WHEA_DRIVER_BUFFER_SET {
     }
 }
 impl ::core::cmp::Eq for WHEA_DRIVER_BUFFER_SET {}
+impl FromIntoMemory for WHEA_DRIVER_BUFFER_SET {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct WHEA_ERROR_SOURCE_CONFIGURATION_DD {
     pub Initialize: WHEA_ERROR_SOURCE_INITIALIZE_DEVICE_DRIVER,
     pub Uninitialize: WHEA_ERROR_SOURCE_UNINITIALIZE_DEVICE_DRIVER,
@@ -20463,6 +24412,17 @@ impl ::core::cmp::PartialEq for WHEA_ERROR_SOURCE_CONFIGURATION_DD {
     }
 }
 impl ::core::cmp::Eq for WHEA_ERROR_SOURCE_CONFIGURATION_DD {}
+impl FromIntoMemory for WHEA_ERROR_SOURCE_CONFIGURATION_DD {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct WHEA_ERROR_SOURCE_CONFIGURATION_DEVICE_DRIVER {
     pub Version: u32,
     pub SourceGuid: crate::core::GUID,
@@ -20496,6 +24456,17 @@ impl ::core::cmp::PartialEq for WHEA_ERROR_SOURCE_CONFIGURATION_DEVICE_DRIVER {
     }
 }
 impl ::core::cmp::Eq for WHEA_ERROR_SOURCE_CONFIGURATION_DEVICE_DRIVER {}
+impl FromIntoMemory for WHEA_ERROR_SOURCE_CONFIGURATION_DEVICE_DRIVER {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct WHEA_ERROR_SOURCE_CONFIGURATION_DEVICE_DRIVER_V1 {
     pub Version: u32,
     pub SourceGuid: crate::core::GUID,
@@ -20521,6 +24492,17 @@ impl ::core::cmp::PartialEq for WHEA_ERROR_SOURCE_CONFIGURATION_DEVICE_DRIVER_V1
     }
 }
 impl ::core::cmp::Eq for WHEA_ERROR_SOURCE_CONFIGURATION_DEVICE_DRIVER_V1 {}
+impl FromIntoMemory for WHEA_ERROR_SOURCE_CONFIGURATION_DEVICE_DRIVER_V1 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub type WHEA_ERROR_SOURCE_CORRECT_DEVICE_DRIVER = ::core::option::Option<
     unsafe extern "system" fn(
         ErrorSourceDesc: MutPtr<::core::ffi::c_void>,
@@ -20562,6 +24544,17 @@ impl ::core::cmp::PartialEq for WHEA_ERROR_SOURCE_DESCRIPTOR {
     }
 }
 impl ::core::cmp::Eq for WHEA_ERROR_SOURCE_DESCRIPTOR {}
+impl FromIntoMemory for WHEA_ERROR_SOURCE_DESCRIPTOR {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct WHEA_ERROR_SOURCE_DESCRIPTOR_0 {
     pub XpfMceDescriptor: WHEA_XPF_MCE_DESCRIPTOR,
     pub XpfCmcDescriptor: WHEA_XPF_CMC_DESCRIPTOR,
@@ -20599,6 +24592,17 @@ impl ::core::cmp::PartialEq for WHEA_ERROR_SOURCE_DESCRIPTOR_0 {
     }
 }
 impl ::core::cmp::Eq for WHEA_ERROR_SOURCE_DESCRIPTOR_0 {}
+impl FromIntoMemory for WHEA_ERROR_SOURCE_DESCRIPTOR_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const WHEA_ERROR_SOURCE_DESCRIPTOR_TYPE_AERBRIDGE: u32 = 8u32;
 pub const WHEA_ERROR_SOURCE_DESCRIPTOR_TYPE_AERENDPOINT: u32 = 7u32;
 pub const WHEA_ERROR_SOURCE_DESCRIPTOR_TYPE_AERROOTPORT: u32 = 6u32;
@@ -20744,6 +24748,17 @@ impl ::core::cmp::PartialEq for WHEA_GENERIC_ERROR_DESCRIPTOR {
     }
 }
 impl ::core::cmp::Eq for WHEA_GENERIC_ERROR_DESCRIPTOR {}
+impl FromIntoMemory for WHEA_GENERIC_ERROR_DESCRIPTOR {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct WHEA_GENERIC_ERROR_DESCRIPTOR_V2 {
     pub Type: u16,
     pub Reserved: u8,
@@ -20793,6 +24808,17 @@ impl ::core::cmp::PartialEq for WHEA_GENERIC_ERROR_DESCRIPTOR_V2 {
     }
 }
 impl ::core::cmp::Eq for WHEA_GENERIC_ERROR_DESCRIPTOR_V2 {}
+impl FromIntoMemory for WHEA_GENERIC_ERROR_DESCRIPTOR_V2 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct WHEA_IPF_CMC_DESCRIPTOR {
     pub Type: u16,
     pub Enabled: u8,
@@ -20810,6 +24836,17 @@ impl ::core::cmp::PartialEq for WHEA_IPF_CMC_DESCRIPTOR {
     }
 }
 impl ::core::cmp::Eq for WHEA_IPF_CMC_DESCRIPTOR {}
+impl FromIntoMemory for WHEA_IPF_CMC_DESCRIPTOR {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct WHEA_IPF_CPE_DESCRIPTOR {
     pub Type: u16,
     pub Enabled: u8,
@@ -20827,6 +24864,17 @@ impl ::core::cmp::PartialEq for WHEA_IPF_CPE_DESCRIPTOR {
     }
 }
 impl ::core::cmp::Eq for WHEA_IPF_CPE_DESCRIPTOR {}
+impl FromIntoMemory for WHEA_IPF_CPE_DESCRIPTOR {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct WHEA_IPF_MCA_DESCRIPTOR {
     pub Type: u16,
     pub Enabled: u8,
@@ -20844,6 +24892,17 @@ impl ::core::cmp::PartialEq for WHEA_IPF_MCA_DESCRIPTOR {
     }
 }
 impl ::core::cmp::Eq for WHEA_IPF_MCA_DESCRIPTOR {}
+impl FromIntoMemory for WHEA_IPF_MCA_DESCRIPTOR {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const WHEA_MAX_MC_BANKS: u32 = 32u32;
 pub const WHEA_MEM_PERSISTOFFLINE: u32 = 1u32;
 pub const WHEA_MEM_PFA_DISABLE: u32 = 2u32;
@@ -20871,6 +24930,17 @@ impl ::core::cmp::PartialEq for WHEA_NOTIFICATION_DESCRIPTOR {
     }
 }
 impl ::core::cmp::Eq for WHEA_NOTIFICATION_DESCRIPTOR {}
+impl FromIntoMemory for WHEA_NOTIFICATION_DESCRIPTOR {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct WHEA_NOTIFICATION_DESCRIPTOR_0 {
     pub Polled: WHEA_NOTIFICATION_DESCRIPTOR_0_4,
     pub Interrupt: WHEA_NOTIFICATION_DESCRIPTOR_0_1,
@@ -20900,6 +24970,17 @@ impl ::core::cmp::PartialEq for WHEA_NOTIFICATION_DESCRIPTOR_0 {
     }
 }
 impl ::core::cmp::Eq for WHEA_NOTIFICATION_DESCRIPTOR_0 {}
+impl FromIntoMemory for WHEA_NOTIFICATION_DESCRIPTOR_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct WHEA_NOTIFICATION_DESCRIPTOR_0_0 {
     pub PollInterval: u32,
     pub Vector: u32,
@@ -20925,6 +25006,17 @@ impl ::core::cmp::PartialEq for WHEA_NOTIFICATION_DESCRIPTOR_0_0 {
     }
 }
 impl ::core::cmp::Eq for WHEA_NOTIFICATION_DESCRIPTOR_0_0 {}
+impl FromIntoMemory for WHEA_NOTIFICATION_DESCRIPTOR_0_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct WHEA_NOTIFICATION_DESCRIPTOR_0_1 {
     pub PollInterval: u32,
     pub Vector: u32,
@@ -20950,6 +25042,17 @@ impl ::core::cmp::PartialEq for WHEA_NOTIFICATION_DESCRIPTOR_0_1 {
     }
 }
 impl ::core::cmp::Eq for WHEA_NOTIFICATION_DESCRIPTOR_0_1 {}
+impl FromIntoMemory for WHEA_NOTIFICATION_DESCRIPTOR_0_1 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct WHEA_NOTIFICATION_DESCRIPTOR_0_2 {
     pub PollInterval: u32,
     pub Vector: u32,
@@ -20975,6 +25078,17 @@ impl ::core::cmp::PartialEq for WHEA_NOTIFICATION_DESCRIPTOR_0_2 {
     }
 }
 impl ::core::cmp::Eq for WHEA_NOTIFICATION_DESCRIPTOR_0_2 {}
+impl FromIntoMemory for WHEA_NOTIFICATION_DESCRIPTOR_0_2 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct WHEA_NOTIFICATION_DESCRIPTOR_0_3 {
     pub PollInterval: u32,
     pub Vector: u32,
@@ -21000,6 +25114,17 @@ impl ::core::cmp::PartialEq for WHEA_NOTIFICATION_DESCRIPTOR_0_3 {
     }
 }
 impl ::core::cmp::Eq for WHEA_NOTIFICATION_DESCRIPTOR_0_3 {}
+impl FromIntoMemory for WHEA_NOTIFICATION_DESCRIPTOR_0_3 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct WHEA_NOTIFICATION_DESCRIPTOR_0_4 {
     pub PollInterval: u32,
 }
@@ -21015,6 +25140,17 @@ impl ::core::cmp::PartialEq for WHEA_NOTIFICATION_DESCRIPTOR_0_4 {
     }
 }
 impl ::core::cmp::Eq for WHEA_NOTIFICATION_DESCRIPTOR_0_4 {}
+impl FromIntoMemory for WHEA_NOTIFICATION_DESCRIPTOR_0_4 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct WHEA_NOTIFICATION_DESCRIPTOR_0_5 {
     pub PollInterval: u32,
     pub Vector: u32,
@@ -21040,6 +25176,17 @@ impl ::core::cmp::PartialEq for WHEA_NOTIFICATION_DESCRIPTOR_0_5 {
     }
 }
 impl ::core::cmp::Eq for WHEA_NOTIFICATION_DESCRIPTOR_0_5 {}
+impl FromIntoMemory for WHEA_NOTIFICATION_DESCRIPTOR_0_5 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct WHEA_NOTIFICATION_DESCRIPTOR_0_6 {
     pub PollInterval: u32,
     pub Vector: u32,
@@ -21065,6 +25212,17 @@ impl ::core::cmp::PartialEq for WHEA_NOTIFICATION_DESCRIPTOR_0_6 {
     }
 }
 impl ::core::cmp::Eq for WHEA_NOTIFICATION_DESCRIPTOR_0_6 {}
+impl FromIntoMemory for WHEA_NOTIFICATION_DESCRIPTOR_0_6 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct WHEA_NOTIFICATION_DESCRIPTOR_0_7 {
     pub PollInterval: u32,
     pub Vector: u32,
@@ -21090,6 +25248,17 @@ impl ::core::cmp::PartialEq for WHEA_NOTIFICATION_DESCRIPTOR_0_7 {
     }
 }
 impl ::core::cmp::Eq for WHEA_NOTIFICATION_DESCRIPTOR_0_7 {}
+impl FromIntoMemory for WHEA_NOTIFICATION_DESCRIPTOR_0_7 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct WHEA_NOTIFICATION_FLAGS {
     pub Anonymous: WHEA_NOTIFICATION_FLAGS_0,
     pub AsUSHORT: u16,
@@ -21106,6 +25275,17 @@ impl ::core::cmp::PartialEq for WHEA_NOTIFICATION_FLAGS {
     }
 }
 impl ::core::cmp::Eq for WHEA_NOTIFICATION_FLAGS {}
+impl FromIntoMemory for WHEA_NOTIFICATION_FLAGS {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct WHEA_NOTIFICATION_FLAGS_0 {
     pub _bitfield: u16,
 }
@@ -21121,6 +25301,17 @@ impl ::core::cmp::PartialEq for WHEA_NOTIFICATION_FLAGS_0 {
     }
 }
 impl ::core::cmp::Eq for WHEA_NOTIFICATION_FLAGS_0 {}
+impl FromIntoMemory for WHEA_NOTIFICATION_FLAGS_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const WHEA_NOTIFICATION_TYPE_ARMV8_SEA: u32 = 8u32;
 pub const WHEA_NOTIFICATION_TYPE_ARMV8_SEI: u32 = 9u32;
 pub const WHEA_NOTIFICATION_TYPE_CMCI: u32 = 5u32;
@@ -21149,6 +25340,17 @@ impl ::core::cmp::PartialEq for WHEA_PCI_SLOT_NUMBER {
     }
 }
 impl ::core::cmp::Eq for WHEA_PCI_SLOT_NUMBER {}
+impl FromIntoMemory for WHEA_PCI_SLOT_NUMBER {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct WHEA_PCI_SLOT_NUMBER_0 {
     pub bits: WHEA_PCI_SLOT_NUMBER_0_0,
     pub AsULONG: u32,
@@ -21165,6 +25367,17 @@ impl ::core::cmp::PartialEq for WHEA_PCI_SLOT_NUMBER_0 {
     }
 }
 impl ::core::cmp::Eq for WHEA_PCI_SLOT_NUMBER_0 {}
+impl FromIntoMemory for WHEA_PCI_SLOT_NUMBER_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct WHEA_PCI_SLOT_NUMBER_0_0 {
     pub _bitfield: u32,
 }
@@ -21180,6 +25393,17 @@ impl ::core::cmp::PartialEq for WHEA_PCI_SLOT_NUMBER_0_0 {
     }
 }
 impl ::core::cmp::Eq for WHEA_PCI_SLOT_NUMBER_0_0 {}
+impl FromIntoMemory for WHEA_PCI_SLOT_NUMBER_0_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const WHEA_PENDING_PAGE_LIST_SZ: u32 = 13u32;
 pub const WHEA_RESTORE_CMCI_ATTEMPTS: u32 = 8u32;
 pub const WHEA_RESTORE_CMCI_ENABLED: u32 = 7u32;
@@ -21209,6 +25433,17 @@ impl ::core::cmp::PartialEq for WHEA_XPF_CMC_DESCRIPTOR {
     }
 }
 impl ::core::cmp::Eq for WHEA_XPF_CMC_DESCRIPTOR {}
+impl FromIntoMemory for WHEA_XPF_CMC_DESCRIPTOR {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct WHEA_XPF_MCE_DESCRIPTOR {
     pub Type: u16,
     pub Enabled: u8,
@@ -21236,6 +25471,17 @@ impl ::core::cmp::PartialEq for WHEA_XPF_MCE_DESCRIPTOR {
     }
 }
 impl ::core::cmp::Eq for WHEA_XPF_MCE_DESCRIPTOR {}
+impl FromIntoMemory for WHEA_XPF_MCE_DESCRIPTOR {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct WHEA_XPF_MC_BANK_DESCRIPTOR {
     pub BankNumber: u8,
     pub ClearOnInitialization: super::super::super::Foundation::BOOLEAN,
@@ -21267,6 +25513,17 @@ impl ::core::cmp::PartialEq for WHEA_XPF_MC_BANK_DESCRIPTOR {
     }
 }
 impl ::core::cmp::Eq for WHEA_XPF_MC_BANK_DESCRIPTOR {}
+impl FromIntoMemory for WHEA_XPF_MC_BANK_DESCRIPTOR {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const WHEA_XPF_MC_BANK_STATUSFORMAT_AMD64MCA: u32 = 2u32;
 pub const WHEA_XPF_MC_BANK_STATUSFORMAT_IA32MCA: u32 = 0u32;
 pub const WHEA_XPF_MC_BANK_STATUSFORMAT_Intel64MCA: u32 = 1u32;
@@ -21286,6 +25543,17 @@ impl ::core::cmp::PartialEq for WHEA_XPF_NMI_DESCRIPTOR {
     }
 }
 impl ::core::cmp::Eq for WHEA_XPF_NMI_DESCRIPTOR {}
+impl FromIntoMemory for WHEA_XPF_NMI_DESCRIPTOR {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct WINDBG_EXTENSION_APIS {
@@ -21387,6 +25655,19 @@ impl ::core::cmp::PartialEq for WINDBG_EXTENSION_APIS {
 impl ::core::cmp::Eq for WINDBG_EXTENSION_APIS {}
 #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for WINDBG_EXTENSION_APIS {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
+#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 pub struct WINDBG_EXTENSION_APIS32 {
     pub nSize: u32,
     pub lpOutputRoutine: PWINDBG_OUTPUT_ROUTINE,
@@ -21486,6 +25767,19 @@ impl ::core::cmp::PartialEq for WINDBG_EXTENSION_APIS32 {
 impl ::core::cmp::Eq for WINDBG_EXTENSION_APIS32 {}
 #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for WINDBG_EXTENSION_APIS32 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
+#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 pub struct WINDBG_EXTENSION_APIS64 {
     pub nSize: u32,
     pub lpOutputRoutine: PWINDBG_OUTPUT_ROUTINE,
@@ -21583,6 +25877,19 @@ impl ::core::cmp::PartialEq for WINDBG_EXTENSION_APIS64 {
 #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for WINDBG_EXTENSION_APIS64 {}
+#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
+#[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for WINDBG_EXTENSION_APIS64 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct WINDBG_OLDKD_EXTENSION_APIS {
     pub nSize: u32,
     pub lpOutputRoutine: PWINDBG_OUTPUT_ROUTINE,
@@ -21660,6 +25967,17 @@ impl ::core::cmp::PartialEq for WINDBG_OLDKD_EXTENSION_APIS {
     }
 }
 impl ::core::cmp::Eq for WINDBG_OLDKD_EXTENSION_APIS {}
+impl FromIntoMemory for WINDBG_OLDKD_EXTENSION_APIS {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct WINDBG_OLD_EXTENSION_APIS {
     pub nSize: u32,
     pub lpOutputRoutine: PWINDBG_OUTPUT_ROUTINE,
@@ -21709,6 +26027,17 @@ impl ::core::cmp::PartialEq for WINDBG_OLD_EXTENSION_APIS {
     }
 }
 impl ::core::cmp::Eq for WINDBG_OLD_EXTENSION_APIS {}
+impl FromIntoMemory for WINDBG_OLD_EXTENSION_APIS {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct WOW64_CONTEXT {
     pub ContextFlags: u32,
     pub Dr0: u32,
@@ -21803,6 +26132,17 @@ impl ::core::cmp::PartialEq for WOW64_CONTEXT {
     }
 }
 impl ::core::cmp::Eq for WOW64_CONTEXT {}
+impl FromIntoMemory for WOW64_CONTEXT {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const WOW64_CONTEXT_EXCEPTION_ACTIVE: u32 = 134217728u32;
 pub const WOW64_CONTEXT_EXCEPTION_REPORTING: u32 = 2147483648u32;
 pub const WOW64_CONTEXT_EXCEPTION_REQUEST: u32 = 1073741824u32;
@@ -21825,6 +26165,17 @@ impl ::core::cmp::PartialEq for WOW64_DESCRIPTOR_TABLE_ENTRY {
     }
 }
 impl ::core::cmp::Eq for WOW64_DESCRIPTOR_TABLE_ENTRY {}
+impl FromIntoMemory for WOW64_DESCRIPTOR_TABLE_ENTRY {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct WOW64_FLOATING_SAVE_AREA {
     pub ControlWord: u32,
     pub StatusWord: u32,
@@ -21871,6 +26222,17 @@ impl ::core::cmp::PartialEq for WOW64_FLOATING_SAVE_AREA {
     }
 }
 impl ::core::cmp::Eq for WOW64_FLOATING_SAVE_AREA {}
+impl FromIntoMemory for WOW64_FLOATING_SAVE_AREA {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct WOW64_LDT_ENTRY {
     pub LimitLow: u16,
     pub BaseLow: u16,
@@ -21890,6 +26252,17 @@ impl ::core::cmp::PartialEq for WOW64_LDT_ENTRY {
     }
 }
 impl ::core::cmp::Eq for WOW64_LDT_ENTRY {}
+impl FromIntoMemory for WOW64_LDT_ENTRY {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct WOW64_LDT_ENTRY_0 {
     pub Bytes: WOW64_LDT_ENTRY_0_1,
     pub Bits: WOW64_LDT_ENTRY_0_0,
@@ -21906,6 +26279,17 @@ impl ::core::cmp::PartialEq for WOW64_LDT_ENTRY_0 {
     }
 }
 impl ::core::cmp::Eq for WOW64_LDT_ENTRY_0 {}
+impl FromIntoMemory for WOW64_LDT_ENTRY_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct WOW64_LDT_ENTRY_0_0 {
     pub _bitfield: u32,
 }
@@ -21928,6 +26312,17 @@ impl ::core::cmp::PartialEq for WOW64_LDT_ENTRY_0_0 {
     }
 }
 impl ::core::cmp::Eq for WOW64_LDT_ENTRY_0_0 {}
+impl FromIntoMemory for WOW64_LDT_ENTRY_0_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct WOW64_LDT_ENTRY_0_1 {
     pub BaseMid: u8,
     pub Flags1: u8,
@@ -21959,6 +26354,17 @@ impl ::core::cmp::PartialEq for WOW64_LDT_ENTRY_0_1 {
     }
 }
 impl ::core::cmp::Eq for WOW64_LDT_ENTRY_0_1 {}
+impl FromIntoMemory for WOW64_LDT_ENTRY_0_1 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const WOW64_MAXIMUM_SUPPORTED_EXTENSION: u32 = 512u32;
 pub const WOW64_SIZE_OF_80387_REGISTERS: u32 = 80u32;
 pub struct XPF_MCE_FLAGS {
@@ -21977,6 +26383,17 @@ impl ::core::cmp::PartialEq for XPF_MCE_FLAGS {
     }
 }
 impl ::core::cmp::Eq for XPF_MCE_FLAGS {}
+impl FromIntoMemory for XPF_MCE_FLAGS {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct XPF_MCE_FLAGS_0 {
     pub _bitfield: u32,
 }
@@ -21992,6 +26409,17 @@ impl ::core::cmp::PartialEq for XPF_MCE_FLAGS_0 {
     }
 }
 impl ::core::cmp::Eq for XPF_MCE_FLAGS_0 {}
+impl FromIntoMemory for XPF_MCE_FLAGS_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct XPF_MC_BANK_FLAGS {
     pub Anonymous: XPF_MC_BANK_FLAGS_0,
     pub AsUCHAR: u8,
@@ -22008,6 +26436,17 @@ impl ::core::cmp::PartialEq for XPF_MC_BANK_FLAGS {
     }
 }
 impl ::core::cmp::Eq for XPF_MC_BANK_FLAGS {}
+impl FromIntoMemory for XPF_MC_BANK_FLAGS {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct XPF_MC_BANK_FLAGS_0 {
     pub _bitfield: u8,
 }
@@ -22030,6 +26469,17 @@ impl ::core::cmp::PartialEq for XPF_MC_BANK_FLAGS_0 {
     }
 }
 impl ::core::cmp::Eq for XPF_MC_BANK_FLAGS_0 {}
+impl FromIntoMemory for XPF_MC_BANK_FLAGS_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct XSAVE_AREA {
     pub LegacyState: XSAVE_FORMAT,
     pub Header: XSAVE_AREA_HEADER,
@@ -22054,6 +26504,17 @@ impl ::core::cmp::PartialEq for XSAVE_AREA {
     }
 }
 impl ::core::cmp::Eq for XSAVE_AREA {}
+impl FromIntoMemory for XSAVE_AREA {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct XSAVE_AREA_HEADER {
     pub Mask: u64,
     pub CompactionMask: u64,
@@ -22082,6 +26543,17 @@ impl ::core::cmp::PartialEq for XSAVE_AREA_HEADER {
     }
 }
 impl ::core::cmp::Eq for XSAVE_AREA_HEADER {}
+impl FromIntoMemory for XSAVE_AREA_HEADER {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct XSAVE_FORMAT {
@@ -22161,6 +26633,19 @@ impl ::core::cmp::PartialEq for XSAVE_FORMAT {
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for XSAVE_FORMAT {}
+#[doc = "*Required namespaces: *"]
+#[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for XSAVE_FORMAT {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct XSAVE_FORMAT {
     pub ControlWord: u16,
     pub StatusWord: u16,
@@ -22228,6 +26713,17 @@ impl ::core::cmp::PartialEq for XSAVE_FORMAT {
     }
 }
 impl ::core::cmp::Eq for XSAVE_FORMAT {}
+impl FromIntoMemory for XSAVE_FORMAT {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct XSTATE_CONFIGURATION {
     pub EnabledFeatures: u64,
     pub EnabledVolatileFeatures: u64,
@@ -22268,6 +26764,17 @@ impl ::core::cmp::PartialEq for XSTATE_CONFIGURATION {
     }
 }
 impl ::core::cmp::Eq for XSTATE_CONFIGURATION {}
+impl FromIntoMemory for XSTATE_CONFIGURATION {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct XSTATE_CONFIGURATION_0 {
     pub ControlFlags: u32,
     pub Anonymous: XSTATE_CONFIGURATION_0_0,
@@ -22284,6 +26791,17 @@ impl ::core::cmp::PartialEq for XSTATE_CONFIGURATION_0 {
     }
 }
 impl ::core::cmp::Eq for XSTATE_CONFIGURATION_0 {}
+impl FromIntoMemory for XSTATE_CONFIGURATION_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct XSTATE_CONFIGURATION_0_0 {
     pub _bitfield: u32,
 }
@@ -22306,6 +26824,17 @@ impl ::core::cmp::PartialEq for XSTATE_CONFIGURATION_0_0 {
     }
 }
 impl ::core::cmp::Eq for XSTATE_CONFIGURATION_0_0 {}
+impl FromIntoMemory for XSTATE_CONFIGURATION_0_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct XSTATE_CONFIG_FEATURE_MSC_INFO {
     pub SizeOfInfo: u32,
     pub ContextSize: u32,
@@ -22327,6 +26856,17 @@ impl ::core::cmp::PartialEq for XSTATE_CONFIG_FEATURE_MSC_INFO {
     }
 }
 impl ::core::cmp::Eq for XSTATE_CONFIG_FEATURE_MSC_INFO {}
+impl FromIntoMemory for XSTATE_CONFIG_FEATURE_MSC_INFO {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct XSTATE_CONTEXT {
@@ -22373,6 +26913,19 @@ impl ::core::cmp::PartialEq for XSTATE_CONTEXT {
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for XSTATE_CONTEXT {}
+#[doc = "*Required namespaces: *"]
+#[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for XSTATE_CONTEXT {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct XSTATE_CONTEXT {
     pub Mask: u64,
     pub Length: u32,
@@ -22413,6 +26966,17 @@ impl ::core::cmp::PartialEq for XSTATE_CONTEXT {
     }
 }
 impl ::core::cmp::Eq for XSTATE_CONTEXT {}
+impl FromIntoMemory for XSTATE_CONTEXT {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct XSTATE_FEATURE {
     pub Offset: u32,
     pub Size: u32,
@@ -22437,6 +27001,17 @@ impl ::core::cmp::PartialEq for XSTATE_FEATURE {
     }
 }
 impl ::core::cmp::Eq for XSTATE_FEATURE {}
+impl FromIntoMemory for XSTATE_FEATURE {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct _DUMP_TYPES(pub i32);
 pub const DUMP_TYPE_INVALID: _DUMP_TYPES = _DUMP_TYPES(-1i32);
@@ -22512,6 +27087,17 @@ impl ::core::cmp::PartialEq for _GETSETBUSDATA {
     }
 }
 impl ::core::cmp::Eq for _GETSETBUSDATA {}
+impl FromIntoMemory for _GETSETBUSDATA {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct _IMAGEHLP_JIT_SYMBOL_MAP {
     pub SizeOfStruct: u32,
     pub Address: u64,
@@ -22540,6 +27126,17 @@ impl ::core::cmp::PartialEq for _IMAGEHLP_JIT_SYMBOL_MAP {
     }
 }
 impl ::core::cmp::Eq for _IMAGEHLP_JIT_SYMBOL_MAP {}
+impl FromIntoMemory for _IMAGEHLP_JIT_SYMBOL_MAP {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct __MIDL___MIDL_itf_jscript9diag_0000_0007_0001 {
     pub InstructionOffset: u64,
     pub ReturnOffset: u64,
@@ -22571,6 +27168,17 @@ impl ::core::cmp::PartialEq for __MIDL___MIDL_itf_jscript9diag_0000_0007_0001 {
     }
 }
 impl ::core::cmp::Eq for __MIDL___MIDL_itf_jscript9diag_0000_0007_0001 {}
+impl FromIntoMemory for __MIDL___MIDL_itf_jscript9diag_0000_0007_0001 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const fasaCaseSensitive: u32 = 4u32;
 pub const fasaPreferInternalHandler: u32 = 1u32;
 pub const fasaSupportInternalHandler: u32 = 2u32;

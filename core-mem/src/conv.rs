@@ -53,3 +53,38 @@ impl FromIntoMemory for () {
         0
     }
 }
+
+#[macro_export]
+macro_rules! from_into_mem_impl_for_wrapper {
+    ($typ:tt, $underlying:ty) => {
+        impl FromIntoMemory for $typ {
+            #[inline]
+            fn from_bytes(from: &[u8]) -> Self {
+                Self(<$underlying>::from_bytes(from))
+            }
+
+            #[inline]
+            fn into_bytes(self, into: &mut [u8]) {
+                self.0.into_bytes(into)
+            }
+
+            #[inline]
+            fn size() -> usize {
+                <$underlying>::size()
+            }
+        }
+    };
+}
+
+/// Option is used (currently) for function pointers, so I use this to stub them out
+impl<T> FromIntoMemory for Option<T> {
+    fn from_bytes(_: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, _: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}

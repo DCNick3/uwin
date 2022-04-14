@@ -1,12 +1,10 @@
 use core_mem::thread_ctx::{get_thread_ctx, set_thread_ctx};
 use recompiler::memory_image::{MemoryImageItem, Protection};
 use region::Allocation;
-use rusty_x86_runtime::{CpuContext, ExtendedContext, FlatMemoryCtx, StdCallHelper, PROGRAM_IMAGE};
+use rusty_x86_runtime::{CpuContext, ExtendedContext, FlatMemoryCtx, PROGRAM_IMAGE};
 use std::ffi::CStr;
 use std::io::Write;
 use std::os::raw::c_char;
-use std::panic::{catch_unwind, AssertUnwindSafe};
-use std::process::abort;
 use std::sync::Arc;
 use win32::core::Win32Context;
 use win32::Win32::Foundation::HWND;
@@ -40,30 +38,6 @@ impl win32::Win32::UI::WindowsAndMessaging::Api for WindowsAndMessaging {
         );
 
         MESSAGEBOX_RESULT(0)
-    }
-}
-
-#[no_mangle]
-extern "C" fn magic_MessageBoxA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
-    let result = catch_unwind(AssertUnwindSafe(|| {
-        let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
-
-        let mut call = StdCallHelper::new(memory, &mut context.cpu);
-
-        let h_wnd = call.get_arg();
-        let lp_text = call.get_arg();
-        let lp_caption = call.get_arg();
-        let u_type = call.get_arg();
-
-        let res = api.MessageBoxA(h_wnd, lp_text, lp_caption, u_type);
-
-        call.finish(res);
-    }));
-
-    if result.is_err() {
-        eprintln!("Caught a panic in native code. Whoops, aborting..");
-
-        abort();
     }
 }
 

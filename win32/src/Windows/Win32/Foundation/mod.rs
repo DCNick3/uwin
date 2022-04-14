@@ -78,6 +78,17 @@ impl ::core::cmp::PartialEq for APP_LOCAL_DEVICE_ID {
     }
 }
 impl ::core::cmp::Eq for APP_LOCAL_DEVICE_ID {}
+impl FromIntoMemory for APP_LOCAL_DEVICE_ID {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const APP_LOCAL_DEVICE_ID_SIZE: u32 = 32u32;
 pub struct BOOL(pub i32);
 impl BOOL {
@@ -1010,6 +1021,17 @@ impl ::core::cmp::PartialEq for DECIMAL {
     }
 }
 impl ::core::cmp::Eq for DECIMAL {}
+impl FromIntoMemory for DECIMAL {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct DECIMAL_0 {
     pub Anonymous: DECIMAL_0_0,
     pub signscale: u16,
@@ -1026,6 +1048,17 @@ impl ::core::cmp::PartialEq for DECIMAL_0 {
     }
 }
 impl ::core::cmp::Eq for DECIMAL_0 {}
+impl FromIntoMemory for DECIMAL_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct DECIMAL_0_0 {
     pub scale: u8,
     pub sign: u8,
@@ -1050,6 +1083,17 @@ impl ::core::cmp::PartialEq for DECIMAL_0_0 {
     }
 }
 impl ::core::cmp::Eq for DECIMAL_0_0 {}
+impl FromIntoMemory for DECIMAL_0_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct DECIMAL_1 {
     pub Anonymous: DECIMAL_1_0,
     pub Lo64: u64,
@@ -1066,6 +1110,17 @@ impl ::core::cmp::PartialEq for DECIMAL_1 {
     }
 }
 impl ::core::cmp::Eq for DECIMAL_1 {}
+impl FromIntoMemory for DECIMAL_1 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct DECIMAL_1_0 {
     pub Lo32: u32,
     pub Mid32: u32,
@@ -1090,6 +1145,17 @@ impl ::core::cmp::PartialEq for DECIMAL_1_0 {
     }
 }
 impl ::core::cmp::Eq for DECIMAL_1_0 {}
+impl FromIntoMemory for DECIMAL_1_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const DIGSIG_E_CRYPTO: crate::core::HRESULT = crate::core::HRESULT(-2146762744i32);
 pub const DIGSIG_E_DECODE: crate::core::HRESULT = crate::core::HRESULT(-2146762746i32);
 pub const DIGSIG_E_ENCODE: crate::core::HRESULT = crate::core::HRESULT(-2146762747i32);
@@ -2243,6 +2309,17 @@ impl ::core::cmp::PartialEq for FILETIME {
     }
 }
 impl ::core::cmp::Eq for FILETIME {}
+impl FromIntoMemory for FILETIME {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const FILTER_E_ALREADY_OPEN: crate::core::HRESULT = crate::core::HRESULT(-2147215562i32);
 pub const FILTER_E_CONTENTINDEXCORRUPT: crate::core::HRESULT = crate::core::HRESULT(-1073473740i32);
 pub const FILTER_E_IN_USE: crate::core::HRESULT = crate::core::HRESULT(-2147215560i32);
@@ -2284,6 +2361,17 @@ impl ::core::cmp::PartialEq for FLOAT128 {
     }
 }
 impl ::core::cmp::Eq for FLOAT128 {}
+impl FromIntoMemory for FLOAT128 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const FRS_ERR_AUTHENTICATION: i32 = 8008i32;
 pub const FRS_ERR_CHILD_TO_PARENT_COMM: i32 = 8011i32;
 pub const FRS_ERR_INSUFFICIENT_PRIV: i32 = 8007i32;
@@ -3000,6 +3088,17 @@ impl ::core::cmp::PartialEq for HLSURF__ {
     }
 }
 impl ::core::cmp::Eq for HLSURF__ {}
+impl FromIntoMemory for HLSURF__ {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct HRSRC(pub PtrDiffRepr);
 impl HRSRC {
@@ -3056,6 +3155,17 @@ impl ::core::cmp::PartialEq for HSPRITE__ {
     }
 }
 impl ::core::cmp::Eq for HSPRITE__ {}
+impl FromIntoMemory for HSPRITE__ {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const HSP_BASE_ERROR_MASK: crate::core::HRESULT = crate::core::HRESULT(-2128019200i32);
 pub const HSP_BASE_INTERNAL_ERROR: crate::core::HRESULT = crate::core::HRESULT(-2128018945i32);
 pub const HSP_BS_ERROR_MASK: crate::core::HRESULT = crate::core::HRESULT(-2128080896i32);
@@ -3109,6 +3219,17 @@ impl ::core::cmp::PartialEq for HSTR__ {
     }
 }
 impl ::core::cmp::Eq for HSTR__ {}
+impl FromIntoMemory for HSTR__ {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const HTTP_E_STATUS_AMBIGUOUS: crate::core::HRESULT = crate::core::HRESULT(-2145844948i32);
 pub const HTTP_E_STATUS_BAD_GATEWAY: crate::core::HRESULT = crate::core::HRESULT(-2145844746i32);
 pub const HTTP_E_STATUS_BAD_METHOD: crate::core::HRESULT = crate::core::HRESULT(-2145844843i32);
@@ -3181,6 +3302,17 @@ impl ::core::cmp::PartialEq for HUMPD__ {
     }
 }
 impl ::core::cmp::Eq for HUMPD__ {}
+impl FromIntoMemory for HUMPD__ {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct HWND(pub PtrDiffRepr);
 impl HWND {
@@ -3340,6 +3472,17 @@ impl ::core::cmp::PartialEq for LUID {
     }
 }
 impl ::core::cmp::Eq for LUID {}
+impl FromIntoMemory for LUID {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const MARSHAL_E_FIRST: i32 = -2147221216i32;
 pub const MARSHAL_E_LAST: i32 = -2147221201i32;
 pub const MARSHAL_S_FIRST: i32 = 262432i32;
@@ -3989,6 +4132,17 @@ impl ::core::cmp::PartialEq for POINT {
     }
 }
 impl ::core::cmp::Eq for POINT {}
+impl FromIntoMemory for POINT {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct POINTL {
     pub x: i32,
     pub y: i32,
@@ -4013,6 +4167,17 @@ impl ::core::cmp::PartialEq for POINTL {
     }
 }
 impl ::core::cmp::Eq for POINTL {}
+impl FromIntoMemory for POINTL {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct POINTS {
     pub x: i16,
     pub y: i16,
@@ -4037,6 +4202,17 @@ impl ::core::cmp::PartialEq for POINTS {
     }
 }
 impl ::core::cmp::Eq for POINTS {}
+impl FromIntoMemory for POINTS {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const PRESENTATION_ERROR_LOST: crate::core::HRESULT = crate::core::HRESULT(-2004811775i32);
 pub type PROC = ::core::option::Option<unsafe extern "system" fn() -> PtrDiffRepr>;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -4172,6 +4348,17 @@ impl ::core::cmp::PartialEq for RECT {
     }
 }
 impl ::core::cmp::Eq for RECT {}
+impl FromIntoMemory for RECT {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct RECTL {
     pub left: i32,
     pub top: i32,
@@ -4203,6 +4390,17 @@ impl ::core::cmp::PartialEq for RECTL {
     }
 }
 impl ::core::cmp::Eq for RECTL {}
+impl FromIntoMemory for RECTL {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const REGDB_E_BADTHREADINGMODEL: crate::core::HRESULT = crate::core::HRESULT(-2147221162i32);
 pub const REGDB_E_CLASSNOTREG: crate::core::HRESULT = crate::core::HRESULT(-2147221164i32);
 pub const REGDB_E_FIRST: i32 = -2147221168i32;
@@ -4723,6 +4921,17 @@ impl ::core::cmp::PartialEq for SIZE {
     }
 }
 impl ::core::cmp::Eq for SIZE {}
+impl FromIntoMemory for SIZE {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const SPAPI_E_AUTHENTICODE_DISALLOWED: crate::core::HRESULT =
     crate::core::HRESULT(-2146500032i32);
 pub const SPAPI_E_AUTHENTICODE_PUBLISHER_NOT_TRUSTED: crate::core::HRESULT =
@@ -7787,6 +7996,17 @@ impl ::core::cmp::PartialEq for SYSTEMTIME {
     }
 }
 impl ::core::cmp::Eq for SYSTEMTIME {}
+impl FromIntoMemory for SYSTEMTIME {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const S_APPLICATION_ACTIVATION_ERROR_HANDLED_BY_DIALOG: crate::core::HRESULT =
     crate::core::HRESULT(2556505i32);
 pub const S_FALSE: crate::core::HRESULT = crate::core::HRESULT(1i32);
@@ -8333,6 +8553,17 @@ impl ::core::cmp::PartialEq for UNICODE_STRING {
     }
 }
 impl ::core::cmp::Eq for UNICODE_STRING {}
+impl FromIntoMemory for UNICODE_STRING {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const UTC_E_ACTION_NOT_SUPPORTED_IN_DESTINATION: crate::core::HRESULT =
     crate::core::HRESULT(-2017128380i32);
 pub const UTC_E_AGENT_DIAGNOSTICS_TOO_LARGE: crate::core::HRESULT =

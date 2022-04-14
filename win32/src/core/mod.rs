@@ -2,6 +2,7 @@ pub mod prelude;
 
 use anymap::any::{Any, IntoBox};
 use anymap::AnyMap;
+use core_mem::from_into_mem_impl_for_wrapper;
 #[allow(unused)]
 use prelude::*;
 use std::sync::Arc;
@@ -11,6 +12,8 @@ use std::sync::Arc;
 #[must_use]
 #[allow(non_camel_case_types)]
 pub struct HRESULT(pub i32);
+
+from_into_mem_impl_for_wrapper!(HRESULT, i32);
 
 // TODO: stubs for pointers
 #[derive(Copy, Clone, Debug, Eq, PartialEq)]
@@ -42,27 +45,6 @@ impl PCWSTR {
     pub const fn new(value: PtrRepr) -> Self {
         Self(ConstPtr::new(value))
     }
-}
-
-macro_rules! from_into_mem_impl_for_wrapper {
-    ($typ:tt, $underlying:ty) => {
-        impl FromIntoMemory for $typ {
-            #[inline]
-            fn from_bytes(from: &[u8]) -> Self {
-                Self(<$underlying>::from_bytes(from))
-            }
-
-            #[inline]
-            fn into_bytes(self, into: &mut [u8]) {
-                self.0.into_bytes(into)
-            }
-
-            #[inline]
-            fn size() -> usize {
-                <$underlying>::size()
-            }
-        }
-    };
 }
 
 from_into_mem_impl_for_wrapper!(PSTR, MutPtr<u8>);

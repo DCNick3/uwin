@@ -41,6 +41,17 @@ impl ::core::cmp::PartialEq for CACHE_DESCRIPTOR {
     }
 }
 impl ::core::cmp::Eq for CACHE_DESCRIPTOR {}
+impl FromIntoMemory for CACHE_DESCRIPTOR {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct CACHE_RELATIONSHIP {
     pub Level: u8,
     pub Associativity: u8,
@@ -70,6 +81,17 @@ impl ::core::cmp::PartialEq for CACHE_RELATIONSHIP {
     }
 }
 impl ::core::cmp::Eq for CACHE_RELATIONSHIP {}
+impl FromIntoMemory for CACHE_RELATIONSHIP {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct CACHE_RELATIONSHIP_0 {
     pub GroupMask: GROUP_AFFINITY,
     pub GroupMasks: [GROUP_AFFINITY; 1],
@@ -86,6 +108,17 @@ impl ::core::cmp::PartialEq for CACHE_RELATIONSHIP_0 {
     }
 }
 impl ::core::cmp::Eq for CACHE_RELATIONSHIP_0 {}
+impl FromIntoMemory for CACHE_RELATIONSHIP_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct COMPUTER_NAME_FORMAT(pub i32);
 pub const ComputerNameNetBIOS: COMPUTER_NAME_FORMAT = COMPUTER_NAME_FORMAT(0i32);
@@ -474,6 +507,17 @@ impl ::core::cmp::PartialEq for GROUP_AFFINITY {
     }
 }
 impl ::core::cmp::Eq for GROUP_AFFINITY {}
+impl FromIntoMemory for GROUP_AFFINITY {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct GROUP_RELATIONSHIP {
     pub MaximumGroupCount: u16,
     pub ActiveGroupCount: u16,
@@ -505,6 +549,17 @@ impl ::core::cmp::PartialEq for GROUP_RELATIONSHIP {
     }
 }
 impl ::core::cmp::Eq for GROUP_RELATIONSHIP {}
+impl FromIntoMemory for GROUP_RELATIONSHIP {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct LOGICAL_PROCESSOR_RELATIONSHIP(pub i32);
 pub const RelationProcessorCore: LOGICAL_PROCESSOR_RELATIONSHIP =
@@ -592,6 +647,17 @@ impl ::core::cmp::PartialEq for MEMORYSTATUS {
     }
 }
 impl ::core::cmp::Eq for MEMORYSTATUS {}
+impl FromIntoMemory for MEMORYSTATUS {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct MEMORYSTATUSEX {
     pub dwLength: u32,
     pub dwMemoryLoad: u32,
@@ -638,6 +704,17 @@ impl ::core::cmp::PartialEq for MEMORYSTATUSEX {
     }
 }
 impl ::core::cmp::Eq for MEMORYSTATUSEX {}
+impl FromIntoMemory for MEMORYSTATUSEX {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const NTDDI_LONGHORN: u32 = 100663296u32;
 pub const NTDDI_VERSION: u32 = 167772171u32;
 pub const NTDDI_VISTA: u32 = 100663296u32;
@@ -707,6 +784,17 @@ impl ::core::cmp::PartialEq for NUMA_NODE_RELATIONSHIP {
     }
 }
 impl ::core::cmp::Eq for NUMA_NODE_RELATIONSHIP {}
+impl FromIntoMemory for NUMA_NODE_RELATIONSHIP {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct NUMA_NODE_RELATIONSHIP_0 {
     pub GroupMask: GROUP_AFFINITY,
     pub GroupMasks: [GROUP_AFFINITY; 1],
@@ -723,6 +811,17 @@ impl ::core::cmp::PartialEq for NUMA_NODE_RELATIONSHIP_0 {
     }
 }
 impl ::core::cmp::Eq for NUMA_NODE_RELATIONSHIP_0 {}
+impl FromIntoMemory for NUMA_NODE_RELATIONSHIP_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct OSVERSIONINFOA {
     pub dwOSVersionInfoSize: u32,
     pub dwMajorVersion: u32,
@@ -760,6 +859,17 @@ impl ::core::cmp::PartialEq for OSVERSIONINFOA {
     }
 }
 impl ::core::cmp::Eq for OSVERSIONINFOA {}
+impl FromIntoMemory for OSVERSIONINFOA {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct OSVERSIONINFOEXA {
     pub dwOSVersionInfoSize: u32,
     pub dwMajorVersion: u32,
@@ -812,6 +922,17 @@ impl ::core::cmp::PartialEq for OSVERSIONINFOEXA {
     }
 }
 impl ::core::cmp::Eq for OSVERSIONINFOEXA {}
+impl FromIntoMemory for OSVERSIONINFOEXA {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct OSVERSIONINFOEXW {
     pub dwOSVersionInfoSize: u32,
     pub dwMajorVersion: u32,
@@ -864,6 +985,17 @@ impl ::core::cmp::PartialEq for OSVERSIONINFOEXW {
     }
 }
 impl ::core::cmp::Eq for OSVERSIONINFOEXW {}
+impl FromIntoMemory for OSVERSIONINFOEXW {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct OSVERSIONINFOW {
     pub dwOSVersionInfoSize: u32,
     pub dwMajorVersion: u32,
@@ -901,6 +1033,17 @@ impl ::core::cmp::PartialEq for OSVERSIONINFOW {
     }
 }
 impl ::core::cmp::Eq for OSVERSIONINFOW {}
+impl FromIntoMemory for OSVERSIONINFOW {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const OSVERSION_MASK: u32 = 4294901760u32;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct OS_DEPLOYEMENT_STATE_VALUES(pub i32);
@@ -1132,6 +1275,17 @@ impl ::core::cmp::PartialEq for PROCESSOR_GROUP_INFO {
     }
 }
 impl ::core::cmp::Eq for PROCESSOR_GROUP_INFO {}
+impl FromIntoMemory for PROCESSOR_GROUP_INFO {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct PROCESSOR_RELATIONSHIP {
     pub Flags: u8,
     pub EfficiencyClass: u8,
@@ -1166,6 +1320,17 @@ impl ::core::cmp::PartialEq for PROCESSOR_RELATIONSHIP {
     }
 }
 impl ::core::cmp::Eq for PROCESSOR_RELATIONSHIP {}
+impl FromIntoMemory for PROCESSOR_RELATIONSHIP {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct RTL_SYSTEM_GLOBAL_DATA_ID(pub i32);
 pub const GlobalDataIdUnknown: RTL_SYSTEM_GLOBAL_DATA_ID = RTL_SYSTEM_GLOBAL_DATA_ID(0i32);
@@ -1234,6 +1399,17 @@ impl ::core::cmp::PartialEq for SYSTEM_CPU_SET_INFORMATION {
     }
 }
 impl ::core::cmp::Eq for SYSTEM_CPU_SET_INFORMATION {}
+impl FromIntoMemory for SYSTEM_CPU_SET_INFORMATION {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct SYSTEM_CPU_SET_INFORMATION_0 {
     pub CpuSet: SYSTEM_CPU_SET_INFORMATION_0_0,
 }
@@ -1249,6 +1425,17 @@ impl ::core::cmp::PartialEq for SYSTEM_CPU_SET_INFORMATION_0 {
     }
 }
 impl ::core::cmp::Eq for SYSTEM_CPU_SET_INFORMATION_0 {}
+impl FromIntoMemory for SYSTEM_CPU_SET_INFORMATION_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct SYSTEM_CPU_SET_INFORMATION_0_0 {
     pub Id: u32,
     pub Group: u16,
@@ -1282,6 +1469,17 @@ impl ::core::cmp::PartialEq for SYSTEM_CPU_SET_INFORMATION_0_0 {
     }
 }
 impl ::core::cmp::Eq for SYSTEM_CPU_SET_INFORMATION_0_0 {}
+impl FromIntoMemory for SYSTEM_CPU_SET_INFORMATION_0_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct SYSTEM_CPU_SET_INFORMATION_0_0_0 {
     pub AllFlags: u8,
     pub Anonymous: SYSTEM_CPU_SET_INFORMATION_0_0_0_0,
@@ -1298,6 +1496,17 @@ impl ::core::cmp::PartialEq for SYSTEM_CPU_SET_INFORMATION_0_0_0 {
     }
 }
 impl ::core::cmp::Eq for SYSTEM_CPU_SET_INFORMATION_0_0_0 {}
+impl FromIntoMemory for SYSTEM_CPU_SET_INFORMATION_0_0_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct SYSTEM_CPU_SET_INFORMATION_0_0_0_0 {
     pub _bitfield: u8,
 }
@@ -1320,6 +1529,17 @@ impl ::core::cmp::PartialEq for SYSTEM_CPU_SET_INFORMATION_0_0_0_0 {
     }
 }
 impl ::core::cmp::Eq for SYSTEM_CPU_SET_INFORMATION_0_0_0_0 {}
+impl FromIntoMemory for SYSTEM_CPU_SET_INFORMATION_0_0_0_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct SYSTEM_CPU_SET_INFORMATION_0_0_1 {
     pub Reserved: u32,
     pub SchedulingClass: u8,
@@ -1336,6 +1556,17 @@ impl ::core::cmp::PartialEq for SYSTEM_CPU_SET_INFORMATION_0_0_1 {
     }
 }
 impl ::core::cmp::Eq for SYSTEM_CPU_SET_INFORMATION_0_0_1 {}
+impl FromIntoMemory for SYSTEM_CPU_SET_INFORMATION_0_0_1 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const SYSTEM_CPU_SET_INFORMATION_ALLOCATED: u32 = 2u32;
 pub const SYSTEM_CPU_SET_INFORMATION_ALLOCATED_TO_TARGET_PROCESS: u32 = 4u32;
 pub const SYSTEM_CPU_SET_INFORMATION_PARKED: u32 = 1u32;
@@ -1373,6 +1604,17 @@ impl ::core::cmp::PartialEq for SYSTEM_INFO {
     }
 }
 impl ::core::cmp::Eq for SYSTEM_INFO {}
+impl FromIntoMemory for SYSTEM_INFO {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct SYSTEM_INFO_0 {
     pub dwOemId: u32,
     pub Anonymous: SYSTEM_INFO_0_0,
@@ -1389,6 +1631,17 @@ impl ::core::cmp::PartialEq for SYSTEM_INFO_0 {
     }
 }
 impl ::core::cmp::Eq for SYSTEM_INFO_0 {}
+impl FromIntoMemory for SYSTEM_INFO_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct SYSTEM_INFO_0_0 {
     pub wProcessorArchitecture: super::Diagnostics::Debug::PROCESSOR_ARCHITECTURE,
     pub wReserved: u16,
@@ -1414,6 +1667,17 @@ impl ::core::cmp::PartialEq for SYSTEM_INFO_0_0 {
     }
 }
 impl ::core::cmp::Eq for SYSTEM_INFO_0_0 {}
+impl FromIntoMemory for SYSTEM_INFO_0_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct SYSTEM_LOGICAL_PROCESSOR_INFORMATION {
     pub ProcessorMask: PtrRepr,
     pub Relationship: LOGICAL_PROCESSOR_RELATIONSHIP,
@@ -1433,6 +1697,17 @@ impl ::core::cmp::PartialEq for SYSTEM_LOGICAL_PROCESSOR_INFORMATION {
     }
 }
 impl ::core::cmp::Eq for SYSTEM_LOGICAL_PROCESSOR_INFORMATION {}
+impl FromIntoMemory for SYSTEM_LOGICAL_PROCESSOR_INFORMATION {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0 {
     pub ProcessorCore: SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0_1,
     pub NumaNode: SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0_0,
@@ -1454,6 +1729,17 @@ impl ::core::cmp::PartialEq for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0 {
     }
 }
 impl ::core::cmp::Eq for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0 {}
+impl FromIntoMemory for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0_0 {
     pub NodeNumber: u32,
 }
@@ -1476,6 +1762,17 @@ impl ::core::cmp::PartialEq for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0_0 {
     }
 }
 impl ::core::cmp::Eq for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0_0 {}
+impl FromIntoMemory for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0_1 {
     pub Flags: u8,
 }
@@ -1498,6 +1795,17 @@ impl ::core::cmp::PartialEq for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0_1 {
     }
 }
 impl ::core::cmp::Eq for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0_1 {}
+impl FromIntoMemory for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0_1 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX {
     pub Relationship: LOGICAL_PROCESSOR_RELATIONSHIP,
     pub Size: u32,
@@ -1517,6 +1825,17 @@ impl ::core::cmp::PartialEq for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX {
     }
 }
 impl ::core::cmp::Eq for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX {}
+impl FromIntoMemory for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX_0 {
     pub Processor: PROCESSOR_RELATIONSHIP,
     pub NumaNode: NUMA_NODE_RELATIONSHIP,
@@ -1538,6 +1857,17 @@ impl ::core::cmp::PartialEq for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX_0 {
     }
 }
 impl ::core::cmp::Eq for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX_0 {}
+impl FromIntoMemory for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX_0 {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct SYSTEM_POOL_ZEROING_INFORMATION {
     pub PoolZeroingSupportPresent: super::super::Foundation::BOOLEAN,
 }
@@ -1560,6 +1890,17 @@ impl ::core::cmp::PartialEq for SYSTEM_POOL_ZEROING_INFORMATION {
     }
 }
 impl ::core::cmp::Eq for SYSTEM_POOL_ZEROING_INFORMATION {}
+impl FromIntoMemory for SYSTEM_POOL_ZEROING_INFORMATION {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct SYSTEM_PROCESSOR_CYCLE_TIME_INFORMATION {
     pub CycleTime: u64,
 }
@@ -1582,6 +1923,17 @@ impl ::core::cmp::PartialEq for SYSTEM_PROCESSOR_CYCLE_TIME_INFORMATION {
     }
 }
 impl ::core::cmp::Eq for SYSTEM_PROCESSOR_CYCLE_TIME_INFORMATION {}
+impl FromIntoMemory for SYSTEM_PROCESSOR_CYCLE_TIME_INFORMATION {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct SYSTEM_SUPPORTED_PROCESSOR_ARCHITECTURES_INFORMATION {
     pub _bitfield: u32,
 }
@@ -1604,6 +1956,17 @@ impl ::core::cmp::PartialEq for SYSTEM_SUPPORTED_PROCESSOR_ARCHITECTURES_INFORMA
     }
 }
 impl ::core::cmp::Eq for SYSTEM_SUPPORTED_PROCESSOR_ARCHITECTURES_INFORMATION {}
+impl FromIntoMemory for SYSTEM_SUPPORTED_PROCESSOR_ARCHITECTURES_INFORMATION {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct USER_CET_ENVIRONMENT(pub u32);
 pub const USER_CET_ENVIRONMENT_WIN32_PROCESS: USER_CET_ENVIRONMENT = USER_CET_ENVIRONMENT(0u32);

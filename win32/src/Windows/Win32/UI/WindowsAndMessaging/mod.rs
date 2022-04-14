@@ -33,6 +33,17 @@ impl ::core::cmp::PartialEq for ACCEL {
     }
 }
 impl ::core::cmp::Eq for ACCEL {}
+impl FromIntoMemory for ACCEL {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct ALTTABINFO {
     pub cbSize: u32,
     pub cItems: i32,
@@ -79,6 +90,17 @@ impl ::core::cmp::PartialEq for ALTTABINFO {
     }
 }
 impl ::core::cmp::Eq for ALTTABINFO {}
+impl FromIntoMemory for ALTTABINFO {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct ANIMATE_WINDOW_FLAGS(pub u32);
 pub const AW_ACTIVATE: ANIMATE_WINDOW_FLAGS = ANIMATE_WINDOW_FLAGS(131072u32);
@@ -171,6 +193,17 @@ impl ::core::cmp::PartialEq for ANIMATIONINFO {
     }
 }
 impl ::core::cmp::Eq for ANIMATIONINFO {}
+impl FromIntoMemory for ANIMATIONINFO {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const ARW_DOWN: i32 = 4i32;
 pub const ARW_HIDE: i32 = 8i32;
 pub const ARW_LEFT: i32 = 0i32;
@@ -206,6 +239,17 @@ impl ::core::cmp::PartialEq for AUDIODESCRIPTION {
     }
 }
 impl ::core::cmp::Eq for AUDIODESCRIPTION {}
+impl FromIntoMemory for AUDIODESCRIPTION {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const BM_CLICK: u32 = 245u32;
 pub const BM_GETCHECK: u32 = 240u32;
 pub const BM_GETIMAGE: u32 = 246u32;
@@ -368,6 +412,17 @@ impl ::core::cmp::PartialEq for CBTACTIVATESTRUCT {
     }
 }
 impl ::core::cmp::Eq for CBTACTIVATESTRUCT {}
+impl FromIntoMemory for CBTACTIVATESTRUCT {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct CBT_CREATEWNDA {
     pub lpcs: MutPtr<CREATESTRUCTA>,
     pub hwndInsertAfter: super::super::Foundation::HWND,
@@ -392,6 +447,17 @@ impl ::core::cmp::PartialEq for CBT_CREATEWNDA {
     }
 }
 impl ::core::cmp::Eq for CBT_CREATEWNDA {}
+impl FromIntoMemory for CBT_CREATEWNDA {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct CBT_CREATEWNDW {
     pub lpcs: MutPtr<CREATESTRUCTW>,
     pub hwndInsertAfter: super::super::Foundation::HWND,
@@ -416,6 +482,17 @@ impl ::core::cmp::PartialEq for CBT_CREATEWNDW {
     }
 }
 impl ::core::cmp::Eq for CBT_CREATEWNDW {}
+impl FromIntoMemory for CBT_CREATEWNDW {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const CB_ADDSTRING: u32 = 323u32;
 pub const CB_DELETESTRING: u32 = 324u32;
 pub const CB_DIR: u32 = 325u32;
@@ -482,6 +559,17 @@ impl ::core::cmp::PartialEq for CHANGEFILTERSTRUCT {
     }
 }
 impl ::core::cmp::Eq for CHANGEFILTERSTRUCT {}
+impl FromIntoMemory for CHANGEFILTERSTRUCT {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct CHANGE_WINDOW_MESSAGE_FILTER_FLAGS(pub u32);
 pub const MSGFLT_ADD: CHANGE_WINDOW_MESSAGE_FILTER_FLAGS = CHANGE_WINDOW_MESSAGE_FILTER_FLAGS(1u32);
@@ -541,6 +629,17 @@ impl ::core::cmp::PartialEq for CLIENTCREATESTRUCT {
     }
 }
 impl ::core::cmp::Eq for CLIENTCREATESTRUCT {}
+impl FromIntoMemory for CLIENTCREATESTRUCT {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const COLOR_BTNHIGHLIGHT: u32 = 20u32;
 pub const COLOR_BTNHILIGHT: u32 = 20u32;
 pub const CONSOLE_APPLICATION_16BIT: u32 = 0u32;
@@ -605,6 +704,17 @@ impl ::core::cmp::PartialEq for CREATESTRUCTA {
     }
 }
 impl ::core::cmp::Eq for CREATESTRUCTA {}
+impl FromIntoMemory for CREATESTRUCTA {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct CREATESTRUCTW {
     pub lpCreateParams: MutPtr<::core::ffi::c_void>,
     pub hInstance: super::super::Foundation::HINSTANCE,
@@ -660,6 +770,17 @@ impl ::core::cmp::PartialEq for CREATESTRUCTW {
     }
 }
 impl ::core::cmp::Eq for CREATESTRUCTW {}
+impl FromIntoMemory for CREATESTRUCTW {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const CSOUND_SYSTEM: u32 = 16u32;
 pub const CTLCOLOR_BTN: u32 = 3u32;
 pub const CTLCOLOR_DLG: u32 = 4u32;
@@ -700,6 +821,17 @@ impl ::core::cmp::PartialEq for CURSORINFO {
     }
 }
 impl ::core::cmp::Eq for CURSORINFO {}
+impl FromIntoMemory for CURSORINFO {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct CURSORINFO_FLAGS(pub u32);
 pub const CURSOR_SHOWING: CURSORINFO_FLAGS = CURSORINFO_FLAGS(1u32);
@@ -771,6 +903,17 @@ impl ::core::cmp::PartialEq for CURSORSHAPE {
     }
 }
 impl ::core::cmp::Eq for CURSORSHAPE {}
+impl FromIntoMemory for CURSORSHAPE {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const CURSOR_CREATION_SCALING_DEFAULT: u32 = 2u32;
 pub const CURSOR_CREATION_SCALING_NONE: u32 = 1u32;
 pub const CWF_CREATE_ONLY: u32 = 1u32;
@@ -808,6 +951,17 @@ impl ::core::cmp::PartialEq for CWPRETSTRUCT {
     }
 }
 impl ::core::cmp::Eq for CWPRETSTRUCT {}
+impl FromIntoMemory for CWPRETSTRUCT {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct CWPSTRUCT {
     pub lParam: super::super::Foundation::LPARAM,
     pub wParam: super::super::Foundation::WPARAM,
@@ -839,6 +993,17 @@ impl ::core::cmp::PartialEq for CWPSTRUCT {
     }
 }
 impl ::core::cmp::Eq for CWPSTRUCT {}
+impl FromIntoMemory for CWPSTRUCT {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct CWP_FLAGS(pub u32);
 pub const CWP_ALL: CWP_FLAGS = CWP_FLAGS(0u32);
@@ -937,6 +1102,17 @@ impl ::core::cmp::PartialEq for DEBUGHOOKINFO {
     }
 }
 impl ::core::cmp::Eq for DEBUGHOOKINFO {}
+impl FromIntoMemory for DEBUGHOOKINFO {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const DESKTOP_CREATEMENU: i32 = 4i32;
 pub const DESKTOP_CREATEWINDOW: i32 = 2i32;
 pub const DESKTOP_ENUMERATE: i32 = 64i32;
@@ -1050,6 +1226,17 @@ impl ::core::cmp::PartialEq for DLGITEMTEMPLATE {
     }
 }
 impl ::core::cmp::Eq for DLGITEMTEMPLATE {}
+impl FromIntoMemory for DLGITEMTEMPLATE {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub type DLGPROC = ::core::option::Option<
     unsafe extern "system" fn(
         param0: super::super::Foundation::HWND,
@@ -1085,6 +1272,17 @@ impl ::core::cmp::PartialEq for DLGTEMPLATE {
     }
 }
 impl ::core::cmp::Eq for DLGTEMPLATE {}
+impl FromIntoMemory for DLGTEMPLATE {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const DLGWINDOWEXTRA: u32 = 30u32;
 pub const DM_GETDEFID: u32 = 1024u32;
 pub const DM_POINTERHITTEST: u32 = 592u32;
@@ -1135,6 +1333,17 @@ impl ::core::cmp::PartialEq for DROPSTRUCT {
     }
 }
 impl ::core::cmp::Eq for DROPSTRUCT {}
+impl FromIntoMemory for DROPSTRUCT {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const DS_3DLOOK: i32 = 4i32;
 pub const DS_ABSALIGN: i32 = 1i32;
 pub const DS_CENTER: i32 = 2048i32;
@@ -1262,6 +1471,17 @@ impl ::core::cmp::PartialEq for EVENTMSG {
     }
 }
 impl ::core::cmp::Eq for EVENTMSG {}
+impl FromIntoMemory for EVENTMSG {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const EVENT_AIA_END: u32 = 45055u32;
 pub const EVENT_AIA_START: u32 = 40960u32;
 pub const EVENT_CONSOLE_CARET: u32 = 16385u32;
@@ -1406,6 +1626,17 @@ impl ::core::cmp::PartialEq for FLASHWINFO {
     }
 }
 impl ::core::cmp::Eq for FLASHWINFO {}
+impl FromIntoMemory for FLASHWINFO {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct FLASHWINFO_FLAGS(pub u32);
 pub const FLASHW_ALL: FLASHWINFO_FLAGS = FLASHWINFO_FLAGS(3u32);
@@ -1775,6 +2006,17 @@ impl ::core::cmp::PartialEq for GUITHREADINFO {
     }
 }
 impl ::core::cmp::Eq for GUITHREADINFO {}
+impl FromIntoMemory for GUITHREADINFO {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct GUITHREADINFO_FLAGS(pub u32);
 pub const GUI_CARETBLINKING: GUITHREADINFO_FLAGS = GUITHREADINFO_FLAGS(1u32);
@@ -1936,6 +2178,17 @@ impl ::core::cmp::PartialEq for HARDWAREHOOKSTRUCT {
     }
 }
 impl ::core::cmp::Eq for HARDWAREHOOKSTRUCT {}
+impl FromIntoMemory for HARDWAREHOOKSTRUCT {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub const HBMMENU_CALLBACK: super::super::Graphics::Gdi::HBITMAP =
@@ -2268,6 +2521,19 @@ impl ::core::cmp::PartialEq for ICONINFO {
 impl ::core::cmp::Eq for ICONINFO {}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
 #[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for ICONINFO {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 pub struct ICONINFOEXA {
     pub cbSize: u32,
     pub fIcon: super::super::Foundation::BOOL,
@@ -2324,6 +2590,19 @@ impl ::core::cmp::PartialEq for ICONINFOEXA {
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for ICONINFOEXA {}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
+#[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for ICONINFOEXA {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct ICONINFOEXW {
@@ -2384,6 +2663,19 @@ impl ::core::cmp::PartialEq for ICONINFOEXW {
 impl ::core::cmp::Eq for ICONINFOEXW {}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
 #[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for ICONINFOEXW {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 pub struct ICONMETRICSA {
     pub cbSize: u32,
     pub iHorzSpacing: i32,
@@ -2428,6 +2720,19 @@ impl ::core::cmp::PartialEq for ICONMETRICSA {
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for ICONMETRICSA {}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
+#[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for ICONMETRICSA {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct ICONMETRICSW {
@@ -2474,6 +2779,19 @@ impl ::core::cmp::PartialEq for ICONMETRICSW {
 #[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for ICONMETRICSW {}
+#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
+#[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for ICONMETRICSW {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const ICON_BIG: u32 = 1u32;
 pub const ICON_SMALL: u32 = 0u32;
 pub const ICON_SMALL2: u32 = 2u32;
@@ -2623,6 +2941,17 @@ impl ::core::cmp::PartialEq for IndexedResourceQualifier {
     }
 }
 impl ::core::cmp::Eq for IndexedResourceQualifier {}
+impl FromIntoMemory for IndexedResourceQualifier {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct KBDLLHOOKSTRUCT {
     pub vkCode: u32,
     pub scanCode: u32,
@@ -2657,6 +2986,17 @@ impl ::core::cmp::PartialEq for KBDLLHOOKSTRUCT {
     }
 }
 impl ::core::cmp::Eq for KBDLLHOOKSTRUCT {}
+impl FromIntoMemory for KBDLLHOOKSTRUCT {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct KBDLLHOOKSTRUCT_FLAGS(pub u32);
 pub const LLKHF_EXTENDED: KBDLLHOOKSTRUCT_FLAGS = KBDLLHOOKSTRUCT_FLAGS(1u32);
@@ -2922,6 +3262,17 @@ impl ::core::cmp::PartialEq for MDICREATESTRUCTA {
     }
 }
 impl ::core::cmp::Eq for MDICREATESTRUCTA {}
+impl FromIntoMemory for MDICREATESTRUCTA {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct MDICREATESTRUCTW {
     pub szClass: crate::core::PCWSTR,
     pub szTitle: crate::core::PCWSTR,
@@ -2968,6 +3319,17 @@ impl ::core::cmp::PartialEq for MDICREATESTRUCTW {
     }
 }
 impl ::core::cmp::Eq for MDICREATESTRUCTW {}
+impl FromIntoMemory for MDICREATESTRUCTW {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct MDINEXTMENU {
     pub hmenuIn: HMENU,
     pub hmenuNext: HMENU,
@@ -2996,6 +3358,17 @@ impl ::core::cmp::PartialEq for MDINEXTMENU {
     }
 }
 impl ::core::cmp::Eq for MDINEXTMENU {}
+impl FromIntoMemory for MDINEXTMENU {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const MDIS_ALLCHILDSTYLES: u32 = 1u32;
 pub struct MENUBARINFO {
     pub cbSize: u32,
@@ -3031,6 +3404,17 @@ impl ::core::cmp::PartialEq for MENUBARINFO {
     }
 }
 impl ::core::cmp::Eq for MENUBARINFO {}
+impl FromIntoMemory for MENUBARINFO {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct MENUGETOBJECTINFO {
     pub dwFlags: MENUGETOBJECTINFO_FLAGS,
     pub uPos: u32,
@@ -3065,6 +3449,17 @@ impl ::core::cmp::PartialEq for MENUGETOBJECTINFO {
     }
 }
 impl ::core::cmp::Eq for MENUGETOBJECTINFO {}
+impl FromIntoMemory for MENUGETOBJECTINFO {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct MENUGETOBJECTINFO_FLAGS(pub u32);
 pub const MNGOF_BOTTOMGAP: MENUGETOBJECTINFO_FLAGS = MENUGETOBJECTINFO_FLAGS(2u32);
@@ -3150,6 +3545,19 @@ impl ::core::cmp::PartialEq for MENUINFO {
 #[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for MENUINFO {}
+#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
+#[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for MENUINFO {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct MENUINFO_MASK(pub u32);
 pub const MIM_APPLYTOSUBMENUS: MENUINFO_MASK = MENUINFO_MASK(2147483648u32);
@@ -3345,6 +3753,19 @@ impl ::core::cmp::PartialEq for MENUITEMINFOA {
 impl ::core::cmp::Eq for MENUITEMINFOA {}
 #[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
 #[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for MENUITEMINFOA {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
+#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 pub struct MENUITEMINFOW {
     pub cbSize: u32,
     pub fMask: MENU_ITEM_MASK,
@@ -3410,6 +3831,19 @@ impl ::core::cmp::PartialEq for MENUITEMINFOW {
 #[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for MENUITEMINFOW {}
+#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
+#[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for MENUITEMINFOW {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct MENUITEMTEMPLATE {
     pub mtOption: u16,
     pub mtID: u16,
@@ -3438,6 +3872,17 @@ impl ::core::cmp::PartialEq for MENUITEMTEMPLATE {
     }
 }
 impl ::core::cmp::Eq for MENUITEMTEMPLATE {}
+impl FromIntoMemory for MENUITEMTEMPLATE {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct MENUITEMTEMPLATEHEADER {
     pub versionNumber: u16,
     pub offset: u16,
@@ -3462,6 +3907,17 @@ impl ::core::cmp::PartialEq for MENUITEMTEMPLATEHEADER {
     }
 }
 impl ::core::cmp::Eq for MENUITEMTEMPLATEHEADER {}
+impl FromIntoMemory for MENUITEMTEMPLATEHEADER {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct MENU_ITEM_FLAGS(pub u32);
 pub const MF_BYCOMMAND: MENU_ITEM_FLAGS = MENU_ITEM_FLAGS(0u32);
@@ -3908,6 +4364,17 @@ impl ::core::cmp::PartialEq for MESSAGE_RESOURCE_BLOCK {
     }
 }
 impl ::core::cmp::Eq for MESSAGE_RESOURCE_BLOCK {}
+impl FromIntoMemory for MESSAGE_RESOURCE_BLOCK {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct MESSAGE_RESOURCE_DATA {
     pub NumberOfBlocks: u32,
     pub Blocks: [MESSAGE_RESOURCE_BLOCK; 1],
@@ -3932,6 +4399,17 @@ impl ::core::cmp::PartialEq for MESSAGE_RESOURCE_DATA {
     }
 }
 impl ::core::cmp::Eq for MESSAGE_RESOURCE_DATA {}
+impl FromIntoMemory for MESSAGE_RESOURCE_DATA {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct MESSAGE_RESOURCE_ENTRY {
     pub Length: u16,
     pub Flags: u16,
@@ -3958,6 +4436,17 @@ impl ::core::cmp::PartialEq for MESSAGE_RESOURCE_ENTRY {
     }
 }
 impl ::core::cmp::Eq for MESSAGE_RESOURCE_ENTRY {}
+impl FromIntoMemory for MESSAGE_RESOURCE_ENTRY {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const METRICS_USEDEFAULT: i32 = -1i32;
 pub struct MINIMIZEDMETRICS {
     pub cbSize: u32,
@@ -3993,6 +4482,17 @@ impl ::core::cmp::PartialEq for MINIMIZEDMETRICS {
     }
 }
 impl ::core::cmp::Eq for MINIMIZEDMETRICS {}
+impl FromIntoMemory for MINIMIZEDMETRICS {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct MINIMIZEDMETRICS_ARRANGE(pub i32);
 pub const ARW_BOTTOMLEFT: MINIMIZEDMETRICS_ARRANGE = MINIMIZEDMETRICS_ARRANGE(0i32);
@@ -4063,6 +4563,17 @@ impl ::core::cmp::PartialEq for MINMAXINFO {
     }
 }
 impl ::core::cmp::Eq for MINMAXINFO {}
+impl FromIntoMemory for MINMAXINFO {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const MIN_LOGICALDPIOVERRIDE: i32 = -2i32;
 pub const MKF_AVAILABLE: u32 = 2u32;
 pub const MKF_CONFIRMHOTKEY: u32 = 8u32;
@@ -4125,6 +4636,17 @@ impl ::core::cmp::PartialEq for MOUSEHOOKSTRUCT {
     }
 }
 impl ::core::cmp::Eq for MOUSEHOOKSTRUCT {}
+impl FromIntoMemory for MOUSEHOOKSTRUCT {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct MOUSEHOOKSTRUCTEX {
     pub __AnonymousBase_winuser_L1166_C46: MOUSEHOOKSTRUCT,
     pub mouseData: MOUSEHOOKSTRUCTEX_MOUSE_DATA,
@@ -4153,6 +4675,17 @@ impl ::core::cmp::PartialEq for MOUSEHOOKSTRUCTEX {
     }
 }
 impl ::core::cmp::Eq for MOUSEHOOKSTRUCTEX {}
+impl FromIntoMemory for MOUSEHOOKSTRUCTEX {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct MOUSEHOOKSTRUCTEX_MOUSE_DATA(pub u32);
 pub const XBUTTON1: MOUSEHOOKSTRUCTEX_MOUSE_DATA = MOUSEHOOKSTRUCTEX_MOUSE_DATA(1u32);
@@ -4254,6 +4787,17 @@ impl ::core::cmp::PartialEq for MSG {
     }
 }
 impl ::core::cmp::Eq for MSG {}
+impl FromIntoMemory for MSG {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.UI.Shell'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub type MSGBOXCALLBACK =
@@ -4325,6 +4869,19 @@ impl ::core::cmp::PartialEq for MSGBOXPARAMSA {
 impl ::core::cmp::Eq for MSGBOXPARAMSA {}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.UI.Shell'*"]
 #[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for MSGBOXPARAMSA {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.UI.Shell'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 pub struct MSGBOXPARAMSW {
     pub cbSize: u32,
     pub hwndOwner: super::super::Foundation::HWND,
@@ -4388,6 +4945,19 @@ impl ::core::cmp::PartialEq for MSGBOXPARAMSW {
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.UI.Shell'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for MSGBOXPARAMSW {}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.UI.Shell'*"]
+#[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for MSGBOXPARAMSW {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct MSGFLTINFO_STATUS(pub u32);
 pub const MSGFLTINFO_NONE: MSGFLTINFO_STATUS = MSGFLTINFO_STATUS(0u32);
@@ -4529,6 +5099,17 @@ impl ::core::cmp::PartialEq for MSLLHOOKSTRUCT {
     }
 }
 impl ::core::cmp::Eq for MSLLHOOKSTRUCT {}
+impl FromIntoMemory for MSLLHOOKSTRUCT {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct MrmDumpType(pub i32);
 pub const MrmDumpType_Basic: MrmDumpType = MrmDumpType(0i32);
@@ -4712,6 +5293,17 @@ impl ::core::cmp::PartialEq for MrmResourceIndexerHandle {
     }
 }
 impl ::core::cmp::Eq for MrmResourceIndexerHandle {}
+impl FromIntoMemory for MrmResourceIndexerHandle {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct MrmResourceIndexerMessage {
     pub severity: MrmResourceIndexerMessageSeverity,
     pub id: u32,
@@ -4738,6 +5330,17 @@ impl ::core::cmp::PartialEq for MrmResourceIndexerMessage {
     }
 }
 impl ::core::cmp::Eq for MrmResourceIndexerMessage {}
+impl FromIntoMemory for MrmResourceIndexerMessage {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct MrmResourceIndexerMessageSeverity(pub i32);
 pub const MrmResourceIndexerMessageSeverityVerbose: MrmResourceIndexerMessageSeverity =
@@ -4813,6 +5416,17 @@ impl ::core::cmp::PartialEq for NCCALCSIZE_PARAMS {
     }
 }
 impl ::core::cmp::Eq for NCCALCSIZE_PARAMS {}
+impl FromIntoMemory for NCCALCSIZE_PARAMS {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const NFR_ANSI: u32 = 1u32;
 pub const NFR_UNICODE: u32 = 2u32;
 pub const NF_QUERY: u32 = 3u32;
@@ -4902,6 +5516,19 @@ impl ::core::cmp::PartialEq for NONCLIENTMETRICSA {
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for NONCLIENTMETRICSA {}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
+#[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for NONCLIENTMETRICSA {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct NONCLIENTMETRICSW {
@@ -4981,6 +5608,19 @@ impl ::core::cmp::PartialEq for NONCLIENTMETRICSW {
 #[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for NONCLIENTMETRICSW {}
+#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
+#[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for NONCLIENTMETRICSW {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct OBJECT_IDENTIFIER(pub i32);
 pub const OBJID_WINDOW: OBJECT_IDENTIFIER = OBJECT_IDENTIFIER(0i32);
@@ -5489,6 +6129,17 @@ impl ::core::cmp::PartialEq for SCROLLBARINFO {
     }
 }
 impl ::core::cmp::Eq for SCROLLBARINFO {}
+impl FromIntoMemory for SCROLLBARINFO {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct SCROLLBAR_CONSTANTS(pub u32);
 pub const SB_CTL: SCROLLBAR_CONSTANTS = SCROLLBAR_CONSTANTS(2u32);
@@ -5590,6 +6241,17 @@ impl ::core::cmp::PartialEq for SCROLLINFO {
     }
 }
 impl ::core::cmp::Eq for SCROLLINFO {}
+impl FromIntoMemory for SCROLLINFO {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct SCROLLINFO_MASK(pub u32);
 pub const SIF_ALL: SCROLLINFO_MASK = SCROLLINFO_MASK(23u32);
@@ -5845,6 +6507,17 @@ impl ::core::cmp::PartialEq for SHELLHOOKINFO {
     }
 }
 impl ::core::cmp::Eq for SHELLHOOKINFO {}
+impl FromIntoMemory for SHELLHOOKINFO {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const SHOW_FULLSCREEN: u32 = 3u32;
 pub const SHOW_ICONWINDOW: u32 = 2u32;
 pub const SHOW_OPENNOACTIVATE: u32 = 4u32;
@@ -6065,6 +6738,17 @@ impl ::core::cmp::PartialEq for STYLESTRUCT {
     }
 }
 impl ::core::cmp::Eq for STYLESTRUCT {}
+impl FromIntoMemory for STYLESTRUCT {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct SYSTEM_CURSOR_ID(pub u32);
 pub const OCR_APPSTARTING: SYSTEM_CURSOR_ID = SYSTEM_CURSOR_ID(32650u32);
@@ -6907,6 +7591,17 @@ impl ::core::cmp::PartialEq for TITLEBARINFO {
     }
 }
 impl ::core::cmp::Eq for TITLEBARINFO {}
+impl FromIntoMemory for TITLEBARINFO {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct TITLEBARINFOEX {
     pub cbSize: u32,
     pub rcTitleBar: super::super::Foundation::RECT,
@@ -6938,6 +7633,17 @@ impl ::core::cmp::PartialEq for TITLEBARINFOEX {
     }
 }
 impl ::core::cmp::Eq for TITLEBARINFOEX {}
+impl FromIntoMemory for TITLEBARINFOEX {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const TKF_AVAILABLE: u32 = 2u32;
 pub const TKF_CONFIRMHOTKEY: u32 = 8u32;
 pub const TKF_HOTKEYACTIVE: u32 = 4u32;
@@ -6986,6 +7692,17 @@ impl ::core::cmp::PartialEq for TPMPARAMS {
     }
 }
 impl ::core::cmp::Eq for TPMPARAMS {}
+impl FromIntoMemory for TPMPARAMS {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct TRACK_POPUP_MENU_FLAGS(pub u32);
 pub const TPM_LEFTBUTTON: TRACK_POPUP_MENU_FLAGS = TRACK_POPUP_MENU_FLAGS(0u32);
@@ -7096,6 +7813,17 @@ impl ::core::cmp::PartialEq for TouchPredictionParameters {
     }
 }
 impl ::core::cmp::Eq for TouchPredictionParameters {}
+impl FromIntoMemory for TouchPredictionParameters {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub const UISF_ACTIVE: u32 = 4u32;
 pub const UISF_HIDEACCEL: u32 = 2u32;
 pub const UISF_HIDEFOCUS: u32 = 1u32;
@@ -7165,6 +7893,19 @@ impl ::core::cmp::PartialEq for UPDATELAYEREDWINDOWINFO {
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for UPDATELAYEREDWINDOWINFO {}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
+#[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for UPDATELAYEREDWINDOWINFO {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct UPDATE_LAYERED_WINDOW_FLAGS(pub u32);
 pub const ULW_ALPHA: UPDATE_LAYERED_WINDOW_FLAGS = UPDATE_LAYERED_WINDOW_FLAGS(2u32);
@@ -7261,6 +8002,17 @@ impl ::core::cmp::PartialEq for WINDOWINFO {
     }
 }
 impl ::core::cmp::Eq for WINDOWINFO {}
+impl FromIntoMemory for WINDOWINFO {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 pub struct WINDOWPLACEMENT {
     pub length: u32,
     pub flags: WINDOWPLACEMENT_FLAGS,
@@ -7298,6 +8050,17 @@ impl ::core::cmp::PartialEq for WINDOWPLACEMENT {
     }
 }
 impl ::core::cmp::Eq for WINDOWPLACEMENT {}
+impl FromIntoMemory for WINDOWPLACEMENT {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct WINDOWPLACEMENT_FLAGS(pub u32);
 pub const WPF_ASYNCWINDOWPLACEMENT: WINDOWPLACEMENT_FLAGS = WINDOWPLACEMENT_FLAGS(4u32);
@@ -7400,6 +8163,17 @@ impl ::core::cmp::PartialEq for WINDOWPOS {
     }
 }
 impl ::core::cmp::Eq for WINDOWPOS {}
+impl FromIntoMemory for WINDOWPOS {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct WINDOWS_HOOK_ID(pub i32);
 pub const WH_CALLWNDPROC: WINDOWS_HOOK_ID = WINDOWS_HOOK_ID(4i32);
@@ -8058,6 +8832,19 @@ impl ::core::cmp::PartialEq for WNDCLASSA {
 impl ::core::cmp::Eq for WNDCLASSA {}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
 #[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for WNDCLASSA {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 pub struct WNDCLASSEXA {
     pub cbSize: u32,
     pub style: WNDCLASS_STYLES,
@@ -8123,6 +8910,19 @@ impl ::core::cmp::PartialEq for WNDCLASSEXA {
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for WNDCLASSEXA {}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
+#[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for WNDCLASSEXA {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct WNDCLASSEXW {
@@ -8192,6 +8992,19 @@ impl ::core::cmp::PartialEq for WNDCLASSEXW {
 impl ::core::cmp::Eq for WNDCLASSEXW {}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
 #[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for WNDCLASSEXW {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 pub struct WNDCLASSW {
     pub style: WNDCLASS_STYLES,
     pub lpfnWndProc: WNDPROC,
@@ -8251,6 +9064,19 @@ impl ::core::cmp::PartialEq for WNDCLASSW {
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for WNDCLASSW {}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
+#[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for WNDCLASSW {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+    fn size() -> usize {
+        todo!()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct WNDCLASS_STYLES(pub u32);
 pub const CS_VREDRAW: WNDCLASS_STYLES = WNDCLASS_STYLES(1u32);
