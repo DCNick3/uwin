@@ -53,6 +53,7 @@ pub trait Builder {
     fn make_true(&self) -> Self::BoolValue;
     fn make_false(&self) -> Self::BoolValue;
 
+    fn load_segment_base(&mut self, segment: SegmentRegister) -> Self::IntValue;
     fn load_register(&mut self, register: Register) -> Self::IntValue;
     fn store_register(&mut self, register: Register, value: Self::IntValue);
 
@@ -142,15 +143,16 @@ pub trait Builder {
 
     fn compute_memory_operand_address(&mut self, op: MemoryOperand) -> Self::IntValue {
         use SegmentRegister::*;
-        match op.segment {
-            None => {}
+        let segment_base = match op.segment {
+            None => self.make_u32(0),
             // we assume that those segments are mapped __as usual__
-            Some(CS | DS | ES | SS) => {}
+            Some(CS | DS | ES | SS) => self.make_u32(0),
             // and those map to special regions (TLS, TEB, whatever, it depends on OS)
-            Some(FS | GS) => todo!(),
-        }
+            Some(FS | GS) => self.load_segment_base(op.segment.unwrap().into()),
+        };
 
-        let mut res = self.make_i32(i32::try_from(op.displacement).unwrap());
+        let res = self.make_i32(i32::try_from(op.displacement).unwrap());
+        let mut res = self.add(res, segment_base);
 
         if let Some(base) = op.base {
             let base_val = self.load_register(base);

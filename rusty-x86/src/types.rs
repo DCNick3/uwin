@@ -133,6 +133,8 @@ pub struct CpuContext {
     // also it would be best not to move fields around, as this breaks indices in build_ctx_*_gep
     pub gp_regs: [u32; 8],
     pub flags: [u8; 8],
+    pub fs_base: u32,
+    pub gs_base: u32,
 }
 
 impl std::fmt::Debug for CpuContext {

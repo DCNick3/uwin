@@ -13,7 +13,7 @@ use inkwell::values::{
 use inkwell::{AddressSpace, IntPredicate};
 
 use crate::backend::{BoolValue, ComparisonType, IntValue};
-use crate::types::{Flag, FullSizeGeneralPurposeRegister, IntType, Register};
+use crate::types::{Flag, FullSizeGeneralPurposeRegister, IntType, Register, SegmentRegister};
 use crate::ControlFlow;
 
 pub struct LlvmBuilder<'ctx, 'a> {
@@ -67,6 +67,8 @@ impl<'ctx> Types<'ctx> {
             &[
                 i32.array_type(8).into(), // general-purpose registers
                 i8.array_type(8).into(),  // general-purpose registers
+                i32.into(),               // fs base
+                i32.into(),               // gs base
             ],
             false,
         );
@@ -240,6 +242,42 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
             )
         };
         debug_assert_eq!(r.get_type().get_element_type().into_int_type(), i8_type);
+        r
+    }
+
+    fn build_ctx_fs_base_gep(&mut self, ctx_ptr: PointerValue<'ctx>) -> PointerValue<'ctx> {
+        // TODO: cache the pointers at (generated) function level
+        let i32_type = self.context.i32_type();
+        // SAFETY: ¯\_(ツ)_/¯
+        let r = unsafe {
+            self.builder.build_gep(
+                ctx_ptr,
+                &[
+                    i32_type.const_zero(),        // deref the strct pointer itself
+                    i32_type.const_int(2, false), // select fs base value
+                ],
+                "fs_base",
+            )
+        };
+        debug_assert_eq!(r.get_type().get_element_type().into_int_type(), i32_type);
+        r
+    }
+
+    fn build_ctx_gs_base_gep(&mut self, ctx_ptr: PointerValue<'ctx>) -> PointerValue<'ctx> {
+        // TODO: cache the pointers at (generated) function level
+        let i32_type = self.context.i32_type();
+        // SAFETY: ¯\_(ツ)_/¯
+        let r = unsafe {
+            self.builder.build_gep(
+                ctx_ptr,
+                &[
+                    i32_type.const_zero(),        // deref the strct pointer itself
+                    i32_type.const_int(3, false), // select gs base value
+                ],
+                "fs_base",
+            )
+        };
+        debug_assert_eq!(r.get_type().get_element_type().into_int_type(), i32_type);
         r
     }
 
@@ -448,6 +486,21 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
 
     fn make_false(&self) -> Self::BoolValue {
         self.types.i1.const_int(0, false)
+    }
+
+    fn load_segment_base(&mut self, segment: SegmentRegister) -> Self::IntValue {
+        use SegmentRegister::*;
+        match segment {
+            CS | DS | ES | SS => self.make_u32(0),
+            GS => {
+                let ptr = self.build_ctx_fs_base_gep(self.ctx_ptr);
+                self.builder.build_load(ptr, "fs").into_int_value()
+            }
+            FS => {
+                let ptr = self.build_ctx_gs_base_gep(self.ctx_ptr);
+                self.builder.build_load(ptr, "gs").into_int_value()
+            }
+        }
     }
 
     fn load_register(&mut self, register: Register) -> Self::IntValue {
