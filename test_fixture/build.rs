@@ -8,8 +8,8 @@ fn main() {
     let manifest_dir = PathBuf::from(env::var("CARGO_MANIFEST_DIR").unwrap());
     let executable = manifest_dir
         .join("..")
-        // .join("test_exes/msvc/hello_world.exe")
-        .join("test_exes/test.exe")
+        .join("test_exes/msvc/hello_world.exe")
+        // .join("test_exes/test.exe")
         // ----
         ;
 

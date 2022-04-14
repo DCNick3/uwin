@@ -16777,8 +16777,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!()
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.IO'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn GetNotificationResourceManagerAsync(
         &self,
         resource_manager_handle: super::super::Foundation::HANDLE,
@@ -17467,8 +17465,6 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!()
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.IO'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn ReadDirectoryChangesExW(
         &self,
         h_directory: super::super::Foundation::HANDLE,
@@ -17483,8 +17479,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!()
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.IO'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn ReadDirectoryChangesW(
         &self,
         h_directory: super::super::Foundation::HANDLE,
@@ -17506,8 +17500,6 @@ pub trait Api {
     ) -> u32 {
         todo!()
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.IO'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn ReadFile(
         &self,
         h_file: super::super::Foundation::HANDLE,
@@ -17518,8 +17510,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!()
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.IO'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn ReadFileEx(
         &self,
         h_file: super::super::Foundation::HANDLE,
@@ -17530,8 +17520,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!()
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.IO'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn ReadFileScatter(
         &self,
         h_file: super::super::Foundation::HANDLE,
@@ -18047,8 +18035,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!()
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.IO'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn UnlockFileEx(
         &self,
         h_file: super::super::Foundation::HANDLE,
@@ -18254,8 +18240,6 @@ pub trait Api {
     ) -> u32 {
         todo!()
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.IO'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn WriteFile(
         &self,
         h_file: super::super::Foundation::HANDLE,
@@ -18266,8 +18250,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!()
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.IO'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn WriteFileEx(
         &self,
         h_file: super::super::Foundation::HANDLE,
@@ -18278,8 +18260,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!()
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.IO'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn WriteFileGather(
         &self,
         h_file: super::super::Foundation::HANDLE,

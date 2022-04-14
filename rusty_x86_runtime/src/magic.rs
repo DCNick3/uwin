@@ -5910,6 +5910,33 @@ extern "C" fn magic_GetNotificationResourceManager(
     }
 }
 #[no_mangle]
+extern "C" fn magic_GetNotificationResourceManagerAsync(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let resource_manager_handle = call.get_arg();
+        let transaction_notification = call.get_arg();
+        let transaction_notification_length = call.get_arg();
+        let return_length = call.get_arg();
+        let lp_overlapped = call.get_arg();
+        let res = api.GetNotificationResourceManagerAsync(
+            resource_manager_handle,
+            transaction_notification,
+            transaction_notification_length,
+            return_length,
+            lp_overlapped,
+        );
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
 extern "C" fn magic_GetShortPathNameA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
@@ -7434,6 +7461,68 @@ extern "C" fn magic_ReOpenFile(context: &mut ExtendedContext, memory: FlatMemory
     }
 }
 #[no_mangle]
+extern "C" fn magic_ReadDirectoryChangesExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_directory = call.get_arg();
+        let lp_buffer = call.get_arg();
+        let n_buffer_length = call.get_arg();
+        let b_watch_subtree = call.get_arg();
+        let dw_notify_filter = call.get_arg();
+        let lp_bytes_returned = call.get_arg();
+        let lp_overlapped = call.get_arg();
+        let lp_completion_routine = call.get_arg();
+        let read_directory_notify_information_class = call.get_arg();
+        let res = api.ReadDirectoryChangesExW(
+            h_directory,
+            lp_buffer,
+            n_buffer_length,
+            b_watch_subtree,
+            dw_notify_filter,
+            lp_bytes_returned,
+            lp_overlapped,
+            lp_completion_routine,
+            read_directory_notify_information_class,
+        );
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_ReadDirectoryChangesW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_directory = call.get_arg();
+        let lp_buffer = call.get_arg();
+        let n_buffer_length = call.get_arg();
+        let b_watch_subtree = call.get_arg();
+        let dw_notify_filter = call.get_arg();
+        let lp_bytes_returned = call.get_arg();
+        let lp_overlapped = call.get_arg();
+        let lp_completion_routine = call.get_arg();
+        let res = api.ReadDirectoryChangesW(
+            h_directory,
+            lp_buffer,
+            n_buffer_length,
+            b_watch_subtree,
+            dw_notify_filter,
+            lp_bytes_returned,
+            lp_overlapped,
+            lp_completion_routine,
+        );
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
 extern "C" fn magic_ReadEncryptedFileRaw(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
@@ -7442,6 +7531,78 @@ extern "C" fn magic_ReadEncryptedFileRaw(context: &mut ExtendedContext, memory: 
         let pv_callback_context = call.get_arg();
         let pv_context = call.get_arg();
         let res = api.ReadEncryptedFileRaw(pf_export_callback, pv_callback_context, pv_context);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_ReadFile(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_file = call.get_arg();
+        let lp_buffer = call.get_arg();
+        let n_number_of_bytes_to_read = call.get_arg();
+        let lp_number_of_bytes_read = call.get_arg();
+        let lp_overlapped = call.get_arg();
+        let res = api.ReadFile(
+            h_file,
+            lp_buffer,
+            n_number_of_bytes_to_read,
+            lp_number_of_bytes_read,
+            lp_overlapped,
+        );
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_ReadFileEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_file = call.get_arg();
+        let lp_buffer = call.get_arg();
+        let n_number_of_bytes_to_read = call.get_arg();
+        let lp_overlapped = call.get_arg();
+        let lp_completion_routine = call.get_arg();
+        let res = api.ReadFileEx(
+            h_file,
+            lp_buffer,
+            n_number_of_bytes_to_read,
+            lp_overlapped,
+            lp_completion_routine,
+        );
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_ReadFileScatter(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_file = call.get_arg();
+        let a_segment_array = call.get_arg();
+        let n_number_of_bytes_to_read = call.get_arg();
+        let lp_reserved = call.get_arg();
+        let lp_overlapped = call.get_arg();
+        let res = api.ReadFileScatter(
+            h_file,
+            a_segment_array,
+            n_number_of_bytes_to_read,
+            lp_reserved,
+            lp_overlapped,
+        );
         call.finish(res);
     }));
     if result.is_err() {
@@ -8594,6 +8755,30 @@ extern "C" fn magic_UnlockFile(context: &mut ExtendedContext, memory: FlatMemory
     }
 }
 #[no_mangle]
+extern "C" fn magic_UnlockFileEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_file = call.get_arg();
+        let dw_reserved = call.get_arg();
+        let n_number_of_bytes_to_unlock_low = call.get_arg();
+        let n_number_of_bytes_to_unlock_high = call.get_arg();
+        let lp_overlapped = call.get_arg();
+        let res = api.UnlockFileEx(
+            h_file,
+            dw_reserved,
+            n_number_of_bytes_to_unlock_low,
+            n_number_of_bytes_to_unlock_high,
+            lp_overlapped,
+        );
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
 extern "C" fn magic_VerFindFileA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
@@ -9029,6 +9214,78 @@ extern "C" fn magic_WriteEncryptedFileRaw(context: &mut ExtendedContext, memory:
         let pv_callback_context = call.get_arg();
         let pv_context = call.get_arg();
         let res = api.WriteEncryptedFileRaw(pf_import_callback, pv_callback_context, pv_context);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_WriteFile(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_file = call.get_arg();
+        let lp_buffer = call.get_arg();
+        let n_number_of_bytes_to_write = call.get_arg();
+        let lp_number_of_bytes_written = call.get_arg();
+        let lp_overlapped = call.get_arg();
+        let res = api.WriteFile(
+            h_file,
+            lp_buffer,
+            n_number_of_bytes_to_write,
+            lp_number_of_bytes_written,
+            lp_overlapped,
+        );
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_WriteFileEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_file = call.get_arg();
+        let lp_buffer = call.get_arg();
+        let n_number_of_bytes_to_write = call.get_arg();
+        let lp_overlapped = call.get_arg();
+        let lp_completion_routine = call.get_arg();
+        let res = api.WriteFileEx(
+            h_file,
+            lp_buffer,
+            n_number_of_bytes_to_write,
+            lp_overlapped,
+            lp_completion_routine,
+        );
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_WriteFileGather(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_file = call.get_arg();
+        let a_segment_array = call.get_arg();
+        let n_number_of_bytes_to_write = call.get_arg();
+        let lp_reserved = call.get_arg();
+        let lp_overlapped = call.get_arg();
+        let res = api.WriteFileGather(
+            h_file,
+            a_segment_array,
+            n_number_of_bytes_to_write,
+            lp_reserved,
+            lp_overlapped,
+        );
         call.finish(res);
     }));
     if result.is_err() {
@@ -10730,6 +10987,20 @@ extern "C" fn magic_RtlUnwind(context: &mut ExtendedContext, memory: FlatMemoryC
     }
 }
 #[no_mangle]
+extern "C" fn magic_UnhandledExceptionFilter(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Diagnostics::Debug::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let exception_info = call.get_arg();
+        let res = api.UnhandledExceptionFilter(exception_info);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
 extern "C" fn magic_CallEnclave(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Environment::get_api(&context.win32);
@@ -11367,6 +11638,355 @@ extern "C" fn magic_TerminateEnclave(context: &mut ExtendedContext, memory: Flat
         let lp_address = call.get_arg();
         let f_wait = call.get_arg();
         let res = api.TerminateEnclave(lp_address, f_wait);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_BindIoCompletionCallback(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::IO::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let file_handle = call.get_arg();
+        let function = call.get_arg();
+        let flags = call.get_arg();
+        let res = api.BindIoCompletionCallback(file_handle, function, flags);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_CancelIo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::IO::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_file = call.get_arg();
+        let res = api.CancelIo(h_file);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_CancelIoEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::IO::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_file = call.get_arg();
+        let lp_overlapped = call.get_arg();
+        let res = api.CancelIoEx(h_file, lp_overlapped);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_CancelSynchronousIo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::IO::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_thread = call.get_arg();
+        let res = api.CancelSynchronousIo(h_thread);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_CreateIoCompletionPort(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::IO::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let file_handle = call.get_arg();
+        let existing_completion_port = call.get_arg();
+        let completion_key = call.get_arg();
+        let number_of_concurrent_threads = call.get_arg();
+        let res = api.CreateIoCompletionPort(
+            file_handle,
+            existing_completion_port,
+            completion_key,
+            number_of_concurrent_threads,
+        );
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_DeviceIoControl(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::IO::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_device = call.get_arg();
+        let dw_io_control_code = call.get_arg();
+        let lp_in_buffer = call.get_arg();
+        let n_in_buffer_size = call.get_arg();
+        let lp_out_buffer = call.get_arg();
+        let n_out_buffer_size = call.get_arg();
+        let lp_bytes_returned = call.get_arg();
+        let lp_overlapped = call.get_arg();
+        let res = api.DeviceIoControl(
+            h_device,
+            dw_io_control_code,
+            lp_in_buffer,
+            n_in_buffer_size,
+            lp_out_buffer,
+            n_out_buffer_size,
+            lp_bytes_returned,
+            lp_overlapped,
+        );
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetOverlappedResult(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::IO::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_file = call.get_arg();
+        let lp_overlapped = call.get_arg();
+        let lp_number_of_bytes_transferred = call.get_arg();
+        let b_wait = call.get_arg();
+        let res = api.GetOverlappedResult(
+            h_file,
+            lp_overlapped,
+            lp_number_of_bytes_transferred,
+            b_wait,
+        );
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetOverlappedResultEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::IO::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_file = call.get_arg();
+        let lp_overlapped = call.get_arg();
+        let lp_number_of_bytes_transferred = call.get_arg();
+        let dw_milliseconds = call.get_arg();
+        let b_alertable = call.get_arg();
+        let res = api.GetOverlappedResultEx(
+            h_file,
+            lp_overlapped,
+            lp_number_of_bytes_transferred,
+            dw_milliseconds,
+            b_alertable,
+        );
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetQueuedCompletionStatus(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::IO::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let completion_port = call.get_arg();
+        let lp_number_of_bytes_transferred = call.get_arg();
+        let lp_completion_key = call.get_arg();
+        let lp_overlapped = call.get_arg();
+        let dw_milliseconds = call.get_arg();
+        let res = api.GetQueuedCompletionStatus(
+            completion_port,
+            lp_number_of_bytes_transferred,
+            lp_completion_key,
+            lp_overlapped,
+            dw_milliseconds,
+        );
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetQueuedCompletionStatusEx(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::IO::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let completion_port = call.get_arg();
+        let lp_completion_port_entries = call.get_arg();
+        let ul_count = call.get_arg();
+        let ul_num_entries_removed = call.get_arg();
+        let dw_milliseconds = call.get_arg();
+        let f_alertable = call.get_arg();
+        let res = api.GetQueuedCompletionStatusEx(
+            completion_port,
+            lp_completion_port_entries,
+            ul_count,
+            ul_num_entries_removed,
+            dw_milliseconds,
+            f_alertable,
+        );
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_PostQueuedCompletionStatus(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::IO::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let completion_port = call.get_arg();
+        let dw_number_of_bytes_transferred = call.get_arg();
+        let dw_completion_key = call.get_arg();
+        let lp_overlapped = call.get_arg();
+        let res = api.PostQueuedCompletionStatus(
+            completion_port,
+            dw_number_of_bytes_transferred,
+            dw_completion_key,
+            lp_overlapped,
+        );
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_RtlFirstEntrySList(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Kernel::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let list_head = call.get_arg();
+        let res = api.RtlFirstEntrySList(list_head);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_RtlInitializeSListHead(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Kernel::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let list_head = call.get_arg();
+        let res = api.RtlInitializeSListHead(list_head);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_RtlInterlockedFlushSList(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Kernel::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let list_head = call.get_arg();
+        let res = api.RtlInterlockedFlushSList(list_head);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_RtlInterlockedPopEntrySList(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Kernel::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let list_head = call.get_arg();
+        let res = api.RtlInterlockedPopEntrySList(list_head);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_RtlInterlockedPushEntrySList(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Kernel::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let list_head = call.get_arg();
+        let list_entry = call.get_arg();
+        let res = api.RtlInterlockedPushEntrySList(list_head, list_entry);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_RtlInterlockedPushListSListEx(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Kernel::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let list_head = call.get_arg();
+        let list = call.get_arg();
+        let list_end = call.get_arg();
+        let count = call.get_arg();
+        let res = api.RtlInterlockedPushListSListEx(list_head, list, list_end, count);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_RtlQueryDepthSList(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Kernel::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let list_head = call.get_arg();
+        let res = api.RtlQueryDepthSList(list_head);
         call.finish(res);
     }));
     if result.is_err() {
@@ -14919,6 +15539,4593 @@ extern "C" fn magic_VerifyVersionInfoW(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
+extern "C" fn magic_AcquireSRWLockExclusive(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let srw_lock = call.get_arg();
+        let res = api.AcquireSRWLockExclusive(srw_lock);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_AcquireSRWLockShared(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let srw_lock = call.get_arg();
+        let res = api.AcquireSRWLockShared(srw_lock);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_AddIntegrityLabelToBoundaryDescriptor(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let boundary_descriptor = call.get_arg();
+        let integrity_label = call.get_arg();
+        let res = api.AddIntegrityLabelToBoundaryDescriptor(boundary_descriptor, integrity_label);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_AddSIDToBoundaryDescriptor(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let boundary_descriptor = call.get_arg();
+        let required_sid = call.get_arg();
+        let res = api.AddSIDToBoundaryDescriptor(boundary_descriptor, required_sid);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_AttachThreadInput(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let id_attach = call.get_arg();
+        let id_attach_to = call.get_arg();
+        let f_attach = call.get_arg();
+        let res = api.AttachThreadInput(id_attach, id_attach_to, f_attach);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_AvQuerySystemResponsiveness(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let avrt_handle = call.get_arg();
+        let system_responsiveness_value = call.get_arg();
+        let res = api.AvQuerySystemResponsiveness(avrt_handle, system_responsiveness_value);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_AvRevertMmThreadCharacteristics(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let avrt_handle = call.get_arg();
+        let res = api.AvRevertMmThreadCharacteristics(avrt_handle);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_AvRtCreateThreadOrderingGroup(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let context = call.get_arg();
+        let period = call.get_arg();
+        let thread_ordering_guid = call.get_arg();
+        let timeout = call.get_arg();
+        let res = api.AvRtCreateThreadOrderingGroup(context, period, thread_ordering_guid, timeout);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_AvRtCreateThreadOrderingGroupExA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let context = call.get_arg();
+        let period = call.get_arg();
+        let thread_ordering_guid = call.get_arg();
+        let timeout = call.get_arg();
+        let task_name = call.get_arg();
+        let res = api.AvRtCreateThreadOrderingGroupExA(
+            context,
+            period,
+            thread_ordering_guid,
+            timeout,
+            task_name,
+        );
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_AvRtCreateThreadOrderingGroupExW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let context = call.get_arg();
+        let period = call.get_arg();
+        let thread_ordering_guid = call.get_arg();
+        let timeout = call.get_arg();
+        let task_name = call.get_arg();
+        let res = api.AvRtCreateThreadOrderingGroupExW(
+            context,
+            period,
+            thread_ordering_guid,
+            timeout,
+            task_name,
+        );
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_AvRtDeleteThreadOrderingGroup(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let context = call.get_arg();
+        let res = api.AvRtDeleteThreadOrderingGroup(context);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_AvRtJoinThreadOrderingGroup(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let context = call.get_arg();
+        let thread_ordering_guid = call.get_arg();
+        let before = call.get_arg();
+        let res = api.AvRtJoinThreadOrderingGroup(context, thread_ordering_guid, before);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_AvRtLeaveThreadOrderingGroup(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let context = call.get_arg();
+        let res = api.AvRtLeaveThreadOrderingGroup(context);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_AvRtWaitOnThreadOrderingGroup(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let context = call.get_arg();
+        let res = api.AvRtWaitOnThreadOrderingGroup(context);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_AvSetMmMaxThreadCharacteristicsA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let first_task = call.get_arg();
+        let second_task = call.get_arg();
+        let task_index = call.get_arg();
+        let res = api.AvSetMmMaxThreadCharacteristicsA(first_task, second_task, task_index);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_AvSetMmMaxThreadCharacteristicsW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let first_task = call.get_arg();
+        let second_task = call.get_arg();
+        let task_index = call.get_arg();
+        let res = api.AvSetMmMaxThreadCharacteristicsW(first_task, second_task, task_index);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_AvSetMmThreadCharacteristicsA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let task_name = call.get_arg();
+        let task_index = call.get_arg();
+        let res = api.AvSetMmThreadCharacteristicsA(task_name, task_index);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_AvSetMmThreadCharacteristicsW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let task_name = call.get_arg();
+        let task_index = call.get_arg();
+        let res = api.AvSetMmThreadCharacteristicsW(task_name, task_index);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_AvSetMmThreadPriority(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let avrt_handle = call.get_arg();
+        let priority = call.get_arg();
+        let res = api.AvSetMmThreadPriority(avrt_handle, priority);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_CallbackMayRunLong(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let pci = call.get_arg();
+        let res = api.CallbackMayRunLong(pci);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_CancelThreadpoolIo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let pio = call.get_arg();
+        let res = api.CancelThreadpoolIo(pio);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_CancelWaitableTimer(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_timer = call.get_arg();
+        let res = api.CancelWaitableTimer(h_timer);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_ChangeTimerQueueTimer(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let timer_queue = call.get_arg();
+        let timer = call.get_arg();
+        let due_time = call.get_arg();
+        let period = call.get_arg();
+        let res = api.ChangeTimerQueueTimer(timer_queue, timer, due_time, period);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_ClosePrivateNamespace(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let handle = call.get_arg();
+        let flags = call.get_arg();
+        let res = api.ClosePrivateNamespace(handle, flags);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_CloseThreadpool(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let ptpp = call.get_arg();
+        let res = api.CloseThreadpool(ptpp);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_CloseThreadpoolCleanupGroup(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let ptpcg = call.get_arg();
+        let res = api.CloseThreadpoolCleanupGroup(ptpcg);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_CloseThreadpoolCleanupGroupMembers(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let ptpcg = call.get_arg();
+        let f_cancel_pending_callbacks = call.get_arg();
+        let pv_cleanup_context = call.get_arg();
+        let res = api.CloseThreadpoolCleanupGroupMembers(
+            ptpcg,
+            f_cancel_pending_callbacks,
+            pv_cleanup_context,
+        );
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_CloseThreadpoolIo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let pio = call.get_arg();
+        let res = api.CloseThreadpoolIo(pio);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_CloseThreadpoolTimer(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let pti = call.get_arg();
+        let res = api.CloseThreadpoolTimer(pti);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_CloseThreadpoolWait(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let pwa = call.get_arg();
+        let res = api.CloseThreadpoolWait(pwa);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_CloseThreadpoolWork(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let pwk = call.get_arg();
+        let res = api.CloseThreadpoolWork(pwk);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_ConvertFiberToThread(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let res = api.ConvertFiberToThread();
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_ConvertThreadToFiber(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let lp_parameter = call.get_arg();
+        let res = api.ConvertThreadToFiber(lp_parameter);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_ConvertThreadToFiberEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let lp_parameter = call.get_arg();
+        let dw_flags = call.get_arg();
+        let res = api.ConvertThreadToFiberEx(lp_parameter, dw_flags);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_CreateBoundaryDescriptorA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let name = call.get_arg();
+        let flags = call.get_arg();
+        let res = api.CreateBoundaryDescriptorA(name, flags);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_CreateBoundaryDescriptorW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let name = call.get_arg();
+        let flags = call.get_arg();
+        let res = api.CreateBoundaryDescriptorW(name, flags);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_CreateFiber(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let dw_stack_size = call.get_arg();
+        let lp_start_address = call.get_arg();
+        let lp_parameter = call.get_arg();
+        let res = api.CreateFiber(dw_stack_size, lp_start_address, lp_parameter);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_CreateFiberEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let dw_stack_commit_size = call.get_arg();
+        let dw_stack_reserve_size = call.get_arg();
+        let dw_flags = call.get_arg();
+        let lp_start_address = call.get_arg();
+        let lp_parameter = call.get_arg();
+        let res = api.CreateFiberEx(
+            dw_stack_commit_size,
+            dw_stack_reserve_size,
+            dw_flags,
+            lp_start_address,
+            lp_parameter,
+        );
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_CreateProcessWithLogonW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let lp_username = call.get_arg();
+        let lp_domain = call.get_arg();
+        let lp_password = call.get_arg();
+        let dw_logon_flags = call.get_arg();
+        let lp_application_name = call.get_arg();
+        let lp_command_line = call.get_arg();
+        let dw_creation_flags = call.get_arg();
+        let lp_environment = call.get_arg();
+        let lp_current_directory = call.get_arg();
+        let lp_startup_info = call.get_arg();
+        let lp_process_information = call.get_arg();
+        let res = api.CreateProcessWithLogonW(
+            lp_username,
+            lp_domain,
+            lp_password,
+            dw_logon_flags,
+            lp_application_name,
+            lp_command_line,
+            dw_creation_flags,
+            lp_environment,
+            lp_current_directory,
+            lp_startup_info,
+            lp_process_information,
+        );
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_CreateProcessWithTokenW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_token = call.get_arg();
+        let dw_logon_flags = call.get_arg();
+        let lp_application_name = call.get_arg();
+        let lp_command_line = call.get_arg();
+        let dw_creation_flags = call.get_arg();
+        let lp_environment = call.get_arg();
+        let lp_current_directory = call.get_arg();
+        let lp_startup_info = call.get_arg();
+        let lp_process_information = call.get_arg();
+        let res = api.CreateProcessWithTokenW(
+            h_token,
+            dw_logon_flags,
+            lp_application_name,
+            lp_command_line,
+            dw_creation_flags,
+            lp_environment,
+            lp_current_directory,
+            lp_startup_info,
+            lp_process_information,
+        );
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_CreateThreadpool(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let reserved = call.get_arg();
+        let res = api.CreateThreadpool(reserved);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_CreateThreadpoolCleanupGroup(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let res = api.CreateThreadpoolCleanupGroup();
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_CreateThreadpoolIo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let fl = call.get_arg();
+        let pfnio = call.get_arg();
+        let pv = call.get_arg();
+        let pcbe = call.get_arg();
+        let res = api.CreateThreadpoolIo(fl, pfnio, pv, pcbe);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_CreateThreadpoolTimer(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let pfnti = call.get_arg();
+        let pv = call.get_arg();
+        let pcbe = call.get_arg();
+        let res = api.CreateThreadpoolTimer(pfnti, pv, pcbe);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_CreateThreadpoolWait(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let pfnwa = call.get_arg();
+        let pv = call.get_arg();
+        let pcbe = call.get_arg();
+        let res = api.CreateThreadpoolWait(pfnwa, pv, pcbe);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_CreateThreadpoolWork(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let pfnwk = call.get_arg();
+        let pv = call.get_arg();
+        let pcbe = call.get_arg();
+        let res = api.CreateThreadpoolWork(pfnwk, pv, pcbe);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_CreateTimerQueue(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let res = api.CreateTimerQueue();
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_CreateTimerQueueTimer(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let ph_new_timer = call.get_arg();
+        let timer_queue = call.get_arg();
+        let callback = call.get_arg();
+        let parameter = call.get_arg();
+        let due_time = call.get_arg();
+        let period = call.get_arg();
+        let flags = call.get_arg();
+        let res = api.CreateTimerQueueTimer(
+            ph_new_timer,
+            timer_queue,
+            callback,
+            parameter,
+            due_time,
+            period,
+            flags,
+        );
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_CreateUmsCompletionList(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let ums_completion_list = call.get_arg();
+        let res = api.CreateUmsCompletionList(ums_completion_list);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_CreateUmsThreadContext(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let lp_ums_thread = call.get_arg();
+        let res = api.CreateUmsThreadContext(lp_ums_thread);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_DeleteBoundaryDescriptor(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let boundary_descriptor = call.get_arg();
+        let res = api.DeleteBoundaryDescriptor(boundary_descriptor);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_DeleteCriticalSection(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let lp_critical_section = call.get_arg();
+        let res = api.DeleteCriticalSection(lp_critical_section);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_DeleteFiber(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let lp_fiber = call.get_arg();
+        let res = api.DeleteFiber(lp_fiber);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_DeleteProcThreadAttributeList(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let lp_attribute_list = call.get_arg();
+        let res = api.DeleteProcThreadAttributeList(lp_attribute_list);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_DeleteSynchronizationBarrier(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let lp_barrier = call.get_arg();
+        let res = api.DeleteSynchronizationBarrier(lp_barrier);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_DeleteTimerQueue(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let timer_queue = call.get_arg();
+        let res = api.DeleteTimerQueue(timer_queue);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_DeleteTimerQueueEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let timer_queue = call.get_arg();
+        let completion_event = call.get_arg();
+        let res = api.DeleteTimerQueueEx(timer_queue, completion_event);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_DeleteTimerQueueTimer(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let timer_queue = call.get_arg();
+        let timer = call.get_arg();
+        let completion_event = call.get_arg();
+        let res = api.DeleteTimerQueueTimer(timer_queue, timer, completion_event);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_DeleteUmsCompletionList(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let ums_completion_list = call.get_arg();
+        let res = api.DeleteUmsCompletionList(ums_completion_list);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_DeleteUmsThreadContext(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let ums_thread = call.get_arg();
+        let res = api.DeleteUmsThreadContext(ums_thread);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_DequeueUmsCompletionListItems(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let ums_completion_list = call.get_arg();
+        let wait_time_out = call.get_arg();
+        let ums_thread_list = call.get_arg();
+        let res =
+            api.DequeueUmsCompletionListItems(ums_completion_list, wait_time_out, ums_thread_list);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_DisassociateCurrentThreadFromCallback(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let pci = call.get_arg();
+        let res = api.DisassociateCurrentThreadFromCallback(pci);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_EnterCriticalSection(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let lp_critical_section = call.get_arg();
+        let res = api.EnterCriticalSection(lp_critical_section);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_EnterSynchronizationBarrier(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let lp_barrier = call.get_arg();
+        let dw_flags = call.get_arg();
+        let res = api.EnterSynchronizationBarrier(lp_barrier, dw_flags);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_ExecuteUmsThread(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let ums_thread = call.get_arg();
+        let res = api.ExecuteUmsThread(ums_thread);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_ExitProcess(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let u_exit_code = call.get_arg();
+        let res = api.ExitProcess(u_exit_code);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_ExitThread(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let dw_exit_code = call.get_arg();
+        let res = api.ExitThread(dw_exit_code);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_FlsAlloc(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let lp_callback = call.get_arg();
+        let res = api.FlsAlloc(lp_callback);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_FlsFree(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let dw_fls_index = call.get_arg();
+        let res = api.FlsFree(dw_fls_index);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_FlsGetValue(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let dw_fls_index = call.get_arg();
+        let res = api.FlsGetValue(dw_fls_index);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_FlsSetValue(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let dw_fls_index = call.get_arg();
+        let lp_fls_data = call.get_arg();
+        let res = api.FlsSetValue(dw_fls_index, lp_fls_data);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_FlushProcessWriteBuffers(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let res = api.FlushProcessWriteBuffers();
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_FreeLibraryWhenCallbackReturns(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let pci = call.get_arg();
+        let r#mod = call.get_arg();
+        let res = api.FreeLibraryWhenCallbackReturns(pci, r#mod);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetActiveProcessorCount(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let group_number = call.get_arg();
+        let res = api.GetActiveProcessorCount(group_number);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetActiveProcessorGroupCount(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let res = api.GetActiveProcessorGroupCount();
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetCurrentProcess(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let res = api.GetCurrentProcess();
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetCurrentProcessId(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let res = api.GetCurrentProcessId();
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetCurrentProcessorNumber(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let res = api.GetCurrentProcessorNumber();
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetCurrentProcessorNumberEx(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let proc_number = call.get_arg();
+        let res = api.GetCurrentProcessorNumberEx(proc_number);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetCurrentThread(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let res = api.GetCurrentThread();
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetCurrentThreadId(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let res = api.GetCurrentThreadId();
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetCurrentThreadStackLimits(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let low_limit = call.get_arg();
+        let high_limit = call.get_arg();
+        let res = api.GetCurrentThreadStackLimits(low_limit, high_limit);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetCurrentUmsThread(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let res = api.GetCurrentUmsThread();
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetExitCodeProcess(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_process = call.get_arg();
+        let lp_exit_code = call.get_arg();
+        let res = api.GetExitCodeProcess(h_process, lp_exit_code);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetExitCodeThread(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_thread = call.get_arg();
+        let lp_exit_code = call.get_arg();
+        let res = api.GetExitCodeThread(h_thread, lp_exit_code);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetGuiResources(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_process = call.get_arg();
+        let ui_flags = call.get_arg();
+        let res = api.GetGuiResources(h_process, ui_flags);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetMachineTypeAttributes(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let machine = call.get_arg();
+        let machine_type_attributes = call.get_arg();
+        let res = api.GetMachineTypeAttributes(machine, machine_type_attributes);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetMaximumProcessorCount(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let group_number = call.get_arg();
+        let res = api.GetMaximumProcessorCount(group_number);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetMaximumProcessorGroupCount(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let res = api.GetMaximumProcessorGroupCount();
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetNextUmsListItem(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let ums_context = call.get_arg();
+        let res = api.GetNextUmsListItem(ums_context);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetNumaAvailableMemoryNode(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let node = call.get_arg();
+        let available_bytes = call.get_arg();
+        let res = api.GetNumaAvailableMemoryNode(node, available_bytes);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetNumaAvailableMemoryNodeEx(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let node = call.get_arg();
+        let available_bytes = call.get_arg();
+        let res = api.GetNumaAvailableMemoryNodeEx(node, available_bytes);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetNumaHighestNodeNumber(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let highest_node_number = call.get_arg();
+        let res = api.GetNumaHighestNodeNumber(highest_node_number);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetNumaNodeNumberFromHandle(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_file = call.get_arg();
+        let node_number = call.get_arg();
+        let res = api.GetNumaNodeNumberFromHandle(h_file, node_number);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetNumaNodeProcessorMask(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let node = call.get_arg();
+        let processor_mask = call.get_arg();
+        let res = api.GetNumaNodeProcessorMask(node, processor_mask);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetNumaNodeProcessorMask2(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let node_number = call.get_arg();
+        let processor_masks = call.get_arg();
+        let processor_mask_count = call.get_arg();
+        let required_mask_count = call.get_arg();
+        let res = api.GetNumaNodeProcessorMask2(
+            node_number,
+            processor_masks,
+            processor_mask_count,
+            required_mask_count,
+        );
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetNumaNodeProcessorMaskEx(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let node = call.get_arg();
+        let processor_mask = call.get_arg();
+        let res = api.GetNumaNodeProcessorMaskEx(node, processor_mask);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetNumaProcessorNode(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let processor = call.get_arg();
+        let node_number = call.get_arg();
+        let res = api.GetNumaProcessorNode(processor, node_number);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetNumaProcessorNodeEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let processor = call.get_arg();
+        let node_number = call.get_arg();
+        let res = api.GetNumaProcessorNodeEx(processor, node_number);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetNumaProximityNode(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let proximity_id = call.get_arg();
+        let node_number = call.get_arg();
+        let res = api.GetNumaProximityNode(proximity_id, node_number);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetNumaProximityNodeEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let proximity_id = call.get_arg();
+        let node_number = call.get_arg();
+        let res = api.GetNumaProximityNodeEx(proximity_id, node_number);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetPriorityClass(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_process = call.get_arg();
+        let res = api.GetPriorityClass(h_process);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetProcessAffinityMask(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_process = call.get_arg();
+        let lp_process_affinity_mask = call.get_arg();
+        let lp_system_affinity_mask = call.get_arg();
+        let res = api.GetProcessAffinityMask(
+            h_process,
+            lp_process_affinity_mask,
+            lp_system_affinity_mask,
+        );
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetProcessDEPPolicy(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_process = call.get_arg();
+        let lp_flags = call.get_arg();
+        let lp_permanent = call.get_arg();
+        let res = api.GetProcessDEPPolicy(h_process, lp_flags, lp_permanent);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetProcessDefaultCpuSetMasks(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let process = call.get_arg();
+        let cpu_set_masks = call.get_arg();
+        let cpu_set_mask_count = call.get_arg();
+        let required_mask_count = call.get_arg();
+        let res = api.GetProcessDefaultCpuSetMasks(
+            process,
+            cpu_set_masks,
+            cpu_set_mask_count,
+            required_mask_count,
+        );
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetProcessDefaultCpuSets(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let process = call.get_arg();
+        let cpu_set_ids = call.get_arg();
+        let cpu_set_id_count = call.get_arg();
+        let required_id_count = call.get_arg();
+        let res =
+            api.GetProcessDefaultCpuSets(process, cpu_set_ids, cpu_set_id_count, required_id_count);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetProcessGroupAffinity(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_process = call.get_arg();
+        let group_count = call.get_arg();
+        let group_array = call.get_arg();
+        let res = api.GetProcessGroupAffinity(h_process, group_count, group_array);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetProcessHandleCount(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_process = call.get_arg();
+        let pdw_handle_count = call.get_arg();
+        let res = api.GetProcessHandleCount(h_process, pdw_handle_count);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetProcessId(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let process = call.get_arg();
+        let res = api.GetProcessId(process);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetProcessIdOfThread(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let thread = call.get_arg();
+        let res = api.GetProcessIdOfThread(thread);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetProcessInformation(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_process = call.get_arg();
+        let process_information_class = call.get_arg();
+        let process_information = call.get_arg();
+        let process_information_size = call.get_arg();
+        let res = api.GetProcessInformation(
+            h_process,
+            process_information_class,
+            process_information,
+            process_information_size,
+        );
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetProcessIoCounters(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_process = call.get_arg();
+        let lp_io_counters = call.get_arg();
+        let res = api.GetProcessIoCounters(h_process, lp_io_counters);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetProcessMitigationPolicy(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_process = call.get_arg();
+        let mitigation_policy = call.get_arg();
+        let lp_buffer = call.get_arg();
+        let dw_length = call.get_arg();
+        let res =
+            api.GetProcessMitigationPolicy(h_process, mitigation_policy, lp_buffer, dw_length);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetProcessPriorityBoost(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_process = call.get_arg();
+        let p_disable_priority_boost = call.get_arg();
+        let res = api.GetProcessPriorityBoost(h_process, p_disable_priority_boost);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetProcessShutdownParameters(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let lpdw_level = call.get_arg();
+        let lpdw_flags = call.get_arg();
+        let res = api.GetProcessShutdownParameters(lpdw_level, lpdw_flags);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetProcessTimes(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_process = call.get_arg();
+        let lp_creation_time = call.get_arg();
+        let lp_exit_time = call.get_arg();
+        let lp_kernel_time = call.get_arg();
+        let lp_user_time = call.get_arg();
+        let res = api.GetProcessTimes(
+            h_process,
+            lp_creation_time,
+            lp_exit_time,
+            lp_kernel_time,
+            lp_user_time,
+        );
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetProcessVersion(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let process_id = call.get_arg();
+        let res = api.GetProcessVersion(process_id);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetProcessWorkingSetSize(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_process = call.get_arg();
+        let lp_minimum_working_set_size = call.get_arg();
+        let lp_maximum_working_set_size = call.get_arg();
+        let res = api.GetProcessWorkingSetSize(
+            h_process,
+            lp_minimum_working_set_size,
+            lp_maximum_working_set_size,
+        );
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetStartupInfoA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let lp_startup_info = call.get_arg();
+        let res = api.GetStartupInfoA(lp_startup_info);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetStartupInfoW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let lp_startup_info = call.get_arg();
+        let res = api.GetStartupInfoW(lp_startup_info);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetSystemTimes(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let lp_idle_time = call.get_arg();
+        let lp_kernel_time = call.get_arg();
+        let lp_user_time = call.get_arg();
+        let res = api.GetSystemTimes(lp_idle_time, lp_kernel_time, lp_user_time);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetThreadDescription(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_thread = call.get_arg();
+        let ppsz_thread_description = call.get_arg();
+        let res = api.GetThreadDescription(h_thread, ppsz_thread_description);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetThreadGroupAffinity(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_thread = call.get_arg();
+        let group_affinity = call.get_arg();
+        let res = api.GetThreadGroupAffinity(h_thread, group_affinity);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetThreadIOPendingFlag(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_thread = call.get_arg();
+        let lp_io_is_pending = call.get_arg();
+        let res = api.GetThreadIOPendingFlag(h_thread, lp_io_is_pending);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetThreadId(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let thread = call.get_arg();
+        let res = api.GetThreadId(thread);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetThreadIdealProcessorEx(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_thread = call.get_arg();
+        let lp_ideal_processor = call.get_arg();
+        let res = api.GetThreadIdealProcessorEx(h_thread, lp_ideal_processor);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetThreadInformation(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_thread = call.get_arg();
+        let thread_information_class = call.get_arg();
+        let thread_information = call.get_arg();
+        let thread_information_size = call.get_arg();
+        let res = api.GetThreadInformation(
+            h_thread,
+            thread_information_class,
+            thread_information,
+            thread_information_size,
+        );
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetThreadPriority(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_thread = call.get_arg();
+        let res = api.GetThreadPriority(h_thread);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetThreadPriorityBoost(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_thread = call.get_arg();
+        let p_disable_priority_boost = call.get_arg();
+        let res = api.GetThreadPriorityBoost(h_thread, p_disable_priority_boost);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetThreadSelectedCpuSetMasks(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let thread = call.get_arg();
+        let cpu_set_masks = call.get_arg();
+        let cpu_set_mask_count = call.get_arg();
+        let required_mask_count = call.get_arg();
+        let res = api.GetThreadSelectedCpuSetMasks(
+            thread,
+            cpu_set_masks,
+            cpu_set_mask_count,
+            required_mask_count,
+        );
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetThreadSelectedCpuSets(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let thread = call.get_arg();
+        let cpu_set_ids = call.get_arg();
+        let cpu_set_id_count = call.get_arg();
+        let required_id_count = call.get_arg();
+        let res =
+            api.GetThreadSelectedCpuSets(thread, cpu_set_ids, cpu_set_id_count, required_id_count);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetThreadTimes(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_thread = call.get_arg();
+        let lp_creation_time = call.get_arg();
+        let lp_exit_time = call.get_arg();
+        let lp_kernel_time = call.get_arg();
+        let lp_user_time = call.get_arg();
+        let res = api.GetThreadTimes(
+            h_thread,
+            lp_creation_time,
+            lp_exit_time,
+            lp_kernel_time,
+            lp_user_time,
+        );
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetUmsCompletionListEvent(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let ums_completion_list = call.get_arg();
+        let ums_completion_event = call.get_arg();
+        let res = api.GetUmsCompletionListEvent(ums_completion_list, ums_completion_event);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_GetUmsSystemThreadInformation(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let thread_handle = call.get_arg();
+        let system_thread_info = call.get_arg();
+        let res = api.GetUmsSystemThreadInformation(thread_handle, system_thread_info);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_InitOnceBeginInitialize(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let lp_init_once = call.get_arg();
+        let dw_flags = call.get_arg();
+        let f_pending = call.get_arg();
+        let lp_context = call.get_arg();
+        let res = api.InitOnceBeginInitialize(lp_init_once, dw_flags, f_pending, lp_context);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_InitOnceComplete(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let lp_init_once = call.get_arg();
+        let dw_flags = call.get_arg();
+        let lp_context = call.get_arg();
+        let res = api.InitOnceComplete(lp_init_once, dw_flags, lp_context);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_InitOnceExecuteOnce(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let init_once = call.get_arg();
+        let init_fn = call.get_arg();
+        let parameter = call.get_arg();
+        let context = call.get_arg();
+        let res = api.InitOnceExecuteOnce(init_once, init_fn, parameter, context);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_InitOnceInitialize(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let init_once = call.get_arg();
+        let res = api.InitOnceInitialize(init_once);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_InitializeConditionVariable(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let condition_variable = call.get_arg();
+        let res = api.InitializeConditionVariable(condition_variable);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_InitializeCriticalSection(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let lp_critical_section = call.get_arg();
+        let res = api.InitializeCriticalSection(lp_critical_section);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_InitializeCriticalSectionAndSpinCount(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let lp_critical_section = call.get_arg();
+        let dw_spin_count = call.get_arg();
+        let res = api.InitializeCriticalSectionAndSpinCount(lp_critical_section, dw_spin_count);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_InitializeCriticalSectionEx(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let lp_critical_section = call.get_arg();
+        let dw_spin_count = call.get_arg();
+        let flags = call.get_arg();
+        let res = api.InitializeCriticalSectionEx(lp_critical_section, dw_spin_count, flags);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_InitializeProcThreadAttributeList(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let lp_attribute_list = call.get_arg();
+        let dw_attribute_count = call.get_arg();
+        let dw_flags = call.get_arg();
+        let lp_size = call.get_arg();
+        let res = api.InitializeProcThreadAttributeList(
+            lp_attribute_list,
+            dw_attribute_count,
+            dw_flags,
+            lp_size,
+        );
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_InitializeSListHead(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let list_head = call.get_arg();
+        let res = api.InitializeSListHead(list_head);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_InitializeSRWLock(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let srw_lock = call.get_arg();
+        let res = api.InitializeSRWLock(srw_lock);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_InitializeSynchronizationBarrier(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let lp_barrier = call.get_arg();
+        let l_total_threads = call.get_arg();
+        let l_spin_count = call.get_arg();
+        let res = api.InitializeSynchronizationBarrier(lp_barrier, l_total_threads, l_spin_count);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_InterlockedFlushSList(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let list_head = call.get_arg();
+        let res = api.InterlockedFlushSList(list_head);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_InterlockedPopEntrySList(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let list_head = call.get_arg();
+        let res = api.InterlockedPopEntrySList(list_head);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_InterlockedPushEntrySList(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let list_head = call.get_arg();
+        let list_entry = call.get_arg();
+        let res = api.InterlockedPushEntrySList(list_head, list_entry);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_InterlockedPushListSListEx(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let list_head = call.get_arg();
+        let list = call.get_arg();
+        let list_end = call.get_arg();
+        let count = call.get_arg();
+        let res = api.InterlockedPushListSListEx(list_head, list, list_end, count);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_IsImmersiveProcess(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_process = call.get_arg();
+        let res = api.IsImmersiveProcess(h_process);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_IsProcessCritical(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_process = call.get_arg();
+        let critical = call.get_arg();
+        let res = api.IsProcessCritical(h_process, critical);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_IsProcessorFeaturePresent(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let processor_feature = call.get_arg();
+        let res = api.IsProcessorFeaturePresent(processor_feature);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_IsThreadAFiber(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let res = api.IsThreadAFiber();
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_IsThreadpoolTimerSet(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let pti = call.get_arg();
+        let res = api.IsThreadpoolTimerSet(pti);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_IsWow64Process(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_process = call.get_arg();
+        let wow_64_process = call.get_arg();
+        let res = api.IsWow64Process(h_process, wow_64_process);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_IsWow64Process2(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_process = call.get_arg();
+        let p_process_machine = call.get_arg();
+        let p_native_machine = call.get_arg();
+        let res = api.IsWow64Process2(h_process, p_process_machine, p_native_machine);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_LeaveCriticalSection(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let lp_critical_section = call.get_arg();
+        let res = api.LeaveCriticalSection(lp_critical_section);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_LeaveCriticalSectionWhenCallbackReturns(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let pci = call.get_arg();
+        let pcs = call.get_arg();
+        let res = api.LeaveCriticalSectionWhenCallbackReturns(pci, pcs);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_NtQueryInformationProcess(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let process_handle = call.get_arg();
+        let process_information_class = call.get_arg();
+        let process_information = call.get_arg();
+        let process_information_length = call.get_arg();
+        let return_length = call.get_arg();
+        let res = api.NtQueryInformationProcess(
+            process_handle,
+            process_information_class,
+            process_information,
+            process_information_length,
+            return_length,
+        );
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_NtQueryInformationThread(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let thread_handle = call.get_arg();
+        let thread_information_class = call.get_arg();
+        let thread_information = call.get_arg();
+        let thread_information_length = call.get_arg();
+        let return_length = call.get_arg();
+        let res = api.NtQueryInformationThread(
+            thread_handle,
+            thread_information_class,
+            thread_information,
+            thread_information_length,
+            return_length,
+        );
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_NtSetInformationThread(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let thread_handle = call.get_arg();
+        let thread_information_class = call.get_arg();
+        let thread_information = call.get_arg();
+        let thread_information_length = call.get_arg();
+        let res = api.NtSetInformationThread(
+            thread_handle,
+            thread_information_class,
+            thread_information,
+            thread_information_length,
+        );
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_OpenEventA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let dw_desired_access = call.get_arg();
+        let b_inherit_handle = call.get_arg();
+        let lp_name = call.get_arg();
+        let res = api.OpenEventA(dw_desired_access, b_inherit_handle, lp_name);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_OpenEventW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let dw_desired_access = call.get_arg();
+        let b_inherit_handle = call.get_arg();
+        let lp_name = call.get_arg();
+        let res = api.OpenEventW(dw_desired_access, b_inherit_handle, lp_name);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_OpenMutexW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let dw_desired_access = call.get_arg();
+        let b_inherit_handle = call.get_arg();
+        let lp_name = call.get_arg();
+        let res = api.OpenMutexW(dw_desired_access, b_inherit_handle, lp_name);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_OpenPrivateNamespaceA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let lp_boundary_descriptor = call.get_arg();
+        let lp_alias_prefix = call.get_arg();
+        let res = api.OpenPrivateNamespaceA(lp_boundary_descriptor, lp_alias_prefix);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_OpenPrivateNamespaceW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let lp_boundary_descriptor = call.get_arg();
+        let lp_alias_prefix = call.get_arg();
+        let res = api.OpenPrivateNamespaceW(lp_boundary_descriptor, lp_alias_prefix);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_OpenProcess(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let dw_desired_access = call.get_arg();
+        let b_inherit_handle = call.get_arg();
+        let dw_process_id = call.get_arg();
+        let res = api.OpenProcess(dw_desired_access, b_inherit_handle, dw_process_id);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_OpenSemaphoreW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let dw_desired_access = call.get_arg();
+        let b_inherit_handle = call.get_arg();
+        let lp_name = call.get_arg();
+        let res = api.OpenSemaphoreW(dw_desired_access, b_inherit_handle, lp_name);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_OpenThread(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let dw_desired_access = call.get_arg();
+        let b_inherit_handle = call.get_arg();
+        let dw_thread_id = call.get_arg();
+        let res = api.OpenThread(dw_desired_access, b_inherit_handle, dw_thread_id);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_OpenWaitableTimerW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let dw_desired_access = call.get_arg();
+        let b_inherit_handle = call.get_arg();
+        let lp_timer_name = call.get_arg();
+        let res = api.OpenWaitableTimerW(dw_desired_access, b_inherit_handle, lp_timer_name);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_PulseEvent(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_event = call.get_arg();
+        let res = api.PulseEvent(h_event);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_QueryDepthSList(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let list_head = call.get_arg();
+        let res = api.QueryDepthSList(list_head);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_QueryFullProcessImageNameA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_process = call.get_arg();
+        let dw_flags = call.get_arg();
+        let lp_exe_name = call.get_arg();
+        let lpdw_size = call.get_arg();
+        let res = api.QueryFullProcessImageNameA(h_process, dw_flags, lp_exe_name, lpdw_size);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_QueryFullProcessImageNameW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_process = call.get_arg();
+        let dw_flags = call.get_arg();
+        let lp_exe_name = call.get_arg();
+        let lpdw_size = call.get_arg();
+        let res = api.QueryFullProcessImageNameW(h_process, dw_flags, lp_exe_name, lpdw_size);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_QueryProcessAffinityUpdateMode(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_process = call.get_arg();
+        let lpdw_flags = call.get_arg();
+        let res = api.QueryProcessAffinityUpdateMode(h_process, lpdw_flags);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_QueryProtectedPolicy(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let policy_guid = call.get_arg();
+        let policy_value = call.get_arg();
+        let res = api.QueryProtectedPolicy(policy_guid, policy_value);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_QueryThreadpoolStackInformation(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let ptpp = call.get_arg();
+        let ptpsi = call.get_arg();
+        let res = api.QueryThreadpoolStackInformation(ptpp, ptpsi);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_QueryUmsThreadInformation(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let ums_thread = call.get_arg();
+        let ums_thread_info_class = call.get_arg();
+        let ums_thread_information = call.get_arg();
+        let ums_thread_information_length = call.get_arg();
+        let return_length = call.get_arg();
+        let res = api.QueryUmsThreadInformation(
+            ums_thread,
+            ums_thread_info_class,
+            ums_thread_information,
+            ums_thread_information_length,
+            return_length,
+        );
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_QueueUserAPC(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let pfn_apc = call.get_arg();
+        let h_thread = call.get_arg();
+        let dw_data = call.get_arg();
+        let res = api.QueueUserAPC(pfn_apc, h_thread, dw_data);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_QueueUserAPC2(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let apc_routine = call.get_arg();
+        let thread = call.get_arg();
+        let data = call.get_arg();
+        let flags = call.get_arg();
+        let res = api.QueueUserAPC2(apc_routine, thread, data, flags);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_QueueUserWorkItem(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let function = call.get_arg();
+        let context = call.get_arg();
+        let flags = call.get_arg();
+        let res = api.QueueUserWorkItem(function, context, flags);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_RegisterWaitForSingleObject(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let ph_new_wait_object = call.get_arg();
+        let h_object = call.get_arg();
+        let callback = call.get_arg();
+        let context = call.get_arg();
+        let dw_milliseconds = call.get_arg();
+        let dw_flags = call.get_arg();
+        let res = api.RegisterWaitForSingleObject(
+            ph_new_wait_object,
+            h_object,
+            callback,
+            context,
+            dw_milliseconds,
+            dw_flags,
+        );
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_ReleaseMutex(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_mutex = call.get_arg();
+        let res = api.ReleaseMutex(h_mutex);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_ReleaseMutexWhenCallbackReturns(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let pci = call.get_arg();
+        let r#mut = call.get_arg();
+        let res = api.ReleaseMutexWhenCallbackReturns(pci, r#mut);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_ReleaseSRWLockExclusive(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let srw_lock = call.get_arg();
+        let res = api.ReleaseSRWLockExclusive(srw_lock);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_ReleaseSRWLockShared(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let srw_lock = call.get_arg();
+        let res = api.ReleaseSRWLockShared(srw_lock);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_ReleaseSemaphore(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_semaphore = call.get_arg();
+        let l_release_count = call.get_arg();
+        let lp_previous_count = call.get_arg();
+        let res = api.ReleaseSemaphore(h_semaphore, l_release_count, lp_previous_count);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_ReleaseSemaphoreWhenCallbackReturns(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let pci = call.get_arg();
+        let sem = call.get_arg();
+        let crel = call.get_arg();
+        let res = api.ReleaseSemaphoreWhenCallbackReturns(pci, sem, crel);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_ResetEvent(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_event = call.get_arg();
+        let res = api.ResetEvent(h_event);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_ResumeThread(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_thread = call.get_arg();
+        let res = api.ResumeThread(h_thread);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_SetCriticalSectionSpinCount(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let lp_critical_section = call.get_arg();
+        let dw_spin_count = call.get_arg();
+        let res = api.SetCriticalSectionSpinCount(lp_critical_section, dw_spin_count);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_SetEvent(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_event = call.get_arg();
+        let res = api.SetEvent(h_event);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_SetEventWhenCallbackReturns(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let pci = call.get_arg();
+        let evt = call.get_arg();
+        let res = api.SetEventWhenCallbackReturns(pci, evt);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_SetPriorityClass(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_process = call.get_arg();
+        let dw_priority_class = call.get_arg();
+        let res = api.SetPriorityClass(h_process, dw_priority_class);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_SetProcessAffinityMask(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_process = call.get_arg();
+        let dw_process_affinity_mask = call.get_arg();
+        let res = api.SetProcessAffinityMask(h_process, dw_process_affinity_mask);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_SetProcessAffinityUpdateMode(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_process = call.get_arg();
+        let dw_flags = call.get_arg();
+        let res = api.SetProcessAffinityUpdateMode(h_process, dw_flags);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_SetProcessDEPPolicy(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let dw_flags = call.get_arg();
+        let res = api.SetProcessDEPPolicy(dw_flags);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_SetProcessDefaultCpuSetMasks(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let process = call.get_arg();
+        let cpu_set_masks = call.get_arg();
+        let cpu_set_mask_count = call.get_arg();
+        let res = api.SetProcessDefaultCpuSetMasks(process, cpu_set_masks, cpu_set_mask_count);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_SetProcessDefaultCpuSets(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let process = call.get_arg();
+        let cpu_set_ids = call.get_arg();
+        let cpu_set_id_count = call.get_arg();
+        let res = api.SetProcessDefaultCpuSets(process, cpu_set_ids, cpu_set_id_count);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_SetProcessDynamicEHContinuationTargets(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let process = call.get_arg();
+        let number_of_targets = call.get_arg();
+        let targets = call.get_arg();
+        let res = api.SetProcessDynamicEHContinuationTargets(process, number_of_targets, targets);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_SetProcessDynamicEnforcedCetCompatibleRanges(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let process = call.get_arg();
+        let number_of_ranges = call.get_arg();
+        let ranges = call.get_arg();
+        let res =
+            api.SetProcessDynamicEnforcedCetCompatibleRanges(process, number_of_ranges, ranges);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_SetProcessInformation(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_process = call.get_arg();
+        let process_information_class = call.get_arg();
+        let process_information = call.get_arg();
+        let process_information_size = call.get_arg();
+        let res = api.SetProcessInformation(
+            h_process,
+            process_information_class,
+            process_information,
+            process_information_size,
+        );
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_SetProcessMitigationPolicy(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let mitigation_policy = call.get_arg();
+        let lp_buffer = call.get_arg();
+        let dw_length = call.get_arg();
+        let res = api.SetProcessMitigationPolicy(mitigation_policy, lp_buffer, dw_length);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_SetProcessPriorityBoost(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_process = call.get_arg();
+        let b_disable_priority_boost = call.get_arg();
+        let res = api.SetProcessPriorityBoost(h_process, b_disable_priority_boost);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_SetProcessRestrictionExemption(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let f_enable_exemption = call.get_arg();
+        let res = api.SetProcessRestrictionExemption(f_enable_exemption);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_SetProcessShutdownParameters(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let dw_level = call.get_arg();
+        let dw_flags = call.get_arg();
+        let res = api.SetProcessShutdownParameters(dw_level, dw_flags);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_SetProcessWorkingSetSize(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_process = call.get_arg();
+        let dw_minimum_working_set_size = call.get_arg();
+        let dw_maximum_working_set_size = call.get_arg();
+        let res = api.SetProcessWorkingSetSize(
+            h_process,
+            dw_minimum_working_set_size,
+            dw_maximum_working_set_size,
+        );
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_SetProtectedPolicy(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let policy_guid = call.get_arg();
+        let policy_value = call.get_arg();
+        let old_policy_value = call.get_arg();
+        let res = api.SetProtectedPolicy(policy_guid, policy_value, old_policy_value);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_SetThreadAffinityMask(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_thread = call.get_arg();
+        let dw_thread_affinity_mask = call.get_arg();
+        let res = api.SetThreadAffinityMask(h_thread, dw_thread_affinity_mask);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_SetThreadDescription(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_thread = call.get_arg();
+        let lp_thread_description = call.get_arg();
+        let res = api.SetThreadDescription(h_thread, lp_thread_description);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_SetThreadGroupAffinity(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_thread = call.get_arg();
+        let group_affinity = call.get_arg();
+        let previous_group_affinity = call.get_arg();
+        let res = api.SetThreadGroupAffinity(h_thread, group_affinity, previous_group_affinity);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_SetThreadIdealProcessor(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_thread = call.get_arg();
+        let dw_ideal_processor = call.get_arg();
+        let res = api.SetThreadIdealProcessor(h_thread, dw_ideal_processor);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_SetThreadIdealProcessorEx(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_thread = call.get_arg();
+        let lp_ideal_processor = call.get_arg();
+        let lp_previous_ideal_processor = call.get_arg();
+        let res = api.SetThreadIdealProcessorEx(
+            h_thread,
+            lp_ideal_processor,
+            lp_previous_ideal_processor,
+        );
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_SetThreadInformation(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_thread = call.get_arg();
+        let thread_information_class = call.get_arg();
+        let thread_information = call.get_arg();
+        let thread_information_size = call.get_arg();
+        let res = api.SetThreadInformation(
+            h_thread,
+            thread_information_class,
+            thread_information,
+            thread_information_size,
+        );
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_SetThreadPriority(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_thread = call.get_arg();
+        let n_priority = call.get_arg();
+        let res = api.SetThreadPriority(h_thread, n_priority);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_SetThreadPriorityBoost(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_thread = call.get_arg();
+        let b_disable_priority_boost = call.get_arg();
+        let res = api.SetThreadPriorityBoost(h_thread, b_disable_priority_boost);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_SetThreadSelectedCpuSetMasks(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let thread = call.get_arg();
+        let cpu_set_masks = call.get_arg();
+        let cpu_set_mask_count = call.get_arg();
+        let res = api.SetThreadSelectedCpuSetMasks(thread, cpu_set_masks, cpu_set_mask_count);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_SetThreadSelectedCpuSets(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let thread = call.get_arg();
+        let cpu_set_ids = call.get_arg();
+        let cpu_set_id_count = call.get_arg();
+        let res = api.SetThreadSelectedCpuSets(thread, cpu_set_ids, cpu_set_id_count);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_SetThreadStackGuarantee(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let stack_size_in_bytes = call.get_arg();
+        let res = api.SetThreadStackGuarantee(stack_size_in_bytes);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_SetThreadToken(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let thread = call.get_arg();
+        let token = call.get_arg();
+        let res = api.SetThreadToken(thread, token);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_SetThreadpoolStackInformation(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let ptpp = call.get_arg();
+        let ptpsi = call.get_arg();
+        let res = api.SetThreadpoolStackInformation(ptpp, ptpsi);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_SetThreadpoolThreadMaximum(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let ptpp = call.get_arg();
+        let cthrd_most = call.get_arg();
+        let res = api.SetThreadpoolThreadMaximum(ptpp, cthrd_most);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_SetThreadpoolThreadMinimum(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let ptpp = call.get_arg();
+        let cthrd_mic = call.get_arg();
+        let res = api.SetThreadpoolThreadMinimum(ptpp, cthrd_mic);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_SetThreadpoolTimer(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let pti = call.get_arg();
+        let pft_due_time = call.get_arg();
+        let ms_period = call.get_arg();
+        let ms_window_length = call.get_arg();
+        let res = api.SetThreadpoolTimer(pti, pft_due_time, ms_period, ms_window_length);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_SetThreadpoolTimerEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let pti = call.get_arg();
+        let pft_due_time = call.get_arg();
+        let ms_period = call.get_arg();
+        let ms_window_length = call.get_arg();
+        let res = api.SetThreadpoolTimerEx(pti, pft_due_time, ms_period, ms_window_length);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_SetThreadpoolWait(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let pwa = call.get_arg();
+        let h = call.get_arg();
+        let pft_timeout = call.get_arg();
+        let res = api.SetThreadpoolWait(pwa, h, pft_timeout);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_SetThreadpoolWaitEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let pwa = call.get_arg();
+        let h = call.get_arg();
+        let pft_timeout = call.get_arg();
+        let reserved = call.get_arg();
+        let res = api.SetThreadpoolWaitEx(pwa, h, pft_timeout, reserved);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_SetTimerQueueTimer(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let timer_queue = call.get_arg();
+        let callback = call.get_arg();
+        let parameter = call.get_arg();
+        let due_time = call.get_arg();
+        let period = call.get_arg();
+        let prefer_io = call.get_arg();
+        let res = api.SetTimerQueueTimer(
+            timer_queue,
+            callback,
+            parameter,
+            due_time,
+            period,
+            prefer_io,
+        );
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_SetUmsThreadInformation(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let ums_thread = call.get_arg();
+        let ums_thread_info_class = call.get_arg();
+        let ums_thread_information = call.get_arg();
+        let ums_thread_information_length = call.get_arg();
+        let res = api.SetUmsThreadInformation(
+            ums_thread,
+            ums_thread_info_class,
+            ums_thread_information,
+            ums_thread_information_length,
+        );
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_SetWaitableTimer(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_timer = call.get_arg();
+        let lp_due_time = call.get_arg();
+        let l_period = call.get_arg();
+        let pfn_completion_routine = call.get_arg();
+        let lp_arg_to_completion_routine = call.get_arg();
+        let f_resume = call.get_arg();
+        let res = api.SetWaitableTimer(
+            h_timer,
+            lp_due_time,
+            l_period,
+            pfn_completion_routine,
+            lp_arg_to_completion_routine,
+            f_resume,
+        );
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_SetWaitableTimerEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_timer = call.get_arg();
+        let lp_due_time = call.get_arg();
+        let l_period = call.get_arg();
+        let pfn_completion_routine = call.get_arg();
+        let lp_arg_to_completion_routine = call.get_arg();
+        let wake_context = call.get_arg();
+        let tolerable_delay = call.get_arg();
+        let res = api.SetWaitableTimerEx(
+            h_timer,
+            lp_due_time,
+            l_period,
+            pfn_completion_routine,
+            lp_arg_to_completion_routine,
+            wake_context,
+            tolerable_delay,
+        );
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_Sleep(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let dw_milliseconds = call.get_arg();
+        let res = api.Sleep(dw_milliseconds);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_SleepConditionVariableCS(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let condition_variable = call.get_arg();
+        let critical_section = call.get_arg();
+        let dw_milliseconds = call.get_arg();
+        let res =
+            api.SleepConditionVariableCS(condition_variable, critical_section, dw_milliseconds);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_SleepConditionVariableSRW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let condition_variable = call.get_arg();
+        let srw_lock = call.get_arg();
+        let dw_milliseconds = call.get_arg();
+        let flags = call.get_arg();
+        let res =
+            api.SleepConditionVariableSRW(condition_variable, srw_lock, dw_milliseconds, flags);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_SleepEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let dw_milliseconds = call.get_arg();
+        let b_alertable = call.get_arg();
+        let res = api.SleepEx(dw_milliseconds, b_alertable);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_StartThreadpoolIo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let pio = call.get_arg();
+        let res = api.StartThreadpoolIo(pio);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_SubmitThreadpoolWork(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let pwk = call.get_arg();
+        let res = api.SubmitThreadpoolWork(pwk);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_SuspendThread(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_thread = call.get_arg();
+        let res = api.SuspendThread(h_thread);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_SwitchToFiber(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let lp_fiber = call.get_arg();
+        let res = api.SwitchToFiber(lp_fiber);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_SwitchToThread(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let res = api.SwitchToThread();
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_TerminateProcess(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_process = call.get_arg();
+        let u_exit_code = call.get_arg();
+        let res = api.TerminateProcess(h_process, u_exit_code);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_TerminateThread(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_thread = call.get_arg();
+        let dw_exit_code = call.get_arg();
+        let res = api.TerminateThread(h_thread, dw_exit_code);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_TlsAlloc(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let res = api.TlsAlloc();
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_TlsFree(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let dw_tls_index = call.get_arg();
+        let res = api.TlsFree(dw_tls_index);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_TlsGetValue(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let dw_tls_index = call.get_arg();
+        let res = api.TlsGetValue(dw_tls_index);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_TlsSetValue(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let dw_tls_index = call.get_arg();
+        let lp_tls_value = call.get_arg();
+        let res = api.TlsSetValue(dw_tls_index, lp_tls_value);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_TryAcquireSRWLockExclusive(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let srw_lock = call.get_arg();
+        let res = api.TryAcquireSRWLockExclusive(srw_lock);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_TryAcquireSRWLockShared(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let srw_lock = call.get_arg();
+        let res = api.TryAcquireSRWLockShared(srw_lock);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_TryEnterCriticalSection(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let lp_critical_section = call.get_arg();
+        let res = api.TryEnterCriticalSection(lp_critical_section);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_TrySubmitThreadpoolCallback(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let pfns = call.get_arg();
+        let pv = call.get_arg();
+        let pcbe = call.get_arg();
+        let res = api.TrySubmitThreadpoolCallback(pfns, pv, pcbe);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_UmsThreadYield(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let scheduler_param = call.get_arg();
+        let res = api.UmsThreadYield(scheduler_param);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_UnregisterWait(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let wait_handle = call.get_arg();
+        let res = api.UnregisterWait(wait_handle);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_UnregisterWaitEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let wait_handle = call.get_arg();
+        let completion_event = call.get_arg();
+        let res = api.UnregisterWaitEx(wait_handle, completion_event);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_UpdateProcThreadAttribute(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let lp_attribute_list = call.get_arg();
+        let dw_flags = call.get_arg();
+        let attribute = call.get_arg();
+        let lp_value = call.get_arg();
+        let cb_size = call.get_arg();
+        let lp_previous_value = call.get_arg();
+        let lp_return_size = call.get_arg();
+        let res = api.UpdateProcThreadAttribute(
+            lp_attribute_list,
+            dw_flags,
+            attribute,
+            lp_value,
+            cb_size,
+            lp_previous_value,
+            lp_return_size,
+        );
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_WaitForInputIdle(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_process = call.get_arg();
+        let dw_milliseconds = call.get_arg();
+        let res = api.WaitForInputIdle(h_process, dw_milliseconds);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_WaitForMultipleObjects(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let n_count = call.get_arg();
+        let lp_handles = call.get_arg();
+        let b_wait_all = call.get_arg();
+        let dw_milliseconds = call.get_arg();
+        let res = api.WaitForMultipleObjects(n_count, lp_handles, b_wait_all, dw_milliseconds);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_WaitForMultipleObjectsEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let n_count = call.get_arg();
+        let lp_handles = call.get_arg();
+        let b_wait_all = call.get_arg();
+        let dw_milliseconds = call.get_arg();
+        let b_alertable = call.get_arg();
+        let res = api.WaitForMultipleObjectsEx(
+            n_count,
+            lp_handles,
+            b_wait_all,
+            dw_milliseconds,
+            b_alertable,
+        );
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_WaitForSingleObject(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_handle = call.get_arg();
+        let dw_milliseconds = call.get_arg();
+        let res = api.WaitForSingleObject(h_handle, dw_milliseconds);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_WaitForSingleObjectEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_handle = call.get_arg();
+        let dw_milliseconds = call.get_arg();
+        let b_alertable = call.get_arg();
+        let res = api.WaitForSingleObjectEx(h_handle, dw_milliseconds, b_alertable);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_WaitForThreadpoolIoCallbacks(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let pio = call.get_arg();
+        let f_cancel_pending_callbacks = call.get_arg();
+        let res = api.WaitForThreadpoolIoCallbacks(pio, f_cancel_pending_callbacks);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_WaitForThreadpoolTimerCallbacks(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let pti = call.get_arg();
+        let f_cancel_pending_callbacks = call.get_arg();
+        let res = api.WaitForThreadpoolTimerCallbacks(pti, f_cancel_pending_callbacks);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_WaitForThreadpoolWaitCallbacks(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let pwa = call.get_arg();
+        let f_cancel_pending_callbacks = call.get_arg();
+        let res = api.WaitForThreadpoolWaitCallbacks(pwa, f_cancel_pending_callbacks);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_WaitForThreadpoolWorkCallbacks(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let pwk = call.get_arg();
+        let f_cancel_pending_callbacks = call.get_arg();
+        let res = api.WaitForThreadpoolWorkCallbacks(pwk, f_cancel_pending_callbacks);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_WaitOnAddress(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let address = call.get_arg();
+        let compare_address = call.get_arg();
+        let address_size = call.get_arg();
+        let dw_milliseconds = call.get_arg();
+        let res = api.WaitOnAddress(address, compare_address, address_size, dw_milliseconds);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_WakeAllConditionVariable(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let condition_variable = call.get_arg();
+        let res = api.WakeAllConditionVariable(condition_variable);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_WakeByAddressAll(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let address = call.get_arg();
+        let res = api.WakeByAddressAll(address);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_WakeByAddressSingle(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let address = call.get_arg();
+        let res = api.WakeByAddressSingle(address);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_WakeConditionVariable(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let condition_variable = call.get_arg();
+        let res = api.WakeConditionVariable(condition_variable);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_WinExec(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let lp_cmd_line = call.get_arg();
+        let u_cmd_show = call.get_arg();
+        let res = api.WinExec(lp_cmd_line, u_cmd_show);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_Wow64SetThreadDefaultGuestMachine(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let machine = call.get_arg();
+        let res = api.Wow64SetThreadDefaultGuestMachine(machine);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_Wow64SuspendThread(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::Threading::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let h_thread = call.get_arg();
+        let res = api.Wow64SuspendThread(h_thread);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
 extern "C" fn magic_AddDelBackupEntryA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
@@ -17097,6 +22304,29 @@ extern "C" fn magic_RequestDeviceWakeup(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
+extern "C" fn magic_RtlAnsiStringToUnicodeString(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let destination_string = call.get_arg();
+        let source_string = call.get_arg();
+        let allocate_destination_string = call.get_arg();
+        let res = api.RtlAnsiStringToUnicodeString(
+            destination_string,
+            source_string,
+            allocate_destination_string,
+        );
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
 extern "C" fn magic_RtlCharToInteger(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
@@ -17105,6 +22335,34 @@ extern "C" fn magic_RtlCharToInteger(context: &mut ExtendedContext, memory: Flat
         let base = call.get_arg();
         let value = call.get_arg();
         let res = api.RtlCharToInteger(string, base, value);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_RtlFreeAnsiString(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let ansi_string = call.get_arg();
+        let res = api.RtlFreeAnsiString(ansi_string);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_RtlFreeOemString(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let oem_string = call.get_arg();
+        let res = api.RtlFreeOemString(oem_string);
         call.finish(res);
     }));
     if result.is_err() {
@@ -17143,6 +22401,66 @@ extern "C" fn magic_RtlGetReturnAddressHijackTarget(
     }
 }
 #[no_mangle]
+extern "C" fn magic_RtlInitAnsiString(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let destination_string = call.get_arg();
+        let source_string = call.get_arg();
+        let res = api.RtlInitAnsiString(destination_string, source_string);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_RtlInitAnsiStringEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let destination_string = call.get_arg();
+        let source_string = call.get_arg();
+        let res = api.RtlInitAnsiStringEx(destination_string, source_string);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_RtlInitString(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let destination_string = call.get_arg();
+        let source_string = call.get_arg();
+        let res = api.RtlInitString(destination_string, source_string);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_RtlInitStringEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let destination_string = call.get_arg();
+        let source_string = call.get_arg();
+        let res = api.RtlInitStringEx(destination_string, source_string);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
 extern "C" fn magic_RtlInitUnicodeString(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
@@ -17150,6 +22468,22 @@ extern "C" fn magic_RtlInitUnicodeString(context: &mut ExtendedContext, memory: 
         let destination_string = call.get_arg();
         let source_string = call.get_arg();
         let res = api.RtlInitUnicodeString(destination_string, source_string);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_RtlIsNameLegalDOS8Dot3(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let name = call.get_arg();
+        let oem_name = call.get_arg();
+        let name_contains_spaces = call.get_arg();
+        let res = api.RtlIsNameLegalDOS8Dot3(name, oem_name, name_contains_spaces);
         call.finish(res);
     }));
     if result.is_err() {
@@ -17200,6 +22534,52 @@ extern "C" fn magic_RtlTimeToSecondsSince1970(
         let time = call.get_arg();
         let elapsed_seconds = call.get_arg();
         let res = api.RtlTimeToSecondsSince1970(time, elapsed_seconds);
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_RtlUnicodeStringToAnsiString(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let destination_string = call.get_arg();
+        let source_string = call.get_arg();
+        let allocate_destination_string = call.get_arg();
+        let res = api.RtlUnicodeStringToAnsiString(
+            destination_string,
+            source_string,
+            allocate_destination_string,
+        );
+        call.finish(res);
+    }));
+    if result.is_err() {
+        eprintln!("Caught a panic in native code. Whoops, aborting..");
+        std::process::abort();
+    }
+}
+#[no_mangle]
+extern "C" fn magic_RtlUnicodeStringToOemString(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) {
+    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let destination_string = call.get_arg();
+        let source_string = call.get_arg();
+        let allocate_destination_string = call.get_arg();
+        let res = api.RtlUnicodeStringToOemString(
+            destination_string,
+            source_string,
+            allocate_destination_string,
+        );
         call.finish(res);
     }));
     if result.is_err() {

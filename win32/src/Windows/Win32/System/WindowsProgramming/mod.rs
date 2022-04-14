@@ -2521,8 +2521,6 @@ impl FromIntoMemory for KEY_VALUE_ENTRY {
         todo!()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct LDR_DATA_TABLE_ENTRY {
     pub Reserved1: [MutPtr<::core::ffi::c_void>; 2],
     pub InMemoryOrderLinks: super::Kernel::LIST_ENTRY,
@@ -2535,18 +2533,12 @@ pub struct LDR_DATA_TABLE_ENTRY {
     pub Anonymous: LDR_DATA_TABLE_ENTRY_0,
     pub TimeDateStamp: u32,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for LDR_DATA_TABLE_ENTRY {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for LDR_DATA_TABLE_ENTRY {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for LDR_DATA_TABLE_ENTRY {
     fn eq(&self, other: &Self) -> bool {
         self.Reserved1 == other.Reserved1
@@ -2561,11 +2553,7 @@ impl ::core::cmp::PartialEq for LDR_DATA_TABLE_ENTRY {
             && self.TimeDateStamp == other.TimeDateStamp
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for LDR_DATA_TABLE_ENTRY {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for LDR_DATA_TABLE_ENTRY {
     fn from_bytes(from: &[u8]) -> Self {
         todo!()
@@ -2577,34 +2565,22 @@ impl FromIntoMemory for LDR_DATA_TABLE_ENTRY {
         todo!()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct LDR_DATA_TABLE_ENTRY_0 {
     pub CheckSum: u32,
     pub Reserved6: MutPtr<::core::ffi::c_void>,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for LDR_DATA_TABLE_ENTRY_0 {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for LDR_DATA_TABLE_ENTRY_0 {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for LDR_DATA_TABLE_ENTRY_0 {
     fn eq(&self, other: &Self) -> bool {
         self.CheckSum == other.CheckSum && self.Reserved6 == other.Reserved6
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for LDR_DATA_TABLE_ENTRY_0 {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for LDR_DATA_TABLE_ENTRY_0 {
     fn from_bytes(from: &[u8]) -> Self {
         todo!()
@@ -5817,8 +5793,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!()
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn RtlAnsiStringToUnicodeString(
         &self,
         destination_string: MutPtr<super::super::Foundation::UNICODE_STRING>,
@@ -5835,13 +5809,9 @@ pub trait Api {
     ) -> super::super::Foundation::NTSTATUS {
         todo!()
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn RtlFreeAnsiString(&self, ansi_string: MutPtr<super::Kernel::STRING>) {
         todo!()
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn RtlFreeOemString(&self, oem_string: MutPtr<super::Kernel::STRING>) {
         todo!()
     }
@@ -5854,8 +5824,6 @@ pub trait Api {
     fn RtlGetReturnAddressHijackTarget(&self) -> PtrRepr {
         todo!()
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn RtlInitAnsiString(
         &self,
         destination_string: MutPtr<super::Kernel::STRING>,
@@ -5863,8 +5831,6 @@ pub trait Api {
     ) {
         todo!()
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn RtlInitAnsiStringEx(
         &self,
         destination_string: MutPtr<super::Kernel::STRING>,
@@ -5872,8 +5838,6 @@ pub trait Api {
     ) -> super::super::Foundation::NTSTATUS {
         todo!()
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn RtlInitString(
         &self,
         destination_string: MutPtr<super::Kernel::STRING>,
@@ -5881,8 +5845,6 @@ pub trait Api {
     ) {
         todo!()
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn RtlInitStringEx(
         &self,
         destination_string: MutPtr<super::Kernel::STRING>,
@@ -5897,8 +5859,6 @@ pub trait Api {
     ) {
         todo!()
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn RtlIsNameLegalDOS8Dot3(
         &self,
         name: MutPtr<super::super::Foundation::UNICODE_STRING>,
@@ -5927,8 +5887,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOLEAN {
         todo!()
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn RtlUnicodeStringToAnsiString(
         &self,
         destination_string: MutPtr<super::Kernel::STRING>,
@@ -5937,8 +5895,6 @@ pub trait Api {
     ) -> super::super::Foundation::NTSTATUS {
         todo!()
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn RtlUnicodeStringToOemString(
         &self,
         destination_string: MutPtr<super::Kernel::STRING>,

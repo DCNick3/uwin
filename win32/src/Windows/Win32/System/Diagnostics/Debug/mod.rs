@@ -1882,8 +1882,6 @@ impl FromIntoMemory for CONTEXT_0_0 {
         todo!()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct CONTEXT {
     pub ContextFlags: u32,
     pub Dr0: u32,
@@ -1911,18 +1909,12 @@ pub struct CONTEXT {
     pub SegSs: u32,
     pub ExtendedRegisters: [u8; 512],
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for CONTEXT {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for CONTEXT {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for CONTEXT {
     fn eq(&self, other: &Self) -> bool {
         self.ContextFlags == other.ContextFlags
@@ -1952,11 +1944,7 @@ impl ::core::cmp::PartialEq for CONTEXT {
             && self.ExtendedRegisters == other.ExtendedRegisters
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for CONTEXT {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for CONTEXT {
     fn from_bytes(from: &[u8]) -> Self {
         todo!()
@@ -2063,8 +2051,6 @@ impl FromIntoMemory for CPU_INFORMATION_1 {
         todo!()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Threading'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct CREATE_PROCESS_DEBUG_INFO {
     pub hFile: super::super::super::Foundation::HANDLE,
     pub hProcess: super::super::super::Foundation::HANDLE,
@@ -2077,18 +2063,12 @@ pub struct CREATE_PROCESS_DEBUG_INFO {
     pub lpImageName: MutPtr<::core::ffi::c_void>,
     pub fUnicode: u16,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Threading'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for CREATE_PROCESS_DEBUG_INFO {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Threading'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for CREATE_PROCESS_DEBUG_INFO {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Threading'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for CREATE_PROCESS_DEBUG_INFO {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_struct("CREATE_PROCESS_DEBUG_INFO")
@@ -2105,8 +2085,6 @@ impl ::core::fmt::Debug for CREATE_PROCESS_DEBUG_INFO {
             .finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Threading'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for CREATE_PROCESS_DEBUG_INFO {
     fn eq(&self, other: &Self) -> bool {
         self.hFile == other.hFile
@@ -2121,11 +2099,7 @@ impl ::core::cmp::PartialEq for CREATE_PROCESS_DEBUG_INFO {
             && self.fUnicode == other.fUnicode
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Threading'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for CREATE_PROCESS_DEBUG_INFO {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Threading'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for CREATE_PROCESS_DEBUG_INFO {
     fn from_bytes(from: &[u8]) -> Self {
         todo!()
@@ -2137,25 +2111,17 @@ impl FromIntoMemory for CREATE_PROCESS_DEBUG_INFO {
         todo!()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Threading'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct CREATE_THREAD_DEBUG_INFO {
     pub hThread: super::super::super::Foundation::HANDLE,
     pub lpThreadLocalBase: MutPtr<::core::ffi::c_void>,
     pub lpStartAddress: super::super::Threading::LPTHREAD_START_ROUTINE,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Threading'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for CREATE_THREAD_DEBUG_INFO {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Threading'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for CREATE_THREAD_DEBUG_INFO {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Threading'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for CREATE_THREAD_DEBUG_INFO {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_struct("CREATE_THREAD_DEBUG_INFO")
@@ -2165,8 +2131,6 @@ impl ::core::fmt::Debug for CREATE_THREAD_DEBUG_INFO {
             .finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Threading'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for CREATE_THREAD_DEBUG_INFO {
     fn eq(&self, other: &Self) -> bool {
         self.hThread == other.hThread
@@ -2174,11 +2138,7 @@ impl ::core::cmp::PartialEq for CREATE_THREAD_DEBUG_INFO {
             && self.lpStartAddress.map(|f| f as usize) == other.lpStartAddress.map(|f| f as usize)
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Threading'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for CREATE_THREAD_DEBUG_INFO {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Threading'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for CREATE_THREAD_DEBUG_INFO {
     fn from_bytes(from: &[u8]) -> Self {
         todo!()
@@ -2265,25 +2225,17 @@ impl FromIntoMemory for DBGHELP_DATA_REPORT_STRUCT {
         todo!()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct DBGKD_DEBUG_DATA_HEADER32 {
     pub List: super::super::Kernel::LIST_ENTRY32,
     pub OwnerTag: u32,
     pub Size: u32,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for DBGKD_DEBUG_DATA_HEADER32 {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for DBGKD_DEBUG_DATA_HEADER32 {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for DBGKD_DEBUG_DATA_HEADER32 {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_struct("DBGKD_DEBUG_DATA_HEADER32")
@@ -2293,18 +2245,12 @@ impl ::core::fmt::Debug for DBGKD_DEBUG_DATA_HEADER32 {
             .finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for DBGKD_DEBUG_DATA_HEADER32 {
     fn eq(&self, other: &Self) -> bool {
         self.List == other.List && self.OwnerTag == other.OwnerTag && self.Size == other.Size
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for DBGKD_DEBUG_DATA_HEADER32 {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for DBGKD_DEBUG_DATA_HEADER32 {
     fn from_bytes(from: &[u8]) -> Self {
         todo!()
@@ -2316,25 +2262,17 @@ impl FromIntoMemory for DBGKD_DEBUG_DATA_HEADER32 {
         todo!()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct DBGKD_DEBUG_DATA_HEADER64 {
     pub List: super::super::Kernel::LIST_ENTRY64,
     pub OwnerTag: u32,
     pub Size: u32,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for DBGKD_DEBUG_DATA_HEADER64 {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for DBGKD_DEBUG_DATA_HEADER64 {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for DBGKD_DEBUG_DATA_HEADER64 {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_struct("DBGKD_DEBUG_DATA_HEADER64")
@@ -2344,18 +2282,12 @@ impl ::core::fmt::Debug for DBGKD_DEBUG_DATA_HEADER64 {
             .finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for DBGKD_DEBUG_DATA_HEADER64 {
     fn eq(&self, other: &Self) -> bool {
         self.List == other.List && self.OwnerTag == other.OwnerTag && self.Size == other.Size
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for DBGKD_DEBUG_DATA_HEADER64 {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for DBGKD_DEBUG_DATA_HEADER64 {
     fn from_bytes(from: &[u8]) -> Self {
         todo!()
@@ -3224,26 +3156,18 @@ pub const DEBUG_ENGOPT_NO_EXECUTE_REPEAT: u32 = 256u32;
 pub const DEBUG_ENGOPT_PREFER_DML: u32 = 262144u32;
 pub const DEBUG_ENGOPT_PREFER_TRACE_FILES: u32 = 8388608u32;
 pub const DEBUG_ENGOPT_SYNCHRONIZE_BREAKPOINTS: u32 = 2048u32;
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Threading'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct DEBUG_EVENT {
     pub dwDebugEventCode: DEBUG_EVENT_CODE,
     pub dwProcessId: u32,
     pub dwThreadId: u32,
     pub u: DEBUG_EVENT_0,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Threading'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for DEBUG_EVENT {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Threading'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for DEBUG_EVENT {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Threading'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for DEBUG_EVENT {
     fn eq(&self, other: &Self) -> bool {
         self.dwDebugEventCode == other.dwDebugEventCode
@@ -3252,11 +3176,7 @@ impl ::core::cmp::PartialEq for DEBUG_EVENT {
             && self.u == other.u
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Threading'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for DEBUG_EVENT {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Threading'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for DEBUG_EVENT {
     fn from_bytes(from: &[u8]) -> Self {
         todo!()
@@ -3268,8 +3188,6 @@ impl FromIntoMemory for DEBUG_EVENT {
         todo!()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Threading'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct DEBUG_EVENT_0 {
     pub Exception: EXCEPTION_DEBUG_INFO,
     pub CreateThread: CREATE_THREAD_DEBUG_INFO,
@@ -3281,18 +3199,12 @@ pub struct DEBUG_EVENT_0 {
     pub DebugString: OUTPUT_DEBUG_STRING_INFO,
     pub RipInfo: RIP_INFO,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Threading'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for DEBUG_EVENT_0 {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Threading'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for DEBUG_EVENT_0 {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Threading'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for DEBUG_EVENT_0 {
     fn eq(&self, other: &Self) -> bool {
         self.Exception == other.Exception
@@ -3306,11 +3218,7 @@ impl ::core::cmp::PartialEq for DEBUG_EVENT_0 {
             && self.RipInfo == other.RipInfo
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Threading'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for DEBUG_EVENT_0 {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Threading'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for DEBUG_EVENT_0 {
     fn from_bytes(from: &[u8]) -> Self {
         todo!()
@@ -6148,24 +6056,16 @@ impl FromIntoMemory for EXCEPTION_DEBUG_INFO {
         todo!()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct EXCEPTION_POINTERS {
     pub ExceptionRecord: MutPtr<EXCEPTION_RECORD>,
     pub ContextRecord: MutPtr<CONTEXT>,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for EXCEPTION_POINTERS {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for EXCEPTION_POINTERS {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for EXCEPTION_POINTERS {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_struct("EXCEPTION_POINTERS")
@@ -6174,18 +6074,12 @@ impl ::core::fmt::Debug for EXCEPTION_POINTERS {
             .finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for EXCEPTION_POINTERS {
     fn eq(&self, other: &Self) -> bool {
         self.ExceptionRecord == other.ExceptionRecord && self.ContextRecord == other.ContextRecord
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for EXCEPTION_POINTERS {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for EXCEPTION_POINTERS {
     fn from_bytes(from: &[u8]) -> Self {
         todo!()
@@ -9815,8 +9709,6 @@ impl FromIntoMemory for IMAGE_DEBUG_DIRECTORY {
         todo!()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct IMAGE_DEBUG_INFORMATION {
     pub List: super::super::Kernel::LIST_ENTRY,
     pub ReservedSize: u32,
@@ -9850,18 +9742,12 @@ pub struct IMAGE_DEBUG_INFORMATION {
     pub ReservedOriginalFunctionTableBaseAddress: u32,
     pub Reserved: [u32; 2],
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for IMAGE_DEBUG_INFORMATION {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for IMAGE_DEBUG_INFORMATION {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for IMAGE_DEBUG_INFORMATION {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_struct("IMAGE_DEBUG_INFORMATION")
@@ -9923,8 +9809,6 @@ impl ::core::fmt::Debug for IMAGE_DEBUG_INFORMATION {
             .finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for IMAGE_DEBUG_INFORMATION {
     fn eq(&self, other: &Self) -> bool {
         self.List == other.List
@@ -9964,11 +9848,7 @@ impl ::core::cmp::PartialEq for IMAGE_DEBUG_INFORMATION {
             && self.Reserved == other.Reserved
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for IMAGE_DEBUG_INFORMATION {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for IMAGE_DEBUG_INFORMATION {
     fn from_bytes(from: &[u8]) -> Self {
         todo!()
@@ -12271,8 +12151,6 @@ impl FromIntoMemory for JsDebugReadMemoryFlags {
         std::mem::size_of::<i32>()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct KDDEBUGGER_DATA32 {
     pub Header: DBGKD_DEBUG_DATA_HEADER32,
     pub KernBase: u32,
@@ -12341,18 +12219,12 @@ pub struct KDDEBUGGER_DATA32 {
     pub KdPrintRolloverCount: u32,
     pub MmLoadedUserImageList: u32,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for KDDEBUGGER_DATA32 {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for KDDEBUGGER_DATA32 {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for KDDEBUGGER_DATA32 {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_struct("KDDEBUGGER_DATA32")
@@ -12434,8 +12306,6 @@ impl ::core::fmt::Debug for KDDEBUGGER_DATA32 {
             .finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for KDDEBUGGER_DATA32 {
     fn eq(&self, other: &Self) -> bool {
         self.Header == other.Header
@@ -12506,11 +12376,7 @@ impl ::core::cmp::PartialEq for KDDEBUGGER_DATA32 {
             && self.MmLoadedUserImageList == other.MmLoadedUserImageList
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for KDDEBUGGER_DATA32 {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for KDDEBUGGER_DATA32 {
     fn from_bytes(from: &[u8]) -> Self {
         todo!()
@@ -12522,8 +12388,6 @@ impl FromIntoMemory for KDDEBUGGER_DATA32 {
         todo!()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct KDDEBUGGER_DATA64 {
     pub Header: DBGKD_DEBUG_DATA_HEADER64,
     pub KernBase: u64,
@@ -12684,18 +12548,12 @@ pub struct KDDEBUGGER_DATA64 {
     pub RetpolineStubSize: u32,
     pub OffsetEProcessMmHotPatchContext: u16,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for KDDEBUGGER_DATA64 {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for KDDEBUGGER_DATA64 {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for KDDEBUGGER_DATA64 {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_struct("KDDEBUGGER_DATA64")
@@ -12902,8 +12760,6 @@ impl ::core::fmt::Debug for KDDEBUGGER_DATA64 {
             .finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for KDDEBUGGER_DATA64 {
     fn eq(&self, other: &Self) -> bool {
         self.Header == other.Header
@@ -13066,11 +12922,7 @@ impl ::core::cmp::PartialEq for KDDEBUGGER_DATA64 {
             && self.OffsetEProcessMmHotPatchContext == other.OffsetEProcessMmHotPatchContext
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for KDDEBUGGER_DATA64 {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for KDDEBUGGER_DATA64 {
     fn from_bytes(from: &[u8]) -> Self {
         todo!()
@@ -13888,8 +13740,6 @@ impl FromIntoMemory for LOADED_IMAGE {
         todo!()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct LOADED_IMAGE {
     pub ModuleName: crate::core::PSTR,
     pub hFile: super::super::super::Foundation::HANDLE,
@@ -13906,18 +13756,12 @@ pub struct LOADED_IMAGE {
     pub Links: super::super::Kernel::LIST_ENTRY,
     pub SizeOfImage: u32,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for LOADED_IMAGE {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for LOADED_IMAGE {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for LOADED_IMAGE {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_struct("LOADED_IMAGE")
@@ -13938,8 +13782,6 @@ impl ::core::fmt::Debug for LOADED_IMAGE {
             .finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for LOADED_IMAGE {
     fn eq(&self, other: &Self) -> bool {
         self.ModuleName == other.ModuleName
@@ -13958,11 +13800,7 @@ impl ::core::cmp::PartialEq for LOADED_IMAGE {
             && self.SizeOfImage == other.SizeOfImage
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for LOADED_IMAGE {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for LOADED_IMAGE {
     fn from_bytes(from: &[u8]) -> Self {
         todo!()
@@ -14024,8 +13862,6 @@ impl FromIntoMemory for LOAD_DLL_DEBUG_INFO {
 }
 pub type LPCALL_BACK_USER_INTERRUPT_ROUTINE =
     ::core::option::Option<unsafe extern "system" fn() -> u32>;
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub type LPTOP_LEVEL_EXCEPTION_FILTER = ::core::option::Option<
     unsafe extern "system" fn(exception_info: ConstPtr<EXCEPTION_POINTERS>) -> i32,
 >;
@@ -14167,35 +14003,23 @@ impl FromIntoMemory for M128A {
 }
 pub const MAX_SYM_NAME: u32 = 2000u32;
 pub const MEMORY_READ_ERROR: u32 = 1u32;
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Storage.FileSystem', 'Windows.Win32.System.Kernel', 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_CALLBACK_INFORMATION {
     pub CallbackRoutine: MINIDUMP_CALLBACK_ROUTINE,
     pub CallbackParam: MutPtr<::core::ffi::c_void>,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Storage.FileSystem', 'Windows.Win32.System.Kernel', 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for MINIDUMP_CALLBACK_INFORMATION {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Storage.FileSystem', 'Windows.Win32.System.Kernel', 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for MINIDUMP_CALLBACK_INFORMATION {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Storage.FileSystem', 'Windows.Win32.System.Kernel', 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for MINIDUMP_CALLBACK_INFORMATION {
     fn eq(&self, other: &Self) -> bool {
         self.CallbackRoutine.map(|f| f as usize) == other.CallbackRoutine.map(|f| f as usize)
             && self.CallbackParam == other.CallbackParam
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Storage.FileSystem', 'Windows.Win32.System.Kernel', 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for MINIDUMP_CALLBACK_INFORMATION {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Storage.FileSystem', 'Windows.Win32.System.Kernel', 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for MINIDUMP_CALLBACK_INFORMATION {
     fn from_bytes(from: &[u8]) -> Self {
         todo!()
@@ -14207,26 +14031,18 @@ impl FromIntoMemory for MINIDUMP_CALLBACK_INFORMATION {
         todo!()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Storage.FileSystem', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_CALLBACK_INPUT {
     pub ProcessId: u32,
     pub ProcessHandle: super::super::super::Foundation::HANDLE,
     pub CallbackType: u32,
     pub Anonymous: MINIDUMP_CALLBACK_INPUT_0,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Storage.FileSystem', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for MINIDUMP_CALLBACK_INPUT {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Storage.FileSystem', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for MINIDUMP_CALLBACK_INPUT {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Storage.FileSystem', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for MINIDUMP_CALLBACK_INPUT {
     fn eq(&self, other: &Self) -> bool {
         self.ProcessId == other.ProcessId
@@ -14235,11 +14051,7 @@ impl ::core::cmp::PartialEq for MINIDUMP_CALLBACK_INPUT {
             && self.Anonymous == other.Anonymous
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Storage.FileSystem', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for MINIDUMP_CALLBACK_INPUT {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Storage.FileSystem', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for MINIDUMP_CALLBACK_INPUT {
     fn from_bytes(from: &[u8]) -> Self {
         todo!()
@@ -14251,8 +14063,6 @@ impl FromIntoMemory for MINIDUMP_CALLBACK_INPUT {
         todo!()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Storage.FileSystem', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_CALLBACK_INPUT_0 {
     pub Status: crate::core::HRESULT,
     pub Thread: MINIDUMP_THREAD_CALLBACK,
@@ -14267,18 +14077,12 @@ pub struct MINIDUMP_CALLBACK_INPUT_0 {
     pub VmPreRead: MINIDUMP_VM_PRE_READ_CALLBACK,
     pub VmPostRead: MINIDUMP_VM_POST_READ_CALLBACK,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Storage.FileSystem', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for MINIDUMP_CALLBACK_INPUT_0 {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Storage.FileSystem', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for MINIDUMP_CALLBACK_INPUT_0 {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Storage.FileSystem', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for MINIDUMP_CALLBACK_INPUT_0 {
     fn eq(&self, other: &Self) -> bool {
         self.Status == other.Status
@@ -14295,11 +14099,7 @@ impl ::core::cmp::PartialEq for MINIDUMP_CALLBACK_INPUT_0 {
             && self.VmPostRead == other.VmPostRead
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Storage.FileSystem', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for MINIDUMP_CALLBACK_INPUT_0 {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Storage.FileSystem', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for MINIDUMP_CALLBACK_INPUT_0 {
     fn from_bytes(from: &[u8]) -> Self {
         todo!()
@@ -14533,8 +14333,6 @@ impl FromIntoMemory for MINIDUMP_CALLBACK_OUTPUT_0_4 {
         todo!()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Storage.FileSystem', 'Windows.Win32.System.Kernel', 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub type MINIDUMP_CALLBACK_ROUTINE = ::core::option::Option<
     unsafe extern "system" fn(
         callback_param: MutPtr<::core::ffi::c_void>,
@@ -14667,25 +14465,17 @@ impl FromIntoMemory for MINIDUMP_EXCEPTION {
         todo!()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_EXCEPTION_INFORMATION {
     pub ThreadId: u32,
     pub ExceptionPointers: MutPtr<EXCEPTION_POINTERS>,
     pub ClientPointers: super::super::super::Foundation::BOOL,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for MINIDUMP_EXCEPTION_INFORMATION {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for MINIDUMP_EXCEPTION_INFORMATION {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for MINIDUMP_EXCEPTION_INFORMATION {
     fn eq(&self, other: &Self) -> bool {
         self.ThreadId == other.ThreadId
@@ -14693,11 +14483,7 @@ impl ::core::cmp::PartialEq for MINIDUMP_EXCEPTION_INFORMATION {
             && self.ClientPointers == other.ClientPointers
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for MINIDUMP_EXCEPTION_INFORMATION {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for MINIDUMP_EXCEPTION_INFORMATION {
     fn from_bytes(from: &[u8]) -> Self {
         todo!()
@@ -17001,8 +16787,6 @@ impl FromIntoMemory for MINIDUMP_THREAD_CALLBACK {
         todo!()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_THREAD_CALLBACK {
     pub ThreadId: u32,
     pub ThreadHandle: super::super::super::Foundation::HANDLE,
@@ -17011,18 +16795,12 @@ pub struct MINIDUMP_THREAD_CALLBACK {
     pub StackBase: u64,
     pub StackEnd: u64,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for MINIDUMP_THREAD_CALLBACK {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for MINIDUMP_THREAD_CALLBACK {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for MINIDUMP_THREAD_CALLBACK {
     fn eq(&self, other: &Self) -> bool {
         self.ThreadId == other.ThreadId
@@ -17033,11 +16811,7 @@ impl ::core::cmp::PartialEq for MINIDUMP_THREAD_CALLBACK {
             && self.StackEnd == other.StackEnd
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for MINIDUMP_THREAD_CALLBACK {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for MINIDUMP_THREAD_CALLBACK {
     fn from_bytes(from: &[u8]) -> Self {
         todo!()
@@ -17195,8 +16969,6 @@ impl FromIntoMemory for MINIDUMP_THREAD_EX_CALLBACK {
         todo!()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_THREAD_EX_CALLBACK {
     pub ThreadId: u32,
     pub ThreadHandle: super::super::super::Foundation::HANDLE,
@@ -17207,18 +16979,12 @@ pub struct MINIDUMP_THREAD_EX_CALLBACK {
     pub BackingStoreBase: u64,
     pub BackingStoreEnd: u64,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for MINIDUMP_THREAD_EX_CALLBACK {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for MINIDUMP_THREAD_EX_CALLBACK {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for MINIDUMP_THREAD_EX_CALLBACK {
     fn eq(&self, other: &Self) -> bool {
         self.ThreadId == other.ThreadId
@@ -17231,11 +16997,7 @@ impl ::core::cmp::PartialEq for MINIDUMP_THREAD_EX_CALLBACK {
             && self.BackingStoreEnd == other.BackingStoreEnd
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for MINIDUMP_THREAD_EX_CALLBACK {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for MINIDUMP_THREAD_EX_CALLBACK {
     fn from_bytes(from: &[u8]) -> Self {
         todo!()
@@ -20098,8 +19860,6 @@ pub const PTR_SEARCH_PHYS_ALL_HITS: u32 = 1u32;
 pub const PTR_SEARCH_PHYS_PTE: u32 = 2u32;
 pub const PTR_SEARCH_PHYS_RANGE_CHECK_ONLY: u32 = 4u32;
 pub const PTR_SEARCH_PHYS_SIZE_SHIFT: u32 = 3u32;
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub type PVECTORED_EXCEPTION_HANDLER = ::core::option::Option<
     unsafe extern "system" fn(exception_info: MutPtr<EXCEPTION_POINTERS>) -> i32,
 >;
@@ -20138,8 +19898,6 @@ pub type PWINDBG_DISASM64 = ::core::option::Option<
 >;
 pub type PWINDBG_EXTENSION_API_VERSION =
     ::core::option::Option<unsafe extern "system" fn() -> MutPtr<EXT_API_VERSION>>;
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub type PWINDBG_EXTENSION_DLL_INIT = ::core::option::Option<
     unsafe extern "system" fn(
         lp_extension_apis: MutPtr<WINDBG_EXTENSION_APIS>,
@@ -20147,8 +19905,6 @@ pub type PWINDBG_EXTENSION_DLL_INIT = ::core::option::Option<
         minor_version: u16,
     ),
 >;
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub type PWINDBG_EXTENSION_DLL_INIT32 = ::core::option::Option<
     unsafe extern "system" fn(
         lp_extension_apis: MutPtr<WINDBG_EXTENSION_APIS32>,
@@ -20156,8 +19912,6 @@ pub type PWINDBG_EXTENSION_DLL_INIT32 = ::core::option::Option<
         minor_version: u16,
     ),
 >;
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub type PWINDBG_EXTENSION_DLL_INIT64 = ::core::option::Option<
     unsafe extern "system" fn(
         lp_extension_apis: MutPtr<WINDBG_EXTENSION_APIS64>,
@@ -20219,8 +19973,6 @@ pub type PWINDBG_GET_SYMBOL64 = ::core::option::Option<
         p_displacement: MutPtr<u64>,
     ),
 >;
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub type PWINDBG_GET_THREAD_CONTEXT_ROUTINE = ::core::option::Option<
     unsafe extern "system" fn(
         processor: u32,
@@ -20258,8 +20010,6 @@ pub type PWINDBG_OLDKD_WRITE_PHYSICAL_MEMORY = ::core::option::Option<
         byteswritten: MutPtr<u32>,
     ) -> u32,
 >;
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub type PWINDBG_OLD_EXTENSION_ROUTINE = ::core::option::Option<
     unsafe extern "system" fn(
         dw_current_pc: u32,
@@ -20293,8 +20043,6 @@ pub type PWINDBG_READ_PROCESS_MEMORY_ROUTINE64 = ::core::option::Option<
         lpcb_bytes_read: MutPtr<u32>,
     ) -> u32,
 >;
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub type PWINDBG_SET_THREAD_CONTEXT_ROUTINE = ::core::option::Option<
     unsafe extern "system" fn(
         processor: u32,
@@ -25426,8 +25174,6 @@ impl FromIntoMemory for WHEA_XPF_NMI_DESCRIPTOR {
         todo!()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct WINDBG_EXTENSION_APIS {
     pub nSize: u32,
     pub lpOutputRoutine: PWINDBG_OUTPUT_ROUTINE,
@@ -25442,18 +25188,12 @@ pub struct WINDBG_EXTENSION_APIS {
     pub lpIoctlRoutine: PWINDBG_IOCTL_ROUTINE,
     pub lpStackTraceRoutine: PWINDBG_STACKTRACE_ROUTINE,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for WINDBG_EXTENSION_APIS {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for WINDBG_EXTENSION_APIS {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for WINDBG_EXTENSION_APIS {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_struct("WINDBG_EXTENSION_APIS")
@@ -25496,8 +25236,6 @@ impl ::core::fmt::Debug for WINDBG_EXTENSION_APIS {
             .finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for WINDBG_EXTENSION_APIS {
     fn eq(&self, other: &Self) -> bool {
         self.nSize == other.nSize
@@ -25522,11 +25260,7 @@ impl ::core::cmp::PartialEq for WINDBG_EXTENSION_APIS {
                 == other.lpStackTraceRoutine.map(|f| f as usize)
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for WINDBG_EXTENSION_APIS {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for WINDBG_EXTENSION_APIS {
     fn from_bytes(from: &[u8]) -> Self {
         todo!()
@@ -25538,8 +25272,6 @@ impl FromIntoMemory for WINDBG_EXTENSION_APIS {
         todo!()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct WINDBG_EXTENSION_APIS32 {
     pub nSize: u32,
     pub lpOutputRoutine: PWINDBG_OUTPUT_ROUTINE,
@@ -25554,18 +25286,12 @@ pub struct WINDBG_EXTENSION_APIS32 {
     pub lpIoctlRoutine: PWINDBG_IOCTL_ROUTINE,
     pub lpStackTraceRoutine: PWINDBG_STACKTRACE_ROUTINE32,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for WINDBG_EXTENSION_APIS32 {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for WINDBG_EXTENSION_APIS32 {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for WINDBG_EXTENSION_APIS32 {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_struct("WINDBG_EXTENSION_APIS32")
@@ -25608,8 +25334,6 @@ impl ::core::fmt::Debug for WINDBG_EXTENSION_APIS32 {
             .finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for WINDBG_EXTENSION_APIS32 {
     fn eq(&self, other: &Self) -> bool {
         self.nSize == other.nSize
@@ -25634,11 +25358,7 @@ impl ::core::cmp::PartialEq for WINDBG_EXTENSION_APIS32 {
                 == other.lpStackTraceRoutine.map(|f| f as usize)
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for WINDBG_EXTENSION_APIS32 {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for WINDBG_EXTENSION_APIS32 {
     fn from_bytes(from: &[u8]) -> Self {
         todo!()
@@ -25650,8 +25370,6 @@ impl FromIntoMemory for WINDBG_EXTENSION_APIS32 {
         todo!()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct WINDBG_EXTENSION_APIS64 {
     pub nSize: u32,
     pub lpOutputRoutine: PWINDBG_OUTPUT_ROUTINE,
@@ -25666,18 +25384,12 @@ pub struct WINDBG_EXTENSION_APIS64 {
     pub lpIoctlRoutine: PWINDBG_IOCTL_ROUTINE,
     pub lpStackTraceRoutine: PWINDBG_STACKTRACE_ROUTINE64,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for WINDBG_EXTENSION_APIS64 {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for WINDBG_EXTENSION_APIS64 {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for WINDBG_EXTENSION_APIS64 {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_struct("WINDBG_EXTENSION_APIS64")
@@ -25720,8 +25432,6 @@ impl ::core::fmt::Debug for WINDBG_EXTENSION_APIS64 {
             .finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for WINDBG_EXTENSION_APIS64 {
     fn eq(&self, other: &Self) -> bool {
         self.nSize == other.nSize
@@ -25746,11 +25456,7 @@ impl ::core::cmp::PartialEq for WINDBG_EXTENSION_APIS64 {
                 == other.lpStackTraceRoutine.map(|f| f as usize)
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for WINDBG_EXTENSION_APIS64 {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for WINDBG_EXTENSION_APIS64 {
     fn from_bytes(from: &[u8]) -> Self {
         todo!()
@@ -27063,6 +26769,9 @@ pub trait Api {
         exception_record: ConstPtr<EXCEPTION_RECORD>,
         return_value: ConstPtr<::core::ffi::c_void>,
     ) {
+        todo!()
+    }
+    fn UnhandledExceptionFilter(&self, exception_info: ConstPtr<EXCEPTION_POINTERS>) -> i32 {
         todo!()
     }
 }
