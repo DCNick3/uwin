@@ -23,7 +23,7 @@ impl Debug for RawPtr {
 }
 
 impl RawPtr {
-    fn new(ptr: PtrRepr) -> Self {
+    const fn new(ptr: PtrRepr) -> Self {
         Self { value: ptr }
     }
 }
@@ -50,8 +50,11 @@ impl RawPtr {
 pub struct MutPtr<T>(RawPtr, PhantomData<T>);
 
 impl<T> MutPtr<T> {
-    pub fn new(val: PtrRepr) -> Self {
-        Self(RawPtr::new(val), Default::default())
+    pub const fn new(val: PtrRepr) -> Self {
+        Self(RawPtr::new(val), PhantomData {})
+    }
+    pub fn repr(&self) -> PtrRepr {
+        self.0.value
     }
 }
 impl<T: FromIntoMemory> MutPtr<T> {
@@ -96,11 +99,26 @@ impl<T> Debug for MutPtr<T> {
     }
 }
 
+impl<T> FromIntoMemory for MutPtr<T> {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        MutPtr::new(<PtrRepr as FromIntoMemory>::try_from_bytes(from))
+    }
+    fn try_into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::try_into_bytes(self.0.value, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<PtrRepr>()
+    }
+}
+
 pub struct ConstPtr<T>(RawPtr, PhantomData<T>);
 
 impl<T> ConstPtr<T> {
-    pub fn new(val: PtrRepr) -> Self {
-        Self(RawPtr::new(val), Default::default())
+    pub const fn new(val: PtrRepr) -> Self {
+        Self(RawPtr::new(val), PhantomData {})
+    }
+    pub fn repr(&self) -> PtrRepr {
+        self.0.value
     }
 }
 impl<T: FromIntoMemory> ConstPtr<T> {
@@ -120,6 +138,7 @@ impl<T: FromIntoMemory> ConstPtr<T> {
     }
 }
 
+impl<T> Eq for ConstPtr<T> {}
 impl<T> Copy for ConstPtr<T> {}
 impl<T> Clone for ConstPtr<T> {
     fn clone(&self) -> Self {
@@ -134,18 +153,6 @@ impl<T> PartialEq for ConstPtr<T> {
 impl<T> Debug for ConstPtr<T> {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
         self.0.fmt(f)
-    }
-}
-
-impl<T> FromIntoMemory for MutPtr<T> {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        MutPtr::new(<PtrRepr as FromIntoMemory>::try_from_bytes(from))
-    }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0.value, into)
-    }
-    fn size() -> usize {
-        std::mem::size_of::<PtrRepr>()
     }
 }
 

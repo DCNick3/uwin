@@ -13,14 +13,50 @@ use std::sync::Arc;
 pub struct HRESULT(pub i32);
 
 // TODO: stubs for pointers
-#[derive(Copy, Clone, Default, Debug, Eq, PartialEq)]
-pub struct PSTR(pub u32);
-#[derive(Copy, Clone, Default, Debug, Eq, PartialEq)]
-pub struct PCSTR(pub u32);
-#[derive(Copy, Clone, Default, Debug, Eq, PartialEq)]
-pub struct PWSTR(pub u32);
-#[derive(Copy, Clone, Default, Debug, Eq, PartialEq)]
-pub struct PCWSTR(pub u32);
+#[derive(Copy, Clone, Debug, Eq, PartialEq)]
+pub struct PSTR(pub MutPtr<u8>);
+#[derive(Copy, Clone, Debug, Eq, PartialEq)]
+pub struct PCSTR(pub ConstPtr<u8>);
+#[derive(Copy, Clone, Debug, Eq, PartialEq)]
+pub struct PWSTR(pub MutPtr<u16>);
+#[derive(Copy, Clone, Debug, Eq, PartialEq)]
+pub struct PCWSTR(pub ConstPtr<u8>);
+
+impl PSTR {
+    pub const fn new(value: PtrRepr) -> Self {
+        Self(MutPtr::new(value))
+    }
+}
+impl PCSTR {
+    pub const fn new(value: PtrRepr) -> Self {
+        Self(ConstPtr::new(value))
+    }
+}
+
+impl PWSTR {
+    pub const fn new(value: PtrRepr) -> Self {
+        Self(MutPtr::new(value))
+    }
+}
+impl PCWSTR {
+    pub const fn new(value: PtrRepr) -> Self {
+        Self(ConstPtr::new(value))
+    }
+}
+
+impl FromIntoMemory for PCSTR {
+    fn try_from_bytes(from: &[u8]) -> Self {
+        Self(ConstPtr::try_from_bytes(from))
+    }
+
+    fn try_into_bytes(self, into: &mut [u8]) {
+        self.0.try_into_bytes(into)
+    }
+
+    fn size() -> usize {
+        ConstPtr::<u8>::size()
+    }
+}
 
 #[derive(Clone, Copy, Default, PartialEq, Eq, Hash)]
 pub struct GUID {

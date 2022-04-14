@@ -25,12 +25,14 @@ impl win32::Win32::UI::WindowsAndMessaging::Api for WindowsAndMessaging {
     ) -> MESSAGEBOX_RESULT {
         let memory = get_thread_ctx();
 
-        let text = unsafe { CStr::from_ptr(memory.to_native_ptr(lpText.0) as *const c_char) }
-            .to_str()
-            .unwrap();
-        let caption = unsafe { CStr::from_ptr(memory.to_native_ptr(lpCaption.0) as *const c_char) }
-            .to_str()
-            .unwrap();
+        let text =
+            unsafe { CStr::from_ptr(memory.to_native_ptr(lpText.0.repr()) as *const c_char) }
+                .to_str()
+                .unwrap();
+        let caption =
+            unsafe { CStr::from_ptr(memory.to_native_ptr(lpCaption.0.repr()) as *const c_char) }
+                .to_str()
+                .unwrap();
 
         println!(
             "MessageBoxA({:?}, {:?}, {:?}, {:?})",

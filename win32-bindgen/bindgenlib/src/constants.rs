@@ -27,7 +27,13 @@ pub fn gen(def: &Field, gen: &Gen) -> TokenStream {
                 quote! { #value as _ }
             };
 
-            if !gen.sys && ty.has_replacement() {
+            if !gen.sys && matches!(ty, Type::PSTR | Type::PCSTR | Type::PWSTR | Type::PCWSTR) {
+                quote! {
+                    #doc
+                    #features
+                    pub const #name: #kind = #kind::new(#value);
+                }
+            } else if !gen.sys && ty.has_replacement() {
                 quote! {
                     #doc
                     #features
@@ -62,8 +68,11 @@ pub fn gen(def: &Field, gen: &Gen) -> TokenStream {
 }
 
 fn get_property_key(attributes: impl Iterator<Item = Attribute>) -> Option<(GUID, u32)> {
-    attributes.into_iter().find(|attribute| attribute.name() == "PropertyKeyAttribute").map(|attribute| {
-        let args = attribute.args();
-        (GUID::from_args(&args), args[11].1.unwrap_u32())
-    })
+    attributes
+        .into_iter()
+        .find(|attribute| attribute.name() == "PropertyKeyAttribute")
+        .map(|attribute| {
+            let args = attribute.args();
+            (GUID::from_args(&args), args[11].1.unwrap_u32())
+        })
 }
