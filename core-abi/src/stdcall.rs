@@ -84,9 +84,3 @@ impl<'a, MCtx: MemoryCtx, CpuCtx: X86Context> StdCallHelper<'a, MCtx, CpuCtx> {
         self.ret_addr
     }
 }
-
-impl<'a, MCtx: MemoryCtx, CpuCtx: X86Context> Drop for StdCallHelper<'a, MCtx, CpuCtx> {
-    fn drop(&mut self) {
-        panic!("Please, call finish on the StdCallHelper to complete the call")
-    }
-}
