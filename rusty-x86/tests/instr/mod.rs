@@ -340,6 +340,18 @@ mod cmp {
             ; mov ecx, 2
             ; cmovz ebx, ecx
         ) [CF ZF SF OF],
+        cmp_set_eq: (
+            ; mov eax, 12
+            ; cmp eax, 12
+            ; mov ecx, 2
+            ; setz dl
+        ) [CF ZF SF OF],
+        cmp_set_eq_2: (
+            ; mov eax, 12
+            ; cmp eax, 13
+            ; mov ecx, 2
+            ; setz dl
+        ) [CF ZF SF OF],
         cmp_less: (
             ; mov eax, 11
             ; cmp eax, 13

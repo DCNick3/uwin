@@ -127,6 +127,32 @@ fn is_cmovcc(mnemonic: Mnemonic) -> bool {
     }
 }
 
+#[rustfmt::skip]
+fn is_setcc(mnemonic: Mnemonic) -> bool {
+    use Mnemonic::*;
+    match mnemonic {
+        Seta |
+        Setae |
+        Setb |
+        Setbe |
+        Sete |
+        Setg |
+        Setge |
+        Setl |
+        Setle |
+        Setne |
+        Setno |
+        Setnp |
+        Setns |
+        Seto |
+        Setp |
+        Sets => {
+            true
+        },
+        _ => false,
+    }
+}
+
 fn codegen_string_instr<B: Builder>(builder: &mut B, instr: Instruction) {
     let advance_reg = |builder: &mut B, size: IntType, reg: Register| {
         let size = builder.make_u32(size.byte_width() as u32);
@@ -306,6 +332,17 @@ pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) -> Control
             },
             |_builder| {}, // nuff to do,
         );
+
+        ControlFlow::NextInstruction
+    } else if is_setcc(instr.mnemonic()) {
+        operands!([dst], &instr);
+
+        let code = instr.condition_code();
+        let cond = compute_condition_code(builder, code);
+
+        let res = builder.bool_to_int(cond, IntType::I8);
+
+        builder.store_operand(dst, res);
 
         ControlFlow::NextInstruction
     } else {
