@@ -43,3 +43,13 @@ from_into_mem_impl!(u64, 8);
 from_into_mem_impl!(i64, 8);
 from_into_mem_impl!(u128, 16);
 from_into_mem_impl!(i128, 16);
+
+impl FromIntoMemory for () {
+    fn from_bytes(_: &[u8]) -> Self {}
+
+    fn into_bytes(self, _: &mut [u8]) {}
+
+    fn size() -> usize {
+        0
+    }
+}

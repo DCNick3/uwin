@@ -51,16 +51,22 @@ impl Gen<'_> {
         quote! {}
     }
 
+    pub(crate) fn is_cfg_enabled(&self, cfg: &Cfg) -> bool {
+        let arches = cfg.arches();
+        let features = cfg.features(self.namespace);
+
+        let arch_enabled = arches.is_empty() || arches.contains("x86");
+        let features_enabled =
+            features.is_empty() || features.iter().all(|f| self.enabled_namespaces.contains(f));
+
+        arch_enabled && features_enabled
+    }
+
     pub(crate) fn cfg(&self, cfg: &Cfg) -> TokenStream {
         if !self.cfg {
             quote! {}
         } else {
-            let arches = cfg.arches();
             let features = cfg.features(self.namespace);
-
-            let arch_enabled = arches.is_empty() || arches.contains("x86");
-            let features_enabled =
-                features.is_empty() || features.iter().all(|f| self.enabled_namespaces.contains(f));
 
             let features: Vec<String> = features.into_iter().map(|f| format!("'{}'", f)).collect();
             let tokens = features.join(", ");
@@ -68,7 +74,7 @@ impl Gen<'_> {
             let required_namespaces: TokenStream =
                 format!(r#"#[doc = "*Required namespaces: {}*"]"#, tokens).into();
 
-            let enabled = if arch_enabled && features_enabled {
+            let enabled = if self.is_cfg_enabled(cfg) {
                 quote! {}
             } else {
                 quote! {

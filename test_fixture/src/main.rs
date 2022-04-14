@@ -8,7 +8,7 @@ use std::os::raw::c_char;
 use std::panic::{catch_unwind, AssertUnwindSafe};
 use std::process::abort;
 use std::sync::Arc;
-use win32::core::{Win32Context, PCSTR};
+use win32::core::Win32Context;
 use win32::Win32::Foundation::HWND;
 use win32::Win32::UI::WindowsAndMessaging::{MESSAGEBOX_RESULT, MESSAGEBOX_STYLE};
 
@@ -55,7 +55,7 @@ extern "C" fn magic_MessageBoxA(context: &mut ExtendedContext, memory: FlatMemor
         let lp_caption = call.get_arg();
         let u_type = call.get_arg();
 
-        let res = api.MessageBoxA(h_wnd, PCSTR(lp_text), PCSTR(lp_caption), u_type);
+        let res = api.MessageBoxA(h_wnd, lp_text, lp_caption, u_type);
 
         call.finish(res);
     }));

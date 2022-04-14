@@ -1,8 +1,10 @@
 use super::*;
 
 pub fn gen() -> TokenStream {
+    let underlying = quote!(i32);
+
     quote! {
-        pub struct BOOL(pub i32);
+        pub struct BOOL(pub #underlying);
 
         impl BOOL {
             #[inline]
@@ -87,6 +89,18 @@ pub fn gen() -> TokenStream {
                 } else {
                     BOOL(1)
                 }
+            }
+        }
+
+        impl FromIntoMemory for BOOL {
+            fn from_bytes(from: &[u8]) -> Self {
+                Self(<#underlying as FromIntoMemory>::from_bytes(from))
+            }
+            fn into_bytes(self, into: &mut [u8]) {
+                FromIntoMemory::into_bytes(self.0, into)
+            }
+            fn size() -> usize {
+                std::mem::size_of::<#underlying>()
             }
         }
     }

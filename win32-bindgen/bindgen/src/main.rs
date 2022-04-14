@@ -1,7 +1,9 @@
 #[allow(unused)]
 use rayon::prelude::*;
 use std::io::Write;
+use tokens::{quote, TokenStream};
 use win32_bindgenlib as bindgen;
+use win32_bindgenlib::GeneratedNamespace;
 
 const EXCLUDE_NAMESPACES: &[&str] = &["Windows.Win32.Interop"];
 const INCLUDE_NAMESPACES: &[&str] = &[
@@ -403,10 +405,11 @@ fn main() {
 
     let mut trees = Vec::new();
     collect_trees(&output, root.namespace, root, &mut trees);
-    trees
+    let magic_functions = trees
         // .par_iter()
         .iter()
-        .for_each(|tree| gen_tree(&output, root.namespace, tree));
+        .map(|tree| gen_tree(&output, root.namespace, tree))
+        .collect::<Vec<_>>();
 
     output.pop();
     output.push("Cargo.toml");
@@ -422,11 +425,15 @@ edition = "2018"
 
 [dependencies]
 core-mem = { path = "../core-mem" }
+core-abi = { path = "../core-abi" }
 anymap = "0.12.1"
 "#
         .as_bytes(),
     )
     .unwrap();
+
+    let output = std::path::PathBuf::from("rusty_x86_runtime/src/magic.rs");
+    gen_magic(&output, magic_functions);
 }
 
 struct TypeTreeGen<'a> {
@@ -456,7 +463,7 @@ fn collect_trees<'a>(
     let include = INCLUDE_NAMESPACES.iter().any(|&x| x == tree.namespace);
     if include || include_nested {
         trees.push(TypeTreeGen {
-            tree: tree,
+            tree,
             child_namespaces: nested_namespaces,
         });
 
@@ -468,7 +475,7 @@ fn collect_trees<'a>(
     include || include_nested
 }
 
-fn gen_tree(output: &std::path::Path, _root: &'static str, tree: &TypeTreeGen) {
+fn gen_tree(output: &std::path::Path, _root: &'static str, tree: &TypeTreeGen) -> TokenStream {
     let TypeTreeGen {
         tree,
         child_namespaces,
@@ -492,18 +499,38 @@ fn gen_tree(output: &std::path::Path, _root: &'static str, tree: &TypeTreeGen) {
         ..Default::default()
     };
 
-    let mut tokens = bindgen::gen_namespace(&gen, &child_namespaces);
-    //tokens.push_str(r#"#[cfg(feature = "implement")] ::core::include!("impl.rs");"#);
+    let GeneratedNamespace {
+        module: mut tokens,
+        magic_functions,
+    } = bindgen::gen_namespace(&gen, &child_namespaces);
     fmt_tokens(tree.namespace, &mut tokens);
 
     std::fs::write(path.join("mod.rs"), tokens).unwrap();
 
-    // TODO: what is gen_namespace_impl?
-    // do we need it?
+    magic_functions
+}
 
-    // let mut tokens = bindgen::gen_namespace_impl(&gen);
-    // fmt_tokens(tree.namespace, &mut tokens);
-    // std::fs::write(path.join("impl.rs"), tokens).unwrap();
+fn gen_magic(output: &std::path::Path, tokens: Vec<TokenStream>) {
+    // output rusty_x86 magic functions separately
+    let mut tokens = quote! {
+        #![allow(non_snake_case, non_camel_case_types, non_upper_case_globals, clashing_extern_declarations, clippy::all)]
+
+        #[allow(unused)]
+        use crate::ExtendedContext;
+
+        #[allow(unused)]
+        use core_abi::stdcall::StdCallHelper;
+
+        #[allow(unused)]
+        use core_mem::ctx::FlatMemoryCtx;
+
+        #(#tokens)*
+    }
+    .into_string();
+
+    fmt_tokens("magic", &mut tokens);
+
+    std::fs::write(output, tokens).unwrap();
 }
 
 fn fmt_tokens(namespace: &str, tokens: &mut String) {

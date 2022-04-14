@@ -1,3 +1,5 @@
+mod magic;
+
 pub use core_abi::stdcall::StdCallHelper;
 pub use core_mem::ctx::FlatMemoryCtx;
 use lazy_static::lazy_static;

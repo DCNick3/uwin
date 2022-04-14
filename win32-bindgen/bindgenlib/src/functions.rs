@@ -23,7 +23,7 @@ use super::*;
 //     }
 // }
 
-pub fn gen_function(def: &MethodDef, gen: &Gen) -> TokenStream {
+pub fn gen_function_declaration(def: &MethodDef, gen: &Gen) -> TokenStream {
     let name = gen_ident(def.name());
 
     let signature = def.signature(&[]);
@@ -65,6 +65,116 @@ pub fn gen_function(def: &MethodDef, gen: &Gen) -> TokenStream {
     res
 }
 
+pub fn gen_magic_function(def: &MethodDef, gen: &Gen, namespace: &TokenStream) -> TokenStream {
+    let cfg = def.cfg();
+
+    if !gen.is_cfg_enabled(&cfg) {
+        return quote! {};
+    }
+
+    let name = gen_ident(def.name());
+
+    let signature = def.signature(&[]);
+
+    let arg_names = signature
+        .params
+        .iter()
+        .map(|param| {
+            let name = gen_param_name(&param.def);
+            assert!(!name.is_empty());
+            name
+        })
+        .collect::<Vec<_>>();
+
+    let body = quote! {
+        let api = #namespace get_api(&context.win32);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+
+        #(let #arg_names = call.get_arg();)*
+
+        let res = api.#name(#(#arg_names),*);
+
+        call.finish(res);
+    };
+
+    let magic_name = gen_ident(&format!("magic_{}", def.name()));
+
+    quote! {
+        #[no_mangle]
+        extern "C" fn #magic_name(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+            let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+                #body
+            }));
+
+            if result.is_err() {
+                eprintln!("Caught a panic in native code. Whoops, aborting..");
+
+                std::process::abort();
+            }
+        }
+    }
+}
+
+pub fn gen_functions(tree: &TypeTree, gen: &Gen) -> TokenStream {
+    let mut tokens = TokenStream::new();
+
+    for entry in tree.types.values() {
+        for def in entry {
+            if let Type::MethodDef(def) = def {
+                if !gen.excluded_items.contains(def.name()) {
+                    tokens.combine(&gen_function_declaration(def, gen));
+                }
+            }
+        }
+    }
+
+    // do not emit an empty Api trait
+    if !tokens.is_empty() {
+        quote! {
+            pub trait Api {
+                #tokens
+            }
+
+            pub fn get_api(ctx: &crate::core::Win32Context) -> &dyn Api {
+                ctx.get::<dyn Api>()
+            }
+        }
+    } else {
+        quote! {}
+    }
+}
+
+pub fn gen_rusty_x86_magic_functions(tree: &TypeTree, gen: &Gen) -> TokenStream {
+    let mut magic_functions = TokenStream::new();
+
+    // can't use .namespace method of gen because the code lives in another crate
+    // so do it manually, lol
+
+    let namespace = {
+        let mut tokens = quote!(win32::);
+        let namespace = tree.namespace.split('.').skip(1); // strip the "Windows" part
+
+        for namespace in namespace {
+            tokens.push_str(namespace);
+            tokens.push_str("::");
+        }
+
+        tokens
+    };
+
+    for entry in tree.types.values() {
+        for def in entry {
+            if let Type::MethodDef(def) = def {
+                if !gen.excluded_items.contains(def.name()) {
+                    magic_functions.combine(&gen_magic_function(def, gen, &namespace));
+                }
+            }
+        }
+    }
+
+    magic_functions
+}
+
 // fn gen_function_if(entry: &[Type], gen: &Gen) -> TokenStream {
 //     let mut tokens = TokenStream::new();
 //
@@ -75,31 +185,6 @@ pub fn gen_function(def: &MethodDef, gen: &Gen) -> TokenStream {
 //     }
 //
 //     tokens
-// }
-
-// fn gen_sys_function(def: &MethodDef, gen: &Gen) -> TokenStream {
-//     let name = gen_ident(def.name());
-//     let signature = def.signature(&[]);
-//     let cfg = def.cfg();
-//     let doc = gen.doc(&cfg);
-//     let features = gen.cfg(&cfg);
-//     let mut return_type = gen_return_sig(&signature, gen);
-//
-//     if return_type.is_empty() {
-//         return_type = does_not_return(def);
-//     }
-//
-//     let params = signature.params.iter().map(|p| {
-//         let name = gen_param_name(&p.def);
-//         let tokens = gen_default_type(&p.ty, gen);
-//         quote! { #name: #tokens }
-//     });
-//
-//     quote! {
-//         #doc
-//         #features
-//         pub fn #name(#(#params),*) #return_type;
-//     }
 // }
 
 // #[allow(unused)]

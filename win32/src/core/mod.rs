@@ -20,7 +20,7 @@ pub struct PCSTR(pub ConstPtr<u8>);
 #[derive(Copy, Clone, Debug, Eq, PartialEq)]
 pub struct PWSTR(pub MutPtr<u16>);
 #[derive(Copy, Clone, Debug, Eq, PartialEq)]
-pub struct PCWSTR(pub ConstPtr<u8>);
+pub struct PCWSTR(pub ConstPtr<u16>);
 
 impl PSTR {
     pub const fn new(value: PtrRepr) -> Self {
@@ -44,19 +44,31 @@ impl PCWSTR {
     }
 }
 
-impl FromIntoMemory for PCSTR {
-    fn from_bytes(from: &[u8]) -> Self {
-        Self(ConstPtr::from_bytes(from))
-    }
+macro_rules! from_into_mem_impl_for_wrapper {
+    ($typ:tt, $underlying:ty) => {
+        impl FromIntoMemory for $typ {
+            #[inline]
+            fn from_bytes(from: &[u8]) -> Self {
+                Self(<$underlying>::from_bytes(from))
+            }
 
-    fn into_bytes(self, into: &mut [u8]) {
-        self.0.into_bytes(into)
-    }
+            #[inline]
+            fn into_bytes(self, into: &mut [u8]) {
+                self.0.into_bytes(into)
+            }
 
-    fn size() -> usize {
-        ConstPtr::<u8>::size()
-    }
+            #[inline]
+            fn size() -> usize {
+                <$underlying>::size()
+            }
+        }
+    };
 }
+
+from_into_mem_impl_for_wrapper!(PSTR, MutPtr<u8>);
+from_into_mem_impl_for_wrapper!(PCSTR, ConstPtr<u8>);
+from_into_mem_impl_for_wrapper!(PWSTR, MutPtr<u16>);
+from_into_mem_impl_for_wrapper!(PCWSTR, ConstPtr<u16>);
 
 #[derive(Clone, Copy, Default, PartialEq, Eq, Hash)]
 pub struct GUID {

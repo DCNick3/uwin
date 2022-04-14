@@ -41,7 +41,12 @@ use tokens::*;
 //     tokens
 // }
 
-pub fn gen_namespace(gen: &Gen, child_namespaces: &Vec<String>) -> String {
+pub struct GeneratedNamespace {
+    pub module: String,
+    pub magic_functions: TokenStream,
+}
+
+pub fn gen_namespace(gen: &Gen, child_namespaces: &Vec<String>) -> GeneratedNamespace {
     let tree = TypeReader::get()
         .get_namespace(gen.namespace)
         .expect("Namespace not found");
@@ -56,7 +61,7 @@ pub fn gen_namespace(gen: &Gen, child_namespaces: &Vec<String>) -> String {
 
     // let functions = gen_sys_functions(tree, gen);
     let types = gen_non_sys_function_types(tree, gen);
-    let api_trait = gen_api_trait(tree, gen);
+    let api_trait = gen_functions(tree, gen);
 
     let tokens = quote! {
         #![allow(non_snake_case, non_camel_case_types, non_upper_case_globals, clashing_extern_declarations, clippy::all)]
@@ -67,7 +72,12 @@ pub fn gen_namespace(gen: &Gen, child_namespaces: &Vec<String>) -> String {
         #api_trait
     };
 
-    tokens.into_string()
+    let magic_functions = gen_rusty_x86_magic_functions(tree, gen);
+
+    GeneratedNamespace {
+        module: tokens.into_string(),
+        magic_functions,
+    }
 }
 
 // TODO: wtf is this?
@@ -89,35 +99,6 @@ pub fn gen_namespace(gen: &Gen, child_namespaces: &Vec<String>) -> String {
 //
 //     tokens.into_string()
 // }
-
-fn gen_api_trait(tree: &TypeTree, gen: &Gen) -> Option<TokenStream> {
-    let mut tokens = TokenStream::new();
-
-    for entry in tree.types.values() {
-        for def in entry {
-            if let Type::MethodDef(def) = def {
-                if !gen.excluded_items.contains(def.name()) {
-                    tokens.combine(&gen_function(def, gen));
-                }
-            }
-        }
-    }
-
-    // do not emit an empty Api trait
-    if !tokens.is_empty() {
-        Some(quote! {
-            pub trait Api {
-                #tokens
-            }
-
-            pub fn get_api(ctx: &crate::core::Win32Context) -> &dyn Api {
-                ctx.get::<dyn Api>()
-            }
-        })
-    } else {
-        None
-    }
-}
 
 fn gen_non_sys_function_types(tree: &TypeTree, gen: &Gen) -> TokenStream {
     let mut tokens = TokenStream::new();

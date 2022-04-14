@@ -152,6 +152,17 @@ impl ::core::ops::Not for BOOL {
         }
     }
 }
+impl FromIntoMemory for BOOL {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<i32>()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct BOOLEAN(pub u8);
 impl BOOLEAN {
@@ -2729,6 +2740,17 @@ impl ::core::cmp::Eq for HANDLE {}
 impl ::core::fmt::Debug for HANDLE {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("HANDLE").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for HANDLE {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<PtrRepr as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<PtrRepr>()
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
