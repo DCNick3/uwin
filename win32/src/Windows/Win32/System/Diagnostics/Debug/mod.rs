@@ -5544,8 +5544,8 @@ pub const DEBUG_WAIT_DEFAULT: u32 = 0u32;
 pub type DIGEST_FUNCTION = ::core::option::Option<
     unsafe extern "system" fn(
         refdata: MutPtr<::core::ffi::c_void>,
-        pData: MutPtr<u8>,
-        dwLength: u32,
+        p_data: MutPtr<u8>,
+        dw_length: u32,
     ) -> super::super::super::Foundation::BOOL,
 >;
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
@@ -14027,7 +14027,7 @@ pub type LPCALL_BACK_USER_INTERRUPT_ROUTINE =
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub type LPTOP_LEVEL_EXCEPTION_FILTER = ::core::option::Option<
-    unsafe extern "system" fn(ExceptionInfo: ConstPtr<EXCEPTION_POINTERS>) -> i32,
+    unsafe extern "system" fn(exception_info: ConstPtr<EXCEPTION_POINTERS>) -> i32,
 >;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct LanguageKind(pub i32);
@@ -14311,33 +14311,21 @@ impl FromIntoMemory for MINIDUMP_CALLBACK_INPUT_0 {
         todo!()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_CALLBACK_OUTPUT {
     pub Anonymous: MINIDUMP_CALLBACK_OUTPUT_0,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for MINIDUMP_CALLBACK_OUTPUT {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for MINIDUMP_CALLBACK_OUTPUT {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for MINIDUMP_CALLBACK_OUTPUT {
     fn eq(&self, other: &Self) -> bool {
         self.Anonymous == other.Anonymous
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for MINIDUMP_CALLBACK_OUTPUT {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for MINIDUMP_CALLBACK_OUTPUT {
     fn from_bytes(from: &[u8]) -> Self {
         todo!()
@@ -14349,8 +14337,6 @@ impl FromIntoMemory for MINIDUMP_CALLBACK_OUTPUT {
         todo!()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_CALLBACK_OUTPUT_0 {
     pub ModuleWriteFlags: u32,
     pub ThreadWriteFlags: u32,
@@ -14363,18 +14349,12 @@ pub struct MINIDUMP_CALLBACK_OUTPUT_0 {
     pub Anonymous5: MINIDUMP_CALLBACK_OUTPUT_0_4,
     pub Status: crate::core::HRESULT,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for MINIDUMP_CALLBACK_OUTPUT_0 {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for MINIDUMP_CALLBACK_OUTPUT_0 {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for MINIDUMP_CALLBACK_OUTPUT_0 {
     fn eq(&self, other: &Self) -> bool {
         self.ModuleWriteFlags == other.ModuleWriteFlags
@@ -14389,11 +14369,7 @@ impl ::core::cmp::PartialEq for MINIDUMP_CALLBACK_OUTPUT_0 {
             && self.Status == other.Status
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for MINIDUMP_CALLBACK_OUTPUT_0 {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for MINIDUMP_CALLBACK_OUTPUT_0 {
     fn from_bytes(from: &[u8]) -> Self {
         todo!()
@@ -14405,34 +14381,22 @@ impl FromIntoMemory for MINIDUMP_CALLBACK_OUTPUT_0 {
         todo!()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_CALLBACK_OUTPUT_0_0 {
     pub MemoryBase: u64,
     pub MemorySize: u32,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for MINIDUMP_CALLBACK_OUTPUT_0_0 {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for MINIDUMP_CALLBACK_OUTPUT_0_0 {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for MINIDUMP_CALLBACK_OUTPUT_0_0 {
     fn eq(&self, other: &Self) -> bool {
         self.MemoryBase == other.MemoryBase && self.MemorySize == other.MemorySize
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for MINIDUMP_CALLBACK_OUTPUT_0_0 {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for MINIDUMP_CALLBACK_OUTPUT_0_0 {
     fn from_bytes(from: &[u8]) -> Self {
         todo!()
@@ -14444,24 +14408,16 @@ impl FromIntoMemory for MINIDUMP_CALLBACK_OUTPUT_0_0 {
         todo!()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_CALLBACK_OUTPUT_0_1 {
     pub CheckCancel: super::super::super::Foundation::BOOL,
     pub Cancel: super::super::super::Foundation::BOOL,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for MINIDUMP_CALLBACK_OUTPUT_0_1 {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for MINIDUMP_CALLBACK_OUTPUT_0_1 {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for MINIDUMP_CALLBACK_OUTPUT_0_1 {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_struct("MINIDUMP_CALLBACK_OUTPUT_0_1")
@@ -14470,18 +14426,12 @@ impl ::core::fmt::Debug for MINIDUMP_CALLBACK_OUTPUT_0_1 {
             .finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for MINIDUMP_CALLBACK_OUTPUT_0_1 {
     fn eq(&self, other: &Self) -> bool {
         self.CheckCancel == other.CheckCancel && self.Cancel == other.Cancel
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for MINIDUMP_CALLBACK_OUTPUT_0_1 {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for MINIDUMP_CALLBACK_OUTPUT_0_1 {
     fn from_bytes(from: &[u8]) -> Self {
         todo!()
@@ -14493,34 +14443,22 @@ impl FromIntoMemory for MINIDUMP_CALLBACK_OUTPUT_0_1 {
         todo!()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_CALLBACK_OUTPUT_0_2 {
     pub VmRegion: MINIDUMP_MEMORY_INFO,
     pub Continue: super::super::super::Foundation::BOOL,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for MINIDUMP_CALLBACK_OUTPUT_0_2 {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for MINIDUMP_CALLBACK_OUTPUT_0_2 {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for MINIDUMP_CALLBACK_OUTPUT_0_2 {
     fn eq(&self, other: &Self) -> bool {
         self.VmRegion == other.VmRegion && self.Continue == other.Continue
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for MINIDUMP_CALLBACK_OUTPUT_0_2 {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for MINIDUMP_CALLBACK_OUTPUT_0_2 {
     fn from_bytes(from: &[u8]) -> Self {
         todo!()
@@ -14532,34 +14470,22 @@ impl FromIntoMemory for MINIDUMP_CALLBACK_OUTPUT_0_2 {
         todo!()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_CALLBACK_OUTPUT_0_3 {
     pub VmQueryStatus: crate::core::HRESULT,
     pub VmQueryResult: MINIDUMP_MEMORY_INFO,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for MINIDUMP_CALLBACK_OUTPUT_0_3 {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for MINIDUMP_CALLBACK_OUTPUT_0_3 {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for MINIDUMP_CALLBACK_OUTPUT_0_3 {
     fn eq(&self, other: &Self) -> bool {
         self.VmQueryStatus == other.VmQueryStatus && self.VmQueryResult == other.VmQueryResult
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for MINIDUMP_CALLBACK_OUTPUT_0_3 {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for MINIDUMP_CALLBACK_OUTPUT_0_3 {
     fn from_bytes(from: &[u8]) -> Self {
         todo!()
@@ -14571,24 +14497,16 @@ impl FromIntoMemory for MINIDUMP_CALLBACK_OUTPUT_0_3 {
         todo!()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_CALLBACK_OUTPUT_0_4 {
     pub VmReadStatus: crate::core::HRESULT,
     pub VmReadBytesCompleted: u32,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for MINIDUMP_CALLBACK_OUTPUT_0_4 {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for MINIDUMP_CALLBACK_OUTPUT_0_4 {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for MINIDUMP_CALLBACK_OUTPUT_0_4 {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_struct("MINIDUMP_CALLBACK_OUTPUT_0_4")
@@ -14597,19 +14515,13 @@ impl ::core::fmt::Debug for MINIDUMP_CALLBACK_OUTPUT_0_4 {
             .finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for MINIDUMP_CALLBACK_OUTPUT_0_4 {
     fn eq(&self, other: &Self) -> bool {
         self.VmReadStatus == other.VmReadStatus
             && self.VmReadBytesCompleted == other.VmReadBytesCompleted
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for MINIDUMP_CALLBACK_OUTPUT_0_4 {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for MINIDUMP_CALLBACK_OUTPUT_0_4 {
     fn from_bytes(from: &[u8]) -> Self {
         todo!()
@@ -14625,9 +14537,9 @@ impl FromIntoMemory for MINIDUMP_CALLBACK_OUTPUT_0_4 {
 #[cfg(dummy_option_that_does_not_exist)]
 pub type MINIDUMP_CALLBACK_ROUTINE = ::core::option::Option<
     unsafe extern "system" fn(
-        CallbackParam: MutPtr<::core::ffi::c_void>,
-        CallbackInput: ConstPtr<MINIDUMP_CALLBACK_INPUT>,
-        CallbackOutput: MutPtr<MINIDUMP_CALLBACK_OUTPUT>,
+        callback_param: MutPtr<::core::ffi::c_void>,
+        callback_input: ConstPtr<MINIDUMP_CALLBACK_INPUT>,
+        callback_output: MutPtr<MINIDUMP_CALLBACK_OUTPUT>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -15499,8 +15411,6 @@ impl FromIntoMemory for MINIDUMP_MEMORY_DESCRIPTOR64 {
         todo!()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_MEMORY_INFO {
     pub BaseAddress: u64,
     pub AllocationBase: u64,
@@ -15512,18 +15422,12 @@ pub struct MINIDUMP_MEMORY_INFO {
     pub Type: u32,
     pub __alignment2: u32,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for MINIDUMP_MEMORY_INFO {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for MINIDUMP_MEMORY_INFO {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for MINIDUMP_MEMORY_INFO {
     fn eq(&self, other: &Self) -> bool {
         self.BaseAddress == other.BaseAddress
@@ -15537,11 +15441,7 @@ impl ::core::cmp::PartialEq for MINIDUMP_MEMORY_INFO {
             && self.__alignment2 == other.__alignment2
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for MINIDUMP_MEMORY_INFO {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Memory'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for MINIDUMP_MEMORY_INFO {
     fn from_bytes(from: &[u8]) -> Self {
         todo!()
@@ -16056,8 +15956,6 @@ impl FromIntoMemory for MINIDUMP_MISC_INFO_FLAGS {
         std::mem::size_of::<u32>()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Storage.FileSystem'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_MODULE {
     pub BaseOfImage: u64,
     pub SizeOfImage: u32,
@@ -16070,18 +15968,12 @@ pub struct MINIDUMP_MODULE {
     pub Reserved0: u64,
     pub Reserved1: u64,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Storage.FileSystem'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for MINIDUMP_MODULE {}
-#[doc = "*Required namespaces: 'Windows.Win32.Storage.FileSystem'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for MINIDUMP_MODULE {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Storage.FileSystem'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for MINIDUMP_MODULE {
     fn eq(&self, other: &Self) -> bool {
         self.BaseOfImage == other.BaseOfImage
@@ -16096,11 +15988,7 @@ impl ::core::cmp::PartialEq for MINIDUMP_MODULE {
             && self.Reserved1 == other.Reserved1
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Storage.FileSystem'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for MINIDUMP_MODULE {}
-#[doc = "*Required namespaces: 'Windows.Win32.Storage.FileSystem'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for MINIDUMP_MODULE {
     fn from_bytes(from: &[u8]) -> Self {
         todo!()
@@ -16112,8 +16000,6 @@ impl FromIntoMemory for MINIDUMP_MODULE {
         todo!()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Storage.FileSystem'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_MODULE_CALLBACK {
     pub FullPath: crate::core::PWSTR,
     pub BaseOfImage: u64,
@@ -16126,18 +16012,12 @@ pub struct MINIDUMP_MODULE_CALLBACK {
     pub MiscRecord: MutPtr<::core::ffi::c_void>,
     pub SizeOfMiscRecord: u32,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Storage.FileSystem'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for MINIDUMP_MODULE_CALLBACK {}
-#[doc = "*Required namespaces: 'Windows.Win32.Storage.FileSystem'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for MINIDUMP_MODULE_CALLBACK {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Storage.FileSystem'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for MINIDUMP_MODULE_CALLBACK {
     fn eq(&self, other: &Self) -> bool {
         self.FullPath == other.FullPath
@@ -16152,11 +16032,7 @@ impl ::core::cmp::PartialEq for MINIDUMP_MODULE_CALLBACK {
             && self.SizeOfMiscRecord == other.SizeOfMiscRecord
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Storage.FileSystem'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for MINIDUMP_MODULE_CALLBACK {}
-#[doc = "*Required namespaces: 'Windows.Win32.Storage.FileSystem'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for MINIDUMP_MODULE_CALLBACK {
     fn from_bytes(from: &[u8]) -> Self {
         todo!()
@@ -16168,34 +16044,22 @@ impl FromIntoMemory for MINIDUMP_MODULE_CALLBACK {
         todo!()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Storage.FileSystem'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_MODULE_LIST {
     pub NumberOfModules: u32,
     pub Modules: [MINIDUMP_MODULE; 1],
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Storage.FileSystem'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for MINIDUMP_MODULE_LIST {}
-#[doc = "*Required namespaces: 'Windows.Win32.Storage.FileSystem'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for MINIDUMP_MODULE_LIST {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Storage.FileSystem'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for MINIDUMP_MODULE_LIST {
     fn eq(&self, other: &Self) -> bool {
         self.NumberOfModules == other.NumberOfModules && self.Modules == other.Modules
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Storage.FileSystem'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for MINIDUMP_MODULE_LIST {}
-#[doc = "*Required namespaces: 'Windows.Win32.Storage.FileSystem'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for MINIDUMP_MODULE_LIST {
     fn from_bytes(from: &[u8]) -> Self {
         todo!()
@@ -18517,97 +18381,97 @@ impl FromIntoMemory for OUTPUT_DEBUG_STRING_INFO {
 }
 pub type PCOGETACTIVATIONSTATE = ::core::option::Option<
     unsafe extern "system" fn(
-        param0: crate::core::GUID,
-        param1: u32,
-        param2: MutPtr<u32>,
+        param_0: crate::core::GUID,
+        param_1: u32,
+        param_2: MutPtr<u32>,
     ) -> crate::core::HRESULT,
 >;
 pub type PCOGETCALLSTATE = ::core::option::Option<
-    unsafe extern "system" fn(param0: i32, param1: MutPtr<u32>) -> crate::core::HRESULT,
+    unsafe extern "system" fn(param_0: i32, param_1: MutPtr<u32>) -> crate::core::HRESULT,
 >;
 pub type PDBGHELP_CREATE_USER_DUMP_CALLBACK = ::core::option::Option<
     unsafe extern "system" fn(
-        DataType: u32,
-        Data: ConstPtr<ConstPtr<::core::ffi::c_void>>,
-        DataLength: MutPtr<u32>,
-        UserData: ConstPtr<::core::ffi::c_void>,
+        data_type: u32,
+        data: ConstPtr<ConstPtr<::core::ffi::c_void>>,
+        data_length: MutPtr<u32>,
+        user_data: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PDEBUG_EXTENSION_CANUNLOAD =
     ::core::option::Option<unsafe extern "system" fn() -> crate::core::HRESULT>;
 pub type PDEBUG_EXTENSION_INITIALIZE = ::core::option::Option<
-    unsafe extern "system" fn(Version: MutPtr<u32>, Flags: MutPtr<u32>) -> crate::core::HRESULT,
+    unsafe extern "system" fn(version: MutPtr<u32>, flags: MutPtr<u32>) -> crate::core::HRESULT,
 >;
 pub type PDEBUG_EXTENSION_KNOWN_STRUCT = ::core::option::Option<
     unsafe extern "system" fn(
-        Flags: u32,
-        Offset: u64,
-        TypeName: crate::core::PCSTR,
-        Buffer: crate::core::PSTR,
-        BufferChars: MutPtr<u32>,
+        flags: u32,
+        offset: u64,
+        type_name: crate::core::PCSTR,
+        buffer: crate::core::PSTR,
+        buffer_chars: MutPtr<u32>,
     ) -> crate::core::HRESULT,
 >;
 pub type PDEBUG_EXTENSION_NOTIFY =
-    ::core::option::Option<unsafe extern "system" fn(Notify: u32, Argument: u64)>;
+    ::core::option::Option<unsafe extern "system" fn(notify: u32, argument: u64)>;
 pub type PDEBUG_EXTENSION_UNINITIALIZE = ::core::option::Option<unsafe extern "system" fn()>;
 pub type PDEBUG_EXTENSION_UNLOAD = ::core::option::Option<unsafe extern "system" fn()>;
 pub type PDEBUG_STACK_PROVIDER_BEGINTHREADSTACKRECONSTRUCTION = ::core::option::Option<
     unsafe extern "system" fn(
-        StreamType: u32,
-        MiniDumpStreamBuffer: ConstPtr<::core::ffi::c_void>,
-        BufferSize: u32,
+        stream_type: u32,
+        mini_dump_stream_buffer: ConstPtr<::core::ffi::c_void>,
+        buffer_size: u32,
     ) -> crate::core::HRESULT,
 >;
 pub type PDEBUG_STACK_PROVIDER_ENDTHREADSTACKRECONSTRUCTION =
     ::core::option::Option<unsafe extern "system" fn() -> crate::core::HRESULT>;
 pub type PDEBUG_STACK_PROVIDER_FREESTACKSYMFRAMES = ::core::option::Option<
     unsafe extern "system" fn(
-        StackSymFrames: ConstPtr<STACK_SYM_FRAME_INFO>,
+        stack_sym_frames: ConstPtr<STACK_SYM_FRAME_INFO>,
     ) -> crate::core::HRESULT,
 >;
 pub type PDEBUG_STACK_PROVIDER_RECONSTRUCTSTACK = ::core::option::Option<
     unsafe extern "system" fn(
-        SystemThreadId: u32,
-        NativeFrames: ConstPtr<DEBUG_STACK_FRAME_EX>,
-        CountNativeFrames: u32,
-        StackSymFrames: MutPtr<ConstPtr<STACK_SYM_FRAME_INFO>>,
-        StackSymFramesFilled: MutPtr<u32>,
+        system_thread_id: u32,
+        native_frames: ConstPtr<DEBUG_STACK_FRAME_EX>,
+        count_native_frames: u32,
+        stack_sym_frames: MutPtr<ConstPtr<STACK_SYM_FRAME_INFO>>,
+        stack_sym_frames_filled: MutPtr<u32>,
     ) -> crate::core::HRESULT,
 >;
 pub type PENUMDIRTREE_CALLBACK = ::core::option::Option<
     unsafe extern "system" fn(
-        FilePath: crate::core::PCSTR,
-        CallerData: ConstPtr<::core::ffi::c_void>,
+        file_path: crate::core::PCSTR,
+        caller_data: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PENUMDIRTREE_CALLBACKW = ::core::option::Option<
     unsafe extern "system" fn(
-        FilePath: crate::core::PCWSTR,
-        CallerData: ConstPtr<::core::ffi::c_void>,
+        file_path: crate::core::PCWSTR,
+        caller_data: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PENUMLOADED_MODULES_CALLBACK = ::core::option::Option<
     unsafe extern "system" fn(
-        ModuleName: crate::core::PCSTR,
-        ModuleBase: u32,
-        ModuleSize: u32,
-        UserContext: ConstPtr<::core::ffi::c_void>,
+        module_name: crate::core::PCSTR,
+        module_base: u32,
+        module_size: u32,
+        user_context: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PENUMLOADED_MODULES_CALLBACK64 = ::core::option::Option<
     unsafe extern "system" fn(
-        ModuleName: crate::core::PCSTR,
-        ModuleBase: u64,
-        ModuleSize: u32,
-        UserContext: ConstPtr<::core::ffi::c_void>,
+        module_name: crate::core::PCSTR,
+        module_base: u64,
+        module_size: u32,
+        user_context: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PENUMLOADED_MODULES_CALLBACKW64 = ::core::option::Option<
     unsafe extern "system" fn(
-        ModuleName: crate::core::PCWSTR,
-        ModuleBase: u64,
-        ModuleSize: u32,
-        UserContext: ConstPtr<::core::ffi::c_void>,
+        module_name: crate::core::PCWSTR,
+        module_base: u64,
+        module_size: u32,
+        user_context: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PENUMSOURCEFILETOKENSCALLBACK = ::core::option::Option<
@@ -18630,70 +18494,70 @@ pub type PFINDFILEINPATHCALLBACKW = ::core::option::Option<
 >;
 pub type PFIND_DEBUG_FILE_CALLBACK = ::core::option::Option<
     unsafe extern "system" fn(
-        FileHandle: super::super::super::Foundation::HANDLE,
-        FileName: crate::core::PCSTR,
-        CallerData: ConstPtr<::core::ffi::c_void>,
+        file_handle: super::super::super::Foundation::HANDLE,
+        file_name: crate::core::PCSTR,
+        caller_data: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PFIND_DEBUG_FILE_CALLBACKW = ::core::option::Option<
     unsafe extern "system" fn(
-        FileHandle: super::super::super::Foundation::HANDLE,
-        FileName: crate::core::PCWSTR,
-        CallerData: ConstPtr<::core::ffi::c_void>,
+        file_handle: super::super::super::Foundation::HANDLE,
+        file_name: crate::core::PCWSTR,
+        caller_data: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PFIND_EXE_FILE_CALLBACK = ::core::option::Option<
     unsafe extern "system" fn(
-        FileHandle: super::super::super::Foundation::HANDLE,
-        FileName: crate::core::PCSTR,
-        CallerData: ConstPtr<::core::ffi::c_void>,
+        file_handle: super::super::super::Foundation::HANDLE,
+        file_name: crate::core::PCSTR,
+        caller_data: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PFIND_EXE_FILE_CALLBACKW = ::core::option::Option<
     unsafe extern "system" fn(
-        FileHandle: super::super::super::Foundation::HANDLE,
-        FileName: crate::core::PCWSTR,
-        CallerData: ConstPtr<::core::ffi::c_void>,
+        file_handle: super::super::super::Foundation::HANDLE,
+        file_name: crate::core::PCWSTR,
+        caller_data: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PFUNCTION_TABLE_ACCESS_ROUTINE = ::core::option::Option<
     unsafe extern "system" fn(
-        hProcess: super::super::super::Foundation::HANDLE,
-        AddrBase: u32,
+        h_process: super::super::super::Foundation::HANDLE,
+        addr_base: u32,
     ) -> MutPtr<::core::ffi::c_void>,
 >;
 pub type PFUNCTION_TABLE_ACCESS_ROUTINE64 = ::core::option::Option<
     unsafe extern "system" fn(
-        ahProcess: super::super::super::Foundation::HANDLE,
-        AddrBase: u64,
+        ah_process: super::super::super::Foundation::HANDLE,
+        addr_base: u64,
     ) -> MutPtr<::core::ffi::c_void>,
 >;
 pub type PGET_MODULE_BASE_ROUTINE = ::core::option::Option<
     unsafe extern "system" fn(
-        hProcess: super::super::super::Foundation::HANDLE,
-        Address: u32,
+        h_process: super::super::super::Foundation::HANDLE,
+        address: u32,
     ) -> u32,
 >;
 pub type PGET_MODULE_BASE_ROUTINE64 = ::core::option::Option<
     unsafe extern "system" fn(
-        hProcess: super::super::super::Foundation::HANDLE,
-        Address: u64,
+        h_process: super::super::super::Foundation::HANDLE,
+        address: u64,
     ) -> u64,
 >;
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub type PGET_RUNTIME_FUNCTION_CALLBACK = ::core::option::Option<
     unsafe extern "system" fn(
-        ControlPc: u64,
-        Context: ConstPtr<::core::ffi::c_void>,
+        control_pc: u64,
+        context: ConstPtr<::core::ffi::c_void>,
     ) -> MutPtr<IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY>,
 >;
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub type PGET_RUNTIME_FUNCTION_CALLBACK = ::core::option::Option<
     unsafe extern "system" fn(
-        ControlPc: u64,
-        Context: ConstPtr<::core::ffi::c_void>,
+        control_pc: u64,
+        context: ConstPtr<::core::ffi::c_void>,
     ) -> MutPtr<IMAGE_RUNTIME_FUNCTION_ENTRY>,
 >;
 pub struct PHYSICAL {
@@ -18968,29 +18832,29 @@ pub const PHYS_FLAG_UNCACHED: u32 = 2u32;
 pub const PHYS_FLAG_WRITE_COMBINED: u32 = 3u32;
 pub type PIMAGEHLP_STATUS_ROUTINE = ::core::option::Option<
     unsafe extern "system" fn(
-        Reason: IMAGEHLP_STATUS_REASON,
-        ImageName: crate::core::PCSTR,
-        DllName: crate::core::PCSTR,
-        Va: PtrRepr,
-        Parameter: PtrRepr,
+        reason: IMAGEHLP_STATUS_REASON,
+        image_name: crate::core::PCSTR,
+        dll_name: crate::core::PCSTR,
+        va: PtrRepr,
+        parameter: PtrRepr,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PIMAGEHLP_STATUS_ROUTINE32 = ::core::option::Option<
     unsafe extern "system" fn(
-        Reason: IMAGEHLP_STATUS_REASON,
-        ImageName: crate::core::PCSTR,
-        DllName: crate::core::PCSTR,
-        Va: u32,
-        Parameter: PtrRepr,
+        reason: IMAGEHLP_STATUS_REASON,
+        image_name: crate::core::PCSTR,
+        dll_name: crate::core::PCSTR,
+        va: u32,
+        parameter: PtrRepr,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PIMAGEHLP_STATUS_ROUTINE64 = ::core::option::Option<
     unsafe extern "system" fn(
-        Reason: IMAGEHLP_STATUS_REASON,
-        ImageName: crate::core::PCSTR,
-        DllName: crate::core::PCSTR,
-        Va: u64,
-        Parameter: PtrRepr,
+        reason: IMAGEHLP_STATUS_REASON,
+        image_name: crate::core::PCSTR,
+        dll_name: crate::core::PCSTR,
+        va: u64,
+        parameter: PtrRepr,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub struct POINTER_SEARCH_PHYSICAL {
@@ -19049,20 +18913,20 @@ impl FromIntoMemory for POINTER_SEARCH_PHYSICAL {
 }
 pub type PREAD_PROCESS_MEMORY_ROUTINE = ::core::option::Option<
     unsafe extern "system" fn(
-        hProcess: super::super::super::Foundation::HANDLE,
-        lpBaseAddress: u32,
-        lpBuffer: MutPtr<::core::ffi::c_void>,
-        nSize: u32,
-        lpNumberOfBytesRead: MutPtr<u32>,
+        h_process: super::super::super::Foundation::HANDLE,
+        lp_base_address: u32,
+        lp_buffer: MutPtr<::core::ffi::c_void>,
+        n_size: u32,
+        lp_number_of_bytes_read: MutPtr<u32>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PREAD_PROCESS_MEMORY_ROUTINE64 = ::core::option::Option<
     unsafe extern "system" fn(
-        hProcess: super::super::super::Foundation::HANDLE,
-        qwBaseAddress: u64,
-        lpBuffer: MutPtr<::core::ffi::c_void>,
-        nSize: u32,
-        lpNumberOfBytesRead: MutPtr<u32>,
+        h_process: super::super::super::Foundation::HANDLE,
+        qw_base_address: u64,
+        lp_buffer: MutPtr<::core::ffi::c_void>,
+        n_size: u32,
+        lp_number_of_bytes_read: MutPtr<u32>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub struct PROCESSORINFO {
@@ -19840,26 +19704,26 @@ impl FromIntoMemory for PROP_INFO_FLAGS {
 }
 pub type PSYMBOLSERVERBYINDEXPROC = ::core::option::Option<
     unsafe extern "system" fn(
-        param0: crate::core::PCSTR,
-        param1: crate::core::PCSTR,
-        param2: crate::core::PCSTR,
-        param3: crate::core::PCSTR,
+        param_0: crate::core::PCSTR,
+        param_1: crate::core::PCSTR,
+        param_2: crate::core::PCSTR,
+        param_3: crate::core::PCSTR,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOLSERVERBYINDEXPROCA = ::core::option::Option<
     unsafe extern "system" fn(
-        param0: crate::core::PCSTR,
-        param1: crate::core::PCSTR,
-        param2: crate::core::PCSTR,
-        param3: crate::core::PCSTR,
+        param_0: crate::core::PCSTR,
+        param_1: crate::core::PCSTR,
+        param_2: crate::core::PCSTR,
+        param_3: crate::core::PCSTR,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOLSERVERBYINDEXPROCW = ::core::option::Option<
     unsafe extern "system" fn(
-        param0: crate::core::PCWSTR,
-        param1: crate::core::PCWSTR,
-        param2: crate::core::PCWSTR,
-        param3: crate::core::PCWSTR,
+        param_0: crate::core::PCWSTR,
+        param_1: crate::core::PCWSTR,
+        param_2: crate::core::PCWSTR,
+        param_3: crate::core::PCWSTR,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOLSERVERCALLBACKPROC = ::core::option::Option<
@@ -19873,82 +19737,86 @@ pub type PSYMBOLSERVERCLOSEPROC =
     ::core::option::Option<unsafe extern "system" fn() -> super::super::super::Foundation::BOOL>;
 pub type PSYMBOLSERVERDELTANAME = ::core::option::Option<
     unsafe extern "system" fn(
-        param0: crate::core::PCSTR,
-        param1: MutPtr<::core::ffi::c_void>,
-        param2: u32,
-        param3: u32,
-        param4: MutPtr<::core::ffi::c_void>,
-        param5: u32,
-        param6: u32,
-        param7: crate::core::PCSTR,
-        param8: PtrRepr,
+        param_0: crate::core::PCSTR,
+        param_1: MutPtr<::core::ffi::c_void>,
+        param_2: u32,
+        param_3: u32,
+        param_4: MutPtr<::core::ffi::c_void>,
+        param_5: u32,
+        param_6: u32,
+        param_7: crate::core::PCSTR,
+        param_8: PtrRepr,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOLSERVERDELTANAMEW = ::core::option::Option<
     unsafe extern "system" fn(
-        param0: crate::core::PCWSTR,
-        param1: MutPtr<::core::ffi::c_void>,
-        param2: u32,
-        param3: u32,
-        param4: MutPtr<::core::ffi::c_void>,
-        param5: u32,
-        param6: u32,
-        param7: crate::core::PCWSTR,
-        param8: PtrRepr,
+        param_0: crate::core::PCWSTR,
+        param_1: MutPtr<::core::ffi::c_void>,
+        param_2: u32,
+        param_3: u32,
+        param_4: MutPtr<::core::ffi::c_void>,
+        param_5: u32,
+        param_6: u32,
+        param_7: crate::core::PCWSTR,
+        param_8: PtrRepr,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOLSERVERGETINDEXSTRING = ::core::option::Option<
     unsafe extern "system" fn(
-        param0: MutPtr<::core::ffi::c_void>,
-        param1: u32,
-        param2: u32,
-        param3: crate::core::PCSTR,
-        param4: PtrRepr,
+        param_0: MutPtr<::core::ffi::c_void>,
+        param_1: u32,
+        param_2: u32,
+        param_3: crate::core::PCSTR,
+        param_4: PtrRepr,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOLSERVERGETINDEXSTRINGW = ::core::option::Option<
     unsafe extern "system" fn(
-        param0: MutPtr<::core::ffi::c_void>,
-        param1: u32,
-        param2: u32,
-        param3: crate::core::PCWSTR,
-        param4: PtrRepr,
+        param_0: MutPtr<::core::ffi::c_void>,
+        param_1: u32,
+        param_2: u32,
+        param_3: crate::core::PCWSTR,
+        param_4: PtrRepr,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOLSERVERGETOPTIONDATAPROC = ::core::option::Option<
     unsafe extern "system" fn(
-        param0: PtrRepr,
-        param1: MutPtr<u64>,
+        param_0: PtrRepr,
+        param_1: MutPtr<u64>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOLSERVERGETOPTIONSPROC =
     ::core::option::Option<unsafe extern "system" fn() -> PtrRepr>;
 pub type PSYMBOLSERVERGETSUPPLEMENT = ::core::option::Option<
     unsafe extern "system" fn(
-        param0: crate::core::PCSTR,
-        param1: crate::core::PCSTR,
-        param2: crate::core::PCSTR,
-        param3: crate::core::PCSTR,
-        param4: PtrRepr,
+        param_0: crate::core::PCSTR,
+        param_1: crate::core::PCSTR,
+        param_2: crate::core::PCSTR,
+        param_3: crate::core::PCSTR,
+        param_4: PtrRepr,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOLSERVERGETSUPPLEMENTW = ::core::option::Option<
     unsafe extern "system" fn(
-        param0: crate::core::PCWSTR,
-        param1: crate::core::PCWSTR,
-        param2: crate::core::PCWSTR,
-        param3: crate::core::PCWSTR,
-        param4: PtrRepr,
+        param_0: crate::core::PCWSTR,
+        param_1: crate::core::PCWSTR,
+        param_2: crate::core::PCWSTR,
+        param_3: crate::core::PCWSTR,
+        param_4: PtrRepr,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOLSERVERGETVERSION = ::core::option::Option<
-    unsafe extern "system" fn(param0: MutPtr<API_VERSION>) -> super::super::super::Foundation::BOOL,
+    unsafe extern "system" fn(
+        param_0: MutPtr<API_VERSION>,
+    ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOLSERVERISSTORE = ::core::option::Option<
-    unsafe extern "system" fn(param0: crate::core::PCSTR) -> super::super::super::Foundation::BOOL,
+    unsafe extern "system" fn(param_0: crate::core::PCSTR) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOLSERVERISSTOREW = ::core::option::Option<
-    unsafe extern "system" fn(param0: crate::core::PCWSTR) -> super::super::super::Foundation::BOOL,
+    unsafe extern "system" fn(
+        param_0: crate::core::PCWSTR,
+    ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOLSERVERMESSAGEPROC = ::core::option::Option<
     unsafe extern "system" fn(
@@ -19960,264 +19828,268 @@ pub type PSYMBOLSERVERMESSAGEPROC = ::core::option::Option<
 pub type PSYMBOLSERVEROPENPROC =
     ::core::option::Option<unsafe extern "system" fn() -> super::super::super::Foundation::BOOL>;
 pub type PSYMBOLSERVERPINGPROC = ::core::option::Option<
-    unsafe extern "system" fn(param0: crate::core::PCSTR) -> super::super::super::Foundation::BOOL,
+    unsafe extern "system" fn(param_0: crate::core::PCSTR) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOLSERVERPINGPROCA = ::core::option::Option<
-    unsafe extern "system" fn(param0: crate::core::PCSTR) -> super::super::super::Foundation::BOOL,
+    unsafe extern "system" fn(param_0: crate::core::PCSTR) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOLSERVERPINGPROCW = ::core::option::Option<
-    unsafe extern "system" fn(param0: crate::core::PCWSTR) -> super::super::super::Foundation::BOOL,
+    unsafe extern "system" fn(
+        param_0: crate::core::PCWSTR,
+    ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOLSERVERPINGPROCWEX = ::core::option::Option<
-    unsafe extern "system" fn(param0: crate::core::PCWSTR) -> super::super::super::Foundation::BOOL,
+    unsafe extern "system" fn(
+        param_0: crate::core::PCWSTR,
+    ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOLSERVERPROC = ::core::option::Option<
     unsafe extern "system" fn(
-        param0: crate::core::PCSTR,
-        param1: crate::core::PCSTR,
-        param2: MutPtr<::core::ffi::c_void>,
-        param3: u32,
-        param4: u32,
-        param5: crate::core::PCSTR,
+        param_0: crate::core::PCSTR,
+        param_1: crate::core::PCSTR,
+        param_2: MutPtr<::core::ffi::c_void>,
+        param_3: u32,
+        param_4: u32,
+        param_5: crate::core::PCSTR,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOLSERVERPROCA = ::core::option::Option<
     unsafe extern "system" fn(
-        param0: crate::core::PCSTR,
-        param1: crate::core::PCSTR,
-        param2: MutPtr<::core::ffi::c_void>,
-        param3: u32,
-        param4: u32,
-        param5: crate::core::PCSTR,
+        param_0: crate::core::PCSTR,
+        param_1: crate::core::PCSTR,
+        param_2: MutPtr<::core::ffi::c_void>,
+        param_3: u32,
+        param_4: u32,
+        param_5: crate::core::PCSTR,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOLSERVERPROCW = ::core::option::Option<
     unsafe extern "system" fn(
-        param0: crate::core::PCWSTR,
-        param1: crate::core::PCWSTR,
-        param2: MutPtr<::core::ffi::c_void>,
-        param3: u32,
-        param4: u32,
-        param5: crate::core::PCWSTR,
+        param_0: crate::core::PCWSTR,
+        param_1: crate::core::PCWSTR,
+        param_2: MutPtr<::core::ffi::c_void>,
+        param_3: u32,
+        param_4: u32,
+        param_5: crate::core::PCWSTR,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOLSERVERSETHTTPAUTHHEADER = ::core::option::Option<
     unsafe extern "system" fn(
-        pszAuthHeader: crate::core::PCWSTR,
+        psz_auth_header: crate::core::PCWSTR,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOLSERVERSETOPTIONSPROC = ::core::option::Option<
     unsafe extern "system" fn(
-        param0: PtrRepr,
-        param1: u64,
+        param_0: PtrRepr,
+        param_1: u64,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOLSERVERSETOPTIONSWPROC = ::core::option::Option<
     unsafe extern "system" fn(
-        param0: PtrRepr,
-        param1: u64,
+        param_0: PtrRepr,
+        param_1: u64,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOLSERVERSTOREFILE = ::core::option::Option<
     unsafe extern "system" fn(
-        param0: crate::core::PCSTR,
-        param1: crate::core::PCSTR,
-        param2: MutPtr<::core::ffi::c_void>,
-        param3: u32,
-        param4: u32,
-        param5: crate::core::PCSTR,
-        param6: PtrRepr,
-        param7: u32,
+        param_0: crate::core::PCSTR,
+        param_1: crate::core::PCSTR,
+        param_2: MutPtr<::core::ffi::c_void>,
+        param_3: u32,
+        param_4: u32,
+        param_5: crate::core::PCSTR,
+        param_6: PtrRepr,
+        param_7: u32,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOLSERVERSTOREFILEW = ::core::option::Option<
     unsafe extern "system" fn(
-        param0: crate::core::PCWSTR,
-        param1: crate::core::PCWSTR,
-        param2: MutPtr<::core::ffi::c_void>,
-        param3: u32,
-        param4: u32,
-        param5: crate::core::PCWSTR,
-        param6: PtrRepr,
-        param7: u32,
+        param_0: crate::core::PCWSTR,
+        param_1: crate::core::PCWSTR,
+        param_2: MutPtr<::core::ffi::c_void>,
+        param_3: u32,
+        param_4: u32,
+        param_5: crate::core::PCWSTR,
+        param_6: PtrRepr,
+        param_7: u32,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOLSERVERSTORESUPPLEMENT = ::core::option::Option<
     unsafe extern "system" fn(
-        param0: crate::core::PCSTR,
-        param1: crate::core::PCSTR,
-        param2: crate::core::PCSTR,
-        param3: crate::core::PCSTR,
-        param4: PtrRepr,
-        param5: u32,
+        param_0: crate::core::PCSTR,
+        param_1: crate::core::PCSTR,
+        param_2: crate::core::PCSTR,
+        param_3: crate::core::PCSTR,
+        param_4: PtrRepr,
+        param_5: u32,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOLSERVERSTORESUPPLEMENTW = ::core::option::Option<
     unsafe extern "system" fn(
-        param0: crate::core::PCWSTR,
-        param1: crate::core::PCWSTR,
-        param2: crate::core::PCWSTR,
-        param3: crate::core::PCWSTR,
-        param4: PtrRepr,
-        param5: u32,
+        param_0: crate::core::PCWSTR,
+        param_1: crate::core::PCWSTR,
+        param_2: crate::core::PCWSTR,
+        param_3: crate::core::PCWSTR,
+        param_4: PtrRepr,
+        param_5: u32,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOLSERVERVERSION = ::core::option::Option<unsafe extern "system" fn() -> u32>;
 pub type PSYMBOLSERVERWEXPROC = ::core::option::Option<
     unsafe extern "system" fn(
-        param0: crate::core::PCWSTR,
-        param1: crate::core::PCWSTR,
-        param2: MutPtr<::core::ffi::c_void>,
-        param3: u32,
-        param4: u32,
-        param5: crate::core::PCWSTR,
-        param6: MutPtr<SYMSRV_EXTENDED_OUTPUT_DATA>,
+        param_0: crate::core::PCWSTR,
+        param_1: crate::core::PCWSTR,
+        param_2: MutPtr<::core::ffi::c_void>,
+        param_3: u32,
+        param_4: u32,
+        param_5: crate::core::PCWSTR,
+        param_6: MutPtr<SYMSRV_EXTENDED_OUTPUT_DATA>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOL_FUNCENTRY_CALLBACK = ::core::option::Option<
     unsafe extern "system" fn(
-        hProcess: super::super::super::Foundation::HANDLE,
-        AddrBase: u32,
-        UserContext: ConstPtr<::core::ffi::c_void>,
+        h_process: super::super::super::Foundation::HANDLE,
+        addr_base: u32,
+        user_context: ConstPtr<::core::ffi::c_void>,
     ) -> MutPtr<::core::ffi::c_void>,
 >;
 pub type PSYMBOL_FUNCENTRY_CALLBACK64 = ::core::option::Option<
     unsafe extern "system" fn(
-        hProcess: super::super::super::Foundation::HANDLE,
-        AddrBase: u64,
-        UserContext: u64,
+        h_process: super::super::super::Foundation::HANDLE,
+        addr_base: u64,
+        user_context: u64,
     ) -> MutPtr<::core::ffi::c_void>,
 >;
 pub type PSYMBOL_REGISTERED_CALLBACK = ::core::option::Option<
     unsafe extern "system" fn(
-        hProcess: super::super::super::Foundation::HANDLE,
-        ActionCode: u32,
-        CallbackData: ConstPtr<::core::ffi::c_void>,
-        UserContext: ConstPtr<::core::ffi::c_void>,
+        h_process: super::super::super::Foundation::HANDLE,
+        action_code: u32,
+        callback_data: ConstPtr<::core::ffi::c_void>,
+        user_context: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYMBOL_REGISTERED_CALLBACK64 = ::core::option::Option<
     unsafe extern "system" fn(
-        hProcess: super::super::super::Foundation::HANDLE,
-        ActionCode: u32,
-        CallbackData: u64,
-        UserContext: u64,
+        h_process: super::super::super::Foundation::HANDLE,
+        action_code: u32,
+        callback_data: u64,
+        user_context: u64,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYM_DUMP_FIELD_CALLBACK = ::core::option::Option<
     unsafe extern "system" fn(
-        pField: MutPtr<FIELD_INFO>,
-        UserContext: MutPtr<::core::ffi::c_void>,
+        p_field: MutPtr<FIELD_INFO>,
+        user_context: MutPtr<::core::ffi::c_void>,
     ) -> u32,
 >;
 pub type PSYM_ENUMERATESYMBOLS_CALLBACK = ::core::option::Option<
     unsafe extern "system" fn(
-        pSymInfo: ConstPtr<SYMBOL_INFO>,
-        SymbolSize: u32,
-        UserContext: ConstPtr<::core::ffi::c_void>,
+        p_sym_info: ConstPtr<SYMBOL_INFO>,
+        symbol_size: u32,
+        user_context: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYM_ENUMERATESYMBOLS_CALLBACKW = ::core::option::Option<
     unsafe extern "system" fn(
-        pSymInfo: ConstPtr<SYMBOL_INFOW>,
-        SymbolSize: u32,
-        UserContext: ConstPtr<::core::ffi::c_void>,
+        p_sym_info: ConstPtr<SYMBOL_INFOW>,
+        symbol_size: u32,
+        user_context: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYM_ENUMLINES_CALLBACK = ::core::option::Option<
     unsafe extern "system" fn(
-        LineInfo: ConstPtr<SRCCODEINFO>,
-        UserContext: ConstPtr<::core::ffi::c_void>,
+        line_info: ConstPtr<SRCCODEINFO>,
+        user_context: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYM_ENUMLINES_CALLBACKW = ::core::option::Option<
     unsafe extern "system" fn(
-        LineInfo: ConstPtr<SRCCODEINFOW>,
-        UserContext: ConstPtr<::core::ffi::c_void>,
+        line_info: ConstPtr<SRCCODEINFOW>,
+        user_context: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYM_ENUMMODULES_CALLBACK = ::core::option::Option<
     unsafe extern "system" fn(
-        ModuleName: crate::core::PCSTR,
-        BaseOfDll: u32,
-        UserContext: ConstPtr<::core::ffi::c_void>,
+        module_name: crate::core::PCSTR,
+        base_of_dll: u32,
+        user_context: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYM_ENUMMODULES_CALLBACK64 = ::core::option::Option<
     unsafe extern "system" fn(
-        ModuleName: crate::core::PCSTR,
-        BaseOfDll: u64,
-        UserContext: ConstPtr<::core::ffi::c_void>,
+        module_name: crate::core::PCSTR,
+        base_of_dll: u64,
+        user_context: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYM_ENUMMODULES_CALLBACKW64 = ::core::option::Option<
     unsafe extern "system" fn(
-        ModuleName: crate::core::PCWSTR,
-        BaseOfDll: u64,
-        UserContext: ConstPtr<::core::ffi::c_void>,
+        module_name: crate::core::PCWSTR,
+        base_of_dll: u64,
+        user_context: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYM_ENUMPROCESSES_CALLBACK = ::core::option::Option<
     unsafe extern "system" fn(
-        hProcess: super::super::super::Foundation::HANDLE,
-        UserContext: ConstPtr<::core::ffi::c_void>,
+        h_process: super::super::super::Foundation::HANDLE,
+        user_context: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYM_ENUMSOURCEFILES_CALLBACK = ::core::option::Option<
     unsafe extern "system" fn(
-        pSourceFile: ConstPtr<SOURCEFILE>,
-        UserContext: ConstPtr<::core::ffi::c_void>,
+        p_source_file: ConstPtr<SOURCEFILE>,
+        user_context: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYM_ENUMSOURCEFILES_CALLBACKW = ::core::option::Option<
     unsafe extern "system" fn(
-        pSourceFile: ConstPtr<SOURCEFILEW>,
-        UserContext: ConstPtr<::core::ffi::c_void>,
+        p_source_file: ConstPtr<SOURCEFILEW>,
+        user_context: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYM_ENUMSYMBOLS_CALLBACK = ::core::option::Option<
     unsafe extern "system" fn(
-        SymbolName: crate::core::PCSTR,
-        SymbolAddress: u32,
-        SymbolSize: u32,
-        UserContext: ConstPtr<::core::ffi::c_void>,
+        symbol_name: crate::core::PCSTR,
+        symbol_address: u32,
+        symbol_size: u32,
+        user_context: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYM_ENUMSYMBOLS_CALLBACK64 = ::core::option::Option<
     unsafe extern "system" fn(
-        SymbolName: crate::core::PCSTR,
-        SymbolAddress: u64,
-        SymbolSize: u32,
-        UserContext: ConstPtr<::core::ffi::c_void>,
+        symbol_name: crate::core::PCSTR,
+        symbol_address: u64,
+        symbol_size: u32,
+        user_context: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYM_ENUMSYMBOLS_CALLBACK64W = ::core::option::Option<
     unsafe extern "system" fn(
-        SymbolName: crate::core::PCWSTR,
-        SymbolAddress: u64,
-        SymbolSize: u32,
-        UserContext: ConstPtr<::core::ffi::c_void>,
+        symbol_name: crate::core::PCWSTR,
+        symbol_address: u64,
+        symbol_size: u32,
+        user_context: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PSYM_ENUMSYMBOLS_CALLBACKW = ::core::option::Option<
     unsafe extern "system" fn(
-        SymbolName: crate::core::PCWSTR,
-        SymbolAddress: u32,
-        SymbolSize: u32,
-        UserContext: ConstPtr<::core::ffi::c_void>,
+        symbol_name: crate::core::PCWSTR,
+        symbol_address: u32,
+        symbol_size: u32,
+        user_context: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type PTRANSLATE_ADDRESS_ROUTINE = ::core::option::Option<
     unsafe extern "system" fn(
-        hProcess: super::super::super::Foundation::HANDLE,
-        hThread: super::super::super::Foundation::HANDLE,
+        h_process: super::super::super::Foundation::HANDLE,
+        h_thread: super::super::super::Foundation::HANDLE,
         lpaddr: MutPtr<ADDRESS>,
     ) -> u32,
 >;
 pub type PTRANSLATE_ADDRESS_ROUTINE64 = ::core::option::Option<
     unsafe extern "system" fn(
-        hProcess: super::super::super::Foundation::HANDLE,
-        hThread: super::super::super::Foundation::HANDLE,
+        h_process: super::super::super::Foundation::HANDLE,
+        h_thread: super::super::super::Foundation::HANDLE,
         lpaddr: ConstPtr<ADDRESS64>,
     ) -> u64,
 >;
@@ -20229,39 +20101,39 @@ pub const PTR_SEARCH_PHYS_SIZE_SHIFT: u32 = 3u32;
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub type PVECTORED_EXCEPTION_HANDLER = ::core::option::Option<
-    unsafe extern "system" fn(ExceptionInfo: MutPtr<EXCEPTION_POINTERS>) -> i32,
+    unsafe extern "system" fn(exception_info: MutPtr<EXCEPTION_POINTERS>) -> i32,
 >;
 pub type PWAITCHAINCALLBACK = ::core::option::Option<
     unsafe extern "system" fn(
-        WctHandle: MutPtr<::core::ffi::c_void>,
-        Context: PtrRepr,
-        CallbackStatus: u32,
-        NodeCount: MutPtr<u32>,
-        NodeInfoArray: MutPtr<WAITCHAIN_NODE_INFO>,
-        IsCycle: MutPtr<i32>,
+        wct_handle: MutPtr<::core::ffi::c_void>,
+        context: PtrRepr,
+        callback_status: u32,
+        node_count: MutPtr<u32>,
+        node_info_array: MutPtr<WAITCHAIN_NODE_INFO>,
+        is_cycle: MutPtr<i32>,
     ),
 >;
 pub type PWINDBG_CHECK_CONTROL_C = ::core::option::Option<unsafe extern "system" fn() -> u32>;
 pub type PWINDBG_CHECK_VERSION = ::core::option::Option<unsafe extern "system" fn() -> u32>;
 pub type PWINDBG_DISASM = ::core::option::Option<
     unsafe extern "system" fn(
-        lpOffset: MutPtr<PtrRepr>,
-        lpBuffer: crate::core::PCSTR,
-        fShowEffectiveAddress: u32,
+        lp_offset: MutPtr<PtrRepr>,
+        lp_buffer: crate::core::PCSTR,
+        f_show_effective_address: u32,
     ) -> u32,
 >;
 pub type PWINDBG_DISASM32 = ::core::option::Option<
     unsafe extern "system" fn(
-        lpOffset: MutPtr<u32>,
-        lpBuffer: crate::core::PCSTR,
-        fShowEffectiveAddress: u32,
+        lp_offset: MutPtr<u32>,
+        lp_buffer: crate::core::PCSTR,
+        f_show_effective_address: u32,
     ) -> u32,
 >;
 pub type PWINDBG_DISASM64 = ::core::option::Option<
     unsafe extern "system" fn(
-        lpOffset: MutPtr<u64>,
-        lpBuffer: crate::core::PCSTR,
-        fShowEffectiveAddress: u32,
+        lp_offset: MutPtr<u64>,
+        lp_buffer: crate::core::PCSTR,
+        f_show_effective_address: u32,
     ) -> u32,
 >;
 pub type PWINDBG_EXTENSION_API_VERSION =
@@ -20270,104 +20142,104 @@ pub type PWINDBG_EXTENSION_API_VERSION =
 #[cfg(dummy_option_that_does_not_exist)]
 pub type PWINDBG_EXTENSION_DLL_INIT = ::core::option::Option<
     unsafe extern "system" fn(
-        lpExtensionApis: MutPtr<WINDBG_EXTENSION_APIS>,
-        MajorVersion: u16,
-        MinorVersion: u16,
+        lp_extension_apis: MutPtr<WINDBG_EXTENSION_APIS>,
+        major_version: u16,
+        minor_version: u16,
     ),
 >;
 #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub type PWINDBG_EXTENSION_DLL_INIT32 = ::core::option::Option<
     unsafe extern "system" fn(
-        lpExtensionApis: MutPtr<WINDBG_EXTENSION_APIS32>,
-        MajorVersion: u16,
-        MinorVersion: u16,
+        lp_extension_apis: MutPtr<WINDBG_EXTENSION_APIS32>,
+        major_version: u16,
+        minor_version: u16,
     ),
 >;
 #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub type PWINDBG_EXTENSION_DLL_INIT64 = ::core::option::Option<
     unsafe extern "system" fn(
-        lpExtensionApis: MutPtr<WINDBG_EXTENSION_APIS64>,
-        MajorVersion: u16,
-        MinorVersion: u16,
+        lp_extension_apis: MutPtr<WINDBG_EXTENSION_APIS64>,
+        major_version: u16,
+        minor_version: u16,
     ),
 >;
 pub type PWINDBG_EXTENSION_ROUTINE = ::core::option::Option<
     unsafe extern "system" fn(
-        hCurrentProcess: super::super::super::Foundation::HANDLE,
-        hCurrentThread: super::super::super::Foundation::HANDLE,
-        dwCurrentPc: u32,
-        dwProcessor: u32,
-        lpArgumentString: crate::core::PCSTR,
+        h_current_process: super::super::super::Foundation::HANDLE,
+        h_current_thread: super::super::super::Foundation::HANDLE,
+        dw_current_pc: u32,
+        dw_processor: u32,
+        lp_argument_string: crate::core::PCSTR,
     ),
 >;
 pub type PWINDBG_EXTENSION_ROUTINE32 = ::core::option::Option<
     unsafe extern "system" fn(
-        hCurrentProcess: super::super::super::Foundation::HANDLE,
-        hCurrentThread: super::super::super::Foundation::HANDLE,
-        dwCurrentPc: u32,
-        dwProcessor: u32,
-        lpArgumentString: crate::core::PCSTR,
+        h_current_process: super::super::super::Foundation::HANDLE,
+        h_current_thread: super::super::super::Foundation::HANDLE,
+        dw_current_pc: u32,
+        dw_processor: u32,
+        lp_argument_string: crate::core::PCSTR,
     ),
 >;
 pub type PWINDBG_EXTENSION_ROUTINE64 = ::core::option::Option<
     unsafe extern "system" fn(
-        hCurrentProcess: super::super::super::Foundation::HANDLE,
-        hCurrentThread: super::super::super::Foundation::HANDLE,
-        dwCurrentPc: u64,
-        dwProcessor: u32,
-        lpArgumentString: crate::core::PCSTR,
+        h_current_process: super::super::super::Foundation::HANDLE,
+        h_current_thread: super::super::super::Foundation::HANDLE,
+        dw_current_pc: u64,
+        dw_processor: u32,
+        lp_argument_string: crate::core::PCSTR,
     ),
 >;
 pub type PWINDBG_GET_EXPRESSION =
-    ::core::option::Option<unsafe extern "system" fn(lpExpression: crate::core::PCSTR) -> PtrRepr>;
+    ::core::option::Option<unsafe extern "system" fn(lp_expression: crate::core::PCSTR) -> PtrRepr>;
 pub type PWINDBG_GET_EXPRESSION32 =
-    ::core::option::Option<unsafe extern "system" fn(lpExpression: crate::core::PCSTR) -> u32>;
+    ::core::option::Option<unsafe extern "system" fn(lp_expression: crate::core::PCSTR) -> u32>;
 pub type PWINDBG_GET_EXPRESSION64 =
-    ::core::option::Option<unsafe extern "system" fn(lpExpression: crate::core::PCSTR) -> u64>;
+    ::core::option::Option<unsafe extern "system" fn(lp_expression: crate::core::PCSTR) -> u64>;
 pub type PWINDBG_GET_SYMBOL = ::core::option::Option<
     unsafe extern "system" fn(
         offset: MutPtr<::core::ffi::c_void>,
-        pchBuffer: crate::core::PCSTR,
-        pDisplacement: MutPtr<PtrRepr>,
+        pch_buffer: crate::core::PCSTR,
+        p_displacement: MutPtr<PtrRepr>,
     ),
 >;
 pub type PWINDBG_GET_SYMBOL32 = ::core::option::Option<
     unsafe extern "system" fn(
         offset: u32,
-        pchBuffer: crate::core::PCSTR,
-        pDisplacement: MutPtr<u32>,
+        pch_buffer: crate::core::PCSTR,
+        p_displacement: MutPtr<u32>,
     ),
 >;
 pub type PWINDBG_GET_SYMBOL64 = ::core::option::Option<
     unsafe extern "system" fn(
         offset: u64,
-        pchBuffer: crate::core::PCSTR,
-        pDisplacement: MutPtr<u64>,
+        pch_buffer: crate::core::PCSTR,
+        p_displacement: MutPtr<u64>,
     ),
 >;
 #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub type PWINDBG_GET_THREAD_CONTEXT_ROUTINE = ::core::option::Option<
     unsafe extern "system" fn(
-        Processor: u32,
-        lpContext: MutPtr<CONTEXT>,
-        cbSizeOfContext: u32,
+        processor: u32,
+        lp_context: MutPtr<CONTEXT>,
+        cb_size_of_context: u32,
     ) -> u32,
 >;
 pub type PWINDBG_IOCTL_ROUTINE = ::core::option::Option<
     unsafe extern "system" fn(
-        IoctlType: u16,
-        lpvData: MutPtr<::core::ffi::c_void>,
-        cbSize: u32,
+        ioctl_type: u16,
+        lpv_data: MutPtr<::core::ffi::c_void>,
+        cb_size: u32,
     ) -> u32,
 >;
 pub type PWINDBG_OLDKD_EXTENSION_ROUTINE = ::core::option::Option<
     unsafe extern "system" fn(
-        dwCurrentPc: u32,
-        lpExtensionApis: MutPtr<WINDBG_OLDKD_EXTENSION_APIS>,
-        lpArgumentString: crate::core::PCSTR,
+        dw_current_pc: u32,
+        lp_extension_apis: MutPtr<WINDBG_OLDKD_EXTENSION_APIS>,
+        lp_argument_string: crate::core::PCSTR,
     ),
 >;
 pub type PWINDBG_OLDKD_READ_PHYSICAL_MEMORY = ::core::option::Option<
@@ -20390,95 +20262,95 @@ pub type PWINDBG_OLDKD_WRITE_PHYSICAL_MEMORY = ::core::option::Option<
 #[cfg(dummy_option_that_does_not_exist)]
 pub type PWINDBG_OLD_EXTENSION_ROUTINE = ::core::option::Option<
     unsafe extern "system" fn(
-        dwCurrentPc: u32,
-        lpExtensionApis: MutPtr<WINDBG_EXTENSION_APIS>,
-        lpArgumentString: crate::core::PCSTR,
+        dw_current_pc: u32,
+        lp_extension_apis: MutPtr<WINDBG_EXTENSION_APIS>,
+        lp_argument_string: crate::core::PCSTR,
     ),
 >;
 pub type PWINDBG_OUTPUT_ROUTINE =
-    ::core::option::Option<unsafe extern "system" fn(lpFormat: crate::core::PCSTR)>;
+    ::core::option::Option<unsafe extern "system" fn(lp_format: crate::core::PCSTR)>;
 pub type PWINDBG_READ_PROCESS_MEMORY_ROUTINE = ::core::option::Option<
     unsafe extern "system" fn(
         offset: PtrRepr,
-        lpBuffer: MutPtr<::core::ffi::c_void>,
+        lp_buffer: MutPtr<::core::ffi::c_void>,
         cb: u32,
-        lpcbBytesRead: MutPtr<u32>,
+        lpcb_bytes_read: MutPtr<u32>,
     ) -> u32,
 >;
 pub type PWINDBG_READ_PROCESS_MEMORY_ROUTINE32 = ::core::option::Option<
     unsafe extern "system" fn(
         offset: u32,
-        lpBuffer: MutPtr<::core::ffi::c_void>,
+        lp_buffer: MutPtr<::core::ffi::c_void>,
         cb: u32,
-        lpcbBytesRead: MutPtr<u32>,
+        lpcb_bytes_read: MutPtr<u32>,
     ) -> u32,
 >;
 pub type PWINDBG_READ_PROCESS_MEMORY_ROUTINE64 = ::core::option::Option<
     unsafe extern "system" fn(
         offset: u64,
-        lpBuffer: MutPtr<::core::ffi::c_void>,
+        lp_buffer: MutPtr<::core::ffi::c_void>,
         cb: u32,
-        lpcbBytesRead: MutPtr<u32>,
+        lpcb_bytes_read: MutPtr<u32>,
     ) -> u32,
 >;
 #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub type PWINDBG_SET_THREAD_CONTEXT_ROUTINE = ::core::option::Option<
     unsafe extern "system" fn(
-        Processor: u32,
-        lpContext: MutPtr<CONTEXT>,
-        cbSizeOfContext: u32,
+        processor: u32,
+        lp_context: MutPtr<CONTEXT>,
+        cb_size_of_context: u32,
     ) -> u32,
 >;
 pub type PWINDBG_STACKTRACE_ROUTINE = ::core::option::Option<
     unsafe extern "system" fn(
-        FramePointer: u32,
-        StackPointer: u32,
-        ProgramCounter: u32,
-        StackFrames: MutPtr<EXTSTACKTRACE>,
-        Frames: u32,
+        frame_pointer: u32,
+        stack_pointer: u32,
+        program_counter: u32,
+        stack_frames: MutPtr<EXTSTACKTRACE>,
+        frames: u32,
     ) -> u32,
 >;
 pub type PWINDBG_STACKTRACE_ROUTINE32 = ::core::option::Option<
     unsafe extern "system" fn(
-        FramePointer: u32,
-        StackPointer: u32,
-        ProgramCounter: u32,
-        StackFrames: MutPtr<EXTSTACKTRACE32>,
-        Frames: u32,
+        frame_pointer: u32,
+        stack_pointer: u32,
+        program_counter: u32,
+        stack_frames: MutPtr<EXTSTACKTRACE32>,
+        frames: u32,
     ) -> u32,
 >;
 pub type PWINDBG_STACKTRACE_ROUTINE64 = ::core::option::Option<
     unsafe extern "system" fn(
-        FramePointer: u64,
-        StackPointer: u64,
-        ProgramCounter: u64,
-        StackFrames: MutPtr<EXTSTACKTRACE64>,
-        Frames: u32,
+        frame_pointer: u64,
+        stack_pointer: u64,
+        program_counter: u64,
+        stack_frames: MutPtr<EXTSTACKTRACE64>,
+        frames: u32,
     ) -> u32,
 >;
 pub type PWINDBG_WRITE_PROCESS_MEMORY_ROUTINE = ::core::option::Option<
     unsafe extern "system" fn(
         offset: PtrRepr,
-        lpBuffer: ConstPtr<::core::ffi::c_void>,
+        lp_buffer: ConstPtr<::core::ffi::c_void>,
         cb: u32,
-        lpcbBytesWritten: MutPtr<u32>,
+        lpcb_bytes_written: MutPtr<u32>,
     ) -> u32,
 >;
 pub type PWINDBG_WRITE_PROCESS_MEMORY_ROUTINE32 = ::core::option::Option<
     unsafe extern "system" fn(
         offset: u32,
-        lpBuffer: ConstPtr<::core::ffi::c_void>,
+        lp_buffer: ConstPtr<::core::ffi::c_void>,
         cb: u32,
-        lpcbBytesWritten: MutPtr<u32>,
+        lpcb_bytes_written: MutPtr<u32>,
     ) -> u32,
 >;
 pub type PWINDBG_WRITE_PROCESS_MEMORY_ROUTINE64 = ::core::option::Option<
     unsafe extern "system" fn(
         offset: u64,
-        lpBuffer: ConstPtr<::core::ffi::c_void>,
+        lp_buffer: ConstPtr<::core::ffi::c_void>,
         cb: u32,
-        lpcbBytesWritten: MutPtr<u32>,
+        lpcb_bytes_written: MutPtr<u32>,
     ) -> u32,
 >;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -21842,20 +21714,20 @@ impl FromIntoMemory for STACK_SYM_FRAME_INFO {
 }
 pub type SYMADDSOURCESTREAM = ::core::option::Option<
     unsafe extern "system" fn(
-        param0: super::super::super::Foundation::HANDLE,
-        param1: u64,
-        param2: crate::core::PCSTR,
-        param3: MutPtr<u8>,
-        param4: PtrRepr,
+        param_0: super::super::super::Foundation::HANDLE,
+        param_1: u64,
+        param_2: crate::core::PCSTR,
+        param_3: MutPtr<u8>,
+        param_4: PtrRepr,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub type SYMADDSOURCESTREAMA = ::core::option::Option<
     unsafe extern "system" fn(
-        param0: super::super::super::Foundation::HANDLE,
-        param1: u64,
-        param2: crate::core::PCSTR,
-        param3: MutPtr<u8>,
-        param4: PtrRepr,
+        param_0: super::super::super::Foundation::HANDLE,
+        param_1: u64,
+        param_2: crate::core::PCSTR,
+        param_3: MutPtr<u8>,
+        param_4: PtrRepr,
     ) -> super::super::super::Foundation::BOOL,
 >;
 pub struct SYMBOL_INFO {
@@ -24505,8 +24377,8 @@ impl FromIntoMemory for WHEA_ERROR_SOURCE_CONFIGURATION_DEVICE_DRIVER_V1 {
 }
 pub type WHEA_ERROR_SOURCE_CORRECT_DEVICE_DRIVER = ::core::option::Option<
     unsafe extern "system" fn(
-        ErrorSourceDesc: MutPtr<::core::ffi::c_void>,
-        MaximumSectionLength: MutPtr<u32>,
+        error_source_desc: MutPtr<::core::ffi::c_void>,
+        maximum_section_length: MutPtr<u32>,
     ) -> super::super::super::Foundation::NTSTATUS,
 >;
 pub struct WHEA_ERROR_SOURCE_DESCRIPTOR {
@@ -24622,8 +24494,8 @@ pub const WHEA_ERROR_SOURCE_FLAG_GHES_ASSIST: u32 = 4u32;
 pub const WHEA_ERROR_SOURCE_FLAG_GLOBAL: u32 = 2u32;
 pub type WHEA_ERROR_SOURCE_INITIALIZE_DEVICE_DRIVER = ::core::option::Option<
     unsafe extern "system" fn(
-        Context: MutPtr<::core::ffi::c_void>,
-        ErrorSourceId: u32,
+        context: MutPtr<::core::ffi::c_void>,
+        error_source_id: u32,
     ) -> super::super::super::Foundation::NTSTATUS,
 >;
 pub const WHEA_ERROR_SOURCE_INVALID_RELATED_SOURCE: u32 = 65535u32;
@@ -24712,7 +24584,7 @@ impl FromIntoMemory for WHEA_ERROR_SOURCE_TYPE {
     }
 }
 pub type WHEA_ERROR_SOURCE_UNINITIALIZE_DEVICE_DRIVER =
-    ::core::option::Option<unsafe extern "system" fn(Context: MutPtr<::core::ffi::c_void>)>;
+    ::core::option::Option<unsafe extern "system" fn(context: MutPtr<::core::ffi::c_void>)>;
 pub struct WHEA_GENERIC_ERROR_DESCRIPTOR {
     pub Type: u16,
     pub Reserved: u8,
@@ -27183,3 +27055,17 @@ pub const fasaCaseSensitive: u32 = 4u32;
 pub const fasaPreferInternalHandler: u32 = 1u32;
 pub const fasaSupportInternalHandler: u32 = 2u32;
 pub const sevMax: i32 = 4i32;
+pub trait Api {
+    fn RtlUnwind(
+        &self,
+        target_frame: ConstPtr<::core::ffi::c_void>,
+        target_ip: ConstPtr<::core::ffi::c_void>,
+        exception_record: ConstPtr<EXCEPTION_RECORD>,
+        return_value: ConstPtr<::core::ffi::c_void>,
+    ) {
+        todo!()
+    }
+}
+pub fn get_api(ctx: &crate::core::Win32Context) -> &dyn Api {
+    ctx.get::<dyn Api>()
+}

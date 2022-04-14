@@ -16,25 +16,25 @@ struct WindowsAndMessaging {}
 impl win32::Win32::UI::WindowsAndMessaging::Api for WindowsAndMessaging {
     fn MessageBoxA(
         &self,
-        hWnd: HWND,
-        lpText: ::win32::core::PCSTR,
-        lpCaption: ::win32::core::PCSTR,
-        uType: MESSAGEBOX_STYLE,
+        h_wnd: HWND,
+        lp_text: ::win32::core::PCSTR,
+        lp_caption: ::win32::core::PCSTR,
+        u_type: MESSAGEBOX_STYLE,
     ) -> MESSAGEBOX_RESULT {
         let memory = get_thread_ctx();
 
         let text =
-            unsafe { CStr::from_ptr(memory.to_native_ptr(lpText.0.repr()) as *const c_char) }
+            unsafe { CStr::from_ptr(memory.to_native_ptr(lp_text.0.repr()) as *const c_char) }
                 .to_str()
                 .unwrap();
         let caption =
-            unsafe { CStr::from_ptr(memory.to_native_ptr(lpCaption.0.repr()) as *const c_char) }
+            unsafe { CStr::from_ptr(memory.to_native_ptr(lp_caption.0.repr()) as *const c_char) }
                 .to_str()
                 .unwrap();
 
         println!(
             "MessageBoxA({:?}, {:?}, {:?}, {:?})",
-            hWnd, text, caption, uType
+            h_wnd, text, caption, u_type
         );
 
         MESSAGEBOX_RESULT(0)

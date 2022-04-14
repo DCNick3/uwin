@@ -5,6 +5,7 @@ use std::collections::HashSet;
 pub struct Gen<'a> {
     pub enabled_namespaces: &'a [&'a str],
     pub excluded_items: HashSet<&'a str>,
+    pub excluded_libraries: HashSet<&'a str>,
     pub namespace: &'a str,
     pub sys: bool,
     pub flatten: bool,
@@ -85,5 +86,14 @@ impl Gen<'_> {
 
             quote! { #enabled }
         }
+    }
+
+    pub(crate) fn dll_enabled(&self, dll: Option<&str>) -> bool {
+        dll.map(|dll| {
+            !self
+                .excluded_libraries
+                .contains(dll.to_ascii_lowercase().as_str())
+        })
+        .unwrap_or(true)
     }
 }

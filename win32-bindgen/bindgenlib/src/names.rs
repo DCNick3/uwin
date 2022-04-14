@@ -1,4 +1,5 @@
 use super::*;
+use convert_case::{Case, Casing};
 
 pub fn gen_ident(name: &str) -> TokenStream {
     // keywords list based on https://doc.rust-lang.org/reference/keywords.html
@@ -94,7 +95,7 @@ pub fn gen_type_constraints(def: &TypeDef, gen: &Gen) -> Vec<TokenStream> {
 }
 
 pub fn gen_param_name(param: &Param) -> TokenStream {
-    gen_ident(&param.name())
+    gen_ident(&param.name().to_case(Case::Snake))
 }
 
 pub fn gen_element_name(def: &Type, gen: &Gen) -> TokenStream {

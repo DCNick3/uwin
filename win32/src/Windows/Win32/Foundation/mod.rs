@@ -3959,7 +3959,7 @@ pub const OSS_TRACE_FILE_ALREADY_OPEN: crate::core::HRESULT = crate::core::HRESU
 pub const OSS_TYPE_NOT_SUPPORTED: crate::core::HRESULT = crate::core::HRESULT(-2146881506i32);
 pub const OSS_UNAVAIL_ENCRULES: crate::core::HRESULT = crate::core::HRESULT(-2146881513i32);
 pub const OSS_UNIMPLEMENTED: crate::core::HRESULT = crate::core::HRESULT(-2146881511i32);
-pub type PAPCFUNC = ::core::option::Option<unsafe extern "system" fn(Parameter: PtrRepr)>;
+pub type PAPCFUNC = ::core::option::Option<unsafe extern "system" fn(parameter: PtrRepr)>;
 pub const PEERDIST_ERROR_ALREADY_COMPLETED: i32 = 4060i32;
 pub const PEERDIST_ERROR_ALREADY_EXISTS: i32 = 4058i32;
 pub const PEERDIST_ERROR_ALREADY_INITIALIZED: i32 = 4055i32;
@@ -12448,38 +12448,38 @@ pub const _WIN32_MAXVER: u32 = 2560u32;
 pub const _WIN32_WINDOWS_MAXVER: u32 = 2560u32;
 pub const _WIN32_WINNT_MAXVER: u32 = 2560u32;
 pub trait Api {
-    fn CloseHandle(&self, hObject: HANDLE) -> BOOL {
+    fn CloseHandle(&self, h_object: HANDLE) -> BOOL {
         todo!()
     }
     fn CompareObjectHandles(
         &self,
-        hFirstObjectHandle: HANDLE,
-        hSecondObjectHandle: HANDLE,
+        h_first_object_handle: HANDLE,
+        h_second_object_handle: HANDLE,
     ) -> BOOL {
         todo!()
     }
     fn DuplicateHandle(
         &self,
-        hSourceProcessHandle: HANDLE,
-        hSourceHandle: HANDLE,
-        hTargetProcessHandle: HANDLE,
-        lpTargetHandle: MutPtr<HANDLE>,
-        dwDesiredAccess: u32,
-        bInheritHandle: BOOL,
-        dwOptions: DUPLICATE_HANDLE_OPTIONS,
+        h_source_process_handle: HANDLE,
+        h_source_handle: HANDLE,
+        h_target_process_handle: HANDLE,
+        lp_target_handle: MutPtr<HANDLE>,
+        dw_desired_access: u32,
+        b_inherit_handle: BOOL,
+        dw_options: DUPLICATE_HANDLE_OPTIONS,
     ) -> BOOL {
         todo!()
     }
-    fn GetHandleInformation(&self, hObject: HANDLE, lpdwFlags: MutPtr<u32>) -> BOOL {
+    fn GetHandleInformation(&self, h_object: HANDLE, lpdw_flags: MutPtr<u32>) -> BOOL {
         todo!()
     }
     fn GetLastError(&self) -> WIN32_ERROR {
         todo!()
     }
-    fn SetHandleInformation(&self, hObject: HANDLE, dwMask: u32, dwFlags: HANDLE_FLAGS) -> BOOL {
+    fn SetHandleInformation(&self, h_object: HANDLE, dw_mask: u32, dw_flags: HANDLE_FLAGS) -> BOOL {
         todo!()
     }
-    fn SetLastError(&self, dwErrCode: WIN32_ERROR) {
+    fn SetLastError(&self, dw_err_code: WIN32_ERROR) {
         todo!()
     }
 }

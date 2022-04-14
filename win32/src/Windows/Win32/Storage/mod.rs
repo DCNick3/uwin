@@ -7,10 +7,4 @@
 )]
 #[allow(unused)]
 use win32::core::prelude::*;
-pub mod Console;
-pub mod Diagnostics;
-pub mod Environment;
-pub mod LibraryLoader;
-pub mod Memory;
-pub mod SystemInformation;
-pub mod WindowsProgramming;
+pub mod FileSystem;

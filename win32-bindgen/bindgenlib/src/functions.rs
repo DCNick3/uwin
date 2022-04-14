@@ -121,7 +121,7 @@ pub fn gen_functions(tree: &TypeTree, gen: &Gen) -> TokenStream {
     for entry in tree.types.values() {
         for def in entry {
             if let Type::MethodDef(def) = def {
-                if !gen.excluded_items.contains(def.name()) {
+                if !gen.excluded_items.contains(def.name()) && gen.dll_enabled(def.dll_import()) {
                     tokens.combine(&gen_function_declaration(def, gen));
                 }
             }
@@ -165,7 +165,7 @@ pub fn gen_rusty_x86_magic_functions(tree: &TypeTree, gen: &Gen) -> TokenStream 
     for entry in tree.types.values() {
         for def in entry {
             if let Type::MethodDef(def) = def {
-                if !gen.excluded_items.contains(def.name()) {
+                if !gen.excluded_items.contains(def.name()) && gen.dll_enabled(def.dll_import()) {
                     magic_functions.combine(&gen_magic_function(def, gen, &namespace));
                 }
             }

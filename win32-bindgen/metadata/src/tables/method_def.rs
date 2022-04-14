@@ -58,7 +58,9 @@ impl MethodDef {
     }
 
     pub fn attributes(&self) -> impl Iterator<Item = Attribute> {
-        self.0.file.attributes(HasAttribute::MethodDef(self.clone()))
+        self.0
+            .file
+            .attributes(HasAttribute::MethodDef(self.clone()))
     }
 
     fn has_attribute(&self, name: &str) -> bool {
@@ -88,8 +90,20 @@ impl MethodDef {
             .next()
     }
 
+    pub fn dll_import(&self) -> Option<&'static str> {
+        Some(self.impl_map()?.scope().name())
+    }
+
     pub fn impl_map(&self) -> Option<ImplMap> {
-        self.0.file.equal_range(TableIndex::ImplMap, 1, MemberForwarded::MethodDef(self.clone()).encode()).map(ImplMap).next()
+        self.0
+            .file
+            .equal_range(
+                TableIndex::ImplMap,
+                1,
+                MemberForwarded::MethodDef(self.clone()).encode(),
+            )
+            .map(ImplMap)
+            .next()
     }
 
     pub fn signature(&self, generics: &[Type]) -> Signature {
@@ -110,14 +124,25 @@ impl MethodDef {
                     return_param = Some(def);
                     None
                 } else {
-                    let ty = reader.type_from_blob(&mut blob, None, generics).expect("MethodDef");
-                    let ty = if !def.flags().output() { ty.to_const() } else { ty };
+                    let ty = reader
+                        .type_from_blob(&mut blob, None, generics)
+                        .expect("MethodDef");
+                    let ty = if !def.flags().output() {
+                        ty.to_const()
+                    } else {
+                        ty
+                    };
                     Some(MethodParam { def, ty })
                 }
             })
             .collect();
 
-        Signature { params, return_type, return_param, preserve_sig }
+        Signature {
+            params,
+            return_type,
+            return_param,
+            preserve_sig,
+        }
     }
 
     pub fn cfg(&self) -> Cfg {

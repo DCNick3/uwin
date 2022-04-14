@@ -6,7 +6,12 @@ use std::process::Command;
 
 fn main() {
     let manifest_dir = PathBuf::from(env::var("CARGO_MANIFEST_DIR").unwrap());
-    let executable = manifest_dir.join("../test_exes/test.exe");
+    let executable = manifest_dir
+        .join("..")
+        // .join("test_exes/msvc/hello_world.exe")
+        .join("test_exes/test.exe")
+        // ----
+        ;
 
     let exe = PeFile::parse_from_path(&executable).expect("Loading exe file");
 
