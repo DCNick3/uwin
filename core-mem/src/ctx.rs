@@ -63,13 +63,13 @@ impl MemoryCtx for FlatMemoryCtx {
         // size is subject to change (is there even a penalty for it being too large, with rustc optimizing stuff out?)
         let mut data: SmallVec<[_; 0x800]> = smallvec![0u8; size];
         unsafe { std::ptr::copy_nonoverlapping(unsafe_data, data.as_mut_ptr(), size) }
-        N::try_from_bytes(&data)
+        N::from_bytes(&data)
     }
 
     fn write<N: FromIntoMemory>(&self, value: N, ptr: PtrRepr) {
         let size = N::size();
         let mut data: SmallVec<[_; 0x800]> = smallvec![0u8; size];
-        value.try_into_bytes(&mut data);
+        value.into_bytes(&mut data);
         let unsafe_data = self.to_native_ptr(ptr);
         unsafe { std::ptr::copy_nonoverlapping(data.as_ptr(), unsafe_data, size) }
     }

@@ -176,11 +176,11 @@ impl ::core::fmt::Debug for BOOLEAN {
     }
 }
 impl FromIntoMemory for BOOLEAN {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<u8 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<u8 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<u8>()
@@ -210,11 +210,11 @@ impl ::core::fmt::Debug for BSTR {
     }
 }
 impl FromIntoMemory for BSTR {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<MutPtr<u16> as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<MutPtr<u16> as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<MutPtr<u16>>()
@@ -360,11 +360,11 @@ impl ::core::fmt::Debug for CHAR {
     }
 }
 impl FromIntoMemory for CHAR {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<u8 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<u8 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<u8>()
@@ -1182,11 +1182,11 @@ impl ::core::ops::Not for DUPLICATE_HANDLE_OPTIONS {
     }
 }
 impl FromIntoMemory for DUPLICATE_HANDLE_OPTIONS {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<u32>()
@@ -2780,11 +2780,11 @@ impl ::core::ops::Not for HANDLE_FLAGS {
     }
 }
 impl FromIntoMemory for HANDLE_FLAGS {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<u32>()
@@ -2814,11 +2814,11 @@ impl ::core::fmt::Debug for HANDLE_PTR {
     }
 }
 impl FromIntoMemory for HANDLE_PTR {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<PtrRepr as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<PtrRepr as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<PtrRepr>()
@@ -2946,11 +2946,11 @@ impl ::core::fmt::Debug for HINSTANCE {
     }
 }
 impl FromIntoMemory for HINSTANCE {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<PtrDiffRepr as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<PtrDiffRepr as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<PtrDiffRepr>()
@@ -3002,11 +3002,11 @@ impl ::core::fmt::Debug for HRSRC {
     }
 }
 impl FromIntoMemory for HRSRC {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<PtrDiffRepr as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<PtrDiffRepr as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<PtrDiffRepr>()
@@ -3183,11 +3183,11 @@ impl ::core::fmt::Debug for HWND {
     }
 }
 impl FromIntoMemory for HWND {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<PtrDiffRepr as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<PtrDiffRepr as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<PtrDiffRepr>()
@@ -3250,11 +3250,11 @@ impl ::core::fmt::Debug for LPARAM {
     }
 }
 impl FromIntoMemory for LPARAM {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<PtrDiffRepr as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<PtrDiffRepr as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<PtrDiffRepr>()
@@ -3284,11 +3284,11 @@ impl ::core::fmt::Debug for LRESULT {
     }
 }
 impl FromIntoMemory for LRESULT {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<PtrDiffRepr as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<PtrDiffRepr as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<PtrDiffRepr>()
@@ -3585,11 +3585,11 @@ impl ::core::fmt::Debug for NTSTATUS {
     }
 }
 impl FromIntoMemory for NTSTATUS {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<i32>()
@@ -3671,11 +3671,11 @@ impl ::core::fmt::Debug for NTSTATUS_FACILITY_CODE {
     }
 }
 impl FromIntoMemory for NTSTATUS_FACILITY_CODE {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<u32>()
@@ -4041,11 +4041,11 @@ impl ::core::fmt::Debug for PSID {
     }
 }
 impl FromIntoMemory for PSID {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<PtrDiffRepr as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<PtrDiffRepr as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<PtrDiffRepr>()
@@ -4667,11 +4667,11 @@ impl ::core::fmt::Debug for SHANDLE_PTR {
     }
 }
 impl FromIntoMemory for SHANDLE_PTR {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<PtrDiffRepr as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<PtrDiffRepr as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<PtrDiffRepr>()
@@ -11782,11 +11782,11 @@ impl ::core::fmt::Debug for WIN32_ERROR {
     }
 }
 impl FromIntoMemory for WIN32_ERROR {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<u32>()
@@ -11999,11 +11999,11 @@ impl ::core::fmt::Debug for WPARAM {
     }
 }
 impl FromIntoMemory for WPARAM {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<PtrRepr as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<PtrRepr as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<PtrRepr>()

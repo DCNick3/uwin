@@ -17,14 +17,14 @@ mod tests {
             let size = N::size();
             let data = vec![0u8; size];
             let data = data.leak(); // really dummy impl...
-            N::try_from_bytes(data)
+            N::from_bytes(data)
         }
 
         fn write<N: FromIntoMemory>(&self, value: N, _ptr: PtrRepr) {
             let size = N::size();
             let mut data = vec![0u8; size];
 
-            value.try_into_bytes(data.as_mut_slice())
+            value.into_bytes(data.as_mut_slice())
         }
     }
 

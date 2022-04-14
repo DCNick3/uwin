@@ -71,7 +71,7 @@ impl<'a, MCtx: MemoryCtx, CpuCtx: X86Context> StdCallHelper<'a, MCtx, CpuCtx> {
         );
 
         let mut bytes = [0u8; 4];
-        value.try_into_bytes(&mut bytes);
+        value.into_bytes(&mut bytes);
 
         self.cpu_ctx.set_esp(self.offset);
         self.cpu_ctx.set_eax(u32::from_le_bytes(bytes));

@@ -137,11 +137,11 @@ impl ::core::ops::Not for ANIMATE_WINDOW_FLAGS {
     }
 }
 impl FromIntoMemory for ANIMATE_WINDOW_FLAGS {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<u32>()
@@ -310,11 +310,11 @@ impl ::core::ops::Not for CASCADE_WINDOWS_HOW {
     }
 }
 impl FromIntoMemory for CASCADE_WINDOWS_HOW {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<u32>()
@@ -506,11 +506,11 @@ impl ::core::fmt::Debug for CHANGE_WINDOW_MESSAGE_FILTER_FLAGS {
     }
 }
 impl FromIntoMemory for CHANGE_WINDOW_MESSAGE_FILTER_FLAGS {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<u32>()
@@ -721,11 +721,11 @@ impl ::core::fmt::Debug for CURSORINFO_FLAGS {
     }
 }
 impl FromIntoMemory for CURSORINFO_FLAGS {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<u32>()
@@ -890,11 +890,11 @@ impl ::core::ops::Not for CWP_FLAGS {
     }
 }
 impl FromIntoMemory for CWP_FLAGS {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<u32>()
@@ -1002,11 +1002,11 @@ impl ::core::ops::Not for DI_FLAGS {
     }
 }
 impl FromIntoMemory for DI_FLAGS {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<u32>()
@@ -1183,11 +1183,11 @@ impl ::core::fmt::Debug for EDIT_CONTROL_FEATURE {
     }
 }
 impl FromIntoMemory for EDIT_CONTROL_FEATURE {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<i32>()
@@ -1459,11 +1459,11 @@ impl ::core::ops::Not for FLASHWINFO_FLAGS {
     }
 }
 impl FromIntoMemory for FLASHWINFO_FLAGS {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<u32>()
@@ -1493,11 +1493,11 @@ impl ::core::fmt::Debug for FOREGROUND_WINDOW_LOCK_CODE {
     }
 }
 impl FromIntoMemory for FOREGROUND_WINDOW_LOCK_CODE {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<u32>()
@@ -1528,11 +1528,11 @@ impl ::core::fmt::Debug for GDI_IMAGE_TYPE {
     }
 }
 impl FromIntoMemory for GDI_IMAGE_TYPE {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<u32>()
@@ -1568,11 +1568,11 @@ impl ::core::fmt::Debug for GET_ANCESTOR_FLAGS {
     }
 }
 impl FromIntoMemory for GET_ANCESTOR_FLAGS {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<u32>()
@@ -1617,11 +1617,11 @@ impl ::core::fmt::Debug for GET_CLASS_LONG_INDEX {
     }
 }
 impl FromIntoMemory for GET_CLASS_LONG_INDEX {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<i32>()
@@ -1678,11 +1678,11 @@ impl ::core::ops::Not for GET_MENU_DEFAULT_ITEM_FLAGS {
     }
 }
 impl FromIntoMemory for GET_MENU_DEFAULT_ITEM_FLAGS {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<u32>()
@@ -1714,11 +1714,11 @@ impl ::core::fmt::Debug for GET_WINDOW_CMD {
     }
 }
 impl FromIntoMemory for GET_WINDOW_CMD {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<u32>()
@@ -1827,11 +1827,11 @@ impl ::core::ops::Not for GUITHREADINFO_FLAGS {
     }
 }
 impl FromIntoMemory for GUITHREADINFO_FLAGS {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<u32>()
@@ -1864,11 +1864,11 @@ impl ::core::fmt::Debug for HACCEL {
     }
 }
 impl FromIntoMemory for HACCEL {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<PtrDiffRepr as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<PtrDiffRepr as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<PtrDiffRepr>()
@@ -1895,11 +1895,11 @@ impl ::core::fmt::Debug for HANDEDNESS {
     }
 }
 impl FromIntoMemory for HANDEDNESS {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<i32>()
@@ -2016,11 +2016,11 @@ impl ::core::fmt::Debug for HCURSOR {
     }
 }
 impl FromIntoMemory for HCURSOR {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<PtrDiffRepr as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<PtrDiffRepr as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<PtrDiffRepr>()
@@ -2080,11 +2080,11 @@ impl ::core::fmt::Debug for HHOOK {
     }
 }
 impl FromIntoMemory for HHOOK {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<PtrDiffRepr as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<PtrDiffRepr as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<PtrDiffRepr>()
@@ -2114,11 +2114,11 @@ impl ::core::fmt::Debug for HICON {
     }
 }
 impl FromIntoMemory for HICON {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<PtrDiffRepr as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<PtrDiffRepr as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<PtrDiffRepr>()
@@ -2151,11 +2151,11 @@ impl ::core::fmt::Debug for HMENU {
     }
 }
 impl FromIntoMemory for HMENU {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<PtrDiffRepr as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<PtrDiffRepr as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<PtrDiffRepr>()
@@ -2575,11 +2575,11 @@ impl ::core::ops::Not for IMAGE_FLAGS {
     }
 }
 impl FromIntoMemory for IMAGE_FLAGS {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<u32>()
@@ -2711,11 +2711,11 @@ impl ::core::ops::Not for KBDLLHOOKSTRUCT_FLAGS {
     }
 }
 impl FromIntoMemory for KBDLLHOOKSTRUCT_FLAGS {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<u32>()
@@ -2779,11 +2779,11 @@ impl ::core::ops::Not for LAYERED_WINDOW_ATTRIBUTES_FLAGS {
     }
 }
 impl FromIntoMemory for LAYERED_WINDOW_ATTRIBUTES_FLAGS {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<u32>()
@@ -3088,11 +3088,11 @@ impl ::core::fmt::Debug for MENUGETOBJECTINFO_FLAGS {
     }
 }
 impl FromIntoMemory for MENUGETOBJECTINFO_FLAGS {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<u32>()
@@ -3203,11 +3203,11 @@ impl ::core::ops::Not for MENUINFO_MASK {
     }
 }
 impl FromIntoMemory for MENUINFO_MASK {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<u32>()
@@ -3266,11 +3266,11 @@ impl ::core::ops::Not for MENUINFO_STYLE {
     }
 }
 impl FromIntoMemory for MENUINFO_STYLE {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<u32>()
@@ -3537,11 +3537,11 @@ impl ::core::ops::Not for MENU_ITEM_FLAGS {
     }
 }
 impl FromIntoMemory for MENU_ITEM_FLAGS {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<u32>()
@@ -3603,11 +3603,11 @@ impl ::core::ops::Not for MENU_ITEM_MASK {
     }
 }
 impl FromIntoMemory for MENU_ITEM_MASK {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<u32>()
@@ -3668,11 +3668,11 @@ impl ::core::ops::Not for MENU_ITEM_STATE {
     }
 }
 impl FromIntoMemory for MENU_ITEM_STATE {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<u32>()
@@ -3734,11 +3734,11 @@ impl ::core::ops::Not for MENU_ITEM_TYPE {
     }
 }
 impl FromIntoMemory for MENU_ITEM_TYPE {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<u32>()
@@ -3776,11 +3776,11 @@ impl ::core::fmt::Debug for MESSAGEBOX_RESULT {
     }
 }
 impl FromIntoMemory for MESSAGEBOX_RESULT {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<i32>()
@@ -3870,11 +3870,11 @@ impl ::core::ops::Not for MESSAGEBOX_STYLE {
     }
 }
 impl FromIntoMemory for MESSAGEBOX_STYLE {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<u32>()
@@ -4018,11 +4018,11 @@ impl ::core::fmt::Debug for MINIMIZEDMETRICS_ARRANGE {
     }
 }
 impl FromIntoMemory for MINIMIZEDMETRICS_ARRANGE {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<i32>()
@@ -4204,11 +4204,11 @@ impl ::core::ops::Not for MOUSEHOOKSTRUCTEX_MOUSE_DATA {
     }
 }
 impl FromIntoMemory for MOUSEHOOKSTRUCTEX_MOUSE_DATA {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<u32>()
@@ -4411,11 +4411,11 @@ impl ::core::fmt::Debug for MSGFLTINFO_STATUS {
     }
 }
 impl FromIntoMemory for MSGFLTINFO_STATUS {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<u32>()
@@ -4485,11 +4485,11 @@ impl ::core::ops::Not for MSG_WAIT_FOR_MULTIPLE_OBJECTS_EX_FLAGS {
     }
 }
 impl FromIntoMemory for MSG_WAIT_FOR_MULTIPLE_OBJECTS_EX_FLAGS {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<u32>()
@@ -4551,11 +4551,11 @@ impl ::core::fmt::Debug for MrmDumpType {
     }
 }
 impl FromIntoMemory for MrmDumpType {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<i32>()
@@ -4583,11 +4583,11 @@ impl ::core::fmt::Debug for MrmIndexerFlags {
     }
 }
 impl FromIntoMemory for MrmIndexerFlags {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<i32>()
@@ -4615,11 +4615,11 @@ impl ::core::fmt::Debug for MrmPackagingMode {
     }
 }
 impl FromIntoMemory for MrmPackagingMode {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<i32>()
@@ -4648,11 +4648,11 @@ impl ::core::fmt::Debug for MrmPackagingOptions {
     }
 }
 impl FromIntoMemory for MrmPackagingOptions {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<i32>()
@@ -4680,11 +4680,11 @@ impl ::core::fmt::Debug for MrmPlatformVersion {
     }
 }
 impl FromIntoMemory for MrmPlatformVersion {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<i32>()
@@ -4767,11 +4767,11 @@ impl ::core::fmt::Debug for MrmResourceIndexerMessageSeverity {
     }
 }
 impl FromIntoMemory for MrmResourceIndexerMessageSeverity {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<i32>()
@@ -5014,11 +5014,11 @@ impl ::core::fmt::Debug for OBJECT_IDENTIFIER {
     }
 }
 impl FromIntoMemory for OBJECT_IDENTIFIER {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<i32>()
@@ -5171,11 +5171,11 @@ impl ::core::ops::Not for PEEK_MESSAGE_REMOVE_TYPE {
     }
 }
 impl FromIntoMemory for PEEK_MESSAGE_REMOVE_TYPE {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<u32>()
@@ -5226,11 +5226,11 @@ impl ::core::fmt::Debug for POINTER_INPUT_TYPE {
     }
 }
 impl FromIntoMemory for POINTER_INPUT_TYPE {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<i32>()
@@ -5357,11 +5357,11 @@ impl ::core::ops::Not for QUEUE_STATUS_FLAGS {
     }
 }
 impl FromIntoMemory for QUEUE_STATUS_FLAGS {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<u32>()
@@ -5540,11 +5540,11 @@ impl ::core::ops::Not for SCROLLBAR_CONSTANTS {
     }
 }
 impl FromIntoMemory for SCROLLBAR_CONSTANTS {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<u32>()
@@ -5643,11 +5643,11 @@ impl ::core::ops::Not for SCROLLINFO_MASK {
     }
 }
 impl FromIntoMemory for SCROLLINFO_MASK {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<u32>()
@@ -5736,11 +5736,11 @@ impl ::core::ops::Not for SEND_MESSAGE_TIMEOUT_FLAGS {
     }
 }
 impl FromIntoMemory for SEND_MESSAGE_TIMEOUT_FLAGS {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<u32>()
@@ -5811,11 +5811,11 @@ impl ::core::ops::Not for SET_WINDOW_POS_FLAGS {
     }
 }
 impl FromIntoMemory for SET_WINDOW_POS_FLAGS {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<u32>()
@@ -5919,11 +5919,11 @@ impl ::core::ops::Not for SHOW_WINDOW_CMD {
     }
 }
 impl FromIntoMemory for SHOW_WINDOW_CMD {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<u32>()
@@ -6098,11 +6098,11 @@ impl ::core::fmt::Debug for SYSTEM_CURSOR_ID {
     }
 }
 impl FromIntoMemory for SYSTEM_CURSOR_ID {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<u32>()
@@ -6224,11 +6224,11 @@ impl ::core::fmt::Debug for SYSTEM_METRICS_INDEX {
     }
 }
 impl FromIntoMemory for SYSTEM_METRICS_INDEX {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<u32>()
@@ -6696,11 +6696,11 @@ impl ::core::ops::Not for SYSTEM_PARAMETERS_INFO_ACTION {
     }
 }
 impl FromIntoMemory for SYSTEM_PARAMETERS_INFO_ACTION {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<u32>()
@@ -6761,11 +6761,11 @@ impl ::core::ops::Not for SYSTEM_PARAMETERS_INFO_UPDATE_FLAGS {
     }
 }
 impl FromIntoMemory for SYSTEM_PARAMETERS_INFO_UPDATE_FLAGS {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<u32>()
@@ -6826,11 +6826,11 @@ impl ::core::fmt::Debug for SYS_COLOR_INDEX {
     }
 }
 impl FromIntoMemory for SYS_COLOR_INDEX {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<u32>()
@@ -6857,11 +6857,11 @@ impl ::core::fmt::Debug for TILE_WINDOWS_HOW {
     }
 }
 impl FromIntoMemory for TILE_WINDOWS_HOW {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<u32>()
@@ -7055,11 +7055,11 @@ impl ::core::ops::Not for TRACK_POPUP_MENU_FLAGS {
     }
 }
 impl FromIntoMemory for TRACK_POPUP_MENU_FLAGS {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<u32>()
@@ -7190,11 +7190,11 @@ impl ::core::fmt::Debug for UPDATE_LAYERED_WINDOW_FLAGS {
     }
 }
 impl FromIntoMemory for UPDATE_LAYERED_WINDOW_FLAGS {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<u32>()
@@ -7350,11 +7350,11 @@ impl ::core::ops::Not for WINDOWPLACEMENT_FLAGS {
     }
 }
 impl FromIntoMemory for WINDOWPLACEMENT_FLAGS {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<u32>()
@@ -7434,11 +7434,11 @@ impl ::core::fmt::Debug for WINDOWS_HOOK_ID {
     }
 }
 impl FromIntoMemory for WINDOWS_HOOK_ID {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<i32>()
@@ -7468,11 +7468,11 @@ impl ::core::fmt::Debug for WINDOW_DISPLAY_AFFINITY {
     }
 }
 impl FromIntoMemory for WINDOW_DISPLAY_AFFINITY {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<u32>()
@@ -7552,11 +7552,11 @@ impl ::core::ops::Not for WINDOW_EX_STYLE {
     }
 }
 impl FromIntoMemory for WINDOW_EX_STYLE {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<u32>()
@@ -7595,11 +7595,11 @@ impl ::core::fmt::Debug for WINDOW_LONG_PTR_INDEX {
     }
 }
 impl FromIntoMemory for WINDOW_LONG_PTR_INDEX {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<i32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<i32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<i32>()
@@ -7629,11 +7629,11 @@ impl ::core::fmt::Debug for WINDOW_MESSAGE_FILTER_ACTION {
     }
 }
 impl FromIntoMemory for WINDOW_MESSAGE_FILTER_ACTION {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<u32>()
@@ -7714,11 +7714,11 @@ impl ::core::ops::Not for WINDOW_STYLE {
     }
 }
 impl FromIntoMemory for WINDOW_STYLE {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<u32>()
@@ -8311,11 +8311,11 @@ impl ::core::ops::Not for WNDCLASS_STYLES {
     }
 }
 impl FromIntoMemory for WNDCLASS_STYLES {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(<u32 as FromIntoMemory>::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<u32 as FromIntoMemory>::from_bytes(from))
     }
-    fn try_into_bytes(self, into: &mut [u8]) {
-        FromIntoMemory::try_into_bytes(self.0, into)
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
         std::mem::size_of::<u32>()

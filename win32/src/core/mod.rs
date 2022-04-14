@@ -45,12 +45,12 @@ impl PCWSTR {
 }
 
 impl FromIntoMemory for PCSTR {
-    fn try_from_bytes(from: &[u8]) -> Self {
-        Self(ConstPtr::try_from_bytes(from))
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(ConstPtr::from_bytes(from))
     }
 
-    fn try_into_bytes(self, into: &mut [u8]) {
-        self.0.try_into_bytes(into)
+    fn into_bytes(self, into: &mut [u8]) {
+        self.0.into_bytes(into)
     }
 
     fn size() -> usize {

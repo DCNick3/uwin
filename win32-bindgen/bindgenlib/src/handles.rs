@@ -50,11 +50,11 @@ pub fn gen_win_handle(def: &TypeDef, gen: &Gen) -> TokenStream {
             }
         }
         impl FromIntoMemory for #ident {
-            fn try_from_bytes(from: &[u8]) -> Self {
-                Self(<#signature as FromIntoMemory>::try_from_bytes(from))
+            fn from_bytes(from: &[u8]) -> Self {
+                Self(<#signature as FromIntoMemory>::from_bytes(from))
             }
-            fn try_into_bytes(self, into: &mut [u8]) {
-                FromIntoMemory::try_into_bytes(self.0, into)
+            fn into_bytes(self, into: &mut [u8]) {
+                FromIntoMemory::into_bytes(self.0, into)
             }
             fn size() -> usize {
                 std::mem::size_of::<#signature>()

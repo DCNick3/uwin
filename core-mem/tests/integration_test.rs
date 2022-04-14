@@ -48,19 +48,19 @@ struct TestStruct {
 }
 
 impl FromIntoMemory for TestStruct {
-    fn try_from_bytes(from: &[u8]) -> Self {
+    fn from_bytes(from: &[u8]) -> Self {
         // TODO: probably want some helpers to make this less verbose
         Self {
-            val1: u8::try_from_bytes(&from[0..1]),
-            val2: u32::try_from_bytes(&from[1..5]),
-            val3: u64::try_from_bytes(&from[5..13]),
+            val1: u8::from_bytes(&from[0..1]),
+            val2: u32::from_bytes(&from[1..5]),
+            val3: u64::from_bytes(&from[5..13]),
         }
     }
 
-    fn try_into_bytes(self, into: &mut [u8]) {
-        self.val1.try_into_bytes(&mut into[0..1]);
-        self.val2.try_into_bytes(&mut into[1..5]);
-        self.val3.try_into_bytes(&mut into[5..13]);
+    fn into_bytes(self, into: &mut [u8]) {
+        self.val1.into_bytes(&mut into[0..1]);
+        self.val2.into_bytes(&mut into[1..5]);
+        self.val3.into_bytes(&mut into[5..13]);
     }
 
     fn size() -> usize {

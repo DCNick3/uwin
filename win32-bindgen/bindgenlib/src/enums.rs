@@ -169,11 +169,11 @@ pub fn gen(def: &TypeDef, gen: &Gen) -> TokenStream {
         tokens.combine(&quote! {
             #features
             impl FromIntoMemory for #ident {
-                fn try_from_bytes(from: &[u8]) -> Self {
-                    Self(<#underlying_type as FromIntoMemory>::try_from_bytes(from))
+                fn from_bytes(from: &[u8]) -> Self {
+                    Self(<#underlying_type as FromIntoMemory>::from_bytes(from))
                 }
-                fn try_into_bytes(self, into: &mut [u8]) {
-                    FromIntoMemory::try_into_bytes(self.0, into)
+                fn into_bytes(self, into: &mut [u8]) {
+                    FromIntoMemory::into_bytes(self.0, into)
                 }
                 fn size() -> usize {
                     std::mem::size_of::<#underlying_type>()
