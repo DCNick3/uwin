@@ -1,8 +1,8 @@
 use crate::context::X86Context;
+use core_mem::conv::FromIntoMemory;
+use core_mem::ctx::MemoryCtx;
+use core_mem::ptr::{ConstPtr, PtrRepr};
 use static_assertions::assert_eq_size;
-use win32_mem::conv::FromIntoMemory;
-use win32_mem::ctx::MemoryCtx;
-use win32_mem::ptr::{ConstPtr, PtrRepr};
 
 assert_eq_size!(PtrRepr, u32);
 

@@ -1,5 +1,5 @@
 [package]
-name = "win32-abi"
+name = "core-abi"
 version = "0.1.0"
 edition = "2021"
 
@@ -7,5 +7,5 @@ edition = "2021"
 
 [dependencies]
 static_assertions = "1.1.0"
-win32-mem = { path = "../win32-mem" }
+core-mem = { path = "../core-mem" }
 rusty-x86 = { path = "../rusty-x86", optional = true }

@@ -13,8 +13,8 @@ lto = "thin"
 members = [
     "rusty-x86",
     "rusty-x86_derive",
-    "win32-mem",
-    "win32-abi",
+    "core-mem",
+    "core-abi",
     "win32",
 
     "win32-bindgen/bindgen",

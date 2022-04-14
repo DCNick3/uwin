@@ -1,5 +1,5 @@
 [package]
-name = "win32-mem"
+name = "core-mem"
 version = "0.1.0"
 edition = "2021"
 

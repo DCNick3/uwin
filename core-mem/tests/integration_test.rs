@@ -1,9 +1,9 @@
 use bencher::black_box;
+use core_mem::conv::FromIntoMemory;
+use core_mem::ctx::FlatMemoryCtx;
+use core_mem::ptr::{MutPtr, PtrRepr};
+use core_mem::thread_ctx::set_thread_ctx;
 use region::{Allocation, Protection};
-use win32_mem::conv::FromIntoMemory;
-use win32_mem::ctx::FlatMemoryCtx;
-use win32_mem::ptr::{MutPtr, PtrRepr};
-use win32_mem::thread_ctx::set_thread_ctx;
 
 // TODO: most probably the region crate does not provide the level of control required
 // should research if it is so and maybe create smth NIH that fits

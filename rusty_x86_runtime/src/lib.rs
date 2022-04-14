@@ -1,9 +1,9 @@
+pub use core_abi::stdcall::StdCallHelper;
+pub use core_mem::ctx::FlatMemoryCtx;
 use lazy_static::lazy_static;
 use recompiler::LoadedProcessImage;
 pub use rusty_x86::types::CpuContext;
 use std::ffi::c_void;
-pub use win32_abi::stdcall::StdCallHelper;
-pub use win32_mem::ctx::FlatMemoryCtx;
 
 extern "C" {
     static uwin_serialized_process_image: c_void;

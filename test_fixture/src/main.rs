@@ -1,3 +1,4 @@
+use core_mem::thread_ctx::{get_thread_ctx, set_thread_ctx};
 use recompiler::memory_image::{MemoryImageItem, Protection};
 use region::Allocation;
 use rusty_x86_runtime::{CpuContext, FlatMemoryCtx, StdCallHelper, PROGRAM_IMAGE};
@@ -9,7 +10,6 @@ use std::process::abort;
 use win32::core::PCSTR;
 use win32::Win32::Foundation::HWND;
 use win32::Win32::UI::WindowsAndMessaging::{Api, MESSAGEBOX_RESULT, MESSAGEBOX_STYLE};
-use win32_mem::thread_ctx::{get_thread_ctx, set_thread_ctx};
 
 struct WindowsAndMessaging {}
 
