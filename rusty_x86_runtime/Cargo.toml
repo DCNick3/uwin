@@ -1,17 +1,15 @@
 [package]
-name = "test_fixture"
+name = "rusty_x86_runtime"
 version = "0.1.0"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-rusty_x86_runtime = { path = "../rusty_x86_runtime" }
 recompiler = { path = "../recompiler" }
+rusty-x86 = { path = "../rusty-x86" }
 win32-mem = { path = "../win32-mem" }
-win32 = { path = "../win32" }
+win32-abi = { path = "../win32-abi", features = ["rusty-x86"] }
 
-region = "3.0.0"
-
-[build-dependencies]
-recompiler = { path = "../recompiler", features = ["recompilation", "mmap"] }
+lazy_static = "1.4.0"
+rmp-serde = "1.0.0"

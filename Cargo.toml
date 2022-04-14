@@ -14,6 +14,7 @@ members = [
     "rusty-x86",
     "rusty-x86_derive",
     "win32-mem",
+    "win32-abi",
     "win32",
 
     "win32-bindgen/bindgen",
@@ -22,8 +23,7 @@ members = [
     "win32-bindgen/tokens",
 
     "test_fixture",
-
-    "runtime",
+    "rusty_x86_runtime",
     "recompiler",
     "recomputil",
     "memory-image",

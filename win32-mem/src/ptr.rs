@@ -12,7 +12,7 @@ pub type PtrDiffRepr = i32;
 /// Stores memory context inside, along with the pointer value
 /// Needs wrapping to provide any meaningful
 #[derive(Copy, Clone, PartialEq, Eq)]
-pub struct RawPtr {
+pub(crate) struct RawPtr {
     pub value: PtrRepr,
 }
 

@@ -1,6 +1,6 @@
 use recompiler::memory_image::{MemoryImageItem, Protection};
 use region::Allocation;
-use runtime::{CpuContext, FlatMemoryCtx, PROGRAM_IMAGE};
+use rusty_x86_runtime::{CpuContext, FlatMemoryCtx, StdCallHelper, PROGRAM_IMAGE};
 use std::ffi::CStr;
 use std::io::Write;
 use std::os::raw::c_char;
@@ -9,7 +9,6 @@ use std::process::abort;
 use win32::core::PCSTR;
 use win32::Win32::Foundation::HWND;
 use win32::Win32::UI::WindowsAndMessaging::{Api, MESSAGEBOX_RESULT, MESSAGEBOX_STYLE};
-use win32_mem::ptr::{ConstPtr, PtrRepr};
 use win32_mem::thread_ctx::{get_thread_ctx, set_thread_ctx};
 
 struct WindowsAndMessaging {}
@@ -44,29 +43,18 @@ impl win32::Win32::UI::WindowsAndMessaging::Api for WindowsAndMessaging {
 #[no_mangle]
 extern "C" fn magic_MessageBoxA(context: &mut CpuContext, memory: FlatMemoryCtx) {
     let result = catch_unwind(AssertUnwindSafe(|| {
-        let esp = ConstPtr::<PtrRepr>::new(context.gp_regs[4]);
+        let mut call = StdCallHelper::new(memory, context);
 
-        let h_wnd_ptr = esp.offset(8);
-        let lp_text_ptr = esp.offset(12);
-        let lp_caption_ptr = esp.offset(16);
-        let u_type_ptr = esp.offset(20);
-
-        let h_wnd = h_wnd_ptr.read_with(memory);
-
-        let lp_text = lp_text_ptr.read_with(memory);
-        let lp_caption = lp_caption_ptr.read_with(memory);
-
-        let u_type = u_type_ptr.read_with(memory);
+        let h_wnd = call.get_arg();
+        let lp_text = call.get_arg();
+        let lp_caption = call.get_arg();
+        let u_type = call.get_arg();
 
         let api = WindowsAndMessaging {};
 
         let res = api.MessageBoxA(h_wnd, PCSTR(lp_text), PCSTR(lp_caption), u_type);
 
-        // store results to EAX
-        context.gp_regs[0] = res.0 as u32;
-
-        // pop args from the stack
-        context.gp_regs[4] -= 5 * 4;
+        call.finish(res);
     }));
 
     if result.is_err() {
@@ -155,5 +143,5 @@ fn main() {
     // set ESP to the bottom of the stack
     context.gp_regs[4] = stack_top + stack_size;
 
-    runtime::execute_recompiled_code(&mut context, memory_ctx, entry);
+    rusty_x86_runtime::execute_recompiled_code(&mut context, memory_ctx, entry);
 }
