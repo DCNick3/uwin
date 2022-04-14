@@ -421,7 +421,8 @@ version = "0.0.1"
 edition = "2018"
 
 [dependencies]
-win32-mem = { path = "../win32-mem" }
+core-mem = { path = "../core-mem" }
+anymap = "0.12.1"
 "#
         .as_bytes(),
     )

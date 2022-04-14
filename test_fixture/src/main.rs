@@ -1,15 +1,16 @@
 use core_mem::thread_ctx::{get_thread_ctx, set_thread_ctx};
 use recompiler::memory_image::{MemoryImageItem, Protection};
 use region::Allocation;
-use rusty_x86_runtime::{CpuContext, FlatMemoryCtx, StdCallHelper, PROGRAM_IMAGE};
+use rusty_x86_runtime::{CpuContext, ExtendedContext, FlatMemoryCtx, StdCallHelper, PROGRAM_IMAGE};
 use std::ffi::CStr;
 use std::io::Write;
 use std::os::raw::c_char;
 use std::panic::{catch_unwind, AssertUnwindSafe};
 use std::process::abort;
-use win32::core::PCSTR;
+use std::sync::Arc;
+use win32::core::{Win32Context, PCSTR};
 use win32::Win32::Foundation::HWND;
-use win32::Win32::UI::WindowsAndMessaging::{Api, MESSAGEBOX_RESULT, MESSAGEBOX_STYLE};
+use win32::Win32::UI::WindowsAndMessaging::{MESSAGEBOX_RESULT, MESSAGEBOX_STYLE};
 
 struct WindowsAndMessaging {}
 
@@ -41,16 +42,16 @@ impl win32::Win32::UI::WindowsAndMessaging::Api for WindowsAndMessaging {
 }
 
 #[no_mangle]
-extern "C" fn magic_MessageBoxA(context: &mut CpuContext, memory: FlatMemoryCtx) {
+extern "C" fn magic_MessageBoxA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = catch_unwind(AssertUnwindSafe(|| {
-        let mut call = StdCallHelper::new(memory, context);
+        let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
+
+        let mut call = StdCallHelper::new(memory, &mut context.cpu);
 
         let h_wnd = call.get_arg();
         let lp_text = call.get_arg();
         let lp_caption = call.get_arg();
         let u_type = call.get_arg();
-
-        let api = WindowsAndMessaging {};
 
         let res = api.MessageBoxA(h_wnd, PCSTR(lp_text), PCSTR(lp_caption), u_type);
 
@@ -134,14 +135,21 @@ fn main() {
 
     let entry = PROGRAM_IMAGE.exe_entrypoint;
 
-    let mut context = CpuContext::default();
+    let mut context = ExtendedContext {
+        cpu: CpuContext::default(),
+        win32: Win32Context::new(),
+    };
+
+    context.win32.insert(
+        Arc::new(WindowsAndMessaging {}) as Arc<dyn win32::Win32::UI::WindowsAndMessaging::Api>
+    );
 
     let stack_size = 0x10000;
     let stack_top = mapper
         .map(stack_size, Protection::READ_WRITE)
         .expect("Mapping stack");
     // set ESP to the bottom of the stack
-    context.gp_regs[4] = stack_top + stack_size;
+    context.cpu.gp_regs[4] = stack_top + stack_size;
 
     rusty_x86_runtime::execute_recompiled_code(&mut context, memory_ctx, entry);
 }

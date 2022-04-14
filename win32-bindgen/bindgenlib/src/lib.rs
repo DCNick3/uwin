@@ -90,7 +90,7 @@ pub fn gen_namespace(gen: &Gen, child_namespaces: &Vec<String>) -> String {
 //     tokens.into_string()
 // }
 
-fn gen_api_trait(tree: &TypeTree, gen: &Gen) -> TokenStream {
+fn gen_api_trait(tree: &TypeTree, gen: &Gen) -> Option<TokenStream> {
     let mut tokens = TokenStream::new();
 
     for entry in tree.types.values() {
@@ -105,13 +105,17 @@ fn gen_api_trait(tree: &TypeTree, gen: &Gen) -> TokenStream {
 
     // do not emit an empty Api trait
     if !tokens.is_empty() {
-        quote! {
+        Some(quote! {
             pub trait Api {
                 #tokens
             }
-        }
+
+            pub fn get_api(ctx: &crate::core::Win32Context) -> &dyn Api {
+                ctx.get::<dyn Api>()
+            }
+        })
     } else {
-        quote! {}
+        None
     }
 }
 

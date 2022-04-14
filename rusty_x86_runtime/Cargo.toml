@@ -10,6 +10,7 @@ recompiler = { path = "../recompiler" }
 rusty-x86 = { path = "../rusty-x86" }
 core-mem = { path = "../core-mem" }
 core-abi = { path = "../core-abi", features = ["rusty-x86"] }
+win32 = { path = "../win32" }
 
 lazy_static = "1.4.0"
 rmp-serde = "1.0.0"

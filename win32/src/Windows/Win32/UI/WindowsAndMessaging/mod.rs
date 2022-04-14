@@ -11335,3 +11335,6 @@ pub trait Api {
         todo!()
     }
 }
+pub fn get_api(ctx: &crate::core::Win32Context) -> &dyn Api {
+    ctx.get::<dyn Api>()
+}

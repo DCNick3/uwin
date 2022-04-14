@@ -1,7 +1,10 @@
 pub mod prelude;
 
+use anymap::any::{Any, IntoBox};
+use anymap::AnyMap;
 #[allow(unused)]
 use prelude::*;
+use std::sync::Arc;
 
 /// An error code value returned by most COM functions.
 #[derive(Copy, Clone, Default, Debug, Eq, PartialEq)]
@@ -76,5 +79,40 @@ impl core::fmt::Debug for GUID {
             self.data4[6],
             self.data4[7]
         )
+    }
+}
+
+pub struct Win32Context(anymap::AnyMap);
+
+impl Win32Context {
+    pub fn new() -> Self {
+        Self(AnyMap::new())
+    }
+
+    pub fn get<T: ?Sized>(&self) -> &T
+    where
+        Arc<T>: IntoBox<dyn Any>,
+    {
+        self.0
+            .get::<Arc<T>>()
+            .unwrap_or_else(|| {
+                panic!(
+                    "Could not find a registered implementation for {}",
+                    std::any::type_name::<T>()
+                )
+            })
+            .as_ref()
+    }
+
+    pub fn insert<T: ?Sized>(&mut self, value: Arc<T>)
+    where
+        Arc<T>: IntoBox<dyn Any>,
+    {
+        if !self.0.insert(value).is_none() {
+            panic!(
+                "Multiple Api implementations registered for {}",
+                std::any::type_name::<T>()
+            )
+        };
     }
 }
