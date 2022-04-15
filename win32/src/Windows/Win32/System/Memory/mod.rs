@@ -1619,7 +1619,7 @@ pub trait Api {
         &self,
         pfn_call_back: PSECURE_MEMORY_CACHE_CALLBACK,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("AddSecureMemoryCacheCallback")
     }
     fn AllocateUserPhysicalPages(
         &self,
@@ -1627,7 +1627,7 @@ pub trait Api {
         number_of_pages: MutPtr<PtrRepr>,
         page_array: MutPtr<PtrRepr>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("AllocateUserPhysicalPages")
     }
     fn AllocateUserPhysicalPages2(
         &self,
@@ -1637,7 +1637,7 @@ pub trait Api {
         extended_parameters: MutPtr<MEM_EXTENDED_PARAMETER>,
         extended_parameter_count: u32,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("AllocateUserPhysicalPages2")
     }
     fn AllocateUserPhysicalPagesNuma(
         &self,
@@ -1646,7 +1646,7 @@ pub trait Api {
         page_array: MutPtr<PtrRepr>,
         nnd_preferred: u32,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("AllocateUserPhysicalPagesNuma")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -1662,7 +1662,7 @@ pub trait Api {
         extended_parameters: MutPtr<MEM_EXTENDED_PARAMETER>,
         parameter_count: u32,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("CreateFileMapping2")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -1675,7 +1675,7 @@ pub trait Api {
         dw_maximum_size_low: u32,
         lp_name: crate::core::PCSTR,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("CreateFileMappingA")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -1687,7 +1687,7 @@ pub trait Api {
         maximum_size: u64,
         name: crate::core::PCWSTR,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("CreateFileMappingFromApp")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -1701,7 +1701,7 @@ pub trait Api {
         lp_name: crate::core::PCSTR,
         nnd_preferred: u32,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("CreateFileMappingNumaA")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -1715,7 +1715,7 @@ pub trait Api {
         lp_name: crate::core::PCWSTR,
         nnd_preferred: u32,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("CreateFileMappingNumaW")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -1728,27 +1728,27 @@ pub trait Api {
         dw_maximum_size_low: u32,
         lp_name: crate::core::PCWSTR,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("CreateFileMappingW")
     }
     fn CreateMemoryResourceNotification(
         &self,
         notification_type: MEMORY_RESOURCE_NOTIFICATION_TYPE,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("CreateMemoryResourceNotification")
     }
     fn DiscardVirtualMemory(
         &self,
         virtual_address: MutPtr<::core::ffi::c_void>,
         size: PtrRepr,
     ) -> u32 {
-        todo!()
+        todo!("DiscardVirtualMemory")
     }
     fn FlushViewOfFile(
         &self,
         lp_base_address: ConstPtr<::core::ffi::c_void>,
         dw_number_of_bytes_to_flush: PtrRepr,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("FlushViewOfFile")
     }
     fn FreeUserPhysicalPages(
         &self,
@@ -1756,22 +1756,22 @@ pub trait Api {
         number_of_pages: MutPtr<PtrRepr>,
         page_array: ConstPtr<PtrRepr>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("FreeUserPhysicalPages")
     }
     fn GetLargePageMinimum(&self) -> PtrRepr {
-        todo!()
+        todo!("GetLargePageMinimum")
     }
     fn GetMemoryErrorHandlingCapabilities(
         &self,
         capabilities: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetMemoryErrorHandlingCapabilities")
     }
     fn GetProcessHeap(&self) -> HeapHandle {
-        todo!()
+        todo!("GetProcessHeap")
     }
     fn GetProcessHeaps(&self, number_of_heaps: u32, process_heaps: MutPtr<HeapHandle>) -> u32 {
-        todo!()
+        todo!("GetProcessHeaps")
     }
     fn GetProcessWorkingSetSizeEx(
         &self,
@@ -1780,7 +1780,7 @@ pub trait Api {
         lp_maximum_working_set_size: MutPtr<PtrRepr>,
         flags: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetProcessWorkingSetSizeEx")
     }
     fn GetSystemFileCacheSize(
         &self,
@@ -1788,7 +1788,7 @@ pub trait Api {
         lp_maximum_file_cache_size: MutPtr<PtrRepr>,
         lp_flags: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetSystemFileCacheSize")
     }
     fn GetWriteWatch(
         &self,
@@ -1799,31 +1799,31 @@ pub trait Api {
         lpdw_count: MutPtr<PtrRepr>,
         lpdw_granularity: MutPtr<u32>,
     ) -> u32 {
-        todo!()
+        todo!("GetWriteWatch")
     }
     fn GlobalAlloc(&self, u_flags: GLOBAL_ALLOC_FLAGS, dw_bytes: PtrRepr) -> PtrDiffRepr {
-        todo!()
+        todo!("GlobalAlloc")
     }
     fn GlobalFlags(&self, h_mem: PtrDiffRepr) -> u32 {
-        todo!()
+        todo!("GlobalFlags")
     }
     fn GlobalFree(&self, h_mem: PtrDiffRepr) -> PtrDiffRepr {
-        todo!()
+        todo!("GlobalFree")
     }
     fn GlobalHandle(&self, p_mem: ConstPtr<::core::ffi::c_void>) -> PtrDiffRepr {
-        todo!()
+        todo!("GlobalHandle")
     }
     fn GlobalLock(&self, h_mem: PtrDiffRepr) -> MutPtr<::core::ffi::c_void> {
-        todo!()
+        todo!("GlobalLock")
     }
     fn GlobalReAlloc(&self, h_mem: PtrDiffRepr, dw_bytes: PtrRepr, u_flags: u32) -> PtrDiffRepr {
-        todo!()
+        todo!("GlobalReAlloc")
     }
     fn GlobalSize(&self, h_mem: PtrDiffRepr) -> PtrRepr {
-        todo!()
+        todo!("GlobalSize")
     }
     fn GlobalUnlock(&self, h_mem: PtrDiffRepr) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GlobalUnlock")
     }
     fn HeapAlloc(
         &self,
@@ -1831,10 +1831,10 @@ pub trait Api {
         dw_flags: HEAP_FLAGS,
         dw_bytes: PtrRepr,
     ) -> MutPtr<::core::ffi::c_void> {
-        todo!()
+        todo!("HeapAlloc")
     }
     fn HeapCompact(&self, h_heap: HeapHandle, dw_flags: HEAP_FLAGS) -> PtrRepr {
-        todo!()
+        todo!("HeapCompact")
     }
     fn HeapCreate(
         &self,
@@ -1842,10 +1842,10 @@ pub trait Api {
         dw_initial_size: PtrRepr,
         dw_maximum_size: PtrRepr,
     ) -> HeapHandle {
-        todo!()
+        todo!("HeapCreate")
     }
     fn HeapDestroy(&self, h_heap: HeapHandle) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("HeapDestroy")
     }
     fn HeapFree(
         &self,
@@ -1853,10 +1853,10 @@ pub trait Api {
         dw_flags: HEAP_FLAGS,
         lp_mem: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("HeapFree")
     }
     fn HeapLock(&self, h_heap: HeapHandle) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("HeapLock")
     }
     fn HeapQueryInformation(
         &self,
@@ -1866,7 +1866,7 @@ pub trait Api {
         heap_information_length: PtrRepr,
         return_length: MutPtr<PtrRepr>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("HeapQueryInformation")
     }
     fn HeapReAlloc(
         &self,
@@ -1875,7 +1875,7 @@ pub trait Api {
         lp_mem: ConstPtr<::core::ffi::c_void>,
         dw_bytes: PtrRepr,
     ) -> MutPtr<::core::ffi::c_void> {
-        todo!()
+        todo!("HeapReAlloc")
     }
     fn HeapSetInformation(
         &self,
@@ -1884,7 +1884,7 @@ pub trait Api {
         heap_information: ConstPtr<::core::ffi::c_void>,
         heap_information_length: PtrRepr,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("HeapSetInformation")
     }
     fn HeapSize(
         &self,
@@ -1892,7 +1892,7 @@ pub trait Api {
         dw_flags: HEAP_FLAGS,
         lp_mem: ConstPtr<::core::ffi::c_void>,
     ) -> PtrRepr {
-        todo!()
+        todo!("HeapSize")
     }
     fn HeapSummary(
         &self,
@@ -1900,10 +1900,10 @@ pub trait Api {
         dw_flags: u32,
         lp_summary: MutPtr<HEAP_SUMMARY>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("HeapSummary")
     }
     fn HeapUnlock(&self, h_heap: HeapHandle) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("HeapUnlock")
     }
     fn HeapValidate(
         &self,
@@ -1911,72 +1911,72 @@ pub trait Api {
         dw_flags: HEAP_FLAGS,
         lp_mem: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("HeapValidate")
     }
     fn HeapWalk(
         &self,
         h_heap: HeapHandle,
         lp_entry: MutPtr<PROCESS_HEAP_ENTRY>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("HeapWalk")
     }
     fn IsBadCodePtr(
         &self,
         lpfn: super::super::Foundation::FARPROC,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("IsBadCodePtr")
     }
     fn IsBadReadPtr(
         &self,
         lp: ConstPtr<::core::ffi::c_void>,
         ucb: PtrRepr,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("IsBadReadPtr")
     }
     fn IsBadStringPtrA(
         &self,
         lpsz: crate::core::PCSTR,
         ucch_max: PtrRepr,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("IsBadStringPtrA")
     }
     fn IsBadStringPtrW(
         &self,
         lpsz: crate::core::PCWSTR,
         ucch_max: PtrRepr,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("IsBadStringPtrW")
     }
     fn IsBadWritePtr(
         &self,
         lp: ConstPtr<::core::ffi::c_void>,
         ucb: PtrRepr,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("IsBadWritePtr")
     }
     fn LocalAlloc(&self, u_flags: LOCAL_ALLOC_FLAGS, u_bytes: PtrRepr) -> PtrDiffRepr {
-        todo!()
+        todo!("LocalAlloc")
     }
     fn LocalFlags(&self, h_mem: PtrDiffRepr) -> u32 {
-        todo!()
+        todo!("LocalFlags")
     }
     fn LocalFree(&self, h_mem: PtrDiffRepr) -> PtrDiffRepr {
-        todo!()
+        todo!("LocalFree")
     }
     fn LocalHandle(&self, p_mem: ConstPtr<::core::ffi::c_void>) -> PtrDiffRepr {
-        todo!()
+        todo!("LocalHandle")
     }
     fn LocalLock(&self, h_mem: PtrDiffRepr) -> MutPtr<::core::ffi::c_void> {
-        todo!()
+        todo!("LocalLock")
     }
     fn LocalReAlloc(&self, h_mem: PtrDiffRepr, u_bytes: PtrRepr, u_flags: u32) -> PtrDiffRepr {
-        todo!()
+        todo!("LocalReAlloc")
     }
     fn LocalSize(&self, h_mem: PtrDiffRepr) -> PtrRepr {
-        todo!()
+        todo!("LocalSize")
     }
     fn LocalUnlock(&self, h_mem: PtrDiffRepr) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("LocalUnlock")
     }
     fn MapUserPhysicalPages(
         &self,
@@ -1984,7 +1984,7 @@ pub trait Api {
         number_of_pages: PtrRepr,
         page_array: ConstPtr<PtrRepr>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("MapUserPhysicalPages")
     }
     fn MapUserPhysicalPagesScatter(
         &self,
@@ -1992,7 +1992,7 @@ pub trait Api {
         number_of_pages: PtrRepr,
         page_array: ConstPtr<PtrRepr>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("MapUserPhysicalPagesScatter")
     }
     fn MapViewOfFile(
         &self,
@@ -2002,7 +2002,7 @@ pub trait Api {
         dw_file_offset_low: u32,
         dw_number_of_bytes_to_map: PtrRepr,
     ) -> MutPtr<::core::ffi::c_void> {
-        todo!()
+        todo!("MapViewOfFile")
     }
     fn MapViewOfFile3(
         &self,
@@ -2016,7 +2016,7 @@ pub trait Api {
         extended_parameters: MutPtr<MEM_EXTENDED_PARAMETER>,
         parameter_count: u32,
     ) -> MutPtr<::core::ffi::c_void> {
-        todo!()
+        todo!("MapViewOfFile3")
     }
     fn MapViewOfFile3FromApp(
         &self,
@@ -2030,7 +2030,7 @@ pub trait Api {
         extended_parameters: MutPtr<MEM_EXTENDED_PARAMETER>,
         parameter_count: u32,
     ) -> MutPtr<::core::ffi::c_void> {
-        todo!()
+        todo!("MapViewOfFile3FromApp")
     }
     fn MapViewOfFileEx(
         &self,
@@ -2041,7 +2041,7 @@ pub trait Api {
         dw_number_of_bytes_to_map: PtrRepr,
         lp_base_address: ConstPtr<::core::ffi::c_void>,
     ) -> MutPtr<::core::ffi::c_void> {
-        todo!()
+        todo!("MapViewOfFileEx")
     }
     fn MapViewOfFileExNuma(
         &self,
@@ -2053,7 +2053,7 @@ pub trait Api {
         lp_base_address: ConstPtr<::core::ffi::c_void>,
         nnd_preferred: u32,
     ) -> MutPtr<::core::ffi::c_void> {
-        todo!()
+        todo!("MapViewOfFileExNuma")
     }
     fn MapViewOfFileFromApp(
         &self,
@@ -2062,7 +2062,7 @@ pub trait Api {
         file_offset: u64,
         number_of_bytes_to_map: PtrRepr,
     ) -> MutPtr<::core::ffi::c_void> {
-        todo!()
+        todo!("MapViewOfFileFromApp")
     }
     fn MapViewOfFileNuma2(
         &self,
@@ -2075,7 +2075,7 @@ pub trait Api {
         page_protection: u32,
         preferred_node: u32,
     ) -> MutPtr<::core::ffi::c_void> {
-        todo!()
+        todo!("MapViewOfFileNuma2")
     }
     fn OfferVirtualMemory(
         &self,
@@ -2083,7 +2083,7 @@ pub trait Api {
         size: PtrRepr,
         priority: OFFER_PRIORITY,
     ) -> u32 {
-        todo!()
+        todo!("OfferVirtualMemory")
     }
     fn OpenDedicatedMemoryPartition(
         &self,
@@ -2092,7 +2092,7 @@ pub trait Api {
         desired_access: u32,
         inherit_handle: super::super::Foundation::BOOL,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("OpenDedicatedMemoryPartition")
     }
     fn OpenFileMappingA(
         &self,
@@ -2100,7 +2100,7 @@ pub trait Api {
         b_inherit_handle: super::super::Foundation::BOOL,
         lp_name: crate::core::PCSTR,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("OpenFileMappingA")
     }
     fn OpenFileMappingFromApp(
         &self,
@@ -2108,7 +2108,7 @@ pub trait Api {
         inherit_handle: super::super::Foundation::BOOL,
         name: crate::core::PCWSTR,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("OpenFileMappingFromApp")
     }
     fn OpenFileMappingW(
         &self,
@@ -2116,7 +2116,7 @@ pub trait Api {
         b_inherit_handle: super::super::Foundation::BOOL,
         lp_name: crate::core::PCWSTR,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("OpenFileMappingW")
     }
     fn PrefetchVirtualMemory(
         &self,
@@ -2125,14 +2125,14 @@ pub trait Api {
         virtual_addresses: ConstPtr<WIN32_MEMORY_RANGE_ENTRY>,
         flags: u32,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("PrefetchVirtualMemory")
     }
     fn QueryMemoryResourceNotification(
         &self,
         resource_notification_handle: super::super::Foundation::HANDLE,
         resource_state: MutPtr<super::super::Foundation::BOOL>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("QueryMemoryResourceNotification")
     }
     fn QueryPartitionInformation(
         &self,
@@ -2141,7 +2141,7 @@ pub trait Api {
         partition_information: MutPtr<::core::ffi::c_void>,
         partition_information_length: u32,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("QueryPartitionInformation")
     }
     fn QueryVirtualMemoryInformation(
         &self,
@@ -2152,33 +2152,33 @@ pub trait Api {
         memory_information_size: PtrRepr,
         return_size: MutPtr<PtrRepr>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("QueryVirtualMemoryInformation")
     }
     fn ReclaimVirtualMemory(
         &self,
         virtual_address: ConstPtr<::core::ffi::c_void>,
         size: PtrRepr,
     ) -> u32 {
-        todo!()
+        todo!("ReclaimVirtualMemory")
     }
     fn RegisterBadMemoryNotification(
         &self,
         callback: PBAD_MEMORY_CALLBACK_ROUTINE,
     ) -> MutPtr<::core::ffi::c_void> {
-        todo!()
+        todo!("RegisterBadMemoryNotification")
     }
     fn RemoveSecureMemoryCacheCallback(
         &self,
         pfn_call_back: PSECURE_MEMORY_CACHE_CALLBACK,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("RemoveSecureMemoryCacheCallback")
     }
     fn ResetWriteWatch(
         &self,
         lp_base_address: ConstPtr<::core::ffi::c_void>,
         dw_region_size: PtrRepr,
     ) -> u32 {
-        todo!()
+        todo!("ResetWriteWatch")
     }
     fn RtlCompareMemory(
         &self,
@@ -2186,7 +2186,7 @@ pub trait Api {
         source_2: ConstPtr<::core::ffi::c_void>,
         length: PtrRepr,
     ) -> PtrRepr {
-        todo!()
+        todo!("RtlCompareMemory")
     }
     fn RtlCrc32(
         &self,
@@ -2194,7 +2194,7 @@ pub trait Api {
         size: PtrRepr,
         initial_crc: u32,
     ) -> u32 {
-        todo!()
+        todo!("RtlCrc32")
     }
     fn RtlCrc64(
         &self,
@@ -2202,14 +2202,14 @@ pub trait Api {
         size: PtrRepr,
         initial_crc: u64,
     ) -> u64 {
-        todo!()
+        todo!("RtlCrc64")
     }
     fn RtlIsZeroMemory(
         &self,
         buffer: ConstPtr<::core::ffi::c_void>,
         length: PtrRepr,
     ) -> super::super::Foundation::BOOLEAN {
-        todo!()
+        todo!("RtlIsZeroMemory")
     }
     fn SetProcessValidCallTargets(
         &self,
@@ -2219,7 +2219,7 @@ pub trait Api {
         number_of_offsets: u32,
         offset_information: MutPtr<CFG_CALL_TARGET_INFO>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetProcessValidCallTargets")
     }
     fn SetProcessValidCallTargetsForMappedView(
         &self,
@@ -2231,7 +2231,7 @@ pub trait Api {
         section: super::super::Foundation::HANDLE,
         expected_file_offset: u64,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetProcessValidCallTargetsForMappedView")
     }
     fn SetProcessWorkingSetSizeEx(
         &self,
@@ -2240,7 +2240,7 @@ pub trait Api {
         dw_maximum_working_set_size: PtrRepr,
         flags: u32,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetProcessWorkingSetSizeEx")
     }
     fn SetSystemFileCacheSize(
         &self,
@@ -2248,13 +2248,13 @@ pub trait Api {
         maximum_file_cache_size: PtrRepr,
         flags: u32,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetSystemFileCacheSize")
     }
     fn UnmapViewOfFile(
         &self,
         lp_base_address: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("UnmapViewOfFile")
     }
     fn UnmapViewOfFile2(
         &self,
@@ -2262,20 +2262,20 @@ pub trait Api {
         base_address: ConstPtr<::core::ffi::c_void>,
         unmap_flags: UNMAP_VIEW_OF_FILE_FLAGS,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("UnmapViewOfFile2")
     }
     fn UnmapViewOfFileEx(
         &self,
         base_address: ConstPtr<::core::ffi::c_void>,
         unmap_flags: UNMAP_VIEW_OF_FILE_FLAGS,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("UnmapViewOfFileEx")
     }
     fn UnregisterBadMemoryNotification(
         &self,
         registration_handle: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("UnregisterBadMemoryNotification")
     }
     fn VirtualAlloc(
         &self,
@@ -2284,7 +2284,7 @@ pub trait Api {
         fl_allocation_type: VIRTUAL_ALLOCATION_TYPE,
         fl_protect: PAGE_PROTECTION_FLAGS,
     ) -> MutPtr<::core::ffi::c_void> {
-        todo!()
+        todo!("VirtualAlloc")
     }
     fn VirtualAlloc2(
         &self,
@@ -2296,7 +2296,7 @@ pub trait Api {
         extended_parameters: MutPtr<MEM_EXTENDED_PARAMETER>,
         parameter_count: u32,
     ) -> MutPtr<::core::ffi::c_void> {
-        todo!()
+        todo!("VirtualAlloc2")
     }
     fn VirtualAlloc2FromApp(
         &self,
@@ -2308,7 +2308,7 @@ pub trait Api {
         extended_parameters: MutPtr<MEM_EXTENDED_PARAMETER>,
         parameter_count: u32,
     ) -> MutPtr<::core::ffi::c_void> {
-        todo!()
+        todo!("VirtualAlloc2FromApp")
     }
     fn VirtualAllocEx(
         &self,
@@ -2318,7 +2318,7 @@ pub trait Api {
         fl_allocation_type: VIRTUAL_ALLOCATION_TYPE,
         fl_protect: PAGE_PROTECTION_FLAGS,
     ) -> MutPtr<::core::ffi::c_void> {
-        todo!()
+        todo!("VirtualAllocEx")
     }
     fn VirtualAllocExNuma(
         &self,
@@ -2329,7 +2329,7 @@ pub trait Api {
         fl_protect: u32,
         nnd_preferred: u32,
     ) -> MutPtr<::core::ffi::c_void> {
-        todo!()
+        todo!("VirtualAllocExNuma")
     }
     fn VirtualAllocFromApp(
         &self,
@@ -2338,7 +2338,7 @@ pub trait Api {
         allocation_type: VIRTUAL_ALLOCATION_TYPE,
         protection: u32,
     ) -> MutPtr<::core::ffi::c_void> {
-        todo!()
+        todo!("VirtualAllocFromApp")
     }
     fn VirtualFree(
         &self,
@@ -2346,7 +2346,7 @@ pub trait Api {
         dw_size: PtrRepr,
         dw_free_type: VIRTUAL_FREE_TYPE,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("VirtualFree")
     }
     fn VirtualFreeEx(
         &self,
@@ -2355,14 +2355,14 @@ pub trait Api {
         dw_size: PtrRepr,
         dw_free_type: VIRTUAL_FREE_TYPE,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("VirtualFreeEx")
     }
     fn VirtualLock(
         &self,
         lp_address: ConstPtr<::core::ffi::c_void>,
         dw_size: PtrRepr,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("VirtualLock")
     }
     fn VirtualProtect(
         &self,
@@ -2371,7 +2371,7 @@ pub trait Api {
         fl_new_protect: PAGE_PROTECTION_FLAGS,
         lpfl_old_protect: MutPtr<PAGE_PROTECTION_FLAGS>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("VirtualProtect")
     }
     fn VirtualProtectEx(
         &self,
@@ -2381,7 +2381,7 @@ pub trait Api {
         fl_new_protect: PAGE_PROTECTION_FLAGS,
         lpfl_old_protect: MutPtr<PAGE_PROTECTION_FLAGS>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("VirtualProtectEx")
     }
     fn VirtualProtectFromApp(
         &self,
@@ -2390,7 +2390,7 @@ pub trait Api {
         new_protection: u32,
         old_protection: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("VirtualProtectFromApp")
     }
     fn VirtualQuery(
         &self,
@@ -2398,7 +2398,7 @@ pub trait Api {
         lp_buffer: MutPtr<MEMORY_BASIC_INFORMATION>,
         dw_length: PtrRepr,
     ) -> PtrRepr {
-        todo!()
+        todo!("VirtualQuery")
     }
     fn VirtualQueryEx(
         &self,
@@ -2407,14 +2407,14 @@ pub trait Api {
         lp_buffer: MutPtr<MEMORY_BASIC_INFORMATION>,
         dw_length: PtrRepr,
     ) -> PtrRepr {
-        todo!()
+        todo!("VirtualQueryEx")
     }
     fn VirtualUnlock(
         &self,
         lp_address: ConstPtr<::core::ffi::c_void>,
         dw_size: PtrRepr,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("VirtualUnlock")
     }
     fn VirtualUnlockEx(
         &self,
@@ -2422,7 +2422,7 @@ pub trait Api {
         address: ConstPtr<::core::ffi::c_void>,
         size: PtrRepr,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("VirtualUnlockEx")
     }
 }
 pub fn get_api(ctx: &crate::core::Win32Context) -> &dyn Api {

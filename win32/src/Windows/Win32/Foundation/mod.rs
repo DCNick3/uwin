@@ -12449,14 +12449,14 @@ pub const _WIN32_WINDOWS_MAXVER: u32 = 2560u32;
 pub const _WIN32_WINNT_MAXVER: u32 = 2560u32;
 pub trait Api {
     fn CloseHandle(&self, h_object: HANDLE) -> BOOL {
-        todo!()
+        todo!("CloseHandle")
     }
     fn CompareObjectHandles(
         &self,
         h_first_object_handle: HANDLE,
         h_second_object_handle: HANDLE,
     ) -> BOOL {
-        todo!()
+        todo!("CompareObjectHandles")
     }
     fn DuplicateHandle(
         &self,
@@ -12468,19 +12468,19 @@ pub trait Api {
         b_inherit_handle: BOOL,
         dw_options: DUPLICATE_HANDLE_OPTIONS,
     ) -> BOOL {
-        todo!()
+        todo!("DuplicateHandle")
     }
     fn GetHandleInformation(&self, h_object: HANDLE, lpdw_flags: MutPtr<u32>) -> BOOL {
-        todo!()
+        todo!("GetHandleInformation")
     }
     fn GetLastError(&self) -> WIN32_ERROR {
-        todo!()
+        todo!("GetLastError")
     }
     fn SetHandleInformation(&self, h_object: HANDLE, dw_mask: u32, dw_flags: HANDLE_FLAGS) -> BOOL {
-        todo!()
+        todo!("SetHandleInformation")
     }
     fn SetLastError(&self, dw_err_code: WIN32_ERROR) {
-        todo!()
+        todo!("SetLastError")
     }
 }
 pub fn get_api(ctx: &crate::core::Win32Context) -> &dyn Api {

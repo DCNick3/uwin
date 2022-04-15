@@ -2132,7 +2132,7 @@ pub trait Api {
         lp_buffer: crate::core::PSTR,
         n_size: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetComputerNameExA")
     }
     fn GetComputerNameExW(
         &self,
@@ -2140,17 +2140,17 @@ pub trait Api {
         lp_buffer: crate::core::PWSTR,
         n_size: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetComputerNameExW")
     }
     fn GetLocalTime(&self, lp_system_time: MutPtr<super::super::Foundation::SYSTEMTIME>) {
-        todo!()
+        todo!("GetLocalTime")
     }
     fn GetLogicalProcessorInformation(
         &self,
         buffer: MutPtr<SYSTEM_LOGICAL_PROCESSOR_INFORMATION>,
         returned_length: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetLogicalProcessorInformation")
     }
     fn GetLogicalProcessorInformationEx(
         &self,
@@ -2158,25 +2158,25 @@ pub trait Api {
         buffer: MutPtr<SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX>,
         returned_length: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetLogicalProcessorInformationEx")
     }
     fn GetNativeSystemInfo(&self, lp_system_info: MutPtr<SYSTEM_INFO>) {
-        todo!()
+        todo!("GetNativeSystemInfo")
     }
     fn GetOsManufacturingMode(
         &self,
         pb_enabled: MutPtr<super::super::Foundation::BOOL>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetOsManufacturingMode")
     }
     fn GetOsSafeBootMode(&self, flags: MutPtr<u32>) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetOsSafeBootMode")
     }
     fn GetPhysicallyInstalledSystemMemory(
         &self,
         total_memory_in_kilobytes: MutPtr<u64>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetPhysicallyInstalledSystemMemory")
     }
     fn GetProcessorSystemCycleTime(
         &self,
@@ -2184,7 +2184,7 @@ pub trait Api {
         buffer: MutPtr<SYSTEM_PROCESSOR_CYCLE_TIME_INFORMATION>,
         returned_length: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetProcessorSystemCycleTime")
     }
     fn GetProductInfo(
         &self,
@@ -2194,7 +2194,7 @@ pub trait Api {
         dw_sp_minor_version: u32,
         pdw_returned_product_type: MutPtr<OS_PRODUCT_TYPE>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetProductInfo")
     }
     fn GetSystemCpuSetInformation(
         &self,
@@ -2204,16 +2204,16 @@ pub trait Api {
         process: super::super::Foundation::HANDLE,
         flags: u32,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetSystemCpuSetInformation")
     }
     fn GetSystemDEPPolicy(&self) -> DEP_SYSTEM_POLICY_TYPE {
-        todo!()
+        todo!("GetSystemDEPPolicy")
     }
     fn GetSystemDirectoryA(&self, lp_buffer: crate::core::PSTR, u_size: u32) -> u32 {
-        todo!()
+        todo!("GetSystemDirectoryA")
     }
     fn GetSystemDirectoryW(&self, lp_buffer: crate::core::PWSTR, u_size: u32) -> u32 {
-        todo!()
+        todo!("GetSystemDirectoryW")
     }
     fn GetSystemFirmwareTable(
         &self,
@@ -2222,20 +2222,20 @@ pub trait Api {
         p_firmware_table_buffer: MutPtr<::core::ffi::c_void>,
         buffer_size: u32,
     ) -> u32 {
-        todo!()
+        todo!("GetSystemFirmwareTable")
     }
     fn GetSystemInfo(&self, lp_system_info: MutPtr<SYSTEM_INFO>) {
-        todo!()
+        todo!("GetSystemInfo")
     }
     fn GetSystemLeapSecondInformation(
         &self,
         enabled: MutPtr<super::super::Foundation::BOOL>,
         flags: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetSystemLeapSecondInformation")
     }
     fn GetSystemTime(&self, lp_system_time: MutPtr<super::super::Foundation::SYSTEMTIME>) {
-        todo!()
+        todo!("GetSystemTime")
     }
     fn GetSystemTimeAdjustment(
         &self,
@@ -2243,7 +2243,7 @@ pub trait Api {
         lp_time_increment: MutPtr<u32>,
         lp_time_adjustment_disabled: MutPtr<super::super::Foundation::BOOL>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetSystemTimeAdjustment")
     }
     fn GetSystemTimeAdjustmentPrecise(
         &self,
@@ -2251,25 +2251,25 @@ pub trait Api {
         lp_time_increment: MutPtr<u64>,
         lp_time_adjustment_disabled: MutPtr<super::super::Foundation::BOOL>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetSystemTimeAdjustmentPrecise")
     }
     fn GetSystemTimeAsFileTime(
         &self,
         lp_system_time_as_file_time: MutPtr<super::super::Foundation::FILETIME>,
     ) {
-        todo!()
+        todo!("GetSystemTimeAsFileTime")
     }
     fn GetSystemTimePreciseAsFileTime(
         &self,
         lp_system_time_as_file_time: MutPtr<super::super::Foundation::FILETIME>,
     ) {
-        todo!()
+        todo!("GetSystemTimePreciseAsFileTime")
     }
     fn GetSystemWindowsDirectoryA(&self, lp_buffer: crate::core::PSTR, u_size: u32) -> u32 {
-        todo!()
+        todo!("GetSystemWindowsDirectoryA")
     }
     fn GetSystemWindowsDirectoryW(&self, lp_buffer: crate::core::PWSTR, u_size: u32) -> u32 {
-        todo!()
+        todo!("GetSystemWindowsDirectoryW")
     }
     fn GetSystemWow64Directory2A(
         &self,
@@ -2277,7 +2277,7 @@ pub trait Api {
         u_size: u32,
         image_file_machine_type: u16,
     ) -> u32 {
-        todo!()
+        todo!("GetSystemWow64Directory2A")
     }
     fn GetSystemWow64Directory2W(
         &self,
@@ -2285,49 +2285,49 @@ pub trait Api {
         u_size: u32,
         image_file_machine_type: u16,
     ) -> u32 {
-        todo!()
+        todo!("GetSystemWow64Directory2W")
     }
     fn GetSystemWow64DirectoryA(&self, lp_buffer: crate::core::PSTR, u_size: u32) -> u32 {
-        todo!()
+        todo!("GetSystemWow64DirectoryA")
     }
     fn GetSystemWow64DirectoryW(&self, lp_buffer: crate::core::PWSTR, u_size: u32) -> u32 {
-        todo!()
+        todo!("GetSystemWow64DirectoryW")
     }
     fn GetTickCount(&self) -> u32 {
-        todo!()
+        todo!("GetTickCount")
     }
     fn GetTickCount64(&self) -> u64 {
-        todo!()
+        todo!("GetTickCount64")
     }
     fn GetVersion(&self) -> u32 {
-        todo!()
+        todo!("GetVersion")
     }
     fn GetVersionExA(
         &self,
         lp_version_information: MutPtr<OSVERSIONINFOA>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetVersionExA")
     }
     fn GetVersionExW(
         &self,
         lp_version_information: MutPtr<OSVERSIONINFOW>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetVersionExW")
     }
     fn GetWindowsDirectoryA(&self, lp_buffer: crate::core::PSTR, u_size: u32) -> u32 {
-        todo!()
+        todo!("GetWindowsDirectoryA")
     }
     fn GetWindowsDirectoryW(&self, lp_buffer: crate::core::PWSTR, u_size: u32) -> u32 {
-        todo!()
+        todo!("GetWindowsDirectoryW")
     }
     fn GlobalMemoryStatus(&self, lp_buffer: MutPtr<MEMORYSTATUS>) {
-        todo!()
+        todo!("GlobalMemoryStatus")
     }
     fn GlobalMemoryStatusEx(
         &self,
         lp_buffer: MutPtr<MEMORYSTATUSEX>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GlobalMemoryStatusEx")
     }
     fn RtlConvertDeviceFamilyInfoToString(
         &self,
@@ -2336,7 +2336,7 @@ pub trait Api {
         device_family: crate::core::PWSTR,
         device_form: crate::core::PWSTR,
     ) -> u32 {
-        todo!()
+        todo!("RtlConvertDeviceFamilyInfoToString")
     }
     fn RtlGetDeviceFamilyInfoEnum(
         &self,
@@ -2344,7 +2344,7 @@ pub trait Api {
         pul_device_family: MutPtr<DEVICEFAMILYINFOENUM>,
         pul_device_form: MutPtr<DEVICEFAMILYDEVICEFORM>,
     ) {
-        todo!()
+        todo!("RtlGetDeviceFamilyInfoEnum")
     }
     fn RtlGetProductInfo(
         &self,
@@ -2354,7 +2354,7 @@ pub trait Api {
         sp_minor_version: u32,
         returned_product_type: MutPtr<u32>,
     ) -> super::super::Foundation::BOOLEAN {
-        todo!()
+        todo!("RtlGetProductInfo")
     }
     fn RtlGetSystemGlobalData(
         &self,
@@ -2362,10 +2362,10 @@ pub trait Api {
         buffer: MutPtr<::core::ffi::c_void>,
         size: u32,
     ) -> u32 {
-        todo!()
+        todo!("RtlGetSystemGlobalData")
     }
     fn RtlOsDeploymentState(&self, flags: u32) -> OS_DEPLOYEMENT_STATE_VALUES {
-        todo!()
+        todo!("RtlOsDeploymentState")
     }
     fn RtlSwitchedVVI(
         &self,
@@ -2373,13 +2373,13 @@ pub trait Api {
         type_mask: u32,
         condition_mask: u64,
     ) -> u32 {
-        todo!()
+        todo!("RtlSwitchedVVI")
     }
     fn SetComputerNameA(
         &self,
         lp_computer_name: crate::core::PCSTR,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetComputerNameA")
     }
     fn SetComputerNameEx2W(
         &self,
@@ -2387,56 +2387,56 @@ pub trait Api {
         flags: u32,
         lp_buffer: crate::core::PCWSTR,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetComputerNameEx2W")
     }
     fn SetComputerNameExA(
         &self,
         name_type: COMPUTER_NAME_FORMAT,
         lp_buffer: crate::core::PCSTR,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetComputerNameExA")
     }
     fn SetComputerNameExW(
         &self,
         name_type: COMPUTER_NAME_FORMAT,
         lp_buffer: crate::core::PCWSTR,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetComputerNameExW")
     }
     fn SetComputerNameW(
         &self,
         lp_computer_name: crate::core::PCWSTR,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetComputerNameW")
     }
     fn SetLocalTime(
         &self,
         lp_system_time: ConstPtr<super::super::Foundation::SYSTEMTIME>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetLocalTime")
     }
     fn SetSystemTime(
         &self,
         lp_system_time: ConstPtr<super::super::Foundation::SYSTEMTIME>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetSystemTime")
     }
     fn SetSystemTimeAdjustment(
         &self,
         dw_time_adjustment: u32,
         b_time_adjustment_disabled: super::super::Foundation::BOOL,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetSystemTimeAdjustment")
     }
     fn SetSystemTimeAdjustmentPrecise(
         &self,
         dw_time_adjustment: u64,
         b_time_adjustment_disabled: super::super::Foundation::BOOL,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetSystemTimeAdjustmentPrecise")
     }
     fn VerSetConditionMask(&self, condition_mask: u64, type_mask: VER_FLAGS, condition: u8) -> u64 {
-        todo!()
+        todo!("VerSetConditionMask")
     }
     fn VerifyVersionInfoA(
         &self,
@@ -2444,7 +2444,7 @@ pub trait Api {
         dw_type_mask: VER_FLAGS,
         dwl_condition_mask: u64,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("VerifyVersionInfoA")
     }
     fn VerifyVersionInfoW(
         &self,
@@ -2452,7 +2452,7 @@ pub trait Api {
         dw_type_mask: VER_FLAGS,
         dwl_condition_mask: u64,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("VerifyVersionInfoW")
     }
 }
 pub fn get_api(ctx: &crate::core::Win32Context) -> &dyn Api {

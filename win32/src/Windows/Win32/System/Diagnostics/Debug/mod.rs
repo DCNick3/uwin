@@ -26769,10 +26769,10 @@ pub trait Api {
         exception_record: ConstPtr<EXCEPTION_RECORD>,
         return_value: ConstPtr<::core::ffi::c_void>,
     ) {
-        todo!()
+        todo!("RtlUnwind")
     }
     fn UnhandledExceptionFilter(&self, exception_info: ConstPtr<EXCEPTION_POINTERS>) -> i32 {
-        todo!()
+        todo!("UnhandledExceptionFilter")
     }
 }
 pub fn get_api(ctx: &crate::core::Win32Context) -> &dyn Api {

@@ -24,7 +24,8 @@ use super::*;
 // }
 
 pub fn gen_function_declaration(def: &MethodDef, gen: &Gen) -> TokenStream {
-    let name = gen_ident(def.name());
+    let name = def.name();
+    let ident = gen_ident(name);
 
     let signature = def.signature(&[]);
 
@@ -57,8 +58,8 @@ pub fn gen_function_declaration(def: &MethodDef, gen: &Gen) -> TokenStream {
 
     let res = quote! {
         #features
-        fn #name(&self, #(#params),*) #return_type {
-            todo!()
+        fn #ident(&self, #(#params),*) #return_type {
+            todo!(#name)
         }
     };
 

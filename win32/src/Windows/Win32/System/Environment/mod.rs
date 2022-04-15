@@ -661,7 +661,7 @@ pub trait Api {
         f_wait_for_thread: super::super::Foundation::BOOL,
         lp_return_value: MutPtr<ConstPtr<::core::ffi::c_void>>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("CallEnclave")
     }
     fn CreateEnclave(
         &self,
@@ -674,7 +674,7 @@ pub trait Api {
         dw_info_length: u32,
         lp_enclave_error: MutPtr<u32>,
     ) -> MutPtr<::core::ffi::c_void> {
-        todo!()
+        todo!("CreateEnclave")
     }
     fn CreateEnvironmentBlock(
         &self,
@@ -682,19 +682,19 @@ pub trait Api {
         h_token: super::super::Foundation::HANDLE,
         b_inherit: super::super::Foundation::BOOL,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("CreateEnvironmentBlock")
     }
     fn DeleteEnclave(
         &self,
         lp_address: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("DeleteEnclave")
     }
     fn DestroyEnvironmentBlock(
         &self,
         lp_environment: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("DestroyEnvironmentBlock")
     }
     fn EnclaveGetAttestationReport(
         &self,
@@ -703,14 +703,14 @@ pub trait Api {
         buffer_size: u32,
         output_size: MutPtr<u32>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("EnclaveGetAttestationReport")
     }
     fn EnclaveGetEnclaveInformation(
         &self,
         information_size: u32,
         enclave_information: MutPtr<ENCLAVE_INFORMATION>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("EnclaveGetEnclaveInformation")
     }
     fn EnclaveSealData(
         &self,
@@ -722,7 +722,7 @@ pub trait Api {
         buffer_size: u32,
         protected_blob_size: MutPtr<u32>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("EnclaveSealData")
     }
     fn EnclaveUnsealData(
         &self,
@@ -734,7 +734,7 @@ pub trait Api {
         sealing_identity: MutPtr<ENCLAVE_IDENTITY>,
         unsealing_flags: MutPtr<u32>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("EnclaveUnsealData")
     }
     fn EnclaveVerifyAttestationReport(
         &self,
@@ -742,7 +742,7 @@ pub trait Api {
         report: ConstPtr<::core::ffi::c_void>,
         report_size: u32,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("EnclaveVerifyAttestationReport")
     }
     fn ExpandEnvironmentStringsA(
         &self,
@@ -750,7 +750,7 @@ pub trait Api {
         lp_dst: crate::core::PSTR,
         n_size: u32,
     ) -> u32 {
-        todo!()
+        todo!("ExpandEnvironmentStringsA")
     }
     fn ExpandEnvironmentStringsForUserA(
         &self,
@@ -759,7 +759,7 @@ pub trait Api {
         lp_dest: crate::core::PSTR,
         dw_size: u32,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("ExpandEnvironmentStringsForUserA")
     }
     fn ExpandEnvironmentStringsForUserW(
         &self,
@@ -768,7 +768,7 @@ pub trait Api {
         lp_dest: crate::core::PWSTR,
         dw_size: u32,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("ExpandEnvironmentStringsForUserW")
     }
     fn ExpandEnvironmentStringsW(
         &self,
@@ -776,31 +776,31 @@ pub trait Api {
         lp_dst: crate::core::PWSTR,
         n_size: u32,
     ) -> u32 {
-        todo!()
+        todo!("ExpandEnvironmentStringsW")
     }
     fn FreeEnvironmentStringsA(&self, penv: crate::core::PCSTR) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("FreeEnvironmentStringsA")
     }
     fn FreeEnvironmentStringsW(&self, penv: crate::core::PCWSTR) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("FreeEnvironmentStringsW")
     }
     fn GetCommandLineA(&self) -> crate::core::PSTR {
-        todo!()
+        todo!("GetCommandLineA")
     }
     fn GetCommandLineW(&self) -> crate::core::PWSTR {
-        todo!()
+        todo!("GetCommandLineW")
     }
     fn GetCurrentDirectoryA(&self, n_buffer_length: u32, lp_buffer: crate::core::PSTR) -> u32 {
-        todo!()
+        todo!("GetCurrentDirectoryA")
     }
     fn GetCurrentDirectoryW(&self, n_buffer_length: u32, lp_buffer: crate::core::PWSTR) -> u32 {
-        todo!()
+        todo!("GetCurrentDirectoryW")
     }
     fn GetEnvironmentStrings(&self) -> crate::core::PSTR {
-        todo!()
+        todo!("GetEnvironmentStrings")
     }
     fn GetEnvironmentStringsW(&self) -> crate::core::PWSTR {
-        todo!()
+        todo!("GetEnvironmentStringsW")
     }
     fn GetEnvironmentVariableA(
         &self,
@@ -808,7 +808,7 @@ pub trait Api {
         lp_buffer: crate::core::PSTR,
         n_size: u32,
     ) -> u32 {
-        todo!()
+        todo!("GetEnvironmentVariableA")
     }
     fn GetEnvironmentVariableW(
         &self,
@@ -816,7 +816,7 @@ pub trait Api {
         lp_buffer: crate::core::PWSTR,
         n_size: u32,
     ) -> u32 {
-        todo!()
+        todo!("GetEnvironmentVariableW")
     }
     fn InitializeEnclave(
         &self,
@@ -826,10 +826,10 @@ pub trait Api {
         dw_info_length: u32,
         lp_enclave_error: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("InitializeEnclave")
     }
     fn IsEnclaveTypeSupported(&self, fl_enclave_type: u32) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("IsEnclaveTypeSupported")
     }
     fn LoadEnclaveData(
         &self,
@@ -843,72 +843,72 @@ pub trait Api {
         lp_number_of_bytes_written: MutPtr<PtrRepr>,
         lp_enclave_error: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("LoadEnclaveData")
     }
     fn LoadEnclaveImageA(
         &self,
         lp_enclave_address: ConstPtr<::core::ffi::c_void>,
         lp_image_name: crate::core::PCSTR,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("LoadEnclaveImageA")
     }
     fn LoadEnclaveImageW(
         &self,
         lp_enclave_address: ConstPtr<::core::ffi::c_void>,
         lp_image_name: crate::core::PCWSTR,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("LoadEnclaveImageW")
     }
     fn NeedCurrentDirectoryForExePathA(
         &self,
         exe_name: crate::core::PCSTR,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("NeedCurrentDirectoryForExePathA")
     }
     fn NeedCurrentDirectoryForExePathW(
         &self,
         exe_name: crate::core::PCWSTR,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("NeedCurrentDirectoryForExePathW")
     }
     fn SetCurrentDirectoryA(
         &self,
         lp_path_name: crate::core::PCSTR,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetCurrentDirectoryA")
     }
     fn SetCurrentDirectoryW(
         &self,
         lp_path_name: crate::core::PCWSTR,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetCurrentDirectoryW")
     }
     fn SetEnvironmentStringsW(
         &self,
         new_environment: crate::core::PCWSTR,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetEnvironmentStringsW")
     }
     fn SetEnvironmentVariableA(
         &self,
         lp_name: crate::core::PCSTR,
         lp_value: crate::core::PCSTR,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetEnvironmentVariableA")
     }
     fn SetEnvironmentVariableW(
         &self,
         lp_name: crate::core::PCWSTR,
         lp_value: crate::core::PCWSTR,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetEnvironmentVariableW")
     }
     fn TerminateEnclave(
         &self,
         lp_address: ConstPtr<::core::ffi::c_void>,
         f_wait: super::super::Foundation::BOOL,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("TerminateEnclave")
     }
 }
 pub fn get_api(ctx: &crate::core::Win32Context) -> &dyn Api {

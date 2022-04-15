@@ -11296,7 +11296,7 @@ pub trait Api {
         lp_string_2: ConstPtr<i8>,
         cch_count_2: i32,
     ) -> i32 {
-        todo!()
+        todo!("CompareStringA")
     }
     fn CompareStringEx(
         &self,
@@ -11310,7 +11310,7 @@ pub trait Api {
         lp_reserved: MutPtr<::core::ffi::c_void>,
         l_param: super::Foundation::LPARAM,
     ) -> i32 {
-        todo!()
+        todo!("CompareStringEx")
     }
     fn CompareStringOrdinal(
         &self,
@@ -11320,7 +11320,7 @@ pub trait Api {
         cch_count_2: i32,
         b_ignore_case: super::Foundation::BOOL,
     ) -> i32 {
-        todo!()
+        todo!("CompareStringOrdinal")
     }
     fn CompareStringW(
         &self,
@@ -11331,10 +11331,10 @@ pub trait Api {
         lp_string_2: crate::core::PCWSTR,
         cch_count_2: i32,
     ) -> i32 {
-        todo!()
+        todo!("CompareStringW")
     }
     fn ConvertDefaultLocale(&self, locale: u32) -> u32 {
-        todo!()
+        todo!("ConvertDefaultLocale")
     }
     fn EnumCalendarInfoA(
         &self,
@@ -11343,7 +11343,7 @@ pub trait Api {
         calendar: u32,
         cal_type: u32,
     ) -> super::Foundation::BOOL {
-        todo!()
+        todo!("EnumCalendarInfoA")
     }
     fn EnumCalendarInfoExA(
         &self,
@@ -11352,7 +11352,7 @@ pub trait Api {
         calendar: u32,
         cal_type: u32,
     ) -> super::Foundation::BOOL {
-        todo!()
+        todo!("EnumCalendarInfoExA")
     }
     fn EnumCalendarInfoExEx(
         &self,
@@ -11363,7 +11363,7 @@ pub trait Api {
         cal_type: u32,
         l_param: super::Foundation::LPARAM,
     ) -> super::Foundation::BOOL {
-        todo!()
+        todo!("EnumCalendarInfoExEx")
     }
     fn EnumCalendarInfoExW(
         &self,
@@ -11372,7 +11372,7 @@ pub trait Api {
         calendar: u32,
         cal_type: u32,
     ) -> super::Foundation::BOOL {
-        todo!()
+        todo!("EnumCalendarInfoExW")
     }
     fn EnumCalendarInfoW(
         &self,
@@ -11381,7 +11381,7 @@ pub trait Api {
         calendar: u32,
         cal_type: u32,
     ) -> super::Foundation::BOOL {
-        todo!()
+        todo!("EnumCalendarInfoW")
     }
     fn EnumDateFormatsA(
         &self,
@@ -11389,7 +11389,7 @@ pub trait Api {
         locale: u32,
         dw_flags: u32,
     ) -> super::Foundation::BOOL {
-        todo!()
+        todo!("EnumDateFormatsA")
     }
     fn EnumDateFormatsExA(
         &self,
@@ -11397,7 +11397,7 @@ pub trait Api {
         locale: u32,
         dw_flags: u32,
     ) -> super::Foundation::BOOL {
-        todo!()
+        todo!("EnumDateFormatsExA")
     }
     fn EnumDateFormatsExEx(
         &self,
@@ -11406,7 +11406,7 @@ pub trait Api {
         dw_flags: ENUM_DATE_FORMATS_FLAGS,
         l_param: super::Foundation::LPARAM,
     ) -> super::Foundation::BOOL {
-        todo!()
+        todo!("EnumDateFormatsExEx")
     }
     fn EnumDateFormatsExW(
         &self,
@@ -11414,7 +11414,7 @@ pub trait Api {
         locale: u32,
         dw_flags: u32,
     ) -> super::Foundation::BOOL {
-        todo!()
+        todo!("EnumDateFormatsExW")
     }
     fn EnumDateFormatsW(
         &self,
@@ -11422,7 +11422,7 @@ pub trait Api {
         locale: u32,
         dw_flags: u32,
     ) -> super::Foundation::BOOL {
-        todo!()
+        todo!("EnumDateFormatsW")
     }
     fn EnumLanguageGroupLocalesA(
         &self,
@@ -11431,7 +11431,7 @@ pub trait Api {
         dw_flags: u32,
         l_param: PtrDiffRepr,
     ) -> super::Foundation::BOOL {
-        todo!()
+        todo!("EnumLanguageGroupLocalesA")
     }
     fn EnumLanguageGroupLocalesW(
         &self,
@@ -11440,21 +11440,21 @@ pub trait Api {
         dw_flags: u32,
         l_param: PtrDiffRepr,
     ) -> super::Foundation::BOOL {
-        todo!()
+        todo!("EnumLanguageGroupLocalesW")
     }
     fn EnumSystemCodePagesA(
         &self,
         lp_code_page_enum_proc: CODEPAGE_ENUMPROCA,
         dw_flags: ENUM_SYSTEM_CODE_PAGES_FLAGS,
     ) -> super::Foundation::BOOL {
-        todo!()
+        todo!("EnumSystemCodePagesA")
     }
     fn EnumSystemCodePagesW(
         &self,
         lp_code_page_enum_proc: CODEPAGE_ENUMPROCW,
         dw_flags: ENUM_SYSTEM_CODE_PAGES_FLAGS,
     ) -> super::Foundation::BOOL {
-        todo!()
+        todo!("EnumSystemCodePagesW")
     }
     fn EnumSystemGeoID(
         &self,
@@ -11462,7 +11462,7 @@ pub trait Api {
         parent_geo_id: i32,
         lp_geo_enum_proc: GEO_ENUMPROC,
     ) -> super::Foundation::BOOL {
-        todo!()
+        todo!("EnumSystemGeoID")
     }
     fn EnumSystemGeoNames(
         &self,
@@ -11470,7 +11470,7 @@ pub trait Api {
         geo_enum_proc: GEO_ENUMNAMEPROC,
         data: super::Foundation::LPARAM,
     ) -> super::Foundation::BOOL {
-        todo!()
+        todo!("EnumSystemGeoNames")
     }
     fn EnumSystemLanguageGroupsA(
         &self,
@@ -11478,7 +11478,7 @@ pub trait Api {
         dw_flags: ENUM_SYSTEM_LANGUAGE_GROUPS_FLAGS,
         l_param: PtrDiffRepr,
     ) -> super::Foundation::BOOL {
-        todo!()
+        todo!("EnumSystemLanguageGroupsA")
     }
     fn EnumSystemLanguageGroupsW(
         &self,
@@ -11486,14 +11486,14 @@ pub trait Api {
         dw_flags: ENUM_SYSTEM_LANGUAGE_GROUPS_FLAGS,
         l_param: PtrDiffRepr,
     ) -> super::Foundation::BOOL {
-        todo!()
+        todo!("EnumSystemLanguageGroupsW")
     }
     fn EnumSystemLocalesA(
         &self,
         lp_locale_enum_proc: LOCALE_ENUMPROCA,
         dw_flags: u32,
     ) -> super::Foundation::BOOL {
-        todo!()
+        todo!("EnumSystemLocalesA")
     }
     fn EnumSystemLocalesEx(
         &self,
@@ -11502,14 +11502,14 @@ pub trait Api {
         l_param: super::Foundation::LPARAM,
         lp_reserved: ConstPtr<::core::ffi::c_void>,
     ) -> super::Foundation::BOOL {
-        todo!()
+        todo!("EnumSystemLocalesEx")
     }
     fn EnumSystemLocalesW(
         &self,
         lp_locale_enum_proc: LOCALE_ENUMPROCW,
         dw_flags: u32,
     ) -> super::Foundation::BOOL {
-        todo!()
+        todo!("EnumSystemLocalesW")
     }
     fn EnumTimeFormatsA(
         &self,
@@ -11517,7 +11517,7 @@ pub trait Api {
         locale: u32,
         dw_flags: TIME_FORMAT_FLAGS,
     ) -> super::Foundation::BOOL {
-        todo!()
+        todo!("EnumTimeFormatsA")
     }
     fn EnumTimeFormatsEx(
         &self,
@@ -11526,7 +11526,7 @@ pub trait Api {
         dw_flags: u32,
         l_param: super::Foundation::LPARAM,
     ) -> super::Foundation::BOOL {
-        todo!()
+        todo!("EnumTimeFormatsEx")
     }
     fn EnumTimeFormatsW(
         &self,
@@ -11534,7 +11534,7 @@ pub trait Api {
         locale: u32,
         dw_flags: TIME_FORMAT_FLAGS,
     ) -> super::Foundation::BOOL {
-        todo!()
+        todo!("EnumTimeFormatsW")
     }
     fn EnumUILanguagesA(
         &self,
@@ -11542,7 +11542,7 @@ pub trait Api {
         dw_flags: u32,
         l_param: PtrDiffRepr,
     ) -> super::Foundation::BOOL {
-        todo!()
+        todo!("EnumUILanguagesA")
     }
     fn EnumUILanguagesW(
         &self,
@@ -11550,7 +11550,7 @@ pub trait Api {
         dw_flags: u32,
         l_param: PtrDiffRepr,
     ) -> super::Foundation::BOOL {
-        todo!()
+        todo!("EnumUILanguagesW")
     }
     fn FindNLSString(
         &self,
@@ -11562,7 +11562,7 @@ pub trait Api {
         cch_value: i32,
         pcch_found: MutPtr<i32>,
     ) -> i32 {
-        todo!()
+        todo!("FindNLSString")
     }
     fn FindNLSStringEx(
         &self,
@@ -11577,7 +11577,7 @@ pub trait Api {
         lp_reserved: ConstPtr<::core::ffi::c_void>,
         sort_handle: super::Foundation::LPARAM,
     ) -> i32 {
-        todo!()
+        todo!("FindNLSStringEx")
     }
     fn FindStringOrdinal(
         &self,
@@ -11588,7 +11588,7 @@ pub trait Api {
         cch_value: i32,
         b_ignore_case: super::Foundation::BOOL,
     ) -> i32 {
-        todo!()
+        todo!("FindStringOrdinal")
     }
     fn FoldStringA(
         &self,
@@ -11598,7 +11598,7 @@ pub trait Api {
         lp_dest_str: crate::core::PSTR,
         cch_dest: i32,
     ) -> i32 {
-        todo!()
+        todo!("FoldStringA")
     }
     fn FoldStringW(
         &self,
@@ -11608,13 +11608,13 @@ pub trait Api {
         lp_dest_str: crate::core::PWSTR,
         cch_dest: i32,
     ) -> i32 {
-        todo!()
+        todo!("FoldStringW")
     }
     fn GetACP(&self) -> u32 {
-        todo!()
+        todo!("GetACP")
     }
     fn GetCPInfo(&self, code_page: u32, lp_cp_info: MutPtr<CPINFO>) -> super::Foundation::BOOL {
-        todo!()
+        todo!("GetCPInfo")
     }
     fn GetCPInfoExA(
         &self,
@@ -11622,7 +11622,7 @@ pub trait Api {
         dw_flags: u32,
         lp_cp_info_ex: MutPtr<CPINFOEXA>,
     ) -> super::Foundation::BOOL {
-        todo!()
+        todo!("GetCPInfoExA")
     }
     fn GetCPInfoExW(
         &self,
@@ -11630,7 +11630,7 @@ pub trait Api {
         dw_flags: u32,
         lp_cp_info_ex: MutPtr<CPINFOEXW>,
     ) -> super::Foundation::BOOL {
-        todo!()
+        todo!("GetCPInfoExW")
     }
     fn GetCalendarInfoA(
         &self,
@@ -11641,7 +11641,7 @@ pub trait Api {
         cch_data: i32,
         lp_value: MutPtr<u32>,
     ) -> i32 {
-        todo!()
+        todo!("GetCalendarInfoA")
     }
     fn GetCalendarInfoEx(
         &self,
@@ -11653,7 +11653,7 @@ pub trait Api {
         cch_data: i32,
         lp_value: MutPtr<u32>,
     ) -> i32 {
-        todo!()
+        todo!("GetCalendarInfoEx")
     }
     fn GetCalendarInfoW(
         &self,
@@ -11664,7 +11664,7 @@ pub trait Api {
         cch_data: i32,
         lp_value: MutPtr<u32>,
     ) -> i32 {
-        todo!()
+        todo!("GetCalendarInfoW")
     }
     fn GetCurrencyFormatA(
         &self,
@@ -11675,7 +11675,7 @@ pub trait Api {
         lp_currency_str: crate::core::PSTR,
         cch_currency: i32,
     ) -> i32 {
-        todo!()
+        todo!("GetCurrencyFormatA")
     }
     fn GetCurrencyFormatEx(
         &self,
@@ -11686,7 +11686,7 @@ pub trait Api {
         lp_currency_str: crate::core::PWSTR,
         cch_currency: i32,
     ) -> i32 {
-        todo!()
+        todo!("GetCurrencyFormatEx")
     }
     fn GetCurrencyFormatW(
         &self,
@@ -11697,7 +11697,7 @@ pub trait Api {
         lp_currency_str: crate::core::PWSTR,
         cch_currency: i32,
     ) -> i32 {
-        todo!()
+        todo!("GetCurrencyFormatW")
     }
     fn GetDateFormatA(
         &self,
@@ -11708,7 +11708,7 @@ pub trait Api {
         lp_date_str: crate::core::PSTR,
         cch_date: i32,
     ) -> i32 {
-        todo!()
+        todo!("GetDateFormatA")
     }
     fn GetDateFormatEx(
         &self,
@@ -11720,7 +11720,7 @@ pub trait Api {
         cch_date: i32,
         lp_calendar: crate::core::PCWSTR,
     ) -> i32 {
-        todo!()
+        todo!("GetDateFormatEx")
     }
     fn GetDateFormatW(
         &self,
@@ -11731,7 +11731,7 @@ pub trait Api {
         lp_date_str: crate::core::PWSTR,
         cch_date: i32,
     ) -> i32 {
-        todo!()
+        todo!("GetDateFormatW")
     }
     fn GetDistanceOfClosestLanguageInList(
         &self,
@@ -11740,7 +11740,7 @@ pub trait Api {
         wch_list_delimiter: u16,
         p_closest_distance: MutPtr<f64>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("GetDistanceOfClosestLanguageInList")
     }
     fn GetDurationFormat(
         &self,
@@ -11752,7 +11752,7 @@ pub trait Api {
         lp_duration_str: crate::core::PWSTR,
         cch_duration: i32,
     ) -> i32 {
-        todo!()
+        todo!("GetDurationFormat")
     }
     fn GetDurationFormatEx(
         &self,
@@ -11764,7 +11764,7 @@ pub trait Api {
         lp_duration_str: crate::core::PWSTR,
         cch_duration: i32,
     ) -> i32 {
-        todo!()
+        todo!("GetDurationFormatEx")
     }
     fn GetFileMUIInfo(
         &self,
@@ -11773,7 +11773,7 @@ pub trait Api {
         p_file_mui_info: MutPtr<FILEMUIINFO>,
         pcb_file_mui_info: MutPtr<u32>,
     ) -> super::Foundation::BOOL {
-        todo!()
+        todo!("GetFileMUIInfo")
     }
     fn GetFileMUIPath(
         &self,
@@ -11785,7 +11785,7 @@ pub trait Api {
         pcch_file_mui_path: MutPtr<u32>,
         pulul_enumerator: MutPtr<u64>,
     ) -> super::Foundation::BOOL {
-        todo!()
+        todo!("GetFileMUIPath")
     }
     fn GetGeoInfoA(
         &self,
@@ -11795,7 +11795,7 @@ pub trait Api {
         cch_data: i32,
         lang_id: u16,
     ) -> i32 {
-        todo!()
+        todo!("GetGeoInfoA")
     }
     fn GetGeoInfoEx(
         &self,
@@ -11804,7 +11804,7 @@ pub trait Api {
         geo_data: crate::core::PWSTR,
         geo_data_count: i32,
     ) -> i32 {
-        todo!()
+        todo!("GetGeoInfoEx")
     }
     fn GetGeoInfoW(
         &self,
@@ -11814,7 +11814,7 @@ pub trait Api {
         cch_data: i32,
         lang_id: u16,
     ) -> i32 {
-        todo!()
+        todo!("GetGeoInfoW")
     }
     fn GetLocaleInfoA(
         &self,
@@ -11823,7 +11823,7 @@ pub trait Api {
         lp_lc_data: crate::core::PSTR,
         cch_data: i32,
     ) -> i32 {
-        todo!()
+        todo!("GetLocaleInfoA")
     }
     fn GetLocaleInfoEx(
         &self,
@@ -11832,7 +11832,7 @@ pub trait Api {
         lp_lc_data: crate::core::PWSTR,
         cch_data: i32,
     ) -> i32 {
-        todo!()
+        todo!("GetLocaleInfoEx")
     }
     fn GetLocaleInfoW(
         &self,
@@ -11841,7 +11841,7 @@ pub trait Api {
         lp_lc_data: crate::core::PWSTR,
         cch_data: i32,
     ) -> i32 {
-        todo!()
+        todo!("GetLocaleInfoW")
     }
     fn GetNLSVersion(
         &self,
@@ -11849,7 +11849,7 @@ pub trait Api {
         locale: u32,
         lp_version_information: MutPtr<NLSVERSIONINFO>,
     ) -> super::Foundation::BOOL {
-        todo!()
+        todo!("GetNLSVersion")
     }
     fn GetNLSVersionEx(
         &self,
@@ -11857,7 +11857,7 @@ pub trait Api {
         lp_locale_name: crate::core::PCWSTR,
         lp_version_information: MutPtr<NLSVERSIONINFOEX>,
     ) -> super::Foundation::BOOL {
-        todo!()
+        todo!("GetNLSVersionEx")
     }
     fn GetNumberFormatA(
         &self,
@@ -11868,7 +11868,7 @@ pub trait Api {
         lp_number_str: crate::core::PSTR,
         cch_number: i32,
     ) -> i32 {
-        todo!()
+        todo!("GetNumberFormatA")
     }
     fn GetNumberFormatEx(
         &self,
@@ -11879,7 +11879,7 @@ pub trait Api {
         lp_number_str: crate::core::PWSTR,
         cch_number: i32,
     ) -> i32 {
-        todo!()
+        todo!("GetNumberFormatEx")
     }
     fn GetNumberFormatW(
         &self,
@@ -11890,10 +11890,10 @@ pub trait Api {
         lp_number_str: crate::core::PWSTR,
         cch_number: i32,
     ) -> i32 {
-        todo!()
+        todo!("GetNumberFormatW")
     }
     fn GetOEMCP(&self) -> u32 {
-        todo!()
+        todo!("GetOEMCP")
     }
     fn GetProcessPreferredUILanguages(
         &self,
@@ -11902,7 +11902,7 @@ pub trait Api {
         pwsz_languages_buffer: crate::core::PWSTR,
         pcch_languages_buffer: MutPtr<u32>,
     ) -> super::Foundation::BOOL {
-        todo!()
+        todo!("GetProcessPreferredUILanguages")
     }
     fn GetStringScripts(
         &self,
@@ -11912,7 +11912,7 @@ pub trait Api {
         lp_scripts: crate::core::PWSTR,
         cch_scripts: i32,
     ) -> i32 {
-        todo!()
+        todo!("GetStringScripts")
     }
     fn GetStringTypeA(
         &self,
@@ -11922,7 +11922,7 @@ pub trait Api {
         cch_src: i32,
         lp_char_type: MutPtr<u16>,
     ) -> super::Foundation::BOOL {
-        todo!()
+        todo!("GetStringTypeA")
     }
     fn GetStringTypeExA(
         &self,
@@ -11932,7 +11932,7 @@ pub trait Api {
         cch_src: i32,
         lp_char_type: MutPtr<u16>,
     ) -> super::Foundation::BOOL {
-        todo!()
+        todo!("GetStringTypeExA")
     }
     fn GetStringTypeExW(
         &self,
@@ -11942,7 +11942,7 @@ pub trait Api {
         cch_src: i32,
         lp_char_type: MutPtr<u16>,
     ) -> super::Foundation::BOOL {
-        todo!()
+        todo!("GetStringTypeExW")
     }
     fn GetStringTypeW(
         &self,
@@ -11951,23 +11951,23 @@ pub trait Api {
         cch_src: i32,
         lp_char_type: MutPtr<u16>,
     ) -> super::Foundation::BOOL {
-        todo!()
+        todo!("GetStringTypeW")
     }
     fn GetSystemDefaultLCID(&self) -> u32 {
-        todo!()
+        todo!("GetSystemDefaultLCID")
     }
     fn GetSystemDefaultLangID(&self) -> u16 {
-        todo!()
+        todo!("GetSystemDefaultLangID")
     }
     fn GetSystemDefaultLocaleName(
         &self,
         lp_locale_name: crate::core::PWSTR,
         cch_locale_name: i32,
     ) -> i32 {
-        todo!()
+        todo!("GetSystemDefaultLocaleName")
     }
     fn GetSystemDefaultUILanguage(&self) -> u16 {
-        todo!()
+        todo!("GetSystemDefaultUILanguage")
     }
     fn GetSystemPreferredUILanguages(
         &self,
@@ -11976,12 +11976,12 @@ pub trait Api {
         pwsz_languages_buffer: crate::core::PWSTR,
         pcch_languages_buffer: MutPtr<u32>,
     ) -> super::Foundation::BOOL {
-        todo!()
+        todo!("GetSystemPreferredUILanguages")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
     #[cfg(dummy_option_that_does_not_exist)]
     fn GetTextCharset(&self, hdc: super::Graphics::Gdi::HDC) -> i32 {
-        todo!()
+        todo!("GetTextCharset")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -11991,10 +11991,10 @@ pub trait Api {
         lp_sig: MutPtr<FONTSIGNATURE>,
         dw_flags: u32,
     ) -> i32 {
-        todo!()
+        todo!("GetTextCharsetInfo")
     }
     fn GetThreadLocale(&self) -> u32 {
-        todo!()
+        todo!("GetThreadLocale")
     }
     fn GetThreadPreferredUILanguages(
         &self,
@@ -12003,10 +12003,10 @@ pub trait Api {
         pwsz_languages_buffer: crate::core::PWSTR,
         pcch_languages_buffer: MutPtr<u32>,
     ) -> super::Foundation::BOOL {
-        todo!()
+        todo!("GetThreadPreferredUILanguages")
     }
     fn GetThreadUILanguage(&self) -> u16 {
-        todo!()
+        todo!("GetThreadUILanguage")
     }
     fn GetTimeFormatA(
         &self,
@@ -12017,7 +12017,7 @@ pub trait Api {
         lp_time_str: crate::core::PSTR,
         cch_time: i32,
     ) -> i32 {
-        todo!()
+        todo!("GetTimeFormatA")
     }
     fn GetTimeFormatEx(
         &self,
@@ -12028,7 +12028,7 @@ pub trait Api {
         lp_time_str: crate::core::PWSTR,
         cch_time: i32,
     ) -> i32 {
-        todo!()
+        todo!("GetTimeFormatEx")
     }
     fn GetTimeFormatW(
         &self,
@@ -12039,7 +12039,7 @@ pub trait Api {
         lp_time_str: crate::core::PWSTR,
         cch_time: i32,
     ) -> i32 {
-        todo!()
+        todo!("GetTimeFormatW")
     }
     fn GetUILanguageInfo(
         &self,
@@ -12049,29 +12049,29 @@ pub trait Api {
         pcch_fallback_languages: MutPtr<u32>,
         p_attributes: MutPtr<u32>,
     ) -> super::Foundation::BOOL {
-        todo!()
+        todo!("GetUILanguageInfo")
     }
     fn GetUserDefaultGeoName(&self, geo_name: crate::core::PWSTR, geo_name_count: i32) -> i32 {
-        todo!()
+        todo!("GetUserDefaultGeoName")
     }
     fn GetUserDefaultLCID(&self) -> u32 {
-        todo!()
+        todo!("GetUserDefaultLCID")
     }
     fn GetUserDefaultLangID(&self) -> u16 {
-        todo!()
+        todo!("GetUserDefaultLangID")
     }
     fn GetUserDefaultLocaleName(
         &self,
         lp_locale_name: crate::core::PWSTR,
         cch_locale_name: i32,
     ) -> i32 {
-        todo!()
+        todo!("GetUserDefaultLocaleName")
     }
     fn GetUserDefaultUILanguage(&self) -> u16 {
-        todo!()
+        todo!("GetUserDefaultUILanguage")
     }
     fn GetUserGeoID(&self, geo_class: u32) -> i32 {
-        todo!()
+        todo!("GetUserGeoID")
     }
     fn GetUserPreferredUILanguages(
         &self,
@@ -12080,7 +12080,7 @@ pub trait Api {
         pwsz_languages_buffer: crate::core::PWSTR,
         pcch_languages_buffer: MutPtr<u32>,
     ) -> super::Foundation::BOOL {
-        todo!()
+        todo!("GetUserPreferredUILanguages")
     }
     fn IdnToAscii(
         &self,
@@ -12090,7 +12090,7 @@ pub trait Api {
         lp_ascii_char_str: crate::core::PWSTR,
         cch_ascii_char: i32,
     ) -> i32 {
-        todo!()
+        todo!("IdnToAscii")
     }
     fn IdnToNameprepUnicode(
         &self,
@@ -12100,7 +12100,7 @@ pub trait Api {
         lp_nameprep_char_str: crate::core::PWSTR,
         cch_nameprep_char: i32,
     ) -> i32 {
-        todo!()
+        todo!("IdnToNameprepUnicode")
     }
     fn IdnToUnicode(
         &self,
@@ -12110,13 +12110,13 @@ pub trait Api {
         lp_unicode_char_str: crate::core::PWSTR,
         cch_unicode_char: i32,
     ) -> i32 {
-        todo!()
+        todo!("IdnToUnicode")
     }
     fn IsDBCSLeadByte(&self, test_char: u8) -> super::Foundation::BOOL {
-        todo!()
+        todo!("IsDBCSLeadByte")
     }
     fn IsDBCSLeadByteEx(&self, code_page: u32, test_char: u8) -> super::Foundation::BOOL {
-        todo!()
+        todo!("IsDBCSLeadByteEx")
     }
     fn IsNLSDefinedString(
         &self,
@@ -12126,7 +12126,7 @@ pub trait Api {
         lp_string: crate::core::PCWSTR,
         cch_str: i32,
     ) -> super::Foundation::BOOL {
-        todo!()
+        todo!("IsNLSDefinedString")
     }
     fn IsNormalizedString(
         &self,
@@ -12134,7 +12134,7 @@ pub trait Api {
         lp_string: crate::core::PCWSTR,
         cw_length: i32,
     ) -> super::Foundation::BOOL {
-        todo!()
+        todo!("IsNormalizedString")
     }
     fn IsTextUnicode(
         &self,
@@ -12142,27 +12142,27 @@ pub trait Api {
         i_size: i32,
         lpi_result: MutPtr<IS_TEXT_UNICODE_RESULT>,
     ) -> super::Foundation::BOOL {
-        todo!()
+        todo!("IsTextUnicode")
     }
     fn IsValidCodePage(&self, code_page: u32) -> super::Foundation::BOOL {
-        todo!()
+        todo!("IsValidCodePage")
     }
     fn IsValidLanguageGroup(
         &self,
         language_group: u32,
         dw_flags: ENUM_SYSTEM_LANGUAGE_GROUPS_FLAGS,
     ) -> super::Foundation::BOOL {
-        todo!()
+        todo!("IsValidLanguageGroup")
     }
     fn IsValidLocale(
         &self,
         locale: u32,
         dw_flags: IS_VALID_LOCALE_FLAGS,
     ) -> super::Foundation::BOOL {
-        todo!()
+        todo!("IsValidLocale")
     }
     fn IsValidLocaleName(&self, lp_locale_name: crate::core::PCWSTR) -> super::Foundation::BOOL {
-        todo!()
+        todo!("IsValidLocaleName")
     }
     fn IsValidNLSVersion(
         &self,
@@ -12170,10 +12170,10 @@ pub trait Api {
         lp_locale_name: crate::core::PCWSTR,
         lp_version_information: ConstPtr<NLSVERSIONINFOEX>,
     ) -> u32 {
-        todo!()
+        todo!("IsValidNLSVersion")
     }
     fn IsWellFormedTag(&self, psz_tag: crate::core::PCWSTR) -> u8 {
-        todo!()
+        todo!("IsWellFormedTag")
     }
     fn LCIDToLocaleName(
         &self,
@@ -12182,7 +12182,7 @@ pub trait Api {
         cch_name: i32,
         dw_flags: u32,
     ) -> i32 {
-        todo!()
+        todo!("LCIDToLocaleName")
     }
     fn LCMapStringA(
         &self,
@@ -12193,7 +12193,7 @@ pub trait Api {
         lp_dest_str: crate::core::PSTR,
         cch_dest: i32,
     ) -> i32 {
-        todo!()
+        todo!("LCMapStringA")
     }
     fn LCMapStringEx(
         &self,
@@ -12207,7 +12207,7 @@ pub trait Api {
         lp_reserved: ConstPtr<::core::ffi::c_void>,
         sort_handle: super::Foundation::LPARAM,
     ) -> i32 {
-        todo!()
+        todo!("LCMapStringEx")
     }
     fn LCMapStringW(
         &self,
@@ -12218,10 +12218,10 @@ pub trait Api {
         lp_dest_str: crate::core::PWSTR,
         cch_dest: i32,
     ) -> i32 {
-        todo!()
+        todo!("LCMapStringW")
     }
     fn LocaleNameToLCID(&self, lp_name: crate::core::PCWSTR, dw_flags: u32) -> u32 {
-        todo!()
+        todo!("LocaleNameToLCID")
     }
     fn MappingDoAction(
         &self,
@@ -12229,19 +12229,19 @@ pub trait Api {
         dw_range_index: u32,
         psz_action_id: crate::core::PCWSTR,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("MappingDoAction")
     }
     fn MappingFreePropertyBag(
         &self,
         p_bag: ConstPtr<MAPPING_PROPERTY_BAG>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("MappingFreePropertyBag")
     }
     fn MappingFreeServices(
         &self,
         p_service_info: ConstPtr<MAPPING_SERVICE_INFO>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("MappingFreeServices")
     }
     fn MappingGetServices(
         &self,
@@ -12249,7 +12249,7 @@ pub trait Api {
         prg_services: MutPtr<ConstPtr<MAPPING_SERVICE_INFO>>,
         pdw_services_count: MutPtr<u32>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("MappingGetServices")
     }
     fn MappingRecognizeText(
         &self,
@@ -12260,7 +12260,7 @@ pub trait Api {
         p_options: ConstPtr<MAPPING_OPTIONS>,
         pbag: MutPtr<MAPPING_PROPERTY_BAG>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("MappingRecognizeText")
     }
     fn MultiByteToWideChar(
         &self,
@@ -12271,7 +12271,7 @@ pub trait Api {
         lp_wide_char_str: crate::core::PWSTR,
         cch_wide_char: i32,
     ) -> i32 {
-        todo!()
+        todo!("MultiByteToWideChar")
     }
     fn NormalizeString(
         &self,
@@ -12281,7 +12281,7 @@ pub trait Api {
         lp_dst_string: crate::core::PWSTR,
         cw_dst_length: i32,
     ) -> i32 {
-        todo!()
+        todo!("NormalizeString")
     }
     fn NotifyUILanguageChange(
         &self,
@@ -12291,7 +12291,7 @@ pub trait Api {
         dw_reserved: u32,
         pdw_status_rtrn: MutPtr<u32>,
     ) -> super::Foundation::BOOL {
-        todo!()
+        todo!("NotifyUILanguageChange")
     }
     fn ResolveLocaleName(
         &self,
@@ -12299,10 +12299,10 @@ pub trait Api {
         lp_locale_name: crate::core::PWSTR,
         cch_locale_name: i32,
     ) -> i32 {
-        todo!()
+        todo!("ResolveLocaleName")
     }
     fn RestoreThreadPreferredUILanguages(&self, snapshot: HSAVEDUILANGUAGES) {
-        todo!()
+        todo!("RestoreThreadPreferredUILanguages")
     }
     fn ScriptApplyDigitSubstitution(
         &self,
@@ -12310,7 +12310,7 @@ pub trait Api {
         psc: MutPtr<SCRIPT_CONTROL>,
         pss: MutPtr<SCRIPT_STATE>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("ScriptApplyDigitSubstitution")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -12326,7 +12326,7 @@ pub trait Api {
         p_abc: MutPtr<super::Graphics::Gdi::ABC>,
         pi_justify: MutPtr<i32>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("ScriptApplyLogicalWidth")
     }
     fn ScriptBreak(
         &self,
@@ -12335,7 +12335,7 @@ pub trait Api {
         psa: ConstPtr<SCRIPT_ANALYSIS>,
         psla: MutPtr<SCRIPT_LOGATTR>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("ScriptBreak")
     }
     fn ScriptCPtoX(
         &self,
@@ -12349,7 +12349,7 @@ pub trait Api {
         psa: ConstPtr<SCRIPT_ANALYSIS>,
         pi_x: MutPtr<i32>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("ScriptCPtoX")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -12359,10 +12359,10 @@ pub trait Api {
         psc: MutPtr<ConstPtr<::core::ffi::c_void>>,
         tm_height: MutPtr<i32>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("ScriptCacheGetHeight")
     }
     fn ScriptFreeCache(&self, psc: MutPtr<ConstPtr<::core::ffi::c_void>>) -> crate::core::HRESULT {
-        todo!()
+        todo!("ScriptFreeCache")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -12375,7 +12375,7 @@ pub trait Api {
         dw_flags: u32,
         pw_out_glyphs: MutPtr<u16>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("ScriptGetCMap")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -12392,7 +12392,7 @@ pub trait Api {
         p_alternate_glyphs: MutPtr<u16>,
         pc_alternates: MutPtr<i32>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("ScriptGetFontAlternateGlyphs")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -12407,7 +12407,7 @@ pub trait Api {
         p_feature_tags: MutPtr<u32>,
         pc_tags: MutPtr<i32>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("ScriptGetFontFeatureTags")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -12421,7 +12421,7 @@ pub trait Api {
         p_langsys_tags: MutPtr<u32>,
         pc_tags: MutPtr<i32>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("ScriptGetFontLanguageTags")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -12431,7 +12431,7 @@ pub trait Api {
         psc: MutPtr<ConstPtr<::core::ffi::c_void>>,
         sfp: MutPtr<SCRIPT_FONTPROPERTIES>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("ScriptGetFontProperties")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -12444,7 +12444,7 @@ pub trait Api {
         p_script_tags: MutPtr<u32>,
         pc_tags: MutPtr<i32>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("ScriptGetFontScriptTags")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -12455,7 +12455,7 @@ pub trait Api {
         w_glyph: u16,
         p_abc: MutPtr<super::Graphics::Gdi::ABC>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("ScriptGetGlyphABCWidth")
     }
     fn ScriptGetLogicalWidths(
         &self,
@@ -12467,14 +12467,14 @@ pub trait Api {
         psva: ConstPtr<SCRIPT_VISATTR>,
         pi_dx: ConstPtr<i32>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("ScriptGetLogicalWidths")
     }
     fn ScriptGetProperties(
         &self,
         pp_sp: MutPtr<ConstPtr<ConstPtr<SCRIPT_PROPERTIES>>>,
         pi_num_scripts: MutPtr<i32>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("ScriptGetProperties")
     }
     fn ScriptIsComplex(
         &self,
@@ -12482,7 +12482,7 @@ pub trait Api {
         c_in_chars: i32,
         dw_flags: SCRIPT_IS_COMPLEX_FLAGS,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("ScriptIsComplex")
     }
     fn ScriptItemize(
         &self,
@@ -12494,7 +12494,7 @@ pub trait Api {
         p_items: MutPtr<SCRIPT_ITEM>,
         pc_items: MutPtr<i32>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("ScriptItemize")
     }
     fn ScriptItemizeOpenType(
         &self,
@@ -12507,7 +12507,7 @@ pub trait Api {
         p_script_tags: MutPtr<u32>,
         pc_items: MutPtr<i32>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("ScriptItemizeOpenType")
     }
     fn ScriptJustify(
         &self,
@@ -12518,7 +12518,7 @@ pub trait Api {
         i_min_kashida: i32,
         pi_justify: MutPtr<i32>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("ScriptJustify")
     }
     fn ScriptLayout(
         &self,
@@ -12527,7 +12527,7 @@ pub trait Api {
         pi_visual_to_logical: MutPtr<i32>,
         pi_logical_to_visual: MutPtr<i32>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("ScriptLayout")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -12543,7 +12543,7 @@ pub trait Api {
         p_goffset: MutPtr<GOFFSET>,
         p_abc: MutPtr<super::Graphics::Gdi::ABC>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("ScriptPlace")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -12568,7 +12568,7 @@ pub trait Api {
         p_goffset: MutPtr<GOFFSET>,
         p_abc: MutPtr<super::Graphics::Gdi::ABC>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("ScriptPlaceOpenType")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -12587,14 +12587,14 @@ pub trait Api {
         pi_out_advance: MutPtr<i32>,
         p_out_goffset: MutPtr<GOFFSET>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("ScriptPositionSingleGlyph")
     }
     fn ScriptRecordDigitSubstitution(
         &self,
         locale: u32,
         psds: MutPtr<SCRIPT_DIGITSUBSTITUTE>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("ScriptRecordDigitSubstitution")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -12611,7 +12611,7 @@ pub trait Api {
         psva: MutPtr<SCRIPT_VISATTR>,
         pc_glyphs: MutPtr<i32>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("ScriptShape")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -12634,7 +12634,7 @@ pub trait Api {
         p_out_glyph_props: MutPtr<script_glyphprop>,
         pc_glyphs: MutPtr<i32>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("ScriptShapeOpenType")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -12654,7 +12654,7 @@ pub trait Api {
         pb_in_class: ConstPtr<u8>,
         pssa: MutPtr<ConstPtr<::core::ffi::c_void>>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("ScriptStringAnalyse")
     }
     fn ScriptStringCPtoX(
         &self,
@@ -12663,27 +12663,27 @@ pub trait Api {
         f_trailing: super::Foundation::BOOL,
         p_x: MutPtr<i32>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("ScriptStringCPtoX")
     }
     fn ScriptStringFree(
         &self,
         pssa: MutPtr<ConstPtr<::core::ffi::c_void>>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("ScriptStringFree")
     }
     fn ScriptStringGetLogicalWidths(
         &self,
         ssa: ConstPtr<::core::ffi::c_void>,
         pi_dx: MutPtr<i32>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("ScriptStringGetLogicalWidths")
     }
     fn ScriptStringGetOrder(
         &self,
         ssa: ConstPtr<::core::ffi::c_void>,
         pu_order: MutPtr<u32>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("ScriptStringGetOrder")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -12698,10 +12698,10 @@ pub trait Api {
         i_max_sel: i32,
         f_disabled: super::Foundation::BOOL,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("ScriptStringOut")
     }
     fn ScriptStringValidate(&self, ssa: ConstPtr<::core::ffi::c_void>) -> crate::core::HRESULT {
-        todo!()
+        todo!("ScriptStringValidate")
     }
     fn ScriptStringXtoCP(
         &self,
@@ -12710,19 +12710,19 @@ pub trait Api {
         pi_ch: MutPtr<i32>,
         pi_trailing: MutPtr<i32>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("ScriptStringXtoCP")
     }
     fn ScriptString_pLogAttr(&self, ssa: ConstPtr<::core::ffi::c_void>) -> MutPtr<SCRIPT_LOGATTR> {
-        todo!()
+        todo!("ScriptString_pLogAttr")
     }
     fn ScriptString_pSize(
         &self,
         ssa: ConstPtr<::core::ffi::c_void>,
     ) -> MutPtr<super::Foundation::SIZE> {
-        todo!()
+        todo!("ScriptString_pSize")
     }
     fn ScriptString_pcOutChars(&self, ssa: ConstPtr<::core::ffi::c_void>) -> MutPtr<i32> {
-        todo!()
+        todo!("ScriptString_pcOutChars")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -12738,7 +12738,7 @@ pub trait Api {
         w_glyph_id: u16,
         pw_out_glyph_id: MutPtr<u16>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("ScriptSubstituteSingleGlyph")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -12759,7 +12759,7 @@ pub trait Api {
         pi_justify: ConstPtr<i32>,
         p_goffset: ConstPtr<GOFFSET>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("ScriptTextOut")
     }
     fn ScriptXtoCP(
         &self,
@@ -12773,7 +12773,7 @@ pub trait Api {
         pi_cp: MutPtr<i32>,
         pi_trailing: MutPtr<i32>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("ScriptXtoCP")
     }
     fn SetCalendarInfoA(
         &self,
@@ -12782,7 +12782,7 @@ pub trait Api {
         cal_type: u32,
         lp_cal_data: crate::core::PCSTR,
     ) -> super::Foundation::BOOL {
-        todo!()
+        todo!("SetCalendarInfoA")
     }
     fn SetCalendarInfoW(
         &self,
@@ -12791,7 +12791,7 @@ pub trait Api {
         cal_type: u32,
         lp_cal_data: crate::core::PCWSTR,
     ) -> super::Foundation::BOOL {
-        todo!()
+        todo!("SetCalendarInfoW")
     }
     fn SetLocaleInfoA(
         &self,
@@ -12799,7 +12799,7 @@ pub trait Api {
         lc_type: u32,
         lp_lc_data: crate::core::PCSTR,
     ) -> super::Foundation::BOOL {
-        todo!()
+        todo!("SetLocaleInfoA")
     }
     fn SetLocaleInfoW(
         &self,
@@ -12807,7 +12807,7 @@ pub trait Api {
         lc_type: u32,
         lp_lc_data: crate::core::PCWSTR,
     ) -> super::Foundation::BOOL {
-        todo!()
+        todo!("SetLocaleInfoW")
     }
     fn SetProcessPreferredUILanguages(
         &self,
@@ -12815,10 +12815,10 @@ pub trait Api {
         pwsz_languages_buffer: crate::core::PCWSTR,
         pul_num_languages: MutPtr<u32>,
     ) -> super::Foundation::BOOL {
-        todo!()
+        todo!("SetProcessPreferredUILanguages")
     }
     fn SetThreadLocale(&self, locale: u32) -> super::Foundation::BOOL {
-        todo!()
+        todo!("SetThreadLocale")
     }
     fn SetThreadPreferredUILanguages(
         &self,
@@ -12826,7 +12826,7 @@ pub trait Api {
         pwsz_languages_buffer: crate::core::PCWSTR,
         pul_num_languages: MutPtr<u32>,
     ) -> super::Foundation::BOOL {
-        todo!()
+        todo!("SetThreadPreferredUILanguages")
     }
     fn SetThreadPreferredUILanguages2(
         &self,
@@ -12835,16 +12835,16 @@ pub trait Api {
         num_languages_set: MutPtr<u32>,
         snapshot: MutPtr<HSAVEDUILANGUAGES>,
     ) -> super::Foundation::BOOL {
-        todo!()
+        todo!("SetThreadPreferredUILanguages2")
     }
     fn SetThreadUILanguage(&self, lang_id: u16) -> u16 {
-        todo!()
+        todo!("SetThreadUILanguage")
     }
     fn SetUserGeoID(&self, geo_id: i32) -> super::Foundation::BOOL {
-        todo!()
+        todo!("SetUserGeoID")
     }
     fn SetUserGeoName(&self, geo_name: crate::core::PCWSTR) -> super::Foundation::BOOL {
-        todo!()
+        todo!("SetUserGeoName")
     }
     fn TranslateCharsetInfo(
         &self,
@@ -12852,7 +12852,7 @@ pub trait Api {
         lp_cs: MutPtr<CHARSETINFO>,
         dw_flags: TRANSLATE_CHARSET_INFO_FLAGS,
     ) -> super::Foundation::BOOL {
-        todo!()
+        todo!("TranslateCharsetInfo")
     }
     fn VerifyScripts(
         &self,
@@ -12862,7 +12862,7 @@ pub trait Api {
         lp_test_scripts: crate::core::PCWSTR,
         cch_test_scripts: i32,
     ) -> super::Foundation::BOOL {
-        todo!()
+        todo!("VerifyScripts")
     }
     fn WideCharToMultiByte(
         &self,
@@ -12875,47 +12875,47 @@ pub trait Api {
         lp_default_char: crate::core::PCSTR,
         lp_used_default_char: MutPtr<i32>,
     ) -> i32 {
-        todo!()
+        todo!("WideCharToMultiByte")
     }
     fn lstrcatA(
         &self,
         lp_string_1: crate::core::PSTR,
         lp_string_2: crate::core::PCSTR,
     ) -> crate::core::PSTR {
-        todo!()
+        todo!("lstrcatA")
     }
     fn lstrcatW(
         &self,
         lp_string_1: crate::core::PWSTR,
         lp_string_2: crate::core::PCWSTR,
     ) -> crate::core::PWSTR {
-        todo!()
+        todo!("lstrcatW")
     }
     fn lstrcmpA(&self, lp_string_1: crate::core::PCSTR, lp_string_2: crate::core::PCSTR) -> i32 {
-        todo!()
+        todo!("lstrcmpA")
     }
     fn lstrcmpW(&self, lp_string_1: crate::core::PCWSTR, lp_string_2: crate::core::PCWSTR) -> i32 {
-        todo!()
+        todo!("lstrcmpW")
     }
     fn lstrcmpiA(&self, lp_string_1: crate::core::PCSTR, lp_string_2: crate::core::PCSTR) -> i32 {
-        todo!()
+        todo!("lstrcmpiA")
     }
     fn lstrcmpiW(&self, lp_string_1: crate::core::PCWSTR, lp_string_2: crate::core::PCWSTR) -> i32 {
-        todo!()
+        todo!("lstrcmpiW")
     }
     fn lstrcpyA(
         &self,
         lp_string_1: crate::core::PSTR,
         lp_string_2: crate::core::PCSTR,
     ) -> crate::core::PSTR {
-        todo!()
+        todo!("lstrcpyA")
     }
     fn lstrcpyW(
         &self,
         lp_string_1: crate::core::PWSTR,
         lp_string_2: crate::core::PCWSTR,
     ) -> crate::core::PWSTR {
-        todo!()
+        todo!("lstrcpyW")
     }
     fn lstrcpynA(
         &self,
@@ -12923,7 +12923,7 @@ pub trait Api {
         lp_string_2: crate::core::PCSTR,
         i_max_length: i32,
     ) -> crate::core::PSTR {
-        todo!()
+        todo!("lstrcpynA")
     }
     fn lstrcpynW(
         &self,
@@ -12931,13 +12931,13 @@ pub trait Api {
         lp_string_2: crate::core::PCWSTR,
         i_max_length: i32,
     ) -> crate::core::PWSTR {
-        todo!()
+        todo!("lstrcpynW")
     }
     fn lstrlenA(&self, lp_string: crate::core::PCSTR) -> i32 {
-        todo!()
+        todo!("lstrlenA")
     }
     fn lstrlenW(&self, lp_string: crate::core::PCWSTR) -> i32 {
-        todo!()
+        todo!("lstrlenW")
     }
 }
 pub fn get_api(ctx: &crate::core::Win32Context) -> &dyn Api {

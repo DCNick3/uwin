@@ -3371,24 +3371,24 @@ impl FromIntoMemory for WORKER_THREAD_FLAGS {
 }
 pub trait Api {
     fn AcquireSRWLockExclusive(&self, srw_lock: MutPtr<RTL_SRWLOCK>) {
-        todo!()
+        todo!("AcquireSRWLockExclusive")
     }
     fn AcquireSRWLockShared(&self, srw_lock: MutPtr<RTL_SRWLOCK>) {
-        todo!()
+        todo!("AcquireSRWLockShared")
     }
     fn AddIntegrityLabelToBoundaryDescriptor(
         &self,
         boundary_descriptor: MutPtr<super::super::Foundation::HANDLE>,
         integrity_label: super::super::Foundation::PSID,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("AddIntegrityLabelToBoundaryDescriptor")
     }
     fn AddSIDToBoundaryDescriptor(
         &self,
         boundary_descriptor: MutPtr<super::super::Foundation::HANDLE>,
         required_sid: super::super::Foundation::PSID,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("AddSIDToBoundaryDescriptor")
     }
     fn AttachThreadInput(
         &self,
@@ -3396,20 +3396,20 @@ pub trait Api {
         id_attach_to: u32,
         f_attach: super::super::Foundation::BOOL,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("AttachThreadInput")
     }
     fn AvQuerySystemResponsiveness(
         &self,
         avrt_handle: super::super::Foundation::HANDLE,
         system_responsiveness_value: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("AvQuerySystemResponsiveness")
     }
     fn AvRevertMmThreadCharacteristics(
         &self,
         avrt_handle: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("AvRevertMmThreadCharacteristics")
     }
     fn AvRtCreateThreadOrderingGroup(
         &self,
@@ -3418,7 +3418,7 @@ pub trait Api {
         thread_ordering_guid: MutPtr<crate::core::GUID>,
         timeout: ConstPtr<i64>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("AvRtCreateThreadOrderingGroup")
     }
     fn AvRtCreateThreadOrderingGroupExA(
         &self,
@@ -3428,7 +3428,7 @@ pub trait Api {
         timeout: ConstPtr<i64>,
         task_name: crate::core::PCSTR,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("AvRtCreateThreadOrderingGroupExA")
     }
     fn AvRtCreateThreadOrderingGroupExW(
         &self,
@@ -3438,13 +3438,13 @@ pub trait Api {
         timeout: ConstPtr<i64>,
         task_name: crate::core::PCWSTR,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("AvRtCreateThreadOrderingGroupExW")
     }
     fn AvRtDeleteThreadOrderingGroup(
         &self,
         context: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("AvRtDeleteThreadOrderingGroup")
     }
     fn AvRtJoinThreadOrderingGroup(
         &self,
@@ -3452,19 +3452,19 @@ pub trait Api {
         thread_ordering_guid: ConstPtr<crate::core::GUID>,
         before: super::super::Foundation::BOOL,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("AvRtJoinThreadOrderingGroup")
     }
     fn AvRtLeaveThreadOrderingGroup(
         &self,
         context: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("AvRtLeaveThreadOrderingGroup")
     }
     fn AvRtWaitOnThreadOrderingGroup(
         &self,
         context: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("AvRtWaitOnThreadOrderingGroup")
     }
     fn AvSetMmMaxThreadCharacteristicsA(
         &self,
@@ -3472,7 +3472,7 @@ pub trait Api {
         second_task: crate::core::PCSTR,
         task_index: MutPtr<u32>,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("AvSetMmMaxThreadCharacteristicsA")
     }
     fn AvSetMmMaxThreadCharacteristicsW(
         &self,
@@ -3480,43 +3480,43 @@ pub trait Api {
         second_task: crate::core::PCWSTR,
         task_index: MutPtr<u32>,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("AvSetMmMaxThreadCharacteristicsW")
     }
     fn AvSetMmThreadCharacteristicsA(
         &self,
         task_name: crate::core::PCSTR,
         task_index: MutPtr<u32>,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("AvSetMmThreadCharacteristicsA")
     }
     fn AvSetMmThreadCharacteristicsW(
         &self,
         task_name: crate::core::PCWSTR,
         task_index: MutPtr<u32>,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("AvSetMmThreadCharacteristicsW")
     }
     fn AvSetMmThreadPriority(
         &self,
         avrt_handle: super::super::Foundation::HANDLE,
         priority: AVRT_PRIORITY,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("AvSetMmThreadPriority")
     }
     fn CallbackMayRunLong(
         &self,
         pci: MutPtr<TP_CALLBACK_INSTANCE>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("CallbackMayRunLong")
     }
     fn CancelThreadpoolIo(&self, pio: MutPtr<TP_IO>) {
-        todo!()
+        todo!("CancelThreadpoolIo")
     }
     fn CancelWaitableTimer(
         &self,
         h_timer: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("CancelWaitableTimer")
     }
     fn ChangeTimerQueueTimer(
         &self,
@@ -3525,20 +3525,20 @@ pub trait Api {
         due_time: u32,
         period: u32,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("ChangeTimerQueueTimer")
     }
     fn ClosePrivateNamespace(
         &self,
         handle: NamespaceHandle,
         flags: u32,
     ) -> super::super::Foundation::BOOLEAN {
-        todo!()
+        todo!("ClosePrivateNamespace")
     }
     fn CloseThreadpool(&self, ptpp: PTP_POOL) {
-        todo!()
+        todo!("CloseThreadpool")
     }
     fn CloseThreadpoolCleanupGroup(&self, ptpcg: PtrDiffRepr) {
-        todo!()
+        todo!("CloseThreadpoolCleanupGroup")
     }
     fn CloseThreadpoolCleanupGroupMembers(
         &self,
@@ -3546,49 +3546,49 @@ pub trait Api {
         f_cancel_pending_callbacks: super::super::Foundation::BOOL,
         pv_cleanup_context: MutPtr<::core::ffi::c_void>,
     ) {
-        todo!()
+        todo!("CloseThreadpoolCleanupGroupMembers")
     }
     fn CloseThreadpoolIo(&self, pio: MutPtr<TP_IO>) {
-        todo!()
+        todo!("CloseThreadpoolIo")
     }
     fn CloseThreadpoolTimer(&self, pti: MutPtr<TP_TIMER>) {
-        todo!()
+        todo!("CloseThreadpoolTimer")
     }
     fn CloseThreadpoolWait(&self, pwa: MutPtr<TP_WAIT>) {
-        todo!()
+        todo!("CloseThreadpoolWait")
     }
     fn CloseThreadpoolWork(&self, pwk: MutPtr<TP_WORK>) {
-        todo!()
+        todo!("CloseThreadpoolWork")
     }
     fn ConvertFiberToThread(&self) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("ConvertFiberToThread")
     }
     fn ConvertThreadToFiber(
         &self,
         lp_parameter: ConstPtr<::core::ffi::c_void>,
     ) -> MutPtr<::core::ffi::c_void> {
-        todo!()
+        todo!("ConvertThreadToFiber")
     }
     fn ConvertThreadToFiberEx(
         &self,
         lp_parameter: ConstPtr<::core::ffi::c_void>,
         dw_flags: u32,
     ) -> MutPtr<::core::ffi::c_void> {
-        todo!()
+        todo!("ConvertThreadToFiberEx")
     }
     fn CreateBoundaryDescriptorA(
         &self,
         name: crate::core::PCSTR,
         flags: u32,
     ) -> BoundaryDescriptorHandle {
-        todo!()
+        todo!("CreateBoundaryDescriptorA")
     }
     fn CreateBoundaryDescriptorW(
         &self,
         name: crate::core::PCWSTR,
         flags: u32,
     ) -> BoundaryDescriptorHandle {
-        todo!()
+        todo!("CreateBoundaryDescriptorW")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -3599,7 +3599,7 @@ pub trait Api {
         b_initial_state: super::super::Foundation::BOOL,
         lp_name: crate::core::PCSTR,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("CreateEventA")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -3610,7 +3610,7 @@ pub trait Api {
         dw_flags: CREATE_EVENT,
         dw_desired_access: u32,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("CreateEventExA")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -3621,7 +3621,7 @@ pub trait Api {
         dw_flags: CREATE_EVENT,
         dw_desired_access: u32,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("CreateEventExW")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -3632,7 +3632,7 @@ pub trait Api {
         b_initial_state: super::super::Foundation::BOOL,
         lp_name: crate::core::PCWSTR,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("CreateEventW")
     }
     fn CreateFiber(
         &self,
@@ -3640,7 +3640,7 @@ pub trait Api {
         lp_start_address: LPFIBER_START_ROUTINE,
         lp_parameter: ConstPtr<::core::ffi::c_void>,
     ) -> MutPtr<::core::ffi::c_void> {
-        todo!()
+        todo!("CreateFiber")
     }
     fn CreateFiberEx(
         &self,
@@ -3650,7 +3650,7 @@ pub trait Api {
         lp_start_address: LPFIBER_START_ROUTINE,
         lp_parameter: ConstPtr<::core::ffi::c_void>,
     ) -> MutPtr<::core::ffi::c_void> {
-        todo!()
+        todo!("CreateFiberEx")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -3660,7 +3660,7 @@ pub trait Api {
         b_initial_owner: super::super::Foundation::BOOL,
         lp_name: crate::core::PCSTR,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("CreateMutexA")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -3671,7 +3671,7 @@ pub trait Api {
         dw_flags: u32,
         dw_desired_access: u32,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("CreateMutexExA")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -3682,7 +3682,7 @@ pub trait Api {
         dw_flags: u32,
         dw_desired_access: u32,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("CreateMutexExW")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -3692,7 +3692,7 @@ pub trait Api {
         b_initial_owner: super::super::Foundation::BOOL,
         lp_name: crate::core::PCWSTR,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("CreateMutexW")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -3702,7 +3702,7 @@ pub trait Api {
         lp_boundary_descriptor: ConstPtr<::core::ffi::c_void>,
         lp_alias_prefix: crate::core::PCSTR,
     ) -> NamespaceHandle {
-        todo!()
+        todo!("CreatePrivateNamespaceA")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -3712,7 +3712,7 @@ pub trait Api {
         lp_boundary_descriptor: ConstPtr<::core::ffi::c_void>,
         lp_alias_prefix: crate::core::PCWSTR,
     ) -> NamespaceHandle {
-        todo!()
+        todo!("CreatePrivateNamespaceW")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -3729,7 +3729,7 @@ pub trait Api {
         lp_startup_info: ConstPtr<STARTUPINFOA>,
         lp_process_information: MutPtr<PROCESS_INFORMATION>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("CreateProcessA")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -3747,7 +3747,7 @@ pub trait Api {
         lp_startup_info: ConstPtr<STARTUPINFOA>,
         lp_process_information: MutPtr<PROCESS_INFORMATION>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("CreateProcessAsUserA")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -3765,7 +3765,7 @@ pub trait Api {
         lp_startup_info: ConstPtr<STARTUPINFOW>,
         lp_process_information: MutPtr<PROCESS_INFORMATION>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("CreateProcessAsUserW")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -3782,7 +3782,7 @@ pub trait Api {
         lp_startup_info: ConstPtr<STARTUPINFOW>,
         lp_process_information: MutPtr<PROCESS_INFORMATION>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("CreateProcessW")
     }
     fn CreateProcessWithLogonW(
         &self,
@@ -3798,7 +3798,7 @@ pub trait Api {
         lp_startup_info: ConstPtr<STARTUPINFOW>,
         lp_process_information: MutPtr<PROCESS_INFORMATION>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("CreateProcessWithLogonW")
     }
     fn CreateProcessWithTokenW(
         &self,
@@ -3812,7 +3812,7 @@ pub trait Api {
         lp_startup_info: ConstPtr<STARTUPINFOW>,
         lp_process_information: MutPtr<PROCESS_INFORMATION>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("CreateProcessWithTokenW")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -3826,7 +3826,7 @@ pub trait Api {
         dw_creation_flags: u32,
         lp_thread_id: MutPtr<u32>,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("CreateRemoteThread")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -3841,7 +3841,7 @@ pub trait Api {
         lp_attribute_list: LPPROC_THREAD_ATTRIBUTE_LIST,
         lp_thread_id: MutPtr<u32>,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("CreateRemoteThreadEx")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -3852,7 +3852,7 @@ pub trait Api {
         l_maximum_count: i32,
         lp_name: crate::core::PCSTR,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("CreateSemaphoreA")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -3865,7 +3865,7 @@ pub trait Api {
         dw_flags: u32,
         dw_desired_access: u32,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("CreateSemaphoreExA")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -3878,7 +3878,7 @@ pub trait Api {
         dw_flags: u32,
         dw_desired_access: u32,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("CreateSemaphoreExW")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -3889,7 +3889,7 @@ pub trait Api {
         l_maximum_count: i32,
         lp_name: crate::core::PCWSTR,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("CreateSemaphoreW")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -3902,13 +3902,13 @@ pub trait Api {
         dw_creation_flags: THREAD_CREATION_FLAGS,
         lp_thread_id: MutPtr<u32>,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("CreateThread")
     }
     fn CreateThreadpool(&self, reserved: MutPtr<::core::ffi::c_void>) -> PTP_POOL {
-        todo!()
+        todo!("CreateThreadpool")
     }
     fn CreateThreadpoolCleanupGroup(&self) -> PtrDiffRepr {
-        todo!()
+        todo!("CreateThreadpoolCleanupGroup")
     }
     fn CreateThreadpoolIo(
         &self,
@@ -3917,7 +3917,7 @@ pub trait Api {
         pv: MutPtr<::core::ffi::c_void>,
         pcbe: ConstPtr<TP_CALLBACK_ENVIRON_V3>,
     ) -> MutPtr<TP_IO> {
-        todo!()
+        todo!("CreateThreadpoolIo")
     }
     fn CreateThreadpoolTimer(
         &self,
@@ -3925,7 +3925,7 @@ pub trait Api {
         pv: MutPtr<::core::ffi::c_void>,
         pcbe: ConstPtr<TP_CALLBACK_ENVIRON_V3>,
     ) -> MutPtr<TP_TIMER> {
-        todo!()
+        todo!("CreateThreadpoolTimer")
     }
     fn CreateThreadpoolWait(
         &self,
@@ -3933,7 +3933,7 @@ pub trait Api {
         pv: MutPtr<::core::ffi::c_void>,
         pcbe: ConstPtr<TP_CALLBACK_ENVIRON_V3>,
     ) -> MutPtr<TP_WAIT> {
-        todo!()
+        todo!("CreateThreadpoolWait")
     }
     fn CreateThreadpoolWork(
         &self,
@@ -3941,10 +3941,10 @@ pub trait Api {
         pv: MutPtr<::core::ffi::c_void>,
         pcbe: ConstPtr<TP_CALLBACK_ENVIRON_V3>,
     ) -> MutPtr<TP_WORK> {
-        todo!()
+        todo!("CreateThreadpoolWork")
     }
     fn CreateTimerQueue(&self) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("CreateTimerQueue")
     }
     fn CreateTimerQueueTimer(
         &self,
@@ -3956,19 +3956,19 @@ pub trait Api {
         period: u32,
         flags: WORKER_THREAD_FLAGS,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("CreateTimerQueueTimer")
     }
     fn CreateUmsCompletionList(
         &self,
         ums_completion_list: MutPtr<ConstPtr<::core::ffi::c_void>>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("CreateUmsCompletionList")
     }
     fn CreateUmsThreadContext(
         &self,
         lp_ums_thread: MutPtr<ConstPtr<::core::ffi::c_void>>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("CreateUmsThreadContext")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -3979,7 +3979,7 @@ pub trait Api {
         dw_flags: u32,
         dw_desired_access: u32,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("CreateWaitableTimerExW")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -3989,38 +3989,38 @@ pub trait Api {
         b_manual_reset: super::super::Foundation::BOOL,
         lp_timer_name: crate::core::PCWSTR,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("CreateWaitableTimerW")
     }
     fn DeleteBoundaryDescriptor(&self, boundary_descriptor: BoundaryDescriptorHandle) {
-        todo!()
+        todo!("DeleteBoundaryDescriptor")
     }
     fn DeleteCriticalSection(&self, lp_critical_section: MutPtr<RTL_CRITICAL_SECTION>) {
-        todo!()
+        todo!("DeleteCriticalSection")
     }
     fn DeleteFiber(&self, lp_fiber: ConstPtr<::core::ffi::c_void>) {
-        todo!()
+        todo!("DeleteFiber")
     }
     fn DeleteProcThreadAttributeList(&self, lp_attribute_list: LPPROC_THREAD_ATTRIBUTE_LIST) {
-        todo!()
+        todo!("DeleteProcThreadAttributeList")
     }
     fn DeleteSynchronizationBarrier(
         &self,
         lp_barrier: MutPtr<RTL_BARRIER>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("DeleteSynchronizationBarrier")
     }
     fn DeleteTimerQueue(
         &self,
         timer_queue: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("DeleteTimerQueue")
     }
     fn DeleteTimerQueueEx(
         &self,
         timer_queue: super::super::Foundation::HANDLE,
         completion_event: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("DeleteTimerQueueEx")
     }
     fn DeleteTimerQueueTimer(
         &self,
@@ -4028,19 +4028,19 @@ pub trait Api {
         timer: super::super::Foundation::HANDLE,
         completion_event: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("DeleteTimerQueueTimer")
     }
     fn DeleteUmsCompletionList(
         &self,
         ums_completion_list: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("DeleteUmsCompletionList")
     }
     fn DeleteUmsThreadContext(
         &self,
         ums_thread: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("DeleteUmsThreadContext")
     }
     fn DequeueUmsCompletionListItems(
         &self,
@@ -4048,20 +4048,20 @@ pub trait Api {
         wait_time_out: u32,
         ums_thread_list: MutPtr<ConstPtr<::core::ffi::c_void>>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("DequeueUmsCompletionListItems")
     }
     fn DisassociateCurrentThreadFromCallback(&self, pci: MutPtr<TP_CALLBACK_INSTANCE>) {
-        todo!()
+        todo!("DisassociateCurrentThreadFromCallback")
     }
     fn EnterCriticalSection(&self, lp_critical_section: MutPtr<RTL_CRITICAL_SECTION>) {
-        todo!()
+        todo!("EnterCriticalSection")
     }
     fn EnterSynchronizationBarrier(
         &self,
         lp_barrier: MutPtr<RTL_BARRIER>,
         dw_flags: u32,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("EnterSynchronizationBarrier")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.SystemServices'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -4069,149 +4069,149 @@ pub trait Api {
         &self,
         scheduler_startup_info: ConstPtr<UMS_SCHEDULER_STARTUP_INFO>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("EnterUmsSchedulingMode")
     }
     fn ExecuteUmsThread(
         &self,
         ums_thread: MutPtr<::core::ffi::c_void>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("ExecuteUmsThread")
     }
     fn ExitProcess(&self, u_exit_code: u32) {
-        todo!()
+        todo!("ExitProcess")
     }
     fn ExitThread(&self, dw_exit_code: u32) {
-        todo!()
+        todo!("ExitThread")
     }
     fn FlsAlloc(&self, lp_callback: PFLS_CALLBACK_FUNCTION) -> u32 {
-        todo!()
+        todo!("FlsAlloc")
     }
     fn FlsFree(&self, dw_fls_index: u32) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("FlsFree")
     }
     fn FlsGetValue(&self, dw_fls_index: u32) -> MutPtr<::core::ffi::c_void> {
-        todo!()
+        todo!("FlsGetValue")
     }
     fn FlsSetValue(
         &self,
         dw_fls_index: u32,
         lp_fls_data: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("FlsSetValue")
     }
     fn FlushProcessWriteBuffers(&self) {
-        todo!()
+        todo!("FlushProcessWriteBuffers")
     }
     fn FreeLibraryWhenCallbackReturns(
         &self,
         pci: MutPtr<TP_CALLBACK_INSTANCE>,
         r#mod: super::super::Foundation::HINSTANCE,
     ) {
-        todo!()
+        todo!("FreeLibraryWhenCallbackReturns")
     }
     fn GetActiveProcessorCount(&self, group_number: u16) -> u32 {
-        todo!()
+        todo!("GetActiveProcessorCount")
     }
     fn GetActiveProcessorGroupCount(&self) -> u16 {
-        todo!()
+        todo!("GetActiveProcessorGroupCount")
     }
     fn GetCurrentProcess(&self) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("GetCurrentProcess")
     }
     fn GetCurrentProcessId(&self) -> u32 {
-        todo!()
+        todo!("GetCurrentProcessId")
     }
     fn GetCurrentProcessorNumber(&self) -> u32 {
-        todo!()
+        todo!("GetCurrentProcessorNumber")
     }
     fn GetCurrentProcessorNumberEx(&self, proc_number: MutPtr<super::Kernel::PROCESSOR_NUMBER>) {
-        todo!()
+        todo!("GetCurrentProcessorNumberEx")
     }
     fn GetCurrentThread(&self) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("GetCurrentThread")
     }
     fn GetCurrentThreadId(&self) -> u32 {
-        todo!()
+        todo!("GetCurrentThreadId")
     }
     fn GetCurrentThreadStackLimits(&self, low_limit: MutPtr<PtrRepr>, high_limit: MutPtr<PtrRepr>) {
-        todo!()
+        todo!("GetCurrentThreadStackLimits")
     }
     fn GetCurrentUmsThread(&self) -> MutPtr<::core::ffi::c_void> {
-        todo!()
+        todo!("GetCurrentUmsThread")
     }
     fn GetExitCodeProcess(
         &self,
         h_process: super::super::Foundation::HANDLE,
         lp_exit_code: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetExitCodeProcess")
     }
     fn GetExitCodeThread(
         &self,
         h_thread: super::super::Foundation::HANDLE,
         lp_exit_code: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetExitCodeThread")
     }
     fn GetGuiResources(
         &self,
         h_process: super::super::Foundation::HANDLE,
         ui_flags: GET_GUI_RESOURCES_FLAGS,
     ) -> u32 {
-        todo!()
+        todo!("GetGuiResources")
     }
     fn GetMachineTypeAttributes(
         &self,
         machine: u16,
         machine_type_attributes: MutPtr<MACHINE_ATTRIBUTES>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("GetMachineTypeAttributes")
     }
     fn GetMaximumProcessorCount(&self, group_number: u16) -> u32 {
-        todo!()
+        todo!("GetMaximumProcessorCount")
     }
     fn GetMaximumProcessorGroupCount(&self) -> u16 {
-        todo!()
+        todo!("GetMaximumProcessorGroupCount")
     }
     fn GetNextUmsListItem(
         &self,
         ums_context: MutPtr<::core::ffi::c_void>,
     ) -> MutPtr<::core::ffi::c_void> {
-        todo!()
+        todo!("GetNextUmsListItem")
     }
     fn GetNumaAvailableMemoryNode(
         &self,
         node: u8,
         available_bytes: MutPtr<u64>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetNumaAvailableMemoryNode")
     }
     fn GetNumaAvailableMemoryNodeEx(
         &self,
         node: u16,
         available_bytes: MutPtr<u64>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetNumaAvailableMemoryNodeEx")
     }
     fn GetNumaHighestNodeNumber(
         &self,
         highest_node_number: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetNumaHighestNodeNumber")
     }
     fn GetNumaNodeNumberFromHandle(
         &self,
         h_file: super::super::Foundation::HANDLE,
         node_number: MutPtr<u16>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetNumaNodeNumberFromHandle")
     }
     fn GetNumaNodeProcessorMask(
         &self,
         node: u8,
         processor_mask: MutPtr<u64>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetNumaNodeProcessorMask")
     }
     fn GetNumaNodeProcessorMask2(
         &self,
@@ -4220,45 +4220,45 @@ pub trait Api {
         processor_mask_count: u16,
         required_mask_count: MutPtr<u16>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetNumaNodeProcessorMask2")
     }
     fn GetNumaNodeProcessorMaskEx(
         &self,
         node: u16,
         processor_mask: MutPtr<super::SystemInformation::GROUP_AFFINITY>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetNumaNodeProcessorMaskEx")
     }
     fn GetNumaProcessorNode(
         &self,
         processor: u8,
         node_number: MutPtr<u8>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetNumaProcessorNode")
     }
     fn GetNumaProcessorNodeEx(
         &self,
         processor: ConstPtr<super::Kernel::PROCESSOR_NUMBER>,
         node_number: MutPtr<u16>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetNumaProcessorNodeEx")
     }
     fn GetNumaProximityNode(
         &self,
         proximity_id: u32,
         node_number: MutPtr<u8>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetNumaProximityNode")
     }
     fn GetNumaProximityNodeEx(
         &self,
         proximity_id: u32,
         node_number: MutPtr<u16>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetNumaProximityNodeEx")
     }
     fn GetPriorityClass(&self, h_process: super::super::Foundation::HANDLE) -> u32 {
-        todo!()
+        todo!("GetPriorityClass")
     }
     fn GetProcessAffinityMask(
         &self,
@@ -4266,7 +4266,7 @@ pub trait Api {
         lp_process_affinity_mask: MutPtr<PtrRepr>,
         lp_system_affinity_mask: MutPtr<PtrRepr>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetProcessAffinityMask")
     }
     fn GetProcessDEPPolicy(
         &self,
@@ -4274,7 +4274,7 @@ pub trait Api {
         lp_flags: MutPtr<u32>,
         lp_permanent: MutPtr<super::super::Foundation::BOOL>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetProcessDEPPolicy")
     }
     fn GetProcessDefaultCpuSetMasks(
         &self,
@@ -4283,7 +4283,7 @@ pub trait Api {
         cpu_set_mask_count: u16,
         required_mask_count: MutPtr<u16>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetProcessDefaultCpuSetMasks")
     }
     fn GetProcessDefaultCpuSets(
         &self,
@@ -4292,7 +4292,7 @@ pub trait Api {
         cpu_set_id_count: u32,
         required_id_count: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetProcessDefaultCpuSets")
     }
     fn GetProcessGroupAffinity(
         &self,
@@ -4300,20 +4300,20 @@ pub trait Api {
         group_count: MutPtr<u16>,
         group_array: MutPtr<u16>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetProcessGroupAffinity")
     }
     fn GetProcessHandleCount(
         &self,
         h_process: super::super::Foundation::HANDLE,
         pdw_handle_count: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetProcessHandleCount")
     }
     fn GetProcessId(&self, process: super::super::Foundation::HANDLE) -> u32 {
-        todo!()
+        todo!("GetProcessId")
     }
     fn GetProcessIdOfThread(&self, thread: super::super::Foundation::HANDLE) -> u32 {
-        todo!()
+        todo!("GetProcessIdOfThread")
     }
     fn GetProcessInformation(
         &self,
@@ -4322,14 +4322,14 @@ pub trait Api {
         process_information: MutPtr<::core::ffi::c_void>,
         process_information_size: u32,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetProcessInformation")
     }
     fn GetProcessIoCounters(
         &self,
         h_process: super::super::Foundation::HANDLE,
         lp_io_counters: MutPtr<IO_COUNTERS>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetProcessIoCounters")
     }
     fn GetProcessMitigationPolicy(
         &self,
@@ -4338,21 +4338,21 @@ pub trait Api {
         lp_buffer: MutPtr<::core::ffi::c_void>,
         dw_length: PtrRepr,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetProcessMitigationPolicy")
     }
     fn GetProcessPriorityBoost(
         &self,
         h_process: super::super::Foundation::HANDLE,
         p_disable_priority_boost: MutPtr<super::super::Foundation::BOOL>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetProcessPriorityBoost")
     }
     fn GetProcessShutdownParameters(
         &self,
         lpdw_level: MutPtr<u32>,
         lpdw_flags: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetProcessShutdownParameters")
     }
     fn GetProcessTimes(
         &self,
@@ -4362,10 +4362,10 @@ pub trait Api {
         lp_kernel_time: MutPtr<super::super::Foundation::FILETIME>,
         lp_user_time: MutPtr<super::super::Foundation::FILETIME>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetProcessTimes")
     }
     fn GetProcessVersion(&self, process_id: u32) -> u32 {
-        todo!()
+        todo!("GetProcessVersion")
     }
     fn GetProcessWorkingSetSize(
         &self,
@@ -4373,13 +4373,13 @@ pub trait Api {
         lp_minimum_working_set_size: MutPtr<PtrRepr>,
         lp_maximum_working_set_size: MutPtr<PtrRepr>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetProcessWorkingSetSize")
     }
     fn GetStartupInfoA(&self, lp_startup_info: MutPtr<STARTUPINFOA>) {
-        todo!()
+        todo!("GetStartupInfoA")
     }
     fn GetStartupInfoW(&self, lp_startup_info: MutPtr<STARTUPINFOW>) {
-        todo!()
+        todo!("GetStartupInfoW")
     }
     fn GetSystemTimes(
         &self,
@@ -4387,38 +4387,38 @@ pub trait Api {
         lp_kernel_time: MutPtr<super::super::Foundation::FILETIME>,
         lp_user_time: MutPtr<super::super::Foundation::FILETIME>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetSystemTimes")
     }
     fn GetThreadDescription(
         &self,
         h_thread: super::super::Foundation::HANDLE,
         ppsz_thread_description: MutPtr<crate::core::PWSTR>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("GetThreadDescription")
     }
     fn GetThreadGroupAffinity(
         &self,
         h_thread: super::super::Foundation::HANDLE,
         group_affinity: MutPtr<super::SystemInformation::GROUP_AFFINITY>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetThreadGroupAffinity")
     }
     fn GetThreadIOPendingFlag(
         &self,
         h_thread: super::super::Foundation::HANDLE,
         lp_io_is_pending: MutPtr<super::super::Foundation::BOOL>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetThreadIOPendingFlag")
     }
     fn GetThreadId(&self, thread: super::super::Foundation::HANDLE) -> u32 {
-        todo!()
+        todo!("GetThreadId")
     }
     fn GetThreadIdealProcessorEx(
         &self,
         h_thread: super::super::Foundation::HANDLE,
         lp_ideal_processor: MutPtr<super::Kernel::PROCESSOR_NUMBER>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetThreadIdealProcessorEx")
     }
     fn GetThreadInformation(
         &self,
@@ -4427,17 +4427,17 @@ pub trait Api {
         thread_information: MutPtr<::core::ffi::c_void>,
         thread_information_size: u32,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetThreadInformation")
     }
     fn GetThreadPriority(&self, h_thread: super::super::Foundation::HANDLE) -> i32 {
-        todo!()
+        todo!("GetThreadPriority")
     }
     fn GetThreadPriorityBoost(
         &self,
         h_thread: super::super::Foundation::HANDLE,
         p_disable_priority_boost: MutPtr<super::super::Foundation::BOOL>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetThreadPriorityBoost")
     }
     fn GetThreadSelectedCpuSetMasks(
         &self,
@@ -4446,7 +4446,7 @@ pub trait Api {
         cpu_set_mask_count: u16,
         required_mask_count: MutPtr<u16>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetThreadSelectedCpuSetMasks")
     }
     fn GetThreadSelectedCpuSets(
         &self,
@@ -4455,7 +4455,7 @@ pub trait Api {
         cpu_set_id_count: u32,
         required_id_count: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetThreadSelectedCpuSets")
     }
     fn GetThreadTimes(
         &self,
@@ -4465,21 +4465,21 @@ pub trait Api {
         lp_kernel_time: MutPtr<super::super::Foundation::FILETIME>,
         lp_user_time: MutPtr<super::super::Foundation::FILETIME>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetThreadTimes")
     }
     fn GetUmsCompletionListEvent(
         &self,
         ums_completion_list: ConstPtr<::core::ffi::c_void>,
         ums_completion_event: MutPtr<super::super::Foundation::HANDLE>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetUmsCompletionListEvent")
     }
     fn GetUmsSystemThreadInformation(
         &self,
         thread_handle: super::super::Foundation::HANDLE,
         system_thread_info: MutPtr<UMS_SYSTEM_THREAD_INFORMATION>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetUmsSystemThreadInformation")
     }
     fn InitOnceBeginInitialize(
         &self,
@@ -4488,7 +4488,7 @@ pub trait Api {
         f_pending: MutPtr<super::super::Foundation::BOOL>,
         lp_context: MutPtr<ConstPtr<::core::ffi::c_void>>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("InitOnceBeginInitialize")
     }
     fn InitOnceComplete(
         &self,
@@ -4496,7 +4496,7 @@ pub trait Api {
         dw_flags: u32,
         lp_context: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("InitOnceComplete")
     }
     fn InitOnceExecuteOnce(
         &self,
@@ -4505,23 +4505,23 @@ pub trait Api {
         parameter: MutPtr<::core::ffi::c_void>,
         context: MutPtr<ConstPtr<::core::ffi::c_void>>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("InitOnceExecuteOnce")
     }
     fn InitOnceInitialize(&self, init_once: MutPtr<RTL_RUN_ONCE>) {
-        todo!()
+        todo!("InitOnceInitialize")
     }
     fn InitializeConditionVariable(&self, condition_variable: MutPtr<RTL_CONDITION_VARIABLE>) {
-        todo!()
+        todo!("InitializeConditionVariable")
     }
     fn InitializeCriticalSection(&self, lp_critical_section: MutPtr<RTL_CRITICAL_SECTION>) {
-        todo!()
+        todo!("InitializeCriticalSection")
     }
     fn InitializeCriticalSectionAndSpinCount(
         &self,
         lp_critical_section: MutPtr<RTL_CRITICAL_SECTION>,
         dw_spin_count: u32,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("InitializeCriticalSectionAndSpinCount")
     }
     fn InitializeCriticalSectionEx(
         &self,
@@ -4529,7 +4529,7 @@ pub trait Api {
         dw_spin_count: u32,
         flags: u32,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("InitializeCriticalSectionEx")
     }
     fn InitializeProcThreadAttributeList(
         &self,
@@ -4538,13 +4538,13 @@ pub trait Api {
         dw_flags: u32,
         lp_size: MutPtr<PtrRepr>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("InitializeProcThreadAttributeList")
     }
     fn InitializeSListHead(&self, list_head: MutPtr<super::Kernel::SLIST_HEADER>) {
-        todo!()
+        todo!("InitializeSListHead")
     }
     fn InitializeSRWLock(&self, srw_lock: MutPtr<RTL_SRWLOCK>) {
-        todo!()
+        todo!("InitializeSRWLock")
     }
     fn InitializeSynchronizationBarrier(
         &self,
@@ -4552,26 +4552,26 @@ pub trait Api {
         l_total_threads: i32,
         l_spin_count: i32,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("InitializeSynchronizationBarrier")
     }
     fn InterlockedFlushSList(
         &self,
         list_head: MutPtr<super::Kernel::SLIST_HEADER>,
     ) -> MutPtr<super::Kernel::SLIST_ENTRY> {
-        todo!()
+        todo!("InterlockedFlushSList")
     }
     fn InterlockedPopEntrySList(
         &self,
         list_head: MutPtr<super::Kernel::SLIST_HEADER>,
     ) -> MutPtr<super::Kernel::SLIST_ENTRY> {
-        todo!()
+        todo!("InterlockedPopEntrySList")
     }
     fn InterlockedPushEntrySList(
         &self,
         list_head: MutPtr<super::Kernel::SLIST_HEADER>,
         list_entry: MutPtr<super::Kernel::SLIST_ENTRY>,
     ) -> MutPtr<super::Kernel::SLIST_ENTRY> {
-        todo!()
+        todo!("InterlockedPushEntrySList")
     }
     fn InterlockedPushListSListEx(
         &self,
@@ -4580,39 +4580,39 @@ pub trait Api {
         list_end: MutPtr<super::Kernel::SLIST_ENTRY>,
         count: u32,
     ) -> MutPtr<super::Kernel::SLIST_ENTRY> {
-        todo!()
+        todo!("InterlockedPushListSListEx")
     }
     fn IsImmersiveProcess(
         &self,
         h_process: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("IsImmersiveProcess")
     }
     fn IsProcessCritical(
         &self,
         h_process: super::super::Foundation::HANDLE,
         critical: MutPtr<super::super::Foundation::BOOL>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("IsProcessCritical")
     }
     fn IsProcessorFeaturePresent(
         &self,
         processor_feature: PROCESSOR_FEATURE_ID,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("IsProcessorFeaturePresent")
     }
     fn IsThreadAFiber(&self) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("IsThreadAFiber")
     }
     fn IsThreadpoolTimerSet(&self, pti: MutPtr<TP_TIMER>) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("IsThreadpoolTimerSet")
     }
     fn IsWow64Process(
         &self,
         h_process: super::super::Foundation::HANDLE,
         wow_64_process: MutPtr<super::super::Foundation::BOOL>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("IsWow64Process")
     }
     fn IsWow64Process2(
         &self,
@@ -4620,17 +4620,17 @@ pub trait Api {
         p_process_machine: MutPtr<u16>,
         p_native_machine: MutPtr<u16>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("IsWow64Process2")
     }
     fn LeaveCriticalSection(&self, lp_critical_section: MutPtr<RTL_CRITICAL_SECTION>) {
-        todo!()
+        todo!("LeaveCriticalSection")
     }
     fn LeaveCriticalSectionWhenCallbackReturns(
         &self,
         pci: MutPtr<TP_CALLBACK_INSTANCE>,
         pcs: MutPtr<RTL_CRITICAL_SECTION>,
     ) {
-        todo!()
+        todo!("LeaveCriticalSectionWhenCallbackReturns")
     }
     fn NtQueryInformationProcess(
         &self,
@@ -4640,7 +4640,7 @@ pub trait Api {
         process_information_length: u32,
         return_length: MutPtr<u32>,
     ) -> super::super::Foundation::NTSTATUS {
-        todo!()
+        todo!("NtQueryInformationProcess")
     }
     fn NtQueryInformationThread(
         &self,
@@ -4650,7 +4650,7 @@ pub trait Api {
         thread_information_length: u32,
         return_length: MutPtr<u32>,
     ) -> super::super::Foundation::NTSTATUS {
-        todo!()
+        todo!("NtQueryInformationThread")
     }
     fn NtSetInformationThread(
         &self,
@@ -4659,7 +4659,7 @@ pub trait Api {
         thread_information: ConstPtr<::core::ffi::c_void>,
         thread_information_length: u32,
     ) -> super::super::Foundation::NTSTATUS {
-        todo!()
+        todo!("NtSetInformationThread")
     }
     fn OpenEventA(
         &self,
@@ -4667,7 +4667,7 @@ pub trait Api {
         b_inherit_handle: super::super::Foundation::BOOL,
         lp_name: crate::core::PCSTR,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("OpenEventA")
     }
     fn OpenEventW(
         &self,
@@ -4675,7 +4675,7 @@ pub trait Api {
         b_inherit_handle: super::super::Foundation::BOOL,
         lp_name: crate::core::PCWSTR,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("OpenEventW")
     }
     fn OpenMutexW(
         &self,
@@ -4683,21 +4683,21 @@ pub trait Api {
         b_inherit_handle: super::super::Foundation::BOOL,
         lp_name: crate::core::PCWSTR,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("OpenMutexW")
     }
     fn OpenPrivateNamespaceA(
         &self,
         lp_boundary_descriptor: ConstPtr<::core::ffi::c_void>,
         lp_alias_prefix: crate::core::PCSTR,
     ) -> NamespaceHandle {
-        todo!()
+        todo!("OpenPrivateNamespaceA")
     }
     fn OpenPrivateNamespaceW(
         &self,
         lp_boundary_descriptor: ConstPtr<::core::ffi::c_void>,
         lp_alias_prefix: crate::core::PCWSTR,
     ) -> NamespaceHandle {
-        todo!()
+        todo!("OpenPrivateNamespaceW")
     }
     fn OpenProcess(
         &self,
@@ -4705,7 +4705,7 @@ pub trait Api {
         b_inherit_handle: super::super::Foundation::BOOL,
         dw_process_id: u32,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("OpenProcess")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -4715,7 +4715,7 @@ pub trait Api {
         desired_access: super::super::Security::TOKEN_ACCESS_MASK,
         token_handle: MutPtr<super::super::Foundation::HANDLE>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("OpenProcessToken")
     }
     fn OpenSemaphoreW(
         &self,
@@ -4723,7 +4723,7 @@ pub trait Api {
         b_inherit_handle: super::super::Foundation::BOOL,
         lp_name: crate::core::PCWSTR,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("OpenSemaphoreW")
     }
     fn OpenThread(
         &self,
@@ -4731,7 +4731,7 @@ pub trait Api {
         b_inherit_handle: super::super::Foundation::BOOL,
         dw_thread_id: u32,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("OpenThread")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -4742,7 +4742,7 @@ pub trait Api {
         open_as_self: super::super::Foundation::BOOL,
         token_handle: MutPtr<super::super::Foundation::HANDLE>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("OpenThreadToken")
     }
     fn OpenWaitableTimerW(
         &self,
@@ -4750,16 +4750,16 @@ pub trait Api {
         b_inherit_handle: super::super::Foundation::BOOL,
         lp_timer_name: crate::core::PCWSTR,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("OpenWaitableTimerW")
     }
     fn PulseEvent(
         &self,
         h_event: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("PulseEvent")
     }
     fn QueryDepthSList(&self, list_head: ConstPtr<super::Kernel::SLIST_HEADER>) -> u16 {
-        todo!()
+        todo!("QueryDepthSList")
     }
     fn QueryFullProcessImageNameA(
         &self,
@@ -4768,7 +4768,7 @@ pub trait Api {
         lp_exe_name: crate::core::PSTR,
         lpdw_size: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("QueryFullProcessImageNameA")
     }
     fn QueryFullProcessImageNameW(
         &self,
@@ -4777,28 +4777,28 @@ pub trait Api {
         lp_exe_name: crate::core::PWSTR,
         lpdw_size: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("QueryFullProcessImageNameW")
     }
     fn QueryProcessAffinityUpdateMode(
         &self,
         h_process: super::super::Foundation::HANDLE,
         lpdw_flags: MutPtr<PROCESS_AFFINITY_AUTO_UPDATE_FLAGS>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("QueryProcessAffinityUpdateMode")
     }
     fn QueryProtectedPolicy(
         &self,
         policy_guid: ConstPtr<crate::core::GUID>,
         policy_value: MutPtr<PtrRepr>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("QueryProtectedPolicy")
     }
     fn QueryThreadpoolStackInformation(
         &self,
         ptpp: PTP_POOL,
         ptpsi: MutPtr<TP_POOL_STACK_INFORMATION>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("QueryThreadpoolStackInformation")
     }
     fn QueryUmsThreadInformation(
         &self,
@@ -4808,7 +4808,7 @@ pub trait Api {
         ums_thread_information_length: u32,
         return_length: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("QueryUmsThreadInformation")
     }
     fn QueueUserAPC(
         &self,
@@ -4816,7 +4816,7 @@ pub trait Api {
         h_thread: super::super::Foundation::HANDLE,
         dw_data: PtrRepr,
     ) -> u32 {
-        todo!()
+        todo!("QueueUserAPC")
     }
     fn QueueUserAPC2(
         &self,
@@ -4825,7 +4825,7 @@ pub trait Api {
         data: PtrRepr,
         flags: QUEUE_USER_APC_FLAGS,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("QueueUserAPC2")
     }
     fn QueueUserWorkItem(
         &self,
@@ -4833,7 +4833,7 @@ pub trait Api {
         context: ConstPtr<::core::ffi::c_void>,
         flags: WORKER_THREAD_FLAGS,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("QueueUserWorkItem")
     }
     fn RegisterWaitForSingleObject(
         &self,
@@ -4844,26 +4844,26 @@ pub trait Api {
         dw_milliseconds: u32,
         dw_flags: WORKER_THREAD_FLAGS,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("RegisterWaitForSingleObject")
     }
     fn ReleaseMutex(
         &self,
         h_mutex: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("ReleaseMutex")
     }
     fn ReleaseMutexWhenCallbackReturns(
         &self,
         pci: MutPtr<TP_CALLBACK_INSTANCE>,
         r#mut: super::super::Foundation::HANDLE,
     ) {
-        todo!()
+        todo!("ReleaseMutexWhenCallbackReturns")
     }
     fn ReleaseSRWLockExclusive(&self, srw_lock: MutPtr<RTL_SRWLOCK>) {
-        todo!()
+        todo!("ReleaseSRWLockExclusive")
     }
     fn ReleaseSRWLockShared(&self, srw_lock: MutPtr<RTL_SRWLOCK>) {
-        todo!()
+        todo!("ReleaseSRWLockShared")
     }
     fn ReleaseSemaphore(
         &self,
@@ -4871,7 +4871,7 @@ pub trait Api {
         l_release_count: i32,
         lp_previous_count: MutPtr<i32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("ReleaseSemaphore")
     }
     fn ReleaseSemaphoreWhenCallbackReturns(
         &self,
@@ -4879,60 +4879,60 @@ pub trait Api {
         sem: super::super::Foundation::HANDLE,
         crel: u32,
     ) {
-        todo!()
+        todo!("ReleaseSemaphoreWhenCallbackReturns")
     }
     fn ResetEvent(
         &self,
         h_event: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("ResetEvent")
     }
     fn ResumeThread(&self, h_thread: super::super::Foundation::HANDLE) -> u32 {
-        todo!()
+        todo!("ResumeThread")
     }
     fn SetCriticalSectionSpinCount(
         &self,
         lp_critical_section: MutPtr<RTL_CRITICAL_SECTION>,
         dw_spin_count: u32,
     ) -> u32 {
-        todo!()
+        todo!("SetCriticalSectionSpinCount")
     }
     fn SetEvent(
         &self,
         h_event: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetEvent")
     }
     fn SetEventWhenCallbackReturns(
         &self,
         pci: MutPtr<TP_CALLBACK_INSTANCE>,
         evt: super::super::Foundation::HANDLE,
     ) {
-        todo!()
+        todo!("SetEventWhenCallbackReturns")
     }
     fn SetPriorityClass(
         &self,
         h_process: super::super::Foundation::HANDLE,
         dw_priority_class: PROCESS_CREATION_FLAGS,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetPriorityClass")
     }
     fn SetProcessAffinityMask(
         &self,
         h_process: super::super::Foundation::HANDLE,
         dw_process_affinity_mask: PtrRepr,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetProcessAffinityMask")
     }
     fn SetProcessAffinityUpdateMode(
         &self,
         h_process: super::super::Foundation::HANDLE,
         dw_flags: PROCESS_AFFINITY_AUTO_UPDATE_FLAGS,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetProcessAffinityUpdateMode")
     }
     fn SetProcessDEPPolicy(&self, dw_flags: PROCESS_DEP_FLAGS) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetProcessDEPPolicy")
     }
     fn SetProcessDefaultCpuSetMasks(
         &self,
@@ -4940,7 +4940,7 @@ pub trait Api {
         cpu_set_masks: ConstPtr<super::SystemInformation::GROUP_AFFINITY>,
         cpu_set_mask_count: u16,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetProcessDefaultCpuSetMasks")
     }
     fn SetProcessDefaultCpuSets(
         &self,
@@ -4948,7 +4948,7 @@ pub trait Api {
         cpu_set_ids: ConstPtr<u32>,
         cpu_set_id_count: u32,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetProcessDefaultCpuSets")
     }
     fn SetProcessDynamicEHContinuationTargets(
         &self,
@@ -4956,7 +4956,7 @@ pub trait Api {
         number_of_targets: u16,
         targets: MutPtr<PROCESS_DYNAMIC_EH_CONTINUATION_TARGET>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetProcessDynamicEHContinuationTargets")
     }
     fn SetProcessDynamicEnforcedCetCompatibleRanges(
         &self,
@@ -4964,7 +4964,7 @@ pub trait Api {
         number_of_ranges: u16,
         ranges: MutPtr<PROCESS_DYNAMIC_ENFORCED_ADDRESS_RANGE>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetProcessDynamicEnforcedCetCompatibleRanges")
     }
     fn SetProcessInformation(
         &self,
@@ -4973,7 +4973,7 @@ pub trait Api {
         process_information: ConstPtr<::core::ffi::c_void>,
         process_information_size: u32,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetProcessInformation")
     }
     fn SetProcessMitigationPolicy(
         &self,
@@ -4981,27 +4981,27 @@ pub trait Api {
         lp_buffer: ConstPtr<::core::ffi::c_void>,
         dw_length: PtrRepr,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetProcessMitigationPolicy")
     }
     fn SetProcessPriorityBoost(
         &self,
         h_process: super::super::Foundation::HANDLE,
         b_disable_priority_boost: super::super::Foundation::BOOL,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetProcessPriorityBoost")
     }
     fn SetProcessRestrictionExemption(
         &self,
         f_enable_exemption: super::super::Foundation::BOOL,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetProcessRestrictionExemption")
     }
     fn SetProcessShutdownParameters(
         &self,
         dw_level: u32,
         dw_flags: u32,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetProcessShutdownParameters")
     }
     fn SetProcessWorkingSetSize(
         &self,
@@ -5009,7 +5009,7 @@ pub trait Api {
         dw_minimum_working_set_size: PtrRepr,
         dw_maximum_working_set_size: PtrRepr,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetProcessWorkingSetSize")
     }
     fn SetProtectedPolicy(
         &self,
@@ -5017,21 +5017,21 @@ pub trait Api {
         policy_value: PtrRepr,
         old_policy_value: MutPtr<PtrRepr>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetProtectedPolicy")
     }
     fn SetThreadAffinityMask(
         &self,
         h_thread: super::super::Foundation::HANDLE,
         dw_thread_affinity_mask: PtrRepr,
     ) -> PtrRepr {
-        todo!()
+        todo!("SetThreadAffinityMask")
     }
     fn SetThreadDescription(
         &self,
         h_thread: super::super::Foundation::HANDLE,
         lp_thread_description: crate::core::PCWSTR,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("SetThreadDescription")
     }
     fn SetThreadGroupAffinity(
         &self,
@@ -5039,14 +5039,14 @@ pub trait Api {
         group_affinity: ConstPtr<super::SystemInformation::GROUP_AFFINITY>,
         previous_group_affinity: MutPtr<super::SystemInformation::GROUP_AFFINITY>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetThreadGroupAffinity")
     }
     fn SetThreadIdealProcessor(
         &self,
         h_thread: super::super::Foundation::HANDLE,
         dw_ideal_processor: u32,
     ) -> u32 {
-        todo!()
+        todo!("SetThreadIdealProcessor")
     }
     fn SetThreadIdealProcessorEx(
         &self,
@@ -5054,7 +5054,7 @@ pub trait Api {
         lp_ideal_processor: ConstPtr<super::Kernel::PROCESSOR_NUMBER>,
         lp_previous_ideal_processor: MutPtr<super::Kernel::PROCESSOR_NUMBER>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetThreadIdealProcessorEx")
     }
     fn SetThreadInformation(
         &self,
@@ -5063,21 +5063,21 @@ pub trait Api {
         thread_information: ConstPtr<::core::ffi::c_void>,
         thread_information_size: u32,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetThreadInformation")
     }
     fn SetThreadPriority(
         &self,
         h_thread: super::super::Foundation::HANDLE,
         n_priority: THREAD_PRIORITY,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetThreadPriority")
     }
     fn SetThreadPriorityBoost(
         &self,
         h_thread: super::super::Foundation::HANDLE,
         b_disable_priority_boost: super::super::Foundation::BOOL,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetThreadPriorityBoost")
     }
     fn SetThreadSelectedCpuSetMasks(
         &self,
@@ -5085,7 +5085,7 @@ pub trait Api {
         cpu_set_masks: ConstPtr<super::SystemInformation::GROUP_AFFINITY>,
         cpu_set_mask_count: u16,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetThreadSelectedCpuSetMasks")
     }
     fn SetThreadSelectedCpuSets(
         &self,
@@ -5093,37 +5093,37 @@ pub trait Api {
         cpu_set_ids: ConstPtr<u32>,
         cpu_set_id_count: u32,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetThreadSelectedCpuSets")
     }
     fn SetThreadStackGuarantee(
         &self,
         stack_size_in_bytes: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetThreadStackGuarantee")
     }
     fn SetThreadToken(
         &self,
         thread: ConstPtr<super::super::Foundation::HANDLE>,
         token: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetThreadToken")
     }
     fn SetThreadpoolStackInformation(
         &self,
         ptpp: PTP_POOL,
         ptpsi: ConstPtr<TP_POOL_STACK_INFORMATION>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetThreadpoolStackInformation")
     }
     fn SetThreadpoolThreadMaximum(&self, ptpp: PTP_POOL, cthrd_most: u32) {
-        todo!()
+        todo!("SetThreadpoolThreadMaximum")
     }
     fn SetThreadpoolThreadMinimum(
         &self,
         ptpp: PTP_POOL,
         cthrd_mic: u32,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetThreadpoolThreadMinimum")
     }
     fn SetThreadpoolTimer(
         &self,
@@ -5132,7 +5132,7 @@ pub trait Api {
         ms_period: u32,
         ms_window_length: u32,
     ) {
-        todo!()
+        todo!("SetThreadpoolTimer")
     }
     fn SetThreadpoolTimerEx(
         &self,
@@ -5141,7 +5141,7 @@ pub trait Api {
         ms_period: u32,
         ms_window_length: u32,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetThreadpoolTimerEx")
     }
     fn SetThreadpoolWait(
         &self,
@@ -5149,7 +5149,7 @@ pub trait Api {
         h: super::super::Foundation::HANDLE,
         pft_timeout: ConstPtr<super::super::Foundation::FILETIME>,
     ) {
-        todo!()
+        todo!("SetThreadpoolWait")
     }
     fn SetThreadpoolWaitEx(
         &self,
@@ -5158,7 +5158,7 @@ pub trait Api {
         pft_timeout: ConstPtr<super::super::Foundation::FILETIME>,
         reserved: MutPtr<::core::ffi::c_void>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetThreadpoolWaitEx")
     }
     fn SetTimerQueueTimer(
         &self,
@@ -5169,7 +5169,7 @@ pub trait Api {
         period: u32,
         prefer_io: super::super::Foundation::BOOL,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("SetTimerQueueTimer")
     }
     fn SetUmsThreadInformation(
         &self,
@@ -5178,7 +5178,7 @@ pub trait Api {
         ums_thread_information: ConstPtr<::core::ffi::c_void>,
         ums_thread_information_length: u32,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetUmsThreadInformation")
     }
     fn SetWaitableTimer(
         &self,
@@ -5189,7 +5189,7 @@ pub trait Api {
         lp_arg_to_completion_routine: ConstPtr<::core::ffi::c_void>,
         f_resume: super::super::Foundation::BOOL,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetWaitableTimer")
     }
     fn SetWaitableTimerEx(
         &self,
@@ -5201,10 +5201,10 @@ pub trait Api {
         wake_context: ConstPtr<REASON_CONTEXT>,
         tolerable_delay: u32,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetWaitableTimerEx")
     }
     fn Sleep(&self, dw_milliseconds: u32) {
-        todo!()
+        todo!("Sleep")
     }
     fn SleepConditionVariableCS(
         &self,
@@ -5212,7 +5212,7 @@ pub trait Api {
         critical_section: MutPtr<RTL_CRITICAL_SECTION>,
         dw_milliseconds: u32,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SleepConditionVariableCS")
     }
     fn SleepConditionVariableSRW(
         &self,
@@ -5221,73 +5221,73 @@ pub trait Api {
         dw_milliseconds: u32,
         flags: u32,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SleepConditionVariableSRW")
     }
     fn SleepEx(&self, dw_milliseconds: u32, b_alertable: super::super::Foundation::BOOL) -> u32 {
-        todo!()
+        todo!("SleepEx")
     }
     fn StartThreadpoolIo(&self, pio: MutPtr<TP_IO>) {
-        todo!()
+        todo!("StartThreadpoolIo")
     }
     fn SubmitThreadpoolWork(&self, pwk: MutPtr<TP_WORK>) {
-        todo!()
+        todo!("SubmitThreadpoolWork")
     }
     fn SuspendThread(&self, h_thread: super::super::Foundation::HANDLE) -> u32 {
-        todo!()
+        todo!("SuspendThread")
     }
     fn SwitchToFiber(&self, lp_fiber: ConstPtr<::core::ffi::c_void>) {
-        todo!()
+        todo!("SwitchToFiber")
     }
     fn SwitchToThread(&self) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SwitchToThread")
     }
     fn TerminateProcess(
         &self,
         h_process: super::super::Foundation::HANDLE,
         u_exit_code: u32,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("TerminateProcess")
     }
     fn TerminateThread(
         &self,
         h_thread: super::super::Foundation::HANDLE,
         dw_exit_code: u32,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("TerminateThread")
     }
     fn TlsAlloc(&self) -> u32 {
-        todo!()
+        todo!("TlsAlloc")
     }
     fn TlsFree(&self, dw_tls_index: u32) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("TlsFree")
     }
     fn TlsGetValue(&self, dw_tls_index: u32) -> MutPtr<::core::ffi::c_void> {
-        todo!()
+        todo!("TlsGetValue")
     }
     fn TlsSetValue(
         &self,
         dw_tls_index: u32,
         lp_tls_value: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("TlsSetValue")
     }
     fn TryAcquireSRWLockExclusive(
         &self,
         srw_lock: MutPtr<RTL_SRWLOCK>,
     ) -> super::super::Foundation::BOOLEAN {
-        todo!()
+        todo!("TryAcquireSRWLockExclusive")
     }
     fn TryAcquireSRWLockShared(
         &self,
         srw_lock: MutPtr<RTL_SRWLOCK>,
     ) -> super::super::Foundation::BOOLEAN {
-        todo!()
+        todo!("TryAcquireSRWLockShared")
     }
     fn TryEnterCriticalSection(
         &self,
         lp_critical_section: MutPtr<RTL_CRITICAL_SECTION>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("TryEnterCriticalSection")
     }
     fn TrySubmitThreadpoolCallback(
         &self,
@@ -5295,26 +5295,26 @@ pub trait Api {
         pv: MutPtr<::core::ffi::c_void>,
         pcbe: ConstPtr<TP_CALLBACK_ENVIRON_V3>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("TrySubmitThreadpoolCallback")
     }
     fn UmsThreadYield(
         &self,
         scheduler_param: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("UmsThreadYield")
     }
     fn UnregisterWait(
         &self,
         wait_handle: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("UnregisterWait")
     }
     fn UnregisterWaitEx(
         &self,
         wait_handle: super::super::Foundation::HANDLE,
         completion_event: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("UnregisterWaitEx")
     }
     fn UpdateProcThreadAttribute(
         &self,
@@ -5326,14 +5326,14 @@ pub trait Api {
         lp_previous_value: MutPtr<::core::ffi::c_void>,
         lp_return_size: ConstPtr<PtrRepr>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("UpdateProcThreadAttribute")
     }
     fn WaitForInputIdle(
         &self,
         h_process: super::super::Foundation::HANDLE,
         dw_milliseconds: u32,
     ) -> u32 {
-        todo!()
+        todo!("WaitForInputIdle")
     }
     fn WaitForMultipleObjects(
         &self,
@@ -5342,7 +5342,7 @@ pub trait Api {
         b_wait_all: super::super::Foundation::BOOL,
         dw_milliseconds: u32,
     ) -> u32 {
-        todo!()
+        todo!("WaitForMultipleObjects")
     }
     fn WaitForMultipleObjectsEx(
         &self,
@@ -5352,14 +5352,14 @@ pub trait Api {
         dw_milliseconds: u32,
         b_alertable: super::super::Foundation::BOOL,
     ) -> u32 {
-        todo!()
+        todo!("WaitForMultipleObjectsEx")
     }
     fn WaitForSingleObject(
         &self,
         h_handle: super::super::Foundation::HANDLE,
         dw_milliseconds: u32,
     ) -> u32 {
-        todo!()
+        todo!("WaitForSingleObject")
     }
     fn WaitForSingleObjectEx(
         &self,
@@ -5367,35 +5367,35 @@ pub trait Api {
         dw_milliseconds: u32,
         b_alertable: super::super::Foundation::BOOL,
     ) -> u32 {
-        todo!()
+        todo!("WaitForSingleObjectEx")
     }
     fn WaitForThreadpoolIoCallbacks(
         &self,
         pio: MutPtr<TP_IO>,
         f_cancel_pending_callbacks: super::super::Foundation::BOOL,
     ) {
-        todo!()
+        todo!("WaitForThreadpoolIoCallbacks")
     }
     fn WaitForThreadpoolTimerCallbacks(
         &self,
         pti: MutPtr<TP_TIMER>,
         f_cancel_pending_callbacks: super::super::Foundation::BOOL,
     ) {
-        todo!()
+        todo!("WaitForThreadpoolTimerCallbacks")
     }
     fn WaitForThreadpoolWaitCallbacks(
         &self,
         pwa: MutPtr<TP_WAIT>,
         f_cancel_pending_callbacks: super::super::Foundation::BOOL,
     ) {
-        todo!()
+        todo!("WaitForThreadpoolWaitCallbacks")
     }
     fn WaitForThreadpoolWorkCallbacks(
         &self,
         pwk: MutPtr<TP_WORK>,
         f_cancel_pending_callbacks: super::super::Foundation::BOOL,
     ) {
-        todo!()
+        todo!("WaitForThreadpoolWorkCallbacks")
     }
     fn WaitOnAddress(
         &self,
@@ -5404,28 +5404,28 @@ pub trait Api {
         address_size: PtrRepr,
         dw_milliseconds: u32,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("WaitOnAddress")
     }
     fn WakeAllConditionVariable(&self, condition_variable: MutPtr<RTL_CONDITION_VARIABLE>) {
-        todo!()
+        todo!("WakeAllConditionVariable")
     }
     fn WakeByAddressAll(&self, address: ConstPtr<::core::ffi::c_void>) {
-        todo!()
+        todo!("WakeByAddressAll")
     }
     fn WakeByAddressSingle(&self, address: ConstPtr<::core::ffi::c_void>) {
-        todo!()
+        todo!("WakeByAddressSingle")
     }
     fn WakeConditionVariable(&self, condition_variable: MutPtr<RTL_CONDITION_VARIABLE>) {
-        todo!()
+        todo!("WakeConditionVariable")
     }
     fn WinExec(&self, lp_cmd_line: crate::core::PCSTR, u_cmd_show: u32) -> u32 {
-        todo!()
+        todo!("WinExec")
     }
     fn Wow64SetThreadDefaultGuestMachine(&self, machine: u16) -> u16 {
-        todo!()
+        todo!("Wow64SetThreadDefaultGuestMachine")
     }
     fn Wow64SuspendThread(&self, h_thread: super::super::Foundation::HANDLE) -> u32 {
-        todo!()
+        todo!("Wow64SuspendThread")
     }
 }
 pub fn get_api(ctx: &crate::core::Win32Context) -> &dyn Api {

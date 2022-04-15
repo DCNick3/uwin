@@ -959,7 +959,7 @@ pub trait Api {
         target: crate::core::PCSTR,
         exe_name: crate::core::PCSTR,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("AddConsoleAliasA")
     }
     fn AddConsoleAliasW(
         &self,
@@ -967,16 +967,16 @@ pub trait Api {
         target: crate::core::PCWSTR,
         exe_name: crate::core::PCWSTR,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("AddConsoleAliasW")
     }
     fn AllocConsole(&self) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("AllocConsole")
     }
     fn AttachConsole(&self, dw_process_id: u32) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("AttachConsole")
     }
     fn ClosePseudoConsole(&self, h_pc: HPCON) {
-        todo!()
+        todo!("ClosePseudoConsole")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -988,7 +988,7 @@ pub trait Api {
         dw_flags: u32,
         lp_screen_buffer_data: MutPtr<::core::ffi::c_void>,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("CreateConsoleScreenBuffer")
     }
     fn CreatePseudoConsole(
         &self,
@@ -998,13 +998,13 @@ pub trait Api {
         dw_flags: u32,
         ph_pc: MutPtr<HPCON>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("CreatePseudoConsole")
     }
     fn ExpungeConsoleCommandHistoryA(&self, exe_name: crate::core::PCSTR) {
-        todo!()
+        todo!("ExpungeConsoleCommandHistoryA")
     }
     fn ExpungeConsoleCommandHistoryW(&self, exe_name: crate::core::PCWSTR) {
-        todo!()
+        todo!("ExpungeConsoleCommandHistoryW")
     }
     fn FillConsoleOutputAttribute(
         &self,
@@ -1014,7 +1014,7 @@ pub trait Api {
         dw_write_coord: COORD,
         lp_number_of_attrs_written: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("FillConsoleOutputAttribute")
     }
     fn FillConsoleOutputCharacterA(
         &self,
@@ -1024,7 +1024,7 @@ pub trait Api {
         dw_write_coord: COORD,
         lp_number_of_chars_written: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("FillConsoleOutputCharacterA")
     }
     fn FillConsoleOutputCharacterW(
         &self,
@@ -1034,23 +1034,23 @@ pub trait Api {
         dw_write_coord: COORD,
         lp_number_of_chars_written: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("FillConsoleOutputCharacterW")
     }
     fn FlushConsoleInputBuffer(
         &self,
         h_console_input: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("FlushConsoleInputBuffer")
     }
     fn FreeConsole(&self) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("FreeConsole")
     }
     fn GenerateConsoleCtrlEvent(
         &self,
         dw_ctrl_event: u32,
         dw_process_group_id: u32,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GenerateConsoleCtrlEvent")
     }
     fn GetConsoleAliasA(
         &self,
@@ -1059,27 +1059,27 @@ pub trait Api {
         target_buffer_length: u32,
         exe_name: crate::core::PCSTR,
     ) -> u32 {
-        todo!()
+        todo!("GetConsoleAliasA")
     }
     fn GetConsoleAliasExesA(
         &self,
         exe_name_buffer: crate::core::PSTR,
         exe_name_buffer_length: u32,
     ) -> u32 {
-        todo!()
+        todo!("GetConsoleAliasExesA")
     }
     fn GetConsoleAliasExesLengthA(&self) -> u32 {
-        todo!()
+        todo!("GetConsoleAliasExesLengthA")
     }
     fn GetConsoleAliasExesLengthW(&self) -> u32 {
-        todo!()
+        todo!("GetConsoleAliasExesLengthW")
     }
     fn GetConsoleAliasExesW(
         &self,
         exe_name_buffer: crate::core::PWSTR,
         exe_name_buffer_length: u32,
     ) -> u32 {
-        todo!()
+        todo!("GetConsoleAliasExesW")
     }
     fn GetConsoleAliasW(
         &self,
@@ -1088,7 +1088,7 @@ pub trait Api {
         target_buffer_length: u32,
         exe_name: crate::core::PCWSTR,
     ) -> u32 {
-        todo!()
+        todo!("GetConsoleAliasW")
     }
     fn GetConsoleAliasesA(
         &self,
@@ -1096,13 +1096,13 @@ pub trait Api {
         alias_buffer_length: u32,
         exe_name: crate::core::PCSTR,
     ) -> u32 {
-        todo!()
+        todo!("GetConsoleAliasesA")
     }
     fn GetConsoleAliasesLengthA(&self, exe_name: crate::core::PCSTR) -> u32 {
-        todo!()
+        todo!("GetConsoleAliasesLengthA")
     }
     fn GetConsoleAliasesLengthW(&self, exe_name: crate::core::PCWSTR) -> u32 {
-        todo!()
+        todo!("GetConsoleAliasesLengthW")
     }
     fn GetConsoleAliasesW(
         &self,
@@ -1110,10 +1110,10 @@ pub trait Api {
         alias_buffer_length: u32,
         exe_name: crate::core::PCWSTR,
     ) -> u32 {
-        todo!()
+        todo!("GetConsoleAliasesW")
     }
     fn GetConsoleCP(&self) -> u32 {
-        todo!()
+        todo!("GetConsoleCP")
     }
     fn GetConsoleCommandHistoryA(
         &self,
@@ -1121,13 +1121,13 @@ pub trait Api {
         command_buffer_length: u32,
         exe_name: crate::core::PCSTR,
     ) -> u32 {
-        todo!()
+        todo!("GetConsoleCommandHistoryA")
     }
     fn GetConsoleCommandHistoryLengthA(&self, exe_name: crate::core::PCSTR) -> u32 {
-        todo!()
+        todo!("GetConsoleCommandHistoryLengthA")
     }
     fn GetConsoleCommandHistoryLengthW(&self, exe_name: crate::core::PCWSTR) -> u32 {
-        todo!()
+        todo!("GetConsoleCommandHistoryLengthW")
     }
     fn GetConsoleCommandHistoryW(
         &self,
@@ -1135,71 +1135,71 @@ pub trait Api {
         command_buffer_length: u32,
         exe_name: crate::core::PCWSTR,
     ) -> u32 {
-        todo!()
+        todo!("GetConsoleCommandHistoryW")
     }
     fn GetConsoleCursorInfo(
         &self,
         h_console_output: super::super::Foundation::HANDLE,
         lp_console_cursor_info: MutPtr<CONSOLE_CURSOR_INFO>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetConsoleCursorInfo")
     }
     fn GetConsoleDisplayMode(&self, lp_mode_flags: MutPtr<u32>) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetConsoleDisplayMode")
     }
     fn GetConsoleHistoryInfo(
         &self,
         lp_console_history_info: MutPtr<CONSOLE_HISTORY_INFO>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetConsoleHistoryInfo")
     }
     fn GetConsoleMode(
         &self,
         h_console_handle: super::super::Foundation::HANDLE,
         lp_mode: MutPtr<CONSOLE_MODE>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetConsoleMode")
     }
     fn GetConsoleOriginalTitleA(&self, lp_console_title: crate::core::PSTR, n_size: u32) -> u32 {
-        todo!()
+        todo!("GetConsoleOriginalTitleA")
     }
     fn GetConsoleOriginalTitleW(&self, lp_console_title: crate::core::PWSTR, n_size: u32) -> u32 {
-        todo!()
+        todo!("GetConsoleOriginalTitleW")
     }
     fn GetConsoleOutputCP(&self) -> u32 {
-        todo!()
+        todo!("GetConsoleOutputCP")
     }
     fn GetConsoleProcessList(&self, lpdw_process_list: MutPtr<u32>, dw_process_count: u32) -> u32 {
-        todo!()
+        todo!("GetConsoleProcessList")
     }
     fn GetConsoleScreenBufferInfo(
         &self,
         h_console_output: super::super::Foundation::HANDLE,
         lp_console_screen_buffer_info: MutPtr<CONSOLE_SCREEN_BUFFER_INFO>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetConsoleScreenBufferInfo")
     }
     fn GetConsoleScreenBufferInfoEx(
         &self,
         h_console_output: super::super::Foundation::HANDLE,
         lp_console_screen_buffer_info_ex: MutPtr<CONSOLE_SCREEN_BUFFER_INFOEX>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetConsoleScreenBufferInfoEx")
     }
     fn GetConsoleSelectionInfo(
         &self,
         lp_console_selection_info: MutPtr<CONSOLE_SELECTION_INFO>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetConsoleSelectionInfo")
     }
     fn GetConsoleTitleA(&self, lp_console_title: crate::core::PSTR, n_size: u32) -> u32 {
-        todo!()
+        todo!("GetConsoleTitleA")
     }
     fn GetConsoleTitleW(&self, lp_console_title: crate::core::PWSTR, n_size: u32) -> u32 {
-        todo!()
+        todo!("GetConsoleTitleW")
     }
     fn GetConsoleWindow(&self) -> super::super::Foundation::HWND {
-        todo!()
+        todo!("GetConsoleWindow")
     }
     fn GetCurrentConsoleFont(
         &self,
@@ -1207,7 +1207,7 @@ pub trait Api {
         b_maximum_window: super::super::Foundation::BOOL,
         lp_console_current_font: MutPtr<CONSOLE_FONT_INFO>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetCurrentConsoleFont")
     }
     fn GetCurrentConsoleFontEx(
         &self,
@@ -1215,23 +1215,23 @@ pub trait Api {
         b_maximum_window: super::super::Foundation::BOOL,
         lp_console_current_font_ex: MutPtr<CONSOLE_FONT_INFOEX>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetCurrentConsoleFontEx")
     }
     fn GetNumberOfConsoleInputEvents(
         &self,
         h_console_input: super::super::Foundation::HANDLE,
         lp_number_of_events: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetNumberOfConsoleInputEvents")
     }
     fn GetNumberOfConsoleMouseButtons(
         &self,
         lp_number_of_mouse_buttons: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetNumberOfConsoleMouseButtons")
     }
     fn GetStdHandle(&self, n_std_handle: STD_HANDLE) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("GetStdHandle")
     }
     fn PeekConsoleInputA(
         &self,
@@ -1240,7 +1240,7 @@ pub trait Api {
         n_length: u32,
         lp_number_of_events_read: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("PeekConsoleInputA")
     }
     fn PeekConsoleInputW(
         &self,
@@ -1249,7 +1249,7 @@ pub trait Api {
         n_length: u32,
         lp_number_of_events_read: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("PeekConsoleInputW")
     }
     fn ReadConsoleA(
         &self,
@@ -1259,7 +1259,7 @@ pub trait Api {
         lp_number_of_chars_read: MutPtr<u32>,
         p_input_control: ConstPtr<CONSOLE_READCONSOLE_CONTROL>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("ReadConsoleA")
     }
     fn ReadConsoleInputA(
         &self,
@@ -1268,7 +1268,7 @@ pub trait Api {
         n_length: u32,
         lp_number_of_events_read: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("ReadConsoleInputA")
     }
     fn ReadConsoleInputW(
         &self,
@@ -1277,7 +1277,7 @@ pub trait Api {
         n_length: u32,
         lp_number_of_events_read: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("ReadConsoleInputW")
     }
     fn ReadConsoleOutputA(
         &self,
@@ -1287,7 +1287,7 @@ pub trait Api {
         dw_buffer_coord: COORD,
         lp_read_region: MutPtr<SMALL_RECT>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("ReadConsoleOutputA")
     }
     fn ReadConsoleOutputAttribute(
         &self,
@@ -1297,7 +1297,7 @@ pub trait Api {
         dw_read_coord: COORD,
         lp_number_of_attrs_read: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("ReadConsoleOutputAttribute")
     }
     fn ReadConsoleOutputCharacterA(
         &self,
@@ -1307,7 +1307,7 @@ pub trait Api {
         dw_read_coord: COORD,
         lp_number_of_chars_read: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("ReadConsoleOutputCharacterA")
     }
     fn ReadConsoleOutputCharacterW(
         &self,
@@ -1317,7 +1317,7 @@ pub trait Api {
         dw_read_coord: COORD,
         lp_number_of_chars_read: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("ReadConsoleOutputCharacterW")
     }
     fn ReadConsoleOutputW(
         &self,
@@ -1327,7 +1327,7 @@ pub trait Api {
         dw_buffer_coord: COORD,
         lp_read_region: MutPtr<SMALL_RECT>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("ReadConsoleOutputW")
     }
     fn ReadConsoleW(
         &self,
@@ -1337,10 +1337,10 @@ pub trait Api {
         lp_number_of_chars_read: MutPtr<u32>,
         p_input_control: ConstPtr<CONSOLE_READCONSOLE_CONTROL>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("ReadConsoleW")
     }
     fn ResizePseudoConsole(&self, h_pc: HPCON, size: COORD) -> crate::core::HRESULT {
-        todo!()
+        todo!("ResizePseudoConsole")
     }
     fn ScrollConsoleScreenBufferA(
         &self,
@@ -1350,7 +1350,7 @@ pub trait Api {
         dw_destination_origin: COORD,
         lp_fill: ConstPtr<CHAR_INFO>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("ScrollConsoleScreenBufferA")
     }
     fn ScrollConsoleScreenBufferW(
         &self,
@@ -1360,37 +1360,37 @@ pub trait Api {
         dw_destination_origin: COORD,
         lp_fill: ConstPtr<CHAR_INFO>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("ScrollConsoleScreenBufferW")
     }
     fn SetConsoleActiveScreenBuffer(
         &self,
         h_console_output: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetConsoleActiveScreenBuffer")
     }
     fn SetConsoleCP(&self, w_code_page_id: u32) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetConsoleCP")
     }
     fn SetConsoleCtrlHandler(
         &self,
         handler_routine: PHANDLER_ROUTINE,
         add: super::super::Foundation::BOOL,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetConsoleCtrlHandler")
     }
     fn SetConsoleCursorInfo(
         &self,
         h_console_output: super::super::Foundation::HANDLE,
         lp_console_cursor_info: ConstPtr<CONSOLE_CURSOR_INFO>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetConsoleCursorInfo")
     }
     fn SetConsoleCursorPosition(
         &self,
         h_console_output: super::super::Foundation::HANDLE,
         dw_cursor_position: COORD,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetConsoleCursorPosition")
     }
     fn SetConsoleDisplayMode(
         &self,
@@ -1398,70 +1398,70 @@ pub trait Api {
         dw_flags: u32,
         lp_new_screen_buffer_dimensions: MutPtr<COORD>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetConsoleDisplayMode")
     }
     fn SetConsoleHistoryInfo(
         &self,
         lp_console_history_info: ConstPtr<CONSOLE_HISTORY_INFO>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetConsoleHistoryInfo")
     }
     fn SetConsoleMode(
         &self,
         h_console_handle: super::super::Foundation::HANDLE,
         dw_mode: CONSOLE_MODE,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetConsoleMode")
     }
     fn SetConsoleNumberOfCommandsA(
         &self,
         number: u32,
         exe_name: crate::core::PCSTR,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetConsoleNumberOfCommandsA")
     }
     fn SetConsoleNumberOfCommandsW(
         &self,
         number: u32,
         exe_name: crate::core::PCWSTR,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetConsoleNumberOfCommandsW")
     }
     fn SetConsoleOutputCP(&self, w_code_page_id: u32) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetConsoleOutputCP")
     }
     fn SetConsoleScreenBufferInfoEx(
         &self,
         h_console_output: super::super::Foundation::HANDLE,
         lp_console_screen_buffer_info_ex: ConstPtr<CONSOLE_SCREEN_BUFFER_INFOEX>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetConsoleScreenBufferInfoEx")
     }
     fn SetConsoleScreenBufferSize(
         &self,
         h_console_output: super::super::Foundation::HANDLE,
         dw_size: COORD,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetConsoleScreenBufferSize")
     }
     fn SetConsoleTextAttribute(
         &self,
         h_console_output: super::super::Foundation::HANDLE,
         w_attributes: u16,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetConsoleTextAttribute")
     }
     fn SetConsoleTitleA(
         &self,
         lp_console_title: crate::core::PCSTR,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetConsoleTitleA")
     }
     fn SetConsoleTitleW(
         &self,
         lp_console_title: crate::core::PCWSTR,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetConsoleTitleW")
     }
     fn SetConsoleWindowInfo(
         &self,
@@ -1469,7 +1469,7 @@ pub trait Api {
         b_absolute: super::super::Foundation::BOOL,
         lp_console_window: ConstPtr<SMALL_RECT>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetConsoleWindowInfo")
     }
     fn SetCurrentConsoleFontEx(
         &self,
@@ -1477,14 +1477,14 @@ pub trait Api {
         b_maximum_window: super::super::Foundation::BOOL,
         lp_console_current_font_ex: ConstPtr<CONSOLE_FONT_INFOEX>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetCurrentConsoleFontEx")
     }
     fn SetStdHandle(
         &self,
         n_std_handle: STD_HANDLE,
         h_handle: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetStdHandle")
     }
     fn SetStdHandleEx(
         &self,
@@ -1492,7 +1492,7 @@ pub trait Api {
         h_handle: super::super::Foundation::HANDLE,
         ph_prev_value: MutPtr<super::super::Foundation::HANDLE>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetStdHandleEx")
     }
     fn WriteConsoleA(
         &self,
@@ -1502,7 +1502,7 @@ pub trait Api {
         lp_number_of_chars_written: MutPtr<u32>,
         lp_reserved: MutPtr<::core::ffi::c_void>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("WriteConsoleA")
     }
     fn WriteConsoleInputA(
         &self,
@@ -1511,7 +1511,7 @@ pub trait Api {
         n_length: u32,
         lp_number_of_events_written: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("WriteConsoleInputA")
     }
     fn WriteConsoleInputW(
         &self,
@@ -1520,7 +1520,7 @@ pub trait Api {
         n_length: u32,
         lp_number_of_events_written: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("WriteConsoleInputW")
     }
     fn WriteConsoleOutputA(
         &self,
@@ -1530,7 +1530,7 @@ pub trait Api {
         dw_buffer_coord: COORD,
         lp_write_region: MutPtr<SMALL_RECT>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("WriteConsoleOutputA")
     }
     fn WriteConsoleOutputAttribute(
         &self,
@@ -1540,7 +1540,7 @@ pub trait Api {
         dw_write_coord: COORD,
         lp_number_of_attrs_written: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("WriteConsoleOutputAttribute")
     }
     fn WriteConsoleOutputCharacterA(
         &self,
@@ -1550,7 +1550,7 @@ pub trait Api {
         dw_write_coord: COORD,
         lp_number_of_chars_written: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("WriteConsoleOutputCharacterA")
     }
     fn WriteConsoleOutputCharacterW(
         &self,
@@ -1560,7 +1560,7 @@ pub trait Api {
         dw_write_coord: COORD,
         lp_number_of_chars_written: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("WriteConsoleOutputCharacterW")
     }
     fn WriteConsoleOutputW(
         &self,
@@ -1570,7 +1570,7 @@ pub trait Api {
         dw_buffer_coord: COORD,
         lp_write_region: MutPtr<SMALL_RECT>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("WriteConsoleOutputW")
     }
     fn WriteConsoleW(
         &self,
@@ -1580,7 +1580,7 @@ pub trait Api {
         lp_number_of_chars_written: MutPtr<u32>,
         lp_reserved: MutPtr<::core::ffi::c_void>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("WriteConsoleW")
     }
 }
 pub fn get_api(ctx: &crate::core::Win32Context) -> &dyn Api {

@@ -15426,17 +15426,17 @@ pub trait Api {
         lp_file_name: crate::core::PCWSTR,
         p_encryption_certificates: ConstPtr<ENCRYPTION_CERTIFICATE_LIST>,
     ) -> u32 {
-        todo!()
+        todo!("AddUsersToEncryptedFile")
     }
     fn AreFileApisANSI(&self) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("AreFileApisANSI")
     }
     fn AreShortNamesEnabled(
         &self,
         handle: super::super::Foundation::HANDLE,
         enabled: MutPtr<super::super::Foundation::BOOL>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("AreShortNamesEnabled")
     }
     fn BackupRead(
         &self,
@@ -15448,7 +15448,7 @@ pub trait Api {
         b_process_security: super::super::Foundation::BOOL,
         lp_context: MutPtr<ConstPtr<::core::ffi::c_void>>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("BackupRead")
     }
     fn BackupSeek(
         &self,
@@ -15459,7 +15459,7 @@ pub trait Api {
         lpdw_high_byte_seeked: MutPtr<u32>,
         lp_context: MutPtr<ConstPtr<::core::ffi::c_void>>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("BackupSeek")
     }
     fn BackupWrite(
         &self,
@@ -15471,7 +15471,7 @@ pub trait Api {
         b_process_security: super::super::Foundation::BOOL,
         lp_context: MutPtr<ConstPtr<::core::ffi::c_void>>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("BackupWrite")
     }
     fn BuildIoRingCancelRequest(
         &self,
@@ -15480,7 +15480,7 @@ pub trait Api {
         op_to_cancel: PtrRepr,
         user_data: PtrRepr,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("BuildIoRingCancelRequest")
     }
     fn BuildIoRingReadFile(
         &self,
@@ -15492,7 +15492,7 @@ pub trait Api {
         user_data: PtrRepr,
         flags: IORING_SQE_FLAGS,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("BuildIoRingReadFile")
     }
     fn BuildIoRingRegisterBuffers(
         &self,
@@ -15501,7 +15501,7 @@ pub trait Api {
         buffers: ConstPtr<IORING_BUFFER_INFO>,
         user_data: PtrRepr,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("BuildIoRingRegisterBuffers")
     }
     fn BuildIoRingRegisterFileHandles(
         &self,
@@ -15510,7 +15510,7 @@ pub trait Api {
         handles: ConstPtr<super::super::Foundation::HANDLE>,
         user_data: PtrRepr,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("BuildIoRingRegisterFileHandles")
     }
     fn CheckNameLegalDOS8Dot3A(
         &self,
@@ -15520,7 +15520,7 @@ pub trait Api {
         pb_name_contains_spaces: MutPtr<super::super::Foundation::BOOL>,
         pb_name_legal: MutPtr<super::super::Foundation::BOOL>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("CheckNameLegalDOS8Dot3A")
     }
     fn CheckNameLegalDOS8Dot3W(
         &self,
@@ -15530,46 +15530,46 @@ pub trait Api {
         pb_name_contains_spaces: MutPtr<super::super::Foundation::BOOL>,
         pb_name_legal: MutPtr<super::super::Foundation::BOOL>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("CheckNameLegalDOS8Dot3W")
     }
     fn CloseEncryptedFileRaw(&self, pv_context: ConstPtr<::core::ffi::c_void>) {
-        todo!()
+        todo!("CloseEncryptedFileRaw")
     }
     fn CloseIoRing(&self, io_ring: ConstPtr<HIORING__>) -> crate::core::HRESULT {
-        todo!()
+        todo!("CloseIoRing")
     }
     fn CommitComplete(
         &self,
         enlistment_handle: super::super::Foundation::HANDLE,
         tm_virtual_clock: MutPtr<i64>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("CommitComplete")
     }
     fn CommitEnlistment(
         &self,
         enlistment_handle: super::super::Foundation::HANDLE,
         tm_virtual_clock: MutPtr<i64>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("CommitEnlistment")
     }
     fn CommitTransaction(
         &self,
         transaction_handle: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("CommitTransaction")
     }
     fn CommitTransactionAsync(
         &self,
         transaction_handle: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("CommitTransactionAsync")
     }
     fn CompareFileTime(
         &self,
         lp_file_time_1: ConstPtr<super::super::Foundation::FILETIME>,
         lp_file_time_2: ConstPtr<super::super::Foundation::FILETIME>,
     ) -> i32 {
-        todo!()
+        todo!("CompareFileTime")
     }
     fn CopyFile2(
         &self,
@@ -15577,7 +15577,7 @@ pub trait Api {
         pwsz_new_file_name: crate::core::PCWSTR,
         p_extended_parameters: ConstPtr<COPYFILE2_EXTENDED_PARAMETERS>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("CopyFile2")
     }
     fn CopyFileA(
         &self,
@@ -15585,7 +15585,7 @@ pub trait Api {
         lp_new_file_name: crate::core::PCSTR,
         b_fail_if_exists: super::super::Foundation::BOOL,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("CopyFileA")
     }
     fn CopyFileExA(
         &self,
@@ -15596,7 +15596,7 @@ pub trait Api {
         pb_cancel: MutPtr<i32>,
         dw_copy_flags: u32,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("CopyFileExA")
     }
     fn CopyFileExW(
         &self,
@@ -15607,7 +15607,7 @@ pub trait Api {
         pb_cancel: MutPtr<i32>,
         dw_copy_flags: u32,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("CopyFileExW")
     }
     fn CopyFileFromAppW(
         &self,
@@ -15615,7 +15615,7 @@ pub trait Api {
         lp_new_file_name: crate::core::PCWSTR,
         b_fail_if_exists: super::super::Foundation::BOOL,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("CopyFileFromAppW")
     }
     fn CopyFileTransactedA(
         &self,
@@ -15627,7 +15627,7 @@ pub trait Api {
         dw_copy_flags: u32,
         h_transaction: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("CopyFileTransactedA")
     }
     fn CopyFileTransactedW(
         &self,
@@ -15639,7 +15639,7 @@ pub trait Api {
         dw_copy_flags: u32,
         h_transaction: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("CopyFileTransactedW")
     }
     fn CopyFileW(
         &self,
@@ -15647,10 +15647,10 @@ pub trait Api {
         lp_new_file_name: crate::core::PCWSTR,
         b_fail_if_exists: super::super::Foundation::BOOL,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("CopyFileW")
     }
     fn CopyLZFile(&self, hf_source: i32, hf_dest: i32) -> i32 {
-        todo!()
+        todo!("CopyLZFile")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -15659,7 +15659,7 @@ pub trait Api {
         lp_path_name: crate::core::PCSTR,
         lp_security_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("CreateDirectoryA")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -15669,7 +15669,7 @@ pub trait Api {
         lp_new_directory: crate::core::PCSTR,
         lp_security_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("CreateDirectoryExA")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -15679,7 +15679,7 @@ pub trait Api {
         lp_new_directory: crate::core::PCWSTR,
         lp_security_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("CreateDirectoryExW")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -15688,7 +15688,7 @@ pub trait Api {
         lp_path_name: crate::core::PCWSTR,
         lp_security_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("CreateDirectoryFromAppW")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -15699,7 +15699,7 @@ pub trait Api {
         lp_security_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
         h_transaction: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("CreateDirectoryTransactedA")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -15710,7 +15710,7 @@ pub trait Api {
         lp_security_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
         h_transaction: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("CreateDirectoryTransactedW")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -15719,7 +15719,7 @@ pub trait Api {
         lp_path_name: crate::core::PCWSTR,
         lp_security_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("CreateDirectoryW")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -15732,7 +15732,7 @@ pub trait Api {
         create_options: u32,
         enlistment_key: MutPtr<::core::ffi::c_void>,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("CreateEnlistment")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -15744,7 +15744,7 @@ pub trait Api {
         dw_creation_disposition: FILE_CREATION_DISPOSITION,
         p_create_ex_params: ConstPtr<CREATEFILE2_EXTENDED_PARAMETERS>,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("CreateFile2")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -15756,7 +15756,7 @@ pub trait Api {
         dw_creation_disposition: u32,
         p_create_ex_params: ConstPtr<CREATEFILE2_EXTENDED_PARAMETERS>,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("CreateFile2FromAppW")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -15770,7 +15770,7 @@ pub trait Api {
         dw_flags_and_attributes: FILE_FLAGS_AND_ATTRIBUTES,
         h_template_file: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("CreateFileA")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -15784,7 +15784,7 @@ pub trait Api {
         dw_flags_and_attributes: u32,
         h_template_file: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("CreateFileFromAppW")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -15801,7 +15801,7 @@ pub trait Api {
         pus_mini_version: ConstPtr<TXFS_MINIVERSION>,
         lp_extended_parameter: MutPtr<::core::ffi::c_void>,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("CreateFileTransactedA")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -15818,7 +15818,7 @@ pub trait Api {
         pus_mini_version: ConstPtr<TXFS_MINIVERSION>,
         lp_extended_parameter: MutPtr<::core::ffi::c_void>,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("CreateFileTransactedW")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -15832,7 +15832,7 @@ pub trait Api {
         dw_flags_and_attributes: FILE_FLAGS_AND_ATTRIBUTES,
         h_template_file: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("CreateFileW")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -15842,7 +15842,7 @@ pub trait Api {
         lp_existing_file_name: crate::core::PCSTR,
         lp_security_attributes: MutPtr<super::super::Security::SECURITY_ATTRIBUTES>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("CreateHardLinkA")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -15853,7 +15853,7 @@ pub trait Api {
         lp_security_attributes: MutPtr<super::super::Security::SECURITY_ATTRIBUTES>,
         h_transaction: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("CreateHardLinkTransactedA")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -15864,7 +15864,7 @@ pub trait Api {
         lp_security_attributes: MutPtr<super::super::Security::SECURITY_ATTRIBUTES>,
         h_transaction: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("CreateHardLinkTransactedW")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -15874,7 +15874,7 @@ pub trait Api {
         lp_existing_file_name: crate::core::PCWSTR,
         lp_security_attributes: MutPtr<super::super::Security::SECURITY_ATTRIBUTES>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("CreateHardLinkW")
     }
     fn CreateIoRing(
         &self,
@@ -15884,7 +15884,7 @@ pub trait Api {
         completion_queue_size: u32,
         h: MutPtr<ConstPtr<HIORING__>>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("CreateIoRing")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -15896,7 +15896,7 @@ pub trait Api {
         tm_handle: super::super::Foundation::HANDLE,
         description: crate::core::PCWSTR,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("CreateResourceManager")
     }
     fn CreateSymbolicLinkA(
         &self,
@@ -15904,7 +15904,7 @@ pub trait Api {
         lp_target_file_name: crate::core::PCSTR,
         dw_flags: SYMBOLIC_LINK_FLAGS,
     ) -> super::super::Foundation::BOOLEAN {
-        todo!()
+        todo!("CreateSymbolicLinkA")
     }
     fn CreateSymbolicLinkTransactedA(
         &self,
@@ -15913,7 +15913,7 @@ pub trait Api {
         dw_flags: SYMBOLIC_LINK_FLAGS,
         h_transaction: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOLEAN {
-        todo!()
+        todo!("CreateSymbolicLinkTransactedA")
     }
     fn CreateSymbolicLinkTransactedW(
         &self,
@@ -15922,7 +15922,7 @@ pub trait Api {
         dw_flags: SYMBOLIC_LINK_FLAGS,
         h_transaction: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOLEAN {
-        todo!()
+        todo!("CreateSymbolicLinkTransactedW")
     }
     fn CreateSymbolicLinkW(
         &self,
@@ -15930,7 +15930,7 @@ pub trait Api {
         lp_target_file_name: crate::core::PCWSTR,
         dw_flags: SYMBOLIC_LINK_FLAGS,
     ) -> super::super::Foundation::BOOLEAN {
-        todo!()
+        todo!("CreateSymbolicLinkW")
     }
     fn CreateTapePartition(
         &self,
@@ -15939,7 +15939,7 @@ pub trait Api {
         dw_count: u32,
         dw_size: u32,
     ) -> u32 {
-        todo!()
+        todo!("CreateTapePartition")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -15953,7 +15953,7 @@ pub trait Api {
         timeout: u32,
         description: crate::core::PCWSTR,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("CreateTransaction")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -15964,21 +15964,21 @@ pub trait Api {
         create_options: u32,
         commit_strength: u32,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("CreateTransactionManager")
     }
     fn DecryptFileA(
         &self,
         lp_file_name: crate::core::PCSTR,
         dw_reserved: u32,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("DecryptFileA")
     }
     fn DecryptFileW(
         &self,
         lp_file_name: crate::core::PCWSTR,
         dw_reserved: u32,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("DecryptFileW")
     }
     fn DefineDosDeviceA(
         &self,
@@ -15986,7 +15986,7 @@ pub trait Api {
         lp_device_name: crate::core::PCSTR,
         lp_target_path: crate::core::PCSTR,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("DefineDosDeviceA")
     }
     fn DefineDosDeviceW(
         &self,
@@ -15994,45 +15994,45 @@ pub trait Api {
         lp_device_name: crate::core::PCWSTR,
         lp_target_path: crate::core::PCWSTR,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("DefineDosDeviceW")
     }
     fn DeleteFileA(&self, lp_file_name: crate::core::PCSTR) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("DeleteFileA")
     }
     fn DeleteFileFromAppW(
         &self,
         lp_file_name: crate::core::PCWSTR,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("DeleteFileFromAppW")
     }
     fn DeleteFileTransactedA(
         &self,
         lp_file_name: crate::core::PCSTR,
         h_transaction: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("DeleteFileTransactedA")
     }
     fn DeleteFileTransactedW(
         &self,
         lp_file_name: crate::core::PCWSTR,
         h_transaction: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("DeleteFileTransactedW")
     }
     fn DeleteFileW(&self, lp_file_name: crate::core::PCWSTR) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("DeleteFileW")
     }
     fn DeleteVolumeMountPointA(
         &self,
         lpsz_volume_mount_point: crate::core::PCSTR,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("DeleteVolumeMountPointA")
     }
     fn DeleteVolumeMountPointW(
         &self,
         lpsz_volume_mount_point: crate::core::PCWSTR,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("DeleteVolumeMountPointW")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -16044,20 +16044,20 @@ pub trait Api {
         dw_attributes: u32,
         lp_security_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
     ) -> u32 {
-        todo!()
+        todo!("DuplicateEncryptionInfoFile")
     }
     fn EncryptFileA(&self, lp_file_name: crate::core::PCSTR) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("EncryptFileA")
     }
     fn EncryptFileW(&self, lp_file_name: crate::core::PCWSTR) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("EncryptFileW")
     }
     fn EncryptionDisable(
         &self,
         dir_path: crate::core::PCWSTR,
         disable: super::super::Foundation::BOOL,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("EncryptionDisable")
     }
     fn EraseTape(
         &self,
@@ -16065,37 +16065,37 @@ pub trait Api {
         dw_erase_type: ERASE_TAPE_TYPE,
         b_immediate: super::super::Foundation::BOOL,
     ) -> u32 {
-        todo!()
+        todo!("EraseTape")
     }
     fn FileEncryptionStatusA(
         &self,
         lp_file_name: crate::core::PCSTR,
         lp_status: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("FileEncryptionStatusA")
     }
     fn FileEncryptionStatusW(
         &self,
         lp_file_name: crate::core::PCWSTR,
         lp_status: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("FileEncryptionStatusW")
     }
     fn FileTimeToLocalFileTime(
         &self,
         lp_file_time: ConstPtr<super::super::Foundation::FILETIME>,
         lp_local_file_time: MutPtr<super::super::Foundation::FILETIME>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("FileTimeToLocalFileTime")
     }
     fn FindClose(&self, h_find_file: FindFileHandle) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("FindClose")
     }
     fn FindCloseChangeNotification(
         &self,
         h_change_handle: FindChangeNotificationHandle,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("FindCloseChangeNotification")
     }
     fn FindFirstChangeNotificationA(
         &self,
@@ -16103,7 +16103,7 @@ pub trait Api {
         b_watch_subtree: super::super::Foundation::BOOL,
         dw_notify_filter: FILE_NOTIFY_CHANGE,
     ) -> FindChangeNotificationHandle {
-        todo!()
+        todo!("FindFirstChangeNotificationA")
     }
     fn FindFirstChangeNotificationW(
         &self,
@@ -16111,14 +16111,14 @@ pub trait Api {
         b_watch_subtree: super::super::Foundation::BOOL,
         dw_notify_filter: FILE_NOTIFY_CHANGE,
     ) -> FindChangeNotificationHandle {
-        todo!()
+        todo!("FindFirstChangeNotificationW")
     }
     fn FindFirstFileA(
         &self,
         lp_file_name: crate::core::PCSTR,
         lp_find_file_data: MutPtr<WIN32_FIND_DATAA>,
     ) -> FindFileHandle {
-        todo!()
+        todo!("FindFirstFileA")
     }
     fn FindFirstFileExA(
         &self,
@@ -16129,7 +16129,7 @@ pub trait Api {
         lp_search_filter: MutPtr<::core::ffi::c_void>,
         dw_additional_flags: FIND_FIRST_EX_FLAGS,
     ) -> FindFileHandle {
-        todo!()
+        todo!("FindFirstFileExA")
     }
     fn FindFirstFileExFromAppW(
         &self,
@@ -16140,7 +16140,7 @@ pub trait Api {
         lp_search_filter: MutPtr<::core::ffi::c_void>,
         dw_additional_flags: u32,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("FindFirstFileExFromAppW")
     }
     fn FindFirstFileExW(
         &self,
@@ -16151,7 +16151,7 @@ pub trait Api {
         lp_search_filter: MutPtr<::core::ffi::c_void>,
         dw_additional_flags: FIND_FIRST_EX_FLAGS,
     ) -> FindFileHandle {
-        todo!()
+        todo!("FindFirstFileExW")
     }
     fn FindFirstFileNameTransactedW(
         &self,
@@ -16161,7 +16161,7 @@ pub trait Api {
         link_name: crate::core::PWSTR,
         h_transaction: super::super::Foundation::HANDLE,
     ) -> FindFileNameHandle {
-        todo!()
+        todo!("FindFirstFileNameTransactedW")
     }
     fn FindFirstFileNameW(
         &self,
@@ -16170,7 +16170,7 @@ pub trait Api {
         string_length: MutPtr<u32>,
         link_name: crate::core::PWSTR,
     ) -> FindFileNameHandle {
-        todo!()
+        todo!("FindFirstFileNameW")
     }
     fn FindFirstFileTransactedA(
         &self,
@@ -16182,7 +16182,7 @@ pub trait Api {
         dw_additional_flags: u32,
         h_transaction: super::super::Foundation::HANDLE,
     ) -> FindFileHandle {
-        todo!()
+        todo!("FindFirstFileTransactedA")
     }
     fn FindFirstFileTransactedW(
         &self,
@@ -16194,14 +16194,14 @@ pub trait Api {
         dw_additional_flags: u32,
         h_transaction: super::super::Foundation::HANDLE,
     ) -> FindFileHandle {
-        todo!()
+        todo!("FindFirstFileTransactedW")
     }
     fn FindFirstFileW(
         &self,
         lp_file_name: crate::core::PCWSTR,
         lp_find_file_data: MutPtr<WIN32_FIND_DATAW>,
     ) -> FindFileHandle {
-        todo!()
+        todo!("FindFirstFileW")
     }
     fn FindFirstStreamTransactedW(
         &self,
@@ -16211,7 +16211,7 @@ pub trait Api {
         dw_flags: u32,
         h_transaction: super::super::Foundation::HANDLE,
     ) -> FindStreamHandle {
-        todo!()
+        todo!("FindFirstStreamTransactedW")
     }
     fn FindFirstStreamW(
         &self,
@@ -16220,14 +16220,14 @@ pub trait Api {
         lp_find_stream_data: MutPtr<::core::ffi::c_void>,
         dw_flags: u32,
     ) -> FindStreamHandle {
-        todo!()
+        todo!("FindFirstStreamW")
     }
     fn FindFirstVolumeA(
         &self,
         lpsz_volume_name: crate::core::PSTR,
         cch_buffer_length: u32,
     ) -> FindVolumeHandle {
-        todo!()
+        todo!("FindFirstVolumeA")
     }
     fn FindFirstVolumeMountPointA(
         &self,
@@ -16235,7 +16235,7 @@ pub trait Api {
         lpsz_volume_mount_point: crate::core::PSTR,
         cch_buffer_length: u32,
     ) -> FindVolumeMointPointHandle {
-        todo!()
+        todo!("FindFirstVolumeMountPointA")
     }
     fn FindFirstVolumeMountPointW(
         &self,
@@ -16243,27 +16243,27 @@ pub trait Api {
         lpsz_volume_mount_point: crate::core::PWSTR,
         cch_buffer_length: u32,
     ) -> FindVolumeMointPointHandle {
-        todo!()
+        todo!("FindFirstVolumeMountPointW")
     }
     fn FindFirstVolumeW(
         &self,
         lpsz_volume_name: crate::core::PWSTR,
         cch_buffer_length: u32,
     ) -> FindVolumeHandle {
-        todo!()
+        todo!("FindFirstVolumeW")
     }
     fn FindNextChangeNotification(
         &self,
         h_change_handle: FindChangeNotificationHandle,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("FindNextChangeNotification")
     }
     fn FindNextFileA(
         &self,
         h_find_file: FindFileHandle,
         lp_find_file_data: MutPtr<WIN32_FIND_DATAA>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("FindNextFileA")
     }
     fn FindNextFileNameW(
         &self,
@@ -16271,21 +16271,21 @@ pub trait Api {
         string_length: MutPtr<u32>,
         link_name: crate::core::PWSTR,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("FindNextFileNameW")
     }
     fn FindNextFileW(
         &self,
         h_find_file: super::super::Foundation::HANDLE,
         lp_find_file_data: MutPtr<WIN32_FIND_DATAW>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("FindNextFileW")
     }
     fn FindNextStreamW(
         &self,
         h_find_stream: FindStreamHandle,
         lp_find_stream_data: MutPtr<::core::ffi::c_void>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("FindNextStreamW")
     }
     fn FindNextVolumeA(
         &self,
@@ -16293,7 +16293,7 @@ pub trait Api {
         lpsz_volume_name: crate::core::PSTR,
         cch_buffer_length: u32,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("FindNextVolumeA")
     }
     fn FindNextVolumeMountPointA(
         &self,
@@ -16301,7 +16301,7 @@ pub trait Api {
         lpsz_volume_mount_point: crate::core::PSTR,
         cch_buffer_length: u32,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("FindNextVolumeMountPointA")
     }
     fn FindNextVolumeMountPointW(
         &self,
@@ -16309,7 +16309,7 @@ pub trait Api {
         lpsz_volume_mount_point: crate::core::PWSTR,
         cch_buffer_length: u32,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("FindNextVolumeMountPointW")
     }
     fn FindNextVolumeW(
         &self,
@@ -16317,25 +16317,25 @@ pub trait Api {
         lpsz_volume_name: crate::core::PWSTR,
         cch_buffer_length: u32,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("FindNextVolumeW")
     }
     fn FindVolumeClose(&self, h_find_volume: FindVolumeHandle) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("FindVolumeClose")
     }
     fn FindVolumeMountPointClose(
         &self,
         h_find_volume_mount_point: FindVolumeMointPointHandle,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("FindVolumeMountPointClose")
     }
     fn FlushFileBuffers(
         &self,
         h_file: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("FlushFileBuffers")
     }
     fn FreeEncryptedFileMetadata(&self, pb_metadata: ConstPtr<u8>) {
-        todo!()
+        todo!("FreeEncryptedFileMetadata")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -16343,28 +16343,28 @@ pub trait Api {
         &self,
         p_users: ConstPtr<ENCRYPTION_CERTIFICATE_HASH_LIST>,
     ) {
-        todo!()
+        todo!("FreeEncryptionCertificateHashList")
     }
     fn GetBinaryTypeA(
         &self,
         lp_application_name: crate::core::PCSTR,
         lp_binary_type: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetBinaryTypeA")
     }
     fn GetBinaryTypeW(
         &self,
         lp_application_name: crate::core::PCWSTR,
         lp_binary_type: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetBinaryTypeW")
     }
     fn GetCompressedFileSizeA(
         &self,
         lp_file_name: crate::core::PCSTR,
         lp_file_size_high: MutPtr<u32>,
     ) -> u32 {
-        todo!()
+        todo!("GetCompressedFileSizeA")
     }
     fn GetCompressedFileSizeTransactedA(
         &self,
@@ -16372,7 +16372,7 @@ pub trait Api {
         lp_file_size_high: MutPtr<u32>,
         h_transaction: super::super::Foundation::HANDLE,
     ) -> u32 {
-        todo!()
+        todo!("GetCompressedFileSizeTransactedA")
     }
     fn GetCompressedFileSizeTransactedW(
         &self,
@@ -16380,21 +16380,21 @@ pub trait Api {
         lp_file_size_high: MutPtr<u32>,
         h_transaction: super::super::Foundation::HANDLE,
     ) -> u32 {
-        todo!()
+        todo!("GetCompressedFileSizeTransactedW")
     }
     fn GetCompressedFileSizeW(
         &self,
         lp_file_name: crate::core::PCWSTR,
         lp_file_size_high: MutPtr<u32>,
     ) -> u32 {
-        todo!()
+        todo!("GetCompressedFileSizeW")
     }
     fn GetCurrentClockTransactionManager(
         &self,
         transaction_manager_handle: super::super::Foundation::HANDLE,
         tm_virtual_clock: MutPtr<i64>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetCurrentClockTransactionManager")
     }
     fn GetDiskFreeSpaceA(
         &self,
@@ -16404,7 +16404,7 @@ pub trait Api {
         lp_number_of_free_clusters: MutPtr<u32>,
         lp_total_number_of_clusters: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetDiskFreeSpaceA")
     }
     fn GetDiskFreeSpaceExA(
         &self,
@@ -16413,7 +16413,7 @@ pub trait Api {
         lp_total_number_of_bytes: MutPtr<u64>,
         lp_total_number_of_free_bytes: MutPtr<u64>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetDiskFreeSpaceExA")
     }
     fn GetDiskFreeSpaceExW(
         &self,
@@ -16422,7 +16422,7 @@ pub trait Api {
         lp_total_number_of_bytes: MutPtr<u64>,
         lp_total_number_of_free_bytes: MutPtr<u64>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetDiskFreeSpaceExW")
     }
     fn GetDiskFreeSpaceW(
         &self,
@@ -16432,27 +16432,27 @@ pub trait Api {
         lp_number_of_free_clusters: MutPtr<u32>,
         lp_total_number_of_clusters: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetDiskFreeSpaceW")
     }
     fn GetDiskSpaceInformationA(
         &self,
         root_path: crate::core::PCSTR,
         disk_space_info: MutPtr<DISK_SPACE_INFORMATION>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("GetDiskSpaceInformationA")
     }
     fn GetDiskSpaceInformationW(
         &self,
         root_path: crate::core::PCWSTR,
         disk_space_info: MutPtr<DISK_SPACE_INFORMATION>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("GetDiskSpaceInformationW")
     }
     fn GetDriveTypeA(&self, lp_root_path_name: crate::core::PCSTR) -> u32 {
-        todo!()
+        todo!("GetDriveTypeA")
     }
     fn GetDriveTypeW(&self, lp_root_path_name: crate::core::PCWSTR) -> u32 {
-        todo!()
+        todo!("GetDriveTypeW")
     }
     fn GetEncryptedFileMetadata(
         &self,
@@ -16460,14 +16460,14 @@ pub trait Api {
         pcb_metadata: MutPtr<u32>,
         ppb_metadata: MutPtr<ConstPtr<u8>>,
     ) -> u32 {
-        todo!()
+        todo!("GetEncryptedFileMetadata")
     }
     fn GetEnlistmentId(
         &self,
         enlistment_handle: super::super::Foundation::HANDLE,
         enlistment_id: MutPtr<crate::core::GUID>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetEnlistmentId")
     }
     fn GetEnlistmentRecoveryInformation(
         &self,
@@ -16476,24 +16476,24 @@ pub trait Api {
         buffer: MutPtr<::core::ffi::c_void>,
         buffer_used: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetEnlistmentRecoveryInformation")
     }
     fn GetExpandedNameA(
         &self,
         lpsz_source: crate::core::PCSTR,
         lpsz_buffer: crate::core::PSTR,
     ) -> i32 {
-        todo!()
+        todo!("GetExpandedNameA")
     }
     fn GetExpandedNameW(
         &self,
         lpsz_source: crate::core::PCWSTR,
         lpsz_buffer: crate::core::PWSTR,
     ) -> i32 {
-        todo!()
+        todo!("GetExpandedNameW")
     }
     fn GetFileAttributesA(&self, lp_file_name: crate::core::PCSTR) -> u32 {
-        todo!()
+        todo!("GetFileAttributesA")
     }
     fn GetFileAttributesExA(
         &self,
@@ -16501,7 +16501,7 @@ pub trait Api {
         f_info_level_id: GET_FILEEX_INFO_LEVELS,
         lp_file_information: MutPtr<::core::ffi::c_void>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetFileAttributesExA")
     }
     fn GetFileAttributesExFromAppW(
         &self,
@@ -16509,7 +16509,7 @@ pub trait Api {
         f_info_level_id: GET_FILEEX_INFO_LEVELS,
         lp_file_information: MutPtr<::core::ffi::c_void>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetFileAttributesExFromAppW")
     }
     fn GetFileAttributesExW(
         &self,
@@ -16517,7 +16517,7 @@ pub trait Api {
         f_info_level_id: GET_FILEEX_INFO_LEVELS,
         lp_file_information: MutPtr<::core::ffi::c_void>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetFileAttributesExW")
     }
     fn GetFileAttributesTransactedA(
         &self,
@@ -16526,7 +16526,7 @@ pub trait Api {
         lp_file_information: MutPtr<::core::ffi::c_void>,
         h_transaction: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetFileAttributesTransactedA")
     }
     fn GetFileAttributesTransactedW(
         &self,
@@ -16535,10 +16535,10 @@ pub trait Api {
         lp_file_information: MutPtr<::core::ffi::c_void>,
         h_transaction: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetFileAttributesTransactedW")
     }
     fn GetFileAttributesW(&self, lp_file_name: crate::core::PCWSTR) -> u32 {
-        todo!()
+        todo!("GetFileAttributesW")
     }
     fn GetFileBandwidthReservation(
         &self,
@@ -16549,14 +16549,14 @@ pub trait Api {
         lp_transfer_size: MutPtr<u32>,
         lp_num_outstanding_requests: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetFileBandwidthReservation")
     }
     fn GetFileInformationByHandle(
         &self,
         h_file: super::super::Foundation::HANDLE,
         lp_file_information: MutPtr<BY_HANDLE_FILE_INFORMATION>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetFileInformationByHandle")
     }
     fn GetFileInformationByHandleEx(
         &self,
@@ -16565,21 +16565,21 @@ pub trait Api {
         lp_file_information: MutPtr<::core::ffi::c_void>,
         dw_buffer_size: u32,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetFileInformationByHandleEx")
     }
     fn GetFileSize(
         &self,
         h_file: super::super::Foundation::HANDLE,
         lp_file_size_high: MutPtr<u32>,
     ) -> u32 {
-        todo!()
+        todo!("GetFileSize")
     }
     fn GetFileSizeEx(
         &self,
         h_file: super::super::Foundation::HANDLE,
         lp_file_size: MutPtr<i64>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetFileSizeEx")
     }
     fn GetFileTime(
         &self,
@@ -16588,10 +16588,10 @@ pub trait Api {
         lp_last_access_time: MutPtr<super::super::Foundation::FILETIME>,
         lp_last_write_time: MutPtr<super::super::Foundation::FILETIME>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetFileTime")
     }
     fn GetFileType(&self, h_file: super::super::Foundation::HANDLE) -> u32 {
-        todo!()
+        todo!("GetFileType")
     }
     fn GetFileVersionInfoA(
         &self,
@@ -16600,7 +16600,7 @@ pub trait Api {
         dw_len: u32,
         lp_data: MutPtr<::core::ffi::c_void>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetFileVersionInfoA")
     }
     fn GetFileVersionInfoExA(
         &self,
@@ -16610,7 +16610,7 @@ pub trait Api {
         dw_len: u32,
         lp_data: MutPtr<::core::ffi::c_void>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetFileVersionInfoExA")
     }
     fn GetFileVersionInfoExW(
         &self,
@@ -16620,14 +16620,14 @@ pub trait Api {
         dw_len: u32,
         lp_data: MutPtr<::core::ffi::c_void>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetFileVersionInfoExW")
     }
     fn GetFileVersionInfoSizeA(
         &self,
         lptstr_filename: crate::core::PCSTR,
         lpdw_handle: MutPtr<u32>,
     ) -> u32 {
-        todo!()
+        todo!("GetFileVersionInfoSizeA")
     }
     fn GetFileVersionInfoSizeExA(
         &self,
@@ -16635,7 +16635,7 @@ pub trait Api {
         lpwstr_filename: crate::core::PCSTR,
         lpdw_handle: MutPtr<u32>,
     ) -> u32 {
-        todo!()
+        todo!("GetFileVersionInfoSizeExA")
     }
     fn GetFileVersionInfoSizeExW(
         &self,
@@ -16643,14 +16643,14 @@ pub trait Api {
         lpwstr_filename: crate::core::PCWSTR,
         lpdw_handle: MutPtr<u32>,
     ) -> u32 {
-        todo!()
+        todo!("GetFileVersionInfoSizeExW")
     }
     fn GetFileVersionInfoSizeW(
         &self,
         lptstr_filename: crate::core::PCWSTR,
         lpdw_handle: MutPtr<u32>,
     ) -> u32 {
-        todo!()
+        todo!("GetFileVersionInfoSizeW")
     }
     fn GetFileVersionInfoW(
         &self,
@@ -16659,7 +16659,7 @@ pub trait Api {
         dw_len: u32,
         lp_data: MutPtr<::core::ffi::c_void>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetFileVersionInfoW")
     }
     fn GetFinalPathNameByHandleA(
         &self,
@@ -16668,7 +16668,7 @@ pub trait Api {
         cch_file_path: u32,
         dw_flags: FILE_NAME,
     ) -> u32 {
-        todo!()
+        todo!("GetFinalPathNameByHandleA")
     }
     fn GetFinalPathNameByHandleW(
         &self,
@@ -16677,7 +16677,7 @@ pub trait Api {
         cch_file_path: u32,
         dw_flags: FILE_NAME,
     ) -> u32 {
-        todo!()
+        todo!("GetFinalPathNameByHandleW")
     }
     fn GetFullPathNameA(
         &self,
@@ -16686,7 +16686,7 @@ pub trait Api {
         lp_buffer: crate::core::PSTR,
         lp_file_part: MutPtr<crate::core::PSTR>,
     ) -> u32 {
-        todo!()
+        todo!("GetFullPathNameA")
     }
     fn GetFullPathNameTransactedA(
         &self,
@@ -16696,7 +16696,7 @@ pub trait Api {
         lp_file_part: MutPtr<crate::core::PSTR>,
         h_transaction: super::super::Foundation::HANDLE,
     ) -> u32 {
-        todo!()
+        todo!("GetFullPathNameTransactedA")
     }
     fn GetFullPathNameTransactedW(
         &self,
@@ -16706,7 +16706,7 @@ pub trait Api {
         lp_file_part: MutPtr<crate::core::PWSTR>,
         h_transaction: super::super::Foundation::HANDLE,
     ) -> u32 {
-        todo!()
+        todo!("GetFullPathNameTransactedW")
     }
     fn GetFullPathNameW(
         &self,
@@ -16715,23 +16715,23 @@ pub trait Api {
         lp_buffer: crate::core::PWSTR,
         lp_file_part: MutPtr<crate::core::PWSTR>,
     ) -> u32 {
-        todo!()
+        todo!("GetFullPathNameW")
     }
     fn GetIoRingInfo(
         &self,
         io_ring: ConstPtr<HIORING__>,
         info: MutPtr<IORING_INFO>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("GetIoRingInfo")
     }
     fn GetLogicalDriveStringsA(&self, n_buffer_length: u32, lp_buffer: crate::core::PSTR) -> u32 {
-        todo!()
+        todo!("GetLogicalDriveStringsA")
     }
     fn GetLogicalDriveStringsW(&self, n_buffer_length: u32, lp_buffer: crate::core::PWSTR) -> u32 {
-        todo!()
+        todo!("GetLogicalDriveStringsW")
     }
     fn GetLogicalDrives(&self) -> u32 {
-        todo!()
+        todo!("GetLogicalDrives")
     }
     fn GetLongPathNameA(
         &self,
@@ -16739,7 +16739,7 @@ pub trait Api {
         lpsz_long_path: crate::core::PSTR,
         cch_buffer: u32,
     ) -> u32 {
-        todo!()
+        todo!("GetLongPathNameA")
     }
     fn GetLongPathNameTransactedA(
         &self,
@@ -16748,7 +16748,7 @@ pub trait Api {
         cch_buffer: u32,
         h_transaction: super::super::Foundation::HANDLE,
     ) -> u32 {
-        todo!()
+        todo!("GetLongPathNameTransactedA")
     }
     fn GetLongPathNameTransactedW(
         &self,
@@ -16757,7 +16757,7 @@ pub trait Api {
         cch_buffer: u32,
         h_transaction: super::super::Foundation::HANDLE,
     ) -> u32 {
-        todo!()
+        todo!("GetLongPathNameTransactedW")
     }
     fn GetLongPathNameW(
         &self,
@@ -16765,7 +16765,7 @@ pub trait Api {
         lpsz_long_path: crate::core::PWSTR,
         cch_buffer: u32,
     ) -> u32 {
-        todo!()
+        todo!("GetLongPathNameW")
     }
     fn GetNotificationResourceManager(
         &self,
@@ -16775,7 +16775,7 @@ pub trait Api {
         dw_milliseconds: u32,
         return_length: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetNotificationResourceManager")
     }
     fn GetNotificationResourceManagerAsync(
         &self,
@@ -16785,7 +16785,7 @@ pub trait Api {
         return_length: MutPtr<u32>,
         lp_overlapped: MutPtr<super::super::System::IO::OVERLAPPED>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetNotificationResourceManagerAsync")
     }
     fn GetShortPathNameA(
         &self,
@@ -16793,7 +16793,7 @@ pub trait Api {
         lpsz_short_path: crate::core::PSTR,
         cch_buffer: u32,
     ) -> u32 {
-        todo!()
+        todo!("GetShortPathNameA")
     }
     fn GetShortPathNameW(
         &self,
@@ -16801,7 +16801,7 @@ pub trait Api {
         lpsz_short_path: crate::core::PWSTR,
         cch_buffer: u32,
     ) -> u32 {
-        todo!()
+        todo!("GetShortPathNameW")
     }
     fn GetTapeParameters(
         &self,
@@ -16810,7 +16810,7 @@ pub trait Api {
         lpdw_size: MutPtr<u32>,
         lp_tape_information: MutPtr<::core::ffi::c_void>,
     ) -> u32 {
-        todo!()
+        todo!("GetTapeParameters")
     }
     fn GetTapePosition(
         &self,
@@ -16820,10 +16820,10 @@ pub trait Api {
         lpdw_offset_low: MutPtr<u32>,
         lpdw_offset_high: MutPtr<u32>,
     ) -> u32 {
-        todo!()
+        todo!("GetTapePosition")
     }
     fn GetTapeStatus(&self, h_device: super::super::Foundation::HANDLE) -> u32 {
-        todo!()
+        todo!("GetTapeStatus")
     }
     fn GetTempFileNameA(
         &self,
@@ -16832,7 +16832,7 @@ pub trait Api {
         u_unique: u32,
         lp_temp_file_name: crate::core::PSTR,
     ) -> u32 {
-        todo!()
+        todo!("GetTempFileNameA")
     }
     fn GetTempFileNameW(
         &self,
@@ -16841,26 +16841,26 @@ pub trait Api {
         u_unique: u32,
         lp_temp_file_name: crate::core::PWSTR,
     ) -> u32 {
-        todo!()
+        todo!("GetTempFileNameW")
     }
     fn GetTempPath2A(&self, buffer_length: u32, buffer: crate::core::PSTR) -> u32 {
-        todo!()
+        todo!("GetTempPath2A")
     }
     fn GetTempPath2W(&self, buffer_length: u32, buffer: crate::core::PWSTR) -> u32 {
-        todo!()
+        todo!("GetTempPath2W")
     }
     fn GetTempPathA(&self, n_buffer_length: u32, lp_buffer: crate::core::PSTR) -> u32 {
-        todo!()
+        todo!("GetTempPathA")
     }
     fn GetTempPathW(&self, n_buffer_length: u32, lp_buffer: crate::core::PWSTR) -> u32 {
-        todo!()
+        todo!("GetTempPathW")
     }
     fn GetTransactionId(
         &self,
         transaction_handle: super::super::Foundation::HANDLE,
         transaction_id: MutPtr<crate::core::GUID>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetTransactionId")
     }
     fn GetTransactionInformation(
         &self,
@@ -16872,14 +16872,14 @@ pub trait Api {
         buffer_length: u32,
         description: crate::core::PWSTR,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetTransactionInformation")
     }
     fn GetTransactionManagerId(
         &self,
         transaction_manager_handle: super::super::Foundation::HANDLE,
         transaction_manager_id: MutPtr<crate::core::GUID>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetTransactionManagerId")
     }
     fn GetVolumeInformationA(
         &self,
@@ -16892,7 +16892,7 @@ pub trait Api {
         lp_file_system_name_buffer: crate::core::PSTR,
         n_file_system_name_size: u32,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetVolumeInformationA")
     }
     fn GetVolumeInformationByHandleW(
         &self,
@@ -16905,7 +16905,7 @@ pub trait Api {
         lp_file_system_name_buffer: crate::core::PWSTR,
         n_file_system_name_size: u32,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetVolumeInformationByHandleW")
     }
     fn GetVolumeInformationW(
         &self,
@@ -16918,7 +16918,7 @@ pub trait Api {
         lp_file_system_name_buffer: crate::core::PWSTR,
         n_file_system_name_size: u32,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetVolumeInformationW")
     }
     fn GetVolumeNameForVolumeMountPointA(
         &self,
@@ -16926,7 +16926,7 @@ pub trait Api {
         lpsz_volume_name: crate::core::PSTR,
         cch_buffer_length: u32,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetVolumeNameForVolumeMountPointA")
     }
     fn GetVolumeNameForVolumeMountPointW(
         &self,
@@ -16934,7 +16934,7 @@ pub trait Api {
         lpsz_volume_name: crate::core::PWSTR,
         cch_buffer_length: u32,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetVolumeNameForVolumeMountPointW")
     }
     fn GetVolumePathNameA(
         &self,
@@ -16942,7 +16942,7 @@ pub trait Api {
         lpsz_volume_path_name: crate::core::PSTR,
         cch_buffer_length: u32,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetVolumePathNameA")
     }
     fn GetVolumePathNameW(
         &self,
@@ -16950,7 +16950,7 @@ pub trait Api {
         lpsz_volume_path_name: crate::core::PWSTR,
         cch_buffer_length: u32,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetVolumePathNameW")
     }
     fn GetVolumePathNamesForVolumeNameA(
         &self,
@@ -16959,7 +16959,7 @@ pub trait Api {
         cch_buffer_length: u32,
         lpcch_return_length: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetVolumePathNamesForVolumeNameA")
     }
     fn GetVolumePathNamesForVolumeNameW(
         &self,
@@ -16968,26 +16968,26 @@ pub trait Api {
         cch_buffer_length: u32,
         lpcch_return_length: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetVolumePathNamesForVolumeNameW")
     }
     fn IsIoRingOpSupported(
         &self,
         io_ring: ConstPtr<HIORING__>,
         op: IORING_OP_CODE,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("IsIoRingOpSupported")
     }
     fn LZClose(&self, h_file: i32) {
-        todo!()
+        todo!("LZClose")
     }
     fn LZCopy(&self, hf_source: i32, hf_dest: i32) -> i32 {
-        todo!()
+        todo!("LZCopy")
     }
     fn LZDone(&self) {
-        todo!()
+        todo!("LZDone")
     }
     fn LZInit(&self, hf_source: i32) -> i32 {
-        todo!()
+        todo!("LZInit")
     }
     fn LZOpenFileA(
         &self,
@@ -16995,7 +16995,7 @@ pub trait Api {
         lp_re_open_buf: MutPtr<OFSTRUCT>,
         w_style: LZOPENFILE_STYLE,
     ) -> i32 {
-        todo!()
+        todo!("LZOpenFileA")
     }
     fn LZOpenFileW(
         &self,
@@ -17003,23 +17003,23 @@ pub trait Api {
         lp_re_open_buf: MutPtr<OFSTRUCT>,
         w_style: LZOPENFILE_STYLE,
     ) -> i32 {
-        todo!()
+        todo!("LZOpenFileW")
     }
     fn LZRead(&self, h_file: i32, lp_buffer: crate::core::PSTR, cb_read: i32) -> i32 {
-        todo!()
+        todo!("LZRead")
     }
     fn LZSeek(&self, h_file: i32, l_offset: i32, i_origin: i32) -> i32 {
-        todo!()
+        todo!("LZSeek")
     }
     fn LZStart(&self) -> i32 {
-        todo!()
+        todo!("LZStart")
     }
     fn MoveFileA(
         &self,
         lp_existing_file_name: crate::core::PCSTR,
         lp_new_file_name: crate::core::PCSTR,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("MoveFileA")
     }
     fn MoveFileExA(
         &self,
@@ -17027,7 +17027,7 @@ pub trait Api {
         lp_new_file_name: crate::core::PCSTR,
         dw_flags: MOVE_FILE_FLAGS,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("MoveFileExA")
     }
     fn MoveFileExW(
         &self,
@@ -17035,14 +17035,14 @@ pub trait Api {
         lp_new_file_name: crate::core::PCWSTR,
         dw_flags: MOVE_FILE_FLAGS,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("MoveFileExW")
     }
     fn MoveFileFromAppW(
         &self,
         lp_existing_file_name: crate::core::PCWSTR,
         lp_new_file_name: crate::core::PCWSTR,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("MoveFileFromAppW")
     }
     fn MoveFileTransactedA(
         &self,
@@ -17053,7 +17053,7 @@ pub trait Api {
         dw_flags: MOVE_FILE_FLAGS,
         h_transaction: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("MoveFileTransactedA")
     }
     fn MoveFileTransactedW(
         &self,
@@ -17064,14 +17064,14 @@ pub trait Api {
         dw_flags: MOVE_FILE_FLAGS,
         h_transaction: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("MoveFileTransactedW")
     }
     fn MoveFileW(
         &self,
         lp_existing_file_name: crate::core::PCWSTR,
         lp_new_file_name: crate::core::PCWSTR,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("MoveFileW")
     }
     fn MoveFileWithProgressA(
         &self,
@@ -17081,7 +17081,7 @@ pub trait Api {
         lp_data: ConstPtr<::core::ffi::c_void>,
         dw_flags: MOVE_FILE_FLAGS,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("MoveFileWithProgressA")
     }
     fn MoveFileWithProgressW(
         &self,
@@ -17091,7 +17091,7 @@ pub trait Api {
         lp_data: ConstPtr<::core::ffi::c_void>,
         dw_flags: MOVE_FILE_FLAGS,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("MoveFileWithProgressW")
     }
     fn NetConnectionEnum(
         &self,
@@ -17104,10 +17104,10 @@ pub trait Api {
         totalentries: MutPtr<u32>,
         resume_handle: MutPtr<u32>,
     ) -> u32 {
-        todo!()
+        todo!("NetConnectionEnum")
     }
     fn NetFileClose(&self, servername: crate::core::PCWSTR, fileid: u32) -> u32 {
-        todo!()
+        todo!("NetFileClose")
     }
     fn NetFileEnum(
         &self,
@@ -17121,7 +17121,7 @@ pub trait Api {
         totalentries: MutPtr<u32>,
         resume_handle: MutPtr<PtrRepr>,
     ) -> u32 {
-        todo!()
+        todo!("NetFileEnum")
     }
     fn NetFileGetInfo(
         &self,
@@ -17130,7 +17130,7 @@ pub trait Api {
         level: u32,
         bufptr: MutPtr<ConstPtr<u8>>,
     ) -> u32 {
-        todo!()
+        todo!("NetFileGetInfo")
     }
     fn NetServerAliasAdd(
         &self,
@@ -17138,7 +17138,7 @@ pub trait Api {
         level: u32,
         buf: ConstPtr<u8>,
     ) -> u32 {
-        todo!()
+        todo!("NetServerAliasAdd")
     }
     fn NetServerAliasDel(
         &self,
@@ -17146,7 +17146,7 @@ pub trait Api {
         level: u32,
         buf: ConstPtr<u8>,
     ) -> u32 {
-        todo!()
+        todo!("NetServerAliasDel")
     }
     fn NetServerAliasEnum(
         &self,
@@ -17158,7 +17158,7 @@ pub trait Api {
         totalentries: MutPtr<u32>,
         resumehandle: MutPtr<u32>,
     ) -> u32 {
-        todo!()
+        todo!("NetServerAliasEnum")
     }
     fn NetSessionDel(
         &self,
@@ -17166,7 +17166,7 @@ pub trait Api {
         unc_client_name: crate::core::PCWSTR,
         username: crate::core::PCWSTR,
     ) -> u32 {
-        todo!()
+        todo!("NetSessionDel")
     }
     fn NetSessionEnum(
         &self,
@@ -17180,7 +17180,7 @@ pub trait Api {
         totalentries: MutPtr<u32>,
         resume_handle: MutPtr<u32>,
     ) -> u32 {
-        todo!()
+        todo!("NetSessionEnum")
     }
     fn NetSessionGetInfo(
         &self,
@@ -17190,7 +17190,7 @@ pub trait Api {
         level: u32,
         bufptr: MutPtr<ConstPtr<u8>>,
     ) -> u32 {
-        todo!()
+        todo!("NetSessionGetInfo")
     }
     fn NetShareAdd(
         &self,
@@ -17199,7 +17199,7 @@ pub trait Api {
         buf: ConstPtr<u8>,
         parm_err: MutPtr<u32>,
     ) -> u32 {
-        todo!()
+        todo!("NetShareAdd")
     }
     fn NetShareCheck(
         &self,
@@ -17207,7 +17207,7 @@ pub trait Api {
         device: crate::core::PCWSTR,
         r#type: MutPtr<u32>,
     ) -> u32 {
-        todo!()
+        todo!("NetShareCheck")
     }
     fn NetShareDel(
         &self,
@@ -17215,10 +17215,10 @@ pub trait Api {
         netname: crate::core::PCWSTR,
         reserved: u32,
     ) -> u32 {
-        todo!()
+        todo!("NetShareDel")
     }
     fn NetShareDelEx(&self, servername: crate::core::PCWSTR, level: u32, buf: ConstPtr<u8>) -> u32 {
-        todo!()
+        todo!("NetShareDelEx")
     }
     fn NetShareDelSticky(
         &self,
@@ -17226,7 +17226,7 @@ pub trait Api {
         netname: crate::core::PCWSTR,
         reserved: u32,
     ) -> u32 {
-        todo!()
+        todo!("NetShareDelSticky")
     }
     fn NetShareEnum(
         &self,
@@ -17238,7 +17238,7 @@ pub trait Api {
         totalentries: MutPtr<u32>,
         resume_handle: MutPtr<u32>,
     ) -> u32 {
-        todo!()
+        todo!("NetShareEnum")
     }
     fn NetShareEnumSticky(
         &self,
@@ -17250,7 +17250,7 @@ pub trait Api {
         totalentries: MutPtr<u32>,
         resume_handle: MutPtr<u32>,
     ) -> u32 {
-        todo!()
+        todo!("NetShareEnumSticky")
     }
     fn NetShareGetInfo(
         &self,
@@ -17259,7 +17259,7 @@ pub trait Api {
         level: u32,
         bufptr: MutPtr<ConstPtr<u8>>,
     ) -> u32 {
-        todo!()
+        todo!("NetShareGetInfo")
     }
     fn NetShareSetInfo(
         &self,
@@ -17269,7 +17269,7 @@ pub trait Api {
         buf: ConstPtr<u8>,
         parm_err: MutPtr<u32>,
     ) -> u32 {
-        todo!()
+        todo!("NetShareSetInfo")
     }
     fn NetStatisticsGet(
         &self,
@@ -17279,7 +17279,7 @@ pub trait Api {
         options: u32,
         buffer: MutPtr<ConstPtr<u8>>,
     ) -> u32 {
-        todo!()
+        todo!("NetStatisticsGet")
     }
     fn NtCreateFile(
         &self,
@@ -17295,7 +17295,7 @@ pub trait Api {
         ea_buffer: MutPtr<::core::ffi::c_void>,
         ea_length: u32,
     ) -> super::super::Foundation::NTSTATUS {
-        todo!()
+        todo!("NtCreateFile")
     }
     fn OpenEncryptedFileRawA(
         &self,
@@ -17303,7 +17303,7 @@ pub trait Api {
         ul_flags: u32,
         pv_context: MutPtr<ConstPtr<::core::ffi::c_void>>,
     ) -> u32 {
-        todo!()
+        todo!("OpenEncryptedFileRawA")
     }
     fn OpenEncryptedFileRawW(
         &self,
@@ -17311,7 +17311,7 @@ pub trait Api {
         ul_flags: u32,
         pv_context: MutPtr<ConstPtr<::core::ffi::c_void>>,
     ) -> u32 {
-        todo!()
+        todo!("OpenEncryptedFileRawW")
     }
     fn OpenEnlistment(
         &self,
@@ -17319,7 +17319,7 @@ pub trait Api {
         resource_manager_handle: super::super::Foundation::HANDLE,
         enlistment_id: MutPtr<crate::core::GUID>,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("OpenEnlistment")
     }
     fn OpenFile(
         &self,
@@ -17327,7 +17327,7 @@ pub trait Api {
         lp_re_open_buff: MutPtr<OFSTRUCT>,
         u_style: LZOPENFILE_STYLE,
     ) -> i32 {
-        todo!()
+        todo!("OpenFile")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -17340,7 +17340,7 @@ pub trait Api {
         lp_security_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
         dw_flags_and_attributes: FILE_FLAGS_AND_ATTRIBUTES,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("OpenFileById")
     }
     fn OpenResourceManager(
         &self,
@@ -17348,14 +17348,14 @@ pub trait Api {
         tm_handle: super::super::Foundation::HANDLE,
         resource_manager_id: MutPtr<crate::core::GUID>,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("OpenResourceManager")
     }
     fn OpenTransaction(
         &self,
         dw_desired_access: u32,
         transaction_id: MutPtr<crate::core::GUID>,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("OpenTransaction")
     }
     fn OpenTransactionManager(
         &self,
@@ -17363,7 +17363,7 @@ pub trait Api {
         desired_access: u32,
         open_options: u32,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("OpenTransactionManager")
     }
     fn OpenTransactionManagerById(
         &self,
@@ -17371,42 +17371,42 @@ pub trait Api {
         desired_access: u32,
         open_options: u32,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("OpenTransactionManagerById")
     }
     fn PopIoRingCompletion(
         &self,
         io_ring: ConstPtr<HIORING__>,
         cqe: MutPtr<IORING_CQE>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("PopIoRingCompletion")
     }
     fn PrePrepareComplete(
         &self,
         enlistment_handle: super::super::Foundation::HANDLE,
         tm_virtual_clock: MutPtr<i64>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("PrePrepareComplete")
     }
     fn PrePrepareEnlistment(
         &self,
         enlistment_handle: super::super::Foundation::HANDLE,
         tm_virtual_clock: MutPtr<i64>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("PrePrepareEnlistment")
     }
     fn PrepareComplete(
         &self,
         enlistment_handle: super::super::Foundation::HANDLE,
         tm_virtual_clock: MutPtr<i64>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("PrepareComplete")
     }
     fn PrepareEnlistment(
         &self,
         enlistment_handle: super::super::Foundation::HANDLE,
         tm_virtual_clock: MutPtr<i64>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("PrepareEnlistment")
     }
     fn PrepareTape(
         &self,
@@ -17414,7 +17414,7 @@ pub trait Api {
         dw_operation: PREPARE_TAPE_OPERATION,
         b_immediate: super::super::Foundation::BOOL,
     ) -> u32 {
-        todo!()
+        todo!("PrepareTape")
     }
     fn QueryDosDeviceA(
         &self,
@@ -17422,7 +17422,7 @@ pub trait Api {
         lp_target_path: crate::core::PSTR,
         ucch_max: u32,
     ) -> u32 {
-        todo!()
+        todo!("QueryDosDeviceA")
     }
     fn QueryDosDeviceW(
         &self,
@@ -17430,13 +17430,13 @@ pub trait Api {
         lp_target_path: crate::core::PWSTR,
         ucch_max: u32,
     ) -> u32 {
-        todo!()
+        todo!("QueryDosDeviceW")
     }
     fn QueryIoRingCapabilities(
         &self,
         capabilities: MutPtr<IORING_CAPABILITIES>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("QueryIoRingCapabilities")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -17445,7 +17445,7 @@ pub trait Api {
         lp_file_name: crate::core::PCWSTR,
         p_recovery_agents: MutPtr<ConstPtr<ENCRYPTION_CERTIFICATE_HASH_LIST>>,
     ) -> u32 {
-        todo!()
+        todo!("QueryRecoveryAgentsOnEncryptedFile")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -17454,7 +17454,7 @@ pub trait Api {
         lp_file_name: crate::core::PCWSTR,
         p_users: MutPtr<ConstPtr<ENCRYPTION_CERTIFICATE_HASH_LIST>>,
     ) -> u32 {
-        todo!()
+        todo!("QueryUsersOnEncryptedFile")
     }
     fn ReOpenFile(
         &self,
@@ -17463,7 +17463,7 @@ pub trait Api {
         dw_share_mode: FILE_SHARE_MODE,
         dw_flags_and_attributes: FILE_FLAGS_AND_ATTRIBUTES,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("ReOpenFile")
     }
     fn ReadDirectoryChangesExW(
         &self,
@@ -17477,7 +17477,7 @@ pub trait Api {
         lp_completion_routine: super::super::System::IO::LPOVERLAPPED_COMPLETION_ROUTINE,
         read_directory_notify_information_class: READ_DIRECTORY_NOTIFY_INFORMATION_CLASS,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("ReadDirectoryChangesExW")
     }
     fn ReadDirectoryChangesW(
         &self,
@@ -17490,7 +17490,7 @@ pub trait Api {
         lp_overlapped: MutPtr<super::super::System::IO::OVERLAPPED>,
         lp_completion_routine: super::super::System::IO::LPOVERLAPPED_COMPLETION_ROUTINE,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("ReadDirectoryChangesW")
     }
     fn ReadEncryptedFileRaw(
         &self,
@@ -17498,7 +17498,7 @@ pub trait Api {
         pv_callback_context: ConstPtr<::core::ffi::c_void>,
         pv_context: ConstPtr<::core::ffi::c_void>,
     ) -> u32 {
-        todo!()
+        todo!("ReadEncryptedFileRaw")
     }
     fn ReadFile(
         &self,
@@ -17508,7 +17508,7 @@ pub trait Api {
         lp_number_of_bytes_read: MutPtr<u32>,
         lp_overlapped: MutPtr<super::super::System::IO::OVERLAPPED>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("ReadFile")
     }
     fn ReadFileEx(
         &self,
@@ -17518,7 +17518,7 @@ pub trait Api {
         lp_overlapped: MutPtr<super::super::System::IO::OVERLAPPED>,
         lp_completion_routine: super::super::System::IO::LPOVERLAPPED_COMPLETION_ROUTINE,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("ReadFileEx")
     }
     fn ReadFileScatter(
         &self,
@@ -17528,62 +17528,62 @@ pub trait Api {
         lp_reserved: MutPtr<u32>,
         lp_overlapped: MutPtr<super::super::System::IO::OVERLAPPED>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("ReadFileScatter")
     }
     fn ReadOnlyEnlistment(
         &self,
         enlistment_handle: super::super::Foundation::HANDLE,
         tm_virtual_clock: MutPtr<i64>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("ReadOnlyEnlistment")
     }
     fn RecoverEnlistment(
         &self,
         enlistment_handle: super::super::Foundation::HANDLE,
         enlistment_key: MutPtr<::core::ffi::c_void>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("RecoverEnlistment")
     }
     fn RecoverResourceManager(
         &self,
         resource_manager_handle: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("RecoverResourceManager")
     }
     fn RecoverTransactionManager(
         &self,
         transaction_manager_handle: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("RecoverTransactionManager")
     }
     fn RemoveDirectoryA(&self, lp_path_name: crate::core::PCSTR) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("RemoveDirectoryA")
     }
     fn RemoveDirectoryFromAppW(
         &self,
         lp_path_name: crate::core::PCWSTR,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("RemoveDirectoryFromAppW")
     }
     fn RemoveDirectoryTransactedA(
         &self,
         lp_path_name: crate::core::PCSTR,
         h_transaction: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("RemoveDirectoryTransactedA")
     }
     fn RemoveDirectoryTransactedW(
         &self,
         lp_path_name: crate::core::PCWSTR,
         h_transaction: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("RemoveDirectoryTransactedW")
     }
     fn RemoveDirectoryW(
         &self,
         lp_path_name: crate::core::PCWSTR,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("RemoveDirectoryW")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -17592,14 +17592,14 @@ pub trait Api {
         lp_file_name: crate::core::PCWSTR,
         p_hashes: ConstPtr<ENCRYPTION_CERTIFICATE_HASH_LIST>,
     ) -> u32 {
-        todo!()
+        todo!("RemoveUsersFromEncryptedFile")
     }
     fn RenameTransactionManager(
         &self,
         log_file_name: crate::core::PCWSTR,
         existing_transaction_manager_guid: MutPtr<crate::core::GUID>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("RenameTransactionManager")
     }
     fn ReplaceFileA(
         &self,
@@ -17610,7 +17610,7 @@ pub trait Api {
         lp_exclude: MutPtr<::core::ffi::c_void>,
         lp_reserved: MutPtr<::core::ffi::c_void>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("ReplaceFileA")
     }
     fn ReplaceFileFromAppW(
         &self,
@@ -17621,7 +17621,7 @@ pub trait Api {
         lp_exclude: MutPtr<::core::ffi::c_void>,
         lp_reserved: MutPtr<::core::ffi::c_void>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("ReplaceFileFromAppW")
     }
     fn ReplaceFileW(
         &self,
@@ -17632,40 +17632,40 @@ pub trait Api {
         lp_exclude: MutPtr<::core::ffi::c_void>,
         lp_reserved: MutPtr<::core::ffi::c_void>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("ReplaceFileW")
     }
     fn RollbackComplete(
         &self,
         enlistment_handle: super::super::Foundation::HANDLE,
         tm_virtual_clock: MutPtr<i64>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("RollbackComplete")
     }
     fn RollbackEnlistment(
         &self,
         enlistment_handle: super::super::Foundation::HANDLE,
         tm_virtual_clock: MutPtr<i64>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("RollbackEnlistment")
     }
     fn RollbackTransaction(
         &self,
         transaction_handle: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("RollbackTransaction")
     }
     fn RollbackTransactionAsync(
         &self,
         transaction_handle: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("RollbackTransactionAsync")
     }
     fn RollforwardTransactionManager(
         &self,
         transaction_manager_handle: super::super::Foundation::HANDLE,
         tm_virtual_clock: MutPtr<i64>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("RollforwardTransactionManager")
     }
     fn SearchPathA(
         &self,
@@ -17676,7 +17676,7 @@ pub trait Api {
         lp_buffer: crate::core::PSTR,
         lp_file_part: MutPtr<crate::core::PSTR>,
     ) -> u32 {
-        todo!()
+        todo!("SearchPathA")
     }
     fn SearchPathW(
         &self,
@@ -17687,7 +17687,7 @@ pub trait Api {
         lp_buffer: crate::core::PWSTR,
         lp_file_part: MutPtr<crate::core::PWSTR>,
     ) -> u32 {
-        todo!()
+        todo!("SearchPathW")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -17700,13 +17700,13 @@ pub trait Api {
         dw_operation: u32,
         p_certificates_added: ConstPtr<ENCRYPTION_CERTIFICATE_HASH_LIST>,
     ) -> u32 {
-        todo!()
+        todo!("SetEncryptedFileMetadata")
     }
     fn SetEndOfFile(
         &self,
         h_file: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetEndOfFile")
     }
     fn SetEnlistmentRecoveryInformation(
         &self,
@@ -17714,27 +17714,27 @@ pub trait Api {
         buffer_size: u32,
         buffer: MutPtr<::core::ffi::c_void>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetEnlistmentRecoveryInformation")
     }
     fn SetFileApisToANSI(&self) {
-        todo!()
+        todo!("SetFileApisToANSI")
     }
     fn SetFileApisToOEM(&self) {
-        todo!()
+        todo!("SetFileApisToOEM")
     }
     fn SetFileAttributesA(
         &self,
         lp_file_name: crate::core::PCSTR,
         dw_file_attributes: FILE_FLAGS_AND_ATTRIBUTES,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetFileAttributesA")
     }
     fn SetFileAttributesFromAppW(
         &self,
         lp_file_name: crate::core::PCWSTR,
         dw_file_attributes: u32,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetFileAttributesFromAppW")
     }
     fn SetFileAttributesTransactedA(
         &self,
@@ -17742,7 +17742,7 @@ pub trait Api {
         dw_file_attributes: u32,
         h_transaction: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetFileAttributesTransactedA")
     }
     fn SetFileAttributesTransactedW(
         &self,
@@ -17750,14 +17750,14 @@ pub trait Api {
         dw_file_attributes: u32,
         h_transaction: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetFileAttributesTransactedW")
     }
     fn SetFileAttributesW(
         &self,
         lp_file_name: crate::core::PCWSTR,
         dw_file_attributes: FILE_FLAGS_AND_ATTRIBUTES,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetFileAttributesW")
     }
     fn SetFileBandwidthReservation(
         &self,
@@ -17768,14 +17768,14 @@ pub trait Api {
         lp_transfer_size: MutPtr<u32>,
         lp_num_outstanding_requests: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetFileBandwidthReservation")
     }
     fn SetFileCompletionNotificationModes(
         &self,
         file_handle: super::super::Foundation::HANDLE,
         flags: u8,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetFileCompletionNotificationModes")
     }
     fn SetFileInformationByHandle(
         &self,
@@ -17784,7 +17784,7 @@ pub trait Api {
         lp_file_information: ConstPtr<::core::ffi::c_void>,
         dw_buffer_size: u32,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetFileInformationByHandle")
     }
     fn SetFileIoOverlappedRange(
         &self,
@@ -17792,7 +17792,7 @@ pub trait Api {
         overlapped_range_start: ConstPtr<u8>,
         length: u32,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetFileIoOverlappedRange")
     }
     fn SetFilePointer(
         &self,
@@ -17801,7 +17801,7 @@ pub trait Api {
         lp_distance_to_move_high: MutPtr<i32>,
         dw_move_method: SET_FILE_POINTER_MOVE_METHOD,
     ) -> u32 {
-        todo!()
+        todo!("SetFilePointer")
     }
     fn SetFilePointerEx(
         &self,
@@ -17810,21 +17810,21 @@ pub trait Api {
         lp_new_file_pointer: MutPtr<i64>,
         dw_move_method: SET_FILE_POINTER_MOVE_METHOD,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetFilePointerEx")
     }
     fn SetFileShortNameA(
         &self,
         h_file: super::super::Foundation::HANDLE,
         lp_short_name: crate::core::PCSTR,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetFileShortNameA")
     }
     fn SetFileShortNameW(
         &self,
         h_file: super::super::Foundation::HANDLE,
         lp_short_name: crate::core::PCWSTR,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetFileShortNameW")
     }
     fn SetFileTime(
         &self,
@@ -17833,21 +17833,21 @@ pub trait Api {
         lp_last_access_time: ConstPtr<super::super::Foundation::FILETIME>,
         lp_last_write_time: ConstPtr<super::super::Foundation::FILETIME>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetFileTime")
     }
     fn SetFileValidData(
         &self,
         h_file: super::super::Foundation::HANDLE,
         valid_data_length: i64,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetFileValidData")
     }
     fn SetIoRingCompletionEvent(
         &self,
         io_ring: ConstPtr<HIORING__>,
         h_event: super::super::Foundation::HANDLE,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("SetIoRingCompletionEvent")
     }
     fn SetResourceManagerCompletionPort(
         &self,
@@ -17855,10 +17855,10 @@ pub trait Api {
         io_completion_port_handle: super::super::Foundation::HANDLE,
         completion_key: PtrRepr,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetResourceManagerCompletionPort")
     }
     fn SetSearchPathMode(&self, flags: u32) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetSearchPathMode")
     }
     fn SetTapeParameters(
         &self,
@@ -17866,7 +17866,7 @@ pub trait Api {
         dw_operation: TAPE_INFORMATION_TYPE,
         lp_tape_information: ConstPtr<::core::ffi::c_void>,
     ) -> u32 {
-        todo!()
+        todo!("SetTapeParameters")
     }
     fn SetTapePosition(
         &self,
@@ -17877,7 +17877,7 @@ pub trait Api {
         dw_offset_high: u32,
         b_immediate: super::super::Foundation::BOOL,
     ) -> u32 {
-        todo!()
+        todo!("SetTapePosition")
     }
     fn SetTransactionInformation(
         &self,
@@ -17887,7 +17887,7 @@ pub trait Api {
         timeout: u32,
         description: crate::core::PCWSTR,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetTransactionInformation")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -17895,7 +17895,7 @@ pub trait Api {
         &self,
         p_encryption_certificate: ConstPtr<ENCRYPTION_CERTIFICATE>,
     ) -> u32 {
-        todo!()
+        todo!("SetUserFileEncryptionKey")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -17906,42 +17906,42 @@ pub trait Api {
         dw_flags: u32,
         pv_reserved: MutPtr<::core::ffi::c_void>,
     ) -> u32 {
-        todo!()
+        todo!("SetUserFileEncryptionKeyEx")
     }
     fn SetVolumeLabelA(
         &self,
         lp_root_path_name: crate::core::PCSTR,
         lp_volume_name: crate::core::PCSTR,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetVolumeLabelA")
     }
     fn SetVolumeLabelW(
         &self,
         lp_root_path_name: crate::core::PCWSTR,
         lp_volume_name: crate::core::PCWSTR,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetVolumeLabelW")
     }
     fn SetVolumeMountPointA(
         &self,
         lpsz_volume_mount_point: crate::core::PCSTR,
         lpsz_volume_name: crate::core::PCSTR,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetVolumeMountPointA")
     }
     fn SetVolumeMountPointW(
         &self,
         lpsz_volume_mount_point: crate::core::PCWSTR,
         lpsz_volume_name: crate::core::PCWSTR,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetVolumeMountPointW")
     }
     fn SinglePhaseReject(
         &self,
         enlistment_handle: super::super::Foundation::HANDLE,
         tm_virtual_clock: MutPtr<i64>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SinglePhaseReject")
     }
     fn SubmitIoRing(
         &self,
@@ -17950,10 +17950,10 @@ pub trait Api {
         milliseconds: u32,
         submitted_entries: MutPtr<u32>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("SubmitIoRing")
     }
     fn TxfGetThreadMiniVersionForCreate(&self, mini_version: MutPtr<u16>) {
-        todo!()
+        todo!("TxfGetThreadMiniVersionForCreate")
     }
     fn TxfLogCreateFileReadContext(
         &self,
@@ -17963,7 +17963,7 @@ pub trait Api {
         txf_file_id: ConstPtr<TXF_ID>,
         txf_log_context: MutPtr<ConstPtr<::core::ffi::c_void>>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("TxfLogCreateFileReadContext")
     }
     fn TxfLogCreateRangeReadContext(
         &self,
@@ -17975,13 +17975,13 @@ pub trait Api {
         record_type_mask: u32,
         txf_log_context: MutPtr<ConstPtr<::core::ffi::c_void>>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("TxfLogCreateRangeReadContext")
     }
     fn TxfLogDestroyReadContext(
         &self,
         txf_log_context: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("TxfLogDestroyReadContext")
     }
     fn TxfLogReadRecords(
         &self,
@@ -17991,7 +17991,7 @@ pub trait Api {
         bytes_used: MutPtr<u32>,
         record_count: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("TxfLogReadRecords")
     }
     fn TxfLogRecordGetFileName(
         &self,
@@ -18001,7 +18001,7 @@ pub trait Api {
         name_buffer_length_in_bytes: MutPtr<u32>,
         txf_id: MutPtr<TXF_ID>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("TxfLogRecordGetFileName")
     }
     fn TxfLogRecordGetGenericType(
         &self,
@@ -18010,7 +18010,7 @@ pub trait Api {
         generic_type: MutPtr<u32>,
         virtual_clock: MutPtr<i64>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("TxfLogRecordGetGenericType")
     }
     fn TxfReadMetadataInfo(
         &self,
@@ -18020,10 +18020,10 @@ pub trait Api {
         transaction_state: MutPtr<u32>,
         locking_transaction: MutPtr<crate::core::GUID>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("TxfReadMetadataInfo")
     }
     fn TxfSetThreadMiniVersionForCreate(&self, mini_version: u16) {
-        todo!()
+        todo!("TxfSetThreadMiniVersionForCreate")
     }
     fn UnlockFile(
         &self,
@@ -18033,7 +18033,7 @@ pub trait Api {
         n_number_of_bytes_to_unlock_low: u32,
         n_number_of_bytes_to_unlock_high: u32,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("UnlockFile")
     }
     fn UnlockFileEx(
         &self,
@@ -18043,7 +18043,7 @@ pub trait Api {
         n_number_of_bytes_to_unlock_high: u32,
         lp_overlapped: MutPtr<super::super::System::IO::OVERLAPPED>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("UnlockFileEx")
     }
     fn VerFindFileA(
         &self,
@@ -18056,7 +18056,7 @@ pub trait Api {
         sz_dest_dir: crate::core::PSTR,
         pu_dest_dir_len: MutPtr<u32>,
     ) -> VER_FIND_FILE_STATUS {
-        todo!()
+        todo!("VerFindFileA")
     }
     fn VerFindFileW(
         &self,
@@ -18069,7 +18069,7 @@ pub trait Api {
         sz_dest_dir: crate::core::PWSTR,
         pu_dest_dir_len: MutPtr<u32>,
     ) -> VER_FIND_FILE_STATUS {
-        todo!()
+        todo!("VerFindFileW")
     }
     fn VerInstallFileA(
         &self,
@@ -18082,7 +18082,7 @@ pub trait Api {
         sz_tmp_file: crate::core::PSTR,
         pu_tmp_file_len: MutPtr<u32>,
     ) -> VER_INSTALL_FILE_STATUS {
-        todo!()
+        todo!("VerInstallFileA")
     }
     fn VerInstallFileW(
         &self,
@@ -18095,13 +18095,13 @@ pub trait Api {
         sz_tmp_file: crate::core::PWSTR,
         pu_tmp_file_len: MutPtr<u32>,
     ) -> VER_INSTALL_FILE_STATUS {
-        todo!()
+        todo!("VerInstallFileW")
     }
     fn VerLanguageNameA(&self, w_lang: u32, sz_lang: crate::core::PSTR, cch_lang: u32) -> u32 {
-        todo!()
+        todo!("VerLanguageNameA")
     }
     fn VerLanguageNameW(&self, w_lang: u32, sz_lang: crate::core::PWSTR, cch_lang: u32) -> u32 {
-        todo!()
+        todo!("VerLanguageNameW")
     }
     fn VerQueryValueA(
         &self,
@@ -18110,7 +18110,7 @@ pub trait Api {
         lplp_buffer: MutPtr<ConstPtr<::core::ffi::c_void>>,
         pu_len: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("VerQueryValueA")
     }
     fn VerQueryValueW(
         &self,
@@ -18119,7 +18119,7 @@ pub trait Api {
         lplp_buffer: MutPtr<ConstPtr<::core::ffi::c_void>>,
         pu_len: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("VerQueryValueW")
     }
     fn WofEnumEntries(
         &self,
@@ -18128,7 +18128,7 @@ pub trait Api {
         enum_proc: WofEnumEntryProc,
         user_data: ConstPtr<::core::ffi::c_void>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("WofEnumEntries")
     }
     fn WofFileEnumFiles(
         &self,
@@ -18137,7 +18137,7 @@ pub trait Api {
         enum_proc: WofEnumFilesProc,
         user_data: ConstPtr<::core::ffi::c_void>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("WofFileEnumFiles")
     }
     fn WofGetDriverVersion(
         &self,
@@ -18145,7 +18145,7 @@ pub trait Api {
         provider: u32,
         wof_version: MutPtr<u32>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("WofGetDriverVersion")
     }
     fn WofIsExternalFile(
         &self,
@@ -18155,7 +18155,7 @@ pub trait Api {
         external_file_info: MutPtr<::core::ffi::c_void>,
         buffer_length: MutPtr<u32>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("WofIsExternalFile")
     }
     fn WofSetFileDataLocation(
         &self,
@@ -18164,14 +18164,14 @@ pub trait Api {
         external_file_info: ConstPtr<::core::ffi::c_void>,
         length: u32,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("WofSetFileDataLocation")
     }
     fn WofShouldCompressBinaries(
         &self,
         volume: crate::core::PCWSTR,
         algorithm: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("WofShouldCompressBinaries")
     }
     fn WofWimAddEntry(
         &self,
@@ -18181,7 +18181,7 @@ pub trait Api {
         wim_index: u32,
         data_source_id: MutPtr<i64>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("WofWimAddEntry")
     }
     fn WofWimEnumFiles(
         &self,
@@ -18190,21 +18190,21 @@ pub trait Api {
         enum_proc: WofEnumFilesProc,
         user_data: ConstPtr<::core::ffi::c_void>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("WofWimEnumFiles")
     }
     fn WofWimRemoveEntry(
         &self,
         volume_name: crate::core::PCWSTR,
         data_source_id: i64,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("WofWimRemoveEntry")
     }
     fn WofWimSuspendEntry(
         &self,
         volume_name: crate::core::PCWSTR,
         data_source_id: i64,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("WofWimSuspendEntry")
     }
     fn WofWimUpdateEntry(
         &self,
@@ -18212,25 +18212,25 @@ pub trait Api {
         data_source_id: i64,
         new_wim_path: crate::core::PCWSTR,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("WofWimUpdateEntry")
     }
     fn Wow64DisableWow64FsRedirection(
         &self,
         old_value: MutPtr<ConstPtr<::core::ffi::c_void>>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("Wow64DisableWow64FsRedirection")
     }
     fn Wow64EnableWow64FsRedirection(
         &self,
         wow_64_fs_enable_redirection: super::super::Foundation::BOOLEAN,
     ) -> super::super::Foundation::BOOLEAN {
-        todo!()
+        todo!("Wow64EnableWow64FsRedirection")
     }
     fn Wow64RevertWow64FsRedirection(
         &self,
         ol_value: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("Wow64RevertWow64FsRedirection")
     }
     fn WriteEncryptedFileRaw(
         &self,
@@ -18238,7 +18238,7 @@ pub trait Api {
         pv_callback_context: ConstPtr<::core::ffi::c_void>,
         pv_context: ConstPtr<::core::ffi::c_void>,
     ) -> u32 {
-        todo!()
+        todo!("WriteEncryptedFileRaw")
     }
     fn WriteFile(
         &self,
@@ -18248,7 +18248,7 @@ pub trait Api {
         lp_number_of_bytes_written: MutPtr<u32>,
         lp_overlapped: MutPtr<super::super::System::IO::OVERLAPPED>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("WriteFile")
     }
     fn WriteFileEx(
         &self,
@@ -18258,7 +18258,7 @@ pub trait Api {
         lp_overlapped: MutPtr<super::super::System::IO::OVERLAPPED>,
         lp_completion_routine: super::super::System::IO::LPOVERLAPPED_COMPLETION_ROUTINE,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("WriteFileEx")
     }
     fn WriteFileGather(
         &self,
@@ -18268,7 +18268,7 @@ pub trait Api {
         lp_reserved: MutPtr<u32>,
         lp_overlapped: MutPtr<super::super::System::IO::OVERLAPPED>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("WriteFileGather")
     }
     fn WriteTapemark(
         &self,
@@ -18277,7 +18277,7 @@ pub trait Api {
         dw_tapemark_count: u32,
         b_immediate: super::super::Foundation::BOOL,
     ) -> u32 {
-        todo!()
+        todo!("WriteTapemark")
     }
 }
 pub fn get_api(ctx: &crate::core::Win32Context) -> &dyn Api {

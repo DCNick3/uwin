@@ -4794,7 +4794,7 @@ pub trait Api {
         lpcsz_base_name: crate::core::PCSTR,
         dw_flags: u32,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("AddDelBackupEntryA")
     }
     fn AddDelBackupEntryW(
         &self,
@@ -4803,7 +4803,7 @@ pub trait Api {
         lpcsz_base_name: crate::core::PCWSTR,
         dw_flags: u32,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("AddDelBackupEntryW")
     }
     fn AdvInstallFileA(
         &self,
@@ -4815,7 +4815,7 @@ pub trait Api {
         dw_flags: u32,
         dw_reserved: u32,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("AdvInstallFileA")
     }
     fn AdvInstallFileW(
         &self,
@@ -4827,7 +4827,7 @@ pub trait Api {
         dw_flags: u32,
         dw_reserved: u32,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("AdvInstallFileW")
     }
     fn ApphelpCheckShellObject(
         &self,
@@ -4835,23 +4835,23 @@ pub trait Api {
         b_shim_if_necessary: super::super::Foundation::BOOL,
         pull_flags: MutPtr<u64>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("ApphelpCheckShellObject")
     }
     fn CancelDeviceWakeupRequest(
         &self,
         h_device: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("CancelDeviceWakeupRequest")
     }
     fn CancelTimerQueueTimer(
         &self,
         timer_queue: super::super::Foundation::HANDLE,
         timer: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("CancelTimerQueueTimer")
     }
     fn CloseINFEngine(&self, h_inf: MutPtr<::core::ffi::c_void>) -> crate::core::HRESULT {
-        todo!()
+        todo!("CloseINFEngine")
     }
     fn ConvertAuxiliaryCounterToPerformanceCounter(
         &self,
@@ -4859,7 +4859,7 @@ pub trait Api {
         lp_performance_counter_value: MutPtr<u64>,
         lp_conversion_error: MutPtr<u64>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("ConvertAuxiliaryCounterToPerformanceCounter")
     }
     fn ConvertPerformanceCounterToAuxiliaryCounter(
         &self,
@@ -4867,7 +4867,7 @@ pub trait Api {
         lp_auxiliary_counter_value: MutPtr<u64>,
         lp_conversion_error: MutPtr<u64>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("ConvertPerformanceCounterToAuxiliaryCounter")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -4877,7 +4877,7 @@ pub trait Api {
         b_manual_reset: super::super::Foundation::BOOL,
         lp_timer_name: crate::core::PCSTR,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("CreateWaitableTimerA")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -4888,14 +4888,14 @@ pub trait Api {
         dw_flags: u32,
         dw_desired_access: u32,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("CreateWaitableTimerExA")
     }
     fn DelNodeA(
         &self,
         psz_file_or_dir_name: crate::core::PCSTR,
         dw_flags: u32,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("DelNodeA")
     }
     fn DelNodeRunDLL32W(
         &self,
@@ -4904,14 +4904,14 @@ pub trait Api {
         psz_parms: crate::core::PWSTR,
         n_show: i32,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("DelNodeRunDLL32W")
     }
     fn DelNodeW(
         &self,
         psz_file_or_dir_name: crate::core::PCWSTR,
         dw_flags: u32,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("DelNodeW")
     }
     fn DnsHostnameToComputerNameA(
         &self,
@@ -4919,7 +4919,7 @@ pub trait Api {
         computer_name: crate::core::PSTR,
         n_size: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("DnsHostnameToComputerNameA")
     }
     fn DnsHostnameToComputerNameW(
         &self,
@@ -4927,7 +4927,7 @@ pub trait Api {
         computer_name: crate::core::PWSTR,
         n_size: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("DnsHostnameToComputerNameW")
     }
     fn DosDateTimeToFileTime(
         &self,
@@ -4935,10 +4935,10 @@ pub trait Api {
         w_fat_time: u16,
         lp_file_time: MutPtr<super::super::Foundation::FILETIME>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("DosDateTimeToFileTime")
     }
     fn EnableProcessOptionalXStateFeatures(&self, features: u64) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("EnableProcessOptionalXStateFeatures")
     }
     fn ExecuteCabA(
         &self,
@@ -4946,7 +4946,7 @@ pub trait Api {
         p_cab: MutPtr<CABINFOA>,
         p_reserved: MutPtr<::core::ffi::c_void>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("ExecuteCabA")
     }
     fn ExecuteCabW(
         &self,
@@ -4954,7 +4954,7 @@ pub trait Api {
         p_cab: MutPtr<CABINFOW>,
         p_reserved: MutPtr<::core::ffi::c_void>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("ExecuteCabW")
     }
     fn ExtractFilesA(
         &self,
@@ -4965,7 +4965,7 @@ pub trait Api {
         lp_reserved: MutPtr<::core::ffi::c_void>,
         dw_reserved: u32,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("ExtractFilesA")
     }
     fn ExtractFilesW(
         &self,
@@ -4976,7 +4976,7 @@ pub trait Api {
         lp_reserved: MutPtr<::core::ffi::c_void>,
         dw_reserved: u32,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("ExtractFilesW")
     }
     fn FileSaveMarkNotExistA(
         &self,
@@ -4984,7 +4984,7 @@ pub trait Api {
         lp_dir: crate::core::PCSTR,
         lp_base_name: crate::core::PCSTR,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("FileSaveMarkNotExistA")
     }
     fn FileSaveMarkNotExistW(
         &self,
@@ -4992,7 +4992,7 @@ pub trait Api {
         lp_dir: crate::core::PCWSTR,
         lp_base_name: crate::core::PCWSTR,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("FileSaveMarkNotExistW")
     }
     fn FileSaveRestoreOnINFA(
         &self,
@@ -5004,7 +5004,7 @@ pub trait Api {
         psz_base_backup_file: crate::core::PCSTR,
         dw_flags: u32,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("FileSaveRestoreOnINFA")
     }
     fn FileSaveRestoreOnINFW(
         &self,
@@ -5016,7 +5016,7 @@ pub trait Api {
         psz_base_backup_file: crate::core::PCWSTR,
         dw_flags: u32,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("FileSaveRestoreOnINFW")
     }
     fn FileSaveRestoreW(
         &self,
@@ -5026,7 +5026,7 @@ pub trait Api {
         lp_base_name: crate::core::PCWSTR,
         dw_flags: u32,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("FileSaveRestoreW")
     }
     fn FileTimeToDosDateTime(
         &self,
@@ -5034,43 +5034,43 @@ pub trait Api {
         lp_fat_date: MutPtr<u16>,
         lp_fat_time: MutPtr<u16>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("FileTimeToDosDateTime")
     }
     fn GdiEntry13(&self) -> u32 {
-        todo!()
+        todo!("GdiEntry13")
     }
     fn GetComputerNameA(
         &self,
         lp_buffer: crate::core::PSTR,
         n_size: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetComputerNameA")
     }
     fn GetComputerNameW(
         &self,
         lp_buffer: crate::core::PWSTR,
         n_size: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetComputerNameW")
     }
     fn GetCurrentHwProfileA(
         &self,
         lp_hw_profile_info: MutPtr<HW_PROFILE_INFOA>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetCurrentHwProfileA")
     }
     fn GetCurrentHwProfileW(
         &self,
         lp_hw_profile_info: MutPtr<HW_PROFILE_INFOW>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetCurrentHwProfileW")
     }
     fn GetFeatureEnabledState(
         &self,
         feature_id: u32,
         change_time: FEATURE_CHANGE_TIME,
     ) -> FEATURE_ENABLED_STATE {
-        todo!()
+        todo!("GetFeatureEnabledState")
     }
     fn GetFeatureVariant(
         &self,
@@ -5079,7 +5079,7 @@ pub trait Api {
         payload_id: MutPtr<u32>,
         has_notification: MutPtr<super::super::Foundation::BOOL>,
     ) -> u32 {
-        todo!()
+        todo!("GetFeatureVariant")
     }
     fn GetFirmwareEnvironmentVariableA(
         &self,
@@ -5088,7 +5088,7 @@ pub trait Api {
         p_buffer: MutPtr<::core::ffi::c_void>,
         n_size: u32,
     ) -> u32 {
-        todo!()
+        todo!("GetFirmwareEnvironmentVariableA")
     }
     fn GetFirmwareEnvironmentVariableExA(
         &self,
@@ -5098,7 +5098,7 @@ pub trait Api {
         n_size: u32,
         pdw_attribubutes: MutPtr<u32>,
     ) -> u32 {
-        todo!()
+        todo!("GetFirmwareEnvironmentVariableExA")
     }
     fn GetFirmwareEnvironmentVariableExW(
         &self,
@@ -5108,7 +5108,7 @@ pub trait Api {
         n_size: u32,
         pdw_attribubutes: MutPtr<u32>,
     ) -> u32 {
-        todo!()
+        todo!("GetFirmwareEnvironmentVariableExW")
     }
     fn GetFirmwareEnvironmentVariableW(
         &self,
@@ -5117,7 +5117,7 @@ pub trait Api {
         p_buffer: MutPtr<::core::ffi::c_void>,
         n_size: u32,
     ) -> u32 {
-        todo!()
+        todo!("GetFirmwareEnvironmentVariableW")
     }
     fn GetPrivateProfileIntA(
         &self,
@@ -5126,7 +5126,7 @@ pub trait Api {
         n_default: i32,
         lp_file_name: crate::core::PCSTR,
     ) -> u32 {
-        todo!()
+        todo!("GetPrivateProfileIntA")
     }
     fn GetPrivateProfileIntW(
         &self,
@@ -5135,7 +5135,7 @@ pub trait Api {
         n_default: i32,
         lp_file_name: crate::core::PCWSTR,
     ) -> u32 {
-        todo!()
+        todo!("GetPrivateProfileIntW")
     }
     fn GetPrivateProfileSectionA(
         &self,
@@ -5144,7 +5144,7 @@ pub trait Api {
         n_size: u32,
         lp_file_name: crate::core::PCSTR,
     ) -> u32 {
-        todo!()
+        todo!("GetPrivateProfileSectionA")
     }
     fn GetPrivateProfileSectionNamesA(
         &self,
@@ -5152,7 +5152,7 @@ pub trait Api {
         n_size: u32,
         lp_file_name: crate::core::PCSTR,
     ) -> u32 {
-        todo!()
+        todo!("GetPrivateProfileSectionNamesA")
     }
     fn GetPrivateProfileSectionNamesW(
         &self,
@@ -5160,7 +5160,7 @@ pub trait Api {
         n_size: u32,
         lp_file_name: crate::core::PCWSTR,
     ) -> u32 {
-        todo!()
+        todo!("GetPrivateProfileSectionNamesW")
     }
     fn GetPrivateProfileSectionW(
         &self,
@@ -5169,7 +5169,7 @@ pub trait Api {
         n_size: u32,
         lp_file_name: crate::core::PCWSTR,
     ) -> u32 {
-        todo!()
+        todo!("GetPrivateProfileSectionW")
     }
     fn GetPrivateProfileStringA(
         &self,
@@ -5180,7 +5180,7 @@ pub trait Api {
         n_size: u32,
         lp_file_name: crate::core::PCSTR,
     ) -> u32 {
-        todo!()
+        todo!("GetPrivateProfileStringA")
     }
     fn GetPrivateProfileStringW(
         &self,
@@ -5191,7 +5191,7 @@ pub trait Api {
         n_size: u32,
         lp_file_name: crate::core::PCWSTR,
     ) -> u32 {
-        todo!()
+        todo!("GetPrivateProfileStringW")
     }
     fn GetPrivateProfileStructA(
         &self,
@@ -5201,7 +5201,7 @@ pub trait Api {
         u_size_struct: u32,
         sz_file: crate::core::PCSTR,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetPrivateProfileStructA")
     }
     fn GetPrivateProfileStructW(
         &self,
@@ -5211,7 +5211,7 @@ pub trait Api {
         u_size_struct: u32,
         sz_file: crate::core::PCWSTR,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetPrivateProfileStructW")
     }
     fn GetProfileIntA(
         &self,
@@ -5219,7 +5219,7 @@ pub trait Api {
         lp_key_name: crate::core::PCSTR,
         n_default: i32,
     ) -> u32 {
-        todo!()
+        todo!("GetProfileIntA")
     }
     fn GetProfileIntW(
         &self,
@@ -5227,7 +5227,7 @@ pub trait Api {
         lp_key_name: crate::core::PCWSTR,
         n_default: i32,
     ) -> u32 {
-        todo!()
+        todo!("GetProfileIntW")
     }
     fn GetProfileSectionA(
         &self,
@@ -5235,7 +5235,7 @@ pub trait Api {
         lp_returned_string: crate::core::PSTR,
         n_size: u32,
     ) -> u32 {
-        todo!()
+        todo!("GetProfileSectionA")
     }
     fn GetProfileSectionW(
         &self,
@@ -5243,7 +5243,7 @@ pub trait Api {
         lp_returned_string: crate::core::PWSTR,
         n_size: u32,
     ) -> u32 {
-        todo!()
+        todo!("GetProfileSectionW")
     }
     fn GetProfileStringA(
         &self,
@@ -5253,7 +5253,7 @@ pub trait Api {
         lp_returned_string: crate::core::PSTR,
         n_size: u32,
     ) -> u32 {
-        todo!()
+        todo!("GetProfileStringA")
     }
     fn GetProfileStringW(
         &self,
@@ -5263,31 +5263,31 @@ pub trait Api {
         lp_returned_string: crate::core::PWSTR,
         n_size: u32,
     ) -> u32 {
-        todo!()
+        todo!("GetProfileStringW")
     }
     fn GetSystemRegistryQuota(
         &self,
         pdw_quota_allowed: MutPtr<u32>,
         pdw_quota_used: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetSystemRegistryQuota")
     }
     fn GetThreadEnabledXStateFeatures(&self) -> u64 {
-        todo!()
+        todo!("GetThreadEnabledXStateFeatures")
     }
     fn GetUserNameA(
         &self,
         lp_buffer: crate::core::PSTR,
         pcb_buffer: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetUserNameA")
     }
     fn GetUserNameW(
         &self,
         lp_buffer: crate::core::PWSTR,
         pcb_buffer: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetUserNameW")
     }
     fn GetVersionFromFileA(
         &self,
@@ -5296,7 +5296,7 @@ pub trait Api {
         pdw_ls_ver: MutPtr<u32>,
         b_version: super::super::Foundation::BOOL,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("GetVersionFromFileA")
     }
     fn GetVersionFromFileExA(
         &self,
@@ -5305,7 +5305,7 @@ pub trait Api {
         pdw_ls_ver: MutPtr<u32>,
         b_version: super::super::Foundation::BOOL,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("GetVersionFromFileExA")
     }
     fn GetVersionFromFileExW(
         &self,
@@ -5314,7 +5314,7 @@ pub trait Api {
         pdw_ls_ver: MutPtr<u32>,
         b_version: super::super::Foundation::BOOL,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("GetVersionFromFileExW")
     }
     fn GetVersionFromFileW(
         &self,
@@ -5323,92 +5323,92 @@ pub trait Api {
         pdw_ls_ver: MutPtr<u32>,
         b_version: super::super::Foundation::BOOL,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("GetVersionFromFileW")
     }
     fn GlobalCompact(&self, dw_min_free: u32) -> PtrRepr {
-        todo!()
+        todo!("GlobalCompact")
     }
     fn GlobalFix(&self, h_mem: PtrDiffRepr) {
-        todo!()
+        todo!("GlobalFix")
     }
     fn GlobalUnWire(&self, h_mem: PtrDiffRepr) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GlobalUnWire")
     }
     fn GlobalUnfix(&self, h_mem: PtrDiffRepr) {
-        todo!()
+        todo!("GlobalUnfix")
     }
     fn GlobalWire(&self, h_mem: PtrDiffRepr) -> MutPtr<::core::ffi::c_void> {
-        todo!()
+        todo!("GlobalWire")
     }
     fn IMPGetIMEA(
         &self,
         param_0: super::super::Foundation::HWND,
         param_1: MutPtr<IMEPROA>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("IMPGetIMEA")
     }
     fn IMPGetIMEW(
         &self,
         param_0: super::super::Foundation::HWND,
         param_1: MutPtr<IMEPROW>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("IMPGetIMEW")
     }
     fn IMPQueryIMEA(&self, param_0: MutPtr<IMEPROA>) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("IMPQueryIMEA")
     }
     fn IMPQueryIMEW(&self, param_0: MutPtr<IMEPROW>) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("IMPQueryIMEW")
     }
     fn IMPSetIMEA(
         &self,
         param_0: super::super::Foundation::HWND,
         param_1: MutPtr<IMEPROA>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("IMPSetIMEA")
     }
     fn IMPSetIMEW(
         &self,
         param_0: super::super::Foundation::HWND,
         param_1: MutPtr<IMEPROW>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("IMPSetIMEW")
     }
     fn IsApiSetImplemented(&self, contract: crate::core::PCSTR) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("IsApiSetImplemented")
     }
     fn IsBadHugeReadPtr(
         &self,
         lp: ConstPtr<::core::ffi::c_void>,
         ucb: PtrRepr,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("IsBadHugeReadPtr")
     }
     fn IsBadHugeWritePtr(
         &self,
         lp: ConstPtr<::core::ffi::c_void>,
         ucb: PtrRepr,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("IsBadHugeWritePtr")
     }
     fn IsNTAdmin(
         &self,
         dw_reserved: u32,
         lpdw_reserved: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("IsNTAdmin")
     }
     fn IsNativeVhdBoot(
         &self,
         native_vhd_boot: MutPtr<super::super::Foundation::BOOL>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("IsNativeVhdBoot")
     }
     fn IsTokenUntrusted(
         &self,
         token_handle: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("IsTokenUntrusted")
     }
     fn LaunchINFSectionExW(
         &self,
@@ -5417,7 +5417,7 @@ pub trait Api {
         psz_parms: crate::core::PCWSTR,
         n_show: i32,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("LaunchINFSectionExW")
     }
     fn LaunchINFSectionW(
         &self,
@@ -5426,28 +5426,28 @@ pub trait Api {
         psz_params: crate::core::PWSTR,
         n_show: i32,
     ) -> i32 {
-        todo!()
+        todo!("LaunchINFSectionW")
     }
     fn LocalCompact(&self, u_min_free: u32) -> PtrRepr {
-        todo!()
+        todo!("LocalCompact")
     }
     fn LocalShrink(&self, h_mem: PtrDiffRepr, cb_new_size: u32) -> PtrRepr {
-        todo!()
+        todo!("LocalShrink")
     }
     fn MulDiv(&self, n_number: i32, n_numerator: i32, n_denominator: i32) -> i32 {
-        todo!()
+        todo!("MulDiv")
     }
     fn NeedReboot(&self, dw_reboot_check: u32) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("NeedReboot")
     }
     fn NeedRebootInit(&self) -> u32 {
-        todo!()
+        todo!("NeedRebootInit")
     }
     fn NtClose(
         &self,
         handle: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::NTSTATUS {
-        todo!()
+        todo!("NtClose")
     }
     fn NtDeviceIoControlFile(
         &self,
@@ -5462,7 +5462,7 @@ pub trait Api {
         output_buffer: MutPtr<::core::ffi::c_void>,
         output_buffer_length: u32,
     ) -> super::super::Foundation::NTSTATUS {
-        todo!()
+        todo!("NtDeviceIoControlFile")
     }
     fn NtNotifyChangeMultipleKeys(
         &self,
@@ -5479,7 +5479,7 @@ pub trait Api {
         buffer_size: u32,
         asynchronous: super::super::Foundation::BOOLEAN,
     ) -> super::super::Foundation::NTSTATUS {
-        todo!()
+        todo!("NtNotifyChangeMultipleKeys")
     }
     fn NtOpenFile(
         &self,
@@ -5490,7 +5490,7 @@ pub trait Api {
         share_access: u32,
         open_options: u32,
     ) -> super::super::Foundation::NTSTATUS {
-        todo!()
+        todo!("NtOpenFile")
     }
     fn NtQueryMultipleValueKey(
         &self,
@@ -5501,7 +5501,7 @@ pub trait Api {
         buffer_length: MutPtr<u32>,
         required_buffer_length: MutPtr<u32>,
     ) -> super::super::Foundation::NTSTATUS {
-        todo!()
+        todo!("NtQueryMultipleValueKey")
     }
     fn NtQueryObject(
         &self,
@@ -5511,7 +5511,7 @@ pub trait Api {
         object_information_length: u32,
         return_length: MutPtr<u32>,
     ) -> super::super::Foundation::NTSTATUS {
-        todo!()
+        todo!("NtQueryObject")
     }
     fn NtQuerySystemInformation(
         &self,
@@ -5520,10 +5520,10 @@ pub trait Api {
         system_information_length: u32,
         return_length: MutPtr<u32>,
     ) -> super::super::Foundation::NTSTATUS {
-        todo!()
+        todo!("NtQuerySystemInformation")
     }
     fn NtQuerySystemTime(&self, system_time: MutPtr<i64>) -> super::super::Foundation::NTSTATUS {
-        todo!()
+        todo!("NtQuerySystemTime")
     }
     fn NtQueryTimerResolution(
         &self,
@@ -5531,14 +5531,14 @@ pub trait Api {
         minimum_time: MutPtr<u32>,
         current_time: MutPtr<u32>,
     ) -> super::super::Foundation::NTSTATUS {
-        todo!()
+        todo!("NtQueryTimerResolution")
     }
     fn NtRenameKey(
         &self,
         key_handle: super::super::Foundation::HANDLE,
         new_name: ConstPtr<super::super::Foundation::UNICODE_STRING>,
     ) -> super::super::Foundation::NTSTATUS {
-        todo!()
+        todo!("NtRenameKey")
     }
     fn NtSetInformationKey(
         &self,
@@ -5547,7 +5547,7 @@ pub trait Api {
         key_set_information: ConstPtr<::core::ffi::c_void>,
         key_set_information_length: u32,
     ) -> super::super::Foundation::NTSTATUS {
-        todo!()
+        todo!("NtSetInformationKey")
     }
     fn NtWaitForSingleObject(
         &self,
@@ -5555,7 +5555,7 @@ pub trait Api {
         alertable: super::super::Foundation::BOOLEAN,
         timeout: MutPtr<i64>,
     ) -> super::super::Foundation::NTSTATUS {
-        todo!()
+        todo!("NtWaitForSingleObject")
     }
     fn OpenINFEngineA(
         &self,
@@ -5565,7 +5565,7 @@ pub trait Api {
         ph_inf: MutPtr<ConstPtr<::core::ffi::c_void>>,
         pv_reserved: MutPtr<::core::ffi::c_void>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("OpenINFEngineA")
     }
     fn OpenINFEngineW(
         &self,
@@ -5575,7 +5575,7 @@ pub trait Api {
         ph_inf: MutPtr<ConstPtr<::core::ffi::c_void>>,
         pv_reserved: MutPtr<::core::ffi::c_void>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("OpenINFEngineW")
     }
     fn OpenMutexA(
         &self,
@@ -5583,7 +5583,7 @@ pub trait Api {
         b_inherit_handle: super::super::Foundation::BOOL,
         lp_name: crate::core::PCSTR,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("OpenMutexA")
     }
     fn OpenSemaphoreA(
         &self,
@@ -5591,7 +5591,7 @@ pub trait Api {
         b_inherit_handle: super::super::Foundation::BOOL,
         lp_name: crate::core::PCSTR,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("OpenSemaphoreA")
     }
     fn OpenWaitableTimerA(
         &self,
@@ -5599,20 +5599,20 @@ pub trait Api {
         b_inherit_handle: super::super::Foundation::BOOL,
         lp_timer_name: crate::core::PCSTR,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("OpenWaitableTimerA")
     }
     fn QueryAuxiliaryCounterFrequency(
         &self,
         lp_auxiliary_counter_frequency: MutPtr<u64>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("QueryAuxiliaryCounterFrequency")
     }
     fn QueryIdleProcessorCycleTime(
         &self,
         buffer_length: MutPtr<u32>,
         processor_idle_cycle_time: MutPtr<u64>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("QueryIdleProcessorCycleTime")
     }
     fn QueryIdleProcessorCycleTimeEx(
         &self,
@@ -5620,42 +5620,42 @@ pub trait Api {
         buffer_length: MutPtr<u32>,
         processor_idle_cycle_time: MutPtr<u64>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("QueryIdleProcessorCycleTimeEx")
     }
     fn QueryInterruptTime(&self, lp_interrupt_time: MutPtr<u64>) {
-        todo!()
+        todo!("QueryInterruptTime")
     }
     fn QueryInterruptTimePrecise(&self, lp_interrupt_time_precise: MutPtr<u64>) {
-        todo!()
+        todo!("QueryInterruptTimePrecise")
     }
     fn QueryProcessCycleTime(
         &self,
         process_handle: super::super::Foundation::HANDLE,
         cycle_time: MutPtr<u64>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("QueryProcessCycleTime")
     }
     fn QueryThreadCycleTime(
         &self,
         thread_handle: super::super::Foundation::HANDLE,
         cycle_time: MutPtr<u64>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("QueryThreadCycleTime")
     }
     fn QueryUnbiasedInterruptTime(
         &self,
         unbiased_time: MutPtr<u64>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("QueryUnbiasedInterruptTime")
     }
     fn QueryUnbiasedInterruptTimePrecise(&self, lp_unbiased_interrupt_time_precise: MutPtr<u64>) {
-        todo!()
+        todo!("QueryUnbiasedInterruptTimePrecise")
     }
     fn RaiseCustomSystemEventTrigger(
         &self,
         custom_system_event_trigger_config: ConstPtr<CUSTOM_SYSTEM_EVENT_TRIGGER_CONFIG>,
     ) -> u32 {
-        todo!()
+        todo!("RaiseCustomSystemEventTrigger")
     }
     fn RebootCheckOnInstallA(
         &self,
@@ -5664,7 +5664,7 @@ pub trait Api {
         psz_sec: crate::core::PCSTR,
         dw_reserved: u32,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("RebootCheckOnInstallA")
     }
     fn RebootCheckOnInstallW(
         &self,
@@ -5673,10 +5673,10 @@ pub trait Api {
         psz_sec: crate::core::PCWSTR,
         dw_reserved: u32,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("RebootCheckOnInstallW")
     }
     fn RecordFeatureError(&self, feature_id: u32, error: ConstPtr<FEATURE_ERROR>) {
-        todo!()
+        todo!("RecordFeatureError")
     }
     fn RecordFeatureUsage(
         &self,
@@ -5685,7 +5685,7 @@ pub trait Api {
         addend: u32,
         origin_name: crate::core::PCSTR,
     ) {
-        todo!()
+        todo!("RecordFeatureUsage")
     }
     fn RegInstallA(
         &self,
@@ -5693,7 +5693,7 @@ pub trait Api {
         psz_section: crate::core::PCSTR,
         pst_table: ConstPtr<STRTABLEA>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("RegInstallA")
     }
     fn RegInstallW(
         &self,
@@ -5701,7 +5701,7 @@ pub trait Api {
         psz_section: crate::core::PCWSTR,
         pst_table: ConstPtr<STRTABLEW>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("RegInstallW")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Registry'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -5711,7 +5711,7 @@ pub trait Api {
         psz_title_string: crate::core::PCSTR,
         hk_bckup_key: super::Registry::HKEY,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("RegRestoreAllA")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Registry'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -5721,7 +5721,7 @@ pub trait Api {
         psz_title_string: crate::core::PCWSTR,
         hk_bckup_key: super::Registry::HKEY,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("RegRestoreAllW")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Registry'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -5735,7 +5735,7 @@ pub trait Api {
         pcsz_value_name: crate::core::PCSTR,
         dw_flags: u32,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("RegSaveRestoreA")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Registry'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -5749,7 +5749,7 @@ pub trait Api {
         h_hkcu_back_key: super::Registry::HKEY,
         dw_flags: u32,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("RegSaveRestoreOnINFA")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Registry'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -5763,7 +5763,7 @@ pub trait Api {
         h_hkcu_back_key: super::Registry::HKEY,
         dw_flags: u32,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("RegSaveRestoreOnINFW")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Registry'*"]
     #[cfg(dummy_option_that_does_not_exist)]
@@ -5777,7 +5777,7 @@ pub trait Api {
         pcsz_value_name: crate::core::PCWSTR,
         dw_flags: u32,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("RegSaveRestoreW")
     }
     fn ReplacePartitionUnit(
         &self,
@@ -5785,13 +5785,13 @@ pub trait Api {
         spare_partition: crate::core::PCWSTR,
         flags: u32,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("ReplacePartitionUnit")
     }
     fn RequestDeviceWakeup(
         &self,
         h_device: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("RequestDeviceWakeup")
     }
     fn RtlAnsiStringToUnicodeString(
         &self,
@@ -5799,7 +5799,7 @@ pub trait Api {
         source_string: MutPtr<super::Kernel::STRING>,
         allocate_destination_string: super::super::Foundation::BOOLEAN,
     ) -> super::super::Foundation::NTSTATUS {
-        todo!()
+        todo!("RtlAnsiStringToUnicodeString")
     }
     fn RtlCharToInteger(
         &self,
@@ -5807,57 +5807,57 @@ pub trait Api {
         base: u32,
         value: MutPtr<u32>,
     ) -> super::super::Foundation::NTSTATUS {
-        todo!()
+        todo!("RtlCharToInteger")
     }
     fn RtlFreeAnsiString(&self, ansi_string: MutPtr<super::Kernel::STRING>) {
-        todo!()
+        todo!("RtlFreeAnsiString")
     }
     fn RtlFreeOemString(&self, oem_string: MutPtr<super::Kernel::STRING>) {
-        todo!()
+        todo!("RtlFreeOemString")
     }
     fn RtlFreeUnicodeString(
         &self,
         unicode_string: MutPtr<super::super::Foundation::UNICODE_STRING>,
     ) {
-        todo!()
+        todo!("RtlFreeUnicodeString")
     }
     fn RtlGetReturnAddressHijackTarget(&self) -> PtrRepr {
-        todo!()
+        todo!("RtlGetReturnAddressHijackTarget")
     }
     fn RtlInitAnsiString(
         &self,
         destination_string: MutPtr<super::Kernel::STRING>,
         source_string: MutPtr<i8>,
     ) {
-        todo!()
+        todo!("RtlInitAnsiString")
     }
     fn RtlInitAnsiStringEx(
         &self,
         destination_string: MutPtr<super::Kernel::STRING>,
         source_string: MutPtr<i8>,
     ) -> super::super::Foundation::NTSTATUS {
-        todo!()
+        todo!("RtlInitAnsiStringEx")
     }
     fn RtlInitString(
         &self,
         destination_string: MutPtr<super::Kernel::STRING>,
         source_string: MutPtr<i8>,
     ) {
-        todo!()
+        todo!("RtlInitString")
     }
     fn RtlInitStringEx(
         &self,
         destination_string: MutPtr<super::Kernel::STRING>,
         source_string: MutPtr<i8>,
     ) -> super::super::Foundation::NTSTATUS {
-        todo!()
+        todo!("RtlInitStringEx")
     }
     fn RtlInitUnicodeString(
         &self,
         destination_string: MutPtr<super::super::Foundation::UNICODE_STRING>,
         source_string: crate::core::PCWSTR,
     ) {
-        todo!()
+        todo!("RtlInitUnicodeString")
     }
     fn RtlIsNameLegalDOS8Dot3(
         &self,
@@ -5865,27 +5865,27 @@ pub trait Api {
         oem_name: MutPtr<super::Kernel::STRING>,
         name_contains_spaces: MutPtr<super::super::Foundation::BOOLEAN>,
     ) -> super::super::Foundation::BOOLEAN {
-        todo!()
+        todo!("RtlIsNameLegalDOS8Dot3")
     }
     fn RtlLocalTimeToSystemTime(
         &self,
         local_time: MutPtr<i64>,
         system_time: MutPtr<i64>,
     ) -> super::super::Foundation::NTSTATUS {
-        todo!()
+        todo!("RtlLocalTimeToSystemTime")
     }
     fn RtlRaiseCustomSystemEventTrigger(
         &self,
         trigger_config: ConstPtr<CUSTOM_SYSTEM_EVENT_TRIGGER_CONFIG>,
     ) -> u32 {
-        todo!()
+        todo!("RtlRaiseCustomSystemEventTrigger")
     }
     fn RtlTimeToSecondsSince1970(
         &self,
         time: MutPtr<i64>,
         elapsed_seconds: MutPtr<u32>,
     ) -> super::super::Foundation::BOOLEAN {
-        todo!()
+        todo!("RtlTimeToSecondsSince1970")
     }
     fn RtlUnicodeStringToAnsiString(
         &self,
@@ -5893,7 +5893,7 @@ pub trait Api {
         source_string: MutPtr<super::super::Foundation::UNICODE_STRING>,
         allocate_destination_string: super::super::Foundation::BOOLEAN,
     ) -> super::super::Foundation::NTSTATUS {
-        todo!()
+        todo!("RtlUnicodeStringToAnsiString")
     }
     fn RtlUnicodeStringToOemString(
         &self,
@@ -5901,7 +5901,7 @@ pub trait Api {
         source_string: MutPtr<super::super::Foundation::UNICODE_STRING>,
         allocate_destination_string: super::super::Foundation::BOOLEAN,
     ) -> super::super::Foundation::NTSTATUS {
-        todo!()
+        todo!("RtlUnicodeStringToOemString")
     }
     fn RtlUnicodeToMultiByteSize(
         &self,
@@ -5909,10 +5909,10 @@ pub trait Api {
         unicode_string: crate::core::PCWSTR,
         bytes_in_unicode_string: u32,
     ) -> super::super::Foundation::NTSTATUS {
-        todo!()
+        todo!("RtlUnicodeToMultiByteSize")
     }
     fn RtlUniform(&self, seed: MutPtr<u32>) -> u32 {
-        todo!()
+        todo!("RtlUniform")
     }
     fn RunSetupCommandA(
         &self,
@@ -5925,7 +5925,7 @@ pub trait Api {
         dw_flags: u32,
         pv_reserved: MutPtr<::core::ffi::c_void>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("RunSetupCommandA")
     }
     fn RunSetupCommandW(
         &self,
@@ -5938,27 +5938,27 @@ pub trait Api {
         dw_flags: u32,
         pv_reserved: MutPtr<::core::ffi::c_void>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("RunSetupCommandW")
     }
     fn SendIMEMessageExA(
         &self,
         param_0: super::super::Foundation::HWND,
         param_1: super::super::Foundation::LPARAM,
     ) -> super::super::Foundation::LRESULT {
-        todo!()
+        todo!("SendIMEMessageExA")
     }
     fn SendIMEMessageExW(
         &self,
         param_0: super::super::Foundation::HWND,
         param_1: super::super::Foundation::LPARAM,
     ) -> super::super::Foundation::LRESULT {
-        todo!()
+        todo!("SendIMEMessageExW")
     }
     fn SetEnvironmentStringsA(
         &self,
         new_environment: crate::core::PCSTR,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetEnvironmentStringsA")
     }
     fn SetFirmwareEnvironmentVariableA(
         &self,
@@ -5967,7 +5967,7 @@ pub trait Api {
         p_value: ConstPtr<::core::ffi::c_void>,
         n_size: u32,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetFirmwareEnvironmentVariableA")
     }
     fn SetFirmwareEnvironmentVariableExA(
         &self,
@@ -5977,7 +5977,7 @@ pub trait Api {
         n_size: u32,
         dw_attributes: u32,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetFirmwareEnvironmentVariableExA")
     }
     fn SetFirmwareEnvironmentVariableExW(
         &self,
@@ -5987,7 +5987,7 @@ pub trait Api {
         n_size: u32,
         dw_attributes: u32,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetFirmwareEnvironmentVariableExW")
     }
     fn SetFirmwareEnvironmentVariableW(
         &self,
@@ -5996,23 +5996,23 @@ pub trait Api {
         p_value: ConstPtr<::core::ffi::c_void>,
         n_size: u32,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetFirmwareEnvironmentVariableW")
     }
     fn SetHandleCount(&self, u_number: u32) -> u32 {
-        todo!()
+        todo!("SetHandleCount")
     }
     fn SetMessageWaitingIndicator(
         &self,
         h_msg_indicator: super::super::Foundation::HANDLE,
         ul_msg_count: u32,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("SetMessageWaitingIndicator")
     }
     fn SetPerUserSecValuesA(&self, p_per_user: MutPtr<PERUSERSECTIONA>) -> crate::core::HRESULT {
-        todo!()
+        todo!("SetPerUserSecValuesA")
     }
     fn SetPerUserSecValuesW(&self, p_per_user: MutPtr<PERUSERSECTIONW>) -> crate::core::HRESULT {
-        todo!()
+        todo!("SetPerUserSecValuesW")
     }
     fn SignalObjectAndWait(
         &self,
@@ -6021,7 +6021,7 @@ pub trait Api {
         dw_milliseconds: u32,
         b_alertable: super::super::Foundation::BOOL,
     ) -> u32 {
-        todo!()
+        todo!("SignalObjectAndWait")
     }
     fn SubscribeFeatureStateChangeNotification(
         &self,
@@ -6029,7 +6029,7 @@ pub trait Api {
         callback: PFEATURE_STATE_CHANGE_CALLBACK,
         context: ConstPtr<::core::ffi::c_void>,
     ) {
-        todo!()
+        todo!("SubscribeFeatureStateChangeNotification")
     }
     fn TranslateInfStringA(
         &self,
@@ -6042,7 +6042,7 @@ pub trait Api {
         pdw_required_size: MutPtr<u32>,
         pv_reserved: MutPtr<::core::ffi::c_void>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("TranslateInfStringA")
     }
     fn TranslateInfStringExA(
         &self,
@@ -6055,7 +6055,7 @@ pub trait Api {
         pdw_required_size: MutPtr<u32>,
         pv_reserved: MutPtr<::core::ffi::c_void>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("TranslateInfStringExA")
     }
     fn TranslateInfStringExW(
         &self,
@@ -6068,7 +6068,7 @@ pub trait Api {
         pdw_required_size: MutPtr<u32>,
         pv_reserved: MutPtr<::core::ffi::c_void>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("TranslateInfStringExW")
     }
     fn TranslateInfStringW(
         &self,
@@ -6081,13 +6081,13 @@ pub trait Api {
         pdw_required_size: MutPtr<u32>,
         pv_reserved: MutPtr<::core::ffi::c_void>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("TranslateInfStringW")
     }
     fn UnsubscribeFeatureStateChangeNotification(
         &self,
         subscription: FEATURE_STATE_CHANGE_SUBSCRIPTION,
     ) {
-        todo!()
+        todo!("UnsubscribeFeatureStateChangeNotification")
     }
     fn UserInstStubWrapperA(
         &self,
@@ -6096,7 +6096,7 @@ pub trait Api {
         psz_parms: crate::core::PCSTR,
         n_show: i32,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("UserInstStubWrapperA")
     }
     fn UserInstStubWrapperW(
         &self,
@@ -6105,7 +6105,7 @@ pub trait Api {
         psz_parms: crate::core::PCWSTR,
         n_show: i32,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("UserInstStubWrapperW")
     }
     fn UserUnInstStubWrapperA(
         &self,
@@ -6114,7 +6114,7 @@ pub trait Api {
         psz_parms: crate::core::PCSTR,
         n_show: i32,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("UserUnInstStubWrapperA")
     }
     fn UserUnInstStubWrapperW(
         &self,
@@ -6123,23 +6123,23 @@ pub trait Api {
         psz_parms: crate::core::PCWSTR,
         n_show: i32,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("UserUnInstStubWrapperW")
     }
     fn WINNLSEnableIME(
         &self,
         param_0: super::super::Foundation::HWND,
         param_1: super::super::Foundation::BOOL,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("WINNLSEnableIME")
     }
     fn WINNLSGetEnableStatus(
         &self,
         param_0: super::super::Foundation::HWND,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("WINNLSGetEnableStatus")
     }
     fn WINNLSGetIMEHotkey(&self, param_0: super::super::Foundation::HWND) -> u32 {
-        todo!()
+        todo!("WINNLSGetIMEHotkey")
     }
     fn WldpGetLockdownPolicy(
         &self,
@@ -6147,7 +6147,7 @@ pub trait Api {
         lockdown_state: MutPtr<u32>,
         lockdown_flags: u32,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("WldpGetLockdownPolicy")
     }
     fn WldpIsClassInApprovedList(
         &self,
@@ -6156,13 +6156,13 @@ pub trait Api {
         is_approved: MutPtr<super::super::Foundation::BOOL>,
         optional_flags: u32,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("WldpIsClassInApprovedList")
     }
     fn WldpIsDynamicCodePolicyEnabled(
         &self,
         is_enabled: MutPtr<super::super::Foundation::BOOL>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("WldpIsDynamicCodePolicyEnabled")
     }
     fn WldpQueryDeviceSecurityInformation(
         &self,
@@ -6170,7 +6170,7 @@ pub trait Api {
         information_length: u32,
         return_length: MutPtr<u32>,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("WldpQueryDeviceSecurityInformation")
     }
     fn WldpQueryDynamicCodeTrust(
         &self,
@@ -6178,13 +6178,13 @@ pub trait Api {
         base_image: ConstPtr<::core::ffi::c_void>,
         image_size: u32,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("WldpQueryDynamicCodeTrust")
     }
     fn WldpSetDynamicCodeTrust(
         &self,
         file_handle: super::super::Foundation::HANDLE,
     ) -> crate::core::HRESULT {
-        todo!()
+        todo!("WldpSetDynamicCodeTrust")
     }
     fn WritePrivateProfileSectionA(
         &self,
@@ -6192,7 +6192,7 @@ pub trait Api {
         lp_string: crate::core::PCSTR,
         lp_file_name: crate::core::PCSTR,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("WritePrivateProfileSectionA")
     }
     fn WritePrivateProfileSectionW(
         &self,
@@ -6200,7 +6200,7 @@ pub trait Api {
         lp_string: crate::core::PCWSTR,
         lp_file_name: crate::core::PCWSTR,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("WritePrivateProfileSectionW")
     }
     fn WritePrivateProfileStringA(
         &self,
@@ -6209,7 +6209,7 @@ pub trait Api {
         lp_string: crate::core::PCSTR,
         lp_file_name: crate::core::PCSTR,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("WritePrivateProfileStringA")
     }
     fn WritePrivateProfileStringW(
         &self,
@@ -6218,7 +6218,7 @@ pub trait Api {
         lp_string: crate::core::PCWSTR,
         lp_file_name: crate::core::PCWSTR,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("WritePrivateProfileStringW")
     }
     fn WritePrivateProfileStructA(
         &self,
@@ -6228,7 +6228,7 @@ pub trait Api {
         u_size_struct: u32,
         sz_file: crate::core::PCSTR,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("WritePrivateProfileStructA")
     }
     fn WritePrivateProfileStructW(
         &self,
@@ -6238,21 +6238,21 @@ pub trait Api {
         u_size_struct: u32,
         sz_file: crate::core::PCWSTR,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("WritePrivateProfileStructW")
     }
     fn WriteProfileSectionA(
         &self,
         lp_app_name: crate::core::PCSTR,
         lp_string: crate::core::PCSTR,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("WriteProfileSectionA")
     }
     fn WriteProfileSectionW(
         &self,
         lp_app_name: crate::core::PCWSTR,
         lp_string: crate::core::PCWSTR,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("WriteProfileSectionW")
     }
     fn WriteProfileStringA(
         &self,
@@ -6260,7 +6260,7 @@ pub trait Api {
         lp_key_name: crate::core::PCSTR,
         lp_string: crate::core::PCSTR,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("WriteProfileStringA")
     }
     fn WriteProfileStringW(
         &self,
@@ -6268,71 +6268,71 @@ pub trait Api {
         lp_key_name: crate::core::PCWSTR,
         lp_string: crate::core::PCWSTR,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("WriteProfileStringW")
     }
     fn _hread(&self, h_file: i32, lp_buffer: MutPtr<::core::ffi::c_void>, l_bytes: i32) -> i32 {
-        todo!()
+        todo!("_hread")
     }
     fn _hwrite(&self, h_file: i32, lp_buffer: crate::core::PCSTR, l_bytes: i32) -> i32 {
-        todo!()
+        todo!("_hwrite")
     }
     fn _lclose(&self, h_file: i32) -> i32 {
-        todo!()
+        todo!("_lclose")
     }
     fn _lcreat(&self, lp_path_name: crate::core::PCSTR, i_attribute: i32) -> i32 {
-        todo!()
+        todo!("_lcreat")
     }
     fn _llseek(&self, h_file: i32, l_offset: i32, i_origin: i32) -> i32 {
-        todo!()
+        todo!("_llseek")
     }
     fn _lopen(&self, lp_path_name: crate::core::PCSTR, i_read_write: i32) -> i32 {
-        todo!()
+        todo!("_lopen")
     }
     fn _lread(&self, h_file: i32, lp_buffer: MutPtr<::core::ffi::c_void>, u_bytes: u32) -> u32 {
-        todo!()
+        todo!("_lread")
     }
     fn _lwrite(&self, h_file: i32, lp_buffer: crate::core::PCSTR, u_bytes: u32) -> u32 {
-        todo!()
+        todo!("_lwrite")
     }
     #[doc = "*Required namespaces: *"]
     #[cfg(dummy_option_that_does_not_exist)]
     fn uaw_lstrcmpW(&self, string_1: ConstPtr<u16>, string_2: ConstPtr<u16>) -> i32 {
-        todo!()
+        todo!("uaw_lstrcmpW")
     }
     #[doc = "*Required namespaces: *"]
     #[cfg(dummy_option_that_does_not_exist)]
     fn uaw_lstrcmpiW(&self, string_1: ConstPtr<u16>, string_2: ConstPtr<u16>) -> i32 {
-        todo!()
+        todo!("uaw_lstrcmpiW")
     }
     #[doc = "*Required namespaces: *"]
     #[cfg(dummy_option_that_does_not_exist)]
     fn uaw_lstrlenW(&self, string: ConstPtr<u16>) -> i32 {
-        todo!()
+        todo!("uaw_lstrlenW")
     }
     #[doc = "*Required namespaces: *"]
     #[cfg(dummy_option_that_does_not_exist)]
     fn uaw_wcschr(&self, string: ConstPtr<u16>, character: u16) -> MutPtr<u16> {
-        todo!()
+        todo!("uaw_wcschr")
     }
     #[doc = "*Required namespaces: *"]
     #[cfg(dummy_option_that_does_not_exist)]
     fn uaw_wcscpy(&self, destination: MutPtr<u16>, source: ConstPtr<u16>) -> MutPtr<u16> {
-        todo!()
+        todo!("uaw_wcscpy")
     }
     #[doc = "*Required namespaces: *"]
     #[cfg(dummy_option_that_does_not_exist)]
     fn uaw_wcsicmp(&self, string_1: ConstPtr<u16>, string_2: ConstPtr<u16>) -> i32 {
-        todo!()
+        todo!("uaw_wcsicmp")
     }
     #[doc = "*Required namespaces: *"]
     #[cfg(dummy_option_that_does_not_exist)]
     fn uaw_wcslen(&self, string: ConstPtr<u16>) -> PtrRepr {
-        todo!()
+        todo!("uaw_wcslen")
     }
     #[doc = "*Required namespaces: *"]
     #[cfg(dummy_option_that_does_not_exist)]
     fn uaw_wcsrchr(&self, string: ConstPtr<u16>, character: u16) -> MutPtr<u16> {
-        todo!()
+        todo!("uaw_wcsrchr")
     }
 }
 pub fn get_api(ctx: &crate::core::Win32Context) -> &dyn Api {

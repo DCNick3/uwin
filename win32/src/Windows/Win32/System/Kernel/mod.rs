@@ -1574,23 +1574,23 @@ impl FromIntoMemory for WNF_STATE_NAME {
 }
 pub trait Api {
     fn RtlFirstEntrySList(&self, list_head: ConstPtr<SLIST_HEADER>) -> MutPtr<SLIST_ENTRY> {
-        todo!()
+        todo!("RtlFirstEntrySList")
     }
     fn RtlInitializeSListHead(&self, list_head: MutPtr<SLIST_HEADER>) {
-        todo!()
+        todo!("RtlInitializeSListHead")
     }
     fn RtlInterlockedFlushSList(&self, list_head: MutPtr<SLIST_HEADER>) -> MutPtr<SLIST_ENTRY> {
-        todo!()
+        todo!("RtlInterlockedFlushSList")
     }
     fn RtlInterlockedPopEntrySList(&self, list_head: MutPtr<SLIST_HEADER>) -> MutPtr<SLIST_ENTRY> {
-        todo!()
+        todo!("RtlInterlockedPopEntrySList")
     }
     fn RtlInterlockedPushEntrySList(
         &self,
         list_head: MutPtr<SLIST_HEADER>,
         list_entry: MutPtr<SLIST_ENTRY>,
     ) -> MutPtr<SLIST_ENTRY> {
-        todo!()
+        todo!("RtlInterlockedPushEntrySList")
     }
     fn RtlInterlockedPushListSListEx(
         &self,
@@ -1599,10 +1599,10 @@ pub trait Api {
         list_end: MutPtr<SLIST_ENTRY>,
         count: u32,
     ) -> MutPtr<SLIST_ENTRY> {
-        todo!()
+        todo!("RtlInterlockedPushListSListEx")
     }
     fn RtlQueryDepthSList(&self, list_head: ConstPtr<SLIST_HEADER>) -> u16 {
-        todo!()
+        todo!("RtlQueryDepthSList")
     }
 }
 pub fn get_api(ctx: &crate::core::Win32Context) -> &dyn Api {

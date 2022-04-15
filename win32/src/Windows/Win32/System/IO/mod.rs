@@ -160,23 +160,23 @@ pub trait Api {
         function: LPOVERLAPPED_COMPLETION_ROUTINE,
         flags: u32,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("BindIoCompletionCallback")
     }
     fn CancelIo(&self, h_file: super::super::Foundation::HANDLE) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("CancelIo")
     }
     fn CancelIoEx(
         &self,
         h_file: super::super::Foundation::HANDLE,
         lp_overlapped: ConstPtr<OVERLAPPED>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("CancelIoEx")
     }
     fn CancelSynchronousIo(
         &self,
         h_thread: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("CancelSynchronousIo")
     }
     fn CreateIoCompletionPort(
         &self,
@@ -185,7 +185,7 @@ pub trait Api {
         completion_key: PtrRepr,
         number_of_concurrent_threads: u32,
     ) -> super::super::Foundation::HANDLE {
-        todo!()
+        todo!("CreateIoCompletionPort")
     }
     fn DeviceIoControl(
         &self,
@@ -198,7 +198,7 @@ pub trait Api {
         lp_bytes_returned: MutPtr<u32>,
         lp_overlapped: MutPtr<OVERLAPPED>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("DeviceIoControl")
     }
     fn GetOverlappedResult(
         &self,
@@ -207,7 +207,7 @@ pub trait Api {
         lp_number_of_bytes_transferred: MutPtr<u32>,
         b_wait: super::super::Foundation::BOOL,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetOverlappedResult")
     }
     fn GetOverlappedResultEx(
         &self,
@@ -217,7 +217,7 @@ pub trait Api {
         dw_milliseconds: u32,
         b_alertable: super::super::Foundation::BOOL,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetOverlappedResultEx")
     }
     fn GetQueuedCompletionStatus(
         &self,
@@ -227,7 +227,7 @@ pub trait Api {
         lp_overlapped: MutPtr<ConstPtr<OVERLAPPED>>,
         dw_milliseconds: u32,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetQueuedCompletionStatus")
     }
     fn GetQueuedCompletionStatusEx(
         &self,
@@ -238,7 +238,7 @@ pub trait Api {
         dw_milliseconds: u32,
         f_alertable: super::super::Foundation::BOOL,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("GetQueuedCompletionStatusEx")
     }
     fn PostQueuedCompletionStatus(
         &self,
@@ -247,7 +247,7 @@ pub trait Api {
         dw_completion_key: PtrRepr,
         lp_overlapped: ConstPtr<OVERLAPPED>,
     ) -> super::super::Foundation::BOOL {
-        todo!()
+        todo!("PostQueuedCompletionStatus")
     }
 }
 pub fn get_api(ctx: &crate::core::Win32Context) -> &dyn Api {
