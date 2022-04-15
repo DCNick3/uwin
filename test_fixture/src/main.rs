@@ -1,54 +1,13 @@
-use core_mem::thread_ctx::{get_thread_ctx, set_thread_ctx};
+mod r#impl;
+
+use crate::r#impl::*;
+use core_mem::thread_ctx::set_thread_ctx;
 use recompiler::memory_image::{MemoryImageItem, Protection};
 use region::Allocation;
 use rusty_x86_runtime::{CpuContext, ExtendedContext, FlatMemoryCtx, PROGRAM_IMAGE};
-use std::ffi::CStr;
 use std::io::Write;
-use std::os::raw::c_char;
 use std::sync::Arc;
 use win32::core::Win32Context;
-use win32::Win32::Foundation::HWND;
-use win32::Win32::UI::WindowsAndMessaging::{MESSAGEBOX_RESULT, MESSAGEBOX_STYLE};
-
-struct WindowsAndMessaging {}
-
-#[allow(non_snake_case)]
-impl win32::Win32::UI::WindowsAndMessaging::Api for WindowsAndMessaging {
-    fn MessageBoxA(
-        &self,
-        h_wnd: HWND,
-        lp_text: ::win32::core::PCSTR,
-        lp_caption: ::win32::core::PCSTR,
-        u_type: MESSAGEBOX_STYLE,
-    ) -> MESSAGEBOX_RESULT {
-        let memory = get_thread_ctx();
-
-        let text =
-            unsafe { CStr::from_ptr(memory.to_native_ptr(lp_text.0.repr()) as *const c_char) }
-                .to_str()
-                .unwrap();
-        let caption =
-            unsafe { CStr::from_ptr(memory.to_native_ptr(lp_caption.0.repr()) as *const c_char) }
-                .to_str()
-                .unwrap();
-
-        println!(
-            "MessageBoxA({:?}, {:?}, {:?}, {:?})",
-            h_wnd, text, caption, u_type
-        );
-
-        MESSAGEBOX_RESULT(0)
-    }
-}
-
-struct SystemInformation {}
-
-#[allow(non_snake_case)]
-impl win32::Win32::System::SystemInformation::Api for SystemInformation {
-    fn GetVersion(&self) -> u32 {
-        0x0ece0205 // (I think?) corresponds to windows 98
-    }
-}
 
 pub struct MemoryMapper {
     base_region: Allocation,
@@ -131,6 +90,15 @@ fn main() {
     context.win32.insert(
         Arc::new(SystemInformation {}) as Arc<dyn win32::Win32::System::SystemInformation::Api>
     );
+    context
+        .win32
+        .insert(Arc::new(Memory {}) as Arc<dyn win32::Win32::System::Memory::Api>);
+    context
+        .win32
+        .insert(Arc::new(LibraryLoader {}) as Arc<dyn win32::Win32::System::LibraryLoader::Api>);
+    context
+        .win32
+        .insert(Arc::new(Threading {}) as Arc<dyn win32::Win32::System::Threading::Api>);
 
     let tlb = mapper
         .map(0x1000, Protection::READ_WRITE)
