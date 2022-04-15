@@ -302,9 +302,9 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
         }
     }
 
-    // TODO: name map
+    // TODO: name map (use symbols to derive recompiled function names to ease debugging)
     pub fn get_name_for(addr: u32) -> String {
-        format!("sub_{:08x}", addr)
+        format!("bb_sub_{:08x}", addr)
     }
 
     fn get_basic_block_fun_internal(
