@@ -1,6 +1,7 @@
 use std::collections::BTreeMap;
 use std::sync::Arc;
 
+use inkwell::attributes::{Attribute, AttributeLoc};
 use inkwell::builder::Builder;
 use inkwell::context::Context;
 use inkwell::intrinsics::Intrinsic;
@@ -307,7 +308,7 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
     }
 
     fn get_basic_block_fun_internal(
-        _context: &'ctx Context,
+        context: &'ctx Context,
         module: &'a Module<'ctx>,
         types: Arc<Types<'ctx>>,
         addr: u32,
@@ -317,6 +318,18 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
             fun
         } else {
             let res = module.add_function(name.as_str(), types.bb_fn, Some(Linkage::Internal));
+            let noalias = Attribute::get_named_enum_kind_id("noalias"); // TODO: cache it somewhere or smth
+            assert_ne!(noalias, 0);
+
+            // set noalias on the context pointer and the memory pointer
+            res.add_attribute(
+                AttributeLoc::Param(0),
+                context.create_enum_attribute(noalias, 0),
+            );
+            res.add_attribute(
+                AttributeLoc::Param(1),
+                context.create_enum_attribute(noalias, 0),
+            );
             res.set_call_conventions(FASTCC_CALLING_CONVENTION);
             // TODO: I really want to attach metadata telling that this a basic block function and it's (original) address
             res
