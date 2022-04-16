@@ -32,7 +32,7 @@ pub struct LlvmBuilder<'ctx, 'a> {
     // this is for functions to be implemented by a runtime
     #[allow(unused)]
     rt_funs: &'a RuntimeHelpers<'ctx>,
-    magic_functions: &'a BTreeMap<u32, String>,
+    thunk_functions: &'a BTreeMap<u32, String>,
 }
 
 #[derive(Clone, Copy)]
@@ -159,7 +159,7 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
         module: &'a Module<'ctx>,
         types: Arc<Types<'ctx>>,
         rt_funs: &'a RuntimeHelpers<'ctx>,
-        magic_functions: &'a BTreeMap<u32, String>,
+        thunk_functions: &'a BTreeMap<u32, String>,
         indirect_bb_call: FunctionValue<'ctx>,
         basic_block_addr: u32,
     ) -> Self {
@@ -187,7 +187,7 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
 
             indirect_bb_call,
             rt_funs,
-            magic_functions,
+            thunk_functions,
         }
     }
 
@@ -363,17 +363,17 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
         call.set_tail_call(tail_call)
     }
 
-    pub fn find_magic_function(&mut self, index: u32) -> FunctionValue<'ctx> {
+    pub fn find_thunk_function(&mut self, index: u32) -> FunctionValue<'ctx> {
         let name = self
-            .magic_functions
+            .thunk_functions
             .get(&index)
-            .expect("Call to unknown magic function");
+            .expect("Call to unknown thunk function");
 
         if let Some(function) = self.module.get_function(name) {
             function
         } else {
             self.module.add_function(
-                &format!("magic_{}", name),
+                &format!("thunk_{}", name),
                 self.types.bb_fn,
                 Some(Linkage::External),
             )
@@ -755,8 +755,8 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
         // else we fail in case the binary mis-uses call or ret
     }
 
-    fn magic_call(&mut self, target: u32, _next_eip: u32) {
-        let function = self.find_magic_function(target);
+    fn thunk_call(&mut self, target: u32, _next_eip: u32) {
+        let function = self.find_thunk_function(target);
 
         let args = &[self.ctx_ptr.into(), self.mem_ptr.into()];
         self.builder.build_call(function, args, "");

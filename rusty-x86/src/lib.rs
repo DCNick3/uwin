@@ -836,7 +836,7 @@ pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) -> Control
                         {
                             unimplemented!("Far calls that are not targeting uwin magic segment")
                         }
-                        builder.magic_call(offset, ret);
+                        builder.thunk_call(offset, ret);
                     }
                     target => {
                         let target = builder.load_operand(target);
@@ -943,11 +943,11 @@ mod tests {
         fn recompile(code: &[u8]) -> Vec<u8> {
             let context = &Context::create();
             let types = llvm::backend::Types::new(context);
-            let magic_functions = &BTreeMap::new();
+            let thunk_functions = &BTreeMap::new();
 
             let code = MemoryImage::from_code_region(0x1000, code);
 
-            let module = llvm::recompile(context, types, magic_functions, &code, &[0x1000]);
+            let module = llvm::recompile(context, types, thunk_functions, &code, &[0x1000]);
 
             let target_machine = llvm::get_aarch64_target_machine();
 

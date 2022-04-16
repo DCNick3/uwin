@@ -143,7 +143,7 @@ enum BasicBlockSource {
 pub fn recompile<'ctx, 'a>(
     context: &'ctx Context,
     types: Arc<Types<'ctx>>,
-    magic_functions: &'a BTreeMap<u32, String>,
+    thunk_functions: &'a BTreeMap<u32, String>,
     image: &'a MemoryImage,
     basic_blocks: &[u32],
 ) -> Module<'ctx> {
@@ -177,7 +177,7 @@ pub fn recompile<'ctx, 'a>(
             module,
             types.clone(),
             &rt_funs,
-            magic_functions,
+            thunk_functions,
             indirect_bb_call_impl,
             address,
         );

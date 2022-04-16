@@ -123,7 +123,7 @@ pub struct LoadedProcessImage {
     pub memory: MemoryImage,
     pub modules: BTreeMap<String, (PeFile, LoadedPeInfo)>,
     pub symbols: BTreeMap<u32, ProcessImageSymbol>,
-    pub magic_functions: BTreeMap<u32, String>,
+    pub thunk_functions: BTreeMap<u32, String>,
     pub exe_entrypoint: u32,
 }
 
@@ -241,7 +241,7 @@ pub fn load_process_image(executable: PeFile, dlls: Vec<PeFile>) -> Result<Loade
         required_dlls.insert(dll, functions);
     }
 
-    let magic_function_indices = required_dlls
+    let thunk_function_indices = required_dlls
         .values()
         .flatten()
         .unique()
@@ -258,7 +258,7 @@ pub fn load_process_image(executable: PeFile, dlls: Vec<PeFile>) -> Result<Loade
             println!("STUB  {}", dll_name);
             let fns = fns
                 .iter()
-                .map(|name| (name.to_string(), *magic_function_indices.get(name).unwrap()))
+                .map(|name| (name.to_string(), *thunk_function_indices.get(name).unwrap()))
                 .collect();
 
             let stub = make_dll_stub(dll_name, &fns).unwrap();
@@ -269,7 +269,7 @@ pub fn load_process_image(executable: PeFile, dlls: Vec<PeFile>) -> Result<Loade
         }
     }
 
-    let magic_functions = magic_function_indices
+    let thunk_functions = thunk_function_indices
         .into_iter()
         .map(|(name, idx)| (idx, name))
         .collect::<BTreeMap<_, _>>();
@@ -337,7 +337,7 @@ pub fn load_process_image(executable: PeFile, dlls: Vec<PeFile>) -> Result<Loade
         memory,
         modules,
         symbols,
-        magic_functions,
+        thunk_functions,
         exe_entrypoint,
     })
 }

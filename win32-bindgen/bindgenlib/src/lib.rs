@@ -43,7 +43,7 @@ use tokens::*;
 
 pub struct GeneratedNamespace {
     pub module: String,
-    pub magic_functions: TokenStream,
+    pub thunk_functions: TokenStream,
 }
 
 pub fn gen_namespace(gen: &Gen, child_namespaces: &Vec<String>) -> GeneratedNamespace {
@@ -72,11 +72,11 @@ pub fn gen_namespace(gen: &Gen, child_namespaces: &Vec<String>) -> GeneratedName
         #api_trait
     };
 
-    let magic_functions = gen_rusty_x86_magic_functions(tree, gen);
+    let thunk_functions = gen_rusty_x86_thunk_functions(tree, gen);
 
     GeneratedNamespace {
         module: tokens.into_string(),
-        magic_functions,
+        thunk_functions,
     }
 }
 

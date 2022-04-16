@@ -254,7 +254,7 @@ fn main() {
 
     let mut trees = Vec::new();
     collect_trees(&output, root.namespace, root, &mut trees);
-    let magic_functions = trees
+    let thunk_functions = trees
         // .par_iter()
         .iter()
         .map(|tree| gen_tree(&output, root.namespace, tree))
@@ -281,8 +281,8 @@ anymap = "0.12.1"
     )
     .unwrap();
 
-    let output = std::path::PathBuf::from("rusty_x86_runtime/src/magic.rs");
-    gen_magic(&output, magic_functions);
+    let output = std::path::PathBuf::from("rusty_x86_runtime/src/thunks.rs");
+    gen_thunks(&output, thunk_functions);
 }
 
 struct TypeTreeGen<'a> {
@@ -351,17 +351,17 @@ fn gen_tree(output: &std::path::Path, _root: &'static str, tree: &TypeTreeGen) -
 
     let GeneratedNamespace {
         module: mut tokens,
-        magic_functions,
+        thunk_functions,
     } = bindgen::gen_namespace(&gen, &child_namespaces);
     fmt_tokens(tree.namespace, &mut tokens);
 
     std::fs::write(path.join("mod.rs"), tokens).unwrap();
 
-    magic_functions
+    thunk_functions
 }
 
-fn gen_magic(output: &std::path::Path, tokens: Vec<TokenStream>) {
-    // output rusty_x86 magic functions separately
+fn gen_thunks(output: &std::path::Path, tokens: Vec<TokenStream>) {
+    // output rusty_x86 thunk functions separately
     let mut tokens = quote! {
         #![allow(non_snake_case, non_camel_case_types, non_upper_case_globals, clashing_extern_declarations, clippy::all, unused_mut)]
 
@@ -378,7 +378,7 @@ fn gen_magic(output: &std::path::Path, tokens: Vec<TokenStream>) {
     }
     .into_string();
 
-    fmt_tokens("magic", &mut tokens);
+    fmt_tokens("thunks", &mut tokens);
 
     std::fs::write(output, tokens).unwrap();
 }

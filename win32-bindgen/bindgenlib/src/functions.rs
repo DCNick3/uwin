@@ -66,7 +66,7 @@ pub fn gen_function_declaration(def: &MethodDef, gen: &Gen) -> TokenStream {
     res
 }
 
-pub fn gen_magic_function(def: &MethodDef, gen: &Gen, namespace: &TokenStream) -> TokenStream {
+pub fn gen_thunk_function(def: &MethodDef, gen: &Gen, namespace: &TokenStream) -> TokenStream {
     let cfg = def.cfg();
 
     if !gen.is_cfg_enabled(&cfg) {
@@ -98,11 +98,11 @@ pub fn gen_magic_function(def: &MethodDef, gen: &Gen, namespace: &TokenStream) -
         call.finish(res);
     };
 
-    let magic_name = gen_ident(&format!("magic_{}", def.name()));
+    let thunk_name = gen_ident(&format!("thunk_{}", def.name()));
 
     quote! {
         #[no_mangle]
-        extern "C" fn #magic_name(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+        extern "C" fn #thunk_name(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
             let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
                 #body
             }));
@@ -145,8 +145,8 @@ pub fn gen_functions(tree: &TypeTree, gen: &Gen) -> TokenStream {
     }
 }
 
-pub fn gen_rusty_x86_magic_functions(tree: &TypeTree, gen: &Gen) -> TokenStream {
-    let mut magic_functions = TokenStream::new();
+pub fn gen_rusty_x86_thunk_functions(tree: &TypeTree, gen: &Gen) -> TokenStream {
+    let mut thunk_functions = TokenStream::new();
 
     // can't use .namespace method of gen because the code lives in another crate
     // so do it manually, lol
@@ -167,13 +167,13 @@ pub fn gen_rusty_x86_magic_functions(tree: &TypeTree, gen: &Gen) -> TokenStream 
         for def in entry {
             if let Type::MethodDef(def) = def {
                 if !gen.excluded_items.contains(def.name()) && gen.dll_enabled(def.dll_import()) {
-                    magic_functions.combine(&gen_magic_function(def, gen, &namespace));
+                    thunk_functions.combine(&gen_thunk_function(def, gen, &namespace));
                 }
             }
         }
     }
 
-    magic_functions
+    thunk_functions
 }
 
 // fn gen_function_if(entry: &[Type], gen: &Gen) -> TokenStream {

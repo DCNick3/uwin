@@ -13,7 +13,7 @@ use core_abi::stdcall::StdCallHelper;
 #[allow(unused)]
 use core_mem::ctx::FlatMemoryCtx;
 #[no_mangle]
-extern "C" fn magic_CloseHandle(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CloseHandle(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Foundation::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -27,7 +27,7 @@ extern "C" fn magic_CloseHandle(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_CompareObjectHandles(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CompareObjectHandles(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Foundation::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -42,7 +42,7 @@ extern "C" fn magic_CompareObjectHandles(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_DuplicateHandle(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_DuplicateHandle(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Foundation::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -70,7 +70,7 @@ extern "C" fn magic_DuplicateHandle(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetHandleInformation(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetHandleInformation(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Foundation::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -85,7 +85,7 @@ extern "C" fn magic_GetHandleInformation(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetLastError(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetLastError(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Foundation::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -98,7 +98,7 @@ extern "C" fn magic_GetLastError(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetHandleInformation(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetHandleInformation(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Foundation::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -114,7 +114,7 @@ extern "C" fn magic_SetHandleInformation(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetLastError(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetLastError(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Foundation::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -128,7 +128,7 @@ extern "C" fn magic_SetLastError(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_CompareStringA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CompareStringA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -154,7 +154,7 @@ extern "C" fn magic_CompareStringA(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_CompareStringEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CompareStringEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -186,7 +186,7 @@ extern "C" fn magic_CompareStringEx(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_CompareStringOrdinal(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CompareStringOrdinal(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -210,7 +210,7 @@ extern "C" fn magic_CompareStringOrdinal(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_CompareStringW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CompareStringW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -236,7 +236,7 @@ extern "C" fn magic_CompareStringW(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_ConvertDefaultLocale(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ConvertDefaultLocale(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -250,7 +250,7 @@ extern "C" fn magic_ConvertDefaultLocale(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_EnumCalendarInfoA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_EnumCalendarInfoA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -267,7 +267,7 @@ extern "C" fn magic_EnumCalendarInfoA(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_EnumCalendarInfoExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_EnumCalendarInfoExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -284,7 +284,7 @@ extern "C" fn magic_EnumCalendarInfoExA(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_EnumCalendarInfoExEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_EnumCalendarInfoExEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -310,7 +310,7 @@ extern "C" fn magic_EnumCalendarInfoExEx(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_EnumCalendarInfoExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_EnumCalendarInfoExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -327,7 +327,7 @@ extern "C" fn magic_EnumCalendarInfoExW(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_EnumCalendarInfoW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_EnumCalendarInfoW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -344,7 +344,7 @@ extern "C" fn magic_EnumCalendarInfoW(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_EnumDateFormatsA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_EnumDateFormatsA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -360,7 +360,7 @@ extern "C" fn magic_EnumDateFormatsA(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_EnumDateFormatsExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_EnumDateFormatsExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -376,7 +376,7 @@ extern "C" fn magic_EnumDateFormatsExA(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_EnumDateFormatsExEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_EnumDateFormatsExEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -398,7 +398,7 @@ extern "C" fn magic_EnumDateFormatsExEx(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_EnumDateFormatsExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_EnumDateFormatsExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -414,7 +414,7 @@ extern "C" fn magic_EnumDateFormatsExW(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_EnumDateFormatsW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_EnumDateFormatsW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -430,7 +430,7 @@ extern "C" fn magic_EnumDateFormatsW(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_EnumLanguageGroupLocalesA(
+extern "C" fn thunk_EnumLanguageGroupLocalesA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -455,7 +455,7 @@ extern "C" fn magic_EnumLanguageGroupLocalesA(
     }
 }
 #[no_mangle]
-extern "C" fn magic_EnumLanguageGroupLocalesW(
+extern "C" fn thunk_EnumLanguageGroupLocalesW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -480,7 +480,7 @@ extern "C" fn magic_EnumLanguageGroupLocalesW(
     }
 }
 #[no_mangle]
-extern "C" fn magic_EnumSystemCodePagesA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_EnumSystemCodePagesA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -495,7 +495,7 @@ extern "C" fn magic_EnumSystemCodePagesA(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_EnumSystemCodePagesW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_EnumSystemCodePagesW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -510,7 +510,7 @@ extern "C" fn magic_EnumSystemCodePagesW(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_EnumSystemGeoID(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_EnumSystemGeoID(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -526,7 +526,7 @@ extern "C" fn magic_EnumSystemGeoID(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_EnumSystemGeoNames(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_EnumSystemGeoNames(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -542,7 +542,7 @@ extern "C" fn magic_EnumSystemGeoNames(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_EnumSystemLanguageGroupsA(
+extern "C" fn thunk_EnumSystemLanguageGroupsA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -561,7 +561,7 @@ extern "C" fn magic_EnumSystemLanguageGroupsA(
     }
 }
 #[no_mangle]
-extern "C" fn magic_EnumSystemLanguageGroupsW(
+extern "C" fn thunk_EnumSystemLanguageGroupsW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -580,7 +580,7 @@ extern "C" fn magic_EnumSystemLanguageGroupsW(
     }
 }
 #[no_mangle]
-extern "C" fn magic_EnumSystemLocalesA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_EnumSystemLocalesA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -595,7 +595,7 @@ extern "C" fn magic_EnumSystemLocalesA(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_EnumSystemLocalesEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_EnumSystemLocalesEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -612,7 +612,7 @@ extern "C" fn magic_EnumSystemLocalesEx(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_EnumSystemLocalesW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_EnumSystemLocalesW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -627,7 +627,7 @@ extern "C" fn magic_EnumSystemLocalesW(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_EnumTimeFormatsA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_EnumTimeFormatsA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -643,7 +643,7 @@ extern "C" fn magic_EnumTimeFormatsA(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_EnumTimeFormatsEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_EnumTimeFormatsEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -661,7 +661,7 @@ extern "C" fn magic_EnumTimeFormatsEx(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_EnumTimeFormatsW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_EnumTimeFormatsW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -677,7 +677,7 @@ extern "C" fn magic_EnumTimeFormatsW(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_EnumUILanguagesA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_EnumUILanguagesA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -693,7 +693,7 @@ extern "C" fn magic_EnumUILanguagesA(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_EnumUILanguagesW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_EnumUILanguagesW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -709,7 +709,7 @@ extern "C" fn magic_EnumUILanguagesW(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_FindNLSString(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_FindNLSString(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -737,7 +737,7 @@ extern "C" fn magic_FindNLSString(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_FindNLSStringEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_FindNLSStringEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -771,7 +771,7 @@ extern "C" fn magic_FindNLSStringEx(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_FindStringOrdinal(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_FindStringOrdinal(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -797,7 +797,7 @@ extern "C" fn magic_FindStringOrdinal(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_FoldStringA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_FoldStringA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -815,7 +815,7 @@ extern "C" fn magic_FoldStringA(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_FoldStringW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_FoldStringW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -833,7 +833,7 @@ extern "C" fn magic_FoldStringW(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetACP(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetACP(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -846,7 +846,7 @@ extern "C" fn magic_GetACP(context: &mut ExtendedContext, memory: FlatMemoryCtx)
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetCPInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetCPInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -861,7 +861,7 @@ extern "C" fn magic_GetCPInfo(context: &mut ExtendedContext, memory: FlatMemoryC
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetCPInfoExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetCPInfoExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -877,7 +877,7 @@ extern "C" fn magic_GetCPInfoExA(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetCPInfoExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetCPInfoExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -893,7 +893,7 @@ extern "C" fn magic_GetCPInfoExW(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetCalendarInfoA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetCalendarInfoA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -912,7 +912,7 @@ extern "C" fn magic_GetCalendarInfoA(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetCalendarInfoEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetCalendarInfoEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -940,7 +940,7 @@ extern "C" fn magic_GetCalendarInfoEx(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetCalendarInfoW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetCalendarInfoW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -959,7 +959,7 @@ extern "C" fn magic_GetCalendarInfoW(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetCurrencyFormatA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetCurrencyFormatA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -985,7 +985,7 @@ extern "C" fn magic_GetCurrencyFormatA(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetCurrencyFormatEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetCurrencyFormatEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -1011,7 +1011,7 @@ extern "C" fn magic_GetCurrencyFormatEx(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetCurrencyFormatW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetCurrencyFormatW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -1037,7 +1037,7 @@ extern "C" fn magic_GetCurrencyFormatW(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetDateFormatA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetDateFormatA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -1056,7 +1056,7 @@ extern "C" fn magic_GetDateFormatA(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetDateFormatEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetDateFormatEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -1084,7 +1084,7 @@ extern "C" fn magic_GetDateFormatEx(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetDateFormatW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetDateFormatW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -1103,7 +1103,7 @@ extern "C" fn magic_GetDateFormatW(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetDistanceOfClosestLanguageInList(
+extern "C" fn thunk_GetDistanceOfClosestLanguageInList(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -1128,7 +1128,7 @@ extern "C" fn magic_GetDistanceOfClosestLanguageInList(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetDurationFormat(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetDurationFormat(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -1156,7 +1156,7 @@ extern "C" fn magic_GetDurationFormat(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetDurationFormatEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetDurationFormatEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -1184,7 +1184,7 @@ extern "C" fn magic_GetDurationFormatEx(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetFileMUIInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetFileMUIInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -1206,7 +1206,7 @@ extern "C" fn magic_GetFileMUIInfo(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetFileMUIPath(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetFileMUIPath(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -1234,7 +1234,7 @@ extern "C" fn magic_GetFileMUIPath(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetGeoInfoA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetGeoInfoA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -1252,7 +1252,7 @@ extern "C" fn magic_GetGeoInfoA(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetGeoInfoEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetGeoInfoEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -1269,7 +1269,7 @@ extern "C" fn magic_GetGeoInfoEx(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetGeoInfoW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetGeoInfoW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -1287,7 +1287,7 @@ extern "C" fn magic_GetGeoInfoW(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetLocaleInfoA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetLocaleInfoA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -1304,7 +1304,7 @@ extern "C" fn magic_GetLocaleInfoA(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetLocaleInfoEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetLocaleInfoEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -1321,7 +1321,7 @@ extern "C" fn magic_GetLocaleInfoEx(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetLocaleInfoW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetLocaleInfoW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -1338,7 +1338,7 @@ extern "C" fn magic_GetLocaleInfoW(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetNLSVersion(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetNLSVersion(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -1354,7 +1354,7 @@ extern "C" fn magic_GetNLSVersion(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetNLSVersionEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetNLSVersionEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -1370,7 +1370,7 @@ extern "C" fn magic_GetNLSVersionEx(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetNumberFormatA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetNumberFormatA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -1396,7 +1396,7 @@ extern "C" fn magic_GetNumberFormatA(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetNumberFormatEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetNumberFormatEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -1422,7 +1422,7 @@ extern "C" fn magic_GetNumberFormatEx(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetNumberFormatW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetNumberFormatW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -1448,7 +1448,7 @@ extern "C" fn magic_GetNumberFormatW(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetOEMCP(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetOEMCP(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -1461,7 +1461,7 @@ extern "C" fn magic_GetOEMCP(context: &mut ExtendedContext, memory: FlatMemoryCt
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetProcessPreferredUILanguages(
+extern "C" fn thunk_GetProcessPreferredUILanguages(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -1486,7 +1486,7 @@ extern "C" fn magic_GetProcessPreferredUILanguages(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetStringScripts(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetStringScripts(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -1504,7 +1504,7 @@ extern "C" fn magic_GetStringScripts(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetStringTypeA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetStringTypeA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -1522,7 +1522,7 @@ extern "C" fn magic_GetStringTypeA(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetStringTypeExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetStringTypeExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -1540,7 +1540,7 @@ extern "C" fn magic_GetStringTypeExA(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetStringTypeExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetStringTypeExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -1558,7 +1558,7 @@ extern "C" fn magic_GetStringTypeExW(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetStringTypeW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetStringTypeW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -1575,7 +1575,7 @@ extern "C" fn magic_GetStringTypeW(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetSystemDefaultLCID(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetSystemDefaultLCID(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -1588,7 +1588,7 @@ extern "C" fn magic_GetSystemDefaultLCID(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetSystemDefaultLangID(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetSystemDefaultLangID(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -1601,7 +1601,7 @@ extern "C" fn magic_GetSystemDefaultLangID(context: &mut ExtendedContext, memory
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetSystemDefaultLocaleName(
+extern "C" fn thunk_GetSystemDefaultLocaleName(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -1619,7 +1619,7 @@ extern "C" fn magic_GetSystemDefaultLocaleName(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetSystemDefaultUILanguage(
+extern "C" fn thunk_GetSystemDefaultUILanguage(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -1635,7 +1635,7 @@ extern "C" fn magic_GetSystemDefaultUILanguage(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetSystemPreferredUILanguages(
+extern "C" fn thunk_GetSystemPreferredUILanguages(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -1660,7 +1660,7 @@ extern "C" fn magic_GetSystemPreferredUILanguages(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetThreadLocale(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetThreadLocale(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -1673,7 +1673,7 @@ extern "C" fn magic_GetThreadLocale(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetThreadPreferredUILanguages(
+extern "C" fn thunk_GetThreadPreferredUILanguages(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -1698,7 +1698,7 @@ extern "C" fn magic_GetThreadPreferredUILanguages(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetThreadUILanguage(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetThreadUILanguage(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -1711,7 +1711,7 @@ extern "C" fn magic_GetThreadUILanguage(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetTimeFormatA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetTimeFormatA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -1730,7 +1730,7 @@ extern "C" fn magic_GetTimeFormatA(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetTimeFormatEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetTimeFormatEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -1756,7 +1756,7 @@ extern "C" fn magic_GetTimeFormatEx(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetTimeFormatW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetTimeFormatW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -1775,7 +1775,7 @@ extern "C" fn magic_GetTimeFormatW(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetUILanguageInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetUILanguageInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -1799,7 +1799,7 @@ extern "C" fn magic_GetUILanguageInfo(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetUserDefaultGeoName(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetUserDefaultGeoName(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -1814,7 +1814,7 @@ extern "C" fn magic_GetUserDefaultGeoName(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetUserDefaultLCID(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetUserDefaultLCID(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -1827,7 +1827,7 @@ extern "C" fn magic_GetUserDefaultLCID(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetUserDefaultLangID(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetUserDefaultLangID(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -1840,7 +1840,7 @@ extern "C" fn magic_GetUserDefaultLangID(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetUserDefaultLocaleName(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetUserDefaultLocaleName(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -1855,7 +1855,7 @@ extern "C" fn magic_GetUserDefaultLocaleName(context: &mut ExtendedContext, memo
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetUserDefaultUILanguage(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetUserDefaultUILanguage(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -1868,7 +1868,7 @@ extern "C" fn magic_GetUserDefaultUILanguage(context: &mut ExtendedContext, memo
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetUserGeoID(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetUserGeoID(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -1882,7 +1882,7 @@ extern "C" fn magic_GetUserGeoID(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetUserPreferredUILanguages(
+extern "C" fn thunk_GetUserPreferredUILanguages(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -1907,7 +1907,7 @@ extern "C" fn magic_GetUserPreferredUILanguages(
     }
 }
 #[no_mangle]
-extern "C" fn magic_IdnToAscii(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_IdnToAscii(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -1931,7 +1931,7 @@ extern "C" fn magic_IdnToAscii(context: &mut ExtendedContext, memory: FlatMemory
     }
 }
 #[no_mangle]
-extern "C" fn magic_IdnToNameprepUnicode(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_IdnToNameprepUnicode(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -1955,7 +1955,7 @@ extern "C" fn magic_IdnToNameprepUnicode(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_IdnToUnicode(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_IdnToUnicode(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -1979,7 +1979,7 @@ extern "C" fn magic_IdnToUnicode(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_IsDBCSLeadByte(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_IsDBCSLeadByte(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -1993,7 +1993,7 @@ extern "C" fn magic_IsDBCSLeadByte(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_IsDBCSLeadByteEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_IsDBCSLeadByteEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -2008,7 +2008,7 @@ extern "C" fn magic_IsDBCSLeadByteEx(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_IsNLSDefinedString(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_IsNLSDefinedString(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -2032,7 +2032,7 @@ extern "C" fn magic_IsNLSDefinedString(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_IsNormalizedString(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_IsNormalizedString(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -2048,7 +2048,7 @@ extern "C" fn magic_IsNormalizedString(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_IsTextUnicode(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_IsTextUnicode(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -2064,7 +2064,7 @@ extern "C" fn magic_IsTextUnicode(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_IsValidCodePage(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_IsValidCodePage(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -2078,7 +2078,7 @@ extern "C" fn magic_IsValidCodePage(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_IsValidLanguageGroup(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_IsValidLanguageGroup(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -2093,7 +2093,7 @@ extern "C" fn magic_IsValidLanguageGroup(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_IsValidLocale(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_IsValidLocale(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -2108,7 +2108,7 @@ extern "C" fn magic_IsValidLocale(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_IsValidLocaleName(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_IsValidLocaleName(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -2122,7 +2122,7 @@ extern "C" fn magic_IsValidLocaleName(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_IsValidNLSVersion(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_IsValidNLSVersion(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -2138,7 +2138,7 @@ extern "C" fn magic_IsValidNLSVersion(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_IsWellFormedTag(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_IsWellFormedTag(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -2152,7 +2152,7 @@ extern "C" fn magic_IsWellFormedTag(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_LCIDToLocaleName(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_LCIDToLocaleName(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -2169,7 +2169,7 @@ extern "C" fn magic_LCIDToLocaleName(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_LCMapStringA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_LCMapStringA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -2195,7 +2195,7 @@ extern "C" fn magic_LCMapStringA(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_LCMapStringEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_LCMapStringEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -2227,7 +2227,7 @@ extern "C" fn magic_LCMapStringEx(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_LCMapStringW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_LCMapStringW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -2253,7 +2253,7 @@ extern "C" fn magic_LCMapStringW(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_LocaleNameToLCID(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_LocaleNameToLCID(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -2268,7 +2268,7 @@ extern "C" fn magic_LocaleNameToLCID(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_MappingDoAction(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_MappingDoAction(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -2284,7 +2284,7 @@ extern "C" fn magic_MappingDoAction(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_MappingFreePropertyBag(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_MappingFreePropertyBag(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -2298,7 +2298,7 @@ extern "C" fn magic_MappingFreePropertyBag(context: &mut ExtendedContext, memory
     }
 }
 #[no_mangle]
-extern "C" fn magic_MappingFreeServices(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_MappingFreeServices(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -2312,7 +2312,7 @@ extern "C" fn magic_MappingFreeServices(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_MappingGetServices(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_MappingGetServices(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -2328,7 +2328,7 @@ extern "C" fn magic_MappingGetServices(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_MappingRecognizeText(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_MappingRecognizeText(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -2354,7 +2354,7 @@ extern "C" fn magic_MappingRecognizeText(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_MultiByteToWideChar(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_MultiByteToWideChar(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -2380,7 +2380,7 @@ extern "C" fn magic_MultiByteToWideChar(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_NormalizeString(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_NormalizeString(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -2404,7 +2404,7 @@ extern "C" fn magic_NormalizeString(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_NotifyUILanguageChange(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_NotifyUILanguageChange(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -2428,7 +2428,7 @@ extern "C" fn magic_NotifyUILanguageChange(context: &mut ExtendedContext, memory
     }
 }
 #[no_mangle]
-extern "C" fn magic_ResolveLocaleName(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ResolveLocaleName(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -2444,7 +2444,7 @@ extern "C" fn magic_ResolveLocaleName(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_RestoreThreadPreferredUILanguages(
+extern "C" fn thunk_RestoreThreadPreferredUILanguages(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -2461,7 +2461,7 @@ extern "C" fn magic_RestoreThreadPreferredUILanguages(
     }
 }
 #[no_mangle]
-extern "C" fn magic_ScriptApplyDigitSubstitution(
+extern "C" fn thunk_ScriptApplyDigitSubstitution(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -2480,7 +2480,7 @@ extern "C" fn magic_ScriptApplyDigitSubstitution(
     }
 }
 #[no_mangle]
-extern "C" fn magic_ScriptBreak(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ScriptBreak(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -2497,7 +2497,7 @@ extern "C" fn magic_ScriptBreak(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_ScriptCPtoX(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ScriptCPtoX(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -2529,7 +2529,7 @@ extern "C" fn magic_ScriptCPtoX(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_ScriptFreeCache(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ScriptFreeCache(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -2543,7 +2543,7 @@ extern "C" fn magic_ScriptFreeCache(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_ScriptGetLogicalWidths(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ScriptGetLogicalWidths(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -2571,7 +2571,7 @@ extern "C" fn magic_ScriptGetLogicalWidths(context: &mut ExtendedContext, memory
     }
 }
 #[no_mangle]
-extern "C" fn magic_ScriptGetProperties(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ScriptGetProperties(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -2586,7 +2586,7 @@ extern "C" fn magic_ScriptGetProperties(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_ScriptIsComplex(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ScriptIsComplex(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -2602,7 +2602,7 @@ extern "C" fn magic_ScriptIsComplex(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_ScriptItemize(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ScriptItemize(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -2630,7 +2630,7 @@ extern "C" fn magic_ScriptItemize(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_ScriptItemizeOpenType(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ScriptItemizeOpenType(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -2660,7 +2660,7 @@ extern "C" fn magic_ScriptItemizeOpenType(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_ScriptJustify(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ScriptJustify(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -2679,7 +2679,7 @@ extern "C" fn magic_ScriptJustify(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_ScriptLayout(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ScriptLayout(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -2696,7 +2696,7 @@ extern "C" fn magic_ScriptLayout(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_ScriptRecordDigitSubstitution(
+extern "C" fn thunk_ScriptRecordDigitSubstitution(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -2714,7 +2714,7 @@ extern "C" fn magic_ScriptRecordDigitSubstitution(
     }
 }
 #[no_mangle]
-extern "C" fn magic_ScriptStringCPtoX(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ScriptStringCPtoX(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -2731,7 +2731,7 @@ extern "C" fn magic_ScriptStringCPtoX(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_ScriptStringFree(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ScriptStringFree(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -2745,7 +2745,7 @@ extern "C" fn magic_ScriptStringFree(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_ScriptStringGetLogicalWidths(
+extern "C" fn thunk_ScriptStringGetLogicalWidths(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -2763,7 +2763,7 @@ extern "C" fn magic_ScriptStringGetLogicalWidths(
     }
 }
 #[no_mangle]
-extern "C" fn magic_ScriptStringGetOrder(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ScriptStringGetOrder(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -2778,7 +2778,7 @@ extern "C" fn magic_ScriptStringGetOrder(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_ScriptStringValidate(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ScriptStringValidate(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -2792,7 +2792,7 @@ extern "C" fn magic_ScriptStringValidate(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_ScriptStringXtoCP(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ScriptStringXtoCP(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -2809,7 +2809,7 @@ extern "C" fn magic_ScriptStringXtoCP(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_ScriptString_pLogAttr(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ScriptString_pLogAttr(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -2823,7 +2823,7 @@ extern "C" fn magic_ScriptString_pLogAttr(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_ScriptString_pSize(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ScriptString_pSize(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -2837,7 +2837,7 @@ extern "C" fn magic_ScriptString_pSize(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_ScriptString_pcOutChars(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ScriptString_pcOutChars(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -2851,7 +2851,7 @@ extern "C" fn magic_ScriptString_pcOutChars(context: &mut ExtendedContext, memor
     }
 }
 #[no_mangle]
-extern "C" fn magic_ScriptXtoCP(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ScriptXtoCP(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -2883,7 +2883,7 @@ extern "C" fn magic_ScriptXtoCP(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetCalendarInfoA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetCalendarInfoA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -2900,7 +2900,7 @@ extern "C" fn magic_SetCalendarInfoA(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetCalendarInfoW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetCalendarInfoW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -2917,7 +2917,7 @@ extern "C" fn magic_SetCalendarInfoW(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetLocaleInfoA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetLocaleInfoA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -2933,7 +2933,7 @@ extern "C" fn magic_SetLocaleInfoA(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetLocaleInfoW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetLocaleInfoW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -2949,7 +2949,7 @@ extern "C" fn magic_SetLocaleInfoW(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetProcessPreferredUILanguages(
+extern "C" fn thunk_SetProcessPreferredUILanguages(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -2969,7 +2969,7 @@ extern "C" fn magic_SetProcessPreferredUILanguages(
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetThreadLocale(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetThreadLocale(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -2983,7 +2983,7 @@ extern "C" fn magic_SetThreadLocale(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetThreadPreferredUILanguages(
+extern "C" fn thunk_SetThreadPreferredUILanguages(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -3003,7 +3003,7 @@ extern "C" fn magic_SetThreadPreferredUILanguages(
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetThreadPreferredUILanguages2(
+extern "C" fn thunk_SetThreadPreferredUILanguages2(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -3023,7 +3023,7 @@ extern "C" fn magic_SetThreadPreferredUILanguages2(
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetThreadUILanguage(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetThreadUILanguage(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -3037,7 +3037,7 @@ extern "C" fn magic_SetThreadUILanguage(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetUserGeoID(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetUserGeoID(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -3051,7 +3051,7 @@ extern "C" fn magic_SetUserGeoID(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetUserGeoName(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetUserGeoName(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -3065,7 +3065,7 @@ extern "C" fn magic_SetUserGeoName(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_TranslateCharsetInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_TranslateCharsetInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -3081,7 +3081,7 @@ extern "C" fn magic_TranslateCharsetInfo(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_VerifyScripts(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_VerifyScripts(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -3105,7 +3105,7 @@ extern "C" fn magic_VerifyScripts(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_WideCharToMultiByte(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_WideCharToMultiByte(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -3135,7 +3135,7 @@ extern "C" fn magic_WideCharToMultiByte(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_lstrcatA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_lstrcatA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -3150,7 +3150,7 @@ extern "C" fn magic_lstrcatA(context: &mut ExtendedContext, memory: FlatMemoryCt
     }
 }
 #[no_mangle]
-extern "C" fn magic_lstrcatW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_lstrcatW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -3165,7 +3165,7 @@ extern "C" fn magic_lstrcatW(context: &mut ExtendedContext, memory: FlatMemoryCt
     }
 }
 #[no_mangle]
-extern "C" fn magic_lstrcmpA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_lstrcmpA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -3180,7 +3180,7 @@ extern "C" fn magic_lstrcmpA(context: &mut ExtendedContext, memory: FlatMemoryCt
     }
 }
 #[no_mangle]
-extern "C" fn magic_lstrcmpW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_lstrcmpW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -3195,7 +3195,7 @@ extern "C" fn magic_lstrcmpW(context: &mut ExtendedContext, memory: FlatMemoryCt
     }
 }
 #[no_mangle]
-extern "C" fn magic_lstrcmpiA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_lstrcmpiA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -3210,7 +3210,7 @@ extern "C" fn magic_lstrcmpiA(context: &mut ExtendedContext, memory: FlatMemoryC
     }
 }
 #[no_mangle]
-extern "C" fn magic_lstrcmpiW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_lstrcmpiW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -3225,7 +3225,7 @@ extern "C" fn magic_lstrcmpiW(context: &mut ExtendedContext, memory: FlatMemoryC
     }
 }
 #[no_mangle]
-extern "C" fn magic_lstrcpyA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_lstrcpyA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -3240,7 +3240,7 @@ extern "C" fn magic_lstrcpyA(context: &mut ExtendedContext, memory: FlatMemoryCt
     }
 }
 #[no_mangle]
-extern "C" fn magic_lstrcpyW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_lstrcpyW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -3255,7 +3255,7 @@ extern "C" fn magic_lstrcpyW(context: &mut ExtendedContext, memory: FlatMemoryCt
     }
 }
 #[no_mangle]
-extern "C" fn magic_lstrcpynA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_lstrcpynA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -3271,7 +3271,7 @@ extern "C" fn magic_lstrcpynA(context: &mut ExtendedContext, memory: FlatMemoryC
     }
 }
 #[no_mangle]
-extern "C" fn magic_lstrcpynW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_lstrcpynW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -3287,7 +3287,7 @@ extern "C" fn magic_lstrcpynW(context: &mut ExtendedContext, memory: FlatMemoryC
     }
 }
 #[no_mangle]
-extern "C" fn magic_lstrlenA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_lstrlenA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -3301,7 +3301,7 @@ extern "C" fn magic_lstrlenA(context: &mut ExtendedContext, memory: FlatMemoryCt
     }
 }
 #[no_mangle]
-extern "C" fn magic_lstrlenW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_lstrlenW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Globalization::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -3315,7 +3315,7 @@ extern "C" fn magic_lstrlenW(context: &mut ExtendedContext, memory: FlatMemoryCt
     }
 }
 #[no_mangle]
-extern "C" fn magic_AreFileApisANSI(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_AreFileApisANSI(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -3328,7 +3328,7 @@ extern "C" fn magic_AreFileApisANSI(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_AreShortNamesEnabled(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_AreShortNamesEnabled(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -3343,7 +3343,7 @@ extern "C" fn magic_AreShortNamesEnabled(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_BackupRead(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_BackupRead(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -3371,7 +3371,7 @@ extern "C" fn magic_BackupRead(context: &mut ExtendedContext, memory: FlatMemory
     }
 }
 #[no_mangle]
-extern "C" fn magic_BackupSeek(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_BackupSeek(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -3397,7 +3397,7 @@ extern "C" fn magic_BackupSeek(context: &mut ExtendedContext, memory: FlatMemory
     }
 }
 #[no_mangle]
-extern "C" fn magic_BackupWrite(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_BackupWrite(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -3425,7 +3425,7 @@ extern "C" fn magic_BackupWrite(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_BuildIoRingCancelRequest(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_BuildIoRingCancelRequest(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -3442,7 +3442,7 @@ extern "C" fn magic_BuildIoRingCancelRequest(context: &mut ExtendedContext, memo
     }
 }
 #[no_mangle]
-extern "C" fn magic_BuildIoRingReadFile(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_BuildIoRingReadFile(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -3470,7 +3470,7 @@ extern "C" fn magic_BuildIoRingReadFile(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_BuildIoRingRegisterBuffers(
+extern "C" fn thunk_BuildIoRingRegisterBuffers(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -3490,7 +3490,7 @@ extern "C" fn magic_BuildIoRingRegisterBuffers(
     }
 }
 #[no_mangle]
-extern "C" fn magic_BuildIoRingRegisterFileHandles(
+extern "C" fn thunk_BuildIoRingRegisterFileHandles(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -3510,7 +3510,7 @@ extern "C" fn magic_BuildIoRingRegisterFileHandles(
     }
 }
 #[no_mangle]
-extern "C" fn magic_CheckNameLegalDOS8Dot3A(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CheckNameLegalDOS8Dot3A(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -3534,7 +3534,7 @@ extern "C" fn magic_CheckNameLegalDOS8Dot3A(context: &mut ExtendedContext, memor
     }
 }
 #[no_mangle]
-extern "C" fn magic_CheckNameLegalDOS8Dot3W(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CheckNameLegalDOS8Dot3W(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -3558,7 +3558,7 @@ extern "C" fn magic_CheckNameLegalDOS8Dot3W(context: &mut ExtendedContext, memor
     }
 }
 #[no_mangle]
-extern "C" fn magic_CloseEncryptedFileRaw(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CloseEncryptedFileRaw(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -3572,7 +3572,7 @@ extern "C" fn magic_CloseEncryptedFileRaw(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_CloseIoRing(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CloseIoRing(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -3586,7 +3586,7 @@ extern "C" fn magic_CloseIoRing(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_CommitComplete(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CommitComplete(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -3601,7 +3601,7 @@ extern "C" fn magic_CommitComplete(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_CommitEnlistment(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CommitEnlistment(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -3616,7 +3616,7 @@ extern "C" fn magic_CommitEnlistment(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_CommitTransaction(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CommitTransaction(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -3630,7 +3630,7 @@ extern "C" fn magic_CommitTransaction(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_CommitTransactionAsync(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CommitTransactionAsync(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -3644,7 +3644,7 @@ extern "C" fn magic_CommitTransactionAsync(context: &mut ExtendedContext, memory
     }
 }
 #[no_mangle]
-extern "C" fn magic_CompareFileTime(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CompareFileTime(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -3659,7 +3659,7 @@ extern "C" fn magic_CompareFileTime(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_CopyFile2(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CopyFile2(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -3679,7 +3679,7 @@ extern "C" fn magic_CopyFile2(context: &mut ExtendedContext, memory: FlatMemoryC
     }
 }
 #[no_mangle]
-extern "C" fn magic_CopyFileA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CopyFileA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -3695,7 +3695,7 @@ extern "C" fn magic_CopyFileA(context: &mut ExtendedContext, memory: FlatMemoryC
     }
 }
 #[no_mangle]
-extern "C" fn magic_CopyFileExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CopyFileExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -3721,7 +3721,7 @@ extern "C" fn magic_CopyFileExA(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_CopyFileExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CopyFileExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -3747,7 +3747,7 @@ extern "C" fn magic_CopyFileExW(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_CopyFileFromAppW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CopyFileFromAppW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -3763,7 +3763,7 @@ extern "C" fn magic_CopyFileFromAppW(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_CopyFileTransactedA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CopyFileTransactedA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -3791,7 +3791,7 @@ extern "C" fn magic_CopyFileTransactedA(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_CopyFileTransactedW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CopyFileTransactedW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -3819,7 +3819,7 @@ extern "C" fn magic_CopyFileTransactedW(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_CopyFileW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CopyFileW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -3835,7 +3835,7 @@ extern "C" fn magic_CopyFileW(context: &mut ExtendedContext, memory: FlatMemoryC
     }
 }
 #[no_mangle]
-extern "C" fn magic_CopyLZFile(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CopyLZFile(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -3850,7 +3850,7 @@ extern "C" fn magic_CopyLZFile(context: &mut ExtendedContext, memory: FlatMemory
     }
 }
 #[no_mangle]
-extern "C" fn magic_CreateIoRing(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CreateIoRing(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -3874,7 +3874,7 @@ extern "C" fn magic_CreateIoRing(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_CreateSymbolicLinkA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CreateSymbolicLinkA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -3890,7 +3890,7 @@ extern "C" fn magic_CreateSymbolicLinkA(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_CreateSymbolicLinkTransactedA(
+extern "C" fn thunk_CreateSymbolicLinkTransactedA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -3915,7 +3915,7 @@ extern "C" fn magic_CreateSymbolicLinkTransactedA(
     }
 }
 #[no_mangle]
-extern "C" fn magic_CreateSymbolicLinkTransactedW(
+extern "C" fn thunk_CreateSymbolicLinkTransactedW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -3940,7 +3940,7 @@ extern "C" fn magic_CreateSymbolicLinkTransactedW(
     }
 }
 #[no_mangle]
-extern "C" fn magic_CreateSymbolicLinkW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CreateSymbolicLinkW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -3956,7 +3956,7 @@ extern "C" fn magic_CreateSymbolicLinkW(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_CreateTapePartition(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CreateTapePartition(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -3973,7 +3973,7 @@ extern "C" fn magic_CreateTapePartition(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_DecryptFileA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_DecryptFileA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -3988,7 +3988,7 @@ extern "C" fn magic_DecryptFileA(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_DecryptFileW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_DecryptFileW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -4003,7 +4003,7 @@ extern "C" fn magic_DecryptFileW(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_DefineDosDeviceA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_DefineDosDeviceA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -4019,7 +4019,7 @@ extern "C" fn magic_DefineDosDeviceA(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_DefineDosDeviceW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_DefineDosDeviceW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -4035,7 +4035,7 @@ extern "C" fn magic_DefineDosDeviceW(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_DeleteFileA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_DeleteFileA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -4049,7 +4049,7 @@ extern "C" fn magic_DeleteFileA(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_DeleteFileFromAppW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_DeleteFileFromAppW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -4063,7 +4063,7 @@ extern "C" fn magic_DeleteFileFromAppW(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_DeleteFileTransactedA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_DeleteFileTransactedA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -4078,7 +4078,7 @@ extern "C" fn magic_DeleteFileTransactedA(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_DeleteFileTransactedW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_DeleteFileTransactedW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -4093,7 +4093,7 @@ extern "C" fn magic_DeleteFileTransactedW(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_DeleteFileW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_DeleteFileW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -4107,7 +4107,7 @@ extern "C" fn magic_DeleteFileW(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_DeleteVolumeMountPointA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_DeleteVolumeMountPointA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -4121,7 +4121,7 @@ extern "C" fn magic_DeleteVolumeMountPointA(context: &mut ExtendedContext, memor
     }
 }
 #[no_mangle]
-extern "C" fn magic_DeleteVolumeMountPointW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_DeleteVolumeMountPointW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -4135,7 +4135,7 @@ extern "C" fn magic_DeleteVolumeMountPointW(context: &mut ExtendedContext, memor
     }
 }
 #[no_mangle]
-extern "C" fn magic_EncryptFileA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_EncryptFileA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -4149,7 +4149,7 @@ extern "C" fn magic_EncryptFileA(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_EncryptFileW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_EncryptFileW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -4163,7 +4163,7 @@ extern "C" fn magic_EncryptFileW(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_EncryptionDisable(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_EncryptionDisable(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -4178,7 +4178,7 @@ extern "C" fn magic_EncryptionDisable(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_EraseTape(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_EraseTape(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -4194,7 +4194,7 @@ extern "C" fn magic_EraseTape(context: &mut ExtendedContext, memory: FlatMemoryC
     }
 }
 #[no_mangle]
-extern "C" fn magic_FileEncryptionStatusA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_FileEncryptionStatusA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -4209,7 +4209,7 @@ extern "C" fn magic_FileEncryptionStatusA(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_FileEncryptionStatusW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_FileEncryptionStatusW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -4224,7 +4224,7 @@ extern "C" fn magic_FileEncryptionStatusW(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_FileTimeToLocalFileTime(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_FileTimeToLocalFileTime(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -4239,7 +4239,7 @@ extern "C" fn magic_FileTimeToLocalFileTime(context: &mut ExtendedContext, memor
     }
 }
 #[no_mangle]
-extern "C" fn magic_FindClose(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_FindClose(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -4253,7 +4253,7 @@ extern "C" fn magic_FindClose(context: &mut ExtendedContext, memory: FlatMemoryC
     }
 }
 #[no_mangle]
-extern "C" fn magic_FindCloseChangeNotification(
+extern "C" fn thunk_FindCloseChangeNotification(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -4270,7 +4270,7 @@ extern "C" fn magic_FindCloseChangeNotification(
     }
 }
 #[no_mangle]
-extern "C" fn magic_FindFirstChangeNotificationA(
+extern "C" fn thunk_FindFirstChangeNotificationA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -4289,7 +4289,7 @@ extern "C" fn magic_FindFirstChangeNotificationA(
     }
 }
 #[no_mangle]
-extern "C" fn magic_FindFirstChangeNotificationW(
+extern "C" fn thunk_FindFirstChangeNotificationW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -4308,7 +4308,7 @@ extern "C" fn magic_FindFirstChangeNotificationW(
     }
 }
 #[no_mangle]
-extern "C" fn magic_FindFirstFileA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_FindFirstFileA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -4323,7 +4323,7 @@ extern "C" fn magic_FindFirstFileA(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_FindFirstFileExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_FindFirstFileExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -4349,7 +4349,7 @@ extern "C" fn magic_FindFirstFileExA(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_FindFirstFileExFromAppW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_FindFirstFileExFromAppW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -4375,7 +4375,7 @@ extern "C" fn magic_FindFirstFileExFromAppW(context: &mut ExtendedContext, memor
     }
 }
 #[no_mangle]
-extern "C" fn magic_FindFirstFileExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_FindFirstFileExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -4401,7 +4401,7 @@ extern "C" fn magic_FindFirstFileExW(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_FindFirstFileNameTransactedW(
+extern "C" fn thunk_FindFirstFileNameTransactedW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -4428,7 +4428,7 @@ extern "C" fn magic_FindFirstFileNameTransactedW(
     }
 }
 #[no_mangle]
-extern "C" fn magic_FindFirstFileNameW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_FindFirstFileNameW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -4445,7 +4445,7 @@ extern "C" fn magic_FindFirstFileNameW(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_FindFirstFileTransactedA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_FindFirstFileTransactedA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -4473,7 +4473,7 @@ extern "C" fn magic_FindFirstFileTransactedA(context: &mut ExtendedContext, memo
     }
 }
 #[no_mangle]
-extern "C" fn magic_FindFirstFileTransactedW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_FindFirstFileTransactedW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -4501,7 +4501,7 @@ extern "C" fn magic_FindFirstFileTransactedW(context: &mut ExtendedContext, memo
     }
 }
 #[no_mangle]
-extern "C" fn magic_FindFirstFileW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_FindFirstFileW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -4516,7 +4516,7 @@ extern "C" fn magic_FindFirstFileW(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_FindFirstStreamTransactedW(
+extern "C" fn thunk_FindFirstStreamTransactedW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -4543,7 +4543,7 @@ extern "C" fn magic_FindFirstStreamTransactedW(
     }
 }
 #[no_mangle]
-extern "C" fn magic_FindFirstStreamW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_FindFirstStreamW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -4560,7 +4560,7 @@ extern "C" fn magic_FindFirstStreamW(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_FindFirstVolumeA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_FindFirstVolumeA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -4575,7 +4575,7 @@ extern "C" fn magic_FindFirstVolumeA(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_FindFirstVolumeMountPointA(
+extern "C" fn thunk_FindFirstVolumeMountPointA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -4598,7 +4598,7 @@ extern "C" fn magic_FindFirstVolumeMountPointA(
     }
 }
 #[no_mangle]
-extern "C" fn magic_FindFirstVolumeMountPointW(
+extern "C" fn thunk_FindFirstVolumeMountPointW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -4621,7 +4621,7 @@ extern "C" fn magic_FindFirstVolumeMountPointW(
     }
 }
 #[no_mangle]
-extern "C" fn magic_FindFirstVolumeW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_FindFirstVolumeW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -4636,7 +4636,7 @@ extern "C" fn magic_FindFirstVolumeW(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_FindNextChangeNotification(
+extern "C" fn thunk_FindNextChangeNotification(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -4653,7 +4653,7 @@ extern "C" fn magic_FindNextChangeNotification(
     }
 }
 #[no_mangle]
-extern "C" fn magic_FindNextFileA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_FindNextFileA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -4668,7 +4668,7 @@ extern "C" fn magic_FindNextFileA(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_FindNextFileNameW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_FindNextFileNameW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -4684,7 +4684,7 @@ extern "C" fn magic_FindNextFileNameW(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_FindNextFileW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_FindNextFileW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -4699,7 +4699,7 @@ extern "C" fn magic_FindNextFileW(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_FindNextStreamW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_FindNextStreamW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -4714,7 +4714,7 @@ extern "C" fn magic_FindNextStreamW(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_FindNextVolumeA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_FindNextVolumeA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -4730,7 +4730,7 @@ extern "C" fn magic_FindNextVolumeA(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_FindNextVolumeMountPointA(
+extern "C" fn thunk_FindNextVolumeMountPointA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -4753,7 +4753,7 @@ extern "C" fn magic_FindNextVolumeMountPointA(
     }
 }
 #[no_mangle]
-extern "C" fn magic_FindNextVolumeMountPointW(
+extern "C" fn thunk_FindNextVolumeMountPointW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -4776,7 +4776,7 @@ extern "C" fn magic_FindNextVolumeMountPointW(
     }
 }
 #[no_mangle]
-extern "C" fn magic_FindNextVolumeW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_FindNextVolumeW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -4792,7 +4792,7 @@ extern "C" fn magic_FindNextVolumeW(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_FindVolumeClose(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_FindVolumeClose(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -4806,7 +4806,7 @@ extern "C" fn magic_FindVolumeClose(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_FindVolumeMountPointClose(
+extern "C" fn thunk_FindVolumeMountPointClose(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -4823,7 +4823,7 @@ extern "C" fn magic_FindVolumeMountPointClose(
     }
 }
 #[no_mangle]
-extern "C" fn magic_FlushFileBuffers(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_FlushFileBuffers(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -4837,7 +4837,7 @@ extern "C" fn magic_FlushFileBuffers(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_FreeEncryptedFileMetadata(
+extern "C" fn thunk_FreeEncryptedFileMetadata(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -4854,7 +4854,7 @@ extern "C" fn magic_FreeEncryptedFileMetadata(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetBinaryTypeA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetBinaryTypeA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -4869,7 +4869,7 @@ extern "C" fn magic_GetBinaryTypeA(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetBinaryTypeW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetBinaryTypeW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -4884,7 +4884,7 @@ extern "C" fn magic_GetBinaryTypeW(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetCompressedFileSizeA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetCompressedFileSizeA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -4899,7 +4899,7 @@ extern "C" fn magic_GetCompressedFileSizeA(context: &mut ExtendedContext, memory
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetCompressedFileSizeTransactedA(
+extern "C" fn thunk_GetCompressedFileSizeTransactedA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -4919,7 +4919,7 @@ extern "C" fn magic_GetCompressedFileSizeTransactedA(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetCompressedFileSizeTransactedW(
+extern "C" fn thunk_GetCompressedFileSizeTransactedW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -4939,7 +4939,7 @@ extern "C" fn magic_GetCompressedFileSizeTransactedW(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetCompressedFileSizeW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetCompressedFileSizeW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -4954,7 +4954,7 @@ extern "C" fn magic_GetCompressedFileSizeW(context: &mut ExtendedContext, memory
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetCurrentClockTransactionManager(
+extern "C" fn thunk_GetCurrentClockTransactionManager(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -4973,7 +4973,7 @@ extern "C" fn magic_GetCurrentClockTransactionManager(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetDiskFreeSpaceA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetDiskFreeSpaceA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -4997,7 +4997,7 @@ extern "C" fn magic_GetDiskFreeSpaceA(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetDiskFreeSpaceExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetDiskFreeSpaceExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -5019,7 +5019,7 @@ extern "C" fn magic_GetDiskFreeSpaceExA(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetDiskFreeSpaceExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetDiskFreeSpaceExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -5041,7 +5041,7 @@ extern "C" fn magic_GetDiskFreeSpaceExW(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetDiskFreeSpaceW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetDiskFreeSpaceW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -5065,7 +5065,7 @@ extern "C" fn magic_GetDiskFreeSpaceW(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetDiskSpaceInformationA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetDiskSpaceInformationA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -5080,7 +5080,7 @@ extern "C" fn magic_GetDiskSpaceInformationA(context: &mut ExtendedContext, memo
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetDiskSpaceInformationW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetDiskSpaceInformationW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -5095,7 +5095,7 @@ extern "C" fn magic_GetDiskSpaceInformationW(context: &mut ExtendedContext, memo
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetDriveTypeA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetDriveTypeA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -5109,7 +5109,7 @@ extern "C" fn magic_GetDriveTypeA(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetDriveTypeW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetDriveTypeW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -5123,7 +5123,7 @@ extern "C" fn magic_GetDriveTypeW(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetEncryptedFileMetadata(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetEncryptedFileMetadata(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -5139,7 +5139,7 @@ extern "C" fn magic_GetEncryptedFileMetadata(context: &mut ExtendedContext, memo
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetEnlistmentId(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetEnlistmentId(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -5154,7 +5154,7 @@ extern "C" fn magic_GetEnlistmentId(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetEnlistmentRecoveryInformation(
+extern "C" fn thunk_GetEnlistmentRecoveryInformation(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -5179,7 +5179,7 @@ extern "C" fn magic_GetEnlistmentRecoveryInformation(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetExpandedNameA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetExpandedNameA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -5194,7 +5194,7 @@ extern "C" fn magic_GetExpandedNameA(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetExpandedNameW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetExpandedNameW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -5209,7 +5209,7 @@ extern "C" fn magic_GetExpandedNameW(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetFileAttributesA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetFileAttributesA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -5223,7 +5223,7 @@ extern "C" fn magic_GetFileAttributesA(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetFileAttributesExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetFileAttributesExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -5239,7 +5239,7 @@ extern "C" fn magic_GetFileAttributesExA(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetFileAttributesExFromAppW(
+extern "C" fn thunk_GetFileAttributesExFromAppW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -5259,7 +5259,7 @@ extern "C" fn magic_GetFileAttributesExFromAppW(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetFileAttributesExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetFileAttributesExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -5275,7 +5275,7 @@ extern "C" fn magic_GetFileAttributesExW(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetFileAttributesTransactedA(
+extern "C" fn thunk_GetFileAttributesTransactedA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -5300,7 +5300,7 @@ extern "C" fn magic_GetFileAttributesTransactedA(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetFileAttributesTransactedW(
+extern "C" fn thunk_GetFileAttributesTransactedW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -5325,7 +5325,7 @@ extern "C" fn magic_GetFileAttributesTransactedW(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetFileAttributesW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetFileAttributesW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -5339,7 +5339,7 @@ extern "C" fn magic_GetFileAttributesW(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetFileBandwidthReservation(
+extern "C" fn thunk_GetFileBandwidthReservation(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -5368,7 +5368,7 @@ extern "C" fn magic_GetFileBandwidthReservation(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetFileInformationByHandle(
+extern "C" fn thunk_GetFileInformationByHandle(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -5386,7 +5386,7 @@ extern "C" fn magic_GetFileInformationByHandle(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetFileInformationByHandleEx(
+extern "C" fn thunk_GetFileInformationByHandleEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -5411,7 +5411,7 @@ extern "C" fn magic_GetFileInformationByHandleEx(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetFileSize(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetFileSize(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -5426,7 +5426,7 @@ extern "C" fn magic_GetFileSize(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetFileSizeEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetFileSizeEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -5441,7 +5441,7 @@ extern "C" fn magic_GetFileSizeEx(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetFileTime(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetFileTime(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -5463,7 +5463,7 @@ extern "C" fn magic_GetFileTime(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetFileType(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetFileType(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -5477,7 +5477,7 @@ extern "C" fn magic_GetFileType(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetFileVersionInfoA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetFileVersionInfoA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -5494,7 +5494,7 @@ extern "C" fn magic_GetFileVersionInfoA(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetFileVersionInfoExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetFileVersionInfoExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -5512,7 +5512,7 @@ extern "C" fn magic_GetFileVersionInfoExA(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetFileVersionInfoExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetFileVersionInfoExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -5530,7 +5530,7 @@ extern "C" fn magic_GetFileVersionInfoExW(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetFileVersionInfoSizeA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetFileVersionInfoSizeA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -5545,7 +5545,7 @@ extern "C" fn magic_GetFileVersionInfoSizeA(context: &mut ExtendedContext, memor
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetFileVersionInfoSizeExA(
+extern "C" fn thunk_GetFileVersionInfoSizeExA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -5564,7 +5564,7 @@ extern "C" fn magic_GetFileVersionInfoSizeExA(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetFileVersionInfoSizeExW(
+extern "C" fn thunk_GetFileVersionInfoSizeExW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -5583,7 +5583,7 @@ extern "C" fn magic_GetFileVersionInfoSizeExW(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetFileVersionInfoSizeW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetFileVersionInfoSizeW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -5598,7 +5598,7 @@ extern "C" fn magic_GetFileVersionInfoSizeW(context: &mut ExtendedContext, memor
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetFileVersionInfoW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetFileVersionInfoW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -5615,7 +5615,7 @@ extern "C" fn magic_GetFileVersionInfoW(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetFinalPathNameByHandleA(
+extern "C" fn thunk_GetFinalPathNameByHandleA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -5635,7 +5635,7 @@ extern "C" fn magic_GetFinalPathNameByHandleA(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetFinalPathNameByHandleW(
+extern "C" fn thunk_GetFinalPathNameByHandleW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -5655,7 +5655,7 @@ extern "C" fn magic_GetFinalPathNameByHandleW(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetFullPathNameA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetFullPathNameA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -5672,7 +5672,7 @@ extern "C" fn magic_GetFullPathNameA(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetFullPathNameTransactedA(
+extern "C" fn thunk_GetFullPathNameTransactedA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -5699,7 +5699,7 @@ extern "C" fn magic_GetFullPathNameTransactedA(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetFullPathNameTransactedW(
+extern "C" fn thunk_GetFullPathNameTransactedW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -5726,7 +5726,7 @@ extern "C" fn magic_GetFullPathNameTransactedW(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetFullPathNameW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetFullPathNameW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -5743,7 +5743,7 @@ extern "C" fn magic_GetFullPathNameW(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetIoRingInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetIoRingInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -5758,7 +5758,7 @@ extern "C" fn magic_GetIoRingInfo(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetLogicalDriveStringsA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetLogicalDriveStringsA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -5773,7 +5773,7 @@ extern "C" fn magic_GetLogicalDriveStringsA(context: &mut ExtendedContext, memor
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetLogicalDriveStringsW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetLogicalDriveStringsW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -5788,7 +5788,7 @@ extern "C" fn magic_GetLogicalDriveStringsW(context: &mut ExtendedContext, memor
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetLogicalDrives(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetLogicalDrives(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -5801,7 +5801,7 @@ extern "C" fn magic_GetLogicalDrives(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetLongPathNameA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetLongPathNameA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -5817,7 +5817,7 @@ extern "C" fn magic_GetLongPathNameA(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetLongPathNameTransactedA(
+extern "C" fn thunk_GetLongPathNameTransactedA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -5842,7 +5842,7 @@ extern "C" fn magic_GetLongPathNameTransactedA(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetLongPathNameTransactedW(
+extern "C" fn thunk_GetLongPathNameTransactedW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -5867,7 +5867,7 @@ extern "C" fn magic_GetLongPathNameTransactedW(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetLongPathNameW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetLongPathNameW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -5883,7 +5883,7 @@ extern "C" fn magic_GetLongPathNameW(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetNotificationResourceManager(
+extern "C" fn thunk_GetNotificationResourceManager(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -5910,7 +5910,7 @@ extern "C" fn magic_GetNotificationResourceManager(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetNotificationResourceManagerAsync(
+extern "C" fn thunk_GetNotificationResourceManagerAsync(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -5937,7 +5937,7 @@ extern "C" fn magic_GetNotificationResourceManagerAsync(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetShortPathNameA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetShortPathNameA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -5953,7 +5953,7 @@ extern "C" fn magic_GetShortPathNameA(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetShortPathNameW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetShortPathNameW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -5969,7 +5969,7 @@ extern "C" fn magic_GetShortPathNameW(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetTapeParameters(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetTapeParameters(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -5986,7 +5986,7 @@ extern "C" fn magic_GetTapeParameters(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetTapePosition(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetTapePosition(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -6010,7 +6010,7 @@ extern "C" fn magic_GetTapePosition(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetTapeStatus(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetTapeStatus(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -6024,7 +6024,7 @@ extern "C" fn magic_GetTapeStatus(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetTempFileNameA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetTempFileNameA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -6041,7 +6041,7 @@ extern "C" fn magic_GetTempFileNameA(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetTempFileNameW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetTempFileNameW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -6058,7 +6058,7 @@ extern "C" fn magic_GetTempFileNameW(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetTempPath2A(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetTempPath2A(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -6073,7 +6073,7 @@ extern "C" fn magic_GetTempPath2A(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetTempPath2W(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetTempPath2W(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -6088,7 +6088,7 @@ extern "C" fn magic_GetTempPath2W(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetTempPathA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetTempPathA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -6103,7 +6103,7 @@ extern "C" fn magic_GetTempPathA(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetTempPathW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetTempPathW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -6118,7 +6118,7 @@ extern "C" fn magic_GetTempPathW(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetTransactionId(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetTransactionId(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -6133,7 +6133,7 @@ extern "C" fn magic_GetTransactionId(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetTransactionInformation(
+extern "C" fn thunk_GetTransactionInformation(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -6164,7 +6164,7 @@ extern "C" fn magic_GetTransactionInformation(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetTransactionManagerId(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetTransactionManagerId(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -6179,7 +6179,7 @@ extern "C" fn magic_GetTransactionManagerId(context: &mut ExtendedContext, memor
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetVolumeInformationA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetVolumeInformationA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -6209,7 +6209,7 @@ extern "C" fn magic_GetVolumeInformationA(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetVolumeInformationByHandleW(
+extern "C" fn thunk_GetVolumeInformationByHandleW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -6242,7 +6242,7 @@ extern "C" fn magic_GetVolumeInformationByHandleW(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetVolumeInformationW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetVolumeInformationW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -6272,7 +6272,7 @@ extern "C" fn magic_GetVolumeInformationW(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetVolumeNameForVolumeMountPointA(
+extern "C" fn thunk_GetVolumeNameForVolumeMountPointA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -6295,7 +6295,7 @@ extern "C" fn magic_GetVolumeNameForVolumeMountPointA(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetVolumeNameForVolumeMountPointW(
+extern "C" fn thunk_GetVolumeNameForVolumeMountPointW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -6318,7 +6318,7 @@ extern "C" fn magic_GetVolumeNameForVolumeMountPointW(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetVolumePathNameA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetVolumePathNameA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -6334,7 +6334,7 @@ extern "C" fn magic_GetVolumePathNameA(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetVolumePathNameW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetVolumePathNameW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -6350,7 +6350,7 @@ extern "C" fn magic_GetVolumePathNameW(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetVolumePathNamesForVolumeNameA(
+extern "C" fn thunk_GetVolumePathNamesForVolumeNameA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -6375,7 +6375,7 @@ extern "C" fn magic_GetVolumePathNamesForVolumeNameA(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetVolumePathNamesForVolumeNameW(
+extern "C" fn thunk_GetVolumePathNamesForVolumeNameW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -6400,7 +6400,7 @@ extern "C" fn magic_GetVolumePathNamesForVolumeNameW(
     }
 }
 #[no_mangle]
-extern "C" fn magic_IsIoRingOpSupported(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_IsIoRingOpSupported(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -6415,7 +6415,7 @@ extern "C" fn magic_IsIoRingOpSupported(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_LZClose(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_LZClose(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -6429,7 +6429,7 @@ extern "C" fn magic_LZClose(context: &mut ExtendedContext, memory: FlatMemoryCtx
     }
 }
 #[no_mangle]
-extern "C" fn magic_LZCopy(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_LZCopy(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -6444,7 +6444,7 @@ extern "C" fn magic_LZCopy(context: &mut ExtendedContext, memory: FlatMemoryCtx)
     }
 }
 #[no_mangle]
-extern "C" fn magic_LZDone(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_LZDone(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -6457,7 +6457,7 @@ extern "C" fn magic_LZDone(context: &mut ExtendedContext, memory: FlatMemoryCtx)
     }
 }
 #[no_mangle]
-extern "C" fn magic_LZInit(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_LZInit(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -6471,7 +6471,7 @@ extern "C" fn magic_LZInit(context: &mut ExtendedContext, memory: FlatMemoryCtx)
     }
 }
 #[no_mangle]
-extern "C" fn magic_LZOpenFileA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_LZOpenFileA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -6487,7 +6487,7 @@ extern "C" fn magic_LZOpenFileA(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_LZOpenFileW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_LZOpenFileW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -6503,7 +6503,7 @@ extern "C" fn magic_LZOpenFileW(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_LZRead(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_LZRead(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -6519,7 +6519,7 @@ extern "C" fn magic_LZRead(context: &mut ExtendedContext, memory: FlatMemoryCtx)
     }
 }
 #[no_mangle]
-extern "C" fn magic_LZSeek(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_LZSeek(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -6535,7 +6535,7 @@ extern "C" fn magic_LZSeek(context: &mut ExtendedContext, memory: FlatMemoryCtx)
     }
 }
 #[no_mangle]
-extern "C" fn magic_LZStart(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_LZStart(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -6548,7 +6548,7 @@ extern "C" fn magic_LZStart(context: &mut ExtendedContext, memory: FlatMemoryCtx
     }
 }
 #[no_mangle]
-extern "C" fn magic_MoveFileA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_MoveFileA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -6563,7 +6563,7 @@ extern "C" fn magic_MoveFileA(context: &mut ExtendedContext, memory: FlatMemoryC
     }
 }
 #[no_mangle]
-extern "C" fn magic_MoveFileExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_MoveFileExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -6579,7 +6579,7 @@ extern "C" fn magic_MoveFileExA(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_MoveFileExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_MoveFileExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -6595,7 +6595,7 @@ extern "C" fn magic_MoveFileExW(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_MoveFileFromAppW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_MoveFileFromAppW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -6610,7 +6610,7 @@ extern "C" fn magic_MoveFileFromAppW(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_MoveFileTransactedA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_MoveFileTransactedA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -6636,7 +6636,7 @@ extern "C" fn magic_MoveFileTransactedA(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_MoveFileTransactedW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_MoveFileTransactedW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -6662,7 +6662,7 @@ extern "C" fn magic_MoveFileTransactedW(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_MoveFileW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_MoveFileW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -6677,7 +6677,7 @@ extern "C" fn magic_MoveFileW(context: &mut ExtendedContext, memory: FlatMemoryC
     }
 }
 #[no_mangle]
-extern "C" fn magic_MoveFileWithProgressA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_MoveFileWithProgressA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -6701,7 +6701,7 @@ extern "C" fn magic_MoveFileWithProgressA(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_MoveFileWithProgressW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_MoveFileWithProgressW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -6725,7 +6725,7 @@ extern "C" fn magic_MoveFileWithProgressW(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_NetConnectionEnum(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_NetConnectionEnum(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -6755,7 +6755,7 @@ extern "C" fn magic_NetConnectionEnum(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_NetFileClose(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_NetFileClose(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -6770,7 +6770,7 @@ extern "C" fn magic_NetFileClose(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_NetFileEnum(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_NetFileEnum(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -6802,7 +6802,7 @@ extern "C" fn magic_NetFileEnum(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_NetFileGetInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_NetFileGetInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -6819,7 +6819,7 @@ extern "C" fn magic_NetFileGetInfo(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_NetServerAliasAdd(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_NetServerAliasAdd(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -6835,7 +6835,7 @@ extern "C" fn magic_NetServerAliasAdd(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_NetServerAliasDel(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_NetServerAliasDel(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -6851,7 +6851,7 @@ extern "C" fn magic_NetServerAliasDel(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_NetServerAliasEnum(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_NetServerAliasEnum(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -6879,7 +6879,7 @@ extern "C" fn magic_NetServerAliasEnum(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_NetSessionDel(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_NetSessionDel(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -6895,7 +6895,7 @@ extern "C" fn magic_NetSessionDel(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_NetSessionEnum(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_NetSessionEnum(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -6927,7 +6927,7 @@ extern "C" fn magic_NetSessionEnum(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_NetSessionGetInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_NetSessionGetInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -6945,7 +6945,7 @@ extern "C" fn magic_NetSessionGetInfo(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_NetShareAdd(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_NetShareAdd(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -6962,7 +6962,7 @@ extern "C" fn magic_NetShareAdd(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_NetShareCheck(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_NetShareCheck(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -6978,7 +6978,7 @@ extern "C" fn magic_NetShareCheck(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_NetShareDel(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_NetShareDel(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -6994,7 +6994,7 @@ extern "C" fn magic_NetShareDel(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_NetShareDelEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_NetShareDelEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -7010,7 +7010,7 @@ extern "C" fn magic_NetShareDelEx(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_NetShareDelSticky(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_NetShareDelSticky(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -7026,7 +7026,7 @@ extern "C" fn magic_NetShareDelSticky(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_NetShareEnum(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_NetShareEnum(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -7054,7 +7054,7 @@ extern "C" fn magic_NetShareEnum(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_NetShareEnumSticky(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_NetShareEnumSticky(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -7082,7 +7082,7 @@ extern "C" fn magic_NetShareEnumSticky(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_NetShareGetInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_NetShareGetInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -7099,7 +7099,7 @@ extern "C" fn magic_NetShareGetInfo(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_NetShareSetInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_NetShareSetInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -7117,7 +7117,7 @@ extern "C" fn magic_NetShareSetInfo(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_NetStatisticsGet(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_NetStatisticsGet(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -7135,7 +7135,7 @@ extern "C" fn magic_NetStatisticsGet(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_NtCreateFile(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_NtCreateFile(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -7171,7 +7171,7 @@ extern "C" fn magic_NtCreateFile(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_OpenEncryptedFileRawA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_OpenEncryptedFileRawA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -7187,7 +7187,7 @@ extern "C" fn magic_OpenEncryptedFileRawA(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_OpenEncryptedFileRawW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_OpenEncryptedFileRawW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -7203,7 +7203,7 @@ extern "C" fn magic_OpenEncryptedFileRawW(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_OpenEnlistment(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_OpenEnlistment(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -7219,7 +7219,7 @@ extern "C" fn magic_OpenEnlistment(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_OpenFile(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_OpenFile(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -7235,7 +7235,7 @@ extern "C" fn magic_OpenFile(context: &mut ExtendedContext, memory: FlatMemoryCt
     }
 }
 #[no_mangle]
-extern "C" fn magic_OpenResourceManager(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_OpenResourceManager(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -7251,7 +7251,7 @@ extern "C" fn magic_OpenResourceManager(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_OpenTransaction(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_OpenTransaction(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -7266,7 +7266,7 @@ extern "C" fn magic_OpenTransaction(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_OpenTransactionManager(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_OpenTransactionManager(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -7282,7 +7282,7 @@ extern "C" fn magic_OpenTransactionManager(context: &mut ExtendedContext, memory
     }
 }
 #[no_mangle]
-extern "C" fn magic_OpenTransactionManagerById(
+extern "C" fn thunk_OpenTransactionManagerById(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -7302,7 +7302,7 @@ extern "C" fn magic_OpenTransactionManagerById(
     }
 }
 #[no_mangle]
-extern "C" fn magic_PopIoRingCompletion(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_PopIoRingCompletion(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -7317,7 +7317,7 @@ extern "C" fn magic_PopIoRingCompletion(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_PrePrepareComplete(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_PrePrepareComplete(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -7332,7 +7332,7 @@ extern "C" fn magic_PrePrepareComplete(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_PrePrepareEnlistment(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_PrePrepareEnlistment(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -7347,7 +7347,7 @@ extern "C" fn magic_PrePrepareEnlistment(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_PrepareComplete(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_PrepareComplete(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -7362,7 +7362,7 @@ extern "C" fn magic_PrepareComplete(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_PrepareEnlistment(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_PrepareEnlistment(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -7377,7 +7377,7 @@ extern "C" fn magic_PrepareEnlistment(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_PrepareTape(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_PrepareTape(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -7393,7 +7393,7 @@ extern "C" fn magic_PrepareTape(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_QueryDosDeviceA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_QueryDosDeviceA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -7409,7 +7409,7 @@ extern "C" fn magic_QueryDosDeviceA(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_QueryDosDeviceW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_QueryDosDeviceW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -7425,7 +7425,7 @@ extern "C" fn magic_QueryDosDeviceW(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_QueryIoRingCapabilities(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_QueryIoRingCapabilities(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -7439,7 +7439,7 @@ extern "C" fn magic_QueryIoRingCapabilities(context: &mut ExtendedContext, memor
     }
 }
 #[no_mangle]
-extern "C" fn magic_ReOpenFile(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ReOpenFile(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -7461,7 +7461,7 @@ extern "C" fn magic_ReOpenFile(context: &mut ExtendedContext, memory: FlatMemory
     }
 }
 #[no_mangle]
-extern "C" fn magic_ReadDirectoryChangesExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ReadDirectoryChangesExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -7493,7 +7493,7 @@ extern "C" fn magic_ReadDirectoryChangesExW(context: &mut ExtendedContext, memor
     }
 }
 #[no_mangle]
-extern "C" fn magic_ReadDirectoryChangesW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ReadDirectoryChangesW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -7523,7 +7523,7 @@ extern "C" fn magic_ReadDirectoryChangesW(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_ReadEncryptedFileRaw(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ReadEncryptedFileRaw(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -7539,7 +7539,7 @@ extern "C" fn magic_ReadEncryptedFileRaw(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_ReadFile(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ReadFile(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -7563,7 +7563,7 @@ extern "C" fn magic_ReadFile(context: &mut ExtendedContext, memory: FlatMemoryCt
     }
 }
 #[no_mangle]
-extern "C" fn magic_ReadFileEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ReadFileEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -7587,7 +7587,7 @@ extern "C" fn magic_ReadFileEx(context: &mut ExtendedContext, memory: FlatMemory
     }
 }
 #[no_mangle]
-extern "C" fn magic_ReadFileScatter(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ReadFileScatter(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -7611,7 +7611,7 @@ extern "C" fn magic_ReadFileScatter(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_ReadOnlyEnlistment(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ReadOnlyEnlistment(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -7626,7 +7626,7 @@ extern "C" fn magic_ReadOnlyEnlistment(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_RecoverEnlistment(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_RecoverEnlistment(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -7641,7 +7641,7 @@ extern "C" fn magic_RecoverEnlistment(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_RecoverResourceManager(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_RecoverResourceManager(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -7655,7 +7655,7 @@ extern "C" fn magic_RecoverResourceManager(context: &mut ExtendedContext, memory
     }
 }
 #[no_mangle]
-extern "C" fn magic_RecoverTransactionManager(
+extern "C" fn thunk_RecoverTransactionManager(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -7672,7 +7672,7 @@ extern "C" fn magic_RecoverTransactionManager(
     }
 }
 #[no_mangle]
-extern "C" fn magic_RemoveDirectoryA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_RemoveDirectoryA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -7686,7 +7686,7 @@ extern "C" fn magic_RemoveDirectoryA(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_RemoveDirectoryFromAppW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_RemoveDirectoryFromAppW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -7700,7 +7700,7 @@ extern "C" fn magic_RemoveDirectoryFromAppW(context: &mut ExtendedContext, memor
     }
 }
 #[no_mangle]
-extern "C" fn magic_RemoveDirectoryTransactedA(
+extern "C" fn thunk_RemoveDirectoryTransactedA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -7718,7 +7718,7 @@ extern "C" fn magic_RemoveDirectoryTransactedA(
     }
 }
 #[no_mangle]
-extern "C" fn magic_RemoveDirectoryTransactedW(
+extern "C" fn thunk_RemoveDirectoryTransactedW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -7736,7 +7736,7 @@ extern "C" fn magic_RemoveDirectoryTransactedW(
     }
 }
 #[no_mangle]
-extern "C" fn magic_RemoveDirectoryW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_RemoveDirectoryW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -7750,7 +7750,7 @@ extern "C" fn magic_RemoveDirectoryW(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_RenameTransactionManager(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_RenameTransactionManager(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -7765,7 +7765,7 @@ extern "C" fn magic_RenameTransactionManager(context: &mut ExtendedContext, memo
     }
 }
 #[no_mangle]
-extern "C" fn magic_ReplaceFileA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ReplaceFileA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -7791,7 +7791,7 @@ extern "C" fn magic_ReplaceFileA(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_ReplaceFileFromAppW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ReplaceFileFromAppW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -7817,7 +7817,7 @@ extern "C" fn magic_ReplaceFileFromAppW(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_ReplaceFileW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ReplaceFileW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -7843,7 +7843,7 @@ extern "C" fn magic_ReplaceFileW(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_RollbackComplete(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_RollbackComplete(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -7858,7 +7858,7 @@ extern "C" fn magic_RollbackComplete(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_RollbackEnlistment(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_RollbackEnlistment(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -7873,7 +7873,7 @@ extern "C" fn magic_RollbackEnlistment(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_RollbackTransaction(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_RollbackTransaction(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -7887,7 +7887,7 @@ extern "C" fn magic_RollbackTransaction(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_RollbackTransactionAsync(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_RollbackTransactionAsync(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -7901,7 +7901,7 @@ extern "C" fn magic_RollbackTransactionAsync(context: &mut ExtendedContext, memo
     }
 }
 #[no_mangle]
-extern "C" fn magic_RollforwardTransactionManager(
+extern "C" fn thunk_RollforwardTransactionManager(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -7919,7 +7919,7 @@ extern "C" fn magic_RollforwardTransactionManager(
     }
 }
 #[no_mangle]
-extern "C" fn magic_SearchPathA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SearchPathA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -7945,7 +7945,7 @@ extern "C" fn magic_SearchPathA(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_SearchPathW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SearchPathW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -7971,7 +7971,7 @@ extern "C" fn magic_SearchPathW(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetEndOfFile(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetEndOfFile(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -7985,7 +7985,7 @@ extern "C" fn magic_SetEndOfFile(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetEnlistmentRecoveryInformation(
+extern "C" fn thunk_SetEnlistmentRecoveryInformation(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -8004,7 +8004,7 @@ extern "C" fn magic_SetEnlistmentRecoveryInformation(
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetFileApisToANSI(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetFileApisToANSI(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -8017,7 +8017,7 @@ extern "C" fn magic_SetFileApisToANSI(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetFileApisToOEM(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetFileApisToOEM(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -8030,7 +8030,7 @@ extern "C" fn magic_SetFileApisToOEM(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetFileAttributesA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetFileAttributesA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -8045,7 +8045,7 @@ extern "C" fn magic_SetFileAttributesA(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetFileAttributesFromAppW(
+extern "C" fn thunk_SetFileAttributesFromAppW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -8063,7 +8063,7 @@ extern "C" fn magic_SetFileAttributesFromAppW(
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetFileAttributesTransactedA(
+extern "C" fn thunk_SetFileAttributesTransactedA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -8082,7 +8082,7 @@ extern "C" fn magic_SetFileAttributesTransactedA(
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetFileAttributesTransactedW(
+extern "C" fn thunk_SetFileAttributesTransactedW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -8101,7 +8101,7 @@ extern "C" fn magic_SetFileAttributesTransactedW(
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetFileAttributesW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetFileAttributesW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -8116,7 +8116,7 @@ extern "C" fn magic_SetFileAttributesW(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetFileBandwidthReservation(
+extern "C" fn thunk_SetFileBandwidthReservation(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -8145,7 +8145,7 @@ extern "C" fn magic_SetFileBandwidthReservation(
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetFileCompletionNotificationModes(
+extern "C" fn thunk_SetFileCompletionNotificationModes(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -8163,7 +8163,7 @@ extern "C" fn magic_SetFileCompletionNotificationModes(
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetFileInformationByHandle(
+extern "C" fn thunk_SetFileInformationByHandle(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -8188,7 +8188,7 @@ extern "C" fn magic_SetFileInformationByHandle(
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetFileIoOverlappedRange(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetFileIoOverlappedRange(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -8204,7 +8204,7 @@ extern "C" fn magic_SetFileIoOverlappedRange(context: &mut ExtendedContext, memo
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetFilePointer(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetFilePointer(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -8226,7 +8226,7 @@ extern "C" fn magic_SetFilePointer(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetFilePointerEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetFilePointerEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -8248,7 +8248,7 @@ extern "C" fn magic_SetFilePointerEx(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetFileShortNameA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetFileShortNameA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -8263,7 +8263,7 @@ extern "C" fn magic_SetFileShortNameA(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetFileShortNameW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetFileShortNameW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -8278,7 +8278,7 @@ extern "C" fn magic_SetFileShortNameW(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetFileTime(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetFileTime(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -8300,7 +8300,7 @@ extern "C" fn magic_SetFileTime(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetFileValidData(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetFileValidData(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -8315,7 +8315,7 @@ extern "C" fn magic_SetFileValidData(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetIoRingCompletionEvent(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetIoRingCompletionEvent(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -8330,7 +8330,7 @@ extern "C" fn magic_SetIoRingCompletionEvent(context: &mut ExtendedContext, memo
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetResourceManagerCompletionPort(
+extern "C" fn thunk_SetResourceManagerCompletionPort(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -8353,7 +8353,7 @@ extern "C" fn magic_SetResourceManagerCompletionPort(
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetSearchPathMode(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetSearchPathMode(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -8367,7 +8367,7 @@ extern "C" fn magic_SetSearchPathMode(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetTapeParameters(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetTapeParameters(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -8383,7 +8383,7 @@ extern "C" fn magic_SetTapeParameters(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetTapePosition(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetTapePosition(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -8409,7 +8409,7 @@ extern "C" fn magic_SetTapePosition(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetTransactionInformation(
+extern "C" fn thunk_SetTransactionInformation(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -8436,7 +8436,7 @@ extern "C" fn magic_SetTransactionInformation(
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetVolumeLabelA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetVolumeLabelA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -8451,7 +8451,7 @@ extern "C" fn magic_SetVolumeLabelA(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetVolumeLabelW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetVolumeLabelW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -8466,7 +8466,7 @@ extern "C" fn magic_SetVolumeLabelW(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetVolumeMountPointA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetVolumeMountPointA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -8481,7 +8481,7 @@ extern "C" fn magic_SetVolumeMountPointA(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetVolumeMountPointW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetVolumeMountPointW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -8496,7 +8496,7 @@ extern "C" fn magic_SetVolumeMountPointW(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_SinglePhaseReject(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SinglePhaseReject(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -8511,7 +8511,7 @@ extern "C" fn magic_SinglePhaseReject(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_SubmitIoRing(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SubmitIoRing(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -8528,7 +8528,7 @@ extern "C" fn magic_SubmitIoRing(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_TxfGetThreadMiniVersionForCreate(
+extern "C" fn thunk_TxfGetThreadMiniVersionForCreate(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -8545,7 +8545,7 @@ extern "C" fn magic_TxfGetThreadMiniVersionForCreate(
     }
 }
 #[no_mangle]
-extern "C" fn magic_TxfLogCreateFileReadContext(
+extern "C" fn thunk_TxfLogCreateFileReadContext(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -8572,7 +8572,7 @@ extern "C" fn magic_TxfLogCreateFileReadContext(
     }
 }
 #[no_mangle]
-extern "C" fn magic_TxfLogCreateRangeReadContext(
+extern "C" fn thunk_TxfLogCreateRangeReadContext(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -8603,7 +8603,7 @@ extern "C" fn magic_TxfLogCreateRangeReadContext(
     }
 }
 #[no_mangle]
-extern "C" fn magic_TxfLogDestroyReadContext(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_TxfLogDestroyReadContext(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -8617,7 +8617,7 @@ extern "C" fn magic_TxfLogDestroyReadContext(context: &mut ExtendedContext, memo
     }
 }
 #[no_mangle]
-extern "C" fn magic_TxfLogReadRecords(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_TxfLogReadRecords(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -8641,7 +8641,7 @@ extern "C" fn magic_TxfLogReadRecords(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_TxfLogRecordGetFileName(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_TxfLogRecordGetFileName(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -8665,7 +8665,7 @@ extern "C" fn magic_TxfLogRecordGetFileName(context: &mut ExtendedContext, memor
     }
 }
 #[no_mangle]
-extern "C" fn magic_TxfLogRecordGetGenericType(
+extern "C" fn thunk_TxfLogRecordGetGenericType(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -8690,7 +8690,7 @@ extern "C" fn magic_TxfLogRecordGetGenericType(
     }
 }
 #[no_mangle]
-extern "C" fn magic_TxfReadMetadataInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_TxfReadMetadataInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -8714,7 +8714,7 @@ extern "C" fn magic_TxfReadMetadataInfo(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_TxfSetThreadMiniVersionForCreate(
+extern "C" fn thunk_TxfSetThreadMiniVersionForCreate(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -8731,7 +8731,7 @@ extern "C" fn magic_TxfSetThreadMiniVersionForCreate(
     }
 }
 #[no_mangle]
-extern "C" fn magic_UnlockFile(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_UnlockFile(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -8755,7 +8755,7 @@ extern "C" fn magic_UnlockFile(context: &mut ExtendedContext, memory: FlatMemory
     }
 }
 #[no_mangle]
-extern "C" fn magic_UnlockFileEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_UnlockFileEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -8779,7 +8779,7 @@ extern "C" fn magic_UnlockFileEx(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_VerFindFileA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_VerFindFileA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -8809,7 +8809,7 @@ extern "C" fn magic_VerFindFileA(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_VerFindFileW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_VerFindFileW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -8839,7 +8839,7 @@ extern "C" fn magic_VerFindFileW(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_VerInstallFileA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_VerInstallFileA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -8869,7 +8869,7 @@ extern "C" fn magic_VerInstallFileA(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_VerInstallFileW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_VerInstallFileW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -8899,7 +8899,7 @@ extern "C" fn magic_VerInstallFileW(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_VerLanguageNameA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_VerLanguageNameA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -8915,7 +8915,7 @@ extern "C" fn magic_VerLanguageNameA(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_VerLanguageNameW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_VerLanguageNameW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -8931,7 +8931,7 @@ extern "C" fn magic_VerLanguageNameW(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_VerQueryValueA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_VerQueryValueA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -8948,7 +8948,7 @@ extern "C" fn magic_VerQueryValueA(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_VerQueryValueW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_VerQueryValueW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -8965,7 +8965,7 @@ extern "C" fn magic_VerQueryValueW(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_WofEnumEntries(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_WofEnumEntries(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -8982,7 +8982,7 @@ extern "C" fn magic_WofEnumEntries(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_WofFileEnumFiles(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_WofFileEnumFiles(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -8999,7 +8999,7 @@ extern "C" fn magic_WofFileEnumFiles(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_WofGetDriverVersion(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_WofGetDriverVersion(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -9015,7 +9015,7 @@ extern "C" fn magic_WofGetDriverVersion(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_WofIsExternalFile(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_WofIsExternalFile(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -9039,7 +9039,7 @@ extern "C" fn magic_WofIsExternalFile(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_WofSetFileDataLocation(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_WofSetFileDataLocation(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -9056,7 +9056,7 @@ extern "C" fn magic_WofSetFileDataLocation(context: &mut ExtendedContext, memory
     }
 }
 #[no_mangle]
-extern "C" fn magic_WofShouldCompressBinaries(
+extern "C" fn thunk_WofShouldCompressBinaries(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -9074,7 +9074,7 @@ extern "C" fn magic_WofShouldCompressBinaries(
     }
 }
 #[no_mangle]
-extern "C" fn magic_WofWimAddEntry(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_WofWimAddEntry(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -9092,7 +9092,7 @@ extern "C" fn magic_WofWimAddEntry(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_WofWimEnumFiles(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_WofWimEnumFiles(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -9109,7 +9109,7 @@ extern "C" fn magic_WofWimEnumFiles(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_WofWimRemoveEntry(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_WofWimRemoveEntry(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -9124,7 +9124,7 @@ extern "C" fn magic_WofWimRemoveEntry(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_WofWimSuspendEntry(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_WofWimSuspendEntry(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -9139,7 +9139,7 @@ extern "C" fn magic_WofWimSuspendEntry(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_WofWimUpdateEntry(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_WofWimUpdateEntry(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -9155,7 +9155,7 @@ extern "C" fn magic_WofWimUpdateEntry(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_Wow64DisableWow64FsRedirection(
+extern "C" fn thunk_Wow64DisableWow64FsRedirection(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -9172,7 +9172,7 @@ extern "C" fn magic_Wow64DisableWow64FsRedirection(
     }
 }
 #[no_mangle]
-extern "C" fn magic_Wow64EnableWow64FsRedirection(
+extern "C" fn thunk_Wow64EnableWow64FsRedirection(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -9189,7 +9189,7 @@ extern "C" fn magic_Wow64EnableWow64FsRedirection(
     }
 }
 #[no_mangle]
-extern "C" fn magic_Wow64RevertWow64FsRedirection(
+extern "C" fn thunk_Wow64RevertWow64FsRedirection(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -9206,7 +9206,7 @@ extern "C" fn magic_Wow64RevertWow64FsRedirection(
     }
 }
 #[no_mangle]
-extern "C" fn magic_WriteEncryptedFileRaw(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_WriteEncryptedFileRaw(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -9222,7 +9222,7 @@ extern "C" fn magic_WriteEncryptedFileRaw(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_WriteFile(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_WriteFile(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -9246,7 +9246,7 @@ extern "C" fn magic_WriteFile(context: &mut ExtendedContext, memory: FlatMemoryC
     }
 }
 #[no_mangle]
-extern "C" fn magic_WriteFileEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_WriteFileEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -9270,7 +9270,7 @@ extern "C" fn magic_WriteFileEx(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_WriteFileGather(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_WriteFileGather(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -9294,7 +9294,7 @@ extern "C" fn magic_WriteFileGather(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_WriteTapemark(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_WriteTapemark(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::Storage::FileSystem::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -9311,7 +9311,7 @@ extern "C" fn magic_WriteTapemark(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_AddConsoleAliasA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_AddConsoleAliasA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -9327,7 +9327,7 @@ extern "C" fn magic_AddConsoleAliasA(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_AddConsoleAliasW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_AddConsoleAliasW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -9343,7 +9343,7 @@ extern "C" fn magic_AddConsoleAliasW(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_AllocConsole(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_AllocConsole(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -9356,7 +9356,7 @@ extern "C" fn magic_AllocConsole(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_AttachConsole(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_AttachConsole(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -9370,7 +9370,7 @@ extern "C" fn magic_AttachConsole(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_ClosePseudoConsole(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ClosePseudoConsole(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -9384,7 +9384,7 @@ extern "C" fn magic_ClosePseudoConsole(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_CreatePseudoConsole(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CreatePseudoConsole(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -9402,7 +9402,7 @@ extern "C" fn magic_CreatePseudoConsole(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_ExpungeConsoleCommandHistoryA(
+extern "C" fn thunk_ExpungeConsoleCommandHistoryA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -9419,7 +9419,7 @@ extern "C" fn magic_ExpungeConsoleCommandHistoryA(
     }
 }
 #[no_mangle]
-extern "C" fn magic_ExpungeConsoleCommandHistoryW(
+extern "C" fn thunk_ExpungeConsoleCommandHistoryW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -9436,7 +9436,7 @@ extern "C" fn magic_ExpungeConsoleCommandHistoryW(
     }
 }
 #[no_mangle]
-extern "C" fn magic_FillConsoleOutputAttribute(
+extern "C" fn thunk_FillConsoleOutputAttribute(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -9463,7 +9463,7 @@ extern "C" fn magic_FillConsoleOutputAttribute(
     }
 }
 #[no_mangle]
-extern "C" fn magic_FillConsoleOutputCharacterA(
+extern "C" fn thunk_FillConsoleOutputCharacterA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -9490,7 +9490,7 @@ extern "C" fn magic_FillConsoleOutputCharacterA(
     }
 }
 #[no_mangle]
-extern "C" fn magic_FillConsoleOutputCharacterW(
+extern "C" fn thunk_FillConsoleOutputCharacterW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -9517,7 +9517,7 @@ extern "C" fn magic_FillConsoleOutputCharacterW(
     }
 }
 #[no_mangle]
-extern "C" fn magic_FlushConsoleInputBuffer(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_FlushConsoleInputBuffer(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -9531,7 +9531,7 @@ extern "C" fn magic_FlushConsoleInputBuffer(context: &mut ExtendedContext, memor
     }
 }
 #[no_mangle]
-extern "C" fn magic_FreeConsole(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_FreeConsole(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -9544,7 +9544,7 @@ extern "C" fn magic_FreeConsole(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_GenerateConsoleCtrlEvent(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GenerateConsoleCtrlEvent(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -9559,7 +9559,7 @@ extern "C" fn magic_GenerateConsoleCtrlEvent(context: &mut ExtendedContext, memo
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetConsoleAliasA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetConsoleAliasA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -9576,7 +9576,7 @@ extern "C" fn magic_GetConsoleAliasA(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetConsoleAliasExesA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetConsoleAliasExesA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -9591,7 +9591,7 @@ extern "C" fn magic_GetConsoleAliasExesA(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetConsoleAliasExesLengthA(
+extern "C" fn thunk_GetConsoleAliasExesLengthA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -9607,7 +9607,7 @@ extern "C" fn magic_GetConsoleAliasExesLengthA(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetConsoleAliasExesLengthW(
+extern "C" fn thunk_GetConsoleAliasExesLengthW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -9623,7 +9623,7 @@ extern "C" fn magic_GetConsoleAliasExesLengthW(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetConsoleAliasExesW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetConsoleAliasExesW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -9638,7 +9638,7 @@ extern "C" fn magic_GetConsoleAliasExesW(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetConsoleAliasW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetConsoleAliasW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -9655,7 +9655,7 @@ extern "C" fn magic_GetConsoleAliasW(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetConsoleAliasesA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetConsoleAliasesA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -9671,7 +9671,7 @@ extern "C" fn magic_GetConsoleAliasesA(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetConsoleAliasesLengthA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetConsoleAliasesLengthA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -9685,7 +9685,7 @@ extern "C" fn magic_GetConsoleAliasesLengthA(context: &mut ExtendedContext, memo
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetConsoleAliasesLengthW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetConsoleAliasesLengthW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -9699,7 +9699,7 @@ extern "C" fn magic_GetConsoleAliasesLengthW(context: &mut ExtendedContext, memo
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetConsoleAliasesW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetConsoleAliasesW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -9715,7 +9715,7 @@ extern "C" fn magic_GetConsoleAliasesW(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetConsoleCP(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetConsoleCP(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -9728,7 +9728,7 @@ extern "C" fn magic_GetConsoleCP(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetConsoleCommandHistoryA(
+extern "C" fn thunk_GetConsoleCommandHistoryA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -9747,7 +9747,7 @@ extern "C" fn magic_GetConsoleCommandHistoryA(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetConsoleCommandHistoryLengthA(
+extern "C" fn thunk_GetConsoleCommandHistoryLengthA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -9764,7 +9764,7 @@ extern "C" fn magic_GetConsoleCommandHistoryLengthA(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetConsoleCommandHistoryLengthW(
+extern "C" fn thunk_GetConsoleCommandHistoryLengthW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -9781,7 +9781,7 @@ extern "C" fn magic_GetConsoleCommandHistoryLengthW(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetConsoleCommandHistoryW(
+extern "C" fn thunk_GetConsoleCommandHistoryW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -9800,7 +9800,7 @@ extern "C" fn magic_GetConsoleCommandHistoryW(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetConsoleCursorInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetConsoleCursorInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -9815,7 +9815,7 @@ extern "C" fn magic_GetConsoleCursorInfo(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetConsoleDisplayMode(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetConsoleDisplayMode(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -9829,7 +9829,7 @@ extern "C" fn magic_GetConsoleDisplayMode(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetConsoleHistoryInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetConsoleHistoryInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -9843,7 +9843,7 @@ extern "C" fn magic_GetConsoleHistoryInfo(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetConsoleMode(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetConsoleMode(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -9858,7 +9858,7 @@ extern "C" fn magic_GetConsoleMode(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetConsoleOriginalTitleA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetConsoleOriginalTitleA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -9873,7 +9873,7 @@ extern "C" fn magic_GetConsoleOriginalTitleA(context: &mut ExtendedContext, memo
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetConsoleOriginalTitleW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetConsoleOriginalTitleW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -9888,7 +9888,7 @@ extern "C" fn magic_GetConsoleOriginalTitleW(context: &mut ExtendedContext, memo
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetConsoleOutputCP(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetConsoleOutputCP(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -9901,7 +9901,7 @@ extern "C" fn magic_GetConsoleOutputCP(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetConsoleProcessList(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetConsoleProcessList(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -9916,7 +9916,7 @@ extern "C" fn magic_GetConsoleProcessList(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetConsoleScreenBufferInfo(
+extern "C" fn thunk_GetConsoleScreenBufferInfo(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -9934,7 +9934,7 @@ extern "C" fn magic_GetConsoleScreenBufferInfo(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetConsoleScreenBufferInfoEx(
+extern "C" fn thunk_GetConsoleScreenBufferInfoEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -9953,7 +9953,7 @@ extern "C" fn magic_GetConsoleScreenBufferInfoEx(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetConsoleSelectionInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetConsoleSelectionInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -9967,7 +9967,7 @@ extern "C" fn magic_GetConsoleSelectionInfo(context: &mut ExtendedContext, memor
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetConsoleTitleA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetConsoleTitleA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -9982,7 +9982,7 @@ extern "C" fn magic_GetConsoleTitleA(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetConsoleTitleW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetConsoleTitleW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -9997,7 +9997,7 @@ extern "C" fn magic_GetConsoleTitleW(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetConsoleWindow(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetConsoleWindow(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -10010,7 +10010,7 @@ extern "C" fn magic_GetConsoleWindow(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetCurrentConsoleFont(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetCurrentConsoleFont(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -10027,7 +10027,7 @@ extern "C" fn magic_GetCurrentConsoleFont(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetCurrentConsoleFontEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetCurrentConsoleFontEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -10047,7 +10047,7 @@ extern "C" fn magic_GetCurrentConsoleFontEx(context: &mut ExtendedContext, memor
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetNumberOfConsoleInputEvents(
+extern "C" fn thunk_GetNumberOfConsoleInputEvents(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -10065,7 +10065,7 @@ extern "C" fn magic_GetNumberOfConsoleInputEvents(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetNumberOfConsoleMouseButtons(
+extern "C" fn thunk_GetNumberOfConsoleMouseButtons(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -10082,7 +10082,7 @@ extern "C" fn magic_GetNumberOfConsoleMouseButtons(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetStdHandle(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetStdHandle(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -10096,7 +10096,7 @@ extern "C" fn magic_GetStdHandle(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_PeekConsoleInputA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_PeekConsoleInputA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -10118,7 +10118,7 @@ extern "C" fn magic_PeekConsoleInputA(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_PeekConsoleInputW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_PeekConsoleInputW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -10140,7 +10140,7 @@ extern "C" fn magic_PeekConsoleInputW(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_ReadConsoleA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ReadConsoleA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -10164,7 +10164,7 @@ extern "C" fn magic_ReadConsoleA(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_ReadConsoleInputA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ReadConsoleInputA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -10186,7 +10186,7 @@ extern "C" fn magic_ReadConsoleInputA(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_ReadConsoleInputW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ReadConsoleInputW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -10208,7 +10208,7 @@ extern "C" fn magic_ReadConsoleInputW(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_ReadConsoleOutputA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ReadConsoleOutputA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -10232,7 +10232,7 @@ extern "C" fn magic_ReadConsoleOutputA(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_ReadConsoleOutputAttribute(
+extern "C" fn thunk_ReadConsoleOutputAttribute(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -10259,7 +10259,7 @@ extern "C" fn magic_ReadConsoleOutputAttribute(
     }
 }
 #[no_mangle]
-extern "C" fn magic_ReadConsoleOutputCharacterA(
+extern "C" fn thunk_ReadConsoleOutputCharacterA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -10286,7 +10286,7 @@ extern "C" fn magic_ReadConsoleOutputCharacterA(
     }
 }
 #[no_mangle]
-extern "C" fn magic_ReadConsoleOutputCharacterW(
+extern "C" fn thunk_ReadConsoleOutputCharacterW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -10313,7 +10313,7 @@ extern "C" fn magic_ReadConsoleOutputCharacterW(
     }
 }
 #[no_mangle]
-extern "C" fn magic_ReadConsoleOutputW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ReadConsoleOutputW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -10337,7 +10337,7 @@ extern "C" fn magic_ReadConsoleOutputW(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_ReadConsoleW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ReadConsoleW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -10361,7 +10361,7 @@ extern "C" fn magic_ReadConsoleW(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_ResizePseudoConsole(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ResizePseudoConsole(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -10376,7 +10376,7 @@ extern "C" fn magic_ResizePseudoConsole(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_ScrollConsoleScreenBufferA(
+extern "C" fn thunk_ScrollConsoleScreenBufferA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -10403,7 +10403,7 @@ extern "C" fn magic_ScrollConsoleScreenBufferA(
     }
 }
 #[no_mangle]
-extern "C" fn magic_ScrollConsoleScreenBufferW(
+extern "C" fn thunk_ScrollConsoleScreenBufferW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -10430,7 +10430,7 @@ extern "C" fn magic_ScrollConsoleScreenBufferW(
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetConsoleActiveScreenBuffer(
+extern "C" fn thunk_SetConsoleActiveScreenBuffer(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -10447,7 +10447,7 @@ extern "C" fn magic_SetConsoleActiveScreenBuffer(
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetConsoleCP(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetConsoleCP(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -10461,7 +10461,7 @@ extern "C" fn magic_SetConsoleCP(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetConsoleCtrlHandler(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetConsoleCtrlHandler(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -10476,7 +10476,7 @@ extern "C" fn magic_SetConsoleCtrlHandler(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetConsoleCursorInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetConsoleCursorInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -10491,7 +10491,7 @@ extern "C" fn magic_SetConsoleCursorInfo(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetConsoleCursorPosition(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetConsoleCursorPosition(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -10506,7 +10506,7 @@ extern "C" fn magic_SetConsoleCursorPosition(context: &mut ExtendedContext, memo
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetConsoleDisplayMode(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetConsoleDisplayMode(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -10523,7 +10523,7 @@ extern "C" fn magic_SetConsoleDisplayMode(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetConsoleHistoryInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetConsoleHistoryInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -10537,7 +10537,7 @@ extern "C" fn magic_SetConsoleHistoryInfo(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetConsoleMode(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetConsoleMode(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -10552,7 +10552,7 @@ extern "C" fn magic_SetConsoleMode(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetConsoleNumberOfCommandsA(
+extern "C" fn thunk_SetConsoleNumberOfCommandsA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -10570,7 +10570,7 @@ extern "C" fn magic_SetConsoleNumberOfCommandsA(
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetConsoleNumberOfCommandsW(
+extern "C" fn thunk_SetConsoleNumberOfCommandsW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -10588,7 +10588,7 @@ extern "C" fn magic_SetConsoleNumberOfCommandsW(
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetConsoleOutputCP(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetConsoleOutputCP(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -10602,7 +10602,7 @@ extern "C" fn magic_SetConsoleOutputCP(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetConsoleScreenBufferInfoEx(
+extern "C" fn thunk_SetConsoleScreenBufferInfoEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -10621,7 +10621,7 @@ extern "C" fn magic_SetConsoleScreenBufferInfoEx(
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetConsoleScreenBufferSize(
+extern "C" fn thunk_SetConsoleScreenBufferSize(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -10639,7 +10639,7 @@ extern "C" fn magic_SetConsoleScreenBufferSize(
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetConsoleTextAttribute(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetConsoleTextAttribute(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -10654,7 +10654,7 @@ extern "C" fn magic_SetConsoleTextAttribute(context: &mut ExtendedContext, memor
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetConsoleTitleA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetConsoleTitleA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -10668,7 +10668,7 @@ extern "C" fn magic_SetConsoleTitleA(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetConsoleTitleW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetConsoleTitleW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -10682,7 +10682,7 @@ extern "C" fn magic_SetConsoleTitleW(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetConsoleWindowInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetConsoleWindowInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -10698,7 +10698,7 @@ extern "C" fn magic_SetConsoleWindowInfo(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetCurrentConsoleFontEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetCurrentConsoleFontEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -10718,7 +10718,7 @@ extern "C" fn magic_SetCurrentConsoleFontEx(context: &mut ExtendedContext, memor
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetStdHandle(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetStdHandle(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -10733,7 +10733,7 @@ extern "C" fn magic_SetStdHandle(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetStdHandleEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetStdHandleEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -10749,7 +10749,7 @@ extern "C" fn magic_SetStdHandleEx(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_WriteConsoleA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_WriteConsoleA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -10773,7 +10773,7 @@ extern "C" fn magic_WriteConsoleA(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_WriteConsoleInputA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_WriteConsoleInputA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -10795,7 +10795,7 @@ extern "C" fn magic_WriteConsoleInputA(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_WriteConsoleInputW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_WriteConsoleInputW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -10817,7 +10817,7 @@ extern "C" fn magic_WriteConsoleInputW(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_WriteConsoleOutputA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_WriteConsoleOutputA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -10841,7 +10841,7 @@ extern "C" fn magic_WriteConsoleOutputA(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_WriteConsoleOutputAttribute(
+extern "C" fn thunk_WriteConsoleOutputAttribute(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -10868,7 +10868,7 @@ extern "C" fn magic_WriteConsoleOutputAttribute(
     }
 }
 #[no_mangle]
-extern "C" fn magic_WriteConsoleOutputCharacterA(
+extern "C" fn thunk_WriteConsoleOutputCharacterA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -10895,7 +10895,7 @@ extern "C" fn magic_WriteConsoleOutputCharacterA(
     }
 }
 #[no_mangle]
-extern "C" fn magic_WriteConsoleOutputCharacterW(
+extern "C" fn thunk_WriteConsoleOutputCharacterW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -10922,7 +10922,7 @@ extern "C" fn magic_WriteConsoleOutputCharacterW(
     }
 }
 #[no_mangle]
-extern "C" fn magic_WriteConsoleOutputW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_WriteConsoleOutputW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -10946,7 +10946,7 @@ extern "C" fn magic_WriteConsoleOutputW(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_WriteConsoleW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_WriteConsoleW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Console::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -10970,7 +10970,7 @@ extern "C" fn magic_WriteConsoleW(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_RtlUnwind(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_RtlUnwind(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Diagnostics::Debug::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -10987,7 +10987,7 @@ extern "C" fn magic_RtlUnwind(context: &mut ExtendedContext, memory: FlatMemoryC
     }
 }
 #[no_mangle]
-extern "C" fn magic_UnhandledExceptionFilter(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_UnhandledExceptionFilter(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Diagnostics::Debug::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -11001,7 +11001,7 @@ extern "C" fn magic_UnhandledExceptionFilter(context: &mut ExtendedContext, memo
     }
 }
 #[no_mangle]
-extern "C" fn magic_CallEnclave(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CallEnclave(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Environment::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -11018,7 +11018,7 @@ extern "C" fn magic_CallEnclave(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_CreateEnclave(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CreateEnclave(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Environment::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -11048,7 +11048,7 @@ extern "C" fn magic_CreateEnclave(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_CreateEnvironmentBlock(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CreateEnvironmentBlock(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Environment::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -11064,7 +11064,7 @@ extern "C" fn magic_CreateEnvironmentBlock(context: &mut ExtendedContext, memory
     }
 }
 #[no_mangle]
-extern "C" fn magic_DeleteEnclave(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_DeleteEnclave(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Environment::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -11078,7 +11078,7 @@ extern "C" fn magic_DeleteEnclave(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_DestroyEnvironmentBlock(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_DestroyEnvironmentBlock(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Environment::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -11092,7 +11092,7 @@ extern "C" fn magic_DestroyEnvironmentBlock(context: &mut ExtendedContext, memor
     }
 }
 #[no_mangle]
-extern "C" fn magic_EnclaveGetAttestationReport(
+extern "C" fn thunk_EnclaveGetAttestationReport(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -11112,7 +11112,7 @@ extern "C" fn magic_EnclaveGetAttestationReport(
     }
 }
 #[no_mangle]
-extern "C" fn magic_EnclaveGetEnclaveInformation(
+extern "C" fn thunk_EnclaveGetEnclaveInformation(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -11130,7 +11130,7 @@ extern "C" fn magic_EnclaveGetEnclaveInformation(
     }
 }
 #[no_mangle]
-extern "C" fn magic_EnclaveSealData(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_EnclaveSealData(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Environment::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -11158,7 +11158,7 @@ extern "C" fn magic_EnclaveSealData(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_EnclaveUnsealData(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_EnclaveUnsealData(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Environment::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -11186,7 +11186,7 @@ extern "C" fn magic_EnclaveUnsealData(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_EnclaveVerifyAttestationReport(
+extern "C" fn thunk_EnclaveVerifyAttestationReport(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -11205,7 +11205,7 @@ extern "C" fn magic_EnclaveVerifyAttestationReport(
     }
 }
 #[no_mangle]
-extern "C" fn magic_ExpandEnvironmentStringsA(
+extern "C" fn thunk_ExpandEnvironmentStringsA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -11224,7 +11224,7 @@ extern "C" fn magic_ExpandEnvironmentStringsA(
     }
 }
 #[no_mangle]
-extern "C" fn magic_ExpandEnvironmentStringsForUserA(
+extern "C" fn thunk_ExpandEnvironmentStringsForUserA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -11244,7 +11244,7 @@ extern "C" fn magic_ExpandEnvironmentStringsForUserA(
     }
 }
 #[no_mangle]
-extern "C" fn magic_ExpandEnvironmentStringsForUserW(
+extern "C" fn thunk_ExpandEnvironmentStringsForUserW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -11264,7 +11264,7 @@ extern "C" fn magic_ExpandEnvironmentStringsForUserW(
     }
 }
 #[no_mangle]
-extern "C" fn magic_ExpandEnvironmentStringsW(
+extern "C" fn thunk_ExpandEnvironmentStringsW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -11283,7 +11283,7 @@ extern "C" fn magic_ExpandEnvironmentStringsW(
     }
 }
 #[no_mangle]
-extern "C" fn magic_FreeEnvironmentStringsA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_FreeEnvironmentStringsA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Environment::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -11297,7 +11297,7 @@ extern "C" fn magic_FreeEnvironmentStringsA(context: &mut ExtendedContext, memor
     }
 }
 #[no_mangle]
-extern "C" fn magic_FreeEnvironmentStringsW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_FreeEnvironmentStringsW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Environment::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -11311,7 +11311,7 @@ extern "C" fn magic_FreeEnvironmentStringsW(context: &mut ExtendedContext, memor
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetCommandLineA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetCommandLineA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Environment::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -11324,7 +11324,7 @@ extern "C" fn magic_GetCommandLineA(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetCommandLineW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetCommandLineW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Environment::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -11337,7 +11337,7 @@ extern "C" fn magic_GetCommandLineW(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetCurrentDirectoryA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetCurrentDirectoryA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Environment::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -11352,7 +11352,7 @@ extern "C" fn magic_GetCurrentDirectoryA(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetCurrentDirectoryW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetCurrentDirectoryW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Environment::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -11367,7 +11367,7 @@ extern "C" fn magic_GetCurrentDirectoryW(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetEnvironmentStrings(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetEnvironmentStrings(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Environment::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -11380,7 +11380,7 @@ extern "C" fn magic_GetEnvironmentStrings(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetEnvironmentStringsW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetEnvironmentStringsW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Environment::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -11393,7 +11393,7 @@ extern "C" fn magic_GetEnvironmentStringsW(context: &mut ExtendedContext, memory
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetEnvironmentVariableA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetEnvironmentVariableA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Environment::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -11409,7 +11409,7 @@ extern "C" fn magic_GetEnvironmentVariableA(context: &mut ExtendedContext, memor
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetEnvironmentVariableW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetEnvironmentVariableW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Environment::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -11425,7 +11425,7 @@ extern "C" fn magic_GetEnvironmentVariableW(context: &mut ExtendedContext, memor
     }
 }
 #[no_mangle]
-extern "C" fn magic_InitializeEnclave(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_InitializeEnclave(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Environment::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -11449,7 +11449,7 @@ extern "C" fn magic_InitializeEnclave(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_IsEnclaveTypeSupported(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_IsEnclaveTypeSupported(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Environment::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -11463,7 +11463,7 @@ extern "C" fn magic_IsEnclaveTypeSupported(context: &mut ExtendedContext, memory
     }
 }
 #[no_mangle]
-extern "C" fn magic_LoadEnclaveData(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_LoadEnclaveData(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Environment::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -11495,7 +11495,7 @@ extern "C" fn magic_LoadEnclaveData(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_LoadEnclaveImageA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_LoadEnclaveImageA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Environment::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -11510,7 +11510,7 @@ extern "C" fn magic_LoadEnclaveImageA(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_LoadEnclaveImageW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_LoadEnclaveImageW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Environment::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -11525,7 +11525,7 @@ extern "C" fn magic_LoadEnclaveImageW(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_NeedCurrentDirectoryForExePathA(
+extern "C" fn thunk_NeedCurrentDirectoryForExePathA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -11542,7 +11542,7 @@ extern "C" fn magic_NeedCurrentDirectoryForExePathA(
     }
 }
 #[no_mangle]
-extern "C" fn magic_NeedCurrentDirectoryForExePathW(
+extern "C" fn thunk_NeedCurrentDirectoryForExePathW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -11559,7 +11559,7 @@ extern "C" fn magic_NeedCurrentDirectoryForExePathW(
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetCurrentDirectoryA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetCurrentDirectoryA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Environment::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -11573,7 +11573,7 @@ extern "C" fn magic_SetCurrentDirectoryA(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetCurrentDirectoryW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetCurrentDirectoryW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Environment::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -11587,7 +11587,7 @@ extern "C" fn magic_SetCurrentDirectoryW(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetEnvironmentStringsW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetEnvironmentStringsW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Environment::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -11601,7 +11601,7 @@ extern "C" fn magic_SetEnvironmentStringsW(context: &mut ExtendedContext, memory
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetEnvironmentVariableA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetEnvironmentVariableA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Environment::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -11616,7 +11616,7 @@ extern "C" fn magic_SetEnvironmentVariableA(context: &mut ExtendedContext, memor
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetEnvironmentVariableW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetEnvironmentVariableW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Environment::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -11631,7 +11631,7 @@ extern "C" fn magic_SetEnvironmentVariableW(context: &mut ExtendedContext, memor
     }
 }
 #[no_mangle]
-extern "C" fn magic_TerminateEnclave(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_TerminateEnclave(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Environment::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -11646,7 +11646,7 @@ extern "C" fn magic_TerminateEnclave(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_BindIoCompletionCallback(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_BindIoCompletionCallback(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::IO::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -11662,7 +11662,7 @@ extern "C" fn magic_BindIoCompletionCallback(context: &mut ExtendedContext, memo
     }
 }
 #[no_mangle]
-extern "C" fn magic_CancelIo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CancelIo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::IO::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -11676,7 +11676,7 @@ extern "C" fn magic_CancelIo(context: &mut ExtendedContext, memory: FlatMemoryCt
     }
 }
 #[no_mangle]
-extern "C" fn magic_CancelIoEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CancelIoEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::IO::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -11691,7 +11691,7 @@ extern "C" fn magic_CancelIoEx(context: &mut ExtendedContext, memory: FlatMemory
     }
 }
 #[no_mangle]
-extern "C" fn magic_CancelSynchronousIo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CancelSynchronousIo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::IO::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -11705,7 +11705,7 @@ extern "C" fn magic_CancelSynchronousIo(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_CreateIoCompletionPort(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CreateIoCompletionPort(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::IO::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -11727,7 +11727,7 @@ extern "C" fn magic_CreateIoCompletionPort(context: &mut ExtendedContext, memory
     }
 }
 #[no_mangle]
-extern "C" fn magic_DeviceIoControl(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_DeviceIoControl(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::IO::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -11757,7 +11757,7 @@ extern "C" fn magic_DeviceIoControl(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetOverlappedResult(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetOverlappedResult(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::IO::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -11779,7 +11779,7 @@ extern "C" fn magic_GetOverlappedResult(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetOverlappedResultEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetOverlappedResultEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::IO::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -11803,7 +11803,7 @@ extern "C" fn magic_GetOverlappedResultEx(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetQueuedCompletionStatus(
+extern "C" fn thunk_GetQueuedCompletionStatus(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -11830,7 +11830,7 @@ extern "C" fn magic_GetQueuedCompletionStatus(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetQueuedCompletionStatusEx(
+extern "C" fn thunk_GetQueuedCompletionStatusEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -11859,7 +11859,7 @@ extern "C" fn magic_GetQueuedCompletionStatusEx(
     }
 }
 #[no_mangle]
-extern "C" fn magic_PostQueuedCompletionStatus(
+extern "C" fn thunk_PostQueuedCompletionStatus(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -11884,7 +11884,7 @@ extern "C" fn magic_PostQueuedCompletionStatus(
     }
 }
 #[no_mangle]
-extern "C" fn magic_RtlFirstEntrySList(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_RtlFirstEntrySList(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Kernel::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -11898,7 +11898,7 @@ extern "C" fn magic_RtlFirstEntrySList(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_RtlInitializeSListHead(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_RtlInitializeSListHead(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Kernel::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -11912,7 +11912,7 @@ extern "C" fn magic_RtlInitializeSListHead(context: &mut ExtendedContext, memory
     }
 }
 #[no_mangle]
-extern "C" fn magic_RtlInterlockedFlushSList(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_RtlInterlockedFlushSList(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Kernel::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -11926,7 +11926,7 @@ extern "C" fn magic_RtlInterlockedFlushSList(context: &mut ExtendedContext, memo
     }
 }
 #[no_mangle]
-extern "C" fn magic_RtlInterlockedPopEntrySList(
+extern "C" fn thunk_RtlInterlockedPopEntrySList(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -11943,7 +11943,7 @@ extern "C" fn magic_RtlInterlockedPopEntrySList(
     }
 }
 #[no_mangle]
-extern "C" fn magic_RtlInterlockedPushEntrySList(
+extern "C" fn thunk_RtlInterlockedPushEntrySList(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -11961,7 +11961,7 @@ extern "C" fn magic_RtlInterlockedPushEntrySList(
     }
 }
 #[no_mangle]
-extern "C" fn magic_RtlInterlockedPushListSListEx(
+extern "C" fn thunk_RtlInterlockedPushListSListEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -11981,7 +11981,7 @@ extern "C" fn magic_RtlInterlockedPushListSListEx(
     }
 }
 #[no_mangle]
-extern "C" fn magic_RtlQueryDepthSList(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_RtlQueryDepthSList(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Kernel::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -11995,7 +11995,7 @@ extern "C" fn magic_RtlQueryDepthSList(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_AddDllDirectory(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_AddDllDirectory(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::LibraryLoader::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -12009,7 +12009,7 @@ extern "C" fn magic_AddDllDirectory(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_BeginUpdateResourceA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_BeginUpdateResourceA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::LibraryLoader::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -12024,7 +12024,7 @@ extern "C" fn magic_BeginUpdateResourceA(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_BeginUpdateResourceW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_BeginUpdateResourceW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::LibraryLoader::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -12039,7 +12039,7 @@ extern "C" fn magic_BeginUpdateResourceW(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_DisableThreadLibraryCalls(
+extern "C" fn thunk_DisableThreadLibraryCalls(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -12056,7 +12056,7 @@ extern "C" fn magic_DisableThreadLibraryCalls(
     }
 }
 #[no_mangle]
-extern "C" fn magic_EndUpdateResourceA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_EndUpdateResourceA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::LibraryLoader::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -12071,7 +12071,7 @@ extern "C" fn magic_EndUpdateResourceA(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_EndUpdateResourceW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_EndUpdateResourceW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::LibraryLoader::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -12086,7 +12086,7 @@ extern "C" fn magic_EndUpdateResourceW(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_EnumResourceLanguagesA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_EnumResourceLanguagesA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::LibraryLoader::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -12104,7 +12104,7 @@ extern "C" fn magic_EnumResourceLanguagesA(context: &mut ExtendedContext, memory
     }
 }
 #[no_mangle]
-extern "C" fn magic_EnumResourceLanguagesExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_EnumResourceLanguagesExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::LibraryLoader::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -12132,7 +12132,7 @@ extern "C" fn magic_EnumResourceLanguagesExA(context: &mut ExtendedContext, memo
     }
 }
 #[no_mangle]
-extern "C" fn magic_EnumResourceLanguagesExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_EnumResourceLanguagesExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::LibraryLoader::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -12160,7 +12160,7 @@ extern "C" fn magic_EnumResourceLanguagesExW(context: &mut ExtendedContext, memo
     }
 }
 #[no_mangle]
-extern "C" fn magic_EnumResourceLanguagesW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_EnumResourceLanguagesW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::LibraryLoader::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -12178,7 +12178,7 @@ extern "C" fn magic_EnumResourceLanguagesW(context: &mut ExtendedContext, memory
     }
 }
 #[no_mangle]
-extern "C" fn magic_EnumResourceNamesA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_EnumResourceNamesA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::LibraryLoader::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -12195,7 +12195,7 @@ extern "C" fn magic_EnumResourceNamesA(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_EnumResourceNamesExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_EnumResourceNamesExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::LibraryLoader::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -12215,7 +12215,7 @@ extern "C" fn magic_EnumResourceNamesExA(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_EnumResourceNamesExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_EnumResourceNamesExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::LibraryLoader::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -12235,7 +12235,7 @@ extern "C" fn magic_EnumResourceNamesExW(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_EnumResourceNamesW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_EnumResourceNamesW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::LibraryLoader::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -12252,7 +12252,7 @@ extern "C" fn magic_EnumResourceNamesW(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_EnumResourceTypesA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_EnumResourceTypesA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::LibraryLoader::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -12268,7 +12268,7 @@ extern "C" fn magic_EnumResourceTypesA(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_EnumResourceTypesExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_EnumResourceTypesExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::LibraryLoader::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -12286,7 +12286,7 @@ extern "C" fn magic_EnumResourceTypesExA(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_EnumResourceTypesExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_EnumResourceTypesExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::LibraryLoader::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -12304,7 +12304,7 @@ extern "C" fn magic_EnumResourceTypesExW(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_EnumResourceTypesW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_EnumResourceTypesW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::LibraryLoader::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -12320,7 +12320,7 @@ extern "C" fn magic_EnumResourceTypesW(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_FindResourceA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_FindResourceA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::LibraryLoader::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -12336,7 +12336,7 @@ extern "C" fn magic_FindResourceA(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_FindResourceExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_FindResourceExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::LibraryLoader::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -12353,7 +12353,7 @@ extern "C" fn magic_FindResourceExA(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_FindResourceExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_FindResourceExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::LibraryLoader::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -12370,7 +12370,7 @@ extern "C" fn magic_FindResourceExW(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_FindResourceW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_FindResourceW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::LibraryLoader::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -12386,7 +12386,7 @@ extern "C" fn magic_FindResourceW(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_FreeLibrary(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_FreeLibrary(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::LibraryLoader::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -12400,7 +12400,7 @@ extern "C" fn magic_FreeLibrary(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_FreeLibraryAndExitThread(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_FreeLibraryAndExitThread(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::LibraryLoader::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -12415,7 +12415,7 @@ extern "C" fn magic_FreeLibraryAndExitThread(context: &mut ExtendedContext, memo
     }
 }
 #[no_mangle]
-extern "C" fn magic_FreeResource(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_FreeResource(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::LibraryLoader::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -12429,7 +12429,7 @@ extern "C" fn magic_FreeResource(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetDllDirectoryA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetDllDirectoryA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::LibraryLoader::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -12444,7 +12444,7 @@ extern "C" fn magic_GetDllDirectoryA(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetDllDirectoryW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetDllDirectoryW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::LibraryLoader::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -12459,7 +12459,7 @@ extern "C" fn magic_GetDllDirectoryW(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetModuleFileNameA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetModuleFileNameA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::LibraryLoader::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -12475,7 +12475,7 @@ extern "C" fn magic_GetModuleFileNameA(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetModuleFileNameW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetModuleFileNameW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::LibraryLoader::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -12491,7 +12491,7 @@ extern "C" fn magic_GetModuleFileNameW(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetModuleHandleA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetModuleHandleA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::LibraryLoader::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -12505,7 +12505,7 @@ extern "C" fn magic_GetModuleHandleA(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetModuleHandleExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetModuleHandleExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::LibraryLoader::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -12521,7 +12521,7 @@ extern "C" fn magic_GetModuleHandleExA(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetModuleHandleExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetModuleHandleExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::LibraryLoader::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -12537,7 +12537,7 @@ extern "C" fn magic_GetModuleHandleExW(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetModuleHandleW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetModuleHandleW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::LibraryLoader::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -12551,7 +12551,7 @@ extern "C" fn magic_GetModuleHandleW(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetProcAddress(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetProcAddress(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::LibraryLoader::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -12566,7 +12566,7 @@ extern "C" fn magic_GetProcAddress(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_LoadLibraryA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_LoadLibraryA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::LibraryLoader::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -12580,7 +12580,7 @@ extern "C" fn magic_LoadLibraryA(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_LoadLibraryExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_LoadLibraryExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::LibraryLoader::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -12596,7 +12596,7 @@ extern "C" fn magic_LoadLibraryExA(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_LoadLibraryExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_LoadLibraryExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::LibraryLoader::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -12612,7 +12612,7 @@ extern "C" fn magic_LoadLibraryExW(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_LoadLibraryW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_LoadLibraryW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::LibraryLoader::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -12626,7 +12626,7 @@ extern "C" fn magic_LoadLibraryW(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_LoadModule(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_LoadModule(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::LibraryLoader::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -12641,7 +12641,7 @@ extern "C" fn magic_LoadModule(context: &mut ExtendedContext, memory: FlatMemory
     }
 }
 #[no_mangle]
-extern "C" fn magic_LoadPackagedLibrary(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_LoadPackagedLibrary(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::LibraryLoader::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -12656,7 +12656,7 @@ extern "C" fn magic_LoadPackagedLibrary(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_LoadResource(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_LoadResource(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::LibraryLoader::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -12671,7 +12671,7 @@ extern "C" fn magic_LoadResource(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_LockResource(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_LockResource(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::LibraryLoader::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -12685,7 +12685,7 @@ extern "C" fn magic_LockResource(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_RemoveDllDirectory(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_RemoveDllDirectory(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::LibraryLoader::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -12699,7 +12699,7 @@ extern "C" fn magic_RemoveDllDirectory(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetDefaultDllDirectories(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetDefaultDllDirectories(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::LibraryLoader::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -12713,7 +12713,7 @@ extern "C" fn magic_SetDefaultDllDirectories(context: &mut ExtendedContext, memo
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetDllDirectoryA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetDllDirectoryA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::LibraryLoader::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -12727,7 +12727,7 @@ extern "C" fn magic_SetDllDirectoryA(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetDllDirectoryW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetDllDirectoryW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::LibraryLoader::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -12741,7 +12741,7 @@ extern "C" fn magic_SetDllDirectoryW(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_SizeofResource(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SizeofResource(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::LibraryLoader::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -12756,7 +12756,7 @@ extern "C" fn magic_SizeofResource(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_UpdateResourceA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_UpdateResourceA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::LibraryLoader::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -12775,7 +12775,7 @@ extern "C" fn magic_UpdateResourceA(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_UpdateResourceW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_UpdateResourceW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::LibraryLoader::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -12794,7 +12794,7 @@ extern "C" fn magic_UpdateResourceW(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_AddSecureMemoryCacheCallback(
+extern "C" fn thunk_AddSecureMemoryCacheCallback(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -12811,7 +12811,7 @@ extern "C" fn magic_AddSecureMemoryCacheCallback(
     }
 }
 #[no_mangle]
-extern "C" fn magic_AllocateUserPhysicalPages(
+extern "C" fn thunk_AllocateUserPhysicalPages(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -12830,7 +12830,7 @@ extern "C" fn magic_AllocateUserPhysicalPages(
     }
 }
 #[no_mangle]
-extern "C" fn magic_AllocateUserPhysicalPages2(
+extern "C" fn thunk_AllocateUserPhysicalPages2(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -12857,7 +12857,7 @@ extern "C" fn magic_AllocateUserPhysicalPages2(
     }
 }
 #[no_mangle]
-extern "C" fn magic_AllocateUserPhysicalPagesNuma(
+extern "C" fn thunk_AllocateUserPhysicalPagesNuma(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -12882,7 +12882,7 @@ extern "C" fn magic_AllocateUserPhysicalPagesNuma(
     }
 }
 #[no_mangle]
-extern "C" fn magic_CreateMemoryResourceNotification(
+extern "C" fn thunk_CreateMemoryResourceNotification(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -12899,7 +12899,7 @@ extern "C" fn magic_CreateMemoryResourceNotification(
     }
 }
 #[no_mangle]
-extern "C" fn magic_DiscardVirtualMemory(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_DiscardVirtualMemory(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -12914,7 +12914,7 @@ extern "C" fn magic_DiscardVirtualMemory(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_FlushViewOfFile(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_FlushViewOfFile(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -12929,7 +12929,7 @@ extern "C" fn magic_FlushViewOfFile(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_FreeUserPhysicalPages(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_FreeUserPhysicalPages(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -12945,7 +12945,7 @@ extern "C" fn magic_FreeUserPhysicalPages(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetLargePageMinimum(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetLargePageMinimum(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -12958,7 +12958,7 @@ extern "C" fn magic_GetLargePageMinimum(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetMemoryErrorHandlingCapabilities(
+extern "C" fn thunk_GetMemoryErrorHandlingCapabilities(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -12975,7 +12975,7 @@ extern "C" fn magic_GetMemoryErrorHandlingCapabilities(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetProcessHeap(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetProcessHeap(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -12988,7 +12988,7 @@ extern "C" fn magic_GetProcessHeap(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetProcessHeaps(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetProcessHeaps(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -13003,7 +13003,7 @@ extern "C" fn magic_GetProcessHeaps(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetProcessWorkingSetSizeEx(
+extern "C" fn thunk_GetProcessWorkingSetSizeEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -13028,7 +13028,7 @@ extern "C" fn magic_GetProcessWorkingSetSizeEx(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetSystemFileCacheSize(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetSystemFileCacheSize(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -13048,7 +13048,7 @@ extern "C" fn magic_GetSystemFileCacheSize(context: &mut ExtendedContext, memory
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetWriteWatch(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetWriteWatch(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -13074,7 +13074,7 @@ extern "C" fn magic_GetWriteWatch(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_GlobalAlloc(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GlobalAlloc(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -13089,7 +13089,7 @@ extern "C" fn magic_GlobalAlloc(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_GlobalFlags(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GlobalFlags(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -13103,7 +13103,7 @@ extern "C" fn magic_GlobalFlags(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_GlobalFree(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GlobalFree(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -13117,7 +13117,7 @@ extern "C" fn magic_GlobalFree(context: &mut ExtendedContext, memory: FlatMemory
     }
 }
 #[no_mangle]
-extern "C" fn magic_GlobalHandle(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GlobalHandle(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -13131,7 +13131,7 @@ extern "C" fn magic_GlobalHandle(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_GlobalLock(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GlobalLock(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -13145,7 +13145,7 @@ extern "C" fn magic_GlobalLock(context: &mut ExtendedContext, memory: FlatMemory
     }
 }
 #[no_mangle]
-extern "C" fn magic_GlobalReAlloc(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GlobalReAlloc(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -13161,7 +13161,7 @@ extern "C" fn magic_GlobalReAlloc(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_GlobalSize(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GlobalSize(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -13175,7 +13175,7 @@ extern "C" fn magic_GlobalSize(context: &mut ExtendedContext, memory: FlatMemory
     }
 }
 #[no_mangle]
-extern "C" fn magic_GlobalUnlock(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GlobalUnlock(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -13189,7 +13189,7 @@ extern "C" fn magic_GlobalUnlock(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_HeapAlloc(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_HeapAlloc(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -13205,7 +13205,7 @@ extern "C" fn magic_HeapAlloc(context: &mut ExtendedContext, memory: FlatMemoryC
     }
 }
 #[no_mangle]
-extern "C" fn magic_HeapCompact(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_HeapCompact(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -13220,7 +13220,7 @@ extern "C" fn magic_HeapCompact(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_HeapCreate(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_HeapCreate(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -13236,7 +13236,7 @@ extern "C" fn magic_HeapCreate(context: &mut ExtendedContext, memory: FlatMemory
     }
 }
 #[no_mangle]
-extern "C" fn magic_HeapDestroy(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_HeapDestroy(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -13250,7 +13250,7 @@ extern "C" fn magic_HeapDestroy(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_HeapFree(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_HeapFree(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -13266,7 +13266,7 @@ extern "C" fn magic_HeapFree(context: &mut ExtendedContext, memory: FlatMemoryCt
     }
 }
 #[no_mangle]
-extern "C" fn magic_HeapLock(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_HeapLock(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -13280,7 +13280,7 @@ extern "C" fn magic_HeapLock(context: &mut ExtendedContext, memory: FlatMemoryCt
     }
 }
 #[no_mangle]
-extern "C" fn magic_HeapQueryInformation(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_HeapQueryInformation(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -13304,7 +13304,7 @@ extern "C" fn magic_HeapQueryInformation(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_HeapReAlloc(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_HeapReAlloc(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -13321,7 +13321,7 @@ extern "C" fn magic_HeapReAlloc(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_HeapSetInformation(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_HeapSetInformation(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -13343,7 +13343,7 @@ extern "C" fn magic_HeapSetInformation(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_HeapSize(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_HeapSize(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -13359,7 +13359,7 @@ extern "C" fn magic_HeapSize(context: &mut ExtendedContext, memory: FlatMemoryCt
     }
 }
 #[no_mangle]
-extern "C" fn magic_HeapSummary(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_HeapSummary(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -13375,7 +13375,7 @@ extern "C" fn magic_HeapSummary(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_HeapUnlock(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_HeapUnlock(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -13389,7 +13389,7 @@ extern "C" fn magic_HeapUnlock(context: &mut ExtendedContext, memory: FlatMemory
     }
 }
 #[no_mangle]
-extern "C" fn magic_HeapValidate(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_HeapValidate(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -13405,7 +13405,7 @@ extern "C" fn magic_HeapValidate(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_HeapWalk(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_HeapWalk(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -13420,7 +13420,7 @@ extern "C" fn magic_HeapWalk(context: &mut ExtendedContext, memory: FlatMemoryCt
     }
 }
 #[no_mangle]
-extern "C" fn magic_IsBadCodePtr(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_IsBadCodePtr(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -13434,7 +13434,7 @@ extern "C" fn magic_IsBadCodePtr(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_IsBadReadPtr(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_IsBadReadPtr(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -13449,7 +13449,7 @@ extern "C" fn magic_IsBadReadPtr(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_IsBadStringPtrA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_IsBadStringPtrA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -13464,7 +13464,7 @@ extern "C" fn magic_IsBadStringPtrA(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_IsBadStringPtrW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_IsBadStringPtrW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -13479,7 +13479,7 @@ extern "C" fn magic_IsBadStringPtrW(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_IsBadWritePtr(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_IsBadWritePtr(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -13494,7 +13494,7 @@ extern "C" fn magic_IsBadWritePtr(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_LocalAlloc(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_LocalAlloc(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -13509,7 +13509,7 @@ extern "C" fn magic_LocalAlloc(context: &mut ExtendedContext, memory: FlatMemory
     }
 }
 #[no_mangle]
-extern "C" fn magic_LocalFlags(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_LocalFlags(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -13523,7 +13523,7 @@ extern "C" fn magic_LocalFlags(context: &mut ExtendedContext, memory: FlatMemory
     }
 }
 #[no_mangle]
-extern "C" fn magic_LocalFree(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_LocalFree(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -13537,7 +13537,7 @@ extern "C" fn magic_LocalFree(context: &mut ExtendedContext, memory: FlatMemoryC
     }
 }
 #[no_mangle]
-extern "C" fn magic_LocalHandle(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_LocalHandle(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -13551,7 +13551,7 @@ extern "C" fn magic_LocalHandle(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_LocalLock(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_LocalLock(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -13565,7 +13565,7 @@ extern "C" fn magic_LocalLock(context: &mut ExtendedContext, memory: FlatMemoryC
     }
 }
 #[no_mangle]
-extern "C" fn magic_LocalReAlloc(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_LocalReAlloc(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -13581,7 +13581,7 @@ extern "C" fn magic_LocalReAlloc(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_LocalSize(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_LocalSize(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -13595,7 +13595,7 @@ extern "C" fn magic_LocalSize(context: &mut ExtendedContext, memory: FlatMemoryC
     }
 }
 #[no_mangle]
-extern "C" fn magic_LocalUnlock(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_LocalUnlock(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -13609,7 +13609,7 @@ extern "C" fn magic_LocalUnlock(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_MapUserPhysicalPages(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_MapUserPhysicalPages(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -13625,7 +13625,7 @@ extern "C" fn magic_MapUserPhysicalPages(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_MapUserPhysicalPagesScatter(
+extern "C" fn thunk_MapUserPhysicalPagesScatter(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -13644,7 +13644,7 @@ extern "C" fn magic_MapUserPhysicalPagesScatter(
     }
 }
 #[no_mangle]
-extern "C" fn magic_MapViewOfFile(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_MapViewOfFile(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -13668,7 +13668,7 @@ extern "C" fn magic_MapViewOfFile(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_MapViewOfFile3(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_MapViewOfFile3(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -13700,7 +13700,7 @@ extern "C" fn magic_MapViewOfFile3(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_MapViewOfFile3FromApp(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_MapViewOfFile3FromApp(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -13732,7 +13732,7 @@ extern "C" fn magic_MapViewOfFile3FromApp(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_MapViewOfFileEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_MapViewOfFileEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -13758,7 +13758,7 @@ extern "C" fn magic_MapViewOfFileEx(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_MapViewOfFileExNuma(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_MapViewOfFileExNuma(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -13786,7 +13786,7 @@ extern "C" fn magic_MapViewOfFileExNuma(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_MapViewOfFileFromApp(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_MapViewOfFileFromApp(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -13808,7 +13808,7 @@ extern "C" fn magic_MapViewOfFileFromApp(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_MapViewOfFileNuma2(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_MapViewOfFileNuma2(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -13838,7 +13838,7 @@ extern "C" fn magic_MapViewOfFileNuma2(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_OfferVirtualMemory(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_OfferVirtualMemory(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -13854,7 +13854,7 @@ extern "C" fn magic_OfferVirtualMemory(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_OpenDedicatedMemoryPartition(
+extern "C" fn thunk_OpenDedicatedMemoryPartition(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -13879,7 +13879,7 @@ extern "C" fn magic_OpenDedicatedMemoryPartition(
     }
 }
 #[no_mangle]
-extern "C" fn magic_OpenFileMappingA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_OpenFileMappingA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -13895,7 +13895,7 @@ extern "C" fn magic_OpenFileMappingA(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_OpenFileMappingFromApp(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_OpenFileMappingFromApp(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -13911,7 +13911,7 @@ extern "C" fn magic_OpenFileMappingFromApp(context: &mut ExtendedContext, memory
     }
 }
 #[no_mangle]
-extern "C" fn magic_OpenFileMappingW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_OpenFileMappingW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -13927,7 +13927,7 @@ extern "C" fn magic_OpenFileMappingW(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_PrefetchVirtualMemory(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_PrefetchVirtualMemory(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -13944,7 +13944,7 @@ extern "C" fn magic_PrefetchVirtualMemory(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_QueryMemoryResourceNotification(
+extern "C" fn thunk_QueryMemoryResourceNotification(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -13962,7 +13962,7 @@ extern "C" fn magic_QueryMemoryResourceNotification(
     }
 }
 #[no_mangle]
-extern "C" fn magic_QueryPartitionInformation(
+extern "C" fn thunk_QueryPartitionInformation(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -13987,7 +13987,7 @@ extern "C" fn magic_QueryPartitionInformation(
     }
 }
 #[no_mangle]
-extern "C" fn magic_QueryVirtualMemoryInformation(
+extern "C" fn thunk_QueryVirtualMemoryInformation(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -14016,7 +14016,7 @@ extern "C" fn magic_QueryVirtualMemoryInformation(
     }
 }
 #[no_mangle]
-extern "C" fn magic_ReclaimVirtualMemory(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ReclaimVirtualMemory(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -14031,7 +14031,7 @@ extern "C" fn magic_ReclaimVirtualMemory(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_RegisterBadMemoryNotification(
+extern "C" fn thunk_RegisterBadMemoryNotification(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -14048,7 +14048,7 @@ extern "C" fn magic_RegisterBadMemoryNotification(
     }
 }
 #[no_mangle]
-extern "C" fn magic_RemoveSecureMemoryCacheCallback(
+extern "C" fn thunk_RemoveSecureMemoryCacheCallback(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -14065,7 +14065,7 @@ extern "C" fn magic_RemoveSecureMemoryCacheCallback(
     }
 }
 #[no_mangle]
-extern "C" fn magic_ResetWriteWatch(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ResetWriteWatch(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -14080,7 +14080,7 @@ extern "C" fn magic_ResetWriteWatch(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_RtlCompareMemory(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_RtlCompareMemory(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -14096,7 +14096,7 @@ extern "C" fn magic_RtlCompareMemory(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_RtlCrc32(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_RtlCrc32(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -14112,7 +14112,7 @@ extern "C" fn magic_RtlCrc32(context: &mut ExtendedContext, memory: FlatMemoryCt
     }
 }
 #[no_mangle]
-extern "C" fn magic_RtlCrc64(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_RtlCrc64(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -14128,7 +14128,7 @@ extern "C" fn magic_RtlCrc64(context: &mut ExtendedContext, memory: FlatMemoryCt
     }
 }
 #[no_mangle]
-extern "C" fn magic_RtlIsZeroMemory(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_RtlIsZeroMemory(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -14143,7 +14143,7 @@ extern "C" fn magic_RtlIsZeroMemory(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetProcessValidCallTargets(
+extern "C" fn thunk_SetProcessValidCallTargets(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -14170,7 +14170,7 @@ extern "C" fn magic_SetProcessValidCallTargets(
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetProcessValidCallTargetsForMappedView(
+extern "C" fn thunk_SetProcessValidCallTargetsForMappedView(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -14201,7 +14201,7 @@ extern "C" fn magic_SetProcessValidCallTargetsForMappedView(
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetProcessWorkingSetSizeEx(
+extern "C" fn thunk_SetProcessWorkingSetSizeEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -14226,7 +14226,7 @@ extern "C" fn magic_SetProcessWorkingSetSizeEx(
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetSystemFileCacheSize(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetSystemFileCacheSize(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -14243,7 +14243,7 @@ extern "C" fn magic_SetSystemFileCacheSize(context: &mut ExtendedContext, memory
     }
 }
 #[no_mangle]
-extern "C" fn magic_UnmapViewOfFile(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_UnmapViewOfFile(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -14257,7 +14257,7 @@ extern "C" fn magic_UnmapViewOfFile(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_UnmapViewOfFile2(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_UnmapViewOfFile2(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -14273,7 +14273,7 @@ extern "C" fn magic_UnmapViewOfFile2(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_UnmapViewOfFileEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_UnmapViewOfFileEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -14288,7 +14288,7 @@ extern "C" fn magic_UnmapViewOfFileEx(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_UnregisterBadMemoryNotification(
+extern "C" fn thunk_UnregisterBadMemoryNotification(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -14305,7 +14305,7 @@ extern "C" fn magic_UnregisterBadMemoryNotification(
     }
 }
 #[no_mangle]
-extern "C" fn magic_VirtualAlloc(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_VirtualAlloc(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -14322,7 +14322,7 @@ extern "C" fn magic_VirtualAlloc(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_VirtualAlloc2(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_VirtualAlloc2(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -14350,7 +14350,7 @@ extern "C" fn magic_VirtualAlloc2(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_VirtualAlloc2FromApp(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_VirtualAlloc2FromApp(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -14378,7 +14378,7 @@ extern "C" fn magic_VirtualAlloc2FromApp(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_VirtualAllocEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_VirtualAllocEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -14402,7 +14402,7 @@ extern "C" fn magic_VirtualAllocEx(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_VirtualAllocExNuma(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_VirtualAllocExNuma(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -14428,7 +14428,7 @@ extern "C" fn magic_VirtualAllocExNuma(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_VirtualAllocFromApp(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_VirtualAllocFromApp(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -14445,7 +14445,7 @@ extern "C" fn magic_VirtualAllocFromApp(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_VirtualFree(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_VirtualFree(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -14461,7 +14461,7 @@ extern "C" fn magic_VirtualFree(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_VirtualFreeEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_VirtualFreeEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -14478,7 +14478,7 @@ extern "C" fn magic_VirtualFreeEx(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_VirtualLock(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_VirtualLock(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -14493,7 +14493,7 @@ extern "C" fn magic_VirtualLock(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_VirtualProtect(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_VirtualProtect(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -14510,7 +14510,7 @@ extern "C" fn magic_VirtualProtect(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_VirtualProtectEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_VirtualProtectEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -14534,7 +14534,7 @@ extern "C" fn magic_VirtualProtectEx(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_VirtualProtectFromApp(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_VirtualProtectFromApp(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -14551,7 +14551,7 @@ extern "C" fn magic_VirtualProtectFromApp(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_VirtualQuery(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_VirtualQuery(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -14567,7 +14567,7 @@ extern "C" fn magic_VirtualQuery(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_VirtualQueryEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_VirtualQueryEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -14584,7 +14584,7 @@ extern "C" fn magic_VirtualQueryEx(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_VirtualUnlock(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_VirtualUnlock(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -14599,7 +14599,7 @@ extern "C" fn magic_VirtualUnlock(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_VirtualUnlockEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_VirtualUnlockEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Memory::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -14615,7 +14615,7 @@ extern "C" fn magic_VirtualUnlockEx(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetComputerNameExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetComputerNameExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::SystemInformation::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -14631,7 +14631,7 @@ extern "C" fn magic_GetComputerNameExA(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetComputerNameExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetComputerNameExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::SystemInformation::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -14647,7 +14647,7 @@ extern "C" fn magic_GetComputerNameExW(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetLocalTime(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetLocalTime(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::SystemInformation::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -14661,7 +14661,7 @@ extern "C" fn magic_GetLocalTime(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetLogicalProcessorInformation(
+extern "C" fn thunk_GetLogicalProcessorInformation(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -14679,7 +14679,7 @@ extern "C" fn magic_GetLogicalProcessorInformation(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetLogicalProcessorInformationEx(
+extern "C" fn thunk_GetLogicalProcessorInformationEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -14698,7 +14698,7 @@ extern "C" fn magic_GetLogicalProcessorInformationEx(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetNativeSystemInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetNativeSystemInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::SystemInformation::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -14712,7 +14712,7 @@ extern "C" fn magic_GetNativeSystemInfo(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetOsManufacturingMode(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetOsManufacturingMode(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::SystemInformation::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -14726,7 +14726,7 @@ extern "C" fn magic_GetOsManufacturingMode(context: &mut ExtendedContext, memory
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetOsSafeBootMode(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetOsSafeBootMode(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::SystemInformation::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -14740,7 +14740,7 @@ extern "C" fn magic_GetOsSafeBootMode(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetPhysicallyInstalledSystemMemory(
+extern "C" fn thunk_GetPhysicallyInstalledSystemMemory(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -14757,7 +14757,7 @@ extern "C" fn magic_GetPhysicallyInstalledSystemMemory(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetProcessorSystemCycleTime(
+extern "C" fn thunk_GetProcessorSystemCycleTime(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -14776,7 +14776,7 @@ extern "C" fn magic_GetProcessorSystemCycleTime(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetProductInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetProductInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::SystemInformation::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -14800,7 +14800,7 @@ extern "C" fn magic_GetProductInfo(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetSystemCpuSetInformation(
+extern "C" fn thunk_GetSystemCpuSetInformation(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -14827,7 +14827,7 @@ extern "C" fn magic_GetSystemCpuSetInformation(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetSystemDEPPolicy(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetSystemDEPPolicy(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::SystemInformation::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -14840,7 +14840,7 @@ extern "C" fn magic_GetSystemDEPPolicy(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetSystemDirectoryA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetSystemDirectoryA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::SystemInformation::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -14855,7 +14855,7 @@ extern "C" fn magic_GetSystemDirectoryA(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetSystemDirectoryW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetSystemDirectoryW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::SystemInformation::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -14870,7 +14870,7 @@ extern "C" fn magic_GetSystemDirectoryW(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetSystemFirmwareTable(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetSystemFirmwareTable(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::SystemInformation::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -14892,7 +14892,7 @@ extern "C" fn magic_GetSystemFirmwareTable(context: &mut ExtendedContext, memory
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetSystemInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetSystemInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::SystemInformation::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -14906,7 +14906,7 @@ extern "C" fn magic_GetSystemInfo(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetSystemLeapSecondInformation(
+extern "C" fn thunk_GetSystemLeapSecondInformation(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -14924,7 +14924,7 @@ extern "C" fn magic_GetSystemLeapSecondInformation(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetSystemTime(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetSystemTime(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::SystemInformation::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -14938,7 +14938,7 @@ extern "C" fn magic_GetSystemTime(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetSystemTimeAdjustment(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetSystemTimeAdjustment(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::SystemInformation::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -14958,7 +14958,7 @@ extern "C" fn magic_GetSystemTimeAdjustment(context: &mut ExtendedContext, memor
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetSystemTimeAdjustmentPrecise(
+extern "C" fn thunk_GetSystemTimeAdjustmentPrecise(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -14981,7 +14981,7 @@ extern "C" fn magic_GetSystemTimeAdjustmentPrecise(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetSystemTimeAsFileTime(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetSystemTimeAsFileTime(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::SystemInformation::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -14995,7 +14995,7 @@ extern "C" fn magic_GetSystemTimeAsFileTime(context: &mut ExtendedContext, memor
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetSystemTimePreciseAsFileTime(
+extern "C" fn thunk_GetSystemTimePreciseAsFileTime(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -15012,7 +15012,7 @@ extern "C" fn magic_GetSystemTimePreciseAsFileTime(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetSystemWindowsDirectoryA(
+extern "C" fn thunk_GetSystemWindowsDirectoryA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -15030,7 +15030,7 @@ extern "C" fn magic_GetSystemWindowsDirectoryA(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetSystemWindowsDirectoryW(
+extern "C" fn thunk_GetSystemWindowsDirectoryW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -15048,7 +15048,7 @@ extern "C" fn magic_GetSystemWindowsDirectoryW(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetSystemWow64Directory2A(
+extern "C" fn thunk_GetSystemWow64Directory2A(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -15067,7 +15067,7 @@ extern "C" fn magic_GetSystemWow64Directory2A(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetSystemWow64Directory2W(
+extern "C" fn thunk_GetSystemWow64Directory2W(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -15086,7 +15086,7 @@ extern "C" fn magic_GetSystemWow64Directory2W(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetSystemWow64DirectoryA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetSystemWow64DirectoryA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::SystemInformation::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -15101,7 +15101,7 @@ extern "C" fn magic_GetSystemWow64DirectoryA(context: &mut ExtendedContext, memo
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetSystemWow64DirectoryW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetSystemWow64DirectoryW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::SystemInformation::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -15116,7 +15116,7 @@ extern "C" fn magic_GetSystemWow64DirectoryW(context: &mut ExtendedContext, memo
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetTickCount(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetTickCount(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::SystemInformation::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -15129,7 +15129,7 @@ extern "C" fn magic_GetTickCount(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetTickCount64(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetTickCount64(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::SystemInformation::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -15142,7 +15142,7 @@ extern "C" fn magic_GetTickCount64(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetVersion(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetVersion(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::SystemInformation::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -15155,7 +15155,7 @@ extern "C" fn magic_GetVersion(context: &mut ExtendedContext, memory: FlatMemory
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetVersionExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetVersionExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::SystemInformation::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -15169,7 +15169,7 @@ extern "C" fn magic_GetVersionExA(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetVersionExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetVersionExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::SystemInformation::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -15183,7 +15183,7 @@ extern "C" fn magic_GetVersionExW(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetWindowsDirectoryA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetWindowsDirectoryA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::SystemInformation::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -15198,7 +15198,7 @@ extern "C" fn magic_GetWindowsDirectoryA(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetWindowsDirectoryW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetWindowsDirectoryW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::SystemInformation::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -15213,7 +15213,7 @@ extern "C" fn magic_GetWindowsDirectoryW(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_GlobalMemoryStatus(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GlobalMemoryStatus(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::SystemInformation::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -15227,7 +15227,7 @@ extern "C" fn magic_GlobalMemoryStatus(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_GlobalMemoryStatusEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GlobalMemoryStatusEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::SystemInformation::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -15241,7 +15241,7 @@ extern "C" fn magic_GlobalMemoryStatusEx(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_RtlConvertDeviceFamilyInfoToString(
+extern "C" fn thunk_RtlConvertDeviceFamilyInfoToString(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -15266,7 +15266,7 @@ extern "C" fn magic_RtlConvertDeviceFamilyInfoToString(
     }
 }
 #[no_mangle]
-extern "C" fn magic_RtlGetDeviceFamilyInfoEnum(
+extern "C" fn thunk_RtlGetDeviceFamilyInfoEnum(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -15285,7 +15285,7 @@ extern "C" fn magic_RtlGetDeviceFamilyInfoEnum(
     }
 }
 #[no_mangle]
-extern "C" fn magic_RtlGetProductInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_RtlGetProductInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::SystemInformation::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -15309,7 +15309,7 @@ extern "C" fn magic_RtlGetProductInfo(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_RtlGetSystemGlobalData(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_RtlGetSystemGlobalData(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::SystemInformation::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -15325,7 +15325,7 @@ extern "C" fn magic_RtlGetSystemGlobalData(context: &mut ExtendedContext, memory
     }
 }
 #[no_mangle]
-extern "C" fn magic_RtlOsDeploymentState(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_RtlOsDeploymentState(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::SystemInformation::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -15339,7 +15339,7 @@ extern "C" fn magic_RtlOsDeploymentState(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_RtlSwitchedVVI(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_RtlSwitchedVVI(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::SystemInformation::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -15355,7 +15355,7 @@ extern "C" fn magic_RtlSwitchedVVI(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetComputerNameA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetComputerNameA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::SystemInformation::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -15369,7 +15369,7 @@ extern "C" fn magic_SetComputerNameA(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetComputerNameEx2W(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetComputerNameEx2W(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::SystemInformation::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -15385,7 +15385,7 @@ extern "C" fn magic_SetComputerNameEx2W(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetComputerNameExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetComputerNameExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::SystemInformation::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -15400,7 +15400,7 @@ extern "C" fn magic_SetComputerNameExA(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetComputerNameExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetComputerNameExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::SystemInformation::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -15415,7 +15415,7 @@ extern "C" fn magic_SetComputerNameExW(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetComputerNameW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetComputerNameW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::SystemInformation::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -15429,7 +15429,7 @@ extern "C" fn magic_SetComputerNameW(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetLocalTime(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetLocalTime(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::SystemInformation::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -15443,7 +15443,7 @@ extern "C" fn magic_SetLocalTime(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetSystemTime(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetSystemTime(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::SystemInformation::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -15457,7 +15457,7 @@ extern "C" fn magic_SetSystemTime(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetSystemTimeAdjustment(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetSystemTimeAdjustment(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::SystemInformation::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -15472,7 +15472,7 @@ extern "C" fn magic_SetSystemTimeAdjustment(context: &mut ExtendedContext, memor
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetSystemTimeAdjustmentPrecise(
+extern "C" fn thunk_SetSystemTimeAdjustmentPrecise(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -15491,7 +15491,7 @@ extern "C" fn magic_SetSystemTimeAdjustmentPrecise(
     }
 }
 #[no_mangle]
-extern "C" fn magic_VerSetConditionMask(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_VerSetConditionMask(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::SystemInformation::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -15507,7 +15507,7 @@ extern "C" fn magic_VerSetConditionMask(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_VerifyVersionInfoA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_VerifyVersionInfoA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::SystemInformation::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -15523,7 +15523,7 @@ extern "C" fn magic_VerifyVersionInfoA(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_VerifyVersionInfoW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_VerifyVersionInfoW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::SystemInformation::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -15539,7 +15539,7 @@ extern "C" fn magic_VerifyVersionInfoW(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_AcquireSRWLockExclusive(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_AcquireSRWLockExclusive(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -15553,7 +15553,7 @@ extern "C" fn magic_AcquireSRWLockExclusive(context: &mut ExtendedContext, memor
     }
 }
 #[no_mangle]
-extern "C" fn magic_AcquireSRWLockShared(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_AcquireSRWLockShared(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -15567,7 +15567,7 @@ extern "C" fn magic_AcquireSRWLockShared(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_AddIntegrityLabelToBoundaryDescriptor(
+extern "C" fn thunk_AddIntegrityLabelToBoundaryDescriptor(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -15585,7 +15585,7 @@ extern "C" fn magic_AddIntegrityLabelToBoundaryDescriptor(
     }
 }
 #[no_mangle]
-extern "C" fn magic_AddSIDToBoundaryDescriptor(
+extern "C" fn thunk_AddSIDToBoundaryDescriptor(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -15603,7 +15603,7 @@ extern "C" fn magic_AddSIDToBoundaryDescriptor(
     }
 }
 #[no_mangle]
-extern "C" fn magic_AttachThreadInput(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_AttachThreadInput(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -15619,7 +15619,7 @@ extern "C" fn magic_AttachThreadInput(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_AvQuerySystemResponsiveness(
+extern "C" fn thunk_AvQuerySystemResponsiveness(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -15637,7 +15637,7 @@ extern "C" fn magic_AvQuerySystemResponsiveness(
     }
 }
 #[no_mangle]
-extern "C" fn magic_AvRevertMmThreadCharacteristics(
+extern "C" fn thunk_AvRevertMmThreadCharacteristics(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -15654,7 +15654,7 @@ extern "C" fn magic_AvRevertMmThreadCharacteristics(
     }
 }
 #[no_mangle]
-extern "C" fn magic_AvRtCreateThreadOrderingGroup(
+extern "C" fn thunk_AvRtCreateThreadOrderingGroup(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -15674,7 +15674,7 @@ extern "C" fn magic_AvRtCreateThreadOrderingGroup(
     }
 }
 #[no_mangle]
-extern "C" fn magic_AvRtCreateThreadOrderingGroupExA(
+extern "C" fn thunk_AvRtCreateThreadOrderingGroupExA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -15701,7 +15701,7 @@ extern "C" fn magic_AvRtCreateThreadOrderingGroupExA(
     }
 }
 #[no_mangle]
-extern "C" fn magic_AvRtCreateThreadOrderingGroupExW(
+extern "C" fn thunk_AvRtCreateThreadOrderingGroupExW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -15728,7 +15728,7 @@ extern "C" fn magic_AvRtCreateThreadOrderingGroupExW(
     }
 }
 #[no_mangle]
-extern "C" fn magic_AvRtDeleteThreadOrderingGroup(
+extern "C" fn thunk_AvRtDeleteThreadOrderingGroup(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -15745,7 +15745,7 @@ extern "C" fn magic_AvRtDeleteThreadOrderingGroup(
     }
 }
 #[no_mangle]
-extern "C" fn magic_AvRtJoinThreadOrderingGroup(
+extern "C" fn thunk_AvRtJoinThreadOrderingGroup(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -15764,7 +15764,7 @@ extern "C" fn magic_AvRtJoinThreadOrderingGroup(
     }
 }
 #[no_mangle]
-extern "C" fn magic_AvRtLeaveThreadOrderingGroup(
+extern "C" fn thunk_AvRtLeaveThreadOrderingGroup(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -15781,7 +15781,7 @@ extern "C" fn magic_AvRtLeaveThreadOrderingGroup(
     }
 }
 #[no_mangle]
-extern "C" fn magic_AvRtWaitOnThreadOrderingGroup(
+extern "C" fn thunk_AvRtWaitOnThreadOrderingGroup(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -15798,7 +15798,7 @@ extern "C" fn magic_AvRtWaitOnThreadOrderingGroup(
     }
 }
 #[no_mangle]
-extern "C" fn magic_AvSetMmMaxThreadCharacteristicsA(
+extern "C" fn thunk_AvSetMmMaxThreadCharacteristicsA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -15817,7 +15817,7 @@ extern "C" fn magic_AvSetMmMaxThreadCharacteristicsA(
     }
 }
 #[no_mangle]
-extern "C" fn magic_AvSetMmMaxThreadCharacteristicsW(
+extern "C" fn thunk_AvSetMmMaxThreadCharacteristicsW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -15836,7 +15836,7 @@ extern "C" fn magic_AvSetMmMaxThreadCharacteristicsW(
     }
 }
 #[no_mangle]
-extern "C" fn magic_AvSetMmThreadCharacteristicsA(
+extern "C" fn thunk_AvSetMmThreadCharacteristicsA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -15854,7 +15854,7 @@ extern "C" fn magic_AvSetMmThreadCharacteristicsA(
     }
 }
 #[no_mangle]
-extern "C" fn magic_AvSetMmThreadCharacteristicsW(
+extern "C" fn thunk_AvSetMmThreadCharacteristicsW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -15872,7 +15872,7 @@ extern "C" fn magic_AvSetMmThreadCharacteristicsW(
     }
 }
 #[no_mangle]
-extern "C" fn magic_AvSetMmThreadPriority(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_AvSetMmThreadPriority(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -15887,7 +15887,7 @@ extern "C" fn magic_AvSetMmThreadPriority(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_CallbackMayRunLong(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CallbackMayRunLong(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -15901,7 +15901,7 @@ extern "C" fn magic_CallbackMayRunLong(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_CancelThreadpoolIo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CancelThreadpoolIo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -15915,7 +15915,7 @@ extern "C" fn magic_CancelThreadpoolIo(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_CancelWaitableTimer(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CancelWaitableTimer(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -15929,7 +15929,7 @@ extern "C" fn magic_CancelWaitableTimer(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_ChangeTimerQueueTimer(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ChangeTimerQueueTimer(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -15946,7 +15946,7 @@ extern "C" fn magic_ChangeTimerQueueTimer(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_ClosePrivateNamespace(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ClosePrivateNamespace(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -15961,7 +15961,7 @@ extern "C" fn magic_ClosePrivateNamespace(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_CloseThreadpool(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CloseThreadpool(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -15975,7 +15975,7 @@ extern "C" fn magic_CloseThreadpool(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_CloseThreadpoolCleanupGroup(
+extern "C" fn thunk_CloseThreadpoolCleanupGroup(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -15992,7 +15992,7 @@ extern "C" fn magic_CloseThreadpoolCleanupGroup(
     }
 }
 #[no_mangle]
-extern "C" fn magic_CloseThreadpoolCleanupGroupMembers(
+extern "C" fn thunk_CloseThreadpoolCleanupGroupMembers(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -16015,7 +16015,7 @@ extern "C" fn magic_CloseThreadpoolCleanupGroupMembers(
     }
 }
 #[no_mangle]
-extern "C" fn magic_CloseThreadpoolIo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CloseThreadpoolIo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -16029,7 +16029,7 @@ extern "C" fn magic_CloseThreadpoolIo(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_CloseThreadpoolTimer(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CloseThreadpoolTimer(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -16043,7 +16043,7 @@ extern "C" fn magic_CloseThreadpoolTimer(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_CloseThreadpoolWait(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CloseThreadpoolWait(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -16057,7 +16057,7 @@ extern "C" fn magic_CloseThreadpoolWait(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_CloseThreadpoolWork(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CloseThreadpoolWork(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -16071,7 +16071,7 @@ extern "C" fn magic_CloseThreadpoolWork(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_ConvertFiberToThread(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ConvertFiberToThread(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -16084,7 +16084,7 @@ extern "C" fn magic_ConvertFiberToThread(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_ConvertThreadToFiber(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ConvertThreadToFiber(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -16098,7 +16098,7 @@ extern "C" fn magic_ConvertThreadToFiber(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_ConvertThreadToFiberEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ConvertThreadToFiberEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -16113,7 +16113,7 @@ extern "C" fn magic_ConvertThreadToFiberEx(context: &mut ExtendedContext, memory
     }
 }
 #[no_mangle]
-extern "C" fn magic_CreateBoundaryDescriptorA(
+extern "C" fn thunk_CreateBoundaryDescriptorA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -16131,7 +16131,7 @@ extern "C" fn magic_CreateBoundaryDescriptorA(
     }
 }
 #[no_mangle]
-extern "C" fn magic_CreateBoundaryDescriptorW(
+extern "C" fn thunk_CreateBoundaryDescriptorW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -16149,7 +16149,7 @@ extern "C" fn magic_CreateBoundaryDescriptorW(
     }
 }
 #[no_mangle]
-extern "C" fn magic_CreateFiber(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CreateFiber(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -16165,7 +16165,7 @@ extern "C" fn magic_CreateFiber(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_CreateFiberEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CreateFiberEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -16189,7 +16189,7 @@ extern "C" fn magic_CreateFiberEx(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_CreateProcessWithLogonW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CreateProcessWithLogonW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -16225,7 +16225,7 @@ extern "C" fn magic_CreateProcessWithLogonW(context: &mut ExtendedContext, memor
     }
 }
 #[no_mangle]
-extern "C" fn magic_CreateProcessWithTokenW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CreateProcessWithTokenW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -16257,7 +16257,7 @@ extern "C" fn magic_CreateProcessWithTokenW(context: &mut ExtendedContext, memor
     }
 }
 #[no_mangle]
-extern "C" fn magic_CreateThreadpool(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CreateThreadpool(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -16271,7 +16271,7 @@ extern "C" fn magic_CreateThreadpool(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_CreateThreadpoolCleanupGroup(
+extern "C" fn thunk_CreateThreadpoolCleanupGroup(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -16287,7 +16287,7 @@ extern "C" fn magic_CreateThreadpoolCleanupGroup(
     }
 }
 #[no_mangle]
-extern "C" fn magic_CreateThreadpoolIo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CreateThreadpoolIo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -16304,7 +16304,7 @@ extern "C" fn magic_CreateThreadpoolIo(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_CreateThreadpoolTimer(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CreateThreadpoolTimer(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -16320,7 +16320,7 @@ extern "C" fn magic_CreateThreadpoolTimer(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_CreateThreadpoolWait(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CreateThreadpoolWait(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -16336,7 +16336,7 @@ extern "C" fn magic_CreateThreadpoolWait(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_CreateThreadpoolWork(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CreateThreadpoolWork(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -16352,7 +16352,7 @@ extern "C" fn magic_CreateThreadpoolWork(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_CreateTimerQueue(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CreateTimerQueue(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -16365,7 +16365,7 @@ extern "C" fn magic_CreateTimerQueue(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_CreateTimerQueueTimer(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CreateTimerQueueTimer(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -16393,7 +16393,7 @@ extern "C" fn magic_CreateTimerQueueTimer(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_CreateUmsCompletionList(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CreateUmsCompletionList(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -16407,7 +16407,7 @@ extern "C" fn magic_CreateUmsCompletionList(context: &mut ExtendedContext, memor
     }
 }
 #[no_mangle]
-extern "C" fn magic_CreateUmsThreadContext(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CreateUmsThreadContext(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -16421,7 +16421,7 @@ extern "C" fn magic_CreateUmsThreadContext(context: &mut ExtendedContext, memory
     }
 }
 #[no_mangle]
-extern "C" fn magic_DeleteBoundaryDescriptor(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_DeleteBoundaryDescriptor(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -16435,7 +16435,7 @@ extern "C" fn magic_DeleteBoundaryDescriptor(context: &mut ExtendedContext, memo
     }
 }
 #[no_mangle]
-extern "C" fn magic_DeleteCriticalSection(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_DeleteCriticalSection(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -16449,7 +16449,7 @@ extern "C" fn magic_DeleteCriticalSection(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_DeleteFiber(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_DeleteFiber(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -16463,7 +16463,7 @@ extern "C" fn magic_DeleteFiber(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_DeleteProcThreadAttributeList(
+extern "C" fn thunk_DeleteProcThreadAttributeList(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -16480,7 +16480,7 @@ extern "C" fn magic_DeleteProcThreadAttributeList(
     }
 }
 #[no_mangle]
-extern "C" fn magic_DeleteSynchronizationBarrier(
+extern "C" fn thunk_DeleteSynchronizationBarrier(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -16497,7 +16497,7 @@ extern "C" fn magic_DeleteSynchronizationBarrier(
     }
 }
 #[no_mangle]
-extern "C" fn magic_DeleteTimerQueue(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_DeleteTimerQueue(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -16511,7 +16511,7 @@ extern "C" fn magic_DeleteTimerQueue(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_DeleteTimerQueueEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_DeleteTimerQueueEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -16526,7 +16526,7 @@ extern "C" fn magic_DeleteTimerQueueEx(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_DeleteTimerQueueTimer(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_DeleteTimerQueueTimer(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -16542,7 +16542,7 @@ extern "C" fn magic_DeleteTimerQueueTimer(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_DeleteUmsCompletionList(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_DeleteUmsCompletionList(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -16556,7 +16556,7 @@ extern "C" fn magic_DeleteUmsCompletionList(context: &mut ExtendedContext, memor
     }
 }
 #[no_mangle]
-extern "C" fn magic_DeleteUmsThreadContext(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_DeleteUmsThreadContext(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -16570,7 +16570,7 @@ extern "C" fn magic_DeleteUmsThreadContext(context: &mut ExtendedContext, memory
     }
 }
 #[no_mangle]
-extern "C" fn magic_DequeueUmsCompletionListItems(
+extern "C" fn thunk_DequeueUmsCompletionListItems(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -16590,7 +16590,7 @@ extern "C" fn magic_DequeueUmsCompletionListItems(
     }
 }
 #[no_mangle]
-extern "C" fn magic_DisassociateCurrentThreadFromCallback(
+extern "C" fn thunk_DisassociateCurrentThreadFromCallback(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -16607,7 +16607,7 @@ extern "C" fn magic_DisassociateCurrentThreadFromCallback(
     }
 }
 #[no_mangle]
-extern "C" fn magic_EnterCriticalSection(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_EnterCriticalSection(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -16621,7 +16621,7 @@ extern "C" fn magic_EnterCriticalSection(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_EnterSynchronizationBarrier(
+extern "C" fn thunk_EnterSynchronizationBarrier(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -16639,7 +16639,7 @@ extern "C" fn magic_EnterSynchronizationBarrier(
     }
 }
 #[no_mangle]
-extern "C" fn magic_ExecuteUmsThread(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ExecuteUmsThread(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -16653,7 +16653,7 @@ extern "C" fn magic_ExecuteUmsThread(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_ExitProcess(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ExitProcess(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -16667,7 +16667,7 @@ extern "C" fn magic_ExitProcess(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_ExitThread(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ExitThread(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -16681,7 +16681,7 @@ extern "C" fn magic_ExitThread(context: &mut ExtendedContext, memory: FlatMemory
     }
 }
 #[no_mangle]
-extern "C" fn magic_FlsAlloc(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_FlsAlloc(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -16695,7 +16695,7 @@ extern "C" fn magic_FlsAlloc(context: &mut ExtendedContext, memory: FlatMemoryCt
     }
 }
 #[no_mangle]
-extern "C" fn magic_FlsFree(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_FlsFree(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -16709,7 +16709,7 @@ extern "C" fn magic_FlsFree(context: &mut ExtendedContext, memory: FlatMemoryCtx
     }
 }
 #[no_mangle]
-extern "C" fn magic_FlsGetValue(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_FlsGetValue(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -16723,7 +16723,7 @@ extern "C" fn magic_FlsGetValue(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_FlsSetValue(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_FlsSetValue(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -16738,7 +16738,7 @@ extern "C" fn magic_FlsSetValue(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_FlushProcessWriteBuffers(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_FlushProcessWriteBuffers(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -16751,7 +16751,7 @@ extern "C" fn magic_FlushProcessWriteBuffers(context: &mut ExtendedContext, memo
     }
 }
 #[no_mangle]
-extern "C" fn magic_FreeLibraryWhenCallbackReturns(
+extern "C" fn thunk_FreeLibraryWhenCallbackReturns(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -16769,7 +16769,7 @@ extern "C" fn magic_FreeLibraryWhenCallbackReturns(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetActiveProcessorCount(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetActiveProcessorCount(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -16783,7 +16783,7 @@ extern "C" fn magic_GetActiveProcessorCount(context: &mut ExtendedContext, memor
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetActiveProcessorGroupCount(
+extern "C" fn thunk_GetActiveProcessorGroupCount(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -16799,7 +16799,7 @@ extern "C" fn magic_GetActiveProcessorGroupCount(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetCurrentProcess(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetCurrentProcess(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -16812,7 +16812,7 @@ extern "C" fn magic_GetCurrentProcess(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetCurrentProcessId(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetCurrentProcessId(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -16825,7 +16825,7 @@ extern "C" fn magic_GetCurrentProcessId(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetCurrentProcessorNumber(
+extern "C" fn thunk_GetCurrentProcessorNumber(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -16841,7 +16841,7 @@ extern "C" fn magic_GetCurrentProcessorNumber(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetCurrentProcessorNumberEx(
+extern "C" fn thunk_GetCurrentProcessorNumberEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -16858,7 +16858,7 @@ extern "C" fn magic_GetCurrentProcessorNumberEx(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetCurrentThread(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetCurrentThread(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -16871,7 +16871,7 @@ extern "C" fn magic_GetCurrentThread(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetCurrentThreadId(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetCurrentThreadId(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -16884,7 +16884,7 @@ extern "C" fn magic_GetCurrentThreadId(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetCurrentThreadStackLimits(
+extern "C" fn thunk_GetCurrentThreadStackLimits(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -16902,7 +16902,7 @@ extern "C" fn magic_GetCurrentThreadStackLimits(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetCurrentUmsThread(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetCurrentUmsThread(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -16915,7 +16915,7 @@ extern "C" fn magic_GetCurrentUmsThread(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetExitCodeProcess(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetExitCodeProcess(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -16930,7 +16930,7 @@ extern "C" fn magic_GetExitCodeProcess(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetExitCodeThread(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetExitCodeThread(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -16945,7 +16945,7 @@ extern "C" fn magic_GetExitCodeThread(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetGuiResources(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetGuiResources(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -16960,7 +16960,7 @@ extern "C" fn magic_GetGuiResources(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetMachineTypeAttributes(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetMachineTypeAttributes(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -16975,7 +16975,7 @@ extern "C" fn magic_GetMachineTypeAttributes(context: &mut ExtendedContext, memo
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetMaximumProcessorCount(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetMaximumProcessorCount(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -16989,7 +16989,7 @@ extern "C" fn magic_GetMaximumProcessorCount(context: &mut ExtendedContext, memo
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetMaximumProcessorGroupCount(
+extern "C" fn thunk_GetMaximumProcessorGroupCount(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -17005,7 +17005,7 @@ extern "C" fn magic_GetMaximumProcessorGroupCount(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetNextUmsListItem(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetNextUmsListItem(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -17019,7 +17019,7 @@ extern "C" fn magic_GetNextUmsListItem(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetNumaAvailableMemoryNode(
+extern "C" fn thunk_GetNumaAvailableMemoryNode(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -17037,7 +17037,7 @@ extern "C" fn magic_GetNumaAvailableMemoryNode(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetNumaAvailableMemoryNodeEx(
+extern "C" fn thunk_GetNumaAvailableMemoryNodeEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -17055,7 +17055,7 @@ extern "C" fn magic_GetNumaAvailableMemoryNodeEx(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetNumaHighestNodeNumber(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetNumaHighestNodeNumber(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -17069,7 +17069,7 @@ extern "C" fn magic_GetNumaHighestNodeNumber(context: &mut ExtendedContext, memo
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetNumaNodeNumberFromHandle(
+extern "C" fn thunk_GetNumaNodeNumberFromHandle(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -17087,7 +17087,7 @@ extern "C" fn magic_GetNumaNodeNumberFromHandle(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetNumaNodeProcessorMask(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetNumaNodeProcessorMask(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -17102,7 +17102,7 @@ extern "C" fn magic_GetNumaNodeProcessorMask(context: &mut ExtendedContext, memo
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetNumaNodeProcessorMask2(
+extern "C" fn thunk_GetNumaNodeProcessorMask2(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -17127,7 +17127,7 @@ extern "C" fn magic_GetNumaNodeProcessorMask2(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetNumaNodeProcessorMaskEx(
+extern "C" fn thunk_GetNumaNodeProcessorMaskEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -17145,7 +17145,7 @@ extern "C" fn magic_GetNumaNodeProcessorMaskEx(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetNumaProcessorNode(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetNumaProcessorNode(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -17160,7 +17160,7 @@ extern "C" fn magic_GetNumaProcessorNode(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetNumaProcessorNodeEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetNumaProcessorNodeEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -17175,7 +17175,7 @@ extern "C" fn magic_GetNumaProcessorNodeEx(context: &mut ExtendedContext, memory
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetNumaProximityNode(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetNumaProximityNode(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -17190,7 +17190,7 @@ extern "C" fn magic_GetNumaProximityNode(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetNumaProximityNodeEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetNumaProximityNodeEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -17205,7 +17205,7 @@ extern "C" fn magic_GetNumaProximityNodeEx(context: &mut ExtendedContext, memory
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetPriorityClass(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetPriorityClass(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -17219,7 +17219,7 @@ extern "C" fn magic_GetPriorityClass(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetProcessAffinityMask(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetProcessAffinityMask(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -17239,7 +17239,7 @@ extern "C" fn magic_GetProcessAffinityMask(context: &mut ExtendedContext, memory
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetProcessDEPPolicy(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetProcessDEPPolicy(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -17255,7 +17255,7 @@ extern "C" fn magic_GetProcessDEPPolicy(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetProcessDefaultCpuSetMasks(
+extern "C" fn thunk_GetProcessDefaultCpuSetMasks(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -17280,7 +17280,7 @@ extern "C" fn magic_GetProcessDefaultCpuSetMasks(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetProcessDefaultCpuSets(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetProcessDefaultCpuSets(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -17298,7 +17298,7 @@ extern "C" fn magic_GetProcessDefaultCpuSets(context: &mut ExtendedContext, memo
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetProcessGroupAffinity(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetProcessGroupAffinity(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -17314,7 +17314,7 @@ extern "C" fn magic_GetProcessGroupAffinity(context: &mut ExtendedContext, memor
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetProcessHandleCount(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetProcessHandleCount(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -17329,7 +17329,7 @@ extern "C" fn magic_GetProcessHandleCount(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetProcessId(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetProcessId(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -17343,7 +17343,7 @@ extern "C" fn magic_GetProcessId(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetProcessIdOfThread(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetProcessIdOfThread(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -17357,7 +17357,7 @@ extern "C" fn magic_GetProcessIdOfThread(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetProcessInformation(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetProcessInformation(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -17379,7 +17379,7 @@ extern "C" fn magic_GetProcessInformation(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetProcessIoCounters(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetProcessIoCounters(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -17394,7 +17394,7 @@ extern "C" fn magic_GetProcessIoCounters(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetProcessMitigationPolicy(
+extern "C" fn thunk_GetProcessMitigationPolicy(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -17415,7 +17415,7 @@ extern "C" fn magic_GetProcessMitigationPolicy(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetProcessPriorityBoost(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetProcessPriorityBoost(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -17430,7 +17430,7 @@ extern "C" fn magic_GetProcessPriorityBoost(context: &mut ExtendedContext, memor
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetProcessShutdownParameters(
+extern "C" fn thunk_GetProcessShutdownParameters(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -17448,7 +17448,7 @@ extern "C" fn magic_GetProcessShutdownParameters(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetProcessTimes(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetProcessTimes(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -17472,7 +17472,7 @@ extern "C" fn magic_GetProcessTimes(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetProcessVersion(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetProcessVersion(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -17486,7 +17486,7 @@ extern "C" fn magic_GetProcessVersion(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetProcessWorkingSetSize(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetProcessWorkingSetSize(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -17506,7 +17506,7 @@ extern "C" fn magic_GetProcessWorkingSetSize(context: &mut ExtendedContext, memo
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetStartupInfoA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetStartupInfoA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -17520,7 +17520,7 @@ extern "C" fn magic_GetStartupInfoA(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetStartupInfoW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetStartupInfoW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -17534,7 +17534,7 @@ extern "C" fn magic_GetStartupInfoW(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetSystemTimes(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetSystemTimes(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -17550,7 +17550,7 @@ extern "C" fn magic_GetSystemTimes(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetThreadDescription(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetThreadDescription(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -17565,7 +17565,7 @@ extern "C" fn magic_GetThreadDescription(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetThreadGroupAffinity(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetThreadGroupAffinity(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -17580,7 +17580,7 @@ extern "C" fn magic_GetThreadGroupAffinity(context: &mut ExtendedContext, memory
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetThreadIOPendingFlag(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetThreadIOPendingFlag(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -17595,7 +17595,7 @@ extern "C" fn magic_GetThreadIOPendingFlag(context: &mut ExtendedContext, memory
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetThreadId(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetThreadId(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -17609,7 +17609,7 @@ extern "C" fn magic_GetThreadId(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetThreadIdealProcessorEx(
+extern "C" fn thunk_GetThreadIdealProcessorEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -17627,7 +17627,7 @@ extern "C" fn magic_GetThreadIdealProcessorEx(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetThreadInformation(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetThreadInformation(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -17649,7 +17649,7 @@ extern "C" fn magic_GetThreadInformation(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetThreadPriority(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetThreadPriority(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -17663,7 +17663,7 @@ extern "C" fn magic_GetThreadPriority(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetThreadPriorityBoost(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetThreadPriorityBoost(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -17678,7 +17678,7 @@ extern "C" fn magic_GetThreadPriorityBoost(context: &mut ExtendedContext, memory
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetThreadSelectedCpuSetMasks(
+extern "C" fn thunk_GetThreadSelectedCpuSetMasks(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -17703,7 +17703,7 @@ extern "C" fn magic_GetThreadSelectedCpuSetMasks(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetThreadSelectedCpuSets(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetThreadSelectedCpuSets(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -17721,7 +17721,7 @@ extern "C" fn magic_GetThreadSelectedCpuSets(context: &mut ExtendedContext, memo
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetThreadTimes(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetThreadTimes(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -17745,7 +17745,7 @@ extern "C" fn magic_GetThreadTimes(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetUmsCompletionListEvent(
+extern "C" fn thunk_GetUmsCompletionListEvent(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -17763,7 +17763,7 @@ extern "C" fn magic_GetUmsCompletionListEvent(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetUmsSystemThreadInformation(
+extern "C" fn thunk_GetUmsSystemThreadInformation(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -17781,7 +17781,7 @@ extern "C" fn magic_GetUmsSystemThreadInformation(
     }
 }
 #[no_mangle]
-extern "C" fn magic_InitOnceBeginInitialize(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_InitOnceBeginInitialize(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -17798,7 +17798,7 @@ extern "C" fn magic_InitOnceBeginInitialize(context: &mut ExtendedContext, memor
     }
 }
 #[no_mangle]
-extern "C" fn magic_InitOnceComplete(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_InitOnceComplete(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -17814,7 +17814,7 @@ extern "C" fn magic_InitOnceComplete(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_InitOnceExecuteOnce(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_InitOnceExecuteOnce(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -17831,7 +17831,7 @@ extern "C" fn magic_InitOnceExecuteOnce(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_InitOnceInitialize(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_InitOnceInitialize(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -17845,7 +17845,7 @@ extern "C" fn magic_InitOnceInitialize(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_InitializeConditionVariable(
+extern "C" fn thunk_InitializeConditionVariable(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -17862,7 +17862,7 @@ extern "C" fn magic_InitializeConditionVariable(
     }
 }
 #[no_mangle]
-extern "C" fn magic_InitializeCriticalSection(
+extern "C" fn thunk_InitializeCriticalSection(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -17879,7 +17879,7 @@ extern "C" fn magic_InitializeCriticalSection(
     }
 }
 #[no_mangle]
-extern "C" fn magic_InitializeCriticalSectionAndSpinCount(
+extern "C" fn thunk_InitializeCriticalSectionAndSpinCount(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -17897,7 +17897,7 @@ extern "C" fn magic_InitializeCriticalSectionAndSpinCount(
     }
 }
 #[no_mangle]
-extern "C" fn magic_InitializeCriticalSectionEx(
+extern "C" fn thunk_InitializeCriticalSectionEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -17916,7 +17916,7 @@ extern "C" fn magic_InitializeCriticalSectionEx(
     }
 }
 #[no_mangle]
-extern "C" fn magic_InitializeProcThreadAttributeList(
+extern "C" fn thunk_InitializeProcThreadAttributeList(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -17941,7 +17941,7 @@ extern "C" fn magic_InitializeProcThreadAttributeList(
     }
 }
 #[no_mangle]
-extern "C" fn magic_InitializeSListHead(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_InitializeSListHead(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -17955,7 +17955,7 @@ extern "C" fn magic_InitializeSListHead(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_InitializeSRWLock(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_InitializeSRWLock(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -17969,7 +17969,7 @@ extern "C" fn magic_InitializeSRWLock(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_InitializeSynchronizationBarrier(
+extern "C" fn thunk_InitializeSynchronizationBarrier(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -17988,7 +17988,7 @@ extern "C" fn magic_InitializeSynchronizationBarrier(
     }
 }
 #[no_mangle]
-extern "C" fn magic_InterlockedFlushSList(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_InterlockedFlushSList(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -18002,7 +18002,7 @@ extern "C" fn magic_InterlockedFlushSList(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_InterlockedPopEntrySList(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_InterlockedPopEntrySList(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -18016,7 +18016,7 @@ extern "C" fn magic_InterlockedPopEntrySList(context: &mut ExtendedContext, memo
     }
 }
 #[no_mangle]
-extern "C" fn magic_InterlockedPushEntrySList(
+extern "C" fn thunk_InterlockedPushEntrySList(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -18034,7 +18034,7 @@ extern "C" fn magic_InterlockedPushEntrySList(
     }
 }
 #[no_mangle]
-extern "C" fn magic_InterlockedPushListSListEx(
+extern "C" fn thunk_InterlockedPushListSListEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -18054,7 +18054,7 @@ extern "C" fn magic_InterlockedPushListSListEx(
     }
 }
 #[no_mangle]
-extern "C" fn magic_IsImmersiveProcess(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_IsImmersiveProcess(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -18068,7 +18068,7 @@ extern "C" fn magic_IsImmersiveProcess(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_IsProcessCritical(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_IsProcessCritical(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -18083,7 +18083,7 @@ extern "C" fn magic_IsProcessCritical(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_IsProcessorFeaturePresent(
+extern "C" fn thunk_IsProcessorFeaturePresent(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -18100,7 +18100,7 @@ extern "C" fn magic_IsProcessorFeaturePresent(
     }
 }
 #[no_mangle]
-extern "C" fn magic_IsThreadAFiber(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_IsThreadAFiber(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -18113,7 +18113,7 @@ extern "C" fn magic_IsThreadAFiber(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_IsThreadpoolTimerSet(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_IsThreadpoolTimerSet(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -18127,7 +18127,7 @@ extern "C" fn magic_IsThreadpoolTimerSet(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_IsWow64Process(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_IsWow64Process(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -18142,7 +18142,7 @@ extern "C" fn magic_IsWow64Process(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_IsWow64Process2(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_IsWow64Process2(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -18158,7 +18158,7 @@ extern "C" fn magic_IsWow64Process2(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_LeaveCriticalSection(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_LeaveCriticalSection(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -18172,7 +18172,7 @@ extern "C" fn magic_LeaveCriticalSection(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_LeaveCriticalSectionWhenCallbackReturns(
+extern "C" fn thunk_LeaveCriticalSectionWhenCallbackReturns(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -18190,7 +18190,7 @@ extern "C" fn magic_LeaveCriticalSectionWhenCallbackReturns(
     }
 }
 #[no_mangle]
-extern "C" fn magic_NtQueryInformationProcess(
+extern "C" fn thunk_NtQueryInformationProcess(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -18217,7 +18217,7 @@ extern "C" fn magic_NtQueryInformationProcess(
     }
 }
 #[no_mangle]
-extern "C" fn magic_NtQueryInformationThread(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_NtQueryInformationThread(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -18241,7 +18241,7 @@ extern "C" fn magic_NtQueryInformationThread(context: &mut ExtendedContext, memo
     }
 }
 #[no_mangle]
-extern "C" fn magic_NtSetInformationThread(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_NtSetInformationThread(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -18263,7 +18263,7 @@ extern "C" fn magic_NtSetInformationThread(context: &mut ExtendedContext, memory
     }
 }
 #[no_mangle]
-extern "C" fn magic_OpenEventA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_OpenEventA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -18279,7 +18279,7 @@ extern "C" fn magic_OpenEventA(context: &mut ExtendedContext, memory: FlatMemory
     }
 }
 #[no_mangle]
-extern "C" fn magic_OpenEventW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_OpenEventW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -18295,7 +18295,7 @@ extern "C" fn magic_OpenEventW(context: &mut ExtendedContext, memory: FlatMemory
     }
 }
 #[no_mangle]
-extern "C" fn magic_OpenMutexW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_OpenMutexW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -18311,7 +18311,7 @@ extern "C" fn magic_OpenMutexW(context: &mut ExtendedContext, memory: FlatMemory
     }
 }
 #[no_mangle]
-extern "C" fn magic_OpenPrivateNamespaceA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_OpenPrivateNamespaceA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -18326,7 +18326,7 @@ extern "C" fn magic_OpenPrivateNamespaceA(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_OpenPrivateNamespaceW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_OpenPrivateNamespaceW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -18341,7 +18341,7 @@ extern "C" fn magic_OpenPrivateNamespaceW(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_OpenProcess(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_OpenProcess(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -18357,7 +18357,7 @@ extern "C" fn magic_OpenProcess(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_OpenSemaphoreW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_OpenSemaphoreW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -18373,7 +18373,7 @@ extern "C" fn magic_OpenSemaphoreW(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_OpenThread(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_OpenThread(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -18389,7 +18389,7 @@ extern "C" fn magic_OpenThread(context: &mut ExtendedContext, memory: FlatMemory
     }
 }
 #[no_mangle]
-extern "C" fn magic_OpenWaitableTimerW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_OpenWaitableTimerW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -18405,7 +18405,7 @@ extern "C" fn magic_OpenWaitableTimerW(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_PulseEvent(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_PulseEvent(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -18419,7 +18419,7 @@ extern "C" fn magic_PulseEvent(context: &mut ExtendedContext, memory: FlatMemory
     }
 }
 #[no_mangle]
-extern "C" fn magic_QueryDepthSList(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_QueryDepthSList(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -18433,7 +18433,7 @@ extern "C" fn magic_QueryDepthSList(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_QueryFullProcessImageNameA(
+extern "C" fn thunk_QueryFullProcessImageNameA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -18453,7 +18453,7 @@ extern "C" fn magic_QueryFullProcessImageNameA(
     }
 }
 #[no_mangle]
-extern "C" fn magic_QueryFullProcessImageNameW(
+extern "C" fn thunk_QueryFullProcessImageNameW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -18473,7 +18473,7 @@ extern "C" fn magic_QueryFullProcessImageNameW(
     }
 }
 #[no_mangle]
-extern "C" fn magic_QueryProcessAffinityUpdateMode(
+extern "C" fn thunk_QueryProcessAffinityUpdateMode(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -18491,7 +18491,7 @@ extern "C" fn magic_QueryProcessAffinityUpdateMode(
     }
 }
 #[no_mangle]
-extern "C" fn magic_QueryProtectedPolicy(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_QueryProtectedPolicy(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -18506,7 +18506,7 @@ extern "C" fn magic_QueryProtectedPolicy(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_QueryThreadpoolStackInformation(
+extern "C" fn thunk_QueryThreadpoolStackInformation(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -18524,7 +18524,7 @@ extern "C" fn magic_QueryThreadpoolStackInformation(
     }
 }
 #[no_mangle]
-extern "C" fn magic_QueryUmsThreadInformation(
+extern "C" fn thunk_QueryUmsThreadInformation(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -18551,7 +18551,7 @@ extern "C" fn magic_QueryUmsThreadInformation(
     }
 }
 #[no_mangle]
-extern "C" fn magic_QueueUserAPC(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_QueueUserAPC(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -18567,7 +18567,7 @@ extern "C" fn magic_QueueUserAPC(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_QueueUserAPC2(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_QueueUserAPC2(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -18584,7 +18584,7 @@ extern "C" fn magic_QueueUserAPC2(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_QueueUserWorkItem(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_QueueUserWorkItem(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -18600,7 +18600,7 @@ extern "C" fn magic_QueueUserWorkItem(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_RegisterWaitForSingleObject(
+extern "C" fn thunk_RegisterWaitForSingleObject(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -18629,7 +18629,7 @@ extern "C" fn magic_RegisterWaitForSingleObject(
     }
 }
 #[no_mangle]
-extern "C" fn magic_ReleaseMutex(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ReleaseMutex(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -18643,7 +18643,7 @@ extern "C" fn magic_ReleaseMutex(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_ReleaseMutexWhenCallbackReturns(
+extern "C" fn thunk_ReleaseMutexWhenCallbackReturns(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -18661,7 +18661,7 @@ extern "C" fn magic_ReleaseMutexWhenCallbackReturns(
     }
 }
 #[no_mangle]
-extern "C" fn magic_ReleaseSRWLockExclusive(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ReleaseSRWLockExclusive(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -18675,7 +18675,7 @@ extern "C" fn magic_ReleaseSRWLockExclusive(context: &mut ExtendedContext, memor
     }
 }
 #[no_mangle]
-extern "C" fn magic_ReleaseSRWLockShared(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ReleaseSRWLockShared(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -18689,7 +18689,7 @@ extern "C" fn magic_ReleaseSRWLockShared(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_ReleaseSemaphore(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ReleaseSemaphore(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -18705,7 +18705,7 @@ extern "C" fn magic_ReleaseSemaphore(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_ReleaseSemaphoreWhenCallbackReturns(
+extern "C" fn thunk_ReleaseSemaphoreWhenCallbackReturns(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -18724,7 +18724,7 @@ extern "C" fn magic_ReleaseSemaphoreWhenCallbackReturns(
     }
 }
 #[no_mangle]
-extern "C" fn magic_ResetEvent(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ResetEvent(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -18738,7 +18738,7 @@ extern "C" fn magic_ResetEvent(context: &mut ExtendedContext, memory: FlatMemory
     }
 }
 #[no_mangle]
-extern "C" fn magic_ResumeThread(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ResumeThread(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -18752,7 +18752,7 @@ extern "C" fn magic_ResumeThread(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetCriticalSectionSpinCount(
+extern "C" fn thunk_SetCriticalSectionSpinCount(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -18770,7 +18770,7 @@ extern "C" fn magic_SetCriticalSectionSpinCount(
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetEvent(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetEvent(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -18784,7 +18784,7 @@ extern "C" fn magic_SetEvent(context: &mut ExtendedContext, memory: FlatMemoryCt
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetEventWhenCallbackReturns(
+extern "C" fn thunk_SetEventWhenCallbackReturns(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -18802,7 +18802,7 @@ extern "C" fn magic_SetEventWhenCallbackReturns(
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetPriorityClass(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetPriorityClass(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -18817,7 +18817,7 @@ extern "C" fn magic_SetPriorityClass(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetProcessAffinityMask(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetProcessAffinityMask(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -18832,7 +18832,7 @@ extern "C" fn magic_SetProcessAffinityMask(context: &mut ExtendedContext, memory
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetProcessAffinityUpdateMode(
+extern "C" fn thunk_SetProcessAffinityUpdateMode(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -18850,7 +18850,7 @@ extern "C" fn magic_SetProcessAffinityUpdateMode(
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetProcessDEPPolicy(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetProcessDEPPolicy(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -18864,7 +18864,7 @@ extern "C" fn magic_SetProcessDEPPolicy(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetProcessDefaultCpuSetMasks(
+extern "C" fn thunk_SetProcessDefaultCpuSetMasks(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -18883,7 +18883,7 @@ extern "C" fn magic_SetProcessDefaultCpuSetMasks(
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetProcessDefaultCpuSets(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetProcessDefaultCpuSets(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -18899,7 +18899,7 @@ extern "C" fn magic_SetProcessDefaultCpuSets(context: &mut ExtendedContext, memo
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetProcessDynamicEHContinuationTargets(
+extern "C" fn thunk_SetProcessDynamicEHContinuationTargets(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -18918,7 +18918,7 @@ extern "C" fn magic_SetProcessDynamicEHContinuationTargets(
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetProcessDynamicEnforcedCetCompatibleRanges(
+extern "C" fn thunk_SetProcessDynamicEnforcedCetCompatibleRanges(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -18938,7 +18938,7 @@ extern "C" fn magic_SetProcessDynamicEnforcedCetCompatibleRanges(
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetProcessInformation(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetProcessInformation(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -18960,7 +18960,7 @@ extern "C" fn magic_SetProcessInformation(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetProcessMitigationPolicy(
+extern "C" fn thunk_SetProcessMitigationPolicy(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -18979,7 +18979,7 @@ extern "C" fn magic_SetProcessMitigationPolicy(
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetProcessPriorityBoost(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetProcessPriorityBoost(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -18994,7 +18994,7 @@ extern "C" fn magic_SetProcessPriorityBoost(context: &mut ExtendedContext, memor
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetProcessRestrictionExemption(
+extern "C" fn thunk_SetProcessRestrictionExemption(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -19011,7 +19011,7 @@ extern "C" fn magic_SetProcessRestrictionExemption(
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetProcessShutdownParameters(
+extern "C" fn thunk_SetProcessShutdownParameters(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -19029,7 +19029,7 @@ extern "C" fn magic_SetProcessShutdownParameters(
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetProcessWorkingSetSize(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetProcessWorkingSetSize(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -19049,7 +19049,7 @@ extern "C" fn magic_SetProcessWorkingSetSize(context: &mut ExtendedContext, memo
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetProtectedPolicy(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetProtectedPolicy(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -19065,7 +19065,7 @@ extern "C" fn magic_SetProtectedPolicy(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetThreadAffinityMask(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetThreadAffinityMask(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -19080,7 +19080,7 @@ extern "C" fn magic_SetThreadAffinityMask(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetThreadDescription(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetThreadDescription(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -19095,7 +19095,7 @@ extern "C" fn magic_SetThreadDescription(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetThreadGroupAffinity(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetThreadGroupAffinity(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -19111,7 +19111,7 @@ extern "C" fn magic_SetThreadGroupAffinity(context: &mut ExtendedContext, memory
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetThreadIdealProcessor(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetThreadIdealProcessor(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -19126,7 +19126,7 @@ extern "C" fn magic_SetThreadIdealProcessor(context: &mut ExtendedContext, memor
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetThreadIdealProcessorEx(
+extern "C" fn thunk_SetThreadIdealProcessorEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -19149,7 +19149,7 @@ extern "C" fn magic_SetThreadIdealProcessorEx(
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetThreadInformation(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetThreadInformation(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -19171,7 +19171,7 @@ extern "C" fn magic_SetThreadInformation(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetThreadPriority(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetThreadPriority(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -19186,7 +19186,7 @@ extern "C" fn magic_SetThreadPriority(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetThreadPriorityBoost(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetThreadPriorityBoost(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -19201,7 +19201,7 @@ extern "C" fn magic_SetThreadPriorityBoost(context: &mut ExtendedContext, memory
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetThreadSelectedCpuSetMasks(
+extern "C" fn thunk_SetThreadSelectedCpuSetMasks(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -19220,7 +19220,7 @@ extern "C" fn magic_SetThreadSelectedCpuSetMasks(
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetThreadSelectedCpuSets(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetThreadSelectedCpuSets(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -19236,7 +19236,7 @@ extern "C" fn magic_SetThreadSelectedCpuSets(context: &mut ExtendedContext, memo
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetThreadStackGuarantee(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetThreadStackGuarantee(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -19250,7 +19250,7 @@ extern "C" fn magic_SetThreadStackGuarantee(context: &mut ExtendedContext, memor
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetThreadToken(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetThreadToken(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -19265,7 +19265,7 @@ extern "C" fn magic_SetThreadToken(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetThreadpoolStackInformation(
+extern "C" fn thunk_SetThreadpoolStackInformation(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -19283,7 +19283,7 @@ extern "C" fn magic_SetThreadpoolStackInformation(
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetThreadpoolThreadMaximum(
+extern "C" fn thunk_SetThreadpoolThreadMaximum(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -19301,7 +19301,7 @@ extern "C" fn magic_SetThreadpoolThreadMaximum(
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetThreadpoolThreadMinimum(
+extern "C" fn thunk_SetThreadpoolThreadMinimum(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -19319,7 +19319,7 @@ extern "C" fn magic_SetThreadpoolThreadMinimum(
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetThreadpoolTimer(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetThreadpoolTimer(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -19336,7 +19336,7 @@ extern "C" fn magic_SetThreadpoolTimer(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetThreadpoolTimerEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetThreadpoolTimerEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -19353,7 +19353,7 @@ extern "C" fn magic_SetThreadpoolTimerEx(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetThreadpoolWait(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetThreadpoolWait(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -19369,7 +19369,7 @@ extern "C" fn magic_SetThreadpoolWait(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetThreadpoolWaitEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetThreadpoolWaitEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -19386,7 +19386,7 @@ extern "C" fn magic_SetThreadpoolWaitEx(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetTimerQueueTimer(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetTimerQueueTimer(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -19412,7 +19412,7 @@ extern "C" fn magic_SetTimerQueueTimer(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetUmsThreadInformation(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetUmsThreadInformation(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -19434,7 +19434,7 @@ extern "C" fn magic_SetUmsThreadInformation(context: &mut ExtendedContext, memor
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetWaitableTimer(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetWaitableTimer(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -19460,7 +19460,7 @@ extern "C" fn magic_SetWaitableTimer(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetWaitableTimerEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetWaitableTimerEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -19488,7 +19488,7 @@ extern "C" fn magic_SetWaitableTimerEx(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_Sleep(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_Sleep(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -19502,7 +19502,7 @@ extern "C" fn magic_Sleep(context: &mut ExtendedContext, memory: FlatMemoryCtx) 
     }
 }
 #[no_mangle]
-extern "C" fn magic_SleepConditionVariableCS(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SleepConditionVariableCS(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -19519,7 +19519,7 @@ extern "C" fn magic_SleepConditionVariableCS(context: &mut ExtendedContext, memo
     }
 }
 #[no_mangle]
-extern "C" fn magic_SleepConditionVariableSRW(
+extern "C" fn thunk_SleepConditionVariableSRW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -19540,7 +19540,7 @@ extern "C" fn magic_SleepConditionVariableSRW(
     }
 }
 #[no_mangle]
-extern "C" fn magic_SleepEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SleepEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -19555,7 +19555,7 @@ extern "C" fn magic_SleepEx(context: &mut ExtendedContext, memory: FlatMemoryCtx
     }
 }
 #[no_mangle]
-extern "C" fn magic_StartThreadpoolIo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_StartThreadpoolIo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -19569,7 +19569,7 @@ extern "C" fn magic_StartThreadpoolIo(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_SubmitThreadpoolWork(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SubmitThreadpoolWork(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -19583,7 +19583,7 @@ extern "C" fn magic_SubmitThreadpoolWork(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_SuspendThread(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SuspendThread(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -19597,7 +19597,7 @@ extern "C" fn magic_SuspendThread(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_SwitchToFiber(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SwitchToFiber(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -19611,7 +19611,7 @@ extern "C" fn magic_SwitchToFiber(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_SwitchToThread(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SwitchToThread(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -19624,7 +19624,7 @@ extern "C" fn magic_SwitchToThread(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_TerminateProcess(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_TerminateProcess(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -19639,7 +19639,7 @@ extern "C" fn magic_TerminateProcess(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_TerminateThread(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_TerminateThread(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -19654,7 +19654,7 @@ extern "C" fn magic_TerminateThread(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_TlsAlloc(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_TlsAlloc(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -19667,7 +19667,7 @@ extern "C" fn magic_TlsAlloc(context: &mut ExtendedContext, memory: FlatMemoryCt
     }
 }
 #[no_mangle]
-extern "C" fn magic_TlsFree(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_TlsFree(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -19681,7 +19681,7 @@ extern "C" fn magic_TlsFree(context: &mut ExtendedContext, memory: FlatMemoryCtx
     }
 }
 #[no_mangle]
-extern "C" fn magic_TlsGetValue(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_TlsGetValue(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -19695,7 +19695,7 @@ extern "C" fn magic_TlsGetValue(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_TlsSetValue(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_TlsSetValue(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -19710,7 +19710,7 @@ extern "C" fn magic_TlsSetValue(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_TryAcquireSRWLockExclusive(
+extern "C" fn thunk_TryAcquireSRWLockExclusive(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -19727,7 +19727,7 @@ extern "C" fn magic_TryAcquireSRWLockExclusive(
     }
 }
 #[no_mangle]
-extern "C" fn magic_TryAcquireSRWLockShared(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_TryAcquireSRWLockShared(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -19741,7 +19741,7 @@ extern "C" fn magic_TryAcquireSRWLockShared(context: &mut ExtendedContext, memor
     }
 }
 #[no_mangle]
-extern "C" fn magic_TryEnterCriticalSection(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_TryEnterCriticalSection(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -19755,7 +19755,7 @@ extern "C" fn magic_TryEnterCriticalSection(context: &mut ExtendedContext, memor
     }
 }
 #[no_mangle]
-extern "C" fn magic_TrySubmitThreadpoolCallback(
+extern "C" fn thunk_TrySubmitThreadpoolCallback(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -19774,7 +19774,7 @@ extern "C" fn magic_TrySubmitThreadpoolCallback(
     }
 }
 #[no_mangle]
-extern "C" fn magic_UmsThreadYield(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_UmsThreadYield(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -19788,7 +19788,7 @@ extern "C" fn magic_UmsThreadYield(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_UnregisterWait(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_UnregisterWait(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -19802,7 +19802,7 @@ extern "C" fn magic_UnregisterWait(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_UnregisterWaitEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_UnregisterWaitEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -19817,7 +19817,7 @@ extern "C" fn magic_UnregisterWaitEx(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_UpdateProcThreadAttribute(
+extern "C" fn thunk_UpdateProcThreadAttribute(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -19848,7 +19848,7 @@ extern "C" fn magic_UpdateProcThreadAttribute(
     }
 }
 #[no_mangle]
-extern "C" fn magic_WaitForInputIdle(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_WaitForInputIdle(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -19863,7 +19863,7 @@ extern "C" fn magic_WaitForInputIdle(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_WaitForMultipleObjects(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_WaitForMultipleObjects(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -19880,7 +19880,7 @@ extern "C" fn magic_WaitForMultipleObjects(context: &mut ExtendedContext, memory
     }
 }
 #[no_mangle]
-extern "C" fn magic_WaitForMultipleObjectsEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_WaitForMultipleObjectsEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -19904,7 +19904,7 @@ extern "C" fn magic_WaitForMultipleObjectsEx(context: &mut ExtendedContext, memo
     }
 }
 #[no_mangle]
-extern "C" fn magic_WaitForSingleObject(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_WaitForSingleObject(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -19919,7 +19919,7 @@ extern "C" fn magic_WaitForSingleObject(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_WaitForSingleObjectEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_WaitForSingleObjectEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -19935,7 +19935,7 @@ extern "C" fn magic_WaitForSingleObjectEx(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_WaitForThreadpoolIoCallbacks(
+extern "C" fn thunk_WaitForThreadpoolIoCallbacks(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -19953,7 +19953,7 @@ extern "C" fn magic_WaitForThreadpoolIoCallbacks(
     }
 }
 #[no_mangle]
-extern "C" fn magic_WaitForThreadpoolTimerCallbacks(
+extern "C" fn thunk_WaitForThreadpoolTimerCallbacks(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -19971,7 +19971,7 @@ extern "C" fn magic_WaitForThreadpoolTimerCallbacks(
     }
 }
 #[no_mangle]
-extern "C" fn magic_WaitForThreadpoolWaitCallbacks(
+extern "C" fn thunk_WaitForThreadpoolWaitCallbacks(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -19989,7 +19989,7 @@ extern "C" fn magic_WaitForThreadpoolWaitCallbacks(
     }
 }
 #[no_mangle]
-extern "C" fn magic_WaitForThreadpoolWorkCallbacks(
+extern "C" fn thunk_WaitForThreadpoolWorkCallbacks(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -20007,7 +20007,7 @@ extern "C" fn magic_WaitForThreadpoolWorkCallbacks(
     }
 }
 #[no_mangle]
-extern "C" fn magic_WaitOnAddress(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_WaitOnAddress(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -20024,7 +20024,7 @@ extern "C" fn magic_WaitOnAddress(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_WakeAllConditionVariable(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_WakeAllConditionVariable(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -20038,7 +20038,7 @@ extern "C" fn magic_WakeAllConditionVariable(context: &mut ExtendedContext, memo
     }
 }
 #[no_mangle]
-extern "C" fn magic_WakeByAddressAll(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_WakeByAddressAll(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -20052,7 +20052,7 @@ extern "C" fn magic_WakeByAddressAll(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_WakeByAddressSingle(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_WakeByAddressSingle(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -20066,7 +20066,7 @@ extern "C" fn magic_WakeByAddressSingle(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_WakeConditionVariable(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_WakeConditionVariable(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -20080,7 +20080,7 @@ extern "C" fn magic_WakeConditionVariable(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_WinExec(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_WinExec(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -20095,7 +20095,7 @@ extern "C" fn magic_WinExec(context: &mut ExtendedContext, memory: FlatMemoryCtx
     }
 }
 #[no_mangle]
-extern "C" fn magic_Wow64SetThreadDefaultGuestMachine(
+extern "C" fn thunk_Wow64SetThreadDefaultGuestMachine(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -20112,7 +20112,7 @@ extern "C" fn magic_Wow64SetThreadDefaultGuestMachine(
     }
 }
 #[no_mangle]
-extern "C" fn magic_Wow64SuspendThread(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_Wow64SuspendThread(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::Threading::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -20126,7 +20126,7 @@ extern "C" fn magic_Wow64SuspendThread(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_AddDelBackupEntryA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_AddDelBackupEntryA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -20144,7 +20144,7 @@ extern "C" fn magic_AddDelBackupEntryA(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_AddDelBackupEntryW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_AddDelBackupEntryW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -20162,7 +20162,7 @@ extern "C" fn magic_AddDelBackupEntryW(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_AdvInstallFileA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_AdvInstallFileA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -20190,7 +20190,7 @@ extern "C" fn magic_AdvInstallFileA(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_AdvInstallFileW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_AdvInstallFileW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -20218,7 +20218,7 @@ extern "C" fn magic_AdvInstallFileW(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_ApphelpCheckShellObject(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ApphelpCheckShellObject(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -20234,7 +20234,7 @@ extern "C" fn magic_ApphelpCheckShellObject(context: &mut ExtendedContext, memor
     }
 }
 #[no_mangle]
-extern "C" fn magic_CancelDeviceWakeupRequest(
+extern "C" fn thunk_CancelDeviceWakeupRequest(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -20251,7 +20251,7 @@ extern "C" fn magic_CancelDeviceWakeupRequest(
     }
 }
 #[no_mangle]
-extern "C" fn magic_CancelTimerQueueTimer(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CancelTimerQueueTimer(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -20266,7 +20266,7 @@ extern "C" fn magic_CancelTimerQueueTimer(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_CloseINFEngine(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CloseINFEngine(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -20280,7 +20280,7 @@ extern "C" fn magic_CloseINFEngine(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_ConvertAuxiliaryCounterToPerformanceCounter(
+extern "C" fn thunk_ConvertAuxiliaryCounterToPerformanceCounter(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -20303,7 +20303,7 @@ extern "C" fn magic_ConvertAuxiliaryCounterToPerformanceCounter(
     }
 }
 #[no_mangle]
-extern "C" fn magic_ConvertPerformanceCounterToAuxiliaryCounter(
+extern "C" fn thunk_ConvertPerformanceCounterToAuxiliaryCounter(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -20326,7 +20326,7 @@ extern "C" fn magic_ConvertPerformanceCounterToAuxiliaryCounter(
     }
 }
 #[no_mangle]
-extern "C" fn magic_DelNodeA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_DelNodeA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -20341,7 +20341,7 @@ extern "C" fn magic_DelNodeA(context: &mut ExtendedContext, memory: FlatMemoryCt
     }
 }
 #[no_mangle]
-extern "C" fn magic_DelNodeRunDLL32W(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_DelNodeRunDLL32W(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -20358,7 +20358,7 @@ extern "C" fn magic_DelNodeRunDLL32W(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_DelNodeW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_DelNodeW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -20373,7 +20373,7 @@ extern "C" fn magic_DelNodeW(context: &mut ExtendedContext, memory: FlatMemoryCt
     }
 }
 #[no_mangle]
-extern "C" fn magic_DnsHostnameToComputerNameA(
+extern "C" fn thunk_DnsHostnameToComputerNameA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -20392,7 +20392,7 @@ extern "C" fn magic_DnsHostnameToComputerNameA(
     }
 }
 #[no_mangle]
-extern "C" fn magic_DnsHostnameToComputerNameW(
+extern "C" fn thunk_DnsHostnameToComputerNameW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -20411,7 +20411,7 @@ extern "C" fn magic_DnsHostnameToComputerNameW(
     }
 }
 #[no_mangle]
-extern "C" fn magic_DosDateTimeToFileTime(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_DosDateTimeToFileTime(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -20427,7 +20427,7 @@ extern "C" fn magic_DosDateTimeToFileTime(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_EnableProcessOptionalXStateFeatures(
+extern "C" fn thunk_EnableProcessOptionalXStateFeatures(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -20444,7 +20444,7 @@ extern "C" fn magic_EnableProcessOptionalXStateFeatures(
     }
 }
 #[no_mangle]
-extern "C" fn magic_ExecuteCabA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ExecuteCabA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -20460,7 +20460,7 @@ extern "C" fn magic_ExecuteCabA(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_ExecuteCabW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ExecuteCabW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -20476,7 +20476,7 @@ extern "C" fn magic_ExecuteCabW(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_ExtractFilesA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ExtractFilesA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -20502,7 +20502,7 @@ extern "C" fn magic_ExtractFilesA(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_ExtractFilesW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ExtractFilesW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -20528,7 +20528,7 @@ extern "C" fn magic_ExtractFilesW(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_FileSaveMarkNotExistA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_FileSaveMarkNotExistA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -20544,7 +20544,7 @@ extern "C" fn magic_FileSaveMarkNotExistA(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_FileSaveMarkNotExistW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_FileSaveMarkNotExistW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -20560,7 +20560,7 @@ extern "C" fn magic_FileSaveMarkNotExistW(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_FileSaveRestoreOnINFA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_FileSaveRestoreOnINFA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -20588,7 +20588,7 @@ extern "C" fn magic_FileSaveRestoreOnINFA(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_FileSaveRestoreOnINFW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_FileSaveRestoreOnINFW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -20616,7 +20616,7 @@ extern "C" fn magic_FileSaveRestoreOnINFW(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_FileSaveRestoreW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_FileSaveRestoreW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -20634,7 +20634,7 @@ extern "C" fn magic_FileSaveRestoreW(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_FileTimeToDosDateTime(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_FileTimeToDosDateTime(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -20650,7 +20650,7 @@ extern "C" fn magic_FileTimeToDosDateTime(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_GdiEntry13(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GdiEntry13(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -20663,7 +20663,7 @@ extern "C" fn magic_GdiEntry13(context: &mut ExtendedContext, memory: FlatMemory
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetComputerNameA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetComputerNameA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -20678,7 +20678,7 @@ extern "C" fn magic_GetComputerNameA(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetComputerNameW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetComputerNameW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -20693,7 +20693,7 @@ extern "C" fn magic_GetComputerNameW(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetCurrentHwProfileA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetCurrentHwProfileA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -20707,7 +20707,7 @@ extern "C" fn magic_GetCurrentHwProfileA(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetCurrentHwProfileW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetCurrentHwProfileW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -20721,7 +20721,7 @@ extern "C" fn magic_GetCurrentHwProfileW(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetFeatureEnabledState(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetFeatureEnabledState(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -20736,7 +20736,7 @@ extern "C" fn magic_GetFeatureEnabledState(context: &mut ExtendedContext, memory
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetFeatureVariant(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetFeatureVariant(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -20753,7 +20753,7 @@ extern "C" fn magic_GetFeatureVariant(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetFirmwareEnvironmentVariableA(
+extern "C" fn thunk_GetFirmwareEnvironmentVariableA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -20773,7 +20773,7 @@ extern "C" fn magic_GetFirmwareEnvironmentVariableA(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetFirmwareEnvironmentVariableExA(
+extern "C" fn thunk_GetFirmwareEnvironmentVariableExA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -20800,7 +20800,7 @@ extern "C" fn magic_GetFirmwareEnvironmentVariableExA(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetFirmwareEnvironmentVariableExW(
+extern "C" fn thunk_GetFirmwareEnvironmentVariableExW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -20827,7 +20827,7 @@ extern "C" fn magic_GetFirmwareEnvironmentVariableExW(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetFirmwareEnvironmentVariableW(
+extern "C" fn thunk_GetFirmwareEnvironmentVariableW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -20847,7 +20847,7 @@ extern "C" fn magic_GetFirmwareEnvironmentVariableW(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetPrivateProfileIntA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetPrivateProfileIntA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -20864,7 +20864,7 @@ extern "C" fn magic_GetPrivateProfileIntA(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetPrivateProfileIntW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetPrivateProfileIntW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -20881,7 +20881,7 @@ extern "C" fn magic_GetPrivateProfileIntW(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetPrivateProfileSectionA(
+extern "C" fn thunk_GetPrivateProfileSectionA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -20902,7 +20902,7 @@ extern "C" fn magic_GetPrivateProfileSectionA(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetPrivateProfileSectionNamesA(
+extern "C" fn thunk_GetPrivateProfileSectionNamesA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -20921,7 +20921,7 @@ extern "C" fn magic_GetPrivateProfileSectionNamesA(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetPrivateProfileSectionNamesW(
+extern "C" fn thunk_GetPrivateProfileSectionNamesW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -20940,7 +20940,7 @@ extern "C" fn magic_GetPrivateProfileSectionNamesW(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetPrivateProfileSectionW(
+extern "C" fn thunk_GetPrivateProfileSectionW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -20961,7 +20961,7 @@ extern "C" fn magic_GetPrivateProfileSectionW(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetPrivateProfileStringA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetPrivateProfileStringA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -20987,7 +20987,7 @@ extern "C" fn magic_GetPrivateProfileStringA(context: &mut ExtendedContext, memo
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetPrivateProfileStringW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetPrivateProfileStringW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -21013,7 +21013,7 @@ extern "C" fn magic_GetPrivateProfileStringW(context: &mut ExtendedContext, memo
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetPrivateProfileStructA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetPrivateProfileStructA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -21032,7 +21032,7 @@ extern "C" fn magic_GetPrivateProfileStructA(context: &mut ExtendedContext, memo
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetPrivateProfileStructW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetPrivateProfileStructW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -21051,7 +21051,7 @@ extern "C" fn magic_GetPrivateProfileStructW(context: &mut ExtendedContext, memo
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetProfileIntA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetProfileIntA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -21067,7 +21067,7 @@ extern "C" fn magic_GetProfileIntA(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetProfileIntW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetProfileIntW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -21083,7 +21083,7 @@ extern "C" fn magic_GetProfileIntW(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetProfileSectionA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetProfileSectionA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -21099,7 +21099,7 @@ extern "C" fn magic_GetProfileSectionA(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetProfileSectionW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetProfileSectionW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -21115,7 +21115,7 @@ extern "C" fn magic_GetProfileSectionW(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetProfileStringA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetProfileStringA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -21139,7 +21139,7 @@ extern "C" fn magic_GetProfileStringA(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetProfileStringW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetProfileStringW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -21163,7 +21163,7 @@ extern "C" fn magic_GetProfileStringW(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetSystemRegistryQuota(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetSystemRegistryQuota(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -21178,7 +21178,7 @@ extern "C" fn magic_GetSystemRegistryQuota(context: &mut ExtendedContext, memory
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetThreadEnabledXStateFeatures(
+extern "C" fn thunk_GetThreadEnabledXStateFeatures(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -21194,7 +21194,7 @@ extern "C" fn magic_GetThreadEnabledXStateFeatures(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetUserNameA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetUserNameA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -21209,7 +21209,7 @@ extern "C" fn magic_GetUserNameA(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetUserNameW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetUserNameW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -21224,7 +21224,7 @@ extern "C" fn magic_GetUserNameW(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetVersionFromFileA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetVersionFromFileA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -21241,7 +21241,7 @@ extern "C" fn magic_GetVersionFromFileA(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetVersionFromFileExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetVersionFromFileExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -21258,7 +21258,7 @@ extern "C" fn magic_GetVersionFromFileExA(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetVersionFromFileExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetVersionFromFileExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -21275,7 +21275,7 @@ extern "C" fn magic_GetVersionFromFileExW(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetVersionFromFileW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetVersionFromFileW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -21292,7 +21292,7 @@ extern "C" fn magic_GetVersionFromFileW(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_GlobalCompact(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GlobalCompact(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -21306,7 +21306,7 @@ extern "C" fn magic_GlobalCompact(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_GlobalFix(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GlobalFix(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -21320,7 +21320,7 @@ extern "C" fn magic_GlobalFix(context: &mut ExtendedContext, memory: FlatMemoryC
     }
 }
 #[no_mangle]
-extern "C" fn magic_GlobalUnWire(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GlobalUnWire(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -21334,7 +21334,7 @@ extern "C" fn magic_GlobalUnWire(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_GlobalUnfix(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GlobalUnfix(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -21348,7 +21348,7 @@ extern "C" fn magic_GlobalUnfix(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_GlobalWire(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GlobalWire(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -21362,7 +21362,7 @@ extern "C" fn magic_GlobalWire(context: &mut ExtendedContext, memory: FlatMemory
     }
 }
 #[no_mangle]
-extern "C" fn magic_IMPGetIMEA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_IMPGetIMEA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -21377,7 +21377,7 @@ extern "C" fn magic_IMPGetIMEA(context: &mut ExtendedContext, memory: FlatMemory
     }
 }
 #[no_mangle]
-extern "C" fn magic_IMPGetIMEW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_IMPGetIMEW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -21392,7 +21392,7 @@ extern "C" fn magic_IMPGetIMEW(context: &mut ExtendedContext, memory: FlatMemory
     }
 }
 #[no_mangle]
-extern "C" fn magic_IMPQueryIMEA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_IMPQueryIMEA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -21406,7 +21406,7 @@ extern "C" fn magic_IMPQueryIMEA(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_IMPQueryIMEW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_IMPQueryIMEW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -21420,7 +21420,7 @@ extern "C" fn magic_IMPQueryIMEW(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_IMPSetIMEA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_IMPSetIMEA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -21435,7 +21435,7 @@ extern "C" fn magic_IMPSetIMEA(context: &mut ExtendedContext, memory: FlatMemory
     }
 }
 #[no_mangle]
-extern "C" fn magic_IMPSetIMEW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_IMPSetIMEW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -21450,7 +21450,7 @@ extern "C" fn magic_IMPSetIMEW(context: &mut ExtendedContext, memory: FlatMemory
     }
 }
 #[no_mangle]
-extern "C" fn magic_IsApiSetImplemented(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_IsApiSetImplemented(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -21464,7 +21464,7 @@ extern "C" fn magic_IsApiSetImplemented(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_IsBadHugeReadPtr(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_IsBadHugeReadPtr(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -21479,7 +21479,7 @@ extern "C" fn magic_IsBadHugeReadPtr(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_IsBadHugeWritePtr(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_IsBadHugeWritePtr(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -21494,7 +21494,7 @@ extern "C" fn magic_IsBadHugeWritePtr(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_IsNTAdmin(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_IsNTAdmin(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -21509,7 +21509,7 @@ extern "C" fn magic_IsNTAdmin(context: &mut ExtendedContext, memory: FlatMemoryC
     }
 }
 #[no_mangle]
-extern "C" fn magic_IsNativeVhdBoot(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_IsNativeVhdBoot(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -21523,7 +21523,7 @@ extern "C" fn magic_IsNativeVhdBoot(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_IsTokenUntrusted(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_IsTokenUntrusted(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -21537,7 +21537,7 @@ extern "C" fn magic_IsTokenUntrusted(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_LaunchINFSectionExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_LaunchINFSectionExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -21554,7 +21554,7 @@ extern "C" fn magic_LaunchINFSectionExW(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_LaunchINFSectionW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_LaunchINFSectionW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -21571,7 +21571,7 @@ extern "C" fn magic_LaunchINFSectionW(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_LocalCompact(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_LocalCompact(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -21585,7 +21585,7 @@ extern "C" fn magic_LocalCompact(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_LocalShrink(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_LocalShrink(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -21600,7 +21600,7 @@ extern "C" fn magic_LocalShrink(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_MulDiv(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_MulDiv(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -21616,7 +21616,7 @@ extern "C" fn magic_MulDiv(context: &mut ExtendedContext, memory: FlatMemoryCtx)
     }
 }
 #[no_mangle]
-extern "C" fn magic_NeedReboot(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_NeedReboot(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -21630,7 +21630,7 @@ extern "C" fn magic_NeedReboot(context: &mut ExtendedContext, memory: FlatMemory
     }
 }
 #[no_mangle]
-extern "C" fn magic_NeedRebootInit(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_NeedRebootInit(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -21643,7 +21643,7 @@ extern "C" fn magic_NeedRebootInit(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_NtClose(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_NtClose(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -21657,7 +21657,7 @@ extern "C" fn magic_NtClose(context: &mut ExtendedContext, memory: FlatMemoryCtx
     }
 }
 #[no_mangle]
-extern "C" fn magic_NtDeviceIoControlFile(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_NtDeviceIoControlFile(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -21691,7 +21691,7 @@ extern "C" fn magic_NtDeviceIoControlFile(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_NtNotifyChangeMultipleKeys(
+extern "C" fn thunk_NtNotifyChangeMultipleKeys(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -21732,7 +21732,7 @@ extern "C" fn magic_NtNotifyChangeMultipleKeys(
     }
 }
 #[no_mangle]
-extern "C" fn magic_NtOpenFile(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_NtOpenFile(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -21758,7 +21758,7 @@ extern "C" fn magic_NtOpenFile(context: &mut ExtendedContext, memory: FlatMemory
     }
 }
 #[no_mangle]
-extern "C" fn magic_NtQueryMultipleValueKey(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_NtQueryMultipleValueKey(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -21784,7 +21784,7 @@ extern "C" fn magic_NtQueryMultipleValueKey(context: &mut ExtendedContext, memor
     }
 }
 #[no_mangle]
-extern "C" fn magic_NtQueryObject(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_NtQueryObject(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -21808,7 +21808,7 @@ extern "C" fn magic_NtQueryObject(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_NtQuerySystemInformation(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_NtQuerySystemInformation(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -21830,7 +21830,7 @@ extern "C" fn magic_NtQuerySystemInformation(context: &mut ExtendedContext, memo
     }
 }
 #[no_mangle]
-extern "C" fn magic_NtQuerySystemTime(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_NtQuerySystemTime(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -21844,7 +21844,7 @@ extern "C" fn magic_NtQuerySystemTime(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_NtQueryTimerResolution(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_NtQueryTimerResolution(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -21860,7 +21860,7 @@ extern "C" fn magic_NtQueryTimerResolution(context: &mut ExtendedContext, memory
     }
 }
 #[no_mangle]
-extern "C" fn magic_NtRenameKey(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_NtRenameKey(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -21875,7 +21875,7 @@ extern "C" fn magic_NtRenameKey(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_NtSetInformationKey(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_NtSetInformationKey(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -21897,7 +21897,7 @@ extern "C" fn magic_NtSetInformationKey(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_NtWaitForSingleObject(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_NtWaitForSingleObject(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -21913,7 +21913,7 @@ extern "C" fn magic_NtWaitForSingleObject(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_OpenINFEngineA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_OpenINFEngineA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -21937,7 +21937,7 @@ extern "C" fn magic_OpenINFEngineA(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_OpenINFEngineW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_OpenINFEngineW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -21961,7 +21961,7 @@ extern "C" fn magic_OpenINFEngineW(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_OpenMutexA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_OpenMutexA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -21977,7 +21977,7 @@ extern "C" fn magic_OpenMutexA(context: &mut ExtendedContext, memory: FlatMemory
     }
 }
 #[no_mangle]
-extern "C" fn magic_OpenSemaphoreA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_OpenSemaphoreA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -21993,7 +21993,7 @@ extern "C" fn magic_OpenSemaphoreA(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_OpenWaitableTimerA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_OpenWaitableTimerA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -22009,7 +22009,7 @@ extern "C" fn magic_OpenWaitableTimerA(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_QueryAuxiliaryCounterFrequency(
+extern "C" fn thunk_QueryAuxiliaryCounterFrequency(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -22026,7 +22026,7 @@ extern "C" fn magic_QueryAuxiliaryCounterFrequency(
     }
 }
 #[no_mangle]
-extern "C" fn magic_QueryIdleProcessorCycleTime(
+extern "C" fn thunk_QueryIdleProcessorCycleTime(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -22044,7 +22044,7 @@ extern "C" fn magic_QueryIdleProcessorCycleTime(
     }
 }
 #[no_mangle]
-extern "C" fn magic_QueryIdleProcessorCycleTimeEx(
+extern "C" fn thunk_QueryIdleProcessorCycleTimeEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -22064,7 +22064,7 @@ extern "C" fn magic_QueryIdleProcessorCycleTimeEx(
     }
 }
 #[no_mangle]
-extern "C" fn magic_QueryInterruptTime(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_QueryInterruptTime(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -22078,7 +22078,7 @@ extern "C" fn magic_QueryInterruptTime(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_QueryInterruptTimePrecise(
+extern "C" fn thunk_QueryInterruptTimePrecise(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -22095,7 +22095,7 @@ extern "C" fn magic_QueryInterruptTimePrecise(
     }
 }
 #[no_mangle]
-extern "C" fn magic_QueryProcessCycleTime(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_QueryProcessCycleTime(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -22110,7 +22110,7 @@ extern "C" fn magic_QueryProcessCycleTime(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_QueryThreadCycleTime(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_QueryThreadCycleTime(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -22125,7 +22125,7 @@ extern "C" fn magic_QueryThreadCycleTime(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_QueryUnbiasedInterruptTime(
+extern "C" fn thunk_QueryUnbiasedInterruptTime(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -22142,7 +22142,7 @@ extern "C" fn magic_QueryUnbiasedInterruptTime(
     }
 }
 #[no_mangle]
-extern "C" fn magic_QueryUnbiasedInterruptTimePrecise(
+extern "C" fn thunk_QueryUnbiasedInterruptTimePrecise(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -22159,7 +22159,7 @@ extern "C" fn magic_QueryUnbiasedInterruptTimePrecise(
     }
 }
 #[no_mangle]
-extern "C" fn magic_RaiseCustomSystemEventTrigger(
+extern "C" fn thunk_RaiseCustomSystemEventTrigger(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -22176,7 +22176,7 @@ extern "C" fn magic_RaiseCustomSystemEventTrigger(
     }
 }
 #[no_mangle]
-extern "C" fn magic_RebootCheckOnInstallA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_RebootCheckOnInstallA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -22193,7 +22193,7 @@ extern "C" fn magic_RebootCheckOnInstallA(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_RebootCheckOnInstallW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_RebootCheckOnInstallW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -22210,7 +22210,7 @@ extern "C" fn magic_RebootCheckOnInstallW(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_RecordFeatureError(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_RecordFeatureError(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -22225,7 +22225,7 @@ extern "C" fn magic_RecordFeatureError(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_RecordFeatureUsage(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_RecordFeatureUsage(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -22242,7 +22242,7 @@ extern "C" fn magic_RecordFeatureUsage(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_RegInstallA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_RegInstallA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -22258,7 +22258,7 @@ extern "C" fn magic_RegInstallA(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_RegInstallW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_RegInstallW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -22274,7 +22274,7 @@ extern "C" fn magic_RegInstallW(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_ReplacePartitionUnit(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ReplacePartitionUnit(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -22290,7 +22290,7 @@ extern "C" fn magic_ReplacePartitionUnit(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_RequestDeviceWakeup(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_RequestDeviceWakeup(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -22304,7 +22304,7 @@ extern "C" fn magic_RequestDeviceWakeup(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_RtlAnsiStringToUnicodeString(
+extern "C" fn thunk_RtlAnsiStringToUnicodeString(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -22327,7 +22327,7 @@ extern "C" fn magic_RtlAnsiStringToUnicodeString(
     }
 }
 #[no_mangle]
-extern "C" fn magic_RtlCharToInteger(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_RtlCharToInteger(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -22343,7 +22343,7 @@ extern "C" fn magic_RtlCharToInteger(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_RtlFreeAnsiString(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_RtlFreeAnsiString(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -22357,7 +22357,7 @@ extern "C" fn magic_RtlFreeAnsiString(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_RtlFreeOemString(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_RtlFreeOemString(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -22371,7 +22371,7 @@ extern "C" fn magic_RtlFreeOemString(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_RtlFreeUnicodeString(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_RtlFreeUnicodeString(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -22385,7 +22385,7 @@ extern "C" fn magic_RtlFreeUnicodeString(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_RtlGetReturnAddressHijackTarget(
+extern "C" fn thunk_RtlGetReturnAddressHijackTarget(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -22401,7 +22401,7 @@ extern "C" fn magic_RtlGetReturnAddressHijackTarget(
     }
 }
 #[no_mangle]
-extern "C" fn magic_RtlInitAnsiString(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_RtlInitAnsiString(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -22416,7 +22416,7 @@ extern "C" fn magic_RtlInitAnsiString(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_RtlInitAnsiStringEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_RtlInitAnsiStringEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -22431,7 +22431,7 @@ extern "C" fn magic_RtlInitAnsiStringEx(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_RtlInitString(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_RtlInitString(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -22446,7 +22446,7 @@ extern "C" fn magic_RtlInitString(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_RtlInitStringEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_RtlInitStringEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -22461,7 +22461,7 @@ extern "C" fn magic_RtlInitStringEx(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_RtlInitUnicodeString(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_RtlInitUnicodeString(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -22476,7 +22476,7 @@ extern "C" fn magic_RtlInitUnicodeString(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_RtlIsNameLegalDOS8Dot3(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_RtlIsNameLegalDOS8Dot3(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -22492,7 +22492,7 @@ extern "C" fn magic_RtlIsNameLegalDOS8Dot3(context: &mut ExtendedContext, memory
     }
 }
 #[no_mangle]
-extern "C" fn magic_RtlLocalTimeToSystemTime(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_RtlLocalTimeToSystemTime(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -22507,7 +22507,7 @@ extern "C" fn magic_RtlLocalTimeToSystemTime(context: &mut ExtendedContext, memo
     }
 }
 #[no_mangle]
-extern "C" fn magic_RtlRaiseCustomSystemEventTrigger(
+extern "C" fn thunk_RtlRaiseCustomSystemEventTrigger(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -22524,7 +22524,7 @@ extern "C" fn magic_RtlRaiseCustomSystemEventTrigger(
     }
 }
 #[no_mangle]
-extern "C" fn magic_RtlTimeToSecondsSince1970(
+extern "C" fn thunk_RtlTimeToSecondsSince1970(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -22542,7 +22542,7 @@ extern "C" fn magic_RtlTimeToSecondsSince1970(
     }
 }
 #[no_mangle]
-extern "C" fn magic_RtlUnicodeStringToAnsiString(
+extern "C" fn thunk_RtlUnicodeStringToAnsiString(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -22565,7 +22565,7 @@ extern "C" fn magic_RtlUnicodeStringToAnsiString(
     }
 }
 #[no_mangle]
-extern "C" fn magic_RtlUnicodeStringToOemString(
+extern "C" fn thunk_RtlUnicodeStringToOemString(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -22588,7 +22588,7 @@ extern "C" fn magic_RtlUnicodeStringToOemString(
     }
 }
 #[no_mangle]
-extern "C" fn magic_RtlUnicodeToMultiByteSize(
+extern "C" fn thunk_RtlUnicodeToMultiByteSize(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -22611,7 +22611,7 @@ extern "C" fn magic_RtlUnicodeToMultiByteSize(
     }
 }
 #[no_mangle]
-extern "C" fn magic_RtlUniform(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_RtlUniform(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -22625,7 +22625,7 @@ extern "C" fn magic_RtlUniform(context: &mut ExtendedContext, memory: FlatMemory
     }
 }
 #[no_mangle]
-extern "C" fn magic_RunSetupCommandA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_RunSetupCommandA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -22655,7 +22655,7 @@ extern "C" fn magic_RunSetupCommandA(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_RunSetupCommandW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_RunSetupCommandW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -22685,7 +22685,7 @@ extern "C" fn magic_RunSetupCommandW(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_SendIMEMessageExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SendIMEMessageExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -22700,7 +22700,7 @@ extern "C" fn magic_SendIMEMessageExA(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_SendIMEMessageExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SendIMEMessageExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -22715,7 +22715,7 @@ extern "C" fn magic_SendIMEMessageExW(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetEnvironmentStringsA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetEnvironmentStringsA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -22729,7 +22729,7 @@ extern "C" fn magic_SetEnvironmentStringsA(context: &mut ExtendedContext, memory
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetFirmwareEnvironmentVariableA(
+extern "C" fn thunk_SetFirmwareEnvironmentVariableA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -22749,7 +22749,7 @@ extern "C" fn magic_SetFirmwareEnvironmentVariableA(
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetFirmwareEnvironmentVariableExA(
+extern "C" fn thunk_SetFirmwareEnvironmentVariableExA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -22771,7 +22771,7 @@ extern "C" fn magic_SetFirmwareEnvironmentVariableExA(
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetFirmwareEnvironmentVariableExW(
+extern "C" fn thunk_SetFirmwareEnvironmentVariableExW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -22793,7 +22793,7 @@ extern "C" fn magic_SetFirmwareEnvironmentVariableExW(
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetFirmwareEnvironmentVariableW(
+extern "C" fn thunk_SetFirmwareEnvironmentVariableW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -22813,7 +22813,7 @@ extern "C" fn magic_SetFirmwareEnvironmentVariableW(
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetHandleCount(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetHandleCount(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -22827,7 +22827,7 @@ extern "C" fn magic_SetHandleCount(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetMessageWaitingIndicator(
+extern "C" fn thunk_SetMessageWaitingIndicator(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -22845,7 +22845,7 @@ extern "C" fn magic_SetMessageWaitingIndicator(
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetPerUserSecValuesA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetPerUserSecValuesA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -22859,7 +22859,7 @@ extern "C" fn magic_SetPerUserSecValuesA(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetPerUserSecValuesW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetPerUserSecValuesW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -22873,7 +22873,7 @@ extern "C" fn magic_SetPerUserSecValuesW(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_SignalObjectAndWait(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SignalObjectAndWait(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -22895,7 +22895,7 @@ extern "C" fn magic_SignalObjectAndWait(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_SubscribeFeatureStateChangeNotification(
+extern "C" fn thunk_SubscribeFeatureStateChangeNotification(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -22914,7 +22914,7 @@ extern "C" fn magic_SubscribeFeatureStateChangeNotification(
     }
 }
 #[no_mangle]
-extern "C" fn magic_TranslateInfStringA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_TranslateInfStringA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -22944,7 +22944,7 @@ extern "C" fn magic_TranslateInfStringA(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_TranslateInfStringExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_TranslateInfStringExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -22974,7 +22974,7 @@ extern "C" fn magic_TranslateInfStringExA(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_TranslateInfStringExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_TranslateInfStringExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -23004,7 +23004,7 @@ extern "C" fn magic_TranslateInfStringExW(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_TranslateInfStringW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_TranslateInfStringW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -23034,7 +23034,7 @@ extern "C" fn magic_TranslateInfStringW(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_UnsubscribeFeatureStateChangeNotification(
+extern "C" fn thunk_UnsubscribeFeatureStateChangeNotification(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -23051,7 +23051,7 @@ extern "C" fn magic_UnsubscribeFeatureStateChangeNotification(
     }
 }
 #[no_mangle]
-extern "C" fn magic_UserInstStubWrapperA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_UserInstStubWrapperA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -23068,7 +23068,7 @@ extern "C" fn magic_UserInstStubWrapperA(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_UserInstStubWrapperW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_UserInstStubWrapperW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -23085,7 +23085,7 @@ extern "C" fn magic_UserInstStubWrapperW(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_UserUnInstStubWrapperA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_UserUnInstStubWrapperA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -23102,7 +23102,7 @@ extern "C" fn magic_UserUnInstStubWrapperA(context: &mut ExtendedContext, memory
     }
 }
 #[no_mangle]
-extern "C" fn magic_UserUnInstStubWrapperW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_UserUnInstStubWrapperW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -23119,7 +23119,7 @@ extern "C" fn magic_UserUnInstStubWrapperW(context: &mut ExtendedContext, memory
     }
 }
 #[no_mangle]
-extern "C" fn magic_WINNLSEnableIME(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_WINNLSEnableIME(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -23134,7 +23134,7 @@ extern "C" fn magic_WINNLSEnableIME(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_WINNLSGetEnableStatus(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_WINNLSGetEnableStatus(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -23148,7 +23148,7 @@ extern "C" fn magic_WINNLSGetEnableStatus(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_WINNLSGetIMEHotkey(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_WINNLSGetIMEHotkey(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -23162,7 +23162,7 @@ extern "C" fn magic_WINNLSGetIMEHotkey(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_WldpGetLockdownPolicy(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_WldpGetLockdownPolicy(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -23178,7 +23178,7 @@ extern "C" fn magic_WldpGetLockdownPolicy(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_WldpIsClassInApprovedList(
+extern "C" fn thunk_WldpIsClassInApprovedList(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -23199,7 +23199,7 @@ extern "C" fn magic_WldpIsClassInApprovedList(
     }
 }
 #[no_mangle]
-extern "C" fn magic_WldpIsDynamicCodePolicyEnabled(
+extern "C" fn thunk_WldpIsDynamicCodePolicyEnabled(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -23216,7 +23216,7 @@ extern "C" fn magic_WldpIsDynamicCodePolicyEnabled(
     }
 }
 #[no_mangle]
-extern "C" fn magic_WldpQueryDeviceSecurityInformation(
+extern "C" fn thunk_WldpQueryDeviceSecurityInformation(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -23236,7 +23236,7 @@ extern "C" fn magic_WldpQueryDeviceSecurityInformation(
     }
 }
 #[no_mangle]
-extern "C" fn magic_WldpQueryDynamicCodeTrust(
+extern "C" fn thunk_WldpQueryDynamicCodeTrust(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -23255,7 +23255,7 @@ extern "C" fn magic_WldpQueryDynamicCodeTrust(
     }
 }
 #[no_mangle]
-extern "C" fn magic_WldpSetDynamicCodeTrust(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_WldpSetDynamicCodeTrust(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -23269,7 +23269,7 @@ extern "C" fn magic_WldpSetDynamicCodeTrust(context: &mut ExtendedContext, memor
     }
 }
 #[no_mangle]
-extern "C" fn magic_WritePrivateProfileSectionA(
+extern "C" fn thunk_WritePrivateProfileSectionA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -23288,7 +23288,7 @@ extern "C" fn magic_WritePrivateProfileSectionA(
     }
 }
 #[no_mangle]
-extern "C" fn magic_WritePrivateProfileSectionW(
+extern "C" fn thunk_WritePrivateProfileSectionW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -23307,7 +23307,7 @@ extern "C" fn magic_WritePrivateProfileSectionW(
     }
 }
 #[no_mangle]
-extern "C" fn magic_WritePrivateProfileStringA(
+extern "C" fn thunk_WritePrivateProfileStringA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -23327,7 +23327,7 @@ extern "C" fn magic_WritePrivateProfileStringA(
     }
 }
 #[no_mangle]
-extern "C" fn magic_WritePrivateProfileStringW(
+extern "C" fn thunk_WritePrivateProfileStringW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -23347,7 +23347,7 @@ extern "C" fn magic_WritePrivateProfileStringW(
     }
 }
 #[no_mangle]
-extern "C" fn magic_WritePrivateProfileStructA(
+extern "C" fn thunk_WritePrivateProfileStructA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -23374,7 +23374,7 @@ extern "C" fn magic_WritePrivateProfileStructA(
     }
 }
 #[no_mangle]
-extern "C" fn magic_WritePrivateProfileStructW(
+extern "C" fn thunk_WritePrivateProfileStructW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -23401,7 +23401,7 @@ extern "C" fn magic_WritePrivateProfileStructW(
     }
 }
 #[no_mangle]
-extern "C" fn magic_WriteProfileSectionA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_WriteProfileSectionA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -23416,7 +23416,7 @@ extern "C" fn magic_WriteProfileSectionA(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_WriteProfileSectionW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_WriteProfileSectionW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -23431,7 +23431,7 @@ extern "C" fn magic_WriteProfileSectionW(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_WriteProfileStringA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_WriteProfileStringA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -23447,7 +23447,7 @@ extern "C" fn magic_WriteProfileStringA(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_WriteProfileStringW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_WriteProfileStringW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -23463,7 +23463,7 @@ extern "C" fn magic_WriteProfileStringW(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic__hread(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk__hread(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -23479,7 +23479,7 @@ extern "C" fn magic__hread(context: &mut ExtendedContext, memory: FlatMemoryCtx)
     }
 }
 #[no_mangle]
-extern "C" fn magic__hwrite(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk__hwrite(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -23495,7 +23495,7 @@ extern "C" fn magic__hwrite(context: &mut ExtendedContext, memory: FlatMemoryCtx
     }
 }
 #[no_mangle]
-extern "C" fn magic__lclose(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk__lclose(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -23509,7 +23509,7 @@ extern "C" fn magic__lclose(context: &mut ExtendedContext, memory: FlatMemoryCtx
     }
 }
 #[no_mangle]
-extern "C" fn magic__lcreat(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk__lcreat(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -23524,7 +23524,7 @@ extern "C" fn magic__lcreat(context: &mut ExtendedContext, memory: FlatMemoryCtx
     }
 }
 #[no_mangle]
-extern "C" fn magic__llseek(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk__llseek(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -23540,7 +23540,7 @@ extern "C" fn magic__llseek(context: &mut ExtendedContext, memory: FlatMemoryCtx
     }
 }
 #[no_mangle]
-extern "C" fn magic__lopen(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk__lopen(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -23555,7 +23555,7 @@ extern "C" fn magic__lopen(context: &mut ExtendedContext, memory: FlatMemoryCtx)
     }
 }
 #[no_mangle]
-extern "C" fn magic__lread(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk__lread(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -23571,7 +23571,7 @@ extern "C" fn magic__lread(context: &mut ExtendedContext, memory: FlatMemoryCtx)
     }
 }
 #[no_mangle]
-extern "C" fn magic__lwrite(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk__lwrite(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::System::WindowsProgramming::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -23587,7 +23587,7 @@ extern "C" fn magic__lwrite(context: &mut ExtendedContext, memory: FlatMemoryCtx
     }
 }
 #[no_mangle]
-extern "C" fn magic_AdjustWindowRect(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_AdjustWindowRect(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -23603,7 +23603,7 @@ extern "C" fn magic_AdjustWindowRect(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_AdjustWindowRectEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_AdjustWindowRectEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -23620,7 +23620,7 @@ extern "C" fn magic_AdjustWindowRectEx(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_AllowSetForegroundWindow(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_AllowSetForegroundWindow(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -23634,7 +23634,7 @@ extern "C" fn magic_AllowSetForegroundWindow(context: &mut ExtendedContext, memo
     }
 }
 #[no_mangle]
-extern "C" fn magic_AnimateWindow(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_AnimateWindow(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -23650,7 +23650,7 @@ extern "C" fn magic_AnimateWindow(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_AnyPopup(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_AnyPopup(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -23663,7 +23663,7 @@ extern "C" fn magic_AnyPopup(context: &mut ExtendedContext, memory: FlatMemoryCt
     }
 }
 #[no_mangle]
-extern "C" fn magic_AppendMenuA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_AppendMenuA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -23680,7 +23680,7 @@ extern "C" fn magic_AppendMenuA(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_AppendMenuW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_AppendMenuW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -23697,7 +23697,7 @@ extern "C" fn magic_AppendMenuW(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_ArrangeIconicWindows(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ArrangeIconicWindows(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -23711,7 +23711,7 @@ extern "C" fn magic_ArrangeIconicWindows(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_BeginDeferWindowPos(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_BeginDeferWindowPos(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -23725,7 +23725,7 @@ extern "C" fn magic_BeginDeferWindowPos(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_BringWindowToTop(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_BringWindowToTop(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -23739,7 +23739,7 @@ extern "C" fn magic_BringWindowToTop(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_CalculatePopupWindowPosition(
+extern "C" fn thunk_CalculatePopupWindowPosition(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -23766,7 +23766,7 @@ extern "C" fn magic_CalculatePopupWindowPosition(
     }
 }
 #[no_mangle]
-extern "C" fn magic_CallMsgFilterA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CallMsgFilterA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -23781,7 +23781,7 @@ extern "C" fn magic_CallMsgFilterA(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_CallMsgFilterW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CallMsgFilterW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -23796,7 +23796,7 @@ extern "C" fn magic_CallMsgFilterW(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_CallNextHookEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CallNextHookEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -23813,7 +23813,7 @@ extern "C" fn magic_CallNextHookEx(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_CallWindowProcA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CallWindowProcA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -23831,7 +23831,7 @@ extern "C" fn magic_CallWindowProcA(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_CallWindowProcW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CallWindowProcW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -23849,7 +23849,7 @@ extern "C" fn magic_CallWindowProcW(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_CancelShutdown(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CancelShutdown(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -23862,7 +23862,7 @@ extern "C" fn magic_CancelShutdown(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_CascadeWindows(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CascadeWindows(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -23880,7 +23880,7 @@ extern "C" fn magic_CascadeWindows(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_ChangeMenuA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ChangeMenuA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -23898,7 +23898,7 @@ extern "C" fn magic_ChangeMenuA(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_ChangeMenuW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ChangeMenuW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -23916,7 +23916,7 @@ extern "C" fn magic_ChangeMenuW(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_ChangeWindowMessageFilter(
+extern "C" fn thunk_ChangeWindowMessageFilter(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -23934,7 +23934,7 @@ extern "C" fn magic_ChangeWindowMessageFilter(
     }
 }
 #[no_mangle]
-extern "C" fn magic_ChangeWindowMessageFilterEx(
+extern "C" fn thunk_ChangeWindowMessageFilterEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -23954,7 +23954,7 @@ extern "C" fn magic_ChangeWindowMessageFilterEx(
     }
 }
 #[no_mangle]
-extern "C" fn magic_CharLowerA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CharLowerA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -23968,7 +23968,7 @@ extern "C" fn magic_CharLowerA(context: &mut ExtendedContext, memory: FlatMemory
     }
 }
 #[no_mangle]
-extern "C" fn magic_CharLowerBuffA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CharLowerBuffA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -23983,7 +23983,7 @@ extern "C" fn magic_CharLowerBuffA(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_CharLowerBuffW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CharLowerBuffW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -23998,7 +23998,7 @@ extern "C" fn magic_CharLowerBuffW(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_CharLowerW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CharLowerW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -24012,7 +24012,7 @@ extern "C" fn magic_CharLowerW(context: &mut ExtendedContext, memory: FlatMemory
     }
 }
 #[no_mangle]
-extern "C" fn magic_CharNextA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CharNextA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -24026,7 +24026,7 @@ extern "C" fn magic_CharNextA(context: &mut ExtendedContext, memory: FlatMemoryC
     }
 }
 #[no_mangle]
-extern "C" fn magic_CharNextExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CharNextExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -24042,7 +24042,7 @@ extern "C" fn magic_CharNextExA(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_CharNextW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CharNextW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -24056,7 +24056,7 @@ extern "C" fn magic_CharNextW(context: &mut ExtendedContext, memory: FlatMemoryC
     }
 }
 #[no_mangle]
-extern "C" fn magic_CharPrevA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CharPrevA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -24071,7 +24071,7 @@ extern "C" fn magic_CharPrevA(context: &mut ExtendedContext, memory: FlatMemoryC
     }
 }
 #[no_mangle]
-extern "C" fn magic_CharPrevExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CharPrevExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -24088,7 +24088,7 @@ extern "C" fn magic_CharPrevExA(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_CharPrevW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CharPrevW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -24103,7 +24103,7 @@ extern "C" fn magic_CharPrevW(context: &mut ExtendedContext, memory: FlatMemoryC
     }
 }
 #[no_mangle]
-extern "C" fn magic_CharToOemA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CharToOemA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -24118,7 +24118,7 @@ extern "C" fn magic_CharToOemA(context: &mut ExtendedContext, memory: FlatMemory
     }
 }
 #[no_mangle]
-extern "C" fn magic_CharToOemBuffA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CharToOemBuffA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -24134,7 +24134,7 @@ extern "C" fn magic_CharToOemBuffA(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_CharToOemBuffW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CharToOemBuffW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -24150,7 +24150,7 @@ extern "C" fn magic_CharToOemBuffW(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_CharToOemW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CharToOemW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -24165,7 +24165,7 @@ extern "C" fn magic_CharToOemW(context: &mut ExtendedContext, memory: FlatMemory
     }
 }
 #[no_mangle]
-extern "C" fn magic_CharUpperA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CharUpperA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -24179,7 +24179,7 @@ extern "C" fn magic_CharUpperA(context: &mut ExtendedContext, memory: FlatMemory
     }
 }
 #[no_mangle]
-extern "C" fn magic_CharUpperBuffA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CharUpperBuffA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -24194,7 +24194,7 @@ extern "C" fn magic_CharUpperBuffA(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_CharUpperBuffW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CharUpperBuffW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -24209,7 +24209,7 @@ extern "C" fn magic_CharUpperBuffW(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_CharUpperW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CharUpperW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -24223,7 +24223,7 @@ extern "C" fn magic_CharUpperW(context: &mut ExtendedContext, memory: FlatMemory
     }
 }
 #[no_mangle]
-extern "C" fn magic_CheckMenuItem(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CheckMenuItem(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -24239,7 +24239,7 @@ extern "C" fn magic_CheckMenuItem(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_CheckMenuRadioItem(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CheckMenuRadioItem(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -24257,7 +24257,7 @@ extern "C" fn magic_CheckMenuRadioItem(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_ChildWindowFromPoint(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ChildWindowFromPoint(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -24272,7 +24272,7 @@ extern "C" fn magic_ChildWindowFromPoint(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_ChildWindowFromPointEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ChildWindowFromPointEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -24288,7 +24288,7 @@ extern "C" fn magic_ChildWindowFromPointEx(context: &mut ExtendedContext, memory
     }
 }
 #[no_mangle]
-extern "C" fn magic_ClipCursor(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ClipCursor(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -24302,7 +24302,7 @@ extern "C" fn magic_ClipCursor(context: &mut ExtendedContext, memory: FlatMemory
     }
 }
 #[no_mangle]
-extern "C" fn magic_CloseWindow(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CloseWindow(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -24316,7 +24316,7 @@ extern "C" fn magic_CloseWindow(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_CopyAcceleratorTableA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CopyAcceleratorTableA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -24332,7 +24332,7 @@ extern "C" fn magic_CopyAcceleratorTableA(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_CopyAcceleratorTableW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CopyAcceleratorTableW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -24348,7 +24348,7 @@ extern "C" fn magic_CopyAcceleratorTableW(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_CopyIcon(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CopyIcon(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -24362,7 +24362,7 @@ extern "C" fn magic_CopyIcon(context: &mut ExtendedContext, memory: FlatMemoryCt
     }
 }
 #[no_mangle]
-extern "C" fn magic_CopyImage(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CopyImage(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -24380,7 +24380,7 @@ extern "C" fn magic_CopyImage(context: &mut ExtendedContext, memory: FlatMemoryC
     }
 }
 #[no_mangle]
-extern "C" fn magic_CreateAcceleratorTableA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CreateAcceleratorTableA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -24395,7 +24395,7 @@ extern "C" fn magic_CreateAcceleratorTableA(context: &mut ExtendedContext, memor
     }
 }
 #[no_mangle]
-extern "C" fn magic_CreateAcceleratorTableW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CreateAcceleratorTableW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -24410,7 +24410,7 @@ extern "C" fn magic_CreateAcceleratorTableW(context: &mut ExtendedContext, memor
     }
 }
 #[no_mangle]
-extern "C" fn magic_CreateCursor(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CreateCursor(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -24438,7 +24438,7 @@ extern "C" fn magic_CreateCursor(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_CreateDialogIndirectParamA(
+extern "C" fn thunk_CreateDialogIndirectParamA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -24465,7 +24465,7 @@ extern "C" fn magic_CreateDialogIndirectParamA(
     }
 }
 #[no_mangle]
-extern "C" fn magic_CreateDialogIndirectParamW(
+extern "C" fn thunk_CreateDialogIndirectParamW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -24492,7 +24492,7 @@ extern "C" fn magic_CreateDialogIndirectParamW(
     }
 }
 #[no_mangle]
-extern "C" fn magic_CreateDialogParamA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CreateDialogParamA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -24516,7 +24516,7 @@ extern "C" fn magic_CreateDialogParamA(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_CreateDialogParamW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CreateDialogParamW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -24540,7 +24540,7 @@ extern "C" fn magic_CreateDialogParamW(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_CreateIcon(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CreateIcon(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -24568,7 +24568,7 @@ extern "C" fn magic_CreateIcon(context: &mut ExtendedContext, memory: FlatMemory
     }
 }
 #[no_mangle]
-extern "C" fn magic_CreateIconFromResource(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CreateIconFromResource(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -24585,7 +24585,7 @@ extern "C" fn magic_CreateIconFromResource(context: &mut ExtendedContext, memory
     }
 }
 #[no_mangle]
-extern "C" fn magic_CreateIconFromResourceEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CreateIconFromResourceEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -24613,7 +24613,7 @@ extern "C" fn magic_CreateIconFromResourceEx(context: &mut ExtendedContext, memo
     }
 }
 #[no_mangle]
-extern "C" fn magic_CreateMDIWindowA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CreateMDIWindowA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -24647,7 +24647,7 @@ extern "C" fn magic_CreateMDIWindowA(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_CreateMDIWindowW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CreateMDIWindowW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -24681,7 +24681,7 @@ extern "C" fn magic_CreateMDIWindowW(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_CreateMenu(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CreateMenu(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -24694,7 +24694,7 @@ extern "C" fn magic_CreateMenu(context: &mut ExtendedContext, memory: FlatMemory
     }
 }
 #[no_mangle]
-extern "C" fn magic_CreatePopupMenu(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CreatePopupMenu(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -24707,7 +24707,7 @@ extern "C" fn magic_CreatePopupMenu(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_CreateWindowExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CreateWindowExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -24745,7 +24745,7 @@ extern "C" fn magic_CreateWindowExA(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_CreateWindowExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_CreateWindowExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -24783,7 +24783,7 @@ extern "C" fn magic_CreateWindowExW(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_DefDlgProcA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_DefDlgProcA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -24800,7 +24800,7 @@ extern "C" fn magic_DefDlgProcA(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_DefDlgProcW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_DefDlgProcW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -24817,7 +24817,7 @@ extern "C" fn magic_DefDlgProcW(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_DefFrameProcA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_DefFrameProcA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -24835,7 +24835,7 @@ extern "C" fn magic_DefFrameProcA(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_DefFrameProcW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_DefFrameProcW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -24853,7 +24853,7 @@ extern "C" fn magic_DefFrameProcW(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_DefMDIChildProcA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_DefMDIChildProcA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -24870,7 +24870,7 @@ extern "C" fn magic_DefMDIChildProcA(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_DefMDIChildProcW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_DefMDIChildProcW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -24887,7 +24887,7 @@ extern "C" fn magic_DefMDIChildProcW(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_DefWindowProcA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_DefWindowProcA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -24904,7 +24904,7 @@ extern "C" fn magic_DefWindowProcA(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_DefWindowProcW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_DefWindowProcW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -24921,7 +24921,7 @@ extern "C" fn magic_DefWindowProcW(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_DeferWindowPos(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_DeferWindowPos(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -24951,7 +24951,7 @@ extern "C" fn magic_DeferWindowPos(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_DeleteMenu(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_DeleteMenu(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -24967,7 +24967,7 @@ extern "C" fn magic_DeleteMenu(context: &mut ExtendedContext, memory: FlatMemory
     }
 }
 #[no_mangle]
-extern "C" fn magic_DeregisterShellHookWindow(
+extern "C" fn thunk_DeregisterShellHookWindow(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -24984,7 +24984,7 @@ extern "C" fn magic_DeregisterShellHookWindow(
     }
 }
 #[no_mangle]
-extern "C" fn magic_DestroyAcceleratorTable(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_DestroyAcceleratorTable(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -24998,7 +24998,7 @@ extern "C" fn magic_DestroyAcceleratorTable(context: &mut ExtendedContext, memor
     }
 }
 #[no_mangle]
-extern "C" fn magic_DestroyCaret(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_DestroyCaret(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25011,7 +25011,7 @@ extern "C" fn magic_DestroyCaret(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_DestroyCursor(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_DestroyCursor(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25025,7 +25025,7 @@ extern "C" fn magic_DestroyCursor(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_DestroyIcon(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_DestroyIcon(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25039,7 +25039,7 @@ extern "C" fn magic_DestroyIcon(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_DestroyMenu(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_DestroyMenu(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25053,7 +25053,7 @@ extern "C" fn magic_DestroyMenu(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_DestroyWindow(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_DestroyWindow(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25067,7 +25067,7 @@ extern "C" fn magic_DestroyWindow(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_DialogBoxIndirectParamA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_DialogBoxIndirectParamA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25091,7 +25091,7 @@ extern "C" fn magic_DialogBoxIndirectParamA(context: &mut ExtendedContext, memor
     }
 }
 #[no_mangle]
-extern "C" fn magic_DialogBoxIndirectParamW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_DialogBoxIndirectParamW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25115,7 +25115,7 @@ extern "C" fn magic_DialogBoxIndirectParamW(context: &mut ExtendedContext, memor
     }
 }
 #[no_mangle]
-extern "C" fn magic_DialogBoxParamA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_DialogBoxParamA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25139,7 +25139,7 @@ extern "C" fn magic_DialogBoxParamA(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_DialogBoxParamW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_DialogBoxParamW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25163,7 +25163,7 @@ extern "C" fn magic_DialogBoxParamW(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_DisableProcessWindowsGhosting(
+extern "C" fn thunk_DisableProcessWindowsGhosting(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -25179,7 +25179,7 @@ extern "C" fn magic_DisableProcessWindowsGhosting(
     }
 }
 #[no_mangle]
-extern "C" fn magic_DispatchMessageA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_DispatchMessageA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25193,7 +25193,7 @@ extern "C" fn magic_DispatchMessageA(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_DispatchMessageW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_DispatchMessageW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25207,7 +25207,7 @@ extern "C" fn magic_DispatchMessageW(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_DragObject(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_DragObject(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25225,7 +25225,7 @@ extern "C" fn magic_DragObject(context: &mut ExtendedContext, memory: FlatMemory
     }
 }
 #[no_mangle]
-extern "C" fn magic_DrawMenuBar(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_DrawMenuBar(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25239,7 +25239,7 @@ extern "C" fn magic_DrawMenuBar(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_EnableMenuItem(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_EnableMenuItem(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25255,7 +25255,7 @@ extern "C" fn magic_EnableMenuItem(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_EndDeferWindowPos(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_EndDeferWindowPos(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25269,7 +25269,7 @@ extern "C" fn magic_EndDeferWindowPos(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_EndDialog(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_EndDialog(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25284,7 +25284,7 @@ extern "C" fn magic_EndDialog(context: &mut ExtendedContext, memory: FlatMemoryC
     }
 }
 #[no_mangle]
-extern "C" fn magic_EndMenu(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_EndMenu(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25297,7 +25297,7 @@ extern "C" fn magic_EndMenu(context: &mut ExtendedContext, memory: FlatMemoryCtx
     }
 }
 #[no_mangle]
-extern "C" fn magic_EnumChildWindows(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_EnumChildWindows(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25313,7 +25313,7 @@ extern "C" fn magic_EnumChildWindows(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_EnumPropsA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_EnumPropsA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25328,7 +25328,7 @@ extern "C" fn magic_EnumPropsA(context: &mut ExtendedContext, memory: FlatMemory
     }
 }
 #[no_mangle]
-extern "C" fn magic_EnumPropsExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_EnumPropsExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25344,7 +25344,7 @@ extern "C" fn magic_EnumPropsExA(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_EnumPropsExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_EnumPropsExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25360,7 +25360,7 @@ extern "C" fn magic_EnumPropsExW(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_EnumPropsW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_EnumPropsW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25375,7 +25375,7 @@ extern "C" fn magic_EnumPropsW(context: &mut ExtendedContext, memory: FlatMemory
     }
 }
 #[no_mangle]
-extern "C" fn magic_EnumThreadWindows(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_EnumThreadWindows(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25391,7 +25391,7 @@ extern "C" fn magic_EnumThreadWindows(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_EnumWindows(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_EnumWindows(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25406,7 +25406,7 @@ extern "C" fn magic_EnumWindows(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_FindWindowA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_FindWindowA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25421,7 +25421,7 @@ extern "C" fn magic_FindWindowA(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_FindWindowExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_FindWindowExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25438,7 +25438,7 @@ extern "C" fn magic_FindWindowExA(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_FindWindowExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_FindWindowExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25455,7 +25455,7 @@ extern "C" fn magic_FindWindowExW(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_FindWindowW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_FindWindowW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25470,7 +25470,7 @@ extern "C" fn magic_FindWindowW(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_FlashWindow(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_FlashWindow(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25485,7 +25485,7 @@ extern "C" fn magic_FlashWindow(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_FlashWindowEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_FlashWindowEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25499,7 +25499,7 @@ extern "C" fn magic_FlashWindowEx(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetAltTabInfoA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetAltTabInfoA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25517,7 +25517,7 @@ extern "C" fn magic_GetAltTabInfoA(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetAltTabInfoW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetAltTabInfoW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25535,7 +25535,7 @@ extern "C" fn magic_GetAltTabInfoW(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetAncestor(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetAncestor(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25550,7 +25550,7 @@ extern "C" fn magic_GetAncestor(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetCaretBlinkTime(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetCaretBlinkTime(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25563,7 +25563,7 @@ extern "C" fn magic_GetCaretBlinkTime(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetCaretPos(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetCaretPos(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25577,7 +25577,7 @@ extern "C" fn magic_GetCaretPos(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetClassLongA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetClassLongA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25592,7 +25592,7 @@ extern "C" fn magic_GetClassLongA(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetClassLongW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetClassLongW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25607,7 +25607,7 @@ extern "C" fn magic_GetClassLongW(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetClassNameA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetClassNameA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25623,7 +25623,7 @@ extern "C" fn magic_GetClassNameA(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetClassNameW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetClassNameW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25639,7 +25639,7 @@ extern "C" fn magic_GetClassNameW(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetClassWord(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetClassWord(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25654,7 +25654,7 @@ extern "C" fn magic_GetClassWord(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetClientRect(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetClientRect(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25669,7 +25669,7 @@ extern "C" fn magic_GetClientRect(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetClipCursor(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetClipCursor(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25683,7 +25683,7 @@ extern "C" fn magic_GetClipCursor(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetCursor(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetCursor(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25696,7 +25696,7 @@ extern "C" fn magic_GetCursor(context: &mut ExtendedContext, memory: FlatMemoryC
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetCursorInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetCursorInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25710,7 +25710,7 @@ extern "C" fn magic_GetCursorInfo(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetCursorPos(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetCursorPos(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25724,7 +25724,7 @@ extern "C" fn magic_GetCursorPos(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetDesktopWindow(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetDesktopWindow(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25737,7 +25737,7 @@ extern "C" fn magic_GetDesktopWindow(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetDialogBaseUnits(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetDialogBaseUnits(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25750,7 +25750,7 @@ extern "C" fn magic_GetDialogBaseUnits(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetDlgCtrlID(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetDlgCtrlID(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25764,7 +25764,7 @@ extern "C" fn magic_GetDlgCtrlID(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetDlgItem(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetDlgItem(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25779,7 +25779,7 @@ extern "C" fn magic_GetDlgItem(context: &mut ExtendedContext, memory: FlatMemory
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetDlgItemInt(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetDlgItemInt(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25796,7 +25796,7 @@ extern "C" fn magic_GetDlgItemInt(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetDlgItemTextA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetDlgItemTextA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25813,7 +25813,7 @@ extern "C" fn magic_GetDlgItemTextA(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetDlgItemTextW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetDlgItemTextW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25830,7 +25830,7 @@ extern "C" fn magic_GetDlgItemTextW(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetForegroundWindow(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetForegroundWindow(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25843,7 +25843,7 @@ extern "C" fn magic_GetForegroundWindow(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetGUIThreadInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetGUIThreadInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25858,7 +25858,7 @@ extern "C" fn magic_GetGUIThreadInfo(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetInputState(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetInputState(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25871,7 +25871,7 @@ extern "C" fn magic_GetInputState(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetLastActivePopup(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetLastActivePopup(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25885,7 +25885,7 @@ extern "C" fn magic_GetLastActivePopup(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetLayeredWindowAttributes(
+extern "C" fn thunk_GetLayeredWindowAttributes(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -25905,7 +25905,7 @@ extern "C" fn magic_GetLayeredWindowAttributes(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetMenu(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetMenu(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25919,7 +25919,7 @@ extern "C" fn magic_GetMenu(context: &mut ExtendedContext, memory: FlatMemoryCtx
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetMenuBarInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetMenuBarInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25936,7 +25936,7 @@ extern "C" fn magic_GetMenuBarInfo(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetMenuCheckMarkDimensions(
+extern "C" fn thunk_GetMenuCheckMarkDimensions(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -25952,7 +25952,7 @@ extern "C" fn magic_GetMenuCheckMarkDimensions(
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetMenuDefaultItem(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetMenuDefaultItem(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25968,7 +25968,7 @@ extern "C" fn magic_GetMenuDefaultItem(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetMenuItemCount(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetMenuItemCount(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25982,7 +25982,7 @@ extern "C" fn magic_GetMenuItemCount(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetMenuItemID(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetMenuItemID(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -25997,7 +25997,7 @@ extern "C" fn magic_GetMenuItemID(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetMenuItemRect(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetMenuItemRect(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26014,7 +26014,7 @@ extern "C" fn magic_GetMenuItemRect(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetMenuState(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetMenuState(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26030,7 +26030,7 @@ extern "C" fn magic_GetMenuState(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetMenuStringA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetMenuStringA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26048,7 +26048,7 @@ extern "C" fn magic_GetMenuStringA(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetMenuStringW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetMenuStringW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26066,7 +26066,7 @@ extern "C" fn magic_GetMenuStringW(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetMessageA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetMessageA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26083,7 +26083,7 @@ extern "C" fn magic_GetMessageA(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetMessageExtraInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetMessageExtraInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26096,7 +26096,7 @@ extern "C" fn magic_GetMessageExtraInfo(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetMessagePos(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetMessagePos(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26109,7 +26109,7 @@ extern "C" fn magic_GetMessagePos(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetMessageTime(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetMessageTime(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26122,7 +26122,7 @@ extern "C" fn magic_GetMessageTime(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetMessageW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetMessageW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26139,7 +26139,7 @@ extern "C" fn magic_GetMessageW(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetNextDlgGroupItem(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetNextDlgGroupItem(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26155,7 +26155,7 @@ extern "C" fn magic_GetNextDlgGroupItem(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetNextDlgTabItem(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetNextDlgTabItem(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26171,7 +26171,7 @@ extern "C" fn magic_GetNextDlgTabItem(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetParent(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetParent(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26185,7 +26185,7 @@ extern "C" fn magic_GetParent(context: &mut ExtendedContext, memory: FlatMemoryC
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetPhysicalCursorPos(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetPhysicalCursorPos(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26199,7 +26199,7 @@ extern "C" fn magic_GetPhysicalCursorPos(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetProcessDefaultLayout(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetProcessDefaultLayout(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26213,7 +26213,7 @@ extern "C" fn magic_GetProcessDefaultLayout(context: &mut ExtendedContext, memor
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetPropA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetPropA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26228,7 +26228,7 @@ extern "C" fn magic_GetPropA(context: &mut ExtendedContext, memory: FlatMemoryCt
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetPropW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetPropW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26243,7 +26243,7 @@ extern "C" fn magic_GetPropW(context: &mut ExtendedContext, memory: FlatMemoryCt
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetQueueStatus(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetQueueStatus(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26257,7 +26257,7 @@ extern "C" fn magic_GetQueueStatus(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetScrollBarInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetScrollBarInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26273,7 +26273,7 @@ extern "C" fn magic_GetScrollBarInfo(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetScrollInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetScrollInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26289,7 +26289,7 @@ extern "C" fn magic_GetScrollInfo(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetScrollPos(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetScrollPos(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26304,7 +26304,7 @@ extern "C" fn magic_GetScrollPos(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetScrollRange(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetScrollRange(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26321,7 +26321,7 @@ extern "C" fn magic_GetScrollRange(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetShellWindow(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetShellWindow(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26334,7 +26334,7 @@ extern "C" fn magic_GetShellWindow(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetSubMenu(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetSubMenu(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26349,7 +26349,7 @@ extern "C" fn magic_GetSubMenu(context: &mut ExtendedContext, memory: FlatMemory
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetSysColor(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetSysColor(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26363,7 +26363,7 @@ extern "C" fn magic_GetSysColor(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetSystemMenu(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetSystemMenu(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26378,7 +26378,7 @@ extern "C" fn magic_GetSystemMenu(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetSystemMetrics(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetSystemMetrics(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26392,7 +26392,7 @@ extern "C" fn magic_GetSystemMetrics(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetTitleBarInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetTitleBarInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26407,7 +26407,7 @@ extern "C" fn magic_GetTitleBarInfo(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetTopWindow(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetTopWindow(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26421,7 +26421,7 @@ extern "C" fn magic_GetTopWindow(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetWindow(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetWindow(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26436,7 +26436,7 @@ extern "C" fn magic_GetWindow(context: &mut ExtendedContext, memory: FlatMemoryC
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetWindowDisplayAffinity(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetWindowDisplayAffinity(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26451,7 +26451,7 @@ extern "C" fn magic_GetWindowDisplayAffinity(context: &mut ExtendedContext, memo
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetWindowInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetWindowInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26466,7 +26466,7 @@ extern "C" fn magic_GetWindowInfo(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetWindowLongA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetWindowLongA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26481,7 +26481,7 @@ extern "C" fn magic_GetWindowLongA(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetWindowLongW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetWindowLongW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26496,7 +26496,7 @@ extern "C" fn magic_GetWindowLongW(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetWindowModuleFileNameA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetWindowModuleFileNameA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26512,7 +26512,7 @@ extern "C" fn magic_GetWindowModuleFileNameA(context: &mut ExtendedContext, memo
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetWindowModuleFileNameW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetWindowModuleFileNameW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26528,7 +26528,7 @@ extern "C" fn magic_GetWindowModuleFileNameW(context: &mut ExtendedContext, memo
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetWindowPlacement(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetWindowPlacement(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26543,7 +26543,7 @@ extern "C" fn magic_GetWindowPlacement(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetWindowRect(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetWindowRect(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26558,7 +26558,7 @@ extern "C" fn magic_GetWindowRect(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetWindowTextA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetWindowTextA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26574,7 +26574,7 @@ extern "C" fn magic_GetWindowTextA(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetWindowTextLengthA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetWindowTextLengthA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26588,7 +26588,7 @@ extern "C" fn magic_GetWindowTextLengthA(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetWindowTextLengthW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetWindowTextLengthW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26602,7 +26602,7 @@ extern "C" fn magic_GetWindowTextLengthW(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetWindowTextW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetWindowTextW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26618,7 +26618,7 @@ extern "C" fn magic_GetWindowTextW(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetWindowThreadProcessId(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetWindowThreadProcessId(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26633,7 +26633,7 @@ extern "C" fn magic_GetWindowThreadProcessId(context: &mut ExtendedContext, memo
     }
 }
 #[no_mangle]
-extern "C" fn magic_GetWindowWord(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_GetWindowWord(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26648,7 +26648,7 @@ extern "C" fn magic_GetWindowWord(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_HideCaret(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_HideCaret(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26662,7 +26662,7 @@ extern "C" fn magic_HideCaret(context: &mut ExtendedContext, memory: FlatMemoryC
     }
 }
 #[no_mangle]
-extern "C" fn magic_HiliteMenuItem(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_HiliteMenuItem(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26679,7 +26679,7 @@ extern "C" fn magic_HiliteMenuItem(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_InSendMessage(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_InSendMessage(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26692,7 +26692,7 @@ extern "C" fn magic_InSendMessage(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_InSendMessageEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_InSendMessageEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26706,7 +26706,7 @@ extern "C" fn magic_InSendMessageEx(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_InheritWindowMonitor(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_InheritWindowMonitor(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26721,7 +26721,7 @@ extern "C" fn magic_InheritWindowMonitor(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_InsertMenuA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_InsertMenuA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26739,7 +26739,7 @@ extern "C" fn magic_InsertMenuA(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_InsertMenuW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_InsertMenuW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26757,7 +26757,7 @@ extern "C" fn magic_InsertMenuW(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_InternalGetWindowText(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_InternalGetWindowText(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26773,7 +26773,7 @@ extern "C" fn magic_InternalGetWindowText(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_IsCharAlphaA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_IsCharAlphaA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26787,7 +26787,7 @@ extern "C" fn magic_IsCharAlphaA(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_IsCharAlphaNumericA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_IsCharAlphaNumericA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26801,7 +26801,7 @@ extern "C" fn magic_IsCharAlphaNumericA(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_IsCharAlphaNumericW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_IsCharAlphaNumericW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26815,7 +26815,7 @@ extern "C" fn magic_IsCharAlphaNumericW(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_IsCharAlphaW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_IsCharAlphaW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26829,7 +26829,7 @@ extern "C" fn magic_IsCharAlphaW(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_IsCharLowerA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_IsCharLowerA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26843,7 +26843,7 @@ extern "C" fn magic_IsCharLowerA(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_IsCharUpperA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_IsCharUpperA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26857,7 +26857,7 @@ extern "C" fn magic_IsCharUpperA(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_IsCharUpperW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_IsCharUpperW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26871,7 +26871,7 @@ extern "C" fn magic_IsCharUpperW(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_IsChild(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_IsChild(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26886,7 +26886,7 @@ extern "C" fn magic_IsChild(context: &mut ExtendedContext, memory: FlatMemoryCtx
     }
 }
 #[no_mangle]
-extern "C" fn magic_IsDialogMessageA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_IsDialogMessageA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26901,7 +26901,7 @@ extern "C" fn magic_IsDialogMessageA(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_IsDialogMessageW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_IsDialogMessageW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26916,7 +26916,7 @@ extern "C" fn magic_IsDialogMessageW(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_IsGUIThread(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_IsGUIThread(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26930,7 +26930,7 @@ extern "C" fn magic_IsGUIThread(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_IsHungAppWindow(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_IsHungAppWindow(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26944,7 +26944,7 @@ extern "C" fn magic_IsHungAppWindow(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_IsIconic(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_IsIconic(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26958,7 +26958,7 @@ extern "C" fn magic_IsIconic(context: &mut ExtendedContext, memory: FlatMemoryCt
     }
 }
 #[no_mangle]
-extern "C" fn magic_IsMenu(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_IsMenu(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26972,7 +26972,7 @@ extern "C" fn magic_IsMenu(context: &mut ExtendedContext, memory: FlatMemoryCtx)
     }
 }
 #[no_mangle]
-extern "C" fn magic_IsProcessDPIAware(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_IsProcessDPIAware(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26985,7 +26985,7 @@ extern "C" fn magic_IsProcessDPIAware(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_IsWindow(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_IsWindow(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -26999,7 +26999,7 @@ extern "C" fn magic_IsWindow(context: &mut ExtendedContext, memory: FlatMemoryCt
     }
 }
 #[no_mangle]
-extern "C" fn magic_IsWindowUnicode(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_IsWindowUnicode(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -27013,7 +27013,7 @@ extern "C" fn magic_IsWindowUnicode(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_IsWindowVisible(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_IsWindowVisible(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -27027,7 +27027,7 @@ extern "C" fn magic_IsWindowVisible(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_IsWow64Message(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_IsWow64Message(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -27040,7 +27040,7 @@ extern "C" fn magic_IsWow64Message(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_IsZoomed(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_IsZoomed(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -27054,7 +27054,7 @@ extern "C" fn magic_IsZoomed(context: &mut ExtendedContext, memory: FlatMemoryCt
     }
 }
 #[no_mangle]
-extern "C" fn magic_KillTimer(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_KillTimer(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -27069,7 +27069,7 @@ extern "C" fn magic_KillTimer(context: &mut ExtendedContext, memory: FlatMemoryC
     }
 }
 #[no_mangle]
-extern "C" fn magic_LoadAcceleratorsA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_LoadAcceleratorsA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -27084,7 +27084,7 @@ extern "C" fn magic_LoadAcceleratorsA(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_LoadAcceleratorsW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_LoadAcceleratorsW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -27099,7 +27099,7 @@ extern "C" fn magic_LoadAcceleratorsW(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_LoadCursorA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_LoadCursorA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -27114,7 +27114,7 @@ extern "C" fn magic_LoadCursorA(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_LoadCursorFromFileA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_LoadCursorFromFileA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -27128,7 +27128,7 @@ extern "C" fn magic_LoadCursorFromFileA(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_LoadCursorFromFileW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_LoadCursorFromFileW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -27142,7 +27142,7 @@ extern "C" fn magic_LoadCursorFromFileW(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_LoadCursorW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_LoadCursorW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -27157,7 +27157,7 @@ extern "C" fn magic_LoadCursorW(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_LoadIconA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_LoadIconA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -27172,7 +27172,7 @@ extern "C" fn magic_LoadIconA(context: &mut ExtendedContext, memory: FlatMemoryC
     }
 }
 #[no_mangle]
-extern "C" fn magic_LoadIconW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_LoadIconW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -27187,7 +27187,7 @@ extern "C" fn magic_LoadIconW(context: &mut ExtendedContext, memory: FlatMemoryC
     }
 }
 #[no_mangle]
-extern "C" fn magic_LoadImageA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_LoadImageA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -27206,7 +27206,7 @@ extern "C" fn magic_LoadImageA(context: &mut ExtendedContext, memory: FlatMemory
     }
 }
 #[no_mangle]
-extern "C" fn magic_LoadImageW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_LoadImageW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -27225,7 +27225,7 @@ extern "C" fn magic_LoadImageW(context: &mut ExtendedContext, memory: FlatMemory
     }
 }
 #[no_mangle]
-extern "C" fn magic_LoadMenuA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_LoadMenuA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -27240,7 +27240,7 @@ extern "C" fn magic_LoadMenuA(context: &mut ExtendedContext, memory: FlatMemoryC
     }
 }
 #[no_mangle]
-extern "C" fn magic_LoadMenuIndirectA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_LoadMenuIndirectA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -27254,7 +27254,7 @@ extern "C" fn magic_LoadMenuIndirectA(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_LoadMenuIndirectW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_LoadMenuIndirectW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -27268,7 +27268,7 @@ extern "C" fn magic_LoadMenuIndirectW(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_LoadMenuW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_LoadMenuW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -27283,7 +27283,7 @@ extern "C" fn magic_LoadMenuW(context: &mut ExtendedContext, memory: FlatMemoryC
     }
 }
 #[no_mangle]
-extern "C" fn magic_LoadStringA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_LoadStringA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -27300,7 +27300,7 @@ extern "C" fn magic_LoadStringA(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_LoadStringW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_LoadStringW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -27317,7 +27317,7 @@ extern "C" fn magic_LoadStringW(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_LockSetForegroundWindow(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_LockSetForegroundWindow(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -27331,7 +27331,7 @@ extern "C" fn magic_LockSetForegroundWindow(context: &mut ExtendedContext, memor
     }
 }
 #[no_mangle]
-extern "C" fn magic_LogicalToPhysicalPoint(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_LogicalToPhysicalPoint(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -27346,7 +27346,7 @@ extern "C" fn magic_LogicalToPhysicalPoint(context: &mut ExtendedContext, memory
     }
 }
 #[no_mangle]
-extern "C" fn magic_LookupIconIdFromDirectory(
+extern "C" fn thunk_LookupIconIdFromDirectory(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -27364,7 +27364,7 @@ extern "C" fn magic_LookupIconIdFromDirectory(
     }
 }
 #[no_mangle]
-extern "C" fn magic_LookupIconIdFromDirectoryEx(
+extern "C" fn thunk_LookupIconIdFromDirectoryEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -27385,7 +27385,7 @@ extern "C" fn magic_LookupIconIdFromDirectoryEx(
     }
 }
 #[no_mangle]
-extern "C" fn magic_MapDialogRect(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_MapDialogRect(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -27400,7 +27400,7 @@ extern "C" fn magic_MapDialogRect(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_MenuItemFromPoint(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_MenuItemFromPoint(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -27416,7 +27416,7 @@ extern "C" fn magic_MenuItemFromPoint(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_MessageBoxA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_MessageBoxA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -27433,7 +27433,7 @@ extern "C" fn magic_MessageBoxA(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_MessageBoxExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_MessageBoxExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -27451,7 +27451,7 @@ extern "C" fn magic_MessageBoxExA(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_MessageBoxExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_MessageBoxExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -27469,7 +27469,7 @@ extern "C" fn magic_MessageBoxExW(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_MessageBoxW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_MessageBoxW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -27486,7 +27486,7 @@ extern "C" fn magic_MessageBoxW(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_ModifyMenuA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ModifyMenuA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -27504,7 +27504,7 @@ extern "C" fn magic_ModifyMenuA(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_ModifyMenuW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ModifyMenuW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -27522,7 +27522,7 @@ extern "C" fn magic_ModifyMenuW(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_MoveWindow(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_MoveWindow(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -27541,7 +27541,7 @@ extern "C" fn magic_MoveWindow(context: &mut ExtendedContext, memory: FlatMemory
     }
 }
 #[no_mangle]
-extern "C" fn magic_MsgWaitForMultipleObjects(
+extern "C" fn thunk_MsgWaitForMultipleObjects(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -27568,7 +27568,7 @@ extern "C" fn magic_MsgWaitForMultipleObjects(
     }
 }
 #[no_mangle]
-extern "C" fn magic_MsgWaitForMultipleObjectsEx(
+extern "C" fn thunk_MsgWaitForMultipleObjectsEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -27595,7 +27595,7 @@ extern "C" fn magic_MsgWaitForMultipleObjectsEx(
     }
 }
 #[no_mangle]
-extern "C" fn magic_OemToCharA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_OemToCharA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -27610,7 +27610,7 @@ extern "C" fn magic_OemToCharA(context: &mut ExtendedContext, memory: FlatMemory
     }
 }
 #[no_mangle]
-extern "C" fn magic_OemToCharBuffA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_OemToCharBuffA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -27626,7 +27626,7 @@ extern "C" fn magic_OemToCharBuffA(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_OemToCharBuffW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_OemToCharBuffW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -27642,7 +27642,7 @@ extern "C" fn magic_OemToCharBuffW(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_OemToCharW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_OemToCharW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -27657,7 +27657,7 @@ extern "C" fn magic_OemToCharW(context: &mut ExtendedContext, memory: FlatMemory
     }
 }
 #[no_mangle]
-extern "C" fn magic_OpenIcon(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_OpenIcon(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -27671,7 +27671,7 @@ extern "C" fn magic_OpenIcon(context: &mut ExtendedContext, memory: FlatMemoryCt
     }
 }
 #[no_mangle]
-extern "C" fn magic_PeekMessageA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_PeekMessageA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -27695,7 +27695,7 @@ extern "C" fn magic_PeekMessageA(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_PeekMessageW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_PeekMessageW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -27719,7 +27719,7 @@ extern "C" fn magic_PeekMessageW(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_PhysicalToLogicalPoint(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_PhysicalToLogicalPoint(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -27734,7 +27734,7 @@ extern "C" fn magic_PhysicalToLogicalPoint(context: &mut ExtendedContext, memory
     }
 }
 #[no_mangle]
-extern "C" fn magic_PostMessageA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_PostMessageA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -27751,7 +27751,7 @@ extern "C" fn magic_PostMessageA(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_PostMessageW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_PostMessageW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -27768,7 +27768,7 @@ extern "C" fn magic_PostMessageW(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_PostQuitMessage(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_PostQuitMessage(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -27782,7 +27782,7 @@ extern "C" fn magic_PostQuitMessage(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_PostThreadMessageA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_PostThreadMessageA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -27799,7 +27799,7 @@ extern "C" fn magic_PostThreadMessageA(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_PostThreadMessageW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_PostThreadMessageW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -27816,7 +27816,7 @@ extern "C" fn magic_PostThreadMessageW(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_PrivateExtractIconsA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_PrivateExtractIconsA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -27846,7 +27846,7 @@ extern "C" fn magic_PrivateExtractIconsA(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_PrivateExtractIconsW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_PrivateExtractIconsW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -27876,7 +27876,7 @@ extern "C" fn magic_PrivateExtractIconsW(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_RealChildWindowFromPoint(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_RealChildWindowFromPoint(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -27891,7 +27891,7 @@ extern "C" fn magic_RealChildWindowFromPoint(context: &mut ExtendedContext, memo
     }
 }
 #[no_mangle]
-extern "C" fn magic_RealGetWindowClassA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_RealGetWindowClassA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -27907,7 +27907,7 @@ extern "C" fn magic_RealGetWindowClassA(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_RealGetWindowClassW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_RealGetWindowClassW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -27923,7 +27923,7 @@ extern "C" fn magic_RealGetWindowClassW(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_RegisterShellHookWindow(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_RegisterShellHookWindow(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -27937,7 +27937,7 @@ extern "C" fn magic_RegisterShellHookWindow(context: &mut ExtendedContext, memor
     }
 }
 #[no_mangle]
-extern "C" fn magic_RegisterWindowMessageA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_RegisterWindowMessageA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -27951,7 +27951,7 @@ extern "C" fn magic_RegisterWindowMessageA(context: &mut ExtendedContext, memory
     }
 }
 #[no_mangle]
-extern "C" fn magic_RegisterWindowMessageW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_RegisterWindowMessageW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -27965,7 +27965,7 @@ extern "C" fn magic_RegisterWindowMessageW(context: &mut ExtendedContext, memory
     }
 }
 #[no_mangle]
-extern "C" fn magic_RemoveMenu(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_RemoveMenu(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -27981,7 +27981,7 @@ extern "C" fn magic_RemoveMenu(context: &mut ExtendedContext, memory: FlatMemory
     }
 }
 #[no_mangle]
-extern "C" fn magic_RemovePropA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_RemovePropA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -27996,7 +27996,7 @@ extern "C" fn magic_RemovePropA(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_RemovePropW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_RemovePropW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -28011,7 +28011,7 @@ extern "C" fn magic_RemovePropW(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_ReplyMessage(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ReplyMessage(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -28025,7 +28025,7 @@ extern "C" fn magic_ReplyMessage(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_ScrollWindow(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ScrollWindow(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -28043,7 +28043,7 @@ extern "C" fn magic_ScrollWindow(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_SendDlgItemMessageA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SendDlgItemMessageA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -28061,7 +28061,7 @@ extern "C" fn magic_SendDlgItemMessageA(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_SendDlgItemMessageW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SendDlgItemMessageW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -28079,7 +28079,7 @@ extern "C" fn magic_SendDlgItemMessageW(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_SendMessageA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SendMessageA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -28096,7 +28096,7 @@ extern "C" fn magic_SendMessageA(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_SendMessageCallbackA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SendMessageCallbackA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -28116,7 +28116,7 @@ extern "C" fn magic_SendMessageCallbackA(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_SendMessageCallbackW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SendMessageCallbackW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -28136,7 +28136,7 @@ extern "C" fn magic_SendMessageCallbackW(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_SendMessageTimeoutA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SendMessageTimeoutA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -28164,7 +28164,7 @@ extern "C" fn magic_SendMessageTimeoutA(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_SendMessageTimeoutW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SendMessageTimeoutW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -28192,7 +28192,7 @@ extern "C" fn magic_SendMessageTimeoutW(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_SendMessageW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SendMessageW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -28209,7 +28209,7 @@ extern "C" fn magic_SendMessageW(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_SendNotifyMessageA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SendNotifyMessageA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -28226,7 +28226,7 @@ extern "C" fn magic_SendNotifyMessageA(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_SendNotifyMessageW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SendNotifyMessageW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -28243,7 +28243,7 @@ extern "C" fn magic_SendNotifyMessageW(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetCaretBlinkTime(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetCaretBlinkTime(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -28257,7 +28257,7 @@ extern "C" fn magic_SetCaretBlinkTime(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetCaretPos(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetCaretPos(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -28272,7 +28272,7 @@ extern "C" fn magic_SetCaretPos(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetClassLongA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetClassLongA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -28288,7 +28288,7 @@ extern "C" fn magic_SetClassLongA(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetClassLongW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetClassLongW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -28304,7 +28304,7 @@ extern "C" fn magic_SetClassLongW(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetClassWord(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetClassWord(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -28320,7 +28320,7 @@ extern "C" fn magic_SetClassWord(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetCoalescableTimer(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetCoalescableTimer(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -28344,7 +28344,7 @@ extern "C" fn magic_SetCoalescableTimer(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetCursor(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetCursor(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -28358,7 +28358,7 @@ extern "C" fn magic_SetCursor(context: &mut ExtendedContext, memory: FlatMemoryC
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetCursorPos(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetCursorPos(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -28373,7 +28373,7 @@ extern "C" fn magic_SetCursorPos(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetDebugErrorLevel(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetDebugErrorLevel(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -28387,7 +28387,7 @@ extern "C" fn magic_SetDebugErrorLevel(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetDlgItemInt(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetDlgItemInt(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -28404,7 +28404,7 @@ extern "C" fn magic_SetDlgItemInt(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetDlgItemTextA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetDlgItemTextA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -28420,7 +28420,7 @@ extern "C" fn magic_SetDlgItemTextA(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetDlgItemTextW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetDlgItemTextW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -28436,7 +28436,7 @@ extern "C" fn magic_SetDlgItemTextW(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetForegroundWindow(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetForegroundWindow(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -28450,7 +28450,7 @@ extern "C" fn magic_SetForegroundWindow(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetLayeredWindowAttributes(
+extern "C" fn thunk_SetLayeredWindowAttributes(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) {
@@ -28470,7 +28470,7 @@ extern "C" fn magic_SetLayeredWindowAttributes(
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetMenu(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetMenu(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -28485,7 +28485,7 @@ extern "C" fn magic_SetMenu(context: &mut ExtendedContext, memory: FlatMemoryCtx
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetMenuDefaultItem(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetMenuDefaultItem(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -28501,7 +28501,7 @@ extern "C" fn magic_SetMenuDefaultItem(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetMessageExtraInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetMessageExtraInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -28515,7 +28515,7 @@ extern "C" fn magic_SetMessageExtraInfo(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetMessageQueue(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetMessageQueue(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -28529,7 +28529,7 @@ extern "C" fn magic_SetMessageQueue(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetParent(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetParent(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -28544,7 +28544,7 @@ extern "C" fn magic_SetParent(context: &mut ExtendedContext, memory: FlatMemoryC
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetPhysicalCursorPos(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetPhysicalCursorPos(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -28559,7 +28559,7 @@ extern "C" fn magic_SetPhysicalCursorPos(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetProcessDPIAware(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetProcessDPIAware(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -28572,7 +28572,7 @@ extern "C" fn magic_SetProcessDPIAware(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetProcessDefaultLayout(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetProcessDefaultLayout(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -28586,7 +28586,7 @@ extern "C" fn magic_SetProcessDefaultLayout(context: &mut ExtendedContext, memor
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetPropA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetPropA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -28602,7 +28602,7 @@ extern "C" fn magic_SetPropA(context: &mut ExtendedContext, memory: FlatMemoryCt
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetPropW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetPropW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -28618,7 +28618,7 @@ extern "C" fn magic_SetPropW(context: &mut ExtendedContext, memory: FlatMemoryCt
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetSysColors(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetSysColors(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -28634,7 +28634,7 @@ extern "C" fn magic_SetSysColors(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetSystemCursor(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetSystemCursor(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -28649,7 +28649,7 @@ extern "C" fn magic_SetSystemCursor(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetTimer(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetTimer(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -28666,7 +28666,7 @@ extern "C" fn magic_SetTimer(context: &mut ExtendedContext, memory: FlatMemoryCt
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetWindowDisplayAffinity(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetWindowDisplayAffinity(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -28681,7 +28681,7 @@ extern "C" fn magic_SetWindowDisplayAffinity(context: &mut ExtendedContext, memo
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetWindowLongA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetWindowLongA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -28697,7 +28697,7 @@ extern "C" fn magic_SetWindowLongA(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetWindowLongW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetWindowLongW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -28713,7 +28713,7 @@ extern "C" fn magic_SetWindowLongW(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetWindowPlacement(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetWindowPlacement(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -28728,7 +28728,7 @@ extern "C" fn magic_SetWindowPlacement(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetWindowPos(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetWindowPos(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -28748,7 +28748,7 @@ extern "C" fn magic_SetWindowPos(context: &mut ExtendedContext, memory: FlatMemo
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetWindowTextA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetWindowTextA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -28763,7 +28763,7 @@ extern "C" fn magic_SetWindowTextA(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetWindowTextW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetWindowTextW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -28778,7 +28778,7 @@ extern "C" fn magic_SetWindowTextW(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetWindowWord(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetWindowWord(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -28794,7 +28794,7 @@ extern "C" fn magic_SetWindowWord(context: &mut ExtendedContext, memory: FlatMem
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetWindowsHookA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetWindowsHookA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -28809,7 +28809,7 @@ extern "C" fn magic_SetWindowsHookA(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetWindowsHookExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetWindowsHookExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -28826,7 +28826,7 @@ extern "C" fn magic_SetWindowsHookExA(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetWindowsHookExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetWindowsHookExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -28843,7 +28843,7 @@ extern "C" fn magic_SetWindowsHookExW(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_SetWindowsHookW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SetWindowsHookW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -28858,7 +28858,7 @@ extern "C" fn magic_SetWindowsHookW(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_ShowCaret(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ShowCaret(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -28872,7 +28872,7 @@ extern "C" fn magic_ShowCaret(context: &mut ExtendedContext, memory: FlatMemoryC
     }
 }
 #[no_mangle]
-extern "C" fn magic_ShowCursor(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ShowCursor(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -28886,7 +28886,7 @@ extern "C" fn magic_ShowCursor(context: &mut ExtendedContext, memory: FlatMemory
     }
 }
 #[no_mangle]
-extern "C" fn magic_ShowOwnedPopups(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ShowOwnedPopups(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -28901,7 +28901,7 @@ extern "C" fn magic_ShowOwnedPopups(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_ShowWindow(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ShowWindow(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -28916,7 +28916,7 @@ extern "C" fn magic_ShowWindow(context: &mut ExtendedContext, memory: FlatMemory
     }
 }
 #[no_mangle]
-extern "C" fn magic_ShowWindowAsync(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_ShowWindowAsync(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -28931,7 +28931,7 @@ extern "C" fn magic_ShowWindowAsync(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_SoundSentry(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SoundSentry(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -28944,7 +28944,7 @@ extern "C" fn magic_SoundSentry(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_SwitchToThisWindow(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SwitchToThisWindow(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -28959,7 +28959,7 @@ extern "C" fn magic_SwitchToThisWindow(context: &mut ExtendedContext, memory: Fl
     }
 }
 #[no_mangle]
-extern "C" fn magic_SystemParametersInfoA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SystemParametersInfoA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -28976,7 +28976,7 @@ extern "C" fn magic_SystemParametersInfoA(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_SystemParametersInfoW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_SystemParametersInfoW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -28993,7 +28993,7 @@ extern "C" fn magic_SystemParametersInfoW(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_TileWindows(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_TileWindows(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -29011,7 +29011,7 @@ extern "C" fn magic_TileWindows(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_TrackPopupMenu(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_TrackPopupMenu(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -29031,7 +29031,7 @@ extern "C" fn magic_TrackPopupMenu(context: &mut ExtendedContext, memory: FlatMe
     }
 }
 #[no_mangle]
-extern "C" fn magic_TrackPopupMenuEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_TrackPopupMenuEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -29050,7 +29050,7 @@ extern "C" fn magic_TrackPopupMenuEx(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_TranslateAcceleratorA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_TranslateAcceleratorA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -29066,7 +29066,7 @@ extern "C" fn magic_TranslateAcceleratorA(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_TranslateAcceleratorW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_TranslateAcceleratorW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -29082,7 +29082,7 @@ extern "C" fn magic_TranslateAcceleratorW(context: &mut ExtendedContext, memory:
     }
 }
 #[no_mangle]
-extern "C" fn magic_TranslateMDISysAccel(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_TranslateMDISysAccel(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -29097,7 +29097,7 @@ extern "C" fn magic_TranslateMDISysAccel(context: &mut ExtendedContext, memory: 
     }
 }
 #[no_mangle]
-extern "C" fn magic_TranslateMessage(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_TranslateMessage(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -29111,7 +29111,7 @@ extern "C" fn magic_TranslateMessage(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_UnhookWindowsHook(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_UnhookWindowsHook(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -29126,7 +29126,7 @@ extern "C" fn magic_UnhookWindowsHook(context: &mut ExtendedContext, memory: Fla
     }
 }
 #[no_mangle]
-extern "C" fn magic_UnhookWindowsHookEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_UnhookWindowsHookEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -29140,7 +29140,7 @@ extern "C" fn magic_UnhookWindowsHookEx(context: &mut ExtendedContext, memory: F
     }
 }
 #[no_mangle]
-extern "C" fn magic_UnregisterClassA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_UnregisterClassA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -29155,7 +29155,7 @@ extern "C" fn magic_UnregisterClassA(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_UnregisterClassW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_UnregisterClassW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -29170,7 +29170,7 @@ extern "C" fn magic_UnregisterClassW(context: &mut ExtendedContext, memory: Flat
     }
 }
 #[no_mangle]
-extern "C" fn magic_WaitMessage(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_WaitMessage(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -29183,7 +29183,7 @@ extern "C" fn magic_WaitMessage(context: &mut ExtendedContext, memory: FlatMemor
     }
 }
 #[no_mangle]
-extern "C" fn magic_WindowFromPhysicalPoint(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_WindowFromPhysicalPoint(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -29197,7 +29197,7 @@ extern "C" fn magic_WindowFromPhysicalPoint(context: &mut ExtendedContext, memor
     }
 }
 #[no_mangle]
-extern "C" fn magic_WindowFromPoint(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_WindowFromPoint(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -29211,7 +29211,7 @@ extern "C" fn magic_WindowFromPoint(context: &mut ExtendedContext, memory: FlatM
     }
 }
 #[no_mangle]
-extern "C" fn magic_wsprintfA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_wsprintfA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -29226,7 +29226,7 @@ extern "C" fn magic_wsprintfA(context: &mut ExtendedContext, memory: FlatMemoryC
     }
 }
 #[no_mangle]
-extern "C" fn magic_wsprintfW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_wsprintfW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -29241,7 +29241,7 @@ extern "C" fn magic_wsprintfW(context: &mut ExtendedContext, memory: FlatMemoryC
     }
 }
 #[no_mangle]
-extern "C" fn magic_wvsprintfA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_wvsprintfA(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);
@@ -29257,7 +29257,7 @@ extern "C" fn magic_wvsprintfA(context: &mut ExtendedContext, memory: FlatMemory
     }
 }
 #[no_mangle]
-extern "C" fn magic_wvsprintfW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+extern "C" fn thunk_wvsprintfW(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let api = win32::Win32::UI::WindowsAndMessaging::get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu);

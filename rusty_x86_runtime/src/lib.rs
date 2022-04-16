@@ -1,4 +1,4 @@
-mod magic;
+mod thunks;
 
 pub use core_abi::stdcall::StdCallHelper;
 pub use core_mem::ctx::FlatMemoryCtx;
