@@ -1017,6 +1017,7 @@ mod tests {
                 ; ->bb_0x1000:
                 ; mov w8, #0x2a
                 ; strh w8, [x0]
+                ; mov w0, wzr
                 ; ret
 
                 ; ->uwin_indirect_bb_call:
