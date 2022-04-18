@@ -10,7 +10,7 @@ pub struct StdCallHelper<'a, MCtx: MemoryCtx, CpuCtx: X86Context> {
     mem_ctx: MCtx,
     ret_addr: PtrRepr,
     cpu_ctx: &'a mut CpuCtx,
-    /// offset to the last argument read (or the return addr if nothing was read yet)
+    /// offset of the argument to be read next
     offset: u32,
 }
 
@@ -18,25 +18,20 @@ pub struct StdCallHelper<'a, MCtx: MemoryCtx, CpuCtx: X86Context> {
 // The stdcall frame is as following:
 // |     ...     |
 // +-------------+
-// | local var 2 | [ESP-4]
+// | local var 2 | [ESP-8]
 // +-------------+
-// | local var 1 | [ESP]
+// | local var 1 | [ESP-4]
 // +-------------+ <--- ESP
-// | return addr | [ESP+4]
+// | return addr | [ESP]
 // +-------------+
-// | argument 1  | [ESP+8]
+// | argument 1  | [ESP+4]
 // +-------------+
-// | argument 2  | [ESP+12]
+// | argument 2  | [ESP+8]
 // +-------------+
 // |     ...     |
 //
 // we don't care about local vars, but we do obviously care about the arguments
-// the first value we read is at [ESP+4] which is return address
-// this feels kinda weird, but [ESP] actually points to something that was not yet pushed to the stack
-// and [ESP+4] gives us the last pushed value
-// whatever
-//
-// we do the same and start offset from 4
+// the first value we read is at [ESP] which is return address
 
 impl<'a, MCtx: MemoryCtx, CpuCtx: X86Context> StdCallHelper<'a, MCtx, CpuCtx> {
     pub fn new(mem_ctx: MCtx, cpu_ctx: &'a mut CpuCtx) -> Self {
@@ -77,12 +72,7 @@ impl<'a, MCtx: MemoryCtx, CpuCtx: X86Context> StdCallHelper<'a, MCtx, CpuCtx> {
         self.cpu_ctx.set_esp(self.cpu_ctx.get_esp() + self.offset);
         self.cpu_ctx.set_eax(u32::from_le_bytes(bytes));
 
-        let ret_addr = self.ret_addr;
-
-        // prevent the calling of the panicking destructor
-        std::mem::forget(self);
-
-        ret_addr
+        self.ret_addr
     }
 
     pub fn return_address(&self) -> PtrRepr {
