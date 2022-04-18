@@ -14,6 +14,7 @@ pub struct StdCallHelper<'a, MCtx: MemoryCtx, CpuCtx: X86Context> {
     offset: u32,
 }
 
+// TODO: THIS IS ALL WRONG, I HAVE COMMITTED ABI CRIMES AND SHOULD GO TO ABI JAIL
 // The stdcall frame is as following:
 // |     ...     |
 // +-------------+
@@ -40,7 +41,7 @@ pub struct StdCallHelper<'a, MCtx: MemoryCtx, CpuCtx: X86Context> {
 impl<'a, MCtx: MemoryCtx, CpuCtx: X86Context> StdCallHelper<'a, MCtx, CpuCtx> {
     pub fn new(mem_ctx: MCtx, cpu_ctx: &'a mut CpuCtx) -> Self {
         let esp = cpu_ctx.get_esp();
-        let ret_addr = mem_ctx.read::<PtrRepr>(esp + 4);
+        let ret_addr = mem_ctx.read::<PtrRepr>(esp);
         Self {
             mem_ctx,
             ret_addr,
@@ -50,8 +51,8 @@ impl<'a, MCtx: MemoryCtx, CpuCtx: X86Context> StdCallHelper<'a, MCtx, CpuCtx> {
     }
 
     pub fn get_arg<T: FromIntoMemory>(&mut self) -> T {
-        // first increase to make esp point to the current argument (instead of the previous one)
-        self.offset += 4; // we assume that every argument is stored as size 4 (is this always true?)
+        let offset = self.offset;
+        self.offset += 4;
 
         let size = T::size();
         assert!(
@@ -59,11 +60,11 @@ impl<'a, MCtx: MemoryCtx, CpuCtx: X86Context> StdCallHelper<'a, MCtx, CpuCtx> {
             "Size of argument is larger that 4. Dunno what ABI becomes in this case :shrug:"
         );
 
-        let ptr = ConstPtr::<T>::new(self.cpu_ctx.get_esp() + self.offset); // and now we can use it to read the value
+        let ptr = ConstPtr::<T>::new(self.cpu_ctx.get_esp() + offset); // and now we can use it to read the value
         ptr.read_with(self.mem_ctx)
     }
 
-    pub fn finish<T: FromIntoMemory>(self, value: T) {
+    pub fn finish<T: FromIntoMemory>(self, value: T) -> PtrRepr {
         let size = T::size();
         assert!(
             size <= 4,
@@ -76,8 +77,12 @@ impl<'a, MCtx: MemoryCtx, CpuCtx: X86Context> StdCallHelper<'a, MCtx, CpuCtx> {
         self.cpu_ctx.set_esp(self.cpu_ctx.get_esp() + self.offset);
         self.cpu_ctx.set_eax(u32::from_le_bytes(bytes));
 
+        let ret_addr = self.ret_addr;
+
         // prevent the calling of the panicking destructor
-        std::mem::forget(self)
+        std::mem::forget(self);
+
+        ret_addr
     }
 
     pub fn return_address(&self) -> PtrRepr {

@@ -272,7 +272,7 @@ fn execute_rusty_x86(
         );
         call.set_call_convention(FASTCC_CALLING_CONVENTION);
 
-        builder.build_return(None);
+        builder.build_return(Some(&call.try_as_basic_value().unwrap_left()));
     }
 
     let _ir = module.print_to_string().to_string();

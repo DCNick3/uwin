@@ -11,16 +11,13 @@ fn gen_text_section(stubs: &BTreeMap<String, u32>) -> (Vec<u8>, BTreeMap<String,
 
     for (name, index) in stubs {
         labels.insert(name.clone(), output.len() as u32);
-        // FAR CALL opcode
-        output.push(0x9a);
+        // FAR JUMP opcode
+        output.push(0xea);
 
         // far call offset
         output.extend(index.to_le_bytes());
         // far call segment (magic number for UW)
         output.extend(0x7775u16.to_le_bytes());
-
-        // RET opcode
-        output.push(0xc3);
     }
 
     (output, labels)

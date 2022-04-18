@@ -72,7 +72,7 @@ fn codegen_dynamic_dispatcher<'ctx, 'a>(
     builder.position_at_end(else_bb);
     let trap = intrinsics.trap.get_declaration(module, &[]).unwrap();
     builder.build_call(trap, &[], "");
-    builder.build_return(None);
+    builder.build_unreachable();
 
     let args = [ctx_ptr.into(), mem_ptr.into()];
 
@@ -85,7 +85,7 @@ fn codegen_dynamic_dispatcher<'ctx, 'a>(
             let call = builder.build_call(fun, &args, "");
             call.set_call_convention(FASTCC_CALLING_CONVENTION);
             call.set_tail_call(true);
-            builder.build_return(None);
+            builder.build_return(Some(&call.try_as_basic_value().unwrap_left()));
 
             (types.i32.const_int(addr as u64, false), bb)
         })
@@ -121,14 +121,13 @@ fn codegen_dynamic_dispatcher_wrapper<'ctx, 'a>(
 
     builder.position_at_end(bb);
 
-    builder
-        .build_call(
-            indirect_bb_call_impl,
-            &[ctx_ptr.into(), mem_ptr.into(), eip.into()],
-            "",
-        )
-        .set_call_convention(FASTCC_CALLING_CONVENTION);
-    builder.build_return(None);
+    let res = builder.build_call(
+        indirect_bb_call_impl,
+        &[ctx_ptr.into(), mem_ptr.into(), eip.into()],
+        "",
+    );
+    res.set_call_convention(FASTCC_CALLING_CONVENTION);
+    builder.build_return(Some(&res.try_as_basic_value().unwrap_left()));
 
     indirect_bb_call
 }
@@ -188,12 +187,14 @@ pub fn recompile<'ctx, 'a>(
         let mut decoder = Decoder::new(32, image.execute_all_at(address), DecoderOptions::NONE);
         decoder.set_ip(address as u64);
 
-        loop {
+        let ret = loop {
             // kinda want to assert that we should be able to decode, but some tests without ret's don't work then
             // TODO: ???
             // also probably want to raise an error if we jumped to smth undecodable
             if !decoder.can_decode() {
-                break;
+                // TODO: store info on __why__ it happened
+                // maybe even call some runtime function?
+                break types.i32.const_zero();
             }
             //assert!(decoder.can_decode());
 
@@ -201,7 +202,7 @@ pub fn recompile<'ctx, 'a>(
 
             let flow = codegen_instr(&mut builder, instr);
 
-            builder.handle_flow(instr.next_ip32(), flow.clone());
+            let ret = builder.handle_flow(instr.next_ip32(), flow.clone());
 
             if let Some(addr) = flow.outer_jump_ref() {
                 if !lifted_functions.contains_key(&addr) {
@@ -219,13 +220,13 @@ pub fn recompile<'ctx, 'a>(
                 }
             }
 
-            if !flow.can_reach_next_instruction() {
-                break;
+            if let Some(ret) = ret {
+                break ret;
             }
-        }
+        };
 
         let llvm_builder = builder.get_raw_builder();
-        llvm_builder.build_return(None);
+        llvm_builder.build_return(Some(&ret));
     }
 
     // codegen indirect_bb_call_impl

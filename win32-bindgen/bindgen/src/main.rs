@@ -274,7 +274,6 @@ edition = "2018"
 
 [dependencies]
 core-mem = { path = "../core-mem" }
-core-abi = { path = "../core-abi" }
 anymap = "0.12.1"
 "#
         .as_bytes(),
@@ -373,6 +372,9 @@ fn gen_thunks(output: &std::path::Path, tokens: Vec<TokenStream>) {
 
         #[allow(unused)]
         use core_mem::ctx::FlatMemoryCtx;
+
+        #[allow(unused)]
+        use core_mem::ptr::PtrRepr;
 
         #(#tokens)*
     }

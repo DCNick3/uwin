@@ -5,7 +5,8 @@ use derive_more::Display;
 use strum::IntoEnumIterator;
 use strum_macros::EnumIter;
 
-use crate::Builder;
+use crate::backend::BoolValue;
+use crate::IntValue;
 
 // the numbers correspond to register numbers in ModR/M encoding
 #[derive(Debug, Clone, Copy, EnumIter, Eq, PartialEq, Hash, Ord, PartialOrd)]
@@ -266,45 +267,40 @@ impl Operand {
 }
 
 #[derive(Debug)]
-pub enum ControlFlow<B: Builder> {
+pub enum ControlFlow<Int: IntValue, Bool: BoolValue> {
     NextInstruction, /* Just execute the next instruction, no need to touch EIP at all */
     DirectJump(u32 /* next EIP is known and stored */),
-    IndirectJump(B::IntValue /* next EIP is dynamic and stored */),
-    Return, /* return from a function. Value should be popped from the stack by the instruction implementation */
-    Conditional(B::BoolValue, u32), /* if cond is true - jump to u32,  */
+    IndirectJump(Int /* next EIP is dynamic and stored */),
+    CallCheck(
+        Int, /* the instruction performed a function call and we should check if the popped EIP matches what we expect */
+    ),
+    Return(Int), /* return from a function. Value should be popped from the stack by the instruction implementation */
+    Conditional(Bool, u32), /* if cond is true - jump to u32, else - next instruction */
 }
 
-impl<B: Builder> ControlFlow<B> {
-    pub fn can_reach_next_instruction(&self) -> bool {
-        match self {
-            ControlFlow::NextInstruction => true,
-            ControlFlow::DirectJump(_) => false,
-            ControlFlow::IndirectJump(_) => false,
-            ControlFlow::Return => false,
-            ControlFlow::Conditional(_, _) => true,
-        }
-    }
-
+impl<Int: IntValue, Bool: BoolValue> ControlFlow<Int, Bool> {
     pub fn outer_jump_ref(&self) -> Option<u32> {
         match self {
             ControlFlow::NextInstruction => None,
             ControlFlow::DirectJump(r) => Some(*r),
             ControlFlow::IndirectJump(_) => None, /* can't statically know the addr */
-            ControlFlow::Return => None,
+            ControlFlow::CallCheck(_) => None,
+            ControlFlow::Return(_) => None,
             ControlFlow::Conditional(_, r) => Some(*r),
         }
     }
 }
 
 // for some reason #[derive(Clone)] doesn't work (TODO: why?)
-impl<B: Builder> Clone for ControlFlow<B> {
+impl<Int: IntValue, Bool: BoolValue> Clone for ControlFlow<Int, Bool> {
     fn clone(&self) -> Self {
         use ControlFlow::*;
         match self {
             NextInstruction => NextInstruction,
             DirectJump(r) => DirectJump(*r),
             IndirectJump(r) => IndirectJump(*r),
-            Return => Return,
+            CallCheck(r) => CallCheck(*r),
+            Return(r) => Return(*r),
             Conditional(cond, r) => Conditional(*cond, *r),
         }
     }

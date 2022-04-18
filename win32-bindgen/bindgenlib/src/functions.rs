@@ -95,22 +95,23 @@ pub fn gen_thunk_function(def: &MethodDef, gen: &Gen, namespace: &TokenStream) -
 
         let res = api.#name(#(#arg_names),*);
 
-        call.finish(res);
+        call.finish(res)
     };
 
     let thunk_name = gen_ident(&format!("thunk_{}", def.name()));
 
     quote! {
         #[no_mangle]
-        extern "C" fn #thunk_name(context: &mut ExtendedContext, memory: FlatMemoryCtx) {
+        extern "C" fn #thunk_name(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
             let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
                 #body
             }));
-
-            if result.is_err() {
-                eprintln!("Caught a panic in native code. Whoops, aborting..");
-
-                std::process::abort();
+            match result {
+                Ok(ret) => ret,
+                Err(_) => {
+                    eprintln!("Caught a panic in native code. Whoops, aborting..");
+                    std::process::abort();
+                }
             }
         }
     }

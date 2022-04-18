@@ -68,6 +68,8 @@ impl MemoryMapper {
 }
 
 fn main() {
+    env_logger::init();
+
     let mut mapper = MemoryMapper::new().expect("Mapping the base region");
 
     let memory_ctx = unsafe { mapper.flat_memory_ctx() };
@@ -112,5 +114,7 @@ fn main() {
     context.cpu.gp_regs[4] = stack_top + stack_size;
     context.cpu.fs_base = tlb;
 
-    rusty_x86_runtime::execute_recompiled_code(&mut context, memory_ctx, entry);
+    let res = rusty_x86_runtime::execute_recompiled_code(&mut context, memory_ctx, entry);
+
+    println!("execute_recompiled_code returned 0x{:08x}", res);
 }

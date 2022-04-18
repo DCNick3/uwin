@@ -291,7 +291,10 @@ fn codegen_string_instr<B: Builder>(builder: &mut B, instr: Instruction) {
     }
 }
 
-pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) -> ControlFlow<B> {
+pub fn codegen_instr<B: Builder>(
+    builder: &mut B,
+    instr: Instruction,
+) -> ControlFlow<B::IntValue, B::BoolValue> {
     use crate::Flag::*;
     use iced_x86::Mnemonic::*;
 
@@ -795,12 +798,8 @@ pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) -> Control
                 builder.store_register(EBP, new_ebp);
             }
             Ret => {
-                // TODO: control flow, no-op for now
-                // Pop the return address (TODO: where to store it? we don't have EIP yet)
-
-                let _raddr = builder.pop(IntType::I32);
-
-                return ControlFlow::Return;
+                let addr = builder.pop(IntType::I32);
+                return ControlFlow::Return(addr);
             }
             Jmp => {
                 operands!([target], &instr);
@@ -810,6 +809,15 @@ pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) -> Control
                         panic!("Jump to unsupported immediate size")
                     }
                     Operand::Immediate32(target) => ControlFlow::DirectJump(target),
+                    Operand::FarBranch(segment, offset) => {
+                        if segment != 0x7775
+                        // magic value encoded as "uw" in little endian (for uwin)
+                        // recompiler uses it when it generates stubs
+                        {
+                            unimplemented!("Far jumps that are not targeting uwin magic segment")
+                        }
+                        builder.thunk_jump(offset)
+                    }
                     target => {
                         let target = builder.load_operand(target);
                         ControlFlow::IndirectJump(target)
@@ -822,27 +830,16 @@ pub fn codegen_instr<B: Builder>(builder: &mut B, instr: Instruction) -> Control
                 let ret = instr.next_ip32();
                 builder.push(builder.make_u32(ret));
 
-                match target {
+                return match target {
                     Operand::Immediate8(_) | Operand::Immediate16(_) | Operand::Immediate64(_) => {
                         panic!("Call to unsupported immediate size")
                     }
-                    Operand::Immediate32(target) => {
-                        builder.direct_call(target, ret);
-                    }
-                    Operand::FarBranch(segment, offset) => {
-                        if segment != 0x7775
-                        // magic value encoded as "uw" in little endian (for uwin)
-                        // recompiler uses it when it generates stubs
-                        {
-                            unimplemented!("Far calls that are not targeting uwin magic segment")
-                        }
-                        builder.thunk_call(offset, ret);
-                    }
+                    Operand::Immediate32(target) => builder.direct_call(target),
                     target => {
                         let target = builder.load_operand(target);
-                        builder.indirect_call(target, ret);
+                        builder.indirect_call(target)
                     }
-                }
+                };
             }
             Stc => builder.store_flag(Carry, builder.make_true()),
             Clc => builder.store_flag(Carry, builder.make_false()),

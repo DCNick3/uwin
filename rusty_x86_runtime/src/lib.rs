@@ -23,7 +23,8 @@ extern "C" {
     static uwin_serialized_process_image_size: u32;
 
     #[allow(improper_ctypes)] // I know I am doing dark magic, that's ok
-    fn uwin_indirect_bb_call(context: &mut ExtendedContext, memory: FlatMemoryCtx, eip: u32);
+    fn uwin_indirect_bb_call(context: &mut ExtendedContext, memory: FlatMemoryCtx, eip: u32)
+        -> u32;
 }
 
 fn get_process_image_data() -> &'static [u8] {
@@ -45,7 +46,11 @@ lazy_static! {
     pub static ref PROGRAM_IMAGE: LoadedProcessImage = get_process_image();
 }
 
-pub fn execute_recompiled_code(context: &mut ExtendedContext, memory: FlatMemoryCtx, eip: u32) {
+pub fn execute_recompiled_code(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+    eip: u32,
+) -> u32 {
     // SAFETY: TODO??
     // It seems that safety guarantees are pushed onto the LLVM-generated code
     unsafe { uwin_indirect_bb_call(context, memory, eip) }

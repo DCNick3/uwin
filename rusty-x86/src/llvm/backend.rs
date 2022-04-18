@@ -15,7 +15,7 @@ use inkwell::{AddressSpace, IntPredicate};
 
 use crate::backend::{BoolValue, ComparisonType, IntValue};
 use crate::types::{Flag, FullSizeGeneralPurposeRegister, IntType, Register, SegmentRegister};
-use crate::ControlFlow;
+use crate::{Builder as BackendBuilder, ControlFlow};
 
 pub struct LlvmBuilder<'ctx, 'a> {
     context: &'ctx Context,
@@ -49,8 +49,8 @@ pub struct Types<'ctx> {
     #[allow(unused)]
     pub ctx_ptr: PointerType<'ctx>,
 
-    pub bb_fn: FunctionType<'ctx>,            // ctx: Context*, mem: u8*
-    pub indirect_bb_call: FunctionType<'ctx>, // ctx: Context*, mem: u8*, eip: u32
+    pub bb_fn: FunctionType<'ctx>, // ctx: Context*, mem: u8* -> u32
+    pub indirect_bb_call: FunctionType<'ctx>, // ctx: Context*, mem: u8*, eip: u32 -> u32
 }
 
 impl<'ctx> Types<'ctx> {
@@ -76,7 +76,7 @@ impl<'ctx> Types<'ctx> {
         let ctx_ptr = ctx.ptr_type(AddressSpace::Generic);
         let mem_ptr = i8.ptr_type(AddressSpace::Generic);
 
-        let bb_fn = void.fn_type(
+        let bb_fn = i32.fn_type(
             &[
                 ctx_ptr.into(), // ctx
                 mem_ptr.into(), // mem - pointer to start of guest address space (same trick as qemu does)
@@ -84,7 +84,7 @@ impl<'ctx> Types<'ctx> {
             false,
         );
 
-        let rt_indirect_bb_call = void.fn_type(
+        let rt_indirect_bb_call = i32.fn_type(
             &[
                 ctx_ptr.into(), // ctx
                 mem_ptr.into(), // mem
@@ -350,17 +350,23 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
         call
     }
 
-    pub fn call_basic_block(&mut self, target: u32, tail_call: bool) {
+    pub fn call_basic_block(&mut self, target: u32, tail_call: bool) -> LlvmIntValue<'ctx> {
         let target = self.get_basic_block_fun(target);
         let args = &[self.ctx_ptr.into(), self.mem_ptr.into()];
         let call = self.fastcall(target, args);
-        call.set_tail_call(tail_call)
+        call.set_tail_call(tail_call);
+        call.try_as_basic_value().unwrap_left().into_int_value()
     }
 
-    pub fn call_basic_block_indirect(&mut self, target: LlvmIntValue<'ctx>, tail_call: bool) {
+    pub fn call_basic_block_indirect(
+        &mut self,
+        target: LlvmIntValue<'ctx>,
+        tail_call: bool,
+    ) -> LlvmIntValue<'ctx> {
         let args = &[self.ctx_ptr.into(), self.mem_ptr.into(), target.into()];
         let call = self.fastcall(self.indirect_bb_call, args);
-        call.set_tail_call(tail_call)
+        call.set_tail_call(tail_call);
+        call.try_as_basic_value().unwrap_left().into_int_value()
     }
 
     pub fn find_thunk_function(&mut self, index: u32) -> FunctionValue<'ctx> {
@@ -380,7 +386,11 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
         }
     }
 
-    pub fn handle_flow(&mut self, next_ip: u32, flow: ControlFlow<Self>) {
+    pub fn handle_flow(
+        &mut self,
+        next_ip: u32,
+        flow: ControlFlow<<Self as BackendBuilder>::IntValue, <Self as BackendBuilder>::IntValue>,
+    ) -> Option<LlvmIntValue<'ctx>> {
         match flow {
             ControlFlow::NextInstruction => {
                 // create a new basic block for ease of reading ir
@@ -390,16 +400,37 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
 
                 self.builder.build_unconditional_branch(next_bb);
                 self.builder.position_at_end(next_bb);
+
+                None
             }
             ControlFlow::DirectJump(addr) => {
-                self.call_basic_block(addr, true);
+                Some(self.call_basic_block(addr, true))
                 // no need for ret; all recompiled funs are terminated with ret
             }
-            ControlFlow::IndirectJump(addr) => {
-                self.call_basic_block_indirect(addr, true);
+            ControlFlow::IndirectJump(addr) => Some(self.call_basic_block_indirect(addr, true)),
+            ControlFlow::CallCheck(addr) => {
+                let ne = self.icmp(ComparisonType::NotEqual, addr, self.make_u32(next_ip));
+
+                let break_ = self
+                    .context
+                    .append_basic_block(self.function, format!("break_{:08x}", next_ip).as_str());
+
+                let next_bb = self
+                    .context
+                    .append_basic_block(self.function, format!("bb_{:08x}", next_ip).as_str());
+
+                self.builder.build_conditional_branch(ne, break_, next_bb);
+
+                self.builder.position_at_end(break_);
+                self.builder.build_return(Some(&addr)); // TODO: this is not correct
+
+                self.builder.position_at_end(next_bb);
+
+                None
             }
-            ControlFlow::Return => {
+            ControlFlow::Return(addr) => {
                 // no need for ret; all recompiled funs are terminated with ret
+                Some(addr)
             }
             ControlFlow::Conditional(cond, target) => {
                 let branch_to = self
@@ -414,10 +445,12 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
                     .build_conditional_branch(cond, branch_to, next_bb);
 
                 self.builder.position_at_end(branch_to);
-                self.call_basic_block(target, true);
-                self.builder.build_return(None);
+                let res = self.call_basic_block(target, true);
+                self.builder.build_return(Some(&res));
 
                 self.builder.position_at_end(next_bb);
+
+                None
             }
         }
     }
@@ -743,25 +776,28 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
         self.builder.build_int_compare(cmp.into(), lhs, rhs, "")
     }
 
-    fn direct_call(&mut self, target: u32, _next_eip: u32) {
-        self.call_basic_block(target, false);
-        // TODO: compare EIP to expected return address
-        // else we fail in case the binary mis-uses call or ret
+    fn direct_call(&mut self, target: u32) -> ControlFlow<Self::IntValue, Self::BoolValue> {
+        let res = self.call_basic_block(target, false);
+        ControlFlow::CallCheck(res)
     }
 
-    fn indirect_call(&mut self, target: Self::IntValue, _next_eip: u32) {
-        self.call_basic_block_indirect(target, false);
-        // TODO: compare EIP to expected return address
-        // else we fail in case the binary mis-uses call or ret
+    fn indirect_call(
+        &mut self,
+        target: Self::IntValue,
+    ) -> ControlFlow<Self::IntValue, Self::BoolValue> {
+        let res = self.call_basic_block_indirect(target, false);
+        ControlFlow::CallCheck(res)
     }
 
-    fn thunk_call(&mut self, target: u32, _next_eip: u32) {
+    // even though it's technically a jump, it works more like a tail call
+    // therefore we use "Return" control flow for it (well, tail calls __are__ a way to return anyways...)
+    fn thunk_jump(&mut self, target: u32) -> ControlFlow<Self::IntValue, Self::BoolValue> {
         let function = self.find_thunk_function(target);
 
         let args = &[self.ctx_ptr.into(), self.mem_ptr.into()];
-        self.builder.build_call(function, args, "");
-
-        // No need to compare next_eip with the real one because ¿I think? we don't change it in any native code?
+        let res = self.builder.build_call(function, args, "");
+        let res = res.try_as_basic_value().unwrap_left().into_int_value();
+        ControlFlow::Return(res)
     }
 
     fn select(

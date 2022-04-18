@@ -1,4 +1,5 @@
 use crate::types::{Flag, IntType, MemoryOperand, Operand, Register, SegmentRegister};
+use crate::ControlFlow;
 
 pub trait IntValue: Clone + Copy {
     fn size(&self) -> IntType;
@@ -109,11 +110,14 @@ pub trait Builder {
         rhs: Self::IntValue,
     ) -> Self::BoolValue;
 
-    fn direct_call(&mut self, target: u32, next_eip: u32);
+    fn direct_call(&mut self, target: u32) -> ControlFlow<Self::IntValue, Self::BoolValue>;
 
-    fn indirect_call(&mut self, target: Self::IntValue, next_eip: u32);
+    fn indirect_call(
+        &mut self,
+        target: Self::IntValue,
+    ) -> ControlFlow<Self::IntValue, Self::BoolValue>;
 
-    fn thunk_call(&mut self, target: u32, next_eip: u32);
+    fn thunk_jump(&mut self, target: u32) -> ControlFlow<Self::IntValue, Self::BoolValue>;
 
     fn select(
         &mut self,
