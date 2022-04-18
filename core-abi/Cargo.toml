@@ -6,6 +6,8 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-static_assertions = "1.1.0"
 core-mem = { path = "../core-mem" }
 rusty-x86 = { path = "../rusty-x86", optional = true }
+
+static_assertions = "1.1.0"
+log = "0.4.16"

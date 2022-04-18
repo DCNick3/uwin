@@ -4077,10 +4077,10 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("ExecuteUmsThread")
     }
-    fn ExitProcess(&self, u_exit_code: u32) {
+    fn ExitProcess(&self, unwind_token: &mut UnwindToken, u_exit_code: u32) {
         todo!("ExitProcess")
     }
-    fn ExitThread(&self, dw_exit_code: u32) {
+    fn ExitThread(&self, unwind_token: &mut UnwindToken, dw_exit_code: u32) {
         todo!("ExitThread")
     }
     fn FlsAlloc(&self, lp_callback: PFLS_CALLBACK_FUNCTION) -> u32 {

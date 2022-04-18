@@ -28,12 +28,19 @@ pub fn gen_function_declaration(def: &MethodDef, gen: &Gen) -> TokenStream {
     let ident = gen_ident(name);
 
     let signature = def.signature(&[]);
+    let unwindable = gen.function_unwindable(def.name());
 
-    let params = signature.params.iter().map(|p| {
+    let params = if unwindable {
+        vec![quote!(unwind_token: &mut UnwindToken)]
+    } else {
+        vec![]
+    }
+    .into_iter()
+    .chain(signature.params.iter().map(|p| {
         let name = gen_param_name(&p.def);
         let tokens = gen_element_name(&p.ty, gen);
         quote! { #name: #tokens }
-    });
+    }));
 
     let return_type = gen_return_sig(&signature, gen);
 
@@ -73,9 +80,11 @@ pub fn gen_thunk_function(def: &MethodDef, gen: &Gen, namespace: &TokenStream) -
         return quote! {};
     }
 
-    let name = gen_ident(def.name());
-
+    let name = def.name();
+    let ident = gen_ident(name);
     let signature = def.signature(&[]);
+
+    let unwindable = gen.function_unwindable(name);
 
     let arg_names = signature
         .params
@@ -87,13 +96,25 @@ pub fn gen_thunk_function(def: &MethodDef, gen: &Gen, namespace: &TokenStream) -
         })
         .collect::<Vec<_>>();
 
+    let call = if unwindable {
+        quote! {
+            let res = api.#ident(unwind_token, #(#arg_names),*);
+        }
+    } else {
+        quote! {
+            let res = api.#ident(#(#arg_names),*);
+        }
+    };
+
     let body = quote! {
         let api = #namespace get_api(&context.win32);
-        let mut call = StdCallHelper::new(memory, &mut context.cpu);
+        let mut call = StdCallHelper::new(memory, &mut context.cpu, &mut context.unwind_reason);
 
         #(let #arg_names = call.get_arg();)*
 
-        let res = api.#name(#(#arg_names),*);
+        let unwind_token = call.unwind_token();
+
+        #call
 
         call.finish(res)
     };

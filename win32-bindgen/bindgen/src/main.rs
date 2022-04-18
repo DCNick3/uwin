@@ -241,6 +241,7 @@ const EXCLUDE_ITEMS: &[(&str, &[&str])] = &[
         &["GetConsoleFontSize", "GetLargestConsoleWindowSize"],
     ),
 ];
+const UNWINDABLE_FUNCTIONS: &[&str] = &["ExitThread", "ExitProcess"];
 
 const EXCLUDE_LIBRARIES: &[&str] = &["icu", "clfsw32", "dbghelp", "mrmsupport", "dciman32"];
 
@@ -259,26 +260,6 @@ fn main() {
         .iter()
         .map(|tree| gen_tree(&output, root.namespace, tree))
         .collect::<Vec<_>>();
-
-    output.pop();
-    output.push("Cargo.toml");
-
-    let mut file = std::fs::File::create(&output).unwrap();
-
-    file.write_all(
-        r#"
-[package]
-name = "win32"
-version = "0.0.1"
-edition = "2018"
-
-[dependencies]
-core-mem = { path = "../core-mem" }
-anymap = "0.12.1"
-"#
-        .as_bytes(),
-    )
-    .unwrap();
 
     let output = std::path::PathBuf::from("rusty_x86_runtime/src/thunks.rs");
     gen_thunks(&output, thunk_functions);
@@ -341,6 +322,7 @@ fn gen_tree(output: &std::path::Path, _root: &'static str, tree: &TypeTreeGen) -
             .copied()
             .collect(),
         excluded_libraries: EXCLUDE_LIBRARIES.iter().copied().collect(),
+        unwindable_functions: UNWINDABLE_FUNCTIONS.iter().copied().collect(),
         namespace: tree.namespace,
         min_xaml: true,
         cfg: true,
@@ -362,7 +344,7 @@ fn gen_tree(output: &std::path::Path, _root: &'static str, tree: &TypeTreeGen) -
 fn gen_thunks(output: &std::path::Path, tokens: Vec<TokenStream>) {
     // output rusty_x86 thunk functions separately
     let mut tokens = quote! {
-        #![allow(non_snake_case, non_camel_case_types, non_upper_case_globals, clashing_extern_declarations, clippy::all, unused_mut)]
+        #![allow(non_snake_case, non_camel_case_types, non_upper_case_globals, clashing_extern_declarations, clippy::all, unused_mut, unused_variables)]
 
         #[allow(unused)]
         use crate::ExtendedContext;

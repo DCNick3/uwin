@@ -1,3 +1,5 @@
+extern crate core;
+
 mod r#impl;
 
 use crate::r#impl::*;
@@ -84,6 +86,7 @@ fn main() {
     let mut context = ExtendedContext {
         cpu: CpuContext::default(),
         win32: Win32Context::new(),
+        unwind_reason: None,
     };
 
     context.win32.insert(
@@ -111,10 +114,28 @@ fn main() {
         .map(stack_size, Protection::READ_WRITE)
         .expect("Mapping stack");
     // set ESP to the bottom of the stack
-    context.cpu.gp_regs[4] = stack_top + stack_size;
+    // TODO: put some return value to the stack when calling
+    // probably could be done through a generalized way of callbacks implementation
+    // for now the zero is left there (hopefully it will be zero...)
+    context.cpu.gp_regs[4] = stack_top + stack_size - 4;
     context.cpu.fs_base = tlb;
 
     let res = rusty_x86_runtime::execute_recompiled_code(&mut context, memory_ctx, entry);
+    log::trace!("execute_recompiled_code returned 0x{:08x}", res);
 
-    println!("execute_recompiled_code returned 0x{:08x}", res);
+    if res == 0 {
+        if let Some(reason) = context.unwind_reason {
+            log::trace!("The recompiled stack was unwound, reason = {reason:?}")
+        } else {
+            panic!(
+                "Zero continuation address without an unwind reason set. Sounds like an ABI crime"
+            )
+        }
+    } else {
+        assert!(
+            context.unwind_reason.is_none(),
+            "Non-zero address return with some unwind reason... Sounds like an ABI crime"
+        );
+        todo!("Re-entering the code execution after yielding") // Not sure of all the consequences of just doing it
+    }
 }

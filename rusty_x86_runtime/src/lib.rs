@@ -1,6 +1,7 @@
 mod thunks;
 
 pub use core_abi::stdcall::StdCallHelper;
+use core_abi::unwind_token::UnwindReason;
 pub use core_mem::ctx::FlatMemoryCtx;
 use lazy_static::lazy_static;
 use recompiler::LoadedProcessImage;
@@ -16,6 +17,7 @@ use win32::core::Win32Context;
 pub struct ExtendedContext {
     pub cpu: CpuContext,
     pub win32: Win32Context,
+    pub unwind_reason: Option<UnwindReason>,
 }
 
 extern "C" {

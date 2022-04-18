@@ -1,3 +1,4 @@
+use core_abi::unwind_token::{UnwindReason, UnwindToken};
 use core_mem::ptr::PtrRepr;
 use core_mem::thread_ctx::get_thread_ctx;
 use log::trace;
@@ -96,11 +97,9 @@ pub struct Threading {}
 
 #[allow(non_snake_case)]
 impl win32::Win32::System::Threading::Api for Threading {
-    fn ExitProcess(&self, u_exit_code: u32) {
+    fn ExitProcess(&self, unwind_token: &mut UnwindToken, u_exit_code: u32) {
         trace!("ExitProcess({:?})", u_exit_code);
 
-        // TODO: we need to kinda unwind the stack or smth
-        // we can't just return from this function =)
-        todo!()
+        unwind_token.unwind(UnwindReason::ExitProcess(u_exit_code));
     }
 }
