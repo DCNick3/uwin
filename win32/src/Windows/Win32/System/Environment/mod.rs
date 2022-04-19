@@ -186,101 +186,31 @@ impl FromIntoMemory for ENCLAVE_VBS_BASIC_KEY_REQUEST {
         todo!()
     }
 }
-pub type VBS_BASIC_ENCLAVE_BASIC_CALL_COMMIT_PAGES = ::core::option::Option<
-    unsafe extern "system" fn(
-        enclave_address: ConstPtr<::core::ffi::c_void>,
-        number_of_bytes: PtrRepr,
-        source_address: ConstPtr<::core::ffi::c_void>,
-        page_protection: u32,
-    ) -> i32,
->;
+pub type VBS_BASIC_ENCLAVE_BASIC_CALL_COMMIT_PAGES = ::core::option::Option<()>;
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub type VBS_BASIC_ENCLAVE_BASIC_CALL_CREATE_THREAD = ::core::option::Option<
-    unsafe extern "system" fn(
-        thread_descriptor: ConstPtr<VBS_BASIC_ENCLAVE_THREAD_DESCRIPTOR64>,
-    ) -> i32,
->;
-pub type VBS_BASIC_ENCLAVE_BASIC_CALL_CREATE_THREAD = ::core::option::Option<
-    unsafe extern "system" fn(
-        thread_descriptor: ConstPtr<VBS_BASIC_ENCLAVE_THREAD_DESCRIPTOR32>,
-    ) -> i32,
->;
-pub type VBS_BASIC_ENCLAVE_BASIC_CALL_DECOMMIT_PAGES = ::core::option::Option<
-    unsafe extern "system" fn(
-        enclave_address: ConstPtr<::core::ffi::c_void>,
-        number_of_bytes: PtrRepr,
-    ) -> i32,
->;
-pub type VBS_BASIC_ENCLAVE_BASIC_CALL_GENERATE_KEY = ::core::option::Option<
-    unsafe extern "system" fn(
-        key_request: MutPtr<ENCLAVE_VBS_BASIC_KEY_REQUEST>,
-        requested_key_size: u32,
-        returned_key: MutPtr<u8>,
-    ) -> i32,
->;
-pub type VBS_BASIC_ENCLAVE_BASIC_CALL_GENERATE_RANDOM_DATA = ::core::option::Option<
-    unsafe extern "system" fn(
-        buffer: MutPtr<u8>,
-        number_of_bytes: u32,
-        generation: MutPtr<u64>,
-    ) -> i32,
->;
-pub type VBS_BASIC_ENCLAVE_BASIC_CALL_GENERATE_REPORT = ::core::option::Option<
-    unsafe extern "system" fn(
-        enclave_data: ConstPtr<u8>,
-        report: MutPtr<::core::ffi::c_void>,
-        buffer_size: u32,
-        output_size: MutPtr<u32>,
-    ) -> i32,
->;
-pub type VBS_BASIC_ENCLAVE_BASIC_CALL_GET_ENCLAVE_INFORMATION = ::core::option::Option<
-    unsafe extern "system" fn(enclave_info: MutPtr<ENCLAVE_INFORMATION>) -> i32,
->;
+pub type VBS_BASIC_ENCLAVE_BASIC_CALL_CREATE_THREAD = ::core::option::Option<()>;
+pub type VBS_BASIC_ENCLAVE_BASIC_CALL_CREATE_THREAD = ::core::option::Option<()>;
+pub type VBS_BASIC_ENCLAVE_BASIC_CALL_DECOMMIT_PAGES = ::core::option::Option<()>;
+pub type VBS_BASIC_ENCLAVE_BASIC_CALL_GENERATE_KEY = ::core::option::Option<()>;
+pub type VBS_BASIC_ENCLAVE_BASIC_CALL_GENERATE_RANDOM_DATA = ::core::option::Option<()>;
+pub type VBS_BASIC_ENCLAVE_BASIC_CALL_GENERATE_REPORT = ::core::option::Option<()>;
+pub type VBS_BASIC_ENCLAVE_BASIC_CALL_GET_ENCLAVE_INFORMATION = ::core::option::Option<()>;
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub type VBS_BASIC_ENCLAVE_BASIC_CALL_INTERRUPT_THREAD = ::core::option::Option<
-    unsafe extern "system" fn(
-        thread_descriptor: ConstPtr<VBS_BASIC_ENCLAVE_THREAD_DESCRIPTOR64>,
-    ) -> i32,
->;
-pub type VBS_BASIC_ENCLAVE_BASIC_CALL_INTERRUPT_THREAD = ::core::option::Option<
-    unsafe extern "system" fn(
-        thread_descriptor: ConstPtr<VBS_BASIC_ENCLAVE_THREAD_DESCRIPTOR32>,
-    ) -> i32,
->;
-pub type VBS_BASIC_ENCLAVE_BASIC_CALL_PROTECT_PAGES = ::core::option::Option<
-    unsafe extern "system" fn(
-        enclave_address: ConstPtr<::core::ffi::c_void>,
-        number_ofytes: PtrRepr,
-        page_protection: u32,
-    ) -> i32,
->;
-pub type VBS_BASIC_ENCLAVE_BASIC_CALL_RETURN_FROM_ENCLAVE =
-    ::core::option::Option<unsafe extern "system" fn(return_value: PtrRepr)>;
+pub type VBS_BASIC_ENCLAVE_BASIC_CALL_INTERRUPT_THREAD = ::core::option::Option<()>;
+pub type VBS_BASIC_ENCLAVE_BASIC_CALL_INTERRUPT_THREAD = ::core::option::Option<()>;
+pub type VBS_BASIC_ENCLAVE_BASIC_CALL_PROTECT_PAGES = ::core::option::Option<()>;
+pub type VBS_BASIC_ENCLAVE_BASIC_CALL_RETURN_FROM_ENCLAVE = ::core::option::Option<()>;
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub type VBS_BASIC_ENCLAVE_BASIC_CALL_RETURN_FROM_EXCEPTION = ::core::option::Option<
-    unsafe extern "system" fn(exception_record: ConstPtr<VBS_BASIC_ENCLAVE_EXCEPTION_AMD64>) -> i32,
->;
-pub type VBS_BASIC_ENCLAVE_BASIC_CALL_RETURN_FROM_EXCEPTION = ::core::option::Option<
-    unsafe extern "system" fn(exception_record: ConstPtr<::core::ffi::c_void>) -> i32,
->;
+pub type VBS_BASIC_ENCLAVE_BASIC_CALL_RETURN_FROM_EXCEPTION = ::core::option::Option<()>;
+pub type VBS_BASIC_ENCLAVE_BASIC_CALL_RETURN_FROM_EXCEPTION = ::core::option::Option<()>;
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub type VBS_BASIC_ENCLAVE_BASIC_CALL_TERMINATE_THREAD = ::core::option::Option<
-    unsafe extern "system" fn(
-        thread_descriptor: ConstPtr<VBS_BASIC_ENCLAVE_THREAD_DESCRIPTOR64>,
-    ) -> i32,
->;
-pub type VBS_BASIC_ENCLAVE_BASIC_CALL_TERMINATE_THREAD = ::core::option::Option<
-    unsafe extern "system" fn(
-        thread_descriptor: ConstPtr<VBS_BASIC_ENCLAVE_THREAD_DESCRIPTOR32>,
-    ) -> i32,
->;
-pub type VBS_BASIC_ENCLAVE_BASIC_CALL_VERIFY_REPORT = ::core::option::Option<
-    unsafe extern "system" fn(report: ConstPtr<::core::ffi::c_void>, report_size: u32) -> i32,
->;
+pub type VBS_BASIC_ENCLAVE_BASIC_CALL_TERMINATE_THREAD = ::core::option::Option<()>;
+pub type VBS_BASIC_ENCLAVE_BASIC_CALL_TERMINATE_THREAD = ::core::option::Option<()>;
+pub type VBS_BASIC_ENCLAVE_BASIC_CALL_VERIFY_REPORT = ::core::option::Option<()>;
 pub struct VBS_BASIC_ENCLAVE_EXCEPTION_AMD64 {
     pub ExceptionCode: u32,
     pub NumberParameters: u32,
@@ -359,52 +289,37 @@ impl ::core::clone::Clone for VBS_BASIC_ENCLAVE_SYSCALL_PAGE {
 impl ::core::fmt::Debug for VBS_BASIC_ENCLAVE_SYSCALL_PAGE {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_struct("VBS_BASIC_ENCLAVE_SYSCALL_PAGE")
-            .field(
-                "ReturnFromEnclave",
-                &self.ReturnFromEnclave.map(|f| f as usize),
-            )
-            .field(
-                "ReturnFromException",
-                &self.ReturnFromException.map(|f| f as usize),
-            )
-            .field("TerminateThread", &self.TerminateThread.map(|f| f as usize))
-            .field("InterruptThread", &self.InterruptThread.map(|f| f as usize))
-            .field("CommitPages", &self.CommitPages.map(|f| f as usize))
-            .field("DecommitPages", &self.DecommitPages.map(|f| f as usize))
-            .field("ProtectPages", &self.ProtectPages.map(|f| f as usize))
-            .field("CreateThread", &self.CreateThread.map(|f| f as usize))
-            .field(
-                "GetEnclaveInformation",
-                &self.GetEnclaveInformation.map(|f| f as usize),
-            )
-            .field("GenerateKey", &self.GenerateKey.map(|f| f as usize))
-            .field("GenerateReport", &self.GenerateReport.map(|f| f as usize))
-            .field("VerifyReport", &self.VerifyReport.map(|f| f as usize))
-            .field(
-                "GenerateRandomData",
-                &self.GenerateRandomData.map(|f| f as usize),
-            )
+            .field("ReturnFromEnclave", &self.ReturnFromEnclave)
+            .field("ReturnFromException", &self.ReturnFromException)
+            .field("TerminateThread", &self.TerminateThread)
+            .field("InterruptThread", &self.InterruptThread)
+            .field("CommitPages", &self.CommitPages)
+            .field("DecommitPages", &self.DecommitPages)
+            .field("ProtectPages", &self.ProtectPages)
+            .field("CreateThread", &self.CreateThread)
+            .field("GetEnclaveInformation", &self.GetEnclaveInformation)
+            .field("GenerateKey", &self.GenerateKey)
+            .field("GenerateReport", &self.GenerateReport)
+            .field("VerifyReport", &self.VerifyReport)
+            .field("GenerateRandomData", &self.GenerateRandomData)
             .finish()
     }
 }
 impl ::core::cmp::PartialEq for VBS_BASIC_ENCLAVE_SYSCALL_PAGE {
     fn eq(&self, other: &Self) -> bool {
-        self.ReturnFromEnclave.map(|f| f as usize) == other.ReturnFromEnclave.map(|f| f as usize)
-            && self.ReturnFromException.map(|f| f as usize)
-                == other.ReturnFromException.map(|f| f as usize)
-            && self.TerminateThread.map(|f| f as usize) == other.TerminateThread.map(|f| f as usize)
-            && self.InterruptThread.map(|f| f as usize) == other.InterruptThread.map(|f| f as usize)
-            && self.CommitPages.map(|f| f as usize) == other.CommitPages.map(|f| f as usize)
-            && self.DecommitPages.map(|f| f as usize) == other.DecommitPages.map(|f| f as usize)
-            && self.ProtectPages.map(|f| f as usize) == other.ProtectPages.map(|f| f as usize)
-            && self.CreateThread.map(|f| f as usize) == other.CreateThread.map(|f| f as usize)
-            && self.GetEnclaveInformation.map(|f| f as usize)
-                == other.GetEnclaveInformation.map(|f| f as usize)
-            && self.GenerateKey.map(|f| f as usize) == other.GenerateKey.map(|f| f as usize)
-            && self.GenerateReport.map(|f| f as usize) == other.GenerateReport.map(|f| f as usize)
-            && self.VerifyReport.map(|f| f as usize) == other.VerifyReport.map(|f| f as usize)
-            && self.GenerateRandomData.map(|f| f as usize)
-                == other.GenerateRandomData.map(|f| f as usize)
+        self.ReturnFromEnclave == other.ReturnFromEnclave
+            && self.ReturnFromException == other.ReturnFromException
+            && self.TerminateThread == other.TerminateThread
+            && self.InterruptThread == other.InterruptThread
+            && self.CommitPages == other.CommitPages
+            && self.DecommitPages == other.DecommitPages
+            && self.ProtectPages == other.ProtectPages
+            && self.CreateThread == other.CreateThread
+            && self.GetEnclaveInformation == other.GetEnclaveInformation
+            && self.GenerateKey == other.GenerateKey
+            && self.GenerateReport == other.GenerateReport
+            && self.VerifyReport == other.VerifyReport
+            && self.GenerateRandomData == other.GenerateRandomData
     }
 }
 impl ::core::cmp::Eq for VBS_BASIC_ENCLAVE_SYSCALL_PAGE {}

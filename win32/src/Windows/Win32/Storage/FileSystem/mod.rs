@@ -69,65 +69,16 @@ impl FromIntoMemory for BY_HANDLE_FILE_INFORMATION {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub type CACHE_ACCESS_CHECK = ::core::option::Option<
-    unsafe extern "system" fn(
-        p_security_descriptor: MutPtr<super::super::Security::SECURITY_DESCRIPTOR>,
-        h_client_token: super::super::Foundation::HANDLE,
-        dw_desired_access: u32,
-        generic_mapping: MutPtr<super::super::Security::GENERIC_MAPPING>,
-        privilege_set: MutPtr<super::super::Security::PRIVILEGE_SET>,
-        privilege_set_length: MutPtr<u32>,
-        granted_access: MutPtr<u32>,
-        access_status: MutPtr<i32>,
-    ) -> super::super::Foundation::BOOL,
->;
-pub type CACHE_DESTROY_CALLBACK =
-    ::core::option::Option<unsafe extern "system" fn(cb: u32, lpb: MutPtr<u8>)>;
-pub type CACHE_KEY_COMPARE = ::core::option::Option<
-    unsafe extern "system" fn(
-        cb_key_1: u32,
-        lpb_key_1: MutPtr<u8>,
-        cb_key_2: u32,
-        lpb_key_2: MutPtr<u8>,
-    ) -> i32,
->;
-pub type CACHE_KEY_HASH =
-    ::core::option::Option<unsafe extern "system" fn(lpb_key: MutPtr<u8>, cb_key: u32) -> u32>;
-pub type CACHE_READ_CALLBACK = ::core::option::Option<
-    unsafe extern "system" fn(
-        cb: u32,
-        lpb: MutPtr<u8>,
-        lpv_context: MutPtr<::core::ffi::c_void>,
-    ) -> super::super::Foundation::BOOL,
->;
-pub type CLAIMMEDIALABEL = ::core::option::Option<
-    unsafe extern "system" fn(
-        p_buffer: ConstPtr<u8>,
-        n_buffer_size: u32,
-        p_label_info: MutPtr<MediaLabelInfo>,
-    ) -> u32,
->;
-pub type CLAIMMEDIALABELEX = ::core::option::Option<
-    unsafe extern "system" fn(
-        p_buffer: ConstPtr<u8>,
-        n_buffer_size: u32,
-        p_label_info: MutPtr<MediaLabelInfo>,
-        label_guid: MutPtr<crate::core::GUID>,
-    ) -> u32,
->;
+pub type CACHE_ACCESS_CHECK = ::core::option::Option<()>;
+pub type CACHE_DESTROY_CALLBACK = ::core::option::Option<()>;
+pub type CACHE_KEY_COMPARE = ::core::option::Option<()>;
+pub type CACHE_KEY_HASH = ::core::option::Option<()>;
+pub type CACHE_READ_CALLBACK = ::core::option::Option<()>;
+pub type CLAIMMEDIALABEL = ::core::option::Option<()>;
+pub type CLAIMMEDIALABELEX = ::core::option::Option<()>;
 pub const CLFS_BASELOG_EXTENSION: &'static str = ".blf";
-pub type CLFS_BLOCK_ALLOCATION = ::core::option::Option<
-    unsafe extern "system" fn(
-        cb_buffer_length: u32,
-        pv_user_context: MutPtr<::core::ffi::c_void>,
-    ) -> MutPtr<::core::ffi::c_void>,
->;
-pub type CLFS_BLOCK_DEALLOCATION = ::core::option::Option<
-    unsafe extern "system" fn(
-        pv_buffer: MutPtr<::core::ffi::c_void>,
-        pv_user_context: MutPtr<::core::ffi::c_void>,
-    ),
->;
+pub type CLFS_BLOCK_ALLOCATION = ::core::option::Option<()>;
+pub type CLFS_BLOCK_DEALLOCATION = ::core::option::Option<()>;
 pub const CLFS_CONTAINER_RELATIVE_PREFIX: &'static str = "%BLF%\\";
 pub const CLFS_CONTAINER_STREAM_PREFIX: &'static str = "%BLF%:";
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -1641,10 +1592,7 @@ impl ::core::fmt::Debug for COPYFILE2_EXTENDED_PARAMETERS {
             .field("dwSize", &self.dwSize)
             .field("dwCopyFlags", &self.dwCopyFlags)
             .field("pfCancel", &self.pfCancel)
-            .field(
-                "pProgressRoutine",
-                &self.pProgressRoutine.map(|f| f as usize),
-            )
+            .field("pProgressRoutine", &self.pProgressRoutine)
             .field("pvCallbackContext", &self.pvCallbackContext)
             .finish()
     }
@@ -1654,8 +1602,7 @@ impl ::core::cmp::PartialEq for COPYFILE2_EXTENDED_PARAMETERS {
         self.dwSize == other.dwSize
             && self.dwCopyFlags == other.dwCopyFlags
             && self.pfCancel == other.pfCancel
-            && self.pProgressRoutine.map(|f| f as usize)
-                == other.pProgressRoutine.map(|f| f as usize)
+            && self.pProgressRoutine == other.pProgressRoutine
             && self.pvCallbackContext == other.pvCallbackContext
     }
 }
@@ -1694,10 +1641,7 @@ impl ::core::fmt::Debug for COPYFILE2_EXTENDED_PARAMETERS_V2 {
             .field("dwSize", &self.dwSize)
             .field("dwCopyFlags", &self.dwCopyFlags)
             .field("pfCancel", &self.pfCancel)
-            .field(
-                "pProgressRoutine",
-                &self.pProgressRoutine.map(|f| f as usize),
-            )
+            .field("pProgressRoutine", &self.pProgressRoutine)
             .field("pvCallbackContext", &self.pvCallbackContext)
             .field("dwCopyFlagsV2", &self.dwCopyFlagsV2)
             .field("ioDesiredSize", &self.ioDesiredSize)
@@ -1711,8 +1655,7 @@ impl ::core::cmp::PartialEq for COPYFILE2_EXTENDED_PARAMETERS_V2 {
         self.dwSize == other.dwSize
             && self.dwCopyFlags == other.dwCopyFlags
             && self.pfCancel == other.pfCancel
-            && self.pProgressRoutine.map(|f| f as usize)
-                == other.pProgressRoutine.map(|f| f as usize)
+            && self.pProgressRoutine == other.pProgressRoutine
             && self.pvCallbackContext == other.pvCallbackContext
             && self.dwCopyFlagsV2 == other.dwCopyFlagsV2
             && self.ioDesiredSize == other.ioDesiredSize
@@ -3301,26 +3244,8 @@ impl FromIntoMemory for ERASE_TAPE_TYPE {
         std::mem::size_of::<i32>()
     }
 }
-pub type FCACHE_CREATE_CALLBACK = ::core::option::Option<
-    unsafe extern "system" fn(
-        lpstr_name: crate::core::PCSTR,
-        lpv_data: MutPtr<::core::ffi::c_void>,
-        cb_file_size: MutPtr<u32>,
-        cb_file_size_high: MutPtr<u32>,
-    ) -> super::super::Foundation::HANDLE,
->;
-pub type FCACHE_RICHCREATE_CALLBACK = ::core::option::Option<
-    unsafe extern "system" fn(
-        lpstr_name: crate::core::PCSTR,
-        lpv_data: MutPtr<::core::ffi::c_void>,
-        cb_file_size: MutPtr<u32>,
-        cb_file_size_high: MutPtr<u32>,
-        pf_did_we_scan_it: MutPtr<super::super::Foundation::BOOL>,
-        pf_is_stuffed: MutPtr<super::super::Foundation::BOOL>,
-        pf_stored_with_dots: MutPtr<super::super::Foundation::BOOL>,
-        pf_stored_with_terminating_dot: MutPtr<super::super::Foundation::BOOL>,
-    ) -> super::super::Foundation::HANDLE,
->;
+pub type FCACHE_CREATE_CALLBACK = ::core::option::Option<()>;
+pub type FCACHE_RICHCREATE_CALLBACK = ::core::option::Option<()>;
 pub struct FH_OVERLAPPED {
     pub Internal: PtrRepr,
     pub InternalHigh: PtrRepr,
@@ -3347,7 +3272,7 @@ impl ::core::fmt::Debug for FH_OVERLAPPED {
             .field("Offset", &self.Offset)
             .field("OffsetHigh", &self.OffsetHigh)
             .field("hEvent", &self.hEvent)
-            .field("pfnCompletion", &self.pfnCompletion.map(|f| f as usize))
+            .field("pfnCompletion", &self.pfnCompletion)
             .field("Reserved1", &self.Reserved1)
             .field("Reserved2", &self.Reserved2)
             .field("Reserved3", &self.Reserved3)
@@ -3362,7 +3287,7 @@ impl ::core::cmp::PartialEq for FH_OVERLAPPED {
             && self.Offset == other.Offset
             && self.OffsetHigh == other.OffsetHigh
             && self.hEvent == other.hEvent
-            && self.pfnCompletion.map(|f| f as usize) == other.pfnCompletion.map(|f| f as usize)
+            && self.pfnCompletion == other.pfnCompletion
             && self.Reserved1 == other.Reserved1
             && self.Reserved2 == other.Reserved2
             && self.Reserved3 == other.Reserved3
@@ -6700,30 +6625,18 @@ impl ::core::fmt::Debug for LOG_MANAGEMENT_CALLBACKS {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_struct("LOG_MANAGEMENT_CALLBACKS")
             .field("CallbackContext", &self.CallbackContext)
-            .field(
-                "AdvanceTailCallback",
-                &self.AdvanceTailCallback.map(|f| f as usize),
-            )
-            .field(
-                "LogFullHandlerCallback",
-                &self.LogFullHandlerCallback.map(|f| f as usize),
-            )
-            .field(
-                "LogUnpinnedCallback",
-                &self.LogUnpinnedCallback.map(|f| f as usize),
-            )
+            .field("AdvanceTailCallback", &self.AdvanceTailCallback)
+            .field("LogFullHandlerCallback", &self.LogFullHandlerCallback)
+            .field("LogUnpinnedCallback", &self.LogUnpinnedCallback)
             .finish()
     }
 }
 impl ::core::cmp::PartialEq for LOG_MANAGEMENT_CALLBACKS {
     fn eq(&self, other: &Self) -> bool {
         self.CallbackContext == other.CallbackContext
-            && self.AdvanceTailCallback.map(|f| f as usize)
-                == other.AdvanceTailCallback.map(|f| f as usize)
-            && self.LogFullHandlerCallback.map(|f| f as usize)
-                == other.LogFullHandlerCallback.map(|f| f as usize)
-            && self.LogUnpinnedCallback.map(|f| f as usize)
-                == other.LogUnpinnedCallback.map(|f| f as usize)
+            && self.AdvanceTailCallback == other.AdvanceTailCallback
+            && self.LogFullHandlerCallback == other.LogFullHandlerCallback
+            && self.LogUnpinnedCallback == other.LogUnpinnedCallback
     }
 }
 impl ::core::cmp::Eq for LOG_MANAGEMENT_CALLBACKS {}
@@ -6740,19 +6653,7 @@ impl FromIntoMemory for LOG_MANAGEMENT_CALLBACKS {
 }
 pub const LOG_POLICY_OVERWRITE: u32 = 1u32;
 pub const LOG_POLICY_PERSIST: u32 = 2u32;
-pub type LPPROGRESS_ROUTINE = ::core::option::Option<
-    unsafe extern "system" fn(
-        total_file_size: i64,
-        total_bytes_transferred: i64,
-        stream_size: i64,
-        stream_bytes_transferred: i64,
-        dw_stream_number: u32,
-        dw_callback_reason: LPPROGRESS_ROUTINE_CALLBACK_REASON,
-        h_source_file: super::super::Foundation::HANDLE,
-        h_destination_file: super::super::Foundation::HANDLE,
-        lp_data: ConstPtr<::core::ffi::c_void>,
-    ) -> u32,
->;
+pub type LPPROGRESS_ROUTINE = ::core::option::Option<()>;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct LPPROGRESS_ROUTINE_CALLBACK_REASON(pub u32);
 pub const CALLBACK_CHUNK_FINISHED: LPPROGRESS_ROUTINE_CALLBACK_REASON =
@@ -6869,8 +6770,7 @@ impl FromIntoMemory for LZOPENFILE_STYLE {
         std::mem::size_of::<u32>()
     }
 }
-pub type MAXMEDIALABEL =
-    ::core::option::Option<unsafe extern "system" fn(p_max_size: MutPtr<u32>) -> u32>;
+pub type MAXMEDIALABEL = ::core::option::Option<()>;
 pub const MAX_RESOURCEMANAGER_DESCRIPTION_LENGTH: u32 = 64u32;
 pub const MAX_SID_SIZE: u32 = 256u32;
 pub const MAX_TRANSACTION_DESCRIPTION_LENGTH: u32 = 64u32;
@@ -11202,58 +11102,14 @@ pub const PARTITION_SYSTEM_GUID: crate::core::GUID =
     crate::core::GUID::from_u128(0xc12a7328_f81f_11d2_ba4b_00a0c93ec93b);
 pub const PARTITION_WINDOWS_SYSTEM_GUID: crate::core::GUID =
     crate::core::GUID::from_u128(0x57434f53_e3e3_4631_a5c5_26d2243873aa);
-pub type PCLFS_COMPLETION_ROUTINE = ::core::option::Option<
-    unsafe extern "system" fn(pv_overlapped: MutPtr<::core::ffi::c_void>, ul_reserved: u32),
->;
-pub type PCOPYFILE2_PROGRESS_ROUTINE = ::core::option::Option<
-    unsafe extern "system" fn(
-        p_message: ConstPtr<COPYFILE2_MESSAGE>,
-        pv_callback_context: ConstPtr<::core::ffi::c_void>,
-    ) -> COPYFILE2_MESSAGE_ACTION,
->;
-pub type PFE_EXPORT_FUNC = ::core::option::Option<
-    unsafe extern "system" fn(
-        pb_data: ConstPtr<u8>,
-        pv_callback_context: ConstPtr<::core::ffi::c_void>,
-        ul_length: u32,
-    ) -> u32,
->;
-pub type PFE_IMPORT_FUNC = ::core::option::Option<
-    unsafe extern "system" fn(
-        pb_data: MutPtr<u8>,
-        pv_callback_context: ConstPtr<::core::ffi::c_void>,
-        ul_length: MutPtr<u32>,
-    ) -> u32,
->;
-pub type PFN_IO_COMPLETION = ::core::option::Option<
-    unsafe extern "system" fn(
-        p_context: MutPtr<FIO_CONTEXT>,
-        lpo: MutPtr<FH_OVERLAPPED>,
-        cb: u32,
-        dw_completion_status: u32,
-    ),
->;
-pub type PLOG_FULL_HANDLER_CALLBACK = ::core::option::Option<
-    unsafe extern "system" fn(
-        h_log_file: super::super::Foundation::HANDLE,
-        dw_error: u32,
-        f_log_is_pinned: super::super::Foundation::BOOL,
-        pv_client_context: MutPtr<::core::ffi::c_void>,
-    ),
->;
-pub type PLOG_TAIL_ADVANCE_CALLBACK = ::core::option::Option<
-    unsafe extern "system" fn(
-        h_log_file: super::super::Foundation::HANDLE,
-        lsn_target: CLS_LSN,
-        pv_client_context: MutPtr<::core::ffi::c_void>,
-    ),
->;
-pub type PLOG_UNPINNED_CALLBACK = ::core::option::Option<
-    unsafe extern "system" fn(
-        h_log_file: super::super::Foundation::HANDLE,
-        pv_client_context: MutPtr<::core::ffi::c_void>,
-    ),
->;
+pub type PCLFS_COMPLETION_ROUTINE = ::core::option::Option<()>;
+pub type PCOPYFILE2_PROGRESS_ROUTINE = ::core::option::Option<()>;
+pub type PFE_EXPORT_FUNC = ::core::option::Option<()>;
+pub type PFE_IMPORT_FUNC = ::core::option::Option<()>;
+pub type PFN_IO_COMPLETION = ::core::option::Option<()>;
+pub type PLOG_FULL_HANDLER_CALLBACK = ::core::option::Option<()>;
+pub type PLOG_TAIL_ADVANCE_CALLBACK = ::core::option::Option<()>;
+pub type PLOG_UNPINNED_CALLBACK = ::core::option::Option<()>;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct PREPARE_TAPE_OPERATION(pub i32);
 pub const TAPE_FORMAT: PREPARE_TAPE_OPERATION = PREPARE_TAPE_OPERATION(5i32);
@@ -15404,19 +15260,8 @@ impl FromIntoMemory for WOF_FILE_COMPRESSION_INFO_V1 {
 }
 pub const WOF_PROVIDER_FILE: u32 = 2u32;
 pub const WOF_PROVIDER_WIM: u32 = 1u32;
-pub type WofEnumEntryProc = ::core::option::Option<
-    unsafe extern "system" fn(
-        entry_info: ConstPtr<::core::ffi::c_void>,
-        user_data: ConstPtr<::core::ffi::c_void>,
-    ) -> super::super::Foundation::BOOL,
->;
-pub type WofEnumFilesProc = ::core::option::Option<
-    unsafe extern "system" fn(
-        file_path: crate::core::PCWSTR,
-        external_file_info: ConstPtr<::core::ffi::c_void>,
-        user_data: ConstPtr<::core::ffi::c_void>,
-    ) -> super::super::Foundation::BOOL,
->;
+pub type WofEnumEntryProc = ::core::option::Option<()>;
+pub type WofEnumFilesProc = ::core::option::Option<()>;
 pub const _FT_TYPES_DEFINITION_: u32 = 1u32;
 pub trait Api {
     #[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
@@ -15472,27 +15317,6 @@ pub trait Api {
         lp_context: MutPtr<ConstPtr<::core::ffi::c_void>>,
     ) -> super::super::Foundation::BOOL {
         todo!("BackupWrite")
-    }
-    fn BuildIoRingCancelRequest(
-        &self,
-        io_ring: ConstPtr<HIORING__>,
-        file: IORING_HANDLE_REF,
-        op_to_cancel: PtrRepr,
-        user_data: PtrRepr,
-    ) -> crate::core::HRESULT {
-        todo!("BuildIoRingCancelRequest")
-    }
-    fn BuildIoRingReadFile(
-        &self,
-        io_ring: ConstPtr<HIORING__>,
-        file_ref: IORING_HANDLE_REF,
-        data_ref: IORING_BUFFER_REF,
-        number_of_bytes_to_read: u32,
-        file_offset: u64,
-        user_data: PtrRepr,
-        flags: IORING_SQE_FLAGS,
-    ) -> crate::core::HRESULT {
-        todo!("BuildIoRingReadFile")
     }
     fn BuildIoRingRegisterBuffers(
         &self,

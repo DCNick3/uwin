@@ -10,7 +10,8 @@ use rusty_x86_runtime::{CpuContext, ExtendedContext, FlatMemoryCtx, PROGRAM_IMAG
 use std::io::Write;
 use std::sync::Arc;
 use tracing::trace;
-use tracing_subscriber::EnvFilter;
+use tracing_subscriber::fmt::format;
+use tracing_subscriber::layer::SubscriberExt;
 use win32::core::Win32Context;
 
 pub struct MemoryMapper {
@@ -71,11 +72,7 @@ impl MemoryMapper {
     }
 }
 
-fn main() {
-    tracing_subscriber::fmt()
-        .with_env_filter(EnvFilter::from_default_env())
-        .init();
-
+fn main_impl() {
     let mut mapper = MemoryMapper::new().expect("Mapping the base region");
 
     let memory_ctx = unsafe { mapper.flat_memory_ctx() };
@@ -142,4 +139,15 @@ fn main() {
         );
         todo!("Re-entering the code execution after yielding") // Not sure of all the consequences of just doing it
     }
+}
+
+fn main() {
+    tracing::subscriber::set_global_default(
+        tracing_subscriber::registry()
+            .with(tracing_subscriber::fmt::Layer::new().event_format(format().compact()))
+            .with(tracing_tracy::TracyLayer::new()),
+    )
+    .expect("Setting up logging");
+
+    main_impl();
 }

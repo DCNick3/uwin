@@ -46,29 +46,11 @@ pub const C3_NONSPACING: u32 = 1u32;
 pub const C3_NOTAPPLICABLE: u32 = 0u32;
 pub const C3_SYMBOL: u32 = 8u32;
 pub const C3_VOWELMARK: u32 = 4u32;
-pub type CALINFO_ENUMPROCA = ::core::option::Option<
-    unsafe extern "system" fn(param_0: crate::core::PCSTR) -> super::Foundation::BOOL,
->;
-pub type CALINFO_ENUMPROCEXA = ::core::option::Option<
-    unsafe extern "system" fn(param_0: crate::core::PCSTR, param_1: u32) -> super::Foundation::BOOL,
->;
-pub type CALINFO_ENUMPROCEXEX = ::core::option::Option<
-    unsafe extern "system" fn(
-        param_0: crate::core::PCWSTR,
-        param_1: u32,
-        param_2: crate::core::PCWSTR,
-        param_3: super::Foundation::LPARAM,
-    ) -> super::Foundation::BOOL,
->;
-pub type CALINFO_ENUMPROCEXW = ::core::option::Option<
-    unsafe extern "system" fn(
-        param_0: crate::core::PCWSTR,
-        param_1: u32,
-    ) -> super::Foundation::BOOL,
->;
-pub type CALINFO_ENUMPROCW = ::core::option::Option<
-    unsafe extern "system" fn(param_0: crate::core::PCWSTR) -> super::Foundation::BOOL,
->;
+pub type CALINFO_ENUMPROCA = ::core::option::Option<()>;
+pub type CALINFO_ENUMPROCEXA = ::core::option::Option<()>;
+pub type CALINFO_ENUMPROCEXEX = ::core::option::Option<()>;
+pub type CALINFO_ENUMPROCEXW = ::core::option::Option<()>;
+pub type CALINFO_ENUMPROCW = ::core::option::Option<()>;
 pub const CAL_GREGORIAN: u32 = 1u32;
 pub const CAL_GREGORIAN_ARABIC: u32 = 10u32;
 pub const CAL_GREGORIAN_ME_FRENCH: u32 = 9u32;
@@ -192,12 +174,8 @@ pub const CMLangString: crate::core::GUID =
     crate::core::GUID::from_u128(0xc04d65cf_b70d_11d0_b188_00aa0038c969);
 pub const CMultiLanguage: crate::core::GUID =
     crate::core::GUID::from_u128(0x275c23e2_3747_11d0_9fea_00aa003f8646);
-pub type CODEPAGE_ENUMPROCA = ::core::option::Option<
-    unsafe extern "system" fn(param_0: crate::core::PCSTR) -> super::Foundation::BOOL,
->;
-pub type CODEPAGE_ENUMPROCW = ::core::option::Option<
-    unsafe extern "system" fn(param_0: crate::core::PCWSTR) -> super::Foundation::BOOL,
->;
+pub type CODEPAGE_ENUMPROCA = ::core::option::Option<()>;
+pub type CODEPAGE_ENUMPROCW = ::core::option::Option<()>;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct COMPARE_STRING_FLAGS(pub u32);
 pub const LINGUISTIC_IGNORECASE: COMPARE_STRING_FLAGS = COMPARE_STRING_FLAGS(16u32);
@@ -670,28 +648,11 @@ impl FromIntoMemory for CURRENCYFMTW {
         todo!()
     }
 }
-pub type DATEFMT_ENUMPROCA = ::core::option::Option<
-    unsafe extern "system" fn(param_0: crate::core::PCSTR) -> super::Foundation::BOOL,
->;
-pub type DATEFMT_ENUMPROCEXA = ::core::option::Option<
-    unsafe extern "system" fn(param_0: crate::core::PCSTR, param_1: u32) -> super::Foundation::BOOL,
->;
-pub type DATEFMT_ENUMPROCEXEX = ::core::option::Option<
-    unsafe extern "system" fn(
-        param_0: crate::core::PCWSTR,
-        param_1: u32,
-        param_2: super::Foundation::LPARAM,
-    ) -> super::Foundation::BOOL,
->;
-pub type DATEFMT_ENUMPROCEXW = ::core::option::Option<
-    unsafe extern "system" fn(
-        param_0: crate::core::PCWSTR,
-        param_1: u32,
-    ) -> super::Foundation::BOOL,
->;
-pub type DATEFMT_ENUMPROCW = ::core::option::Option<
-    unsafe extern "system" fn(param_0: crate::core::PCWSTR) -> super::Foundation::BOOL,
->;
+pub type DATEFMT_ENUMPROCA = ::core::option::Option<()>;
+pub type DATEFMT_ENUMPROCEXA = ::core::option::Option<()>;
+pub type DATEFMT_ENUMPROCEXEX = ::core::option::Option<()>;
+pub type DATEFMT_ENUMPROCEXW = ::core::option::Option<()>;
+pub type DATEFMT_ENUMPROCW = ::core::option::Option<()>;
 pub struct DetectEncodingInfo {
     pub nLangID: u32,
     pub nCodePage: u32,
@@ -1131,14 +1092,8 @@ impl FromIntoMemory for FONTSIGNATURE {
     }
 }
 pub const GEOID_NOT_AVAILABLE: i32 = -1i32;
-pub type GEO_ENUMNAMEPROC = ::core::option::Option<
-    unsafe extern "system" fn(
-        param_0: crate::core::PCWSTR,
-        param_1: super::Foundation::LPARAM,
-    ) -> super::Foundation::BOOL,
->;
-pub type GEO_ENUMPROC =
-    ::core::option::Option<unsafe extern "system" fn(param_0: i32) -> super::Foundation::BOOL>;
+pub type GEO_ENUMNAMEPROC = ::core::option::Option<()>;
+pub type GEO_ENUMPROC = ::core::option::Option<()>;
 pub struct GOFFSET {
     pub du: i32,
     pub dv: i32,
@@ -1406,40 +1361,10 @@ impl FromIntoMemory for IS_VALID_LOCALE_FLAGS {
         std::mem::size_of::<u32>()
     }
 }
-pub type LANGGROUPLOCALE_ENUMPROCA = ::core::option::Option<
-    unsafe extern "system" fn(
-        param_0: u32,
-        param_1: u32,
-        param_2: crate::core::PCSTR,
-        param_3: PtrDiffRepr,
-    ) -> super::Foundation::BOOL,
->;
-pub type LANGGROUPLOCALE_ENUMPROCW = ::core::option::Option<
-    unsafe extern "system" fn(
-        param_0: u32,
-        param_1: u32,
-        param_2: crate::core::PCWSTR,
-        param_3: PtrDiffRepr,
-    ) -> super::Foundation::BOOL,
->;
-pub type LANGUAGEGROUP_ENUMPROCA = ::core::option::Option<
-    unsafe extern "system" fn(
-        param_0: u32,
-        param_1: crate::core::PCSTR,
-        param_2: crate::core::PCSTR,
-        param_3: u32,
-        param_4: PtrDiffRepr,
-    ) -> super::Foundation::BOOL,
->;
-pub type LANGUAGEGROUP_ENUMPROCW = ::core::option::Option<
-    unsafe extern "system" fn(
-        param_0: u32,
-        param_1: crate::core::PCWSTR,
-        param_2: crate::core::PCWSTR,
-        param_3: u32,
-        param_4: PtrDiffRepr,
-    ) -> super::Foundation::BOOL,
->;
+pub type LANGGROUPLOCALE_ENUMPROCA = ::core::option::Option<()>;
+pub type LANGGROUPLOCALE_ENUMPROCW = ::core::option::Option<()>;
+pub type LANGUAGEGROUP_ENUMPROCA = ::core::option::Option<()>;
+pub type LANGUAGEGROUP_ENUMPROCW = ::core::option::Option<()>;
 pub const LCID_ALTERNATE_SORTS: u32 = 4u32;
 pub const LCMAP_BYTEREV: u32 = 2048u32;
 pub const LCMAP_FULLWIDTH: u32 = 8388608u32;
@@ -1515,19 +1440,9 @@ impl FromIntoMemory for LOCALESIGNATURE {
 pub const LOCALE_ALL: u32 = 0u32;
 pub const LOCALE_ALLOW_NEUTRAL_NAMES: u32 = 134217728u32;
 pub const LOCALE_ALTERNATE_SORTS: u32 = 4u32;
-pub type LOCALE_ENUMPROCA = ::core::option::Option<
-    unsafe extern "system" fn(param_0: crate::core::PCSTR) -> super::Foundation::BOOL,
->;
-pub type LOCALE_ENUMPROCEX = ::core::option::Option<
-    unsafe extern "system" fn(
-        param_0: crate::core::PCWSTR,
-        param_1: u32,
-        param_2: super::Foundation::LPARAM,
-    ) -> super::Foundation::BOOL,
->;
-pub type LOCALE_ENUMPROCW = ::core::option::Option<
-    unsafe extern "system" fn(param_0: crate::core::PCWSTR) -> super::Foundation::BOOL,
->;
+pub type LOCALE_ENUMPROCA = ::core::option::Option<()>;
+pub type LOCALE_ENUMPROCEX = ::core::option::Option<()>;
+pub type LOCALE_ENUMPROCW = ::core::option::Option<()>;
 pub const LOCALE_FONTSIGNATURE: u32 = 88u32;
 pub const LOCALE_ICALENDARTYPE: u32 = 4105u32;
 pub const LOCALE_ICENTURY: u32 = 36u32;
@@ -1855,16 +1770,10 @@ impl ::core::fmt::Debug for MAPPING_OPTIONS {
             .field("pszInputContentType", &self.pszInputContentType)
             .field("pszOutputContentType", &self.pszOutputContentType)
             .field("pszUILanguage", &self.pszUILanguage)
-            .field(
-                "pfnRecognizeCallback",
-                &self.pfnRecognizeCallback.map(|f| f as usize),
-            )
+            .field("pfnRecognizeCallback", &self.pfnRecognizeCallback)
             .field("pRecognizeCallerData", &self.pRecognizeCallerData)
             .field("dwRecognizeCallerDataSize", &self.dwRecognizeCallerDataSize)
-            .field(
-                "pfnActionCallback",
-                &self.pfnActionCallback.map(|f| f as usize),
-            )
+            .field("pfnActionCallback", &self.pfnActionCallback)
             .field("pActionCallerData", &self.pActionCallerData)
             .field("dwActionCallerDataSize", &self.dwActionCallerDataSize)
             .field("dwServiceFlag", &self.dwServiceFlag)
@@ -1882,12 +1791,10 @@ impl ::core::cmp::PartialEq for MAPPING_OPTIONS {
             && self.pszInputContentType == other.pszInputContentType
             && self.pszOutputContentType == other.pszOutputContentType
             && self.pszUILanguage == other.pszUILanguage
-            && self.pfnRecognizeCallback.map(|f| f as usize)
-                == other.pfnRecognizeCallback.map(|f| f as usize)
+            && self.pfnRecognizeCallback == other.pfnRecognizeCallback
             && self.pRecognizeCallerData == other.pRecognizeCallerData
             && self.dwRecognizeCallerDataSize == other.dwRecognizeCallerDataSize
-            && self.pfnActionCallback.map(|f| f as usize)
-                == other.pfnActionCallback.map(|f| f as usize)
+            && self.pfnActionCallback == other.pfnActionCallback
             && self.pActionCallerData == other.pActionCallerData
             && self.dwActionCallerDataSize == other.dwActionCallerDataSize
             && self.dwServiceFlag == other.dwServiceFlag
@@ -2701,14 +2608,7 @@ impl FromIntoMemory for NUMBERFMTW {
 pub const NUMSYS_NAME_CAPACITY: u32 = 8u32;
 pub const OFFLINE_SERVICES: u32 = 2u32;
 pub const ONLINE_SERVICES: u32 = 1u32;
-pub type PFN_MAPPINGCALLBACKPROC = ::core::option::Option<
-    unsafe extern "system" fn(
-        p_bag: MutPtr<MAPPING_PROPERTY_BAG>,
-        data: MutPtr<::core::ffi::c_void>,
-        dw_data_size: u32,
-        result: crate::core::HRESULT,
-    ),
->;
+pub type PFN_MAPPINGCALLBACKPROC = ::core::option::Option<()>;
 pub struct RFC1766INFO {
     pub lcid: u32,
     pub wszRfc1766: [u16; 6],
@@ -3486,18 +3386,9 @@ impl FromIntoMemory for SYSNLS_FUNCTION {
 }
 pub const SpellCheckerFactory: crate::core::GUID =
     crate::core::GUID::from_u128(0x7ab36653_1796_484b_bdfa_e74f1db7c1dc);
-pub type TIMEFMT_ENUMPROCA = ::core::option::Option<
-    unsafe extern "system" fn(param_0: crate::core::PCSTR) -> super::Foundation::BOOL,
->;
-pub type TIMEFMT_ENUMPROCEX = ::core::option::Option<
-    unsafe extern "system" fn(
-        param_0: crate::core::PCWSTR,
-        param_1: super::Foundation::LPARAM,
-    ) -> super::Foundation::BOOL,
->;
-pub type TIMEFMT_ENUMPROCW = ::core::option::Option<
-    unsafe extern "system" fn(param_0: crate::core::PCWSTR) -> super::Foundation::BOOL,
->;
+pub type TIMEFMT_ENUMPROCA = ::core::option::Option<()>;
+pub type TIMEFMT_ENUMPROCEX = ::core::option::Option<()>;
+pub type TIMEFMT_ENUMPROCW = ::core::option::Option<()>;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct TIME_FORMAT_FLAGS(pub u32);
 pub const TIME_NOMINUTESORSECONDS: TIME_FORMAT_FLAGS = TIME_FORMAT_FLAGS(1u32);
@@ -3677,9 +3568,7 @@ pub const UBIDI_MAX_EXPLICIT_LEVEL: u32 = 125u32;
 pub const UBIDI_OUTPUT_REVERSE: u32 = 16u32;
 pub const UBIDI_REMOVE_BIDI_CONTROLS: u32 = 8u32;
 pub struct UBiDi(pub u8);
-pub type UBiDiClassCallback = ::core::option::Option<
-    unsafe extern "system" fn(context: ConstPtr<::core::ffi::c_void>, c: i32) -> UCharDirection,
->;
+pub type UBiDiClassCallback = ::core::option::Option<()>;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct UBiDiDirection(pub i32);
 pub const UBIDI_LTR: UBiDiDirection = UBiDiDirection(0i32);
@@ -4327,9 +4216,7 @@ impl FromIntoMemory for UCPMapRangeOption {
         std::mem::size_of::<i32>()
     }
 }
-pub type UCPMapValueFilter = ::core::option::Option<
-    unsafe extern "system" fn(context: ConstPtr<::core::ffi::c_void>, value: u32) -> u32,
->;
+pub type UCPMapValueFilter = ::core::option::Option<()>;
 pub const UCPTRIE_ERROR_VALUE_NEG_DATA_OFFSET: i32 = 1i32;
 pub const UCPTRIE_FAST_DATA_BLOCK_LENGTH: i32 = 64i32;
 pub const UCPTRIE_FAST_DATA_MASK: i32 = 63i32;
@@ -4965,14 +4852,7 @@ impl FromIntoMemory for UCharDirection {
         std::mem::size_of::<i32>()
     }
 }
-pub type UCharEnumTypeRange = ::core::option::Option<
-    unsafe extern "system" fn(
-        context: ConstPtr<::core::ffi::c_void>,
-        start: i32,
-        limit: i32,
-        r#type: UCharCategory,
-    ) -> i8,
->;
+pub type UCharEnumTypeRange = ::core::option::Option<()>;
 pub struct UCharIterator {
     pub context: ConstPtr<::core::ffi::c_void>,
     pub length: i32,
@@ -5006,16 +4886,16 @@ impl ::core::fmt::Debug for UCharIterator {
             .field("index", &self.index)
             .field("limit", &self.limit)
             .field("reservedField", &self.reservedField)
-            .field("getIndex", &self.getIndex.map(|f| f as usize))
-            .field("move", &self.r#move.map(|f| f as usize))
-            .field("hasNext", &self.hasNext.map(|f| f as usize))
-            .field("hasPrevious", &self.hasPrevious.map(|f| f as usize))
-            .field("current", &self.current.map(|f| f as usize))
-            .field("next", &self.next.map(|f| f as usize))
-            .field("previous", &self.previous.map(|f| f as usize))
-            .field("reservedFn", &self.reservedFn.map(|f| f as usize))
-            .field("getState", &self.getState.map(|f| f as usize))
-            .field("setState", &self.setState.map(|f| f as usize))
+            .field("getIndex", &self.getIndex)
+            .field("move", &self.r#move)
+            .field("hasNext", &self.hasNext)
+            .field("hasPrevious", &self.hasPrevious)
+            .field("current", &self.current)
+            .field("next", &self.next)
+            .field("previous", &self.previous)
+            .field("reservedFn", &self.reservedFn)
+            .field("getState", &self.getState)
+            .field("setState", &self.setState)
             .finish()
     }
 }
@@ -5027,16 +4907,16 @@ impl ::core::cmp::PartialEq for UCharIterator {
             && self.index == other.index
             && self.limit == other.limit
             && self.reservedField == other.reservedField
-            && self.getIndex.map(|f| f as usize) == other.getIndex.map(|f| f as usize)
-            && self.r#move.map(|f| f as usize) == other.r#move.map(|f| f as usize)
-            && self.hasNext.map(|f| f as usize) == other.hasNext.map(|f| f as usize)
-            && self.hasPrevious.map(|f| f as usize) == other.hasPrevious.map(|f| f as usize)
-            && self.current.map(|f| f as usize) == other.current.map(|f| f as usize)
-            && self.next.map(|f| f as usize) == other.next.map(|f| f as usize)
-            && self.previous.map(|f| f as usize) == other.previous.map(|f| f as usize)
-            && self.reservedFn.map(|f| f as usize) == other.reservedFn.map(|f| f as usize)
-            && self.getState.map(|f| f as usize) == other.getState.map(|f| f as usize)
-            && self.setState.map(|f| f as usize) == other.setState.map(|f| f as usize)
+            && self.getIndex == other.getIndex
+            && self.r#move == other.r#move
+            && self.hasNext == other.hasNext
+            && self.hasPrevious == other.hasPrevious
+            && self.current == other.current
+            && self.next == other.next
+            && self.previous == other.previous
+            && self.reservedFn == other.reservedFn
+            && self.getState == other.getState
+            && self.setState == other.setState
     }
 }
 impl ::core::cmp::Eq for UCharIterator {}
@@ -5051,26 +4931,13 @@ impl FromIntoMemory for UCharIterator {
         todo!()
     }
 }
-pub type UCharIteratorCurrent =
-    ::core::option::Option<unsafe extern "system" fn(iter: MutPtr<UCharIterator>) -> i32>;
-pub type UCharIteratorGetIndex = ::core::option::Option<
-    unsafe extern "system" fn(iter: MutPtr<UCharIterator>, origin: UCharIteratorOrigin) -> i32,
->;
-pub type UCharIteratorGetState =
-    ::core::option::Option<unsafe extern "system" fn(iter: ConstPtr<UCharIterator>) -> u32>;
-pub type UCharIteratorHasNext =
-    ::core::option::Option<unsafe extern "system" fn(iter: MutPtr<UCharIterator>) -> i8>;
-pub type UCharIteratorHasPrevious =
-    ::core::option::Option<unsafe extern "system" fn(iter: MutPtr<UCharIterator>) -> i8>;
-pub type UCharIteratorMove = ::core::option::Option<
-    unsafe extern "system" fn(
-        iter: MutPtr<UCharIterator>,
-        delta: i32,
-        origin: UCharIteratorOrigin,
-    ) -> i32,
->;
-pub type UCharIteratorNext =
-    ::core::option::Option<unsafe extern "system" fn(iter: MutPtr<UCharIterator>) -> i32>;
+pub type UCharIteratorCurrent = ::core::option::Option<()>;
+pub type UCharIteratorGetIndex = ::core::option::Option<()>;
+pub type UCharIteratorGetState = ::core::option::Option<()>;
+pub type UCharIteratorHasNext = ::core::option::Option<()>;
+pub type UCharIteratorHasPrevious = ::core::option::Option<()>;
+pub type UCharIteratorMove = ::core::option::Option<()>;
+pub type UCharIteratorNext = ::core::option::Option<()>;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct UCharIteratorOrigin(pub i32);
 pub const UITER_START: UCharIteratorOrigin = UCharIteratorOrigin(0i32);
@@ -5105,18 +4972,9 @@ impl FromIntoMemory for UCharIteratorOrigin {
         std::mem::size_of::<i32>()
     }
 }
-pub type UCharIteratorPrevious =
-    ::core::option::Option<unsafe extern "system" fn(iter: MutPtr<UCharIterator>) -> i32>;
-pub type UCharIteratorReserved = ::core::option::Option<
-    unsafe extern "system" fn(iter: MutPtr<UCharIterator>, something: i32) -> i32,
->;
-pub type UCharIteratorSetState = ::core::option::Option<
-    unsafe extern "system" fn(
-        iter: MutPtr<UCharIterator>,
-        state: u32,
-        p_error_code: MutPtr<UErrorCode>,
-    ),
->;
+pub type UCharIteratorPrevious = ::core::option::Option<()>;
+pub type UCharIteratorReserved = ::core::option::Option<()>;
+pub type UCharIteratorSetState = ::core::option::Option<()>;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct UCharNameChoice(pub i32);
 pub const U_UNICODE_CHAR_NAME: UCharNameChoice = UCharNameChoice(0i32);
@@ -5407,17 +5265,7 @@ impl FromIntoMemory for UConverterCallbackReason {
         std::mem::size_of::<i32>()
     }
 }
-pub type UConverterFromUCallback = ::core::option::Option<
-    unsafe extern "system" fn(
-        context: ConstPtr<::core::ffi::c_void>,
-        args: MutPtr<UConverterFromUnicodeArgs>,
-        code_units: ConstPtr<u16>,
-        length: i32,
-        code_point: i32,
-        reason: UConverterCallbackReason,
-        p_error_code: MutPtr<UErrorCode>,
-    ),
->;
+pub type UConverterFromUCallback = ::core::option::Option<()>;
 pub struct UConverterFromUnicodeArgs {
     pub size: u16,
     pub flush: i8,
@@ -5504,16 +5352,7 @@ impl FromIntoMemory for UConverterPlatform {
     }
 }
 pub struct UConverterSelector(pub u8);
-pub type UConverterToUCallback = ::core::option::Option<
-    unsafe extern "system" fn(
-        context: ConstPtr<::core::ffi::c_void>,
-        args: MutPtr<UConverterToUnicodeArgs>,
-        code_units: crate::core::PCSTR,
-        length: i32,
-        reason: UConverterCallbackReason,
-        p_error_code: MutPtr<UErrorCode>,
-    ),
->;
+pub type UConverterToUCallback = ::core::option::Option<()>;
 pub struct UConverterToUnicodeArgs {
     pub size: u16,
     pub flush: i8,
@@ -6576,15 +6415,7 @@ impl FromIntoMemory for UEastAsianWidth {
         std::mem::size_of::<i32>()
     }
 }
-pub type UEnumCharNamesFn = ::core::option::Option<
-    unsafe extern "system" fn(
-        context: MutPtr<::core::ffi::c_void>,
-        code: i32,
-        name_choice: UCharNameChoice,
-        name: crate::core::PCSTR,
-        length: i32,
-    ) -> i8,
->;
+pub type UEnumCharNamesFn = ::core::option::Option<()>;
 pub struct UEnumeration(pub u8);
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct UErrorCode(pub i32);
@@ -7075,18 +6906,8 @@ pub const UIDNA_ERROR_TRAILING_HYPHEN: i32 = 16i32;
 pub const UIDNA_NONTRANSITIONAL_TO_ASCII: i32 = 16i32;
 pub const UIDNA_NONTRANSITIONAL_TO_UNICODE: i32 = 32i32;
 pub const UIDNA_USE_STD3_RULES: i32 = 2i32;
-pub type UILANGUAGE_ENUMPROCA = ::core::option::Option<
-    unsafe extern "system" fn(
-        param_0: crate::core::PCSTR,
-        param_1: PtrDiffRepr,
-    ) -> super::Foundation::BOOL,
->;
-pub type UILANGUAGE_ENUMPROCW = ::core::option::Option<
-    unsafe extern "system" fn(
-        param_0: crate::core::PCWSTR,
-        param_1: PtrDiffRepr,
-    ) -> super::Foundation::BOOL,
->;
+pub type UILANGUAGE_ENUMPROCA = ::core::option::Option<()>;
+pub type UILANGUAGE_ENUMPROCW = ::core::option::Option<()>;
 pub const UITER_UNKNOWN_INDEX: i32 = -2i32;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct UIndicPositionalCategory(pub i32);
@@ -7840,25 +7661,9 @@ impl FromIntoMemory for UMeasurementSystem {
         std::mem::size_of::<i32>()
     }
 }
-pub type UMemAllocFn = ::core::option::Option<
-    unsafe extern "system" fn(
-        context: ConstPtr<::core::ffi::c_void>,
-        size: PtrRepr,
-    ) -> MutPtr<::core::ffi::c_void>,
->;
-pub type UMemFreeFn = ::core::option::Option<
-    unsafe extern "system" fn(
-        context: ConstPtr<::core::ffi::c_void>,
-        mem: MutPtr<::core::ffi::c_void>,
-    ),
->;
-pub type UMemReallocFn = ::core::option::Option<
-    unsafe extern "system" fn(
-        context: ConstPtr<::core::ffi::c_void>,
-        mem: MutPtr<::core::ffi::c_void>,
-        size: PtrRepr,
-    ) -> MutPtr<::core::ffi::c_void>,
->;
+pub type UMemAllocFn = ::core::option::Option<()>;
+pub type UMemFreeFn = ::core::option::Option<()>;
+pub type UMemReallocFn = ::core::option::Option<()>;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct UMessagePatternApostropheMode(pub i32);
 pub const UMSGPAT_APOS_DOUBLE_OPTIONAL: UMessagePatternApostropheMode =
@@ -7977,9 +7782,7 @@ impl FromIntoMemory for UMessagePatternPartType {
     }
 }
 pub struct UMutableCPTrie(pub u8);
-pub type UNESCAPE_CHAR_AT = ::core::option::Option<
-    unsafe extern "system" fn(offset: i32, context: MutPtr<::core::ffi::c_void>) -> u16,
->;
+pub type UNESCAPE_CHAR_AT = ::core::option::Option<()>;
 pub struct UNICODERANGE {
     pub wcFrom: u16,
     pub wcTo: u16,
@@ -9045,12 +8848,8 @@ impl FromIntoMemory for UPropertyNameChoice {
         std::mem::size_of::<i32>()
     }
 }
-pub type URegexFindProgressCallback = ::core::option::Option<
-    unsafe extern "system" fn(context: ConstPtr<::core::ffi::c_void>, match_index: i64) -> i8,
->;
-pub type URegexMatchCallback = ::core::option::Option<
-    unsafe extern "system" fn(context: ConstPtr<::core::ffi::c_void>, steps: i32) -> i8,
->;
+pub type URegexFindProgressCallback = ::core::option::Option<()>;
+pub type URegexMatchCallback = ::core::option::Option<()>;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct URegexpFlag(pub i32);
 pub const UREGEX_CASE_INSENSITIVE: URegexpFlag = URegexpFlag(2i32);
@@ -9865,16 +9664,7 @@ impl FromIntoMemory for USpoofChecks {
         std::mem::size_of::<i32>()
     }
 }
-pub type UStringCaseMapper = ::core::option::Option<
-    unsafe extern "system" fn(
-        csm: ConstPtr<UCaseMap>,
-        dest: MutPtr<u16>,
-        dest_capacity: i32,
-        src: ConstPtr<u16>,
-        src_length: i32,
-        p_error_code: MutPtr<UErrorCode>,
-    ) -> i32,
->;
+pub type UStringCaseMapper = ::core::option::Option<()>;
 pub struct UStringPrepProfile(pub u8);
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct UStringPrepProfileType(pub i32);
@@ -10138,38 +9928,11 @@ impl FromIntoMemory for UText {
         todo!()
     }
 }
-pub type UTextAccess = ::core::option::Option<
-    unsafe extern "system" fn(ut: MutPtr<UText>, native_index: i64, forward: i8) -> i8,
->;
-pub type UTextClone = ::core::option::Option<
-    unsafe extern "system" fn(
-        dest: MutPtr<UText>,
-        src: ConstPtr<UText>,
-        deep: i8,
-        status: MutPtr<UErrorCode>,
-    ) -> MutPtr<UText>,
->;
-pub type UTextClose = ::core::option::Option<unsafe extern "system" fn(ut: MutPtr<UText>)>;
-pub type UTextCopy = ::core::option::Option<
-    unsafe extern "system" fn(
-        ut: MutPtr<UText>,
-        native_start: i64,
-        native_limit: i64,
-        native_dest: i64,
-        r#move: i8,
-        status: MutPtr<UErrorCode>,
-    ),
->;
-pub type UTextExtract = ::core::option::Option<
-    unsafe extern "system" fn(
-        ut: MutPtr<UText>,
-        native_start: i64,
-        native_limit: i64,
-        dest: MutPtr<u16>,
-        dest_capacity: i32,
-        status: MutPtr<UErrorCode>,
-    ) -> i32,
->;
+pub type UTextAccess = ::core::option::Option<()>;
+pub type UTextClone = ::core::option::Option<()>;
+pub type UTextClose = ::core::option::Option<()>;
+pub type UTextCopy = ::core::option::Option<()>;
+pub type UTextExtract = ::core::option::Option<()>;
 pub struct UTextFuncs {
     pub tableSize: i32,
     pub reserved1: i32,
@@ -10201,24 +9964,18 @@ impl ::core::fmt::Debug for UTextFuncs {
             .field("reserved1", &self.reserved1)
             .field("reserved2", &self.reserved2)
             .field("reserved3", &self.reserved3)
-            .field("clone", &self.clone.map(|f| f as usize))
-            .field("nativeLength", &self.nativeLength.map(|f| f as usize))
-            .field("access", &self.access.map(|f| f as usize))
-            .field("extract", &self.extract.map(|f| f as usize))
-            .field("replace", &self.replace.map(|f| f as usize))
-            .field("copy", &self.copy.map(|f| f as usize))
-            .field(
-                "mapOffsetToNative",
-                &self.mapOffsetToNative.map(|f| f as usize),
-            )
-            .field(
-                "mapNativeIndexToUTF16",
-                &self.mapNativeIndexToUTF16.map(|f| f as usize),
-            )
-            .field("close", &self.close.map(|f| f as usize))
-            .field("spare1", &self.spare1.map(|f| f as usize))
-            .field("spare2", &self.spare2.map(|f| f as usize))
-            .field("spare3", &self.spare3.map(|f| f as usize))
+            .field("clone", &self.clone)
+            .field("nativeLength", &self.nativeLength)
+            .field("access", &self.access)
+            .field("extract", &self.extract)
+            .field("replace", &self.replace)
+            .field("copy", &self.copy)
+            .field("mapOffsetToNative", &self.mapOffsetToNative)
+            .field("mapNativeIndexToUTF16", &self.mapNativeIndexToUTF16)
+            .field("close", &self.close)
+            .field("spare1", &self.spare1)
+            .field("spare2", &self.spare2)
+            .field("spare3", &self.spare3)
             .finish()
     }
 }
@@ -10228,20 +9985,18 @@ impl ::core::cmp::PartialEq for UTextFuncs {
             && self.reserved1 == other.reserved1
             && self.reserved2 == other.reserved2
             && self.reserved3 == other.reserved3
-            && self.clone.map(|f| f as usize) == other.clone.map(|f| f as usize)
-            && self.nativeLength.map(|f| f as usize) == other.nativeLength.map(|f| f as usize)
-            && self.access.map(|f| f as usize) == other.access.map(|f| f as usize)
-            && self.extract.map(|f| f as usize) == other.extract.map(|f| f as usize)
-            && self.replace.map(|f| f as usize) == other.replace.map(|f| f as usize)
-            && self.copy.map(|f| f as usize) == other.copy.map(|f| f as usize)
-            && self.mapOffsetToNative.map(|f| f as usize)
-                == other.mapOffsetToNative.map(|f| f as usize)
-            && self.mapNativeIndexToUTF16.map(|f| f as usize)
-                == other.mapNativeIndexToUTF16.map(|f| f as usize)
-            && self.close.map(|f| f as usize) == other.close.map(|f| f as usize)
-            && self.spare1.map(|f| f as usize) == other.spare1.map(|f| f as usize)
-            && self.spare2.map(|f| f as usize) == other.spare2.map(|f| f as usize)
-            && self.spare3.map(|f| f as usize) == other.spare3.map(|f| f as usize)
+            && self.clone == other.clone
+            && self.nativeLength == other.nativeLength
+            && self.access == other.access
+            && self.extract == other.extract
+            && self.replace == other.replace
+            && self.copy == other.copy
+            && self.mapOffsetToNative == other.mapOffsetToNative
+            && self.mapNativeIndexToUTF16 == other.mapNativeIndexToUTF16
+            && self.close == other.close
+            && self.spare1 == other.spare1
+            && self.spare2 == other.spare2
+            && self.spare3 == other.spare3
     }
 }
 impl ::core::cmp::Eq for UTextFuncs {}
@@ -10256,23 +10011,10 @@ impl FromIntoMemory for UTextFuncs {
         todo!()
     }
 }
-pub type UTextMapNativeIndexToUTF16 = ::core::option::Option<
-    unsafe extern "system" fn(ut: ConstPtr<UText>, native_index: i64) -> i32,
->;
-pub type UTextMapOffsetToNative =
-    ::core::option::Option<unsafe extern "system" fn(ut: ConstPtr<UText>) -> i64>;
-pub type UTextNativeLength =
-    ::core::option::Option<unsafe extern "system" fn(ut: MutPtr<UText>) -> i64>;
-pub type UTextReplace = ::core::option::Option<
-    unsafe extern "system" fn(
-        ut: MutPtr<UText>,
-        native_start: i64,
-        native_limit: i64,
-        replacement_text: ConstPtr<u16>,
-        replacment_length: i32,
-        status: MutPtr<UErrorCode>,
-    ) -> i32,
->;
+pub type UTextMapNativeIndexToUTF16 = ::core::option::Option<()>;
+pub type UTextMapOffsetToNative = ::core::option::Option<()>;
+pub type UTextNativeLength = ::core::option::Option<()>;
+pub type UTextReplace = ::core::option::Option<()>;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct UTimeScaleValue(pub i32);
 pub const UTSV_UNITS_VALUE: UTimeScaleValue = UTimeScaleValue(0i32);
@@ -10548,26 +10290,9 @@ impl FromIntoMemory for UTimeZoneTransitionType {
         std::mem::size_of::<i32>()
     }
 }
-pub type UTraceData = ::core::option::Option<
-    unsafe extern "system" fn(
-        context: ConstPtr<::core::ffi::c_void>,
-        fn_number: i32,
-        level: i32,
-        fmt: crate::core::PCSTR,
-        args: MutPtr<i8>,
-    ),
->;
-pub type UTraceEntry = ::core::option::Option<
-    unsafe extern "system" fn(context: ConstPtr<::core::ffi::c_void>, fn_number: i32),
->;
-pub type UTraceExit = ::core::option::Option<
-    unsafe extern "system" fn(
-        context: ConstPtr<::core::ffi::c_void>,
-        fn_number: i32,
-        fmt: crate::core::PCSTR,
-        args: MutPtr<i8>,
-    ),
->;
+pub type UTraceData = ::core::option::Option<()>;
+pub type UTraceEntry = ::core::option::Option<()>;
+pub type UTraceExit = ::core::option::Option<()>;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct UTraceFunctionNumber(pub i32);
 pub const UTRACE_FUNCTION_START: UTraceFunctionNumber = UTraceFunctionNumber(0i32);

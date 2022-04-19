@@ -302,9 +302,7 @@ impl FromIntoMemory for IO_COUNTERS {
         todo!()
     }
 }
-pub type LPFIBER_START_ROUTINE = ::core::option::Option<
-    unsafe extern "system" fn(lp_fiber_parameter: MutPtr<::core::ffi::c_void>),
->;
+pub type LPFIBER_START_ROUTINE = ::core::option::Option<()>;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct LPPROC_THREAD_ATTRIBUTE_LIST(pub MutPtr<::core::ffi::c_void>);
 impl LPPROC_THREAD_ATTRIBUTE_LIST {
@@ -343,9 +341,7 @@ impl FromIntoMemory for LPPROC_THREAD_ATTRIBUTE_LIST {
         std::mem::size_of::<MutPtr<::core::ffi::c_void>>()
     }
 }
-pub type LPTHREAD_START_ROUTINE = ::core::option::Option<
-    unsafe extern "system" fn(lp_thread_parameter: MutPtr<::core::ffi::c_void>) -> u32,
->;
+pub type LPTHREAD_START_ROUTINE = ::core::option::Option<()>;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct MACHINE_ATTRIBUTES(pub u32);
 pub const UserEnabled: MACHINE_ATTRIBUTES = MACHINE_ATTRIBUTES(1u32);
@@ -553,10 +549,7 @@ impl ::core::fmt::Debug for PEB {
             .field("AtlThunkSListPtr32", &self.AtlThunkSListPtr32)
             .field("Reserved9", &self.Reserved9)
             .field("Reserved10", &self.Reserved10)
-            .field(
-                "PostProcessInitRoutine",
-                &self.PostProcessInitRoutine.map(|f| f as usize),
-            )
+            .field("PostProcessInitRoutine", &self.PostProcessInitRoutine)
             .field("Reserved11", &self.Reserved11)
             .field("Reserved12", &self.Reserved12)
             .field("SessionId", &self.SessionId)
@@ -580,8 +573,7 @@ impl ::core::cmp::PartialEq for PEB {
             && self.AtlThunkSListPtr32 == other.AtlThunkSListPtr32
             && self.Reserved9 == other.Reserved9
             && self.Reserved10 == other.Reserved10
-            && self.PostProcessInitRoutine.map(|f| f as usize)
-                == other.PostProcessInitRoutine.map(|f| f as usize)
+            && self.PostProcessInitRoutine == other.PostProcessInitRoutine
             && self.Reserved11 == other.Reserved11
             && self.Reserved12 == other.Reserved12
             && self.SessionId == other.SessionId
@@ -638,15 +630,8 @@ impl FromIntoMemory for PEB_LDR_DATA {
         todo!()
     }
 }
-pub type PFLS_CALLBACK_FUNCTION =
-    ::core::option::Option<unsafe extern "system" fn(lp_fls_data: ConstPtr<::core::ffi::c_void>)>;
-pub type PINIT_ONCE_FN = ::core::option::Option<
-    unsafe extern "system" fn(
-        init_once: MutPtr<RTL_RUN_ONCE>,
-        parameter: MutPtr<::core::ffi::c_void>,
-        context: MutPtr<ConstPtr<::core::ffi::c_void>>,
-    ) -> super::super::Foundation::BOOL,
->;
+pub type PFLS_CALLBACK_FUNCTION = ::core::option::Option<()>;
+pub type PINIT_ONCE_FN = ::core::option::Option<()>;
 pub const PME_CURRENT_VERSION: u32 = 1u32;
 pub const PME_FAILFAST_ON_COMMIT_FAIL_DISABLE: u32 = 0u32;
 pub const PME_FAILFAST_ON_COMMIT_FAIL_ENABLE: u32 = 1u32;
@@ -685,7 +670,7 @@ impl FromIntoMemory for POWER_REQUEST_CONTEXT_FLAGS {
         std::mem::size_of::<u32>()
     }
 }
-pub type PPS_POST_PROCESS_INIT_ROUTINE = ::core::option::Option<unsafe extern "system" fn()>;
+pub type PPS_POST_PROCESS_INIT_ROUTINE = ::core::option::Option<()>;
 pub const PRIVATE_NAMESPACE_FLAG_DESTROY: u32 = 1u32;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct PROCESSINFOCLASS(pub i32);
@@ -1788,26 +1773,9 @@ pub const PROC_THREAD_ATTRIBUTE_UMS_THREAD: u32 = 196614u32;
 pub const PROC_THREAD_ATTRIBUTE_WIN32K_FILTER: u32 = 131088u32;
 #[doc = "*Required namespaces: 'Windows.Win32.System.SystemServices'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub type PRTL_UMS_SCHEDULER_ENTRY_POINT = ::core::option::Option<
-    unsafe extern "system" fn(
-        reason: super::SystemServices::RTL_UMS_SCHEDULER_REASON,
-        activation_payload: PtrRepr,
-        scheduler_param: ConstPtr<::core::ffi::c_void>,
-    ),
->;
-pub type PTIMERAPCROUTINE = ::core::option::Option<
-    unsafe extern "system" fn(
-        lp_arg_to_completion_routine: ConstPtr<::core::ffi::c_void>,
-        dw_timer_low_value: u32,
-        dw_timer_high_value: u32,
-    ),
->;
-pub type PTP_CLEANUP_GROUP_CANCEL_CALLBACK = ::core::option::Option<
-    unsafe extern "system" fn(
-        object_context: MutPtr<::core::ffi::c_void>,
-        cleanup_context: MutPtr<::core::ffi::c_void>,
-    ),
->;
+pub type PRTL_UMS_SCHEDULER_ENTRY_POINT = ::core::option::Option<()>;
+pub type PTIMERAPCROUTINE = ::core::option::Option<()>;
+pub type PTP_CLEANUP_GROUP_CANCEL_CALLBACK = ::core::option::Option<()>;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct PTP_POOL(pub PtrDiffRepr);
 impl PTP_POOL {
@@ -1842,44 +1810,11 @@ impl FromIntoMemory for PTP_POOL {
         std::mem::size_of::<PtrDiffRepr>()
     }
 }
-pub type PTP_SIMPLE_CALLBACK = ::core::option::Option<
-    unsafe extern "system" fn(
-        instance: MutPtr<TP_CALLBACK_INSTANCE>,
-        context: MutPtr<::core::ffi::c_void>,
-    ),
->;
-pub type PTP_TIMER_CALLBACK = ::core::option::Option<
-    unsafe extern "system" fn(
-        instance: MutPtr<TP_CALLBACK_INSTANCE>,
-        context: MutPtr<::core::ffi::c_void>,
-        timer: MutPtr<TP_TIMER>,
-    ),
->;
-pub type PTP_WAIT_CALLBACK = ::core::option::Option<
-    unsafe extern "system" fn(
-        instance: MutPtr<TP_CALLBACK_INSTANCE>,
-        context: MutPtr<::core::ffi::c_void>,
-        wait: MutPtr<TP_WAIT>,
-        wait_result: u32,
-    ),
->;
-pub type PTP_WIN32_IO_CALLBACK = ::core::option::Option<
-    unsafe extern "system" fn(
-        instance: MutPtr<TP_CALLBACK_INSTANCE>,
-        context: MutPtr<::core::ffi::c_void>,
-        overlapped: MutPtr<::core::ffi::c_void>,
-        io_result: u32,
-        number_of_bytes_transferred: PtrRepr,
-        io: MutPtr<TP_IO>,
-    ),
->;
-pub type PTP_WORK_CALLBACK = ::core::option::Option<
-    unsafe extern "system" fn(
-        instance: MutPtr<TP_CALLBACK_INSTANCE>,
-        context: MutPtr<::core::ffi::c_void>,
-        work: MutPtr<TP_WORK>,
-    ),
->;
+pub type PTP_SIMPLE_CALLBACK = ::core::option::Option<()>;
+pub type PTP_TIMER_CALLBACK = ::core::option::Option<()>;
+pub type PTP_WAIT_CALLBACK = ::core::option::Option<()>;
+pub type PTP_WIN32_IO_CALLBACK = ::core::option::Option<()>;
+pub type PTP_WORK_CALLBACK = ::core::option::Option<()>;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct QUEUE_USER_APC_FLAGS(pub i32);
 pub const QUEUE_USER_APC_FLAGS_NONE: QUEUE_USER_APC_FLAGS = QUEUE_USER_APC_FLAGS(0i32);
@@ -2957,12 +2892,10 @@ impl ::core::cmp::PartialEq for TP_CALLBACK_ENVIRON_V3 {
         self.Version == other.Version
             && self.Pool == other.Pool
             && self.CleanupGroup == other.CleanupGroup
-            && self.CleanupGroupCancelCallback.map(|f| f as usize)
-                == other.CleanupGroupCancelCallback.map(|f| f as usize)
+            && self.CleanupGroupCancelCallback == other.CleanupGroupCancelCallback
             && self.RaceDll == other.RaceDll
             && self.ActivationContext == other.ActivationContext
-            && self.FinalizationCallback.map(|f| f as usize)
-                == other.FinalizationCallback.map(|f| f as usize)
+            && self.FinalizationCallback == other.FinalizationCallback
             && self.u == other.u
             && self.CallbackPriority == other.CallbackPriority
             && self.Size == other.Size
@@ -3176,7 +3109,7 @@ impl ::core::fmt::Debug for UMS_SCHEDULER_STARTUP_INFO {
         f.debug_struct("UMS_SCHEDULER_STARTUP_INFO")
             .field("UmsVersion", &self.UmsVersion)
             .field("CompletionList", &self.CompletionList)
-            .field("SchedulerProc", &self.SchedulerProc.map(|f| f as usize))
+            .field("SchedulerProc", &self.SchedulerProc)
             .field("SchedulerParam", &self.SchedulerParam)
             .finish()
     }
@@ -3187,7 +3120,7 @@ impl ::core::cmp::PartialEq for UMS_SCHEDULER_STARTUP_INFO {
     fn eq(&self, other: &Self) -> bool {
         self.UmsVersion == other.UmsVersion
             && self.CompletionList == other.CompletionList
-            && self.SchedulerProc.map(|f| f as usize) == other.SchedulerProc.map(|f| f as usize)
+            && self.SchedulerProc == other.SchedulerProc
             && self.SchedulerParam == other.SchedulerParam
     }
 }
@@ -3294,12 +3227,7 @@ impl FromIntoMemory for UMS_SYSTEM_THREAD_INFORMATION_0_0 {
         todo!()
     }
 }
-pub type WAITORTIMERCALLBACK = ::core::option::Option<
-    unsafe extern "system" fn(
-        param_0: MutPtr<::core::ffi::c_void>,
-        param_1: super::super::Foundation::BOOLEAN,
-    ),
->;
+pub type WAITORTIMERCALLBACK = ::core::option::Option<()>;
 pub const WAIT_ABANDONED: u32 = 128u32;
 pub const WAIT_ABANDONED_0: u32 = 128u32;
 pub const WAIT_IO_COMPLETION: u32 = 192u32;

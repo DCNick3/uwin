@@ -14,3 +14,4 @@ win32 = { path = "../win32" }
 
 lazy_static = "1.4.0"
 rmp-serde = "1.0.0"
+tracing = "0.1.34"

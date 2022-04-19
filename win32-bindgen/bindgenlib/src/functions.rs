@@ -1,4 +1,5 @@
 use super::*;
+use itertools::Itertools;
 
 // pub fn gen_sys_functions(tree: &TypeTree, gen: &Gen) -> TokenStream {
 //     if gen.sys {
@@ -106,6 +107,11 @@ pub fn gen_thunk_function(def: &MethodDef, gen: &Gen, namespace: &TokenStream) -
         }
     };
 
+    let arguments_fmt = arg_names
+        .iter()
+        .map(|arg| format!("{} = {{:?}}", arg))
+        .join(", ");
+
     let body = quote! {
         let api = #namespace get_api(&context.win32);
         let mut call = StdCallHelper::new(memory, &mut context.cpu, &mut context.unwind_reason);
@@ -113,8 +119,14 @@ pub fn gen_thunk_function(def: &MethodDef, gen: &Gen, namespace: &TokenStream) -
         #(let #arg_names = call.get_arg();)*
 
         let unwind_token = call.unwind_token();
+        let span = tracing::trace_span!(#name);
+        let _enter = span.enter();
+
+        tracing::trace!(#arguments_fmt, #(#arg_names),*);
 
         #call
+
+        tracing::trace!("result = {:?}", res);
 
         call.finish(res)
     };

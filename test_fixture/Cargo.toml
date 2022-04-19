@@ -15,6 +15,8 @@ win32 = { path = "../win32" }
 region = "3.0.0"
 tracing = "0.1.33"
 tracing-subscriber = { version = "0.3.11", features = ["env-filter"] }
+tracing-tracy = { version = "0.8.0", features = [] }
+tracy-client = { version = "0.12.7" }
 
 [build-dependencies]
 recompiler = { path = "../recompiler", features = ["recompilation", "mmap"] }

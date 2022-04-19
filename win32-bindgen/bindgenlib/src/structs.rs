@@ -146,14 +146,7 @@ fn gen_compare_traits(def: &TypeDef, name: &TokenStream, cfg: &Cfg, gen: &Gen) -
             if f.is_literal() {
                 quote! {}
             } else {
-                let ty = f.get_type(Some(def));
-                if ty.is_callback() {
-                    quote! {
-                        self.#name.map(|f| f as usize) == other.#name.map(|f| f as usize)
-                    }
-                } else {
-                    quote! { self.#name == other.#name }
-                }
+                quote! { self.#name == other.#name }
             }
         });
 
@@ -184,9 +177,7 @@ fn gen_debug(def: &TypeDef, ident: &TokenStream, cfg: &Cfg, gen: &Gen) -> TokenS
                 let name = f.name();
                 let ident = gen_ident(name);
                 let ty = f.get_type(Some(def));
-                if !ty.is_pointer() && ty.is_callback() {
-                    quote! { .field(#name, &self.#ident.map(|f| f as usize)) }
-                } else if ty.is_callback_array() {
+                if ty.is_callback_array() {
                     quote! {}
                 } else {
                     quote! { .field(#name, &self.#ident) }

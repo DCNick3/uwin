@@ -1203,12 +1203,8 @@ impl FromIntoMemory for OS_PRODUCT_TYPE {
         std::mem::size_of::<u32>()
     }
 }
-pub type PGET_SYSTEM_WOW64_DIRECTORY_A = ::core::option::Option<
-    unsafe extern "system" fn(lp_buffer: crate::core::PSTR, u_size: u32) -> u32,
->;
-pub type PGET_SYSTEM_WOW64_DIRECTORY_W = ::core::option::Option<
-    unsafe extern "system" fn(lp_buffer: crate::core::PWSTR, u_size: u32) -> u32,
->;
+pub type PGET_SYSTEM_WOW64_DIRECTORY_A = ::core::option::Option<()>;
+pub type PGET_SYSTEM_WOW64_DIRECTORY_W = ::core::option::Option<()>;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct PROCESSOR_CACHE_TYPE(pub i32);
 pub const CacheUnified: PROCESSOR_CACHE_TYPE = PROCESSOR_CACHE_TYPE(0i32);

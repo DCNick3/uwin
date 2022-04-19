@@ -7,13 +7,7 @@
 )]
 #[allow(unused)]
 use win32::core::prelude::*;
-pub type LPOVERLAPPED_COMPLETION_ROUTINE = ::core::option::Option<
-    unsafe extern "system" fn(
-        dw_error_code: u32,
-        dw_number_of_bytes_transfered: u32,
-        lp_overlapped: MutPtr<OVERLAPPED>,
-    ),
->;
+pub type LPOVERLAPPED_COMPLETION_ROUTINE = ::core::option::Option<()>;
 pub struct OVERLAPPED {
     pub Internal: PtrRepr,
     pub InternalHigh: PtrRepr,

@@ -234,7 +234,13 @@ const EXCLUDE_ITEMS: &[(&str, &[&str])] = &[
     ),
     (
         "Windows.Win32.Storage.FileSystem",
-        &["LockFileEx", "LockFile", "LocalFileTimeToFileTime"],
+        &[
+            "LockFileEx",
+            "LockFile",
+            "LocalFileTimeToFileTime",
+            "BuildIoRingCancelRequest",
+            "BuildIoRingReadFile",
+        ],
     ),
     (
         "Windows.Win32.System.Console",

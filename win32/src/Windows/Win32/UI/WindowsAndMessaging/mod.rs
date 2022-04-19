@@ -1237,14 +1237,7 @@ impl FromIntoMemory for DLGITEMTEMPLATE {
         todo!()
     }
 }
-pub type DLGPROC = ::core::option::Option<
-    unsafe extern "system" fn(
-        param_0: super::super::Foundation::HWND,
-        param_1: u32,
-        param_2: super::super::Foundation::WPARAM,
-        param_3: super::super::Foundation::LPARAM,
-    ) -> PtrDiffRepr,
->;
+pub type DLGPROC = ::core::option::Option<()>;
 pub struct DLGTEMPLATE {
     pub style: u32,
     pub dwExtendedStyle: u32,
@@ -2414,13 +2407,7 @@ impl FromIntoMemory for HMENU {
         std::mem::size_of::<PtrDiffRepr>()
     }
 }
-pub type HOOKPROC = ::core::option::Option<
-    unsafe extern "system" fn(
-        code: i32,
-        w_param: super::super::Foundation::WPARAM,
-        l_param: super::super::Foundation::LPARAM,
-    ) -> super::super::Foundation::LRESULT,
->;
+pub type HOOKPROC = ::core::option::Option<()>;
 pub const HSHELL_ACCESSIBILITYSTATE: u32 = 11u32;
 pub const HSHELL_ACTIVATESHELLWINDOW: u32 = 3u32;
 pub const HSHELL_APPCOMMAND: u32 = 12u32;
@@ -4800,8 +4787,7 @@ impl FromIntoMemory for MSG {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.UI.Shell'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub type MSGBOXCALLBACK =
-    ::core::option::Option<unsafe extern "system" fn(lp_help_info: MutPtr<super::Shell::HELPINFO>)>;
+pub type MSGBOXCALLBACK = ::core::option::Option<()>;
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.UI.Shell'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct MSGBOXPARAMSA {
@@ -4839,10 +4825,7 @@ impl ::core::fmt::Debug for MSGBOXPARAMSA {
             .field("dwStyle", &self.dwStyle)
             .field("lpszIcon", &self.lpszIcon)
             .field("dwContextHelpId", &self.dwContextHelpId)
-            .field(
-                "lpfnMsgBoxCallback",
-                &self.lpfnMsgBoxCallback.map(|f| f as usize),
-            )
+            .field("lpfnMsgBoxCallback", &self.lpfnMsgBoxCallback)
             .field("dwLanguageId", &self.dwLanguageId)
             .finish()
     }
@@ -4859,8 +4842,7 @@ impl ::core::cmp::PartialEq for MSGBOXPARAMSA {
             && self.dwStyle == other.dwStyle
             && self.lpszIcon == other.lpszIcon
             && self.dwContextHelpId == other.dwContextHelpId
-            && self.lpfnMsgBoxCallback.map(|f| f as usize)
-                == other.lpfnMsgBoxCallback.map(|f| f as usize)
+            && self.lpfnMsgBoxCallback == other.lpfnMsgBoxCallback
             && self.dwLanguageId == other.dwLanguageId
     }
 }
@@ -4917,10 +4899,7 @@ impl ::core::fmt::Debug for MSGBOXPARAMSW {
             .field("dwStyle", &self.dwStyle)
             .field("lpszIcon", &self.lpszIcon)
             .field("dwContextHelpId", &self.dwContextHelpId)
-            .field(
-                "lpfnMsgBoxCallback",
-                &self.lpfnMsgBoxCallback.map(|f| f as usize),
-            )
+            .field("lpfnMsgBoxCallback", &self.lpfnMsgBoxCallback)
             .field("dwLanguageId", &self.dwLanguageId)
             .finish()
     }
@@ -4937,8 +4916,7 @@ impl ::core::cmp::PartialEq for MSGBOXPARAMSW {
             && self.dwStyle == other.dwStyle
             && self.lpszIcon == other.lpszIcon
             && self.dwContextHelpId == other.dwContextHelpId
-            && self.lpfnMsgBoxCallback.map(|f| f as usize)
-                == other.lpfnMsgBoxCallback.map(|f| f as usize)
+            && self.lpfnMsgBoxCallback == other.lpfnMsgBoxCallback
             && self.dwLanguageId == other.dwLanguageId
     }
 }
@@ -5380,18 +5358,8 @@ impl FromIntoMemory for MrmResourceIndexerMessageSeverity {
         std::mem::size_of::<i32>()
     }
 }
-pub type NAMEENUMPROCA = ::core::option::Option<
-    unsafe extern "system" fn(
-        param_0: crate::core::PCSTR,
-        param_1: super::super::Foundation::LPARAM,
-    ) -> super::super::Foundation::BOOL,
->;
-pub type NAMEENUMPROCW = ::core::option::Option<
-    unsafe extern "system" fn(
-        param_0: crate::core::PCWSTR,
-        param_1: super::super::Foundation::LPARAM,
-    ) -> super::super::Foundation::BOOL,
->;
+pub type NAMEENUMPROCA = ::core::option::Option<()>;
+pub type NAMEENUMPROCW = ::core::option::Option<()>;
 pub struct NCCALCSIZE_PARAMS {
     pub rgrc: [super::super::Foundation::RECT; 3],
     pub lppos: MutPtr<WINDOWPOS>,
@@ -5889,45 +5857,17 @@ pub const POINTER_MESSAGE_FLAG_SECONDBUTTON: u32 = 32u32;
 pub const POINTER_MESSAGE_FLAG_THIRDBUTTON: u32 = 64u32;
 pub const POINTER_MOD_CTRL: u32 = 8u32;
 pub const POINTER_MOD_SHIFT: u32 = 4u32;
-pub type PREGISTERCLASSNAMEW = ::core::option::Option<
-    unsafe extern "system" fn(param_0: crate::core::PCWSTR) -> super::super::Foundation::BOOLEAN,
->;
+pub type PREGISTERCLASSNAMEW = ::core::option::Option<()>;
 pub const PRF_CHECKVISIBLE: i32 = 1i32;
 pub const PRF_CHILDREN: i32 = 16i32;
 pub const PRF_CLIENT: i32 = 4i32;
 pub const PRF_ERASEBKGND: i32 = 8i32;
 pub const PRF_NONCLIENT: i32 = 2i32;
 pub const PRF_OWNED: i32 = 32i32;
-pub type PROPENUMPROCA = ::core::option::Option<
-    unsafe extern "system" fn(
-        param_0: super::super::Foundation::HWND,
-        param_1: crate::core::PCSTR,
-        param_2: super::super::Foundation::HANDLE,
-    ) -> super::super::Foundation::BOOL,
->;
-pub type PROPENUMPROCEXA = ::core::option::Option<
-    unsafe extern "system" fn(
-        param_0: super::super::Foundation::HWND,
-        param_1: crate::core::PCSTR,
-        param_2: super::super::Foundation::HANDLE,
-        param_3: PtrRepr,
-    ) -> super::super::Foundation::BOOL,
->;
-pub type PROPENUMPROCEXW = ::core::option::Option<
-    unsafe extern "system" fn(
-        param_0: super::super::Foundation::HWND,
-        param_1: crate::core::PCWSTR,
-        param_2: super::super::Foundation::HANDLE,
-        param_3: PtrRepr,
-    ) -> super::super::Foundation::BOOL,
->;
-pub type PROPENUMPROCW = ::core::option::Option<
-    unsafe extern "system" fn(
-        param_0: super::super::Foundation::HWND,
-        param_1: crate::core::PCWSTR,
-        param_2: super::super::Foundation::HANDLE,
-    ) -> super::super::Foundation::BOOL,
->;
+pub type PROPENUMPROCA = ::core::option::Option<()>;
+pub type PROPENUMPROCEXA = ::core::option::Option<()>;
+pub type PROPENUMPROCEXW = ::core::option::Option<()>;
+pub type PROPENUMPROCW = ::core::option::Option<()>;
 pub const PWR_CRITICALRESUME: u32 = 3u32;
 pub const PWR_FAIL: i32 = -1i32;
 pub const PWR_OK: u32 = 1u32;
@@ -6336,14 +6276,7 @@ pub const SC_SIZE: u32 = 61440u32;
 pub const SC_TASKLIST: u32 = 61744u32;
 pub const SC_VSCROLL: u32 = 61552u32;
 pub const SC_ZOOM: u32 = 61488u32;
-pub type SENDASYNCPROC = ::core::option::Option<
-    unsafe extern "system" fn(
-        param_0: super::super::Foundation::HWND,
-        param_1: u32,
-        param_2: PtrRepr,
-        param_3: super::super::Foundation::LRESULT,
-    ),
->;
+pub type SENDASYNCPROC = ::core::option::Option<()>;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct SEND_MESSAGE_TIMEOUT_FLAGS(pub u32);
 pub const SMTO_ABORTIFHUNG: SEND_MESSAGE_TIMEOUT_FLAGS = SEND_MESSAGE_TIMEOUT_FLAGS(2u32);
@@ -7551,14 +7484,7 @@ impl FromIntoMemory for TILE_WINDOWS_HOW {
         std::mem::size_of::<u32>()
     }
 }
-pub type TIMERPROC = ::core::option::Option<
-    unsafe extern "system" fn(
-        param_0: super::super::Foundation::HWND,
-        param_1: u32,
-        param_2: PtrRepr,
-        param_3: u32,
-    ),
->;
+pub type TIMERPROC = ::core::option::Option<()>;
 pub const TIMERV_COALESCING_MAX: u32 = 2147483637u32;
 pub const TIMERV_COALESCING_MIN: u32 = 1u32;
 pub const TIMERV_DEFAULT_COALESCING: u32 = 0u32;
@@ -8799,7 +8725,7 @@ impl ::core::fmt::Debug for WNDCLASSA {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_struct("WNDCLASSA")
             .field("style", &self.style)
-            .field("lpfnWndProc", &self.lpfnWndProc.map(|f| f as usize))
+            .field("lpfnWndProc", &self.lpfnWndProc)
             .field("cbClsExtra", &self.cbClsExtra)
             .field("cbWndExtra", &self.cbWndExtra)
             .field("hInstance", &self.hInstance)
@@ -8816,7 +8742,7 @@ impl ::core::fmt::Debug for WNDCLASSA {
 impl ::core::cmp::PartialEq for WNDCLASSA {
     fn eq(&self, other: &Self) -> bool {
         self.style == other.style
-            && self.lpfnWndProc.map(|f| f as usize) == other.lpfnWndProc.map(|f| f as usize)
+            && self.lpfnWndProc == other.lpfnWndProc
             && self.cbClsExtra == other.cbClsExtra
             && self.cbWndExtra == other.cbWndExtra
             && self.hInstance == other.hInstance
@@ -8876,7 +8802,7 @@ impl ::core::fmt::Debug for WNDCLASSEXA {
         f.debug_struct("WNDCLASSEXA")
             .field("cbSize", &self.cbSize)
             .field("style", &self.style)
-            .field("lpfnWndProc", &self.lpfnWndProc.map(|f| f as usize))
+            .field("lpfnWndProc", &self.lpfnWndProc)
             .field("cbClsExtra", &self.cbClsExtra)
             .field("cbWndExtra", &self.cbWndExtra)
             .field("hInstance", &self.hInstance)
@@ -8895,7 +8821,7 @@ impl ::core::cmp::PartialEq for WNDCLASSEXA {
     fn eq(&self, other: &Self) -> bool {
         self.cbSize == other.cbSize
             && self.style == other.style
-            && self.lpfnWndProc.map(|f| f as usize) == other.lpfnWndProc.map(|f| f as usize)
+            && self.lpfnWndProc == other.lpfnWndProc
             && self.cbClsExtra == other.cbClsExtra
             && self.cbWndExtra == other.cbWndExtra
             && self.hInstance == other.hInstance
@@ -8956,7 +8882,7 @@ impl ::core::fmt::Debug for WNDCLASSEXW {
         f.debug_struct("WNDCLASSEXW")
             .field("cbSize", &self.cbSize)
             .field("style", &self.style)
-            .field("lpfnWndProc", &self.lpfnWndProc.map(|f| f as usize))
+            .field("lpfnWndProc", &self.lpfnWndProc)
             .field("cbClsExtra", &self.cbClsExtra)
             .field("cbWndExtra", &self.cbWndExtra)
             .field("hInstance", &self.hInstance)
@@ -8975,7 +8901,7 @@ impl ::core::cmp::PartialEq for WNDCLASSEXW {
     fn eq(&self, other: &Self) -> bool {
         self.cbSize == other.cbSize
             && self.style == other.style
-            && self.lpfnWndProc.map(|f| f as usize) == other.lpfnWndProc.map(|f| f as usize)
+            && self.lpfnWndProc == other.lpfnWndProc
             && self.cbClsExtra == other.cbClsExtra
             && self.cbWndExtra == other.cbWndExtra
             && self.hInstance == other.hInstance
@@ -9033,7 +8959,7 @@ impl ::core::fmt::Debug for WNDCLASSW {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_struct("WNDCLASSW")
             .field("style", &self.style)
-            .field("lpfnWndProc", &self.lpfnWndProc.map(|f| f as usize))
+            .field("lpfnWndProc", &self.lpfnWndProc)
             .field("cbClsExtra", &self.cbClsExtra)
             .field("cbWndExtra", &self.cbWndExtra)
             .field("hInstance", &self.hInstance)
@@ -9050,7 +8976,7 @@ impl ::core::fmt::Debug for WNDCLASSW {
 impl ::core::cmp::PartialEq for WNDCLASSW {
     fn eq(&self, other: &Self) -> bool {
         self.style == other.style
-            && self.lpfnWndProc.map(|f| f as usize) == other.lpfnWndProc.map(|f| f as usize)
+            && self.lpfnWndProc == other.lpfnWndProc
             && self.cbClsExtra == other.cbClsExtra
             && self.cbWndExtra == other.cbWndExtra
             && self.hInstance == other.hInstance
@@ -9147,20 +9073,8 @@ impl FromIntoMemory for WNDCLASS_STYLES {
         std::mem::size_of::<u32>()
     }
 }
-pub type WNDENUMPROC = ::core::option::Option<
-    unsafe extern "system" fn(
-        param_0: super::super::Foundation::HWND,
-        param_1: super::super::Foundation::LPARAM,
-    ) -> super::super::Foundation::BOOL,
->;
-pub type WNDPROC = ::core::option::Option<
-    unsafe extern "system" fn(
-        param_0: super::super::Foundation::HWND,
-        param_1: u32,
-        param_2: super::super::Foundation::WPARAM,
-        param_3: super::super::Foundation::LPARAM,
-    ) -> super::super::Foundation::LRESULT,
->;
+pub type WNDENUMPROC = ::core::option::Option<()>;
+pub type WNDPROC = ::core::option::Option<()>;
 pub const WSF_VISIBLE: i32 = 1i32;
 pub const WTS_CONSOLE_CONNECT: u32 = 1u32;
 pub const WTS_CONSOLE_DISCONNECT: u32 = 2u32;

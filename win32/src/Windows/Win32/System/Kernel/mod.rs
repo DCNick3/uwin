@@ -157,14 +157,13 @@ impl ::core::fmt::Debug for EXCEPTION_REGISTRATION_RECORD {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_struct("EXCEPTION_REGISTRATION_RECORD")
             .field("Next", &self.Next)
-            .field("Handler", &self.Handler.map(|f| f as usize))
+            .field("Handler", &self.Handler)
             .finish()
     }
 }
 impl ::core::cmp::PartialEq for EXCEPTION_REGISTRATION_RECORD {
     fn eq(&self, other: &Self) -> bool {
-        self.Next == other.Next
-            && self.Handler.map(|f| f as usize) == other.Handler.map(|f| f as usize)
+        self.Next == other.Next && self.Handler == other.Handler
     }
 }
 impl ::core::cmp::Eq for EXCEPTION_REGISTRATION_RECORD {}
@@ -179,14 +178,7 @@ impl FromIntoMemory for EXCEPTION_REGISTRATION_RECORD {
         todo!()
     }
 }
-pub type EXCEPTION_ROUTINE = ::core::option::Option<
-    unsafe extern "system" fn(
-        exception_record: MutPtr<super::Diagnostics::Debug::EXCEPTION_RECORD>,
-        establisher_frame: ConstPtr<::core::ffi::c_void>,
-        context_record: MutPtr<super::Diagnostics::Debug::CONTEXT>,
-        dispatcher_context: ConstPtr<::core::ffi::c_void>,
-    ) -> EXCEPTION_DISPOSITION,
->;
+pub type EXCEPTION_ROUTINE = ::core::option::Option<()>;
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct FLOATING_SAVE_AREA {

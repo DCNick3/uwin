@@ -8,54 +8,12 @@
 #[allow(unused)]
 use win32::core::prelude::*;
 pub const CURRENT_IMPORT_REDIRECTION_VERSION: u32 = 1u32;
-pub type ENUMRESLANGPROCA = ::core::option::Option<
-    unsafe extern "system" fn(
-        h_module: super::super::Foundation::HINSTANCE,
-        lp_type: crate::core::PCSTR,
-        lp_name: crate::core::PCSTR,
-        w_language: u16,
-        l_param: PtrDiffRepr,
-    ) -> super::super::Foundation::BOOL,
->;
-pub type ENUMRESLANGPROCW = ::core::option::Option<
-    unsafe extern "system" fn(
-        h_module: super::super::Foundation::HINSTANCE,
-        lp_type: crate::core::PCWSTR,
-        lp_name: crate::core::PCWSTR,
-        w_language: u16,
-        l_param: PtrDiffRepr,
-    ) -> super::super::Foundation::BOOL,
->;
-pub type ENUMRESNAMEPROCA = ::core::option::Option<
-    unsafe extern "system" fn(
-        h_module: super::super::Foundation::HINSTANCE,
-        lp_type: crate::core::PCSTR,
-        lp_name: crate::core::PCSTR,
-        l_param: PtrDiffRepr,
-    ) -> super::super::Foundation::BOOL,
->;
-pub type ENUMRESNAMEPROCW = ::core::option::Option<
-    unsafe extern "system" fn(
-        h_module: super::super::Foundation::HINSTANCE,
-        lp_type: crate::core::PCWSTR,
-        lp_name: crate::core::PCWSTR,
-        l_param: PtrDiffRepr,
-    ) -> super::super::Foundation::BOOL,
->;
-pub type ENUMRESTYPEPROCA = ::core::option::Option<
-    unsafe extern "system" fn(
-        h_module: super::super::Foundation::HINSTANCE,
-        lp_type: crate::core::PCSTR,
-        l_param: PtrDiffRepr,
-    ) -> super::super::Foundation::BOOL,
->;
-pub type ENUMRESTYPEPROCW = ::core::option::Option<
-    unsafe extern "system" fn(
-        h_module: super::super::Foundation::HINSTANCE,
-        lp_type: crate::core::PCWSTR,
-        l_param: PtrDiffRepr,
-    ) -> super::super::Foundation::BOOL,
->;
+pub type ENUMRESLANGPROCA = ::core::option::Option<()>;
+pub type ENUMRESLANGPROCW = ::core::option::Option<()>;
+pub type ENUMRESNAMEPROCA = ::core::option::Option<()>;
+pub type ENUMRESNAMEPROCW = ::core::option::Option<()>;
+pub type ENUMRESTYPEPROCA = ::core::option::Option<()>;
+pub type ENUMRESTYPEPROCW = ::core::option::Option<()>;
 pub struct ENUMUILANG {
     pub NumOfEnumUILang: u32,
     pub SizeOfEnumUIBuffer: u32,
@@ -174,20 +132,8 @@ impl FromIntoMemory for LOAD_LIBRARY_FLAGS {
     }
 }
 pub const LOAD_LIBRARY_OS_INTEGRITY_CONTINUITY: u32 = 32768u32;
-pub type PGET_MODULE_HANDLE_EXA = ::core::option::Option<
-    unsafe extern "system" fn(
-        dw_flags: u32,
-        lp_module_name: crate::core::PCSTR,
-        ph_module: MutPtr<super::super::Foundation::HINSTANCE>,
-    ) -> super::super::Foundation::BOOL,
->;
-pub type PGET_MODULE_HANDLE_EXW = ::core::option::Option<
-    unsafe extern "system" fn(
-        dw_flags: u32,
-        lp_module_name: crate::core::PCWSTR,
-        ph_module: MutPtr<super::super::Foundation::HINSTANCE>,
-    ) -> super::super::Foundation::BOOL,
->;
+pub type PGET_MODULE_HANDLE_EXA = ::core::option::Option<()>;
+pub type PGET_MODULE_HANDLE_EXW = ::core::option::Option<()>;
 pub struct REDIRECTION_DESCRIPTOR {
     pub Version: u32,
     pub FunctionCount: u32,

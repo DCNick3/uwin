@@ -191,9 +191,7 @@ pub const ALINF_QUIET: u32 = 4u32;
 pub const ALINF_ROLLBACK: u32 = 64u32;
 pub const ALINF_ROLLBKDOALL: u32 = 256u32;
 pub const ALINF_UPDHLPDLLS: u32 = 16u32;
-pub type APPLICATION_RECOVERY_CALLBACK = ::core::option::Option<
-    unsafe extern "system" fn(pv_parameter: MutPtr<::core::ffi::c_void>) -> u32,
->;
+pub type APPLICATION_RECOVERY_CALLBACK = ::core::option::Option<()>;
 pub const ARSR_NOMESSAGES: u32 = 8u32;
 pub const ARSR_REGSECTION: u32 = 128u32;
 pub const ARSR_REMOVREGBKDATA: u32 = 4096u32;
@@ -1281,12 +1279,7 @@ pub const EFS_DROP_ALTERNATE_STREAMS: u32 = 16u32;
 pub const EFS_USE_RECOVERY_KEYS: u32 = 1u32;
 pub const ENTITY_LIST_ID: u32 = 0u32;
 pub const ENTITY_TYPE_ID: u32 = 1u32;
-pub type ENUM_CALLBACK = ::core::option::Option<
-    unsafe extern "system" fn(
-        lp_surface_info: MutPtr<DCISURFACEINFO>,
-        lp_context: MutPtr<::core::ffi::c_void>,
-    ),
->;
+pub type ENUM_CALLBACK = ::core::option::Option<()>;
 pub const ER_ICMP: u32 = 896u32;
 pub const EVENTLOG_FULL_INFO: u32 = 0u32;
 pub const EditionUpgradeBroker: crate::core::GUID =
@@ -2694,12 +2687,7 @@ impl FromIntoMemory for OBJECT_INFORMATION_CLASS {
 pub const OFS_MAXPATHNAME: u32 = 128u32;
 pub const OPERATION_API_VERSION: u32 = 1u32;
 pub const OVERWRITE_HIDDEN: u32 = 4u32;
-pub type PDELAYLOAD_FAILURE_DLL_CALLBACK = ::core::option::Option<
-    unsafe extern "system" fn(
-        notification_reason: u32,
-        delayload_info: ConstPtr<DELAYLOAD_INFO>,
-    ) -> MutPtr<::core::ffi::c_void>,
->;
+pub type PDELAYLOAD_FAILURE_DLL_CALLBACK = ::core::option::Option<()>;
 pub struct PERUSERSECTIONA {
     pub szGUID: [super::super::Foundation::CHAR; 59],
     pub szDispName: [super::super::Foundation::CHAR; 128],
@@ -2808,31 +2796,10 @@ impl FromIntoMemory for PERUSERSECTIONW {
         todo!()
     }
 }
-pub type PFEATURE_STATE_CHANGE_CALLBACK =
-    ::core::option::Option<unsafe extern "system" fn(context: ConstPtr<::core::ffi::c_void>)>;
-pub type PFIBER_CALLOUT_ROUTINE = ::core::option::Option<
-    unsafe extern "system" fn(
-        lp_parameter: MutPtr<::core::ffi::c_void>,
-    ) -> MutPtr<::core::ffi::c_void>,
->;
-pub type PIO_APC_ROUTINE = ::core::option::Option<
-    unsafe extern "system" fn(
-        apc_context: MutPtr<::core::ffi::c_void>,
-        io_status_block: MutPtr<IO_STATUS_BLOCK>,
-        reserved: u32,
-    ),
->;
-pub type PQUERYACTCTXW_FUNC = ::core::option::Option<
-    unsafe extern "system" fn(
-        dw_flags: u32,
-        h_act_ctx: super::super::Foundation::HANDLE,
-        pv_sub_instance: ConstPtr<::core::ffi::c_void>,
-        ul_info_class: u32,
-        pv_buffer: MutPtr<::core::ffi::c_void>,
-        cb_buffer: PtrRepr,
-        pcb_written_or_required: MutPtr<PtrRepr>,
-    ) -> super::super::Foundation::BOOL,
->;
+pub type PFEATURE_STATE_CHANGE_CALLBACK = ::core::option::Option<()>;
+pub type PFIBER_CALLOUT_ROUTINE = ::core::option::Option<()>;
+pub type PIO_APC_ROUTINE = ::core::option::Option<()>;
+pub type PQUERYACTCTXW_FUNC = ::core::option::Option<()>;
 pub const PROCESS_CREATION_ALL_APPLICATION_PACKAGES_OPT_OUT: u32 = 1u32;
 pub const PROCESS_CREATION_CHILD_PROCESS_OVERRIDE: u32 = 2u32;
 pub const PROCESS_CREATION_CHILD_PROCESS_RESTRICTED: u32 = 1u32;
@@ -2932,99 +2899,27 @@ impl FromIntoMemory for PUBLIC_OBJECT_TYPE_INFORMATION {
         todo!()
     }
 }
-pub type PWINSTATIONQUERYINFORMATIONW = ::core::option::Option<
-    unsafe extern "system" fn(
-        param_0: super::super::Foundation::HANDLE,
-        param_1: u32,
-        param_2: WINSTATIONINFOCLASS,
-        param_3: MutPtr<::core::ffi::c_void>,
-        param_4: u32,
-        param_5: MutPtr<u32>,
-    ) -> super::super::Foundation::BOOLEAN,
->;
-pub type PWLDP_ISAPPAPPROVEDBYPOLICY_API = ::core::option::Option<
-    unsafe extern "system" fn(
-        package_family_name: crate::core::PCWSTR,
-        package_version: u64,
-    ) -> crate::core::HRESULT,
->;
-pub type PWLDP_ISDYNAMICCODEPOLICYENABLED_API = ::core::option::Option<
-    unsafe extern "system" fn(
-        pb_enabled: MutPtr<super::super::Foundation::BOOL>,
-    ) -> crate::core::HRESULT,
->;
-pub type PWLDP_ISPRODUCTIONCONFIGURATION_API = ::core::option::Option<
-    unsafe extern "system" fn(
-        is_production_configuration: MutPtr<super::super::Foundation::BOOL>,
-    ) -> crate::core::HRESULT,
->;
-pub type PWLDP_ISWCOSPRODUCTIONCONFIGURATION_API = ::core::option::Option<
-    unsafe extern "system" fn(
-        is_production_configuration: MutPtr<super::super::Foundation::BOOL>,
-    ) -> crate::core::HRESULT,
->;
-pub type PWLDP_QUERYDEVICESECURITYINFORMATION_API = ::core::option::Option<
-    unsafe extern "system" fn(
-        information: MutPtr<WLDP_DEVICE_SECURITY_INFORMATION>,
-        information_length: u32,
-        return_length: MutPtr<u32>,
-    ) -> crate::core::HRESULT,
->;
-pub type PWLDP_QUERYDYNAMICODETRUST_API = ::core::option::Option<
-    unsafe extern "system" fn(
-        file_handle: super::super::Foundation::HANDLE,
-        base_image: ConstPtr<::core::ffi::c_void>,
-        image_size: u32,
-    ) -> crate::core::HRESULT,
->;
-pub type PWLDP_QUERYPOLICYSETTINGENABLED2_API = ::core::option::Option<
-    unsafe extern "system" fn(
-        setting: crate::core::PCWSTR,
-        enabled: MutPtr<super::super::Foundation::BOOL>,
-    ) -> crate::core::HRESULT,
->;
-pub type PWLDP_QUERYPOLICYSETTINGENABLED_API = ::core::option::Option<
-    unsafe extern "system" fn(
-        setting: WLDP_POLICY_SETTING,
-        enabled: MutPtr<super::super::Foundation::BOOL>,
-    ) -> crate::core::HRESULT,
->;
-pub type PWLDP_QUERYWINDOWSLOCKDOWNMODE_API = ::core::option::Option<
-    unsafe extern "system" fn(
-        lockdown_mode: MutPtr<WLDP_WINDOWS_LOCKDOWN_MODE>,
-    ) -> crate::core::HRESULT,
->;
-pub type PWLDP_QUERYWINDOWSLOCKDOWNRESTRICTION_API = ::core::option::Option<
-    unsafe extern "system" fn(
-        lockdown_restriction: MutPtr<WLDP_WINDOWS_LOCKDOWN_RESTRICTION>,
-    ) -> crate::core::HRESULT,
->;
-pub type PWLDP_RESETPRODUCTIONCONFIGURATION_API =
-    ::core::option::Option<unsafe extern "system" fn() -> crate::core::HRESULT>;
-pub type PWLDP_RESETWCOSPRODUCTIONCONFIGURATION_API =
-    ::core::option::Option<unsafe extern "system" fn() -> crate::core::HRESULT>;
-pub type PWLDP_SETDYNAMICCODETRUST_API = ::core::option::Option<
-    unsafe extern "system" fn(
-        h_file_handle: super::super::Foundation::HANDLE,
-    ) -> crate::core::HRESULT,
->;
-pub type PWLDP_SETWINDOWSLOCKDOWNRESTRICTION_API = ::core::option::Option<
-    unsafe extern "system" fn(
-        lockdown_restriction: WLDP_WINDOWS_LOCKDOWN_RESTRICTION,
-    ) -> crate::core::HRESULT,
->;
+pub type PWINSTATIONQUERYINFORMATIONW = ::core::option::Option<()>;
+pub type PWLDP_ISAPPAPPROVEDBYPOLICY_API = ::core::option::Option<()>;
+pub type PWLDP_ISDYNAMICCODEPOLICYENABLED_API = ::core::option::Option<()>;
+pub type PWLDP_ISPRODUCTIONCONFIGURATION_API = ::core::option::Option<()>;
+pub type PWLDP_ISWCOSPRODUCTIONCONFIGURATION_API = ::core::option::Option<()>;
+pub type PWLDP_QUERYDEVICESECURITYINFORMATION_API = ::core::option::Option<()>;
+pub type PWLDP_QUERYDYNAMICODETRUST_API = ::core::option::Option<()>;
+pub type PWLDP_QUERYPOLICYSETTINGENABLED2_API = ::core::option::Option<()>;
+pub type PWLDP_QUERYPOLICYSETTINGENABLED_API = ::core::option::Option<()>;
+pub type PWLDP_QUERYWINDOWSLOCKDOWNMODE_API = ::core::option::Option<()>;
+pub type PWLDP_QUERYWINDOWSLOCKDOWNRESTRICTION_API = ::core::option::Option<()>;
+pub type PWLDP_RESETPRODUCTIONCONFIGURATION_API = ::core::option::Option<()>;
+pub type PWLDP_RESETWCOSPRODUCTIONCONFIGURATION_API = ::core::option::Option<()>;
+pub type PWLDP_SETDYNAMICCODETRUST_API = ::core::option::Option<()>;
+pub type PWLDP_SETWINDOWSLOCKDOWNRESTRICTION_API = ::core::option::Option<()>;
 pub const QUERY_ACTCTX_FLAG_ACTCTX_IS_ADDRESS: u32 = 16u32;
 pub const QUERY_ACTCTX_FLAG_ACTCTX_IS_HMODULE: u32 = 8u32;
 pub const QUERY_ACTCTX_FLAG_NO_ADDREF: u32 = 2147483648u32;
 pub const QUERY_ACTCTX_FLAG_USE_ACTIVE_ACTCTX: u32 = 4u32;
 pub const RECOVERY_DEFAULT_PING_INTERVAL: u32 = 5000u32;
-pub type REGINSTALLA = ::core::option::Option<
-    unsafe extern "system" fn(
-        hm: super::super::Foundation::HINSTANCE,
-        psz_section: crate::core::PCSTR,
-        pst_table: MutPtr<STRTABLEA>,
-    ) -> crate::core::HRESULT,
->;
+pub type REGINSTALLA = ::core::option::Option<()>;
 pub const REG_RESTORE_LOG_KEY: &'static str = "RegRestoreLogFile";
 pub const REG_SAVE_LOG_KEY: &'static str = "RegSaveLogFile";
 pub const REMOTE_PROTOCOL_INFO_FLAG_LOOPBACK: u32 = 1u32;
@@ -4283,14 +4178,7 @@ impl FromIntoMemory for WINSTATIONINFORMATIONW {
         todo!()
     }
 }
-pub type WINWATCHNOTIFYPROC = ::core::option::Option<
-    unsafe extern "system" fn(
-        hww: HWINWATCH,
-        hwnd: super::super::Foundation::HWND,
-        code: u32,
-        l_param: super::super::Foundation::LPARAM,
-    ),
->;
+pub type WINWATCHNOTIFYPROC = ::core::option::Option<()>;
 pub const WINWATCHNOTIFY_CHANGED: u32 = 4u32;
 pub const WINWATCHNOTIFY_CHANGING: u32 = 3u32;
 pub const WINWATCHNOTIFY_DESTROY: u32 = 2u32;
