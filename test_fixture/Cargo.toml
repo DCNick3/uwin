@@ -13,8 +13,8 @@ core-abi = { path = "../core-abi" }
 win32 = { path = "../win32" }
 
 region = "3.0.0"
-log = "0.4.16"
-env_logger = "0.9.0"
+tracing = "0.1.33"
+tracing-subscriber = { version = "0.3.11", features = ["env-filter"] }
 
 [build-dependencies]
 recompiler = { path = "../recompiler", features = ["recompilation", "mmap"] }

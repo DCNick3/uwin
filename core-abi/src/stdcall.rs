@@ -3,8 +3,8 @@ use crate::unwind_token::{UnwindReason, UnwindToken};
 use core_mem::conv::FromIntoMemory;
 use core_mem::ctx::MemoryCtx;
 use core_mem::ptr::{ConstPtr, PtrRepr};
-use log::trace;
 use static_assertions::assert_eq_size;
+use tracing::trace;
 
 assert_eq_size!(PtrRepr, u32);
 

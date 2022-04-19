@@ -1,9 +1,9 @@
 use core_abi::unwind_token::{UnwindReason, UnwindToken};
 use core_mem::ptr::PtrRepr;
 use core_mem::thread_ctx::get_thread_ctx;
-use log::trace;
 use std::ffi::CStr;
 use std::os::raw::c_char;
+use tracing::trace;
 use win32::core::{PCSTR, PSTR};
 use win32::Win32::Foundation::{HINSTANCE, HWND};
 use win32::Win32::System::Memory::{HeapHandle, HEAP_FLAGS};

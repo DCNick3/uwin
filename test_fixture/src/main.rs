@@ -9,6 +9,8 @@ use region::Allocation;
 use rusty_x86_runtime::{CpuContext, ExtendedContext, FlatMemoryCtx, PROGRAM_IMAGE};
 use std::io::Write;
 use std::sync::Arc;
+use tracing::trace;
+use tracing_subscriber::EnvFilter;
 use win32::core::Win32Context;
 
 pub struct MemoryMapper {
@@ -70,7 +72,9 @@ impl MemoryMapper {
 }
 
 fn main() {
-    env_logger::init();
+    tracing_subscriber::fmt()
+        .with_env_filter(EnvFilter::from_default_env())
+        .init();
 
     let mut mapper = MemoryMapper::new().expect("Mapping the base region");
 
@@ -121,11 +125,11 @@ fn main() {
     context.cpu.fs_base = tlb;
 
     let res = rusty_x86_runtime::execute_recompiled_code(&mut context, memory_ctx, entry);
-    log::trace!("execute_recompiled_code returned 0x{:08x}", res);
+    trace!("execute_recompiled_code returned 0x{:08x}", res);
 
     if res == 0 {
         if let Some(reason) = context.unwind_reason {
-            log::trace!("The recompiled stack was unwound, reason = {reason:?}")
+            trace!("The recompiled stack was unwound, reason = {reason:?}")
         } else {
             panic!(
                 "Zero continuation address without an unwind reason set. Sounds like an ABI crime"

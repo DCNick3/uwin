@@ -10,4 +10,4 @@ core-mem = { path = "../core-mem" }
 rusty-x86 = { path = "../rusty-x86", optional = true }
 
 static_assertions = "1.1.0"
-log = "0.4.16"
+tracing = "0.1.33"
