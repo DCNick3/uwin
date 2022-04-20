@@ -14,6 +14,7 @@ members = [
     "rusty-x86",
     "rusty-x86_derive",
     "core-mem",
+    "core-memmap",
     "core-abi",
     "win32",
 
