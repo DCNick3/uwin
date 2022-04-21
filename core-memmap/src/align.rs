@@ -1,21 +1,21 @@
 use core_mem::ptr::PtrRepr;
 
 #[inline]
-pub fn floor(address: PtrRepr, align: PtrRepr) -> PtrRepr {
-    address & !(align - 1)
+pub fn floor(value: PtrRepr, align: PtrRepr) -> PtrRepr {
+    value & !(align - 1)
 }
 
 #[inline]
-pub fn ceil(address: PtrRepr, align: PtrRepr) -> PtrRepr {
-    if aligned(address, align) {
-        address
+pub fn ceil(value: PtrRepr, align: PtrRepr) -> PtrRepr {
+    if aligned(value, align) {
+        value
     } else {
         // TODO: overflow?
-        address.checked_add(align - address % align).unwrap()
+        value.checked_add(align - value % align).unwrap()
     }
 }
 
 #[inline]
-pub fn aligned(address: PtrRepr, align: PtrRepr) -> bool {
-    address % align == 0
+pub fn aligned(value: PtrRepr, align: PtrRepr) -> bool {
+    value % align == 0
 }

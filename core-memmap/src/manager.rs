@@ -26,6 +26,7 @@ use crate::mapper::Mapper;
 use crate::page_region_state::PageRegionState;
 use crate::{align, Error, Result, PAGE_SIZE};
 use core_mem::ptr::PtrRepr;
+use std::cmp::max;
 use std::collections::BTreeMap;
 
 const REGION_ALIGNMENT: PtrRepr = 0x10000; // 64K
@@ -55,12 +56,16 @@ impl<'a> Iterator for HoleIter<'a> {
             return None;
         }
         let r = loop {
-            if let Some((addr, state)) = self.regions.next() {
+            if let Some((&addr, state)) = self.regions.next() {
                 let end = addr + state.len_bytes();
                 let end = align::ceil(end, REGION_ALIGNMENT);
-                if end > self.last_addr {
+                let end = align::ceil(end, REGION_ALIGNMENT);
+
+                if addr > self.last_addr {
                     break Some((addr, end));
                 }
+
+                self.last_addr = max(self.last_addr, end);
             } else {
                 break None;
             }
@@ -100,7 +105,26 @@ impl MemoryManager {
     }
 
     pub fn reserve_dynamic(&mut self, size: PtrRepr) -> Result<PtrRepr> {
-        todo!()
+        let size = align::ceil(size, PAGE_SIZE);
+
+        let mut iter = self.iter_holes();
+        let hole = loop {
+            if let Some(hole) = iter.next() {
+                if hole.size >= size {
+                    // found a suitable hole, yay
+                    break hole;
+                }
+            } else {
+                return Err(Error::ReserveNoAddressSpace);
+            }
+        };
+
+        assert!(self
+            .regions
+            .insert(hole.start, PageRegionState::new(size))
+            .is_none());
+
+        Ok(hole.start)
     }
 
     pub fn reserve_static(&mut self, addr: PtrRepr, size: PtrRepr) -> Result<PtrRepr> {
@@ -211,5 +235,59 @@ mod test {
         mgr.unreserve(addr).unwrap();
 
         assert!(mgr.regions.is_empty());
+    }
+
+    #[test]
+    fn reserve_start_holes_correct() {
+        let mut mgr = MemoryManager::new().unwrap();
+        let addr = mgr.reserve_static(START_ADDR, 0x1000).unwrap();
+
+        let mut hole_iter = mgr.iter_holes();
+        assert_eq!(
+            hole_iter.next(), // we use REGION_ALIGNMENT instead of expected size because holes' address are aligned to REGION_ALIGNED (and expected_size is not aligned to it)
+            Some(AddressRange::from_range(addr + REGION_ALIGNMENT, 0))
+        );
+        assert_eq!(hole_iter.next(), None);
+    }
+
+    #[test]
+    fn reserve_start_holes_correct2() {
+        let mut mgr = MemoryManager::new().unwrap();
+        let addr = mgr.reserve_static(START_ADDR, 0x1000).unwrap();
+        let addr1 = mgr
+            .reserve_static(START_ADDR + REGION_ALIGNMENT, 0x1000)
+            .unwrap();
+
+        mgr.unreserve(addr).unwrap();
+
+        let mut hole_iter = mgr.iter_holes();
+        assert_eq!(
+            hole_iter.next(),
+            Some(AddressRange::from_range(
+                START_ADDR,
+                START_ADDR + REGION_ALIGNMENT
+            ))
+        );
+        assert_eq!(
+            hole_iter.next(),
+            Some(AddressRange::from_range(addr1 + REGION_ALIGNMENT, 0))
+        );
+        assert_eq!(hole_iter.next(), None);
+    }
+
+    #[test]
+    fn reserve_dynamic() {
+        let mut mgr = MemoryManager::new().unwrap();
+
+        let addr = mgr.reserve_dynamic(0x1000).unwrap();
+        assert_eq!(addr, START_ADDR);
+
+        let addr1 = mgr.reserve_dynamic(0x1000).unwrap();
+        assert_eq!(addr1, START_ADDR + REGION_ALIGNMENT);
+
+        mgr.unreserve(addr).unwrap();
+
+        let addr = mgr.reserve_dynamic(0x4000).unwrap();
+        assert_eq!(addr, START_ADDR);
     }
 }

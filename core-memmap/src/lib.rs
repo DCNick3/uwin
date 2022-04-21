@@ -27,6 +27,10 @@ pub enum Error {
     ReservedRegionIntersects,
     #[error("Attempt to reserve the low 64K (well, the zero address)")]
     ReserveZeroAddress,
+    #[error(
+        "Attempt to reserve a region, but no available place found for it in the address space"
+    )]
+    ReserveNoAddressSpace,
     #[error("Attempt to unreserve region that is not currently previously reserved")]
     UnreserveNonexistentRegion,
 
