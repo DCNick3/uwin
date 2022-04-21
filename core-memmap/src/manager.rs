@@ -196,7 +196,6 @@ impl MemoryManager {
 mod test {
     use crate::address_range::AddressRange;
     use crate::manager::{LAST_ADDR, REGION_ALIGNMENT, START_ADDR};
-    use crate::Error::ReserveZeroAddress;
     use crate::{Error, MemoryManager};
 
     #[test]
@@ -366,6 +365,50 @@ mod test {
             mgr.reserve_static(LAST_ADDR - REGION_ALIGNMENT + 1, REGION_ALIGNMENT * 2)
                 .unwrap_err(),
             Error::ReserveOutOfRange
+        ));
+    }
+
+    #[test]
+    fn reserve_already_reserved() {
+        let mut mgr = MemoryManager::new().unwrap();
+        mgr.reserve_static(START_ADDR, 0x1000).unwrap();
+        assert!(matches!(
+            mgr.reserve_static(START_ADDR, 0x2000).unwrap_err(),
+            Error::ReservedRegionIntersects
+        ));
+
+        mgr.reserve_static(START_ADDR + REGION_ALIGNMENT, REGION_ALIGNMENT * 2)
+            .unwrap();
+        assert!(matches!(
+            mgr.reserve_static(START_ADDR + REGION_ALIGNMENT * 2, 0x2000)
+                .unwrap_err(),
+            Error::ReservedRegionIntersects
+        ));
+    }
+
+    #[test]
+    fn unreserve_nonreserved() {
+        let mut mgr = MemoryManager::new().unwrap();
+
+        assert!(matches!(
+            mgr.unreserve(START_ADDR + 1212121).unwrap_err(),
+            Error::UnreserveNonexistentRegion
+        ));
+
+        mgr.reserve_static(START_ADDR, 0x1000).unwrap();
+        mgr.unreserve(START_ADDR).unwrap();
+        assert!(matches!(
+            mgr.unreserve(START_ADDR).unwrap_err(),
+            Error::UnreserveNonexistentRegion
+        ));
+    }
+
+    #[test]
+    fn reserve_zero_address() {
+        let mut mgr = MemoryManager::new().unwrap();
+        assert!(matches!(
+            mgr.reserve_static(0x1000, 0x1000).unwrap_err(),
+            Error::ReserveZeroAddress
         ));
     }
 }
