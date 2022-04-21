@@ -10,7 +10,7 @@ mod manager;
 mod page_region_state;
 mod page_state;
 
-pub use crate::{manager::*, mapper::MapperError, page_state::*};
+pub use crate::{address_range::*, manager::*, mapper::MapperError, page_state::*};
 
 pub const PAGE_SIZE: PtrRepr = 4096;
 

@@ -357,6 +357,21 @@ impl MemoryManager {
 
         Ok(())
     }
+
+    pub fn reserve_and_commit_dynamic(
+        &mut self,
+        size: PtrRepr,
+        protection: Protection,
+    ) -> Result<AddressRange> {
+        let reservation = self.reserve_dynamic(size)?;
+
+        if let Err(e) = self.commit(reservation, protection) {
+            self.unreserve(reservation.start).unwrap();
+            return Err(e);
+        }
+
+        Ok(reservation)
+    }
 }
 
 #[cfg(test)]

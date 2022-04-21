@@ -9,10 +9,10 @@ edition = "2021"
 rusty_x86_runtime = { path = "../rusty_x86_runtime" }
 recompiler = { path = "../recompiler" }
 core-mem = { path = "../core-mem" }
+core-memmgr = { path = "../core-memmgr" }
 core-abi = { path = "../core-abi" }
 win32 = { path = "../win32" }
 
-region = "3.0.0"
 tracing = "0.1.33"
 tracing-subscriber = { version = "0.3.11", features = ["env-filter"] }
 tracing-tracy = { version = "0.8.0", features = [] }

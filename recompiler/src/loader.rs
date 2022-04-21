@@ -211,6 +211,8 @@ fn build_exports_index(
     Ok(exports.into_iter().flatten().collect())
 }
 
+const IMAGE_ALIGN: u32 = 0x10000;
+
 pub fn load_process_image(executable: PeFile, dlls: Vec<PeFile>) -> Result<LoadedProcessImage> {
     let mut dlls = dlls
         .into_iter()
@@ -284,10 +286,13 @@ pub fn load_process_image(executable: PeFile, dlls: Vec<PeFile>) -> Result<Loade
 
     let mut load_into_first_free = |pe: PeFile| -> Result<_> {
         println!("LOAD {}", pe.name());
-        // TODO: store it somewhere
         let info = pe.load_into(free_addr, &mut memory, pe.name())?;
 
         free_addr += info.image_size;
+        // Image bases will be reserved as a memory region, so this alignment is required
+        if free_addr % IMAGE_ALIGN != 0 {
+            free_addr += IMAGE_ALIGN - free_addr % IMAGE_ALIGN;
+        }
         modules.insert(pe.name().to_string(), (pe, info));
 
         Ok(())
