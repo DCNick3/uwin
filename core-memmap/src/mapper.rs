@@ -1,18 +1,31 @@
 use crate::os;
 use crate::Result;
 use core_mem::ctx::FlatMemoryCtx;
+use core_mem::ptr::PtrRepr;
 use memory_image::Protection;
+use std::sync::Once;
 
 /// A wrapper around native APIs that implements the mappings for FlatMemoryCtx
 pub(crate) struct Mapper {
     base: *const (),
 }
 
+#[inline]
+pub fn page_size() -> PtrRepr {
+    static INIT: Once = Once::new();
+    static mut PAGE_SIZE: PtrRepr = 0;
+
+    unsafe {
+        INIT.call_once(|| PAGE_SIZE = os::page_size());
+        PAGE_SIZE
+    }
+}
+
 impl Mapper {
     pub fn new() -> Result<Self> {
         // it might be possible to emulate 4K on different page sizes but needs quite some work
         assert_eq!(
-            os::page_size(),
+            page_size(),
             crate::PAGE_SIZE,
             "Only 4K page OSes are supported"
         );
@@ -22,16 +35,16 @@ impl Mapper {
         Ok(Self { base })
     }
 
-    pub fn map(&self, addr: u32, size: u32, prot: Protection) -> Result<()> {
+    pub fn map(&self, addr: PtrRepr, size: PtrRepr, prot: Protection) -> Result<()> {
         let prot = prot & Protection::READ_WRITE;
         unsafe { os::map(self.base, addr, size, prot) }
     }
 
-    pub fn unmap(&self, addr: u32, size: u32) -> Result<()> {
+    pub fn unmap(&self, addr: PtrRepr, size: PtrRepr) -> Result<()> {
         unsafe { os::unmap(self.base, addr, size) }
     }
 
-    pub fn protect(&self, addr: u32, size: u32, prot: Protection) -> Result<()> {
+    pub fn protect(&self, addr: PtrRepr, size: PtrRepr, prot: Protection) -> Result<()> {
         let prot = prot & Protection::READ_WRITE;
         unsafe { os::protect(self.base, addr, size, prot) }
     }

@@ -1,0 +1,42 @@
+use core_mem::ptr::PtrRepr;
+use range_ext::intersect::{Intersect, Intersection};
+use std::ops::Range;
+
+// EDGE CASE: this cannot encode the address range of the whole address space (because the size is 1 << 32)
+// The solution?
+// Well, don't do stupid (don't encode it)
+#[derive(Debug, PartialEq, Eq)]
+pub struct AddressRange {
+    pub start: PtrRepr,
+    pub size: PtrRepr,
+}
+
+impl AddressRange {
+    #[inline]
+    pub fn new(start: PtrRepr, size: PtrRepr) -> Self {
+        assert_ne!(size, 0);
+        Self { start, size }
+    }
+
+    #[inline]
+    pub fn from_range(start: PtrRepr, end: PtrRepr) -> Self {
+        // end = 0 is interpreted as the end of the address space
+        assert!(start <= end || end == 0);
+        Self::new(start, end.wrapping_sub(start))
+    }
+
+    #[inline]
+    pub fn range(&self) -> Range<PtrRepr> {
+        self.start..self.end()
+    }
+
+    #[inline]
+    pub fn end(&self) -> PtrRepr {
+        self.start + self.size
+    }
+
+    #[inline]
+    pub fn intersect(&self, other: &AddressRange) -> Intersection {
+        self.range().intersect(&other.range())
+    }
+}
