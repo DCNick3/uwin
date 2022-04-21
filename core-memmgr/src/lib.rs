@@ -35,6 +35,9 @@ pub enum Error {
     #[error("No reserved region fully contained the specified memory range fully")]
     NoRegionContainsRangeFully,
 
+    #[error("Protect uncommitted memory")]
+    ProtectUncommitted,
+
     #[error("Mapper error occurred: {0}")]
     MapperError(#[from] MapperError),
 }

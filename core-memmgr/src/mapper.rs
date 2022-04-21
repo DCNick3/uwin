@@ -38,6 +38,8 @@ impl Mapper {
 
     /// Map page range in simulated address space with specified protection
     ///
+    /// Protection::EXECUTE bit is ignored
+    ///
     /// Don't map an already mapped region; semantics on windows and linux are different.
     /// If you want to remap (clean the page and stuff) - unmap and map again, if you want the mapping to stay the same - don't do anything  
     pub fn map(&self, range: AddressRange, prot: Protection) -> MapperResult<()> {
@@ -53,6 +55,8 @@ impl Mapper {
     }
 
     /// Change page range protection in simulated address space to specified protection
+    ///
+    /// Protection::EXECUTE bit is ignored
     ///
     /// Don't change protection on unmapped pages, the results are not specified in this case
     pub fn protect(&self, range: AddressRange, prot: Protection) -> MapperResult<()> {

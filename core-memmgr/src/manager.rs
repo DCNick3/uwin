@@ -218,7 +218,7 @@ impl MemoryManager {
 
         let (region_range, state) = Self::find_region_mut(&mut self.regions, range)?;
 
-        let region_subrange = region_range.pages_indices(range);
+        let region_page_indices = region_range.pages_indices(range);
 
         // Win32's commit is a weird one...
         // The operation is roughly equivalent to the following atomic operation:
@@ -240,7 +240,7 @@ impl MemoryManager {
         let mut rollback_ops = Vec::new();
 
         for (address_range, state) in
-            state.iter_page_runs_in_range(region_range.start, region_subrange.clone())
+            state.iter_page_runs_in_range(region_range.start, region_page_indices.clone())
         {
             let res = match state {
                 PageState::Uncommitted => {
@@ -278,9 +278,84 @@ impl MemoryManager {
         }
 
         // yay, update the stored states
-        state.set_range(region_subrange, PageState::Committed(protection));
+        state.set_range(region_page_indices, PageState::Committed(protection));
 
         Ok(range)
+    }
+
+    /// Changes protection of the specified page range
+    ///
+    /// The range must be within one reserved page region
+    ///
+    /// Returns the "old" protection of the first page
+    pub fn protect(&mut self, range: AddressRange, protection: Protection) -> Result<Protection> {
+        let range = Self::align_range(range)?;
+
+        let (region_range, state) = Self::find_region_mut(&mut self.regions, range)?;
+
+        let region_page_indices = region_range.pages_indices(range);
+
+        if !state
+            .iter_in_range(region_page_indices.clone())
+            .all(|s| s.committed())
+        {
+            return Err(Error::ProtectUncommitted);
+        }
+
+        let old_prot = match state.get(region_page_indices.start) {
+            PageState::Uncommitted => unreachable!(), // checked above
+            PageState::Committed(prot) => prot,
+        };
+
+        for (address_range, state) in
+            state.iter_page_runs_in_range(region_range.start, region_page_indices.clone())
+        {
+            match state {
+                PageState::Uncommitted => unreachable!(), // checked above
+                PageState::Committed(current_protection) => {
+                    if current_protection != protection {
+                        // we assume that this never fails
+                        // this is not true, but rare enough, I guess...
+                        // if it is needed, it would be possible to do the same thing as commit does with the rollback
+                        self.mapper
+                            .protect(address_range, protection)
+                            .expect("Could not change protection")
+                    }
+                }
+            }
+        }
+
+        state.set_range(region_page_indices, PageState::Committed(protection));
+
+        Ok(old_prot)
+    }
+
+    pub fn uncommit(&mut self, range: AddressRange) -> Result<()> {
+        let range = Self::align_range(range)?;
+
+        let (region_range, state) = Self::find_region_mut(&mut self.regions, range)?;
+
+        let region_page_indices = region_range.pages_indices(range);
+
+        for (address_range, state) in
+            state.iter_page_runs_in_range(region_range.start, region_page_indices.clone())
+        {
+            match state {
+                PageState::Uncommitted => {} // already uncommitted =)
+                PageState::Committed(_) => {
+                    // we assume that this never fails
+                    // this is not true, but rare enough, I guess...
+                    // if it is needed, it would be possible to do the same thing as commit does with the rollback
+                    self.mapper
+                        .unmap(address_range)
+                        .expect("Could not unmap page")
+                }
+            }
+        }
+
+        state.set_range(region_page_indices, PageState::Uncommitted);
+
+        Ok(())
     }
 }
 
@@ -525,24 +600,89 @@ mod test {
     }
 
     mod commit {
-        use crate::MemoryManager;
+        use crate::address_range::AddressRange;
+        use crate::{Error, MemoryManager};
+        use bulletproof::Bulletproof;
         use memory_image::Protection;
+        use rusty_fork::rusty_fork_test;
+
+        rusty_fork_test! {
+            #[test]
+            fn basic() {
+                let mut mgr = MemoryManager::new().unwrap();
+                let ctx = unsafe { mgr.memory_context() };
+
+                let range = mgr.reserve_dynamic(0x1000).unwrap();
+
+                mgr.commit(range, Protection::READ_WRITE).unwrap();
+
+                let ptr = ctx.to_native_ptr(range.start);
+                unsafe { std::ptr::write(ptr, 12) };
+
+                mgr.commit(range, Protection::READ_WRITE).unwrap();
+
+                assert_eq!(unsafe { std::ptr::read(ptr) }, 12);
+
+                mgr.protect(range, Protection::READ).unwrap();
+
+                assert_eq!(unsafe { std::ptr::read(ptr) }, 12);
+
+                unsafe {
+                    // TODO: probably want to unregister this
+                    let bulletproof = Bulletproof::new();
+                    assert!(bulletproof.store(ptr, &13).is_err());
+                }
+            }
+
+            #[test]
+            fn unmap_multiple() {
+                let mut mgr = MemoryManager::new().unwrap();
+                let ctx = unsafe { mgr.memory_context() };
+
+                let range = mgr.reserve_dynamic(0x4000).unwrap();
+
+                mgr.commit(
+                    AddressRange::new(range.start, 0x1000),
+                    Protection::READ_WRITE,
+                )
+                .unwrap();
+                mgr.commit(
+                    AddressRange::new(range.start + 0x2000, 0x1000),
+                    Protection::READ_WRITE,
+                )
+                .unwrap();
+
+                let ptr1 = ctx.to_native_ptr(range.start);
+                unsafe { std::ptr::write(ptr1, 12) };
+
+                let ptr2 = ctx.to_native_ptr(range.start + 0x2000);
+                unsafe { std::ptr::write(ptr2, 13) };
+
+                mgr.uncommit(range).unwrap();
+
+                unsafe {
+                    let bulletproof = Bulletproof::new();
+                    assert!(bulletproof.load(ptr1).is_err());
+                    assert!(bulletproof.load(ptr2).is_err());
+                }
+            }
+        }
 
         #[test]
-        fn basic() {
+        fn protect_unmapped() {
             let mut mgr = MemoryManager::new().unwrap();
-            let ctx = unsafe { mgr.memory_context() };
+            let range = mgr.reserve_dynamic(0x4000).unwrap();
 
-            let range = mgr.reserve_dynamic(0x1000).unwrap();
+            mgr.commit(
+                AddressRange::new(range.start + 0x2000, 0x1000),
+                Protection::READ,
+            )
+            .unwrap();
 
-            mgr.commit(range, Protection::READ_WRITE).unwrap();
-
-            let ptr = ctx.to_native_ptr(range.start);
-            unsafe { std::ptr::write(ptr, 12) };
-
-            mgr.commit(range, Protection::READ_WRITE).unwrap();
-
-            assert_eq!(unsafe { std::ptr::read(ptr) }, 12);
+            assert!(matches!(
+                mgr.protect(range, Protection::READ_WRITE).unwrap_err(),
+                Error::ProtectUncommitted
+            ));
         }
     }
 }

@@ -30,6 +30,7 @@ impl PageRegionState {
         self.page_states[page_index].into()
     }
 
+    #[allow(unused)]
     pub fn set(&mut self, page_index: usize, state: PageState) {
         self.page_states[page_index] = state.into()
     }
@@ -47,22 +48,21 @@ impl PageRegionState {
         }
     }
 
-    pub fn iter_page_runs(&self, base_addr: PtrRepr) -> PageRunsIter {
-        PageRunsIter {
-            base_addr,
-            iter: self.iter().peekable(),
+    pub fn iter_in_range(&self, page_indices: Range<usize>) -> Iter {
+        Iter {
+            iter: self.page_states[page_indices].iter(),
         }
     }
 
     pub fn iter_page_runs_in_range(
         &self,
         base_addr: PtrRepr,
-        subregion: Range<usize>,
+        page_indices: Range<usize>,
     ) -> PageRunsIter {
         PageRunsIter {
             base_addr,
             iter: Iter {
-                iter: self.page_states[subregion].iter(),
+                iter: self.page_states[page_indices].iter(),
             }
             .peekable(),
         }
