@@ -1,3 +1,4 @@
+use crate::PAGE_SIZE;
 use core_mem::ptr::PtrRepr;
 use range_ext::intersect::{Intersect, Intersection};
 use std::ops::Range;
@@ -5,7 +6,7 @@ use std::ops::Range;
 // EDGE CASE: this cannot encode the address range of the whole address space (because the size is 1 << 32)
 // The solution?
 // Well, don't do stupid (don't encode it)
-#[derive(Debug, PartialEq, Eq)]
+#[derive(Debug, PartialEq, Eq, Copy, Clone)]
 pub struct AddressRange {
     pub start: PtrRepr,
     pub size: PtrRepr,
@@ -49,5 +50,15 @@ impl AddressRange {
     #[inline]
     pub fn intersect(&self, other: &AddressRange) -> Intersection {
         self.range().intersect(&other.range())
+    }
+
+    #[inline]
+    pub fn pages_indices(&self, start: PtrRepr, size: PtrRepr) -> Range<usize> {
+        assert!(self.intersect(&Self::new(start, size)).is_over());
+
+        let offset = ((start - self.start) / PAGE_SIZE) as usize;
+        let size = (size / PAGE_SIZE) as usize;
+
+        offset..(offset + size)
     }
 }

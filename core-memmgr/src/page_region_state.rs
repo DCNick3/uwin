@@ -1,7 +1,9 @@
+use crate::address_range::AddressRange;
 use crate::align::aligned;
 use crate::page_state::{PageState, PageStateRepr};
 use crate::PAGE_SIZE;
 use core_mem::ptr::PtrRepr;
+use std::iter::Peekable;
 use std::ops::Range;
 
 pub(crate) struct PageRegionState {
@@ -44,6 +46,27 @@ impl PageRegionState {
             iter: self.page_states.iter(),
         }
     }
+
+    pub fn iter_page_runs(&self, base_addr: PtrRepr) -> PageRunsIter {
+        PageRunsIter {
+            base_addr,
+            iter: self.iter().peekable(),
+        }
+    }
+
+    pub fn iter_page_runs_in_range(
+        &self,
+        base_addr: PtrRepr,
+        subregion: Range<usize>,
+    ) -> PageRunsIter {
+        PageRunsIter {
+            base_addr,
+            iter: Iter {
+                iter: self.page_states[subregion].iter(),
+            }
+            .peekable(),
+        }
+    }
 }
 
 pub(crate) struct Iter<'a> {
@@ -55,5 +78,33 @@ impl<'a> Iterator for Iter<'a> {
 
     fn next(&mut self) -> Option<Self::Item> {
         self.iter.next().map(|&repr| repr.into())
+    }
+}
+
+pub(crate) struct PageRunsIter<'a> {
+    base_addr: PtrRepr,
+    iter: Peekable<Iter<'a>>,
+}
+
+impl<'a> Iterator for PageRunsIter<'a> {
+    type Item = (AddressRange, PageState);
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let start = self.base_addr;
+        let mut count = 1;
+
+        let state = self.iter.next()?;
+
+        while self
+            .iter
+            .next_if(|&next_state| next_state == state)
+            .is_some()
+        {
+            count += 1;
+        }
+
+        self.base_addr += count * PAGE_SIZE;
+
+        Some((AddressRange::new(start, count * PAGE_SIZE), state))
     }
 }

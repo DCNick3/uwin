@@ -30,6 +30,9 @@ pub enum Error {
     #[error("Attempt to unreserve region that is not currently previously reserved")]
     UnreserveNonexistentRegion,
 
+    #[error("No reserved region fully contained the specified memory range fully")]
+    NoRegionContainsRangeFully,
+
     #[error("Mapper error occurred: {0}")]
     MapperError(#[from] MapperError),
 }

@@ -1,3 +1,4 @@
+use crate::address_range::AddressRange;
 use crate::os;
 use core_mem::ctx::FlatMemoryCtx;
 use core_mem::ptr::PtrRepr;
@@ -35,18 +36,28 @@ impl Mapper {
         Ok(Self { base })
     }
 
-    pub fn map(&self, addr: PtrRepr, size: PtrRepr, prot: Protection) -> MapperResult<()> {
+    /// Map page range in simulated address space with specified protection
+    ///
+    /// Don't map an already mapped region; semantics on windows and linux are different.
+    /// If you want to remap (clean the page and stuff) - unmap and map again, if you want the mapping to stay the same - don't do anything  
+    pub fn map(&self, range: AddressRange, prot: Protection) -> MapperResult<()> {
         let prot = prot & Protection::READ_WRITE;
-        unsafe { os::map(self.base, addr, size, prot) }
+        unsafe { os::map(self.base, range.start, range.size, prot) }
     }
 
-    pub fn unmap(&self, addr: PtrRepr, size: PtrRepr) -> MapperResult<()> {
-        unsafe { os::unmap(self.base, addr, size) }
+    /// Unmap page range in simulated address space with specified protection
+    ///
+    /// Don't unmap already unmapped page, the results are not specified in this case
+    pub fn unmap(&self, range: AddressRange) -> MapperResult<()> {
+        unsafe { os::unmap(self.base, range.start, range.size) }
     }
 
-    pub fn protect(&self, addr: PtrRepr, size: PtrRepr, prot: Protection) -> MapperResult<()> {
+    /// Change page range protection in simulated address space to specified protection
+    ///
+    /// Don't change protection on unmapped pages, the results are not specified in this case
+    pub fn protect(&self, range: AddressRange, prot: Protection) -> MapperResult<()> {
         let prot = prot & Protection::READ_WRITE;
-        unsafe { os::protect(self.base, addr, size, prot) }
+        unsafe { os::protect(self.base, range.start, range.size, prot) }
     }
 
     /// # Safety
@@ -83,25 +94,26 @@ pub type MapperResult<T> = std::result::Result<T, MapperError>;
 #[cfg(test)]
 mod test {
     use super::Mapper;
+    use crate::address_range::AddressRange;
     use memory_image::Protection;
+
     #[test]
     fn basic() {
         let map = Mapper::new().unwrap();
         let ctx = unsafe { map.memory_context() };
 
-        let addr = 0x1000;
-        let size = 0x2000;
+        let range = AddressRange::new(0x1000, 0x2000);
 
-        map.map(addr, size, Protection::READ_WRITE).unwrap();
+        map.map(range, Protection::READ_WRITE).unwrap();
 
-        let haddr = ctx.to_native_ptr(addr);
-        let haddr = unsafe { std::slice::from_raw_parts_mut(haddr, size as usize) };
+        let haddr = ctx.to_native_ptr(range.start);
+        let haddr = unsafe { std::slice::from_raw_parts_mut(haddr, range.size as usize) };
         haddr[0..0x800].fill(0x12);
         assert!(haddr[0..0x800].iter().all(|&p| p == 0x12));
         assert!(haddr[0x800..].iter().all(|&p| p == 0));
 
-        map.unmap(addr, size).unwrap();
-        map.map(addr, size, Protection::READ_WRITE).unwrap();
+        map.unmap(range).unwrap();
+        map.map(range, Protection::READ_WRITE).unwrap();
 
         assert!(haddr.iter().all(|&p| p == 0));
     }
