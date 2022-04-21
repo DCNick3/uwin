@@ -57,15 +57,20 @@ impl<'a> Iterator for HoleIter<'a> {
         }
         let r = loop {
             if let Some((&addr, state)) = self.regions.next() {
-                let end = addr + state.len_bytes();
-                let end = align::ceil(end, REGION_ALIGNMENT);
-                let end = align::ceil(end, REGION_ALIGNMENT);
+                let end = addr.checked_add(state.len_bytes());
+                let end = end.map(|end| align::ceil(end, REGION_ALIGNMENT));
 
                 if addr > self.last_addr {
                     break Some((addr, end));
                 }
 
-                self.last_addr = max(self.last_addr, end);
+                if let Some(end) = end {
+                    self.last_addr = max(self.last_addr, end);
+                } else {
+                    // edge cases are bad =(
+                    self.last_addr = LAST_ADDR;
+                    break None;
+                }
             } else {
                 break None;
             }
@@ -74,14 +79,19 @@ impl<'a> Iterator for HoleIter<'a> {
         Some(match r {
             // yield the last hole: from the end of last region till the end of address space
             None => {
-                let res = AddressRange::new(self.last_addr, LAST_ADDR - self.last_addr + 1);
+                if self.last_addr == LAST_ADDR {
+                    return None;
+                }
+                let size = LAST_ADDR - self.last_addr + 1;
+
+                let res = AddressRange::new(self.last_addr, size);
                 self.last_addr = LAST_ADDR;
 
                 res
             }
             Some((start, end)) => {
                 let res = AddressRange::new(self.last_addr, start - self.last_addr);
-                self.last_addr = end;
+                self.last_addr = end.unwrap_or(LAST_ADDR);
 
                 res
             }
@@ -132,11 +142,22 @@ impl MemoryManager {
         // addr: If the memory is being reserved, the specified address is rounded down to the nearest multiple of the allocation granularity
         // size: The allocated pages include all pages containing one or more bytes in the range from lpAddress to lpAddress+dwSize.
         //        This means that a 2-byte range straddling a page boundary causes both pages to be included in the allocated region.
+
+        // unaligned portion of the address
+        let addr_unalign = addr % REGION_ALIGNMENT;
+
         let aligned_addr = align::floor(addr, REGION_ALIGNMENT);
-        let range = AddressRange::new(
-            aligned_addr,
-            align::ceil(addr.checked_add(size).unwrap(), PAGE_SIZE) - aligned_addr, // align up the .end()
-        );
+        let aligned_size = align::ceil(size.checked_add(addr_unalign).unwrap(), PAGE_SIZE);
+
+        // check we don't cross the end of address space
+        if aligned_addr.checked_add(aligned_size).is_none() {
+            // allow for case where allocation spans precisely till the end of the address space
+            if aligned_addr.wrapping_add(aligned_size) != 0 {
+                return Err(Error::ReserveOutOfRange);
+            }
+        }
+
+        let range = AddressRange::new(aligned_addr, aligned_size);
 
         if range.start == 0 {
             return Err(Error::ReserveZeroAddress);
@@ -174,8 +195,9 @@ impl MemoryManager {
 #[cfg(test)]
 mod test {
     use crate::address_range::AddressRange;
-    use crate::manager::{REGION_ALIGNMENT, START_ADDR};
-    use crate::MemoryManager;
+    use crate::manager::{LAST_ADDR, REGION_ALIGNMENT, START_ADDR};
+    use crate::Error::ReserveZeroAddress;
+    use crate::{Error, MemoryManager};
 
     #[test]
     fn reserve_low() {
@@ -289,5 +311,61 @@ mod test {
 
         let addr = mgr.reserve_dynamic(0x4000).unwrap();
         assert_eq!(addr, START_ADDR);
+    }
+
+    #[test]
+    fn reserve_whole_space() {
+        let mut mgr = MemoryManager::new().unwrap();
+        mgr.reserve_dynamic(LAST_ADDR - START_ADDR + 1).unwrap();
+
+        let mut hole_iter = mgr.iter_holes();
+        assert_eq!(hole_iter.next(), None);
+    }
+
+    #[test]
+    fn reserve_whole_space2() {
+        let mut mgr = MemoryManager::new().unwrap();
+        mgr.reserve_static(START_ADDR - REGION_ALIGNMENT, LAST_ADDR - START_ADDR + 1)
+            .unwrap();
+
+        let mut hole_iter = mgr.iter_holes();
+        assert_eq!(
+            hole_iter.next(),
+            Some(AddressRange::from_range(
+                LAST_ADDR - REGION_ALIGNMENT + 1,
+                0
+            ))
+        );
+        assert_eq!(hole_iter.next(), None);
+    }
+
+    #[test]
+    fn reserve_whole_space3() {
+        let mut mgr = MemoryManager::new().unwrap();
+        mgr.reserve_static(
+            START_ADDR + REGION_ALIGNMENT,
+            LAST_ADDR - START_ADDR - REGION_ALIGNMENT + 1,
+        )
+        .unwrap();
+
+        let mut hole_iter = mgr.iter_holes();
+        assert_eq!(
+            hole_iter.next(),
+            Some(AddressRange::from_range(
+                START_ADDR,
+                START_ADDR + REGION_ALIGNMENT,
+            ))
+        );
+        assert_eq!(hole_iter.next(), None);
+    }
+
+    #[test]
+    fn reserve_out_of_range() {
+        let mut mgr = MemoryManager::new().unwrap();
+        assert!(matches!(
+            mgr.reserve_static(LAST_ADDR - REGION_ALIGNMENT + 1, REGION_ALIGNMENT * 2)
+                .unwrap_err(),
+            Error::ReserveOutOfRange
+        ));
     }
 }

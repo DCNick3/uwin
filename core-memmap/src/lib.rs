@@ -31,6 +31,8 @@ pub enum Error {
         "Attempt to reserve a region, but no available place found for it in the address space"
     )]
     ReserveNoAddressSpace,
+    #[error("Attempt to reserve a region, but it is out of range for 32-bit address space")]
+    ReserveOutOfRange,
     #[error("Attempt to unreserve region that is not currently previously reserved")]
     UnreserveNonexistentRegion,
 

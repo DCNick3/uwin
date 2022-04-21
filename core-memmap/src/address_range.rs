@@ -15,6 +15,17 @@ impl AddressRange {
     #[inline]
     pub fn new(start: PtrRepr, size: PtrRepr) -> Self {
         assert_ne!(size, 0);
+        // check that start + size doesn't cross the end of the address space
+        // but allow for case where start + size is one past the end of address space
+        // (it's 0 when used as wrapping_add)
+        start.checked_add(size).unwrap_or_else(|| {
+            assert_eq!(
+                start.wrapping_add(size),
+                0,
+                "AddressRange specifies a range that crosses the end of the address space"
+            );
+            0
+        });
         Self { start, size }
     }
 
