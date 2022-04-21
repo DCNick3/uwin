@@ -186,7 +186,7 @@ impl MemoryManager {
             .ok_or(Error::UnreserveNonexistentRegion)?;
 
         // TODO: maybe we should uncommit these pages?
-        assert!(state.iter().all(|s| !s.committed));
+        assert!(state.iter().all(|s| !s.committed()));
 
         Ok(())
     }
