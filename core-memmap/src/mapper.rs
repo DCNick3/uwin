@@ -1,9 +1,9 @@
 use crate::os;
-use crate::Result;
 use core_mem::ctx::FlatMemoryCtx;
 use core_mem::ptr::PtrRepr;
 use memory_image::Protection;
 use std::sync::Once;
+use thiserror::Error;
 
 /// A wrapper around native APIs that implements the mappings for FlatMemoryCtx
 pub(crate) struct Mapper {
@@ -22,7 +22,7 @@ pub fn page_size() -> PtrRepr {
 }
 
 impl Mapper {
-    pub fn new() -> Result<Self> {
+    pub fn new() -> MapperResult<Self> {
         // it might be possible to emulate 4K on different page sizes but needs quite some work
         assert_eq!(
             page_size(),
@@ -35,16 +35,16 @@ impl Mapper {
         Ok(Self { base })
     }
 
-    pub fn map(&self, addr: PtrRepr, size: PtrRepr, prot: Protection) -> Result<()> {
+    pub fn map(&self, addr: PtrRepr, size: PtrRepr, prot: Protection) -> MapperResult<()> {
         let prot = prot & Protection::READ_WRITE;
         unsafe { os::map(self.base, addr, size, prot) }
     }
 
-    pub fn unmap(&self, addr: PtrRepr, size: PtrRepr) -> Result<()> {
+    pub fn unmap(&self, addr: PtrRepr, size: PtrRepr) -> MapperResult<()> {
         unsafe { os::unmap(self.base, addr, size) }
     }
 
-    pub fn protect(&self, addr: PtrRepr, size: PtrRepr, prot: Protection) -> Result<()> {
+    pub fn protect(&self, addr: PtrRepr, size: PtrRepr, prot: Protection) -> MapperResult<()> {
         let prot = prot & Protection::READ_WRITE;
         unsafe { os::protect(self.base, addr, size, prot) }
     }
@@ -64,6 +64,21 @@ impl Drop for Mapper {
         unsafe { os::unreserve(self.base) }.unwrap() // well, this _shouldn't_ fail (but technically may, lol)
     }
 }
+
+#[derive(Debug, Error)]
+pub enum MapperError {
+    #[error("Unaligned size: {0:#08x}")]
+    UnalignedSize(PtrRepr),
+    #[error("Unaligned address: {0:#08x}")]
+    UnalignedAddress(PtrRepr),
+
+    #[error("A system call failed: {0}")]
+    SystemCall(#[from] std::io::Error),
+    #[error("macOS kernel call failed: {0}")]
+    MachCall(libc::c_int),
+}
+
+pub type MapperResult<T> = std::result::Result<T, MapperError>;
 
 #[cfg(test)]
 mod test {

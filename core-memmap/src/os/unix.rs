@@ -1,4 +1,5 @@
-use crate::{Error, Result, PAGE_SIZE};
+use crate::mapper::{MapperError, MapperResult};
+use crate::PAGE_SIZE;
 use core_mem::ptr::PtrRepr;
 use libc::{
     c_void, MAP_ANON, MAP_FAILED, MAP_FIXED, MAP_PRIVATE, PROT_EXEC, PROT_NONE, PROT_READ,
@@ -15,7 +16,7 @@ pub fn page_size() -> PtrRepr {
     unsafe { libc::sysconf(libc::_SC_PAGESIZE) as PtrRepr }
 }
 
-pub fn reserve() -> Result<*const ()> {
+pub fn reserve() -> MapperResult<*const ()> {
     match unsafe {
         // should be safe to map a non-accessible region
         libc::mmap(
@@ -35,7 +36,7 @@ pub fn reserve() -> Result<*const ()> {
 /// # Safety:
 ///
 /// The base pointer comes from the reserve()
-pub unsafe fn unreserve(base: *const ()) -> Result<()> {
+pub unsafe fn unreserve(base: *const ()) -> MapperResult<()> {
     match libc::munmap(base as *mut _, MAP_SIZE) {
         0 => Ok(()),
         _ => Err(std::io::Error::last_os_error().into()),
@@ -55,17 +56,17 @@ fn prot_to_native(prot: Protection) -> libc::c_int {
         .fold(PROT_NONE, |acc, (_, prot)| acc | *prot)
 }
 
-fn check_addr(addr: PtrRepr) -> Result<()> {
+fn check_addr(addr: PtrRepr) -> MapperResult<()> {
     if addr % PAGE_SIZE != 0 {
-        Err(Error::UnalignedAddress(addr))
+        Err(MapperError::UnalignedAddress(addr))
     } else {
         Ok(())
     }
 }
 
-fn check_size(size: PtrRepr) -> Result<()> {
+fn check_size(size: PtrRepr) -> MapperResult<()> {
     if size % PAGE_SIZE != 0 {
-        Err(Error::UnalignedSize(size))
+        Err(MapperError::UnalignedSize(size))
     } else {
         Ok(())
     }
@@ -74,7 +75,11 @@ fn check_size(size: PtrRepr) -> Result<()> {
 /// # Safety:
 ///
 /// The base pointer comes from the reserve()
-fn convert_region(base: *const (), addr: PtrRepr, size: PtrRepr) -> Result<(*mut c_void, usize)> {
+fn convert_region(
+    base: *const (),
+    addr: PtrRepr,
+    size: PtrRepr,
+) -> MapperResult<(*mut c_void, usize)> {
     check_addr(addr)?;
     check_size(size)?;
 
@@ -87,7 +92,12 @@ fn convert_region(base: *const (), addr: PtrRepr, size: PtrRepr) -> Result<(*mut
 /// # Safety:
 ///
 /// The base pointer comes from the reserve()
-pub unsafe fn map(base: *const (), addr: PtrRepr, size: PtrRepr, prot: Protection) -> Result<()> {
+pub unsafe fn map(
+    base: *const (),
+    addr: PtrRepr,
+    size: PtrRepr,
+    prot: Protection,
+) -> MapperResult<()> {
     let (addr, size) = convert_region(base, addr, size)?;
 
     // SAFETY: just mapping should be safe
@@ -107,7 +117,7 @@ pub unsafe fn map(base: *const (), addr: PtrRepr, size: PtrRepr, prot: Protectio
 /// # Safety:
 ///
 /// The base pointer comes from the reserve()
-pub unsafe fn unmap(base: *const (), addr: PtrRepr, size: PtrRepr) -> Result<()> {
+pub unsafe fn unmap(base: *const (), addr: PtrRepr, size: PtrRepr) -> MapperResult<()> {
     let (addr, size) = convert_region(base, addr, size)?;
 
     // re-map the region as non-accessible instead of unmapping to keep the reservation
@@ -130,7 +140,7 @@ pub unsafe fn protect(
     addr: PtrRepr,
     size: PtrRepr,
     protection: Protection,
-) -> Result<()> {
+) -> MapperResult<()> {
     let (addr, size) = convert_region(base, addr, size)?;
 
     match libc::mprotect(addr, size, prot_to_native(protection)) {
