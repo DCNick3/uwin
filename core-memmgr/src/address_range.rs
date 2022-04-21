@@ -1,4 +1,4 @@
-use crate::PAGE_SIZE;
+use crate::{Error, Result, PAGE_SIZE};
 use core_mem::ptr::PtrRepr;
 use range_ext::intersect::{Intersect, Intersection};
 use std::ops::Range;
@@ -15,19 +15,22 @@ pub struct AddressRange {
 impl AddressRange {
     #[inline]
     pub fn new(start: PtrRepr, size: PtrRepr) -> Self {
-        assert_ne!(size, 0);
+        Self::try_new(start, size).unwrap()
+    }
+
+    #[inline]
+    pub fn try_new(start: PtrRepr, size: PtrRepr) -> Result<Self> {
+        if size == 0 {
+            return Err(Error::RangeWithZeroSize);
+        }
+
         // check that start + size doesn't cross the end of the address space
         // but allow for case where start + size is one past the end of address space
         // (it's 0 when used as wrapping_add)
-        start.checked_add(size).unwrap_or_else(|| {
-            assert_eq!(
-                start.wrapping_add(size),
-                0,
-                "AddressRange specifies a range that crosses the end of the address space"
-            );
-            0
-        });
-        Self { start, size }
+        if start.checked_add(size).is_none() && start.wrapping_add(size) != 0 {
+            return Err(Error::RangeCrossesBoundary);
+        };
+        Ok(Self { start, size })
     }
 
     #[inline]
@@ -53,11 +56,11 @@ impl AddressRange {
     }
 
     #[inline]
-    pub fn pages_indices(&self, start: PtrRepr, size: PtrRepr) -> Range<usize> {
-        assert!(self.intersect(&Self::new(start, size)).is_over());
+    pub fn pages_indices(&self, range: AddressRange) -> Range<usize> {
+        assert!(self.intersect(&range).is_over());
 
-        let offset = ((start - self.start) / PAGE_SIZE) as usize;
-        let size = (size / PAGE_SIZE) as usize;
+        let offset = ((range.start - self.start) / PAGE_SIZE) as usize;
+        let size = (range.size / PAGE_SIZE) as usize;
 
         offset..(offset + size)
     }

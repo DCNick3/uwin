@@ -116,7 +116,7 @@ impl MemoryManager {
         }
     }
 
-    pub fn reserve_dynamic(&mut self, size: PtrRepr) -> Result<PtrRepr> {
+    pub fn reserve_dynamic(&mut self, size: PtrRepr) -> Result<AddressRange> {
         let size = align::ceil(size, PAGE_SIZE);
 
         let mut iter = self.iter_holes();
@@ -136,35 +136,28 @@ impl MemoryManager {
             .insert(hole.start, PageRegionState::new(size))
             .is_none());
 
-        Ok(hole.start)
+        Ok(AddressRange::new(hole.start, size))
     }
 
-    fn align_range(addr: PtrRepr, size: PtrRepr) -> (PtrRepr, PtrRepr) {
+    fn align_range(range: AddressRange) -> Result<AddressRange> {
         // should follow VirtualAlloc's semantics: https://docs.microsoft.com/en-us/windows/win32/api/memoryapi/nf-memoryapi-virtualalloc
         // addr: If the memory is being reserved, the specified address is rounded down to the nearest multiple of the allocation granularity
         // size: The allocated pages include all pages containing one or more bytes in the range from lpAddress to lpAddress+dwSize.
         //        This means that a 2-byte range straddling a page boundary causes both pages to be included in the allocated region.
+        let addr = range.start;
+        let size = range.size;
 
         // unaligned portion of the address
         let addr_unalign = addr % REGION_ALIGNMENT;
 
         let aligned_addr = align::floor(addr, REGION_ALIGNMENT);
         let aligned_size = align::ceil(size.checked_add(addr_unalign).unwrap(), PAGE_SIZE);
-        (aligned_addr, aligned_size)
+
+        AddressRange::try_new(aligned_addr, aligned_size)
     }
 
-    pub fn reserve_static(&mut self, addr: PtrRepr, size: PtrRepr) -> Result<PtrRepr> {
-        let (addr, size) = Self::align_range(addr, size);
-
-        // check we don't cross the end of address space
-        if addr.checked_add(size).is_none() {
-            // allow for case where allocation spans precisely till the end of the address space
-            if addr.wrapping_add(size) != 0 {
-                return Err(Error::ReserveOutOfRange);
-            }
-        }
-
-        let range = AddressRange::new(addr, size);
+    pub fn reserve_static(&mut self, range: AddressRange) -> Result<AddressRange> {
+        let range = Self::align_range(range)?;
 
         if range.start == 0 {
             return Err(Error::ReserveZeroAddress);
@@ -183,7 +176,7 @@ impl MemoryManager {
             .insert(range.start, PageRegionState::new(range.size))
             .is_none());
 
-        Ok(range.start)
+        Ok(range)
     }
 
     pub fn unreserve(&mut self, addr: PtrRepr) -> Result<()> {
@@ -220,18 +213,12 @@ impl MemoryManager {
         Err(Error::NoRegionContainsRangeFully)
     }
 
-    pub fn commit(
-        &mut self,
-        addr: PtrRepr,
-        size: PtrRepr,
-        protection: Protection,
-    ) -> Result<PtrRepr> {
-        let (addr, size) = Self::align_range(addr, size);
+    pub fn commit(&mut self, range: AddressRange, protection: Protection) -> Result<AddressRange> {
+        let range = Self::align_range(range)?;
 
-        let (range, state) =
-            Self::find_region_mut(&mut self.regions, AddressRange::new(addr, size))?;
+        let (region_range, state) = Self::find_region_mut(&mut self.regions, range)?;
 
-        let region_range = range.pages_indices(addr, size);
+        let region_subrange = region_range.pages_indices(range);
 
         // Win32's commit is a weird one...
         // The operation is roughly equivalent to the following atomic operation:
@@ -252,7 +239,9 @@ impl MemoryManager {
 
         let mut rollback_ops = Vec::new();
 
-        for (address_range, state) in state.iter_page_runs_in_range(addr, region_range.clone()) {
+        for (address_range, state) in
+            state.iter_page_runs_in_range(region_range.start, region_subrange.clone())
+        {
             let res = match state {
                 PageState::Uncommitted => {
                     rollback_ops.push(RollbackOp::Uncommit(address_range));
@@ -289,9 +278,9 @@ impl MemoryManager {
         }
 
         // yay, update the stored states
-        state.set_range(region_range, PageState::Committed(protection));
+        state.set_range(region_subrange, PageState::Committed(protection));
 
-        Ok(addr)
+        Ok(range)
     }
 }
 
@@ -305,10 +294,13 @@ mod test {
         #[test]
         fn reserve_low() {
             let mut mgr = MemoryManager::new().unwrap();
-            let addr = mgr.reserve_static(0x10001, 0x1000).unwrap();
-            assert_eq!(addr, 0x10000);
+            let range = mgr
+                .reserve_static(AddressRange::new(0x10001, 0x1000))
+                .unwrap();
+            assert_eq!(range.start, 0x10000);
+            assert_eq!(range.size, 0x2000);
 
-            assert_eq!(mgr.regions.get(&addr).unwrap().len_bytes(), 0x2000);
+            assert_eq!(mgr.regions.get(&range.start).unwrap().len_bytes(), 0x2000);
 
             let mut hole_iter = mgr.iter_holes();
             assert_eq!(
@@ -317,7 +309,7 @@ mod test {
             );
             assert_eq!(hole_iter.next(), None);
 
-            mgr.unreserve(addr).unwrap();
+            mgr.unreserve(range.start).unwrap();
 
             assert!(mgr.regions.is_empty());
         }
@@ -341,23 +333,24 @@ mod test {
             let mut mgr = MemoryManager::new().unwrap();
             let provided_size = 0xfff;
             let expected_size = 0x2000;
-            let addr = mgr.reserve_static(0x10111000, provided_size).unwrap();
-            assert_eq!(addr, 0x10110000);
-
-            assert_eq!(mgr.regions.get(&addr).unwrap().len_bytes(), expected_size);
+            let range = mgr
+                .reserve_static(AddressRange::new(0x10111000, provided_size))
+                .unwrap();
+            assert_eq!(range.start, 0x10110000);
+            assert_eq!(range.size, expected_size);
 
             let mut hole_iter = mgr.iter_holes();
             assert_eq!(
                 hole_iter.next(),
-                Some(AddressRange::from_range(START_ADDR, addr))
+                Some(AddressRange::from_range(START_ADDR, range.start))
             );
             assert_eq!(
                 hole_iter.next(), // we use REGION_ALIGNMENT instead of expected size because holes' address are aligned to REGION_ALIGNED (and expected_size is not aligned to it)
-                Some(AddressRange::from_range(addr + REGION_ALIGNMENT, 0))
+                Some(AddressRange::from_range(range.start + REGION_ALIGNMENT, 0))
             );
             assert_eq!(hole_iter.next(), None);
 
-            mgr.unreserve(addr).unwrap();
+            mgr.unreserve(range.start).unwrap();
 
             assert!(mgr.regions.is_empty());
         }
@@ -365,12 +358,14 @@ mod test {
         #[test]
         fn reserve_start_holes_correct() {
             let mut mgr = MemoryManager::new().unwrap();
-            let addr = mgr.reserve_static(START_ADDR, 0x1000).unwrap();
+            let range = mgr
+                .reserve_static(AddressRange::new(START_ADDR, 0x1000))
+                .unwrap();
 
             let mut hole_iter = mgr.iter_holes();
             assert_eq!(
                 hole_iter.next(), // we use REGION_ALIGNMENT instead of expected size because holes' address are aligned to REGION_ALIGNED (and expected_size is not aligned to it)
-                Some(AddressRange::from_range(addr + REGION_ALIGNMENT, 0))
+                Some(AddressRange::from_range(range.start + REGION_ALIGNMENT, 0))
             );
             assert_eq!(hole_iter.next(), None);
         }
@@ -378,12 +373,14 @@ mod test {
         #[test]
         fn reserve_start_holes_correct2() {
             let mut mgr = MemoryManager::new().unwrap();
-            let addr = mgr.reserve_static(START_ADDR, 0x1000).unwrap();
-            let addr1 = mgr
-                .reserve_static(START_ADDR + REGION_ALIGNMENT, 0x1000)
+            let range = mgr
+                .reserve_static(AddressRange::new(START_ADDR, 0x1000))
+                .unwrap();
+            let range1 = mgr
+                .reserve_static(AddressRange::new(START_ADDR + REGION_ALIGNMENT, 0x1000))
                 .unwrap();
 
-            mgr.unreserve(addr).unwrap();
+            mgr.unreserve(range.start).unwrap();
 
             let mut hole_iter = mgr.iter_holes();
             assert_eq!(
@@ -395,7 +392,7 @@ mod test {
             );
             assert_eq!(
                 hole_iter.next(),
-                Some(AddressRange::from_range(addr1 + REGION_ALIGNMENT, 0))
+                Some(AddressRange::from_range(range1.start + REGION_ALIGNMENT, 0))
             );
             assert_eq!(hole_iter.next(), None);
         }
@@ -405,15 +402,15 @@ mod test {
             let mut mgr = MemoryManager::new().unwrap();
 
             let addr = mgr.reserve_dynamic(0x1000).unwrap();
-            assert_eq!(addr, START_ADDR);
+            assert_eq!(addr.start, START_ADDR);
 
             let addr1 = mgr.reserve_dynamic(0x1000).unwrap();
-            assert_eq!(addr1, START_ADDR + REGION_ALIGNMENT);
+            assert_eq!(addr1.start, START_ADDR + REGION_ALIGNMENT);
 
-            mgr.unreserve(addr).unwrap();
+            mgr.unreserve(addr.start).unwrap();
 
             let addr = mgr.reserve_dynamic(0x4000).unwrap();
-            assert_eq!(addr, START_ADDR);
+            assert_eq!(addr.start, START_ADDR);
         }
 
         #[test]
@@ -428,8 +425,11 @@ mod test {
         #[test]
         fn reserve_whole_space2() {
             let mut mgr = MemoryManager::new().unwrap();
-            mgr.reserve_static(START_ADDR - REGION_ALIGNMENT, LAST_ADDR - START_ADDR + 1)
-                .unwrap();
+            mgr.reserve_static(AddressRange::new(
+                START_ADDR - REGION_ALIGNMENT,
+                LAST_ADDR - START_ADDR + 1,
+            ))
+            .unwrap();
 
             let mut hole_iter = mgr.iter_holes();
             assert_eq!(
@@ -445,10 +445,10 @@ mod test {
         #[test]
         fn reserve_whole_space3() {
             let mut mgr = MemoryManager::new().unwrap();
-            mgr.reserve_static(
+            mgr.reserve_static(AddressRange::new(
                 START_ADDR + REGION_ALIGNMENT,
                 LAST_ADDR - START_ADDR - REGION_ALIGNMENT + 1,
-            )
+            ))
             .unwrap();
 
             let mut hole_iter = mgr.iter_holes();
@@ -464,27 +464,32 @@ mod test {
 
         #[test]
         fn reserve_out_of_range() {
-            let mut mgr = MemoryManager::new().unwrap();
             assert!(matches!(
-                mgr.reserve_static(LAST_ADDR - REGION_ALIGNMENT + 1, REGION_ALIGNMENT * 2)
+                // well, we can't really raise this error inside the manager, it's caught by the AddressSpace constructor
+                AddressRange::try_new(LAST_ADDR - REGION_ALIGNMENT + 1, REGION_ALIGNMENT * 2)
                     .unwrap_err(),
-                Error::ReserveOutOfRange
+                Error::RangeCrossesBoundary
             ));
         }
 
         #[test]
         fn reserve_already_reserved() {
             let mut mgr = MemoryManager::new().unwrap();
-            mgr.reserve_static(START_ADDR, 0x1000).unwrap();
+            mgr.reserve_static(AddressRange::new(START_ADDR, 0x1000))
+                .unwrap();
             assert!(matches!(
-                mgr.reserve_static(START_ADDR, 0x2000).unwrap_err(),
+                mgr.reserve_static(AddressRange::new(START_ADDR, 0x2000))
+                    .unwrap_err(),
                 Error::ReservedRegionIntersects
             ));
 
-            mgr.reserve_static(START_ADDR + REGION_ALIGNMENT, REGION_ALIGNMENT * 2)
-                .unwrap();
+            mgr.reserve_static(AddressRange::new(
+                START_ADDR + REGION_ALIGNMENT,
+                REGION_ALIGNMENT * 2,
+            ))
+            .unwrap();
             assert!(matches!(
-                mgr.reserve_static(START_ADDR + REGION_ALIGNMENT * 2, 0x2000)
+                mgr.reserve_static(AddressRange::new(START_ADDR + REGION_ALIGNMENT * 2, 0x2000))
                     .unwrap_err(),
                 Error::ReservedRegionIntersects
             ));
@@ -499,7 +504,8 @@ mod test {
                 Error::UnreserveNonexistentRegion
             ));
 
-            mgr.reserve_static(START_ADDR, 0x1000).unwrap();
+            mgr.reserve_static(AddressRange::new(START_ADDR, 0x1000))
+                .unwrap();
             mgr.unreserve(START_ADDR).unwrap();
             assert!(matches!(
                 mgr.unreserve(START_ADDR).unwrap_err(),
@@ -511,7 +517,8 @@ mod test {
         fn reserve_zero_address() {
             let mut mgr = MemoryManager::new().unwrap();
             assert!(matches!(
-                mgr.reserve_static(0x1000, 0x1000).unwrap_err(),
+                mgr.reserve_static(AddressRange::new(0x1000, 0x1000))
+                    .unwrap_err(),
                 Error::ReserveZeroAddress
             ));
         }
@@ -526,14 +533,14 @@ mod test {
             let mut mgr = MemoryManager::new().unwrap();
             let ctx = unsafe { mgr.memory_context() };
 
-            let addr = mgr.reserve_dynamic(0x1000).unwrap();
+            let range = mgr.reserve_dynamic(0x1000).unwrap();
 
-            mgr.commit(addr, 0x1000, Protection::READ_WRITE).unwrap();
+            mgr.commit(range, Protection::READ_WRITE).unwrap();
 
-            let ptr = ctx.to_native_ptr(addr);
+            let ptr = ctx.to_native_ptr(range.start);
             unsafe { std::ptr::write(ptr, 12) };
 
-            mgr.commit(addr, 0x1000, Protection::READ_WRITE).unwrap();
+            mgr.commit(range, Protection::READ_WRITE).unwrap();
 
             assert_eq!(unsafe { std::ptr::read(ptr) }, 12);
         }

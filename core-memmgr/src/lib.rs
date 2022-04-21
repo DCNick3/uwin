@@ -25,11 +25,13 @@ pub enum Error {
         "Attempt to reserve a region, but no available place found for it in the address space"
     )]
     ReserveNoAddressSpace,
-    #[error("Attempt to reserve a region, but it is out of range for 32-bit address space")]
-    ReserveOutOfRange,
     #[error("Attempt to unreserve region that is not currently previously reserved")]
     UnreserveNonexistentRegion,
 
+    #[error("Specified memory range has size zero")]
+    RangeWithZeroSize,
+    #[error("Specified memory ranges crosses the address space boundary")]
+    RangeCrossesBoundary,
     #[error("No reserved region fully contained the specified memory range fully")]
     NoRegionContainsRangeFully,
 
