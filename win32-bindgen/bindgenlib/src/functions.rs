@@ -111,6 +111,7 @@ pub fn gen_thunk_function(def: &MethodDef, gen: &Gen, namespace: &TokenStream) -
         .iter()
         .map(|arg| format!("{} = {{:?}}", arg))
         .join(", ");
+    let arguments_fmt = format!("  args = {{{{{}}}}}", arguments_fmt);
 
     let body = quote! {
         let api = #namespace get_api(&context.win32);

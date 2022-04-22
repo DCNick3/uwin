@@ -24,7 +24,7 @@ extern "C" fn thunk_CloseHandle(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CloseHandle");
         let _enter = span.enter();
-        tracing::trace!("h_object = {:?}", h_object);
+        tracing::trace!("  args = {{h_object = {:?}}}", h_object);
         let res = api.CloseHandle(h_object);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -51,7 +51,7 @@ extern "C" fn thunk_CompareObjectHandles(
         let span = tracing::trace_span!("CompareObjectHandles");
         let _enter = span.enter();
         tracing::trace!(
-            "h_first_object_handle = {:?}, h_second_object_handle = {:?}",
+            "  args = {{h_first_object_handle = {:?}, h_second_object_handle = {:?}}}",
             h_first_object_handle,
             h_second_object_handle
         );
@@ -85,7 +85,7 @@ extern "C" fn thunk_DuplicateHandle(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("DuplicateHandle");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_source_process_handle = {:?}, h_source_handle = {:?}, h_target_process_handle = {:?}, lp_target_handle = {:?}, dw_desired_access = {:?}, b_inherit_handle = {:?}, dw_options = {:?}" , h_source_process_handle , h_source_handle , h_target_process_handle , lp_target_handle , dw_desired_access , b_inherit_handle , dw_options );
+        tracing :: trace ! ( "  args = {{h_source_process_handle = {:?}, h_source_handle = {:?}, h_target_process_handle = {:?}, lp_target_handle = {:?}, dw_desired_access = {:?}, b_inherit_handle = {:?}, dw_options = {:?}}}" , h_source_process_handle , h_source_handle , h_target_process_handle , lp_target_handle , dw_desired_access , b_inherit_handle , dw_options );
         let res = api.DuplicateHandle(
             h_source_process_handle,
             h_source_handle,
@@ -119,7 +119,11 @@ extern "C" fn thunk_GetHandleInformation(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetHandleInformation");
         let _enter = span.enter();
-        tracing::trace!("h_object = {:?}, lpdw_flags = {:?}", h_object, lpdw_flags);
+        tracing::trace!(
+            "  args = {{h_object = {:?}, lpdw_flags = {:?}}}",
+            h_object,
+            lpdw_flags
+        );
         let res = api.GetHandleInformation(h_object, lpdw_flags);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -140,7 +144,7 @@ extern "C" fn thunk_GetLastError(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetLastError");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.GetLastError();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -168,7 +172,7 @@ extern "C" fn thunk_SetHandleInformation(
         let span = tracing::trace_span!("SetHandleInformation");
         let _enter = span.enter();
         tracing::trace!(
-            "h_object = {:?}, dw_mask = {:?}, dw_flags = {:?}",
+            "  args = {{h_object = {:?}, dw_mask = {:?}, dw_flags = {:?}}}",
             h_object,
             dw_mask,
             dw_flags
@@ -194,7 +198,7 @@ extern "C" fn thunk_SetLastError(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetLastError");
         let _enter = span.enter();
-        tracing::trace!("dw_err_code = {:?}", dw_err_code);
+        tracing::trace!("  args = {{dw_err_code = {:?}}}", dw_err_code);
         let res = api.SetLastError(dw_err_code);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -224,7 +228,7 @@ extern "C" fn thunk_CompareStringA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CompareStringA");
         let _enter = span.enter();
-        tracing :: trace ! ( "locale = {:?}, dw_cmp_flags = {:?}, lp_string_1 = {:?}, cch_count_1 = {:?}, lp_string_2 = {:?}, cch_count_2 = {:?}" , locale , dw_cmp_flags , lp_string_1 , cch_count_1 , lp_string_2 , cch_count_2 );
+        tracing :: trace ! ( "  args = {{locale = {:?}, dw_cmp_flags = {:?}, lp_string_1 = {:?}, cch_count_1 = {:?}, lp_string_2 = {:?}, cch_count_2 = {:?}}}" , locale , dw_cmp_flags , lp_string_1 , cch_count_1 , lp_string_2 , cch_count_2 );
         let res = api.CompareStringA(
             locale,
             dw_cmp_flags,
@@ -264,7 +268,7 @@ extern "C" fn thunk_CompareStringEx(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CompareStringEx");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_locale_name = {:?}, dw_cmp_flags = {:?}, lp_string_1 = {:?}, cch_count_1 = {:?}, lp_string_2 = {:?}, cch_count_2 = {:?}, lp_version_information = {:?}, lp_reserved = {:?}, l_param = {:?}" , lp_locale_name , dw_cmp_flags , lp_string_1 , cch_count_1 , lp_string_2 , cch_count_2 , lp_version_information , lp_reserved , l_param );
+        tracing :: trace ! ( "  args = {{lp_locale_name = {:?}, dw_cmp_flags = {:?}, lp_string_1 = {:?}, cch_count_1 = {:?}, lp_string_2 = {:?}, cch_count_2 = {:?}, lp_version_information = {:?}, lp_reserved = {:?}, l_param = {:?}}}" , lp_locale_name , dw_cmp_flags , lp_string_1 , cch_count_1 , lp_string_2 , cch_count_2 , lp_version_information , lp_reserved , l_param );
         let res = api.CompareStringEx(
             lp_locale_name,
             dw_cmp_flags,
@@ -303,7 +307,7 @@ extern "C" fn thunk_CompareStringOrdinal(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CompareStringOrdinal");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_string_1 = {:?}, cch_count_1 = {:?}, lp_string_2 = {:?}, cch_count_2 = {:?}, b_ignore_case = {:?}" , lp_string_1 , cch_count_1 , lp_string_2 , cch_count_2 , b_ignore_case );
+        tracing :: trace ! ( "  args = {{lp_string_1 = {:?}, cch_count_1 = {:?}, lp_string_2 = {:?}, cch_count_2 = {:?}, b_ignore_case = {:?}}}" , lp_string_1 , cch_count_1 , lp_string_2 , cch_count_2 , b_ignore_case );
         let res = api.CompareStringOrdinal(
             lp_string_1,
             cch_count_1,
@@ -339,7 +343,7 @@ extern "C" fn thunk_CompareStringW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CompareStringW");
         let _enter = span.enter();
-        tracing :: trace ! ( "locale = {:?}, dw_cmp_flags = {:?}, lp_string_1 = {:?}, cch_count_1 = {:?}, lp_string_2 = {:?}, cch_count_2 = {:?}" , locale , dw_cmp_flags , lp_string_1 , cch_count_1 , lp_string_2 , cch_count_2 );
+        tracing :: trace ! ( "  args = {{locale = {:?}, dw_cmp_flags = {:?}, lp_string_1 = {:?}, cch_count_1 = {:?}, lp_string_2 = {:?}, cch_count_2 = {:?}}}" , locale , dw_cmp_flags , lp_string_1 , cch_count_1 , lp_string_2 , cch_count_2 );
         let res = api.CompareStringW(
             locale,
             dw_cmp_flags,
@@ -371,7 +375,7 @@ extern "C" fn thunk_ConvertDefaultLocale(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ConvertDefaultLocale");
         let _enter = span.enter();
-        tracing::trace!("locale = {:?}", locale);
+        tracing::trace!("  args = {{locale = {:?}}}", locale);
         let res = api.ConvertDefaultLocale(locale);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -399,13 +403,7 @@ extern "C" fn thunk_EnumCalendarInfoA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("EnumCalendarInfoA");
         let _enter = span.enter();
-        tracing::trace!(
-            "lp_cal_info_enum_proc = {:?}, locale = {:?}, calendar = {:?}, cal_type = {:?}",
-            lp_cal_info_enum_proc,
-            locale,
-            calendar,
-            cal_type
-        );
+        tracing :: trace ! ( "  args = {{lp_cal_info_enum_proc = {:?}, locale = {:?}, calendar = {:?}, cal_type = {:?}}}" , lp_cal_info_enum_proc , locale , calendar , cal_type );
         let res = api.EnumCalendarInfoA(lp_cal_info_enum_proc, locale, calendar, cal_type);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -433,13 +431,7 @@ extern "C" fn thunk_EnumCalendarInfoExA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("EnumCalendarInfoExA");
         let _enter = span.enter();
-        tracing::trace!(
-            "lp_cal_info_enum_proc_ex = {:?}, locale = {:?}, calendar = {:?}, cal_type = {:?}",
-            lp_cal_info_enum_proc_ex,
-            locale,
-            calendar,
-            cal_type
-        );
+        tracing :: trace ! ( "  args = {{lp_cal_info_enum_proc_ex = {:?}, locale = {:?}, calendar = {:?}, cal_type = {:?}}}" , lp_cal_info_enum_proc_ex , locale , calendar , cal_type );
         let res = api.EnumCalendarInfoExA(lp_cal_info_enum_proc_ex, locale, calendar, cal_type);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -469,7 +461,7 @@ extern "C" fn thunk_EnumCalendarInfoExEx(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("EnumCalendarInfoExEx");
         let _enter = span.enter();
-        tracing :: trace ! ( "p_cal_info_enum_proc_ex_ex = {:?}, lp_locale_name = {:?}, calendar = {:?}, lp_reserved = {:?}, cal_type = {:?}, l_param = {:?}" , p_cal_info_enum_proc_ex_ex , lp_locale_name , calendar , lp_reserved , cal_type , l_param );
+        tracing :: trace ! ( "  args = {{p_cal_info_enum_proc_ex_ex = {:?}, lp_locale_name = {:?}, calendar = {:?}, lp_reserved = {:?}, cal_type = {:?}, l_param = {:?}}}" , p_cal_info_enum_proc_ex_ex , lp_locale_name , calendar , lp_reserved , cal_type , l_param );
         let res = api.EnumCalendarInfoExEx(
             p_cal_info_enum_proc_ex_ex,
             lp_locale_name,
@@ -504,13 +496,7 @@ extern "C" fn thunk_EnumCalendarInfoExW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("EnumCalendarInfoExW");
         let _enter = span.enter();
-        tracing::trace!(
-            "lp_cal_info_enum_proc_ex = {:?}, locale = {:?}, calendar = {:?}, cal_type = {:?}",
-            lp_cal_info_enum_proc_ex,
-            locale,
-            calendar,
-            cal_type
-        );
+        tracing :: trace ! ( "  args = {{lp_cal_info_enum_proc_ex = {:?}, locale = {:?}, calendar = {:?}, cal_type = {:?}}}" , lp_cal_info_enum_proc_ex , locale , calendar , cal_type );
         let res = api.EnumCalendarInfoExW(lp_cal_info_enum_proc_ex, locale, calendar, cal_type);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -538,13 +524,7 @@ extern "C" fn thunk_EnumCalendarInfoW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("EnumCalendarInfoW");
         let _enter = span.enter();
-        tracing::trace!(
-            "lp_cal_info_enum_proc = {:?}, locale = {:?}, calendar = {:?}, cal_type = {:?}",
-            lp_cal_info_enum_proc,
-            locale,
-            calendar,
-            cal_type
-        );
+        tracing :: trace ! ( "  args = {{lp_cal_info_enum_proc = {:?}, locale = {:?}, calendar = {:?}, cal_type = {:?}}}" , lp_cal_info_enum_proc , locale , calendar , cal_type );
         let res = api.EnumCalendarInfoW(lp_cal_info_enum_proc, locale, calendar, cal_type);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -572,7 +552,7 @@ extern "C" fn thunk_EnumDateFormatsA(
         let span = tracing::trace_span!("EnumDateFormatsA");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_date_fmt_enum_proc = {:?}, locale = {:?}, dw_flags = {:?}",
+            "  args = {{lp_date_fmt_enum_proc = {:?}, locale = {:?}, dw_flags = {:?}}}",
             lp_date_fmt_enum_proc,
             locale,
             dw_flags
@@ -604,7 +584,7 @@ extern "C" fn thunk_EnumDateFormatsExA(
         let span = tracing::trace_span!("EnumDateFormatsExA");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_date_fmt_enum_proc_ex = {:?}, locale = {:?}, dw_flags = {:?}",
+            "  args = {{lp_date_fmt_enum_proc_ex = {:?}, locale = {:?}, dw_flags = {:?}}}",
             lp_date_fmt_enum_proc_ex,
             locale,
             dw_flags
@@ -636,7 +616,7 @@ extern "C" fn thunk_EnumDateFormatsExEx(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("EnumDateFormatsExEx");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_date_fmt_enum_proc_ex_ex = {:?}, lp_locale_name = {:?}, dw_flags = {:?}, l_param = {:?}" , lp_date_fmt_enum_proc_ex_ex , lp_locale_name , dw_flags , l_param );
+        tracing :: trace ! ( "  args = {{lp_date_fmt_enum_proc_ex_ex = {:?}, lp_locale_name = {:?}, dw_flags = {:?}, l_param = {:?}}}" , lp_date_fmt_enum_proc_ex_ex , lp_locale_name , dw_flags , l_param );
         let res = api.EnumDateFormatsExEx(
             lp_date_fmt_enum_proc_ex_ex,
             lp_locale_name,
@@ -669,7 +649,7 @@ extern "C" fn thunk_EnumDateFormatsExW(
         let span = tracing::trace_span!("EnumDateFormatsExW");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_date_fmt_enum_proc_ex = {:?}, locale = {:?}, dw_flags = {:?}",
+            "  args = {{lp_date_fmt_enum_proc_ex = {:?}, locale = {:?}, dw_flags = {:?}}}",
             lp_date_fmt_enum_proc_ex,
             locale,
             dw_flags
@@ -701,7 +681,7 @@ extern "C" fn thunk_EnumDateFormatsW(
         let span = tracing::trace_span!("EnumDateFormatsW");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_date_fmt_enum_proc = {:?}, locale = {:?}, dw_flags = {:?}",
+            "  args = {{lp_date_fmt_enum_proc = {:?}, locale = {:?}, dw_flags = {:?}}}",
             lp_date_fmt_enum_proc,
             locale,
             dw_flags
@@ -733,7 +713,7 @@ extern "C" fn thunk_EnumLanguageGroupLocalesA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("EnumLanguageGroupLocalesA");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_lang_group_locale_enum_proc = {:?}, language_group = {:?}, dw_flags = {:?}, l_param = {:?}" , lp_lang_group_locale_enum_proc , language_group , dw_flags , l_param );
+        tracing :: trace ! ( "  args = {{lp_lang_group_locale_enum_proc = {:?}, language_group = {:?}, dw_flags = {:?}, l_param = {:?}}}" , lp_lang_group_locale_enum_proc , language_group , dw_flags , l_param );
         let res = api.EnumLanguageGroupLocalesA(
             lp_lang_group_locale_enum_proc,
             language_group,
@@ -766,7 +746,7 @@ extern "C" fn thunk_EnumLanguageGroupLocalesW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("EnumLanguageGroupLocalesW");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_lang_group_locale_enum_proc = {:?}, language_group = {:?}, dw_flags = {:?}, l_param = {:?}" , lp_lang_group_locale_enum_proc , language_group , dw_flags , l_param );
+        tracing :: trace ! ( "  args = {{lp_lang_group_locale_enum_proc = {:?}, language_group = {:?}, dw_flags = {:?}, l_param = {:?}}}" , lp_lang_group_locale_enum_proc , language_group , dw_flags , l_param );
         let res = api.EnumLanguageGroupLocalesW(
             lp_lang_group_locale_enum_proc,
             language_group,
@@ -798,7 +778,7 @@ extern "C" fn thunk_EnumSystemCodePagesA(
         let span = tracing::trace_span!("EnumSystemCodePagesA");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_code_page_enum_proc = {:?}, dw_flags = {:?}",
+            "  args = {{lp_code_page_enum_proc = {:?}, dw_flags = {:?}}}",
             lp_code_page_enum_proc,
             dw_flags
         );
@@ -828,7 +808,7 @@ extern "C" fn thunk_EnumSystemCodePagesW(
         let span = tracing::trace_span!("EnumSystemCodePagesW");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_code_page_enum_proc = {:?}, dw_flags = {:?}",
+            "  args = {{lp_code_page_enum_proc = {:?}, dw_flags = {:?}}}",
             lp_code_page_enum_proc,
             dw_flags
         );
@@ -859,7 +839,7 @@ extern "C" fn thunk_EnumSystemGeoID(
         let span = tracing::trace_span!("EnumSystemGeoID");
         let _enter = span.enter();
         tracing::trace!(
-            "geo_class = {:?}, parent_geo_id = {:?}, lp_geo_enum_proc = {:?}",
+            "  args = {{geo_class = {:?}, parent_geo_id = {:?}, lp_geo_enum_proc = {:?}}}",
             geo_class,
             parent_geo_id,
             lp_geo_enum_proc
@@ -891,7 +871,7 @@ extern "C" fn thunk_EnumSystemGeoNames(
         let span = tracing::trace_span!("EnumSystemGeoNames");
         let _enter = span.enter();
         tracing::trace!(
-            "geo_class = {:?}, geo_enum_proc = {:?}, data = {:?}",
+            "  args = {{geo_class = {:?}, geo_enum_proc = {:?}, data = {:?}}}",
             geo_class,
             geo_enum_proc,
             data
@@ -923,7 +903,7 @@ extern "C" fn thunk_EnumSystemLanguageGroupsA(
         let span = tracing::trace_span!("EnumSystemLanguageGroupsA");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_language_group_enum_proc = {:?}, dw_flags = {:?}, l_param = {:?}",
+            "  args = {{lp_language_group_enum_proc = {:?}, dw_flags = {:?}, l_param = {:?}}}",
             lp_language_group_enum_proc,
             dw_flags,
             l_param
@@ -955,7 +935,7 @@ extern "C" fn thunk_EnumSystemLanguageGroupsW(
         let span = tracing::trace_span!("EnumSystemLanguageGroupsW");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_language_group_enum_proc = {:?}, dw_flags = {:?}, l_param = {:?}",
+            "  args = {{lp_language_group_enum_proc = {:?}, dw_flags = {:?}, l_param = {:?}}}",
             lp_language_group_enum_proc,
             dw_flags,
             l_param
@@ -986,7 +966,7 @@ extern "C" fn thunk_EnumSystemLocalesA(
         let span = tracing::trace_span!("EnumSystemLocalesA");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_locale_enum_proc = {:?}, dw_flags = {:?}",
+            "  args = {{lp_locale_enum_proc = {:?}, dw_flags = {:?}}}",
             lp_locale_enum_proc,
             dw_flags
         );
@@ -1017,13 +997,7 @@ extern "C" fn thunk_EnumSystemLocalesEx(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("EnumSystemLocalesEx");
         let _enter = span.enter();
-        tracing::trace!(
-            "lp_locale_enum_proc_ex = {:?}, dw_flags = {:?}, l_param = {:?}, lp_reserved = {:?}",
-            lp_locale_enum_proc_ex,
-            dw_flags,
-            l_param,
-            lp_reserved
-        );
+        tracing :: trace ! ( "  args = {{lp_locale_enum_proc_ex = {:?}, dw_flags = {:?}, l_param = {:?}, lp_reserved = {:?}}}" , lp_locale_enum_proc_ex , dw_flags , l_param , lp_reserved );
         let res = api.EnumSystemLocalesEx(lp_locale_enum_proc_ex, dw_flags, l_param, lp_reserved);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -1050,7 +1024,7 @@ extern "C" fn thunk_EnumSystemLocalesW(
         let span = tracing::trace_span!("EnumSystemLocalesW");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_locale_enum_proc = {:?}, dw_flags = {:?}",
+            "  args = {{lp_locale_enum_proc = {:?}, dw_flags = {:?}}}",
             lp_locale_enum_proc,
             dw_flags
         );
@@ -1081,7 +1055,7 @@ extern "C" fn thunk_EnumTimeFormatsA(
         let span = tracing::trace_span!("EnumTimeFormatsA");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_time_fmt_enum_proc = {:?}, locale = {:?}, dw_flags = {:?}",
+            "  args = {{lp_time_fmt_enum_proc = {:?}, locale = {:?}, dw_flags = {:?}}}",
             lp_time_fmt_enum_proc,
             locale,
             dw_flags
@@ -1113,7 +1087,7 @@ extern "C" fn thunk_EnumTimeFormatsEx(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("EnumTimeFormatsEx");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_time_fmt_enum_proc_ex = {:?}, lp_locale_name = {:?}, dw_flags = {:?}, l_param = {:?}" , lp_time_fmt_enum_proc_ex , lp_locale_name , dw_flags , l_param );
+        tracing :: trace ! ( "  args = {{lp_time_fmt_enum_proc_ex = {:?}, lp_locale_name = {:?}, dw_flags = {:?}, l_param = {:?}}}" , lp_time_fmt_enum_proc_ex , lp_locale_name , dw_flags , l_param );
         let res =
             api.EnumTimeFormatsEx(lp_time_fmt_enum_proc_ex, lp_locale_name, dw_flags, l_param);
         tracing::trace!("result = {:?}", res);
@@ -1142,7 +1116,7 @@ extern "C" fn thunk_EnumTimeFormatsW(
         let span = tracing::trace_span!("EnumTimeFormatsW");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_time_fmt_enum_proc = {:?}, locale = {:?}, dw_flags = {:?}",
+            "  args = {{lp_time_fmt_enum_proc = {:?}, locale = {:?}, dw_flags = {:?}}}",
             lp_time_fmt_enum_proc,
             locale,
             dw_flags
@@ -1174,7 +1148,7 @@ extern "C" fn thunk_EnumUILanguagesA(
         let span = tracing::trace_span!("EnumUILanguagesA");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_ui_language_enum_proc = {:?}, dw_flags = {:?}, l_param = {:?}",
+            "  args = {{lp_ui_language_enum_proc = {:?}, dw_flags = {:?}, l_param = {:?}}}",
             lp_ui_language_enum_proc,
             dw_flags,
             l_param
@@ -1206,7 +1180,7 @@ extern "C" fn thunk_EnumUILanguagesW(
         let span = tracing::trace_span!("EnumUILanguagesW");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_ui_language_enum_proc = {:?}, dw_flags = {:?}, l_param = {:?}",
+            "  args = {{lp_ui_language_enum_proc = {:?}, dw_flags = {:?}, l_param = {:?}}}",
             lp_ui_language_enum_proc,
             dw_flags,
             l_param
@@ -1238,7 +1212,7 @@ extern "C" fn thunk_FindNLSString(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("FindNLSString");
         let _enter = span.enter();
-        tracing :: trace ! ( "locale = {:?}, dw_find_nls_string_flags = {:?}, lp_string_source = {:?}, cch_source = {:?}, lp_string_value = {:?}, cch_value = {:?}, pcch_found = {:?}" , locale , dw_find_nls_string_flags , lp_string_source , cch_source , lp_string_value , cch_value , pcch_found );
+        tracing :: trace ! ( "  args = {{locale = {:?}, dw_find_nls_string_flags = {:?}, lp_string_source = {:?}, cch_source = {:?}, lp_string_value = {:?}, cch_value = {:?}, pcch_found = {:?}}}" , locale , dw_find_nls_string_flags , lp_string_source , cch_source , lp_string_value , cch_value , pcch_found );
         let res = api.FindNLSString(
             locale,
             dw_find_nls_string_flags,
@@ -1280,7 +1254,7 @@ extern "C" fn thunk_FindNLSStringEx(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("FindNLSStringEx");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_locale_name = {:?}, dw_find_nls_string_flags = {:?}, lp_string_source = {:?}, cch_source = {:?}, lp_string_value = {:?}, cch_value = {:?}, pcch_found = {:?}, lp_version_information = {:?}, lp_reserved = {:?}, sort_handle = {:?}" , lp_locale_name , dw_find_nls_string_flags , lp_string_source , cch_source , lp_string_value , cch_value , pcch_found , lp_version_information , lp_reserved , sort_handle );
+        tracing :: trace ! ( "  args = {{lp_locale_name = {:?}, dw_find_nls_string_flags = {:?}, lp_string_source = {:?}, cch_source = {:?}, lp_string_value = {:?}, cch_value = {:?}, pcch_found = {:?}, lp_version_information = {:?}, lp_reserved = {:?}, sort_handle = {:?}}}" , lp_locale_name , dw_find_nls_string_flags , lp_string_source , cch_source , lp_string_value , cch_value , pcch_found , lp_version_information , lp_reserved , sort_handle );
         let res = api.FindNLSStringEx(
             lp_locale_name,
             dw_find_nls_string_flags,
@@ -1321,7 +1295,7 @@ extern "C" fn thunk_FindStringOrdinal(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("FindStringOrdinal");
         let _enter = span.enter();
-        tracing :: trace ! ( "dw_find_string_ordinal_flags = {:?}, lp_string_source = {:?}, cch_source = {:?}, lp_string_value = {:?}, cch_value = {:?}, b_ignore_case = {:?}" , dw_find_string_ordinal_flags , lp_string_source , cch_source , lp_string_value , cch_value , b_ignore_case );
+        tracing :: trace ! ( "  args = {{dw_find_string_ordinal_flags = {:?}, lp_string_source = {:?}, cch_source = {:?}, lp_string_value = {:?}, cch_value = {:?}, b_ignore_case = {:?}}}" , dw_find_string_ordinal_flags , lp_string_source , cch_source , lp_string_value , cch_value , b_ignore_case );
         let res = api.FindStringOrdinal(
             dw_find_string_ordinal_flags,
             lp_string_source,
@@ -1354,7 +1328,7 @@ extern "C" fn thunk_FoldStringA(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("FoldStringA");
         let _enter = span.enter();
-        tracing :: trace ! ( "dw_map_flags = {:?}, lp_src_str = {:?}, cch_src = {:?}, lp_dest_str = {:?}, cch_dest = {:?}" , dw_map_flags , lp_src_str , cch_src , lp_dest_str , cch_dest );
+        tracing :: trace ! ( "  args = {{dw_map_flags = {:?}, lp_src_str = {:?}, cch_src = {:?}, lp_dest_str = {:?}, cch_dest = {:?}}}" , dw_map_flags , lp_src_str , cch_src , lp_dest_str , cch_dest );
         let res = api.FoldStringA(dw_map_flags, lp_src_str, cch_src, lp_dest_str, cch_dest);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -1380,7 +1354,7 @@ extern "C" fn thunk_FoldStringW(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("FoldStringW");
         let _enter = span.enter();
-        tracing :: trace ! ( "dw_map_flags = {:?}, lp_src_str = {:?}, cch_src = {:?}, lp_dest_str = {:?}, cch_dest = {:?}" , dw_map_flags , lp_src_str , cch_src , lp_dest_str , cch_dest );
+        tracing :: trace ! ( "  args = {{dw_map_flags = {:?}, lp_src_str = {:?}, cch_src = {:?}, lp_dest_str = {:?}, cch_dest = {:?}}}" , dw_map_flags , lp_src_str , cch_src , lp_dest_str , cch_dest );
         let res = api.FoldStringW(dw_map_flags, lp_src_str, cch_src, lp_dest_str, cch_dest);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -1401,7 +1375,7 @@ extern "C" fn thunk_GetACP(context: &mut ExtendedContext, memory: FlatMemoryCtx)
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetACP");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.GetACP();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -1424,7 +1398,11 @@ extern "C" fn thunk_GetCPInfo(context: &mut ExtendedContext, memory: FlatMemoryC
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetCPInfo");
         let _enter = span.enter();
-        tracing::trace!("code_page = {:?}, lp_cp_info = {:?}", code_page, lp_cp_info);
+        tracing::trace!(
+            "  args = {{code_page = {:?}, lp_cp_info = {:?}}}",
+            code_page,
+            lp_cp_info
+        );
         let res = api.GetCPInfo(code_page, lp_cp_info);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -1449,7 +1427,7 @@ extern "C" fn thunk_GetCPInfoExA(context: &mut ExtendedContext, memory: FlatMemo
         let span = tracing::trace_span!("GetCPInfoExA");
         let _enter = span.enter();
         tracing::trace!(
-            "code_page = {:?}, dw_flags = {:?}, lp_cp_info_ex = {:?}",
+            "  args = {{code_page = {:?}, dw_flags = {:?}, lp_cp_info_ex = {:?}}}",
             code_page,
             dw_flags,
             lp_cp_info_ex
@@ -1478,7 +1456,7 @@ extern "C" fn thunk_GetCPInfoExW(context: &mut ExtendedContext, memory: FlatMemo
         let span = tracing::trace_span!("GetCPInfoExW");
         let _enter = span.enter();
         tracing::trace!(
-            "code_page = {:?}, dw_flags = {:?}, lp_cp_info_ex = {:?}",
+            "  args = {{code_page = {:?}, dw_flags = {:?}, lp_cp_info_ex = {:?}}}",
             code_page,
             dw_flags,
             lp_cp_info_ex
@@ -1512,7 +1490,7 @@ extern "C" fn thunk_GetCalendarInfoA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetCalendarInfoA");
         let _enter = span.enter();
-        tracing :: trace ! ( "locale = {:?}, calendar = {:?}, cal_type = {:?}, lp_cal_data = {:?}, cch_data = {:?}, lp_value = {:?}" , locale , calendar , cal_type , lp_cal_data , cch_data , lp_value );
+        tracing :: trace ! ( "  args = {{locale = {:?}, calendar = {:?}, cal_type = {:?}, lp_cal_data = {:?}, cch_data = {:?}, lp_value = {:?}}}" , locale , calendar , cal_type , lp_cal_data , cch_data , lp_value );
         let res = api.GetCalendarInfoA(locale, calendar, cal_type, lp_cal_data, cch_data, lp_value);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -1543,7 +1521,7 @@ extern "C" fn thunk_GetCalendarInfoEx(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetCalendarInfoEx");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_locale_name = {:?}, calendar = {:?}, lp_reserved = {:?}, cal_type = {:?}, lp_cal_data = {:?}, cch_data = {:?}, lp_value = {:?}" , lp_locale_name , calendar , lp_reserved , cal_type , lp_cal_data , cch_data , lp_value );
+        tracing :: trace ! ( "  args = {{lp_locale_name = {:?}, calendar = {:?}, lp_reserved = {:?}, cal_type = {:?}, lp_cal_data = {:?}, cch_data = {:?}, lp_value = {:?}}}" , lp_locale_name , calendar , lp_reserved , cal_type , lp_cal_data , cch_data , lp_value );
         let res = api.GetCalendarInfoEx(
             lp_locale_name,
             calendar,
@@ -1581,7 +1559,7 @@ extern "C" fn thunk_GetCalendarInfoW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetCalendarInfoW");
         let _enter = span.enter();
-        tracing :: trace ! ( "locale = {:?}, calendar = {:?}, cal_type = {:?}, lp_cal_data = {:?}, cch_data = {:?}, lp_value = {:?}" , locale , calendar , cal_type , lp_cal_data , cch_data , lp_value );
+        tracing :: trace ! ( "  args = {{locale = {:?}, calendar = {:?}, cal_type = {:?}, lp_cal_data = {:?}, cch_data = {:?}, lp_value = {:?}}}" , locale , calendar , cal_type , lp_cal_data , cch_data , lp_value );
         let res = api.GetCalendarInfoW(locale, calendar, cal_type, lp_cal_data, cch_data, lp_value);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -1611,7 +1589,7 @@ extern "C" fn thunk_GetCurrencyFormatA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetCurrencyFormatA");
         let _enter = span.enter();
-        tracing :: trace ! ( "locale = {:?}, dw_flags = {:?}, lp_value = {:?}, lp_format = {:?}, lp_currency_str = {:?}, cch_currency = {:?}" , locale , dw_flags , lp_value , lp_format , lp_currency_str , cch_currency );
+        tracing :: trace ! ( "  args = {{locale = {:?}, dw_flags = {:?}, lp_value = {:?}, lp_format = {:?}, lp_currency_str = {:?}, cch_currency = {:?}}}" , locale , dw_flags , lp_value , lp_format , lp_currency_str , cch_currency );
         let res = api.GetCurrencyFormatA(
             locale,
             dw_flags,
@@ -1648,7 +1626,7 @@ extern "C" fn thunk_GetCurrencyFormatEx(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetCurrencyFormatEx");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_locale_name = {:?}, dw_flags = {:?}, lp_value = {:?}, lp_format = {:?}, lp_currency_str = {:?}, cch_currency = {:?}" , lp_locale_name , dw_flags , lp_value , lp_format , lp_currency_str , cch_currency );
+        tracing :: trace ! ( "  args = {{lp_locale_name = {:?}, dw_flags = {:?}, lp_value = {:?}, lp_format = {:?}, lp_currency_str = {:?}, cch_currency = {:?}}}" , lp_locale_name , dw_flags , lp_value , lp_format , lp_currency_str , cch_currency );
         let res = api.GetCurrencyFormatEx(
             lp_locale_name,
             dw_flags,
@@ -1685,7 +1663,7 @@ extern "C" fn thunk_GetCurrencyFormatW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetCurrencyFormatW");
         let _enter = span.enter();
-        tracing :: trace ! ( "locale = {:?}, dw_flags = {:?}, lp_value = {:?}, lp_format = {:?}, lp_currency_str = {:?}, cch_currency = {:?}" , locale , dw_flags , lp_value , lp_format , lp_currency_str , cch_currency );
+        tracing :: trace ! ( "  args = {{locale = {:?}, dw_flags = {:?}, lp_value = {:?}, lp_format = {:?}, lp_currency_str = {:?}, cch_currency = {:?}}}" , locale , dw_flags , lp_value , lp_format , lp_currency_str , cch_currency );
         let res = api.GetCurrencyFormatW(
             locale,
             dw_flags,
@@ -1722,7 +1700,7 @@ extern "C" fn thunk_GetDateFormatA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetDateFormatA");
         let _enter = span.enter();
-        tracing :: trace ! ( "locale = {:?}, dw_flags = {:?}, lp_date = {:?}, lp_format = {:?}, lp_date_str = {:?}, cch_date = {:?}" , locale , dw_flags , lp_date , lp_format , lp_date_str , cch_date );
+        tracing :: trace ! ( "  args = {{locale = {:?}, dw_flags = {:?}, lp_date = {:?}, lp_format = {:?}, lp_date_str = {:?}, cch_date = {:?}}}" , locale , dw_flags , lp_date , lp_format , lp_date_str , cch_date );
         let res = api.GetDateFormatA(locale, dw_flags, lp_date, lp_format, lp_date_str, cch_date);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -1753,7 +1731,7 @@ extern "C" fn thunk_GetDateFormatEx(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetDateFormatEx");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_locale_name = {:?}, dw_flags = {:?}, lp_date = {:?}, lp_format = {:?}, lp_date_str = {:?}, cch_date = {:?}, lp_calendar = {:?}" , lp_locale_name , dw_flags , lp_date , lp_format , lp_date_str , cch_date , lp_calendar );
+        tracing :: trace ! ( "  args = {{lp_locale_name = {:?}, dw_flags = {:?}, lp_date = {:?}, lp_format = {:?}, lp_date_str = {:?}, cch_date = {:?}, lp_calendar = {:?}}}" , lp_locale_name , dw_flags , lp_date , lp_format , lp_date_str , cch_date , lp_calendar );
         let res = api.GetDateFormatEx(
             lp_locale_name,
             dw_flags,
@@ -1791,7 +1769,7 @@ extern "C" fn thunk_GetDateFormatW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetDateFormatW");
         let _enter = span.enter();
-        tracing :: trace ! ( "locale = {:?}, dw_flags = {:?}, lp_date = {:?}, lp_format = {:?}, lp_date_str = {:?}, cch_date = {:?}" , locale , dw_flags , lp_date , lp_format , lp_date_str , cch_date );
+        tracing :: trace ! ( "  args = {{locale = {:?}, dw_flags = {:?}, lp_date = {:?}, lp_format = {:?}, lp_date_str = {:?}, cch_date = {:?}}}" , locale , dw_flags , lp_date , lp_format , lp_date_str , cch_date );
         let res = api.GetDateFormatW(locale, dw_flags, lp_date, lp_format, lp_date_str, cch_date);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -1819,7 +1797,7 @@ extern "C" fn thunk_GetDistanceOfClosestLanguageInList(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetDistanceOfClosestLanguageInList");
         let _enter = span.enter();
-        tracing :: trace ! ( "psz_language = {:?}, psz_languages_list = {:?}, wch_list_delimiter = {:?}, p_closest_distance = {:?}" , psz_language , psz_languages_list , wch_list_delimiter , p_closest_distance );
+        tracing :: trace ! ( "  args = {{psz_language = {:?}, psz_languages_list = {:?}, wch_list_delimiter = {:?}, p_closest_distance = {:?}}}" , psz_language , psz_languages_list , wch_list_delimiter , p_closest_distance );
         let res = api.GetDistanceOfClosestLanguageInList(
             psz_language,
             psz_languages_list,
@@ -1855,7 +1833,7 @@ extern "C" fn thunk_GetDurationFormat(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetDurationFormat");
         let _enter = span.enter();
-        tracing :: trace ! ( "locale = {:?}, dw_flags = {:?}, lp_duration = {:?}, ull_duration = {:?}, lp_format = {:?}, lp_duration_str = {:?}, cch_duration = {:?}" , locale , dw_flags , lp_duration , ull_duration , lp_format , lp_duration_str , cch_duration );
+        tracing :: trace ! ( "  args = {{locale = {:?}, dw_flags = {:?}, lp_duration = {:?}, ull_duration = {:?}, lp_format = {:?}, lp_duration_str = {:?}, cch_duration = {:?}}}" , locale , dw_flags , lp_duration , ull_duration , lp_format , lp_duration_str , cch_duration );
         let res = api.GetDurationFormat(
             locale,
             dw_flags,
@@ -1894,7 +1872,7 @@ extern "C" fn thunk_GetDurationFormatEx(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetDurationFormatEx");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_locale_name = {:?}, dw_flags = {:?}, lp_duration = {:?}, ull_duration = {:?}, lp_format = {:?}, lp_duration_str = {:?}, cch_duration = {:?}" , lp_locale_name , dw_flags , lp_duration , ull_duration , lp_format , lp_duration_str , cch_duration );
+        tracing :: trace ! ( "  args = {{lp_locale_name = {:?}, dw_flags = {:?}, lp_duration = {:?}, ull_duration = {:?}, lp_format = {:?}, lp_duration_str = {:?}, cch_duration = {:?}}}" , lp_locale_name , dw_flags , lp_duration , ull_duration , lp_format , lp_duration_str , cch_duration );
         let res = api.GetDurationFormatEx(
             lp_locale_name,
             dw_flags,
@@ -1930,7 +1908,7 @@ extern "C" fn thunk_GetFileMUIInfo(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetFileMUIInfo");
         let _enter = span.enter();
-        tracing :: trace ! ( "dw_flags = {:?}, pcwsz_file_path = {:?}, p_file_mui_info = {:?}, pcb_file_mui_info = {:?}" , dw_flags , pcwsz_file_path , p_file_mui_info , pcb_file_mui_info );
+        tracing :: trace ! ( "  args = {{dw_flags = {:?}, pcwsz_file_path = {:?}, p_file_mui_info = {:?}, pcb_file_mui_info = {:?}}}" , dw_flags , pcwsz_file_path , p_file_mui_info , pcb_file_mui_info );
         let res = api.GetFileMUIInfo(
             dw_flags,
             pcwsz_file_path,
@@ -1966,7 +1944,7 @@ extern "C" fn thunk_GetFileMUIPath(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetFileMUIPath");
         let _enter = span.enter();
-        tracing :: trace ! ( "dw_flags = {:?}, pcwsz_file_path = {:?}, pwsz_language = {:?}, pcch_language = {:?}, pwsz_file_mui_path = {:?}, pcch_file_mui_path = {:?}, pulul_enumerator = {:?}" , dw_flags , pcwsz_file_path , pwsz_language , pcch_language , pwsz_file_mui_path , pcch_file_mui_path , pulul_enumerator );
+        tracing :: trace ! ( "  args = {{dw_flags = {:?}, pcwsz_file_path = {:?}, pwsz_language = {:?}, pcch_language = {:?}, pwsz_file_mui_path = {:?}, pcch_file_mui_path = {:?}, pulul_enumerator = {:?}}}" , dw_flags , pcwsz_file_path , pwsz_language , pcch_language , pwsz_file_mui_path , pcch_file_mui_path , pulul_enumerator );
         let res = api.GetFileMUIPath(
             dw_flags,
             pcwsz_file_path,
@@ -2000,14 +1978,7 @@ extern "C" fn thunk_GetGeoInfoA(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetGeoInfoA");
         let _enter = span.enter();
-        tracing::trace!(
-            "location = {:?}, geo_type = {:?}, lp_geo_data = {:?}, cch_data = {:?}, lang_id = {:?}",
-            location,
-            geo_type,
-            lp_geo_data,
-            cch_data,
-            lang_id
-        );
+        tracing :: trace ! ( "  args = {{location = {:?}, geo_type = {:?}, lp_geo_data = {:?}, cch_data = {:?}, lang_id = {:?}}}" , location , geo_type , lp_geo_data , cch_data , lang_id );
         let res = api.GetGeoInfoA(location, geo_type, lp_geo_data, cch_data, lang_id);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -2033,7 +2004,7 @@ extern "C" fn thunk_GetGeoInfoEx(context: &mut ExtendedContext, memory: FlatMemo
         let span = tracing::trace_span!("GetGeoInfoEx");
         let _enter = span.enter();
         tracing::trace!(
-            "location = {:?}, geo_type = {:?}, geo_data = {:?}, geo_data_count = {:?}",
+            "  args = {{location = {:?}, geo_type = {:?}, geo_data = {:?}, geo_data_count = {:?}}}",
             location,
             geo_type,
             geo_data,
@@ -2064,14 +2035,7 @@ extern "C" fn thunk_GetGeoInfoW(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetGeoInfoW");
         let _enter = span.enter();
-        tracing::trace!(
-            "location = {:?}, geo_type = {:?}, lp_geo_data = {:?}, cch_data = {:?}, lang_id = {:?}",
-            location,
-            geo_type,
-            lp_geo_data,
-            cch_data,
-            lang_id
-        );
+        tracing :: trace ! ( "  args = {{location = {:?}, geo_type = {:?}, lp_geo_data = {:?}, cch_data = {:?}, lang_id = {:?}}}" , location , geo_type , lp_geo_data , cch_data , lang_id );
         let res = api.GetGeoInfoW(location, geo_type, lp_geo_data, cch_data, lang_id);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -2100,7 +2064,7 @@ extern "C" fn thunk_GetLocaleInfoA(
         let span = tracing::trace_span!("GetLocaleInfoA");
         let _enter = span.enter();
         tracing::trace!(
-            "locale = {:?}, lc_type = {:?}, lp_lc_data = {:?}, cch_data = {:?}",
+            "  args = {{locale = {:?}, lc_type = {:?}, lp_lc_data = {:?}, cch_data = {:?}}}",
             locale,
             lc_type,
             lp_lc_data,
@@ -2133,13 +2097,7 @@ extern "C" fn thunk_GetLocaleInfoEx(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetLocaleInfoEx");
         let _enter = span.enter();
-        tracing::trace!(
-            "lp_locale_name = {:?}, lc_type = {:?}, lp_lc_data = {:?}, cch_data = {:?}",
-            lp_locale_name,
-            lc_type,
-            lp_lc_data,
-            cch_data
-        );
+        tracing :: trace ! ( "  args = {{lp_locale_name = {:?}, lc_type = {:?}, lp_lc_data = {:?}, cch_data = {:?}}}" , lp_locale_name , lc_type , lp_lc_data , cch_data );
         let res = api.GetLocaleInfoEx(lp_locale_name, lc_type, lp_lc_data, cch_data);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -2168,7 +2126,7 @@ extern "C" fn thunk_GetLocaleInfoW(
         let span = tracing::trace_span!("GetLocaleInfoW");
         let _enter = span.enter();
         tracing::trace!(
-            "locale = {:?}, lc_type = {:?}, lp_lc_data = {:?}, cch_data = {:?}",
+            "  args = {{locale = {:?}, lc_type = {:?}, lp_lc_data = {:?}, cch_data = {:?}}}",
             locale,
             lc_type,
             lp_lc_data,
@@ -2198,7 +2156,7 @@ extern "C" fn thunk_GetNLSVersion(context: &mut ExtendedContext, memory: FlatMem
         let span = tracing::trace_span!("GetNLSVersion");
         let _enter = span.enter();
         tracing::trace!(
-            "function = {:?}, locale = {:?}, lp_version_information = {:?}",
+            "  args = {{function = {:?}, locale = {:?}, lp_version_information = {:?}}}",
             function,
             locale,
             lp_version_information
@@ -2230,7 +2188,7 @@ extern "C" fn thunk_GetNLSVersionEx(
         let span = tracing::trace_span!("GetNLSVersionEx");
         let _enter = span.enter();
         tracing::trace!(
-            "function = {:?}, lp_locale_name = {:?}, lp_version_information = {:?}",
+            "  args = {{function = {:?}, lp_locale_name = {:?}, lp_version_information = {:?}}}",
             function,
             lp_locale_name,
             lp_version_information
@@ -2264,7 +2222,7 @@ extern "C" fn thunk_GetNumberFormatA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetNumberFormatA");
         let _enter = span.enter();
-        tracing :: trace ! ( "locale = {:?}, dw_flags = {:?}, lp_value = {:?}, lp_format = {:?}, lp_number_str = {:?}, cch_number = {:?}" , locale , dw_flags , lp_value , lp_format , lp_number_str , cch_number );
+        tracing :: trace ! ( "  args = {{locale = {:?}, dw_flags = {:?}, lp_value = {:?}, lp_format = {:?}, lp_number_str = {:?}, cch_number = {:?}}}" , locale , dw_flags , lp_value , lp_format , lp_number_str , cch_number );
         let res = api.GetNumberFormatA(
             locale,
             dw_flags,
@@ -2301,7 +2259,7 @@ extern "C" fn thunk_GetNumberFormatEx(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetNumberFormatEx");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_locale_name = {:?}, dw_flags = {:?}, lp_value = {:?}, lp_format = {:?}, lp_number_str = {:?}, cch_number = {:?}" , lp_locale_name , dw_flags , lp_value , lp_format , lp_number_str , cch_number );
+        tracing :: trace ! ( "  args = {{lp_locale_name = {:?}, dw_flags = {:?}, lp_value = {:?}, lp_format = {:?}, lp_number_str = {:?}, cch_number = {:?}}}" , lp_locale_name , dw_flags , lp_value , lp_format , lp_number_str , cch_number );
         let res = api.GetNumberFormatEx(
             lp_locale_name,
             dw_flags,
@@ -2338,7 +2296,7 @@ extern "C" fn thunk_GetNumberFormatW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetNumberFormatW");
         let _enter = span.enter();
-        tracing :: trace ! ( "locale = {:?}, dw_flags = {:?}, lp_value = {:?}, lp_format = {:?}, lp_number_str = {:?}, cch_number = {:?}" , locale , dw_flags , lp_value , lp_format , lp_number_str , cch_number );
+        tracing :: trace ! ( "  args = {{locale = {:?}, dw_flags = {:?}, lp_value = {:?}, lp_format = {:?}, lp_number_str = {:?}, cch_number = {:?}}}" , locale , dw_flags , lp_value , lp_format , lp_number_str , cch_number );
         let res = api.GetNumberFormatW(
             locale,
             dw_flags,
@@ -2366,7 +2324,7 @@ extern "C" fn thunk_GetOEMCP(context: &mut ExtendedContext, memory: FlatMemoryCt
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetOEMCP");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.GetOEMCP();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -2394,7 +2352,7 @@ extern "C" fn thunk_GetProcessPreferredUILanguages(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetProcessPreferredUILanguages");
         let _enter = span.enter();
-        tracing :: trace ! ( "dw_flags = {:?}, pul_num_languages = {:?}, pwsz_languages_buffer = {:?}, pcch_languages_buffer = {:?}" , dw_flags , pul_num_languages , pwsz_languages_buffer , pcch_languages_buffer );
+        tracing :: trace ! ( "  args = {{dw_flags = {:?}, pul_num_languages = {:?}, pwsz_languages_buffer = {:?}, pcch_languages_buffer = {:?}}}" , dw_flags , pul_num_languages , pwsz_languages_buffer , pcch_languages_buffer );
         let res = api.GetProcessPreferredUILanguages(
             dw_flags,
             pul_num_languages,
@@ -2428,7 +2386,7 @@ extern "C" fn thunk_GetStringScripts(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetStringScripts");
         let _enter = span.enter();
-        tracing :: trace ! ( "dw_flags = {:?}, lp_string = {:?}, cch_string = {:?}, lp_scripts = {:?}, cch_scripts = {:?}" , dw_flags , lp_string , cch_string , lp_scripts , cch_scripts );
+        tracing :: trace ! ( "  args = {{dw_flags = {:?}, lp_string = {:?}, cch_string = {:?}, lp_scripts = {:?}, cch_scripts = {:?}}}" , dw_flags , lp_string , cch_string , lp_scripts , cch_scripts );
         let res = api.GetStringScripts(dw_flags, lp_string, cch_string, lp_scripts, cch_scripts);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -2457,7 +2415,7 @@ extern "C" fn thunk_GetStringTypeA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetStringTypeA");
         let _enter = span.enter();
-        tracing :: trace ! ( "locale = {:?}, dw_info_type = {:?}, lp_src_str = {:?}, cch_src = {:?}, lp_char_type = {:?}" , locale , dw_info_type , lp_src_str , cch_src , lp_char_type );
+        tracing :: trace ! ( "  args = {{locale = {:?}, dw_info_type = {:?}, lp_src_str = {:?}, cch_src = {:?}, lp_char_type = {:?}}}" , locale , dw_info_type , lp_src_str , cch_src , lp_char_type );
         let res = api.GetStringTypeA(locale, dw_info_type, lp_src_str, cch_src, lp_char_type);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -2486,7 +2444,7 @@ extern "C" fn thunk_GetStringTypeExA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetStringTypeExA");
         let _enter = span.enter();
-        tracing :: trace ! ( "locale = {:?}, dw_info_type = {:?}, lp_src_str = {:?}, cch_src = {:?}, lp_char_type = {:?}" , locale , dw_info_type , lp_src_str , cch_src , lp_char_type );
+        tracing :: trace ! ( "  args = {{locale = {:?}, dw_info_type = {:?}, lp_src_str = {:?}, cch_src = {:?}, lp_char_type = {:?}}}" , locale , dw_info_type , lp_src_str , cch_src , lp_char_type );
         let res = api.GetStringTypeExA(locale, dw_info_type, lp_src_str, cch_src, lp_char_type);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -2515,7 +2473,7 @@ extern "C" fn thunk_GetStringTypeExW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetStringTypeExW");
         let _enter = span.enter();
-        tracing :: trace ! ( "locale = {:?}, dw_info_type = {:?}, lp_src_str = {:?}, cch_src = {:?}, lp_char_type = {:?}" , locale , dw_info_type , lp_src_str , cch_src , lp_char_type );
+        tracing :: trace ! ( "  args = {{locale = {:?}, dw_info_type = {:?}, lp_src_str = {:?}, cch_src = {:?}, lp_char_type = {:?}}}" , locale , dw_info_type , lp_src_str , cch_src , lp_char_type );
         let res = api.GetStringTypeExW(locale, dw_info_type, lp_src_str, cch_src, lp_char_type);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -2543,13 +2501,7 @@ extern "C" fn thunk_GetStringTypeW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetStringTypeW");
         let _enter = span.enter();
-        tracing::trace!(
-            "dw_info_type = {:?}, lp_src_str = {:?}, cch_src = {:?}, lp_char_type = {:?}",
-            dw_info_type,
-            lp_src_str,
-            cch_src,
-            lp_char_type
-        );
+        tracing :: trace ! ( "  args = {{dw_info_type = {:?}, lp_src_str = {:?}, cch_src = {:?}, lp_char_type = {:?}}}" , dw_info_type , lp_src_str , cch_src , lp_char_type );
         let res = api.GetStringTypeW(dw_info_type, lp_src_str, cch_src, lp_char_type);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -2573,7 +2525,7 @@ extern "C" fn thunk_GetSystemDefaultLCID(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetSystemDefaultLCID");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.GetSystemDefaultLCID();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -2597,7 +2549,7 @@ extern "C" fn thunk_GetSystemDefaultLangID(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetSystemDefaultLangID");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.GetSystemDefaultLangID();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -2624,7 +2576,7 @@ extern "C" fn thunk_GetSystemDefaultLocaleName(
         let span = tracing::trace_span!("GetSystemDefaultLocaleName");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_locale_name = {:?}, cch_locale_name = {:?}",
+            "  args = {{lp_locale_name = {:?}, cch_locale_name = {:?}}}",
             lp_locale_name,
             cch_locale_name
         );
@@ -2651,7 +2603,7 @@ extern "C" fn thunk_GetSystemDefaultUILanguage(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetSystemDefaultUILanguage");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.GetSystemDefaultUILanguage();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -2679,7 +2631,7 @@ extern "C" fn thunk_GetSystemPreferredUILanguages(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetSystemPreferredUILanguages");
         let _enter = span.enter();
-        tracing :: trace ! ( "dw_flags = {:?}, pul_num_languages = {:?}, pwsz_languages_buffer = {:?}, pcch_languages_buffer = {:?}" , dw_flags , pul_num_languages , pwsz_languages_buffer , pcch_languages_buffer );
+        tracing :: trace ! ( "  args = {{dw_flags = {:?}, pul_num_languages = {:?}, pwsz_languages_buffer = {:?}, pcch_languages_buffer = {:?}}}" , dw_flags , pul_num_languages , pwsz_languages_buffer , pcch_languages_buffer );
         let res = api.GetSystemPreferredUILanguages(
             dw_flags,
             pul_num_languages,
@@ -2708,7 +2660,7 @@ extern "C" fn thunk_GetThreadLocale(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetThreadLocale");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.GetThreadLocale();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -2736,7 +2688,7 @@ extern "C" fn thunk_GetThreadPreferredUILanguages(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetThreadPreferredUILanguages");
         let _enter = span.enter();
-        tracing :: trace ! ( "dw_flags = {:?}, pul_num_languages = {:?}, pwsz_languages_buffer = {:?}, pcch_languages_buffer = {:?}" , dw_flags , pul_num_languages , pwsz_languages_buffer , pcch_languages_buffer );
+        tracing :: trace ! ( "  args = {{dw_flags = {:?}, pul_num_languages = {:?}, pwsz_languages_buffer = {:?}, pcch_languages_buffer = {:?}}}" , dw_flags , pul_num_languages , pwsz_languages_buffer , pcch_languages_buffer );
         let res = api.GetThreadPreferredUILanguages(
             dw_flags,
             pul_num_languages,
@@ -2765,7 +2717,7 @@ extern "C" fn thunk_GetThreadUILanguage(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetThreadUILanguage");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.GetThreadUILanguage();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -2795,7 +2747,7 @@ extern "C" fn thunk_GetTimeFormatA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetTimeFormatA");
         let _enter = span.enter();
-        tracing :: trace ! ( "locale = {:?}, dw_flags = {:?}, lp_time = {:?}, lp_format = {:?}, lp_time_str = {:?}, cch_time = {:?}" , locale , dw_flags , lp_time , lp_format , lp_time_str , cch_time );
+        tracing :: trace ! ( "  args = {{locale = {:?}, dw_flags = {:?}, lp_time = {:?}, lp_format = {:?}, lp_time_str = {:?}, cch_time = {:?}}}" , locale , dw_flags , lp_time , lp_format , lp_time_str , cch_time );
         let res = api.GetTimeFormatA(locale, dw_flags, lp_time, lp_format, lp_time_str, cch_time);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -2825,7 +2777,7 @@ extern "C" fn thunk_GetTimeFormatEx(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetTimeFormatEx");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_locale_name = {:?}, dw_flags = {:?}, lp_time = {:?}, lp_format = {:?}, lp_time_str = {:?}, cch_time = {:?}" , lp_locale_name , dw_flags , lp_time , lp_format , lp_time_str , cch_time );
+        tracing :: trace ! ( "  args = {{lp_locale_name = {:?}, dw_flags = {:?}, lp_time = {:?}, lp_format = {:?}, lp_time_str = {:?}, cch_time = {:?}}}" , lp_locale_name , dw_flags , lp_time , lp_format , lp_time_str , cch_time );
         let res = api.GetTimeFormatEx(
             lp_locale_name,
             dw_flags,
@@ -2862,7 +2814,7 @@ extern "C" fn thunk_GetTimeFormatW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetTimeFormatW");
         let _enter = span.enter();
-        tracing :: trace ! ( "locale = {:?}, dw_flags = {:?}, lp_time = {:?}, lp_format = {:?}, lp_time_str = {:?}, cch_time = {:?}" , locale , dw_flags , lp_time , lp_format , lp_time_str , cch_time );
+        tracing :: trace ! ( "  args = {{locale = {:?}, dw_flags = {:?}, lp_time = {:?}, lp_format = {:?}, lp_time_str = {:?}, cch_time = {:?}}}" , locale , dw_flags , lp_time , lp_format , lp_time_str , cch_time );
         let res = api.GetTimeFormatW(locale, dw_flags, lp_time, lp_format, lp_time_str, cch_time);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -2891,7 +2843,7 @@ extern "C" fn thunk_GetUILanguageInfo(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetUILanguageInfo");
         let _enter = span.enter();
-        tracing :: trace ! ( "dw_flags = {:?}, pwmsz_language = {:?}, pwsz_fallback_languages = {:?}, pcch_fallback_languages = {:?}, p_attributes = {:?}" , dw_flags , pwmsz_language , pwsz_fallback_languages , pcch_fallback_languages , p_attributes );
+        tracing :: trace ! ( "  args = {{dw_flags = {:?}, pwmsz_language = {:?}, pwsz_fallback_languages = {:?}, pcch_fallback_languages = {:?}, p_attributes = {:?}}}" , dw_flags , pwmsz_language , pwsz_fallback_languages , pcch_fallback_languages , p_attributes );
         let res = api.GetUILanguageInfo(
             dw_flags,
             pwmsz_language,
@@ -2924,7 +2876,7 @@ extern "C" fn thunk_GetUserDefaultGeoName(
         let span = tracing::trace_span!("GetUserDefaultGeoName");
         let _enter = span.enter();
         tracing::trace!(
-            "geo_name = {:?}, geo_name_count = {:?}",
+            "  args = {{geo_name = {:?}, geo_name_count = {:?}}}",
             geo_name,
             geo_name_count
         );
@@ -2951,7 +2903,7 @@ extern "C" fn thunk_GetUserDefaultLCID(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetUserDefaultLCID");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.GetUserDefaultLCID();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -2975,7 +2927,7 @@ extern "C" fn thunk_GetUserDefaultLangID(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetUserDefaultLangID");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.GetUserDefaultLangID();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -3002,7 +2954,7 @@ extern "C" fn thunk_GetUserDefaultLocaleName(
         let span = tracing::trace_span!("GetUserDefaultLocaleName");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_locale_name = {:?}, cch_locale_name = {:?}",
+            "  args = {{lp_locale_name = {:?}, cch_locale_name = {:?}}}",
             lp_locale_name,
             cch_locale_name
         );
@@ -3029,7 +2981,7 @@ extern "C" fn thunk_GetUserDefaultUILanguage(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetUserDefaultUILanguage");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.GetUserDefaultUILanguage();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -3051,7 +3003,7 @@ extern "C" fn thunk_GetUserGeoID(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetUserGeoID");
         let _enter = span.enter();
-        tracing::trace!("geo_class = {:?}", geo_class);
+        tracing::trace!("  args = {{geo_class = {:?}}}", geo_class);
         let res = api.GetUserGeoID(geo_class);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -3079,7 +3031,7 @@ extern "C" fn thunk_GetUserPreferredUILanguages(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetUserPreferredUILanguages");
         let _enter = span.enter();
-        tracing :: trace ! ( "dw_flags = {:?}, pul_num_languages = {:?}, pwsz_languages_buffer = {:?}, pcch_languages_buffer = {:?}" , dw_flags , pul_num_languages , pwsz_languages_buffer , pcch_languages_buffer );
+        tracing :: trace ! ( "  args = {{dw_flags = {:?}, pul_num_languages = {:?}, pwsz_languages_buffer = {:?}, pcch_languages_buffer = {:?}}}" , dw_flags , pul_num_languages , pwsz_languages_buffer , pcch_languages_buffer );
         let res = api.GetUserPreferredUILanguages(
             dw_flags,
             pul_num_languages,
@@ -3110,7 +3062,7 @@ extern "C" fn thunk_IdnToAscii(context: &mut ExtendedContext, memory: FlatMemory
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("IdnToAscii");
         let _enter = span.enter();
-        tracing :: trace ! ( "dw_flags = {:?}, lp_unicode_char_str = {:?}, cch_unicode_char = {:?}, lp_ascii_char_str = {:?}, cch_ascii_char = {:?}" , dw_flags , lp_unicode_char_str , cch_unicode_char , lp_ascii_char_str , cch_ascii_char );
+        tracing :: trace ! ( "  args = {{dw_flags = {:?}, lp_unicode_char_str = {:?}, cch_unicode_char = {:?}, lp_ascii_char_str = {:?}, cch_ascii_char = {:?}}}" , dw_flags , lp_unicode_char_str , cch_unicode_char , lp_ascii_char_str , cch_ascii_char );
         let res = api.IdnToAscii(
             dw_flags,
             lp_unicode_char_str,
@@ -3145,7 +3097,7 @@ extern "C" fn thunk_IdnToNameprepUnicode(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("IdnToNameprepUnicode");
         let _enter = span.enter();
-        tracing :: trace ! ( "dw_flags = {:?}, lp_unicode_char_str = {:?}, cch_unicode_char = {:?}, lp_nameprep_char_str = {:?}, cch_nameprep_char = {:?}" , dw_flags , lp_unicode_char_str , cch_unicode_char , lp_nameprep_char_str , cch_nameprep_char );
+        tracing :: trace ! ( "  args = {{dw_flags = {:?}, lp_unicode_char_str = {:?}, cch_unicode_char = {:?}, lp_nameprep_char_str = {:?}, cch_nameprep_char = {:?}}}" , dw_flags , lp_unicode_char_str , cch_unicode_char , lp_nameprep_char_str , cch_nameprep_char );
         let res = api.IdnToNameprepUnicode(
             dw_flags,
             lp_unicode_char_str,
@@ -3177,7 +3129,7 @@ extern "C" fn thunk_IdnToUnicode(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("IdnToUnicode");
         let _enter = span.enter();
-        tracing :: trace ! ( "dw_flags = {:?}, lp_ascii_char_str = {:?}, cch_ascii_char = {:?}, lp_unicode_char_str = {:?}, cch_unicode_char = {:?}" , dw_flags , lp_ascii_char_str , cch_ascii_char , lp_unicode_char_str , cch_unicode_char );
+        tracing :: trace ! ( "  args = {{dw_flags = {:?}, lp_ascii_char_str = {:?}, cch_ascii_char = {:?}, lp_unicode_char_str = {:?}, cch_unicode_char = {:?}}}" , dw_flags , lp_ascii_char_str , cch_ascii_char , lp_unicode_char_str , cch_unicode_char );
         let res = api.IdnToUnicode(
             dw_flags,
             lp_ascii_char_str,
@@ -3208,7 +3160,7 @@ extern "C" fn thunk_IsDBCSLeadByte(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("IsDBCSLeadByte");
         let _enter = span.enter();
-        tracing::trace!("test_char = {:?}", test_char);
+        tracing::trace!("  args = {{test_char = {:?}}}", test_char);
         let res = api.IsDBCSLeadByte(test_char);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -3234,7 +3186,11 @@ extern "C" fn thunk_IsDBCSLeadByteEx(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("IsDBCSLeadByteEx");
         let _enter = span.enter();
-        tracing::trace!("code_page = {:?}, test_char = {:?}", code_page, test_char);
+        tracing::trace!(
+            "  args = {{code_page = {:?}, test_char = {:?}}}",
+            code_page,
+            test_char
+        );
         let res = api.IsDBCSLeadByteEx(code_page, test_char);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -3263,7 +3219,7 @@ extern "C" fn thunk_IsNLSDefinedString(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("IsNLSDefinedString");
         let _enter = span.enter();
-        tracing :: trace ! ( "function = {:?}, dw_flags = {:?}, lp_version_information = {:?}, lp_string = {:?}, cch_str = {:?}" , function , dw_flags , lp_version_information , lp_string , cch_str );
+        tracing :: trace ! ( "  args = {{function = {:?}, dw_flags = {:?}, lp_version_information = {:?}, lp_string = {:?}, cch_str = {:?}}}" , function , dw_flags , lp_version_information , lp_string , cch_str );
         let res = api.IsNLSDefinedString(
             function,
             dw_flags,
@@ -3297,7 +3253,7 @@ extern "C" fn thunk_IsNormalizedString(
         let span = tracing::trace_span!("IsNormalizedString");
         let _enter = span.enter();
         tracing::trace!(
-            "norm_form = {:?}, lp_string = {:?}, cw_length = {:?}",
+            "  args = {{norm_form = {:?}, lp_string = {:?}, cw_length = {:?}}}",
             norm_form,
             lp_string,
             cw_length
@@ -3326,7 +3282,7 @@ extern "C" fn thunk_IsTextUnicode(context: &mut ExtendedContext, memory: FlatMem
         let span = tracing::trace_span!("IsTextUnicode");
         let _enter = span.enter();
         tracing::trace!(
-            "lpv = {:?}, i_size = {:?}, lpi_result = {:?}",
+            "  args = {{lpv = {:?}, i_size = {:?}, lpi_result = {:?}}}",
             lpv,
             i_size,
             lpi_result
@@ -3355,7 +3311,7 @@ extern "C" fn thunk_IsValidCodePage(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("IsValidCodePage");
         let _enter = span.enter();
-        tracing::trace!("code_page = {:?}", code_page);
+        tracing::trace!("  args = {{code_page = {:?}}}", code_page);
         let res = api.IsValidCodePage(code_page);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -3382,7 +3338,7 @@ extern "C" fn thunk_IsValidLanguageGroup(
         let span = tracing::trace_span!("IsValidLanguageGroup");
         let _enter = span.enter();
         tracing::trace!(
-            "language_group = {:?}, dw_flags = {:?}",
+            "  args = {{language_group = {:?}, dw_flags = {:?}}}",
             language_group,
             dw_flags
         );
@@ -3408,7 +3364,11 @@ extern "C" fn thunk_IsValidLocale(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("IsValidLocale");
         let _enter = span.enter();
-        tracing::trace!("locale = {:?}, dw_flags = {:?}", locale, dw_flags);
+        tracing::trace!(
+            "  args = {{locale = {:?}, dw_flags = {:?}}}",
+            locale,
+            dw_flags
+        );
         let res = api.IsValidLocale(locale, dw_flags);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -3433,7 +3393,7 @@ extern "C" fn thunk_IsValidLocaleName(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("IsValidLocaleName");
         let _enter = span.enter();
-        tracing::trace!("lp_locale_name = {:?}", lp_locale_name);
+        tracing::trace!("  args = {{lp_locale_name = {:?}}}", lp_locale_name);
         let res = api.IsValidLocaleName(lp_locale_name);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -3461,7 +3421,7 @@ extern "C" fn thunk_IsValidNLSVersion(
         let span = tracing::trace_span!("IsValidNLSVersion");
         let _enter = span.enter();
         tracing::trace!(
-            "function = {:?}, lp_locale_name = {:?}, lp_version_information = {:?}",
+            "  args = {{function = {:?}, lp_locale_name = {:?}, lp_version_information = {:?}}}",
             function,
             lp_locale_name,
             lp_version_information
@@ -3490,7 +3450,7 @@ extern "C" fn thunk_IsWellFormedTag(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("IsWellFormedTag");
         let _enter = span.enter();
-        tracing::trace!("psz_tag = {:?}", psz_tag);
+        tracing::trace!("  args = {{psz_tag = {:?}}}", psz_tag);
         let res = api.IsWellFormedTag(psz_tag);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -3519,7 +3479,7 @@ extern "C" fn thunk_LCIDToLocaleName(
         let span = tracing::trace_span!("LCIDToLocaleName");
         let _enter = span.enter();
         tracing::trace!(
-            "locale = {:?}, lp_name = {:?}, cch_name = {:?}, dw_flags = {:?}",
+            "  args = {{locale = {:?}, lp_name = {:?}, cch_name = {:?}, dw_flags = {:?}}}",
             locale,
             lp_name,
             cch_name,
@@ -3551,7 +3511,7 @@ extern "C" fn thunk_LCMapStringA(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("LCMapStringA");
         let _enter = span.enter();
-        tracing :: trace ! ( "locale = {:?}, dw_map_flags = {:?}, lp_src_str = {:?}, cch_src = {:?}, lp_dest_str = {:?}, cch_dest = {:?}" , locale , dw_map_flags , lp_src_str , cch_src , lp_dest_str , cch_dest );
+        tracing :: trace ! ( "  args = {{locale = {:?}, dw_map_flags = {:?}, lp_src_str = {:?}, cch_src = {:?}, lp_dest_str = {:?}, cch_dest = {:?}}}" , locale , dw_map_flags , lp_src_str , cch_src , lp_dest_str , cch_dest );
         let res = api.LCMapStringA(
             locale,
             dw_map_flags,
@@ -3588,7 +3548,7 @@ extern "C" fn thunk_LCMapStringEx(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("LCMapStringEx");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_locale_name = {:?}, dw_map_flags = {:?}, lp_src_str = {:?}, cch_src = {:?}, lp_dest_str = {:?}, cch_dest = {:?}, lp_version_information = {:?}, lp_reserved = {:?}, sort_handle = {:?}" , lp_locale_name , dw_map_flags , lp_src_str , cch_src , lp_dest_str , cch_dest , lp_version_information , lp_reserved , sort_handle );
+        tracing :: trace ! ( "  args = {{lp_locale_name = {:?}, dw_map_flags = {:?}, lp_src_str = {:?}, cch_src = {:?}, lp_dest_str = {:?}, cch_dest = {:?}, lp_version_information = {:?}, lp_reserved = {:?}, sort_handle = {:?}}}" , lp_locale_name , dw_map_flags , lp_src_str , cch_src , lp_dest_str , cch_dest , lp_version_information , lp_reserved , sort_handle );
         let res = api.LCMapStringEx(
             lp_locale_name,
             dw_map_flags,
@@ -3625,7 +3585,7 @@ extern "C" fn thunk_LCMapStringW(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("LCMapStringW");
         let _enter = span.enter();
-        tracing :: trace ! ( "locale = {:?}, dw_map_flags = {:?}, lp_src_str = {:?}, cch_src = {:?}, lp_dest_str = {:?}, cch_dest = {:?}" , locale , dw_map_flags , lp_src_str , cch_src , lp_dest_str , cch_dest );
+        tracing :: trace ! ( "  args = {{locale = {:?}, dw_map_flags = {:?}, lp_src_str = {:?}, cch_src = {:?}, lp_dest_str = {:?}, cch_dest = {:?}}}" , locale , dw_map_flags , lp_src_str , cch_src , lp_dest_str , cch_dest );
         let res = api.LCMapStringW(
             locale,
             dw_map_flags,
@@ -3658,7 +3618,11 @@ extern "C" fn thunk_LocaleNameToLCID(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("LocaleNameToLCID");
         let _enter = span.enter();
-        tracing::trace!("lp_name = {:?}, dw_flags = {:?}", lp_name, dw_flags);
+        tracing::trace!(
+            "  args = {{lp_name = {:?}, dw_flags = {:?}}}",
+            lp_name,
+            dw_flags
+        );
         let res = api.LocaleNameToLCID(lp_name, dw_flags);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -3686,7 +3650,7 @@ extern "C" fn thunk_MappingDoAction(
         let span = tracing::trace_span!("MappingDoAction");
         let _enter = span.enter();
         tracing::trace!(
-            "p_bag = {:?}, dw_range_index = {:?}, psz_action_id = {:?}",
+            "  args = {{p_bag = {:?}, dw_range_index = {:?}, psz_action_id = {:?}}}",
             p_bag,
             dw_range_index,
             psz_action_id
@@ -3715,7 +3679,7 @@ extern "C" fn thunk_MappingFreePropertyBag(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("MappingFreePropertyBag");
         let _enter = span.enter();
-        tracing::trace!("p_bag = {:?}", p_bag);
+        tracing::trace!("  args = {{p_bag = {:?}}}", p_bag);
         let res = api.MappingFreePropertyBag(p_bag);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -3740,7 +3704,7 @@ extern "C" fn thunk_MappingFreeServices(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("MappingFreeServices");
         let _enter = span.enter();
-        tracing::trace!("p_service_info = {:?}", p_service_info);
+        tracing::trace!("  args = {{p_service_info = {:?}}}", p_service_info);
         let res = api.MappingFreeServices(p_service_info);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -3768,7 +3732,7 @@ extern "C" fn thunk_MappingGetServices(
         let span = tracing::trace_span!("MappingGetServices");
         let _enter = span.enter();
         tracing::trace!(
-            "p_options = {:?}, prg_services = {:?}, pdw_services_count = {:?}",
+            "  args = {{p_options = {:?}, prg_services = {:?}, pdw_services_count = {:?}}}",
             p_options,
             prg_services,
             pdw_services_count
@@ -3802,7 +3766,7 @@ extern "C" fn thunk_MappingRecognizeText(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("MappingRecognizeText");
         let _enter = span.enter();
-        tracing :: trace ! ( "p_service_info = {:?}, psz_text = {:?}, dw_length = {:?}, dw_index = {:?}, p_options = {:?}, pbag = {:?}" , p_service_info , psz_text , dw_length , dw_index , p_options , pbag );
+        tracing :: trace ! ( "  args = {{p_service_info = {:?}, psz_text = {:?}, dw_length = {:?}, dw_index = {:?}, p_options = {:?}, pbag = {:?}}}" , p_service_info , psz_text , dw_length , dw_index , p_options , pbag );
         let res = api.MappingRecognizeText(
             p_service_info,
             psz_text,
@@ -3839,7 +3803,7 @@ extern "C" fn thunk_MultiByteToWideChar(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("MultiByteToWideChar");
         let _enter = span.enter();
-        tracing :: trace ! ( "code_page = {:?}, dw_flags = {:?}, lp_multi_byte_str = {:?}, cb_multi_byte = {:?}, lp_wide_char_str = {:?}, cch_wide_char = {:?}" , code_page , dw_flags , lp_multi_byte_str , cb_multi_byte , lp_wide_char_str , cch_wide_char );
+        tracing :: trace ! ( "  args = {{code_page = {:?}, dw_flags = {:?}, lp_multi_byte_str = {:?}, cb_multi_byte = {:?}, lp_wide_char_str = {:?}, cch_wide_char = {:?}}}" , code_page , dw_flags , lp_multi_byte_str , cb_multi_byte , lp_wide_char_str , cch_wide_char );
         let res = api.MultiByteToWideChar(
             code_page,
             dw_flags,
@@ -3875,7 +3839,7 @@ extern "C" fn thunk_NormalizeString(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("NormalizeString");
         let _enter = span.enter();
-        tracing :: trace ! ( "norm_form = {:?}, lp_src_string = {:?}, cw_src_length = {:?}, lp_dst_string = {:?}, cw_dst_length = {:?}" , norm_form , lp_src_string , cw_src_length , lp_dst_string , cw_dst_length );
+        tracing :: trace ! ( "  args = {{norm_form = {:?}, lp_src_string = {:?}, cw_src_length = {:?}, lp_dst_string = {:?}, cw_dst_length = {:?}}}" , norm_form , lp_src_string , cw_src_length , lp_dst_string , cw_dst_length );
         let res = api.NormalizeString(
             norm_form,
             lp_src_string,
@@ -3910,7 +3874,7 @@ extern "C" fn thunk_NotifyUILanguageChange(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("NotifyUILanguageChange");
         let _enter = span.enter();
-        tracing :: trace ! ( "dw_flags = {:?}, pcwstr_new_language = {:?}, pcwstr_previous_language = {:?}, dw_reserved = {:?}, pdw_status_rtrn = {:?}" , dw_flags , pcwstr_new_language , pcwstr_previous_language , dw_reserved , pdw_status_rtrn );
+        tracing :: trace ! ( "  args = {{dw_flags = {:?}, pcwstr_new_language = {:?}, pcwstr_previous_language = {:?}, dw_reserved = {:?}, pdw_status_rtrn = {:?}}}" , dw_flags , pcwstr_new_language , pcwstr_previous_language , dw_reserved , pdw_status_rtrn );
         let res = api.NotifyUILanguageChange(
             dw_flags,
             pcwstr_new_language,
@@ -3944,7 +3908,7 @@ extern "C" fn thunk_ResolveLocaleName(
         let span = tracing::trace_span!("ResolveLocaleName");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_name_to_resolve = {:?}, lp_locale_name = {:?}, cch_locale_name = {:?}",
+            "  args = {{lp_name_to_resolve = {:?}, lp_locale_name = {:?}, cch_locale_name = {:?}}}",
             lp_name_to_resolve,
             lp_locale_name,
             cch_locale_name
@@ -3973,7 +3937,7 @@ extern "C" fn thunk_RestoreThreadPreferredUILanguages(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("RestoreThreadPreferredUILanguages");
         let _enter = span.enter();
-        tracing::trace!("snapshot = {:?}", snapshot);
+        tracing::trace!("  args = {{snapshot = {:?}}}", snapshot);
         let res = api.RestoreThreadPreferredUILanguages(snapshot);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -4000,7 +3964,12 @@ extern "C" fn thunk_ScriptApplyDigitSubstitution(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ScriptApplyDigitSubstitution");
         let _enter = span.enter();
-        tracing::trace!("psds = {:?}, psc = {:?}, pss = {:?}", psds, psc, pss);
+        tracing::trace!(
+            "  args = {{psds = {:?}, psc = {:?}, pss = {:?}}}",
+            psds,
+            psc,
+            pss
+        );
         let res = api.ScriptApplyDigitSubstitution(psds, psc, pss);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -4026,7 +3995,7 @@ extern "C" fn thunk_ScriptBreak(context: &mut ExtendedContext, memory: FlatMemor
         let span = tracing::trace_span!("ScriptBreak");
         let _enter = span.enter();
         tracing::trace!(
-            "pwc_chars = {:?}, c_chars = {:?}, psa = {:?}, psla = {:?}",
+            "  args = {{pwc_chars = {:?}, c_chars = {:?}, psa = {:?}, psla = {:?}}}",
             pwc_chars,
             c_chars,
             psa,
@@ -4061,7 +4030,7 @@ extern "C" fn thunk_ScriptCPtoX(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ScriptCPtoX");
         let _enter = span.enter();
-        tracing :: trace ! ( "i_cp = {:?}, f_trailing = {:?}, c_chars = {:?}, c_glyphs = {:?}, pw_log_clust = {:?}, psva = {:?}, pi_advance = {:?}, psa = {:?}, pi_x = {:?}" , i_cp , f_trailing , c_chars , c_glyphs , pw_log_clust , psva , pi_advance , psa , pi_x );
+        tracing :: trace ! ( "  args = {{i_cp = {:?}, f_trailing = {:?}, c_chars = {:?}, c_glyphs = {:?}, pw_log_clust = {:?}, psva = {:?}, pi_advance = {:?}, psa = {:?}, pi_x = {:?}}}" , i_cp , f_trailing , c_chars , c_glyphs , pw_log_clust , psva , pi_advance , psa , pi_x );
         let res = api.ScriptCPtoX(
             i_cp,
             f_trailing,
@@ -4096,7 +4065,7 @@ extern "C" fn thunk_ScriptFreeCache(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ScriptFreeCache");
         let _enter = span.enter();
-        tracing::trace!("psc = {:?}", psc);
+        tracing::trace!("  args = {{psc = {:?}}}", psc);
         let res = api.ScriptFreeCache(psc);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -4127,7 +4096,7 @@ extern "C" fn thunk_ScriptGetLogicalWidths(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ScriptGetLogicalWidths");
         let _enter = span.enter();
-        tracing :: trace ! ( "psa = {:?}, c_chars = {:?}, c_glyphs = {:?}, pi_glyph_width = {:?}, pw_log_clust = {:?}, psva = {:?}, pi_dx = {:?}" , psa , c_chars , c_glyphs , pi_glyph_width , pw_log_clust , psva , pi_dx );
+        tracing :: trace ! ( "  args = {{psa = {:?}, c_chars = {:?}, c_glyphs = {:?}, pi_glyph_width = {:?}, pw_log_clust = {:?}, psva = {:?}, pi_dx = {:?}}}" , psa , c_chars , c_glyphs , pi_glyph_width , pw_log_clust , psva , pi_dx );
         let res = api.ScriptGetLogicalWidths(
             psa,
             c_chars,
@@ -4161,7 +4130,11 @@ extern "C" fn thunk_ScriptGetProperties(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ScriptGetProperties");
         let _enter = span.enter();
-        tracing::trace!("pp_sp = {:?}, pi_num_scripts = {:?}", pp_sp, pi_num_scripts);
+        tracing::trace!(
+            "  args = {{pp_sp = {:?}, pi_num_scripts = {:?}}}",
+            pp_sp,
+            pi_num_scripts
+        );
         let res = api.ScriptGetProperties(pp_sp, pi_num_scripts);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -4189,7 +4162,7 @@ extern "C" fn thunk_ScriptIsComplex(
         let span = tracing::trace_span!("ScriptIsComplex");
         let _enter = span.enter();
         tracing::trace!(
-            "pwc_in_chars = {:?}, c_in_chars = {:?}, dw_flags = {:?}",
+            "  args = {{pwc_in_chars = {:?}, c_in_chars = {:?}, dw_flags = {:?}}}",
             pwc_in_chars,
             c_in_chars,
             dw_flags
@@ -4221,7 +4194,7 @@ extern "C" fn thunk_ScriptItemize(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ScriptItemize");
         let _enter = span.enter();
-        tracing :: trace ! ( "pwc_in_chars = {:?}, c_in_chars = {:?}, c_max_items = {:?}, ps_control = {:?}, ps_state = {:?}, p_items = {:?}, pc_items = {:?}" , pwc_in_chars , c_in_chars , c_max_items , ps_control , ps_state , p_items , pc_items );
+        tracing :: trace ! ( "  args = {{pwc_in_chars = {:?}, c_in_chars = {:?}, c_max_items = {:?}, ps_control = {:?}, ps_state = {:?}, p_items = {:?}, pc_items = {:?}}}" , pwc_in_chars , c_in_chars , c_max_items , ps_control , ps_state , p_items , pc_items );
         let res = api.ScriptItemize(
             pwc_in_chars,
             c_in_chars,
@@ -4261,7 +4234,7 @@ extern "C" fn thunk_ScriptItemizeOpenType(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ScriptItemizeOpenType");
         let _enter = span.enter();
-        tracing :: trace ! ( "pwc_in_chars = {:?}, c_in_chars = {:?}, c_max_items = {:?}, ps_control = {:?}, ps_state = {:?}, p_items = {:?}, p_script_tags = {:?}, pc_items = {:?}" , pwc_in_chars , c_in_chars , c_max_items , ps_control , ps_state , p_items , p_script_tags , pc_items );
+        tracing :: trace ! ( "  args = {{pwc_in_chars = {:?}, c_in_chars = {:?}, c_max_items = {:?}, ps_control = {:?}, ps_state = {:?}, p_items = {:?}, p_script_tags = {:?}, pc_items = {:?}}}" , pwc_in_chars , c_in_chars , c_max_items , ps_control , ps_state , p_items , p_script_tags , pc_items );
         let res = api.ScriptItemizeOpenType(
             pwc_in_chars,
             c_in_chars,
@@ -4297,7 +4270,7 @@ extern "C" fn thunk_ScriptJustify(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ScriptJustify");
         let _enter = span.enter();
-        tracing :: trace ! ( "psva = {:?}, pi_advance = {:?}, c_glyphs = {:?}, i_dx = {:?}, i_min_kashida = {:?}, pi_justify = {:?}" , psva , pi_advance , c_glyphs , i_dx , i_min_kashida , pi_justify );
+        tracing :: trace ! ( "  args = {{psva = {:?}, pi_advance = {:?}, c_glyphs = {:?}, i_dx = {:?}, i_min_kashida = {:?}, pi_justify = {:?}}}" , psva , pi_advance , c_glyphs , i_dx , i_min_kashida , pi_justify );
         let res = api.ScriptJustify(psva, pi_advance, c_glyphs, i_dx, i_min_kashida, pi_justify);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -4322,7 +4295,7 @@ extern "C" fn thunk_ScriptLayout(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ScriptLayout");
         let _enter = span.enter();
-        tracing :: trace ! ( "c_runs = {:?}, pb_level = {:?}, pi_visual_to_logical = {:?}, pi_logical_to_visual = {:?}" , c_runs , pb_level , pi_visual_to_logical , pi_logical_to_visual );
+        tracing :: trace ! ( "  args = {{c_runs = {:?}, pb_level = {:?}, pi_visual_to_logical = {:?}, pi_logical_to_visual = {:?}}}" , c_runs , pb_level , pi_visual_to_logical , pi_logical_to_visual );
         let res = api.ScriptLayout(c_runs, pb_level, pi_visual_to_logical, pi_logical_to_visual);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -4348,7 +4321,7 @@ extern "C" fn thunk_ScriptRecordDigitSubstitution(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ScriptRecordDigitSubstitution");
         let _enter = span.enter();
-        tracing::trace!("locale = {:?}, psds = {:?}", locale, psds);
+        tracing::trace!("  args = {{locale = {:?}, psds = {:?}}}", locale, psds);
         let res = api.ScriptRecordDigitSubstitution(locale, psds);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -4377,7 +4350,7 @@ extern "C" fn thunk_ScriptStringCPtoX(
         let span = tracing::trace_span!("ScriptStringCPtoX");
         let _enter = span.enter();
         tracing::trace!(
-            "ssa = {:?}, icp = {:?}, f_trailing = {:?}, p_x = {:?}",
+            "  args = {{ssa = {:?}, icp = {:?}, f_trailing = {:?}, p_x = {:?}}}",
             ssa,
             icp,
             f_trailing,
@@ -4407,7 +4380,7 @@ extern "C" fn thunk_ScriptStringFree(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ScriptStringFree");
         let _enter = span.enter();
-        tracing::trace!("pssa = {:?}", pssa);
+        tracing::trace!("  args = {{pssa = {:?}}}", pssa);
         let res = api.ScriptStringFree(pssa);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -4433,7 +4406,7 @@ extern "C" fn thunk_ScriptStringGetLogicalWidths(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ScriptStringGetLogicalWidths");
         let _enter = span.enter();
-        tracing::trace!("ssa = {:?}, pi_dx = {:?}", ssa, pi_dx);
+        tracing::trace!("  args = {{ssa = {:?}, pi_dx = {:?}}}", ssa, pi_dx);
         let res = api.ScriptStringGetLogicalWidths(ssa, pi_dx);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -4459,7 +4432,7 @@ extern "C" fn thunk_ScriptStringGetOrder(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ScriptStringGetOrder");
         let _enter = span.enter();
-        tracing::trace!("ssa = {:?}, pu_order = {:?}", ssa, pu_order);
+        tracing::trace!("  args = {{ssa = {:?}, pu_order = {:?}}}", ssa, pu_order);
         let res = api.ScriptStringGetOrder(ssa, pu_order);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -4484,7 +4457,7 @@ extern "C" fn thunk_ScriptStringValidate(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ScriptStringValidate");
         let _enter = span.enter();
-        tracing::trace!("ssa = {:?}", ssa);
+        tracing::trace!("  args = {{ssa = {:?}}}", ssa);
         let res = api.ScriptStringValidate(ssa);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -4513,7 +4486,7 @@ extern "C" fn thunk_ScriptStringXtoCP(
         let span = tracing::trace_span!("ScriptStringXtoCP");
         let _enter = span.enter();
         tracing::trace!(
-            "ssa = {:?}, i_x = {:?}, pi_ch = {:?}, pi_trailing = {:?}",
+            "  args = {{ssa = {:?}, i_x = {:?}, pi_ch = {:?}, pi_trailing = {:?}}}",
             ssa,
             i_x,
             pi_ch,
@@ -4543,7 +4516,7 @@ extern "C" fn thunk_ScriptString_pLogAttr(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ScriptString_pLogAttr");
         let _enter = span.enter();
-        tracing::trace!("ssa = {:?}", ssa);
+        tracing::trace!("  args = {{ssa = {:?}}}", ssa);
         let res = api.ScriptString_pLogAttr(ssa);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -4568,7 +4541,7 @@ extern "C" fn thunk_ScriptString_pSize(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ScriptString_pSize");
         let _enter = span.enter();
-        tracing::trace!("ssa = {:?}", ssa);
+        tracing::trace!("  args = {{ssa = {:?}}}", ssa);
         let res = api.ScriptString_pSize(ssa);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -4593,7 +4566,7 @@ extern "C" fn thunk_ScriptString_pcOutChars(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ScriptString_pcOutChars");
         let _enter = span.enter();
-        tracing::trace!("ssa = {:?}", ssa);
+        tracing::trace!("  args = {{ssa = {:?}}}", ssa);
         let res = api.ScriptString_pcOutChars(ssa);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -4623,7 +4596,7 @@ extern "C" fn thunk_ScriptXtoCP(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ScriptXtoCP");
         let _enter = span.enter();
-        tracing :: trace ! ( "i_x = {:?}, c_chars = {:?}, c_glyphs = {:?}, pw_log_clust = {:?}, psva = {:?}, pi_advance = {:?}, psa = {:?}, pi_cp = {:?}, pi_trailing = {:?}" , i_x , c_chars , c_glyphs , pw_log_clust , psva , pi_advance , psa , pi_cp , pi_trailing );
+        tracing :: trace ! ( "  args = {{i_x = {:?}, c_chars = {:?}, c_glyphs = {:?}, pw_log_clust = {:?}, psva = {:?}, pi_advance = {:?}, psa = {:?}, pi_cp = {:?}, pi_trailing = {:?}}}" , i_x , c_chars , c_glyphs , pw_log_clust , psva , pi_advance , psa , pi_cp , pi_trailing );
         let res = api.ScriptXtoCP(
             i_x,
             c_chars,
@@ -4662,7 +4635,7 @@ extern "C" fn thunk_SetCalendarInfoA(
         let span = tracing::trace_span!("SetCalendarInfoA");
         let _enter = span.enter();
         tracing::trace!(
-            "locale = {:?}, calendar = {:?}, cal_type = {:?}, lp_cal_data = {:?}",
+            "  args = {{locale = {:?}, calendar = {:?}, cal_type = {:?}, lp_cal_data = {:?}}}",
             locale,
             calendar,
             cal_type,
@@ -4696,7 +4669,7 @@ extern "C" fn thunk_SetCalendarInfoW(
         let span = tracing::trace_span!("SetCalendarInfoW");
         let _enter = span.enter();
         tracing::trace!(
-            "locale = {:?}, calendar = {:?}, cal_type = {:?}, lp_cal_data = {:?}",
+            "  args = {{locale = {:?}, calendar = {:?}, cal_type = {:?}, lp_cal_data = {:?}}}",
             locale,
             calendar,
             cal_type,
@@ -4729,7 +4702,7 @@ extern "C" fn thunk_SetLocaleInfoA(
         let span = tracing::trace_span!("SetLocaleInfoA");
         let _enter = span.enter();
         tracing::trace!(
-            "locale = {:?}, lc_type = {:?}, lp_lc_data = {:?}",
+            "  args = {{locale = {:?}, lc_type = {:?}, lp_lc_data = {:?}}}",
             locale,
             lc_type,
             lp_lc_data
@@ -4761,7 +4734,7 @@ extern "C" fn thunk_SetLocaleInfoW(
         let span = tracing::trace_span!("SetLocaleInfoW");
         let _enter = span.enter();
         tracing::trace!(
-            "locale = {:?}, lc_type = {:?}, lp_lc_data = {:?}",
+            "  args = {{locale = {:?}, lc_type = {:?}, lp_lc_data = {:?}}}",
             locale,
             lc_type,
             lp_lc_data
@@ -4793,7 +4766,7 @@ extern "C" fn thunk_SetProcessPreferredUILanguages(
         let span = tracing::trace_span!("SetProcessPreferredUILanguages");
         let _enter = span.enter();
         tracing::trace!(
-            "dw_flags = {:?}, pwsz_languages_buffer = {:?}, pul_num_languages = {:?}",
+            "  args = {{dw_flags = {:?}, pwsz_languages_buffer = {:?}, pul_num_languages = {:?}}}",
             dw_flags,
             pwsz_languages_buffer,
             pul_num_languages
@@ -4823,7 +4796,7 @@ extern "C" fn thunk_SetThreadLocale(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetThreadLocale");
         let _enter = span.enter();
-        tracing::trace!("locale = {:?}", locale);
+        tracing::trace!("  args = {{locale = {:?}}}", locale);
         let res = api.SetThreadLocale(locale);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -4851,7 +4824,7 @@ extern "C" fn thunk_SetThreadPreferredUILanguages(
         let span = tracing::trace_span!("SetThreadPreferredUILanguages");
         let _enter = span.enter();
         tracing::trace!(
-            "dw_flags = {:?}, pwsz_languages_buffer = {:?}, pul_num_languages = {:?}",
+            "  args = {{dw_flags = {:?}, pwsz_languages_buffer = {:?}, pul_num_languages = {:?}}}",
             dw_flags,
             pwsz_languages_buffer,
             pul_num_languages
@@ -4884,13 +4857,7 @@ extern "C" fn thunk_SetThreadPreferredUILanguages2(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetThreadPreferredUILanguages2");
         let _enter = span.enter();
-        tracing::trace!(
-            "flags = {:?}, languages = {:?}, num_languages_set = {:?}, snapshot = {:?}",
-            flags,
-            languages,
-            num_languages_set,
-            snapshot
-        );
+        tracing :: trace ! ( "  args = {{flags = {:?}, languages = {:?}, num_languages_set = {:?}, snapshot = {:?}}}" , flags , languages , num_languages_set , snapshot );
         let res = api.SetThreadPreferredUILanguages2(flags, languages, num_languages_set, snapshot);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -4915,7 +4882,7 @@ extern "C" fn thunk_SetThreadUILanguage(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetThreadUILanguage");
         let _enter = span.enter();
-        tracing::trace!("lang_id = {:?}", lang_id);
+        tracing::trace!("  args = {{lang_id = {:?}}}", lang_id);
         let res = api.SetThreadUILanguage(lang_id);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -4937,7 +4904,7 @@ extern "C" fn thunk_SetUserGeoID(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetUserGeoID");
         let _enter = span.enter();
-        tracing::trace!("geo_id = {:?}", geo_id);
+        tracing::trace!("  args = {{geo_id = {:?}}}", geo_id);
         let res = api.SetUserGeoID(geo_id);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -4962,7 +4929,7 @@ extern "C" fn thunk_SetUserGeoName(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetUserGeoName");
         let _enter = span.enter();
-        tracing::trace!("geo_name = {:?}", geo_name);
+        tracing::trace!("  args = {{geo_name = {:?}}}", geo_name);
         let res = api.SetUserGeoName(geo_name);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -4990,7 +4957,7 @@ extern "C" fn thunk_TranslateCharsetInfo(
         let span = tracing::trace_span!("TranslateCharsetInfo");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_src = {:?}, lp_cs = {:?}, dw_flags = {:?}",
+            "  args = {{lp_src = {:?}, lp_cs = {:?}, dw_flags = {:?}}}",
             lp_src,
             lp_cs,
             dw_flags
@@ -5020,7 +4987,7 @@ extern "C" fn thunk_VerifyScripts(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("VerifyScripts");
         let _enter = span.enter();
-        tracing :: trace ! ( "dw_flags = {:?}, lp_locale_scripts = {:?}, cch_locale_scripts = {:?}, lp_test_scripts = {:?}, cch_test_scripts = {:?}" , dw_flags , lp_locale_scripts , cch_locale_scripts , lp_test_scripts , cch_test_scripts );
+        tracing :: trace ! ( "  args = {{dw_flags = {:?}, lp_locale_scripts = {:?}, cch_locale_scripts = {:?}, lp_test_scripts = {:?}, cch_test_scripts = {:?}}}" , dw_flags , lp_locale_scripts , cch_locale_scripts , lp_test_scripts , cch_test_scripts );
         let res = api.VerifyScripts(
             dw_flags,
             lp_locale_scripts,
@@ -5058,7 +5025,7 @@ extern "C" fn thunk_WideCharToMultiByte(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("WideCharToMultiByte");
         let _enter = span.enter();
-        tracing :: trace ! ( "code_page = {:?}, dw_flags = {:?}, lp_wide_char_str = {:?}, cch_wide_char = {:?}, lp_multi_byte_str = {:?}, cb_multi_byte = {:?}, lp_default_char = {:?}, lp_used_default_char = {:?}" , code_page , dw_flags , lp_wide_char_str , cch_wide_char , lp_multi_byte_str , cb_multi_byte , lp_default_char , lp_used_default_char );
+        tracing :: trace ! ( "  args = {{code_page = {:?}, dw_flags = {:?}, lp_wide_char_str = {:?}, cch_wide_char = {:?}, lp_multi_byte_str = {:?}, cb_multi_byte = {:?}, lp_default_char = {:?}, lp_used_default_char = {:?}}}" , code_page , dw_flags , lp_wide_char_str , cch_wide_char , lp_multi_byte_str , cb_multi_byte , lp_default_char , lp_used_default_char );
         let res = api.WideCharToMultiByte(
             code_page,
             dw_flags,
@@ -5091,7 +5058,7 @@ extern "C" fn thunk_lstrcatA(context: &mut ExtendedContext, memory: FlatMemoryCt
         let span = tracing::trace_span!("lstrcatA");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_string_1 = {:?}, lp_string_2 = {:?}",
+            "  args = {{lp_string_1 = {:?}, lp_string_2 = {:?}}}",
             lp_string_1,
             lp_string_2
         );
@@ -5118,7 +5085,7 @@ extern "C" fn thunk_lstrcatW(context: &mut ExtendedContext, memory: FlatMemoryCt
         let span = tracing::trace_span!("lstrcatW");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_string_1 = {:?}, lp_string_2 = {:?}",
+            "  args = {{lp_string_1 = {:?}, lp_string_2 = {:?}}}",
             lp_string_1,
             lp_string_2
         );
@@ -5145,7 +5112,7 @@ extern "C" fn thunk_lstrcmpA(context: &mut ExtendedContext, memory: FlatMemoryCt
         let span = tracing::trace_span!("lstrcmpA");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_string_1 = {:?}, lp_string_2 = {:?}",
+            "  args = {{lp_string_1 = {:?}, lp_string_2 = {:?}}}",
             lp_string_1,
             lp_string_2
         );
@@ -5172,7 +5139,7 @@ extern "C" fn thunk_lstrcmpW(context: &mut ExtendedContext, memory: FlatMemoryCt
         let span = tracing::trace_span!("lstrcmpW");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_string_1 = {:?}, lp_string_2 = {:?}",
+            "  args = {{lp_string_1 = {:?}, lp_string_2 = {:?}}}",
             lp_string_1,
             lp_string_2
         );
@@ -5199,7 +5166,7 @@ extern "C" fn thunk_lstrcmpiA(context: &mut ExtendedContext, memory: FlatMemoryC
         let span = tracing::trace_span!("lstrcmpiA");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_string_1 = {:?}, lp_string_2 = {:?}",
+            "  args = {{lp_string_1 = {:?}, lp_string_2 = {:?}}}",
             lp_string_1,
             lp_string_2
         );
@@ -5226,7 +5193,7 @@ extern "C" fn thunk_lstrcmpiW(context: &mut ExtendedContext, memory: FlatMemoryC
         let span = tracing::trace_span!("lstrcmpiW");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_string_1 = {:?}, lp_string_2 = {:?}",
+            "  args = {{lp_string_1 = {:?}, lp_string_2 = {:?}}}",
             lp_string_1,
             lp_string_2
         );
@@ -5253,7 +5220,7 @@ extern "C" fn thunk_lstrcpyA(context: &mut ExtendedContext, memory: FlatMemoryCt
         let span = tracing::trace_span!("lstrcpyA");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_string_1 = {:?}, lp_string_2 = {:?}",
+            "  args = {{lp_string_1 = {:?}, lp_string_2 = {:?}}}",
             lp_string_1,
             lp_string_2
         );
@@ -5280,7 +5247,7 @@ extern "C" fn thunk_lstrcpyW(context: &mut ExtendedContext, memory: FlatMemoryCt
         let span = tracing::trace_span!("lstrcpyW");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_string_1 = {:?}, lp_string_2 = {:?}",
+            "  args = {{lp_string_1 = {:?}, lp_string_2 = {:?}}}",
             lp_string_1,
             lp_string_2
         );
@@ -5308,7 +5275,7 @@ extern "C" fn thunk_lstrcpynA(context: &mut ExtendedContext, memory: FlatMemoryC
         let span = tracing::trace_span!("lstrcpynA");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_string_1 = {:?}, lp_string_2 = {:?}, i_max_length = {:?}",
+            "  args = {{lp_string_1 = {:?}, lp_string_2 = {:?}, i_max_length = {:?}}}",
             lp_string_1,
             lp_string_2,
             i_max_length
@@ -5337,7 +5304,7 @@ extern "C" fn thunk_lstrcpynW(context: &mut ExtendedContext, memory: FlatMemoryC
         let span = tracing::trace_span!("lstrcpynW");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_string_1 = {:?}, lp_string_2 = {:?}, i_max_length = {:?}",
+            "  args = {{lp_string_1 = {:?}, lp_string_2 = {:?}, i_max_length = {:?}}}",
             lp_string_1,
             lp_string_2,
             i_max_length
@@ -5363,7 +5330,7 @@ extern "C" fn thunk_lstrlenA(context: &mut ExtendedContext, memory: FlatMemoryCt
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("lstrlenA");
         let _enter = span.enter();
-        tracing::trace!("lp_string = {:?}", lp_string);
+        tracing::trace!("  args = {{lp_string = {:?}}}", lp_string);
         let res = api.lstrlenA(lp_string);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -5385,7 +5352,7 @@ extern "C" fn thunk_lstrlenW(context: &mut ExtendedContext, memory: FlatMemoryCt
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("lstrlenW");
         let _enter = span.enter();
-        tracing::trace!("lp_string = {:?}", lp_string);
+        tracing::trace!("  args = {{lp_string = {:?}}}", lp_string);
         let res = api.lstrlenW(lp_string);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -5409,7 +5376,7 @@ extern "C" fn thunk_AreFileApisANSI(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("AreFileApisANSI");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.AreFileApisANSI();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -5435,7 +5402,11 @@ extern "C" fn thunk_AreShortNamesEnabled(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("AreShortNamesEnabled");
         let _enter = span.enter();
-        tracing::trace!("handle = {:?}, enabled = {:?}", handle, enabled);
+        tracing::trace!(
+            "  args = {{handle = {:?}, enabled = {:?}}}",
+            handle,
+            enabled
+        );
         let res = api.AreShortNamesEnabled(handle, enabled);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -5463,7 +5434,7 @@ extern "C" fn thunk_BackupRead(context: &mut ExtendedContext, memory: FlatMemory
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("BackupRead");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_file = {:?}, lp_buffer = {:?}, n_number_of_bytes_to_read = {:?}, lp_number_of_bytes_read = {:?}, b_abort = {:?}, b_process_security = {:?}, lp_context = {:?}" , h_file , lp_buffer , n_number_of_bytes_to_read , lp_number_of_bytes_read , b_abort , b_process_security , lp_context );
+        tracing :: trace ! ( "  args = {{h_file = {:?}, lp_buffer = {:?}, n_number_of_bytes_to_read = {:?}, lp_number_of_bytes_read = {:?}, b_abort = {:?}, b_process_security = {:?}, lp_context = {:?}}}" , h_file , lp_buffer , n_number_of_bytes_to_read , lp_number_of_bytes_read , b_abort , b_process_security , lp_context );
         let res = api.BackupRead(
             h_file,
             lp_buffer,
@@ -5498,7 +5469,7 @@ extern "C" fn thunk_BackupSeek(context: &mut ExtendedContext, memory: FlatMemory
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("BackupSeek");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_file = {:?}, dw_low_bytes_to_seek = {:?}, dw_high_bytes_to_seek = {:?}, lpdw_low_byte_seeked = {:?}, lpdw_high_byte_seeked = {:?}, lp_context = {:?}" , h_file , dw_low_bytes_to_seek , dw_high_bytes_to_seek , lpdw_low_byte_seeked , lpdw_high_byte_seeked , lp_context );
+        tracing :: trace ! ( "  args = {{h_file = {:?}, dw_low_bytes_to_seek = {:?}, dw_high_bytes_to_seek = {:?}, lpdw_low_byte_seeked = {:?}, lpdw_high_byte_seeked = {:?}, lp_context = {:?}}}" , h_file , dw_low_bytes_to_seek , dw_high_bytes_to_seek , lpdw_low_byte_seeked , lpdw_high_byte_seeked , lp_context );
         let res = api.BackupSeek(
             h_file,
             dw_low_bytes_to_seek,
@@ -5533,7 +5504,7 @@ extern "C" fn thunk_BackupWrite(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("BackupWrite");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_file = {:?}, lp_buffer = {:?}, n_number_of_bytes_to_write = {:?}, lp_number_of_bytes_written = {:?}, b_abort = {:?}, b_process_security = {:?}, lp_context = {:?}" , h_file , lp_buffer , n_number_of_bytes_to_write , lp_number_of_bytes_written , b_abort , b_process_security , lp_context );
+        tracing :: trace ! ( "  args = {{h_file = {:?}, lp_buffer = {:?}, n_number_of_bytes_to_write = {:?}, lp_number_of_bytes_written = {:?}, b_abort = {:?}, b_process_security = {:?}, lp_context = {:?}}}" , h_file , lp_buffer , n_number_of_bytes_to_write , lp_number_of_bytes_written , b_abort , b_process_security , lp_context );
         let res = api.BackupWrite(
             h_file,
             lp_buffer,
@@ -5570,7 +5541,7 @@ extern "C" fn thunk_BuildIoRingRegisterBuffers(
         let span = tracing::trace_span!("BuildIoRingRegisterBuffers");
         let _enter = span.enter();
         tracing::trace!(
-            "io_ring = {:?}, count = {:?}, buffers = {:?}, user_data = {:?}",
+            "  args = {{io_ring = {:?}, count = {:?}, buffers = {:?}, user_data = {:?}}}",
             io_ring,
             count,
             buffers,
@@ -5604,7 +5575,7 @@ extern "C" fn thunk_BuildIoRingRegisterFileHandles(
         let span = tracing::trace_span!("BuildIoRingRegisterFileHandles");
         let _enter = span.enter();
         tracing::trace!(
-            "io_ring = {:?}, count = {:?}, handles = {:?}, user_data = {:?}",
+            "  args = {{io_ring = {:?}, count = {:?}, handles = {:?}, user_data = {:?}}}",
             io_ring,
             count,
             handles,
@@ -5638,7 +5609,7 @@ extern "C" fn thunk_CheckNameLegalDOS8Dot3A(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CheckNameLegalDOS8Dot3A");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_name = {:?}, lp_oem_name = {:?}, oem_name_size = {:?}, pb_name_contains_spaces = {:?}, pb_name_legal = {:?}" , lp_name , lp_oem_name , oem_name_size , pb_name_contains_spaces , pb_name_legal );
+        tracing :: trace ! ( "  args = {{lp_name = {:?}, lp_oem_name = {:?}, oem_name_size = {:?}, pb_name_contains_spaces = {:?}, pb_name_legal = {:?}}}" , lp_name , lp_oem_name , oem_name_size , pb_name_contains_spaces , pb_name_legal );
         let res = api.CheckNameLegalDOS8Dot3A(
             lp_name,
             lp_oem_name,
@@ -5673,7 +5644,7 @@ extern "C" fn thunk_CheckNameLegalDOS8Dot3W(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CheckNameLegalDOS8Dot3W");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_name = {:?}, lp_oem_name = {:?}, oem_name_size = {:?}, pb_name_contains_spaces = {:?}, pb_name_legal = {:?}" , lp_name , lp_oem_name , oem_name_size , pb_name_contains_spaces , pb_name_legal );
+        tracing :: trace ! ( "  args = {{lp_name = {:?}, lp_oem_name = {:?}, oem_name_size = {:?}, pb_name_contains_spaces = {:?}, pb_name_legal = {:?}}}" , lp_name , lp_oem_name , oem_name_size , pb_name_contains_spaces , pb_name_legal );
         let res = api.CheckNameLegalDOS8Dot3W(
             lp_name,
             lp_oem_name,
@@ -5704,7 +5675,7 @@ extern "C" fn thunk_CloseEncryptedFileRaw(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CloseEncryptedFileRaw");
         let _enter = span.enter();
-        tracing::trace!("pv_context = {:?}", pv_context);
+        tracing::trace!("  args = {{pv_context = {:?}}}", pv_context);
         let res = api.CloseEncryptedFileRaw(pv_context);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -5726,7 +5697,7 @@ extern "C" fn thunk_CloseIoRing(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CloseIoRing");
         let _enter = span.enter();
-        tracing::trace!("io_ring = {:?}", io_ring);
+        tracing::trace!("  args = {{io_ring = {:?}}}", io_ring);
         let res = api.CloseIoRing(io_ring);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -5753,7 +5724,7 @@ extern "C" fn thunk_CommitComplete(
         let span = tracing::trace_span!("CommitComplete");
         let _enter = span.enter();
         tracing::trace!(
-            "enlistment_handle = {:?}, tm_virtual_clock = {:?}",
+            "  args = {{enlistment_handle = {:?}, tm_virtual_clock = {:?}}}",
             enlistment_handle,
             tm_virtual_clock
         );
@@ -5783,7 +5754,7 @@ extern "C" fn thunk_CommitEnlistment(
         let span = tracing::trace_span!("CommitEnlistment");
         let _enter = span.enter();
         tracing::trace!(
-            "enlistment_handle = {:?}, tm_virtual_clock = {:?}",
+            "  args = {{enlistment_handle = {:?}, tm_virtual_clock = {:?}}}",
             enlistment_handle,
             tm_virtual_clock
         );
@@ -5811,7 +5782,7 @@ extern "C" fn thunk_CommitTransaction(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CommitTransaction");
         let _enter = span.enter();
-        tracing::trace!("transaction_handle = {:?}", transaction_handle);
+        tracing::trace!("  args = {{transaction_handle = {:?}}}", transaction_handle);
         let res = api.CommitTransaction(transaction_handle);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -5836,7 +5807,7 @@ extern "C" fn thunk_CommitTransactionAsync(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CommitTransactionAsync");
         let _enter = span.enter();
-        tracing::trace!("transaction_handle = {:?}", transaction_handle);
+        tracing::trace!("  args = {{transaction_handle = {:?}}}", transaction_handle);
         let res = api.CommitTransactionAsync(transaction_handle);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -5863,7 +5834,7 @@ extern "C" fn thunk_CompareFileTime(
         let span = tracing::trace_span!("CompareFileTime");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_file_time_1 = {:?}, lp_file_time_2 = {:?}",
+            "  args = {{lp_file_time_1 = {:?}, lp_file_time_2 = {:?}}}",
             lp_file_time_1,
             lp_file_time_2
         );
@@ -5890,7 +5861,7 @@ extern "C" fn thunk_CopyFile2(context: &mut ExtendedContext, memory: FlatMemoryC
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CopyFile2");
         let _enter = span.enter();
-        tracing :: trace ! ( "pwsz_existing_file_name = {:?}, pwsz_new_file_name = {:?}, p_extended_parameters = {:?}" , pwsz_existing_file_name , pwsz_new_file_name , p_extended_parameters );
+        tracing :: trace ! ( "  args = {{pwsz_existing_file_name = {:?}, pwsz_new_file_name = {:?}, p_extended_parameters = {:?}}}" , pwsz_existing_file_name , pwsz_new_file_name , p_extended_parameters );
         let res = api.CopyFile2(
             pwsz_existing_file_name,
             pwsz_new_file_name,
@@ -5918,12 +5889,7 @@ extern "C" fn thunk_CopyFileA(context: &mut ExtendedContext, memory: FlatMemoryC
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CopyFileA");
         let _enter = span.enter();
-        tracing::trace!(
-            "lp_existing_file_name = {:?}, lp_new_file_name = {:?}, b_fail_if_exists = {:?}",
-            lp_existing_file_name,
-            lp_new_file_name,
-            b_fail_if_exists
-        );
+        tracing :: trace ! ( "  args = {{lp_existing_file_name = {:?}, lp_new_file_name = {:?}, b_fail_if_exists = {:?}}}" , lp_existing_file_name , lp_new_file_name , b_fail_if_exists );
         let res = api.CopyFileA(lp_existing_file_name, lp_new_file_name, b_fail_if_exists);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -5950,7 +5916,7 @@ extern "C" fn thunk_CopyFileExA(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CopyFileExA");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_existing_file_name = {:?}, lp_new_file_name = {:?}, lp_progress_routine = {:?}, lp_data = {:?}, pb_cancel = {:?}, dw_copy_flags = {:?}" , lp_existing_file_name , lp_new_file_name , lp_progress_routine , lp_data , pb_cancel , dw_copy_flags );
+        tracing :: trace ! ( "  args = {{lp_existing_file_name = {:?}, lp_new_file_name = {:?}, lp_progress_routine = {:?}, lp_data = {:?}, pb_cancel = {:?}, dw_copy_flags = {:?}}}" , lp_existing_file_name , lp_new_file_name , lp_progress_routine , lp_data , pb_cancel , dw_copy_flags );
         let res = api.CopyFileExA(
             lp_existing_file_name,
             lp_new_file_name,
@@ -5984,7 +5950,7 @@ extern "C" fn thunk_CopyFileExW(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CopyFileExW");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_existing_file_name = {:?}, lp_new_file_name = {:?}, lp_progress_routine = {:?}, lp_data = {:?}, pb_cancel = {:?}, dw_copy_flags = {:?}" , lp_existing_file_name , lp_new_file_name , lp_progress_routine , lp_data , pb_cancel , dw_copy_flags );
+        tracing :: trace ! ( "  args = {{lp_existing_file_name = {:?}, lp_new_file_name = {:?}, lp_progress_routine = {:?}, lp_data = {:?}, pb_cancel = {:?}, dw_copy_flags = {:?}}}" , lp_existing_file_name , lp_new_file_name , lp_progress_routine , lp_data , pb_cancel , dw_copy_flags );
         let res = api.CopyFileExW(
             lp_existing_file_name,
             lp_new_file_name,
@@ -6018,12 +5984,7 @@ extern "C" fn thunk_CopyFileFromAppW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CopyFileFromAppW");
         let _enter = span.enter();
-        tracing::trace!(
-            "lp_existing_file_name = {:?}, lp_new_file_name = {:?}, b_fail_if_exists = {:?}",
-            lp_existing_file_name,
-            lp_new_file_name,
-            b_fail_if_exists
-        );
+        tracing :: trace ! ( "  args = {{lp_existing_file_name = {:?}, lp_new_file_name = {:?}, b_fail_if_exists = {:?}}}" , lp_existing_file_name , lp_new_file_name , b_fail_if_exists );
         let res = api.CopyFileFromAppW(lp_existing_file_name, lp_new_file_name, b_fail_if_exists);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -6054,7 +6015,7 @@ extern "C" fn thunk_CopyFileTransactedA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CopyFileTransactedA");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_existing_file_name = {:?}, lp_new_file_name = {:?}, lp_progress_routine = {:?}, lp_data = {:?}, pb_cancel = {:?}, dw_copy_flags = {:?}, h_transaction = {:?}" , lp_existing_file_name , lp_new_file_name , lp_progress_routine , lp_data , pb_cancel , dw_copy_flags , h_transaction );
+        tracing :: trace ! ( "  args = {{lp_existing_file_name = {:?}, lp_new_file_name = {:?}, lp_progress_routine = {:?}, lp_data = {:?}, pb_cancel = {:?}, dw_copy_flags = {:?}, h_transaction = {:?}}}" , lp_existing_file_name , lp_new_file_name , lp_progress_routine , lp_data , pb_cancel , dw_copy_flags , h_transaction );
         let res = api.CopyFileTransactedA(
             lp_existing_file_name,
             lp_new_file_name,
@@ -6093,7 +6054,7 @@ extern "C" fn thunk_CopyFileTransactedW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CopyFileTransactedW");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_existing_file_name = {:?}, lp_new_file_name = {:?}, lp_progress_routine = {:?}, lp_data = {:?}, pb_cancel = {:?}, dw_copy_flags = {:?}, h_transaction = {:?}" , lp_existing_file_name , lp_new_file_name , lp_progress_routine , lp_data , pb_cancel , dw_copy_flags , h_transaction );
+        tracing :: trace ! ( "  args = {{lp_existing_file_name = {:?}, lp_new_file_name = {:?}, lp_progress_routine = {:?}, lp_data = {:?}, pb_cancel = {:?}, dw_copy_flags = {:?}, h_transaction = {:?}}}" , lp_existing_file_name , lp_new_file_name , lp_progress_routine , lp_data , pb_cancel , dw_copy_flags , h_transaction );
         let res = api.CopyFileTransactedW(
             lp_existing_file_name,
             lp_new_file_name,
@@ -6125,12 +6086,7 @@ extern "C" fn thunk_CopyFileW(context: &mut ExtendedContext, memory: FlatMemoryC
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CopyFileW");
         let _enter = span.enter();
-        tracing::trace!(
-            "lp_existing_file_name = {:?}, lp_new_file_name = {:?}, b_fail_if_exists = {:?}",
-            lp_existing_file_name,
-            lp_new_file_name,
-            b_fail_if_exists
-        );
+        tracing :: trace ! ( "  args = {{lp_existing_file_name = {:?}, lp_new_file_name = {:?}, b_fail_if_exists = {:?}}}" , lp_existing_file_name , lp_new_file_name , b_fail_if_exists );
         let res = api.CopyFileW(lp_existing_file_name, lp_new_file_name, b_fail_if_exists);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -6153,7 +6109,11 @@ extern "C" fn thunk_CopyLZFile(context: &mut ExtendedContext, memory: FlatMemory
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CopyLZFile");
         let _enter = span.enter();
-        tracing::trace!("hf_source = {:?}, hf_dest = {:?}", hf_source, hf_dest);
+        tracing::trace!(
+            "  args = {{hf_source = {:?}, hf_dest = {:?}}}",
+            hf_source,
+            hf_dest
+        );
         let res = api.CopyLZFile(hf_source, hf_dest);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -6179,7 +6139,7 @@ extern "C" fn thunk_CreateIoRing(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CreateIoRing");
         let _enter = span.enter();
-        tracing :: trace ! ( "ioring_version = {:?}, flags = {:?}, submission_queue_size = {:?}, completion_queue_size = {:?}, h = {:?}" , ioring_version , flags , submission_queue_size , completion_queue_size , h );
+        tracing :: trace ! ( "  args = {{ioring_version = {:?}, flags = {:?}, submission_queue_size = {:?}, completion_queue_size = {:?}, h = {:?}}}" , ioring_version , flags , submission_queue_size , completion_queue_size , h );
         let res = api.CreateIoRing(
             ioring_version,
             flags,
@@ -6213,7 +6173,7 @@ extern "C" fn thunk_CreateSymbolicLinkA(
         let span = tracing::trace_span!("CreateSymbolicLinkA");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_symlink_file_name = {:?}, lp_target_file_name = {:?}, dw_flags = {:?}",
+            "  args = {{lp_symlink_file_name = {:?}, lp_target_file_name = {:?}, dw_flags = {:?}}}",
             lp_symlink_file_name,
             lp_target_file_name,
             dw_flags
@@ -6245,7 +6205,7 @@ extern "C" fn thunk_CreateSymbolicLinkTransactedA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CreateSymbolicLinkTransactedA");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_symlink_file_name = {:?}, lp_target_file_name = {:?}, dw_flags = {:?}, h_transaction = {:?}" , lp_symlink_file_name , lp_target_file_name , dw_flags , h_transaction );
+        tracing :: trace ! ( "  args = {{lp_symlink_file_name = {:?}, lp_target_file_name = {:?}, dw_flags = {:?}, h_transaction = {:?}}}" , lp_symlink_file_name , lp_target_file_name , dw_flags , h_transaction );
         let res = api.CreateSymbolicLinkTransactedA(
             lp_symlink_file_name,
             lp_target_file_name,
@@ -6278,7 +6238,7 @@ extern "C" fn thunk_CreateSymbolicLinkTransactedW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CreateSymbolicLinkTransactedW");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_symlink_file_name = {:?}, lp_target_file_name = {:?}, dw_flags = {:?}, h_transaction = {:?}" , lp_symlink_file_name , lp_target_file_name , dw_flags , h_transaction );
+        tracing :: trace ! ( "  args = {{lp_symlink_file_name = {:?}, lp_target_file_name = {:?}, dw_flags = {:?}, h_transaction = {:?}}}" , lp_symlink_file_name , lp_target_file_name , dw_flags , h_transaction );
         let res = api.CreateSymbolicLinkTransactedW(
             lp_symlink_file_name,
             lp_target_file_name,
@@ -6311,7 +6271,7 @@ extern "C" fn thunk_CreateSymbolicLinkW(
         let span = tracing::trace_span!("CreateSymbolicLinkW");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_symlink_file_name = {:?}, lp_target_file_name = {:?}, dw_flags = {:?}",
+            "  args = {{lp_symlink_file_name = {:?}, lp_target_file_name = {:?}, dw_flags = {:?}}}",
             lp_symlink_file_name,
             lp_target_file_name,
             dw_flags
@@ -6343,13 +6303,7 @@ extern "C" fn thunk_CreateTapePartition(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CreateTapePartition");
         let _enter = span.enter();
-        tracing::trace!(
-            "h_device = {:?}, dw_partition_method = {:?}, dw_count = {:?}, dw_size = {:?}",
-            h_device,
-            dw_partition_method,
-            dw_count,
-            dw_size
-        );
+        tracing :: trace ! ( "  args = {{h_device = {:?}, dw_partition_method = {:?}, dw_count = {:?}, dw_size = {:?}}}" , h_device , dw_partition_method , dw_count , dw_size );
         let res = api.CreateTapePartition(h_device, dw_partition_method, dw_count, dw_size);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -6373,7 +6327,7 @@ extern "C" fn thunk_DecryptFileA(context: &mut ExtendedContext, memory: FlatMemo
         let span = tracing::trace_span!("DecryptFileA");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_file_name = {:?}, dw_reserved = {:?}",
+            "  args = {{lp_file_name = {:?}, dw_reserved = {:?}}}",
             lp_file_name,
             dw_reserved
         );
@@ -6400,7 +6354,7 @@ extern "C" fn thunk_DecryptFileW(context: &mut ExtendedContext, memory: FlatMemo
         let span = tracing::trace_span!("DecryptFileW");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_file_name = {:?}, dw_reserved = {:?}",
+            "  args = {{lp_file_name = {:?}, dw_reserved = {:?}}}",
             lp_file_name,
             dw_reserved
         );
@@ -6431,7 +6385,7 @@ extern "C" fn thunk_DefineDosDeviceA(
         let span = tracing::trace_span!("DefineDosDeviceA");
         let _enter = span.enter();
         tracing::trace!(
-            "dw_flags = {:?}, lp_device_name = {:?}, lp_target_path = {:?}",
+            "  args = {{dw_flags = {:?}, lp_device_name = {:?}, lp_target_path = {:?}}}",
             dw_flags,
             lp_device_name,
             lp_target_path
@@ -6463,7 +6417,7 @@ extern "C" fn thunk_DefineDosDeviceW(
         let span = tracing::trace_span!("DefineDosDeviceW");
         let _enter = span.enter();
         tracing::trace!(
-            "dw_flags = {:?}, lp_device_name = {:?}, lp_target_path = {:?}",
+            "  args = {{dw_flags = {:?}, lp_device_name = {:?}, lp_target_path = {:?}}}",
             dw_flags,
             lp_device_name,
             lp_target_path
@@ -6489,7 +6443,7 @@ extern "C" fn thunk_DeleteFileA(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("DeleteFileA");
         let _enter = span.enter();
-        tracing::trace!("lp_file_name = {:?}", lp_file_name);
+        tracing::trace!("  args = {{lp_file_name = {:?}}}", lp_file_name);
         let res = api.DeleteFileA(lp_file_name);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -6514,7 +6468,7 @@ extern "C" fn thunk_DeleteFileFromAppW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("DeleteFileFromAppW");
         let _enter = span.enter();
-        tracing::trace!("lp_file_name = {:?}", lp_file_name);
+        tracing::trace!("  args = {{lp_file_name = {:?}}}", lp_file_name);
         let res = api.DeleteFileFromAppW(lp_file_name);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -6541,7 +6495,7 @@ extern "C" fn thunk_DeleteFileTransactedA(
         let span = tracing::trace_span!("DeleteFileTransactedA");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_file_name = {:?}, h_transaction = {:?}",
+            "  args = {{lp_file_name = {:?}, h_transaction = {:?}}}",
             lp_file_name,
             h_transaction
         );
@@ -6571,7 +6525,7 @@ extern "C" fn thunk_DeleteFileTransactedW(
         let span = tracing::trace_span!("DeleteFileTransactedW");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_file_name = {:?}, h_transaction = {:?}",
+            "  args = {{lp_file_name = {:?}, h_transaction = {:?}}}",
             lp_file_name,
             h_transaction
         );
@@ -6596,7 +6550,7 @@ extern "C" fn thunk_DeleteFileW(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("DeleteFileW");
         let _enter = span.enter();
-        tracing::trace!("lp_file_name = {:?}", lp_file_name);
+        tracing::trace!("  args = {{lp_file_name = {:?}}}", lp_file_name);
         let res = api.DeleteFileW(lp_file_name);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -6621,7 +6575,10 @@ extern "C" fn thunk_DeleteVolumeMountPointA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("DeleteVolumeMountPointA");
         let _enter = span.enter();
-        tracing::trace!("lpsz_volume_mount_point = {:?}", lpsz_volume_mount_point);
+        tracing::trace!(
+            "  args = {{lpsz_volume_mount_point = {:?}}}",
+            lpsz_volume_mount_point
+        );
         let res = api.DeleteVolumeMountPointA(lpsz_volume_mount_point);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -6646,7 +6603,10 @@ extern "C" fn thunk_DeleteVolumeMountPointW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("DeleteVolumeMountPointW");
         let _enter = span.enter();
-        tracing::trace!("lpsz_volume_mount_point = {:?}", lpsz_volume_mount_point);
+        tracing::trace!(
+            "  args = {{lpsz_volume_mount_point = {:?}}}",
+            lpsz_volume_mount_point
+        );
         let res = api.DeleteVolumeMountPointW(lpsz_volume_mount_point);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -6668,7 +6628,7 @@ extern "C" fn thunk_EncryptFileA(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("EncryptFileA");
         let _enter = span.enter();
-        tracing::trace!("lp_file_name = {:?}", lp_file_name);
+        tracing::trace!("  args = {{lp_file_name = {:?}}}", lp_file_name);
         let res = api.EncryptFileA(lp_file_name);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -6690,7 +6650,7 @@ extern "C" fn thunk_EncryptFileW(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("EncryptFileW");
         let _enter = span.enter();
-        tracing::trace!("lp_file_name = {:?}", lp_file_name);
+        tracing::trace!("  args = {{lp_file_name = {:?}}}", lp_file_name);
         let res = api.EncryptFileW(lp_file_name);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -6716,7 +6676,11 @@ extern "C" fn thunk_EncryptionDisable(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("EncryptionDisable");
         let _enter = span.enter();
-        tracing::trace!("dir_path = {:?}, disable = {:?}", dir_path, disable);
+        tracing::trace!(
+            "  args = {{dir_path = {:?}, disable = {:?}}}",
+            dir_path,
+            disable
+        );
         let res = api.EncryptionDisable(dir_path, disable);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -6741,7 +6705,7 @@ extern "C" fn thunk_EraseTape(context: &mut ExtendedContext, memory: FlatMemoryC
         let span = tracing::trace_span!("EraseTape");
         let _enter = span.enter();
         tracing::trace!(
-            "h_device = {:?}, dw_erase_type = {:?}, b_immediate = {:?}",
+            "  args = {{h_device = {:?}, dw_erase_type = {:?}, b_immediate = {:?}}}",
             h_device,
             dw_erase_type,
             b_immediate
@@ -6772,7 +6736,7 @@ extern "C" fn thunk_FileEncryptionStatusA(
         let span = tracing::trace_span!("FileEncryptionStatusA");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_file_name = {:?}, lp_status = {:?}",
+            "  args = {{lp_file_name = {:?}, lp_status = {:?}}}",
             lp_file_name,
             lp_status
         );
@@ -6802,7 +6766,7 @@ extern "C" fn thunk_FileEncryptionStatusW(
         let span = tracing::trace_span!("FileEncryptionStatusW");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_file_name = {:?}, lp_status = {:?}",
+            "  args = {{lp_file_name = {:?}, lp_status = {:?}}}",
             lp_file_name,
             lp_status
         );
@@ -6832,7 +6796,7 @@ extern "C" fn thunk_FileTimeToLocalFileTime(
         let span = tracing::trace_span!("FileTimeToLocalFileTime");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_file_time = {:?}, lp_local_file_time = {:?}",
+            "  args = {{lp_file_time = {:?}, lp_local_file_time = {:?}}}",
             lp_file_time,
             lp_local_file_time
         );
@@ -6857,7 +6821,7 @@ extern "C" fn thunk_FindClose(context: &mut ExtendedContext, memory: FlatMemoryC
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("FindClose");
         let _enter = span.enter();
-        tracing::trace!("h_find_file = {:?}", h_find_file);
+        tracing::trace!("  args = {{h_find_file = {:?}}}", h_find_file);
         let res = api.FindClose(h_find_file);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -6882,7 +6846,7 @@ extern "C" fn thunk_FindCloseChangeNotification(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("FindCloseChangeNotification");
         let _enter = span.enter();
-        tracing::trace!("h_change_handle = {:?}", h_change_handle);
+        tracing::trace!("  args = {{h_change_handle = {:?}}}", h_change_handle);
         let res = api.FindCloseChangeNotification(h_change_handle);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -6910,7 +6874,7 @@ extern "C" fn thunk_FindFirstChangeNotificationA(
         let span = tracing::trace_span!("FindFirstChangeNotificationA");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_path_name = {:?}, b_watch_subtree = {:?}, dw_notify_filter = {:?}",
+            "  args = {{lp_path_name = {:?}, b_watch_subtree = {:?}, dw_notify_filter = {:?}}}",
             lp_path_name,
             b_watch_subtree,
             dw_notify_filter
@@ -6942,7 +6906,7 @@ extern "C" fn thunk_FindFirstChangeNotificationW(
         let span = tracing::trace_span!("FindFirstChangeNotificationW");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_path_name = {:?}, b_watch_subtree = {:?}, dw_notify_filter = {:?}",
+            "  args = {{lp_path_name = {:?}, b_watch_subtree = {:?}, dw_notify_filter = {:?}}}",
             lp_path_name,
             b_watch_subtree,
             dw_notify_filter
@@ -6973,7 +6937,7 @@ extern "C" fn thunk_FindFirstFileA(
         let span = tracing::trace_span!("FindFirstFileA");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_file_name = {:?}, lp_find_file_data = {:?}",
+            "  args = {{lp_file_name = {:?}, lp_find_file_data = {:?}}}",
             lp_file_name,
             lp_find_file_data
         );
@@ -7006,7 +6970,7 @@ extern "C" fn thunk_FindFirstFileExA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("FindFirstFileExA");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_file_name = {:?}, f_info_level_id = {:?}, lp_find_file_data = {:?}, f_search_op = {:?}, lp_search_filter = {:?}, dw_additional_flags = {:?}" , lp_file_name , f_info_level_id , lp_find_file_data , f_search_op , lp_search_filter , dw_additional_flags );
+        tracing :: trace ! ( "  args = {{lp_file_name = {:?}, f_info_level_id = {:?}, lp_find_file_data = {:?}, f_search_op = {:?}, lp_search_filter = {:?}, dw_additional_flags = {:?}}}" , lp_file_name , f_info_level_id , lp_find_file_data , f_search_op , lp_search_filter , dw_additional_flags );
         let res = api.FindFirstFileExA(
             lp_file_name,
             f_info_level_id,
@@ -7043,7 +7007,7 @@ extern "C" fn thunk_FindFirstFileExFromAppW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("FindFirstFileExFromAppW");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_file_name = {:?}, f_info_level_id = {:?}, lp_find_file_data = {:?}, f_search_op = {:?}, lp_search_filter = {:?}, dw_additional_flags = {:?}" , lp_file_name , f_info_level_id , lp_find_file_data , f_search_op , lp_search_filter , dw_additional_flags );
+        tracing :: trace ! ( "  args = {{lp_file_name = {:?}, f_info_level_id = {:?}, lp_find_file_data = {:?}, f_search_op = {:?}, lp_search_filter = {:?}, dw_additional_flags = {:?}}}" , lp_file_name , f_info_level_id , lp_find_file_data , f_search_op , lp_search_filter , dw_additional_flags );
         let res = api.FindFirstFileExFromAppW(
             lp_file_name,
             f_info_level_id,
@@ -7080,7 +7044,7 @@ extern "C" fn thunk_FindFirstFileExW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("FindFirstFileExW");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_file_name = {:?}, f_info_level_id = {:?}, lp_find_file_data = {:?}, f_search_op = {:?}, lp_search_filter = {:?}, dw_additional_flags = {:?}" , lp_file_name , f_info_level_id , lp_find_file_data , f_search_op , lp_search_filter , dw_additional_flags );
+        tracing :: trace ! ( "  args = {{lp_file_name = {:?}, f_info_level_id = {:?}, lp_find_file_data = {:?}, f_search_op = {:?}, lp_search_filter = {:?}, dw_additional_flags = {:?}}}" , lp_file_name , f_info_level_id , lp_find_file_data , f_search_op , lp_search_filter , dw_additional_flags );
         let res = api.FindFirstFileExW(
             lp_file_name,
             f_info_level_id,
@@ -7116,7 +7080,7 @@ extern "C" fn thunk_FindFirstFileNameTransactedW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("FindFirstFileNameTransactedW");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_file_name = {:?}, dw_flags = {:?}, string_length = {:?}, link_name = {:?}, h_transaction = {:?}" , lp_file_name , dw_flags , string_length , link_name , h_transaction );
+        tracing :: trace ! ( "  args = {{lp_file_name = {:?}, dw_flags = {:?}, string_length = {:?}, link_name = {:?}, h_transaction = {:?}}}" , lp_file_name , dw_flags , string_length , link_name , h_transaction );
         let res = api.FindFirstFileNameTransactedW(
             lp_file_name,
             dw_flags,
@@ -7150,13 +7114,7 @@ extern "C" fn thunk_FindFirstFileNameW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("FindFirstFileNameW");
         let _enter = span.enter();
-        tracing::trace!(
-            "lp_file_name = {:?}, dw_flags = {:?}, string_length = {:?}, link_name = {:?}",
-            lp_file_name,
-            dw_flags,
-            string_length,
-            link_name
-        );
+        tracing :: trace ! ( "  args = {{lp_file_name = {:?}, dw_flags = {:?}, string_length = {:?}, link_name = {:?}}}" , lp_file_name , dw_flags , string_length , link_name );
         let res = api.FindFirstFileNameW(lp_file_name, dw_flags, string_length, link_name);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -7187,7 +7145,7 @@ extern "C" fn thunk_FindFirstFileTransactedA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("FindFirstFileTransactedA");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_file_name = {:?}, f_info_level_id = {:?}, lp_find_file_data = {:?}, f_search_op = {:?}, lp_search_filter = {:?}, dw_additional_flags = {:?}, h_transaction = {:?}" , lp_file_name , f_info_level_id , lp_find_file_data , f_search_op , lp_search_filter , dw_additional_flags , h_transaction );
+        tracing :: trace ! ( "  args = {{lp_file_name = {:?}, f_info_level_id = {:?}, lp_find_file_data = {:?}, f_search_op = {:?}, lp_search_filter = {:?}, dw_additional_flags = {:?}, h_transaction = {:?}}}" , lp_file_name , f_info_level_id , lp_find_file_data , f_search_op , lp_search_filter , dw_additional_flags , h_transaction );
         let res = api.FindFirstFileTransactedA(
             lp_file_name,
             f_info_level_id,
@@ -7226,7 +7184,7 @@ extern "C" fn thunk_FindFirstFileTransactedW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("FindFirstFileTransactedW");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_file_name = {:?}, f_info_level_id = {:?}, lp_find_file_data = {:?}, f_search_op = {:?}, lp_search_filter = {:?}, dw_additional_flags = {:?}, h_transaction = {:?}" , lp_file_name , f_info_level_id , lp_find_file_data , f_search_op , lp_search_filter , dw_additional_flags , h_transaction );
+        tracing :: trace ! ( "  args = {{lp_file_name = {:?}, f_info_level_id = {:?}, lp_find_file_data = {:?}, f_search_op = {:?}, lp_search_filter = {:?}, dw_additional_flags = {:?}, h_transaction = {:?}}}" , lp_file_name , f_info_level_id , lp_find_file_data , f_search_op , lp_search_filter , dw_additional_flags , h_transaction );
         let res = api.FindFirstFileTransactedW(
             lp_file_name,
             f_info_level_id,
@@ -7261,7 +7219,7 @@ extern "C" fn thunk_FindFirstFileW(
         let span = tracing::trace_span!("FindFirstFileW");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_file_name = {:?}, lp_find_file_data = {:?}",
+            "  args = {{lp_file_name = {:?}, lp_find_file_data = {:?}}}",
             lp_file_name,
             lp_find_file_data
         );
@@ -7293,7 +7251,7 @@ extern "C" fn thunk_FindFirstStreamTransactedW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("FindFirstStreamTransactedW");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_file_name = {:?}, info_level = {:?}, lp_find_stream_data = {:?}, dw_flags = {:?}, h_transaction = {:?}" , lp_file_name , info_level , lp_find_stream_data , dw_flags , h_transaction );
+        tracing :: trace ! ( "  args = {{lp_file_name = {:?}, info_level = {:?}, lp_find_stream_data = {:?}, dw_flags = {:?}, h_transaction = {:?}}}" , lp_file_name , info_level , lp_find_stream_data , dw_flags , h_transaction );
         let res = api.FindFirstStreamTransactedW(
             lp_file_name,
             info_level,
@@ -7327,13 +7285,7 @@ extern "C" fn thunk_FindFirstStreamW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("FindFirstStreamW");
         let _enter = span.enter();
-        tracing::trace!(
-            "lp_file_name = {:?}, info_level = {:?}, lp_find_stream_data = {:?}, dw_flags = {:?}",
-            lp_file_name,
-            info_level,
-            lp_find_stream_data,
-            dw_flags
-        );
+        tracing :: trace ! ( "  args = {{lp_file_name = {:?}, info_level = {:?}, lp_find_stream_data = {:?}, dw_flags = {:?}}}" , lp_file_name , info_level , lp_find_stream_data , dw_flags );
         let res = api.FindFirstStreamW(lp_file_name, info_level, lp_find_stream_data, dw_flags);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -7360,7 +7312,7 @@ extern "C" fn thunk_FindFirstVolumeA(
         let span = tracing::trace_span!("FindFirstVolumeA");
         let _enter = span.enter();
         tracing::trace!(
-            "lpsz_volume_name = {:?}, cch_buffer_length = {:?}",
+            "  args = {{lpsz_volume_name = {:?}, cch_buffer_length = {:?}}}",
             lpsz_volume_name,
             cch_buffer_length
         );
@@ -7390,12 +7342,7 @@ extern "C" fn thunk_FindFirstVolumeMountPointA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("FindFirstVolumeMountPointA");
         let _enter = span.enter();
-        tracing::trace!(
-            "lpsz_root_path_name = {:?}, lpsz_volume_mount_point = {:?}, cch_buffer_length = {:?}",
-            lpsz_root_path_name,
-            lpsz_volume_mount_point,
-            cch_buffer_length
-        );
+        tracing :: trace ! ( "  args = {{lpsz_root_path_name = {:?}, lpsz_volume_mount_point = {:?}, cch_buffer_length = {:?}}}" , lpsz_root_path_name , lpsz_volume_mount_point , cch_buffer_length );
         let res = api.FindFirstVolumeMountPointA(
             lpsz_root_path_name,
             lpsz_volume_mount_point,
@@ -7426,12 +7373,7 @@ extern "C" fn thunk_FindFirstVolumeMountPointW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("FindFirstVolumeMountPointW");
         let _enter = span.enter();
-        tracing::trace!(
-            "lpsz_root_path_name = {:?}, lpsz_volume_mount_point = {:?}, cch_buffer_length = {:?}",
-            lpsz_root_path_name,
-            lpsz_volume_mount_point,
-            cch_buffer_length
-        );
+        tracing :: trace ! ( "  args = {{lpsz_root_path_name = {:?}, lpsz_volume_mount_point = {:?}, cch_buffer_length = {:?}}}" , lpsz_root_path_name , lpsz_volume_mount_point , cch_buffer_length );
         let res = api.FindFirstVolumeMountPointW(
             lpsz_root_path_name,
             lpsz_volume_mount_point,
@@ -7462,7 +7404,7 @@ extern "C" fn thunk_FindFirstVolumeW(
         let span = tracing::trace_span!("FindFirstVolumeW");
         let _enter = span.enter();
         tracing::trace!(
-            "lpsz_volume_name = {:?}, cch_buffer_length = {:?}",
+            "  args = {{lpsz_volume_name = {:?}, cch_buffer_length = {:?}}}",
             lpsz_volume_name,
             cch_buffer_length
         );
@@ -7490,7 +7432,7 @@ extern "C" fn thunk_FindNextChangeNotification(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("FindNextChangeNotification");
         let _enter = span.enter();
-        tracing::trace!("h_change_handle = {:?}", h_change_handle);
+        tracing::trace!("  args = {{h_change_handle = {:?}}}", h_change_handle);
         let res = api.FindNextChangeNotification(h_change_handle);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -7514,7 +7456,7 @@ extern "C" fn thunk_FindNextFileA(context: &mut ExtendedContext, memory: FlatMem
         let span = tracing::trace_span!("FindNextFileA");
         let _enter = span.enter();
         tracing::trace!(
-            "h_find_file = {:?}, lp_find_file_data = {:?}",
+            "  args = {{h_find_file = {:?}, lp_find_file_data = {:?}}}",
             h_find_file,
             lp_find_file_data
         );
@@ -7545,7 +7487,7 @@ extern "C" fn thunk_FindNextFileNameW(
         let span = tracing::trace_span!("FindNextFileNameW");
         let _enter = span.enter();
         tracing::trace!(
-            "h_find_stream = {:?}, string_length = {:?}, link_name = {:?}",
+            "  args = {{h_find_stream = {:?}, string_length = {:?}, link_name = {:?}}}",
             h_find_stream,
             string_length,
             link_name
@@ -7573,7 +7515,7 @@ extern "C" fn thunk_FindNextFileW(context: &mut ExtendedContext, memory: FlatMem
         let span = tracing::trace_span!("FindNextFileW");
         let _enter = span.enter();
         tracing::trace!(
-            "h_find_file = {:?}, lp_find_file_data = {:?}",
+            "  args = {{h_find_file = {:?}, lp_find_file_data = {:?}}}",
             h_find_file,
             lp_find_file_data
         );
@@ -7603,7 +7545,7 @@ extern "C" fn thunk_FindNextStreamW(
         let span = tracing::trace_span!("FindNextStreamW");
         let _enter = span.enter();
         tracing::trace!(
-            "h_find_stream = {:?}, lp_find_stream_data = {:?}",
+            "  args = {{h_find_stream = {:?}, lp_find_stream_data = {:?}}}",
             h_find_stream,
             lp_find_stream_data
         );
@@ -7634,7 +7576,7 @@ extern "C" fn thunk_FindNextVolumeA(
         let span = tracing::trace_span!("FindNextVolumeA");
         let _enter = span.enter();
         tracing::trace!(
-            "h_find_volume = {:?}, lpsz_volume_name = {:?}, cch_buffer_length = {:?}",
+            "  args = {{h_find_volume = {:?}, lpsz_volume_name = {:?}, cch_buffer_length = {:?}}}",
             h_find_volume,
             lpsz_volume_name,
             cch_buffer_length
@@ -7665,7 +7607,7 @@ extern "C" fn thunk_FindNextVolumeMountPointA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("FindNextVolumeMountPointA");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_find_volume_mount_point = {:?}, lpsz_volume_mount_point = {:?}, cch_buffer_length = {:?}" , h_find_volume_mount_point , lpsz_volume_mount_point , cch_buffer_length );
+        tracing :: trace ! ( "  args = {{h_find_volume_mount_point = {:?}, lpsz_volume_mount_point = {:?}, cch_buffer_length = {:?}}}" , h_find_volume_mount_point , lpsz_volume_mount_point , cch_buffer_length );
         let res = api.FindNextVolumeMountPointA(
             h_find_volume_mount_point,
             lpsz_volume_mount_point,
@@ -7696,7 +7638,7 @@ extern "C" fn thunk_FindNextVolumeMountPointW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("FindNextVolumeMountPointW");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_find_volume_mount_point = {:?}, lpsz_volume_mount_point = {:?}, cch_buffer_length = {:?}" , h_find_volume_mount_point , lpsz_volume_mount_point , cch_buffer_length );
+        tracing :: trace ! ( "  args = {{h_find_volume_mount_point = {:?}, lpsz_volume_mount_point = {:?}, cch_buffer_length = {:?}}}" , h_find_volume_mount_point , lpsz_volume_mount_point , cch_buffer_length );
         let res = api.FindNextVolumeMountPointW(
             h_find_volume_mount_point,
             lpsz_volume_mount_point,
@@ -7728,7 +7670,7 @@ extern "C" fn thunk_FindNextVolumeW(
         let span = tracing::trace_span!("FindNextVolumeW");
         let _enter = span.enter();
         tracing::trace!(
-            "h_find_volume = {:?}, lpsz_volume_name = {:?}, cch_buffer_length = {:?}",
+            "  args = {{h_find_volume = {:?}, lpsz_volume_name = {:?}, cch_buffer_length = {:?}}}",
             h_find_volume,
             lpsz_volume_name,
             cch_buffer_length
@@ -7757,7 +7699,7 @@ extern "C" fn thunk_FindVolumeClose(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("FindVolumeClose");
         let _enter = span.enter();
-        tracing::trace!("h_find_volume = {:?}", h_find_volume);
+        tracing::trace!("  args = {{h_find_volume = {:?}}}", h_find_volume);
         let res = api.FindVolumeClose(h_find_volume);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -7783,7 +7725,7 @@ extern "C" fn thunk_FindVolumeMountPointClose(
         let span = tracing::trace_span!("FindVolumeMountPointClose");
         let _enter = span.enter();
         tracing::trace!(
-            "h_find_volume_mount_point = {:?}",
+            "  args = {{h_find_volume_mount_point = {:?}}}",
             h_find_volume_mount_point
         );
         let res = api.FindVolumeMountPointClose(h_find_volume_mount_point);
@@ -7810,7 +7752,7 @@ extern "C" fn thunk_FlushFileBuffers(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("FlushFileBuffers");
         let _enter = span.enter();
-        tracing::trace!("h_file = {:?}", h_file);
+        tracing::trace!("  args = {{h_file = {:?}}}", h_file);
         let res = api.FlushFileBuffers(h_file);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -7835,7 +7777,7 @@ extern "C" fn thunk_FreeEncryptedFileMetadata(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("FreeEncryptedFileMetadata");
         let _enter = span.enter();
-        tracing::trace!("pb_metadata = {:?}", pb_metadata);
+        tracing::trace!("  args = {{pb_metadata = {:?}}}", pb_metadata);
         let res = api.FreeEncryptedFileMetadata(pb_metadata);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -7862,7 +7804,7 @@ extern "C" fn thunk_GetBinaryTypeA(
         let span = tracing::trace_span!("GetBinaryTypeA");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_application_name = {:?}, lp_binary_type = {:?}",
+            "  args = {{lp_application_name = {:?}, lp_binary_type = {:?}}}",
             lp_application_name,
             lp_binary_type
         );
@@ -7892,7 +7834,7 @@ extern "C" fn thunk_GetBinaryTypeW(
         let span = tracing::trace_span!("GetBinaryTypeW");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_application_name = {:?}, lp_binary_type = {:?}",
+            "  args = {{lp_application_name = {:?}, lp_binary_type = {:?}}}",
             lp_application_name,
             lp_binary_type
         );
@@ -7922,7 +7864,7 @@ extern "C" fn thunk_GetCompressedFileSizeA(
         let span = tracing::trace_span!("GetCompressedFileSizeA");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_file_name = {:?}, lp_file_size_high = {:?}",
+            "  args = {{lp_file_name = {:?}, lp_file_size_high = {:?}}}",
             lp_file_name,
             lp_file_size_high
         );
@@ -7953,7 +7895,7 @@ extern "C" fn thunk_GetCompressedFileSizeTransactedA(
         let span = tracing::trace_span!("GetCompressedFileSizeTransactedA");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_file_name = {:?}, lp_file_size_high = {:?}, h_transaction = {:?}",
+            "  args = {{lp_file_name = {:?}, lp_file_size_high = {:?}, h_transaction = {:?}}}",
             lp_file_name,
             lp_file_size_high,
             h_transaction
@@ -7986,7 +7928,7 @@ extern "C" fn thunk_GetCompressedFileSizeTransactedW(
         let span = tracing::trace_span!("GetCompressedFileSizeTransactedW");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_file_name = {:?}, lp_file_size_high = {:?}, h_transaction = {:?}",
+            "  args = {{lp_file_name = {:?}, lp_file_size_high = {:?}, h_transaction = {:?}}}",
             lp_file_name,
             lp_file_size_high,
             h_transaction
@@ -8018,7 +7960,7 @@ extern "C" fn thunk_GetCompressedFileSizeW(
         let span = tracing::trace_span!("GetCompressedFileSizeW");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_file_name = {:?}, lp_file_size_high = {:?}",
+            "  args = {{lp_file_name = {:?}, lp_file_size_high = {:?}}}",
             lp_file_name,
             lp_file_size_high
         );
@@ -8048,7 +7990,7 @@ extern "C" fn thunk_GetCurrentClockTransactionManager(
         let span = tracing::trace_span!("GetCurrentClockTransactionManager");
         let _enter = span.enter();
         tracing::trace!(
-            "transaction_manager_handle = {:?}, tm_virtual_clock = {:?}",
+            "  args = {{transaction_manager_handle = {:?}, tm_virtual_clock = {:?}}}",
             transaction_manager_handle,
             tm_virtual_clock
         );
@@ -8081,7 +8023,7 @@ extern "C" fn thunk_GetDiskFreeSpaceA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetDiskFreeSpaceA");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_root_path_name = {:?}, lp_sectors_per_cluster = {:?}, lp_bytes_per_sector = {:?}, lp_number_of_free_clusters = {:?}, lp_total_number_of_clusters = {:?}" , lp_root_path_name , lp_sectors_per_cluster , lp_bytes_per_sector , lp_number_of_free_clusters , lp_total_number_of_clusters );
+        tracing :: trace ! ( "  args = {{lp_root_path_name = {:?}, lp_sectors_per_cluster = {:?}, lp_bytes_per_sector = {:?}, lp_number_of_free_clusters = {:?}, lp_total_number_of_clusters = {:?}}}" , lp_root_path_name , lp_sectors_per_cluster , lp_bytes_per_sector , lp_number_of_free_clusters , lp_total_number_of_clusters );
         let res = api.GetDiskFreeSpaceA(
             lp_root_path_name,
             lp_sectors_per_cluster,
@@ -8115,7 +8057,7 @@ extern "C" fn thunk_GetDiskFreeSpaceExA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetDiskFreeSpaceExA");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_directory_name = {:?}, lp_free_bytes_available_to_caller = {:?}, lp_total_number_of_bytes = {:?}, lp_total_number_of_free_bytes = {:?}" , lp_directory_name , lp_free_bytes_available_to_caller , lp_total_number_of_bytes , lp_total_number_of_free_bytes );
+        tracing :: trace ! ( "  args = {{lp_directory_name = {:?}, lp_free_bytes_available_to_caller = {:?}, lp_total_number_of_bytes = {:?}, lp_total_number_of_free_bytes = {:?}}}" , lp_directory_name , lp_free_bytes_available_to_caller , lp_total_number_of_bytes , lp_total_number_of_free_bytes );
         let res = api.GetDiskFreeSpaceExA(
             lp_directory_name,
             lp_free_bytes_available_to_caller,
@@ -8148,7 +8090,7 @@ extern "C" fn thunk_GetDiskFreeSpaceExW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetDiskFreeSpaceExW");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_directory_name = {:?}, lp_free_bytes_available_to_caller = {:?}, lp_total_number_of_bytes = {:?}, lp_total_number_of_free_bytes = {:?}" , lp_directory_name , lp_free_bytes_available_to_caller , lp_total_number_of_bytes , lp_total_number_of_free_bytes );
+        tracing :: trace ! ( "  args = {{lp_directory_name = {:?}, lp_free_bytes_available_to_caller = {:?}, lp_total_number_of_bytes = {:?}, lp_total_number_of_free_bytes = {:?}}}" , lp_directory_name , lp_free_bytes_available_to_caller , lp_total_number_of_bytes , lp_total_number_of_free_bytes );
         let res = api.GetDiskFreeSpaceExW(
             lp_directory_name,
             lp_free_bytes_available_to_caller,
@@ -8182,7 +8124,7 @@ extern "C" fn thunk_GetDiskFreeSpaceW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetDiskFreeSpaceW");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_root_path_name = {:?}, lp_sectors_per_cluster = {:?}, lp_bytes_per_sector = {:?}, lp_number_of_free_clusters = {:?}, lp_total_number_of_clusters = {:?}" , lp_root_path_name , lp_sectors_per_cluster , lp_bytes_per_sector , lp_number_of_free_clusters , lp_total_number_of_clusters );
+        tracing :: trace ! ( "  args = {{lp_root_path_name = {:?}, lp_sectors_per_cluster = {:?}, lp_bytes_per_sector = {:?}, lp_number_of_free_clusters = {:?}, lp_total_number_of_clusters = {:?}}}" , lp_root_path_name , lp_sectors_per_cluster , lp_bytes_per_sector , lp_number_of_free_clusters , lp_total_number_of_clusters );
         let res = api.GetDiskFreeSpaceW(
             lp_root_path_name,
             lp_sectors_per_cluster,
@@ -8215,7 +8157,7 @@ extern "C" fn thunk_GetDiskSpaceInformationA(
         let span = tracing::trace_span!("GetDiskSpaceInformationA");
         let _enter = span.enter();
         tracing::trace!(
-            "root_path = {:?}, disk_space_info = {:?}",
+            "  args = {{root_path = {:?}, disk_space_info = {:?}}}",
             root_path,
             disk_space_info
         );
@@ -8245,7 +8187,7 @@ extern "C" fn thunk_GetDiskSpaceInformationW(
         let span = tracing::trace_span!("GetDiskSpaceInformationW");
         let _enter = span.enter();
         tracing::trace!(
-            "root_path = {:?}, disk_space_info = {:?}",
+            "  args = {{root_path = {:?}, disk_space_info = {:?}}}",
             root_path,
             disk_space_info
         );
@@ -8270,7 +8212,7 @@ extern "C" fn thunk_GetDriveTypeA(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetDriveTypeA");
         let _enter = span.enter();
-        tracing::trace!("lp_root_path_name = {:?}", lp_root_path_name);
+        tracing::trace!("  args = {{lp_root_path_name = {:?}}}", lp_root_path_name);
         let res = api.GetDriveTypeA(lp_root_path_name);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -8292,7 +8234,7 @@ extern "C" fn thunk_GetDriveTypeW(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetDriveTypeW");
         let _enter = span.enter();
-        tracing::trace!("lp_root_path_name = {:?}", lp_root_path_name);
+        tracing::trace!("  args = {{lp_root_path_name = {:?}}}", lp_root_path_name);
         let res = api.GetDriveTypeW(lp_root_path_name);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -8320,7 +8262,7 @@ extern "C" fn thunk_GetEncryptedFileMetadata(
         let span = tracing::trace_span!("GetEncryptedFileMetadata");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_file_name = {:?}, pcb_metadata = {:?}, ppb_metadata = {:?}",
+            "  args = {{lp_file_name = {:?}, pcb_metadata = {:?}, ppb_metadata = {:?}}}",
             lp_file_name,
             pcb_metadata,
             ppb_metadata
@@ -8351,7 +8293,7 @@ extern "C" fn thunk_GetEnlistmentId(
         let span = tracing::trace_span!("GetEnlistmentId");
         let _enter = span.enter();
         tracing::trace!(
-            "enlistment_handle = {:?}, enlistment_id = {:?}",
+            "  args = {{enlistment_handle = {:?}, enlistment_id = {:?}}}",
             enlistment_handle,
             enlistment_id
         );
@@ -8382,13 +8324,7 @@ extern "C" fn thunk_GetEnlistmentRecoveryInformation(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetEnlistmentRecoveryInformation");
         let _enter = span.enter();
-        tracing::trace!(
-            "enlistment_handle = {:?}, buffer_size = {:?}, buffer = {:?}, buffer_used = {:?}",
-            enlistment_handle,
-            buffer_size,
-            buffer,
-            buffer_used
-        );
+        tracing :: trace ! ( "  args = {{enlistment_handle = {:?}, buffer_size = {:?}, buffer = {:?}, buffer_used = {:?}}}" , enlistment_handle , buffer_size , buffer , buffer_used );
         let res = api.GetEnlistmentRecoveryInformation(
             enlistment_handle,
             buffer_size,
@@ -8420,7 +8356,7 @@ extern "C" fn thunk_GetExpandedNameA(
         let span = tracing::trace_span!("GetExpandedNameA");
         let _enter = span.enter();
         tracing::trace!(
-            "lpsz_source = {:?}, lpsz_buffer = {:?}",
+            "  args = {{lpsz_source = {:?}, lpsz_buffer = {:?}}}",
             lpsz_source,
             lpsz_buffer
         );
@@ -8450,7 +8386,7 @@ extern "C" fn thunk_GetExpandedNameW(
         let span = tracing::trace_span!("GetExpandedNameW");
         let _enter = span.enter();
         tracing::trace!(
-            "lpsz_source = {:?}, lpsz_buffer = {:?}",
+            "  args = {{lpsz_source = {:?}, lpsz_buffer = {:?}}}",
             lpsz_source,
             lpsz_buffer
         );
@@ -8478,7 +8414,7 @@ extern "C" fn thunk_GetFileAttributesA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetFileAttributesA");
         let _enter = span.enter();
-        tracing::trace!("lp_file_name = {:?}", lp_file_name);
+        tracing::trace!("  args = {{lp_file_name = {:?}}}", lp_file_name);
         let res = api.GetFileAttributesA(lp_file_name);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -8506,7 +8442,7 @@ extern "C" fn thunk_GetFileAttributesExA(
         let span = tracing::trace_span!("GetFileAttributesExA");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_file_name = {:?}, f_info_level_id = {:?}, lp_file_information = {:?}",
+            "  args = {{lp_file_name = {:?}, f_info_level_id = {:?}, lp_file_information = {:?}}}",
             lp_file_name,
             f_info_level_id,
             lp_file_information
@@ -8538,7 +8474,7 @@ extern "C" fn thunk_GetFileAttributesExFromAppW(
         let span = tracing::trace_span!("GetFileAttributesExFromAppW");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_file_name = {:?}, f_info_level_id = {:?}, lp_file_information = {:?}",
+            "  args = {{lp_file_name = {:?}, f_info_level_id = {:?}, lp_file_information = {:?}}}",
             lp_file_name,
             f_info_level_id,
             lp_file_information
@@ -8571,7 +8507,7 @@ extern "C" fn thunk_GetFileAttributesExW(
         let span = tracing::trace_span!("GetFileAttributesExW");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_file_name = {:?}, f_info_level_id = {:?}, lp_file_information = {:?}",
+            "  args = {{lp_file_name = {:?}, f_info_level_id = {:?}, lp_file_information = {:?}}}",
             lp_file_name,
             f_info_level_id,
             lp_file_information
@@ -8603,7 +8539,7 @@ extern "C" fn thunk_GetFileAttributesTransactedA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetFileAttributesTransactedA");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_file_name = {:?}, f_info_level_id = {:?}, lp_file_information = {:?}, h_transaction = {:?}" , lp_file_name , f_info_level_id , lp_file_information , h_transaction );
+        tracing :: trace ! ( "  args = {{lp_file_name = {:?}, f_info_level_id = {:?}, lp_file_information = {:?}, h_transaction = {:?}}}" , lp_file_name , f_info_level_id , lp_file_information , h_transaction );
         let res = api.GetFileAttributesTransactedA(
             lp_file_name,
             f_info_level_id,
@@ -8636,7 +8572,7 @@ extern "C" fn thunk_GetFileAttributesTransactedW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetFileAttributesTransactedW");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_file_name = {:?}, f_info_level_id = {:?}, lp_file_information = {:?}, h_transaction = {:?}" , lp_file_name , f_info_level_id , lp_file_information , h_transaction );
+        tracing :: trace ! ( "  args = {{lp_file_name = {:?}, f_info_level_id = {:?}, lp_file_information = {:?}, h_transaction = {:?}}}" , lp_file_name , f_info_level_id , lp_file_information , h_transaction );
         let res = api.GetFileAttributesTransactedW(
             lp_file_name,
             f_info_level_id,
@@ -8666,7 +8602,7 @@ extern "C" fn thunk_GetFileAttributesW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetFileAttributesW");
         let _enter = span.enter();
-        tracing::trace!("lp_file_name = {:?}", lp_file_name);
+        tracing::trace!("  args = {{lp_file_name = {:?}}}", lp_file_name);
         let res = api.GetFileAttributesW(lp_file_name);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -8696,7 +8632,7 @@ extern "C" fn thunk_GetFileBandwidthReservation(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetFileBandwidthReservation");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_file = {:?}, lp_period_milliseconds = {:?}, lp_bytes_per_period = {:?}, p_discardable = {:?}, lp_transfer_size = {:?}, lp_num_outstanding_requests = {:?}" , h_file , lp_period_milliseconds , lp_bytes_per_period , p_discardable , lp_transfer_size , lp_num_outstanding_requests );
+        tracing :: trace ! ( "  args = {{h_file = {:?}, lp_period_milliseconds = {:?}, lp_bytes_per_period = {:?}, p_discardable = {:?}, lp_transfer_size = {:?}, lp_num_outstanding_requests = {:?}}}" , h_file , lp_period_milliseconds , lp_bytes_per_period , p_discardable , lp_transfer_size , lp_num_outstanding_requests );
         let res = api.GetFileBandwidthReservation(
             h_file,
             lp_period_milliseconds,
@@ -8730,7 +8666,7 @@ extern "C" fn thunk_GetFileInformationByHandle(
         let span = tracing::trace_span!("GetFileInformationByHandle");
         let _enter = span.enter();
         tracing::trace!(
-            "h_file = {:?}, lp_file_information = {:?}",
+            "  args = {{h_file = {:?}, lp_file_information = {:?}}}",
             h_file,
             lp_file_information
         );
@@ -8761,7 +8697,7 @@ extern "C" fn thunk_GetFileInformationByHandleEx(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetFileInformationByHandleEx");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_file = {:?}, file_information_class = {:?}, lp_file_information = {:?}, dw_buffer_size = {:?}" , h_file , file_information_class , lp_file_information , dw_buffer_size );
+        tracing :: trace ! ( "  args = {{h_file = {:?}, file_information_class = {:?}, lp_file_information = {:?}, dw_buffer_size = {:?}}}" , h_file , file_information_class , lp_file_information , dw_buffer_size );
         let res = api.GetFileInformationByHandleEx(
             h_file,
             file_information_class,
@@ -8790,7 +8726,7 @@ extern "C" fn thunk_GetFileSize(context: &mut ExtendedContext, memory: FlatMemor
         let span = tracing::trace_span!("GetFileSize");
         let _enter = span.enter();
         tracing::trace!(
-            "h_file = {:?}, lp_file_size_high = {:?}",
+            "  args = {{h_file = {:?}, lp_file_size_high = {:?}}}",
             h_file,
             lp_file_size_high
         );
@@ -8816,7 +8752,11 @@ extern "C" fn thunk_GetFileSizeEx(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetFileSizeEx");
         let _enter = span.enter();
-        tracing::trace!("h_file = {:?}, lp_file_size = {:?}", h_file, lp_file_size);
+        tracing::trace!(
+            "  args = {{h_file = {:?}, lp_file_size = {:?}}}",
+            h_file,
+            lp_file_size
+        );
         let res = api.GetFileSizeEx(h_file, lp_file_size);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -8841,7 +8781,7 @@ extern "C" fn thunk_GetFileTime(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetFileTime");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_file = {:?}, lp_creation_time = {:?}, lp_last_access_time = {:?}, lp_last_write_time = {:?}" , h_file , lp_creation_time , lp_last_access_time , lp_last_write_time );
+        tracing :: trace ! ( "  args = {{h_file = {:?}, lp_creation_time = {:?}, lp_last_access_time = {:?}, lp_last_write_time = {:?}}}" , h_file , lp_creation_time , lp_last_access_time , lp_last_write_time );
         let res = api.GetFileTime(
             h_file,
             lp_creation_time,
@@ -8868,7 +8808,7 @@ extern "C" fn thunk_GetFileType(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetFileType");
         let _enter = span.enter();
-        tracing::trace!("h_file = {:?}", h_file);
+        tracing::trace!("  args = {{h_file = {:?}}}", h_file);
         let res = api.GetFileType(h_file);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -8897,7 +8837,7 @@ extern "C" fn thunk_GetFileVersionInfoA(
         let span = tracing::trace_span!("GetFileVersionInfoA");
         let _enter = span.enter();
         tracing::trace!(
-            "lptstr_filename = {:?}, dw_handle = {:?}, dw_len = {:?}, lp_data = {:?}",
+            "  args = {{lptstr_filename = {:?}, dw_handle = {:?}, dw_len = {:?}, lp_data = {:?}}}",
             lptstr_filename,
             dw_handle,
             dw_len,
@@ -8931,7 +8871,7 @@ extern "C" fn thunk_GetFileVersionInfoExA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetFileVersionInfoExA");
         let _enter = span.enter();
-        tracing :: trace ! ( "dw_flags = {:?}, lpwstr_filename = {:?}, dw_handle = {:?}, dw_len = {:?}, lp_data = {:?}" , dw_flags , lpwstr_filename , dw_handle , dw_len , lp_data );
+        tracing :: trace ! ( "  args = {{dw_flags = {:?}, lpwstr_filename = {:?}, dw_handle = {:?}, dw_len = {:?}, lp_data = {:?}}}" , dw_flags , lpwstr_filename , dw_handle , dw_len , lp_data );
         let res = api.GetFileVersionInfoExA(dw_flags, lpwstr_filename, dw_handle, dw_len, lp_data);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -8960,7 +8900,7 @@ extern "C" fn thunk_GetFileVersionInfoExW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetFileVersionInfoExW");
         let _enter = span.enter();
-        tracing :: trace ! ( "dw_flags = {:?}, lpwstr_filename = {:?}, dw_handle = {:?}, dw_len = {:?}, lp_data = {:?}" , dw_flags , lpwstr_filename , dw_handle , dw_len , lp_data );
+        tracing :: trace ! ( "  args = {{dw_flags = {:?}, lpwstr_filename = {:?}, dw_handle = {:?}, dw_len = {:?}, lp_data = {:?}}}" , dw_flags , lpwstr_filename , dw_handle , dw_len , lp_data );
         let res = api.GetFileVersionInfoExW(dw_flags, lpwstr_filename, dw_handle, dw_len, lp_data);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -8987,7 +8927,7 @@ extern "C" fn thunk_GetFileVersionInfoSizeA(
         let span = tracing::trace_span!("GetFileVersionInfoSizeA");
         let _enter = span.enter();
         tracing::trace!(
-            "lptstr_filename = {:?}, lpdw_handle = {:?}",
+            "  args = {{lptstr_filename = {:?}, lpdw_handle = {:?}}}",
             lptstr_filename,
             lpdw_handle
         );
@@ -9018,7 +8958,7 @@ extern "C" fn thunk_GetFileVersionInfoSizeExA(
         let span = tracing::trace_span!("GetFileVersionInfoSizeExA");
         let _enter = span.enter();
         tracing::trace!(
-            "dw_flags = {:?}, lpwstr_filename = {:?}, lpdw_handle = {:?}",
+            "  args = {{dw_flags = {:?}, lpwstr_filename = {:?}, lpdw_handle = {:?}}}",
             dw_flags,
             lpwstr_filename,
             lpdw_handle
@@ -9050,7 +8990,7 @@ extern "C" fn thunk_GetFileVersionInfoSizeExW(
         let span = tracing::trace_span!("GetFileVersionInfoSizeExW");
         let _enter = span.enter();
         tracing::trace!(
-            "dw_flags = {:?}, lpwstr_filename = {:?}, lpdw_handle = {:?}",
+            "  args = {{dw_flags = {:?}, lpwstr_filename = {:?}, lpdw_handle = {:?}}}",
             dw_flags,
             lpwstr_filename,
             lpdw_handle
@@ -9081,7 +9021,7 @@ extern "C" fn thunk_GetFileVersionInfoSizeW(
         let span = tracing::trace_span!("GetFileVersionInfoSizeW");
         let _enter = span.enter();
         tracing::trace!(
-            "lptstr_filename = {:?}, lpdw_handle = {:?}",
+            "  args = {{lptstr_filename = {:?}, lpdw_handle = {:?}}}",
             lptstr_filename,
             lpdw_handle
         );
@@ -9113,7 +9053,7 @@ extern "C" fn thunk_GetFileVersionInfoW(
         let span = tracing::trace_span!("GetFileVersionInfoW");
         let _enter = span.enter();
         tracing::trace!(
-            "lptstr_filename = {:?}, dw_handle = {:?}, dw_len = {:?}, lp_data = {:?}",
+            "  args = {{lptstr_filename = {:?}, dw_handle = {:?}, dw_len = {:?}, lp_data = {:?}}}",
             lptstr_filename,
             dw_handle,
             dw_len,
@@ -9146,13 +9086,7 @@ extern "C" fn thunk_GetFinalPathNameByHandleA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetFinalPathNameByHandleA");
         let _enter = span.enter();
-        tracing::trace!(
-            "h_file = {:?}, lpsz_file_path = {:?}, cch_file_path = {:?}, dw_flags = {:?}",
-            h_file,
-            lpsz_file_path,
-            cch_file_path,
-            dw_flags
-        );
+        tracing :: trace ! ( "  args = {{h_file = {:?}, lpsz_file_path = {:?}, cch_file_path = {:?}, dw_flags = {:?}}}" , h_file , lpsz_file_path , cch_file_path , dw_flags );
         let res = api.GetFinalPathNameByHandleA(h_file, lpsz_file_path, cch_file_path, dw_flags);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -9180,13 +9114,7 @@ extern "C" fn thunk_GetFinalPathNameByHandleW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetFinalPathNameByHandleW");
         let _enter = span.enter();
-        tracing::trace!(
-            "h_file = {:?}, lpsz_file_path = {:?}, cch_file_path = {:?}, dw_flags = {:?}",
-            h_file,
-            lpsz_file_path,
-            cch_file_path,
-            dw_flags
-        );
+        tracing :: trace ! ( "  args = {{h_file = {:?}, lpsz_file_path = {:?}, cch_file_path = {:?}, dw_flags = {:?}}}" , h_file , lpsz_file_path , cch_file_path , dw_flags );
         let res = api.GetFinalPathNameByHandleW(h_file, lpsz_file_path, cch_file_path, dw_flags);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -9214,13 +9142,7 @@ extern "C" fn thunk_GetFullPathNameA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetFullPathNameA");
         let _enter = span.enter();
-        tracing::trace!(
-            "lp_file_name = {:?}, n_buffer_length = {:?}, lp_buffer = {:?}, lp_file_part = {:?}",
-            lp_file_name,
-            n_buffer_length,
-            lp_buffer,
-            lp_file_part
-        );
+        tracing :: trace ! ( "  args = {{lp_file_name = {:?}, n_buffer_length = {:?}, lp_buffer = {:?}, lp_file_part = {:?}}}" , lp_file_name , n_buffer_length , lp_buffer , lp_file_part );
         let res = api.GetFullPathNameA(lp_file_name, n_buffer_length, lp_buffer, lp_file_part);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -9249,7 +9171,7 @@ extern "C" fn thunk_GetFullPathNameTransactedA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetFullPathNameTransactedA");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_file_name = {:?}, n_buffer_length = {:?}, lp_buffer = {:?}, lp_file_part = {:?}, h_transaction = {:?}" , lp_file_name , n_buffer_length , lp_buffer , lp_file_part , h_transaction );
+        tracing :: trace ! ( "  args = {{lp_file_name = {:?}, n_buffer_length = {:?}, lp_buffer = {:?}, lp_file_part = {:?}, h_transaction = {:?}}}" , lp_file_name , n_buffer_length , lp_buffer , lp_file_part , h_transaction );
         let res = api.GetFullPathNameTransactedA(
             lp_file_name,
             n_buffer_length,
@@ -9284,7 +9206,7 @@ extern "C" fn thunk_GetFullPathNameTransactedW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetFullPathNameTransactedW");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_file_name = {:?}, n_buffer_length = {:?}, lp_buffer = {:?}, lp_file_part = {:?}, h_transaction = {:?}" , lp_file_name , n_buffer_length , lp_buffer , lp_file_part , h_transaction );
+        tracing :: trace ! ( "  args = {{lp_file_name = {:?}, n_buffer_length = {:?}, lp_buffer = {:?}, lp_file_part = {:?}, h_transaction = {:?}}}" , lp_file_name , n_buffer_length , lp_buffer , lp_file_part , h_transaction );
         let res = api.GetFullPathNameTransactedW(
             lp_file_name,
             n_buffer_length,
@@ -9318,13 +9240,7 @@ extern "C" fn thunk_GetFullPathNameW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetFullPathNameW");
         let _enter = span.enter();
-        tracing::trace!(
-            "lp_file_name = {:?}, n_buffer_length = {:?}, lp_buffer = {:?}, lp_file_part = {:?}",
-            lp_file_name,
-            n_buffer_length,
-            lp_buffer,
-            lp_file_part
-        );
+        tracing :: trace ! ( "  args = {{lp_file_name = {:?}, n_buffer_length = {:?}, lp_buffer = {:?}, lp_file_part = {:?}}}" , lp_file_name , n_buffer_length , lp_buffer , lp_file_part );
         let res = api.GetFullPathNameW(lp_file_name, n_buffer_length, lp_buffer, lp_file_part);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -9347,7 +9263,7 @@ extern "C" fn thunk_GetIoRingInfo(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetIoRingInfo");
         let _enter = span.enter();
-        tracing::trace!("io_ring = {:?}, info = {:?}", io_ring, info);
+        tracing::trace!("  args = {{io_ring = {:?}, info = {:?}}}", io_ring, info);
         let res = api.GetIoRingInfo(io_ring, info);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -9374,7 +9290,7 @@ extern "C" fn thunk_GetLogicalDriveStringsA(
         let span = tracing::trace_span!("GetLogicalDriveStringsA");
         let _enter = span.enter();
         tracing::trace!(
-            "n_buffer_length = {:?}, lp_buffer = {:?}",
+            "  args = {{n_buffer_length = {:?}, lp_buffer = {:?}}}",
             n_buffer_length,
             lp_buffer
         );
@@ -9404,7 +9320,7 @@ extern "C" fn thunk_GetLogicalDriveStringsW(
         let span = tracing::trace_span!("GetLogicalDriveStringsW");
         let _enter = span.enter();
         tracing::trace!(
-            "n_buffer_length = {:?}, lp_buffer = {:?}",
+            "  args = {{n_buffer_length = {:?}, lp_buffer = {:?}}}",
             n_buffer_length,
             lp_buffer
         );
@@ -9431,7 +9347,7 @@ extern "C" fn thunk_GetLogicalDrives(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetLogicalDrives");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.GetLogicalDrives();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -9459,7 +9375,7 @@ extern "C" fn thunk_GetLongPathNameA(
         let span = tracing::trace_span!("GetLongPathNameA");
         let _enter = span.enter();
         tracing::trace!(
-            "lpsz_short_path = {:?}, lpsz_long_path = {:?}, cch_buffer = {:?}",
+            "  args = {{lpsz_short_path = {:?}, lpsz_long_path = {:?}, cch_buffer = {:?}}}",
             lpsz_short_path,
             lpsz_long_path,
             cch_buffer
@@ -9491,7 +9407,7 @@ extern "C" fn thunk_GetLongPathNameTransactedA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetLongPathNameTransactedA");
         let _enter = span.enter();
-        tracing :: trace ! ( "lpsz_short_path = {:?}, lpsz_long_path = {:?}, cch_buffer = {:?}, h_transaction = {:?}" , lpsz_short_path , lpsz_long_path , cch_buffer , h_transaction );
+        tracing :: trace ! ( "  args = {{lpsz_short_path = {:?}, lpsz_long_path = {:?}, cch_buffer = {:?}, h_transaction = {:?}}}" , lpsz_short_path , lpsz_long_path , cch_buffer , h_transaction );
         let res = api.GetLongPathNameTransactedA(
             lpsz_short_path,
             lpsz_long_path,
@@ -9524,7 +9440,7 @@ extern "C" fn thunk_GetLongPathNameTransactedW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetLongPathNameTransactedW");
         let _enter = span.enter();
-        tracing :: trace ! ( "lpsz_short_path = {:?}, lpsz_long_path = {:?}, cch_buffer = {:?}, h_transaction = {:?}" , lpsz_short_path , lpsz_long_path , cch_buffer , h_transaction );
+        tracing :: trace ! ( "  args = {{lpsz_short_path = {:?}, lpsz_long_path = {:?}, cch_buffer = {:?}, h_transaction = {:?}}}" , lpsz_short_path , lpsz_long_path , cch_buffer , h_transaction );
         let res = api.GetLongPathNameTransactedW(
             lpsz_short_path,
             lpsz_long_path,
@@ -9557,7 +9473,7 @@ extern "C" fn thunk_GetLongPathNameW(
         let span = tracing::trace_span!("GetLongPathNameW");
         let _enter = span.enter();
         tracing::trace!(
-            "lpsz_short_path = {:?}, lpsz_long_path = {:?}, cch_buffer = {:?}",
+            "  args = {{lpsz_short_path = {:?}, lpsz_long_path = {:?}, cch_buffer = {:?}}}",
             lpsz_short_path,
             lpsz_long_path,
             cch_buffer
@@ -9590,7 +9506,7 @@ extern "C" fn thunk_GetNotificationResourceManager(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetNotificationResourceManager");
         let _enter = span.enter();
-        tracing :: trace ! ( "resource_manager_handle = {:?}, transaction_notification = {:?}, notification_length = {:?}, dw_milliseconds = {:?}, return_length = {:?}" , resource_manager_handle , transaction_notification , notification_length , dw_milliseconds , return_length );
+        tracing :: trace ! ( "  args = {{resource_manager_handle = {:?}, transaction_notification = {:?}, notification_length = {:?}, dw_milliseconds = {:?}, return_length = {:?}}}" , resource_manager_handle , transaction_notification , notification_length , dw_milliseconds , return_length );
         let res = api.GetNotificationResourceManager(
             resource_manager_handle,
             transaction_notification,
@@ -9625,7 +9541,7 @@ extern "C" fn thunk_GetNotificationResourceManagerAsync(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetNotificationResourceManagerAsync");
         let _enter = span.enter();
-        tracing :: trace ! ( "resource_manager_handle = {:?}, transaction_notification = {:?}, transaction_notification_length = {:?}, return_length = {:?}, lp_overlapped = {:?}" , resource_manager_handle , transaction_notification , transaction_notification_length , return_length , lp_overlapped );
+        tracing :: trace ! ( "  args = {{resource_manager_handle = {:?}, transaction_notification = {:?}, transaction_notification_length = {:?}, return_length = {:?}, lp_overlapped = {:?}}}" , resource_manager_handle , transaction_notification , transaction_notification_length , return_length , lp_overlapped );
         let res = api.GetNotificationResourceManagerAsync(
             resource_manager_handle,
             transaction_notification,
@@ -9659,7 +9575,7 @@ extern "C" fn thunk_GetShortPathNameA(
         let span = tracing::trace_span!("GetShortPathNameA");
         let _enter = span.enter();
         tracing::trace!(
-            "lpsz_long_path = {:?}, lpsz_short_path = {:?}, cch_buffer = {:?}",
+            "  args = {{lpsz_long_path = {:?}, lpsz_short_path = {:?}, cch_buffer = {:?}}}",
             lpsz_long_path,
             lpsz_short_path,
             cch_buffer
@@ -9691,7 +9607,7 @@ extern "C" fn thunk_GetShortPathNameW(
         let span = tracing::trace_span!("GetShortPathNameW");
         let _enter = span.enter();
         tracing::trace!(
-            "lpsz_long_path = {:?}, lpsz_short_path = {:?}, cch_buffer = {:?}",
+            "  args = {{lpsz_long_path = {:?}, lpsz_short_path = {:?}, cch_buffer = {:?}}}",
             lpsz_long_path,
             lpsz_short_path,
             cch_buffer
@@ -9723,13 +9639,7 @@ extern "C" fn thunk_GetTapeParameters(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetTapeParameters");
         let _enter = span.enter();
-        tracing::trace!(
-            "h_device = {:?}, dw_operation = {:?}, lpdw_size = {:?}, lp_tape_information = {:?}",
-            h_device,
-            dw_operation,
-            lpdw_size,
-            lp_tape_information
-        );
+        tracing :: trace ! ( "  args = {{h_device = {:?}, dw_operation = {:?}, lpdw_size = {:?}, lp_tape_information = {:?}}}" , h_device , dw_operation , lpdw_size , lp_tape_information );
         let res = api.GetTapeParameters(h_device, dw_operation, lpdw_size, lp_tape_information);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -9758,7 +9668,7 @@ extern "C" fn thunk_GetTapePosition(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetTapePosition");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_device = {:?}, dw_position_type = {:?}, lpdw_partition = {:?}, lpdw_offset_low = {:?}, lpdw_offset_high = {:?}" , h_device , dw_position_type , lpdw_partition , lpdw_offset_low , lpdw_offset_high );
+        tracing :: trace ! ( "  args = {{h_device = {:?}, dw_position_type = {:?}, lpdw_partition = {:?}, lpdw_offset_low = {:?}, lpdw_offset_high = {:?}}}" , h_device , dw_position_type , lpdw_partition , lpdw_offset_low , lpdw_offset_high );
         let res = api.GetTapePosition(
             h_device,
             dw_position_type,
@@ -9786,7 +9696,7 @@ extern "C" fn thunk_GetTapeStatus(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetTapeStatus");
         let _enter = span.enter();
-        tracing::trace!("h_device = {:?}", h_device);
+        tracing::trace!("  args = {{h_device = {:?}}}", h_device);
         let res = api.GetTapeStatus(h_device);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -9814,7 +9724,7 @@ extern "C" fn thunk_GetTempFileNameA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetTempFileNameA");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_path_name = {:?}, lp_prefix_string = {:?}, u_unique = {:?}, lp_temp_file_name = {:?}" , lp_path_name , lp_prefix_string , u_unique , lp_temp_file_name );
+        tracing :: trace ! ( "  args = {{lp_path_name = {:?}, lp_prefix_string = {:?}, u_unique = {:?}, lp_temp_file_name = {:?}}}" , lp_path_name , lp_prefix_string , u_unique , lp_temp_file_name );
         let res = api.GetTempFileNameA(lp_path_name, lp_prefix_string, u_unique, lp_temp_file_name);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -9842,7 +9752,7 @@ extern "C" fn thunk_GetTempFileNameW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetTempFileNameW");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_path_name = {:?}, lp_prefix_string = {:?}, u_unique = {:?}, lp_temp_file_name = {:?}" , lp_path_name , lp_prefix_string , u_unique , lp_temp_file_name );
+        tracing :: trace ! ( "  args = {{lp_path_name = {:?}, lp_prefix_string = {:?}, u_unique = {:?}, lp_temp_file_name = {:?}}}" , lp_path_name , lp_prefix_string , u_unique , lp_temp_file_name );
         let res = api.GetTempFileNameW(lp_path_name, lp_prefix_string, u_unique, lp_temp_file_name);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -9865,7 +9775,11 @@ extern "C" fn thunk_GetTempPath2A(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetTempPath2A");
         let _enter = span.enter();
-        tracing::trace!("buffer_length = {:?}, buffer = {:?}", buffer_length, buffer);
+        tracing::trace!(
+            "  args = {{buffer_length = {:?}, buffer = {:?}}}",
+            buffer_length,
+            buffer
+        );
         let res = api.GetTempPath2A(buffer_length, buffer);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -9888,7 +9802,11 @@ extern "C" fn thunk_GetTempPath2W(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetTempPath2W");
         let _enter = span.enter();
-        tracing::trace!("buffer_length = {:?}, buffer = {:?}", buffer_length, buffer);
+        tracing::trace!(
+            "  args = {{buffer_length = {:?}, buffer = {:?}}}",
+            buffer_length,
+            buffer
+        );
         let res = api.GetTempPath2W(buffer_length, buffer);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -9912,7 +9830,7 @@ extern "C" fn thunk_GetTempPathA(context: &mut ExtendedContext, memory: FlatMemo
         let span = tracing::trace_span!("GetTempPathA");
         let _enter = span.enter();
         tracing::trace!(
-            "n_buffer_length = {:?}, lp_buffer = {:?}",
+            "  args = {{n_buffer_length = {:?}, lp_buffer = {:?}}}",
             n_buffer_length,
             lp_buffer
         );
@@ -9939,7 +9857,7 @@ extern "C" fn thunk_GetTempPathW(context: &mut ExtendedContext, memory: FlatMemo
         let span = tracing::trace_span!("GetTempPathW");
         let _enter = span.enter();
         tracing::trace!(
-            "n_buffer_length = {:?}, lp_buffer = {:?}",
+            "  args = {{n_buffer_length = {:?}, lp_buffer = {:?}}}",
             n_buffer_length,
             lp_buffer
         );
@@ -9969,7 +9887,7 @@ extern "C" fn thunk_GetTransactionId(
         let span = tracing::trace_span!("GetTransactionId");
         let _enter = span.enter();
         tracing::trace!(
-            "transaction_handle = {:?}, transaction_id = {:?}",
+            "  args = {{transaction_handle = {:?}, transaction_id = {:?}}}",
             transaction_handle,
             transaction_id
         );
@@ -10003,7 +9921,7 @@ extern "C" fn thunk_GetTransactionInformation(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetTransactionInformation");
         let _enter = span.enter();
-        tracing :: trace ! ( "transaction_handle = {:?}, outcome = {:?}, isolation_level = {:?}, isolation_flags = {:?}, timeout = {:?}, buffer_length = {:?}, description = {:?}" , transaction_handle , outcome , isolation_level , isolation_flags , timeout , buffer_length , description );
+        tracing :: trace ! ( "  args = {{transaction_handle = {:?}, outcome = {:?}, isolation_level = {:?}, isolation_flags = {:?}, timeout = {:?}, buffer_length = {:?}, description = {:?}}}" , transaction_handle , outcome , isolation_level , isolation_flags , timeout , buffer_length , description );
         let res = api.GetTransactionInformation(
             transaction_handle,
             outcome,
@@ -10038,7 +9956,7 @@ extern "C" fn thunk_GetTransactionManagerId(
         let span = tracing::trace_span!("GetTransactionManagerId");
         let _enter = span.enter();
         tracing::trace!(
-            "transaction_manager_handle = {:?}, transaction_manager_id = {:?}",
+            "  args = {{transaction_manager_handle = {:?}, transaction_manager_id = {:?}}}",
             transaction_manager_handle,
             transaction_manager_id
         );
@@ -10073,7 +9991,7 @@ extern "C" fn thunk_GetVolumeInformationA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetVolumeInformationA");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_root_path_name = {:?}, lp_volume_name_buffer = {:?}, n_volume_name_size = {:?}, lp_volume_serial_number = {:?}, lp_maximum_component_length = {:?}, lp_file_system_flags = {:?}, lp_file_system_name_buffer = {:?}, n_file_system_name_size = {:?}" , lp_root_path_name , lp_volume_name_buffer , n_volume_name_size , lp_volume_serial_number , lp_maximum_component_length , lp_file_system_flags , lp_file_system_name_buffer , n_file_system_name_size );
+        tracing :: trace ! ( "  args = {{lp_root_path_name = {:?}, lp_volume_name_buffer = {:?}, n_volume_name_size = {:?}, lp_volume_serial_number = {:?}, lp_maximum_component_length = {:?}, lp_file_system_flags = {:?}, lp_file_system_name_buffer = {:?}, n_file_system_name_size = {:?}}}" , lp_root_path_name , lp_volume_name_buffer , n_volume_name_size , lp_volume_serial_number , lp_maximum_component_length , lp_file_system_flags , lp_file_system_name_buffer , n_file_system_name_size );
         let res = api.GetVolumeInformationA(
             lp_root_path_name,
             lp_volume_name_buffer,
@@ -10114,7 +10032,7 @@ extern "C" fn thunk_GetVolumeInformationByHandleW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetVolumeInformationByHandleW");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_file = {:?}, lp_volume_name_buffer = {:?}, n_volume_name_size = {:?}, lp_volume_serial_number = {:?}, lp_maximum_component_length = {:?}, lp_file_system_flags = {:?}, lp_file_system_name_buffer = {:?}, n_file_system_name_size = {:?}" , h_file , lp_volume_name_buffer , n_volume_name_size , lp_volume_serial_number , lp_maximum_component_length , lp_file_system_flags , lp_file_system_name_buffer , n_file_system_name_size );
+        tracing :: trace ! ( "  args = {{h_file = {:?}, lp_volume_name_buffer = {:?}, n_volume_name_size = {:?}, lp_volume_serial_number = {:?}, lp_maximum_component_length = {:?}, lp_file_system_flags = {:?}, lp_file_system_name_buffer = {:?}, n_file_system_name_size = {:?}}}" , h_file , lp_volume_name_buffer , n_volume_name_size , lp_volume_serial_number , lp_maximum_component_length , lp_file_system_flags , lp_file_system_name_buffer , n_file_system_name_size );
         let res = api.GetVolumeInformationByHandleW(
             h_file,
             lp_volume_name_buffer,
@@ -10155,7 +10073,7 @@ extern "C" fn thunk_GetVolumeInformationW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetVolumeInformationW");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_root_path_name = {:?}, lp_volume_name_buffer = {:?}, n_volume_name_size = {:?}, lp_volume_serial_number = {:?}, lp_maximum_component_length = {:?}, lp_file_system_flags = {:?}, lp_file_system_name_buffer = {:?}, n_file_system_name_size = {:?}" , lp_root_path_name , lp_volume_name_buffer , n_volume_name_size , lp_volume_serial_number , lp_maximum_component_length , lp_file_system_flags , lp_file_system_name_buffer , n_file_system_name_size );
+        tracing :: trace ! ( "  args = {{lp_root_path_name = {:?}, lp_volume_name_buffer = {:?}, n_volume_name_size = {:?}, lp_volume_serial_number = {:?}, lp_maximum_component_length = {:?}, lp_file_system_flags = {:?}, lp_file_system_name_buffer = {:?}, n_file_system_name_size = {:?}}}" , lp_root_path_name , lp_volume_name_buffer , n_volume_name_size , lp_volume_serial_number , lp_maximum_component_length , lp_file_system_flags , lp_file_system_name_buffer , n_file_system_name_size );
         let res = api.GetVolumeInformationW(
             lp_root_path_name,
             lp_volume_name_buffer,
@@ -10191,12 +10109,7 @@ extern "C" fn thunk_GetVolumeNameForVolumeMountPointA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetVolumeNameForVolumeMountPointA");
         let _enter = span.enter();
-        tracing::trace!(
-            "lpsz_volume_mount_point = {:?}, lpsz_volume_name = {:?}, cch_buffer_length = {:?}",
-            lpsz_volume_mount_point,
-            lpsz_volume_name,
-            cch_buffer_length
-        );
+        tracing :: trace ! ( "  args = {{lpsz_volume_mount_point = {:?}, lpsz_volume_name = {:?}, cch_buffer_length = {:?}}}" , lpsz_volume_mount_point , lpsz_volume_name , cch_buffer_length );
         let res = api.GetVolumeNameForVolumeMountPointA(
             lpsz_volume_mount_point,
             lpsz_volume_name,
@@ -10227,12 +10140,7 @@ extern "C" fn thunk_GetVolumeNameForVolumeMountPointW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetVolumeNameForVolumeMountPointW");
         let _enter = span.enter();
-        tracing::trace!(
-            "lpsz_volume_mount_point = {:?}, lpsz_volume_name = {:?}, cch_buffer_length = {:?}",
-            lpsz_volume_mount_point,
-            lpsz_volume_name,
-            cch_buffer_length
-        );
+        tracing :: trace ! ( "  args = {{lpsz_volume_mount_point = {:?}, lpsz_volume_name = {:?}, cch_buffer_length = {:?}}}" , lpsz_volume_mount_point , lpsz_volume_name , cch_buffer_length );
         let res = api.GetVolumeNameForVolumeMountPointW(
             lpsz_volume_mount_point,
             lpsz_volume_name,
@@ -10263,12 +10171,7 @@ extern "C" fn thunk_GetVolumePathNameA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetVolumePathNameA");
         let _enter = span.enter();
-        tracing::trace!(
-            "lpsz_file_name = {:?}, lpsz_volume_path_name = {:?}, cch_buffer_length = {:?}",
-            lpsz_file_name,
-            lpsz_volume_path_name,
-            cch_buffer_length
-        );
+        tracing :: trace ! ( "  args = {{lpsz_file_name = {:?}, lpsz_volume_path_name = {:?}, cch_buffer_length = {:?}}}" , lpsz_file_name , lpsz_volume_path_name , cch_buffer_length );
         let res = api.GetVolumePathNameA(lpsz_file_name, lpsz_volume_path_name, cch_buffer_length);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -10295,12 +10198,7 @@ extern "C" fn thunk_GetVolumePathNameW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetVolumePathNameW");
         let _enter = span.enter();
-        tracing::trace!(
-            "lpsz_file_name = {:?}, lpsz_volume_path_name = {:?}, cch_buffer_length = {:?}",
-            lpsz_file_name,
-            lpsz_volume_path_name,
-            cch_buffer_length
-        );
+        tracing :: trace ! ( "  args = {{lpsz_file_name = {:?}, lpsz_volume_path_name = {:?}, cch_buffer_length = {:?}}}" , lpsz_file_name , lpsz_volume_path_name , cch_buffer_length );
         let res = api.GetVolumePathNameW(lpsz_file_name, lpsz_volume_path_name, cch_buffer_length);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -10328,7 +10226,7 @@ extern "C" fn thunk_GetVolumePathNamesForVolumeNameA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetVolumePathNamesForVolumeNameA");
         let _enter = span.enter();
-        tracing :: trace ! ( "lpsz_volume_name = {:?}, lpsz_volume_path_names = {:?}, cch_buffer_length = {:?}, lpcch_return_length = {:?}" , lpsz_volume_name , lpsz_volume_path_names , cch_buffer_length , lpcch_return_length );
+        tracing :: trace ! ( "  args = {{lpsz_volume_name = {:?}, lpsz_volume_path_names = {:?}, cch_buffer_length = {:?}, lpcch_return_length = {:?}}}" , lpsz_volume_name , lpsz_volume_path_names , cch_buffer_length , lpcch_return_length );
         let res = api.GetVolumePathNamesForVolumeNameA(
             lpsz_volume_name,
             lpsz_volume_path_names,
@@ -10361,7 +10259,7 @@ extern "C" fn thunk_GetVolumePathNamesForVolumeNameW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetVolumePathNamesForVolumeNameW");
         let _enter = span.enter();
-        tracing :: trace ! ( "lpsz_volume_name = {:?}, lpsz_volume_path_names = {:?}, cch_buffer_length = {:?}, lpcch_return_length = {:?}" , lpsz_volume_name , lpsz_volume_path_names , cch_buffer_length , lpcch_return_length );
+        tracing :: trace ! ( "  args = {{lpsz_volume_name = {:?}, lpsz_volume_path_names = {:?}, cch_buffer_length = {:?}, lpcch_return_length = {:?}}}" , lpsz_volume_name , lpsz_volume_path_names , cch_buffer_length , lpcch_return_length );
         let res = api.GetVolumePathNamesForVolumeNameW(
             lpsz_volume_name,
             lpsz_volume_path_names,
@@ -10392,7 +10290,7 @@ extern "C" fn thunk_IsIoRingOpSupported(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("IsIoRingOpSupported");
         let _enter = span.enter();
-        tracing::trace!("io_ring = {:?}, op = {:?}", io_ring, op);
+        tracing::trace!("  args = {{io_ring = {:?}, op = {:?}}}", io_ring, op);
         let res = api.IsIoRingOpSupported(io_ring, op);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -10414,7 +10312,7 @@ extern "C" fn thunk_LZClose(context: &mut ExtendedContext, memory: FlatMemoryCtx
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("LZClose");
         let _enter = span.enter();
-        tracing::trace!("h_file = {:?}", h_file);
+        tracing::trace!("  args = {{h_file = {:?}}}", h_file);
         let res = api.LZClose(h_file);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -10437,7 +10335,11 @@ extern "C" fn thunk_LZCopy(context: &mut ExtendedContext, memory: FlatMemoryCtx)
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("LZCopy");
         let _enter = span.enter();
-        tracing::trace!("hf_source = {:?}, hf_dest = {:?}", hf_source, hf_dest);
+        tracing::trace!(
+            "  args = {{hf_source = {:?}, hf_dest = {:?}}}",
+            hf_source,
+            hf_dest
+        );
         let res = api.LZCopy(hf_source, hf_dest);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -10458,7 +10360,7 @@ extern "C" fn thunk_LZDone(context: &mut ExtendedContext, memory: FlatMemoryCtx)
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("LZDone");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.LZDone();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -10480,7 +10382,7 @@ extern "C" fn thunk_LZInit(context: &mut ExtendedContext, memory: FlatMemoryCtx)
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("LZInit");
         let _enter = span.enter();
-        tracing::trace!("hf_source = {:?}", hf_source);
+        tracing::trace!("  args = {{hf_source = {:?}}}", hf_source);
         let res = api.LZInit(hf_source);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -10505,7 +10407,7 @@ extern "C" fn thunk_LZOpenFileA(context: &mut ExtendedContext, memory: FlatMemor
         let span = tracing::trace_span!("LZOpenFileA");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_file_name = {:?}, lp_re_open_buf = {:?}, w_style = {:?}",
+            "  args = {{lp_file_name = {:?}, lp_re_open_buf = {:?}, w_style = {:?}}}",
             lp_file_name,
             lp_re_open_buf,
             w_style
@@ -10534,7 +10436,7 @@ extern "C" fn thunk_LZOpenFileW(context: &mut ExtendedContext, memory: FlatMemor
         let span = tracing::trace_span!("LZOpenFileW");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_file_name = {:?}, lp_re_open_buf = {:?}, w_style = {:?}",
+            "  args = {{lp_file_name = {:?}, lp_re_open_buf = {:?}, w_style = {:?}}}",
             lp_file_name,
             lp_re_open_buf,
             w_style
@@ -10563,7 +10465,7 @@ extern "C" fn thunk_LZRead(context: &mut ExtendedContext, memory: FlatMemoryCtx)
         let span = tracing::trace_span!("LZRead");
         let _enter = span.enter();
         tracing::trace!(
-            "h_file = {:?}, lp_buffer = {:?}, cb_read = {:?}",
+            "  args = {{h_file = {:?}, lp_buffer = {:?}, cb_read = {:?}}}",
             h_file,
             lp_buffer,
             cb_read
@@ -10592,7 +10494,7 @@ extern "C" fn thunk_LZSeek(context: &mut ExtendedContext, memory: FlatMemoryCtx)
         let span = tracing::trace_span!("LZSeek");
         let _enter = span.enter();
         tracing::trace!(
-            "h_file = {:?}, l_offset = {:?}, i_origin = {:?}",
+            "  args = {{h_file = {:?}, l_offset = {:?}, i_origin = {:?}}}",
             h_file,
             l_offset,
             i_origin
@@ -10617,7 +10519,7 @@ extern "C" fn thunk_LZStart(context: &mut ExtendedContext, memory: FlatMemoryCtx
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("LZStart");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.LZStart();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -10641,7 +10543,7 @@ extern "C" fn thunk_MoveFileA(context: &mut ExtendedContext, memory: FlatMemoryC
         let span = tracing::trace_span!("MoveFileA");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_existing_file_name = {:?}, lp_new_file_name = {:?}",
+            "  args = {{lp_existing_file_name = {:?}, lp_new_file_name = {:?}}}",
             lp_existing_file_name,
             lp_new_file_name
         );
@@ -10669,7 +10571,7 @@ extern "C" fn thunk_MoveFileExA(context: &mut ExtendedContext, memory: FlatMemor
         let span = tracing::trace_span!("MoveFileExA");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_existing_file_name = {:?}, lp_new_file_name = {:?}, dw_flags = {:?}",
+            "  args = {{lp_existing_file_name = {:?}, lp_new_file_name = {:?}, dw_flags = {:?}}}",
             lp_existing_file_name,
             lp_new_file_name,
             dw_flags
@@ -10698,7 +10600,7 @@ extern "C" fn thunk_MoveFileExW(context: &mut ExtendedContext, memory: FlatMemor
         let span = tracing::trace_span!("MoveFileExW");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_existing_file_name = {:?}, lp_new_file_name = {:?}, dw_flags = {:?}",
+            "  args = {{lp_existing_file_name = {:?}, lp_new_file_name = {:?}, dw_flags = {:?}}}",
             lp_existing_file_name,
             lp_new_file_name,
             dw_flags
@@ -10729,7 +10631,7 @@ extern "C" fn thunk_MoveFileFromAppW(
         let span = tracing::trace_span!("MoveFileFromAppW");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_existing_file_name = {:?}, lp_new_file_name = {:?}",
+            "  args = {{lp_existing_file_name = {:?}, lp_new_file_name = {:?}}}",
             lp_existing_file_name,
             lp_new_file_name
         );
@@ -10762,7 +10664,7 @@ extern "C" fn thunk_MoveFileTransactedA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("MoveFileTransactedA");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_existing_file_name = {:?}, lp_new_file_name = {:?}, lp_progress_routine = {:?}, lp_data = {:?}, dw_flags = {:?}, h_transaction = {:?}" , lp_existing_file_name , lp_new_file_name , lp_progress_routine , lp_data , dw_flags , h_transaction );
+        tracing :: trace ! ( "  args = {{lp_existing_file_name = {:?}, lp_new_file_name = {:?}, lp_progress_routine = {:?}, lp_data = {:?}, dw_flags = {:?}, h_transaction = {:?}}}" , lp_existing_file_name , lp_new_file_name , lp_progress_routine , lp_data , dw_flags , h_transaction );
         let res = api.MoveFileTransactedA(
             lp_existing_file_name,
             lp_new_file_name,
@@ -10799,7 +10701,7 @@ extern "C" fn thunk_MoveFileTransactedW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("MoveFileTransactedW");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_existing_file_name = {:?}, lp_new_file_name = {:?}, lp_progress_routine = {:?}, lp_data = {:?}, dw_flags = {:?}, h_transaction = {:?}" , lp_existing_file_name , lp_new_file_name , lp_progress_routine , lp_data , dw_flags , h_transaction );
+        tracing :: trace ! ( "  args = {{lp_existing_file_name = {:?}, lp_new_file_name = {:?}, lp_progress_routine = {:?}, lp_data = {:?}, dw_flags = {:?}, h_transaction = {:?}}}" , lp_existing_file_name , lp_new_file_name , lp_progress_routine , lp_data , dw_flags , h_transaction );
         let res = api.MoveFileTransactedW(
             lp_existing_file_name,
             lp_new_file_name,
@@ -10830,7 +10732,7 @@ extern "C" fn thunk_MoveFileW(context: &mut ExtendedContext, memory: FlatMemoryC
         let span = tracing::trace_span!("MoveFileW");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_existing_file_name = {:?}, lp_new_file_name = {:?}",
+            "  args = {{lp_existing_file_name = {:?}, lp_new_file_name = {:?}}}",
             lp_existing_file_name,
             lp_new_file_name
         );
@@ -10862,7 +10764,7 @@ extern "C" fn thunk_MoveFileWithProgressA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("MoveFileWithProgressA");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_existing_file_name = {:?}, lp_new_file_name = {:?}, lp_progress_routine = {:?}, lp_data = {:?}, dw_flags = {:?}" , lp_existing_file_name , lp_new_file_name , lp_progress_routine , lp_data , dw_flags );
+        tracing :: trace ! ( "  args = {{lp_existing_file_name = {:?}, lp_new_file_name = {:?}, lp_progress_routine = {:?}, lp_data = {:?}, dw_flags = {:?}}}" , lp_existing_file_name , lp_new_file_name , lp_progress_routine , lp_data , dw_flags );
         let res = api.MoveFileWithProgressA(
             lp_existing_file_name,
             lp_new_file_name,
@@ -10897,7 +10799,7 @@ extern "C" fn thunk_MoveFileWithProgressW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("MoveFileWithProgressW");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_existing_file_name = {:?}, lp_new_file_name = {:?}, lp_progress_routine = {:?}, lp_data = {:?}, dw_flags = {:?}" , lp_existing_file_name , lp_new_file_name , lp_progress_routine , lp_data , dw_flags );
+        tracing :: trace ! ( "  args = {{lp_existing_file_name = {:?}, lp_new_file_name = {:?}, lp_progress_routine = {:?}, lp_data = {:?}, dw_flags = {:?}}}" , lp_existing_file_name , lp_new_file_name , lp_progress_routine , lp_data , dw_flags );
         let res = api.MoveFileWithProgressW(
             lp_existing_file_name,
             lp_new_file_name,
@@ -10935,7 +10837,7 @@ extern "C" fn thunk_NetConnectionEnum(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("NetConnectionEnum");
         let _enter = span.enter();
-        tracing :: trace ! ( "servername = {:?}, qualifier = {:?}, level = {:?}, bufptr = {:?}, prefmaxlen = {:?}, entriesread = {:?}, totalentries = {:?}, resume_handle = {:?}" , servername , qualifier , level , bufptr , prefmaxlen , entriesread , totalentries , resume_handle );
+        tracing :: trace ! ( "  args = {{servername = {:?}, qualifier = {:?}, level = {:?}, bufptr = {:?}, prefmaxlen = {:?}, entriesread = {:?}, totalentries = {:?}, resume_handle = {:?}}}" , servername , qualifier , level , bufptr , prefmaxlen , entriesread , totalentries , resume_handle );
         let res = api.NetConnectionEnum(
             servername,
             qualifier,
@@ -10967,7 +10869,11 @@ extern "C" fn thunk_NetFileClose(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("NetFileClose");
         let _enter = span.enter();
-        tracing::trace!("servername = {:?}, fileid = {:?}", servername, fileid);
+        tracing::trace!(
+            "  args = {{servername = {:?}, fileid = {:?}}}",
+            servername,
+            fileid
+        );
         let res = api.NetFileClose(servername, fileid);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -10997,7 +10903,7 @@ extern "C" fn thunk_NetFileEnum(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("NetFileEnum");
         let _enter = span.enter();
-        tracing :: trace ! ( "servername = {:?}, basepath = {:?}, username = {:?}, level = {:?}, bufptr = {:?}, prefmaxlen = {:?}, entriesread = {:?}, totalentries = {:?}, resume_handle = {:?}" , servername , basepath , username , level , bufptr , prefmaxlen , entriesread , totalentries , resume_handle );
+        tracing :: trace ! ( "  args = {{servername = {:?}, basepath = {:?}, username = {:?}, level = {:?}, bufptr = {:?}, prefmaxlen = {:?}, entriesread = {:?}, totalentries = {:?}, resume_handle = {:?}}}" , servername , basepath , username , level , bufptr , prefmaxlen , entriesread , totalentries , resume_handle );
         let res = api.NetFileEnum(
             servername,
             basepath,
@@ -11036,7 +10942,7 @@ extern "C" fn thunk_NetFileGetInfo(
         let span = tracing::trace_span!("NetFileGetInfo");
         let _enter = span.enter();
         tracing::trace!(
-            "servername = {:?}, fileid = {:?}, level = {:?}, bufptr = {:?}",
+            "  args = {{servername = {:?}, fileid = {:?}, level = {:?}, bufptr = {:?}}}",
             servername,
             fileid,
             level,
@@ -11069,7 +10975,7 @@ extern "C" fn thunk_NetServerAliasAdd(
         let span = tracing::trace_span!("NetServerAliasAdd");
         let _enter = span.enter();
         tracing::trace!(
-            "servername = {:?}, level = {:?}, buf = {:?}",
+            "  args = {{servername = {:?}, level = {:?}, buf = {:?}}}",
             servername,
             level,
             buf
@@ -11101,7 +11007,7 @@ extern "C" fn thunk_NetServerAliasDel(
         let span = tracing::trace_span!("NetServerAliasDel");
         let _enter = span.enter();
         tracing::trace!(
-            "servername = {:?}, level = {:?}, buf = {:?}",
+            "  args = {{servername = {:?}, level = {:?}, buf = {:?}}}",
             servername,
             level,
             buf
@@ -11136,7 +11042,7 @@ extern "C" fn thunk_NetServerAliasEnum(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("NetServerAliasEnum");
         let _enter = span.enter();
-        tracing :: trace ! ( "servername = {:?}, level = {:?}, bufptr = {:?}, prefmaxlen = {:?}, entriesread = {:?}, totalentries = {:?}, resumehandle = {:?}" , servername , level , bufptr , prefmaxlen , entriesread , totalentries , resumehandle );
+        tracing :: trace ! ( "  args = {{servername = {:?}, level = {:?}, bufptr = {:?}, prefmaxlen = {:?}, entriesread = {:?}, totalentries = {:?}, resumehandle = {:?}}}" , servername , level , bufptr , prefmaxlen , entriesread , totalentries , resumehandle );
         let res = api.NetServerAliasEnum(
             servername,
             level,
@@ -11169,7 +11075,7 @@ extern "C" fn thunk_NetSessionDel(context: &mut ExtendedContext, memory: FlatMem
         let span = tracing::trace_span!("NetSessionDel");
         let _enter = span.enter();
         tracing::trace!(
-            "servername = {:?}, unc_client_name = {:?}, username = {:?}",
+            "  args = {{servername = {:?}, unc_client_name = {:?}, username = {:?}}}",
             servername,
             unc_client_name,
             username
@@ -11206,7 +11112,7 @@ extern "C" fn thunk_NetSessionEnum(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("NetSessionEnum");
         let _enter = span.enter();
-        tracing :: trace ! ( "servername = {:?}, unc_client_name = {:?}, username = {:?}, level = {:?}, bufptr = {:?}, prefmaxlen = {:?}, entriesread = {:?}, totalentries = {:?}, resume_handle = {:?}" , servername , unc_client_name , username , level , bufptr , prefmaxlen , entriesread , totalentries , resume_handle );
+        tracing :: trace ! ( "  args = {{servername = {:?}, unc_client_name = {:?}, username = {:?}, level = {:?}, bufptr = {:?}, prefmaxlen = {:?}, entriesread = {:?}, totalentries = {:?}, resume_handle = {:?}}}" , servername , unc_client_name , username , level , bufptr , prefmaxlen , entriesread , totalentries , resume_handle );
         let res = api.NetSessionEnum(
             servername,
             unc_client_name,
@@ -11245,7 +11151,7 @@ extern "C" fn thunk_NetSessionGetInfo(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("NetSessionGetInfo");
         let _enter = span.enter();
-        tracing :: trace ! ( "servername = {:?}, unc_client_name = {:?}, username = {:?}, level = {:?}, bufptr = {:?}" , servername , unc_client_name , username , level , bufptr );
+        tracing :: trace ! ( "  args = {{servername = {:?}, unc_client_name = {:?}, username = {:?}, level = {:?}, bufptr = {:?}}}" , servername , unc_client_name , username , level , bufptr );
         let res = api.NetSessionGetInfo(servername, unc_client_name, username, level, bufptr);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -11271,7 +11177,7 @@ extern "C" fn thunk_NetShareAdd(context: &mut ExtendedContext, memory: FlatMemor
         let span = tracing::trace_span!("NetShareAdd");
         let _enter = span.enter();
         tracing::trace!(
-            "servername = {:?}, level = {:?}, buf = {:?}, parm_err = {:?}",
+            "  args = {{servername = {:?}, level = {:?}, buf = {:?}, parm_err = {:?}}}",
             servername,
             level,
             buf,
@@ -11301,7 +11207,7 @@ extern "C" fn thunk_NetShareCheck(context: &mut ExtendedContext, memory: FlatMem
         let span = tracing::trace_span!("NetShareCheck");
         let _enter = span.enter();
         tracing::trace!(
-            "servername = {:?}, device = {:?}, r#type = {:?}",
+            "  args = {{servername = {:?}, device = {:?}, r#type = {:?}}}",
             servername,
             device,
             r#type
@@ -11330,7 +11236,7 @@ extern "C" fn thunk_NetShareDel(context: &mut ExtendedContext, memory: FlatMemor
         let span = tracing::trace_span!("NetShareDel");
         let _enter = span.enter();
         tracing::trace!(
-            "servername = {:?}, netname = {:?}, reserved = {:?}",
+            "  args = {{servername = {:?}, netname = {:?}, reserved = {:?}}}",
             servername,
             netname,
             reserved
@@ -11359,7 +11265,7 @@ extern "C" fn thunk_NetShareDelEx(context: &mut ExtendedContext, memory: FlatMem
         let span = tracing::trace_span!("NetShareDelEx");
         let _enter = span.enter();
         tracing::trace!(
-            "servername = {:?}, level = {:?}, buf = {:?}",
+            "  args = {{servername = {:?}, level = {:?}, buf = {:?}}}",
             servername,
             level,
             buf
@@ -11391,7 +11297,7 @@ extern "C" fn thunk_NetShareDelSticky(
         let span = tracing::trace_span!("NetShareDelSticky");
         let _enter = span.enter();
         tracing::trace!(
-            "servername = {:?}, netname = {:?}, reserved = {:?}",
+            "  args = {{servername = {:?}, netname = {:?}, reserved = {:?}}}",
             servername,
             netname,
             reserved
@@ -11423,7 +11329,7 @@ extern "C" fn thunk_NetShareEnum(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("NetShareEnum");
         let _enter = span.enter();
-        tracing :: trace ! ( "servername = {:?}, level = {:?}, bufptr = {:?}, prefmaxlen = {:?}, entriesread = {:?}, totalentries = {:?}, resume_handle = {:?}" , servername , level , bufptr , prefmaxlen , entriesread , totalentries , resume_handle );
+        tracing :: trace ! ( "  args = {{servername = {:?}, level = {:?}, bufptr = {:?}, prefmaxlen = {:?}, entriesread = {:?}, totalentries = {:?}, resume_handle = {:?}}}" , servername , level , bufptr , prefmaxlen , entriesread , totalentries , resume_handle );
         let res = api.NetShareEnum(
             servername,
             level,
@@ -11462,7 +11368,7 @@ extern "C" fn thunk_NetShareEnumSticky(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("NetShareEnumSticky");
         let _enter = span.enter();
-        tracing :: trace ! ( "servername = {:?}, level = {:?}, bufptr = {:?}, prefmaxlen = {:?}, entriesread = {:?}, totalentries = {:?}, resume_handle = {:?}" , servername , level , bufptr , prefmaxlen , entriesread , totalentries , resume_handle );
+        tracing :: trace ! ( "  args = {{servername = {:?}, level = {:?}, bufptr = {:?}, prefmaxlen = {:?}, entriesread = {:?}, totalentries = {:?}, resume_handle = {:?}}}" , servername , level , bufptr , prefmaxlen , entriesread , totalentries , resume_handle );
         let res = api.NetShareEnumSticky(
             servername,
             level,
@@ -11499,7 +11405,7 @@ extern "C" fn thunk_NetShareGetInfo(
         let span = tracing::trace_span!("NetShareGetInfo");
         let _enter = span.enter();
         tracing::trace!(
-            "servername = {:?}, netname = {:?}, level = {:?}, bufptr = {:?}",
+            "  args = {{servername = {:?}, netname = {:?}, level = {:?}, bufptr = {:?}}}",
             servername,
             netname,
             level,
@@ -11533,14 +11439,7 @@ extern "C" fn thunk_NetShareSetInfo(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("NetShareSetInfo");
         let _enter = span.enter();
-        tracing::trace!(
-            "servername = {:?}, netname = {:?}, level = {:?}, buf = {:?}, parm_err = {:?}",
-            servername,
-            netname,
-            level,
-            buf,
-            parm_err
-        );
+        tracing :: trace ! ( "  args = {{servername = {:?}, netname = {:?}, level = {:?}, buf = {:?}, parm_err = {:?}}}" , servername , netname , level , buf , parm_err );
         let res = api.NetShareSetInfo(servername, netname, level, buf, parm_err);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -11569,14 +11468,7 @@ extern "C" fn thunk_NetStatisticsGet(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("NetStatisticsGet");
         let _enter = span.enter();
-        tracing::trace!(
-            "server_name = {:?}, service = {:?}, level = {:?}, options = {:?}, buffer = {:?}",
-            server_name,
-            service,
-            level,
-            options,
-            buffer
-        );
+        tracing :: trace ! ( "  args = {{server_name = {:?}, service = {:?}, level = {:?}, options = {:?}, buffer = {:?}}}" , server_name , service , level , options , buffer );
         let res = api.NetStatisticsGet(server_name, service, level, options, buffer);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -11608,7 +11500,7 @@ extern "C" fn thunk_NtCreateFile(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("NtCreateFile");
         let _enter = span.enter();
-        tracing :: trace ! ( "file_handle = {:?}, desired_access = {:?}, object_attributes = {:?}, io_status_block = {:?}, allocation_size = {:?}, file_attributes = {:?}, share_access = {:?}, create_disposition = {:?}, create_options = {:?}, ea_buffer = {:?}, ea_length = {:?}" , file_handle , desired_access , object_attributes , io_status_block , allocation_size , file_attributes , share_access , create_disposition , create_options , ea_buffer , ea_length );
+        tracing :: trace ! ( "  args = {{file_handle = {:?}, desired_access = {:?}, object_attributes = {:?}, io_status_block = {:?}, allocation_size = {:?}, file_attributes = {:?}, share_access = {:?}, create_disposition = {:?}, create_options = {:?}, ea_buffer = {:?}, ea_length = {:?}}}" , file_handle , desired_access , object_attributes , io_status_block , allocation_size , file_attributes , share_access , create_disposition , create_options , ea_buffer , ea_length );
         let res = api.NtCreateFile(
             file_handle,
             desired_access,
@@ -11648,7 +11540,7 @@ extern "C" fn thunk_OpenEncryptedFileRawA(
         let span = tracing::trace_span!("OpenEncryptedFileRawA");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_file_name = {:?}, ul_flags = {:?}, pv_context = {:?}",
+            "  args = {{lp_file_name = {:?}, ul_flags = {:?}, pv_context = {:?}}}",
             lp_file_name,
             ul_flags,
             pv_context
@@ -11680,7 +11572,7 @@ extern "C" fn thunk_OpenEncryptedFileRawW(
         let span = tracing::trace_span!("OpenEncryptedFileRawW");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_file_name = {:?}, ul_flags = {:?}, pv_context = {:?}",
+            "  args = {{lp_file_name = {:?}, ul_flags = {:?}, pv_context = {:?}}}",
             lp_file_name,
             ul_flags,
             pv_context
@@ -11711,12 +11603,7 @@ extern "C" fn thunk_OpenEnlistment(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("OpenEnlistment");
         let _enter = span.enter();
-        tracing::trace!(
-            "dw_desired_access = {:?}, resource_manager_handle = {:?}, enlistment_id = {:?}",
-            dw_desired_access,
-            resource_manager_handle,
-            enlistment_id
-        );
+        tracing :: trace ! ( "  args = {{dw_desired_access = {:?}, resource_manager_handle = {:?}, enlistment_id = {:?}}}" , dw_desired_access , resource_manager_handle , enlistment_id );
         let res = api.OpenEnlistment(dw_desired_access, resource_manager_handle, enlistment_id);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -11741,7 +11628,7 @@ extern "C" fn thunk_OpenFile(context: &mut ExtendedContext, memory: FlatMemoryCt
         let span = tracing::trace_span!("OpenFile");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_file_name = {:?}, lp_re_open_buff = {:?}, u_style = {:?}",
+            "  args = {{lp_file_name = {:?}, lp_re_open_buff = {:?}, u_style = {:?}}}",
             lp_file_name,
             lp_re_open_buff,
             u_style
@@ -11773,7 +11660,7 @@ extern "C" fn thunk_OpenResourceManager(
         let span = tracing::trace_span!("OpenResourceManager");
         let _enter = span.enter();
         tracing::trace!(
-            "dw_desired_access = {:?}, tm_handle = {:?}, resource_manager_id = {:?}",
+            "  args = {{dw_desired_access = {:?}, tm_handle = {:?}, resource_manager_id = {:?}}}",
             dw_desired_access,
             tm_handle,
             resource_manager_id
@@ -11804,7 +11691,7 @@ extern "C" fn thunk_OpenTransaction(
         let span = tracing::trace_span!("OpenTransaction");
         let _enter = span.enter();
         tracing::trace!(
-            "dw_desired_access = {:?}, transaction_id = {:?}",
+            "  args = {{dw_desired_access = {:?}, transaction_id = {:?}}}",
             dw_desired_access,
             transaction_id
         );
@@ -11835,7 +11722,7 @@ extern "C" fn thunk_OpenTransactionManager(
         let span = tracing::trace_span!("OpenTransactionManager");
         let _enter = span.enter();
         tracing::trace!(
-            "log_file_name = {:?}, desired_access = {:?}, open_options = {:?}",
+            "  args = {{log_file_name = {:?}, desired_access = {:?}, open_options = {:?}}}",
             log_file_name,
             desired_access,
             open_options
@@ -11866,12 +11753,7 @@ extern "C" fn thunk_OpenTransactionManagerById(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("OpenTransactionManagerById");
         let _enter = span.enter();
-        tracing::trace!(
-            "transaction_manager_id = {:?}, desired_access = {:?}, open_options = {:?}",
-            transaction_manager_id,
-            desired_access,
-            open_options
-        );
+        tracing :: trace ! ( "  args = {{transaction_manager_id = {:?}, desired_access = {:?}, open_options = {:?}}}" , transaction_manager_id , desired_access , open_options );
         let res =
             api.OpenTransactionManagerById(transaction_manager_id, desired_access, open_options);
         tracing::trace!("result = {:?}", res);
@@ -11898,7 +11780,7 @@ extern "C" fn thunk_PopIoRingCompletion(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("PopIoRingCompletion");
         let _enter = span.enter();
-        tracing::trace!("io_ring = {:?}, cqe = {:?}", io_ring, cqe);
+        tracing::trace!("  args = {{io_ring = {:?}, cqe = {:?}}}", io_ring, cqe);
         let res = api.PopIoRingCompletion(io_ring, cqe);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -11925,7 +11807,7 @@ extern "C" fn thunk_PrePrepareComplete(
         let span = tracing::trace_span!("PrePrepareComplete");
         let _enter = span.enter();
         tracing::trace!(
-            "enlistment_handle = {:?}, tm_virtual_clock = {:?}",
+            "  args = {{enlistment_handle = {:?}, tm_virtual_clock = {:?}}}",
             enlistment_handle,
             tm_virtual_clock
         );
@@ -11955,7 +11837,7 @@ extern "C" fn thunk_PrePrepareEnlistment(
         let span = tracing::trace_span!("PrePrepareEnlistment");
         let _enter = span.enter();
         tracing::trace!(
-            "enlistment_handle = {:?}, tm_virtual_clock = {:?}",
+            "  args = {{enlistment_handle = {:?}, tm_virtual_clock = {:?}}}",
             enlistment_handle,
             tm_virtual_clock
         );
@@ -11985,7 +11867,7 @@ extern "C" fn thunk_PrepareComplete(
         let span = tracing::trace_span!("PrepareComplete");
         let _enter = span.enter();
         tracing::trace!(
-            "enlistment_handle = {:?}, tm_virtual_clock = {:?}",
+            "  args = {{enlistment_handle = {:?}, tm_virtual_clock = {:?}}}",
             enlistment_handle,
             tm_virtual_clock
         );
@@ -12015,7 +11897,7 @@ extern "C" fn thunk_PrepareEnlistment(
         let span = tracing::trace_span!("PrepareEnlistment");
         let _enter = span.enter();
         tracing::trace!(
-            "enlistment_handle = {:?}, tm_virtual_clock = {:?}",
+            "  args = {{enlistment_handle = {:?}, tm_virtual_clock = {:?}}}",
             enlistment_handle,
             tm_virtual_clock
         );
@@ -12043,7 +11925,7 @@ extern "C" fn thunk_PrepareTape(context: &mut ExtendedContext, memory: FlatMemor
         let span = tracing::trace_span!("PrepareTape");
         let _enter = span.enter();
         tracing::trace!(
-            "h_device = {:?}, dw_operation = {:?}, b_immediate = {:?}",
+            "  args = {{h_device = {:?}, dw_operation = {:?}, b_immediate = {:?}}}",
             h_device,
             dw_operation,
             b_immediate
@@ -12075,7 +11957,7 @@ extern "C" fn thunk_QueryDosDeviceA(
         let span = tracing::trace_span!("QueryDosDeviceA");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_device_name = {:?}, lp_target_path = {:?}, ucch_max = {:?}",
+            "  args = {{lp_device_name = {:?}, lp_target_path = {:?}, ucch_max = {:?}}}",
             lp_device_name,
             lp_target_path,
             ucch_max
@@ -12107,7 +11989,7 @@ extern "C" fn thunk_QueryDosDeviceW(
         let span = tracing::trace_span!("QueryDosDeviceW");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_device_name = {:?}, lp_target_path = {:?}, ucch_max = {:?}",
+            "  args = {{lp_device_name = {:?}, lp_target_path = {:?}, ucch_max = {:?}}}",
             lp_device_name,
             lp_target_path,
             ucch_max
@@ -12136,7 +12018,7 @@ extern "C" fn thunk_QueryIoRingCapabilities(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("QueryIoRingCapabilities");
         let _enter = span.enter();
-        tracing::trace!("capabilities = {:?}", capabilities);
+        tracing::trace!("  args = {{capabilities = {:?}}}", capabilities);
         let res = api.QueryIoRingCapabilities(capabilities);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -12161,7 +12043,7 @@ extern "C" fn thunk_ReOpenFile(context: &mut ExtendedContext, memory: FlatMemory
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ReOpenFile");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_original_file = {:?}, dw_desired_access = {:?}, dw_share_mode = {:?}, dw_flags_and_attributes = {:?}" , h_original_file , dw_desired_access , dw_share_mode , dw_flags_and_attributes );
+        tracing :: trace ! ( "  args = {{h_original_file = {:?}, dw_desired_access = {:?}, dw_share_mode = {:?}, dw_flags_and_attributes = {:?}}}" , h_original_file , dw_desired_access , dw_share_mode , dw_flags_and_attributes );
         let res = api.ReOpenFile(
             h_original_file,
             dw_desired_access,
@@ -12199,7 +12081,7 @@ extern "C" fn thunk_ReadDirectoryChangesExW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ReadDirectoryChangesExW");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_directory = {:?}, lp_buffer = {:?}, n_buffer_length = {:?}, b_watch_subtree = {:?}, dw_notify_filter = {:?}, lp_bytes_returned = {:?}, lp_overlapped = {:?}, lp_completion_routine = {:?}, read_directory_notify_information_class = {:?}" , h_directory , lp_buffer , n_buffer_length , b_watch_subtree , dw_notify_filter , lp_bytes_returned , lp_overlapped , lp_completion_routine , read_directory_notify_information_class );
+        tracing :: trace ! ( "  args = {{h_directory = {:?}, lp_buffer = {:?}, n_buffer_length = {:?}, b_watch_subtree = {:?}, dw_notify_filter = {:?}, lp_bytes_returned = {:?}, lp_overlapped = {:?}, lp_completion_routine = {:?}, read_directory_notify_information_class = {:?}}}" , h_directory , lp_buffer , n_buffer_length , b_watch_subtree , dw_notify_filter , lp_bytes_returned , lp_overlapped , lp_completion_routine , read_directory_notify_information_class );
         let res = api.ReadDirectoryChangesExW(
             h_directory,
             lp_buffer,
@@ -12241,7 +12123,7 @@ extern "C" fn thunk_ReadDirectoryChangesW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ReadDirectoryChangesW");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_directory = {:?}, lp_buffer = {:?}, n_buffer_length = {:?}, b_watch_subtree = {:?}, dw_notify_filter = {:?}, lp_bytes_returned = {:?}, lp_overlapped = {:?}, lp_completion_routine = {:?}" , h_directory , lp_buffer , n_buffer_length , b_watch_subtree , dw_notify_filter , lp_bytes_returned , lp_overlapped , lp_completion_routine );
+        tracing :: trace ! ( "  args = {{h_directory = {:?}, lp_buffer = {:?}, n_buffer_length = {:?}, b_watch_subtree = {:?}, dw_notify_filter = {:?}, lp_bytes_returned = {:?}, lp_overlapped = {:?}, lp_completion_routine = {:?}}}" , h_directory , lp_buffer , n_buffer_length , b_watch_subtree , dw_notify_filter , lp_bytes_returned , lp_overlapped , lp_completion_routine );
         let res = api.ReadDirectoryChangesW(
             h_directory,
             lp_buffer,
@@ -12278,7 +12160,7 @@ extern "C" fn thunk_ReadEncryptedFileRaw(
         let span = tracing::trace_span!("ReadEncryptedFileRaw");
         let _enter = span.enter();
         tracing::trace!(
-            "pf_export_callback = {:?}, pv_callback_context = {:?}, pv_context = {:?}",
+            "  args = {{pf_export_callback = {:?}, pv_callback_context = {:?}, pv_context = {:?}}}",
             pf_export_callback,
             pv_callback_context,
             pv_context
@@ -12308,7 +12190,7 @@ extern "C" fn thunk_ReadFile(context: &mut ExtendedContext, memory: FlatMemoryCt
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ReadFile");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_file = {:?}, lp_buffer = {:?}, n_number_of_bytes_to_read = {:?}, lp_number_of_bytes_read = {:?}, lp_overlapped = {:?}" , h_file , lp_buffer , n_number_of_bytes_to_read , lp_number_of_bytes_read , lp_overlapped );
+        tracing :: trace ! ( "  args = {{h_file = {:?}, lp_buffer = {:?}, n_number_of_bytes_to_read = {:?}, lp_number_of_bytes_read = {:?}, lp_overlapped = {:?}}}" , h_file , lp_buffer , n_number_of_bytes_to_read , lp_number_of_bytes_read , lp_overlapped );
         let res = api.ReadFile(
             h_file,
             lp_buffer,
@@ -12340,7 +12222,7 @@ extern "C" fn thunk_ReadFileEx(context: &mut ExtendedContext, memory: FlatMemory
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ReadFileEx");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_file = {:?}, lp_buffer = {:?}, n_number_of_bytes_to_read = {:?}, lp_overlapped = {:?}, lp_completion_routine = {:?}" , h_file , lp_buffer , n_number_of_bytes_to_read , lp_overlapped , lp_completion_routine );
+        tracing :: trace ! ( "  args = {{h_file = {:?}, lp_buffer = {:?}, n_number_of_bytes_to_read = {:?}, lp_overlapped = {:?}, lp_completion_routine = {:?}}}" , h_file , lp_buffer , n_number_of_bytes_to_read , lp_overlapped , lp_completion_routine );
         let res = api.ReadFileEx(
             h_file,
             lp_buffer,
@@ -12375,7 +12257,7 @@ extern "C" fn thunk_ReadFileScatter(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ReadFileScatter");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_file = {:?}, a_segment_array = {:?}, n_number_of_bytes_to_read = {:?}, lp_reserved = {:?}, lp_overlapped = {:?}" , h_file , a_segment_array , n_number_of_bytes_to_read , lp_reserved , lp_overlapped );
+        tracing :: trace ! ( "  args = {{h_file = {:?}, a_segment_array = {:?}, n_number_of_bytes_to_read = {:?}, lp_reserved = {:?}, lp_overlapped = {:?}}}" , h_file , a_segment_array , n_number_of_bytes_to_read , lp_reserved , lp_overlapped );
         let res = api.ReadFileScatter(
             h_file,
             a_segment_array,
@@ -12408,7 +12290,7 @@ extern "C" fn thunk_ReadOnlyEnlistment(
         let span = tracing::trace_span!("ReadOnlyEnlistment");
         let _enter = span.enter();
         tracing::trace!(
-            "enlistment_handle = {:?}, tm_virtual_clock = {:?}",
+            "  args = {{enlistment_handle = {:?}, tm_virtual_clock = {:?}}}",
             enlistment_handle,
             tm_virtual_clock
         );
@@ -12438,7 +12320,7 @@ extern "C" fn thunk_RecoverEnlistment(
         let span = tracing::trace_span!("RecoverEnlistment");
         let _enter = span.enter();
         tracing::trace!(
-            "enlistment_handle = {:?}, enlistment_key = {:?}",
+            "  args = {{enlistment_handle = {:?}, enlistment_key = {:?}}}",
             enlistment_handle,
             enlistment_key
         );
@@ -12466,7 +12348,10 @@ extern "C" fn thunk_RecoverResourceManager(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("RecoverResourceManager");
         let _enter = span.enter();
-        tracing::trace!("resource_manager_handle = {:?}", resource_manager_handle);
+        tracing::trace!(
+            "  args = {{resource_manager_handle = {:?}}}",
+            resource_manager_handle
+        );
         let res = api.RecoverResourceManager(resource_manager_handle);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -12492,7 +12377,7 @@ extern "C" fn thunk_RecoverTransactionManager(
         let span = tracing::trace_span!("RecoverTransactionManager");
         let _enter = span.enter();
         tracing::trace!(
-            "transaction_manager_handle = {:?}",
+            "  args = {{transaction_manager_handle = {:?}}}",
             transaction_manager_handle
         );
         let res = api.RecoverTransactionManager(transaction_manager_handle);
@@ -12519,7 +12404,7 @@ extern "C" fn thunk_RemoveDirectoryA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("RemoveDirectoryA");
         let _enter = span.enter();
-        tracing::trace!("lp_path_name = {:?}", lp_path_name);
+        tracing::trace!("  args = {{lp_path_name = {:?}}}", lp_path_name);
         let res = api.RemoveDirectoryA(lp_path_name);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -12544,7 +12429,7 @@ extern "C" fn thunk_RemoveDirectoryFromAppW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("RemoveDirectoryFromAppW");
         let _enter = span.enter();
-        tracing::trace!("lp_path_name = {:?}", lp_path_name);
+        tracing::trace!("  args = {{lp_path_name = {:?}}}", lp_path_name);
         let res = api.RemoveDirectoryFromAppW(lp_path_name);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -12571,7 +12456,7 @@ extern "C" fn thunk_RemoveDirectoryTransactedA(
         let span = tracing::trace_span!("RemoveDirectoryTransactedA");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_path_name = {:?}, h_transaction = {:?}",
+            "  args = {{lp_path_name = {:?}, h_transaction = {:?}}}",
             lp_path_name,
             h_transaction
         );
@@ -12601,7 +12486,7 @@ extern "C" fn thunk_RemoveDirectoryTransactedW(
         let span = tracing::trace_span!("RemoveDirectoryTransactedW");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_path_name = {:?}, h_transaction = {:?}",
+            "  args = {{lp_path_name = {:?}, h_transaction = {:?}}}",
             lp_path_name,
             h_transaction
         );
@@ -12629,7 +12514,7 @@ extern "C" fn thunk_RemoveDirectoryW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("RemoveDirectoryW");
         let _enter = span.enter();
-        tracing::trace!("lp_path_name = {:?}", lp_path_name);
+        tracing::trace!("  args = {{lp_path_name = {:?}}}", lp_path_name);
         let res = api.RemoveDirectoryW(lp_path_name);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -12656,7 +12541,7 @@ extern "C" fn thunk_RenameTransactionManager(
         let span = tracing::trace_span!("RenameTransactionManager");
         let _enter = span.enter();
         tracing::trace!(
-            "log_file_name = {:?}, existing_transaction_manager_guid = {:?}",
+            "  args = {{log_file_name = {:?}, existing_transaction_manager_guid = {:?}}}",
             log_file_name,
             existing_transaction_manager_guid
         );
@@ -12686,7 +12571,7 @@ extern "C" fn thunk_ReplaceFileA(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ReplaceFileA");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_replaced_file_name = {:?}, lp_replacement_file_name = {:?}, lp_backup_file_name = {:?}, dw_replace_flags = {:?}, lp_exclude = {:?}, lp_reserved = {:?}" , lp_replaced_file_name , lp_replacement_file_name , lp_backup_file_name , dw_replace_flags , lp_exclude , lp_reserved );
+        tracing :: trace ! ( "  args = {{lp_replaced_file_name = {:?}, lp_replacement_file_name = {:?}, lp_backup_file_name = {:?}, dw_replace_flags = {:?}, lp_exclude = {:?}, lp_reserved = {:?}}}" , lp_replaced_file_name , lp_replacement_file_name , lp_backup_file_name , dw_replace_flags , lp_exclude , lp_reserved );
         let res = api.ReplaceFileA(
             lp_replaced_file_name,
             lp_replacement_file_name,
@@ -12723,7 +12608,7 @@ extern "C" fn thunk_ReplaceFileFromAppW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ReplaceFileFromAppW");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_replaced_file_name = {:?}, lp_replacement_file_name = {:?}, lp_backup_file_name = {:?}, dw_replace_flags = {:?}, lp_exclude = {:?}, lp_reserved = {:?}" , lp_replaced_file_name , lp_replacement_file_name , lp_backup_file_name , dw_replace_flags , lp_exclude , lp_reserved );
+        tracing :: trace ! ( "  args = {{lp_replaced_file_name = {:?}, lp_replacement_file_name = {:?}, lp_backup_file_name = {:?}, dw_replace_flags = {:?}, lp_exclude = {:?}, lp_reserved = {:?}}}" , lp_replaced_file_name , lp_replacement_file_name , lp_backup_file_name , dw_replace_flags , lp_exclude , lp_reserved );
         let res = api.ReplaceFileFromAppW(
             lp_replaced_file_name,
             lp_replacement_file_name,
@@ -12757,7 +12642,7 @@ extern "C" fn thunk_ReplaceFileW(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ReplaceFileW");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_replaced_file_name = {:?}, lp_replacement_file_name = {:?}, lp_backup_file_name = {:?}, dw_replace_flags = {:?}, lp_exclude = {:?}, lp_reserved = {:?}" , lp_replaced_file_name , lp_replacement_file_name , lp_backup_file_name , dw_replace_flags , lp_exclude , lp_reserved );
+        tracing :: trace ! ( "  args = {{lp_replaced_file_name = {:?}, lp_replacement_file_name = {:?}, lp_backup_file_name = {:?}, dw_replace_flags = {:?}, lp_exclude = {:?}, lp_reserved = {:?}}}" , lp_replaced_file_name , lp_replacement_file_name , lp_backup_file_name , dw_replace_flags , lp_exclude , lp_reserved );
         let res = api.ReplaceFileW(
             lp_replaced_file_name,
             lp_replacement_file_name,
@@ -12791,7 +12676,7 @@ extern "C" fn thunk_RollbackComplete(
         let span = tracing::trace_span!("RollbackComplete");
         let _enter = span.enter();
         tracing::trace!(
-            "enlistment_handle = {:?}, tm_virtual_clock = {:?}",
+            "  args = {{enlistment_handle = {:?}, tm_virtual_clock = {:?}}}",
             enlistment_handle,
             tm_virtual_clock
         );
@@ -12821,7 +12706,7 @@ extern "C" fn thunk_RollbackEnlistment(
         let span = tracing::trace_span!("RollbackEnlistment");
         let _enter = span.enter();
         tracing::trace!(
-            "enlistment_handle = {:?}, tm_virtual_clock = {:?}",
+            "  args = {{enlistment_handle = {:?}, tm_virtual_clock = {:?}}}",
             enlistment_handle,
             tm_virtual_clock
         );
@@ -12849,7 +12734,7 @@ extern "C" fn thunk_RollbackTransaction(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("RollbackTransaction");
         let _enter = span.enter();
-        tracing::trace!("transaction_handle = {:?}", transaction_handle);
+        tracing::trace!("  args = {{transaction_handle = {:?}}}", transaction_handle);
         let res = api.RollbackTransaction(transaction_handle);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -12874,7 +12759,7 @@ extern "C" fn thunk_RollbackTransactionAsync(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("RollbackTransactionAsync");
         let _enter = span.enter();
-        tracing::trace!("transaction_handle = {:?}", transaction_handle);
+        tracing::trace!("  args = {{transaction_handle = {:?}}}", transaction_handle);
         let res = api.RollbackTransactionAsync(transaction_handle);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -12901,7 +12786,7 @@ extern "C" fn thunk_RollforwardTransactionManager(
         let span = tracing::trace_span!("RollforwardTransactionManager");
         let _enter = span.enter();
         tracing::trace!(
-            "transaction_manager_handle = {:?}, tm_virtual_clock = {:?}",
+            "  args = {{transaction_manager_handle = {:?}, tm_virtual_clock = {:?}}}",
             transaction_manager_handle,
             tm_virtual_clock
         );
@@ -12931,7 +12816,7 @@ extern "C" fn thunk_SearchPathA(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SearchPathA");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_path = {:?}, lp_file_name = {:?}, lp_extension = {:?}, n_buffer_length = {:?}, lp_buffer = {:?}, lp_file_part = {:?}" , lp_path , lp_file_name , lp_extension , n_buffer_length , lp_buffer , lp_file_part );
+        tracing :: trace ! ( "  args = {{lp_path = {:?}, lp_file_name = {:?}, lp_extension = {:?}, n_buffer_length = {:?}, lp_buffer = {:?}, lp_file_part = {:?}}}" , lp_path , lp_file_name , lp_extension , n_buffer_length , lp_buffer , lp_file_part );
         let res = api.SearchPathA(
             lp_path,
             lp_file_name,
@@ -12965,7 +12850,7 @@ extern "C" fn thunk_SearchPathW(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SearchPathW");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_path = {:?}, lp_file_name = {:?}, lp_extension = {:?}, n_buffer_length = {:?}, lp_buffer = {:?}, lp_file_part = {:?}" , lp_path , lp_file_name , lp_extension , n_buffer_length , lp_buffer , lp_file_part );
+        tracing :: trace ! ( "  args = {{lp_path = {:?}, lp_file_name = {:?}, lp_extension = {:?}, n_buffer_length = {:?}, lp_buffer = {:?}, lp_file_part = {:?}}}" , lp_path , lp_file_name , lp_extension , n_buffer_length , lp_buffer , lp_file_part );
         let res = api.SearchPathW(
             lp_path,
             lp_file_name,
@@ -12994,7 +12879,7 @@ extern "C" fn thunk_SetEndOfFile(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetEndOfFile");
         let _enter = span.enter();
-        tracing::trace!("h_file = {:?}", h_file);
+        tracing::trace!("  args = {{h_file = {:?}}}", h_file);
         let res = api.SetEndOfFile(h_file);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -13022,7 +12907,7 @@ extern "C" fn thunk_SetEnlistmentRecoveryInformation(
         let span = tracing::trace_span!("SetEnlistmentRecoveryInformation");
         let _enter = span.enter();
         tracing::trace!(
-            "enlistment_handle = {:?}, buffer_size = {:?}, buffer = {:?}",
+            "  args = {{enlistment_handle = {:?}, buffer_size = {:?}, buffer = {:?}}}",
             enlistment_handle,
             buffer_size,
             buffer
@@ -13050,7 +12935,7 @@ extern "C" fn thunk_SetFileApisToANSI(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetFileApisToANSI");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.SetFileApisToANSI();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -13074,7 +12959,7 @@ extern "C" fn thunk_SetFileApisToOEM(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetFileApisToOEM");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.SetFileApisToOEM();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -13101,7 +12986,7 @@ extern "C" fn thunk_SetFileAttributesA(
         let span = tracing::trace_span!("SetFileAttributesA");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_file_name = {:?}, dw_file_attributes = {:?}",
+            "  args = {{lp_file_name = {:?}, dw_file_attributes = {:?}}}",
             lp_file_name,
             dw_file_attributes
         );
@@ -13131,7 +13016,7 @@ extern "C" fn thunk_SetFileAttributesFromAppW(
         let span = tracing::trace_span!("SetFileAttributesFromAppW");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_file_name = {:?}, dw_file_attributes = {:?}",
+            "  args = {{lp_file_name = {:?}, dw_file_attributes = {:?}}}",
             lp_file_name,
             dw_file_attributes
         );
@@ -13162,7 +13047,7 @@ extern "C" fn thunk_SetFileAttributesTransactedA(
         let span = tracing::trace_span!("SetFileAttributesTransactedA");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_file_name = {:?}, dw_file_attributes = {:?}, h_transaction = {:?}",
+            "  args = {{lp_file_name = {:?}, dw_file_attributes = {:?}, h_transaction = {:?}}}",
             lp_file_name,
             dw_file_attributes,
             h_transaction
@@ -13194,7 +13079,7 @@ extern "C" fn thunk_SetFileAttributesTransactedW(
         let span = tracing::trace_span!("SetFileAttributesTransactedW");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_file_name = {:?}, dw_file_attributes = {:?}, h_transaction = {:?}",
+            "  args = {{lp_file_name = {:?}, dw_file_attributes = {:?}, h_transaction = {:?}}}",
             lp_file_name,
             dw_file_attributes,
             h_transaction
@@ -13225,7 +13110,7 @@ extern "C" fn thunk_SetFileAttributesW(
         let span = tracing::trace_span!("SetFileAttributesW");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_file_name = {:?}, dw_file_attributes = {:?}",
+            "  args = {{lp_file_name = {:?}, dw_file_attributes = {:?}}}",
             lp_file_name,
             dw_file_attributes
         );
@@ -13258,7 +13143,7 @@ extern "C" fn thunk_SetFileBandwidthReservation(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetFileBandwidthReservation");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_file = {:?}, n_period_milliseconds = {:?}, n_bytes_per_period = {:?}, b_discardable = {:?}, lp_transfer_size = {:?}, lp_num_outstanding_requests = {:?}" , h_file , n_period_milliseconds , n_bytes_per_period , b_discardable , lp_transfer_size , lp_num_outstanding_requests );
+        tracing :: trace ! ( "  args = {{h_file = {:?}, n_period_milliseconds = {:?}, n_bytes_per_period = {:?}, b_discardable = {:?}, lp_transfer_size = {:?}, lp_num_outstanding_requests = {:?}}}" , h_file , n_period_milliseconds , n_bytes_per_period , b_discardable , lp_transfer_size , lp_num_outstanding_requests );
         let res = api.SetFileBandwidthReservation(
             h_file,
             n_period_milliseconds,
@@ -13291,7 +13176,11 @@ extern "C" fn thunk_SetFileCompletionNotificationModes(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetFileCompletionNotificationModes");
         let _enter = span.enter();
-        tracing::trace!("file_handle = {:?}, flags = {:?}", file_handle, flags);
+        tracing::trace!(
+            "  args = {{file_handle = {:?}, flags = {:?}}}",
+            file_handle,
+            flags
+        );
         let res = api.SetFileCompletionNotificationModes(file_handle, flags);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -13319,7 +13208,7 @@ extern "C" fn thunk_SetFileInformationByHandle(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetFileInformationByHandle");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_file = {:?}, file_information_class = {:?}, lp_file_information = {:?}, dw_buffer_size = {:?}" , h_file , file_information_class , lp_file_information , dw_buffer_size );
+        tracing :: trace ! ( "  args = {{h_file = {:?}, file_information_class = {:?}, lp_file_information = {:?}, dw_buffer_size = {:?}}}" , h_file , file_information_class , lp_file_information , dw_buffer_size );
         let res = api.SetFileInformationByHandle(
             h_file,
             file_information_class,
@@ -13352,7 +13241,7 @@ extern "C" fn thunk_SetFileIoOverlappedRange(
         let span = tracing::trace_span!("SetFileIoOverlappedRange");
         let _enter = span.enter();
         tracing::trace!(
-            "file_handle = {:?}, overlapped_range_start = {:?}, length = {:?}",
+            "  args = {{file_handle = {:?}, overlapped_range_start = {:?}, length = {:?}}}",
             file_handle,
             overlapped_range_start,
             length
@@ -13384,7 +13273,7 @@ extern "C" fn thunk_SetFilePointer(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetFilePointer");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_file = {:?}, l_distance_to_move = {:?}, lp_distance_to_move_high = {:?}, dw_move_method = {:?}" , h_file , l_distance_to_move , lp_distance_to_move_high , dw_move_method );
+        tracing :: trace ! ( "  args = {{h_file = {:?}, l_distance_to_move = {:?}, lp_distance_to_move_high = {:?}, dw_move_method = {:?}}}" , h_file , l_distance_to_move , lp_distance_to_move_high , dw_move_method );
         let res = api.SetFilePointer(
             h_file,
             l_distance_to_move,
@@ -13417,7 +13306,7 @@ extern "C" fn thunk_SetFilePointerEx(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetFilePointerEx");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_file = {:?}, li_distance_to_move = {:?}, lp_new_file_pointer = {:?}, dw_move_method = {:?}" , h_file , li_distance_to_move , lp_new_file_pointer , dw_move_method );
+        tracing :: trace ! ( "  args = {{h_file = {:?}, li_distance_to_move = {:?}, lp_new_file_pointer = {:?}, dw_move_method = {:?}}}" , h_file , li_distance_to_move , lp_new_file_pointer , dw_move_method );
         let res = api.SetFilePointerEx(
             h_file,
             li_distance_to_move,
@@ -13448,7 +13337,11 @@ extern "C" fn thunk_SetFileShortNameA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetFileShortNameA");
         let _enter = span.enter();
-        tracing::trace!("h_file = {:?}, lp_short_name = {:?}", h_file, lp_short_name);
+        tracing::trace!(
+            "  args = {{h_file = {:?}, lp_short_name = {:?}}}",
+            h_file,
+            lp_short_name
+        );
         let res = api.SetFileShortNameA(h_file, lp_short_name);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -13474,7 +13367,11 @@ extern "C" fn thunk_SetFileShortNameW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetFileShortNameW");
         let _enter = span.enter();
-        tracing::trace!("h_file = {:?}, lp_short_name = {:?}", h_file, lp_short_name);
+        tracing::trace!(
+            "  args = {{h_file = {:?}, lp_short_name = {:?}}}",
+            h_file,
+            lp_short_name
+        );
         let res = api.SetFileShortNameW(h_file, lp_short_name);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -13499,7 +13396,7 @@ extern "C" fn thunk_SetFileTime(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetFileTime");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_file = {:?}, lp_creation_time = {:?}, lp_last_access_time = {:?}, lp_last_write_time = {:?}" , h_file , lp_creation_time , lp_last_access_time , lp_last_write_time );
+        tracing :: trace ! ( "  args = {{h_file = {:?}, lp_creation_time = {:?}, lp_last_access_time = {:?}, lp_last_write_time = {:?}}}" , h_file , lp_creation_time , lp_last_access_time , lp_last_write_time );
         let res = api.SetFileTime(
             h_file,
             lp_creation_time,
@@ -13531,7 +13428,7 @@ extern "C" fn thunk_SetFileValidData(
         let span = tracing::trace_span!("SetFileValidData");
         let _enter = span.enter();
         tracing::trace!(
-            "h_file = {:?}, valid_data_length = {:?}",
+            "  args = {{h_file = {:?}, valid_data_length = {:?}}}",
             h_file,
             valid_data_length
         );
@@ -13560,7 +13457,11 @@ extern "C" fn thunk_SetIoRingCompletionEvent(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetIoRingCompletionEvent");
         let _enter = span.enter();
-        tracing::trace!("io_ring = {:?}, h_event = {:?}", io_ring, h_event);
+        tracing::trace!(
+            "  args = {{io_ring = {:?}, h_event = {:?}}}",
+            io_ring,
+            h_event
+        );
         let res = api.SetIoRingCompletionEvent(io_ring, h_event);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -13587,7 +13488,7 @@ extern "C" fn thunk_SetResourceManagerCompletionPort(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetResourceManagerCompletionPort");
         let _enter = span.enter();
-        tracing :: trace ! ( "resource_manager_handle = {:?}, io_completion_port_handle = {:?}, completion_key = {:?}" , resource_manager_handle , io_completion_port_handle , completion_key );
+        tracing :: trace ! ( "  args = {{resource_manager_handle = {:?}, io_completion_port_handle = {:?}, completion_key = {:?}}}" , resource_manager_handle , io_completion_port_handle , completion_key );
         let res = api.SetResourceManagerCompletionPort(
             resource_manager_handle,
             io_completion_port_handle,
@@ -13616,7 +13517,7 @@ extern "C" fn thunk_SetSearchPathMode(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetSearchPathMode");
         let _enter = span.enter();
-        tracing::trace!("flags = {:?}", flags);
+        tracing::trace!("  args = {{flags = {:?}}}", flags);
         let res = api.SetSearchPathMode(flags);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -13644,7 +13545,7 @@ extern "C" fn thunk_SetTapeParameters(
         let span = tracing::trace_span!("SetTapeParameters");
         let _enter = span.enter();
         tracing::trace!(
-            "h_device = {:?}, dw_operation = {:?}, lp_tape_information = {:?}",
+            "  args = {{h_device = {:?}, dw_operation = {:?}, lp_tape_information = {:?}}}",
             h_device,
             dw_operation,
             lp_tape_information
@@ -13678,7 +13579,7 @@ extern "C" fn thunk_SetTapePosition(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetTapePosition");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_device = {:?}, dw_position_method = {:?}, dw_partition = {:?}, dw_offset_low = {:?}, dw_offset_high = {:?}, b_immediate = {:?}" , h_device , dw_position_method , dw_partition , dw_offset_low , dw_offset_high , b_immediate );
+        tracing :: trace ! ( "  args = {{h_device = {:?}, dw_position_method = {:?}, dw_partition = {:?}, dw_offset_low = {:?}, dw_offset_high = {:?}, b_immediate = {:?}}}" , h_device , dw_position_method , dw_partition , dw_offset_low , dw_offset_high , b_immediate );
         let res = api.SetTapePosition(
             h_device,
             dw_position_method,
@@ -13714,7 +13615,7 @@ extern "C" fn thunk_SetTransactionInformation(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetTransactionInformation");
         let _enter = span.enter();
-        tracing :: trace ! ( "transaction_handle = {:?}, isolation_level = {:?}, isolation_flags = {:?}, timeout = {:?}, description = {:?}" , transaction_handle , isolation_level , isolation_flags , timeout , description );
+        tracing :: trace ! ( "  args = {{transaction_handle = {:?}, isolation_level = {:?}, isolation_flags = {:?}, timeout = {:?}, description = {:?}}}" , transaction_handle , isolation_level , isolation_flags , timeout , description );
         let res = api.SetTransactionInformation(
             transaction_handle,
             isolation_level,
@@ -13747,7 +13648,7 @@ extern "C" fn thunk_SetVolumeLabelA(
         let span = tracing::trace_span!("SetVolumeLabelA");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_root_path_name = {:?}, lp_volume_name = {:?}",
+            "  args = {{lp_root_path_name = {:?}, lp_volume_name = {:?}}}",
             lp_root_path_name,
             lp_volume_name
         );
@@ -13777,7 +13678,7 @@ extern "C" fn thunk_SetVolumeLabelW(
         let span = tracing::trace_span!("SetVolumeLabelW");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_root_path_name = {:?}, lp_volume_name = {:?}",
+            "  args = {{lp_root_path_name = {:?}, lp_volume_name = {:?}}}",
             lp_root_path_name,
             lp_volume_name
         );
@@ -13807,7 +13708,7 @@ extern "C" fn thunk_SetVolumeMountPointA(
         let span = tracing::trace_span!("SetVolumeMountPointA");
         let _enter = span.enter();
         tracing::trace!(
-            "lpsz_volume_mount_point = {:?}, lpsz_volume_name = {:?}",
+            "  args = {{lpsz_volume_mount_point = {:?}, lpsz_volume_name = {:?}}}",
             lpsz_volume_mount_point,
             lpsz_volume_name
         );
@@ -13837,7 +13738,7 @@ extern "C" fn thunk_SetVolumeMountPointW(
         let span = tracing::trace_span!("SetVolumeMountPointW");
         let _enter = span.enter();
         tracing::trace!(
-            "lpsz_volume_mount_point = {:?}, lpsz_volume_name = {:?}",
+            "  args = {{lpsz_volume_mount_point = {:?}, lpsz_volume_name = {:?}}}",
             lpsz_volume_mount_point,
             lpsz_volume_name
         );
@@ -13867,7 +13768,7 @@ extern "C" fn thunk_SinglePhaseReject(
         let span = tracing::trace_span!("SinglePhaseReject");
         let _enter = span.enter();
         tracing::trace!(
-            "enlistment_handle = {:?}, tm_virtual_clock = {:?}",
+            "  args = {{enlistment_handle = {:?}, tm_virtual_clock = {:?}}}",
             enlistment_handle,
             tm_virtual_clock
         );
@@ -13895,13 +13796,7 @@ extern "C" fn thunk_SubmitIoRing(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SubmitIoRing");
         let _enter = span.enter();
-        tracing::trace!(
-            "io_ring = {:?}, wait_operations = {:?}, milliseconds = {:?}, submitted_entries = {:?}",
-            io_ring,
-            wait_operations,
-            milliseconds,
-            submitted_entries
-        );
+        tracing :: trace ! ( "  args = {{io_ring = {:?}, wait_operations = {:?}, milliseconds = {:?}, submitted_entries = {:?}}}" , io_ring , wait_operations , milliseconds , submitted_entries );
         let res = api.SubmitIoRing(io_ring, wait_operations, milliseconds, submitted_entries);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -13926,7 +13821,7 @@ extern "C" fn thunk_TxfGetThreadMiniVersionForCreate(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("TxfGetThreadMiniVersionForCreate");
         let _enter = span.enter();
-        tracing::trace!("mini_version = {:?}", mini_version);
+        tracing::trace!("  args = {{mini_version = {:?}}}", mini_version);
         let res = api.TxfGetThreadMiniVersionForCreate(mini_version);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -13955,7 +13850,7 @@ extern "C" fn thunk_TxfLogCreateFileReadContext(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("TxfLogCreateFileReadContext");
         let _enter = span.enter();
-        tracing :: trace ! ( "log_path = {:?}, beginning_lsn = {:?}, ending_lsn = {:?}, txf_file_id = {:?}, txf_log_context = {:?}" , log_path , beginning_lsn , ending_lsn , txf_file_id , txf_log_context );
+        tracing :: trace ! ( "  args = {{log_path = {:?}, beginning_lsn = {:?}, ending_lsn = {:?}, txf_file_id = {:?}, txf_log_context = {:?}}}" , log_path , beginning_lsn , ending_lsn , txf_file_id , txf_log_context );
         let res = api.TxfLogCreateFileReadContext(
             log_path,
             beginning_lsn,
@@ -13992,7 +13887,7 @@ extern "C" fn thunk_TxfLogCreateRangeReadContext(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("TxfLogCreateRangeReadContext");
         let _enter = span.enter();
-        tracing :: trace ! ( "log_path = {:?}, beginning_lsn = {:?}, ending_lsn = {:?}, beginning_virtual_clock = {:?}, ending_virtual_clock = {:?}, record_type_mask = {:?}, txf_log_context = {:?}" , log_path , beginning_lsn , ending_lsn , beginning_virtual_clock , ending_virtual_clock , record_type_mask , txf_log_context );
+        tracing :: trace ! ( "  args = {{log_path = {:?}, beginning_lsn = {:?}, ending_lsn = {:?}, beginning_virtual_clock = {:?}, ending_virtual_clock = {:?}, record_type_mask = {:?}, txf_log_context = {:?}}}" , log_path , beginning_lsn , ending_lsn , beginning_virtual_clock , ending_virtual_clock , record_type_mask , txf_log_context );
         let res = api.TxfLogCreateRangeReadContext(
             log_path,
             beginning_lsn,
@@ -14025,7 +13920,7 @@ extern "C" fn thunk_TxfLogDestroyReadContext(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("TxfLogDestroyReadContext");
         let _enter = span.enter();
-        tracing::trace!("txf_log_context = {:?}", txf_log_context);
+        tracing::trace!("  args = {{txf_log_context = {:?}}}", txf_log_context);
         let res = api.TxfLogDestroyReadContext(txf_log_context);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -14054,7 +13949,7 @@ extern "C" fn thunk_TxfLogReadRecords(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("TxfLogReadRecords");
         let _enter = span.enter();
-        tracing :: trace ! ( "txf_log_context = {:?}, buffer_length = {:?}, buffer = {:?}, bytes_used = {:?}, record_count = {:?}" , txf_log_context , buffer_length , buffer , bytes_used , record_count );
+        tracing :: trace ! ( "  args = {{txf_log_context = {:?}, buffer_length = {:?}, buffer = {:?}, bytes_used = {:?}, record_count = {:?}}}" , txf_log_context , buffer_length , buffer , bytes_used , record_count );
         let res = api.TxfLogReadRecords(
             txf_log_context,
             buffer_length,
@@ -14089,7 +13984,7 @@ extern "C" fn thunk_TxfLogRecordGetFileName(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("TxfLogRecordGetFileName");
         let _enter = span.enter();
-        tracing :: trace ! ( "record_buffer = {:?}, record_buffer_length_in_bytes = {:?}, name_buffer = {:?}, name_buffer_length_in_bytes = {:?}, txf_id = {:?}" , record_buffer , record_buffer_length_in_bytes , name_buffer , name_buffer_length_in_bytes , txf_id );
+        tracing :: trace ! ( "  args = {{record_buffer = {:?}, record_buffer_length_in_bytes = {:?}, name_buffer = {:?}, name_buffer_length_in_bytes = {:?}, txf_id = {:?}}}" , record_buffer , record_buffer_length_in_bytes , name_buffer , name_buffer_length_in_bytes , txf_id );
         let res = api.TxfLogRecordGetFileName(
             record_buffer,
             record_buffer_length_in_bytes,
@@ -14123,7 +14018,7 @@ extern "C" fn thunk_TxfLogRecordGetGenericType(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("TxfLogRecordGetGenericType");
         let _enter = span.enter();
-        tracing :: trace ! ( "record_buffer = {:?}, record_buffer_length_in_bytes = {:?}, generic_type = {:?}, virtual_clock = {:?}" , record_buffer , record_buffer_length_in_bytes , generic_type , virtual_clock );
+        tracing :: trace ! ( "  args = {{record_buffer = {:?}, record_buffer_length_in_bytes = {:?}, generic_type = {:?}, virtual_clock = {:?}}}" , record_buffer , record_buffer_length_in_bytes , generic_type , virtual_clock );
         let res = api.TxfLogRecordGetGenericType(
             record_buffer,
             record_buffer_length_in_bytes,
@@ -14157,7 +14052,7 @@ extern "C" fn thunk_TxfReadMetadataInfo(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("TxfReadMetadataInfo");
         let _enter = span.enter();
-        tracing :: trace ! ( "file_handle = {:?}, txf_file_id = {:?}, last_lsn = {:?}, transaction_state = {:?}, locking_transaction = {:?}" , file_handle , txf_file_id , last_lsn , transaction_state , locking_transaction );
+        tracing :: trace ! ( "  args = {{file_handle = {:?}, txf_file_id = {:?}, last_lsn = {:?}, transaction_state = {:?}, locking_transaction = {:?}}}" , file_handle , txf_file_id , last_lsn , transaction_state , locking_transaction );
         let res = api.TxfReadMetadataInfo(
             file_handle,
             txf_file_id,
@@ -14188,7 +14083,7 @@ extern "C" fn thunk_TxfSetThreadMiniVersionForCreate(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("TxfSetThreadMiniVersionForCreate");
         let _enter = span.enter();
-        tracing::trace!("mini_version = {:?}", mini_version);
+        tracing::trace!("  args = {{mini_version = {:?}}}", mini_version);
         let res = api.TxfSetThreadMiniVersionForCreate(mini_version);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -14214,7 +14109,7 @@ extern "C" fn thunk_UnlockFile(context: &mut ExtendedContext, memory: FlatMemory
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("UnlockFile");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_file = {:?}, dw_file_offset_low = {:?}, dw_file_offset_high = {:?}, n_number_of_bytes_to_unlock_low = {:?}, n_number_of_bytes_to_unlock_high = {:?}" , h_file , dw_file_offset_low , dw_file_offset_high , n_number_of_bytes_to_unlock_low , n_number_of_bytes_to_unlock_high );
+        tracing :: trace ! ( "  args = {{h_file = {:?}, dw_file_offset_low = {:?}, dw_file_offset_high = {:?}, n_number_of_bytes_to_unlock_low = {:?}, n_number_of_bytes_to_unlock_high = {:?}}}" , h_file , dw_file_offset_low , dw_file_offset_high , n_number_of_bytes_to_unlock_low , n_number_of_bytes_to_unlock_high );
         let res = api.UnlockFile(
             h_file,
             dw_file_offset_low,
@@ -14246,7 +14141,7 @@ extern "C" fn thunk_UnlockFileEx(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("UnlockFileEx");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_file = {:?}, dw_reserved = {:?}, n_number_of_bytes_to_unlock_low = {:?}, n_number_of_bytes_to_unlock_high = {:?}, lp_overlapped = {:?}" , h_file , dw_reserved , n_number_of_bytes_to_unlock_low , n_number_of_bytes_to_unlock_high , lp_overlapped );
+        tracing :: trace ! ( "  args = {{h_file = {:?}, dw_reserved = {:?}, n_number_of_bytes_to_unlock_low = {:?}, n_number_of_bytes_to_unlock_high = {:?}, lp_overlapped = {:?}}}" , h_file , dw_reserved , n_number_of_bytes_to_unlock_low , n_number_of_bytes_to_unlock_high , lp_overlapped );
         let res = api.UnlockFileEx(
             h_file,
             dw_reserved,
@@ -14281,7 +14176,7 @@ extern "C" fn thunk_VerFindFileA(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("VerFindFileA");
         let _enter = span.enter();
-        tracing :: trace ! ( "u_flags = {:?}, sz_file_name = {:?}, sz_win_dir = {:?}, sz_app_dir = {:?}, sz_cur_dir = {:?}, pu_cur_dir_len = {:?}, sz_dest_dir = {:?}, pu_dest_dir_len = {:?}" , u_flags , sz_file_name , sz_win_dir , sz_app_dir , sz_cur_dir , pu_cur_dir_len , sz_dest_dir , pu_dest_dir_len );
+        tracing :: trace ! ( "  args = {{u_flags = {:?}, sz_file_name = {:?}, sz_win_dir = {:?}, sz_app_dir = {:?}, sz_cur_dir = {:?}, pu_cur_dir_len = {:?}, sz_dest_dir = {:?}, pu_dest_dir_len = {:?}}}" , u_flags , sz_file_name , sz_win_dir , sz_app_dir , sz_cur_dir , pu_cur_dir_len , sz_dest_dir , pu_dest_dir_len );
         let res = api.VerFindFileA(
             u_flags,
             sz_file_name,
@@ -14319,7 +14214,7 @@ extern "C" fn thunk_VerFindFileW(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("VerFindFileW");
         let _enter = span.enter();
-        tracing :: trace ! ( "u_flags = {:?}, sz_file_name = {:?}, sz_win_dir = {:?}, sz_app_dir = {:?}, sz_cur_dir = {:?}, pu_cur_dir_len = {:?}, sz_dest_dir = {:?}, pu_dest_dir_len = {:?}" , u_flags , sz_file_name , sz_win_dir , sz_app_dir , sz_cur_dir , pu_cur_dir_len , sz_dest_dir , pu_dest_dir_len );
+        tracing :: trace ! ( "  args = {{u_flags = {:?}, sz_file_name = {:?}, sz_win_dir = {:?}, sz_app_dir = {:?}, sz_cur_dir = {:?}, pu_cur_dir_len = {:?}, sz_dest_dir = {:?}, pu_dest_dir_len = {:?}}}" , u_flags , sz_file_name , sz_win_dir , sz_app_dir , sz_cur_dir , pu_cur_dir_len , sz_dest_dir , pu_dest_dir_len );
         let res = api.VerFindFileW(
             u_flags,
             sz_file_name,
@@ -14360,7 +14255,7 @@ extern "C" fn thunk_VerInstallFileA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("VerInstallFileA");
         let _enter = span.enter();
-        tracing :: trace ! ( "u_flags = {:?}, sz_src_file_name = {:?}, sz_dest_file_name = {:?}, sz_src_dir = {:?}, sz_dest_dir = {:?}, sz_cur_dir = {:?}, sz_tmp_file = {:?}, pu_tmp_file_len = {:?}" , u_flags , sz_src_file_name , sz_dest_file_name , sz_src_dir , sz_dest_dir , sz_cur_dir , sz_tmp_file , pu_tmp_file_len );
+        tracing :: trace ! ( "  args = {{u_flags = {:?}, sz_src_file_name = {:?}, sz_dest_file_name = {:?}, sz_src_dir = {:?}, sz_dest_dir = {:?}, sz_cur_dir = {:?}, sz_tmp_file = {:?}, pu_tmp_file_len = {:?}}}" , u_flags , sz_src_file_name , sz_dest_file_name , sz_src_dir , sz_dest_dir , sz_cur_dir , sz_tmp_file , pu_tmp_file_len );
         let res = api.VerInstallFileA(
             u_flags,
             sz_src_file_name,
@@ -14401,7 +14296,7 @@ extern "C" fn thunk_VerInstallFileW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("VerInstallFileW");
         let _enter = span.enter();
-        tracing :: trace ! ( "u_flags = {:?}, sz_src_file_name = {:?}, sz_dest_file_name = {:?}, sz_src_dir = {:?}, sz_dest_dir = {:?}, sz_cur_dir = {:?}, sz_tmp_file = {:?}, pu_tmp_file_len = {:?}" , u_flags , sz_src_file_name , sz_dest_file_name , sz_src_dir , sz_dest_dir , sz_cur_dir , sz_tmp_file , pu_tmp_file_len );
+        tracing :: trace ! ( "  args = {{u_flags = {:?}, sz_src_file_name = {:?}, sz_dest_file_name = {:?}, sz_src_dir = {:?}, sz_dest_dir = {:?}, sz_cur_dir = {:?}, sz_tmp_file = {:?}, pu_tmp_file_len = {:?}}}" , u_flags , sz_src_file_name , sz_dest_file_name , sz_src_dir , sz_dest_dir , sz_cur_dir , sz_tmp_file , pu_tmp_file_len );
         let res = api.VerInstallFileW(
             u_flags,
             sz_src_file_name,
@@ -14438,7 +14333,7 @@ extern "C" fn thunk_VerLanguageNameA(
         let span = tracing::trace_span!("VerLanguageNameA");
         let _enter = span.enter();
         tracing::trace!(
-            "w_lang = {:?}, sz_lang = {:?}, cch_lang = {:?}",
+            "  args = {{w_lang = {:?}, sz_lang = {:?}, cch_lang = {:?}}}",
             w_lang,
             sz_lang,
             cch_lang
@@ -14470,7 +14365,7 @@ extern "C" fn thunk_VerLanguageNameW(
         let span = tracing::trace_span!("VerLanguageNameW");
         let _enter = span.enter();
         tracing::trace!(
-            "w_lang = {:?}, sz_lang = {:?}, cch_lang = {:?}",
+            "  args = {{w_lang = {:?}, sz_lang = {:?}, cch_lang = {:?}}}",
             w_lang,
             sz_lang,
             cch_lang
@@ -14503,7 +14398,7 @@ extern "C" fn thunk_VerQueryValueA(
         let span = tracing::trace_span!("VerQueryValueA");
         let _enter = span.enter();
         tracing::trace!(
-            "p_block = {:?}, lp_sub_block = {:?}, lplp_buffer = {:?}, pu_len = {:?}",
+            "  args = {{p_block = {:?}, lp_sub_block = {:?}, lplp_buffer = {:?}, pu_len = {:?}}}",
             p_block,
             lp_sub_block,
             lplp_buffer,
@@ -14537,7 +14432,7 @@ extern "C" fn thunk_VerQueryValueW(
         let span = tracing::trace_span!("VerQueryValueW");
         let _enter = span.enter();
         tracing::trace!(
-            "p_block = {:?}, lp_sub_block = {:?}, lplp_buffer = {:?}, pu_len = {:?}",
+            "  args = {{p_block = {:?}, lp_sub_block = {:?}, lplp_buffer = {:?}, pu_len = {:?}}}",
             p_block,
             lp_sub_block,
             lplp_buffer,
@@ -14571,7 +14466,7 @@ extern "C" fn thunk_WofEnumEntries(
         let span = tracing::trace_span!("WofEnumEntries");
         let _enter = span.enter();
         tracing::trace!(
-            "volume_name = {:?}, provider = {:?}, enum_proc = {:?}, user_data = {:?}",
+            "  args = {{volume_name = {:?}, provider = {:?}, enum_proc = {:?}, user_data = {:?}}}",
             volume_name,
             provider,
             enum_proc,
@@ -14605,7 +14500,7 @@ extern "C" fn thunk_WofFileEnumFiles(
         let span = tracing::trace_span!("WofFileEnumFiles");
         let _enter = span.enter();
         tracing::trace!(
-            "volume_name = {:?}, algorithm = {:?}, enum_proc = {:?}, user_data = {:?}",
+            "  args = {{volume_name = {:?}, algorithm = {:?}, enum_proc = {:?}, user_data = {:?}}}",
             volume_name,
             algorithm,
             enum_proc,
@@ -14638,7 +14533,7 @@ extern "C" fn thunk_WofGetDriverVersion(
         let span = tracing::trace_span!("WofGetDriverVersion");
         let _enter = span.enter();
         tracing::trace!(
-            "file_or_volume_handle = {:?}, provider = {:?}, wof_version = {:?}",
+            "  args = {{file_or_volume_handle = {:?}, provider = {:?}, wof_version = {:?}}}",
             file_or_volume_handle,
             provider,
             wof_version
@@ -14671,7 +14566,7 @@ extern "C" fn thunk_WofIsExternalFile(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("WofIsExternalFile");
         let _enter = span.enter();
-        tracing :: trace ! ( "file_path = {:?}, is_external_file = {:?}, provider = {:?}, external_file_info = {:?}, buffer_length = {:?}" , file_path , is_external_file , provider , external_file_info , buffer_length );
+        tracing :: trace ! ( "  args = {{file_path = {:?}, is_external_file = {:?}, provider = {:?}, external_file_info = {:?}, buffer_length = {:?}}}" , file_path , is_external_file , provider , external_file_info , buffer_length );
         let res = api.WofIsExternalFile(
             file_path,
             is_external_file,
@@ -14705,13 +14600,7 @@ extern "C" fn thunk_WofSetFileDataLocation(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("WofSetFileDataLocation");
         let _enter = span.enter();
-        tracing::trace!(
-            "file_handle = {:?}, provider = {:?}, external_file_info = {:?}, length = {:?}",
-            file_handle,
-            provider,
-            external_file_info,
-            length
-        );
+        tracing :: trace ! ( "  args = {{file_handle = {:?}, provider = {:?}, external_file_info = {:?}, length = {:?}}}" , file_handle , provider , external_file_info , length );
         let res = api.WofSetFileDataLocation(file_handle, provider, external_file_info, length);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -14737,7 +14626,11 @@ extern "C" fn thunk_WofShouldCompressBinaries(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("WofShouldCompressBinaries");
         let _enter = span.enter();
-        tracing::trace!("volume = {:?}, algorithm = {:?}", volume, algorithm);
+        tracing::trace!(
+            "  args = {{volume = {:?}, algorithm = {:?}}}",
+            volume,
+            algorithm
+        );
         let res = api.WofShouldCompressBinaries(volume, algorithm);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -14766,7 +14659,7 @@ extern "C" fn thunk_WofWimAddEntry(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("WofWimAddEntry");
         let _enter = span.enter();
-        tracing :: trace ! ( "volume_name = {:?}, wim_path = {:?}, wim_type = {:?}, wim_index = {:?}, data_source_id = {:?}" , volume_name , wim_path , wim_type , wim_index , data_source_id );
+        tracing :: trace ! ( "  args = {{volume_name = {:?}, wim_path = {:?}, wim_type = {:?}, wim_index = {:?}, data_source_id = {:?}}}" , volume_name , wim_path , wim_type , wim_index , data_source_id );
         let res = api.WofWimAddEntry(volume_name, wim_path, wim_type, wim_index, data_source_id);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -14794,13 +14687,7 @@ extern "C" fn thunk_WofWimEnumFiles(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("WofWimEnumFiles");
         let _enter = span.enter();
-        tracing::trace!(
-            "volume_name = {:?}, data_source_id = {:?}, enum_proc = {:?}, user_data = {:?}",
-            volume_name,
-            data_source_id,
-            enum_proc,
-            user_data
-        );
+        tracing :: trace ! ( "  args = {{volume_name = {:?}, data_source_id = {:?}, enum_proc = {:?}, user_data = {:?}}}" , volume_name , data_source_id , enum_proc , user_data );
         let res = api.WofWimEnumFiles(volume_name, data_source_id, enum_proc, user_data);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -14827,7 +14714,7 @@ extern "C" fn thunk_WofWimRemoveEntry(
         let span = tracing::trace_span!("WofWimRemoveEntry");
         let _enter = span.enter();
         tracing::trace!(
-            "volume_name = {:?}, data_source_id = {:?}",
+            "  args = {{volume_name = {:?}, data_source_id = {:?}}}",
             volume_name,
             data_source_id
         );
@@ -14857,7 +14744,7 @@ extern "C" fn thunk_WofWimSuspendEntry(
         let span = tracing::trace_span!("WofWimSuspendEntry");
         let _enter = span.enter();
         tracing::trace!(
-            "volume_name = {:?}, data_source_id = {:?}",
+            "  args = {{volume_name = {:?}, data_source_id = {:?}}}",
             volume_name,
             data_source_id
         );
@@ -14888,7 +14775,7 @@ extern "C" fn thunk_WofWimUpdateEntry(
         let span = tracing::trace_span!("WofWimUpdateEntry");
         let _enter = span.enter();
         tracing::trace!(
-            "volume_name = {:?}, data_source_id = {:?}, new_wim_path = {:?}",
+            "  args = {{volume_name = {:?}, data_source_id = {:?}, new_wim_path = {:?}}}",
             volume_name,
             data_source_id,
             new_wim_path
@@ -14917,7 +14804,7 @@ extern "C" fn thunk_Wow64DisableWow64FsRedirection(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("Wow64DisableWow64FsRedirection");
         let _enter = span.enter();
-        tracing::trace!("old_value = {:?}", old_value);
+        tracing::trace!("  args = {{old_value = {:?}}}", old_value);
         let res = api.Wow64DisableWow64FsRedirection(old_value);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -14943,7 +14830,7 @@ extern "C" fn thunk_Wow64EnableWow64FsRedirection(
         let span = tracing::trace_span!("Wow64EnableWow64FsRedirection");
         let _enter = span.enter();
         tracing::trace!(
-            "wow_64_fs_enable_redirection = {:?}",
+            "  args = {{wow_64_fs_enable_redirection = {:?}}}",
             wow_64_fs_enable_redirection
         );
         let res = api.Wow64EnableWow64FsRedirection(wow_64_fs_enable_redirection);
@@ -14970,7 +14857,7 @@ extern "C" fn thunk_Wow64RevertWow64FsRedirection(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("Wow64RevertWow64FsRedirection");
         let _enter = span.enter();
-        tracing::trace!("ol_value = {:?}", ol_value);
+        tracing::trace!("  args = {{ol_value = {:?}}}", ol_value);
         let res = api.Wow64RevertWow64FsRedirection(ol_value);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -14998,7 +14885,7 @@ extern "C" fn thunk_WriteEncryptedFileRaw(
         let span = tracing::trace_span!("WriteEncryptedFileRaw");
         let _enter = span.enter();
         tracing::trace!(
-            "pf_import_callback = {:?}, pv_callback_context = {:?}, pv_context = {:?}",
+            "  args = {{pf_import_callback = {:?}, pv_callback_context = {:?}, pv_context = {:?}}}",
             pf_import_callback,
             pv_callback_context,
             pv_context
@@ -15028,7 +14915,7 @@ extern "C" fn thunk_WriteFile(context: &mut ExtendedContext, memory: FlatMemoryC
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("WriteFile");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_file = {:?}, lp_buffer = {:?}, n_number_of_bytes_to_write = {:?}, lp_number_of_bytes_written = {:?}, lp_overlapped = {:?}" , h_file , lp_buffer , n_number_of_bytes_to_write , lp_number_of_bytes_written , lp_overlapped );
+        tracing :: trace ! ( "  args = {{h_file = {:?}, lp_buffer = {:?}, n_number_of_bytes_to_write = {:?}, lp_number_of_bytes_written = {:?}, lp_overlapped = {:?}}}" , h_file , lp_buffer , n_number_of_bytes_to_write , lp_number_of_bytes_written , lp_overlapped );
         let res = api.WriteFile(
             h_file,
             lp_buffer,
@@ -15060,7 +14947,7 @@ extern "C" fn thunk_WriteFileEx(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("WriteFileEx");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_file = {:?}, lp_buffer = {:?}, n_number_of_bytes_to_write = {:?}, lp_overlapped = {:?}, lp_completion_routine = {:?}" , h_file , lp_buffer , n_number_of_bytes_to_write , lp_overlapped , lp_completion_routine );
+        tracing :: trace ! ( "  args = {{h_file = {:?}, lp_buffer = {:?}, n_number_of_bytes_to_write = {:?}, lp_overlapped = {:?}, lp_completion_routine = {:?}}}" , h_file , lp_buffer , n_number_of_bytes_to_write , lp_overlapped , lp_completion_routine );
         let res = api.WriteFileEx(
             h_file,
             lp_buffer,
@@ -15095,7 +14982,7 @@ extern "C" fn thunk_WriteFileGather(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("WriteFileGather");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_file = {:?}, a_segment_array = {:?}, n_number_of_bytes_to_write = {:?}, lp_reserved = {:?}, lp_overlapped = {:?}" , h_file , a_segment_array , n_number_of_bytes_to_write , lp_reserved , lp_overlapped );
+        tracing :: trace ! ( "  args = {{h_file = {:?}, a_segment_array = {:?}, n_number_of_bytes_to_write = {:?}, lp_reserved = {:?}, lp_overlapped = {:?}}}" , h_file , a_segment_array , n_number_of_bytes_to_write , lp_reserved , lp_overlapped );
         let res = api.WriteFileGather(
             h_file,
             a_segment_array,
@@ -15126,7 +15013,7 @@ extern "C" fn thunk_WriteTapemark(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("WriteTapemark");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_device = {:?}, dw_tapemark_type = {:?}, dw_tapemark_count = {:?}, b_immediate = {:?}" , h_device , dw_tapemark_type , dw_tapemark_count , b_immediate );
+        tracing :: trace ! ( "  args = {{h_device = {:?}, dw_tapemark_type = {:?}, dw_tapemark_count = {:?}, b_immediate = {:?}}}" , h_device , dw_tapemark_type , dw_tapemark_count , b_immediate );
         let res = api.WriteTapemark(h_device, dw_tapemark_type, dw_tapemark_count, b_immediate);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -15154,7 +15041,7 @@ extern "C" fn thunk_AddConsoleAliasA(
         let span = tracing::trace_span!("AddConsoleAliasA");
         let _enter = span.enter();
         tracing::trace!(
-            "source = {:?}, target = {:?}, exe_name = {:?}",
+            "  args = {{source = {:?}, target = {:?}, exe_name = {:?}}}",
             source,
             target,
             exe_name
@@ -15186,7 +15073,7 @@ extern "C" fn thunk_AddConsoleAliasW(
         let span = tracing::trace_span!("AddConsoleAliasW");
         let _enter = span.enter();
         tracing::trace!(
-            "source = {:?}, target = {:?}, exe_name = {:?}",
+            "  args = {{source = {:?}, target = {:?}, exe_name = {:?}}}",
             source,
             target,
             exe_name
@@ -15211,7 +15098,7 @@ extern "C" fn thunk_AllocConsole(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("AllocConsole");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.AllocConsole();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -15233,7 +15120,7 @@ extern "C" fn thunk_AttachConsole(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("AttachConsole");
         let _enter = span.enter();
-        tracing::trace!("dw_process_id = {:?}", dw_process_id);
+        tracing::trace!("  args = {{dw_process_id = {:?}}}", dw_process_id);
         let res = api.AttachConsole(dw_process_id);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -15258,7 +15145,7 @@ extern "C" fn thunk_ClosePseudoConsole(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ClosePseudoConsole");
         let _enter = span.enter();
-        tracing::trace!("h_pc = {:?}", h_pc);
+        tracing::trace!("  args = {{h_pc = {:?}}}", h_pc);
         let res = api.ClosePseudoConsole(h_pc);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -15287,14 +15174,7 @@ extern "C" fn thunk_CreatePseudoConsole(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CreatePseudoConsole");
         let _enter = span.enter();
-        tracing::trace!(
-            "size = {:?}, h_input = {:?}, h_output = {:?}, dw_flags = {:?}, ph_pc = {:?}",
-            size,
-            h_input,
-            h_output,
-            dw_flags,
-            ph_pc
-        );
+        tracing :: trace ! ( "  args = {{size = {:?}, h_input = {:?}, h_output = {:?}, dw_flags = {:?}, ph_pc = {:?}}}" , size , h_input , h_output , dw_flags , ph_pc );
         let res = api.CreatePseudoConsole(size, h_input, h_output, dw_flags, ph_pc);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -15319,7 +15199,7 @@ extern "C" fn thunk_ExpungeConsoleCommandHistoryA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ExpungeConsoleCommandHistoryA");
         let _enter = span.enter();
-        tracing::trace!("exe_name = {:?}", exe_name);
+        tracing::trace!("  args = {{exe_name = {:?}}}", exe_name);
         let res = api.ExpungeConsoleCommandHistoryA(exe_name);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -15344,7 +15224,7 @@ extern "C" fn thunk_ExpungeConsoleCommandHistoryW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ExpungeConsoleCommandHistoryW");
         let _enter = span.enter();
-        tracing::trace!("exe_name = {:?}", exe_name);
+        tracing::trace!("  args = {{exe_name = {:?}}}", exe_name);
         let res = api.ExpungeConsoleCommandHistoryW(exe_name);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -15373,7 +15253,7 @@ extern "C" fn thunk_FillConsoleOutputAttribute(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("FillConsoleOutputAttribute");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_console_output = {:?}, w_attribute = {:?}, n_length = {:?}, dw_write_coord = {:?}, lp_number_of_attrs_written = {:?}" , h_console_output , w_attribute , n_length , dw_write_coord , lp_number_of_attrs_written );
+        tracing :: trace ! ( "  args = {{h_console_output = {:?}, w_attribute = {:?}, n_length = {:?}, dw_write_coord = {:?}, lp_number_of_attrs_written = {:?}}}" , h_console_output , w_attribute , n_length , dw_write_coord , lp_number_of_attrs_written );
         let res = api.FillConsoleOutputAttribute(
             h_console_output,
             w_attribute,
@@ -15408,7 +15288,7 @@ extern "C" fn thunk_FillConsoleOutputCharacterA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("FillConsoleOutputCharacterA");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_console_output = {:?}, c_character = {:?}, n_length = {:?}, dw_write_coord = {:?}, lp_number_of_chars_written = {:?}" , h_console_output , c_character , n_length , dw_write_coord , lp_number_of_chars_written );
+        tracing :: trace ! ( "  args = {{h_console_output = {:?}, c_character = {:?}, n_length = {:?}, dw_write_coord = {:?}, lp_number_of_chars_written = {:?}}}" , h_console_output , c_character , n_length , dw_write_coord , lp_number_of_chars_written );
         let res = api.FillConsoleOutputCharacterA(
             h_console_output,
             c_character,
@@ -15443,7 +15323,7 @@ extern "C" fn thunk_FillConsoleOutputCharacterW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("FillConsoleOutputCharacterW");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_console_output = {:?}, c_character = {:?}, n_length = {:?}, dw_write_coord = {:?}, lp_number_of_chars_written = {:?}" , h_console_output , c_character , n_length , dw_write_coord , lp_number_of_chars_written );
+        tracing :: trace ! ( "  args = {{h_console_output = {:?}, c_character = {:?}, n_length = {:?}, dw_write_coord = {:?}, lp_number_of_chars_written = {:?}}}" , h_console_output , c_character , n_length , dw_write_coord , lp_number_of_chars_written );
         let res = api.FillConsoleOutputCharacterW(
             h_console_output,
             c_character,
@@ -15474,7 +15354,7 @@ extern "C" fn thunk_FlushConsoleInputBuffer(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("FlushConsoleInputBuffer");
         let _enter = span.enter();
-        tracing::trace!("h_console_input = {:?}", h_console_input);
+        tracing::trace!("  args = {{h_console_input = {:?}}}", h_console_input);
         let res = api.FlushConsoleInputBuffer(h_console_input);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -15495,7 +15375,7 @@ extern "C" fn thunk_FreeConsole(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("FreeConsole");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.FreeConsole();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -15522,7 +15402,7 @@ extern "C" fn thunk_GenerateConsoleCtrlEvent(
         let span = tracing::trace_span!("GenerateConsoleCtrlEvent");
         let _enter = span.enter();
         tracing::trace!(
-            "dw_ctrl_event = {:?}, dw_process_group_id = {:?}",
+            "  args = {{dw_ctrl_event = {:?}, dw_process_group_id = {:?}}}",
             dw_ctrl_event,
             dw_process_group_id
         );
@@ -15553,13 +15433,7 @@ extern "C" fn thunk_GetConsoleAliasA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetConsoleAliasA");
         let _enter = span.enter();
-        tracing::trace!(
-            "source = {:?}, target_buffer = {:?}, target_buffer_length = {:?}, exe_name = {:?}",
-            source,
-            target_buffer,
-            target_buffer_length,
-            exe_name
-        );
+        tracing :: trace ! ( "  args = {{source = {:?}, target_buffer = {:?}, target_buffer_length = {:?}, exe_name = {:?}}}" , source , target_buffer , target_buffer_length , exe_name );
         let res = api.GetConsoleAliasA(source, target_buffer, target_buffer_length, exe_name);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -15586,7 +15460,7 @@ extern "C" fn thunk_GetConsoleAliasExesA(
         let span = tracing::trace_span!("GetConsoleAliasExesA");
         let _enter = span.enter();
         tracing::trace!(
-            "exe_name_buffer = {:?}, exe_name_buffer_length = {:?}",
+            "  args = {{exe_name_buffer = {:?}, exe_name_buffer_length = {:?}}}",
             exe_name_buffer,
             exe_name_buffer_length
         );
@@ -15613,7 +15487,7 @@ extern "C" fn thunk_GetConsoleAliasExesLengthA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetConsoleAliasExesLengthA");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.GetConsoleAliasExesLengthA();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -15637,7 +15511,7 @@ extern "C" fn thunk_GetConsoleAliasExesLengthW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetConsoleAliasExesLengthW");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.GetConsoleAliasExesLengthW();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -15664,7 +15538,7 @@ extern "C" fn thunk_GetConsoleAliasExesW(
         let span = tracing::trace_span!("GetConsoleAliasExesW");
         let _enter = span.enter();
         tracing::trace!(
-            "exe_name_buffer = {:?}, exe_name_buffer_length = {:?}",
+            "  args = {{exe_name_buffer = {:?}, exe_name_buffer_length = {:?}}}",
             exe_name_buffer,
             exe_name_buffer_length
         );
@@ -15695,13 +15569,7 @@ extern "C" fn thunk_GetConsoleAliasW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetConsoleAliasW");
         let _enter = span.enter();
-        tracing::trace!(
-            "source = {:?}, target_buffer = {:?}, target_buffer_length = {:?}, exe_name = {:?}",
-            source,
-            target_buffer,
-            target_buffer_length,
-            exe_name
-        );
+        tracing :: trace ! ( "  args = {{source = {:?}, target_buffer = {:?}, target_buffer_length = {:?}, exe_name = {:?}}}" , source , target_buffer , target_buffer_length , exe_name );
         let res = api.GetConsoleAliasW(source, target_buffer, target_buffer_length, exe_name);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -15729,7 +15597,7 @@ extern "C" fn thunk_GetConsoleAliasesA(
         let span = tracing::trace_span!("GetConsoleAliasesA");
         let _enter = span.enter();
         tracing::trace!(
-            "alias_buffer = {:?}, alias_buffer_length = {:?}, exe_name = {:?}",
+            "  args = {{alias_buffer = {:?}, alias_buffer_length = {:?}, exe_name = {:?}}}",
             alias_buffer,
             alias_buffer_length,
             exe_name
@@ -15758,7 +15626,7 @@ extern "C" fn thunk_GetConsoleAliasesLengthA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetConsoleAliasesLengthA");
         let _enter = span.enter();
-        tracing::trace!("exe_name = {:?}", exe_name);
+        tracing::trace!("  args = {{exe_name = {:?}}}", exe_name);
         let res = api.GetConsoleAliasesLengthA(exe_name);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -15783,7 +15651,7 @@ extern "C" fn thunk_GetConsoleAliasesLengthW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetConsoleAliasesLengthW");
         let _enter = span.enter();
-        tracing::trace!("exe_name = {:?}", exe_name);
+        tracing::trace!("  args = {{exe_name = {:?}}}", exe_name);
         let res = api.GetConsoleAliasesLengthW(exe_name);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -15811,7 +15679,7 @@ extern "C" fn thunk_GetConsoleAliasesW(
         let span = tracing::trace_span!("GetConsoleAliasesW");
         let _enter = span.enter();
         tracing::trace!(
-            "alias_buffer = {:?}, alias_buffer_length = {:?}, exe_name = {:?}",
+            "  args = {{alias_buffer = {:?}, alias_buffer_length = {:?}, exe_name = {:?}}}",
             alias_buffer,
             alias_buffer_length,
             exe_name
@@ -15836,7 +15704,7 @@ extern "C" fn thunk_GetConsoleCP(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetConsoleCP");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.GetConsoleCP();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -15864,7 +15732,7 @@ extern "C" fn thunk_GetConsoleCommandHistoryA(
         let span = tracing::trace_span!("GetConsoleCommandHistoryA");
         let _enter = span.enter();
         tracing::trace!(
-            "commands = {:?}, command_buffer_length = {:?}, exe_name = {:?}",
+            "  args = {{commands = {:?}, command_buffer_length = {:?}, exe_name = {:?}}}",
             commands,
             command_buffer_length,
             exe_name
@@ -15893,7 +15761,7 @@ extern "C" fn thunk_GetConsoleCommandHistoryLengthA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetConsoleCommandHistoryLengthA");
         let _enter = span.enter();
-        tracing::trace!("exe_name = {:?}", exe_name);
+        tracing::trace!("  args = {{exe_name = {:?}}}", exe_name);
         let res = api.GetConsoleCommandHistoryLengthA(exe_name);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -15918,7 +15786,7 @@ extern "C" fn thunk_GetConsoleCommandHistoryLengthW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetConsoleCommandHistoryLengthW");
         let _enter = span.enter();
-        tracing::trace!("exe_name = {:?}", exe_name);
+        tracing::trace!("  args = {{exe_name = {:?}}}", exe_name);
         let res = api.GetConsoleCommandHistoryLengthW(exe_name);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -15946,7 +15814,7 @@ extern "C" fn thunk_GetConsoleCommandHistoryW(
         let span = tracing::trace_span!("GetConsoleCommandHistoryW");
         let _enter = span.enter();
         tracing::trace!(
-            "commands = {:?}, command_buffer_length = {:?}, exe_name = {:?}",
+            "  args = {{commands = {:?}, command_buffer_length = {:?}, exe_name = {:?}}}",
             commands,
             command_buffer_length,
             exe_name
@@ -15977,7 +15845,7 @@ extern "C" fn thunk_GetConsoleCursorInfo(
         let span = tracing::trace_span!("GetConsoleCursorInfo");
         let _enter = span.enter();
         tracing::trace!(
-            "h_console_output = {:?}, lp_console_cursor_info = {:?}",
+            "  args = {{h_console_output = {:?}, lp_console_cursor_info = {:?}}}",
             h_console_output,
             lp_console_cursor_info
         );
@@ -16005,7 +15873,7 @@ extern "C" fn thunk_GetConsoleDisplayMode(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetConsoleDisplayMode");
         let _enter = span.enter();
-        tracing::trace!("lp_mode_flags = {:?}", lp_mode_flags);
+        tracing::trace!("  args = {{lp_mode_flags = {:?}}}", lp_mode_flags);
         let res = api.GetConsoleDisplayMode(lp_mode_flags);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -16030,7 +15898,10 @@ extern "C" fn thunk_GetConsoleHistoryInfo(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetConsoleHistoryInfo");
         let _enter = span.enter();
-        tracing::trace!("lp_console_history_info = {:?}", lp_console_history_info);
+        tracing::trace!(
+            "  args = {{lp_console_history_info = {:?}}}",
+            lp_console_history_info
+        );
         let res = api.GetConsoleHistoryInfo(lp_console_history_info);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -16057,7 +15928,7 @@ extern "C" fn thunk_GetConsoleMode(
         let span = tracing::trace_span!("GetConsoleMode");
         let _enter = span.enter();
         tracing::trace!(
-            "h_console_handle = {:?}, lp_mode = {:?}",
+            "  args = {{h_console_handle = {:?}, lp_mode = {:?}}}",
             h_console_handle,
             lp_mode
         );
@@ -16087,7 +15958,7 @@ extern "C" fn thunk_GetConsoleOriginalTitleA(
         let span = tracing::trace_span!("GetConsoleOriginalTitleA");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_console_title = {:?}, n_size = {:?}",
+            "  args = {{lp_console_title = {:?}, n_size = {:?}}}",
             lp_console_title,
             n_size
         );
@@ -16117,7 +15988,7 @@ extern "C" fn thunk_GetConsoleOriginalTitleW(
         let span = tracing::trace_span!("GetConsoleOriginalTitleW");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_console_title = {:?}, n_size = {:?}",
+            "  args = {{lp_console_title = {:?}, n_size = {:?}}}",
             lp_console_title,
             n_size
         );
@@ -16144,7 +16015,7 @@ extern "C" fn thunk_GetConsoleOutputCP(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetConsoleOutputCP");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.GetConsoleOutputCP();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -16171,7 +16042,7 @@ extern "C" fn thunk_GetConsoleProcessList(
         let span = tracing::trace_span!("GetConsoleProcessList");
         let _enter = span.enter();
         tracing::trace!(
-            "lpdw_process_list = {:?}, dw_process_count = {:?}",
+            "  args = {{lpdw_process_list = {:?}, dw_process_count = {:?}}}",
             lpdw_process_list,
             dw_process_count
         );
@@ -16201,7 +16072,7 @@ extern "C" fn thunk_GetConsoleScreenBufferInfo(
         let span = tracing::trace_span!("GetConsoleScreenBufferInfo");
         let _enter = span.enter();
         tracing::trace!(
-            "h_console_output = {:?}, lp_console_screen_buffer_info = {:?}",
+            "  args = {{h_console_output = {:?}, lp_console_screen_buffer_info = {:?}}}",
             h_console_output,
             lp_console_screen_buffer_info
         );
@@ -16231,7 +16102,7 @@ extern "C" fn thunk_GetConsoleScreenBufferInfoEx(
         let span = tracing::trace_span!("GetConsoleScreenBufferInfoEx");
         let _enter = span.enter();
         tracing::trace!(
-            "h_console_output = {:?}, lp_console_screen_buffer_info_ex = {:?}",
+            "  args = {{h_console_output = {:?}, lp_console_screen_buffer_info_ex = {:?}}}",
             h_console_output,
             lp_console_screen_buffer_info_ex
         );
@@ -16261,7 +16132,7 @@ extern "C" fn thunk_GetConsoleSelectionInfo(
         let span = tracing::trace_span!("GetConsoleSelectionInfo");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_console_selection_info = {:?}",
+            "  args = {{lp_console_selection_info = {:?}}}",
             lp_console_selection_info
         );
         let res = api.GetConsoleSelectionInfo(lp_console_selection_info);
@@ -16290,7 +16161,7 @@ extern "C" fn thunk_GetConsoleTitleA(
         let span = tracing::trace_span!("GetConsoleTitleA");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_console_title = {:?}, n_size = {:?}",
+            "  args = {{lp_console_title = {:?}, n_size = {:?}}}",
             lp_console_title,
             n_size
         );
@@ -16320,7 +16191,7 @@ extern "C" fn thunk_GetConsoleTitleW(
         let span = tracing::trace_span!("GetConsoleTitleW");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_console_title = {:?}, n_size = {:?}",
+            "  args = {{lp_console_title = {:?}, n_size = {:?}}}",
             lp_console_title,
             n_size
         );
@@ -16347,7 +16218,7 @@ extern "C" fn thunk_GetConsoleWindow(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetConsoleWindow");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.GetConsoleWindow();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -16374,12 +16245,7 @@ extern "C" fn thunk_GetCurrentConsoleFont(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetCurrentConsoleFont");
         let _enter = span.enter();
-        tracing::trace!(
-            "h_console_output = {:?}, b_maximum_window = {:?}, lp_console_current_font = {:?}",
-            h_console_output,
-            b_maximum_window,
-            lp_console_current_font
-        );
+        tracing :: trace ! ( "  args = {{h_console_output = {:?}, b_maximum_window = {:?}, lp_console_current_font = {:?}}}" , h_console_output , b_maximum_window , lp_console_current_font );
         let res =
             api.GetCurrentConsoleFont(h_console_output, b_maximum_window, lp_console_current_font);
         tracing::trace!("result = {:?}", res);
@@ -16407,12 +16273,7 @@ extern "C" fn thunk_GetCurrentConsoleFontEx(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetCurrentConsoleFontEx");
         let _enter = span.enter();
-        tracing::trace!(
-            "h_console_output = {:?}, b_maximum_window = {:?}, lp_console_current_font_ex = {:?}",
-            h_console_output,
-            b_maximum_window,
-            lp_console_current_font_ex
-        );
+        tracing :: trace ! ( "  args = {{h_console_output = {:?}, b_maximum_window = {:?}, lp_console_current_font_ex = {:?}}}" , h_console_output , b_maximum_window , lp_console_current_font_ex );
         let res = api.GetCurrentConsoleFontEx(
             h_console_output,
             b_maximum_window,
@@ -16443,7 +16304,7 @@ extern "C" fn thunk_GetNumberOfConsoleInputEvents(
         let span = tracing::trace_span!("GetNumberOfConsoleInputEvents");
         let _enter = span.enter();
         tracing::trace!(
-            "h_console_input = {:?}, lp_number_of_events = {:?}",
+            "  args = {{h_console_input = {:?}, lp_number_of_events = {:?}}}",
             h_console_input,
             lp_number_of_events
         );
@@ -16472,7 +16333,7 @@ extern "C" fn thunk_GetNumberOfConsoleMouseButtons(
         let span = tracing::trace_span!("GetNumberOfConsoleMouseButtons");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_number_of_mouse_buttons = {:?}",
+            "  args = {{lp_number_of_mouse_buttons = {:?}}}",
             lp_number_of_mouse_buttons
         );
         let res = api.GetNumberOfConsoleMouseButtons(lp_number_of_mouse_buttons);
@@ -16496,7 +16357,7 @@ extern "C" fn thunk_GetStdHandle(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetStdHandle");
         let _enter = span.enter();
-        tracing::trace!("n_std_handle = {:?}", n_std_handle);
+        tracing::trace!("  args = {{n_std_handle = {:?}}}", n_std_handle);
         let res = api.GetStdHandle(n_std_handle);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -16524,7 +16385,7 @@ extern "C" fn thunk_PeekConsoleInputA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("PeekConsoleInputA");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_console_input = {:?}, lp_buffer = {:?}, n_length = {:?}, lp_number_of_events_read = {:?}" , h_console_input , lp_buffer , n_length , lp_number_of_events_read );
+        tracing :: trace ! ( "  args = {{h_console_input = {:?}, lp_buffer = {:?}, n_length = {:?}, lp_number_of_events_read = {:?}}}" , h_console_input , lp_buffer , n_length , lp_number_of_events_read );
         let res = api.PeekConsoleInputA(
             h_console_input,
             lp_buffer,
@@ -16557,7 +16418,7 @@ extern "C" fn thunk_PeekConsoleInputW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("PeekConsoleInputW");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_console_input = {:?}, lp_buffer = {:?}, n_length = {:?}, lp_number_of_events_read = {:?}" , h_console_input , lp_buffer , n_length , lp_number_of_events_read );
+        tracing :: trace ! ( "  args = {{h_console_input = {:?}, lp_buffer = {:?}, n_length = {:?}, lp_number_of_events_read = {:?}}}" , h_console_input , lp_buffer , n_length , lp_number_of_events_read );
         let res = api.PeekConsoleInputW(
             h_console_input,
             lp_buffer,
@@ -16588,7 +16449,7 @@ extern "C" fn thunk_ReadConsoleA(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ReadConsoleA");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_console_input = {:?}, lp_buffer = {:?}, n_number_of_chars_to_read = {:?}, lp_number_of_chars_read = {:?}, p_input_control = {:?}" , h_console_input , lp_buffer , n_number_of_chars_to_read , lp_number_of_chars_read , p_input_control );
+        tracing :: trace ! ( "  args = {{h_console_input = {:?}, lp_buffer = {:?}, n_number_of_chars_to_read = {:?}, lp_number_of_chars_read = {:?}, p_input_control = {:?}}}" , h_console_input , lp_buffer , n_number_of_chars_to_read , lp_number_of_chars_read , p_input_control );
         let res = api.ReadConsoleA(
             h_console_input,
             lp_buffer,
@@ -16622,7 +16483,7 @@ extern "C" fn thunk_ReadConsoleInputA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ReadConsoleInputA");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_console_input = {:?}, lp_buffer = {:?}, n_length = {:?}, lp_number_of_events_read = {:?}" , h_console_input , lp_buffer , n_length , lp_number_of_events_read );
+        tracing :: trace ! ( "  args = {{h_console_input = {:?}, lp_buffer = {:?}, n_length = {:?}, lp_number_of_events_read = {:?}}}" , h_console_input , lp_buffer , n_length , lp_number_of_events_read );
         let res = api.ReadConsoleInputA(
             h_console_input,
             lp_buffer,
@@ -16655,7 +16516,7 @@ extern "C" fn thunk_ReadConsoleInputW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ReadConsoleInputW");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_console_input = {:?}, lp_buffer = {:?}, n_length = {:?}, lp_number_of_events_read = {:?}" , h_console_input , lp_buffer , n_length , lp_number_of_events_read );
+        tracing :: trace ! ( "  args = {{h_console_input = {:?}, lp_buffer = {:?}, n_length = {:?}, lp_number_of_events_read = {:?}}}" , h_console_input , lp_buffer , n_length , lp_number_of_events_read );
         let res = api.ReadConsoleInputW(
             h_console_input,
             lp_buffer,
@@ -16689,7 +16550,7 @@ extern "C" fn thunk_ReadConsoleOutputA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ReadConsoleOutputA");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_console_output = {:?}, lp_buffer = {:?}, dw_buffer_size = {:?}, dw_buffer_coord = {:?}, lp_read_region = {:?}" , h_console_output , lp_buffer , dw_buffer_size , dw_buffer_coord , lp_read_region );
+        tracing :: trace ! ( "  args = {{h_console_output = {:?}, lp_buffer = {:?}, dw_buffer_size = {:?}, dw_buffer_coord = {:?}, lp_read_region = {:?}}}" , h_console_output , lp_buffer , dw_buffer_size , dw_buffer_coord , lp_read_region );
         let res = api.ReadConsoleOutputA(
             h_console_output,
             lp_buffer,
@@ -16724,7 +16585,7 @@ extern "C" fn thunk_ReadConsoleOutputAttribute(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ReadConsoleOutputAttribute");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_console_output = {:?}, lp_attribute = {:?}, n_length = {:?}, dw_read_coord = {:?}, lp_number_of_attrs_read = {:?}" , h_console_output , lp_attribute , n_length , dw_read_coord , lp_number_of_attrs_read );
+        tracing :: trace ! ( "  args = {{h_console_output = {:?}, lp_attribute = {:?}, n_length = {:?}, dw_read_coord = {:?}, lp_number_of_attrs_read = {:?}}}" , h_console_output , lp_attribute , n_length , dw_read_coord , lp_number_of_attrs_read );
         let res = api.ReadConsoleOutputAttribute(
             h_console_output,
             lp_attribute,
@@ -16759,7 +16620,7 @@ extern "C" fn thunk_ReadConsoleOutputCharacterA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ReadConsoleOutputCharacterA");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_console_output = {:?}, lp_character = {:?}, n_length = {:?}, dw_read_coord = {:?}, lp_number_of_chars_read = {:?}" , h_console_output , lp_character , n_length , dw_read_coord , lp_number_of_chars_read );
+        tracing :: trace ! ( "  args = {{h_console_output = {:?}, lp_character = {:?}, n_length = {:?}, dw_read_coord = {:?}, lp_number_of_chars_read = {:?}}}" , h_console_output , lp_character , n_length , dw_read_coord , lp_number_of_chars_read );
         let res = api.ReadConsoleOutputCharacterA(
             h_console_output,
             lp_character,
@@ -16794,7 +16655,7 @@ extern "C" fn thunk_ReadConsoleOutputCharacterW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ReadConsoleOutputCharacterW");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_console_output = {:?}, lp_character = {:?}, n_length = {:?}, dw_read_coord = {:?}, lp_number_of_chars_read = {:?}" , h_console_output , lp_character , n_length , dw_read_coord , lp_number_of_chars_read );
+        tracing :: trace ! ( "  args = {{h_console_output = {:?}, lp_character = {:?}, n_length = {:?}, dw_read_coord = {:?}, lp_number_of_chars_read = {:?}}}" , h_console_output , lp_character , n_length , dw_read_coord , lp_number_of_chars_read );
         let res = api.ReadConsoleOutputCharacterW(
             h_console_output,
             lp_character,
@@ -16829,7 +16690,7 @@ extern "C" fn thunk_ReadConsoleOutputW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ReadConsoleOutputW");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_console_output = {:?}, lp_buffer = {:?}, dw_buffer_size = {:?}, dw_buffer_coord = {:?}, lp_read_region = {:?}" , h_console_output , lp_buffer , dw_buffer_size , dw_buffer_coord , lp_read_region );
+        tracing :: trace ! ( "  args = {{h_console_output = {:?}, lp_buffer = {:?}, dw_buffer_size = {:?}, dw_buffer_coord = {:?}, lp_read_region = {:?}}}" , h_console_output , lp_buffer , dw_buffer_size , dw_buffer_coord , lp_read_region );
         let res = api.ReadConsoleOutputW(
             h_console_output,
             lp_buffer,
@@ -16861,7 +16722,7 @@ extern "C" fn thunk_ReadConsoleW(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ReadConsoleW");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_console_input = {:?}, lp_buffer = {:?}, n_number_of_chars_to_read = {:?}, lp_number_of_chars_read = {:?}, p_input_control = {:?}" , h_console_input , lp_buffer , n_number_of_chars_to_read , lp_number_of_chars_read , p_input_control );
+        tracing :: trace ! ( "  args = {{h_console_input = {:?}, lp_buffer = {:?}, n_number_of_chars_to_read = {:?}, lp_number_of_chars_read = {:?}, p_input_control = {:?}}}" , h_console_input , lp_buffer , n_number_of_chars_to_read , lp_number_of_chars_read , p_input_control );
         let res = api.ReadConsoleW(
             h_console_input,
             lp_buffer,
@@ -16893,7 +16754,7 @@ extern "C" fn thunk_ResizePseudoConsole(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ResizePseudoConsole");
         let _enter = span.enter();
-        tracing::trace!("h_pc = {:?}, size = {:?}", h_pc, size);
+        tracing::trace!("  args = {{h_pc = {:?}, size = {:?}}}", h_pc, size);
         let res = api.ResizePseudoConsole(h_pc, size);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -16922,7 +16783,7 @@ extern "C" fn thunk_ScrollConsoleScreenBufferA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ScrollConsoleScreenBufferA");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_console_output = {:?}, lp_scroll_rectangle = {:?}, lp_clip_rectangle = {:?}, dw_destination_origin = {:?}, lp_fill = {:?}" , h_console_output , lp_scroll_rectangle , lp_clip_rectangle , dw_destination_origin , lp_fill );
+        tracing :: trace ! ( "  args = {{h_console_output = {:?}, lp_scroll_rectangle = {:?}, lp_clip_rectangle = {:?}, dw_destination_origin = {:?}, lp_fill = {:?}}}" , h_console_output , lp_scroll_rectangle , lp_clip_rectangle , dw_destination_origin , lp_fill );
         let res = api.ScrollConsoleScreenBufferA(
             h_console_output,
             lp_scroll_rectangle,
@@ -16957,7 +16818,7 @@ extern "C" fn thunk_ScrollConsoleScreenBufferW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ScrollConsoleScreenBufferW");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_console_output = {:?}, lp_scroll_rectangle = {:?}, lp_clip_rectangle = {:?}, dw_destination_origin = {:?}, lp_fill = {:?}" , h_console_output , lp_scroll_rectangle , lp_clip_rectangle , dw_destination_origin , lp_fill );
+        tracing :: trace ! ( "  args = {{h_console_output = {:?}, lp_scroll_rectangle = {:?}, lp_clip_rectangle = {:?}, dw_destination_origin = {:?}, lp_fill = {:?}}}" , h_console_output , lp_scroll_rectangle , lp_clip_rectangle , dw_destination_origin , lp_fill );
         let res = api.ScrollConsoleScreenBufferW(
             h_console_output,
             lp_scroll_rectangle,
@@ -16988,7 +16849,7 @@ extern "C" fn thunk_SetConsoleActiveScreenBuffer(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetConsoleActiveScreenBuffer");
         let _enter = span.enter();
-        tracing::trace!("h_console_output = {:?}", h_console_output);
+        tracing::trace!("  args = {{h_console_output = {:?}}}", h_console_output);
         let res = api.SetConsoleActiveScreenBuffer(h_console_output);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -17010,7 +16871,7 @@ extern "C" fn thunk_SetConsoleCP(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetConsoleCP");
         let _enter = span.enter();
-        tracing::trace!("w_code_page_id = {:?}", w_code_page_id);
+        tracing::trace!("  args = {{w_code_page_id = {:?}}}", w_code_page_id);
         let res = api.SetConsoleCP(w_code_page_id);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -17036,7 +16897,11 @@ extern "C" fn thunk_SetConsoleCtrlHandler(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetConsoleCtrlHandler");
         let _enter = span.enter();
-        tracing::trace!("handler_routine = {:?}, add = {:?}", handler_routine, add);
+        tracing::trace!(
+            "  args = {{handler_routine = {:?}, add = {:?}}}",
+            handler_routine,
+            add
+        );
         let res = api.SetConsoleCtrlHandler(handler_routine, add);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -17063,7 +16928,7 @@ extern "C" fn thunk_SetConsoleCursorInfo(
         let span = tracing::trace_span!("SetConsoleCursorInfo");
         let _enter = span.enter();
         tracing::trace!(
-            "h_console_output = {:?}, lp_console_cursor_info = {:?}",
+            "  args = {{h_console_output = {:?}, lp_console_cursor_info = {:?}}}",
             h_console_output,
             lp_console_cursor_info
         );
@@ -17093,7 +16958,7 @@ extern "C" fn thunk_SetConsoleCursorPosition(
         let span = tracing::trace_span!("SetConsoleCursorPosition");
         let _enter = span.enter();
         tracing::trace!(
-            "h_console_output = {:?}, dw_cursor_position = {:?}",
+            "  args = {{h_console_output = {:?}, dw_cursor_position = {:?}}}",
             h_console_output,
             dw_cursor_position
         );
@@ -17123,12 +16988,7 @@ extern "C" fn thunk_SetConsoleDisplayMode(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetConsoleDisplayMode");
         let _enter = span.enter();
-        tracing::trace!(
-            "h_console_output = {:?}, dw_flags = {:?}, lp_new_screen_buffer_dimensions = {:?}",
-            h_console_output,
-            dw_flags,
-            lp_new_screen_buffer_dimensions
-        );
+        tracing :: trace ! ( "  args = {{h_console_output = {:?}, dw_flags = {:?}, lp_new_screen_buffer_dimensions = {:?}}}" , h_console_output , dw_flags , lp_new_screen_buffer_dimensions );
         let res =
             api.SetConsoleDisplayMode(h_console_output, dw_flags, lp_new_screen_buffer_dimensions);
         tracing::trace!("result = {:?}", res);
@@ -17154,7 +17014,10 @@ extern "C" fn thunk_SetConsoleHistoryInfo(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetConsoleHistoryInfo");
         let _enter = span.enter();
-        tracing::trace!("lp_console_history_info = {:?}", lp_console_history_info);
+        tracing::trace!(
+            "  args = {{lp_console_history_info = {:?}}}",
+            lp_console_history_info
+        );
         let res = api.SetConsoleHistoryInfo(lp_console_history_info);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -17181,7 +17044,7 @@ extern "C" fn thunk_SetConsoleMode(
         let span = tracing::trace_span!("SetConsoleMode");
         let _enter = span.enter();
         tracing::trace!(
-            "h_console_handle = {:?}, dw_mode = {:?}",
+            "  args = {{h_console_handle = {:?}, dw_mode = {:?}}}",
             h_console_handle,
             dw_mode
         );
@@ -17210,7 +17073,11 @@ extern "C" fn thunk_SetConsoleNumberOfCommandsA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetConsoleNumberOfCommandsA");
         let _enter = span.enter();
-        tracing::trace!("number = {:?}, exe_name = {:?}", number, exe_name);
+        tracing::trace!(
+            "  args = {{number = {:?}, exe_name = {:?}}}",
+            number,
+            exe_name
+        );
         let res = api.SetConsoleNumberOfCommandsA(number, exe_name);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -17236,7 +17103,11 @@ extern "C" fn thunk_SetConsoleNumberOfCommandsW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetConsoleNumberOfCommandsW");
         let _enter = span.enter();
-        tracing::trace!("number = {:?}, exe_name = {:?}", number, exe_name);
+        tracing::trace!(
+            "  args = {{number = {:?}, exe_name = {:?}}}",
+            number,
+            exe_name
+        );
         let res = api.SetConsoleNumberOfCommandsW(number, exe_name);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -17261,7 +17132,7 @@ extern "C" fn thunk_SetConsoleOutputCP(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetConsoleOutputCP");
         let _enter = span.enter();
-        tracing::trace!("w_code_page_id = {:?}", w_code_page_id);
+        tracing::trace!("  args = {{w_code_page_id = {:?}}}", w_code_page_id);
         let res = api.SetConsoleOutputCP(w_code_page_id);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -17288,7 +17159,7 @@ extern "C" fn thunk_SetConsoleScreenBufferInfoEx(
         let span = tracing::trace_span!("SetConsoleScreenBufferInfoEx");
         let _enter = span.enter();
         tracing::trace!(
-            "h_console_output = {:?}, lp_console_screen_buffer_info_ex = {:?}",
+            "  args = {{h_console_output = {:?}, lp_console_screen_buffer_info_ex = {:?}}}",
             h_console_output,
             lp_console_screen_buffer_info_ex
         );
@@ -17319,7 +17190,7 @@ extern "C" fn thunk_SetConsoleScreenBufferSize(
         let span = tracing::trace_span!("SetConsoleScreenBufferSize");
         let _enter = span.enter();
         tracing::trace!(
-            "h_console_output = {:?}, dw_size = {:?}",
+            "  args = {{h_console_output = {:?}, dw_size = {:?}}}",
             h_console_output,
             dw_size
         );
@@ -17349,7 +17220,7 @@ extern "C" fn thunk_SetConsoleTextAttribute(
         let span = tracing::trace_span!("SetConsoleTextAttribute");
         let _enter = span.enter();
         tracing::trace!(
-            "h_console_output = {:?}, w_attributes = {:?}",
+            "  args = {{h_console_output = {:?}, w_attributes = {:?}}}",
             h_console_output,
             w_attributes
         );
@@ -17377,7 +17248,7 @@ extern "C" fn thunk_SetConsoleTitleA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetConsoleTitleA");
         let _enter = span.enter();
-        tracing::trace!("lp_console_title = {:?}", lp_console_title);
+        tracing::trace!("  args = {{lp_console_title = {:?}}}", lp_console_title);
         let res = api.SetConsoleTitleA(lp_console_title);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -17402,7 +17273,7 @@ extern "C" fn thunk_SetConsoleTitleW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetConsoleTitleW");
         let _enter = span.enter();
-        tracing::trace!("lp_console_title = {:?}", lp_console_title);
+        tracing::trace!("  args = {{lp_console_title = {:?}}}", lp_console_title);
         let res = api.SetConsoleTitleW(lp_console_title);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -17430,7 +17301,7 @@ extern "C" fn thunk_SetConsoleWindowInfo(
         let span = tracing::trace_span!("SetConsoleWindowInfo");
         let _enter = span.enter();
         tracing::trace!(
-            "h_console_output = {:?}, b_absolute = {:?}, lp_console_window = {:?}",
+            "  args = {{h_console_output = {:?}, b_absolute = {:?}, lp_console_window = {:?}}}",
             h_console_output,
             b_absolute,
             lp_console_window
@@ -17461,12 +17332,7 @@ extern "C" fn thunk_SetCurrentConsoleFontEx(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetCurrentConsoleFontEx");
         let _enter = span.enter();
-        tracing::trace!(
-            "h_console_output = {:?}, b_maximum_window = {:?}, lp_console_current_font_ex = {:?}",
-            h_console_output,
-            b_maximum_window,
-            lp_console_current_font_ex
-        );
+        tracing :: trace ! ( "  args = {{h_console_output = {:?}, b_maximum_window = {:?}, lp_console_current_font_ex = {:?}}}" , h_console_output , b_maximum_window , lp_console_current_font_ex );
         let res = api.SetCurrentConsoleFontEx(
             h_console_output,
             b_maximum_window,
@@ -17494,7 +17360,7 @@ extern "C" fn thunk_SetStdHandle(context: &mut ExtendedContext, memory: FlatMemo
         let span = tracing::trace_span!("SetStdHandle");
         let _enter = span.enter();
         tracing::trace!(
-            "n_std_handle = {:?}, h_handle = {:?}",
+            "  args = {{n_std_handle = {:?}, h_handle = {:?}}}",
             n_std_handle,
             h_handle
         );
@@ -17525,7 +17391,7 @@ extern "C" fn thunk_SetStdHandleEx(
         let span = tracing::trace_span!("SetStdHandleEx");
         let _enter = span.enter();
         tracing::trace!(
-            "n_std_handle = {:?}, h_handle = {:?}, ph_prev_value = {:?}",
+            "  args = {{n_std_handle = {:?}, h_handle = {:?}, ph_prev_value = {:?}}}",
             n_std_handle,
             h_handle,
             ph_prev_value
@@ -17555,7 +17421,7 @@ extern "C" fn thunk_WriteConsoleA(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("WriteConsoleA");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_console_output = {:?}, lp_buffer = {:?}, n_number_of_chars_to_write = {:?}, lp_number_of_chars_written = {:?}, lp_reserved = {:?}" , h_console_output , lp_buffer , n_number_of_chars_to_write , lp_number_of_chars_written , lp_reserved );
+        tracing :: trace ! ( "  args = {{h_console_output = {:?}, lp_buffer = {:?}, n_number_of_chars_to_write = {:?}, lp_number_of_chars_written = {:?}, lp_reserved = {:?}}}" , h_console_output , lp_buffer , n_number_of_chars_to_write , lp_number_of_chars_written , lp_reserved );
         let res = api.WriteConsoleA(
             h_console_output,
             lp_buffer,
@@ -17589,7 +17455,7 @@ extern "C" fn thunk_WriteConsoleInputA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("WriteConsoleInputA");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_console_input = {:?}, lp_buffer = {:?}, n_length = {:?}, lp_number_of_events_written = {:?}" , h_console_input , lp_buffer , n_length , lp_number_of_events_written );
+        tracing :: trace ! ( "  args = {{h_console_input = {:?}, lp_buffer = {:?}, n_length = {:?}, lp_number_of_events_written = {:?}}}" , h_console_input , lp_buffer , n_length , lp_number_of_events_written );
         let res = api.WriteConsoleInputA(
             h_console_input,
             lp_buffer,
@@ -17622,7 +17488,7 @@ extern "C" fn thunk_WriteConsoleInputW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("WriteConsoleInputW");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_console_input = {:?}, lp_buffer = {:?}, n_length = {:?}, lp_number_of_events_written = {:?}" , h_console_input , lp_buffer , n_length , lp_number_of_events_written );
+        tracing :: trace ! ( "  args = {{h_console_input = {:?}, lp_buffer = {:?}, n_length = {:?}, lp_number_of_events_written = {:?}}}" , h_console_input , lp_buffer , n_length , lp_number_of_events_written );
         let res = api.WriteConsoleInputW(
             h_console_input,
             lp_buffer,
@@ -17656,7 +17522,7 @@ extern "C" fn thunk_WriteConsoleOutputA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("WriteConsoleOutputA");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_console_output = {:?}, lp_buffer = {:?}, dw_buffer_size = {:?}, dw_buffer_coord = {:?}, lp_write_region = {:?}" , h_console_output , lp_buffer , dw_buffer_size , dw_buffer_coord , lp_write_region );
+        tracing :: trace ! ( "  args = {{h_console_output = {:?}, lp_buffer = {:?}, dw_buffer_size = {:?}, dw_buffer_coord = {:?}, lp_write_region = {:?}}}" , h_console_output , lp_buffer , dw_buffer_size , dw_buffer_coord , lp_write_region );
         let res = api.WriteConsoleOutputA(
             h_console_output,
             lp_buffer,
@@ -17691,7 +17557,7 @@ extern "C" fn thunk_WriteConsoleOutputAttribute(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("WriteConsoleOutputAttribute");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_console_output = {:?}, lp_attribute = {:?}, n_length = {:?}, dw_write_coord = {:?}, lp_number_of_attrs_written = {:?}" , h_console_output , lp_attribute , n_length , dw_write_coord , lp_number_of_attrs_written );
+        tracing :: trace ! ( "  args = {{h_console_output = {:?}, lp_attribute = {:?}, n_length = {:?}, dw_write_coord = {:?}, lp_number_of_attrs_written = {:?}}}" , h_console_output , lp_attribute , n_length , dw_write_coord , lp_number_of_attrs_written );
         let res = api.WriteConsoleOutputAttribute(
             h_console_output,
             lp_attribute,
@@ -17726,7 +17592,7 @@ extern "C" fn thunk_WriteConsoleOutputCharacterA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("WriteConsoleOutputCharacterA");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_console_output = {:?}, lp_character = {:?}, n_length = {:?}, dw_write_coord = {:?}, lp_number_of_chars_written = {:?}" , h_console_output , lp_character , n_length , dw_write_coord , lp_number_of_chars_written );
+        tracing :: trace ! ( "  args = {{h_console_output = {:?}, lp_character = {:?}, n_length = {:?}, dw_write_coord = {:?}, lp_number_of_chars_written = {:?}}}" , h_console_output , lp_character , n_length , dw_write_coord , lp_number_of_chars_written );
         let res = api.WriteConsoleOutputCharacterA(
             h_console_output,
             lp_character,
@@ -17761,7 +17627,7 @@ extern "C" fn thunk_WriteConsoleOutputCharacterW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("WriteConsoleOutputCharacterW");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_console_output = {:?}, lp_character = {:?}, n_length = {:?}, dw_write_coord = {:?}, lp_number_of_chars_written = {:?}" , h_console_output , lp_character , n_length , dw_write_coord , lp_number_of_chars_written );
+        tracing :: trace ! ( "  args = {{h_console_output = {:?}, lp_character = {:?}, n_length = {:?}, dw_write_coord = {:?}, lp_number_of_chars_written = {:?}}}" , h_console_output , lp_character , n_length , dw_write_coord , lp_number_of_chars_written );
         let res = api.WriteConsoleOutputCharacterW(
             h_console_output,
             lp_character,
@@ -17796,7 +17662,7 @@ extern "C" fn thunk_WriteConsoleOutputW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("WriteConsoleOutputW");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_console_output = {:?}, lp_buffer = {:?}, dw_buffer_size = {:?}, dw_buffer_coord = {:?}, lp_write_region = {:?}" , h_console_output , lp_buffer , dw_buffer_size , dw_buffer_coord , lp_write_region );
+        tracing :: trace ! ( "  args = {{h_console_output = {:?}, lp_buffer = {:?}, dw_buffer_size = {:?}, dw_buffer_coord = {:?}, lp_write_region = {:?}}}" , h_console_output , lp_buffer , dw_buffer_size , dw_buffer_coord , lp_write_region );
         let res = api.WriteConsoleOutputW(
             h_console_output,
             lp_buffer,
@@ -17828,7 +17694,7 @@ extern "C" fn thunk_WriteConsoleW(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("WriteConsoleW");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_console_output = {:?}, lp_buffer = {:?}, n_number_of_chars_to_write = {:?}, lp_number_of_chars_written = {:?}, lp_reserved = {:?}" , h_console_output , lp_buffer , n_number_of_chars_to_write , lp_number_of_chars_written , lp_reserved );
+        tracing :: trace ! ( "  args = {{h_console_output = {:?}, lp_buffer = {:?}, n_number_of_chars_to_write = {:?}, lp_number_of_chars_written = {:?}, lp_reserved = {:?}}}" , h_console_output , lp_buffer , n_number_of_chars_to_write , lp_number_of_chars_written , lp_reserved );
         let res = api.WriteConsoleW(
             h_console_output,
             lp_buffer,
@@ -17859,13 +17725,7 @@ extern "C" fn thunk_RtlUnwind(context: &mut ExtendedContext, memory: FlatMemoryC
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("RtlUnwind");
         let _enter = span.enter();
-        tracing::trace!(
-            "target_frame = {:?}, target_ip = {:?}, exception_record = {:?}, return_value = {:?}",
-            target_frame,
-            target_ip,
-            exception_record,
-            return_value
-        );
+        tracing :: trace ! ( "  args = {{target_frame = {:?}, target_ip = {:?}, exception_record = {:?}, return_value = {:?}}}" , target_frame , target_ip , exception_record , return_value );
         let res = api.RtlUnwind(target_frame, target_ip, exception_record, return_value);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -17890,7 +17750,7 @@ extern "C" fn thunk_UnhandledExceptionFilter(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("UnhandledExceptionFilter");
         let _enter = span.enter();
-        tracing::trace!("exception_info = {:?}", exception_info);
+        tracing::trace!("  args = {{exception_info = {:?}}}", exception_info);
         let res = api.UnhandledExceptionFilter(exception_info);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -17915,7 +17775,7 @@ extern "C" fn thunk_CallEnclave(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CallEnclave");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_routine = {:?}, lp_parameter = {:?}, f_wait_for_thread = {:?}, lp_return_value = {:?}" , lp_routine , lp_parameter , f_wait_for_thread , lp_return_value );
+        tracing :: trace ! ( "  args = {{lp_routine = {:?}, lp_parameter = {:?}, f_wait_for_thread = {:?}, lp_return_value = {:?}}}" , lp_routine , lp_parameter , f_wait_for_thread , lp_return_value );
         let res = api.CallEnclave(lp_routine, lp_parameter, f_wait_for_thread, lp_return_value);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -17944,7 +17804,7 @@ extern "C" fn thunk_CreateEnclave(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CreateEnclave");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_process = {:?}, lp_address = {:?}, dw_size = {:?}, dw_initial_commitment = {:?}, fl_enclave_type = {:?}, lp_enclave_information = {:?}, dw_info_length = {:?}, lp_enclave_error = {:?}" , h_process , lp_address , dw_size , dw_initial_commitment , fl_enclave_type , lp_enclave_information , dw_info_length , lp_enclave_error );
+        tracing :: trace ! ( "  args = {{h_process = {:?}, lp_address = {:?}, dw_size = {:?}, dw_initial_commitment = {:?}, fl_enclave_type = {:?}, lp_enclave_information = {:?}, dw_info_length = {:?}, lp_enclave_error = {:?}}}" , h_process , lp_address , dw_size , dw_initial_commitment , fl_enclave_type , lp_enclave_information , dw_info_length , lp_enclave_error );
         let res = api.CreateEnclave(
             h_process,
             lp_address,
@@ -17981,7 +17841,7 @@ extern "C" fn thunk_CreateEnvironmentBlock(
         let span = tracing::trace_span!("CreateEnvironmentBlock");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_environment = {:?}, h_token = {:?}, b_inherit = {:?}",
+            "  args = {{lp_environment = {:?}, h_token = {:?}, b_inherit = {:?}}}",
             lp_environment,
             h_token,
             b_inherit
@@ -18007,7 +17867,7 @@ extern "C" fn thunk_DeleteEnclave(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("DeleteEnclave");
         let _enter = span.enter();
-        tracing::trace!("lp_address = {:?}", lp_address);
+        tracing::trace!("  args = {{lp_address = {:?}}}", lp_address);
         let res = api.DeleteEnclave(lp_address);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -18032,7 +17892,7 @@ extern "C" fn thunk_DestroyEnvironmentBlock(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("DestroyEnvironmentBlock");
         let _enter = span.enter();
-        tracing::trace!("lp_environment = {:?}", lp_environment);
+        tracing::trace!("  args = {{lp_environment = {:?}}}", lp_environment);
         let res = api.DestroyEnvironmentBlock(lp_environment);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -18060,13 +17920,7 @@ extern "C" fn thunk_EnclaveGetAttestationReport(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("EnclaveGetAttestationReport");
         let _enter = span.enter();
-        tracing::trace!(
-            "enclave_data = {:?}, report = {:?}, buffer_size = {:?}, output_size = {:?}",
-            enclave_data,
-            report,
-            buffer_size,
-            output_size
-        );
+        tracing :: trace ! ( "  args = {{enclave_data = {:?}, report = {:?}, buffer_size = {:?}, output_size = {:?}}}" , enclave_data , report , buffer_size , output_size );
         let res = api.EnclaveGetAttestationReport(enclave_data, report, buffer_size, output_size);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -18093,7 +17947,7 @@ extern "C" fn thunk_EnclaveGetEnclaveInformation(
         let span = tracing::trace_span!("EnclaveGetEnclaveInformation");
         let _enter = span.enter();
         tracing::trace!(
-            "information_size = {:?}, enclave_information = {:?}",
+            "  args = {{information_size = {:?}, enclave_information = {:?}}}",
             information_size,
             enclave_information
         );
@@ -18127,7 +17981,7 @@ extern "C" fn thunk_EnclaveSealData(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("EnclaveSealData");
         let _enter = span.enter();
-        tracing :: trace ! ( "data_to_encrypt = {:?}, data_to_encrypt_size = {:?}, identity_policy = {:?}, runtime_policy = {:?}, protected_blob = {:?}, buffer_size = {:?}, protected_blob_size = {:?}" , data_to_encrypt , data_to_encrypt_size , identity_policy , runtime_policy , protected_blob , buffer_size , protected_blob_size );
+        tracing :: trace ! ( "  args = {{data_to_encrypt = {:?}, data_to_encrypt_size = {:?}, identity_policy = {:?}, runtime_policy = {:?}, protected_blob = {:?}, buffer_size = {:?}, protected_blob_size = {:?}}}" , data_to_encrypt , data_to_encrypt_size , identity_policy , runtime_policy , protected_blob , buffer_size , protected_blob_size );
         let res = api.EnclaveSealData(
             data_to_encrypt,
             data_to_encrypt_size,
@@ -18166,7 +18020,7 @@ extern "C" fn thunk_EnclaveUnsealData(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("EnclaveUnsealData");
         let _enter = span.enter();
-        tracing :: trace ! ( "protected_blob = {:?}, protected_blob_size = {:?}, decrypted_data = {:?}, buffer_size = {:?}, decrypted_data_size = {:?}, sealing_identity = {:?}, unsealing_flags = {:?}" , protected_blob , protected_blob_size , decrypted_data , buffer_size , decrypted_data_size , sealing_identity , unsealing_flags );
+        tracing :: trace ! ( "  args = {{protected_blob = {:?}, protected_blob_size = {:?}, decrypted_data = {:?}, buffer_size = {:?}, decrypted_data_size = {:?}, sealing_identity = {:?}, unsealing_flags = {:?}}}" , protected_blob , protected_blob_size , decrypted_data , buffer_size , decrypted_data_size , sealing_identity , unsealing_flags );
         let res = api.EnclaveUnsealData(
             protected_blob,
             protected_blob_size,
@@ -18202,7 +18056,7 @@ extern "C" fn thunk_EnclaveVerifyAttestationReport(
         let span = tracing::trace_span!("EnclaveVerifyAttestationReport");
         let _enter = span.enter();
         tracing::trace!(
-            "enclave_type = {:?}, report = {:?}, report_size = {:?}",
+            "  args = {{enclave_type = {:?}, report = {:?}, report_size = {:?}}}",
             enclave_type,
             report,
             report_size
@@ -18234,7 +18088,7 @@ extern "C" fn thunk_ExpandEnvironmentStringsA(
         let span = tracing::trace_span!("ExpandEnvironmentStringsA");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_src = {:?}, lp_dst = {:?}, n_size = {:?}",
+            "  args = {{lp_src = {:?}, lp_dst = {:?}, n_size = {:?}}}",
             lp_src,
             lp_dst,
             n_size
@@ -18267,7 +18121,7 @@ extern "C" fn thunk_ExpandEnvironmentStringsForUserA(
         let span = tracing::trace_span!("ExpandEnvironmentStringsForUserA");
         let _enter = span.enter();
         tracing::trace!(
-            "h_token = {:?}, lp_src = {:?}, lp_dest = {:?}, dw_size = {:?}",
+            "  args = {{h_token = {:?}, lp_src = {:?}, lp_dest = {:?}, dw_size = {:?}}}",
             h_token,
             lp_src,
             lp_dest,
@@ -18301,7 +18155,7 @@ extern "C" fn thunk_ExpandEnvironmentStringsForUserW(
         let span = tracing::trace_span!("ExpandEnvironmentStringsForUserW");
         let _enter = span.enter();
         tracing::trace!(
-            "h_token = {:?}, lp_src = {:?}, lp_dest = {:?}, dw_size = {:?}",
+            "  args = {{h_token = {:?}, lp_src = {:?}, lp_dest = {:?}, dw_size = {:?}}}",
             h_token,
             lp_src,
             lp_dest,
@@ -18334,7 +18188,7 @@ extern "C" fn thunk_ExpandEnvironmentStringsW(
         let span = tracing::trace_span!("ExpandEnvironmentStringsW");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_src = {:?}, lp_dst = {:?}, n_size = {:?}",
+            "  args = {{lp_src = {:?}, lp_dst = {:?}, n_size = {:?}}}",
             lp_src,
             lp_dst,
             n_size
@@ -18363,7 +18217,7 @@ extern "C" fn thunk_FreeEnvironmentStringsA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("FreeEnvironmentStringsA");
         let _enter = span.enter();
-        tracing::trace!("penv = {:?}", penv);
+        tracing::trace!("  args = {{penv = {:?}}}", penv);
         let res = api.FreeEnvironmentStringsA(penv);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -18388,7 +18242,7 @@ extern "C" fn thunk_FreeEnvironmentStringsW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("FreeEnvironmentStringsW");
         let _enter = span.enter();
-        tracing::trace!("penv = {:?}", penv);
+        tracing::trace!("  args = {{penv = {:?}}}", penv);
         let res = api.FreeEnvironmentStringsW(penv);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -18412,7 +18266,7 @@ extern "C" fn thunk_GetCommandLineA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetCommandLineA");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.GetCommandLineA();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -18436,7 +18290,7 @@ extern "C" fn thunk_GetCommandLineW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetCommandLineW");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.GetCommandLineW();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -18463,7 +18317,7 @@ extern "C" fn thunk_GetCurrentDirectoryA(
         let span = tracing::trace_span!("GetCurrentDirectoryA");
         let _enter = span.enter();
         tracing::trace!(
-            "n_buffer_length = {:?}, lp_buffer = {:?}",
+            "  args = {{n_buffer_length = {:?}, lp_buffer = {:?}}}",
             n_buffer_length,
             lp_buffer
         );
@@ -18493,7 +18347,7 @@ extern "C" fn thunk_GetCurrentDirectoryW(
         let span = tracing::trace_span!("GetCurrentDirectoryW");
         let _enter = span.enter();
         tracing::trace!(
-            "n_buffer_length = {:?}, lp_buffer = {:?}",
+            "  args = {{n_buffer_length = {:?}, lp_buffer = {:?}}}",
             n_buffer_length,
             lp_buffer
         );
@@ -18520,7 +18374,7 @@ extern "C" fn thunk_GetEnvironmentStrings(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetEnvironmentStrings");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.GetEnvironmentStrings();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -18544,7 +18398,7 @@ extern "C" fn thunk_GetEnvironmentStringsW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetEnvironmentStringsW");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.GetEnvironmentStringsW();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -18572,7 +18426,7 @@ extern "C" fn thunk_GetEnvironmentVariableA(
         let span = tracing::trace_span!("GetEnvironmentVariableA");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_name = {:?}, lp_buffer = {:?}, n_size = {:?}",
+            "  args = {{lp_name = {:?}, lp_buffer = {:?}, n_size = {:?}}}",
             lp_name,
             lp_buffer,
             n_size
@@ -18604,7 +18458,7 @@ extern "C" fn thunk_GetEnvironmentVariableW(
         let span = tracing::trace_span!("GetEnvironmentVariableW");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_name = {:?}, lp_buffer = {:?}, n_size = {:?}",
+            "  args = {{lp_name = {:?}, lp_buffer = {:?}, n_size = {:?}}}",
             lp_name,
             lp_buffer,
             n_size
@@ -18637,7 +18491,7 @@ extern "C" fn thunk_InitializeEnclave(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("InitializeEnclave");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_process = {:?}, lp_address = {:?}, lp_enclave_information = {:?}, dw_info_length = {:?}, lp_enclave_error = {:?}" , h_process , lp_address , lp_enclave_information , dw_info_length , lp_enclave_error );
+        tracing :: trace ! ( "  args = {{h_process = {:?}, lp_address = {:?}, lp_enclave_information = {:?}, dw_info_length = {:?}, lp_enclave_error = {:?}}}" , h_process , lp_address , lp_enclave_information , dw_info_length , lp_enclave_error );
         let res = api.InitializeEnclave(
             h_process,
             lp_address,
@@ -18668,7 +18522,7 @@ extern "C" fn thunk_IsEnclaveTypeSupported(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("IsEnclaveTypeSupported");
         let _enter = span.enter();
-        tracing::trace!("fl_enclave_type = {:?}", fl_enclave_type);
+        tracing::trace!("  args = {{fl_enclave_type = {:?}}}", fl_enclave_type);
         let res = api.IsEnclaveTypeSupported(fl_enclave_type);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -18701,7 +18555,7 @@ extern "C" fn thunk_LoadEnclaveData(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("LoadEnclaveData");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_process = {:?}, lp_address = {:?}, lp_buffer = {:?}, n_size = {:?}, fl_protect = {:?}, lp_page_information = {:?}, dw_info_length = {:?}, lp_number_of_bytes_written = {:?}, lp_enclave_error = {:?}" , h_process , lp_address , lp_buffer , n_size , fl_protect , lp_page_information , dw_info_length , lp_number_of_bytes_written , lp_enclave_error );
+        tracing :: trace ! ( "  args = {{h_process = {:?}, lp_address = {:?}, lp_buffer = {:?}, n_size = {:?}, fl_protect = {:?}, lp_page_information = {:?}, dw_info_length = {:?}, lp_number_of_bytes_written = {:?}, lp_enclave_error = {:?}}}" , h_process , lp_address , lp_buffer , n_size , fl_protect , lp_page_information , dw_info_length , lp_number_of_bytes_written , lp_enclave_error );
         let res = api.LoadEnclaveData(
             h_process,
             lp_address,
@@ -18738,7 +18592,7 @@ extern "C" fn thunk_LoadEnclaveImageA(
         let span = tracing::trace_span!("LoadEnclaveImageA");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_enclave_address = {:?}, lp_image_name = {:?}",
+            "  args = {{lp_enclave_address = {:?}, lp_image_name = {:?}}}",
             lp_enclave_address,
             lp_image_name
         );
@@ -18768,7 +18622,7 @@ extern "C" fn thunk_LoadEnclaveImageW(
         let span = tracing::trace_span!("LoadEnclaveImageW");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_enclave_address = {:?}, lp_image_name = {:?}",
+            "  args = {{lp_enclave_address = {:?}, lp_image_name = {:?}}}",
             lp_enclave_address,
             lp_image_name
         );
@@ -18796,7 +18650,7 @@ extern "C" fn thunk_NeedCurrentDirectoryForExePathA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("NeedCurrentDirectoryForExePathA");
         let _enter = span.enter();
-        tracing::trace!("exe_name = {:?}", exe_name);
+        tracing::trace!("  args = {{exe_name = {:?}}}", exe_name);
         let res = api.NeedCurrentDirectoryForExePathA(exe_name);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -18821,7 +18675,7 @@ extern "C" fn thunk_NeedCurrentDirectoryForExePathW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("NeedCurrentDirectoryForExePathW");
         let _enter = span.enter();
-        tracing::trace!("exe_name = {:?}", exe_name);
+        tracing::trace!("  args = {{exe_name = {:?}}}", exe_name);
         let res = api.NeedCurrentDirectoryForExePathW(exe_name);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -18846,7 +18700,7 @@ extern "C" fn thunk_SetCurrentDirectoryA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetCurrentDirectoryA");
         let _enter = span.enter();
-        tracing::trace!("lp_path_name = {:?}", lp_path_name);
+        tracing::trace!("  args = {{lp_path_name = {:?}}}", lp_path_name);
         let res = api.SetCurrentDirectoryA(lp_path_name);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -18871,7 +18725,7 @@ extern "C" fn thunk_SetCurrentDirectoryW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetCurrentDirectoryW");
         let _enter = span.enter();
-        tracing::trace!("lp_path_name = {:?}", lp_path_name);
+        tracing::trace!("  args = {{lp_path_name = {:?}}}", lp_path_name);
         let res = api.SetCurrentDirectoryW(lp_path_name);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -18896,7 +18750,7 @@ extern "C" fn thunk_SetEnvironmentStringsW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetEnvironmentStringsW");
         let _enter = span.enter();
-        tracing::trace!("new_environment = {:?}", new_environment);
+        tracing::trace!("  args = {{new_environment = {:?}}}", new_environment);
         let res = api.SetEnvironmentStringsW(new_environment);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -18922,7 +18776,11 @@ extern "C" fn thunk_SetEnvironmentVariableA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetEnvironmentVariableA");
         let _enter = span.enter();
-        tracing::trace!("lp_name = {:?}, lp_value = {:?}", lp_name, lp_value);
+        tracing::trace!(
+            "  args = {{lp_name = {:?}, lp_value = {:?}}}",
+            lp_name,
+            lp_value
+        );
         let res = api.SetEnvironmentVariableA(lp_name, lp_value);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -18948,7 +18806,11 @@ extern "C" fn thunk_SetEnvironmentVariableW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetEnvironmentVariableW");
         let _enter = span.enter();
-        tracing::trace!("lp_name = {:?}, lp_value = {:?}", lp_name, lp_value);
+        tracing::trace!(
+            "  args = {{lp_name = {:?}, lp_value = {:?}}}",
+            lp_name,
+            lp_value
+        );
         let res = api.SetEnvironmentVariableW(lp_name, lp_value);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -18974,7 +18836,11 @@ extern "C" fn thunk_TerminateEnclave(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("TerminateEnclave");
         let _enter = span.enter();
-        tracing::trace!("lp_address = {:?}, f_wait = {:?}", lp_address, f_wait);
+        tracing::trace!(
+            "  args = {{lp_address = {:?}, f_wait = {:?}}}",
+            lp_address,
+            f_wait
+        );
         let res = api.TerminateEnclave(lp_address, f_wait);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -19002,7 +18868,7 @@ extern "C" fn thunk_BindIoCompletionCallback(
         let span = tracing::trace_span!("BindIoCompletionCallback");
         let _enter = span.enter();
         tracing::trace!(
-            "file_handle = {:?}, function = {:?}, flags = {:?}",
+            "  args = {{file_handle = {:?}, function = {:?}, flags = {:?}}}",
             file_handle,
             function,
             flags
@@ -19028,7 +18894,7 @@ extern "C" fn thunk_CancelIo(context: &mut ExtendedContext, memory: FlatMemoryCt
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CancelIo");
         let _enter = span.enter();
-        tracing::trace!("h_file = {:?}", h_file);
+        tracing::trace!("  args = {{h_file = {:?}}}", h_file);
         let res = api.CancelIo(h_file);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -19051,7 +18917,11 @@ extern "C" fn thunk_CancelIoEx(context: &mut ExtendedContext, memory: FlatMemory
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CancelIoEx");
         let _enter = span.enter();
-        tracing::trace!("h_file = {:?}, lp_overlapped = {:?}", h_file, lp_overlapped);
+        tracing::trace!(
+            "  args = {{h_file = {:?}, lp_overlapped = {:?}}}",
+            h_file,
+            lp_overlapped
+        );
         let res = api.CancelIoEx(h_file, lp_overlapped);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -19076,7 +18946,7 @@ extern "C" fn thunk_CancelSynchronousIo(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CancelSynchronousIo");
         let _enter = span.enter();
-        tracing::trace!("h_thread = {:?}", h_thread);
+        tracing::trace!("  args = {{h_thread = {:?}}}", h_thread);
         let res = api.CancelSynchronousIo(h_thread);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -19104,7 +18974,7 @@ extern "C" fn thunk_CreateIoCompletionPort(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CreateIoCompletionPort");
         let _enter = span.enter();
-        tracing :: trace ! ( "file_handle = {:?}, existing_completion_port = {:?}, completion_key = {:?}, number_of_concurrent_threads = {:?}" , file_handle , existing_completion_port , completion_key , number_of_concurrent_threads );
+        tracing :: trace ! ( "  args = {{file_handle = {:?}, existing_completion_port = {:?}, completion_key = {:?}, number_of_concurrent_threads = {:?}}}" , file_handle , existing_completion_port , completion_key , number_of_concurrent_threads );
         let res = api.CreateIoCompletionPort(
             file_handle,
             existing_completion_port,
@@ -19141,7 +19011,7 @@ extern "C" fn thunk_DeviceIoControl(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("DeviceIoControl");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_device = {:?}, dw_io_control_code = {:?}, lp_in_buffer = {:?}, n_in_buffer_size = {:?}, lp_out_buffer = {:?}, n_out_buffer_size = {:?}, lp_bytes_returned = {:?}, lp_overlapped = {:?}" , h_device , dw_io_control_code , lp_in_buffer , n_in_buffer_size , lp_out_buffer , n_out_buffer_size , lp_bytes_returned , lp_overlapped );
+        tracing :: trace ! ( "  args = {{h_device = {:?}, dw_io_control_code = {:?}, lp_in_buffer = {:?}, n_in_buffer_size = {:?}, lp_out_buffer = {:?}, n_out_buffer_size = {:?}, lp_bytes_returned = {:?}, lp_overlapped = {:?}}}" , h_device , dw_io_control_code , lp_in_buffer , n_in_buffer_size , lp_out_buffer , n_out_buffer_size , lp_bytes_returned , lp_overlapped );
         let res = api.DeviceIoControl(
             h_device,
             dw_io_control_code,
@@ -19178,7 +19048,7 @@ extern "C" fn thunk_GetOverlappedResult(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetOverlappedResult");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_file = {:?}, lp_overlapped = {:?}, lp_number_of_bytes_transferred = {:?}, b_wait = {:?}" , h_file , lp_overlapped , lp_number_of_bytes_transferred , b_wait );
+        tracing :: trace ! ( "  args = {{h_file = {:?}, lp_overlapped = {:?}, lp_number_of_bytes_transferred = {:?}, b_wait = {:?}}}" , h_file , lp_overlapped , lp_number_of_bytes_transferred , b_wait );
         let res = api.GetOverlappedResult(
             h_file,
             lp_overlapped,
@@ -19212,7 +19082,7 @@ extern "C" fn thunk_GetOverlappedResultEx(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetOverlappedResultEx");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_file = {:?}, lp_overlapped = {:?}, lp_number_of_bytes_transferred = {:?}, dw_milliseconds = {:?}, b_alertable = {:?}" , h_file , lp_overlapped , lp_number_of_bytes_transferred , dw_milliseconds , b_alertable );
+        tracing :: trace ! ( "  args = {{h_file = {:?}, lp_overlapped = {:?}, lp_number_of_bytes_transferred = {:?}, dw_milliseconds = {:?}, b_alertable = {:?}}}" , h_file , lp_overlapped , lp_number_of_bytes_transferred , dw_milliseconds , b_alertable );
         let res = api.GetOverlappedResultEx(
             h_file,
             lp_overlapped,
@@ -19247,7 +19117,7 @@ extern "C" fn thunk_GetQueuedCompletionStatus(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetQueuedCompletionStatus");
         let _enter = span.enter();
-        tracing :: trace ! ( "completion_port = {:?}, lp_number_of_bytes_transferred = {:?}, lp_completion_key = {:?}, lp_overlapped = {:?}, dw_milliseconds = {:?}" , completion_port , lp_number_of_bytes_transferred , lp_completion_key , lp_overlapped , dw_milliseconds );
+        tracing :: trace ! ( "  args = {{completion_port = {:?}, lp_number_of_bytes_transferred = {:?}, lp_completion_key = {:?}, lp_overlapped = {:?}, dw_milliseconds = {:?}}}" , completion_port , lp_number_of_bytes_transferred , lp_completion_key , lp_overlapped , dw_milliseconds );
         let res = api.GetQueuedCompletionStatus(
             completion_port,
             lp_number_of_bytes_transferred,
@@ -19283,7 +19153,7 @@ extern "C" fn thunk_GetQueuedCompletionStatusEx(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetQueuedCompletionStatusEx");
         let _enter = span.enter();
-        tracing :: trace ! ( "completion_port = {:?}, lp_completion_port_entries = {:?}, ul_count = {:?}, ul_num_entries_removed = {:?}, dw_milliseconds = {:?}, f_alertable = {:?}" , completion_port , lp_completion_port_entries , ul_count , ul_num_entries_removed , dw_milliseconds , f_alertable );
+        tracing :: trace ! ( "  args = {{completion_port = {:?}, lp_completion_port_entries = {:?}, ul_count = {:?}, ul_num_entries_removed = {:?}, dw_milliseconds = {:?}, f_alertable = {:?}}}" , completion_port , lp_completion_port_entries , ul_count , ul_num_entries_removed , dw_milliseconds , f_alertable );
         let res = api.GetQueuedCompletionStatusEx(
             completion_port,
             lp_completion_port_entries,
@@ -19318,7 +19188,7 @@ extern "C" fn thunk_PostQueuedCompletionStatus(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("PostQueuedCompletionStatus");
         let _enter = span.enter();
-        tracing :: trace ! ( "completion_port = {:?}, dw_number_of_bytes_transferred = {:?}, dw_completion_key = {:?}, lp_overlapped = {:?}" , completion_port , dw_number_of_bytes_transferred , dw_completion_key , lp_overlapped );
+        tracing :: trace ! ( "  args = {{completion_port = {:?}, dw_number_of_bytes_transferred = {:?}, dw_completion_key = {:?}, lp_overlapped = {:?}}}" , completion_port , dw_number_of_bytes_transferred , dw_completion_key , lp_overlapped );
         let res = api.PostQueuedCompletionStatus(
             completion_port,
             dw_number_of_bytes_transferred,
@@ -19348,7 +19218,7 @@ extern "C" fn thunk_RtlFirstEntrySList(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("RtlFirstEntrySList");
         let _enter = span.enter();
-        tracing::trace!("list_head = {:?}", list_head);
+        tracing::trace!("  args = {{list_head = {:?}}}", list_head);
         let res = api.RtlFirstEntrySList(list_head);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -19373,7 +19243,7 @@ extern "C" fn thunk_RtlInitializeSListHead(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("RtlInitializeSListHead");
         let _enter = span.enter();
-        tracing::trace!("list_head = {:?}", list_head);
+        tracing::trace!("  args = {{list_head = {:?}}}", list_head);
         let res = api.RtlInitializeSListHead(list_head);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -19398,7 +19268,7 @@ extern "C" fn thunk_RtlInterlockedFlushSList(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("RtlInterlockedFlushSList");
         let _enter = span.enter();
-        tracing::trace!("list_head = {:?}", list_head);
+        tracing::trace!("  args = {{list_head = {:?}}}", list_head);
         let res = api.RtlInterlockedFlushSList(list_head);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -19423,7 +19293,7 @@ extern "C" fn thunk_RtlInterlockedPopEntrySList(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("RtlInterlockedPopEntrySList");
         let _enter = span.enter();
-        tracing::trace!("list_head = {:?}", list_head);
+        tracing::trace!("  args = {{list_head = {:?}}}", list_head);
         let res = api.RtlInterlockedPopEntrySList(list_head);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -19449,7 +19319,11 @@ extern "C" fn thunk_RtlInterlockedPushEntrySList(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("RtlInterlockedPushEntrySList");
         let _enter = span.enter();
-        tracing::trace!("list_head = {:?}, list_entry = {:?}", list_head, list_entry);
+        tracing::trace!(
+            "  args = {{list_head = {:?}, list_entry = {:?}}}",
+            list_head,
+            list_entry
+        );
         let res = api.RtlInterlockedPushEntrySList(list_head, list_entry);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -19478,7 +19352,7 @@ extern "C" fn thunk_RtlInterlockedPushListSListEx(
         let span = tracing::trace_span!("RtlInterlockedPushListSListEx");
         let _enter = span.enter();
         tracing::trace!(
-            "list_head = {:?}, list = {:?}, list_end = {:?}, count = {:?}",
+            "  args = {{list_head = {:?}, list = {:?}, list_end = {:?}, count = {:?}}}",
             list_head,
             list,
             list_end,
@@ -19508,7 +19382,7 @@ extern "C" fn thunk_RtlQueryDepthSList(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("RtlQueryDepthSList");
         let _enter = span.enter();
-        tracing::trace!("list_head = {:?}", list_head);
+        tracing::trace!("  args = {{list_head = {:?}}}", list_head);
         let res = api.RtlQueryDepthSList(list_head);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -19533,7 +19407,7 @@ extern "C" fn thunk_AddDllDirectory(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("AddDllDirectory");
         let _enter = span.enter();
-        tracing::trace!("new_directory = {:?}", new_directory);
+        tracing::trace!("  args = {{new_directory = {:?}}}", new_directory);
         let res = api.AddDllDirectory(new_directory);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -19560,7 +19434,7 @@ extern "C" fn thunk_BeginUpdateResourceA(
         let span = tracing::trace_span!("BeginUpdateResourceA");
         let _enter = span.enter();
         tracing::trace!(
-            "p_file_name = {:?}, b_delete_existing_resources = {:?}",
+            "  args = {{p_file_name = {:?}, b_delete_existing_resources = {:?}}}",
             p_file_name,
             b_delete_existing_resources
         );
@@ -19590,7 +19464,7 @@ extern "C" fn thunk_BeginUpdateResourceW(
         let span = tracing::trace_span!("BeginUpdateResourceW");
         let _enter = span.enter();
         tracing::trace!(
-            "p_file_name = {:?}, b_delete_existing_resources = {:?}",
+            "  args = {{p_file_name = {:?}, b_delete_existing_resources = {:?}}}",
             p_file_name,
             b_delete_existing_resources
         );
@@ -19618,7 +19492,7 @@ extern "C" fn thunk_DisableThreadLibraryCalls(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("DisableThreadLibraryCalls");
         let _enter = span.enter();
-        tracing::trace!("h_lib_module = {:?}", h_lib_module);
+        tracing::trace!("  args = {{h_lib_module = {:?}}}", h_lib_module);
         let res = api.DisableThreadLibraryCalls(h_lib_module);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -19644,7 +19518,11 @@ extern "C" fn thunk_EndUpdateResourceA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("EndUpdateResourceA");
         let _enter = span.enter();
-        tracing::trace!("h_update = {:?}, f_discard = {:?}", h_update, f_discard);
+        tracing::trace!(
+            "  args = {{h_update = {:?}, f_discard = {:?}}}",
+            h_update,
+            f_discard
+        );
         let res = api.EndUpdateResourceA(h_update, f_discard);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -19670,7 +19548,11 @@ extern "C" fn thunk_EndUpdateResourceW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("EndUpdateResourceW");
         let _enter = span.enter();
-        tracing::trace!("h_update = {:?}, f_discard = {:?}", h_update, f_discard);
+        tracing::trace!(
+            "  args = {{h_update = {:?}, f_discard = {:?}}}",
+            h_update,
+            f_discard
+        );
         let res = api.EndUpdateResourceW(h_update, f_discard);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -19699,14 +19581,7 @@ extern "C" fn thunk_EnumResourceLanguagesA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("EnumResourceLanguagesA");
         let _enter = span.enter();
-        tracing::trace!(
-            "h_module = {:?}, lp_type = {:?}, lp_name = {:?}, lp_enum_func = {:?}, l_param = {:?}",
-            h_module,
-            lp_type,
-            lp_name,
-            lp_enum_func,
-            l_param
-        );
+        tracing :: trace ! ( "  args = {{h_module = {:?}, lp_type = {:?}, lp_name = {:?}, lp_enum_func = {:?}, l_param = {:?}}}" , h_module , lp_type , lp_name , lp_enum_func , l_param );
         let res = api.EnumResourceLanguagesA(h_module, lp_type, lp_name, lp_enum_func, l_param);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -19737,7 +19612,7 @@ extern "C" fn thunk_EnumResourceLanguagesExA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("EnumResourceLanguagesExA");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_module = {:?}, lp_type = {:?}, lp_name = {:?}, lp_enum_func = {:?}, l_param = {:?}, dw_flags = {:?}, lang_id = {:?}" , h_module , lp_type , lp_name , lp_enum_func , l_param , dw_flags , lang_id );
+        tracing :: trace ! ( "  args = {{h_module = {:?}, lp_type = {:?}, lp_name = {:?}, lp_enum_func = {:?}, l_param = {:?}, dw_flags = {:?}, lang_id = {:?}}}" , h_module , lp_type , lp_name , lp_enum_func , l_param , dw_flags , lang_id );
         let res = api.EnumResourceLanguagesExA(
             h_module,
             lp_type,
@@ -19776,7 +19651,7 @@ extern "C" fn thunk_EnumResourceLanguagesExW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("EnumResourceLanguagesExW");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_module = {:?}, lp_type = {:?}, lp_name = {:?}, lp_enum_func = {:?}, l_param = {:?}, dw_flags = {:?}, lang_id = {:?}" , h_module , lp_type , lp_name , lp_enum_func , l_param , dw_flags , lang_id );
+        tracing :: trace ! ( "  args = {{h_module = {:?}, lp_type = {:?}, lp_name = {:?}, lp_enum_func = {:?}, l_param = {:?}, dw_flags = {:?}, lang_id = {:?}}}" , h_module , lp_type , lp_name , lp_enum_func , l_param , dw_flags , lang_id );
         let res = api.EnumResourceLanguagesExW(
             h_module,
             lp_type,
@@ -19813,14 +19688,7 @@ extern "C" fn thunk_EnumResourceLanguagesW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("EnumResourceLanguagesW");
         let _enter = span.enter();
-        tracing::trace!(
-            "h_module = {:?}, lp_type = {:?}, lp_name = {:?}, lp_enum_func = {:?}, l_param = {:?}",
-            h_module,
-            lp_type,
-            lp_name,
-            lp_enum_func,
-            l_param
-        );
+        tracing :: trace ! ( "  args = {{h_module = {:?}, lp_type = {:?}, lp_name = {:?}, lp_enum_func = {:?}, l_param = {:?}}}" , h_module , lp_type , lp_name , lp_enum_func , l_param );
         let res = api.EnumResourceLanguagesW(h_module, lp_type, lp_name, lp_enum_func, l_param);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -19849,7 +19717,7 @@ extern "C" fn thunk_EnumResourceNamesA(
         let span = tracing::trace_span!("EnumResourceNamesA");
         let _enter = span.enter();
         tracing::trace!(
-            "h_module = {:?}, lp_type = {:?}, lp_enum_func = {:?}, l_param = {:?}",
+            "  args = {{h_module = {:?}, lp_type = {:?}, lp_enum_func = {:?}, l_param = {:?}}}",
             h_module,
             lp_type,
             lp_enum_func,
@@ -19884,7 +19752,7 @@ extern "C" fn thunk_EnumResourceNamesExA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("EnumResourceNamesExA");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_module = {:?}, lp_type = {:?}, lp_enum_func = {:?}, l_param = {:?}, dw_flags = {:?}, lang_id = {:?}" , h_module , lp_type , lp_enum_func , l_param , dw_flags , lang_id );
+        tracing :: trace ! ( "  args = {{h_module = {:?}, lp_type = {:?}, lp_enum_func = {:?}, l_param = {:?}, dw_flags = {:?}, lang_id = {:?}}}" , h_module , lp_type , lp_enum_func , l_param , dw_flags , lang_id );
         let res =
             api.EnumResourceNamesExA(h_module, lp_type, lp_enum_func, l_param, dw_flags, lang_id);
         tracing::trace!("result = {:?}", res);
@@ -19915,7 +19783,7 @@ extern "C" fn thunk_EnumResourceNamesExW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("EnumResourceNamesExW");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_module = {:?}, lp_type = {:?}, lp_enum_func = {:?}, l_param = {:?}, dw_flags = {:?}, lang_id = {:?}" , h_module , lp_type , lp_enum_func , l_param , dw_flags , lang_id );
+        tracing :: trace ! ( "  args = {{h_module = {:?}, lp_type = {:?}, lp_enum_func = {:?}, l_param = {:?}, dw_flags = {:?}, lang_id = {:?}}}" , h_module , lp_type , lp_enum_func , l_param , dw_flags , lang_id );
         let res =
             api.EnumResourceNamesExW(h_module, lp_type, lp_enum_func, l_param, dw_flags, lang_id);
         tracing::trace!("result = {:?}", res);
@@ -19945,7 +19813,7 @@ extern "C" fn thunk_EnumResourceNamesW(
         let span = tracing::trace_span!("EnumResourceNamesW");
         let _enter = span.enter();
         tracing::trace!(
-            "h_module = {:?}, lp_type = {:?}, lp_enum_func = {:?}, l_param = {:?}",
+            "  args = {{h_module = {:?}, lp_type = {:?}, lp_enum_func = {:?}, l_param = {:?}}}",
             h_module,
             lp_type,
             lp_enum_func,
@@ -19978,7 +19846,7 @@ extern "C" fn thunk_EnumResourceTypesA(
         let span = tracing::trace_span!("EnumResourceTypesA");
         let _enter = span.enter();
         tracing::trace!(
-            "h_module = {:?}, lp_enum_func = {:?}, l_param = {:?}",
+            "  args = {{h_module = {:?}, lp_enum_func = {:?}, l_param = {:?}}}",
             h_module,
             lp_enum_func,
             l_param
@@ -20011,14 +19879,7 @@ extern "C" fn thunk_EnumResourceTypesExA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("EnumResourceTypesExA");
         let _enter = span.enter();
-        tracing::trace!(
-            "h_module = {:?}, lp_enum_func = {:?}, l_param = {:?}, dw_flags = {:?}, lang_id = {:?}",
-            h_module,
-            lp_enum_func,
-            l_param,
-            dw_flags,
-            lang_id
-        );
+        tracing :: trace ! ( "  args = {{h_module = {:?}, lp_enum_func = {:?}, l_param = {:?}, dw_flags = {:?}, lang_id = {:?}}}" , h_module , lp_enum_func , l_param , dw_flags , lang_id );
         let res = api.EnumResourceTypesExA(h_module, lp_enum_func, l_param, dw_flags, lang_id);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -20047,14 +19908,7 @@ extern "C" fn thunk_EnumResourceTypesExW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("EnumResourceTypesExW");
         let _enter = span.enter();
-        tracing::trace!(
-            "h_module = {:?}, lp_enum_func = {:?}, l_param = {:?}, dw_flags = {:?}, lang_id = {:?}",
-            h_module,
-            lp_enum_func,
-            l_param,
-            dw_flags,
-            lang_id
-        );
+        tracing :: trace ! ( "  args = {{h_module = {:?}, lp_enum_func = {:?}, l_param = {:?}, dw_flags = {:?}, lang_id = {:?}}}" , h_module , lp_enum_func , l_param , dw_flags , lang_id );
         let res = api.EnumResourceTypesExW(h_module, lp_enum_func, l_param, dw_flags, lang_id);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -20082,7 +19936,7 @@ extern "C" fn thunk_EnumResourceTypesW(
         let span = tracing::trace_span!("EnumResourceTypesW");
         let _enter = span.enter();
         tracing::trace!(
-            "h_module = {:?}, lp_enum_func = {:?}, l_param = {:?}",
+            "  args = {{h_module = {:?}, lp_enum_func = {:?}, l_param = {:?}}}",
             h_module,
             lp_enum_func,
             l_param
@@ -20111,7 +19965,7 @@ extern "C" fn thunk_FindResourceA(context: &mut ExtendedContext, memory: FlatMem
         let span = tracing::trace_span!("FindResourceA");
         let _enter = span.enter();
         tracing::trace!(
-            "h_module = {:?}, lp_name = {:?}, lp_type = {:?}",
+            "  args = {{h_module = {:?}, lp_name = {:?}, lp_type = {:?}}}",
             h_module,
             lp_name,
             lp_type
@@ -20144,7 +19998,7 @@ extern "C" fn thunk_FindResourceExA(
         let span = tracing::trace_span!("FindResourceExA");
         let _enter = span.enter();
         tracing::trace!(
-            "h_module = {:?}, lp_type = {:?}, lp_name = {:?}, w_language = {:?}",
+            "  args = {{h_module = {:?}, lp_type = {:?}, lp_name = {:?}, w_language = {:?}}}",
             h_module,
             lp_type,
             lp_name,
@@ -20178,7 +20032,7 @@ extern "C" fn thunk_FindResourceExW(
         let span = tracing::trace_span!("FindResourceExW");
         let _enter = span.enter();
         tracing::trace!(
-            "h_module = {:?}, lp_type = {:?}, lp_name = {:?}, w_language = {:?}",
+            "  args = {{h_module = {:?}, lp_type = {:?}, lp_name = {:?}, w_language = {:?}}}",
             h_module,
             lp_type,
             lp_name,
@@ -20208,7 +20062,7 @@ extern "C" fn thunk_FindResourceW(context: &mut ExtendedContext, memory: FlatMem
         let span = tracing::trace_span!("FindResourceW");
         let _enter = span.enter();
         tracing::trace!(
-            "h_module = {:?}, lp_name = {:?}, lp_type = {:?}",
+            "  args = {{h_module = {:?}, lp_name = {:?}, lp_type = {:?}}}",
             h_module,
             lp_name,
             lp_type
@@ -20234,7 +20088,7 @@ extern "C" fn thunk_FreeLibrary(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("FreeLibrary");
         let _enter = span.enter();
-        tracing::trace!("h_lib_module = {:?}", h_lib_module);
+        tracing::trace!("  args = {{h_lib_module = {:?}}}", h_lib_module);
         let res = api.FreeLibrary(h_lib_module);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -20261,7 +20115,7 @@ extern "C" fn thunk_FreeLibraryAndExitThread(
         let span = tracing::trace_span!("FreeLibraryAndExitThread");
         let _enter = span.enter();
         tracing::trace!(
-            "h_lib_module = {:?}, dw_exit_code = {:?}",
+            "  args = {{h_lib_module = {:?}, dw_exit_code = {:?}}}",
             h_lib_module,
             dw_exit_code
         );
@@ -20286,7 +20140,7 @@ extern "C" fn thunk_FreeResource(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("FreeResource");
         let _enter = span.enter();
-        tracing::trace!("h_res_data = {:?}", h_res_data);
+        tracing::trace!("  args = {{h_res_data = {:?}}}", h_res_data);
         let res = api.FreeResource(h_res_data);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -20313,7 +20167,7 @@ extern "C" fn thunk_GetDllDirectoryA(
         let span = tracing::trace_span!("GetDllDirectoryA");
         let _enter = span.enter();
         tracing::trace!(
-            "n_buffer_length = {:?}, lp_buffer = {:?}",
+            "  args = {{n_buffer_length = {:?}, lp_buffer = {:?}}}",
             n_buffer_length,
             lp_buffer
         );
@@ -20343,7 +20197,7 @@ extern "C" fn thunk_GetDllDirectoryW(
         let span = tracing::trace_span!("GetDllDirectoryW");
         let _enter = span.enter();
         tracing::trace!(
-            "n_buffer_length = {:?}, lp_buffer = {:?}",
+            "  args = {{n_buffer_length = {:?}, lp_buffer = {:?}}}",
             n_buffer_length,
             lp_buffer
         );
@@ -20374,7 +20228,7 @@ extern "C" fn thunk_GetModuleFileNameA(
         let span = tracing::trace_span!("GetModuleFileNameA");
         let _enter = span.enter();
         tracing::trace!(
-            "h_module = {:?}, lp_filename = {:?}, n_size = {:?}",
+            "  args = {{h_module = {:?}, lp_filename = {:?}, n_size = {:?}}}",
             h_module,
             lp_filename,
             n_size
@@ -20406,7 +20260,7 @@ extern "C" fn thunk_GetModuleFileNameW(
         let span = tracing::trace_span!("GetModuleFileNameW");
         let _enter = span.enter();
         tracing::trace!(
-            "h_module = {:?}, lp_filename = {:?}, n_size = {:?}",
+            "  args = {{h_module = {:?}, lp_filename = {:?}, n_size = {:?}}}",
             h_module,
             lp_filename,
             n_size
@@ -20435,7 +20289,7 @@ extern "C" fn thunk_GetModuleHandleA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetModuleHandleA");
         let _enter = span.enter();
-        tracing::trace!("lp_module_name = {:?}", lp_module_name);
+        tracing::trace!("  args = {{lp_module_name = {:?}}}", lp_module_name);
         let res = api.GetModuleHandleA(lp_module_name);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -20463,7 +20317,7 @@ extern "C" fn thunk_GetModuleHandleExA(
         let span = tracing::trace_span!("GetModuleHandleExA");
         let _enter = span.enter();
         tracing::trace!(
-            "dw_flags = {:?}, lp_module_name = {:?}, ph_module = {:?}",
+            "  args = {{dw_flags = {:?}, lp_module_name = {:?}, ph_module = {:?}}}",
             dw_flags,
             lp_module_name,
             ph_module
@@ -20495,7 +20349,7 @@ extern "C" fn thunk_GetModuleHandleExW(
         let span = tracing::trace_span!("GetModuleHandleExW");
         let _enter = span.enter();
         tracing::trace!(
-            "dw_flags = {:?}, lp_module_name = {:?}, ph_module = {:?}",
+            "  args = {{dw_flags = {:?}, lp_module_name = {:?}, ph_module = {:?}}}",
             dw_flags,
             lp_module_name,
             ph_module
@@ -20524,7 +20378,7 @@ extern "C" fn thunk_GetModuleHandleW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetModuleHandleW");
         let _enter = span.enter();
-        tracing::trace!("lp_module_name = {:?}", lp_module_name);
+        tracing::trace!("  args = {{lp_module_name = {:?}}}", lp_module_name);
         let res = api.GetModuleHandleW(lp_module_name);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -20551,7 +20405,7 @@ extern "C" fn thunk_GetProcAddress(
         let span = tracing::trace_span!("GetProcAddress");
         let _enter = span.enter();
         tracing::trace!(
-            "h_module = {:?}, lp_proc_name = {:?}",
+            "  args = {{h_module = {:?}, lp_proc_name = {:?}}}",
             h_module,
             lp_proc_name
         );
@@ -20576,7 +20430,7 @@ extern "C" fn thunk_LoadLibraryA(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("LoadLibraryA");
         let _enter = span.enter();
-        tracing::trace!("lp_lib_file_name = {:?}", lp_lib_file_name);
+        tracing::trace!("  args = {{lp_lib_file_name = {:?}}}", lp_lib_file_name);
         let res = api.LoadLibraryA(lp_lib_file_name);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -20604,7 +20458,7 @@ extern "C" fn thunk_LoadLibraryExA(
         let span = tracing::trace_span!("LoadLibraryExA");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_lib_file_name = {:?}, h_file = {:?}, dw_flags = {:?}",
+            "  args = {{lp_lib_file_name = {:?}, h_file = {:?}, dw_flags = {:?}}}",
             lp_lib_file_name,
             h_file,
             dw_flags
@@ -20636,7 +20490,7 @@ extern "C" fn thunk_LoadLibraryExW(
         let span = tracing::trace_span!("LoadLibraryExW");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_lib_file_name = {:?}, h_file = {:?}, dw_flags = {:?}",
+            "  args = {{lp_lib_file_name = {:?}, h_file = {:?}, dw_flags = {:?}}}",
             lp_lib_file_name,
             h_file,
             dw_flags
@@ -20662,7 +20516,7 @@ extern "C" fn thunk_LoadLibraryW(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("LoadLibraryW");
         let _enter = span.enter();
-        tracing::trace!("lp_lib_file_name = {:?}", lp_lib_file_name);
+        tracing::trace!("  args = {{lp_lib_file_name = {:?}}}", lp_lib_file_name);
         let res = api.LoadLibraryW(lp_lib_file_name);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -20686,7 +20540,7 @@ extern "C" fn thunk_LoadModule(context: &mut ExtendedContext, memory: FlatMemory
         let span = tracing::trace_span!("LoadModule");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_module_name = {:?}, lp_parameter_block = {:?}",
+            "  args = {{lp_module_name = {:?}, lp_parameter_block = {:?}}}",
             lp_module_name,
             lp_parameter_block
         );
@@ -20716,7 +20570,7 @@ extern "C" fn thunk_LoadPackagedLibrary(
         let span = tracing::trace_span!("LoadPackagedLibrary");
         let _enter = span.enter();
         tracing::trace!(
-            "lpw_lib_file_name = {:?}, reserved = {:?}",
+            "  args = {{lpw_lib_file_name = {:?}, reserved = {:?}}}",
             lpw_lib_file_name,
             reserved
         );
@@ -20742,7 +20596,11 @@ extern "C" fn thunk_LoadResource(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("LoadResource");
         let _enter = span.enter();
-        tracing::trace!("h_module = {:?}, h_res_info = {:?}", h_module, h_res_info);
+        tracing::trace!(
+            "  args = {{h_module = {:?}, h_res_info = {:?}}}",
+            h_module,
+            h_res_info
+        );
         let res = api.LoadResource(h_module, h_res_info);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -20764,7 +20622,7 @@ extern "C" fn thunk_LockResource(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("LockResource");
         let _enter = span.enter();
-        tracing::trace!("h_res_data = {:?}", h_res_data);
+        tracing::trace!("  args = {{h_res_data = {:?}}}", h_res_data);
         let res = api.LockResource(h_res_data);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -20789,7 +20647,7 @@ extern "C" fn thunk_RemoveDllDirectory(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("RemoveDllDirectory");
         let _enter = span.enter();
-        tracing::trace!("cookie = {:?}", cookie);
+        tracing::trace!("  args = {{cookie = {:?}}}", cookie);
         let res = api.RemoveDllDirectory(cookie);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -20814,7 +20672,7 @@ extern "C" fn thunk_SetDefaultDllDirectories(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetDefaultDllDirectories");
         let _enter = span.enter();
-        tracing::trace!("directory_flags = {:?}", directory_flags);
+        tracing::trace!("  args = {{directory_flags = {:?}}}", directory_flags);
         let res = api.SetDefaultDllDirectories(directory_flags);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -20839,7 +20697,7 @@ extern "C" fn thunk_SetDllDirectoryA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetDllDirectoryA");
         let _enter = span.enter();
-        tracing::trace!("lp_path_name = {:?}", lp_path_name);
+        tracing::trace!("  args = {{lp_path_name = {:?}}}", lp_path_name);
         let res = api.SetDllDirectoryA(lp_path_name);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -20864,7 +20722,7 @@ extern "C" fn thunk_SetDllDirectoryW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetDllDirectoryW");
         let _enter = span.enter();
-        tracing::trace!("lp_path_name = {:?}", lp_path_name);
+        tracing::trace!("  args = {{lp_path_name = {:?}}}", lp_path_name);
         let res = api.SetDllDirectoryW(lp_path_name);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -20890,7 +20748,11 @@ extern "C" fn thunk_SizeofResource(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SizeofResource");
         let _enter = span.enter();
-        tracing::trace!("h_module = {:?}, h_res_info = {:?}", h_module, h_res_info);
+        tracing::trace!(
+            "  args = {{h_module = {:?}, h_res_info = {:?}}}",
+            h_module,
+            h_res_info
+        );
         let res = api.SizeofResource(h_module, h_res_info);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -20920,7 +20782,7 @@ extern "C" fn thunk_UpdateResourceA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("UpdateResourceA");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_update = {:?}, lp_type = {:?}, lp_name = {:?}, w_language = {:?}, lp_data = {:?}, cb = {:?}" , h_update , lp_type , lp_name , w_language , lp_data , cb );
+        tracing :: trace ! ( "  args = {{h_update = {:?}, lp_type = {:?}, lp_name = {:?}, w_language = {:?}, lp_data = {:?}, cb = {:?}}}" , h_update , lp_type , lp_name , w_language , lp_data , cb );
         let res = api.UpdateResourceA(h_update, lp_type, lp_name, w_language, lp_data, cb);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -20950,7 +20812,7 @@ extern "C" fn thunk_UpdateResourceW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("UpdateResourceW");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_update = {:?}, lp_type = {:?}, lp_name = {:?}, w_language = {:?}, lp_data = {:?}, cb = {:?}" , h_update , lp_type , lp_name , w_language , lp_data , cb );
+        tracing :: trace ! ( "  args = {{h_update = {:?}, lp_type = {:?}, lp_name = {:?}, w_language = {:?}, lp_data = {:?}, cb = {:?}}}" , h_update , lp_type , lp_name , w_language , lp_data , cb );
         let res = api.UpdateResourceW(h_update, lp_type, lp_name, w_language, lp_data, cb);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -20975,7 +20837,7 @@ extern "C" fn thunk_AddSecureMemoryCacheCallback(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("AddSecureMemoryCacheCallback");
         let _enter = span.enter();
-        tracing::trace!("pfn_call_back = {:?}", pfn_call_back);
+        tracing::trace!("  args = {{pfn_call_back = {:?}}}", pfn_call_back);
         let res = api.AddSecureMemoryCacheCallback(pfn_call_back);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -21003,7 +20865,7 @@ extern "C" fn thunk_AllocateUserPhysicalPages(
         let span = tracing::trace_span!("AllocateUserPhysicalPages");
         let _enter = span.enter();
         tracing::trace!(
-            "h_process = {:?}, number_of_pages = {:?}, page_array = {:?}",
+            "  args = {{h_process = {:?}, number_of_pages = {:?}, page_array = {:?}}}",
             h_process,
             number_of_pages,
             page_array
@@ -21036,7 +20898,7 @@ extern "C" fn thunk_AllocateUserPhysicalPages2(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("AllocateUserPhysicalPages2");
         let _enter = span.enter();
-        tracing :: trace ! ( "object_handle = {:?}, number_of_pages = {:?}, page_array = {:?}, extended_parameters = {:?}, extended_parameter_count = {:?}" , object_handle , number_of_pages , page_array , extended_parameters , extended_parameter_count );
+        tracing :: trace ! ( "  args = {{object_handle = {:?}, number_of_pages = {:?}, page_array = {:?}, extended_parameters = {:?}, extended_parameter_count = {:?}}}" , object_handle , number_of_pages , page_array , extended_parameters , extended_parameter_count );
         let res = api.AllocateUserPhysicalPages2(
             object_handle,
             number_of_pages,
@@ -21070,13 +20932,7 @@ extern "C" fn thunk_AllocateUserPhysicalPagesNuma(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("AllocateUserPhysicalPagesNuma");
         let _enter = span.enter();
-        tracing::trace!(
-            "h_process = {:?}, number_of_pages = {:?}, page_array = {:?}, nnd_preferred = {:?}",
-            h_process,
-            number_of_pages,
-            page_array,
-            nnd_preferred
-        );
+        tracing :: trace ! ( "  args = {{h_process = {:?}, number_of_pages = {:?}, page_array = {:?}, nnd_preferred = {:?}}}" , h_process , number_of_pages , page_array , nnd_preferred );
         let res = api.AllocateUserPhysicalPagesNuma(
             h_process,
             number_of_pages,
@@ -21106,7 +20962,7 @@ extern "C" fn thunk_CreateMemoryResourceNotification(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CreateMemoryResourceNotification");
         let _enter = span.enter();
-        tracing::trace!("notification_type = {:?}", notification_type);
+        tracing::trace!("  args = {{notification_type = {:?}}}", notification_type);
         let res = api.CreateMemoryResourceNotification(notification_type);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -21132,7 +20988,11 @@ extern "C" fn thunk_DiscardVirtualMemory(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("DiscardVirtualMemory");
         let _enter = span.enter();
-        tracing::trace!("virtual_address = {:?}, size = {:?}", virtual_address, size);
+        tracing::trace!(
+            "  args = {{virtual_address = {:?}, size = {:?}}}",
+            virtual_address,
+            size
+        );
         let res = api.DiscardVirtualMemory(virtual_address, size);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -21159,7 +21019,7 @@ extern "C" fn thunk_FlushViewOfFile(
         let span = tracing::trace_span!("FlushViewOfFile");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_base_address = {:?}, dw_number_of_bytes_to_flush = {:?}",
+            "  args = {{lp_base_address = {:?}, dw_number_of_bytes_to_flush = {:?}}}",
             lp_base_address,
             dw_number_of_bytes_to_flush
         );
@@ -21190,7 +21050,7 @@ extern "C" fn thunk_FreeUserPhysicalPages(
         let span = tracing::trace_span!("FreeUserPhysicalPages");
         let _enter = span.enter();
         tracing::trace!(
-            "h_process = {:?}, number_of_pages = {:?}, page_array = {:?}",
+            "  args = {{h_process = {:?}, number_of_pages = {:?}, page_array = {:?}}}",
             h_process,
             number_of_pages,
             page_array
@@ -21218,7 +21078,7 @@ extern "C" fn thunk_GetLargePageMinimum(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetLargePageMinimum");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.GetLargePageMinimum();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -21243,7 +21103,7 @@ extern "C" fn thunk_GetMemoryErrorHandlingCapabilities(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetMemoryErrorHandlingCapabilities");
         let _enter = span.enter();
-        tracing::trace!("capabilities = {:?}", capabilities);
+        tracing::trace!("  args = {{capabilities = {:?}}}", capabilities);
         let res = api.GetMemoryErrorHandlingCapabilities(capabilities);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -21267,7 +21127,7 @@ extern "C" fn thunk_GetProcessHeap(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetProcessHeap");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.GetProcessHeap();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -21294,7 +21154,7 @@ extern "C" fn thunk_GetProcessHeaps(
         let span = tracing::trace_span!("GetProcessHeaps");
         let _enter = span.enter();
         tracing::trace!(
-            "number_of_heaps = {:?}, process_heaps = {:?}",
+            "  args = {{number_of_heaps = {:?}, process_heaps = {:?}}}",
             number_of_heaps,
             process_heaps
         );
@@ -21325,7 +21185,7 @@ extern "C" fn thunk_GetProcessWorkingSetSizeEx(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetProcessWorkingSetSizeEx");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_process = {:?}, lp_minimum_working_set_size = {:?}, lp_maximum_working_set_size = {:?}, flags = {:?}" , h_process , lp_minimum_working_set_size , lp_maximum_working_set_size , flags );
+        tracing :: trace ! ( "  args = {{h_process = {:?}, lp_minimum_working_set_size = {:?}, lp_maximum_working_set_size = {:?}, flags = {:?}}}" , h_process , lp_minimum_working_set_size , lp_maximum_working_set_size , flags );
         let res = api.GetProcessWorkingSetSizeEx(
             h_process,
             lp_minimum_working_set_size,
@@ -21357,12 +21217,7 @@ extern "C" fn thunk_GetSystemFileCacheSize(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetSystemFileCacheSize");
         let _enter = span.enter();
-        tracing::trace!(
-            "lp_minimum_file_cache_size = {:?}, lp_maximum_file_cache_size = {:?}, lp_flags = {:?}",
-            lp_minimum_file_cache_size,
-            lp_maximum_file_cache_size,
-            lp_flags
-        );
+        tracing :: trace ! ( "  args = {{lp_minimum_file_cache_size = {:?}, lp_maximum_file_cache_size = {:?}, lp_flags = {:?}}}" , lp_minimum_file_cache_size , lp_maximum_file_cache_size , lp_flags );
         let res = api.GetSystemFileCacheSize(
             lp_minimum_file_cache_size,
             lp_maximum_file_cache_size,
@@ -21393,7 +21248,7 @@ extern "C" fn thunk_GetWriteWatch(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetWriteWatch");
         let _enter = span.enter();
-        tracing :: trace ! ( "dw_flags = {:?}, lp_base_address = {:?}, dw_region_size = {:?}, lp_addresses = {:?}, lpdw_count = {:?}, lpdw_granularity = {:?}" , dw_flags , lp_base_address , dw_region_size , lp_addresses , lpdw_count , lpdw_granularity );
+        tracing :: trace ! ( "  args = {{dw_flags = {:?}, lp_base_address = {:?}, dw_region_size = {:?}, lp_addresses = {:?}, lpdw_count = {:?}, lpdw_granularity = {:?}}}" , dw_flags , lp_base_address , dw_region_size , lp_addresses , lpdw_count , lpdw_granularity );
         let res = api.GetWriteWatch(
             dw_flags,
             lp_base_address,
@@ -21423,7 +21278,11 @@ extern "C" fn thunk_GlobalAlloc(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GlobalAlloc");
         let _enter = span.enter();
-        tracing::trace!("u_flags = {:?}, dw_bytes = {:?}", u_flags, dw_bytes);
+        tracing::trace!(
+            "  args = {{u_flags = {:?}, dw_bytes = {:?}}}",
+            u_flags,
+            dw_bytes
+        );
         let res = api.GlobalAlloc(u_flags, dw_bytes);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -21445,7 +21304,7 @@ extern "C" fn thunk_GlobalFlags(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GlobalFlags");
         let _enter = span.enter();
-        tracing::trace!("h_mem = {:?}", h_mem);
+        tracing::trace!("  args = {{h_mem = {:?}}}", h_mem);
         let res = api.GlobalFlags(h_mem);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -21467,7 +21326,7 @@ extern "C" fn thunk_GlobalFree(context: &mut ExtendedContext, memory: FlatMemory
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GlobalFree");
         let _enter = span.enter();
-        tracing::trace!("h_mem = {:?}", h_mem);
+        tracing::trace!("  args = {{h_mem = {:?}}}", h_mem);
         let res = api.GlobalFree(h_mem);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -21489,7 +21348,7 @@ extern "C" fn thunk_GlobalHandle(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GlobalHandle");
         let _enter = span.enter();
-        tracing::trace!("p_mem = {:?}", p_mem);
+        tracing::trace!("  args = {{p_mem = {:?}}}", p_mem);
         let res = api.GlobalHandle(p_mem);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -21511,7 +21370,7 @@ extern "C" fn thunk_GlobalLock(context: &mut ExtendedContext, memory: FlatMemory
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GlobalLock");
         let _enter = span.enter();
-        tracing::trace!("h_mem = {:?}", h_mem);
+        tracing::trace!("  args = {{h_mem = {:?}}}", h_mem);
         let res = api.GlobalLock(h_mem);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -21536,7 +21395,7 @@ extern "C" fn thunk_GlobalReAlloc(context: &mut ExtendedContext, memory: FlatMem
         let span = tracing::trace_span!("GlobalReAlloc");
         let _enter = span.enter();
         tracing::trace!(
-            "h_mem = {:?}, dw_bytes = {:?}, u_flags = {:?}",
+            "  args = {{h_mem = {:?}, dw_bytes = {:?}, u_flags = {:?}}}",
             h_mem,
             dw_bytes,
             u_flags
@@ -21562,7 +21421,7 @@ extern "C" fn thunk_GlobalSize(context: &mut ExtendedContext, memory: FlatMemory
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GlobalSize");
         let _enter = span.enter();
-        tracing::trace!("h_mem = {:?}", h_mem);
+        tracing::trace!("  args = {{h_mem = {:?}}}", h_mem);
         let res = api.GlobalSize(h_mem);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -21584,7 +21443,7 @@ extern "C" fn thunk_GlobalUnlock(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GlobalUnlock");
         let _enter = span.enter();
-        tracing::trace!("h_mem = {:?}", h_mem);
+        tracing::trace!("  args = {{h_mem = {:?}}}", h_mem);
         let res = api.GlobalUnlock(h_mem);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -21609,7 +21468,7 @@ extern "C" fn thunk_HeapAlloc(context: &mut ExtendedContext, memory: FlatMemoryC
         let span = tracing::trace_span!("HeapAlloc");
         let _enter = span.enter();
         tracing::trace!(
-            "h_heap = {:?}, dw_flags = {:?}, dw_bytes = {:?}",
+            "  args = {{h_heap = {:?}, dw_flags = {:?}, dw_bytes = {:?}}}",
             h_heap,
             dw_flags,
             dw_bytes
@@ -21636,7 +21495,11 @@ extern "C" fn thunk_HeapCompact(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("HeapCompact");
         let _enter = span.enter();
-        tracing::trace!("h_heap = {:?}, dw_flags = {:?}", h_heap, dw_flags);
+        tracing::trace!(
+            "  args = {{h_heap = {:?}, dw_flags = {:?}}}",
+            h_heap,
+            dw_flags
+        );
         let res = api.HeapCompact(h_heap, dw_flags);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -21661,7 +21524,7 @@ extern "C" fn thunk_HeapCreate(context: &mut ExtendedContext, memory: FlatMemory
         let span = tracing::trace_span!("HeapCreate");
         let _enter = span.enter();
         tracing::trace!(
-            "fl_options = {:?}, dw_initial_size = {:?}, dw_maximum_size = {:?}",
+            "  args = {{fl_options = {:?}, dw_initial_size = {:?}, dw_maximum_size = {:?}}}",
             fl_options,
             dw_initial_size,
             dw_maximum_size
@@ -21687,7 +21550,7 @@ extern "C" fn thunk_HeapDestroy(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("HeapDestroy");
         let _enter = span.enter();
-        tracing::trace!("h_heap = {:?}", h_heap);
+        tracing::trace!("  args = {{h_heap = {:?}}}", h_heap);
         let res = api.HeapDestroy(h_heap);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -21712,7 +21575,7 @@ extern "C" fn thunk_HeapFree(context: &mut ExtendedContext, memory: FlatMemoryCt
         let span = tracing::trace_span!("HeapFree");
         let _enter = span.enter();
         tracing::trace!(
-            "h_heap = {:?}, dw_flags = {:?}, lp_mem = {:?}",
+            "  args = {{h_heap = {:?}, dw_flags = {:?}, lp_mem = {:?}}}",
             h_heap,
             dw_flags,
             lp_mem
@@ -21738,7 +21601,7 @@ extern "C" fn thunk_HeapLock(context: &mut ExtendedContext, memory: FlatMemoryCt
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("HeapLock");
         let _enter = span.enter();
-        tracing::trace!("h_heap = {:?}", h_heap);
+        tracing::trace!("  args = {{h_heap = {:?}}}", h_heap);
         let res = api.HeapLock(h_heap);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -21767,7 +21630,7 @@ extern "C" fn thunk_HeapQueryInformation(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("HeapQueryInformation");
         let _enter = span.enter();
-        tracing :: trace ! ( "heap_handle = {:?}, heap_information_class = {:?}, heap_information = {:?}, heap_information_length = {:?}, return_length = {:?}" , heap_handle , heap_information_class , heap_information , heap_information_length , return_length );
+        tracing :: trace ! ( "  args = {{heap_handle = {:?}, heap_information_class = {:?}, heap_information = {:?}, heap_information_length = {:?}, return_length = {:?}}}" , heap_handle , heap_information_class , heap_information , heap_information_length , return_length );
         let res = api.HeapQueryInformation(
             heap_handle,
             heap_information_class,
@@ -21799,7 +21662,7 @@ extern "C" fn thunk_HeapReAlloc(context: &mut ExtendedContext, memory: FlatMemor
         let span = tracing::trace_span!("HeapReAlloc");
         let _enter = span.enter();
         tracing::trace!(
-            "h_heap = {:?}, dw_flags = {:?}, lp_mem = {:?}, dw_bytes = {:?}",
+            "  args = {{h_heap = {:?}, dw_flags = {:?}, lp_mem = {:?}, dw_bytes = {:?}}}",
             h_heap,
             dw_flags,
             lp_mem,
@@ -21832,7 +21695,7 @@ extern "C" fn thunk_HeapSetInformation(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("HeapSetInformation");
         let _enter = span.enter();
-        tracing :: trace ! ( "heap_handle = {:?}, heap_information_class = {:?}, heap_information = {:?}, heap_information_length = {:?}" , heap_handle , heap_information_class , heap_information , heap_information_length );
+        tracing :: trace ! ( "  args = {{heap_handle = {:?}, heap_information_class = {:?}, heap_information = {:?}, heap_information_length = {:?}}}" , heap_handle , heap_information_class , heap_information , heap_information_length );
         let res = api.HeapSetInformation(
             heap_handle,
             heap_information_class,
@@ -21862,7 +21725,7 @@ extern "C" fn thunk_HeapSize(context: &mut ExtendedContext, memory: FlatMemoryCt
         let span = tracing::trace_span!("HeapSize");
         let _enter = span.enter();
         tracing::trace!(
-            "h_heap = {:?}, dw_flags = {:?}, lp_mem = {:?}",
+            "  args = {{h_heap = {:?}, dw_flags = {:?}, lp_mem = {:?}}}",
             h_heap,
             dw_flags,
             lp_mem
@@ -21891,7 +21754,7 @@ extern "C" fn thunk_HeapSummary(context: &mut ExtendedContext, memory: FlatMemor
         let span = tracing::trace_span!("HeapSummary");
         let _enter = span.enter();
         tracing::trace!(
-            "h_heap = {:?}, dw_flags = {:?}, lp_summary = {:?}",
+            "  args = {{h_heap = {:?}, dw_flags = {:?}, lp_summary = {:?}}}",
             h_heap,
             dw_flags,
             lp_summary
@@ -21917,7 +21780,7 @@ extern "C" fn thunk_HeapUnlock(context: &mut ExtendedContext, memory: FlatMemory
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("HeapUnlock");
         let _enter = span.enter();
-        tracing::trace!("h_heap = {:?}", h_heap);
+        tracing::trace!("  args = {{h_heap = {:?}}}", h_heap);
         let res = api.HeapUnlock(h_heap);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -21942,7 +21805,7 @@ extern "C" fn thunk_HeapValidate(context: &mut ExtendedContext, memory: FlatMemo
         let span = tracing::trace_span!("HeapValidate");
         let _enter = span.enter();
         tracing::trace!(
-            "h_heap = {:?}, dw_flags = {:?}, lp_mem = {:?}",
+            "  args = {{h_heap = {:?}, dw_flags = {:?}, lp_mem = {:?}}}",
             h_heap,
             dw_flags,
             lp_mem
@@ -21969,7 +21832,11 @@ extern "C" fn thunk_HeapWalk(context: &mut ExtendedContext, memory: FlatMemoryCt
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("HeapWalk");
         let _enter = span.enter();
-        tracing::trace!("h_heap = {:?}, lp_entry = {:?}", h_heap, lp_entry);
+        tracing::trace!(
+            "  args = {{h_heap = {:?}, lp_entry = {:?}}}",
+            h_heap,
+            lp_entry
+        );
         let res = api.HeapWalk(h_heap, lp_entry);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -21991,7 +21858,7 @@ extern "C" fn thunk_IsBadCodePtr(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("IsBadCodePtr");
         let _enter = span.enter();
-        tracing::trace!("lpfn = {:?}", lpfn);
+        tracing::trace!("  args = {{lpfn = {:?}}}", lpfn);
         let res = api.IsBadCodePtr(lpfn);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -22014,7 +21881,7 @@ extern "C" fn thunk_IsBadReadPtr(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("IsBadReadPtr");
         let _enter = span.enter();
-        tracing::trace!("lp = {:?}, ucb = {:?}", lp, ucb);
+        tracing::trace!("  args = {{lp = {:?}, ucb = {:?}}}", lp, ucb);
         let res = api.IsBadReadPtr(lp, ucb);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -22040,7 +21907,7 @@ extern "C" fn thunk_IsBadStringPtrA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("IsBadStringPtrA");
         let _enter = span.enter();
-        tracing::trace!("lpsz = {:?}, ucch_max = {:?}", lpsz, ucch_max);
+        tracing::trace!("  args = {{lpsz = {:?}, ucch_max = {:?}}}", lpsz, ucch_max);
         let res = api.IsBadStringPtrA(lpsz, ucch_max);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -22066,7 +21933,7 @@ extern "C" fn thunk_IsBadStringPtrW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("IsBadStringPtrW");
         let _enter = span.enter();
-        tracing::trace!("lpsz = {:?}, ucch_max = {:?}", lpsz, ucch_max);
+        tracing::trace!("  args = {{lpsz = {:?}, ucch_max = {:?}}}", lpsz, ucch_max);
         let res = api.IsBadStringPtrW(lpsz, ucch_max);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -22089,7 +21956,7 @@ extern "C" fn thunk_IsBadWritePtr(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("IsBadWritePtr");
         let _enter = span.enter();
-        tracing::trace!("lp = {:?}, ucb = {:?}", lp, ucb);
+        tracing::trace!("  args = {{lp = {:?}, ucb = {:?}}}", lp, ucb);
         let res = api.IsBadWritePtr(lp, ucb);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -22112,7 +21979,11 @@ extern "C" fn thunk_LocalAlloc(context: &mut ExtendedContext, memory: FlatMemory
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("LocalAlloc");
         let _enter = span.enter();
-        tracing::trace!("u_flags = {:?}, u_bytes = {:?}", u_flags, u_bytes);
+        tracing::trace!(
+            "  args = {{u_flags = {:?}, u_bytes = {:?}}}",
+            u_flags,
+            u_bytes
+        );
         let res = api.LocalAlloc(u_flags, u_bytes);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -22134,7 +22005,7 @@ extern "C" fn thunk_LocalFlags(context: &mut ExtendedContext, memory: FlatMemory
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("LocalFlags");
         let _enter = span.enter();
-        tracing::trace!("h_mem = {:?}", h_mem);
+        tracing::trace!("  args = {{h_mem = {:?}}}", h_mem);
         let res = api.LocalFlags(h_mem);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -22156,7 +22027,7 @@ extern "C" fn thunk_LocalFree(context: &mut ExtendedContext, memory: FlatMemoryC
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("LocalFree");
         let _enter = span.enter();
-        tracing::trace!("h_mem = {:?}", h_mem);
+        tracing::trace!("  args = {{h_mem = {:?}}}", h_mem);
         let res = api.LocalFree(h_mem);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -22178,7 +22049,7 @@ extern "C" fn thunk_LocalHandle(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("LocalHandle");
         let _enter = span.enter();
-        tracing::trace!("p_mem = {:?}", p_mem);
+        tracing::trace!("  args = {{p_mem = {:?}}}", p_mem);
         let res = api.LocalHandle(p_mem);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -22200,7 +22071,7 @@ extern "C" fn thunk_LocalLock(context: &mut ExtendedContext, memory: FlatMemoryC
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("LocalLock");
         let _enter = span.enter();
-        tracing::trace!("h_mem = {:?}", h_mem);
+        tracing::trace!("  args = {{h_mem = {:?}}}", h_mem);
         let res = api.LocalLock(h_mem);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -22225,7 +22096,7 @@ extern "C" fn thunk_LocalReAlloc(context: &mut ExtendedContext, memory: FlatMemo
         let span = tracing::trace_span!("LocalReAlloc");
         let _enter = span.enter();
         tracing::trace!(
-            "h_mem = {:?}, u_bytes = {:?}, u_flags = {:?}",
+            "  args = {{h_mem = {:?}, u_bytes = {:?}, u_flags = {:?}}}",
             h_mem,
             u_bytes,
             u_flags
@@ -22251,7 +22122,7 @@ extern "C" fn thunk_LocalSize(context: &mut ExtendedContext, memory: FlatMemoryC
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("LocalSize");
         let _enter = span.enter();
-        tracing::trace!("h_mem = {:?}", h_mem);
+        tracing::trace!("  args = {{h_mem = {:?}}}", h_mem);
         let res = api.LocalSize(h_mem);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -22273,7 +22144,7 @@ extern "C" fn thunk_LocalUnlock(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("LocalUnlock");
         let _enter = span.enter();
-        tracing::trace!("h_mem = {:?}", h_mem);
+        tracing::trace!("  args = {{h_mem = {:?}}}", h_mem);
         let res = api.LocalUnlock(h_mem);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -22301,7 +22172,7 @@ extern "C" fn thunk_MapUserPhysicalPages(
         let span = tracing::trace_span!("MapUserPhysicalPages");
         let _enter = span.enter();
         tracing::trace!(
-            "virtual_address = {:?}, number_of_pages = {:?}, page_array = {:?}",
+            "  args = {{virtual_address = {:?}, number_of_pages = {:?}, page_array = {:?}}}",
             virtual_address,
             number_of_pages,
             page_array
@@ -22333,7 +22204,7 @@ extern "C" fn thunk_MapUserPhysicalPagesScatter(
         let span = tracing::trace_span!("MapUserPhysicalPagesScatter");
         let _enter = span.enter();
         tracing::trace!(
-            "virtual_addresses = {:?}, number_of_pages = {:?}, page_array = {:?}",
+            "  args = {{virtual_addresses = {:?}, number_of_pages = {:?}, page_array = {:?}}}",
             virtual_addresses,
             number_of_pages,
             page_array
@@ -22363,7 +22234,7 @@ extern "C" fn thunk_MapViewOfFile(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("MapViewOfFile");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_file_mapping_object = {:?}, dw_desired_access = {:?}, dw_file_offset_high = {:?}, dw_file_offset_low = {:?}, dw_number_of_bytes_to_map = {:?}" , h_file_mapping_object , dw_desired_access , dw_file_offset_high , dw_file_offset_low , dw_number_of_bytes_to_map );
+        tracing :: trace ! ( "  args = {{h_file_mapping_object = {:?}, dw_desired_access = {:?}, dw_file_offset_high = {:?}, dw_file_offset_low = {:?}, dw_number_of_bytes_to_map = {:?}}}" , h_file_mapping_object , dw_desired_access , dw_file_offset_high , dw_file_offset_low , dw_number_of_bytes_to_map );
         let res = api.MapViewOfFile(
             h_file_mapping_object,
             dw_desired_access,
@@ -22402,7 +22273,7 @@ extern "C" fn thunk_MapViewOfFile3(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("MapViewOfFile3");
         let _enter = span.enter();
-        tracing :: trace ! ( "file_mapping = {:?}, process = {:?}, base_address = {:?}, offset = {:?}, view_size = {:?}, allocation_type = {:?}, page_protection = {:?}, extended_parameters = {:?}, parameter_count = {:?}" , file_mapping , process , base_address , offset , view_size , allocation_type , page_protection , extended_parameters , parameter_count );
+        tracing :: trace ! ( "  args = {{file_mapping = {:?}, process = {:?}, base_address = {:?}, offset = {:?}, view_size = {:?}, allocation_type = {:?}, page_protection = {:?}, extended_parameters = {:?}, parameter_count = {:?}}}" , file_mapping , process , base_address , offset , view_size , allocation_type , page_protection , extended_parameters , parameter_count );
         let res = api.MapViewOfFile3(
             file_mapping,
             process,
@@ -22445,7 +22316,7 @@ extern "C" fn thunk_MapViewOfFile3FromApp(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("MapViewOfFile3FromApp");
         let _enter = span.enter();
-        tracing :: trace ! ( "file_mapping = {:?}, process = {:?}, base_address = {:?}, offset = {:?}, view_size = {:?}, allocation_type = {:?}, page_protection = {:?}, extended_parameters = {:?}, parameter_count = {:?}" , file_mapping , process , base_address , offset , view_size , allocation_type , page_protection , extended_parameters , parameter_count );
+        tracing :: trace ! ( "  args = {{file_mapping = {:?}, process = {:?}, base_address = {:?}, offset = {:?}, view_size = {:?}, allocation_type = {:?}, page_protection = {:?}, extended_parameters = {:?}, parameter_count = {:?}}}" , file_mapping , process , base_address , offset , view_size , allocation_type , page_protection , extended_parameters , parameter_count );
         let res = api.MapViewOfFile3FromApp(
             file_mapping,
             process,
@@ -22485,7 +22356,7 @@ extern "C" fn thunk_MapViewOfFileEx(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("MapViewOfFileEx");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_file_mapping_object = {:?}, dw_desired_access = {:?}, dw_file_offset_high = {:?}, dw_file_offset_low = {:?}, dw_number_of_bytes_to_map = {:?}, lp_base_address = {:?}" , h_file_mapping_object , dw_desired_access , dw_file_offset_high , dw_file_offset_low , dw_number_of_bytes_to_map , lp_base_address );
+        tracing :: trace ! ( "  args = {{h_file_mapping_object = {:?}, dw_desired_access = {:?}, dw_file_offset_high = {:?}, dw_file_offset_low = {:?}, dw_number_of_bytes_to_map = {:?}, lp_base_address = {:?}}}" , h_file_mapping_object , dw_desired_access , dw_file_offset_high , dw_file_offset_low , dw_number_of_bytes_to_map , lp_base_address );
         let res = api.MapViewOfFileEx(
             h_file_mapping_object,
             dw_desired_access,
@@ -22523,7 +22394,7 @@ extern "C" fn thunk_MapViewOfFileExNuma(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("MapViewOfFileExNuma");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_file_mapping_object = {:?}, dw_desired_access = {:?}, dw_file_offset_high = {:?}, dw_file_offset_low = {:?}, dw_number_of_bytes_to_map = {:?}, lp_base_address = {:?}, nnd_preferred = {:?}" , h_file_mapping_object , dw_desired_access , dw_file_offset_high , dw_file_offset_low , dw_number_of_bytes_to_map , lp_base_address , nnd_preferred );
+        tracing :: trace ! ( "  args = {{h_file_mapping_object = {:?}, dw_desired_access = {:?}, dw_file_offset_high = {:?}, dw_file_offset_low = {:?}, dw_number_of_bytes_to_map = {:?}, lp_base_address = {:?}, nnd_preferred = {:?}}}" , h_file_mapping_object , dw_desired_access , dw_file_offset_high , dw_file_offset_low , dw_number_of_bytes_to_map , lp_base_address , nnd_preferred );
         let res = api.MapViewOfFileExNuma(
             h_file_mapping_object,
             dw_desired_access,
@@ -22559,7 +22430,7 @@ extern "C" fn thunk_MapViewOfFileFromApp(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("MapViewOfFileFromApp");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_file_mapping_object = {:?}, desired_access = {:?}, file_offset = {:?}, number_of_bytes_to_map = {:?}" , h_file_mapping_object , desired_access , file_offset , number_of_bytes_to_map );
+        tracing :: trace ! ( "  args = {{h_file_mapping_object = {:?}, desired_access = {:?}, file_offset = {:?}, number_of_bytes_to_map = {:?}}}" , h_file_mapping_object , desired_access , file_offset , number_of_bytes_to_map );
         let res = api.MapViewOfFileFromApp(
             h_file_mapping_object,
             desired_access,
@@ -22596,7 +22467,7 @@ extern "C" fn thunk_MapViewOfFileNuma2(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("MapViewOfFileNuma2");
         let _enter = span.enter();
-        tracing :: trace ! ( "file_mapping_handle = {:?}, process_handle = {:?}, offset = {:?}, base_address = {:?}, view_size = {:?}, allocation_type = {:?}, page_protection = {:?}, preferred_node = {:?}" , file_mapping_handle , process_handle , offset , base_address , view_size , allocation_type , page_protection , preferred_node );
+        tracing :: trace ! ( "  args = {{file_mapping_handle = {:?}, process_handle = {:?}, offset = {:?}, base_address = {:?}, view_size = {:?}, allocation_type = {:?}, page_protection = {:?}, preferred_node = {:?}}}" , file_mapping_handle , process_handle , offset , base_address , view_size , allocation_type , page_protection , preferred_node );
         let res = api.MapViewOfFileNuma2(
             file_mapping_handle,
             process_handle,
@@ -22633,7 +22504,7 @@ extern "C" fn thunk_OfferVirtualMemory(
         let span = tracing::trace_span!("OfferVirtualMemory");
         let _enter = span.enter();
         tracing::trace!(
-            "virtual_address = {:?}, size = {:?}, priority = {:?}",
+            "  args = {{virtual_address = {:?}, size = {:?}, priority = {:?}}}",
             virtual_address,
             size,
             priority
@@ -22665,7 +22536,7 @@ extern "C" fn thunk_OpenDedicatedMemoryPartition(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("OpenDedicatedMemoryPartition");
         let _enter = span.enter();
-        tracing :: trace ! ( "partition = {:?}, dedicated_memory_type_id = {:?}, desired_access = {:?}, inherit_handle = {:?}" , partition , dedicated_memory_type_id , desired_access , inherit_handle );
+        tracing :: trace ! ( "  args = {{partition = {:?}, dedicated_memory_type_id = {:?}, desired_access = {:?}, inherit_handle = {:?}}}" , partition , dedicated_memory_type_id , desired_access , inherit_handle );
         let res = api.OpenDedicatedMemoryPartition(
             partition,
             dedicated_memory_type_id,
@@ -22698,7 +22569,7 @@ extern "C" fn thunk_OpenFileMappingA(
         let span = tracing::trace_span!("OpenFileMappingA");
         let _enter = span.enter();
         tracing::trace!(
-            "dw_desired_access = {:?}, b_inherit_handle = {:?}, lp_name = {:?}",
+            "  args = {{dw_desired_access = {:?}, b_inherit_handle = {:?}, lp_name = {:?}}}",
             dw_desired_access,
             b_inherit_handle,
             lp_name
@@ -22730,7 +22601,7 @@ extern "C" fn thunk_OpenFileMappingFromApp(
         let span = tracing::trace_span!("OpenFileMappingFromApp");
         let _enter = span.enter();
         tracing::trace!(
-            "desired_access = {:?}, inherit_handle = {:?}, name = {:?}",
+            "  args = {{desired_access = {:?}, inherit_handle = {:?}, name = {:?}}}",
             desired_access,
             inherit_handle,
             name
@@ -22762,7 +22633,7 @@ extern "C" fn thunk_OpenFileMappingW(
         let span = tracing::trace_span!("OpenFileMappingW");
         let _enter = span.enter();
         tracing::trace!(
-            "dw_desired_access = {:?}, b_inherit_handle = {:?}, lp_name = {:?}",
+            "  args = {{dw_desired_access = {:?}, b_inherit_handle = {:?}, lp_name = {:?}}}",
             dw_desired_access,
             b_inherit_handle,
             lp_name
@@ -22794,13 +22665,7 @@ extern "C" fn thunk_PrefetchVirtualMemory(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("PrefetchVirtualMemory");
         let _enter = span.enter();
-        tracing::trace!(
-            "h_process = {:?}, number_of_entries = {:?}, virtual_addresses = {:?}, flags = {:?}",
-            h_process,
-            number_of_entries,
-            virtual_addresses,
-            flags
-        );
+        tracing :: trace ! ( "  args = {{h_process = {:?}, number_of_entries = {:?}, virtual_addresses = {:?}, flags = {:?}}}" , h_process , number_of_entries , virtual_addresses , flags );
         let res = api.PrefetchVirtualMemory(h_process, number_of_entries, virtual_addresses, flags);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -22827,7 +22692,7 @@ extern "C" fn thunk_QueryMemoryResourceNotification(
         let span = tracing::trace_span!("QueryMemoryResourceNotification");
         let _enter = span.enter();
         tracing::trace!(
-            "resource_notification_handle = {:?}, resource_state = {:?}",
+            "  args = {{resource_notification_handle = {:?}, resource_state = {:?}}}",
             resource_notification_handle,
             resource_state
         );
@@ -22858,7 +22723,7 @@ extern "C" fn thunk_QueryPartitionInformation(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("QueryPartitionInformation");
         let _enter = span.enter();
-        tracing :: trace ! ( "partition = {:?}, partition_information_class = {:?}, partition_information = {:?}, partition_information_length = {:?}" , partition , partition_information_class , partition_information , partition_information_length );
+        tracing :: trace ! ( "  args = {{partition = {:?}, partition_information_class = {:?}, partition_information = {:?}, partition_information_length = {:?}}}" , partition , partition_information_class , partition_information , partition_information_length );
         let res = api.QueryPartitionInformation(
             partition,
             partition_information_class,
@@ -22893,7 +22758,7 @@ extern "C" fn thunk_QueryVirtualMemoryInformation(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("QueryVirtualMemoryInformation");
         let _enter = span.enter();
-        tracing :: trace ! ( "process = {:?}, virtual_address = {:?}, memory_information_class = {:?}, memory_information = {:?}, memory_information_size = {:?}, return_size = {:?}" , process , virtual_address , memory_information_class , memory_information , memory_information_size , return_size );
+        tracing :: trace ! ( "  args = {{process = {:?}, virtual_address = {:?}, memory_information_class = {:?}, memory_information = {:?}, memory_information_size = {:?}, return_size = {:?}}}" , process , virtual_address , memory_information_class , memory_information , memory_information_size , return_size );
         let res = api.QueryVirtualMemoryInformation(
             process,
             virtual_address,
@@ -22926,7 +22791,11 @@ extern "C" fn thunk_ReclaimVirtualMemory(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ReclaimVirtualMemory");
         let _enter = span.enter();
-        tracing::trace!("virtual_address = {:?}, size = {:?}", virtual_address, size);
+        tracing::trace!(
+            "  args = {{virtual_address = {:?}, size = {:?}}}",
+            virtual_address,
+            size
+        );
         let res = api.ReclaimVirtualMemory(virtual_address, size);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -22951,7 +22820,7 @@ extern "C" fn thunk_RegisterBadMemoryNotification(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("RegisterBadMemoryNotification");
         let _enter = span.enter();
-        tracing::trace!("callback = {:?}", callback);
+        tracing::trace!("  args = {{callback = {:?}}}", callback);
         let res = api.RegisterBadMemoryNotification(callback);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -22976,7 +22845,7 @@ extern "C" fn thunk_RemoveSecureMemoryCacheCallback(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("RemoveSecureMemoryCacheCallback");
         let _enter = span.enter();
-        tracing::trace!("pfn_call_back = {:?}", pfn_call_back);
+        tracing::trace!("  args = {{pfn_call_back = {:?}}}", pfn_call_back);
         let res = api.RemoveSecureMemoryCacheCallback(pfn_call_back);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -23003,7 +22872,7 @@ extern "C" fn thunk_ResetWriteWatch(
         let span = tracing::trace_span!("ResetWriteWatch");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_base_address = {:?}, dw_region_size = {:?}",
+            "  args = {{lp_base_address = {:?}, dw_region_size = {:?}}}",
             lp_base_address,
             dw_region_size
         );
@@ -23034,7 +22903,7 @@ extern "C" fn thunk_RtlCompareMemory(
         let span = tracing::trace_span!("RtlCompareMemory");
         let _enter = span.enter();
         tracing::trace!(
-            "source_1 = {:?}, source_2 = {:?}, length = {:?}",
+            "  args = {{source_1 = {:?}, source_2 = {:?}, length = {:?}}}",
             source_1,
             source_2,
             length
@@ -23063,7 +22932,7 @@ extern "C" fn thunk_RtlCrc32(context: &mut ExtendedContext, memory: FlatMemoryCt
         let span = tracing::trace_span!("RtlCrc32");
         let _enter = span.enter();
         tracing::trace!(
-            "buffer = {:?}, size = {:?}, initial_crc = {:?}",
+            "  args = {{buffer = {:?}, size = {:?}, initial_crc = {:?}}}",
             buffer,
             size,
             initial_crc
@@ -23092,7 +22961,7 @@ extern "C" fn thunk_RtlCrc64(context: &mut ExtendedContext, memory: FlatMemoryCt
         let span = tracing::trace_span!("RtlCrc64");
         let _enter = span.enter();
         tracing::trace!(
-            "buffer = {:?}, size = {:?}, initial_crc = {:?}",
+            "  args = {{buffer = {:?}, size = {:?}, initial_crc = {:?}}}",
             buffer,
             size,
             initial_crc
@@ -23122,7 +22991,7 @@ extern "C" fn thunk_RtlIsZeroMemory(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("RtlIsZeroMemory");
         let _enter = span.enter();
-        tracing::trace!("buffer = {:?}, length = {:?}", buffer, length);
+        tracing::trace!("  args = {{buffer = {:?}, length = {:?}}}", buffer, length);
         let res = api.RtlIsZeroMemory(buffer, length);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -23151,7 +23020,7 @@ extern "C" fn thunk_SetProcessValidCallTargets(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetProcessValidCallTargets");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_process = {:?}, virtual_address = {:?}, region_size = {:?}, number_of_offsets = {:?}, offset_information = {:?}" , h_process , virtual_address , region_size , number_of_offsets , offset_information );
+        tracing :: trace ! ( "  args = {{h_process = {:?}, virtual_address = {:?}, region_size = {:?}, number_of_offsets = {:?}, offset_information = {:?}}}" , h_process , virtual_address , region_size , number_of_offsets , offset_information );
         let res = api.SetProcessValidCallTargets(
             h_process,
             virtual_address,
@@ -23188,7 +23057,7 @@ extern "C" fn thunk_SetProcessValidCallTargetsForMappedView(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetProcessValidCallTargetsForMappedView");
         let _enter = span.enter();
-        tracing :: trace ! ( "process = {:?}, virtual_address = {:?}, region_size = {:?}, number_of_offsets = {:?}, offset_information = {:?}, section = {:?}, expected_file_offset = {:?}" , process , virtual_address , region_size , number_of_offsets , offset_information , section , expected_file_offset );
+        tracing :: trace ! ( "  args = {{process = {:?}, virtual_address = {:?}, region_size = {:?}, number_of_offsets = {:?}, offset_information = {:?}, section = {:?}, expected_file_offset = {:?}}}" , process , virtual_address , region_size , number_of_offsets , offset_information , section , expected_file_offset );
         let res = api.SetProcessValidCallTargetsForMappedView(
             process,
             virtual_address,
@@ -23224,7 +23093,7 @@ extern "C" fn thunk_SetProcessWorkingSetSizeEx(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetProcessWorkingSetSizeEx");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_process = {:?}, dw_minimum_working_set_size = {:?}, dw_maximum_working_set_size = {:?}, flags = {:?}" , h_process , dw_minimum_working_set_size , dw_maximum_working_set_size , flags );
+        tracing :: trace ! ( "  args = {{h_process = {:?}, dw_minimum_working_set_size = {:?}, dw_maximum_working_set_size = {:?}, flags = {:?}}}" , h_process , dw_minimum_working_set_size , dw_maximum_working_set_size , flags );
         let res = api.SetProcessWorkingSetSizeEx(
             h_process,
             dw_minimum_working_set_size,
@@ -23256,12 +23125,7 @@ extern "C" fn thunk_SetSystemFileCacheSize(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetSystemFileCacheSize");
         let _enter = span.enter();
-        tracing::trace!(
-            "minimum_file_cache_size = {:?}, maximum_file_cache_size = {:?}, flags = {:?}",
-            minimum_file_cache_size,
-            maximum_file_cache_size,
-            flags
-        );
+        tracing :: trace ! ( "  args = {{minimum_file_cache_size = {:?}, maximum_file_cache_size = {:?}, flags = {:?}}}" , minimum_file_cache_size , maximum_file_cache_size , flags );
         let res =
             api.SetSystemFileCacheSize(minimum_file_cache_size, maximum_file_cache_size, flags);
         tracing::trace!("result = {:?}", res);
@@ -23287,7 +23151,7 @@ extern "C" fn thunk_UnmapViewOfFile(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("UnmapViewOfFile");
         let _enter = span.enter();
-        tracing::trace!("lp_base_address = {:?}", lp_base_address);
+        tracing::trace!("  args = {{lp_base_address = {:?}}}", lp_base_address);
         let res = api.UnmapViewOfFile(lp_base_address);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -23315,7 +23179,7 @@ extern "C" fn thunk_UnmapViewOfFile2(
         let span = tracing::trace_span!("UnmapViewOfFile2");
         let _enter = span.enter();
         tracing::trace!(
-            "process = {:?}, base_address = {:?}, unmap_flags = {:?}",
+            "  args = {{process = {:?}, base_address = {:?}, unmap_flags = {:?}}}",
             process,
             base_address,
             unmap_flags
@@ -23346,7 +23210,7 @@ extern "C" fn thunk_UnmapViewOfFileEx(
         let span = tracing::trace_span!("UnmapViewOfFileEx");
         let _enter = span.enter();
         tracing::trace!(
-            "base_address = {:?}, unmap_flags = {:?}",
+            "  args = {{base_address = {:?}, unmap_flags = {:?}}}",
             base_address,
             unmap_flags
         );
@@ -23374,7 +23238,10 @@ extern "C" fn thunk_UnregisterBadMemoryNotification(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("UnregisterBadMemoryNotification");
         let _enter = span.enter();
-        tracing::trace!("registration_handle = {:?}", registration_handle);
+        tracing::trace!(
+            "  args = {{registration_handle = {:?}}}",
+            registration_handle
+        );
         let res = api.UnregisterBadMemoryNotification(registration_handle);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -23399,13 +23266,7 @@ extern "C" fn thunk_VirtualAlloc(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("VirtualAlloc");
         let _enter = span.enter();
-        tracing::trace!(
-            "lp_address = {:?}, dw_size = {:?}, fl_allocation_type = {:?}, fl_protect = {:?}",
-            lp_address,
-            dw_size,
-            fl_allocation_type,
-            fl_protect
-        );
+        tracing :: trace ! ( "  args = {{lp_address = {:?}, dw_size = {:?}, fl_allocation_type = {:?}, fl_protect = {:?}}}" , lp_address , dw_size , fl_allocation_type , fl_protect );
         let res = api.VirtualAlloc(lp_address, dw_size, fl_allocation_type, fl_protect);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -23433,7 +23294,7 @@ extern "C" fn thunk_VirtualAlloc2(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("VirtualAlloc2");
         let _enter = span.enter();
-        tracing :: trace ! ( "process = {:?}, base_address = {:?}, size = {:?}, allocation_type = {:?}, page_protection = {:?}, extended_parameters = {:?}, parameter_count = {:?}" , process , base_address , size , allocation_type , page_protection , extended_parameters , parameter_count );
+        tracing :: trace ! ( "  args = {{process = {:?}, base_address = {:?}, size = {:?}, allocation_type = {:?}, page_protection = {:?}, extended_parameters = {:?}, parameter_count = {:?}}}" , process , base_address , size , allocation_type , page_protection , extended_parameters , parameter_count );
         let res = api.VirtualAlloc2(
             process,
             base_address,
@@ -23472,7 +23333,7 @@ extern "C" fn thunk_VirtualAlloc2FromApp(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("VirtualAlloc2FromApp");
         let _enter = span.enter();
-        tracing :: trace ! ( "process = {:?}, base_address = {:?}, size = {:?}, allocation_type = {:?}, page_protection = {:?}, extended_parameters = {:?}, parameter_count = {:?}" , process , base_address , size , allocation_type , page_protection , extended_parameters , parameter_count );
+        tracing :: trace ! ( "  args = {{process = {:?}, base_address = {:?}, size = {:?}, allocation_type = {:?}, page_protection = {:?}, extended_parameters = {:?}, parameter_count = {:?}}}" , process , base_address , size , allocation_type , page_protection , extended_parameters , parameter_count );
         let res = api.VirtualAlloc2FromApp(
             process,
             base_address,
@@ -23509,7 +23370,7 @@ extern "C" fn thunk_VirtualAllocEx(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("VirtualAllocEx");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_process = {:?}, lp_address = {:?}, dw_size = {:?}, fl_allocation_type = {:?}, fl_protect = {:?}" , h_process , lp_address , dw_size , fl_allocation_type , fl_protect );
+        tracing :: trace ! ( "  args = {{h_process = {:?}, lp_address = {:?}, dw_size = {:?}, fl_allocation_type = {:?}, fl_protect = {:?}}}" , h_process , lp_address , dw_size , fl_allocation_type , fl_protect );
         let res = api.VirtualAllocEx(
             h_process,
             lp_address,
@@ -23545,7 +23406,7 @@ extern "C" fn thunk_VirtualAllocExNuma(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("VirtualAllocExNuma");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_process = {:?}, lp_address = {:?}, dw_size = {:?}, fl_allocation_type = {:?}, fl_protect = {:?}, nnd_preferred = {:?}" , h_process , lp_address , dw_size , fl_allocation_type , fl_protect , nnd_preferred );
+        tracing :: trace ! ( "  args = {{h_process = {:?}, lp_address = {:?}, dw_size = {:?}, fl_allocation_type = {:?}, fl_protect = {:?}, nnd_preferred = {:?}}}" , h_process , lp_address , dw_size , fl_allocation_type , fl_protect , nnd_preferred );
         let res = api.VirtualAllocExNuma(
             h_process,
             lp_address,
@@ -23580,13 +23441,7 @@ extern "C" fn thunk_VirtualAllocFromApp(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("VirtualAllocFromApp");
         let _enter = span.enter();
-        tracing::trace!(
-            "base_address = {:?}, size = {:?}, allocation_type = {:?}, protection = {:?}",
-            base_address,
-            size,
-            allocation_type,
-            protection
-        );
+        tracing :: trace ! ( "  args = {{base_address = {:?}, size = {:?}, allocation_type = {:?}, protection = {:?}}}" , base_address , size , allocation_type , protection );
         let res = api.VirtualAllocFromApp(base_address, size, allocation_type, protection);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -23611,7 +23466,7 @@ extern "C" fn thunk_VirtualFree(context: &mut ExtendedContext, memory: FlatMemor
         let span = tracing::trace_span!("VirtualFree");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_address = {:?}, dw_size = {:?}, dw_free_type = {:?}",
+            "  args = {{lp_address = {:?}, dw_size = {:?}, dw_free_type = {:?}}}",
             lp_address,
             dw_size,
             dw_free_type
@@ -23641,7 +23496,7 @@ extern "C" fn thunk_VirtualFreeEx(context: &mut ExtendedContext, memory: FlatMem
         let span = tracing::trace_span!("VirtualFreeEx");
         let _enter = span.enter();
         tracing::trace!(
-            "h_process = {:?}, lp_address = {:?}, dw_size = {:?}, dw_free_type = {:?}",
+            "  args = {{h_process = {:?}, lp_address = {:?}, dw_size = {:?}, dw_free_type = {:?}}}",
             h_process,
             lp_address,
             dw_size,
@@ -23669,7 +23524,11 @@ extern "C" fn thunk_VirtualLock(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("VirtualLock");
         let _enter = span.enter();
-        tracing::trace!("lp_address = {:?}, dw_size = {:?}", lp_address, dw_size);
+        tracing::trace!(
+            "  args = {{lp_address = {:?}, dw_size = {:?}}}",
+            lp_address,
+            dw_size
+        );
         let res = api.VirtualLock(lp_address, dw_size);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -23697,13 +23556,7 @@ extern "C" fn thunk_VirtualProtect(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("VirtualProtect");
         let _enter = span.enter();
-        tracing::trace!(
-            "lp_address = {:?}, dw_size = {:?}, fl_new_protect = {:?}, lpfl_old_protect = {:?}",
-            lp_address,
-            dw_size,
-            fl_new_protect,
-            lpfl_old_protect
-        );
+        tracing :: trace ! ( "  args = {{lp_address = {:?}, dw_size = {:?}, fl_new_protect = {:?}, lpfl_old_protect = {:?}}}" , lp_address , dw_size , fl_new_protect , lpfl_old_protect );
         let res = api.VirtualProtect(lp_address, dw_size, fl_new_protect, lpfl_old_protect);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -23732,7 +23585,7 @@ extern "C" fn thunk_VirtualProtectEx(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("VirtualProtectEx");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_process = {:?}, lp_address = {:?}, dw_size = {:?}, fl_new_protect = {:?}, lpfl_old_protect = {:?}" , h_process , lp_address , dw_size , fl_new_protect , lpfl_old_protect );
+        tracing :: trace ! ( "  args = {{h_process = {:?}, lp_address = {:?}, dw_size = {:?}, fl_new_protect = {:?}, lpfl_old_protect = {:?}}}" , h_process , lp_address , dw_size , fl_new_protect , lpfl_old_protect );
         let res = api.VirtualProtectEx(
             h_process,
             lp_address,
@@ -23766,13 +23619,7 @@ extern "C" fn thunk_VirtualProtectFromApp(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("VirtualProtectFromApp");
         let _enter = span.enter();
-        tracing::trace!(
-            "address = {:?}, size = {:?}, new_protection = {:?}, old_protection = {:?}",
-            address,
-            size,
-            new_protection,
-            old_protection
-        );
+        tracing :: trace ! ( "  args = {{address = {:?}, size = {:?}, new_protection = {:?}, old_protection = {:?}}}" , address , size , new_protection , old_protection );
         let res = api.VirtualProtectFromApp(address, size, new_protection, old_protection);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -23797,7 +23644,7 @@ extern "C" fn thunk_VirtualQuery(context: &mut ExtendedContext, memory: FlatMemo
         let span = tracing::trace_span!("VirtualQuery");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_address = {:?}, lp_buffer = {:?}, dw_length = {:?}",
+            "  args = {{lp_address = {:?}, lp_buffer = {:?}, dw_length = {:?}}}",
             lp_address,
             lp_buffer,
             dw_length
@@ -23830,7 +23677,7 @@ extern "C" fn thunk_VirtualQueryEx(
         let span = tracing::trace_span!("VirtualQueryEx");
         let _enter = span.enter();
         tracing::trace!(
-            "h_process = {:?}, lp_address = {:?}, lp_buffer = {:?}, dw_length = {:?}",
+            "  args = {{h_process = {:?}, lp_address = {:?}, lp_buffer = {:?}, dw_length = {:?}}}",
             h_process,
             lp_address,
             lp_buffer,
@@ -23858,7 +23705,11 @@ extern "C" fn thunk_VirtualUnlock(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("VirtualUnlock");
         let _enter = span.enter();
-        tracing::trace!("lp_address = {:?}, dw_size = {:?}", lp_address, dw_size);
+        tracing::trace!(
+            "  args = {{lp_address = {:?}, dw_size = {:?}}}",
+            lp_address,
+            dw_size
+        );
         let res = api.VirtualUnlock(lp_address, dw_size);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -23886,7 +23737,7 @@ extern "C" fn thunk_VirtualUnlockEx(
         let span = tracing::trace_span!("VirtualUnlockEx");
         let _enter = span.enter();
         tracing::trace!(
-            "process = {:?}, address = {:?}, size = {:?}",
+            "  args = {{process = {:?}, address = {:?}, size = {:?}}}",
             process,
             address,
             size
@@ -23918,7 +23769,7 @@ extern "C" fn thunk_GetComputerNameExA(
         let span = tracing::trace_span!("GetComputerNameExA");
         let _enter = span.enter();
         tracing::trace!(
-            "name_type = {:?}, lp_buffer = {:?}, n_size = {:?}",
+            "  args = {{name_type = {:?}, lp_buffer = {:?}, n_size = {:?}}}",
             name_type,
             lp_buffer,
             n_size
@@ -23950,7 +23801,7 @@ extern "C" fn thunk_GetComputerNameExW(
         let span = tracing::trace_span!("GetComputerNameExW");
         let _enter = span.enter();
         tracing::trace!(
-            "name_type = {:?}, lp_buffer = {:?}, n_size = {:?}",
+            "  args = {{name_type = {:?}, lp_buffer = {:?}, n_size = {:?}}}",
             name_type,
             lp_buffer,
             n_size
@@ -23976,7 +23827,7 @@ extern "C" fn thunk_GetLocalTime(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetLocalTime");
         let _enter = span.enter();
-        tracing::trace!("lp_system_time = {:?}", lp_system_time);
+        tracing::trace!("  args = {{lp_system_time = {:?}}}", lp_system_time);
         let res = api.GetLocalTime(lp_system_time);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -24003,7 +23854,7 @@ extern "C" fn thunk_GetLogicalProcessorInformation(
         let span = tracing::trace_span!("GetLogicalProcessorInformation");
         let _enter = span.enter();
         tracing::trace!(
-            "buffer = {:?}, returned_length = {:?}",
+            "  args = {{buffer = {:?}, returned_length = {:?}}}",
             buffer,
             returned_length
         );
@@ -24034,7 +23885,7 @@ extern "C" fn thunk_GetLogicalProcessorInformationEx(
         let span = tracing::trace_span!("GetLogicalProcessorInformationEx");
         let _enter = span.enter();
         tracing::trace!(
-            "relationship_type = {:?}, buffer = {:?}, returned_length = {:?}",
+            "  args = {{relationship_type = {:?}, buffer = {:?}, returned_length = {:?}}}",
             relationship_type,
             buffer,
             returned_length
@@ -24063,7 +23914,7 @@ extern "C" fn thunk_GetNativeSystemInfo(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetNativeSystemInfo");
         let _enter = span.enter();
-        tracing::trace!("lp_system_info = {:?}", lp_system_info);
+        tracing::trace!("  args = {{lp_system_info = {:?}}}", lp_system_info);
         let res = api.GetNativeSystemInfo(lp_system_info);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -24088,7 +23939,7 @@ extern "C" fn thunk_GetOsManufacturingMode(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetOsManufacturingMode");
         let _enter = span.enter();
-        tracing::trace!("pb_enabled = {:?}", pb_enabled);
+        tracing::trace!("  args = {{pb_enabled = {:?}}}", pb_enabled);
         let res = api.GetOsManufacturingMode(pb_enabled);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -24113,7 +23964,7 @@ extern "C" fn thunk_GetOsSafeBootMode(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetOsSafeBootMode");
         let _enter = span.enter();
-        tracing::trace!("flags = {:?}", flags);
+        tracing::trace!("  args = {{flags = {:?}}}", flags);
         let res = api.GetOsSafeBootMode(flags);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -24139,7 +23990,7 @@ extern "C" fn thunk_GetPhysicallyInstalledSystemMemory(
         let span = tracing::trace_span!("GetPhysicallyInstalledSystemMemory");
         let _enter = span.enter();
         tracing::trace!(
-            "total_memory_in_kilobytes = {:?}",
+            "  args = {{total_memory_in_kilobytes = {:?}}}",
             total_memory_in_kilobytes
         );
         let res = api.GetPhysicallyInstalledSystemMemory(total_memory_in_kilobytes);
@@ -24169,7 +24020,7 @@ extern "C" fn thunk_GetProcessorSystemCycleTime(
         let span = tracing::trace_span!("GetProcessorSystemCycleTime");
         let _enter = span.enter();
         tracing::trace!(
-            "group = {:?}, buffer = {:?}, returned_length = {:?}",
+            "  args = {{group = {:?}, buffer = {:?}, returned_length = {:?}}}",
             group,
             buffer,
             returned_length
@@ -24202,7 +24053,7 @@ extern "C" fn thunk_GetProductInfo(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetProductInfo");
         let _enter = span.enter();
-        tracing :: trace ! ( "dw_os_major_version = {:?}, dw_os_minor_version = {:?}, dw_sp_major_version = {:?}, dw_sp_minor_version = {:?}, pdw_returned_product_type = {:?}" , dw_os_major_version , dw_os_minor_version , dw_sp_major_version , dw_sp_minor_version , pdw_returned_product_type );
+        tracing :: trace ! ( "  args = {{dw_os_major_version = {:?}, dw_os_minor_version = {:?}, dw_sp_major_version = {:?}, dw_sp_minor_version = {:?}, pdw_returned_product_type = {:?}}}" , dw_os_major_version , dw_os_minor_version , dw_sp_major_version , dw_sp_minor_version , pdw_returned_product_type );
         let res = api.GetProductInfo(
             dw_os_major_version,
             dw_os_minor_version,
@@ -24237,7 +24088,7 @@ extern "C" fn thunk_GetSystemCpuSetInformation(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetSystemCpuSetInformation");
         let _enter = span.enter();
-        tracing :: trace ! ( "information = {:?}, buffer_length = {:?}, returned_length = {:?}, process = {:?}, flags = {:?}" , information , buffer_length , returned_length , process , flags );
+        tracing :: trace ! ( "  args = {{information = {:?}, buffer_length = {:?}, returned_length = {:?}, process = {:?}, flags = {:?}}}" , information , buffer_length , returned_length , process , flags );
         let res = api.GetSystemCpuSetInformation(
             information,
             buffer_length,
@@ -24267,7 +24118,7 @@ extern "C" fn thunk_GetSystemDEPPolicy(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetSystemDEPPolicy");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.GetSystemDEPPolicy();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -24293,7 +24144,11 @@ extern "C" fn thunk_GetSystemDirectoryA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetSystemDirectoryA");
         let _enter = span.enter();
-        tracing::trace!("lp_buffer = {:?}, u_size = {:?}", lp_buffer, u_size);
+        tracing::trace!(
+            "  args = {{lp_buffer = {:?}, u_size = {:?}}}",
+            lp_buffer,
+            u_size
+        );
         let res = api.GetSystemDirectoryA(lp_buffer, u_size);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -24319,7 +24174,11 @@ extern "C" fn thunk_GetSystemDirectoryW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetSystemDirectoryW");
         let _enter = span.enter();
-        tracing::trace!("lp_buffer = {:?}, u_size = {:?}", lp_buffer, u_size);
+        tracing::trace!(
+            "  args = {{lp_buffer = {:?}, u_size = {:?}}}",
+            lp_buffer,
+            u_size
+        );
         let res = api.GetSystemDirectoryW(lp_buffer, u_size);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -24347,7 +24206,7 @@ extern "C" fn thunk_GetSystemFirmwareTable(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetSystemFirmwareTable");
         let _enter = span.enter();
-        tracing :: trace ! ( "firmware_table_provider_signature = {:?}, firmware_table_id = {:?}, p_firmware_table_buffer = {:?}, buffer_size = {:?}" , firmware_table_provider_signature , firmware_table_id , p_firmware_table_buffer , buffer_size );
+        tracing :: trace ! ( "  args = {{firmware_table_provider_signature = {:?}, firmware_table_id = {:?}, p_firmware_table_buffer = {:?}, buffer_size = {:?}}}" , firmware_table_provider_signature , firmware_table_id , p_firmware_table_buffer , buffer_size );
         let res = api.GetSystemFirmwareTable(
             firmware_table_provider_signature,
             firmware_table_id,
@@ -24374,7 +24233,7 @@ extern "C" fn thunk_GetSystemInfo(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetSystemInfo");
         let _enter = span.enter();
-        tracing::trace!("lp_system_info = {:?}", lp_system_info);
+        tracing::trace!("  args = {{lp_system_info = {:?}}}", lp_system_info);
         let res = api.GetSystemInfo(lp_system_info);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -24400,7 +24259,7 @@ extern "C" fn thunk_GetSystemLeapSecondInformation(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetSystemLeapSecondInformation");
         let _enter = span.enter();
-        tracing::trace!("enabled = {:?}, flags = {:?}", enabled, flags);
+        tracing::trace!("  args = {{enabled = {:?}, flags = {:?}}}", enabled, flags);
         let res = api.GetSystemLeapSecondInformation(enabled, flags);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -24422,7 +24281,7 @@ extern "C" fn thunk_GetSystemTime(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetSystemTime");
         let _enter = span.enter();
-        tracing::trace!("lp_system_time = {:?}", lp_system_time);
+        tracing::trace!("  args = {{lp_system_time = {:?}}}", lp_system_time);
         let res = api.GetSystemTime(lp_system_time);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -24449,7 +24308,7 @@ extern "C" fn thunk_GetSystemTimeAdjustment(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetSystemTimeAdjustment");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_time_adjustment = {:?}, lp_time_increment = {:?}, lp_time_adjustment_disabled = {:?}" , lp_time_adjustment , lp_time_increment , lp_time_adjustment_disabled );
+        tracing :: trace ! ( "  args = {{lp_time_adjustment = {:?}, lp_time_increment = {:?}, lp_time_adjustment_disabled = {:?}}}" , lp_time_adjustment , lp_time_increment , lp_time_adjustment_disabled );
         let res = api.GetSystemTimeAdjustment(
             lp_time_adjustment,
             lp_time_increment,
@@ -24480,7 +24339,7 @@ extern "C" fn thunk_GetSystemTimeAdjustmentPrecise(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetSystemTimeAdjustmentPrecise");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_time_adjustment = {:?}, lp_time_increment = {:?}, lp_time_adjustment_disabled = {:?}" , lp_time_adjustment , lp_time_increment , lp_time_adjustment_disabled );
+        tracing :: trace ! ( "  args = {{lp_time_adjustment = {:?}, lp_time_increment = {:?}, lp_time_adjustment_disabled = {:?}}}" , lp_time_adjustment , lp_time_increment , lp_time_adjustment_disabled );
         let res = api.GetSystemTimeAdjustmentPrecise(
             lp_time_adjustment,
             lp_time_increment,
@@ -24510,7 +24369,7 @@ extern "C" fn thunk_GetSystemTimeAsFileTime(
         let span = tracing::trace_span!("GetSystemTimeAsFileTime");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_system_time_as_file_time = {:?}",
+            "  args = {{lp_system_time_as_file_time = {:?}}}",
             lp_system_time_as_file_time
         );
         let res = api.GetSystemTimeAsFileTime(lp_system_time_as_file_time);
@@ -24538,7 +24397,7 @@ extern "C" fn thunk_GetSystemTimePreciseAsFileTime(
         let span = tracing::trace_span!("GetSystemTimePreciseAsFileTime");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_system_time_as_file_time = {:?}",
+            "  args = {{lp_system_time_as_file_time = {:?}}}",
             lp_system_time_as_file_time
         );
         let res = api.GetSystemTimePreciseAsFileTime(lp_system_time_as_file_time);
@@ -24566,7 +24425,11 @@ extern "C" fn thunk_GetSystemWindowsDirectoryA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetSystemWindowsDirectoryA");
         let _enter = span.enter();
-        tracing::trace!("lp_buffer = {:?}, u_size = {:?}", lp_buffer, u_size);
+        tracing::trace!(
+            "  args = {{lp_buffer = {:?}, u_size = {:?}}}",
+            lp_buffer,
+            u_size
+        );
         let res = api.GetSystemWindowsDirectoryA(lp_buffer, u_size);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -24592,7 +24455,11 @@ extern "C" fn thunk_GetSystemWindowsDirectoryW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetSystemWindowsDirectoryW");
         let _enter = span.enter();
-        tracing::trace!("lp_buffer = {:?}, u_size = {:?}", lp_buffer, u_size);
+        tracing::trace!(
+            "  args = {{lp_buffer = {:?}, u_size = {:?}}}",
+            lp_buffer,
+            u_size
+        );
         let res = api.GetSystemWindowsDirectoryW(lp_buffer, u_size);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -24620,7 +24487,7 @@ extern "C" fn thunk_GetSystemWow64Directory2A(
         let span = tracing::trace_span!("GetSystemWow64Directory2A");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_buffer = {:?}, u_size = {:?}, image_file_machine_type = {:?}",
+            "  args = {{lp_buffer = {:?}, u_size = {:?}, image_file_machine_type = {:?}}}",
             lp_buffer,
             u_size,
             image_file_machine_type
@@ -24652,7 +24519,7 @@ extern "C" fn thunk_GetSystemWow64Directory2W(
         let span = tracing::trace_span!("GetSystemWow64Directory2W");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_buffer = {:?}, u_size = {:?}, image_file_machine_type = {:?}",
+            "  args = {{lp_buffer = {:?}, u_size = {:?}, image_file_machine_type = {:?}}}",
             lp_buffer,
             u_size,
             image_file_machine_type
@@ -24682,7 +24549,11 @@ extern "C" fn thunk_GetSystemWow64DirectoryA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetSystemWow64DirectoryA");
         let _enter = span.enter();
-        tracing::trace!("lp_buffer = {:?}, u_size = {:?}", lp_buffer, u_size);
+        tracing::trace!(
+            "  args = {{lp_buffer = {:?}, u_size = {:?}}}",
+            lp_buffer,
+            u_size
+        );
         let res = api.GetSystemWow64DirectoryA(lp_buffer, u_size);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -24708,7 +24579,11 @@ extern "C" fn thunk_GetSystemWow64DirectoryW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetSystemWow64DirectoryW");
         let _enter = span.enter();
-        tracing::trace!("lp_buffer = {:?}, u_size = {:?}", lp_buffer, u_size);
+        tracing::trace!(
+            "  args = {{lp_buffer = {:?}, u_size = {:?}}}",
+            lp_buffer,
+            u_size
+        );
         let res = api.GetSystemWow64DirectoryW(lp_buffer, u_size);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -24729,7 +24604,7 @@ extern "C" fn thunk_GetTickCount(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetTickCount");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.GetTickCount();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -24753,7 +24628,7 @@ extern "C" fn thunk_GetTickCount64(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetTickCount64");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.GetTickCount64();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -24774,7 +24649,7 @@ extern "C" fn thunk_GetVersion(context: &mut ExtendedContext, memory: FlatMemory
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetVersion");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.GetVersion();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -24796,7 +24671,10 @@ extern "C" fn thunk_GetVersionExA(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetVersionExA");
         let _enter = span.enter();
-        tracing::trace!("lp_version_information = {:?}", lp_version_information);
+        tracing::trace!(
+            "  args = {{lp_version_information = {:?}}}",
+            lp_version_information
+        );
         let res = api.GetVersionExA(lp_version_information);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -24818,7 +24696,10 @@ extern "C" fn thunk_GetVersionExW(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetVersionExW");
         let _enter = span.enter();
-        tracing::trace!("lp_version_information = {:?}", lp_version_information);
+        tracing::trace!(
+            "  args = {{lp_version_information = {:?}}}",
+            lp_version_information
+        );
         let res = api.GetVersionExW(lp_version_information);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -24844,7 +24725,11 @@ extern "C" fn thunk_GetWindowsDirectoryA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetWindowsDirectoryA");
         let _enter = span.enter();
-        tracing::trace!("lp_buffer = {:?}, u_size = {:?}", lp_buffer, u_size);
+        tracing::trace!(
+            "  args = {{lp_buffer = {:?}, u_size = {:?}}}",
+            lp_buffer,
+            u_size
+        );
         let res = api.GetWindowsDirectoryA(lp_buffer, u_size);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -24870,7 +24755,11 @@ extern "C" fn thunk_GetWindowsDirectoryW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetWindowsDirectoryW");
         let _enter = span.enter();
-        tracing::trace!("lp_buffer = {:?}, u_size = {:?}", lp_buffer, u_size);
+        tracing::trace!(
+            "  args = {{lp_buffer = {:?}, u_size = {:?}}}",
+            lp_buffer,
+            u_size
+        );
         let res = api.GetWindowsDirectoryW(lp_buffer, u_size);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -24895,7 +24784,7 @@ extern "C" fn thunk_GlobalMemoryStatus(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GlobalMemoryStatus");
         let _enter = span.enter();
-        tracing::trace!("lp_buffer = {:?}", lp_buffer);
+        tracing::trace!("  args = {{lp_buffer = {:?}}}", lp_buffer);
         let res = api.GlobalMemoryStatus(lp_buffer);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -24920,7 +24809,7 @@ extern "C" fn thunk_GlobalMemoryStatusEx(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GlobalMemoryStatusEx");
         let _enter = span.enter();
-        tracing::trace!("lp_buffer = {:?}", lp_buffer);
+        tracing::trace!("  args = {{lp_buffer = {:?}}}", lp_buffer);
         let res = api.GlobalMemoryStatusEx(lp_buffer);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -24948,7 +24837,7 @@ extern "C" fn thunk_RtlConvertDeviceFamilyInfoToString(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("RtlConvertDeviceFamilyInfoToString");
         let _enter = span.enter();
-        tracing :: trace ! ( "pul_device_family_buffer_size = {:?}, pul_device_form_buffer_size = {:?}, device_family = {:?}, device_form = {:?}" , pul_device_family_buffer_size , pul_device_form_buffer_size , device_family , device_form );
+        tracing :: trace ! ( "  args = {{pul_device_family_buffer_size = {:?}, pul_device_form_buffer_size = {:?}, device_family = {:?}, device_form = {:?}}}" , pul_device_family_buffer_size , pul_device_form_buffer_size , device_family , device_form );
         let res = api.RtlConvertDeviceFamilyInfoToString(
             pul_device_family_buffer_size,
             pul_device_form_buffer_size,
@@ -24981,7 +24870,7 @@ extern "C" fn thunk_RtlGetDeviceFamilyInfoEnum(
         let span = tracing::trace_span!("RtlGetDeviceFamilyInfoEnum");
         let _enter = span.enter();
         tracing::trace!(
-            "pull_uap_info = {:?}, pul_device_family = {:?}, pul_device_form = {:?}",
+            "  args = {{pull_uap_info = {:?}, pul_device_family = {:?}, pul_device_form = {:?}}}",
             pull_uap_info,
             pul_device_family,
             pul_device_form
@@ -25014,7 +24903,7 @@ extern "C" fn thunk_RtlGetProductInfo(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("RtlGetProductInfo");
         let _enter = span.enter();
-        tracing :: trace ! ( "os_major_version = {:?}, os_minor_version = {:?}, sp_major_version = {:?}, sp_minor_version = {:?}, returned_product_type = {:?}" , os_major_version , os_minor_version , sp_major_version , sp_minor_version , returned_product_type );
+        tracing :: trace ! ( "  args = {{os_major_version = {:?}, os_minor_version = {:?}, sp_major_version = {:?}, sp_minor_version = {:?}, returned_product_type = {:?}}}" , os_major_version , os_minor_version , sp_major_version , sp_minor_version , returned_product_type );
         let res = api.RtlGetProductInfo(
             os_major_version,
             os_minor_version,
@@ -25048,7 +24937,7 @@ extern "C" fn thunk_RtlGetSystemGlobalData(
         let span = tracing::trace_span!("RtlGetSystemGlobalData");
         let _enter = span.enter();
         tracing::trace!(
-            "data_id = {:?}, buffer = {:?}, size = {:?}",
+            "  args = {{data_id = {:?}, buffer = {:?}, size = {:?}}}",
             data_id,
             buffer,
             size
@@ -25077,7 +24966,7 @@ extern "C" fn thunk_RtlOsDeploymentState(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("RtlOsDeploymentState");
         let _enter = span.enter();
-        tracing::trace!("flags = {:?}", flags);
+        tracing::trace!("  args = {{flags = {:?}}}", flags);
         let res = api.RtlOsDeploymentState(flags);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -25105,7 +24994,7 @@ extern "C" fn thunk_RtlSwitchedVVI(
         let span = tracing::trace_span!("RtlSwitchedVVI");
         let _enter = span.enter();
         tracing::trace!(
-            "version_info = {:?}, type_mask = {:?}, condition_mask = {:?}",
+            "  args = {{version_info = {:?}, type_mask = {:?}, condition_mask = {:?}}}",
             version_info,
             type_mask,
             condition_mask
@@ -25134,7 +25023,7 @@ extern "C" fn thunk_SetComputerNameA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetComputerNameA");
         let _enter = span.enter();
-        tracing::trace!("lp_computer_name = {:?}", lp_computer_name);
+        tracing::trace!("  args = {{lp_computer_name = {:?}}}", lp_computer_name);
         let res = api.SetComputerNameA(lp_computer_name);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -25162,7 +25051,7 @@ extern "C" fn thunk_SetComputerNameEx2W(
         let span = tracing::trace_span!("SetComputerNameEx2W");
         let _enter = span.enter();
         tracing::trace!(
-            "name_type = {:?}, flags = {:?}, lp_buffer = {:?}",
+            "  args = {{name_type = {:?}, flags = {:?}, lp_buffer = {:?}}}",
             name_type,
             flags,
             lp_buffer
@@ -25192,7 +25081,11 @@ extern "C" fn thunk_SetComputerNameExA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetComputerNameExA");
         let _enter = span.enter();
-        tracing::trace!("name_type = {:?}, lp_buffer = {:?}", name_type, lp_buffer);
+        tracing::trace!(
+            "  args = {{name_type = {:?}, lp_buffer = {:?}}}",
+            name_type,
+            lp_buffer
+        );
         let res = api.SetComputerNameExA(name_type, lp_buffer);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -25218,7 +25111,11 @@ extern "C" fn thunk_SetComputerNameExW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetComputerNameExW");
         let _enter = span.enter();
-        tracing::trace!("name_type = {:?}, lp_buffer = {:?}", name_type, lp_buffer);
+        tracing::trace!(
+            "  args = {{name_type = {:?}, lp_buffer = {:?}}}",
+            name_type,
+            lp_buffer
+        );
         let res = api.SetComputerNameExW(name_type, lp_buffer);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -25243,7 +25140,7 @@ extern "C" fn thunk_SetComputerNameW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetComputerNameW");
         let _enter = span.enter();
-        tracing::trace!("lp_computer_name = {:?}", lp_computer_name);
+        tracing::trace!("  args = {{lp_computer_name = {:?}}}", lp_computer_name);
         let res = api.SetComputerNameW(lp_computer_name);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -25265,7 +25162,7 @@ extern "C" fn thunk_SetLocalTime(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetLocalTime");
         let _enter = span.enter();
-        tracing::trace!("lp_system_time = {:?}", lp_system_time);
+        tracing::trace!("  args = {{lp_system_time = {:?}}}", lp_system_time);
         let res = api.SetLocalTime(lp_system_time);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -25287,7 +25184,7 @@ extern "C" fn thunk_SetSystemTime(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetSystemTime");
         let _enter = span.enter();
-        tracing::trace!("lp_system_time = {:?}", lp_system_time);
+        tracing::trace!("  args = {{lp_system_time = {:?}}}", lp_system_time);
         let res = api.SetSystemTime(lp_system_time);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -25314,7 +25211,7 @@ extern "C" fn thunk_SetSystemTimeAdjustment(
         let span = tracing::trace_span!("SetSystemTimeAdjustment");
         let _enter = span.enter();
         tracing::trace!(
-            "dw_time_adjustment = {:?}, b_time_adjustment_disabled = {:?}",
+            "  args = {{dw_time_adjustment = {:?}, b_time_adjustment_disabled = {:?}}}",
             dw_time_adjustment,
             b_time_adjustment_disabled
         );
@@ -25344,7 +25241,7 @@ extern "C" fn thunk_SetSystemTimeAdjustmentPrecise(
         let span = tracing::trace_span!("SetSystemTimeAdjustmentPrecise");
         let _enter = span.enter();
         tracing::trace!(
-            "dw_time_adjustment = {:?}, b_time_adjustment_disabled = {:?}",
+            "  args = {{dw_time_adjustment = {:?}, b_time_adjustment_disabled = {:?}}}",
             dw_time_adjustment,
             b_time_adjustment_disabled
         );
@@ -25376,7 +25273,7 @@ extern "C" fn thunk_VerSetConditionMask(
         let span = tracing::trace_span!("VerSetConditionMask");
         let _enter = span.enter();
         tracing::trace!(
-            "condition_mask = {:?}, type_mask = {:?}, condition = {:?}",
+            "  args = {{condition_mask = {:?}, type_mask = {:?}, condition = {:?}}}",
             condition_mask,
             type_mask,
             condition
@@ -25407,12 +25304,7 @@ extern "C" fn thunk_VerifyVersionInfoA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("VerifyVersionInfoA");
         let _enter = span.enter();
-        tracing::trace!(
-            "lp_version_information = {:?}, dw_type_mask = {:?}, dwl_condition_mask = {:?}",
-            lp_version_information,
-            dw_type_mask,
-            dwl_condition_mask
-        );
+        tracing :: trace ! ( "  args = {{lp_version_information = {:?}, dw_type_mask = {:?}, dwl_condition_mask = {:?}}}" , lp_version_information , dw_type_mask , dwl_condition_mask );
         let res = api.VerifyVersionInfoA(lp_version_information, dw_type_mask, dwl_condition_mask);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -25439,12 +25331,7 @@ extern "C" fn thunk_VerifyVersionInfoW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("VerifyVersionInfoW");
         let _enter = span.enter();
-        tracing::trace!(
-            "lp_version_information = {:?}, dw_type_mask = {:?}, dwl_condition_mask = {:?}",
-            lp_version_information,
-            dw_type_mask,
-            dwl_condition_mask
-        );
+        tracing :: trace ! ( "  args = {{lp_version_information = {:?}, dw_type_mask = {:?}, dwl_condition_mask = {:?}}}" , lp_version_information , dw_type_mask , dwl_condition_mask );
         let res = api.VerifyVersionInfoW(lp_version_information, dw_type_mask, dwl_condition_mask);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -25469,7 +25356,7 @@ extern "C" fn thunk_AcquireSRWLockExclusive(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("AcquireSRWLockExclusive");
         let _enter = span.enter();
-        tracing::trace!("srw_lock = {:?}", srw_lock);
+        tracing::trace!("  args = {{srw_lock = {:?}}}", srw_lock);
         let res = api.AcquireSRWLockExclusive(srw_lock);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -25494,7 +25381,7 @@ extern "C" fn thunk_AcquireSRWLockShared(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("AcquireSRWLockShared");
         let _enter = span.enter();
-        tracing::trace!("srw_lock = {:?}", srw_lock);
+        tracing::trace!("  args = {{srw_lock = {:?}}}", srw_lock);
         let res = api.AcquireSRWLockShared(srw_lock);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -25521,7 +25408,7 @@ extern "C" fn thunk_AddIntegrityLabelToBoundaryDescriptor(
         let span = tracing::trace_span!("AddIntegrityLabelToBoundaryDescriptor");
         let _enter = span.enter();
         tracing::trace!(
-            "boundary_descriptor = {:?}, integrity_label = {:?}",
+            "  args = {{boundary_descriptor = {:?}, integrity_label = {:?}}}",
             boundary_descriptor,
             integrity_label
         );
@@ -25551,7 +25438,7 @@ extern "C" fn thunk_AddSIDToBoundaryDescriptor(
         let span = tracing::trace_span!("AddSIDToBoundaryDescriptor");
         let _enter = span.enter();
         tracing::trace!(
-            "boundary_descriptor = {:?}, required_sid = {:?}",
+            "  args = {{boundary_descriptor = {:?}, required_sid = {:?}}}",
             boundary_descriptor,
             required_sid
         );
@@ -25582,7 +25469,7 @@ extern "C" fn thunk_AttachThreadInput(
         let span = tracing::trace_span!("AttachThreadInput");
         let _enter = span.enter();
         tracing::trace!(
-            "id_attach = {:?}, id_attach_to = {:?}, f_attach = {:?}",
+            "  args = {{id_attach = {:?}, id_attach_to = {:?}, f_attach = {:?}}}",
             id_attach,
             id_attach_to,
             f_attach
@@ -25613,7 +25500,7 @@ extern "C" fn thunk_AvQuerySystemResponsiveness(
         let span = tracing::trace_span!("AvQuerySystemResponsiveness");
         let _enter = span.enter();
         tracing::trace!(
-            "avrt_handle = {:?}, system_responsiveness_value = {:?}",
+            "  args = {{avrt_handle = {:?}, system_responsiveness_value = {:?}}}",
             avrt_handle,
             system_responsiveness_value
         );
@@ -25641,7 +25528,7 @@ extern "C" fn thunk_AvRevertMmThreadCharacteristics(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("AvRevertMmThreadCharacteristics");
         let _enter = span.enter();
-        tracing::trace!("avrt_handle = {:?}", avrt_handle);
+        tracing::trace!("  args = {{avrt_handle = {:?}}}", avrt_handle);
         let res = api.AvRevertMmThreadCharacteristics(avrt_handle);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -25669,13 +25556,7 @@ extern "C" fn thunk_AvRtCreateThreadOrderingGroup(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("AvRtCreateThreadOrderingGroup");
         let _enter = span.enter();
-        tracing::trace!(
-            "context = {:?}, period = {:?}, thread_ordering_guid = {:?}, timeout = {:?}",
-            context,
-            period,
-            thread_ordering_guid,
-            timeout
-        );
+        tracing :: trace ! ( "  args = {{context = {:?}, period = {:?}, thread_ordering_guid = {:?}, timeout = {:?}}}" , context , period , thread_ordering_guid , timeout );
         let res = api.AvRtCreateThreadOrderingGroup(context, period, thread_ordering_guid, timeout);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -25704,7 +25585,7 @@ extern "C" fn thunk_AvRtCreateThreadOrderingGroupExA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("AvRtCreateThreadOrderingGroupExA");
         let _enter = span.enter();
-        tracing :: trace ! ( "context = {:?}, period = {:?}, thread_ordering_guid = {:?}, timeout = {:?}, task_name = {:?}" , context , period , thread_ordering_guid , timeout , task_name );
+        tracing :: trace ! ( "  args = {{context = {:?}, period = {:?}, thread_ordering_guid = {:?}, timeout = {:?}, task_name = {:?}}}" , context , period , thread_ordering_guid , timeout , task_name );
         let res = api.AvRtCreateThreadOrderingGroupExA(
             context,
             period,
@@ -25739,7 +25620,7 @@ extern "C" fn thunk_AvRtCreateThreadOrderingGroupExW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("AvRtCreateThreadOrderingGroupExW");
         let _enter = span.enter();
-        tracing :: trace ! ( "context = {:?}, period = {:?}, thread_ordering_guid = {:?}, timeout = {:?}, task_name = {:?}" , context , period , thread_ordering_guid , timeout , task_name );
+        tracing :: trace ! ( "  args = {{context = {:?}, period = {:?}, thread_ordering_guid = {:?}, timeout = {:?}, task_name = {:?}}}" , context , period , thread_ordering_guid , timeout , task_name );
         let res = api.AvRtCreateThreadOrderingGroupExW(
             context,
             period,
@@ -25770,7 +25651,7 @@ extern "C" fn thunk_AvRtDeleteThreadOrderingGroup(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("AvRtDeleteThreadOrderingGroup");
         let _enter = span.enter();
-        tracing::trace!("context = {:?}", context);
+        tracing::trace!("  args = {{context = {:?}}}", context);
         let res = api.AvRtDeleteThreadOrderingGroup(context);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -25798,7 +25679,7 @@ extern "C" fn thunk_AvRtJoinThreadOrderingGroup(
         let span = tracing::trace_span!("AvRtJoinThreadOrderingGroup");
         let _enter = span.enter();
         tracing::trace!(
-            "context = {:?}, thread_ordering_guid = {:?}, before = {:?}",
+            "  args = {{context = {:?}, thread_ordering_guid = {:?}, before = {:?}}}",
             context,
             thread_ordering_guid,
             before
@@ -25827,7 +25708,7 @@ extern "C" fn thunk_AvRtLeaveThreadOrderingGroup(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("AvRtLeaveThreadOrderingGroup");
         let _enter = span.enter();
-        tracing::trace!("context = {:?}", context);
+        tracing::trace!("  args = {{context = {:?}}}", context);
         let res = api.AvRtLeaveThreadOrderingGroup(context);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -25852,7 +25733,7 @@ extern "C" fn thunk_AvRtWaitOnThreadOrderingGroup(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("AvRtWaitOnThreadOrderingGroup");
         let _enter = span.enter();
-        tracing::trace!("context = {:?}", context);
+        tracing::trace!("  args = {{context = {:?}}}", context);
         let res = api.AvRtWaitOnThreadOrderingGroup(context);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -25880,7 +25761,7 @@ extern "C" fn thunk_AvSetMmMaxThreadCharacteristicsA(
         let span = tracing::trace_span!("AvSetMmMaxThreadCharacteristicsA");
         let _enter = span.enter();
         tracing::trace!(
-            "first_task = {:?}, second_task = {:?}, task_index = {:?}",
+            "  args = {{first_task = {:?}, second_task = {:?}, task_index = {:?}}}",
             first_task,
             second_task,
             task_index
@@ -25912,7 +25793,7 @@ extern "C" fn thunk_AvSetMmMaxThreadCharacteristicsW(
         let span = tracing::trace_span!("AvSetMmMaxThreadCharacteristicsW");
         let _enter = span.enter();
         tracing::trace!(
-            "first_task = {:?}, second_task = {:?}, task_index = {:?}",
+            "  args = {{first_task = {:?}, second_task = {:?}, task_index = {:?}}}",
             first_task,
             second_task,
             task_index
@@ -25942,7 +25823,11 @@ extern "C" fn thunk_AvSetMmThreadCharacteristicsA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("AvSetMmThreadCharacteristicsA");
         let _enter = span.enter();
-        tracing::trace!("task_name = {:?}, task_index = {:?}", task_name, task_index);
+        tracing::trace!(
+            "  args = {{task_name = {:?}, task_index = {:?}}}",
+            task_name,
+            task_index
+        );
         let res = api.AvSetMmThreadCharacteristicsA(task_name, task_index);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -25968,7 +25853,11 @@ extern "C" fn thunk_AvSetMmThreadCharacteristicsW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("AvSetMmThreadCharacteristicsW");
         let _enter = span.enter();
-        tracing::trace!("task_name = {:?}, task_index = {:?}", task_name, task_index);
+        tracing::trace!(
+            "  args = {{task_name = {:?}, task_index = {:?}}}",
+            task_name,
+            task_index
+        );
         let res = api.AvSetMmThreadCharacteristicsW(task_name, task_index);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -25994,7 +25883,11 @@ extern "C" fn thunk_AvSetMmThreadPriority(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("AvSetMmThreadPriority");
         let _enter = span.enter();
-        tracing::trace!("avrt_handle = {:?}, priority = {:?}", avrt_handle, priority);
+        tracing::trace!(
+            "  args = {{avrt_handle = {:?}, priority = {:?}}}",
+            avrt_handle,
+            priority
+        );
         let res = api.AvSetMmThreadPriority(avrt_handle, priority);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -26019,7 +25912,7 @@ extern "C" fn thunk_CallbackMayRunLong(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CallbackMayRunLong");
         let _enter = span.enter();
-        tracing::trace!("pci = {:?}", pci);
+        tracing::trace!("  args = {{pci = {:?}}}", pci);
         let res = api.CallbackMayRunLong(pci);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -26044,7 +25937,7 @@ extern "C" fn thunk_CancelThreadpoolIo(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CancelThreadpoolIo");
         let _enter = span.enter();
-        tracing::trace!("pio = {:?}", pio);
+        tracing::trace!("  args = {{pio = {:?}}}", pio);
         let res = api.CancelThreadpoolIo(pio);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -26069,7 +25962,7 @@ extern "C" fn thunk_CancelWaitableTimer(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CancelWaitableTimer");
         let _enter = span.enter();
-        tracing::trace!("h_timer = {:?}", h_timer);
+        tracing::trace!("  args = {{h_timer = {:?}}}", h_timer);
         let res = api.CancelWaitableTimer(h_timer);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -26098,7 +25991,7 @@ extern "C" fn thunk_ChangeTimerQueueTimer(
         let span = tracing::trace_span!("ChangeTimerQueueTimer");
         let _enter = span.enter();
         tracing::trace!(
-            "timer_queue = {:?}, timer = {:?}, due_time = {:?}, period = {:?}",
+            "  args = {{timer_queue = {:?}, timer = {:?}, due_time = {:?}, period = {:?}}}",
             timer_queue,
             timer,
             due_time,
@@ -26129,7 +26022,7 @@ extern "C" fn thunk_ClosePrivateNamespace(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ClosePrivateNamespace");
         let _enter = span.enter();
-        tracing::trace!("handle = {:?}, flags = {:?}", handle, flags);
+        tracing::trace!("  args = {{handle = {:?}, flags = {:?}}}", handle, flags);
         let res = api.ClosePrivateNamespace(handle, flags);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -26154,7 +26047,7 @@ extern "C" fn thunk_CloseThreadpool(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CloseThreadpool");
         let _enter = span.enter();
-        tracing::trace!("ptpp = {:?}", ptpp);
+        tracing::trace!("  args = {{ptpp = {:?}}}", ptpp);
         let res = api.CloseThreadpool(ptpp);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -26179,7 +26072,7 @@ extern "C" fn thunk_CloseThreadpoolCleanupGroup(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CloseThreadpoolCleanupGroup");
         let _enter = span.enter();
-        tracing::trace!("ptpcg = {:?}", ptpcg);
+        tracing::trace!("  args = {{ptpcg = {:?}}}", ptpcg);
         let res = api.CloseThreadpoolCleanupGroup(ptpcg);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -26206,12 +26099,7 @@ extern "C" fn thunk_CloseThreadpoolCleanupGroupMembers(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CloseThreadpoolCleanupGroupMembers");
         let _enter = span.enter();
-        tracing::trace!(
-            "ptpcg = {:?}, f_cancel_pending_callbacks = {:?}, pv_cleanup_context = {:?}",
-            ptpcg,
-            f_cancel_pending_callbacks,
-            pv_cleanup_context
-        );
+        tracing :: trace ! ( "  args = {{ptpcg = {:?}, f_cancel_pending_callbacks = {:?}, pv_cleanup_context = {:?}}}" , ptpcg , f_cancel_pending_callbacks , pv_cleanup_context );
         let res = api.CloseThreadpoolCleanupGroupMembers(
             ptpcg,
             f_cancel_pending_callbacks,
@@ -26240,7 +26128,7 @@ extern "C" fn thunk_CloseThreadpoolIo(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CloseThreadpoolIo");
         let _enter = span.enter();
-        tracing::trace!("pio = {:?}", pio);
+        tracing::trace!("  args = {{pio = {:?}}}", pio);
         let res = api.CloseThreadpoolIo(pio);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -26265,7 +26153,7 @@ extern "C" fn thunk_CloseThreadpoolTimer(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CloseThreadpoolTimer");
         let _enter = span.enter();
-        tracing::trace!("pti = {:?}", pti);
+        tracing::trace!("  args = {{pti = {:?}}}", pti);
         let res = api.CloseThreadpoolTimer(pti);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -26290,7 +26178,7 @@ extern "C" fn thunk_CloseThreadpoolWait(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CloseThreadpoolWait");
         let _enter = span.enter();
-        tracing::trace!("pwa = {:?}", pwa);
+        tracing::trace!("  args = {{pwa = {:?}}}", pwa);
         let res = api.CloseThreadpoolWait(pwa);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -26315,7 +26203,7 @@ extern "C" fn thunk_CloseThreadpoolWork(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CloseThreadpoolWork");
         let _enter = span.enter();
-        tracing::trace!("pwk = {:?}", pwk);
+        tracing::trace!("  args = {{pwk = {:?}}}", pwk);
         let res = api.CloseThreadpoolWork(pwk);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -26339,7 +26227,7 @@ extern "C" fn thunk_ConvertFiberToThread(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ConvertFiberToThread");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.ConvertFiberToThread();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -26364,7 +26252,7 @@ extern "C" fn thunk_ConvertThreadToFiber(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ConvertThreadToFiber");
         let _enter = span.enter();
-        tracing::trace!("lp_parameter = {:?}", lp_parameter);
+        tracing::trace!("  args = {{lp_parameter = {:?}}}", lp_parameter);
         let res = api.ConvertThreadToFiber(lp_parameter);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -26391,7 +26279,7 @@ extern "C" fn thunk_ConvertThreadToFiberEx(
         let span = tracing::trace_span!("ConvertThreadToFiberEx");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_parameter = {:?}, dw_flags = {:?}",
+            "  args = {{lp_parameter = {:?}, dw_flags = {:?}}}",
             lp_parameter,
             dw_flags
         );
@@ -26420,7 +26308,7 @@ extern "C" fn thunk_CreateBoundaryDescriptorA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CreateBoundaryDescriptorA");
         let _enter = span.enter();
-        tracing::trace!("name = {:?}, flags = {:?}", name, flags);
+        tracing::trace!("  args = {{name = {:?}, flags = {:?}}}", name, flags);
         let res = api.CreateBoundaryDescriptorA(name, flags);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -26446,7 +26334,7 @@ extern "C" fn thunk_CreateBoundaryDescriptorW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CreateBoundaryDescriptorW");
         let _enter = span.enter();
-        tracing::trace!("name = {:?}, flags = {:?}", name, flags);
+        tracing::trace!("  args = {{name = {:?}, flags = {:?}}}", name, flags);
         let res = api.CreateBoundaryDescriptorW(name, flags);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -26471,7 +26359,7 @@ extern "C" fn thunk_CreateFiber(context: &mut ExtendedContext, memory: FlatMemor
         let span = tracing::trace_span!("CreateFiber");
         let _enter = span.enter();
         tracing::trace!(
-            "dw_stack_size = {:?}, lp_start_address = {:?}, lp_parameter = {:?}",
+            "  args = {{dw_stack_size = {:?}, lp_start_address = {:?}, lp_parameter = {:?}}}",
             dw_stack_size,
             lp_start_address,
             lp_parameter
@@ -26501,7 +26389,7 @@ extern "C" fn thunk_CreateFiberEx(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CreateFiberEx");
         let _enter = span.enter();
-        tracing :: trace ! ( "dw_stack_commit_size = {:?}, dw_stack_reserve_size = {:?}, dw_flags = {:?}, lp_start_address = {:?}, lp_parameter = {:?}" , dw_stack_commit_size , dw_stack_reserve_size , dw_flags , lp_start_address , lp_parameter );
+        tracing :: trace ! ( "  args = {{dw_stack_commit_size = {:?}, dw_stack_reserve_size = {:?}, dw_flags = {:?}, lp_start_address = {:?}, lp_parameter = {:?}}}" , dw_stack_commit_size , dw_stack_reserve_size , dw_flags , lp_start_address , lp_parameter );
         let res = api.CreateFiberEx(
             dw_stack_commit_size,
             dw_stack_reserve_size,
@@ -26542,7 +26430,7 @@ extern "C" fn thunk_CreateProcessWithLogonW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CreateProcessWithLogonW");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_username = {:?}, lp_domain = {:?}, lp_password = {:?}, dw_logon_flags = {:?}, lp_application_name = {:?}, lp_command_line = {:?}, dw_creation_flags = {:?}, lp_environment = {:?}, lp_current_directory = {:?}, lp_startup_info = {:?}, lp_process_information = {:?}" , lp_username , lp_domain , lp_password , dw_logon_flags , lp_application_name , lp_command_line , dw_creation_flags , lp_environment , lp_current_directory , lp_startup_info , lp_process_information );
+        tracing :: trace ! ( "  args = {{lp_username = {:?}, lp_domain = {:?}, lp_password = {:?}, dw_logon_flags = {:?}, lp_application_name = {:?}, lp_command_line = {:?}, dw_creation_flags = {:?}, lp_environment = {:?}, lp_current_directory = {:?}, lp_startup_info = {:?}, lp_process_information = {:?}}}" , lp_username , lp_domain , lp_password , dw_logon_flags , lp_application_name , lp_command_line , dw_creation_flags , lp_environment , lp_current_directory , lp_startup_info , lp_process_information );
         let res = api.CreateProcessWithLogonW(
             lp_username,
             lp_domain,
@@ -26587,7 +26475,7 @@ extern "C" fn thunk_CreateProcessWithTokenW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CreateProcessWithTokenW");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_token = {:?}, dw_logon_flags = {:?}, lp_application_name = {:?}, lp_command_line = {:?}, dw_creation_flags = {:?}, lp_environment = {:?}, lp_current_directory = {:?}, lp_startup_info = {:?}, lp_process_information = {:?}" , h_token , dw_logon_flags , lp_application_name , lp_command_line , dw_creation_flags , lp_environment , lp_current_directory , lp_startup_info , lp_process_information );
+        tracing :: trace ! ( "  args = {{h_token = {:?}, dw_logon_flags = {:?}, lp_application_name = {:?}, lp_command_line = {:?}, dw_creation_flags = {:?}, lp_environment = {:?}, lp_current_directory = {:?}, lp_startup_info = {:?}, lp_process_information = {:?}}}" , h_token , dw_logon_flags , lp_application_name , lp_command_line , dw_creation_flags , lp_environment , lp_current_directory , lp_startup_info , lp_process_information );
         let res = api.CreateProcessWithTokenW(
             h_token,
             dw_logon_flags,
@@ -26622,7 +26510,7 @@ extern "C" fn thunk_CreateThreadpool(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CreateThreadpool");
         let _enter = span.enter();
-        tracing::trace!("reserved = {:?}", reserved);
+        tracing::trace!("  args = {{reserved = {:?}}}", reserved);
         let res = api.CreateThreadpool(reserved);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -26646,7 +26534,7 @@ extern "C" fn thunk_CreateThreadpoolCleanupGroup(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CreateThreadpoolCleanupGroup");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.CreateThreadpoolCleanupGroup();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -26675,7 +26563,7 @@ extern "C" fn thunk_CreateThreadpoolIo(
         let span = tracing::trace_span!("CreateThreadpoolIo");
         let _enter = span.enter();
         tracing::trace!(
-            "fl = {:?}, pfnio = {:?}, pv = {:?}, pcbe = {:?}",
+            "  args = {{fl = {:?}, pfnio = {:?}, pv = {:?}, pcbe = {:?}}}",
             fl,
             pfnio,
             pv,
@@ -26707,7 +26595,12 @@ extern "C" fn thunk_CreateThreadpoolTimer(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CreateThreadpoolTimer");
         let _enter = span.enter();
-        tracing::trace!("pfnti = {:?}, pv = {:?}, pcbe = {:?}", pfnti, pv, pcbe);
+        tracing::trace!(
+            "  args = {{pfnti = {:?}, pv = {:?}, pcbe = {:?}}}",
+            pfnti,
+            pv,
+            pcbe
+        );
         let res = api.CreateThreadpoolTimer(pfnti, pv, pcbe);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -26734,7 +26627,12 @@ extern "C" fn thunk_CreateThreadpoolWait(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CreateThreadpoolWait");
         let _enter = span.enter();
-        tracing::trace!("pfnwa = {:?}, pv = {:?}, pcbe = {:?}", pfnwa, pv, pcbe);
+        tracing::trace!(
+            "  args = {{pfnwa = {:?}, pv = {:?}, pcbe = {:?}}}",
+            pfnwa,
+            pv,
+            pcbe
+        );
         let res = api.CreateThreadpoolWait(pfnwa, pv, pcbe);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -26761,7 +26659,12 @@ extern "C" fn thunk_CreateThreadpoolWork(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CreateThreadpoolWork");
         let _enter = span.enter();
-        tracing::trace!("pfnwk = {:?}, pv = {:?}, pcbe = {:?}", pfnwk, pv, pcbe);
+        tracing::trace!(
+            "  args = {{pfnwk = {:?}, pv = {:?}, pcbe = {:?}}}",
+            pfnwk,
+            pv,
+            pcbe
+        );
         let res = api.CreateThreadpoolWork(pfnwk, pv, pcbe);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -26785,7 +26688,7 @@ extern "C" fn thunk_CreateTimerQueue(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CreateTimerQueue");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.CreateTimerQueue();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -26816,7 +26719,7 @@ extern "C" fn thunk_CreateTimerQueueTimer(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CreateTimerQueueTimer");
         let _enter = span.enter();
-        tracing :: trace ! ( "ph_new_timer = {:?}, timer_queue = {:?}, callback = {:?}, parameter = {:?}, due_time = {:?}, period = {:?}, flags = {:?}" , ph_new_timer , timer_queue , callback , parameter , due_time , period , flags );
+        tracing :: trace ! ( "  args = {{ph_new_timer = {:?}, timer_queue = {:?}, callback = {:?}, parameter = {:?}, due_time = {:?}, period = {:?}, flags = {:?}}}" , ph_new_timer , timer_queue , callback , parameter , due_time , period , flags );
         let res = api.CreateTimerQueueTimer(
             ph_new_timer,
             timer_queue,
@@ -26849,7 +26752,10 @@ extern "C" fn thunk_CreateUmsCompletionList(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CreateUmsCompletionList");
         let _enter = span.enter();
-        tracing::trace!("ums_completion_list = {:?}", ums_completion_list);
+        tracing::trace!(
+            "  args = {{ums_completion_list = {:?}}}",
+            ums_completion_list
+        );
         let res = api.CreateUmsCompletionList(ums_completion_list);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -26874,7 +26780,7 @@ extern "C" fn thunk_CreateUmsThreadContext(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CreateUmsThreadContext");
         let _enter = span.enter();
-        tracing::trace!("lp_ums_thread = {:?}", lp_ums_thread);
+        tracing::trace!("  args = {{lp_ums_thread = {:?}}}", lp_ums_thread);
         let res = api.CreateUmsThreadContext(lp_ums_thread);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -26899,7 +26805,10 @@ extern "C" fn thunk_DeleteBoundaryDescriptor(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("DeleteBoundaryDescriptor");
         let _enter = span.enter();
-        tracing::trace!("boundary_descriptor = {:?}", boundary_descriptor);
+        tracing::trace!(
+            "  args = {{boundary_descriptor = {:?}}}",
+            boundary_descriptor
+        );
         let res = api.DeleteBoundaryDescriptor(boundary_descriptor);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -26924,7 +26833,10 @@ extern "C" fn thunk_DeleteCriticalSection(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("DeleteCriticalSection");
         let _enter = span.enter();
-        tracing::trace!("lp_critical_section = {:?}", lp_critical_section);
+        tracing::trace!(
+            "  args = {{lp_critical_section = {:?}}}",
+            lp_critical_section
+        );
         let res = api.DeleteCriticalSection(lp_critical_section);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -26946,7 +26858,7 @@ extern "C" fn thunk_DeleteFiber(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("DeleteFiber");
         let _enter = span.enter();
-        tracing::trace!("lp_fiber = {:?}", lp_fiber);
+        tracing::trace!("  args = {{lp_fiber = {:?}}}", lp_fiber);
         let res = api.DeleteFiber(lp_fiber);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -26971,7 +26883,7 @@ extern "C" fn thunk_DeleteProcThreadAttributeList(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("DeleteProcThreadAttributeList");
         let _enter = span.enter();
-        tracing::trace!("lp_attribute_list = {:?}", lp_attribute_list);
+        tracing::trace!("  args = {{lp_attribute_list = {:?}}}", lp_attribute_list);
         let res = api.DeleteProcThreadAttributeList(lp_attribute_list);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -26996,7 +26908,7 @@ extern "C" fn thunk_DeleteSynchronizationBarrier(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("DeleteSynchronizationBarrier");
         let _enter = span.enter();
-        tracing::trace!("lp_barrier = {:?}", lp_barrier);
+        tracing::trace!("  args = {{lp_barrier = {:?}}}", lp_barrier);
         let res = api.DeleteSynchronizationBarrier(lp_barrier);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -27021,7 +26933,7 @@ extern "C" fn thunk_DeleteTimerQueue(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("DeleteTimerQueue");
         let _enter = span.enter();
-        tracing::trace!("timer_queue = {:?}", timer_queue);
+        tracing::trace!("  args = {{timer_queue = {:?}}}", timer_queue);
         let res = api.DeleteTimerQueue(timer_queue);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -27048,7 +26960,7 @@ extern "C" fn thunk_DeleteTimerQueueEx(
         let span = tracing::trace_span!("DeleteTimerQueueEx");
         let _enter = span.enter();
         tracing::trace!(
-            "timer_queue = {:?}, completion_event = {:?}",
+            "  args = {{timer_queue = {:?}, completion_event = {:?}}}",
             timer_queue,
             completion_event
         );
@@ -27079,7 +26991,7 @@ extern "C" fn thunk_DeleteTimerQueueTimer(
         let span = tracing::trace_span!("DeleteTimerQueueTimer");
         let _enter = span.enter();
         tracing::trace!(
-            "timer_queue = {:?}, timer = {:?}, completion_event = {:?}",
+            "  args = {{timer_queue = {:?}, timer = {:?}, completion_event = {:?}}}",
             timer_queue,
             timer,
             completion_event
@@ -27108,7 +27020,10 @@ extern "C" fn thunk_DeleteUmsCompletionList(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("DeleteUmsCompletionList");
         let _enter = span.enter();
-        tracing::trace!("ums_completion_list = {:?}", ums_completion_list);
+        tracing::trace!(
+            "  args = {{ums_completion_list = {:?}}}",
+            ums_completion_list
+        );
         let res = api.DeleteUmsCompletionList(ums_completion_list);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -27133,7 +27048,7 @@ extern "C" fn thunk_DeleteUmsThreadContext(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("DeleteUmsThreadContext");
         let _enter = span.enter();
-        tracing::trace!("ums_thread = {:?}", ums_thread);
+        tracing::trace!("  args = {{ums_thread = {:?}}}", ums_thread);
         let res = api.DeleteUmsThreadContext(ums_thread);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -27161,7 +27076,7 @@ extern "C" fn thunk_DequeueUmsCompletionListItems(
         let span = tracing::trace_span!("DequeueUmsCompletionListItems");
         let _enter = span.enter();
         tracing::trace!(
-            "ums_completion_list = {:?}, wait_time_out = {:?}, ums_thread_list = {:?}",
+            "  args = {{ums_completion_list = {:?}, wait_time_out = {:?}, ums_thread_list = {:?}}}",
             ums_completion_list,
             wait_time_out,
             ums_thread_list
@@ -27191,7 +27106,7 @@ extern "C" fn thunk_DisassociateCurrentThreadFromCallback(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("DisassociateCurrentThreadFromCallback");
         let _enter = span.enter();
-        tracing::trace!("pci = {:?}", pci);
+        tracing::trace!("  args = {{pci = {:?}}}", pci);
         let res = api.DisassociateCurrentThreadFromCallback(pci);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -27216,7 +27131,10 @@ extern "C" fn thunk_EnterCriticalSection(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("EnterCriticalSection");
         let _enter = span.enter();
-        tracing::trace!("lp_critical_section = {:?}", lp_critical_section);
+        tracing::trace!(
+            "  args = {{lp_critical_section = {:?}}}",
+            lp_critical_section
+        );
         let res = api.EnterCriticalSection(lp_critical_section);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -27242,7 +27160,11 @@ extern "C" fn thunk_EnterSynchronizationBarrier(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("EnterSynchronizationBarrier");
         let _enter = span.enter();
-        tracing::trace!("lp_barrier = {:?}, dw_flags = {:?}", lp_barrier, dw_flags);
+        tracing::trace!(
+            "  args = {{lp_barrier = {:?}, dw_flags = {:?}}}",
+            lp_barrier,
+            dw_flags
+        );
         let res = api.EnterSynchronizationBarrier(lp_barrier, dw_flags);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -27267,7 +27189,7 @@ extern "C" fn thunk_ExecuteUmsThread(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ExecuteUmsThread");
         let _enter = span.enter();
-        tracing::trace!("ums_thread = {:?}", ums_thread);
+        tracing::trace!("  args = {{ums_thread = {:?}}}", ums_thread);
         let res = api.ExecuteUmsThread(ums_thread);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -27289,7 +27211,7 @@ extern "C" fn thunk_ExitProcess(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ExitProcess");
         let _enter = span.enter();
-        tracing::trace!("u_exit_code = {:?}", u_exit_code);
+        tracing::trace!("  args = {{u_exit_code = {:?}}}", u_exit_code);
         let res = api.ExitProcess(unwind_token, u_exit_code);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -27311,7 +27233,7 @@ extern "C" fn thunk_ExitThread(context: &mut ExtendedContext, memory: FlatMemory
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ExitThread");
         let _enter = span.enter();
-        tracing::trace!("dw_exit_code = {:?}", dw_exit_code);
+        tracing::trace!("  args = {{dw_exit_code = {:?}}}", dw_exit_code);
         let res = api.ExitThread(unwind_token, dw_exit_code);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -27333,7 +27255,7 @@ extern "C" fn thunk_FlsAlloc(context: &mut ExtendedContext, memory: FlatMemoryCt
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("FlsAlloc");
         let _enter = span.enter();
-        tracing::trace!("lp_callback = {:?}", lp_callback);
+        tracing::trace!("  args = {{lp_callback = {:?}}}", lp_callback);
         let res = api.FlsAlloc(lp_callback);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -27355,7 +27277,7 @@ extern "C" fn thunk_FlsFree(context: &mut ExtendedContext, memory: FlatMemoryCtx
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("FlsFree");
         let _enter = span.enter();
-        tracing::trace!("dw_fls_index = {:?}", dw_fls_index);
+        tracing::trace!("  args = {{dw_fls_index = {:?}}}", dw_fls_index);
         let res = api.FlsFree(dw_fls_index);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -27377,7 +27299,7 @@ extern "C" fn thunk_FlsGetValue(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("FlsGetValue");
         let _enter = span.enter();
-        tracing::trace!("dw_fls_index = {:?}", dw_fls_index);
+        tracing::trace!("  args = {{dw_fls_index = {:?}}}", dw_fls_index);
         let res = api.FlsGetValue(dw_fls_index);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -27401,7 +27323,7 @@ extern "C" fn thunk_FlsSetValue(context: &mut ExtendedContext, memory: FlatMemor
         let span = tracing::trace_span!("FlsSetValue");
         let _enter = span.enter();
         tracing::trace!(
-            "dw_fls_index = {:?}, lp_fls_data = {:?}",
+            "  args = {{dw_fls_index = {:?}, lp_fls_data = {:?}}}",
             dw_fls_index,
             lp_fls_data
         );
@@ -27428,7 +27350,7 @@ extern "C" fn thunk_FlushProcessWriteBuffers(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("FlushProcessWriteBuffers");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.FlushProcessWriteBuffers();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -27454,7 +27376,7 @@ extern "C" fn thunk_FreeLibraryWhenCallbackReturns(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("FreeLibraryWhenCallbackReturns");
         let _enter = span.enter();
-        tracing::trace!("pci = {:?}, r#mod = {:?}", pci, r#mod);
+        tracing::trace!("  args = {{pci = {:?}, r#mod = {:?}}}", pci, r#mod);
         let res = api.FreeLibraryWhenCallbackReturns(pci, r#mod);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -27479,7 +27401,7 @@ extern "C" fn thunk_GetActiveProcessorCount(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetActiveProcessorCount");
         let _enter = span.enter();
-        tracing::trace!("group_number = {:?}", group_number);
+        tracing::trace!("  args = {{group_number = {:?}}}", group_number);
         let res = api.GetActiveProcessorCount(group_number);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -27503,7 +27425,7 @@ extern "C" fn thunk_GetActiveProcessorGroupCount(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetActiveProcessorGroupCount");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.GetActiveProcessorGroupCount();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -27527,7 +27449,7 @@ extern "C" fn thunk_GetCurrentProcess(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetCurrentProcess");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.GetCurrentProcess();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -27551,7 +27473,7 @@ extern "C" fn thunk_GetCurrentProcessId(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetCurrentProcessId");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.GetCurrentProcessId();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -27575,7 +27497,7 @@ extern "C" fn thunk_GetCurrentProcessorNumber(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetCurrentProcessorNumber");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.GetCurrentProcessorNumber();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -27600,7 +27522,7 @@ extern "C" fn thunk_GetCurrentProcessorNumberEx(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetCurrentProcessorNumberEx");
         let _enter = span.enter();
-        tracing::trace!("proc_number = {:?}", proc_number);
+        tracing::trace!("  args = {{proc_number = {:?}}}", proc_number);
         let res = api.GetCurrentProcessorNumberEx(proc_number);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -27624,7 +27546,7 @@ extern "C" fn thunk_GetCurrentThread(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetCurrentThread");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.GetCurrentThread();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -27648,7 +27570,7 @@ extern "C" fn thunk_GetCurrentThreadId(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetCurrentThreadId");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.GetCurrentThreadId();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -27674,7 +27596,11 @@ extern "C" fn thunk_GetCurrentThreadStackLimits(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetCurrentThreadStackLimits");
         let _enter = span.enter();
-        tracing::trace!("low_limit = {:?}, high_limit = {:?}", low_limit, high_limit);
+        tracing::trace!(
+            "  args = {{low_limit = {:?}, high_limit = {:?}}}",
+            low_limit,
+            high_limit
+        );
         let res = api.GetCurrentThreadStackLimits(low_limit, high_limit);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -27698,7 +27624,7 @@ extern "C" fn thunk_GetCurrentUmsThread(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetCurrentUmsThread");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.GetCurrentUmsThread();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -27725,7 +27651,7 @@ extern "C" fn thunk_GetExitCodeProcess(
         let span = tracing::trace_span!("GetExitCodeProcess");
         let _enter = span.enter();
         tracing::trace!(
-            "h_process = {:?}, lp_exit_code = {:?}",
+            "  args = {{h_process = {:?}, lp_exit_code = {:?}}}",
             h_process,
             lp_exit_code
         );
@@ -27755,7 +27681,7 @@ extern "C" fn thunk_GetExitCodeThread(
         let span = tracing::trace_span!("GetExitCodeThread");
         let _enter = span.enter();
         tracing::trace!(
-            "h_thread = {:?}, lp_exit_code = {:?}",
+            "  args = {{h_thread = {:?}, lp_exit_code = {:?}}}",
             h_thread,
             lp_exit_code
         );
@@ -27784,7 +27710,11 @@ extern "C" fn thunk_GetGuiResources(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetGuiResources");
         let _enter = span.enter();
-        tracing::trace!("h_process = {:?}, ui_flags = {:?}", h_process, ui_flags);
+        tracing::trace!(
+            "  args = {{h_process = {:?}, ui_flags = {:?}}}",
+            h_process,
+            ui_flags
+        );
         let res = api.GetGuiResources(h_process, ui_flags);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -27811,7 +27741,7 @@ extern "C" fn thunk_GetMachineTypeAttributes(
         let span = tracing::trace_span!("GetMachineTypeAttributes");
         let _enter = span.enter();
         tracing::trace!(
-            "machine = {:?}, machine_type_attributes = {:?}",
+            "  args = {{machine = {:?}, machine_type_attributes = {:?}}}",
             machine,
             machine_type_attributes
         );
@@ -27839,7 +27769,7 @@ extern "C" fn thunk_GetMaximumProcessorCount(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetMaximumProcessorCount");
         let _enter = span.enter();
-        tracing::trace!("group_number = {:?}", group_number);
+        tracing::trace!("  args = {{group_number = {:?}}}", group_number);
         let res = api.GetMaximumProcessorCount(group_number);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -27863,7 +27793,7 @@ extern "C" fn thunk_GetMaximumProcessorGroupCount(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetMaximumProcessorGroupCount");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.GetMaximumProcessorGroupCount();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -27888,7 +27818,7 @@ extern "C" fn thunk_GetNextUmsListItem(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetNextUmsListItem");
         let _enter = span.enter();
-        tracing::trace!("ums_context = {:?}", ums_context);
+        tracing::trace!("  args = {{ums_context = {:?}}}", ums_context);
         let res = api.GetNextUmsListItem(ums_context);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -27914,7 +27844,11 @@ extern "C" fn thunk_GetNumaAvailableMemoryNode(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetNumaAvailableMemoryNode");
         let _enter = span.enter();
-        tracing::trace!("node = {:?}, available_bytes = {:?}", node, available_bytes);
+        tracing::trace!(
+            "  args = {{node = {:?}, available_bytes = {:?}}}",
+            node,
+            available_bytes
+        );
         let res = api.GetNumaAvailableMemoryNode(node, available_bytes);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -27940,7 +27874,11 @@ extern "C" fn thunk_GetNumaAvailableMemoryNodeEx(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetNumaAvailableMemoryNodeEx");
         let _enter = span.enter();
-        tracing::trace!("node = {:?}, available_bytes = {:?}", node, available_bytes);
+        tracing::trace!(
+            "  args = {{node = {:?}, available_bytes = {:?}}}",
+            node,
+            available_bytes
+        );
         let res = api.GetNumaAvailableMemoryNodeEx(node, available_bytes);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -27965,7 +27903,10 @@ extern "C" fn thunk_GetNumaHighestNodeNumber(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetNumaHighestNodeNumber");
         let _enter = span.enter();
-        tracing::trace!("highest_node_number = {:?}", highest_node_number);
+        tracing::trace!(
+            "  args = {{highest_node_number = {:?}}}",
+            highest_node_number
+        );
         let res = api.GetNumaHighestNodeNumber(highest_node_number);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -27991,7 +27932,11 @@ extern "C" fn thunk_GetNumaNodeNumberFromHandle(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetNumaNodeNumberFromHandle");
         let _enter = span.enter();
-        tracing::trace!("h_file = {:?}, node_number = {:?}", h_file, node_number);
+        tracing::trace!(
+            "  args = {{h_file = {:?}, node_number = {:?}}}",
+            h_file,
+            node_number
+        );
         let res = api.GetNumaNodeNumberFromHandle(h_file, node_number);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -28017,7 +27962,11 @@ extern "C" fn thunk_GetNumaNodeProcessorMask(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetNumaNodeProcessorMask");
         let _enter = span.enter();
-        tracing::trace!("node = {:?}, processor_mask = {:?}", node, processor_mask);
+        tracing::trace!(
+            "  args = {{node = {:?}, processor_mask = {:?}}}",
+            node,
+            processor_mask
+        );
         let res = api.GetNumaNodeProcessorMask(node, processor_mask);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -28045,7 +27994,7 @@ extern "C" fn thunk_GetNumaNodeProcessorMask2(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetNumaNodeProcessorMask2");
         let _enter = span.enter();
-        tracing :: trace ! ( "node_number = {:?}, processor_masks = {:?}, processor_mask_count = {:?}, required_mask_count = {:?}" , node_number , processor_masks , processor_mask_count , required_mask_count );
+        tracing :: trace ! ( "  args = {{node_number = {:?}, processor_masks = {:?}, processor_mask_count = {:?}, required_mask_count = {:?}}}" , node_number , processor_masks , processor_mask_count , required_mask_count );
         let res = api.GetNumaNodeProcessorMask2(
             node_number,
             processor_masks,
@@ -28076,7 +28025,11 @@ extern "C" fn thunk_GetNumaNodeProcessorMaskEx(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetNumaNodeProcessorMaskEx");
         let _enter = span.enter();
-        tracing::trace!("node = {:?}, processor_mask = {:?}", node, processor_mask);
+        tracing::trace!(
+            "  args = {{node = {:?}, processor_mask = {:?}}}",
+            node,
+            processor_mask
+        );
         let res = api.GetNumaNodeProcessorMaskEx(node, processor_mask);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -28103,7 +28056,7 @@ extern "C" fn thunk_GetNumaProcessorNode(
         let span = tracing::trace_span!("GetNumaProcessorNode");
         let _enter = span.enter();
         tracing::trace!(
-            "processor = {:?}, node_number = {:?}",
+            "  args = {{processor = {:?}, node_number = {:?}}}",
             processor,
             node_number
         );
@@ -28133,7 +28086,7 @@ extern "C" fn thunk_GetNumaProcessorNodeEx(
         let span = tracing::trace_span!("GetNumaProcessorNodeEx");
         let _enter = span.enter();
         tracing::trace!(
-            "processor = {:?}, node_number = {:?}",
+            "  args = {{processor = {:?}, node_number = {:?}}}",
             processor,
             node_number
         );
@@ -28163,7 +28116,7 @@ extern "C" fn thunk_GetNumaProximityNode(
         let span = tracing::trace_span!("GetNumaProximityNode");
         let _enter = span.enter();
         tracing::trace!(
-            "proximity_id = {:?}, node_number = {:?}",
+            "  args = {{proximity_id = {:?}, node_number = {:?}}}",
             proximity_id,
             node_number
         );
@@ -28193,7 +28146,7 @@ extern "C" fn thunk_GetNumaProximityNodeEx(
         let span = tracing::trace_span!("GetNumaProximityNodeEx");
         let _enter = span.enter();
         tracing::trace!(
-            "proximity_id = {:?}, node_number = {:?}",
+            "  args = {{proximity_id = {:?}, node_number = {:?}}}",
             proximity_id,
             node_number
         );
@@ -28221,7 +28174,7 @@ extern "C" fn thunk_GetPriorityClass(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetPriorityClass");
         let _enter = span.enter();
-        tracing::trace!("h_process = {:?}", h_process);
+        tracing::trace!("  args = {{h_process = {:?}}}", h_process);
         let res = api.GetPriorityClass(h_process);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -28248,12 +28201,7 @@ extern "C" fn thunk_GetProcessAffinityMask(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetProcessAffinityMask");
         let _enter = span.enter();
-        tracing::trace!(
-            "h_process = {:?}, lp_process_affinity_mask = {:?}, lp_system_affinity_mask = {:?}",
-            h_process,
-            lp_process_affinity_mask,
-            lp_system_affinity_mask
-        );
+        tracing :: trace ! ( "  args = {{h_process = {:?}, lp_process_affinity_mask = {:?}, lp_system_affinity_mask = {:?}}}" , h_process , lp_process_affinity_mask , lp_system_affinity_mask );
         let res = api.GetProcessAffinityMask(
             h_process,
             lp_process_affinity_mask,
@@ -28285,7 +28233,7 @@ extern "C" fn thunk_GetProcessDEPPolicy(
         let span = tracing::trace_span!("GetProcessDEPPolicy");
         let _enter = span.enter();
         tracing::trace!(
-            "h_process = {:?}, lp_flags = {:?}, lp_permanent = {:?}",
+            "  args = {{h_process = {:?}, lp_flags = {:?}, lp_permanent = {:?}}}",
             h_process,
             lp_flags,
             lp_permanent
@@ -28317,7 +28265,7 @@ extern "C" fn thunk_GetProcessDefaultCpuSetMasks(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetProcessDefaultCpuSetMasks");
         let _enter = span.enter();
-        tracing :: trace ! ( "process = {:?}, cpu_set_masks = {:?}, cpu_set_mask_count = {:?}, required_mask_count = {:?}" , process , cpu_set_masks , cpu_set_mask_count , required_mask_count );
+        tracing :: trace ! ( "  args = {{process = {:?}, cpu_set_masks = {:?}, cpu_set_mask_count = {:?}, required_mask_count = {:?}}}" , process , cpu_set_masks , cpu_set_mask_count , required_mask_count );
         let res = api.GetProcessDefaultCpuSetMasks(
             process,
             cpu_set_masks,
@@ -28350,13 +28298,7 @@ extern "C" fn thunk_GetProcessDefaultCpuSets(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetProcessDefaultCpuSets");
         let _enter = span.enter();
-        tracing::trace!(
-            "process = {:?}, cpu_set_ids = {:?}, cpu_set_id_count = {:?}, required_id_count = {:?}",
-            process,
-            cpu_set_ids,
-            cpu_set_id_count,
-            required_id_count
-        );
+        tracing :: trace ! ( "  args = {{process = {:?}, cpu_set_ids = {:?}, cpu_set_id_count = {:?}, required_id_count = {:?}}}" , process , cpu_set_ids , cpu_set_id_count , required_id_count );
         let res =
             api.GetProcessDefaultCpuSets(process, cpu_set_ids, cpu_set_id_count, required_id_count);
         tracing::trace!("result = {:?}", res);
@@ -28385,7 +28327,7 @@ extern "C" fn thunk_GetProcessGroupAffinity(
         let span = tracing::trace_span!("GetProcessGroupAffinity");
         let _enter = span.enter();
         tracing::trace!(
-            "h_process = {:?}, group_count = {:?}, group_array = {:?}",
+            "  args = {{h_process = {:?}, group_count = {:?}, group_array = {:?}}}",
             h_process,
             group_count,
             group_array
@@ -28416,7 +28358,7 @@ extern "C" fn thunk_GetProcessHandleCount(
         let span = tracing::trace_span!("GetProcessHandleCount");
         let _enter = span.enter();
         tracing::trace!(
-            "h_process = {:?}, pdw_handle_count = {:?}",
+            "  args = {{h_process = {:?}, pdw_handle_count = {:?}}}",
             h_process,
             pdw_handle_count
         );
@@ -28441,7 +28383,7 @@ extern "C" fn thunk_GetProcessId(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetProcessId");
         let _enter = span.enter();
-        tracing::trace!("process = {:?}", process);
+        tracing::trace!("  args = {{process = {:?}}}", process);
         let res = api.GetProcessId(process);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -28466,7 +28408,7 @@ extern "C" fn thunk_GetProcessIdOfThread(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetProcessIdOfThread");
         let _enter = span.enter();
-        tracing::trace!("thread = {:?}", thread);
+        tracing::trace!("  args = {{thread = {:?}}}", thread);
         let res = api.GetProcessIdOfThread(thread);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -28494,7 +28436,7 @@ extern "C" fn thunk_GetProcessInformation(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetProcessInformation");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_process = {:?}, process_information_class = {:?}, process_information = {:?}, process_information_size = {:?}" , h_process , process_information_class , process_information , process_information_size );
+        tracing :: trace ! ( "  args = {{h_process = {:?}, process_information_class = {:?}, process_information = {:?}, process_information_size = {:?}}}" , h_process , process_information_class , process_information , process_information_size );
         let res = api.GetProcessInformation(
             h_process,
             process_information_class,
@@ -28526,7 +28468,7 @@ extern "C" fn thunk_GetProcessIoCounters(
         let span = tracing::trace_span!("GetProcessIoCounters");
         let _enter = span.enter();
         tracing::trace!(
-            "h_process = {:?}, lp_io_counters = {:?}",
+            "  args = {{h_process = {:?}, lp_io_counters = {:?}}}",
             h_process,
             lp_io_counters
         );
@@ -28557,13 +28499,7 @@ extern "C" fn thunk_GetProcessMitigationPolicy(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetProcessMitigationPolicy");
         let _enter = span.enter();
-        tracing::trace!(
-            "h_process = {:?}, mitigation_policy = {:?}, lp_buffer = {:?}, dw_length = {:?}",
-            h_process,
-            mitigation_policy,
-            lp_buffer,
-            dw_length
-        );
+        tracing :: trace ! ( "  args = {{h_process = {:?}, mitigation_policy = {:?}, lp_buffer = {:?}, dw_length = {:?}}}" , h_process , mitigation_policy , lp_buffer , dw_length );
         let res =
             api.GetProcessMitigationPolicy(h_process, mitigation_policy, lp_buffer, dw_length);
         tracing::trace!("result = {:?}", res);
@@ -28591,7 +28527,7 @@ extern "C" fn thunk_GetProcessPriorityBoost(
         let span = tracing::trace_span!("GetProcessPriorityBoost");
         let _enter = span.enter();
         tracing::trace!(
-            "h_process = {:?}, p_disable_priority_boost = {:?}",
+            "  args = {{h_process = {:?}, p_disable_priority_boost = {:?}}}",
             h_process,
             p_disable_priority_boost
         );
@@ -28621,7 +28557,7 @@ extern "C" fn thunk_GetProcessShutdownParameters(
         let span = tracing::trace_span!("GetProcessShutdownParameters");
         let _enter = span.enter();
         tracing::trace!(
-            "lpdw_level = {:?}, lpdw_flags = {:?}",
+            "  args = {{lpdw_level = {:?}, lpdw_flags = {:?}}}",
             lpdw_level,
             lpdw_flags
         );
@@ -28653,7 +28589,7 @@ extern "C" fn thunk_GetProcessTimes(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetProcessTimes");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_process = {:?}, lp_creation_time = {:?}, lp_exit_time = {:?}, lp_kernel_time = {:?}, lp_user_time = {:?}" , h_process , lp_creation_time , lp_exit_time , lp_kernel_time , lp_user_time );
+        tracing :: trace ! ( "  args = {{h_process = {:?}, lp_creation_time = {:?}, lp_exit_time = {:?}, lp_kernel_time = {:?}, lp_user_time = {:?}}}" , h_process , lp_creation_time , lp_exit_time , lp_kernel_time , lp_user_time );
         let res = api.GetProcessTimes(
             h_process,
             lp_creation_time,
@@ -28684,7 +28620,7 @@ extern "C" fn thunk_GetProcessVersion(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetProcessVersion");
         let _enter = span.enter();
-        tracing::trace!("process_id = {:?}", process_id);
+        tracing::trace!("  args = {{process_id = {:?}}}", process_id);
         let res = api.GetProcessVersion(process_id);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -28711,7 +28647,7 @@ extern "C" fn thunk_GetProcessWorkingSetSize(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetProcessWorkingSetSize");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_process = {:?}, lp_minimum_working_set_size = {:?}, lp_maximum_working_set_size = {:?}" , h_process , lp_minimum_working_set_size , lp_maximum_working_set_size );
+        tracing :: trace ! ( "  args = {{h_process = {:?}, lp_minimum_working_set_size = {:?}, lp_maximum_working_set_size = {:?}}}" , h_process , lp_minimum_working_set_size , lp_maximum_working_set_size );
         let res = api.GetProcessWorkingSetSize(
             h_process,
             lp_minimum_working_set_size,
@@ -28740,7 +28676,7 @@ extern "C" fn thunk_GetStartupInfoA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetStartupInfoA");
         let _enter = span.enter();
-        tracing::trace!("lp_startup_info = {:?}", lp_startup_info);
+        tracing::trace!("  args = {{lp_startup_info = {:?}}}", lp_startup_info);
         let res = api.GetStartupInfoA(lp_startup_info);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -28765,7 +28701,7 @@ extern "C" fn thunk_GetStartupInfoW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetStartupInfoW");
         let _enter = span.enter();
-        tracing::trace!("lp_startup_info = {:?}", lp_startup_info);
+        tracing::trace!("  args = {{lp_startup_info = {:?}}}", lp_startup_info);
         let res = api.GetStartupInfoW(lp_startup_info);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -28793,7 +28729,7 @@ extern "C" fn thunk_GetSystemTimes(
         let span = tracing::trace_span!("GetSystemTimes");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_idle_time = {:?}, lp_kernel_time = {:?}, lp_user_time = {:?}",
+            "  args = {{lp_idle_time = {:?}, lp_kernel_time = {:?}, lp_user_time = {:?}}}",
             lp_idle_time,
             lp_kernel_time,
             lp_user_time
@@ -28824,7 +28760,7 @@ extern "C" fn thunk_GetThreadDescription(
         let span = tracing::trace_span!("GetThreadDescription");
         let _enter = span.enter();
         tracing::trace!(
-            "h_thread = {:?}, ppsz_thread_description = {:?}",
+            "  args = {{h_thread = {:?}, ppsz_thread_description = {:?}}}",
             h_thread,
             ppsz_thread_description
         );
@@ -28854,7 +28790,7 @@ extern "C" fn thunk_GetThreadGroupAffinity(
         let span = tracing::trace_span!("GetThreadGroupAffinity");
         let _enter = span.enter();
         tracing::trace!(
-            "h_thread = {:?}, group_affinity = {:?}",
+            "  args = {{h_thread = {:?}, group_affinity = {:?}}}",
             h_thread,
             group_affinity
         );
@@ -28884,7 +28820,7 @@ extern "C" fn thunk_GetThreadIOPendingFlag(
         let span = tracing::trace_span!("GetThreadIOPendingFlag");
         let _enter = span.enter();
         tracing::trace!(
-            "h_thread = {:?}, lp_io_is_pending = {:?}",
+            "  args = {{h_thread = {:?}, lp_io_is_pending = {:?}}}",
             h_thread,
             lp_io_is_pending
         );
@@ -28909,7 +28845,7 @@ extern "C" fn thunk_GetThreadId(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetThreadId");
         let _enter = span.enter();
-        tracing::trace!("thread = {:?}", thread);
+        tracing::trace!("  args = {{thread = {:?}}}", thread);
         let res = api.GetThreadId(thread);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -28936,7 +28872,7 @@ extern "C" fn thunk_GetThreadIdealProcessorEx(
         let span = tracing::trace_span!("GetThreadIdealProcessorEx");
         let _enter = span.enter();
         tracing::trace!(
-            "h_thread = {:?}, lp_ideal_processor = {:?}",
+            "  args = {{h_thread = {:?}, lp_ideal_processor = {:?}}}",
             h_thread,
             lp_ideal_processor
         );
@@ -28967,7 +28903,7 @@ extern "C" fn thunk_GetThreadInformation(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetThreadInformation");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_thread = {:?}, thread_information_class = {:?}, thread_information = {:?}, thread_information_size = {:?}" , h_thread , thread_information_class , thread_information , thread_information_size );
+        tracing :: trace ! ( "  args = {{h_thread = {:?}, thread_information_class = {:?}, thread_information = {:?}, thread_information_size = {:?}}}" , h_thread , thread_information_class , thread_information , thread_information_size );
         let res = api.GetThreadInformation(
             h_thread,
             thread_information_class,
@@ -28997,7 +28933,7 @@ extern "C" fn thunk_GetThreadPriority(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetThreadPriority");
         let _enter = span.enter();
-        tracing::trace!("h_thread = {:?}", h_thread);
+        tracing::trace!("  args = {{h_thread = {:?}}}", h_thread);
         let res = api.GetThreadPriority(h_thread);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -29024,7 +28960,7 @@ extern "C" fn thunk_GetThreadPriorityBoost(
         let span = tracing::trace_span!("GetThreadPriorityBoost");
         let _enter = span.enter();
         tracing::trace!(
-            "h_thread = {:?}, p_disable_priority_boost = {:?}",
+            "  args = {{h_thread = {:?}, p_disable_priority_boost = {:?}}}",
             h_thread,
             p_disable_priority_boost
         );
@@ -29055,7 +28991,7 @@ extern "C" fn thunk_GetThreadSelectedCpuSetMasks(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetThreadSelectedCpuSetMasks");
         let _enter = span.enter();
-        tracing :: trace ! ( "thread = {:?}, cpu_set_masks = {:?}, cpu_set_mask_count = {:?}, required_mask_count = {:?}" , thread , cpu_set_masks , cpu_set_mask_count , required_mask_count );
+        tracing :: trace ! ( "  args = {{thread = {:?}, cpu_set_masks = {:?}, cpu_set_mask_count = {:?}, required_mask_count = {:?}}}" , thread , cpu_set_masks , cpu_set_mask_count , required_mask_count );
         let res = api.GetThreadSelectedCpuSetMasks(
             thread,
             cpu_set_masks,
@@ -29088,13 +29024,7 @@ extern "C" fn thunk_GetThreadSelectedCpuSets(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetThreadSelectedCpuSets");
         let _enter = span.enter();
-        tracing::trace!(
-            "thread = {:?}, cpu_set_ids = {:?}, cpu_set_id_count = {:?}, required_id_count = {:?}",
-            thread,
-            cpu_set_ids,
-            cpu_set_id_count,
-            required_id_count
-        );
+        tracing :: trace ! ( "  args = {{thread = {:?}, cpu_set_ids = {:?}, cpu_set_id_count = {:?}, required_id_count = {:?}}}" , thread , cpu_set_ids , cpu_set_id_count , required_id_count );
         let res =
             api.GetThreadSelectedCpuSets(thread, cpu_set_ids, cpu_set_id_count, required_id_count);
         tracing::trace!("result = {:?}", res);
@@ -29124,7 +29054,7 @@ extern "C" fn thunk_GetThreadTimes(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetThreadTimes");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_thread = {:?}, lp_creation_time = {:?}, lp_exit_time = {:?}, lp_kernel_time = {:?}, lp_user_time = {:?}" , h_thread , lp_creation_time , lp_exit_time , lp_kernel_time , lp_user_time );
+        tracing :: trace ! ( "  args = {{h_thread = {:?}, lp_creation_time = {:?}, lp_exit_time = {:?}, lp_kernel_time = {:?}, lp_user_time = {:?}}}" , h_thread , lp_creation_time , lp_exit_time , lp_kernel_time , lp_user_time );
         let res = api.GetThreadTimes(
             h_thread,
             lp_creation_time,
@@ -29157,7 +29087,7 @@ extern "C" fn thunk_GetUmsCompletionListEvent(
         let span = tracing::trace_span!("GetUmsCompletionListEvent");
         let _enter = span.enter();
         tracing::trace!(
-            "ums_completion_list = {:?}, ums_completion_event = {:?}",
+            "  args = {{ums_completion_list = {:?}, ums_completion_event = {:?}}}",
             ums_completion_list,
             ums_completion_event
         );
@@ -29187,7 +29117,7 @@ extern "C" fn thunk_GetUmsSystemThreadInformation(
         let span = tracing::trace_span!("GetUmsSystemThreadInformation");
         let _enter = span.enter();
         tracing::trace!(
-            "thread_handle = {:?}, system_thread_info = {:?}",
+            "  args = {{thread_handle = {:?}, system_thread_info = {:?}}}",
             thread_handle,
             system_thread_info
         );
@@ -29218,13 +29148,7 @@ extern "C" fn thunk_InitOnceBeginInitialize(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("InitOnceBeginInitialize");
         let _enter = span.enter();
-        tracing::trace!(
-            "lp_init_once = {:?}, dw_flags = {:?}, f_pending = {:?}, lp_context = {:?}",
-            lp_init_once,
-            dw_flags,
-            f_pending,
-            lp_context
-        );
+        tracing :: trace ! ( "  args = {{lp_init_once = {:?}, dw_flags = {:?}, f_pending = {:?}, lp_context = {:?}}}" , lp_init_once , dw_flags , f_pending , lp_context );
         let res = api.InitOnceBeginInitialize(lp_init_once, dw_flags, f_pending, lp_context);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -29252,7 +29176,7 @@ extern "C" fn thunk_InitOnceComplete(
         let span = tracing::trace_span!("InitOnceComplete");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_init_once = {:?}, dw_flags = {:?}, lp_context = {:?}",
+            "  args = {{lp_init_once = {:?}, dw_flags = {:?}, lp_context = {:?}}}",
             lp_init_once,
             dw_flags,
             lp_context
@@ -29285,7 +29209,7 @@ extern "C" fn thunk_InitOnceExecuteOnce(
         let span = tracing::trace_span!("InitOnceExecuteOnce");
         let _enter = span.enter();
         tracing::trace!(
-            "init_once = {:?}, init_fn = {:?}, parameter = {:?}, context = {:?}",
+            "  args = {{init_once = {:?}, init_fn = {:?}, parameter = {:?}, context = {:?}}}",
             init_once,
             init_fn,
             parameter,
@@ -29315,7 +29239,7 @@ extern "C" fn thunk_InitOnceInitialize(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("InitOnceInitialize");
         let _enter = span.enter();
-        tracing::trace!("init_once = {:?}", init_once);
+        tracing::trace!("  args = {{init_once = {:?}}}", init_once);
         let res = api.InitOnceInitialize(init_once);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -29340,7 +29264,7 @@ extern "C" fn thunk_InitializeConditionVariable(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("InitializeConditionVariable");
         let _enter = span.enter();
-        tracing::trace!("condition_variable = {:?}", condition_variable);
+        tracing::trace!("  args = {{condition_variable = {:?}}}", condition_variable);
         let res = api.InitializeConditionVariable(condition_variable);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -29365,7 +29289,10 @@ extern "C" fn thunk_InitializeCriticalSection(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("InitializeCriticalSection");
         let _enter = span.enter();
-        tracing::trace!("lp_critical_section = {:?}", lp_critical_section);
+        tracing::trace!(
+            "  args = {{lp_critical_section = {:?}}}",
+            lp_critical_section
+        );
         let res = api.InitializeCriticalSection(lp_critical_section);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -29392,7 +29319,7 @@ extern "C" fn thunk_InitializeCriticalSectionAndSpinCount(
         let span = tracing::trace_span!("InitializeCriticalSectionAndSpinCount");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_critical_section = {:?}, dw_spin_count = {:?}",
+            "  args = {{lp_critical_section = {:?}, dw_spin_count = {:?}}}",
             lp_critical_section,
             dw_spin_count
         );
@@ -29423,7 +29350,7 @@ extern "C" fn thunk_InitializeCriticalSectionEx(
         let span = tracing::trace_span!("InitializeCriticalSectionEx");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_critical_section = {:?}, dw_spin_count = {:?}, flags = {:?}",
+            "  args = {{lp_critical_section = {:?}, dw_spin_count = {:?}, flags = {:?}}}",
             lp_critical_section,
             dw_spin_count,
             flags
@@ -29455,13 +29382,7 @@ extern "C" fn thunk_InitializeProcThreadAttributeList(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("InitializeProcThreadAttributeList");
         let _enter = span.enter();
-        tracing::trace!(
-            "lp_attribute_list = {:?}, dw_attribute_count = {:?}, dw_flags = {:?}, lp_size = {:?}",
-            lp_attribute_list,
-            dw_attribute_count,
-            dw_flags,
-            lp_size
-        );
+        tracing :: trace ! ( "  args = {{lp_attribute_list = {:?}, dw_attribute_count = {:?}, dw_flags = {:?}, lp_size = {:?}}}" , lp_attribute_list , dw_attribute_count , dw_flags , lp_size );
         let res = api.InitializeProcThreadAttributeList(
             lp_attribute_list,
             dw_attribute_count,
@@ -29491,7 +29412,7 @@ extern "C" fn thunk_InitializeSListHead(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("InitializeSListHead");
         let _enter = span.enter();
-        tracing::trace!("list_head = {:?}", list_head);
+        tracing::trace!("  args = {{list_head = {:?}}}", list_head);
         let res = api.InitializeSListHead(list_head);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -29516,7 +29437,7 @@ extern "C" fn thunk_InitializeSRWLock(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("InitializeSRWLock");
         let _enter = span.enter();
-        tracing::trace!("srw_lock = {:?}", srw_lock);
+        tracing::trace!("  args = {{srw_lock = {:?}}}", srw_lock);
         let res = api.InitializeSRWLock(srw_lock);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -29544,7 +29465,7 @@ extern "C" fn thunk_InitializeSynchronizationBarrier(
         let span = tracing::trace_span!("InitializeSynchronizationBarrier");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_barrier = {:?}, l_total_threads = {:?}, l_spin_count = {:?}",
+            "  args = {{lp_barrier = {:?}, l_total_threads = {:?}, l_spin_count = {:?}}}",
             lp_barrier,
             l_total_threads,
             l_spin_count
@@ -29573,7 +29494,7 @@ extern "C" fn thunk_InterlockedFlushSList(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("InterlockedFlushSList");
         let _enter = span.enter();
-        tracing::trace!("list_head = {:?}", list_head);
+        tracing::trace!("  args = {{list_head = {:?}}}", list_head);
         let res = api.InterlockedFlushSList(list_head);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -29598,7 +29519,7 @@ extern "C" fn thunk_InterlockedPopEntrySList(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("InterlockedPopEntrySList");
         let _enter = span.enter();
-        tracing::trace!("list_head = {:?}", list_head);
+        tracing::trace!("  args = {{list_head = {:?}}}", list_head);
         let res = api.InterlockedPopEntrySList(list_head);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -29624,7 +29545,11 @@ extern "C" fn thunk_InterlockedPushEntrySList(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("InterlockedPushEntrySList");
         let _enter = span.enter();
-        tracing::trace!("list_head = {:?}, list_entry = {:?}", list_head, list_entry);
+        tracing::trace!(
+            "  args = {{list_head = {:?}, list_entry = {:?}}}",
+            list_head,
+            list_entry
+        );
         let res = api.InterlockedPushEntrySList(list_head, list_entry);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -29653,7 +29578,7 @@ extern "C" fn thunk_InterlockedPushListSListEx(
         let span = tracing::trace_span!("InterlockedPushListSListEx");
         let _enter = span.enter();
         tracing::trace!(
-            "list_head = {:?}, list = {:?}, list_end = {:?}, count = {:?}",
+            "  args = {{list_head = {:?}, list = {:?}, list_end = {:?}, count = {:?}}}",
             list_head,
             list,
             list_end,
@@ -29683,7 +29608,7 @@ extern "C" fn thunk_IsImmersiveProcess(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("IsImmersiveProcess");
         let _enter = span.enter();
-        tracing::trace!("h_process = {:?}", h_process);
+        tracing::trace!("  args = {{h_process = {:?}}}", h_process);
         let res = api.IsImmersiveProcess(h_process);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -29709,7 +29634,11 @@ extern "C" fn thunk_IsProcessCritical(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("IsProcessCritical");
         let _enter = span.enter();
-        tracing::trace!("h_process = {:?}, critical = {:?}", h_process, critical);
+        tracing::trace!(
+            "  args = {{h_process = {:?}, critical = {:?}}}",
+            h_process,
+            critical
+        );
         let res = api.IsProcessCritical(h_process, critical);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -29734,7 +29663,7 @@ extern "C" fn thunk_IsProcessorFeaturePresent(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("IsProcessorFeaturePresent");
         let _enter = span.enter();
-        tracing::trace!("processor_feature = {:?}", processor_feature);
+        tracing::trace!("  args = {{processor_feature = {:?}}}", processor_feature);
         let res = api.IsProcessorFeaturePresent(processor_feature);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -29758,7 +29687,7 @@ extern "C" fn thunk_IsThreadAFiber(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("IsThreadAFiber");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.IsThreadAFiber();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -29783,7 +29712,7 @@ extern "C" fn thunk_IsThreadpoolTimerSet(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("IsThreadpoolTimerSet");
         let _enter = span.enter();
-        tracing::trace!("pti = {:?}", pti);
+        tracing::trace!("  args = {{pti = {:?}}}", pti);
         let res = api.IsThreadpoolTimerSet(pti);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -29810,7 +29739,7 @@ extern "C" fn thunk_IsWow64Process(
         let span = tracing::trace_span!("IsWow64Process");
         let _enter = span.enter();
         tracing::trace!(
-            "h_process = {:?}, wow_64_process = {:?}",
+            "  args = {{h_process = {:?}, wow_64_process = {:?}}}",
             h_process,
             wow_64_process
         );
@@ -29841,7 +29770,7 @@ extern "C" fn thunk_IsWow64Process2(
         let span = tracing::trace_span!("IsWow64Process2");
         let _enter = span.enter();
         tracing::trace!(
-            "h_process = {:?}, p_process_machine = {:?}, p_native_machine = {:?}",
+            "  args = {{h_process = {:?}, p_process_machine = {:?}, p_native_machine = {:?}}}",
             h_process,
             p_process_machine,
             p_native_machine
@@ -29870,7 +29799,10 @@ extern "C" fn thunk_LeaveCriticalSection(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("LeaveCriticalSection");
         let _enter = span.enter();
-        tracing::trace!("lp_critical_section = {:?}", lp_critical_section);
+        tracing::trace!(
+            "  args = {{lp_critical_section = {:?}}}",
+            lp_critical_section
+        );
         let res = api.LeaveCriticalSection(lp_critical_section);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -29896,7 +29828,7 @@ extern "C" fn thunk_LeaveCriticalSectionWhenCallbackReturns(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("LeaveCriticalSectionWhenCallbackReturns");
         let _enter = span.enter();
-        tracing::trace!("pci = {:?}, pcs = {:?}", pci, pcs);
+        tracing::trace!("  args = {{pci = {:?}, pcs = {:?}}}", pci, pcs);
         let res = api.LeaveCriticalSectionWhenCallbackReturns(pci, pcs);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -29925,7 +29857,7 @@ extern "C" fn thunk_NtQueryInformationProcess(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("NtQueryInformationProcess");
         let _enter = span.enter();
-        tracing :: trace ! ( "process_handle = {:?}, process_information_class = {:?}, process_information = {:?}, process_information_length = {:?}, return_length = {:?}" , process_handle , process_information_class , process_information , process_information_length , return_length );
+        tracing :: trace ! ( "  args = {{process_handle = {:?}, process_information_class = {:?}, process_information = {:?}, process_information_length = {:?}, return_length = {:?}}}" , process_handle , process_information_class , process_information , process_information_length , return_length );
         let res = api.NtQueryInformationProcess(
             process_handle,
             process_information_class,
@@ -29960,7 +29892,7 @@ extern "C" fn thunk_NtQueryInformationThread(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("NtQueryInformationThread");
         let _enter = span.enter();
-        tracing :: trace ! ( "thread_handle = {:?}, thread_information_class = {:?}, thread_information = {:?}, thread_information_length = {:?}, return_length = {:?}" , thread_handle , thread_information_class , thread_information , thread_information_length , return_length );
+        tracing :: trace ! ( "  args = {{thread_handle = {:?}, thread_information_class = {:?}, thread_information = {:?}, thread_information_length = {:?}, return_length = {:?}}}" , thread_handle , thread_information_class , thread_information , thread_information_length , return_length );
         let res = api.NtQueryInformationThread(
             thread_handle,
             thread_information_class,
@@ -29994,7 +29926,7 @@ extern "C" fn thunk_NtSetInformationThread(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("NtSetInformationThread");
         let _enter = span.enter();
-        tracing :: trace ! ( "thread_handle = {:?}, thread_information_class = {:?}, thread_information = {:?}, thread_information_length = {:?}" , thread_handle , thread_information_class , thread_information , thread_information_length );
+        tracing :: trace ! ( "  args = {{thread_handle = {:?}, thread_information_class = {:?}, thread_information = {:?}, thread_information_length = {:?}}}" , thread_handle , thread_information_class , thread_information , thread_information_length );
         let res = api.NtSetInformationThread(
             thread_handle,
             thread_information_class,
@@ -30024,7 +29956,7 @@ extern "C" fn thunk_OpenEventA(context: &mut ExtendedContext, memory: FlatMemory
         let span = tracing::trace_span!("OpenEventA");
         let _enter = span.enter();
         tracing::trace!(
-            "dw_desired_access = {:?}, b_inherit_handle = {:?}, lp_name = {:?}",
+            "  args = {{dw_desired_access = {:?}, b_inherit_handle = {:?}, lp_name = {:?}}}",
             dw_desired_access,
             b_inherit_handle,
             lp_name
@@ -30053,7 +29985,7 @@ extern "C" fn thunk_OpenEventW(context: &mut ExtendedContext, memory: FlatMemory
         let span = tracing::trace_span!("OpenEventW");
         let _enter = span.enter();
         tracing::trace!(
-            "dw_desired_access = {:?}, b_inherit_handle = {:?}, lp_name = {:?}",
+            "  args = {{dw_desired_access = {:?}, b_inherit_handle = {:?}, lp_name = {:?}}}",
             dw_desired_access,
             b_inherit_handle,
             lp_name
@@ -30082,7 +30014,7 @@ extern "C" fn thunk_OpenMutexW(context: &mut ExtendedContext, memory: FlatMemory
         let span = tracing::trace_span!("OpenMutexW");
         let _enter = span.enter();
         tracing::trace!(
-            "dw_desired_access = {:?}, b_inherit_handle = {:?}, lp_name = {:?}",
+            "  args = {{dw_desired_access = {:?}, b_inherit_handle = {:?}, lp_name = {:?}}}",
             dw_desired_access,
             b_inherit_handle,
             lp_name
@@ -30113,7 +30045,7 @@ extern "C" fn thunk_OpenPrivateNamespaceA(
         let span = tracing::trace_span!("OpenPrivateNamespaceA");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_boundary_descriptor = {:?}, lp_alias_prefix = {:?}",
+            "  args = {{lp_boundary_descriptor = {:?}, lp_alias_prefix = {:?}}}",
             lp_boundary_descriptor,
             lp_alias_prefix
         );
@@ -30143,7 +30075,7 @@ extern "C" fn thunk_OpenPrivateNamespaceW(
         let span = tracing::trace_span!("OpenPrivateNamespaceW");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_boundary_descriptor = {:?}, lp_alias_prefix = {:?}",
+            "  args = {{lp_boundary_descriptor = {:?}, lp_alias_prefix = {:?}}}",
             lp_boundary_descriptor,
             lp_alias_prefix
         );
@@ -30171,7 +30103,7 @@ extern "C" fn thunk_OpenProcess(context: &mut ExtendedContext, memory: FlatMemor
         let span = tracing::trace_span!("OpenProcess");
         let _enter = span.enter();
         tracing::trace!(
-            "dw_desired_access = {:?}, b_inherit_handle = {:?}, dw_process_id = {:?}",
+            "  args = {{dw_desired_access = {:?}, b_inherit_handle = {:?}, dw_process_id = {:?}}}",
             dw_desired_access,
             b_inherit_handle,
             dw_process_id
@@ -30203,7 +30135,7 @@ extern "C" fn thunk_OpenSemaphoreW(
         let span = tracing::trace_span!("OpenSemaphoreW");
         let _enter = span.enter();
         tracing::trace!(
-            "dw_desired_access = {:?}, b_inherit_handle = {:?}, lp_name = {:?}",
+            "  args = {{dw_desired_access = {:?}, b_inherit_handle = {:?}, lp_name = {:?}}}",
             dw_desired_access,
             b_inherit_handle,
             lp_name
@@ -30232,7 +30164,7 @@ extern "C" fn thunk_OpenThread(context: &mut ExtendedContext, memory: FlatMemory
         let span = tracing::trace_span!("OpenThread");
         let _enter = span.enter();
         tracing::trace!(
-            "dw_desired_access = {:?}, b_inherit_handle = {:?}, dw_thread_id = {:?}",
+            "  args = {{dw_desired_access = {:?}, b_inherit_handle = {:?}, dw_thread_id = {:?}}}",
             dw_desired_access,
             b_inherit_handle,
             dw_thread_id
@@ -30264,7 +30196,7 @@ extern "C" fn thunk_OpenWaitableTimerW(
         let span = tracing::trace_span!("OpenWaitableTimerW");
         let _enter = span.enter();
         tracing::trace!(
-            "dw_desired_access = {:?}, b_inherit_handle = {:?}, lp_timer_name = {:?}",
+            "  args = {{dw_desired_access = {:?}, b_inherit_handle = {:?}, lp_timer_name = {:?}}}",
             dw_desired_access,
             b_inherit_handle,
             lp_timer_name
@@ -30290,7 +30222,7 @@ extern "C" fn thunk_PulseEvent(context: &mut ExtendedContext, memory: FlatMemory
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("PulseEvent");
         let _enter = span.enter();
-        tracing::trace!("h_event = {:?}", h_event);
+        tracing::trace!("  args = {{h_event = {:?}}}", h_event);
         let res = api.PulseEvent(h_event);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -30315,7 +30247,7 @@ extern "C" fn thunk_QueryDepthSList(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("QueryDepthSList");
         let _enter = span.enter();
-        tracing::trace!("list_head = {:?}", list_head);
+        tracing::trace!("  args = {{list_head = {:?}}}", list_head);
         let res = api.QueryDepthSList(list_head);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -30344,7 +30276,7 @@ extern "C" fn thunk_QueryFullProcessImageNameA(
         let span = tracing::trace_span!("QueryFullProcessImageNameA");
         let _enter = span.enter();
         tracing::trace!(
-            "h_process = {:?}, dw_flags = {:?}, lp_exe_name = {:?}, lpdw_size = {:?}",
+            "  args = {{h_process = {:?}, dw_flags = {:?}, lp_exe_name = {:?}, lpdw_size = {:?}}}",
             h_process,
             dw_flags,
             lp_exe_name,
@@ -30378,7 +30310,7 @@ extern "C" fn thunk_QueryFullProcessImageNameW(
         let span = tracing::trace_span!("QueryFullProcessImageNameW");
         let _enter = span.enter();
         tracing::trace!(
-            "h_process = {:?}, dw_flags = {:?}, lp_exe_name = {:?}, lpdw_size = {:?}",
+            "  args = {{h_process = {:?}, dw_flags = {:?}, lp_exe_name = {:?}, lpdw_size = {:?}}}",
             h_process,
             dw_flags,
             lp_exe_name,
@@ -30409,7 +30341,11 @@ extern "C" fn thunk_QueryProcessAffinityUpdateMode(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("QueryProcessAffinityUpdateMode");
         let _enter = span.enter();
-        tracing::trace!("h_process = {:?}, lpdw_flags = {:?}", h_process, lpdw_flags);
+        tracing::trace!(
+            "  args = {{h_process = {:?}, lpdw_flags = {:?}}}",
+            h_process,
+            lpdw_flags
+        );
         let res = api.QueryProcessAffinityUpdateMode(h_process, lpdw_flags);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -30436,7 +30372,7 @@ extern "C" fn thunk_QueryProtectedPolicy(
         let span = tracing::trace_span!("QueryProtectedPolicy");
         let _enter = span.enter();
         tracing::trace!(
-            "policy_guid = {:?}, policy_value = {:?}",
+            "  args = {{policy_guid = {:?}, policy_value = {:?}}}",
             policy_guid,
             policy_value
         );
@@ -30465,7 +30401,7 @@ extern "C" fn thunk_QueryThreadpoolStackInformation(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("QueryThreadpoolStackInformation");
         let _enter = span.enter();
-        tracing::trace!("ptpp = {:?}, ptpsi = {:?}", ptpp, ptpsi);
+        tracing::trace!("  args = {{ptpp = {:?}, ptpsi = {:?}}}", ptpp, ptpsi);
         let res = api.QueryThreadpoolStackInformation(ptpp, ptpsi);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -30494,7 +30430,7 @@ extern "C" fn thunk_QueryUmsThreadInformation(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("QueryUmsThreadInformation");
         let _enter = span.enter();
-        tracing :: trace ! ( "ums_thread = {:?}, ums_thread_info_class = {:?}, ums_thread_information = {:?}, ums_thread_information_length = {:?}, return_length = {:?}" , ums_thread , ums_thread_info_class , ums_thread_information , ums_thread_information_length , return_length );
+        tracing :: trace ! ( "  args = {{ums_thread = {:?}, ums_thread_info_class = {:?}, ums_thread_information = {:?}, ums_thread_information_length = {:?}, return_length = {:?}}}" , ums_thread , ums_thread_info_class , ums_thread_information , ums_thread_information_length , return_length );
         let res = api.QueryUmsThreadInformation(
             ums_thread,
             ums_thread_info_class,
@@ -30525,7 +30461,7 @@ extern "C" fn thunk_QueueUserAPC(context: &mut ExtendedContext, memory: FlatMemo
         let span = tracing::trace_span!("QueueUserAPC");
         let _enter = span.enter();
         tracing::trace!(
-            "pfn_apc = {:?}, h_thread = {:?}, dw_data = {:?}",
+            "  args = {{pfn_apc = {:?}, h_thread = {:?}, dw_data = {:?}}}",
             pfn_apc,
             h_thread,
             dw_data
@@ -30555,7 +30491,7 @@ extern "C" fn thunk_QueueUserAPC2(context: &mut ExtendedContext, memory: FlatMem
         let span = tracing::trace_span!("QueueUserAPC2");
         let _enter = span.enter();
         tracing::trace!(
-            "apc_routine = {:?}, thread = {:?}, data = {:?}, flags = {:?}",
+            "  args = {{apc_routine = {:?}, thread = {:?}, data = {:?}, flags = {:?}}}",
             apc_routine,
             thread,
             data,
@@ -30588,7 +30524,7 @@ extern "C" fn thunk_QueueUserWorkItem(
         let span = tracing::trace_span!("QueueUserWorkItem");
         let _enter = span.enter();
         tracing::trace!(
-            "function = {:?}, context = {:?}, flags = {:?}",
+            "  args = {{function = {:?}, context = {:?}, flags = {:?}}}",
             function,
             context,
             flags
@@ -30622,7 +30558,7 @@ extern "C" fn thunk_RegisterWaitForSingleObject(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("RegisterWaitForSingleObject");
         let _enter = span.enter();
-        tracing :: trace ! ( "ph_new_wait_object = {:?}, h_object = {:?}, callback = {:?}, context = {:?}, dw_milliseconds = {:?}, dw_flags = {:?}" , ph_new_wait_object , h_object , callback , context , dw_milliseconds , dw_flags );
+        tracing :: trace ! ( "  args = {{ph_new_wait_object = {:?}, h_object = {:?}, callback = {:?}, context = {:?}, dw_milliseconds = {:?}, dw_flags = {:?}}}" , ph_new_wait_object , h_object , callback , context , dw_milliseconds , dw_flags );
         let res = api.RegisterWaitForSingleObject(
             ph_new_wait_object,
             h_object,
@@ -30651,7 +30587,7 @@ extern "C" fn thunk_ReleaseMutex(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ReleaseMutex");
         let _enter = span.enter();
-        tracing::trace!("h_mutex = {:?}", h_mutex);
+        tracing::trace!("  args = {{h_mutex = {:?}}}", h_mutex);
         let res = api.ReleaseMutex(h_mutex);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -30677,7 +30613,7 @@ extern "C" fn thunk_ReleaseMutexWhenCallbackReturns(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ReleaseMutexWhenCallbackReturns");
         let _enter = span.enter();
-        tracing::trace!("pci = {:?}, r#mut = {:?}", pci, r#mut);
+        tracing::trace!("  args = {{pci = {:?}, r#mut = {:?}}}", pci, r#mut);
         let res = api.ReleaseMutexWhenCallbackReturns(pci, r#mut);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -30702,7 +30638,7 @@ extern "C" fn thunk_ReleaseSRWLockExclusive(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ReleaseSRWLockExclusive");
         let _enter = span.enter();
-        tracing::trace!("srw_lock = {:?}", srw_lock);
+        tracing::trace!("  args = {{srw_lock = {:?}}}", srw_lock);
         let res = api.ReleaseSRWLockExclusive(srw_lock);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -30727,7 +30663,7 @@ extern "C" fn thunk_ReleaseSRWLockShared(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ReleaseSRWLockShared");
         let _enter = span.enter();
-        tracing::trace!("srw_lock = {:?}", srw_lock);
+        tracing::trace!("  args = {{srw_lock = {:?}}}", srw_lock);
         let res = api.ReleaseSRWLockShared(srw_lock);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -30755,7 +30691,7 @@ extern "C" fn thunk_ReleaseSemaphore(
         let span = tracing::trace_span!("ReleaseSemaphore");
         let _enter = span.enter();
         tracing::trace!(
-            "h_semaphore = {:?}, l_release_count = {:?}, lp_previous_count = {:?}",
+            "  args = {{h_semaphore = {:?}, l_release_count = {:?}, lp_previous_count = {:?}}}",
             h_semaphore,
             l_release_count,
             lp_previous_count
@@ -30786,7 +30722,12 @@ extern "C" fn thunk_ReleaseSemaphoreWhenCallbackReturns(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ReleaseSemaphoreWhenCallbackReturns");
         let _enter = span.enter();
-        tracing::trace!("pci = {:?}, sem = {:?}, crel = {:?}", pci, sem, crel);
+        tracing::trace!(
+            "  args = {{pci = {:?}, sem = {:?}, crel = {:?}}}",
+            pci,
+            sem,
+            crel
+        );
         let res = api.ReleaseSemaphoreWhenCallbackReturns(pci, sem, crel);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -30808,7 +30749,7 @@ extern "C" fn thunk_ResetEvent(context: &mut ExtendedContext, memory: FlatMemory
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ResetEvent");
         let _enter = span.enter();
-        tracing::trace!("h_event = {:?}", h_event);
+        tracing::trace!("  args = {{h_event = {:?}}}", h_event);
         let res = api.ResetEvent(h_event);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -30830,7 +30771,7 @@ extern "C" fn thunk_ResumeThread(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ResumeThread");
         let _enter = span.enter();
-        tracing::trace!("h_thread = {:?}", h_thread);
+        tracing::trace!("  args = {{h_thread = {:?}}}", h_thread);
         let res = api.ResumeThread(h_thread);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -30857,7 +30798,7 @@ extern "C" fn thunk_SetCriticalSectionSpinCount(
         let span = tracing::trace_span!("SetCriticalSectionSpinCount");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_critical_section = {:?}, dw_spin_count = {:?}",
+            "  args = {{lp_critical_section = {:?}, dw_spin_count = {:?}}}",
             lp_critical_section,
             dw_spin_count
         );
@@ -30882,7 +30823,7 @@ extern "C" fn thunk_SetEvent(context: &mut ExtendedContext, memory: FlatMemoryCt
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetEvent");
         let _enter = span.enter();
-        tracing::trace!("h_event = {:?}", h_event);
+        tracing::trace!("  args = {{h_event = {:?}}}", h_event);
         let res = api.SetEvent(h_event);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -30908,7 +30849,7 @@ extern "C" fn thunk_SetEventWhenCallbackReturns(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetEventWhenCallbackReturns");
         let _enter = span.enter();
-        tracing::trace!("pci = {:?}, evt = {:?}", pci, evt);
+        tracing::trace!("  args = {{pci = {:?}, evt = {:?}}}", pci, evt);
         let res = api.SetEventWhenCallbackReturns(pci, evt);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -30935,7 +30876,7 @@ extern "C" fn thunk_SetPriorityClass(
         let span = tracing::trace_span!("SetPriorityClass");
         let _enter = span.enter();
         tracing::trace!(
-            "h_process = {:?}, dw_priority_class = {:?}",
+            "  args = {{h_process = {:?}, dw_priority_class = {:?}}}",
             h_process,
             dw_priority_class
         );
@@ -30965,7 +30906,7 @@ extern "C" fn thunk_SetProcessAffinityMask(
         let span = tracing::trace_span!("SetProcessAffinityMask");
         let _enter = span.enter();
         tracing::trace!(
-            "h_process = {:?}, dw_process_affinity_mask = {:?}",
+            "  args = {{h_process = {:?}, dw_process_affinity_mask = {:?}}}",
             h_process,
             dw_process_affinity_mask
         );
@@ -30994,7 +30935,11 @@ extern "C" fn thunk_SetProcessAffinityUpdateMode(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetProcessAffinityUpdateMode");
         let _enter = span.enter();
-        tracing::trace!("h_process = {:?}, dw_flags = {:?}", h_process, dw_flags);
+        tracing::trace!(
+            "  args = {{h_process = {:?}, dw_flags = {:?}}}",
+            h_process,
+            dw_flags
+        );
         let res = api.SetProcessAffinityUpdateMode(h_process, dw_flags);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -31019,7 +30964,7 @@ extern "C" fn thunk_SetProcessDEPPolicy(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetProcessDEPPolicy");
         let _enter = span.enter();
-        tracing::trace!("dw_flags = {:?}", dw_flags);
+        tracing::trace!("  args = {{dw_flags = {:?}}}", dw_flags);
         let res = api.SetProcessDEPPolicy(dw_flags);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -31047,7 +30992,7 @@ extern "C" fn thunk_SetProcessDefaultCpuSetMasks(
         let span = tracing::trace_span!("SetProcessDefaultCpuSetMasks");
         let _enter = span.enter();
         tracing::trace!(
-            "process = {:?}, cpu_set_masks = {:?}, cpu_set_mask_count = {:?}",
+            "  args = {{process = {:?}, cpu_set_masks = {:?}, cpu_set_mask_count = {:?}}}",
             process,
             cpu_set_masks,
             cpu_set_mask_count
@@ -31079,7 +31024,7 @@ extern "C" fn thunk_SetProcessDefaultCpuSets(
         let span = tracing::trace_span!("SetProcessDefaultCpuSets");
         let _enter = span.enter();
         tracing::trace!(
-            "process = {:?}, cpu_set_ids = {:?}, cpu_set_id_count = {:?}",
+            "  args = {{process = {:?}, cpu_set_ids = {:?}, cpu_set_id_count = {:?}}}",
             process,
             cpu_set_ids,
             cpu_set_id_count
@@ -31111,7 +31056,7 @@ extern "C" fn thunk_SetProcessDynamicEHContinuationTargets(
         let span = tracing::trace_span!("SetProcessDynamicEHContinuationTargets");
         let _enter = span.enter();
         tracing::trace!(
-            "process = {:?}, number_of_targets = {:?}, targets = {:?}",
+            "  args = {{process = {:?}, number_of_targets = {:?}, targets = {:?}}}",
             process,
             number_of_targets,
             targets
@@ -31143,7 +31088,7 @@ extern "C" fn thunk_SetProcessDynamicEnforcedCetCompatibleRanges(
         let span = tracing::trace_span!("SetProcessDynamicEnforcedCetCompatibleRanges");
         let _enter = span.enter();
         tracing::trace!(
-            "process = {:?}, number_of_ranges = {:?}, ranges = {:?}",
+            "  args = {{process = {:?}, number_of_ranges = {:?}, ranges = {:?}}}",
             process,
             number_of_ranges,
             ranges
@@ -31176,7 +31121,7 @@ extern "C" fn thunk_SetProcessInformation(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetProcessInformation");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_process = {:?}, process_information_class = {:?}, process_information = {:?}, process_information_size = {:?}" , h_process , process_information_class , process_information , process_information_size );
+        tracing :: trace ! ( "  args = {{h_process = {:?}, process_information_class = {:?}, process_information = {:?}, process_information_size = {:?}}}" , h_process , process_information_class , process_information , process_information_size );
         let res = api.SetProcessInformation(
             h_process,
             process_information_class,
@@ -31209,7 +31154,7 @@ extern "C" fn thunk_SetProcessMitigationPolicy(
         let span = tracing::trace_span!("SetProcessMitigationPolicy");
         let _enter = span.enter();
         tracing::trace!(
-            "mitigation_policy = {:?}, lp_buffer = {:?}, dw_length = {:?}",
+            "  args = {{mitigation_policy = {:?}, lp_buffer = {:?}, dw_length = {:?}}}",
             mitigation_policy,
             lp_buffer,
             dw_length
@@ -31240,7 +31185,7 @@ extern "C" fn thunk_SetProcessPriorityBoost(
         let span = tracing::trace_span!("SetProcessPriorityBoost");
         let _enter = span.enter();
         tracing::trace!(
-            "h_process = {:?}, b_disable_priority_boost = {:?}",
+            "  args = {{h_process = {:?}, b_disable_priority_boost = {:?}}}",
             h_process,
             b_disable_priority_boost
         );
@@ -31268,7 +31213,7 @@ extern "C" fn thunk_SetProcessRestrictionExemption(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetProcessRestrictionExemption");
         let _enter = span.enter();
-        tracing::trace!("f_enable_exemption = {:?}", f_enable_exemption);
+        tracing::trace!("  args = {{f_enable_exemption = {:?}}}", f_enable_exemption);
         let res = api.SetProcessRestrictionExemption(f_enable_exemption);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -31294,7 +31239,11 @@ extern "C" fn thunk_SetProcessShutdownParameters(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetProcessShutdownParameters");
         let _enter = span.enter();
-        tracing::trace!("dw_level = {:?}, dw_flags = {:?}", dw_level, dw_flags);
+        tracing::trace!(
+            "  args = {{dw_level = {:?}, dw_flags = {:?}}}",
+            dw_level,
+            dw_flags
+        );
         let res = api.SetProcessShutdownParameters(dw_level, dw_flags);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -31321,7 +31270,7 @@ extern "C" fn thunk_SetProcessWorkingSetSize(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetProcessWorkingSetSize");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_process = {:?}, dw_minimum_working_set_size = {:?}, dw_maximum_working_set_size = {:?}" , h_process , dw_minimum_working_set_size , dw_maximum_working_set_size );
+        tracing :: trace ! ( "  args = {{h_process = {:?}, dw_minimum_working_set_size = {:?}, dw_maximum_working_set_size = {:?}}}" , h_process , dw_minimum_working_set_size , dw_maximum_working_set_size );
         let res = api.SetProcessWorkingSetSize(
             h_process,
             dw_minimum_working_set_size,
@@ -31353,7 +31302,7 @@ extern "C" fn thunk_SetProtectedPolicy(
         let span = tracing::trace_span!("SetProtectedPolicy");
         let _enter = span.enter();
         tracing::trace!(
-            "policy_guid = {:?}, policy_value = {:?}, old_policy_value = {:?}",
+            "  args = {{policy_guid = {:?}, policy_value = {:?}, old_policy_value = {:?}}}",
             policy_guid,
             policy_value,
             old_policy_value
@@ -31384,7 +31333,7 @@ extern "C" fn thunk_SetThreadAffinityMask(
         let span = tracing::trace_span!("SetThreadAffinityMask");
         let _enter = span.enter();
         tracing::trace!(
-            "h_thread = {:?}, dw_thread_affinity_mask = {:?}",
+            "  args = {{h_thread = {:?}, dw_thread_affinity_mask = {:?}}}",
             h_thread,
             dw_thread_affinity_mask
         );
@@ -31414,7 +31363,7 @@ extern "C" fn thunk_SetThreadDescription(
         let span = tracing::trace_span!("SetThreadDescription");
         let _enter = span.enter();
         tracing::trace!(
-            "h_thread = {:?}, lp_thread_description = {:?}",
+            "  args = {{h_thread = {:?}, lp_thread_description = {:?}}}",
             h_thread,
             lp_thread_description
         );
@@ -31445,7 +31394,7 @@ extern "C" fn thunk_SetThreadGroupAffinity(
         let span = tracing::trace_span!("SetThreadGroupAffinity");
         let _enter = span.enter();
         tracing::trace!(
-            "h_thread = {:?}, group_affinity = {:?}, previous_group_affinity = {:?}",
+            "  args = {{h_thread = {:?}, group_affinity = {:?}, previous_group_affinity = {:?}}}",
             h_thread,
             group_affinity,
             previous_group_affinity
@@ -31476,7 +31425,7 @@ extern "C" fn thunk_SetThreadIdealProcessor(
         let span = tracing::trace_span!("SetThreadIdealProcessor");
         let _enter = span.enter();
         tracing::trace!(
-            "h_thread = {:?}, dw_ideal_processor = {:?}",
+            "  args = {{h_thread = {:?}, dw_ideal_processor = {:?}}}",
             h_thread,
             dw_ideal_processor
         );
@@ -31506,12 +31455,7 @@ extern "C" fn thunk_SetThreadIdealProcessorEx(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetThreadIdealProcessorEx");
         let _enter = span.enter();
-        tracing::trace!(
-            "h_thread = {:?}, lp_ideal_processor = {:?}, lp_previous_ideal_processor = {:?}",
-            h_thread,
-            lp_ideal_processor,
-            lp_previous_ideal_processor
-        );
+        tracing :: trace ! ( "  args = {{h_thread = {:?}, lp_ideal_processor = {:?}, lp_previous_ideal_processor = {:?}}}" , h_thread , lp_ideal_processor , lp_previous_ideal_processor );
         let res = api.SetThreadIdealProcessorEx(
             h_thread,
             lp_ideal_processor,
@@ -31543,7 +31487,7 @@ extern "C" fn thunk_SetThreadInformation(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetThreadInformation");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_thread = {:?}, thread_information_class = {:?}, thread_information = {:?}, thread_information_size = {:?}" , h_thread , thread_information_class , thread_information , thread_information_size );
+        tracing :: trace ! ( "  args = {{h_thread = {:?}, thread_information_class = {:?}, thread_information = {:?}, thread_information_size = {:?}}}" , h_thread , thread_information_class , thread_information , thread_information_size );
         let res = api.SetThreadInformation(
             h_thread,
             thread_information_class,
@@ -31574,7 +31518,11 @@ extern "C" fn thunk_SetThreadPriority(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetThreadPriority");
         let _enter = span.enter();
-        tracing::trace!("h_thread = {:?}, n_priority = {:?}", h_thread, n_priority);
+        tracing::trace!(
+            "  args = {{h_thread = {:?}, n_priority = {:?}}}",
+            h_thread,
+            n_priority
+        );
         let res = api.SetThreadPriority(h_thread, n_priority);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -31601,7 +31549,7 @@ extern "C" fn thunk_SetThreadPriorityBoost(
         let span = tracing::trace_span!("SetThreadPriorityBoost");
         let _enter = span.enter();
         tracing::trace!(
-            "h_thread = {:?}, b_disable_priority_boost = {:?}",
+            "  args = {{h_thread = {:?}, b_disable_priority_boost = {:?}}}",
             h_thread,
             b_disable_priority_boost
         );
@@ -31632,7 +31580,7 @@ extern "C" fn thunk_SetThreadSelectedCpuSetMasks(
         let span = tracing::trace_span!("SetThreadSelectedCpuSetMasks");
         let _enter = span.enter();
         tracing::trace!(
-            "thread = {:?}, cpu_set_masks = {:?}, cpu_set_mask_count = {:?}",
+            "  args = {{thread = {:?}, cpu_set_masks = {:?}, cpu_set_mask_count = {:?}}}",
             thread,
             cpu_set_masks,
             cpu_set_mask_count
@@ -31664,7 +31612,7 @@ extern "C" fn thunk_SetThreadSelectedCpuSets(
         let span = tracing::trace_span!("SetThreadSelectedCpuSets");
         let _enter = span.enter();
         tracing::trace!(
-            "thread = {:?}, cpu_set_ids = {:?}, cpu_set_id_count = {:?}",
+            "  args = {{thread = {:?}, cpu_set_ids = {:?}, cpu_set_id_count = {:?}}}",
             thread,
             cpu_set_ids,
             cpu_set_id_count
@@ -31693,7 +31641,10 @@ extern "C" fn thunk_SetThreadStackGuarantee(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetThreadStackGuarantee");
         let _enter = span.enter();
-        tracing::trace!("stack_size_in_bytes = {:?}", stack_size_in_bytes);
+        tracing::trace!(
+            "  args = {{stack_size_in_bytes = {:?}}}",
+            stack_size_in_bytes
+        );
         let res = api.SetThreadStackGuarantee(stack_size_in_bytes);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -31719,7 +31670,7 @@ extern "C" fn thunk_SetThreadToken(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetThreadToken");
         let _enter = span.enter();
-        tracing::trace!("thread = {:?}, token = {:?}", thread, token);
+        tracing::trace!("  args = {{thread = {:?}, token = {:?}}}", thread, token);
         let res = api.SetThreadToken(thread, token);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -31745,7 +31696,7 @@ extern "C" fn thunk_SetThreadpoolStackInformation(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetThreadpoolStackInformation");
         let _enter = span.enter();
-        tracing::trace!("ptpp = {:?}, ptpsi = {:?}", ptpp, ptpsi);
+        tracing::trace!("  args = {{ptpp = {:?}, ptpsi = {:?}}}", ptpp, ptpsi);
         let res = api.SetThreadpoolStackInformation(ptpp, ptpsi);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -31771,7 +31722,11 @@ extern "C" fn thunk_SetThreadpoolThreadMaximum(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetThreadpoolThreadMaximum");
         let _enter = span.enter();
-        tracing::trace!("ptpp = {:?}, cthrd_most = {:?}", ptpp, cthrd_most);
+        tracing::trace!(
+            "  args = {{ptpp = {:?}, cthrd_most = {:?}}}",
+            ptpp,
+            cthrd_most
+        );
         let res = api.SetThreadpoolThreadMaximum(ptpp, cthrd_most);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -31797,7 +31752,11 @@ extern "C" fn thunk_SetThreadpoolThreadMinimum(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetThreadpoolThreadMinimum");
         let _enter = span.enter();
-        tracing::trace!("ptpp = {:?}, cthrd_mic = {:?}", ptpp, cthrd_mic);
+        tracing::trace!(
+            "  args = {{ptpp = {:?}, cthrd_mic = {:?}}}",
+            ptpp,
+            cthrd_mic
+        );
         let res = api.SetThreadpoolThreadMinimum(ptpp, cthrd_mic);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -31825,13 +31784,7 @@ extern "C" fn thunk_SetThreadpoolTimer(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetThreadpoolTimer");
         let _enter = span.enter();
-        tracing::trace!(
-            "pti = {:?}, pft_due_time = {:?}, ms_period = {:?}, ms_window_length = {:?}",
-            pti,
-            pft_due_time,
-            ms_period,
-            ms_window_length
-        );
+        tracing :: trace ! ( "  args = {{pti = {:?}, pft_due_time = {:?}, ms_period = {:?}, ms_window_length = {:?}}}" , pti , pft_due_time , ms_period , ms_window_length );
         let res = api.SetThreadpoolTimer(pti, pft_due_time, ms_period, ms_window_length);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -31859,13 +31812,7 @@ extern "C" fn thunk_SetThreadpoolTimerEx(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetThreadpoolTimerEx");
         let _enter = span.enter();
-        tracing::trace!(
-            "pti = {:?}, pft_due_time = {:?}, ms_period = {:?}, ms_window_length = {:?}",
-            pti,
-            pft_due_time,
-            ms_period,
-            ms_window_length
-        );
+        tracing :: trace ! ( "  args = {{pti = {:?}, pft_due_time = {:?}, ms_period = {:?}, ms_window_length = {:?}}}" , pti , pft_due_time , ms_period , ms_window_length );
         let res = api.SetThreadpoolTimerEx(pti, pft_due_time, ms_period, ms_window_length);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -31893,7 +31840,7 @@ extern "C" fn thunk_SetThreadpoolWait(
         let span = tracing::trace_span!("SetThreadpoolWait");
         let _enter = span.enter();
         tracing::trace!(
-            "pwa = {:?}, h = {:?}, pft_timeout = {:?}",
+            "  args = {{pwa = {:?}, h = {:?}, pft_timeout = {:?}}}",
             pwa,
             h,
             pft_timeout
@@ -31926,7 +31873,7 @@ extern "C" fn thunk_SetThreadpoolWaitEx(
         let span = tracing::trace_span!("SetThreadpoolWaitEx");
         let _enter = span.enter();
         tracing::trace!(
-            "pwa = {:?}, h = {:?}, pft_timeout = {:?}, reserved = {:?}",
+            "  args = {{pwa = {:?}, h = {:?}, pft_timeout = {:?}, reserved = {:?}}}",
             pwa,
             h,
             pft_timeout,
@@ -31961,7 +31908,7 @@ extern "C" fn thunk_SetTimerQueueTimer(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetTimerQueueTimer");
         let _enter = span.enter();
-        tracing :: trace ! ( "timer_queue = {:?}, callback = {:?}, parameter = {:?}, due_time = {:?}, period = {:?}, prefer_io = {:?}" , timer_queue , callback , parameter , due_time , period , prefer_io );
+        tracing :: trace ! ( "  args = {{timer_queue = {:?}, callback = {:?}, parameter = {:?}, due_time = {:?}, period = {:?}, prefer_io = {:?}}}" , timer_queue , callback , parameter , due_time , period , prefer_io );
         let res = api.SetTimerQueueTimer(
             timer_queue,
             callback,
@@ -31996,7 +31943,7 @@ extern "C" fn thunk_SetUmsThreadInformation(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetUmsThreadInformation");
         let _enter = span.enter();
-        tracing :: trace ! ( "ums_thread = {:?}, ums_thread_info_class = {:?}, ums_thread_information = {:?}, ums_thread_information_length = {:?}" , ums_thread , ums_thread_info_class , ums_thread_information , ums_thread_information_length );
+        tracing :: trace ! ( "  args = {{ums_thread = {:?}, ums_thread_info_class = {:?}, ums_thread_information = {:?}, ums_thread_information_length = {:?}}}" , ums_thread , ums_thread_info_class , ums_thread_information , ums_thread_information_length );
         let res = api.SetUmsThreadInformation(
             ums_thread,
             ums_thread_info_class,
@@ -32031,7 +31978,7 @@ extern "C" fn thunk_SetWaitableTimer(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetWaitableTimer");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_timer = {:?}, lp_due_time = {:?}, l_period = {:?}, pfn_completion_routine = {:?}, lp_arg_to_completion_routine = {:?}, f_resume = {:?}" , h_timer , lp_due_time , l_period , pfn_completion_routine , lp_arg_to_completion_routine , f_resume );
+        tracing :: trace ! ( "  args = {{h_timer = {:?}, lp_due_time = {:?}, l_period = {:?}, pfn_completion_routine = {:?}, lp_arg_to_completion_routine = {:?}, f_resume = {:?}}}" , h_timer , lp_due_time , l_period , pfn_completion_routine , lp_arg_to_completion_routine , f_resume );
         let res = api.SetWaitableTimer(
             h_timer,
             lp_due_time,
@@ -32069,7 +32016,7 @@ extern "C" fn thunk_SetWaitableTimerEx(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetWaitableTimerEx");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_timer = {:?}, lp_due_time = {:?}, l_period = {:?}, pfn_completion_routine = {:?}, lp_arg_to_completion_routine = {:?}, wake_context = {:?}, tolerable_delay = {:?}" , h_timer , lp_due_time , l_period , pfn_completion_routine , lp_arg_to_completion_routine , wake_context , tolerable_delay );
+        tracing :: trace ! ( "  args = {{h_timer = {:?}, lp_due_time = {:?}, l_period = {:?}, pfn_completion_routine = {:?}, lp_arg_to_completion_routine = {:?}, wake_context = {:?}, tolerable_delay = {:?}}}" , h_timer , lp_due_time , l_period , pfn_completion_routine , lp_arg_to_completion_routine , wake_context , tolerable_delay );
         let res = api.SetWaitableTimerEx(
             h_timer,
             lp_due_time,
@@ -32099,7 +32046,7 @@ extern "C" fn thunk_Sleep(context: &mut ExtendedContext, memory: FlatMemoryCtx) 
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("Sleep");
         let _enter = span.enter();
-        tracing::trace!("dw_milliseconds = {:?}", dw_milliseconds);
+        tracing::trace!("  args = {{dw_milliseconds = {:?}}}", dw_milliseconds);
         let res = api.Sleep(dw_milliseconds);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -32126,12 +32073,7 @@ extern "C" fn thunk_SleepConditionVariableCS(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SleepConditionVariableCS");
         let _enter = span.enter();
-        tracing::trace!(
-            "condition_variable = {:?}, critical_section = {:?}, dw_milliseconds = {:?}",
-            condition_variable,
-            critical_section,
-            dw_milliseconds
-        );
+        tracing :: trace ! ( "  args = {{condition_variable = {:?}, critical_section = {:?}, dw_milliseconds = {:?}}}" , condition_variable , critical_section , dw_milliseconds );
         let res =
             api.SleepConditionVariableCS(condition_variable, critical_section, dw_milliseconds);
         tracing::trace!("result = {:?}", res);
@@ -32160,13 +32102,7 @@ extern "C" fn thunk_SleepConditionVariableSRW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SleepConditionVariableSRW");
         let _enter = span.enter();
-        tracing::trace!(
-            "condition_variable = {:?}, srw_lock = {:?}, dw_milliseconds = {:?}, flags = {:?}",
-            condition_variable,
-            srw_lock,
-            dw_milliseconds,
-            flags
-        );
+        tracing :: trace ! ( "  args = {{condition_variable = {:?}, srw_lock = {:?}, dw_milliseconds = {:?}, flags = {:?}}}" , condition_variable , srw_lock , dw_milliseconds , flags );
         let res =
             api.SleepConditionVariableSRW(condition_variable, srw_lock, dw_milliseconds, flags);
         tracing::trace!("result = {:?}", res);
@@ -32191,7 +32127,7 @@ extern "C" fn thunk_SleepEx(context: &mut ExtendedContext, memory: FlatMemoryCtx
         let span = tracing::trace_span!("SleepEx");
         let _enter = span.enter();
         tracing::trace!(
-            "dw_milliseconds = {:?}, b_alertable = {:?}",
+            "  args = {{dw_milliseconds = {:?}, b_alertable = {:?}}}",
             dw_milliseconds,
             b_alertable
         );
@@ -32219,7 +32155,7 @@ extern "C" fn thunk_StartThreadpoolIo(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("StartThreadpoolIo");
         let _enter = span.enter();
-        tracing::trace!("pio = {:?}", pio);
+        tracing::trace!("  args = {{pio = {:?}}}", pio);
         let res = api.StartThreadpoolIo(pio);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -32244,7 +32180,7 @@ extern "C" fn thunk_SubmitThreadpoolWork(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SubmitThreadpoolWork");
         let _enter = span.enter();
-        tracing::trace!("pwk = {:?}", pwk);
+        tracing::trace!("  args = {{pwk = {:?}}}", pwk);
         let res = api.SubmitThreadpoolWork(pwk);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -32266,7 +32202,7 @@ extern "C" fn thunk_SuspendThread(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SuspendThread");
         let _enter = span.enter();
-        tracing::trace!("h_thread = {:?}", h_thread);
+        tracing::trace!("  args = {{h_thread = {:?}}}", h_thread);
         let res = api.SuspendThread(h_thread);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -32288,7 +32224,7 @@ extern "C" fn thunk_SwitchToFiber(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SwitchToFiber");
         let _enter = span.enter();
-        tracing::trace!("lp_fiber = {:?}", lp_fiber);
+        tracing::trace!("  args = {{lp_fiber = {:?}}}", lp_fiber);
         let res = api.SwitchToFiber(lp_fiber);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -32312,7 +32248,7 @@ extern "C" fn thunk_SwitchToThread(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SwitchToThread");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.SwitchToThread();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -32339,7 +32275,7 @@ extern "C" fn thunk_TerminateProcess(
         let span = tracing::trace_span!("TerminateProcess");
         let _enter = span.enter();
         tracing::trace!(
-            "h_process = {:?}, u_exit_code = {:?}",
+            "  args = {{h_process = {:?}, u_exit_code = {:?}}}",
             h_process,
             u_exit_code
         );
@@ -32369,7 +32305,7 @@ extern "C" fn thunk_TerminateThread(
         let span = tracing::trace_span!("TerminateThread");
         let _enter = span.enter();
         tracing::trace!(
-            "h_thread = {:?}, dw_exit_code = {:?}",
+            "  args = {{h_thread = {:?}, dw_exit_code = {:?}}}",
             h_thread,
             dw_exit_code
         );
@@ -32393,7 +32329,7 @@ extern "C" fn thunk_TlsAlloc(context: &mut ExtendedContext, memory: FlatMemoryCt
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("TlsAlloc");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.TlsAlloc();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -32415,7 +32351,7 @@ extern "C" fn thunk_TlsFree(context: &mut ExtendedContext, memory: FlatMemoryCtx
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("TlsFree");
         let _enter = span.enter();
-        tracing::trace!("dw_tls_index = {:?}", dw_tls_index);
+        tracing::trace!("  args = {{dw_tls_index = {:?}}}", dw_tls_index);
         let res = api.TlsFree(dw_tls_index);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -32437,7 +32373,7 @@ extern "C" fn thunk_TlsGetValue(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("TlsGetValue");
         let _enter = span.enter();
-        tracing::trace!("dw_tls_index = {:?}", dw_tls_index);
+        tracing::trace!("  args = {{dw_tls_index = {:?}}}", dw_tls_index);
         let res = api.TlsGetValue(dw_tls_index);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -32461,7 +32397,7 @@ extern "C" fn thunk_TlsSetValue(context: &mut ExtendedContext, memory: FlatMemor
         let span = tracing::trace_span!("TlsSetValue");
         let _enter = span.enter();
         tracing::trace!(
-            "dw_tls_index = {:?}, lp_tls_value = {:?}",
+            "  args = {{dw_tls_index = {:?}, lp_tls_value = {:?}}}",
             dw_tls_index,
             lp_tls_value
         );
@@ -32489,7 +32425,7 @@ extern "C" fn thunk_TryAcquireSRWLockExclusive(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("TryAcquireSRWLockExclusive");
         let _enter = span.enter();
-        tracing::trace!("srw_lock = {:?}", srw_lock);
+        tracing::trace!("  args = {{srw_lock = {:?}}}", srw_lock);
         let res = api.TryAcquireSRWLockExclusive(srw_lock);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -32514,7 +32450,7 @@ extern "C" fn thunk_TryAcquireSRWLockShared(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("TryAcquireSRWLockShared");
         let _enter = span.enter();
-        tracing::trace!("srw_lock = {:?}", srw_lock);
+        tracing::trace!("  args = {{srw_lock = {:?}}}", srw_lock);
         let res = api.TryAcquireSRWLockShared(srw_lock);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -32539,7 +32475,10 @@ extern "C" fn thunk_TryEnterCriticalSection(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("TryEnterCriticalSection");
         let _enter = span.enter();
-        tracing::trace!("lp_critical_section = {:?}", lp_critical_section);
+        tracing::trace!(
+            "  args = {{lp_critical_section = {:?}}}",
+            lp_critical_section
+        );
         let res = api.TryEnterCriticalSection(lp_critical_section);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -32566,7 +32505,12 @@ extern "C" fn thunk_TrySubmitThreadpoolCallback(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("TrySubmitThreadpoolCallback");
         let _enter = span.enter();
-        tracing::trace!("pfns = {:?}, pv = {:?}, pcbe = {:?}", pfns, pv, pcbe);
+        tracing::trace!(
+            "  args = {{pfns = {:?}, pv = {:?}, pcbe = {:?}}}",
+            pfns,
+            pv,
+            pcbe
+        );
         let res = api.TrySubmitThreadpoolCallback(pfns, pv, pcbe);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -32591,7 +32535,7 @@ extern "C" fn thunk_UmsThreadYield(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("UmsThreadYield");
         let _enter = span.enter();
-        tracing::trace!("scheduler_param = {:?}", scheduler_param);
+        tracing::trace!("  args = {{scheduler_param = {:?}}}", scheduler_param);
         let res = api.UmsThreadYield(scheduler_param);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -32616,7 +32560,7 @@ extern "C" fn thunk_UnregisterWait(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("UnregisterWait");
         let _enter = span.enter();
-        tracing::trace!("wait_handle = {:?}", wait_handle);
+        tracing::trace!("  args = {{wait_handle = {:?}}}", wait_handle);
         let res = api.UnregisterWait(wait_handle);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -32643,7 +32587,7 @@ extern "C" fn thunk_UnregisterWaitEx(
         let span = tracing::trace_span!("UnregisterWaitEx");
         let _enter = span.enter();
         tracing::trace!(
-            "wait_handle = {:?}, completion_event = {:?}",
+            "  args = {{wait_handle = {:?}, completion_event = {:?}}}",
             wait_handle,
             completion_event
         );
@@ -32677,7 +32621,7 @@ extern "C" fn thunk_UpdateProcThreadAttribute(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("UpdateProcThreadAttribute");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_attribute_list = {:?}, dw_flags = {:?}, attribute = {:?}, lp_value = {:?}, cb_size = {:?}, lp_previous_value = {:?}, lp_return_size = {:?}" , lp_attribute_list , dw_flags , attribute , lp_value , cb_size , lp_previous_value , lp_return_size );
+        tracing :: trace ! ( "  args = {{lp_attribute_list = {:?}, dw_flags = {:?}, attribute = {:?}, lp_value = {:?}, cb_size = {:?}, lp_previous_value = {:?}, lp_return_size = {:?}}}" , lp_attribute_list , dw_flags , attribute , lp_value , cb_size , lp_previous_value , lp_return_size );
         let res = api.UpdateProcThreadAttribute(
             lp_attribute_list,
             dw_flags,
@@ -32712,7 +32656,7 @@ extern "C" fn thunk_WaitForInputIdle(
         let span = tracing::trace_span!("WaitForInputIdle");
         let _enter = span.enter();
         tracing::trace!(
-            "h_process = {:?}, dw_milliseconds = {:?}",
+            "  args = {{h_process = {:?}, dw_milliseconds = {:?}}}",
             h_process,
             dw_milliseconds
         );
@@ -32743,13 +32687,7 @@ extern "C" fn thunk_WaitForMultipleObjects(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("WaitForMultipleObjects");
         let _enter = span.enter();
-        tracing::trace!(
-            "n_count = {:?}, lp_handles = {:?}, b_wait_all = {:?}, dw_milliseconds = {:?}",
-            n_count,
-            lp_handles,
-            b_wait_all,
-            dw_milliseconds
-        );
+        tracing :: trace ! ( "  args = {{n_count = {:?}, lp_handles = {:?}, b_wait_all = {:?}, dw_milliseconds = {:?}}}" , n_count , lp_handles , b_wait_all , dw_milliseconds );
         let res = api.WaitForMultipleObjects(n_count, lp_handles, b_wait_all, dw_milliseconds);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -32778,7 +32716,7 @@ extern "C" fn thunk_WaitForMultipleObjectsEx(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("WaitForMultipleObjectsEx");
         let _enter = span.enter();
-        tracing :: trace ! ( "n_count = {:?}, lp_handles = {:?}, b_wait_all = {:?}, dw_milliseconds = {:?}, b_alertable = {:?}" , n_count , lp_handles , b_wait_all , dw_milliseconds , b_alertable );
+        tracing :: trace ! ( "  args = {{n_count = {:?}, lp_handles = {:?}, b_wait_all = {:?}, dw_milliseconds = {:?}, b_alertable = {:?}}}" , n_count , lp_handles , b_wait_all , dw_milliseconds , b_alertable );
         let res = api.WaitForMultipleObjectsEx(
             n_count,
             lp_handles,
@@ -32811,7 +32749,7 @@ extern "C" fn thunk_WaitForSingleObject(
         let span = tracing::trace_span!("WaitForSingleObject");
         let _enter = span.enter();
         tracing::trace!(
-            "h_handle = {:?}, dw_milliseconds = {:?}",
+            "  args = {{h_handle = {:?}, dw_milliseconds = {:?}}}",
             h_handle,
             dw_milliseconds
         );
@@ -32842,7 +32780,7 @@ extern "C" fn thunk_WaitForSingleObjectEx(
         let span = tracing::trace_span!("WaitForSingleObjectEx");
         let _enter = span.enter();
         tracing::trace!(
-            "h_handle = {:?}, dw_milliseconds = {:?}, b_alertable = {:?}",
+            "  args = {{h_handle = {:?}, dw_milliseconds = {:?}, b_alertable = {:?}}}",
             h_handle,
             dw_milliseconds,
             b_alertable
@@ -32873,7 +32811,7 @@ extern "C" fn thunk_WaitForThreadpoolIoCallbacks(
         let span = tracing::trace_span!("WaitForThreadpoolIoCallbacks");
         let _enter = span.enter();
         tracing::trace!(
-            "pio = {:?}, f_cancel_pending_callbacks = {:?}",
+            "  args = {{pio = {:?}, f_cancel_pending_callbacks = {:?}}}",
             pio,
             f_cancel_pending_callbacks
         );
@@ -32903,7 +32841,7 @@ extern "C" fn thunk_WaitForThreadpoolTimerCallbacks(
         let span = tracing::trace_span!("WaitForThreadpoolTimerCallbacks");
         let _enter = span.enter();
         tracing::trace!(
-            "pti = {:?}, f_cancel_pending_callbacks = {:?}",
+            "  args = {{pti = {:?}, f_cancel_pending_callbacks = {:?}}}",
             pti,
             f_cancel_pending_callbacks
         );
@@ -32933,7 +32871,7 @@ extern "C" fn thunk_WaitForThreadpoolWaitCallbacks(
         let span = tracing::trace_span!("WaitForThreadpoolWaitCallbacks");
         let _enter = span.enter();
         tracing::trace!(
-            "pwa = {:?}, f_cancel_pending_callbacks = {:?}",
+            "  args = {{pwa = {:?}, f_cancel_pending_callbacks = {:?}}}",
             pwa,
             f_cancel_pending_callbacks
         );
@@ -32963,7 +32901,7 @@ extern "C" fn thunk_WaitForThreadpoolWorkCallbacks(
         let span = tracing::trace_span!("WaitForThreadpoolWorkCallbacks");
         let _enter = span.enter();
         tracing::trace!(
-            "pwk = {:?}, f_cancel_pending_callbacks = {:?}",
+            "  args = {{pwk = {:?}, f_cancel_pending_callbacks = {:?}}}",
             pwk,
             f_cancel_pending_callbacks
         );
@@ -32991,13 +32929,7 @@ extern "C" fn thunk_WaitOnAddress(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("WaitOnAddress");
         let _enter = span.enter();
-        tracing::trace!(
-            "address = {:?}, compare_address = {:?}, address_size = {:?}, dw_milliseconds = {:?}",
-            address,
-            compare_address,
-            address_size,
-            dw_milliseconds
-        );
+        tracing :: trace ! ( "  args = {{address = {:?}, compare_address = {:?}, address_size = {:?}, dw_milliseconds = {:?}}}" , address , compare_address , address_size , dw_milliseconds );
         let res = api.WaitOnAddress(address, compare_address, address_size, dw_milliseconds);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -33022,7 +32954,7 @@ extern "C" fn thunk_WakeAllConditionVariable(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("WakeAllConditionVariable");
         let _enter = span.enter();
-        tracing::trace!("condition_variable = {:?}", condition_variable);
+        tracing::trace!("  args = {{condition_variable = {:?}}}", condition_variable);
         let res = api.WakeAllConditionVariable(condition_variable);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -33047,7 +32979,7 @@ extern "C" fn thunk_WakeByAddressAll(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("WakeByAddressAll");
         let _enter = span.enter();
-        tracing::trace!("address = {:?}", address);
+        tracing::trace!("  args = {{address = {:?}}}", address);
         let res = api.WakeByAddressAll(address);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -33072,7 +33004,7 @@ extern "C" fn thunk_WakeByAddressSingle(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("WakeByAddressSingle");
         let _enter = span.enter();
-        tracing::trace!("address = {:?}", address);
+        tracing::trace!("  args = {{address = {:?}}}", address);
         let res = api.WakeByAddressSingle(address);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -33097,7 +33029,7 @@ extern "C" fn thunk_WakeConditionVariable(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("WakeConditionVariable");
         let _enter = span.enter();
-        tracing::trace!("condition_variable = {:?}", condition_variable);
+        tracing::trace!("  args = {{condition_variable = {:?}}}", condition_variable);
         let res = api.WakeConditionVariable(condition_variable);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -33121,7 +33053,7 @@ extern "C" fn thunk_WinExec(context: &mut ExtendedContext, memory: FlatMemoryCtx
         let span = tracing::trace_span!("WinExec");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_cmd_line = {:?}, u_cmd_show = {:?}",
+            "  args = {{lp_cmd_line = {:?}, u_cmd_show = {:?}}}",
             lp_cmd_line,
             u_cmd_show
         );
@@ -33149,7 +33081,7 @@ extern "C" fn thunk_Wow64SetThreadDefaultGuestMachine(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("Wow64SetThreadDefaultGuestMachine");
         let _enter = span.enter();
-        tracing::trace!("machine = {:?}", machine);
+        tracing::trace!("  args = {{machine = {:?}}}", machine);
         let res = api.Wow64SetThreadDefaultGuestMachine(machine);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -33174,7 +33106,7 @@ extern "C" fn thunk_Wow64SuspendThread(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("Wow64SuspendThread");
         let _enter = span.enter();
-        tracing::trace!("h_thread = {:?}", h_thread);
+        tracing::trace!("  args = {{h_thread = {:?}}}", h_thread);
         let res = api.Wow64SuspendThread(h_thread);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -33202,7 +33134,7 @@ extern "C" fn thunk_AddDelBackupEntryA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("AddDelBackupEntryA");
         let _enter = span.enter();
-        tracing :: trace ! ( "lpcsz_file_list = {:?}, lpcsz_backup_dir = {:?}, lpcsz_base_name = {:?}, dw_flags = {:?}" , lpcsz_file_list , lpcsz_backup_dir , lpcsz_base_name , dw_flags );
+        tracing :: trace ! ( "  args = {{lpcsz_file_list = {:?}, lpcsz_backup_dir = {:?}, lpcsz_base_name = {:?}, dw_flags = {:?}}}" , lpcsz_file_list , lpcsz_backup_dir , lpcsz_base_name , dw_flags );
         let res =
             api.AddDelBackupEntryA(lpcsz_file_list, lpcsz_backup_dir, lpcsz_base_name, dw_flags);
         tracing::trace!("result = {:?}", res);
@@ -33231,7 +33163,7 @@ extern "C" fn thunk_AddDelBackupEntryW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("AddDelBackupEntryW");
         let _enter = span.enter();
-        tracing :: trace ! ( "lpcsz_file_list = {:?}, lpcsz_backup_dir = {:?}, lpcsz_base_name = {:?}, dw_flags = {:?}" , lpcsz_file_list , lpcsz_backup_dir , lpcsz_base_name , dw_flags );
+        tracing :: trace ! ( "  args = {{lpcsz_file_list = {:?}, lpcsz_backup_dir = {:?}, lpcsz_base_name = {:?}, dw_flags = {:?}}}" , lpcsz_file_list , lpcsz_backup_dir , lpcsz_base_name , dw_flags );
         let res =
             api.AddDelBackupEntryW(lpcsz_file_list, lpcsz_backup_dir, lpcsz_base_name, dw_flags);
         tracing::trace!("result = {:?}", res);
@@ -33263,7 +33195,7 @@ extern "C" fn thunk_AdvInstallFileA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("AdvInstallFileA");
         let _enter = span.enter();
-        tracing :: trace ! ( "hwnd = {:?}, lpsz_source_dir = {:?}, lpsz_source_file = {:?}, lpsz_dest_dir = {:?}, lpsz_dest_file = {:?}, dw_flags = {:?}, dw_reserved = {:?}" , hwnd , lpsz_source_dir , lpsz_source_file , lpsz_dest_dir , lpsz_dest_file , dw_flags , dw_reserved );
+        tracing :: trace ! ( "  args = {{hwnd = {:?}, lpsz_source_dir = {:?}, lpsz_source_file = {:?}, lpsz_dest_dir = {:?}, lpsz_dest_file = {:?}, dw_flags = {:?}, dw_reserved = {:?}}}" , hwnd , lpsz_source_dir , lpsz_source_file , lpsz_dest_dir , lpsz_dest_file , dw_flags , dw_reserved );
         let res = api.AdvInstallFileA(
             hwnd,
             lpsz_source_dir,
@@ -33302,7 +33234,7 @@ extern "C" fn thunk_AdvInstallFileW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("AdvInstallFileW");
         let _enter = span.enter();
-        tracing :: trace ! ( "hwnd = {:?}, lpsz_source_dir = {:?}, lpsz_source_file = {:?}, lpsz_dest_dir = {:?}, lpsz_dest_file = {:?}, dw_flags = {:?}, dw_reserved = {:?}" , hwnd , lpsz_source_dir , lpsz_source_file , lpsz_dest_dir , lpsz_dest_file , dw_flags , dw_reserved );
+        tracing :: trace ! ( "  args = {{hwnd = {:?}, lpsz_source_dir = {:?}, lpsz_source_file = {:?}, lpsz_dest_dir = {:?}, lpsz_dest_file = {:?}, dw_flags = {:?}, dw_reserved = {:?}}}" , hwnd , lpsz_source_dir , lpsz_source_file , lpsz_dest_dir , lpsz_dest_file , dw_flags , dw_reserved );
         let res = api.AdvInstallFileW(
             hwnd,
             lpsz_source_dir,
@@ -33338,7 +33270,7 @@ extern "C" fn thunk_ApphelpCheckShellObject(
         let span = tracing::trace_span!("ApphelpCheckShellObject");
         let _enter = span.enter();
         tracing::trace!(
-            "object_clsid = {:?}, b_shim_if_necessary = {:?}, pull_flags = {:?}",
+            "  args = {{object_clsid = {:?}, b_shim_if_necessary = {:?}, pull_flags = {:?}}}",
             object_clsid,
             b_shim_if_necessary,
             pull_flags
@@ -33367,7 +33299,7 @@ extern "C" fn thunk_CancelDeviceWakeupRequest(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CancelDeviceWakeupRequest");
         let _enter = span.enter();
-        tracing::trace!("h_device = {:?}", h_device);
+        tracing::trace!("  args = {{h_device = {:?}}}", h_device);
         let res = api.CancelDeviceWakeupRequest(h_device);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -33393,7 +33325,11 @@ extern "C" fn thunk_CancelTimerQueueTimer(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CancelTimerQueueTimer");
         let _enter = span.enter();
-        tracing::trace!("timer_queue = {:?}, timer = {:?}", timer_queue, timer);
+        tracing::trace!(
+            "  args = {{timer_queue = {:?}, timer = {:?}}}",
+            timer_queue,
+            timer
+        );
         let res = api.CancelTimerQueueTimer(timer_queue, timer);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -33418,7 +33354,7 @@ extern "C" fn thunk_CloseINFEngine(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CloseINFEngine");
         let _enter = span.enter();
-        tracing::trace!("h_inf = {:?}", h_inf);
+        tracing::trace!("  args = {{h_inf = {:?}}}", h_inf);
         let res = api.CloseINFEngine(h_inf);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -33445,7 +33381,7 @@ extern "C" fn thunk_ConvertAuxiliaryCounterToPerformanceCounter(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ConvertAuxiliaryCounterToPerformanceCounter");
         let _enter = span.enter();
-        tracing :: trace ! ( "ull_auxiliary_counter_value = {:?}, lp_performance_counter_value = {:?}, lp_conversion_error = {:?}" , ull_auxiliary_counter_value , lp_performance_counter_value , lp_conversion_error );
+        tracing :: trace ! ( "  args = {{ull_auxiliary_counter_value = {:?}, lp_performance_counter_value = {:?}, lp_conversion_error = {:?}}}" , ull_auxiliary_counter_value , lp_performance_counter_value , lp_conversion_error );
         let res = api.ConvertAuxiliaryCounterToPerformanceCounter(
             ull_auxiliary_counter_value,
             lp_performance_counter_value,
@@ -33476,7 +33412,7 @@ extern "C" fn thunk_ConvertPerformanceCounterToAuxiliaryCounter(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ConvertPerformanceCounterToAuxiliaryCounter");
         let _enter = span.enter();
-        tracing :: trace ! ( "ull_performance_counter_value = {:?}, lp_auxiliary_counter_value = {:?}, lp_conversion_error = {:?}" , ull_performance_counter_value , lp_auxiliary_counter_value , lp_conversion_error );
+        tracing :: trace ! ( "  args = {{ull_performance_counter_value = {:?}, lp_auxiliary_counter_value = {:?}, lp_conversion_error = {:?}}}" , ull_performance_counter_value , lp_auxiliary_counter_value , lp_conversion_error );
         let res = api.ConvertPerformanceCounterToAuxiliaryCounter(
             ull_performance_counter_value,
             lp_auxiliary_counter_value,
@@ -33504,7 +33440,7 @@ extern "C" fn thunk_DelNodeA(context: &mut ExtendedContext, memory: FlatMemoryCt
         let span = tracing::trace_span!("DelNodeA");
         let _enter = span.enter();
         tracing::trace!(
-            "psz_file_or_dir_name = {:?}, dw_flags = {:?}",
+            "  args = {{psz_file_or_dir_name = {:?}, dw_flags = {:?}}}",
             psz_file_or_dir_name,
             dw_flags
         );
@@ -33536,7 +33472,7 @@ extern "C" fn thunk_DelNodeRunDLL32W(
         let span = tracing::trace_span!("DelNodeRunDLL32W");
         let _enter = span.enter();
         tracing::trace!(
-            "hwnd = {:?}, h_instance = {:?}, psz_parms = {:?}, n_show = {:?}",
+            "  args = {{hwnd = {:?}, h_instance = {:?}, psz_parms = {:?}, n_show = {:?}}}",
             hwnd,
             h_instance,
             psz_parms,
@@ -33565,7 +33501,7 @@ extern "C" fn thunk_DelNodeW(context: &mut ExtendedContext, memory: FlatMemoryCt
         let span = tracing::trace_span!("DelNodeW");
         let _enter = span.enter();
         tracing::trace!(
-            "psz_file_or_dir_name = {:?}, dw_flags = {:?}",
+            "  args = {{psz_file_or_dir_name = {:?}, dw_flags = {:?}}}",
             psz_file_or_dir_name,
             dw_flags
         );
@@ -33596,7 +33532,7 @@ extern "C" fn thunk_DnsHostnameToComputerNameA(
         let span = tracing::trace_span!("DnsHostnameToComputerNameA");
         let _enter = span.enter();
         tracing::trace!(
-            "hostname = {:?}, computer_name = {:?}, n_size = {:?}",
+            "  args = {{hostname = {:?}, computer_name = {:?}, n_size = {:?}}}",
             hostname,
             computer_name,
             n_size
@@ -33628,7 +33564,7 @@ extern "C" fn thunk_DnsHostnameToComputerNameW(
         let span = tracing::trace_span!("DnsHostnameToComputerNameW");
         let _enter = span.enter();
         tracing::trace!(
-            "hostname = {:?}, computer_name = {:?}, n_size = {:?}",
+            "  args = {{hostname = {:?}, computer_name = {:?}, n_size = {:?}}}",
             hostname,
             computer_name,
             n_size
@@ -33660,7 +33596,7 @@ extern "C" fn thunk_DosDateTimeToFileTime(
         let span = tracing::trace_span!("DosDateTimeToFileTime");
         let _enter = span.enter();
         tracing::trace!(
-            "w_fat_date = {:?}, w_fat_time = {:?}, lp_file_time = {:?}",
+            "  args = {{w_fat_date = {:?}, w_fat_time = {:?}, lp_file_time = {:?}}}",
             w_fat_date,
             w_fat_time,
             lp_file_time
@@ -33689,7 +33625,7 @@ extern "C" fn thunk_EnableProcessOptionalXStateFeatures(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("EnableProcessOptionalXStateFeatures");
         let _enter = span.enter();
-        tracing::trace!("features = {:?}", features);
+        tracing::trace!("  args = {{features = {:?}}}", features);
         let res = api.EnableProcessOptionalXStateFeatures(features);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -33714,7 +33650,7 @@ extern "C" fn thunk_ExecuteCabA(context: &mut ExtendedContext, memory: FlatMemor
         let span = tracing::trace_span!("ExecuteCabA");
         let _enter = span.enter();
         tracing::trace!(
-            "hwnd = {:?}, p_cab = {:?}, p_reserved = {:?}",
+            "  args = {{hwnd = {:?}, p_cab = {:?}, p_reserved = {:?}}}",
             hwnd,
             p_cab,
             p_reserved
@@ -33743,7 +33679,7 @@ extern "C" fn thunk_ExecuteCabW(context: &mut ExtendedContext, memory: FlatMemor
         let span = tracing::trace_span!("ExecuteCabW");
         let _enter = span.enter();
         tracing::trace!(
-            "hwnd = {:?}, p_cab = {:?}, p_reserved = {:?}",
+            "  args = {{hwnd = {:?}, p_cab = {:?}, p_reserved = {:?}}}",
             hwnd,
             p_cab,
             p_reserved
@@ -33774,7 +33710,7 @@ extern "C" fn thunk_ExtractFilesA(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ExtractFilesA");
         let _enter = span.enter();
-        tracing :: trace ! ( "psz_cab_name = {:?}, psz_expand_dir = {:?}, dw_flags = {:?}, psz_file_list = {:?}, lp_reserved = {:?}, dw_reserved = {:?}" , psz_cab_name , psz_expand_dir , dw_flags , psz_file_list , lp_reserved , dw_reserved );
+        tracing :: trace ! ( "  args = {{psz_cab_name = {:?}, psz_expand_dir = {:?}, dw_flags = {:?}, psz_file_list = {:?}, lp_reserved = {:?}, dw_reserved = {:?}}}" , psz_cab_name , psz_expand_dir , dw_flags , psz_file_list , lp_reserved , dw_reserved );
         let res = api.ExtractFilesA(
             psz_cab_name,
             psz_expand_dir,
@@ -33808,7 +33744,7 @@ extern "C" fn thunk_ExtractFilesW(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ExtractFilesW");
         let _enter = span.enter();
-        tracing :: trace ! ( "psz_cab_name = {:?}, psz_expand_dir = {:?}, dw_flags = {:?}, psz_file_list = {:?}, lp_reserved = {:?}, dw_reserved = {:?}" , psz_cab_name , psz_expand_dir , dw_flags , psz_file_list , lp_reserved , dw_reserved );
+        tracing :: trace ! ( "  args = {{psz_cab_name = {:?}, psz_expand_dir = {:?}, dw_flags = {:?}, psz_file_list = {:?}, lp_reserved = {:?}, dw_reserved = {:?}}}" , psz_cab_name , psz_expand_dir , dw_flags , psz_file_list , lp_reserved , dw_reserved );
         let res = api.ExtractFilesW(
             psz_cab_name,
             psz_expand_dir,
@@ -33843,7 +33779,7 @@ extern "C" fn thunk_FileSaveMarkNotExistA(
         let span = tracing::trace_span!("FileSaveMarkNotExistA");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_file_list = {:?}, lp_dir = {:?}, lp_base_name = {:?}",
+            "  args = {{lp_file_list = {:?}, lp_dir = {:?}, lp_base_name = {:?}}}",
             lp_file_list,
             lp_dir,
             lp_base_name
@@ -33875,7 +33811,7 @@ extern "C" fn thunk_FileSaveMarkNotExistW(
         let span = tracing::trace_span!("FileSaveMarkNotExistW");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_file_list = {:?}, lp_dir = {:?}, lp_base_name = {:?}",
+            "  args = {{lp_file_list = {:?}, lp_dir = {:?}, lp_base_name = {:?}}}",
             lp_file_list,
             lp_dir,
             lp_base_name
@@ -33910,7 +33846,7 @@ extern "C" fn thunk_FileSaveRestoreOnINFA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("FileSaveRestoreOnINFA");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_wnd = {:?}, psz_title = {:?}, psz_inf = {:?}, psz_section = {:?}, psz_backup_dir = {:?}, psz_base_backup_file = {:?}, dw_flags = {:?}" , h_wnd , psz_title , psz_inf , psz_section , psz_backup_dir , psz_base_backup_file , dw_flags );
+        tracing :: trace ! ( "  args = {{h_wnd = {:?}, psz_title = {:?}, psz_inf = {:?}, psz_section = {:?}, psz_backup_dir = {:?}, psz_base_backup_file = {:?}, dw_flags = {:?}}}" , h_wnd , psz_title , psz_inf , psz_section , psz_backup_dir , psz_base_backup_file , dw_flags );
         let res = api.FileSaveRestoreOnINFA(
             h_wnd,
             psz_title,
@@ -33949,7 +33885,7 @@ extern "C" fn thunk_FileSaveRestoreOnINFW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("FileSaveRestoreOnINFW");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_wnd = {:?}, psz_title = {:?}, psz_inf = {:?}, psz_section = {:?}, psz_backup_dir = {:?}, psz_base_backup_file = {:?}, dw_flags = {:?}" , h_wnd , psz_title , psz_inf , psz_section , psz_backup_dir , psz_base_backup_file , dw_flags );
+        tracing :: trace ! ( "  args = {{h_wnd = {:?}, psz_title = {:?}, psz_inf = {:?}, psz_section = {:?}, psz_backup_dir = {:?}, psz_base_backup_file = {:?}, dw_flags = {:?}}}" , h_wnd , psz_title , psz_inf , psz_section , psz_backup_dir , psz_base_backup_file , dw_flags );
         let res = api.FileSaveRestoreOnINFW(
             h_wnd,
             psz_title,
@@ -33986,7 +33922,7 @@ extern "C" fn thunk_FileSaveRestoreW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("FileSaveRestoreW");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_dlg = {:?}, lp_file_list = {:?}, lp_dir = {:?}, lp_base_name = {:?}, dw_flags = {:?}" , h_dlg , lp_file_list , lp_dir , lp_base_name , dw_flags );
+        tracing :: trace ! ( "  args = {{h_dlg = {:?}, lp_file_list = {:?}, lp_dir = {:?}, lp_base_name = {:?}, dw_flags = {:?}}}" , h_dlg , lp_file_list , lp_dir , lp_base_name , dw_flags );
         let res = api.FileSaveRestoreW(h_dlg, lp_file_list, lp_dir, lp_base_name, dw_flags);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -34014,7 +33950,7 @@ extern "C" fn thunk_FileTimeToDosDateTime(
         let span = tracing::trace_span!("FileTimeToDosDateTime");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_file_time = {:?}, lp_fat_date = {:?}, lp_fat_time = {:?}",
+            "  args = {{lp_file_time = {:?}, lp_fat_date = {:?}, lp_fat_time = {:?}}}",
             lp_file_time,
             lp_fat_date,
             lp_fat_time
@@ -34039,7 +33975,7 @@ extern "C" fn thunk_GdiEntry13(context: &mut ExtendedContext, memory: FlatMemory
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GdiEntry13");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.GdiEntry13();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -34065,7 +34001,11 @@ extern "C" fn thunk_GetComputerNameA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetComputerNameA");
         let _enter = span.enter();
-        tracing::trace!("lp_buffer = {:?}, n_size = {:?}", lp_buffer, n_size);
+        tracing::trace!(
+            "  args = {{lp_buffer = {:?}, n_size = {:?}}}",
+            lp_buffer,
+            n_size
+        );
         let res = api.GetComputerNameA(lp_buffer, n_size);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -34091,7 +34031,11 @@ extern "C" fn thunk_GetComputerNameW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetComputerNameW");
         let _enter = span.enter();
-        tracing::trace!("lp_buffer = {:?}, n_size = {:?}", lp_buffer, n_size);
+        tracing::trace!(
+            "  args = {{lp_buffer = {:?}, n_size = {:?}}}",
+            lp_buffer,
+            n_size
+        );
         let res = api.GetComputerNameW(lp_buffer, n_size);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -34116,7 +34060,7 @@ extern "C" fn thunk_GetCurrentHwProfileA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetCurrentHwProfileA");
         let _enter = span.enter();
-        tracing::trace!("lp_hw_profile_info = {:?}", lp_hw_profile_info);
+        tracing::trace!("  args = {{lp_hw_profile_info = {:?}}}", lp_hw_profile_info);
         let res = api.GetCurrentHwProfileA(lp_hw_profile_info);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -34141,7 +34085,7 @@ extern "C" fn thunk_GetCurrentHwProfileW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetCurrentHwProfileW");
         let _enter = span.enter();
-        tracing::trace!("lp_hw_profile_info = {:?}", lp_hw_profile_info);
+        tracing::trace!("  args = {{lp_hw_profile_info = {:?}}}", lp_hw_profile_info);
         let res = api.GetCurrentHwProfileW(lp_hw_profile_info);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -34168,7 +34112,7 @@ extern "C" fn thunk_GetFeatureEnabledState(
         let span = tracing::trace_span!("GetFeatureEnabledState");
         let _enter = span.enter();
         tracing::trace!(
-            "feature_id = {:?}, change_time = {:?}",
+            "  args = {{feature_id = {:?}, change_time = {:?}}}",
             feature_id,
             change_time
         );
@@ -34199,13 +34143,7 @@ extern "C" fn thunk_GetFeatureVariant(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetFeatureVariant");
         let _enter = span.enter();
-        tracing::trace!(
-            "feature_id = {:?}, change_time = {:?}, payload_id = {:?}, has_notification = {:?}",
-            feature_id,
-            change_time,
-            payload_id,
-            has_notification
-        );
+        tracing :: trace ! ( "  args = {{feature_id = {:?}, change_time = {:?}, payload_id = {:?}, has_notification = {:?}}}" , feature_id , change_time , payload_id , has_notification );
         let res = api.GetFeatureVariant(feature_id, change_time, payload_id, has_notification);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -34234,7 +34172,7 @@ extern "C" fn thunk_GetFirmwareEnvironmentVariableA(
         let span = tracing::trace_span!("GetFirmwareEnvironmentVariableA");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_name = {:?}, lp_guid = {:?}, p_buffer = {:?}, n_size = {:?}",
+            "  args = {{lp_name = {:?}, lp_guid = {:?}, p_buffer = {:?}, n_size = {:?}}}",
             lp_name,
             lp_guid,
             p_buffer,
@@ -34268,7 +34206,7 @@ extern "C" fn thunk_GetFirmwareEnvironmentVariableExA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetFirmwareEnvironmentVariableExA");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_name = {:?}, lp_guid = {:?}, p_buffer = {:?}, n_size = {:?}, pdw_attribubutes = {:?}" , lp_name , lp_guid , p_buffer , n_size , pdw_attribubutes );
+        tracing :: trace ! ( "  args = {{lp_name = {:?}, lp_guid = {:?}, p_buffer = {:?}, n_size = {:?}, pdw_attribubutes = {:?}}}" , lp_name , lp_guid , p_buffer , n_size , pdw_attribubutes );
         let res = api.GetFirmwareEnvironmentVariableExA(
             lp_name,
             lp_guid,
@@ -34303,7 +34241,7 @@ extern "C" fn thunk_GetFirmwareEnvironmentVariableExW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetFirmwareEnvironmentVariableExW");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_name = {:?}, lp_guid = {:?}, p_buffer = {:?}, n_size = {:?}, pdw_attribubutes = {:?}" , lp_name , lp_guid , p_buffer , n_size , pdw_attribubutes );
+        tracing :: trace ! ( "  args = {{lp_name = {:?}, lp_guid = {:?}, p_buffer = {:?}, n_size = {:?}, pdw_attribubutes = {:?}}}" , lp_name , lp_guid , p_buffer , n_size , pdw_attribubutes );
         let res = api.GetFirmwareEnvironmentVariableExW(
             lp_name,
             lp_guid,
@@ -34338,7 +34276,7 @@ extern "C" fn thunk_GetFirmwareEnvironmentVariableW(
         let span = tracing::trace_span!("GetFirmwareEnvironmentVariableW");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_name = {:?}, lp_guid = {:?}, p_buffer = {:?}, n_size = {:?}",
+            "  args = {{lp_name = {:?}, lp_guid = {:?}, p_buffer = {:?}, n_size = {:?}}}",
             lp_name,
             lp_guid,
             p_buffer,
@@ -34371,13 +34309,7 @@ extern "C" fn thunk_GetPrivateProfileIntA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetPrivateProfileIntA");
         let _enter = span.enter();
-        tracing::trace!(
-            "lp_app_name = {:?}, lp_key_name = {:?}, n_default = {:?}, lp_file_name = {:?}",
-            lp_app_name,
-            lp_key_name,
-            n_default,
-            lp_file_name
-        );
+        tracing :: trace ! ( "  args = {{lp_app_name = {:?}, lp_key_name = {:?}, n_default = {:?}, lp_file_name = {:?}}}" , lp_app_name , lp_key_name , n_default , lp_file_name );
         let res = api.GetPrivateProfileIntA(lp_app_name, lp_key_name, n_default, lp_file_name);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -34405,13 +34337,7 @@ extern "C" fn thunk_GetPrivateProfileIntW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetPrivateProfileIntW");
         let _enter = span.enter();
-        tracing::trace!(
-            "lp_app_name = {:?}, lp_key_name = {:?}, n_default = {:?}, lp_file_name = {:?}",
-            lp_app_name,
-            lp_key_name,
-            n_default,
-            lp_file_name
-        );
+        tracing :: trace ! ( "  args = {{lp_app_name = {:?}, lp_key_name = {:?}, n_default = {:?}, lp_file_name = {:?}}}" , lp_app_name , lp_key_name , n_default , lp_file_name );
         let res = api.GetPrivateProfileIntW(lp_app_name, lp_key_name, n_default, lp_file_name);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -34439,13 +34365,7 @@ extern "C" fn thunk_GetPrivateProfileSectionA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetPrivateProfileSectionA");
         let _enter = span.enter();
-        tracing::trace!(
-            "lp_app_name = {:?}, lp_returned_string = {:?}, n_size = {:?}, lp_file_name = {:?}",
-            lp_app_name,
-            lp_returned_string,
-            n_size,
-            lp_file_name
-        );
+        tracing :: trace ! ( "  args = {{lp_app_name = {:?}, lp_returned_string = {:?}, n_size = {:?}, lp_file_name = {:?}}}" , lp_app_name , lp_returned_string , n_size , lp_file_name );
         let res =
             api.GetPrivateProfileSectionA(lp_app_name, lp_returned_string, n_size, lp_file_name);
         tracing::trace!("result = {:?}", res);
@@ -34474,7 +34394,7 @@ extern "C" fn thunk_GetPrivateProfileSectionNamesA(
         let span = tracing::trace_span!("GetPrivateProfileSectionNamesA");
         let _enter = span.enter();
         tracing::trace!(
-            "lpsz_return_buffer = {:?}, n_size = {:?}, lp_file_name = {:?}",
+            "  args = {{lpsz_return_buffer = {:?}, n_size = {:?}, lp_file_name = {:?}}}",
             lpsz_return_buffer,
             n_size,
             lp_file_name
@@ -34506,7 +34426,7 @@ extern "C" fn thunk_GetPrivateProfileSectionNamesW(
         let span = tracing::trace_span!("GetPrivateProfileSectionNamesW");
         let _enter = span.enter();
         tracing::trace!(
-            "lpsz_return_buffer = {:?}, n_size = {:?}, lp_file_name = {:?}",
+            "  args = {{lpsz_return_buffer = {:?}, n_size = {:?}, lp_file_name = {:?}}}",
             lpsz_return_buffer,
             n_size,
             lp_file_name
@@ -34538,13 +34458,7 @@ extern "C" fn thunk_GetPrivateProfileSectionW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetPrivateProfileSectionW");
         let _enter = span.enter();
-        tracing::trace!(
-            "lp_app_name = {:?}, lp_returned_string = {:?}, n_size = {:?}, lp_file_name = {:?}",
-            lp_app_name,
-            lp_returned_string,
-            n_size,
-            lp_file_name
-        );
+        tracing :: trace ! ( "  args = {{lp_app_name = {:?}, lp_returned_string = {:?}, n_size = {:?}, lp_file_name = {:?}}}" , lp_app_name , lp_returned_string , n_size , lp_file_name );
         let res =
             api.GetPrivateProfileSectionW(lp_app_name, lp_returned_string, n_size, lp_file_name);
         tracing::trace!("result = {:?}", res);
@@ -34575,7 +34489,7 @@ extern "C" fn thunk_GetPrivateProfileStringA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetPrivateProfileStringA");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_app_name = {:?}, lp_key_name = {:?}, lp_default = {:?}, lp_returned_string = {:?}, n_size = {:?}, lp_file_name = {:?}" , lp_app_name , lp_key_name , lp_default , lp_returned_string , n_size , lp_file_name );
+        tracing :: trace ! ( "  args = {{lp_app_name = {:?}, lp_key_name = {:?}, lp_default = {:?}, lp_returned_string = {:?}, n_size = {:?}, lp_file_name = {:?}}}" , lp_app_name , lp_key_name , lp_default , lp_returned_string , n_size , lp_file_name );
         let res = api.GetPrivateProfileStringA(
             lp_app_name,
             lp_key_name,
@@ -34612,7 +34526,7 @@ extern "C" fn thunk_GetPrivateProfileStringW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetPrivateProfileStringW");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_app_name = {:?}, lp_key_name = {:?}, lp_default = {:?}, lp_returned_string = {:?}, n_size = {:?}, lp_file_name = {:?}" , lp_app_name , lp_key_name , lp_default , lp_returned_string , n_size , lp_file_name );
+        tracing :: trace ! ( "  args = {{lp_app_name = {:?}, lp_key_name = {:?}, lp_default = {:?}, lp_returned_string = {:?}, n_size = {:?}, lp_file_name = {:?}}}" , lp_app_name , lp_key_name , lp_default , lp_returned_string , n_size , lp_file_name );
         let res = api.GetPrivateProfileStringW(
             lp_app_name,
             lp_key_name,
@@ -34648,7 +34562,7 @@ extern "C" fn thunk_GetPrivateProfileStructA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetPrivateProfileStructA");
         let _enter = span.enter();
-        tracing :: trace ! ( "lpsz_section = {:?}, lpsz_key = {:?}, lp_struct = {:?}, u_size_struct = {:?}, sz_file = {:?}" , lpsz_section , lpsz_key , lp_struct , u_size_struct , sz_file );
+        tracing :: trace ! ( "  args = {{lpsz_section = {:?}, lpsz_key = {:?}, lp_struct = {:?}, u_size_struct = {:?}, sz_file = {:?}}}" , lpsz_section , lpsz_key , lp_struct , u_size_struct , sz_file );
         let res =
             api.GetPrivateProfileStructA(lpsz_section, lpsz_key, lp_struct, u_size_struct, sz_file);
         tracing::trace!("result = {:?}", res);
@@ -34678,7 +34592,7 @@ extern "C" fn thunk_GetPrivateProfileStructW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetPrivateProfileStructW");
         let _enter = span.enter();
-        tracing :: trace ! ( "lpsz_section = {:?}, lpsz_key = {:?}, lp_struct = {:?}, u_size_struct = {:?}, sz_file = {:?}" , lpsz_section , lpsz_key , lp_struct , u_size_struct , sz_file );
+        tracing :: trace ! ( "  args = {{lpsz_section = {:?}, lpsz_key = {:?}, lp_struct = {:?}, u_size_struct = {:?}, sz_file = {:?}}}" , lpsz_section , lpsz_key , lp_struct , u_size_struct , sz_file );
         let res =
             api.GetPrivateProfileStructW(lpsz_section, lpsz_key, lp_struct, u_size_struct, sz_file);
         tracing::trace!("result = {:?}", res);
@@ -34707,7 +34621,7 @@ extern "C" fn thunk_GetProfileIntA(
         let span = tracing::trace_span!("GetProfileIntA");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_app_name = {:?}, lp_key_name = {:?}, n_default = {:?}",
+            "  args = {{lp_app_name = {:?}, lp_key_name = {:?}, n_default = {:?}}}",
             lp_app_name,
             lp_key_name,
             n_default
@@ -34739,7 +34653,7 @@ extern "C" fn thunk_GetProfileIntW(
         let span = tracing::trace_span!("GetProfileIntW");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_app_name = {:?}, lp_key_name = {:?}, n_default = {:?}",
+            "  args = {{lp_app_name = {:?}, lp_key_name = {:?}, n_default = {:?}}}",
             lp_app_name,
             lp_key_name,
             n_default
@@ -34771,7 +34685,7 @@ extern "C" fn thunk_GetProfileSectionA(
         let span = tracing::trace_span!("GetProfileSectionA");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_app_name = {:?}, lp_returned_string = {:?}, n_size = {:?}",
+            "  args = {{lp_app_name = {:?}, lp_returned_string = {:?}, n_size = {:?}}}",
             lp_app_name,
             lp_returned_string,
             n_size
@@ -34803,7 +34717,7 @@ extern "C" fn thunk_GetProfileSectionW(
         let span = tracing::trace_span!("GetProfileSectionW");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_app_name = {:?}, lp_returned_string = {:?}, n_size = {:?}",
+            "  args = {{lp_app_name = {:?}, lp_returned_string = {:?}, n_size = {:?}}}",
             lp_app_name,
             lp_returned_string,
             n_size
@@ -34836,7 +34750,7 @@ extern "C" fn thunk_GetProfileStringA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetProfileStringA");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_app_name = {:?}, lp_key_name = {:?}, lp_default = {:?}, lp_returned_string = {:?}, n_size = {:?}" , lp_app_name , lp_key_name , lp_default , lp_returned_string , n_size );
+        tracing :: trace ! ( "  args = {{lp_app_name = {:?}, lp_key_name = {:?}, lp_default = {:?}, lp_returned_string = {:?}, n_size = {:?}}}" , lp_app_name , lp_key_name , lp_default , lp_returned_string , n_size );
         let res = api.GetProfileStringA(
             lp_app_name,
             lp_key_name,
@@ -34871,7 +34785,7 @@ extern "C" fn thunk_GetProfileStringW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetProfileStringW");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_app_name = {:?}, lp_key_name = {:?}, lp_default = {:?}, lp_returned_string = {:?}, n_size = {:?}" , lp_app_name , lp_key_name , lp_default , lp_returned_string , n_size );
+        tracing :: trace ! ( "  args = {{lp_app_name = {:?}, lp_key_name = {:?}, lp_default = {:?}, lp_returned_string = {:?}, n_size = {:?}}}" , lp_app_name , lp_key_name , lp_default , lp_returned_string , n_size );
         let res = api.GetProfileStringW(
             lp_app_name,
             lp_key_name,
@@ -34904,7 +34818,7 @@ extern "C" fn thunk_GetSystemRegistryQuota(
         let span = tracing::trace_span!("GetSystemRegistryQuota");
         let _enter = span.enter();
         tracing::trace!(
-            "pdw_quota_allowed = {:?}, pdw_quota_used = {:?}",
+            "  args = {{pdw_quota_allowed = {:?}, pdw_quota_used = {:?}}}",
             pdw_quota_allowed,
             pdw_quota_used
         );
@@ -34931,7 +34845,7 @@ extern "C" fn thunk_GetThreadEnabledXStateFeatures(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetThreadEnabledXStateFeatures");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.GetThreadEnabledXStateFeatures();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -34954,7 +34868,11 @@ extern "C" fn thunk_GetUserNameA(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetUserNameA");
         let _enter = span.enter();
-        tracing::trace!("lp_buffer = {:?}, pcb_buffer = {:?}", lp_buffer, pcb_buffer);
+        tracing::trace!(
+            "  args = {{lp_buffer = {:?}, pcb_buffer = {:?}}}",
+            lp_buffer,
+            pcb_buffer
+        );
         let res = api.GetUserNameA(lp_buffer, pcb_buffer);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -34977,7 +34895,11 @@ extern "C" fn thunk_GetUserNameW(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetUserNameW");
         let _enter = span.enter();
-        tracing::trace!("lp_buffer = {:?}, pcb_buffer = {:?}", lp_buffer, pcb_buffer);
+        tracing::trace!(
+            "  args = {{lp_buffer = {:?}, pcb_buffer = {:?}}}",
+            lp_buffer,
+            pcb_buffer
+        );
         let res = api.GetUserNameW(lp_buffer, pcb_buffer);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -35005,13 +34927,7 @@ extern "C" fn thunk_GetVersionFromFileA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetVersionFromFileA");
         let _enter = span.enter();
-        tracing::trace!(
-            "lpsz_filename = {:?}, pdw_ms_ver = {:?}, pdw_ls_ver = {:?}, b_version = {:?}",
-            lpsz_filename,
-            pdw_ms_ver,
-            pdw_ls_ver,
-            b_version
-        );
+        tracing :: trace ! ( "  args = {{lpsz_filename = {:?}, pdw_ms_ver = {:?}, pdw_ls_ver = {:?}, b_version = {:?}}}" , lpsz_filename , pdw_ms_ver , pdw_ls_ver , b_version );
         let res = api.GetVersionFromFileA(lpsz_filename, pdw_ms_ver, pdw_ls_ver, b_version);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -35039,13 +34955,7 @@ extern "C" fn thunk_GetVersionFromFileExA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetVersionFromFileExA");
         let _enter = span.enter();
-        tracing::trace!(
-            "lpsz_filename = {:?}, pdw_ms_ver = {:?}, pdw_ls_ver = {:?}, b_version = {:?}",
-            lpsz_filename,
-            pdw_ms_ver,
-            pdw_ls_ver,
-            b_version
-        );
+        tracing :: trace ! ( "  args = {{lpsz_filename = {:?}, pdw_ms_ver = {:?}, pdw_ls_ver = {:?}, b_version = {:?}}}" , lpsz_filename , pdw_ms_ver , pdw_ls_ver , b_version );
         let res = api.GetVersionFromFileExA(lpsz_filename, pdw_ms_ver, pdw_ls_ver, b_version);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -35073,13 +34983,7 @@ extern "C" fn thunk_GetVersionFromFileExW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetVersionFromFileExW");
         let _enter = span.enter();
-        tracing::trace!(
-            "lpsz_filename = {:?}, pdw_ms_ver = {:?}, pdw_ls_ver = {:?}, b_version = {:?}",
-            lpsz_filename,
-            pdw_ms_ver,
-            pdw_ls_ver,
-            b_version
-        );
+        tracing :: trace ! ( "  args = {{lpsz_filename = {:?}, pdw_ms_ver = {:?}, pdw_ls_ver = {:?}, b_version = {:?}}}" , lpsz_filename , pdw_ms_ver , pdw_ls_ver , b_version );
         let res = api.GetVersionFromFileExW(lpsz_filename, pdw_ms_ver, pdw_ls_ver, b_version);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -35107,13 +35011,7 @@ extern "C" fn thunk_GetVersionFromFileW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetVersionFromFileW");
         let _enter = span.enter();
-        tracing::trace!(
-            "lpsz_filename = {:?}, pdw_ms_ver = {:?}, pdw_ls_ver = {:?}, b_version = {:?}",
-            lpsz_filename,
-            pdw_ms_ver,
-            pdw_ls_ver,
-            b_version
-        );
+        tracing :: trace ! ( "  args = {{lpsz_filename = {:?}, pdw_ms_ver = {:?}, pdw_ls_ver = {:?}, b_version = {:?}}}" , lpsz_filename , pdw_ms_ver , pdw_ls_ver , b_version );
         let res = api.GetVersionFromFileW(lpsz_filename, pdw_ms_ver, pdw_ls_ver, b_version);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -35135,7 +35033,7 @@ extern "C" fn thunk_GlobalCompact(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GlobalCompact");
         let _enter = span.enter();
-        tracing::trace!("dw_min_free = {:?}", dw_min_free);
+        tracing::trace!("  args = {{dw_min_free = {:?}}}", dw_min_free);
         let res = api.GlobalCompact(dw_min_free);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -35157,7 +35055,7 @@ extern "C" fn thunk_GlobalFix(context: &mut ExtendedContext, memory: FlatMemoryC
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GlobalFix");
         let _enter = span.enter();
-        tracing::trace!("h_mem = {:?}", h_mem);
+        tracing::trace!("  args = {{h_mem = {:?}}}", h_mem);
         let res = api.GlobalFix(h_mem);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -35179,7 +35077,7 @@ extern "C" fn thunk_GlobalUnWire(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GlobalUnWire");
         let _enter = span.enter();
-        tracing::trace!("h_mem = {:?}", h_mem);
+        tracing::trace!("  args = {{h_mem = {:?}}}", h_mem);
         let res = api.GlobalUnWire(h_mem);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -35201,7 +35099,7 @@ extern "C" fn thunk_GlobalUnfix(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GlobalUnfix");
         let _enter = span.enter();
-        tracing::trace!("h_mem = {:?}", h_mem);
+        tracing::trace!("  args = {{h_mem = {:?}}}", h_mem);
         let res = api.GlobalUnfix(h_mem);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -35223,7 +35121,7 @@ extern "C" fn thunk_GlobalWire(context: &mut ExtendedContext, memory: FlatMemory
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GlobalWire");
         let _enter = span.enter();
-        tracing::trace!("h_mem = {:?}", h_mem);
+        tracing::trace!("  args = {{h_mem = {:?}}}", h_mem);
         let res = api.GlobalWire(h_mem);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -35246,7 +35144,11 @@ extern "C" fn thunk_IMPGetIMEA(context: &mut ExtendedContext, memory: FlatMemory
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("IMPGetIMEA");
         let _enter = span.enter();
-        tracing::trace!("param_0 = {:?}, param_1 = {:?}", param_0, param_1);
+        tracing::trace!(
+            "  args = {{param_0 = {:?}, param_1 = {:?}}}",
+            param_0,
+            param_1
+        );
         let res = api.IMPGetIMEA(param_0, param_1);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -35269,7 +35171,11 @@ extern "C" fn thunk_IMPGetIMEW(context: &mut ExtendedContext, memory: FlatMemory
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("IMPGetIMEW");
         let _enter = span.enter();
-        tracing::trace!("param_0 = {:?}, param_1 = {:?}", param_0, param_1);
+        tracing::trace!(
+            "  args = {{param_0 = {:?}, param_1 = {:?}}}",
+            param_0,
+            param_1
+        );
         let res = api.IMPGetIMEW(param_0, param_1);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -35291,7 +35197,7 @@ extern "C" fn thunk_IMPQueryIMEA(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("IMPQueryIMEA");
         let _enter = span.enter();
-        tracing::trace!("param_0 = {:?}", param_0);
+        tracing::trace!("  args = {{param_0 = {:?}}}", param_0);
         let res = api.IMPQueryIMEA(param_0);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -35313,7 +35219,7 @@ extern "C" fn thunk_IMPQueryIMEW(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("IMPQueryIMEW");
         let _enter = span.enter();
-        tracing::trace!("param_0 = {:?}", param_0);
+        tracing::trace!("  args = {{param_0 = {:?}}}", param_0);
         let res = api.IMPQueryIMEW(param_0);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -35336,7 +35242,11 @@ extern "C" fn thunk_IMPSetIMEA(context: &mut ExtendedContext, memory: FlatMemory
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("IMPSetIMEA");
         let _enter = span.enter();
-        tracing::trace!("param_0 = {:?}, param_1 = {:?}", param_0, param_1);
+        tracing::trace!(
+            "  args = {{param_0 = {:?}, param_1 = {:?}}}",
+            param_0,
+            param_1
+        );
         let res = api.IMPSetIMEA(param_0, param_1);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -35359,7 +35269,11 @@ extern "C" fn thunk_IMPSetIMEW(context: &mut ExtendedContext, memory: FlatMemory
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("IMPSetIMEW");
         let _enter = span.enter();
-        tracing::trace!("param_0 = {:?}, param_1 = {:?}", param_0, param_1);
+        tracing::trace!(
+            "  args = {{param_0 = {:?}, param_1 = {:?}}}",
+            param_0,
+            param_1
+        );
         let res = api.IMPSetIMEW(param_0, param_1);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -35384,7 +35298,7 @@ extern "C" fn thunk_IsApiSetImplemented(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("IsApiSetImplemented");
         let _enter = span.enter();
-        tracing::trace!("contract = {:?}", contract);
+        tracing::trace!("  args = {{contract = {:?}}}", contract);
         let res = api.IsApiSetImplemented(contract);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -35410,7 +35324,7 @@ extern "C" fn thunk_IsBadHugeReadPtr(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("IsBadHugeReadPtr");
         let _enter = span.enter();
-        tracing::trace!("lp = {:?}, ucb = {:?}", lp, ucb);
+        tracing::trace!("  args = {{lp = {:?}, ucb = {:?}}}", lp, ucb);
         let res = api.IsBadHugeReadPtr(lp, ucb);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -35436,7 +35350,7 @@ extern "C" fn thunk_IsBadHugeWritePtr(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("IsBadHugeWritePtr");
         let _enter = span.enter();
-        tracing::trace!("lp = {:?}, ucb = {:?}", lp, ucb);
+        tracing::trace!("  args = {{lp = {:?}, ucb = {:?}}}", lp, ucb);
         let res = api.IsBadHugeWritePtr(lp, ucb);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -35460,7 +35374,7 @@ extern "C" fn thunk_IsNTAdmin(context: &mut ExtendedContext, memory: FlatMemoryC
         let span = tracing::trace_span!("IsNTAdmin");
         let _enter = span.enter();
         tracing::trace!(
-            "dw_reserved = {:?}, lpdw_reserved = {:?}",
+            "  args = {{dw_reserved = {:?}, lpdw_reserved = {:?}}}",
             dw_reserved,
             lpdw_reserved
         );
@@ -35488,7 +35402,7 @@ extern "C" fn thunk_IsNativeVhdBoot(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("IsNativeVhdBoot");
         let _enter = span.enter();
-        tracing::trace!("native_vhd_boot = {:?}", native_vhd_boot);
+        tracing::trace!("  args = {{native_vhd_boot = {:?}}}", native_vhd_boot);
         let res = api.IsNativeVhdBoot(native_vhd_boot);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -35513,7 +35427,7 @@ extern "C" fn thunk_IsTokenUntrusted(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("IsTokenUntrusted");
         let _enter = span.enter();
-        tracing::trace!("token_handle = {:?}", token_handle);
+        tracing::trace!("  args = {{token_handle = {:?}}}", token_handle);
         let res = api.IsTokenUntrusted(token_handle);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -35542,7 +35456,7 @@ extern "C" fn thunk_LaunchINFSectionExW(
         let span = tracing::trace_span!("LaunchINFSectionExW");
         let _enter = span.enter();
         tracing::trace!(
-            "hwnd = {:?}, h_instance = {:?}, psz_parms = {:?}, n_show = {:?}",
+            "  args = {{hwnd = {:?}, h_instance = {:?}, psz_parms = {:?}, n_show = {:?}}}",
             hwnd,
             h_instance,
             psz_parms,
@@ -35576,7 +35490,7 @@ extern "C" fn thunk_LaunchINFSectionW(
         let span = tracing::trace_span!("LaunchINFSectionW");
         let _enter = span.enter();
         tracing::trace!(
-            "hwnd_owner = {:?}, h_instance = {:?}, psz_params = {:?}, n_show = {:?}",
+            "  args = {{hwnd_owner = {:?}, h_instance = {:?}, psz_params = {:?}, n_show = {:?}}}",
             hwnd_owner,
             h_instance,
             psz_params,
@@ -35603,7 +35517,7 @@ extern "C" fn thunk_LocalCompact(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("LocalCompact");
         let _enter = span.enter();
-        tracing::trace!("u_min_free = {:?}", u_min_free);
+        tracing::trace!("  args = {{u_min_free = {:?}}}", u_min_free);
         let res = api.LocalCompact(u_min_free);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -35626,7 +35540,11 @@ extern "C" fn thunk_LocalShrink(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("LocalShrink");
         let _enter = span.enter();
-        tracing::trace!("h_mem = {:?}, cb_new_size = {:?}", h_mem, cb_new_size);
+        tracing::trace!(
+            "  args = {{h_mem = {:?}, cb_new_size = {:?}}}",
+            h_mem,
+            cb_new_size
+        );
         let res = api.LocalShrink(h_mem, cb_new_size);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -35651,7 +35569,7 @@ extern "C" fn thunk_MulDiv(context: &mut ExtendedContext, memory: FlatMemoryCtx)
         let span = tracing::trace_span!("MulDiv");
         let _enter = span.enter();
         tracing::trace!(
-            "n_number = {:?}, n_numerator = {:?}, n_denominator = {:?}",
+            "  args = {{n_number = {:?}, n_numerator = {:?}, n_denominator = {:?}}}",
             n_number,
             n_numerator,
             n_denominator
@@ -35677,7 +35595,7 @@ extern "C" fn thunk_NeedReboot(context: &mut ExtendedContext, memory: FlatMemory
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("NeedReboot");
         let _enter = span.enter();
-        tracing::trace!("dw_reboot_check = {:?}", dw_reboot_check);
+        tracing::trace!("  args = {{dw_reboot_check = {:?}}}", dw_reboot_check);
         let res = api.NeedReboot(dw_reboot_check);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -35701,7 +35619,7 @@ extern "C" fn thunk_NeedRebootInit(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("NeedRebootInit");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.NeedRebootInit();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -35723,7 +35641,7 @@ extern "C" fn thunk_NtClose(context: &mut ExtendedContext, memory: FlatMemoryCtx
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("NtClose");
         let _enter = span.enter();
-        tracing::trace!("handle = {:?}", handle);
+        tracing::trace!("  args = {{handle = {:?}}}", handle);
         let res = api.NtClose(handle);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -35757,7 +35675,7 @@ extern "C" fn thunk_NtDeviceIoControlFile(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("NtDeviceIoControlFile");
         let _enter = span.enter();
-        tracing :: trace ! ( "file_handle = {:?}, event = {:?}, apc_routine = {:?}, apc_context = {:?}, io_status_block = {:?}, io_control_code = {:?}, input_buffer = {:?}, input_buffer_length = {:?}, output_buffer = {:?}, output_buffer_length = {:?}" , file_handle , event , apc_routine , apc_context , io_status_block , io_control_code , input_buffer , input_buffer_length , output_buffer , output_buffer_length );
+        tracing :: trace ! ( "  args = {{file_handle = {:?}, event = {:?}, apc_routine = {:?}, apc_context = {:?}, io_status_block = {:?}, io_control_code = {:?}, input_buffer = {:?}, input_buffer_length = {:?}, output_buffer = {:?}, output_buffer_length = {:?}}}" , file_handle , event , apc_routine , apc_context , io_status_block , io_control_code , input_buffer , input_buffer_length , output_buffer , output_buffer_length );
         let res = api.NtDeviceIoControlFile(
             file_handle,
             event,
@@ -35804,7 +35722,7 @@ extern "C" fn thunk_NtNotifyChangeMultipleKeys(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("NtNotifyChangeMultipleKeys");
         let _enter = span.enter();
-        tracing :: trace ! ( "master_key_handle = {:?}, count = {:?}, subordinate_objects = {:?}, event = {:?}, apc_routine = {:?}, apc_context = {:?}, io_status_block = {:?}, completion_filter = {:?}, watch_tree = {:?}, buffer = {:?}, buffer_size = {:?}, asynchronous = {:?}" , master_key_handle , count , subordinate_objects , event , apc_routine , apc_context , io_status_block , completion_filter , watch_tree , buffer , buffer_size , asynchronous );
+        tracing :: trace ! ( "  args = {{master_key_handle = {:?}, count = {:?}, subordinate_objects = {:?}, event = {:?}, apc_routine = {:?}, apc_context = {:?}, io_status_block = {:?}, completion_filter = {:?}, watch_tree = {:?}, buffer = {:?}, buffer_size = {:?}, asynchronous = {:?}}}" , master_key_handle , count , subordinate_objects , event , apc_routine , apc_context , io_status_block , completion_filter , watch_tree , buffer , buffer_size , asynchronous );
         let res = api.NtNotifyChangeMultipleKeys(
             master_key_handle,
             count,
@@ -35844,7 +35762,7 @@ extern "C" fn thunk_NtOpenFile(context: &mut ExtendedContext, memory: FlatMemory
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("NtOpenFile");
         let _enter = span.enter();
-        tracing :: trace ! ( "file_handle = {:?}, desired_access = {:?}, object_attributes = {:?}, io_status_block = {:?}, share_access = {:?}, open_options = {:?}" , file_handle , desired_access , object_attributes , io_status_block , share_access , open_options );
+        tracing :: trace ! ( "  args = {{file_handle = {:?}, desired_access = {:?}, object_attributes = {:?}, io_status_block = {:?}, share_access = {:?}, open_options = {:?}}}" , file_handle , desired_access , object_attributes , io_status_block , share_access , open_options );
         let res = api.NtOpenFile(
             file_handle,
             desired_access,
@@ -35881,7 +35799,7 @@ extern "C" fn thunk_NtQueryMultipleValueKey(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("NtQueryMultipleValueKey");
         let _enter = span.enter();
-        tracing :: trace ! ( "key_handle = {:?}, value_entries = {:?}, entry_count = {:?}, value_buffer = {:?}, buffer_length = {:?}, required_buffer_length = {:?}" , key_handle , value_entries , entry_count , value_buffer , buffer_length , required_buffer_length );
+        tracing :: trace ! ( "  args = {{key_handle = {:?}, value_entries = {:?}, entry_count = {:?}, value_buffer = {:?}, buffer_length = {:?}, required_buffer_length = {:?}}}" , key_handle , value_entries , entry_count , value_buffer , buffer_length , required_buffer_length );
         let res = api.NtQueryMultipleValueKey(
             key_handle,
             value_entries,
@@ -35914,7 +35832,7 @@ extern "C" fn thunk_NtQueryObject(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("NtQueryObject");
         let _enter = span.enter();
-        tracing :: trace ! ( "handle = {:?}, object_information_class = {:?}, object_information = {:?}, object_information_length = {:?}, return_length = {:?}" , handle , object_information_class , object_information , object_information_length , return_length );
+        tracing :: trace ! ( "  args = {{handle = {:?}, object_information_class = {:?}, object_information = {:?}, object_information_length = {:?}, return_length = {:?}}}" , handle , object_information_class , object_information , object_information_length , return_length );
         let res = api.NtQueryObject(
             handle,
             object_information_class,
@@ -35948,7 +35866,7 @@ extern "C" fn thunk_NtQuerySystemInformation(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("NtQuerySystemInformation");
         let _enter = span.enter();
-        tracing :: trace ! ( "system_information_class = {:?}, system_information = {:?}, system_information_length = {:?}, return_length = {:?}" , system_information_class , system_information , system_information_length , return_length );
+        tracing :: trace ! ( "  args = {{system_information_class = {:?}, system_information = {:?}, system_information_length = {:?}, return_length = {:?}}}" , system_information_class , system_information , system_information_length , return_length );
         let res = api.NtQuerySystemInformation(
             system_information_class,
             system_information,
@@ -35978,7 +35896,7 @@ extern "C" fn thunk_NtQuerySystemTime(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("NtQuerySystemTime");
         let _enter = span.enter();
-        tracing::trace!("system_time = {:?}", system_time);
+        tracing::trace!("  args = {{system_time = {:?}}}", system_time);
         let res = api.NtQuerySystemTime(system_time);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -36006,7 +35924,7 @@ extern "C" fn thunk_NtQueryTimerResolution(
         let span = tracing::trace_span!("NtQueryTimerResolution");
         let _enter = span.enter();
         tracing::trace!(
-            "maximum_time = {:?}, minimum_time = {:?}, current_time = {:?}",
+            "  args = {{maximum_time = {:?}, minimum_time = {:?}, current_time = {:?}}}",
             maximum_time,
             minimum_time,
             current_time
@@ -36033,7 +35951,11 @@ extern "C" fn thunk_NtRenameKey(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("NtRenameKey");
         let _enter = span.enter();
-        tracing::trace!("key_handle = {:?}, new_name = {:?}", key_handle, new_name);
+        tracing::trace!(
+            "  args = {{key_handle = {:?}, new_name = {:?}}}",
+            key_handle,
+            new_name
+        );
         let res = api.NtRenameKey(key_handle, new_name);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -36061,7 +35983,7 @@ extern "C" fn thunk_NtSetInformationKey(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("NtSetInformationKey");
         let _enter = span.enter();
-        tracing :: trace ! ( "key_handle = {:?}, key_set_information_class = {:?}, key_set_information = {:?}, key_set_information_length = {:?}" , key_handle , key_set_information_class , key_set_information , key_set_information_length );
+        tracing :: trace ! ( "  args = {{key_handle = {:?}, key_set_information_class = {:?}, key_set_information = {:?}, key_set_information_length = {:?}}}" , key_handle , key_set_information_class , key_set_information , key_set_information_length );
         let res = api.NtSetInformationKey(
             key_handle,
             key_set_information_class,
@@ -36094,7 +36016,7 @@ extern "C" fn thunk_NtWaitForSingleObject(
         let span = tracing::trace_span!("NtWaitForSingleObject");
         let _enter = span.enter();
         tracing::trace!(
-            "handle = {:?}, alertable = {:?}, timeout = {:?}",
+            "  args = {{handle = {:?}, alertable = {:?}, timeout = {:?}}}",
             handle,
             alertable,
             timeout
@@ -36127,7 +36049,7 @@ extern "C" fn thunk_OpenINFEngineA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("OpenINFEngineA");
         let _enter = span.enter();
-        tracing :: trace ! ( "psz_inf_filename = {:?}, psz_install_section = {:?}, dw_flags = {:?}, ph_inf = {:?}, pv_reserved = {:?}" , psz_inf_filename , psz_install_section , dw_flags , ph_inf , pv_reserved );
+        tracing :: trace ! ( "  args = {{psz_inf_filename = {:?}, psz_install_section = {:?}, dw_flags = {:?}, ph_inf = {:?}, pv_reserved = {:?}}}" , psz_inf_filename , psz_install_section , dw_flags , ph_inf , pv_reserved );
         let res = api.OpenINFEngineA(
             psz_inf_filename,
             psz_install_section,
@@ -36162,7 +36084,7 @@ extern "C" fn thunk_OpenINFEngineW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("OpenINFEngineW");
         let _enter = span.enter();
-        tracing :: trace ! ( "psz_inf_filename = {:?}, psz_install_section = {:?}, dw_flags = {:?}, ph_inf = {:?}, pv_reserved = {:?}" , psz_inf_filename , psz_install_section , dw_flags , ph_inf , pv_reserved );
+        tracing :: trace ! ( "  args = {{psz_inf_filename = {:?}, psz_install_section = {:?}, dw_flags = {:?}, ph_inf = {:?}, pv_reserved = {:?}}}" , psz_inf_filename , psz_install_section , dw_flags , ph_inf , pv_reserved );
         let res = api.OpenINFEngineW(
             psz_inf_filename,
             psz_install_section,
@@ -36193,7 +36115,7 @@ extern "C" fn thunk_OpenMutexA(context: &mut ExtendedContext, memory: FlatMemory
         let span = tracing::trace_span!("OpenMutexA");
         let _enter = span.enter();
         tracing::trace!(
-            "dw_desired_access = {:?}, b_inherit_handle = {:?}, lp_name = {:?}",
+            "  args = {{dw_desired_access = {:?}, b_inherit_handle = {:?}, lp_name = {:?}}}",
             dw_desired_access,
             b_inherit_handle,
             lp_name
@@ -36225,7 +36147,7 @@ extern "C" fn thunk_OpenSemaphoreA(
         let span = tracing::trace_span!("OpenSemaphoreA");
         let _enter = span.enter();
         tracing::trace!(
-            "dw_desired_access = {:?}, b_inherit_handle = {:?}, lp_name = {:?}",
+            "  args = {{dw_desired_access = {:?}, b_inherit_handle = {:?}, lp_name = {:?}}}",
             dw_desired_access,
             b_inherit_handle,
             lp_name
@@ -36257,7 +36179,7 @@ extern "C" fn thunk_OpenWaitableTimerA(
         let span = tracing::trace_span!("OpenWaitableTimerA");
         let _enter = span.enter();
         tracing::trace!(
-            "dw_desired_access = {:?}, b_inherit_handle = {:?}, lp_timer_name = {:?}",
+            "  args = {{dw_desired_access = {:?}, b_inherit_handle = {:?}, lp_timer_name = {:?}}}",
             dw_desired_access,
             b_inherit_handle,
             lp_timer_name
@@ -36287,7 +36209,7 @@ extern "C" fn thunk_QueryAuxiliaryCounterFrequency(
         let span = tracing::trace_span!("QueryAuxiliaryCounterFrequency");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_auxiliary_counter_frequency = {:?}",
+            "  args = {{lp_auxiliary_counter_frequency = {:?}}}",
             lp_auxiliary_counter_frequency
         );
         let res = api.QueryAuxiliaryCounterFrequency(lp_auxiliary_counter_frequency);
@@ -36316,7 +36238,7 @@ extern "C" fn thunk_QueryIdleProcessorCycleTime(
         let span = tracing::trace_span!("QueryIdleProcessorCycleTime");
         let _enter = span.enter();
         tracing::trace!(
-            "buffer_length = {:?}, processor_idle_cycle_time = {:?}",
+            "  args = {{buffer_length = {:?}, processor_idle_cycle_time = {:?}}}",
             buffer_length,
             processor_idle_cycle_time
         );
@@ -36347,7 +36269,7 @@ extern "C" fn thunk_QueryIdleProcessorCycleTimeEx(
         let span = tracing::trace_span!("QueryIdleProcessorCycleTimeEx");
         let _enter = span.enter();
         tracing::trace!(
-            "group = {:?}, buffer_length = {:?}, processor_idle_cycle_time = {:?}",
+            "  args = {{group = {:?}, buffer_length = {:?}, processor_idle_cycle_time = {:?}}}",
             group,
             buffer_length,
             processor_idle_cycle_time
@@ -36377,7 +36299,7 @@ extern "C" fn thunk_QueryInterruptTime(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("QueryInterruptTime");
         let _enter = span.enter();
-        tracing::trace!("lp_interrupt_time = {:?}", lp_interrupt_time);
+        tracing::trace!("  args = {{lp_interrupt_time = {:?}}}", lp_interrupt_time);
         let res = api.QueryInterruptTime(lp_interrupt_time);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -36403,7 +36325,7 @@ extern "C" fn thunk_QueryInterruptTimePrecise(
         let span = tracing::trace_span!("QueryInterruptTimePrecise");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_interrupt_time_precise = {:?}",
+            "  args = {{lp_interrupt_time_precise = {:?}}}",
             lp_interrupt_time_precise
         );
         let res = api.QueryInterruptTimePrecise(lp_interrupt_time_precise);
@@ -36432,7 +36354,7 @@ extern "C" fn thunk_QueryProcessCycleTime(
         let span = tracing::trace_span!("QueryProcessCycleTime");
         let _enter = span.enter();
         tracing::trace!(
-            "process_handle = {:?}, cycle_time = {:?}",
+            "  args = {{process_handle = {:?}, cycle_time = {:?}}}",
             process_handle,
             cycle_time
         );
@@ -36462,7 +36384,7 @@ extern "C" fn thunk_QueryThreadCycleTime(
         let span = tracing::trace_span!("QueryThreadCycleTime");
         let _enter = span.enter();
         tracing::trace!(
-            "thread_handle = {:?}, cycle_time = {:?}",
+            "  args = {{thread_handle = {:?}, cycle_time = {:?}}}",
             thread_handle,
             cycle_time
         );
@@ -36490,7 +36412,7 @@ extern "C" fn thunk_QueryUnbiasedInterruptTime(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("QueryUnbiasedInterruptTime");
         let _enter = span.enter();
-        tracing::trace!("unbiased_time = {:?}", unbiased_time);
+        tracing::trace!("  args = {{unbiased_time = {:?}}}", unbiased_time);
         let res = api.QueryUnbiasedInterruptTime(unbiased_time);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -36516,7 +36438,7 @@ extern "C" fn thunk_QueryUnbiasedInterruptTimePrecise(
         let span = tracing::trace_span!("QueryUnbiasedInterruptTimePrecise");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_unbiased_interrupt_time_precise = {:?}",
+            "  args = {{lp_unbiased_interrupt_time_precise = {:?}}}",
             lp_unbiased_interrupt_time_precise
         );
         let res = api.QueryUnbiasedInterruptTimePrecise(lp_unbiased_interrupt_time_precise);
@@ -36544,7 +36466,7 @@ extern "C" fn thunk_RaiseCustomSystemEventTrigger(
         let span = tracing::trace_span!("RaiseCustomSystemEventTrigger");
         let _enter = span.enter();
         tracing::trace!(
-            "custom_system_event_trigger_config = {:?}",
+            "  args = {{custom_system_event_trigger_config = {:?}}}",
             custom_system_event_trigger_config
         );
         let res = api.RaiseCustomSystemEventTrigger(custom_system_event_trigger_config);
@@ -36575,7 +36497,7 @@ extern "C" fn thunk_RebootCheckOnInstallA(
         let span = tracing::trace_span!("RebootCheckOnInstallA");
         let _enter = span.enter();
         tracing::trace!(
-            "hwnd = {:?}, psz_inf = {:?}, psz_sec = {:?}, dw_reserved = {:?}",
+            "  args = {{hwnd = {:?}, psz_inf = {:?}, psz_sec = {:?}, dw_reserved = {:?}}}",
             hwnd,
             psz_inf,
             psz_sec,
@@ -36609,7 +36531,7 @@ extern "C" fn thunk_RebootCheckOnInstallW(
         let span = tracing::trace_span!("RebootCheckOnInstallW");
         let _enter = span.enter();
         tracing::trace!(
-            "hwnd = {:?}, psz_inf = {:?}, psz_sec = {:?}, dw_reserved = {:?}",
+            "  args = {{hwnd = {:?}, psz_inf = {:?}, psz_sec = {:?}, dw_reserved = {:?}}}",
             hwnd,
             psz_inf,
             psz_sec,
@@ -36640,7 +36562,11 @@ extern "C" fn thunk_RecordFeatureError(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("RecordFeatureError");
         let _enter = span.enter();
-        tracing::trace!("feature_id = {:?}, error = {:?}", feature_id, error);
+        tracing::trace!(
+            "  args = {{feature_id = {:?}, error = {:?}}}",
+            feature_id,
+            error
+        );
         let res = api.RecordFeatureError(feature_id, error);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -36669,7 +36595,7 @@ extern "C" fn thunk_RecordFeatureUsage(
         let span = tracing::trace_span!("RecordFeatureUsage");
         let _enter = span.enter();
         tracing::trace!(
-            "feature_id = {:?}, kind = {:?}, addend = {:?}, origin_name = {:?}",
+            "  args = {{feature_id = {:?}, kind = {:?}, addend = {:?}, origin_name = {:?}}}",
             feature_id,
             kind,
             addend,
@@ -36699,7 +36625,7 @@ extern "C" fn thunk_RegInstallA(context: &mut ExtendedContext, memory: FlatMemor
         let span = tracing::trace_span!("RegInstallA");
         let _enter = span.enter();
         tracing::trace!(
-            "hmod = {:?}, psz_section = {:?}, pst_table = {:?}",
+            "  args = {{hmod = {:?}, psz_section = {:?}, pst_table = {:?}}}",
             hmod,
             psz_section,
             pst_table
@@ -36728,7 +36654,7 @@ extern "C" fn thunk_RegInstallW(context: &mut ExtendedContext, memory: FlatMemor
         let span = tracing::trace_span!("RegInstallW");
         let _enter = span.enter();
         tracing::trace!(
-            "hmod = {:?}, psz_section = {:?}, pst_table = {:?}",
+            "  args = {{hmod = {:?}, psz_section = {:?}, pst_table = {:?}}}",
             hmod,
             psz_section,
             pst_table
@@ -36760,7 +36686,7 @@ extern "C" fn thunk_ReplacePartitionUnit(
         let span = tracing::trace_span!("ReplacePartitionUnit");
         let _enter = span.enter();
         tracing::trace!(
-            "target_partition = {:?}, spare_partition = {:?}, flags = {:?}",
+            "  args = {{target_partition = {:?}, spare_partition = {:?}, flags = {:?}}}",
             target_partition,
             spare_partition,
             flags
@@ -36789,7 +36715,7 @@ extern "C" fn thunk_RequestDeviceWakeup(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("RequestDeviceWakeup");
         let _enter = span.enter();
-        tracing::trace!("h_device = {:?}", h_device);
+        tracing::trace!("  args = {{h_device = {:?}}}", h_device);
         let res = api.RequestDeviceWakeup(h_device);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -36816,12 +36742,7 @@ extern "C" fn thunk_RtlAnsiStringToUnicodeString(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("RtlAnsiStringToUnicodeString");
         let _enter = span.enter();
-        tracing::trace!(
-            "destination_string = {:?}, source_string = {:?}, allocate_destination_string = {:?}",
-            destination_string,
-            source_string,
-            allocate_destination_string
-        );
+        tracing :: trace ! ( "  args = {{destination_string = {:?}, source_string = {:?}, allocate_destination_string = {:?}}}" , destination_string , source_string , allocate_destination_string );
         let res = api.RtlAnsiStringToUnicodeString(
             destination_string,
             source_string,
@@ -36853,7 +36774,7 @@ extern "C" fn thunk_RtlCharToInteger(
         let span = tracing::trace_span!("RtlCharToInteger");
         let _enter = span.enter();
         tracing::trace!(
-            "string = {:?}, base = {:?}, value = {:?}",
+            "  args = {{string = {:?}, base = {:?}, value = {:?}}}",
             string,
             base,
             value
@@ -36882,7 +36803,7 @@ extern "C" fn thunk_RtlFreeAnsiString(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("RtlFreeAnsiString");
         let _enter = span.enter();
-        tracing::trace!("ansi_string = {:?}", ansi_string);
+        tracing::trace!("  args = {{ansi_string = {:?}}}", ansi_string);
         let res = api.RtlFreeAnsiString(ansi_string);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -36907,7 +36828,7 @@ extern "C" fn thunk_RtlFreeOemString(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("RtlFreeOemString");
         let _enter = span.enter();
-        tracing::trace!("oem_string = {:?}", oem_string);
+        tracing::trace!("  args = {{oem_string = {:?}}}", oem_string);
         let res = api.RtlFreeOemString(oem_string);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -36932,7 +36853,7 @@ extern "C" fn thunk_RtlFreeUnicodeString(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("RtlFreeUnicodeString");
         let _enter = span.enter();
-        tracing::trace!("unicode_string = {:?}", unicode_string);
+        tracing::trace!("  args = {{unicode_string = {:?}}}", unicode_string);
         let res = api.RtlFreeUnicodeString(unicode_string);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -36956,7 +36877,7 @@ extern "C" fn thunk_RtlGetReturnAddressHijackTarget(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("RtlGetReturnAddressHijackTarget");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.RtlGetReturnAddressHijackTarget();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -36983,7 +36904,7 @@ extern "C" fn thunk_RtlInitAnsiString(
         let span = tracing::trace_span!("RtlInitAnsiString");
         let _enter = span.enter();
         tracing::trace!(
-            "destination_string = {:?}, source_string = {:?}",
+            "  args = {{destination_string = {:?}, source_string = {:?}}}",
             destination_string,
             source_string
         );
@@ -37013,7 +36934,7 @@ extern "C" fn thunk_RtlInitAnsiStringEx(
         let span = tracing::trace_span!("RtlInitAnsiStringEx");
         let _enter = span.enter();
         tracing::trace!(
-            "destination_string = {:?}, source_string = {:?}",
+            "  args = {{destination_string = {:?}, source_string = {:?}}}",
             destination_string,
             source_string
         );
@@ -37040,7 +36961,7 @@ extern "C" fn thunk_RtlInitString(context: &mut ExtendedContext, memory: FlatMem
         let span = tracing::trace_span!("RtlInitString");
         let _enter = span.enter();
         tracing::trace!(
-            "destination_string = {:?}, source_string = {:?}",
+            "  args = {{destination_string = {:?}, source_string = {:?}}}",
             destination_string,
             source_string
         );
@@ -37070,7 +36991,7 @@ extern "C" fn thunk_RtlInitStringEx(
         let span = tracing::trace_span!("RtlInitStringEx");
         let _enter = span.enter();
         tracing::trace!(
-            "destination_string = {:?}, source_string = {:?}",
+            "  args = {{destination_string = {:?}, source_string = {:?}}}",
             destination_string,
             source_string
         );
@@ -37100,7 +37021,7 @@ extern "C" fn thunk_RtlInitUnicodeString(
         let span = tracing::trace_span!("RtlInitUnicodeString");
         let _enter = span.enter();
         tracing::trace!(
-            "destination_string = {:?}, source_string = {:?}",
+            "  args = {{destination_string = {:?}, source_string = {:?}}}",
             destination_string,
             source_string
         );
@@ -37131,7 +37052,7 @@ extern "C" fn thunk_RtlIsNameLegalDOS8Dot3(
         let span = tracing::trace_span!("RtlIsNameLegalDOS8Dot3");
         let _enter = span.enter();
         tracing::trace!(
-            "name = {:?}, oem_name = {:?}, name_contains_spaces = {:?}",
+            "  args = {{name = {:?}, oem_name = {:?}, name_contains_spaces = {:?}}}",
             name,
             oem_name,
             name_contains_spaces
@@ -37162,7 +37083,7 @@ extern "C" fn thunk_RtlLocalTimeToSystemTime(
         let span = tracing::trace_span!("RtlLocalTimeToSystemTime");
         let _enter = span.enter();
         tracing::trace!(
-            "local_time = {:?}, system_time = {:?}",
+            "  args = {{local_time = {:?}, system_time = {:?}}}",
             local_time,
             system_time
         );
@@ -37190,7 +37111,7 @@ extern "C" fn thunk_RtlRaiseCustomSystemEventTrigger(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("RtlRaiseCustomSystemEventTrigger");
         let _enter = span.enter();
-        tracing::trace!("trigger_config = {:?}", trigger_config);
+        tracing::trace!("  args = {{trigger_config = {:?}}}", trigger_config);
         let res = api.RtlRaiseCustomSystemEventTrigger(trigger_config);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -37216,7 +37137,11 @@ extern "C" fn thunk_RtlTimeToSecondsSince1970(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("RtlTimeToSecondsSince1970");
         let _enter = span.enter();
-        tracing::trace!("time = {:?}, elapsed_seconds = {:?}", time, elapsed_seconds);
+        tracing::trace!(
+            "  args = {{time = {:?}, elapsed_seconds = {:?}}}",
+            time,
+            elapsed_seconds
+        );
         let res = api.RtlTimeToSecondsSince1970(time, elapsed_seconds);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -37243,12 +37168,7 @@ extern "C" fn thunk_RtlUnicodeStringToAnsiString(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("RtlUnicodeStringToAnsiString");
         let _enter = span.enter();
-        tracing::trace!(
-            "destination_string = {:?}, source_string = {:?}, allocate_destination_string = {:?}",
-            destination_string,
-            source_string,
-            allocate_destination_string
-        );
+        tracing :: trace ! ( "  args = {{destination_string = {:?}, source_string = {:?}, allocate_destination_string = {:?}}}" , destination_string , source_string , allocate_destination_string );
         let res = api.RtlUnicodeStringToAnsiString(
             destination_string,
             source_string,
@@ -37279,12 +37199,7 @@ extern "C" fn thunk_RtlUnicodeStringToOemString(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("RtlUnicodeStringToOemString");
         let _enter = span.enter();
-        tracing::trace!(
-            "destination_string = {:?}, source_string = {:?}, allocate_destination_string = {:?}",
-            destination_string,
-            source_string,
-            allocate_destination_string
-        );
+        tracing :: trace ! ( "  args = {{destination_string = {:?}, source_string = {:?}, allocate_destination_string = {:?}}}" , destination_string , source_string , allocate_destination_string );
         let res = api.RtlUnicodeStringToOemString(
             destination_string,
             source_string,
@@ -37315,7 +37230,7 @@ extern "C" fn thunk_RtlUnicodeToMultiByteSize(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("RtlUnicodeToMultiByteSize");
         let _enter = span.enter();
-        tracing :: trace ! ( "bytes_in_multi_byte_string = {:?}, unicode_string = {:?}, bytes_in_unicode_string = {:?}" , bytes_in_multi_byte_string , unicode_string , bytes_in_unicode_string );
+        tracing :: trace ! ( "  args = {{bytes_in_multi_byte_string = {:?}, unicode_string = {:?}, bytes_in_unicode_string = {:?}}}" , bytes_in_multi_byte_string , unicode_string , bytes_in_unicode_string );
         let res = api.RtlUnicodeToMultiByteSize(
             bytes_in_multi_byte_string,
             unicode_string,
@@ -37341,7 +37256,7 @@ extern "C" fn thunk_RtlUniform(context: &mut ExtendedContext, memory: FlatMemory
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("RtlUniform");
         let _enter = span.enter();
-        tracing::trace!("seed = {:?}", seed);
+        tracing::trace!("  args = {{seed = {:?}}}", seed);
         let res = api.RtlUniform(seed);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -37373,7 +37288,7 @@ extern "C" fn thunk_RunSetupCommandA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("RunSetupCommandA");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_wnd = {:?}, sz_cmd_name = {:?}, sz_inf_section = {:?}, sz_dir = {:?}, lpsz_title = {:?}, ph_exe = {:?}, dw_flags = {:?}, pv_reserved = {:?}" , h_wnd , sz_cmd_name , sz_inf_section , sz_dir , lpsz_title , ph_exe , dw_flags , pv_reserved );
+        tracing :: trace ! ( "  args = {{h_wnd = {:?}, sz_cmd_name = {:?}, sz_inf_section = {:?}, sz_dir = {:?}, lpsz_title = {:?}, ph_exe = {:?}, dw_flags = {:?}, pv_reserved = {:?}}}" , h_wnd , sz_cmd_name , sz_inf_section , sz_dir , lpsz_title , ph_exe , dw_flags , pv_reserved );
         let res = api.RunSetupCommandA(
             h_wnd,
             sz_cmd_name,
@@ -37414,7 +37329,7 @@ extern "C" fn thunk_RunSetupCommandW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("RunSetupCommandW");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_wnd = {:?}, sz_cmd_name = {:?}, sz_inf_section = {:?}, sz_dir = {:?}, lpsz_title = {:?}, ph_exe = {:?}, dw_flags = {:?}, pv_reserved = {:?}" , h_wnd , sz_cmd_name , sz_inf_section , sz_dir , lpsz_title , ph_exe , dw_flags , pv_reserved );
+        tracing :: trace ! ( "  args = {{h_wnd = {:?}, sz_cmd_name = {:?}, sz_inf_section = {:?}, sz_dir = {:?}, lpsz_title = {:?}, ph_exe = {:?}, dw_flags = {:?}, pv_reserved = {:?}}}" , h_wnd , sz_cmd_name , sz_inf_section , sz_dir , lpsz_title , ph_exe , dw_flags , pv_reserved );
         let res = api.RunSetupCommandW(
             h_wnd,
             sz_cmd_name,
@@ -37449,7 +37364,11 @@ extern "C" fn thunk_SendIMEMessageExA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SendIMEMessageExA");
         let _enter = span.enter();
-        tracing::trace!("param_0 = {:?}, param_1 = {:?}", param_0, param_1);
+        tracing::trace!(
+            "  args = {{param_0 = {:?}, param_1 = {:?}}}",
+            param_0,
+            param_1
+        );
         let res = api.SendIMEMessageExA(param_0, param_1);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -37475,7 +37394,11 @@ extern "C" fn thunk_SendIMEMessageExW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SendIMEMessageExW");
         let _enter = span.enter();
-        tracing::trace!("param_0 = {:?}, param_1 = {:?}", param_0, param_1);
+        tracing::trace!(
+            "  args = {{param_0 = {:?}, param_1 = {:?}}}",
+            param_0,
+            param_1
+        );
         let res = api.SendIMEMessageExW(param_0, param_1);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -37500,7 +37423,7 @@ extern "C" fn thunk_SetEnvironmentStringsA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetEnvironmentStringsA");
         let _enter = span.enter();
-        tracing::trace!("new_environment = {:?}", new_environment);
+        tracing::trace!("  args = {{new_environment = {:?}}}", new_environment);
         let res = api.SetEnvironmentStringsA(new_environment);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -37529,7 +37452,7 @@ extern "C" fn thunk_SetFirmwareEnvironmentVariableA(
         let span = tracing::trace_span!("SetFirmwareEnvironmentVariableA");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_name = {:?}, lp_guid = {:?}, p_value = {:?}, n_size = {:?}",
+            "  args = {{lp_name = {:?}, lp_guid = {:?}, p_value = {:?}, n_size = {:?}}}",
             lp_name,
             lp_guid,
             p_value,
@@ -37563,14 +37486,7 @@ extern "C" fn thunk_SetFirmwareEnvironmentVariableExA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetFirmwareEnvironmentVariableExA");
         let _enter = span.enter();
-        tracing::trace!(
-            "lp_name = {:?}, lp_guid = {:?}, p_value = {:?}, n_size = {:?}, dw_attributes = {:?}",
-            lp_name,
-            lp_guid,
-            p_value,
-            n_size,
-            dw_attributes
-        );
+        tracing :: trace ! ( "  args = {{lp_name = {:?}, lp_guid = {:?}, p_value = {:?}, n_size = {:?}, dw_attributes = {:?}}}" , lp_name , lp_guid , p_value , n_size , dw_attributes );
         let res =
             api.SetFirmwareEnvironmentVariableExA(lp_name, lp_guid, p_value, n_size, dw_attributes);
         tracing::trace!("result = {:?}", res);
@@ -37600,14 +37516,7 @@ extern "C" fn thunk_SetFirmwareEnvironmentVariableExW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetFirmwareEnvironmentVariableExW");
         let _enter = span.enter();
-        tracing::trace!(
-            "lp_name = {:?}, lp_guid = {:?}, p_value = {:?}, n_size = {:?}, dw_attributes = {:?}",
-            lp_name,
-            lp_guid,
-            p_value,
-            n_size,
-            dw_attributes
-        );
+        tracing :: trace ! ( "  args = {{lp_name = {:?}, lp_guid = {:?}, p_value = {:?}, n_size = {:?}, dw_attributes = {:?}}}" , lp_name , lp_guid , p_value , n_size , dw_attributes );
         let res =
             api.SetFirmwareEnvironmentVariableExW(lp_name, lp_guid, p_value, n_size, dw_attributes);
         tracing::trace!("result = {:?}", res);
@@ -37637,7 +37546,7 @@ extern "C" fn thunk_SetFirmwareEnvironmentVariableW(
         let span = tracing::trace_span!("SetFirmwareEnvironmentVariableW");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_name = {:?}, lp_guid = {:?}, p_value = {:?}, n_size = {:?}",
+            "  args = {{lp_name = {:?}, lp_guid = {:?}, p_value = {:?}, n_size = {:?}}}",
             lp_name,
             lp_guid,
             p_value,
@@ -37667,7 +37576,7 @@ extern "C" fn thunk_SetHandleCount(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetHandleCount");
         let _enter = span.enter();
-        tracing::trace!("u_number = {:?}", u_number);
+        tracing::trace!("  args = {{u_number = {:?}}}", u_number);
         let res = api.SetHandleCount(u_number);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -37694,7 +37603,7 @@ extern "C" fn thunk_SetMessageWaitingIndicator(
         let span = tracing::trace_span!("SetMessageWaitingIndicator");
         let _enter = span.enter();
         tracing::trace!(
-            "h_msg_indicator = {:?}, ul_msg_count = {:?}",
+            "  args = {{h_msg_indicator = {:?}, ul_msg_count = {:?}}}",
             h_msg_indicator,
             ul_msg_count
         );
@@ -37722,7 +37631,7 @@ extern "C" fn thunk_SetPerUserSecValuesA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetPerUserSecValuesA");
         let _enter = span.enter();
-        tracing::trace!("p_per_user = {:?}", p_per_user);
+        tracing::trace!("  args = {{p_per_user = {:?}}}", p_per_user);
         let res = api.SetPerUserSecValuesA(p_per_user);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -37747,7 +37656,7 @@ extern "C" fn thunk_SetPerUserSecValuesW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetPerUserSecValuesW");
         let _enter = span.enter();
-        tracing::trace!("p_per_user = {:?}", p_per_user);
+        tracing::trace!("  args = {{p_per_user = {:?}}}", p_per_user);
         let res = api.SetPerUserSecValuesW(p_per_user);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -37775,7 +37684,7 @@ extern "C" fn thunk_SignalObjectAndWait(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SignalObjectAndWait");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_object_to_signal = {:?}, h_object_to_wait_on = {:?}, dw_milliseconds = {:?}, b_alertable = {:?}" , h_object_to_signal , h_object_to_wait_on , dw_milliseconds , b_alertable );
+        tracing :: trace ! ( "  args = {{h_object_to_signal = {:?}, h_object_to_wait_on = {:?}, dw_milliseconds = {:?}, b_alertable = {:?}}}" , h_object_to_signal , h_object_to_wait_on , dw_milliseconds , b_alertable );
         let res = api.SignalObjectAndWait(
             h_object_to_signal,
             h_object_to_wait_on,
@@ -37808,7 +37717,7 @@ extern "C" fn thunk_SubscribeFeatureStateChangeNotification(
         let span = tracing::trace_span!("SubscribeFeatureStateChangeNotification");
         let _enter = span.enter();
         tracing::trace!(
-            "subscription = {:?}, callback = {:?}, context = {:?}",
+            "  args = {{subscription = {:?}, callback = {:?}, context = {:?}}}",
             subscription,
             callback,
             context
@@ -37844,7 +37753,7 @@ extern "C" fn thunk_TranslateInfStringA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("TranslateInfStringA");
         let _enter = span.enter();
-        tracing :: trace ! ( "psz_inf_filename = {:?}, psz_install_section = {:?}, psz_translate_section = {:?}, psz_translate_key = {:?}, psz_buffer = {:?}, cch_buffer = {:?}, pdw_required_size = {:?}, pv_reserved = {:?}" , psz_inf_filename , psz_install_section , psz_translate_section , psz_translate_key , psz_buffer , cch_buffer , pdw_required_size , pv_reserved );
+        tracing :: trace ! ( "  args = {{psz_inf_filename = {:?}, psz_install_section = {:?}, psz_translate_section = {:?}, psz_translate_key = {:?}, psz_buffer = {:?}, cch_buffer = {:?}, pdw_required_size = {:?}, pv_reserved = {:?}}}" , psz_inf_filename , psz_install_section , psz_translate_section , psz_translate_key , psz_buffer , cch_buffer , pdw_required_size , pv_reserved );
         let res = api.TranslateInfStringA(
             psz_inf_filename,
             psz_install_section,
@@ -37885,7 +37794,7 @@ extern "C" fn thunk_TranslateInfStringExA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("TranslateInfStringExA");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_inf = {:?}, psz_inf_filename = {:?}, psz_translate_section = {:?}, psz_translate_key = {:?}, psz_buffer = {:?}, dw_buffer_size = {:?}, pdw_required_size = {:?}, pv_reserved = {:?}" , h_inf , psz_inf_filename , psz_translate_section , psz_translate_key , psz_buffer , dw_buffer_size , pdw_required_size , pv_reserved );
+        tracing :: trace ! ( "  args = {{h_inf = {:?}, psz_inf_filename = {:?}, psz_translate_section = {:?}, psz_translate_key = {:?}, psz_buffer = {:?}, dw_buffer_size = {:?}, pdw_required_size = {:?}, pv_reserved = {:?}}}" , h_inf , psz_inf_filename , psz_translate_section , psz_translate_key , psz_buffer , dw_buffer_size , pdw_required_size , pv_reserved );
         let res = api.TranslateInfStringExA(
             h_inf,
             psz_inf_filename,
@@ -37926,7 +37835,7 @@ extern "C" fn thunk_TranslateInfStringExW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("TranslateInfStringExW");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_inf = {:?}, psz_inf_filename = {:?}, psz_translate_section = {:?}, psz_translate_key = {:?}, psz_buffer = {:?}, dw_buffer_size = {:?}, pdw_required_size = {:?}, pv_reserved = {:?}" , h_inf , psz_inf_filename , psz_translate_section , psz_translate_key , psz_buffer , dw_buffer_size , pdw_required_size , pv_reserved );
+        tracing :: trace ! ( "  args = {{h_inf = {:?}, psz_inf_filename = {:?}, psz_translate_section = {:?}, psz_translate_key = {:?}, psz_buffer = {:?}, dw_buffer_size = {:?}, pdw_required_size = {:?}, pv_reserved = {:?}}}" , h_inf , psz_inf_filename , psz_translate_section , psz_translate_key , psz_buffer , dw_buffer_size , pdw_required_size , pv_reserved );
         let res = api.TranslateInfStringExW(
             h_inf,
             psz_inf_filename,
@@ -37967,7 +37876,7 @@ extern "C" fn thunk_TranslateInfStringW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("TranslateInfStringW");
         let _enter = span.enter();
-        tracing :: trace ! ( "psz_inf_filename = {:?}, psz_install_section = {:?}, psz_translate_section = {:?}, psz_translate_key = {:?}, psz_buffer = {:?}, cch_buffer = {:?}, pdw_required_size = {:?}, pv_reserved = {:?}" , psz_inf_filename , psz_install_section , psz_translate_section , psz_translate_key , psz_buffer , cch_buffer , pdw_required_size , pv_reserved );
+        tracing :: trace ! ( "  args = {{psz_inf_filename = {:?}, psz_install_section = {:?}, psz_translate_section = {:?}, psz_translate_key = {:?}, psz_buffer = {:?}, cch_buffer = {:?}, pdw_required_size = {:?}, pv_reserved = {:?}}}" , psz_inf_filename , psz_install_section , psz_translate_section , psz_translate_key , psz_buffer , cch_buffer , pdw_required_size , pv_reserved );
         let res = api.TranslateInfStringW(
             psz_inf_filename,
             psz_install_section,
@@ -38001,7 +37910,7 @@ extern "C" fn thunk_UnsubscribeFeatureStateChangeNotification(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("UnsubscribeFeatureStateChangeNotification");
         let _enter = span.enter();
-        tracing::trace!("subscription = {:?}", subscription);
+        tracing::trace!("  args = {{subscription = {:?}}}", subscription);
         let res = api.UnsubscribeFeatureStateChangeNotification(subscription);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -38030,7 +37939,7 @@ extern "C" fn thunk_UserInstStubWrapperA(
         let span = tracing::trace_span!("UserInstStubWrapperA");
         let _enter = span.enter();
         tracing::trace!(
-            "hwnd = {:?}, h_instance = {:?}, psz_parms = {:?}, n_show = {:?}",
+            "  args = {{hwnd = {:?}, h_instance = {:?}, psz_parms = {:?}, n_show = {:?}}}",
             hwnd,
             h_instance,
             psz_parms,
@@ -38064,7 +37973,7 @@ extern "C" fn thunk_UserInstStubWrapperW(
         let span = tracing::trace_span!("UserInstStubWrapperW");
         let _enter = span.enter();
         tracing::trace!(
-            "hwnd = {:?}, h_instance = {:?}, psz_parms = {:?}, n_show = {:?}",
+            "  args = {{hwnd = {:?}, h_instance = {:?}, psz_parms = {:?}, n_show = {:?}}}",
             hwnd,
             h_instance,
             psz_parms,
@@ -38098,7 +38007,7 @@ extern "C" fn thunk_UserUnInstStubWrapperA(
         let span = tracing::trace_span!("UserUnInstStubWrapperA");
         let _enter = span.enter();
         tracing::trace!(
-            "hwnd = {:?}, h_instance = {:?}, psz_parms = {:?}, n_show = {:?}",
+            "  args = {{hwnd = {:?}, h_instance = {:?}, psz_parms = {:?}, n_show = {:?}}}",
             hwnd,
             h_instance,
             psz_parms,
@@ -38132,7 +38041,7 @@ extern "C" fn thunk_UserUnInstStubWrapperW(
         let span = tracing::trace_span!("UserUnInstStubWrapperW");
         let _enter = span.enter();
         tracing::trace!(
-            "hwnd = {:?}, h_instance = {:?}, psz_parms = {:?}, n_show = {:?}",
+            "  args = {{hwnd = {:?}, h_instance = {:?}, psz_parms = {:?}, n_show = {:?}}}",
             hwnd,
             h_instance,
             psz_parms,
@@ -38163,7 +38072,11 @@ extern "C" fn thunk_WINNLSEnableIME(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("WINNLSEnableIME");
         let _enter = span.enter();
-        tracing::trace!("param_0 = {:?}, param_1 = {:?}", param_0, param_1);
+        tracing::trace!(
+            "  args = {{param_0 = {:?}, param_1 = {:?}}}",
+            param_0,
+            param_1
+        );
         let res = api.WINNLSEnableIME(param_0, param_1);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -38188,7 +38101,7 @@ extern "C" fn thunk_WINNLSGetEnableStatus(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("WINNLSGetEnableStatus");
         let _enter = span.enter();
-        tracing::trace!("param_0 = {:?}", param_0);
+        tracing::trace!("  args = {{param_0 = {:?}}}", param_0);
         let res = api.WINNLSGetEnableStatus(param_0);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -38213,7 +38126,7 @@ extern "C" fn thunk_WINNLSGetIMEHotkey(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("WINNLSGetIMEHotkey");
         let _enter = span.enter();
-        tracing::trace!("param_0 = {:?}", param_0);
+        tracing::trace!("  args = {{param_0 = {:?}}}", param_0);
         let res = api.WINNLSGetIMEHotkey(param_0);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -38241,7 +38154,7 @@ extern "C" fn thunk_WldpGetLockdownPolicy(
         let span = tracing::trace_span!("WldpGetLockdownPolicy");
         let _enter = span.enter();
         tracing::trace!(
-            "host_information = {:?}, lockdown_state = {:?}, lockdown_flags = {:?}",
+            "  args = {{host_information = {:?}, lockdown_state = {:?}, lockdown_flags = {:?}}}",
             host_information,
             lockdown_state,
             lockdown_flags
@@ -38273,13 +38186,7 @@ extern "C" fn thunk_WldpIsClassInApprovedList(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("WldpIsClassInApprovedList");
         let _enter = span.enter();
-        tracing::trace!(
-            "class_id = {:?}, host_information = {:?}, is_approved = {:?}, optional_flags = {:?}",
-            class_id,
-            host_information,
-            is_approved,
-            optional_flags
-        );
+        tracing :: trace ! ( "  args = {{class_id = {:?}, host_information = {:?}, is_approved = {:?}, optional_flags = {:?}}}" , class_id , host_information , is_approved , optional_flags );
         let res =
             api.WldpIsClassInApprovedList(class_id, host_information, is_approved, optional_flags);
         tracing::trace!("result = {:?}", res);
@@ -38305,7 +38212,7 @@ extern "C" fn thunk_WldpIsDynamicCodePolicyEnabled(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("WldpIsDynamicCodePolicyEnabled");
         let _enter = span.enter();
-        tracing::trace!("is_enabled = {:?}", is_enabled);
+        tracing::trace!("  args = {{is_enabled = {:?}}}", is_enabled);
         let res = api.WldpIsDynamicCodePolicyEnabled(is_enabled);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -38333,7 +38240,7 @@ extern "C" fn thunk_WldpQueryDeviceSecurityInformation(
         let span = tracing::trace_span!("WldpQueryDeviceSecurityInformation");
         let _enter = span.enter();
         tracing::trace!(
-            "information = {:?}, information_length = {:?}, return_length = {:?}",
+            "  args = {{information = {:?}, information_length = {:?}, return_length = {:?}}}",
             information,
             information_length,
             return_length
@@ -38366,7 +38273,7 @@ extern "C" fn thunk_WldpQueryDynamicCodeTrust(
         let span = tracing::trace_span!("WldpQueryDynamicCodeTrust");
         let _enter = span.enter();
         tracing::trace!(
-            "file_handle = {:?}, base_image = {:?}, image_size = {:?}",
+            "  args = {{file_handle = {:?}, base_image = {:?}, image_size = {:?}}}",
             file_handle,
             base_image,
             image_size
@@ -38395,7 +38302,7 @@ extern "C" fn thunk_WldpSetDynamicCodeTrust(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("WldpSetDynamicCodeTrust");
         let _enter = span.enter();
-        tracing::trace!("file_handle = {:?}", file_handle);
+        tracing::trace!("  args = {{file_handle = {:?}}}", file_handle);
         let res = api.WldpSetDynamicCodeTrust(file_handle);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -38423,7 +38330,7 @@ extern "C" fn thunk_WritePrivateProfileSectionA(
         let span = tracing::trace_span!("WritePrivateProfileSectionA");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_app_name = {:?}, lp_string = {:?}, lp_file_name = {:?}",
+            "  args = {{lp_app_name = {:?}, lp_string = {:?}, lp_file_name = {:?}}}",
             lp_app_name,
             lp_string,
             lp_file_name
@@ -38455,7 +38362,7 @@ extern "C" fn thunk_WritePrivateProfileSectionW(
         let span = tracing::trace_span!("WritePrivateProfileSectionW");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_app_name = {:?}, lp_string = {:?}, lp_file_name = {:?}",
+            "  args = {{lp_app_name = {:?}, lp_string = {:?}, lp_file_name = {:?}}}",
             lp_app_name,
             lp_string,
             lp_file_name
@@ -38487,13 +38394,7 @@ extern "C" fn thunk_WritePrivateProfileStringA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("WritePrivateProfileStringA");
         let _enter = span.enter();
-        tracing::trace!(
-            "lp_app_name = {:?}, lp_key_name = {:?}, lp_string = {:?}, lp_file_name = {:?}",
-            lp_app_name,
-            lp_key_name,
-            lp_string,
-            lp_file_name
-        );
+        tracing :: trace ! ( "  args = {{lp_app_name = {:?}, lp_key_name = {:?}, lp_string = {:?}, lp_file_name = {:?}}}" , lp_app_name , lp_key_name , lp_string , lp_file_name );
         let res = api.WritePrivateProfileStringA(lp_app_name, lp_key_name, lp_string, lp_file_name);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -38521,13 +38422,7 @@ extern "C" fn thunk_WritePrivateProfileStringW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("WritePrivateProfileStringW");
         let _enter = span.enter();
-        tracing::trace!(
-            "lp_app_name = {:?}, lp_key_name = {:?}, lp_string = {:?}, lp_file_name = {:?}",
-            lp_app_name,
-            lp_key_name,
-            lp_string,
-            lp_file_name
-        );
+        tracing :: trace ! ( "  args = {{lp_app_name = {:?}, lp_key_name = {:?}, lp_string = {:?}, lp_file_name = {:?}}}" , lp_app_name , lp_key_name , lp_string , lp_file_name );
         let res = api.WritePrivateProfileStringW(lp_app_name, lp_key_name, lp_string, lp_file_name);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -38556,7 +38451,7 @@ extern "C" fn thunk_WritePrivateProfileStructA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("WritePrivateProfileStructA");
         let _enter = span.enter();
-        tracing :: trace ! ( "lpsz_section = {:?}, lpsz_key = {:?}, lp_struct = {:?}, u_size_struct = {:?}, sz_file = {:?}" , lpsz_section , lpsz_key , lp_struct , u_size_struct , sz_file );
+        tracing :: trace ! ( "  args = {{lpsz_section = {:?}, lpsz_key = {:?}, lp_struct = {:?}, u_size_struct = {:?}, sz_file = {:?}}}" , lpsz_section , lpsz_key , lp_struct , u_size_struct , sz_file );
         let res = api.WritePrivateProfileStructA(
             lpsz_section,
             lpsz_key,
@@ -38591,7 +38486,7 @@ extern "C" fn thunk_WritePrivateProfileStructW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("WritePrivateProfileStructW");
         let _enter = span.enter();
-        tracing :: trace ! ( "lpsz_section = {:?}, lpsz_key = {:?}, lp_struct = {:?}, u_size_struct = {:?}, sz_file = {:?}" , lpsz_section , lpsz_key , lp_struct , u_size_struct , sz_file );
+        tracing :: trace ! ( "  args = {{lpsz_section = {:?}, lpsz_key = {:?}, lp_struct = {:?}, u_size_struct = {:?}, sz_file = {:?}}}" , lpsz_section , lpsz_key , lp_struct , u_size_struct , sz_file );
         let res = api.WritePrivateProfileStructW(
             lpsz_section,
             lpsz_key,
@@ -38624,7 +38519,7 @@ extern "C" fn thunk_WriteProfileSectionA(
         let span = tracing::trace_span!("WriteProfileSectionA");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_app_name = {:?}, lp_string = {:?}",
+            "  args = {{lp_app_name = {:?}, lp_string = {:?}}}",
             lp_app_name,
             lp_string
         );
@@ -38654,7 +38549,7 @@ extern "C" fn thunk_WriteProfileSectionW(
         let span = tracing::trace_span!("WriteProfileSectionW");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_app_name = {:?}, lp_string = {:?}",
+            "  args = {{lp_app_name = {:?}, lp_string = {:?}}}",
             lp_app_name,
             lp_string
         );
@@ -38685,7 +38580,7 @@ extern "C" fn thunk_WriteProfileStringA(
         let span = tracing::trace_span!("WriteProfileStringA");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_app_name = {:?}, lp_key_name = {:?}, lp_string = {:?}",
+            "  args = {{lp_app_name = {:?}, lp_key_name = {:?}, lp_string = {:?}}}",
             lp_app_name,
             lp_key_name,
             lp_string
@@ -38717,7 +38612,7 @@ extern "C" fn thunk_WriteProfileStringW(
         let span = tracing::trace_span!("WriteProfileStringW");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_app_name = {:?}, lp_key_name = {:?}, lp_string = {:?}",
+            "  args = {{lp_app_name = {:?}, lp_key_name = {:?}, lp_string = {:?}}}",
             lp_app_name,
             lp_key_name,
             lp_string
@@ -38746,7 +38641,7 @@ extern "C" fn thunk__hread(context: &mut ExtendedContext, memory: FlatMemoryCtx)
         let span = tracing::trace_span!("_hread");
         let _enter = span.enter();
         tracing::trace!(
-            "h_file = {:?}, lp_buffer = {:?}, l_bytes = {:?}",
+            "  args = {{h_file = {:?}, lp_buffer = {:?}, l_bytes = {:?}}}",
             h_file,
             lp_buffer,
             l_bytes
@@ -38775,7 +38670,7 @@ extern "C" fn thunk__hwrite(context: &mut ExtendedContext, memory: FlatMemoryCtx
         let span = tracing::trace_span!("_hwrite");
         let _enter = span.enter();
         tracing::trace!(
-            "h_file = {:?}, lp_buffer = {:?}, l_bytes = {:?}",
+            "  args = {{h_file = {:?}, lp_buffer = {:?}, l_bytes = {:?}}}",
             h_file,
             lp_buffer,
             l_bytes
@@ -38801,7 +38696,7 @@ extern "C" fn thunk__lclose(context: &mut ExtendedContext, memory: FlatMemoryCtx
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("_lclose");
         let _enter = span.enter();
-        tracing::trace!("h_file = {:?}", h_file);
+        tracing::trace!("  args = {{h_file = {:?}}}", h_file);
         let res = api._lclose(h_file);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -38825,7 +38720,7 @@ extern "C" fn thunk__lcreat(context: &mut ExtendedContext, memory: FlatMemoryCtx
         let span = tracing::trace_span!("_lcreat");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_path_name = {:?}, i_attribute = {:?}",
+            "  args = {{lp_path_name = {:?}, i_attribute = {:?}}}",
             lp_path_name,
             i_attribute
         );
@@ -38853,7 +38748,7 @@ extern "C" fn thunk__llseek(context: &mut ExtendedContext, memory: FlatMemoryCtx
         let span = tracing::trace_span!("_llseek");
         let _enter = span.enter();
         tracing::trace!(
-            "h_file = {:?}, l_offset = {:?}, i_origin = {:?}",
+            "  args = {{h_file = {:?}, l_offset = {:?}, i_origin = {:?}}}",
             h_file,
             l_offset,
             i_origin
@@ -38881,7 +38776,7 @@ extern "C" fn thunk__lopen(context: &mut ExtendedContext, memory: FlatMemoryCtx)
         let span = tracing::trace_span!("_lopen");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_path_name = {:?}, i_read_write = {:?}",
+            "  args = {{lp_path_name = {:?}, i_read_write = {:?}}}",
             lp_path_name,
             i_read_write
         );
@@ -38909,7 +38804,7 @@ extern "C" fn thunk__lread(context: &mut ExtendedContext, memory: FlatMemoryCtx)
         let span = tracing::trace_span!("_lread");
         let _enter = span.enter();
         tracing::trace!(
-            "h_file = {:?}, lp_buffer = {:?}, u_bytes = {:?}",
+            "  args = {{h_file = {:?}, lp_buffer = {:?}, u_bytes = {:?}}}",
             h_file,
             lp_buffer,
             u_bytes
@@ -38938,7 +38833,7 @@ extern "C" fn thunk__lwrite(context: &mut ExtendedContext, memory: FlatMemoryCtx
         let span = tracing::trace_span!("_lwrite");
         let _enter = span.enter();
         tracing::trace!(
-            "h_file = {:?}, lp_buffer = {:?}, u_bytes = {:?}",
+            "  args = {{h_file = {:?}, lp_buffer = {:?}, u_bytes = {:?}}}",
             h_file,
             lp_buffer,
             u_bytes
@@ -38970,7 +38865,7 @@ extern "C" fn thunk_AdjustWindowRect(
         let span = tracing::trace_span!("AdjustWindowRect");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_rect = {:?}, dw_style = {:?}, b_menu = {:?}",
+            "  args = {{lp_rect = {:?}, dw_style = {:?}, b_menu = {:?}}}",
             lp_rect,
             dw_style,
             b_menu
@@ -39003,7 +38898,7 @@ extern "C" fn thunk_AdjustWindowRectEx(
         let span = tracing::trace_span!("AdjustWindowRectEx");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_rect = {:?}, dw_style = {:?}, b_menu = {:?}, dw_ex_style = {:?}",
+            "  args = {{lp_rect = {:?}, dw_style = {:?}, b_menu = {:?}, dw_ex_style = {:?}}}",
             lp_rect,
             dw_style,
             b_menu,
@@ -39033,7 +38928,7 @@ extern "C" fn thunk_AllowSetForegroundWindow(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("AllowSetForegroundWindow");
         let _enter = span.enter();
-        tracing::trace!("dw_process_id = {:?}", dw_process_id);
+        tracing::trace!("  args = {{dw_process_id = {:?}}}", dw_process_id);
         let res = api.AllowSetForegroundWindow(dw_process_id);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -39058,7 +38953,7 @@ extern "C" fn thunk_AnimateWindow(context: &mut ExtendedContext, memory: FlatMem
         let span = tracing::trace_span!("AnimateWindow");
         let _enter = span.enter();
         tracing::trace!(
-            "h_wnd = {:?}, dw_time = {:?}, dw_flags = {:?}",
+            "  args = {{h_wnd = {:?}, dw_time = {:?}, dw_flags = {:?}}}",
             h_wnd,
             dw_time,
             dw_flags
@@ -39083,7 +38978,7 @@ extern "C" fn thunk_AnyPopup(context: &mut ExtendedContext, memory: FlatMemoryCt
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("AnyPopup");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.AnyPopup();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -39109,7 +39004,7 @@ extern "C" fn thunk_AppendMenuA(context: &mut ExtendedContext, memory: FlatMemor
         let span = tracing::trace_span!("AppendMenuA");
         let _enter = span.enter();
         tracing::trace!(
-            "h_menu = {:?}, u_flags = {:?}, u_id_new_item = {:?}, lp_new_item = {:?}",
+            "  args = {{h_menu = {:?}, u_flags = {:?}, u_id_new_item = {:?}, lp_new_item = {:?}}}",
             h_menu,
             u_flags,
             u_id_new_item,
@@ -39140,7 +39035,7 @@ extern "C" fn thunk_AppendMenuW(context: &mut ExtendedContext, memory: FlatMemor
         let span = tracing::trace_span!("AppendMenuW");
         let _enter = span.enter();
         tracing::trace!(
-            "h_menu = {:?}, u_flags = {:?}, u_id_new_item = {:?}, lp_new_item = {:?}",
+            "  args = {{h_menu = {:?}, u_flags = {:?}, u_id_new_item = {:?}, lp_new_item = {:?}}}",
             h_menu,
             u_flags,
             u_id_new_item,
@@ -39170,7 +39065,7 @@ extern "C" fn thunk_ArrangeIconicWindows(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ArrangeIconicWindows");
         let _enter = span.enter();
-        tracing::trace!("h_wnd = {:?}", h_wnd);
+        tracing::trace!("  args = {{h_wnd = {:?}}}", h_wnd);
         let res = api.ArrangeIconicWindows(h_wnd);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -39195,7 +39090,7 @@ extern "C" fn thunk_BeginDeferWindowPos(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("BeginDeferWindowPos");
         let _enter = span.enter();
-        tracing::trace!("n_num_windows = {:?}", n_num_windows);
+        tracing::trace!("  args = {{n_num_windows = {:?}}}", n_num_windows);
         let res = api.BeginDeferWindowPos(n_num_windows);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -39220,7 +39115,7 @@ extern "C" fn thunk_BringWindowToTop(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("BringWindowToTop");
         let _enter = span.enter();
-        tracing::trace!("h_wnd = {:?}", h_wnd);
+        tracing::trace!("  args = {{h_wnd = {:?}}}", h_wnd);
         let res = api.BringWindowToTop(h_wnd);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -39249,7 +39144,7 @@ extern "C" fn thunk_CalculatePopupWindowPosition(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CalculatePopupWindowPosition");
         let _enter = span.enter();
-        tracing :: trace ! ( "anchor_point = {:?}, window_size = {:?}, flags = {:?}, exclude_rect = {:?}, popup_window_position = {:?}" , anchor_point , window_size , flags , exclude_rect , popup_window_position );
+        tracing :: trace ! ( "  args = {{anchor_point = {:?}, window_size = {:?}, flags = {:?}, exclude_rect = {:?}, popup_window_position = {:?}}}" , anchor_point , window_size , flags , exclude_rect , popup_window_position );
         let res = api.CalculatePopupWindowPosition(
             anchor_point,
             window_size,
@@ -39281,7 +39176,7 @@ extern "C" fn thunk_CallMsgFilterA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CallMsgFilterA");
         let _enter = span.enter();
-        tracing::trace!("lp_msg = {:?}, n_code = {:?}", lp_msg, n_code);
+        tracing::trace!("  args = {{lp_msg = {:?}, n_code = {:?}}}", lp_msg, n_code);
         let res = api.CallMsgFilterA(lp_msg, n_code);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -39307,7 +39202,7 @@ extern "C" fn thunk_CallMsgFilterW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CallMsgFilterW");
         let _enter = span.enter();
-        tracing::trace!("lp_msg = {:?}, n_code = {:?}", lp_msg, n_code);
+        tracing::trace!("  args = {{lp_msg = {:?}, n_code = {:?}}}", lp_msg, n_code);
         let res = api.CallMsgFilterW(lp_msg, n_code);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -39336,7 +39231,7 @@ extern "C" fn thunk_CallNextHookEx(
         let span = tracing::trace_span!("CallNextHookEx");
         let _enter = span.enter();
         tracing::trace!(
-            "hhk = {:?}, n_code = {:?}, w_param = {:?}, l_param = {:?}",
+            "  args = {{hhk = {:?}, n_code = {:?}, w_param = {:?}, l_param = {:?}}}",
             hhk,
             n_code,
             w_param,
@@ -39370,14 +39265,7 @@ extern "C" fn thunk_CallWindowProcA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CallWindowProcA");
         let _enter = span.enter();
-        tracing::trace!(
-            "lp_prev_wnd_func = {:?}, h_wnd = {:?}, msg = {:?}, w_param = {:?}, l_param = {:?}",
-            lp_prev_wnd_func,
-            h_wnd,
-            msg,
-            w_param,
-            l_param
-        );
+        tracing :: trace ! ( "  args = {{lp_prev_wnd_func = {:?}, h_wnd = {:?}, msg = {:?}, w_param = {:?}, l_param = {:?}}}" , lp_prev_wnd_func , h_wnd , msg , w_param , l_param );
         let res = api.CallWindowProcA(lp_prev_wnd_func, h_wnd, msg, w_param, l_param);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -39406,14 +39294,7 @@ extern "C" fn thunk_CallWindowProcW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CallWindowProcW");
         let _enter = span.enter();
-        tracing::trace!(
-            "lp_prev_wnd_func = {:?}, h_wnd = {:?}, msg = {:?}, w_param = {:?}, l_param = {:?}",
-            lp_prev_wnd_func,
-            h_wnd,
-            msg,
-            w_param,
-            l_param
-        );
+        tracing :: trace ! ( "  args = {{lp_prev_wnd_func = {:?}, h_wnd = {:?}, msg = {:?}, w_param = {:?}, l_param = {:?}}}" , lp_prev_wnd_func , h_wnd , msg , w_param , l_param );
         let res = api.CallWindowProcW(lp_prev_wnd_func, h_wnd, msg, w_param, l_param);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -39437,7 +39318,7 @@ extern "C" fn thunk_CancelShutdown(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CancelShutdown");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.CancelShutdown();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -39466,14 +39347,7 @@ extern "C" fn thunk_CascadeWindows(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CascadeWindows");
         let _enter = span.enter();
-        tracing::trace!(
-            "hwnd_parent = {:?}, w_how = {:?}, lp_rect = {:?}, c_kids = {:?}, lp_kids = {:?}",
-            hwnd_parent,
-            w_how,
-            lp_rect,
-            c_kids,
-            lp_kids
-        );
+        tracing :: trace ! ( "  args = {{hwnd_parent = {:?}, w_how = {:?}, lp_rect = {:?}, c_kids = {:?}, lp_kids = {:?}}}" , hwnd_parent , w_how , lp_rect , c_kids , lp_kids );
         let res = api.CascadeWindows(hwnd_parent, w_how, lp_rect, c_kids, lp_kids);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -39499,14 +39373,7 @@ extern "C" fn thunk_ChangeMenuA(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ChangeMenuA");
         let _enter = span.enter();
-        tracing::trace!(
-            "h_menu = {:?}, cmd = {:?}, lpsz_new_item = {:?}, cmd_insert = {:?}, flags = {:?}",
-            h_menu,
-            cmd,
-            lpsz_new_item,
-            cmd_insert,
-            flags
-        );
+        tracing :: trace ! ( "  args = {{h_menu = {:?}, cmd = {:?}, lpsz_new_item = {:?}, cmd_insert = {:?}, flags = {:?}}}" , h_menu , cmd , lpsz_new_item , cmd_insert , flags );
         let res = api.ChangeMenuA(h_menu, cmd, lpsz_new_item, cmd_insert, flags);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -39532,14 +39399,7 @@ extern "C" fn thunk_ChangeMenuW(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ChangeMenuW");
         let _enter = span.enter();
-        tracing::trace!(
-            "h_menu = {:?}, cmd = {:?}, lpsz_new_item = {:?}, cmd_insert = {:?}, flags = {:?}",
-            h_menu,
-            cmd,
-            lpsz_new_item,
-            cmd_insert,
-            flags
-        );
+        tracing :: trace ! ( "  args = {{h_menu = {:?}, cmd = {:?}, lpsz_new_item = {:?}, cmd_insert = {:?}, flags = {:?}}}" , h_menu , cmd , lpsz_new_item , cmd_insert , flags );
         let res = api.ChangeMenuW(h_menu, cmd, lpsz_new_item, cmd_insert, flags);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -39565,7 +39425,11 @@ extern "C" fn thunk_ChangeWindowMessageFilter(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ChangeWindowMessageFilter");
         let _enter = span.enter();
-        tracing::trace!("message = {:?}, dw_flag = {:?}", message, dw_flag);
+        tracing::trace!(
+            "  args = {{message = {:?}, dw_flag = {:?}}}",
+            message,
+            dw_flag
+        );
         let res = api.ChangeWindowMessageFilter(message, dw_flag);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -39593,13 +39457,7 @@ extern "C" fn thunk_ChangeWindowMessageFilterEx(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ChangeWindowMessageFilterEx");
         let _enter = span.enter();
-        tracing::trace!(
-            "hwnd = {:?}, message = {:?}, action = {:?}, p_change_filter_struct = {:?}",
-            hwnd,
-            message,
-            action,
-            p_change_filter_struct
-        );
+        tracing :: trace ! ( "  args = {{hwnd = {:?}, message = {:?}, action = {:?}, p_change_filter_struct = {:?}}}" , hwnd , message , action , p_change_filter_struct );
         let res = api.ChangeWindowMessageFilterEx(hwnd, message, action, p_change_filter_struct);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -39621,7 +39479,7 @@ extern "C" fn thunk_CharLowerA(context: &mut ExtendedContext, memory: FlatMemory
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CharLowerA");
         let _enter = span.enter();
-        tracing::trace!("lpsz = {:?}", lpsz);
+        tracing::trace!("  args = {{lpsz = {:?}}}", lpsz);
         let res = api.CharLowerA(lpsz);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -39647,7 +39505,11 @@ extern "C" fn thunk_CharLowerBuffA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CharLowerBuffA");
         let _enter = span.enter();
-        tracing::trace!("lpsz = {:?}, cch_length = {:?}", lpsz, cch_length);
+        tracing::trace!(
+            "  args = {{lpsz = {:?}, cch_length = {:?}}}",
+            lpsz,
+            cch_length
+        );
         let res = api.CharLowerBuffA(lpsz, cch_length);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -39673,7 +39535,11 @@ extern "C" fn thunk_CharLowerBuffW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CharLowerBuffW");
         let _enter = span.enter();
-        tracing::trace!("lpsz = {:?}, cch_length = {:?}", lpsz, cch_length);
+        tracing::trace!(
+            "  args = {{lpsz = {:?}, cch_length = {:?}}}",
+            lpsz,
+            cch_length
+        );
         let res = api.CharLowerBuffW(lpsz, cch_length);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -39695,7 +39561,7 @@ extern "C" fn thunk_CharLowerW(context: &mut ExtendedContext, memory: FlatMemory
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CharLowerW");
         let _enter = span.enter();
-        tracing::trace!("lpsz = {:?}", lpsz);
+        tracing::trace!("  args = {{lpsz = {:?}}}", lpsz);
         let res = api.CharLowerW(lpsz);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -39717,7 +39583,7 @@ extern "C" fn thunk_CharNextA(context: &mut ExtendedContext, memory: FlatMemoryC
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CharNextA");
         let _enter = span.enter();
-        tracing::trace!("lpsz = {:?}", lpsz);
+        tracing::trace!("  args = {{lpsz = {:?}}}", lpsz);
         let res = api.CharNextA(lpsz);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -39742,7 +39608,7 @@ extern "C" fn thunk_CharNextExA(context: &mut ExtendedContext, memory: FlatMemor
         let span = tracing::trace_span!("CharNextExA");
         let _enter = span.enter();
         tracing::trace!(
-            "code_page = {:?}, lp_current_char = {:?}, dw_flags = {:?}",
+            "  args = {{code_page = {:?}, lp_current_char = {:?}, dw_flags = {:?}}}",
             code_page,
             lp_current_char,
             dw_flags
@@ -39768,7 +39634,7 @@ extern "C" fn thunk_CharNextW(context: &mut ExtendedContext, memory: FlatMemoryC
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CharNextW");
         let _enter = span.enter();
-        tracing::trace!("lpsz = {:?}", lpsz);
+        tracing::trace!("  args = {{lpsz = {:?}}}", lpsz);
         let res = api.CharNextW(lpsz);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -39792,7 +39658,7 @@ extern "C" fn thunk_CharPrevA(context: &mut ExtendedContext, memory: FlatMemoryC
         let span = tracing::trace_span!("CharPrevA");
         let _enter = span.enter();
         tracing::trace!(
-            "lpsz_start = {:?}, lpsz_current = {:?}",
+            "  args = {{lpsz_start = {:?}, lpsz_current = {:?}}}",
             lpsz_start,
             lpsz_current
         );
@@ -39820,13 +39686,7 @@ extern "C" fn thunk_CharPrevExA(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CharPrevExA");
         let _enter = span.enter();
-        tracing::trace!(
-            "code_page = {:?}, lp_start = {:?}, lp_current_char = {:?}, dw_flags = {:?}",
-            code_page,
-            lp_start,
-            lp_current_char,
-            dw_flags
-        );
+        tracing :: trace ! ( "  args = {{code_page = {:?}, lp_start = {:?}, lp_current_char = {:?}, dw_flags = {:?}}}" , code_page , lp_start , lp_current_char , dw_flags );
         let res = api.CharPrevExA(code_page, lp_start, lp_current_char, dw_flags);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -39850,7 +39710,7 @@ extern "C" fn thunk_CharPrevW(context: &mut ExtendedContext, memory: FlatMemoryC
         let span = tracing::trace_span!("CharPrevW");
         let _enter = span.enter();
         tracing::trace!(
-            "lpsz_start = {:?}, lpsz_current = {:?}",
+            "  args = {{lpsz_start = {:?}, lpsz_current = {:?}}}",
             lpsz_start,
             lpsz_current
         );
@@ -39876,7 +39736,7 @@ extern "C" fn thunk_CharToOemA(context: &mut ExtendedContext, memory: FlatMemory
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CharToOemA");
         let _enter = span.enter();
-        tracing::trace!("p_src = {:?}, p_dst = {:?}", p_src, p_dst);
+        tracing::trace!("  args = {{p_src = {:?}, p_dst = {:?}}}", p_src, p_dst);
         let res = api.CharToOemA(p_src, p_dst);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -39904,7 +39764,7 @@ extern "C" fn thunk_CharToOemBuffA(
         let span = tracing::trace_span!("CharToOemBuffA");
         let _enter = span.enter();
         tracing::trace!(
-            "lpsz_src = {:?}, lpsz_dst = {:?}, cch_dst_length = {:?}",
+            "  args = {{lpsz_src = {:?}, lpsz_dst = {:?}, cch_dst_length = {:?}}}",
             lpsz_src,
             lpsz_dst,
             cch_dst_length
@@ -39936,7 +39796,7 @@ extern "C" fn thunk_CharToOemBuffW(
         let span = tracing::trace_span!("CharToOemBuffW");
         let _enter = span.enter();
         tracing::trace!(
-            "lpsz_src = {:?}, lpsz_dst = {:?}, cch_dst_length = {:?}",
+            "  args = {{lpsz_src = {:?}, lpsz_dst = {:?}, cch_dst_length = {:?}}}",
             lpsz_src,
             lpsz_dst,
             cch_dst_length
@@ -39963,7 +39823,7 @@ extern "C" fn thunk_CharToOemW(context: &mut ExtendedContext, memory: FlatMemory
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CharToOemW");
         let _enter = span.enter();
-        tracing::trace!("p_src = {:?}, p_dst = {:?}", p_src, p_dst);
+        tracing::trace!("  args = {{p_src = {:?}, p_dst = {:?}}}", p_src, p_dst);
         let res = api.CharToOemW(p_src, p_dst);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -39985,7 +39845,7 @@ extern "C" fn thunk_CharUpperA(context: &mut ExtendedContext, memory: FlatMemory
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CharUpperA");
         let _enter = span.enter();
-        tracing::trace!("lpsz = {:?}", lpsz);
+        tracing::trace!("  args = {{lpsz = {:?}}}", lpsz);
         let res = api.CharUpperA(lpsz);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -40011,7 +39871,11 @@ extern "C" fn thunk_CharUpperBuffA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CharUpperBuffA");
         let _enter = span.enter();
-        tracing::trace!("lpsz = {:?}, cch_length = {:?}", lpsz, cch_length);
+        tracing::trace!(
+            "  args = {{lpsz = {:?}, cch_length = {:?}}}",
+            lpsz,
+            cch_length
+        );
         let res = api.CharUpperBuffA(lpsz, cch_length);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -40037,7 +39901,11 @@ extern "C" fn thunk_CharUpperBuffW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CharUpperBuffW");
         let _enter = span.enter();
-        tracing::trace!("lpsz = {:?}, cch_length = {:?}", lpsz, cch_length);
+        tracing::trace!(
+            "  args = {{lpsz = {:?}, cch_length = {:?}}}",
+            lpsz,
+            cch_length
+        );
         let res = api.CharUpperBuffW(lpsz, cch_length);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -40059,7 +39927,7 @@ extern "C" fn thunk_CharUpperW(context: &mut ExtendedContext, memory: FlatMemory
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CharUpperW");
         let _enter = span.enter();
-        tracing::trace!("lpsz = {:?}", lpsz);
+        tracing::trace!("  args = {{lpsz = {:?}}}", lpsz);
         let res = api.CharUpperW(lpsz);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -40084,7 +39952,7 @@ extern "C" fn thunk_CheckMenuItem(context: &mut ExtendedContext, memory: FlatMem
         let span = tracing::trace_span!("CheckMenuItem");
         let _enter = span.enter();
         tracing::trace!(
-            "h_menu = {:?}, u_id_check_item = {:?}, u_check = {:?}",
+            "  args = {{h_menu = {:?}, u_id_check_item = {:?}, u_check = {:?}}}",
             h_menu,
             u_id_check_item,
             u_check
@@ -40118,7 +39986,7 @@ extern "C" fn thunk_CheckMenuRadioItem(
         let span = tracing::trace_span!("CheckMenuRadioItem");
         let _enter = span.enter();
         tracing::trace!(
-            "hmenu = {:?}, first = {:?}, last = {:?}, check = {:?}, flags = {:?}",
+            "  args = {{hmenu = {:?}, first = {:?}, last = {:?}, check = {:?}, flags = {:?}}}",
             hmenu,
             first,
             last,
@@ -40150,7 +40018,11 @@ extern "C" fn thunk_ChildWindowFromPoint(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ChildWindowFromPoint");
         let _enter = span.enter();
-        tracing::trace!("h_wnd_parent = {:?}, point = {:?}", h_wnd_parent, point);
+        tracing::trace!(
+            "  args = {{h_wnd_parent = {:?}, point = {:?}}}",
+            h_wnd_parent,
+            point
+        );
         let res = api.ChildWindowFromPoint(h_wnd_parent, point);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -40177,7 +40049,12 @@ extern "C" fn thunk_ChildWindowFromPointEx(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ChildWindowFromPointEx");
         let _enter = span.enter();
-        tracing::trace!("hwnd = {:?}, pt = {:?}, flags = {:?}", hwnd, pt, flags);
+        tracing::trace!(
+            "  args = {{hwnd = {:?}, pt = {:?}, flags = {:?}}}",
+            hwnd,
+            pt,
+            flags
+        );
         let res = api.ChildWindowFromPointEx(hwnd, pt, flags);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -40199,7 +40076,7 @@ extern "C" fn thunk_ClipCursor(context: &mut ExtendedContext, memory: FlatMemory
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ClipCursor");
         let _enter = span.enter();
-        tracing::trace!("lp_rect = {:?}", lp_rect);
+        tracing::trace!("  args = {{lp_rect = {:?}}}", lp_rect);
         let res = api.ClipCursor(lp_rect);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -40221,7 +40098,7 @@ extern "C" fn thunk_CloseWindow(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CloseWindow");
         let _enter = span.enter();
-        tracing::trace!("h_wnd = {:?}", h_wnd);
+        tracing::trace!("  args = {{h_wnd = {:?}}}", h_wnd);
         let res = api.CloseWindow(h_wnd);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -40249,7 +40126,7 @@ extern "C" fn thunk_CopyAcceleratorTableA(
         let span = tracing::trace_span!("CopyAcceleratorTableA");
         let _enter = span.enter();
         tracing::trace!(
-            "h_accel_src = {:?}, lp_accel_dst = {:?}, c_accel_entries = {:?}",
+            "  args = {{h_accel_src = {:?}, lp_accel_dst = {:?}, c_accel_entries = {:?}}}",
             h_accel_src,
             lp_accel_dst,
             c_accel_entries
@@ -40281,7 +40158,7 @@ extern "C" fn thunk_CopyAcceleratorTableW(
         let span = tracing::trace_span!("CopyAcceleratorTableW");
         let _enter = span.enter();
         tracing::trace!(
-            "h_accel_src = {:?}, lp_accel_dst = {:?}, c_accel_entries = {:?}",
+            "  args = {{h_accel_src = {:?}, lp_accel_dst = {:?}, c_accel_entries = {:?}}}",
             h_accel_src,
             lp_accel_dst,
             c_accel_entries
@@ -40307,7 +40184,7 @@ extern "C" fn thunk_CopyIcon(context: &mut ExtendedContext, memory: FlatMemoryCt
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CopyIcon");
         let _enter = span.enter();
-        tracing::trace!("h_icon = {:?}", h_icon);
+        tracing::trace!("  args = {{h_icon = {:?}}}", h_icon);
         let res = api.CopyIcon(h_icon);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -40334,7 +40211,7 @@ extern "C" fn thunk_CopyImage(context: &mut ExtendedContext, memory: FlatMemoryC
         let span = tracing::trace_span!("CopyImage");
         let _enter = span.enter();
         tracing::trace!(
-            "h = {:?}, r#type = {:?}, cx = {:?}, cy = {:?}, flags = {:?}",
+            "  args = {{h = {:?}, r#type = {:?}, cx = {:?}, cy = {:?}, flags = {:?}}}",
             h,
             r#type,
             cx,
@@ -40366,7 +40243,11 @@ extern "C" fn thunk_CreateAcceleratorTableA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CreateAcceleratorTableA");
         let _enter = span.enter();
-        tracing::trace!("paccel = {:?}, c_accel = {:?}", paccel, c_accel);
+        tracing::trace!(
+            "  args = {{paccel = {:?}, c_accel = {:?}}}",
+            paccel,
+            c_accel
+        );
         let res = api.CreateAcceleratorTableA(paccel, c_accel);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -40392,7 +40273,11 @@ extern "C" fn thunk_CreateAcceleratorTableW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CreateAcceleratorTableW");
         let _enter = span.enter();
-        tracing::trace!("paccel = {:?}, c_accel = {:?}", paccel, c_accel);
+        tracing::trace!(
+            "  args = {{paccel = {:?}, c_accel = {:?}}}",
+            paccel,
+            c_accel
+        );
         let res = api.CreateAcceleratorTableW(paccel, c_accel);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -40420,7 +40305,7 @@ extern "C" fn thunk_CreateCursor(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CreateCursor");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_inst = {:?}, x_hot_spot = {:?}, y_hot_spot = {:?}, n_width = {:?}, n_height = {:?}, pv_and_plane = {:?}, pv_xor_plane = {:?}" , h_inst , x_hot_spot , y_hot_spot , n_width , n_height , pv_and_plane , pv_xor_plane );
+        tracing :: trace ! ( "  args = {{h_inst = {:?}, x_hot_spot = {:?}, y_hot_spot = {:?}, n_width = {:?}, n_height = {:?}, pv_and_plane = {:?}, pv_xor_plane = {:?}}}" , h_inst , x_hot_spot , y_hot_spot , n_width , n_height , pv_and_plane , pv_xor_plane );
         let res = api.CreateCursor(
             h_inst,
             x_hot_spot,
@@ -40457,7 +40342,7 @@ extern "C" fn thunk_CreateDialogIndirectParamA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CreateDialogIndirectParamA");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_instance = {:?}, lp_template = {:?}, h_wnd_parent = {:?}, lp_dialog_func = {:?}, dw_init_param = {:?}" , h_instance , lp_template , h_wnd_parent , lp_dialog_func , dw_init_param );
+        tracing :: trace ! ( "  args = {{h_instance = {:?}, lp_template = {:?}, h_wnd_parent = {:?}, lp_dialog_func = {:?}, dw_init_param = {:?}}}" , h_instance , lp_template , h_wnd_parent , lp_dialog_func , dw_init_param );
         let res = api.CreateDialogIndirectParamA(
             h_instance,
             lp_template,
@@ -40492,7 +40377,7 @@ extern "C" fn thunk_CreateDialogIndirectParamW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CreateDialogIndirectParamW");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_instance = {:?}, lp_template = {:?}, h_wnd_parent = {:?}, lp_dialog_func = {:?}, dw_init_param = {:?}" , h_instance , lp_template , h_wnd_parent , lp_dialog_func , dw_init_param );
+        tracing :: trace ! ( "  args = {{h_instance = {:?}, lp_template = {:?}, h_wnd_parent = {:?}, lp_dialog_func = {:?}, dw_init_param = {:?}}}" , h_instance , lp_template , h_wnd_parent , lp_dialog_func , dw_init_param );
         let res = api.CreateDialogIndirectParamW(
             h_instance,
             lp_template,
@@ -40527,7 +40412,7 @@ extern "C" fn thunk_CreateDialogParamA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CreateDialogParamA");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_instance = {:?}, lp_template_name = {:?}, h_wnd_parent = {:?}, lp_dialog_func = {:?}, dw_init_param = {:?}" , h_instance , lp_template_name , h_wnd_parent , lp_dialog_func , dw_init_param );
+        tracing :: trace ! ( "  args = {{h_instance = {:?}, lp_template_name = {:?}, h_wnd_parent = {:?}, lp_dialog_func = {:?}, dw_init_param = {:?}}}" , h_instance , lp_template_name , h_wnd_parent , lp_dialog_func , dw_init_param );
         let res = api.CreateDialogParamA(
             h_instance,
             lp_template_name,
@@ -40562,7 +40447,7 @@ extern "C" fn thunk_CreateDialogParamW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CreateDialogParamW");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_instance = {:?}, lp_template_name = {:?}, h_wnd_parent = {:?}, lp_dialog_func = {:?}, dw_init_param = {:?}" , h_instance , lp_template_name , h_wnd_parent , lp_dialog_func , dw_init_param );
+        tracing :: trace ! ( "  args = {{h_instance = {:?}, lp_template_name = {:?}, h_wnd_parent = {:?}, lp_dialog_func = {:?}, dw_init_param = {:?}}}" , h_instance , lp_template_name , h_wnd_parent , lp_dialog_func , dw_init_param );
         let res = api.CreateDialogParamW(
             h_instance,
             lp_template_name,
@@ -40596,7 +40481,7 @@ extern "C" fn thunk_CreateIcon(context: &mut ExtendedContext, memory: FlatMemory
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CreateIcon");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_instance = {:?}, n_width = {:?}, n_height = {:?}, c_planes = {:?}, c_bits_pixel = {:?}, lpb_an_dbits = {:?}, lpb_xo_rbits = {:?}" , h_instance , n_width , n_height , c_planes , c_bits_pixel , lpb_an_dbits , lpb_xo_rbits );
+        tracing :: trace ! ( "  args = {{h_instance = {:?}, n_width = {:?}, n_height = {:?}, c_planes = {:?}, c_bits_pixel = {:?}, lpb_an_dbits = {:?}, lpb_xo_rbits = {:?}}}" , h_instance , n_width , n_height , c_planes , c_bits_pixel , lpb_an_dbits , lpb_xo_rbits );
         let res = api.CreateIcon(
             h_instance,
             n_width,
@@ -40633,7 +40518,7 @@ extern "C" fn thunk_CreateIconFromResource(
         let span = tracing::trace_span!("CreateIconFromResource");
         let _enter = span.enter();
         tracing::trace!(
-            "presbits = {:?}, dw_res_size = {:?}, f_icon = {:?}, dw_ver = {:?}",
+            "  args = {{presbits = {:?}, dw_res_size = {:?}, f_icon = {:?}, dw_ver = {:?}}}",
             presbits,
             dw_res_size,
             f_icon,
@@ -40669,7 +40554,7 @@ extern "C" fn thunk_CreateIconFromResourceEx(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CreateIconFromResourceEx");
         let _enter = span.enter();
-        tracing :: trace ! ( "presbits = {:?}, dw_res_size = {:?}, f_icon = {:?}, dw_ver = {:?}, cx_desired = {:?}, cy_desired = {:?}, flags = {:?}" , presbits , dw_res_size , f_icon , dw_ver , cx_desired , cy_desired , flags );
+        tracing :: trace ! ( "  args = {{presbits = {:?}, dw_res_size = {:?}, f_icon = {:?}, dw_ver = {:?}, cx_desired = {:?}, cy_desired = {:?}, flags = {:?}}}" , presbits , dw_res_size , f_icon , dw_ver , cx_desired , cy_desired , flags );
         let res = api.CreateIconFromResourceEx(
             presbits,
             dw_res_size,
@@ -40711,7 +40596,7 @@ extern "C" fn thunk_CreateMDIWindowA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CreateMDIWindowA");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_class_name = {:?}, lp_window_name = {:?}, dw_style = {:?}, x = {:?}, y = {:?}, n_width = {:?}, n_height = {:?}, h_wnd_parent = {:?}, h_instance = {:?}, l_param = {:?}" , lp_class_name , lp_window_name , dw_style , x , y , n_width , n_height , h_wnd_parent , h_instance , l_param );
+        tracing :: trace ! ( "  args = {{lp_class_name = {:?}, lp_window_name = {:?}, dw_style = {:?}, x = {:?}, y = {:?}, n_width = {:?}, n_height = {:?}, h_wnd_parent = {:?}, h_instance = {:?}, l_param = {:?}}}" , lp_class_name , lp_window_name , dw_style , x , y , n_width , n_height , h_wnd_parent , h_instance , l_param );
         let res = api.CreateMDIWindowA(
             lp_class_name,
             lp_window_name,
@@ -40756,7 +40641,7 @@ extern "C" fn thunk_CreateMDIWindowW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CreateMDIWindowW");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_class_name = {:?}, lp_window_name = {:?}, dw_style = {:?}, x = {:?}, y = {:?}, n_width = {:?}, n_height = {:?}, h_wnd_parent = {:?}, h_instance = {:?}, l_param = {:?}" , lp_class_name , lp_window_name , dw_style , x , y , n_width , n_height , h_wnd_parent , h_instance , l_param );
+        tracing :: trace ! ( "  args = {{lp_class_name = {:?}, lp_window_name = {:?}, dw_style = {:?}, x = {:?}, y = {:?}, n_width = {:?}, n_height = {:?}, h_wnd_parent = {:?}, h_instance = {:?}, l_param = {:?}}}" , lp_class_name , lp_window_name , dw_style , x , y , n_width , n_height , h_wnd_parent , h_instance , l_param );
         let res = api.CreateMDIWindowW(
             lp_class_name,
             lp_window_name,
@@ -40788,7 +40673,7 @@ extern "C" fn thunk_CreateMenu(context: &mut ExtendedContext, memory: FlatMemory
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CreateMenu");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.CreateMenu();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -40812,7 +40697,7 @@ extern "C" fn thunk_CreatePopupMenu(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CreatePopupMenu");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.CreatePopupMenu();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -40848,7 +40733,7 @@ extern "C" fn thunk_CreateWindowExA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CreateWindowExA");
         let _enter = span.enter();
-        tracing :: trace ! ( "dw_ex_style = {:?}, lp_class_name = {:?}, lp_window_name = {:?}, dw_style = {:?}, x = {:?}, y = {:?}, n_width = {:?}, n_height = {:?}, h_wnd_parent = {:?}, h_menu = {:?}, h_instance = {:?}, lp_param = {:?}" , dw_ex_style , lp_class_name , lp_window_name , dw_style , x , y , n_width , n_height , h_wnd_parent , h_menu , h_instance , lp_param );
+        tracing :: trace ! ( "  args = {{dw_ex_style = {:?}, lp_class_name = {:?}, lp_window_name = {:?}, dw_style = {:?}, x = {:?}, y = {:?}, n_width = {:?}, n_height = {:?}, h_wnd_parent = {:?}, h_menu = {:?}, h_instance = {:?}, lp_param = {:?}}}" , dw_ex_style , lp_class_name , lp_window_name , dw_style , x , y , n_width , n_height , h_wnd_parent , h_menu , h_instance , lp_param );
         let res = api.CreateWindowExA(
             dw_ex_style,
             lp_class_name,
@@ -40897,7 +40782,7 @@ extern "C" fn thunk_CreateWindowExW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("CreateWindowExW");
         let _enter = span.enter();
-        tracing :: trace ! ( "dw_ex_style = {:?}, lp_class_name = {:?}, lp_window_name = {:?}, dw_style = {:?}, x = {:?}, y = {:?}, n_width = {:?}, n_height = {:?}, h_wnd_parent = {:?}, h_menu = {:?}, h_instance = {:?}, lp_param = {:?}" , dw_ex_style , lp_class_name , lp_window_name , dw_style , x , y , n_width , n_height , h_wnd_parent , h_menu , h_instance , lp_param );
+        tracing :: trace ! ( "  args = {{dw_ex_style = {:?}, lp_class_name = {:?}, lp_window_name = {:?}, dw_style = {:?}, x = {:?}, y = {:?}, n_width = {:?}, n_height = {:?}, h_wnd_parent = {:?}, h_menu = {:?}, h_instance = {:?}, lp_param = {:?}}}" , dw_ex_style , lp_class_name , lp_window_name , dw_style , x , y , n_width , n_height , h_wnd_parent , h_menu , h_instance , lp_param );
         let res = api.CreateWindowExW(
             dw_ex_style,
             lp_class_name,
@@ -40936,7 +40821,7 @@ extern "C" fn thunk_DefDlgProcA(context: &mut ExtendedContext, memory: FlatMemor
         let span = tracing::trace_span!("DefDlgProcA");
         let _enter = span.enter();
         tracing::trace!(
-            "h_dlg = {:?}, msg = {:?}, w_param = {:?}, l_param = {:?}",
+            "  args = {{h_dlg = {:?}, msg = {:?}, w_param = {:?}, l_param = {:?}}}",
             h_dlg,
             msg,
             w_param,
@@ -40967,7 +40852,7 @@ extern "C" fn thunk_DefDlgProcW(context: &mut ExtendedContext, memory: FlatMemor
         let span = tracing::trace_span!("DefDlgProcW");
         let _enter = span.enter();
         tracing::trace!(
-            "h_dlg = {:?}, msg = {:?}, w_param = {:?}, l_param = {:?}",
+            "  args = {{h_dlg = {:?}, msg = {:?}, w_param = {:?}, l_param = {:?}}}",
             h_dlg,
             msg,
             w_param,
@@ -40998,14 +40883,7 @@ extern "C" fn thunk_DefFrameProcA(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("DefFrameProcA");
         let _enter = span.enter();
-        tracing::trace!(
-            "h_wnd = {:?}, h_wnd_mdi_client = {:?}, u_msg = {:?}, w_param = {:?}, l_param = {:?}",
-            h_wnd,
-            h_wnd_mdi_client,
-            u_msg,
-            w_param,
-            l_param
-        );
+        tracing :: trace ! ( "  args = {{h_wnd = {:?}, h_wnd_mdi_client = {:?}, u_msg = {:?}, w_param = {:?}, l_param = {:?}}}" , h_wnd , h_wnd_mdi_client , u_msg , w_param , l_param );
         let res = api.DefFrameProcA(h_wnd, h_wnd_mdi_client, u_msg, w_param, l_param);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -41031,14 +40909,7 @@ extern "C" fn thunk_DefFrameProcW(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("DefFrameProcW");
         let _enter = span.enter();
-        tracing::trace!(
-            "h_wnd = {:?}, h_wnd_mdi_client = {:?}, u_msg = {:?}, w_param = {:?}, l_param = {:?}",
-            h_wnd,
-            h_wnd_mdi_client,
-            u_msg,
-            w_param,
-            l_param
-        );
+        tracing :: trace ! ( "  args = {{h_wnd = {:?}, h_wnd_mdi_client = {:?}, u_msg = {:?}, w_param = {:?}, l_param = {:?}}}" , h_wnd , h_wnd_mdi_client , u_msg , w_param , l_param );
         let res = api.DefFrameProcW(h_wnd, h_wnd_mdi_client, u_msg, w_param, l_param);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -41067,7 +40938,7 @@ extern "C" fn thunk_DefMDIChildProcA(
         let span = tracing::trace_span!("DefMDIChildProcA");
         let _enter = span.enter();
         tracing::trace!(
-            "h_wnd = {:?}, u_msg = {:?}, w_param = {:?}, l_param = {:?}",
+            "  args = {{h_wnd = {:?}, u_msg = {:?}, w_param = {:?}, l_param = {:?}}}",
             h_wnd,
             u_msg,
             w_param,
@@ -41101,7 +40972,7 @@ extern "C" fn thunk_DefMDIChildProcW(
         let span = tracing::trace_span!("DefMDIChildProcW");
         let _enter = span.enter();
         tracing::trace!(
-            "h_wnd = {:?}, u_msg = {:?}, w_param = {:?}, l_param = {:?}",
+            "  args = {{h_wnd = {:?}, u_msg = {:?}, w_param = {:?}, l_param = {:?}}}",
             h_wnd,
             u_msg,
             w_param,
@@ -41135,7 +41006,7 @@ extern "C" fn thunk_DefWindowProcA(
         let span = tracing::trace_span!("DefWindowProcA");
         let _enter = span.enter();
         tracing::trace!(
-            "h_wnd = {:?}, msg = {:?}, w_param = {:?}, l_param = {:?}",
+            "  args = {{h_wnd = {:?}, msg = {:?}, w_param = {:?}, l_param = {:?}}}",
             h_wnd,
             msg,
             w_param,
@@ -41169,7 +41040,7 @@ extern "C" fn thunk_DefWindowProcW(
         let span = tracing::trace_span!("DefWindowProcW");
         let _enter = span.enter();
         tracing::trace!(
-            "h_wnd = {:?}, msg = {:?}, w_param = {:?}, l_param = {:?}",
+            "  args = {{h_wnd = {:?}, msg = {:?}, w_param = {:?}, l_param = {:?}}}",
             h_wnd,
             msg,
             w_param,
@@ -41206,7 +41077,7 @@ extern "C" fn thunk_DeferWindowPos(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("DeferWindowPos");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_win_pos_info = {:?}, h_wnd = {:?}, h_wnd_insert_after = {:?}, x = {:?}, y = {:?}, cx = {:?}, cy = {:?}, u_flags = {:?}" , h_win_pos_info , h_wnd , h_wnd_insert_after , x , y , cx , cy , u_flags );
+        tracing :: trace ! ( "  args = {{h_win_pos_info = {:?}, h_wnd = {:?}, h_wnd_insert_after = {:?}, x = {:?}, y = {:?}, cx = {:?}, cy = {:?}, u_flags = {:?}}}" , h_win_pos_info , h_wnd , h_wnd_insert_after , x , y , cx , cy , u_flags );
         let res = api.DeferWindowPos(
             h_win_pos_info,
             h_wnd,
@@ -41240,7 +41111,7 @@ extern "C" fn thunk_DeleteMenu(context: &mut ExtendedContext, memory: FlatMemory
         let span = tracing::trace_span!("DeleteMenu");
         let _enter = span.enter();
         tracing::trace!(
-            "h_menu = {:?}, u_position = {:?}, u_flags = {:?}",
+            "  args = {{h_menu = {:?}, u_position = {:?}, u_flags = {:?}}}",
             h_menu,
             u_position,
             u_flags
@@ -41269,7 +41140,7 @@ extern "C" fn thunk_DeregisterShellHookWindow(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("DeregisterShellHookWindow");
         let _enter = span.enter();
-        tracing::trace!("hwnd = {:?}", hwnd);
+        tracing::trace!("  args = {{hwnd = {:?}}}", hwnd);
         let res = api.DeregisterShellHookWindow(hwnd);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -41294,7 +41165,7 @@ extern "C" fn thunk_DestroyAcceleratorTable(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("DestroyAcceleratorTable");
         let _enter = span.enter();
-        tracing::trace!("h_accel = {:?}", h_accel);
+        tracing::trace!("  args = {{h_accel = {:?}}}", h_accel);
         let res = api.DestroyAcceleratorTable(h_accel);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -41315,7 +41186,7 @@ extern "C" fn thunk_DestroyCaret(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("DestroyCaret");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.DestroyCaret();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -41337,7 +41208,7 @@ extern "C" fn thunk_DestroyCursor(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("DestroyCursor");
         let _enter = span.enter();
-        tracing::trace!("h_cursor = {:?}", h_cursor);
+        tracing::trace!("  args = {{h_cursor = {:?}}}", h_cursor);
         let res = api.DestroyCursor(h_cursor);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -41359,7 +41230,7 @@ extern "C" fn thunk_DestroyIcon(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("DestroyIcon");
         let _enter = span.enter();
-        tracing::trace!("h_icon = {:?}", h_icon);
+        tracing::trace!("  args = {{h_icon = {:?}}}", h_icon);
         let res = api.DestroyIcon(h_icon);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -41381,7 +41252,7 @@ extern "C" fn thunk_DestroyMenu(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("DestroyMenu");
         let _enter = span.enter();
-        tracing::trace!("h_menu = {:?}", h_menu);
+        tracing::trace!("  args = {{h_menu = {:?}}}", h_menu);
         let res = api.DestroyMenu(h_menu);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -41403,7 +41274,7 @@ extern "C" fn thunk_DestroyWindow(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("DestroyWindow");
         let _enter = span.enter();
-        tracing::trace!("h_wnd = {:?}", h_wnd);
+        tracing::trace!("  args = {{h_wnd = {:?}}}", h_wnd);
         let res = api.DestroyWindow(h_wnd);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -41432,7 +41303,7 @@ extern "C" fn thunk_DialogBoxIndirectParamA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("DialogBoxIndirectParamA");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_instance = {:?}, h_dialog_template = {:?}, h_wnd_parent = {:?}, lp_dialog_func = {:?}, dw_init_param = {:?}" , h_instance , h_dialog_template , h_wnd_parent , lp_dialog_func , dw_init_param );
+        tracing :: trace ! ( "  args = {{h_instance = {:?}, h_dialog_template = {:?}, h_wnd_parent = {:?}, lp_dialog_func = {:?}, dw_init_param = {:?}}}" , h_instance , h_dialog_template , h_wnd_parent , lp_dialog_func , dw_init_param );
         let res = api.DialogBoxIndirectParamA(
             h_instance,
             h_dialog_template,
@@ -41467,7 +41338,7 @@ extern "C" fn thunk_DialogBoxIndirectParamW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("DialogBoxIndirectParamW");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_instance = {:?}, h_dialog_template = {:?}, h_wnd_parent = {:?}, lp_dialog_func = {:?}, dw_init_param = {:?}" , h_instance , h_dialog_template , h_wnd_parent , lp_dialog_func , dw_init_param );
+        tracing :: trace ! ( "  args = {{h_instance = {:?}, h_dialog_template = {:?}, h_wnd_parent = {:?}, lp_dialog_func = {:?}, dw_init_param = {:?}}}" , h_instance , h_dialog_template , h_wnd_parent , lp_dialog_func , dw_init_param );
         let res = api.DialogBoxIndirectParamW(
             h_instance,
             h_dialog_template,
@@ -41502,7 +41373,7 @@ extern "C" fn thunk_DialogBoxParamA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("DialogBoxParamA");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_instance = {:?}, lp_template_name = {:?}, h_wnd_parent = {:?}, lp_dialog_func = {:?}, dw_init_param = {:?}" , h_instance , lp_template_name , h_wnd_parent , lp_dialog_func , dw_init_param );
+        tracing :: trace ! ( "  args = {{h_instance = {:?}, lp_template_name = {:?}, h_wnd_parent = {:?}, lp_dialog_func = {:?}, dw_init_param = {:?}}}" , h_instance , lp_template_name , h_wnd_parent , lp_dialog_func , dw_init_param );
         let res = api.DialogBoxParamA(
             h_instance,
             lp_template_name,
@@ -41537,7 +41408,7 @@ extern "C" fn thunk_DialogBoxParamW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("DialogBoxParamW");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_instance = {:?}, lp_template_name = {:?}, h_wnd_parent = {:?}, lp_dialog_func = {:?}, dw_init_param = {:?}" , h_instance , lp_template_name , h_wnd_parent , lp_dialog_func , dw_init_param );
+        tracing :: trace ! ( "  args = {{h_instance = {:?}, lp_template_name = {:?}, h_wnd_parent = {:?}, lp_dialog_func = {:?}, dw_init_param = {:?}}}" , h_instance , lp_template_name , h_wnd_parent , lp_dialog_func , dw_init_param );
         let res = api.DialogBoxParamW(
             h_instance,
             lp_template_name,
@@ -41567,7 +41438,7 @@ extern "C" fn thunk_DisableProcessWindowsGhosting(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("DisableProcessWindowsGhosting");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.DisableProcessWindowsGhosting();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -41592,7 +41463,7 @@ extern "C" fn thunk_DispatchMessageA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("DispatchMessageA");
         let _enter = span.enter();
-        tracing::trace!("lp_msg = {:?}", lp_msg);
+        tracing::trace!("  args = {{lp_msg = {:?}}}", lp_msg);
         let res = api.DispatchMessageA(lp_msg);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -41617,7 +41488,7 @@ extern "C" fn thunk_DispatchMessageW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("DispatchMessageW");
         let _enter = span.enter();
-        tracing::trace!("lp_msg = {:?}", lp_msg);
+        tracing::trace!("  args = {{lp_msg = {:?}}}", lp_msg);
         let res = api.DispatchMessageW(lp_msg);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -41643,14 +41514,7 @@ extern "C" fn thunk_DragObject(context: &mut ExtendedContext, memory: FlatMemory
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("DragObject");
         let _enter = span.enter();
-        tracing::trace!(
-            "hwnd_parent = {:?}, hwnd_from = {:?}, fmt = {:?}, data = {:?}, hcur = {:?}",
-            hwnd_parent,
-            hwnd_from,
-            fmt,
-            data,
-            hcur
-        );
+        tracing :: trace ! ( "  args = {{hwnd_parent = {:?}, hwnd_from = {:?}, fmt = {:?}, data = {:?}, hcur = {:?}}}" , hwnd_parent , hwnd_from , fmt , data , hcur );
         let res = api.DragObject(hwnd_parent, hwnd_from, fmt, data, hcur);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -41672,7 +41536,7 @@ extern "C" fn thunk_DrawMenuBar(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("DrawMenuBar");
         let _enter = span.enter();
-        tracing::trace!("h_wnd = {:?}", h_wnd);
+        tracing::trace!("  args = {{h_wnd = {:?}}}", h_wnd);
         let res = api.DrawMenuBar(h_wnd);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -41700,7 +41564,7 @@ extern "C" fn thunk_EnableMenuItem(
         let span = tracing::trace_span!("EnableMenuItem");
         let _enter = span.enter();
         tracing::trace!(
-            "h_menu = {:?}, u_id_enable_item = {:?}, u_enable = {:?}",
+            "  args = {{h_menu = {:?}, u_id_enable_item = {:?}, u_enable = {:?}}}",
             h_menu,
             u_id_enable_item,
             u_enable
@@ -41729,7 +41593,7 @@ extern "C" fn thunk_EndDeferWindowPos(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("EndDeferWindowPos");
         let _enter = span.enter();
-        tracing::trace!("h_win_pos_info = {:?}", h_win_pos_info);
+        tracing::trace!("  args = {{h_win_pos_info = {:?}}}", h_win_pos_info);
         let res = api.EndDeferWindowPos(h_win_pos_info);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -41752,7 +41616,11 @@ extern "C" fn thunk_EndDialog(context: &mut ExtendedContext, memory: FlatMemoryC
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("EndDialog");
         let _enter = span.enter();
-        tracing::trace!("h_dlg = {:?}, n_result = {:?}", h_dlg, n_result);
+        tracing::trace!(
+            "  args = {{h_dlg = {:?}, n_result = {:?}}}",
+            h_dlg,
+            n_result
+        );
         let res = api.EndDialog(h_dlg, n_result);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -41773,7 +41641,7 @@ extern "C" fn thunk_EndMenu(context: &mut ExtendedContext, memory: FlatMemoryCtx
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("EndMenu");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.EndMenu();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -41801,7 +41669,7 @@ extern "C" fn thunk_EnumChildWindows(
         let span = tracing::trace_span!("EnumChildWindows");
         let _enter = span.enter();
         tracing::trace!(
-            "h_wnd_parent = {:?}, lp_enum_func = {:?}, l_param = {:?}",
+            "  args = {{h_wnd_parent = {:?}, lp_enum_func = {:?}, l_param = {:?}}}",
             h_wnd_parent,
             lp_enum_func,
             l_param
@@ -41828,7 +41696,11 @@ extern "C" fn thunk_EnumPropsA(context: &mut ExtendedContext, memory: FlatMemory
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("EnumPropsA");
         let _enter = span.enter();
-        tracing::trace!("h_wnd = {:?}, lp_enum_func = {:?}", h_wnd, lp_enum_func);
+        tracing::trace!(
+            "  args = {{h_wnd = {:?}, lp_enum_func = {:?}}}",
+            h_wnd,
+            lp_enum_func
+        );
         let res = api.EnumPropsA(h_wnd, lp_enum_func);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -41853,7 +41725,7 @@ extern "C" fn thunk_EnumPropsExA(context: &mut ExtendedContext, memory: FlatMemo
         let span = tracing::trace_span!("EnumPropsExA");
         let _enter = span.enter();
         tracing::trace!(
-            "h_wnd = {:?}, lp_enum_func = {:?}, l_param = {:?}",
+            "  args = {{h_wnd = {:?}, lp_enum_func = {:?}, l_param = {:?}}}",
             h_wnd,
             lp_enum_func,
             l_param
@@ -41882,7 +41754,7 @@ extern "C" fn thunk_EnumPropsExW(context: &mut ExtendedContext, memory: FlatMemo
         let span = tracing::trace_span!("EnumPropsExW");
         let _enter = span.enter();
         tracing::trace!(
-            "h_wnd = {:?}, lp_enum_func = {:?}, l_param = {:?}",
+            "  args = {{h_wnd = {:?}, lp_enum_func = {:?}, l_param = {:?}}}",
             h_wnd,
             lp_enum_func,
             l_param
@@ -41909,7 +41781,11 @@ extern "C" fn thunk_EnumPropsW(context: &mut ExtendedContext, memory: FlatMemory
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("EnumPropsW");
         let _enter = span.enter();
-        tracing::trace!("h_wnd = {:?}, lp_enum_func = {:?}", h_wnd, lp_enum_func);
+        tracing::trace!(
+            "  args = {{h_wnd = {:?}, lp_enum_func = {:?}}}",
+            h_wnd,
+            lp_enum_func
+        );
         let res = api.EnumPropsW(h_wnd, lp_enum_func);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -41937,7 +41813,7 @@ extern "C" fn thunk_EnumThreadWindows(
         let span = tracing::trace_span!("EnumThreadWindows");
         let _enter = span.enter();
         tracing::trace!(
-            "dw_thread_id = {:?}, lpfn = {:?}, l_param = {:?}",
+            "  args = {{dw_thread_id = {:?}, lpfn = {:?}, l_param = {:?}}}",
             dw_thread_id,
             lpfn,
             l_param
@@ -41964,7 +41840,11 @@ extern "C" fn thunk_EnumWindows(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("EnumWindows");
         let _enter = span.enter();
-        tracing::trace!("lp_enum_func = {:?}, l_param = {:?}", lp_enum_func, l_param);
+        tracing::trace!(
+            "  args = {{lp_enum_func = {:?}, l_param = {:?}}}",
+            lp_enum_func,
+            l_param
+        );
         let res = api.EnumWindows(lp_enum_func, l_param);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -41988,7 +41868,7 @@ extern "C" fn thunk_FindWindowA(context: &mut ExtendedContext, memory: FlatMemor
         let span = tracing::trace_span!("FindWindowA");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_class_name = {:?}, lp_window_name = {:?}",
+            "  args = {{lp_class_name = {:?}, lp_window_name = {:?}}}",
             lp_class_name,
             lp_window_name
         );
@@ -42016,13 +41896,7 @@ extern "C" fn thunk_FindWindowExA(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("FindWindowExA");
         let _enter = span.enter();
-        tracing::trace!(
-            "h_wnd_parent = {:?}, h_wnd_child_after = {:?}, lpsz_class = {:?}, lpsz_window = {:?}",
-            h_wnd_parent,
-            h_wnd_child_after,
-            lpsz_class,
-            lpsz_window
-        );
+        tracing :: trace ! ( "  args = {{h_wnd_parent = {:?}, h_wnd_child_after = {:?}, lpsz_class = {:?}, lpsz_window = {:?}}}" , h_wnd_parent , h_wnd_child_after , lpsz_class , lpsz_window );
         let res = api.FindWindowExA(h_wnd_parent, h_wnd_child_after, lpsz_class, lpsz_window);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -42047,13 +41921,7 @@ extern "C" fn thunk_FindWindowExW(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("FindWindowExW");
         let _enter = span.enter();
-        tracing::trace!(
-            "h_wnd_parent = {:?}, h_wnd_child_after = {:?}, lpsz_class = {:?}, lpsz_window = {:?}",
-            h_wnd_parent,
-            h_wnd_child_after,
-            lpsz_class,
-            lpsz_window
-        );
+        tracing :: trace ! ( "  args = {{h_wnd_parent = {:?}, h_wnd_child_after = {:?}, lpsz_class = {:?}, lpsz_window = {:?}}}" , h_wnd_parent , h_wnd_child_after , lpsz_class , lpsz_window );
         let res = api.FindWindowExW(h_wnd_parent, h_wnd_child_after, lpsz_class, lpsz_window);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -42077,7 +41945,7 @@ extern "C" fn thunk_FindWindowW(context: &mut ExtendedContext, memory: FlatMemor
         let span = tracing::trace_span!("FindWindowW");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_class_name = {:?}, lp_window_name = {:?}",
+            "  args = {{lp_class_name = {:?}, lp_window_name = {:?}}}",
             lp_class_name,
             lp_window_name
         );
@@ -42103,7 +41971,11 @@ extern "C" fn thunk_FlashWindow(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("FlashWindow");
         let _enter = span.enter();
-        tracing::trace!("h_wnd = {:?}, b_invert = {:?}", h_wnd, b_invert);
+        tracing::trace!(
+            "  args = {{h_wnd = {:?}, b_invert = {:?}}}",
+            h_wnd,
+            b_invert
+        );
         let res = api.FlashWindow(h_wnd, b_invert);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -42125,7 +41997,7 @@ extern "C" fn thunk_FlashWindowEx(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("FlashWindowEx");
         let _enter = span.enter();
-        tracing::trace!("pfwi = {:?}", pfwi);
+        tracing::trace!("  args = {{pfwi = {:?}}}", pfwi);
         let res = api.FlashWindowEx(pfwi);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -42154,14 +42026,7 @@ extern "C" fn thunk_GetAltTabInfoA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetAltTabInfoA");
         let _enter = span.enter();
-        tracing::trace!(
-            "hwnd = {:?}, i_item = {:?}, pati = {:?}, psz_item_text = {:?}, cch_item_text = {:?}",
-            hwnd,
-            i_item,
-            pati,
-            psz_item_text,
-            cch_item_text
-        );
+        tracing :: trace ! ( "  args = {{hwnd = {:?}, i_item = {:?}, pati = {:?}, psz_item_text = {:?}, cch_item_text = {:?}}}" , hwnd , i_item , pati , psz_item_text , cch_item_text );
         let res = api.GetAltTabInfoA(hwnd, i_item, pati, psz_item_text, cch_item_text);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -42190,14 +42055,7 @@ extern "C" fn thunk_GetAltTabInfoW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetAltTabInfoW");
         let _enter = span.enter();
-        tracing::trace!(
-            "hwnd = {:?}, i_item = {:?}, pati = {:?}, psz_item_text = {:?}, cch_item_text = {:?}",
-            hwnd,
-            i_item,
-            pati,
-            psz_item_text,
-            cch_item_text
-        );
+        tracing :: trace ! ( "  args = {{hwnd = {:?}, i_item = {:?}, pati = {:?}, psz_item_text = {:?}, cch_item_text = {:?}}}" , hwnd , i_item , pati , psz_item_text , cch_item_text );
         let res = api.GetAltTabInfoW(hwnd, i_item, pati, psz_item_text, cch_item_text);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -42220,7 +42078,7 @@ extern "C" fn thunk_GetAncestor(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetAncestor");
         let _enter = span.enter();
-        tracing::trace!("hwnd = {:?}, ga_flags = {:?}", hwnd, ga_flags);
+        tracing::trace!("  args = {{hwnd = {:?}, ga_flags = {:?}}}", hwnd, ga_flags);
         let res = api.GetAncestor(hwnd, ga_flags);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -42244,7 +42102,7 @@ extern "C" fn thunk_GetCaretBlinkTime(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetCaretBlinkTime");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.GetCaretBlinkTime();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -42266,7 +42124,7 @@ extern "C" fn thunk_GetCaretPos(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetCaretPos");
         let _enter = span.enter();
-        tracing::trace!("lp_point = {:?}", lp_point);
+        tracing::trace!("  args = {{lp_point = {:?}}}", lp_point);
         let res = api.GetCaretPos(lp_point);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -42289,7 +42147,7 @@ extern "C" fn thunk_GetClassLongA(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetClassLongA");
         let _enter = span.enter();
-        tracing::trace!("h_wnd = {:?}, n_index = {:?}", h_wnd, n_index);
+        tracing::trace!("  args = {{h_wnd = {:?}, n_index = {:?}}}", h_wnd, n_index);
         let res = api.GetClassLongA(h_wnd, n_index);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -42312,7 +42170,7 @@ extern "C" fn thunk_GetClassLongW(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetClassLongW");
         let _enter = span.enter();
-        tracing::trace!("h_wnd = {:?}, n_index = {:?}", h_wnd, n_index);
+        tracing::trace!("  args = {{h_wnd = {:?}, n_index = {:?}}}", h_wnd, n_index);
         let res = api.GetClassLongW(h_wnd, n_index);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -42337,7 +42195,7 @@ extern "C" fn thunk_GetClassNameA(context: &mut ExtendedContext, memory: FlatMem
         let span = tracing::trace_span!("GetClassNameA");
         let _enter = span.enter();
         tracing::trace!(
-            "h_wnd = {:?}, lp_class_name = {:?}, n_max_count = {:?}",
+            "  args = {{h_wnd = {:?}, lp_class_name = {:?}, n_max_count = {:?}}}",
             h_wnd,
             lp_class_name,
             n_max_count
@@ -42366,7 +42224,7 @@ extern "C" fn thunk_GetClassNameW(context: &mut ExtendedContext, memory: FlatMem
         let span = tracing::trace_span!("GetClassNameW");
         let _enter = span.enter();
         tracing::trace!(
-            "h_wnd = {:?}, lp_class_name = {:?}, n_max_count = {:?}",
+            "  args = {{h_wnd = {:?}, lp_class_name = {:?}, n_max_count = {:?}}}",
             h_wnd,
             lp_class_name,
             n_max_count
@@ -42393,7 +42251,7 @@ extern "C" fn thunk_GetClassWord(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetClassWord");
         let _enter = span.enter();
-        tracing::trace!("h_wnd = {:?}, n_index = {:?}", h_wnd, n_index);
+        tracing::trace!("  args = {{h_wnd = {:?}, n_index = {:?}}}", h_wnd, n_index);
         let res = api.GetClassWord(h_wnd, n_index);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -42416,7 +42274,7 @@ extern "C" fn thunk_GetClientRect(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetClientRect");
         let _enter = span.enter();
-        tracing::trace!("h_wnd = {:?}, lp_rect = {:?}", h_wnd, lp_rect);
+        tracing::trace!("  args = {{h_wnd = {:?}, lp_rect = {:?}}}", h_wnd, lp_rect);
         let res = api.GetClientRect(h_wnd, lp_rect);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -42438,7 +42296,7 @@ extern "C" fn thunk_GetClipCursor(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetClipCursor");
         let _enter = span.enter();
-        tracing::trace!("lp_rect = {:?}", lp_rect);
+        tracing::trace!("  args = {{lp_rect = {:?}}}", lp_rect);
         let res = api.GetClipCursor(lp_rect);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -42459,7 +42317,7 @@ extern "C" fn thunk_GetCursor(context: &mut ExtendedContext, memory: FlatMemoryC
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetCursor");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.GetCursor();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -42481,7 +42339,7 @@ extern "C" fn thunk_GetCursorInfo(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetCursorInfo");
         let _enter = span.enter();
-        tracing::trace!("pci = {:?}", pci);
+        tracing::trace!("  args = {{pci = {:?}}}", pci);
         let res = api.GetCursorInfo(pci);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -42503,7 +42361,7 @@ extern "C" fn thunk_GetCursorPos(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetCursorPos");
         let _enter = span.enter();
-        tracing::trace!("lp_point = {:?}", lp_point);
+        tracing::trace!("  args = {{lp_point = {:?}}}", lp_point);
         let res = api.GetCursorPos(lp_point);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -42527,7 +42385,7 @@ extern "C" fn thunk_GetDesktopWindow(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetDesktopWindow");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.GetDesktopWindow();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -42551,7 +42409,7 @@ extern "C" fn thunk_GetDialogBaseUnits(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetDialogBaseUnits");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.GetDialogBaseUnits();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -42573,7 +42431,7 @@ extern "C" fn thunk_GetDlgCtrlID(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetDlgCtrlID");
         let _enter = span.enter();
-        tracing::trace!("h_wnd = {:?}", h_wnd);
+        tracing::trace!("  args = {{h_wnd = {:?}}}", h_wnd);
         let res = api.GetDlgCtrlID(h_wnd);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -42596,7 +42454,11 @@ extern "C" fn thunk_GetDlgItem(context: &mut ExtendedContext, memory: FlatMemory
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetDlgItem");
         let _enter = span.enter();
-        tracing::trace!("h_dlg = {:?}, n_id_dlg_item = {:?}", h_dlg, n_id_dlg_item);
+        tracing::trace!(
+            "  args = {{h_dlg = {:?}, n_id_dlg_item = {:?}}}",
+            h_dlg,
+            n_id_dlg_item
+        );
         let res = api.GetDlgItem(h_dlg, n_id_dlg_item);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -42621,13 +42483,7 @@ extern "C" fn thunk_GetDlgItemInt(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetDlgItemInt");
         let _enter = span.enter();
-        tracing::trace!(
-            "h_dlg = {:?}, n_id_dlg_item = {:?}, lp_translated = {:?}, b_signed = {:?}",
-            h_dlg,
-            n_id_dlg_item,
-            lp_translated,
-            b_signed
-        );
+        tracing :: trace ! ( "  args = {{h_dlg = {:?}, n_id_dlg_item = {:?}, lp_translated = {:?}, b_signed = {:?}}}" , h_dlg , n_id_dlg_item , lp_translated , b_signed );
         let res = api.GetDlgItemInt(h_dlg, n_id_dlg_item, lp_translated, b_signed);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -42656,7 +42512,7 @@ extern "C" fn thunk_GetDlgItemTextA(
         let span = tracing::trace_span!("GetDlgItemTextA");
         let _enter = span.enter();
         tracing::trace!(
-            "h_dlg = {:?}, n_id_dlg_item = {:?}, lp_string = {:?}, cch_max = {:?}",
+            "  args = {{h_dlg = {:?}, n_id_dlg_item = {:?}, lp_string = {:?}, cch_max = {:?}}}",
             h_dlg,
             n_id_dlg_item,
             lp_string,
@@ -42690,7 +42546,7 @@ extern "C" fn thunk_GetDlgItemTextW(
         let span = tracing::trace_span!("GetDlgItemTextW");
         let _enter = span.enter();
         tracing::trace!(
-            "h_dlg = {:?}, n_id_dlg_item = {:?}, lp_string = {:?}, cch_max = {:?}",
+            "  args = {{h_dlg = {:?}, n_id_dlg_item = {:?}, lp_string = {:?}, cch_max = {:?}}}",
             h_dlg,
             n_id_dlg_item,
             lp_string,
@@ -42719,7 +42575,7 @@ extern "C" fn thunk_GetForegroundWindow(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetForegroundWindow");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.GetForegroundWindow();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -42745,7 +42601,11 @@ extern "C" fn thunk_GetGUIThreadInfo(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetGUIThreadInfo");
         let _enter = span.enter();
-        tracing::trace!("id_thread = {:?}, pgui = {:?}", id_thread, pgui);
+        tracing::trace!(
+            "  args = {{id_thread = {:?}, pgui = {:?}}}",
+            id_thread,
+            pgui
+        );
         let res = api.GetGUIThreadInfo(id_thread, pgui);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -42766,7 +42626,7 @@ extern "C" fn thunk_GetInputState(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetInputState");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.GetInputState();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -42791,7 +42651,7 @@ extern "C" fn thunk_GetLastActivePopup(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetLastActivePopup");
         let _enter = span.enter();
-        tracing::trace!("h_wnd = {:?}", h_wnd);
+        tracing::trace!("  args = {{h_wnd = {:?}}}", h_wnd);
         let res = api.GetLastActivePopup(h_wnd);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -42820,7 +42680,7 @@ extern "C" fn thunk_GetLayeredWindowAttributes(
         let span = tracing::trace_span!("GetLayeredWindowAttributes");
         let _enter = span.enter();
         tracing::trace!(
-            "hwnd = {:?}, pcr_key = {:?}, pb_alpha = {:?}, pdw_flags = {:?}",
+            "  args = {{hwnd = {:?}, pcr_key = {:?}, pb_alpha = {:?}, pdw_flags = {:?}}}",
             hwnd,
             pcr_key,
             pb_alpha,
@@ -42847,7 +42707,7 @@ extern "C" fn thunk_GetMenu(context: &mut ExtendedContext, memory: FlatMemoryCtx
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetMenu");
         let _enter = span.enter();
-        tracing::trace!("h_wnd = {:?}", h_wnd);
+        tracing::trace!("  args = {{h_wnd = {:?}}}", h_wnd);
         let res = api.GetMenu(h_wnd);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -42876,7 +42736,7 @@ extern "C" fn thunk_GetMenuBarInfo(
         let span = tracing::trace_span!("GetMenuBarInfo");
         let _enter = span.enter();
         tracing::trace!(
-            "hwnd = {:?}, id_object = {:?}, id_item = {:?}, pmbi = {:?}",
+            "  args = {{hwnd = {:?}, id_object = {:?}, id_item = {:?}, pmbi = {:?}}}",
             hwnd,
             id_object,
             id_item,
@@ -42905,7 +42765,7 @@ extern "C" fn thunk_GetMenuCheckMarkDimensions(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetMenuCheckMarkDimensions");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.GetMenuCheckMarkDimensions();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -42933,7 +42793,7 @@ extern "C" fn thunk_GetMenuDefaultItem(
         let span = tracing::trace_span!("GetMenuDefaultItem");
         let _enter = span.enter();
         tracing::trace!(
-            "h_menu = {:?}, f_by_pos = {:?}, gmdi_flags = {:?}",
+            "  args = {{h_menu = {:?}, f_by_pos = {:?}, gmdi_flags = {:?}}}",
             h_menu,
             f_by_pos,
             gmdi_flags
@@ -42962,7 +42822,7 @@ extern "C" fn thunk_GetMenuItemCount(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetMenuItemCount");
         let _enter = span.enter();
-        tracing::trace!("h_menu = {:?}", h_menu);
+        tracing::trace!("  args = {{h_menu = {:?}}}", h_menu);
         let res = api.GetMenuItemCount(h_menu);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -42985,7 +42845,7 @@ extern "C" fn thunk_GetMenuItemID(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetMenuItemID");
         let _enter = span.enter();
-        tracing::trace!("h_menu = {:?}, n_pos = {:?}", h_menu, n_pos);
+        tracing::trace!("  args = {{h_menu = {:?}, n_pos = {:?}}}", h_menu, n_pos);
         let res = api.GetMenuItemID(h_menu, n_pos);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -43014,7 +42874,7 @@ extern "C" fn thunk_GetMenuItemRect(
         let span = tracing::trace_span!("GetMenuItemRect");
         let _enter = span.enter();
         tracing::trace!(
-            "h_wnd = {:?}, h_menu = {:?}, u_item = {:?}, lprc_item = {:?}",
+            "  args = {{h_wnd = {:?}, h_menu = {:?}, u_item = {:?}, lprc_item = {:?}}}",
             h_wnd,
             h_menu,
             u_item,
@@ -43044,7 +42904,7 @@ extern "C" fn thunk_GetMenuState(context: &mut ExtendedContext, memory: FlatMemo
         let span = tracing::trace_span!("GetMenuState");
         let _enter = span.enter();
         tracing::trace!(
-            "h_menu = {:?}, u_id = {:?}, u_flags = {:?}",
+            "  args = {{h_menu = {:?}, u_id = {:?}, u_flags = {:?}}}",
             h_menu,
             u_id,
             u_flags
@@ -43077,14 +42937,7 @@ extern "C" fn thunk_GetMenuStringA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetMenuStringA");
         let _enter = span.enter();
-        tracing::trace!(
-            "h_menu = {:?}, u_id_item = {:?}, lp_string = {:?}, cch_max = {:?}, flags = {:?}",
-            h_menu,
-            u_id_item,
-            lp_string,
-            cch_max,
-            flags
-        );
+        tracing :: trace ! ( "  args = {{h_menu = {:?}, u_id_item = {:?}, lp_string = {:?}, cch_max = {:?}, flags = {:?}}}" , h_menu , u_id_item , lp_string , cch_max , flags );
         let res = api.GetMenuStringA(h_menu, u_id_item, lp_string, cch_max, flags);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -43113,14 +42966,7 @@ extern "C" fn thunk_GetMenuStringW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetMenuStringW");
         let _enter = span.enter();
-        tracing::trace!(
-            "h_menu = {:?}, u_id_item = {:?}, lp_string = {:?}, cch_max = {:?}, flags = {:?}",
-            h_menu,
-            u_id_item,
-            lp_string,
-            cch_max,
-            flags
-        );
+        tracing :: trace ! ( "  args = {{h_menu = {:?}, u_id_item = {:?}, lp_string = {:?}, cch_max = {:?}, flags = {:?}}}" , h_menu , u_id_item , lp_string , cch_max , flags );
         let res = api.GetMenuStringW(h_menu, u_id_item, lp_string, cch_max, flags);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -43145,13 +42991,7 @@ extern "C" fn thunk_GetMessageA(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetMessageA");
         let _enter = span.enter();
-        tracing::trace!(
-            "lp_msg = {:?}, h_wnd = {:?}, w_msg_filter_min = {:?}, w_msg_filter_max = {:?}",
-            lp_msg,
-            h_wnd,
-            w_msg_filter_min,
-            w_msg_filter_max
-        );
+        tracing :: trace ! ( "  args = {{lp_msg = {:?}, h_wnd = {:?}, w_msg_filter_min = {:?}, w_msg_filter_max = {:?}}}" , lp_msg , h_wnd , w_msg_filter_min , w_msg_filter_max );
         let res = api.GetMessageA(lp_msg, h_wnd, w_msg_filter_min, w_msg_filter_max);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -43175,7 +43015,7 @@ extern "C" fn thunk_GetMessageExtraInfo(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetMessageExtraInfo");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.GetMessageExtraInfo();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -43196,7 +43036,7 @@ extern "C" fn thunk_GetMessagePos(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetMessagePos");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.GetMessagePos();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -43220,7 +43060,7 @@ extern "C" fn thunk_GetMessageTime(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetMessageTime");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.GetMessageTime();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -43245,13 +43085,7 @@ extern "C" fn thunk_GetMessageW(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetMessageW");
         let _enter = span.enter();
-        tracing::trace!(
-            "lp_msg = {:?}, h_wnd = {:?}, w_msg_filter_min = {:?}, w_msg_filter_max = {:?}",
-            lp_msg,
-            h_wnd,
-            w_msg_filter_min,
-            w_msg_filter_max
-        );
+        tracing :: trace ! ( "  args = {{lp_msg = {:?}, h_wnd = {:?}, w_msg_filter_min = {:?}, w_msg_filter_max = {:?}}}" , lp_msg , h_wnd , w_msg_filter_min , w_msg_filter_max );
         let res = api.GetMessageW(lp_msg, h_wnd, w_msg_filter_min, w_msg_filter_max);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -43279,7 +43113,7 @@ extern "C" fn thunk_GetNextDlgGroupItem(
         let span = tracing::trace_span!("GetNextDlgGroupItem");
         let _enter = span.enter();
         tracing::trace!(
-            "h_dlg = {:?}, h_ctl = {:?}, b_previous = {:?}",
+            "  args = {{h_dlg = {:?}, h_ctl = {:?}, b_previous = {:?}}}",
             h_dlg,
             h_ctl,
             b_previous
@@ -43311,7 +43145,7 @@ extern "C" fn thunk_GetNextDlgTabItem(
         let span = tracing::trace_span!("GetNextDlgTabItem");
         let _enter = span.enter();
         tracing::trace!(
-            "h_dlg = {:?}, h_ctl = {:?}, b_previous = {:?}",
+            "  args = {{h_dlg = {:?}, h_ctl = {:?}, b_previous = {:?}}}",
             h_dlg,
             h_ctl,
             b_previous
@@ -43337,7 +43171,7 @@ extern "C" fn thunk_GetParent(context: &mut ExtendedContext, memory: FlatMemoryC
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetParent");
         let _enter = span.enter();
-        tracing::trace!("h_wnd = {:?}", h_wnd);
+        tracing::trace!("  args = {{h_wnd = {:?}}}", h_wnd);
         let res = api.GetParent(h_wnd);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -43362,7 +43196,7 @@ extern "C" fn thunk_GetPhysicalCursorPos(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetPhysicalCursorPos");
         let _enter = span.enter();
-        tracing::trace!("lp_point = {:?}", lp_point);
+        tracing::trace!("  args = {{lp_point = {:?}}}", lp_point);
         let res = api.GetPhysicalCursorPos(lp_point);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -43387,7 +43221,7 @@ extern "C" fn thunk_GetProcessDefaultLayout(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetProcessDefaultLayout");
         let _enter = span.enter();
-        tracing::trace!("pdw_default_layout = {:?}", pdw_default_layout);
+        tracing::trace!("  args = {{pdw_default_layout = {:?}}}", pdw_default_layout);
         let res = api.GetProcessDefaultLayout(pdw_default_layout);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -43410,7 +43244,11 @@ extern "C" fn thunk_GetPropA(context: &mut ExtendedContext, memory: FlatMemoryCt
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetPropA");
         let _enter = span.enter();
-        tracing::trace!("h_wnd = {:?}, lp_string = {:?}", h_wnd, lp_string);
+        tracing::trace!(
+            "  args = {{h_wnd = {:?}, lp_string = {:?}}}",
+            h_wnd,
+            lp_string
+        );
         let res = api.GetPropA(h_wnd, lp_string);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -43433,7 +43271,11 @@ extern "C" fn thunk_GetPropW(context: &mut ExtendedContext, memory: FlatMemoryCt
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetPropW");
         let _enter = span.enter();
-        tracing::trace!("h_wnd = {:?}, lp_string = {:?}", h_wnd, lp_string);
+        tracing::trace!(
+            "  args = {{h_wnd = {:?}, lp_string = {:?}}}",
+            h_wnd,
+            lp_string
+        );
         let res = api.GetPropW(h_wnd, lp_string);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -43458,7 +43300,7 @@ extern "C" fn thunk_GetQueueStatus(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetQueueStatus");
         let _enter = span.enter();
-        tracing::trace!("flags = {:?}", flags);
+        tracing::trace!("  args = {{flags = {:?}}}", flags);
         let res = api.GetQueueStatus(flags);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -43486,7 +43328,7 @@ extern "C" fn thunk_GetScrollBarInfo(
         let span = tracing::trace_span!("GetScrollBarInfo");
         let _enter = span.enter();
         tracing::trace!(
-            "hwnd = {:?}, id_object = {:?}, psbi = {:?}",
+            "  args = {{hwnd = {:?}, id_object = {:?}, psbi = {:?}}}",
             hwnd,
             id_object,
             psbi
@@ -43514,7 +43356,12 @@ extern "C" fn thunk_GetScrollInfo(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetScrollInfo");
         let _enter = span.enter();
-        tracing::trace!("hwnd = {:?}, n_bar = {:?}, lpsi = {:?}", hwnd, n_bar, lpsi);
+        tracing::trace!(
+            "  args = {{hwnd = {:?}, n_bar = {:?}, lpsi = {:?}}}",
+            hwnd,
+            n_bar,
+            lpsi
+        );
         let res = api.GetScrollInfo(hwnd, n_bar, lpsi);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -43537,7 +43384,7 @@ extern "C" fn thunk_GetScrollPos(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetScrollPos");
         let _enter = span.enter();
-        tracing::trace!("h_wnd = {:?}, n_bar = {:?}", h_wnd, n_bar);
+        tracing::trace!("  args = {{h_wnd = {:?}, n_bar = {:?}}}", h_wnd, n_bar);
         let res = api.GetScrollPos(h_wnd, n_bar);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -43566,7 +43413,7 @@ extern "C" fn thunk_GetScrollRange(
         let span = tracing::trace_span!("GetScrollRange");
         let _enter = span.enter();
         tracing::trace!(
-            "h_wnd = {:?}, n_bar = {:?}, lp_min_pos = {:?}, lp_max_pos = {:?}",
+            "  args = {{h_wnd = {:?}, n_bar = {:?}, lp_min_pos = {:?}, lp_max_pos = {:?}}}",
             h_wnd,
             n_bar,
             lp_min_pos,
@@ -43595,7 +43442,7 @@ extern "C" fn thunk_GetShellWindow(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetShellWindow");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.GetShellWindow();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -43618,7 +43465,7 @@ extern "C" fn thunk_GetSubMenu(context: &mut ExtendedContext, memory: FlatMemory
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetSubMenu");
         let _enter = span.enter();
-        tracing::trace!("h_menu = {:?}, n_pos = {:?}", h_menu, n_pos);
+        tracing::trace!("  args = {{h_menu = {:?}, n_pos = {:?}}}", h_menu, n_pos);
         let res = api.GetSubMenu(h_menu, n_pos);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -43640,7 +43487,7 @@ extern "C" fn thunk_GetSysColor(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetSysColor");
         let _enter = span.enter();
-        tracing::trace!("n_index = {:?}", n_index);
+        tracing::trace!("  args = {{n_index = {:?}}}", n_index);
         let res = api.GetSysColor(n_index);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -43663,7 +43510,11 @@ extern "C" fn thunk_GetSystemMenu(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetSystemMenu");
         let _enter = span.enter();
-        tracing::trace!("h_wnd = {:?}, b_revert = {:?}", h_wnd, b_revert);
+        tracing::trace!(
+            "  args = {{h_wnd = {:?}, b_revert = {:?}}}",
+            h_wnd,
+            b_revert
+        );
         let res = api.GetSystemMenu(h_wnd, b_revert);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -43688,7 +43539,7 @@ extern "C" fn thunk_GetSystemMetrics(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetSystemMetrics");
         let _enter = span.enter();
-        tracing::trace!("n_index = {:?}", n_index);
+        tracing::trace!("  args = {{n_index = {:?}}}", n_index);
         let res = api.GetSystemMetrics(n_index);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -43714,7 +43565,7 @@ extern "C" fn thunk_GetTitleBarInfo(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetTitleBarInfo");
         let _enter = span.enter();
-        tracing::trace!("hwnd = {:?}, pti = {:?}", hwnd, pti);
+        tracing::trace!("  args = {{hwnd = {:?}, pti = {:?}}}", hwnd, pti);
         let res = api.GetTitleBarInfo(hwnd, pti);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -43736,7 +43587,7 @@ extern "C" fn thunk_GetTopWindow(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetTopWindow");
         let _enter = span.enter();
-        tracing::trace!("h_wnd = {:?}", h_wnd);
+        tracing::trace!("  args = {{h_wnd = {:?}}}", h_wnd);
         let res = api.GetTopWindow(h_wnd);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -43759,7 +43610,7 @@ extern "C" fn thunk_GetWindow(context: &mut ExtendedContext, memory: FlatMemoryC
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetWindow");
         let _enter = span.enter();
-        tracing::trace!("h_wnd = {:?}, u_cmd = {:?}", h_wnd, u_cmd);
+        tracing::trace!("  args = {{h_wnd = {:?}, u_cmd = {:?}}}", h_wnd, u_cmd);
         let res = api.GetWindow(h_wnd, u_cmd);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -43785,7 +43636,11 @@ extern "C" fn thunk_GetWindowDisplayAffinity(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetWindowDisplayAffinity");
         let _enter = span.enter();
-        tracing::trace!("h_wnd = {:?}, pdw_affinity = {:?}", h_wnd, pdw_affinity);
+        tracing::trace!(
+            "  args = {{h_wnd = {:?}, pdw_affinity = {:?}}}",
+            h_wnd,
+            pdw_affinity
+        );
         let res = api.GetWindowDisplayAffinity(h_wnd, pdw_affinity);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -43808,7 +43663,7 @@ extern "C" fn thunk_GetWindowInfo(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetWindowInfo");
         let _enter = span.enter();
-        tracing::trace!("hwnd = {:?}, pwi = {:?}", hwnd, pwi);
+        tracing::trace!("  args = {{hwnd = {:?}, pwi = {:?}}}", hwnd, pwi);
         let res = api.GetWindowInfo(hwnd, pwi);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -43834,7 +43689,7 @@ extern "C" fn thunk_GetWindowLongA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetWindowLongA");
         let _enter = span.enter();
-        tracing::trace!("h_wnd = {:?}, n_index = {:?}", h_wnd, n_index);
+        tracing::trace!("  args = {{h_wnd = {:?}, n_index = {:?}}}", h_wnd, n_index);
         let res = api.GetWindowLongA(h_wnd, n_index);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -43860,7 +43715,7 @@ extern "C" fn thunk_GetWindowLongW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetWindowLongW");
         let _enter = span.enter();
-        tracing::trace!("h_wnd = {:?}, n_index = {:?}", h_wnd, n_index);
+        tracing::trace!("  args = {{h_wnd = {:?}, n_index = {:?}}}", h_wnd, n_index);
         let res = api.GetWindowLongW(h_wnd, n_index);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -43888,7 +43743,7 @@ extern "C" fn thunk_GetWindowModuleFileNameA(
         let span = tracing::trace_span!("GetWindowModuleFileNameA");
         let _enter = span.enter();
         tracing::trace!(
-            "hwnd = {:?}, psz_file_name = {:?}, cch_file_name_max = {:?}",
+            "  args = {{hwnd = {:?}, psz_file_name = {:?}, cch_file_name_max = {:?}}}",
             hwnd,
             psz_file_name,
             cch_file_name_max
@@ -43920,7 +43775,7 @@ extern "C" fn thunk_GetWindowModuleFileNameW(
         let span = tracing::trace_span!("GetWindowModuleFileNameW");
         let _enter = span.enter();
         tracing::trace!(
-            "hwnd = {:?}, psz_file_name = {:?}, cch_file_name_max = {:?}",
+            "  args = {{hwnd = {:?}, psz_file_name = {:?}, cch_file_name_max = {:?}}}",
             hwnd,
             psz_file_name,
             cch_file_name_max
@@ -43950,7 +43805,7 @@ extern "C" fn thunk_GetWindowPlacement(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetWindowPlacement");
         let _enter = span.enter();
-        tracing::trace!("h_wnd = {:?}, lpwndpl = {:?}", h_wnd, lpwndpl);
+        tracing::trace!("  args = {{h_wnd = {:?}, lpwndpl = {:?}}}", h_wnd, lpwndpl);
         let res = api.GetWindowPlacement(h_wnd, lpwndpl);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -43973,7 +43828,7 @@ extern "C" fn thunk_GetWindowRect(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetWindowRect");
         let _enter = span.enter();
-        tracing::trace!("h_wnd = {:?}, lp_rect = {:?}", h_wnd, lp_rect);
+        tracing::trace!("  args = {{h_wnd = {:?}, lp_rect = {:?}}}", h_wnd, lp_rect);
         let res = api.GetWindowRect(h_wnd, lp_rect);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -44001,7 +43856,7 @@ extern "C" fn thunk_GetWindowTextA(
         let span = tracing::trace_span!("GetWindowTextA");
         let _enter = span.enter();
         tracing::trace!(
-            "h_wnd = {:?}, lp_string = {:?}, n_max_count = {:?}",
+            "  args = {{h_wnd = {:?}, lp_string = {:?}, n_max_count = {:?}}}",
             h_wnd,
             lp_string,
             n_max_count
@@ -44030,7 +43885,7 @@ extern "C" fn thunk_GetWindowTextLengthA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetWindowTextLengthA");
         let _enter = span.enter();
-        tracing::trace!("h_wnd = {:?}", h_wnd);
+        tracing::trace!("  args = {{h_wnd = {:?}}}", h_wnd);
         let res = api.GetWindowTextLengthA(h_wnd);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -44055,7 +43910,7 @@ extern "C" fn thunk_GetWindowTextLengthW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetWindowTextLengthW");
         let _enter = span.enter();
-        tracing::trace!("h_wnd = {:?}", h_wnd);
+        tracing::trace!("  args = {{h_wnd = {:?}}}", h_wnd);
         let res = api.GetWindowTextLengthW(h_wnd);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -44083,7 +43938,7 @@ extern "C" fn thunk_GetWindowTextW(
         let span = tracing::trace_span!("GetWindowTextW");
         let _enter = span.enter();
         tracing::trace!(
-            "h_wnd = {:?}, lp_string = {:?}, n_max_count = {:?}",
+            "  args = {{h_wnd = {:?}, lp_string = {:?}, n_max_count = {:?}}}",
             h_wnd,
             lp_string,
             n_max_count
@@ -44114,7 +43969,7 @@ extern "C" fn thunk_GetWindowThreadProcessId(
         let span = tracing::trace_span!("GetWindowThreadProcessId");
         let _enter = span.enter();
         tracing::trace!(
-            "h_wnd = {:?}, lpdw_process_id = {:?}",
+            "  args = {{h_wnd = {:?}, lpdw_process_id = {:?}}}",
             h_wnd,
             lpdw_process_id
         );
@@ -44140,7 +43995,7 @@ extern "C" fn thunk_GetWindowWord(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("GetWindowWord");
         let _enter = span.enter();
-        tracing::trace!("h_wnd = {:?}, n_index = {:?}", h_wnd, n_index);
+        tracing::trace!("  args = {{h_wnd = {:?}, n_index = {:?}}}", h_wnd, n_index);
         let res = api.GetWindowWord(h_wnd, n_index);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -44162,7 +44017,7 @@ extern "C" fn thunk_HideCaret(context: &mut ExtendedContext, memory: FlatMemoryC
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("HideCaret");
         let _enter = span.enter();
-        tracing::trace!("h_wnd = {:?}", h_wnd);
+        tracing::trace!("  args = {{h_wnd = {:?}}}", h_wnd);
         let res = api.HideCaret(h_wnd);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -44191,7 +44046,7 @@ extern "C" fn thunk_HiliteMenuItem(
         let span = tracing::trace_span!("HiliteMenuItem");
         let _enter = span.enter();
         tracing::trace!(
-            "h_wnd = {:?}, h_menu = {:?}, u_id_hilite_item = {:?}, u_hilite = {:?}",
+            "  args = {{h_wnd = {:?}, h_menu = {:?}, u_id_hilite_item = {:?}, u_hilite = {:?}}}",
             h_wnd,
             h_menu,
             u_id_hilite_item,
@@ -44217,7 +44072,7 @@ extern "C" fn thunk_InSendMessage(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("InSendMessage");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.InSendMessage();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -44242,7 +44097,7 @@ extern "C" fn thunk_InSendMessageEx(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("InSendMessageEx");
         let _enter = span.enter();
-        tracing::trace!("lp_reserved = {:?}", lp_reserved);
+        tracing::trace!("  args = {{lp_reserved = {:?}}}", lp_reserved);
         let res = api.InSendMessageEx(lp_reserved);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -44268,7 +44123,11 @@ extern "C" fn thunk_InheritWindowMonitor(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("InheritWindowMonitor");
         let _enter = span.enter();
-        tracing::trace!("hwnd = {:?}, hwnd_inherit = {:?}", hwnd, hwnd_inherit);
+        tracing::trace!(
+            "  args = {{hwnd = {:?}, hwnd_inherit = {:?}}}",
+            hwnd,
+            hwnd_inherit
+        );
         let res = api.InheritWindowMonitor(hwnd, hwnd_inherit);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -44294,7 +44153,7 @@ extern "C" fn thunk_InsertMenuA(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("InsertMenuA");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_menu = {:?}, u_position = {:?}, u_flags = {:?}, u_id_new_item = {:?}, lp_new_item = {:?}" , h_menu , u_position , u_flags , u_id_new_item , lp_new_item );
+        tracing :: trace ! ( "  args = {{h_menu = {:?}, u_position = {:?}, u_flags = {:?}, u_id_new_item = {:?}, lp_new_item = {:?}}}" , h_menu , u_position , u_flags , u_id_new_item , lp_new_item );
         let res = api.InsertMenuA(h_menu, u_position, u_flags, u_id_new_item, lp_new_item);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -44320,7 +44179,7 @@ extern "C" fn thunk_InsertMenuW(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("InsertMenuW");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_menu = {:?}, u_position = {:?}, u_flags = {:?}, u_id_new_item = {:?}, lp_new_item = {:?}" , h_menu , u_position , u_flags , u_id_new_item , lp_new_item );
+        tracing :: trace ! ( "  args = {{h_menu = {:?}, u_position = {:?}, u_flags = {:?}, u_id_new_item = {:?}, lp_new_item = {:?}}}" , h_menu , u_position , u_flags , u_id_new_item , lp_new_item );
         let res = api.InsertMenuW(h_menu, u_position, u_flags, u_id_new_item, lp_new_item);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -44348,7 +44207,7 @@ extern "C" fn thunk_InternalGetWindowText(
         let span = tracing::trace_span!("InternalGetWindowText");
         let _enter = span.enter();
         tracing::trace!(
-            "h_wnd = {:?}, p_string = {:?}, cch_max_count = {:?}",
+            "  args = {{h_wnd = {:?}, p_string = {:?}, cch_max_count = {:?}}}",
             h_wnd,
             p_string,
             cch_max_count
@@ -44374,7 +44233,7 @@ extern "C" fn thunk_IsCharAlphaA(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("IsCharAlphaA");
         let _enter = span.enter();
-        tracing::trace!("ch = {:?}", ch);
+        tracing::trace!("  args = {{ch = {:?}}}", ch);
         let res = api.IsCharAlphaA(ch);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -44399,7 +44258,7 @@ extern "C" fn thunk_IsCharAlphaNumericA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("IsCharAlphaNumericA");
         let _enter = span.enter();
-        tracing::trace!("ch = {:?}", ch);
+        tracing::trace!("  args = {{ch = {:?}}}", ch);
         let res = api.IsCharAlphaNumericA(ch);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -44424,7 +44283,7 @@ extern "C" fn thunk_IsCharAlphaNumericW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("IsCharAlphaNumericW");
         let _enter = span.enter();
-        tracing::trace!("ch = {:?}", ch);
+        tracing::trace!("  args = {{ch = {:?}}}", ch);
         let res = api.IsCharAlphaNumericW(ch);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -44446,7 +44305,7 @@ extern "C" fn thunk_IsCharAlphaW(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("IsCharAlphaW");
         let _enter = span.enter();
-        tracing::trace!("ch = {:?}", ch);
+        tracing::trace!("  args = {{ch = {:?}}}", ch);
         let res = api.IsCharAlphaW(ch);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -44468,7 +44327,7 @@ extern "C" fn thunk_IsCharLowerA(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("IsCharLowerA");
         let _enter = span.enter();
-        tracing::trace!("ch = {:?}", ch);
+        tracing::trace!("  args = {{ch = {:?}}}", ch);
         let res = api.IsCharLowerA(ch);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -44490,7 +44349,7 @@ extern "C" fn thunk_IsCharUpperA(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("IsCharUpperA");
         let _enter = span.enter();
-        tracing::trace!("ch = {:?}", ch);
+        tracing::trace!("  args = {{ch = {:?}}}", ch);
         let res = api.IsCharUpperA(ch);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -44512,7 +44371,7 @@ extern "C" fn thunk_IsCharUpperW(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("IsCharUpperW");
         let _enter = span.enter();
-        tracing::trace!("ch = {:?}", ch);
+        tracing::trace!("  args = {{ch = {:?}}}", ch);
         let res = api.IsCharUpperW(ch);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -44535,7 +44394,11 @@ extern "C" fn thunk_IsChild(context: &mut ExtendedContext, memory: FlatMemoryCtx
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("IsChild");
         let _enter = span.enter();
-        tracing::trace!("h_wnd_parent = {:?}, h_wnd = {:?}", h_wnd_parent, h_wnd);
+        tracing::trace!(
+            "  args = {{h_wnd_parent = {:?}, h_wnd = {:?}}}",
+            h_wnd_parent,
+            h_wnd
+        );
         let res = api.IsChild(h_wnd_parent, h_wnd);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -44561,7 +44424,7 @@ extern "C" fn thunk_IsDialogMessageA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("IsDialogMessageA");
         let _enter = span.enter();
-        tracing::trace!("h_dlg = {:?}, lp_msg = {:?}", h_dlg, lp_msg);
+        tracing::trace!("  args = {{h_dlg = {:?}, lp_msg = {:?}}}", h_dlg, lp_msg);
         let res = api.IsDialogMessageA(h_dlg, lp_msg);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -44587,7 +44450,7 @@ extern "C" fn thunk_IsDialogMessageW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("IsDialogMessageW");
         let _enter = span.enter();
-        tracing::trace!("h_dlg = {:?}, lp_msg = {:?}", h_dlg, lp_msg);
+        tracing::trace!("  args = {{h_dlg = {:?}, lp_msg = {:?}}}", h_dlg, lp_msg);
         let res = api.IsDialogMessageW(h_dlg, lp_msg);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -44609,7 +44472,7 @@ extern "C" fn thunk_IsGUIThread(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("IsGUIThread");
         let _enter = span.enter();
-        tracing::trace!("b_convert = {:?}", b_convert);
+        tracing::trace!("  args = {{b_convert = {:?}}}", b_convert);
         let res = api.IsGUIThread(b_convert);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -44634,7 +44497,7 @@ extern "C" fn thunk_IsHungAppWindow(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("IsHungAppWindow");
         let _enter = span.enter();
-        tracing::trace!("hwnd = {:?}", hwnd);
+        tracing::trace!("  args = {{hwnd = {:?}}}", hwnd);
         let res = api.IsHungAppWindow(hwnd);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -44656,7 +44519,7 @@ extern "C" fn thunk_IsIconic(context: &mut ExtendedContext, memory: FlatMemoryCt
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("IsIconic");
         let _enter = span.enter();
-        tracing::trace!("h_wnd = {:?}", h_wnd);
+        tracing::trace!("  args = {{h_wnd = {:?}}}", h_wnd);
         let res = api.IsIconic(h_wnd);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -44678,7 +44541,7 @@ extern "C" fn thunk_IsMenu(context: &mut ExtendedContext, memory: FlatMemoryCtx)
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("IsMenu");
         let _enter = span.enter();
-        tracing::trace!("h_menu = {:?}", h_menu);
+        tracing::trace!("  args = {{h_menu = {:?}}}", h_menu);
         let res = api.IsMenu(h_menu);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -44702,7 +44565,7 @@ extern "C" fn thunk_IsProcessDPIAware(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("IsProcessDPIAware");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.IsProcessDPIAware();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -44724,7 +44587,7 @@ extern "C" fn thunk_IsWindow(context: &mut ExtendedContext, memory: FlatMemoryCt
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("IsWindow");
         let _enter = span.enter();
-        tracing::trace!("h_wnd = {:?}", h_wnd);
+        tracing::trace!("  args = {{h_wnd = {:?}}}", h_wnd);
         let res = api.IsWindow(h_wnd);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -44749,7 +44612,7 @@ extern "C" fn thunk_IsWindowUnicode(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("IsWindowUnicode");
         let _enter = span.enter();
-        tracing::trace!("h_wnd = {:?}", h_wnd);
+        tracing::trace!("  args = {{h_wnd = {:?}}}", h_wnd);
         let res = api.IsWindowUnicode(h_wnd);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -44774,7 +44637,7 @@ extern "C" fn thunk_IsWindowVisible(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("IsWindowVisible");
         let _enter = span.enter();
-        tracing::trace!("h_wnd = {:?}", h_wnd);
+        tracing::trace!("  args = {{h_wnd = {:?}}}", h_wnd);
         let res = api.IsWindowVisible(h_wnd);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -44798,7 +44661,7 @@ extern "C" fn thunk_IsWow64Message(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("IsWow64Message");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.IsWow64Message();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -44820,7 +44683,7 @@ extern "C" fn thunk_IsZoomed(context: &mut ExtendedContext, memory: FlatMemoryCt
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("IsZoomed");
         let _enter = span.enter();
-        tracing::trace!("h_wnd = {:?}", h_wnd);
+        tracing::trace!("  args = {{h_wnd = {:?}}}", h_wnd);
         let res = api.IsZoomed(h_wnd);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -44843,7 +44706,11 @@ extern "C" fn thunk_KillTimer(context: &mut ExtendedContext, memory: FlatMemoryC
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("KillTimer");
         let _enter = span.enter();
-        tracing::trace!("h_wnd = {:?}, u_id_event = {:?}", h_wnd, u_id_event);
+        tracing::trace!(
+            "  args = {{h_wnd = {:?}, u_id_event = {:?}}}",
+            h_wnd,
+            u_id_event
+        );
         let res = api.KillTimer(h_wnd, u_id_event);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -44870,7 +44737,7 @@ extern "C" fn thunk_LoadAcceleratorsA(
         let span = tracing::trace_span!("LoadAcceleratorsA");
         let _enter = span.enter();
         tracing::trace!(
-            "h_instance = {:?}, lp_table_name = {:?}",
+            "  args = {{h_instance = {:?}, lp_table_name = {:?}}}",
             h_instance,
             lp_table_name
         );
@@ -44900,7 +44767,7 @@ extern "C" fn thunk_LoadAcceleratorsW(
         let span = tracing::trace_span!("LoadAcceleratorsW");
         let _enter = span.enter();
         tracing::trace!(
-            "h_instance = {:?}, lp_table_name = {:?}",
+            "  args = {{h_instance = {:?}, lp_table_name = {:?}}}",
             h_instance,
             lp_table_name
         );
@@ -44927,7 +44794,7 @@ extern "C" fn thunk_LoadCursorA(context: &mut ExtendedContext, memory: FlatMemor
         let span = tracing::trace_span!("LoadCursorA");
         let _enter = span.enter();
         tracing::trace!(
-            "h_instance = {:?}, lp_cursor_name = {:?}",
+            "  args = {{h_instance = {:?}, lp_cursor_name = {:?}}}",
             h_instance,
             lp_cursor_name
         );
@@ -44955,7 +44822,7 @@ extern "C" fn thunk_LoadCursorFromFileA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("LoadCursorFromFileA");
         let _enter = span.enter();
-        tracing::trace!("lp_file_name = {:?}", lp_file_name);
+        tracing::trace!("  args = {{lp_file_name = {:?}}}", lp_file_name);
         let res = api.LoadCursorFromFileA(lp_file_name);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -44980,7 +44847,7 @@ extern "C" fn thunk_LoadCursorFromFileW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("LoadCursorFromFileW");
         let _enter = span.enter();
-        tracing::trace!("lp_file_name = {:?}", lp_file_name);
+        tracing::trace!("  args = {{lp_file_name = {:?}}}", lp_file_name);
         let res = api.LoadCursorFromFileW(lp_file_name);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -45004,7 +44871,7 @@ extern "C" fn thunk_LoadCursorW(context: &mut ExtendedContext, memory: FlatMemor
         let span = tracing::trace_span!("LoadCursorW");
         let _enter = span.enter();
         tracing::trace!(
-            "h_instance = {:?}, lp_cursor_name = {:?}",
+            "  args = {{h_instance = {:?}, lp_cursor_name = {:?}}}",
             h_instance,
             lp_cursor_name
         );
@@ -45031,7 +44898,7 @@ extern "C" fn thunk_LoadIconA(context: &mut ExtendedContext, memory: FlatMemoryC
         let span = tracing::trace_span!("LoadIconA");
         let _enter = span.enter();
         tracing::trace!(
-            "h_instance = {:?}, lp_icon_name = {:?}",
+            "  args = {{h_instance = {:?}, lp_icon_name = {:?}}}",
             h_instance,
             lp_icon_name
         );
@@ -45058,7 +44925,7 @@ extern "C" fn thunk_LoadIconW(context: &mut ExtendedContext, memory: FlatMemoryC
         let span = tracing::trace_span!("LoadIconW");
         let _enter = span.enter();
         tracing::trace!(
-            "h_instance = {:?}, lp_icon_name = {:?}",
+            "  args = {{h_instance = {:?}, lp_icon_name = {:?}}}",
             h_instance,
             lp_icon_name
         );
@@ -45088,15 +44955,7 @@ extern "C" fn thunk_LoadImageA(context: &mut ExtendedContext, memory: FlatMemory
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("LoadImageA");
         let _enter = span.enter();
-        tracing::trace!(
-            "h_inst = {:?}, name = {:?}, r#type = {:?}, cx = {:?}, cy = {:?}, fu_load = {:?}",
-            h_inst,
-            name,
-            r#type,
-            cx,
-            cy,
-            fu_load
-        );
+        tracing :: trace ! ( "  args = {{h_inst = {:?}, name = {:?}, r#type = {:?}, cx = {:?}, cy = {:?}, fu_load = {:?}}}" , h_inst , name , r#type , cx , cy , fu_load );
         let res = api.LoadImageA(h_inst, name, r#type, cx, cy, fu_load);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -45123,15 +44982,7 @@ extern "C" fn thunk_LoadImageW(context: &mut ExtendedContext, memory: FlatMemory
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("LoadImageW");
         let _enter = span.enter();
-        tracing::trace!(
-            "h_inst = {:?}, name = {:?}, r#type = {:?}, cx = {:?}, cy = {:?}, fu_load = {:?}",
-            h_inst,
-            name,
-            r#type,
-            cx,
-            cy,
-            fu_load
-        );
+        tracing :: trace ! ( "  args = {{h_inst = {:?}, name = {:?}, r#type = {:?}, cx = {:?}, cy = {:?}, fu_load = {:?}}}" , h_inst , name , r#type , cx , cy , fu_load );
         let res = api.LoadImageW(h_inst, name, r#type, cx, cy, fu_load);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -45155,7 +45006,7 @@ extern "C" fn thunk_LoadMenuA(context: &mut ExtendedContext, memory: FlatMemoryC
         let span = tracing::trace_span!("LoadMenuA");
         let _enter = span.enter();
         tracing::trace!(
-            "h_instance = {:?}, lp_menu_name = {:?}",
+            "  args = {{h_instance = {:?}, lp_menu_name = {:?}}}",
             h_instance,
             lp_menu_name
         );
@@ -45183,7 +45034,7 @@ extern "C" fn thunk_LoadMenuIndirectA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("LoadMenuIndirectA");
         let _enter = span.enter();
-        tracing::trace!("lp_menu_template = {:?}", lp_menu_template);
+        tracing::trace!("  args = {{lp_menu_template = {:?}}}", lp_menu_template);
         let res = api.LoadMenuIndirectA(lp_menu_template);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -45208,7 +45059,7 @@ extern "C" fn thunk_LoadMenuIndirectW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("LoadMenuIndirectW");
         let _enter = span.enter();
-        tracing::trace!("lp_menu_template = {:?}", lp_menu_template);
+        tracing::trace!("  args = {{lp_menu_template = {:?}}}", lp_menu_template);
         let res = api.LoadMenuIndirectW(lp_menu_template);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -45232,7 +45083,7 @@ extern "C" fn thunk_LoadMenuW(context: &mut ExtendedContext, memory: FlatMemoryC
         let span = tracing::trace_span!("LoadMenuW");
         let _enter = span.enter();
         tracing::trace!(
-            "h_instance = {:?}, lp_menu_name = {:?}",
+            "  args = {{h_instance = {:?}, lp_menu_name = {:?}}}",
             h_instance,
             lp_menu_name
         );
@@ -45261,7 +45112,7 @@ extern "C" fn thunk_LoadStringA(context: &mut ExtendedContext, memory: FlatMemor
         let span = tracing::trace_span!("LoadStringA");
         let _enter = span.enter();
         tracing::trace!(
-            "h_instance = {:?}, u_id = {:?}, lp_buffer = {:?}, cch_buffer_max = {:?}",
+            "  args = {{h_instance = {:?}, u_id = {:?}, lp_buffer = {:?}, cch_buffer_max = {:?}}}",
             h_instance,
             u_id,
             lp_buffer,
@@ -45292,7 +45143,7 @@ extern "C" fn thunk_LoadStringW(context: &mut ExtendedContext, memory: FlatMemor
         let span = tracing::trace_span!("LoadStringW");
         let _enter = span.enter();
         tracing::trace!(
-            "h_instance = {:?}, u_id = {:?}, lp_buffer = {:?}, cch_buffer_max = {:?}",
+            "  args = {{h_instance = {:?}, u_id = {:?}, lp_buffer = {:?}, cch_buffer_max = {:?}}}",
             h_instance,
             u_id,
             lp_buffer,
@@ -45322,7 +45173,7 @@ extern "C" fn thunk_LockSetForegroundWindow(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("LockSetForegroundWindow");
         let _enter = span.enter();
-        tracing::trace!("u_lock_code = {:?}", u_lock_code);
+        tracing::trace!("  args = {{u_lock_code = {:?}}}", u_lock_code);
         let res = api.LockSetForegroundWindow(u_lock_code);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -45348,7 +45199,11 @@ extern "C" fn thunk_LogicalToPhysicalPoint(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("LogicalToPhysicalPoint");
         let _enter = span.enter();
-        tracing::trace!("h_wnd = {:?}, lp_point = {:?}", h_wnd, lp_point);
+        tracing::trace!(
+            "  args = {{h_wnd = {:?}, lp_point = {:?}}}",
+            h_wnd,
+            lp_point
+        );
         let res = api.LogicalToPhysicalPoint(h_wnd, lp_point);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -45374,7 +45229,11 @@ extern "C" fn thunk_LookupIconIdFromDirectory(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("LookupIconIdFromDirectory");
         let _enter = span.enter();
-        tracing::trace!("presbits = {:?}, f_icon = {:?}", presbits, f_icon);
+        tracing::trace!(
+            "  args = {{presbits = {:?}, f_icon = {:?}}}",
+            presbits,
+            f_icon
+        );
         let res = api.LookupIconIdFromDirectory(presbits, f_icon);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -45403,14 +45262,7 @@ extern "C" fn thunk_LookupIconIdFromDirectoryEx(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("LookupIconIdFromDirectoryEx");
         let _enter = span.enter();
-        tracing::trace!(
-            "presbits = {:?}, f_icon = {:?}, cx_desired = {:?}, cy_desired = {:?}, flags = {:?}",
-            presbits,
-            f_icon,
-            cx_desired,
-            cy_desired,
-            flags
-        );
+        tracing :: trace ! ( "  args = {{presbits = {:?}, f_icon = {:?}, cx_desired = {:?}, cy_desired = {:?}, flags = {:?}}}" , presbits , f_icon , cx_desired , cy_desired , flags );
         let res = api.LookupIconIdFromDirectoryEx(presbits, f_icon, cx_desired, cy_desired, flags);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -45433,7 +45285,7 @@ extern "C" fn thunk_MapDialogRect(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("MapDialogRect");
         let _enter = span.enter();
-        tracing::trace!("h_dlg = {:?}, lp_rect = {:?}", h_dlg, lp_rect);
+        tracing::trace!("  args = {{h_dlg = {:?}, lp_rect = {:?}}}", h_dlg, lp_rect);
         let res = api.MapDialogRect(h_dlg, lp_rect);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -45461,7 +45313,7 @@ extern "C" fn thunk_MenuItemFromPoint(
         let span = tracing::trace_span!("MenuItemFromPoint");
         let _enter = span.enter();
         tracing::trace!(
-            "h_wnd = {:?}, h_menu = {:?}, pt_screen = {:?}",
+            "  args = {{h_wnd = {:?}, h_menu = {:?}, pt_screen = {:?}}}",
             h_wnd,
             h_menu,
             pt_screen
@@ -45491,7 +45343,7 @@ extern "C" fn thunk_MessageBoxA(context: &mut ExtendedContext, memory: FlatMemor
         let span = tracing::trace_span!("MessageBoxA");
         let _enter = span.enter();
         tracing::trace!(
-            "h_wnd = {:?}, lp_text = {:?}, lp_caption = {:?}, u_type = {:?}",
+            "  args = {{h_wnd = {:?}, lp_text = {:?}, lp_caption = {:?}, u_type = {:?}}}",
             h_wnd,
             lp_text,
             lp_caption,
@@ -45522,14 +45374,7 @@ extern "C" fn thunk_MessageBoxExA(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("MessageBoxExA");
         let _enter = span.enter();
-        tracing::trace!(
-            "h_wnd = {:?}, lp_text = {:?}, lp_caption = {:?}, u_type = {:?}, w_language_id = {:?}",
-            h_wnd,
-            lp_text,
-            lp_caption,
-            u_type,
-            w_language_id
-        );
+        tracing :: trace ! ( "  args = {{h_wnd = {:?}, lp_text = {:?}, lp_caption = {:?}, u_type = {:?}, w_language_id = {:?}}}" , h_wnd , lp_text , lp_caption , u_type , w_language_id );
         let res = api.MessageBoxExA(h_wnd, lp_text, lp_caption, u_type, w_language_id);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -45555,14 +45400,7 @@ extern "C" fn thunk_MessageBoxExW(context: &mut ExtendedContext, memory: FlatMem
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("MessageBoxExW");
         let _enter = span.enter();
-        tracing::trace!(
-            "h_wnd = {:?}, lp_text = {:?}, lp_caption = {:?}, u_type = {:?}, w_language_id = {:?}",
-            h_wnd,
-            lp_text,
-            lp_caption,
-            u_type,
-            w_language_id
-        );
+        tracing :: trace ! ( "  args = {{h_wnd = {:?}, lp_text = {:?}, lp_caption = {:?}, u_type = {:?}, w_language_id = {:?}}}" , h_wnd , lp_text , lp_caption , u_type , w_language_id );
         let res = api.MessageBoxExW(h_wnd, lp_text, lp_caption, u_type, w_language_id);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -45588,7 +45426,7 @@ extern "C" fn thunk_MessageBoxW(context: &mut ExtendedContext, memory: FlatMemor
         let span = tracing::trace_span!("MessageBoxW");
         let _enter = span.enter();
         tracing::trace!(
-            "h_wnd = {:?}, lp_text = {:?}, lp_caption = {:?}, u_type = {:?}",
+            "  args = {{h_wnd = {:?}, lp_text = {:?}, lp_caption = {:?}, u_type = {:?}}}",
             h_wnd,
             lp_text,
             lp_caption,
@@ -45619,7 +45457,7 @@ extern "C" fn thunk_ModifyMenuA(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ModifyMenuA");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_mnu = {:?}, u_position = {:?}, u_flags = {:?}, u_id_new_item = {:?}, lp_new_item = {:?}" , h_mnu , u_position , u_flags , u_id_new_item , lp_new_item );
+        tracing :: trace ! ( "  args = {{h_mnu = {:?}, u_position = {:?}, u_flags = {:?}, u_id_new_item = {:?}, lp_new_item = {:?}}}" , h_mnu , u_position , u_flags , u_id_new_item , lp_new_item );
         let res = api.ModifyMenuA(h_mnu, u_position, u_flags, u_id_new_item, lp_new_item);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -45645,7 +45483,7 @@ extern "C" fn thunk_ModifyMenuW(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ModifyMenuW");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_mnu = {:?}, u_position = {:?}, u_flags = {:?}, u_id_new_item = {:?}, lp_new_item = {:?}" , h_mnu , u_position , u_flags , u_id_new_item , lp_new_item );
+        tracing :: trace ! ( "  args = {{h_mnu = {:?}, u_position = {:?}, u_flags = {:?}, u_id_new_item = {:?}, lp_new_item = {:?}}}" , h_mnu , u_position , u_flags , u_id_new_item , lp_new_item );
         let res = api.ModifyMenuW(h_mnu, u_position, u_flags, u_id_new_item, lp_new_item);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -45672,15 +45510,7 @@ extern "C" fn thunk_MoveWindow(context: &mut ExtendedContext, memory: FlatMemory
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("MoveWindow");
         let _enter = span.enter();
-        tracing::trace!(
-            "h_wnd = {:?}, x = {:?}, y = {:?}, n_width = {:?}, n_height = {:?}, b_repaint = {:?}",
-            h_wnd,
-            x,
-            y,
-            n_width,
-            n_height,
-            b_repaint
-        );
+        tracing :: trace ! ( "  args = {{h_wnd = {:?}, x = {:?}, y = {:?}, n_width = {:?}, n_height = {:?}, b_repaint = {:?}}}" , h_wnd , x , y , n_width , n_height , b_repaint );
         let res = api.MoveWindow(h_wnd, x, y, n_width, n_height, b_repaint);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -45709,7 +45539,7 @@ extern "C" fn thunk_MsgWaitForMultipleObjects(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("MsgWaitForMultipleObjects");
         let _enter = span.enter();
-        tracing :: trace ! ( "n_count = {:?}, p_handles = {:?}, f_wait_all = {:?}, dw_milliseconds = {:?}, dw_wake_mask = {:?}" , n_count , p_handles , f_wait_all , dw_milliseconds , dw_wake_mask );
+        tracing :: trace ! ( "  args = {{n_count = {:?}, p_handles = {:?}, f_wait_all = {:?}, dw_milliseconds = {:?}, dw_wake_mask = {:?}}}" , n_count , p_handles , f_wait_all , dw_milliseconds , dw_wake_mask );
         let res = api.MsgWaitForMultipleObjects(
             n_count,
             p_handles,
@@ -45744,7 +45574,7 @@ extern "C" fn thunk_MsgWaitForMultipleObjectsEx(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("MsgWaitForMultipleObjectsEx");
         let _enter = span.enter();
-        tracing :: trace ! ( "n_count = {:?}, p_handles = {:?}, dw_milliseconds = {:?}, dw_wake_mask = {:?}, dw_flags = {:?}" , n_count , p_handles , dw_milliseconds , dw_wake_mask , dw_flags );
+        tracing :: trace ! ( "  args = {{n_count = {:?}, p_handles = {:?}, dw_milliseconds = {:?}, dw_wake_mask = {:?}, dw_flags = {:?}}}" , n_count , p_handles , dw_milliseconds , dw_wake_mask , dw_flags );
         let res = api.MsgWaitForMultipleObjectsEx(
             n_count,
             p_handles,
@@ -45773,7 +45603,7 @@ extern "C" fn thunk_OemToCharA(context: &mut ExtendedContext, memory: FlatMemory
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("OemToCharA");
         let _enter = span.enter();
-        tracing::trace!("p_src = {:?}, p_dst = {:?}", p_src, p_dst);
+        tracing::trace!("  args = {{p_src = {:?}, p_dst = {:?}}}", p_src, p_dst);
         let res = api.OemToCharA(p_src, p_dst);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -45801,7 +45631,7 @@ extern "C" fn thunk_OemToCharBuffA(
         let span = tracing::trace_span!("OemToCharBuffA");
         let _enter = span.enter();
         tracing::trace!(
-            "lpsz_src = {:?}, lpsz_dst = {:?}, cch_dst_length = {:?}",
+            "  args = {{lpsz_src = {:?}, lpsz_dst = {:?}, cch_dst_length = {:?}}}",
             lpsz_src,
             lpsz_dst,
             cch_dst_length
@@ -45833,7 +45663,7 @@ extern "C" fn thunk_OemToCharBuffW(
         let span = tracing::trace_span!("OemToCharBuffW");
         let _enter = span.enter();
         tracing::trace!(
-            "lpsz_src = {:?}, lpsz_dst = {:?}, cch_dst_length = {:?}",
+            "  args = {{lpsz_src = {:?}, lpsz_dst = {:?}, cch_dst_length = {:?}}}",
             lpsz_src,
             lpsz_dst,
             cch_dst_length
@@ -45860,7 +45690,7 @@ extern "C" fn thunk_OemToCharW(context: &mut ExtendedContext, memory: FlatMemory
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("OemToCharW");
         let _enter = span.enter();
-        tracing::trace!("p_src = {:?}, p_dst = {:?}", p_src, p_dst);
+        tracing::trace!("  args = {{p_src = {:?}, p_dst = {:?}}}", p_src, p_dst);
         let res = api.OemToCharW(p_src, p_dst);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -45882,7 +45712,7 @@ extern "C" fn thunk_OpenIcon(context: &mut ExtendedContext, memory: FlatMemoryCt
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("OpenIcon");
         let _enter = span.enter();
-        tracing::trace!("h_wnd = {:?}", h_wnd);
+        tracing::trace!("  args = {{h_wnd = {:?}}}", h_wnd);
         let res = api.OpenIcon(h_wnd);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -45908,7 +45738,7 @@ extern "C" fn thunk_PeekMessageA(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("PeekMessageA");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_msg = {:?}, h_wnd = {:?}, w_msg_filter_min = {:?}, w_msg_filter_max = {:?}, w_remove_msg = {:?}" , lp_msg , h_wnd , w_msg_filter_min , w_msg_filter_max , w_remove_msg );
+        tracing :: trace ! ( "  args = {{lp_msg = {:?}, h_wnd = {:?}, w_msg_filter_min = {:?}, w_msg_filter_max = {:?}, w_remove_msg = {:?}}}" , lp_msg , h_wnd , w_msg_filter_min , w_msg_filter_max , w_remove_msg );
         let res = api.PeekMessageA(
             lp_msg,
             h_wnd,
@@ -45940,7 +45770,7 @@ extern "C" fn thunk_PeekMessageW(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("PeekMessageW");
         let _enter = span.enter();
-        tracing :: trace ! ( "lp_msg = {:?}, h_wnd = {:?}, w_msg_filter_min = {:?}, w_msg_filter_max = {:?}, w_remove_msg = {:?}" , lp_msg , h_wnd , w_msg_filter_min , w_msg_filter_max , w_remove_msg );
+        tracing :: trace ! ( "  args = {{lp_msg = {:?}, h_wnd = {:?}, w_msg_filter_min = {:?}, w_msg_filter_max = {:?}, w_remove_msg = {:?}}}" , lp_msg , h_wnd , w_msg_filter_min , w_msg_filter_max , w_remove_msg );
         let res = api.PeekMessageW(
             lp_msg,
             h_wnd,
@@ -45972,7 +45802,11 @@ extern "C" fn thunk_PhysicalToLogicalPoint(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("PhysicalToLogicalPoint");
         let _enter = span.enter();
-        tracing::trace!("h_wnd = {:?}, lp_point = {:?}", h_wnd, lp_point);
+        tracing::trace!(
+            "  args = {{h_wnd = {:?}, lp_point = {:?}}}",
+            h_wnd,
+            lp_point
+        );
         let res = api.PhysicalToLogicalPoint(h_wnd, lp_point);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -45998,7 +45832,7 @@ extern "C" fn thunk_PostMessageA(context: &mut ExtendedContext, memory: FlatMemo
         let span = tracing::trace_span!("PostMessageA");
         let _enter = span.enter();
         tracing::trace!(
-            "h_wnd = {:?}, msg = {:?}, w_param = {:?}, l_param = {:?}",
+            "  args = {{h_wnd = {:?}, msg = {:?}, w_param = {:?}, l_param = {:?}}}",
             h_wnd,
             msg,
             w_param,
@@ -46029,7 +45863,7 @@ extern "C" fn thunk_PostMessageW(context: &mut ExtendedContext, memory: FlatMemo
         let span = tracing::trace_span!("PostMessageW");
         let _enter = span.enter();
         tracing::trace!(
-            "h_wnd = {:?}, msg = {:?}, w_param = {:?}, l_param = {:?}",
+            "  args = {{h_wnd = {:?}, msg = {:?}, w_param = {:?}, l_param = {:?}}}",
             h_wnd,
             msg,
             w_param,
@@ -46059,7 +45893,7 @@ extern "C" fn thunk_PostQuitMessage(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("PostQuitMessage");
         let _enter = span.enter();
-        tracing::trace!("n_exit_code = {:?}", n_exit_code);
+        tracing::trace!("  args = {{n_exit_code = {:?}}}", n_exit_code);
         let res = api.PostQuitMessage(n_exit_code);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -46088,7 +45922,7 @@ extern "C" fn thunk_PostThreadMessageA(
         let span = tracing::trace_span!("PostThreadMessageA");
         let _enter = span.enter();
         tracing::trace!(
-            "id_thread = {:?}, msg = {:?}, w_param = {:?}, l_param = {:?}",
+            "  args = {{id_thread = {:?}, msg = {:?}, w_param = {:?}, l_param = {:?}}}",
             id_thread,
             msg,
             w_param,
@@ -46122,7 +45956,7 @@ extern "C" fn thunk_PostThreadMessageW(
         let span = tracing::trace_span!("PostThreadMessageW");
         let _enter = span.enter();
         tracing::trace!(
-            "id_thread = {:?}, msg = {:?}, w_param = {:?}, l_param = {:?}",
+            "  args = {{id_thread = {:?}, msg = {:?}, w_param = {:?}, l_param = {:?}}}",
             id_thread,
             msg,
             w_param,
@@ -46159,7 +45993,7 @@ extern "C" fn thunk_PrivateExtractIconsA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("PrivateExtractIconsA");
         let _enter = span.enter();
-        tracing :: trace ! ( "sz_file_name = {:?}, n_icon_index = {:?}, cx_icon = {:?}, cy_icon = {:?}, phicon = {:?}, piconid = {:?}, n_icons = {:?}, flags = {:?}" , sz_file_name , n_icon_index , cx_icon , cy_icon , phicon , piconid , n_icons , flags );
+        tracing :: trace ! ( "  args = {{sz_file_name = {:?}, n_icon_index = {:?}, cx_icon = {:?}, cy_icon = {:?}, phicon = {:?}, piconid = {:?}, n_icons = {:?}, flags = {:?}}}" , sz_file_name , n_icon_index , cx_icon , cy_icon , phicon , piconid , n_icons , flags );
         let res = api.PrivateExtractIconsA(
             sz_file_name,
             n_icon_index,
@@ -46200,7 +46034,7 @@ extern "C" fn thunk_PrivateExtractIconsW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("PrivateExtractIconsW");
         let _enter = span.enter();
-        tracing :: trace ! ( "sz_file_name = {:?}, n_icon_index = {:?}, cx_icon = {:?}, cy_icon = {:?}, phicon = {:?}, piconid = {:?}, n_icons = {:?}, flags = {:?}" , sz_file_name , n_icon_index , cx_icon , cy_icon , phicon , piconid , n_icons , flags );
+        tracing :: trace ! ( "  args = {{sz_file_name = {:?}, n_icon_index = {:?}, cx_icon = {:?}, cy_icon = {:?}, phicon = {:?}, piconid = {:?}, n_icons = {:?}, flags = {:?}}}" , sz_file_name , n_icon_index , cx_icon , cy_icon , phicon , piconid , n_icons , flags );
         let res = api.PrivateExtractIconsW(
             sz_file_name,
             n_icon_index,
@@ -46236,7 +46070,7 @@ extern "C" fn thunk_RealChildWindowFromPoint(
         let span = tracing::trace_span!("RealChildWindowFromPoint");
         let _enter = span.enter();
         tracing::trace!(
-            "hwnd_parent = {:?}, pt_parent_client_coords = {:?}",
+            "  args = {{hwnd_parent = {:?}, pt_parent_client_coords = {:?}}}",
             hwnd_parent,
             pt_parent_client_coords
         );
@@ -46267,7 +46101,7 @@ extern "C" fn thunk_RealGetWindowClassA(
         let span = tracing::trace_span!("RealGetWindowClassA");
         let _enter = span.enter();
         tracing::trace!(
-            "hwnd = {:?}, ptsz_class_name = {:?}, cch_class_name_max = {:?}",
+            "  args = {{hwnd = {:?}, ptsz_class_name = {:?}, cch_class_name_max = {:?}}}",
             hwnd,
             ptsz_class_name,
             cch_class_name_max
@@ -46299,7 +46133,7 @@ extern "C" fn thunk_RealGetWindowClassW(
         let span = tracing::trace_span!("RealGetWindowClassW");
         let _enter = span.enter();
         tracing::trace!(
-            "hwnd = {:?}, ptsz_class_name = {:?}, cch_class_name_max = {:?}",
+            "  args = {{hwnd = {:?}, ptsz_class_name = {:?}, cch_class_name_max = {:?}}}",
             hwnd,
             ptsz_class_name,
             cch_class_name_max
@@ -46328,7 +46162,7 @@ extern "C" fn thunk_RegisterShellHookWindow(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("RegisterShellHookWindow");
         let _enter = span.enter();
-        tracing::trace!("hwnd = {:?}", hwnd);
+        tracing::trace!("  args = {{hwnd = {:?}}}", hwnd);
         let res = api.RegisterShellHookWindow(hwnd);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -46353,7 +46187,7 @@ extern "C" fn thunk_RegisterWindowMessageA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("RegisterWindowMessageA");
         let _enter = span.enter();
-        tracing::trace!("lp_string = {:?}", lp_string);
+        tracing::trace!("  args = {{lp_string = {:?}}}", lp_string);
         let res = api.RegisterWindowMessageA(lp_string);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -46378,7 +46212,7 @@ extern "C" fn thunk_RegisterWindowMessageW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("RegisterWindowMessageW");
         let _enter = span.enter();
-        tracing::trace!("lp_string = {:?}", lp_string);
+        tracing::trace!("  args = {{lp_string = {:?}}}", lp_string);
         let res = api.RegisterWindowMessageW(lp_string);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -46403,7 +46237,7 @@ extern "C" fn thunk_RemoveMenu(context: &mut ExtendedContext, memory: FlatMemory
         let span = tracing::trace_span!("RemoveMenu");
         let _enter = span.enter();
         tracing::trace!(
-            "h_menu = {:?}, u_position = {:?}, u_flags = {:?}",
+            "  args = {{h_menu = {:?}, u_position = {:?}, u_flags = {:?}}}",
             h_menu,
             u_position,
             u_flags
@@ -46430,7 +46264,11 @@ extern "C" fn thunk_RemovePropA(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("RemovePropA");
         let _enter = span.enter();
-        tracing::trace!("h_wnd = {:?}, lp_string = {:?}", h_wnd, lp_string);
+        tracing::trace!(
+            "  args = {{h_wnd = {:?}, lp_string = {:?}}}",
+            h_wnd,
+            lp_string
+        );
         let res = api.RemovePropA(h_wnd, lp_string);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -46453,7 +46291,11 @@ extern "C" fn thunk_RemovePropW(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("RemovePropW");
         let _enter = span.enter();
-        tracing::trace!("h_wnd = {:?}, lp_string = {:?}", h_wnd, lp_string);
+        tracing::trace!(
+            "  args = {{h_wnd = {:?}, lp_string = {:?}}}",
+            h_wnd,
+            lp_string
+        );
         let res = api.RemovePropW(h_wnd, lp_string);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -46475,7 +46317,7 @@ extern "C" fn thunk_ReplyMessage(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ReplyMessage");
         let _enter = span.enter();
-        tracing::trace!("l_result = {:?}", l_result);
+        tracing::trace!("  args = {{l_result = {:?}}}", l_result);
         let res = api.ReplyMessage(l_result);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -46501,14 +46343,7 @@ extern "C" fn thunk_ScrollWindow(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ScrollWindow");
         let _enter = span.enter();
-        tracing::trace!(
-            "h_wnd = {:?}, x_amount = {:?}, y_amount = {:?}, lp_rect = {:?}, lp_clip_rect = {:?}",
-            h_wnd,
-            x_amount,
-            y_amount,
-            lp_rect,
-            lp_clip_rect
-        );
+        tracing :: trace ! ( "  args = {{h_wnd = {:?}, x_amount = {:?}, y_amount = {:?}, lp_rect = {:?}, lp_clip_rect = {:?}}}" , h_wnd , x_amount , y_amount , lp_rect , lp_clip_rect );
         let res = api.ScrollWindow(h_wnd, x_amount, y_amount, lp_rect, lp_clip_rect);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -46537,14 +46372,7 @@ extern "C" fn thunk_SendDlgItemMessageA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SendDlgItemMessageA");
         let _enter = span.enter();
-        tracing::trace!(
-            "h_dlg = {:?}, n_id_dlg_item = {:?}, msg = {:?}, w_param = {:?}, l_param = {:?}",
-            h_dlg,
-            n_id_dlg_item,
-            msg,
-            w_param,
-            l_param
-        );
+        tracing :: trace ! ( "  args = {{h_dlg = {:?}, n_id_dlg_item = {:?}, msg = {:?}, w_param = {:?}, l_param = {:?}}}" , h_dlg , n_id_dlg_item , msg , w_param , l_param );
         let res = api.SendDlgItemMessageA(h_dlg, n_id_dlg_item, msg, w_param, l_param);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -46573,14 +46401,7 @@ extern "C" fn thunk_SendDlgItemMessageW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SendDlgItemMessageW");
         let _enter = span.enter();
-        tracing::trace!(
-            "h_dlg = {:?}, n_id_dlg_item = {:?}, msg = {:?}, w_param = {:?}, l_param = {:?}",
-            h_dlg,
-            n_id_dlg_item,
-            msg,
-            w_param,
-            l_param
-        );
+        tracing :: trace ! ( "  args = {{h_dlg = {:?}, n_id_dlg_item = {:?}, msg = {:?}, w_param = {:?}, l_param = {:?}}}" , h_dlg , n_id_dlg_item , msg , w_param , l_param );
         let res = api.SendDlgItemMessageW(h_dlg, n_id_dlg_item, msg, w_param, l_param);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -46606,7 +46427,7 @@ extern "C" fn thunk_SendMessageA(context: &mut ExtendedContext, memory: FlatMemo
         let span = tracing::trace_span!("SendMessageA");
         let _enter = span.enter();
         tracing::trace!(
-            "h_wnd = {:?}, msg = {:?}, w_param = {:?}, l_param = {:?}",
+            "  args = {{h_wnd = {:?}, msg = {:?}, w_param = {:?}, l_param = {:?}}}",
             h_wnd,
             msg,
             w_param,
@@ -46641,7 +46462,7 @@ extern "C" fn thunk_SendMessageCallbackA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SendMessageCallbackA");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_wnd = {:?}, msg = {:?}, w_param = {:?}, l_param = {:?}, lp_result_call_back = {:?}, dw_data = {:?}" , h_wnd , msg , w_param , l_param , lp_result_call_back , dw_data );
+        tracing :: trace ! ( "  args = {{h_wnd = {:?}, msg = {:?}, w_param = {:?}, l_param = {:?}, lp_result_call_back = {:?}, dw_data = {:?}}}" , h_wnd , msg , w_param , l_param , lp_result_call_back , dw_data );
         let res =
             api.SendMessageCallbackA(h_wnd, msg, w_param, l_param, lp_result_call_back, dw_data);
         tracing::trace!("result = {:?}", res);
@@ -46672,7 +46493,7 @@ extern "C" fn thunk_SendMessageCallbackW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SendMessageCallbackW");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_wnd = {:?}, msg = {:?}, w_param = {:?}, l_param = {:?}, lp_result_call_back = {:?}, dw_data = {:?}" , h_wnd , msg , w_param , l_param , lp_result_call_back , dw_data );
+        tracing :: trace ! ( "  args = {{h_wnd = {:?}, msg = {:?}, w_param = {:?}, l_param = {:?}, lp_result_call_back = {:?}, dw_data = {:?}}}" , h_wnd , msg , w_param , l_param , lp_result_call_back , dw_data );
         let res =
             api.SendMessageCallbackW(h_wnd, msg, w_param, l_param, lp_result_call_back, dw_data);
         tracing::trace!("result = {:?}", res);
@@ -46704,7 +46525,7 @@ extern "C" fn thunk_SendMessageTimeoutA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SendMessageTimeoutA");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_wnd = {:?}, msg = {:?}, w_param = {:?}, l_param = {:?}, fu_flags = {:?}, u_timeout = {:?}, lpdw_result = {:?}" , h_wnd , msg , w_param , l_param , fu_flags , u_timeout , lpdw_result );
+        tracing :: trace ! ( "  args = {{h_wnd = {:?}, msg = {:?}, w_param = {:?}, l_param = {:?}, fu_flags = {:?}, u_timeout = {:?}, lpdw_result = {:?}}}" , h_wnd , msg , w_param , l_param , fu_flags , u_timeout , lpdw_result );
         let res = api.SendMessageTimeoutA(
             h_wnd,
             msg,
@@ -46743,7 +46564,7 @@ extern "C" fn thunk_SendMessageTimeoutW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SendMessageTimeoutW");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_wnd = {:?}, msg = {:?}, w_param = {:?}, l_param = {:?}, fu_flags = {:?}, u_timeout = {:?}, lpdw_result = {:?}" , h_wnd , msg , w_param , l_param , fu_flags , u_timeout , lpdw_result );
+        tracing :: trace ! ( "  args = {{h_wnd = {:?}, msg = {:?}, w_param = {:?}, l_param = {:?}, fu_flags = {:?}, u_timeout = {:?}, lpdw_result = {:?}}}" , h_wnd , msg , w_param , l_param , fu_flags , u_timeout , lpdw_result );
         let res = api.SendMessageTimeoutW(
             h_wnd,
             msg,
@@ -46777,7 +46598,7 @@ extern "C" fn thunk_SendMessageW(context: &mut ExtendedContext, memory: FlatMemo
         let span = tracing::trace_span!("SendMessageW");
         let _enter = span.enter();
         tracing::trace!(
-            "h_wnd = {:?}, msg = {:?}, w_param = {:?}, l_param = {:?}",
+            "  args = {{h_wnd = {:?}, msg = {:?}, w_param = {:?}, l_param = {:?}}}",
             h_wnd,
             msg,
             w_param,
@@ -46811,7 +46632,7 @@ extern "C" fn thunk_SendNotifyMessageA(
         let span = tracing::trace_span!("SendNotifyMessageA");
         let _enter = span.enter();
         tracing::trace!(
-            "h_wnd = {:?}, msg = {:?}, w_param = {:?}, l_param = {:?}",
+            "  args = {{h_wnd = {:?}, msg = {:?}, w_param = {:?}, l_param = {:?}}}",
             h_wnd,
             msg,
             w_param,
@@ -46845,7 +46666,7 @@ extern "C" fn thunk_SendNotifyMessageW(
         let span = tracing::trace_span!("SendNotifyMessageW");
         let _enter = span.enter();
         tracing::trace!(
-            "h_wnd = {:?}, msg = {:?}, w_param = {:?}, l_param = {:?}",
+            "  args = {{h_wnd = {:?}, msg = {:?}, w_param = {:?}, l_param = {:?}}}",
             h_wnd,
             msg,
             w_param,
@@ -46875,7 +46696,7 @@ extern "C" fn thunk_SetCaretBlinkTime(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetCaretBlinkTime");
         let _enter = span.enter();
-        tracing::trace!("u_m_seconds = {:?}", u_m_seconds);
+        tracing::trace!("  args = {{u_m_seconds = {:?}}}", u_m_seconds);
         let res = api.SetCaretBlinkTime(u_m_seconds);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -46898,7 +46719,7 @@ extern "C" fn thunk_SetCaretPos(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetCaretPos");
         let _enter = span.enter();
-        tracing::trace!("x = {:?}, y = {:?}", x, y);
+        tracing::trace!("  args = {{x = {:?}, y = {:?}}}", x, y);
         let res = api.SetCaretPos(x, y);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -46923,7 +46744,7 @@ extern "C" fn thunk_SetClassLongA(context: &mut ExtendedContext, memory: FlatMem
         let span = tracing::trace_span!("SetClassLongA");
         let _enter = span.enter();
         tracing::trace!(
-            "h_wnd = {:?}, n_index = {:?}, dw_new_long = {:?}",
+            "  args = {{h_wnd = {:?}, n_index = {:?}, dw_new_long = {:?}}}",
             h_wnd,
             n_index,
             dw_new_long
@@ -46952,7 +46773,7 @@ extern "C" fn thunk_SetClassLongW(context: &mut ExtendedContext, memory: FlatMem
         let span = tracing::trace_span!("SetClassLongW");
         let _enter = span.enter();
         tracing::trace!(
-            "h_wnd = {:?}, n_index = {:?}, dw_new_long = {:?}",
+            "  args = {{h_wnd = {:?}, n_index = {:?}, dw_new_long = {:?}}}",
             h_wnd,
             n_index,
             dw_new_long
@@ -46981,7 +46802,7 @@ extern "C" fn thunk_SetClassWord(context: &mut ExtendedContext, memory: FlatMemo
         let span = tracing::trace_span!("SetClassWord");
         let _enter = span.enter();
         tracing::trace!(
-            "h_wnd = {:?}, n_index = {:?}, w_new_word = {:?}",
+            "  args = {{h_wnd = {:?}, n_index = {:?}, w_new_word = {:?}}}",
             h_wnd,
             n_index,
             w_new_word
@@ -47014,7 +46835,7 @@ extern "C" fn thunk_SetCoalescableTimer(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetCoalescableTimer");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_wnd = {:?}, n_id_event = {:?}, u_elapse = {:?}, lp_timer_func = {:?}, u_tolerance_delay = {:?}" , h_wnd , n_id_event , u_elapse , lp_timer_func , u_tolerance_delay );
+        tracing :: trace ! ( "  args = {{h_wnd = {:?}, n_id_event = {:?}, u_elapse = {:?}, lp_timer_func = {:?}, u_tolerance_delay = {:?}}}" , h_wnd , n_id_event , u_elapse , lp_timer_func , u_tolerance_delay );
         let res = api.SetCoalescableTimer(
             h_wnd,
             n_id_event,
@@ -47042,7 +46863,7 @@ extern "C" fn thunk_SetCursor(context: &mut ExtendedContext, memory: FlatMemoryC
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetCursor");
         let _enter = span.enter();
-        tracing::trace!("h_cursor = {:?}", h_cursor);
+        tracing::trace!("  args = {{h_cursor = {:?}}}", h_cursor);
         let res = api.SetCursor(h_cursor);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -47065,7 +46886,7 @@ extern "C" fn thunk_SetCursorPos(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetCursorPos");
         let _enter = span.enter();
-        tracing::trace!("x = {:?}, y = {:?}", x, y);
+        tracing::trace!("  args = {{x = {:?}, y = {:?}}}", x, y);
         let res = api.SetCursorPos(x, y);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -47090,7 +46911,7 @@ extern "C" fn thunk_SetDebugErrorLevel(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetDebugErrorLevel");
         let _enter = span.enter();
-        tracing::trace!("dw_level = {:?}", dw_level);
+        tracing::trace!("  args = {{dw_level = {:?}}}", dw_level);
         let res = api.SetDebugErrorLevel(dw_level);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -47116,7 +46937,7 @@ extern "C" fn thunk_SetDlgItemInt(context: &mut ExtendedContext, memory: FlatMem
         let span = tracing::trace_span!("SetDlgItemInt");
         let _enter = span.enter();
         tracing::trace!(
-            "h_dlg = {:?}, n_id_dlg_item = {:?}, u_value = {:?}, b_signed = {:?}",
+            "  args = {{h_dlg = {:?}, n_id_dlg_item = {:?}, u_value = {:?}, b_signed = {:?}}}",
             h_dlg,
             n_id_dlg_item,
             u_value,
@@ -47149,7 +46970,7 @@ extern "C" fn thunk_SetDlgItemTextA(
         let span = tracing::trace_span!("SetDlgItemTextA");
         let _enter = span.enter();
         tracing::trace!(
-            "h_dlg = {:?}, n_id_dlg_item = {:?}, lp_string = {:?}",
+            "  args = {{h_dlg = {:?}, n_id_dlg_item = {:?}, lp_string = {:?}}}",
             h_dlg,
             n_id_dlg_item,
             lp_string
@@ -47181,7 +47002,7 @@ extern "C" fn thunk_SetDlgItemTextW(
         let span = tracing::trace_span!("SetDlgItemTextW");
         let _enter = span.enter();
         tracing::trace!(
-            "h_dlg = {:?}, n_id_dlg_item = {:?}, lp_string = {:?}",
+            "  args = {{h_dlg = {:?}, n_id_dlg_item = {:?}, lp_string = {:?}}}",
             h_dlg,
             n_id_dlg_item,
             lp_string
@@ -47210,7 +47031,7 @@ extern "C" fn thunk_SetForegroundWindow(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetForegroundWindow");
         let _enter = span.enter();
-        tracing::trace!("h_wnd = {:?}", h_wnd);
+        tracing::trace!("  args = {{h_wnd = {:?}}}", h_wnd);
         let res = api.SetForegroundWindow(h_wnd);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -47239,7 +47060,7 @@ extern "C" fn thunk_SetLayeredWindowAttributes(
         let span = tracing::trace_span!("SetLayeredWindowAttributes");
         let _enter = span.enter();
         tracing::trace!(
-            "hwnd = {:?}, cr_key = {:?}, b_alpha = {:?}, dw_flags = {:?}",
+            "  args = {{hwnd = {:?}, cr_key = {:?}, b_alpha = {:?}, dw_flags = {:?}}}",
             hwnd,
             cr_key,
             b_alpha,
@@ -47267,7 +47088,7 @@ extern "C" fn thunk_SetMenu(context: &mut ExtendedContext, memory: FlatMemoryCtx
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetMenu");
         let _enter = span.enter();
-        tracing::trace!("h_wnd = {:?}, h_menu = {:?}", h_wnd, h_menu);
+        tracing::trace!("  args = {{h_wnd = {:?}, h_menu = {:?}}}", h_wnd, h_menu);
         let res = api.SetMenu(h_wnd, h_menu);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -47295,7 +47116,7 @@ extern "C" fn thunk_SetMenuDefaultItem(
         let span = tracing::trace_span!("SetMenuDefaultItem");
         let _enter = span.enter();
         tracing::trace!(
-            "h_menu = {:?}, u_item = {:?}, f_by_pos = {:?}",
+            "  args = {{h_menu = {:?}, u_item = {:?}, f_by_pos = {:?}}}",
             h_menu,
             u_item,
             f_by_pos
@@ -47324,7 +47145,7 @@ extern "C" fn thunk_SetMessageExtraInfo(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetMessageExtraInfo");
         let _enter = span.enter();
-        tracing::trace!("l_param = {:?}", l_param);
+        tracing::trace!("  args = {{l_param = {:?}}}", l_param);
         let res = api.SetMessageExtraInfo(l_param);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -47349,7 +47170,7 @@ extern "C" fn thunk_SetMessageQueue(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetMessageQueue");
         let _enter = span.enter();
-        tracing::trace!("c_messages_max = {:?}", c_messages_max);
+        tracing::trace!("  args = {{c_messages_max = {:?}}}", c_messages_max);
         let res = api.SetMessageQueue(c_messages_max);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -47373,7 +47194,7 @@ extern "C" fn thunk_SetParent(context: &mut ExtendedContext, memory: FlatMemoryC
         let span = tracing::trace_span!("SetParent");
         let _enter = span.enter();
         tracing::trace!(
-            "h_wnd_child = {:?}, h_wnd_new_parent = {:?}",
+            "  args = {{h_wnd_child = {:?}, h_wnd_new_parent = {:?}}}",
             h_wnd_child,
             h_wnd_new_parent
         );
@@ -47402,7 +47223,7 @@ extern "C" fn thunk_SetPhysicalCursorPos(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetPhysicalCursorPos");
         let _enter = span.enter();
-        tracing::trace!("x = {:?}, y = {:?}", x, y);
+        tracing::trace!("  args = {{x = {:?}, y = {:?}}}", x, y);
         let res = api.SetPhysicalCursorPos(x, y);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -47426,7 +47247,7 @@ extern "C" fn thunk_SetProcessDPIAware(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetProcessDPIAware");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.SetProcessDPIAware();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -47451,7 +47272,7 @@ extern "C" fn thunk_SetProcessDefaultLayout(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetProcessDefaultLayout");
         let _enter = span.enter();
-        tracing::trace!("dw_default_layout = {:?}", dw_default_layout);
+        tracing::trace!("  args = {{dw_default_layout = {:?}}}", dw_default_layout);
         let res = api.SetProcessDefaultLayout(dw_default_layout);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -47476,7 +47297,7 @@ extern "C" fn thunk_SetPropA(context: &mut ExtendedContext, memory: FlatMemoryCt
         let span = tracing::trace_span!("SetPropA");
         let _enter = span.enter();
         tracing::trace!(
-            "h_wnd = {:?}, lp_string = {:?}, h_data = {:?}",
+            "  args = {{h_wnd = {:?}, lp_string = {:?}, h_data = {:?}}}",
             h_wnd,
             lp_string,
             h_data
@@ -47505,7 +47326,7 @@ extern "C" fn thunk_SetPropW(context: &mut ExtendedContext, memory: FlatMemoryCt
         let span = tracing::trace_span!("SetPropW");
         let _enter = span.enter();
         tracing::trace!(
-            "h_wnd = {:?}, lp_string = {:?}, h_data = {:?}",
+            "  args = {{h_wnd = {:?}, lp_string = {:?}, h_data = {:?}}}",
             h_wnd,
             lp_string,
             h_data
@@ -47534,7 +47355,7 @@ extern "C" fn thunk_SetSysColors(context: &mut ExtendedContext, memory: FlatMemo
         let span = tracing::trace_span!("SetSysColors");
         let _enter = span.enter();
         tracing::trace!(
-            "c_elements = {:?}, lpa_elements = {:?}, lpa_rgb_values = {:?}",
+            "  args = {{c_elements = {:?}, lpa_elements = {:?}, lpa_rgb_values = {:?}}}",
             c_elements,
             lpa_elements,
             lpa_rgb_values
@@ -47564,7 +47385,7 @@ extern "C" fn thunk_SetSystemCursor(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetSystemCursor");
         let _enter = span.enter();
-        tracing::trace!("hcur = {:?}, id = {:?}", hcur, id);
+        tracing::trace!("  args = {{hcur = {:?}, id = {:?}}}", hcur, id);
         let res = api.SetSystemCursor(hcur, id);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -47590,7 +47411,7 @@ extern "C" fn thunk_SetTimer(context: &mut ExtendedContext, memory: FlatMemoryCt
         let span = tracing::trace_span!("SetTimer");
         let _enter = span.enter();
         tracing::trace!(
-            "h_wnd = {:?}, n_id_event = {:?}, u_elapse = {:?}, lp_timer_func = {:?}",
+            "  args = {{h_wnd = {:?}, n_id_event = {:?}, u_elapse = {:?}, lp_timer_func = {:?}}}",
             h_wnd,
             n_id_event,
             u_elapse,
@@ -47621,7 +47442,11 @@ extern "C" fn thunk_SetWindowDisplayAffinity(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetWindowDisplayAffinity");
         let _enter = span.enter();
-        tracing::trace!("h_wnd = {:?}, dw_affinity = {:?}", h_wnd, dw_affinity);
+        tracing::trace!(
+            "  args = {{h_wnd = {:?}, dw_affinity = {:?}}}",
+            h_wnd,
+            dw_affinity
+        );
         let res = api.SetWindowDisplayAffinity(h_wnd, dw_affinity);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -47649,7 +47474,7 @@ extern "C" fn thunk_SetWindowLongA(
         let span = tracing::trace_span!("SetWindowLongA");
         let _enter = span.enter();
         tracing::trace!(
-            "h_wnd = {:?}, n_index = {:?}, dw_new_long = {:?}",
+            "  args = {{h_wnd = {:?}, n_index = {:?}, dw_new_long = {:?}}}",
             h_wnd,
             n_index,
             dw_new_long
@@ -47681,7 +47506,7 @@ extern "C" fn thunk_SetWindowLongW(
         let span = tracing::trace_span!("SetWindowLongW");
         let _enter = span.enter();
         tracing::trace!(
-            "h_wnd = {:?}, n_index = {:?}, dw_new_long = {:?}",
+            "  args = {{h_wnd = {:?}, n_index = {:?}, dw_new_long = {:?}}}",
             h_wnd,
             n_index,
             dw_new_long
@@ -47711,7 +47536,7 @@ extern "C" fn thunk_SetWindowPlacement(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetWindowPlacement");
         let _enter = span.enter();
-        tracing::trace!("h_wnd = {:?}, lpwndpl = {:?}", h_wnd, lpwndpl);
+        tracing::trace!("  args = {{h_wnd = {:?}, lpwndpl = {:?}}}", h_wnd, lpwndpl);
         let res = api.SetWindowPlacement(h_wnd, lpwndpl);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -47739,7 +47564,7 @@ extern "C" fn thunk_SetWindowPos(context: &mut ExtendedContext, memory: FlatMemo
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetWindowPos");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_wnd = {:?}, h_wnd_insert_after = {:?}, x = {:?}, y = {:?}, cx = {:?}, cy = {:?}, u_flags = {:?}" , h_wnd , h_wnd_insert_after , x , y , cx , cy , u_flags );
+        tracing :: trace ! ( "  args = {{h_wnd = {:?}, h_wnd_insert_after = {:?}, x = {:?}, y = {:?}, cx = {:?}, cy = {:?}, u_flags = {:?}}}" , h_wnd , h_wnd_insert_after , x , y , cx , cy , u_flags );
         let res = api.SetWindowPos(h_wnd, h_wnd_insert_after, x, y, cx, cy, u_flags);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -47765,7 +47590,11 @@ extern "C" fn thunk_SetWindowTextA(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetWindowTextA");
         let _enter = span.enter();
-        tracing::trace!("h_wnd = {:?}, lp_string = {:?}", h_wnd, lp_string);
+        tracing::trace!(
+            "  args = {{h_wnd = {:?}, lp_string = {:?}}}",
+            h_wnd,
+            lp_string
+        );
         let res = api.SetWindowTextA(h_wnd, lp_string);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -47791,7 +47620,11 @@ extern "C" fn thunk_SetWindowTextW(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SetWindowTextW");
         let _enter = span.enter();
-        tracing::trace!("h_wnd = {:?}, lp_string = {:?}", h_wnd, lp_string);
+        tracing::trace!(
+            "  args = {{h_wnd = {:?}, lp_string = {:?}}}",
+            h_wnd,
+            lp_string
+        );
         let res = api.SetWindowTextW(h_wnd, lp_string);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -47816,7 +47649,7 @@ extern "C" fn thunk_SetWindowWord(context: &mut ExtendedContext, memory: FlatMem
         let span = tracing::trace_span!("SetWindowWord");
         let _enter = span.enter();
         tracing::trace!(
-            "h_wnd = {:?}, n_index = {:?}, w_new_word = {:?}",
+            "  args = {{h_wnd = {:?}, n_index = {:?}, w_new_word = {:?}}}",
             h_wnd,
             n_index,
             w_new_word
@@ -47847,7 +47680,7 @@ extern "C" fn thunk_SetWindowsHookA(
         let span = tracing::trace_span!("SetWindowsHookA");
         let _enter = span.enter();
         tracing::trace!(
-            "n_filter_type = {:?}, pfn_filter_proc = {:?}",
+            "  args = {{n_filter_type = {:?}, pfn_filter_proc = {:?}}}",
             n_filter_type,
             pfn_filter_proc
         );
@@ -47879,7 +47712,7 @@ extern "C" fn thunk_SetWindowsHookExA(
         let span = tracing::trace_span!("SetWindowsHookExA");
         let _enter = span.enter();
         tracing::trace!(
-            "id_hook = {:?}, lpfn = {:?}, hmod = {:?}, dw_thread_id = {:?}",
+            "  args = {{id_hook = {:?}, lpfn = {:?}, hmod = {:?}, dw_thread_id = {:?}}}",
             id_hook,
             lpfn,
             hmod,
@@ -47913,7 +47746,7 @@ extern "C" fn thunk_SetWindowsHookExW(
         let span = tracing::trace_span!("SetWindowsHookExW");
         let _enter = span.enter();
         tracing::trace!(
-            "id_hook = {:?}, lpfn = {:?}, hmod = {:?}, dw_thread_id = {:?}",
+            "  args = {{id_hook = {:?}, lpfn = {:?}, hmod = {:?}, dw_thread_id = {:?}}}",
             id_hook,
             lpfn,
             hmod,
@@ -47945,7 +47778,7 @@ extern "C" fn thunk_SetWindowsHookW(
         let span = tracing::trace_span!("SetWindowsHookW");
         let _enter = span.enter();
         tracing::trace!(
-            "n_filter_type = {:?}, pfn_filter_proc = {:?}",
+            "  args = {{n_filter_type = {:?}, pfn_filter_proc = {:?}}}",
             n_filter_type,
             pfn_filter_proc
         );
@@ -47970,7 +47803,7 @@ extern "C" fn thunk_ShowCaret(context: &mut ExtendedContext, memory: FlatMemoryC
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ShowCaret");
         let _enter = span.enter();
-        tracing::trace!("h_wnd = {:?}", h_wnd);
+        tracing::trace!("  args = {{h_wnd = {:?}}}", h_wnd);
         let res = api.ShowCaret(h_wnd);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -47992,7 +47825,7 @@ extern "C" fn thunk_ShowCursor(context: &mut ExtendedContext, memory: FlatMemory
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ShowCursor");
         let _enter = span.enter();
-        tracing::trace!("b_show = {:?}", b_show);
+        tracing::trace!("  args = {{b_show = {:?}}}", b_show);
         let res = api.ShowCursor(b_show);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -48018,7 +47851,7 @@ extern "C" fn thunk_ShowOwnedPopups(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ShowOwnedPopups");
         let _enter = span.enter();
-        tracing::trace!("h_wnd = {:?}, f_show = {:?}", h_wnd, f_show);
+        tracing::trace!("  args = {{h_wnd = {:?}, f_show = {:?}}}", h_wnd, f_show);
         let res = api.ShowOwnedPopups(h_wnd, f_show);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -48041,7 +47874,11 @@ extern "C" fn thunk_ShowWindow(context: &mut ExtendedContext, memory: FlatMemory
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ShowWindow");
         let _enter = span.enter();
-        tracing::trace!("h_wnd = {:?}, n_cmd_show = {:?}", h_wnd, n_cmd_show);
+        tracing::trace!(
+            "  args = {{h_wnd = {:?}, n_cmd_show = {:?}}}",
+            h_wnd,
+            n_cmd_show
+        );
         let res = api.ShowWindow(h_wnd, n_cmd_show);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -48067,7 +47904,11 @@ extern "C" fn thunk_ShowWindowAsync(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("ShowWindowAsync");
         let _enter = span.enter();
-        tracing::trace!("h_wnd = {:?}, n_cmd_show = {:?}", h_wnd, n_cmd_show);
+        tracing::trace!(
+            "  args = {{h_wnd = {:?}, n_cmd_show = {:?}}}",
+            h_wnd,
+            n_cmd_show
+        );
         let res = api.ShowWindowAsync(h_wnd, n_cmd_show);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -48088,7 +47929,7 @@ extern "C" fn thunk_SoundSentry(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SoundSentry");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.SoundSentry();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -48114,7 +47955,11 @@ extern "C" fn thunk_SwitchToThisWindow(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("SwitchToThisWindow");
         let _enter = span.enter();
-        tracing::trace!("hwnd = {:?}, f_unknown = {:?}", hwnd, f_unknown);
+        tracing::trace!(
+            "  args = {{hwnd = {:?}, f_unknown = {:?}}}",
+            hwnd,
+            f_unknown
+        );
         let res = api.SwitchToThisWindow(hwnd, f_unknown);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -48143,7 +47988,7 @@ extern "C" fn thunk_SystemParametersInfoA(
         let span = tracing::trace_span!("SystemParametersInfoA");
         let _enter = span.enter();
         tracing::trace!(
-            "ui_action = {:?}, ui_param = {:?}, pv_param = {:?}, f_win_ini = {:?}",
+            "  args = {{ui_action = {:?}, ui_param = {:?}, pv_param = {:?}, f_win_ini = {:?}}}",
             ui_action,
             ui_param,
             pv_param,
@@ -48177,7 +48022,7 @@ extern "C" fn thunk_SystemParametersInfoW(
         let span = tracing::trace_span!("SystemParametersInfoW");
         let _enter = span.enter();
         tracing::trace!(
-            "ui_action = {:?}, ui_param = {:?}, pv_param = {:?}, f_win_ini = {:?}",
+            "  args = {{ui_action = {:?}, ui_param = {:?}, pv_param = {:?}, f_win_ini = {:?}}}",
             ui_action,
             ui_param,
             pv_param,
@@ -48208,14 +48053,7 @@ extern "C" fn thunk_TileWindows(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("TileWindows");
         let _enter = span.enter();
-        tracing::trace!(
-            "hwnd_parent = {:?}, w_how = {:?}, lp_rect = {:?}, c_kids = {:?}, lp_kids = {:?}",
-            hwnd_parent,
-            w_how,
-            lp_rect,
-            c_kids,
-            lp_kids
-        );
+        tracing :: trace ! ( "  args = {{hwnd_parent = {:?}, w_how = {:?}, lp_rect = {:?}, c_kids = {:?}, lp_kids = {:?}}}" , hwnd_parent , w_how , lp_rect , c_kids , lp_kids );
         let res = api.TileWindows(hwnd_parent, w_how, lp_rect, c_kids, lp_kids);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -48246,7 +48084,7 @@ extern "C" fn thunk_TrackPopupMenu(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("TrackPopupMenu");
         let _enter = span.enter();
-        tracing :: trace ! ( "h_menu = {:?}, u_flags = {:?}, x = {:?}, y = {:?}, n_reserved = {:?}, h_wnd = {:?}, prc_rect = {:?}" , h_menu , u_flags , x , y , n_reserved , h_wnd , prc_rect );
+        tracing :: trace ! ( "  args = {{h_menu = {:?}, u_flags = {:?}, x = {:?}, y = {:?}, n_reserved = {:?}, h_wnd = {:?}, prc_rect = {:?}}}" , h_menu , u_flags , x , y , n_reserved , h_wnd , prc_rect );
         let res = api.TrackPopupMenu(h_menu, u_flags, x, y, n_reserved, h_wnd, prc_rect);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -48276,15 +48114,7 @@ extern "C" fn thunk_TrackPopupMenuEx(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("TrackPopupMenuEx");
         let _enter = span.enter();
-        tracing::trace!(
-            "h_menu = {:?}, u_flags = {:?}, x = {:?}, y = {:?}, hwnd = {:?}, lptpm = {:?}",
-            h_menu,
-            u_flags,
-            x,
-            y,
-            hwnd,
-            lptpm
-        );
+        tracing :: trace ! ( "  args = {{h_menu = {:?}, u_flags = {:?}, x = {:?}, y = {:?}, hwnd = {:?}, lptpm = {:?}}}" , h_menu , u_flags , x , y , hwnd , lptpm );
         let res = api.TrackPopupMenuEx(h_menu, u_flags, x, y, hwnd, lptpm);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -48312,7 +48142,7 @@ extern "C" fn thunk_TranslateAcceleratorA(
         let span = tracing::trace_span!("TranslateAcceleratorA");
         let _enter = span.enter();
         tracing::trace!(
-            "h_wnd = {:?}, h_acc_table = {:?}, lp_msg = {:?}",
+            "  args = {{h_wnd = {:?}, h_acc_table = {:?}, lp_msg = {:?}}}",
             h_wnd,
             h_acc_table,
             lp_msg
@@ -48344,7 +48174,7 @@ extern "C" fn thunk_TranslateAcceleratorW(
         let span = tracing::trace_span!("TranslateAcceleratorW");
         let _enter = span.enter();
         tracing::trace!(
-            "h_wnd = {:?}, h_acc_table = {:?}, lp_msg = {:?}",
+            "  args = {{h_wnd = {:?}, h_acc_table = {:?}, lp_msg = {:?}}}",
             h_wnd,
             h_acc_table,
             lp_msg
@@ -48374,7 +48204,11 @@ extern "C" fn thunk_TranslateMDISysAccel(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("TranslateMDISysAccel");
         let _enter = span.enter();
-        tracing::trace!("h_wnd_client = {:?}, lp_msg = {:?}", h_wnd_client, lp_msg);
+        tracing::trace!(
+            "  args = {{h_wnd_client = {:?}, lp_msg = {:?}}}",
+            h_wnd_client,
+            lp_msg
+        );
         let res = api.TranslateMDISysAccel(h_wnd_client, lp_msg);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -48399,7 +48233,7 @@ extern "C" fn thunk_TranslateMessage(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("TranslateMessage");
         let _enter = span.enter();
-        tracing::trace!("lp_msg = {:?}", lp_msg);
+        tracing::trace!("  args = {{lp_msg = {:?}}}", lp_msg);
         let res = api.TranslateMessage(lp_msg);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -48426,7 +48260,7 @@ extern "C" fn thunk_UnhookWindowsHook(
         let span = tracing::trace_span!("UnhookWindowsHook");
         let _enter = span.enter();
         tracing::trace!(
-            "n_code = {:?}, pfn_filter_proc = {:?}",
+            "  args = {{n_code = {:?}, pfn_filter_proc = {:?}}}",
             n_code,
             pfn_filter_proc
         );
@@ -48454,7 +48288,7 @@ extern "C" fn thunk_UnhookWindowsHookEx(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("UnhookWindowsHookEx");
         let _enter = span.enter();
-        tracing::trace!("hhk = {:?}", hhk);
+        tracing::trace!("  args = {{hhk = {:?}}}", hhk);
         let res = api.UnhookWindowsHookEx(hhk);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -48481,7 +48315,7 @@ extern "C" fn thunk_UnregisterClassA(
         let span = tracing::trace_span!("UnregisterClassA");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_class_name = {:?}, h_instance = {:?}",
+            "  args = {{lp_class_name = {:?}, h_instance = {:?}}}",
             lp_class_name,
             h_instance
         );
@@ -48511,7 +48345,7 @@ extern "C" fn thunk_UnregisterClassW(
         let span = tracing::trace_span!("UnregisterClassW");
         let _enter = span.enter();
         tracing::trace!(
-            "lp_class_name = {:?}, h_instance = {:?}",
+            "  args = {{lp_class_name = {:?}, h_instance = {:?}}}",
             lp_class_name,
             h_instance
         );
@@ -48535,7 +48369,7 @@ extern "C" fn thunk_WaitMessage(context: &mut ExtendedContext, memory: FlatMemor
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("WaitMessage");
         let _enter = span.enter();
-        tracing::trace!("",);
+        tracing::trace!("  args = {{}}",);
         let res = api.WaitMessage();
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -48560,7 +48394,7 @@ extern "C" fn thunk_WindowFromPhysicalPoint(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("WindowFromPhysicalPoint");
         let _enter = span.enter();
-        tracing::trace!("point = {:?}", point);
+        tracing::trace!("  args = {{point = {:?}}}", point);
         let res = api.WindowFromPhysicalPoint(point);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -48585,7 +48419,7 @@ extern "C" fn thunk_WindowFromPoint(
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("WindowFromPoint");
         let _enter = span.enter();
-        tracing::trace!("point = {:?}", point);
+        tracing::trace!("  args = {{point = {:?}}}", point);
         let res = api.WindowFromPoint(point);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -48608,7 +48442,11 @@ extern "C" fn thunk_wsprintfA(context: &mut ExtendedContext, memory: FlatMemoryC
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("wsprintfA");
         let _enter = span.enter();
-        tracing::trace!("param_0 = {:?}, param_1 = {:?}", param_0, param_1);
+        tracing::trace!(
+            "  args = {{param_0 = {:?}, param_1 = {:?}}}",
+            param_0,
+            param_1
+        );
         let res = api.wsprintfA(param_0, param_1);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -48631,7 +48469,11 @@ extern "C" fn thunk_wsprintfW(context: &mut ExtendedContext, memory: FlatMemoryC
         let unwind_token = call.unwind_token();
         let span = tracing::trace_span!("wsprintfW");
         let _enter = span.enter();
-        tracing::trace!("param_0 = {:?}, param_1 = {:?}", param_0, param_1);
+        tracing::trace!(
+            "  args = {{param_0 = {:?}, param_1 = {:?}}}",
+            param_0,
+            param_1
+        );
         let res = api.wsprintfW(param_0, param_1);
         tracing::trace!("result = {:?}", res);
         call.finish(res)
@@ -48656,7 +48498,7 @@ extern "C" fn thunk_wvsprintfA(context: &mut ExtendedContext, memory: FlatMemory
         let span = tracing::trace_span!("wvsprintfA");
         let _enter = span.enter();
         tracing::trace!(
-            "param_0 = {:?}, param_1 = {:?}, arglist = {:?}",
+            "  args = {{param_0 = {:?}, param_1 = {:?}, arglist = {:?}}}",
             param_0,
             param_1,
             arglist
@@ -48685,7 +48527,7 @@ extern "C" fn thunk_wvsprintfW(context: &mut ExtendedContext, memory: FlatMemory
         let span = tracing::trace_span!("wvsprintfW");
         let _enter = span.enter();
         tracing::trace!(
-            "param_0 = {:?}, param_1 = {:?}, arglist = {:?}",
+            "  args = {{param_0 = {:?}, param_1 = {:?}, arglist = {:?}}}",
             param_0,
             param_1,
             arglist
