@@ -5,11 +5,10 @@ use core_memmgr::MemoryManager;
 use std::ffi::{c_void, CStr};
 use std::os::raw::c_char;
 use std::sync::{Arc, Mutex};
-use std::time::Duration;
 use tracing::info;
 use win32::core::{PCSTR, PSTR};
 use win32::Win32::Foundation::{HINSTANCE, HWND};
-use win32::Win32::System::Memory::{HeapHandle, HEAP_FLAGS, HEAP_NO_SERIALIZE, HEAP_ZERO_MEMORY};
+use win32::Win32::System::Memory::{HeapHandle, HEAP_FLAGS, HEAP_NO_SERIALIZE};
 use win32::Win32::UI::WindowsAndMessaging::{MESSAGEBOX_RESULT, MESSAGEBOX_STYLE};
 use win32_heapmgr::HeapMgr;
 
