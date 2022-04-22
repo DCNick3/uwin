@@ -1,4 +1,4 @@
-use core_mem::ptr::PtrRepr;
+use crate::ptr::PtrRepr;
 
 #[inline]
 pub fn floor(value: PtrRepr, align: PtrRepr) -> PtrRepr {

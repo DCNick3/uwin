@@ -5,7 +5,6 @@ mod mapper;
 mod os;
 
 mod address_range;
-mod align;
 mod manager;
 mod page_region_state;
 mod page_state;

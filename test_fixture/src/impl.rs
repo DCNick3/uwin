@@ -1,15 +1,15 @@
 use core_abi::unwind_token::{UnwindReason, UnwindToken};
-use core_mem::ptr::{PtrDiffRepr, PtrRepr};
+use core_mem::ptr::{MutPtr, PtrDiffRepr, PtrRepr};
 use core_mem::thread_ctx::get_thread_ctx;
 use core_memmgr::MemoryManager;
-use std::ffi::CStr;
+use std::ffi::{c_void, CStr};
 use std::os::raw::c_char;
 use std::sync::{Arc, Mutex};
 use std::time::Duration;
 use tracing::info;
 use win32::core::{PCSTR, PSTR};
 use win32::Win32::Foundation::{HINSTANCE, HWND};
-use win32::Win32::System::Memory::{HeapHandle, HEAP_FLAGS, HEAP_NO_SERIALIZE};
+use win32::Win32::System::Memory::{HeapHandle, HEAP_FLAGS, HEAP_NO_SERIALIZE, HEAP_ZERO_MEMORY};
 use win32::Win32::UI::WindowsAndMessaging::{MESSAGEBOX_RESULT, MESSAGEBOX_STYLE};
 use win32_heapmgr::HeapMgr;
 
@@ -49,8 +49,6 @@ pub struct SystemInformation {}
 #[allow(non_snake_case)]
 impl win32::Win32::System::SystemInformation::Api for SystemInformation {
     fn GetVersion(&self) -> u32 {
-        std::thread::sleep(Duration::from_secs(2));
-
         0x0ece0205 // (I think?) corresponds to windows 98
     }
 }
@@ -62,6 +60,19 @@ pub struct Memory {
 
 #[allow(non_snake_case)]
 impl win32::Win32::System::Memory::Api for Memory {
+    fn HeapAlloc(
+        &self,
+        h_heap: HeapHandle,
+        dw_flags: HEAP_FLAGS,
+        dw_bytes: PtrRepr,
+    ) -> MutPtr<c_void> {
+        let heap_mgr = self.heap_mgr.lock().unwrap();
+
+        let res = heap_mgr.alloc(h_heap.0 as PtrRepr, dw_bytes, dw_flags);
+
+        MutPtr::new(res)
+    }
+
     fn HeapCreate(
         &self,
         fl_options: HEAP_FLAGS,

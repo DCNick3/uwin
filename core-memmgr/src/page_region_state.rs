@@ -1,7 +1,7 @@
 use crate::address_range::AddressRange;
-use crate::align::aligned;
 use crate::page_state::{PageState, PageStateRepr};
 use crate::PAGE_SIZE;
+use core_mem::align::aligned;
 use core_mem::ptr::PtrRepr;
 use std::iter::Peekable;
 use std::ops::Range;

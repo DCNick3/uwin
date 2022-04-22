@@ -24,7 +24,8 @@
 use crate::address_range::AddressRange;
 use crate::mapper::Mapper;
 use crate::page_region_state::PageRegionState;
-use crate::{align, Error, PageState, Result, PAGE_SIZE};
+use crate::{Error, PageState, Result, PAGE_SIZE};
+use core_mem::align;
 use core_mem::ctx::FlatMemoryCtx;
 use core_mem::ptr::PtrRepr;
 use memory_image::Protection;
