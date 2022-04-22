@@ -1,14 +1,17 @@
 use core_abi::unwind_token::{UnwindReason, UnwindToken};
-use core_mem::ptr::PtrRepr;
+use core_mem::ptr::{PtrDiffRepr, PtrRepr};
 use core_mem::thread_ctx::get_thread_ctx;
+use core_memmgr::MemoryManager;
 use std::ffi::CStr;
 use std::os::raw::c_char;
+use std::sync::{Arc, Mutex};
 use std::time::Duration;
 use tracing::info;
 use win32::core::{PCSTR, PSTR};
 use win32::Win32::Foundation::{HINSTANCE, HWND};
-use win32::Win32::System::Memory::{HeapHandle, HEAP_FLAGS};
+use win32::Win32::System::Memory::{HeapHandle, HEAP_FLAGS, HEAP_NO_SERIALIZE};
 use win32::Win32::UI::WindowsAndMessaging::{MESSAGEBOX_RESULT, MESSAGEBOX_STYLE};
+use win32_heapmgr::HeapMgr;
 
 pub struct WindowsAndMessaging {}
 
@@ -52,17 +55,27 @@ impl win32::Win32::System::SystemInformation::Api for SystemInformation {
     }
 }
 
-pub struct Memory {}
+pub struct Memory {
+    pub(crate) memory_mgr: Arc<Mutex<MemoryManager>>,
+    pub(crate) heap_mgr: Mutex<HeapMgr>,
+}
 
 #[allow(non_snake_case)]
 impl win32::Win32::System::Memory::Api for Memory {
     fn HeapCreate(
         &self,
-        _fl_options: HEAP_FLAGS,
-        _dw_initial_size: PtrRepr,
-        _dw_maximum_size: PtrRepr,
+        fl_options: HEAP_FLAGS,
+        dw_initial_size: PtrRepr,
+        dw_maximum_size: PtrRepr,
     ) -> HeapHandle {
-        HeapHandle(0)
+        // we ignore HEAP_NO_SERIALIZE (it's hard in Rust, lol)
+        assert_eq!(fl_options & !HEAP_NO_SERIALIZE, HEAP_FLAGS(0));
+
+        let mut heap_mgr = self.heap_mgr.lock().unwrap();
+
+        let heap_handle = heap_mgr.create(dw_initial_size, dw_maximum_size);
+
+        HeapHandle(heap_handle as PtrDiffRepr)
     }
 }
 

@@ -12,6 +12,7 @@ core-mem = { path = "../core-mem" }
 core-memmgr = { path = "../core-memmgr" }
 core-abi = { path = "../core-abi" }
 win32 = { path = "../win32" }
+win32-heapmgr = { path = "../win32-heapmgr" }
 
 tracing = "0.1.33"
 tracing-subscriber = { version = "0.3.11", features = ["env-filter"] }

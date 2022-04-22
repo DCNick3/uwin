@@ -1,0 +1,9 @@
+[package]
+name = "win32-heapmgr"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+core-heap = { path = "../core-heap" }
+core-memmgr = { path = "../core-memmgr" }
+core-mem = { path = "../core-mem" }

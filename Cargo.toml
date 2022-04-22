@@ -13,10 +13,14 @@ lto = "thin"
 members = [
     "rusty-x86",
     "rusty-x86_derive",
+
     "core-mem",
     "core-memmgr",
+    "core-heap",
     "core-abi",
+
     "win32",
+    "win32-heapmgr",
 
     "win32-bindgen/bindgen",
     "win32-bindgen/bindgenlib",

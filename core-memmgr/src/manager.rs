@@ -358,6 +358,7 @@ impl MemoryManager {
         Ok(())
     }
 
+    // TODO: cover this function with tests
     pub fn reserve_and_commit_dynamic(
         &mut self,
         size: PtrRepr,
@@ -371,6 +372,22 @@ impl MemoryManager {
         }
 
         Ok(reservation)
+    }
+
+    // TODO: cover this function with tests
+    pub fn uncommit_and_unreserve(&mut self, addr: PtrRepr) -> Result<()> {
+        let region_size = self
+            .regions
+            .get(&addr)
+            .ok_or(Error::UnreserveNonexistentRegion)?
+            .len_bytes();
+
+        self.uncommit(AddressRange::new(addr, region_size))?;
+
+        // should be there
+        self.regions.remove(&addr).unwrap();
+
+        Ok(())
     }
 }
 

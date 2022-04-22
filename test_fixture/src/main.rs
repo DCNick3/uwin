@@ -8,11 +8,12 @@ use core_mem::thread_ctx::set_thread_ctx;
 use core_memmgr::{AddressRange, MemoryManager};
 use recompiler::memory_image::{MemoryImageItem, Protection};
 use rusty_x86_runtime::{CpuContext, ExtendedContext, PROGRAM_IMAGE};
-use std::sync::Arc;
+use std::sync::{Arc, Mutex};
 use tracing::trace;
 use tracing_subscriber::fmt::format;
 use tracing_subscriber::layer::SubscriberExt;
 use win32::core::Win32Context;
+use win32_heapmgr::HeapMgr;
 
 fn map_item(mgr: &mut MemoryManager, item: &MemoryImageItem) -> core_memmgr::Result<()> {
     let range = AddressRange::new(item.addr, item.data.len() as PtrRepr);
@@ -33,13 +34,13 @@ fn map_item(mgr: &mut MemoryManager, item: &MemoryImageItem) -> core_memmgr::Res
 }
 
 fn main_impl() {
-    let mut mgr = MemoryManager::new().expect("Mapping the base region");
+    let mut memory_mgr = MemoryManager::new().expect("Mapping the base region");
 
-    let memory_ctx = unsafe { mgr.memory_context() };
+    let memory_ctx = unsafe { memory_mgr.memory_context() };
     set_thread_ctx(memory_ctx);
 
     for (_, (_, info)) in PROGRAM_IMAGE.modules.iter() {
-        let res = mgr
+        let res = memory_mgr
             .reserve_static(AddressRange::new(info.base_addr, info.image_size))
             .expect("Reserving address space for a module");
         assert_eq!(res.start, info.base_addr);
@@ -47,7 +48,7 @@ fn main_impl() {
     }
 
     for item in PROGRAM_IMAGE.memory.iter() {
-        map_item(&mut mgr, item).expect("Mapping program memory")
+        map_item(&mut memory_mgr, item).expect("Mapping program memory")
     }
 
     let entry = PROGRAM_IMAGE.exe_entrypoint;
@@ -58,28 +59,12 @@ fn main_impl() {
         unwind_reason: None,
     };
 
-    context.win32.insert(
-        Arc::new(WindowsAndMessaging {}) as Arc<dyn win32::Win32::UI::WindowsAndMessaging::Api>
-    );
-    context.win32.insert(
-        Arc::new(SystemInformation {}) as Arc<dyn win32::Win32::System::SystemInformation::Api>
-    );
-    context
-        .win32
-        .insert(Arc::new(Memory {}) as Arc<dyn win32::Win32::System::Memory::Api>);
-    context
-        .win32
-        .insert(Arc::new(LibraryLoader {}) as Arc<dyn win32::Win32::System::LibraryLoader::Api>);
-    context
-        .win32
-        .insert(Arc::new(Threading {}) as Arc<dyn win32::Win32::System::Threading::Api>);
-
-    let tlb = mgr
+    let tlb = memory_mgr
         .reserve_and_commit_dynamic(0x10000, Protection::READ_WRITE)
         .expect("Mapping TLB");
 
     let stack_size = 0x400000; // 4 MiB
-    let stack = mgr
+    let stack = memory_mgr
         .reserve_and_commit_dynamic(stack_size, Protection::READ_WRITE)
         .expect("Mapping stack");
     // set ESP to the bottom of the stack
@@ -88,6 +73,25 @@ fn main_impl() {
     // for now the zero is left there (hopefully it will be zero...)
     context.cpu.gp_regs[4] = stack.end() - 4;
     context.cpu.fs_base = tlb.start;
+
+    let memory_mgr = Arc::new(Mutex::new(memory_mgr));
+
+    context.win32.insert(
+        Arc::new(WindowsAndMessaging {}) as Arc<dyn win32::Win32::UI::WindowsAndMessaging::Api>
+    );
+    context.win32.insert(
+        Arc::new(SystemInformation {}) as Arc<dyn win32::Win32::System::SystemInformation::Api>
+    );
+    context.win32.insert(Arc::new(Memory {
+        memory_mgr: memory_mgr.clone(),
+        heap_mgr: Mutex::new(HeapMgr::new(memory_mgr.clone())),
+    }) as Arc<dyn win32::Win32::System::Memory::Api>);
+    context
+        .win32
+        .insert(Arc::new(LibraryLoader {}) as Arc<dyn win32::Win32::System::LibraryLoader::Api>);
+    context
+        .win32
+        .insert(Arc::new(Threading {}) as Arc<dyn win32::Win32::System::Threading::Api>);
 
     let res = rusty_x86_runtime::execute_recompiled_code(&mut context, memory_ctx, entry);
     trace!("execute_recompiled_code returned 0x{:08x}", res);
