@@ -13,7 +13,7 @@ macro_rules! from_into_mem_impl {
         impl<'a> FromIntoMemory for $typ {
             #[inline]
             fn into_bytes(self, dst: &mut [u8]) {
-                assert!(dst.len() >= $size);
+                assert!(dst.len() == $size);
                 unsafe {
                     let bytes = self.to_le_bytes();
                     copy_nonoverlapping((&bytes).as_ptr(), dst.as_mut_ptr(), $size);
@@ -86,5 +86,19 @@ impl<T> FromIntoMemory for Option<T> {
     }
     fn size() -> usize {
         todo!()
+    }
+}
+
+impl<T: FromIntoMemory, const SZ: usize> FromIntoMemory for [T; SZ] {
+    fn from_bytes(_from: &[u8]) -> Self {
+        todo!()
+    }
+
+    fn into_bytes(self, _into: &mut [u8]) {
+        todo!()
+    }
+
+    fn size() -> usize {
+        T::size() * SZ
     }
 }

@@ -3,6 +3,7 @@
     non_camel_case_types,
     non_upper_case_globals,
     clashing_extern_declarations,
+    unused_assignments,
     clippy::all
 )]
 #[allow(unused)]
@@ -46,14 +47,119 @@ impl ::core::cmp::PartialEq for ENCLAVE_IDENTITY {
 }
 impl ::core::cmp::Eq for ENCLAVE_IDENTITY {}
 impl FromIntoMemory for ENCLAVE_IDENTITY {
-    fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+    fn from_bytes(mut from: &[u8]) -> Self {
+        let f_OwnerId =
+            <[u8; 32] as FromIntoMemory>::from_bytes(&from[..<[u8; 32] as FromIntoMemory>::size()]);
+        from = &from[<[u8; 32] as FromIntoMemory>::size()..];
+        let f_UniqueId =
+            <[u8; 32] as FromIntoMemory>::from_bytes(&from[..<[u8; 32] as FromIntoMemory>::size()]);
+        from = &from[<[u8; 32] as FromIntoMemory>::size()..];
+        let f_AuthorId =
+            <[u8; 32] as FromIntoMemory>::from_bytes(&from[..<[u8; 32] as FromIntoMemory>::size()]);
+        from = &from[<[u8; 32] as FromIntoMemory>::size()..];
+        let f_FamilyId =
+            <[u8; 16] as FromIntoMemory>::from_bytes(&from[..<[u8; 16] as FromIntoMemory>::size()]);
+        from = &from[<[u8; 16] as FromIntoMemory>::size()..];
+        let f_ImageId =
+            <[u8; 16] as FromIntoMemory>::from_bytes(&from[..<[u8; 16] as FromIntoMemory>::size()]);
+        from = &from[<[u8; 16] as FromIntoMemory>::size()..];
+        let f_EnclaveSvn =
+            <u32 as FromIntoMemory>::from_bytes(&from[..<u32 as FromIntoMemory>::size()]);
+        from = &from[<u32 as FromIntoMemory>::size()..];
+        let f_SecureKernelSvn =
+            <u32 as FromIntoMemory>::from_bytes(&from[..<u32 as FromIntoMemory>::size()]);
+        from = &from[<u32 as FromIntoMemory>::size()..];
+        let f_PlatformSvn =
+            <u32 as FromIntoMemory>::from_bytes(&from[..<u32 as FromIntoMemory>::size()]);
+        from = &from[<u32 as FromIntoMemory>::size()..];
+        let f_Flags = <u32 as FromIntoMemory>::from_bytes(&from[..<u32 as FromIntoMemory>::size()]);
+        from = &from[<u32 as FromIntoMemory>::size()..];
+        let f_SigningLevel =
+            <u32 as FromIntoMemory>::from_bytes(&from[..<u32 as FromIntoMemory>::size()]);
+        from = &from[<u32 as FromIntoMemory>::size()..];
+        let f_EnclaveType =
+            <u32 as FromIntoMemory>::from_bytes(&from[..<u32 as FromIntoMemory>::size()]);
+        from = &from[<u32 as FromIntoMemory>::size()..];
+        Self {
+            OwnerId: f_OwnerId,
+            UniqueId: f_UniqueId,
+            AuthorId: f_AuthorId,
+            FamilyId: f_FamilyId,
+            ImageId: f_ImageId,
+            EnclaveSvn: f_EnclaveSvn,
+            SecureKernelSvn: f_SecureKernelSvn,
+            PlatformSvn: f_PlatformSvn,
+            Flags: f_Flags,
+            SigningLevel: f_SigningLevel,
+            EnclaveType: f_EnclaveType,
+        }
     }
-    fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+    fn into_bytes(self, mut into: &mut [u8]) {
+        FromIntoMemory::into_bytes(
+            self.OwnerId,
+            &mut into[..<[u8; 32] as FromIntoMemory>::size()],
+        );
+        into = &mut into[<[u8; 32] as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.UniqueId,
+            &mut into[..<[u8; 32] as FromIntoMemory>::size()],
+        );
+        into = &mut into[<[u8; 32] as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.AuthorId,
+            &mut into[..<[u8; 32] as FromIntoMemory>::size()],
+        );
+        into = &mut into[<[u8; 32] as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.FamilyId,
+            &mut into[..<[u8; 16] as FromIntoMemory>::size()],
+        );
+        into = &mut into[<[u8; 16] as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.ImageId,
+            &mut into[..<[u8; 16] as FromIntoMemory>::size()],
+        );
+        into = &mut into[<[u8; 16] as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.EnclaveSvn,
+            &mut into[..<u32 as FromIntoMemory>::size()],
+        );
+        into = &mut into[<u32 as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.SecureKernelSvn,
+            &mut into[..<u32 as FromIntoMemory>::size()],
+        );
+        into = &mut into[<u32 as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.PlatformSvn,
+            &mut into[..<u32 as FromIntoMemory>::size()],
+        );
+        into = &mut into[<u32 as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(self.Flags, &mut into[..<u32 as FromIntoMemory>::size()]);
+        into = &mut into[<u32 as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.SigningLevel,
+            &mut into[..<u32 as FromIntoMemory>::size()],
+        );
+        into = &mut into[<u32 as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.EnclaveType,
+            &mut into[..<u32 as FromIntoMemory>::size()],
+        );
+        into = &mut into[<u32 as FromIntoMemory>::size()..];
     }
     fn size() -> usize {
-        todo!()
+        <[u8; 32] as FromIntoMemory>::size()
+            + <[u8; 32] as FromIntoMemory>::size()
+            + <[u8; 32] as FromIntoMemory>::size()
+            + <[u8; 16] as FromIntoMemory>::size()
+            + <[u8; 16] as FromIntoMemory>::size()
+            + <u32 as FromIntoMemory>::size()
+            + <u32 as FromIntoMemory>::size()
+            + <u32 as FromIntoMemory>::size()
+            + <u32 as FromIntoMemory>::size()
+            + <u32 as FromIntoMemory>::size()
+            + <u32 as FromIntoMemory>::size()
     }
 }
 pub struct ENCLAVE_INFORMATION {
@@ -80,14 +186,59 @@ impl ::core::cmp::PartialEq for ENCLAVE_INFORMATION {
 }
 impl ::core::cmp::Eq for ENCLAVE_INFORMATION {}
 impl FromIntoMemory for ENCLAVE_INFORMATION {
-    fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+    fn from_bytes(mut from: &[u8]) -> Self {
+        let f_EnclaveType =
+            <u32 as FromIntoMemory>::from_bytes(&from[..<u32 as FromIntoMemory>::size()]);
+        from = &from[<u32 as FromIntoMemory>::size()..];
+        let f_Reserved =
+            <u32 as FromIntoMemory>::from_bytes(&from[..<u32 as FromIntoMemory>::size()]);
+        from = &from[<u32 as FromIntoMemory>::size()..];
+        let f_BaseAddress = <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(
+            &from[..<MutPtr<::core::ffi::c_void> as FromIntoMemory>::size()],
+        );
+        from = &from[<MutPtr<::core::ffi::c_void> as FromIntoMemory>::size()..];
+        let f_Size =
+            <PtrRepr as FromIntoMemory>::from_bytes(&from[..<PtrRepr as FromIntoMemory>::size()]);
+        from = &from[<PtrRepr as FromIntoMemory>::size()..];
+        let f_Identity = <ENCLAVE_IDENTITY as FromIntoMemory>::from_bytes(
+            &from[..<ENCLAVE_IDENTITY as FromIntoMemory>::size()],
+        );
+        from = &from[<ENCLAVE_IDENTITY as FromIntoMemory>::size()..];
+        Self {
+            EnclaveType: f_EnclaveType,
+            Reserved: f_Reserved,
+            BaseAddress: f_BaseAddress,
+            Size: f_Size,
+            Identity: f_Identity,
+        }
     }
-    fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+    fn into_bytes(self, mut into: &mut [u8]) {
+        FromIntoMemory::into_bytes(
+            self.EnclaveType,
+            &mut into[..<u32 as FromIntoMemory>::size()],
+        );
+        into = &mut into[<u32 as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(self.Reserved, &mut into[..<u32 as FromIntoMemory>::size()]);
+        into = &mut into[<u32 as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.BaseAddress,
+            &mut into[..<MutPtr<::core::ffi::c_void> as FromIntoMemory>::size()],
+        );
+        into = &mut into[<MutPtr<::core::ffi::c_void> as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(self.Size, &mut into[..<PtrRepr as FromIntoMemory>::size()]);
+        into = &mut into[<PtrRepr as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.Identity,
+            &mut into[..<ENCLAVE_IDENTITY as FromIntoMemory>::size()],
+        );
+        into = &mut into[<ENCLAVE_IDENTITY as FromIntoMemory>::size()..];
     }
     fn size() -> usize {
-        todo!()
+        <u32 as FromIntoMemory>::size()
+            + <u32 as FromIntoMemory>::size()
+            + <MutPtr<::core::ffi::c_void> as FromIntoMemory>::size()
+            + <PtrRepr as FromIntoMemory>::size()
+            + <ENCLAVE_IDENTITY as FromIntoMemory>::size()
     }
 }
 pub const ENCLAVE_REPORT_DATA_LENGTH: u32 = 64u32;
@@ -176,14 +327,59 @@ impl ::core::cmp::PartialEq for ENCLAVE_VBS_BASIC_KEY_REQUEST {
 }
 impl ::core::cmp::Eq for ENCLAVE_VBS_BASIC_KEY_REQUEST {}
 impl FromIntoMemory for ENCLAVE_VBS_BASIC_KEY_REQUEST {
-    fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+    fn from_bytes(mut from: &[u8]) -> Self {
+        let f_RequestSize =
+            <u32 as FromIntoMemory>::from_bytes(&from[..<u32 as FromIntoMemory>::size()]);
+        from = &from[<u32 as FromIntoMemory>::size()..];
+        let f_Flags = <u32 as FromIntoMemory>::from_bytes(&from[..<u32 as FromIntoMemory>::size()]);
+        from = &from[<u32 as FromIntoMemory>::size()..];
+        let f_EnclaveSVN =
+            <u32 as FromIntoMemory>::from_bytes(&from[..<u32 as FromIntoMemory>::size()]);
+        from = &from[<u32 as FromIntoMemory>::size()..];
+        let f_SystemKeyID =
+            <u32 as FromIntoMemory>::from_bytes(&from[..<u32 as FromIntoMemory>::size()]);
+        from = &from[<u32 as FromIntoMemory>::size()..];
+        let f_CurrentSystemKeyID =
+            <u32 as FromIntoMemory>::from_bytes(&from[..<u32 as FromIntoMemory>::size()]);
+        from = &from[<u32 as FromIntoMemory>::size()..];
+        Self {
+            RequestSize: f_RequestSize,
+            Flags: f_Flags,
+            EnclaveSVN: f_EnclaveSVN,
+            SystemKeyID: f_SystemKeyID,
+            CurrentSystemKeyID: f_CurrentSystemKeyID,
+        }
     }
-    fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+    fn into_bytes(self, mut into: &mut [u8]) {
+        FromIntoMemory::into_bytes(
+            self.RequestSize,
+            &mut into[..<u32 as FromIntoMemory>::size()],
+        );
+        into = &mut into[<u32 as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(self.Flags, &mut into[..<u32 as FromIntoMemory>::size()]);
+        into = &mut into[<u32 as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.EnclaveSVN,
+            &mut into[..<u32 as FromIntoMemory>::size()],
+        );
+        into = &mut into[<u32 as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.SystemKeyID,
+            &mut into[..<u32 as FromIntoMemory>::size()],
+        );
+        into = &mut into[<u32 as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.CurrentSystemKeyID,
+            &mut into[..<u32 as FromIntoMemory>::size()],
+        );
+        into = &mut into[<u32 as FromIntoMemory>::size()..];
     }
     fn size() -> usize {
-        todo!()
+        <u32 as FromIntoMemory>::size()
+            + <u32 as FromIntoMemory>::size()
+            + <u32 as FromIntoMemory>::size()
+            + <u32 as FromIntoMemory>::size()
+            + <u32 as FromIntoMemory>::size()
     }
 }
 pub type VBS_BASIC_ENCLAVE_BASIC_CALL_COMMIT_PAGES = ::core::option::Option<()>;
@@ -255,14 +451,94 @@ impl ::core::cmp::PartialEq for VBS_BASIC_ENCLAVE_EXCEPTION_AMD64 {
 }
 impl ::core::cmp::Eq for VBS_BASIC_ENCLAVE_EXCEPTION_AMD64 {}
 impl FromIntoMemory for VBS_BASIC_ENCLAVE_EXCEPTION_AMD64 {
-    fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+    fn from_bytes(mut from: &[u8]) -> Self {
+        let f_ExceptionCode =
+            <u32 as FromIntoMemory>::from_bytes(&from[..<u32 as FromIntoMemory>::size()]);
+        from = &from[<u32 as FromIntoMemory>::size()..];
+        let f_NumberParameters =
+            <u32 as FromIntoMemory>::from_bytes(&from[..<u32 as FromIntoMemory>::size()]);
+        from = &from[<u32 as FromIntoMemory>::size()..];
+        let f_ExceptionInformation = <[PtrRepr; 3] as FromIntoMemory>::from_bytes(
+            &from[..<[PtrRepr; 3] as FromIntoMemory>::size()],
+        );
+        from = &from[<[PtrRepr; 3] as FromIntoMemory>::size()..];
+        let f_ExceptionRAX =
+            <PtrRepr as FromIntoMemory>::from_bytes(&from[..<PtrRepr as FromIntoMemory>::size()]);
+        from = &from[<PtrRepr as FromIntoMemory>::size()..];
+        let f_ExceptionRCX =
+            <PtrRepr as FromIntoMemory>::from_bytes(&from[..<PtrRepr as FromIntoMemory>::size()]);
+        from = &from[<PtrRepr as FromIntoMemory>::size()..];
+        let f_ExceptionRIP =
+            <PtrRepr as FromIntoMemory>::from_bytes(&from[..<PtrRepr as FromIntoMemory>::size()]);
+        from = &from[<PtrRepr as FromIntoMemory>::size()..];
+        let f_ExceptionRFLAGS =
+            <PtrRepr as FromIntoMemory>::from_bytes(&from[..<PtrRepr as FromIntoMemory>::size()]);
+        from = &from[<PtrRepr as FromIntoMemory>::size()..];
+        let f_ExceptionRSP =
+            <PtrRepr as FromIntoMemory>::from_bytes(&from[..<PtrRepr as FromIntoMemory>::size()]);
+        from = &from[<PtrRepr as FromIntoMemory>::size()..];
+        Self {
+            ExceptionCode: f_ExceptionCode,
+            NumberParameters: f_NumberParameters,
+            ExceptionInformation: f_ExceptionInformation,
+            ExceptionRAX: f_ExceptionRAX,
+            ExceptionRCX: f_ExceptionRCX,
+            ExceptionRIP: f_ExceptionRIP,
+            ExceptionRFLAGS: f_ExceptionRFLAGS,
+            ExceptionRSP: f_ExceptionRSP,
+        }
     }
-    fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+    fn into_bytes(self, mut into: &mut [u8]) {
+        FromIntoMemory::into_bytes(
+            self.ExceptionCode,
+            &mut into[..<u32 as FromIntoMemory>::size()],
+        );
+        into = &mut into[<u32 as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.NumberParameters,
+            &mut into[..<u32 as FromIntoMemory>::size()],
+        );
+        into = &mut into[<u32 as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.ExceptionInformation,
+            &mut into[..<[PtrRepr; 3] as FromIntoMemory>::size()],
+        );
+        into = &mut into[<[PtrRepr; 3] as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.ExceptionRAX,
+            &mut into[..<PtrRepr as FromIntoMemory>::size()],
+        );
+        into = &mut into[<PtrRepr as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.ExceptionRCX,
+            &mut into[..<PtrRepr as FromIntoMemory>::size()],
+        );
+        into = &mut into[<PtrRepr as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.ExceptionRIP,
+            &mut into[..<PtrRepr as FromIntoMemory>::size()],
+        );
+        into = &mut into[<PtrRepr as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.ExceptionRFLAGS,
+            &mut into[..<PtrRepr as FromIntoMemory>::size()],
+        );
+        into = &mut into[<PtrRepr as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.ExceptionRSP,
+            &mut into[..<PtrRepr as FromIntoMemory>::size()],
+        );
+        into = &mut into[<PtrRepr as FromIntoMemory>::size()..];
     }
     fn size() -> usize {
-        todo!()
+        <u32 as FromIntoMemory>::size()
+            + <u32 as FromIntoMemory>::size()
+            + <[PtrRepr; 3] as FromIntoMemory>::size()
+            + <PtrRepr as FromIntoMemory>::size()
+            + <PtrRepr as FromIntoMemory>::size()
+            + <PtrRepr as FromIntoMemory>::size()
+            + <PtrRepr as FromIntoMemory>::size()
+            + <PtrRepr as FromIntoMemory>::size()
     }
 }
 pub struct VBS_BASIC_ENCLAVE_SYSCALL_PAGE {
@@ -324,14 +600,182 @@ impl ::core::cmp::PartialEq for VBS_BASIC_ENCLAVE_SYSCALL_PAGE {
 }
 impl ::core::cmp::Eq for VBS_BASIC_ENCLAVE_SYSCALL_PAGE {}
 impl FromIntoMemory for VBS_BASIC_ENCLAVE_SYSCALL_PAGE {
-    fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+    fn from_bytes(mut from: &[u8]) -> Self {
+        let f_ReturnFromEnclave =
+            <VBS_BASIC_ENCLAVE_BASIC_CALL_RETURN_FROM_ENCLAVE as FromIntoMemory>::from_bytes(
+                &from[..<VBS_BASIC_ENCLAVE_BASIC_CALL_RETURN_FROM_ENCLAVE as FromIntoMemory>::size(
+                )],
+            );
+        from =
+            &from[<VBS_BASIC_ENCLAVE_BASIC_CALL_RETURN_FROM_ENCLAVE as FromIntoMemory>::size()..];
+        let f_ReturnFromException = < VBS_BASIC_ENCLAVE_BASIC_CALL_RETURN_FROM_EXCEPTION as FromIntoMemory > :: from_bytes ( & from [ .. < VBS_BASIC_ENCLAVE_BASIC_CALL_RETURN_FROM_EXCEPTION as FromIntoMemory > :: size ( ) ] ) ;
+        from =
+            &from[<VBS_BASIC_ENCLAVE_BASIC_CALL_RETURN_FROM_EXCEPTION as FromIntoMemory>::size()..];
+        let f_TerminateThread =
+            <VBS_BASIC_ENCLAVE_BASIC_CALL_TERMINATE_THREAD as FromIntoMemory>::from_bytes(
+                &from[..<VBS_BASIC_ENCLAVE_BASIC_CALL_TERMINATE_THREAD as FromIntoMemory>::size()],
+            );
+        from = &from[<VBS_BASIC_ENCLAVE_BASIC_CALL_TERMINATE_THREAD as FromIntoMemory>::size()..];
+        let f_InterruptThread =
+            <VBS_BASIC_ENCLAVE_BASIC_CALL_INTERRUPT_THREAD as FromIntoMemory>::from_bytes(
+                &from[..<VBS_BASIC_ENCLAVE_BASIC_CALL_INTERRUPT_THREAD as FromIntoMemory>::size()],
+            );
+        from = &from[<VBS_BASIC_ENCLAVE_BASIC_CALL_INTERRUPT_THREAD as FromIntoMemory>::size()..];
+        let f_CommitPages =
+            <VBS_BASIC_ENCLAVE_BASIC_CALL_COMMIT_PAGES as FromIntoMemory>::from_bytes(
+                &from[..<VBS_BASIC_ENCLAVE_BASIC_CALL_COMMIT_PAGES as FromIntoMemory>::size()],
+            );
+        from = &from[<VBS_BASIC_ENCLAVE_BASIC_CALL_COMMIT_PAGES as FromIntoMemory>::size()..];
+        let f_DecommitPages =
+            <VBS_BASIC_ENCLAVE_BASIC_CALL_DECOMMIT_PAGES as FromIntoMemory>::from_bytes(
+                &from[..<VBS_BASIC_ENCLAVE_BASIC_CALL_DECOMMIT_PAGES as FromIntoMemory>::size()],
+            );
+        from = &from[<VBS_BASIC_ENCLAVE_BASIC_CALL_DECOMMIT_PAGES as FromIntoMemory>::size()..];
+        let f_ProtectPages =
+            <VBS_BASIC_ENCLAVE_BASIC_CALL_PROTECT_PAGES as FromIntoMemory>::from_bytes(
+                &from[..<VBS_BASIC_ENCLAVE_BASIC_CALL_PROTECT_PAGES as FromIntoMemory>::size()],
+            );
+        from = &from[<VBS_BASIC_ENCLAVE_BASIC_CALL_PROTECT_PAGES as FromIntoMemory>::size()..];
+        let f_CreateThread =
+            <VBS_BASIC_ENCLAVE_BASIC_CALL_CREATE_THREAD as FromIntoMemory>::from_bytes(
+                &from[..<VBS_BASIC_ENCLAVE_BASIC_CALL_CREATE_THREAD as FromIntoMemory>::size()],
+            );
+        from = &from[<VBS_BASIC_ENCLAVE_BASIC_CALL_CREATE_THREAD as FromIntoMemory>::size()..];
+        let f_GetEnclaveInformation = < VBS_BASIC_ENCLAVE_BASIC_CALL_GET_ENCLAVE_INFORMATION as FromIntoMemory > :: from_bytes ( & from [ .. < VBS_BASIC_ENCLAVE_BASIC_CALL_GET_ENCLAVE_INFORMATION as FromIntoMemory > :: size ( ) ] ) ;
+        from = &from
+            [<VBS_BASIC_ENCLAVE_BASIC_CALL_GET_ENCLAVE_INFORMATION as FromIntoMemory>::size()..];
+        let f_GenerateKey =
+            <VBS_BASIC_ENCLAVE_BASIC_CALL_GENERATE_KEY as FromIntoMemory>::from_bytes(
+                &from[..<VBS_BASIC_ENCLAVE_BASIC_CALL_GENERATE_KEY as FromIntoMemory>::size()],
+            );
+        from = &from[<VBS_BASIC_ENCLAVE_BASIC_CALL_GENERATE_KEY as FromIntoMemory>::size()..];
+        let f_GenerateReport =
+            <VBS_BASIC_ENCLAVE_BASIC_CALL_GENERATE_REPORT as FromIntoMemory>::from_bytes(
+                &from[..<VBS_BASIC_ENCLAVE_BASIC_CALL_GENERATE_REPORT as FromIntoMemory>::size()],
+            );
+        from = &from[<VBS_BASIC_ENCLAVE_BASIC_CALL_GENERATE_REPORT as FromIntoMemory>::size()..];
+        let f_VerifyReport =
+            <VBS_BASIC_ENCLAVE_BASIC_CALL_VERIFY_REPORT as FromIntoMemory>::from_bytes(
+                &from[..<VBS_BASIC_ENCLAVE_BASIC_CALL_VERIFY_REPORT as FromIntoMemory>::size()],
+            );
+        from = &from[<VBS_BASIC_ENCLAVE_BASIC_CALL_VERIFY_REPORT as FromIntoMemory>::size()..];
+        let f_GenerateRandomData =
+            <VBS_BASIC_ENCLAVE_BASIC_CALL_GENERATE_RANDOM_DATA as FromIntoMemory>::from_bytes(
+                &from
+                    [..<VBS_BASIC_ENCLAVE_BASIC_CALL_GENERATE_RANDOM_DATA as FromIntoMemory>::size(
+                    )],
+            );
+        from =
+            &from[<VBS_BASIC_ENCLAVE_BASIC_CALL_GENERATE_RANDOM_DATA as FromIntoMemory>::size()..];
+        Self {
+            ReturnFromEnclave: f_ReturnFromEnclave,
+            ReturnFromException: f_ReturnFromException,
+            TerminateThread: f_TerminateThread,
+            InterruptThread: f_InterruptThread,
+            CommitPages: f_CommitPages,
+            DecommitPages: f_DecommitPages,
+            ProtectPages: f_ProtectPages,
+            CreateThread: f_CreateThread,
+            GetEnclaveInformation: f_GetEnclaveInformation,
+            GenerateKey: f_GenerateKey,
+            GenerateReport: f_GenerateReport,
+            VerifyReport: f_VerifyReport,
+            GenerateRandomData: f_GenerateRandomData,
+        }
     }
-    fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+    fn into_bytes(self, mut into: &mut [u8]) {
+        FromIntoMemory::into_bytes(
+            self.ReturnFromEnclave,
+            &mut into
+                [..<VBS_BASIC_ENCLAVE_BASIC_CALL_RETURN_FROM_ENCLAVE as FromIntoMemory>::size()],
+        );
+        into = &mut into
+            [<VBS_BASIC_ENCLAVE_BASIC_CALL_RETURN_FROM_ENCLAVE as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.ReturnFromException,
+            &mut into
+                [..<VBS_BASIC_ENCLAVE_BASIC_CALL_RETURN_FROM_EXCEPTION as FromIntoMemory>::size()],
+        );
+        into = &mut into
+            [<VBS_BASIC_ENCLAVE_BASIC_CALL_RETURN_FROM_EXCEPTION as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.TerminateThread,
+            &mut into[..<VBS_BASIC_ENCLAVE_BASIC_CALL_TERMINATE_THREAD as FromIntoMemory>::size()],
+        );
+        into =
+            &mut into[<VBS_BASIC_ENCLAVE_BASIC_CALL_TERMINATE_THREAD as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.InterruptThread,
+            &mut into[..<VBS_BASIC_ENCLAVE_BASIC_CALL_INTERRUPT_THREAD as FromIntoMemory>::size()],
+        );
+        into =
+            &mut into[<VBS_BASIC_ENCLAVE_BASIC_CALL_INTERRUPT_THREAD as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.CommitPages,
+            &mut into[..<VBS_BASIC_ENCLAVE_BASIC_CALL_COMMIT_PAGES as FromIntoMemory>::size()],
+        );
+        into = &mut into[<VBS_BASIC_ENCLAVE_BASIC_CALL_COMMIT_PAGES as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.DecommitPages,
+            &mut into[..<VBS_BASIC_ENCLAVE_BASIC_CALL_DECOMMIT_PAGES as FromIntoMemory>::size()],
+        );
+        into = &mut into[<VBS_BASIC_ENCLAVE_BASIC_CALL_DECOMMIT_PAGES as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.ProtectPages,
+            &mut into[..<VBS_BASIC_ENCLAVE_BASIC_CALL_PROTECT_PAGES as FromIntoMemory>::size()],
+        );
+        into = &mut into[<VBS_BASIC_ENCLAVE_BASIC_CALL_PROTECT_PAGES as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.CreateThread,
+            &mut into[..<VBS_BASIC_ENCLAVE_BASIC_CALL_CREATE_THREAD as FromIntoMemory>::size()],
+        );
+        into = &mut into[<VBS_BASIC_ENCLAVE_BASIC_CALL_CREATE_THREAD as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.GetEnclaveInformation,
+            &mut into
+                [..<VBS_BASIC_ENCLAVE_BASIC_CALL_GET_ENCLAVE_INFORMATION as FromIntoMemory>::size(
+                )],
+        );
+        into = &mut into
+            [<VBS_BASIC_ENCLAVE_BASIC_CALL_GET_ENCLAVE_INFORMATION as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.GenerateKey,
+            &mut into[..<VBS_BASIC_ENCLAVE_BASIC_CALL_GENERATE_KEY as FromIntoMemory>::size()],
+        );
+        into = &mut into[<VBS_BASIC_ENCLAVE_BASIC_CALL_GENERATE_KEY as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.GenerateReport,
+            &mut into[..<VBS_BASIC_ENCLAVE_BASIC_CALL_GENERATE_REPORT as FromIntoMemory>::size()],
+        );
+        into =
+            &mut into[<VBS_BASIC_ENCLAVE_BASIC_CALL_GENERATE_REPORT as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.VerifyReport,
+            &mut into[..<VBS_BASIC_ENCLAVE_BASIC_CALL_VERIFY_REPORT as FromIntoMemory>::size()],
+        );
+        into = &mut into[<VBS_BASIC_ENCLAVE_BASIC_CALL_VERIFY_REPORT as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.GenerateRandomData,
+            &mut into
+                [..<VBS_BASIC_ENCLAVE_BASIC_CALL_GENERATE_RANDOM_DATA as FromIntoMemory>::size()],
+        );
+        into = &mut into
+            [<VBS_BASIC_ENCLAVE_BASIC_CALL_GENERATE_RANDOM_DATA as FromIntoMemory>::size()..];
     }
     fn size() -> usize {
-        todo!()
+        <VBS_BASIC_ENCLAVE_BASIC_CALL_RETURN_FROM_ENCLAVE as FromIntoMemory>::size()
+            + <VBS_BASIC_ENCLAVE_BASIC_CALL_RETURN_FROM_EXCEPTION as FromIntoMemory>::size()
+            + <VBS_BASIC_ENCLAVE_BASIC_CALL_TERMINATE_THREAD as FromIntoMemory>::size()
+            + <VBS_BASIC_ENCLAVE_BASIC_CALL_INTERRUPT_THREAD as FromIntoMemory>::size()
+            + <VBS_BASIC_ENCLAVE_BASIC_CALL_COMMIT_PAGES as FromIntoMemory>::size()
+            + <VBS_BASIC_ENCLAVE_BASIC_CALL_DECOMMIT_PAGES as FromIntoMemory>::size()
+            + <VBS_BASIC_ENCLAVE_BASIC_CALL_PROTECT_PAGES as FromIntoMemory>::size()
+            + <VBS_BASIC_ENCLAVE_BASIC_CALL_CREATE_THREAD as FromIntoMemory>::size()
+            + <VBS_BASIC_ENCLAVE_BASIC_CALL_GET_ENCLAVE_INFORMATION as FromIntoMemory>::size()
+            + <VBS_BASIC_ENCLAVE_BASIC_CALL_GENERATE_KEY as FromIntoMemory>::size()
+            + <VBS_BASIC_ENCLAVE_BASIC_CALL_GENERATE_REPORT as FromIntoMemory>::size()
+            + <VBS_BASIC_ENCLAVE_BASIC_CALL_VERIFY_REPORT as FromIntoMemory>::size()
+            + <VBS_BASIC_ENCLAVE_BASIC_CALL_GENERATE_RANDOM_DATA as FromIntoMemory>::size()
     }
 }
 pub struct VBS_BASIC_ENCLAVE_THREAD_DESCRIPTOR32 {
@@ -372,14 +816,73 @@ impl ::core::cmp::PartialEq for VBS_BASIC_ENCLAVE_THREAD_DESCRIPTOR32 {
 }
 impl ::core::cmp::Eq for VBS_BASIC_ENCLAVE_THREAD_DESCRIPTOR32 {}
 impl FromIntoMemory for VBS_BASIC_ENCLAVE_THREAD_DESCRIPTOR32 {
-    fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+    fn from_bytes(mut from: &[u8]) -> Self {
+        let f_ThreadContext =
+            <[u32; 4] as FromIntoMemory>::from_bytes(&from[..<[u32; 4] as FromIntoMemory>::size()]);
+        from = &from[<[u32; 4] as FromIntoMemory>::size()..];
+        let f_EntryPoint =
+            <u32 as FromIntoMemory>::from_bytes(&from[..<u32 as FromIntoMemory>::size()]);
+        from = &from[<u32 as FromIntoMemory>::size()..];
+        let f_StackPointer =
+            <u32 as FromIntoMemory>::from_bytes(&from[..<u32 as FromIntoMemory>::size()]);
+        from = &from[<u32 as FromIntoMemory>::size()..];
+        let f_ExceptionEntryPoint =
+            <u32 as FromIntoMemory>::from_bytes(&from[..<u32 as FromIntoMemory>::size()]);
+        from = &from[<u32 as FromIntoMemory>::size()..];
+        let f_ExceptionStack =
+            <u32 as FromIntoMemory>::from_bytes(&from[..<u32 as FromIntoMemory>::size()]);
+        from = &from[<u32 as FromIntoMemory>::size()..];
+        let f_ExceptionActive =
+            <u32 as FromIntoMemory>::from_bytes(&from[..<u32 as FromIntoMemory>::size()]);
+        from = &from[<u32 as FromIntoMemory>::size()..];
+        Self {
+            ThreadContext: f_ThreadContext,
+            EntryPoint: f_EntryPoint,
+            StackPointer: f_StackPointer,
+            ExceptionEntryPoint: f_ExceptionEntryPoint,
+            ExceptionStack: f_ExceptionStack,
+            ExceptionActive: f_ExceptionActive,
+        }
     }
-    fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+    fn into_bytes(self, mut into: &mut [u8]) {
+        FromIntoMemory::into_bytes(
+            self.ThreadContext,
+            &mut into[..<[u32; 4] as FromIntoMemory>::size()],
+        );
+        into = &mut into[<[u32; 4] as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.EntryPoint,
+            &mut into[..<u32 as FromIntoMemory>::size()],
+        );
+        into = &mut into[<u32 as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.StackPointer,
+            &mut into[..<u32 as FromIntoMemory>::size()],
+        );
+        into = &mut into[<u32 as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.ExceptionEntryPoint,
+            &mut into[..<u32 as FromIntoMemory>::size()],
+        );
+        into = &mut into[<u32 as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.ExceptionStack,
+            &mut into[..<u32 as FromIntoMemory>::size()],
+        );
+        into = &mut into[<u32 as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.ExceptionActive,
+            &mut into[..<u32 as FromIntoMemory>::size()],
+        );
+        into = &mut into[<u32 as FromIntoMemory>::size()..];
     }
     fn size() -> usize {
-        todo!()
+        <[u32; 4] as FromIntoMemory>::size()
+            + <u32 as FromIntoMemory>::size()
+            + <u32 as FromIntoMemory>::size()
+            + <u32 as FromIntoMemory>::size()
+            + <u32 as FromIntoMemory>::size()
+            + <u32 as FromIntoMemory>::size()
     }
 }
 pub struct VBS_BASIC_ENCLAVE_THREAD_DESCRIPTOR64 {
@@ -420,14 +923,73 @@ impl ::core::cmp::PartialEq for VBS_BASIC_ENCLAVE_THREAD_DESCRIPTOR64 {
 }
 impl ::core::cmp::Eq for VBS_BASIC_ENCLAVE_THREAD_DESCRIPTOR64 {}
 impl FromIntoMemory for VBS_BASIC_ENCLAVE_THREAD_DESCRIPTOR64 {
-    fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+    fn from_bytes(mut from: &[u8]) -> Self {
+        let f_ThreadContext =
+            <[u64; 4] as FromIntoMemory>::from_bytes(&from[..<[u64; 4] as FromIntoMemory>::size()]);
+        from = &from[<[u64; 4] as FromIntoMemory>::size()..];
+        let f_EntryPoint =
+            <u64 as FromIntoMemory>::from_bytes(&from[..<u64 as FromIntoMemory>::size()]);
+        from = &from[<u64 as FromIntoMemory>::size()..];
+        let f_StackPointer =
+            <u64 as FromIntoMemory>::from_bytes(&from[..<u64 as FromIntoMemory>::size()]);
+        from = &from[<u64 as FromIntoMemory>::size()..];
+        let f_ExceptionEntryPoint =
+            <u64 as FromIntoMemory>::from_bytes(&from[..<u64 as FromIntoMemory>::size()]);
+        from = &from[<u64 as FromIntoMemory>::size()..];
+        let f_ExceptionStack =
+            <u64 as FromIntoMemory>::from_bytes(&from[..<u64 as FromIntoMemory>::size()]);
+        from = &from[<u64 as FromIntoMemory>::size()..];
+        let f_ExceptionActive =
+            <u32 as FromIntoMemory>::from_bytes(&from[..<u32 as FromIntoMemory>::size()]);
+        from = &from[<u32 as FromIntoMemory>::size()..];
+        Self {
+            ThreadContext: f_ThreadContext,
+            EntryPoint: f_EntryPoint,
+            StackPointer: f_StackPointer,
+            ExceptionEntryPoint: f_ExceptionEntryPoint,
+            ExceptionStack: f_ExceptionStack,
+            ExceptionActive: f_ExceptionActive,
+        }
     }
-    fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+    fn into_bytes(self, mut into: &mut [u8]) {
+        FromIntoMemory::into_bytes(
+            self.ThreadContext,
+            &mut into[..<[u64; 4] as FromIntoMemory>::size()],
+        );
+        into = &mut into[<[u64; 4] as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.EntryPoint,
+            &mut into[..<u64 as FromIntoMemory>::size()],
+        );
+        into = &mut into[<u64 as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.StackPointer,
+            &mut into[..<u64 as FromIntoMemory>::size()],
+        );
+        into = &mut into[<u64 as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.ExceptionEntryPoint,
+            &mut into[..<u64 as FromIntoMemory>::size()],
+        );
+        into = &mut into[<u64 as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.ExceptionStack,
+            &mut into[..<u64 as FromIntoMemory>::size()],
+        );
+        into = &mut into[<u64 as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.ExceptionActive,
+            &mut into[..<u32 as FromIntoMemory>::size()],
+        );
+        into = &mut into[<u32 as FromIntoMemory>::size()..];
     }
     fn size() -> usize {
-        todo!()
+        <[u64; 4] as FromIntoMemory>::size()
+            + <u64 as FromIntoMemory>::size()
+            + <u64 as FromIntoMemory>::size()
+            + <u64 as FromIntoMemory>::size()
+            + <u64 as FromIntoMemory>::size()
+            + <u32 as FromIntoMemory>::size()
     }
 }
 pub struct VBS_ENCLAVE_REPORT {
@@ -452,14 +1014,54 @@ impl ::core::cmp::PartialEq for VBS_ENCLAVE_REPORT {
 }
 impl ::core::cmp::Eq for VBS_ENCLAVE_REPORT {}
 impl FromIntoMemory for VBS_ENCLAVE_REPORT {
-    fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+    fn from_bytes(mut from: &[u8]) -> Self {
+        let f_ReportSize =
+            <u32 as FromIntoMemory>::from_bytes(&from[..<u32 as FromIntoMemory>::size()]);
+        from = &from[<u32 as FromIntoMemory>::size()..];
+        let f_ReportVersion =
+            <u32 as FromIntoMemory>::from_bytes(&from[..<u32 as FromIntoMemory>::size()]);
+        from = &from[<u32 as FromIntoMemory>::size()..];
+        let f_EnclaveData =
+            <[u8; 64] as FromIntoMemory>::from_bytes(&from[..<[u8; 64] as FromIntoMemory>::size()]);
+        from = &from[<[u8; 64] as FromIntoMemory>::size()..];
+        let f_EnclaveIdentity = <ENCLAVE_IDENTITY as FromIntoMemory>::from_bytes(
+            &from[..<ENCLAVE_IDENTITY as FromIntoMemory>::size()],
+        );
+        from = &from[<ENCLAVE_IDENTITY as FromIntoMemory>::size()..];
+        Self {
+            ReportSize: f_ReportSize,
+            ReportVersion: f_ReportVersion,
+            EnclaveData: f_EnclaveData,
+            EnclaveIdentity: f_EnclaveIdentity,
+        }
     }
-    fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+    fn into_bytes(self, mut into: &mut [u8]) {
+        FromIntoMemory::into_bytes(
+            self.ReportSize,
+            &mut into[..<u32 as FromIntoMemory>::size()],
+        );
+        into = &mut into[<u32 as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.ReportVersion,
+            &mut into[..<u32 as FromIntoMemory>::size()],
+        );
+        into = &mut into[<u32 as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.EnclaveData,
+            &mut into[..<[u8; 64] as FromIntoMemory>::size()],
+        );
+        into = &mut into[<[u8; 64] as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.EnclaveIdentity,
+            &mut into[..<ENCLAVE_IDENTITY as FromIntoMemory>::size()],
+        );
+        into = &mut into[<ENCLAVE_IDENTITY as FromIntoMemory>::size()..];
     }
     fn size() -> usize {
-        todo!()
+        <u32 as FromIntoMemory>::size()
+            + <u32 as FromIntoMemory>::size()
+            + <[u8; 64] as FromIntoMemory>::size()
+            + <ENCLAVE_IDENTITY as FromIntoMemory>::size()
     }
 }
 pub struct VBS_ENCLAVE_REPORT_MODULE {
@@ -490,14 +1092,80 @@ impl ::core::cmp::PartialEq for VBS_ENCLAVE_REPORT_MODULE {
 }
 impl ::core::cmp::Eq for VBS_ENCLAVE_REPORT_MODULE {}
 impl FromIntoMemory for VBS_ENCLAVE_REPORT_MODULE {
-    fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+    fn from_bytes(mut from: &[u8]) -> Self {
+        let f_Header = <VBS_ENCLAVE_REPORT_VARDATA_HEADER as FromIntoMemory>::from_bytes(
+            &from[..<VBS_ENCLAVE_REPORT_VARDATA_HEADER as FromIntoMemory>::size()],
+        );
+        from = &from[<VBS_ENCLAVE_REPORT_VARDATA_HEADER as FromIntoMemory>::size()..];
+        let f_UniqueId =
+            <[u8; 32] as FromIntoMemory>::from_bytes(&from[..<[u8; 32] as FromIntoMemory>::size()]);
+        from = &from[<[u8; 32] as FromIntoMemory>::size()..];
+        let f_AuthorId =
+            <[u8; 32] as FromIntoMemory>::from_bytes(&from[..<[u8; 32] as FromIntoMemory>::size()]);
+        from = &from[<[u8; 32] as FromIntoMemory>::size()..];
+        let f_FamilyId =
+            <[u8; 16] as FromIntoMemory>::from_bytes(&from[..<[u8; 16] as FromIntoMemory>::size()]);
+        from = &from[<[u8; 16] as FromIntoMemory>::size()..];
+        let f_ImageId =
+            <[u8; 16] as FromIntoMemory>::from_bytes(&from[..<[u8; 16] as FromIntoMemory>::size()]);
+        from = &from[<[u8; 16] as FromIntoMemory>::size()..];
+        let f_Svn = <u32 as FromIntoMemory>::from_bytes(&from[..<u32 as FromIntoMemory>::size()]);
+        from = &from[<u32 as FromIntoMemory>::size()..];
+        let f_ModuleName =
+            <[u16; 1] as FromIntoMemory>::from_bytes(&from[..<[u16; 1] as FromIntoMemory>::size()]);
+        from = &from[<[u16; 1] as FromIntoMemory>::size()..];
+        Self {
+            Header: f_Header,
+            UniqueId: f_UniqueId,
+            AuthorId: f_AuthorId,
+            FamilyId: f_FamilyId,
+            ImageId: f_ImageId,
+            Svn: f_Svn,
+            ModuleName: f_ModuleName,
+        }
     }
-    fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+    fn into_bytes(self, mut into: &mut [u8]) {
+        FromIntoMemory::into_bytes(
+            self.Header,
+            &mut into[..<VBS_ENCLAVE_REPORT_VARDATA_HEADER as FromIntoMemory>::size()],
+        );
+        into = &mut into[<VBS_ENCLAVE_REPORT_VARDATA_HEADER as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.UniqueId,
+            &mut into[..<[u8; 32] as FromIntoMemory>::size()],
+        );
+        into = &mut into[<[u8; 32] as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.AuthorId,
+            &mut into[..<[u8; 32] as FromIntoMemory>::size()],
+        );
+        into = &mut into[<[u8; 32] as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.FamilyId,
+            &mut into[..<[u8; 16] as FromIntoMemory>::size()],
+        );
+        into = &mut into[<[u8; 16] as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.ImageId,
+            &mut into[..<[u8; 16] as FromIntoMemory>::size()],
+        );
+        into = &mut into[<[u8; 16] as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(self.Svn, &mut into[..<u32 as FromIntoMemory>::size()]);
+        into = &mut into[<u32 as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.ModuleName,
+            &mut into[..<[u16; 1] as FromIntoMemory>::size()],
+        );
+        into = &mut into[<[u16; 1] as FromIntoMemory>::size()..];
     }
     fn size() -> usize {
-        todo!()
+        <VBS_ENCLAVE_REPORT_VARDATA_HEADER as FromIntoMemory>::size()
+            + <[u8; 32] as FromIntoMemory>::size()
+            + <[u8; 32] as FromIntoMemory>::size()
+            + <[u8; 16] as FromIntoMemory>::size()
+            + <[u8; 16] as FromIntoMemory>::size()
+            + <u32 as FromIntoMemory>::size()
+            + <[u16; 1] as FromIntoMemory>::size()
     }
 }
 pub struct VBS_ENCLAVE_REPORT_PKG_HEADER {
@@ -526,14 +1194,67 @@ impl ::core::cmp::PartialEq for VBS_ENCLAVE_REPORT_PKG_HEADER {
 }
 impl ::core::cmp::Eq for VBS_ENCLAVE_REPORT_PKG_HEADER {}
 impl FromIntoMemory for VBS_ENCLAVE_REPORT_PKG_HEADER {
-    fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+    fn from_bytes(mut from: &[u8]) -> Self {
+        let f_PackageSize =
+            <u32 as FromIntoMemory>::from_bytes(&from[..<u32 as FromIntoMemory>::size()]);
+        from = &from[<u32 as FromIntoMemory>::size()..];
+        let f_Version =
+            <u32 as FromIntoMemory>::from_bytes(&from[..<u32 as FromIntoMemory>::size()]);
+        from = &from[<u32 as FromIntoMemory>::size()..];
+        let f_SignatureScheme =
+            <u32 as FromIntoMemory>::from_bytes(&from[..<u32 as FromIntoMemory>::size()]);
+        from = &from[<u32 as FromIntoMemory>::size()..];
+        let f_SignedStatementSize =
+            <u32 as FromIntoMemory>::from_bytes(&from[..<u32 as FromIntoMemory>::size()]);
+        from = &from[<u32 as FromIntoMemory>::size()..];
+        let f_SignatureSize =
+            <u32 as FromIntoMemory>::from_bytes(&from[..<u32 as FromIntoMemory>::size()]);
+        from = &from[<u32 as FromIntoMemory>::size()..];
+        let f_Reserved =
+            <u32 as FromIntoMemory>::from_bytes(&from[..<u32 as FromIntoMemory>::size()]);
+        from = &from[<u32 as FromIntoMemory>::size()..];
+        Self {
+            PackageSize: f_PackageSize,
+            Version: f_Version,
+            SignatureScheme: f_SignatureScheme,
+            SignedStatementSize: f_SignedStatementSize,
+            SignatureSize: f_SignatureSize,
+            Reserved: f_Reserved,
+        }
     }
-    fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+    fn into_bytes(self, mut into: &mut [u8]) {
+        FromIntoMemory::into_bytes(
+            self.PackageSize,
+            &mut into[..<u32 as FromIntoMemory>::size()],
+        );
+        into = &mut into[<u32 as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(self.Version, &mut into[..<u32 as FromIntoMemory>::size()]);
+        into = &mut into[<u32 as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.SignatureScheme,
+            &mut into[..<u32 as FromIntoMemory>::size()],
+        );
+        into = &mut into[<u32 as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.SignedStatementSize,
+            &mut into[..<u32 as FromIntoMemory>::size()],
+        );
+        into = &mut into[<u32 as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.SignatureSize,
+            &mut into[..<u32 as FromIntoMemory>::size()],
+        );
+        into = &mut into[<u32 as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(self.Reserved, &mut into[..<u32 as FromIntoMemory>::size()]);
+        into = &mut into[<u32 as FromIntoMemory>::size()..];
     }
     fn size() -> usize {
-        todo!()
+        <u32 as FromIntoMemory>::size()
+            + <u32 as FromIntoMemory>::size()
+            + <u32 as FromIntoMemory>::size()
+            + <u32 as FromIntoMemory>::size()
+            + <u32 as FromIntoMemory>::size()
+            + <u32 as FromIntoMemory>::size()
     }
 }
 pub const VBS_ENCLAVE_REPORT_PKG_HEADER_VERSION_CURRENT: u32 = 1u32;
@@ -555,14 +1276,25 @@ impl ::core::cmp::PartialEq for VBS_ENCLAVE_REPORT_VARDATA_HEADER {
 }
 impl ::core::cmp::Eq for VBS_ENCLAVE_REPORT_VARDATA_HEADER {}
 impl FromIntoMemory for VBS_ENCLAVE_REPORT_VARDATA_HEADER {
-    fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+    fn from_bytes(mut from: &[u8]) -> Self {
+        let f_DataType =
+            <u32 as FromIntoMemory>::from_bytes(&from[..<u32 as FromIntoMemory>::size()]);
+        from = &from[<u32 as FromIntoMemory>::size()..];
+        let f_Size = <u32 as FromIntoMemory>::from_bytes(&from[..<u32 as FromIntoMemory>::size()]);
+        from = &from[<u32 as FromIntoMemory>::size()..];
+        Self {
+            DataType: f_DataType,
+            Size: f_Size,
+        }
     }
-    fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+    fn into_bytes(self, mut into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.DataType, &mut into[..<u32 as FromIntoMemory>::size()]);
+        into = &mut into[<u32 as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(self.Size, &mut into[..<u32 as FromIntoMemory>::size()]);
+        into = &mut into[<u32 as FromIntoMemory>::size()..];
     }
     fn size() -> usize {
-        todo!()
+        <u32 as FromIntoMemory>::size() + <u32 as FromIntoMemory>::size()
     }
 }
 pub const VBS_ENCLAVE_REPORT_VERSION_CURRENT: u32 = 1u32;

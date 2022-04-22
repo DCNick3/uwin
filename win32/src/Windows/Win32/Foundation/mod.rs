@@ -3,6 +3,7 @@
     non_camel_case_types,
     non_upper_case_globals,
     clashing_extern_declarations,
+    unused_assignments,
     clippy::all
 )]
 #[allow(unused)]
@@ -79,14 +80,21 @@ impl ::core::cmp::PartialEq for APP_LOCAL_DEVICE_ID {
 }
 impl ::core::cmp::Eq for APP_LOCAL_DEVICE_ID {}
 impl FromIntoMemory for APP_LOCAL_DEVICE_ID {
-    fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+    fn from_bytes(mut from: &[u8]) -> Self {
+        let f_value =
+            <[u8; 32] as FromIntoMemory>::from_bytes(&from[..<[u8; 32] as FromIntoMemory>::size()]);
+        from = &from[<[u8; 32] as FromIntoMemory>::size()..];
+        Self { value: f_value }
     }
-    fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+    fn into_bytes(self, mut into: &mut [u8]) {
+        FromIntoMemory::into_bytes(
+            self.value,
+            &mut into[..<[u8; 32] as FromIntoMemory>::size()],
+        );
+        into = &mut into[<[u8; 32] as FromIntoMemory>::size()..];
     }
     fn size() -> usize {
-        todo!()
+        <[u8; 32] as FromIntoMemory>::size()
     }
 }
 pub const APP_LOCAL_DEVICE_ID_SIZE: u32 = 32u32;
@@ -1022,14 +1030,48 @@ impl ::core::cmp::PartialEq for DECIMAL {
 }
 impl ::core::cmp::Eq for DECIMAL {}
 impl FromIntoMemory for DECIMAL {
-    fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+    fn from_bytes(mut from: &[u8]) -> Self {
+        let f_wReserved =
+            <u16 as FromIntoMemory>::from_bytes(&from[..<u16 as FromIntoMemory>::size()]);
+        from = &from[<u16 as FromIntoMemory>::size()..];
+        let f_Anonymous1 = <DECIMAL_0 as FromIntoMemory>::from_bytes(
+            &from[..<DECIMAL_0 as FromIntoMemory>::size()],
+        );
+        from = &from[<DECIMAL_0 as FromIntoMemory>::size()..];
+        let f_Hi32 = <u32 as FromIntoMemory>::from_bytes(&from[..<u32 as FromIntoMemory>::size()]);
+        from = &from[<u32 as FromIntoMemory>::size()..];
+        let f_Anonymous2 = <DECIMAL_1 as FromIntoMemory>::from_bytes(
+            &from[..<DECIMAL_1 as FromIntoMemory>::size()],
+        );
+        from = &from[<DECIMAL_1 as FromIntoMemory>::size()..];
+        Self {
+            wReserved: f_wReserved,
+            Anonymous1: f_Anonymous1,
+            Hi32: f_Hi32,
+            Anonymous2: f_Anonymous2,
+        }
     }
-    fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+    fn into_bytes(self, mut into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.wReserved, &mut into[..<u16 as FromIntoMemory>::size()]);
+        into = &mut into[<u16 as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.Anonymous1,
+            &mut into[..<DECIMAL_0 as FromIntoMemory>::size()],
+        );
+        into = &mut into[<DECIMAL_0 as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(self.Hi32, &mut into[..<u32 as FromIntoMemory>::size()]);
+        into = &mut into[<u32 as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.Anonymous2,
+            &mut into[..<DECIMAL_1 as FromIntoMemory>::size()],
+        );
+        into = &mut into[<DECIMAL_1 as FromIntoMemory>::size()..];
     }
     fn size() -> usize {
-        todo!()
+        <u16 as FromIntoMemory>::size()
+            + <DECIMAL_0 as FromIntoMemory>::size()
+            + <u32 as FromIntoMemory>::size()
+            + <DECIMAL_1 as FromIntoMemory>::size()
     }
 }
 pub struct DECIMAL_0 {
@@ -1084,14 +1126,24 @@ impl ::core::cmp::PartialEq for DECIMAL_0_0 {
 }
 impl ::core::cmp::Eq for DECIMAL_0_0 {}
 impl FromIntoMemory for DECIMAL_0_0 {
-    fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+    fn from_bytes(mut from: &[u8]) -> Self {
+        let f_scale = <u8 as FromIntoMemory>::from_bytes(&from[..<u8 as FromIntoMemory>::size()]);
+        from = &from[<u8 as FromIntoMemory>::size()..];
+        let f_sign = <u8 as FromIntoMemory>::from_bytes(&from[..<u8 as FromIntoMemory>::size()]);
+        from = &from[<u8 as FromIntoMemory>::size()..];
+        Self {
+            scale: f_scale,
+            sign: f_sign,
+        }
     }
-    fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+    fn into_bytes(self, mut into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.scale, &mut into[..<u8 as FromIntoMemory>::size()]);
+        into = &mut into[<u8 as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(self.sign, &mut into[..<u8 as FromIntoMemory>::size()]);
+        into = &mut into[<u8 as FromIntoMemory>::size()..];
     }
     fn size() -> usize {
-        todo!()
+        <u8 as FromIntoMemory>::size() + <u8 as FromIntoMemory>::size()
     }
 }
 pub struct DECIMAL_1 {
@@ -1146,14 +1198,24 @@ impl ::core::cmp::PartialEq for DECIMAL_1_0 {
 }
 impl ::core::cmp::Eq for DECIMAL_1_0 {}
 impl FromIntoMemory for DECIMAL_1_0 {
-    fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+    fn from_bytes(mut from: &[u8]) -> Self {
+        let f_Lo32 = <u32 as FromIntoMemory>::from_bytes(&from[..<u32 as FromIntoMemory>::size()]);
+        from = &from[<u32 as FromIntoMemory>::size()..];
+        let f_Mid32 = <u32 as FromIntoMemory>::from_bytes(&from[..<u32 as FromIntoMemory>::size()]);
+        from = &from[<u32 as FromIntoMemory>::size()..];
+        Self {
+            Lo32: f_Lo32,
+            Mid32: f_Mid32,
+        }
     }
-    fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+    fn into_bytes(self, mut into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.Lo32, &mut into[..<u32 as FromIntoMemory>::size()]);
+        into = &mut into[<u32 as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(self.Mid32, &mut into[..<u32 as FromIntoMemory>::size()]);
+        into = &mut into[<u32 as FromIntoMemory>::size()..];
     }
     fn size() -> usize {
-        todo!()
+        <u32 as FromIntoMemory>::size() + <u32 as FromIntoMemory>::size()
     }
 }
 pub const DIGSIG_E_CRYPTO: crate::core::HRESULT = crate::core::HRESULT(-2146762744i32);
@@ -2310,14 +2372,32 @@ impl ::core::cmp::PartialEq for FILETIME {
 }
 impl ::core::cmp::Eq for FILETIME {}
 impl FromIntoMemory for FILETIME {
-    fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+    fn from_bytes(mut from: &[u8]) -> Self {
+        let f_dwLowDateTime =
+            <u32 as FromIntoMemory>::from_bytes(&from[..<u32 as FromIntoMemory>::size()]);
+        from = &from[<u32 as FromIntoMemory>::size()..];
+        let f_dwHighDateTime =
+            <u32 as FromIntoMemory>::from_bytes(&from[..<u32 as FromIntoMemory>::size()]);
+        from = &from[<u32 as FromIntoMemory>::size()..];
+        Self {
+            dwLowDateTime: f_dwLowDateTime,
+            dwHighDateTime: f_dwHighDateTime,
+        }
     }
-    fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+    fn into_bytes(self, mut into: &mut [u8]) {
+        FromIntoMemory::into_bytes(
+            self.dwLowDateTime,
+            &mut into[..<u32 as FromIntoMemory>::size()],
+        );
+        into = &mut into[<u32 as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.dwHighDateTime,
+            &mut into[..<u32 as FromIntoMemory>::size()],
+        );
+        into = &mut into[<u32 as FromIntoMemory>::size()..];
     }
     fn size() -> usize {
-        todo!()
+        <u32 as FromIntoMemory>::size() + <u32 as FromIntoMemory>::size()
     }
 }
 pub const FILTER_E_ALREADY_OPEN: crate::core::HRESULT = crate::core::HRESULT(-2147215562i32);
@@ -2362,14 +2442,26 @@ impl ::core::cmp::PartialEq for FLOAT128 {
 }
 impl ::core::cmp::Eq for FLOAT128 {}
 impl FromIntoMemory for FLOAT128 {
-    fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+    fn from_bytes(mut from: &[u8]) -> Self {
+        let f_LowPart =
+            <i64 as FromIntoMemory>::from_bytes(&from[..<i64 as FromIntoMemory>::size()]);
+        from = &from[<i64 as FromIntoMemory>::size()..];
+        let f_HighPart =
+            <i64 as FromIntoMemory>::from_bytes(&from[..<i64 as FromIntoMemory>::size()]);
+        from = &from[<i64 as FromIntoMemory>::size()..];
+        Self {
+            LowPart: f_LowPart,
+            HighPart: f_HighPart,
+        }
     }
-    fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+    fn into_bytes(self, mut into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.LowPart, &mut into[..<i64 as FromIntoMemory>::size()]);
+        into = &mut into[<i64 as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(self.HighPart, &mut into[..<i64 as FromIntoMemory>::size()]);
+        into = &mut into[<i64 as FromIntoMemory>::size()..];
     }
     fn size() -> usize {
-        todo!()
+        <i64 as FromIntoMemory>::size() + <i64 as FromIntoMemory>::size()
     }
 }
 pub const FRS_ERR_AUTHENTICATION: i32 = 8008i32;
@@ -3089,14 +3181,18 @@ impl ::core::cmp::PartialEq for HLSURF__ {
 }
 impl ::core::cmp::Eq for HLSURF__ {}
 impl FromIntoMemory for HLSURF__ {
-    fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+    fn from_bytes(mut from: &[u8]) -> Self {
+        let f_unused =
+            <i32 as FromIntoMemory>::from_bytes(&from[..<i32 as FromIntoMemory>::size()]);
+        from = &from[<i32 as FromIntoMemory>::size()..];
+        Self { unused: f_unused }
     }
-    fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+    fn into_bytes(self, mut into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.unused, &mut into[..<i32 as FromIntoMemory>::size()]);
+        into = &mut into[<i32 as FromIntoMemory>::size()..];
     }
     fn size() -> usize {
-        todo!()
+        <i32 as FromIntoMemory>::size()
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -3156,14 +3252,18 @@ impl ::core::cmp::PartialEq for HSPRITE__ {
 }
 impl ::core::cmp::Eq for HSPRITE__ {}
 impl FromIntoMemory for HSPRITE__ {
-    fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+    fn from_bytes(mut from: &[u8]) -> Self {
+        let f_unused =
+            <i32 as FromIntoMemory>::from_bytes(&from[..<i32 as FromIntoMemory>::size()]);
+        from = &from[<i32 as FromIntoMemory>::size()..];
+        Self { unused: f_unused }
     }
-    fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+    fn into_bytes(self, mut into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.unused, &mut into[..<i32 as FromIntoMemory>::size()]);
+        into = &mut into[<i32 as FromIntoMemory>::size()..];
     }
     fn size() -> usize {
-        todo!()
+        <i32 as FromIntoMemory>::size()
     }
 }
 pub const HSP_BASE_ERROR_MASK: crate::core::HRESULT = crate::core::HRESULT(-2128019200i32);
@@ -3220,14 +3320,18 @@ impl ::core::cmp::PartialEq for HSTR__ {
 }
 impl ::core::cmp::Eq for HSTR__ {}
 impl FromIntoMemory for HSTR__ {
-    fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+    fn from_bytes(mut from: &[u8]) -> Self {
+        let f_unused =
+            <i32 as FromIntoMemory>::from_bytes(&from[..<i32 as FromIntoMemory>::size()]);
+        from = &from[<i32 as FromIntoMemory>::size()..];
+        Self { unused: f_unused }
     }
-    fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+    fn into_bytes(self, mut into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.unused, &mut into[..<i32 as FromIntoMemory>::size()]);
+        into = &mut into[<i32 as FromIntoMemory>::size()..];
     }
     fn size() -> usize {
-        todo!()
+        <i32 as FromIntoMemory>::size()
     }
 }
 pub const HTTP_E_STATUS_AMBIGUOUS: crate::core::HRESULT = crate::core::HRESULT(-2145844948i32);
@@ -3303,14 +3407,18 @@ impl ::core::cmp::PartialEq for HUMPD__ {
 }
 impl ::core::cmp::Eq for HUMPD__ {}
 impl FromIntoMemory for HUMPD__ {
-    fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+    fn from_bytes(mut from: &[u8]) -> Self {
+        let f_unused =
+            <i32 as FromIntoMemory>::from_bytes(&from[..<i32 as FromIntoMemory>::size()]);
+        from = &from[<i32 as FromIntoMemory>::size()..];
+        Self { unused: f_unused }
     }
-    fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+    fn into_bytes(self, mut into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.unused, &mut into[..<i32 as FromIntoMemory>::size()]);
+        into = &mut into[<i32 as FromIntoMemory>::size()..];
     }
     fn size() -> usize {
-        todo!()
+        <i32 as FromIntoMemory>::size()
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -3473,14 +3581,26 @@ impl ::core::cmp::PartialEq for LUID {
 }
 impl ::core::cmp::Eq for LUID {}
 impl FromIntoMemory for LUID {
-    fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+    fn from_bytes(mut from: &[u8]) -> Self {
+        let f_LowPart =
+            <u32 as FromIntoMemory>::from_bytes(&from[..<u32 as FromIntoMemory>::size()]);
+        from = &from[<u32 as FromIntoMemory>::size()..];
+        let f_HighPart =
+            <i32 as FromIntoMemory>::from_bytes(&from[..<i32 as FromIntoMemory>::size()]);
+        from = &from[<i32 as FromIntoMemory>::size()..];
+        Self {
+            LowPart: f_LowPart,
+            HighPart: f_HighPart,
+        }
     }
-    fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+    fn into_bytes(self, mut into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.LowPart, &mut into[..<u32 as FromIntoMemory>::size()]);
+        into = &mut into[<u32 as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(self.HighPart, &mut into[..<i32 as FromIntoMemory>::size()]);
+        into = &mut into[<i32 as FromIntoMemory>::size()..];
     }
     fn size() -> usize {
-        todo!()
+        <u32 as FromIntoMemory>::size() + <i32 as FromIntoMemory>::size()
     }
 }
 pub const MARSHAL_E_FIRST: i32 = -2147221216i32;
@@ -4133,14 +4253,21 @@ impl ::core::cmp::PartialEq for POINT {
 }
 impl ::core::cmp::Eq for POINT {}
 impl FromIntoMemory for POINT {
-    fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+    fn from_bytes(mut from: &[u8]) -> Self {
+        let f_x = <i32 as FromIntoMemory>::from_bytes(&from[..<i32 as FromIntoMemory>::size()]);
+        from = &from[<i32 as FromIntoMemory>::size()..];
+        let f_y = <i32 as FromIntoMemory>::from_bytes(&from[..<i32 as FromIntoMemory>::size()]);
+        from = &from[<i32 as FromIntoMemory>::size()..];
+        Self { x: f_x, y: f_y }
     }
-    fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+    fn into_bytes(self, mut into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.x, &mut into[..<i32 as FromIntoMemory>::size()]);
+        into = &mut into[<i32 as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(self.y, &mut into[..<i32 as FromIntoMemory>::size()]);
+        into = &mut into[<i32 as FromIntoMemory>::size()..];
     }
     fn size() -> usize {
-        todo!()
+        <i32 as FromIntoMemory>::size() + <i32 as FromIntoMemory>::size()
     }
 }
 pub struct POINTL {
@@ -4168,14 +4295,21 @@ impl ::core::cmp::PartialEq for POINTL {
 }
 impl ::core::cmp::Eq for POINTL {}
 impl FromIntoMemory for POINTL {
-    fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+    fn from_bytes(mut from: &[u8]) -> Self {
+        let f_x = <i32 as FromIntoMemory>::from_bytes(&from[..<i32 as FromIntoMemory>::size()]);
+        from = &from[<i32 as FromIntoMemory>::size()..];
+        let f_y = <i32 as FromIntoMemory>::from_bytes(&from[..<i32 as FromIntoMemory>::size()]);
+        from = &from[<i32 as FromIntoMemory>::size()..];
+        Self { x: f_x, y: f_y }
     }
-    fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+    fn into_bytes(self, mut into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.x, &mut into[..<i32 as FromIntoMemory>::size()]);
+        into = &mut into[<i32 as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(self.y, &mut into[..<i32 as FromIntoMemory>::size()]);
+        into = &mut into[<i32 as FromIntoMemory>::size()..];
     }
     fn size() -> usize {
-        todo!()
+        <i32 as FromIntoMemory>::size() + <i32 as FromIntoMemory>::size()
     }
 }
 pub struct POINTS {
@@ -4203,14 +4337,21 @@ impl ::core::cmp::PartialEq for POINTS {
 }
 impl ::core::cmp::Eq for POINTS {}
 impl FromIntoMemory for POINTS {
-    fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+    fn from_bytes(mut from: &[u8]) -> Self {
+        let f_x = <i16 as FromIntoMemory>::from_bytes(&from[..<i16 as FromIntoMemory>::size()]);
+        from = &from[<i16 as FromIntoMemory>::size()..];
+        let f_y = <i16 as FromIntoMemory>::from_bytes(&from[..<i16 as FromIntoMemory>::size()]);
+        from = &from[<i16 as FromIntoMemory>::size()..];
+        Self { x: f_x, y: f_y }
     }
-    fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+    fn into_bytes(self, mut into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.x, &mut into[..<i16 as FromIntoMemory>::size()]);
+        into = &mut into[<i16 as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(self.y, &mut into[..<i16 as FromIntoMemory>::size()]);
+        into = &mut into[<i16 as FromIntoMemory>::size()..];
     }
     fn size() -> usize {
-        todo!()
+        <i16 as FromIntoMemory>::size() + <i16 as FromIntoMemory>::size()
     }
 }
 pub const PRESENTATION_ERROR_LOST: crate::core::HRESULT = crate::core::HRESULT(-2004811775i32);
@@ -4349,14 +4490,38 @@ impl ::core::cmp::PartialEq for RECT {
 }
 impl ::core::cmp::Eq for RECT {}
 impl FromIntoMemory for RECT {
-    fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+    fn from_bytes(mut from: &[u8]) -> Self {
+        let f_left = <i32 as FromIntoMemory>::from_bytes(&from[..<i32 as FromIntoMemory>::size()]);
+        from = &from[<i32 as FromIntoMemory>::size()..];
+        let f_top = <i32 as FromIntoMemory>::from_bytes(&from[..<i32 as FromIntoMemory>::size()]);
+        from = &from[<i32 as FromIntoMemory>::size()..];
+        let f_right = <i32 as FromIntoMemory>::from_bytes(&from[..<i32 as FromIntoMemory>::size()]);
+        from = &from[<i32 as FromIntoMemory>::size()..];
+        let f_bottom =
+            <i32 as FromIntoMemory>::from_bytes(&from[..<i32 as FromIntoMemory>::size()]);
+        from = &from[<i32 as FromIntoMemory>::size()..];
+        Self {
+            left: f_left,
+            top: f_top,
+            right: f_right,
+            bottom: f_bottom,
+        }
     }
-    fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+    fn into_bytes(self, mut into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.left, &mut into[..<i32 as FromIntoMemory>::size()]);
+        into = &mut into[<i32 as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(self.top, &mut into[..<i32 as FromIntoMemory>::size()]);
+        into = &mut into[<i32 as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(self.right, &mut into[..<i32 as FromIntoMemory>::size()]);
+        into = &mut into[<i32 as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(self.bottom, &mut into[..<i32 as FromIntoMemory>::size()]);
+        into = &mut into[<i32 as FromIntoMemory>::size()..];
     }
     fn size() -> usize {
-        todo!()
+        <i32 as FromIntoMemory>::size()
+            + <i32 as FromIntoMemory>::size()
+            + <i32 as FromIntoMemory>::size()
+            + <i32 as FromIntoMemory>::size()
     }
 }
 pub struct RECTL {
@@ -4391,14 +4556,38 @@ impl ::core::cmp::PartialEq for RECTL {
 }
 impl ::core::cmp::Eq for RECTL {}
 impl FromIntoMemory for RECTL {
-    fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+    fn from_bytes(mut from: &[u8]) -> Self {
+        let f_left = <i32 as FromIntoMemory>::from_bytes(&from[..<i32 as FromIntoMemory>::size()]);
+        from = &from[<i32 as FromIntoMemory>::size()..];
+        let f_top = <i32 as FromIntoMemory>::from_bytes(&from[..<i32 as FromIntoMemory>::size()]);
+        from = &from[<i32 as FromIntoMemory>::size()..];
+        let f_right = <i32 as FromIntoMemory>::from_bytes(&from[..<i32 as FromIntoMemory>::size()]);
+        from = &from[<i32 as FromIntoMemory>::size()..];
+        let f_bottom =
+            <i32 as FromIntoMemory>::from_bytes(&from[..<i32 as FromIntoMemory>::size()]);
+        from = &from[<i32 as FromIntoMemory>::size()..];
+        Self {
+            left: f_left,
+            top: f_top,
+            right: f_right,
+            bottom: f_bottom,
+        }
     }
-    fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+    fn into_bytes(self, mut into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.left, &mut into[..<i32 as FromIntoMemory>::size()]);
+        into = &mut into[<i32 as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(self.top, &mut into[..<i32 as FromIntoMemory>::size()]);
+        into = &mut into[<i32 as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(self.right, &mut into[..<i32 as FromIntoMemory>::size()]);
+        into = &mut into[<i32 as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(self.bottom, &mut into[..<i32 as FromIntoMemory>::size()]);
+        into = &mut into[<i32 as FromIntoMemory>::size()..];
     }
     fn size() -> usize {
-        todo!()
+        <i32 as FromIntoMemory>::size()
+            + <i32 as FromIntoMemory>::size()
+            + <i32 as FromIntoMemory>::size()
+            + <i32 as FromIntoMemory>::size()
     }
 }
 pub const REGDB_E_BADTHREADINGMODEL: crate::core::HRESULT = crate::core::HRESULT(-2147221162i32);
@@ -4922,14 +5111,21 @@ impl ::core::cmp::PartialEq for SIZE {
 }
 impl ::core::cmp::Eq for SIZE {}
 impl FromIntoMemory for SIZE {
-    fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+    fn from_bytes(mut from: &[u8]) -> Self {
+        let f_cx = <i32 as FromIntoMemory>::from_bytes(&from[..<i32 as FromIntoMemory>::size()]);
+        from = &from[<i32 as FromIntoMemory>::size()..];
+        let f_cy = <i32 as FromIntoMemory>::from_bytes(&from[..<i32 as FromIntoMemory>::size()]);
+        from = &from[<i32 as FromIntoMemory>::size()..];
+        Self { cx: f_cx, cy: f_cy }
     }
-    fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+    fn into_bytes(self, mut into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.cx, &mut into[..<i32 as FromIntoMemory>::size()]);
+        into = &mut into[<i32 as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(self.cy, &mut into[..<i32 as FromIntoMemory>::size()]);
+        into = &mut into[<i32 as FromIntoMemory>::size()..];
     }
     fn size() -> usize {
-        todo!()
+        <i32 as FromIntoMemory>::size() + <i32 as FromIntoMemory>::size()
     }
 }
 pub const SPAPI_E_AUTHENTICODE_DISALLOWED: crate::core::HRESULT =
@@ -7997,14 +8193,72 @@ impl ::core::cmp::PartialEq for SYSTEMTIME {
 }
 impl ::core::cmp::Eq for SYSTEMTIME {}
 impl FromIntoMemory for SYSTEMTIME {
-    fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+    fn from_bytes(mut from: &[u8]) -> Self {
+        let f_wYear = <u16 as FromIntoMemory>::from_bytes(&from[..<u16 as FromIntoMemory>::size()]);
+        from = &from[<u16 as FromIntoMemory>::size()..];
+        let f_wMonth =
+            <u16 as FromIntoMemory>::from_bytes(&from[..<u16 as FromIntoMemory>::size()]);
+        from = &from[<u16 as FromIntoMemory>::size()..];
+        let f_wDayOfWeek =
+            <u16 as FromIntoMemory>::from_bytes(&from[..<u16 as FromIntoMemory>::size()]);
+        from = &from[<u16 as FromIntoMemory>::size()..];
+        let f_wDay = <u16 as FromIntoMemory>::from_bytes(&from[..<u16 as FromIntoMemory>::size()]);
+        from = &from[<u16 as FromIntoMemory>::size()..];
+        let f_wHour = <u16 as FromIntoMemory>::from_bytes(&from[..<u16 as FromIntoMemory>::size()]);
+        from = &from[<u16 as FromIntoMemory>::size()..];
+        let f_wMinute =
+            <u16 as FromIntoMemory>::from_bytes(&from[..<u16 as FromIntoMemory>::size()]);
+        from = &from[<u16 as FromIntoMemory>::size()..];
+        let f_wSecond =
+            <u16 as FromIntoMemory>::from_bytes(&from[..<u16 as FromIntoMemory>::size()]);
+        from = &from[<u16 as FromIntoMemory>::size()..];
+        let f_wMilliseconds =
+            <u16 as FromIntoMemory>::from_bytes(&from[..<u16 as FromIntoMemory>::size()]);
+        from = &from[<u16 as FromIntoMemory>::size()..];
+        Self {
+            wYear: f_wYear,
+            wMonth: f_wMonth,
+            wDayOfWeek: f_wDayOfWeek,
+            wDay: f_wDay,
+            wHour: f_wHour,
+            wMinute: f_wMinute,
+            wSecond: f_wSecond,
+            wMilliseconds: f_wMilliseconds,
+        }
     }
-    fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+    fn into_bytes(self, mut into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.wYear, &mut into[..<u16 as FromIntoMemory>::size()]);
+        into = &mut into[<u16 as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(self.wMonth, &mut into[..<u16 as FromIntoMemory>::size()]);
+        into = &mut into[<u16 as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.wDayOfWeek,
+            &mut into[..<u16 as FromIntoMemory>::size()],
+        );
+        into = &mut into[<u16 as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(self.wDay, &mut into[..<u16 as FromIntoMemory>::size()]);
+        into = &mut into[<u16 as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(self.wHour, &mut into[..<u16 as FromIntoMemory>::size()]);
+        into = &mut into[<u16 as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(self.wMinute, &mut into[..<u16 as FromIntoMemory>::size()]);
+        into = &mut into[<u16 as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(self.wSecond, &mut into[..<u16 as FromIntoMemory>::size()]);
+        into = &mut into[<u16 as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.wMilliseconds,
+            &mut into[..<u16 as FromIntoMemory>::size()],
+        );
+        into = &mut into[<u16 as FromIntoMemory>::size()..];
     }
     fn size() -> usize {
-        todo!()
+        <u16 as FromIntoMemory>::size()
+            + <u16 as FromIntoMemory>::size()
+            + <u16 as FromIntoMemory>::size()
+            + <u16 as FromIntoMemory>::size()
+            + <u16 as FromIntoMemory>::size()
+            + <u16 as FromIntoMemory>::size()
+            + <u16 as FromIntoMemory>::size()
+            + <u16 as FromIntoMemory>::size()
     }
 }
 pub const S_APPLICATION_ACTIVATION_ERROR_HANDLED_BY_DIALOG: crate::core::HRESULT =
@@ -8554,14 +8808,41 @@ impl ::core::cmp::PartialEq for UNICODE_STRING {
 }
 impl ::core::cmp::Eq for UNICODE_STRING {}
 impl FromIntoMemory for UNICODE_STRING {
-    fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+    fn from_bytes(mut from: &[u8]) -> Self {
+        let f_Length =
+            <u16 as FromIntoMemory>::from_bytes(&from[..<u16 as FromIntoMemory>::size()]);
+        from = &from[<u16 as FromIntoMemory>::size()..];
+        let f_MaximumLength =
+            <u16 as FromIntoMemory>::from_bytes(&from[..<u16 as FromIntoMemory>::size()]);
+        from = &from[<u16 as FromIntoMemory>::size()..];
+        let f_Buffer = <crate::core::PWSTR as FromIntoMemory>::from_bytes(
+            &from[..<crate::core::PWSTR as FromIntoMemory>::size()],
+        );
+        from = &from[<crate::core::PWSTR as FromIntoMemory>::size()..];
+        Self {
+            Length: f_Length,
+            MaximumLength: f_MaximumLength,
+            Buffer: f_Buffer,
+        }
     }
-    fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+    fn into_bytes(self, mut into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.Length, &mut into[..<u16 as FromIntoMemory>::size()]);
+        into = &mut into[<u16 as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.MaximumLength,
+            &mut into[..<u16 as FromIntoMemory>::size()],
+        );
+        into = &mut into[<u16 as FromIntoMemory>::size()..];
+        FromIntoMemory::into_bytes(
+            self.Buffer,
+            &mut into[..<crate::core::PWSTR as FromIntoMemory>::size()],
+        );
+        into = &mut into[<crate::core::PWSTR as FromIntoMemory>::size()..];
     }
     fn size() -> usize {
-        todo!()
+        <u16 as FromIntoMemory>::size()
+            + <u16 as FromIntoMemory>::size()
+            + <crate::core::PWSTR as FromIntoMemory>::size()
     }
 }
 pub const UTC_E_ACTION_NOT_SUPPORTED_IN_DESTINATION: crate::core::HRESULT =

@@ -112,6 +112,20 @@ impl core::fmt::Debug for GUID {
     }
 }
 
+impl FromIntoMemory for GUID {
+    fn from_bytes(from: &[u8]) -> Self {
+        todo!()
+    }
+
+    fn into_bytes(self, into: &mut [u8]) {
+        todo!()
+    }
+
+    fn size() -> usize {
+        todo!()
+    }
+}
+
 pub struct Win32Context(anymap::AnyMap);
 
 impl Win32Context {

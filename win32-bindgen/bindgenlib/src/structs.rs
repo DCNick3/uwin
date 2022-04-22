@@ -99,20 +99,84 @@ fn gen_struct_with_name(def: &TypeDef, struct_name: &str, cfg: &Cfg, gen: &Gen) 
     tokens
 }
 
-fn gen_from_into_mem(_def: &TypeDef, name: &TokenStream, cfg: &Cfg, gen: &Gen) -> TokenStream {
+fn gen_from_into_mem(def: &TypeDef, name: &TokenStream, cfg: &Cfg, gen: &Gen) -> TokenStream {
     // TODO: generate actual implementation
     let features = gen.cfg(cfg);
+
+    if def.is_union() {
+        return quote! {
+            #features
+            impl FromIntoMemory for #name {
+                fn from_bytes(from: &[u8]) -> Self {
+                    todo!()
+                }
+                fn into_bytes(self, into: &mut [u8]) {
+                    todo!()
+                }
+                fn size() -> usize {
+                    todo!()
+                }
+            }
+        };
+    }
+
+    let field_sizes = def
+        .fields()
+        .map(|f| {
+            let ty = f.get_type(Some(&def));
+            let ty = gen_default_type(&ty, gen);
+            quote! {
+                <#ty as FromIntoMemory>::size()
+            }
+        })
+        .collect::<Vec<_>>();
+
+    let field_names = def.fields().map(|f| gen_ident(f.name()));
+
+    // damn it, some field names collide with constant names and it blows up
+    // so we prefix local variable names with some crud...
+    let field_value_names = def
+        .fields()
+        .map(|f| gen_ident(&format!("f_{}", f.name())))
+        .collect::<Vec<_>>();
+
+    let field_into_bytes = def.fields().zip(field_sizes.iter()).map(|(f, size)| {
+        let name = gen_ident(f.name());
+        quote! {
+            FromIntoMemory::into_bytes(self.#name, &mut into[..#size]);
+            into = &mut into[#size..];
+        }
+    });
+
+    let field_from_bytes = def
+        .fields()
+        .zip(field_sizes.iter())
+        .zip(field_value_names.iter())
+        .map(|((f, size), var_name)| {
+            let ty = f.get_type(Some(def));
+            let ty = gen_default_type(&ty, gen);
+            quote! {
+                let #var_name = <#ty as FromIntoMemory>::from_bytes(&from[..#size]);
+                from = &from[#size..];
+            }
+        });
+
+    // TODO: this is all and good, but how about alignment?
+
     quote! {
         #features
         impl FromIntoMemory for #name {
-            fn from_bytes(from: &[u8]) -> Self {
-                todo!()
+            fn from_bytes(mut from: &[u8]) -> Self {
+                #(#field_from_bytes)*
+                Self {
+                    #(#field_names: #field_value_names),*
+                }
             }
-            fn into_bytes(self, into: &mut [u8]) {
-                todo!()
+            fn into_bytes(self, mut into: &mut [u8]) {
+                #(#field_into_bytes)*
             }
             fn size() -> usize {
-                todo!()
+                #(#field_sizes)+*
             }
         }
     }

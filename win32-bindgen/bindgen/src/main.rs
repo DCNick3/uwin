@@ -32,6 +32,7 @@ const EXCLUDE_ITEMS: &[(&str, &[&str])] = &[
             "DebugStackFrameDescriptor",
             "DebugStackFrameDescriptor64",
             "DebugPropertyInfo",
+            "ScriptDebugEventInformation",
             "PDEBUG_EXTENSION_CALL",
             "PDEBUG_EXTENSION_KNOWN_STRUCT_EX",
             "PDEBUG_EXTENSION_PROVIDE_VALUE",
