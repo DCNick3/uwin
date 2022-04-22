@@ -36,7 +36,9 @@ pub enum Error {
 type Result<T> = std::result::Result<T, Error>;
 
 struct Entry {
+    #[allow(unused)]
     orig_size: Size,
+    #[allow(unused)]
     allocated_size: Size,
 }
 
@@ -118,6 +120,7 @@ impl Drop for Segment {
 }
 
 pub struct Heap {
+    #[allow(unused)]
     growable: bool,
     segments: ManuallyDrop<Vec<Segment>>,
     mmap_allocations: ManuallyDrop<HashSet<Ptr>>,

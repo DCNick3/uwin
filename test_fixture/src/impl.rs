@@ -1,16 +1,18 @@
 use core_abi::unwind_token::{UnwindReason, UnwindToken};
-use core_mem::ptr::{MutPtr, PtrDiffRepr, PtrRepr};
+use core_mem::ptr::{ConstPtr, MutPtr, PtrDiffRepr, PtrRepr};
 use core_mem::thread_ctx::get_thread_ctx;
-use core_memmgr::MemoryManager;
 use std::ffi::{c_void, CStr};
 use std::os::raw::c_char;
-use std::sync::{Arc, Mutex};
+use std::sync::Mutex;
 use tracing::info;
 use win32::core::{PCSTR, PSTR};
 use win32::Win32::Foundation::{HINSTANCE, HWND};
-use win32::Win32::System::Memory::{HeapHandle, HEAP_FLAGS, HEAP_NO_SERIALIZE};
+use win32::Win32::System::Memory::{
+    HeapHandle, HEAP_FLAGS, HEAP_NO_SERIALIZE, PAGE_PROTECTION_FLAGS, VIRTUAL_ALLOCATION_TYPE,
+};
 use win32::Win32::UI::WindowsAndMessaging::{MESSAGEBOX_RESULT, MESSAGEBOX_STYLE};
 use win32_heapmgr::HeapMgr;
+use win32_virtmem::VirtualMemoryManager;
 
 pub struct WindowsAndMessaging {}
 
@@ -53,7 +55,7 @@ impl win32::Win32::System::SystemInformation::Api for SystemInformation {
 }
 
 pub struct Memory {
-    pub(crate) memory_mgr: Arc<Mutex<MemoryManager>>,
+    pub(crate) virtmem_mgr: VirtualMemoryManager,
     pub(crate) heap_mgr: Mutex<HeapMgr>,
 }
 
@@ -86,6 +88,21 @@ impl win32::Win32::System::Memory::Api for Memory {
         let heap_handle = heap_mgr.create(dw_initial_size, dw_maximum_size);
 
         HeapHandle(heap_handle as PtrDiffRepr)
+    }
+
+    fn VirtualAlloc(
+        &self,
+        lp_address: ConstPtr<c_void>,
+        dw_size: PtrRepr,
+        fl_allocation_type: VIRTUAL_ALLOCATION_TYPE,
+        fl_protect: PAGE_PROTECTION_FLAGS,
+    ) -> MutPtr<c_void> {
+        MutPtr::new(self.virtmem_mgr.alloc(
+            lp_address.repr(),
+            dw_size,
+            fl_allocation_type,
+            fl_protect,
+        ))
     }
 }
 

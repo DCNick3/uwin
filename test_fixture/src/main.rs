@@ -14,6 +14,7 @@ use tracing_subscriber::fmt::format;
 use tracing_subscriber::layer::SubscriberExt;
 use win32::core::Win32Context;
 use win32_heapmgr::HeapMgr;
+use win32_virtmem::VirtualMemoryManager;
 
 fn map_item(mgr: &mut MemoryManager, item: &MemoryImageItem) -> core_memmgr::Result<()> {
     let range = AddressRange::new(item.addr, item.data.len() as PtrRepr);
@@ -83,7 +84,7 @@ fn main_impl() {
         Arc::new(SystemInformation {}) as Arc<dyn win32::Win32::System::SystemInformation::Api>
     );
     context.win32.insert(Arc::new(Memory {
-        memory_mgr: memory_mgr.clone(),
+        virtmem_mgr: VirtualMemoryManager::new(memory_mgr.clone()),
         heap_mgr: Mutex::new(HeapMgr::new(memory_mgr.clone())),
     }) as Arc<dyn win32::Win32::System::Memory::Api>);
     context

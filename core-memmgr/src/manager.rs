@@ -360,6 +360,22 @@ impl MemoryManager {
     }
 
     // TODO: cover this function with tests
+    pub fn reserve_and_commit_static(
+        &mut self,
+        range: AddressRange,
+        protection: Protection,
+    ) -> Result<AddressRange> {
+        let reservation = self.reserve_static(range)?;
+
+        if let Err(e) = self.commit(reservation, protection) {
+            self.unreserve(reservation.start).unwrap();
+            return Err(e);
+        }
+
+        Ok(reservation)
+    }
+
+    // TODO: cover this function with tests
     pub fn reserve_and_commit_dynamic(
         &mut self,
         size: PtrRepr,
