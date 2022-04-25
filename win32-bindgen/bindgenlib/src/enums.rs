@@ -166,6 +166,7 @@ pub fn gen(def: &TypeDef, gen: &Gen) -> TokenStream {
     }
 
     if !gen.sys {
+        let size = TokenStream::from(def.underlying_type().layout().size.to_string());
         tokens.combine(&quote! {
             #features
             impl FromIntoMemory for #ident {
@@ -176,7 +177,7 @@ pub fn gen(def: &TypeDef, gen: &Gen) -> TokenStream {
                     FromIntoMemory::into_bytes(self.0, into)
                 }
                 fn size() -> usize {
-                    std::mem::size_of::<#underlying_type>()
+                    #size
                 }
             }
         });

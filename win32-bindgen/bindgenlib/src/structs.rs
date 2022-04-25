@@ -21,6 +21,8 @@ pub fn gen(def: &TypeDef, gen: &Gen) -> TokenStream {
 fn gen_struct_with_name(def: &TypeDef, struct_name: &str, cfg: &Cfg, gen: &Gen) -> TokenStream {
     let name = gen_ident(struct_name);
 
+    // println!("  {:50}", struct_name);
+
     if def.fields().next().is_none() {
         if let Some(guid) = GUID::from_attributes(def.attributes()) {
             let value = gen_guid(&guid, gen);
@@ -120,16 +122,17 @@ fn gen_from_into_mem(def: &TypeDef, name: &TokenStream, cfg: &Cfg, gen: &Gen) ->
         };
     }
 
+    let struct_size = def.layout().size;
+
     let field_sizes = def
         .fields()
         .map(|f| {
-            let ty = f.get_type(Some(&def));
-            let ty = gen_default_type(&ty, gen);
-            quote! {
-                <#ty as FromIntoMemory>::size()
-            }
+            let ty = f.get_type(Some(def));
+            TokenStream::from(ty.layout().size.to_string())
         })
         .collect::<Vec<_>>();
+
+    let field_offsets = def.field_offsets();
 
     let field_names = def.fields().map(|f| gen_ident(f.name()));
 
@@ -140,24 +143,29 @@ fn gen_from_into_mem(def: &TypeDef, name: &TokenStream, cfg: &Cfg, gen: &Gen) ->
         .map(|f| gen_ident(&format!("f_{}", f.name())))
         .collect::<Vec<_>>();
 
-    let field_into_bytes = def.fields().zip(field_sizes.iter()).map(|(f, size)| {
-        let name = gen_ident(f.name());
-        quote! {
-            FromIntoMemory::into_bytes(self.#name, &mut into[..#size]);
-            into = &mut into[#size..];
-        }
-    });
+    let field_into_bytes = def
+        .fields()
+        .zip(field_sizes.iter())
+        .zip(&field_offsets)
+        .map(|((f, size), &offset)| {
+            let name = gen_ident(f.name());
+            let offset = TokenStream::from(offset.to_string());
+            quote! {
+                FromIntoMemory::into_bytes(self.#name, &mut into[#offset..#offset+#size]);
+            }
+        });
 
     let field_from_bytes = def
         .fields()
         .zip(field_sizes.iter())
         .zip(field_value_names.iter())
-        .map(|((f, size), var_name)| {
+        .zip(&field_offsets)
+        .map(|(((f, size), var_name), &offset)| {
             let ty = f.get_type(Some(def));
             let ty = gen_default_type(&ty, gen);
+            let offset = TokenStream::from(offset.to_string());
             quote! {
-                let #var_name = <#ty as FromIntoMemory>::from_bytes(&from[..#size]);
-                from = &from[#size..];
+                let #var_name = <#ty as FromIntoMemory>::from_bytes(&from[#offset..#offset+#size]);
             }
         });
 
@@ -166,13 +174,17 @@ fn gen_from_into_mem(def: &TypeDef, name: &TokenStream, cfg: &Cfg, gen: &Gen) ->
     quote! {
         #features
         impl FromIntoMemory for #name {
-            fn from_bytes(mut from: &[u8]) -> Self {
+            fn from_bytes(from: &[u8]) -> Self {
+                assert_eq!(from.len(), #struct_size as usize);
+
                 #(#field_from_bytes)*
                 Self {
                     #(#field_names: #field_value_names),*
                 }
             }
-            fn into_bytes(self, mut into: &mut [u8]) {
+            fn into_bytes(self, into: &mut [u8]) {
+                assert_eq!(into.len(), #struct_size as usize);
+
                 #(#field_into_bytes)*
             }
             fn size() -> usize {

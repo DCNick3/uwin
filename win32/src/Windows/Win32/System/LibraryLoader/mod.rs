@@ -44,44 +44,25 @@ impl ::core::cmp::PartialEq for ENUMUILANG {
 }
 impl ::core::cmp::Eq for ENUMUILANG {}
 impl FromIntoMemory for ENUMUILANG {
-    fn from_bytes(mut from: &[u8]) -> Self {
-        let f_NumOfEnumUILang =
-            <u32 as FromIntoMemory>::from_bytes(&from[..<u32 as FromIntoMemory>::size()]);
-        from = &from[<u32 as FromIntoMemory>::size()..];
-        let f_SizeOfEnumUIBuffer =
-            <u32 as FromIntoMemory>::from_bytes(&from[..<u32 as FromIntoMemory>::size()]);
-        from = &from[<u32 as FromIntoMemory>::size()..];
-        let f_pEnumUIBuffer = <MutPtr<u16> as FromIntoMemory>::from_bytes(
-            &from[..<MutPtr<u16> as FromIntoMemory>::size()],
-        );
-        from = &from[<MutPtr<u16> as FromIntoMemory>::size()..];
+    fn from_bytes(from: &[u8]) -> Self {
+        assert_eq!(from.len(), 12u32 as usize);
+        let f_NumOfEnumUILang = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
+        let f_SizeOfEnumUIBuffer = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
+        let f_pEnumUIBuffer = <MutPtr<u16> as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
         Self {
             NumOfEnumUILang: f_NumOfEnumUILang,
             SizeOfEnumUIBuffer: f_SizeOfEnumUIBuffer,
             pEnumUIBuffer: f_pEnumUIBuffer,
         }
     }
-    fn into_bytes(self, mut into: &mut [u8]) {
-        FromIntoMemory::into_bytes(
-            self.NumOfEnumUILang,
-            &mut into[..<u32 as FromIntoMemory>::size()],
-        );
-        into = &mut into[<u32 as FromIntoMemory>::size()..];
-        FromIntoMemory::into_bytes(
-            self.SizeOfEnumUIBuffer,
-            &mut into[..<u32 as FromIntoMemory>::size()],
-        );
-        into = &mut into[<u32 as FromIntoMemory>::size()..];
-        FromIntoMemory::into_bytes(
-            self.pEnumUIBuffer,
-            &mut into[..<MutPtr<u16> as FromIntoMemory>::size()],
-        );
-        into = &mut into[<MutPtr<u16> as FromIntoMemory>::size()..];
+    fn into_bytes(self, into: &mut [u8]) {
+        assert_eq!(into.len(), 12u32 as usize);
+        FromIntoMemory::into_bytes(self.NumOfEnumUILang, &mut into[0..0 + 4]);
+        FromIntoMemory::into_bytes(self.SizeOfEnumUIBuffer, &mut into[4..4 + 4]);
+        FromIntoMemory::into_bytes(self.pEnumUIBuffer, &mut into[8..8 + 4]);
     }
     fn size() -> usize {
-        <u32 as FromIntoMemory>::size()
-            + <u32 as FromIntoMemory>::size()
-            + <MutPtr<u16> as FromIntoMemory>::size()
+        4 + 4 + 4
     }
 }
 pub const FIND_RESOURCE_DIRECTORY_LANGUAGES: u32 = 1024u32;
@@ -159,7 +140,7 @@ impl FromIntoMemory for LOAD_LIBRARY_FLAGS {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<u32>()
+        4
     }
 }
 pub const LOAD_LIBRARY_OS_INTEGRITY_CONTINUITY: u32 = 32768u32;
@@ -194,42 +175,28 @@ impl ::core::cmp::PartialEq for REDIRECTION_DESCRIPTOR {
 }
 impl ::core::cmp::Eq for REDIRECTION_DESCRIPTOR {}
 impl FromIntoMemory for REDIRECTION_DESCRIPTOR {
-    fn from_bytes(mut from: &[u8]) -> Self {
-        let f_Version =
-            <u32 as FromIntoMemory>::from_bytes(&from[..<u32 as FromIntoMemory>::size()]);
-        from = &from[<u32 as FromIntoMemory>::size()..];
-        let f_FunctionCount =
-            <u32 as FromIntoMemory>::from_bytes(&from[..<u32 as FromIntoMemory>::size()]);
-        from = &from[<u32 as FromIntoMemory>::size()..];
+    fn from_bytes(from: &[u8]) -> Self {
+        assert_eq!(from.len(), 12u32 as usize);
+        let f_Version = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
+        let f_FunctionCount = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_Redirections =
             <MutPtr<REDIRECTION_FUNCTION_DESCRIPTOR> as FromIntoMemory>::from_bytes(
-                &from[..<MutPtr<REDIRECTION_FUNCTION_DESCRIPTOR> as FromIntoMemory>::size()],
+                &from[8..8 + 4],
             );
-        from = &from[<MutPtr<REDIRECTION_FUNCTION_DESCRIPTOR> as FromIntoMemory>::size()..];
         Self {
             Version: f_Version,
             FunctionCount: f_FunctionCount,
             Redirections: f_Redirections,
         }
     }
-    fn into_bytes(self, mut into: &mut [u8]) {
-        FromIntoMemory::into_bytes(self.Version, &mut into[..<u32 as FromIntoMemory>::size()]);
-        into = &mut into[<u32 as FromIntoMemory>::size()..];
-        FromIntoMemory::into_bytes(
-            self.FunctionCount,
-            &mut into[..<u32 as FromIntoMemory>::size()],
-        );
-        into = &mut into[<u32 as FromIntoMemory>::size()..];
-        FromIntoMemory::into_bytes(
-            self.Redirections,
-            &mut into[..<MutPtr<REDIRECTION_FUNCTION_DESCRIPTOR> as FromIntoMemory>::size()],
-        );
-        into = &mut into[<MutPtr<REDIRECTION_FUNCTION_DESCRIPTOR> as FromIntoMemory>::size()..];
+    fn into_bytes(self, into: &mut [u8]) {
+        assert_eq!(into.len(), 12u32 as usize);
+        FromIntoMemory::into_bytes(self.Version, &mut into[0..0 + 4]);
+        FromIntoMemory::into_bytes(self.FunctionCount, &mut into[4..4 + 4]);
+        FromIntoMemory::into_bytes(self.Redirections, &mut into[8..8 + 4]);
     }
     fn size() -> usize {
-        <u32 as FromIntoMemory>::size()
-            + <u32 as FromIntoMemory>::size()
-            + <MutPtr<REDIRECTION_FUNCTION_DESCRIPTOR> as FromIntoMemory>::size()
+        4 + 4 + 4
     }
 }
 pub struct REDIRECTION_FUNCTION_DESCRIPTOR {
@@ -261,46 +228,26 @@ impl ::core::cmp::PartialEq for REDIRECTION_FUNCTION_DESCRIPTOR {
 }
 impl ::core::cmp::Eq for REDIRECTION_FUNCTION_DESCRIPTOR {}
 impl FromIntoMemory for REDIRECTION_FUNCTION_DESCRIPTOR {
-    fn from_bytes(mut from: &[u8]) -> Self {
-        let f_DllName = <crate::core::PCSTR as FromIntoMemory>::from_bytes(
-            &from[..<crate::core::PCSTR as FromIntoMemory>::size()],
-        );
-        from = &from[<crate::core::PCSTR as FromIntoMemory>::size()..];
-        let f_FunctionName = <crate::core::PCSTR as FromIntoMemory>::from_bytes(
-            &from[..<crate::core::PCSTR as FromIntoMemory>::size()],
-        );
-        from = &from[<crate::core::PCSTR as FromIntoMemory>::size()..];
-        let f_RedirectionTarget = <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(
-            &from[..<MutPtr<::core::ffi::c_void> as FromIntoMemory>::size()],
-        );
-        from = &from[<MutPtr<::core::ffi::c_void> as FromIntoMemory>::size()..];
+    fn from_bytes(from: &[u8]) -> Self {
+        assert_eq!(from.len(), 12u32 as usize);
+        let f_DllName = <crate::core::PCSTR as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
+        let f_FunctionName = <crate::core::PCSTR as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
+        let f_RedirectionTarget =
+            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
         Self {
             DllName: f_DllName,
             FunctionName: f_FunctionName,
             RedirectionTarget: f_RedirectionTarget,
         }
     }
-    fn into_bytes(self, mut into: &mut [u8]) {
-        FromIntoMemory::into_bytes(
-            self.DllName,
-            &mut into[..<crate::core::PCSTR as FromIntoMemory>::size()],
-        );
-        into = &mut into[<crate::core::PCSTR as FromIntoMemory>::size()..];
-        FromIntoMemory::into_bytes(
-            self.FunctionName,
-            &mut into[..<crate::core::PCSTR as FromIntoMemory>::size()],
-        );
-        into = &mut into[<crate::core::PCSTR as FromIntoMemory>::size()..];
-        FromIntoMemory::into_bytes(
-            self.RedirectionTarget,
-            &mut into[..<MutPtr<::core::ffi::c_void> as FromIntoMemory>::size()],
-        );
-        into = &mut into[<MutPtr<::core::ffi::c_void> as FromIntoMemory>::size()..];
+    fn into_bytes(self, into: &mut [u8]) {
+        assert_eq!(into.len(), 12u32 as usize);
+        FromIntoMemory::into_bytes(self.DllName, &mut into[0..0 + 4]);
+        FromIntoMemory::into_bytes(self.FunctionName, &mut into[4..4 + 4]);
+        FromIntoMemory::into_bytes(self.RedirectionTarget, &mut into[8..8 + 4]);
     }
     fn size() -> usize {
-        <crate::core::PCSTR as FromIntoMemory>::size()
-            + <crate::core::PCSTR as FromIntoMemory>::size()
-            + <MutPtr<::core::ffi::c_void> as FromIntoMemory>::size()
+        4 + 4 + 4
     }
 }
 pub const RESOURCE_ENUM_LN: u32 = 1u32;

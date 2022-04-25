@@ -51,14 +51,56 @@ impl From<TypeDef> for Type {
     }
 }
 
+pub struct TypeLayout {
+    pub size: u32,
+    pub alignment: u32,
+}
+
+impl From<(u32, u32)> for TypeLayout {
+    fn from((size, alignment): (u32, u32)) -> Self {
+        Self { size, alignment }
+    }
+}
+
 impl Type {
-    pub fn size(&self) -> usize {
+    pub fn layout(&self) -> TypeLayout {
+        use Type::*;
         match self {
-            Self::I64 | Self::U64 | Self::F64 => 2,
-            Self::GUID => 4,
-            Self::TypeDef(def) => def.size(),
-            _ => 1,
+            Void => panic!("Attempt to get size of void"),
+            Char | I8 | U8 | Bool => (1, 1),
+            I16 | U16 => (2, 2),
+            I32 | U32 => (4, 4),
+            I64 | U64 => (8, 8),
+
+            F32 => (4, 4),
+            F64 => (8, 8),
+
+            /* we emulate 32-bit arch, soo... */
+            ISize | USize | PSTR | PWSTR | PCSTR | PCWSTR | MutPtr(_) | ConstPtr(_) => (4, 4),
+
+            HRESULT => (4, 4),
+            TypeDef(def) => return def.layout(),
+
+            String => todo!(),
+            GUID => (16, 4),
+            IUnknown => todo!(),
+            IInspectable => todo!(),
+            TypeName => todo!(),
+            GenericParam(_) => todo!(),
+            MethodDef(_) => todo!(),
+            Field(_) => todo!(),
+            Win32Array((ty, el_count)) => {
+                let layout = ty.layout();
+                return TypeLayout {
+                    size: layout.size * el_count,
+                    alignment: layout.alignment,
+                };
+            }
+            WinrtArray(_) => todo!(),
+            WinrtArrayRef(_) => todo!(),
+            WinrtConstRef(_) => todo!(),
         }
+        .into()
     }
 
     pub fn row(&self) -> &Row {
@@ -143,7 +185,13 @@ impl Type {
     pub fn is_convertible(&self) -> bool {
         match self {
             Self::TypeDef(t) => t.is_convertible(),
-            Self::String | Self::IInspectable | Self::GUID | Self::IUnknown | Self::GenericParam(_) | Self::PCSTR | Self::PCWSTR => true,
+            Self::String
+            | Self::IInspectable
+            | Self::GUID
+            | Self::IUnknown
+            | Self::GenericParam(_)
+            | Self::PCSTR
+            | Self::PCWSTR => true,
             Self::WinrtConstRef(kind) => kind.is_convertible(),
             _ => false,
         }
@@ -168,7 +216,23 @@ impl Type {
     pub fn is_primitive(&self) -> bool {
         match self {
             Self::TypeDef(t) => t.is_primitive(),
-            Self::Bool | Self::Char | Self::I8 | Self::U8 | Self::I16 | Self::U16 | Self::I32 | Self::U32 | Self::I64 | Self::U64 | Self::F32 | Self::F64 | Self::ISize | Self::USize | Self::HRESULT | Self::ConstPtr(_) | Self::MutPtr(_) => true,
+            Self::Bool
+            | Self::Char
+            | Self::I8
+            | Self::U8
+            | Self::I16
+            | Self::U16
+            | Self::I32
+            | Self::U32
+            | Self::I64
+            | Self::U64
+            | Self::F32
+            | Self::F64
+            | Self::ISize
+            | Self::USize
+            | Self::HRESULT
+            | Self::ConstPtr(_)
+            | Self::MutPtr(_) => true,
             _ => false,
         }
     }

@@ -9,14 +9,20 @@ pub struct TypeDef {
 
 impl From<Row> for TypeDef {
     fn from(row: Row) -> Self {
-        Self { row, generics: Vec::new() }
+        Self {
+            row,
+            generics: Vec::new(),
+        }
     }
 }
 
 impl TypeDef {
     #[must_use]
     pub fn with_generics(mut self) -> Self {
-        self.generics = self.generic_params().map(|generic| Type::GenericParam(generic.name())).collect();
+        self.generics = self
+            .generic_params()
+            .map(|generic| Type::GenericParam(generic.name()))
+            .collect();
         self
     }
 
@@ -27,7 +33,11 @@ impl TypeDef {
     pub fn has_default_constructor(&self) -> bool {
         for attribute in self.attributes() {
             if attribute.name() == "ActivatableAttribute" {
-                if attribute.args().iter().any(|arg| matches!(arg.1, ConstantValue::TypeDef(_))) {
+                if attribute
+                    .args()
+                    .iter()
+                    .any(|arg| matches!(arg.1, ConstantValue::TypeDef(_)))
+                {
                     continue;
                 } else {
                     return true;
@@ -39,7 +49,9 @@ impl TypeDef {
     }
 
     pub fn invoke_method(&self) -> MethodDef {
-        self.methods().find(|m| m.name() == "Invoke").expect("`Invoke` method not found")
+        self.methods()
+            .find(|m| m.name() == "Invoke")
+            .expect("`Invoke` method not found")
     }
 
     pub fn default_interface(&self) -> Option<Self> {
@@ -55,7 +67,13 @@ impl TypeDef {
     }
 
     pub fn interfaces(&self) -> impl Iterator<Item = Self> + '_ {
-        self.interface_impls().filter_map(move |i| if let Type::TypeDef(def) = i.generic_interface(&self.generics) { Some(def) } else { None })
+        self.interface_impls().filter_map(move |i| {
+            if let Type::TypeDef(def) = i.generic_interface(&self.generics) {
+                Some(def)
+            } else {
+                None
+            }
+        })
     }
 
     pub fn required_interfaces(&self) -> Vec<Self> {
@@ -141,12 +159,68 @@ impl TypeDef {
         result
     }
 
-    pub fn size(&self) -> usize {
-        if self.kind() == TypeKind::Struct {
-            self.fields().fold(0, |sum, field| sum + field.get_type(Some(self)).size())
-        } else {
-            1
+    pub fn layout(&self) -> TypeLayout {
+        let kind_ = self.kind();
+
+        if kind_ == TypeKind::Delegate {
+            return Type::USize.layout();
         }
+        if kind_ == TypeKind::Enum {
+            return self.underlying_type().layout();
+        }
+
+        assert_eq!(kind_, TypeKind::Struct);
+        match self.field_offsets().last() {
+            None => (0, 1).into(),
+            Some(&last_offset) => {
+                // the struct alignment is max alignment of fields
+                let alignment = self
+                    .fields()
+                    .map(|f| f.get_type(Some(self)).layout().alignment)
+                    .max()
+                    .unwrap_or(1);
+
+                // size is just the offset of the last field, aligned up to the struct alignment
+                let mut size = last_offset
+                    + self
+                        .fields()
+                        .last()
+                        .unwrap()
+                        .get_type(Some(self))
+                        .layout()
+                        .size;
+                if size % alignment != 0 {
+                    size += alignment - size % alignment;
+                }
+
+                TypeLayout { size, alignment }
+            }
+        }
+    }
+
+    pub fn field_offsets(&self) -> Vec<u32> {
+        assert_eq!(self.kind(), TypeKind::Struct);
+
+        let mut res = Vec::new();
+
+        let mut offset = 0;
+        for field in self.fields() {
+            let ty = field.get_type(Some(self));
+            let TypeLayout { size, alignment } = ty.layout();
+
+            // add padding as needed
+            if offset % alignment != 0 {
+                offset += alignment - offset % alignment;
+            }
+
+            // save this field's offset
+            res.push(offset);
+
+            // account for the field size
+            offset += size;
+        }
+
+        res
     }
 
     pub fn is_deprecated(&self) -> bool {
@@ -245,8 +319,21 @@ impl TypeDef {
     pub fn type_signature(&self) -> String {
         match self.kind() {
             TypeKind::Interface => self.interface_signature(),
-            TypeKind::Class => format!("rc({};{})", self.type_name(), self.default_interface().unwrap_or_else(|| panic!("`{}` does not have a default interface.", self.type_name())).interface_signature()),
-            TypeKind::Enum => format!("enum({};{})", self.type_name(), self.underlying_type().type_signature()),
+            TypeKind::Class => format!(
+                "rc({};{})",
+                self.type_name(),
+                self.default_interface()
+                    .unwrap_or_else(|| panic!(
+                        "`{}` does not have a default interface.",
+                        self.type_name()
+                    ))
+                    .interface_signature()
+            ),
+            TypeKind::Enum => format!(
+                "enum({};{})",
+                self.type_name(),
+                self.underlying_type().type_signature()
+            ),
             TypeKind::Struct => {
                 let mut result = format!("struct({}", self.type_name());
 
@@ -369,7 +456,11 @@ impl TypeDef {
         } else {
             let mut next = self.clone();
 
-            while let Some(base) = next.interface_impls().map(|i| i.generic_interface(&[])).next() {
+            while let Some(base) = next
+                .interface_impls()
+                .map(|i| i.generic_interface(&[]))
+                .next()
+            {
                 match base {
                     Type::TypeDef(ref def) => {
                         next = def.clone();
@@ -401,11 +492,21 @@ impl TypeDef {
     }
 
     pub fn generic_params(&self) -> impl Iterator<Item = GenericParam> {
-        self.row.file.equal_range(TableIndex::GenericParam, 2, TypeOrMethodDef::TypeDef(self.clone()).encode()).map(GenericParam)
+        self.row
+            .file
+            .equal_range(
+                TableIndex::GenericParam,
+                2,
+                TypeOrMethodDef::TypeDef(self.clone()).encode(),
+            )
+            .map(GenericParam)
     }
 
     pub fn interface_impls(&self) -> impl Iterator<Item = InterfaceImpl> {
-        self.row.file.equal_range(TableIndex::InterfaceImpl, 0, self.row.row + 1).map(InterfaceImpl)
+        self.row
+            .file
+            .equal_range(TableIndex::InterfaceImpl, 0, self.row.row + 1)
+            .map(InterfaceImpl)
     }
 
     pub fn nested_types(&self) -> Option<&BTreeMap<&'static str, TypeDef>> {
@@ -413,7 +514,9 @@ impl TypeDef {
     }
 
     pub fn attributes(&self) -> impl Iterator<Item = Attribute> {
-        self.row.file.attributes(HasAttribute::TypeDef(self.clone()))
+        self.row
+            .file
+            .attributes(HasAttribute::TypeDef(self.clone()))
     }
 
     fn has_attribute(&self, name: &str) -> bool {
@@ -423,7 +526,8 @@ impl TypeDef {
     pub fn has_flags(&self) -> bool {
         // Win32 enums use the Flags attribute. WinRT enums don't have the Flags attribute but are paritioned merely based
         // on whether they are signed.
-        self.has_attribute("FlagsAttribute") || (self.is_winrt() && self.underlying_type() == Type::U32)
+        self.has_attribute("FlagsAttribute")
+            || (self.is_winrt() && self.underlying_type() == Type::U32)
     }
 
     pub fn is_exclusive(&self) -> bool {
@@ -463,7 +567,13 @@ impl TypeDef {
     }
 
     pub fn is_public_composable(&self) -> bool {
-        self.attributes().any(|attribute| attribute.name() == "ComposableAttribute" && attribute.args().iter().any(|arg| matches!(arg, (_, ConstantValue::I32(2)))))
+        self.attributes().any(|attribute| {
+            attribute.name() == "ComposableAttribute"
+                && attribute
+                    .args()
+                    .iter()
+                    .any(|arg| matches!(arg, (_, ConstantValue::I32(2))))
+        })
     }
 
     pub fn is_blittable(&self) -> bool {
@@ -549,19 +659,40 @@ impl TypeDef {
     }
 
     pub fn enclosing_type(&self) -> Option<Self> {
-        self.row.file.equal_range(TableIndex::NestedClass, 0, self.row.row + 1).map(NestedClass).next().map(|nested| nested.enclosing_type())
+        self.row
+            .file
+            .equal_range(TableIndex::NestedClass, 0, self.row.row + 1)
+            .map(NestedClass)
+            .next()
+            .map(|nested| nested.enclosing_type())
     }
 
     pub fn class_layout(&self) -> Option<ClassLayout> {
-        self.row.file.equal_range(TableIndex::ClassLayout, 2, self.row.row + 1).map(ClassLayout).next()
+        self.row
+            .file
+            .equal_range(TableIndex::ClassLayout, 2, self.row.row + 1)
+            .map(ClassLayout)
+            .next()
     }
 
     pub fn overridable_interfaces(&self) -> Vec<TypeDef> {
-        self.interface_impls().filter(|interface| interface.is_overridable()).map(|interface| interface.interface().resolve(None)).chain(self.bases().next().iter().flat_map(|base| base.overridable_interfaces())).collect()
+        self.interface_impls()
+            .filter(|interface| interface.is_overridable())
+            .map(|interface| interface.interface().resolve(None))
+            .chain(
+                self.bases()
+                    .next()
+                    .iter()
+                    .flat_map(|base| base.overridable_interfaces()),
+            )
+            .collect()
     }
 
     pub fn overridable_methods(&self) -> BTreeSet<&'static str> {
-        self.overridable_interfaces().iter().flat_map(|interface| interface.methods().map(|method| method.name())).collect()
+        self.overridable_interfaces()
+            .iter()
+            .flat_map(|interface| interface.methods().map(|method| method.name()))
+            .collect()
     }
 
     pub fn async_kind(&self) -> AsyncKind {
@@ -632,7 +763,8 @@ impl TypeDef {
                     }
                 }
                 TypeKind::Struct => {
-                    self.fields().for_each(|field| field.combine_cfg(Some(self), cfg));
+                    self.fields()
+                        .for_each(|field| field.combine_cfg(Some(self), cfg));
 
                     if let Some(entry) = TypeReader::get().get_type_entry(self.type_name()) {
                         for def in entry {

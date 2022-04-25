@@ -31,21 +31,13 @@ impl ::core::cmp::PartialEq for OVERLAPPED {
 }
 impl ::core::cmp::Eq for OVERLAPPED {}
 impl FromIntoMemory for OVERLAPPED {
-    fn from_bytes(mut from: &[u8]) -> Self {
-        let f_Internal =
-            <PtrRepr as FromIntoMemory>::from_bytes(&from[..<PtrRepr as FromIntoMemory>::size()]);
-        from = &from[<PtrRepr as FromIntoMemory>::size()..];
-        let f_InternalHigh =
-            <PtrRepr as FromIntoMemory>::from_bytes(&from[..<PtrRepr as FromIntoMemory>::size()]);
-        from = &from[<PtrRepr as FromIntoMemory>::size()..];
-        let f_Anonymous = <OVERLAPPED_0 as FromIntoMemory>::from_bytes(
-            &from[..<OVERLAPPED_0 as FromIntoMemory>::size()],
-        );
-        from = &from[<OVERLAPPED_0 as FromIntoMemory>::size()..];
-        let f_hEvent = <super::super::Foundation::HANDLE as FromIntoMemory>::from_bytes(
-            &from[..<super::super::Foundation::HANDLE as FromIntoMemory>::size()],
-        );
-        from = &from[<super::super::Foundation::HANDLE as FromIntoMemory>::size()..];
+    fn from_bytes(from: &[u8]) -> Self {
+        assert_eq!(from.len(), 24u32 as usize);
+        let f_Internal = <PtrRepr as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
+        let f_InternalHigh = <PtrRepr as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
+        let f_Anonymous = <OVERLAPPED_0 as FromIntoMemory>::from_bytes(&from[8..8 + 12]);
+        let f_hEvent =
+            <super::super::Foundation::HANDLE as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
         Self {
             Internal: f_Internal,
             InternalHigh: f_InternalHigh,
@@ -53,33 +45,15 @@ impl FromIntoMemory for OVERLAPPED {
             hEvent: f_hEvent,
         }
     }
-    fn into_bytes(self, mut into: &mut [u8]) {
-        FromIntoMemory::into_bytes(
-            self.Internal,
-            &mut into[..<PtrRepr as FromIntoMemory>::size()],
-        );
-        into = &mut into[<PtrRepr as FromIntoMemory>::size()..];
-        FromIntoMemory::into_bytes(
-            self.InternalHigh,
-            &mut into[..<PtrRepr as FromIntoMemory>::size()],
-        );
-        into = &mut into[<PtrRepr as FromIntoMemory>::size()..];
-        FromIntoMemory::into_bytes(
-            self.Anonymous,
-            &mut into[..<OVERLAPPED_0 as FromIntoMemory>::size()],
-        );
-        into = &mut into[<OVERLAPPED_0 as FromIntoMemory>::size()..];
-        FromIntoMemory::into_bytes(
-            self.hEvent,
-            &mut into[..<super::super::Foundation::HANDLE as FromIntoMemory>::size()],
-        );
-        into = &mut into[<super::super::Foundation::HANDLE as FromIntoMemory>::size()..];
+    fn into_bytes(self, into: &mut [u8]) {
+        assert_eq!(into.len(), 24u32 as usize);
+        FromIntoMemory::into_bytes(self.Internal, &mut into[0..0 + 4]);
+        FromIntoMemory::into_bytes(self.InternalHigh, &mut into[4..4 + 4]);
+        FromIntoMemory::into_bytes(self.Anonymous, &mut into[8..8 + 12]);
+        FromIntoMemory::into_bytes(self.hEvent, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        <PtrRepr as FromIntoMemory>::size()
-            + <PtrRepr as FromIntoMemory>::size()
-            + <OVERLAPPED_0 as FromIntoMemory>::size()
-            + <super::super::Foundation::HANDLE as FromIntoMemory>::size()
+        4 + 4 + 12 + 4
     }
 }
 pub struct OVERLAPPED_0 {
@@ -134,29 +108,22 @@ impl ::core::cmp::PartialEq for OVERLAPPED_0_0 {
 }
 impl ::core::cmp::Eq for OVERLAPPED_0_0 {}
 impl FromIntoMemory for OVERLAPPED_0_0 {
-    fn from_bytes(mut from: &[u8]) -> Self {
-        let f_Offset =
-            <u32 as FromIntoMemory>::from_bytes(&from[..<u32 as FromIntoMemory>::size()]);
-        from = &from[<u32 as FromIntoMemory>::size()..];
-        let f_OffsetHigh =
-            <u32 as FromIntoMemory>::from_bytes(&from[..<u32 as FromIntoMemory>::size()]);
-        from = &from[<u32 as FromIntoMemory>::size()..];
+    fn from_bytes(from: &[u8]) -> Self {
+        assert_eq!(from.len(), 8u32 as usize);
+        let f_Offset = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
+        let f_OffsetHigh = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         Self {
             Offset: f_Offset,
             OffsetHigh: f_OffsetHigh,
         }
     }
-    fn into_bytes(self, mut into: &mut [u8]) {
-        FromIntoMemory::into_bytes(self.Offset, &mut into[..<u32 as FromIntoMemory>::size()]);
-        into = &mut into[<u32 as FromIntoMemory>::size()..];
-        FromIntoMemory::into_bytes(
-            self.OffsetHigh,
-            &mut into[..<u32 as FromIntoMemory>::size()],
-        );
-        into = &mut into[<u32 as FromIntoMemory>::size()..];
+    fn into_bytes(self, into: &mut [u8]) {
+        assert_eq!(into.len(), 8u32 as usize);
+        FromIntoMemory::into_bytes(self.Offset, &mut into[0..0 + 4]);
+        FromIntoMemory::into_bytes(self.OffsetHigh, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        <u32 as FromIntoMemory>::size() + <u32 as FromIntoMemory>::size()
+        4 + 4
     }
 }
 pub struct OVERLAPPED_ENTRY {
@@ -194,20 +161,12 @@ impl ::core::cmp::PartialEq for OVERLAPPED_ENTRY {
 }
 impl ::core::cmp::Eq for OVERLAPPED_ENTRY {}
 impl FromIntoMemory for OVERLAPPED_ENTRY {
-    fn from_bytes(mut from: &[u8]) -> Self {
-        let f_lpCompletionKey =
-            <PtrRepr as FromIntoMemory>::from_bytes(&from[..<PtrRepr as FromIntoMemory>::size()]);
-        from = &from[<PtrRepr as FromIntoMemory>::size()..];
-        let f_lpOverlapped = <MutPtr<OVERLAPPED> as FromIntoMemory>::from_bytes(
-            &from[..<MutPtr<OVERLAPPED> as FromIntoMemory>::size()],
-        );
-        from = &from[<MutPtr<OVERLAPPED> as FromIntoMemory>::size()..];
-        let f_Internal =
-            <PtrRepr as FromIntoMemory>::from_bytes(&from[..<PtrRepr as FromIntoMemory>::size()]);
-        from = &from[<PtrRepr as FromIntoMemory>::size()..];
-        let f_dwNumberOfBytesTransferred =
-            <u32 as FromIntoMemory>::from_bytes(&from[..<u32 as FromIntoMemory>::size()]);
-        from = &from[<u32 as FromIntoMemory>::size()..];
+    fn from_bytes(from: &[u8]) -> Self {
+        assert_eq!(from.len(), 16u32 as usize);
+        let f_lpCompletionKey = <PtrRepr as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
+        let f_lpOverlapped = <MutPtr<OVERLAPPED> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
+        let f_Internal = <PtrRepr as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
+        let f_dwNumberOfBytesTransferred = <u32 as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
         Self {
             lpCompletionKey: f_lpCompletionKey,
             lpOverlapped: f_lpOverlapped,
@@ -215,33 +174,15 @@ impl FromIntoMemory for OVERLAPPED_ENTRY {
             dwNumberOfBytesTransferred: f_dwNumberOfBytesTransferred,
         }
     }
-    fn into_bytes(self, mut into: &mut [u8]) {
-        FromIntoMemory::into_bytes(
-            self.lpCompletionKey,
-            &mut into[..<PtrRepr as FromIntoMemory>::size()],
-        );
-        into = &mut into[<PtrRepr as FromIntoMemory>::size()..];
-        FromIntoMemory::into_bytes(
-            self.lpOverlapped,
-            &mut into[..<MutPtr<OVERLAPPED> as FromIntoMemory>::size()],
-        );
-        into = &mut into[<MutPtr<OVERLAPPED> as FromIntoMemory>::size()..];
-        FromIntoMemory::into_bytes(
-            self.Internal,
-            &mut into[..<PtrRepr as FromIntoMemory>::size()],
-        );
-        into = &mut into[<PtrRepr as FromIntoMemory>::size()..];
-        FromIntoMemory::into_bytes(
-            self.dwNumberOfBytesTransferred,
-            &mut into[..<u32 as FromIntoMemory>::size()],
-        );
-        into = &mut into[<u32 as FromIntoMemory>::size()..];
+    fn into_bytes(self, into: &mut [u8]) {
+        assert_eq!(into.len(), 16u32 as usize);
+        FromIntoMemory::into_bytes(self.lpCompletionKey, &mut into[0..0 + 4]);
+        FromIntoMemory::into_bytes(self.lpOverlapped, &mut into[4..4 + 4]);
+        FromIntoMemory::into_bytes(self.Internal, &mut into[8..8 + 4]);
+        FromIntoMemory::into_bytes(self.dwNumberOfBytesTransferred, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        <PtrRepr as FromIntoMemory>::size()
-            + <MutPtr<OVERLAPPED> as FromIntoMemory>::size()
-            + <PtrRepr as FromIntoMemory>::size()
-            + <u32 as FromIntoMemory>::size()
+        4 + 4 + 4 + 4
     }
 }
 pub trait Api {
