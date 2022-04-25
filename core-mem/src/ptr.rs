@@ -1,6 +1,5 @@
 use crate::conv::FromIntoMemory;
 use crate::ctx::MemoryCtx;
-use crate::thread_ctx::get_thread_ctx;
 use std::fmt::{Debug, Formatter};
 use std::marker::PhantomData;
 
@@ -65,13 +64,6 @@ impl<T: FromIntoMemory> MutPtr<T> {
         self.0.write_with(ctx, value)
     }
 
-    pub fn read(&self) -> T {
-        self.read_with(get_thread_ctx())
-    }
-    pub fn write(&self, value: T) {
-        self.write_with(get_thread_ctx(), value)
-    }
-
     pub fn offset(&self, offset: PtrDiffRepr) -> Self {
         Self(self.0.offset(offset), Default::default())
     }
@@ -124,9 +116,6 @@ impl<T> ConstPtr<T> {
 impl<T: FromIntoMemory> ConstPtr<T> {
     pub fn read_with<N: FromIntoMemory, MCtx: MemoryCtx>(&self, ctx: MCtx) -> N {
         self.0.read_with(ctx)
-    }
-    pub fn read(&self) -> T {
-        self.read_with(get_thread_ctx())
     }
 
     pub fn offset(&self, offset: PtrDiffRepr) -> Self {

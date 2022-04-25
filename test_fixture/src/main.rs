@@ -4,7 +4,6 @@ mod r#impl;
 
 use crate::r#impl::*;
 use core_mem::ptr::PtrRepr;
-use core_mem::thread_ctx::set_thread_ctx;
 use core_memmgr::{AddressRange, MemoryManager};
 use core_str::heap_helper::AnsiStringHeapBox;
 use core_str::AnsiString;
@@ -40,7 +39,6 @@ fn main_impl() {
     let mut memory_mgr = MemoryManager::new().expect("Mapping the base region");
 
     let memory_ctx = unsafe { memory_mgr.memory_context() };
-    set_thread_ctx(memory_ctx);
 
     for (_, (_, info)) in PROGRAM_IMAGE.modules.iter() {
         let res = memory_mgr

@@ -3,7 +3,6 @@ pub mod heap_helper;
 use core_mem::ctx::MemoryCtx;
 use core_mem::from_into_mem_impl_for_wrapper;
 use core_mem::ptr::{ConstPtr, MutPtr, PtrRepr};
-use core_mem::thread_ctx::get_thread_ctx;
 use encoding_rs::Encoding;
 use std::borrow::Cow;
 
@@ -97,10 +96,6 @@ impl PSTR {
         PCSTR::new(self.0.repr()).read_with(ctx)
     }
 
-    pub fn read(&self) -> AnsiString {
-        self.read_with(get_thread_ctx())
-    }
-
     pub fn write_with(&self, ctx: impl MemoryCtx, buffer_size: PtrRepr, value: &AnsiString) {
         let mut ptr = self.0;
 
@@ -114,10 +109,6 @@ impl PSTR {
         }
 
         ptr.write_with(ctx, 0u8);
-    }
-
-    pub fn write(&self, buffer_size: PtrRepr, value: &AnsiString) {
-        self.write_with(get_thread_ctx(), buffer_size, value)
     }
 }
 impl PCSTR {
@@ -141,10 +132,6 @@ impl PCSTR {
         }
 
         res
-    }
-
-    pub fn read(&self) -> AnsiString {
-        self.read_with(get_thread_ctx())
     }
 }
 impl PWSTR {

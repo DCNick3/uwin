@@ -2,7 +2,6 @@ pub mod align;
 pub mod conv;
 pub mod ctx;
 pub mod ptr;
-pub mod thread_ctx;
 
 #[cfg(test)]
 mod tests {

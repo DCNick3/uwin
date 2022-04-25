@@ -1,8 +1,7 @@
 use bencher::black_box;
 use core_mem::conv::FromIntoMemory;
-use core_mem::ctx::FlatMemoryCtx;
+use core_mem::ctx::{DefaultMemoryCtx, FlatMemoryCtx};
 use core_mem::ptr::{MutPtr, PtrRepr};
-use core_mem::thread_ctx::set_thread_ctx;
 use region::{Allocation, Protection};
 
 // TODO: most probably the region crate does not provide the level of control required
@@ -76,8 +75,8 @@ impl FromIntoMemory for TestStruct {
 /// !!! this is no longer true when thread-local context was introduced
 /// TODO: investigate possible improvements
 #[inline(never)]
-fn write_int(mut_ptr: &MutPtr<u32>, val: u32) {
-    mut_ptr.write(val);
+fn write_int(ctx: DefaultMemoryCtx, mut_ptr: &MutPtr<u32>, val: u32) {
+    mut_ptr.write_with(ctx, val);
 }
 
 /// rust optimizes this down to
@@ -88,8 +87,8 @@ fn write_int(mut_ptr: &MutPtr<u32>, val: u32) {
 /// !!! this is no longer true when thread-local context was introduced
 /// TODO: investigate possible improvements
 #[inline(never)]
-fn read_int(mut_ptr: &MutPtr<u32>) -> u32 {
-    mut_ptr.read()
+fn read_int(ctx: DefaultMemoryCtx, mut_ptr: &MutPtr<u32>) -> u32 {
+    mut_ptr.read_with(ctx)
 }
 
 /// rust optimizes this down to
@@ -105,8 +104,8 @@ fn read_int(mut_ptr: &MutPtr<u32>) -> u32 {
 /// !!! this is no longer true when thread-local context was introduced
 /// TODO: investigate possible improvements
 #[inline(never)]
-fn write_struct(mut_ptr: &MutPtr<TestStruct>, val: TestStruct) {
-    mut_ptr.write(val)
+fn write_struct(ctx: DefaultMemoryCtx, mut_ptr: &MutPtr<TestStruct>, val: TestStruct) {
+    mut_ptr.write_with(ctx, val)
 }
 
 /// rust optimizes this down to
@@ -121,30 +120,30 @@ fn write_struct(mut_ptr: &MutPtr<TestStruct>, val: TestStruct) {
 /// !!! this is no longer true when thread-local context was introduced
 /// TODO: investigate possible improvements
 #[inline(never)]
-fn read_struct(mut_ptr: &MutPtr<TestStruct>) -> TestStruct {
-    mut_ptr.read()
+fn read_struct(ctx: DefaultMemoryCtx, mut_ptr: &MutPtr<TestStruct>) -> TestStruct {
+    mut_ptr.read_with(ctx)
 }
 
 #[test]
 fn simple_int_fiddle() {
     let mut mgr = DummyFlatMemoryManager::new();
 
-    set_thread_ctx(mgr.get_ctx());
+    let ctx = mgr.get_ctx();
 
     // map one page to play around with
     let page = mgr.map_rw(0x37000, 0x1000);
 
     let mut_ptr = MutPtr::<u32>::new(page);
 
-    write_int(black_box(&mut_ptr), black_box(12));
-    assert_eq!(read_int(black_box(&mut_ptr)), 12);
+    write_int(ctx, black_box(&mut_ptr), black_box(12));
+    assert_eq!(read_int(ctx, black_box(&mut_ptr)), 12);
 }
 
 #[test]
 fn simple_struct_fiddle() {
     let mut mgr = DummyFlatMemoryManager::new();
 
-    set_thread_ctx(mgr.get_ctx());
+    let ctx = mgr.get_ctx();
 
     // map one page to play around with
     let page = mgr.map_rw(0x37000, 0x1000);
@@ -157,6 +156,6 @@ fn simple_struct_fiddle() {
         val3: 7890,
     };
 
-    write_struct(black_box(&mut_ptr), black_box(test_struct));
-    assert_eq!(read_struct(black_box(&mut_ptr)), test_struct);
+    write_struct(ctx, black_box(&mut_ptr), black_box(test_struct));
+    assert_eq!(read_struct(ctx, black_box(&mut_ptr)), test_struct);
 }
