@@ -93,6 +93,16 @@ fn main_impl() {
     context
         .win32
         .insert(Arc::new(Threading {}) as Arc<dyn win32::Win32::System::Threading::Api>);
+    context
+        .win32
+        .insert(Arc::new(Console {}) as Arc<dyn win32::Win32::System::Console::Api>);
+    context
+        .win32
+        .insert(Arc::new(WindowsProgramming {})
+            as Arc<dyn win32::Win32::System::WindowsProgramming::Api>);
+    context
+        .win32
+        .insert(Arc::new(Environment {}) as Arc<dyn win32::Win32::System::Environment::Api>);
 
     let res = rusty_x86_runtime::execute_recompiled_code(&mut context, memory_ctx, entry);
     trace!("execute_recompiled_code returned 0x{:08x}", res);

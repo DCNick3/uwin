@@ -4,9 +4,10 @@ use core_mem::thread_ctx::get_thread_ctx;
 use std::ffi::{c_void, CStr};
 use std::os::raw::c_char;
 use std::sync::Mutex;
-use tracing::info;
+use tracing::{info, warn};
 use win32::core::{PCSTR, PSTR};
-use win32::Win32::Foundation::{HINSTANCE, HWND};
+use win32::Win32::Foundation::{HANDLE, HINSTANCE, HWND, INVALID_HANDLE_VALUE};
+use win32::Win32::System::Console::STD_HANDLE;
 use win32::Win32::System::Memory::{
     HeapHandle, HEAP_FLAGS, HEAP_NO_SERIALIZE, PAGE_PROTECTION_FLAGS, VIRTUAL_ALLOCATION_TYPE,
 };
@@ -149,5 +150,33 @@ impl win32::Win32::System::Threading::Api for Threading {
             hStdOutput: Default::default(),
             hStdError: Default::default(),
         })
+    }
+}
+
+pub struct Console {}
+#[allow(non_snake_case)]
+impl win32::Win32::System::Console::Api for Console {
+    fn GetStdHandle(&self, n_std_handle: STD_HANDLE) -> HANDLE {
+        warn!("Returning invalid handle for std handle {:?}", n_std_handle);
+
+        INVALID_HANDLE_VALUE
+    }
+}
+
+pub struct WindowsProgramming {}
+#[allow(non_snake_case)]
+impl win32::Win32::System::WindowsProgramming::Api for WindowsProgramming {
+    fn SetHandleCount(&self, u_number: u32) -> u32 {
+        // actually a legacy function & impl doesn't really matter
+        u_number
+    }
+}
+
+pub struct Environment {}
+#[allow(non_snake_case)]
+impl win32::Win32::System::Environment::Api for Environment {
+    fn GetCommandLineA(&self) -> PSTR {
+        // well, this actually needs some setup
+        todo!()
     }
 }
