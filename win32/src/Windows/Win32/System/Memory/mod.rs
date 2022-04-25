@@ -48,7 +48,7 @@ impl FromIntoMemory for CFG_CALL_TARGET_INFO {
         FromIntoMemory::into_bytes(self.Flags, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        4 + 4
+        8u32 as usize
     }
 }
 pub const FILE_CACHE_MAX_HARD_DISABLE: u32 = 2u32;
@@ -350,7 +350,7 @@ impl FromIntoMemory for HEAP_SUMMARY {
         FromIntoMemory::into_bytes(self.cbMaxReserve, &mut into[16..16 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4
+        20u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -546,7 +546,7 @@ impl FromIntoMemory for MEMORY_BASIC_INFORMATION {
         FromIntoMemory::into_bytes(self.Type, &mut into[28..28 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 2 + 4 + 4 + 4 + 4
+        32u32 as usize
     }
 }
 pub struct MEMORY_BASIC_INFORMATION {
@@ -623,7 +623,7 @@ impl FromIntoMemory for MEMORY_BASIC_INFORMATION {
         FromIntoMemory::into_bytes(self.Type, &mut into[24..24 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 4
+        28u32 as usize
     }
 }
 pub struct MEMORY_BASIC_INFORMATION32 {
@@ -698,7 +698,7 @@ impl FromIntoMemory for MEMORY_BASIC_INFORMATION32 {
         FromIntoMemory::into_bytes(self.Type, &mut into[24..24 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 4
+        28u32 as usize
     }
 }
 pub struct MEMORY_BASIC_INFORMATION64 {
@@ -785,7 +785,7 @@ impl FromIntoMemory for MEMORY_BASIC_INFORMATION64 {
         FromIntoMemory::into_bytes(self.__alignment2, &mut into[44..44 + 4]);
     }
     fn size() -> usize {
-        8 + 8 + 4 + 4 + 8 + 4 + 4 + 4 + 4
+        48u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -872,7 +872,7 @@ impl FromIntoMemory for MEM_ADDRESS_REQUIREMENTS {
         FromIntoMemory::into_bytes(self.Alignment, &mut into[8..8 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4
+        12u32 as usize
     }
 }
 pub struct MEM_EXTENDED_PARAMETER {
@@ -909,7 +909,7 @@ impl FromIntoMemory for MEM_EXTENDED_PARAMETER {
         FromIntoMemory::into_bytes(self.Anonymous2, &mut into[8..8 + 24]);
     }
     fn size() -> usize {
-        8 + 24
+        32u32 as usize
     }
 }
 pub struct MEM_EXTENDED_PARAMETER_0 {
@@ -947,7 +947,7 @@ impl FromIntoMemory for MEM_EXTENDED_PARAMETER_0 {
         FromIntoMemory::into_bytes(self._bitfield, &mut into[0..0 + 8]);
     }
     fn size() -> usize {
-        8
+        8u32 as usize
     }
 }
 pub struct MEM_EXTENDED_PARAMETER_1 {
@@ -1275,7 +1275,7 @@ impl FromIntoMemory for PROCESS_HEAP_ENTRY {
         FromIntoMemory::into_bytes(self.Anonymous, &mut into[12..12 + 32]);
     }
     fn size() -> usize {
-        4 + 4 + 1 + 1 + 2 + 32
+        44u32 as usize
     }
 }
 pub struct PROCESS_HEAP_ENTRY_0 {
@@ -1346,7 +1346,7 @@ impl FromIntoMemory for PROCESS_HEAP_ENTRY_0_0 {
         FromIntoMemory::into_bytes(self.dwReserved, &mut into[4..4 + 12]);
     }
     fn size() -> usize {
-        4 + 12
+        16u32 as usize
     }
 }
 pub struct PROCESS_HEAP_ENTRY_0_1 {
@@ -1404,7 +1404,7 @@ impl FromIntoMemory for PROCESS_HEAP_ENTRY_0_1 {
         FromIntoMemory::into_bytes(self.lpLastBlock, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4
+        16u32 as usize
     }
 }
 pub type PSECURE_MEMORY_CACHE_CALLBACK = ::core::option::Option<()>;
@@ -1703,7 +1703,7 @@ impl FromIntoMemory for WIN32_MEMORY_PARTITION_INFORMATION {
         FromIntoMemory::into_bytes(self.PartitionId, &mut into[232..232 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 8 + 8 + 8 + 8 + 8 + 8 + 8 + 8 + 8 + 128 + 8 + 8 + 4
+        240u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -1782,7 +1782,7 @@ impl FromIntoMemory for WIN32_MEMORY_RANGE_ENTRY {
         FromIntoMemory::into_bytes(self.NumberOfBytes, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        4 + 4
+        8u32 as usize
     }
 }
 pub struct WIN32_MEMORY_REGION_INFORMATION {
@@ -1835,7 +1835,7 @@ impl FromIntoMemory for WIN32_MEMORY_REGION_INFORMATION {
         FromIntoMemory::into_bytes(self.CommitSize, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 8 + 4 + 4
+        24u32 as usize
     }
 }
 pub struct WIN32_MEMORY_REGION_INFORMATION_0 {
@@ -1900,7 +1900,7 @@ impl FromIntoMemory for WIN32_MEMORY_REGION_INFORMATION_0_0 {
         FromIntoMemory::into_bytes(self._bitfield, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4
+        4u32 as usize
     }
 }
 pub trait Api {

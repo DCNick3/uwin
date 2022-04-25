@@ -53,7 +53,7 @@ impl FromIntoMemory for OVERLAPPED {
         FromIntoMemory::into_bytes(self.hEvent, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 12 + 4
+        24u32 as usize
     }
 }
 pub struct OVERLAPPED_0 {
@@ -123,7 +123,7 @@ impl FromIntoMemory for OVERLAPPED_0_0 {
         FromIntoMemory::into_bytes(self.OffsetHigh, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        4 + 4
+        8u32 as usize
     }
 }
 pub struct OVERLAPPED_ENTRY {
@@ -182,7 +182,7 @@ impl FromIntoMemory for OVERLAPPED_ENTRY {
         FromIntoMemory::into_bytes(self.dwNumberOfBytesTransferred, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4
+        16u32 as usize
     }
 }
 pub trait Api {

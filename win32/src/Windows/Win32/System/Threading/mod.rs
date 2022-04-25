@@ -61,7 +61,7 @@ impl FromIntoMemory for APP_MEMORY_INFORMATION {
         FromIntoMemory::into_bytes(self.TotalCommitUsage, &mut into[24..24 + 8]);
     }
     fn size() -> usize {
-        8 + 8 + 8 + 8
+        32u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -334,7 +334,7 @@ impl FromIntoMemory for IO_COUNTERS {
         FromIntoMemory::into_bytes(self.OtherTransferCount, &mut into[40..40 + 8]);
     }
     fn size() -> usize {
-        8 + 8 + 8 + 8 + 8 + 8
+        48u32 as usize
     }
 }
 pub type LPFIBER_START_ROUTINE = ::core::option::Option<()>;
@@ -506,7 +506,7 @@ impl FromIntoMemory for MEMORY_PRIORITY_INFORMATION {
         FromIntoMemory::into_bytes(self.MemoryPriority, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4
+        4u32 as usize
     }
 }
 pub const MUTEX_MODIFY_STATE: u32 = 1u32;
@@ -696,7 +696,7 @@ impl FromIntoMemory for PEB {
         FromIntoMemory::into_bytes(self.SessionId, &mut into[468..468 + 4]);
     }
     fn size() -> usize {
-        2 + 1 + 1 + 8 + 4 + 4 + 12 + 4 + 4 + 4 + 4 + 4 + 4 + 180 + 96 + 4 + 128 + 4 + 4
+        472u32 as usize
     }
 }
 pub struct PEB_LDR_DATA {
@@ -748,7 +748,7 @@ impl FromIntoMemory for PEB_LDR_DATA {
         FromIntoMemory::into_bytes(self.InMemoryOrderModuleList, &mut into[20..20 + 8]);
     }
     fn size() -> usize {
-        8 + 12 + 8
+        28u32 as usize
     }
 }
 pub type PFLS_CALLBACK_FUNCTION = ::core::option::Option<()>;
@@ -1067,7 +1067,7 @@ impl FromIntoMemory for PROCESS_BASIC_INFORMATION {
         FromIntoMemory::into_bytes(self.Reserved3, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 8 + 4 + 4
+        24u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -1263,7 +1263,7 @@ impl FromIntoMemory for PROCESS_DYNAMIC_EH_CONTINUATION_TARGET {
         FromIntoMemory::into_bytes(self.Flags, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        4 + 4
+        8u32 as usize
     }
 }
 pub struct PROCESS_DYNAMIC_EH_CONTINUATION_TARGETS_INFORMATION {
@@ -1322,7 +1322,7 @@ impl FromIntoMemory for PROCESS_DYNAMIC_EH_CONTINUATION_TARGETS_INFORMATION {
         FromIntoMemory::into_bytes(self.Targets, &mut into[8..8 + 4]);
     }
     fn size() -> usize {
-        2 + 2 + 4 + 4
+        12u32 as usize
     }
 }
 pub struct PROCESS_DYNAMIC_ENFORCED_ADDRESS_RANGE {
@@ -1372,7 +1372,7 @@ impl FromIntoMemory for PROCESS_DYNAMIC_ENFORCED_ADDRESS_RANGE {
         FromIntoMemory::into_bytes(self.Flags, &mut into[8..8 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4
+        12u32 as usize
     }
 }
 pub struct PROCESS_DYNAMIC_ENFORCED_ADDRESS_RANGES_INFORMATION {
@@ -1431,7 +1431,7 @@ impl FromIntoMemory for PROCESS_DYNAMIC_ENFORCED_ADDRESS_RANGES_INFORMATION {
         FromIntoMemory::into_bytes(self.Ranges, &mut into[8..8 + 4]);
     }
     fn size() -> usize {
-        2 + 2 + 4 + 4
+        12u32 as usize
     }
 }
 pub struct PROCESS_INFORMATION {
@@ -1489,7 +1489,7 @@ impl FromIntoMemory for PROCESS_INFORMATION {
         FromIntoMemory::into_bytes(self.dwThreadId, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4
+        16u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -1574,7 +1574,7 @@ impl FromIntoMemory for PROCESS_LEAP_SECOND_INFO {
         FromIntoMemory::into_bytes(self.Reserved, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        4 + 4
+        8u32 as usize
     }
 }
 pub const PROCESS_LEAP_SECOND_INFO_FLAG_ENABLE_SIXTY_SECOND: u32 = 1u32;
@@ -1627,7 +1627,7 @@ impl FromIntoMemory for PROCESS_MACHINE_INFORMATION {
         FromIntoMemory::into_bytes(self.MachineAttributes, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        2 + 2 + 4
+        8u32 as usize
     }
 }
 pub struct PROCESS_MEMORY_EXHAUSTION_INFO {
@@ -1684,7 +1684,7 @@ impl FromIntoMemory for PROCESS_MEMORY_EXHAUSTION_INFO {
         FromIntoMemory::into_bytes(self.Value, &mut into[8..8 + 4]);
     }
     fn size() -> usize {
-        2 + 2 + 4 + 4
+        12u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -1860,7 +1860,7 @@ impl FromIntoMemory for PROCESS_POWER_THROTTLING_STATE {
         FromIntoMemory::into_bytes(self.StateMask, &mut into[8..8 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4
+        12u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -1941,7 +1941,7 @@ impl FromIntoMemory for PROCESS_PROTECTION_LEVEL_INFORMATION {
         FromIntoMemory::into_bytes(self.ProtectionLevel, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4
+        4u32 as usize
     }
 }
 pub const PROC_THREAD_ATTRIBUTE_ALL_APPLICATION_PACKAGES_POLICY: u32 = 131087u32;
@@ -2146,7 +2146,7 @@ impl FromIntoMemory for REASON_CONTEXT {
         FromIntoMemory::into_bytes(self.Reason, &mut into[8..8 + 20]);
     }
     fn size() -> usize {
-        4 + 4 + 20
+        28u32 as usize
     }
 }
 pub struct REASON_CONTEXT_0 {
@@ -2230,7 +2230,7 @@ impl FromIntoMemory for REASON_CONTEXT_0_0 {
         FromIntoMemory::into_bytes(self.ReasonStrings, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4
+        16u32 as usize
     }
 }
 pub struct RTL_BARRIER {
@@ -2292,7 +2292,7 @@ impl FromIntoMemory for RTL_BARRIER {
         FromIntoMemory::into_bytes(self.Reserved5, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 8 + 4 + 4
+        24u32 as usize
     }
 }
 pub struct RTL_CONDITION_VARIABLE {
@@ -2328,7 +2328,7 @@ impl FromIntoMemory for RTL_CONDITION_VARIABLE {
         FromIntoMemory::into_bytes(self.Ptr, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4
+        4u32 as usize
     }
 }
 pub struct RTL_CRITICAL_SECTION {
@@ -2399,7 +2399,7 @@ impl FromIntoMemory for RTL_CRITICAL_SECTION {
         FromIntoMemory::into_bytes(self.SpinCount, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4
+        24u32 as usize
     }
 }
 pub struct RTL_CRITICAL_SECTION_DEBUG {
@@ -2487,7 +2487,7 @@ impl FromIntoMemory for RTL_CRITICAL_SECTION_DEBUG {
         FromIntoMemory::into_bytes(self.SpareWORD, &mut into[30..30 + 2]);
     }
     fn size() -> usize {
-        2 + 2 + 4 + 8 + 4 + 4 + 4 + 2 + 2
+        32u32 as usize
     }
 }
 pub struct RTL_RUN_ONCE {
@@ -2549,7 +2549,7 @@ impl FromIntoMemory for RTL_SRWLOCK {
         FromIntoMemory::into_bytes(self.Ptr, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4
+        4u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -2651,7 +2651,7 @@ impl FromIntoMemory for RTL_USER_PROCESS_PARAMETERS {
         FromIntoMemory::into_bytes(self.CommandLine, &mut into[64..64 + 8]);
     }
     fn size() -> usize {
-        16 + 40 + 8 + 8
+        72u32 as usize
     }
 }
 pub struct STARTUPINFOA {
@@ -2794,7 +2794,7 @@ impl FromIntoMemory for STARTUPINFOA {
         FromIntoMemory::into_bytes(self.hStdError, &mut into[64..64 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 2 + 2 + 4 + 4 + 4 + 4
+        68u32 as usize
     }
 }
 pub struct STARTUPINFOEXA {
@@ -2838,7 +2838,7 @@ impl FromIntoMemory for STARTUPINFOEXA {
         FromIntoMemory::into_bytes(self.lpAttributeList, &mut into[68..68 + 4]);
     }
     fn size() -> usize {
-        68 + 4
+        72u32 as usize
     }
 }
 pub struct STARTUPINFOEXW {
@@ -2882,7 +2882,7 @@ impl FromIntoMemory for STARTUPINFOEXW {
         FromIntoMemory::into_bytes(self.lpAttributeList, &mut into[68..68 + 4]);
     }
     fn size() -> usize {
-        68 + 4
+        72u32 as usize
     }
 }
 pub struct STARTUPINFOW {
@@ -3025,7 +3025,7 @@ impl FromIntoMemory for STARTUPINFOW {
         FromIntoMemory::into_bytes(self.hStdError, &mut into[64..64 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 2 + 2 + 4 + 4 + 4 + 4
+        68u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -3359,7 +3359,7 @@ impl FromIntoMemory for THREAD_POWER_THROTTLING_STATE {
         FromIntoMemory::into_bytes(self.StateMask, &mut into[8..8 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4
+        12u32 as usize
     }
 }
 pub const THREAD_POWER_THROTTLING_VALID_FLAGS: u32 = 1u32;
@@ -3479,7 +3479,7 @@ impl FromIntoMemory for TP_CALLBACK_ENVIRON_V3 {
         FromIntoMemory::into_bytes(self.Size, &mut into[40..40 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 4 + 8 + 4 + 4
+        44u32 as usize
     }
 }
 pub struct TP_CALLBACK_ENVIRON_V3_0(pub u8);
@@ -3545,7 +3545,7 @@ impl FromIntoMemory for TP_CALLBACK_ENVIRON_V3_1_0 {
         FromIntoMemory::into_bytes(self._bitfield, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4
+        4u32 as usize
     }
 }
 pub struct TP_CALLBACK_INSTANCE(pub u8);
@@ -3626,7 +3626,7 @@ impl FromIntoMemory for TP_POOL_STACK_INFORMATION {
         FromIntoMemory::into_bytes(self.StackCommit, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        4 + 4
+        8u32 as usize
     }
 }
 pub struct TP_TIMER(pub u8);
@@ -3736,7 +3736,7 @@ impl FromIntoMemory for UMS_SCHEDULER_STARTUP_INFO {
         FromIntoMemory::into_bytes(self.SchedulerParam, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4
+        16u32 as usize
     }
 }
 pub struct UMS_SYSTEM_THREAD_INFORMATION {
@@ -3772,7 +3772,7 @@ impl FromIntoMemory for UMS_SYSTEM_THREAD_INFORMATION {
         FromIntoMemory::into_bytes(self.Anonymous, &mut into[4..4 + 8]);
     }
     fn size() -> usize {
-        4 + 8
+        12u32 as usize
     }
 }
 pub struct UMS_SYSTEM_THREAD_INFORMATION_0 {
@@ -3837,7 +3837,7 @@ impl FromIntoMemory for UMS_SYSTEM_THREAD_INFORMATION_0_0 {
         FromIntoMemory::into_bytes(self._bitfield, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4
+        4u32 as usize
     }
 }
 pub type WAITORTIMERCALLBACK = ::core::option::Option<()>;

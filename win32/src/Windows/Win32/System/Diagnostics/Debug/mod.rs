@@ -57,7 +57,7 @@ impl FromIntoMemory for ADDRESS {
         FromIntoMemory::into_bytes(self.Mode, &mut into[8..8 + 4]);
     }
     fn size() -> usize {
-        4 + 2 + 4
+        12u32 as usize
     }
 }
 pub struct ADDRESS64 {
@@ -105,7 +105,7 @@ impl FromIntoMemory for ADDRESS64 {
         FromIntoMemory::into_bytes(self.Mode, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        8 + 2 + 4
+        16u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -197,7 +197,7 @@ impl FromIntoMemory for AER_BRIDGE_DESCRIPTOR_FLAGS_0 {
         FromIntoMemory::into_bytes(self._bitfield, &mut into[0..0 + 2]);
     }
     fn size() -> usize {
-        2
+        2u32 as usize
     }
 }
 pub struct AER_ENDPOINT_DESCRIPTOR_FLAGS {
@@ -255,7 +255,7 @@ impl FromIntoMemory for AER_ENDPOINT_DESCRIPTOR_FLAGS_0 {
         FromIntoMemory::into_bytes(self._bitfield, &mut into[0..0 + 2]);
     }
     fn size() -> usize {
-        2
+        2u32 as usize
     }
 }
 pub struct AER_ROOTPORT_DESCRIPTOR_FLAGS {
@@ -313,7 +313,7 @@ impl FromIntoMemory for AER_ROOTPORT_DESCRIPTOR_FLAGS_0 {
         FromIntoMemory::into_bytes(self._bitfield, &mut into[0..0 + 2]);
     }
     fn size() -> usize {
-        2
+        2u32 as usize
     }
 }
 pub struct API_VERSION {
@@ -369,7 +369,7 @@ impl FromIntoMemory for API_VERSION {
         FromIntoMemory::into_bytes(self.Reserved, &mut into[6..6 + 2]);
     }
     fn size() -> usize {
-        2 + 2 + 2 + 2
+        8u32 as usize
     }
 }
 pub const API_VERSION_NUMBER: u32 = 12u32;
@@ -502,7 +502,7 @@ impl FromIntoMemory for ARM64_NT_CONTEXT {
         FromIntoMemory::into_bytes(self.Wvr, &mut into[3192..3192 + 16]);
     }
     fn size() -> usize {
-        4 + 4 + 496 + 8 + 8 + 2560 + 4 + 4 + 32 + 64 + 8 + 16
+        3208u32 as usize
     }
 }
 pub struct ARM64_NT_CONTEXT_0 {
@@ -747,36 +747,7 @@ impl FromIntoMemory for ARM64_NT_CONTEXT_0_0 {
         FromIntoMemory::into_bytes(self.Lr, &mut into[240..240 + 8]);
     }
     fn size() -> usize {
-        8 + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
+        248u32 as usize
     }
 }
 pub struct ARM64_NT_NEON128 {
@@ -853,7 +824,7 @@ impl FromIntoMemory for ARM64_NT_NEON128_0 {
         FromIntoMemory::into_bytes(self.High, &mut into[8..8 + 8]);
     }
     fn size() -> usize {
-        8 + 8
+        16u32 as usize
     }
 }
 pub struct ArrayDimension {
@@ -903,7 +874,7 @@ impl FromIntoMemory for ArrayDimension {
         FromIntoMemory::into_bytes(self.Stride, &mut into[16..16 + 8]);
     }
     fn size() -> usize {
-        8 + 8 + 8
+        24u32 as usize
     }
 }
 pub const BIND_ALL_IMAGES: u32 = 4u32;
@@ -1709,7 +1680,7 @@ impl FromIntoMemory for CONTEXT {
         FromIntoMemory::into_bytes(self.Wvr, &mut into[3192..3192 + 16]);
     }
     fn size() -> usize {
-        4 + 4 + 496 + 8 + 8 + 2560 + 4 + 4 + 32 + 64 + 8 + 16
+        3208u32 as usize
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
@@ -1980,36 +1951,7 @@ impl FromIntoMemory for CONTEXT_0_0 {
         FromIntoMemory::into_bytes(self.Lr, &mut into[240..240 + 8]);
     }
     fn size() -> usize {
-        8 + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
+        248u32 as usize
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
@@ -2277,51 +2219,7 @@ impl FromIntoMemory for CONTEXT {
         FromIntoMemory::into_bytes(self.LastExceptionFromRip, &mut into[1640..1640 + 8]);
     }
     fn size() -> usize {
-        8 + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 4
-            + 4
-            + 2
-            + 2
-            + 2
-            + 2
-            + 2
-            + 2
-            + 4
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 928
-            + 416
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
+        1648u32 as usize
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
@@ -2514,7 +2412,7 @@ impl FromIntoMemory for CONTEXT_0_0 {
         FromIntoMemory::into_bytes(self.Xmm15, &mut into[400..400 + 16]);
     }
     fn size() -> usize {
-        32 + 128 + 16 + 16 + 16 + 16 + 16 + 16 + 16 + 16 + 16 + 16 + 16 + 16 + 16 + 16 + 16 + 16
+        416u32 as usize
     }
 }
 pub struct CONTEXT {
@@ -2667,30 +2565,7 @@ impl FromIntoMemory for CONTEXT {
         FromIntoMemory::into_bytes(self.ExtendedRegisters, &mut into[204..204 + 512]);
     }
     fn size() -> usize {
-        4 + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 112
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 512
+        716u32 as usize
     }
 }
 pub struct CPU_INFORMATION {
@@ -2748,7 +2623,7 @@ impl FromIntoMemory for CPU_INFORMATION_0 {
         FromIntoMemory::into_bytes(self.ProcessorFeatures, &mut into[0..0 + 16]);
     }
     fn size() -> usize {
-        16
+        16u32 as usize
     }
 }
 pub struct CPU_INFORMATION_1 {
@@ -2804,7 +2679,7 @@ impl FromIntoMemory for CPU_INFORMATION_1 {
         FromIntoMemory::into_bytes(self.AMDExtendedCpuFeatures, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        12 + 4 + 4 + 4
+        24u32 as usize
     }
 }
 pub struct CREATE_PROCESS_DEBUG_INFO {
@@ -2908,7 +2783,7 @@ impl FromIntoMemory for CREATE_PROCESS_DEBUG_INFO {
         FromIntoMemory::into_bytes(self.fUnicode, &mut into[36..36 + 2]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 2
+        40u32 as usize
     }
 }
 pub struct CREATE_THREAD_DEBUG_INFO {
@@ -2964,7 +2839,7 @@ impl FromIntoMemory for CREATE_THREAD_DEBUG_INFO {
         FromIntoMemory::into_bytes(self.lpStartAddress, &mut into[8..8 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4
+        12u32 as usize
     }
 }
 pub const CROSS_PLATFORM_MAXIMUM_PROCESSORS: u32 = 2048u32;
@@ -3047,7 +2922,7 @@ impl FromIntoMemory for DBGHELP_DATA_REPORT_STRUCT {
         FromIntoMemory::into_bytes(self.pSymbolPathNonExist, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        4 + 4
+        8u32 as usize
     }
 }
 pub struct DBGKD_DEBUG_DATA_HEADER32 {
@@ -3096,7 +2971,7 @@ impl FromIntoMemory for DBGKD_DEBUG_DATA_HEADER32 {
         FromIntoMemory::into_bytes(self.Size, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        8 + 4 + 4
+        16u32 as usize
     }
 }
 pub struct DBGKD_DEBUG_DATA_HEADER64 {
@@ -3145,7 +3020,7 @@ impl FromIntoMemory for DBGKD_DEBUG_DATA_HEADER64 {
         FromIntoMemory::into_bytes(self.Size, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        16 + 4 + 4
+        24u32 as usize
     }
 }
 pub struct DBGKD_GET_VERSION32 {
@@ -3261,7 +3136,7 @@ impl FromIntoMemory for DBGKD_GET_VERSION32 {
         FromIntoMemory::into_bytes(self.DebuggerDataList, &mut into[36..36 + 4]);
     }
     fn size() -> usize {
-        2 + 2 + 2 + 2 + 4 + 4 + 2 + 2 + 2 + 2 + 4 + 4 + 4 + 4
+        40u32 as usize
     }
 }
 pub struct DBGKD_GET_VERSION64 {
@@ -3377,7 +3252,7 @@ impl FromIntoMemory for DBGKD_GET_VERSION64 {
         FromIntoMemory::into_bytes(self.DebuggerDataList, &mut into[32..32 + 8]);
     }
     fn size() -> usize {
-        2 + 2 + 1 + 1 + 2 + 2 + 1 + 1 + 1 + 1 + 2 + 8 + 8 + 8
+        40u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -3751,7 +3626,7 @@ impl FromIntoMemory for DEBUG_BREAKPOINT_PARAMETERS {
         FromIntoMemory::into_bytes(self.OffsetExpressionSize, &mut into[48..48 + 4]);
     }
     fn size() -> usize {
-        8 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4
+        56u32 as usize
     }
 }
 pub const DEBUG_BREAKPOINT_TIME: u32 = 2u32;
@@ -3818,7 +3693,7 @@ impl FromIntoMemory for DEBUG_CACHED_SYMBOL_INFO {
         FromIntoMemory::into_bytes(self.Arg3, &mut into[28..28 + 4]);
     }
     fn size() -> usize {
-        8 + 8 + 8 + 4 + 4
+        32u32 as usize
     }
 }
 pub const DEBUG_CDS_ALL: u32 = 4294967295u32;
@@ -3903,7 +3778,7 @@ impl FromIntoMemory for DEBUG_CLIENT_CONTEXT {
         FromIntoMemory::into_bytes(self.eClient, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        4 + 4
+        8u32 as usize
     }
 }
 pub const DEBUG_CLIENT_KD: u32 = 5u32;
@@ -3973,7 +3848,7 @@ impl FromIntoMemory for DEBUG_CREATE_PROCESS_OPTIONS {
         FromIntoMemory::into_bytes(self.Reserved, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4
+        16u32 as usize
     }
 }
 pub const DEBUG_CSS_ALL: u32 = 4294967295u32;
@@ -4213,7 +4088,7 @@ impl FromIntoMemory for DEBUG_EVENT {
         FromIntoMemory::into_bytes(self.u, &mut into[12..12 + 188]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 188
+        200u32 as usize
     }
 }
 pub struct DEBUG_EVENT_0 {
@@ -4353,7 +4228,7 @@ impl FromIntoMemory for DEBUG_EVENT_CONTEXT {
         FromIntoMemory::into_bytes(self.FrameEngineId, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4
+        16u32 as usize
     }
 }
 pub const DEBUG_EVENT_CREATE_PROCESS: u32 = 16u32;
@@ -4466,7 +4341,7 @@ impl FromIntoMemory for DEBUG_EXCEPTION_FILTER_PARAMETERS {
         FromIntoMemory::into_bytes(self.ExceptionCode, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4
+        24u32 as usize
     }
 }
 pub const DEBUG_EXECUTE_DEFAULT: u32 = 0u32;
@@ -4599,7 +4474,7 @@ impl FromIntoMemory for DEBUG_GET_TEXT_COMPLETIONS_IN {
         FromIntoMemory::into_bytes(self.Reserved, &mut into[8..8 + 24]);
     }
     fn size() -> usize {
-        4 + 4 + 24
+        32u32 as usize
     }
 }
 pub const DEBUG_GET_TEXT_COMPLETIONS_IS_DOT_COMMAND: u32 = 1u32;
@@ -4667,7 +4542,7 @@ impl FromIntoMemory for DEBUG_GET_TEXT_COMPLETIONS_OUT {
         FromIntoMemory::into_bytes(self.Reserved2, &mut into[16..16 + 16]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 16
+        32u32 as usize
     }
 }
 pub const DEBUG_GSEL_ALLOW_HIGHER: u32 = 4u32;
@@ -4741,7 +4616,7 @@ impl FromIntoMemory for DEBUG_HANDLE_DATA_BASIC {
         FromIntoMemory::into_bytes(self.PointerCount, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4
+        24u32 as usize
     }
 }
 pub const DEBUG_HANDLE_DATA_TYPE_ALL_HANDLE_OPERATIONS: u32 = 10u32;
@@ -4815,7 +4690,7 @@ impl FromIntoMemory for DEBUG_LAST_EVENT_INFO_BREAKPOINT {
         FromIntoMemory::into_bytes(self.Id, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4
+        4u32 as usize
     }
 }
 pub struct DEBUG_LAST_EVENT_INFO_EXCEPTION {
@@ -4859,7 +4734,7 @@ impl FromIntoMemory for DEBUG_LAST_EVENT_INFO_EXCEPTION {
         FromIntoMemory::into_bytes(self.FirstChance, &mut into[152..152 + 4]);
     }
     fn size() -> usize {
-        152 + 4
+        160u32 as usize
     }
 }
 pub struct DEBUG_LAST_EVENT_INFO_EXIT_PROCESS {
@@ -4897,7 +4772,7 @@ impl FromIntoMemory for DEBUG_LAST_EVENT_INFO_EXIT_PROCESS {
         FromIntoMemory::into_bytes(self.ExitCode, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4
+        4u32 as usize
     }
 }
 pub struct DEBUG_LAST_EVENT_INFO_EXIT_THREAD {
@@ -4935,7 +4810,7 @@ impl FromIntoMemory for DEBUG_LAST_EVENT_INFO_EXIT_THREAD {
         FromIntoMemory::into_bytes(self.ExitCode, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4
+        4u32 as usize
     }
 }
 pub struct DEBUG_LAST_EVENT_INFO_LOAD_MODULE {
@@ -4971,7 +4846,7 @@ impl FromIntoMemory for DEBUG_LAST_EVENT_INFO_LOAD_MODULE {
         FromIntoMemory::into_bytes(self.Base, &mut into[0..0 + 8]);
     }
     fn size() -> usize {
-        8
+        8u32 as usize
     }
 }
 pub struct DEBUG_LAST_EVENT_INFO_SERVICE_EXCEPTION {
@@ -5019,7 +4894,7 @@ impl FromIntoMemory for DEBUG_LAST_EVENT_INFO_SERVICE_EXCEPTION {
         FromIntoMemory::into_bytes(self.Address, &mut into[8..8 + 8]);
     }
     fn size() -> usize {
-        4 + 4 + 8
+        16u32 as usize
     }
 }
 pub struct DEBUG_LAST_EVENT_INFO_SYSTEM_ERROR {
@@ -5062,7 +4937,7 @@ impl FromIntoMemory for DEBUG_LAST_EVENT_INFO_SYSTEM_ERROR {
         FromIntoMemory::into_bytes(self.Level, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        4 + 4
+        8u32 as usize
     }
 }
 pub struct DEBUG_LAST_EVENT_INFO_UNLOAD_MODULE {
@@ -5098,7 +4973,7 @@ impl FromIntoMemory for DEBUG_LAST_EVENT_INFO_UNLOAD_MODULE {
         FromIntoMemory::into_bytes(self.Base, &mut into[0..0 + 8]);
     }
     fn size() -> usize {
-        8
+        8u32 as usize
     }
 }
 pub const DEBUG_LEVEL_ASSEMBLY: u32 = 1u32;
@@ -5161,7 +5036,7 @@ impl FromIntoMemory for DEBUG_MODULE_AND_ID {
         FromIntoMemory::into_bytes(self.Id, &mut into[8..8 + 8]);
     }
     fn size() -> usize {
-        8 + 8
+        16u32 as usize
     }
 }
 pub const DEBUG_MODULE_EXE_MODULE: u32 = 4u32;
@@ -5268,7 +5143,7 @@ impl FromIntoMemory for DEBUG_MODULE_PARAMETERS {
         FromIntoMemory::into_bytes(self.Reserved, &mut into[48..48 + 16]);
     }
     fn size() -> usize {
-        8 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 16
+        64u32 as usize
     }
 }
 pub const DEBUG_MODULE_SECONDARY: u32 = 16u32;
@@ -5320,7 +5195,7 @@ impl FromIntoMemory for DEBUG_OFFSET_REGION {
         FromIntoMemory::into_bytes(self.Size, &mut into[8..8 + 8]);
     }
     fn size() -> usize {
-        8 + 8
+        16u32 as usize
     }
 }
 pub const DEBUG_OFFSINFO_VIRTUAL_SOURCE: u32 = 1u32;
@@ -5469,7 +5344,7 @@ impl FromIntoMemory for DEBUG_PROCESSOR_IDENTIFICATION_ALPHA {
         FromIntoMemory::into_bytes(self.Revision, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        4 + 4
+        8u32 as usize
     }
 }
 pub struct DEBUG_PROCESSOR_IDENTIFICATION_AMD64 {
@@ -5528,7 +5403,7 @@ impl FromIntoMemory for DEBUG_PROCESSOR_IDENTIFICATION_AMD64 {
         FromIntoMemory::into_bytes(self.VendorString, &mut into[12..12 + 16]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 16
+        28u32 as usize
     }
 }
 pub struct DEBUG_PROCESSOR_IDENTIFICATION_ARM {
@@ -5581,7 +5456,7 @@ impl FromIntoMemory for DEBUG_PROCESSOR_IDENTIFICATION_ARM {
         FromIntoMemory::into_bytes(self.VendorString, &mut into[8..8 + 16]);
     }
     fn size() -> usize {
-        4 + 4 + 16
+        24u32 as usize
     }
 }
 pub struct DEBUG_PROCESSOR_IDENTIFICATION_ARM64 {
@@ -5634,7 +5509,7 @@ impl FromIntoMemory for DEBUG_PROCESSOR_IDENTIFICATION_ARM64 {
         FromIntoMemory::into_bytes(self.VendorString, &mut into[8..8 + 16]);
     }
     fn size() -> usize {
-        4 + 4 + 16
+        24u32 as usize
     }
 }
 pub struct DEBUG_PROCESSOR_IDENTIFICATION_IA64 {
@@ -5699,7 +5574,7 @@ impl FromIntoMemory for DEBUG_PROCESSOR_IDENTIFICATION_IA64 {
         FromIntoMemory::into_bytes(self.VendorString, &mut into[16..16 + 16]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 16
+        32u32 as usize
     }
 }
 pub struct DEBUG_PROCESSOR_IDENTIFICATION_X86 {
@@ -5758,7 +5633,7 @@ impl FromIntoMemory for DEBUG_PROCESSOR_IDENTIFICATION_X86 {
         FromIntoMemory::into_bytes(self.VendorString, &mut into[12..12 + 16]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 16
+        28u32 as usize
     }
 }
 pub const DEBUG_PROCESS_DETACH_ON_EXIT: u32 = 1u32;
@@ -5837,7 +5712,7 @@ impl FromIntoMemory for DEBUG_READ_USER_MINIDUMP_STREAM {
         FromIntoMemory::into_bytes(self.BufferUsed, &mut into[24..24 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 8 + 4 + 4 + 4
+        32u32 as usize
     }
 }
 pub const DEBUG_REGISTERS_ALL: u32 = 7u32;
@@ -5916,7 +5791,7 @@ impl FromIntoMemory for DEBUG_REGISTER_DESCRIPTION {
         FromIntoMemory::into_bytes(self.Reserved0, &mut into[28..28 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 8 + 4 + 4
+        32u32 as usize
     }
 }
 pub const DEBUG_REGISTER_SUB_REGISTER: u32 = 1u32;
@@ -6036,7 +5911,7 @@ impl FromIntoMemory for DEBUG_SPECIFIC_FILTER_PARAMETERS {
         FromIntoMemory::into_bytes(self.ArgumentSize, &mut into[16..16 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4
+        20u32 as usize
     }
 }
 pub const DEBUG_SRCFILE_SYMBOL_CHECKSUMINFO: u32 = 2u32;
@@ -6164,7 +6039,7 @@ impl FromIntoMemory for DEBUG_STACK_FRAME {
         FromIntoMemory::into_bytes(self.FrameNumber, &mut into[124..124 + 4]);
     }
     fn size() -> usize {
-        8 + 8 + 8 + 8 + 8 + 32 + 48 + 4 + 4
+        128u32 as usize
     }
 }
 pub const DEBUG_STACK_FRAME_ADDRESSES: u32 = 8u32;
@@ -6267,7 +6142,7 @@ impl FromIntoMemory for DEBUG_STACK_FRAME_EX {
         FromIntoMemory::into_bytes(self.Reserved1, &mut into[132..132 + 4]);
     }
     fn size() -> usize {
-        8 + 8 + 8 + 8 + 8 + 32 + 48 + 4 + 4 + 4 + 4
+        136u32 as usize
     }
 }
 pub const DEBUG_STACK_FRAME_MEMORY_USAGE: u32 = 512u32;
@@ -6401,7 +6276,7 @@ impl FromIntoMemory for DEBUG_SYMBOL_ENTRY {
         FromIntoMemory::into_bytes(self.Reserved, &mut into[60..60 + 4]);
     }
     fn size() -> usize {
-        8 + 8 + 8 + 8 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4
+        64u32 as usize
     }
 }
 pub const DEBUG_SYMBOL_EXPANDED: u32 = 16u32;
@@ -6475,7 +6350,7 @@ impl FromIntoMemory for DEBUG_SYMBOL_PARAMETERS {
         FromIntoMemory::into_bytes(self.Reserved, &mut into[24..24 + 8]);
     }
     fn size() -> usize {
-        8 + 4 + 4 + 4 + 4 + 8
+        32u32 as usize
     }
 }
 pub const DEBUG_SYMBOL_READ_ONLY: u32 = 32u32;
@@ -6580,7 +6455,7 @@ impl FromIntoMemory for DEBUG_SYMBOL_SOURCE_ENTRY {
         FromIntoMemory::into_bytes(self.Reserved, &mut into[60..60 + 4]);
     }
     fn size() -> usize {
-        8 + 8 + 8 + 8 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4
+        64u32 as usize
     }
 }
 pub const DEBUG_SYMENT_IS_CODE: u32 = 1u32;
@@ -6709,7 +6584,7 @@ impl FromIntoMemory for DEBUG_THREAD_BASIC_INFORMATION {
         FromIntoMemory::into_bytes(self.Affinity, &mut into[56..56 + 8]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 8 + 8 + 8 + 8 + 8 + 8
+        64u32 as usize
     }
 }
 pub struct DEBUG_TYPED_DATA {
@@ -6807,7 +6682,7 @@ impl FromIntoMemory for DEBUG_TYPED_DATA {
         FromIntoMemory::into_bytes(self.Internal, &mut into[56..56 + 72]);
     }
     fn size() -> usize {
-        8 + 8 + 8 + 8 + 4 + 4 + 4 + 4 + 4 + 4 + 72
+        128u32 as usize
     }
 }
 pub const DEBUG_TYPED_DATA_IS_IN_MEMORY: u32 = 1u32;
@@ -6865,7 +6740,7 @@ impl FromIntoMemory for DEBUG_VALUE {
         FromIntoMemory::into_bytes(self.Type, &mut into[228..228 + 4]);
     }
     fn size() -> usize {
-        224 + 4 + 4
+        232u32 as usize
     }
 }
 pub struct DEBUG_VALUE_0 {
@@ -6969,7 +6844,7 @@ impl FromIntoMemory for DEBUG_VALUE_0_0 {
         FromIntoMemory::into_bytes(self.Nat, &mut into[8..8 + 4]);
     }
     fn size() -> usize {
-        8 + 4
+        16u32 as usize
     }
 }
 pub struct DEBUG_VALUE_0_1 {
@@ -7012,7 +6887,7 @@ impl FromIntoMemory for DEBUG_VALUE_0_1 {
         FromIntoMemory::into_bytes(self.HighPart, &mut into[8..8 + 8]);
     }
     fn size() -> usize {
-        8 + 8
+        16u32 as usize
     }
 }
 pub struct DEBUG_VALUE_0_2 {
@@ -7055,7 +6930,7 @@ impl FromIntoMemory for DEBUG_VALUE_0_2 {
         FromIntoMemory::into_bytes(self.HighPart, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        4 + 4
+        8u32 as usize
     }
 }
 pub const DEBUG_VALUE_FLOAT128: u32 = 9u32;
@@ -7205,7 +7080,7 @@ impl FromIntoMemory for DISPATCHER_CONTEXT {
         FromIntoMemory::into_bytes(self.NonVolatileRegisters, &mut into[44..44 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 1 + 4
+        48u32 as usize
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
@@ -7323,7 +7198,7 @@ impl FromIntoMemory for DISPATCHER_CONTEXT {
         FromIntoMemory::into_bytes(self.Fill0, &mut into[60..60 + 4]);
     }
     fn size() -> usize {
-        8 + 8 + 4 + 8 + 8 + 4 + 4 + 4 + 4 + 4 + 4
+        64u32 as usize
     }
 }
 pub const DMP_CONTEXT_RECORD_SIZE_32: u32 = 1200u32;
@@ -7434,7 +7309,7 @@ impl FromIntoMemory for DUMP_FILE_ATTRIBUTES_0 {
         FromIntoMemory::into_bytes(self._bitfield, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4
+        4u32 as usize
     }
 }
 pub struct DUMP_HEADER32 {
@@ -7658,43 +7533,7 @@ impl FromIntoMemory for DUMP_HEADER32 {
         FromIntoMemory::into_bytes(self._reserved3, &mut into[4064..4064 + 56]);
     }
     fn size() -> usize {
-        4 + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 32
-            + 1
-            + 1
-            + 2
-            + 4
-            + 716
-            + 1200
-            + 80
-            + 128
-            + 8
-            + 4
-            + 1760
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 8
-            + 16
-            + 8
-            + 8
-            + 56
+        4120u32 as usize
     }
 }
 pub struct DUMP_HEADER32_0 {
@@ -7936,41 +7775,7 @@ impl FromIntoMemory for DUMP_HEADER64 {
         FromIntoMemory::into_bytes(self._reserved0, &mut into[4220..4220 + 4008]);
     }
     fn size() -> usize {
-        4 + 4
-            + 4
-            + 4
-            + 8
-            + 8
-            + 8
-            + 8
-            + 4
-            + 4
-            + 4
-            + 8
-            + 8
-            + 8
-            + 8
-            + 32
-            + 8
-            + 736
-            + 3000
-            + 152
-            + 4
-            + 8
-            + 8
-            + 128
-            + 8
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 1
-            + 1
-            + 2
-            + 8
-            + 4
-            + 4008
+        8232u32 as usize
     }
 }
 pub struct DUMP_HEADER64_0 {
@@ -8091,7 +7896,7 @@ impl FromIntoMemory for EXCEPTION_DEBUG_INFO {
         FromIntoMemory::into_bytes(self.dwFirstChance, &mut into[80..80 + 4]);
     }
     fn size() -> usize {
-        80 + 4
+        84u32 as usize
     }
 }
 pub struct EXCEPTION_POINTERS {
@@ -8135,7 +7940,7 @@ impl FromIntoMemory for EXCEPTION_POINTERS {
         FromIntoMemory::into_bytes(self.ContextRecord, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        4 + 4
+        8u32 as usize
     }
 }
 pub struct EXCEPTION_RECORD {
@@ -8209,7 +8014,7 @@ impl FromIntoMemory for EXCEPTION_RECORD {
         FromIntoMemory::into_bytes(self.ExceptionInformation, &mut into[20..20 + 60]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 60
+        80u32 as usize
     }
 }
 pub struct EXCEPTION_RECORD32 {
@@ -8280,7 +8085,7 @@ impl FromIntoMemory for EXCEPTION_RECORD32 {
         FromIntoMemory::into_bytes(self.ExceptionInformation, &mut into[20..20 + 60]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 60
+        80u32 as usize
     }
 }
 pub struct EXCEPTION_RECORD64 {
@@ -8357,7 +8162,7 @@ impl FromIntoMemory for EXCEPTION_RECORD64 {
         FromIntoMemory::into_bytes(self.ExceptionInformation, &mut into[32..32 + 120]);
     }
     fn size() -> usize {
-        4 + 4 + 8 + 8 + 4 + 4 + 120
+        152u32 as usize
     }
 }
 pub const EXIT_ON_CONTROLC: u32 = 8u32;
@@ -8396,7 +8201,7 @@ impl FromIntoMemory for EXIT_PROCESS_DEBUG_INFO {
         FromIntoMemory::into_bytes(self.dwExitCode, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4
+        4u32 as usize
     }
 }
 pub struct EXIT_THREAD_DEBUG_INFO {
@@ -8434,7 +8239,7 @@ impl FromIntoMemory for EXIT_THREAD_DEBUG_INFO {
         FromIntoMemory::into_bytes(self.dwExitCode, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4
+        4u32 as usize
     }
 }
 pub struct EXTSTACKTRACE {
@@ -8490,7 +8295,7 @@ impl FromIntoMemory for EXTSTACKTRACE {
         FromIntoMemory::into_bytes(self.Args, &mut into[12..12 + 16]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 16
+        28u32 as usize
     }
 }
 pub struct EXTSTACKTRACE32 {
@@ -8546,7 +8351,7 @@ impl FromIntoMemory for EXTSTACKTRACE32 {
         FromIntoMemory::into_bytes(self.Args, &mut into[12..12 + 16]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 16
+        28u32 as usize
     }
 }
 pub struct EXTSTACKTRACE64 {
@@ -8602,7 +8407,7 @@ impl FromIntoMemory for EXTSTACKTRACE64 {
         FromIntoMemory::into_bytes(self.Args, &mut into[24..24 + 32]);
     }
     fn size() -> usize {
-        8 + 8 + 8 + 32
+        56u32 as usize
     }
 }
 pub struct EXT_API_VERSION {
@@ -8658,7 +8463,7 @@ impl FromIntoMemory for EXT_API_VERSION {
         FromIntoMemory::into_bytes(self.Reserved, &mut into[6..6 + 2]);
     }
     fn size() -> usize {
-        2 + 2 + 2 + 2
+        8u32 as usize
     }
 }
 pub const EXT_API_VERSION_NUMBER: u32 = 5u32;
@@ -8769,7 +8574,7 @@ impl FromIntoMemory for EXT_FIND_FILE {
         FromIntoMemory::into_bytes(self.FoundFileNameChars, &mut into[56..56 + 4]);
     }
     fn size() -> usize {
-        4 + 8 + 4 + 4 + 4 + 4 + 4 + 4 + 8 + 4 + 4 + 4
+        64u32 as usize
     }
 }
 pub const EXT_FIND_FILE_ALLOW_GIVEN_PATH: u32 = 1u32;
@@ -8820,7 +8625,7 @@ impl FromIntoMemory for EXT_MATCH_PATTERN_A {
         FromIntoMemory::into_bytes(self.CaseSensitive, &mut into[8..8 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4
+        12u32 as usize
     }
 }
 pub const EXT_OUTPUT_VER: u32 = 1u32;
@@ -9009,7 +8814,7 @@ impl FromIntoMemory for EXT_TYPED_DATA {
         FromIntoMemory::into_bytes(self.Reserved, &mut into[328..328 + 64]);
     }
     fn size() -> usize {
-        4 + 4 + 128 + 128 + 4 + 4 + 4 + 8 + 8 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 64
+        392u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -9348,7 +9153,7 @@ impl FromIntoMemory for FIELD_INFO {
         FromIntoMemory::into_bytes(self._bitfield, &mut into[48..48 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 8 + 8 + 4 + 4 + 4 + 4 + 4
+        56u32 as usize
     }
 }
 pub struct FIELD_INFO_0 {
@@ -9418,7 +9223,7 @@ impl FromIntoMemory for FIELD_INFO_1 {
         FromIntoMemory::into_bytes(self.Size, &mut into[2..2 + 2]);
     }
     fn size() -> usize {
-        2 + 2
+        4u32 as usize
     }
 }
 pub const FLAG_ENGINE_PRESENT: u32 = 4u32;
@@ -9548,7 +9353,7 @@ impl FromIntoMemory for FPO_DATA {
         FromIntoMemory::into_bytes(self._bitfield, &mut into[14..14 + 2]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 2 + 2
+        16u32 as usize
     }
 }
 pub const GETATTRFLAG_HUMANTEXT: u32 = 32768u32;
@@ -9603,7 +9408,7 @@ impl FromIntoMemory for GET_CONTEXT_EX {
         FromIntoMemory::into_bytes(self.pContext, &mut into[8..8 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4
+        12u32 as usize
     }
 }
 pub struct GET_CURRENT_PROCESS_ADDRESS {
@@ -9653,7 +9458,7 @@ impl FromIntoMemory for GET_CURRENT_PROCESS_ADDRESS {
         FromIntoMemory::into_bytes(self.Address, &mut into[16..16 + 8]);
     }
     fn size() -> usize {
-        4 + 8 + 8
+        24u32 as usize
     }
 }
 pub struct GET_CURRENT_THREAD_ADDRESS {
@@ -9696,7 +9501,7 @@ impl FromIntoMemory for GET_CURRENT_THREAD_ADDRESS {
         FromIntoMemory::into_bytes(self.Address, &mut into[8..8 + 8]);
     }
     fn size() -> usize {
-        4 + 8
+        16u32 as usize
     }
 }
 pub struct GET_EXPRESSION_EX {
@@ -9746,7 +9551,7 @@ impl FromIntoMemory for GET_EXPRESSION_EX {
         FromIntoMemory::into_bytes(self.Value, &mut into[8..8 + 8]);
     }
     fn size() -> usize {
-        4 + 4 + 8
+        16u32 as usize
     }
 }
 pub struct GET_INPUT_LINE {
@@ -9802,7 +9607,7 @@ impl FromIntoMemory for GET_INPUT_LINE {
         FromIntoMemory::into_bytes(self.InputSize, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4
+        16u32 as usize
     }
 }
 pub struct GET_PEB_ADDRESS {
@@ -9845,7 +9650,7 @@ impl FromIntoMemory for GET_PEB_ADDRESS {
         FromIntoMemory::into_bytes(self.Address, &mut into[8..8 + 8]);
     }
     fn size() -> usize {
-        8 + 8
+        16u32 as usize
     }
 }
 pub struct GET_SET_SYMPATH {
@@ -9893,7 +9698,7 @@ impl FromIntoMemory for GET_SET_SYMPATH {
         FromIntoMemory::into_bytes(self.Length, &mut into[8..8 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4
+        12u32 as usize
     }
 }
 pub struct GET_TEB_ADDRESS {
@@ -9929,7 +9734,7 @@ impl FromIntoMemory for GET_TEB_ADDRESS {
         FromIntoMemory::into_bytes(self.Address, &mut into[0..0 + 8]);
     }
     fn size() -> usize {
-        8
+        8u32 as usize
     }
 }
 pub const IG_DISASSEMBLE_BUFFER: u32 = 44u32;
@@ -10037,7 +9842,7 @@ impl FromIntoMemory for IMAGEHLP_CBA_EVENT {
         FromIntoMemory::into_bytes(self.object, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4
+        16u32 as usize
     }
 }
 pub struct IMAGEHLP_CBA_EVENTW {
@@ -10095,7 +9900,7 @@ impl FromIntoMemory for IMAGEHLP_CBA_EVENTW {
         FromIntoMemory::into_bytes(self.object, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4
+        16u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -10186,7 +9991,7 @@ impl FromIntoMemory for IMAGEHLP_CBA_READ_MEMORY {
         FromIntoMemory::into_bytes(self.bytesread, &mut into[16..16 + 4]);
     }
     fn size() -> usize {
-        8 + 4 + 4 + 4
+        24u32 as usize
     }
 }
 pub struct IMAGEHLP_DEFERRED_SYMBOL_LOAD {
@@ -10267,7 +10072,7 @@ impl FromIntoMemory for IMAGEHLP_DEFERRED_SYMBOL_LOAD {
         FromIntoMemory::into_bytes(self.hFile, &mut into[280..280 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 260 + 1 + 4
+        284u32 as usize
     }
 }
 pub struct IMAGEHLP_DEFERRED_SYMBOL_LOAD64 {
@@ -10354,7 +10159,7 @@ impl FromIntoMemory for IMAGEHLP_DEFERRED_SYMBOL_LOAD64 {
         FromIntoMemory::into_bytes(self.Flags, &mut into[292..292 + 4]);
     }
     fn size() -> usize {
-        4 + 8 + 4 + 4 + 260 + 1 + 4 + 4
+        296u32 as usize
     }
 }
 pub struct IMAGEHLP_DEFERRED_SYMBOL_LOADW64 {
@@ -10438,7 +10243,7 @@ impl FromIntoMemory for IMAGEHLP_DEFERRED_SYMBOL_LOADW64 {
         FromIntoMemory::into_bytes(self.Flags, &mut into[292..292 + 4]);
     }
     fn size() -> usize {
-        4 + 8 + 4 + 4 + 261 + 1 + 4 + 4
+        296u32 as usize
     }
 }
 pub struct IMAGEHLP_DUPLICATE_SYMBOL {
@@ -10494,7 +10299,7 @@ impl FromIntoMemory for IMAGEHLP_DUPLICATE_SYMBOL {
         FromIntoMemory::into_bytes(self.SelectedSymbol, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4
+        16u32 as usize
     }
 }
 pub struct IMAGEHLP_DUPLICATE_SYMBOL64 {
@@ -10550,7 +10355,7 @@ impl FromIntoMemory for IMAGEHLP_DUPLICATE_SYMBOL64 {
         FromIntoMemory::into_bytes(self.SelectedSymbol, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4
+        16u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -10766,7 +10571,7 @@ impl FromIntoMemory for IMAGEHLP_GET_TYPE_INFO_PARAMS {
         FromIntoMemory::into_bytes(self.ReqsValid, &mut into[84..84 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 8 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 8 + 8 + 4 + 4
+        88u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -10861,7 +10666,7 @@ impl FromIntoMemory for IMAGEHLP_LINE {
         FromIntoMemory::into_bytes(self.Address, &mut into[16..16 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4
+        20u32 as usize
     }
 }
 pub struct IMAGEHLP_LINE64 {
@@ -10923,7 +10728,7 @@ impl FromIntoMemory for IMAGEHLP_LINE64 {
         FromIntoMemory::into_bytes(self.Address, &mut into[16..16 + 8]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 8
+        24u32 as usize
     }
 }
 pub struct IMAGEHLP_LINEW {
@@ -10985,7 +10790,7 @@ impl FromIntoMemory for IMAGEHLP_LINEW {
         FromIntoMemory::into_bytes(self.Address, &mut into[16..16 + 8]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 8
+        24u32 as usize
     }
 }
 pub struct IMAGEHLP_LINEW64 {
@@ -11047,7 +10852,7 @@ impl FromIntoMemory for IMAGEHLP_LINEW64 {
         FromIntoMemory::into_bytes(self.Address, &mut into[16..16 + 8]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 8
+        24u32 as usize
     }
 }
 pub struct IMAGEHLP_MODULE {
@@ -11148,7 +10953,7 @@ impl FromIntoMemory for IMAGEHLP_MODULE {
         FromIntoMemory::into_bytes(self.LoadedImageName, &mut into[316..316 + 256]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 4 + 32 + 256 + 256
+        572u32 as usize
     }
 }
 pub struct IMAGEHLP_MODULE64 {
@@ -11358,30 +11163,7 @@ impl FromIntoMemory for IMAGEHLP_MODULE64 {
         FromIntoMemory::into_bytes(self.Reserved, &mut into[1676..1676 + 4]);
     }
     fn size() -> usize {
-        4 + 8
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 32
-            + 256
-            + 256
-            + 256
-            + 4
-            + 780
-            + 4
-            + 16
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
+        1680u32 as usize
     }
 }
 pub struct IMAGEHLP_MODULE64_EX {
@@ -11424,7 +11206,7 @@ impl FromIntoMemory for IMAGEHLP_MODULE64_EX {
         FromIntoMemory::into_bytes(self.RegionFlags, &mut into[1680..1680 + 4]);
     }
     fn size() -> usize {
-        1680 + 4
+        1688u32 as usize
     }
 }
 pub struct IMAGEHLP_MODULEW {
@@ -11516,7 +11298,7 @@ impl FromIntoMemory for IMAGEHLP_MODULEW {
         FromIntoMemory::into_bytes(self.LoadedImageName, &mut into[316..316 + 256]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 4 + 32 + 256 + 256
+        572u32 as usize
     }
 }
 pub struct IMAGEHLP_MODULEW64 {
@@ -11712,30 +11494,7 @@ impl FromIntoMemory for IMAGEHLP_MODULEW64 {
         FromIntoMemory::into_bytes(self.Reserved, &mut into[1676..1676 + 4]);
     }
     fn size() -> usize {
-        4 + 8
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 32
-            + 256
-            + 256
-            + 256
-            + 4
-            + 780
-            + 4
-            + 16
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
+        1680u32 as usize
     }
 }
 pub struct IMAGEHLP_MODULEW64_EX {
@@ -11778,7 +11537,7 @@ impl FromIntoMemory for IMAGEHLP_MODULEW64_EX {
         FromIntoMemory::into_bytes(self.RegionFlags, &mut into[1680..1680 + 4]);
     }
     fn size() -> usize {
-        1680 + 4
+        1688u32 as usize
     }
 }
 pub const IMAGEHLP_MODULE_REGION_ADDITIONAL: u32 = 4u32;
@@ -11918,7 +11677,7 @@ impl FromIntoMemory for IMAGEHLP_STACK_FRAME {
         FromIntoMemory::into_bytes(self.Reserved2, &mut into[124..124 + 4]);
     }
     fn size() -> usize {
-        8 + 8 + 8 + 8 + 8 + 8 + 32 + 40 + 4 + 4
+        128u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -12039,7 +11798,7 @@ impl FromIntoMemory for IMAGEHLP_SYMBOL {
         FromIntoMemory::into_bytes(self.Name, &mut into[20..20 + 1]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 1
+        24u32 as usize
     }
 }
 pub struct IMAGEHLP_SYMBOL64 {
@@ -12109,7 +11868,7 @@ impl FromIntoMemory for IMAGEHLP_SYMBOL64 {
         FromIntoMemory::into_bytes(self.Name, &mut into[28..28 + 1]);
     }
     fn size() -> usize {
-        4 + 8 + 4 + 4 + 4 + 1
+        32u32 as usize
     }
 }
 pub struct IMAGEHLP_SYMBOL64_PACKAGE {
@@ -12154,7 +11913,7 @@ impl FromIntoMemory for IMAGEHLP_SYMBOL64_PACKAGE {
         FromIntoMemory::into_bytes(self.name, &mut into[32..32 + 2001]);
     }
     fn size() -> usize {
-        32 + 2001
+        2040u32 as usize
     }
 }
 pub struct IMAGEHLP_SYMBOLW {
@@ -12222,7 +11981,7 @@ impl FromIntoMemory for IMAGEHLP_SYMBOLW {
         FromIntoMemory::into_bytes(self.Name, &mut into[20..20 + 1]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 1
+        24u32 as usize
     }
 }
 pub struct IMAGEHLP_SYMBOLW64 {
@@ -12290,7 +12049,7 @@ impl FromIntoMemory for IMAGEHLP_SYMBOLW64 {
         FromIntoMemory::into_bytes(self.Name, &mut into[28..28 + 1]);
     }
     fn size() -> usize {
-        4 + 8 + 4 + 4 + 4 + 1
+        32u32 as usize
     }
 }
 pub struct IMAGEHLP_SYMBOLW64_PACKAGE {
@@ -12333,7 +12092,7 @@ impl FromIntoMemory for IMAGEHLP_SYMBOLW64_PACKAGE {
         FromIntoMemory::into_bytes(self.name, &mut into[32..32 + 2001]);
     }
     fn size() -> usize {
-        32 + 2001
+        2040u32 as usize
     }
 }
 pub struct IMAGEHLP_SYMBOLW_PACKAGE {
@@ -12376,7 +12135,7 @@ impl FromIntoMemory for IMAGEHLP_SYMBOLW_PACKAGE {
         FromIntoMemory::into_bytes(self.name, &mut into[24..24 + 2001]);
     }
     fn size() -> usize {
-        24 + 2001
+        2028u32 as usize
     }
 }
 pub const IMAGEHLP_SYMBOL_FUNCTION: u32 = 2048u32;
@@ -12430,7 +12189,7 @@ impl FromIntoMemory for IMAGEHLP_SYMBOL_PACKAGE {
         FromIntoMemory::into_bytes(self.name, &mut into[24..24 + 2001]);
     }
     fn size() -> usize {
-        24 + 2001
+        2028u32 as usize
     }
 }
 pub struct IMAGEHLP_SYMBOL_SRC {
@@ -12482,7 +12241,7 @@ impl FromIntoMemory for IMAGEHLP_SYMBOL_SRC {
         FromIntoMemory::into_bytes(self.file, &mut into[8..8 + 260]);
     }
     fn size() -> usize {
-        4 + 4 + 260
+        268u32 as usize
     }
 }
 pub const IMAGEHLP_SYMBOL_THUNK: u32 = 8192u32;
@@ -12590,7 +12349,7 @@ impl FromIntoMemory for IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY {
         FromIntoMemory::into_bytes(self.Anonymous, &mut into[4..4 + 8]);
     }
     fn size() -> usize {
-        4 + 8
+        12u32 as usize
     }
 }
 pub struct IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY_0 {
@@ -12655,7 +12414,7 @@ impl FromIntoMemory for IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY_0_0 {
         FromIntoMemory::into_bytes(self._bitfield, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4
+        4u32 as usize
     }
 }
 pub struct IMAGE_COFF_SYMBOLS_HEADER {
@@ -12735,7 +12494,7 @@ impl FromIntoMemory for IMAGE_COFF_SYMBOLS_HEADER {
         FromIntoMemory::into_bytes(self.RvaToLastByteOfData, &mut into[28..28 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 4 + 4
+        32u32 as usize
     }
 }
 pub struct IMAGE_COR20_HEADER {
@@ -12826,7 +12585,7 @@ impl FromIntoMemory for IMAGE_COR20_HEADER {
         FromIntoMemory::into_bytes(self.ManagedNativeHeader, &mut into[68..68 + 8]);
     }
     fn size() -> usize {
-        4 + 2 + 2 + 8 + 4 + 8 + 8 + 8 + 8 + 8 + 8 + 8
+        76u32 as usize
     }
 }
 pub struct IMAGE_COR20_HEADER_0 {
@@ -12896,7 +12655,7 @@ impl FromIntoMemory for IMAGE_DATA_DIRECTORY {
         FromIntoMemory::into_bytes(self.Size, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        4 + 4
+        8u32 as usize
     }
 }
 pub struct IMAGE_DEBUG_DIRECTORY {
@@ -12976,7 +12735,7 @@ impl FromIntoMemory for IMAGE_DEBUG_DIRECTORY {
         FromIntoMemory::into_bytes(self.PointerToRawData, &mut into[24..24 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 2 + 2 + 4 + 4 + 4 + 4
+        28u32 as usize
     }
 }
 pub struct IMAGE_DEBUG_INFORMATION {
@@ -13255,36 +13014,7 @@ impl FromIntoMemory for IMAGE_DEBUG_INFORMATION {
         FromIntoMemory::into_bytes(self.Reserved, &mut into[120..120 + 8]);
     }
     fn size() -> usize {
-        8 + 4
-            + 4
-            + 2
-            + 2
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 8
+        128u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -13708,7 +13438,7 @@ impl FromIntoMemory for IMAGE_FILE_HEADER {
         FromIntoMemory::into_bytes(self.Characteristics, &mut into[18..18 + 2]);
     }
     fn size() -> usize {
-        2 + 2 + 4 + 4 + 4 + 2 + 2
+        20u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -13819,7 +13549,7 @@ impl FromIntoMemory for IMAGE_FUNCTION_ENTRY {
         FromIntoMemory::into_bytes(self.EndOfPrologue, &mut into[8..8 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4
+        12u32 as usize
     }
 }
 pub struct IMAGE_FUNCTION_ENTRY64 {
@@ -13861,7 +13591,7 @@ impl FromIntoMemory for IMAGE_FUNCTION_ENTRY64 {
         FromIntoMemory::into_bytes(self.Anonymous, &mut into[16..16 + 16]);
     }
     fn size() -> usize {
-        8 + 8 + 16
+        32u32 as usize
     }
 }
 pub struct IMAGE_FUNCTION_ENTRY64_0 {
@@ -13945,7 +13675,7 @@ impl FromIntoMemory for IMAGE_LOAD_CONFIG_CODE_INTEGRITY {
         FromIntoMemory::into_bytes(self.Reserved, &mut into[8..8 + 4]);
     }
     fn size() -> usize {
-        2 + 2 + 4 + 4
+        12u32 as usize
     }
 }
 pub struct IMAGE_LOAD_CONFIG_DIRECTORY32 {
@@ -14345,53 +14075,7 @@ impl FromIntoMemory for IMAGE_LOAD_CONFIG_DIRECTORY32 {
         );
     }
     fn size() -> usize {
-        4 + 4
-            + 2
-            + 2
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 2
-            + 2
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 12
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 2
-            + 2
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
+        188u32 as usize
     }
 }
 pub struct IMAGE_LOAD_CONFIG_DIRECTORY64 {
@@ -14690,53 +14374,7 @@ impl FromIntoMemory for IMAGE_LOAD_CONFIG_DIRECTORY64 {
         );
     }
     fn size() -> usize {
-        4 + 4
-            + 2
-            + 2
-            + 4
-            + 4
-            + 4
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 4
-            + 2
-            + 2
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 4
-            + 12
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 4
-            + 2
-            + 2
-            + 8
-            + 4
-            + 4
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
+        312u32 as usize
     }
 }
 pub struct IMAGE_NT_HEADERS32 {
@@ -14787,7 +14425,7 @@ impl FromIntoMemory for IMAGE_NT_HEADERS32 {
         FromIntoMemory::into_bytes(self.OptionalHeader, &mut into[24..24 + 224]);
     }
     fn size() -> usize {
-        4 + 20 + 224
+        248u32 as usize
     }
 }
 pub struct IMAGE_NT_HEADERS64 {
@@ -14829,7 +14467,7 @@ impl FromIntoMemory for IMAGE_NT_HEADERS64 {
         FromIntoMemory::into_bytes(self.OptionalHeader, &mut into[24..24 + 240]);
     }
     fn size() -> usize {
-        4 + 20 + 240
+        264u32 as usize
     }
 }
 pub struct IMAGE_OPTIONAL_HEADER32 {
@@ -15055,36 +14693,7 @@ impl FromIntoMemory for IMAGE_OPTIONAL_HEADER32 {
         FromIntoMemory::into_bytes(self.DataDirectory, &mut into[96..96 + 128]);
     }
     fn size() -> usize {
-        2 + 1
-            + 1
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 2
-            + 2
-            + 2
-            + 2
-            + 2
-            + 2
-            + 4
-            + 4
-            + 4
-            + 4
-            + 2
-            + 2
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 128
+        224u32 as usize
     }
 }
 pub struct IMAGE_OPTIONAL_HEADER64 {
@@ -15262,35 +14871,7 @@ impl FromIntoMemory for IMAGE_OPTIONAL_HEADER64 {
         FromIntoMemory::into_bytes(self.DataDirectory, &mut into[112..112 + 128]);
     }
     fn size() -> usize {
-        2 + 1
-            + 1
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 8
-            + 4
-            + 4
-            + 2
-            + 2
-            + 2
-            + 2
-            + 2
-            + 2
-            + 4
-            + 4
-            + 4
-            + 4
-            + 2
-            + 2
-            + 8
-            + 8
-            + 8
-            + 8
-            + 4
-            + 4
-            + 128
+        240u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -15373,7 +14954,7 @@ impl FromIntoMemory for IMAGE_ROM_HEADERS {
         FromIntoMemory::into_bytes(self.OptionalHeader, &mut into[20..20 + 56]);
     }
     fn size() -> usize {
-        20 + 56
+        76u32 as usize
     }
 }
 pub struct IMAGE_ROM_OPTIONAL_HEADER {
@@ -15483,7 +15064,7 @@ impl FromIntoMemory for IMAGE_ROM_OPTIONAL_HEADER {
         FromIntoMemory::into_bytes(self.GpValue, &mut into[52..52 + 4]);
     }
     fn size() -> usize {
-        2 + 1 + 1 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 16 + 4
+        56u32 as usize
     }
 }
 pub struct IMAGE_RUNTIME_FUNCTION_ENTRY {
@@ -15525,7 +15106,7 @@ impl FromIntoMemory for IMAGE_RUNTIME_FUNCTION_ENTRY {
         FromIntoMemory::into_bytes(self.Anonymous, &mut into[8..8 + 8]);
     }
     fn size() -> usize {
-        4 + 4 + 8
+        16u32 as usize
     }
 }
 pub struct IMAGE_RUNTIME_FUNCTION_ENTRY_0 {
@@ -15763,7 +15344,7 @@ impl FromIntoMemory for IMAGE_SECTION_HEADER {
         FromIntoMemory::into_bytes(self.Characteristics, &mut into[40..40 + 4]);
     }
     fn size() -> usize {
-        8 + 8 + 4 + 4 + 4 + 4 + 4 + 2 + 2 + 4
+        44u32 as usize
     }
 }
 pub struct IMAGE_SECTION_HEADER_0 {
@@ -15912,7 +15493,7 @@ impl FromIntoMemory for INLINE_FRAME_CONTEXT_0 {
         FromIntoMemory::into_bytes(self.FrameSignature, &mut into[2..2 + 2]);
     }
     fn size() -> usize {
-        1 + 1 + 2
+        4u32 as usize
     }
 }
 pub const INLINE_FRAME_CONTEXT_IGNORE: u32 = 4294967295u32;
@@ -15968,7 +15549,7 @@ impl FromIntoMemory for IOSPACE {
         FromIntoMemory::into_bytes(self.Data, &mut into[8..8 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4
+        12u32 as usize
     }
 }
 pub struct IOSPACE32 {
@@ -16016,7 +15597,7 @@ impl FromIntoMemory for IOSPACE32 {
         FromIntoMemory::into_bytes(self.Data, &mut into[8..8 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4
+        12u32 as usize
     }
 }
 pub struct IOSPACE64 {
@@ -16064,7 +15645,7 @@ impl FromIntoMemory for IOSPACE64 {
         FromIntoMemory::into_bytes(self.Data, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        8 + 4 + 4
+        16u32 as usize
     }
 }
 pub struct IOSPACE_EX {
@@ -16132,7 +15713,7 @@ impl FromIntoMemory for IOSPACE_EX {
         FromIntoMemory::into_bytes(self.AddressSpace, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4
+        24u32 as usize
     }
 }
 pub struct IOSPACE_EX32 {
@@ -16200,7 +15781,7 @@ impl FromIntoMemory for IOSPACE_EX32 {
         FromIntoMemory::into_bytes(self.AddressSpace, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4
+        24u32 as usize
     }
 }
 pub struct IOSPACE_EX64 {
@@ -16268,7 +15849,7 @@ impl FromIntoMemory for IOSPACE_EX64 {
         FromIntoMemory::into_bytes(self.AddressSpace, &mut into[24..24 + 4]);
     }
     fn size() -> usize {
-        8 + 4 + 4 + 4 + 4 + 4
+        32u32 as usize
     }
 }
 pub const IPMI_IOCTL_INDEX: u32 = 1024u32;
@@ -16326,7 +15907,7 @@ impl FromIntoMemory for IPMI_OS_SEL_RECORD {
         FromIntoMemory::into_bytes(self.Data, &mut into[20..20 + 1]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 1
+        24u32 as usize
     }
 }
 pub const IPMI_OS_SEL_RECORD_MASK: u32 = 65535u32;
@@ -16558,7 +16139,7 @@ impl FromIntoMemory for JsDebugPropertyInfo {
         FromIntoMemory::into_bytes(self.attr, &mut into[16..16 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4
+        20u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -17032,71 +16613,7 @@ impl FromIntoMemory for KDDEBUGGER_DATA32 {
         FromIntoMemory::into_bytes(self.MmLoadedUserImageList, &mut into[264..264 + 4]);
     }
     fn size() -> usize {
-        16 + 4
-            + 4
-            + 4
-            + 2
-            + 2
-            + 2
-            + 2
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
+        268u32 as usize
     }
 }
 pub struct KDDEBUGGER_DATA64 {
@@ -18136,163 +17653,7 @@ impl FromIntoMemory for KDDEBUGGER_DATA64 {
         );
     }
     fn size() -> usize {
-        24 + 8
-            + 8
-            + 8
-            + 2
-            + 2
-            + 2
-            + 2
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 2
-            + 2
-            + 2
-            + 2
-            + 2
-            + 2
-            + 2
-            + 2
-            + 2
-            + 2
-            + 2
-            + 2
-            + 2
-            + 2
-            + 2
-            + 2
-            + 2
-            + 2
-            + 2
-            + 2
-            + 2
-            + 1
-            + 1
-            + 4
-            + 8
-            + 8
-            + 8
-            + 2
-            + 2
-            + 2
-            + 2
-            + 2
-            + 2
-            + 2
-            + 2
-            + 2
-            + 2
-            + 2
-            + 2
-            + 2
-            + 2
-            + 2
-            + 2
-            + 2
-            + 2
-            + 2
-            + 2
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 8
-            + 2
-            + 2
-            + 2
-            + 4
-            + 4
-            + 4
-            + 4
-            + 2
-            + 2
-            + 2
-            + 2
-            + 2
-            + 2
-            + 2
-            + 2
-            + 8
-            + 8
-            + 4
-            + 4
-            + 4
-            + 2
+        896u32 as usize
     }
 }
 pub struct KDHELP {
@@ -18396,7 +17757,7 @@ impl FromIntoMemory for KDHELP {
         FromIntoMemory::into_bytes(self.Reserved, &mut into[44..44 + 20]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 20
+        64u32 as usize
     }
 }
 pub struct KDHELP64 {
@@ -18537,7 +17898,7 @@ impl FromIntoMemory for KDHELP64 {
         FromIntoMemory::into_bytes(self.Reserved0, &mut into[96..96 + 16]);
     }
     fn size() -> usize {
-        8 + 4 + 4 + 4 + 4 + 8 + 8 + 8 + 8 + 8 + 8 + 4 + 4 + 8 + 4 + 4 + 16
+        112u32 as usize
     }
 }
 pub const KD_SECONDARY_VERSION_AMD64_CONTEXT: u32 = 2u32;
@@ -18590,7 +17951,7 @@ impl FromIntoMemory for KNONVOLATILE_CONTEXT_POINTERS {
         FromIntoMemory::into_bytes(self.Anonymous2, &mut into[128..128 + 128]);
     }
     fn size() -> usize {
-        128 + 128
+        256u32 as usize
     }
 }
 #[doc = "*Required namespaces: *"]
@@ -18771,7 +18132,7 @@ impl FromIntoMemory for KNONVOLATILE_CONTEXT_POINTERS_0_0 {
         FromIntoMemory::into_bytes(self.Xmm15, &mut into[60..60 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4
+        64u32 as usize
     }
 }
 #[doc = "*Required namespaces: *"]
@@ -18952,7 +18313,7 @@ impl FromIntoMemory for KNONVOLATILE_CONTEXT_POINTERS_1_0 {
         FromIntoMemory::into_bytes(self.R15, &mut into[60..60 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4
+        64u32 as usize
     }
 }
 pub struct KNONVOLATILE_CONTEXT_POINTERS {
@@ -18981,7 +18342,7 @@ impl FromIntoMemory for KNONVOLATILE_CONTEXT_POINTERS {
         FromIntoMemory::into_bytes(self.Dummy, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4
+        4u32 as usize
     }
 }
 #[doc = "*Required namespaces: *"]
@@ -19147,7 +18508,7 @@ impl FromIntoMemory for KNONVOLATILE_CONTEXT_POINTERS_ARM64 {
         FromIntoMemory::into_bytes(self.D15, &mut into[76..76 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4
+        80u32 as usize
     }
 }
 pub struct LDT_ENTRY {
@@ -19188,7 +18549,7 @@ impl FromIntoMemory for LDT_ENTRY {
         FromIntoMemory::into_bytes(self.HighWord, &mut into[4..4 + 8]);
     }
     fn size() -> usize {
-        2 + 2 + 8
+        12u32 as usize
     }
 }
 pub struct LDT_ENTRY_0 {
@@ -19253,7 +18614,7 @@ impl FromIntoMemory for LDT_ENTRY_0_0 {
         FromIntoMemory::into_bytes(self._bitfield, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4
+        4u32 as usize
     }
 }
 pub struct LDT_ENTRY_0_1 {
@@ -19309,7 +18670,7 @@ impl FromIntoMemory for LDT_ENTRY_0_1 {
         FromIntoMemory::into_bytes(self.BaseHi, &mut into[3..3 + 1]);
     }
     fn size() -> usize {
-        1 + 1 + 1 + 1
+        4u32 as usize
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
@@ -19453,7 +18814,7 @@ impl FromIntoMemory for LOADED_IMAGE {
         FromIntoMemory::into_bytes(self.SizeOfImage, &mut into[44..44 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 1 + 1 + 1 + 1 + 8 + 4
+        48u32 as usize
     }
 }
 pub struct LOADED_IMAGE {
@@ -19583,7 +18944,7 @@ impl FromIntoMemory for LOADED_IMAGE {
         FromIntoMemory::into_bytes(self.SizeOfImage, &mut into[44..44 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 1 + 1 + 1 + 1 + 8 + 4
+        48u32 as usize
     }
 }
 pub struct LOAD_DLL_DEBUG_INFO {
@@ -19655,7 +19016,7 @@ impl FromIntoMemory for LOAD_DLL_DEBUG_INFO {
         FromIntoMemory::into_bytes(self.fUnicode, &mut into[20..20 + 2]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 2
+        24u32 as usize
     }
 }
 pub type LPCALL_BACK_USER_INTERRUPT_ROUTINE = ::core::option::Option<()>;
@@ -19733,7 +19094,7 @@ impl FromIntoMemory for Location {
         FromIntoMemory::into_bytes(self.Offset, &mut into[8..8 + 8]);
     }
     fn size() -> usize {
-        8 + 8
+        16u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -19809,7 +19170,7 @@ impl FromIntoMemory for M128A {
         FromIntoMemory::into_bytes(self.High, &mut into[8..8 + 8]);
     }
     fn size() -> usize {
-        8 + 8
+        16u32 as usize
     }
 }
 pub const MAX_SYM_NAME: u32 = 2000u32;
@@ -19848,7 +19209,7 @@ impl FromIntoMemory for MINIDUMP_CALLBACK_INFORMATION {
         FromIntoMemory::into_bytes(self.CallbackParam, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        4 + 4
+        8u32 as usize
     }
 }
 pub struct MINIDUMP_CALLBACK_INPUT {
@@ -19898,7 +19259,7 @@ impl FromIntoMemory for MINIDUMP_CALLBACK_INPUT {
         FromIntoMemory::into_bytes(self.Anonymous, &mut into[16..16 + 6712]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 6712
+        6728u32 as usize
     }
 }
 pub struct MINIDUMP_CALLBACK_INPUT_0 {
@@ -19978,7 +19339,7 @@ impl FromIntoMemory for MINIDUMP_CALLBACK_OUTPUT {
         FromIntoMemory::into_bytes(self.Anonymous, &mut into[0..0 + 176]);
     }
     fn size() -> usize {
-        176
+        176u32 as usize
     }
 }
 pub struct MINIDUMP_CALLBACK_OUTPUT_0 {
@@ -20057,7 +19418,7 @@ impl FromIntoMemory for MINIDUMP_CALLBACK_OUTPUT_0_0 {
         FromIntoMemory::into_bytes(self.MemorySize, &mut into[8..8 + 4]);
     }
     fn size() -> usize {
-        8 + 4
+        16u32 as usize
     }
 }
 pub struct MINIDUMP_CALLBACK_OUTPUT_0_1 {
@@ -20102,7 +19463,7 @@ impl FromIntoMemory for MINIDUMP_CALLBACK_OUTPUT_0_1 {
         FromIntoMemory::into_bytes(self.Cancel, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        4 + 4
+        8u32 as usize
     }
 }
 pub struct MINIDUMP_CALLBACK_OUTPUT_0_2 {
@@ -20139,7 +19500,7 @@ impl FromIntoMemory for MINIDUMP_CALLBACK_OUTPUT_0_2 {
         FromIntoMemory::into_bytes(self.Continue, &mut into[48..48 + 4]);
     }
     fn size() -> usize {
-        48 + 4
+        56u32 as usize
     }
 }
 pub struct MINIDUMP_CALLBACK_OUTPUT_0_3 {
@@ -20175,7 +19536,7 @@ impl FromIntoMemory for MINIDUMP_CALLBACK_OUTPUT_0_3 {
         FromIntoMemory::into_bytes(self.VmQueryResult, &mut into[8..8 + 48]);
     }
     fn size() -> usize {
-        4 + 48
+        56u32 as usize
     }
 }
 pub struct MINIDUMP_CALLBACK_OUTPUT_0_4 {
@@ -20219,7 +19580,7 @@ impl FromIntoMemory for MINIDUMP_CALLBACK_OUTPUT_0_4 {
         FromIntoMemory::into_bytes(self.VmReadBytesCompleted, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        4 + 4
+        8u32 as usize
     }
 }
 pub type MINIDUMP_CALLBACK_ROUTINE = ::core::option::Option<()>;
@@ -20316,7 +19677,7 @@ impl FromIntoMemory for MINIDUMP_DIRECTORY {
         FromIntoMemory::into_bytes(self.Location, &mut into[4..4 + 8]);
     }
     fn size() -> usize {
-        4 + 8
+        12u32 as usize
     }
 }
 pub struct MINIDUMP_EXCEPTION {
@@ -20377,7 +19738,7 @@ impl FromIntoMemory for MINIDUMP_EXCEPTION {
         FromIntoMemory::into_bytes(self.ExceptionInformation, &mut into[32..32 + 120]);
     }
     fn size() -> usize {
-        4 + 4 + 8 + 8 + 4 + 4 + 120
+        152u32 as usize
     }
 }
 pub struct MINIDUMP_EXCEPTION_INFORMATION {
@@ -20420,7 +19781,7 @@ impl FromIntoMemory for MINIDUMP_EXCEPTION_INFORMATION {
         FromIntoMemory::into_bytes(self.ClientPointers, &mut into[8..8 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4
+        12u32 as usize
     }
 }
 pub struct MINIDUMP_EXCEPTION_INFORMATION64 {
@@ -20469,7 +19830,7 @@ impl FromIntoMemory for MINIDUMP_EXCEPTION_INFORMATION64 {
         FromIntoMemory::into_bytes(self.ClientPointers, &mut into[24..24 + 4]);
     }
     fn size() -> usize {
-        4 + 8 + 8 + 4
+        32u32 as usize
     }
 }
 pub struct MINIDUMP_EXCEPTION_STREAM {
@@ -20517,7 +19878,7 @@ impl FromIntoMemory for MINIDUMP_EXCEPTION_STREAM {
         FromIntoMemory::into_bytes(self.ThreadContext, &mut into[160..160 + 8]);
     }
     fn size() -> usize {
-        4 + 4 + 152 + 8
+        168u32 as usize
     }
 }
 pub struct MINIDUMP_FUNCTION_TABLE_DESCRIPTOR {
@@ -20568,7 +19929,7 @@ impl FromIntoMemory for MINIDUMP_FUNCTION_TABLE_DESCRIPTOR {
         FromIntoMemory::into_bytes(self.SizeOfAlignPad, &mut into[28..28 + 4]);
     }
     fn size() -> usize {
-        8 + 8 + 8 + 4 + 4
+        32u32 as usize
     }
 }
 pub struct MINIDUMP_FUNCTION_TABLE_STREAM {
@@ -20636,7 +19997,7 @@ impl FromIntoMemory for MINIDUMP_FUNCTION_TABLE_STREAM {
         FromIntoMemory::into_bytes(self.SizeOfAlignPad, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4
+        24u32 as usize
     }
 }
 pub struct MINIDUMP_HANDLE_DATA_STREAM {
@@ -20692,7 +20053,7 @@ impl FromIntoMemory for MINIDUMP_HANDLE_DATA_STREAM {
         FromIntoMemory::into_bytes(self.Reserved, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4
+        16u32 as usize
     }
 }
 pub struct MINIDUMP_HANDLE_DESCRIPTOR {
@@ -20753,7 +20114,7 @@ impl FromIntoMemory for MINIDUMP_HANDLE_DESCRIPTOR {
         FromIntoMemory::into_bytes(self.PointerCount, &mut into[28..28 + 4]);
     }
     fn size() -> usize {
-        8 + 4 + 4 + 4 + 4 + 4 + 4
+        32u32 as usize
     }
 }
 pub struct MINIDUMP_HANDLE_DESCRIPTOR_2 {
@@ -20824,7 +20185,7 @@ impl FromIntoMemory for MINIDUMP_HANDLE_DESCRIPTOR_2 {
         FromIntoMemory::into_bytes(self.Reserved0, &mut into[36..36 + 4]);
     }
     fn size() -> usize {
-        8 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4
+        40u32 as usize
     }
 }
 pub struct MINIDUMP_HANDLE_OBJECT_INFORMATION {
@@ -20874,7 +20235,7 @@ impl FromIntoMemory for MINIDUMP_HANDLE_OBJECT_INFORMATION {
         FromIntoMemory::into_bytes(self.SizeOfInfo, &mut into[8..8 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4
+        12u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -20981,7 +20342,7 @@ impl FromIntoMemory for MINIDUMP_HANDLE_OPERATION_LIST {
         FromIntoMemory::into_bytes(self.Reserved, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4
+        16u32 as usize
     }
 }
 pub struct MINIDUMP_HEADER {
@@ -21042,7 +20403,7 @@ impl FromIntoMemory for MINIDUMP_HEADER {
         FromIntoMemory::into_bytes(self.Flags, &mut into[32..32 + 8]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 8 + 8
+        40u32 as usize
     }
 }
 pub struct MINIDUMP_HEADER_0 {
@@ -21100,7 +20461,7 @@ impl FromIntoMemory for MINIDUMP_INCLUDE_MODULE_CALLBACK {
         FromIntoMemory::into_bytes(self.BaseOfImage, &mut into[0..0 + 8]);
     }
     fn size() -> usize {
-        8
+        8u32 as usize
     }
 }
 pub struct MINIDUMP_INCLUDE_THREAD_CALLBACK {
@@ -21138,7 +20499,7 @@ impl FromIntoMemory for MINIDUMP_INCLUDE_THREAD_CALLBACK {
         FromIntoMemory::into_bytes(self.ThreadId, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4
+        4u32 as usize
     }
 }
 pub struct MINIDUMP_IO_CALLBACK {
@@ -21187,7 +20548,7 @@ impl FromIntoMemory for MINIDUMP_IO_CALLBACK {
         FromIntoMemory::into_bytes(self.BufferBytes, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        4 + 8 + 4 + 4
+        24u32 as usize
     }
 }
 pub struct MINIDUMP_LOCATION_DESCRIPTOR {
@@ -21230,7 +20591,7 @@ impl FromIntoMemory for MINIDUMP_LOCATION_DESCRIPTOR {
         FromIntoMemory::into_bytes(self.Rva, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        4 + 4
+        8u32 as usize
     }
 }
 pub struct MINIDUMP_LOCATION_DESCRIPTOR64 {
@@ -21265,7 +20626,7 @@ impl FromIntoMemory for MINIDUMP_LOCATION_DESCRIPTOR64 {
         FromIntoMemory::into_bytes(self.Rva, &mut into[8..8 + 8]);
     }
     fn size() -> usize {
-        8 + 8
+        16u32 as usize
     }
 }
 pub struct MINIDUMP_MEMORY64_LIST {
@@ -21307,7 +20668,7 @@ impl FromIntoMemory for MINIDUMP_MEMORY64_LIST {
         FromIntoMemory::into_bytes(self.MemoryRanges, &mut into[16..16 + 16]);
     }
     fn size() -> usize {
-        8 + 8 + 16
+        32u32 as usize
     }
 }
 pub struct MINIDUMP_MEMORY_DESCRIPTOR {
@@ -21343,7 +20704,7 @@ impl FromIntoMemory for MINIDUMP_MEMORY_DESCRIPTOR {
         FromIntoMemory::into_bytes(self.Memory, &mut into[8..8 + 8]);
     }
     fn size() -> usize {
-        8 + 8
+        16u32 as usize
     }
 }
 pub struct MINIDUMP_MEMORY_DESCRIPTOR64 {
@@ -21378,7 +20739,7 @@ impl FromIntoMemory for MINIDUMP_MEMORY_DESCRIPTOR64 {
         FromIntoMemory::into_bytes(self.DataSize, &mut into[8..8 + 8]);
     }
     fn size() -> usize {
-        8 + 8
+        16u32 as usize
     }
 }
 pub struct MINIDUMP_MEMORY_INFO {
@@ -21451,7 +20812,7 @@ impl FromIntoMemory for MINIDUMP_MEMORY_INFO {
         FromIntoMemory::into_bytes(self.__alignment2, &mut into[44..44 + 4]);
     }
     fn size() -> usize {
-        8 + 8 + 4 + 4 + 8 + 4 + 4 + 4 + 4
+        48u32 as usize
     }
 }
 pub struct MINIDUMP_MEMORY_INFO_LIST {
@@ -21492,7 +20853,7 @@ impl FromIntoMemory for MINIDUMP_MEMORY_INFO_LIST {
         FromIntoMemory::into_bytes(self.NumberOfEntries, &mut into[8..8 + 8]);
     }
     fn size() -> usize {
-        4 + 4 + 8
+        16u32 as usize
     }
 }
 pub struct MINIDUMP_MEMORY_LIST {
@@ -21529,7 +20890,7 @@ impl FromIntoMemory for MINIDUMP_MEMORY_LIST {
         FromIntoMemory::into_bytes(self.MemoryRanges, &mut into[8..8 + 16]);
     }
     fn size() -> usize {
-        4 + 16
+        24u32 as usize
     }
 }
 pub const MINIDUMP_MISC1_PROCESSOR_POWER_INFO: u32 = 4u32;
@@ -21604,7 +20965,7 @@ impl FromIntoMemory for MINIDUMP_MISC_INFO {
         FromIntoMemory::into_bytes(self.ProcessKernelTime, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4
+        24u32 as usize
     }
 }
 pub struct MINIDUMP_MISC_INFO_2 {
@@ -21702,7 +21063,7 @@ impl FromIntoMemory for MINIDUMP_MISC_INFO_2 {
         FromIntoMemory::into_bytes(self.ProcessorCurrentIdleState, &mut into[40..40 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4
+        44u32 as usize
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Time'*"]
@@ -21846,7 +21207,7 @@ impl FromIntoMemory for MINIDUMP_MISC_INFO_3 {
         FromIntoMemory::into_bytes(self.TimeZone, &mut into[60..60 + 108]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 108
+        168u32 as usize
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Time'*"]
@@ -22002,7 +21363,7 @@ impl FromIntoMemory for MINIDUMP_MISC_INFO_4 {
         FromIntoMemory::into_bytes(self.DbgBldStr, &mut into[428..428 + 40]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 108 + 260 + 40
+        468u32 as usize
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Time'*"]
@@ -22143,7 +21504,7 @@ impl FromIntoMemory for MINIDUMP_MISC_INFO_5 {
         FromIntoMemory::into_bytes(self.ProcessCookie, &mut into[1000..1000 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 108 + 260 + 40 + 528 + 4
+        1008u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -22282,7 +21643,7 @@ impl FromIntoMemory for MINIDUMP_MODULE {
         FromIntoMemory::into_bytes(self.Reserved1, &mut into[104..104 + 8]);
     }
     fn size() -> usize {
-        8 + 4 + 4 + 4 + 4 + 52 + 8 + 8 + 8 + 8
+        112u32 as usize
     }
 }
 pub struct MINIDUMP_MODULE_CALLBACK {
@@ -22360,7 +21721,7 @@ impl FromIntoMemory for MINIDUMP_MODULE_CALLBACK {
         FromIntoMemory::into_bytes(self.SizeOfMiscRecord, &mut into[92..92 + 4]);
     }
     fn size() -> usize {
-        4 + 8 + 4 + 4 + 4 + 52 + 4 + 4 + 4 + 4
+        96u32 as usize
     }
 }
 pub struct MINIDUMP_MODULE_LIST {
@@ -22395,7 +21756,7 @@ impl FromIntoMemory for MINIDUMP_MODULE_LIST {
         FromIntoMemory::into_bytes(self.Modules, &mut into[8..8 + 112]);
     }
     fn size() -> usize {
-        4 + 112
+        120u32 as usize
     }
 }
 pub const MINIDUMP_PROCESS_VM_COUNTERS: u32 = 1u32;
@@ -22477,7 +21838,7 @@ impl FromIntoMemory for MINIDUMP_PROCESS_VM_COUNTERS_1 {
         FromIntoMemory::into_bytes(self.PrivateUsage, &mut into[72..72 + 8]);
     }
     fn size() -> usize {
-        2 + 4 + 8 + 8 + 8 + 8 + 8 + 8 + 8 + 8 + 8
+        80u32 as usize
     }
 }
 pub struct MINIDUMP_PROCESS_VM_COUNTERS_2 {
@@ -22608,7 +21969,7 @@ impl FromIntoMemory for MINIDUMP_PROCESS_VM_COUNTERS_2 {
         FromIntoMemory::into_bytes(self.JobTotalCommitLimit, &mut into[144..144 + 8]);
     }
     fn size() -> usize {
-        2 + 2 + 4 + 8 + 8 + 8 + 8 + 8 + 8 + 8 + 8 + 8 + 8 + 8 + 8 + 8 + 8 + 8 + 8 + 8 + 8
+        152u32 as usize
     }
 }
 pub const MINIDUMP_PROCESS_VM_COUNTERS_EX: u32 = 4u32;
@@ -22654,7 +22015,7 @@ impl FromIntoMemory for MINIDUMP_READ_MEMORY_FAILURE_CALLBACK {
         FromIntoMemory::into_bytes(self.FailureStatus, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        8 + 4 + 4
+        16u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -22800,7 +22161,7 @@ impl FromIntoMemory for MINIDUMP_STRING {
         FromIntoMemory::into_bytes(self.Buffer, &mut into[4..4 + 1]);
     }
     fn size() -> usize {
-        4 + 1
+        8u32 as usize
     }
 }
 pub const MINIDUMP_SYSMEMINFO1_BASICPERF: u32 = 2u32;
@@ -22880,7 +22241,7 @@ impl FromIntoMemory for MINIDUMP_SYSTEM_BASIC_INFORMATION {
         FromIntoMemory::into_bytes(self.NumberOfProcessors, &mut into[48..48 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 8 + 8 + 8 + 4
+        56u32 as usize
     }
 }
 pub struct MINIDUMP_SYSTEM_BASIC_PERFORMANCE_INFORMATION {
@@ -22926,7 +22287,7 @@ impl FromIntoMemory for MINIDUMP_SYSTEM_BASIC_PERFORMANCE_INFORMATION {
         FromIntoMemory::into_bytes(self.PeakCommitment, &mut into[24..24 + 8]);
     }
     fn size() -> usize {
-        8 + 8 + 8 + 8
+        32u32 as usize
     }
 }
 pub struct MINIDUMP_SYSTEM_FILECACHE_INFORMATION {
@@ -23006,7 +22367,7 @@ impl FromIntoMemory for MINIDUMP_SYSTEM_FILECACHE_INFORMATION {
         FromIntoMemory::into_bytes(self.Flags, &mut into[60..60 + 4]);
     }
     fn size() -> usize {
-        8 + 8 + 4 + 8 + 8 + 8 + 8 + 4 + 4
+        64u32 as usize
     }
 }
 pub struct MINIDUMP_SYSTEM_INFO {
@@ -23089,7 +22450,7 @@ impl FromIntoMemory for MINIDUMP_SYSTEM_INFO {
         FromIntoMemory::into_bytes(self.Cpu, &mut into[40..40 + 40]);
     }
     fn size() -> usize {
-        2 + 2 + 2 + 4 + 4 + 4 + 4 + 4 + 4 + 8 + 40
+        80u32 as usize
     }
 }
 pub struct MINIDUMP_SYSTEM_INFO_0 {
@@ -23159,7 +22520,7 @@ impl FromIntoMemory for MINIDUMP_SYSTEM_INFO_0_0 {
         FromIntoMemory::into_bytes(self.ProductType, &mut into[1..1 + 1]);
     }
     fn size() -> usize {
-        1 + 1
+        2u32 as usize
     }
 }
 pub struct MINIDUMP_SYSTEM_INFO_1 {
@@ -23229,7 +22590,7 @@ impl FromIntoMemory for MINIDUMP_SYSTEM_INFO_1_0 {
         FromIntoMemory::into_bytes(self.Reserved2, &mut into[2..2 + 2]);
     }
     fn size() -> usize {
-        2 + 2
+        4u32 as usize
     }
 }
 pub struct MINIDUMP_SYSTEM_MEMORY_INFO_1 {
@@ -23293,7 +22654,7 @@ impl FromIntoMemory for MINIDUMP_SYSTEM_MEMORY_INFO_1 {
         FromIntoMemory::into_bytes(self.PerfInfo, &mut into[160..160 + 344]);
     }
     fn size() -> usize {
-        2 + 2 + 56 + 64 + 32 + 344
+        504u32 as usize
     }
 }
 pub struct MINIDUMP_SYSTEM_PERFORMANCE_INFORMATION {
@@ -23709,83 +23070,7 @@ impl FromIntoMemory for MINIDUMP_SYSTEM_PERFORMANCE_INFORMATION {
         FromIntoMemory::into_bytes(self.SharedCommittedPages, &mut into[336..336 + 8]);
     }
     fn size() -> usize {
-        8 + 8
-            + 8
-            + 8
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 8
-            + 8
-            + 8
-            + 8
+        344u32 as usize
     }
 }
 pub struct MINIDUMP_THREAD {
@@ -23848,7 +23133,7 @@ impl FromIntoMemory for MINIDUMP_THREAD {
         FromIntoMemory::into_bytes(self.ThreadContext, &mut into[40..40 + 8]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 8 + 16 + 8
+        48u32 as usize
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
@@ -23924,7 +23209,7 @@ impl FromIntoMemory for MINIDUMP_THREAD_CALLBACK {
         FromIntoMemory::into_bytes(self.StackEnd, &mut into[3240..3240 + 8]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 3208 + 4 + 8 + 8
+        3248u32 as usize
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
@@ -23995,7 +23280,7 @@ impl FromIntoMemory for MINIDUMP_THREAD_CALLBACK {
         FromIntoMemory::into_bytes(self.StackEnd, &mut into[3232..3232 + 8]);
     }
     fn size() -> usize {
-        4 + 4 + 3208 + 4 + 8 + 8
+        3240u32 as usize
     }
 }
 pub struct MINIDUMP_THREAD_CALLBACK {
@@ -24054,7 +23339,7 @@ impl FromIntoMemory for MINIDUMP_THREAD_CALLBACK {
         FromIntoMemory::into_bytes(self.StackEnd, &mut into[3232..3232 + 8]);
     }
     fn size() -> usize {
-        4 + 4 + 3208 + 4 + 8 + 8
+        3240u32 as usize
     }
 }
 pub struct MINIDUMP_THREAD_EX {
@@ -24123,7 +23408,7 @@ impl FromIntoMemory for MINIDUMP_THREAD_EX {
         FromIntoMemory::into_bytes(self.BackingStore, &mut into[48..48 + 16]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 8 + 16 + 8 + 16
+        64u32 as usize
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
@@ -24209,7 +23494,7 @@ impl FromIntoMemory for MINIDUMP_THREAD_EX_CALLBACK {
         FromIntoMemory::into_bytes(self.BackingStoreEnd, &mut into[3256..3256 + 8]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 3208 + 4 + 8 + 8 + 8 + 8
+        3264u32 as usize
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
@@ -24290,7 +23575,7 @@ impl FromIntoMemory for MINIDUMP_THREAD_EX_CALLBACK {
         FromIntoMemory::into_bytes(self.BackingStoreEnd, &mut into[3248..3248 + 8]);
     }
     fn size() -> usize {
-        4 + 4 + 3208 + 4 + 8 + 8 + 8 + 8
+        3256u32 as usize
     }
 }
 pub struct MINIDUMP_THREAD_EX_CALLBACK {
@@ -24359,7 +23644,7 @@ impl FromIntoMemory for MINIDUMP_THREAD_EX_CALLBACK {
         FromIntoMemory::into_bytes(self.BackingStoreEnd, &mut into[3248..3248 + 8]);
     }
     fn size() -> usize {
-        4 + 4 + 3208 + 4 + 8 + 8 + 8 + 8
+        3256u32 as usize
     }
 }
 pub struct MINIDUMP_THREAD_EX_LIST {
@@ -24394,7 +23679,7 @@ impl FromIntoMemory for MINIDUMP_THREAD_EX_LIST {
         FromIntoMemory::into_bytes(self.Threads, &mut into[8..8 + 64]);
     }
     fn size() -> usize {
-        4 + 64
+        72u32 as usize
     }
 }
 pub struct MINIDUMP_THREAD_INFO {
@@ -24471,7 +23756,7 @@ impl FromIntoMemory for MINIDUMP_THREAD_INFO {
         FromIntoMemory::into_bytes(self.Affinity, &mut into[56..56 + 8]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 8 + 8 + 8 + 8 + 8 + 8
+        64u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -24564,7 +23849,7 @@ impl FromIntoMemory for MINIDUMP_THREAD_INFO_LIST {
         FromIntoMemory::into_bytes(self.NumberOfEntries, &mut into[8..8 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4
+        12u32 as usize
     }
 }
 pub struct MINIDUMP_THREAD_LIST {
@@ -24599,7 +23884,7 @@ impl FromIntoMemory for MINIDUMP_THREAD_LIST {
         FromIntoMemory::into_bytes(self.Threads, &mut into[8..8 + 48]);
     }
     fn size() -> usize {
-        4 + 48
+        56u32 as usize
     }
 }
 pub struct MINIDUMP_THREAD_NAME {
@@ -24634,7 +23919,7 @@ impl FromIntoMemory for MINIDUMP_THREAD_NAME {
         FromIntoMemory::into_bytes(self.RvaOfThreadName, &mut into[8..8 + 8]);
     }
     fn size() -> usize {
-        4 + 8
+        16u32 as usize
     }
 }
 pub struct MINIDUMP_THREAD_NAME_LIST {
@@ -24671,7 +23956,7 @@ impl FromIntoMemory for MINIDUMP_THREAD_NAME_LIST {
         FromIntoMemory::into_bytes(self.ThreadNames, &mut into[8..8 + 16]);
     }
     fn size() -> usize {
-        4 + 16
+        24u32 as usize
     }
 }
 pub struct MINIDUMP_TOKEN_INFO_HEADER {
@@ -24712,7 +23997,7 @@ impl FromIntoMemory for MINIDUMP_TOKEN_INFO_HEADER {
         FromIntoMemory::into_bytes(self.TokenHandle, &mut into[8..8 + 8]);
     }
     fn size() -> usize {
-        4 + 4 + 8
+        16u32 as usize
     }
 }
 pub struct MINIDUMP_TOKEN_INFO_LIST {
@@ -24768,7 +24053,7 @@ impl FromIntoMemory for MINIDUMP_TOKEN_INFO_LIST {
         FromIntoMemory::into_bytes(self.ElementHeaderSize, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4
+        16u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -24903,7 +24188,7 @@ impl FromIntoMemory for MINIDUMP_UNLOADED_MODULE {
         FromIntoMemory::into_bytes(self.ModuleNameRva, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        8 + 4 + 4 + 4 + 4
+        24u32 as usize
     }
 }
 pub struct MINIDUMP_UNLOADED_MODULE_LIST {
@@ -24953,7 +24238,7 @@ impl FromIntoMemory for MINIDUMP_UNLOADED_MODULE_LIST {
         FromIntoMemory::into_bytes(self.NumberOfEntries, &mut into[8..8 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4
+        12u32 as usize
     }
 }
 pub struct MINIDUMP_USER_RECORD {
@@ -24997,7 +24282,7 @@ impl FromIntoMemory for MINIDUMP_USER_RECORD {
         FromIntoMemory::into_bytes(self.Memory, &mut into[4..4 + 8]);
     }
     fn size() -> usize {
-        4 + 8
+        12u32 as usize
     }
 }
 pub struct MINIDUMP_USER_STREAM {
@@ -25038,7 +24323,7 @@ impl FromIntoMemory for MINIDUMP_USER_STREAM {
         FromIntoMemory::into_bytes(self.Buffer, &mut into[8..8 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4
+        12u32 as usize
     }
 }
 pub struct MINIDUMP_USER_STREAM_INFORMATION {
@@ -25075,7 +24360,7 @@ impl FromIntoMemory for MINIDUMP_USER_STREAM_INFORMATION {
         FromIntoMemory::into_bytes(self.UserStreamArray, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        4 + 4
+        8u32 as usize
     }
 }
 pub const MINIDUMP_VERSION: u32 = 42899u32;
@@ -25127,7 +24412,7 @@ impl FromIntoMemory for MINIDUMP_VM_POST_READ_CALLBACK {
         FromIntoMemory::into_bytes(self.Status, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        8 + 4 + 4 + 4 + 4
+        24u32 as usize
     }
 }
 pub struct MINIDUMP_VM_PRE_READ_CALLBACK {
@@ -25166,7 +24451,7 @@ impl FromIntoMemory for MINIDUMP_VM_PRE_READ_CALLBACK {
         FromIntoMemory::into_bytes(self.Size, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        8 + 4 + 4
+        16u32 as usize
     }
 }
 pub struct MINIDUMP_VM_QUERY_CALLBACK {
@@ -25195,7 +24480,7 @@ impl FromIntoMemory for MINIDUMP_VM_QUERY_CALLBACK {
         FromIntoMemory::into_bytes(self.Offset, &mut into[0..0 + 8]);
     }
     fn size() -> usize {
-        8
+        8u32 as usize
     }
 }
 pub struct MODLOAD_CVMISC {
@@ -25263,7 +24548,7 @@ impl FromIntoMemory for MODLOAD_CVMISC {
         FromIntoMemory::into_bytes(self.cImage, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4
+        24u32 as usize
     }
 }
 pub struct MODLOAD_DATA {
@@ -25325,7 +24610,7 @@ impl FromIntoMemory for MODLOAD_DATA {
         FromIntoMemory::into_bytes(self.flags, &mut into[16..16 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4
+        20u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -25399,7 +24684,7 @@ impl FromIntoMemory for MODLOAD_PDBGUID_PDBAGE {
         FromIntoMemory::into_bytes(self.PdbAge, &mut into[16..16 + 4]);
     }
     fn size() -> usize {
-        16 + 4
+        20u32 as usize
     }
 }
 pub const MODULE_ORDERS_LOADTIME: u32 = 268435456u32;
@@ -25450,7 +24735,7 @@ impl FromIntoMemory for MODULE_TYPE_INFO {
         FromIntoMemory::into_bytes(self.data, &mut into[4..4 + 1]);
     }
     fn size() -> usize {
-        2 + 2 + 1
+        6u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -25673,7 +24958,7 @@ impl FromIntoMemory for OMAP {
         FromIntoMemory::into_bytes(self.rvaTo, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        4 + 4
+        8u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -25756,7 +25041,7 @@ impl FromIntoMemory for OUTPUT_DEBUG_STRING_INFO {
         FromIntoMemory::into_bytes(self.nDebugStringLength, &mut into[6..6 + 2]);
     }
     fn size() -> usize {
-        4 + 2 + 2
+        8u32 as usize
     }
 }
 pub type PCOGETACTIVATIONSTATE = ::core::option::Option<()>;
@@ -25839,7 +25124,7 @@ impl FromIntoMemory for PHYSICAL {
         FromIntoMemory::into_bytes(self.Buf, &mut into[12..12 + 1]);
     }
     fn size() -> usize {
-        8 + 4 + 1
+        16u32 as usize
     }
 }
 pub struct PHYSICAL_MEMORY_DESCRIPTOR32 {
@@ -25889,7 +25174,7 @@ impl FromIntoMemory for PHYSICAL_MEMORY_DESCRIPTOR32 {
         FromIntoMemory::into_bytes(self.Run, &mut into[8..8 + 8]);
     }
     fn size() -> usize {
-        4 + 4 + 8
+        16u32 as usize
     }
 }
 pub struct PHYSICAL_MEMORY_DESCRIPTOR64 {
@@ -25939,7 +25224,7 @@ impl FromIntoMemory for PHYSICAL_MEMORY_DESCRIPTOR64 {
         FromIntoMemory::into_bytes(self.Run, &mut into[16..16 + 16]);
     }
     fn size() -> usize {
-        4 + 8 + 16
+        32u32 as usize
     }
 }
 pub struct PHYSICAL_MEMORY_RUN32 {
@@ -25982,7 +25267,7 @@ impl FromIntoMemory for PHYSICAL_MEMORY_RUN32 {
         FromIntoMemory::into_bytes(self.PageCount, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        4 + 4
+        8u32 as usize
     }
 }
 pub struct PHYSICAL_MEMORY_RUN64 {
@@ -26025,7 +25310,7 @@ impl FromIntoMemory for PHYSICAL_MEMORY_RUN64 {
         FromIntoMemory::into_bytes(self.PageCount, &mut into[8..8 + 8]);
     }
     fn size() -> usize {
-        8 + 8
+        16u32 as usize
     }
 }
 pub struct PHYSICAL_TO_VIRTUAL {
@@ -26075,7 +25360,7 @@ impl FromIntoMemory for PHYSICAL_TO_VIRTUAL {
         FromIntoMemory::into_bytes(self.PdeAddress, &mut into[8..8 + 8]);
     }
     fn size() -> usize {
-        4 + 4 + 8
+        16u32 as usize
     }
 }
 pub struct PHYSICAL_WITH_FLAGS {
@@ -26131,7 +25416,7 @@ impl FromIntoMemory for PHYSICAL_WITH_FLAGS {
         FromIntoMemory::into_bytes(self.Buf, &mut into[16..16 + 1]);
     }
     fn size() -> usize {
-        8 + 4 + 4 + 1
+        24u32 as usize
     }
 }
 pub const PHYS_FLAG_CACHED: u32 = 1u32;
@@ -26218,7 +25503,7 @@ impl FromIntoMemory for POINTER_SEARCH_PHYSICAL {
         FromIntoMemory::into_bytes(self.MatchOffsetsCount, &mut into[44..44 + 4]);
     }
     fn size() -> usize {
-        8 + 8 + 8 + 8 + 4 + 4 + 4 + 4
+        48u32 as usize
     }
 }
 pub type PREAD_PROCESS_MEMORY_ROUTINE = ::core::option::Option<()>;
@@ -26263,7 +25548,7 @@ impl FromIntoMemory for PROCESSORINFO {
         FromIntoMemory::into_bytes(self.NumberProcessors, &mut into[2..2 + 2]);
     }
     fn size() -> usize {
-        2 + 2
+        4u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -26355,7 +25640,7 @@ impl FromIntoMemory for PROCESS_NAME_ENTRY {
         FromIntoMemory::into_bytes(self.NextEntry, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4
+        16u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -26542,7 +25827,7 @@ impl FromIntoMemory for PROFILER_HEAP_OBJECT {
         FromIntoMemory::into_bytes(self.optionalInfoCount, &mut into[22..22 + 2]);
     }
     fn size() -> usize {
-        4 + 8 + 4 + 4 + 2 + 2
+        24u32 as usize
     }
 }
 pub struct PROFILER_HEAP_OBJECT_0 {
@@ -26826,7 +26111,7 @@ impl FromIntoMemory for PROFILER_HEAP_OBJECT_SCOPE_LIST {
         FromIntoMemory::into_bytes(self.scopes, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        4 + 4
+        8u32 as usize
     }
 }
 pub struct PROFILER_HEAP_SUMMARY {
@@ -26870,7 +26155,7 @@ impl FromIntoMemory for PROFILER_HEAP_SUMMARY {
         FromIntoMemory::into_bytes(self.totalHeapSize, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        4 + 4
+        8u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -26946,7 +26231,7 @@ impl FromIntoMemory for PROFILER_PROPERTY_TYPE_SUBSTRING_INFO {
         FromIntoMemory::into_bytes(self.value, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        4 + 4
+        8u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -27294,7 +26579,7 @@ impl FromIntoMemory for READCONTROLSPACE {
         FromIntoMemory::into_bytes(self.Buf, &mut into[12..12 + 1]);
     }
     fn size() -> usize {
-        2 + 4 + 4 + 1
+        16u32 as usize
     }
 }
 pub struct READCONTROLSPACE32 {
@@ -27350,7 +26635,7 @@ impl FromIntoMemory for READCONTROLSPACE32 {
         FromIntoMemory::into_bytes(self.Buf, &mut into[12..12 + 1]);
     }
     fn size() -> usize {
-        2 + 4 + 4 + 1
+        16u32 as usize
     }
 }
 pub struct READCONTROLSPACE64 {
@@ -27406,7 +26691,7 @@ impl FromIntoMemory for READCONTROLSPACE64 {
         FromIntoMemory::into_bytes(self.Buf, &mut into[20..20 + 1]);
     }
     fn size() -> usize {
-        2 + 8 + 4 + 1
+        24u32 as usize
     }
 }
 pub struct READ_WRITE_MSR {
@@ -27449,7 +26734,7 @@ impl FromIntoMemory for READ_WRITE_MSR {
         FromIntoMemory::into_bytes(self.Value, &mut into[8..8 + 8]);
     }
     fn size() -> usize {
-        4 + 8
+        16u32 as usize
     }
 }
 pub const RESTORE_LAST_ERROR_NAME: &'static str = "RestoreLastError";
@@ -27495,7 +26780,7 @@ impl FromIntoMemory for RIP_INFO {
         FromIntoMemory::into_bytes(self.dwType, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        4 + 4
+        8u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -28072,7 +27357,7 @@ impl FromIntoMemory for SEARCHMEMORY {
         FromIntoMemory::into_bytes(self.Pattern, &mut into[28..28 + 4]);
     }
     fn size() -> usize {
-        8 + 8 + 8 + 4 + 4
+        32u32 as usize
     }
 }
 pub struct SOURCEFILE {
@@ -28115,7 +27400,7 @@ impl FromIntoMemory for SOURCEFILE {
         FromIntoMemory::into_bytes(self.FileName, &mut into[8..8 + 4]);
     }
     fn size() -> usize {
-        8 + 4
+        16u32 as usize
     }
 }
 pub struct SOURCEFILEW {
@@ -28158,7 +27443,7 @@ impl FromIntoMemory for SOURCEFILEW {
         FromIntoMemory::into_bytes(self.FileName, &mut into[8..8 + 4]);
     }
     fn size() -> usize {
-        8 + 4
+        16u32 as usize
     }
 }
 pub const SOURCETEXT_ATTR_COMMENT: u32 = 2u32;
@@ -28251,7 +27536,7 @@ impl FromIntoMemory for SRCCODEINFO {
         FromIntoMemory::into_bytes(self.Address, &mut into[544..544 + 8]);
     }
     fn size() -> usize {
-        4 + 4 + 8 + 261 + 261 + 4 + 8
+        552u32 as usize
     }
 }
 pub struct SRCCODEINFOW {
@@ -28325,7 +27610,7 @@ impl FromIntoMemory for SRCCODEINFOW {
         FromIntoMemory::into_bytes(self.Address, &mut into[544..544 + 8]);
     }
     fn size() -> usize {
-        4 + 4 + 8 + 261 + 261 + 4 + 8
+        552u32 as usize
     }
 }
 pub const SSRVACTION_CHECKSUMSTATUS: u32 = 8u32;
@@ -28479,7 +27764,7 @@ impl FromIntoMemory for STACKFRAME {
         FromIntoMemory::into_bytes(self.AddrBStore, &mut into[152..152 + 12]);
     }
     fn size() -> usize {
-        12 + 12 + 12 + 12 + 4 + 16 + 4 + 4 + 12 + 64 + 12
+        164u32 as usize
     }
 }
 pub struct STACKFRAME64 {
@@ -28582,7 +27867,7 @@ impl FromIntoMemory for STACKFRAME64 {
         FromIntoMemory::into_bytes(self.KdHelp, &mut into[152..152 + 112]);
     }
     fn size() -> usize {
-        16 + 16 + 16 + 16 + 16 + 4 + 32 + 4 + 4 + 24 + 112
+        264u32 as usize
     }
 }
 pub struct STACKFRAME_EX {
@@ -28697,7 +27982,7 @@ impl FromIntoMemory for STACKFRAME_EX {
         FromIntoMemory::into_bytes(self.InlineFrameContext, &mut into[268..268 + 4]);
     }
     fn size() -> usize {
-        16 + 16 + 16 + 16 + 16 + 4 + 32 + 4 + 4 + 24 + 112 + 4 + 4
+        272u32 as usize
     }
 }
 pub const STACK_FRAME_TYPE_IGNORE: u32 = 255u32;
@@ -28770,7 +28055,7 @@ impl FromIntoMemory for STACK_SRC_INFO {
         FromIntoMemory::into_bytes(self.Column, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4
+        24u32 as usize
     }
 }
 pub struct STACK_SYM_FRAME_INFO {
@@ -28814,7 +28099,7 @@ impl FromIntoMemory for STACK_SYM_FRAME_INFO {
         FromIntoMemory::into_bytes(self.SrcInfo, &mut into[136..136 + 24]);
     }
     fn size() -> usize {
-        136 + 24
+        160u32 as usize
     }
 }
 pub type SYMADDSOURCESTREAM = ::core::option::Option<()>;
@@ -28940,7 +28225,7 @@ impl FromIntoMemory for SYMBOL_INFO {
         FromIntoMemory::into_bytes(self.Name, &mut into[84..84 + 1]);
     }
     fn size() -> usize {
-        4 + 4 + 16 + 4 + 4 + 8 + 4 + 8 + 8 + 4 + 4 + 4 + 4 + 4 + 1
+        88u32 as usize
     }
 }
 pub struct SYMBOL_INFOW {
@@ -29062,7 +28347,7 @@ impl FromIntoMemory for SYMBOL_INFOW {
         FromIntoMemory::into_bytes(self.Name, &mut into[84..84 + 1]);
     }
     fn size() -> usize {
-        4 + 4 + 16 + 4 + 4 + 8 + 4 + 8 + 8 + 4 + 4 + 4 + 4 + 4 + 1
+        88u32 as usize
     }
 }
 pub struct SYMBOL_INFO_EX {
@@ -29130,7 +28415,7 @@ impl FromIntoMemory for SYMBOL_INFO_EX {
         FromIntoMemory::into_bytes(self.Reserved, &mut into[24..24 + 16]);
     }
     fn size() -> usize {
-        4 + 4 + 8 + 4 + 4 + 16
+        40u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -29249,7 +28534,7 @@ impl FromIntoMemory for SYMBOL_INFO_PACKAGE {
         FromIntoMemory::into_bytes(self.name, &mut into[88..88 + 2001]);
     }
     fn size() -> usize {
-        88 + 2001
+        2096u32 as usize
     }
 }
 pub struct SYMBOL_INFO_PACKAGEW {
@@ -29292,7 +28577,7 @@ impl FromIntoMemory for SYMBOL_INFO_PACKAGEW {
         FromIntoMemory::into_bytes(self.name, &mut into[88..88 + 2001]);
     }
     fn size() -> usize {
-        88 + 2001
+        2096u32 as usize
     }
 }
 pub const SYMBOL_TYPE_INDEX_NOT_FOUND: u32 = 2u32;
@@ -29404,7 +28689,7 @@ impl FromIntoMemory for SYMSRV_EXTENDED_OUTPUT_DATA {
         FromIntoMemory::into_bytes(self.filePtrMsg, &mut into[8..8 + 261]);
     }
     fn size() -> usize {
-        4 + 4 + 261
+        272u32 as usize
     }
 }
 pub struct SYMSRV_INDEX_INFO {
@@ -29506,7 +28791,7 @@ impl FromIntoMemory for SYMSRV_INDEX_INFO {
         FromIntoMemory::into_bytes(self.age, &mut into[824..824 + 4]);
     }
     fn size() -> usize {
-        4 + 261 + 4 + 4 + 4 + 261 + 261 + 16 + 4 + 4
+        828u32 as usize
     }
 }
 pub struct SYMSRV_INDEX_INFOW {
@@ -29600,7 +28885,7 @@ impl FromIntoMemory for SYMSRV_INDEX_INFOW {
         FromIntoMemory::into_bytes(self.age, &mut into[824..824 + 4]);
     }
     fn size() -> usize {
-        4 + 261 + 4 + 4 + 4 + 261 + 261 + 16 + 4 + 4
+        828u32 as usize
     }
 }
 pub const SYMSRV_VERSION: u32 = 2u32;
@@ -29700,7 +28985,7 @@ impl FromIntoMemory for SYM_DUMP_PARAM {
         FromIntoMemory::into_bytes(self._bitfield, &mut into[68..68 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 8 + 4 + 8 + 4 + 4 + 4 + 8 + 4 + 4 + 4 + 4
+        72u32 as usize
     }
 }
 pub struct SYM_DUMP_PARAM_0 {
@@ -30046,7 +29331,7 @@ impl FromIntoMemory for ScriptDebugPosition {
         FromIntoMemory::into_bytes(self.Column, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        4 + 4
+        8u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -30370,7 +29655,7 @@ impl FromIntoMemory for TI_FINDCHILDREN_PARAMS {
         FromIntoMemory::into_bytes(self.ChildId, &mut into[8..8 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4
+        12u32 as usize
     }
 }
 pub struct TRANSLATE_VIRTUAL_TO_PHYSICAL {
@@ -30413,7 +29698,7 @@ impl FromIntoMemory for TRANSLATE_VIRTUAL_TO_PHYSICAL {
         FromIntoMemory::into_bytes(self.Physical, &mut into[8..8 + 8]);
     }
     fn size() -> usize {
-        8 + 8
+        16u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -30508,7 +29793,7 @@ impl FromIntoMemory for UNLOAD_DLL_DEBUG_INFO {
         FromIntoMemory::into_bytes(self.lpBaseOfDll, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4
+        4u32 as usize
     }
 }
 #[doc = "*Required namespaces: *"]
@@ -30603,7 +29888,7 @@ impl FromIntoMemory for UNWIND_HISTORY_TABLE {
         FromIntoMemory::into_bytes(self.Entry, &mut into[16..16 + 96]);
     }
     fn size() -> usize {
-        4 + 1 + 1 + 1 + 1 + 4 + 4 + 96
+        112u32 as usize
     }
 }
 #[doc = "*Required namespaces: *"]
@@ -30663,7 +29948,7 @@ impl FromIntoMemory for UNWIND_HISTORY_TABLE_ENTRY {
         FromIntoMemory::into_bytes(self.FunctionEntry, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        4 + 4
+        8u32 as usize
     }
 }
 #[doc = "*Required namespaces: *"]
@@ -30721,7 +30006,7 @@ impl FromIntoMemory for UNWIND_HISTORY_TABLE_ENTRY {
         FromIntoMemory::into_bytes(self.FunctionEntry, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        4 + 4
+        8u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -30815,7 +30100,7 @@ impl FromIntoMemory for VIRTUAL_TO_PHYSICAL {
         FromIntoMemory::into_bytes(self.Physical, &mut into[24..24 + 8]);
     }
     fn size() -> usize {
-        4 + 4 + 8 + 8 + 8
+        32u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -30887,7 +30172,7 @@ impl FromIntoMemory for WAITCHAIN_NODE_INFO {
         FromIntoMemory::into_bytes(self.Anonymous, &mut into[8..8 + 160]);
     }
     fn size() -> usize {
-        4 + 4 + 160
+        168u32 as usize
     }
 }
 pub struct WAITCHAIN_NODE_INFO_0 {
@@ -30966,7 +30251,7 @@ impl FromIntoMemory for WAITCHAIN_NODE_INFO_0_0 {
         FromIntoMemory::into_bytes(self.Alertable, &mut into[136..136 + 4]);
     }
     fn size() -> usize {
-        128 + 8 + 4
+        144u32 as usize
     }
 }
 pub struct WAITCHAIN_NODE_INFO_0_1 {
@@ -31022,7 +30307,7 @@ impl FromIntoMemory for WAITCHAIN_NODE_INFO_0_1 {
         FromIntoMemory::into_bytes(self.ContextSwitches, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4
+        16u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -31188,7 +30473,7 @@ impl FromIntoMemory for WDBGEXTS_CLR_DATA_INTERFACE {
         FromIntoMemory::into_bytes(self.Iface, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        4 + 4
+        8u32 as usize
     }
 }
 pub struct WDBGEXTS_DISASSEMBLE_BUFFER {
@@ -31275,7 +30560,7 @@ impl FromIntoMemory for WDBGEXTS_DISASSEMBLE_BUFFER {
         FromIntoMemory::into_bytes(self.Reserved0, &mut into[40..40 + 24]);
     }
     fn size() -> usize {
-        8 + 8 + 4 + 4 + 4 + 4 + 4 + 4 + 24
+        64u32 as usize
     }
 }
 pub struct WDBGEXTS_MODULE_IN_RANGE {
@@ -31331,7 +30616,7 @@ impl FromIntoMemory for WDBGEXTS_MODULE_IN_RANGE {
         FromIntoMemory::into_bytes(self.FoundModSize, &mut into[24..24 + 4]);
     }
     fn size() -> usize {
-        8 + 8 + 8 + 4
+        32u32 as usize
     }
 }
 pub struct WDBGEXTS_QUERY_INTERFACE {
@@ -31374,7 +30659,7 @@ impl FromIntoMemory for WDBGEXTS_QUERY_INTERFACE {
         FromIntoMemory::into_bytes(self.Iface, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        4 + 4
+        8u32 as usize
     }
 }
 pub struct WDBGEXTS_THREAD_OS_INFO {
@@ -31466,7 +30751,7 @@ impl FromIntoMemory for WDBGEXTS_THREAD_OS_INFO {
         FromIntoMemory::into_bytes(self.Affinity, &mut into[56..56 + 8]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 8 + 8 + 8 + 8 + 8 + 8
+        64u32 as usize
     }
 }
 pub struct WHEA_AER_BRIDGE_DESCRIPTOR {
@@ -31567,7 +30852,7 @@ impl FromIntoMemory for WHEA_AER_BRIDGE_DESCRIPTOR {
         FromIntoMemory::into_bytes(self.SecondaryCapsAndControl, &mut into[48..48 + 4]);
     }
     fn size() -> usize {
-        2 + 1 + 1 + 4 + 8 + 2 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4
+        52u32 as usize
     }
 }
 pub struct WHEA_AER_ENDPOINT_DESCRIPTOR {
@@ -31651,7 +30936,7 @@ impl FromIntoMemory for WHEA_AER_ENDPOINT_DESCRIPTOR {
         FromIntoMemory::into_bytes(self.AdvancedCapsAndControl, &mut into[36..36 + 4]);
     }
     fn size() -> usize {
-        2 + 1 + 1 + 4 + 8 + 2 + 4 + 4 + 4 + 4 + 4
+        40u32 as usize
     }
 }
 pub struct WHEA_AER_ROOTPORT_DESCRIPTOR {
@@ -31740,7 +31025,7 @@ impl FromIntoMemory for WHEA_AER_ROOTPORT_DESCRIPTOR {
         FromIntoMemory::into_bytes(self.RootErrorCommand, &mut into[40..40 + 4]);
     }
     fn size() -> usize {
-        2 + 1 + 1 + 4 + 8 + 2 + 4 + 4 + 4 + 4 + 4 + 4
+        44u32 as usize
     }
 }
 pub const WHEA_BAD_PAGE_LIST_LOCATION: u32 = 15u32;
@@ -31861,7 +31146,7 @@ impl FromIntoMemory for WHEA_DEVICE_DRIVER_DESCRIPTOR {
         FromIntoMemory::into_bytes(self.OpenHandles, &mut into[92..92 + 4]);
     }
     fn size() -> usize {
-        2 + 1 + 1 + 16 + 2 + 2 + 4 + 4 + 4 + 12 + 16 + 16 + 4 + 4 + 4 + 4
+        96u32 as usize
     }
 }
 pub const WHEA_DISABLE_DUMMY_WRITE: u32 = 6u32;
@@ -31920,7 +31205,7 @@ impl FromIntoMemory for WHEA_DRIVER_BUFFER_SET {
         FromIntoMemory::into_bytes(self.Flags, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4
+        24u32 as usize
     }
 }
 pub struct WHEA_ERROR_SOURCE_CONFIGURATION_DD {
@@ -31969,7 +31254,7 @@ impl FromIntoMemory for WHEA_ERROR_SOURCE_CONFIGURATION_DD {
         FromIntoMemory::into_bytes(self.Correct, &mut into[8..8 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4
+        12u32 as usize
     }
 }
 pub struct WHEA_ERROR_SOURCE_CONFIGURATION_DEVICE_DRIVER {
@@ -32051,7 +31336,7 @@ impl FromIntoMemory for WHEA_ERROR_SOURCE_CONFIGURATION_DEVICE_DRIVER {
         FromIntoMemory::into_bytes(self.PartitionId, &mut into[60..60 + 16]);
     }
     fn size() -> usize {
-        4 + 16 + 2 + 6 + 4 + 4 + 4 + 4 + 16 + 16
+        76u32 as usize
     }
 }
 pub struct WHEA_ERROR_SOURCE_CONFIGURATION_DEVICE_DRIVER_V1 {
@@ -32113,7 +31398,7 @@ impl FromIntoMemory for WHEA_ERROR_SOURCE_CONFIGURATION_DEVICE_DRIVER_V1 {
         FromIntoMemory::into_bytes(self.Uninitialize, &mut into[32..32 + 4]);
     }
     fn size() -> usize {
-        4 + 16 + 2 + 6 + 4 + 4
+        36u32 as usize
     }
 }
 pub type WHEA_ERROR_SOURCE_CORRECT_DEVICE_DRIVER = ::core::option::Option<()>;
@@ -32196,7 +31481,7 @@ impl FromIntoMemory for WHEA_ERROR_SOURCE_DESCRIPTOR {
         FromIntoMemory::into_bytes(self.Info, &mut into[40..40 + 2960]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 2960
+        3000u32 as usize
     }
 }
 pub struct WHEA_ERROR_SOURCE_DESCRIPTOR_0 {
@@ -32430,7 +31715,7 @@ impl FromIntoMemory for WHEA_GENERIC_ERROR_DESCRIPTOR {
         FromIntoMemory::into_bytes(self.Notify, &mut into[24..24 + 180]);
     }
     fn size() -> usize {
-        2 + 1 + 1 + 4 + 4 + 1 + 1 + 1 + 1 + 8 + 180
+        208u32 as usize
     }
 }
 pub struct WHEA_GENERIC_ERROR_DESCRIPTOR_V2 {
@@ -32547,7 +31832,7 @@ impl FromIntoMemory for WHEA_GENERIC_ERROR_DESCRIPTOR_V2 {
         FromIntoMemory::into_bytes(self.ReadAckWriteMask, &mut into[224..224 + 8]);
     }
     fn size() -> usize {
-        2 + 1 + 1 + 4 + 4 + 1 + 1 + 1 + 1 + 8 + 180 + 1 + 1 + 1 + 1 + 8 + 8 + 8
+        232u32 as usize
     }
 }
 pub struct WHEA_IPF_CMC_DESCRIPTOR {
@@ -32586,7 +31871,7 @@ impl FromIntoMemory for WHEA_IPF_CMC_DESCRIPTOR {
         FromIntoMemory::into_bytes(self.Reserved, &mut into[3..3 + 1]);
     }
     fn size() -> usize {
-        2 + 1 + 1
+        4u32 as usize
     }
 }
 pub struct WHEA_IPF_CPE_DESCRIPTOR {
@@ -32625,7 +31910,7 @@ impl FromIntoMemory for WHEA_IPF_CPE_DESCRIPTOR {
         FromIntoMemory::into_bytes(self.Reserved, &mut into[3..3 + 1]);
     }
     fn size() -> usize {
-        2 + 1 + 1
+        4u32 as usize
     }
 }
 pub struct WHEA_IPF_MCA_DESCRIPTOR {
@@ -32664,7 +31949,7 @@ impl FromIntoMemory for WHEA_IPF_MCA_DESCRIPTOR {
         FromIntoMemory::into_bytes(self.Reserved, &mut into[3..3 + 1]);
     }
     fn size() -> usize {
-        2 + 1 + 1
+        4u32 as usize
     }
 }
 pub const WHEA_MAX_MC_BANKS: u32 = 32u32;
@@ -32716,7 +32001,7 @@ impl FromIntoMemory for WHEA_NOTIFICATION_DESCRIPTOR {
         FromIntoMemory::into_bytes(self.u, &mut into[8..8 + 172]);
     }
     fn size() -> usize {
-        1 + 1 + 4 + 172
+        180u32 as usize
     }
 }
 pub struct WHEA_NOTIFICATION_DESCRIPTOR_0 {
@@ -32812,7 +32097,7 @@ impl FromIntoMemory for WHEA_NOTIFICATION_DESCRIPTOR_0_0 {
         FromIntoMemory::into_bytes(self.ErrorThresholdWindow, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4
+        24u32 as usize
     }
 }
 pub struct WHEA_NOTIFICATION_DESCRIPTOR_0_1 {
@@ -32868,7 +32153,7 @@ impl FromIntoMemory for WHEA_NOTIFICATION_DESCRIPTOR_0_1 {
         FromIntoMemory::into_bytes(self.ErrorThresholdWindow, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4
+        24u32 as usize
     }
 }
 pub struct WHEA_NOTIFICATION_DESCRIPTOR_0_2 {
@@ -32924,7 +32209,7 @@ impl FromIntoMemory for WHEA_NOTIFICATION_DESCRIPTOR_0_2 {
         FromIntoMemory::into_bytes(self.ErrorThresholdWindow, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4
+        24u32 as usize
     }
 }
 pub struct WHEA_NOTIFICATION_DESCRIPTOR_0_3 {
@@ -32980,7 +32265,7 @@ impl FromIntoMemory for WHEA_NOTIFICATION_DESCRIPTOR_0_3 {
         FromIntoMemory::into_bytes(self.ErrorThresholdWindow, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4
+        24u32 as usize
     }
 }
 pub struct WHEA_NOTIFICATION_DESCRIPTOR_0_4 {
@@ -33011,7 +32296,7 @@ impl FromIntoMemory for WHEA_NOTIFICATION_DESCRIPTOR_0_4 {
         FromIntoMemory::into_bytes(self.PollInterval, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4
+        4u32 as usize
     }
 }
 pub struct WHEA_NOTIFICATION_DESCRIPTOR_0_5 {
@@ -33067,7 +32352,7 @@ impl FromIntoMemory for WHEA_NOTIFICATION_DESCRIPTOR_0_5 {
         FromIntoMemory::into_bytes(self.ErrorThresholdWindow, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4
+        24u32 as usize
     }
 }
 pub struct WHEA_NOTIFICATION_DESCRIPTOR_0_6 {
@@ -33123,7 +32408,7 @@ impl FromIntoMemory for WHEA_NOTIFICATION_DESCRIPTOR_0_6 {
         FromIntoMemory::into_bytes(self.ErrorThresholdWindow, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4
+        24u32 as usize
     }
 }
 pub struct WHEA_NOTIFICATION_DESCRIPTOR_0_7 {
@@ -33179,7 +32464,7 @@ impl FromIntoMemory for WHEA_NOTIFICATION_DESCRIPTOR_0_7 {
         FromIntoMemory::into_bytes(self.ErrorThresholdWindow, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4
+        24u32 as usize
     }
 }
 pub struct WHEA_NOTIFICATION_FLAGS {
@@ -33237,7 +32522,7 @@ impl FromIntoMemory for WHEA_NOTIFICATION_FLAGS_0 {
         FromIntoMemory::into_bytes(self._bitfield, &mut into[0..0 + 2]);
     }
     fn size() -> usize {
-        2
+        2u32 as usize
     }
 }
 pub const WHEA_NOTIFICATION_TYPE_ARMV8_SEA: u32 = 8u32;
@@ -33279,7 +32564,7 @@ impl FromIntoMemory for WHEA_PCI_SLOT_NUMBER {
         FromIntoMemory::into_bytes(self.u, &mut into[0..0 + 8]);
     }
     fn size() -> usize {
-        8
+        8u32 as usize
     }
 }
 pub struct WHEA_PCI_SLOT_NUMBER_0 {
@@ -33337,7 +32622,7 @@ impl FromIntoMemory for WHEA_PCI_SLOT_NUMBER_0_0 {
         FromIntoMemory::into_bytes(self._bitfield, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4
+        4u32 as usize
     }
 }
 pub const WHEA_PENDING_PAGE_LIST_SZ: u32 = 13u32;
@@ -33402,7 +32687,7 @@ impl FromIntoMemory for WHEA_XPF_CMC_DESCRIPTOR {
         FromIntoMemory::into_bytes(self.Banks, &mut into[192..192 + 1024]);
     }
     fn size() -> usize {
-        2 + 1 + 1 + 4 + 180 + 1024
+        1216u32 as usize
     }
 }
 pub struct WHEA_XPF_MCE_DESCRIPTOR {
@@ -33464,7 +32749,7 @@ impl FromIntoMemory for WHEA_XPF_MCE_DESCRIPTOR {
         FromIntoMemory::into_bytes(self.Banks, &mut into[32..32 + 1024]);
     }
     fn size() -> usize {
-        2 + 1 + 1 + 8 + 8 + 8 + 1024
+        1056u32 as usize
     }
 }
 pub struct WHEA_XPF_MC_BANK_DESCRIPTOR {
@@ -33538,7 +32823,7 @@ impl FromIntoMemory for WHEA_XPF_MC_BANK_DESCRIPTOR {
         FromIntoMemory::into_bytes(self.ControlData, &mut into[24..24 + 8]);
     }
     fn size() -> usize {
-        1 + 1 + 1 + 2 + 4 + 4 + 4 + 4 + 8
+        32u32 as usize
     }
 }
 pub const WHEA_XPF_MC_BANK_STATUSFORMAT_AMD64MCA: u32 = 2u32;
@@ -33578,7 +32863,7 @@ impl FromIntoMemory for WHEA_XPF_NMI_DESCRIPTOR {
         FromIntoMemory::into_bytes(self.Enabled, &mut into[2..2 + 1]);
     }
     fn size() -> usize {
-        2 + 1
+        4u32 as usize
     }
 }
 pub struct WINDBG_EXTENSION_APIS {
@@ -33698,7 +32983,7 @@ impl FromIntoMemory for WINDBG_EXTENSION_APIS {
         FromIntoMemory::into_bytes(self.lpStackTraceRoutine, &mut into[44..44 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4
+        48u32 as usize
     }
 }
 pub struct WINDBG_EXTENSION_APIS32 {
@@ -33822,7 +33107,7 @@ impl FromIntoMemory for WINDBG_EXTENSION_APIS32 {
         FromIntoMemory::into_bytes(self.lpStackTraceRoutine, &mut into[44..44 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4
+        48u32 as usize
     }
 }
 pub struct WINDBG_EXTENSION_APIS64 {
@@ -33946,7 +33231,7 @@ impl FromIntoMemory for WINDBG_EXTENSION_APIS64 {
         FromIntoMemory::into_bytes(self.lpStackTraceRoutine, &mut into[44..44 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4
+        48u32 as usize
     }
 }
 pub struct WINDBG_OLDKD_EXTENSION_APIS {
@@ -34050,7 +33335,7 @@ impl FromIntoMemory for WINDBG_OLDKD_EXTENSION_APIS {
         FromIntoMemory::into_bytes(self.lpWritePhysicalMemRoutine, &mut into[36..36 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4
+        40u32 as usize
     }
 }
 pub struct WINDBG_OLD_EXTENSION_APIS {
@@ -34122,7 +33407,7 @@ impl FromIntoMemory for WINDBG_OLD_EXTENSION_APIS {
         FromIntoMemory::into_bytes(self.lpCheckControlCRoutine, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4
+        24u32 as usize
     }
 }
 pub struct WOW64_CONTEXT {
@@ -34305,30 +33590,7 @@ impl FromIntoMemory for WOW64_CONTEXT {
         FromIntoMemory::into_bytes(self.ExtendedRegisters, &mut into[204..204 + 512]);
     }
     fn size() -> usize {
-        4 + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 112
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 512
+        716u32 as usize
     }
 }
 pub const WOW64_CONTEXT_EXCEPTION_ACTIVE: u32 = 134217728u32;
@@ -34369,7 +33631,7 @@ impl FromIntoMemory for WOW64_DESCRIPTOR_TABLE_ENTRY {
         FromIntoMemory::into_bytes(self.Descriptor, &mut into[4..4 + 12]);
     }
     fn size() -> usize {
-        4 + 12
+        16u32 as usize
     }
 }
 pub struct WOW64_FLOATING_SAVE_AREA {
@@ -34455,7 +33717,7 @@ impl FromIntoMemory for WOW64_FLOATING_SAVE_AREA {
         FromIntoMemory::into_bytes(self.Cr0NpxState, &mut into[108..108 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 4 + 80 + 4
+        112u32 as usize
     }
 }
 pub struct WOW64_LDT_ENTRY {
@@ -34496,7 +33758,7 @@ impl FromIntoMemory for WOW64_LDT_ENTRY {
         FromIntoMemory::into_bytes(self.HighWord, &mut into[4..4 + 8]);
     }
     fn size() -> usize {
-        2 + 2 + 8
+        12u32 as usize
     }
 }
 pub struct WOW64_LDT_ENTRY_0 {
@@ -34561,7 +33823,7 @@ impl FromIntoMemory for WOW64_LDT_ENTRY_0_0 {
         FromIntoMemory::into_bytes(self._bitfield, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4
+        4u32 as usize
     }
 }
 pub struct WOW64_LDT_ENTRY_0_1 {
@@ -34617,7 +33879,7 @@ impl FromIntoMemory for WOW64_LDT_ENTRY_0_1 {
         FromIntoMemory::into_bytes(self.BaseHi, &mut into[3..3 + 1]);
     }
     fn size() -> usize {
-        1 + 1 + 1 + 1
+        4u32 as usize
     }
 }
 pub const WOW64_MAXIMUM_SUPPORTED_EXTENSION: u32 = 512u32;
@@ -34677,7 +33939,7 @@ impl FromIntoMemory for XPF_MCE_FLAGS_0 {
         FromIntoMemory::into_bytes(self._bitfield, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4
+        4u32 as usize
     }
 }
 pub struct XPF_MC_BANK_FLAGS {
@@ -34742,7 +34004,7 @@ impl FromIntoMemory for XPF_MC_BANK_FLAGS_0 {
         FromIntoMemory::into_bytes(self._bitfield, &mut into[0..0 + 1]);
     }
     fn size() -> usize {
-        1
+        1u32 as usize
     }
 }
 pub struct XSAVE_AREA {
@@ -34785,7 +34047,7 @@ impl FromIntoMemory for XSAVE_AREA {
         FromIntoMemory::into_bytes(self.Header, &mut into[512..512 + 64]);
     }
     fn size() -> usize {
-        512 + 64
+        576u32 as usize
     }
 }
 pub struct XSAVE_AREA_HEADER {
@@ -34835,7 +34097,7 @@ impl FromIntoMemory for XSAVE_AREA_HEADER {
         FromIntoMemory::into_bytes(self.Reserved2, &mut into[16..16 + 48]);
     }
     fn size() -> usize {
-        8 + 8 + 48
+        64u32 as usize
     }
 }
 #[doc = "*Required namespaces: *"]
@@ -34977,7 +34239,7 @@ impl FromIntoMemory for XSAVE_FORMAT {
         FromIntoMemory::into_bytes(self.Reserved4, &mut into[416..416 + 96]);
     }
     fn size() -> usize {
-        2 + 2 + 1 + 1 + 2 + 4 + 2 + 2 + 4 + 2 + 2 + 4 + 4 + 128 + 256 + 96
+        512u32 as usize
     }
 }
 pub struct XSAVE_FORMAT {
@@ -35105,7 +34367,7 @@ impl FromIntoMemory for XSAVE_FORMAT {
         FromIntoMemory::into_bytes(self.Reserved4, &mut into[288..288 + 224]);
     }
     fn size() -> usize {
-        2 + 2 + 1 + 1 + 2 + 4 + 2 + 2 + 4 + 2 + 2 + 4 + 4 + 128 + 128 + 224
+        512u32 as usize
     }
 }
 pub struct XSTATE_CONFIGURATION {
@@ -35202,7 +34464,7 @@ impl FromIntoMemory for XSTATE_CONFIGURATION {
         FromIntoMemory::into_bytes(self.Spare, &mut into[844..844 + 4]);
     }
     fn size() -> usize {
-        8 + 8 + 4 + 8 + 512 + 8 + 8 + 4 + 256 + 8 + 8 + 4 + 4
+        848u32 as usize
     }
 }
 pub struct XSTATE_CONFIGURATION_0 {
@@ -35267,7 +34529,7 @@ impl FromIntoMemory for XSTATE_CONFIGURATION_0_0 {
         FromIntoMemory::into_bytes(self._bitfield, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4
+        4u32 as usize
     }
 }
 pub struct XSTATE_CONFIG_FEATURE_MSC_INFO {
@@ -35313,7 +34575,7 @@ impl FromIntoMemory for XSTATE_CONFIG_FEATURE_MSC_INFO {
         FromIntoMemory::into_bytes(self.Features, &mut into[16..16 + 512]);
     }
     fn size() -> usize {
-        4 + 4 + 8 + 512
+        528u32 as usize
     }
 }
 #[doc = "*Required namespaces: *"]
@@ -35390,7 +34652,7 @@ impl FromIntoMemory for XSTATE_CONTEXT {
         FromIntoMemory::into_bytes(self.Buffer, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        8 + 4 + 4 + 4 + 4
+        24u32 as usize
     }
 }
 pub struct XSTATE_CONTEXT {
@@ -35465,7 +34727,7 @@ impl FromIntoMemory for XSTATE_CONTEXT {
         FromIntoMemory::into_bytes(self.Reserved3, &mut into[28..28 + 4]);
     }
     fn size() -> usize {
-        8 + 4 + 4 + 4 + 4 + 4 + 4
+        32u32 as usize
     }
 }
 pub struct XSTATE_FEATURE {
@@ -35508,7 +34770,7 @@ impl FromIntoMemory for XSTATE_FEATURE {
         FromIntoMemory::into_bytes(self.Size, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        4 + 4
+        8u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -35615,7 +34877,7 @@ impl FromIntoMemory for _GETSETBUSDATA {
         FromIntoMemory::into_bytes(self.Length, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4
+        24u32 as usize
     }
 }
 pub struct _IMAGEHLP_JIT_SYMBOL_MAP {
@@ -35665,7 +34927,7 @@ impl FromIntoMemory for _IMAGEHLP_JIT_SYMBOL_MAP {
         FromIntoMemory::into_bytes(self.BaseOfImage, &mut into[16..16 + 8]);
     }
     fn size() -> usize {
-        4 + 8 + 8
+        24u32 as usize
     }
 }
 pub struct __MIDL___MIDL_itf_jscript9diag_0000_0007_0001 {
@@ -35721,7 +34983,7 @@ impl FromIntoMemory for __MIDL___MIDL_itf_jscript9diag_0000_0007_0001 {
         FromIntoMemory::into_bytes(self.StackOffset, &mut into[24..24 + 8]);
     }
     fn size() -> usize {
-        8 + 8 + 8 + 8
+        32u32 as usize
     }
 }
 pub const fasaCaseSensitive: u32 = 4u32;

@@ -3,6 +3,7 @@ use core_mem::ptr::MutPtr;
 use core_str::PSTR;
 use std::fmt::Debug;
 use win32::Win32::Foundation::HANDLE;
+use win32::Win32::System::Kernel::STRING64;
 use win32::Win32::System::Memory::{HEAP_NO_SERIALIZE, HEAP_ZERO_MEMORY};
 use win32::Win32::System::Threading::{STARTF_TITLEISAPPID, STARTF_USEHOTKEY, STARTUPINFOA};
 
@@ -57,4 +58,13 @@ fn structs() {
         hStdOutput: HANDLE(0x3b7d0639),
         hStdError: HANDLE(0x7d7b25ba),
     });
+
+    // it has some alignment, so kinda useful to check it's good
+    test_roundtrip(STRING64 {
+        Length: 12,
+        MaximumLength: 13413,
+        Buffer: 1028991820981290182,
+    });
+
+    assert_eq!(STRING64::size(), 16);
 }

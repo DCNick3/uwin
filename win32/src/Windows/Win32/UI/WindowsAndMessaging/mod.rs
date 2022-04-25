@@ -53,7 +53,7 @@ impl FromIntoMemory for ACCEL {
         FromIntoMemory::into_bytes(self.cmd, &mut into[4..4 + 2]);
     }
     fn size() -> usize {
-        1 + 2 + 2
+        6u32 as usize
     }
 }
 pub struct ALTTABINFO {
@@ -140,7 +140,7 @@ impl FromIntoMemory for ALTTABINFO {
         FromIntoMemory::into_bytes(self.ptStart, &mut into[32..32 + 8]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 8
+        40u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -251,7 +251,7 @@ impl FromIntoMemory for ANIMATIONINFO {
         FromIntoMemory::into_bytes(self.iMinAnimate, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        4 + 4
+        8u32 as usize
     }
 }
 pub const ARW_DOWN: i32 = 4i32;
@@ -309,7 +309,7 @@ impl FromIntoMemory for AUDIODESCRIPTION {
         FromIntoMemory::into_bytes(self.Locale, &mut into[8..8 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4
+        12u32 as usize
     }
 }
 pub const BM_CLICK: u32 = 245u32;
@@ -492,7 +492,7 @@ impl FromIntoMemory for CBTACTIVATESTRUCT {
         FromIntoMemory::into_bytes(self.hWndActive, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        4 + 4
+        8u32 as usize
     }
 }
 pub struct CBT_CREATEWNDA {
@@ -536,7 +536,7 @@ impl FromIntoMemory for CBT_CREATEWNDA {
         FromIntoMemory::into_bytes(self.hwndInsertAfter, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        4 + 4
+        8u32 as usize
     }
 }
 pub struct CBT_CREATEWNDW {
@@ -580,7 +580,7 @@ impl FromIntoMemory for CBT_CREATEWNDW {
         FromIntoMemory::into_bytes(self.hwndInsertAfter, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        4 + 4
+        8u32 as usize
     }
 }
 pub const CB_ADDSTRING: u32 = 323u32;
@@ -665,7 +665,7 @@ impl FromIntoMemory for CHANGEFILTERSTRUCT {
         FromIntoMemory::into_bytes(self.ExtStatus, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        4 + 4
+        8u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -744,7 +744,7 @@ impl FromIntoMemory for CLIENTCREATESTRUCT {
         FromIntoMemory::into_bytes(self.idFirstChild, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        4 + 4
+        8u32 as usize
     }
 }
 pub const COLOR_BTNHIGHLIGHT: u32 = 20u32;
@@ -860,7 +860,7 @@ impl FromIntoMemory for CREATESTRUCTA {
         FromIntoMemory::into_bytes(self.dwExStyle, &mut into[44..44 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4
+        48u32 as usize
     }
 }
 pub struct CREATESTRUCTW {
@@ -967,7 +967,7 @@ impl FromIntoMemory for CREATESTRUCTW {
         FromIntoMemory::into_bytes(self.dwExStyle, &mut into[44..44 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4
+        48u32 as usize
     }
 }
 pub const CSOUND_SYSTEM: u32 = 16u32;
@@ -1033,7 +1033,7 @@ impl FromIntoMemory for CURSORINFO {
         FromIntoMemory::into_bytes(self.ptScreenPos, &mut into[12..12 + 8]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 8
+        20u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -1138,7 +1138,7 @@ impl FromIntoMemory for CURSORSHAPE {
         FromIntoMemory::into_bytes(self.BitsPixel, &mut into[21..21 + 1]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 1 + 1
+        24u32 as usize
     }
 }
 pub const CURSOR_CREATION_SCALING_DEFAULT: u32 = 2u32;
@@ -1207,7 +1207,7 @@ impl FromIntoMemory for CWPRETSTRUCT {
         FromIntoMemory::into_bytes(self.hwnd, &mut into[16..16 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4
+        20u32 as usize
     }
 }
 pub struct CWPSTRUCT {
@@ -1266,7 +1266,7 @@ impl FromIntoMemory for CWPSTRUCT {
         FromIntoMemory::into_bytes(self.hwnd, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4
+        16u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -1394,7 +1394,7 @@ impl FromIntoMemory for DEBUGHOOKINFO {
         FromIntoMemory::into_bytes(self.code, &mut into[16..16 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4
+        20u32 as usize
     }
 }
 pub const DESKTOP_CREATEMENU: i32 = 4i32;
@@ -1541,7 +1541,7 @@ impl FromIntoMemory for DLGITEMTEMPLATE {
         FromIntoMemory::into_bytes(self.id, &mut into[16..16 + 2]);
     }
     fn size() -> usize {
-        4 + 4 + 2 + 2 + 2 + 2 + 2
+        20u32 as usize
     }
 }
 pub type DLGPROC = ::core::option::Option<()>;
@@ -1603,7 +1603,7 @@ impl FromIntoMemory for DLGTEMPLATE {
         FromIntoMemory::into_bytes(self.cy, &mut into[16..16 + 2]);
     }
     fn size() -> usize {
-        4 + 4 + 2 + 2 + 2 + 2 + 2
+        20u32 as usize
     }
 }
 pub const DLGWINDOWEXTRA: u32 = 30u32;
@@ -1687,7 +1687,7 @@ impl FromIntoMemory for DROPSTRUCT {
         FromIntoMemory::into_bytes(self.dwControlData, &mut into[24..24 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 8 + 4
+        28u32 as usize
     }
 }
 pub const DS_3DLOOK: i32 = 4i32;
@@ -1843,7 +1843,7 @@ impl FromIntoMemory for EVENTMSG {
         FromIntoMemory::into_bytes(self.hwnd, &mut into[16..16 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4
+        20u32 as usize
     }
 }
 pub const EVENT_AIA_END: u32 = 45055u32;
@@ -2016,7 +2016,7 @@ impl FromIntoMemory for FLASHWINFO {
         FromIntoMemory::into_bytes(self.dwTimeout, &mut into[16..16 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4
+        20u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -2432,7 +2432,7 @@ impl FromIntoMemory for GUITHREADINFO {
         FromIntoMemory::into_bytes(self.rcCaret, &mut into[32..32 + 16]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 16
+        48u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -2621,7 +2621,7 @@ impl FromIntoMemory for HARDWAREHOOKSTRUCT {
         FromIntoMemory::into_bytes(self.lParam, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4
+        16u32 as usize
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
@@ -2978,7 +2978,7 @@ impl FromIntoMemory for ICONINFO {
         FromIntoMemory::into_bytes(self.hbmColor, &mut into[16..16 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4
+        20u32 as usize
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
@@ -3085,7 +3085,7 @@ impl FromIntoMemory for ICONINFOEXA {
         FromIntoMemory::into_bytes(self.szResName, &mut into[286..286 + 260]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 2 + 260 + 260
+        548u32 as usize
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
@@ -3188,7 +3188,7 @@ impl FromIntoMemory for ICONINFOEXW {
         FromIntoMemory::into_bytes(self.szResName, &mut into[286..286 + 260]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 2 + 260 + 260
+        548u32 as usize
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
@@ -3266,7 +3266,7 @@ impl FromIntoMemory for ICONMETRICSA {
         FromIntoMemory::into_bytes(self.lfFont, &mut into[16..16 + 60]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 60
+        76u32 as usize
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
@@ -3344,7 +3344,7 @@ impl FromIntoMemory for ICONMETRICSW {
         FromIntoMemory::into_bytes(self.lfFont, &mut into[16..16 + 60]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 60
+        76u32 as usize
     }
 }
 pub const ICON_BIG: u32 = 1u32;
@@ -3512,7 +3512,7 @@ impl FromIntoMemory for IndexedResourceQualifier {
         FromIntoMemory::into_bytes(self.value, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        4 + 4
+        8u32 as usize
     }
 }
 pub struct KBDLLHOOKSTRUCT {
@@ -3574,7 +3574,7 @@ impl FromIntoMemory for KBDLLHOOKSTRUCT {
         FromIntoMemory::into_bytes(self.dwExtraInfo, &mut into[16..16 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4
+        20u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -3881,7 +3881,7 @@ impl FromIntoMemory for MDICREATESTRUCTA {
         FromIntoMemory::into_bytes(self.lParam, &mut into[32..32 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4
+        36u32 as usize
     }
 }
 pub struct MDICREATESTRUCTW {
@@ -3969,7 +3969,7 @@ impl FromIntoMemory for MDICREATESTRUCTW {
         FromIntoMemory::into_bytes(self.lParam, &mut into[32..32 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4
+        36u32 as usize
     }
 }
 pub struct MDINEXTMENU {
@@ -4020,7 +4020,7 @@ impl FromIntoMemory for MDINEXTMENU {
         FromIntoMemory::into_bytes(self.hwndNext, &mut into[8..8 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4
+        12u32 as usize
     }
 }
 pub const MDIS_ALLCHILDSTYLES: u32 = 1u32;
@@ -4085,7 +4085,7 @@ impl FromIntoMemory for MENUBARINFO {
         FromIntoMemory::into_bytes(self._bitfield, &mut into[28..28 + 4]);
     }
     fn size() -> usize {
-        4 + 16 + 4 + 4 + 4
+        32u32 as usize
     }
 }
 pub struct MENUGETOBJECTINFO {
@@ -4148,7 +4148,7 @@ impl FromIntoMemory for MENUGETOBJECTINFO {
         FromIntoMemory::into_bytes(self.pvObj, &mut into[16..16 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4
+        20u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -4270,7 +4270,7 @@ impl FromIntoMemory for MENUINFO {
         FromIntoMemory::into_bytes(self.dwMenuData, &mut into[24..24 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 4
+        28u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -4517,7 +4517,7 @@ impl FromIntoMemory for MENUITEMINFOA {
         FromIntoMemory::into_bytes(self.hbmpItem, &mut into[44..44 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4
+        48u32 as usize
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
@@ -4638,7 +4638,7 @@ impl FromIntoMemory for MENUITEMINFOW {
         FromIntoMemory::into_bytes(self.hbmpItem, &mut into[44..44 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4
+        48u32 as usize
     }
 }
 pub struct MENUITEMTEMPLATE {
@@ -4688,7 +4688,7 @@ impl FromIntoMemory for MENUITEMTEMPLATE {
         FromIntoMemory::into_bytes(self.mtString, &mut into[4..4 + 1]);
     }
     fn size() -> usize {
-        2 + 2 + 1
+        6u32 as usize
     }
 }
 pub struct MENUITEMTEMPLATEHEADER {
@@ -4731,7 +4731,7 @@ impl FromIntoMemory for MENUITEMTEMPLATEHEADER {
         FromIntoMemory::into_bytes(self.offset, &mut into[2..2 + 2]);
     }
     fn size() -> usize {
-        2 + 2
+        4u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -5199,7 +5199,7 @@ impl FromIntoMemory for MESSAGE_RESOURCE_BLOCK {
         FromIntoMemory::into_bytes(self.OffsetToEntries, &mut into[8..8 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4
+        12u32 as usize
     }
 }
 pub struct MESSAGE_RESOURCE_DATA {
@@ -5243,7 +5243,7 @@ impl FromIntoMemory for MESSAGE_RESOURCE_DATA {
         FromIntoMemory::into_bytes(self.Blocks, &mut into[4..4 + 12]);
     }
     fn size() -> usize {
-        4 + 12
+        16u32 as usize
     }
 }
 pub struct MESSAGE_RESOURCE_ENTRY {
@@ -5291,7 +5291,7 @@ impl FromIntoMemory for MESSAGE_RESOURCE_ENTRY {
         FromIntoMemory::into_bytes(self.Text, &mut into[4..4 + 1]);
     }
     fn size() -> usize {
-        2 + 2 + 1
+        6u32 as usize
     }
 }
 pub const METRICS_USEDEFAULT: i32 = -1i32;
@@ -5355,7 +5355,7 @@ impl FromIntoMemory for MINIMIZEDMETRICS {
         FromIntoMemory::into_bytes(self.iArrange, &mut into[16..16 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4
+        20u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -5458,7 +5458,7 @@ impl FromIntoMemory for MINMAXINFO {
         FromIntoMemory::into_bytes(self.ptMaxTrackSize, &mut into[32..32 + 8]);
     }
     fn size() -> usize {
-        8 + 8 + 8 + 8 + 8
+        40u32 as usize
     }
 }
 pub const MIN_LOGICALDPIOVERRIDE: i32 = -2i32;
@@ -5546,7 +5546,7 @@ impl FromIntoMemory for MOUSEHOOKSTRUCT {
         FromIntoMemory::into_bytes(self.dwExtraInfo, &mut into[16..16 + 4]);
     }
     fn size() -> usize {
-        8 + 4 + 4 + 4
+        20u32 as usize
     }
 }
 pub struct MOUSEHOOKSTRUCTEX {
@@ -5595,7 +5595,7 @@ impl FromIntoMemory for MOUSEHOOKSTRUCTEX {
         FromIntoMemory::into_bytes(self.mouseData, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        20 + 4
+        24u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -5731,7 +5731,7 @@ impl FromIntoMemory for MSG {
         FromIntoMemory::into_bytes(self.pt, &mut into[20..20 + 8]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 8
+        28u32 as usize
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.UI.Shell'*"]
@@ -5843,7 +5843,7 @@ impl FromIntoMemory for MSGBOXPARAMSA {
         FromIntoMemory::into_bytes(self.dwLanguageId, &mut into[36..36 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4
+        40u32 as usize
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.UI.Shell'*"]
@@ -5952,7 +5952,7 @@ impl FromIntoMemory for MSGBOXPARAMSW {
         FromIntoMemory::into_bytes(self.dwLanguageId, &mut into[36..36 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4
+        40u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -6122,7 +6122,7 @@ impl FromIntoMemory for MSLLHOOKSTRUCT {
         FromIntoMemory::into_bytes(self.dwExtraInfo, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        8 + 4 + 4 + 4 + 4
+        24u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -6319,7 +6319,7 @@ impl FromIntoMemory for MrmResourceIndexerHandle {
         FromIntoMemory::into_bytes(self.handle, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4
+        4u32 as usize
     }
 }
 pub struct MrmResourceIndexerMessage {
@@ -6368,7 +6368,7 @@ impl FromIntoMemory for MrmResourceIndexerMessage {
         FromIntoMemory::into_bytes(self.text, &mut into[8..8 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4
+        12u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -6453,7 +6453,7 @@ impl FromIntoMemory for NCCALCSIZE_PARAMS {
         FromIntoMemory::into_bytes(self.lppos, &mut into[48..48 + 4]);
     }
     fn size() -> usize {
-        48 + 4
+        52u32 as usize
     }
 }
 pub const NFR_ANSI: u32 = 1u32;
@@ -6616,7 +6616,7 @@ impl FromIntoMemory for NONCLIENTMETRICSA {
         FromIntoMemory::into_bytes(self.iPaddedBorderWidth, &mut into[340..340 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 60 + 4 + 4 + 60 + 4 + 4 + 60 + 60 + 60 + 4
+        344u32 as usize
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
@@ -6769,7 +6769,7 @@ impl FromIntoMemory for NONCLIENTMETRICSW {
         FromIntoMemory::into_bytes(self.iPaddedBorderWidth, &mut into[340..340 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 60 + 4 + 4 + 60 + 4 + 4 + 60 + 60 + 60 + 4
+        344u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -7284,7 +7284,7 @@ impl FromIntoMemory for SCROLLBARINFO {
         FromIntoMemory::into_bytes(self.rgstate, &mut into[36..36 + 24]);
     }
     fn size() -> usize {
-        4 + 16 + 4 + 4 + 4 + 4 + 24
+        60u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -7419,7 +7419,7 @@ impl FromIntoMemory for SCROLLINFO {
         FromIntoMemory::into_bytes(self.nTrackPos, &mut into[24..24 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 4
+        28u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -7687,7 +7687,7 @@ impl FromIntoMemory for SHELLHOOKINFO {
         FromIntoMemory::into_bytes(self.rc, &mut into[4..4 + 16]);
     }
     fn size() -> usize {
-        4 + 16
+        20u32 as usize
     }
 }
 pub const SHOW_FULLSCREEN: u32 = 3u32;
@@ -7926,7 +7926,7 @@ impl FromIntoMemory for STYLESTRUCT {
         FromIntoMemory::into_bytes(self.styleNew, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        4 + 4
+        8u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -8784,7 +8784,7 @@ impl FromIntoMemory for TITLEBARINFO {
         FromIntoMemory::into_bytes(self.rgstate, &mut into[20..20 + 24]);
     }
     fn size() -> usize {
-        4 + 16 + 24
+        44u32 as usize
     }
 }
 pub struct TITLEBARINFOEX {
@@ -8842,7 +8842,7 @@ impl FromIntoMemory for TITLEBARINFOEX {
         FromIntoMemory::into_bytes(self.rgrect, &mut into[44..44 + 96]);
     }
     fn size() -> usize {
-        4 + 16 + 24 + 96
+        140u32 as usize
     }
 }
 pub const TKF_AVAILABLE: u32 = 2u32;
@@ -8910,7 +8910,7 @@ impl FromIntoMemory for TPMPARAMS {
         FromIntoMemory::into_bytes(self.rcExclude, &mut into[4..4 + 16]);
     }
     fn size() -> usize {
-        4 + 16
+        20u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -9045,7 +9045,7 @@ impl FromIntoMemory for TouchPredictionParameters {
         FromIntoMemory::into_bytes(self.bUseHWTimeStamp, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4
+        16u32 as usize
     }
 }
 pub const UISF_ACTIVE: u32 = 4u32;
@@ -9173,7 +9173,7 @@ impl FromIntoMemory for UPDATELAYEREDWINDOWINFO {
         FromIntoMemory::into_bytes(self.prcDirty, &mut into[36..36 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4
+        40u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -9314,7 +9314,7 @@ impl FromIntoMemory for WINDOWINFO {
         FromIntoMemory::into_bytes(self.wCreatorVersion, &mut into[58..58 + 2]);
     }
     fn size() -> usize {
-        4 + 16 + 16 + 4 + 4 + 4 + 4 + 4 + 2 + 2
+        60u32 as usize
     }
 }
 pub struct WINDOWPLACEMENT {
@@ -9385,7 +9385,7 @@ impl FromIntoMemory for WINDOWPLACEMENT {
         FromIntoMemory::into_bytes(self.rcNormalPosition, &mut into[28..28 + 16]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 8 + 8 + 16
+        44u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -9523,7 +9523,7 @@ impl FromIntoMemory for WINDOWPOS {
         FromIntoMemory::into_bytes(self.flags, &mut into[24..24 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 4
+        28u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -10226,7 +10226,7 @@ impl FromIntoMemory for WNDCLASSA {
         FromIntoMemory::into_bytes(self.lpszClassName, &mut into[36..36 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4
+        40u32 as usize
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
@@ -10346,7 +10346,7 @@ impl FromIntoMemory for WNDCLASSEXA {
         FromIntoMemory::into_bytes(self.hIconSm, &mut into[44..44 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4
+        48u32 as usize
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
@@ -10466,7 +10466,7 @@ impl FromIntoMemory for WNDCLASSEXW {
         FromIntoMemory::into_bytes(self.hIconSm, &mut into[44..44 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4
+        48u32 as usize
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
@@ -10574,7 +10574,7 @@ impl FromIntoMemory for WNDCLASSW {
         FromIntoMemory::into_bytes(self.lpszClassName, &mut into[36..36 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4
+        40u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]

@@ -90,7 +90,7 @@ impl FromIntoMemory for APP_LOCAL_DEVICE_ID {
         FromIntoMemory::into_bytes(self.value, &mut into[0..0 + 32]);
     }
     fn size() -> usize {
-        32
+        32u32 as usize
     }
 }
 pub const APP_LOCAL_DEVICE_ID_SIZE: u32 = 32u32;
@@ -1047,7 +1047,7 @@ impl FromIntoMemory for DECIMAL {
         FromIntoMemory::into_bytes(self.Anonymous2, &mut into[16..16 + 16]);
     }
     fn size() -> usize {
-        2 + 4 + 4 + 16
+        32u32 as usize
     }
 }
 pub struct DECIMAL_0 {
@@ -1117,7 +1117,7 @@ impl FromIntoMemory for DECIMAL_0_0 {
         FromIntoMemory::into_bytes(self.sign, &mut into[1..1 + 1]);
     }
     fn size() -> usize {
-        1 + 1
+        2u32 as usize
     }
 }
 pub struct DECIMAL_1 {
@@ -1187,7 +1187,7 @@ impl FromIntoMemory for DECIMAL_1_0 {
         FromIntoMemory::into_bytes(self.Mid32, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        4 + 4
+        8u32 as usize
     }
 }
 pub const DIGSIG_E_CRYPTO: crate::core::HRESULT = crate::core::HRESULT(-2146762744i32);
@@ -2359,7 +2359,7 @@ impl FromIntoMemory for FILETIME {
         FromIntoMemory::into_bytes(self.dwHighDateTime, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        4 + 4
+        8u32 as usize
     }
 }
 pub const FILTER_E_ALREADY_OPEN: crate::core::HRESULT = crate::core::HRESULT(-2147215562i32);
@@ -2419,7 +2419,7 @@ impl FromIntoMemory for FLOAT128 {
         FromIntoMemory::into_bytes(self.HighPart, &mut into[8..8 + 8]);
     }
     fn size() -> usize {
-        8 + 8
+        16u32 as usize
     }
 }
 pub const FRS_ERR_AUTHENTICATION: i32 = 8008i32;
@@ -3149,7 +3149,7 @@ impl FromIntoMemory for HLSURF__ {
         FromIntoMemory::into_bytes(self.unused, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4
+        4u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -3219,7 +3219,7 @@ impl FromIntoMemory for HSPRITE__ {
         FromIntoMemory::into_bytes(self.unused, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4
+        4u32 as usize
     }
 }
 pub const HSP_BASE_ERROR_MASK: crate::core::HRESULT = crate::core::HRESULT(-2128019200i32);
@@ -3286,7 +3286,7 @@ impl FromIntoMemory for HSTR__ {
         FromIntoMemory::into_bytes(self.unused, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4
+        4u32 as usize
     }
 }
 pub const HTTP_E_STATUS_AMBIGUOUS: crate::core::HRESULT = crate::core::HRESULT(-2145844948i32);
@@ -3372,7 +3372,7 @@ impl FromIntoMemory for HUMPD__ {
         FromIntoMemory::into_bytes(self.unused, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4
+        4u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -3550,7 +3550,7 @@ impl FromIntoMemory for LUID {
         FromIntoMemory::into_bytes(self.HighPart, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        4 + 4
+        8u32 as usize
     }
 }
 pub const MARSHAL_E_FIRST: i32 = -2147221216i32;
@@ -4215,7 +4215,7 @@ impl FromIntoMemory for POINT {
         FromIntoMemory::into_bytes(self.y, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        4 + 4
+        8u32 as usize
     }
 }
 pub struct POINTL {
@@ -4255,7 +4255,7 @@ impl FromIntoMemory for POINTL {
         FromIntoMemory::into_bytes(self.y, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        4 + 4
+        8u32 as usize
     }
 }
 pub struct POINTS {
@@ -4295,7 +4295,7 @@ impl FromIntoMemory for POINTS {
         FromIntoMemory::into_bytes(self.y, &mut into[2..2 + 2]);
     }
     fn size() -> usize {
-        2 + 2
+        4u32 as usize
     }
 }
 pub const PRESENTATION_ERROR_LOST: crate::core::HRESULT = crate::core::HRESULT(-2004811775i32);
@@ -4455,7 +4455,7 @@ impl FromIntoMemory for RECT {
         FromIntoMemory::into_bytes(self.bottom, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4
+        16u32 as usize
     }
 }
 pub struct RECTL {
@@ -4511,7 +4511,7 @@ impl FromIntoMemory for RECTL {
         FromIntoMemory::into_bytes(self.bottom, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4
+        16u32 as usize
     }
 }
 pub const REGDB_E_BADTHREADINGMODEL: crate::core::HRESULT = crate::core::HRESULT(-2147221162i32);
@@ -5047,7 +5047,7 @@ impl FromIntoMemory for SIZE {
         FromIntoMemory::into_bytes(self.cy, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        4 + 4
+        8u32 as usize
     }
 }
 pub const SPAPI_E_AUTHENTICODE_DISALLOWED: crate::core::HRESULT =
@@ -8148,7 +8148,7 @@ impl FromIntoMemory for SYSTEMTIME {
         FromIntoMemory::into_bytes(self.wMilliseconds, &mut into[14..14 + 2]);
     }
     fn size() -> usize {
-        2 + 2 + 2 + 2 + 2 + 2 + 2 + 2
+        16u32 as usize
     }
 }
 pub const S_APPLICATION_ACTIVATION_ERROR_HANDLED_BY_DIALOG: crate::core::HRESULT =
@@ -8716,7 +8716,7 @@ impl FromIntoMemory for UNICODE_STRING {
         FromIntoMemory::into_bytes(self.Buffer, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        2 + 2 + 4
+        8u32 as usize
     }
 }
 pub const UTC_E_ACTION_NOT_SUPPORTED_IN_DESTINATION: crate::core::HRESULT =

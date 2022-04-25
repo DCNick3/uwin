@@ -67,7 +67,7 @@ impl FromIntoMemory for CACHE_DESCRIPTOR {
         FromIntoMemory::into_bytes(self.Type, &mut into[8..8 + 4]);
     }
     fn size() -> usize {
-        1 + 1 + 2 + 4 + 4
+        12u32 as usize
     }
 }
 pub struct CACHE_RELATIONSHIP {
@@ -133,7 +133,7 @@ impl FromIntoMemory for CACHE_RELATIONSHIP {
         FromIntoMemory::into_bytes(self.Anonymous, &mut into[32..32 + 24]);
     }
     fn size() -> usize {
-        1 + 1 + 2 + 4 + 4 + 18 + 2 + 24
+        56u32 as usize
     }
 }
 pub struct CACHE_RELATIONSHIP_0 {
@@ -570,7 +570,7 @@ impl FromIntoMemory for GROUP_AFFINITY {
         FromIntoMemory::into_bytes(self.Reserved, &mut into[6..6 + 6]);
     }
     fn size() -> usize {
-        4 + 2 + 6
+        12u32 as usize
     }
 }
 pub struct GROUP_RELATIONSHIP {
@@ -627,7 +627,7 @@ impl FromIntoMemory for GROUP_RELATIONSHIP {
         FromIntoMemory::into_bytes(self.GroupInfo, &mut into[24..24 + 44]);
     }
     fn size() -> usize {
-        2 + 2 + 20 + 44
+        68u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -751,7 +751,7 @@ impl FromIntoMemory for MEMORYSTATUS {
         FromIntoMemory::into_bytes(self.dwAvailVirtual, &mut into[28..28 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 4 + 4
+        32u32 as usize
     }
 }
 pub struct MEMORYSTATUSEX {
@@ -837,7 +837,7 @@ impl FromIntoMemory for MEMORYSTATUSEX {
         FromIntoMemory::into_bytes(self.ullAvailExtendedVirtual, &mut into[56..56 + 8]);
     }
     fn size() -> usize {
-        4 + 4 + 8 + 8 + 8 + 8 + 8 + 8 + 8
+        64u32 as usize
     }
 }
 pub const NTDDI_LONGHORN: u32 = 100663296u32;
@@ -932,7 +932,7 @@ impl FromIntoMemory for NUMA_NODE_RELATIONSHIP {
         FromIntoMemory::into_bytes(self.Anonymous, &mut into[24..24 + 24]);
     }
     fn size() -> usize {
-        4 + 18 + 2 + 24
+        48u32 as usize
     }
 }
 pub struct NUMA_NODE_RELATIONSHIP_0 {
@@ -1029,7 +1029,7 @@ impl FromIntoMemory for OSVERSIONINFOA {
         FromIntoMemory::into_bytes(self.szCSDVersion, &mut into[20..20 + 128]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 128
+        148u32 as usize
     }
 }
 pub struct OSVERSIONINFOEXA {
@@ -1129,7 +1129,7 @@ impl FromIntoMemory for OSVERSIONINFOEXA {
         FromIntoMemory::into_bytes(self.wReserved, &mut into[155..155 + 1]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 128 + 2 + 2 + 2 + 1 + 1
+        156u32 as usize
     }
 }
 pub struct OSVERSIONINFOEXW {
@@ -1227,7 +1227,7 @@ impl FromIntoMemory for OSVERSIONINFOEXW {
         FromIntoMemory::into_bytes(self.wReserved, &mut into[155..155 + 1]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 128 + 2 + 2 + 2 + 1 + 1
+        156u32 as usize
     }
 }
 pub struct OSVERSIONINFOW {
@@ -1295,7 +1295,7 @@ impl FromIntoMemory for OSVERSIONINFOW {
         FromIntoMemory::into_bytes(self.szCSDVersion, &mut into[20..20 + 128]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 128
+        148u32 as usize
     }
 }
 pub const OSVERSION_MASK: u32 = 4294901760u32;
@@ -1547,7 +1547,7 @@ impl FromIntoMemory for PROCESSOR_GROUP_INFO {
         FromIntoMemory::into_bytes(self.ActiveProcessorMask, &mut into[40..40 + 4]);
     }
     fn size() -> usize {
-        1 + 1 + 38 + 4
+        44u32 as usize
     }
 }
 pub struct PROCESSOR_RELATIONSHIP {
@@ -1609,7 +1609,7 @@ impl FromIntoMemory for PROCESSOR_RELATIONSHIP {
         FromIntoMemory::into_bytes(self.GroupMask, &mut into[24..24 + 12]);
     }
     fn size() -> usize {
-        1 + 1 + 20 + 2 + 12
+        36u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -1700,7 +1700,7 @@ impl FromIntoMemory for SYSTEM_CPU_SET_INFORMATION {
         FromIntoMemory::into_bytes(self.Anonymous, &mut into[8..8 + 32]);
     }
     fn size() -> usize {
-        4 + 4 + 32
+        40u32 as usize
     }
 }
 pub struct SYSTEM_CPU_SET_INFORMATION_0 {
@@ -1804,7 +1804,7 @@ impl FromIntoMemory for SYSTEM_CPU_SET_INFORMATION_0_0 {
         FromIntoMemory::into_bytes(self.AllocationTag, &mut into[24..24 + 8]);
     }
     fn size() -> usize {
-        4 + 2 + 1 + 1 + 1 + 1 + 1 + 2 + 8 + 8
+        32u32 as usize
     }
 }
 pub struct SYSTEM_CPU_SET_INFORMATION_0_0_0 {
@@ -1869,7 +1869,7 @@ impl FromIntoMemory for SYSTEM_CPU_SET_INFORMATION_0_0_0_0 {
         FromIntoMemory::into_bytes(self._bitfield, &mut into[0..0 + 1]);
     }
     fn size() -> usize {
-        1
+        1u32 as usize
     }
 }
 pub struct SYSTEM_CPU_SET_INFORMATION_0_0_1 {
@@ -1978,7 +1978,7 @@ impl FromIntoMemory for SYSTEM_INFO {
         FromIntoMemory::into_bytes(self.wProcessorRevision, &mut into[38..38 + 2]);
     }
     fn size() -> usize {
-        8 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 2 + 2
+        40u32 as usize
     }
 }
 pub struct SYSTEM_INFO_0 {
@@ -2052,7 +2052,7 @@ impl FromIntoMemory for SYSTEM_INFO_0_0 {
         FromIntoMemory::into_bytes(self.wReserved, &mut into[2..2 + 2]);
     }
     fn size() -> usize {
-        2 + 2
+        4u32 as usize
     }
 }
 pub struct SYSTEM_LOGICAL_PROCESSOR_INFORMATION {
@@ -2096,7 +2096,7 @@ impl FromIntoMemory for SYSTEM_LOGICAL_PROCESSOR_INFORMATION {
         FromIntoMemory::into_bytes(self.Anonymous, &mut into[8..8 + 40]);
     }
     fn size() -> usize {
-        4 + 4 + 40
+        48u32 as usize
     }
 }
 pub struct SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0 {
@@ -2166,7 +2166,7 @@ impl FromIntoMemory for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0_0 {
         FromIntoMemory::into_bytes(self.NodeNumber, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4
+        4u32 as usize
     }
 }
 pub struct SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0_1 {
@@ -2202,7 +2202,7 @@ impl FromIntoMemory for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0_1 {
         FromIntoMemory::into_bytes(self.Flags, &mut into[0..0 + 1]);
     }
     fn size() -> usize {
-        1
+        1u32 as usize
     }
 }
 pub struct SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX {
@@ -2246,7 +2246,7 @@ impl FromIntoMemory for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX {
         FromIntoMemory::into_bytes(self.Anonymous, &mut into[8..8 + 208]);
     }
     fn size() -> usize {
-        4 + 4 + 208
+        216u32 as usize
     }
 }
 pub struct SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX_0 {
@@ -2317,7 +2317,7 @@ impl FromIntoMemory for SYSTEM_POOL_ZEROING_INFORMATION {
         FromIntoMemory::into_bytes(self.PoolZeroingSupportPresent, &mut into[0..0 + 1]);
     }
     fn size() -> usize {
-        1
+        1u32 as usize
     }
 }
 pub struct SYSTEM_PROCESSOR_CYCLE_TIME_INFORMATION {
@@ -2355,7 +2355,7 @@ impl FromIntoMemory for SYSTEM_PROCESSOR_CYCLE_TIME_INFORMATION {
         FromIntoMemory::into_bytes(self.CycleTime, &mut into[0..0 + 8]);
     }
     fn size() -> usize {
-        8
+        8u32 as usize
     }
 }
 pub struct SYSTEM_SUPPORTED_PROCESSOR_ARCHITECTURES_INFORMATION {
@@ -2393,7 +2393,7 @@ impl FromIntoMemory for SYSTEM_SUPPORTED_PROCESSOR_ARCHITECTURES_INFORMATION {
         FromIntoMemory::into_bytes(self._bitfield, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4
+        4u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]

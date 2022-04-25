@@ -62,7 +62,7 @@ impl FromIntoMemory for ENUMUILANG {
         FromIntoMemory::into_bytes(self.pEnumUIBuffer, &mut into[8..8 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4
+        12u32 as usize
     }
 }
 pub const FIND_RESOURCE_DIRECTORY_LANGUAGES: u32 = 1024u32;
@@ -196,7 +196,7 @@ impl FromIntoMemory for REDIRECTION_DESCRIPTOR {
         FromIntoMemory::into_bytes(self.Redirections, &mut into[8..8 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4
+        12u32 as usize
     }
 }
 pub struct REDIRECTION_FUNCTION_DESCRIPTOR {
@@ -247,7 +247,7 @@ impl FromIntoMemory for REDIRECTION_FUNCTION_DESCRIPTOR {
         FromIntoMemory::into_bytes(self.RedirectionTarget, &mut into[8..8 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4
+        12u32 as usize
     }
 }
 pub const RESOURCE_ENUM_LN: u32 = 1u32;

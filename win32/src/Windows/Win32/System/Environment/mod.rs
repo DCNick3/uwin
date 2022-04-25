@@ -89,7 +89,7 @@ impl FromIntoMemory for ENCLAVE_IDENTITY {
         FromIntoMemory::into_bytes(self.EnclaveType, &mut into[148..148 + 4]);
     }
     fn size() -> usize {
-        32 + 32 + 32 + 16 + 16 + 4 + 4 + 4 + 4 + 4 + 4
+        152u32 as usize
     }
 }
 pub struct ENCLAVE_INFORMATION {
@@ -141,7 +141,7 @@ impl FromIntoMemory for ENCLAVE_INFORMATION {
         FromIntoMemory::into_bytes(self.Identity, &mut into[16..16 + 152]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 152
+        168u32 as usize
     }
 }
 pub const ENCLAVE_REPORT_DATA_LENGTH: u32 = 64u32;
@@ -254,7 +254,7 @@ impl FromIntoMemory for ENCLAVE_VBS_BASIC_KEY_REQUEST {
         FromIntoMemory::into_bytes(self.CurrentSystemKeyID, &mut into[16..16 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4
+        20u32 as usize
     }
 }
 pub type VBS_BASIC_ENCLAVE_BASIC_CALL_COMMIT_PAGES = ::core::option::Option<()>;
@@ -359,7 +359,7 @@ impl FromIntoMemory for VBS_BASIC_ENCLAVE_EXCEPTION_AMD64 {
         FromIntoMemory::into_bytes(self.ExceptionRSP, &mut into[36..36 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 12 + 4 + 4 + 4 + 4 + 4
+        40u32 as usize
     }
 }
 pub struct VBS_BASIC_ENCLAVE_SYSCALL_PAGE {
@@ -508,7 +508,7 @@ impl FromIntoMemory for VBS_BASIC_ENCLAVE_SYSCALL_PAGE {
         FromIntoMemory::into_bytes(self.GenerateRandomData, &mut into[48..48 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4
+        52u32 as usize
     }
 }
 pub struct VBS_BASIC_ENCLAVE_THREAD_DESCRIPTOR32 {
@@ -576,7 +576,7 @@ impl FromIntoMemory for VBS_BASIC_ENCLAVE_THREAD_DESCRIPTOR32 {
         FromIntoMemory::into_bytes(self.ExceptionActive, &mut into[32..32 + 4]);
     }
     fn size() -> usize {
-        16 + 4 + 4 + 4 + 4 + 4
+        36u32 as usize
     }
 }
 pub struct VBS_BASIC_ENCLAVE_THREAD_DESCRIPTOR64 {
@@ -644,7 +644,7 @@ impl FromIntoMemory for VBS_BASIC_ENCLAVE_THREAD_DESCRIPTOR64 {
         FromIntoMemory::into_bytes(self.ExceptionActive, &mut into[64..64 + 4]);
     }
     fn size() -> usize {
-        32 + 8 + 8 + 8 + 8 + 4
+        72u32 as usize
     }
 }
 pub struct VBS_ENCLAVE_REPORT {
@@ -691,7 +691,7 @@ impl FromIntoMemory for VBS_ENCLAVE_REPORT {
         FromIntoMemory::into_bytes(self.EnclaveIdentity, &mut into[72..72 + 152]);
     }
     fn size() -> usize {
-        4 + 4 + 64 + 152
+        224u32 as usize
     }
 }
 pub struct VBS_ENCLAVE_REPORT_MODULE {
@@ -753,7 +753,7 @@ impl FromIntoMemory for VBS_ENCLAVE_REPORT_MODULE {
         FromIntoMemory::into_bytes(self.ModuleName, &mut into[108..108 + 1]);
     }
     fn size() -> usize {
-        8 + 32 + 32 + 16 + 16 + 4 + 1
+        112u32 as usize
     }
 }
 pub struct VBS_ENCLAVE_REPORT_PKG_HEADER {
@@ -809,7 +809,7 @@ impl FromIntoMemory for VBS_ENCLAVE_REPORT_PKG_HEADER {
         FromIntoMemory::into_bytes(self.Reserved, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4
+        24u32 as usize
     }
 }
 pub const VBS_ENCLAVE_REPORT_PKG_HEADER_VERSION_CURRENT: u32 = 1u32;
@@ -846,7 +846,7 @@ impl FromIntoMemory for VBS_ENCLAVE_REPORT_VARDATA_HEADER {
         FromIntoMemory::into_bytes(self.Size, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        4 + 4
+        8u32 as usize
     }
 }
 pub const VBS_ENCLAVE_REPORT_VERSION_CURRENT: u32 = 1u32;

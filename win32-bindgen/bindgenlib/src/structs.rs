@@ -188,7 +188,7 @@ fn gen_from_into_mem(def: &TypeDef, name: &TokenStream, cfg: &Cfg, gen: &Gen) ->
                 #(#field_into_bytes)*
             }
             fn size() -> usize {
-                #(#field_sizes)+*
+                #struct_size as usize
             }
         }
     }

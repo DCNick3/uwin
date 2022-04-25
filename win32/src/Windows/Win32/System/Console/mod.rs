@@ -47,7 +47,7 @@ impl FromIntoMemory for CHAR_INFO {
         FromIntoMemory::into_bytes(self.Attributes, &mut into[2..2 + 2]);
     }
     fn size() -> usize {
-        2 + 2
+        4u32 as usize
     }
 }
 pub struct CHAR_INFO_0 {
@@ -126,7 +126,7 @@ impl FromIntoMemory for CONSOLE_CURSOR_INFO {
         FromIntoMemory::into_bytes(self.bVisible, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        4 + 4
+        8u32 as usize
     }
 }
 pub struct CONSOLE_FONT_INFO {
@@ -169,7 +169,7 @@ impl FromIntoMemory for CONSOLE_FONT_INFO {
         FromIntoMemory::into_bytes(self.dwFontSize, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        4 + 4
+        8u32 as usize
     }
 }
 pub struct CONSOLE_FONT_INFOEX {
@@ -237,7 +237,7 @@ impl FromIntoMemory for CONSOLE_FONT_INFOEX {
         FromIntoMemory::into_bytes(self.FaceName, &mut into[20..20 + 32]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 32
+        52u32 as usize
     }
 }
 pub const CONSOLE_FULLSCREEN: u32 = 1u32;
@@ -296,7 +296,7 @@ impl FromIntoMemory for CONSOLE_HISTORY_INFO {
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4
+        16u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -427,7 +427,7 @@ impl FromIntoMemory for CONSOLE_READCONSOLE_CONTROL {
         FromIntoMemory::into_bytes(self.dwControlKeyState, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4
+        16u32 as usize
     }
 }
 pub struct CONSOLE_SCREEN_BUFFER_INFO {
@@ -489,7 +489,7 @@ impl FromIntoMemory for CONSOLE_SCREEN_BUFFER_INFO {
         FromIntoMemory::into_bytes(self.dwMaximumWindowSize, &mut into[18..18 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 2 + 8 + 4
+        22u32 as usize
     }
 }
 pub struct CONSOLE_SCREEN_BUFFER_INFOEX {
@@ -576,7 +576,7 @@ impl FromIntoMemory for CONSOLE_SCREEN_BUFFER_INFOEX {
         FromIntoMemory::into_bytes(self.ColorTable, &mut into[32..32 + 64]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 2 + 8 + 4 + 2 + 4 + 64
+        96u32 as usize
     }
 }
 pub struct CONSOLE_SELECTION_INFO {
@@ -626,7 +626,7 @@ impl FromIntoMemory for CONSOLE_SELECTION_INFO {
         FromIntoMemory::into_bytes(self.srSelection, &mut into[8..8 + 8]);
     }
     fn size() -> usize {
-        4 + 4 + 8
+        16u32 as usize
     }
 }
 pub const CONSOLE_SELECTION_IN_PROGRESS: u32 = 1u32;
@@ -670,7 +670,7 @@ impl FromIntoMemory for COORD {
         FromIntoMemory::into_bytes(self.Y, &mut into[2..2 + 2]);
     }
     fn size() -> usize {
-        2 + 2
+        4u32 as usize
     }
 }
 pub const CTRL_BREAK_EVENT: u32 = 1u32;
@@ -717,7 +717,7 @@ impl FromIntoMemory for FOCUS_EVENT_RECORD {
         FromIntoMemory::into_bytes(self.bSetFocus, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4
+        4u32 as usize
     }
 }
 pub const FOREGROUND_BLUE: u32 = 1u32;
@@ -795,7 +795,7 @@ impl FromIntoMemory for INPUT_RECORD {
         FromIntoMemory::into_bytes(self.Event, &mut into[4..4 + 44]);
     }
     fn size() -> usize {
-        2 + 44
+        48u32 as usize
     }
 }
 pub struct INPUT_RECORD_0 {
@@ -887,7 +887,7 @@ impl FromIntoMemory for KEY_EVENT_RECORD {
         FromIntoMemory::into_bytes(self.dwControlKeyState, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        4 + 2 + 2 + 2 + 2 + 4
+        16u32 as usize
     }
 }
 pub struct KEY_EVENT_RECORD_0 {
@@ -955,7 +955,7 @@ impl FromIntoMemory for MENU_EVENT_RECORD {
         FromIntoMemory::into_bytes(self.dwCommandId, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4
+        4u32 as usize
     }
 }
 pub const MOUSE_EVENT: u32 = 2u32;
@@ -1012,7 +1012,7 @@ impl FromIntoMemory for MOUSE_EVENT_RECORD {
         FromIntoMemory::into_bytes(self.dwEventFlags, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4
+        16u32 as usize
     }
 }
 pub const MOUSE_HWHEELED: u32 = 8u32;
@@ -1086,7 +1086,7 @@ impl FromIntoMemory for SMALL_RECT {
         FromIntoMemory::into_bytes(self.Bottom, &mut into[6..6 + 2]);
     }
     fn size() -> usize {
-        2 + 2 + 2 + 2
+        8u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -1155,7 +1155,7 @@ impl FromIntoMemory for WINDOW_BUFFER_SIZE_RECORD {
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4
+        4u32 as usize
     }
 }
 pub trait Api {

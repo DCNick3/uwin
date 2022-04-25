@@ -86,7 +86,7 @@ impl FromIntoMemory for CSTRING {
         FromIntoMemory::into_bytes(self.Buffer, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        2 + 2 + 4
+        8u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -196,7 +196,7 @@ impl FromIntoMemory for EXCEPTION_REGISTRATION_RECORD {
         FromIntoMemory::into_bytes(self.Handler, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        4 + 4
+        8u32 as usize
     }
 }
 pub type EXCEPTION_ROUTINE = ::core::option::Option<()>;
@@ -297,7 +297,7 @@ impl FromIntoMemory for FLOATING_SAVE_AREA {
         FromIntoMemory::into_bytes(self.Cr0NpxState, &mut into[108..108 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 4 + 80 + 4
+        112u32 as usize
     }
 }
 pub struct FLOATING_SAVE_AREA {
@@ -383,7 +383,7 @@ impl FromIntoMemory for FLOATING_SAVE_AREA {
         FromIntoMemory::into_bytes(self.Spare0, &mut into[108..108 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 4 + 80 + 4
+        112u32 as usize
     }
 }
 pub struct LIST_ENTRY {
@@ -426,7 +426,7 @@ impl FromIntoMemory for LIST_ENTRY {
         FromIntoMemory::into_bytes(self.Blink, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        4 + 4
+        8u32 as usize
     }
 }
 pub struct LIST_ENTRY32 {
@@ -469,7 +469,7 @@ impl FromIntoMemory for LIST_ENTRY32 {
         FromIntoMemory::into_bytes(self.Blink, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        4 + 4
+        8u32 as usize
     }
 }
 pub struct LIST_ENTRY64 {
@@ -512,7 +512,7 @@ impl FromIntoMemory for LIST_ENTRY64 {
         FromIntoMemory::into_bytes(self.Blink, &mut into[8..8 + 8]);
     }
     fn size() -> usize {
-        8 + 8
+        16u32 as usize
     }
 }
 pub const MAXUCHAR: u32 = 255u32;
@@ -613,7 +613,7 @@ impl FromIntoMemory for NT_TIB {
         FromIntoMemory::into_bytes(self.Self_, &mut into[28..28 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 8 + 4 + 4
+        32u32 as usize
     }
 }
 pub struct NT_TIB_0 {
@@ -684,7 +684,7 @@ impl FromIntoMemory for OBJECTID {
         FromIntoMemory::into_bytes(self.Uniquifier, &mut into[16..16 + 4]);
     }
     fn size() -> usize {
-        16 + 4
+        20u32 as usize
     }
 }
 pub struct OBJECT_ATTRIBUTES32 {
@@ -752,7 +752,7 @@ impl FromIntoMemory for OBJECT_ATTRIBUTES32 {
         FromIntoMemory::into_bytes(self.SecurityQualityOfService, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4
+        24u32 as usize
     }
 }
 pub struct OBJECT_ATTRIBUTES64 {
@@ -820,7 +820,7 @@ impl FromIntoMemory for OBJECT_ATTRIBUTES64 {
         FromIntoMemory::into_bytes(self.SecurityQualityOfService, &mut into[40..40 + 8]);
     }
     fn size() -> usize {
-        4 + 8 + 8 + 4 + 8 + 8
+        48u32 as usize
     }
 }
 pub const OBJ_CASE_INSENSITIVE: i32 = 64i32;
@@ -880,7 +880,7 @@ impl FromIntoMemory for PROCESSOR_NUMBER {
         FromIntoMemory::into_bytes(self.Reserved, &mut into[3..3 + 1]);
     }
     fn size() -> usize {
-        2 + 1 + 1
+        4u32 as usize
     }
 }
 pub struct QUAD {
@@ -911,7 +911,7 @@ impl FromIntoMemory for QUAD {
         FromIntoMemory::into_bytes(self.Anonymous, &mut into[0..0 + 16]);
     }
     fn size() -> usize {
-        16
+        16u32 as usize
     }
 }
 pub struct QUAD_0 {
@@ -974,7 +974,7 @@ impl FromIntoMemory for RTL_BALANCED_NODE {
         FromIntoMemory::into_bytes(self.Anonymous2, &mut into[16..16 + 8]);
     }
     fn size() -> usize {
-        16 + 8
+        24u32 as usize
     }
 }
 pub struct RTL_BALANCED_NODE_0 {
@@ -1044,7 +1044,7 @@ impl FromIntoMemory for RTL_BALANCED_NODE_0_0 {
         FromIntoMemory::into_bytes(self.Right, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        4 + 4
+        8u32 as usize
     }
 }
 pub struct RTL_BALANCED_NODE_1 {
@@ -1108,7 +1108,7 @@ impl FromIntoMemory for SINGLE_LIST_ENTRY {
         FromIntoMemory::into_bytes(self.Next, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4
+        4u32 as usize
     }
 }
 pub struct SINGLE_LIST_ENTRY32 {
@@ -1144,7 +1144,7 @@ impl FromIntoMemory for SINGLE_LIST_ENTRY32 {
         FromIntoMemory::into_bytes(self.Next, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4
+        4u32 as usize
     }
 }
 pub struct SLIST_ENTRY {
@@ -1180,7 +1180,7 @@ impl FromIntoMemory for SLIST_ENTRY {
         FromIntoMemory::into_bytes(self.Next, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4
+        4u32 as usize
     }
 }
 #[doc = "*Required namespaces: *"]
@@ -1276,7 +1276,7 @@ impl FromIntoMemory for SLIST_HEADER_0 {
         FromIntoMemory::into_bytes(self.Region, &mut into[8..8 + 8]);
     }
     fn size() -> usize {
-        8 + 8
+        16u32 as usize
     }
 }
 #[doc = "*Required namespaces: *"]
@@ -1333,7 +1333,7 @@ impl FromIntoMemory for SLIST_HEADER_1 {
         FromIntoMemory::into_bytes(self._bitfield2, &mut into[8..8 + 8]);
     }
     fn size() -> usize {
-        8 + 8
+        16u32 as usize
     }
 }
 #[doc = "*Required namespaces: *"]
@@ -1429,7 +1429,7 @@ impl FromIntoMemory for SLIST_HEADER_0 {
         FromIntoMemory::into_bytes(self.Region, &mut into[8..8 + 8]);
     }
     fn size() -> usize {
-        8 + 8
+        16u32 as usize
     }
 }
 #[doc = "*Required namespaces: *"]
@@ -1486,7 +1486,7 @@ impl FromIntoMemory for SLIST_HEADER_1 {
         FromIntoMemory::into_bytes(self._bitfield2, &mut into[8..8 + 8]);
     }
     fn size() -> usize {
-        8 + 8
+        16u32 as usize
     }
 }
 pub struct SLIST_HEADER {
@@ -1561,7 +1561,7 @@ impl FromIntoMemory for SLIST_HEADER_0 {
         FromIntoMemory::into_bytes(self.CpuId, &mut into[6..6 + 2]);
     }
     fn size() -> usize {
-        4 + 2 + 2
+        8u32 as usize
     }
 }
 pub struct STRING {
@@ -1611,7 +1611,7 @@ impl FromIntoMemory for STRING {
         FromIntoMemory::into_bytes(self.Buffer, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        2 + 2 + 4
+        8u32 as usize
     }
 }
 pub struct STRING32 {
@@ -1661,7 +1661,7 @@ impl FromIntoMemory for STRING32 {
         FromIntoMemory::into_bytes(self.Buffer, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        2 + 2 + 4
+        8u32 as usize
     }
 }
 pub struct STRING64 {
@@ -1711,7 +1711,7 @@ impl FromIntoMemory for STRING64 {
         FromIntoMemory::into_bytes(self.Buffer, &mut into[8..8 + 8]);
     }
     fn size() -> usize {
-        2 + 2 + 8
+        16u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -1860,7 +1860,7 @@ impl FromIntoMemory for WNF_STATE_NAME {
         FromIntoMemory::into_bytes(self.Data, &mut into[0..0 + 8]);
     }
     fn size() -> usize {
-        8
+        8u32 as usize
     }
 }
 pub trait Api {

@@ -177,7 +177,7 @@ impl FromIntoMemory for CHARSETINFO {
         FromIntoMemory::into_bytes(self.fs, &mut into[8..8 + 24]);
     }
     fn size() -> usize {
-        4 + 4 + 24
+        32u32 as usize
     }
 }
 pub const CMLangConvertCharset: crate::core::GUID =
@@ -337,7 +337,7 @@ impl FromIntoMemory for CPINFO {
         FromIntoMemory::into_bytes(self.LeadByte, &mut into[6..6 + 12]);
     }
     fn size() -> usize {
-        4 + 2 + 12
+        20u32 as usize
     }
 }
 pub struct CPINFOEXA {
@@ -406,7 +406,7 @@ impl FromIntoMemory for CPINFOEXA {
         FromIntoMemory::into_bytes(self.CodePageName, &mut into[24..24 + 260]);
     }
     fn size() -> usize {
-        4 + 2 + 12 + 1 + 4 + 260
+        284u32 as usize
     }
 }
 pub struct CPINFOEXW {
@@ -474,7 +474,7 @@ impl FromIntoMemory for CPINFOEXW {
         FromIntoMemory::into_bytes(self.CodePageName, &mut into[24..24 + 260]);
     }
     fn size() -> usize {
-        4 + 2 + 12 + 1 + 4 + 260
+        284u32 as usize
     }
 }
 pub const CPIOD_FORCE_PROMPT: i32 = -2147483648i32;
@@ -681,7 +681,7 @@ impl FromIntoMemory for CURRENCYFMTA {
         FromIntoMemory::into_bytes(self.lpCurrencySymbol, &mut into[28..28 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 4 + 4
+        32u32 as usize
     }
 }
 pub struct CURRENCYFMTW {
@@ -761,7 +761,7 @@ impl FromIntoMemory for CURRENCYFMTW {
         FromIntoMemory::into_bytes(self.lpCurrencySymbol, &mut into[28..28 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 4 + 4
+        32u32 as usize
     }
 }
 pub type DATEFMT_ENUMPROCA = ::core::option::Option<()>;
@@ -822,7 +822,7 @@ impl FromIntoMemory for DetectEncodingInfo {
         FromIntoMemory::into_bytes(self.nConfidence, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4
+        16u32 as usize
     }
 }
 pub const ELS_GUID_LANGUAGE_DETECTION: crate::core::GUID =
@@ -899,7 +899,7 @@ impl FromIntoMemory for ENUMTEXTMETRICA {
         FromIntoMemory::into_bytes(self.etmAxesList, &mut into[96..96 + 392]);
     }
     fn size() -> usize {
-        96 + 392
+        488u32 as usize
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
@@ -958,7 +958,7 @@ impl FromIntoMemory for ENUMTEXTMETRICW {
         FromIntoMemory::into_bytes(self.etmAxesList, &mut into[96..96 + 392]);
     }
     fn size() -> usize {
-        96 + 392
+        488u32 as usize
     }
 }
 pub const ENUM_ALL_CALENDARS: u32 = 4294967295u32;
@@ -1176,7 +1176,7 @@ impl FromIntoMemory for FILEMUIINFO {
         FromIntoMemory::into_bytes(self.abBuffer, &mut into[72..72 + 8]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 16 + 16 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 8
+        80u32 as usize
     }
 }
 pub const FIND_ENDSWITH: u32 = 2097152u32;
@@ -1287,7 +1287,7 @@ impl FromIntoMemory for FONTSIGNATURE {
         FromIntoMemory::into_bytes(self.fsCsb, &mut into[16..16 + 8]);
     }
     fn size() -> usize {
-        16 + 8
+        24u32 as usize
     }
 }
 pub const GEOID_NOT_AVAILABLE: i32 = -1i32;
@@ -1330,7 +1330,7 @@ impl FromIntoMemory for GOFFSET {
         FromIntoMemory::into_bytes(self.dv, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        4 + 4
+        8u32 as usize
     }
 }
 pub const GSS_ALLOW_INHERITED_COMMON: u32 = 1u32;
@@ -1649,7 +1649,7 @@ impl FromIntoMemory for LOCALESIGNATURE {
         FromIntoMemory::into_bytes(self.lsCsbSupported, &mut into[24..24 + 8]);
     }
     fn size() -> usize {
-        16 + 8 + 8
+        32u32 as usize
     }
 }
 pub const LOCALE_ALL: u32 = 0u32;
@@ -1921,7 +1921,7 @@ impl FromIntoMemory for MAPPING_DATA_RANGE {
         FromIntoMemory::into_bytes(self.prgActionDisplayNames, &mut into[36..36 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4
+        40u32 as usize
     }
 }
 pub struct MAPPING_ENUM_OPTIONS {
@@ -2013,7 +2013,7 @@ impl FromIntoMemory for MAPPING_ENUM_OPTIONS {
         FromIntoMemory::into_bytes(self._bitfield, &mut into[36..36 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4
+        40u32 as usize
     }
 }
 pub struct MAPPING_OPTIONS {
@@ -2145,7 +2145,7 @@ impl FromIntoMemory for MAPPING_OPTIONS {
         FromIntoMemory::into_bytes(self._bitfield, &mut into[60..60 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4
+        64u32 as usize
     }
 }
 pub struct MAPPING_PROPERTY_BAG {
@@ -2229,7 +2229,7 @@ impl FromIntoMemory for MAPPING_PROPERTY_BAG {
         FromIntoMemory::into_bytes(self.pContext, &mut into[28..28 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 4 + 4
+        32u32 as usize
     }
 }
 pub struct MAPPING_SERVICE_INFO {
@@ -2415,30 +2415,7 @@ impl FromIntoMemory for MAPPING_SERVICE_INFO {
         FromIntoMemory::into_bytes(self._bitfield, &mut into[100..100 + 4]);
     }
     fn size() -> usize {
-        4 + 4
-            + 2
-            + 2
-            + 2
-            + 2
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 16
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
+        104u32 as usize
     }
 }
 pub const MAX_DEFAULTCHAR: u32 = 2u32;
@@ -2580,7 +2557,7 @@ impl FromIntoMemory for MIMECPINFO {
         FromIntoMemory::into_bytes(self.bGDICharset, &mut into[290..290 + 1]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 64 + 50 + 50 + 50 + 32 + 32 + 1
+        292u32 as usize
     }
 }
 pub struct MIMECSETINFO {
@@ -2630,7 +2607,7 @@ impl FromIntoMemory for MIMECSETINFO {
         FromIntoMemory::into_bytes(self.wszCharset, &mut into[8..8 + 50]);
     }
     fn size() -> usize {
-        4 + 4 + 50
+        60u32 as usize
     }
 }
 pub const MIN_SPELLING_NTDDI: u32 = 100794368u32;
@@ -2851,7 +2828,7 @@ impl FromIntoMemory for NEWTEXTMETRICEXA {
         FromIntoMemory::into_bytes(self.ntmFontSig, &mut into[72..72 + 24]);
     }
     fn size() -> usize {
-        72 + 24
+        96u32 as usize
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
@@ -2909,7 +2886,7 @@ impl FromIntoMemory for NEWTEXTMETRICEXW {
         FromIntoMemory::into_bytes(self.ntmFontSig, &mut into[72..72 + 24]);
     }
     fn size() -> usize {
-        72 + 24
+        96u32 as usize
     }
 }
 pub struct NLSVERSIONINFO {
@@ -2972,7 +2949,7 @@ impl FromIntoMemory for NLSVERSIONINFO {
         FromIntoMemory::into_bytes(self.guidCustomVersion, &mut into[16..16 + 16]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 16
+        32u32 as usize
     }
 }
 pub struct NLSVERSIONINFOEX {
@@ -3035,7 +3012,7 @@ impl FromIntoMemory for NLSVERSIONINFOEX {
         FromIntoMemory::into_bytes(self.guidCustomVersion, &mut into[16..16 + 16]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 16
+        32u32 as usize
     }
 }
 pub const NLS_CP_CPINFO: u32 = 268435456u32;
@@ -3140,7 +3117,7 @@ impl FromIntoMemory for NUMBERFMTA {
         FromIntoMemory::into_bytes(self.NegativeOrder, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4
+        24u32 as usize
     }
 }
 pub struct NUMBERFMTW {
@@ -3208,7 +3185,7 @@ impl FromIntoMemory for NUMBERFMTW {
         FromIntoMemory::into_bytes(self.NegativeOrder, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4
+        24u32 as usize
     }
 }
 pub const NUMSYS_NAME_CAPACITY: u32 = 8u32;
@@ -3262,7 +3239,7 @@ impl FromIntoMemory for RFC1766INFO {
         FromIntoMemory::into_bytes(self.wszLocaleName, &mut into[10..10 + 32]);
     }
     fn size() -> usize {
-        4 + 6 + 32
+        44u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -3431,7 +3408,7 @@ impl FromIntoMemory for SCRIPTINFO {
         FromIntoMemory::into_bytes(self.wszProportionalFont, &mut into[88..88 + 32]);
     }
     fn size() -> usize {
-        1 + 4 + 48 + 32 + 32
+        120u32 as usize
     }
 }
 pub struct SCRIPT_ANALYSIS {
@@ -3474,7 +3451,7 @@ impl FromIntoMemory for SCRIPT_ANALYSIS {
         FromIntoMemory::into_bytes(self.s, &mut into[2..2 + 2]);
     }
     fn size() -> usize {
-        2 + 2
+        4u32 as usize
     }
 }
 pub struct SCRIPT_CONTROL {
@@ -3512,7 +3489,7 @@ impl FromIntoMemory for SCRIPT_CONTROL {
         FromIntoMemory::into_bytes(self._bitfield, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4
+        4u32 as usize
     }
 }
 pub struct SCRIPT_DIGITSUBSTITUTE {
@@ -3562,7 +3539,7 @@ impl FromIntoMemory for SCRIPT_DIGITSUBSTITUTE {
         FromIntoMemory::into_bytes(self.dwReserved, &mut into[8..8 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4
+        12u32 as usize
     }
 }
 pub const SCRIPT_DIGITSUBSTITUTE_CONTEXT: u32 = 0u32;
@@ -3634,7 +3611,7 @@ impl FromIntoMemory for SCRIPT_FONTPROPERTIES {
         FromIntoMemory::into_bytes(self.iKashidaWidth, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        4 + 2 + 2 + 2 + 2 + 4
+        16u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -3711,7 +3688,7 @@ impl FromIntoMemory for SCRIPT_ITEM {
         FromIntoMemory::into_bytes(self.a, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        4 + 4
+        8u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -3794,7 +3771,7 @@ impl FromIntoMemory for SCRIPT_LOGATTR {
         FromIntoMemory::into_bytes(self._bitfield, &mut into[0..0 + 1]);
     }
     fn size() -> usize {
-        1
+        1u32 as usize
     }
 }
 pub struct SCRIPT_PROPERTIES {
@@ -3837,7 +3814,7 @@ impl FromIntoMemory for SCRIPT_PROPERTIES {
         FromIntoMemory::into_bytes(self._bitfield2, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        4 + 4
+        8u32 as usize
     }
 }
 pub struct SCRIPT_STATE {
@@ -3875,7 +3852,7 @@ impl FromIntoMemory for SCRIPT_STATE {
         FromIntoMemory::into_bytes(self._bitfield, &mut into[0..0 + 2]);
     }
     fn size() -> usize {
-        2
+        2u32 as usize
     }
 }
 pub struct SCRIPT_TABDEF {
@@ -3931,7 +3908,7 @@ impl FromIntoMemory for SCRIPT_TABDEF {
         FromIntoMemory::into_bytes(self.iTabOrigin, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4
+        16u32 as usize
     }
 }
 pub const SCRIPT_TAG_UNKNOWN: u32 = 0u32;
@@ -3971,7 +3948,7 @@ impl FromIntoMemory for SCRIPT_VISATTR {
         FromIntoMemory::into_bytes(self._bitfield, &mut into[0..0 + 2]);
     }
     fn size() -> usize {
-        2
+        2u32 as usize
     }
 }
 pub const SGCM_RTL: u32 = 1u32;
@@ -5034,7 +5011,7 @@ impl FromIntoMemory for UCPTrie {
         FromIntoMemory::into_bytes(self.nullValue, &mut into[48..48 + 4]);
     }
     fn size() -> usize {
-        4 + 16 + 4 + 4 + 4 + 2 + 1 + 1 + 4 + 2 + 2 + 4 + 4
+        52u32 as usize
     }
 }
 pub struct UCPTrieData {
@@ -5744,7 +5721,7 @@ impl FromIntoMemory for UCharIterator {
         FromIntoMemory::into_bytes(self.setState, &mut into[60..60 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4
+        64u32 as usize
     }
 }
 pub type UCharIteratorCurrent = ::core::option::Option<()>;
@@ -6159,7 +6136,7 @@ impl FromIntoMemory for UConverterFromUnicodeArgs {
         FromIntoMemory::into_bytes(self.offsets, &mut into[24..24 + 4]);
     }
     fn size() -> usize {
-        2 + 1 + 4 + 4 + 4 + 4 + 4 + 4
+        28u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -6272,7 +6249,7 @@ impl FromIntoMemory for UConverterToUnicodeArgs {
         FromIntoMemory::into_bytes(self.offsets, &mut into[24..24 + 4]);
     }
     fn size() -> usize {
-        2 + 1 + 4 + 4 + 4 + 4 + 4 + 4
+        28u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -7550,7 +7527,7 @@ impl FromIntoMemory for UFieldPosition {
         FromIntoMemory::into_bytes(self.endIndex, &mut into[8..8 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4
+        12u32 as usize
     }
 }
 pub struct UFieldPositionIterator(pub u8);
@@ -7780,7 +7757,7 @@ impl FromIntoMemory for UIDNAInfo {
         FromIntoMemory::into_bytes(self.reservedI3, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        2 + 1 + 1 + 4 + 4 + 4
+        16u32 as usize
     }
 }
 pub const UIDNA_CHECK_BIDI: i32 = 4i32;
@@ -8722,7 +8699,7 @@ impl FromIntoMemory for UNICODERANGE {
         FromIntoMemory::into_bytes(self.wcTo, &mut into[1..1 + 1]);
     }
     fn size() -> usize {
-        1 + 1
+        2u32 as usize
     }
 }
 pub const UNISCRIBE_OPENTYPE: u32 = 256u32;
@@ -9562,7 +9539,7 @@ impl FromIntoMemory for UParseError {
         FromIntoMemory::into_bytes(self.postContext, &mut into[40..40 + 32]);
     }
     fn size() -> usize {
-        4 + 4 + 32 + 32
+        72u32 as usize
     }
 }
 pub struct UPluralRules(pub u8);
@@ -9993,7 +9970,7 @@ impl FromIntoMemory for UReplaceableCallbacks {
         FromIntoMemory::into_bytes(self.copy, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4
+        24u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -10541,7 +10518,7 @@ impl FromIntoMemory for USerializedSet {
         FromIntoMemory::into_bytes(self.staticArray, &mut into[12..12 + 16]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 16
+        28u32 as usize
     }
 }
 pub struct USet(pub u8);
@@ -10957,29 +10934,7 @@ impl FromIntoMemory for UText {
         FromIntoMemory::into_bytes(self.privC, &mut into[108..108 + 4]);
     }
     fn size() -> usize {
-        4 + 4
-            + 4
-            + 4
-            + 8
-            + 4
-            + 4
-            + 8
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 4
-            + 8
-            + 4
-            + 4
-            + 8
-            + 4
-            + 4
+        112u32 as usize
     }
 }
 pub type UTextAccess = ::core::option::Option<()>;
@@ -11114,7 +11069,7 @@ impl FromIntoMemory for UTextFuncs {
         FromIntoMemory::into_bytes(self.spare3, &mut into[60..60 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4
+        64u32 as usize
     }
 }
 pub type UTextMapNativeIndexToUTF16 = ::core::option::Option<()>;
@@ -11576,7 +11531,7 @@ impl FromIntoMemory for UTransPosition {
         FromIntoMemory::into_bytes(self.limit, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        4 + 4 + 4 + 4
+        16u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -11925,7 +11880,7 @@ impl FromIntoMemory for opentype_feature_record {
         FromIntoMemory::into_bytes(self.lParameter, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        4 + 4
+        8u32 as usize
     }
 }
 pub struct script_charprop {
@@ -11963,7 +11918,7 @@ impl FromIntoMemory for script_charprop {
         FromIntoMemory::into_bytes(self._bitfield, &mut into[0..0 + 2]);
     }
     fn size() -> usize {
-        2
+        2u32 as usize
     }
 }
 pub struct script_glyphprop {
@@ -12006,7 +11961,7 @@ impl FromIntoMemory for script_glyphprop {
         FromIntoMemory::into_bytes(self.reserved, &mut into[2..2 + 2]);
     }
     fn size() -> usize {
-        2 + 2
+        4u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -12122,7 +12077,7 @@ impl FromIntoMemory for tagSCRIPFONTINFO {
         FromIntoMemory::into_bytes(self.wszFont, &mut into[8..8 + 32]);
     }
     fn size() -> usize {
-        8 + 32
+        40u32 as usize
     }
 }
 pub struct textrange_properties {
@@ -12166,7 +12121,7 @@ impl FromIntoMemory for textrange_properties {
         FromIntoMemory::into_bytes(self.cotfRecords, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        4 + 4
+        8u32 as usize
     }
 }
 pub trait Api {
