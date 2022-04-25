@@ -366,6 +366,9 @@ fn gen_thunks(output: &std::path::Path, tokens: Vec<TokenStream>) {
         #[allow(unused)]
         use core_mem::ptr::PtrRepr;
 
+        #[allow(unused)]
+        use tracing::Callsite;
+
         #(#tokens)*
     }
     .into_string();

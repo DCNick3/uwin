@@ -99,6 +99,7 @@ pub fn gen_thunk_function(def: &MethodDef, gen: &Gen, namespace: &TokenStream) -
 
     let call = if unwindable {
         quote! {
+            let unwind_token = call.unwind_token();
             let res = api.#ident(unwind_token, #(#arg_names),*);
         }
     } else {
@@ -114,42 +115,76 @@ pub fn gen_thunk_function(def: &MethodDef, gen: &Gen, namespace: &TokenStream) -
     let arguments_fmt = format!("    args = {{{{{}}}}}", arguments_fmt);
 
     let body = quote! {
-        let api = #namespace get_api(&context.win32);
-        let mut call = StdCallHelper::new(memory, &mut context.cpu, &mut context.unwind_reason);
+        static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), #name);
 
-        let span = tracing::trace_span!(#name);
-        let _enter = span.enter();
+        crate::thunk_helper(context, memory, &SPAN_CALLSITE, |mut call, win32, trace_event_enabled, callsite| {
+            let api = #namespace get_api(win32);
 
-        tracing::trace!("ret_addr = {:#010x}", call.return_address());
+            #(let #arg_names = call.get_arg();)*
 
-        #(let #arg_names = call.get_arg();)*
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(#arguments_fmt, #(#arg_names),*)
+                            as &dyn tracing::Value),
+                    )]));
+            }
 
-        tracing::trace!(#arguments_fmt, #(#arg_names),*);
+            #call
 
-        let unwind_token = call.unwind_token();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res)
+                            as &dyn tracing::Value),
+                    )]));
+            }
 
-        #call
-
-        tracing::trace!("  result = {:?}", res);
-
-        call.finish(res)
+            call.finish(res)
+        })
     };
+
+    // let body = quote! {
+    //    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+    //     let api = #namespace get_api(&context.win32);
+    //     let mut call = StdCallHelper::new(memory, &mut context.cpu, &mut context.unwind_reason);
+    //
+    //     let span = tracing::trace_span!(#name);
+    //     let _enter = span.enter();
+    //
+    //     tracing::trace!("ret_addr = {:#010x}", call.return_address());
+    //
+    //     #(let #arg_names = call.get_arg();)*
+    //
+    //     tracing::trace!(#arguments_fmt, #(#arg_names),*);
+    //
+    //     let unwind_token = call.unwind_token();
+    //
+    //     #call
+    //
+    //     tracing::trace!("  result = {:?}", res);
+    //
+    //     call.finish(res)
+    //   }));
+    //   match result {
+    //       Ok(ret) => ret,
+    //       Err(_) => {
+    //           eprintln!("Caught a panic in native code. Whoops, aborting..");
+    //           std::process::abort();
+    //       }
+    //   }
+    // };
 
     let thunk_name = gen_ident(&format!("thunk_{}", def.name()));
 
     quote! {
         #[no_mangle]
         extern "C" fn #thunk_name(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
-            let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
-                #body
-            }));
-            match result {
-                Ok(ret) => ret,
-                Err(_) => {
-                    eprintln!("Caught a panic in native code. Whoops, aborting..");
-                    std::process::abort();
-                }
-            }
+            #body
         }
     }
 }
