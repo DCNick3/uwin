@@ -1947,7 +1947,7 @@ pub trait Api {
         page_protection: PAGE_PROTECTION_FLAGS,
         allocation_attributes: u32,
         maximum_size: u64,
-        name: crate::core::PCWSTR,
+        name: PCWSTR,
         extended_parameters: MutPtr<MEM_EXTENDED_PARAMETER>,
         parameter_count: u32,
     ) -> super::super::Foundation::HANDLE {
@@ -1962,7 +1962,7 @@ pub trait Api {
         fl_protect: PAGE_PROTECTION_FLAGS,
         dw_maximum_size_high: u32,
         dw_maximum_size_low: u32,
-        lp_name: crate::core::PCSTR,
+        lp_name: PCSTR,
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateFileMappingA")
     }
@@ -1974,7 +1974,7 @@ pub trait Api {
         security_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
         page_protection: PAGE_PROTECTION_FLAGS,
         maximum_size: u64,
-        name: crate::core::PCWSTR,
+        name: PCWSTR,
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateFileMappingFromApp")
     }
@@ -1987,7 +1987,7 @@ pub trait Api {
         fl_protect: PAGE_PROTECTION_FLAGS,
         dw_maximum_size_high: u32,
         dw_maximum_size_low: u32,
-        lp_name: crate::core::PCSTR,
+        lp_name: PCSTR,
         nnd_preferred: u32,
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateFileMappingNumaA")
@@ -2001,7 +2001,7 @@ pub trait Api {
         fl_protect: PAGE_PROTECTION_FLAGS,
         dw_maximum_size_high: u32,
         dw_maximum_size_low: u32,
-        lp_name: crate::core::PCWSTR,
+        lp_name: PCWSTR,
         nnd_preferred: u32,
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateFileMappingNumaW")
@@ -2015,7 +2015,7 @@ pub trait Api {
         fl_protect: PAGE_PROTECTION_FLAGS,
         dw_maximum_size_high: u32,
         dw_maximum_size_low: u32,
-        lp_name: crate::core::PCWSTR,
+        lp_name: PCWSTR,
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateFileMappingW")
     }
@@ -2222,18 +2222,10 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("IsBadReadPtr")
     }
-    fn IsBadStringPtrA(
-        &self,
-        lpsz: crate::core::PCSTR,
-        ucch_max: PtrRepr,
-    ) -> super::super::Foundation::BOOL {
+    fn IsBadStringPtrA(&self, lpsz: PCSTR, ucch_max: PtrRepr) -> super::super::Foundation::BOOL {
         todo!("IsBadStringPtrA")
     }
-    fn IsBadStringPtrW(
-        &self,
-        lpsz: crate::core::PCWSTR,
-        ucch_max: PtrRepr,
-    ) -> super::super::Foundation::BOOL {
+    fn IsBadStringPtrW(&self, lpsz: PCWSTR, ucch_max: PtrRepr) -> super::super::Foundation::BOOL {
         todo!("IsBadStringPtrW")
     }
     fn IsBadWritePtr(
@@ -2387,7 +2379,7 @@ pub trait Api {
         &self,
         dw_desired_access: u32,
         b_inherit_handle: super::super::Foundation::BOOL,
-        lp_name: crate::core::PCSTR,
+        lp_name: PCSTR,
     ) -> super::super::Foundation::HANDLE {
         todo!("OpenFileMappingA")
     }
@@ -2395,7 +2387,7 @@ pub trait Api {
         &self,
         desired_access: u32,
         inherit_handle: super::super::Foundation::BOOL,
-        name: crate::core::PCWSTR,
+        name: PCWSTR,
     ) -> super::super::Foundation::HANDLE {
         todo!("OpenFileMappingFromApp")
     }
@@ -2403,7 +2395,7 @@ pub trait Api {
         &self,
         dw_desired_access: u32,
         b_inherit_handle: super::super::Foundation::BOOL,
-        lp_name: crate::core::PCWSTR,
+        lp_name: PCWSTR,
     ) -> super::super::Foundation::HANDLE {
         todo!("OpenFileMappingW")
     }

@@ -15,43 +15,6 @@ pub struct HRESULT(pub i32);
 
 from_into_mem_impl_for_wrapper!(HRESULT, i32);
 
-// TODO: stubs for pointers
-#[derive(Copy, Clone, Debug, Eq, PartialEq)]
-pub struct PSTR(pub MutPtr<u8>);
-#[derive(Copy, Clone, Debug, Eq, PartialEq)]
-pub struct PCSTR(pub ConstPtr<u8>);
-#[derive(Copy, Clone, Debug, Eq, PartialEq)]
-pub struct PWSTR(pub MutPtr<u16>);
-#[derive(Copy, Clone, Debug, Eq, PartialEq)]
-pub struct PCWSTR(pub ConstPtr<u16>);
-
-impl PSTR {
-    pub const fn new(value: PtrRepr) -> Self {
-        Self(MutPtr::new(value))
-    }
-}
-impl PCSTR {
-    pub const fn new(value: PtrRepr) -> Self {
-        Self(ConstPtr::new(value))
-    }
-}
-
-impl PWSTR {
-    pub const fn new(value: PtrRepr) -> Self {
-        Self(MutPtr::new(value))
-    }
-}
-impl PCWSTR {
-    pub const fn new(value: PtrRepr) -> Self {
-        Self(ConstPtr::new(value))
-    }
-}
-
-from_into_mem_impl_for_wrapper!(PSTR, MutPtr<u8>);
-from_into_mem_impl_for_wrapper!(PCSTR, ConstPtr<u8>);
-from_into_mem_impl_for_wrapper!(PWSTR, MutPtr<u16>);
-from_into_mem_impl_for_wrapper!(PCWSTR, ConstPtr<u16>);
-
 #[derive(Clone, Copy, Default, PartialEq, Eq, Hash)]
 pub struct GUID {
     pub data1: u32,

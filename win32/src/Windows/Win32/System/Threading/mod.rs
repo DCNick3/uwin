@@ -2151,7 +2151,7 @@ impl FromIntoMemory for REASON_CONTEXT {
 }
 pub struct REASON_CONTEXT_0 {
     pub Detailed: REASON_CONTEXT_0_0,
-    pub SimpleReasonString: crate::core::PWSTR,
+    pub SimpleReasonString: PWSTR,
 }
 impl ::core::marker::Copy for REASON_CONTEXT_0 {}
 impl ::core::clone::Clone for REASON_CONTEXT_0 {
@@ -2180,7 +2180,7 @@ pub struct REASON_CONTEXT_0_0 {
     pub LocalizedReasonModule: super::super::Foundation::HINSTANCE,
     pub LocalizedReasonId: u32,
     pub ReasonStringCount: u32,
-    pub ReasonStrings: MutPtr<crate::core::PWSTR>,
+    pub ReasonStrings: MutPtr<PWSTR>,
 }
 impl ::core::marker::Copy for REASON_CONTEXT_0_0 {}
 impl ::core::clone::Clone for REASON_CONTEXT_0_0 {
@@ -2214,8 +2214,7 @@ impl FromIntoMemory for REASON_CONTEXT_0_0 {
             <super::super::Foundation::HINSTANCE as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_LocalizedReasonId = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_ReasonStringCount = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_ReasonStrings =
-            <MutPtr<crate::core::PWSTR> as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
+        let f_ReasonStrings = <MutPtr<PWSTR> as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
         Self {
             LocalizedReasonModule: f_LocalizedReasonModule,
             LocalizedReasonId: f_LocalizedReasonId,
@@ -2657,9 +2656,9 @@ impl FromIntoMemory for RTL_USER_PROCESS_PARAMETERS {
 }
 pub struct STARTUPINFOA {
     pub cb: u32,
-    pub lpReserved: crate::core::PSTR,
-    pub lpDesktop: crate::core::PSTR,
-    pub lpTitle: crate::core::PSTR,
+    pub lpReserved: PSTR,
+    pub lpDesktop: PSTR,
+    pub lpTitle: PSTR,
     pub dwX: u32,
     pub dwY: u32,
     pub dwXSize: u32,
@@ -2732,9 +2731,9 @@ impl FromIntoMemory for STARTUPINFOA {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 68u32 as usize);
         let f_cb = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_lpReserved = <crate::core::PSTR as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        let f_lpDesktop = <crate::core::PSTR as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_lpTitle = <crate::core::PSTR as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
+        let f_lpReserved = <PSTR as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
+        let f_lpDesktop = <PSTR as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
+        let f_lpTitle = <PSTR as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
         let f_dwX = <u32 as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
         let f_dwY = <u32 as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
         let f_dwXSize = <u32 as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
@@ -2888,9 +2887,9 @@ impl FromIntoMemory for STARTUPINFOEXW {
 }
 pub struct STARTUPINFOW {
     pub cb: u32,
-    pub lpReserved: crate::core::PWSTR,
-    pub lpDesktop: crate::core::PWSTR,
-    pub lpTitle: crate::core::PWSTR,
+    pub lpReserved: PWSTR,
+    pub lpDesktop: PWSTR,
+    pub lpTitle: PWSTR,
     pub dwX: u32,
     pub dwY: u32,
     pub dwXSize: u32,
@@ -2963,9 +2962,9 @@ impl FromIntoMemory for STARTUPINFOW {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 68u32 as usize);
         let f_cb = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_lpReserved = <crate::core::PWSTR as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        let f_lpDesktop = <crate::core::PWSTR as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_lpTitle = <crate::core::PWSTR as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
+        let f_lpReserved = <PWSTR as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
+        let f_lpDesktop = <PWSTR as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
+        let f_lpTitle = <PWSTR as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
         let f_dwX = <u32 as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
         let f_dwY = <u32 as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
         let f_dwXSize = <u32 as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
@@ -3968,7 +3967,7 @@ pub trait Api {
         period: ConstPtr<i64>,
         thread_ordering_guid: MutPtr<crate::core::GUID>,
         timeout: ConstPtr<i64>,
-        task_name: crate::core::PCSTR,
+        task_name: PCSTR,
     ) -> super::super::Foundation::BOOL {
         todo!("AvRtCreateThreadOrderingGroupExA")
     }
@@ -3978,7 +3977,7 @@ pub trait Api {
         period: ConstPtr<i64>,
         thread_ordering_guid: MutPtr<crate::core::GUID>,
         timeout: ConstPtr<i64>,
-        task_name: crate::core::PCWSTR,
+        task_name: PCWSTR,
     ) -> super::super::Foundation::BOOL {
         todo!("AvRtCreateThreadOrderingGroupExW")
     }
@@ -4010,30 +4009,30 @@ pub trait Api {
     }
     fn AvSetMmMaxThreadCharacteristicsA(
         &self,
-        first_task: crate::core::PCSTR,
-        second_task: crate::core::PCSTR,
+        first_task: PCSTR,
+        second_task: PCSTR,
         task_index: MutPtr<u32>,
     ) -> super::super::Foundation::HANDLE {
         todo!("AvSetMmMaxThreadCharacteristicsA")
     }
     fn AvSetMmMaxThreadCharacteristicsW(
         &self,
-        first_task: crate::core::PCWSTR,
-        second_task: crate::core::PCWSTR,
+        first_task: PCWSTR,
+        second_task: PCWSTR,
         task_index: MutPtr<u32>,
     ) -> super::super::Foundation::HANDLE {
         todo!("AvSetMmMaxThreadCharacteristicsW")
     }
     fn AvSetMmThreadCharacteristicsA(
         &self,
-        task_name: crate::core::PCSTR,
+        task_name: PCSTR,
         task_index: MutPtr<u32>,
     ) -> super::super::Foundation::HANDLE {
         todo!("AvSetMmThreadCharacteristicsA")
     }
     fn AvSetMmThreadCharacteristicsW(
         &self,
-        task_name: crate::core::PCWSTR,
+        task_name: PCWSTR,
         task_index: MutPtr<u32>,
     ) -> super::super::Foundation::HANDLE {
         todo!("AvSetMmThreadCharacteristicsW")
@@ -4118,18 +4117,10 @@ pub trait Api {
     ) -> MutPtr<::core::ffi::c_void> {
         todo!("ConvertThreadToFiberEx")
     }
-    fn CreateBoundaryDescriptorA(
-        &self,
-        name: crate::core::PCSTR,
-        flags: u32,
-    ) -> BoundaryDescriptorHandle {
+    fn CreateBoundaryDescriptorA(&self, name: PCSTR, flags: u32) -> BoundaryDescriptorHandle {
         todo!("CreateBoundaryDescriptorA")
     }
-    fn CreateBoundaryDescriptorW(
-        &self,
-        name: crate::core::PCWSTR,
-        flags: u32,
-    ) -> BoundaryDescriptorHandle {
+    fn CreateBoundaryDescriptorW(&self, name: PCWSTR, flags: u32) -> BoundaryDescriptorHandle {
         todo!("CreateBoundaryDescriptorW")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
@@ -4139,7 +4130,7 @@ pub trait Api {
         lp_event_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
         b_manual_reset: super::super::Foundation::BOOL,
         b_initial_state: super::super::Foundation::BOOL,
-        lp_name: crate::core::PCSTR,
+        lp_name: PCSTR,
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateEventA")
     }
@@ -4148,7 +4139,7 @@ pub trait Api {
     fn CreateEventExA(
         &self,
         lp_event_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
-        lp_name: crate::core::PCSTR,
+        lp_name: PCSTR,
         dw_flags: CREATE_EVENT,
         dw_desired_access: u32,
     ) -> super::super::Foundation::HANDLE {
@@ -4159,7 +4150,7 @@ pub trait Api {
     fn CreateEventExW(
         &self,
         lp_event_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
-        lp_name: crate::core::PCWSTR,
+        lp_name: PCWSTR,
         dw_flags: CREATE_EVENT,
         dw_desired_access: u32,
     ) -> super::super::Foundation::HANDLE {
@@ -4172,7 +4163,7 @@ pub trait Api {
         lp_event_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
         b_manual_reset: super::super::Foundation::BOOL,
         b_initial_state: super::super::Foundation::BOOL,
-        lp_name: crate::core::PCWSTR,
+        lp_name: PCWSTR,
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateEventW")
     }
@@ -4200,7 +4191,7 @@ pub trait Api {
         &self,
         lp_mutex_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
         b_initial_owner: super::super::Foundation::BOOL,
-        lp_name: crate::core::PCSTR,
+        lp_name: PCSTR,
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateMutexA")
     }
@@ -4209,7 +4200,7 @@ pub trait Api {
     fn CreateMutexExA(
         &self,
         lp_mutex_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
-        lp_name: crate::core::PCSTR,
+        lp_name: PCSTR,
         dw_flags: u32,
         dw_desired_access: u32,
     ) -> super::super::Foundation::HANDLE {
@@ -4220,7 +4211,7 @@ pub trait Api {
     fn CreateMutexExW(
         &self,
         lp_mutex_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
-        lp_name: crate::core::PCWSTR,
+        lp_name: PCWSTR,
         dw_flags: u32,
         dw_desired_access: u32,
     ) -> super::super::Foundation::HANDLE {
@@ -4232,7 +4223,7 @@ pub trait Api {
         &self,
         lp_mutex_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
         b_initial_owner: super::super::Foundation::BOOL,
-        lp_name: crate::core::PCWSTR,
+        lp_name: PCWSTR,
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateMutexW")
     }
@@ -4242,7 +4233,7 @@ pub trait Api {
         &self,
         lp_private_namespace_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
         lp_boundary_descriptor: ConstPtr<::core::ffi::c_void>,
-        lp_alias_prefix: crate::core::PCSTR,
+        lp_alias_prefix: PCSTR,
     ) -> NamespaceHandle {
         todo!("CreatePrivateNamespaceA")
     }
@@ -4252,7 +4243,7 @@ pub trait Api {
         &self,
         lp_private_namespace_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
         lp_boundary_descriptor: ConstPtr<::core::ffi::c_void>,
-        lp_alias_prefix: crate::core::PCWSTR,
+        lp_alias_prefix: PCWSTR,
     ) -> NamespaceHandle {
         todo!("CreatePrivateNamespaceW")
     }
@@ -4260,14 +4251,14 @@ pub trait Api {
     #[cfg(dummy_option_that_does_not_exist)]
     fn CreateProcessA(
         &self,
-        lp_application_name: crate::core::PCSTR,
-        lp_command_line: crate::core::PSTR,
+        lp_application_name: PCSTR,
+        lp_command_line: PSTR,
         lp_process_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
         lp_thread_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
         b_inherit_handles: super::super::Foundation::BOOL,
         dw_creation_flags: PROCESS_CREATION_FLAGS,
         lp_environment: ConstPtr<::core::ffi::c_void>,
-        lp_current_directory: crate::core::PCSTR,
+        lp_current_directory: PCSTR,
         lp_startup_info: ConstPtr<STARTUPINFOA>,
         lp_process_information: MutPtr<PROCESS_INFORMATION>,
     ) -> super::super::Foundation::BOOL {
@@ -4278,14 +4269,14 @@ pub trait Api {
     fn CreateProcessAsUserA(
         &self,
         h_token: super::super::Foundation::HANDLE,
-        lp_application_name: crate::core::PCSTR,
-        lp_command_line: crate::core::PSTR,
+        lp_application_name: PCSTR,
+        lp_command_line: PSTR,
         lp_process_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
         lp_thread_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
         b_inherit_handles: super::super::Foundation::BOOL,
         dw_creation_flags: u32,
         lp_environment: ConstPtr<::core::ffi::c_void>,
-        lp_current_directory: crate::core::PCSTR,
+        lp_current_directory: PCSTR,
         lp_startup_info: ConstPtr<STARTUPINFOA>,
         lp_process_information: MutPtr<PROCESS_INFORMATION>,
     ) -> super::super::Foundation::BOOL {
@@ -4296,14 +4287,14 @@ pub trait Api {
     fn CreateProcessAsUserW(
         &self,
         h_token: super::super::Foundation::HANDLE,
-        lp_application_name: crate::core::PCWSTR,
-        lp_command_line: crate::core::PWSTR,
+        lp_application_name: PCWSTR,
+        lp_command_line: PWSTR,
         lp_process_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
         lp_thread_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
         b_inherit_handles: super::super::Foundation::BOOL,
         dw_creation_flags: u32,
         lp_environment: ConstPtr<::core::ffi::c_void>,
-        lp_current_directory: crate::core::PCWSTR,
+        lp_current_directory: PCWSTR,
         lp_startup_info: ConstPtr<STARTUPINFOW>,
         lp_process_information: MutPtr<PROCESS_INFORMATION>,
     ) -> super::super::Foundation::BOOL {
@@ -4313,14 +4304,14 @@ pub trait Api {
     #[cfg(dummy_option_that_does_not_exist)]
     fn CreateProcessW(
         &self,
-        lp_application_name: crate::core::PCWSTR,
-        lp_command_line: crate::core::PWSTR,
+        lp_application_name: PCWSTR,
+        lp_command_line: PWSTR,
         lp_process_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
         lp_thread_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
         b_inherit_handles: super::super::Foundation::BOOL,
         dw_creation_flags: PROCESS_CREATION_FLAGS,
         lp_environment: ConstPtr<::core::ffi::c_void>,
-        lp_current_directory: crate::core::PCWSTR,
+        lp_current_directory: PCWSTR,
         lp_startup_info: ConstPtr<STARTUPINFOW>,
         lp_process_information: MutPtr<PROCESS_INFORMATION>,
     ) -> super::super::Foundation::BOOL {
@@ -4328,15 +4319,15 @@ pub trait Api {
     }
     fn CreateProcessWithLogonW(
         &self,
-        lp_username: crate::core::PCWSTR,
-        lp_domain: crate::core::PCWSTR,
-        lp_password: crate::core::PCWSTR,
+        lp_username: PCWSTR,
+        lp_domain: PCWSTR,
+        lp_password: PCWSTR,
         dw_logon_flags: CREATE_PROCESS_LOGON_FLAGS,
-        lp_application_name: crate::core::PCWSTR,
-        lp_command_line: crate::core::PWSTR,
+        lp_application_name: PCWSTR,
+        lp_command_line: PWSTR,
         dw_creation_flags: u32,
         lp_environment: ConstPtr<::core::ffi::c_void>,
-        lp_current_directory: crate::core::PCWSTR,
+        lp_current_directory: PCWSTR,
         lp_startup_info: ConstPtr<STARTUPINFOW>,
         lp_process_information: MutPtr<PROCESS_INFORMATION>,
     ) -> super::super::Foundation::BOOL {
@@ -4346,11 +4337,11 @@ pub trait Api {
         &self,
         h_token: super::super::Foundation::HANDLE,
         dw_logon_flags: CREATE_PROCESS_LOGON_FLAGS,
-        lp_application_name: crate::core::PCWSTR,
-        lp_command_line: crate::core::PWSTR,
+        lp_application_name: PCWSTR,
+        lp_command_line: PWSTR,
         dw_creation_flags: u32,
         lp_environment: ConstPtr<::core::ffi::c_void>,
-        lp_current_directory: crate::core::PCWSTR,
+        lp_current_directory: PCWSTR,
         lp_startup_info: ConstPtr<STARTUPINFOW>,
         lp_process_information: MutPtr<PROCESS_INFORMATION>,
     ) -> super::super::Foundation::BOOL {
@@ -4392,7 +4383,7 @@ pub trait Api {
         lp_semaphore_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
         l_initial_count: i32,
         l_maximum_count: i32,
-        lp_name: crate::core::PCSTR,
+        lp_name: PCSTR,
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateSemaphoreA")
     }
@@ -4403,7 +4394,7 @@ pub trait Api {
         lp_semaphore_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
         l_initial_count: i32,
         l_maximum_count: i32,
-        lp_name: crate::core::PCSTR,
+        lp_name: PCSTR,
         dw_flags: u32,
         dw_desired_access: u32,
     ) -> super::super::Foundation::HANDLE {
@@ -4416,7 +4407,7 @@ pub trait Api {
         lp_semaphore_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
         l_initial_count: i32,
         l_maximum_count: i32,
-        lp_name: crate::core::PCWSTR,
+        lp_name: PCWSTR,
         dw_flags: u32,
         dw_desired_access: u32,
     ) -> super::super::Foundation::HANDLE {
@@ -4429,7 +4420,7 @@ pub trait Api {
         lp_semaphore_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
         l_initial_count: i32,
         l_maximum_count: i32,
-        lp_name: crate::core::PCWSTR,
+        lp_name: PCWSTR,
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateSemaphoreW")
     }
@@ -4517,7 +4508,7 @@ pub trait Api {
     fn CreateWaitableTimerExW(
         &self,
         lp_timer_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
-        lp_timer_name: crate::core::PCWSTR,
+        lp_timer_name: PCWSTR,
         dw_flags: u32,
         dw_desired_access: u32,
     ) -> super::super::Foundation::HANDLE {
@@ -4529,7 +4520,7 @@ pub trait Api {
         &self,
         lp_timer_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
         b_manual_reset: super::super::Foundation::BOOL,
-        lp_timer_name: crate::core::PCWSTR,
+        lp_timer_name: PCWSTR,
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateWaitableTimerW")
     }
@@ -4934,7 +4925,7 @@ pub trait Api {
     fn GetThreadDescription(
         &self,
         h_thread: super::super::Foundation::HANDLE,
-        ppsz_thread_description: MutPtr<crate::core::PWSTR>,
+        ppsz_thread_description: MutPtr<PWSTR>,
     ) -> crate::core::HRESULT {
         todo!("GetThreadDescription")
     }
@@ -5207,7 +5198,7 @@ pub trait Api {
         &self,
         dw_desired_access: u32,
         b_inherit_handle: super::super::Foundation::BOOL,
-        lp_name: crate::core::PCSTR,
+        lp_name: PCSTR,
     ) -> super::super::Foundation::HANDLE {
         todo!("OpenEventA")
     }
@@ -5215,7 +5206,7 @@ pub trait Api {
         &self,
         dw_desired_access: u32,
         b_inherit_handle: super::super::Foundation::BOOL,
-        lp_name: crate::core::PCWSTR,
+        lp_name: PCWSTR,
     ) -> super::super::Foundation::HANDLE {
         todo!("OpenEventW")
     }
@@ -5223,21 +5214,21 @@ pub trait Api {
         &self,
         dw_desired_access: u32,
         b_inherit_handle: super::super::Foundation::BOOL,
-        lp_name: crate::core::PCWSTR,
+        lp_name: PCWSTR,
     ) -> super::super::Foundation::HANDLE {
         todo!("OpenMutexW")
     }
     fn OpenPrivateNamespaceA(
         &self,
         lp_boundary_descriptor: ConstPtr<::core::ffi::c_void>,
-        lp_alias_prefix: crate::core::PCSTR,
+        lp_alias_prefix: PCSTR,
     ) -> NamespaceHandle {
         todo!("OpenPrivateNamespaceA")
     }
     fn OpenPrivateNamespaceW(
         &self,
         lp_boundary_descriptor: ConstPtr<::core::ffi::c_void>,
-        lp_alias_prefix: crate::core::PCWSTR,
+        lp_alias_prefix: PCWSTR,
     ) -> NamespaceHandle {
         todo!("OpenPrivateNamespaceW")
     }
@@ -5263,7 +5254,7 @@ pub trait Api {
         &self,
         dw_desired_access: u32,
         b_inherit_handle: super::super::Foundation::BOOL,
-        lp_name: crate::core::PCWSTR,
+        lp_name: PCWSTR,
     ) -> super::super::Foundation::HANDLE {
         todo!("OpenSemaphoreW")
     }
@@ -5290,7 +5281,7 @@ pub trait Api {
         &self,
         dw_desired_access: u32,
         b_inherit_handle: super::super::Foundation::BOOL,
-        lp_timer_name: crate::core::PCWSTR,
+        lp_timer_name: PCWSTR,
     ) -> super::super::Foundation::HANDLE {
         todo!("OpenWaitableTimerW")
     }
@@ -5307,7 +5298,7 @@ pub trait Api {
         &self,
         h_process: super::super::Foundation::HANDLE,
         dw_flags: PROCESS_NAME_FORMAT,
-        lp_exe_name: crate::core::PSTR,
+        lp_exe_name: PSTR,
         lpdw_size: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
         todo!("QueryFullProcessImageNameA")
@@ -5316,7 +5307,7 @@ pub trait Api {
         &self,
         h_process: super::super::Foundation::HANDLE,
         dw_flags: PROCESS_NAME_FORMAT,
-        lp_exe_name: crate::core::PWSTR,
+        lp_exe_name: PWSTR,
         lpdw_size: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
         todo!("QueryFullProcessImageNameW")
@@ -5571,7 +5562,7 @@ pub trait Api {
     fn SetThreadDescription(
         &self,
         h_thread: super::super::Foundation::HANDLE,
-        lp_thread_description: crate::core::PCWSTR,
+        lp_thread_description: PCWSTR,
     ) -> crate::core::HRESULT {
         todo!("SetThreadDescription")
     }
@@ -5960,7 +5951,7 @@ pub trait Api {
     fn WakeConditionVariable(&self, condition_variable: MutPtr<RTL_CONDITION_VARIABLE>) {
         todo!("WakeConditionVariable")
     }
-    fn WinExec(&self, lp_cmd_line: crate::core::PCSTR, u_cmd_show: u32) -> u32 {
+    fn WinExec(&self, lp_cmd_line: PCSTR, u_cmd_show: u32) -> u32 {
         todo!("WinExec")
     }
     fn Wow64SetThreadDefaultGuestMachine(&self, machine: u16) -> u16 {

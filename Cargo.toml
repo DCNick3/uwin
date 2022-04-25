@@ -18,6 +18,7 @@ members = [
     "core-memmgr",
     "core-heap",
     "core-abi",
+    "core-str",
 
     "win32",
     "win32-heapmgr",

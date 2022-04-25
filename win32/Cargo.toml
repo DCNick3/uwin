@@ -7,4 +7,5 @@ edition = "2018"
 [dependencies]
 core-mem = { path = "../core-mem" }
 core-abi = { path = "../core-abi" }
+core-str = { path = "../core-str" }
 anymap = "0.12.1"

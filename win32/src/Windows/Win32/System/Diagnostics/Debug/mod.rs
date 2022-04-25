@@ -3007,8 +3007,8 @@ impl FromIntoMemory for CallingConventionKind {
     }
 }
 pub struct DBGHELP_DATA_REPORT_STRUCT {
-    pub pBinPathNonExist: crate::core::PCWSTR,
-    pub pSymbolPathNonExist: crate::core::PCWSTR,
+    pub pBinPathNonExist: PCWSTR,
+    pub pSymbolPathNonExist: PCWSTR,
 }
 impl ::core::marker::Copy for DBGHELP_DATA_REPORT_STRUCT {}
 impl ::core::clone::Clone for DBGHELP_DATA_REPORT_STRUCT {
@@ -3034,10 +3034,8 @@ impl ::core::cmp::Eq for DBGHELP_DATA_REPORT_STRUCT {}
 impl FromIntoMemory for DBGHELP_DATA_REPORT_STRUCT {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 8u32 as usize);
-        let f_pBinPathNonExist =
-            <crate::core::PCWSTR as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_pSymbolPathNonExist =
-            <crate::core::PCWSTR as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
+        let f_pBinPathNonExist = <PCWSTR as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
+        let f_pSymbolPathNonExist = <PCWSTR as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         Self {
             pBinPathNonExist: f_pBinPathNonExist,
             pSymbolPathNonExist: f_pSymbolPathNonExist,
@@ -8667,7 +8665,7 @@ pub const EXT_API_VERSION_NUMBER: u32 = 5u32;
 pub const EXT_API_VERSION_NUMBER32: u32 = 5u32;
 pub const EXT_API_VERSION_NUMBER64: u32 = 6u32;
 pub struct EXT_FIND_FILE {
-    pub FileName: crate::core::PCWSTR,
+    pub FileName: PCWSTR,
     pub IndexedSize: u64,
     pub ImageTimeDateStamp: u32,
     pub ImageCheckSum: u32,
@@ -8677,7 +8675,7 @@ pub struct EXT_FIND_FILE {
     pub FileMapping: MutPtr<::core::ffi::c_void>,
     pub FileMappingSize: u64,
     pub FileHandle: super::super::super::Foundation::HANDLE,
-    pub FoundFileName: crate::core::PWSTR,
+    pub FoundFileName: PWSTR,
     pub FoundFileNameChars: u32,
 }
 impl ::core::marker::Copy for EXT_FIND_FILE {}
@@ -8724,7 +8722,7 @@ impl ::core::cmp::Eq for EXT_FIND_FILE {}
 impl FromIntoMemory for EXT_FIND_FILE {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 64u32 as usize);
-        let f_FileName = <crate::core::PCWSTR as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
+        let f_FileName = <PCWSTR as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_IndexedSize = <u64 as FromIntoMemory>::from_bytes(&from[8..8 + 8]);
         let f_ImageTimeDateStamp = <u32 as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
         let f_ImageCheckSum = <u32 as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
@@ -8738,7 +8736,7 @@ impl FromIntoMemory for EXT_FIND_FILE {
         let f_FileHandle = <super::super::super::Foundation::HANDLE as FromIntoMemory>::from_bytes(
             &from[48..48 + 4],
         );
-        let f_FoundFileName = <crate::core::PWSTR as FromIntoMemory>::from_bytes(&from[52..52 + 4]);
+        let f_FoundFileName = <PWSTR as FromIntoMemory>::from_bytes(&from[52..52 + 4]);
         let f_FoundFileNameChars = <u32 as FromIntoMemory>::from_bytes(&from[56..56 + 4]);
         Self {
             FileName: f_FileName,
@@ -8776,8 +8774,8 @@ impl FromIntoMemory for EXT_FIND_FILE {
 }
 pub const EXT_FIND_FILE_ALLOW_GIVEN_PATH: u32 = 1u32;
 pub struct EXT_MATCH_PATTERN_A {
-    pub Str: crate::core::PCSTR,
-    pub Pattern: crate::core::PCSTR,
+    pub Str: PCSTR,
+    pub Pattern: PCSTR,
     pub CaseSensitive: u32,
 }
 impl ::core::marker::Copy for EXT_MATCH_PATTERN_A {}
@@ -8806,8 +8804,8 @@ impl ::core::cmp::Eq for EXT_MATCH_PATTERN_A {}
 impl FromIntoMemory for EXT_MATCH_PATTERN_A {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 12u32 as usize);
-        let f_Str = <crate::core::PCSTR as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_Pattern = <crate::core::PCSTR as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
+        let f_Str = <PCSTR as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
+        let f_Pattern = <PCSTR as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_CaseSensitive = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
         Self {
             Str: f_Str,
@@ -9702,8 +9700,8 @@ impl FromIntoMemory for GET_CURRENT_THREAD_ADDRESS {
     }
 }
 pub struct GET_EXPRESSION_EX {
-    pub Expression: crate::core::PCSTR,
-    pub Remainder: crate::core::PCSTR,
+    pub Expression: PCSTR,
+    pub Remainder: PCSTR,
     pub Value: u64,
 }
 impl ::core::marker::Copy for GET_EXPRESSION_EX {}
@@ -9732,8 +9730,8 @@ impl ::core::cmp::Eq for GET_EXPRESSION_EX {}
 impl FromIntoMemory for GET_EXPRESSION_EX {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 16u32 as usize);
-        let f_Expression = <crate::core::PCSTR as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_Remainder = <crate::core::PCSTR as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
+        let f_Expression = <PCSTR as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
+        let f_Remainder = <PCSTR as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_Value = <u64 as FromIntoMemory>::from_bytes(&from[8..8 + 8]);
         Self {
             Expression: f_Expression,
@@ -9752,8 +9750,8 @@ impl FromIntoMemory for GET_EXPRESSION_EX {
     }
 }
 pub struct GET_INPUT_LINE {
-    pub Prompt: crate::core::PCSTR,
-    pub Buffer: crate::core::PSTR,
+    pub Prompt: PCSTR,
+    pub Buffer: PSTR,
     pub BufferSize: u32,
     pub InputSize: u32,
 }
@@ -9785,8 +9783,8 @@ impl ::core::cmp::Eq for GET_INPUT_LINE {}
 impl FromIntoMemory for GET_INPUT_LINE {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 16u32 as usize);
-        let f_Prompt = <crate::core::PCSTR as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_Buffer = <crate::core::PSTR as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
+        let f_Prompt = <PCSTR as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
+        let f_Buffer = <PSTR as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_BufferSize = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
         let f_InputSize = <u32 as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
         Self {
@@ -9851,8 +9849,8 @@ impl FromIntoMemory for GET_PEB_ADDRESS {
     }
 }
 pub struct GET_SET_SYMPATH {
-    pub Args: crate::core::PCSTR,
-    pub Result: crate::core::PSTR,
+    pub Args: PCSTR,
+    pub Result: PSTR,
     pub Length: i32,
 }
 impl ::core::marker::Copy for GET_SET_SYMPATH {}
@@ -9879,8 +9877,8 @@ impl ::core::cmp::Eq for GET_SET_SYMPATH {}
 impl FromIntoMemory for GET_SET_SYMPATH {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 12u32 as usize);
-        let f_Args = <crate::core::PCSTR as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_Result = <crate::core::PSTR as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
+        let f_Args = <PCSTR as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
+        let f_Result = <PSTR as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_Length = <i32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
         Self {
             Args: f_Args,
@@ -9987,7 +9985,7 @@ pub const IG_WRITE_PHYSICAL_WITH_FLAGS: u32 = 34u32;
 pub struct IMAGEHLP_CBA_EVENT {
     pub severity: IMAGEHLP_CBA_EVENT_SEVERITY,
     pub code: u32,
-    pub desc: crate::core::PSTR,
+    pub desc: PSTR,
     pub object: MutPtr<::core::ffi::c_void>,
 }
 impl ::core::marker::Copy for IMAGEHLP_CBA_EVENT {}
@@ -10021,7 +10019,7 @@ impl FromIntoMemory for IMAGEHLP_CBA_EVENT {
         let f_severity =
             <IMAGEHLP_CBA_EVENT_SEVERITY as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_code = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        let f_desc = <crate::core::PSTR as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
+        let f_desc = <PSTR as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
         let f_object =
             <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
         Self {
@@ -10045,7 +10043,7 @@ impl FromIntoMemory for IMAGEHLP_CBA_EVENT {
 pub struct IMAGEHLP_CBA_EVENTW {
     pub severity: IMAGEHLP_CBA_EVENT_SEVERITY,
     pub code: u32,
-    pub desc: crate::core::PCWSTR,
+    pub desc: PCWSTR,
     pub object: MutPtr<::core::ffi::c_void>,
 }
 impl ::core::marker::Copy for IMAGEHLP_CBA_EVENTW {}
@@ -10079,7 +10077,7 @@ impl FromIntoMemory for IMAGEHLP_CBA_EVENTW {
         let f_severity =
             <IMAGEHLP_CBA_EVENT_SEVERITY as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_code = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        let f_desc = <crate::core::PCWSTR as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
+        let f_desc = <PCWSTR as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
         let f_object =
             <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
         Self {
@@ -10808,7 +10806,7 @@ pub struct IMAGEHLP_LINE {
     pub SizeOfStruct: u32,
     pub Key: MutPtr<::core::ffi::c_void>,
     pub LineNumber: u32,
-    pub FileName: crate::core::PSTR,
+    pub FileName: PSTR,
     pub Address: u32,
 }
 impl ::core::marker::Copy for IMAGEHLP_LINE {}
@@ -10844,7 +10842,7 @@ impl FromIntoMemory for IMAGEHLP_LINE {
         let f_SizeOfStruct = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_Key = <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_LineNumber = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_FileName = <crate::core::PSTR as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
+        let f_FileName = <PSTR as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
         let f_Address = <u32 as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
         Self {
             SizeOfStruct: f_SizeOfStruct,
@@ -10870,7 +10868,7 @@ pub struct IMAGEHLP_LINE64 {
     pub SizeOfStruct: u32,
     pub Key: MutPtr<::core::ffi::c_void>,
     pub LineNumber: u32,
-    pub FileName: crate::core::PSTR,
+    pub FileName: PSTR,
     pub Address: u64,
 }
 impl ::core::marker::Copy for IMAGEHLP_LINE64 {}
@@ -10906,7 +10904,7 @@ impl FromIntoMemory for IMAGEHLP_LINE64 {
         let f_SizeOfStruct = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_Key = <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_LineNumber = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_FileName = <crate::core::PSTR as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
+        let f_FileName = <PSTR as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
         let f_Address = <u64 as FromIntoMemory>::from_bytes(&from[16..16 + 8]);
         Self {
             SizeOfStruct: f_SizeOfStruct,
@@ -10932,7 +10930,7 @@ pub struct IMAGEHLP_LINEW {
     pub SizeOfStruct: u32,
     pub Key: MutPtr<::core::ffi::c_void>,
     pub LineNumber: u32,
-    pub FileName: crate::core::PSTR,
+    pub FileName: PSTR,
     pub Address: u64,
 }
 impl ::core::marker::Copy for IMAGEHLP_LINEW {}
@@ -10968,7 +10966,7 @@ impl FromIntoMemory for IMAGEHLP_LINEW {
         let f_SizeOfStruct = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_Key = <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_LineNumber = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_FileName = <crate::core::PSTR as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
+        let f_FileName = <PSTR as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
         let f_Address = <u64 as FromIntoMemory>::from_bytes(&from[16..16 + 8]);
         Self {
             SizeOfStruct: f_SizeOfStruct,
@@ -10994,7 +10992,7 @@ pub struct IMAGEHLP_LINEW64 {
     pub SizeOfStruct: u32,
     pub Key: MutPtr<::core::ffi::c_void>,
     pub LineNumber: u32,
-    pub FileName: crate::core::PWSTR,
+    pub FileName: PWSTR,
     pub Address: u64,
 }
 impl ::core::marker::Copy for IMAGEHLP_LINEW64 {}
@@ -11030,7 +11028,7 @@ impl FromIntoMemory for IMAGEHLP_LINEW64 {
         let f_SizeOfStruct = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_Key = <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_LineNumber = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_FileName = <crate::core::PWSTR as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
+        let f_FileName = <PWSTR as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
         let f_Address = <u64 as FromIntoMemory>::from_bytes(&from[16..16 + 8]);
         Self {
             SizeOfStruct: f_SizeOfStruct,
@@ -12993,7 +12991,7 @@ pub struct IMAGE_DEBUG_INFORMATION {
     pub ReservedNumberOfSections: u32,
     pub ReservedSections: MutPtr<IMAGE_SECTION_HEADER>,
     pub ReservedExportedNamesSize: u32,
-    pub ReservedExportedNames: crate::core::PSTR,
+    pub ReservedExportedNames: PSTR,
     pub ReservedNumberOfFunctionTableEntries: u32,
     pub ReservedFunctionTableEntries: MutPtr<IMAGE_FUNCTION_ENTRY>,
     pub ReservedLowestFunctionStartingAddress: u32,
@@ -13004,9 +13002,9 @@ pub struct IMAGE_DEBUG_INFORMATION {
     pub CoffSymbols: MutPtr<IMAGE_COFF_SYMBOLS_HEADER>,
     pub ReservedSizeOfCodeViewSymbols: u32,
     pub ReservedCodeViewSymbols: MutPtr<::core::ffi::c_void>,
-    pub ImageFilePath: crate::core::PSTR,
-    pub ImageFileName: crate::core::PSTR,
-    pub ReservedDebugFilePath: crate::core::PSTR,
+    pub ImageFilePath: PSTR,
+    pub ImageFileName: PSTR,
+    pub ReservedDebugFilePath: PSTR,
     pub ReservedTimeDateStamp: u32,
     pub ReservedRomImage: super::super::super::Foundation::BOOL,
     pub ReservedDebugDirectory: MutPtr<IMAGE_DEBUG_DIRECTORY>,
@@ -13138,8 +13136,7 @@ impl FromIntoMemory for IMAGE_DEBUG_INFORMATION {
         let f_ReservedSections =
             <MutPtr<IMAGE_SECTION_HEADER> as FromIntoMemory>::from_bytes(&from[36..36 + 4]);
         let f_ReservedExportedNamesSize = <u32 as FromIntoMemory>::from_bytes(&from[40..40 + 4]);
-        let f_ReservedExportedNames =
-            <crate::core::PSTR as FromIntoMemory>::from_bytes(&from[44..44 + 4]);
+        let f_ReservedExportedNames = <PSTR as FromIntoMemory>::from_bytes(&from[44..44 + 4]);
         let f_ReservedNumberOfFunctionTableEntries =
             <u32 as FromIntoMemory>::from_bytes(&from[48..48 + 4]);
         let f_ReservedFunctionTableEntries =
@@ -13159,10 +13156,9 @@ impl FromIntoMemory for IMAGE_DEBUG_INFORMATION {
             <u32 as FromIntoMemory>::from_bytes(&from[80..80 + 4]);
         let f_ReservedCodeViewSymbols =
             <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[84..84 + 4]);
-        let f_ImageFilePath = <crate::core::PSTR as FromIntoMemory>::from_bytes(&from[88..88 + 4]);
-        let f_ImageFileName = <crate::core::PSTR as FromIntoMemory>::from_bytes(&from[92..92 + 4]);
-        let f_ReservedDebugFilePath =
-            <crate::core::PSTR as FromIntoMemory>::from_bytes(&from[96..96 + 4]);
+        let f_ImageFilePath = <PSTR as FromIntoMemory>::from_bytes(&from[88..88 + 4]);
+        let f_ImageFileName = <PSTR as FromIntoMemory>::from_bytes(&from[92..92 + 4]);
+        let f_ReservedDebugFilePath = <PSTR as FromIntoMemory>::from_bytes(&from[96..96 + 4]);
         let f_ReservedTimeDateStamp = <u32 as FromIntoMemory>::from_bytes(&from[100..100 + 4]);
         let f_ReservedRomImage =
             <super::super::super::Foundation::BOOL as FromIntoMemory>::from_bytes(
@@ -19319,7 +19315,7 @@ impl FromIntoMemory for LDT_ENTRY_0_1 {
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct LOADED_IMAGE {
-    pub ModuleName: crate::core::PSTR,
+    pub ModuleName: PSTR,
     pub hFile: super::super::super::Foundation::HANDLE,
     pub MappedAddress: MutPtr<u8>,
     pub FileHeader: MutPtr<IMAGE_NT_HEADERS64>,
@@ -19394,7 +19390,7 @@ impl ::core::cmp::Eq for LOADED_IMAGE {}
 impl FromIntoMemory for LOADED_IMAGE {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 48u32 as usize);
-        let f_ModuleName = <crate::core::PSTR as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
+        let f_ModuleName = <PSTR as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_hFile = <super::super::super::Foundation::HANDLE as FromIntoMemory>::from_bytes(
             &from[4..4 + 4],
         );
@@ -19461,7 +19457,7 @@ impl FromIntoMemory for LOADED_IMAGE {
     }
 }
 pub struct LOADED_IMAGE {
-    pub ModuleName: crate::core::PSTR,
+    pub ModuleName: PSTR,
     pub hFile: super::super::super::Foundation::HANDLE,
     pub MappedAddress: MutPtr<u8>,
     pub FileHeader: MutPtr<IMAGE_NT_HEADERS32>,
@@ -19524,7 +19520,7 @@ impl ::core::cmp::Eq for LOADED_IMAGE {}
 impl FromIntoMemory for LOADED_IMAGE {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 48u32 as usize);
-        let f_ModuleName = <crate::core::PSTR as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
+        let f_ModuleName = <PSTR as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_hFile = <super::super::super::Foundation::HANDLE as FromIntoMemory>::from_bytes(
             &from[4..4 + 4],
         );
@@ -22290,7 +22286,7 @@ impl FromIntoMemory for MINIDUMP_MODULE {
     }
 }
 pub struct MINIDUMP_MODULE_CALLBACK {
-    pub FullPath: crate::core::PWSTR,
+    pub FullPath: PWSTR,
     pub BaseOfImage: u64,
     pub SizeOfImage: u32,
     pub CheckSum: u32,
@@ -22325,7 +22321,7 @@ impl ::core::cmp::Eq for MINIDUMP_MODULE_CALLBACK {}
 impl FromIntoMemory for MINIDUMP_MODULE_CALLBACK {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 96u32 as usize);
-        let f_FullPath = <crate::core::PWSTR as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
+        let f_FullPath = <PWSTR as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_BaseOfImage = <u64 as FromIntoMemory>::from_bytes(&from[8..8 + 8]);
         let f_SizeOfImage = <u32 as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
         let f_CheckSum = <u32 as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
@@ -25714,7 +25710,7 @@ impl FromIntoMemory for OPEN_THREAD_WAIT_CHAIN_SESSION_FLAGS {
     }
 }
 pub struct OUTPUT_DEBUG_STRING_INFO {
-    pub lpDebugStringData: crate::core::PSTR,
+    pub lpDebugStringData: PSTR,
     pub fUnicode: u16,
     pub nDebugStringLength: u16,
 }
@@ -25744,8 +25740,7 @@ impl ::core::cmp::Eq for OUTPUT_DEBUG_STRING_INFO {}
 impl FromIntoMemory for OUTPUT_DEBUG_STRING_INFO {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 8u32 as usize);
-        let f_lpDebugStringData =
-            <crate::core::PSTR as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
+        let f_lpDebugStringData = <PSTR as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_fUnicode = <u16 as FromIntoMemory>::from_bytes(&from[4..4 + 2]);
         let f_nDebugStringLength = <u16 as FromIntoMemory>::from_bytes(&from[6..6 + 2]);
         Self {
@@ -26913,7 +26908,7 @@ impl FromIntoMemory for PROFILER_HEAP_SUMMARY_VERSION {
 }
 pub struct PROFILER_PROPERTY_TYPE_SUBSTRING_INFO {
     pub length: u32,
-    pub value: crate::core::PCWSTR,
+    pub value: PCWSTR,
 }
 impl ::core::marker::Copy for PROFILER_PROPERTY_TYPE_SUBSTRING_INFO {}
 impl ::core::clone::Clone for PROFILER_PROPERTY_TYPE_SUBSTRING_INFO {
@@ -26939,7 +26934,7 @@ impl FromIntoMemory for PROFILER_PROPERTY_TYPE_SUBSTRING_INFO {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 8u32 as usize);
         let f_length = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_value = <crate::core::PCWSTR as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
+        let f_value = <PCWSTR as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         Self {
             length: f_length,
             value: f_value,
@@ -28082,7 +28077,7 @@ impl FromIntoMemory for SEARCHMEMORY {
 }
 pub struct SOURCEFILE {
     pub ModBase: u64,
-    pub FileName: crate::core::PSTR,
+    pub FileName: PSTR,
 }
 impl ::core::marker::Copy for SOURCEFILE {}
 impl ::core::clone::Clone for SOURCEFILE {
@@ -28108,7 +28103,7 @@ impl FromIntoMemory for SOURCEFILE {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 16u32 as usize);
         let f_ModBase = <u64 as FromIntoMemory>::from_bytes(&from[0..0 + 8]);
-        let f_FileName = <crate::core::PSTR as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
+        let f_FileName = <PSTR as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
         Self {
             ModBase: f_ModBase,
             FileName: f_FileName,
@@ -28125,7 +28120,7 @@ impl FromIntoMemory for SOURCEFILE {
 }
 pub struct SOURCEFILEW {
     pub ModBase: u64,
-    pub FileName: crate::core::PWSTR,
+    pub FileName: PWSTR,
 }
 impl ::core::marker::Copy for SOURCEFILEW {}
 impl ::core::clone::Clone for SOURCEFILEW {
@@ -28151,7 +28146,7 @@ impl FromIntoMemory for SOURCEFILEW {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 16u32 as usize);
         let f_ModBase = <u64 as FromIntoMemory>::from_bytes(&from[0..0 + 8]);
-        let f_FileName = <crate::core::PWSTR as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
+        let f_FileName = <PWSTR as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
         Self {
             ModBase: f_ModBase,
             FileName: f_FileName,
@@ -28711,9 +28706,9 @@ pub const STACK_FRAME_TYPE_INLINE: u32 = 2u32;
 pub const STACK_FRAME_TYPE_RA: u32 = 128u32;
 pub const STACK_FRAME_TYPE_STACK: u32 = 1u32;
 pub struct STACK_SRC_INFO {
-    pub ImagePath: crate::core::PCWSTR,
-    pub ModuleName: crate::core::PCWSTR,
-    pub Function: crate::core::PCWSTR,
+    pub ImagePath: PCWSTR,
+    pub ModuleName: PCWSTR,
+    pub Function: PCWSTR,
     pub Displacement: u32,
     pub Row: u32,
     pub Column: u32,
@@ -28750,9 +28745,9 @@ impl ::core::cmp::Eq for STACK_SRC_INFO {}
 impl FromIntoMemory for STACK_SRC_INFO {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 24u32 as usize);
-        let f_ImagePath = <crate::core::PCWSTR as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_ModuleName = <crate::core::PCWSTR as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        let f_Function = <crate::core::PCWSTR as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
+        let f_ImagePath = <PCWSTR as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
+        let f_ModuleName = <PCWSTR as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
+        let f_Function = <PCWSTR as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
         let f_Displacement = <u32 as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
         let f_Row = <u32 as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
         let f_Column = <u32 as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
@@ -31204,7 +31199,7 @@ pub struct WDBGEXTS_DISASSEMBLE_BUFFER {
     pub DataBufferBytes: u32,
     pub DisasmBufferChars: u32,
     pub DataBuffer: MutPtr<::core::ffi::c_void>,
-    pub DisasmBuffer: crate::core::PWSTR,
+    pub DisasmBuffer: PWSTR,
     pub Reserved0: [u64; 3],
 }
 impl ::core::marker::Copy for WDBGEXTS_DISASSEMBLE_BUFFER {}
@@ -31253,7 +31248,7 @@ impl FromIntoMemory for WDBGEXTS_DISASSEMBLE_BUFFER {
         let f_DisasmBufferChars = <u32 as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
         let f_DataBuffer =
             <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[32..32 + 4]);
-        let f_DisasmBuffer = <crate::core::PWSTR as FromIntoMemory>::from_bytes(&from[36..36 + 4]);
+        let f_DisasmBuffer = <PWSTR as FromIntoMemory>::from_bytes(&from[36..36 + 4]);
         let f_Reserved0 = <[u64; 3] as FromIntoMemory>::from_bytes(&from[40..40 + 24]);
         Self {
             InOffset: f_InOffset,

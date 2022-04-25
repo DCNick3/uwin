@@ -8,7 +8,7 @@ use win32::Win32::System::Memory::{HEAP_FLAGS, HEAP_ZERO_MEMORY};
 
 pub struct HeapMgr {
     mem_mgr: Arc<Mutex<MemoryManager>>,
-    heaps: HashMap<PtrRepr, Mutex<Heap>>,
+    heaps: HashMap<PtrRepr, Arc<Mutex<Heap>>>,
 }
 
 impl HeapMgr {
@@ -40,7 +40,10 @@ impl HeapMgr {
 
         let handle = heap.handle();
 
-        assert!(self.heaps.insert(handle, Mutex::new(heap)).is_none());
+        assert!(self
+            .heaps
+            .insert(handle, Arc::new(Mutex::new(heap)))
+            .is_none());
 
         handle
     }

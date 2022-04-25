@@ -766,8 +766,8 @@ pub struct CREATESTRUCTA {
     pub y: i32,
     pub x: i32,
     pub style: i32,
-    pub lpszName: crate::core::PCSTR,
-    pub lpszClass: crate::core::PCSTR,
+    pub lpszName: PCSTR,
+    pub lpszClass: PCSTR,
     pub dwExStyle: u32,
 }
 impl ::core::marker::Copy for CREATESTRUCTA {}
@@ -826,8 +826,8 @@ impl FromIntoMemory for CREATESTRUCTA {
         let f_y = <i32 as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
         let f_x = <i32 as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
         let f_style = <i32 as FromIntoMemory>::from_bytes(&from[32..32 + 4]);
-        let f_lpszName = <crate::core::PCSTR as FromIntoMemory>::from_bytes(&from[36..36 + 4]);
-        let f_lpszClass = <crate::core::PCSTR as FromIntoMemory>::from_bytes(&from[40..40 + 4]);
+        let f_lpszName = <PCSTR as FromIntoMemory>::from_bytes(&from[36..36 + 4]);
+        let f_lpszClass = <PCSTR as FromIntoMemory>::from_bytes(&from[40..40 + 4]);
         let f_dwExStyle = <u32 as FromIntoMemory>::from_bytes(&from[44..44 + 4]);
         Self {
             lpCreateParams: f_lpCreateParams,
@@ -873,8 +873,8 @@ pub struct CREATESTRUCTW {
     pub y: i32,
     pub x: i32,
     pub style: i32,
-    pub lpszName: crate::core::PCWSTR,
-    pub lpszClass: crate::core::PCWSTR,
+    pub lpszName: PCWSTR,
+    pub lpszClass: PCWSTR,
     pub dwExStyle: u32,
 }
 impl ::core::marker::Copy for CREATESTRUCTW {}
@@ -933,8 +933,8 @@ impl FromIntoMemory for CREATESTRUCTW {
         let f_y = <i32 as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
         let f_x = <i32 as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
         let f_style = <i32 as FromIntoMemory>::from_bytes(&from[32..32 + 4]);
-        let f_lpszName = <crate::core::PCWSTR as FromIntoMemory>::from_bytes(&from[36..36 + 4]);
-        let f_lpszClass = <crate::core::PCWSTR as FromIntoMemory>::from_bytes(&from[40..40 + 4]);
+        let f_lpszName = <PCWSTR as FromIntoMemory>::from_bytes(&from[36..36 + 4]);
+        let f_lpszClass = <PCWSTR as FromIntoMemory>::from_bytes(&from[40..40 + 4]);
         let f_dwExStyle = <u32 as FromIntoMemory>::from_bytes(&from[44..44 + 4]);
         Self {
             lpCreateParams: f_lpCreateParams,
@@ -3352,24 +3352,24 @@ pub const ICON_SMALL: u32 = 0u32;
 pub const ICON_SMALL2: u32 = 2u32;
 pub const IDANI_CAPTION: u32 = 3u32;
 pub const IDANI_OPEN: u32 = 1u32;
-pub const IDC_APPSTARTING: crate::core::PCWSTR = crate::core::PCWSTR::new(32650i32 as _);
-pub const IDC_ARROW: crate::core::PCWSTR = crate::core::PCWSTR::new(32512i32 as _);
-pub const IDC_CROSS: crate::core::PCWSTR = crate::core::PCWSTR::new(32515i32 as _);
-pub const IDC_HAND: crate::core::PCWSTR = crate::core::PCWSTR::new(32649i32 as _);
-pub const IDC_HELP: crate::core::PCWSTR = crate::core::PCWSTR::new(32651i32 as _);
-pub const IDC_IBEAM: crate::core::PCWSTR = crate::core::PCWSTR::new(32513i32 as _);
-pub const IDC_ICON: crate::core::PCWSTR = crate::core::PCWSTR::new(32641i32 as _);
-pub const IDC_NO: crate::core::PCWSTR = crate::core::PCWSTR::new(32648i32 as _);
-pub const IDC_PERSON: crate::core::PCWSTR = crate::core::PCWSTR::new(32672i32 as _);
-pub const IDC_PIN: crate::core::PCWSTR = crate::core::PCWSTR::new(32671i32 as _);
-pub const IDC_SIZE: crate::core::PCWSTR = crate::core::PCWSTR::new(32640i32 as _);
-pub const IDC_SIZEALL: crate::core::PCWSTR = crate::core::PCWSTR::new(32646i32 as _);
-pub const IDC_SIZENESW: crate::core::PCWSTR = crate::core::PCWSTR::new(32643i32 as _);
-pub const IDC_SIZENS: crate::core::PCWSTR = crate::core::PCWSTR::new(32645i32 as _);
-pub const IDC_SIZENWSE: crate::core::PCWSTR = crate::core::PCWSTR::new(32642i32 as _);
-pub const IDC_SIZEWE: crate::core::PCWSTR = crate::core::PCWSTR::new(32644i32 as _);
-pub const IDC_UPARROW: crate::core::PCWSTR = crate::core::PCWSTR::new(32516i32 as _);
-pub const IDC_WAIT: crate::core::PCWSTR = crate::core::PCWSTR::new(32514i32 as _);
+pub const IDC_APPSTARTING: PCWSTR = PCWSTR::new(32650i32 as _);
+pub const IDC_ARROW: PCWSTR = PCWSTR::new(32512i32 as _);
+pub const IDC_CROSS: PCWSTR = PCWSTR::new(32515i32 as _);
+pub const IDC_HAND: PCWSTR = PCWSTR::new(32649i32 as _);
+pub const IDC_HELP: PCWSTR = PCWSTR::new(32651i32 as _);
+pub const IDC_IBEAM: PCWSTR = PCWSTR::new(32513i32 as _);
+pub const IDC_ICON: PCWSTR = PCWSTR::new(32641i32 as _);
+pub const IDC_NO: PCWSTR = PCWSTR::new(32648i32 as _);
+pub const IDC_PERSON: PCWSTR = PCWSTR::new(32672i32 as _);
+pub const IDC_PIN: PCWSTR = PCWSTR::new(32671i32 as _);
+pub const IDC_SIZE: PCWSTR = PCWSTR::new(32640i32 as _);
+pub const IDC_SIZEALL: PCWSTR = PCWSTR::new(32646i32 as _);
+pub const IDC_SIZENESW: PCWSTR = PCWSTR::new(32643i32 as _);
+pub const IDC_SIZENS: PCWSTR = PCWSTR::new(32645i32 as _);
+pub const IDC_SIZENWSE: PCWSTR = PCWSTR::new(32642i32 as _);
+pub const IDC_SIZEWE: PCWSTR = PCWSTR::new(32644i32 as _);
+pub const IDC_UPARROW: PCWSTR = PCWSTR::new(32516i32 as _);
+pub const IDC_WAIT: PCWSTR = PCWSTR::new(32514i32 as _);
 pub const IDHOT_SNAPDESKTOP: i32 = -2i32;
 pub const IDHOT_SNAPWINDOW: i32 = -1i32;
 pub const IDH_CANCEL: u32 = 28444u32;
@@ -3378,16 +3378,16 @@ pub const IDH_HELP: u32 = 28445u32;
 pub const IDH_MISSING_CONTEXT: u32 = 28441u32;
 pub const IDH_NO_HELP: u32 = 28440u32;
 pub const IDH_OK: u32 = 28443u32;
-pub const IDI_APPLICATION: crate::core::PCWSTR = crate::core::PCWSTR::new(32512u32 as _);
-pub const IDI_ASTERISK: crate::core::PCWSTR = crate::core::PCWSTR::new(32516u32 as _);
+pub const IDI_APPLICATION: PCWSTR = PCWSTR::new(32512u32 as _);
+pub const IDI_ASTERISK: PCWSTR = PCWSTR::new(32516u32 as _);
 pub const IDI_ERROR: u32 = 32513u32;
-pub const IDI_EXCLAMATION: crate::core::PCWSTR = crate::core::PCWSTR::new(32515u32 as _);
-pub const IDI_HAND: crate::core::PCWSTR = crate::core::PCWSTR::new(32513u32 as _);
+pub const IDI_EXCLAMATION: PCWSTR = PCWSTR::new(32515u32 as _);
+pub const IDI_HAND: PCWSTR = PCWSTR::new(32513u32 as _);
 pub const IDI_INFORMATION: u32 = 32516u32;
-pub const IDI_QUESTION: crate::core::PCWSTR = crate::core::PCWSTR::new(32514u32 as _);
-pub const IDI_SHIELD: crate::core::PCWSTR = crate::core::PCWSTR::new(32518u32 as _);
+pub const IDI_QUESTION: PCWSTR = PCWSTR::new(32514u32 as _);
+pub const IDI_SHIELD: PCWSTR = PCWSTR::new(32518u32 as _);
 pub const IDI_WARNING: u32 = 32515u32;
-pub const IDI_WINLOGO: crate::core::PCWSTR = crate::core::PCWSTR::new(32517u32 as _);
+pub const IDI_WINLOGO: PCWSTR = PCWSTR::new(32517u32 as _);
 pub const IMAGE_ENHMETAFILE: u32 = 3u32;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct IMAGE_FLAGS(pub u32);
@@ -3473,8 +3473,8 @@ pub const ISOLATIONAWARE_NOSTATICIMPORT_MANIFEST_RESOURCE_ID: u32 = 3u32;
 pub const ISOLATIONPOLICY_BROWSER_MANIFEST_RESOURCE_ID: u32 = 5u32;
 pub const ISOLATIONPOLICY_MANIFEST_RESOURCE_ID: u32 = 4u32;
 pub struct IndexedResourceQualifier {
-    pub name: crate::core::PWSTR,
-    pub value: crate::core::PWSTR,
+    pub name: PWSTR,
+    pub value: PWSTR,
 }
 impl ::core::marker::Copy for IndexedResourceQualifier {}
 impl ::core::clone::Clone for IndexedResourceQualifier {
@@ -3499,8 +3499,8 @@ impl ::core::cmp::Eq for IndexedResourceQualifier {}
 impl FromIntoMemory for IndexedResourceQualifier {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 8u32 as usize);
-        let f_name = <crate::core::PWSTR as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_value = <crate::core::PWSTR as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
+        let f_name = <PWSTR as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
+        let f_value = <PWSTR as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         Self {
             name: f_name,
             value: f_value,
@@ -3797,8 +3797,8 @@ pub const MA_ACTIVATEANDEAT: u32 = 2u32;
 pub const MA_NOACTIVATE: u32 = 3u32;
 pub const MA_NOACTIVATEANDEAT: u32 = 4u32;
 pub struct MDICREATESTRUCTA {
-    pub szClass: crate::core::PCSTR,
-    pub szTitle: crate::core::PCSTR,
+    pub szClass: PCSTR,
+    pub szTitle: PCSTR,
     pub hOwner: super::super::Foundation::HANDLE,
     pub x: i32,
     pub y: i32,
@@ -3845,8 +3845,8 @@ impl ::core::cmp::Eq for MDICREATESTRUCTA {}
 impl FromIntoMemory for MDICREATESTRUCTA {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 36u32 as usize);
-        let f_szClass = <crate::core::PCSTR as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_szTitle = <crate::core::PCSTR as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
+        let f_szClass = <PCSTR as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
+        let f_szTitle = <PCSTR as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_hOwner =
             <super::super::Foundation::HANDLE as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
         let f_x = <i32 as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
@@ -3885,8 +3885,8 @@ impl FromIntoMemory for MDICREATESTRUCTA {
     }
 }
 pub struct MDICREATESTRUCTW {
-    pub szClass: crate::core::PCWSTR,
-    pub szTitle: crate::core::PCWSTR,
+    pub szClass: PCWSTR,
+    pub szTitle: PCWSTR,
     pub hOwner: super::super::Foundation::HANDLE,
     pub x: i32,
     pub y: i32,
@@ -3933,8 +3933,8 @@ impl ::core::cmp::Eq for MDICREATESTRUCTW {}
 impl FromIntoMemory for MDICREATESTRUCTW {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 36u32 as usize);
-        let f_szClass = <crate::core::PCWSTR as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_szTitle = <crate::core::PCWSTR as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
+        let f_szClass = <PCWSTR as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
+        let f_szTitle = <PCWSTR as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_hOwner =
             <super::super::Foundation::HANDLE as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
         let f_x = <i32 as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
@@ -4411,7 +4411,7 @@ pub struct MENUITEMINFOA {
     pub hbmpChecked: super::super::Graphics::Gdi::HBITMAP,
     pub hbmpUnchecked: super::super::Graphics::Gdi::HBITMAP,
     pub dwItemData: PtrRepr,
-    pub dwTypeData: crate::core::PSTR,
+    pub dwTypeData: PSTR,
     pub cch: u32,
     pub hbmpItem: super::super::Graphics::Gdi::HBITMAP,
 }
@@ -4482,7 +4482,7 @@ impl FromIntoMemory for MENUITEMINFOA {
         let f_hbmpUnchecked =
             <super::super::Graphics::Gdi::HBITMAP as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
         let f_dwItemData = <PtrRepr as FromIntoMemory>::from_bytes(&from[32..32 + 4]);
-        let f_dwTypeData = <crate::core::PSTR as FromIntoMemory>::from_bytes(&from[36..36 + 4]);
+        let f_dwTypeData = <PSTR as FromIntoMemory>::from_bytes(&from[36..36 + 4]);
         let f_cch = <u32 as FromIntoMemory>::from_bytes(&from[40..40 + 4]);
         let f_hbmpItem =
             <super::super::Graphics::Gdi::HBITMAP as FromIntoMemory>::from_bytes(&from[44..44 + 4]);
@@ -4532,7 +4532,7 @@ pub struct MENUITEMINFOW {
     pub hbmpChecked: super::super::Graphics::Gdi::HBITMAP,
     pub hbmpUnchecked: super::super::Graphics::Gdi::HBITMAP,
     pub dwItemData: PtrRepr,
-    pub dwTypeData: crate::core::PWSTR,
+    pub dwTypeData: PWSTR,
     pub cch: u32,
     pub hbmpItem: super::super::Graphics::Gdi::HBITMAP,
 }
@@ -4603,7 +4603,7 @@ impl FromIntoMemory for MENUITEMINFOW {
         let f_hbmpUnchecked =
             <super::super::Graphics::Gdi::HBITMAP as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
         let f_dwItemData = <PtrRepr as FromIntoMemory>::from_bytes(&from[32..32 + 4]);
-        let f_dwTypeData = <crate::core::PWSTR as FromIntoMemory>::from_bytes(&from[36..36 + 4]);
+        let f_dwTypeData = <PWSTR as FromIntoMemory>::from_bytes(&from[36..36 + 4]);
         let f_cch = <u32 as FromIntoMemory>::from_bytes(&from[40..40 + 4]);
         let f_hbmpItem =
             <super::super::Graphics::Gdi::HBITMAP as FromIntoMemory>::from_bytes(&from[44..44 + 4]);
@@ -5743,10 +5743,10 @@ pub struct MSGBOXPARAMSA {
     pub cbSize: u32,
     pub hwndOwner: super::super::Foundation::HWND,
     pub hInstance: super::super::Foundation::HINSTANCE,
-    pub lpszText: crate::core::PCSTR,
-    pub lpszCaption: crate::core::PCSTR,
+    pub lpszText: PCSTR,
+    pub lpszCaption: PCSTR,
     pub dwStyle: MESSAGEBOX_STYLE,
-    pub lpszIcon: crate::core::PCSTR,
+    pub lpszIcon: PCSTR,
     pub dwContextHelpId: PtrRepr,
     pub lpfnMsgBoxCallback: MSGBOXCALLBACK,
     pub dwLanguageId: u32,
@@ -5808,10 +5808,10 @@ impl FromIntoMemory for MSGBOXPARAMSA {
             <super::super::Foundation::HWND as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_hInstance =
             <super::super::Foundation::HINSTANCE as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_lpszText = <crate::core::PCSTR as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
-        let f_lpszCaption = <crate::core::PCSTR as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
+        let f_lpszText = <PCSTR as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
+        let f_lpszCaption = <PCSTR as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
         let f_dwStyle = <MESSAGEBOX_STYLE as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
-        let f_lpszIcon = <crate::core::PCSTR as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
+        let f_lpszIcon = <PCSTR as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
         let f_dwContextHelpId = <PtrRepr as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
         let f_lpfnMsgBoxCallback =
             <MSGBOXCALLBACK as FromIntoMemory>::from_bytes(&from[32..32 + 4]);
@@ -5852,10 +5852,10 @@ pub struct MSGBOXPARAMSW {
     pub cbSize: u32,
     pub hwndOwner: super::super::Foundation::HWND,
     pub hInstance: super::super::Foundation::HINSTANCE,
-    pub lpszText: crate::core::PCWSTR,
-    pub lpszCaption: crate::core::PCWSTR,
+    pub lpszText: PCWSTR,
+    pub lpszCaption: PCWSTR,
     pub dwStyle: MESSAGEBOX_STYLE,
-    pub lpszIcon: crate::core::PCWSTR,
+    pub lpszIcon: PCWSTR,
     pub dwContextHelpId: PtrRepr,
     pub lpfnMsgBoxCallback: MSGBOXCALLBACK,
     pub dwLanguageId: u32,
@@ -5917,10 +5917,10 @@ impl FromIntoMemory for MSGBOXPARAMSW {
             <super::super::Foundation::HWND as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_hInstance =
             <super::super::Foundation::HINSTANCE as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_lpszText = <crate::core::PCWSTR as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
-        let f_lpszCaption = <crate::core::PCWSTR as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
+        let f_lpszText = <PCWSTR as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
+        let f_lpszCaption = <PCWSTR as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
         let f_dwStyle = <MESSAGEBOX_STYLE as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
-        let f_lpszIcon = <crate::core::PCWSTR as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
+        let f_lpszIcon = <PCWSTR as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
         let f_dwContextHelpId = <PtrRepr as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
         let f_lpfnMsgBoxCallback =
             <MSGBOXCALLBACK as FromIntoMemory>::from_bytes(&from[32..32 + 4]);
@@ -6325,7 +6325,7 @@ impl FromIntoMemory for MrmResourceIndexerHandle {
 pub struct MrmResourceIndexerMessage {
     pub severity: MrmResourceIndexerMessageSeverity,
     pub id: u32,
-    pub text: crate::core::PCWSTR,
+    pub text: PCWSTR,
 }
 impl ::core::marker::Copy for MrmResourceIndexerMessage {}
 impl ::core::clone::Clone for MrmResourceIndexerMessage {
@@ -6354,7 +6354,7 @@ impl FromIntoMemory for MrmResourceIndexerMessage {
         let f_severity =
             <MrmResourceIndexerMessageSeverity as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_id = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        let f_text = <crate::core::PCWSTR as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
+        let f_text = <PCWSTR as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
         Self {
             severity: f_severity,
             id: f_id,
@@ -7160,23 +7160,23 @@ pub const RI_MOUSE_MIDDLE_BUTTON_UP: u32 = 32u32;
 pub const RI_MOUSE_RIGHT_BUTTON_DOWN: u32 = 4u32;
 pub const RI_MOUSE_RIGHT_BUTTON_UP: u32 = 8u32;
 pub const RI_MOUSE_WHEEL: u32 = 1024u32;
-pub const RT_ACCELERATOR: crate::core::PCWSTR = crate::core::PCWSTR::new(9i32 as _);
-pub const RT_ANICURSOR: crate::core::PCWSTR = crate::core::PCWSTR::new(21i32 as _);
-pub const RT_ANIICON: crate::core::PCWSTR = crate::core::PCWSTR::new(22i32 as _);
-pub const RT_BITMAP: crate::core::PCWSTR = crate::core::PCWSTR::new(2i32 as _);
-pub const RT_CURSOR: crate::core::PCWSTR = crate::core::PCWSTR::new(1i32 as _);
-pub const RT_DIALOG: crate::core::PCWSTR = crate::core::PCWSTR::new(5i32 as _);
-pub const RT_DLGINCLUDE: crate::core::PCWSTR = crate::core::PCWSTR::new(17i32 as _);
-pub const RT_FONT: crate::core::PCWSTR = crate::core::PCWSTR::new(8i32 as _);
-pub const RT_FONTDIR: crate::core::PCWSTR = crate::core::PCWSTR::new(7i32 as _);
-pub const RT_HTML: crate::core::PCWSTR = crate::core::PCWSTR::new(23i32 as _);
-pub const RT_ICON: crate::core::PCWSTR = crate::core::PCWSTR::new(3i32 as _);
+pub const RT_ACCELERATOR: PCWSTR = PCWSTR::new(9i32 as _);
+pub const RT_ANICURSOR: PCWSTR = PCWSTR::new(21i32 as _);
+pub const RT_ANIICON: PCWSTR = PCWSTR::new(22i32 as _);
+pub const RT_BITMAP: PCWSTR = PCWSTR::new(2i32 as _);
+pub const RT_CURSOR: PCWSTR = PCWSTR::new(1i32 as _);
+pub const RT_DIALOG: PCWSTR = PCWSTR::new(5i32 as _);
+pub const RT_DLGINCLUDE: PCWSTR = PCWSTR::new(17i32 as _);
+pub const RT_FONT: PCWSTR = PCWSTR::new(8i32 as _);
+pub const RT_FONTDIR: PCWSTR = PCWSTR::new(7i32 as _);
+pub const RT_HTML: PCWSTR = PCWSTR::new(23i32 as _);
+pub const RT_ICON: PCWSTR = PCWSTR::new(3i32 as _);
 pub const RT_MANIFEST: u32 = 24u32;
-pub const RT_MENU: crate::core::PCWSTR = crate::core::PCWSTR::new(4i32 as _);
-pub const RT_MESSAGETABLE: crate::core::PCWSTR = crate::core::PCWSTR::new(11i32 as _);
-pub const RT_PLUGPLAY: crate::core::PCWSTR = crate::core::PCWSTR::new(19i32 as _);
-pub const RT_VERSION: crate::core::PCWSTR = crate::core::PCWSTR::new(16i32 as _);
-pub const RT_VXD: crate::core::PCWSTR = crate::core::PCWSTR::new(20i32 as _);
+pub const RT_MENU: PCWSTR = PCWSTR::new(4i32 as _);
+pub const RT_MESSAGETABLE: PCWSTR = PCWSTR::new(11i32 as _);
+pub const RT_PLUGPLAY: PCWSTR = PCWSTR::new(19i32 as _);
+pub const RT_VERSION: PCWSTR = PCWSTR::new(16i32 as _);
+pub const RT_VXD: PCWSTR = PCWSTR::new(20i32 as _);
 pub const SBM_ENABLE_ARROWS: u32 = 228u32;
 pub const SBM_GETPOS: u32 = 225u32;
 pub const SBM_GETRANGE: u32 = 227u32;
@@ -10132,8 +10132,8 @@ pub struct WNDCLASSA {
     pub hIcon: HICON,
     pub hCursor: HCURSOR,
     pub hbrBackground: super::super::Graphics::Gdi::HBRUSH,
-    pub lpszMenuName: crate::core::PCSTR,
-    pub lpszClassName: crate::core::PCSTR,
+    pub lpszMenuName: PCSTR,
+    pub lpszClassName: PCSTR,
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
 #[cfg(dummy_option_that_does_not_exist)]
@@ -10197,8 +10197,8 @@ impl FromIntoMemory for WNDCLASSA {
         let f_hCursor = <HCURSOR as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
         let f_hbrBackground =
             <super::super::Graphics::Gdi::HBRUSH as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
-        let f_lpszMenuName = <crate::core::PCSTR as FromIntoMemory>::from_bytes(&from[32..32 + 4]);
-        let f_lpszClassName = <crate::core::PCSTR as FromIntoMemory>::from_bytes(&from[36..36 + 4]);
+        let f_lpszMenuName = <PCSTR as FromIntoMemory>::from_bytes(&from[32..32 + 4]);
+        let f_lpszClassName = <PCSTR as FromIntoMemory>::from_bytes(&from[36..36 + 4]);
         Self {
             style: f_style,
             lpfnWndProc: f_lpfnWndProc,
@@ -10241,8 +10241,8 @@ pub struct WNDCLASSEXA {
     pub hIcon: HICON,
     pub hCursor: HCURSOR,
     pub hbrBackground: super::super::Graphics::Gdi::HBRUSH,
-    pub lpszMenuName: crate::core::PCSTR,
-    pub lpszClassName: crate::core::PCSTR,
+    pub lpszMenuName: PCSTR,
+    pub lpszClassName: PCSTR,
     pub hIconSm: HICON,
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
@@ -10312,8 +10312,8 @@ impl FromIntoMemory for WNDCLASSEXA {
         let f_hCursor = <HCURSOR as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
         let f_hbrBackground =
             <super::super::Graphics::Gdi::HBRUSH as FromIntoMemory>::from_bytes(&from[32..32 + 4]);
-        let f_lpszMenuName = <crate::core::PCSTR as FromIntoMemory>::from_bytes(&from[36..36 + 4]);
-        let f_lpszClassName = <crate::core::PCSTR as FromIntoMemory>::from_bytes(&from[40..40 + 4]);
+        let f_lpszMenuName = <PCSTR as FromIntoMemory>::from_bytes(&from[36..36 + 4]);
+        let f_lpszClassName = <PCSTR as FromIntoMemory>::from_bytes(&from[40..40 + 4]);
         let f_hIconSm = <HICON as FromIntoMemory>::from_bytes(&from[44..44 + 4]);
         Self {
             cbSize: f_cbSize,
@@ -10361,8 +10361,8 @@ pub struct WNDCLASSEXW {
     pub hIcon: HICON,
     pub hCursor: HCURSOR,
     pub hbrBackground: super::super::Graphics::Gdi::HBRUSH,
-    pub lpszMenuName: crate::core::PCWSTR,
-    pub lpszClassName: crate::core::PCWSTR,
+    pub lpszMenuName: PCWSTR,
+    pub lpszClassName: PCWSTR,
     pub hIconSm: HICON,
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
@@ -10432,9 +10432,8 @@ impl FromIntoMemory for WNDCLASSEXW {
         let f_hCursor = <HCURSOR as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
         let f_hbrBackground =
             <super::super::Graphics::Gdi::HBRUSH as FromIntoMemory>::from_bytes(&from[32..32 + 4]);
-        let f_lpszMenuName = <crate::core::PCWSTR as FromIntoMemory>::from_bytes(&from[36..36 + 4]);
-        let f_lpszClassName =
-            <crate::core::PCWSTR as FromIntoMemory>::from_bytes(&from[40..40 + 4]);
+        let f_lpszMenuName = <PCWSTR as FromIntoMemory>::from_bytes(&from[36..36 + 4]);
+        let f_lpszClassName = <PCWSTR as FromIntoMemory>::from_bytes(&from[40..40 + 4]);
         let f_hIconSm = <HICON as FromIntoMemory>::from_bytes(&from[44..44 + 4]);
         Self {
             cbSize: f_cbSize,
@@ -10481,8 +10480,8 @@ pub struct WNDCLASSW {
     pub hIcon: HICON,
     pub hCursor: HCURSOR,
     pub hbrBackground: super::super::Graphics::Gdi::HBRUSH,
-    pub lpszMenuName: crate::core::PCWSTR,
-    pub lpszClassName: crate::core::PCWSTR,
+    pub lpszMenuName: PCWSTR,
+    pub lpszClassName: PCWSTR,
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
 #[cfg(dummy_option_that_does_not_exist)]
@@ -10546,9 +10545,8 @@ impl FromIntoMemory for WNDCLASSW {
         let f_hCursor = <HCURSOR as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
         let f_hbrBackground =
             <super::super::Graphics::Gdi::HBRUSH as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
-        let f_lpszMenuName = <crate::core::PCWSTR as FromIntoMemory>::from_bytes(&from[32..32 + 4]);
-        let f_lpszClassName =
-            <crate::core::PCWSTR as FromIntoMemory>::from_bytes(&from[36..36 + 4]);
+        let f_lpszMenuName = <PCWSTR as FromIntoMemory>::from_bytes(&from[32..32 + 4]);
+        let f_lpszClassName = <PCWSTR as FromIntoMemory>::from_bytes(&from[36..36 + 4]);
         Self {
             style: f_style,
             lpfnWndProc: f_lpfnWndProc,
@@ -10724,7 +10722,7 @@ pub trait Api {
         h_menu: HMENU,
         u_flags: MENU_ITEM_FLAGS,
         u_id_new_item: PtrRepr,
-        lp_new_item: crate::core::PCSTR,
+        lp_new_item: PCSTR,
     ) -> super::super::Foundation::BOOL {
         todo!("AppendMenuA")
     }
@@ -10733,7 +10731,7 @@ pub trait Api {
         h_menu: HMENU,
         u_flags: MENU_ITEM_FLAGS,
         u_id_new_item: PtrRepr,
-        lp_new_item: crate::core::PCWSTR,
+        lp_new_item: PCWSTR,
     ) -> super::super::Foundation::BOOL {
         todo!("AppendMenuW")
     }
@@ -10811,7 +10809,7 @@ pub trait Api {
         &self,
         h_menu: HMENU,
         cmd: u32,
-        lpsz_new_item: crate::core::PCSTR,
+        lpsz_new_item: PCSTR,
         cmd_insert: u32,
         flags: u32,
     ) -> super::super::Foundation::BOOL {
@@ -10821,7 +10819,7 @@ pub trait Api {
         &self,
         h_menu: HMENU,
         cmd: u32,
-        lpsz_new_item: crate::core::PCWSTR,
+        lpsz_new_item: PCWSTR,
         cmd_insert: u32,
         flags: u32,
     ) -> super::super::Foundation::BOOL {
@@ -10843,95 +10841,74 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("ChangeWindowMessageFilterEx")
     }
-    fn CharLowerA(&self, lpsz: crate::core::PSTR) -> crate::core::PSTR {
+    fn CharLowerA(&self, lpsz: PSTR) -> PSTR {
         todo!("CharLowerA")
     }
-    fn CharLowerBuffA(&self, lpsz: crate::core::PSTR, cch_length: u32) -> u32 {
+    fn CharLowerBuffA(&self, lpsz: PSTR, cch_length: u32) -> u32 {
         todo!("CharLowerBuffA")
     }
-    fn CharLowerBuffW(&self, lpsz: crate::core::PWSTR, cch_length: u32) -> u32 {
+    fn CharLowerBuffW(&self, lpsz: PWSTR, cch_length: u32) -> u32 {
         todo!("CharLowerBuffW")
     }
-    fn CharLowerW(&self, lpsz: crate::core::PWSTR) -> crate::core::PWSTR {
+    fn CharLowerW(&self, lpsz: PWSTR) -> PWSTR {
         todo!("CharLowerW")
     }
-    fn CharNextA(&self, lpsz: crate::core::PCSTR) -> crate::core::PSTR {
+    fn CharNextA(&self, lpsz: PCSTR) -> PSTR {
         todo!("CharNextA")
     }
-    fn CharNextExA(
-        &self,
-        code_page: u16,
-        lp_current_char: crate::core::PCSTR,
-        dw_flags: u32,
-    ) -> crate::core::PSTR {
+    fn CharNextExA(&self, code_page: u16, lp_current_char: PCSTR, dw_flags: u32) -> PSTR {
         todo!("CharNextExA")
     }
-    fn CharNextW(&self, lpsz: crate::core::PCWSTR) -> crate::core::PWSTR {
+    fn CharNextW(&self, lpsz: PCWSTR) -> PWSTR {
         todo!("CharNextW")
     }
-    fn CharPrevA(
-        &self,
-        lpsz_start: crate::core::PCSTR,
-        lpsz_current: crate::core::PCSTR,
-    ) -> crate::core::PSTR {
+    fn CharPrevA(&self, lpsz_start: PCSTR, lpsz_current: PCSTR) -> PSTR {
         todo!("CharPrevA")
     }
     fn CharPrevExA(
         &self,
         code_page: u16,
-        lp_start: crate::core::PCSTR,
-        lp_current_char: crate::core::PCSTR,
+        lp_start: PCSTR,
+        lp_current_char: PCSTR,
         dw_flags: u32,
-    ) -> crate::core::PSTR {
+    ) -> PSTR {
         todo!("CharPrevExA")
     }
-    fn CharPrevW(
-        &self,
-        lpsz_start: crate::core::PCWSTR,
-        lpsz_current: crate::core::PCWSTR,
-    ) -> crate::core::PWSTR {
+    fn CharPrevW(&self, lpsz_start: PCWSTR, lpsz_current: PCWSTR) -> PWSTR {
         todo!("CharPrevW")
     }
-    fn CharToOemA(
-        &self,
-        p_src: crate::core::PCSTR,
-        p_dst: crate::core::PSTR,
-    ) -> super::super::Foundation::BOOL {
+    fn CharToOemA(&self, p_src: PCSTR, p_dst: PSTR) -> super::super::Foundation::BOOL {
         todo!("CharToOemA")
     }
     fn CharToOemBuffA(
         &self,
-        lpsz_src: crate::core::PCSTR,
-        lpsz_dst: crate::core::PSTR,
+        lpsz_src: PCSTR,
+        lpsz_dst: PSTR,
         cch_dst_length: u32,
     ) -> super::super::Foundation::BOOL {
         todo!("CharToOemBuffA")
     }
     fn CharToOemBuffW(
         &self,
-        lpsz_src: crate::core::PCWSTR,
-        lpsz_dst: crate::core::PSTR,
+        lpsz_src: PCWSTR,
+        lpsz_dst: PSTR,
         cch_dst_length: u32,
     ) -> super::super::Foundation::BOOL {
         todo!("CharToOemBuffW")
     }
-    fn CharToOemW(
-        &self,
-        p_src: crate::core::PCWSTR,
-        p_dst: crate::core::PSTR,
-    ) -> super::super::Foundation::BOOL {
+    fn CharToOemW(&self, p_src: PCWSTR, p_dst: PSTR) -> super::super::Foundation::BOOL {
         todo!("CharToOemW")
     }
-    fn CharUpperA(&self, lpsz: crate::core::PSTR) -> crate::core::PSTR {
+    fn CharUpperA(&self, lpsz: PSTR) -> PSTR {
         todo!("CharUpperA")
     }
-    fn CharUpperBuffA(&self, lpsz: crate::core::PSTR, cch_length: u32) -> u32 {
+    fn CharUpperBuffA(&self, lpsz: PSTR, cch_length: u32) -> u32 {
         todo!("CharUpperBuffA")
     }
-    fn CharUpperBuffW(&self, lpsz: crate::core::PWSTR, cch_length: u32) -> u32 {
+    fn CharUpperBuffW(&self, lpsz: PWSTR, cch_length: u32) -> u32 {
         todo!("CharUpperBuffW")
     }
-    fn CharUpperW(&self, lpsz: crate::core::PWSTR) -> crate::core::PWSTR {
+    fn CharUpperW(&self, lpsz: PWSTR) -> PWSTR {
         todo!("CharUpperW")
     }
     fn CheckMenuItem(&self, h_menu: HMENU, u_id_check_item: u32, u_check: u32) -> u32 {
@@ -11052,7 +11029,7 @@ pub trait Api {
     fn CreateDialogParamA(
         &self,
         h_instance: super::super::Foundation::HINSTANCE,
-        lp_template_name: crate::core::PCSTR,
+        lp_template_name: PCSTR,
         h_wnd_parent: super::super::Foundation::HWND,
         lp_dialog_func: DLGPROC,
         dw_init_param: super::super::Foundation::LPARAM,
@@ -11062,7 +11039,7 @@ pub trait Api {
     fn CreateDialogParamW(
         &self,
         h_instance: super::super::Foundation::HINSTANCE,
-        lp_template_name: crate::core::PCWSTR,
+        lp_template_name: PCWSTR,
         h_wnd_parent: super::super::Foundation::HWND,
         lp_dialog_func: DLGPROC,
         dw_init_param: super::super::Foundation::LPARAM,
@@ -11109,8 +11086,8 @@ pub trait Api {
     }
     fn CreateMDIWindowA(
         &self,
-        lp_class_name: crate::core::PCSTR,
-        lp_window_name: crate::core::PCSTR,
+        lp_class_name: PCSTR,
+        lp_window_name: PCSTR,
         dw_style: WINDOW_STYLE,
         x: i32,
         y: i32,
@@ -11124,8 +11101,8 @@ pub trait Api {
     }
     fn CreateMDIWindowW(
         &self,
-        lp_class_name: crate::core::PCWSTR,
-        lp_window_name: crate::core::PCWSTR,
+        lp_class_name: PCWSTR,
+        lp_window_name: PCWSTR,
         dw_style: WINDOW_STYLE,
         x: i32,
         y: i32,
@@ -11146,8 +11123,8 @@ pub trait Api {
     fn CreateWindowExA(
         &self,
         dw_ex_style: WINDOW_EX_STYLE,
-        lp_class_name: crate::core::PCSTR,
-        lp_window_name: crate::core::PCSTR,
+        lp_class_name: PCSTR,
+        lp_window_name: PCSTR,
         dw_style: WINDOW_STYLE,
         x: i32,
         y: i32,
@@ -11163,8 +11140,8 @@ pub trait Api {
     fn CreateWindowExW(
         &self,
         dw_ex_style: WINDOW_EX_STYLE,
-        lp_class_name: crate::core::PCWSTR,
-        lp_window_name: crate::core::PCWSTR,
+        lp_class_name: PCWSTR,
+        lp_window_name: PCWSTR,
         dw_style: WINDOW_STYLE,
         x: i32,
         y: i32,
@@ -11322,7 +11299,7 @@ pub trait Api {
     fn DialogBoxParamA(
         &self,
         h_instance: super::super::Foundation::HINSTANCE,
-        lp_template_name: crate::core::PCSTR,
+        lp_template_name: PCSTR,
         h_wnd_parent: super::super::Foundation::HWND,
         lp_dialog_func: DLGPROC,
         dw_init_param: super::super::Foundation::LPARAM,
@@ -11332,7 +11309,7 @@ pub trait Api {
     fn DialogBoxParamW(
         &self,
         h_instance: super::super::Foundation::HINSTANCE,
-        lp_template_name: crate::core::PCWSTR,
+        lp_template_name: PCWSTR,
         h_wnd_parent: super::super::Foundation::HWND,
         lp_dialog_func: DLGPROC,
         dw_init_param: super::super::Foundation::LPARAM,
@@ -11464,8 +11441,8 @@ pub trait Api {
     }
     fn FindWindowA(
         &self,
-        lp_class_name: crate::core::PCSTR,
-        lp_window_name: crate::core::PCSTR,
+        lp_class_name: PCSTR,
+        lp_window_name: PCSTR,
     ) -> super::super::Foundation::HWND {
         todo!("FindWindowA")
     }
@@ -11473,8 +11450,8 @@ pub trait Api {
         &self,
         h_wnd_parent: super::super::Foundation::HWND,
         h_wnd_child_after: super::super::Foundation::HWND,
-        lpsz_class: crate::core::PCSTR,
-        lpsz_window: crate::core::PCSTR,
+        lpsz_class: PCSTR,
+        lpsz_window: PCSTR,
     ) -> super::super::Foundation::HWND {
         todo!("FindWindowExA")
     }
@@ -11482,15 +11459,15 @@ pub trait Api {
         &self,
         h_wnd_parent: super::super::Foundation::HWND,
         h_wnd_child_after: super::super::Foundation::HWND,
-        lpsz_class: crate::core::PCWSTR,
-        lpsz_window: crate::core::PCWSTR,
+        lpsz_class: PCWSTR,
+        lpsz_window: PCWSTR,
     ) -> super::super::Foundation::HWND {
         todo!("FindWindowExW")
     }
     fn FindWindowW(
         &self,
-        lp_class_name: crate::core::PCWSTR,
-        lp_window_name: crate::core::PCWSTR,
+        lp_class_name: PCWSTR,
+        lp_window_name: PCWSTR,
     ) -> super::super::Foundation::HWND {
         todo!("FindWindowW")
     }
@@ -11509,7 +11486,7 @@ pub trait Api {
         hwnd: super::super::Foundation::HWND,
         i_item: i32,
         pati: MutPtr<ALTTABINFO>,
-        psz_item_text: crate::core::PSTR,
+        psz_item_text: PSTR,
         cch_item_text: u32,
     ) -> super::super::Foundation::BOOL {
         todo!("GetAltTabInfoA")
@@ -11519,7 +11496,7 @@ pub trait Api {
         hwnd: super::super::Foundation::HWND,
         i_item: i32,
         pati: MutPtr<ALTTABINFO>,
-        psz_item_text: crate::core::PWSTR,
+        psz_item_text: PWSTR,
         cch_item_text: u32,
     ) -> super::super::Foundation::BOOL {
         todo!("GetAltTabInfoW")
@@ -11545,7 +11522,7 @@ pub trait Api {
     fn GetClassInfoA(
         &self,
         h_instance: super::super::Foundation::HINSTANCE,
-        lp_class_name: crate::core::PCSTR,
+        lp_class_name: PCSTR,
         lp_wnd_class: MutPtr<WNDCLASSA>,
     ) -> super::super::Foundation::BOOL {
         todo!("GetClassInfoA")
@@ -11555,7 +11532,7 @@ pub trait Api {
     fn GetClassInfoExA(
         &self,
         h_instance: super::super::Foundation::HINSTANCE,
-        lpsz_class: crate::core::PCSTR,
+        lpsz_class: PCSTR,
         lpwcx: MutPtr<WNDCLASSEXA>,
     ) -> super::super::Foundation::BOOL {
         todo!("GetClassInfoExA")
@@ -11565,7 +11542,7 @@ pub trait Api {
     fn GetClassInfoExW(
         &self,
         h_instance: super::super::Foundation::HINSTANCE,
-        lpsz_class: crate::core::PCWSTR,
+        lpsz_class: PCWSTR,
         lpwcx: MutPtr<WNDCLASSEXW>,
     ) -> super::super::Foundation::BOOL {
         todo!("GetClassInfoExW")
@@ -11575,7 +11552,7 @@ pub trait Api {
     fn GetClassInfoW(
         &self,
         h_instance: super::super::Foundation::HINSTANCE,
-        lp_class_name: crate::core::PCWSTR,
+        lp_class_name: PCWSTR,
         lp_wnd_class: MutPtr<WNDCLASSW>,
     ) -> super::super::Foundation::BOOL {
         todo!("GetClassInfoW")
@@ -11615,7 +11592,7 @@ pub trait Api {
     fn GetClassNameA(
         &self,
         h_wnd: super::super::Foundation::HWND,
-        lp_class_name: crate::core::PSTR,
+        lp_class_name: PSTR,
         n_max_count: i32,
     ) -> i32 {
         todo!("GetClassNameA")
@@ -11623,7 +11600,7 @@ pub trait Api {
     fn GetClassNameW(
         &self,
         h_wnd: super::super::Foundation::HWND,
-        lp_class_name: crate::core::PWSTR,
+        lp_class_name: PWSTR,
         n_max_count: i32,
     ) -> i32 {
         todo!("GetClassNameW")
@@ -11685,7 +11662,7 @@ pub trait Api {
         &self,
         h_dlg: super::super::Foundation::HWND,
         n_id_dlg_item: i32,
-        lp_string: crate::core::PSTR,
+        lp_string: PSTR,
         cch_max: i32,
     ) -> u32 {
         todo!("GetDlgItemTextA")
@@ -11694,7 +11671,7 @@ pub trait Api {
         &self,
         h_dlg: super::super::Foundation::HWND,
         n_id_dlg_item: i32,
-        lp_string: crate::core::PWSTR,
+        lp_string: PWSTR,
         cch_max: i32,
     ) -> u32 {
         todo!("GetDlgItemTextW")
@@ -11830,7 +11807,7 @@ pub trait Api {
         &self,
         h_menu: HMENU,
         u_id_item: u32,
-        lp_string: crate::core::PSTR,
+        lp_string: PSTR,
         cch_max: i32,
         flags: MENU_ITEM_FLAGS,
     ) -> i32 {
@@ -11840,7 +11817,7 @@ pub trait Api {
         &self,
         h_menu: HMENU,
         u_id_item: u32,
-        lp_string: crate::core::PWSTR,
+        lp_string: PWSTR,
         cch_max: i32,
         flags: MENU_ITEM_FLAGS,
     ) -> i32 {
@@ -11907,14 +11884,14 @@ pub trait Api {
     fn GetPropA(
         &self,
         h_wnd: super::super::Foundation::HWND,
-        lp_string: crate::core::PCSTR,
+        lp_string: PCSTR,
     ) -> super::super::Foundation::HANDLE {
         todo!("GetPropA")
     }
     fn GetPropW(
         &self,
         h_wnd: super::super::Foundation::HWND,
-        lp_string: crate::core::PCWSTR,
+        lp_string: PCWSTR,
     ) -> super::super::Foundation::HANDLE {
         todo!("GetPropW")
     }
@@ -12041,7 +12018,7 @@ pub trait Api {
     fn GetWindowModuleFileNameA(
         &self,
         hwnd: super::super::Foundation::HWND,
-        psz_file_name: crate::core::PSTR,
+        psz_file_name: PSTR,
         cch_file_name_max: u32,
     ) -> u32 {
         todo!("GetWindowModuleFileNameA")
@@ -12049,7 +12026,7 @@ pub trait Api {
     fn GetWindowModuleFileNameW(
         &self,
         hwnd: super::super::Foundation::HWND,
-        psz_file_name: crate::core::PWSTR,
+        psz_file_name: PWSTR,
         cch_file_name_max: u32,
     ) -> u32 {
         todo!("GetWindowModuleFileNameW")
@@ -12071,7 +12048,7 @@ pub trait Api {
     fn GetWindowTextA(
         &self,
         h_wnd: super::super::Foundation::HWND,
-        lp_string: crate::core::PSTR,
+        lp_string: PSTR,
         n_max_count: i32,
     ) -> i32 {
         todo!("GetWindowTextA")
@@ -12085,7 +12062,7 @@ pub trait Api {
     fn GetWindowTextW(
         &self,
         h_wnd: super::super::Foundation::HWND,
-        lp_string: crate::core::PWSTR,
+        lp_string: PWSTR,
         n_max_count: i32,
     ) -> i32 {
         todo!("GetWindowTextW")
@@ -12131,7 +12108,7 @@ pub trait Api {
         u_position: u32,
         u_flags: MENU_ITEM_FLAGS,
         u_id_new_item: PtrRepr,
-        lp_new_item: crate::core::PCSTR,
+        lp_new_item: PCSTR,
     ) -> super::super::Foundation::BOOL {
         todo!("InsertMenuA")
     }
@@ -12163,14 +12140,14 @@ pub trait Api {
         u_position: u32,
         u_flags: MENU_ITEM_FLAGS,
         u_id_new_item: PtrRepr,
-        lp_new_item: crate::core::PCWSTR,
+        lp_new_item: PCWSTR,
     ) -> super::super::Foundation::BOOL {
         todo!("InsertMenuW")
     }
     fn InternalGetWindowText(
         &self,
         h_wnd: super::super::Foundation::HWND,
-        p_string: crate::core::PWSTR,
+        p_string: PWSTR,
         cch_max_count: i32,
     ) -> i32 {
         todo!("InternalGetWindowText")
@@ -12272,55 +12249,55 @@ pub trait Api {
     fn LoadAcceleratorsA(
         &self,
         h_instance: super::super::Foundation::HINSTANCE,
-        lp_table_name: crate::core::PCSTR,
+        lp_table_name: PCSTR,
     ) -> HACCEL {
         todo!("LoadAcceleratorsA")
     }
     fn LoadAcceleratorsW(
         &self,
         h_instance: super::super::Foundation::HINSTANCE,
-        lp_table_name: crate::core::PCWSTR,
+        lp_table_name: PCWSTR,
     ) -> HACCEL {
         todo!("LoadAcceleratorsW")
     }
     fn LoadCursorA(
         &self,
         h_instance: super::super::Foundation::HINSTANCE,
-        lp_cursor_name: crate::core::PCSTR,
+        lp_cursor_name: PCSTR,
     ) -> HCURSOR {
         todo!("LoadCursorA")
     }
-    fn LoadCursorFromFileA(&self, lp_file_name: crate::core::PCSTR) -> HCURSOR {
+    fn LoadCursorFromFileA(&self, lp_file_name: PCSTR) -> HCURSOR {
         todo!("LoadCursorFromFileA")
     }
-    fn LoadCursorFromFileW(&self, lp_file_name: crate::core::PCWSTR) -> HCURSOR {
+    fn LoadCursorFromFileW(&self, lp_file_name: PCWSTR) -> HCURSOR {
         todo!("LoadCursorFromFileW")
     }
     fn LoadCursorW(
         &self,
         h_instance: super::super::Foundation::HINSTANCE,
-        lp_cursor_name: crate::core::PCWSTR,
+        lp_cursor_name: PCWSTR,
     ) -> HCURSOR {
         todo!("LoadCursorW")
     }
     fn LoadIconA(
         &self,
         h_instance: super::super::Foundation::HINSTANCE,
-        lp_icon_name: crate::core::PCSTR,
+        lp_icon_name: PCSTR,
     ) -> HICON {
         todo!("LoadIconA")
     }
     fn LoadIconW(
         &self,
         h_instance: super::super::Foundation::HINSTANCE,
-        lp_icon_name: crate::core::PCWSTR,
+        lp_icon_name: PCWSTR,
     ) -> HICON {
         todo!("LoadIconW")
     }
     fn LoadImageA(
         &self,
         h_inst: super::super::Foundation::HINSTANCE,
-        name: crate::core::PCSTR,
+        name: PCSTR,
         r#type: GDI_IMAGE_TYPE,
         cx: i32,
         cy: i32,
@@ -12331,7 +12308,7 @@ pub trait Api {
     fn LoadImageW(
         &self,
         h_inst: super::super::Foundation::HINSTANCE,
-        name: crate::core::PCWSTR,
+        name: PCWSTR,
         r#type: GDI_IMAGE_TYPE,
         cx: i32,
         cy: i32,
@@ -12342,7 +12319,7 @@ pub trait Api {
     fn LoadMenuA(
         &self,
         h_instance: super::super::Foundation::HINSTANCE,
-        lp_menu_name: crate::core::PCSTR,
+        lp_menu_name: PCSTR,
     ) -> HMENU {
         todo!("LoadMenuA")
     }
@@ -12355,7 +12332,7 @@ pub trait Api {
     fn LoadMenuW(
         &self,
         h_instance: super::super::Foundation::HINSTANCE,
-        lp_menu_name: crate::core::PCWSTR,
+        lp_menu_name: PCWSTR,
     ) -> HMENU {
         todo!("LoadMenuW")
     }
@@ -12363,7 +12340,7 @@ pub trait Api {
         &self,
         h_instance: super::super::Foundation::HINSTANCE,
         u_id: u32,
-        lp_buffer: crate::core::PSTR,
+        lp_buffer: PSTR,
         cch_buffer_max: i32,
     ) -> i32 {
         todo!("LoadStringA")
@@ -12372,7 +12349,7 @@ pub trait Api {
         &self,
         h_instance: super::super::Foundation::HINSTANCE,
         u_id: u32,
-        lp_buffer: crate::core::PWSTR,
+        lp_buffer: PWSTR,
         cch_buffer_max: i32,
     ) -> i32 {
         todo!("LoadStringW")
@@ -12425,8 +12402,8 @@ pub trait Api {
     fn MessageBoxA(
         &self,
         h_wnd: super::super::Foundation::HWND,
-        lp_text: crate::core::PCSTR,
-        lp_caption: crate::core::PCSTR,
+        lp_text: PCSTR,
+        lp_caption: PCSTR,
         u_type: MESSAGEBOX_STYLE,
     ) -> MESSAGEBOX_RESULT {
         todo!("MessageBoxA")
@@ -12434,8 +12411,8 @@ pub trait Api {
     fn MessageBoxExA(
         &self,
         h_wnd: super::super::Foundation::HWND,
-        lp_text: crate::core::PCSTR,
-        lp_caption: crate::core::PCSTR,
+        lp_text: PCSTR,
+        lp_caption: PCSTR,
         u_type: MESSAGEBOX_STYLE,
         w_language_id: u16,
     ) -> MESSAGEBOX_RESULT {
@@ -12444,8 +12421,8 @@ pub trait Api {
     fn MessageBoxExW(
         &self,
         h_wnd: super::super::Foundation::HWND,
-        lp_text: crate::core::PCWSTR,
-        lp_caption: crate::core::PCWSTR,
+        lp_text: PCWSTR,
+        lp_caption: PCWSTR,
         u_type: MESSAGEBOX_STYLE,
         w_language_id: u16,
     ) -> MESSAGEBOX_RESULT {
@@ -12464,8 +12441,8 @@ pub trait Api {
     fn MessageBoxW(
         &self,
         h_wnd: super::super::Foundation::HWND,
-        lp_text: crate::core::PCWSTR,
-        lp_caption: crate::core::PCWSTR,
+        lp_text: PCWSTR,
+        lp_caption: PCWSTR,
         u_type: MESSAGEBOX_STYLE,
     ) -> MESSAGEBOX_RESULT {
         todo!("MessageBoxW")
@@ -12476,7 +12453,7 @@ pub trait Api {
         u_position: u32,
         u_flags: MENU_ITEM_FLAGS,
         u_id_new_item: PtrRepr,
-        lp_new_item: crate::core::PCSTR,
+        lp_new_item: PCSTR,
     ) -> super::super::Foundation::BOOL {
         todo!("ModifyMenuA")
     }
@@ -12486,7 +12463,7 @@ pub trait Api {
         u_position: u32,
         u_flags: MENU_ITEM_FLAGS,
         u_id_new_item: PtrRepr,
-        lp_new_item: crate::core::PCWSTR,
+        lp_new_item: PCWSTR,
     ) -> super::super::Foundation::BOOL {
         todo!("ModifyMenuW")
     }
@@ -12521,34 +12498,26 @@ pub trait Api {
     ) -> u32 {
         todo!("MsgWaitForMultipleObjectsEx")
     }
-    fn OemToCharA(
-        &self,
-        p_src: crate::core::PCSTR,
-        p_dst: crate::core::PSTR,
-    ) -> super::super::Foundation::BOOL {
+    fn OemToCharA(&self, p_src: PCSTR, p_dst: PSTR) -> super::super::Foundation::BOOL {
         todo!("OemToCharA")
     }
     fn OemToCharBuffA(
         &self,
-        lpsz_src: crate::core::PCSTR,
-        lpsz_dst: crate::core::PSTR,
+        lpsz_src: PCSTR,
+        lpsz_dst: PSTR,
         cch_dst_length: u32,
     ) -> super::super::Foundation::BOOL {
         todo!("OemToCharBuffA")
     }
     fn OemToCharBuffW(
         &self,
-        lpsz_src: crate::core::PCSTR,
-        lpsz_dst: crate::core::PWSTR,
+        lpsz_src: PCSTR,
+        lpsz_dst: PWSTR,
         cch_dst_length: u32,
     ) -> super::super::Foundation::BOOL {
         todo!("OemToCharBuffW")
     }
-    fn OemToCharW(
-        &self,
-        p_src: crate::core::PCSTR,
-        p_dst: crate::core::PWSTR,
-    ) -> super::super::Foundation::BOOL {
+    fn OemToCharW(&self, p_src: PCSTR, p_dst: PWSTR) -> super::super::Foundation::BOOL {
         todo!("OemToCharW")
     }
     fn OpenIcon(&self, h_wnd: super::super::Foundation::HWND) -> super::super::Foundation::BOOL {
@@ -12622,7 +12591,7 @@ pub trait Api {
     }
     fn PrivateExtractIconsA(
         &self,
-        sz_file_name: crate::core::PCSTR,
+        sz_file_name: PCSTR,
         n_icon_index: i32,
         cx_icon: i32,
         cy_icon: i32,
@@ -12635,7 +12604,7 @@ pub trait Api {
     }
     fn PrivateExtractIconsW(
         &self,
-        sz_file_name: crate::core::PCWSTR,
+        sz_file_name: PCWSTR,
         n_icon_index: i32,
         cx_icon: i32,
         cy_icon: i32,
@@ -12656,7 +12625,7 @@ pub trait Api {
     fn RealGetWindowClassA(
         &self,
         hwnd: super::super::Foundation::HWND,
-        ptsz_class_name: crate::core::PSTR,
+        ptsz_class_name: PSTR,
         cch_class_name_max: u32,
     ) -> u32 {
         todo!("RealGetWindowClassA")
@@ -12664,7 +12633,7 @@ pub trait Api {
     fn RealGetWindowClassW(
         &self,
         hwnd: super::super::Foundation::HWND,
-        ptsz_class_name: crate::core::PWSTR,
+        ptsz_class_name: PWSTR,
         cch_class_name_max: u32,
     ) -> u32 {
         todo!("RealGetWindowClassW")
@@ -12715,10 +12684,10 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("RegisterShellHookWindow")
     }
-    fn RegisterWindowMessageA(&self, lp_string: crate::core::PCSTR) -> u32 {
+    fn RegisterWindowMessageA(&self, lp_string: PCSTR) -> u32 {
         todo!("RegisterWindowMessageA")
     }
-    fn RegisterWindowMessageW(&self, lp_string: crate::core::PCWSTR) -> u32 {
+    fn RegisterWindowMessageW(&self, lp_string: PCWSTR) -> u32 {
         todo!("RegisterWindowMessageW")
     }
     fn RemoveMenu(
@@ -12732,14 +12701,14 @@ pub trait Api {
     fn RemovePropA(
         &self,
         h_wnd: super::super::Foundation::HWND,
-        lp_string: crate::core::PCSTR,
+        lp_string: PCSTR,
     ) -> super::super::Foundation::HANDLE {
         todo!("RemovePropA")
     }
     fn RemovePropW(
         &self,
         h_wnd: super::super::Foundation::HWND,
-        lp_string: crate::core::PCWSTR,
+        lp_string: PCWSTR,
     ) -> super::super::Foundation::HANDLE {
         todo!("RemovePropW")
     }
@@ -12972,7 +12941,7 @@ pub trait Api {
         &self,
         h_dlg: super::super::Foundation::HWND,
         n_id_dlg_item: i32,
-        lp_string: crate::core::PCSTR,
+        lp_string: PCSTR,
     ) -> super::super::Foundation::BOOL {
         todo!("SetDlgItemTextA")
     }
@@ -12980,7 +12949,7 @@ pub trait Api {
         &self,
         h_dlg: super::super::Foundation::HWND,
         n_id_dlg_item: i32,
-        lp_string: crate::core::PCWSTR,
+        lp_string: PCWSTR,
     ) -> super::super::Foundation::BOOL {
         todo!("SetDlgItemTextW")
     }
@@ -13085,7 +13054,7 @@ pub trait Api {
     fn SetPropA(
         &self,
         h_wnd: super::super::Foundation::HWND,
-        lp_string: crate::core::PCSTR,
+        lp_string: PCSTR,
         h_data: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
         todo!("SetPropA")
@@ -13093,7 +13062,7 @@ pub trait Api {
     fn SetPropW(
         &self,
         h_wnd: super::super::Foundation::HWND,
-        lp_string: crate::core::PCWSTR,
+        lp_string: PCWSTR,
         h_data: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
         todo!("SetPropW")
@@ -13187,14 +13156,14 @@ pub trait Api {
     fn SetWindowTextA(
         &self,
         h_wnd: super::super::Foundation::HWND,
-        lp_string: crate::core::PCSTR,
+        lp_string: PCSTR,
     ) -> super::super::Foundation::BOOL {
         todo!("SetWindowTextA")
     }
     fn SetWindowTextW(
         &self,
         h_wnd: super::super::Foundation::HWND,
-        lp_string: crate::core::PCWSTR,
+        lp_string: PCWSTR,
     ) -> super::super::Foundation::BOOL {
         todo!("SetWindowTextW")
     }
@@ -13356,14 +13325,14 @@ pub trait Api {
     }
     fn UnregisterClassA(
         &self,
-        lp_class_name: crate::core::PCSTR,
+        lp_class_name: PCSTR,
         h_instance: super::super::Foundation::HINSTANCE,
     ) -> super::super::Foundation::BOOL {
         todo!("UnregisterClassA")
     }
     fn UnregisterClassW(
         &self,
-        lp_class_name: crate::core::PCWSTR,
+        lp_class_name: PCWSTR,
         h_instance: super::super::Foundation::HINSTANCE,
     ) -> super::super::Foundation::BOOL {
         todo!("UnregisterClassW")
@@ -13408,26 +13377,16 @@ pub trait Api {
     ) -> super::super::Foundation::HWND {
         todo!("WindowFromPoint")
     }
-    fn wsprintfA(&self, param_0: crate::core::PSTR, param_1: crate::core::PCSTR) -> i32 {
+    fn wsprintfA(&self, param_0: PSTR, param_1: PCSTR) -> i32 {
         todo!("wsprintfA")
     }
-    fn wsprintfW(&self, param_0: crate::core::PWSTR, param_1: crate::core::PCWSTR) -> i32 {
+    fn wsprintfW(&self, param_0: PWSTR, param_1: PCWSTR) -> i32 {
         todo!("wsprintfW")
     }
-    fn wvsprintfA(
-        &self,
-        param_0: crate::core::PSTR,
-        param_1: crate::core::PCSTR,
-        arglist: ConstPtr<i8>,
-    ) -> i32 {
+    fn wvsprintfA(&self, param_0: PSTR, param_1: PCSTR, arglist: ConstPtr<i8>) -> i32 {
         todo!("wvsprintfA")
     }
-    fn wvsprintfW(
-        &self,
-        param_0: crate::core::PWSTR,
-        param_1: crate::core::PCWSTR,
-        arglist: ConstPtr<i8>,
-    ) -> i32 {
+    fn wvsprintfW(&self, param_0: PWSTR, param_1: PCWSTR, arglist: ConstPtr<i8>) -> i32 {
         todo!("wvsprintfW")
     }
 }

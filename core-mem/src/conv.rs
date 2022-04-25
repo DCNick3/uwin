@@ -57,7 +57,7 @@ impl FromIntoMemory for () {
 #[macro_export]
 macro_rules! from_into_mem_impl_for_wrapper {
     ($typ:tt, $underlying:ty) => {
-        impl FromIntoMemory for $typ {
+        impl core_mem::conv::FromIntoMemory for $typ {
             #[inline]
             fn from_bytes(from: &[u8]) -> Self {
                 Self(<$underlying>::from_bytes(from))

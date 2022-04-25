@@ -42,7 +42,7 @@ impl FromIntoMemory for COMPARTMENT_ID {
 pub struct CSTRING {
     pub Length: u16,
     pub MaximumLength: u16,
-    pub Buffer: crate::core::PCSTR,
+    pub Buffer: PCSTR,
 }
 impl ::core::marker::Copy for CSTRING {}
 impl ::core::clone::Clone for CSTRING {
@@ -72,7 +72,7 @@ impl FromIntoMemory for CSTRING {
         assert_eq!(from.len(), 8u32 as usize);
         let f_Length = <u16 as FromIntoMemory>::from_bytes(&from[0..0 + 2]);
         let f_MaximumLength = <u16 as FromIntoMemory>::from_bytes(&from[2..2 + 2]);
-        let f_Buffer = <crate::core::PCSTR as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
+        let f_Buffer = <PCSTR as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         Self {
             Length: f_Length,
             MaximumLength: f_MaximumLength,
@@ -1567,7 +1567,7 @@ impl FromIntoMemory for SLIST_HEADER_0 {
 pub struct STRING {
     pub Length: u16,
     pub MaximumLength: u16,
-    pub Buffer: crate::core::PSTR,
+    pub Buffer: PSTR,
 }
 impl ::core::marker::Copy for STRING {}
 impl ::core::clone::Clone for STRING {
@@ -1597,7 +1597,7 @@ impl FromIntoMemory for STRING {
         assert_eq!(from.len(), 8u32 as usize);
         let f_Length = <u16 as FromIntoMemory>::from_bytes(&from[0..0 + 2]);
         let f_MaximumLength = <u16 as FromIntoMemory>::from_bytes(&from[2..2 + 2]);
-        let f_Buffer = <crate::core::PSTR as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
+        let f_Buffer = <PSTR as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         Self {
             Length: f_Length,
             MaximumLength: f_MaximumLength,

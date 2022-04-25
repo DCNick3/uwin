@@ -278,9 +278,9 @@ pub const BATTERY_FLAG_UNKNOWN: u32 = 255u32;
 pub const BATTERY_LIFE_UNKNOWN: u32 = 4294967295u32;
 pub const BATTERY_PERCENTAGE_UNKNOWN: u32 = 255u32;
 pub struct CABINFOA {
-    pub pszCab: crate::core::PSTR,
-    pub pszInf: crate::core::PSTR,
-    pub pszSection: crate::core::PSTR,
+    pub pszCab: PSTR,
+    pub pszInf: PSTR,
+    pub pszSection: PSTR,
     pub szSrcPath: [super::super::Foundation::CHAR; 260],
     pub dwFlags: u32,
 }
@@ -314,9 +314,9 @@ impl ::core::cmp::Eq for CABINFOA {}
 impl FromIntoMemory for CABINFOA {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 276u32 as usize);
-        let f_pszCab = <crate::core::PSTR as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_pszInf = <crate::core::PSTR as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        let f_pszSection = <crate::core::PSTR as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
+        let f_pszCab = <PSTR as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
+        let f_pszInf = <PSTR as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
+        let f_pszSection = <PSTR as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
         let f_szSrcPath = <[super::super::Foundation::CHAR; 260] as FromIntoMemory>::from_bytes(
             &from[12..12 + 260],
         );
@@ -342,9 +342,9 @@ impl FromIntoMemory for CABINFOA {
     }
 }
 pub struct CABINFOW {
-    pub pszCab: crate::core::PWSTR,
-    pub pszInf: crate::core::PWSTR,
-    pub pszSection: crate::core::PWSTR,
+    pub pszCab: PWSTR,
+    pub pszInf: PWSTR,
+    pub pszSection: PWSTR,
     pub szSrcPath: [u16; 260],
     pub dwFlags: u32,
 }
@@ -378,9 +378,9 @@ impl ::core::cmp::Eq for CABINFOW {}
 impl FromIntoMemory for CABINFOW {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 276u32 as usize);
-        let f_pszCab = <crate::core::PWSTR as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_pszInf = <crate::core::PWSTR as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        let f_pszSection = <crate::core::PWSTR as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
+        let f_pszCab = <PWSTR as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
+        let f_pszInf = <PWSTR as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
+        let f_pszSection = <PWSTR as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
         let f_szSrcPath = <[u16; 260] as FromIntoMemory>::from_bytes(&from[12..12 + 260]);
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[272..272 + 4]);
         Self {
@@ -525,7 +525,7 @@ pub const CREATE_FOR_IMPORT: u32 = 1u32;
 pub const CRITICAL_SECTION_NO_DEBUG_INFO: u32 = 16777216u32;
 pub struct CUSTOM_SYSTEM_EVENT_TRIGGER_CONFIG {
     pub Size: u32,
-    pub TriggerId: crate::core::PCWSTR,
+    pub TriggerId: PCWSTR,
 }
 impl ::core::marker::Copy for CUSTOM_SYSTEM_EVENT_TRIGGER_CONFIG {}
 impl ::core::clone::Clone for CUSTOM_SYSTEM_EVENT_TRIGGER_CONFIG {
@@ -551,7 +551,7 @@ impl FromIntoMemory for CUSTOM_SYSTEM_EVENT_TRIGGER_CONFIG {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 8u32 as usize);
         let f_Size = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_TriggerId = <crate::core::PCWSTR as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
+        let f_TriggerId = <PCWSTR as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         Self {
             Size: f_Size,
             TriggerId: f_TriggerId,
@@ -1392,7 +1392,7 @@ pub struct DELAYLOAD_INFO {
     pub Size: u32,
     pub DelayloadDescriptor: MutPtr<IMAGE_DELAYLOAD_DESCRIPTOR>,
     pub ThunkAddress: MutPtr<IMAGE_THUNK_DATA64>,
-    pub TargetDllName: crate::core::PCSTR,
+    pub TargetDllName: PCSTR,
     pub TargetApiDescriptor: DELAYLOAD_PROC_DESCRIPTOR,
     pub TargetModuleBase: MutPtr<::core::ffi::c_void>,
     pub Unused: MutPtr<::core::ffi::c_void>,
@@ -1435,7 +1435,7 @@ impl FromIntoMemory for DELAYLOAD_INFO {
             <MutPtr<IMAGE_DELAYLOAD_DESCRIPTOR> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_ThunkAddress =
             <MutPtr<IMAGE_THUNK_DATA64> as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_TargetDllName = <crate::core::PCSTR as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
+        let f_TargetDllName = <PCSTR as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
         let f_TargetApiDescriptor =
             <DELAYLOAD_PROC_DESCRIPTOR as FromIntoMemory>::from_bytes(&from[16..16 + 12]);
         let f_TargetModuleBase =
@@ -1473,7 +1473,7 @@ pub struct DELAYLOAD_INFO {
     pub Size: u32,
     pub DelayloadDescriptor: MutPtr<IMAGE_DELAYLOAD_DESCRIPTOR>,
     pub ThunkAddress: MutPtr<IMAGE_THUNK_DATA32>,
-    pub TargetDllName: crate::core::PCSTR,
+    pub TargetDllName: PCSTR,
     pub TargetApiDescriptor: DELAYLOAD_PROC_DESCRIPTOR,
     pub TargetModuleBase: MutPtr<::core::ffi::c_void>,
     pub Unused: MutPtr<::core::ffi::c_void>,
@@ -1506,7 +1506,7 @@ impl FromIntoMemory for DELAYLOAD_INFO {
             <MutPtr<IMAGE_DELAYLOAD_DESCRIPTOR> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_ThunkAddress =
             <MutPtr<IMAGE_THUNK_DATA32> as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_TargetDllName = <crate::core::PCSTR as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
+        let f_TargetDllName = <PCSTR as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
         let f_TargetApiDescriptor =
             <DELAYLOAD_PROC_DESCRIPTOR as FromIntoMemory>::from_bytes(&from[16..16 + 12]);
         let f_TargetModuleBase =
@@ -1578,7 +1578,7 @@ impl FromIntoMemory for DELAYLOAD_PROC_DESCRIPTOR {
     }
 }
 pub struct DELAYLOAD_PROC_DESCRIPTOR_0 {
-    pub Name: crate::core::PCSTR,
+    pub Name: PCSTR,
     pub Ordinal: u32,
 }
 impl ::core::marker::Copy for DELAYLOAD_PROC_DESCRIPTOR_0 {}
@@ -1710,18 +1710,18 @@ impl FromIntoMemory for FEATURE_ENABLED_STATE {
 pub struct FEATURE_ERROR {
     pub hr: crate::core::HRESULT,
     pub lineNumber: u16,
-    pub file: crate::core::PCSTR,
-    pub process: crate::core::PCSTR,
-    pub module: crate::core::PCSTR,
+    pub file: PCSTR,
+    pub process: PCSTR,
+    pub module: PCSTR,
     pub callerReturnAddressOffset: u32,
-    pub callerModule: crate::core::PCSTR,
-    pub message: crate::core::PCSTR,
+    pub callerModule: PCSTR,
+    pub message: PCSTR,
     pub originLineNumber: u16,
-    pub originFile: crate::core::PCSTR,
-    pub originModule: crate::core::PCSTR,
+    pub originFile: PCSTR,
+    pub originModule: PCSTR,
     pub originCallerReturnAddressOffset: u32,
-    pub originCallerModule: crate::core::PCSTR,
-    pub originName: crate::core::PCSTR,
+    pub originCallerModule: PCSTR,
+    pub originName: PCSTR,
 }
 impl ::core::marker::Copy for FEATURE_ERROR {}
 impl ::core::clone::Clone for FEATURE_ERROR {
@@ -1776,20 +1776,19 @@ impl FromIntoMemory for FEATURE_ERROR {
         assert_eq!(from.len(), 56u32 as usize);
         let f_hr = <crate::core::HRESULT as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lineNumber = <u16 as FromIntoMemory>::from_bytes(&from[4..4 + 2]);
-        let f_file = <crate::core::PCSTR as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_process = <crate::core::PCSTR as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
-        let f_module = <crate::core::PCSTR as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
+        let f_file = <PCSTR as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
+        let f_process = <PCSTR as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
+        let f_module = <PCSTR as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
         let f_callerReturnAddressOffset = <u32 as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
-        let f_callerModule = <crate::core::PCSTR as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
-        let f_message = <crate::core::PCSTR as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
+        let f_callerModule = <PCSTR as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
+        let f_message = <PCSTR as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
         let f_originLineNumber = <u16 as FromIntoMemory>::from_bytes(&from[32..32 + 2]);
-        let f_originFile = <crate::core::PCSTR as FromIntoMemory>::from_bytes(&from[36..36 + 4]);
-        let f_originModule = <crate::core::PCSTR as FromIntoMemory>::from_bytes(&from[40..40 + 4]);
+        let f_originFile = <PCSTR as FromIntoMemory>::from_bytes(&from[36..36 + 4]);
+        let f_originModule = <PCSTR as FromIntoMemory>::from_bytes(&from[40..40 + 4]);
         let f_originCallerReturnAddressOffset =
             <u32 as FromIntoMemory>::from_bytes(&from[44..44 + 4]);
-        let f_originCallerModule =
-            <crate::core::PCSTR as FromIntoMemory>::from_bytes(&from[48..48 + 4]);
-        let f_originName = <crate::core::PCSTR as FromIntoMemory>::from_bytes(&from[52..52 + 4]);
+        let f_originCallerModule = <PCSTR as FromIntoMemory>::from_bytes(&from[48..48 + 4]);
+        let f_originName = <PCSTR as FromIntoMemory>::from_bytes(&from[52..52 + 4]);
         Self {
             hr: f_hr,
             lineNumber: f_lineNumber,
@@ -2874,7 +2873,7 @@ pub struct JAVA_TRUST {
     pub cbJavaPermissions: u32,
     pub pbSigner: MutPtr<u8>,
     pub cbSigner: u32,
-    pub pwszZone: crate::core::PCWSTR,
+    pub pwszZone: PCWSTR,
     pub guidZone: crate::core::GUID,
     pub hVerify: crate::core::HRESULT,
 }
@@ -2933,7 +2932,7 @@ impl FromIntoMemory for JAVA_TRUST {
         let f_cbJavaPermissions = <u32 as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
         let f_pbSigner = <MutPtr<u8> as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
         let f_cbSigner = <u32 as FromIntoMemory>::from_bytes(&from[32..32 + 4]);
-        let f_pwszZone = <crate::core::PCWSTR as FromIntoMemory>::from_bytes(&from[36..36 + 4]);
+        let f_pwszZone = <PCWSTR as FromIntoMemory>::from_bytes(&from[36..36 + 4]);
         let f_guidZone = <crate::core::GUID as FromIntoMemory>::from_bytes(&from[40..40 + 16]);
         let f_hVerify = <crate::core::HRESULT as FromIntoMemory>::from_bytes(&from[56..56 + 4]);
         Self {
@@ -3759,8 +3758,8 @@ pub const STREAM_MODIFIED_WHEN_READ: u32 = 1u32;
 pub const STREAM_NORMAL_ATTRIBUTE: u32 = 0u32;
 pub const STREAM_SPARSE_ATTRIBUTE: u32 = 8u32;
 pub struct STRENTRYA {
-    pub pszName: crate::core::PSTR,
-    pub pszValue: crate::core::PSTR,
+    pub pszName: PSTR,
+    pub pszValue: PSTR,
 }
 impl ::core::marker::Copy for STRENTRYA {}
 impl ::core::clone::Clone for STRENTRYA {
@@ -3785,8 +3784,8 @@ impl ::core::cmp::Eq for STRENTRYA {}
 impl FromIntoMemory for STRENTRYA {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 8u32 as usize);
-        let f_pszName = <crate::core::PSTR as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_pszValue = <crate::core::PSTR as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
+        let f_pszName = <PSTR as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
+        let f_pszValue = <PSTR as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         Self {
             pszName: f_pszName,
             pszValue: f_pszValue,
@@ -3802,8 +3801,8 @@ impl FromIntoMemory for STRENTRYA {
     }
 }
 pub struct STRENTRYW {
-    pub pszName: crate::core::PWSTR,
-    pub pszValue: crate::core::PWSTR,
+    pub pszName: PWSTR,
+    pub pszValue: PWSTR,
 }
 impl ::core::marker::Copy for STRENTRYW {}
 impl ::core::clone::Clone for STRENTRYW {
@@ -3828,8 +3827,8 @@ impl ::core::cmp::Eq for STRENTRYW {}
 impl FromIntoMemory for STRENTRYW {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 8u32 as usize);
-        let f_pszName = <crate::core::PWSTR as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_pszValue = <crate::core::PWSTR as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
+        let f_pszName = <PWSTR as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
+        let f_pszValue = <PWSTR as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         Self {
             pszName: f_pszName,
             pszValue: f_pszValue,
@@ -5325,7 +5324,7 @@ pub struct WLDP_DEVICE_SECURITY_INFORMATION {
     pub UnlockIdSize: u32,
     pub UnlockId: MutPtr<u8>,
     pub ManufacturerIDLength: u32,
-    pub ManufacturerID: crate::core::PWSTR,
+    pub ManufacturerID: PWSTR,
 }
 impl ::core::marker::Copy for WLDP_DEVICE_SECURITY_INFORMATION {}
 impl ::core::clone::Clone for WLDP_DEVICE_SECURITY_INFORMATION {
@@ -5358,8 +5357,7 @@ impl FromIntoMemory for WLDP_DEVICE_SECURITY_INFORMATION {
         let f_UnlockIdSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_UnlockId = <MutPtr<u8> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_ManufacturerIDLength = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_ManufacturerID =
-            <crate::core::PWSTR as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
+        let f_ManufacturerID = <PWSTR as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
         Self {
             UnlockIdSize: f_UnlockIdSize,
             UnlockId: f_UnlockId,
@@ -5454,7 +5452,7 @@ impl FromIntoMemory for WLDP_HOST_ID {
 pub struct WLDP_HOST_INFORMATION {
     pub dwRevision: u32,
     pub dwHostId: WLDP_HOST_ID,
-    pub szSource: crate::core::PCWSTR,
+    pub szSource: PCWSTR,
     pub hSource: super::super::Foundation::HANDLE,
 }
 impl ::core::marker::Copy for WLDP_HOST_INFORMATION {}
@@ -5487,7 +5485,7 @@ impl FromIntoMemory for WLDP_HOST_INFORMATION {
         assert_eq!(from.len(), 16u32 as usize);
         let f_dwRevision = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwHostId = <WLDP_HOST_ID as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        let f_szSource = <crate::core::PCWSTR as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
+        let f_szSource = <PCWSTR as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
         let f_hSource =
             <super::super::Foundation::HANDLE as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
         Self {
@@ -5879,18 +5877,18 @@ impl FromIntoMemory for tcp_request_set_information_ex {
 pub trait Api {
     fn AddDelBackupEntryA(
         &self,
-        lpcsz_file_list: crate::core::PCSTR,
-        lpcsz_backup_dir: crate::core::PCSTR,
-        lpcsz_base_name: crate::core::PCSTR,
+        lpcsz_file_list: PCSTR,
+        lpcsz_backup_dir: PCSTR,
+        lpcsz_base_name: PCSTR,
         dw_flags: u32,
     ) -> crate::core::HRESULT {
         todo!("AddDelBackupEntryA")
     }
     fn AddDelBackupEntryW(
         &self,
-        lpcsz_file_list: crate::core::PCWSTR,
-        lpcsz_backup_dir: crate::core::PCWSTR,
-        lpcsz_base_name: crate::core::PCWSTR,
+        lpcsz_file_list: PCWSTR,
+        lpcsz_backup_dir: PCWSTR,
+        lpcsz_base_name: PCWSTR,
         dw_flags: u32,
     ) -> crate::core::HRESULT {
         todo!("AddDelBackupEntryW")
@@ -5898,10 +5896,10 @@ pub trait Api {
     fn AdvInstallFileA(
         &self,
         hwnd: super::super::Foundation::HWND,
-        lpsz_source_dir: crate::core::PCSTR,
-        lpsz_source_file: crate::core::PCSTR,
-        lpsz_dest_dir: crate::core::PCSTR,
-        lpsz_dest_file: crate::core::PCSTR,
+        lpsz_source_dir: PCSTR,
+        lpsz_source_file: PCSTR,
+        lpsz_dest_dir: PCSTR,
+        lpsz_dest_file: PCSTR,
         dw_flags: u32,
         dw_reserved: u32,
     ) -> crate::core::HRESULT {
@@ -5910,10 +5908,10 @@ pub trait Api {
     fn AdvInstallFileW(
         &self,
         hwnd: super::super::Foundation::HWND,
-        lpsz_source_dir: crate::core::PCWSTR,
-        lpsz_source_file: crate::core::PCWSTR,
-        lpsz_dest_dir: crate::core::PCWSTR,
-        lpsz_dest_file: crate::core::PCWSTR,
+        lpsz_source_dir: PCWSTR,
+        lpsz_source_file: PCWSTR,
+        lpsz_dest_dir: PCWSTR,
+        lpsz_dest_file: PCWSTR,
         dw_flags: u32,
         dw_reserved: u32,
     ) -> crate::core::HRESULT {
@@ -5965,7 +5963,7 @@ pub trait Api {
         &self,
         lp_timer_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
         b_manual_reset: super::super::Foundation::BOOL,
-        lp_timer_name: crate::core::PCSTR,
+        lp_timer_name: PCSTR,
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateWaitableTimerA")
     }
@@ -5974,47 +5972,39 @@ pub trait Api {
     fn CreateWaitableTimerExA(
         &self,
         lp_timer_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
-        lp_timer_name: crate::core::PCSTR,
+        lp_timer_name: PCSTR,
         dw_flags: u32,
         dw_desired_access: u32,
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateWaitableTimerExA")
     }
-    fn DelNodeA(
-        &self,
-        psz_file_or_dir_name: crate::core::PCSTR,
-        dw_flags: u32,
-    ) -> crate::core::HRESULT {
+    fn DelNodeA(&self, psz_file_or_dir_name: PCSTR, dw_flags: u32) -> crate::core::HRESULT {
         todo!("DelNodeA")
     }
     fn DelNodeRunDLL32W(
         &self,
         hwnd: super::super::Foundation::HWND,
         h_instance: super::super::Foundation::HINSTANCE,
-        psz_parms: crate::core::PWSTR,
+        psz_parms: PWSTR,
         n_show: i32,
     ) -> crate::core::HRESULT {
         todo!("DelNodeRunDLL32W")
     }
-    fn DelNodeW(
-        &self,
-        psz_file_or_dir_name: crate::core::PCWSTR,
-        dw_flags: u32,
-    ) -> crate::core::HRESULT {
+    fn DelNodeW(&self, psz_file_or_dir_name: PCWSTR, dw_flags: u32) -> crate::core::HRESULT {
         todo!("DelNodeW")
     }
     fn DnsHostnameToComputerNameA(
         &self,
-        hostname: crate::core::PCSTR,
-        computer_name: crate::core::PSTR,
+        hostname: PCSTR,
+        computer_name: PSTR,
         n_size: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
         todo!("DnsHostnameToComputerNameA")
     }
     fn DnsHostnameToComputerNameW(
         &self,
-        hostname: crate::core::PCWSTR,
-        computer_name: crate::core::PWSTR,
+        hostname: PCWSTR,
+        computer_name: PWSTR,
         n_size: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
         todo!("DnsHostnameToComputerNameW")
@@ -6048,10 +6038,10 @@ pub trait Api {
     }
     fn ExtractFilesA(
         &self,
-        psz_cab_name: crate::core::PCSTR,
-        psz_expand_dir: crate::core::PCSTR,
+        psz_cab_name: PCSTR,
+        psz_expand_dir: PCSTR,
         dw_flags: u32,
-        psz_file_list: crate::core::PCSTR,
+        psz_file_list: PCSTR,
         lp_reserved: MutPtr<::core::ffi::c_void>,
         dw_reserved: u32,
     ) -> crate::core::HRESULT {
@@ -6059,10 +6049,10 @@ pub trait Api {
     }
     fn ExtractFilesW(
         &self,
-        psz_cab_name: crate::core::PCWSTR,
-        psz_expand_dir: crate::core::PCWSTR,
+        psz_cab_name: PCWSTR,
+        psz_expand_dir: PCWSTR,
         dw_flags: u32,
-        psz_file_list: crate::core::PCWSTR,
+        psz_file_list: PCWSTR,
         lp_reserved: MutPtr<::core::ffi::c_void>,
         dw_reserved: u32,
     ) -> crate::core::HRESULT {
@@ -6070,28 +6060,28 @@ pub trait Api {
     }
     fn FileSaveMarkNotExistA(
         &self,
-        lp_file_list: crate::core::PCSTR,
-        lp_dir: crate::core::PCSTR,
-        lp_base_name: crate::core::PCSTR,
+        lp_file_list: PCSTR,
+        lp_dir: PCSTR,
+        lp_base_name: PCSTR,
     ) -> crate::core::HRESULT {
         todo!("FileSaveMarkNotExistA")
     }
     fn FileSaveMarkNotExistW(
         &self,
-        lp_file_list: crate::core::PCWSTR,
-        lp_dir: crate::core::PCWSTR,
-        lp_base_name: crate::core::PCWSTR,
+        lp_file_list: PCWSTR,
+        lp_dir: PCWSTR,
+        lp_base_name: PCWSTR,
     ) -> crate::core::HRESULT {
         todo!("FileSaveMarkNotExistW")
     }
     fn FileSaveRestoreOnINFA(
         &self,
         h_wnd: super::super::Foundation::HWND,
-        psz_title: crate::core::PCSTR,
-        psz_inf: crate::core::PCSTR,
-        psz_section: crate::core::PCSTR,
-        psz_backup_dir: crate::core::PCSTR,
-        psz_base_backup_file: crate::core::PCSTR,
+        psz_title: PCSTR,
+        psz_inf: PCSTR,
+        psz_section: PCSTR,
+        psz_backup_dir: PCSTR,
+        psz_base_backup_file: PCSTR,
         dw_flags: u32,
     ) -> crate::core::HRESULT {
         todo!("FileSaveRestoreOnINFA")
@@ -6099,11 +6089,11 @@ pub trait Api {
     fn FileSaveRestoreOnINFW(
         &self,
         h_wnd: super::super::Foundation::HWND,
-        psz_title: crate::core::PCWSTR,
-        psz_inf: crate::core::PCWSTR,
-        psz_section: crate::core::PCWSTR,
-        psz_backup_dir: crate::core::PCWSTR,
-        psz_base_backup_file: crate::core::PCWSTR,
+        psz_title: PCWSTR,
+        psz_inf: PCWSTR,
+        psz_section: PCWSTR,
+        psz_backup_dir: PCWSTR,
+        psz_base_backup_file: PCWSTR,
         dw_flags: u32,
     ) -> crate::core::HRESULT {
         todo!("FileSaveRestoreOnINFW")
@@ -6111,9 +6101,9 @@ pub trait Api {
     fn FileSaveRestoreW(
         &self,
         h_dlg: super::super::Foundation::HWND,
-        lp_file_list: crate::core::PCWSTR,
-        lp_dir: crate::core::PCWSTR,
-        lp_base_name: crate::core::PCWSTR,
+        lp_file_list: PCWSTR,
+        lp_dir: PCWSTR,
+        lp_base_name: PCWSTR,
         dw_flags: u32,
     ) -> crate::core::HRESULT {
         todo!("FileSaveRestoreW")
@@ -6131,14 +6121,14 @@ pub trait Api {
     }
     fn GetComputerNameA(
         &self,
-        lp_buffer: crate::core::PSTR,
+        lp_buffer: PSTR,
         n_size: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
         todo!("GetComputerNameA")
     }
     fn GetComputerNameW(
         &self,
-        lp_buffer: crate::core::PWSTR,
+        lp_buffer: PWSTR,
         n_size: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
         todo!("GetComputerNameW")
@@ -6173,8 +6163,8 @@ pub trait Api {
     }
     fn GetFirmwareEnvironmentVariableA(
         &self,
-        lp_name: crate::core::PCSTR,
-        lp_guid: crate::core::PCSTR,
+        lp_name: PCSTR,
+        lp_guid: PCSTR,
         p_buffer: MutPtr<::core::ffi::c_void>,
         n_size: u32,
     ) -> u32 {
@@ -6182,8 +6172,8 @@ pub trait Api {
     }
     fn GetFirmwareEnvironmentVariableExA(
         &self,
-        lp_name: crate::core::PCSTR,
-        lp_guid: crate::core::PCSTR,
+        lp_name: PCSTR,
+        lp_guid: PCSTR,
         p_buffer: MutPtr<::core::ffi::c_void>,
         n_size: u32,
         pdw_attribubutes: MutPtr<u32>,
@@ -6192,8 +6182,8 @@ pub trait Api {
     }
     fn GetFirmwareEnvironmentVariableExW(
         &self,
-        lp_name: crate::core::PCWSTR,
-        lp_guid: crate::core::PCWSTR,
+        lp_name: PCWSTR,
+        lp_guid: PCWSTR,
         p_buffer: MutPtr<::core::ffi::c_void>,
         n_size: u32,
         pdw_attribubutes: MutPtr<u32>,
@@ -6202,8 +6192,8 @@ pub trait Api {
     }
     fn GetFirmwareEnvironmentVariableW(
         &self,
-        lp_name: crate::core::PCWSTR,
-        lp_guid: crate::core::PCWSTR,
+        lp_name: PCWSTR,
+        lp_guid: PCWSTR,
         p_buffer: MutPtr<::core::ffi::c_void>,
         n_size: u32,
     ) -> u32 {
@@ -6211,146 +6201,131 @@ pub trait Api {
     }
     fn GetPrivateProfileIntA(
         &self,
-        lp_app_name: crate::core::PCSTR,
-        lp_key_name: crate::core::PCSTR,
+        lp_app_name: PCSTR,
+        lp_key_name: PCSTR,
         n_default: i32,
-        lp_file_name: crate::core::PCSTR,
+        lp_file_name: PCSTR,
     ) -> u32 {
         todo!("GetPrivateProfileIntA")
     }
     fn GetPrivateProfileIntW(
         &self,
-        lp_app_name: crate::core::PCWSTR,
-        lp_key_name: crate::core::PCWSTR,
+        lp_app_name: PCWSTR,
+        lp_key_name: PCWSTR,
         n_default: i32,
-        lp_file_name: crate::core::PCWSTR,
+        lp_file_name: PCWSTR,
     ) -> u32 {
         todo!("GetPrivateProfileIntW")
     }
     fn GetPrivateProfileSectionA(
         &self,
-        lp_app_name: crate::core::PCSTR,
-        lp_returned_string: crate::core::PSTR,
+        lp_app_name: PCSTR,
+        lp_returned_string: PSTR,
         n_size: u32,
-        lp_file_name: crate::core::PCSTR,
+        lp_file_name: PCSTR,
     ) -> u32 {
         todo!("GetPrivateProfileSectionA")
     }
     fn GetPrivateProfileSectionNamesA(
         &self,
-        lpsz_return_buffer: crate::core::PSTR,
+        lpsz_return_buffer: PSTR,
         n_size: u32,
-        lp_file_name: crate::core::PCSTR,
+        lp_file_name: PCSTR,
     ) -> u32 {
         todo!("GetPrivateProfileSectionNamesA")
     }
     fn GetPrivateProfileSectionNamesW(
         &self,
-        lpsz_return_buffer: crate::core::PWSTR,
+        lpsz_return_buffer: PWSTR,
         n_size: u32,
-        lp_file_name: crate::core::PCWSTR,
+        lp_file_name: PCWSTR,
     ) -> u32 {
         todo!("GetPrivateProfileSectionNamesW")
     }
     fn GetPrivateProfileSectionW(
         &self,
-        lp_app_name: crate::core::PCWSTR,
-        lp_returned_string: crate::core::PWSTR,
+        lp_app_name: PCWSTR,
+        lp_returned_string: PWSTR,
         n_size: u32,
-        lp_file_name: crate::core::PCWSTR,
+        lp_file_name: PCWSTR,
     ) -> u32 {
         todo!("GetPrivateProfileSectionW")
     }
     fn GetPrivateProfileStringA(
         &self,
-        lp_app_name: crate::core::PCSTR,
-        lp_key_name: crate::core::PCSTR,
-        lp_default: crate::core::PCSTR,
-        lp_returned_string: crate::core::PSTR,
+        lp_app_name: PCSTR,
+        lp_key_name: PCSTR,
+        lp_default: PCSTR,
+        lp_returned_string: PSTR,
         n_size: u32,
-        lp_file_name: crate::core::PCSTR,
+        lp_file_name: PCSTR,
     ) -> u32 {
         todo!("GetPrivateProfileStringA")
     }
     fn GetPrivateProfileStringW(
         &self,
-        lp_app_name: crate::core::PCWSTR,
-        lp_key_name: crate::core::PCWSTR,
-        lp_default: crate::core::PCWSTR,
-        lp_returned_string: crate::core::PWSTR,
+        lp_app_name: PCWSTR,
+        lp_key_name: PCWSTR,
+        lp_default: PCWSTR,
+        lp_returned_string: PWSTR,
         n_size: u32,
-        lp_file_name: crate::core::PCWSTR,
+        lp_file_name: PCWSTR,
     ) -> u32 {
         todo!("GetPrivateProfileStringW")
     }
     fn GetPrivateProfileStructA(
         &self,
-        lpsz_section: crate::core::PCSTR,
-        lpsz_key: crate::core::PCSTR,
+        lpsz_section: PCSTR,
+        lpsz_key: PCSTR,
         lp_struct: MutPtr<::core::ffi::c_void>,
         u_size_struct: u32,
-        sz_file: crate::core::PCSTR,
+        sz_file: PCSTR,
     ) -> super::super::Foundation::BOOL {
         todo!("GetPrivateProfileStructA")
     }
     fn GetPrivateProfileStructW(
         &self,
-        lpsz_section: crate::core::PCWSTR,
-        lpsz_key: crate::core::PCWSTR,
+        lpsz_section: PCWSTR,
+        lpsz_key: PCWSTR,
         lp_struct: MutPtr<::core::ffi::c_void>,
         u_size_struct: u32,
-        sz_file: crate::core::PCWSTR,
+        sz_file: PCWSTR,
     ) -> super::super::Foundation::BOOL {
         todo!("GetPrivateProfileStructW")
     }
-    fn GetProfileIntA(
-        &self,
-        lp_app_name: crate::core::PCSTR,
-        lp_key_name: crate::core::PCSTR,
-        n_default: i32,
-    ) -> u32 {
+    fn GetProfileIntA(&self, lp_app_name: PCSTR, lp_key_name: PCSTR, n_default: i32) -> u32 {
         todo!("GetProfileIntA")
     }
-    fn GetProfileIntW(
-        &self,
-        lp_app_name: crate::core::PCWSTR,
-        lp_key_name: crate::core::PCWSTR,
-        n_default: i32,
-    ) -> u32 {
+    fn GetProfileIntW(&self, lp_app_name: PCWSTR, lp_key_name: PCWSTR, n_default: i32) -> u32 {
         todo!("GetProfileIntW")
     }
-    fn GetProfileSectionA(
-        &self,
-        lp_app_name: crate::core::PCSTR,
-        lp_returned_string: crate::core::PSTR,
-        n_size: u32,
-    ) -> u32 {
+    fn GetProfileSectionA(&self, lp_app_name: PCSTR, lp_returned_string: PSTR, n_size: u32) -> u32 {
         todo!("GetProfileSectionA")
     }
     fn GetProfileSectionW(
         &self,
-        lp_app_name: crate::core::PCWSTR,
-        lp_returned_string: crate::core::PWSTR,
+        lp_app_name: PCWSTR,
+        lp_returned_string: PWSTR,
         n_size: u32,
     ) -> u32 {
         todo!("GetProfileSectionW")
     }
     fn GetProfileStringA(
         &self,
-        lp_app_name: crate::core::PCSTR,
-        lp_key_name: crate::core::PCSTR,
-        lp_default: crate::core::PCSTR,
-        lp_returned_string: crate::core::PSTR,
+        lp_app_name: PCSTR,
+        lp_key_name: PCSTR,
+        lp_default: PCSTR,
+        lp_returned_string: PSTR,
         n_size: u32,
     ) -> u32 {
         todo!("GetProfileStringA")
     }
     fn GetProfileStringW(
         &self,
-        lp_app_name: crate::core::PCWSTR,
-        lp_key_name: crate::core::PCWSTR,
-        lp_default: crate::core::PCWSTR,
-        lp_returned_string: crate::core::PWSTR,
+        lp_app_name: PCWSTR,
+        lp_key_name: PCWSTR,
+        lp_default: PCWSTR,
+        lp_returned_string: PWSTR,
         n_size: u32,
     ) -> u32 {
         todo!("GetProfileStringW")
@@ -6367,21 +6342,21 @@ pub trait Api {
     }
     fn GetUserNameA(
         &self,
-        lp_buffer: crate::core::PSTR,
+        lp_buffer: PSTR,
         pcb_buffer: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
         todo!("GetUserNameA")
     }
     fn GetUserNameW(
         &self,
-        lp_buffer: crate::core::PWSTR,
+        lp_buffer: PWSTR,
         pcb_buffer: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
         todo!("GetUserNameW")
     }
     fn GetVersionFromFileA(
         &self,
-        lpsz_filename: crate::core::PCSTR,
+        lpsz_filename: PCSTR,
         pdw_ms_ver: MutPtr<u32>,
         pdw_ls_ver: MutPtr<u32>,
         b_version: super::super::Foundation::BOOL,
@@ -6390,7 +6365,7 @@ pub trait Api {
     }
     fn GetVersionFromFileExA(
         &self,
-        lpsz_filename: crate::core::PCSTR,
+        lpsz_filename: PCSTR,
         pdw_ms_ver: MutPtr<u32>,
         pdw_ls_ver: MutPtr<u32>,
         b_version: super::super::Foundation::BOOL,
@@ -6399,7 +6374,7 @@ pub trait Api {
     }
     fn GetVersionFromFileExW(
         &self,
-        lpsz_filename: crate::core::PCWSTR,
+        lpsz_filename: PCWSTR,
         pdw_ms_ver: MutPtr<u32>,
         pdw_ls_ver: MutPtr<u32>,
         b_version: super::super::Foundation::BOOL,
@@ -6408,7 +6383,7 @@ pub trait Api {
     }
     fn GetVersionFromFileW(
         &self,
-        lpsz_filename: crate::core::PCWSTR,
+        lpsz_filename: PCWSTR,
         pdw_ms_ver: MutPtr<u32>,
         pdw_ls_ver: MutPtr<u32>,
         b_version: super::super::Foundation::BOOL,
@@ -6464,7 +6439,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("IMPSetIMEW")
     }
-    fn IsApiSetImplemented(&self, contract: crate::core::PCSTR) -> super::super::Foundation::BOOL {
+    fn IsApiSetImplemented(&self, contract: PCSTR) -> super::super::Foundation::BOOL {
         todo!("IsApiSetImplemented")
     }
     fn IsBadHugeReadPtr(
@@ -6504,7 +6479,7 @@ pub trait Api {
         &self,
         hwnd: super::super::Foundation::HWND,
         h_instance: super::super::Foundation::HINSTANCE,
-        psz_parms: crate::core::PCWSTR,
+        psz_parms: PCWSTR,
         n_show: i32,
     ) -> crate::core::HRESULT {
         todo!("LaunchINFSectionExW")
@@ -6513,7 +6488,7 @@ pub trait Api {
         &self,
         hwnd_owner: super::super::Foundation::HWND,
         h_instance: super::super::Foundation::HINSTANCE,
-        psz_params: crate::core::PWSTR,
+        psz_params: PWSTR,
         n_show: i32,
     ) -> i32 {
         todo!("LaunchINFSectionW")
@@ -6649,8 +6624,8 @@ pub trait Api {
     }
     fn OpenINFEngineA(
         &self,
-        psz_inf_filename: crate::core::PCSTR,
-        psz_install_section: crate::core::PCSTR,
+        psz_inf_filename: PCSTR,
+        psz_install_section: PCSTR,
         dw_flags: u32,
         ph_inf: MutPtr<ConstPtr<::core::ffi::c_void>>,
         pv_reserved: MutPtr<::core::ffi::c_void>,
@@ -6659,8 +6634,8 @@ pub trait Api {
     }
     fn OpenINFEngineW(
         &self,
-        psz_inf_filename: crate::core::PCWSTR,
-        psz_install_section: crate::core::PCWSTR,
+        psz_inf_filename: PCWSTR,
+        psz_install_section: PCWSTR,
         dw_flags: u32,
         ph_inf: MutPtr<ConstPtr<::core::ffi::c_void>>,
         pv_reserved: MutPtr<::core::ffi::c_void>,
@@ -6671,7 +6646,7 @@ pub trait Api {
         &self,
         dw_desired_access: u32,
         b_inherit_handle: super::super::Foundation::BOOL,
-        lp_name: crate::core::PCSTR,
+        lp_name: PCSTR,
     ) -> super::super::Foundation::HANDLE {
         todo!("OpenMutexA")
     }
@@ -6679,7 +6654,7 @@ pub trait Api {
         &self,
         dw_desired_access: u32,
         b_inherit_handle: super::super::Foundation::BOOL,
-        lp_name: crate::core::PCSTR,
+        lp_name: PCSTR,
     ) -> super::super::Foundation::HANDLE {
         todo!("OpenSemaphoreA")
     }
@@ -6687,7 +6662,7 @@ pub trait Api {
         &self,
         dw_desired_access: u32,
         b_inherit_handle: super::super::Foundation::BOOL,
-        lp_timer_name: crate::core::PCSTR,
+        lp_timer_name: PCSTR,
     ) -> super::super::Foundation::HANDLE {
         todo!("OpenWaitableTimerA")
     }
@@ -6750,8 +6725,8 @@ pub trait Api {
     fn RebootCheckOnInstallA(
         &self,
         hwnd: super::super::Foundation::HWND,
-        psz_inf: crate::core::PCSTR,
-        psz_sec: crate::core::PCSTR,
+        psz_inf: PCSTR,
+        psz_sec: PCSTR,
         dw_reserved: u32,
     ) -> crate::core::HRESULT {
         todo!("RebootCheckOnInstallA")
@@ -6759,8 +6734,8 @@ pub trait Api {
     fn RebootCheckOnInstallW(
         &self,
         hwnd: super::super::Foundation::HWND,
-        psz_inf: crate::core::PCWSTR,
-        psz_sec: crate::core::PCWSTR,
+        psz_inf: PCWSTR,
+        psz_sec: PCWSTR,
         dw_reserved: u32,
     ) -> crate::core::HRESULT {
         todo!("RebootCheckOnInstallW")
@@ -6768,19 +6743,13 @@ pub trait Api {
     fn RecordFeatureError(&self, feature_id: u32, error: ConstPtr<FEATURE_ERROR>) {
         todo!("RecordFeatureError")
     }
-    fn RecordFeatureUsage(
-        &self,
-        feature_id: u32,
-        kind: u32,
-        addend: u32,
-        origin_name: crate::core::PCSTR,
-    ) {
+    fn RecordFeatureUsage(&self, feature_id: u32, kind: u32, addend: u32, origin_name: PCSTR) {
         todo!("RecordFeatureUsage")
     }
     fn RegInstallA(
         &self,
         hmod: super::super::Foundation::HINSTANCE,
-        psz_section: crate::core::PCSTR,
+        psz_section: PCSTR,
         pst_table: ConstPtr<STRTABLEA>,
     ) -> crate::core::HRESULT {
         todo!("RegInstallA")
@@ -6788,7 +6757,7 @@ pub trait Api {
     fn RegInstallW(
         &self,
         hmod: super::super::Foundation::HINSTANCE,
-        psz_section: crate::core::PCWSTR,
+        psz_section: PCWSTR,
         pst_table: ConstPtr<STRTABLEW>,
     ) -> crate::core::HRESULT {
         todo!("RegInstallW")
@@ -6798,7 +6767,7 @@ pub trait Api {
     fn RegRestoreAllA(
         &self,
         h_wnd: super::super::Foundation::HWND,
-        psz_title_string: crate::core::PCSTR,
+        psz_title_string: PCSTR,
         hk_bckup_key: super::Registry::HKEY,
     ) -> crate::core::HRESULT {
         todo!("RegRestoreAllA")
@@ -6808,7 +6777,7 @@ pub trait Api {
     fn RegRestoreAllW(
         &self,
         h_wnd: super::super::Foundation::HWND,
-        psz_title_string: crate::core::PCWSTR,
+        psz_title_string: PCWSTR,
         hk_bckup_key: super::Registry::HKEY,
     ) -> crate::core::HRESULT {
         todo!("RegRestoreAllW")
@@ -6818,11 +6787,11 @@ pub trait Api {
     fn RegSaveRestoreA(
         &self,
         h_wnd: super::super::Foundation::HWND,
-        psz_title_string: crate::core::PCSTR,
+        psz_title_string: PCSTR,
         hk_bckup_key: super::Registry::HKEY,
-        pcsz_root_key: crate::core::PCSTR,
-        pcsz_sub_key: crate::core::PCSTR,
-        pcsz_value_name: crate::core::PCSTR,
+        pcsz_root_key: PCSTR,
+        pcsz_sub_key: PCSTR,
+        pcsz_value_name: PCSTR,
         dw_flags: u32,
     ) -> crate::core::HRESULT {
         todo!("RegSaveRestoreA")
@@ -6832,9 +6801,9 @@ pub trait Api {
     fn RegSaveRestoreOnINFA(
         &self,
         h_wnd: super::super::Foundation::HWND,
-        psz_title: crate::core::PCSTR,
-        psz_inf: crate::core::PCSTR,
-        psz_section: crate::core::PCSTR,
+        psz_title: PCSTR,
+        psz_inf: PCSTR,
+        psz_section: PCSTR,
         h_hklm_back_key: super::Registry::HKEY,
         h_hkcu_back_key: super::Registry::HKEY,
         dw_flags: u32,
@@ -6846,9 +6815,9 @@ pub trait Api {
     fn RegSaveRestoreOnINFW(
         &self,
         h_wnd: super::super::Foundation::HWND,
-        psz_title: crate::core::PCWSTR,
-        psz_inf: crate::core::PCWSTR,
-        psz_section: crate::core::PCWSTR,
+        psz_title: PCWSTR,
+        psz_inf: PCWSTR,
+        psz_section: PCWSTR,
         h_hklm_back_key: super::Registry::HKEY,
         h_hkcu_back_key: super::Registry::HKEY,
         dw_flags: u32,
@@ -6860,19 +6829,19 @@ pub trait Api {
     fn RegSaveRestoreW(
         &self,
         h_wnd: super::super::Foundation::HWND,
-        psz_title_string: crate::core::PCWSTR,
+        psz_title_string: PCWSTR,
         hk_bckup_key: super::Registry::HKEY,
-        pcsz_root_key: crate::core::PCWSTR,
-        pcsz_sub_key: crate::core::PCWSTR,
-        pcsz_value_name: crate::core::PCWSTR,
+        pcsz_root_key: PCWSTR,
+        pcsz_sub_key: PCWSTR,
+        pcsz_value_name: PCWSTR,
         dw_flags: u32,
     ) -> crate::core::HRESULT {
         todo!("RegSaveRestoreW")
     }
     fn ReplacePartitionUnit(
         &self,
-        target_partition: crate::core::PCWSTR,
-        spare_partition: crate::core::PCWSTR,
+        target_partition: PCWSTR,
+        spare_partition: PCWSTR,
         flags: u32,
     ) -> super::super::Foundation::BOOL {
         todo!("ReplacePartitionUnit")
@@ -6945,7 +6914,7 @@ pub trait Api {
     fn RtlInitUnicodeString(
         &self,
         destination_string: MutPtr<super::super::Foundation::UNICODE_STRING>,
-        source_string: crate::core::PCWSTR,
+        source_string: PCWSTR,
     ) {
         todo!("RtlInitUnicodeString")
     }
@@ -6996,7 +6965,7 @@ pub trait Api {
     fn RtlUnicodeToMultiByteSize(
         &self,
         bytes_in_multi_byte_string: MutPtr<u32>,
-        unicode_string: crate::core::PCWSTR,
+        unicode_string: PCWSTR,
         bytes_in_unicode_string: u32,
     ) -> super::super::Foundation::NTSTATUS {
         todo!("RtlUnicodeToMultiByteSize")
@@ -7007,10 +6976,10 @@ pub trait Api {
     fn RunSetupCommandA(
         &self,
         h_wnd: super::super::Foundation::HWND,
-        sz_cmd_name: crate::core::PCSTR,
-        sz_inf_section: crate::core::PCSTR,
-        sz_dir: crate::core::PCSTR,
-        lpsz_title: crate::core::PCSTR,
+        sz_cmd_name: PCSTR,
+        sz_inf_section: PCSTR,
+        sz_dir: PCSTR,
+        lpsz_title: PCSTR,
         ph_exe: MutPtr<super::super::Foundation::HANDLE>,
         dw_flags: u32,
         pv_reserved: MutPtr<::core::ffi::c_void>,
@@ -7020,10 +6989,10 @@ pub trait Api {
     fn RunSetupCommandW(
         &self,
         h_wnd: super::super::Foundation::HWND,
-        sz_cmd_name: crate::core::PCWSTR,
-        sz_inf_section: crate::core::PCWSTR,
-        sz_dir: crate::core::PCWSTR,
-        lpsz_title: crate::core::PCWSTR,
+        sz_cmd_name: PCWSTR,
+        sz_inf_section: PCWSTR,
+        sz_dir: PCWSTR,
+        lpsz_title: PCWSTR,
         ph_exe: MutPtr<super::super::Foundation::HANDLE>,
         dw_flags: u32,
         pv_reserved: MutPtr<::core::ffi::c_void>,
@@ -7044,16 +7013,13 @@ pub trait Api {
     ) -> super::super::Foundation::LRESULT {
         todo!("SendIMEMessageExW")
     }
-    fn SetEnvironmentStringsA(
-        &self,
-        new_environment: crate::core::PCSTR,
-    ) -> super::super::Foundation::BOOL {
+    fn SetEnvironmentStringsA(&self, new_environment: PCSTR) -> super::super::Foundation::BOOL {
         todo!("SetEnvironmentStringsA")
     }
     fn SetFirmwareEnvironmentVariableA(
         &self,
-        lp_name: crate::core::PCSTR,
-        lp_guid: crate::core::PCSTR,
+        lp_name: PCSTR,
+        lp_guid: PCSTR,
         p_value: ConstPtr<::core::ffi::c_void>,
         n_size: u32,
     ) -> super::super::Foundation::BOOL {
@@ -7061,8 +7027,8 @@ pub trait Api {
     }
     fn SetFirmwareEnvironmentVariableExA(
         &self,
-        lp_name: crate::core::PCSTR,
-        lp_guid: crate::core::PCSTR,
+        lp_name: PCSTR,
+        lp_guid: PCSTR,
         p_value: ConstPtr<::core::ffi::c_void>,
         n_size: u32,
         dw_attributes: u32,
@@ -7071,8 +7037,8 @@ pub trait Api {
     }
     fn SetFirmwareEnvironmentVariableExW(
         &self,
-        lp_name: crate::core::PCWSTR,
-        lp_guid: crate::core::PCWSTR,
+        lp_name: PCWSTR,
+        lp_guid: PCWSTR,
         p_value: ConstPtr<::core::ffi::c_void>,
         n_size: u32,
         dw_attributes: u32,
@@ -7081,8 +7047,8 @@ pub trait Api {
     }
     fn SetFirmwareEnvironmentVariableW(
         &self,
-        lp_name: crate::core::PCWSTR,
-        lp_guid: crate::core::PCWSTR,
+        lp_name: PCWSTR,
+        lp_guid: PCWSTR,
         p_value: ConstPtr<::core::ffi::c_void>,
         n_size: u32,
     ) -> super::super::Foundation::BOOL {
@@ -7123,11 +7089,11 @@ pub trait Api {
     }
     fn TranslateInfStringA(
         &self,
-        psz_inf_filename: crate::core::PCSTR,
-        psz_install_section: crate::core::PCSTR,
-        psz_translate_section: crate::core::PCSTR,
-        psz_translate_key: crate::core::PCSTR,
-        psz_buffer: crate::core::PSTR,
+        psz_inf_filename: PCSTR,
+        psz_install_section: PCSTR,
+        psz_translate_section: PCSTR,
+        psz_translate_key: PCSTR,
+        psz_buffer: PSTR,
         cch_buffer: u32,
         pdw_required_size: MutPtr<u32>,
         pv_reserved: MutPtr<::core::ffi::c_void>,
@@ -7137,10 +7103,10 @@ pub trait Api {
     fn TranslateInfStringExA(
         &self,
         h_inf: MutPtr<::core::ffi::c_void>,
-        psz_inf_filename: crate::core::PCSTR,
-        psz_translate_section: crate::core::PCSTR,
-        psz_translate_key: crate::core::PCSTR,
-        psz_buffer: crate::core::PSTR,
+        psz_inf_filename: PCSTR,
+        psz_translate_section: PCSTR,
+        psz_translate_key: PCSTR,
+        psz_buffer: PSTR,
         dw_buffer_size: u32,
         pdw_required_size: MutPtr<u32>,
         pv_reserved: MutPtr<::core::ffi::c_void>,
@@ -7150,10 +7116,10 @@ pub trait Api {
     fn TranslateInfStringExW(
         &self,
         h_inf: MutPtr<::core::ffi::c_void>,
-        psz_inf_filename: crate::core::PCWSTR,
-        psz_translate_section: crate::core::PCWSTR,
-        psz_translate_key: crate::core::PCWSTR,
-        psz_buffer: crate::core::PWSTR,
+        psz_inf_filename: PCWSTR,
+        psz_translate_section: PCWSTR,
+        psz_translate_key: PCWSTR,
+        psz_buffer: PWSTR,
         dw_buffer_size: u32,
         pdw_required_size: MutPtr<u32>,
         pv_reserved: MutPtr<::core::ffi::c_void>,
@@ -7162,11 +7128,11 @@ pub trait Api {
     }
     fn TranslateInfStringW(
         &self,
-        psz_inf_filename: crate::core::PCWSTR,
-        psz_install_section: crate::core::PCWSTR,
-        psz_translate_section: crate::core::PCWSTR,
-        psz_translate_key: crate::core::PCWSTR,
-        psz_buffer: crate::core::PWSTR,
+        psz_inf_filename: PCWSTR,
+        psz_install_section: PCWSTR,
+        psz_translate_section: PCWSTR,
+        psz_translate_key: PCWSTR,
+        psz_buffer: PWSTR,
         cch_buffer: u32,
         pdw_required_size: MutPtr<u32>,
         pv_reserved: MutPtr<::core::ffi::c_void>,
@@ -7183,7 +7149,7 @@ pub trait Api {
         &self,
         hwnd: super::super::Foundation::HWND,
         h_instance: super::super::Foundation::HINSTANCE,
-        psz_parms: crate::core::PCSTR,
+        psz_parms: PCSTR,
         n_show: i32,
     ) -> crate::core::HRESULT {
         todo!("UserInstStubWrapperA")
@@ -7192,7 +7158,7 @@ pub trait Api {
         &self,
         hwnd: super::super::Foundation::HWND,
         h_instance: super::super::Foundation::HINSTANCE,
-        psz_parms: crate::core::PCWSTR,
+        psz_parms: PCWSTR,
         n_show: i32,
     ) -> crate::core::HRESULT {
         todo!("UserInstStubWrapperW")
@@ -7201,7 +7167,7 @@ pub trait Api {
         &self,
         hwnd: super::super::Foundation::HWND,
         h_instance: super::super::Foundation::HINSTANCE,
-        psz_parms: crate::core::PCSTR,
+        psz_parms: PCSTR,
         n_show: i32,
     ) -> crate::core::HRESULT {
         todo!("UserUnInstStubWrapperA")
@@ -7210,7 +7176,7 @@ pub trait Api {
         &self,
         hwnd: super::super::Foundation::HWND,
         h_instance: super::super::Foundation::HINSTANCE,
-        psz_parms: crate::core::PCWSTR,
+        psz_parms: PCWSTR,
         n_show: i32,
     ) -> crate::core::HRESULT {
         todo!("UserUnInstStubWrapperW")
@@ -7278,110 +7244,110 @@ pub trait Api {
     }
     fn WritePrivateProfileSectionA(
         &self,
-        lp_app_name: crate::core::PCSTR,
-        lp_string: crate::core::PCSTR,
-        lp_file_name: crate::core::PCSTR,
+        lp_app_name: PCSTR,
+        lp_string: PCSTR,
+        lp_file_name: PCSTR,
     ) -> super::super::Foundation::BOOL {
         todo!("WritePrivateProfileSectionA")
     }
     fn WritePrivateProfileSectionW(
         &self,
-        lp_app_name: crate::core::PCWSTR,
-        lp_string: crate::core::PCWSTR,
-        lp_file_name: crate::core::PCWSTR,
+        lp_app_name: PCWSTR,
+        lp_string: PCWSTR,
+        lp_file_name: PCWSTR,
     ) -> super::super::Foundation::BOOL {
         todo!("WritePrivateProfileSectionW")
     }
     fn WritePrivateProfileStringA(
         &self,
-        lp_app_name: crate::core::PCSTR,
-        lp_key_name: crate::core::PCSTR,
-        lp_string: crate::core::PCSTR,
-        lp_file_name: crate::core::PCSTR,
+        lp_app_name: PCSTR,
+        lp_key_name: PCSTR,
+        lp_string: PCSTR,
+        lp_file_name: PCSTR,
     ) -> super::super::Foundation::BOOL {
         todo!("WritePrivateProfileStringA")
     }
     fn WritePrivateProfileStringW(
         &self,
-        lp_app_name: crate::core::PCWSTR,
-        lp_key_name: crate::core::PCWSTR,
-        lp_string: crate::core::PCWSTR,
-        lp_file_name: crate::core::PCWSTR,
+        lp_app_name: PCWSTR,
+        lp_key_name: PCWSTR,
+        lp_string: PCWSTR,
+        lp_file_name: PCWSTR,
     ) -> super::super::Foundation::BOOL {
         todo!("WritePrivateProfileStringW")
     }
     fn WritePrivateProfileStructA(
         &self,
-        lpsz_section: crate::core::PCSTR,
-        lpsz_key: crate::core::PCSTR,
+        lpsz_section: PCSTR,
+        lpsz_key: PCSTR,
         lp_struct: ConstPtr<::core::ffi::c_void>,
         u_size_struct: u32,
-        sz_file: crate::core::PCSTR,
+        sz_file: PCSTR,
     ) -> super::super::Foundation::BOOL {
         todo!("WritePrivateProfileStructA")
     }
     fn WritePrivateProfileStructW(
         &self,
-        lpsz_section: crate::core::PCWSTR,
-        lpsz_key: crate::core::PCWSTR,
+        lpsz_section: PCWSTR,
+        lpsz_key: PCWSTR,
         lp_struct: ConstPtr<::core::ffi::c_void>,
         u_size_struct: u32,
-        sz_file: crate::core::PCWSTR,
+        sz_file: PCWSTR,
     ) -> super::super::Foundation::BOOL {
         todo!("WritePrivateProfileStructW")
     }
     fn WriteProfileSectionA(
         &self,
-        lp_app_name: crate::core::PCSTR,
-        lp_string: crate::core::PCSTR,
+        lp_app_name: PCSTR,
+        lp_string: PCSTR,
     ) -> super::super::Foundation::BOOL {
         todo!("WriteProfileSectionA")
     }
     fn WriteProfileSectionW(
         &self,
-        lp_app_name: crate::core::PCWSTR,
-        lp_string: crate::core::PCWSTR,
+        lp_app_name: PCWSTR,
+        lp_string: PCWSTR,
     ) -> super::super::Foundation::BOOL {
         todo!("WriteProfileSectionW")
     }
     fn WriteProfileStringA(
         &self,
-        lp_app_name: crate::core::PCSTR,
-        lp_key_name: crate::core::PCSTR,
-        lp_string: crate::core::PCSTR,
+        lp_app_name: PCSTR,
+        lp_key_name: PCSTR,
+        lp_string: PCSTR,
     ) -> super::super::Foundation::BOOL {
         todo!("WriteProfileStringA")
     }
     fn WriteProfileStringW(
         &self,
-        lp_app_name: crate::core::PCWSTR,
-        lp_key_name: crate::core::PCWSTR,
-        lp_string: crate::core::PCWSTR,
+        lp_app_name: PCWSTR,
+        lp_key_name: PCWSTR,
+        lp_string: PCWSTR,
     ) -> super::super::Foundation::BOOL {
         todo!("WriteProfileStringW")
     }
     fn _hread(&self, h_file: i32, lp_buffer: MutPtr<::core::ffi::c_void>, l_bytes: i32) -> i32 {
         todo!("_hread")
     }
-    fn _hwrite(&self, h_file: i32, lp_buffer: crate::core::PCSTR, l_bytes: i32) -> i32 {
+    fn _hwrite(&self, h_file: i32, lp_buffer: PCSTR, l_bytes: i32) -> i32 {
         todo!("_hwrite")
     }
     fn _lclose(&self, h_file: i32) -> i32 {
         todo!("_lclose")
     }
-    fn _lcreat(&self, lp_path_name: crate::core::PCSTR, i_attribute: i32) -> i32 {
+    fn _lcreat(&self, lp_path_name: PCSTR, i_attribute: i32) -> i32 {
         todo!("_lcreat")
     }
     fn _llseek(&self, h_file: i32, l_offset: i32, i_origin: i32) -> i32 {
         todo!("_llseek")
     }
-    fn _lopen(&self, lp_path_name: crate::core::PCSTR, i_read_write: i32) -> i32 {
+    fn _lopen(&self, lp_path_name: PCSTR, i_read_write: i32) -> i32 {
         todo!("_lopen")
     }
     fn _lread(&self, h_file: i32, lp_buffer: MutPtr<::core::ffi::c_void>, u_bytes: u32) -> u32 {
         todo!("_lread")
     }
-    fn _lwrite(&self, h_file: i32, lp_buffer: crate::core::PCSTR, u_bytes: u32) -> u32 {
+    fn _lwrite(&self, h_file: i32, lp_buffer: PCSTR, u_bytes: u32) -> u32 {
         todo!("_lwrite")
     }
     #[doc = "*Required namespaces: *"]

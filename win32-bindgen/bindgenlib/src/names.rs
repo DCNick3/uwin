@@ -120,10 +120,10 @@ pub fn gen_element_name(def: &Type, gen: &Gen) -> TokenStream {
         Type::GUID => quote! { crate::core::GUID },
         Type::IUnknown => quote! { crate::core::IUnknown },
         Type::HRESULT => quote! { crate::core::HRESULT },
-        Type::PSTR => quote! { crate::core::PSTR },
-        Type::PWSTR => quote! { crate::core::PWSTR },
-        Type::PCSTR => quote! { crate::core::PCSTR },
-        Type::PCWSTR => quote! { crate::core::PCWSTR },
+        Type::PSTR => quote! { PSTR },
+        Type::PWSTR => quote! { PWSTR },
+        Type::PCSTR => quote! { PCSTR },
+        Type::PCWSTR => quote! { PCWSTR },
         Type::Win32Array((kind, len)) => {
             let name = gen_default_type(kind, gen);
             let len = Literal::u32_unsuffixed(*len);

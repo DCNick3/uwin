@@ -8672,7 +8672,7 @@ pub const UI_E_WRONG_THREAD: crate::core::HRESULT = crate::core::HRESULT(-214473
 pub struct UNICODE_STRING {
     pub Length: u16,
     pub MaximumLength: u16,
-    pub Buffer: crate::core::PWSTR,
+    pub Buffer: PWSTR,
 }
 impl ::core::marker::Copy for UNICODE_STRING {}
 impl ::core::clone::Clone for UNICODE_STRING {
@@ -8702,7 +8702,7 @@ impl FromIntoMemory for UNICODE_STRING {
         assert_eq!(from.len(), 8u32 as usize);
         let f_Length = <u16 as FromIntoMemory>::from_bytes(&from[0..0 + 2]);
         let f_MaximumLength = <u16 as FromIntoMemory>::from_bytes(&from[2..2 + 2]);
-        let f_Buffer = <crate::core::PWSTR as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
+        let f_Buffer = <PWSTR as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         Self {
             Length: f_Length,
             MaximumLength: f_MaximumLength,

@@ -5,7 +5,7 @@ use std::ffi::{c_void, CStr};
 use std::os::raw::c_char;
 use std::sync::Mutex;
 use tracing::{info, warn};
-use win32::core::{PCSTR, PSTR};
+use win32::core::prelude::{PCSTR, PSTR};
 use win32::Win32::Foundation::{HANDLE, HINSTANCE, HWND, INVALID_HANDLE_VALUE};
 use win32::Win32::System::Console::STD_HANDLE;
 use win32::Win32::System::Memory::{
@@ -23,8 +23,8 @@ impl win32::Win32::UI::WindowsAndMessaging::Api for WindowsAndMessaging {
     fn MessageBoxA(
         &self,
         h_wnd: HWND,
-        lp_text: ::win32::core::PCSTR,
-        lp_caption: ::win32::core::PCSTR,
+        lp_text: PCSTR,
+        lp_caption: PCSTR,
         u_type: MESSAGEBOX_STYLE,
     ) -> MESSAGEBOX_RESULT {
         let memory = get_thread_ctx();

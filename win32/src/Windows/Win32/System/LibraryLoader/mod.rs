@@ -200,8 +200,8 @@ impl FromIntoMemory for REDIRECTION_DESCRIPTOR {
     }
 }
 pub struct REDIRECTION_FUNCTION_DESCRIPTOR {
-    pub DllName: crate::core::PCSTR,
-    pub FunctionName: crate::core::PCSTR,
+    pub DllName: PCSTR,
+    pub FunctionName: PCSTR,
     pub RedirectionTarget: MutPtr<::core::ffi::c_void>,
 }
 impl ::core::marker::Copy for REDIRECTION_FUNCTION_DESCRIPTOR {}
@@ -230,8 +230,8 @@ impl ::core::cmp::Eq for REDIRECTION_FUNCTION_DESCRIPTOR {}
 impl FromIntoMemory for REDIRECTION_FUNCTION_DESCRIPTOR {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 12u32 as usize);
-        let f_DllName = <crate::core::PCSTR as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_FunctionName = <crate::core::PCSTR as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
+        let f_DllName = <PCSTR as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
+        let f_FunctionName = <PCSTR as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_RedirectionTarget =
             <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
         Self {
@@ -257,19 +257,19 @@ pub const RESOURCE_ENUM_MUI_SYSTEM: u32 = 4u32;
 pub const RESOURCE_ENUM_VALIDATE: u32 = 8u32;
 pub const SUPPORT_LANG_NUMBER: u32 = 32u32;
 pub trait Api {
-    fn AddDllDirectory(&self, new_directory: crate::core::PCWSTR) -> MutPtr<::core::ffi::c_void> {
+    fn AddDllDirectory(&self, new_directory: PCWSTR) -> MutPtr<::core::ffi::c_void> {
         todo!("AddDllDirectory")
     }
     fn BeginUpdateResourceA(
         &self,
-        p_file_name: crate::core::PCSTR,
+        p_file_name: PCSTR,
         b_delete_existing_resources: super::super::Foundation::BOOL,
     ) -> super::super::Foundation::HANDLE {
         todo!("BeginUpdateResourceA")
     }
     fn BeginUpdateResourceW(
         &self,
-        p_file_name: crate::core::PCWSTR,
+        p_file_name: PCWSTR,
         b_delete_existing_resources: super::super::Foundation::BOOL,
     ) -> super::super::Foundation::HANDLE {
         todo!("BeginUpdateResourceW")
@@ -297,8 +297,8 @@ pub trait Api {
     fn EnumResourceLanguagesA(
         &self,
         h_module: super::super::Foundation::HINSTANCE,
-        lp_type: crate::core::PCSTR,
-        lp_name: crate::core::PCSTR,
+        lp_type: PCSTR,
+        lp_name: PCSTR,
         lp_enum_func: ENUMRESLANGPROCA,
         l_param: PtrDiffRepr,
     ) -> super::super::Foundation::BOOL {
@@ -307,8 +307,8 @@ pub trait Api {
     fn EnumResourceLanguagesExA(
         &self,
         h_module: super::super::Foundation::HINSTANCE,
-        lp_type: crate::core::PCSTR,
-        lp_name: crate::core::PCSTR,
+        lp_type: PCSTR,
+        lp_name: PCSTR,
         lp_enum_func: ENUMRESLANGPROCA,
         l_param: PtrDiffRepr,
         dw_flags: u32,
@@ -319,8 +319,8 @@ pub trait Api {
     fn EnumResourceLanguagesExW(
         &self,
         h_module: super::super::Foundation::HINSTANCE,
-        lp_type: crate::core::PCWSTR,
-        lp_name: crate::core::PCWSTR,
+        lp_type: PCWSTR,
+        lp_name: PCWSTR,
         lp_enum_func: ENUMRESLANGPROCW,
         l_param: PtrDiffRepr,
         dw_flags: u32,
@@ -331,8 +331,8 @@ pub trait Api {
     fn EnumResourceLanguagesW(
         &self,
         h_module: super::super::Foundation::HINSTANCE,
-        lp_type: crate::core::PCWSTR,
-        lp_name: crate::core::PCWSTR,
+        lp_type: PCWSTR,
+        lp_name: PCWSTR,
         lp_enum_func: ENUMRESLANGPROCW,
         l_param: PtrDiffRepr,
     ) -> super::super::Foundation::BOOL {
@@ -341,7 +341,7 @@ pub trait Api {
     fn EnumResourceNamesA(
         &self,
         h_module: super::super::Foundation::HINSTANCE,
-        lp_type: crate::core::PCSTR,
+        lp_type: PCSTR,
         lp_enum_func: ENUMRESNAMEPROCA,
         l_param: PtrDiffRepr,
     ) -> super::super::Foundation::BOOL {
@@ -350,7 +350,7 @@ pub trait Api {
     fn EnumResourceNamesExA(
         &self,
         h_module: super::super::Foundation::HINSTANCE,
-        lp_type: crate::core::PCSTR,
+        lp_type: PCSTR,
         lp_enum_func: ENUMRESNAMEPROCA,
         l_param: PtrDiffRepr,
         dw_flags: u32,
@@ -361,7 +361,7 @@ pub trait Api {
     fn EnumResourceNamesExW(
         &self,
         h_module: super::super::Foundation::HINSTANCE,
-        lp_type: crate::core::PCWSTR,
+        lp_type: PCWSTR,
         lp_enum_func: ENUMRESNAMEPROCW,
         l_param: PtrDiffRepr,
         dw_flags: u32,
@@ -372,7 +372,7 @@ pub trait Api {
     fn EnumResourceNamesW(
         &self,
         h_module: super::super::Foundation::HINSTANCE,
-        lp_type: crate::core::PCWSTR,
+        lp_type: PCWSTR,
         lp_enum_func: ENUMRESNAMEPROCW,
         l_param: PtrDiffRepr,
     ) -> super::super::Foundation::BOOL {
@@ -417,16 +417,16 @@ pub trait Api {
     fn FindResourceA(
         &self,
         h_module: super::super::Foundation::HINSTANCE,
-        lp_name: crate::core::PCSTR,
-        lp_type: crate::core::PCSTR,
+        lp_name: PCSTR,
+        lp_type: PCSTR,
     ) -> super::super::Foundation::HRSRC {
         todo!("FindResourceA")
     }
     fn FindResourceExA(
         &self,
         h_module: super::super::Foundation::HINSTANCE,
-        lp_type: crate::core::PCSTR,
-        lp_name: crate::core::PCSTR,
+        lp_type: PCSTR,
+        lp_name: PCSTR,
         w_language: u16,
     ) -> super::super::Foundation::HRSRC {
         todo!("FindResourceExA")
@@ -434,8 +434,8 @@ pub trait Api {
     fn FindResourceExW(
         &self,
         h_module: super::super::Foundation::HINSTANCE,
-        lp_type: crate::core::PCWSTR,
-        lp_name: crate::core::PCWSTR,
+        lp_type: PCWSTR,
+        lp_name: PCWSTR,
         w_language: u16,
     ) -> super::super::Foundation::HRSRC {
         todo!("FindResourceExW")
@@ -443,8 +443,8 @@ pub trait Api {
     fn FindResourceW(
         &self,
         h_module: super::super::Foundation::HINSTANCE,
-        lp_name: crate::core::PCWSTR,
-        lp_type: crate::core::PCWSTR,
+        lp_name: PCWSTR,
+        lp_type: PCWSTR,
     ) -> super::super::Foundation::HRSRC {
         todo!("FindResourceW")
     }
@@ -464,16 +464,16 @@ pub trait Api {
     fn FreeResource(&self, h_res_data: PtrDiffRepr) -> super::super::Foundation::BOOL {
         todo!("FreeResource")
     }
-    fn GetDllDirectoryA(&self, n_buffer_length: u32, lp_buffer: crate::core::PSTR) -> u32 {
+    fn GetDllDirectoryA(&self, n_buffer_length: u32, lp_buffer: PSTR) -> u32 {
         todo!("GetDllDirectoryA")
     }
-    fn GetDllDirectoryW(&self, n_buffer_length: u32, lp_buffer: crate::core::PWSTR) -> u32 {
+    fn GetDllDirectoryW(&self, n_buffer_length: u32, lp_buffer: PWSTR) -> u32 {
         todo!("GetDllDirectoryW")
     }
     fn GetModuleFileNameA(
         &self,
         h_module: super::super::Foundation::HINSTANCE,
-        lp_filename: crate::core::PSTR,
+        lp_filename: PSTR,
         n_size: u32,
     ) -> u32 {
         todo!("GetModuleFileNameA")
@@ -481,21 +481,18 @@ pub trait Api {
     fn GetModuleFileNameW(
         &self,
         h_module: super::super::Foundation::HINSTANCE,
-        lp_filename: crate::core::PWSTR,
+        lp_filename: PWSTR,
         n_size: u32,
     ) -> u32 {
         todo!("GetModuleFileNameW")
     }
-    fn GetModuleHandleA(
-        &self,
-        lp_module_name: crate::core::PCSTR,
-    ) -> super::super::Foundation::HINSTANCE {
+    fn GetModuleHandleA(&self, lp_module_name: PCSTR) -> super::super::Foundation::HINSTANCE {
         todo!("GetModuleHandleA")
     }
     fn GetModuleHandleExA(
         &self,
         dw_flags: u32,
-        lp_module_name: crate::core::PCSTR,
+        lp_module_name: PCSTR,
         ph_module: MutPtr<super::super::Foundation::HINSTANCE>,
     ) -> super::super::Foundation::BOOL {
         todo!("GetModuleHandleExA")
@@ -503,33 +500,27 @@ pub trait Api {
     fn GetModuleHandleExW(
         &self,
         dw_flags: u32,
-        lp_module_name: crate::core::PCWSTR,
+        lp_module_name: PCWSTR,
         ph_module: MutPtr<super::super::Foundation::HINSTANCE>,
     ) -> super::super::Foundation::BOOL {
         todo!("GetModuleHandleExW")
     }
-    fn GetModuleHandleW(
-        &self,
-        lp_module_name: crate::core::PCWSTR,
-    ) -> super::super::Foundation::HINSTANCE {
+    fn GetModuleHandleW(&self, lp_module_name: PCWSTR) -> super::super::Foundation::HINSTANCE {
         todo!("GetModuleHandleW")
     }
     fn GetProcAddress(
         &self,
         h_module: super::super::Foundation::HINSTANCE,
-        lp_proc_name: crate::core::PCSTR,
+        lp_proc_name: PCSTR,
     ) -> super::super::Foundation::FARPROC {
         todo!("GetProcAddress")
     }
-    fn LoadLibraryA(
-        &self,
-        lp_lib_file_name: crate::core::PCSTR,
-    ) -> super::super::Foundation::HINSTANCE {
+    fn LoadLibraryA(&self, lp_lib_file_name: PCSTR) -> super::super::Foundation::HINSTANCE {
         todo!("LoadLibraryA")
     }
     fn LoadLibraryExA(
         &self,
-        lp_lib_file_name: crate::core::PCSTR,
+        lp_lib_file_name: PCSTR,
         h_file: super::super::Foundation::HANDLE,
         dw_flags: LOAD_LIBRARY_FLAGS,
     ) -> super::super::Foundation::HINSTANCE {
@@ -537,28 +528,25 @@ pub trait Api {
     }
     fn LoadLibraryExW(
         &self,
-        lp_lib_file_name: crate::core::PCWSTR,
+        lp_lib_file_name: PCWSTR,
         h_file: super::super::Foundation::HANDLE,
         dw_flags: LOAD_LIBRARY_FLAGS,
     ) -> super::super::Foundation::HINSTANCE {
         todo!("LoadLibraryExW")
     }
-    fn LoadLibraryW(
-        &self,
-        lp_lib_file_name: crate::core::PCWSTR,
-    ) -> super::super::Foundation::HINSTANCE {
+    fn LoadLibraryW(&self, lp_lib_file_name: PCWSTR) -> super::super::Foundation::HINSTANCE {
         todo!("LoadLibraryW")
     }
     fn LoadModule(
         &self,
-        lp_module_name: crate::core::PCSTR,
+        lp_module_name: PCSTR,
         lp_parameter_block: ConstPtr<::core::ffi::c_void>,
     ) -> u32 {
         todo!("LoadModule")
     }
     fn LoadPackagedLibrary(
         &self,
-        lpw_lib_file_name: crate::core::PCWSTR,
+        lpw_lib_file_name: PCWSTR,
         reserved: u32,
     ) -> super::super::Foundation::HINSTANCE {
         todo!("LoadPackagedLibrary")
@@ -585,13 +573,10 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetDefaultDllDirectories")
     }
-    fn SetDllDirectoryA(&self, lp_path_name: crate::core::PCSTR) -> super::super::Foundation::BOOL {
+    fn SetDllDirectoryA(&self, lp_path_name: PCSTR) -> super::super::Foundation::BOOL {
         todo!("SetDllDirectoryA")
     }
-    fn SetDllDirectoryW(
-        &self,
-        lp_path_name: crate::core::PCWSTR,
-    ) -> super::super::Foundation::BOOL {
+    fn SetDllDirectoryW(&self, lp_path_name: PCWSTR) -> super::super::Foundation::BOOL {
         todo!("SetDllDirectoryW")
     }
     fn SizeofResource(
@@ -604,8 +589,8 @@ pub trait Api {
     fn UpdateResourceA(
         &self,
         h_update: super::super::Foundation::HANDLE,
-        lp_type: crate::core::PCSTR,
-        lp_name: crate::core::PCSTR,
+        lp_type: PCSTR,
+        lp_name: PCSTR,
         w_language: u16,
         lp_data: ConstPtr<::core::ffi::c_void>,
         cb: u32,
@@ -615,8 +600,8 @@ pub trait Api {
     fn UpdateResourceW(
         &self,
         h_update: super::super::Foundation::HANDLE,
-        lp_type: crate::core::PCWSTR,
-        lp_name: crate::core::PCWSTR,
+        lp_type: PCWSTR,
+        lp_name: PCWSTR,
         w_language: u16,
         lp_data: ConstPtr<::core::ffi::c_void>,
         cb: u32,

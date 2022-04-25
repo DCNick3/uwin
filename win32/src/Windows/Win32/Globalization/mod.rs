@@ -608,11 +608,11 @@ pub struct CURRENCYFMTA {
     pub NumDigits: u32,
     pub LeadingZero: u32,
     pub Grouping: u32,
-    pub lpDecimalSep: crate::core::PSTR,
-    pub lpThousandSep: crate::core::PSTR,
+    pub lpDecimalSep: PSTR,
+    pub lpThousandSep: PSTR,
     pub NegativeOrder: u32,
     pub PositiveOrder: u32,
-    pub lpCurrencySymbol: crate::core::PSTR,
+    pub lpCurrencySymbol: PSTR,
 }
 impl ::core::marker::Copy for CURRENCYFMTA {}
 impl ::core::clone::Clone for CURRENCYFMTA {
@@ -653,12 +653,11 @@ impl FromIntoMemory for CURRENCYFMTA {
         let f_NumDigits = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_LeadingZero = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_Grouping = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_lpDecimalSep = <crate::core::PSTR as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
-        let f_lpThousandSep = <crate::core::PSTR as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
+        let f_lpDecimalSep = <PSTR as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
+        let f_lpThousandSep = <PSTR as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
         let f_NegativeOrder = <u32 as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
         let f_PositiveOrder = <u32 as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
-        let f_lpCurrencySymbol =
-            <crate::core::PSTR as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
+        let f_lpCurrencySymbol = <PSTR as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
         Self {
             NumDigits: f_NumDigits,
             LeadingZero: f_LeadingZero,
@@ -689,11 +688,11 @@ pub struct CURRENCYFMTW {
     pub NumDigits: u32,
     pub LeadingZero: u32,
     pub Grouping: u32,
-    pub lpDecimalSep: crate::core::PWSTR,
-    pub lpThousandSep: crate::core::PWSTR,
+    pub lpDecimalSep: PWSTR,
+    pub lpThousandSep: PWSTR,
     pub NegativeOrder: u32,
     pub PositiveOrder: u32,
-    pub lpCurrencySymbol: crate::core::PWSTR,
+    pub lpCurrencySymbol: PWSTR,
 }
 impl ::core::marker::Copy for CURRENCYFMTW {}
 impl ::core::clone::Clone for CURRENCYFMTW {
@@ -734,12 +733,11 @@ impl FromIntoMemory for CURRENCYFMTW {
         let f_NumDigits = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_LeadingZero = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_Grouping = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_lpDecimalSep = <crate::core::PWSTR as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
-        let f_lpThousandSep = <crate::core::PWSTR as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
+        let f_lpDecimalSep = <PWSTR as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
+        let f_lpThousandSep = <PWSTR as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
         let f_NegativeOrder = <u32 as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
         let f_PositiveOrder = <u32 as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
-        let f_lpCurrencySymbol =
-            <crate::core::PWSTR as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
+        let f_lpCurrencySymbol = <PWSTR as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
         Self {
             NumDigits: f_NumDigits,
             LeadingZero: f_LeadingZero,
@@ -1835,14 +1833,14 @@ pub const LOW_SURROGATE_START: u32 = 56320u32;
 pub struct MAPPING_DATA_RANGE {
     pub dwStartIndex: u32,
     pub dwEndIndex: u32,
-    pub pszDescription: crate::core::PWSTR,
+    pub pszDescription: PWSTR,
     pub dwDescriptionLength: u32,
     pub pData: MutPtr<::core::ffi::c_void>,
     pub dwDataSize: u32,
-    pub pszContentType: crate::core::PWSTR,
-    pub prgActionIds: MutPtr<crate::core::PWSTR>,
+    pub pszContentType: PWSTR,
+    pub prgActionIds: MutPtr<PWSTR>,
     pub dwActionsCount: u32,
-    pub prgActionDisplayNames: MutPtr<crate::core::PWSTR>,
+    pub prgActionDisplayNames: MutPtr<PWSTR>,
 }
 impl ::core::marker::Copy for MAPPING_DATA_RANGE {}
 impl ::core::clone::Clone for MAPPING_DATA_RANGE {
@@ -1886,18 +1884,16 @@ impl FromIntoMemory for MAPPING_DATA_RANGE {
         assert_eq!(from.len(), 40u32 as usize);
         let f_dwStartIndex = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwEndIndex = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        let f_pszDescription = <crate::core::PWSTR as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
+        let f_pszDescription = <PWSTR as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
         let f_dwDescriptionLength = <u32 as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
         let f_pData =
             <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
         let f_dwDataSize = <u32 as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
-        let f_pszContentType =
-            <crate::core::PWSTR as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
-        let f_prgActionIds =
-            <MutPtr<crate::core::PWSTR> as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
+        let f_pszContentType = <PWSTR as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
+        let f_prgActionIds = <MutPtr<PWSTR> as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
         let f_dwActionsCount = <u32 as FromIntoMemory>::from_bytes(&from[32..32 + 4]);
         let f_prgActionDisplayNames =
-            <MutPtr<crate::core::PWSTR> as FromIntoMemory>::from_bytes(&from[36..36 + 4]);
+            <MutPtr<PWSTR> as FromIntoMemory>::from_bytes(&from[36..36 + 4]);
         Self {
             dwStartIndex: f_dwStartIndex,
             dwEndIndex: f_dwEndIndex,
@@ -1930,13 +1926,13 @@ impl FromIntoMemory for MAPPING_DATA_RANGE {
 }
 pub struct MAPPING_ENUM_OPTIONS {
     pub Size: PtrRepr,
-    pub pszCategory: crate::core::PWSTR,
-    pub pszInputLanguage: crate::core::PWSTR,
-    pub pszOutputLanguage: crate::core::PWSTR,
-    pub pszInputScript: crate::core::PWSTR,
-    pub pszOutputScript: crate::core::PWSTR,
-    pub pszInputContentType: crate::core::PWSTR,
-    pub pszOutputContentType: crate::core::PWSTR,
+    pub pszCategory: PWSTR,
+    pub pszInputLanguage: PWSTR,
+    pub pszOutputLanguage: PWSTR,
+    pub pszInputScript: PWSTR,
+    pub pszOutputScript: PWSTR,
+    pub pszInputContentType: PWSTR,
+    pub pszOutputContentType: PWSTR,
     pub pGuid: MutPtr<crate::core::GUID>,
     pub _bitfield: u32,
 }
@@ -1981,19 +1977,13 @@ impl FromIntoMemory for MAPPING_ENUM_OPTIONS {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 40u32 as usize);
         let f_Size = <PtrRepr as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_pszCategory = <crate::core::PWSTR as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        let f_pszInputLanguage =
-            <crate::core::PWSTR as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_pszOutputLanguage =
-            <crate::core::PWSTR as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
-        let f_pszInputScript =
-            <crate::core::PWSTR as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
-        let f_pszOutputScript =
-            <crate::core::PWSTR as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
-        let f_pszInputContentType =
-            <crate::core::PWSTR as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
-        let f_pszOutputContentType =
-            <crate::core::PWSTR as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
+        let f_pszCategory = <PWSTR as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
+        let f_pszInputLanguage = <PWSTR as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
+        let f_pszOutputLanguage = <PWSTR as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
+        let f_pszInputScript = <PWSTR as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
+        let f_pszOutputScript = <PWSTR as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
+        let f_pszInputContentType = <PWSTR as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
+        let f_pszOutputContentType = <PWSTR as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
         let f_pGuid = <MutPtr<crate::core::GUID> as FromIntoMemory>::from_bytes(&from[32..32 + 4]);
         let f__bitfield = <u32 as FromIntoMemory>::from_bytes(&from[36..36 + 4]);
         Self {
@@ -2028,13 +2018,13 @@ impl FromIntoMemory for MAPPING_ENUM_OPTIONS {
 }
 pub struct MAPPING_OPTIONS {
     pub Size: PtrRepr,
-    pub pszInputLanguage: crate::core::PWSTR,
-    pub pszOutputLanguage: crate::core::PWSTR,
-    pub pszInputScript: crate::core::PWSTR,
-    pub pszOutputScript: crate::core::PWSTR,
-    pub pszInputContentType: crate::core::PWSTR,
-    pub pszOutputContentType: crate::core::PWSTR,
-    pub pszUILanguage: crate::core::PWSTR,
+    pub pszInputLanguage: PWSTR,
+    pub pszOutputLanguage: PWSTR,
+    pub pszInputScript: PWSTR,
+    pub pszOutputScript: PWSTR,
+    pub pszInputContentType: PWSTR,
+    pub pszOutputContentType: PWSTR,
+    pub pszUILanguage: PWSTR,
     pub pfnRecognizeCallback: PFN_MAPPINGCALLBACKPROC,
     pub pRecognizeCallerData: MutPtr<::core::ffi::c_void>,
     pub dwRecognizeCallerDataSize: u32,
@@ -2097,19 +2087,13 @@ impl FromIntoMemory for MAPPING_OPTIONS {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 64u32 as usize);
         let f_Size = <PtrRepr as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_pszInputLanguage =
-            <crate::core::PWSTR as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        let f_pszOutputLanguage =
-            <crate::core::PWSTR as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_pszInputScript =
-            <crate::core::PWSTR as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
-        let f_pszOutputScript =
-            <crate::core::PWSTR as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
-        let f_pszInputContentType =
-            <crate::core::PWSTR as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
-        let f_pszOutputContentType =
-            <crate::core::PWSTR as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
-        let f_pszUILanguage = <crate::core::PWSTR as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
+        let f_pszInputLanguage = <PWSTR as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
+        let f_pszOutputLanguage = <PWSTR as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
+        let f_pszInputScript = <PWSTR as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
+        let f_pszOutputScript = <PWSTR as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
+        let f_pszInputContentType = <PWSTR as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
+        let f_pszOutputContentType = <PWSTR as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
+        let f_pszUILanguage = <PWSTR as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
         let f_pfnRecognizeCallback =
             <PFN_MAPPINGCALLBACKPROC as FromIntoMemory>::from_bytes(&from[32..32 + 4]);
         let f_pRecognizeCallerData =
@@ -2250,26 +2234,26 @@ impl FromIntoMemory for MAPPING_PROPERTY_BAG {
 }
 pub struct MAPPING_SERVICE_INFO {
     pub Size: PtrRepr,
-    pub pszCopyright: crate::core::PWSTR,
+    pub pszCopyright: PWSTR,
     pub wMajorVersion: u16,
     pub wMinorVersion: u16,
     pub wBuildVersion: u16,
     pub wStepVersion: u16,
     pub dwInputContentTypesCount: u32,
-    pub prgInputContentTypes: MutPtr<crate::core::PWSTR>,
+    pub prgInputContentTypes: MutPtr<PWSTR>,
     pub dwOutputContentTypesCount: u32,
-    pub prgOutputContentTypes: MutPtr<crate::core::PWSTR>,
+    pub prgOutputContentTypes: MutPtr<PWSTR>,
     pub dwInputLanguagesCount: u32,
-    pub prgInputLanguages: MutPtr<crate::core::PWSTR>,
+    pub prgInputLanguages: MutPtr<PWSTR>,
     pub dwOutputLanguagesCount: u32,
-    pub prgOutputLanguages: MutPtr<crate::core::PWSTR>,
+    pub prgOutputLanguages: MutPtr<PWSTR>,
     pub dwInputScriptsCount: u32,
-    pub prgInputScripts: MutPtr<crate::core::PWSTR>,
+    pub prgInputScripts: MutPtr<PWSTR>,
     pub dwOutputScriptsCount: u32,
-    pub prgOutputScripts: MutPtr<crate::core::PWSTR>,
+    pub prgOutputScripts: MutPtr<PWSTR>,
     pub guid: crate::core::GUID,
-    pub pszCategory: crate::core::PWSTR,
-    pub pszDescription: crate::core::PWSTR,
+    pub pszCategory: PWSTR,
+    pub pszDescription: PWSTR,
     pub dwPrivateDataSize: u32,
     pub pPrivateData: MutPtr<::core::ffi::c_void>,
     pub pContext: MutPtr<::core::ffi::c_void>,
@@ -2346,33 +2330,28 @@ impl FromIntoMemory for MAPPING_SERVICE_INFO {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 104u32 as usize);
         let f_Size = <PtrRepr as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_pszCopyright = <crate::core::PWSTR as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
+        let f_pszCopyright = <PWSTR as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_wMajorVersion = <u16 as FromIntoMemory>::from_bytes(&from[8..8 + 2]);
         let f_wMinorVersion = <u16 as FromIntoMemory>::from_bytes(&from[10..10 + 2]);
         let f_wBuildVersion = <u16 as FromIntoMemory>::from_bytes(&from[12..12 + 2]);
         let f_wStepVersion = <u16 as FromIntoMemory>::from_bytes(&from[14..14 + 2]);
         let f_dwInputContentTypesCount = <u32 as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
         let f_prgInputContentTypes =
-            <MutPtr<crate::core::PWSTR> as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
+            <MutPtr<PWSTR> as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
         let f_dwOutputContentTypesCount = <u32 as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
         let f_prgOutputContentTypes =
-            <MutPtr<crate::core::PWSTR> as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
+            <MutPtr<PWSTR> as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
         let f_dwInputLanguagesCount = <u32 as FromIntoMemory>::from_bytes(&from[32..32 + 4]);
-        let f_prgInputLanguages =
-            <MutPtr<crate::core::PWSTR> as FromIntoMemory>::from_bytes(&from[36..36 + 4]);
+        let f_prgInputLanguages = <MutPtr<PWSTR> as FromIntoMemory>::from_bytes(&from[36..36 + 4]);
         let f_dwOutputLanguagesCount = <u32 as FromIntoMemory>::from_bytes(&from[40..40 + 4]);
-        let f_prgOutputLanguages =
-            <MutPtr<crate::core::PWSTR> as FromIntoMemory>::from_bytes(&from[44..44 + 4]);
+        let f_prgOutputLanguages = <MutPtr<PWSTR> as FromIntoMemory>::from_bytes(&from[44..44 + 4]);
         let f_dwInputScriptsCount = <u32 as FromIntoMemory>::from_bytes(&from[48..48 + 4]);
-        let f_prgInputScripts =
-            <MutPtr<crate::core::PWSTR> as FromIntoMemory>::from_bytes(&from[52..52 + 4]);
+        let f_prgInputScripts = <MutPtr<PWSTR> as FromIntoMemory>::from_bytes(&from[52..52 + 4]);
         let f_dwOutputScriptsCount = <u32 as FromIntoMemory>::from_bytes(&from[56..56 + 4]);
-        let f_prgOutputScripts =
-            <MutPtr<crate::core::PWSTR> as FromIntoMemory>::from_bytes(&from[60..60 + 4]);
+        let f_prgOutputScripts = <MutPtr<PWSTR> as FromIntoMemory>::from_bytes(&from[60..60 + 4]);
         let f_guid = <crate::core::GUID as FromIntoMemory>::from_bytes(&from[64..64 + 16]);
-        let f_pszCategory = <crate::core::PWSTR as FromIntoMemory>::from_bytes(&from[80..80 + 4]);
-        let f_pszDescription =
-            <crate::core::PWSTR as FromIntoMemory>::from_bytes(&from[84..84 + 4]);
+        let f_pszCategory = <PWSTR as FromIntoMemory>::from_bytes(&from[80..80 + 4]);
+        let f_pszDescription = <PWSTR as FromIntoMemory>::from_bytes(&from[84..84 + 4]);
         let f_dwPrivateDataSize = <u32 as FromIntoMemory>::from_bytes(&from[88..88 + 4]);
         let f_pPrivateData =
             <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[92..92 + 4]);
@@ -3100,8 +3079,8 @@ pub struct NUMBERFMTA {
     pub NumDigits: u32,
     pub LeadingZero: u32,
     pub Grouping: u32,
-    pub lpDecimalSep: crate::core::PSTR,
-    pub lpThousandSep: crate::core::PSTR,
+    pub lpDecimalSep: PSTR,
+    pub lpThousandSep: PSTR,
     pub NegativeOrder: u32,
 }
 impl ::core::marker::Copy for NUMBERFMTA {}
@@ -3139,8 +3118,8 @@ impl FromIntoMemory for NUMBERFMTA {
         let f_NumDigits = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_LeadingZero = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_Grouping = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_lpDecimalSep = <crate::core::PSTR as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
-        let f_lpThousandSep = <crate::core::PSTR as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
+        let f_lpDecimalSep = <PSTR as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
+        let f_lpThousandSep = <PSTR as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
         let f_NegativeOrder = <u32 as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
         Self {
             NumDigits: f_NumDigits,
@@ -3168,8 +3147,8 @@ pub struct NUMBERFMTW {
     pub NumDigits: u32,
     pub LeadingZero: u32,
     pub Grouping: u32,
-    pub lpDecimalSep: crate::core::PWSTR,
-    pub lpThousandSep: crate::core::PWSTR,
+    pub lpDecimalSep: PWSTR,
+    pub lpThousandSep: PWSTR,
     pub NegativeOrder: u32,
 }
 impl ::core::marker::Copy for NUMBERFMTW {}
@@ -3207,8 +3186,8 @@ impl FromIntoMemory for NUMBERFMTW {
         let f_NumDigits = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_LeadingZero = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_Grouping = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_lpDecimalSep = <crate::core::PWSTR as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
-        let f_lpThousandSep = <crate::core::PWSTR as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
+        let f_lpDecimalSep = <PWSTR as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
+        let f_lpThousandSep = <PWSTR as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
         let f_NegativeOrder = <u32 as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
         Self {
             NumDigits: f_NumDigits,
@@ -6109,8 +6088,8 @@ pub struct UConverterFromUnicodeArgs {
     pub converter: MutPtr<UConverter>,
     pub source: ConstPtr<u16>,
     pub sourceLimit: ConstPtr<u16>,
-    pub target: crate::core::PSTR,
-    pub targetLimit: crate::core::PCSTR,
+    pub target: PSTR,
+    pub targetLimit: PCSTR,
     pub offsets: MutPtr<i32>,
 }
 impl ::core::marker::Copy for UConverterFromUnicodeArgs {}
@@ -6154,8 +6133,8 @@ impl FromIntoMemory for UConverterFromUnicodeArgs {
         let f_converter = <MutPtr<UConverter> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_source = <ConstPtr<u16> as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
         let f_sourceLimit = <ConstPtr<u16> as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
-        let f_target = <crate::core::PSTR as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
-        let f_targetLimit = <crate::core::PCSTR as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
+        let f_target = <PSTR as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
+        let f_targetLimit = <PCSTR as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
         let f_offsets = <MutPtr<i32> as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
         Self {
             size: f_size,
@@ -6220,8 +6199,8 @@ pub struct UConverterToUnicodeArgs {
     pub size: u16,
     pub flush: i8,
     pub converter: MutPtr<UConverter>,
-    pub source: crate::core::PCSTR,
-    pub sourceLimit: crate::core::PCSTR,
+    pub source: PCSTR,
+    pub sourceLimit: PCSTR,
     pub target: MutPtr<u16>,
     pub targetLimit: ConstPtr<u16>,
     pub offsets: MutPtr<i32>,
@@ -6265,8 +6244,8 @@ impl FromIntoMemory for UConverterToUnicodeArgs {
         let f_size = <u16 as FromIntoMemory>::from_bytes(&from[0..0 + 2]);
         let f_flush = <i8 as FromIntoMemory>::from_bytes(&from[2..2 + 1]);
         let f_converter = <MutPtr<UConverter> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        let f_source = <crate::core::PCSTR as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_sourceLimit = <crate::core::PCSTR as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
+        let f_source = <PCSTR as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
+        let f_sourceLimit = <PCSTR as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
         let f_target = <MutPtr<u16> as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
         let f_targetLimit = <ConstPtr<u16> as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
         let f_offsets = <MutPtr<i32> as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
@@ -12204,11 +12183,11 @@ pub trait Api {
     }
     fn CompareStringEx(
         &self,
-        lp_locale_name: crate::core::PCWSTR,
+        lp_locale_name: PCWSTR,
         dw_cmp_flags: COMPARE_STRING_FLAGS,
-        lp_string_1: crate::core::PCWSTR,
+        lp_string_1: PCWSTR,
         cch_count_1: i32,
-        lp_string_2: crate::core::PCWSTR,
+        lp_string_2: PCWSTR,
         cch_count_2: i32,
         lp_version_information: MutPtr<NLSVERSIONINFO>,
         lp_reserved: MutPtr<::core::ffi::c_void>,
@@ -12218,9 +12197,9 @@ pub trait Api {
     }
     fn CompareStringOrdinal(
         &self,
-        lp_string_1: crate::core::PCWSTR,
+        lp_string_1: PCWSTR,
         cch_count_1: i32,
-        lp_string_2: crate::core::PCWSTR,
+        lp_string_2: PCWSTR,
         cch_count_2: i32,
         b_ignore_case: super::Foundation::BOOL,
     ) -> i32 {
@@ -12230,9 +12209,9 @@ pub trait Api {
         &self,
         locale: u32,
         dw_cmp_flags: u32,
-        lp_string_1: crate::core::PCWSTR,
+        lp_string_1: PCWSTR,
         cch_count_1: i32,
-        lp_string_2: crate::core::PCWSTR,
+        lp_string_2: PCWSTR,
         cch_count_2: i32,
     ) -> i32 {
         todo!("CompareStringW")
@@ -12261,9 +12240,9 @@ pub trait Api {
     fn EnumCalendarInfoExEx(
         &self,
         p_cal_info_enum_proc_ex_ex: CALINFO_ENUMPROCEXEX,
-        lp_locale_name: crate::core::PCWSTR,
+        lp_locale_name: PCWSTR,
         calendar: u32,
-        lp_reserved: crate::core::PCWSTR,
+        lp_reserved: PCWSTR,
         cal_type: u32,
         l_param: super::Foundation::LPARAM,
     ) -> super::Foundation::BOOL {
@@ -12306,7 +12285,7 @@ pub trait Api {
     fn EnumDateFormatsExEx(
         &self,
         lp_date_fmt_enum_proc_ex_ex: DATEFMT_ENUMPROCEXEX,
-        lp_locale_name: crate::core::PCWSTR,
+        lp_locale_name: PCWSTR,
         dw_flags: ENUM_DATE_FORMATS_FLAGS,
         l_param: super::Foundation::LPARAM,
     ) -> super::Foundation::BOOL {
@@ -12426,7 +12405,7 @@ pub trait Api {
     fn EnumTimeFormatsEx(
         &self,
         lp_time_fmt_enum_proc_ex: TIMEFMT_ENUMPROCEX,
-        lp_locale_name: crate::core::PCWSTR,
+        lp_locale_name: PCWSTR,
         dw_flags: u32,
         l_param: super::Foundation::LPARAM,
     ) -> super::Foundation::BOOL {
@@ -12460,9 +12439,9 @@ pub trait Api {
         &self,
         locale: u32,
         dw_find_nls_string_flags: u32,
-        lp_string_source: crate::core::PCWSTR,
+        lp_string_source: PCWSTR,
         cch_source: i32,
-        lp_string_value: crate::core::PCWSTR,
+        lp_string_value: PCWSTR,
         cch_value: i32,
         pcch_found: MutPtr<i32>,
     ) -> i32 {
@@ -12470,11 +12449,11 @@ pub trait Api {
     }
     fn FindNLSStringEx(
         &self,
-        lp_locale_name: crate::core::PCWSTR,
+        lp_locale_name: PCWSTR,
         dw_find_nls_string_flags: u32,
-        lp_string_source: crate::core::PCWSTR,
+        lp_string_source: PCWSTR,
         cch_source: i32,
-        lp_string_value: crate::core::PCWSTR,
+        lp_string_value: PCWSTR,
         cch_value: i32,
         pcch_found: MutPtr<i32>,
         lp_version_information: ConstPtr<NLSVERSIONINFO>,
@@ -12486,9 +12465,9 @@ pub trait Api {
     fn FindStringOrdinal(
         &self,
         dw_find_string_ordinal_flags: u32,
-        lp_string_source: crate::core::PCWSTR,
+        lp_string_source: PCWSTR,
         cch_source: i32,
-        lp_string_value: crate::core::PCWSTR,
+        lp_string_value: PCWSTR,
         cch_value: i32,
         b_ignore_case: super::Foundation::BOOL,
     ) -> i32 {
@@ -12497,9 +12476,9 @@ pub trait Api {
     fn FoldStringA(
         &self,
         dw_map_flags: FOLD_STRING_MAP_FLAGS,
-        lp_src_str: crate::core::PCSTR,
+        lp_src_str: PCSTR,
         cch_src: i32,
-        lp_dest_str: crate::core::PSTR,
+        lp_dest_str: PSTR,
         cch_dest: i32,
     ) -> i32 {
         todo!("FoldStringA")
@@ -12507,9 +12486,9 @@ pub trait Api {
     fn FoldStringW(
         &self,
         dw_map_flags: FOLD_STRING_MAP_FLAGS,
-        lp_src_str: crate::core::PCWSTR,
+        lp_src_str: PCWSTR,
         cch_src: i32,
-        lp_dest_str: crate::core::PWSTR,
+        lp_dest_str: PWSTR,
         cch_dest: i32,
     ) -> i32 {
         todo!("FoldStringW")
@@ -12541,7 +12520,7 @@ pub trait Api {
         locale: u32,
         calendar: u32,
         cal_type: u32,
-        lp_cal_data: crate::core::PSTR,
+        lp_cal_data: PSTR,
         cch_data: i32,
         lp_value: MutPtr<u32>,
     ) -> i32 {
@@ -12549,11 +12528,11 @@ pub trait Api {
     }
     fn GetCalendarInfoEx(
         &self,
-        lp_locale_name: crate::core::PCWSTR,
+        lp_locale_name: PCWSTR,
         calendar: u32,
-        lp_reserved: crate::core::PCWSTR,
+        lp_reserved: PCWSTR,
         cal_type: u32,
-        lp_cal_data: crate::core::PWSTR,
+        lp_cal_data: PWSTR,
         cch_data: i32,
         lp_value: MutPtr<u32>,
     ) -> i32 {
@@ -12564,7 +12543,7 @@ pub trait Api {
         locale: u32,
         calendar: u32,
         cal_type: u32,
-        lp_cal_data: crate::core::PWSTR,
+        lp_cal_data: PWSTR,
         cch_data: i32,
         lp_value: MutPtr<u32>,
     ) -> i32 {
@@ -12574,20 +12553,20 @@ pub trait Api {
         &self,
         locale: u32,
         dw_flags: u32,
-        lp_value: crate::core::PCSTR,
+        lp_value: PCSTR,
         lp_format: ConstPtr<CURRENCYFMTA>,
-        lp_currency_str: crate::core::PSTR,
+        lp_currency_str: PSTR,
         cch_currency: i32,
     ) -> i32 {
         todo!("GetCurrencyFormatA")
     }
     fn GetCurrencyFormatEx(
         &self,
-        lp_locale_name: crate::core::PCWSTR,
+        lp_locale_name: PCWSTR,
         dw_flags: u32,
-        lp_value: crate::core::PCWSTR,
+        lp_value: PCWSTR,
         lp_format: ConstPtr<CURRENCYFMTW>,
-        lp_currency_str: crate::core::PWSTR,
+        lp_currency_str: PWSTR,
         cch_currency: i32,
     ) -> i32 {
         todo!("GetCurrencyFormatEx")
@@ -12596,9 +12575,9 @@ pub trait Api {
         &self,
         locale: u32,
         dw_flags: u32,
-        lp_value: crate::core::PCWSTR,
+        lp_value: PCWSTR,
         lp_format: ConstPtr<CURRENCYFMTW>,
-        lp_currency_str: crate::core::PWSTR,
+        lp_currency_str: PWSTR,
         cch_currency: i32,
     ) -> i32 {
         todo!("GetCurrencyFormatW")
@@ -12608,21 +12587,21 @@ pub trait Api {
         locale: u32,
         dw_flags: u32,
         lp_date: ConstPtr<super::Foundation::SYSTEMTIME>,
-        lp_format: crate::core::PCSTR,
-        lp_date_str: crate::core::PSTR,
+        lp_format: PCSTR,
+        lp_date_str: PSTR,
         cch_date: i32,
     ) -> i32 {
         todo!("GetDateFormatA")
     }
     fn GetDateFormatEx(
         &self,
-        lp_locale_name: crate::core::PCWSTR,
+        lp_locale_name: PCWSTR,
         dw_flags: ENUM_DATE_FORMATS_FLAGS,
         lp_date: ConstPtr<super::Foundation::SYSTEMTIME>,
-        lp_format: crate::core::PCWSTR,
-        lp_date_str: crate::core::PWSTR,
+        lp_format: PCWSTR,
+        lp_date_str: PWSTR,
         cch_date: i32,
-        lp_calendar: crate::core::PCWSTR,
+        lp_calendar: PCWSTR,
     ) -> i32 {
         todo!("GetDateFormatEx")
     }
@@ -12631,16 +12610,16 @@ pub trait Api {
         locale: u32,
         dw_flags: u32,
         lp_date: ConstPtr<super::Foundation::SYSTEMTIME>,
-        lp_format: crate::core::PCWSTR,
-        lp_date_str: crate::core::PWSTR,
+        lp_format: PCWSTR,
+        lp_date_str: PWSTR,
         cch_date: i32,
     ) -> i32 {
         todo!("GetDateFormatW")
     }
     fn GetDistanceOfClosestLanguageInList(
         &self,
-        psz_language: crate::core::PCWSTR,
-        psz_languages_list: crate::core::PCWSTR,
+        psz_language: PCWSTR,
+        psz_languages_list: PCWSTR,
         wch_list_delimiter: u16,
         p_closest_distance: MutPtr<f64>,
     ) -> crate::core::HRESULT {
@@ -12652,20 +12631,20 @@ pub trait Api {
         dw_flags: u32,
         lp_duration: ConstPtr<super::Foundation::SYSTEMTIME>,
         ull_duration: u64,
-        lp_format: crate::core::PCWSTR,
-        lp_duration_str: crate::core::PWSTR,
+        lp_format: PCWSTR,
+        lp_duration_str: PWSTR,
         cch_duration: i32,
     ) -> i32 {
         todo!("GetDurationFormat")
     }
     fn GetDurationFormatEx(
         &self,
-        lp_locale_name: crate::core::PCWSTR,
+        lp_locale_name: PCWSTR,
         dw_flags: u32,
         lp_duration: ConstPtr<super::Foundation::SYSTEMTIME>,
         ull_duration: u64,
-        lp_format: crate::core::PCWSTR,
-        lp_duration_str: crate::core::PWSTR,
+        lp_format: PCWSTR,
+        lp_duration_str: PWSTR,
         cch_duration: i32,
     ) -> i32 {
         todo!("GetDurationFormatEx")
@@ -12673,7 +12652,7 @@ pub trait Api {
     fn GetFileMUIInfo(
         &self,
         dw_flags: u32,
-        pcwsz_file_path: crate::core::PCWSTR,
+        pcwsz_file_path: PCWSTR,
         p_file_mui_info: MutPtr<FILEMUIINFO>,
         pcb_file_mui_info: MutPtr<u32>,
     ) -> super::Foundation::BOOL {
@@ -12682,10 +12661,10 @@ pub trait Api {
     fn GetFileMUIPath(
         &self,
         dw_flags: u32,
-        pcwsz_file_path: crate::core::PCWSTR,
-        pwsz_language: crate::core::PWSTR,
+        pcwsz_file_path: PCWSTR,
+        pwsz_language: PWSTR,
         pcch_language: MutPtr<u32>,
-        pwsz_file_mui_path: crate::core::PWSTR,
+        pwsz_file_mui_path: PWSTR,
         pcch_file_mui_path: MutPtr<u32>,
         pulul_enumerator: MutPtr<u64>,
     ) -> super::Foundation::BOOL {
@@ -12695,7 +12674,7 @@ pub trait Api {
         &self,
         location: i32,
         geo_type: u32,
-        lp_geo_data: crate::core::PSTR,
+        lp_geo_data: PSTR,
         cch_data: i32,
         lang_id: u16,
     ) -> i32 {
@@ -12703,9 +12682,9 @@ pub trait Api {
     }
     fn GetGeoInfoEx(
         &self,
-        location: crate::core::PCWSTR,
+        location: PCWSTR,
         geo_type: u32,
-        geo_data: crate::core::PWSTR,
+        geo_data: PWSTR,
         geo_data_count: i32,
     ) -> i32 {
         todo!("GetGeoInfoEx")
@@ -12714,37 +12693,25 @@ pub trait Api {
         &self,
         location: i32,
         geo_type: u32,
-        lp_geo_data: crate::core::PWSTR,
+        lp_geo_data: PWSTR,
         cch_data: i32,
         lang_id: u16,
     ) -> i32 {
         todo!("GetGeoInfoW")
     }
-    fn GetLocaleInfoA(
-        &self,
-        locale: u32,
-        lc_type: u32,
-        lp_lc_data: crate::core::PSTR,
-        cch_data: i32,
-    ) -> i32 {
+    fn GetLocaleInfoA(&self, locale: u32, lc_type: u32, lp_lc_data: PSTR, cch_data: i32) -> i32 {
         todo!("GetLocaleInfoA")
     }
     fn GetLocaleInfoEx(
         &self,
-        lp_locale_name: crate::core::PCWSTR,
+        lp_locale_name: PCWSTR,
         lc_type: u32,
-        lp_lc_data: crate::core::PWSTR,
+        lp_lc_data: PWSTR,
         cch_data: i32,
     ) -> i32 {
         todo!("GetLocaleInfoEx")
     }
-    fn GetLocaleInfoW(
-        &self,
-        locale: u32,
-        lc_type: u32,
-        lp_lc_data: crate::core::PWSTR,
-        cch_data: i32,
-    ) -> i32 {
+    fn GetLocaleInfoW(&self, locale: u32, lc_type: u32, lp_lc_data: PWSTR, cch_data: i32) -> i32 {
         todo!("GetLocaleInfoW")
     }
     fn GetNLSVersion(
@@ -12758,7 +12725,7 @@ pub trait Api {
     fn GetNLSVersionEx(
         &self,
         function: u32,
-        lp_locale_name: crate::core::PCWSTR,
+        lp_locale_name: PCWSTR,
         lp_version_information: MutPtr<NLSVERSIONINFOEX>,
     ) -> super::Foundation::BOOL {
         todo!("GetNLSVersionEx")
@@ -12767,20 +12734,20 @@ pub trait Api {
         &self,
         locale: u32,
         dw_flags: u32,
-        lp_value: crate::core::PCSTR,
+        lp_value: PCSTR,
         lp_format: ConstPtr<NUMBERFMTA>,
-        lp_number_str: crate::core::PSTR,
+        lp_number_str: PSTR,
         cch_number: i32,
     ) -> i32 {
         todo!("GetNumberFormatA")
     }
     fn GetNumberFormatEx(
         &self,
-        lp_locale_name: crate::core::PCWSTR,
+        lp_locale_name: PCWSTR,
         dw_flags: u32,
-        lp_value: crate::core::PCWSTR,
+        lp_value: PCWSTR,
         lp_format: ConstPtr<NUMBERFMTW>,
-        lp_number_str: crate::core::PWSTR,
+        lp_number_str: PWSTR,
         cch_number: i32,
     ) -> i32 {
         todo!("GetNumberFormatEx")
@@ -12789,9 +12756,9 @@ pub trait Api {
         &self,
         locale: u32,
         dw_flags: u32,
-        lp_value: crate::core::PCWSTR,
+        lp_value: PCWSTR,
         lp_format: ConstPtr<NUMBERFMTW>,
-        lp_number_str: crate::core::PWSTR,
+        lp_number_str: PWSTR,
         cch_number: i32,
     ) -> i32 {
         todo!("GetNumberFormatW")
@@ -12803,7 +12770,7 @@ pub trait Api {
         &self,
         dw_flags: u32,
         pul_num_languages: MutPtr<u32>,
-        pwsz_languages_buffer: crate::core::PWSTR,
+        pwsz_languages_buffer: PWSTR,
         pcch_languages_buffer: MutPtr<u32>,
     ) -> super::Foundation::BOOL {
         todo!("GetProcessPreferredUILanguages")
@@ -12811,9 +12778,9 @@ pub trait Api {
     fn GetStringScripts(
         &self,
         dw_flags: u32,
-        lp_string: crate::core::PCWSTR,
+        lp_string: PCWSTR,
         cch_string: i32,
-        lp_scripts: crate::core::PWSTR,
+        lp_scripts: PWSTR,
         cch_scripts: i32,
     ) -> i32 {
         todo!("GetStringScripts")
@@ -12822,7 +12789,7 @@ pub trait Api {
         &self,
         locale: u32,
         dw_info_type: u32,
-        lp_src_str: crate::core::PCSTR,
+        lp_src_str: PCSTR,
         cch_src: i32,
         lp_char_type: MutPtr<u16>,
     ) -> super::Foundation::BOOL {
@@ -12832,7 +12799,7 @@ pub trait Api {
         &self,
         locale: u32,
         dw_info_type: u32,
-        lp_src_str: crate::core::PCSTR,
+        lp_src_str: PCSTR,
         cch_src: i32,
         lp_char_type: MutPtr<u16>,
     ) -> super::Foundation::BOOL {
@@ -12842,7 +12809,7 @@ pub trait Api {
         &self,
         locale: u32,
         dw_info_type: u32,
-        lp_src_str: crate::core::PCWSTR,
+        lp_src_str: PCWSTR,
         cch_src: i32,
         lp_char_type: MutPtr<u16>,
     ) -> super::Foundation::BOOL {
@@ -12851,7 +12818,7 @@ pub trait Api {
     fn GetStringTypeW(
         &self,
         dw_info_type: u32,
-        lp_src_str: crate::core::PCWSTR,
+        lp_src_str: PCWSTR,
         cch_src: i32,
         lp_char_type: MutPtr<u16>,
     ) -> super::Foundation::BOOL {
@@ -12863,11 +12830,7 @@ pub trait Api {
     fn GetSystemDefaultLangID(&self) -> u16 {
         todo!("GetSystemDefaultLangID")
     }
-    fn GetSystemDefaultLocaleName(
-        &self,
-        lp_locale_name: crate::core::PWSTR,
-        cch_locale_name: i32,
-    ) -> i32 {
+    fn GetSystemDefaultLocaleName(&self, lp_locale_name: PWSTR, cch_locale_name: i32) -> i32 {
         todo!("GetSystemDefaultLocaleName")
     }
     fn GetSystemDefaultUILanguage(&self) -> u16 {
@@ -12877,7 +12840,7 @@ pub trait Api {
         &self,
         dw_flags: u32,
         pul_num_languages: MutPtr<u32>,
-        pwsz_languages_buffer: crate::core::PWSTR,
+        pwsz_languages_buffer: PWSTR,
         pcch_languages_buffer: MutPtr<u32>,
     ) -> super::Foundation::BOOL {
         todo!("GetSystemPreferredUILanguages")
@@ -12904,7 +12867,7 @@ pub trait Api {
         &self,
         dw_flags: u32,
         pul_num_languages: MutPtr<u32>,
-        pwsz_languages_buffer: crate::core::PWSTR,
+        pwsz_languages_buffer: PWSTR,
         pcch_languages_buffer: MutPtr<u32>,
     ) -> super::Foundation::BOOL {
         todo!("GetThreadPreferredUILanguages")
@@ -12917,19 +12880,19 @@ pub trait Api {
         locale: u32,
         dw_flags: u32,
         lp_time: ConstPtr<super::Foundation::SYSTEMTIME>,
-        lp_format: crate::core::PCSTR,
-        lp_time_str: crate::core::PSTR,
+        lp_format: PCSTR,
+        lp_time_str: PSTR,
         cch_time: i32,
     ) -> i32 {
         todo!("GetTimeFormatA")
     }
     fn GetTimeFormatEx(
         &self,
-        lp_locale_name: crate::core::PCWSTR,
+        lp_locale_name: PCWSTR,
         dw_flags: TIME_FORMAT_FLAGS,
         lp_time: ConstPtr<super::Foundation::SYSTEMTIME>,
-        lp_format: crate::core::PCWSTR,
-        lp_time_str: crate::core::PWSTR,
+        lp_format: PCWSTR,
+        lp_time_str: PWSTR,
         cch_time: i32,
     ) -> i32 {
         todo!("GetTimeFormatEx")
@@ -12939,8 +12902,8 @@ pub trait Api {
         locale: u32,
         dw_flags: u32,
         lp_time: ConstPtr<super::Foundation::SYSTEMTIME>,
-        lp_format: crate::core::PCWSTR,
-        lp_time_str: crate::core::PWSTR,
+        lp_format: PCWSTR,
+        lp_time_str: PWSTR,
         cch_time: i32,
     ) -> i32 {
         todo!("GetTimeFormatW")
@@ -12948,14 +12911,14 @@ pub trait Api {
     fn GetUILanguageInfo(
         &self,
         dw_flags: u32,
-        pwmsz_language: crate::core::PCWSTR,
-        pwsz_fallback_languages: crate::core::PWSTR,
+        pwmsz_language: PCWSTR,
+        pwsz_fallback_languages: PWSTR,
         pcch_fallback_languages: MutPtr<u32>,
         p_attributes: MutPtr<u32>,
     ) -> super::Foundation::BOOL {
         todo!("GetUILanguageInfo")
     }
-    fn GetUserDefaultGeoName(&self, geo_name: crate::core::PWSTR, geo_name_count: i32) -> i32 {
+    fn GetUserDefaultGeoName(&self, geo_name: PWSTR, geo_name_count: i32) -> i32 {
         todo!("GetUserDefaultGeoName")
     }
     fn GetUserDefaultLCID(&self) -> u32 {
@@ -12964,11 +12927,7 @@ pub trait Api {
     fn GetUserDefaultLangID(&self) -> u16 {
         todo!("GetUserDefaultLangID")
     }
-    fn GetUserDefaultLocaleName(
-        &self,
-        lp_locale_name: crate::core::PWSTR,
-        cch_locale_name: i32,
-    ) -> i32 {
+    fn GetUserDefaultLocaleName(&self, lp_locale_name: PWSTR, cch_locale_name: i32) -> i32 {
         todo!("GetUserDefaultLocaleName")
     }
     fn GetUserDefaultUILanguage(&self) -> u16 {
@@ -12981,7 +12940,7 @@ pub trait Api {
         &self,
         dw_flags: u32,
         pul_num_languages: MutPtr<u32>,
-        pwsz_languages_buffer: crate::core::PWSTR,
+        pwsz_languages_buffer: PWSTR,
         pcch_languages_buffer: MutPtr<u32>,
     ) -> super::Foundation::BOOL {
         todo!("GetUserPreferredUILanguages")
@@ -12989,9 +12948,9 @@ pub trait Api {
     fn IdnToAscii(
         &self,
         dw_flags: u32,
-        lp_unicode_char_str: crate::core::PCWSTR,
+        lp_unicode_char_str: PCWSTR,
         cch_unicode_char: i32,
-        lp_ascii_char_str: crate::core::PWSTR,
+        lp_ascii_char_str: PWSTR,
         cch_ascii_char: i32,
     ) -> i32 {
         todo!("IdnToAscii")
@@ -12999,9 +12958,9 @@ pub trait Api {
     fn IdnToNameprepUnicode(
         &self,
         dw_flags: u32,
-        lp_unicode_char_str: crate::core::PCWSTR,
+        lp_unicode_char_str: PCWSTR,
         cch_unicode_char: i32,
-        lp_nameprep_char_str: crate::core::PWSTR,
+        lp_nameprep_char_str: PWSTR,
         cch_nameprep_char: i32,
     ) -> i32 {
         todo!("IdnToNameprepUnicode")
@@ -13009,9 +12968,9 @@ pub trait Api {
     fn IdnToUnicode(
         &self,
         dw_flags: u32,
-        lp_ascii_char_str: crate::core::PCWSTR,
+        lp_ascii_char_str: PCWSTR,
         cch_ascii_char: i32,
-        lp_unicode_char_str: crate::core::PWSTR,
+        lp_unicode_char_str: PWSTR,
         cch_unicode_char: i32,
     ) -> i32 {
         todo!("IdnToUnicode")
@@ -13027,7 +12986,7 @@ pub trait Api {
         function: u32,
         dw_flags: u32,
         lp_version_information: ConstPtr<NLSVERSIONINFO>,
-        lp_string: crate::core::PCWSTR,
+        lp_string: PCWSTR,
         cch_str: i32,
     ) -> super::Foundation::BOOL {
         todo!("IsNLSDefinedString")
@@ -13035,7 +12994,7 @@ pub trait Api {
     fn IsNormalizedString(
         &self,
         norm_form: NORM_FORM,
-        lp_string: crate::core::PCWSTR,
+        lp_string: PCWSTR,
         cw_length: i32,
     ) -> super::Foundation::BOOL {
         todo!("IsNormalizedString")
@@ -13065,47 +13024,41 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("IsValidLocale")
     }
-    fn IsValidLocaleName(&self, lp_locale_name: crate::core::PCWSTR) -> super::Foundation::BOOL {
+    fn IsValidLocaleName(&self, lp_locale_name: PCWSTR) -> super::Foundation::BOOL {
         todo!("IsValidLocaleName")
     }
     fn IsValidNLSVersion(
         &self,
         function: u32,
-        lp_locale_name: crate::core::PCWSTR,
+        lp_locale_name: PCWSTR,
         lp_version_information: ConstPtr<NLSVERSIONINFOEX>,
     ) -> u32 {
         todo!("IsValidNLSVersion")
     }
-    fn IsWellFormedTag(&self, psz_tag: crate::core::PCWSTR) -> u8 {
+    fn IsWellFormedTag(&self, psz_tag: PCWSTR) -> u8 {
         todo!("IsWellFormedTag")
     }
-    fn LCIDToLocaleName(
-        &self,
-        locale: u32,
-        lp_name: crate::core::PWSTR,
-        cch_name: i32,
-        dw_flags: u32,
-    ) -> i32 {
+    fn LCIDToLocaleName(&self, locale: u32, lp_name: PWSTR, cch_name: i32, dw_flags: u32) -> i32 {
         todo!("LCIDToLocaleName")
     }
     fn LCMapStringA(
         &self,
         locale: u32,
         dw_map_flags: u32,
-        lp_src_str: crate::core::PCSTR,
+        lp_src_str: PCSTR,
         cch_src: i32,
-        lp_dest_str: crate::core::PSTR,
+        lp_dest_str: PSTR,
         cch_dest: i32,
     ) -> i32 {
         todo!("LCMapStringA")
     }
     fn LCMapStringEx(
         &self,
-        lp_locale_name: crate::core::PCWSTR,
+        lp_locale_name: PCWSTR,
         dw_map_flags: u32,
-        lp_src_str: crate::core::PCWSTR,
+        lp_src_str: PCWSTR,
         cch_src: i32,
-        lp_dest_str: crate::core::PWSTR,
+        lp_dest_str: PWSTR,
         cch_dest: i32,
         lp_version_information: ConstPtr<NLSVERSIONINFO>,
         lp_reserved: ConstPtr<::core::ffi::c_void>,
@@ -13117,21 +13070,21 @@ pub trait Api {
         &self,
         locale: u32,
         dw_map_flags: u32,
-        lp_src_str: crate::core::PCWSTR,
+        lp_src_str: PCWSTR,
         cch_src: i32,
-        lp_dest_str: crate::core::PWSTR,
+        lp_dest_str: PWSTR,
         cch_dest: i32,
     ) -> i32 {
         todo!("LCMapStringW")
     }
-    fn LocaleNameToLCID(&self, lp_name: crate::core::PCWSTR, dw_flags: u32) -> u32 {
+    fn LocaleNameToLCID(&self, lp_name: PCWSTR, dw_flags: u32) -> u32 {
         todo!("LocaleNameToLCID")
     }
     fn MappingDoAction(
         &self,
         p_bag: MutPtr<MAPPING_PROPERTY_BAG>,
         dw_range_index: u32,
-        psz_action_id: crate::core::PCWSTR,
+        psz_action_id: PCWSTR,
     ) -> crate::core::HRESULT {
         todo!("MappingDoAction")
     }
@@ -13158,7 +13111,7 @@ pub trait Api {
     fn MappingRecognizeText(
         &self,
         p_service_info: ConstPtr<MAPPING_SERVICE_INFO>,
-        psz_text: crate::core::PCWSTR,
+        psz_text: PCWSTR,
         dw_length: u32,
         dw_index: u32,
         p_options: ConstPtr<MAPPING_OPTIONS>,
@@ -13170,9 +13123,9 @@ pub trait Api {
         &self,
         code_page: u32,
         dw_flags: MULTI_BYTE_TO_WIDE_CHAR_FLAGS,
-        lp_multi_byte_str: crate::core::PCSTR,
+        lp_multi_byte_str: PCSTR,
         cb_multi_byte: i32,
-        lp_wide_char_str: crate::core::PWSTR,
+        lp_wide_char_str: PWSTR,
         cch_wide_char: i32,
     ) -> i32 {
         todo!("MultiByteToWideChar")
@@ -13180,9 +13133,9 @@ pub trait Api {
     fn NormalizeString(
         &self,
         norm_form: NORM_FORM,
-        lp_src_string: crate::core::PCWSTR,
+        lp_src_string: PCWSTR,
         cw_src_length: i32,
-        lp_dst_string: crate::core::PWSTR,
+        lp_dst_string: PWSTR,
         cw_dst_length: i32,
     ) -> i32 {
         todo!("NormalizeString")
@@ -13190,8 +13143,8 @@ pub trait Api {
     fn NotifyUILanguageChange(
         &self,
         dw_flags: u32,
-        pcwstr_new_language: crate::core::PCWSTR,
-        pcwstr_previous_language: crate::core::PCWSTR,
+        pcwstr_new_language: PCWSTR,
+        pcwstr_previous_language: PCWSTR,
         dw_reserved: u32,
         pdw_status_rtrn: MutPtr<u32>,
     ) -> super::Foundation::BOOL {
@@ -13199,8 +13152,8 @@ pub trait Api {
     }
     fn ResolveLocaleName(
         &self,
-        lp_name_to_resolve: crate::core::PCWSTR,
-        lp_locale_name: crate::core::PWSTR,
+        lp_name_to_resolve: PCWSTR,
+        lp_locale_name: PWSTR,
         cch_locale_name: i32,
     ) -> i32 {
         todo!("ResolveLocaleName")
@@ -13234,7 +13187,7 @@ pub trait Api {
     }
     fn ScriptBreak(
         &self,
-        pwc_chars: crate::core::PCWSTR,
+        pwc_chars: PCWSTR,
         c_chars: i32,
         psa: ConstPtr<SCRIPT_ANALYSIS>,
         psla: MutPtr<SCRIPT_LOGATTR>,
@@ -13274,7 +13227,7 @@ pub trait Api {
         &self,
         hdc: super::Graphics::Gdi::HDC,
         psc: MutPtr<ConstPtr<::core::ffi::c_void>>,
-        pwc_in_chars: crate::core::PCWSTR,
+        pwc_in_chars: PCWSTR,
         c_chars: i32,
         dw_flags: u32,
         pw_out_glyphs: MutPtr<u16>,
@@ -13382,7 +13335,7 @@ pub trait Api {
     }
     fn ScriptIsComplex(
         &self,
-        pwc_in_chars: crate::core::PCWSTR,
+        pwc_in_chars: PCWSTR,
         c_in_chars: i32,
         dw_flags: SCRIPT_IS_COMPLEX_FLAGS,
     ) -> crate::core::HRESULT {
@@ -13390,7 +13343,7 @@ pub trait Api {
     }
     fn ScriptItemize(
         &self,
-        pwc_in_chars: crate::core::PCWSTR,
+        pwc_in_chars: PCWSTR,
         c_in_chars: i32,
         c_max_items: i32,
         ps_control: ConstPtr<SCRIPT_CONTROL>,
@@ -13402,7 +13355,7 @@ pub trait Api {
     }
     fn ScriptItemizeOpenType(
         &self,
-        pwc_in_chars: crate::core::PCWSTR,
+        pwc_in_chars: PCWSTR,
         c_in_chars: i32,
         c_max_items: i32,
         ps_control: ConstPtr<SCRIPT_CONTROL>,
@@ -13461,7 +13414,7 @@ pub trait Api {
         rc_range_chars: ConstPtr<i32>,
         rp_range_properties: ConstPtr<ConstPtr<textrange_properties>>,
         c_ranges: i32,
-        pwc_chars: crate::core::PCWSTR,
+        pwc_chars: PCWSTR,
         pw_log_clust: ConstPtr<u16>,
         p_char_props: ConstPtr<script_charprop>,
         c_chars: i32,
@@ -13506,7 +13459,7 @@ pub trait Api {
         &self,
         hdc: super::Graphics::Gdi::HDC,
         psc: MutPtr<ConstPtr<::core::ffi::c_void>>,
-        pwc_chars: crate::core::PCWSTR,
+        pwc_chars: PCWSTR,
         c_chars: i32,
         c_max_glyphs: i32,
         psa: MutPtr<SCRIPT_ANALYSIS>,
@@ -13529,7 +13482,7 @@ pub trait Api {
         rc_range_chars: ConstPtr<i32>,
         rp_range_properties: ConstPtr<ConstPtr<textrange_properties>>,
         c_ranges: i32,
-        pwc_chars: crate::core::PCWSTR,
+        pwc_chars: PCWSTR,
         c_chars: i32,
         c_max_glyphs: i32,
         pw_log_clust: MutPtr<u16>,
@@ -13655,7 +13608,7 @@ pub trait Api {
         fu_options: u32,
         lprc: ConstPtr<super::Foundation::RECT>,
         psa: ConstPtr<SCRIPT_ANALYSIS>,
-        pwc_reserved: crate::core::PCWSTR,
+        pwc_reserved: PCWSTR,
         i_reserved: i32,
         pw_glyphs: ConstPtr<u16>,
         c_glyphs: i32,
@@ -13684,7 +13637,7 @@ pub trait Api {
         locale: u32,
         calendar: u32,
         cal_type: u32,
-        lp_cal_data: crate::core::PCSTR,
+        lp_cal_data: PCSTR,
     ) -> super::Foundation::BOOL {
         todo!("SetCalendarInfoA")
     }
@@ -13693,7 +13646,7 @@ pub trait Api {
         locale: u32,
         calendar: u32,
         cal_type: u32,
-        lp_cal_data: crate::core::PCWSTR,
+        lp_cal_data: PCWSTR,
     ) -> super::Foundation::BOOL {
         todo!("SetCalendarInfoW")
     }
@@ -13701,7 +13654,7 @@ pub trait Api {
         &self,
         locale: u32,
         lc_type: u32,
-        lp_lc_data: crate::core::PCSTR,
+        lp_lc_data: PCSTR,
     ) -> super::Foundation::BOOL {
         todo!("SetLocaleInfoA")
     }
@@ -13709,14 +13662,14 @@ pub trait Api {
         &self,
         locale: u32,
         lc_type: u32,
-        lp_lc_data: crate::core::PCWSTR,
+        lp_lc_data: PCWSTR,
     ) -> super::Foundation::BOOL {
         todo!("SetLocaleInfoW")
     }
     fn SetProcessPreferredUILanguages(
         &self,
         dw_flags: u32,
-        pwsz_languages_buffer: crate::core::PCWSTR,
+        pwsz_languages_buffer: PCWSTR,
         pul_num_languages: MutPtr<u32>,
     ) -> super::Foundation::BOOL {
         todo!("SetProcessPreferredUILanguages")
@@ -13727,7 +13680,7 @@ pub trait Api {
     fn SetThreadPreferredUILanguages(
         &self,
         dw_flags: u32,
-        pwsz_languages_buffer: crate::core::PCWSTR,
+        pwsz_languages_buffer: PCWSTR,
         pul_num_languages: MutPtr<u32>,
     ) -> super::Foundation::BOOL {
         todo!("SetThreadPreferredUILanguages")
@@ -13735,7 +13688,7 @@ pub trait Api {
     fn SetThreadPreferredUILanguages2(
         &self,
         flags: u32,
-        languages: crate::core::PCWSTR,
+        languages: PCWSTR,
         num_languages_set: MutPtr<u32>,
         snapshot: MutPtr<HSAVEDUILANGUAGES>,
     ) -> super::Foundation::BOOL {
@@ -13747,7 +13700,7 @@ pub trait Api {
     fn SetUserGeoID(&self, geo_id: i32) -> super::Foundation::BOOL {
         todo!("SetUserGeoID")
     }
-    fn SetUserGeoName(&self, geo_name: crate::core::PCWSTR) -> super::Foundation::BOOL {
+    fn SetUserGeoName(&self, geo_name: PCWSTR) -> super::Foundation::BOOL {
         todo!("SetUserGeoName")
     }
     fn TranslateCharsetInfo(
@@ -13761,9 +13714,9 @@ pub trait Api {
     fn VerifyScripts(
         &self,
         dw_flags: u32,
-        lp_locale_scripts: crate::core::PCWSTR,
+        lp_locale_scripts: PCWSTR,
         cch_locale_scripts: i32,
-        lp_test_scripts: crate::core::PCWSTR,
+        lp_test_scripts: PCWSTR,
         cch_test_scripts: i32,
     ) -> super::Foundation::BOOL {
         todo!("VerifyScripts")
@@ -13772,75 +13725,49 @@ pub trait Api {
         &self,
         code_page: u32,
         dw_flags: u32,
-        lp_wide_char_str: crate::core::PCWSTR,
+        lp_wide_char_str: PCWSTR,
         cch_wide_char: i32,
-        lp_multi_byte_str: crate::core::PSTR,
+        lp_multi_byte_str: PSTR,
         cb_multi_byte: i32,
-        lp_default_char: crate::core::PCSTR,
+        lp_default_char: PCSTR,
         lp_used_default_char: MutPtr<i32>,
     ) -> i32 {
         todo!("WideCharToMultiByte")
     }
-    fn lstrcatA(
-        &self,
-        lp_string_1: crate::core::PSTR,
-        lp_string_2: crate::core::PCSTR,
-    ) -> crate::core::PSTR {
+    fn lstrcatA(&self, lp_string_1: PSTR, lp_string_2: PCSTR) -> PSTR {
         todo!("lstrcatA")
     }
-    fn lstrcatW(
-        &self,
-        lp_string_1: crate::core::PWSTR,
-        lp_string_2: crate::core::PCWSTR,
-    ) -> crate::core::PWSTR {
+    fn lstrcatW(&self, lp_string_1: PWSTR, lp_string_2: PCWSTR) -> PWSTR {
         todo!("lstrcatW")
     }
-    fn lstrcmpA(&self, lp_string_1: crate::core::PCSTR, lp_string_2: crate::core::PCSTR) -> i32 {
+    fn lstrcmpA(&self, lp_string_1: PCSTR, lp_string_2: PCSTR) -> i32 {
         todo!("lstrcmpA")
     }
-    fn lstrcmpW(&self, lp_string_1: crate::core::PCWSTR, lp_string_2: crate::core::PCWSTR) -> i32 {
+    fn lstrcmpW(&self, lp_string_1: PCWSTR, lp_string_2: PCWSTR) -> i32 {
         todo!("lstrcmpW")
     }
-    fn lstrcmpiA(&self, lp_string_1: crate::core::PCSTR, lp_string_2: crate::core::PCSTR) -> i32 {
+    fn lstrcmpiA(&self, lp_string_1: PCSTR, lp_string_2: PCSTR) -> i32 {
         todo!("lstrcmpiA")
     }
-    fn lstrcmpiW(&self, lp_string_1: crate::core::PCWSTR, lp_string_2: crate::core::PCWSTR) -> i32 {
+    fn lstrcmpiW(&self, lp_string_1: PCWSTR, lp_string_2: PCWSTR) -> i32 {
         todo!("lstrcmpiW")
     }
-    fn lstrcpyA(
-        &self,
-        lp_string_1: crate::core::PSTR,
-        lp_string_2: crate::core::PCSTR,
-    ) -> crate::core::PSTR {
+    fn lstrcpyA(&self, lp_string_1: PSTR, lp_string_2: PCSTR) -> PSTR {
         todo!("lstrcpyA")
     }
-    fn lstrcpyW(
-        &self,
-        lp_string_1: crate::core::PWSTR,
-        lp_string_2: crate::core::PCWSTR,
-    ) -> crate::core::PWSTR {
+    fn lstrcpyW(&self, lp_string_1: PWSTR, lp_string_2: PCWSTR) -> PWSTR {
         todo!("lstrcpyW")
     }
-    fn lstrcpynA(
-        &self,
-        lp_string_1: crate::core::PSTR,
-        lp_string_2: crate::core::PCSTR,
-        i_max_length: i32,
-    ) -> crate::core::PSTR {
+    fn lstrcpynA(&self, lp_string_1: PSTR, lp_string_2: PCSTR, i_max_length: i32) -> PSTR {
         todo!("lstrcpynA")
     }
-    fn lstrcpynW(
-        &self,
-        lp_string_1: crate::core::PWSTR,
-        lp_string_2: crate::core::PCWSTR,
-        i_max_length: i32,
-    ) -> crate::core::PWSTR {
+    fn lstrcpynW(&self, lp_string_1: PWSTR, lp_string_2: PCWSTR, i_max_length: i32) -> PWSTR {
         todo!("lstrcpynW")
     }
-    fn lstrlenA(&self, lp_string: crate::core::PCSTR) -> i32 {
+    fn lstrlenA(&self, lp_string: PCSTR) -> i32 {
         todo!("lstrlenA")
     }
-    fn lstrlenW(&self, lp_string: crate::core::PCWSTR) -> i32 {
+    fn lstrlenW(&self, lp_string: PCWSTR) -> i32 {
         todo!("lstrlenW")
     }
 }

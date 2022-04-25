@@ -943,19 +943,14 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("EnclaveVerifyAttestationReport")
     }
-    fn ExpandEnvironmentStringsA(
-        &self,
-        lp_src: crate::core::PCSTR,
-        lp_dst: crate::core::PSTR,
-        n_size: u32,
-    ) -> u32 {
+    fn ExpandEnvironmentStringsA(&self, lp_src: PCSTR, lp_dst: PSTR, n_size: u32) -> u32 {
         todo!("ExpandEnvironmentStringsA")
     }
     fn ExpandEnvironmentStringsForUserA(
         &self,
         h_token: super::super::Foundation::HANDLE,
-        lp_src: crate::core::PCSTR,
-        lp_dest: crate::core::PSTR,
+        lp_src: PCSTR,
+        lp_dest: PSTR,
         dw_size: u32,
     ) -> super::super::Foundation::BOOL {
         todo!("ExpandEnvironmentStringsForUserA")
@@ -963,58 +958,43 @@ pub trait Api {
     fn ExpandEnvironmentStringsForUserW(
         &self,
         h_token: super::super::Foundation::HANDLE,
-        lp_src: crate::core::PCWSTR,
-        lp_dest: crate::core::PWSTR,
+        lp_src: PCWSTR,
+        lp_dest: PWSTR,
         dw_size: u32,
     ) -> super::super::Foundation::BOOL {
         todo!("ExpandEnvironmentStringsForUserW")
     }
-    fn ExpandEnvironmentStringsW(
-        &self,
-        lp_src: crate::core::PCWSTR,
-        lp_dst: crate::core::PWSTR,
-        n_size: u32,
-    ) -> u32 {
+    fn ExpandEnvironmentStringsW(&self, lp_src: PCWSTR, lp_dst: PWSTR, n_size: u32) -> u32 {
         todo!("ExpandEnvironmentStringsW")
     }
-    fn FreeEnvironmentStringsA(&self, penv: crate::core::PCSTR) -> super::super::Foundation::BOOL {
+    fn FreeEnvironmentStringsA(&self, penv: PCSTR) -> super::super::Foundation::BOOL {
         todo!("FreeEnvironmentStringsA")
     }
-    fn FreeEnvironmentStringsW(&self, penv: crate::core::PCWSTR) -> super::super::Foundation::BOOL {
+    fn FreeEnvironmentStringsW(&self, penv: PCWSTR) -> super::super::Foundation::BOOL {
         todo!("FreeEnvironmentStringsW")
     }
-    fn GetCommandLineA(&self) -> crate::core::PSTR {
+    fn GetCommandLineA(&self) -> PSTR {
         todo!("GetCommandLineA")
     }
-    fn GetCommandLineW(&self) -> crate::core::PWSTR {
+    fn GetCommandLineW(&self) -> PWSTR {
         todo!("GetCommandLineW")
     }
-    fn GetCurrentDirectoryA(&self, n_buffer_length: u32, lp_buffer: crate::core::PSTR) -> u32 {
+    fn GetCurrentDirectoryA(&self, n_buffer_length: u32, lp_buffer: PSTR) -> u32 {
         todo!("GetCurrentDirectoryA")
     }
-    fn GetCurrentDirectoryW(&self, n_buffer_length: u32, lp_buffer: crate::core::PWSTR) -> u32 {
+    fn GetCurrentDirectoryW(&self, n_buffer_length: u32, lp_buffer: PWSTR) -> u32 {
         todo!("GetCurrentDirectoryW")
     }
-    fn GetEnvironmentStrings(&self) -> crate::core::PSTR {
+    fn GetEnvironmentStrings(&self) -> PSTR {
         todo!("GetEnvironmentStrings")
     }
-    fn GetEnvironmentStringsW(&self) -> crate::core::PWSTR {
+    fn GetEnvironmentStringsW(&self) -> PWSTR {
         todo!("GetEnvironmentStringsW")
     }
-    fn GetEnvironmentVariableA(
-        &self,
-        lp_name: crate::core::PCSTR,
-        lp_buffer: crate::core::PSTR,
-        n_size: u32,
-    ) -> u32 {
+    fn GetEnvironmentVariableA(&self, lp_name: PCSTR, lp_buffer: PSTR, n_size: u32) -> u32 {
         todo!("GetEnvironmentVariableA")
     }
-    fn GetEnvironmentVariableW(
-        &self,
-        lp_name: crate::core::PCWSTR,
-        lp_buffer: crate::core::PWSTR,
-        n_size: u32,
-    ) -> u32 {
+    fn GetEnvironmentVariableW(&self, lp_name: PCWSTR, lp_buffer: PWSTR, n_size: u32) -> u32 {
         todo!("GetEnvironmentVariableW")
     }
     fn InitializeEnclave(
@@ -1047,58 +1027,43 @@ pub trait Api {
     fn LoadEnclaveImageA(
         &self,
         lp_enclave_address: ConstPtr<::core::ffi::c_void>,
-        lp_image_name: crate::core::PCSTR,
+        lp_image_name: PCSTR,
     ) -> super::super::Foundation::BOOL {
         todo!("LoadEnclaveImageA")
     }
     fn LoadEnclaveImageW(
         &self,
         lp_enclave_address: ConstPtr<::core::ffi::c_void>,
-        lp_image_name: crate::core::PCWSTR,
+        lp_image_name: PCWSTR,
     ) -> super::super::Foundation::BOOL {
         todo!("LoadEnclaveImageW")
     }
-    fn NeedCurrentDirectoryForExePathA(
-        &self,
-        exe_name: crate::core::PCSTR,
-    ) -> super::super::Foundation::BOOL {
+    fn NeedCurrentDirectoryForExePathA(&self, exe_name: PCSTR) -> super::super::Foundation::BOOL {
         todo!("NeedCurrentDirectoryForExePathA")
     }
-    fn NeedCurrentDirectoryForExePathW(
-        &self,
-        exe_name: crate::core::PCWSTR,
-    ) -> super::super::Foundation::BOOL {
+    fn NeedCurrentDirectoryForExePathW(&self, exe_name: PCWSTR) -> super::super::Foundation::BOOL {
         todo!("NeedCurrentDirectoryForExePathW")
     }
-    fn SetCurrentDirectoryA(
-        &self,
-        lp_path_name: crate::core::PCSTR,
-    ) -> super::super::Foundation::BOOL {
+    fn SetCurrentDirectoryA(&self, lp_path_name: PCSTR) -> super::super::Foundation::BOOL {
         todo!("SetCurrentDirectoryA")
     }
-    fn SetCurrentDirectoryW(
-        &self,
-        lp_path_name: crate::core::PCWSTR,
-    ) -> super::super::Foundation::BOOL {
+    fn SetCurrentDirectoryW(&self, lp_path_name: PCWSTR) -> super::super::Foundation::BOOL {
         todo!("SetCurrentDirectoryW")
     }
-    fn SetEnvironmentStringsW(
-        &self,
-        new_environment: crate::core::PCWSTR,
-    ) -> super::super::Foundation::BOOL {
+    fn SetEnvironmentStringsW(&self, new_environment: PCWSTR) -> super::super::Foundation::BOOL {
         todo!("SetEnvironmentStringsW")
     }
     fn SetEnvironmentVariableA(
         &self,
-        lp_name: crate::core::PCSTR,
-        lp_value: crate::core::PCSTR,
+        lp_name: PCSTR,
+        lp_value: PCSTR,
     ) -> super::super::Foundation::BOOL {
         todo!("SetEnvironmentVariableA")
     }
     fn SetEnvironmentVariableW(
         &self,
-        lp_name: crate::core::PCWSTR,
-        lp_value: crate::core::PCWSTR,
+        lp_name: PCWSTR,
+        lp_value: PCWSTR,
     ) -> super::super::Foundation::BOOL {
         todo!("SetEnvironmentVariableW")
     }

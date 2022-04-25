@@ -2558,7 +2558,7 @@ pub trait Api {
     fn GetComputerNameExA(
         &self,
         name_type: COMPUTER_NAME_FORMAT,
-        lp_buffer: crate::core::PSTR,
+        lp_buffer: PSTR,
         n_size: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
         todo!("GetComputerNameExA")
@@ -2566,7 +2566,7 @@ pub trait Api {
     fn GetComputerNameExW(
         &self,
         name_type: COMPUTER_NAME_FORMAT,
-        lp_buffer: crate::core::PWSTR,
+        lp_buffer: PWSTR,
         n_size: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
         todo!("GetComputerNameExW")
@@ -2638,10 +2638,10 @@ pub trait Api {
     fn GetSystemDEPPolicy(&self) -> DEP_SYSTEM_POLICY_TYPE {
         todo!("GetSystemDEPPolicy")
     }
-    fn GetSystemDirectoryA(&self, lp_buffer: crate::core::PSTR, u_size: u32) -> u32 {
+    fn GetSystemDirectoryA(&self, lp_buffer: PSTR, u_size: u32) -> u32 {
         todo!("GetSystemDirectoryA")
     }
-    fn GetSystemDirectoryW(&self, lp_buffer: crate::core::PWSTR, u_size: u32) -> u32 {
+    fn GetSystemDirectoryW(&self, lp_buffer: PWSTR, u_size: u32) -> u32 {
         todo!("GetSystemDirectoryW")
     }
     fn GetSystemFirmwareTable(
@@ -2694,15 +2694,15 @@ pub trait Api {
     ) {
         todo!("GetSystemTimePreciseAsFileTime")
     }
-    fn GetSystemWindowsDirectoryA(&self, lp_buffer: crate::core::PSTR, u_size: u32) -> u32 {
+    fn GetSystemWindowsDirectoryA(&self, lp_buffer: PSTR, u_size: u32) -> u32 {
         todo!("GetSystemWindowsDirectoryA")
     }
-    fn GetSystemWindowsDirectoryW(&self, lp_buffer: crate::core::PWSTR, u_size: u32) -> u32 {
+    fn GetSystemWindowsDirectoryW(&self, lp_buffer: PWSTR, u_size: u32) -> u32 {
         todo!("GetSystemWindowsDirectoryW")
     }
     fn GetSystemWow64Directory2A(
         &self,
-        lp_buffer: crate::core::PSTR,
+        lp_buffer: PSTR,
         u_size: u32,
         image_file_machine_type: u16,
     ) -> u32 {
@@ -2710,16 +2710,16 @@ pub trait Api {
     }
     fn GetSystemWow64Directory2W(
         &self,
-        lp_buffer: crate::core::PWSTR,
+        lp_buffer: PWSTR,
         u_size: u32,
         image_file_machine_type: u16,
     ) -> u32 {
         todo!("GetSystemWow64Directory2W")
     }
-    fn GetSystemWow64DirectoryA(&self, lp_buffer: crate::core::PSTR, u_size: u32) -> u32 {
+    fn GetSystemWow64DirectoryA(&self, lp_buffer: PSTR, u_size: u32) -> u32 {
         todo!("GetSystemWow64DirectoryA")
     }
-    fn GetSystemWow64DirectoryW(&self, lp_buffer: crate::core::PWSTR, u_size: u32) -> u32 {
+    fn GetSystemWow64DirectoryW(&self, lp_buffer: PWSTR, u_size: u32) -> u32 {
         todo!("GetSystemWow64DirectoryW")
     }
     fn GetTickCount(&self) -> u32 {
@@ -2743,10 +2743,10 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetVersionExW")
     }
-    fn GetWindowsDirectoryA(&self, lp_buffer: crate::core::PSTR, u_size: u32) -> u32 {
+    fn GetWindowsDirectoryA(&self, lp_buffer: PSTR, u_size: u32) -> u32 {
         todo!("GetWindowsDirectoryA")
     }
-    fn GetWindowsDirectoryW(&self, lp_buffer: crate::core::PWSTR, u_size: u32) -> u32 {
+    fn GetWindowsDirectoryW(&self, lp_buffer: PWSTR, u_size: u32) -> u32 {
         todo!("GetWindowsDirectoryW")
     }
     fn GlobalMemoryStatus(&self, lp_buffer: MutPtr<MEMORYSTATUS>) {
@@ -2762,8 +2762,8 @@ pub trait Api {
         &self,
         pul_device_family_buffer_size: MutPtr<u32>,
         pul_device_form_buffer_size: MutPtr<u32>,
-        device_family: crate::core::PWSTR,
-        device_form: crate::core::PWSTR,
+        device_family: PWSTR,
+        device_form: PWSTR,
     ) -> u32 {
         todo!("RtlConvertDeviceFamilyInfoToString")
     }
@@ -2804,38 +2804,32 @@ pub trait Api {
     ) -> u32 {
         todo!("RtlSwitchedVVI")
     }
-    fn SetComputerNameA(
-        &self,
-        lp_computer_name: crate::core::PCSTR,
-    ) -> super::super::Foundation::BOOL {
+    fn SetComputerNameA(&self, lp_computer_name: PCSTR) -> super::super::Foundation::BOOL {
         todo!("SetComputerNameA")
     }
     fn SetComputerNameEx2W(
         &self,
         name_type: COMPUTER_NAME_FORMAT,
         flags: u32,
-        lp_buffer: crate::core::PCWSTR,
+        lp_buffer: PCWSTR,
     ) -> super::super::Foundation::BOOL {
         todo!("SetComputerNameEx2W")
     }
     fn SetComputerNameExA(
         &self,
         name_type: COMPUTER_NAME_FORMAT,
-        lp_buffer: crate::core::PCSTR,
+        lp_buffer: PCSTR,
     ) -> super::super::Foundation::BOOL {
         todo!("SetComputerNameExA")
     }
     fn SetComputerNameExW(
         &self,
         name_type: COMPUTER_NAME_FORMAT,
-        lp_buffer: crate::core::PCWSTR,
+        lp_buffer: PCWSTR,
     ) -> super::super::Foundation::BOOL {
         todo!("SetComputerNameExW")
     }
-    fn SetComputerNameW(
-        &self,
-        lp_computer_name: crate::core::PCWSTR,
-    ) -> super::super::Foundation::BOOL {
+    fn SetComputerNameW(&self, lp_computer_name: PCWSTR) -> super::super::Foundation::BOOL {
         todo!("SetComputerNameW")
     }
     fn SetLocalTime(
