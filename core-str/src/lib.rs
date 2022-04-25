@@ -1,4 +1,4 @@
-mod heap_helper;
+pub mod heap_helper;
 
 use core_mem::ctx::MemoryCtx;
 use core_mem::from_into_mem_impl_for_wrapper;

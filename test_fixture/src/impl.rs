@@ -1,12 +1,16 @@
 use core_abi::unwind_token::{UnwindReason, UnwindToken};
+use core_heap::{Heap, RawHeapBox};
+use core_mem::ctx::DefaultMemoryCtx;
 use core_mem::ptr::{ConstPtr, MutPtr, PtrDiffRepr, PtrRepr};
-use core_mem::thread_ctx::get_thread_ctx;
+use core_memmgr::MemoryManager;
+use core_str::heap_helper::AnsiStringHeapBox;
+use core_str::PWSTR;
 use encoding_rs::Encoding;
 use std::ffi::c_void;
-use std::sync::Mutex;
+use std::sync::{Arc, Mutex};
 use tracing::{info, warn};
 use win32::core::prelude::{PCSTR, PSTR};
-use win32::Win32::Foundation::{HANDLE, HINSTANCE, HWND, INVALID_HANDLE_VALUE};
+use win32::Win32::Foundation::{BOOL, HANDLE, HINSTANCE, HWND, INVALID_HANDLE_VALUE};
 use win32::Win32::System::Console::STD_HANDLE;
 use win32::Win32::System::Memory::{
     HeapHandle, HEAP_FLAGS, HEAP_NO_SERIALIZE, PAGE_PROTECTION_FLAGS, VIRTUAL_ALLOCATION_TYPE,
@@ -16,8 +20,16 @@ use win32::Win32::UI::WindowsAndMessaging::{MESSAGEBOX_RESULT, MESSAGEBOX_STYLE}
 use win32_heapmgr::HeapMgr;
 use win32_virtmem::VirtualMemoryManager;
 
+#[derive(Clone)]
+pub struct ProcessContext {
+    pub memory_manager: Arc<Mutex<MemoryManager>>,
+    pub process_heap: Arc<Mutex<Heap>>,
+    pub memory_ctx: DefaultMemoryCtx,
+    pub ansi_encoding: &'static Encoding,
+}
+
 pub struct WindowsAndMessaging {
-    pub local_encoding: &'static Encoding,
+    pub process_ctx: ProcessContext,
 }
 
 #[allow(non_snake_case)]
@@ -29,12 +41,12 @@ impl win32::Win32::UI::WindowsAndMessaging::Api for WindowsAndMessaging {
         lp_caption: PCSTR,
         u_type: MESSAGEBOX_STYLE,
     ) -> MESSAGEBOX_RESULT {
-        let memory = get_thread_ctx();
+        let memory = self.process_ctx.memory_ctx;
 
         let text = lp_text.read_with(memory);
-        let text = text.as_utf8(self.local_encoding);
+        let text = text.as_utf8(self.process_ctx.ansi_encoding);
         let caption = lp_caption.read_with(memory);
-        let caption = caption.as_utf8(self.local_encoding);
+        let caption = caption.as_utf8(self.process_ctx.ansi_encoding);
 
         info!(
             "MessageBoxA({:#0x}, {:?}, {:?}, {:#0x})",
@@ -45,7 +57,9 @@ impl win32::Win32::UI::WindowsAndMessaging::Api for WindowsAndMessaging {
     }
 }
 
-pub struct SystemInformation {}
+pub struct SystemInformation {
+    pub process_ctx: ProcessContext,
+}
 
 #[allow(non_snake_case)]
 impl win32::Win32::System::SystemInformation::Api for SystemInformation {
@@ -55,12 +69,18 @@ impl win32::Win32::System::SystemInformation::Api for SystemInformation {
 }
 
 pub struct Memory {
-    pub(crate) virtmem_mgr: VirtualMemoryManager,
-    pub(crate) heap_mgr: Mutex<HeapMgr>,
+    pub process_ctx: ProcessContext,
+    pub virtmem_mgr: VirtualMemoryManager,
+    pub heap_mgr: Mutex<HeapMgr>,
+    pub process_heap_handle: PtrRepr,
 }
 
 #[allow(non_snake_case)]
 impl win32::Win32::System::Memory::Api for Memory {
+    fn GetProcessHeap(&self) -> HeapHandle {
+        HeapHandle(self.process_heap_handle as PtrDiffRepr)
+    }
+
     fn HeapAlloc(
         &self,
         h_heap: HeapHandle,
@@ -106,7 +126,9 @@ impl win32::Win32::System::Memory::Api for Memory {
     }
 }
 
-pub struct LibraryLoader {}
+pub struct LibraryLoader {
+    pub process_ctx: ProcessContext,
+}
 
 #[allow(non_snake_case)]
 impl win32::Win32::System::LibraryLoader::Api for LibraryLoader {
@@ -119,7 +141,9 @@ impl win32::Win32::System::LibraryLoader::Api for LibraryLoader {
     }
 }
 
-pub struct Threading {}
+pub struct Threading {
+    pub process_ctx: ProcessContext,
+}
 
 #[allow(non_snake_case)]
 impl win32::Win32::System::Threading::Api for Threading {
@@ -128,30 +152,35 @@ impl win32::Win32::System::Threading::Api for Threading {
     }
 
     fn GetStartupInfoA(&self, lp_startup_info: MutPtr<STARTUPINFOA>) {
-        lp_startup_info.write(STARTUPINFOA {
-            cb: 68,
-            lpReserved: PSTR(MutPtr::new(0)),
-            lpDesktop: PSTR(MutPtr::new(0)),
-            lpTitle: PSTR(MutPtr::new(0)),
-            dwX: 0,
-            dwY: 0,
-            dwXSize: 0,
-            dwYSize: 0,
-            dwXCountChars: 0,
-            dwYCountChars: 0,
-            dwFillAttribute: 0,
-            dwFlags: Default::default(),
-            wShowWindow: 0,
-            cbReserved2: 0,
-            lpReserved2: MutPtr::new(0),
-            hStdInput: Default::default(),
-            hStdOutput: Default::default(),
-            hStdError: Default::default(),
-        })
+        lp_startup_info.write_with(
+            self.process_ctx.memory_ctx,
+            STARTUPINFOA {
+                cb: 68,
+                lpReserved: PSTR(MutPtr::new(0)),
+                lpDesktop: PSTR(MutPtr::new(0)),
+                lpTitle: PSTR(MutPtr::new(0)),
+                dwX: 0,
+                dwY: 0,
+                dwXSize: 0,
+                dwYSize: 0,
+                dwXCountChars: 0,
+                dwYCountChars: 0,
+                dwFillAttribute: 0,
+                dwFlags: Default::default(),
+                wShowWindow: 0,
+                cbReserved2: 0,
+                lpReserved2: MutPtr::new(0),
+                hStdInput: Default::default(),
+                hStdOutput: Default::default(),
+                hStdError: Default::default(),
+            },
+        )
     }
 }
 
-pub struct Console {}
+pub struct Console {
+    pub process_ctx: ProcessContext,
+}
 #[allow(non_snake_case)]
 impl win32::Win32::System::Console::Api for Console {
     fn GetStdHandle(&self, n_std_handle: STD_HANDLE) -> HANDLE {
@@ -161,7 +190,9 @@ impl win32::Win32::System::Console::Api for Console {
     }
 }
 
-pub struct WindowsProgramming {}
+pub struct WindowsProgramming {
+    pub process_ctx: ProcessContext,
+}
 #[allow(non_snake_case)]
 impl win32::Win32::System::WindowsProgramming::Api for WindowsProgramming {
     fn SetHandleCount(&self, u_number: u32) -> u32 {
@@ -170,11 +201,37 @@ impl win32::Win32::System::WindowsProgramming::Api for WindowsProgramming {
     }
 }
 
-pub struct Environment {}
+pub struct Environment {
+    pub process_ctx: ProcessContext,
+    pub command_line_ansi: AnsiStringHeapBox,
+    pub environment_strings_oem: Vec<u8>,
+}
 #[allow(non_snake_case)]
 impl win32::Win32::System::Environment::Api for Environment {
     fn GetCommandLineA(&self) -> PSTR {
-        // well, this actually needs some setup
-        todo!()
+        self.command_line_ansi.ptr_mut()
+    }
+
+    fn GetEnvironmentStrings(&self) -> PSTR {
+        let res = RawHeapBox::new_init(
+            self.process_ctx.memory_ctx,
+            self.process_ctx.process_heap.clone(),
+            &self.environment_strings_oem,
+        )
+        .unwrap();
+
+        PSTR::new(res.leak())
+    }
+
+    fn FreeEnvironmentStringsA(&self, penv: PCSTR) -> BOOL {
+        let mut heap = self.process_ctx.process_heap.lock().unwrap();
+
+        heap.free(penv.0.repr()).unwrap();
+
+        BOOL(1)
+    }
+
+    fn GetEnvironmentStringsW(&self) -> PWSTR {
+        PWSTR::new(0)
     }
 }

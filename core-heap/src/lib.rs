@@ -1,7 +1,7 @@
 use btreemultimap::{btreemultimap, BTreeMultiMap};
 use core_mem::align;
-use core_mem::ctx::{FlatMemoryCtx, MemoryCtx};
-use core_mem::ptr::PtrRepr;
+use core_mem::ctx::MemoryCtx;
+use core_mem::ptr::{ConstPtr, MutPtr, PtrDiffRepr, PtrRepr};
 use core_memmgr::{AddressRange, MemoryManager, Protection};
 use derive_more::{Add, From, Into, Sub};
 use std::collections::{HashMap, HashSet};
@@ -201,12 +201,8 @@ impl Heap {
         Ok(ptr.into())
     }
 
-    pub fn free(&mut self, _ptr: PtrRepr) -> Result<PtrRepr> {
+    pub fn free(&mut self, _ptr: PtrRepr) -> Result<()> {
         todo!()
-    }
-
-    pub unsafe fn memory_context(&self) -> FlatMemoryCtx {
-        self.memory_manager.lock().unwrap().memory_context()
     }
 }
 
@@ -244,8 +240,40 @@ impl RawHeapBox {
         })
     }
 
+    pub fn new_init(
+        memory_ctx: impl MemoryCtx,
+        heap: Arc<Mutex<Heap>>,
+        value: &[u8],
+    ) -> Result<Self> {
+        let ptr = {
+            let mut heap = heap.lock().unwrap();
+            MutPtr::<u8>::new(heap.alloc(value.len() as PtrRepr, false)?)
+        };
+        for (i, &v) in value.iter().enumerate() {
+            ptr.offset(i as PtrDiffRepr).write_with(memory_ctx, v)
+        }
+        Ok(Self {
+            heap,
+            ptr: ptr.repr().into(),
+        })
+    }
+
     pub fn repr(&self) -> PtrRepr {
         self.ptr.0
+    }
+
+    pub fn leak(self) -> PtrRepr {
+        let res = self.ptr.0;
+        std::mem::forget(self);
+        res
+    }
+
+    pub fn ptr<T>(&self) -> ConstPtr<T> {
+        ConstPtr::new(self.ptr.0)
+    }
+
+    pub fn ptr_mut<T>(&self) -> MutPtr<T> {
+        MutPtr::new(self.ptr.0)
     }
 }
 

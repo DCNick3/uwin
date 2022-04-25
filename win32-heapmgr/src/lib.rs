@@ -46,6 +46,13 @@ impl HeapMgr {
         handle
     }
 
+    pub fn get_heap(&self, heap_handle: PtrRepr) -> Arc<Mutex<Heap>> {
+        self.heaps
+            .get(&heap_handle)
+            .expect("Tried to get unknown heap")
+            .clone()
+    }
+
     pub fn alloc(&self, heap_handle: PtrRepr, size: PtrRepr, flags: HEAP_FLAGS) -> PtrRepr {
         assert_eq!(flags & !HEAP_ZERO_MEMORY, HEAP_FLAGS(0));
 

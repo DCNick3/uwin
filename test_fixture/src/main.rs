@@ -6,6 +6,8 @@ use crate::r#impl::*;
 use core_mem::ptr::PtrRepr;
 use core_mem::thread_ctx::set_thread_ctx;
 use core_memmgr::{AddressRange, MemoryManager};
+use core_str::heap_helper::AnsiStringHeapBox;
+use core_str::AnsiString;
 use recompiler::memory_image::{MemoryImageItem, Protection};
 use rusty_x86_runtime::{CpuContext, ExtendedContext, PROGRAM_IMAGE};
 use std::sync::{Arc, Mutex};
@@ -77,33 +79,69 @@ fn main_impl() {
 
     let memory_mgr = Arc::new(Mutex::new(memory_mgr));
 
+    let mut heap_mgr = HeapMgr::new(memory_mgr.clone());
+
+    let process_heap_handle = heap_mgr.create(0, 0);
+
+    let process_ctx = ProcessContext {
+        memory_manager: memory_mgr.clone(),
+        process_heap: heap_mgr.get_heap(process_heap_handle),
+        memory_ctx,
+        ansi_encoding: encoding_rs::WINDOWS_1251,
+    };
+
+    let command_line_ansi = AnsiStringHeapBox::new(
+        process_ctx.memory_ctx,
+        process_ctx.process_heap.clone(),
+        &AnsiString::from_ascii("C:\\MAIN.EXE"),
+    )
+    .expect("Allocating command_line_ansi");
+
+    // NOTE: this is in OEM encoding, not ANSI
+    // for now, I don't care, but this... Might be problematic
+    let environment_strings_oem = vec![0u8; 2];
+
+    // ===
+
     context.win32.insert(Arc::new(WindowsAndMessaging {
-        local_encoding: encoding_rs::WINDOWS_1251,
+        process_ctx: process_ctx.clone(),
     })
         as Arc<dyn win32::Win32::UI::WindowsAndMessaging::Api>);
-    context.win32.insert(
-        Arc::new(SystemInformation {}) as Arc<dyn win32::Win32::System::SystemInformation::Api>
-    );
+
+    context.win32.insert(Arc::new(SystemInformation {
+        process_ctx: process_ctx.clone(),
+    })
+        as Arc<dyn win32::Win32::System::SystemInformation::Api>);
+
     context.win32.insert(Arc::new(Memory {
+        process_ctx: process_ctx.clone(),
         virtmem_mgr: VirtualMemoryManager::new(memory_mgr.clone()),
-        heap_mgr: Mutex::new(HeapMgr::new(memory_mgr.clone())),
+        heap_mgr: Mutex::new(heap_mgr),
+        process_heap_handle,
     }) as Arc<dyn win32::Win32::System::Memory::Api>);
-    context
-        .win32
-        .insert(Arc::new(LibraryLoader {}) as Arc<dyn win32::Win32::System::LibraryLoader::Api>);
-    context
-        .win32
-        .insert(Arc::new(Threading {}) as Arc<dyn win32::Win32::System::Threading::Api>);
-    context
-        .win32
-        .insert(Arc::new(Console {}) as Arc<dyn win32::Win32::System::Console::Api>);
-    context
-        .win32
-        .insert(Arc::new(WindowsProgramming {})
-            as Arc<dyn win32::Win32::System::WindowsProgramming::Api>);
-    context
-        .win32
-        .insert(Arc::new(Environment {}) as Arc<dyn win32::Win32::System::Environment::Api>);
+
+    context.win32.insert(Arc::new(LibraryLoader {
+        process_ctx: process_ctx.clone(),
+    }) as Arc<dyn win32::Win32::System::LibraryLoader::Api>);
+
+    context.win32.insert(Arc::new(Threading {
+        process_ctx: process_ctx.clone(),
+    }) as Arc<dyn win32::Win32::System::Threading::Api>);
+
+    context.win32.insert(Arc::new(Console {
+        process_ctx: process_ctx.clone(),
+    }) as Arc<dyn win32::Win32::System::Console::Api>);
+
+    context.win32.insert(Arc::new(WindowsProgramming {
+        process_ctx: process_ctx.clone(),
+    })
+        as Arc<dyn win32::Win32::System::WindowsProgramming::Api>);
+
+    context.win32.insert(Arc::new(Environment {
+        process_ctx: process_ctx.clone(),
+        command_line_ansi,
+        environment_strings_oem,
+    }) as Arc<dyn win32::Win32::System::Environment::Api>);
 
     let res = rusty_x86_runtime::execute_recompiled_code(&mut context, memory_ctx, entry);
     trace!("execute_recompiled_code returned 0x{:08x}", res);

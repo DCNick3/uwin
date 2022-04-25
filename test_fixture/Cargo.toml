@@ -10,7 +10,9 @@ rusty_x86_runtime = { path = "../rusty_x86_runtime" }
 recompiler = { path = "../recompiler" }
 core-mem = { path = "../core-mem" }
 core-memmgr = { path = "../core-memmgr" }
+core-heap = { path = "../core-heap" }
 core-abi = { path = "../core-abi" }
+core-str = { path = "../core-str" }
 win32 = { path = "../win32" }
 win32-heapmgr = { path = "../win32-heapmgr" }
 win32-virtmem = { path = "../win32-virtmem" }

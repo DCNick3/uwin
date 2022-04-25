@@ -1,3 +1,4 @@
+use std::mem::MaybeUninit;
 use std::ptr::copy_nonoverlapping;
 
 // many ideas borrowed from wonderful crate "scroll", but API tailored for uwin use-case
@@ -89,16 +90,28 @@ impl<T> FromIntoMemory for Option<T> {
     }
 }
 
-impl<T: FromIntoMemory, const SZ: usize> FromIntoMemory for [T; SZ] {
-    fn from_bytes(_from: &[u8]) -> Self {
-        todo!()
+impl<T: FromIntoMemory, const N: usize> FromIntoMemory for [T; N] {
+    fn from_bytes(from: &[u8]) -> Self {
+        assert_eq!(from.len(), Self::size());
+
+        let mut res: [MaybeUninit<T>; N] = unsafe { MaybeUninit::uninit().assume_init() };
+        let sz = T::size();
+        for (value, chunk) in res.iter_mut().zip(from.chunks_exact(sz)) {
+            value.write(T::from_bytes(chunk));
+        }
+
+        unsafe { std::mem::transmute_copy::<_, [T; N]>(&res) }
     }
 
-    fn into_bytes(self, _into: &mut [u8]) {
-        todo!()
+    fn into_bytes(self, into: &mut [u8]) {
+        assert_eq!(into.len(), Self::size());
+        let sz = T::size();
+        for (value, chunk) in self.into_iter().zip(into.chunks_exact_mut(sz)) {
+            T::into_bytes(value, chunk)
+        }
     }
 
     fn size() -> usize {
-        T::size() * SZ
+        T::size() * N
     }
 }

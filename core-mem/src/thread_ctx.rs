@@ -13,7 +13,8 @@ pub fn set_thread_ctx(ctx: DefaultMemoryCtx) {
 #[allow(clippy::clone_on_copy)]
 #[inline]
 pub fn get_thread_ctx() -> DefaultMemoryCtx {
-    THREAD_CTX.with(|thread_ctx| thread_ctx.borrow().unwrap().clone())
+    panic!("Bad api, should be removed")
+    // THREAD_CTX.with(|thread_ctx| thread_ctx.borrow().unwrap().clone())
 }
 
 /// # Safety
