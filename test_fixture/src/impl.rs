@@ -1,8 +1,8 @@
 use core_abi::unwind_token::{UnwindReason, UnwindToken};
 use core_mem::ptr::{ConstPtr, MutPtr, PtrDiffRepr, PtrRepr};
 use core_mem::thread_ctx::get_thread_ctx;
-use std::ffi::{c_void, CStr};
-use std::os::raw::c_char;
+use encoding_rs::Encoding;
+use std::ffi::c_void;
 use std::sync::Mutex;
 use tracing::{info, warn};
 use win32::core::prelude::{PCSTR, PSTR};
@@ -16,7 +16,9 @@ use win32::Win32::UI::WindowsAndMessaging::{MESSAGEBOX_RESULT, MESSAGEBOX_STYLE}
 use win32_heapmgr::HeapMgr;
 use win32_virtmem::VirtualMemoryManager;
 
-pub struct WindowsAndMessaging {}
+pub struct WindowsAndMessaging {
+    pub local_encoding: &'static Encoding,
+}
 
 #[allow(non_snake_case)]
 impl win32::Win32::UI::WindowsAndMessaging::Api for WindowsAndMessaging {
@@ -29,14 +31,10 @@ impl win32::Win32::UI::WindowsAndMessaging::Api for WindowsAndMessaging {
     ) -> MESSAGEBOX_RESULT {
         let memory = get_thread_ctx();
 
-        let text =
-            unsafe { CStr::from_ptr(memory.to_native_ptr(lp_text.0.repr()) as *const c_char) }
-                .to_str()
-                .unwrap();
-        let caption =
-            unsafe { CStr::from_ptr(memory.to_native_ptr(lp_caption.0.repr()) as *const c_char) }
-                .to_str()
-                .unwrap();
+        let text = lp_text.read_with(memory);
+        let text = text.as_utf8(self.local_encoding);
+        let caption = lp_caption.read_with(memory);
+        let caption = caption.as_utf8(self.local_encoding);
 
         info!(
             "MessageBoxA({:#0x}, {:?}, {:?}, {:#0x})",

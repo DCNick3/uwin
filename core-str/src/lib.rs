@@ -1,5 +1,11 @@
+mod heap_helper;
+
+use core_mem::ctx::MemoryCtx;
 use core_mem::from_into_mem_impl_for_wrapper;
 use core_mem::ptr::{ConstPtr, MutPtr, PtrRepr};
+use core_mem::thread_ctx::get_thread_ctx;
+use encoding_rs::Encoding;
+use std::borrow::Cow;
 
 #[derive(PartialEq, Eq, PartialOrd, Ord, Hash)]
 #[repr(transparent)]
@@ -12,13 +18,65 @@ pub struct WideChar(u16);
 #[derive(PartialEq, Eq, PartialOrd, Ord, Hash)]
 #[repr(transparent)]
 pub struct AnsiString {
-    slice: Vec<AnsiChar>,
+    vec: Vec<AnsiChar>,
+}
+
+impl AnsiString {
+    pub fn new() -> Self {
+        Self { vec: Vec::new() }
+    }
+
+    pub fn from_ascii(ascii_str: &str) -> Self {
+        assert!(ascii_str.chars().all(|c| c.is_ascii()));
+
+        Self {
+            vec: ascii_str.as_bytes().iter().map(|&b| AnsiChar(b)).collect(),
+        }
+    }
+
+    #[allow(clippy::unsound_collection_transmute)] // eh? u8 and AnsiChar are the same thing!
+    pub fn from_utf8(utf8_str: &str, ansi_encoding: &'static Encoding) -> Self {
+        let (res, _, _) = ansi_encoding.encode(utf8_str);
+        let vec = res.into_owned();
+        let vec = unsafe {
+            std::mem::transmute(vec) /* this works, right? */
+        };
+        Self { vec }
+    }
+
+    pub fn as_utf8(&self, ansi_encoding: &'static Encoding) -> Cow<str> {
+        let vec = unsafe { std::mem::transmute(self.vec.as_slice()) };
+        let (res, _, _) = ansi_encoding.decode(vec);
+        res
+    }
+
+    pub fn push(&mut self, v: AnsiChar) {
+        self.vec.push(v)
+    }
+
+    pub fn len(&self) -> usize {
+        self.vec.len()
+    }
+
+    pub fn is_empty(&self) -> bool {
+        self.vec.is_empty()
+    }
+
+    pub fn iter(&self) -> std::slice::Iter<AnsiChar> {
+        self.vec.iter()
+    }
+}
+
+impl Default for AnsiString {
+    fn default() -> Self {
+        AnsiString::new()
+    }
 }
 
 #[derive(PartialEq, Eq, PartialOrd, Ord, Hash)]
 #[repr(transparent)]
 pub struct WideString {
-    slice: Vec<WideChar>,
+    vec: Vec<WideChar>,
 }
 
 #[derive(Copy, Clone, Debug, Eq, PartialEq)]
@@ -34,10 +92,59 @@ impl PSTR {
     pub const fn new(raw_ptr: PtrRepr) -> Self {
         Self(MutPtr::new(raw_ptr))
     }
+
+    pub fn read_with(&self, ctx: impl MemoryCtx) -> AnsiString {
+        PCSTR::new(self.0.repr()).read_with(ctx)
+    }
+
+    pub fn read(&self) -> AnsiString {
+        self.read_with(get_thread_ctx())
+    }
+
+    pub fn write_with(&self, ctx: impl MemoryCtx, buffer_size: PtrRepr, value: &AnsiString) {
+        let mut ptr = self.0;
+
+        // we don't want buffer overflows, right? (NUL character is accounted for)
+        assert!(buffer_size as usize >= value.len() + 1);
+
+        for c in value.iter() {
+            ptr.write_with(ctx, c.0);
+
+            ptr = ptr.offset(1);
+        }
+
+        ptr.write_with(ctx, 0u8);
+    }
+
+    pub fn write(&self, buffer_size: PtrRepr, value: &AnsiString) {
+        self.write_with(get_thread_ctx(), buffer_size, value)
+    }
 }
 impl PCSTR {
     pub const fn new(raw_ptr: PtrRepr) -> Self {
         Self(ConstPtr::new(raw_ptr))
+    }
+
+    pub fn read_with(&self, ctx: impl MemoryCtx) -> AnsiString {
+        let mut res = AnsiString::new();
+        let mut ptr = self.0;
+
+        loop {
+            let c = ptr.read_with::<u8, _>(ctx);
+            ptr = ptr.offset(1);
+
+            if c == 0 {
+                break;
+            }
+
+            res.push(AnsiChar(c));
+        }
+
+        res
+    }
+
+    pub fn read(&self) -> AnsiString {
+        self.read_with(get_thread_ctx())
     }
 }
 impl PWSTR {

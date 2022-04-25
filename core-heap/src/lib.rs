@@ -1,12 +1,13 @@
 use btreemultimap::{btreemultimap, BTreeMultiMap};
 use core_mem::align;
+use core_mem::ctx::{FlatMemoryCtx, MemoryCtx};
 use core_mem::ptr::PtrRepr;
 use core_memmgr::{AddressRange, MemoryManager, Protection};
 use derive_more::{Add, From, Into, Sub};
 use std::collections::{HashMap, HashSet};
 use std::mem::ManuallyDrop;
 use std::ops::Add;
-use std::sync::Mutex;
+use std::sync::{Arc, Mutex};
 use thiserror::Error;
 
 // newtypes for addresses and sizes not to mix them up
@@ -120,16 +121,11 @@ impl Drop for Segment {
 }
 
 pub struct Heap {
+    memory_manager: Arc<Mutex<MemoryManager>>,
     #[allow(unused)]
     growable: bool,
     segments: ManuallyDrop<Vec<Segment>>,
     mmap_allocations: ManuallyDrop<HashSet<Ptr>>,
-}
-
-impl Drop for Heap {
-    fn drop(&mut self) {
-        panic!("Forgot to free the Heap")
-    }
 }
 
 pub struct HeapOptions {
@@ -141,16 +137,19 @@ pub struct HeapOptions {
 const MMAP_THRESHOLD: Size = Size(64 * 1024); // 64 KiB
 
 impl Heap {
-    pub fn new(mgr: &mut MemoryManager, options: HeapOptions) -> Result<Self> {
+    pub fn new(mgr: Arc<Mutex<MemoryManager>>, options: HeapOptions) -> Result<Self> {
+        let mgr_locked = mgr.clone();
+        let mut mgr_locked = mgr_locked.lock().unwrap();
         let first_segment_size: Size = options
             .maximum_size
             .unwrap_or(4 * 1024 * 1024 /* 4 MiB */)
             .into();
         let growable = options.maximum_size.is_none();
 
-        let segment = Segment::new(mgr, first_segment_size)?;
+        let segment = Segment::new(&mut mgr_locked, first_segment_size)?;
 
         Ok(Self {
+            memory_manager: mgr,
             growable,
             segments: ManuallyDrop::new(vec![segment]),
             mmap_allocations: Default::default(),
@@ -162,12 +161,7 @@ impl Heap {
         self.segments[0].region.start
     }
 
-    pub fn alloc(
-        &mut self,
-        mgr: &Mutex<MemoryManager>, /* will only lock the mm is needed */
-        size: PtrRepr,
-        zero: bool,
-    ) -> Result<PtrRepr> {
+    pub fn alloc(&mut self, size: PtrRepr, zero: bool) -> Result<PtrRepr> {
         let size = Size(size);
 
         if size > MMAP_THRESHOLD {
@@ -194,7 +188,8 @@ impl Heap {
         if zero {
             // TODO: This is clearly suboptimal (we lock mutex just to get a memory context...)
             unsafe {
-                let ptr = mgr
+                let ptr = self
+                    .memory_manager
                     .lock()
                     .unwrap()
                     .memory_context()
@@ -206,7 +201,19 @@ impl Heap {
         Ok(ptr.into())
     }
 
-    pub fn drop(mut self, mgr: &mut MemoryManager) {
+    pub fn free(&mut self, _ptr: PtrRepr) -> Result<PtrRepr> {
+        todo!()
+    }
+
+    pub unsafe fn memory_context(&self) -> FlatMemoryCtx {
+        self.memory_manager.lock().unwrap().memory_context()
+    }
+}
+
+impl Drop for Heap {
+    fn drop(&mut self) {
+        let mut mgr = self.memory_manager.lock().unwrap();
+
         let mmap_allocations = unsafe { ManuallyDrop::take(&mut self.mmap_allocations) };
         for mmap_alloc in mmap_allocations {
             mgr.uncommit_and_unreserve(mmap_alloc.into())
@@ -215,9 +222,37 @@ impl Heap {
 
         let segments = unsafe { ManuallyDrop::take(&mut self.segments) };
         for segment in segments {
-            segment.drop(mgr)
+            segment.drop(&mut mgr)
         }
+    }
+}
 
-        std::mem::forget(self)
+pub struct RawHeapBox {
+    ptr: Ptr,
+    heap: Arc<Mutex<Heap>>,
+}
+
+impl RawHeapBox {
+    pub fn new(heap: Arc<Mutex<Heap>>, size: PtrRepr) -> Result<Self> {
+        let ptr = {
+            let mut heap = heap.lock().unwrap();
+            heap.alloc(size, false)?
+        };
+        Ok(Self {
+            heap,
+            ptr: ptr.into(),
+        })
+    }
+
+    pub fn repr(&self) -> PtrRepr {
+        self.ptr.0
+    }
+}
+
+impl Drop for RawHeapBox {
+    fn drop(&mut self) {
+        let mut heap = self.heap.lock().unwrap();
+        heap.free(self.ptr.0)
+            .expect("Freeing a value in a RawHeapBox");
     }
 }

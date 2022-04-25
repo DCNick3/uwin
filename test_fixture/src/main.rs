@@ -77,9 +77,10 @@ fn main_impl() {
 
     let memory_mgr = Arc::new(Mutex::new(memory_mgr));
 
-    context.win32.insert(
-        Arc::new(WindowsAndMessaging {}) as Arc<dyn win32::Win32::UI::WindowsAndMessaging::Api>
-    );
+    context.win32.insert(Arc::new(WindowsAndMessaging {
+        local_encoding: encoding_rs::WINDOWS_1251,
+    })
+        as Arc<dyn win32::Win32::UI::WindowsAndMessaging::Api>);
     context.win32.insert(
         Arc::new(SystemInformation {}) as Arc<dyn win32::Win32::System::SystemInformation::Api>
     );

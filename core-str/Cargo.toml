@@ -7,3 +7,6 @@ edition = "2021"
 
 [dependencies]
 core-mem = { path = "../core-mem" }
+core-heap = { path = "../core-heap" }
+
+encoding_rs = "0.8.31"

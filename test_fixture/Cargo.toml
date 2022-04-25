@@ -19,6 +19,7 @@ tracing = "0.1.33"
 tracing-subscriber = { version = "0.3.11", features = ["env-filter"] }
 tracing-tracy = { version = "0.8.0", features = [] }
 tracy-client = { version = "0.12.7" }
+encoding_rs = "0.8.31"
 
 [build-dependencies]
 recompiler = { path = "../recompiler", features = ["recompilation", "mmap"] }

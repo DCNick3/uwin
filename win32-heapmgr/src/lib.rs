@@ -1,7 +1,6 @@
 use core_heap::{Heap, HeapOptions};
 use core_mem::ptr::PtrRepr;
 use core_memmgr::MemoryManager;
-use std::borrow::BorrowMut;
 use std::collections::HashMap;
 use std::sync::{Arc, Mutex};
 use win32::Win32::System::Memory::{HEAP_FLAGS, HEAP_ZERO_MEMORY};
@@ -35,8 +34,7 @@ impl HeapMgr {
             maximum_size: size(maximum_size),
         };
 
-        let mut mgr = self.mem_mgr.lock().unwrap();
-        let heap = Heap::new(mgr.borrow_mut(), options).expect("Creating heap failed");
+        let heap = Heap::new(self.mem_mgr.clone(), options).expect("Creating heap failed");
 
         let handle = heap.handle();
 
@@ -56,9 +54,7 @@ impl HeapMgr {
         let heap = self.heaps.get(&heap_handle).expect("Unknown heap used");
         let mut heap = heap.lock().unwrap();
 
-        let res = heap
-            .alloc(&*self.mem_mgr, size, zero)
-            .expect("Allocation failed");
+        let res = heap.alloc(size, zero).expect("Allocation failed");
 
         res
     }
