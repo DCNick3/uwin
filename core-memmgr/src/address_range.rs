@@ -64,4 +64,9 @@ impl AddressRange {
 
         offset..(offset + size)
     }
+
+    #[inline]
+    pub fn contains_addr(&self, addr: PtrRepr) -> bool {
+        self.range().contains(&addr)
+    }
 }

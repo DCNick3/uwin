@@ -53,7 +53,7 @@ struct Segment {
     free_list: BTreeMultiMap<Size, FreeEntry>,
 }
 
-const MIN_ALLOC: Size = Size(16);
+const ALLOC_ALIGN: Size = Size(16);
 
 impl Segment {
     fn new(mgr: &mut MemoryManager, size: Size) -> Result<Self> {
@@ -68,7 +68,7 @@ impl Segment {
 
     fn try_alloc(&mut self, size: Size) -> Result<Option<Ptr>> {
         let orig_size = size;
-        let size = Size(align::ceil(size.0, MIN_ALLOC.0));
+        let size = Size(align::ceil(size.0, ALLOC_ALIGN.0));
 
         let full_size = match self.free_list.range(size..).next() {
             None => return Ok(None),
@@ -76,7 +76,7 @@ impl Segment {
         };
 
         let leftover_size = full_size - size;
-        assert!(leftover_size == Size(0) || leftover_size >= MIN_ALLOC);
+        assert!(leftover_size == Size(0) || leftover_size >= ALLOC_ALIGN);
 
         let size_list = self.free_list.get_vec_mut(&full_size).unwrap();
 
@@ -104,6 +104,21 @@ impl Segment {
         assert!(self.entries.insert(address, entry).is_none());
 
         Ok(Some(address))
+    }
+
+    fn contains_ptr(&self, ptr: Ptr) -> bool {
+        self.region.contains_addr(ptr.into())
+    }
+
+    pub fn free(&mut self, ptr: Ptr) -> Result<()> {
+        let entry = self.entries.remove(&ptr).ok_or(Error::PointerUnknown)?;
+
+        // TODO: coalesce adjacent free blocks
+        // Right now we wouldn't be able to use freed block for larger allocations...
+        self.free_list
+            .insert(entry.allocated_size, FreeEntry { address: ptr });
+
+        Ok(())
     }
 
     /// !!! invalidates all allocations within the segment
@@ -136,6 +151,7 @@ pub struct HeapOptions {
 
 const MMAP_THRESHOLD: Size = Size(64 * 1024); // 64 KiB
 
+// TODO: TEST TEST TEST
 impl Heap {
     pub fn new(mgr: Arc<Mutex<MemoryManager>>, options: HeapOptions) -> Result<Self> {
         let mgr_locked = mgr.clone();
@@ -201,8 +217,18 @@ impl Heap {
         Ok(ptr.into())
     }
 
-    pub fn free(&mut self, _ptr: PtrRepr) -> Result<()> {
-        todo!()
+    pub fn free(&mut self, ptr: PtrRepr) -> Result<()> {
+        let ptr: Ptr = ptr.into();
+        if self.mmap_allocations.contains(&ptr) {
+            todo!("Freeing mmap_allocations")
+        }
+        let segment = self
+            .segments
+            .iter_mut()
+            .find(|s| s.contains_ptr(ptr))
+            .ok_or(Error::PointerUnknown)?;
+
+        segment.free(ptr)
     }
 }
 
