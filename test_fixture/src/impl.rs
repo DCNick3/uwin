@@ -11,6 +11,7 @@ use std::sync::{Arc, Mutex};
 use tracing::{info, warn};
 use win32::core::prelude::{PCSTR, PSTR};
 use win32::Win32::Foundation::{BOOL, HANDLE, HINSTANCE, HWND, INVALID_HANDLE_VALUE};
+use win32::Win32::Globalization::CPINFO;
 use win32::Win32::System::Console::STD_HANDLE;
 use win32::Win32::System::Memory::{
     HeapHandle, HEAP_FLAGS, HEAP_NO_SERIALIZE, PAGE_PROTECTION_FLAGS, VIRTUAL_ALLOCATION_TYPE,
@@ -231,7 +232,24 @@ impl win32::Win32::System::Environment::Api for Environment {
         BOOL(1)
     }
 
+    // report no unicode support, like on Windows 9x
     fn GetEnvironmentStringsW(&self) -> PWSTR {
         PWSTR::new(0)
+    }
+}
+
+pub struct Globalization {
+    pub process_ctx: ProcessContext,
+}
+
+#[allow(non_snake_case)]
+impl win32::Win32::Globalization::Api for Globalization {
+    fn GetACP(&self) -> u32 {
+        1251 // report CP1251... Just because
+    }
+
+    fn GetCPInfo(&self, _code_page: u32, _lp_cp_info: MutPtr<CPINFO>) -> BOOL {
+        warn!("Returning an error from GetCPInfo (not implemented yet :shrug:)");
+        BOOL(0)
     }
 }

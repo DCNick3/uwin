@@ -141,6 +141,10 @@ fn main_impl() {
         environment_strings_oem,
     }) as Arc<dyn win32::Win32::System::Environment::Api>);
 
+    context.win32.insert(Arc::new(Globalization {
+        process_ctx: process_ctx.clone(),
+    }) as Arc<dyn win32::Win32::Globalization::Api>);
+
     let res = rusty_x86_runtime::execute_recompiled_code(&mut context, memory_ctx, entry);
     trace!("execute_recompiled_code returned 0x{:08x}", res);
 
