@@ -2518,6 +2518,11 @@ impl ::core::clone::Clone for HACCEL {
     }
 }
 impl ::core::marker::Copy for HACCEL {}
+impl ::core::hash::Hash for HACCEL {
+    fn hash<H: ::core::hash::Hasher>(&self, state: &mut H) {
+        self.0.hash(state);
+    }
+}
 impl ::core::fmt::Debug for HACCEL {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("HACCEL").field(&self.0).finish()
@@ -2698,6 +2703,11 @@ impl ::core::clone::Clone for HCURSOR {
     }
 }
 impl ::core::marker::Copy for HCURSOR {}
+impl ::core::hash::Hash for HCURSOR {
+    fn hash<H: ::core::hash::Hasher>(&self, state: &mut H) {
+        self.0.hash(state);
+    }
+}
 impl ::core::fmt::Debug for HCURSOR {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("HCURSOR").field(&self.0).finish()
@@ -2762,6 +2772,11 @@ impl ::core::clone::Clone for HHOOK {
     }
 }
 impl ::core::marker::Copy for HHOOK {}
+impl ::core::hash::Hash for HHOOK {
+    fn hash<H: ::core::hash::Hasher>(&self, state: &mut H) {
+        self.0.hash(state);
+    }
+}
 impl ::core::fmt::Debug for HHOOK {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("HHOOK").field(&self.0).finish()
@@ -2796,6 +2811,11 @@ impl ::core::clone::Clone for HICON {
     }
 }
 impl ::core::marker::Copy for HICON {}
+impl ::core::hash::Hash for HICON {
+    fn hash<H: ::core::hash::Hasher>(&self, state: &mut H) {
+        self.0.hash(state);
+    }
+}
 impl ::core::fmt::Debug for HICON {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("HICON").field(&self.0).finish()
@@ -2833,6 +2853,11 @@ impl ::core::clone::Clone for HMENU {
     }
 }
 impl ::core::marker::Copy for HMENU {}
+impl ::core::hash::Hash for HMENU {
+    fn hash<H: ::core::hash::Hasher>(&self, state: &mut H) {
+        self.0.hash(state);
+    }
+}
 impl ::core::fmt::Debug for HMENU {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("HMENU").field(&self.0).finish()

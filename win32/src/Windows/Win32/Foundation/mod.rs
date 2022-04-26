@@ -196,6 +196,11 @@ impl ::core::clone::Clone for BOOLEAN {
     }
 }
 impl ::core::marker::Copy for BOOLEAN {}
+impl ::core::hash::Hash for BOOLEAN {
+    fn hash<H: ::core::hash::Hasher>(&self, state: &mut H) {
+        self.0.hash(state);
+    }
+}
 impl ::core::fmt::Debug for BOOLEAN {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("BOOLEAN").field(&self.0).finish()
@@ -230,6 +235,11 @@ impl ::core::clone::Clone for BSTR {
     }
 }
 impl ::core::marker::Copy for BSTR {}
+impl ::core::hash::Hash for BSTR {
+    fn hash<H: ::core::hash::Hasher>(&self, state: &mut H) {
+        self.0.hash(state);
+    }
+}
 impl ::core::fmt::Debug for BSTR {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("BSTR").field(&self.0).finish()
@@ -380,6 +390,11 @@ impl ::core::clone::Clone for CHAR {
     }
 }
 impl ::core::marker::Copy for CHAR {}
+impl ::core::hash::Hash for CHAR {
+    fn hash<H: ::core::hash::Hasher>(&self, state: &mut H) {
+        self.0.hash(state);
+    }
+}
 impl ::core::fmt::Debug for CHAR {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("CHAR").field(&self.0).finish()
@@ -2968,6 +2983,11 @@ impl ::core::clone::Clone for HANDLE_PTR {
     }
 }
 impl ::core::marker::Copy for HANDLE_PTR {}
+impl ::core::hash::Hash for HANDLE_PTR {
+    fn hash<H: ::core::hash::Hasher>(&self, state: &mut H) {
+        self.0.hash(state);
+    }
+}
 impl ::core::fmt::Debug for HANDLE_PTR {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("HANDLE_PTR").field(&self.0).finish()
@@ -3100,6 +3120,11 @@ impl ::core::clone::Clone for HINSTANCE {
     }
 }
 impl ::core::marker::Copy for HINSTANCE {}
+impl ::core::hash::Hash for HINSTANCE {
+    fn hash<H: ::core::hash::Hasher>(&self, state: &mut H) {
+        self.0.hash(state);
+    }
+}
 impl ::core::fmt::Debug for HINSTANCE {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("HINSTANCE").field(&self.0).finish()
@@ -3170,6 +3195,11 @@ impl ::core::clone::Clone for HRSRC {
     }
 }
 impl ::core::marker::Copy for HRSRC {}
+impl ::core::hash::Hash for HRSRC {
+    fn hash<H: ::core::hash::Hasher>(&self, state: &mut H) {
+        self.0.hash(state);
+    }
+}
 impl ::core::fmt::Debug for HRSRC {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("HRSRC").field(&self.0).finish()
@@ -3393,6 +3423,11 @@ impl ::core::clone::Clone for HWND {
     }
 }
 impl ::core::marker::Copy for HWND {}
+impl ::core::hash::Hash for HWND {
+    fn hash<H: ::core::hash::Hasher>(&self, state: &mut H) {
+        self.0.hash(state);
+    }
+}
 impl ::core::fmt::Debug for HWND {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("HWND").field(&self.0).finish()
@@ -3460,6 +3495,11 @@ impl ::core::clone::Clone for LPARAM {
     }
 }
 impl ::core::marker::Copy for LPARAM {}
+impl ::core::hash::Hash for LPARAM {
+    fn hash<H: ::core::hash::Hasher>(&self, state: &mut H) {
+        self.0.hash(state);
+    }
+}
 impl ::core::fmt::Debug for LPARAM {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("LPARAM").field(&self.0).finish()
@@ -3494,6 +3534,11 @@ impl ::core::clone::Clone for LRESULT {
     }
 }
 impl ::core::marker::Copy for LRESULT {}
+impl ::core::hash::Hash for LRESULT {
+    fn hash<H: ::core::hash::Hasher>(&self, state: &mut H) {
+        self.0.hash(state);
+    }
+}
 impl ::core::fmt::Debug for LRESULT {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("LRESULT").field(&self.0).finish()
@@ -3814,6 +3859,11 @@ impl ::core::clone::Clone for NTSTATUS {
     }
 }
 impl ::core::marker::Copy for NTSTATUS {}
+impl ::core::hash::Hash for NTSTATUS {
+    fn hash<H: ::core::hash::Hasher>(&self, state: &mut H) {
+        self.0.hash(state);
+    }
+}
 impl ::core::fmt::Debug for NTSTATUS {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("NTSTATUS").field(&self.0).finish()
@@ -4318,6 +4368,11 @@ impl ::core::clone::Clone for PSID {
     }
 }
 impl ::core::marker::Copy for PSID {}
+impl ::core::hash::Hash for PSID {
+    fn hash<H: ::core::hash::Hasher>(&self, state: &mut H) {
+        self.0.hash(state);
+    }
+}
 impl ::core::fmt::Debug for PSID {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("PSID").field(&self.0).finish()
@@ -4994,6 +5049,11 @@ impl ::core::clone::Clone for SHANDLE_PTR {
     }
 }
 impl ::core::marker::Copy for SHANDLE_PTR {}
+impl ::core::hash::Hash for SHANDLE_PTR {
+    fn hash<H: ::core::hash::Hasher>(&self, state: &mut H) {
+        self.0.hash(state);
+    }
+}
 impl ::core::fmt::Debug for SHANDLE_PTR {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("SHANDLE_PTR").field(&self.0).finish()
@@ -12401,6 +12461,11 @@ impl ::core::clone::Clone for WPARAM {
     }
 }
 impl ::core::marker::Copy for WPARAM {}
+impl ::core::hash::Hash for WPARAM {
+    fn hash<H: ::core::hash::Hasher>(&self, state: &mut H) {
+        self.0.hash(state);
+    }
+}
 impl ::core::fmt::Debug for WPARAM {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("WPARAM").field(&self.0).finish()

@@ -442,6 +442,11 @@ impl ::core::clone::Clone for FIRMWARE_TABLE_ID {
     }
 }
 impl ::core::marker::Copy for FIRMWARE_TABLE_ID {}
+impl ::core::hash::Hash for FIRMWARE_TABLE_ID {
+    fn hash<H: ::core::hash::Hasher>(&self, state: &mut H) {
+        self.0.hash(state);
+    }
+}
 impl ::core::fmt::Debug for FIRMWARE_TABLE_ID {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("FIRMWARE_TABLE_ID").field(&self.0).finish()

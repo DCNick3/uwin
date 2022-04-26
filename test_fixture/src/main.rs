@@ -3,7 +3,7 @@ extern crate core;
 mod r#impl;
 
 use crate::r#impl::*;
-use core_mem::ptr::PtrRepr;
+use core_mem::ptr::{PtrDiffRepr, PtrRepr};
 use core_memmgr::{AddressRange, MemoryManager};
 use core_str::heap_helper::AnsiStringHeapBox;
 use core_str::AnsiString;
@@ -14,7 +14,9 @@ use tracing::trace;
 use tracing_subscriber::fmt::format;
 use tracing_subscriber::layer::SubscriberExt;
 use win32::core::Win32Context;
+use win32::Win32::Foundation::HINSTANCE;
 use win32_heapmgr::HeapMgr;
+use win32_module_table::ModuleTable;
 use win32_virtmem::VirtualMemoryManager;
 
 fn map_item(mgr: &mut MemoryManager, item: &MemoryImageItem) -> core_memmgr::Result<()> {
@@ -120,6 +122,13 @@ fn main_impl() {
 
     context.win32.insert(Arc::new(LibraryLoader {
         process_ctx: process_ctx.clone(),
+        module_table: ModuleTable::new(
+            PROGRAM_IMAGE
+                .modules
+                .iter()
+                .map(|(name, (_, info))| (name.clone(), HINSTANCE(info.base_addr as PtrDiffRepr))),
+            HINSTANCE(PROGRAM_IMAGE.main_module_base as PtrDiffRepr),
+        ),
     }) as Arc<dyn win32::Win32::System::LibraryLoader::Api>);
 
     context.win32.insert(Arc::new(Threading {

@@ -747,6 +747,11 @@ impl ::core::clone::Clone for HPCON {
     }
 }
 impl ::core::marker::Copy for HPCON {}
+impl ::core::hash::Hash for HPCON {
+    fn hash<H: ::core::hash::Hasher>(&self, state: &mut H) {
+        self.0.hash(state);
+    }
+}
 impl ::core::fmt::Debug for HPCON {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("HPCON").field(&self.0).finish()

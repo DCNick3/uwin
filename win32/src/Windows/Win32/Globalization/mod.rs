@@ -1355,6 +1355,11 @@ impl ::core::clone::Clone for HIMC {
     }
 }
 impl ::core::marker::Copy for HIMC {}
+impl ::core::hash::Hash for HIMC {
+    fn hash<H: ::core::hash::Hasher>(&self, state: &mut H) {
+        self.0.hash(state);
+    }
+}
 impl ::core::fmt::Debug for HIMC {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("HIMC").field(&self.0).finish()
@@ -1389,6 +1394,11 @@ impl ::core::clone::Clone for HIMCC {
     }
 }
 impl ::core::marker::Copy for HIMCC {}
+impl ::core::hash::Hash for HIMCC {
+    fn hash<H: ::core::hash::Hasher>(&self, state: &mut H) {
+        self.0.hash(state);
+    }
+}
 impl ::core::fmt::Debug for HIMCC {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("HIMCC").field(&self.0).finish()
@@ -1423,6 +1433,11 @@ impl ::core::clone::Clone for HSAVEDUILANGUAGES {
     }
 }
 impl ::core::marker::Copy for HSAVEDUILANGUAGES {}
+impl ::core::hash::Hash for HSAVEDUILANGUAGES {
+    fn hash<H: ::core::hash::Hasher>(&self, state: &mut H) {
+        self.0.hash(state);
+    }
+}
 impl ::core::fmt::Debug for HSAVEDUILANGUAGES {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("HSAVEDUILANGUAGES").field(&self.0).finish()

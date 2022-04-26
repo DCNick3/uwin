@@ -116,6 +116,11 @@ impl ::core::clone::Clone for BoundaryDescriptorHandle {
     }
 }
 impl ::core::marker::Copy for BoundaryDescriptorHandle {}
+impl ::core::hash::Hash for BoundaryDescriptorHandle {
+    fn hash<H: ::core::hash::Hasher>(&self, state: &mut H) {
+        self.0.hash(state);
+    }
+}
 impl ::core::fmt::Debug for BoundaryDescriptorHandle {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("BoundaryDescriptorHandle")
@@ -356,6 +361,11 @@ impl ::core::clone::Clone for LPPROC_THREAD_ATTRIBUTE_LIST {
     }
 }
 impl ::core::marker::Copy for LPPROC_THREAD_ATTRIBUTE_LIST {}
+impl ::core::hash::Hash for LPPROC_THREAD_ATTRIBUTE_LIST {
+    fn hash<H: ::core::hash::Hasher>(&self, state: &mut H) {
+        self.0.hash(state);
+    }
+}
 impl ::core::fmt::Debug for LPPROC_THREAD_ATTRIBUTE_LIST {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("LPPROC_THREAD_ATTRIBUTE_LIST")
@@ -528,6 +538,11 @@ impl ::core::clone::Clone for NamespaceHandle {
     }
 }
 impl ::core::marker::Copy for NamespaceHandle {}
+impl ::core::hash::Hash for NamespaceHandle {
+    fn hash<H: ::core::hash::Hasher>(&self, state: &mut H) {
+        self.0.hash(state);
+    }
+}
 impl ::core::fmt::Debug for NamespaceHandle {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("NamespaceHandle").field(&self.0).finish()
@@ -2056,6 +2071,11 @@ impl ::core::clone::Clone for PTP_POOL {
     }
 }
 impl ::core::marker::Copy for PTP_POOL {}
+impl ::core::hash::Hash for PTP_POOL {
+    fn hash<H: ::core::hash::Hasher>(&self, state: &mut H) {
+        self.0.hash(state);
+    }
+}
 impl ::core::fmt::Debug for PTP_POOL {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("PTP_POOL").field(&self.0).finish()
@@ -3650,6 +3670,11 @@ impl ::core::clone::Clone for TimerQueueHandle {
     }
 }
 impl ::core::marker::Copy for TimerQueueHandle {}
+impl ::core::hash::Hash for TimerQueueHandle {
+    fn hash<H: ::core::hash::Hasher>(&self, state: &mut H) {
+        self.0.hash(state);
+    }
+}
 impl ::core::fmt::Debug for TimerQueueHandle {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("TimerQueueHandle").field(&self.0).finish()

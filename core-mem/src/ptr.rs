@@ -1,6 +1,7 @@
 use crate::conv::FromIntoMemory;
 use crate::ctx::MemoryCtx;
 use std::fmt::{Debug, Formatter};
+use std::hash::{Hash, Hasher};
 use std::marker::PhantomData;
 
 pub type PtrRepr = u32;
@@ -79,6 +80,11 @@ impl<T> Clone for MutPtr<T> {
         *self
     }
 }
+impl<T> Hash for MutPtr<T> {
+    fn hash<H: Hasher>(&self, state: &mut H) {
+        self.0.value.hash(state)
+    }
+}
 impl<T> PartialEq for MutPtr<T> {
     fn eq(&self, other: &Self) -> bool {
         self.0 == other.0
@@ -132,6 +138,11 @@ impl<T> Copy for ConstPtr<T> {}
 impl<T> Clone for ConstPtr<T> {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl<T> Hash for ConstPtr<T> {
+    fn hash<H: Hasher>(&self, state: &mut H) {
+        self.0.value.hash(state)
     }
 }
 impl<T> PartialEq for ConstPtr<T> {

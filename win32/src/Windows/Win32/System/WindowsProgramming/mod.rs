@@ -1845,6 +1845,11 @@ impl ::core::clone::Clone for FEATURE_STATE_CHANGE_SUBSCRIPTION {
     }
 }
 impl ::core::marker::Copy for FEATURE_STATE_CHANGE_SUBSCRIPTION {}
+impl ::core::hash::Hash for FEATURE_STATE_CHANGE_SUBSCRIPTION {
+    fn hash<H: ::core::hash::Hasher>(&self, state: &mut H) {
+        self.0.hash(state);
+    }
+}
 impl ::core::fmt::Debug for FEATURE_STATE_CHANGE_SUBSCRIPTION {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("FEATURE_STATE_CHANGE_SUBSCRIPTION")
@@ -1881,6 +1886,11 @@ impl ::core::clone::Clone for FH_SERVICE_PIPE_HANDLE {
     }
 }
 impl ::core::marker::Copy for FH_SERVICE_PIPE_HANDLE {}
+impl ::core::hash::Hash for FH_SERVICE_PIPE_HANDLE {
+    fn hash<H: ::core::hash::Hasher>(&self, state: &mut H) {
+        self.0.hash(state);
+    }
+}
 impl ::core::fmt::Debug for FH_SERVICE_PIPE_HANDLE {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("FH_SERVICE_PIPE_HANDLE")
@@ -2116,6 +2126,11 @@ impl ::core::clone::Clone for HWINWATCH {
     }
 }
 impl ::core::marker::Copy for HWINWATCH {}
+impl ::core::hash::Hash for HWINWATCH {
+    fn hash<H: ::core::hash::Hasher>(&self, state: &mut H) {
+        self.0.hash(state);
+    }
+}
 impl ::core::fmt::Debug for HWINWATCH {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("HWINWATCH").field(&self.0).finish()

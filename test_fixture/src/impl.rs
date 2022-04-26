@@ -4,7 +4,7 @@ use core_mem::ctx::DefaultMemoryCtx;
 use core_mem::ptr::{ConstPtr, MutPtr, PtrDiffRepr, PtrRepr};
 use core_memmgr::MemoryManager;
 use core_str::heap_helper::AnsiStringHeapBox;
-use core_str::PWSTR;
+use core_str::{AnsiString, PWSTR};
 use encoding_rs::Encoding;
 use std::ffi::c_void;
 use std::sync::{Arc, Mutex};
@@ -19,6 +19,7 @@ use win32::Win32::System::Memory::{
 use win32::Win32::System::Threading::STARTUPINFOA;
 use win32::Win32::UI::WindowsAndMessaging::{MESSAGEBOX_RESULT, MESSAGEBOX_STYLE};
 use win32_heapmgr::HeapMgr;
+use win32_module_table::ModuleTable;
 use win32_virtmem::VirtualMemoryManager;
 
 #[derive(Clone)]
@@ -129,12 +130,33 @@ impl win32::Win32::System::Memory::Api for Memory {
 
 pub struct LibraryLoader {
     pub process_ctx: ProcessContext,
+    pub module_table: ModuleTable,
 }
 
 #[allow(non_snake_case)]
 impl win32::Win32::System::LibraryLoader::Api for LibraryLoader {
-    fn GetModuleFileNameA(&self, _h_module: HINSTANCE, _lp_filename: PSTR, _n_size: u32) -> u32 {
-        0
+    fn GetModuleFileNameA(&self, mut h_module: HINSTANCE, lp_filename: PSTR, n_size: u32) -> u32 {
+        if h_module == HINSTANCE(0) {
+            h_module = self.module_table.get_main_program_handle();
+        }
+        let name = self.module_table.get_handle_file_name(h_module);
+        let name = match name {
+            None => return 0,
+            Some(name) => name,
+        };
+
+        let ansi_str = AnsiString::from_utf8(name, self.process_ctx.ansi_encoding);
+        // TODO: handle overflows gracefully
+        lp_filename.write_with(self.process_ctx.memory_ctx, n_size, &ansi_str);
+
+        ansi_str.len() as u32
+    }
+
+    fn GetModuleHandleA(&self, lp_module_name: PCSTR) -> HINSTANCE {
+        if lp_module_name.0.repr() == 0 {
+            return self.module_table.get_main_program_handle();
+        }
+        todo!("GetModuleHandleA")
     }
 
     fn LoadLibraryA(&self, _lp_lib_file_name: PCSTR) -> HINSTANCE {

@@ -371,6 +371,11 @@ impl ::core::clone::Clone for HeapHandle {
     }
 }
 impl ::core::marker::Copy for HeapHandle {}
+impl ::core::hash::Hash for HeapHandle {
+    fn hash<H: ::core::hash::Hasher>(&self, state: &mut H) {
+        self.0.hash(state);
+    }
+}
 impl ::core::fmt::Debug for HeapHandle {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("HeapHandle").field(&self.0).finish()

@@ -16,6 +16,7 @@ core-str = { path = "../core-str" }
 win32 = { path = "../win32" }
 win32-heapmgr = { path = "../win32-heapmgr" }
 win32-virtmem = { path = "../win32-virtmem" }
+win32-module-table = { path = "../win32-module-table" }
 
 tracing = "0.1.33"
 tracing-subscriber = { version = "0.3.11", features = ["env-filter"] }

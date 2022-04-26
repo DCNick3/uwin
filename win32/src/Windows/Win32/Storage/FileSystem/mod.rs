@@ -6820,6 +6820,11 @@ impl ::core::clone::Clone for FindChangeNotificationHandle {
     }
 }
 impl ::core::marker::Copy for FindChangeNotificationHandle {}
+impl ::core::hash::Hash for FindChangeNotificationHandle {
+    fn hash<H: ::core::hash::Hasher>(&self, state: &mut H) {
+        self.0.hash(state);
+    }
+}
 impl ::core::fmt::Debug for FindChangeNotificationHandle {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("FindChangeNotificationHandle")
@@ -6856,6 +6861,11 @@ impl ::core::clone::Clone for FindFileHandle {
     }
 }
 impl ::core::marker::Copy for FindFileHandle {}
+impl ::core::hash::Hash for FindFileHandle {
+    fn hash<H: ::core::hash::Hasher>(&self, state: &mut H) {
+        self.0.hash(state);
+    }
+}
 impl ::core::fmt::Debug for FindFileHandle {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("FindFileHandle").field(&self.0).finish()
@@ -6890,6 +6900,11 @@ impl ::core::clone::Clone for FindFileNameHandle {
     }
 }
 impl ::core::marker::Copy for FindFileNameHandle {}
+impl ::core::hash::Hash for FindFileNameHandle {
+    fn hash<H: ::core::hash::Hasher>(&self, state: &mut H) {
+        self.0.hash(state);
+    }
+}
 impl ::core::fmt::Debug for FindFileNameHandle {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("FindFileNameHandle").field(&self.0).finish()
@@ -6924,6 +6939,11 @@ impl ::core::clone::Clone for FindStreamHandle {
     }
 }
 impl ::core::marker::Copy for FindStreamHandle {}
+impl ::core::hash::Hash for FindStreamHandle {
+    fn hash<H: ::core::hash::Hasher>(&self, state: &mut H) {
+        self.0.hash(state);
+    }
+}
 impl ::core::fmt::Debug for FindStreamHandle {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("FindStreamHandle").field(&self.0).finish()
@@ -6958,6 +6978,11 @@ impl ::core::clone::Clone for FindVolumeHandle {
     }
 }
 impl ::core::marker::Copy for FindVolumeHandle {}
+impl ::core::hash::Hash for FindVolumeHandle {
+    fn hash<H: ::core::hash::Hasher>(&self, state: &mut H) {
+        self.0.hash(state);
+    }
+}
 impl ::core::fmt::Debug for FindVolumeHandle {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("FindVolumeHandle").field(&self.0).finish()
@@ -6992,6 +7017,11 @@ impl ::core::clone::Clone for FindVolumeMointPointHandle {
     }
 }
 impl ::core::marker::Copy for FindVolumeMointPointHandle {}
+impl ::core::hash::Hash for FindVolumeMointPointHandle {
+    fn hash<H: ::core::hash::Hasher>(&self, state: &mut H) {
+        self.0.hash(state);
+    }
+}
 impl ::core::fmt::Debug for FindVolumeMointPointHandle {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("FindVolumeMointPointHandle")

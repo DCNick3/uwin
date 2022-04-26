@@ -44,6 +44,11 @@ pub fn gen_win_handle(def: &TypeDef, gen: &Gen) -> TokenStream {
             }
         }
         impl ::core::marker::Copy for #ident {}
+        impl ::core::hash::Hash for #ident {
+            fn hash<H: ::core::hash::Hasher>(&self, state: &mut H) {
+                self.0.hash(state);
+            }
+        }
         impl ::core::fmt::Debug for #ident {
             fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
                 f.debug_tuple(#name).field(&self.0).finish()
