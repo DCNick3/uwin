@@ -28,7 +28,16 @@
 int PASCAL WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
                         LPSTR lpCmdLine, int nCmdShow)
 {
-	MessageBoxA(0, "Hello world!", "World, hello!", MB_OK);
+    CHAR szBuffer[1000];
+    CHAR szBuffer1[1000];
+
+    if (GetModuleFileNameA(NULL, szBuffer, sizeof(szBuffer) / sizeof(*szBuffer)) == 0) {
+        return 1;
+    }
+
+    sprintf(szBuffer1, "My module name is %s!\nMy int is %d", szBuffer, 42);
+
+	MessageBoxA(0, szBuffer1, "World, hello!", MB_OK);
 
 // 	showfloat(1.337f);
 // 	showdouble(1.338);

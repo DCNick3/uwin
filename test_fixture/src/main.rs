@@ -93,7 +93,7 @@ fn main_impl() {
     let command_line_ansi = AnsiStringHeapBox::new(
         process_ctx.memory_ctx,
         process_ctx.process_heap.clone(),
-        &AnsiString::from_ascii("C:\\MAIN.EXE"),
+        &AnsiString::from_ascii(&PROGRAM_IMAGE.main_module_name),
     )
     .expect("Allocating command_line_ansi");
 

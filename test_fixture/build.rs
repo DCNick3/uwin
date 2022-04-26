@@ -67,4 +67,5 @@ fn main() {
         out_dir.to_str().unwrap()
     );
     println!("cargo:rustc-link-lib=static=uwin_recomp");
+    println!("cargo:rerun-if-changed={}", executable.to_str().unwrap());
 }
