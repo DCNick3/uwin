@@ -722,11 +722,130 @@ pub fn codegen_instr<B: Builder>(
                         // For a non-zero count, the AF flag is undefined.
                         builder.compute_and_store_zf(res);
                         builder.compute_and_store_sf(res);
-                        builder.store_flag(Flag::Carry, cf);
-                        builder.store_flag(Flag::Overflow, of);
+                        builder.store_flag(Carry, cf);
+                        builder.store_flag(Overflow, of);
                     },
                     |_| {
                         // nuff to do
+                    },
+                );
+            }
+            Rcr => {
+                operands!([dst, count], &instr);
+
+                let count = builder.load_operand(count);
+                let count = builder.zext(count, dst.size());
+
+                let count_mask = builder.make_int_value(dst.size(), 0x1f, false);
+                let count_orig = builder.int_and(count, count_mask);
+
+                let not_zero = builder.icmp(
+                    ComparisonType::NotEqual,
+                    count_orig,
+                    builder.make_int_value(count_orig.size(), 0, false),
+                );
+
+                builder.ifelse(
+                    not_zero,
+                    |builder| {
+                        let zero = builder.make_int_value(dst.size(), 0, false);
+
+                        let r#mod = builder.make_int_value(
+                            dst.size(),
+                            dst.size().bit_width() as u64 + 1,
+                            false,
+                        );
+                        let count = builder.urem(count_orig, r#mod);
+
+                        let value = builder.load_operand(dst);
+                        let cf_bool = builder.load_flag(Carry);
+                        let cf = builder.bool_to_int(cf_bool, dst.size());
+
+                        let safe_shr = |builder: &mut B,
+                                        value: B::IntValue,
+                                        amount: B::IntValue|
+                         -> B::IntValue {
+                            let sz = builder.make_int_value(
+                                value.size(),
+                                value.size().bit_width() as u64,
+                                false,
+                            );
+                            let overflow =
+                                builder.icmp(ComparisonType::UnsignedGreaterOrEqual, amount, sz);
+
+                            let shift = builder.lshr(value, amount);
+                            builder.select(overflow, zero, shift)
+                        };
+                        let safe_shl = |builder: &mut B,
+                                        value: B::IntValue,
+                                        amount: B::IntValue|
+                         -> B::IntValue {
+                            let sz = builder.make_int_value(
+                                value.size(),
+                                value.size().bit_width() as u64,
+                                false,
+                            );
+                            let overflow =
+                                builder.icmp(ComparisonType::UnsignedGreaterOrEqual, amount, sz);
+
+                            let shift = builder.shl(value, amount);
+                            builder.select(overflow, zero, shift)
+                        };
+
+                        let new_value_lo = safe_shr(builder, value, count);
+                        let new_value_hi = {
+                            let amount = dst.size().bit_width() + 1;
+                            let amount = builder.make_int_value(dst.size(), amount as u64, false);
+                            let amount = builder.sub(amount, count);
+                            safe_shl(builder, value, amount)
+                        };
+                        let new_value_mid = {
+                            let amount = dst.size().bit_width();
+                            let amount = builder.make_int_value(dst.size(), amount as u64, false);
+                            let amount = builder.sub(amount, count);
+                            safe_shl(builder, cf, amount)
+                        };
+
+                        let new_value = {
+                            let lohi = builder.int_or(new_value_lo, new_value_hi);
+                            builder.int_or(lohi, new_value_mid)
+                        };
+
+                        let new_cf = {
+                            let one = builder.make_int_value(dst.size(), 1, false);
+                            let amount = builder.sub(count, one);
+                            let new_cf = safe_shr(builder, value, amount);
+                            let new_cf = builder.int_and(new_cf, one);
+
+                            let count_is_zero = builder.icmp(ComparisonType::Equal, count, zero);
+                            builder.select(count_is_zero, cf, new_cf)
+                        };
+                        let new_cf = builder.icmp(
+                            ComparisonType::NotEqual,
+                            new_cf,
+                            builder.make_int_value(dst.size(), 0, false),
+                        );
+
+                        // if count_orig != 1 this is undef
+                        // TODO: use llvm's undef?
+                        let new_of = {
+                            let msb = builder.extract_bit(
+                                value,
+                                builder.make_int_value(
+                                    dst.size(),
+                                    dst.size().bit_width() as u64 - 1,
+                                    false,
+                                ),
+                            );
+                            builder.bool_xor(msb, cf_bool)
+                        };
+
+                        builder.store_operand(dst, new_value);
+                        builder.store_flag(Carry, new_cf);
+                        builder.store_flag(Overflow, new_of);
+                    },
+                    |_| {
+                        // no shift - no game
                     },
                 );
             }
@@ -852,7 +971,10 @@ pub fn codegen_instr<B: Builder>(
             // TODO: uncomment when unit tests for different direction of string operations will be in place
             Std => builder.store_flag(Direction, builder.make_true()),
             Cld => builder.store_flag(Direction, builder.make_false()),
-            m => panic!("Unknown instruction mnemonic: {:?}", m),
+            m => panic!(
+                "Unknown instruction mnemonic: {:?} (translating {})",
+                m, instr
+            ),
         };
 
         ControlFlow::NextInstruction

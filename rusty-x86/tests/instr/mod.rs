@@ -1178,6 +1178,95 @@ mod shl {
     }
 }
 
+mod rcr {
+    test_snippets! {
+        rcr_zero: (
+            ; mov eax, 228
+            ; rcr eax, 0
+        ) [CF ZF SF OF],
+
+        rcr_228_one: (
+            ; mov eax, 228
+            ; rcr eax, 1
+        ) [CF ZF SF OF],
+        rcr_229_one: (
+            ; mov eax, 229
+            ; rcr eax, 1
+        ) [CF ZF SF OF],
+        rcr_neg_228_one: (
+            ; mov eax, -228
+            ; rcr eax, 1
+        ) [CF ZF SF OF],
+        rcr_neg_229_one: (
+            ; mov eax, -229
+            ; rcr eax, 1
+        ) [CF ZF SF OF],
+
+        rcr_228_two: (
+            ; mov eax, 228
+            ; rcr eax, 2
+        ) [CF ZF SF],
+        rcr_229_two: (
+            ; mov eax, 229
+            ; rcr eax, 2
+        ) [CF ZF SF],
+        rcr_neg_228_two: (
+            ; mov eax, -228
+            ; rcr eax, 2
+        ) [CF ZF SF],
+        rcr_neg_229_two: (
+            ; mov eax, -229
+            ; rcr eax, 2
+        ) [CF ZF SF],
+
+        rcr_228_zero_wrap: (
+            ; mov eax, 228
+            ; rcr eax, 32
+        ) [CF ZF SF OF],
+
+        rcr_228_one_wrap: (
+            ; mov eax, 228
+            ; rcr eax, 33
+        ) [CF ZF SF OF],
+        rcr_229_one_wrap: (
+            ; mov eax, 229
+            ; rcr eax, 33
+        ) [CF ZF SF OF],
+        rcr_neg_228_one_wrap: (
+            ; mov eax, -228
+            ; rcr eax, 33
+        ) [CF ZF SF OF],
+        rcr_neg_229_one_wrap: (
+            ; mov eax, -229
+            ; rcr eax, 33
+        ) [CF ZF SF OF],
+
+        rcr_228_two_wrap: (
+            ; mov eax, 228
+            ; rcr eax, 34
+        ) [CF ZF SF],
+        rcr_229_two_wrap: (
+            ; mov eax, 229
+            ; rcr eax, 34
+        ) [CF ZF SF],
+        rcr_neg_228_two_wrap: (
+            ; mov eax, -228
+            ; rcr eax, 34
+        ) [CF ZF SF],
+        rcr_neg_229_two_wrap: (
+            ; mov eax, -229
+            ; rcr eax, 34
+        ) [CF ZF SF],
+
+        // from https://github.com/nepx/halfix/issues/8
+        rcr_corner_case: (
+            ; stc
+            ; mov al, 0x00
+            ; rcr al, 0x20
+        ) [CF ZF SF],
+    }
+}
+
 mod div {
     test_snippets!(
         div_basic1: (

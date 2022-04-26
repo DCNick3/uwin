@@ -78,6 +78,11 @@ pub trait Builder {
     fn ashr(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue;
     fn udiv(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue;
     fn sdiv(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue;
+    fn urem(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue {
+        let div = self.udiv(lhs.clone(), rhs.clone());
+        let whole = self.mul(div, rhs);
+        self.sub(lhs, whole)
+    }
 
     // bit should be in bounds! otherwise results in ub
     fn extract_bit(&mut self, val: Self::IntValue, bit: Self::IntValue) -> Self::BoolValue;
