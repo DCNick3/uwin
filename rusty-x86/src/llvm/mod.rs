@@ -14,9 +14,7 @@ use inkwell::OptimizationLevel;
 use log::debug;
 
 use crate::codegen_instr;
-use crate::llvm::backend::{
-    Intrinsics, LlvmBuilder, RuntimeHelpers, Types, FASTCC_CALLING_CONVENTION,
-};
+use crate::llvm::backend::{LlvmBuilder, RuntimeHelpers, Types, FASTCC_CALLING_CONVENTION};
 use crate::llvm::BasicBlockSource::{DiscoveryCall, DiscoveryJump};
 use memory_image::MemoryImage;
 
@@ -41,12 +39,12 @@ pub fn get_aarch64_target_machine() -> TargetMachine {
 
 fn codegen_dynamic_dispatcher<'ctx, 'a>(
     context: &'ctx Context,
-    module: &'a Module,
+    _module: &'a Module,
     types: Arc<Types<'ctx>>,
     lifted_functions: &HashMap<u32, FunctionValue<'ctx>>,
     indirect_bb_call_impl: FunctionValue<'ctx>,
+    runtime_helpers: &RuntimeHelpers,
 ) {
-    let intrinsics = Intrinsics::new();
     let bb = context.append_basic_block(indirect_bb_call_impl, "entry");
     let builder = context.create_builder();
 
@@ -70,8 +68,11 @@ fn codegen_dynamic_dispatcher<'ctx, 'a>(
     let else_bb = context.append_basic_block(indirect_bb_call_impl, "not_found");
 
     builder.position_at_end(else_bb);
-    let trap = intrinsics.trap.get_declaration(module, &[]).unwrap();
-    builder.build_call(trap, &[], "");
+    builder.build_call(
+        runtime_helpers.missing_bb,
+        &[ctx_ptr.into(), mem_ptr.into(), eip.into()],
+        "",
+    );
     builder.build_unreachable();
 
     let args = [ctx_ptr.into(), mem_ptr.into()];
@@ -241,6 +242,7 @@ pub fn recompile<'ctx, 'a>(
         types.clone(),
         &lifted_functions,
         indirect_bb_call_impl,
+        &rt_funs,
     );
 
     // codegen indirect_bb_call (exported as uwin_indirect_bb_call)

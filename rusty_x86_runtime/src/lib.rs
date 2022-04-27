@@ -51,6 +51,16 @@ lazy_static! {
     pub static ref PROGRAM_IMAGE: LoadedProcessImage = get_process_image();
 }
 
+#[no_mangle]
+extern "C" fn uwin_missing_bb(
+    _context: &mut ExtendedContext,
+    _memory: FlatMemoryCtx,
+    eip: u32,
+) -> u32 {
+    eprintln!("Called a missing bb @ ip = {:#010x}; aborting", eip);
+    std::process::abort();
+}
+
 pub fn execute_recompiled_code(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
@@ -62,7 +72,7 @@ pub fn execute_recompiled_code(
 }
 
 struct MyCallsite {
-    metadata: tracing::metadata::Metadata<'static>,
+    metadata: Metadata<'static>,
 }
 
 impl MyCallsite {
@@ -97,7 +107,7 @@ impl MyCallsite {
     }
 }
 
-impl tracing::Callsite for MyCallsite {
+impl Callsite for MyCallsite {
     fn set_interest(&self, _interest: Interest) {
         // поебать
     }
