@@ -428,11 +428,11 @@ pub fn codegen_instr<B: Builder>(
 
                 let of_base = builder.ssub_overflow(lhs, rhs);
                 let of_borrow = builder.ssub_overflow(res, borrow);
-                let of = builder.bool_or(of_base, of_borrow);
+                let of = builder.bool_xor(of_base, of_borrow);
 
                 let cf_base = builder.usub_overflow(lhs, rhs);
                 let cf_borrow = builder.usub_overflow(res, borrow);
-                let cf = builder.bool_or(cf_base, cf_borrow);
+                let cf = builder.bool_xor(cf_base, cf_borrow);
 
                 let res = builder.sub(res, borrow);
                 builder.store_operand(dst, res);
@@ -442,8 +442,8 @@ pub fn codegen_instr<B: Builder>(
                 // not that they are actually useful...
                 builder.compute_and_store_zf(res);
                 builder.compute_and_store_sf(res);
-                builder.store_flag(Flag::Overflow, of);
-                builder.store_flag(Flag::Carry, cf);
+                builder.store_flag(Overflow, of);
+                builder.store_flag(Carry, cf);
             }
             Lea => {
                 operands!([dst, src], &instr);

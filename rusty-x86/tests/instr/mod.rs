@@ -241,6 +241,19 @@ mod sbb {
             ; sbb eax, 1
         ) [CF ZF SF OF],
 
+        stc_sbb_0x7fffffff_neg_1: (
+            ; stc
+            ; mov eax, 0x7fffffff
+            ; mov ebx, -1
+            ; sbb eax, ebx
+        ) [CF ZF SF OF],
+        stc_sbb_neg_1_neg_1: (
+            ; stc
+            ; mov eax, -1
+            ; mov ebx, -1
+            ; sbb eax, ebx
+        ) [CF ZF SF OF],
+
         stc_sbb_1_2: (
             ; stc
             ; mov eax, 1
