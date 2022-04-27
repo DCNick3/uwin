@@ -525,10 +525,21 @@ pub fn codegen_instr<B: Builder>(
                     _ => unreachable!(),
                 };
                 let val = builder.load_register(lo);
+                // TODO: not the best way to write the sign extension?
                 let extended = builder.extract_msb(val);
                 let extended = builder.bool_to_int(extended, val.size());
                 let extended = builder.int_neg(extended);
                 builder.store_register(hi, extended);
+            }
+            Cbw | Cwde => {
+                let (dst, src) = match mnemonic {
+                    Cbw => (AX, AL),
+                    Cwde => (EAX, AX),
+                    _ => unreachable!(),
+                };
+                let val = builder.load_register(src);
+                let extended = builder.sext(val, dst.size());
+                builder.store_register(dst, extended);
             }
             Mul => {
                 operands!([src], &instr);
@@ -953,6 +964,45 @@ pub fn codegen_instr<B: Builder>(
 
                 builder.store_operand(dst, val);
             }
+            Pushfd => {
+                let mut flags = builder.make_u32(0);
+
+                let mut extract_flag = |builder: &mut B, flag: Flag, bit_number: u32| {
+                    let flag_value = builder.load_flag(flag);
+                    let flag_value = builder.bool_to_int(flag_value, IntType::I32);
+                    let flag_value = builder.shl(flag_value, builder.make_u32(bit_number));
+
+                    flags = builder.int_or(flags, flag_value);
+                };
+
+                extract_flag(builder, Carry, 0);
+                // ignore parity
+                // ignore AUX carry
+                extract_flag(builder, Zero, 6);
+                extract_flag(builder, Sign, 7);
+                extract_flag(builder, Overflow, 11);
+                extract_flag(builder, Direction, 10);
+                extract_flag(builder, Id, 21);
+
+                builder.push(flags);
+            }
+            Popfd => {
+                let flags = builder.pop(IntType::I32);
+
+                let extract_flag = |builder: &mut B, flag: Flag, bit_number: u32| {
+                    let flag_value = builder.extract_bit(flags, builder.make_u32(bit_number));
+                    builder.store_flag(flag, flag_value)
+                };
+
+                extract_flag(builder, Carry, 0);
+                // ignore parity
+                // ignore AUX carry
+                extract_flag(builder, Zero, 6);
+                extract_flag(builder, Sign, 7);
+                extract_flag(builder, Overflow, 11);
+                extract_flag(builder, Direction, 10);
+                extract_flag(builder, Id, 21);
+            }
             Leave => {
                 operands!([], &instr);
 
@@ -1007,6 +1057,33 @@ pub fn codegen_instr<B: Builder>(
                     }
                 };
             }
+            // TODO: implement more bit counting
+            Bsr => {
+                operands!([dst, src], &instr);
+
+                let value = builder.load_operand(src);
+
+                let is_zero = builder.icmp(
+                    ComparisonType::Equal,
+                    value,
+                    builder.make_int_value(value.size(), 0, false),
+                );
+                builder.ifelse(
+                    is_zero,
+                    |builder| {
+                        builder.store_flag(Zero, builder.make_true());
+                    },
+                    |builder| {
+                        let leading_zeroes = builder.ctlz(value);
+                        let sz = value.size().bit_width() - 1;
+                        let sz = builder.make_int_value(value.size(), sz as u64, false);
+                        let res = builder.sub(sz, leading_zeroes);
+
+                        builder.store_operand(dst, res);
+                        builder.store_flag(Zero, builder.make_false());
+                    },
+                );
+            }
             Stc => builder.store_flag(Carry, builder.make_true()),
             Clc => builder.store_flag(Carry, builder.make_false()),
             Int => {
@@ -1014,13 +1091,22 @@ pub fn codegen_instr<B: Builder>(
                 // Also wanna have runtime info on WTF has happened
                 builder.trap();
             }
+            Ud2 => {
+                // TODO: give runtime info on WTF has happened
+                // probably want and intrinsic
+                builder.trap();
+            }
+            Endbr32 => {
+                // don't care, just some noise
+            }
 
-            // TODO: uncomment when unit tests for different direction of string operations will be in place
             Std => builder.store_flag(Direction, builder.make_true()),
             Cld => builder.store_flag(Direction, builder.make_false()),
             m => panic!(
-                "Unknown instruction mnemonic: {:?} (translating {})",
-                m, instr
+                "Unknown instruction mnemonic: {:?} (translating {} @ {:#010x})",
+                m,
+                instr,
+                instr.next_ip32() as usize - instr.len()
             ),
         };
 

@@ -115,6 +115,9 @@ pub struct Intrinsics {
     pub ssub_with_overflow: Intrinsic,
     pub usub_with_overflow: Intrinsic,
     pub trap: Intrinsic,
+    pub cttz: Intrinsic,
+    pub ctlz: Intrinsic,
+    pub ctpop: Intrinsic,
 }
 
 impl Intrinsics {
@@ -125,6 +128,9 @@ impl Intrinsics {
             ssub_with_overflow: Intrinsic::find("llvm.ssub.with.overflow").unwrap(),
             usub_with_overflow: Intrinsic::find("llvm.usub.with.overflow").unwrap(),
             trap: Intrinsic::find("llvm.trap").unwrap(),
+            cttz: Intrinsic::find("llvm.cttz").unwrap(),
+            ctlz: Intrinsic::find("llvm.ctlz").unwrap(),
+            ctpop: Intrinsic::find("llvm.ctpop").unwrap(),
         }
     }
 }
@@ -841,6 +847,34 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
             .get_declaration(self.module, &[])
             .unwrap();
         self.builder.build_call(trap, &[], "");
+    }
+
+    fn ctpop(&mut self, _value: Self::IntValue) -> Self::IntValue {
+        todo!()
+    }
+
+    fn ctlz(&mut self, value: Self::IntValue) -> Self::IntValue {
+        let ctlz = self
+            .intrinsics
+            .ctlz
+            .get_declaration(self.module, &[value.get_type().into()])
+            .unwrap();
+        self.builder
+            .build_call(
+                ctlz,
+                &[
+                    value.into(),
+                    self.make_false().into(), /* do not make zero a poison (at least for now) TODO: undef? */
+                ],
+                "",
+            )
+            .try_as_basic_value()
+            .unwrap_left()
+            .into_int_value()
+    }
+
+    fn cttz(&mut self, _value: Self::IntValue) -> Self::IntValue {
+        todo!()
     }
 
     fn repeat_until<B>(&mut self, body: B)

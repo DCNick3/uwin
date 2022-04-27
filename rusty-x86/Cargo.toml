@@ -30,13 +30,13 @@ llvm = ["inkwell"]
 test-log = "0.2.8"
 unicorn = "0.9.1"
 bad64 = "0.6.0"
-pretty-hex = "0.2.1"
 region = "3.0.0"
 env_logger = "0.9.0"
 paste = "1.0.6"
 static_assertions = "1.1.0"
 goblin = "0.5.1"
 dynasmrt = "1.2.3"
+memchr = "2.4.1"
 # a hack to enable llvm feature when running tests
 # https://github.com/rust-lang/cargo/issues/2911#issuecomment-749580481
 rusty-x86 = { path = ".", features = ["llvm"]}

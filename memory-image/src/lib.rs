@@ -102,6 +102,15 @@ impl MemoryImage {
     }
 }
 
+impl<'a> FromIterator<MemoryImageItem> for MemoryImage {
+    // TODO: validate that we have no intersecting regions
+    fn from_iter<T: IntoIterator<Item = MemoryImageItem>>(iter: T) -> Self {
+        Self {
+            regions: iter.into_iter().collect(),
+        }
+    }
+}
+
 impl<'a> FromIterator<&'a MemoryImageItem> for MemoryImage {
     // TODO: validate that we have no intersecting regions
     fn from_iter<T: IntoIterator<Item = &'a MemoryImageItem>>(iter: T) -> Self {

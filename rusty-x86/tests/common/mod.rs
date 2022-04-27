@@ -4,6 +4,7 @@ use inkwell::execution_engine::JitFunction;
 use inkwell::values::BasicMetadataValueEnum;
 use inkwell::OptimizationLevel;
 use log::{debug, error, trace};
+use memchr::memchr;
 use memory_image::{MemoryImage, MemoryImageItem, Protection};
 use region::Allocation;
 use rusty_x86::llvm::backend::FASTCC_CALLING_CONVENTION;
@@ -78,10 +79,7 @@ impl<'a> CodeToTest<'a> {
     }
 }
 
-fn load_unicorn(
-    emu: &mut CpuX86,
-    code_and_args: CodeToTest,
-) -> (u64, Option<u64>, Vec<(u64, u64)>) {
+fn load_unicorn(emu: &mut CpuX86, code_and_args: CodeToTest) -> (u64, Option<u64>, MemoryImage) {
     let (image, entry) = code_and_args.get_code();
 
     for MemoryImageItem {
@@ -112,6 +110,7 @@ fn load_unicorn(
         // so here we go...
         let addr_aligned = *addr - *addr % PAGE_ALIGN;
 
+        trace!("MAP {:08x} {:08x} {:?}", addr_aligned, len, uprot);
         emu.mem_map(addr_aligned as u64, len, uprot).unwrap();
         emu.mem_write(*addr as u64, data.as_slice()).unwrap()
     }
@@ -144,18 +143,21 @@ fn load_unicorn(
     push(MAGIC_RETURN_ADDR); // return address
     emu.reg_write(RegisterX86::ESP, esp as u64).unwrap();
 
-    let mut mem: Vec<(u64, u64)> = image
-        .iter()
-        .filter(|h| h.protection.contains(Protection::WRITE))
-        .map(|h| (h.addr as u64, h.data.len() as u64))
-        .collect();
+    let image = {
+        let mut image = image;
+        image.add_zeroed_region(
+            STACK_ADDR,
+            Protection::READ_WRITE,
+            STACK_SIZE,
+            "stack".to_string(),
+        );
+        image
+    };
 
-    mem.push((STACK_ADDR as u64, STACK_SIZE as u64));
-
-    (exec_range.0, exec_range.1, mem)
+    (exec_range.0, exec_range.1, image)
 }
 
-fn execute_unicorn(code: CodeToTest) -> (CpuContext, Vec<(u32, Vec<u8>)>, Vec<u32>) {
+fn execute_unicorn(code: CodeToTest) -> (CpuContext, MemoryImage, Vec<u32>) {
     let mut emu = CpuX86::new(unicorn::Mode::MODE_32).unwrap();
 
     // collect basic block addresses to use in lifting by rusty_x86
@@ -167,7 +169,7 @@ fn execute_unicorn(code: CodeToTest) -> (CpuContext, Vec<(u32, Vec<u8>)>, Vec<u3
     })
     .unwrap();
 
-    let (base_addr, end, regions) = load_unicorn(&mut emu, code);
+    let (base_addr, end, image) = load_unicorn(&mut emu, code);
 
     let res = emu.emu_start(base_addr, end.unwrap_or(0), 10 * unicorn::SECOND_SCALE, 0);
     let eip = emu.reg_read(RegisterX86::EIP).unwrap();
@@ -227,18 +229,28 @@ fn execute_unicorn(code: CodeToTest) -> (CpuContext, Vec<(u32, Vec<u8>)>, Vec<u3
         ctx.set_flag(Flag::Overflow, flags & 0x800 != 0);
     }
 
-    let mem = regions
+    let mem: MemoryImage = image
         .iter()
-        .map(|r| (r.0 as u32, emu.mem_read_as_vec(r.0, r.1 as usize).unwrap()))
+        .filter(|h| h.protection.contains(Protection::WRITE))
+        .map(|h| {
+            let mem = emu.mem_read_as_vec(h.addr as u64, h.data.len()).unwrap();
+            MemoryImageItem {
+                addr: h.addr,
+                protection: h.protection,
+                comment: h.comment.clone(),
+                data: mem,
+            }
+        })
         .collect();
 
-    (ctx, mem, basic_blocks.take().into_iter().collect())
+    let mut basic_blocks: Vec<_> = basic_blocks.take().into_iter().collect();
+
+    basic_blocks.sort_unstable();
+
+    (ctx, mem, basic_blocks)
 }
 
-fn execute_rusty_x86(
-    code_and_args: CodeToTest,
-    basic_blocks: &[u32],
-) -> (CpuContext, Vec<(u32, Vec<u8>)>) {
+fn execute_rusty_x86(code_and_args: CodeToTest, basic_blocks: &[u32]) -> (CpuContext, MemoryImage) {
     let context = inkwell::context::Context::create();
     let types = rusty_x86::llvm::backend::Types::new(&context);
     let thunk_functions = &BTreeMap::new();
@@ -252,6 +264,8 @@ fn execute_rusty_x86(
     );
 
     let entry_name = rusty_x86::llvm::backend::LlvmBuilder::get_name_for(entry);
+
+    debug!("rusty_x86 finished, adding an entry");
 
     const ENTRY_NAME: &str = "entry";
 
@@ -275,12 +289,17 @@ fn execute_rusty_x86(
         builder.build_return(Some(&call.try_as_basic_value().unwrap_left()));
     }
 
-    let _ir = module.print_to_string().to_string();
-    // CLion is overwhelmed by this output and breaks
-    trace!("llvm ir:\n{}", _ir);
+    let function_count = module.get_functions().count();
+    // do not print large modules (not that the IR is useful at these amounts anyways)
+    if function_count < 50 {
+        let _ir = module.print_to_string().to_string();
+        // CLion is overwhelmed by this output and breaks
+        trace!("llvm ir:\n{}", _ir);
+    }
 
     module.verify().unwrap();
 
+    debug!("Compiling the module...");
     let execution_engine = module
         .create_jit_execution_engine(
             OptimizationLevel::Aggressive, /* TODO: do we want optimizations? */
@@ -361,12 +380,13 @@ fn execute_rusty_x86(
 
     cpu_context.set_gp_reg(FullSizeGeneralPurposeRegister::ESP, esp);
 
+    debug!("Executing!");
     unsafe {
         // do the thing!
         fun.call(&mut cpu_context, target_mem_region.as_mut_ptr());
     };
 
-    let mem = image
+    let mem: MemoryImage = image
         .iter()
         .filter(|h| h.protection.contains(Protection::WRITE))
         .chain(
@@ -381,7 +401,12 @@ fn execute_rusty_x86(
         .map(|h| unsafe {
             let ptr = target_mem_region.as_mut_ptr::<u8>().add(h.addr as usize);
             let mem = std::slice::from_raw_parts(ptr, h.data.len());
-            (h.addr, mem.to_vec())
+            MemoryImageItem {
+                addr: h.addr,
+                protection: h.protection,
+                comment: h.comment.clone(),
+                data: mem.to_vec(),
+            }
         })
         .collect();
 
@@ -409,22 +434,11 @@ pub fn test_code(code: CodeToTest, flags: Vec<Flag>) {
 
     let unicorn = execute_unicorn(code.clone());
 
-    // TODO: custom dumps with more control (over addresses, for example)
-    let unicorn_mem = unicorn
-        .1
-        .iter()
-        .map(|mem| format!("0x{:08x}:\n{}\n", mem.0, pretty_hex::pretty_hex(&mem.1)))
-        .fold("".to_string(), |acc, el| acc + el.as_str());
-
-    //debug!("MEM:\n{}", unicorn_mem);
+    let unicorn_mem = unicorn.1.dump().to_string();
 
     let rusty_x86 = execute_rusty_x86(code, &unicorn.2);
 
-    let rusty_x86_mem = rusty_x86
-        .1
-        .iter()
-        .map(|mem| format!("0x{:08x}:\n{}\n", mem.0, pretty_hex::pretty_hex(&mem.1)))
-        .fold("".to_string(), |acc, el| acc + el.as_str());
+    let rusty_x86_mem = rusty_x86.1.dump().to_string();
 
     debug!("RESULT rusty_x86 = {:?}", rusty_x86.0);
     debug!("RESULT unicorn   = {:?}", unicorn.0);
@@ -446,5 +460,58 @@ pub fn test_code(code: CodeToTest, flags: Vec<Flag>) {
 
     assert_eq!(rusty_x86_flags, unicorn_flags);
 
-    assert_eq!(rusty_x86_mem, unicorn_mem);
+    if rusty_x86_mem != unicorn_mem {
+        eprintln!("rusty_x86 and unicorn execution produced different memory images!");
+        eprintln!("Diff (rusty_x86 vs unicorn):");
+        for (left, right) in rusty_x86_mem.lines().zip(unicorn_mem.lines()) {
+            if left != right {
+                eprintln!("-{left}");
+                eprintln!("+{right}");
+            }
+        }
+        panic!("rusty_x86 and unicorn execution produced different memory images");
+    }
+}
+
+fn dump_string(image: &MemoryImage, address: u32) -> String {
+    let str_data = image.read_all_at(address);
+    let nul_index = memchr(0, str_data).unwrap();
+
+    std::str::from_utf8(&str_data[..nul_index])
+        .unwrap()
+        .to_string()
+}
+
+pub fn test_outcode(elf_bytes: &[u8]) {
+    let code = CodeToTest::ElfFunction(elf_bytes, &[]);
+
+    let elf = goblin::elf::Elf::parse(elf_bytes).unwrap();
+    let output_sym = elf
+        .syms
+        .iter()
+        .find(|s| &elf.strtab[s.st_name] == "output")
+        .unwrap();
+    let output_addr = output_sym.st_value as u32;
+
+    let unicorn = execute_unicorn(code.clone());
+
+    let unicorn_mem = unicorn.1;
+    let unicorn_output = dump_string(&unicorn_mem, output_addr);
+
+    let rusty_x86 = execute_rusty_x86(code, &unicorn.2);
+
+    let rusty_x86_mem = rusty_x86.1;
+    let rusty_x86_output = dump_string(&rusty_x86_mem, output_addr);
+
+    if rusty_x86_output != unicorn_output {
+        eprintln!("rusty_x86 and unicorn produced different outputs!");
+        eprintln!("Diff (rusty_x86 vs unicorn):");
+        for (left, right) in rusty_x86_output.lines().zip(unicorn_output.lines()) {
+            if left != right {
+                eprintln!("-{left}");
+                eprintln!("+{right}");
+            }
+        }
+        panic!("rusty_x86 and unicorn produced different outputs");
+    }
 }

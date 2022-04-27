@@ -139,6 +139,10 @@ pub trait Builder {
 
     fn trap(&mut self);
 
+    fn ctpop(&mut self, value: Self::IntValue) -> Self::IntValue;
+    fn ctlz(&mut self, value: Self::IntValue) -> Self::IntValue;
+    fn cttz(&mut self, value: Self::IntValue) -> Self::IntValue;
+
     // fn r#while<C, B>(&mut self, cond: C, body: B)
     // where
     //     C: FnOnce(&mut Self) -> Self::BoolValue,

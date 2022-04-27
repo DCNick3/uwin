@@ -414,6 +414,12 @@ mod lea {
             ; mov ebx, 1337
             ; lea cx, [eax + ebx*4 + 7]
         ) [CF ZF SF OF],
+
+        // dynasm won't assemble this for us =(
+        // lea_from_16: (
+        //     ; mov ax, 12
+        //     ; lea ebx, [ax + 6]
+        // ) [CF ZF SF OF],
     }
 }
 
@@ -690,6 +696,53 @@ mod cdq {
             ; mov ax, -0x8000
             ; mov dx, 1337
             ; cwd
+        ) [CF ZF SF OF],
+    }
+}
+
+mod cwde {
+    test_snippets! {
+        cbw_zero: (
+            ; mov al, 0
+            ; mov ah, 123
+            ; cbw
+        ) [CF ZF SF OF],
+        cbw_1: (
+            ; mov al, 1
+            ; mov ah, 123
+            ; cbw
+        ) [CF ZF SF OF],
+        cbw_neg_1: (
+            ; mov al, -1
+            ; mov ah, 123
+            ; cbw
+        ) [CF ZF SF OF],
+        cbw_neg_0x80: (
+            ; mov al, -0x80
+            ; mov ah, 123
+            ; cbw
+        ) [CF ZF SF OF],
+    }
+    test_snippets! {
+        cwde_zero: (
+            ; mov eax, 2003123123
+            ; mov ax, 1
+            ; cwde
+        ) [CF ZF SF OF],
+        cwde_1: (
+            ; mov eax, 2003123123
+            ; mov ax, 1
+            ; cwde
+        ) [CF ZF SF OF],
+        cwde_neg_1: (
+            ; mov eax, 2003123123
+            ; mov ax, -1
+            ; cwde
+        ) [CF ZF SF OF],
+        cwde_neg_0x8000: (
+            ; mov eax, 2003123123
+            ; mov ax, -0x8000
+            ; cbw
         ) [CF ZF SF OF],
     }
 }
@@ -1553,8 +1606,35 @@ mod xchg {
     );
 }
 
+mod bsx {
+    test_snippets! {
+        bsr_zero: (
+            ; mov eax, 0
+            ; bsr eax, ebx
+            ; mov ebx, 0 // bsr result is undefined for zero, so define it ;)
+            // we only care for flags here
+        ) [CF ZF SF OF],
+        bsr_one: (
+            ; mov eax, 1
+            ; bsr eax, ebx
+        ) [CF ZF SF OF],
+        bsr_16_one: (
+            ; mov ax, 1
+            ; bsr ax, bx
+        ) [CF ZF SF OF],
+        bsr_neg_one: (
+            ; mov eax, -1
+            ; bsr eax, ebx
+        ) [CF ZF SF OF],
+        bsr_16_neg_one: (
+            ; mov ax, -1
+            ; bsr ax, bx
+        ) [CF ZF SF OF],
+    }
+}
+
 mod stack {
-    test_snippets!(
+    test_snippets! {
         push_eax_pop_ebx: (
             ; mov eax, 42
             ; push eax
@@ -1582,7 +1662,19 @@ mod stack {
             ; leave
             ; ret
         ) [CF ZF SF OF],
-    );
+    }
+
+    test_snippets! {
+        pushfd_pop_eax: (
+            ; pushf
+            ; pop eax
+        ) [CF ZF SF OF],
+        push_neg_one_popfd: (
+            ; mov eax, -1
+            ; push eax
+            ; popf
+        ) [CF ZF SF OF],
+    }
 }
 
 mod string {

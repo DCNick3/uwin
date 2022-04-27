@@ -1,0 +1,12 @@
+
+// define printf function (not printf_)
+#define PRINTF_ALIAS_STANDARD_FUNCTION_NAMES 1
+
+// no support for floats, please
+#define PRINTF_SUPPORT_DECIMAL_SPECIFIERS 0
+#define PRINTF_SUPPORT_EXPONENTIAL_SPECIFIERS 0
+
+// don't want these too
+#define SUPPORT_MSVC_STYLE_INTEGER_SPECIFIERS 0
+#define PRINTF_SUPPORT_WRITEBACK_SPECIFIER 0
+#define PRINTF_SUPPORT_LONG_LONG 0

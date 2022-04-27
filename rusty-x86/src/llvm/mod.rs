@@ -166,8 +166,10 @@ pub fn recompile<'ctx, 'a>(
             .map(|&addr| (addr, BasicBlockSource::Provided)),
     );
 
-    while !queue.is_empty() {
-        let (address, source) = queue.pop_front().unwrap();
+    while let Some((address, source)) = queue.pop_front() {
+        if lifted_functions.contains_key(&address) {
+            continue;
+        }
 
         debug!("processing bb at 0x{:08x} (source = {:?})", address, source);
 

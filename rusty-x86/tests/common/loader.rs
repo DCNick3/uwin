@@ -1,6 +1,7 @@
 use memory_image::{MemoryImage, Protection};
 use std::error::Error;
 
+use goblin::elf::program_header::PT_LOAD;
 use goblin::elf::Elf;
 use goblin::pe::section_table::{IMAGE_SCN_MEM_EXECUTE, IMAGE_SCN_MEM_READ, IMAGE_SCN_MEM_WRITE};
 use goblin::pe::{options, PE};
@@ -9,13 +10,13 @@ pub fn load_elf(elf_data: &[u8]) -> Result<(u32, MemoryImage), Box<dyn Error>> {
     let elf = Elf::parse(elf_data)?;
 
     let mut res = MemoryImage::new();
-    for section in elf.section_headers {
-        if !section.is_alloc() {
+    for section in elf.program_headers {
+        if section.p_type != PT_LOAD {
             continue;
         }
 
         let mut prot = Protection::READ;
-        if section.is_writable() {
+        if section.is_write() {
             prot |= Protection::WRITE;
         }
 
@@ -23,14 +24,12 @@ pub fn load_elf(elf_data: &[u8]) -> Result<(u32, MemoryImage), Box<dyn Error>> {
             prot |= Protection::EXECUTE;
         }
 
-        let base = section.sh_addr as u32;
-        let region = section.file_range().map_or(&[] as &[u8], |r| &elf_data[r]);
-        res.add_region(
-            base,
-            prot,
-            region.to_vec(),
-            elf.strtab.get_at(section.sh_name).unwrap().to_string(),
-        );
+        let base = section.p_vaddr as u32;
+        let mut region = elf_data[section.file_range()].to_vec();
+        if region.len() < section.p_memsz as usize {
+            region.extend(std::iter::repeat(0).take(section.p_memsz as usize - region.len()));
+        }
+        res.add_region(base, prot, region, "segment".to_string());
     }
 
     Ok((elf.entry as u32, res))
