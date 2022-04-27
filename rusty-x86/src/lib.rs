@@ -524,6 +524,41 @@ pub fn codegen_instr<B: Builder>(
                 let extended = builder.int_neg(extended);
                 builder.store_register(hi, extended);
             }
+            Mul => {
+                operands!([src], &instr);
+
+                let (dst, src1, src2) = match src.size() {
+                    IntType::I8 => (Operand::Register(AX), Operand::Register(AL), src),
+                    IntType::I16 => (Operand::RegisterPair(DX, AX), Operand::Register(AX), src),
+                    IntType::I32 => (Operand::RegisterPair(EDX, EAX), Operand::Register(EAX), src),
+                    IntType::I64 => unimplemented!(),
+                };
+
+                let lhs = builder.load_operand(src1);
+                let rhs = builder.load_operand(src2);
+
+                let double_size = lhs.size().double_sized();
+
+                let lhs = builder.zext(lhs, double_size);
+                let rhs = builder.zext(rhs, double_size);
+
+                let res = builder.mul(lhs, rhs);
+
+                let upper_half = builder.ashr(
+                    res,
+                    builder.make_int_value(res.size(), res.size().bit_width() as u64 / 2, false),
+                );
+
+                let overflow = builder.icmp(
+                    ComparisonType::NotEqual,
+                    upper_half,
+                    builder.make_int_value(res.size(), 0, false),
+                );
+
+                builder.store_operand(dst, res);
+                builder.store_flag(Carry, overflow);
+                builder.store_flag(Overflow, overflow);
+            }
             Imul => {
                 let (dst, src1, src2) = match *instr.get_operands().as_slice() {
                     [src] => match src.size() {
@@ -554,7 +589,6 @@ pub fn codegen_instr<B: Builder>(
                 let double_size = lhs.size().double_sized();
 
                 let lhs = builder.sext(lhs, double_size);
-
                 let rhs = builder.sext(rhs, double_size);
 
                 let res = builder.mul(lhs, rhs);

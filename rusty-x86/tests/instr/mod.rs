@@ -752,6 +752,30 @@ mod imul {
     }
 }
 
+mod mul {
+    test_snippets! {
+        mul_eax_eax: (
+            ; mov eax, 23
+            ; mul eax
+        ) [CF OF],
+        mul: (
+            ; mov eax, 23
+            ; mov ebx, 24
+            ; mul ebx
+        ) [CF OF],
+        mul_overflow: (
+            ; mov eax, 0x7fffffff
+            ; mov ebx, 0x7fffffff
+            ; mul ebx
+        ) [CF OF],
+        mul_overflow_more: (
+            ; mov eax, -1
+            ; mov ebx, -1
+            ; mul ebx
+        ) [CF OF],
+    }
+}
+
 mod xor {
     test_snippets! {
         xor_zero_eax: (
