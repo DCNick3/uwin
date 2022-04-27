@@ -1459,6 +1459,29 @@ mod idiv {
     );
 }
 
+mod xchg {
+    test_snippets!(
+        xchg_0_0: (
+            ; xor eax, eax
+            ; xor ebx, ebx
+            ; xchg eax, ebx
+        ) [CF ZF SF OF],
+        xchg_0_1: (
+            ; xor eax, eax
+            ; mov ebx, 1
+            ; xchg eax, ebx
+        ) [CF ZF SF OF],
+        xchg_eax_eax: (
+            ; mov eax, 2281337
+            ; xchg eax, eax
+        ) [CF ZF SF OF],
+        xchg_al: (
+            ; mov eax, 2281337
+            ; xchg al, bl
+        ) [CF ZF SF OF],
+    );
+}
+
 mod stack {
     test_snippets!(
         push_eax_pop_ebx: (

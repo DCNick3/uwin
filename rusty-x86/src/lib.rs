@@ -926,6 +926,15 @@ pub fn codegen_instr<B: Builder>(
 
                 // all flags are undefined
             }
+            Xchg => {
+                operands!([op1, op2], &instr);
+
+                let val1 = builder.load_operand(op1);
+                let val2 = builder.load_operand(op2);
+
+                builder.store_operand(op1, val2);
+                builder.store_operand(op2, val1);
+            }
             Push => {
                 operands!([src], &instr);
 
