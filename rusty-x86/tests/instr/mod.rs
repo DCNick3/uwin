@@ -399,6 +399,21 @@ mod lea {
             ; mov ebx, 337
             ; lea ecx, [eax + ebx*4 + 7]
         ) [CF ZF SF OF],
+
+        lea16_disp: (
+            ; mov eax, 91228
+            ; lea ecx, [eax + 7]
+        ) [CF ZF SF OF],
+        lea16_idx: (
+            ; mov eax, 91228
+            ; mov ebx, 1337
+            ; lea cx, [eax + ebx*4]
+        ) [CF ZF SF OF],
+        lea16_idx_disp: (
+            ; mov eax, 91228
+            ; mov ebx, 1337
+            ; lea cx, [eax + ebx*4 + 7]
+        ) [CF ZF SF OF],
     }
 }
 
@@ -1313,6 +1328,50 @@ mod div {
             ; mov ebx, 2
             ; div ebx
         ) [],
+
+        div_16_basic1: (
+            ; mov ax, 42
+            ; mov bx, 24
+            ; div bx
+        ) [],
+        div_16_basic2: (
+            ; mov ax, 1
+            ; mov bx, 888
+            ; div bx
+        ) [],
+        div_16_basic3: (
+            ; mov ax, 888
+            ; mov bx, 1
+            ; div bx
+        ) [],
+        div_16_basic4: (
+            ; mov ax, 1
+            ; mov bx, 2
+            ; div bx
+        ) [],
+
+        div_8_basic1: (
+            ; mov al, 42
+            ; mov bl, 24
+            ; div bl
+        ) [],
+        div_8_basic2: (
+            ; mov al, 1
+            ; mov bl, 88
+            ; div bl
+        ) [],
+        div_8_basic3: (
+            ; mov al, 88
+            ; mov bl, 1
+            ; div bl
+        ) [],
+        div_8_basic4: (
+            ; mov al, 1
+            ; mov bl, 2
+            ; div bl
+        ) [],
+
+
         div_rnd1: (
             ; mov eax, -0x57549d35
             ; mov ebx, 0x4003cb02
@@ -1333,6 +1392,18 @@ mod div {
             ; mov edx, 1
             ; mov ebx, 2
             ; div ebx
+        ) [],
+        div_16_big1: (
+            ; mov ax, 0
+            ; mov dx, 1
+            ; mov bx, 2
+            ; div bx
+        ) [],
+        div_8_big1: (
+            ; mov al, 0
+            ; mov ah, 1
+            ; mov bl, 2
+            ; div bl
         ) [],
         // this should cause a division error
         // TODO: how can we test this? (it's not how it behaves rn btw)

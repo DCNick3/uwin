@@ -453,7 +453,13 @@ pub fn codegen_instr<B: Builder>(
                     _ => panic!("Expected 2nd lea operand to be memory reference"),
                 };
 
-                // TODO: size conversion (store 32-bit address as 16-bit value for example)
+                let addr = if dst.size() == IntType::I16 {
+                    builder.trunc(addr, dst.size())
+                } else {
+                    addr
+                };
+
+                // TODO: more size conversion?
                 assert_eq!(dst.size(), addr.size());
                 builder.store_operand(dst, addr);
             }
@@ -888,16 +894,14 @@ pub fn codegen_instr<B: Builder>(
 
                 let double_size = src.size().double_sized();
 
-                let (lo, hi, quo_dst, rem_dst) = match src.size() {
-                    IntType::I8 => todo!(),
-                    IntType::I16 => todo!(),
-                    IntType::I32 => (EAX, EDX, EAX, EDX),
+                let (dividend_src, quo_dst, rem_dst) = match src.size() {
+                    IntType::I8 => (Operand::Register(AX), AL, AH),
+                    IntType::I16 => (Operand::RegisterPair(DX, AX), AX, DX),
+                    IntType::I32 => (Operand::RegisterPair(EDX, EAX), EAX, EDX),
                     _ => unreachable!(),
                 };
 
-                assert_eq!(lo.size(), hi.size());
-
-                let dividend = builder.load_operand(Operand::RegisterPair(hi, lo));
+                let dividend = builder.load_operand(dividend_src);
 
                 let divisor = builder.load_operand(src);
                 let divisor = if mnemonic == Div {
