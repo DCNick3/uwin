@@ -136,6 +136,58 @@ fn codegen_dynamic_dispatcher_wrapper<'ctx, 'a>(
     indirect_bb_call
 }
 
+fn codegen_thunk_finder<'ctx, 'a>(
+    context: &'ctx Context,
+    module: &'a Module<'ctx>,
+    types: Arc<Types<'ctx>>,
+    thunk_functions: &'a BTreeMap<u32, String>,
+) {
+    let uwin_find_thunk = module.add_function(
+        "uwin_find_thunk",
+        types.find_thunk_fn,
+        Some(Linkage::External),
+    );
+
+    let res_type = uwin_find_thunk
+        .get_type()
+        .get_return_type()
+        .unwrap()
+        .into_pointer_type();
+
+    let thunk_id_param = uwin_find_thunk.get_nth_param(0).unwrap().into_int_value();
+
+    let builder = context.create_builder();
+    let entry = context.append_basic_block(uwin_find_thunk, "entry");
+
+    let not_found = context.append_basic_block(uwin_find_thunk, "not_found");
+    builder.position_at_end(not_found);
+    builder.build_return(Some(&res_type.const_null()));
+
+    let mut blocks = Vec::new();
+    for (&thunk_id, thunk_name) in thunk_functions {
+        let function = if let Some(function) = module.get_function(thunk_name) {
+            function
+        } else {
+            module.add_function(
+                &format!("thunk_{}", thunk_name),
+                types.bb_fn,
+                Some(Linkage::External),
+            )
+        };
+        let function = function.as_global_value().as_pointer_value();
+
+        let bb = context.append_basic_block(uwin_find_thunk, &format!("thunk_{}", thunk_id));
+        builder.position_at_end(bb);
+
+        builder.build_return(Some(&function));
+
+        blocks.push((types.i32.const_int(thunk_id as u64, false), bb))
+    }
+
+    builder.position_at_end(entry);
+    builder.build_switch(thunk_id_param, not_found, &blocks);
+}
+
 #[derive(Debug)]
 enum BasicBlockSource {
     DiscoveryJump(u32),
@@ -249,7 +301,10 @@ pub fn recompile<'ctx, 'a>(
     );
 
     // codegen indirect_bb_call (exported as uwin_indirect_bb_call)
-    codegen_dynamic_dispatcher_wrapper(context, module, types, indirect_bb_call_impl);
+    codegen_dynamic_dispatcher_wrapper(context, module, types.clone(), indirect_bb_call_impl);
+
+    // codegen uwin_find_thunk
+    codegen_thunk_finder(context, module, types, thunk_functions);
 
     module_obj
 }

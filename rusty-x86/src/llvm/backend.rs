@@ -51,6 +51,7 @@ pub struct Types<'ctx> {
 
     pub bb_fn: FunctionType<'ctx>, // ctx: Context*, mem: u8* -> u32
     pub indirect_bb_call: FunctionType<'ctx>, // ctx: Context*, mem: u8*, eip: u32 -> u32
+    pub find_thunk_fn: FunctionType<'ctx>, // thunk_id: u32 -> bb_fn
 }
 
 impl<'ctx> Types<'ctx> {
@@ -93,6 +94,10 @@ impl<'ctx> Types<'ctx> {
             false,
         );
 
+        let find_thunk_fn = bb_fn
+            .ptr_type(AddressSpace::Generic)
+            .fn_type(&[i32.into()], false);
+
         Arc::new(Self {
             void,
             i1,
@@ -105,6 +110,7 @@ impl<'ctx> Types<'ctx> {
 
             bb_fn,
             indirect_bb_call: rt_indirect_bb_call,
+            find_thunk_fn,
         })
     }
 }

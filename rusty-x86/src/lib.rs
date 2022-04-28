@@ -1270,6 +1270,10 @@ mod tests {
                 ; bl ->indirect_bb_call_impl
                 ; ldr x30, [sp], #0x10
                 ; ret
+
+                ; ->uwin_find_thunk:
+                ; mov x0, xzr
+                ; ret
             );
 
             test_recomp(code, expected_result);
