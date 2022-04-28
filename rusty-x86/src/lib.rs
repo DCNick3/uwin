@@ -1266,7 +1266,9 @@ mod tests {
                 ; b.ne >FAIL
                 ; b ->bb_0x1000
                 ; FAIL:
-                ; brk #0x1
+                ; str x30, [sp, #-0x10]!
+                ; loopa: // actually it's not as loop, but just an unlinked call to uwin_missing_bb, but whatever
+                ; bl <loopa
 
                 // it's all optimized down to just storing a half-word, nice
                 ; ->bb_0x1000:
