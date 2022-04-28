@@ -45,6 +45,11 @@ impl FlatMemoryCtx {
         // It is also arguably part of the same "allocated object" but how to defined it is a bit hard to answer
         unsafe { self.base.add(ptr as usize) }
     }
+
+    #[inline]
+    pub fn base_ptr(&self) -> *mut u8 {
+        self.base
+    }
 }
 
 impl From<FlatMemoryCtx> for *mut u8 {

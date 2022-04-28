@@ -9,6 +9,7 @@ fn main() {
     let executable = manifest_dir
         .join("..")
         .join("test_exes/msvc/hello_world.exe")
+        // .join("test_exes/msvc/indirect.exe")
         // .join("test_exes/test.exe")
         // .join("test_exes/test_cp1251.exe")
         // ----

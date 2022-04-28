@@ -7,8 +7,10 @@ use core_mem::ptr::{PtrDiffRepr, PtrRepr};
 use core_memmgr::{AddressRange, MemoryManager};
 use core_str::heap_helper::AnsiStringHeapBox;
 use core_str::AnsiString;
+use itertools::Itertools;
 use recompiler::memory_image::{MemoryImageItem, Protection};
 use rusty_x86_runtime::{CpuContext, ExtendedContext, PROGRAM_IMAGE};
+use std::collections::HashSet;
 use std::sync::{Arc, Mutex};
 use tracing::trace;
 use tracing_subscriber::fmt::format;
@@ -60,6 +62,7 @@ fn main_impl() {
         cpu: CpuContext::default(),
         win32: Win32Context::new(),
         unwind_reason: None,
+        interpreted_blocks: HashSet::new(),
     };
 
     let tlb = memory_mgr
@@ -172,6 +175,16 @@ fn main_impl() {
         );
         todo!("Re-entering the code execution after yielding") // Not sure of all the consequences of just doing it
     }
+
+    println!(
+        "Interpreted (due to missing recompiled functions) these basic blocks:\n{}",
+        context
+            .interpreted_blocks
+            .iter()
+            .cloned()
+            .map(|f| format!("  {:#010x}", f))
+            .join("\n")
+    )
 }
 
 fn main() {

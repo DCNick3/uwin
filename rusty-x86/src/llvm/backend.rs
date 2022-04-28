@@ -386,15 +386,13 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
             .thunk_functions
             .get(&index)
             .expect("Call to unknown thunk function");
+        let thunk_name = format!("thunk_{}", name);
 
-        if let Some(function) = self.module.get_function(name) {
+        if let Some(function) = self.module.get_function(&thunk_name) {
             function
         } else {
-            self.module.add_function(
-                &format!("thunk_{}", name),
-                self.types.bb_fn,
-                Some(Linkage::External),
-            )
+            self.module
+                .add_function(&thunk_name, self.types.bb_fn, Some(Linkage::External))
         }
     }
 

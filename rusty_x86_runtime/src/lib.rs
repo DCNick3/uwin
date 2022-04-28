@@ -1,5 +1,7 @@
+mod interp;
 mod thunks;
 
+use crate::interp::run_interp;
 pub use core_abi::stdcall::StdCallHelper;
 use core_abi::unwind_token::UnwindReason;
 pub use core_mem::ctx::FlatMemoryCtx;
@@ -7,9 +9,11 @@ use core_mem::ptr::PtrRepr;
 use lazy_static::lazy_static;
 use recompiler::LoadedProcessImage;
 pub use rusty_x86::types::CpuContext;
+use std::collections::HashSet;
 use std::ffi::c_void;
+use std::panic::AssertUnwindSafe;
 use tracing::subscriber::Interest;
-use tracing::{Callsite, Metadata};
+use tracing::{warn, Callsite, Metadata};
 use win32::core::Win32Context;
 
 // here we do ABI some trickery
@@ -21,6 +25,7 @@ pub struct ExtendedContext {
     pub cpu: CpuContext,
     pub win32: Win32Context,
     pub unwind_reason: Option<UnwindReason>,
+    pub interpreted_blocks: HashSet<PtrRepr>,
 }
 
 extern "C" {
@@ -30,6 +35,11 @@ extern "C" {
     #[allow(improper_ctypes)] // I know I am doing dark magic, that's ok
     fn uwin_indirect_bb_call(context: &mut ExtendedContext, memory: FlatMemoryCtx, eip: u32)
         -> u32;
+
+    #[allow(improper_ctypes)]
+    fn uwin_find_thunk(
+        thunk_index: u32,
+    ) -> Option<unsafe extern "C" fn(&mut ExtendedContext, memory: FlatMemoryCtx) -> u32>;
 }
 
 fn get_process_image_data() -> &'static [u8] {
@@ -52,13 +62,24 @@ lazy_static! {
 }
 
 #[no_mangle]
-extern "C" fn uwin_missing_bb(
-    _context: &mut ExtendedContext,
-    _memory: FlatMemoryCtx,
+unsafe extern "C" fn uwin_missing_bb(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
     eip: u32,
 ) -> u32 {
-    eprintln!("Called a missing bb @ ip = {:#010x}; aborting", eip);
-    std::process::abort();
+    warn!(
+        "Called a missing bb @ ip = {:#010x}; switching to an interpreter",
+        eip
+    );
+
+    let res = std::panic::catch_unwind(AssertUnwindSafe(|| run_interp(context, memory, eip)));
+    match res {
+        Ok(r) => r,
+        Err(_) => {
+            eprintln!("Interpretation panicked");
+            std::process::abort();
+        }
+    }
 }
 
 pub fn execute_recompiled_code(

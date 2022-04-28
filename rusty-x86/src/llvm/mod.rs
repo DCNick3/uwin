@@ -165,14 +165,11 @@ fn codegen_thunk_finder<'ctx, 'a>(
 
     let mut blocks = Vec::new();
     for (&thunk_id, thunk_name) in thunk_functions {
-        let function = if let Some(function) = module.get_function(thunk_name) {
+        let thunk_name = format!("thunk_{}", thunk_name);
+        let function = if let Some(function) = module.get_function(&thunk_name) {
             function
         } else {
-            module.add_function(
-                &format!("thunk_{}", thunk_name),
-                types.bb_fn,
-                Some(Linkage::External),
-            )
+            module.add_function(&thunk_name, types.bb_fn, Some(Linkage::External))
         };
         let function = function.as_global_value().as_pointer_value();
 
