@@ -788,7 +788,7 @@ pub fn codegen_instr<B: Builder>(
                 let count = builder.load_operand(count);
                 let count = builder.zext(count, dst.size());
 
-                let count_mask = builder.make_int_value(dst.size(), 0x1);
+                let count_mask = builder.make_int_value(dst.size(), 0x1f);
                 let count_orig = builder.int_and(count, count_mask);
 
                 let not_zero = builder.icmp(
