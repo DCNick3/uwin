@@ -1,5 +1,6 @@
 use proc_macro2::{Ident, Span, TokenStream};
 use quote::{quote, ToTokens, TokenStreamExt};
+use std::str::FromStr;
 use syn::parse::{Parse, ParseStream, Parser};
 use syn::punctuated::Punctuated;
 use syn::{bracketed, parenthesized, token, Error, LitByteStr, LitInt, LitStr, Token};
@@ -218,14 +219,37 @@ impl ToTokens for TestSnippet {
         let flags = &self.flags;
 
         tokens.append_all(quote! {
-             #[test_log::test]
-             fn #name() {
-                 log::info!("Running {}", stringify!(#name));
-                 let code = rusty_x86::assemble_x86!(
-                     #code
-                 );
-                 crate::common::test_code(crate::common::CodeToTest::Snippet(code.as_slice()), vec![#(#flags),*]);
-             }
+            mod #name {
+                use crate::common::MEM_ADDR;
+
+                fn get_code() -> Vec<u8> {
+                    rusty_x86::assemble_x86!(
+                        #code
+                    )
+                }
+
+                #[test_log::test]
+                fn llvm() {
+                    log::info!("Running {}::llvm", stringify!(#name));
+                    let code = get_code();
+                    crate::common::test_code(
+                        crate::common::CodeToTest::Snippet(code.as_slice()),
+                        vec![#(#flags),*],
+                        crate::common::Backend::Llvm
+                    );
+                }
+
+                #[test_log::test]
+                fn interp() {
+                    log::info!("Running {}::interp", stringify!(#name));
+                    let code = get_code();
+                    crate::common::test_code(
+                        crate::common::CodeToTest::Snippet(code.as_slice()),
+                        vec![#(#flags),*],
+                        crate::common::Backend::Interp
+                    );
+                }
+            }
         });
     }
 }
@@ -235,21 +259,41 @@ impl ToTokens for TestFunction {
         let name = &self.name;
         let asm = &self.asm;
 
-        let args: Vec<TokenStream> = self.args.iter().map(|args| {
-            let name = &args.name;
-            let args = &args.data;
-            quote! {
-                #[test_log::test]
-                fn #name () {
-                    let args: &[u32] = &[#(#args),*];
-                    log::info!("Running {} on {:?}", stringify!(#name), args);
+        let args: Vec<TokenStream> = self
+            .args
+            .iter()
+            .map(|args| {
+                let name = &args.name;
+                let args = &args.data;
 
-                    let code = get_code();
+                let mut tokens = TokenStream::new();
 
-                    crate::common::test_code(crate::common::CodeToTest::Function(code.as_slice(), args), vec![]);
+                for backend_str in ["Llvm", "Interp"] {
+                    let name = Ident::new(
+                        &format!("{}_{}", backend_str.to_ascii_lowercase(), name),
+                        Span::call_site(),
+                    );
+                    let backend = TokenStream::from_str(backend_str).unwrap();
+                    tokens.extend(quote! {
+                        #[test_log::test]
+                        fn #name () {
+                            let args: &[u32] = &[#(#args),*];
+                            log::info!("Running {} on {:?} with {}", stringify!(#name), args, #backend_str);
+
+                            let code = get_code();
+
+                            crate::common::test_code(
+                                crate::common::CodeToTest::Function(code.as_slice(), args),
+                                vec![],
+                                crate::common::Backend::#backend
+                            );
+                        }
+                    });
                 }
-            }
-        }).collect();
+
+                tokens
+            })
+            .collect();
 
         tokens.append_all(quote! {
             mod #name {
@@ -271,21 +315,41 @@ impl ToTokens for TestElfFunction {
         let name = &self.name;
         let path = &self.path;
 
-        let args: Vec<TokenStream> = self.args.iter().map(|args| {
-            let name = &args.name;
-            let args = &args.data;
-            quote! {
-                #[test_log::test]
-                fn #name () {
-                    let args: &[u32] = &[#(#args),*];
-                    log::info!("Running {} on {:?}", stringify!(#name), args);
+        let args: Vec<TokenStream> = self
+            .args
+            .iter()
+            .map(|args| {
+                let name = &args.name;
+                let args = &args.data;
 
-                    let elf = get_elf();
+                let mut tokens = TokenStream::new();
 
-                    crate::common::test_code(crate::common::CodeToTest::ElfFunction(elf, args), vec![]);
+                for backend_str in ["Llvm", "Interp"] {
+                    let name = Ident::new(
+                        &format!("{}_{}", backend_str.to_ascii_lowercase(), name),
+                        Span::call_site(),
+                    );
+                    let backend = TokenStream::from_str(backend_str).unwrap();
+                    tokens.extend(quote! {
+                        #[test_log::test]
+                        fn #name () {
+                            let args: &[u32] = &[#(#args),*];
+                            log::info!("Running {} on {:?} with {}", stringify!(#name), args, #backend_str);
+
+                            let code = get_elf();
+
+                            crate::common::test_code(
+                                crate::common::CodeToTest::ElfFunction(code, args),
+                                vec![],
+                                crate::common::Backend::#backend
+                            );
+                        }
+                    });
                 }
-            }
-        }).collect();
+
+                tokens
+            })
+            .collect();
 
         tokens.append_all(quote! {
             mod #name {
@@ -305,21 +369,41 @@ impl ToTokens for TestPeFunction {
         let name = &self.name;
         let path = &self.path;
 
-        let args: Vec<TokenStream> = self.args.iter().map(|args| {
-            let name = &args.name;
-            let args = &args.data;
-            quote! {
-                #[test_log::test]
-                fn #name () {
-                    let args: &[u32] = &[#(#args),*];
-                    log::info!("Running {} on {:?}", stringify!(#name), args);
+        let args: Vec<TokenStream> = self
+            .args
+            .iter()
+            .map(|args| {
+                let name = &args.name;
+                let args = &args.data;
 
-                    let pe = get_pe();
+                let mut tokens = TokenStream::new();
 
-                    crate::common::test_code(crate::common::CodeToTest::PeFunction(pe, args), vec![]);
+                for backend_str in ["Llvm", "Interp"] {
+                    let name = Ident::new(
+                        &format!("{}_{}", backend_str.to_ascii_lowercase(), name),
+                        Span::call_site(),
+                    );
+                    let backend = TokenStream::from_str(backend_str).unwrap();
+                    tokens.extend(quote! {
+                        #[test_log::test]
+                        fn #name () {
+                            let args: &[u32] = &[#(#args),*];
+                            log::info!("Running {} on {:?} with {}", stringify!(#name), args, #backend_str);
+
+                            let code = get_pe();
+
+                            crate::common::test_code(
+                                crate::common::CodeToTest::PeFunction(code, args),
+                                vec![],
+                                crate::common::Backend::#backend
+                            );
+                        }
+                    });
                 }
-            }
-        }).collect();
+
+                tokens
+            })
+            .collect();
 
         tokens.append_all(quote! {
             mod #name {

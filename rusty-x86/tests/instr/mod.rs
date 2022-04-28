@@ -761,7 +761,6 @@ mod cwde {
 }
 
 mod mem {
-    use crate::common::MEM_ADDR;
     test_snippets! {
         mem_basic_rw: (
             ; mov eax, 42
@@ -1693,8 +1692,6 @@ mod stack {
 mod string {
     mod forward {
         mod scas {
-            use crate::common::MEM_ADDR;
-
             test_snippets! {
                 scasb_eq: (
                     ; mov BYTE [MEM_ADDR as i32], 0x11
@@ -1909,8 +1906,6 @@ mod string {
         }
 
         mod stos {
-            use crate::common::MEM_ADDR;
-
             test_snippets! {
                 stosb_zero: (
                     ; mov BYTE [MEM_ADDR as i32], 0x11
@@ -2051,8 +2046,6 @@ mod string {
         }
 
         mod movs {
-            use crate::common::MEM_ADDR;
-
             test_snippets! {
                 movsb_0x11: (
                     ; mov BYTE [MEM_ADDR as i32], 0x11
@@ -2231,8 +2224,6 @@ mod string {
     }
     mod backwards {
         mod scas {
-            use crate::common::MEM_ADDR;
-
             test_snippets! {
                 scasb_eq: (
                     ; std
@@ -2473,8 +2464,6 @@ mod string {
         }
 
         mod stos {
-            use crate::common::MEM_ADDR;
-
             test_snippets! {
                 stosb_zero: (
                     ; std
@@ -2633,8 +2622,6 @@ mod string {
         }
 
         mod movs {
-            use crate::common::MEM_ADDR;
-
             test_snippets! {
                 movsb_0x11: (
                     ; std

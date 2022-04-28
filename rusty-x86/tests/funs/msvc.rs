@@ -1,8 +1,4 @@
 mod funs {
-    use crate::common::MEM_ADDR;
-
-    static_assertions::const_assert_eq!(MEM_ADDR, 0x100000);
-
     test_functions! {
         msvc_rand: [
             (0), (1), (2), (3),

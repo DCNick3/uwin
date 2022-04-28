@@ -250,11 +250,16 @@ fn execute_unicorn(code: CodeToTest) -> (CpuContext, MemoryImage, Vec<u32>) {
     (ctx, mem, basic_blocks)
 }
 
-fn execute_rusty_x86(code_and_args: CodeToTest, basic_blocks: &[u32]) -> (CpuContext, MemoryImage) {
+fn execute_rusty_x86_llvm(
+    cpu_context: &mut CpuContext,
+    memory_base: *mut u8,
+    basic_blocks: &[u32],
+    image: &MemoryImage,
+    entry: u32,
+) {
     let context = inkwell::context::Context::create();
     let types = rusty_x86::llvm::backend::Types::new(&context);
     let thunk_functions = &BTreeMap::new();
-    let (image, entry) = code_and_args.get_code();
     let module = rusty_x86::llvm::recompile(
         &context,
         types.clone(),
@@ -307,6 +312,20 @@ fn execute_rusty_x86(code_and_args: CodeToTest, basic_blocks: &[u32]) -> (CpuCon
         .unwrap();
 
     let fun: JitFunction<BbFunc> = unsafe { execution_engine.get_function(ENTRY_NAME).unwrap() };
+
+    debug!("Executing!");
+    unsafe {
+        // do the thing!
+        fun.call(cpu_context, memory_base);
+    };
+}
+
+fn execute_rusty_x86(
+    code_and_args: CodeToTest,
+    basic_blocks: &[u32],
+    backend: Backend,
+) -> (CpuContext, MemoryImage) {
+    let (image, entry) = code_and_args.get_code();
 
     let mut cpu_context = CpuContext::default();
 
@@ -380,11 +399,16 @@ fn execute_rusty_x86(code_and_args: CodeToTest, basic_blocks: &[u32]) -> (CpuCon
 
     cpu_context.set_gp_reg(FullSizeGeneralPurposeRegister::ESP, esp);
 
-    debug!("Executing!");
-    unsafe {
-        // do the thing!
-        fun.call(&mut cpu_context, target_mem_region.as_mut_ptr());
-    };
+    match backend {
+        Backend::Llvm => execute_rusty_x86_llvm(
+            &mut cpu_context,
+            target_mem_region.as_mut_ptr(),
+            basic_blocks,
+            &image,
+            entry,
+        ),
+        Backend::Interp => todo!(),
+    }
 
     let mem: MemoryImage = image
         .iter()
@@ -425,18 +449,17 @@ fn context_to_flag_list(context: &CpuContext, flags: &[Flag]) -> Vec<Flag> {
         .collect()
 }
 
-pub fn test_code(code: CodeToTest, flags: Vec<Flag>) {
-    // TODO: make it work
-    // debug!(
-    //     "CODE:\n{}",
-    //     rusty_x86::disasm::disassemble(code.get_code())
-    // );
+pub enum Backend {
+    Llvm,
+    Interp,
+}
 
+pub fn test_code(code: CodeToTest, flags: Vec<Flag>, backend: Backend) {
     let unicorn = execute_unicorn(code.clone());
 
     let unicorn_mem = unicorn.1.dump().to_string();
 
-    let rusty_x86 = execute_rusty_x86(code, &unicorn.2);
+    let rusty_x86 = execute_rusty_x86(code, &unicorn.2, backend);
 
     let rusty_x86_mem = rusty_x86.1.dump().to_string();
 
@@ -482,7 +505,7 @@ fn dump_string(image: &MemoryImage, address: u32) -> String {
         .to_string()
 }
 
-pub fn test_outcode(elf_bytes: &[u8]) {
+pub fn test_outcode(elf_bytes: &[u8], backend: Backend) {
     let code = CodeToTest::ElfFunction(elf_bytes, &[]);
 
     let elf = goblin::elf::Elf::parse(elf_bytes).unwrap();
@@ -498,7 +521,7 @@ pub fn test_outcode(elf_bytes: &[u8]) {
     let unicorn_mem = unicorn.1;
     let unicorn_output = dump_string(&unicorn_mem, output_addr);
 
-    let rusty_x86 = execute_rusty_x86(code, &unicorn.2);
+    let rusty_x86 = execute_rusty_x86(code, &unicorn.2, backend);
 
     let rusty_x86_mem = rusty_x86.1;
     let rusty_x86_output = dump_string(&rusty_x86_mem, output_addr);

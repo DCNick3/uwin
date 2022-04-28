@@ -1,5 +1,5 @@
 use crate::backend::BoolValue;
-use crate::types::{CpuContext, FullSizeGeneralPurposeRegister, SegmentRegister};
+use crate::types::{CpuContext, SegmentRegister};
 use crate::{
     Builder, ComparisonType, ControlFlow, Flag, IntType, IntValue as IntValueTrait, Register,
 };
@@ -104,8 +104,24 @@ impl BoolValue for bool {}
 pub struct InterpBuilder<'a> {
     cpu_context: &'a mut CpuContext,
     memory_base: *mut u8,
-    call_basic_block: fn(&mut CpuContext, *mut u8, u32) -> u32,
-    call_thunk: fn(&mut CpuContext, *mut u8, u32) -> u32,
+    call_basic_block: unsafe fn(&mut CpuContext, *mut u8, u32) -> u32,
+    call_thunk: unsafe fn(&mut CpuContext, *mut u8, u32) -> u32,
+}
+
+impl<'a> InterpBuilder<'a> {
+    pub unsafe fn new(
+        cpu_context: &'a mut CpuContext,
+        memory_base: *mut u8,
+        call_basic_block: unsafe fn(&mut CpuContext, *mut u8, u32) -> u32,
+        call_thunk: unsafe fn(&mut CpuContext, *mut u8, u32) -> u32,
+    ) -> Self {
+        Self {
+            cpu_context,
+            memory_base,
+            call_basic_block,
+            call_thunk,
+        }
+    }
 }
 
 impl<'a> Builder for InterpBuilder<'a> {
@@ -478,7 +494,8 @@ impl<'a> Builder for InterpBuilder<'a> {
     }
 
     fn direct_call(&mut self, target: u32) -> ControlFlow<Self::IntValue, Self::BoolValue> {
-        let res = (self.call_basic_block)(self.cpu_context, self.memory_base, target);
+        // SAFETY: TODO
+        let res = unsafe { (self.call_basic_block)(self.cpu_context, self.memory_base, target) };
         ControlFlow::CallCheck(IntValue::I32(res))
     }
 
@@ -490,7 +507,8 @@ impl<'a> Builder for InterpBuilder<'a> {
     }
 
     fn thunk_jump(&mut self, target: u32) -> ControlFlow<Self::IntValue, Self::BoolValue> {
-        let res = (self.call_thunk)(self.cpu_context, self.memory_base, target);
+        // SAFETY: TODO
+        let res = unsafe { (self.call_thunk)(self.cpu_context, self.memory_base, target) };
         ControlFlow::Return(IntValue::I32(res))
     }
 
