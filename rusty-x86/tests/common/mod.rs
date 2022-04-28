@@ -265,9 +265,12 @@ fn execute_rusty_x86_llvm(
         &context,
         types.clone(),
         thunk_functions,
-        &image,
+        image,
         basic_blocks,
     );
+
+    // workaround for https://github.com/TheDan64/inkwell/issues/320
+    inkwell::execution_engine::ExecutionEngine::link_in_mc_jit();
 
     let entry_name = rusty_x86::llvm::backend::LlvmBuilder::get_name_for(entry);
 
@@ -310,7 +313,7 @@ fn execute_rusty_x86_llvm(
         .create_jit_execution_engine(
             OptimizationLevel::Aggressive, /* TODO: do we want optimizations? */
         )
-        .unwrap();
+        .expect("Could not get LLVM execution engine");
 
     let fun: JitFunction<BbFunc> = unsafe { execution_engine.get_function(ENTRY_NAME).unwrap() };
 
