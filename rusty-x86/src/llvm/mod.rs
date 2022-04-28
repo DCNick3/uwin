@@ -68,12 +68,15 @@ fn codegen_dynamic_dispatcher<'ctx, 'a>(
     let else_bb = context.append_basic_block(indirect_bb_call_impl, "not_found");
 
     builder.position_at_end(else_bb);
-    builder.build_call(
+    let call = builder.build_call(
         runtime_helpers.missing_bb,
         &[ctx_ptr.into(), mem_ptr.into(), eip.into()],
         "",
     );
-    builder.build_unreachable();
+    call.set_tail_call(true);
+    builder.build_return(Some(
+        &call.try_as_basic_value().unwrap_left().into_int_value(),
+    ));
 
     let args = [ctx_ptr.into(), mem_ptr.into()];
 
