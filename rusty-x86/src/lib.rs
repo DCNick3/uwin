@@ -2,6 +2,7 @@ extern crate core;
 
 pub mod backend;
 pub mod disasm;
+pub mod interp;
 #[cfg(feature = "llvm")]
 pub mod llvm;
 pub mod types;
@@ -468,7 +469,7 @@ pub fn codegen_instr<B: Builder>(
 
                 let val = builder.load_operand(dst);
 
-                let one = builder.make_int_value(val.size(), 1, false);
+                let one = builder.make_int_value(val.size(), 1);
 
                 let res = builder.sub(val, one);
 
@@ -486,7 +487,7 @@ pub fn codegen_instr<B: Builder>(
 
                 let val = builder.load_operand(dst);
 
-                let one = builder.make_int_value(val.size(), 1, false);
+                let one = builder.make_int_value(val.size(), 1);
 
                 let res = builder.add(val, one);
 
@@ -504,7 +505,7 @@ pub fn codegen_instr<B: Builder>(
 
                 let val = builder.load_operand(dst);
 
-                let zero = builder.make_int_value(val.size(), 0, false);
+                let zero = builder.make_int_value(val.size(), 0);
 
                 let res = builder.int_neg(val);
                 builder.store_operand(dst, res);
@@ -563,13 +564,13 @@ pub fn codegen_instr<B: Builder>(
 
                 let upper_half = builder.ashr(
                     res,
-                    builder.make_int_value(res.size(), res.size().bit_width() as u64 / 2, false),
+                    builder.make_int_value(res.size(), res.size().bit_width() as u64 / 2),
                 );
 
                 let overflow = builder.icmp(
                     ComparisonType::NotEqual,
                     upper_half,
-                    builder.make_int_value(res.size(), 0, false),
+                    builder.make_int_value(res.size(), 0),
                 );
 
                 builder.store_operand(dst, res);
@@ -710,7 +711,7 @@ pub fn codegen_instr<B: Builder>(
                 let not_zero = builder.icmp(
                     ComparisonType::NotEqual,
                     count,
-                    builder.make_int_value(count.size(), 0, false),
+                    builder.make_int_value(count.size(), 0),
                 );
 
                 let (arithmetic, right) = match mnemonic {
@@ -787,25 +788,22 @@ pub fn codegen_instr<B: Builder>(
                 let count = builder.load_operand(count);
                 let count = builder.zext(count, dst.size());
 
-                let count_mask = builder.make_int_value(dst.size(), 0x1f, false);
+                let count_mask = builder.make_int_value(dst.size(), 0x1);
                 let count_orig = builder.int_and(count, count_mask);
 
                 let not_zero = builder.icmp(
                     ComparisonType::NotEqual,
                     count_orig,
-                    builder.make_int_value(count_orig.size(), 0, false),
+                    builder.make_int_value(count_orig.size(), 0),
                 );
 
                 builder.ifelse(
                     not_zero,
                     |builder| {
-                        let zero = builder.make_int_value(dst.size(), 0, false);
+                        let zero = builder.make_int_value(dst.size(), 0);
 
-                        let r#mod = builder.make_int_value(
-                            dst.size(),
-                            dst.size().bit_width() as u64 + 1,
-                            false,
-                        );
+                        let r#mod =
+                            builder.make_int_value(dst.size(), dst.size().bit_width() as u64 + 1);
                         let count = builder.urem(count_orig, r#mod);
 
                         let value = builder.load_operand(dst);
@@ -816,11 +814,8 @@ pub fn codegen_instr<B: Builder>(
                                         value: B::IntValue,
                                         amount: B::IntValue|
                          -> B::IntValue {
-                            let sz = builder.make_int_value(
-                                value.size(),
-                                value.size().bit_width() as u64,
-                                false,
-                            );
+                            let sz = builder
+                                .make_int_value(value.size(), value.size().bit_width() as u64);
                             let overflow =
                                 builder.icmp(ComparisonType::UnsignedGreaterOrEqual, amount, sz);
 
@@ -831,11 +826,8 @@ pub fn codegen_instr<B: Builder>(
                                         value: B::IntValue,
                                         amount: B::IntValue|
                          -> B::IntValue {
-                            let sz = builder.make_int_value(
-                                value.size(),
-                                value.size().bit_width() as u64,
-                                false,
-                            );
+                            let sz = builder
+                                .make_int_value(value.size(), value.size().bit_width() as u64);
                             let overflow =
                                 builder.icmp(ComparisonType::UnsignedGreaterOrEqual, amount, sz);
 
@@ -846,13 +838,13 @@ pub fn codegen_instr<B: Builder>(
                         let new_value_lo = safe_shr(builder, value, count);
                         let new_value_hi = {
                             let amount = dst.size().bit_width() + 1;
-                            let amount = builder.make_int_value(dst.size(), amount as u64, false);
+                            let amount = builder.make_int_value(dst.size(), amount as u64);
                             let amount = builder.sub(amount, count);
                             safe_shl(builder, value, amount)
                         };
                         let new_value_mid = {
                             let amount = dst.size().bit_width();
-                            let amount = builder.make_int_value(dst.size(), amount as u64, false);
+                            let amount = builder.make_int_value(dst.size(), amount as u64);
                             let amount = builder.sub(amount, count);
                             safe_shl(builder, cf, amount)
                         };
@@ -863,7 +855,7 @@ pub fn codegen_instr<B: Builder>(
                         };
 
                         let new_cf = {
-                            let one = builder.make_int_value(dst.size(), 1, false);
+                            let one = builder.make_int_value(dst.size(), 1);
                             let amount = builder.sub(count, one);
                             let new_cf = safe_shr(builder, value, amount);
                             let new_cf = builder.int_and(new_cf, one);
@@ -874,7 +866,7 @@ pub fn codegen_instr<B: Builder>(
                         let new_cf = builder.icmp(
                             ComparisonType::NotEqual,
                             new_cf,
-                            builder.make_int_value(dst.size(), 0, false),
+                            builder.make_int_value(dst.size(), 0),
                         );
 
                         // if count_orig != 1 this is undef
@@ -882,11 +874,8 @@ pub fn codegen_instr<B: Builder>(
                         let new_of = {
                             let msb = builder.extract_bit(
                                 value,
-                                builder.make_int_value(
-                                    dst.size(),
-                                    dst.size().bit_width() as u64 - 1,
-                                    false,
-                                ),
+                                builder
+                                    .make_int_value(dst.size(), dst.size().bit_width() as u64 - 1),
                             );
                             builder.bool_xor(msb, cf_bool)
                         };
@@ -1066,7 +1055,7 @@ pub fn codegen_instr<B: Builder>(
                 let is_zero = builder.icmp(
                     ComparisonType::Equal,
                     value,
-                    builder.make_int_value(value.size(), 0, false),
+                    builder.make_int_value(value.size(), 0),
                 );
                 builder.ifelse(
                     is_zero,
@@ -1076,7 +1065,7 @@ pub fn codegen_instr<B: Builder>(
                     |builder| {
                         let leading_zeroes = builder.ctlz(value);
                         let sz = value.size().bit_width() - 1;
-                        let sz = builder.make_int_value(value.size(), sz as u64, false);
+                        let sz = builder.make_int_value(value.size(), sz as u64);
                         let res = builder.sub(sz, leading_zeroes);
 
                         builder.store_operand(dst, res);

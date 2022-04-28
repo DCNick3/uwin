@@ -24,31 +24,31 @@ pub trait Builder {
     type IntValue: IntValue;
     type BoolValue: BoolValue;
 
-    fn make_int_value(&self, ty: IntType, value: u64, sign_extend: bool) -> Self::IntValue;
+    fn make_int_value(&self, ty: IntType, value: u64) -> Self::IntValue;
 
     fn make_u8(&self, value: u8) -> Self::IntValue {
-        self.make_int_value(IntType::I8, value as u64, false)
+        self.make_int_value(IntType::I8, value as u64)
     }
     fn make_u16(&self, value: u16) -> Self::IntValue {
-        self.make_int_value(IntType::I16, value as u64, false)
+        self.make_int_value(IntType::I16, value as u64)
     }
     fn make_u32(&self, value: u32) -> Self::IntValue {
-        self.make_int_value(IntType::I32, value as u64, false)
+        self.make_int_value(IntType::I32, value as u64)
     }
     fn make_u64(&self, value: u64) -> Self::IntValue {
-        self.make_int_value(IntType::I64, value as u64, false)
+        self.make_int_value(IntType::I64, value as u64)
     }
     fn make_i8(&self, value: i8) -> Self::IntValue {
-        self.make_int_value(IntType::I8, value as u64, true)
+        self.make_int_value(IntType::I8, value as u64)
     }
     fn make_i16(&self, value: i16) -> Self::IntValue {
-        self.make_int_value(IntType::I16, value as u64, false)
+        self.make_int_value(IntType::I16, value as u64)
     }
     fn make_i32(&self, value: i32) -> Self::IntValue {
-        self.make_int_value(IntType::I32, value as u64, false)
+        self.make_int_value(IntType::I32, value as u64)
     }
     fn make_i64(&self, value: i64) -> Self::IntValue {
-        self.make_int_value(IntType::I64, value as u64, false)
+        self.make_int_value(IntType::I64, value as u64)
     }
 
     fn make_true(&self) -> Self::BoolValue;
@@ -90,8 +90,8 @@ pub trait Builder {
     fn bool_to_int(&mut self, val: Self::BoolValue, size: IntType) -> Self::IntValue {
         self.select(
             val,
-            self.make_int_value(size, 1, false),
-            self.make_int_value(size, 0, false),
+            self.make_int_value(size, 1),
+            self.make_int_value(size, 0),
         )
     }
     fn bool_not(&mut self, val: Self::BoolValue) -> Self::BoolValue;
@@ -174,7 +174,7 @@ pub trait Builder {
 
         if let Some(index) = op.index {
             let scale = op.scale;
-            let scale = self.make_int_value(index.size(), scale as u64, false);
+            let scale = self.make_int_value(index.size(), scale as u64);
             let index_val = self.load_register(index);
             let scaled_val = self.mul(scale, index_val);
             res = self.add(res, scaled_val);
@@ -198,7 +198,7 @@ pub trait Builder {
                 let hi = self.zext(hi, double_size);
                 let hi = self.shl(
                     hi,
-                    self.make_int_value(double_size, size.bit_width() as u64, false),
+                    self.make_int_value(double_size, size.bit_width() as u64),
                 );
                 self.int_or(lo, hi)
             }
@@ -227,7 +227,7 @@ pub trait Builder {
 
                 let hipart = self.lshr(
                     value,
-                    self.make_int_value(value.size(), loreg.size().bit_width() as u64, false),
+                    self.make_int_value(value.size(), loreg.size().bit_width() as u64),
                 );
                 let hipart = self.trunc(hipart, loreg.size());
 
@@ -268,8 +268,7 @@ pub trait Builder {
     }
 
     fn extract_msb(&mut self, value: Self::IntValue) -> Self::BoolValue {
-        let bit_number =
-            self.make_int_value(value.size(), (value.size().bit_width() - 1) as u64, false);
+        let bit_number = self.make_int_value(value.size(), (value.size().bit_width() - 1) as u64);
         self.extract_bit(value, bit_number)
     }
 
@@ -277,7 +276,7 @@ pub trait Builder {
     // it might be beneficial to move to lazy computation like https://github.com/nepx/halfix does
 
     fn compute_and_store_zf(&mut self, value: Self::IntValue) {
-        let zero = self.make_int_value(value.size(), 0, false);
+        let zero = self.make_int_value(value.size(), 0);
         let zf = self.icmp(ComparisonType::Equal, value, zero);
         self.store_flag(Flag::Zero, zf)
     }

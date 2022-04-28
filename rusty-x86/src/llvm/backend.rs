@@ -528,8 +528,8 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
     // this represents i1
     type BoolValue = LlvmIntValue<'ctx>;
 
-    fn make_int_value(&self, ty: IntType, value: u64, sign_extend: bool) -> Self::IntValue {
-        self.int_type(ty).const_int(value, sign_extend)
+    fn make_int_value(&self, ty: IntType, value: u64) -> Self::IntValue {
+        self.int_type(ty).const_int(value, false)
     }
 
     fn make_true(&self) -> Self::BoolValue {
@@ -592,7 +592,7 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
                 .build_load(base_ptr, &*format!("{:?}", base))
                 .into_int_value();
 
-            let zero = self.make_int_value(register.size(), 0, false);
+            let zero = self.make_int_value(register.size(), 0);
             let ones = self.builder.build_not(zero, "");
             let mut ext = self.zext(ones, IntType::I32);
             if register.is_hi_reg() {
