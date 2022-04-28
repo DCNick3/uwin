@@ -10,80 +10,101 @@ pub enum IntValue {
     I16(u16),
     I32(u32),
     I64(u64),
+    Poison,
 }
 
 impl IntValue {
     pub fn into_u16(self) -> Option<u16> {
+        use IntValue::*;
         match self {
-            IntValue::I8(v) => Some(v as _),
-            IntValue::I16(v) => Some(v),
-            IntValue::I32(_) => None,
-            IntValue::I64(_) => None,
+            I8(v) => Some(v as _),
+            I16(v) => Some(v),
+            I32(_) => None,
+            I64(_) => None,
+            Poison => panic!("Poison"),
         }
     }
     pub fn into_u32(self) -> Option<u32> {
+        use IntValue::*;
         match self {
-            IntValue::I8(v) => Some(v as _),
-            IntValue::I16(v) => Some(v as _),
-            IntValue::I32(v) => Some(v),
-            IntValue::I64(_) => None,
+            I8(v) => Some(v as _),
+            I16(v) => Some(v as _),
+            I32(v) => Some(v),
+            I64(_) => None,
+            Poison => panic!("Poison"),
         }
     }
     pub fn into_u64(self) -> Option<u64> {
+        use IntValue::*;
         match self {
-            IntValue::I8(v) => Some(v as _),
-            IntValue::I16(v) => Some(v as _),
-            IntValue::I32(v) => Some(v as _),
-            IntValue::I64(v) => Some(v),
+            I8(v) => Some(v as _),
+            I16(v) => Some(v as _),
+            I32(v) => Some(v as _),
+            I64(v) => Some(v),
+            Poison => panic!("Poison"),
         }
     }
 
     pub fn into_i16(self) -> Option<i16> {
+        use IntValue::*;
         match self {
-            IntValue::I8(v) => Some(v as i8 as _),
-            IntValue::I16(v) => Some(v as _),
-            IntValue::I32(_) => None,
-            IntValue::I64(_) => None,
+            I8(v) => Some(v as i8 as _),
+            I16(v) => Some(v as _),
+            I32(_) => None,
+            I64(_) => None,
+            Poison => panic!("Poison"),
         }
     }
     pub fn into_i32(self) -> Option<i32> {
+        use IntValue::*;
         match self {
-            IntValue::I8(v) => Some(v as i8 as _),
-            IntValue::I16(v) => Some(v as i16 as _),
-            IntValue::I32(v) => Some(v as _),
-            IntValue::I64(_) => None,
+            I8(v) => Some(v as i8 as _),
+            I16(v) => Some(v as i16 as _),
+            I32(v) => Some(v as _),
+            I64(_) => None,
+            Poison => panic!("Poison"),
         }
     }
     pub fn into_i64(self) -> Option<i64> {
+        use IntValue::*;
         match self {
-            IntValue::I8(v) => Some(v as i8 as _),
-            IntValue::I16(v) => Some(v as i16 as _),
-            IntValue::I32(v) => Some(v as i32 as _),
-            IntValue::I64(v) => Some(v as _),
+            I8(v) => Some(v as i8 as _),
+            I16(v) => Some(v as i16 as _),
+            I32(v) => Some(v as i32 as _),
+            I64(v) => Some(v as _),
+            Poison => panic!("Poison"),
         }
     }
 
     pub fn as_u8(self) -> Option<u8> {
+        use IntValue::*;
         match self {
-            IntValue::I8(v) => Some(v),
+            I8(v) => Some(v),
+            Poison => panic!("Poison"),
             _ => None,
         }
     }
     pub fn as_u16(self) -> Option<u16> {
+        use IntValue::*;
         match self {
-            IntValue::I16(v) => Some(v),
+            I16(v) => Some(v),
+            Poison => panic!("Poison"),
             _ => None,
         }
     }
     pub fn as_u32(self) -> Option<u32> {
+        use IntValue::*;
         match self {
-            IntValue::I32(v) => Some(v),
+            I32(v) => Some(v),
+            Poison => panic!("Poison"),
             _ => None,
         }
     }
     pub fn as_u64(self) -> Option<u64> {
+        use IntValue::*;
         match self {
-            IntValue::I64(v) => Some(v),
+            I64(v) => Some(v),
+            Poison => panic!("Poison"),
             _ => None,
         }
     }
@@ -91,11 +112,13 @@ impl IntValue {
 
 impl IntValueTrait for IntValue {
     fn size(&self) -> IntType {
+        use IntValue::*;
         match self {
-            IntValue::I8(_) => IntType::I8,
-            IntValue::I16(_) => IntType::I16,
-            IntValue::I32(_) => IntType::I32,
-            IntValue::I64(_) => IntType::I64,
+            I8(_) => IntType::I8,
+            I16(_) => IntType::I16,
+            I32(_) => IntType::I32,
+            I64(_) => IntType::I64,
+            Poison => panic!("Poison"),
         }
     }
 }
@@ -109,6 +132,9 @@ pub struct InterpBuilder<'a> {
 }
 
 impl<'a> InterpBuilder<'a> {
+    /// # Safety
+    ///
+    /// TODO
     pub unsafe fn new(
         cpu_context: &'a mut CpuContext,
         memory_base: *mut u8,
@@ -156,17 +182,24 @@ impl<'a> Builder for InterpBuilder<'a> {
 
     fn load_register(&mut self, register: Register) -> Self::IntValue {
         let base = register.base_register();
-        assert!(!register.is_hi_reg());
         let value = self.cpu_context.gp_regs[base as usize];
-        self.make_int_value(register.size(), value as u64)
+        if register.is_hi_reg() {
+            self.make_u8((value >> 8) as u8)
+        } else {
+            self.make_int_value(register.size(), value as u64)
+        }
     }
 
     fn store_register(&mut self, register: Register, value: Self::IntValue) {
         let base = register.base_register();
-        assert!(!register.is_hi_reg());
         let old_value = self.cpu_context.gp_regs[base as usize];
-        let mask = ((1u64 << value.size().bit_width()) - 1) as u32;
-        let value = (old_value & (!mask)) | (value.into_u32().unwrap() & mask);
+
+        let value = if register.is_hi_reg() {
+            (old_value & 0xffff00ff) | ((value.as_u8().unwrap() as u32) << 8)
+        } else {
+            let mask = ((1u64 << value.size().bit_width()) - 1) as u32;
+            (old_value & (!mask)) | (value.into_u32().unwrap() & mask)
+        };
         self.cpu_context.gp_regs[base as usize] = value;
     }
 
@@ -221,6 +254,7 @@ impl<'a> Builder for InterpBuilder<'a> {
             IntValue::I64(v) => unsafe {
                 *std::mem::transmute::<_, *mut [u8; 8]>(address) = v.to_le_bytes()
             },
+            IntValue::Poison => panic!("Poison"),
         };
     }
 
@@ -238,10 +272,11 @@ impl<'a> Builder for InterpBuilder<'a> {
     fn int_neg(&mut self, val: Self::IntValue) -> Self::IntValue {
         use IntValue::*;
         match val {
-            I8(v) => I8(-(v as i8) as _),
-            I16(v) => I16(-(v as i16) as _),
-            I32(v) => I32(-(v as i32) as _),
-            I64(v) => I64(-(v as i64) as _),
+            I8(v) => I8((v as i8).wrapping_neg() as _),
+            I16(v) => I16((v as i16).wrapping_neg() as _),
+            I32(v) => I32((v as i32).wrapping_neg() as _),
+            I64(v) => I64((v as i64).wrapping_neg() as _),
+            Poison => panic!("Poison"),
         }
     }
 
@@ -274,6 +309,7 @@ impl<'a> Builder for InterpBuilder<'a> {
             I16(v) => I16(!v),
             I32(v) => I32(!v),
             I64(v) => I64(!v),
+            Poison => panic!("Poison"),
         }
     }
 
@@ -311,8 +347,10 @@ impl<'a> Builder for InterpBuilder<'a> {
     }
 
     fn shl(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue {
-        assert!(rhs.into_u64().unwrap() < lhs.size().bit_width() as u64);
         use IntValue::*;
+        if rhs.into_u64().unwrap() >= lhs.size().bit_width() as u64 {
+            return Poison;
+        }
         match (lhs, rhs) {
             (I8(lhs), I8(rhs)) => I8(lhs << rhs),
             (I16(lhs), I16(rhs)) => I16(lhs << rhs),
@@ -323,8 +361,10 @@ impl<'a> Builder for InterpBuilder<'a> {
     }
 
     fn lshr(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue {
-        assert!(rhs.into_u64().unwrap() < lhs.size().bit_width() as u64);
         use IntValue::*;
+        if rhs.into_u64().unwrap() >= lhs.size().bit_width() as u64 {
+            return Poison;
+        }
         match (lhs, rhs) {
             (I8(lhs), I8(rhs)) => I8(lhs >> rhs),
             (I16(lhs), I16(rhs)) => I16(lhs >> rhs),
@@ -376,6 +416,7 @@ impl<'a> Builder for InterpBuilder<'a> {
             IntValue::I16(v) => ((v >> bit) & 1) != 0,
             IntValue::I32(v) => ((v >> bit) & 1) != 0,
             IntValue::I64(v) => ((v >> bit) & 1) != 0,
+            IntValue::Poison => panic!("Poison"),
         }
     }
 
@@ -481,13 +522,13 @@ impl<'a> Builder for InterpBuilder<'a> {
         match cmp {
             Equal => lhs == rhs,
             NotEqual => lhs != rhs,
-            UnsignedGreater => !self.icmp(UnsignedLessOrEqual, rhs, lhs),
-            UnsignedGreaterOrEqual => !self.icmp(UnsignedLess, rhs, lhs),
+            UnsignedGreater => !self.icmp(UnsignedLessOrEqual, lhs, rhs),
+            UnsignedGreaterOrEqual => !self.icmp(UnsignedLess, lhs, rhs),
             UnsignedLess => lhs.into_u64().unwrap() < rhs.into_u64().unwrap(),
             UnsignedLessOrEqual => lhs.into_u64().unwrap() <= rhs.into_u64().unwrap(),
 
-            SignedGreater => !self.icmp(SignedLessOrEqual, rhs, lhs),
-            SignedGreaterOrEqual => !self.icmp(SignedLess, rhs, lhs),
+            SignedGreater => !self.icmp(SignedLessOrEqual, lhs, rhs),
+            SignedGreaterOrEqual => !self.icmp(SignedLess, lhs, rhs),
             SignedLess => lhs.into_i64().unwrap() < rhs.into_i64().unwrap(),
             SignedLessOrEqual => lhs.into_i64().unwrap() <= rhs.into_i64().unwrap(),
         }
@@ -542,15 +583,15 @@ impl<'a> Builder for InterpBuilder<'a> {
         panic!("Interpreter trapped!")
     }
 
-    fn ctpop(&mut self, value: Self::IntValue) -> Self::IntValue {
+    fn ctpop(&mut self, _value: Self::IntValue) -> Self::IntValue {
         todo!()
     }
 
-    fn ctlz(&mut self, value: Self::IntValue) -> Self::IntValue {
+    fn ctlz(&mut self, _value: Self::IntValue) -> Self::IntValue {
         todo!()
     }
 
-    fn cttz(&mut self, value: Self::IntValue) -> Self::IntValue {
+    fn cttz(&mut self, _value: Self::IntValue) -> Self::IntValue {
         todo!()
     }
 

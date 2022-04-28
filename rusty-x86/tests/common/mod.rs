@@ -7,6 +7,7 @@ use log::{debug, error, trace};
 use memchr::memchr;
 use memory_image::{MemoryImage, MemoryImageItem, Protection};
 use region::Allocation;
+use rusty_x86::interp::interpret_simple;
 use rusty_x86::llvm::backend::FASTCC_CALLING_CONVENTION;
 use rusty_x86::types::{BbFunc, CpuContext, Flag, FullSizeGeneralPurposeRegister};
 use std::cell::RefCell;
@@ -14,7 +15,7 @@ use std::collections::{BTreeMap, HashSet};
 use std::sync::Arc;
 use strum::IntoEnumIterator;
 use unicorn;
-use unicorn::Error::ETCH_UNMAPPED;
+use unicorn::Error::{ETCH_UNMAPPED, EXCEPTION};
 use unicorn::{CodeHookType, Cpu, CpuX86, Protection as UniProtection, RegisterX86};
 
 pub const CODE_ADDR: u32 = 0x200000;
@@ -174,7 +175,7 @@ fn execute_unicorn(code: CodeToTest) -> (CpuContext, MemoryImage, Vec<u32>) {
     let res = emu.emu_start(base_addr, end.unwrap_or(0), 10 * unicorn::SECOND_SCALE, 0);
     let eip = emu.reg_read(RegisterX86::EIP).unwrap();
     if let Err(e) = res {
-        if e == ETCH_UNMAPPED && eip as u32 == MAGIC_RETURN_ADDR {
+        if (e == ETCH_UNMAPPED || e == EXCEPTION) && eip as u32 == MAGIC_RETURN_ADDR {
             // all good
         } else {
             error!("Something bad happened with eip @ 0x{eip:08x}");
@@ -399,6 +400,7 @@ fn execute_rusty_x86(
 
     cpu_context.set_gp_reg(FullSizeGeneralPurposeRegister::ESP, esp);
 
+    debug!("Running test with {:?}", backend);
     match backend {
         Backend::Llvm => execute_rusty_x86_llvm(
             &mut cpu_context,
@@ -407,8 +409,11 @@ fn execute_rusty_x86(
             &image,
             entry,
         ),
-        Backend::Interp => todo!(),
+        Backend::Interp => unsafe {
+            interpret_simple(&mut cpu_context, target_mem_region.as_mut_ptr(), entry);
+        },
     }
+    debug!("Done running!");
 
     let mem: MemoryImage = image
         .iter()
@@ -449,6 +454,7 @@ fn context_to_flag_list(context: &CpuContext, flags: &[Flag]) -> Vec<Flag> {
         .collect()
 }
 
+#[derive(Debug)]
 pub enum Backend {
     Llvm,
     Interp,

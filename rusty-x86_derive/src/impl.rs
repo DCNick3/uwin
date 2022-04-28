@@ -225,6 +225,7 @@ impl ToTokens for TestSnippet {
                 fn get_code() -> Vec<u8> {
                     rusty_x86::assemble_x86!(
                         #code
+                        ; ret
                     )
                 }
 

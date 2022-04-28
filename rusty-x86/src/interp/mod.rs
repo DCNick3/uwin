@@ -19,10 +19,10 @@ pub unsafe fn interpret_simple(context: &mut CpuContext, memory: *mut u8, eip: u
     let data = std::slice::from_raw_parts(memory, 1usize << 32);
     let mut decoder = Decoder::new(32, data, DecoderOptions::NONE);
 
-    loop {
-        decoder.set_ip(eip as u64);
-        decoder.set_position(eip as usize).unwrap();
+    decoder.set_ip(eip as u64);
+    decoder.set_position(eip as usize).unwrap();
 
+    loop {
         let instr = decoder.decode();
 
         let flow = crate::codegen_instr(&mut builder, instr);

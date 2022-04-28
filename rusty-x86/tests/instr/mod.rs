@@ -616,6 +616,10 @@ mod neg {
             ; mov eax, -228
             ; neg eax
         ) [CF ZF SF OF],
+        neg_8_neg_0x80000000: (
+            ; mov eax, -0x80000000
+            ; neg eax
+        ) [CF ZF SF OF],
 
         neg_16_0: (
             ; mov ax, 0
@@ -633,6 +637,10 @@ mod neg {
             ; mov ax, -228
             ; neg ax
         ) [CF ZF SF OF],
+        neg_8_neg_0x8000: (
+            ; mov ax, -0x8000
+            ; neg ax
+        ) [CF ZF SF OF],
 
         neg_8_0: (
             ; mov al, 0
@@ -648,6 +656,10 @@ mod neg {
         ) [CF ZF SF OF],
         neg_8_neg_42: (
             ; mov al, -42
+            ; neg al
+        ) [CF ZF SF OF],
+        neg_8_neg_0x80: (
+            ; mov al, -0x80
             ; neg al
         ) [CF ZF SF OF],
 
@@ -1656,6 +1668,8 @@ mod stack {
             ; mov eax, 42
             ; push eax
             ; push ebx
+            ; add esp, 8
+            // want to return the stack back to the initial state, because a ret is added implicitly
         ) [CF ZF SF OF],
 
         // TODO: test leave instruction
