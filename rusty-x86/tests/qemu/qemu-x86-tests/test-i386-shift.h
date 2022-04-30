@@ -145,7 +145,8 @@ void exec_op(long s2, long s0, long s1)
 #endif
     exec_opl(s2, s0, s1, 0);
 #ifdef OP_SHIFTD
-    exec_opw(s2, s0, s1, 0);
+    if ((s1 & 0x1f) <= 16) // shld/shrd are undefined for amount > size
+        exec_opw(s2, s0, s1, 0);
 #else
     exec_opw(s2, s0, s1, 0);
 #endif
@@ -173,7 +174,13 @@ void glue(test_, OP)(void)
     for(i = 0; i < n; i++)
         exec_op(0x21ad3d34, 0x12345678, i);
     for(i = 0; i < n; i++)
-        exec_op(0x813f3421, 0x82345679, i);
+        exec_op(0x21ad3d34, 0x12345678, i);
+
+    // test masking
+    for(i = 0; i < n; i++)
+        exec_op(0x813f3421, 0x82345679, i + 32);
+    for(i = 0; i < n; i++)
+        exec_op(0x813f3421, 0x82345679, i + 32);
 }
 
 void *glue(_test_, OP) __init_call = glue(test_, OP);
@@ -181,5 +188,6 @@ void *glue(_test_, OP) __init_call = glue(test_, OP);
 #undef OP
 #undef OP_CC
 #undef OP_SHIFTD
+#undef OP_ROTATE
 #undef OP_NOBYTE
 #undef EXECSHIFT

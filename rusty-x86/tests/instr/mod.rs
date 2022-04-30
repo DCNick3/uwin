@@ -1383,6 +1383,65 @@ mod rcr {
     }
 }
 
+mod shld {
+    test_snippets! {
+        shld_zero: (
+            ; mov eax, 0x1
+            ; mov ebx, 0x2
+            ; shld eax, ebx, 0x0
+        ) [CF ZF SF OF],
+        shld_one: (
+            ; mov eax, 0x1
+            ; mov ebx, 0x2
+            ; shld eax, ebx, 0x1
+        ) [CF ZF SF OF],
+        shld_two: (
+            ; mov eax, 0x1
+            ; mov ebx, 0x2
+            ; shld eax, ebx, 0x2
+        ) [CF ZF SF],
+        shld_one_wrap: (
+            ; mov eax, 0x1
+            ; mov ebx, 0x2
+            ; shld eax, ebx, 0x21
+        ) [CF ZF SF OF],
+        shld_two_wrap: (
+            ; mov eax, 0x1
+            ; mov ebx, 0x2
+            ; shld eax, ebx, 0x22
+        ) [CF ZF SF],
+    }
+}
+mod shrd {
+    test_snippets! {
+        shrd_zero: (
+            ; mov eax, 0x1
+            ; mov ebx, 0x2
+            ; shrd eax, ebx, 0x0
+        ) [CF ZF SF OF],
+        shrd_one: (
+            ; mov eax, 0x1
+            ; mov ebx, 0x2
+            ; shrd eax, ebx, 0x1
+        ) [CF ZF SF OF],
+        shrd_two: (
+            ; mov eax, 0x1
+            ; mov ebx, 0x2
+            ; shrd eax, ebx, 0x2
+        ) [CF ZF SF],
+        shrd_one_wrap: (
+            ; mov eax, 0x1
+            ; mov ebx, 0x2
+            ; shrd eax, ebx, 0x21
+        ) [CF ZF SF OF],
+        shrd_two_wrap: (
+            ; mov eax, 0x1
+            ; mov ebx, 0x2
+            ; shrd eax, ebx, 0x22
+        ) [CF ZF SF],
+    }
+}
+
 mod div {
     test_snippets!(
         div_basic1: (

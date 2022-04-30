@@ -42,8 +42,8 @@
 // #define TEST_ROL 1
 // #define TEST_ROR 1
 // #define TEST_RCL 1
-// #define TEST_SHLD 1
-// #define TEST_SHRD 1
+#define TEST_SHLD 1
+#define TEST_SHRD 1
 // #define TEST_BT 1
 // #define TEST_BTC 1
 // #define TEST_BTR 1
@@ -163,21 +163,25 @@ static inline long i2l(long v)
 
 #ifdef TEST_ROL
 #define OP rol
+#define OP_ROTATE
 #include "test-i386-shift.h"
 #endif
 
 #ifdef TEST_ROR
 #define OP ror
+#define OP_ROTATE
 #include "test-i386-shift.h"
 #endif
 
 #define OP rcr
 #define OP_CC
+#define OP_ROTATE
 #include "test-i386-shift.h"
 
 #ifdef TEST_RCL
 #define OP rcl
 #define OP_CC
+#define OP_ROTATE
 #include "test-i386-shift.h"
 #endif
 

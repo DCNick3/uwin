@@ -889,6 +889,73 @@ pub fn codegen_instr<B: Builder>(
                     },
                 );
             }
+            Shld | Shrd => {
+                operands!([dst, src, count], &instr);
+
+                let count = builder.load_operand(count);
+                let count_mask = builder.make_int_value(count.size(), 0x1f);
+                let count = builder.int_and(count, count_mask);
+                let count = builder.zext(count, dst.size());
+
+                let count_not_zero = builder.icmp(
+                    ComparisonType::NotEqual,
+                    count,
+                    builder.make_int_value(count.size(), 0),
+                );
+                builder.ifelse(
+                    count_not_zero,
+                    |builder| {
+                        let val = builder.load_operand(dst);
+
+                        let cf_bit_number = if mnemonic == Shld {
+                            builder.sub(
+                                builder.make_int_value(dst.size(), dst.size().bit_width() as u64),
+                                count,
+                            )
+                        } else {
+                            builder.sub(count, builder.make_int_value(dst.size(), 1))
+                        };
+                        let cf = builder.extract_bit(val, cf_bit_number);
+
+                        let old_sign = builder.extract_msb(val);
+
+                        let shift_in = builder.load_operand(src);
+
+                        let count = builder.zext(count, val.size().double_sized());
+
+                        let res = if mnemonic == Shld {
+                            let double_val = builder.int_concat(val, shift_in);
+                            // shift left
+                            let shifted = builder.shl(double_val, count);
+                            // extract the hi part (our result)
+                            builder.lshr(
+                                shifted,
+                                builder.make_int_value(
+                                    double_val.size(),
+                                    dst.size().bit_width() as u64,
+                                ),
+                            )
+                        } else {
+                            let double_val = builder.int_concat(shift_in, val);
+                            builder.lshr(double_val, count)
+                        };
+
+                        // clip off the hi part (we don't store it)
+                        let res = builder.trunc(res, dst.size());
+
+                        let new_sign = builder.extract_msb(res);
+                        let of = builder.bool_xor(old_sign, new_sign);
+
+                        builder.compute_and_store_zf(res);
+                        builder.compute_and_store_sf(res);
+                        builder.store_flag(Carry, cf);
+                        builder.store_flag(Overflow, of);
+
+                        builder.store_operand(dst, res);
+                    },
+                    |_| {},
+                );
+            }
             Div | Idiv => {
                 operands!([src], &instr);
 

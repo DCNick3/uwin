@@ -84,6 +84,16 @@ pub trait Builder {
         self.sub(lhs, whole)
     }
 
+    fn int_concat(&mut self, hi: Self::IntValue, lo: Self::IntValue) -> Self::IntValue {
+        assert_eq!(hi.size(), lo.size());
+        let size = hi.size().double_sized();
+        let hi = self.zext(hi, size);
+        let lo = self.zext(lo, size);
+        let hi = self.shl(hi, self.make_int_value(size, size.bit_width() as u64 / 2));
+
+        self.int_or(hi, lo)
+    }
+
     // bit should be in bounds! otherwise results in ub
     fn extract_bit(&mut self, val: Self::IntValue, bit: Self::IntValue) -> Self::BoolValue;
 
