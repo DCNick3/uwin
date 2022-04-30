@@ -587,8 +587,15 @@ impl<'a> Builder for InterpBuilder<'a> {
         todo!()
     }
 
-    fn ctlz(&mut self, _value: Self::IntValue) -> Self::IntValue {
-        todo!()
+    fn ctlz(&mut self, value: Self::IntValue) -> Self::IntValue {
+        use IntValue::*;
+        match value {
+            I8(v) => I8(v.leading_zeros() as _),
+            I16(v) => I16(v.leading_zeros() as _),
+            I32(v) => I32(v.leading_zeros() as _),
+            I64(v) => I64(v.leading_zeros() as _),
+            Poison => panic!("Poison!"),
+        }
     }
 
     fn cttz(&mut self, _value: Self::IntValue) -> Self::IntValue {

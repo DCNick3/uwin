@@ -42,13 +42,15 @@
 // #define TEST_ROL 1
 // #define TEST_ROR 1
 // #define TEST_RCL 1
+#define TEST_RCR 1
 #define TEST_SHLD 1
 #define TEST_SHRD 1
 // #define TEST_BT 1
 // #define TEST_BTC 1
 // #define TEST_BTR 1
 // #define TEST_BTS 1
-// #define TEST_BSX_EN 1 /*_EN because TEST_BSX is already used for a macro (whoops)*/
+#define TEST_BSR 1
+// #define TEST_BSF 1
 // #define TEST_XLAT 1
 // #define TEST_CBW 1
 // #define TEST_CWDE 1
@@ -173,10 +175,12 @@ static inline long i2l(long v)
 #include "test-i386-shift.h"
 #endif
 
+#ifdef TEST_RCR
 #define OP rcr
 #define OP_CC
 #define OP_ROTATE
 #include "test-i386-shift.h"
+#endif
 
 #ifdef TEST_RCL
 #define OP rcl
@@ -756,7 +760,6 @@ void test_mul(void)
 #endif
 }
 
-#ifdef TEST_BSX_EN
 #define TEST_BSX(op, size, op0)\
 {\
     long res, val, resz;\
@@ -771,14 +774,23 @@ void test_mul(void)
 
 void test_bsx(void)
 {
+
+#ifdef TEST_BSR
     TEST_BSX(bsrw, "w", 0);
     TEST_BSX(bsrw, "w", 0x12340128);
-    TEST_BSX(bsfw, "w", 0);
-    TEST_BSX(bsfw, "w", 0x12340128);
+
     TEST_BSX(bsrl, "k", 0);
     TEST_BSX(bsrl, "k", 0x00340128);
+#endif
+
+#ifdef TEST_BSF
+    TEST_BSX(bsfw, "w", 0);
+    TEST_BSX(bsfw, "w", 0x12340128);
+
     TEST_BSX(bsfl, "k", 0);
     TEST_BSX(bsfl, "k", 0x00340128);
+#endif
+
 #if defined(__x86_64__)
     TEST_BSX(bsrq, "", 0);
     TEST_BSX(bsrq, "", 0x003401281234);
@@ -786,7 +798,6 @@ void test_bsx(void)
     TEST_BSX(bsfq, "", 0x003401281234);
 #endif
 }
-#endif
 
 /**********************************************/
 
@@ -1443,9 +1454,7 @@ int _start()
         func = *ptr++;
         func();
     }
-#ifdef TEST_BSX_EN
     test_bsx();
-#endif
     test_mul();
     test_jcc();
 #ifdef TEST_LOOP
