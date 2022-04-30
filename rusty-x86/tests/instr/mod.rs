@@ -339,6 +339,115 @@ mod add {
     }
 }
 
+mod adc {
+    test_snippets! {
+        adc_1_2: (
+            ; mov eax, 1
+            ; adc eax, 2
+        ) [CF ZF SF OF],
+        adc_2_1: (
+            ; mov eax, 2
+            ; adc eax, 1
+        ) [CF ZF SF OF],
+        adc_0_1: (
+            ; mov eax, 0
+            ; adc eax, 1
+        ) [CF ZF SF OF],
+        adc_1_1: (
+            ; mov eax, 1
+            ; adc eax, 1
+        ) [CF ZF SF OF],
+        adc_neg_1_1: (
+            ; mov eax, -1
+            ; adc eax, 1
+        ) [CF ZF SF OF],
+        adc_1_neg_1: (
+            ; mov eax, 1
+            ; adc eax, -1
+        ) [CF ZF SF OF],
+        adc_0x7fffffff_1: (
+            ; mov eax, 0x7fffffff
+            ; adc eax, 1
+        ) [CF ZF SF OF],
+        adc_1_0x7fffffff: (
+            ; mov eax, 1
+            ; adc eax, 0x7fffffff
+        ) [CF ZF SF OF],
+        adc_neg_0x80000000_0: (
+            ; mov eax, -0x80000000
+            ; adc eax, 0
+        ) [CF ZF SF OF],
+        adc_neg_0x80000000_1: (
+            ; mov eax, -0x80000000
+            ; adc eax, 1
+        ) [CF ZF SF OF],
+
+        stc_adc_0x7fffffff_neg_1: (
+            ; stc
+            ; mov eax, 0x7fffffff
+            ; mov ebx, -1
+            ; adc eax, ebx
+        ) [CF ZF SF OF],
+        stc_adc_neg_1_neg_1: (
+            ; stc
+            ; mov eax, -1
+            ; mov ebx, -1
+            ; adc eax, ebx
+        ) [CF ZF SF OF],
+
+        stc_adc_1_2: (
+            ; stc
+            ; mov eax, 1
+            ; adc eax, 2
+        ) [CF ZF SF OF],
+        stc_adc_2_1: (
+            ; stc
+            ; mov eax, 2
+            ; adc eax, 1
+        ) [CF ZF SF OF],
+        stc_adc_0_1: (
+            ; stc
+            ; mov eax, 0
+            ; adc eax, 1
+        ) [CF ZF SF OF],
+        stc_adc_1_1: (
+            ; stc
+            ; mov eax, 1
+            ; adc eax, 1
+        ) [CF ZF SF OF],
+        stc_adc_neg_1_1: (
+            ; stc
+            ; mov eax, -1
+            ; adc eax, 1
+        ) [CF ZF SF OF],
+        stc_adc_1_neg_1: (
+            ; stc
+            ; mov eax, 1
+            ; adc eax, -1
+        ) [CF ZF SF OF],
+        stc_adc_0x7fffffff_1: (
+            ; stc
+            ; mov eax, 0x7fffffff
+            ; adc eax, 1
+        ) [CF ZF SF OF],
+        stc_adc_1_0x7fffffff: (
+            ; stc
+            ; mov eax, 1
+            ; adc eax, 0x7fffffff
+        ) [CF ZF SF OF],
+        stc_adc_neg_0x80000000_0: (
+            ; stc
+            ; mov eax, -0x80000000
+            ; adc eax, 0
+        ) [CF ZF SF OF],
+        stc_adc_neg_0x80000000_1: (
+            ; stc
+            ; mov eax, -0x80000000
+            ; adc eax, 1
+        ) [CF ZF SF OF],
+    }
+}
+
 mod cmp {
     test_snippets! {
         cmp_cmov_eq: (

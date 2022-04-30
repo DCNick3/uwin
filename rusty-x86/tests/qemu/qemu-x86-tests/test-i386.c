@@ -38,7 +38,7 @@
 // #define TEST_LODS 1
 // #define TEST_XADD 1
 // #define TEST_CMPXCHG 1
-// #define TEST_ADC 1
+#define TEST_ADC 1
 // #define TEST_ROL 1
 // #define TEST_ROR 1
 // #define TEST_RCL 1
@@ -52,8 +52,8 @@
 #define TEST_BSR 1
 // #define TEST_BSF 1
 // #define TEST_XLAT 1
-// #define TEST_CBW 1
-// #define TEST_CWDE 1
+#define TEST_CBW 1
+#define TEST_CWDE 1
 // #define TEST_BSWAP 1
 // #define TEST_LEA16_EN 1
 

@@ -395,6 +395,36 @@ pub fn codegen_instr<B: Builder>(
                 builder.store_flag(Flag::Overflow, of);
                 builder.store_flag(Flag::Carry, cf);
             }
+            Adc => {
+                operands!([dst, src], &instr);
+
+                let lhs = builder.load_operand(dst);
+                let rhs = builder.load_operand(src);
+
+                let carry = builder.load_flag(Carry);
+                let carry = builder.bool_to_int(carry, lhs.size());
+
+                let res = builder.add(lhs, rhs);
+
+                let of_base = builder.sadd_overflow(lhs, rhs);
+                let of_borrow = builder.sadd_overflow(res, carry);
+                let of = builder.bool_xor(of_base, of_borrow);
+
+                let cf_base = builder.uadd_overflow(lhs, rhs);
+                let cf_borrow = builder.uadd_overflow(res, carry);
+                let cf = builder.bool_xor(cf_base, cf_borrow);
+
+                let res = builder.add(res, carry);
+                builder.store_operand(dst, res);
+
+                // The OF, SF, ZF, AF, PF, and CF flags are set according to the result.
+                // AF and PF are not implemented rn
+                // not that they are actually useful...
+                builder.compute_and_store_zf(res);
+                builder.compute_and_store_sf(res);
+                builder.store_flag(Overflow, of);
+                builder.store_flag(Carry, cf);
+            }
             Sub | Cmp => {
                 operands!([dst, src], &instr);
 
