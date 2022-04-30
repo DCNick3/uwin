@@ -179,8 +179,6 @@ impl Msvc {
                 "odbc32.lib",
                 "odbccp32.lib",
                 "/nologo",
-                "/subsystem:console",
-                "/entry:WinMainCRTStartup",
                 "/machine:I386",
                 "/debug",
                 "/debugtype:coff",
