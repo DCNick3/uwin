@@ -13,10 +13,13 @@ core-memmgr = { path = "../core-memmgr" }
 core-heap = { path = "../core-heap" }
 core-abi = { path = "../core-abi" }
 core-str = { path = "../core-str" }
+core-console = { path = "../core-console" }
 win32 = { path = "../win32" }
 win32-heapmgr = { path = "../win32-heapmgr" }
 win32-virtmem = { path = "../win32-virtmem" }
 win32-module-table = { path = "../win32-module-table" }
+win32-kobj = { path = "../win32-kobj" }
+win32-io = { path = "../win32-io" }
 
 tracing = "0.1.33"
 tracing-subscriber = { version = "0.3.11", features = ["env-filter"] }

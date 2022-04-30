@@ -1,5 +1,5 @@
 [package]
-name = "win32-kobj"
+name = "win32-io"
 version = "0.1.0"
 edition = "2021"
 
@@ -9,5 +9,6 @@ edition = "2021"
 core-mem = { path = "../core-mem" }
 core-console = { path = "../core-console" }
 win32 = { path = "../win32" }
+win32-kobj = { path = "../win32-kobj" }
 
 tracing = "0.1.34"

@@ -12,12 +12,15 @@ use recompiler::memory_image::{MemoryImageItem, Protection};
 use rusty_x86_runtime::{CpuContext, ExtendedContext, PROGRAM_IMAGE};
 use std::collections::HashSet;
 use std::sync::{Arc, Mutex};
-use tracing::trace;
+use tracing::{info, trace};
 use tracing_subscriber::fmt::format;
 use tracing_subscriber::layer::SubscriberExt;
+use tracing_subscriber::util::SubscriberInitExt;
 use win32::core::Win32Context;
 use win32::Win32::Foundation::HINSTANCE;
 use win32_heapmgr::HeapMgr;
+use win32_io::IoDispatcher;
+use win32_kobj::{KernelHandleTable, KernelObject};
 use win32_module_table::ModuleTable;
 use win32_virtmem::VirtualMemoryManager;
 
@@ -104,6 +107,15 @@ fn main_impl() {
     // for now, I don't care, but this... Might be problematic
     let environment_strings_oem = vec![0u8; 2];
 
+    let console = Arc::new(core_console::StdioConsole {});
+
+    let mut handle_table = KernelHandleTable::new();
+    let stdin_handle = handle_table.put(Arc::new(KernelObject::Console(console.clone())));
+    let stdout_handle = handle_table.put(Arc::new(KernelObject::Console(console.clone())));
+    let stderr_handle = handle_table.put(Arc::new(KernelObject::Console(console.clone())));
+
+    let handle_table = Arc::new(Mutex::new(handle_table));
+
     // ===
 
     context.win32.insert(Arc::new(WindowsAndMessaging {
@@ -140,6 +152,9 @@ fn main_impl() {
 
     context.win32.insert(Arc::new(Console {
         process_ctx: process_ctx.clone(),
+        stdin_handle,
+        stdout_handle,
+        stderr_handle,
     }) as Arc<dyn win32::Win32::System::Console::Api>);
 
     context.win32.insert(Arc::new(WindowsProgramming {
@@ -157,12 +172,17 @@ fn main_impl() {
         process_ctx: process_ctx.clone(),
     }) as Arc<dyn win32::Win32::Globalization::Api>);
 
+    context.win32.insert(Arc::new(FileSystem {
+        process_ctx: process_ctx.clone(),
+        io_dispatcher: IoDispatcher::new(handle_table.clone()),
+    }) as Arc<dyn win32::Win32::Storage::FileSystem::Api>);
+
     let res = rusty_x86_runtime::execute_recompiled_code(&mut context, memory_ctx, entry);
     trace!("execute_recompiled_code returned 0x{:08x}", res);
 
     if res == 0 {
         if let Some(reason) = context.unwind_reason {
-            trace!("The recompiled stack was unwound, reason = {reason:?}")
+            trace!("The recompiled stack was unwound, reason = {:?}", reason)
         } else {
             panic!(
                 "Zero continuation address without an unwind reason set. Sounds like an ABI crime"
@@ -176,7 +196,7 @@ fn main_impl() {
         todo!("Re-entering the code execution after yielding") // Not sure of all the consequences of just doing it
     }
 
-    println!(
+    info!(
         "Interpreted (due to missing recompiled functions) these basic blocks:\n{}",
         context
             .interpreted_blocks
@@ -188,12 +208,11 @@ fn main_impl() {
 }
 
 fn main() {
-    tracing::subscriber::set_global_default(
-        tracing_subscriber::registry()
-            .with(tracing_subscriber::fmt::Layer::new().event_format(format().compact()))
-            .with(tracing_tracy::TracyLayer::new()),
-    )
-    .expect("Setting up logging");
+    tracing_subscriber::registry()
+        // .with(tracing_tracy::TracyLayer::new())
+        .with(tracing_subscriber::fmt::Layer::new().event_format(format().compact()))
+        .with(tracing_subscriber::EnvFilter::from_default_env())
+        .init();
 
     main_impl();
 }

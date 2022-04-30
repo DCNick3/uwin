@@ -12,13 +12,17 @@ use tracing::{info, warn};
 use win32::core::prelude::{PCSTR, PSTR};
 use win32::Win32::Foundation::{BOOL, HANDLE, HINSTANCE, HWND, INVALID_HANDLE_VALUE};
 use win32::Win32::Globalization::CPINFO;
-use win32::Win32::System::Console::STD_HANDLE;
+use win32::Win32::System::Console::{
+    STD_ERROR_HANDLE, STD_HANDLE, STD_INPUT_HANDLE, STD_OUTPUT_HANDLE,
+};
 use win32::Win32::System::Memory::{
     HeapHandle, HEAP_FLAGS, HEAP_NO_SERIALIZE, PAGE_PROTECTION_FLAGS, VIRTUAL_ALLOCATION_TYPE,
 };
 use win32::Win32::System::Threading::STARTUPINFOA;
+use win32::Win32::System::IO::OVERLAPPED;
 use win32::Win32::UI::WindowsAndMessaging::{MESSAGEBOX_RESULT, MESSAGEBOX_STYLE};
 use win32_heapmgr::HeapMgr;
+use win32_io::IoDispatcher;
 use win32_module_table::ModuleTable;
 use win32_virtmem::VirtualMemoryManager;
 
@@ -203,13 +207,22 @@ impl win32::Win32::System::Threading::Api for Threading {
 
 pub struct Console {
     pub process_ctx: ProcessContext,
+    pub stdin_handle: HANDLE,
+    pub stdout_handle: HANDLE,
+    pub stderr_handle: HANDLE,
 }
 #[allow(non_snake_case)]
 impl win32::Win32::System::Console::Api for Console {
     fn GetStdHandle(&self, n_std_handle: STD_HANDLE) -> HANDLE {
-        warn!("Returning invalid handle for std handle {:?}", n_std_handle);
-
-        INVALID_HANDLE_VALUE
+        if n_std_handle == STD_INPUT_HANDLE {
+            self.stdin_handle
+        } else if n_std_handle == STD_OUTPUT_HANDLE {
+            self.stdout_handle
+        } else if n_std_handle == STD_ERROR_HANDLE {
+            self.stderr_handle
+        } else {
+            INVALID_HANDLE_VALUE
+        }
     }
 }
 
@@ -273,5 +286,40 @@ impl win32::Win32::Globalization::Api for Globalization {
     fn GetCPInfo(&self, _code_page: u32, _lp_cp_info: MutPtr<CPINFO>) -> BOOL {
         warn!("Returning an error from GetCPInfo (not implemented yet :shrug:)");
         BOOL(0)
+    }
+}
+
+pub struct FileSystem {
+    pub process_ctx: ProcessContext,
+    pub io_dispatcher: IoDispatcher,
+}
+
+#[allow(non_snake_case)]
+impl win32::Win32::Storage::FileSystem::Api for FileSystem {
+    fn GetFileType(&self, h_file: HANDLE) -> u32 {
+        self.io_dispatcher.get_file_type(h_file)
+    }
+
+    fn WriteFile(
+        &self,
+        h_file: HANDLE,
+        lp_buffer: ConstPtr<c_void>,
+        n_number_of_bytes_to_write: u32,
+        lp_number_of_bytes_written: MutPtr<u32>,
+        lp_overlapped: MutPtr<OVERLAPPED>,
+    ) -> BOOL {
+        assert_eq!(lp_overlapped, MutPtr::null());
+        let ctx = self.process_ctx.memory_ctx;
+
+        let bytes = lp_buffer
+            .pun::<u8>()
+            .read_bytes(ctx, n_number_of_bytes_to_write);
+
+        let (ok, written) = self.io_dispatcher.write_file(h_file, &bytes);
+
+        assert_ne!(lp_number_of_bytes_written, MutPtr::null());
+        lp_number_of_bytes_written.write_with(ctx, written);
+
+        ok.into()
     }
 }

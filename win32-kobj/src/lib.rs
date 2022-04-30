@@ -1,17 +1,14 @@
+use core_console::Console;
 use core_mem::ptr::PtrRepr;
 use std::cmp::min;
 use std::sync::Arc;
 use tracing::trace;
 use win32::Win32::Foundation::HANDLE;
 
-pub enum ConsoleType {
-    Stdin,
-    Stdout,
-}
-
+#[non_exhaustive]
 pub enum KernelObject {
     // TODO: actually store handler for writing/reading?
-    Console(ConsoleType),
+    Console(Arc<dyn Console>),
 }
 
 pub struct KernelHandleTable {
@@ -44,7 +41,7 @@ impl KernelHandleTable {
             .enumerate()
             .skip(self.start_free_search_idx as usize)
         {
-            if let None = *v {
+            if v.is_none() {
                 *v = Some(object);
                 self.start_free_search_idx = i;
                 return Self::index_to_handle(i);
@@ -62,7 +59,7 @@ impl KernelHandleTable {
         self.put(object)
     }
 
-    pub fn find(&mut self, handle: HANDLE) -> Option<Arc<KernelObject>> {
+    pub fn find(&self, handle: HANDLE) -> Option<Arc<KernelObject>> {
         self.table.get(Self::handle_to_index(handle)).cloned()?
     }
 
@@ -84,11 +81,12 @@ impl Default for KernelHandleTable {
 
 #[cfg(test)]
 mod test {
-    use crate::{ConsoleType, KernelHandleTable, KernelObject};
+    use crate::{KernelHandleTable, KernelObject};
+    use core_console::DummyConsole;
     use std::sync::Arc;
 
-    fn newobj() -> Arc<KernelObject> {
-        Arc::new(KernelObject::Console(ConsoleType::Stdout))
+    fn new_obj() -> Arc<KernelObject> {
+        Arc::new(KernelObject::Console(Arc::new(DummyConsole {})))
     }
 
     #[test]
@@ -99,7 +97,7 @@ mod test {
 
         let mut handles = Vec::new();
         for _ in 0..17 {
-            handles.push(table.put(newobj()));
+            handles.push(table.put(new_obj()));
         }
 
         println!("Allocated handles: {:?}", handles);
@@ -114,6 +112,6 @@ mod test {
         assert!(table.remove(handles[0]).is_some());
 
         // handle was reused!
-        assert_eq!(table.put(newobj()), handles[0]);
+        assert_eq!(table.put(new_obj()), handles[0]);
     }
 }

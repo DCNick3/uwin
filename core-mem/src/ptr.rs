@@ -36,6 +36,21 @@ impl RawPtr {
         ctx.write::<N>(value, self.value)
     }
 
+    pub fn read_bytes(&self, ctx: impl MemoryCtx, count: PtrRepr) -> Vec<u8> {
+        let mut res = Vec::new();
+        res.reserve(count as usize);
+        for i in 0..count {
+            res.push(self.offset(i as PtrDiffRepr).read_with(ctx));
+        }
+        res
+    }
+
+    pub fn write_bytes(&self, ctx: impl MemoryCtx, bytes: &[u8]) {
+        for (i, &val) in bytes.iter().enumerate() {
+            self.offset(i as PtrDiffRepr).write_with(ctx, val)
+        }
+    }
+
     pub fn offset(&self, offset: PtrDiffRepr) -> Self {
         let res = if offset < 0 {
             self.value - ((-offset) as u32)
@@ -56,6 +71,12 @@ impl<T> MutPtr<T> {
     pub fn repr(&self) -> PtrRepr {
         self.0.value
     }
+    pub const fn null() -> Self {
+        Self::new(0)
+    }
+    pub fn pun<T1>(&self) -> ConstPtr<T1> {
+        ConstPtr(self.0, Default::default())
+    }
 }
 impl<T: FromIntoMemory> MutPtr<T> {
     pub fn read_with<N: FromIntoMemory, MCtx: MemoryCtx>(&self, ctx: MCtx) -> N {
@@ -66,11 +87,16 @@ impl<T: FromIntoMemory> MutPtr<T> {
     }
 
     pub fn offset(&self, offset: PtrDiffRepr) -> Self {
-        Self(self.0.offset(offset), Default::default())
+        let size: PtrDiffRepr = T::size().try_into().unwrap();
+        Self(self.0.offset(offset * size), Default::default())
     }
-
-    pub fn pun<T1>(&self) -> ConstPtr<T1> {
-        ConstPtr(self.0, Default::default())
+}
+impl MutPtr<u8> {
+    pub fn read_bytes(&self, ctx: impl MemoryCtx, count: PtrRepr) -> Vec<u8> {
+        self.0.read_bytes(ctx, count)
+    }
+    pub fn write_bytes(&self, ctx: impl MemoryCtx, bytes: &[u8]) {
+        self.0.write_bytes(ctx, bytes)
     }
 }
 
@@ -118,6 +144,17 @@ impl<T> ConstPtr<T> {
     pub fn repr(&self) -> PtrRepr {
         self.0.value
     }
+    pub const fn null() -> Self {
+        Self::new(0)
+    }
+    pub fn pun<T1>(&self) -> ConstPtr<T1> {
+        ConstPtr(self.0, Default::default())
+    }
+}
+impl ConstPtr<u8> {
+    pub fn read_bytes(&self, ctx: impl MemoryCtx, count: PtrRepr) -> Vec<u8> {
+        self.0.read_bytes(ctx, count)
+    }
 }
 impl<T: FromIntoMemory> ConstPtr<T> {
     pub fn read_with<N: FromIntoMemory, MCtx: MemoryCtx>(&self, ctx: MCtx) -> N {
@@ -125,11 +162,8 @@ impl<T: FromIntoMemory> ConstPtr<T> {
     }
 
     pub fn offset(&self, offset: PtrDiffRepr) -> Self {
-        Self(self.0.offset(offset), Default::default())
-    }
-
-    pub fn pun<T1>(&self) -> ConstPtr<T1> {
-        ConstPtr(self.0, Default::default())
+        let size: PtrDiffRepr = T::size().try_into().unwrap();
+        Self(self.0.offset(offset * size), Default::default())
     }
 }
 

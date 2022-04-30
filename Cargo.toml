@@ -19,12 +19,14 @@ members = [
     "core-heap",
     "core-abi",
     "core-str",
+    "core-console",
 
     "win32",
     "win32-heapmgr",
     "win32-virtmem",
     "win32-module-table",
     "win32-kobj",
+    "win32-io",
 
     "win32-bindgen/bindgen",
     "win32-bindgen/bindgenlib",

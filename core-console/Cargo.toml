@@ -1,13 +1,10 @@
 [package]
-name = "win32-kobj"
+name = "core-console"
 version = "0.1.0"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-core-mem = { path = "../core-mem" }
-core-console = { path = "../core-console" }
-win32 = { path = "../win32" }
-
+ascii = "1.0.0"
 tracing = "0.1.34"

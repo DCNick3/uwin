@@ -167,14 +167,16 @@ pub(crate) fn thunk_helper(
 
         let fields = CALLSITE.metadata().fields();
 
-        tracing::event::Event::dispatch(
-            CALLSITE.metadata(),
-            &fields.value_set(&[(
-                &unsafe { fields.iter().next().unwrap_unchecked() },
-                Some(&format_args!("ret_addr = {:#010x}", call.return_address())
-                    as &dyn tracing::Value),
-            )]),
-        );
+        if trace_event_enabled {
+            tracing::event::Event::dispatch(
+                CALLSITE.metadata(),
+                &fields.value_set(&[(
+                    &unsafe { fields.iter().next().unwrap_unchecked() },
+                    Some(&format_args!("ret_addr = {:#010x}", call.return_address())
+                        as &dyn tracing::Value),
+                )]),
+            );
+        }
 
         body(call, &context.win32, trace_event_enabled, &CALLSITE)
     }));
