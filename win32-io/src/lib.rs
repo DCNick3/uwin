@@ -24,6 +24,26 @@ impl IoDispatcher {
             .unwrap_or(FILE_TYPE_UNKNOWN)
     }
 
+    pub fn read_file(&self, handle: HANDLE, bytes: &mut [u8]) -> (bool, u32) {
+        let handle_table = self.handle_table.lock().unwrap();
+        let file = match handle_table.find(handle) {
+            Some(f) => f,
+            None => return (false, 0),
+        };
+        match &*file {
+            KernelObject::Console(console) => {
+                match console.read(bytes) {
+                    Ok(written) => (true, written.try_into().unwrap()),
+                    Err(_) => {
+                        // TODO: map errors to win32 errors somehow
+                        (false, 0)
+                    }
+                }
+            }
+            _ => unimplemented!("write_file to unknown object type"),
+        }
+    }
+
     pub fn write_file(&self, handle: HANDLE, bytes: &[u8]) -> (bool, u32) {
         let handle_table = self.handle_table.lock().unwrap();
         let file = match handle_table.find(handle) {

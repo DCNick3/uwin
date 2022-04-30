@@ -74,8 +74,8 @@ impl<T> MutPtr<T> {
     pub const fn null() -> Self {
         Self::new(0)
     }
-    pub fn pun<T1>(&self) -> ConstPtr<T1> {
-        ConstPtr(self.0, Default::default())
+    pub fn pun<T1>(&self) -> MutPtr<T1> {
+        MutPtr(self.0, Default::default())
     }
 }
 impl<T: FromIntoMemory> MutPtr<T> {
