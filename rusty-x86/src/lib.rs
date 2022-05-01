@@ -11,7 +11,7 @@ use crate::backend::{Builder, ComparisonType, IntValue};
 use crate::disasm::Operands;
 use crate::types::Register::*;
 use crate::types::{ControlFlow, Flag, IntType, Operand, Register};
-use iced_x86::{ConditionCode, Instruction, Mnemonic};
+use iced_x86::{Code, ConditionCode, Instruction, Mnemonic};
 
 #[cfg(feature = "llvm")]
 pub use inkwell;
@@ -1100,8 +1100,32 @@ pub fn codegen_instr<B: Builder>(
                 builder.store_register(EBP, new_ebp);
             }
             Ret => {
-                let addr = builder.pop(IntType::I32);
-                return ControlFlow::Return(addr);
+                match instr.code() {
+                    Code::Retnd => {
+                        operands!([], &instr);
+
+                        let addr = builder.pop(IntType::I32);
+                        return ControlFlow::Return(addr);
+                    }
+                    // TODO: TEST!!!
+                    Code::Retnd_imm16 => {
+                        operands!([size], &instr);
+
+                        let addr = builder.pop(IntType::I32);
+                        let res = ControlFlow::Return(addr);
+
+                        let size_bytes = builder.load_operand(size);
+                        let size_bytes = builder.zext(size_bytes, IntType::I32);
+
+                        let esp = builder.load_register(ESP);
+                        let esp = builder.add(esp, size_bytes);
+                        builder.store_register(ESP, esp);
+
+                        return res;
+                    }
+                    // don't support weirdly-sized rets (like 'w' and 'q' versions) and far rets
+                    _ => unimplemented!("Unsupported ret instruction kind: {:?}", instr.code()),
+                }
             }
             Jmp => {
                 operands!([target], &instr);

@@ -89,6 +89,11 @@ pub fn execute_recompiled_code(
 ) -> u32 {
     // SAFETY: TODO??
     // It seems that safety guarantees are pushed onto the LLVM-generated code
+
+    // don't use recompiled code, just run it in interp
+    // TODO: make this configurable (compile time?)
+    // unsafe { run_interp(context, memory, eip) }
+
     unsafe { uwin_indirect_bb_call(context, memory, eip) }
 }
 

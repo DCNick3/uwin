@@ -1,6 +1,6 @@
 use ascii::AsciiStr;
 use std::io::{BufRead, Read, Write};
-use tracing::warn;
+use tracing::{debug, warn};
 
 // TODO: __actually__ console input and output are a different objects from stand point of win32 api
 // The read handle is a "console input buffer"
@@ -54,10 +54,18 @@ impl Console for StdioConsole {
             .read_until(b'\n', &mut buffer)
             .unwrap();
 
-        buffer.pop().unwrap();
-        buffer.extend(b"\r\n");
+        if buffer.is_empty() {
+            return Ok(0);
+        }
+
+        if *buffer.last().unwrap() == b'\n' {
+            buffer.pop().unwrap();
+            buffer.extend(b"\r\n");
+        }
 
         assert!(buffer.len() <= buf.len());
+
+        debug!("ReadFile: {:?}", buffer);
 
         let mut count = 0;
         for (buf, read) in buf.iter_mut().zip(buffer) {

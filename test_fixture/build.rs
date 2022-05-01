@@ -12,6 +12,7 @@ fn main() {
         // .join("test_exes/msvc/indirect.exe")
         // .join("test_exes/msvc/hello_console.exe")
         .join("test_exes/msvc/cf1031B.exe")
+        // .join("test_exes/msvc/weird_repro.exe")
         // .join("test_exes/test.exe")
         // .join("test_exes/test_cp1251.exe")
         // ----

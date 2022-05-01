@@ -214,45 +214,62 @@ impl<'a> Builder for InterpBuilder<'a> {
     fn load_memory(&mut self, size: IntType, address: Self::IntValue) -> Self::IntValue {
         let address = address.as_u32().unwrap();
         // SAFETY: memory_base points to a chunk of address space with 2 GiBs reserved
-        let address = unsafe { self.memory_base.add(address as usize) };
+        let host_address = unsafe { self.memory_base.add(address as usize) };
 
         // SAFETY: well, we are reading byte arrays, this should be pretty safe
         // the memory __may__ be unmapped there, but the segfault should be pretty predictable
         let value = match size {
             IntType::I8 => unsafe {
-                u8::from_le_bytes(*std::mem::transmute::<_, *mut [u8; 1]>(address)) as u64
+                u8::from_le_bytes(*std::mem::transmute::<_, *mut [u8; 1]>(host_address)) as u64
             },
             IntType::I16 => unsafe {
-                u16::from_le_bytes(*std::mem::transmute::<_, *mut [u8; 2]>(address)) as u64
+                u16::from_le_bytes(*std::mem::transmute::<_, *mut [u8; 2]>(host_address)) as u64
             },
             IntType::I32 => unsafe {
-                u32::from_le_bytes(*std::mem::transmute::<_, *mut [u8; 4]>(address)) as u64
+                u32::from_le_bytes(*std::mem::transmute::<_, *mut [u8; 4]>(host_address)) as u64
             },
             IntType::I64 => unsafe {
-                u64::from_le_bytes(*std::mem::transmute::<_, *mut [u8; 8]>(address)) as u64
+                u64::from_le_bytes(*std::mem::transmute::<_, *mut [u8; 8]>(host_address)) as u64
             },
         };
+
+        // TODO: this should be done with hooks
+        // eprintln!(
+        //     "LOAD  {:3} {:#010x} -> {:#010x}",
+        //     format!("{:?}", size),
+        //     address,
+        //     value
+        // );
+
         self.make_int_value(size, value)
     }
 
     fn store_memory(&mut self, address: Self::IntValue, value: Self::IntValue) {
         let address = address.as_u32().unwrap();
         // SAFETY: memory_base points to a chunk of address space with 2 GiBs reserved
-        let address = unsafe { self.memory_base.add(address as usize) };
+        let host_address = unsafe { self.memory_base.add(address as usize) };
+
+        // TODO: this should be done with hooks
+        // eprintln!(
+        //     "STORE {:3} {:#010x} -> {:#010x}",
+        //     format!("{:?}", value.size()),
+        //     value.into_u64().unwrap(),
+        //     address
+        // );
 
         // SAFETY: pretty much the same as load_memory
         match value {
             IntValue::I8(v) => unsafe {
-                *std::mem::transmute::<_, *mut [u8; 1]>(address) = v.to_le_bytes()
+                *std::mem::transmute::<_, *mut [u8; 1]>(host_address) = v.to_le_bytes()
             },
             IntValue::I16(v) => unsafe {
-                *std::mem::transmute::<_, *mut [u8; 2]>(address) = v.to_le_bytes()
+                *std::mem::transmute::<_, *mut [u8; 2]>(host_address) = v.to_le_bytes()
             },
             IntValue::I32(v) => unsafe {
-                *std::mem::transmute::<_, *mut [u8; 4]>(address) = v.to_le_bytes()
+                *std::mem::transmute::<_, *mut [u8; 4]>(host_address) = v.to_le_bytes()
             },
             IntValue::I64(v) => unsafe {
-                *std::mem::transmute::<_, *mut [u8; 8]>(address) = v.to_le_bytes()
+                *std::mem::transmute::<_, *mut [u8; 8]>(host_address) = v.to_le_bytes()
             },
             IntValue::Poison => panic!("Poison"),
         };

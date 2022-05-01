@@ -50,6 +50,14 @@ pub unsafe fn run_interp(context: &mut ExtendedContext, memory: FlatMemoryCtx, e
     loop {
         let instr = decoder.decode();
 
+        // TODO: this should be done with hooks
+        // eprintln!(
+        //     "EXEC      {:#010x}: {:40}  esp={:#010x}",
+        //     instr.next_ip32() - instr.len() as u32,
+        //     format!("{}", instr),
+        //     context.cpu.get_esp()
+        // );
+
         let flow = rusty_x86::codegen_instr(&mut builder, instr);
 
         match flow {

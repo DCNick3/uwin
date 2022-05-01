@@ -1856,6 +1856,16 @@ mod stack {
             ; leave
             ; ret
         ) [CF ZF SF OF],
+
+        retn: (
+            ; push 1211337
+            ; call >funny
+            ; ret
+
+            ; funny:
+            ;   mov eax, [esp+4]
+            ;   retn 4
+        ) [CF ZF SF OF],
     }
 
     test_snippets! {
