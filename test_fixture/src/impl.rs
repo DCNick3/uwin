@@ -1,7 +1,7 @@
 use core_abi::unwind_token::{UnwindReason, UnwindToken};
 use core_heap::{Heap, RawHeapBox};
 use core_mem::ctx::DefaultMemoryCtx;
-use core_mem::ptr::{ConstPtr, MutPtr, PtrDiffRepr, PtrRepr};
+use core_mem::ptr::{ConstPtr, MutPtr, PtrRepr};
 use core_memmgr::MemoryManager;
 use core_str::heap_helper::AnsiStringHeapBox;
 use core_str::{AnsiString, PWSTR};
@@ -78,13 +78,13 @@ pub struct Memory {
     pub process_ctx: ProcessContext,
     pub virtmem_mgr: VirtualMemoryManager,
     pub heap_mgr: Mutex<HeapMgr>,
-    pub process_heap_handle: PtrRepr,
+    pub process_heap_handle: HeapHandle,
 }
 
 #[allow(non_snake_case)]
 impl win32::Win32::System::Memory::Api for Memory {
     fn GetProcessHeap(&self) -> HeapHandle {
-        HeapHandle(self.process_heap_handle as PtrDiffRepr)
+        self.process_heap_handle
     }
 
     fn HeapAlloc(
@@ -95,7 +95,7 @@ impl win32::Win32::System::Memory::Api for Memory {
     ) -> MutPtr<c_void> {
         let heap_mgr = self.heap_mgr.lock().unwrap();
 
-        let res = heap_mgr.alloc(h_heap.0 as PtrRepr, dw_bytes, dw_flags);
+        let res = heap_mgr.alloc(h_heap, dw_bytes, dw_flags);
 
         MutPtr::new(res)
     }
@@ -111,9 +111,13 @@ impl win32::Win32::System::Memory::Api for Memory {
 
         let mut heap_mgr = self.heap_mgr.lock().unwrap();
 
-        let heap_handle = heap_mgr.create(dw_initial_size, dw_maximum_size);
+        heap_mgr.create(dw_initial_size, dw_maximum_size)
+    }
 
-        HeapHandle(heap_handle as PtrDiffRepr)
+    fn HeapFree(&self, h_heap: HeapHandle, dw_flags: HEAP_FLAGS, lp_mem: ConstPtr<c_void>) -> BOOL {
+        let heap_mgr = self.heap_mgr.lock().unwrap();
+
+        heap_mgr.free(h_heap, lp_mem.repr(), dw_flags)
     }
 
     fn VirtualAlloc(

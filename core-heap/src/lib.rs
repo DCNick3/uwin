@@ -172,16 +172,20 @@ impl Heap {
         })
     }
 
-    pub fn handle(&self) -> PtrRepr {
+    pub fn handle(&self) -> PtrDiffRepr {
         // shouldn't be deallocated
-        self.segments[0].region.start
+        self.segments[0].region.start as PtrDiffRepr
     }
 
     pub fn alloc(&mut self, size: PtrRepr, zero: bool) -> Result<PtrRepr> {
         let size = Size(size);
 
         if size > MMAP_THRESHOLD {
-            todo!("Allocation using mmap")
+            let mut mgr = self.memory_manager.lock().unwrap();
+            let region = mgr.reserve_and_commit_dynamic(size.into(), Protection::READ_WRITE)?;
+            self.mmap_allocations.insert(Ptr(region.start));
+
+            return Ok(region.start);
         }
 
         let mut iter = self.segments.iter_mut();
@@ -220,7 +224,10 @@ impl Heap {
     pub fn free(&mut self, ptr: PtrRepr) -> Result<()> {
         let ptr: Ptr = ptr.into();
         if self.mmap_allocations.contains(&ptr) {
-            todo!("Freeing mmap_allocations")
+            let mut mgr = self.memory_manager.lock().unwrap();
+            mgr.uncommit_and_unreserve(ptr.into())?;
+            assert!(self.mmap_allocations.remove(&ptr));
+            return Ok(());
         }
         let segment = self
             .segments
