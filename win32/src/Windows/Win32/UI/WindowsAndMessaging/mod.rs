@@ -1544,7 +1544,15 @@ impl FromIntoMemory for DLGITEMTEMPLATE {
         20u32 as usize
     }
 }
-pub type DLGPROC = ::core::option::Option<()>;
+pub type DLGPROC = StdCallFnPtr<
+    (
+        super::super::Foundation::HWND,
+        u32,
+        super::super::Foundation::WPARAM,
+        super::super::Foundation::LPARAM,
+    ),
+    PtrDiffRepr,
+>;
 pub struct DLGTEMPLATE {
     pub style: u32,
     pub dwExtendedStyle: u32,
@@ -2874,7 +2882,14 @@ impl FromIntoMemory for HMENU {
         std::mem::size_of::<PtrDiffRepr>()
     }
 }
-pub type HOOKPROC = ::core::option::Option<()>;
+pub type HOOKPROC = StdCallFnPtr<
+    (
+        i32,
+        super::super::Foundation::WPARAM,
+        super::super::Foundation::LPARAM,
+    ),
+    super::super::Foundation::LRESULT,
+>;
 pub const HSHELL_ACCESSIBILITYSTATE: u32 = 11u32;
 pub const HSHELL_ACTIVATESHELLWINDOW: u32 = 3u32;
 pub const HSHELL_APPCOMMAND: u32 = 12u32;
@@ -5761,7 +5776,7 @@ impl FromIntoMemory for MSG {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.UI.Shell'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub type MSGBOXCALLBACK = ::core::option::Option<()>;
+pub type MSGBOXCALLBACK = StdCallFnPtr<(MutPtr<super::Shell::HELPINFO>,), ()>;
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.UI.Shell'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct MSGBOXPARAMSA {
@@ -6435,8 +6450,10 @@ impl FromIntoMemory for MrmResourceIndexerMessageSeverity {
         4
     }
 }
-pub type NAMEENUMPROCA = ::core::option::Option<()>;
-pub type NAMEENUMPROCW = ::core::option::Option<()>;
+pub type NAMEENUMPROCA =
+    StdCallFnPtr<(PCSTR, super::super::Foundation::LPARAM), super::super::Foundation::BOOL>;
+pub type NAMEENUMPROCW =
+    StdCallFnPtr<(PCWSTR, super::super::Foundation::LPARAM), super::super::Foundation::BOOL>;
 pub struct NCCALCSIZE_PARAMS {
     pub rgrc: [super::super::Foundation::RECT; 3],
     pub lppos: MutPtr<WINDOWPOS>,
@@ -7065,17 +7082,47 @@ pub const POINTER_MESSAGE_FLAG_SECONDBUTTON: u32 = 32u32;
 pub const POINTER_MESSAGE_FLAG_THIRDBUTTON: u32 = 64u32;
 pub const POINTER_MOD_CTRL: u32 = 8u32;
 pub const POINTER_MOD_SHIFT: u32 = 4u32;
-pub type PREGISTERCLASSNAMEW = ::core::option::Option<()>;
+pub type PREGISTERCLASSNAMEW = StdCallFnPtr<(PCWSTR,), super::super::Foundation::BOOLEAN>;
 pub const PRF_CHECKVISIBLE: i32 = 1i32;
 pub const PRF_CHILDREN: i32 = 16i32;
 pub const PRF_CLIENT: i32 = 4i32;
 pub const PRF_ERASEBKGND: i32 = 8i32;
 pub const PRF_NONCLIENT: i32 = 2i32;
 pub const PRF_OWNED: i32 = 32i32;
-pub type PROPENUMPROCA = ::core::option::Option<()>;
-pub type PROPENUMPROCEXA = ::core::option::Option<()>;
-pub type PROPENUMPROCEXW = ::core::option::Option<()>;
-pub type PROPENUMPROCW = ::core::option::Option<()>;
+pub type PROPENUMPROCA = StdCallFnPtr<
+    (
+        super::super::Foundation::HWND,
+        PCSTR,
+        super::super::Foundation::HANDLE,
+    ),
+    super::super::Foundation::BOOL,
+>;
+pub type PROPENUMPROCEXA = StdCallFnPtr<
+    (
+        super::super::Foundation::HWND,
+        PCSTR,
+        super::super::Foundation::HANDLE,
+        PtrRepr,
+    ),
+    super::super::Foundation::BOOL,
+>;
+pub type PROPENUMPROCEXW = StdCallFnPtr<
+    (
+        super::super::Foundation::HWND,
+        PCWSTR,
+        super::super::Foundation::HANDLE,
+        PtrRepr,
+    ),
+    super::super::Foundation::BOOL,
+>;
+pub type PROPENUMPROCW = StdCallFnPtr<
+    (
+        super::super::Foundation::HWND,
+        PCWSTR,
+        super::super::Foundation::HANDLE,
+    ),
+    super::super::Foundation::BOOL,
+>;
 pub const PWR_CRITICALRESUME: u32 = 3u32;
 pub const PWR_FAIL: i32 = -1i32;
 pub const PWR_OK: u32 = 1u32;
@@ -7531,7 +7578,15 @@ pub const SC_SIZE: u32 = 61440u32;
 pub const SC_TASKLIST: u32 = 61744u32;
 pub const SC_VSCROLL: u32 = 61552u32;
 pub const SC_ZOOM: u32 = 61488u32;
-pub type SENDASYNCPROC = ::core::option::Option<()>;
+pub type SENDASYNCPROC = StdCallFnPtr<
+    (
+        super::super::Foundation::HWND,
+        u32,
+        PtrRepr,
+        super::super::Foundation::LRESULT,
+    ),
+    (),
+>;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct SEND_MESSAGE_TIMEOUT_FLAGS(pub u32);
 pub const SMTO_ABORTIFHUNG: SEND_MESSAGE_TIMEOUT_FLAGS = SEND_MESSAGE_TIMEOUT_FLAGS(2u32);
@@ -8756,7 +8811,7 @@ impl FromIntoMemory for TILE_WINDOWS_HOW {
         4
     }
 }
-pub type TIMERPROC = ::core::option::Option<()>;
+pub type TIMERPROC = StdCallFnPtr<(super::super::Foundation::HWND, u32, PtrRepr, u32), ()>;
 pub const TIMERV_COALESCING_MAX: u32 = 2147483637u32;
 pub const TIMERV_COALESCING_MIN: u32 = 1u32;
 pub const TIMERV_DEFAULT_COALESCING: u32 = 0u32;
@@ -10672,8 +10727,22 @@ impl FromIntoMemory for WNDCLASS_STYLES {
         4
     }
 }
-pub type WNDENUMPROC = ::core::option::Option<()>;
-pub type WNDPROC = ::core::option::Option<()>;
+pub type WNDENUMPROC = StdCallFnPtr<
+    (
+        super::super::Foundation::HWND,
+        super::super::Foundation::LPARAM,
+    ),
+    super::super::Foundation::BOOL,
+>;
+pub type WNDPROC = StdCallFnPtr<
+    (
+        super::super::Foundation::HWND,
+        u32,
+        super::super::Foundation::WPARAM,
+        super::super::Foundation::LPARAM,
+    ),
+    super::super::Foundation::LRESULT,
+>;
 pub const WSF_VISIBLE: i32 = 1i32;
 pub const WTS_CONSOLE_CONNECT: u32 = 1u32;
 pub const WTS_CONSOLE_DISCONNECT: u32 = 2u32;

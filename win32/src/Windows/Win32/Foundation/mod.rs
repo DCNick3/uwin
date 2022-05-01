@@ -2319,7 +2319,7 @@ pub const E_SYNCENGINE_UNSUPPORTED_REPARSE_POINT: crate::core::HRESULT =
 pub const E_UAC_DISABLED: crate::core::HRESULT = crate::core::HRESULT(-2144927150i32);
 pub const E_UNEXPECTED: crate::core::HRESULT = crate::core::HRESULT(-2147418113i32);
 pub const FACILTIY_MUI_ERROR_CODE: u32 = 11u32;
-pub type FARPROC = ::core::option::Option<()>;
+pub type FARPROC = StdCallFnPtr<(), PtrDiffRepr>;
 pub const FA_E_HOMEGROUP_NOT_AVAILABLE: crate::core::HRESULT = crate::core::HRESULT(-2144927198i32);
 pub const FA_E_MAX_PERSISTED_ITEMS_REACHED: crate::core::HRESULT =
     crate::core::HRESULT(-2144927200i32);
@@ -3779,7 +3779,7 @@ pub const NAP_E_SHV_TIMEOUT: crate::core::HRESULT = crate::core::HRESULT(-214492
 pub const NAP_E_STILL_BOUND: crate::core::HRESULT = crate::core::HRESULT(-2144927739i32);
 pub const NAP_E_TOO_MANY_CALLS: crate::core::HRESULT = crate::core::HRESULT(-2144927728i32);
 pub const NAP_S_CERT_ALREADY_PRESENT: crate::core::HRESULT = crate::core::HRESULT(2555917i32);
-pub type NEARPROC = ::core::option::Option<()>;
+pub type NEARPROC = StdCallFnPtr<(), PtrDiffRepr>;
 pub const NOERROR: u32 = 0u32;
 pub const NOT_AN_ERROR1: crate::core::HRESULT = crate::core::HRESULT(529920i32);
 pub const NTDDI_MAXVER: u32 = 2560u32;
@@ -4079,7 +4079,7 @@ pub const OSS_TRACE_FILE_ALREADY_OPEN: crate::core::HRESULT = crate::core::HRESU
 pub const OSS_TYPE_NOT_SUPPORTED: crate::core::HRESULT = crate::core::HRESULT(-2146881506i32);
 pub const OSS_UNAVAIL_ENCRULES: crate::core::HRESULT = crate::core::HRESULT(-2146881513i32);
 pub const OSS_UNIMPLEMENTED: crate::core::HRESULT = crate::core::HRESULT(-2146881511i32);
-pub type PAPCFUNC = ::core::option::Option<()>;
+pub type PAPCFUNC = StdCallFnPtr<(PtrRepr,), ()>;
 pub const PEERDIST_ERROR_ALREADY_COMPLETED: i32 = 4060i32;
 pub const PEERDIST_ERROR_ALREADY_EXISTS: i32 = 4058i32;
 pub const PEERDIST_ERROR_ALREADY_INITIALIZED: i32 = 4055i32;
@@ -4349,7 +4349,7 @@ impl FromIntoMemory for POINTS {
     }
 }
 pub const PRESENTATION_ERROR_LOST: crate::core::HRESULT = crate::core::HRESULT(-2004811775i32);
-pub type PROC = ::core::option::Option<()>;
+pub type PROC = StdCallFnPtr<(), PtrDiffRepr>;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct PSID(pub PtrDiffRepr);
 impl PSID {

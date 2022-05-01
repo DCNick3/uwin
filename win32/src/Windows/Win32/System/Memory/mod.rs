@@ -1226,7 +1226,7 @@ impl FromIntoMemory for PAGE_TYPE {
         4
     }
 }
-pub type PBAD_MEMORY_CALLBACK_ROUTINE = ::core::option::Option<()>;
+pub type PBAD_MEMORY_CALLBACK_ROUTINE = StdCallFnPtr<(), ()>;
 pub struct PROCESS_HEAP_ENTRY {
     pub lpData: MutPtr<::core::ffi::c_void>,
     pub cbData: u32,
@@ -1412,7 +1412,8 @@ impl FromIntoMemory for PROCESS_HEAP_ENTRY_0_1 {
         16u32 as usize
     }
 }
-pub type PSECURE_MEMORY_CACHE_CALLBACK = ::core::option::Option<()>;
+pub type PSECURE_MEMORY_CACHE_CALLBACK =
+    StdCallFnPtr<(ConstPtr<::core::ffi::c_void>, PtrRepr), super::super::Foundation::BOOLEAN>;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct UNMAP_VIEW_OF_FILE_FLAGS(pub u32);
 pub const MEM_UNMAP_NONE: UNMAP_VIEW_OF_FILE_FLAGS = UNMAP_VIEW_OF_FILE_FLAGS(0u32);

@@ -3,6 +3,7 @@ extern crate core;
 mod r#impl;
 
 use crate::r#impl::*;
+use core_abi::stdcall::StdCallFnPtr;
 use core_mem::ptr::{PtrDiffRepr, PtrRepr};
 use core_memmgr::{AddressRange, MemoryManager};
 use core_str::heap_helper::AnsiStringHeapBox;

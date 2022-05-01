@@ -342,7 +342,7 @@ impl FromIntoMemory for IO_COUNTERS {
         48u32 as usize
     }
 }
-pub type LPFIBER_START_ROUTINE = ::core::option::Option<()>;
+pub type LPFIBER_START_ROUTINE = StdCallFnPtr<(MutPtr<::core::ffi::c_void>,), ()>;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct LPPROC_THREAD_ATTRIBUTE_LIST(pub MutPtr<::core::ffi::c_void>);
 impl LPPROC_THREAD_ATTRIBUTE_LIST {
@@ -386,7 +386,7 @@ impl FromIntoMemory for LPPROC_THREAD_ATTRIBUTE_LIST {
         std::mem::size_of::<MutPtr<::core::ffi::c_void>>()
     }
 }
-pub type LPTHREAD_START_ROUTINE = ::core::option::Option<()>;
+pub type LPTHREAD_START_ROUTINE = StdCallFnPtr<(MutPtr<::core::ffi::c_void>,), u32>;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct MACHINE_ATTRIBUTES(pub u32);
 pub const UserEnabled: MACHINE_ATTRIBUTES = MACHINE_ATTRIBUTES(1u32);
@@ -766,8 +766,15 @@ impl FromIntoMemory for PEB_LDR_DATA {
         28u32 as usize
     }
 }
-pub type PFLS_CALLBACK_FUNCTION = ::core::option::Option<()>;
-pub type PINIT_ONCE_FN = ::core::option::Option<()>;
+pub type PFLS_CALLBACK_FUNCTION = StdCallFnPtr<(ConstPtr<::core::ffi::c_void>,), ()>;
+pub type PINIT_ONCE_FN = StdCallFnPtr<
+    (
+        MutPtr<RTL_RUN_ONCE>,
+        MutPtr<::core::ffi::c_void>,
+        MutPtr<ConstPtr<::core::ffi::c_void>>,
+    ),
+    super::super::Foundation::BOOL,
+>;
 pub const PME_CURRENT_VERSION: u32 = 1u32;
 pub const PME_FAILFAST_ON_COMMIT_FAIL_DISABLE: u32 = 0u32;
 pub const PME_FAILFAST_ON_COMMIT_FAIL_ENABLE: u32 = 1u32;
@@ -806,7 +813,7 @@ impl FromIntoMemory for POWER_REQUEST_CONTEXT_FLAGS {
         4
     }
 }
-pub type PPS_POST_PROCESS_INIT_ROUTINE = ::core::option::Option<()>;
+pub type PPS_POST_PROCESS_INIT_ROUTINE = StdCallFnPtr<(), ()>;
 pub const PRIVATE_NAMESPACE_FLAG_DESTROY: u32 = 1u32;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct PROCESSINFOCLASS(pub i32);
@@ -2050,9 +2057,17 @@ pub const PROC_THREAD_ATTRIBUTE_UMS_THREAD: u32 = 196614u32;
 pub const PROC_THREAD_ATTRIBUTE_WIN32K_FILTER: u32 = 131088u32;
 #[doc = "*Required namespaces: 'Windows.Win32.System.SystemServices'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub type PRTL_UMS_SCHEDULER_ENTRY_POINT = ::core::option::Option<()>;
-pub type PTIMERAPCROUTINE = ::core::option::Option<()>;
-pub type PTP_CLEANUP_GROUP_CANCEL_CALLBACK = ::core::option::Option<()>;
+pub type PRTL_UMS_SCHEDULER_ENTRY_POINT = StdCallFnPtr<
+    (
+        super::SystemServices::RTL_UMS_SCHEDULER_REASON,
+        PtrRepr,
+        ConstPtr<::core::ffi::c_void>,
+    ),
+    (),
+>;
+pub type PTIMERAPCROUTINE = StdCallFnPtr<(ConstPtr<::core::ffi::c_void>, u32, u32), ()>;
+pub type PTP_CLEANUP_GROUP_CANCEL_CALLBACK =
+    StdCallFnPtr<(MutPtr<::core::ffi::c_void>, MutPtr<::core::ffi::c_void>), ()>;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct PTP_POOL(pub PtrDiffRepr);
 impl PTP_POOL {
@@ -2092,11 +2107,44 @@ impl FromIntoMemory for PTP_POOL {
         std::mem::size_of::<PtrDiffRepr>()
     }
 }
-pub type PTP_SIMPLE_CALLBACK = ::core::option::Option<()>;
-pub type PTP_TIMER_CALLBACK = ::core::option::Option<()>;
-pub type PTP_WAIT_CALLBACK = ::core::option::Option<()>;
-pub type PTP_WIN32_IO_CALLBACK = ::core::option::Option<()>;
-pub type PTP_WORK_CALLBACK = ::core::option::Option<()>;
+pub type PTP_SIMPLE_CALLBACK =
+    StdCallFnPtr<(MutPtr<TP_CALLBACK_INSTANCE>, MutPtr<::core::ffi::c_void>), ()>;
+pub type PTP_TIMER_CALLBACK = StdCallFnPtr<
+    (
+        MutPtr<TP_CALLBACK_INSTANCE>,
+        MutPtr<::core::ffi::c_void>,
+        MutPtr<TP_TIMER>,
+    ),
+    (),
+>;
+pub type PTP_WAIT_CALLBACK = StdCallFnPtr<
+    (
+        MutPtr<TP_CALLBACK_INSTANCE>,
+        MutPtr<::core::ffi::c_void>,
+        MutPtr<TP_WAIT>,
+        u32,
+    ),
+    (),
+>;
+pub type PTP_WIN32_IO_CALLBACK = StdCallFnPtr<
+    (
+        MutPtr<TP_CALLBACK_INSTANCE>,
+        MutPtr<::core::ffi::c_void>,
+        MutPtr<::core::ffi::c_void>,
+        u32,
+        PtrRepr,
+        MutPtr<TP_IO>,
+    ),
+    (),
+>;
+pub type PTP_WORK_CALLBACK = StdCallFnPtr<
+    (
+        MutPtr<TP_CALLBACK_INSTANCE>,
+        MutPtr<::core::ffi::c_void>,
+        MutPtr<TP_WORK>,
+    ),
+    (),
+>;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct QUEUE_USER_APC_FLAGS(pub i32);
 pub const QUEUE_USER_APC_FLAGS_NONE: QUEUE_USER_APC_FLAGS = QUEUE_USER_APC_FLAGS(0i32);
@@ -3865,7 +3913,13 @@ impl FromIntoMemory for UMS_SYSTEM_THREAD_INFORMATION_0_0 {
         4u32 as usize
     }
 }
-pub type WAITORTIMERCALLBACK = ::core::option::Option<()>;
+pub type WAITORTIMERCALLBACK = StdCallFnPtr<
+    (
+        MutPtr<::core::ffi::c_void>,
+        super::super::Foundation::BOOLEAN,
+    ),
+    (),
+>;
 pub const WAIT_ABANDONED: u32 = 128u32;
 pub const WAIT_ABANDONED_0: u32 = 128u32;
 pub const WAIT_IO_COMPLETION: u32 = 192u32;

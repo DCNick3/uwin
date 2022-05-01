@@ -6953,7 +6953,10 @@ pub const DEBUG_VSOURCE_DUMP_WITHOUT_MEMINFO: u32 = 3u32;
 pub const DEBUG_VSOURCE_INVALID: u32 = 0u32;
 pub const DEBUG_VSOURCE_MAPPED_IMAGE: u32 = 2u32;
 pub const DEBUG_WAIT_DEFAULT: u32 = 0u32;
-pub type DIGEST_FUNCTION = ::core::option::Option<()>;
+pub type DIGEST_FUNCTION = StdCallFnPtr<
+    (MutPtr<::core::ffi::c_void>, MutPtr<u8>, u32),
+    super::super::super::Foundation::BOOL,
+>;
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct DISPATCHER_CONTEXT {
@@ -19019,8 +19022,8 @@ impl FromIntoMemory for LOAD_DLL_DEBUG_INFO {
         24u32 as usize
     }
 }
-pub type LPCALL_BACK_USER_INTERRUPT_ROUTINE = ::core::option::Option<()>;
-pub type LPTOP_LEVEL_EXCEPTION_FILTER = ::core::option::Option<()>;
+pub type LPCALL_BACK_USER_INTERRUPT_ROUTINE = StdCallFnPtr<(), u32>;
+pub type LPTOP_LEVEL_EXCEPTION_FILTER = StdCallFnPtr<(ConstPtr<EXCEPTION_POINTERS>,), i32>;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct LanguageKind(pub i32);
 pub const LanguageUnknown: LanguageKind = LanguageKind(0i32);
@@ -19583,7 +19586,14 @@ impl FromIntoMemory for MINIDUMP_CALLBACK_OUTPUT_0_4 {
         8u32 as usize
     }
 }
-pub type MINIDUMP_CALLBACK_ROUTINE = ::core::option::Option<()>;
+pub type MINIDUMP_CALLBACK_ROUTINE = StdCallFnPtr<
+    (
+        MutPtr<::core::ffi::c_void>,
+        ConstPtr<MINIDUMP_CALLBACK_INPUT>,
+        MutPtr<MINIDUMP_CALLBACK_OUTPUT>,
+    ),
+    super::super::super::Foundation::BOOL,
+>;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct MINIDUMP_CALLBACK_TYPE(pub i32);
 pub const ModuleCallback: MINIDUMP_CALLBACK_TYPE = MINIDUMP_CALLBACK_TYPE(0i32);
@@ -25044,41 +25054,112 @@ impl FromIntoMemory for OUTPUT_DEBUG_STRING_INFO {
         8u32 as usize
     }
 }
-pub type PCOGETACTIVATIONSTATE = ::core::option::Option<()>;
-pub type PCOGETCALLSTATE = ::core::option::Option<()>;
-pub type PDBGHELP_CREATE_USER_DUMP_CALLBACK = ::core::option::Option<()>;
-pub type PDEBUG_EXTENSION_CANUNLOAD = ::core::option::Option<()>;
-pub type PDEBUG_EXTENSION_INITIALIZE = ::core::option::Option<()>;
-pub type PDEBUG_EXTENSION_KNOWN_STRUCT = ::core::option::Option<()>;
-pub type PDEBUG_EXTENSION_NOTIFY = ::core::option::Option<()>;
-pub type PDEBUG_EXTENSION_UNINITIALIZE = ::core::option::Option<()>;
-pub type PDEBUG_EXTENSION_UNLOAD = ::core::option::Option<()>;
-pub type PDEBUG_STACK_PROVIDER_BEGINTHREADSTACKRECONSTRUCTION = ::core::option::Option<()>;
-pub type PDEBUG_STACK_PROVIDER_ENDTHREADSTACKRECONSTRUCTION = ::core::option::Option<()>;
-pub type PDEBUG_STACK_PROVIDER_FREESTACKSYMFRAMES = ::core::option::Option<()>;
-pub type PDEBUG_STACK_PROVIDER_RECONSTRUCTSTACK = ::core::option::Option<()>;
-pub type PENUMDIRTREE_CALLBACK = ::core::option::Option<()>;
-pub type PENUMDIRTREE_CALLBACKW = ::core::option::Option<()>;
-pub type PENUMLOADED_MODULES_CALLBACK = ::core::option::Option<()>;
-pub type PENUMLOADED_MODULES_CALLBACK64 = ::core::option::Option<()>;
-pub type PENUMLOADED_MODULES_CALLBACKW64 = ::core::option::Option<()>;
-pub type PENUMSOURCEFILETOKENSCALLBACK = ::core::option::Option<()>;
-pub type PFINDFILEINPATHCALLBACK = ::core::option::Option<()>;
-pub type PFINDFILEINPATHCALLBACKW = ::core::option::Option<()>;
-pub type PFIND_DEBUG_FILE_CALLBACK = ::core::option::Option<()>;
-pub type PFIND_DEBUG_FILE_CALLBACKW = ::core::option::Option<()>;
-pub type PFIND_EXE_FILE_CALLBACK = ::core::option::Option<()>;
-pub type PFIND_EXE_FILE_CALLBACKW = ::core::option::Option<()>;
-pub type PFUNCTION_TABLE_ACCESS_ROUTINE = ::core::option::Option<()>;
-pub type PFUNCTION_TABLE_ACCESS_ROUTINE64 = ::core::option::Option<()>;
-pub type PGET_MODULE_BASE_ROUTINE = ::core::option::Option<()>;
-pub type PGET_MODULE_BASE_ROUTINE64 = ::core::option::Option<()>;
+pub type PCOGETACTIVATIONSTATE =
+    StdCallFnPtr<(crate::core::GUID, u32, MutPtr<u32>), crate::core::HRESULT>;
+pub type PCOGETCALLSTATE = StdCallFnPtr<(i32, MutPtr<u32>), crate::core::HRESULT>;
+pub type PDBGHELP_CREATE_USER_DUMP_CALLBACK = StdCallFnPtr<
+    (
+        u32,
+        ConstPtr<ConstPtr<::core::ffi::c_void>>,
+        MutPtr<u32>,
+        ConstPtr<::core::ffi::c_void>,
+    ),
+    super::super::super::Foundation::BOOL,
+>;
+pub type PDEBUG_EXTENSION_CANUNLOAD = StdCallFnPtr<(), crate::core::HRESULT>;
+pub type PDEBUG_EXTENSION_INITIALIZE =
+    StdCallFnPtr<(MutPtr<u32>, MutPtr<u32>), crate::core::HRESULT>;
+pub type PDEBUG_EXTENSION_KNOWN_STRUCT =
+    StdCallFnPtr<(u32, u64, PCSTR, PSTR, MutPtr<u32>), crate::core::HRESULT>;
+pub type PDEBUG_EXTENSION_NOTIFY = StdCallFnPtr<(u32, u64), ()>;
+pub type PDEBUG_EXTENSION_UNINITIALIZE = StdCallFnPtr<(), ()>;
+pub type PDEBUG_EXTENSION_UNLOAD = StdCallFnPtr<(), ()>;
+pub type PDEBUG_STACK_PROVIDER_BEGINTHREADSTACKRECONSTRUCTION =
+    StdCallFnPtr<(u32, ConstPtr<::core::ffi::c_void>, u32), crate::core::HRESULT>;
+pub type PDEBUG_STACK_PROVIDER_ENDTHREADSTACKRECONSTRUCTION =
+    StdCallFnPtr<(), crate::core::HRESULT>;
+pub type PDEBUG_STACK_PROVIDER_FREESTACKSYMFRAMES =
+    StdCallFnPtr<(ConstPtr<STACK_SYM_FRAME_INFO>,), crate::core::HRESULT>;
+pub type PDEBUG_STACK_PROVIDER_RECONSTRUCTSTACK = StdCallFnPtr<
+    (
+        u32,
+        ConstPtr<DEBUG_STACK_FRAME_EX>,
+        u32,
+        MutPtr<ConstPtr<STACK_SYM_FRAME_INFO>>,
+        MutPtr<u32>,
+    ),
+    crate::core::HRESULT,
+>;
+pub type PENUMDIRTREE_CALLBACK =
+    StdCallFnPtr<(PCSTR, ConstPtr<::core::ffi::c_void>), super::super::super::Foundation::BOOL>;
+pub type PENUMDIRTREE_CALLBACKW =
+    StdCallFnPtr<(PCWSTR, ConstPtr<::core::ffi::c_void>), super::super::super::Foundation::BOOL>;
+pub type PENUMLOADED_MODULES_CALLBACK = StdCallFnPtr<
+    (PCSTR, u32, u32, ConstPtr<::core::ffi::c_void>),
+    super::super::super::Foundation::BOOL,
+>;
+pub type PENUMLOADED_MODULES_CALLBACK64 = StdCallFnPtr<
+    (PCSTR, u64, u32, ConstPtr<::core::ffi::c_void>),
+    super::super::super::Foundation::BOOL,
+>;
+pub type PENUMLOADED_MODULES_CALLBACKW64 = StdCallFnPtr<
+    (PCWSTR, u64, u32, ConstPtr<::core::ffi::c_void>),
+    super::super::super::Foundation::BOOL,
+>;
+pub type PENUMSOURCEFILETOKENSCALLBACK =
+    StdCallFnPtr<(ConstPtr<::core::ffi::c_void>, PtrRepr), super::super::super::Foundation::BOOL>;
+pub type PFINDFILEINPATHCALLBACK =
+    StdCallFnPtr<(PCSTR, ConstPtr<::core::ffi::c_void>), super::super::super::Foundation::BOOL>;
+pub type PFINDFILEINPATHCALLBACKW =
+    StdCallFnPtr<(PCWSTR, ConstPtr<::core::ffi::c_void>), super::super::super::Foundation::BOOL>;
+pub type PFIND_DEBUG_FILE_CALLBACK = StdCallFnPtr<
+    (
+        super::super::super::Foundation::HANDLE,
+        PCSTR,
+        ConstPtr<::core::ffi::c_void>,
+    ),
+    super::super::super::Foundation::BOOL,
+>;
+pub type PFIND_DEBUG_FILE_CALLBACKW = StdCallFnPtr<
+    (
+        super::super::super::Foundation::HANDLE,
+        PCWSTR,
+        ConstPtr<::core::ffi::c_void>,
+    ),
+    super::super::super::Foundation::BOOL,
+>;
+pub type PFIND_EXE_FILE_CALLBACK = StdCallFnPtr<
+    (
+        super::super::super::Foundation::HANDLE,
+        PCSTR,
+        ConstPtr<::core::ffi::c_void>,
+    ),
+    super::super::super::Foundation::BOOL,
+>;
+pub type PFIND_EXE_FILE_CALLBACKW = StdCallFnPtr<
+    (
+        super::super::super::Foundation::HANDLE,
+        PCWSTR,
+        ConstPtr<::core::ffi::c_void>,
+    ),
+    super::super::super::Foundation::BOOL,
+>;
+pub type PFUNCTION_TABLE_ACCESS_ROUTINE =
+    StdCallFnPtr<(super::super::super::Foundation::HANDLE, u32), MutPtr<::core::ffi::c_void>>;
+pub type PFUNCTION_TABLE_ACCESS_ROUTINE64 =
+    StdCallFnPtr<(super::super::super::Foundation::HANDLE, u64), MutPtr<::core::ffi::c_void>>;
+pub type PGET_MODULE_BASE_ROUTINE =
+    StdCallFnPtr<(super::super::super::Foundation::HANDLE, u32), u32>;
+pub type PGET_MODULE_BASE_ROUTINE64 =
+    StdCallFnPtr<(super::super::super::Foundation::HANDLE, u64), u64>;
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub type PGET_RUNTIME_FUNCTION_CALLBACK = ::core::option::Option<()>;
+pub type PGET_RUNTIME_FUNCTION_CALLBACK =
+    StdCallFnPtr<(u64, ConstPtr<::core::ffi::c_void>), MutPtr<IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY>>;
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub type PGET_RUNTIME_FUNCTION_CALLBACK = ::core::option::Option<()>;
+pub type PGET_RUNTIME_FUNCTION_CALLBACK =
+    StdCallFnPtr<(u64, ConstPtr<::core::ffi::c_void>), MutPtr<IMAGE_RUNTIME_FUNCTION_ENTRY>>;
 pub struct PHYSICAL {
     pub Address: u64,
     pub BufLen: u32,
@@ -25423,9 +25504,18 @@ pub const PHYS_FLAG_CACHED: u32 = 1u32;
 pub const PHYS_FLAG_DEFAULT: u32 = 0u32;
 pub const PHYS_FLAG_UNCACHED: u32 = 2u32;
 pub const PHYS_FLAG_WRITE_COMBINED: u32 = 3u32;
-pub type PIMAGEHLP_STATUS_ROUTINE = ::core::option::Option<()>;
-pub type PIMAGEHLP_STATUS_ROUTINE32 = ::core::option::Option<()>;
-pub type PIMAGEHLP_STATUS_ROUTINE64 = ::core::option::Option<()>;
+pub type PIMAGEHLP_STATUS_ROUTINE = StdCallFnPtr<
+    (IMAGEHLP_STATUS_REASON, PCSTR, PCSTR, PtrRepr, PtrRepr),
+    super::super::super::Foundation::BOOL,
+>;
+pub type PIMAGEHLP_STATUS_ROUTINE32 = StdCallFnPtr<
+    (IMAGEHLP_STATUS_REASON, PCSTR, PCSTR, u32, PtrRepr),
+    super::super::super::Foundation::BOOL,
+>;
+pub type PIMAGEHLP_STATUS_ROUTINE64 = StdCallFnPtr<
+    (IMAGEHLP_STATUS_REASON, PCSTR, PCSTR, u64, PtrRepr),
+    super::super::super::Foundation::BOOL,
+>;
 pub struct POINTER_SEARCH_PHYSICAL {
     pub Offset: u64,
     pub Length: u64,
@@ -25506,8 +25596,26 @@ impl FromIntoMemory for POINTER_SEARCH_PHYSICAL {
         48u32 as usize
     }
 }
-pub type PREAD_PROCESS_MEMORY_ROUTINE = ::core::option::Option<()>;
-pub type PREAD_PROCESS_MEMORY_ROUTINE64 = ::core::option::Option<()>;
+pub type PREAD_PROCESS_MEMORY_ROUTINE = StdCallFnPtr<
+    (
+        super::super::super::Foundation::HANDLE,
+        u32,
+        MutPtr<::core::ffi::c_void>,
+        u32,
+        MutPtr<u32>,
+    ),
+    super::super::super::Foundation::BOOL,
+>;
+pub type PREAD_PROCESS_MEMORY_ROUTINE64 = StdCallFnPtr<
+    (
+        super::super::super::Foundation::HANDLE,
+        u64,
+        MutPtr<::core::ffi::c_void>,
+        u32,
+        MutPtr<u32>,
+    ),
+    super::super::super::Foundation::BOOL,
+>;
 pub struct PROCESSORINFO {
     pub Processor: u16,
     pub NumberProcessors: u16,
@@ -26348,103 +26456,334 @@ impl FromIntoMemory for PROP_INFO_FLAGS {
         4
     }
 }
-pub type PSYMBOLSERVERBYINDEXPROC = ::core::option::Option<()>;
-pub type PSYMBOLSERVERBYINDEXPROCA = ::core::option::Option<()>;
-pub type PSYMBOLSERVERBYINDEXPROCW = ::core::option::Option<()>;
-pub type PSYMBOLSERVERCALLBACKPROC = ::core::option::Option<()>;
-pub type PSYMBOLSERVERCLOSEPROC = ::core::option::Option<()>;
-pub type PSYMBOLSERVERDELTANAME = ::core::option::Option<()>;
-pub type PSYMBOLSERVERDELTANAMEW = ::core::option::Option<()>;
-pub type PSYMBOLSERVERGETINDEXSTRING = ::core::option::Option<()>;
-pub type PSYMBOLSERVERGETINDEXSTRINGW = ::core::option::Option<()>;
-pub type PSYMBOLSERVERGETOPTIONDATAPROC = ::core::option::Option<()>;
-pub type PSYMBOLSERVERGETOPTIONSPROC = ::core::option::Option<()>;
-pub type PSYMBOLSERVERGETSUPPLEMENT = ::core::option::Option<()>;
-pub type PSYMBOLSERVERGETSUPPLEMENTW = ::core::option::Option<()>;
-pub type PSYMBOLSERVERGETVERSION = ::core::option::Option<()>;
-pub type PSYMBOLSERVERISSTORE = ::core::option::Option<()>;
-pub type PSYMBOLSERVERISSTOREW = ::core::option::Option<()>;
-pub type PSYMBOLSERVERMESSAGEPROC = ::core::option::Option<()>;
-pub type PSYMBOLSERVEROPENPROC = ::core::option::Option<()>;
-pub type PSYMBOLSERVERPINGPROC = ::core::option::Option<()>;
-pub type PSYMBOLSERVERPINGPROCA = ::core::option::Option<()>;
-pub type PSYMBOLSERVERPINGPROCW = ::core::option::Option<()>;
-pub type PSYMBOLSERVERPINGPROCWEX = ::core::option::Option<()>;
-pub type PSYMBOLSERVERPROC = ::core::option::Option<()>;
-pub type PSYMBOLSERVERPROCA = ::core::option::Option<()>;
-pub type PSYMBOLSERVERPROCW = ::core::option::Option<()>;
-pub type PSYMBOLSERVERSETHTTPAUTHHEADER = ::core::option::Option<()>;
-pub type PSYMBOLSERVERSETOPTIONSPROC = ::core::option::Option<()>;
-pub type PSYMBOLSERVERSETOPTIONSWPROC = ::core::option::Option<()>;
-pub type PSYMBOLSERVERSTOREFILE = ::core::option::Option<()>;
-pub type PSYMBOLSERVERSTOREFILEW = ::core::option::Option<()>;
-pub type PSYMBOLSERVERSTORESUPPLEMENT = ::core::option::Option<()>;
-pub type PSYMBOLSERVERSTORESUPPLEMENTW = ::core::option::Option<()>;
-pub type PSYMBOLSERVERVERSION = ::core::option::Option<()>;
-pub type PSYMBOLSERVERWEXPROC = ::core::option::Option<()>;
-pub type PSYMBOL_FUNCENTRY_CALLBACK = ::core::option::Option<()>;
-pub type PSYMBOL_FUNCENTRY_CALLBACK64 = ::core::option::Option<()>;
-pub type PSYMBOL_REGISTERED_CALLBACK = ::core::option::Option<()>;
-pub type PSYMBOL_REGISTERED_CALLBACK64 = ::core::option::Option<()>;
-pub type PSYM_DUMP_FIELD_CALLBACK = ::core::option::Option<()>;
-pub type PSYM_ENUMERATESYMBOLS_CALLBACK = ::core::option::Option<()>;
-pub type PSYM_ENUMERATESYMBOLS_CALLBACKW = ::core::option::Option<()>;
-pub type PSYM_ENUMLINES_CALLBACK = ::core::option::Option<()>;
-pub type PSYM_ENUMLINES_CALLBACKW = ::core::option::Option<()>;
-pub type PSYM_ENUMMODULES_CALLBACK = ::core::option::Option<()>;
-pub type PSYM_ENUMMODULES_CALLBACK64 = ::core::option::Option<()>;
-pub type PSYM_ENUMMODULES_CALLBACKW64 = ::core::option::Option<()>;
-pub type PSYM_ENUMPROCESSES_CALLBACK = ::core::option::Option<()>;
-pub type PSYM_ENUMSOURCEFILES_CALLBACK = ::core::option::Option<()>;
-pub type PSYM_ENUMSOURCEFILES_CALLBACKW = ::core::option::Option<()>;
-pub type PSYM_ENUMSYMBOLS_CALLBACK = ::core::option::Option<()>;
-pub type PSYM_ENUMSYMBOLS_CALLBACK64 = ::core::option::Option<()>;
-pub type PSYM_ENUMSYMBOLS_CALLBACK64W = ::core::option::Option<()>;
-pub type PSYM_ENUMSYMBOLS_CALLBACKW = ::core::option::Option<()>;
-pub type PTRANSLATE_ADDRESS_ROUTINE = ::core::option::Option<()>;
-pub type PTRANSLATE_ADDRESS_ROUTINE64 = ::core::option::Option<()>;
+pub type PSYMBOLSERVERBYINDEXPROC =
+    StdCallFnPtr<(PCSTR, PCSTR, PCSTR, PCSTR), super::super::super::Foundation::BOOL>;
+pub type PSYMBOLSERVERBYINDEXPROCA =
+    StdCallFnPtr<(PCSTR, PCSTR, PCSTR, PCSTR), super::super::super::Foundation::BOOL>;
+pub type PSYMBOLSERVERBYINDEXPROCW =
+    StdCallFnPtr<(PCWSTR, PCWSTR, PCWSTR, PCWSTR), super::super::super::Foundation::BOOL>;
+pub type PSYMBOLSERVERCALLBACKPROC =
+    StdCallFnPtr<(PtrRepr, u64, u64), super::super::super::Foundation::BOOL>;
+pub type PSYMBOLSERVERCLOSEPROC = StdCallFnPtr<(), super::super::super::Foundation::BOOL>;
+pub type PSYMBOLSERVERDELTANAME = StdCallFnPtr<
+    (
+        PCSTR,
+        MutPtr<::core::ffi::c_void>,
+        u32,
+        u32,
+        MutPtr<::core::ffi::c_void>,
+        u32,
+        u32,
+        PCSTR,
+        PtrRepr,
+    ),
+    super::super::super::Foundation::BOOL,
+>;
+pub type PSYMBOLSERVERDELTANAMEW = StdCallFnPtr<
+    (
+        PCWSTR,
+        MutPtr<::core::ffi::c_void>,
+        u32,
+        u32,
+        MutPtr<::core::ffi::c_void>,
+        u32,
+        u32,
+        PCWSTR,
+        PtrRepr,
+    ),
+    super::super::super::Foundation::BOOL,
+>;
+pub type PSYMBOLSERVERGETINDEXSTRING = StdCallFnPtr<
+    (MutPtr<::core::ffi::c_void>, u32, u32, PCSTR, PtrRepr),
+    super::super::super::Foundation::BOOL,
+>;
+pub type PSYMBOLSERVERGETINDEXSTRINGW = StdCallFnPtr<
+    (MutPtr<::core::ffi::c_void>, u32, u32, PCWSTR, PtrRepr),
+    super::super::super::Foundation::BOOL,
+>;
+pub type PSYMBOLSERVERGETOPTIONDATAPROC =
+    StdCallFnPtr<(PtrRepr, MutPtr<u64>), super::super::super::Foundation::BOOL>;
+pub type PSYMBOLSERVERGETOPTIONSPROC = StdCallFnPtr<(), PtrRepr>;
+pub type PSYMBOLSERVERGETSUPPLEMENT =
+    StdCallFnPtr<(PCSTR, PCSTR, PCSTR, PCSTR, PtrRepr), super::super::super::Foundation::BOOL>;
+pub type PSYMBOLSERVERGETSUPPLEMENTW =
+    StdCallFnPtr<(PCWSTR, PCWSTR, PCWSTR, PCWSTR, PtrRepr), super::super::super::Foundation::BOOL>;
+pub type PSYMBOLSERVERGETVERSION =
+    StdCallFnPtr<(MutPtr<API_VERSION>,), super::super::super::Foundation::BOOL>;
+pub type PSYMBOLSERVERISSTORE = StdCallFnPtr<(PCSTR,), super::super::super::Foundation::BOOL>;
+pub type PSYMBOLSERVERISSTOREW = StdCallFnPtr<(PCWSTR,), super::super::super::Foundation::BOOL>;
+pub type PSYMBOLSERVERMESSAGEPROC =
+    StdCallFnPtr<(PtrRepr, u64, u64), super::super::super::Foundation::BOOL>;
+pub type PSYMBOLSERVEROPENPROC = StdCallFnPtr<(), super::super::super::Foundation::BOOL>;
+pub type PSYMBOLSERVERPINGPROC = StdCallFnPtr<(PCSTR,), super::super::super::Foundation::BOOL>;
+pub type PSYMBOLSERVERPINGPROCA = StdCallFnPtr<(PCSTR,), super::super::super::Foundation::BOOL>;
+pub type PSYMBOLSERVERPINGPROCW = StdCallFnPtr<(PCWSTR,), super::super::super::Foundation::BOOL>;
+pub type PSYMBOLSERVERPINGPROCWEX = StdCallFnPtr<(PCWSTR,), super::super::super::Foundation::BOOL>;
+pub type PSYMBOLSERVERPROC = StdCallFnPtr<
+    (PCSTR, PCSTR, MutPtr<::core::ffi::c_void>, u32, u32, PCSTR),
+    super::super::super::Foundation::BOOL,
+>;
+pub type PSYMBOLSERVERPROCA = StdCallFnPtr<
+    (PCSTR, PCSTR, MutPtr<::core::ffi::c_void>, u32, u32, PCSTR),
+    super::super::super::Foundation::BOOL,
+>;
+pub type PSYMBOLSERVERPROCW = StdCallFnPtr<
+    (
+        PCWSTR,
+        PCWSTR,
+        MutPtr<::core::ffi::c_void>,
+        u32,
+        u32,
+        PCWSTR,
+    ),
+    super::super::super::Foundation::BOOL,
+>;
+pub type PSYMBOLSERVERSETHTTPAUTHHEADER =
+    StdCallFnPtr<(PCWSTR,), super::super::super::Foundation::BOOL>;
+pub type PSYMBOLSERVERSETOPTIONSPROC =
+    StdCallFnPtr<(PtrRepr, u64), super::super::super::Foundation::BOOL>;
+pub type PSYMBOLSERVERSETOPTIONSWPROC =
+    StdCallFnPtr<(PtrRepr, u64), super::super::super::Foundation::BOOL>;
+pub type PSYMBOLSERVERSTOREFILE = StdCallFnPtr<
+    (
+        PCSTR,
+        PCSTR,
+        MutPtr<::core::ffi::c_void>,
+        u32,
+        u32,
+        PCSTR,
+        PtrRepr,
+        u32,
+    ),
+    super::super::super::Foundation::BOOL,
+>;
+pub type PSYMBOLSERVERSTOREFILEW = StdCallFnPtr<
+    (
+        PCWSTR,
+        PCWSTR,
+        MutPtr<::core::ffi::c_void>,
+        u32,
+        u32,
+        PCWSTR,
+        PtrRepr,
+        u32,
+    ),
+    super::super::super::Foundation::BOOL,
+>;
+pub type PSYMBOLSERVERSTORESUPPLEMENT =
+    StdCallFnPtr<(PCSTR, PCSTR, PCSTR, PCSTR, PtrRepr, u32), super::super::super::Foundation::BOOL>;
+pub type PSYMBOLSERVERSTORESUPPLEMENTW = StdCallFnPtr<
+    (PCWSTR, PCWSTR, PCWSTR, PCWSTR, PtrRepr, u32),
+    super::super::super::Foundation::BOOL,
+>;
+pub type PSYMBOLSERVERVERSION = StdCallFnPtr<(), u32>;
+pub type PSYMBOLSERVERWEXPROC = StdCallFnPtr<
+    (
+        PCWSTR,
+        PCWSTR,
+        MutPtr<::core::ffi::c_void>,
+        u32,
+        u32,
+        PCWSTR,
+        MutPtr<SYMSRV_EXTENDED_OUTPUT_DATA>,
+    ),
+    super::super::super::Foundation::BOOL,
+>;
+pub type PSYMBOL_FUNCENTRY_CALLBACK = StdCallFnPtr<
+    (
+        super::super::super::Foundation::HANDLE,
+        u32,
+        ConstPtr<::core::ffi::c_void>,
+    ),
+    MutPtr<::core::ffi::c_void>,
+>;
+pub type PSYMBOL_FUNCENTRY_CALLBACK64 =
+    StdCallFnPtr<(super::super::super::Foundation::HANDLE, u64, u64), MutPtr<::core::ffi::c_void>>;
+pub type PSYMBOL_REGISTERED_CALLBACK = StdCallFnPtr<
+    (
+        super::super::super::Foundation::HANDLE,
+        u32,
+        ConstPtr<::core::ffi::c_void>,
+        ConstPtr<::core::ffi::c_void>,
+    ),
+    super::super::super::Foundation::BOOL,
+>;
+pub type PSYMBOL_REGISTERED_CALLBACK64 = StdCallFnPtr<
+    (super::super::super::Foundation::HANDLE, u32, u64, u64),
+    super::super::super::Foundation::BOOL,
+>;
+pub type PSYM_DUMP_FIELD_CALLBACK =
+    StdCallFnPtr<(MutPtr<FIELD_INFO>, MutPtr<::core::ffi::c_void>), u32>;
+pub type PSYM_ENUMERATESYMBOLS_CALLBACK = StdCallFnPtr<
+    (ConstPtr<SYMBOL_INFO>, u32, ConstPtr<::core::ffi::c_void>),
+    super::super::super::Foundation::BOOL,
+>;
+pub type PSYM_ENUMERATESYMBOLS_CALLBACKW = StdCallFnPtr<
+    (ConstPtr<SYMBOL_INFOW>, u32, ConstPtr<::core::ffi::c_void>),
+    super::super::super::Foundation::BOOL,
+>;
+pub type PSYM_ENUMLINES_CALLBACK = StdCallFnPtr<
+    (ConstPtr<SRCCODEINFO>, ConstPtr<::core::ffi::c_void>),
+    super::super::super::Foundation::BOOL,
+>;
+pub type PSYM_ENUMLINES_CALLBACKW = StdCallFnPtr<
+    (ConstPtr<SRCCODEINFOW>, ConstPtr<::core::ffi::c_void>),
+    super::super::super::Foundation::BOOL,
+>;
+pub type PSYM_ENUMMODULES_CALLBACK = StdCallFnPtr<
+    (PCSTR, u32, ConstPtr<::core::ffi::c_void>),
+    super::super::super::Foundation::BOOL,
+>;
+pub type PSYM_ENUMMODULES_CALLBACK64 = StdCallFnPtr<
+    (PCSTR, u64, ConstPtr<::core::ffi::c_void>),
+    super::super::super::Foundation::BOOL,
+>;
+pub type PSYM_ENUMMODULES_CALLBACKW64 = StdCallFnPtr<
+    (PCWSTR, u64, ConstPtr<::core::ffi::c_void>),
+    super::super::super::Foundation::BOOL,
+>;
+pub type PSYM_ENUMPROCESSES_CALLBACK = StdCallFnPtr<
+    (
+        super::super::super::Foundation::HANDLE,
+        ConstPtr<::core::ffi::c_void>,
+    ),
+    super::super::super::Foundation::BOOL,
+>;
+pub type PSYM_ENUMSOURCEFILES_CALLBACK = StdCallFnPtr<
+    (ConstPtr<SOURCEFILE>, ConstPtr<::core::ffi::c_void>),
+    super::super::super::Foundation::BOOL,
+>;
+pub type PSYM_ENUMSOURCEFILES_CALLBACKW = StdCallFnPtr<
+    (ConstPtr<SOURCEFILEW>, ConstPtr<::core::ffi::c_void>),
+    super::super::super::Foundation::BOOL,
+>;
+pub type PSYM_ENUMSYMBOLS_CALLBACK = StdCallFnPtr<
+    (PCSTR, u32, u32, ConstPtr<::core::ffi::c_void>),
+    super::super::super::Foundation::BOOL,
+>;
+pub type PSYM_ENUMSYMBOLS_CALLBACK64 = StdCallFnPtr<
+    (PCSTR, u64, u32, ConstPtr<::core::ffi::c_void>),
+    super::super::super::Foundation::BOOL,
+>;
+pub type PSYM_ENUMSYMBOLS_CALLBACK64W = StdCallFnPtr<
+    (PCWSTR, u64, u32, ConstPtr<::core::ffi::c_void>),
+    super::super::super::Foundation::BOOL,
+>;
+pub type PSYM_ENUMSYMBOLS_CALLBACKW = StdCallFnPtr<
+    (PCWSTR, u32, u32, ConstPtr<::core::ffi::c_void>),
+    super::super::super::Foundation::BOOL,
+>;
+pub type PTRANSLATE_ADDRESS_ROUTINE = StdCallFnPtr<
+    (
+        super::super::super::Foundation::HANDLE,
+        super::super::super::Foundation::HANDLE,
+        MutPtr<ADDRESS>,
+    ),
+    u32,
+>;
+pub type PTRANSLATE_ADDRESS_ROUTINE64 = StdCallFnPtr<
+    (
+        super::super::super::Foundation::HANDLE,
+        super::super::super::Foundation::HANDLE,
+        ConstPtr<ADDRESS64>,
+    ),
+    u64,
+>;
 pub const PTR_SEARCH_NO_SYMBOL_CHECK: u32 = 2147483648u32;
 pub const PTR_SEARCH_PHYS_ALL_HITS: u32 = 1u32;
 pub const PTR_SEARCH_PHYS_PTE: u32 = 2u32;
 pub const PTR_SEARCH_PHYS_RANGE_CHECK_ONLY: u32 = 4u32;
 pub const PTR_SEARCH_PHYS_SIZE_SHIFT: u32 = 3u32;
-pub type PVECTORED_EXCEPTION_HANDLER = ::core::option::Option<()>;
-pub type PWAITCHAINCALLBACK = ::core::option::Option<()>;
-pub type PWINDBG_CHECK_CONTROL_C = ::core::option::Option<()>;
-pub type PWINDBG_CHECK_VERSION = ::core::option::Option<()>;
-pub type PWINDBG_DISASM = ::core::option::Option<()>;
-pub type PWINDBG_DISASM32 = ::core::option::Option<()>;
-pub type PWINDBG_DISASM64 = ::core::option::Option<()>;
-pub type PWINDBG_EXTENSION_API_VERSION = ::core::option::Option<()>;
-pub type PWINDBG_EXTENSION_DLL_INIT = ::core::option::Option<()>;
-pub type PWINDBG_EXTENSION_DLL_INIT32 = ::core::option::Option<()>;
-pub type PWINDBG_EXTENSION_DLL_INIT64 = ::core::option::Option<()>;
-pub type PWINDBG_EXTENSION_ROUTINE = ::core::option::Option<()>;
-pub type PWINDBG_EXTENSION_ROUTINE32 = ::core::option::Option<()>;
-pub type PWINDBG_EXTENSION_ROUTINE64 = ::core::option::Option<()>;
-pub type PWINDBG_GET_EXPRESSION = ::core::option::Option<()>;
-pub type PWINDBG_GET_EXPRESSION32 = ::core::option::Option<()>;
-pub type PWINDBG_GET_EXPRESSION64 = ::core::option::Option<()>;
-pub type PWINDBG_GET_SYMBOL = ::core::option::Option<()>;
-pub type PWINDBG_GET_SYMBOL32 = ::core::option::Option<()>;
-pub type PWINDBG_GET_SYMBOL64 = ::core::option::Option<()>;
-pub type PWINDBG_GET_THREAD_CONTEXT_ROUTINE = ::core::option::Option<()>;
-pub type PWINDBG_IOCTL_ROUTINE = ::core::option::Option<()>;
-pub type PWINDBG_OLDKD_EXTENSION_ROUTINE = ::core::option::Option<()>;
-pub type PWINDBG_OLDKD_READ_PHYSICAL_MEMORY = ::core::option::Option<()>;
-pub type PWINDBG_OLDKD_WRITE_PHYSICAL_MEMORY = ::core::option::Option<()>;
-pub type PWINDBG_OLD_EXTENSION_ROUTINE = ::core::option::Option<()>;
-pub type PWINDBG_OUTPUT_ROUTINE = ::core::option::Option<()>;
-pub type PWINDBG_READ_PROCESS_MEMORY_ROUTINE = ::core::option::Option<()>;
-pub type PWINDBG_READ_PROCESS_MEMORY_ROUTINE32 = ::core::option::Option<()>;
-pub type PWINDBG_READ_PROCESS_MEMORY_ROUTINE64 = ::core::option::Option<()>;
-pub type PWINDBG_SET_THREAD_CONTEXT_ROUTINE = ::core::option::Option<()>;
-pub type PWINDBG_STACKTRACE_ROUTINE = ::core::option::Option<()>;
-pub type PWINDBG_STACKTRACE_ROUTINE32 = ::core::option::Option<()>;
-pub type PWINDBG_STACKTRACE_ROUTINE64 = ::core::option::Option<()>;
-pub type PWINDBG_WRITE_PROCESS_MEMORY_ROUTINE = ::core::option::Option<()>;
-pub type PWINDBG_WRITE_PROCESS_MEMORY_ROUTINE32 = ::core::option::Option<()>;
-pub type PWINDBG_WRITE_PROCESS_MEMORY_ROUTINE64 = ::core::option::Option<()>;
+pub type PVECTORED_EXCEPTION_HANDLER = StdCallFnPtr<(MutPtr<EXCEPTION_POINTERS>,), i32>;
+pub type PWAITCHAINCALLBACK = StdCallFnPtr<
+    (
+        MutPtr<::core::ffi::c_void>,
+        PtrRepr,
+        u32,
+        MutPtr<u32>,
+        MutPtr<WAITCHAIN_NODE_INFO>,
+        MutPtr<i32>,
+    ),
+    (),
+>;
+pub type PWINDBG_CHECK_CONTROL_C = StdCallFnPtr<(), u32>;
+pub type PWINDBG_CHECK_VERSION = StdCallFnPtr<(), u32>;
+pub type PWINDBG_DISASM = StdCallFnPtr<(MutPtr<PtrRepr>, PCSTR, u32), u32>;
+pub type PWINDBG_DISASM32 = StdCallFnPtr<(MutPtr<u32>, PCSTR, u32), u32>;
+pub type PWINDBG_DISASM64 = StdCallFnPtr<(MutPtr<u64>, PCSTR, u32), u32>;
+pub type PWINDBG_EXTENSION_API_VERSION = StdCallFnPtr<(), MutPtr<EXT_API_VERSION>>;
+pub type PWINDBG_EXTENSION_DLL_INIT = StdCallFnPtr<(MutPtr<WINDBG_EXTENSION_APIS>, u16, u16), ()>;
+pub type PWINDBG_EXTENSION_DLL_INIT32 =
+    StdCallFnPtr<(MutPtr<WINDBG_EXTENSION_APIS32>, u16, u16), ()>;
+pub type PWINDBG_EXTENSION_DLL_INIT64 =
+    StdCallFnPtr<(MutPtr<WINDBG_EXTENSION_APIS64>, u16, u16), ()>;
+pub type PWINDBG_EXTENSION_ROUTINE = StdCallFnPtr<
+    (
+        super::super::super::Foundation::HANDLE,
+        super::super::super::Foundation::HANDLE,
+        u32,
+        u32,
+        PCSTR,
+    ),
+    (),
+>;
+pub type PWINDBG_EXTENSION_ROUTINE32 = StdCallFnPtr<
+    (
+        super::super::super::Foundation::HANDLE,
+        super::super::super::Foundation::HANDLE,
+        u32,
+        u32,
+        PCSTR,
+    ),
+    (),
+>;
+pub type PWINDBG_EXTENSION_ROUTINE64 = StdCallFnPtr<
+    (
+        super::super::super::Foundation::HANDLE,
+        super::super::super::Foundation::HANDLE,
+        u64,
+        u32,
+        PCSTR,
+    ),
+    (),
+>;
+pub type PWINDBG_GET_EXPRESSION = StdCallFnPtr<(PCSTR,), PtrRepr>;
+pub type PWINDBG_GET_EXPRESSION32 = StdCallFnPtr<(PCSTR,), u32>;
+pub type PWINDBG_GET_EXPRESSION64 = StdCallFnPtr<(PCSTR,), u64>;
+pub type PWINDBG_GET_SYMBOL =
+    StdCallFnPtr<(MutPtr<::core::ffi::c_void>, PCSTR, MutPtr<PtrRepr>), ()>;
+pub type PWINDBG_GET_SYMBOL32 = StdCallFnPtr<(u32, PCSTR, MutPtr<u32>), ()>;
+pub type PWINDBG_GET_SYMBOL64 = StdCallFnPtr<(u64, PCSTR, MutPtr<u64>), ()>;
+pub type PWINDBG_GET_THREAD_CONTEXT_ROUTINE = StdCallFnPtr<(u32, MutPtr<CONTEXT>, u32), u32>;
+pub type PWINDBG_IOCTL_ROUTINE = StdCallFnPtr<(u16, MutPtr<::core::ffi::c_void>, u32), u32>;
+pub type PWINDBG_OLDKD_EXTENSION_ROUTINE =
+    StdCallFnPtr<(u32, MutPtr<WINDBG_OLDKD_EXTENSION_APIS>, PCSTR), ()>;
+pub type PWINDBG_OLDKD_READ_PHYSICAL_MEMORY =
+    StdCallFnPtr<(u64, MutPtr<::core::ffi::c_void>, u32, MutPtr<u32>), u32>;
+pub type PWINDBG_OLDKD_WRITE_PHYSICAL_MEMORY =
+    StdCallFnPtr<(u64, MutPtr<::core::ffi::c_void>, u32, MutPtr<u32>), u32>;
+pub type PWINDBG_OLD_EXTENSION_ROUTINE =
+    StdCallFnPtr<(u32, MutPtr<WINDBG_EXTENSION_APIS>, PCSTR), ()>;
+pub type PWINDBG_OUTPUT_ROUTINE = StdCallFnPtr<(PCSTR,), ()>;
+pub type PWINDBG_READ_PROCESS_MEMORY_ROUTINE =
+    StdCallFnPtr<(PtrRepr, MutPtr<::core::ffi::c_void>, u32, MutPtr<u32>), u32>;
+pub type PWINDBG_READ_PROCESS_MEMORY_ROUTINE32 =
+    StdCallFnPtr<(u32, MutPtr<::core::ffi::c_void>, u32, MutPtr<u32>), u32>;
+pub type PWINDBG_READ_PROCESS_MEMORY_ROUTINE64 =
+    StdCallFnPtr<(u64, MutPtr<::core::ffi::c_void>, u32, MutPtr<u32>), u32>;
+pub type PWINDBG_SET_THREAD_CONTEXT_ROUTINE = StdCallFnPtr<(u32, MutPtr<CONTEXT>, u32), u32>;
+pub type PWINDBG_STACKTRACE_ROUTINE =
+    StdCallFnPtr<(u32, u32, u32, MutPtr<EXTSTACKTRACE>, u32), u32>;
+pub type PWINDBG_STACKTRACE_ROUTINE32 =
+    StdCallFnPtr<(u32, u32, u32, MutPtr<EXTSTACKTRACE32>, u32), u32>;
+pub type PWINDBG_STACKTRACE_ROUTINE64 =
+    StdCallFnPtr<(u64, u64, u64, MutPtr<EXTSTACKTRACE64>, u32), u32>;
+pub type PWINDBG_WRITE_PROCESS_MEMORY_ROUTINE =
+    StdCallFnPtr<(PtrRepr, ConstPtr<::core::ffi::c_void>, u32, MutPtr<u32>), u32>;
+pub type PWINDBG_WRITE_PROCESS_MEMORY_ROUTINE32 =
+    StdCallFnPtr<(u32, ConstPtr<::core::ffi::c_void>, u32, MutPtr<u32>), u32>;
+pub type PWINDBG_WRITE_PROCESS_MEMORY_ROUTINE64 =
+    StdCallFnPtr<(u64, ConstPtr<::core::ffi::c_void>, u32, MutPtr<u32>), u32>;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct PointerKind(pub i32);
 pub const PointerStandard: PointerKind = PointerKind(0i32);
@@ -28102,8 +28441,26 @@ impl FromIntoMemory for STACK_SYM_FRAME_INFO {
         160u32 as usize
     }
 }
-pub type SYMADDSOURCESTREAM = ::core::option::Option<()>;
-pub type SYMADDSOURCESTREAMA = ::core::option::Option<()>;
+pub type SYMADDSOURCESTREAM = StdCallFnPtr<
+    (
+        super::super::super::Foundation::HANDLE,
+        u64,
+        PCSTR,
+        MutPtr<u8>,
+        PtrRepr,
+    ),
+    super::super::super::Foundation::BOOL,
+>;
+pub type SYMADDSOURCESTREAMA = StdCallFnPtr<
+    (
+        super::super::super::Foundation::HANDLE,
+        u64,
+        PCSTR,
+        MutPtr<u8>,
+        PtrRepr,
+    ),
+    super::super::super::Foundation::BOOL,
+>;
 pub struct SYMBOL_INFO {
     pub SizeOfStruct: u32,
     pub TypeIndex: u32,
@@ -31401,7 +31758,10 @@ impl FromIntoMemory for WHEA_ERROR_SOURCE_CONFIGURATION_DEVICE_DRIVER_V1 {
         36u32 as usize
     }
 }
-pub type WHEA_ERROR_SOURCE_CORRECT_DEVICE_DRIVER = ::core::option::Option<()>;
+pub type WHEA_ERROR_SOURCE_CORRECT_DEVICE_DRIVER = StdCallFnPtr<
+    (MutPtr<::core::ffi::c_void>, MutPtr<u32>),
+    super::super::super::Foundation::NTSTATUS,
+>;
 pub struct WHEA_ERROR_SOURCE_DESCRIPTOR {
     pub Length: u32,
     pub Version: u32,
@@ -31549,7 +31909,8 @@ pub const WHEA_ERROR_SOURCE_FLAG_DEFAULTSOURCE: u32 = 2147483648u32;
 pub const WHEA_ERROR_SOURCE_FLAG_FIRMWAREFIRST: u32 = 1u32;
 pub const WHEA_ERROR_SOURCE_FLAG_GHES_ASSIST: u32 = 4u32;
 pub const WHEA_ERROR_SOURCE_FLAG_GLOBAL: u32 = 2u32;
-pub type WHEA_ERROR_SOURCE_INITIALIZE_DEVICE_DRIVER = ::core::option::Option<()>;
+pub type WHEA_ERROR_SOURCE_INITIALIZE_DEVICE_DRIVER =
+    StdCallFnPtr<(MutPtr<::core::ffi::c_void>, u32), super::super::super::Foundation::NTSTATUS>;
 pub const WHEA_ERROR_SOURCE_INVALID_RELATED_SOURCE: u32 = 65535u32;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct WHEA_ERROR_SOURCE_STATE(pub i32);
@@ -31635,7 +31996,8 @@ impl FromIntoMemory for WHEA_ERROR_SOURCE_TYPE {
         4
     }
 }
-pub type WHEA_ERROR_SOURCE_UNINITIALIZE_DEVICE_DRIVER = ::core::option::Option<()>;
+pub type WHEA_ERROR_SOURCE_UNINITIALIZE_DEVICE_DRIVER =
+    StdCallFnPtr<(MutPtr<::core::ffi::c_void>,), ()>;
 pub struct WHEA_GENERIC_ERROR_DESCRIPTOR {
     pub Type: u16,
     pub Reserved: u8,

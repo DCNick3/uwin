@@ -199,7 +199,15 @@ impl FromIntoMemory for EXCEPTION_REGISTRATION_RECORD {
         8u32 as usize
     }
 }
-pub type EXCEPTION_ROUTINE = ::core::option::Option<()>;
+pub type EXCEPTION_ROUTINE = StdCallFnPtr<
+    (
+        MutPtr<super::Diagnostics::Debug::EXCEPTION_RECORD>,
+        ConstPtr<::core::ffi::c_void>,
+        MutPtr<super::Diagnostics::Debug::CONTEXT>,
+        ConstPtr<::core::ffi::c_void>,
+    ),
+    EXCEPTION_DISPOSITION,
+>;
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct FLOATING_SAVE_AREA {

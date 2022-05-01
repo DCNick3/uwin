@@ -47,11 +47,12 @@ pub const C3_NONSPACING: u32 = 1u32;
 pub const C3_NOTAPPLICABLE: u32 = 0u32;
 pub const C3_SYMBOL: u32 = 8u32;
 pub const C3_VOWELMARK: u32 = 4u32;
-pub type CALINFO_ENUMPROCA = ::core::option::Option<()>;
-pub type CALINFO_ENUMPROCEXA = ::core::option::Option<()>;
-pub type CALINFO_ENUMPROCEXEX = ::core::option::Option<()>;
-pub type CALINFO_ENUMPROCEXW = ::core::option::Option<()>;
-pub type CALINFO_ENUMPROCW = ::core::option::Option<()>;
+pub type CALINFO_ENUMPROCA = StdCallFnPtr<(PCSTR,), super::Foundation::BOOL>;
+pub type CALINFO_ENUMPROCEXA = StdCallFnPtr<(PCSTR, u32), super::Foundation::BOOL>;
+pub type CALINFO_ENUMPROCEXEX =
+    StdCallFnPtr<(PCWSTR, u32, PCWSTR, super::Foundation::LPARAM), super::Foundation::BOOL>;
+pub type CALINFO_ENUMPROCEXW = StdCallFnPtr<(PCWSTR, u32), super::Foundation::BOOL>;
+pub type CALINFO_ENUMPROCW = StdCallFnPtr<(PCWSTR,), super::Foundation::BOOL>;
 pub const CAL_GREGORIAN: u32 = 1u32;
 pub const CAL_GREGORIAN_ARABIC: u32 = 10u32;
 pub const CAL_GREGORIAN_ME_FRENCH: u32 = 9u32;
@@ -186,8 +187,8 @@ pub const CMLangString: crate::core::GUID =
     crate::core::GUID::from_u128(0xc04d65cf_b70d_11d0_b188_00aa0038c969);
 pub const CMultiLanguage: crate::core::GUID =
     crate::core::GUID::from_u128(0x275c23e2_3747_11d0_9fea_00aa003f8646);
-pub type CODEPAGE_ENUMPROCA = ::core::option::Option<()>;
-pub type CODEPAGE_ENUMPROCW = ::core::option::Option<()>;
+pub type CODEPAGE_ENUMPROCA = StdCallFnPtr<(PCSTR,), super::Foundation::BOOL>;
+pub type CODEPAGE_ENUMPROCW = StdCallFnPtr<(PCWSTR,), super::Foundation::BOOL>;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct COMPARE_STRING_FLAGS(pub u32);
 pub const LINGUISTIC_IGNORECASE: COMPARE_STRING_FLAGS = COMPARE_STRING_FLAGS(16u32);
@@ -764,11 +765,12 @@ impl FromIntoMemory for CURRENCYFMTW {
         32u32 as usize
     }
 }
-pub type DATEFMT_ENUMPROCA = ::core::option::Option<()>;
-pub type DATEFMT_ENUMPROCEXA = ::core::option::Option<()>;
-pub type DATEFMT_ENUMPROCEXEX = ::core::option::Option<()>;
-pub type DATEFMT_ENUMPROCEXW = ::core::option::Option<()>;
-pub type DATEFMT_ENUMPROCW = ::core::option::Option<()>;
+pub type DATEFMT_ENUMPROCA = StdCallFnPtr<(PCSTR,), super::Foundation::BOOL>;
+pub type DATEFMT_ENUMPROCEXA = StdCallFnPtr<(PCSTR, u32), super::Foundation::BOOL>;
+pub type DATEFMT_ENUMPROCEXEX =
+    StdCallFnPtr<(PCWSTR, u32, super::Foundation::LPARAM), super::Foundation::BOOL>;
+pub type DATEFMT_ENUMPROCEXW = StdCallFnPtr<(PCWSTR, u32), super::Foundation::BOOL>;
+pub type DATEFMT_ENUMPROCW = StdCallFnPtr<(PCWSTR,), super::Foundation::BOOL>;
 pub struct DetectEncodingInfo {
     pub nLangID: u32,
     pub nCodePage: u32,
@@ -1291,8 +1293,9 @@ impl FromIntoMemory for FONTSIGNATURE {
     }
 }
 pub const GEOID_NOT_AVAILABLE: i32 = -1i32;
-pub type GEO_ENUMNAMEPROC = ::core::option::Option<()>;
-pub type GEO_ENUMPROC = ::core::option::Option<()>;
+pub type GEO_ENUMNAMEPROC =
+    StdCallFnPtr<(PCWSTR, super::Foundation::LPARAM), super::Foundation::BOOL>;
+pub type GEO_ENUMPROC = StdCallFnPtr<(i32,), super::Foundation::BOOL>;
 pub struct GOFFSET {
     pub du: i32,
     pub dv: i32,
@@ -1580,10 +1583,14 @@ impl FromIntoMemory for IS_VALID_LOCALE_FLAGS {
         4
     }
 }
-pub type LANGGROUPLOCALE_ENUMPROCA = ::core::option::Option<()>;
-pub type LANGGROUPLOCALE_ENUMPROCW = ::core::option::Option<()>;
-pub type LANGUAGEGROUP_ENUMPROCA = ::core::option::Option<()>;
-pub type LANGUAGEGROUP_ENUMPROCW = ::core::option::Option<()>;
+pub type LANGGROUPLOCALE_ENUMPROCA =
+    StdCallFnPtr<(u32, u32, PCSTR, PtrDiffRepr), super::Foundation::BOOL>;
+pub type LANGGROUPLOCALE_ENUMPROCW =
+    StdCallFnPtr<(u32, u32, PCWSTR, PtrDiffRepr), super::Foundation::BOOL>;
+pub type LANGUAGEGROUP_ENUMPROCA =
+    StdCallFnPtr<(u32, PCSTR, PCSTR, u32, PtrDiffRepr), super::Foundation::BOOL>;
+pub type LANGUAGEGROUP_ENUMPROCW =
+    StdCallFnPtr<(u32, PCWSTR, PCWSTR, u32, PtrDiffRepr), super::Foundation::BOOL>;
 pub const LCID_ALTERNATE_SORTS: u32 = 4u32;
 pub const LCMAP_BYTEREV: u32 = 2048u32;
 pub const LCMAP_FULLWIDTH: u32 = 8388608u32;
@@ -1670,9 +1677,10 @@ impl FromIntoMemory for LOCALESIGNATURE {
 pub const LOCALE_ALL: u32 = 0u32;
 pub const LOCALE_ALLOW_NEUTRAL_NAMES: u32 = 134217728u32;
 pub const LOCALE_ALTERNATE_SORTS: u32 = 4u32;
-pub type LOCALE_ENUMPROCA = ::core::option::Option<()>;
-pub type LOCALE_ENUMPROCEX = ::core::option::Option<()>;
-pub type LOCALE_ENUMPROCW = ::core::option::Option<()>;
+pub type LOCALE_ENUMPROCA = StdCallFnPtr<(PCSTR,), super::Foundation::BOOL>;
+pub type LOCALE_ENUMPROCEX =
+    StdCallFnPtr<(PCWSTR, u32, super::Foundation::LPARAM), super::Foundation::BOOL>;
+pub type LOCALE_ENUMPROCW = StdCallFnPtr<(PCWSTR,), super::Foundation::BOOL>;
 pub const LOCALE_FONTSIGNATURE: u32 = 88u32;
 pub const LOCALE_ICALENDARTYPE: u32 = 4105u32;
 pub const LOCALE_ICENTURY: u32 = 36u32;
@@ -3206,7 +3214,15 @@ impl FromIntoMemory for NUMBERFMTW {
 pub const NUMSYS_NAME_CAPACITY: u32 = 8u32;
 pub const OFFLINE_SERVICES: u32 = 2u32;
 pub const ONLINE_SERVICES: u32 = 1u32;
-pub type PFN_MAPPINGCALLBACKPROC = ::core::option::Option<()>;
+pub type PFN_MAPPINGCALLBACKPROC = StdCallFnPtr<
+    (
+        MutPtr<MAPPING_PROPERTY_BAG>,
+        MutPtr<::core::ffi::c_void>,
+        u32,
+        crate::core::HRESULT,
+    ),
+    (),
+>;
 pub struct RFC1766INFO {
     pub lcid: u32,
     pub wszRfc1766: [u16; 6],
@@ -4101,9 +4117,10 @@ impl FromIntoMemory for SYSNLS_FUNCTION {
 }
 pub const SpellCheckerFactory: crate::core::GUID =
     crate::core::GUID::from_u128(0x7ab36653_1796_484b_bdfa_e74f1db7c1dc);
-pub type TIMEFMT_ENUMPROCA = ::core::option::Option<()>;
-pub type TIMEFMT_ENUMPROCEX = ::core::option::Option<()>;
-pub type TIMEFMT_ENUMPROCW = ::core::option::Option<()>;
+pub type TIMEFMT_ENUMPROCA = StdCallFnPtr<(PCSTR,), super::Foundation::BOOL>;
+pub type TIMEFMT_ENUMPROCEX =
+    StdCallFnPtr<(PCWSTR, super::Foundation::LPARAM), super::Foundation::BOOL>;
+pub type TIMEFMT_ENUMPROCW = StdCallFnPtr<(PCWSTR,), super::Foundation::BOOL>;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct TIME_FORMAT_FLAGS(pub u32);
 pub const TIME_NOMINUTESORSECONDS: TIME_FORMAT_FLAGS = TIME_FORMAT_FLAGS(1u32);
@@ -4283,7 +4300,7 @@ pub const UBIDI_MAX_EXPLICIT_LEVEL: u32 = 125u32;
 pub const UBIDI_OUTPUT_REVERSE: u32 = 16u32;
 pub const UBIDI_REMOVE_BIDI_CONTROLS: u32 = 8u32;
 pub struct UBiDi(pub u8);
-pub type UBiDiClassCallback = ::core::option::Option<()>;
+pub type UBiDiClassCallback = StdCallFnPtr<(ConstPtr<::core::ffi::c_void>, i32), UCharDirection>;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct UBiDiDirection(pub i32);
 pub const UBIDI_LTR: UBiDiDirection = UBiDiDirection(0i32);
@@ -4931,7 +4948,7 @@ impl FromIntoMemory for UCPMapRangeOption {
         4
     }
 }
-pub type UCPMapValueFilter = ::core::option::Option<()>;
+pub type UCPMapValueFilter = StdCallFnPtr<(ConstPtr<::core::ffi::c_void>, u32), u32>;
 pub const UCPTRIE_ERROR_VALUE_NEG_DATA_OFFSET: i32 = 1i32;
 pub const UCPTRIE_FAST_DATA_BLOCK_LENGTH: i32 = 64i32;
 pub const UCPTRIE_FAST_DATA_MASK: i32 = 63i32;
@@ -5608,7 +5625,8 @@ impl FromIntoMemory for UCharDirection {
         4
     }
 }
-pub type UCharEnumTypeRange = ::core::option::Option<()>;
+pub type UCharEnumTypeRange =
+    StdCallFnPtr<(ConstPtr<::core::ffi::c_void>, i32, i32, UCharCategory), i8>;
 pub struct UCharIterator {
     pub context: ConstPtr<::core::ffi::c_void>,
     pub length: i32,
@@ -5739,13 +5757,13 @@ impl FromIntoMemory for UCharIterator {
         64u32 as usize
     }
 }
-pub type UCharIteratorCurrent = ::core::option::Option<()>;
-pub type UCharIteratorGetIndex = ::core::option::Option<()>;
-pub type UCharIteratorGetState = ::core::option::Option<()>;
-pub type UCharIteratorHasNext = ::core::option::Option<()>;
-pub type UCharIteratorHasPrevious = ::core::option::Option<()>;
-pub type UCharIteratorMove = ::core::option::Option<()>;
-pub type UCharIteratorNext = ::core::option::Option<()>;
+pub type UCharIteratorCurrent = StdCallFnPtr<(MutPtr<UCharIterator>,), i32>;
+pub type UCharIteratorGetIndex = StdCallFnPtr<(MutPtr<UCharIterator>, UCharIteratorOrigin), i32>;
+pub type UCharIteratorGetState = StdCallFnPtr<(ConstPtr<UCharIterator>,), u32>;
+pub type UCharIteratorHasNext = StdCallFnPtr<(MutPtr<UCharIterator>,), i8>;
+pub type UCharIteratorHasPrevious = StdCallFnPtr<(MutPtr<UCharIterator>,), i8>;
+pub type UCharIteratorMove = StdCallFnPtr<(MutPtr<UCharIterator>, i32, UCharIteratorOrigin), i32>;
+pub type UCharIteratorNext = StdCallFnPtr<(MutPtr<UCharIterator>,), i32>;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct UCharIteratorOrigin(pub i32);
 pub const UITER_START: UCharIteratorOrigin = UCharIteratorOrigin(0i32);
@@ -5780,9 +5798,9 @@ impl FromIntoMemory for UCharIteratorOrigin {
         4
     }
 }
-pub type UCharIteratorPrevious = ::core::option::Option<()>;
-pub type UCharIteratorReserved = ::core::option::Option<()>;
-pub type UCharIteratorSetState = ::core::option::Option<()>;
+pub type UCharIteratorPrevious = StdCallFnPtr<(MutPtr<UCharIterator>,), i32>;
+pub type UCharIteratorReserved = StdCallFnPtr<(MutPtr<UCharIterator>, i32), i32>;
+pub type UCharIteratorSetState = StdCallFnPtr<(MutPtr<UCharIterator>, u32, MutPtr<UErrorCode>), ()>;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct UCharNameChoice(pub i32);
 pub const U_UNICODE_CHAR_NAME: UCharNameChoice = UCharNameChoice(0i32);
@@ -6073,7 +6091,18 @@ impl FromIntoMemory for UConverterCallbackReason {
         4
     }
 }
-pub type UConverterFromUCallback = ::core::option::Option<()>;
+pub type UConverterFromUCallback = StdCallFnPtr<
+    (
+        ConstPtr<::core::ffi::c_void>,
+        MutPtr<UConverterFromUnicodeArgs>,
+        ConstPtr<u16>,
+        i32,
+        i32,
+        UConverterCallbackReason,
+        MutPtr<UErrorCode>,
+    ),
+    (),
+>;
 pub struct UConverterFromUnicodeArgs {
     pub size: u16,
     pub flush: i8,
@@ -6186,7 +6215,17 @@ impl FromIntoMemory for UConverterPlatform {
     }
 }
 pub struct UConverterSelector(pub u8);
-pub type UConverterToUCallback = ::core::option::Option<()>;
+pub type UConverterToUCallback = StdCallFnPtr<
+    (
+        ConstPtr<::core::ffi::c_void>,
+        MutPtr<UConverterToUnicodeArgs>,
+        PCSTR,
+        i32,
+        UConverterCallbackReason,
+        MutPtr<UErrorCode>,
+    ),
+    (),
+>;
 pub struct UConverterToUnicodeArgs {
     pub size: u16,
     pub flush: i8,
@@ -7275,7 +7314,16 @@ impl FromIntoMemory for UEastAsianWidth {
         4
     }
 }
-pub type UEnumCharNamesFn = ::core::option::Option<()>;
+pub type UEnumCharNamesFn = StdCallFnPtr<
+    (
+        MutPtr<::core::ffi::c_void>,
+        i32,
+        UCharNameChoice,
+        PCSTR,
+        i32,
+    ),
+    i8,
+>;
 pub struct UEnumeration(pub u8);
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct UErrorCode(pub i32);
@@ -7797,8 +7845,8 @@ pub const UIDNA_ERROR_TRAILING_HYPHEN: i32 = 16i32;
 pub const UIDNA_NONTRANSITIONAL_TO_ASCII: i32 = 16i32;
 pub const UIDNA_NONTRANSITIONAL_TO_UNICODE: i32 = 32i32;
 pub const UIDNA_USE_STD3_RULES: i32 = 2i32;
-pub type UILANGUAGE_ENUMPROCA = ::core::option::Option<()>;
-pub type UILANGUAGE_ENUMPROCW = ::core::option::Option<()>;
+pub type UILANGUAGE_ENUMPROCA = StdCallFnPtr<(PCSTR, PtrDiffRepr), super::Foundation::BOOL>;
+pub type UILANGUAGE_ENUMPROCW = StdCallFnPtr<(PCWSTR, PtrDiffRepr), super::Foundation::BOOL>;
 pub const UITER_UNKNOWN_INDEX: i32 = -2i32;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct UIndicPositionalCategory(pub i32);
@@ -8552,9 +8600,18 @@ impl FromIntoMemory for UMeasurementSystem {
         4
     }
 }
-pub type UMemAllocFn = ::core::option::Option<()>;
-pub type UMemFreeFn = ::core::option::Option<()>;
-pub type UMemReallocFn = ::core::option::Option<()>;
+pub type UMemAllocFn =
+    StdCallFnPtr<(ConstPtr<::core::ffi::c_void>, PtrRepr), MutPtr<::core::ffi::c_void>>;
+pub type UMemFreeFn =
+    StdCallFnPtr<(ConstPtr<::core::ffi::c_void>, MutPtr<::core::ffi::c_void>), ()>;
+pub type UMemReallocFn = StdCallFnPtr<
+    (
+        ConstPtr<::core::ffi::c_void>,
+        MutPtr<::core::ffi::c_void>,
+        PtrRepr,
+    ),
+    MutPtr<::core::ffi::c_void>,
+>;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct UMessagePatternApostropheMode(pub i32);
 pub const UMSGPAT_APOS_DOUBLE_OPTIONAL: UMessagePatternApostropheMode =
@@ -8673,7 +8730,7 @@ impl FromIntoMemory for UMessagePatternPartType {
     }
 }
 pub struct UMutableCPTrie(pub u8);
-pub type UNESCAPE_CHAR_AT = ::core::option::Option<()>;
+pub type UNESCAPE_CHAR_AT = StdCallFnPtr<(i32, MutPtr<::core::ffi::c_void>), u16>;
 pub struct UNICODERANGE {
     pub wcFrom: u16,
     pub wcTo: u16,
@@ -9761,8 +9818,8 @@ impl FromIntoMemory for UPropertyNameChoice {
         4
     }
 }
-pub type URegexFindProgressCallback = ::core::option::Option<()>;
-pub type URegexMatchCallback = ::core::option::Option<()>;
+pub type URegexFindProgressCallback = StdCallFnPtr<(ConstPtr<::core::ffi::c_void>, i64), i8>;
+pub type URegexMatchCallback = StdCallFnPtr<(ConstPtr<::core::ffi::c_void>, i32), i8>;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct URegexpFlag(pub i32);
 pub const UREGEX_CASE_INSENSITIVE: URegexpFlag = URegexpFlag(2i32);
@@ -10611,7 +10668,17 @@ impl FromIntoMemory for USpoofChecks {
         4
     }
 }
-pub type UStringCaseMapper = ::core::option::Option<()>;
+pub type UStringCaseMapper = StdCallFnPtr<
+    (
+        ConstPtr<UCaseMap>,
+        MutPtr<u16>,
+        i32,
+        ConstPtr<u16>,
+        i32,
+        MutPtr<UErrorCode>,
+    ),
+    i32,
+>;
 pub struct UStringPrepProfile(pub u8);
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct UStringPrepProfileType(pub i32);
@@ -10952,11 +11019,22 @@ impl FromIntoMemory for UText {
         112u32 as usize
     }
 }
-pub type UTextAccess = ::core::option::Option<()>;
-pub type UTextClone = ::core::option::Option<()>;
-pub type UTextClose = ::core::option::Option<()>;
-pub type UTextCopy = ::core::option::Option<()>;
-pub type UTextExtract = ::core::option::Option<()>;
+pub type UTextAccess = StdCallFnPtr<(MutPtr<UText>, i64, i8), i8>;
+pub type UTextClone =
+    StdCallFnPtr<(MutPtr<UText>, ConstPtr<UText>, i8, MutPtr<UErrorCode>), MutPtr<UText>>;
+pub type UTextClose = StdCallFnPtr<(MutPtr<UText>,), ()>;
+pub type UTextCopy = StdCallFnPtr<(MutPtr<UText>, i64, i64, i64, i8, MutPtr<UErrorCode>), ()>;
+pub type UTextExtract = StdCallFnPtr<
+    (
+        MutPtr<UText>,
+        i64,
+        i64,
+        MutPtr<u16>,
+        i32,
+        MutPtr<UErrorCode>,
+    ),
+    i32,
+>;
 pub struct UTextFuncs {
     pub tableSize: i32,
     pub reserved1: i32,
@@ -11087,10 +11165,20 @@ impl FromIntoMemory for UTextFuncs {
         64u32 as usize
     }
 }
-pub type UTextMapNativeIndexToUTF16 = ::core::option::Option<()>;
-pub type UTextMapOffsetToNative = ::core::option::Option<()>;
-pub type UTextNativeLength = ::core::option::Option<()>;
-pub type UTextReplace = ::core::option::Option<()>;
+pub type UTextMapNativeIndexToUTF16 = StdCallFnPtr<(ConstPtr<UText>, i64), i32>;
+pub type UTextMapOffsetToNative = StdCallFnPtr<(ConstPtr<UText>,), i64>;
+pub type UTextNativeLength = StdCallFnPtr<(MutPtr<UText>,), i64>;
+pub type UTextReplace = StdCallFnPtr<
+    (
+        MutPtr<UText>,
+        i64,
+        i64,
+        ConstPtr<u16>,
+        i32,
+        MutPtr<UErrorCode>,
+    ),
+    i32,
+>;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct UTimeScaleValue(pub i32);
 pub const UTSV_UNITS_VALUE: UTimeScaleValue = UTimeScaleValue(0i32);
@@ -11366,9 +11454,10 @@ impl FromIntoMemory for UTimeZoneTransitionType {
         4
     }
 }
-pub type UTraceData = ::core::option::Option<()>;
-pub type UTraceEntry = ::core::option::Option<()>;
-pub type UTraceExit = ::core::option::Option<()>;
+pub type UTraceData =
+    StdCallFnPtr<(ConstPtr<::core::ffi::c_void>, i32, i32, PCSTR, MutPtr<i8>), ()>;
+pub type UTraceEntry = StdCallFnPtr<(ConstPtr<::core::ffi::c_void>, i32), ()>;
+pub type UTraceExit = StdCallFnPtr<(ConstPtr<::core::ffi::c_void>, i32, PCSTR, MutPtr<i8>), ()>;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct UTraceFunctionNumber(pub i32);
 pub const UTRACE_FUNCTION_START: UTraceFunctionNumber = UTraceFunctionNumber(0i32);

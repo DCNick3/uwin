@@ -9,12 +9,52 @@
 #[allow(unused)]
 use win32::core::prelude::*;
 pub const CURRENT_IMPORT_REDIRECTION_VERSION: u32 = 1u32;
-pub type ENUMRESLANGPROCA = ::core::option::Option<()>;
-pub type ENUMRESLANGPROCW = ::core::option::Option<()>;
-pub type ENUMRESNAMEPROCA = ::core::option::Option<()>;
-pub type ENUMRESNAMEPROCW = ::core::option::Option<()>;
-pub type ENUMRESTYPEPROCA = ::core::option::Option<()>;
-pub type ENUMRESTYPEPROCW = ::core::option::Option<()>;
+pub type ENUMRESLANGPROCA = StdCallFnPtr<
+    (
+        super::super::Foundation::HINSTANCE,
+        PCSTR,
+        PCSTR,
+        u16,
+        PtrDiffRepr,
+    ),
+    super::super::Foundation::BOOL,
+>;
+pub type ENUMRESLANGPROCW = StdCallFnPtr<
+    (
+        super::super::Foundation::HINSTANCE,
+        PCWSTR,
+        PCWSTR,
+        u16,
+        PtrDiffRepr,
+    ),
+    super::super::Foundation::BOOL,
+>;
+pub type ENUMRESNAMEPROCA = StdCallFnPtr<
+    (
+        super::super::Foundation::HINSTANCE,
+        PCSTR,
+        PCSTR,
+        PtrDiffRepr,
+    ),
+    super::super::Foundation::BOOL,
+>;
+pub type ENUMRESNAMEPROCW = StdCallFnPtr<
+    (
+        super::super::Foundation::HINSTANCE,
+        PCWSTR,
+        PCWSTR,
+        PtrDiffRepr,
+    ),
+    super::super::Foundation::BOOL,
+>;
+pub type ENUMRESTYPEPROCA = StdCallFnPtr<
+    (super::super::Foundation::HINSTANCE, PCSTR, PtrDiffRepr),
+    super::super::Foundation::BOOL,
+>;
+pub type ENUMRESTYPEPROCW = StdCallFnPtr<
+    (super::super::Foundation::HINSTANCE, PCWSTR, PtrDiffRepr),
+    super::super::Foundation::BOOL,
+>;
 pub struct ENUMUILANG {
     pub NumOfEnumUILang: u32,
     pub SizeOfEnumUIBuffer: u32,
@@ -144,8 +184,14 @@ impl FromIntoMemory for LOAD_LIBRARY_FLAGS {
     }
 }
 pub const LOAD_LIBRARY_OS_INTEGRITY_CONTINUITY: u32 = 32768u32;
-pub type PGET_MODULE_HANDLE_EXA = ::core::option::Option<()>;
-pub type PGET_MODULE_HANDLE_EXW = ::core::option::Option<()>;
+pub type PGET_MODULE_HANDLE_EXA = StdCallFnPtr<
+    (u32, PCSTR, MutPtr<super::super::Foundation::HINSTANCE>),
+    super::super::Foundation::BOOL,
+>;
+pub type PGET_MODULE_HANDLE_EXW = StdCallFnPtr<
+    (u32, PCWSTR, MutPtr<super::super::Foundation::HINSTANCE>),
+    super::super::Foundation::BOOL,
+>;
 pub struct REDIRECTION_DESCRIPTOR {
     pub Version: u32,
     pub FunctionCount: u32,

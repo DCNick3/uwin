@@ -8,7 +8,7 @@
 )]
 #[allow(unused)]
 use win32::core::prelude::*;
-pub type LPOVERLAPPED_COMPLETION_ROUTINE = ::core::option::Option<()>;
+pub type LPOVERLAPPED_COMPLETION_ROUTINE = StdCallFnPtr<(u32, u32, MutPtr<OVERLAPPED>), ()>;
 pub struct OVERLAPPED {
     pub Internal: PtrRepr,
     pub InternalHigh: PtrRepr,

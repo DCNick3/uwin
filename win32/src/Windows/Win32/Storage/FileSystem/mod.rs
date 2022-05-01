@@ -105,16 +105,39 @@ impl FromIntoMemory for BY_HANDLE_FILE_INFORMATION {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub type CACHE_ACCESS_CHECK = ::core::option::Option<()>;
-pub type CACHE_DESTROY_CALLBACK = ::core::option::Option<()>;
-pub type CACHE_KEY_COMPARE = ::core::option::Option<()>;
-pub type CACHE_KEY_HASH = ::core::option::Option<()>;
-pub type CACHE_READ_CALLBACK = ::core::option::Option<()>;
-pub type CLAIMMEDIALABEL = ::core::option::Option<()>;
-pub type CLAIMMEDIALABELEX = ::core::option::Option<()>;
+pub type CACHE_ACCESS_CHECK = StdCallFnPtr<
+    (
+        MutPtr<super::super::Security::SECURITY_DESCRIPTOR>,
+        super::super::Foundation::HANDLE,
+        u32,
+        MutPtr<super::super::Security::GENERIC_MAPPING>,
+        MutPtr<super::super::Security::PRIVILEGE_SET>,
+        MutPtr<u32>,
+        MutPtr<u32>,
+        MutPtr<i32>,
+    ),
+    super::super::Foundation::BOOL,
+>;
+pub type CACHE_DESTROY_CALLBACK = StdCallFnPtr<(u32, MutPtr<u8>), ()>;
+pub type CACHE_KEY_COMPARE = StdCallFnPtr<(u32, MutPtr<u8>, u32, MutPtr<u8>), i32>;
+pub type CACHE_KEY_HASH = StdCallFnPtr<(MutPtr<u8>, u32), u32>;
+pub type CACHE_READ_CALLBACK =
+    StdCallFnPtr<(u32, MutPtr<u8>, MutPtr<::core::ffi::c_void>), super::super::Foundation::BOOL>;
+pub type CLAIMMEDIALABEL = StdCallFnPtr<(ConstPtr<u8>, u32, MutPtr<MediaLabelInfo>), u32>;
+pub type CLAIMMEDIALABELEX = StdCallFnPtr<
+    (
+        ConstPtr<u8>,
+        u32,
+        MutPtr<MediaLabelInfo>,
+        MutPtr<crate::core::GUID>,
+    ),
+    u32,
+>;
 pub const CLFS_BASELOG_EXTENSION: &'static str = ".blf";
-pub type CLFS_BLOCK_ALLOCATION = ::core::option::Option<()>;
-pub type CLFS_BLOCK_DEALLOCATION = ::core::option::Option<()>;
+pub type CLFS_BLOCK_ALLOCATION =
+    StdCallFnPtr<(u32, MutPtr<::core::ffi::c_void>), MutPtr<::core::ffi::c_void>>;
+pub type CLFS_BLOCK_DEALLOCATION =
+    StdCallFnPtr<(MutPtr<::core::ffi::c_void>, MutPtr<::core::ffi::c_void>), ()>;
 pub const CLFS_CONTAINER_RELATIVE_PREFIX: &'static str = "%BLF%\\";
 pub const CLFS_CONTAINER_STREAM_PREFIX: &'static str = "%BLF%:";
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -4080,8 +4103,23 @@ impl FromIntoMemory for ERASE_TAPE_TYPE {
         4
     }
 }
-pub type FCACHE_CREATE_CALLBACK = ::core::option::Option<()>;
-pub type FCACHE_RICHCREATE_CALLBACK = ::core::option::Option<()>;
+pub type FCACHE_CREATE_CALLBACK = StdCallFnPtr<
+    (PCSTR, MutPtr<::core::ffi::c_void>, MutPtr<u32>, MutPtr<u32>),
+    super::super::Foundation::HANDLE,
+>;
+pub type FCACHE_RICHCREATE_CALLBACK = StdCallFnPtr<
+    (
+        PCSTR,
+        MutPtr<::core::ffi::c_void>,
+        MutPtr<u32>,
+        MutPtr<u32>,
+        MutPtr<super::super::Foundation::BOOL>,
+        MutPtr<super::super::Foundation::BOOL>,
+        MutPtr<super::super::Foundation::BOOL>,
+        MutPtr<super::super::Foundation::BOOL>,
+    ),
+    super::super::Foundation::HANDLE,
+>;
 pub struct FH_OVERLAPPED {
     pub Internal: PtrRepr,
     pub InternalHigh: PtrRepr,
@@ -8191,7 +8229,20 @@ impl FromIntoMemory for LOG_MANAGEMENT_CALLBACKS {
 }
 pub const LOG_POLICY_OVERWRITE: u32 = 1u32;
 pub const LOG_POLICY_PERSIST: u32 = 2u32;
-pub type LPPROGRESS_ROUTINE = ::core::option::Option<()>;
+pub type LPPROGRESS_ROUTINE = StdCallFnPtr<
+    (
+        i64,
+        i64,
+        i64,
+        i64,
+        u32,
+        LPPROGRESS_ROUTINE_CALLBACK_REASON,
+        super::super::Foundation::HANDLE,
+        super::super::Foundation::HANDLE,
+        ConstPtr<::core::ffi::c_void>,
+    ),
+    u32,
+>;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct LPPROGRESS_ROUTINE_CALLBACK_REASON(pub u32);
 pub const CALLBACK_CHUNK_FINISHED: LPPROGRESS_ROUTINE_CALLBACK_REASON =
@@ -8308,7 +8359,7 @@ impl FromIntoMemory for LZOPENFILE_STYLE {
         4
     }
 }
-pub type MAXMEDIALABEL = ::core::option::Option<()>;
+pub type MAXMEDIALABEL = StdCallFnPtr<(MutPtr<u32>,), u32>;
 pub const MAX_RESOURCEMANAGER_DESCRIPTION_LENGTH: u32 = 64u32;
 pub const MAX_SID_SIZE: u32 = 256u32;
 pub const MAX_TRANSACTION_DESCRIPTION_LENGTH: u32 = 64u32;
@@ -14086,14 +14137,40 @@ pub const PARTITION_SYSTEM_GUID: crate::core::GUID =
     crate::core::GUID::from_u128(0xc12a7328_f81f_11d2_ba4b_00a0c93ec93b);
 pub const PARTITION_WINDOWS_SYSTEM_GUID: crate::core::GUID =
     crate::core::GUID::from_u128(0x57434f53_e3e3_4631_a5c5_26d2243873aa);
-pub type PCLFS_COMPLETION_ROUTINE = ::core::option::Option<()>;
-pub type PCOPYFILE2_PROGRESS_ROUTINE = ::core::option::Option<()>;
-pub type PFE_EXPORT_FUNC = ::core::option::Option<()>;
-pub type PFE_IMPORT_FUNC = ::core::option::Option<()>;
-pub type PFN_IO_COMPLETION = ::core::option::Option<()>;
-pub type PLOG_FULL_HANDLER_CALLBACK = ::core::option::Option<()>;
-pub type PLOG_TAIL_ADVANCE_CALLBACK = ::core::option::Option<()>;
-pub type PLOG_UNPINNED_CALLBACK = ::core::option::Option<()>;
+pub type PCLFS_COMPLETION_ROUTINE = StdCallFnPtr<(MutPtr<::core::ffi::c_void>, u32), ()>;
+pub type PCOPYFILE2_PROGRESS_ROUTINE = StdCallFnPtr<
+    (ConstPtr<COPYFILE2_MESSAGE>, ConstPtr<::core::ffi::c_void>),
+    COPYFILE2_MESSAGE_ACTION,
+>;
+pub type PFE_EXPORT_FUNC = StdCallFnPtr<(ConstPtr<u8>, ConstPtr<::core::ffi::c_void>, u32), u32>;
+pub type PFE_IMPORT_FUNC =
+    StdCallFnPtr<(MutPtr<u8>, ConstPtr<::core::ffi::c_void>, MutPtr<u32>), u32>;
+pub type PFN_IO_COMPLETION =
+    StdCallFnPtr<(MutPtr<FIO_CONTEXT>, MutPtr<FH_OVERLAPPED>, u32, u32), ()>;
+pub type PLOG_FULL_HANDLER_CALLBACK = StdCallFnPtr<
+    (
+        super::super::Foundation::HANDLE,
+        u32,
+        super::super::Foundation::BOOL,
+        MutPtr<::core::ffi::c_void>,
+    ),
+    (),
+>;
+pub type PLOG_TAIL_ADVANCE_CALLBACK = StdCallFnPtr<
+    (
+        super::super::Foundation::HANDLE,
+        CLS_LSN,
+        MutPtr<::core::ffi::c_void>,
+    ),
+    (),
+>;
+pub type PLOG_UNPINNED_CALLBACK = StdCallFnPtr<
+    (
+        super::super::Foundation::HANDLE,
+        MutPtr<::core::ffi::c_void>,
+    ),
+    (),
+>;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct PREPARE_TAPE_OPERATION(pub i32);
 pub const TAPE_FORMAT: PREPARE_TAPE_OPERATION = PREPARE_TAPE_OPERATION(5i32);
@@ -19375,8 +19452,18 @@ impl FromIntoMemory for WOF_FILE_COMPRESSION_INFO_V1 {
 }
 pub const WOF_PROVIDER_FILE: u32 = 2u32;
 pub const WOF_PROVIDER_WIM: u32 = 1u32;
-pub type WofEnumEntryProc = ::core::option::Option<()>;
-pub type WofEnumFilesProc = ::core::option::Option<()>;
+pub type WofEnumEntryProc = StdCallFnPtr<
+    (ConstPtr<::core::ffi::c_void>, ConstPtr<::core::ffi::c_void>),
+    super::super::Foundation::BOOL,
+>;
+pub type WofEnumFilesProc = StdCallFnPtr<
+    (
+        PCWSTR,
+        ConstPtr<::core::ffi::c_void>,
+        ConstPtr<::core::ffi::c_void>,
+    ),
+    super::super::Foundation::BOOL,
+>;
 pub const _FT_TYPES_DEFINITION_: u32 = 1u32;
 pub trait Api {
     #[doc = "*Required namespaces: 'Windows.Win32.Security'*"]

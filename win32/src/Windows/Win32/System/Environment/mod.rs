@@ -257,31 +257,54 @@ impl FromIntoMemory for ENCLAVE_VBS_BASIC_KEY_REQUEST {
         20u32 as usize
     }
 }
-pub type VBS_BASIC_ENCLAVE_BASIC_CALL_COMMIT_PAGES = ::core::option::Option<()>;
+pub type VBS_BASIC_ENCLAVE_BASIC_CALL_COMMIT_PAGES = StdCallFnPtr<
+    (
+        ConstPtr<::core::ffi::c_void>,
+        PtrRepr,
+        ConstPtr<::core::ffi::c_void>,
+        u32,
+    ),
+    i32,
+>;
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub type VBS_BASIC_ENCLAVE_BASIC_CALL_CREATE_THREAD = ::core::option::Option<()>;
-pub type VBS_BASIC_ENCLAVE_BASIC_CALL_CREATE_THREAD = ::core::option::Option<()>;
-pub type VBS_BASIC_ENCLAVE_BASIC_CALL_DECOMMIT_PAGES = ::core::option::Option<()>;
-pub type VBS_BASIC_ENCLAVE_BASIC_CALL_GENERATE_KEY = ::core::option::Option<()>;
-pub type VBS_BASIC_ENCLAVE_BASIC_CALL_GENERATE_RANDOM_DATA = ::core::option::Option<()>;
-pub type VBS_BASIC_ENCLAVE_BASIC_CALL_GENERATE_REPORT = ::core::option::Option<()>;
-pub type VBS_BASIC_ENCLAVE_BASIC_CALL_GET_ENCLAVE_INFORMATION = ::core::option::Option<()>;
+pub type VBS_BASIC_ENCLAVE_BASIC_CALL_CREATE_THREAD =
+    StdCallFnPtr<(ConstPtr<VBS_BASIC_ENCLAVE_THREAD_DESCRIPTOR64>,), i32>;
+pub type VBS_BASIC_ENCLAVE_BASIC_CALL_CREATE_THREAD =
+    StdCallFnPtr<(ConstPtr<VBS_BASIC_ENCLAVE_THREAD_DESCRIPTOR32>,), i32>;
+pub type VBS_BASIC_ENCLAVE_BASIC_CALL_DECOMMIT_PAGES =
+    StdCallFnPtr<(ConstPtr<::core::ffi::c_void>, PtrRepr), i32>;
+pub type VBS_BASIC_ENCLAVE_BASIC_CALL_GENERATE_KEY =
+    StdCallFnPtr<(MutPtr<ENCLAVE_VBS_BASIC_KEY_REQUEST>, u32, MutPtr<u8>), i32>;
+pub type VBS_BASIC_ENCLAVE_BASIC_CALL_GENERATE_RANDOM_DATA =
+    StdCallFnPtr<(MutPtr<u8>, u32, MutPtr<u64>), i32>;
+pub type VBS_BASIC_ENCLAVE_BASIC_CALL_GENERATE_REPORT =
+    StdCallFnPtr<(ConstPtr<u8>, MutPtr<::core::ffi::c_void>, u32, MutPtr<u32>), i32>;
+pub type VBS_BASIC_ENCLAVE_BASIC_CALL_GET_ENCLAVE_INFORMATION =
+    StdCallFnPtr<(MutPtr<ENCLAVE_INFORMATION>,), i32>;
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub type VBS_BASIC_ENCLAVE_BASIC_CALL_INTERRUPT_THREAD = ::core::option::Option<()>;
-pub type VBS_BASIC_ENCLAVE_BASIC_CALL_INTERRUPT_THREAD = ::core::option::Option<()>;
-pub type VBS_BASIC_ENCLAVE_BASIC_CALL_PROTECT_PAGES = ::core::option::Option<()>;
-pub type VBS_BASIC_ENCLAVE_BASIC_CALL_RETURN_FROM_ENCLAVE = ::core::option::Option<()>;
+pub type VBS_BASIC_ENCLAVE_BASIC_CALL_INTERRUPT_THREAD =
+    StdCallFnPtr<(ConstPtr<VBS_BASIC_ENCLAVE_THREAD_DESCRIPTOR64>,), i32>;
+pub type VBS_BASIC_ENCLAVE_BASIC_CALL_INTERRUPT_THREAD =
+    StdCallFnPtr<(ConstPtr<VBS_BASIC_ENCLAVE_THREAD_DESCRIPTOR32>,), i32>;
+pub type VBS_BASIC_ENCLAVE_BASIC_CALL_PROTECT_PAGES =
+    StdCallFnPtr<(ConstPtr<::core::ffi::c_void>, PtrRepr, u32), i32>;
+pub type VBS_BASIC_ENCLAVE_BASIC_CALL_RETURN_FROM_ENCLAVE = StdCallFnPtr<(PtrRepr,), ()>;
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub type VBS_BASIC_ENCLAVE_BASIC_CALL_RETURN_FROM_EXCEPTION = ::core::option::Option<()>;
-pub type VBS_BASIC_ENCLAVE_BASIC_CALL_RETURN_FROM_EXCEPTION = ::core::option::Option<()>;
+pub type VBS_BASIC_ENCLAVE_BASIC_CALL_RETURN_FROM_EXCEPTION =
+    StdCallFnPtr<(ConstPtr<VBS_BASIC_ENCLAVE_EXCEPTION_AMD64>,), i32>;
+pub type VBS_BASIC_ENCLAVE_BASIC_CALL_RETURN_FROM_EXCEPTION =
+    StdCallFnPtr<(ConstPtr<::core::ffi::c_void>,), i32>;
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub type VBS_BASIC_ENCLAVE_BASIC_CALL_TERMINATE_THREAD = ::core::option::Option<()>;
-pub type VBS_BASIC_ENCLAVE_BASIC_CALL_TERMINATE_THREAD = ::core::option::Option<()>;
-pub type VBS_BASIC_ENCLAVE_BASIC_CALL_VERIFY_REPORT = ::core::option::Option<()>;
+pub type VBS_BASIC_ENCLAVE_BASIC_CALL_TERMINATE_THREAD =
+    StdCallFnPtr<(ConstPtr<VBS_BASIC_ENCLAVE_THREAD_DESCRIPTOR64>,), i32>;
+pub type VBS_BASIC_ENCLAVE_BASIC_CALL_TERMINATE_THREAD =
+    StdCallFnPtr<(ConstPtr<VBS_BASIC_ENCLAVE_THREAD_DESCRIPTOR32>,), i32>;
+pub type VBS_BASIC_ENCLAVE_BASIC_CALL_VERIFY_REPORT =
+    StdCallFnPtr<(ConstPtr<::core::ffi::c_void>, u32), i32>;
 pub struct VBS_BASIC_ENCLAVE_EXCEPTION_AMD64 {
     pub ExceptionCode: u32,
     pub NumberParameters: u32,
