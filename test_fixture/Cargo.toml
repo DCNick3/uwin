@@ -27,6 +27,7 @@ tracing-tracy = { version = "0.8.0", features = [] }
 tracy-client = { version = "0.12.7" }
 encoding_rs = "0.8.31"
 itertools = "0.10.3"
+panic-control = "0.1.4"
 
 [build-dependencies]
 recompiler = { path = "../recompiler", features = ["recompilation", "mmap"] }

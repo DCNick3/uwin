@@ -1,19 +1,25 @@
+mod callback_token;
 mod interp;
+mod thunk_helper;
 mod thunks;
 
-use crate::interp::run_interp;
-pub use core_abi::stdcall::StdCallHelper;
-use core_abi::unwind_token::UnwindReason;
+pub use crate::callback_token::RustyX86CallbackToken;
+pub use core_abi::stdcall::StdCalleeHelper;
 pub use core_mem::ctx::FlatMemoryCtx;
+pub use rusty_x86::types::CpuContext;
+pub(crate) use thunk_helper::{thunk_helper, MyCallsite};
+
+use crate::interp::run_interp;
+use core_abi::context::{Context, Executor};
+use core_abi::unwind_token::UnwindReason;
+use core_mem::ctx::DefaultMemoryCtx;
 use core_mem::ptr::PtrRepr;
 use lazy_static::lazy_static;
 use recompiler::LoadedProcessImage;
-pub use rusty_x86::types::CpuContext;
 use std::collections::HashSet;
 use std::ffi::c_void;
 use std::panic::AssertUnwindSafe;
-use tracing::subscriber::Interest;
-use tracing::{warn, Callsite, Metadata};
+use tracing::warn;
 use win32::core::Win32Context;
 
 // here we do ABI some trickery
@@ -22,10 +28,27 @@ use win32::core::Win32Context;
 // this should be safe thanks to repr(C)
 #[repr(C)]
 pub struct ExtendedContext {
+    // !!! Should be the first struct element
     pub cpu: CpuContext,
     pub win32: Win32Context,
     pub unwind_reason: Option<UnwindReason>,
     pub interpreted_blocks: HashSet<PtrRepr>,
+}
+
+impl Context for ExtendedContext {
+    type CpuContext = CpuContext;
+
+    fn cpu_context(&self) -> &Self::CpuContext {
+        &self.cpu
+    }
+
+    fn cpu_context_mut(&mut self) -> &mut Self::CpuContext {
+        &mut self.cpu
+    }
+
+    fn get_unwind_reason(&self) -> Option<UnwindReason> {
+        self.unwind_reason.clone()
+    }
 }
 
 extern "C" {
@@ -82,11 +105,7 @@ unsafe extern "C" fn uwin_missing_bb(
     }
 }
 
-pub fn execute_recompiled_code(
-    context: &mut ExtendedContext,
-    memory: FlatMemoryCtx,
-    eip: u32,
-) -> u32 {
+fn execute_recompiled_code(context: &mut ExtendedContext, memory: FlatMemoryCtx, eip: u32) -> u32 {
     // SAFETY: TODO??
     // It seems that safety guarantees are pushed onto the LLVM-generated code
 
@@ -97,99 +116,26 @@ pub fn execute_recompiled_code(
     unsafe { uwin_indirect_bb_call(context, memory, eip) }
 }
 
-struct MyCallsite {
-    metadata: Metadata<'static>,
-}
+type DynRustyExecutor = dyn Executor<
+    Context = ExtendedContext,
+    CpuContext = CpuContext,
+    MemoryContext = DefaultMemoryCtx,
+>;
 
-impl MyCallsite {
-    const fn new(identifier: tracing::callsite::Identifier) -> Self {
-        Self {
-            metadata: Metadata::new(
-                "",
-                "thunk",
-                tracing::Level::TRACE,
-                None,
-                None,
-                None,
-                tracing::field::FieldSet::new(&["message"], identifier),
-                tracing::metadata::Kind::EVENT,
-            ),
-        }
-    }
+// TODO: implement more executors (like pure interpreter ones and instrumented interpreters)
+pub struct RecompiledExecutor {}
 
-    const fn new_span(identifier: tracing::callsite::Identifier, span_name: &'static str) -> Self {
-        Self {
-            metadata: Metadata::new(
-                span_name,
-                "thunk",
-                tracing::Level::TRACE,
-                None,
-                None,
-                None,
-                tracing::field::FieldSet::new(&[], identifier),
-                tracing::metadata::Kind::EVENT,
-            ),
-        }
-    }
-}
+impl Executor for RecompiledExecutor {
+    type Context = ExtendedContext;
+    type CpuContext = CpuContext;
+    type MemoryContext = DefaultMemoryCtx;
 
-impl Callsite for MyCallsite {
-    fn set_interest(&self, _interest: Interest) {
-        // поебать
-    }
-
-    fn metadata(&self) -> &Metadata<'_> {
-        &self.metadata
-    }
-}
-
-pub(crate) fn thunk_helper(
-    context: &mut ExtendedContext,
-    memory: FlatMemoryCtx,
-    span_callsite: &'static MyCallsite,
-    body: fn(
-        StdCallHelper<FlatMemoryCtx, rusty_x86::types::CpuContext>,
-        &win32::core::Win32Context,
-        bool, // trace_enabled
-        &'static MyCallsite,
-    ) -> PtrRepr,
-) -> PtrRepr {
-    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
-        let call = StdCallHelper::new(memory, &mut context.cpu, &mut context.unwind_reason);
-
-        let span = tracing::Span::new(
-            span_callsite.metadata(),
-            &span_callsite.metadata().fields().value_set(&[]),
-        );
-
-        // let span = tracing::trace_span!("name"); // TODO
-        let _enter = span.enter();
-        // tracing::trace!("ret_addr = {:#010x}", call.return_address());
-
-        let trace_event_enabled = tracing::event_enabled!(tracing::Level::TRACE);
-
-        static CALLSITE: MyCallsite = MyCallsite::new(tracing::callsite::Identifier(&CALLSITE));
-
-        let fields = CALLSITE.metadata().fields();
-
-        if trace_event_enabled {
-            tracing::event::Event::dispatch(
-                CALLSITE.metadata(),
-                &fields.value_set(&[(
-                    &unsafe { fields.iter().next().unwrap_unchecked() },
-                    Some(&format_args!("ret_addr = {:#010x}", call.return_address())
-                        as &dyn tracing::Value),
-                )]),
-            );
-        }
-
-        body(call, &context.win32, trace_event_enabled, &CALLSITE)
-    }));
-    match result {
-        Ok(ret) => ret,
-        Err(_) => {
-            eprintln!("Caught a panic in native code. Whoops, aborting..");
-            std::process::abort();
-        }
+    fn execute_recompiled_code(
+        &self,
+        context: &mut Self::Context,
+        memory: Self::MemoryContext,
+        eip: u32,
+    ) -> u32 {
+        execute_recompiled_code(context, memory, eip)
     }
 }

@@ -1,16 +1,16 @@
+use crate::callback_token::StdcallCallbackToken;
 use crate::context::X86Context;
 use crate::unwind_token::{UnwindReason, UnwindToken};
 use core_mem::conv::FromIntoMemory;
 use core_mem::ctx::MemoryCtx;
 use core_mem::ptr::{ConstPtr, PtrRepr};
 use static_assertions::assert_eq_size;
-use std::fmt::{Debug, Formatter};
 use std::marker::PhantomData;
 use tracing::trace;
 
 assert_eq_size!(PtrRepr, u32);
 
-pub struct StdCallHelper<'a, MCtx: MemoryCtx, CpuCtx: X86Context> {
+pub struct StdCalleeHelper<'a, MCtx: MemoryCtx, CpuCtx: X86Context> {
     mem_ctx: MCtx,
     cpu_ctx: &'a mut CpuCtx,
     /// offset of the argument to be read next
@@ -37,7 +37,7 @@ pub struct StdCallHelper<'a, MCtx: MemoryCtx, CpuCtx: X86Context> {
 // we don't care about local vars, but we do obviously care about the arguments
 // the first value we read is at [ESP] which is return address
 
-impl<'a, MCtx: MemoryCtx, CpuCtx: X86Context> StdCallHelper<'a, MCtx, CpuCtx> {
+impl<'a, MCtx: MemoryCtx, CpuCtx: X86Context> StdCalleeHelper<'a, MCtx, CpuCtx> {
     pub fn new(
         mem_ctx: MCtx,
         cpu_ctx: &'a mut CpuCtx,
@@ -106,45 +106,47 @@ impl<'a, MCtx: MemoryCtx, CpuCtx: X86Context> StdCallHelper<'a, MCtx, CpuCtx> {
     }
 }
 
-pub struct StdCallFnPtr<ParamTy, RetTy> {
-    ptr: PtrRepr,
-    phantom: PhantomData<(ParamTy, RetTy)>,
+pub(crate) struct StdCallerHelper<'a, Tok: StdcallCallbackToken + 'a> {
+    token: Tok,
+    phantom: PhantomData<&'a ()>,
 }
 
-impl<ParamTy, RetTy> Clone for StdCallFnPtr<ParamTy, RetTy> {
-    fn clone(&self) -> Self {
-        Self {
-            ptr: self.ptr,
-            phantom: Default::default(),
-        }
-    }
-}
+impl<'a, Tok: StdcallCallbackToken + 'a> StdCallerHelper<'a, Tok> {
+    /// # Safety
+    ///
+    /// Don't forget to run .execute() method, as otherwise ABI crimes will happen
+    pub unsafe fn new(mut token: Tok) -> Self {
+        token.push_retaddr();
 
-impl<ParamTy, RetTy> Copy for StdCallFnPtr<ParamTy, RetTy> {}
-impl<ParamTy, RetTy> FromIntoMemory for StdCallFnPtr<ParamTy, RetTy> {
-    fn from_bytes(from: &[u8]) -> Self {
         Self {
-            ptr: FromIntoMemory::from_bytes(from),
+            token,
             phantom: Default::default(),
         }
     }
 
-    fn into_bytes(self, into: &mut [u8]) {
-        self.ptr.into_bytes(into)
+    pub fn push<T: FromIntoMemory>(&mut self, value: T) {
+        let size = T::size();
+        assert!(
+            size <= 4,
+            "Size of argument is larger that 4. Dunno what ABI becomes in this case :shrug:"
+        );
+
+        let mut data = [0u8; 4];
+
+        value.into_bytes(&mut data[..size]);
+
+        self.push(data);
     }
 
-    fn size() -> usize {
-        PtrRepr::size()
-    }
-}
-impl<ParamTy, RetTy> PartialEq for StdCallFnPtr<ParamTy, RetTy> {
-    fn eq(&self, other: &Self) -> bool {
-        self.ptr == other.ptr
-    }
-}
-impl<ParamTy, RetTy> Eq for StdCallFnPtr<ParamTy, RetTy> {}
-impl<ParamTy, RetTy> Debug for StdCallFnPtr<ParamTy, RetTy> {
-    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
-        write!(f, "FnPtr {:#010x}", self.ptr)
+    pub fn execute<R: FromIntoMemory>(mut self, target_address: PtrRepr) -> R {
+        let res = self.token.dispatch(target_address);
+
+        let size = R::size();
+        assert!(
+            size <= 4,
+            "Size of argument is larger that 4. Dunno what ABI becomes in this case :shrug:"
+        );
+
+        R::from_bytes(&res[..size])
     }
 }

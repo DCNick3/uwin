@@ -3,17 +3,22 @@ extern crate core;
 mod r#impl;
 
 use crate::r#impl::*;
-use core_abi::stdcall::StdCallFnPtr;
+use core_abi::context::Executor;
+use core_abi::stdcall_fn_ptr::StdCallFnPtr;
+use core_abi::unwind_token::UnwindReason;
 use core_mem::ptr::{PtrDiffRepr, PtrRepr};
 use core_memmgr::{AddressRange, MemoryManager};
 use core_str::heap_helper::AnsiStringHeapBox;
 use core_str::AnsiString;
 use itertools::Itertools;
 use recompiler::memory_image::{MemoryImageItem, Protection};
-use rusty_x86_runtime::{CpuContext, ExtendedContext, PROGRAM_IMAGE};
+use rusty_x86_runtime::{
+    CpuContext, ExtendedContext, RecompiledExecutor, RustyX86CallbackToken, PROGRAM_IMAGE,
+};
 use std::collections::HashSet;
+use std::panic::AssertUnwindSafe;
 use std::sync::{Arc, Mutex};
-use tracing::{info, trace};
+use tracing::{debug, error, info, trace};
 use tracing_subscriber::fmt::format;
 use tracing_subscriber::layer::SubscriberExt;
 use tracing_subscriber::util::SubscriberInitExt;
@@ -43,6 +48,8 @@ fn map_item(mgr: &mut MemoryManager, item: &MemoryImageItem) -> core_memmgr::Res
     Ok(())
 }
 
+type EntrypointFnPtr = StdCallFnPtr<(), ()>;
+
 fn main_impl() {
     let mut memory_mgr = MemoryManager::new().expect("Mapping the base region");
 
@@ -59,8 +66,6 @@ fn main_impl() {
     for item in PROGRAM_IMAGE.memory.iter() {
         map_item(&mut memory_mgr, item).expect("Mapping program memory")
     }
-
-    let entry = PROGRAM_IMAGE.exe_entrypoint;
 
     let mut context = ExtendedContext {
         cpu: CpuContext::default(),
@@ -81,7 +86,7 @@ fn main_impl() {
     // TODO: put some return value to the stack when calling
     // probably could be done through a generalized way of callbacks implementation
     // for now the zero is left there (hopefully it will be zero...)
-    context.cpu.gp_regs[4] = stack.end() - 4;
+    context.cpu.gp_regs[4] = stack.end();
     context.cpu.fs_base = tlb.start;
 
     let memory_mgr = Arc::new(Mutex::new(memory_mgr));
@@ -178,23 +183,30 @@ fn main_impl() {
         io_dispatcher: IoDispatcher::new(handle_table.clone()),
     }) as Arc<dyn win32::Win32::Storage::FileSystem::Api>);
 
-    let res = rusty_x86_runtime::execute_recompiled_code(&mut context, memory_ctx, entry);
-    trace!("execute_recompiled_code returned 0x{:08x}", res);
+    // =======
 
-    if res == 0 {
-        if let Some(reason) = context.unwind_reason {
-            trace!("The recompiled stack was unwound, reason = {:?}", reason)
-        } else {
-            panic!(
-                "Zero continuation address without an unwind reason set. Sounds like an ABI crime"
-            )
+    panic_control::chain_hook_ignoring::<UnwindReason>();
+
+    let executor = RecompiledExecutor {};
+
+    let entry = EntrypointFnPtr::new(PROGRAM_IMAGE.exe_entrypoint);
+    let callback_token = RustyX86CallbackToken::new(&executor, &mut context, memory_ctx);
+
+    match std::panic::catch_unwind(AssertUnwindSafe(|| {
+        entry.call(callback_token);
+    })) {
+        Ok(_) => {
+            debug!("The entrypoint returned");
         }
-    } else {
-        assert!(
-            context.unwind_reason.is_none(),
-            "Non-zero address return with some unwind reason... Sounds like an ABI crime"
-        );
-        todo!("Re-entering the code execution after yielding") // Not sure of all the consequences of just doing it
+        Err(unwind) => match unwind.downcast::<UnwindReason>() {
+            Ok(reason) => {
+                debug!("The recompiled stack was unwound, reason = {:?}", reason);
+            }
+            Err(_) => {
+                eprintln!("Target code panicked, and it was not a controlled panic...");
+                std::process::abort();
+            }
+        },
     }
 
     info!(

@@ -148,37 +148,6 @@ pub fn gen_thunk_function(def: &MethodDef, gen: &Gen, namespace: &TokenStream) -
         })
     };
 
-    // let body = quote! {
-    //    let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
-    //     let api = #namespace get_api(&context.win32);
-    //     let mut call = StdCallHelper::new(memory, &mut context.cpu, &mut context.unwind_reason);
-    //
-    //     let span = tracing::trace_span!(#name);
-    //     let _enter = span.enter();
-    //
-    //     tracing::trace!("ret_addr = {:#010x}", call.return_address());
-    //
-    //     #(let #arg_names = call.get_arg();)*
-    //
-    //     tracing::trace!(#arguments_fmt, #(#arg_names),*);
-    //
-    //     let unwind_token = call.unwind_token();
-    //
-    //     #call
-    //
-    //     tracing::trace!("  result = {:?}", res);
-    //
-    //     call.finish(res)
-    //   }));
-    //   match result {
-    //       Ok(ret) => ret,
-    //       Err(_) => {
-    //           eprintln!("Caught a panic in native code. Whoops, aborting..");
-    //           std::process::abort();
-    //       }
-    //   }
-    // };
-
     let thunk_name = gen_ident(&format!("thunk_{}", def.name()));
 
     quote! {

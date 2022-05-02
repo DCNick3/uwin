@@ -97,4 +97,6 @@ int main() {
     free(b1);
     free(p0);
     free(p1);
+
+    return 0;
 }

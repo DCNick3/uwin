@@ -358,9 +358,6 @@ fn gen_thunks(output: &std::path::Path, tokens: Vec<TokenStream>) {
         use crate::ExtendedContext;
 
         #[allow(unused)]
-        use core_abi::stdcall::StdCallHelper;
-
-        #[allow(unused)]
         use core_mem::ctx::FlatMemoryCtx;
 
         #[allow(unused)]

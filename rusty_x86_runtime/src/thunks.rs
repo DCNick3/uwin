@@ -10,8 +10,6 @@
 #[allow(unused)]
 use crate::ExtendedContext;
 #[allow(unused)]
-use core_abi::stdcall::StdCallHelper;
-#[allow(unused)]
 use core_mem::ctx::FlatMemoryCtx;
 #[allow(unused)]
 use core_mem::ptr::PtrRepr;

@@ -1,3 +1,6 @@
+use crate::unwind_token::UnwindReason;
+use core_mem::ctx::MemoryCtx;
+
 #[derive(Debug, Clone, Copy, Eq, PartialEq, Hash, Ord, PartialOrd)]
 pub enum Register {
     EAX,
@@ -112,4 +115,26 @@ impl X86Context for rusty_x86::types::CpuContext {
     fn set_register(&mut self, register: Register, value: u32) {
         self.set_gp_reg(register.into(), value)
     }
+}
+
+pub trait Context {
+    type CpuContext: X86Context;
+
+    fn cpu_context(&self) -> &Self::CpuContext;
+    fn cpu_context_mut(&mut self) -> &mut Self::CpuContext;
+
+    fn get_unwind_reason(&self) -> Option<UnwindReason>;
+}
+
+pub trait Executor {
+    type Context: Context<CpuContext = Self::CpuContext>;
+    type CpuContext: X86Context;
+    type MemoryContext: MemoryCtx;
+
+    fn execute_recompiled_code(
+        &self,
+        context: &mut Self::Context,
+        memory: Self::MemoryContext,
+        eip: u32,
+    ) -> u32;
 }
