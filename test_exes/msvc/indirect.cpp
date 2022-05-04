@@ -1,3 +1,6 @@
+/*UW_BUILD:
+{}
+:UW_BUILD*/
 
 #include <stdio.h>
 #include <stdlib.h>

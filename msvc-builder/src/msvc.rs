@@ -134,13 +134,36 @@ impl Msvc {
         ]))
     }
 
-    // TODO: provide a better API for compilation options
-    pub fn compile_exe(
+    fn link_flags() -> &'static [&'static str] {
+        &[
+            "kernel32.lib",
+            "user32.lib",
+            "gdi32.lib",
+            "winspool.lib",
+            "comdlg32.lib",
+            "advapi32.lib",
+            "shell32.lib",
+            "ole32.lib",
+            "oleaut32.lib",
+            "uuid.lib",
+            "odbc32.lib",
+            "odbccp32.lib",
+            "/nologo",
+            "/machine:I386",
+            "/debug",
+            "/debugtype:coff",
+        ]
+    }
+
+    fn compile(
         &self,
         wine: &WinePrefix,
         work_dir: &Path,
         source_files: &[&Path],
+        internal_flags: &[&str],
         flags: &[&OsStr],
+        internal_link_flags: &[&str],
+        link_files: &[&Path],
         output_path: &Path,
     ) -> Result<()> {
         let cl = wine
@@ -152,6 +175,11 @@ impl Msvc {
             .map(|f| wine.windows_path(f).map(|f| f.to_string()))
             .collect::<Result<Vec<_>>>()
             .context("Getting windows path to cpp files")?;
+        let link_files = link_files
+            .iter()
+            .map(|f| wine.windows_path(f).map(|f| f.to_string()))
+            .collect::<Result<Vec<_>>>()
+            .context("Getting windows path to link files")?;
         let output_path = wine
             .windows_path(output_path)
             .map(|f| f.to_string())
@@ -161,33 +189,63 @@ impl Msvc {
         command
             .envs(self.env(wine)?)
             .current_dir(work_dir)
+            .args(internal_flags)
             .args(flags)
             .args(&source_files)
             .arg(format!("/Fe{}", output_path))
-            .args([
-                "/link",
-                "kernel32.lib",
-                "user32.lib",
-                "gdi32.lib",
-                "winspool.lib",
-                "comdlg32.lib",
-                "advapi32.lib",
-                "shell32.lib",
-                "ole32.lib",
-                "oleaut32.lib",
-                "uuid.lib",
-                "odbc32.lib",
-                "odbccp32.lib",
-                "/nologo",
-                "/machine:I386",
-                "/debug",
-                "/debugtype:coff",
-            ]);
+            .arg("/link")
+            .args(Self::link_flags())
+            .args(internal_link_flags)
+            .args(&link_files);
 
         debug!("Going to run MSVC as {:?}", command);
 
         command.checked_status().context("Running MSVC")?;
 
         Ok(())
+    }
+
+    // TODO: provide a better API for compilation options
+    pub fn compile_exe(
+        &self,
+        wine: &WinePrefix,
+        work_dir: &Path,
+        source_files: &[&Path],
+        flags: &[&OsStr],
+        link_files: &[&Path],
+        output_path: &Path,
+    ) -> Result<()> {
+        self.compile(
+            wine,
+            work_dir,
+            source_files,
+            &[],
+            flags,
+            &[],
+            link_files,
+            output_path,
+        )
+    }
+
+    // TODO: provide a better API for compilation options
+    pub fn compile_dll(
+        &self,
+        wine: &WinePrefix,
+        work_dir: &Path,
+        source_files: &[&Path],
+        flags: &[&OsStr],
+        link_files: &[&Path],
+        output_path: &Path,
+    ) -> Result<()> {
+        self.compile(
+            wine,
+            work_dir,
+            source_files,
+            &["/LD"],
+            flags,
+            &["/ENTRY:DllMain"],
+            link_files,
+            output_path,
+        )
     }
 }

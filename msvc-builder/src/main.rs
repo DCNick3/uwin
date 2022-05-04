@@ -4,11 +4,13 @@ use crate::wine::{WinePrefix, WineTool};
 use anyhow::{Context, Result};
 use colored::Colorize;
 use log::{debug, info, warn, LevelFilter};
+use regex::Regex;
 use sha1::digest::FixedOutput;
 use std::env;
 use std::path::{Path, PathBuf};
 use tempdir::TempDir;
 
+mod comp_dag;
 mod fixups;
 mod msvc;
 mod wine;
@@ -53,37 +55,26 @@ fn main() -> Result<()> {
 
     // MSVC likes to create some BS files in the working dir
     // don't let it do it
-    let work_dir = tempdir::TempDir::new("msvc-work-dir")?;
+    let work_dir = TempDir::new("msvc-work-dir")?;
 
     let wine_prefix = WinePrefix::new(WineTool::find()?, wine_prefix.as_ref().to_path_buf())?;
 
     let test_exes_path = PathBuf::from("./test_exes").canonicalize()?;
     let msvc_test_exes_path = test_exes_path.join("msvc");
 
+    let mut files = Vec::new();
+
     for file in std::fs::read_dir(&msvc_test_exes_path)
         .context("Reading directory with programs to be compiled")?
     {
         let file = file.context("Reading directory with programs to be compiled")?;
+
         let path = file.path();
-        let file_type = file.file_type()?;
+        let file_type = file.file_type().unwrap();
 
         if file_type.is_file() {
             if Some("cpp".as_ref()) == path.extension() || Some("c".as_ref()) == path.extension() {
-                let output = path.with_extension("exe");
-
-                info!(
-                    "{} {:?} -> {:?}",
-                    "BUILD".blue(),
-                    path.strip_prefix(&msvc_test_exes_path).unwrap(),
-                    output.strip_prefix(&msvc_test_exes_path).unwrap()
-                );
-
-                msvc.compile_exe(&wine_prefix, work_dir.path(), &[&path], &[], &output)
-                    .context("Compiling exe")?;
-
-                debug!("Zero out the timestamps...");
-
-                fixup_msvc_pe(&output).context("Zeroing out the timestamps")?;
+                files.push(path)
             }
         } else if file_type.is_dir() {
             warn!("Ignoring directory {:?}", path);
@@ -91,6 +82,14 @@ fn main() -> Result<()> {
             warn!("Ignoring unknown file type {:?} ({:?})", file_type, path);
         }
     }
+
+    comp_dag::build(
+        &msvc,
+        &wine_prefix,
+        work_dir.path(),
+        &msvc_test_exes_path,
+        &files.iter().map(|f| f.as_path()).collect::<Vec<_>>(),
+    )?;
 
     Ok(())
 }

@@ -1,3 +1,6 @@
+/*UW_BUILD:
+{}
+:UW_BUILD*/
 
 // a solution to a codeforces problem (https://codeforces.com/problemset/problem/1031/B)
 // can be tested via competest (https://pypi.org/project/competest/)
