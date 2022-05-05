@@ -3485,6 +3485,87 @@ extern "C" fn thunk_GetSystemPreferredUILanguages(
     )
 }
 #[no_mangle]
+extern "C" fn thunk_GetTextCharset(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetTextCharset",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Globalization::get_api(win32);
+            let hdc = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}}}" , hdc ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.GetTextCharset(hdc);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetTextCharsetInfo(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetTextCharsetInfo",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Globalization::get_api(win32);
+            let hdc = call.get_arg();
+            let lp_sig = call.get_arg();
+            let dw_flags = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, lp_sig = {:?}, dw_flags = {:?}}}",
+                            hdc, lp_sig, dw_flags
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.GetTextCharsetInfo(hdc, lp_sig, dw_flags);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
 extern "C" fn thunk_GetThreadLocale(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
@@ -5364,6 +5445,59 @@ extern "C" fn thunk_ScriptApplyDigitSubstitution(
     )
 }
 #[no_mangle]
+extern "C" fn thunk_ScriptApplyLogicalWidth(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "ScriptApplyLogicalWidth",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Globalization::get_api(win32);
+            let pi_dx = call.get_arg();
+            let c_chars = call.get_arg();
+            let c_glyphs = call.get_arg();
+            let pw_log_clust = call.get_arg();
+            let psva = call.get_arg();
+            let pi_advance = call.get_arg();
+            let psa = call.get_arg();
+            let p_abc = call.get_arg();
+            let pi_justify = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{pi_dx = {:?}, c_chars = {:?}, c_glyphs = {:?}, pw_log_clust = {:?}, psva = {:?}, pi_advance = {:?}, psa = {:?}, p_abc = {:?}, pi_justify = {:?}}}" , pi_dx , c_chars , c_glyphs , pw_log_clust , psva , pi_advance , psa , p_abc , pi_justify ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.ScriptApplyLogicalWidth(
+                pi_dx,
+                c_chars,
+                c_glyphs,
+                pw_log_clust,
+                psva,
+                pi_advance,
+                psa,
+                p_abc,
+                pi_justify,
+            );
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
 extern "C" fn thunk_ScriptBreak(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "ScriptBreak");
@@ -5445,6 +5579,52 @@ extern "C" fn thunk_ScriptCPtoX(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
+extern "C" fn thunk_ScriptCacheGetHeight(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "ScriptCacheGetHeight",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Globalization::get_api(win32);
+            let hdc = call.get_arg();
+            let psc = call.get_arg();
+            let tm_height = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, psc = {:?}, tm_height = {:?}}}",
+                            hdc, psc, tm_height
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.ScriptCacheGetHeight(hdc, psc, tm_height);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
 extern "C" fn thunk_ScriptFreeCache(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
@@ -5465,6 +5645,332 @@ extern "C" fn thunk_ScriptFreeCache(
                 tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{psc = {:?}}}" , psc ) as & dyn tracing :: Value ) , ) ] ) ) ;
             }
             let res = api.ScriptFreeCache(psc);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_ScriptGetCMap(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "ScriptGetCMap",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Globalization::get_api(win32);
+            let hdc = call.get_arg();
+            let psc = call.get_arg();
+            let pwc_in_chars = call.get_arg();
+            let c_chars = call.get_arg();
+            let dw_flags = call.get_arg();
+            let pw_out_glyphs = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, psc = {:?}, pwc_in_chars = {:?}, c_chars = {:?}, dw_flags = {:?}, pw_out_glyphs = {:?}}}" , hdc , psc , pwc_in_chars , c_chars , dw_flags , pw_out_glyphs ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.ScriptGetCMap(hdc, psc, pwc_in_chars, c_chars, dw_flags, pw_out_glyphs);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_ScriptGetFontAlternateGlyphs(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "ScriptGetFontAlternateGlyphs",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Globalization::get_api(win32);
+            let hdc = call.get_arg();
+            let psc = call.get_arg();
+            let psa = call.get_arg();
+            let tag_script = call.get_arg();
+            let tag_lang_sys = call.get_arg();
+            let tag_feature = call.get_arg();
+            let w_glyph_id = call.get_arg();
+            let c_max_alternates = call.get_arg();
+            let p_alternate_glyphs = call.get_arg();
+            let pc_alternates = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, psc = {:?}, psa = {:?}, tag_script = {:?}, tag_lang_sys = {:?}, tag_feature = {:?}, w_glyph_id = {:?}, c_max_alternates = {:?}, p_alternate_glyphs = {:?}, pc_alternates = {:?}}}" , hdc , psc , psa , tag_script , tag_lang_sys , tag_feature , w_glyph_id , c_max_alternates , p_alternate_glyphs , pc_alternates ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.ScriptGetFontAlternateGlyphs(
+                hdc,
+                psc,
+                psa,
+                tag_script,
+                tag_lang_sys,
+                tag_feature,
+                w_glyph_id,
+                c_max_alternates,
+                p_alternate_glyphs,
+                pc_alternates,
+            );
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_ScriptGetFontFeatureTags(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "ScriptGetFontFeatureTags",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Globalization::get_api(win32);
+            let hdc = call.get_arg();
+            let psc = call.get_arg();
+            let psa = call.get_arg();
+            let tag_script = call.get_arg();
+            let tag_lang_sys = call.get_arg();
+            let c_max_tags = call.get_arg();
+            let p_feature_tags = call.get_arg();
+            let pc_tags = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, psc = {:?}, psa = {:?}, tag_script = {:?}, tag_lang_sys = {:?}, c_max_tags = {:?}, p_feature_tags = {:?}, pc_tags = {:?}}}" , hdc , psc , psa , tag_script , tag_lang_sys , c_max_tags , p_feature_tags , pc_tags ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.ScriptGetFontFeatureTags(
+                hdc,
+                psc,
+                psa,
+                tag_script,
+                tag_lang_sys,
+                c_max_tags,
+                p_feature_tags,
+                pc_tags,
+            );
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_ScriptGetFontLanguageTags(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "ScriptGetFontLanguageTags",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Globalization::get_api(win32);
+            let hdc = call.get_arg();
+            let psc = call.get_arg();
+            let psa = call.get_arg();
+            let tag_script = call.get_arg();
+            let c_max_tags = call.get_arg();
+            let p_langsys_tags = call.get_arg();
+            let pc_tags = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, psc = {:?}, psa = {:?}, tag_script = {:?}, c_max_tags = {:?}, p_langsys_tags = {:?}, pc_tags = {:?}}}" , hdc , psc , psa , tag_script , c_max_tags , p_langsys_tags , pc_tags ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.ScriptGetFontLanguageTags(
+                hdc,
+                psc,
+                psa,
+                tag_script,
+                c_max_tags,
+                p_langsys_tags,
+                pc_tags,
+            );
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_ScriptGetFontProperties(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "ScriptGetFontProperties",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Globalization::get_api(win32);
+            let hdc = call.get_arg();
+            let psc = call.get_arg();
+            let sfp = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, psc = {:?}, sfp = {:?}}}",
+                            hdc, psc, sfp
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.ScriptGetFontProperties(hdc, psc, sfp);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_ScriptGetFontScriptTags(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "ScriptGetFontScriptTags",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Globalization::get_api(win32);
+            let hdc = call.get_arg();
+            let psc = call.get_arg();
+            let psa = call.get_arg();
+            let c_max_tags = call.get_arg();
+            let p_script_tags = call.get_arg();
+            let pc_tags = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, psc = {:?}, psa = {:?}, c_max_tags = {:?}, p_script_tags = {:?}, pc_tags = {:?}}}" , hdc , psc , psa , c_max_tags , p_script_tags , pc_tags ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res =
+                api.ScriptGetFontScriptTags(hdc, psc, psa, c_max_tags, p_script_tags, pc_tags);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_ScriptGetGlyphABCWidth(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "ScriptGetGlyphABCWidth",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Globalization::get_api(win32);
+            let hdc = call.get_arg();
+            let psc = call.get_arg();
+            let w_glyph = call.get_arg();
+            let p_abc = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, psc = {:?}, w_glyph = {:?}, p_abc = {:?}}}",
+                            hdc, psc, w_glyph, p_abc
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.ScriptGetGlyphABCWidth(hdc, psc, w_glyph, p_abc);
             if trace_event_enabled {
                 let fields = callsite.metadata().fields();
                 tracing::event::Event::dispatch(
@@ -5782,6 +6288,176 @@ extern "C" fn thunk_ScriptLayout(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
+extern "C" fn thunk_ScriptPlace(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "ScriptPlace");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Globalization::get_api(win32);
+            let hdc = call.get_arg();
+            let psc = call.get_arg();
+            let pw_glyphs = call.get_arg();
+            let c_glyphs = call.get_arg();
+            let psva = call.get_arg();
+            let psa = call.get_arg();
+            let pi_advance = call.get_arg();
+            let p_goffset = call.get_arg();
+            let p_abc = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, psc = {:?}, pw_glyphs = {:?}, c_glyphs = {:?}, psva = {:?}, psa = {:?}, pi_advance = {:?}, p_goffset = {:?}, p_abc = {:?}}}" , hdc , psc , pw_glyphs , c_glyphs , psva , psa , pi_advance , p_goffset , p_abc ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.ScriptPlace(
+                hdc, psc, pw_glyphs, c_glyphs, psva, psa, pi_advance, p_goffset, p_abc,
+            );
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_ScriptPlaceOpenType(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "ScriptPlaceOpenType",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Globalization::get_api(win32);
+            let hdc = call.get_arg();
+            let psc = call.get_arg();
+            let psa = call.get_arg();
+            let tag_script = call.get_arg();
+            let tag_lang_sys = call.get_arg();
+            let rc_range_chars = call.get_arg();
+            let rp_range_properties = call.get_arg();
+            let c_ranges = call.get_arg();
+            let pwc_chars = call.get_arg();
+            let pw_log_clust = call.get_arg();
+            let p_char_props = call.get_arg();
+            let c_chars = call.get_arg();
+            let pw_glyphs = call.get_arg();
+            let p_glyph_props = call.get_arg();
+            let c_glyphs = call.get_arg();
+            let pi_advance = call.get_arg();
+            let p_goffset = call.get_arg();
+            let p_abc = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, psc = {:?}, psa = {:?}, tag_script = {:?}, tag_lang_sys = {:?}, rc_range_chars = {:?}, rp_range_properties = {:?}, c_ranges = {:?}, pwc_chars = {:?}, pw_log_clust = {:?}, p_char_props = {:?}, c_chars = {:?}, pw_glyphs = {:?}, p_glyph_props = {:?}, c_glyphs = {:?}, pi_advance = {:?}, p_goffset = {:?}, p_abc = {:?}}}" , hdc , psc , psa , tag_script , tag_lang_sys , rc_range_chars , rp_range_properties , c_ranges , pwc_chars , pw_log_clust , p_char_props , c_chars , pw_glyphs , p_glyph_props , c_glyphs , pi_advance , p_goffset , p_abc ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.ScriptPlaceOpenType(
+                hdc,
+                psc,
+                psa,
+                tag_script,
+                tag_lang_sys,
+                rc_range_chars,
+                rp_range_properties,
+                c_ranges,
+                pwc_chars,
+                pw_log_clust,
+                p_char_props,
+                c_chars,
+                pw_glyphs,
+                p_glyph_props,
+                c_glyphs,
+                pi_advance,
+                p_goffset,
+                p_abc,
+            );
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_ScriptPositionSingleGlyph(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "ScriptPositionSingleGlyph",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Globalization::get_api(win32);
+            let hdc = call.get_arg();
+            let psc = call.get_arg();
+            let psa = call.get_arg();
+            let tag_script = call.get_arg();
+            let tag_lang_sys = call.get_arg();
+            let tag_feature = call.get_arg();
+            let l_parameter = call.get_arg();
+            let w_glyph_id = call.get_arg();
+            let i_advance = call.get_arg();
+            let g_offset = call.get_arg();
+            let pi_out_advance = call.get_arg();
+            let p_out_goffset = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, psc = {:?}, psa = {:?}, tag_script = {:?}, tag_lang_sys = {:?}, tag_feature = {:?}, l_parameter = {:?}, w_glyph_id = {:?}, i_advance = {:?}, g_offset = {:?}, pi_out_advance = {:?}, p_out_goffset = {:?}}}" , hdc , psc , psa , tag_script , tag_lang_sys , tag_feature , l_parameter , w_glyph_id , i_advance , g_offset , pi_out_advance , p_out_goffset ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.ScriptPositionSingleGlyph(
+                hdc,
+                psc,
+                psa,
+                tag_script,
+                tag_lang_sys,
+                tag_feature,
+                l_parameter,
+                w_glyph_id,
+                i_advance,
+                g_offset,
+                pi_out_advance,
+                p_out_goffset,
+            );
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
 extern "C" fn thunk_ScriptRecordDigitSubstitution(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
@@ -5812,6 +6488,184 @@ extern "C" fn thunk_ScriptRecordDigitSubstitution(
                 );
             }
             let res = api.ScriptRecordDigitSubstitution(locale, psds);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_ScriptShape(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "ScriptShape");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Globalization::get_api(win32);
+            let hdc = call.get_arg();
+            let psc = call.get_arg();
+            let pwc_chars = call.get_arg();
+            let c_chars = call.get_arg();
+            let c_max_glyphs = call.get_arg();
+            let psa = call.get_arg();
+            let pw_out_glyphs = call.get_arg();
+            let pw_log_clust = call.get_arg();
+            let psva = call.get_arg();
+            let pc_glyphs = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, psc = {:?}, pwc_chars = {:?}, c_chars = {:?}, c_max_glyphs = {:?}, psa = {:?}, pw_out_glyphs = {:?}, pw_log_clust = {:?}, psva = {:?}, pc_glyphs = {:?}}}" , hdc , psc , pwc_chars , c_chars , c_max_glyphs , psa , pw_out_glyphs , pw_log_clust , psva , pc_glyphs ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.ScriptShape(
+                hdc,
+                psc,
+                pwc_chars,
+                c_chars,
+                c_max_glyphs,
+                psa,
+                pw_out_glyphs,
+                pw_log_clust,
+                psva,
+                pc_glyphs,
+            );
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_ScriptShapeOpenType(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "ScriptShapeOpenType",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Globalization::get_api(win32);
+            let hdc = call.get_arg();
+            let psc = call.get_arg();
+            let psa = call.get_arg();
+            let tag_script = call.get_arg();
+            let tag_lang_sys = call.get_arg();
+            let rc_range_chars = call.get_arg();
+            let rp_range_properties = call.get_arg();
+            let c_ranges = call.get_arg();
+            let pwc_chars = call.get_arg();
+            let c_chars = call.get_arg();
+            let c_max_glyphs = call.get_arg();
+            let pw_log_clust = call.get_arg();
+            let p_char_props = call.get_arg();
+            let pw_out_glyphs = call.get_arg();
+            let p_out_glyph_props = call.get_arg();
+            let pc_glyphs = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, psc = {:?}, psa = {:?}, tag_script = {:?}, tag_lang_sys = {:?}, rc_range_chars = {:?}, rp_range_properties = {:?}, c_ranges = {:?}, pwc_chars = {:?}, c_chars = {:?}, c_max_glyphs = {:?}, pw_log_clust = {:?}, p_char_props = {:?}, pw_out_glyphs = {:?}, p_out_glyph_props = {:?}, pc_glyphs = {:?}}}" , hdc , psc , psa , tag_script , tag_lang_sys , rc_range_chars , rp_range_properties , c_ranges , pwc_chars , c_chars , c_max_glyphs , pw_log_clust , p_char_props , pw_out_glyphs , p_out_glyph_props , pc_glyphs ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.ScriptShapeOpenType(
+                hdc,
+                psc,
+                psa,
+                tag_script,
+                tag_lang_sys,
+                rc_range_chars,
+                rp_range_properties,
+                c_ranges,
+                pwc_chars,
+                c_chars,
+                c_max_glyphs,
+                pw_log_clust,
+                p_char_props,
+                pw_out_glyphs,
+                p_out_glyph_props,
+                pc_glyphs,
+            );
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_ScriptStringAnalyse(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "ScriptStringAnalyse",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Globalization::get_api(win32);
+            let hdc = call.get_arg();
+            let p_string = call.get_arg();
+            let c_string = call.get_arg();
+            let c_glyphs = call.get_arg();
+            let i_charset = call.get_arg();
+            let dw_flags = call.get_arg();
+            let i_req_width = call.get_arg();
+            let ps_control = call.get_arg();
+            let ps_state = call.get_arg();
+            let pi_dx = call.get_arg();
+            let p_tabdef = call.get_arg();
+            let pb_in_class = call.get_arg();
+            let pssa = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, p_string = {:?}, c_string = {:?}, c_glyphs = {:?}, i_charset = {:?}, dw_flags = {:?}, i_req_width = {:?}, ps_control = {:?}, ps_state = {:?}, pi_dx = {:?}, p_tabdef = {:?}, pb_in_class = {:?}, pssa = {:?}}}" , hdc , p_string , c_string , c_glyphs , i_charset , dw_flags , i_req_width , ps_control , ps_state , pi_dx , p_tabdef , pb_in_class , pssa ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.ScriptStringAnalyse(
+                hdc,
+                p_string,
+                c_string,
+                c_glyphs,
+                i_charset,
+                dw_flags,
+                i_req_width,
+                ps_control,
+                ps_state,
+                pi_dx,
+                p_tabdef,
+                pb_in_class,
+                pssa,
+            );
             if trace_event_enabled {
                 let fields = callsite.metadata().fields();
                 tracing::event::Event::dispatch(
@@ -6006,6 +6860,50 @@ extern "C" fn thunk_ScriptStringGetOrder(
     )
 }
 #[no_mangle]
+extern "C" fn thunk_ScriptStringOut(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "ScriptStringOut",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Globalization::get_api(win32);
+            let ssa = call.get_arg();
+            let i_x = call.get_arg();
+            let i_y = call.get_arg();
+            let u_options = call.get_arg();
+            let prc = call.get_arg();
+            let i_min_sel = call.get_arg();
+            let i_max_sel = call.get_arg();
+            let f_disabled = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{ssa = {:?}, i_x = {:?}, i_y = {:?}, u_options = {:?}, prc = {:?}, i_min_sel = {:?}, i_max_sel = {:?}, f_disabled = {:?}}}" , ssa , i_x , i_y , u_options , prc , i_min_sel , i_max_sel , f_disabled ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.ScriptStringOut(
+                ssa, i_x, i_y, u_options, prc, i_min_sel, i_max_sel, f_disabled,
+            );
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
 extern "C" fn thunk_ScriptStringValidate(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
@@ -6169,6 +7067,119 @@ extern "C" fn thunk_ScriptString_pcOutChars(
                 tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{ssa = {:?}}}" , ssa ) as & dyn tracing :: Value ) , ) ] ) ) ;
             }
             let res = api.ScriptString_pcOutChars(ssa);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_ScriptSubstituteSingleGlyph(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "ScriptSubstituteSingleGlyph",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Globalization::get_api(win32);
+            let hdc = call.get_arg();
+            let psc = call.get_arg();
+            let psa = call.get_arg();
+            let tag_script = call.get_arg();
+            let tag_lang_sys = call.get_arg();
+            let tag_feature = call.get_arg();
+            let l_parameter = call.get_arg();
+            let w_glyph_id = call.get_arg();
+            let pw_out_glyph_id = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, psc = {:?}, psa = {:?}, tag_script = {:?}, tag_lang_sys = {:?}, tag_feature = {:?}, l_parameter = {:?}, w_glyph_id = {:?}, pw_out_glyph_id = {:?}}}" , hdc , psc , psa , tag_script , tag_lang_sys , tag_feature , l_parameter , w_glyph_id , pw_out_glyph_id ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.ScriptSubstituteSingleGlyph(
+                hdc,
+                psc,
+                psa,
+                tag_script,
+                tag_lang_sys,
+                tag_feature,
+                l_parameter,
+                w_glyph_id,
+                pw_out_glyph_id,
+            );
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_ScriptTextOut(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "ScriptTextOut",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Globalization::get_api(win32);
+            let hdc = call.get_arg();
+            let psc = call.get_arg();
+            let x = call.get_arg();
+            let y = call.get_arg();
+            let fu_options = call.get_arg();
+            let lprc = call.get_arg();
+            let psa = call.get_arg();
+            let pwc_reserved = call.get_arg();
+            let i_reserved = call.get_arg();
+            let pw_glyphs = call.get_arg();
+            let c_glyphs = call.get_arg();
+            let pi_advance = call.get_arg();
+            let pi_justify = call.get_arg();
+            let p_goffset = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, psc = {:?}, x = {:?}, y = {:?}, fu_options = {:?}, lprc = {:?}, psa = {:?}, pwc_reserved = {:?}, i_reserved = {:?}, pw_glyphs = {:?}, c_glyphs = {:?}, pi_advance = {:?}, pi_justify = {:?}, p_goffset = {:?}}}" , hdc , psc , x , y , fu_options , lprc , psa , pwc_reserved , i_reserved , pw_glyphs , c_glyphs , pi_advance , pi_justify , p_goffset ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.ScriptTextOut(
+                hdc,
+                psc,
+                x,
+                y,
+                fu_options,
+                lprc,
+                psa,
+                pwc_reserved,
+                i_reserved,
+                pw_glyphs,
+                c_glyphs,
+                pi_advance,
+                pi_justify,
+                p_goffset,
+            );
             if trace_event_enabled {
                 let fields = callsite.metadata().fields();
                 tracing::event::Event::dispatch(
@@ -7268,6 +8279,15833 @@ extern "C" fn thunk_lstrlenW(context: &mut ExtendedContext, memory: FlatMemoryCt
                 );
             }
             let res = api.lstrlenW(lp_string);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_AbortPath(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "AbortPath");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}}}" , hdc ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.AbortPath(hdc);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_AddFontMemResourceEx(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "AddFontMemResourceEx",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let p_file_view = call.get_arg();
+            let cj_size = call.get_arg();
+            let pv_resrved = call.get_arg();
+            let p_num_fonts = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{p_file_view = {:?}, cj_size = {:?}, pv_resrved = {:?}, p_num_fonts = {:?}}}" , p_file_view , cj_size , pv_resrved , p_num_fonts ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.AddFontMemResourceEx(p_file_view, cj_size, pv_resrved, p_num_fonts);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_AddFontResourceA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "AddFontResourceA",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let param_0 = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("    args = {{param_0 = {:?}}}", param_0)
+                            as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.AddFontResourceA(param_0);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_AddFontResourceExA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "AddFontResourceExA",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let name = call.get_arg();
+            let fl = call.get_arg();
+            let res = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{name = {:?}, fl = {:?}, res = {:?}}}",
+                            name, fl, res
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.AddFontResourceExA(name, fl, res);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_AddFontResourceExW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "AddFontResourceExW",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let name = call.get_arg();
+            let fl = call.get_arg();
+            let res = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{name = {:?}, fl = {:?}, res = {:?}}}",
+                            name, fl, res
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.AddFontResourceExW(name, fl, res);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_AddFontResourceW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "AddFontResourceW",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let param_0 = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("    args = {{param_0 = {:?}}}", param_0)
+                            as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.AddFontResourceW(param_0);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_AlphaBlend(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "AlphaBlend");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc_dest = call.get_arg();
+            let xorigin_dest = call.get_arg();
+            let yorigin_dest = call.get_arg();
+            let w_dest = call.get_arg();
+            let h_dest = call.get_arg();
+            let hdc_src = call.get_arg();
+            let xorigin_src = call.get_arg();
+            let yorigin_src = call.get_arg();
+            let w_src = call.get_arg();
+            let h_src = call.get_arg();
+            let ftn = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc_dest = {:?}, xorigin_dest = {:?}, yorigin_dest = {:?}, w_dest = {:?}, h_dest = {:?}, hdc_src = {:?}, xorigin_src = {:?}, yorigin_src = {:?}, w_src = {:?}, h_src = {:?}, ftn = {:?}}}" , hdc_dest , xorigin_dest , yorigin_dest , w_dest , h_dest , hdc_src , xorigin_src , yorigin_src , w_src , h_src , ftn ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.AlphaBlend(
+                hdc_dest,
+                xorigin_dest,
+                yorigin_dest,
+                w_dest,
+                h_dest,
+                hdc_src,
+                xorigin_src,
+                yorigin_src,
+                w_src,
+                h_src,
+                ftn,
+            );
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_AnimatePalette(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "AnimatePalette",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let h_pal = call.get_arg();
+            let i_start_index = call.get_arg();
+            let c_entries = call.get_arg();
+            let ppe = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{h_pal = {:?}, i_start_index = {:?}, c_entries = {:?}, ppe = {:?}}}" , h_pal , i_start_index , c_entries , ppe ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.AnimatePalette(h_pal, i_start_index, c_entries, ppe);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_Arc(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "Arc");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let x_1 = call.get_arg();
+            let y_1 = call.get_arg();
+            let x_2 = call.get_arg();
+            let y_2 = call.get_arg();
+            let x_3 = call.get_arg();
+            let y_3 = call.get_arg();
+            let x_4 = call.get_arg();
+            let y_4 = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, x_1 = {:?}, y_1 = {:?}, x_2 = {:?}, y_2 = {:?}, x_3 = {:?}, y_3 = {:?}, x_4 = {:?}, y_4 = {:?}}}" , hdc , x_1 , y_1 , x_2 , y_2 , x_3 , y_3 , x_4 , y_4 ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.Arc(hdc, x_1, y_1, x_2, y_2, x_3, y_3, x_4, y_4);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_ArcTo(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "ArcTo");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let left = call.get_arg();
+            let top = call.get_arg();
+            let right = call.get_arg();
+            let bottom = call.get_arg();
+            let xr_1 = call.get_arg();
+            let yr_1 = call.get_arg();
+            let xr_2 = call.get_arg();
+            let yr_2 = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, left = {:?}, top = {:?}, right = {:?}, bottom = {:?}, xr_1 = {:?}, yr_1 = {:?}, xr_2 = {:?}, yr_2 = {:?}}}" , hdc , left , top , right , bottom , xr_1 , yr_1 , xr_2 , yr_2 ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.ArcTo(hdc, left, top, right, bottom, xr_1, yr_1, xr_2, yr_2);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_BeginPaint(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "BeginPaint");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let h_wnd = call.get_arg();
+            let lp_paint = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{h_wnd = {:?}, lp_paint = {:?}}}",
+                            h_wnd, lp_paint
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.BeginPaint(h_wnd, lp_paint);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_BeginPath(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "BeginPath");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}}}" , hdc ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.BeginPath(hdc);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_BitBlt(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "BitBlt");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let x = call.get_arg();
+            let y = call.get_arg();
+            let cx = call.get_arg();
+            let cy = call.get_arg();
+            let hdc_src = call.get_arg();
+            let x_1 = call.get_arg();
+            let y_1 = call.get_arg();
+            let rop = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, x = {:?}, y = {:?}, cx = {:?}, cy = {:?}, hdc_src = {:?}, x_1 = {:?}, y_1 = {:?}, rop = {:?}}}" , hdc , x , y , cx , cy , hdc_src , x_1 , y_1 , rop ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.BitBlt(hdc, x, y, cx, cy, hdc_src, x_1, y_1, rop);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_CancelDC(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "CancelDC");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}}}" , hdc ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.CancelDC(hdc);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_ChangeDisplaySettingsA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "ChangeDisplaySettingsA",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let lp_dev_mode = call.get_arg();
+            let dw_flags = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{lp_dev_mode = {:?}, dw_flags = {:?}}}",
+                            lp_dev_mode, dw_flags
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.ChangeDisplaySettingsA(lp_dev_mode, dw_flags);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_ChangeDisplaySettingsExA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "ChangeDisplaySettingsExA",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let lpsz_device_name = call.get_arg();
+            let lp_dev_mode = call.get_arg();
+            let hwnd = call.get_arg();
+            let dwflags = call.get_arg();
+            let l_param = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{lpsz_device_name = {:?}, lp_dev_mode = {:?}, hwnd = {:?}, dwflags = {:?}, l_param = {:?}}}" , lpsz_device_name , lp_dev_mode , hwnd , dwflags , l_param ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res =
+                api.ChangeDisplaySettingsExA(lpsz_device_name, lp_dev_mode, hwnd, dwflags, l_param);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_ChangeDisplaySettingsExW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "ChangeDisplaySettingsExW",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let lpsz_device_name = call.get_arg();
+            let lp_dev_mode = call.get_arg();
+            let hwnd = call.get_arg();
+            let dwflags = call.get_arg();
+            let l_param = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{lpsz_device_name = {:?}, lp_dev_mode = {:?}, hwnd = {:?}, dwflags = {:?}, l_param = {:?}}}" , lpsz_device_name , lp_dev_mode , hwnd , dwflags , l_param ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res =
+                api.ChangeDisplaySettingsExW(lpsz_device_name, lp_dev_mode, hwnd, dwflags, l_param);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_ChangeDisplaySettingsW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "ChangeDisplaySettingsW",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let lp_dev_mode = call.get_arg();
+            let dw_flags = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{lp_dev_mode = {:?}, dw_flags = {:?}}}",
+                            lp_dev_mode, dw_flags
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.ChangeDisplaySettingsW(lp_dev_mode, dw_flags);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_Chord(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "Chord");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let x_1 = call.get_arg();
+            let y_1 = call.get_arg();
+            let x_2 = call.get_arg();
+            let y_2 = call.get_arg();
+            let x_3 = call.get_arg();
+            let y_3 = call.get_arg();
+            let x_4 = call.get_arg();
+            let y_4 = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, x_1 = {:?}, y_1 = {:?}, x_2 = {:?}, y_2 = {:?}, x_3 = {:?}, y_3 = {:?}, x_4 = {:?}, y_4 = {:?}}}" , hdc , x_1 , y_1 , x_2 , y_2 , x_3 , y_3 , x_4 , y_4 ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.Chord(hdc, x_1, y_1, x_2, y_2, x_3, y_3, x_4, y_4);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_ClientToScreen(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "ClientToScreen",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let h_wnd = call.get_arg();
+            let lp_point = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{h_wnd = {:?}, lp_point = {:?}}}",
+                            h_wnd, lp_point
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.ClientToScreen(h_wnd, lp_point);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_CloseEnhMetaFile(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "CloseEnhMetaFile",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}}}" , hdc ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.CloseEnhMetaFile(hdc);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_CloseFigure(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "CloseFigure");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}}}" , hdc ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.CloseFigure(hdc);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_CloseMetaFile(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "CloseMetaFile",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}}}" , hdc ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.CloseMetaFile(hdc);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_CombineRgn(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "CombineRgn");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hrgn_dst = call.get_arg();
+            let hrgn_src_1 = call.get_arg();
+            let hrgn_src_2 = call.get_arg();
+            let i_mode = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hrgn_dst = {:?}, hrgn_src_1 = {:?}, hrgn_src_2 = {:?}, i_mode = {:?}}}" , hrgn_dst , hrgn_src_1 , hrgn_src_2 , i_mode ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.CombineRgn(hrgn_dst, hrgn_src_1, hrgn_src_2, i_mode);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_CopyEnhMetaFileA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "CopyEnhMetaFileA",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let h_enh = call.get_arg();
+            let lp_file_name = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{h_enh = {:?}, lp_file_name = {:?}}}",
+                            h_enh, lp_file_name
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.CopyEnhMetaFileA(h_enh, lp_file_name);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_CopyEnhMetaFileW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "CopyEnhMetaFileW",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let h_enh = call.get_arg();
+            let lp_file_name = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{h_enh = {:?}, lp_file_name = {:?}}}",
+                            h_enh, lp_file_name
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.CopyEnhMetaFileW(h_enh, lp_file_name);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_CopyMetaFileA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "CopyMetaFileA",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let param_0 = call.get_arg();
+            let param_1 = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{param_0 = {:?}, param_1 = {:?}}}",
+                            param_0, param_1
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.CopyMetaFileA(param_0, param_1);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_CopyMetaFileW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "CopyMetaFileW",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let param_0 = call.get_arg();
+            let param_1 = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{param_0 = {:?}, param_1 = {:?}}}",
+                            param_0, param_1
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.CopyMetaFileW(param_0, param_1);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_CopyRect(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "CopyRect");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let lprc_dst = call.get_arg();
+            let lprc_src = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{lprc_dst = {:?}, lprc_src = {:?}}}",
+                            lprc_dst, lprc_src
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.CopyRect(lprc_dst, lprc_src);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_CreateBitmap(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "CreateBitmap",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let n_width = call.get_arg();
+            let n_height = call.get_arg();
+            let n_planes = call.get_arg();
+            let n_bit_count = call.get_arg();
+            let lp_bits = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{n_width = {:?}, n_height = {:?}, n_planes = {:?}, n_bit_count = {:?}, lp_bits = {:?}}}" , n_width , n_height , n_planes , n_bit_count , lp_bits ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.CreateBitmap(n_width, n_height, n_planes, n_bit_count, lp_bits);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_CreateBitmapIndirect(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "CreateBitmapIndirect",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let pbm = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{pbm = {:?}}}" , pbm ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.CreateBitmapIndirect(pbm);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_CreateBrushIndirect(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "CreateBrushIndirect",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let plbrush = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("    args = {{plbrush = {:?}}}", plbrush)
+                            as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.CreateBrushIndirect(plbrush);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_CreateCompatibleBitmap(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "CreateCompatibleBitmap",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let cx = call.get_arg();
+            let cy = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, cx = {:?}, cy = {:?}}}",
+                            hdc, cx, cy
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.CreateCompatibleBitmap(hdc, cx, cy);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_CreateCompatibleDC(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "CreateCompatibleDC",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}}}" , hdc ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.CreateCompatibleDC(hdc);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_CreateDCA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "CreateDCA");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let pwsz_driver = call.get_arg();
+            let pwsz_device = call.get_arg();
+            let psz_port = call.get_arg();
+            let pdm = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{pwsz_driver = {:?}, pwsz_device = {:?}, psz_port = {:?}, pdm = {:?}}}" , pwsz_driver , pwsz_device , psz_port , pdm ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.CreateDCA(pwsz_driver, pwsz_device, psz_port, pdm);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_CreateDCW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "CreateDCW");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let pwsz_driver = call.get_arg();
+            let pwsz_device = call.get_arg();
+            let psz_port = call.get_arg();
+            let pdm = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{pwsz_driver = {:?}, pwsz_device = {:?}, psz_port = {:?}, pdm = {:?}}}" , pwsz_driver , pwsz_device , psz_port , pdm ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.CreateDCW(pwsz_driver, pwsz_device, psz_port, pdm);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_CreateDIBPatternBrush(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "CreateDIBPatternBrush",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let h = call.get_arg();
+            let i_usage = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(
+                            &format_args!("    args = {{h = {:?}, i_usage = {:?}}}", h, i_usage)
+                                as &dyn tracing::Value,
+                        ),
+                    )]),
+                );
+            }
+            let res = api.CreateDIBPatternBrush(h, i_usage);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_CreateDIBPatternBrushPt(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "CreateDIBPatternBrushPt",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let lp_packed_dib = call.get_arg();
+            let i_usage = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{lp_packed_dib = {:?}, i_usage = {:?}}}",
+                            lp_packed_dib, i_usage
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.CreateDIBPatternBrushPt(lp_packed_dib, i_usage);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_CreateDIBSection(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "CreateDIBSection",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let pbmi = call.get_arg();
+            let usage = call.get_arg();
+            let ppv_bits = call.get_arg();
+            let h_section = call.get_arg();
+            let offset = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, pbmi = {:?}, usage = {:?}, ppv_bits = {:?}, h_section = {:?}, offset = {:?}}}" , hdc , pbmi , usage , ppv_bits , h_section , offset ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.CreateDIBSection(hdc, pbmi, usage, ppv_bits, h_section, offset);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_CreateDIBitmap(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "CreateDIBitmap",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let pbmih = call.get_arg();
+            let fl_init = call.get_arg();
+            let pj_bits = call.get_arg();
+            let pbmi = call.get_arg();
+            let i_usage = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, pbmih = {:?}, fl_init = {:?}, pj_bits = {:?}, pbmi = {:?}, i_usage = {:?}}}" , hdc , pbmih , fl_init , pj_bits , pbmi , i_usage ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.CreateDIBitmap(hdc, pbmih, fl_init, pj_bits, pbmi, i_usage);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_CreateDiscardableBitmap(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "CreateDiscardableBitmap",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let cx = call.get_arg();
+            let cy = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, cx = {:?}, cy = {:?}}}",
+                            hdc, cx, cy
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.CreateDiscardableBitmap(hdc, cx, cy);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_CreateEllipticRgn(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "CreateEllipticRgn",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let x_1 = call.get_arg();
+            let y_1 = call.get_arg();
+            let x_2 = call.get_arg();
+            let y_2 = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{x_1 = {:?}, y_1 = {:?}, x_2 = {:?}, y_2 = {:?}}}",
+                            x_1, y_1, x_2, y_2
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.CreateEllipticRgn(x_1, y_1, x_2, y_2);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_CreateEllipticRgnIndirect(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "CreateEllipticRgnIndirect",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let lprect = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("    args = {{lprect = {:?}}}", lprect)
+                            as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.CreateEllipticRgnIndirect(lprect);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_CreateEnhMetaFileA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "CreateEnhMetaFileA",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let lp_filename = call.get_arg();
+            let lprc = call.get_arg();
+            let lp_desc = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, lp_filename = {:?}, lprc = {:?}, lp_desc = {:?}}}" , hdc , lp_filename , lprc , lp_desc ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.CreateEnhMetaFileA(hdc, lp_filename, lprc, lp_desc);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_CreateEnhMetaFileW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "CreateEnhMetaFileW",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let lp_filename = call.get_arg();
+            let lprc = call.get_arg();
+            let lp_desc = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, lp_filename = {:?}, lprc = {:?}, lp_desc = {:?}}}" , hdc , lp_filename , lprc , lp_desc ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.CreateEnhMetaFileW(hdc, lp_filename, lprc, lp_desc);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_CreateFontA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "CreateFontA");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let c_height = call.get_arg();
+            let c_width = call.get_arg();
+            let c_escapement = call.get_arg();
+            let c_orientation = call.get_arg();
+            let c_weight = call.get_arg();
+            let b_italic = call.get_arg();
+            let b_underline = call.get_arg();
+            let b_strike_out = call.get_arg();
+            let i_char_set = call.get_arg();
+            let i_out_precision = call.get_arg();
+            let i_clip_precision = call.get_arg();
+            let i_quality = call.get_arg();
+            let i_pitch_and_family = call.get_arg();
+            let psz_face_name = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{c_height = {:?}, c_width = {:?}, c_escapement = {:?}, c_orientation = {:?}, c_weight = {:?}, b_italic = {:?}, b_underline = {:?}, b_strike_out = {:?}, i_char_set = {:?}, i_out_precision = {:?}, i_clip_precision = {:?}, i_quality = {:?}, i_pitch_and_family = {:?}, psz_face_name = {:?}}}" , c_height , c_width , c_escapement , c_orientation , c_weight , b_italic , b_underline , b_strike_out , i_char_set , i_out_precision , i_clip_precision , i_quality , i_pitch_and_family , psz_face_name ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.CreateFontA(
+                c_height,
+                c_width,
+                c_escapement,
+                c_orientation,
+                c_weight,
+                b_italic,
+                b_underline,
+                b_strike_out,
+                i_char_set,
+                i_out_precision,
+                i_clip_precision,
+                i_quality,
+                i_pitch_and_family,
+                psz_face_name,
+            );
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_CreateFontIndirectA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "CreateFontIndirectA",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let lplf = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("    args = {{lplf = {:?}}}", lplf)
+                            as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.CreateFontIndirectA(lplf);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_CreateFontIndirectExA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "CreateFontIndirectExA",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let param_0 = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("    args = {{param_0 = {:?}}}", param_0)
+                            as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.CreateFontIndirectExA(param_0);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_CreateFontIndirectExW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "CreateFontIndirectExW",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let param_0 = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("    args = {{param_0 = {:?}}}", param_0)
+                            as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.CreateFontIndirectExW(param_0);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_CreateFontIndirectW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "CreateFontIndirectW",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let lplf = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("    args = {{lplf = {:?}}}", lplf)
+                            as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.CreateFontIndirectW(lplf);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_CreateFontPackage(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "CreateFontPackage",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let puch_src_buffer = call.get_arg();
+            let ul_src_buffer_size = call.get_arg();
+            let ppuch_font_package_buffer = call.get_arg();
+            let pul_font_package_buffer_size = call.get_arg();
+            let pul_bytes_written = call.get_arg();
+            let us_flag = call.get_arg();
+            let us_ttc_index = call.get_arg();
+            let us_subset_format = call.get_arg();
+            let us_subset_language = call.get_arg();
+            let us_subset_platform = call.get_arg();
+            let us_subset_encoding = call.get_arg();
+            let pus_subset_keep_list = call.get_arg();
+            let us_subset_list_count = call.get_arg();
+            let lpfn_allocate = call.get_arg();
+            let lpfn_re_allocate = call.get_arg();
+            let lpfn_free = call.get_arg();
+            let lpv_reserved = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{puch_src_buffer = {:?}, ul_src_buffer_size = {:?}, ppuch_font_package_buffer = {:?}, pul_font_package_buffer_size = {:?}, pul_bytes_written = {:?}, us_flag = {:?}, us_ttc_index = {:?}, us_subset_format = {:?}, us_subset_language = {:?}, us_subset_platform = {:?}, us_subset_encoding = {:?}, pus_subset_keep_list = {:?}, us_subset_list_count = {:?}, lpfn_allocate = {:?}, lpfn_re_allocate = {:?}, lpfn_free = {:?}, lpv_reserved = {:?}}}" , puch_src_buffer , ul_src_buffer_size , ppuch_font_package_buffer , pul_font_package_buffer_size , pul_bytes_written , us_flag , us_ttc_index , us_subset_format , us_subset_language , us_subset_platform , us_subset_encoding , pus_subset_keep_list , us_subset_list_count , lpfn_allocate , lpfn_re_allocate , lpfn_free , lpv_reserved ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.CreateFontPackage(
+                puch_src_buffer,
+                ul_src_buffer_size,
+                ppuch_font_package_buffer,
+                pul_font_package_buffer_size,
+                pul_bytes_written,
+                us_flag,
+                us_ttc_index,
+                us_subset_format,
+                us_subset_language,
+                us_subset_platform,
+                us_subset_encoding,
+                pus_subset_keep_list,
+                us_subset_list_count,
+                lpfn_allocate,
+                lpfn_re_allocate,
+                lpfn_free,
+                lpv_reserved,
+            );
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_CreateFontW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "CreateFontW");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let c_height = call.get_arg();
+            let c_width = call.get_arg();
+            let c_escapement = call.get_arg();
+            let c_orientation = call.get_arg();
+            let c_weight = call.get_arg();
+            let b_italic = call.get_arg();
+            let b_underline = call.get_arg();
+            let b_strike_out = call.get_arg();
+            let i_char_set = call.get_arg();
+            let i_out_precision = call.get_arg();
+            let i_clip_precision = call.get_arg();
+            let i_quality = call.get_arg();
+            let i_pitch_and_family = call.get_arg();
+            let psz_face_name = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{c_height = {:?}, c_width = {:?}, c_escapement = {:?}, c_orientation = {:?}, c_weight = {:?}, b_italic = {:?}, b_underline = {:?}, b_strike_out = {:?}, i_char_set = {:?}, i_out_precision = {:?}, i_clip_precision = {:?}, i_quality = {:?}, i_pitch_and_family = {:?}, psz_face_name = {:?}}}" , c_height , c_width , c_escapement , c_orientation , c_weight , b_italic , b_underline , b_strike_out , i_char_set , i_out_precision , i_clip_precision , i_quality , i_pitch_and_family , psz_face_name ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.CreateFontW(
+                c_height,
+                c_width,
+                c_escapement,
+                c_orientation,
+                c_weight,
+                b_italic,
+                b_underline,
+                b_strike_out,
+                i_char_set,
+                i_out_precision,
+                i_clip_precision,
+                i_quality,
+                i_pitch_and_family,
+                psz_face_name,
+            );
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_CreateHalftonePalette(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "CreateHalftonePalette",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}}}" , hdc ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.CreateHalftonePalette(hdc);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_CreateHatchBrush(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "CreateHatchBrush",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let i_hatch = call.get_arg();
+            let color = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{i_hatch = {:?}, color = {:?}}}",
+                            i_hatch, color
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.CreateHatchBrush(i_hatch, color);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_CreateICA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "CreateICA");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let psz_driver = call.get_arg();
+            let psz_device = call.get_arg();
+            let psz_port = call.get_arg();
+            let pdm = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{psz_driver = {:?}, psz_device = {:?}, psz_port = {:?}, pdm = {:?}}}" , psz_driver , psz_device , psz_port , pdm ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.CreateICA(psz_driver, psz_device, psz_port, pdm);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_CreateICW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "CreateICW");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let psz_driver = call.get_arg();
+            let psz_device = call.get_arg();
+            let psz_port = call.get_arg();
+            let pdm = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{psz_driver = {:?}, psz_device = {:?}, psz_port = {:?}, pdm = {:?}}}" , psz_driver , psz_device , psz_port , pdm ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.CreateICW(psz_driver, psz_device, psz_port, pdm);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_CreateMetaFileA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "CreateMetaFileA",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let psz_file = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("    args = {{psz_file = {:?}}}", psz_file)
+                            as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.CreateMetaFileA(psz_file);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_CreateMetaFileW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "CreateMetaFileW",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let psz_file = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("    args = {{psz_file = {:?}}}", psz_file)
+                            as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.CreateMetaFileW(psz_file);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_CreatePalette(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "CreatePalette",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let plpal = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("    args = {{plpal = {:?}}}", plpal)
+                            as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.CreatePalette(plpal);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_CreatePatternBrush(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "CreatePatternBrush",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hbm = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hbm = {:?}}}" , hbm ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.CreatePatternBrush(hbm);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_CreatePen(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "CreatePen");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let i_style = call.get_arg();
+            let c_width = call.get_arg();
+            let color = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{i_style = {:?}, c_width = {:?}, color = {:?}}}",
+                            i_style, c_width, color
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.CreatePen(i_style, c_width, color);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_CreatePenIndirect(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "CreatePenIndirect",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let plpen = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("    args = {{plpen = {:?}}}", plpen)
+                            as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.CreatePenIndirect(plpen);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_CreatePolyPolygonRgn(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "CreatePolyPolygonRgn",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let pptl = call.get_arg();
+            let pc = call.get_arg();
+            let c_poly = call.get_arg();
+            let i_mode = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{pptl = {:?}, pc = {:?}, c_poly = {:?}, i_mode = {:?}}}",
+                            pptl, pc, c_poly, i_mode
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.CreatePolyPolygonRgn(pptl, pc, c_poly, i_mode);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_CreatePolygonRgn(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "CreatePolygonRgn",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let pptl = call.get_arg();
+            let c_point = call.get_arg();
+            let i_mode = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{pptl = {:?}, c_point = {:?}, i_mode = {:?}}}",
+                            pptl, c_point, i_mode
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.CreatePolygonRgn(pptl, c_point, i_mode);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_CreateRectRgn(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "CreateRectRgn",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let x_1 = call.get_arg();
+            let y_1 = call.get_arg();
+            let x_2 = call.get_arg();
+            let y_2 = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{x_1 = {:?}, y_1 = {:?}, x_2 = {:?}, y_2 = {:?}}}",
+                            x_1, y_1, x_2, y_2
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.CreateRectRgn(x_1, y_1, x_2, y_2);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_CreateRectRgnIndirect(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "CreateRectRgnIndirect",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let lprect = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("    args = {{lprect = {:?}}}", lprect)
+                            as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.CreateRectRgnIndirect(lprect);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_CreateRoundRectRgn(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "CreateRoundRectRgn",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let x_1 = call.get_arg();
+            let y_1 = call.get_arg();
+            let x_2 = call.get_arg();
+            let y_2 = call.get_arg();
+            let w = call.get_arg();
+            let h = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{x_1 = {:?}, y_1 = {:?}, x_2 = {:?}, y_2 = {:?}, w = {:?}, h = {:?}}}" , x_1 , y_1 , x_2 , y_2 , w , h ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.CreateRoundRectRgn(x_1, y_1, x_2, y_2, w, h);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_CreateScalableFontResourceA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "CreateScalableFontResourceA",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let fdw_hidden = call.get_arg();
+            let lpsz_font = call.get_arg();
+            let lpsz_file = call.get_arg();
+            let lpsz_path = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{fdw_hidden = {:?}, lpsz_font = {:?}, lpsz_file = {:?}, lpsz_path = {:?}}}" , fdw_hidden , lpsz_font , lpsz_file , lpsz_path ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.CreateScalableFontResourceA(fdw_hidden, lpsz_font, lpsz_file, lpsz_path);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_CreateScalableFontResourceW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "CreateScalableFontResourceW",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let fdw_hidden = call.get_arg();
+            let lpsz_font = call.get_arg();
+            let lpsz_file = call.get_arg();
+            let lpsz_path = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{fdw_hidden = {:?}, lpsz_font = {:?}, lpsz_file = {:?}, lpsz_path = {:?}}}" , fdw_hidden , lpsz_font , lpsz_file , lpsz_path ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.CreateScalableFontResourceW(fdw_hidden, lpsz_font, lpsz_file, lpsz_path);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_CreateSolidBrush(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "CreateSolidBrush",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let color = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("    args = {{color = {:?}}}", color)
+                            as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.CreateSolidBrush(color);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_DPtoLP(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "DPtoLP");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let lppt = call.get_arg();
+            let c = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, lppt = {:?}, c = {:?}}}",
+                            hdc, lppt, c
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.DPtoLP(hdc, lppt, c);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_DeleteDC(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "DeleteDC");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}}}" , hdc ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.DeleteDC(hdc);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_DeleteEnhMetaFile(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "DeleteEnhMetaFile",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hmf = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hmf = {:?}}}" , hmf ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.DeleteEnhMetaFile(hmf);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_DeleteMetaFile(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "DeleteMetaFile",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hmf = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hmf = {:?}}}" , hmf ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.DeleteMetaFile(hmf);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_DeleteObject(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "DeleteObject",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let ho = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("    args = {{ho = {:?}}}", ho) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.DeleteObject(ho);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_DrawAnimatedRects(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "DrawAnimatedRects",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hwnd = call.get_arg();
+            let id_ani = call.get_arg();
+            let lprc_from = call.get_arg();
+            let lprc_to = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hwnd = {:?}, id_ani = {:?}, lprc_from = {:?}, lprc_to = {:?}}}" , hwnd , id_ani , lprc_from , lprc_to ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.DrawAnimatedRects(hwnd, id_ani, lprc_from, lprc_to);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_DrawCaption(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "DrawCaption");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hwnd = call.get_arg();
+            let hdc = call.get_arg();
+            let lprect = call.get_arg();
+            let flags = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hwnd = {:?}, hdc = {:?}, lprect = {:?}, flags = {:?}}}",
+                            hwnd, hdc, lprect, flags
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.DrawCaption(hwnd, hdc, lprect, flags);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_DrawEdge(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "DrawEdge");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let qrc = call.get_arg();
+            let edge = call.get_arg();
+            let grf_flags = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, qrc = {:?}, edge = {:?}, grf_flags = {:?}}}",
+                            hdc, qrc, edge, grf_flags
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.DrawEdge(hdc, qrc, edge, grf_flags);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_DrawEscape(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "DrawEscape");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let i_escape = call.get_arg();
+            let cj_in = call.get_arg();
+            let lp_in = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, i_escape = {:?}, cj_in = {:?}, lp_in = {:?}}}" , hdc , i_escape , cj_in , lp_in ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.DrawEscape(hdc, i_escape, cj_in, lp_in);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_DrawFocusRect(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "DrawFocusRect",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let h_dc = call.get_arg();
+            let lprc = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(
+                            &format_args!("    args = {{h_dc = {:?}, lprc = {:?}}}", h_dc, lprc)
+                                as &dyn tracing::Value,
+                        ),
+                    )]),
+                );
+            }
+            let res = api.DrawFocusRect(h_dc, lprc);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_DrawFrameControl(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "DrawFrameControl",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let param_0 = call.get_arg();
+            let param_1 = call.get_arg();
+            let param_2 = call.get_arg();
+            let param_3 = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{param_0 = {:?}, param_1 = {:?}, param_2 = {:?}, param_3 = {:?}}}" , param_0 , param_1 , param_2 , param_3 ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.DrawFrameControl(param_0, param_1, param_2, param_3);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_DrawStateA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "DrawStateA");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let hbr_fore = call.get_arg();
+            let qfn_call_back = call.get_arg();
+            let l_data = call.get_arg();
+            let w_data = call.get_arg();
+            let x = call.get_arg();
+            let y = call.get_arg();
+            let cx = call.get_arg();
+            let cy = call.get_arg();
+            let u_flags = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, hbr_fore = {:?}, qfn_call_back = {:?}, l_data = {:?}, w_data = {:?}, x = {:?}, y = {:?}, cx = {:?}, cy = {:?}, u_flags = {:?}}}" , hdc , hbr_fore , qfn_call_back , l_data , w_data , x , y , cx , cy , u_flags ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.DrawStateA(
+                hdc,
+                hbr_fore,
+                qfn_call_back,
+                l_data,
+                w_data,
+                x,
+                y,
+                cx,
+                cy,
+                u_flags,
+            );
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_DrawStateW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "DrawStateW");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let hbr_fore = call.get_arg();
+            let qfn_call_back = call.get_arg();
+            let l_data = call.get_arg();
+            let w_data = call.get_arg();
+            let x = call.get_arg();
+            let y = call.get_arg();
+            let cx = call.get_arg();
+            let cy = call.get_arg();
+            let u_flags = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, hbr_fore = {:?}, qfn_call_back = {:?}, l_data = {:?}, w_data = {:?}, x = {:?}, y = {:?}, cx = {:?}, cy = {:?}, u_flags = {:?}}}" , hdc , hbr_fore , qfn_call_back , l_data , w_data , x , y , cx , cy , u_flags ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.DrawStateW(
+                hdc,
+                hbr_fore,
+                qfn_call_back,
+                l_data,
+                w_data,
+                x,
+                y,
+                cx,
+                cy,
+                u_flags,
+            );
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_DrawTextA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "DrawTextA");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let lpch_text = call.get_arg();
+            let cch_text = call.get_arg();
+            let lprc = call.get_arg();
+            let format = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, lpch_text = {:?}, cch_text = {:?}, lprc = {:?}, format = {:?}}}" , hdc , lpch_text , cch_text , lprc , format ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.DrawTextA(hdc, lpch_text, cch_text, lprc, format);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_DrawTextExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "DrawTextExA");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let lpch_text = call.get_arg();
+            let cch_text = call.get_arg();
+            let lprc = call.get_arg();
+            let format = call.get_arg();
+            let lpdtp = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, lpch_text = {:?}, cch_text = {:?}, lprc = {:?}, format = {:?}, lpdtp = {:?}}}" , hdc , lpch_text , cch_text , lprc , format , lpdtp ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.DrawTextExA(hdc, lpch_text, cch_text, lprc, format, lpdtp);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_DrawTextExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "DrawTextExW");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let lpch_text = call.get_arg();
+            let cch_text = call.get_arg();
+            let lprc = call.get_arg();
+            let format = call.get_arg();
+            let lpdtp = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, lpch_text = {:?}, cch_text = {:?}, lprc = {:?}, format = {:?}, lpdtp = {:?}}}" , hdc , lpch_text , cch_text , lprc , format , lpdtp ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.DrawTextExW(hdc, lpch_text, cch_text, lprc, format, lpdtp);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_DrawTextW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "DrawTextW");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let lpch_text = call.get_arg();
+            let cch_text = call.get_arg();
+            let lprc = call.get_arg();
+            let format = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, lpch_text = {:?}, cch_text = {:?}, lprc = {:?}, format = {:?}}}" , hdc , lpch_text , cch_text , lprc , format ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.DrawTextW(hdc, lpch_text, cch_text, lprc, format);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_Ellipse(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "Ellipse");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let left = call.get_arg();
+            let top = call.get_arg();
+            let right = call.get_arg();
+            let bottom = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, left = {:?}, top = {:?}, right = {:?}, bottom = {:?}}}" , hdc , left , top , right , bottom ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.Ellipse(hdc, left, top, right, bottom);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_EndPaint(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "EndPaint");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let h_wnd = call.get_arg();
+            let lp_paint = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{h_wnd = {:?}, lp_paint = {:?}}}",
+                            h_wnd, lp_paint
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.EndPaint(h_wnd, lp_paint);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_EndPath(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "EndPath");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}}}" , hdc ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.EndPath(hdc);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_EnumDisplayDevicesA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "EnumDisplayDevicesA",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let lp_device = call.get_arg();
+            let i_dev_num = call.get_arg();
+            let lp_display_device = call.get_arg();
+            let dw_flags = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{lp_device = {:?}, i_dev_num = {:?}, lp_display_device = {:?}, dw_flags = {:?}}}" , lp_device , i_dev_num , lp_display_device , dw_flags ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.EnumDisplayDevicesA(lp_device, i_dev_num, lp_display_device, dw_flags);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_EnumDisplayDevicesW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "EnumDisplayDevicesW",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let lp_device = call.get_arg();
+            let i_dev_num = call.get_arg();
+            let lp_display_device = call.get_arg();
+            let dw_flags = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{lp_device = {:?}, i_dev_num = {:?}, lp_display_device = {:?}, dw_flags = {:?}}}" , lp_device , i_dev_num , lp_display_device , dw_flags ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.EnumDisplayDevicesW(lp_device, i_dev_num, lp_display_device, dw_flags);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_EnumDisplayMonitors(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "EnumDisplayMonitors",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let lprc_clip = call.get_arg();
+            let lpfn_enum = call.get_arg();
+            let dw_data = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, lprc_clip = {:?}, lpfn_enum = {:?}, dw_data = {:?}}}" , hdc , lprc_clip , lpfn_enum , dw_data ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.EnumDisplayMonitors(hdc, lprc_clip, lpfn_enum, dw_data);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_EnumDisplaySettingsA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "EnumDisplaySettingsA",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let lpsz_device_name = call.get_arg();
+            let i_mode_num = call.get_arg();
+            let lp_dev_mode = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{lpsz_device_name = {:?}, i_mode_num = {:?}, lp_dev_mode = {:?}}}" , lpsz_device_name , i_mode_num , lp_dev_mode ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.EnumDisplaySettingsA(lpsz_device_name, i_mode_num, lp_dev_mode);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_EnumDisplaySettingsExA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "EnumDisplaySettingsExA",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let lpsz_device_name = call.get_arg();
+            let i_mode_num = call.get_arg();
+            let lp_dev_mode = call.get_arg();
+            let dw_flags = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{lpsz_device_name = {:?}, i_mode_num = {:?}, lp_dev_mode = {:?}, dw_flags = {:?}}}" , lpsz_device_name , i_mode_num , lp_dev_mode , dw_flags ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res =
+                api.EnumDisplaySettingsExA(lpsz_device_name, i_mode_num, lp_dev_mode, dw_flags);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_EnumDisplaySettingsExW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "EnumDisplaySettingsExW",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let lpsz_device_name = call.get_arg();
+            let i_mode_num = call.get_arg();
+            let lp_dev_mode = call.get_arg();
+            let dw_flags = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{lpsz_device_name = {:?}, i_mode_num = {:?}, lp_dev_mode = {:?}, dw_flags = {:?}}}" , lpsz_device_name , i_mode_num , lp_dev_mode , dw_flags ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res =
+                api.EnumDisplaySettingsExW(lpsz_device_name, i_mode_num, lp_dev_mode, dw_flags);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_EnumDisplaySettingsW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "EnumDisplaySettingsW",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let lpsz_device_name = call.get_arg();
+            let i_mode_num = call.get_arg();
+            let lp_dev_mode = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{lpsz_device_name = {:?}, i_mode_num = {:?}, lp_dev_mode = {:?}}}" , lpsz_device_name , i_mode_num , lp_dev_mode ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.EnumDisplaySettingsW(lpsz_device_name, i_mode_num, lp_dev_mode);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_EnumEnhMetaFile(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "EnumEnhMetaFile",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let hmf = call.get_arg();
+            let proc = call.get_arg();
+            let param_3 = call.get_arg();
+            let lp_rect = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, hmf = {:?}, proc = {:?}, param_3 = {:?}, lp_rect = {:?}}}" , hdc , hmf , proc , param_3 , lp_rect ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.EnumEnhMetaFile(hdc, hmf, proc, param_3, lp_rect);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_EnumFontFamiliesA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "EnumFontFamiliesA",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let lp_logfont = call.get_arg();
+            let lp_proc = call.get_arg();
+            let l_param = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, lp_logfont = {:?}, lp_proc = {:?}, l_param = {:?}}}" , hdc , lp_logfont , lp_proc , l_param ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.EnumFontFamiliesA(hdc, lp_logfont, lp_proc, l_param);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_EnumFontFamiliesExA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "EnumFontFamiliesExA",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let lp_logfont = call.get_arg();
+            let lp_proc = call.get_arg();
+            let l_param = call.get_arg();
+            let dw_flags = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, lp_logfont = {:?}, lp_proc = {:?}, l_param = {:?}, dw_flags = {:?}}}" , hdc , lp_logfont , lp_proc , l_param , dw_flags ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.EnumFontFamiliesExA(hdc, lp_logfont, lp_proc, l_param, dw_flags);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_EnumFontFamiliesExW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "EnumFontFamiliesExW",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let lp_logfont = call.get_arg();
+            let lp_proc = call.get_arg();
+            let l_param = call.get_arg();
+            let dw_flags = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, lp_logfont = {:?}, lp_proc = {:?}, l_param = {:?}, dw_flags = {:?}}}" , hdc , lp_logfont , lp_proc , l_param , dw_flags ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.EnumFontFamiliesExW(hdc, lp_logfont, lp_proc, l_param, dw_flags);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_EnumFontFamiliesW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "EnumFontFamiliesW",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let lp_logfont = call.get_arg();
+            let lp_proc = call.get_arg();
+            let l_param = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, lp_logfont = {:?}, lp_proc = {:?}, l_param = {:?}}}" , hdc , lp_logfont , lp_proc , l_param ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.EnumFontFamiliesW(hdc, lp_logfont, lp_proc, l_param);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_EnumFontsA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "EnumFontsA");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let lp_logfont = call.get_arg();
+            let lp_proc = call.get_arg();
+            let l_param = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, lp_logfont = {:?}, lp_proc = {:?}, l_param = {:?}}}" , hdc , lp_logfont , lp_proc , l_param ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.EnumFontsA(hdc, lp_logfont, lp_proc, l_param);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_EnumFontsW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "EnumFontsW");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let lp_logfont = call.get_arg();
+            let lp_proc = call.get_arg();
+            let l_param = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, lp_logfont = {:?}, lp_proc = {:?}, l_param = {:?}}}" , hdc , lp_logfont , lp_proc , l_param ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.EnumFontsW(hdc, lp_logfont, lp_proc, l_param);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_EnumMetaFile(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "EnumMetaFile",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let hmf = call.get_arg();
+            let proc = call.get_arg();
+            let param_3 = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, hmf = {:?}, proc = {:?}, param_3 = {:?}}}",
+                            hdc, hmf, proc, param_3
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.EnumMetaFile(hdc, hmf, proc, param_3);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_EnumObjects(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "EnumObjects");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let n_type = call.get_arg();
+            let lp_func = call.get_arg();
+            let l_param = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, n_type = {:?}, lp_func = {:?}, l_param = {:?}}}" , hdc , n_type , lp_func , l_param ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.EnumObjects(hdc, n_type, lp_func, l_param);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_EqualRect(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "EqualRect");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let lprc_1 = call.get_arg();
+            let lprc_2 = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{lprc_1 = {:?}, lprc_2 = {:?}}}",
+                            lprc_1, lprc_2
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.EqualRect(lprc_1, lprc_2);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_EqualRgn(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "EqualRgn");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hrgn_1 = call.get_arg();
+            let hrgn_2 = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hrgn_1 = {:?}, hrgn_2 = {:?}}}",
+                            hrgn_1, hrgn_2
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.EqualRgn(hrgn_1, hrgn_2);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_ExcludeClipRect(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "ExcludeClipRect",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let left = call.get_arg();
+            let top = call.get_arg();
+            let right = call.get_arg();
+            let bottom = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, left = {:?}, top = {:?}, right = {:?}, bottom = {:?}}}" , hdc , left , top , right , bottom ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.ExcludeClipRect(hdc, left, top, right, bottom);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_ExcludeUpdateRgn(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "ExcludeUpdateRgn",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let h_dc = call.get_arg();
+            let h_wnd = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(
+                            &format_args!("    args = {{h_dc = {:?}, h_wnd = {:?}}}", h_dc, h_wnd)
+                                as &dyn tracing::Value,
+                        ),
+                    )]),
+                );
+            }
+            let res = api.ExcludeUpdateRgn(h_dc, h_wnd);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_ExtCreatePen(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "ExtCreatePen",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let i_pen_style = call.get_arg();
+            let c_width = call.get_arg();
+            let plbrush = call.get_arg();
+            let c_style = call.get_arg();
+            let pstyle = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{i_pen_style = {:?}, c_width = {:?}, plbrush = {:?}, c_style = {:?}, pstyle = {:?}}}" , i_pen_style , c_width , plbrush , c_style , pstyle ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.ExtCreatePen(i_pen_style, c_width, plbrush, c_style, pstyle);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_ExtFloodFill(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "ExtFloodFill",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let x = call.get_arg();
+            let y = call.get_arg();
+            let color = call.get_arg();
+            let r#type = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, x = {:?}, y = {:?}, color = {:?}, r#type = {:?}}}" , hdc , x , y , color , r#type ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.ExtFloodFill(hdc, x, y, color, r#type);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_ExtSelectClipRgn(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "ExtSelectClipRgn",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let hrgn = call.get_arg();
+            let mode = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, hrgn = {:?}, mode = {:?}}}",
+                            hdc, hrgn, mode
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.ExtSelectClipRgn(hdc, hrgn, mode);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_ExtTextOutA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "ExtTextOutA");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let x = call.get_arg();
+            let y = call.get_arg();
+            let options = call.get_arg();
+            let lprect = call.get_arg();
+            let lp_string = call.get_arg();
+            let c = call.get_arg();
+            let lp_dx = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, x = {:?}, y = {:?}, options = {:?}, lprect = {:?}, lp_string = {:?}, c = {:?}, lp_dx = {:?}}}" , hdc , x , y , options , lprect , lp_string , c , lp_dx ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.ExtTextOutA(hdc, x, y, options, lprect, lp_string, c, lp_dx);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_ExtTextOutW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "ExtTextOutW");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let x = call.get_arg();
+            let y = call.get_arg();
+            let options = call.get_arg();
+            let lprect = call.get_arg();
+            let lp_string = call.get_arg();
+            let c = call.get_arg();
+            let lp_dx = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, x = {:?}, y = {:?}, options = {:?}, lprect = {:?}, lp_string = {:?}, c = {:?}, lp_dx = {:?}}}" , hdc , x , y , options , lprect , lp_string , c , lp_dx ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.ExtTextOutW(hdc, x, y, options, lprect, lp_string, c, lp_dx);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_FillPath(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "FillPath");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}}}" , hdc ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.FillPath(hdc);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_FillRect(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "FillRect");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let h_dc = call.get_arg();
+            let lprc = call.get_arg();
+            let hbr = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{h_dc = {:?}, lprc = {:?}, hbr = {:?}}}",
+                            h_dc, lprc, hbr
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.FillRect(h_dc, lprc, hbr);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_FillRgn(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "FillRgn");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let hrgn = call.get_arg();
+            let hbr = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, hrgn = {:?}, hbr = {:?}}}",
+                            hdc, hrgn, hbr
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.FillRgn(hdc, hrgn, hbr);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_FixBrushOrgEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "FixBrushOrgEx",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let x = call.get_arg();
+            let y = call.get_arg();
+            let ptl = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, x = {:?}, y = {:?}, ptl = {:?}}}",
+                            hdc, x, y, ptl
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.FixBrushOrgEx(hdc, x, y, ptl);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_FlattenPath(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "FlattenPath");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}}}" , hdc ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.FlattenPath(hdc);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_FloodFill(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "FloodFill");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let x = call.get_arg();
+            let y = call.get_arg();
+            let color = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, x = {:?}, y = {:?}, color = {:?}}}",
+                            hdc, x, y, color
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.FloodFill(hdc, x, y, color);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_FrameRect(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "FrameRect");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let h_dc = call.get_arg();
+            let lprc = call.get_arg();
+            let hbr = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{h_dc = {:?}, lprc = {:?}, hbr = {:?}}}",
+                            h_dc, lprc, hbr
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.FrameRect(h_dc, lprc, hbr);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_FrameRgn(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "FrameRgn");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let hrgn = call.get_arg();
+            let hbr = call.get_arg();
+            let w = call.get_arg();
+            let h = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, hrgn = {:?}, hbr = {:?}, w = {:?}, h = {:?}}}" , hdc , hrgn , hbr , w , h ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.FrameRgn(hdc, hrgn, hbr, w, h);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GdiAlphaBlend(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GdiAlphaBlend",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc_dest = call.get_arg();
+            let xorigin_dest = call.get_arg();
+            let yorigin_dest = call.get_arg();
+            let w_dest = call.get_arg();
+            let h_dest = call.get_arg();
+            let hdc_src = call.get_arg();
+            let xorigin_src = call.get_arg();
+            let yorigin_src = call.get_arg();
+            let w_src = call.get_arg();
+            let h_src = call.get_arg();
+            let ftn = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc_dest = {:?}, xorigin_dest = {:?}, yorigin_dest = {:?}, w_dest = {:?}, h_dest = {:?}, hdc_src = {:?}, xorigin_src = {:?}, yorigin_src = {:?}, w_src = {:?}, h_src = {:?}, ftn = {:?}}}" , hdc_dest , xorigin_dest , yorigin_dest , w_dest , h_dest , hdc_src , xorigin_src , yorigin_src , w_src , h_src , ftn ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.GdiAlphaBlend(
+                hdc_dest,
+                xorigin_dest,
+                yorigin_dest,
+                w_dest,
+                h_dest,
+                hdc_src,
+                xorigin_src,
+                yorigin_src,
+                w_src,
+                h_src,
+                ftn,
+            );
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GdiComment(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GdiComment");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let n_size = call.get_arg();
+            let lp_data = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, n_size = {:?}, lp_data = {:?}}}",
+                            hdc, n_size, lp_data
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.GdiComment(hdc, n_size, lp_data);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GdiFlush(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GdiFlush");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("    args = {{}}",) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.GdiFlush();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GdiGetBatchLimit(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GdiGetBatchLimit",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("    args = {{}}",) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.GdiGetBatchLimit();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GdiGradientFill(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GdiGradientFill",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let p_vertex = call.get_arg();
+            let n_vertex = call.get_arg();
+            let p_mesh = call.get_arg();
+            let n_count = call.get_arg();
+            let ul_mode = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, p_vertex = {:?}, n_vertex = {:?}, p_mesh = {:?}, n_count = {:?}, ul_mode = {:?}}}" , hdc , p_vertex , n_vertex , p_mesh , n_count , ul_mode ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.GdiGradientFill(hdc, p_vertex, n_vertex, p_mesh, n_count, ul_mode);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GdiSetBatchLimit(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GdiSetBatchLimit",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let dw = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("    args = {{dw = {:?}}}", dw) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.GdiSetBatchLimit(dw);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GdiTransparentBlt(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GdiTransparentBlt",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc_dest = call.get_arg();
+            let xorigin_dest = call.get_arg();
+            let yorigin_dest = call.get_arg();
+            let w_dest = call.get_arg();
+            let h_dest = call.get_arg();
+            let hdc_src = call.get_arg();
+            let xorigin_src = call.get_arg();
+            let yorigin_src = call.get_arg();
+            let w_src = call.get_arg();
+            let h_src = call.get_arg();
+            let cr_transparent = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc_dest = {:?}, xorigin_dest = {:?}, yorigin_dest = {:?}, w_dest = {:?}, h_dest = {:?}, hdc_src = {:?}, xorigin_src = {:?}, yorigin_src = {:?}, w_src = {:?}, h_src = {:?}, cr_transparent = {:?}}}" , hdc_dest , xorigin_dest , yorigin_dest , w_dest , h_dest , hdc_src , xorigin_src , yorigin_src , w_src , h_src , cr_transparent ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.GdiTransparentBlt(
+                hdc_dest,
+                xorigin_dest,
+                yorigin_dest,
+                w_dest,
+                h_dest,
+                hdc_src,
+                xorigin_src,
+                yorigin_src,
+                w_src,
+                h_src,
+                cr_transparent,
+            );
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetArcDirection(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetArcDirection",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}}}" , hdc ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.GetArcDirection(hdc);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetAspectRatioFilterEx(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetAspectRatioFilterEx",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let lpsize = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(
+                            &format_args!("    args = {{hdc = {:?}, lpsize = {:?}}}", hdc, lpsize)
+                                as &dyn tracing::Value,
+                        ),
+                    )]),
+                );
+            }
+            let res = api.GetAspectRatioFilterEx(hdc, lpsize);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetBitmapBits(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetBitmapBits",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hbit = call.get_arg();
+            let cb = call.get_arg();
+            let lpv_bits = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hbit = {:?}, cb = {:?}, lpv_bits = {:?}}}",
+                            hbit, cb, lpv_bits
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.GetBitmapBits(hbit, cb, lpv_bits);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetBitmapDimensionEx(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetBitmapDimensionEx",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hbit = call.get_arg();
+            let lpsize = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hbit = {:?}, lpsize = {:?}}}",
+                            hbit, lpsize
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.GetBitmapDimensionEx(hbit, lpsize);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetBkColor(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetBkColor");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}}}" , hdc ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.GetBkColor(hdc);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetBkMode(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetBkMode");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}}}" , hdc ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.GetBkMode(hdc);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetBoundsRect(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetBoundsRect",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let lprect = call.get_arg();
+            let flags = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, lprect = {:?}, flags = {:?}}}",
+                            hdc, lprect, flags
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.GetBoundsRect(hdc, lprect, flags);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetBrushOrgEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetBrushOrgEx",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let lppt = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(
+                            &format_args!("    args = {{hdc = {:?}, lppt = {:?}}}", hdc, lppt)
+                                as &dyn tracing::Value,
+                        ),
+                    )]),
+                );
+            }
+            let res = api.GetBrushOrgEx(hdc, lppt);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetCharABCWidthsA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetCharABCWidthsA",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let w_first = call.get_arg();
+            let w_last = call.get_arg();
+            let lp_abc = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, w_first = {:?}, w_last = {:?}, lp_abc = {:?}}}" , hdc , w_first , w_last , lp_abc ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.GetCharABCWidthsA(hdc, w_first, w_last, lp_abc);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetCharABCWidthsI(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetCharABCWidthsI",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let gi_first = call.get_arg();
+            let cgi = call.get_arg();
+            let pgi = call.get_arg();
+            let pabc = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, gi_first = {:?}, cgi = {:?}, pgi = {:?}, pabc = {:?}}}" , hdc , gi_first , cgi , pgi , pabc ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.GetCharABCWidthsI(hdc, gi_first, cgi, pgi, pabc);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetCharABCWidthsW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetCharABCWidthsW",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let w_first = call.get_arg();
+            let w_last = call.get_arg();
+            let lp_abc = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, w_first = {:?}, w_last = {:?}, lp_abc = {:?}}}" , hdc , w_first , w_last , lp_abc ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.GetCharABCWidthsW(hdc, w_first, w_last, lp_abc);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetCharWidth32A(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetCharWidth32A",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let i_first = call.get_arg();
+            let i_last = call.get_arg();
+            let lp_buffer = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, i_first = {:?}, i_last = {:?}, lp_buffer = {:?}}}" , hdc , i_first , i_last , lp_buffer ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.GetCharWidth32A(hdc, i_first, i_last, lp_buffer);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetCharWidth32W(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetCharWidth32W",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let i_first = call.get_arg();
+            let i_last = call.get_arg();
+            let lp_buffer = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, i_first = {:?}, i_last = {:?}, lp_buffer = {:?}}}" , hdc , i_first , i_last , lp_buffer ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.GetCharWidth32W(hdc, i_first, i_last, lp_buffer);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetCharWidthA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetCharWidthA",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let i_first = call.get_arg();
+            let i_last = call.get_arg();
+            let lp_buffer = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, i_first = {:?}, i_last = {:?}, lp_buffer = {:?}}}" , hdc , i_first , i_last , lp_buffer ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.GetCharWidthA(hdc, i_first, i_last, lp_buffer);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetCharWidthFloatA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetCharWidthFloatA",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let i_first = call.get_arg();
+            let i_last = call.get_arg();
+            let lp_buffer = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, i_first = {:?}, i_last = {:?}, lp_buffer = {:?}}}" , hdc , i_first , i_last , lp_buffer ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.GetCharWidthFloatA(hdc, i_first, i_last, lp_buffer);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetCharWidthFloatW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetCharWidthFloatW",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let i_first = call.get_arg();
+            let i_last = call.get_arg();
+            let lp_buffer = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, i_first = {:?}, i_last = {:?}, lp_buffer = {:?}}}" , hdc , i_first , i_last , lp_buffer ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.GetCharWidthFloatW(hdc, i_first, i_last, lp_buffer);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetCharWidthI(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetCharWidthI",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let gi_first = call.get_arg();
+            let cgi = call.get_arg();
+            let pgi = call.get_arg();
+            let pi_widths = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, gi_first = {:?}, cgi = {:?}, pgi = {:?}, pi_widths = {:?}}}" , hdc , gi_first , cgi , pgi , pi_widths ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.GetCharWidthI(hdc, gi_first, cgi, pgi, pi_widths);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetCharWidthW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetCharWidthW",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let i_first = call.get_arg();
+            let i_last = call.get_arg();
+            let lp_buffer = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, i_first = {:?}, i_last = {:?}, lp_buffer = {:?}}}" , hdc , i_first , i_last , lp_buffer ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.GetCharWidthW(hdc, i_first, i_last, lp_buffer);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetCharacterPlacementA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetCharacterPlacementA",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let lp_string = call.get_arg();
+            let n_count = call.get_arg();
+            let n_mex_extent = call.get_arg();
+            let lp_results = call.get_arg();
+            let dw_flags = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, lp_string = {:?}, n_count = {:?}, n_mex_extent = {:?}, lp_results = {:?}, dw_flags = {:?}}}" , hdc , lp_string , n_count , n_mex_extent , lp_results , dw_flags ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.GetCharacterPlacementA(
+                hdc,
+                lp_string,
+                n_count,
+                n_mex_extent,
+                lp_results,
+                dw_flags,
+            );
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetCharacterPlacementW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetCharacterPlacementW",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let lp_string = call.get_arg();
+            let n_count = call.get_arg();
+            let n_mex_extent = call.get_arg();
+            let lp_results = call.get_arg();
+            let dw_flags = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, lp_string = {:?}, n_count = {:?}, n_mex_extent = {:?}, lp_results = {:?}, dw_flags = {:?}}}" , hdc , lp_string , n_count , n_mex_extent , lp_results , dw_flags ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.GetCharacterPlacementW(
+                hdc,
+                lp_string,
+                n_count,
+                n_mex_extent,
+                lp_results,
+                dw_flags,
+            );
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetClipBox(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetClipBox");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let lprect = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(
+                            &format_args!("    args = {{hdc = {:?}, lprect = {:?}}}", hdc, lprect)
+                                as &dyn tracing::Value,
+                        ),
+                    )]),
+                );
+            }
+            let res = api.GetClipBox(hdc, lprect);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetClipRgn(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetClipRgn");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let hrgn = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(
+                            &format_args!("    args = {{hdc = {:?}, hrgn = {:?}}}", hdc, hrgn)
+                                as &dyn tracing::Value,
+                        ),
+                    )]),
+                );
+            }
+            let res = api.GetClipRgn(hdc, hrgn);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetColorAdjustment(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetColorAdjustment",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let lpca = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(
+                            &format_args!("    args = {{hdc = {:?}, lpca = {:?}}}", hdc, lpca)
+                                as &dyn tracing::Value,
+                        ),
+                    )]),
+                );
+            }
+            let res = api.GetColorAdjustment(hdc, lpca);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetCurrentObject(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetCurrentObject",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let r#type = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(
+                            &format_args!("    args = {{hdc = {:?}, r#type = {:?}}}", hdc, r#type)
+                                as &dyn tracing::Value,
+                        ),
+                    )]),
+                );
+            }
+            let res = api.GetCurrentObject(hdc, r#type);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetCurrentPositionEx(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetCurrentPositionEx",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let lppt = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(
+                            &format_args!("    args = {{hdc = {:?}, lppt = {:?}}}", hdc, lppt)
+                                as &dyn tracing::Value,
+                        ),
+                    )]),
+                );
+            }
+            let res = api.GetCurrentPositionEx(hdc, lppt);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetDC(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetDC");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let h_wnd = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("    args = {{h_wnd = {:?}}}", h_wnd)
+                            as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.GetDC(h_wnd);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetDCBrushColor(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetDCBrushColor",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}}}" , hdc ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.GetDCBrushColor(hdc);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetDCEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetDCEx");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let h_wnd = call.get_arg();
+            let hrgn_clip = call.get_arg();
+            let flags = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{h_wnd = {:?}, hrgn_clip = {:?}, flags = {:?}}}",
+                            h_wnd, hrgn_clip, flags
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.GetDCEx(h_wnd, hrgn_clip, flags);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetDCOrgEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetDCOrgEx");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let lppt = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(
+                            &format_args!("    args = {{hdc = {:?}, lppt = {:?}}}", hdc, lppt)
+                                as &dyn tracing::Value,
+                        ),
+                    )]),
+                );
+            }
+            let res = api.GetDCOrgEx(hdc, lppt);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetDCPenColor(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetDCPenColor",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}}}" , hdc ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.GetDCPenColor(hdc);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetDIBColorTable(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetDIBColorTable",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let i_start = call.get_arg();
+            let c_entries = call.get_arg();
+            let prgbq = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, i_start = {:?}, c_entries = {:?}, prgbq = {:?}}}" , hdc , i_start , c_entries , prgbq ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.GetDIBColorTable(hdc, i_start, c_entries, prgbq);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetDIBits(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetDIBits");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let hbm = call.get_arg();
+            let start = call.get_arg();
+            let c_lines = call.get_arg();
+            let lpv_bits = call.get_arg();
+            let lpbmi = call.get_arg();
+            let usage = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, hbm = {:?}, start = {:?}, c_lines = {:?}, lpv_bits = {:?}, lpbmi = {:?}, usage = {:?}}}" , hdc , hbm , start , c_lines , lpv_bits , lpbmi , usage ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.GetDIBits(hdc, hbm, start, c_lines, lpv_bits, lpbmi, usage);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetDeviceCaps(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetDeviceCaps",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let index = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(
+                            &format_args!("    args = {{hdc = {:?}, index = {:?}}}", hdc, index)
+                                as &dyn tracing::Value,
+                        ),
+                    )]),
+                );
+            }
+            let res = api.GetDeviceCaps(hdc, index);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetEnhMetaFileA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetEnhMetaFileA",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let lp_name = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("    args = {{lp_name = {:?}}}", lp_name)
+                            as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.GetEnhMetaFileA(lp_name);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetEnhMetaFileBits(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetEnhMetaFileBits",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let h_emf = call.get_arg();
+            let n_size = call.get_arg();
+            let lp_data = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{h_emf = {:?}, n_size = {:?}, lp_data = {:?}}}",
+                            h_emf, n_size, lp_data
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.GetEnhMetaFileBits(h_emf, n_size, lp_data);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetEnhMetaFileDescriptionA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetEnhMetaFileDescriptionA",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hemf = call.get_arg();
+            let cch_buffer = call.get_arg();
+            let lp_description = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hemf = {:?}, cch_buffer = {:?}, lp_description = {:?}}}",
+                            hemf, cch_buffer, lp_description
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.GetEnhMetaFileDescriptionA(hemf, cch_buffer, lp_description);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetEnhMetaFileDescriptionW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetEnhMetaFileDescriptionW",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hemf = call.get_arg();
+            let cch_buffer = call.get_arg();
+            let lp_description = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hemf = {:?}, cch_buffer = {:?}, lp_description = {:?}}}",
+                            hemf, cch_buffer, lp_description
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.GetEnhMetaFileDescriptionW(hemf, cch_buffer, lp_description);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetEnhMetaFileHeader(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetEnhMetaFileHeader",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hemf = call.get_arg();
+            let n_size = call.get_arg();
+            let lp_enh_meta_header = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hemf = {:?}, n_size = {:?}, lp_enh_meta_header = {:?}}}",
+                            hemf, n_size, lp_enh_meta_header
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.GetEnhMetaFileHeader(hemf, n_size, lp_enh_meta_header);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetEnhMetaFilePaletteEntries(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetEnhMetaFilePaletteEntries",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hemf = call.get_arg();
+            let n_num_entries = call.get_arg();
+            let lp_palette_entries = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hemf = {:?}, n_num_entries = {:?}, lp_palette_entries = {:?}}}" , hemf , n_num_entries , lp_palette_entries ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.GetEnhMetaFilePaletteEntries(hemf, n_num_entries, lp_palette_entries);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetEnhMetaFileW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetEnhMetaFileW",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let lp_name = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("    args = {{lp_name = {:?}}}", lp_name)
+                            as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.GetEnhMetaFileW(lp_name);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetFontData(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetFontData");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let dw_table = call.get_arg();
+            let dw_offset = call.get_arg();
+            let pv_buffer = call.get_arg();
+            let cj_buffer = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, dw_table = {:?}, dw_offset = {:?}, pv_buffer = {:?}, cj_buffer = {:?}}}" , hdc , dw_table , dw_offset , pv_buffer , cj_buffer ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.GetFontData(hdc, dw_table, dw_offset, pv_buffer, cj_buffer);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetFontLanguageInfo(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetFontLanguageInfo",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}}}" , hdc ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.GetFontLanguageInfo(hdc);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetFontUnicodeRanges(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetFontUnicodeRanges",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let lpgs = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(
+                            &format_args!("    args = {{hdc = {:?}, lpgs = {:?}}}", hdc, lpgs)
+                                as &dyn tracing::Value,
+                        ),
+                    )]),
+                );
+            }
+            let res = api.GetFontUnicodeRanges(hdc, lpgs);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetGlyphIndicesA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetGlyphIndicesA",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let lpstr = call.get_arg();
+            let c = call.get_arg();
+            let pgi = call.get_arg();
+            let fl = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, lpstr = {:?}, c = {:?}, pgi = {:?}, fl = {:?}}}" , hdc , lpstr , c , pgi , fl ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.GetGlyphIndicesA(hdc, lpstr, c, pgi, fl);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetGlyphIndicesW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetGlyphIndicesW",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let lpstr = call.get_arg();
+            let c = call.get_arg();
+            let pgi = call.get_arg();
+            let fl = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, lpstr = {:?}, c = {:?}, pgi = {:?}, fl = {:?}}}" , hdc , lpstr , c , pgi , fl ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.GetGlyphIndicesW(hdc, lpstr, c, pgi, fl);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetGlyphOutlineA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetGlyphOutlineA",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let u_char = call.get_arg();
+            let fu_format = call.get_arg();
+            let lpgm = call.get_arg();
+            let cj_buffer = call.get_arg();
+            let pv_buffer = call.get_arg();
+            let lpmat_2 = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, u_char = {:?}, fu_format = {:?}, lpgm = {:?}, cj_buffer = {:?}, pv_buffer = {:?}, lpmat_2 = {:?}}}" , hdc , u_char , fu_format , lpgm , cj_buffer , pv_buffer , lpmat_2 ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res =
+                api.GetGlyphOutlineA(hdc, u_char, fu_format, lpgm, cj_buffer, pv_buffer, lpmat_2);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetGlyphOutlineW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetGlyphOutlineW",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let u_char = call.get_arg();
+            let fu_format = call.get_arg();
+            let lpgm = call.get_arg();
+            let cj_buffer = call.get_arg();
+            let pv_buffer = call.get_arg();
+            let lpmat_2 = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, u_char = {:?}, fu_format = {:?}, lpgm = {:?}, cj_buffer = {:?}, pv_buffer = {:?}, lpmat_2 = {:?}}}" , hdc , u_char , fu_format , lpgm , cj_buffer , pv_buffer , lpmat_2 ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res =
+                api.GetGlyphOutlineW(hdc, u_char, fu_format, lpgm, cj_buffer, pv_buffer, lpmat_2);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetGraphicsMode(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetGraphicsMode",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}}}" , hdc ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.GetGraphicsMode(hdc);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetKerningPairsA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetKerningPairsA",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let n_pairs = call.get_arg();
+            let lp_kern_pair = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, n_pairs = {:?}, lp_kern_pair = {:?}}}",
+                            hdc, n_pairs, lp_kern_pair
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.GetKerningPairsA(hdc, n_pairs, lp_kern_pair);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetKerningPairsW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetKerningPairsW",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let n_pairs = call.get_arg();
+            let lp_kern_pair = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, n_pairs = {:?}, lp_kern_pair = {:?}}}",
+                            hdc, n_pairs, lp_kern_pair
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.GetKerningPairsW(hdc, n_pairs, lp_kern_pair);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetLayout(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetLayout");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}}}" , hdc ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.GetLayout(hdc);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetMapMode(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetMapMode");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}}}" , hdc ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.GetMapMode(hdc);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetMetaFileA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetMetaFileA",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let lp_name = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("    args = {{lp_name = {:?}}}", lp_name)
+                            as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.GetMetaFileA(lp_name);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetMetaFileBitsEx(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetMetaFileBitsEx",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let h_mf = call.get_arg();
+            let cb_buffer = call.get_arg();
+            let lp_data = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{h_mf = {:?}, cb_buffer = {:?}, lp_data = {:?}}}",
+                            h_mf, cb_buffer, lp_data
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.GetMetaFileBitsEx(h_mf, cb_buffer, lp_data);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetMetaFileW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetMetaFileW",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let lp_name = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("    args = {{lp_name = {:?}}}", lp_name)
+                            as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.GetMetaFileW(lp_name);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetMetaRgn(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetMetaRgn");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let hrgn = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(
+                            &format_args!("    args = {{hdc = {:?}, hrgn = {:?}}}", hdc, hrgn)
+                                as &dyn tracing::Value,
+                        ),
+                    )]),
+                );
+            }
+            let res = api.GetMetaRgn(hdc, hrgn);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetMiterLimit(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetMiterLimit",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let plimit = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(
+                            &format_args!("    args = {{hdc = {:?}, plimit = {:?}}}", hdc, plimit)
+                                as &dyn tracing::Value,
+                        ),
+                    )]),
+                );
+            }
+            let res = api.GetMiterLimit(hdc, plimit);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetMonitorInfoA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetMonitorInfoA",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let h_monitor = call.get_arg();
+            let lpmi = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{h_monitor = {:?}, lpmi = {:?}}}",
+                            h_monitor, lpmi
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.GetMonitorInfoA(h_monitor, lpmi);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetMonitorInfoW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetMonitorInfoW",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let h_monitor = call.get_arg();
+            let lpmi = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{h_monitor = {:?}, lpmi = {:?}}}",
+                            h_monitor, lpmi
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.GetMonitorInfoW(h_monitor, lpmi);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetNearestColor(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetNearestColor",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let color = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(
+                            &format_args!("    args = {{hdc = {:?}, color = {:?}}}", hdc, color)
+                                as &dyn tracing::Value,
+                        ),
+                    )]),
+                );
+            }
+            let res = api.GetNearestColor(hdc, color);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetNearestPaletteIndex(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetNearestPaletteIndex",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let h = call.get_arg();
+            let color = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(
+                            &format_args!("    args = {{h = {:?}, color = {:?}}}", h, color)
+                                as &dyn tracing::Value,
+                        ),
+                    )]),
+                );
+            }
+            let res = api.GetNearestPaletteIndex(h, color);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetObjectA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetObjectA");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let h = call.get_arg();
+            let c = call.get_arg();
+            let pv = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(
+                            &format_args!("    args = {{h = {:?}, c = {:?}, pv = {:?}}}", h, c, pv)
+                                as &dyn tracing::Value,
+                        ),
+                    )]),
+                );
+            }
+            let res = api.GetObjectA(h, c, pv);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetObjectType(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetObjectType",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let h = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("    args = {{h = {:?}}}", h) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.GetObjectType(h);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetObjectW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetObjectW");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let h = call.get_arg();
+            let c = call.get_arg();
+            let pv = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(
+                            &format_args!("    args = {{h = {:?}, c = {:?}, pv = {:?}}}", h, c, pv)
+                                as &dyn tracing::Value,
+                        ),
+                    )]),
+                );
+            }
+            let res = api.GetObjectW(h, c, pv);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetOutlineTextMetricsA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetOutlineTextMetricsA",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let cj_copy = call.get_arg();
+            let potm = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, cj_copy = {:?}, potm = {:?}}}",
+                            hdc, cj_copy, potm
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.GetOutlineTextMetricsA(hdc, cj_copy, potm);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetOutlineTextMetricsW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetOutlineTextMetricsW",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let cj_copy = call.get_arg();
+            let potm = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, cj_copy = {:?}, potm = {:?}}}",
+                            hdc, cj_copy, potm
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.GetOutlineTextMetricsW(hdc, cj_copy, potm);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetPaletteEntries(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetPaletteEntries",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hpal = call.get_arg();
+            let i_start = call.get_arg();
+            let c_entries = call.get_arg();
+            let p_pal_entries = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hpal = {:?}, i_start = {:?}, c_entries = {:?}, p_pal_entries = {:?}}}" , hpal , i_start , c_entries , p_pal_entries ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.GetPaletteEntries(hpal, i_start, c_entries, p_pal_entries);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetPath(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetPath");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let apt = call.get_arg();
+            let aj = call.get_arg();
+            let cpt = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, apt = {:?}, aj = {:?}, cpt = {:?}}}",
+                            hdc, apt, aj, cpt
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.GetPath(hdc, apt, aj, cpt);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetPixel(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetPixel");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let x = call.get_arg();
+            let y = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, x = {:?}, y = {:?}}}",
+                            hdc, x, y
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.GetPixel(hdc, x, y);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetPolyFillMode(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetPolyFillMode",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}}}" , hdc ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.GetPolyFillMode(hdc);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetROP2(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetROP2");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}}}" , hdc ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.GetROP2(hdc);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetRandomRgn(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetRandomRgn",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let hrgn = call.get_arg();
+            let i = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, hrgn = {:?}, i = {:?}}}",
+                            hdc, hrgn, i
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.GetRandomRgn(hdc, hrgn, i);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetRasterizerCaps(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetRasterizerCaps",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let lpraststat = call.get_arg();
+            let cj_bytes = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{lpraststat = {:?}, cj_bytes = {:?}}}",
+                            lpraststat, cj_bytes
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.GetRasterizerCaps(lpraststat, cj_bytes);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetRegionData(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetRegionData",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hrgn = call.get_arg();
+            let n_count = call.get_arg();
+            let lp_rgn_data = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hrgn = {:?}, n_count = {:?}, lp_rgn_data = {:?}}}",
+                            hrgn, n_count, lp_rgn_data
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.GetRegionData(hrgn, n_count, lp_rgn_data);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetRgnBox(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetRgnBox");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hrgn = call.get_arg();
+            let lprc = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(
+                            &format_args!("    args = {{hrgn = {:?}, lprc = {:?}}}", hrgn, lprc)
+                                as &dyn tracing::Value,
+                        ),
+                    )]),
+                );
+            }
+            let res = api.GetRgnBox(hrgn, lprc);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetStockObject(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetStockObject",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let i = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("    args = {{i = {:?}}}", i) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.GetStockObject(i);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetStretchBltMode(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetStretchBltMode",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}}}" , hdc ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.GetStretchBltMode(hdc);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetSysColorBrush(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetSysColorBrush",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let n_index = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("    args = {{n_index = {:?}}}", n_index)
+                            as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.GetSysColorBrush(n_index);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetSystemPaletteEntries(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetSystemPaletteEntries",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let i_start = call.get_arg();
+            let c_entries = call.get_arg();
+            let p_pal_entries = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, i_start = {:?}, c_entries = {:?}, p_pal_entries = {:?}}}" , hdc , i_start , c_entries , p_pal_entries ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.GetSystemPaletteEntries(hdc, i_start, c_entries, p_pal_entries);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetSystemPaletteUse(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetSystemPaletteUse",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}}}" , hdc ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.GetSystemPaletteUse(hdc);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetTabbedTextExtentA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetTabbedTextExtentA",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let lp_string = call.get_arg();
+            let ch_count = call.get_arg();
+            let n_tab_positions = call.get_arg();
+            let lpn_tab_stop_positions = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, lp_string = {:?}, ch_count = {:?}, n_tab_positions = {:?}, lpn_tab_stop_positions = {:?}}}" , hdc , lp_string , ch_count , n_tab_positions , lpn_tab_stop_positions ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.GetTabbedTextExtentA(
+                hdc,
+                lp_string,
+                ch_count,
+                n_tab_positions,
+                lpn_tab_stop_positions,
+            );
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetTabbedTextExtentW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetTabbedTextExtentW",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let lp_string = call.get_arg();
+            let ch_count = call.get_arg();
+            let n_tab_positions = call.get_arg();
+            let lpn_tab_stop_positions = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, lp_string = {:?}, ch_count = {:?}, n_tab_positions = {:?}, lpn_tab_stop_positions = {:?}}}" , hdc , lp_string , ch_count , n_tab_positions , lpn_tab_stop_positions ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.GetTabbedTextExtentW(
+                hdc,
+                lp_string,
+                ch_count,
+                n_tab_positions,
+                lpn_tab_stop_positions,
+            );
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetTextAlign(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetTextAlign",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}}}" , hdc ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.GetTextAlign(hdc);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetTextCharacterExtra(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetTextCharacterExtra",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}}}" , hdc ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.GetTextCharacterExtra(hdc);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetTextColor(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetTextColor",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}}}" , hdc ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.GetTextColor(hdc);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetTextExtentExPointA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetTextExtentExPointA",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let lpsz_string = call.get_arg();
+            let cch_string = call.get_arg();
+            let n_max_extent = call.get_arg();
+            let lpn_fit = call.get_arg();
+            let lpn_dx = call.get_arg();
+            let lp_size = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, lpsz_string = {:?}, cch_string = {:?}, n_max_extent = {:?}, lpn_fit = {:?}, lpn_dx = {:?}, lp_size = {:?}}}" , hdc , lpsz_string , cch_string , n_max_extent , lpn_fit , lpn_dx , lp_size ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.GetTextExtentExPointA(
+                hdc,
+                lpsz_string,
+                cch_string,
+                n_max_extent,
+                lpn_fit,
+                lpn_dx,
+                lp_size,
+            );
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetTextExtentExPointI(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetTextExtentExPointI",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let lpwsz_string = call.get_arg();
+            let cwch_string = call.get_arg();
+            let n_max_extent = call.get_arg();
+            let lpn_fit = call.get_arg();
+            let lpn_dx = call.get_arg();
+            let lp_size = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, lpwsz_string = {:?}, cwch_string = {:?}, n_max_extent = {:?}, lpn_fit = {:?}, lpn_dx = {:?}, lp_size = {:?}}}" , hdc , lpwsz_string , cwch_string , n_max_extent , lpn_fit , lpn_dx , lp_size ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.GetTextExtentExPointI(
+                hdc,
+                lpwsz_string,
+                cwch_string,
+                n_max_extent,
+                lpn_fit,
+                lpn_dx,
+                lp_size,
+            );
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetTextExtentExPointW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetTextExtentExPointW",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let lpsz_string = call.get_arg();
+            let cch_string = call.get_arg();
+            let n_max_extent = call.get_arg();
+            let lpn_fit = call.get_arg();
+            let lpn_dx = call.get_arg();
+            let lp_size = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, lpsz_string = {:?}, cch_string = {:?}, n_max_extent = {:?}, lpn_fit = {:?}, lpn_dx = {:?}, lp_size = {:?}}}" , hdc , lpsz_string , cch_string , n_max_extent , lpn_fit , lpn_dx , lp_size ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.GetTextExtentExPointW(
+                hdc,
+                lpsz_string,
+                cch_string,
+                n_max_extent,
+                lpn_fit,
+                lpn_dx,
+                lp_size,
+            );
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetTextExtentPoint32A(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetTextExtentPoint32A",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let lp_string = call.get_arg();
+            let c = call.get_arg();
+            let psizl = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, lp_string = {:?}, c = {:?}, psizl = {:?}}}",
+                            hdc, lp_string, c, psizl
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.GetTextExtentPoint32A(hdc, lp_string, c, psizl);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetTextExtentPoint32W(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetTextExtentPoint32W",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let lp_string = call.get_arg();
+            let c = call.get_arg();
+            let psizl = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, lp_string = {:?}, c = {:?}, psizl = {:?}}}",
+                            hdc, lp_string, c, psizl
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.GetTextExtentPoint32W(hdc, lp_string, c, psizl);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetTextExtentPointA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetTextExtentPointA",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let lp_string = call.get_arg();
+            let c = call.get_arg();
+            let lpsz = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, lp_string = {:?}, c = {:?}, lpsz = {:?}}}",
+                            hdc, lp_string, c, lpsz
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.GetTextExtentPointA(hdc, lp_string, c, lpsz);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetTextExtentPointI(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetTextExtentPointI",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let pgi_in = call.get_arg();
+            let cgi = call.get_arg();
+            let psize = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, pgi_in = {:?}, cgi = {:?}, psize = {:?}}}",
+                            hdc, pgi_in, cgi, psize
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.GetTextExtentPointI(hdc, pgi_in, cgi, psize);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetTextExtentPointW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetTextExtentPointW",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let lp_string = call.get_arg();
+            let c = call.get_arg();
+            let lpsz = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, lp_string = {:?}, c = {:?}, lpsz = {:?}}}",
+                            hdc, lp_string, c, lpsz
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.GetTextExtentPointW(hdc, lp_string, c, lpsz);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetTextFaceA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetTextFaceA",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let c = call.get_arg();
+            let lp_name = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, c = {:?}, lp_name = {:?}}}",
+                            hdc, c, lp_name
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.GetTextFaceA(hdc, c, lp_name);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetTextFaceW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetTextFaceW",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let c = call.get_arg();
+            let lp_name = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, c = {:?}, lp_name = {:?}}}",
+                            hdc, c, lp_name
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.GetTextFaceW(hdc, c, lp_name);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetTextMetricsA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetTextMetricsA",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let lptm = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(
+                            &format_args!("    args = {{hdc = {:?}, lptm = {:?}}}", hdc, lptm)
+                                as &dyn tracing::Value,
+                        ),
+                    )]),
+                );
+            }
+            let res = api.GetTextMetricsA(hdc, lptm);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetTextMetricsW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetTextMetricsW",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let lptm = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(
+                            &format_args!("    args = {{hdc = {:?}, lptm = {:?}}}", hdc, lptm)
+                                as &dyn tracing::Value,
+                        ),
+                    )]),
+                );
+            }
+            let res = api.GetTextMetricsW(hdc, lptm);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetUpdateRect(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetUpdateRect",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let h_wnd = call.get_arg();
+            let lp_rect = call.get_arg();
+            let b_erase = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{h_wnd = {:?}, lp_rect = {:?}, b_erase = {:?}}}",
+                            h_wnd, lp_rect, b_erase
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.GetUpdateRect(h_wnd, lp_rect, b_erase);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetUpdateRgn(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetUpdateRgn",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let h_wnd = call.get_arg();
+            let h_rgn = call.get_arg();
+            let b_erase = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{h_wnd = {:?}, h_rgn = {:?}, b_erase = {:?}}}",
+                            h_wnd, h_rgn, b_erase
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.GetUpdateRgn(h_wnd, h_rgn, b_erase);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetViewportExtEx(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetViewportExtEx",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let lpsize = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(
+                            &format_args!("    args = {{hdc = {:?}, lpsize = {:?}}}", hdc, lpsize)
+                                as &dyn tracing::Value,
+                        ),
+                    )]),
+                );
+            }
+            let res = api.GetViewportExtEx(hdc, lpsize);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetViewportOrgEx(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetViewportOrgEx",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let lppoint = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, lppoint = {:?}}}",
+                            hdc, lppoint
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.GetViewportOrgEx(hdc, lppoint);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetWinMetaFileBits(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetWinMetaFileBits",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hemf = call.get_arg();
+            let cb_data_16 = call.get_arg();
+            let p_data_16 = call.get_arg();
+            let i_map_mode = call.get_arg();
+            let hdc_ref = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hemf = {:?}, cb_data_16 = {:?}, p_data_16 = {:?}, i_map_mode = {:?}, hdc_ref = {:?}}}" , hemf , cb_data_16 , p_data_16 , i_map_mode , hdc_ref ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.GetWinMetaFileBits(hemf, cb_data_16, p_data_16, i_map_mode, hdc_ref);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetWindowDC(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetWindowDC");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let h_wnd = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("    args = {{h_wnd = {:?}}}", h_wnd)
+                            as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.GetWindowDC(h_wnd);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetWindowExtEx(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetWindowExtEx",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let lpsize = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(
+                            &format_args!("    args = {{hdc = {:?}, lpsize = {:?}}}", hdc, lpsize)
+                                as &dyn tracing::Value,
+                        ),
+                    )]),
+                );
+            }
+            let res = api.GetWindowExtEx(hdc, lpsize);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetWindowOrgEx(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetWindowOrgEx",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let lppoint = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, lppoint = {:?}}}",
+                            hdc, lppoint
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.GetWindowOrgEx(hdc, lppoint);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetWindowRgn(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetWindowRgn",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let h_wnd = call.get_arg();
+            let h_rgn = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{h_wnd = {:?}, h_rgn = {:?}}}",
+                            h_wnd, h_rgn
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.GetWindowRgn(h_wnd, h_rgn);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetWindowRgnBox(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetWindowRgnBox",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let h_wnd = call.get_arg();
+            let lprc = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(
+                            &format_args!("    args = {{h_wnd = {:?}, lprc = {:?}}}", h_wnd, lprc)
+                                as &dyn tracing::Value,
+                        ),
+                    )]),
+                );
+            }
+            let res = api.GetWindowRgnBox(h_wnd, lprc);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GradientFill(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GradientFill",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let p_vertex = call.get_arg();
+            let n_vertex = call.get_arg();
+            let p_mesh = call.get_arg();
+            let n_mesh = call.get_arg();
+            let ul_mode = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, p_vertex = {:?}, n_vertex = {:?}, p_mesh = {:?}, n_mesh = {:?}, ul_mode = {:?}}}" , hdc , p_vertex , n_vertex , p_mesh , n_mesh , ul_mode ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.GradientFill(hdc, p_vertex, n_vertex, p_mesh, n_mesh, ul_mode);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GrayStringA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GrayStringA");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let h_dc = call.get_arg();
+            let h_brush = call.get_arg();
+            let lp_output_func = call.get_arg();
+            let lp_data = call.get_arg();
+            let n_count = call.get_arg();
+            let x = call.get_arg();
+            let y = call.get_arg();
+            let n_width = call.get_arg();
+            let n_height = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{h_dc = {:?}, h_brush = {:?}, lp_output_func = {:?}, lp_data = {:?}, n_count = {:?}, x = {:?}, y = {:?}, n_width = {:?}, n_height = {:?}}}" , h_dc , h_brush , lp_output_func , lp_data , n_count , x , y , n_width , n_height ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.GrayStringA(
+                h_dc,
+                h_brush,
+                lp_output_func,
+                lp_data,
+                n_count,
+                x,
+                y,
+                n_width,
+                n_height,
+            );
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GrayStringW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GrayStringW");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let h_dc = call.get_arg();
+            let h_brush = call.get_arg();
+            let lp_output_func = call.get_arg();
+            let lp_data = call.get_arg();
+            let n_count = call.get_arg();
+            let x = call.get_arg();
+            let y = call.get_arg();
+            let n_width = call.get_arg();
+            let n_height = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{h_dc = {:?}, h_brush = {:?}, lp_output_func = {:?}, lp_data = {:?}, n_count = {:?}, x = {:?}, y = {:?}, n_width = {:?}, n_height = {:?}}}" , h_dc , h_brush , lp_output_func , lp_data , n_count , x , y , n_width , n_height ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.GrayStringW(
+                h_dc,
+                h_brush,
+                lp_output_func,
+                lp_data,
+                n_count,
+                x,
+                y,
+                n_width,
+                n_height,
+            );
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_InflateRect(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "InflateRect");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let lprc = call.get_arg();
+            let dx = call.get_arg();
+            let dy = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{lprc = {:?}, dx = {:?}, dy = {:?}}}",
+                            lprc, dx, dy
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.InflateRect(lprc, dx, dy);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_IntersectClipRect(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "IntersectClipRect",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let left = call.get_arg();
+            let top = call.get_arg();
+            let right = call.get_arg();
+            let bottom = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, left = {:?}, top = {:?}, right = {:?}, bottom = {:?}}}" , hdc , left , top , right , bottom ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.IntersectClipRect(hdc, left, top, right, bottom);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_IntersectRect(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "IntersectRect",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let lprc_dst = call.get_arg();
+            let lprc_src_1 = call.get_arg();
+            let lprc_src_2 = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{lprc_dst = {:?}, lprc_src_1 = {:?}, lprc_src_2 = {:?}}}",
+                            lprc_dst, lprc_src_1, lprc_src_2
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.IntersectRect(lprc_dst, lprc_src_1, lprc_src_2);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_InvalidateRect(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "InvalidateRect",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let h_wnd = call.get_arg();
+            let lp_rect = call.get_arg();
+            let b_erase = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{h_wnd = {:?}, lp_rect = {:?}, b_erase = {:?}}}",
+                            h_wnd, lp_rect, b_erase
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.InvalidateRect(h_wnd, lp_rect, b_erase);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_InvalidateRgn(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "InvalidateRgn",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let h_wnd = call.get_arg();
+            let h_rgn = call.get_arg();
+            let b_erase = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{h_wnd = {:?}, h_rgn = {:?}, b_erase = {:?}}}",
+                            h_wnd, h_rgn, b_erase
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.InvalidateRgn(h_wnd, h_rgn, b_erase);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_InvertRect(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "InvertRect");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let h_dc = call.get_arg();
+            let lprc = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(
+                            &format_args!("    args = {{h_dc = {:?}, lprc = {:?}}}", h_dc, lprc)
+                                as &dyn tracing::Value,
+                        ),
+                    )]),
+                );
+            }
+            let res = api.InvertRect(h_dc, lprc);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_InvertRgn(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "InvertRgn");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let hrgn = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(
+                            &format_args!("    args = {{hdc = {:?}, hrgn = {:?}}}", hdc, hrgn)
+                                as &dyn tracing::Value,
+                        ),
+                    )]),
+                );
+            }
+            let res = api.InvertRgn(hdc, hrgn);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_IsRectEmpty(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "IsRectEmpty");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let lprc = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("    args = {{lprc = {:?}}}", lprc)
+                            as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.IsRectEmpty(lprc);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_LPtoDP(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "LPtoDP");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let lppt = call.get_arg();
+            let c = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, lppt = {:?}, c = {:?}}}",
+                            hdc, lppt, c
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.LPtoDP(hdc, lppt, c);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_LineDDA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "LineDDA");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let x_start = call.get_arg();
+            let y_start = call.get_arg();
+            let x_end = call.get_arg();
+            let y_end = call.get_arg();
+            let lp_proc = call.get_arg();
+            let data = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{x_start = {:?}, y_start = {:?}, x_end = {:?}, y_end = {:?}, lp_proc = {:?}, data = {:?}}}" , x_start , y_start , x_end , y_end , lp_proc , data ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.LineDDA(x_start, y_start, x_end, y_end, lp_proc, data);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_LineTo(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "LineTo");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let x = call.get_arg();
+            let y = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, x = {:?}, y = {:?}}}",
+                            hdc, x, y
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.LineTo(hdc, x, y);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_LoadBitmapA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "LoadBitmapA");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let h_instance = call.get_arg();
+            let lp_bitmap_name = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{h_instance = {:?}, lp_bitmap_name = {:?}}}",
+                            h_instance, lp_bitmap_name
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.LoadBitmapA(h_instance, lp_bitmap_name);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_LoadBitmapW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "LoadBitmapW");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let h_instance = call.get_arg();
+            let lp_bitmap_name = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{h_instance = {:?}, lp_bitmap_name = {:?}}}",
+                            h_instance, lp_bitmap_name
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.LoadBitmapW(h_instance, lp_bitmap_name);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_LockWindowUpdate(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "LockWindowUpdate",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let h_wnd_lock = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(
+                            &format_args!("    args = {{h_wnd_lock = {:?}}}", h_wnd_lock)
+                                as &dyn tracing::Value,
+                        ),
+                    )]),
+                );
+            }
+            let res = api.LockWindowUpdate(h_wnd_lock);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_MapWindowPoints(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "MapWindowPoints",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let h_wnd_from = call.get_arg();
+            let h_wnd_to = call.get_arg();
+            let lp_points = call.get_arg();
+            let c_points = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{h_wnd_from = {:?}, h_wnd_to = {:?}, lp_points = {:?}, c_points = {:?}}}" , h_wnd_from , h_wnd_to , lp_points , c_points ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.MapWindowPoints(h_wnd_from, h_wnd_to, lp_points, c_points);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_MaskBlt(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "MaskBlt");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc_dest = call.get_arg();
+            let x_dest = call.get_arg();
+            let y_dest = call.get_arg();
+            let width = call.get_arg();
+            let height = call.get_arg();
+            let hdc_src = call.get_arg();
+            let x_src = call.get_arg();
+            let y_src = call.get_arg();
+            let hbm_mask = call.get_arg();
+            let x_mask = call.get_arg();
+            let y_mask = call.get_arg();
+            let rop = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc_dest = {:?}, x_dest = {:?}, y_dest = {:?}, width = {:?}, height = {:?}, hdc_src = {:?}, x_src = {:?}, y_src = {:?}, hbm_mask = {:?}, x_mask = {:?}, y_mask = {:?}, rop = {:?}}}" , hdc_dest , x_dest , y_dest , width , height , hdc_src , x_src , y_src , hbm_mask , x_mask , y_mask , rop ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.MaskBlt(
+                hdc_dest, x_dest, y_dest, width, height, hdc_src, x_src, y_src, hbm_mask, x_mask,
+                y_mask, rop,
+            );
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_MergeFontPackage(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "MergeFontPackage",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let puch_merge_font_buffer = call.get_arg();
+            let ul_merge_font_buffer_size = call.get_arg();
+            let puch_font_package_buffer = call.get_arg();
+            let ul_font_package_buffer_size = call.get_arg();
+            let ppuch_dest_buffer = call.get_arg();
+            let pul_dest_buffer_size = call.get_arg();
+            let pul_bytes_written = call.get_arg();
+            let us_mode = call.get_arg();
+            let lpfn_allocate = call.get_arg();
+            let lpfn_re_allocate = call.get_arg();
+            let lpfn_free = call.get_arg();
+            let lpv_reserved = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{puch_merge_font_buffer = {:?}, ul_merge_font_buffer_size = {:?}, puch_font_package_buffer = {:?}, ul_font_package_buffer_size = {:?}, ppuch_dest_buffer = {:?}, pul_dest_buffer_size = {:?}, pul_bytes_written = {:?}, us_mode = {:?}, lpfn_allocate = {:?}, lpfn_re_allocate = {:?}, lpfn_free = {:?}, lpv_reserved = {:?}}}" , puch_merge_font_buffer , ul_merge_font_buffer_size , puch_font_package_buffer , ul_font_package_buffer_size , ppuch_dest_buffer , pul_dest_buffer_size , pul_bytes_written , us_mode , lpfn_allocate , lpfn_re_allocate , lpfn_free , lpv_reserved ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.MergeFontPackage(
+                puch_merge_font_buffer,
+                ul_merge_font_buffer_size,
+                puch_font_package_buffer,
+                ul_font_package_buffer_size,
+                ppuch_dest_buffer,
+                pul_dest_buffer_size,
+                pul_bytes_written,
+                us_mode,
+                lpfn_allocate,
+                lpfn_re_allocate,
+                lpfn_free,
+                lpv_reserved,
+            );
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_MonitorFromPoint(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "MonitorFromPoint",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let pt = call.get_arg();
+            let dw_flags = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{pt = {:?}, dw_flags = {:?}}}",
+                            pt, dw_flags
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.MonitorFromPoint(pt, dw_flags);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_MonitorFromRect(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "MonitorFromRect",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let lprc = call.get_arg();
+            let dw_flags = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{lprc = {:?}, dw_flags = {:?}}}",
+                            lprc, dw_flags
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.MonitorFromRect(lprc, dw_flags);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_MonitorFromWindow(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "MonitorFromWindow",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hwnd = call.get_arg();
+            let dw_flags = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hwnd = {:?}, dw_flags = {:?}}}",
+                            hwnd, dw_flags
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.MonitorFromWindow(hwnd, dw_flags);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_MoveToEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "MoveToEx");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let x = call.get_arg();
+            let y = call.get_arg();
+            let lppt = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, x = {:?}, y = {:?}, lppt = {:?}}}",
+                            hdc, x, y, lppt
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.MoveToEx(hdc, x, y, lppt);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_OffsetClipRgn(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "OffsetClipRgn",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let x = call.get_arg();
+            let y = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, x = {:?}, y = {:?}}}",
+                            hdc, x, y
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.OffsetClipRgn(hdc, x, y);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_OffsetRect(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "OffsetRect");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let lprc = call.get_arg();
+            let dx = call.get_arg();
+            let dy = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{lprc = {:?}, dx = {:?}, dy = {:?}}}",
+                            lprc, dx, dy
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.OffsetRect(lprc, dx, dy);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_OffsetRgn(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "OffsetRgn");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hrgn = call.get_arg();
+            let x = call.get_arg();
+            let y = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hrgn = {:?}, x = {:?}, y = {:?}}}",
+                            hrgn, x, y
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.OffsetRgn(hrgn, x, y);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_OffsetViewportOrgEx(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "OffsetViewportOrgEx",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let x = call.get_arg();
+            let y = call.get_arg();
+            let lppt = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, x = {:?}, y = {:?}, lppt = {:?}}}",
+                            hdc, x, y, lppt
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.OffsetViewportOrgEx(hdc, x, y, lppt);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_OffsetWindowOrgEx(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "OffsetWindowOrgEx",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let x = call.get_arg();
+            let y = call.get_arg();
+            let lppt = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, x = {:?}, y = {:?}, lppt = {:?}}}",
+                            hdc, x, y, lppt
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.OffsetWindowOrgEx(hdc, x, y, lppt);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_PaintDesktop(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "PaintDesktop",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}}}" , hdc ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.PaintDesktop(hdc);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_PaintRgn(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "PaintRgn");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let hrgn = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(
+                            &format_args!("    args = {{hdc = {:?}, hrgn = {:?}}}", hdc, hrgn)
+                                as &dyn tracing::Value,
+                        ),
+                    )]),
+                );
+            }
+            let res = api.PaintRgn(hdc, hrgn);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_PatBlt(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "PatBlt");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let x = call.get_arg();
+            let y = call.get_arg();
+            let w = call.get_arg();
+            let h = call.get_arg();
+            let rop = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, x = {:?}, y = {:?}, w = {:?}, h = {:?}, rop = {:?}}}" , hdc , x , y , w , h , rop ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.PatBlt(hdc, x, y, w, h, rop);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_PathToRegion(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "PathToRegion",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}}}" , hdc ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.PathToRegion(hdc);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_Pie(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "Pie");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let left = call.get_arg();
+            let top = call.get_arg();
+            let right = call.get_arg();
+            let bottom = call.get_arg();
+            let xr_1 = call.get_arg();
+            let yr_1 = call.get_arg();
+            let xr_2 = call.get_arg();
+            let yr_2 = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, left = {:?}, top = {:?}, right = {:?}, bottom = {:?}, xr_1 = {:?}, yr_1 = {:?}, xr_2 = {:?}, yr_2 = {:?}}}" , hdc , left , top , right , bottom , xr_1 , yr_1 , xr_2 , yr_2 ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.Pie(hdc, left, top, right, bottom, xr_1, yr_1, xr_2, yr_2);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_PlayEnhMetaFile(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "PlayEnhMetaFile",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let hmf = call.get_arg();
+            let lprect = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, hmf = {:?}, lprect = {:?}}}",
+                            hdc, hmf, lprect
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.PlayEnhMetaFile(hdc, hmf, lprect);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_PlayEnhMetaFileRecord(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "PlayEnhMetaFileRecord",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let pht = call.get_arg();
+            let pmr = call.get_arg();
+            let cht = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, pht = {:?}, pmr = {:?}, cht = {:?}}}",
+                            hdc, pht, pmr, cht
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.PlayEnhMetaFileRecord(hdc, pht, pmr, cht);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_PlayMetaFile(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "PlayMetaFile",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let hmf = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(
+                            &format_args!("    args = {{hdc = {:?}, hmf = {:?}}}", hdc, hmf)
+                                as &dyn tracing::Value,
+                        ),
+                    )]),
+                );
+            }
+            let res = api.PlayMetaFile(hdc, hmf);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_PlayMetaFileRecord(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "PlayMetaFileRecord",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let lp_handle_table = call.get_arg();
+            let lp_mr = call.get_arg();
+            let no_objs = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, lp_handle_table = {:?}, lp_mr = {:?}, no_objs = {:?}}}" , hdc , lp_handle_table , lp_mr , no_objs ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.PlayMetaFileRecord(hdc, lp_handle_table, lp_mr, no_objs);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_PlgBlt(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "PlgBlt");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc_dest = call.get_arg();
+            let lp_point = call.get_arg();
+            let hdc_src = call.get_arg();
+            let x_src = call.get_arg();
+            let y_src = call.get_arg();
+            let width = call.get_arg();
+            let height = call.get_arg();
+            let hbm_mask = call.get_arg();
+            let x_mask = call.get_arg();
+            let y_mask = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc_dest = {:?}, lp_point = {:?}, hdc_src = {:?}, x_src = {:?}, y_src = {:?}, width = {:?}, height = {:?}, hbm_mask = {:?}, x_mask = {:?}, y_mask = {:?}}}" , hdc_dest , lp_point , hdc_src , x_src , y_src , width , height , hbm_mask , x_mask , y_mask ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.PlgBlt(
+                hdc_dest, lp_point, hdc_src, x_src, y_src, width, height, hbm_mask, x_mask, y_mask,
+            );
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_PolyBezier(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "PolyBezier");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let apt = call.get_arg();
+            let cpt = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, apt = {:?}, cpt = {:?}}}",
+                            hdc, apt, cpt
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.PolyBezier(hdc, apt, cpt);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_PolyBezierTo(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "PolyBezierTo",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let apt = call.get_arg();
+            let cpt = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, apt = {:?}, cpt = {:?}}}",
+                            hdc, apt, cpt
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.PolyBezierTo(hdc, apt, cpt);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_PolyDraw(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "PolyDraw");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let apt = call.get_arg();
+            let aj = call.get_arg();
+            let cpt = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, apt = {:?}, aj = {:?}, cpt = {:?}}}",
+                            hdc, apt, aj, cpt
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.PolyDraw(hdc, apt, aj, cpt);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_PolyPolygon(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "PolyPolygon");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let apt = call.get_arg();
+            let asz = call.get_arg();
+            let csz = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, apt = {:?}, asz = {:?}, csz = {:?}}}",
+                            hdc, apt, asz, csz
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.PolyPolygon(hdc, apt, asz, csz);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_PolyPolyline(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "PolyPolyline",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let apt = call.get_arg();
+            let asz = call.get_arg();
+            let csz = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, apt = {:?}, asz = {:?}, csz = {:?}}}",
+                            hdc, apt, asz, csz
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.PolyPolyline(hdc, apt, asz, csz);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_PolyTextOutA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "PolyTextOutA",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let ppt = call.get_arg();
+            let nstrings = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, ppt = {:?}, nstrings = {:?}}}",
+                            hdc, ppt, nstrings
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.PolyTextOutA(hdc, ppt, nstrings);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_PolyTextOutW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "PolyTextOutW",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let ppt = call.get_arg();
+            let nstrings = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, ppt = {:?}, nstrings = {:?}}}",
+                            hdc, ppt, nstrings
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.PolyTextOutW(hdc, ppt, nstrings);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_Polygon(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "Polygon");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let apt = call.get_arg();
+            let cpt = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, apt = {:?}, cpt = {:?}}}",
+                            hdc, apt, cpt
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.Polygon(hdc, apt, cpt);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_Polyline(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "Polyline");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let apt = call.get_arg();
+            let cpt = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, apt = {:?}, cpt = {:?}}}",
+                            hdc, apt, cpt
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.Polyline(hdc, apt, cpt);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_PolylineTo(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "PolylineTo");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let apt = call.get_arg();
+            let cpt = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, apt = {:?}, cpt = {:?}}}",
+                            hdc, apt, cpt
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.PolylineTo(hdc, apt, cpt);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_PtInRect(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "PtInRect");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let lprc = call.get_arg();
+            let pt = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(
+                            &format_args!("    args = {{lprc = {:?}, pt = {:?}}}", lprc, pt)
+                                as &dyn tracing::Value,
+                        ),
+                    )]),
+                );
+            }
+            let res = api.PtInRect(lprc, pt);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_PtInRegion(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "PtInRegion");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hrgn = call.get_arg();
+            let x = call.get_arg();
+            let y = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hrgn = {:?}, x = {:?}, y = {:?}}}",
+                            hrgn, x, y
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.PtInRegion(hrgn, x, y);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_PtVisible(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "PtVisible");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let x = call.get_arg();
+            let y = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, x = {:?}, y = {:?}}}",
+                            hdc, x, y
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.PtVisible(hdc, x, y);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_RealizePalette(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "RealizePalette",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}}}" , hdc ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.RealizePalette(hdc);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_RectInRegion(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "RectInRegion",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hrgn = call.get_arg();
+            let lprect = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hrgn = {:?}, lprect = {:?}}}",
+                            hrgn, lprect
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.RectInRegion(hrgn, lprect);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_RectVisible(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "RectVisible");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let lprect = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(
+                            &format_args!("    args = {{hdc = {:?}, lprect = {:?}}}", hdc, lprect)
+                                as &dyn tracing::Value,
+                        ),
+                    )]),
+                );
+            }
+            let res = api.RectVisible(hdc, lprect);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_Rectangle(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "Rectangle");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let left = call.get_arg();
+            let top = call.get_arg();
+            let right = call.get_arg();
+            let bottom = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, left = {:?}, top = {:?}, right = {:?}, bottom = {:?}}}" , hdc , left , top , right , bottom ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.Rectangle(hdc, left, top, right, bottom);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_RedrawWindow(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "RedrawWindow",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let h_wnd = call.get_arg();
+            let lprc_update = call.get_arg();
+            let hrgn_update = call.get_arg();
+            let flags = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{h_wnd = {:?}, lprc_update = {:?}, hrgn_update = {:?}, flags = {:?}}}" , h_wnd , lprc_update , hrgn_update , flags ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.RedrawWindow(h_wnd, lprc_update, hrgn_update, flags);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_ReleaseDC(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "ReleaseDC");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let h_wnd = call.get_arg();
+            let h_dc = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(
+                            &format_args!("    args = {{h_wnd = {:?}, h_dc = {:?}}}", h_wnd, h_dc)
+                                as &dyn tracing::Value,
+                        ),
+                    )]),
+                );
+            }
+            let res = api.ReleaseDC(h_wnd, h_dc);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_RemoveFontMemResourceEx(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "RemoveFontMemResourceEx",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let h = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("    args = {{h = {:?}}}", h) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.RemoveFontMemResourceEx(h);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_RemoveFontResourceA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "RemoveFontResourceA",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let lp_file_name = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(
+                            &format_args!("    args = {{lp_file_name = {:?}}}", lp_file_name)
+                                as &dyn tracing::Value,
+                        ),
+                    )]),
+                );
+            }
+            let res = api.RemoveFontResourceA(lp_file_name);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_RemoveFontResourceExA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "RemoveFontResourceExA",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let name = call.get_arg();
+            let fl = call.get_arg();
+            let pdv = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{name = {:?}, fl = {:?}, pdv = {:?}}}",
+                            name, fl, pdv
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.RemoveFontResourceExA(name, fl, pdv);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_RemoveFontResourceExW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "RemoveFontResourceExW",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let name = call.get_arg();
+            let fl = call.get_arg();
+            let pdv = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{name = {:?}, fl = {:?}, pdv = {:?}}}",
+                            name, fl, pdv
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.RemoveFontResourceExW(name, fl, pdv);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_RemoveFontResourceW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "RemoveFontResourceW",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let lp_file_name = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(
+                            &format_args!("    args = {{lp_file_name = {:?}}}", lp_file_name)
+                                as &dyn tracing::Value,
+                        ),
+                    )]),
+                );
+            }
+            let res = api.RemoveFontResourceW(lp_file_name);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_ResetDCA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "ResetDCA");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let lpdm = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(
+                            &format_args!("    args = {{hdc = {:?}, lpdm = {:?}}}", hdc, lpdm)
+                                as &dyn tracing::Value,
+                        ),
+                    )]),
+                );
+            }
+            let res = api.ResetDCA(hdc, lpdm);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_ResetDCW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "ResetDCW");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let lpdm = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(
+                            &format_args!("    args = {{hdc = {:?}, lpdm = {:?}}}", hdc, lpdm)
+                                as &dyn tracing::Value,
+                        ),
+                    )]),
+                );
+            }
+            let res = api.ResetDCW(hdc, lpdm);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_ResizePalette(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "ResizePalette",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hpal = call.get_arg();
+            let n = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(
+                            &format_args!("    args = {{hpal = {:?}, n = {:?}}}", hpal, n)
+                                as &dyn tracing::Value,
+                        ),
+                    )]),
+                );
+            }
+            let res = api.ResizePalette(hpal, n);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_RestoreDC(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "RestoreDC");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let n_saved_dc = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, n_saved_dc = {:?}}}",
+                            hdc, n_saved_dc
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.RestoreDC(hdc, n_saved_dc);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_RoundRect(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "RoundRect");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let left = call.get_arg();
+            let top = call.get_arg();
+            let right = call.get_arg();
+            let bottom = call.get_arg();
+            let width = call.get_arg();
+            let height = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, left = {:?}, top = {:?}, right = {:?}, bottom = {:?}, width = {:?}, height = {:?}}}" , hdc , left , top , right , bottom , width , height ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.RoundRect(hdc, left, top, right, bottom, width, height);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_SaveDC(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "SaveDC");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}}}" , hdc ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.SaveDC(hdc);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_ScaleViewportExtEx(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "ScaleViewportExtEx",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let xn = call.get_arg();
+            let dx = call.get_arg();
+            let yn = call.get_arg();
+            let yd = call.get_arg();
+            let lpsz = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, xn = {:?}, dx = {:?}, yn = {:?}, yd = {:?}, lpsz = {:?}}}" , hdc , xn , dx , yn , yd , lpsz ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.ScaleViewportExtEx(hdc, xn, dx, yn, yd, lpsz);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_ScaleWindowExtEx(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "ScaleWindowExtEx",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let xn = call.get_arg();
+            let xd = call.get_arg();
+            let yn = call.get_arg();
+            let yd = call.get_arg();
+            let lpsz = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, xn = {:?}, xd = {:?}, yn = {:?}, yd = {:?}, lpsz = {:?}}}" , hdc , xn , xd , yn , yd , lpsz ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.ScaleWindowExtEx(hdc, xn, xd, yn, yd, lpsz);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_ScreenToClient(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "ScreenToClient",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let h_wnd = call.get_arg();
+            let lp_point = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{h_wnd = {:?}, lp_point = {:?}}}",
+                            h_wnd, lp_point
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.ScreenToClient(h_wnd, lp_point);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_SelectClipPath(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "SelectClipPath",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let mode = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(
+                            &format_args!("    args = {{hdc = {:?}, mode = {:?}}}", hdc, mode)
+                                as &dyn tracing::Value,
+                        ),
+                    )]),
+                );
+            }
+            let res = api.SelectClipPath(hdc, mode);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_SelectClipRgn(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "SelectClipRgn",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let hrgn = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(
+                            &format_args!("    args = {{hdc = {:?}, hrgn = {:?}}}", hdc, hrgn)
+                                as &dyn tracing::Value,
+                        ),
+                    )]),
+                );
+            }
+            let res = api.SelectClipRgn(hdc, hrgn);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_SelectObject(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "SelectObject",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let h = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("    args = {{hdc = {:?}, h = {:?}}}", hdc, h)
+                            as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.SelectObject(hdc, h);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_SelectPalette(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "SelectPalette",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let h_pal = call.get_arg();
+            let b_force_bkgd = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, h_pal = {:?}, b_force_bkgd = {:?}}}",
+                            hdc, h_pal, b_force_bkgd
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.SelectPalette(hdc, h_pal, b_force_bkgd);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_SetArcDirection(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "SetArcDirection",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let dir = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(
+                            &format_args!("    args = {{hdc = {:?}, dir = {:?}}}", hdc, dir)
+                                as &dyn tracing::Value,
+                        ),
+                    )]),
+                );
+            }
+            let res = api.SetArcDirection(hdc, dir);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_SetBitmapBits(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "SetBitmapBits",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hbm = call.get_arg();
+            let cb = call.get_arg();
+            let pv_bits = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hbm = {:?}, cb = {:?}, pv_bits = {:?}}}",
+                            hbm, cb, pv_bits
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.SetBitmapBits(hbm, cb, pv_bits);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_SetBitmapDimensionEx(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "SetBitmapDimensionEx",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hbm = call.get_arg();
+            let w = call.get_arg();
+            let h = call.get_arg();
+            let lpsz = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hbm = {:?}, w = {:?}, h = {:?}, lpsz = {:?}}}",
+                            hbm, w, h, lpsz
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.SetBitmapDimensionEx(hbm, w, h, lpsz);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_SetBkColor(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "SetBkColor");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let color = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(
+                            &format_args!("    args = {{hdc = {:?}, color = {:?}}}", hdc, color)
+                                as &dyn tracing::Value,
+                        ),
+                    )]),
+                );
+            }
+            let res = api.SetBkColor(hdc, color);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_SetBkMode(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "SetBkMode");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let mode = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(
+                            &format_args!("    args = {{hdc = {:?}, mode = {:?}}}", hdc, mode)
+                                as &dyn tracing::Value,
+                        ),
+                    )]),
+                );
+            }
+            let res = api.SetBkMode(hdc, mode);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_SetBoundsRect(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "SetBoundsRect",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let lprect = call.get_arg();
+            let flags = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, lprect = {:?}, flags = {:?}}}",
+                            hdc, lprect, flags
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.SetBoundsRect(hdc, lprect, flags);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_SetBrushOrgEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "SetBrushOrgEx",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let x = call.get_arg();
+            let y = call.get_arg();
+            let lppt = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, x = {:?}, y = {:?}, lppt = {:?}}}",
+                            hdc, x, y, lppt
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.SetBrushOrgEx(hdc, x, y, lppt);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_SetColorAdjustment(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "SetColorAdjustment",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let lpca = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(
+                            &format_args!("    args = {{hdc = {:?}, lpca = {:?}}}", hdc, lpca)
+                                as &dyn tracing::Value,
+                        ),
+                    )]),
+                );
+            }
+            let res = api.SetColorAdjustment(hdc, lpca);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_SetDCBrushColor(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "SetDCBrushColor",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let color = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(
+                            &format_args!("    args = {{hdc = {:?}, color = {:?}}}", hdc, color)
+                                as &dyn tracing::Value,
+                        ),
+                    )]),
+                );
+            }
+            let res = api.SetDCBrushColor(hdc, color);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_SetDCPenColor(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "SetDCPenColor",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let color = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(
+                            &format_args!("    args = {{hdc = {:?}, color = {:?}}}", hdc, color)
+                                as &dyn tracing::Value,
+                        ),
+                    )]),
+                );
+            }
+            let res = api.SetDCPenColor(hdc, color);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_SetDIBColorTable(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "SetDIBColorTable",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let i_start = call.get_arg();
+            let c_entries = call.get_arg();
+            let prgbq = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, i_start = {:?}, c_entries = {:?}, prgbq = {:?}}}" , hdc , i_start , c_entries , prgbq ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.SetDIBColorTable(hdc, i_start, c_entries, prgbq);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_SetDIBits(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "SetDIBits");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let hbm = call.get_arg();
+            let start = call.get_arg();
+            let c_lines = call.get_arg();
+            let lp_bits = call.get_arg();
+            let lpbmi = call.get_arg();
+            let color_use = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, hbm = {:?}, start = {:?}, c_lines = {:?}, lp_bits = {:?}, lpbmi = {:?}, color_use = {:?}}}" , hdc , hbm , start , c_lines , lp_bits , lpbmi , color_use ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.SetDIBits(hdc, hbm, start, c_lines, lp_bits, lpbmi, color_use);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_SetDIBitsToDevice(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "SetDIBitsToDevice",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let x_dest = call.get_arg();
+            let y_dest = call.get_arg();
+            let w = call.get_arg();
+            let h = call.get_arg();
+            let x_src = call.get_arg();
+            let y_src = call.get_arg();
+            let start_scan = call.get_arg();
+            let c_lines = call.get_arg();
+            let lpv_bits = call.get_arg();
+            let lpbmi = call.get_arg();
+            let color_use = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, x_dest = {:?}, y_dest = {:?}, w = {:?}, h = {:?}, x_src = {:?}, y_src = {:?}, start_scan = {:?}, c_lines = {:?}, lpv_bits = {:?}, lpbmi = {:?}, color_use = {:?}}}" , hdc , x_dest , y_dest , w , h , x_src , y_src , start_scan , c_lines , lpv_bits , lpbmi , color_use ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.SetDIBitsToDevice(
+                hdc, x_dest, y_dest, w, h, x_src, y_src, start_scan, c_lines, lpv_bits, lpbmi,
+                color_use,
+            );
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_SetEnhMetaFileBits(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "SetEnhMetaFileBits",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let n_size = call.get_arg();
+            let pb = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(
+                            &format_args!("    args = {{n_size = {:?}, pb = {:?}}}", n_size, pb)
+                                as &dyn tracing::Value,
+                        ),
+                    )]),
+                );
+            }
+            let res = api.SetEnhMetaFileBits(n_size, pb);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_SetGraphicsMode(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "SetGraphicsMode",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let i_mode = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(
+                            &format_args!("    args = {{hdc = {:?}, i_mode = {:?}}}", hdc, i_mode)
+                                as &dyn tracing::Value,
+                        ),
+                    )]),
+                );
+            }
+            let res = api.SetGraphicsMode(hdc, i_mode);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_SetLayout(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "SetLayout");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let l = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("    args = {{hdc = {:?}, l = {:?}}}", hdc, l)
+                            as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.SetLayout(hdc, l);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_SetMapMode(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "SetMapMode");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let i_mode = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(
+                            &format_args!("    args = {{hdc = {:?}, i_mode = {:?}}}", hdc, i_mode)
+                                as &dyn tracing::Value,
+                        ),
+                    )]),
+                );
+            }
+            let res = api.SetMapMode(hdc, i_mode);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_SetMapperFlags(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "SetMapperFlags",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let flags = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(
+                            &format_args!("    args = {{hdc = {:?}, flags = {:?}}}", hdc, flags)
+                                as &dyn tracing::Value,
+                        ),
+                    )]),
+                );
+            }
+            let res = api.SetMapperFlags(hdc, flags);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_SetMetaFileBitsEx(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "SetMetaFileBitsEx",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let cb_buffer = call.get_arg();
+            let lp_data = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{cb_buffer = {:?}, lp_data = {:?}}}",
+                            cb_buffer, lp_data
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.SetMetaFileBitsEx(cb_buffer, lp_data);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_SetMetaRgn(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "SetMetaRgn");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}}}" , hdc ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.SetMetaRgn(hdc);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_SetPaletteEntries(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "SetPaletteEntries",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hpal = call.get_arg();
+            let i_start = call.get_arg();
+            let c_entries = call.get_arg();
+            let p_pal_entries = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hpal = {:?}, i_start = {:?}, c_entries = {:?}, p_pal_entries = {:?}}}" , hpal , i_start , c_entries , p_pal_entries ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.SetPaletteEntries(hpal, i_start, c_entries, p_pal_entries);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_SetPixel(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "SetPixel");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let x = call.get_arg();
+            let y = call.get_arg();
+            let color = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, x = {:?}, y = {:?}, color = {:?}}}",
+                            hdc, x, y, color
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.SetPixel(hdc, x, y, color);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_SetPixelV(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "SetPixelV");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let x = call.get_arg();
+            let y = call.get_arg();
+            let color = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, x = {:?}, y = {:?}, color = {:?}}}",
+                            hdc, x, y, color
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.SetPixelV(hdc, x, y, color);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_SetPolyFillMode(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "SetPolyFillMode",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let mode = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(
+                            &format_args!("    args = {{hdc = {:?}, mode = {:?}}}", hdc, mode)
+                                as &dyn tracing::Value,
+                        ),
+                    )]),
+                );
+            }
+            let res = api.SetPolyFillMode(hdc, mode);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_SetROP2(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "SetROP2");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let rop_2 = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(
+                            &format_args!("    args = {{hdc = {:?}, rop_2 = {:?}}}", hdc, rop_2)
+                                as &dyn tracing::Value,
+                        ),
+                    )]),
+                );
+            }
+            let res = api.SetROP2(hdc, rop_2);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_SetRect(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "SetRect");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let lprc = call.get_arg();
+            let x_left = call.get_arg();
+            let y_top = call.get_arg();
+            let x_right = call.get_arg();
+            let y_bottom = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{lprc = {:?}, x_left = {:?}, y_top = {:?}, x_right = {:?}, y_bottom = {:?}}}" , lprc , x_left , y_top , x_right , y_bottom ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.SetRect(lprc, x_left, y_top, x_right, y_bottom);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_SetRectEmpty(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "SetRectEmpty",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let lprc = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("    args = {{lprc = {:?}}}", lprc)
+                            as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.SetRectEmpty(lprc);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_SetRectRgn(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "SetRectRgn");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hrgn = call.get_arg();
+            let left = call.get_arg();
+            let top = call.get_arg();
+            let right = call.get_arg();
+            let bottom = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hrgn = {:?}, left = {:?}, top = {:?}, right = {:?}, bottom = {:?}}}" , hrgn , left , top , right , bottom ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.SetRectRgn(hrgn, left, top, right, bottom);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_SetStretchBltMode(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "SetStretchBltMode",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let mode = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(
+                            &format_args!("    args = {{hdc = {:?}, mode = {:?}}}", hdc, mode)
+                                as &dyn tracing::Value,
+                        ),
+                    )]),
+                );
+            }
+            let res = api.SetStretchBltMode(hdc, mode);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_SetSystemPaletteUse(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "SetSystemPaletteUse",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let r#use = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(
+                            &format_args!("    args = {{hdc = {:?}, r#use = {:?}}}", hdc, r#use)
+                                as &dyn tracing::Value,
+                        ),
+                    )]),
+                );
+            }
+            let res = api.SetSystemPaletteUse(hdc, r#use);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_SetTextAlign(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "SetTextAlign",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let align = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(
+                            &format_args!("    args = {{hdc = {:?}, align = {:?}}}", hdc, align)
+                                as &dyn tracing::Value,
+                        ),
+                    )]),
+                );
+            }
+            let res = api.SetTextAlign(hdc, align);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_SetTextCharacterExtra(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "SetTextCharacterExtra",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let extra = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(
+                            &format_args!("    args = {{hdc = {:?}, extra = {:?}}}", hdc, extra)
+                                as &dyn tracing::Value,
+                        ),
+                    )]),
+                );
+            }
+            let res = api.SetTextCharacterExtra(hdc, extra);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_SetTextColor(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "SetTextColor",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let color = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(
+                            &format_args!("    args = {{hdc = {:?}, color = {:?}}}", hdc, color)
+                                as &dyn tracing::Value,
+                        ),
+                    )]),
+                );
+            }
+            let res = api.SetTextColor(hdc, color);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_SetTextJustification(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "SetTextJustification",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let extra = call.get_arg();
+            let count = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, extra = {:?}, count = {:?}}}",
+                            hdc, extra, count
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.SetTextJustification(hdc, extra, count);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_SetViewportExtEx(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "SetViewportExtEx",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let x = call.get_arg();
+            let y = call.get_arg();
+            let lpsz = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, x = {:?}, y = {:?}, lpsz = {:?}}}",
+                            hdc, x, y, lpsz
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.SetViewportExtEx(hdc, x, y, lpsz);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_SetViewportOrgEx(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "SetViewportOrgEx",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let x = call.get_arg();
+            let y = call.get_arg();
+            let lppt = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, x = {:?}, y = {:?}, lppt = {:?}}}",
+                            hdc, x, y, lppt
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.SetViewportOrgEx(hdc, x, y, lppt);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_SetWindowExtEx(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "SetWindowExtEx",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let x = call.get_arg();
+            let y = call.get_arg();
+            let lpsz = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, x = {:?}, y = {:?}, lpsz = {:?}}}",
+                            hdc, x, y, lpsz
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.SetWindowExtEx(hdc, x, y, lpsz);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_SetWindowOrgEx(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "SetWindowOrgEx",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let x = call.get_arg();
+            let y = call.get_arg();
+            let lppt = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hdc = {:?}, x = {:?}, y = {:?}, lppt = {:?}}}",
+                            hdc, x, y, lppt
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.SetWindowOrgEx(hdc, x, y, lppt);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_SetWindowRgn(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "SetWindowRgn",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let h_wnd = call.get_arg();
+            let h_rgn = call.get_arg();
+            let b_redraw = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{h_wnd = {:?}, h_rgn = {:?}, b_redraw = {:?}}}",
+                            h_wnd, h_rgn, b_redraw
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.SetWindowRgn(h_wnd, h_rgn, b_redraw);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_StretchBlt(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "StretchBlt");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc_dest = call.get_arg();
+            let x_dest = call.get_arg();
+            let y_dest = call.get_arg();
+            let w_dest = call.get_arg();
+            let h_dest = call.get_arg();
+            let hdc_src = call.get_arg();
+            let x_src = call.get_arg();
+            let y_src = call.get_arg();
+            let w_src = call.get_arg();
+            let h_src = call.get_arg();
+            let rop = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc_dest = {:?}, x_dest = {:?}, y_dest = {:?}, w_dest = {:?}, h_dest = {:?}, hdc_src = {:?}, x_src = {:?}, y_src = {:?}, w_src = {:?}, h_src = {:?}, rop = {:?}}}" , hdc_dest , x_dest , y_dest , w_dest , h_dest , hdc_src , x_src , y_src , w_src , h_src , rop ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.StretchBlt(
+                hdc_dest, x_dest, y_dest, w_dest, h_dest, hdc_src, x_src, y_src, w_src, h_src, rop,
+            );
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_StretchDIBits(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "StretchDIBits",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let x_dest = call.get_arg();
+            let y_dest = call.get_arg();
+            let dest_width = call.get_arg();
+            let dest_height = call.get_arg();
+            let x_src = call.get_arg();
+            let y_src = call.get_arg();
+            let src_width = call.get_arg();
+            let src_height = call.get_arg();
+            let lp_bits = call.get_arg();
+            let lpbmi = call.get_arg();
+            let i_usage = call.get_arg();
+            let rop = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, x_dest = {:?}, y_dest = {:?}, dest_width = {:?}, dest_height = {:?}, x_src = {:?}, y_src = {:?}, src_width = {:?}, src_height = {:?}, lp_bits = {:?}, lpbmi = {:?}, i_usage = {:?}, rop = {:?}}}" , hdc , x_dest , y_dest , dest_width , dest_height , x_src , y_src , src_width , src_height , lp_bits , lpbmi , i_usage , rop ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.StretchDIBits(
+                hdc,
+                x_dest,
+                y_dest,
+                dest_width,
+                dest_height,
+                x_src,
+                y_src,
+                src_width,
+                src_height,
+                lp_bits,
+                lpbmi,
+                i_usage,
+                rop,
+            );
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_StrokeAndFillPath(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "StrokeAndFillPath",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}}}" , hdc ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.StrokeAndFillPath(hdc);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_StrokePath(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "StrokePath");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}}}" , hdc ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.StrokePath(hdc);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_SubtractRect(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "SubtractRect",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let lprc_dst = call.get_arg();
+            let lprc_src_1 = call.get_arg();
+            let lprc_src_2 = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{lprc_dst = {:?}, lprc_src_1 = {:?}, lprc_src_2 = {:?}}}",
+                            lprc_dst, lprc_src_1, lprc_src_2
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.SubtractRect(lprc_dst, lprc_src_1, lprc_src_2);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_TTCharToUnicode(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "TTCharToUnicode",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let h_dc = call.get_arg();
+            let puc_char_codes = call.get_arg();
+            let ul_char_code_size = call.get_arg();
+            let pus_short_codes = call.get_arg();
+            let ul_short_code_size = call.get_arg();
+            let ul_flags = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{h_dc = {:?}, puc_char_codes = {:?}, ul_char_code_size = {:?}, pus_short_codes = {:?}, ul_short_code_size = {:?}, ul_flags = {:?}}}" , h_dc , puc_char_codes , ul_char_code_size , pus_short_codes , ul_short_code_size , ul_flags ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.TTCharToUnicode(
+                h_dc,
+                puc_char_codes,
+                ul_char_code_size,
+                pus_short_codes,
+                ul_short_code_size,
+                ul_flags,
+            );
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_TTDeleteEmbeddedFont(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "TTDeleteEmbeddedFont",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let h_font_reference = call.get_arg();
+            let ul_flags = call.get_arg();
+            let pul_status = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{h_font_reference = {:?}, ul_flags = {:?}, pul_status = {:?}}}" , h_font_reference , ul_flags , pul_status ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.TTDeleteEmbeddedFont(h_font_reference, ul_flags, pul_status);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_TTEmbedFont(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "TTEmbedFont");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let h_dc = call.get_arg();
+            let ul_flags = call.get_arg();
+            let ul_char_set = call.get_arg();
+            let pul_priv_status = call.get_arg();
+            let pul_status = call.get_arg();
+            let lpfn_write_to_stream = call.get_arg();
+            let lpv_write_stream = call.get_arg();
+            let pus_char_code_set = call.get_arg();
+            let us_char_code_count = call.get_arg();
+            let us_language = call.get_arg();
+            let p_tt_embed_info = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{h_dc = {:?}, ul_flags = {:?}, ul_char_set = {:?}, pul_priv_status = {:?}, pul_status = {:?}, lpfn_write_to_stream = {:?}, lpv_write_stream = {:?}, pus_char_code_set = {:?}, us_char_code_count = {:?}, us_language = {:?}, p_tt_embed_info = {:?}}}" , h_dc , ul_flags , ul_char_set , pul_priv_status , pul_status , lpfn_write_to_stream , lpv_write_stream , pus_char_code_set , us_char_code_count , us_language , p_tt_embed_info ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.TTEmbedFont(
+                h_dc,
+                ul_flags,
+                ul_char_set,
+                pul_priv_status,
+                pul_status,
+                lpfn_write_to_stream,
+                lpv_write_stream,
+                pus_char_code_set,
+                us_char_code_count,
+                us_language,
+                p_tt_embed_info,
+            );
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_TTEmbedFontEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "TTEmbedFontEx",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let h_dc = call.get_arg();
+            let ul_flags = call.get_arg();
+            let ul_char_set = call.get_arg();
+            let pul_priv_status = call.get_arg();
+            let pul_status = call.get_arg();
+            let lpfn_write_to_stream = call.get_arg();
+            let lpv_write_stream = call.get_arg();
+            let pul_char_code_set = call.get_arg();
+            let us_char_code_count = call.get_arg();
+            let us_language = call.get_arg();
+            let p_tt_embed_info = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{h_dc = {:?}, ul_flags = {:?}, ul_char_set = {:?}, pul_priv_status = {:?}, pul_status = {:?}, lpfn_write_to_stream = {:?}, lpv_write_stream = {:?}, pul_char_code_set = {:?}, us_char_code_count = {:?}, us_language = {:?}, p_tt_embed_info = {:?}}}" , h_dc , ul_flags , ul_char_set , pul_priv_status , pul_status , lpfn_write_to_stream , lpv_write_stream , pul_char_code_set , us_char_code_count , us_language , p_tt_embed_info ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.TTEmbedFontEx(
+                h_dc,
+                ul_flags,
+                ul_char_set,
+                pul_priv_status,
+                pul_status,
+                lpfn_write_to_stream,
+                lpv_write_stream,
+                pul_char_code_set,
+                us_char_code_count,
+                us_language,
+                p_tt_embed_info,
+            );
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_TTEmbedFontFromFileA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "TTEmbedFontFromFileA",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let h_dc = call.get_arg();
+            let sz_font_file_name = call.get_arg();
+            let us_ttc_index = call.get_arg();
+            let ul_flags = call.get_arg();
+            let ul_char_set = call.get_arg();
+            let pul_priv_status = call.get_arg();
+            let pul_status = call.get_arg();
+            let lpfn_write_to_stream = call.get_arg();
+            let lpv_write_stream = call.get_arg();
+            let pus_char_code_set = call.get_arg();
+            let us_char_code_count = call.get_arg();
+            let us_language = call.get_arg();
+            let p_tt_embed_info = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{h_dc = {:?}, sz_font_file_name = {:?}, us_ttc_index = {:?}, ul_flags = {:?}, ul_char_set = {:?}, pul_priv_status = {:?}, pul_status = {:?}, lpfn_write_to_stream = {:?}, lpv_write_stream = {:?}, pus_char_code_set = {:?}, us_char_code_count = {:?}, us_language = {:?}, p_tt_embed_info = {:?}}}" , h_dc , sz_font_file_name , us_ttc_index , ul_flags , ul_char_set , pul_priv_status , pul_status , lpfn_write_to_stream , lpv_write_stream , pus_char_code_set , us_char_code_count , us_language , p_tt_embed_info ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.TTEmbedFontFromFileA(
+                h_dc,
+                sz_font_file_name,
+                us_ttc_index,
+                ul_flags,
+                ul_char_set,
+                pul_priv_status,
+                pul_status,
+                lpfn_write_to_stream,
+                lpv_write_stream,
+                pus_char_code_set,
+                us_char_code_count,
+                us_language,
+                p_tt_embed_info,
+            );
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_TTEnableEmbeddingForFacename(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "TTEnableEmbeddingForFacename",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let lpsz_facename = call.get_arg();
+            let b_enable = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{lpsz_facename = {:?}, b_enable = {:?}}}",
+                            lpsz_facename, b_enable
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.TTEnableEmbeddingForFacename(lpsz_facename, b_enable);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_TTGetEmbeddedFontInfo(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "TTGetEmbeddedFontInfo",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let ul_flags = call.get_arg();
+            let pul_priv_status = call.get_arg();
+            let ul_privs = call.get_arg();
+            let pul_status = call.get_arg();
+            let lpfn_read_from_stream = call.get_arg();
+            let lpv_read_stream = call.get_arg();
+            let p_tt_load_info = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{ul_flags = {:?}, pul_priv_status = {:?}, ul_privs = {:?}, pul_status = {:?}, lpfn_read_from_stream = {:?}, lpv_read_stream = {:?}, p_tt_load_info = {:?}}}" , ul_flags , pul_priv_status , ul_privs , pul_status , lpfn_read_from_stream , lpv_read_stream , p_tt_load_info ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.TTGetEmbeddedFontInfo(
+                ul_flags,
+                pul_priv_status,
+                ul_privs,
+                pul_status,
+                lpfn_read_from_stream,
+                lpv_read_stream,
+                p_tt_load_info,
+            );
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_TTGetEmbeddingType(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "TTGetEmbeddingType",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let h_dc = call.get_arg();
+            let pul_embed_type = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{h_dc = {:?}, pul_embed_type = {:?}}}",
+                            h_dc, pul_embed_type
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.TTGetEmbeddingType(h_dc, pul_embed_type);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_TTGetNewFontName(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "TTGetNewFontName",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let ph_font_reference = call.get_arg();
+            let wz_win_family_name = call.get_arg();
+            let cch_max_win_name = call.get_arg();
+            let sz_mac_family_name = call.get_arg();
+            let cch_max_mac_name = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{ph_font_reference = {:?}, wz_win_family_name = {:?}, cch_max_win_name = {:?}, sz_mac_family_name = {:?}, cch_max_mac_name = {:?}}}" , ph_font_reference , wz_win_family_name , cch_max_win_name , sz_mac_family_name , cch_max_mac_name ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.TTGetNewFontName(
+                ph_font_reference,
+                wz_win_family_name,
+                cch_max_win_name,
+                sz_mac_family_name,
+                cch_max_mac_name,
+            );
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_TTIsEmbeddingEnabled(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "TTIsEmbeddingEnabled",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let h_dc = call.get_arg();
+            let pb_enabled = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{h_dc = {:?}, pb_enabled = {:?}}}",
+                            h_dc, pb_enabled
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.TTIsEmbeddingEnabled(h_dc, pb_enabled);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_TTIsEmbeddingEnabledForFacename(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "TTIsEmbeddingEnabledForFacename",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let lpsz_facename = call.get_arg();
+            let pb_enabled = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{lpsz_facename = {:?}, pb_enabled = {:?}}}",
+                            lpsz_facename, pb_enabled
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.TTIsEmbeddingEnabledForFacename(lpsz_facename, pb_enabled);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_TTLoadEmbeddedFont(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "TTLoadEmbeddedFont",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let ph_font_reference = call.get_arg();
+            let ul_flags = call.get_arg();
+            let pul_priv_status = call.get_arg();
+            let ul_privs = call.get_arg();
+            let pul_status = call.get_arg();
+            let lpfn_read_from_stream = call.get_arg();
+            let lpv_read_stream = call.get_arg();
+            let sz_win_family_name = call.get_arg();
+            let sz_mac_family_name = call.get_arg();
+            let p_tt_load_info = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{ph_font_reference = {:?}, ul_flags = {:?}, pul_priv_status = {:?}, ul_privs = {:?}, pul_status = {:?}, lpfn_read_from_stream = {:?}, lpv_read_stream = {:?}, sz_win_family_name = {:?}, sz_mac_family_name = {:?}, p_tt_load_info = {:?}}}" , ph_font_reference , ul_flags , pul_priv_status , ul_privs , pul_status , lpfn_read_from_stream , lpv_read_stream , sz_win_family_name , sz_mac_family_name , p_tt_load_info ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.TTLoadEmbeddedFont(
+                ph_font_reference,
+                ul_flags,
+                pul_priv_status,
+                ul_privs,
+                pul_status,
+                lpfn_read_from_stream,
+                lpv_read_stream,
+                sz_win_family_name,
+                sz_mac_family_name,
+                p_tt_load_info,
+            );
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_TTRunValidationTests(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "TTRunValidationTests",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let h_dc = call.get_arg();
+            let p_test_param = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{h_dc = {:?}, p_test_param = {:?}}}",
+                            h_dc, p_test_param
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.TTRunValidationTests(h_dc, p_test_param);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_TTRunValidationTestsEx(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "TTRunValidationTestsEx",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let h_dc = call.get_arg();
+            let p_test_param = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{h_dc = {:?}, p_test_param = {:?}}}",
+                            h_dc, p_test_param
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.TTRunValidationTestsEx(h_dc, p_test_param);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_TabbedTextOutA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "TabbedTextOutA",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let x = call.get_arg();
+            let y = call.get_arg();
+            let lp_string = call.get_arg();
+            let ch_count = call.get_arg();
+            let n_tab_positions = call.get_arg();
+            let lpn_tab_stop_positions = call.get_arg();
+            let n_tab_origin = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, x = {:?}, y = {:?}, lp_string = {:?}, ch_count = {:?}, n_tab_positions = {:?}, lpn_tab_stop_positions = {:?}, n_tab_origin = {:?}}}" , hdc , x , y , lp_string , ch_count , n_tab_positions , lpn_tab_stop_positions , n_tab_origin ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.TabbedTextOutA(
+                hdc,
+                x,
+                y,
+                lp_string,
+                ch_count,
+                n_tab_positions,
+                lpn_tab_stop_positions,
+                n_tab_origin,
+            );
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_TabbedTextOutW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "TabbedTextOutW",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let x = call.get_arg();
+            let y = call.get_arg();
+            let lp_string = call.get_arg();
+            let ch_count = call.get_arg();
+            let n_tab_positions = call.get_arg();
+            let lpn_tab_stop_positions = call.get_arg();
+            let n_tab_origin = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, x = {:?}, y = {:?}, lp_string = {:?}, ch_count = {:?}, n_tab_positions = {:?}, lpn_tab_stop_positions = {:?}, n_tab_origin = {:?}}}" , hdc , x , y , lp_string , ch_count , n_tab_positions , lpn_tab_stop_positions , n_tab_origin ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.TabbedTextOutW(
+                hdc,
+                x,
+                y,
+                lp_string,
+                ch_count,
+                n_tab_positions,
+                lpn_tab_stop_positions,
+                n_tab_origin,
+            );
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_TextOutA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "TextOutA");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let x = call.get_arg();
+            let y = call.get_arg();
+            let lp_string = call.get_arg();
+            let c = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, x = {:?}, y = {:?}, lp_string = {:?}, c = {:?}}}" , hdc , x , y , lp_string , c ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.TextOutA(hdc, x, y, lp_string, c);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_TextOutW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "TextOutW");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            let x = call.get_arg();
+            let y = call.get_arg();
+            let lp_string = call.get_arg();
+            let c = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, x = {:?}, y = {:?}, lp_string = {:?}, c = {:?}}}" , hdc , x , y , lp_string , c ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.TextOutW(hdc, x, y, lp_string, c);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_TransparentBlt(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "TransparentBlt",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc_dest = call.get_arg();
+            let xorigin_dest = call.get_arg();
+            let yorigin_dest = call.get_arg();
+            let w_dest = call.get_arg();
+            let h_dest = call.get_arg();
+            let hdc_src = call.get_arg();
+            let xorigin_src = call.get_arg();
+            let yorigin_src = call.get_arg();
+            let w_src = call.get_arg();
+            let h_src = call.get_arg();
+            let cr_transparent = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc_dest = {:?}, xorigin_dest = {:?}, yorigin_dest = {:?}, w_dest = {:?}, h_dest = {:?}, hdc_src = {:?}, xorigin_src = {:?}, yorigin_src = {:?}, w_src = {:?}, h_src = {:?}, cr_transparent = {:?}}}" , hdc_dest , xorigin_dest , yorigin_dest , w_dest , h_dest , hdc_src , xorigin_src , yorigin_src , w_src , h_src , cr_transparent ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.TransparentBlt(
+                hdc_dest,
+                xorigin_dest,
+                yorigin_dest,
+                w_dest,
+                h_dest,
+                hdc_src,
+                xorigin_src,
+                yorigin_src,
+                w_src,
+                h_src,
+                cr_transparent,
+            );
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_UnionRect(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "UnionRect");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let lprc_dst = call.get_arg();
+            let lprc_src_1 = call.get_arg();
+            let lprc_src_2 = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{lprc_dst = {:?}, lprc_src_1 = {:?}, lprc_src_2 = {:?}}}",
+                            lprc_dst, lprc_src_1, lprc_src_2
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.UnionRect(lprc_dst, lprc_src_1, lprc_src_2);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_UnrealizeObject(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "UnrealizeObject",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let h = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("    args = {{h = {:?}}}", h) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.UnrealizeObject(h);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_UpdateColors(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "UpdateColors",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}}}" , hdc ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.UpdateColors(hdc);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_UpdateWindow(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "UpdateWindow",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let h_wnd = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("    args = {{h_wnd = {:?}}}", h_wnd)
+                            as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.UpdateWindow(h_wnd);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_ValidateRect(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "ValidateRect",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let h_wnd = call.get_arg();
+            let lp_rect = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{h_wnd = {:?}, lp_rect = {:?}}}",
+                            h_wnd, lp_rect
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.ValidateRect(h_wnd, lp_rect);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_ValidateRgn(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "ValidateRgn");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let h_wnd = call.get_arg();
+            let h_rgn = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{h_wnd = {:?}, h_rgn = {:?}}}",
+                            h_wnd, h_rgn
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.ValidateRgn(h_wnd, h_rgn);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_WidenPath(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "WidenPath");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let hdc = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}}}" , hdc ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.WidenPath(hdc);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_WindowFromDC(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "WindowFromDC",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let h_dc = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("    args = {{h_dc = {:?}}}", h_dc)
+                            as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.WindowFromDC(h_dc);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_wglSwapMultipleBuffers(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "wglSwapMultipleBuffers",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::Graphics::Gdi::get_api(win32);
+            let param_0 = call.get_arg();
+            let param_1 = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{param_0 = {:?}, param_1 = {:?}}}",
+                            param_0, param_1
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.wglSwapMultipleBuffers(param_0, param_1);
             if trace_event_enabled {
                 let fields = callsite.metadata().fields();
                 tracing::event::Event::dispatch(
@@ -57031,6 +73869,39 @@ extern "C" fn thunk_CreateAcceleratorTableW(
     )
 }
 #[no_mangle]
+extern "C" fn thunk_CreateCaret(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "CreateCaret");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::UI::WindowsAndMessaging::get_api(win32);
+            let h_wnd = call.get_arg();
+            let h_bitmap = call.get_arg();
+            let n_width = call.get_arg();
+            let n_height = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{h_wnd = {:?}, h_bitmap = {:?}, n_width = {:?}, n_height = {:?}}}" , h_wnd , h_bitmap , n_width , n_height ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.CreateCaret(h_wnd, h_bitmap, n_width, n_height);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
 extern "C" fn thunk_CreateCursor(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
@@ -57373,6 +74244,48 @@ extern "C" fn thunk_CreateIconFromResourceEx(
                 cy_desired,
                 flags,
             );
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_CreateIconIndirect(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "CreateIconIndirect",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::UI::WindowsAndMessaging::get_api(win32);
+            let piconinfo = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("    args = {{piconinfo = {:?}}}", piconinfo)
+                            as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.CreateIconIndirect(piconinfo);
             if trace_event_enabled {
                 let fields = callsite.metadata().fields();
                 tracing::event::Event::dispatch(
@@ -58684,6 +75597,96 @@ extern "C" fn thunk_DragObject(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
+extern "C" fn thunk_DrawIcon(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "DrawIcon");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::UI::WindowsAndMessaging::get_api(win32);
+            let h_dc = call.get_arg();
+            let x = call.get_arg();
+            let y = call.get_arg();
+            let h_icon = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{h_dc = {:?}, x = {:?}, y = {:?}, h_icon = {:?}}}",
+                            h_dc, x, y, h_icon
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.DrawIcon(h_dc, x, y, h_icon);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_DrawIconEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "DrawIconEx");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::UI::WindowsAndMessaging::get_api(win32);
+            let hdc = call.get_arg();
+            let x_left = call.get_arg();
+            let y_top = call.get_arg();
+            let h_icon = call.get_arg();
+            let cx_width = call.get_arg();
+            let cy_width = call.get_arg();
+            let istep_if_ani_cur = call.get_arg();
+            let hbr_flicker_free_draw = call.get_arg();
+            let di_flags = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hdc = {:?}, x_left = {:?}, y_top = {:?}, h_icon = {:?}, cx_width = {:?}, cy_width = {:?}, istep_if_ani_cur = {:?}, hbr_flicker_free_draw = {:?}, di_flags = {:?}}}" , hdc , x_left , y_top , h_icon , cx_width , cy_width , istep_if_ani_cur , hbr_flicker_free_draw , di_flags ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.DrawIconEx(
+                hdc,
+                x_left,
+                y_top,
+                h_icon,
+                cx_width,
+                cy_width,
+                istep_if_ani_cur,
+                hbr_flicker_free_draw,
+                di_flags,
+            );
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
 extern "C" fn thunk_DrawMenuBar(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "DrawMenuBar");
@@ -59590,6 +76593,166 @@ extern "C" fn thunk_GetCaretPos(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
+extern "C" fn thunk_GetClassInfoA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetClassInfoA",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::UI::WindowsAndMessaging::get_api(win32);
+            let h_instance = call.get_arg();
+            let lp_class_name = call.get_arg();
+            let lp_wnd_class = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{h_instance = {:?}, lp_class_name = {:?}, lp_wnd_class = {:?}}}" , h_instance , lp_class_name , lp_wnd_class ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.GetClassInfoA(h_instance, lp_class_name, lp_wnd_class);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetClassInfoExA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetClassInfoExA",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::UI::WindowsAndMessaging::get_api(win32);
+            let h_instance = call.get_arg();
+            let lpsz_class = call.get_arg();
+            let lpwcx = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{h_instance = {:?}, lpsz_class = {:?}, lpwcx = {:?}}}",
+                            h_instance, lpsz_class, lpwcx
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.GetClassInfoExA(h_instance, lpsz_class, lpwcx);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetClassInfoExW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetClassInfoExW",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::UI::WindowsAndMessaging::get_api(win32);
+            let h_instance = call.get_arg();
+            let lpsz_class = call.get_arg();
+            let lpwcx = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{h_instance = {:?}, lpsz_class = {:?}, lpwcx = {:?}}}",
+                            h_instance, lpsz_class, lpwcx
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.GetClassInfoExW(h_instance, lpsz_class, lpwcx);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetClassInfoW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetClassInfoW",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::UI::WindowsAndMessaging::get_api(win32);
+            let h_instance = call.get_arg();
+            let lp_class_name = call.get_arg();
+            let lp_wnd_class = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{h_instance = {:?}, lp_class_name = {:?}, lp_wnd_class = {:?}}}" , h_instance , lp_class_name , lp_wnd_class ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.GetClassInfoW(h_instance, lp_class_name, lp_wnd_class);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
 extern "C" fn thunk_GetClassLongA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
@@ -60344,6 +77507,136 @@ extern "C" fn thunk_GetGUIThreadInfo(
     )
 }
 #[no_mangle]
+extern "C" fn thunk_GetIconInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetIconInfo");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::UI::WindowsAndMessaging::get_api(win32);
+            let h_icon = call.get_arg();
+            let piconinfo = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{h_icon = {:?}, piconinfo = {:?}}}",
+                            h_icon, piconinfo
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.GetIconInfo(h_icon, piconinfo);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetIconInfoExA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetIconInfoExA",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::UI::WindowsAndMessaging::get_api(win32);
+            let hicon = call.get_arg();
+            let piconinfo = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hicon = {:?}, piconinfo = {:?}}}",
+                            hicon, piconinfo
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.GetIconInfoExA(hicon, piconinfo);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetIconInfoExW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetIconInfoExW",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::UI::WindowsAndMessaging::get_api(win32);
+            let hicon = call.get_arg();
+            let piconinfo = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{hicon = {:?}, piconinfo = {:?}}}",
+                            hicon, piconinfo
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.GetIconInfoExW(hicon, piconinfo);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
 extern "C" fn thunk_GetInputState(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
@@ -60622,6 +77915,46 @@ extern "C" fn thunk_GetMenuDefaultItem(
     )
 }
 #[no_mangle]
+extern "C" fn thunk_GetMenuInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetMenuInfo");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::UI::WindowsAndMessaging::get_api(win32);
+            let param_0 = call.get_arg();
+            let param_1 = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{param_0 = {:?}, param_1 = {:?}}}",
+                            param_0, param_1
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.GetMenuInfo(param_0, param_1);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
 extern "C" fn thunk_GetMenuItemCount(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
@@ -60691,6 +78024,82 @@ extern "C" fn thunk_GetMenuItemID(context: &mut ExtendedContext, memory: FlatMem
                 );
             }
             let res = api.GetMenuItemID(h_menu, n_pos);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetMenuItemInfoA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetMenuItemInfoA",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::UI::WindowsAndMessaging::get_api(win32);
+            let hmenu = call.get_arg();
+            let item = call.get_arg();
+            let f_by_position = call.get_arg();
+            let lpmii = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hmenu = {:?}, item = {:?}, f_by_position = {:?}, lpmii = {:?}}}" , hmenu , item , f_by_position , lpmii ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.GetMenuItemInfoA(hmenu, item, f_by_position, lpmii);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_GetMenuItemInfoW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "GetMenuItemInfoW",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::UI::WindowsAndMessaging::get_api(win32);
+            let hmenu = call.get_arg();
+            let item = call.get_arg();
+            let f_by_position = call.get_arg();
+            let lpmii = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hmenu = {:?}, item = {:?}, f_by_position = {:?}, lpmii = {:?}}}" , hmenu , item , f_by_position , lpmii ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.GetMenuItemInfoW(hmenu, item, f_by_position, lpmii);
             if trace_event_enabled {
                 let fields = callsite.metadata().fields();
                 tracing::event::Event::dispatch(
@@ -62700,6 +80109,82 @@ extern "C" fn thunk_InsertMenuA(context: &mut ExtendedContext, memory: FlatMemor
                 tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{h_menu = {:?}, u_position = {:?}, u_flags = {:?}, u_id_new_item = {:?}, lp_new_item = {:?}}}" , h_menu , u_position , u_flags , u_id_new_item , lp_new_item ) as & dyn tracing :: Value ) , ) ] ) ) ;
             }
             let res = api.InsertMenuA(h_menu, u_position, u_flags, u_id_new_item, lp_new_item);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_InsertMenuItemA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "InsertMenuItemA",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::UI::WindowsAndMessaging::get_api(win32);
+            let hmenu = call.get_arg();
+            let item = call.get_arg();
+            let f_by_position = call.get_arg();
+            let lpmi = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hmenu = {:?}, item = {:?}, f_by_position = {:?}, lpmi = {:?}}}" , hmenu , item , f_by_position , lpmi ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.InsertMenuItemA(hmenu, item, f_by_position, lpmi);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_InsertMenuItemW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "InsertMenuItemW",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::UI::WindowsAndMessaging::get_api(win32);
+            let hmenu = call.get_arg();
+            let item = call.get_arg();
+            let f_by_position = call.get_arg();
+            let lpmi = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hmenu = {:?}, item = {:?}, f_by_position = {:?}, lpmi = {:?}}}" , hmenu , item , f_by_position , lpmi ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.InsertMenuItemW(hmenu, item, f_by_position, lpmi);
             if trace_event_enabled {
                 let fields = callsite.metadata().fields();
                 tracing::event::Event::dispatch(
@@ -65594,6 +83079,178 @@ extern "C" fn thunk_RealGetWindowClassW(
     )
 }
 #[no_mangle]
+extern "C" fn thunk_RegisterClassA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "RegisterClassA",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::UI::WindowsAndMessaging::get_api(win32);
+            let lp_wnd_class = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(
+                            &format_args!("    args = {{lp_wnd_class = {:?}}}", lp_wnd_class)
+                                as &dyn tracing::Value,
+                        ),
+                    )]),
+                );
+            }
+            let res = api.RegisterClassA(lp_wnd_class);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_RegisterClassExA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "RegisterClassExA",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::UI::WindowsAndMessaging::get_api(win32);
+            let param_0 = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("    args = {{param_0 = {:?}}}", param_0)
+                            as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.RegisterClassExA(param_0);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_RegisterClassExW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "RegisterClassExW",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::UI::WindowsAndMessaging::get_api(win32);
+            let param_0 = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("    args = {{param_0 = {:?}}}", param_0)
+                            as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.RegisterClassExW(param_0);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_RegisterClassW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "RegisterClassW",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::UI::WindowsAndMessaging::get_api(win32);
+            let lp_wnd_class = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(
+                            &format_args!("    args = {{lp_wnd_class = {:?}}}", lp_wnd_class)
+                                as &dyn tracing::Value,
+                        ),
+                    )]),
+                );
+            }
+            let res = api.RegisterClassW(lp_wnd_class);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
 extern "C" fn thunk_RegisterShellHookWindow(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
@@ -65880,6 +83537,50 @@ extern "C" fn thunk_ReplyMessage(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
+extern "C" fn thunk_ScrollDC(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "ScrollDC");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::UI::WindowsAndMessaging::get_api(win32);
+            let h_dc = call.get_arg();
+            let dx = call.get_arg();
+            let dy = call.get_arg();
+            let lprc_scroll = call.get_arg();
+            let lprc_clip = call.get_arg();
+            let hrgn_update = call.get_arg();
+            let lprc_update = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{h_dc = {:?}, dx = {:?}, dy = {:?}, lprc_scroll = {:?}, lprc_clip = {:?}, hrgn_update = {:?}, lprc_update = {:?}}}" , h_dc , dx , dy , lprc_scroll , lprc_clip , hrgn_update , lprc_update ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.ScrollDC(
+                h_dc,
+                dx,
+                dy,
+                lprc_scroll,
+                lprc_clip,
+                hrgn_update,
+                lprc_update,
+            );
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
 extern "C" fn thunk_ScrollWindow(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
@@ -65901,6 +83602,57 @@ extern "C" fn thunk_ScrollWindow(context: &mut ExtendedContext, memory: FlatMemo
                 tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{h_wnd = {:?}, x_amount = {:?}, y_amount = {:?}, lp_rect = {:?}, lp_clip_rect = {:?}}}" , h_wnd , x_amount , y_amount , lp_rect , lp_clip_rect ) as & dyn tracing :: Value ) , ) ] ) ) ;
             }
             let res = api.ScrollWindow(h_wnd, x_amount, y_amount, lp_rect, lp_clip_rect);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_ScrollWindowEx(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "ScrollWindowEx",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::UI::WindowsAndMessaging::get_api(win32);
+            let h_wnd = call.get_arg();
+            let dx = call.get_arg();
+            let dy = call.get_arg();
+            let prc_scroll = call.get_arg();
+            let prc_clip = call.get_arg();
+            let hrgn_update = call.get_arg();
+            let prc_update = call.get_arg();
+            let flags = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{h_wnd = {:?}, dx = {:?}, dy = {:?}, prc_scroll = {:?}, prc_clip = {:?}, hrgn_update = {:?}, prc_update = {:?}, flags = {:?}}}" , h_wnd , dx , dy , prc_scroll , prc_clip , hrgn_update , prc_update , flags ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.ScrollWindowEx(
+                h_wnd,
+                dx,
+                dy,
+                prc_scroll,
+                prc_clip,
+                hrgn_update,
+                prc_update,
+                flags,
+            );
             if trace_event_enabled {
                 let fields = callsite.metadata().fields();
                 tracing::event::Event::dispatch(
@@ -66985,6 +84737,167 @@ extern "C" fn thunk_SetMenuDefaultItem(
                 );
             }
             let res = api.SetMenuDefaultItem(h_menu, u_item, f_by_pos);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_SetMenuInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite =
+        crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "SetMenuInfo");
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::UI::WindowsAndMessaging::get_api(win32);
+            let param_0 = call.get_arg();
+            let param_1 = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{param_0 = {:?}, param_1 = {:?}}}",
+                            param_0, param_1
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.SetMenuInfo(param_0, param_1);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_SetMenuItemBitmaps(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "SetMenuItemBitmaps",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::UI::WindowsAndMessaging::get_api(win32);
+            let h_menu = call.get_arg();
+            let u_position = call.get_arg();
+            let u_flags = call.get_arg();
+            let h_bitmap_unchecked = call.get_arg();
+            let h_bitmap_checked = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{h_menu = {:?}, u_position = {:?}, u_flags = {:?}, h_bitmap_unchecked = {:?}, h_bitmap_checked = {:?}}}" , h_menu , u_position , u_flags , h_bitmap_unchecked , h_bitmap_checked ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.SetMenuItemBitmaps(
+                h_menu,
+                u_position,
+                u_flags,
+                h_bitmap_unchecked,
+                h_bitmap_checked,
+            );
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_SetMenuItemInfoA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "SetMenuItemInfoA",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::UI::WindowsAndMessaging::get_api(win32);
+            let hmenu = call.get_arg();
+            let item = call.get_arg();
+            let f_by_positon = call.get_arg();
+            let lpmii = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hmenu = {:?}, item = {:?}, f_by_positon = {:?}, lpmii = {:?}}}" , hmenu , item , f_by_positon , lpmii ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.SetMenuItemInfoA(hmenu, item, f_by_positon, lpmii);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_SetMenuItemInfoW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "SetMenuItemInfoW",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::UI::WindowsAndMessaging::get_api(win32);
+            let hmenu = call.get_arg();
+            let item = call.get_arg();
+            let f_by_positon = call.get_arg();
+            let lpmii = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{hmenu = {:?}, item = {:?}, f_by_positon = {:?}, lpmii = {:?}}}" , hmenu , item , f_by_positon , lpmii ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.SetMenuItemInfoW(hmenu, item, f_by_positon, lpmii);
             if trace_event_enabled {
                 let fields = callsite.metadata().fields();
                 tracing::event::Event::dispatch(
@@ -68775,6 +86688,96 @@ extern "C" fn thunk_UnregisterClassW(
                 );
             }
             let res = api.UnregisterClassW(lp_class_name, h_instance);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_UpdateLayeredWindow(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "UpdateLayeredWindow",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::UI::WindowsAndMessaging::get_api(win32);
+            let h_wnd = call.get_arg();
+            let hdc_dst = call.get_arg();
+            let ppt_dst = call.get_arg();
+            let psize = call.get_arg();
+            let hdc_src = call.get_arg();
+            let ppt_src = call.get_arg();
+            let cr_key = call.get_arg();
+            let pblend = call.get_arg();
+            let dw_flags = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{h_wnd = {:?}, hdc_dst = {:?}, ppt_dst = {:?}, psize = {:?}, hdc_src = {:?}, ppt_src = {:?}, cr_key = {:?}, pblend = {:?}, dw_flags = {:?}}}" , h_wnd , hdc_dst , ppt_dst , psize , hdc_src , ppt_src , cr_key , pblend , dw_flags ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let res = api.UpdateLayeredWindow(
+                h_wnd, hdc_dst, ppt_dst, psize, hdc_src, ppt_src, cr_key, pblend, dw_flags,
+            );
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_UpdateLayeredWindowIndirect(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "UpdateLayeredWindowIndirect",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::UI::WindowsAndMessaging::get_api(win32);
+            let h_wnd = call.get_arg();
+            let p_ulw_info = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{h_wnd = {:?}, p_ulw_info = {:?}}}",
+                            h_wnd, p_ulw_info
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.UpdateLayeredWindowIndirect(h_wnd, p_ulw_info);
             if trace_event_enabled {
                 let fields = callsite.metadata().fields();
                 tracing::event::Event::dispatch(

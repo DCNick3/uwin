@@ -2637,48 +2637,26 @@ impl FromIntoMemory for HARDWAREHOOKSTRUCT {
         16u32 as usize
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub const HBMMENU_CALLBACK: super::super::Graphics::Gdi::HBITMAP =
     super::super::Graphics::Gdi::HBITMAP(-1i32 as _);
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub const HBMMENU_MBAR_CLOSE: super::super::Graphics::Gdi::HBITMAP =
     super::super::Graphics::Gdi::HBITMAP(5i32 as _);
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub const HBMMENU_MBAR_CLOSE_D: super::super::Graphics::Gdi::HBITMAP =
     super::super::Graphics::Gdi::HBITMAP(6i32 as _);
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub const HBMMENU_MBAR_MINIMIZE: super::super::Graphics::Gdi::HBITMAP =
     super::super::Graphics::Gdi::HBITMAP(3i32 as _);
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub const HBMMENU_MBAR_MINIMIZE_D: super::super::Graphics::Gdi::HBITMAP =
     super::super::Graphics::Gdi::HBITMAP(7i32 as _);
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub const HBMMENU_MBAR_RESTORE: super::super::Graphics::Gdi::HBITMAP =
     super::super::Graphics::Gdi::HBITMAP(2i32 as _);
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub const HBMMENU_POPUP_CLOSE: super::super::Graphics::Gdi::HBITMAP =
     super::super::Graphics::Gdi::HBITMAP(8i32 as _);
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub const HBMMENU_POPUP_MAXIMIZE: super::super::Graphics::Gdi::HBITMAP =
     super::super::Graphics::Gdi::HBITMAP(10i32 as _);
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub const HBMMENU_POPUP_MINIMIZE: super::super::Graphics::Gdi::HBITMAP =
     super::super::Graphics::Gdi::HBITMAP(11i32 as _);
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub const HBMMENU_POPUP_RESTORE: super::super::Graphics::Gdi::HBITMAP =
     super::super::Graphics::Gdi::HBITMAP(9i32 as _);
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub const HBMMENU_SYSTEM: super::super::Graphics::Gdi::HBITMAP =
     super::super::Graphics::Gdi::HBITMAP(1i32 as _);
 pub const HCBT_ACTIVATE: u32 = 5u32;
@@ -2942,8 +2920,6 @@ pub const HWND_NOTOPMOST: super::super::Foundation::HWND =
     super::super::Foundation::HWND(-2i32 as _);
 pub const HWND_TOP: super::super::Foundation::HWND = super::super::Foundation::HWND(0i32 as _);
 pub const HWND_TOPMOST: super::super::Foundation::HWND = super::super::Foundation::HWND(-1i32 as _);
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct ICONINFO {
     pub fIcon: super::super::Foundation::BOOL,
     pub xHotspot: u32,
@@ -2951,18 +2927,12 @@ pub struct ICONINFO {
     pub hbmMask: super::super::Graphics::Gdi::HBITMAP,
     pub hbmColor: super::super::Graphics::Gdi::HBITMAP,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for ICONINFO {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for ICONINFO {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for ICONINFO {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_struct("ICONINFO")
@@ -2974,8 +2944,6 @@ impl ::core::fmt::Debug for ICONINFO {
             .finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for ICONINFO {
     fn eq(&self, other: &Self) -> bool {
         self.fIcon == other.fIcon
@@ -2985,11 +2953,7 @@ impl ::core::cmp::PartialEq for ICONINFO {
             && self.hbmColor == other.hbmColor
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for ICONINFO {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for ICONINFO {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 20u32 as usize);
@@ -3021,8 +2985,6 @@ impl FromIntoMemory for ICONINFO {
         20u32 as usize
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct ICONINFOEXA {
     pub cbSize: u32,
     pub fIcon: super::super::Foundation::BOOL,
@@ -3034,18 +2996,12 @@ pub struct ICONINFOEXA {
     pub szModName: [super::super::Foundation::CHAR; 260],
     pub szResName: [super::super::Foundation::CHAR; 260],
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for ICONINFOEXA {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for ICONINFOEXA {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for ICONINFOEXA {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_struct("ICONINFOEXA")
@@ -3061,8 +3017,6 @@ impl ::core::fmt::Debug for ICONINFOEXA {
             .finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for ICONINFOEXA {
     fn eq(&self, other: &Self) -> bool {
         self.cbSize == other.cbSize
@@ -3076,11 +3030,7 @@ impl ::core::cmp::PartialEq for ICONINFOEXA {
             && self.szResName == other.szResName
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for ICONINFOEXA {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for ICONINFOEXA {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 548u32 as usize);
@@ -3128,8 +3078,6 @@ impl FromIntoMemory for ICONINFOEXA {
         548u32 as usize
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct ICONINFOEXW {
     pub cbSize: u32,
     pub fIcon: super::super::Foundation::BOOL,
@@ -3141,18 +3089,12 @@ pub struct ICONINFOEXW {
     pub szModName: [u16; 260],
     pub szResName: [u16; 260],
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for ICONINFOEXW {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for ICONINFOEXW {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for ICONINFOEXW {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_struct("ICONINFOEXW")
@@ -3168,8 +3110,6 @@ impl ::core::fmt::Debug for ICONINFOEXW {
             .finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for ICONINFOEXW {
     fn eq(&self, other: &Self) -> bool {
         self.cbSize == other.cbSize
@@ -3183,11 +3123,7 @@ impl ::core::cmp::PartialEq for ICONINFOEXW {
             && self.szResName == other.szResName
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for ICONINFOEXW {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for ICONINFOEXW {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 548u32 as usize);
@@ -3231,8 +3167,6 @@ impl FromIntoMemory for ICONINFOEXW {
         548u32 as usize
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct ICONMETRICSA {
     pub cbSize: u32,
     pub iHorzSpacing: i32,
@@ -3240,18 +3174,12 @@ pub struct ICONMETRICSA {
     pub iTitleWrap: i32,
     pub lfFont: super::super::Graphics::Gdi::LOGFONTA,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for ICONMETRICSA {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for ICONMETRICSA {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for ICONMETRICSA {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_struct("ICONMETRICSA")
@@ -3263,8 +3191,6 @@ impl ::core::fmt::Debug for ICONMETRICSA {
             .finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for ICONMETRICSA {
     fn eq(&self, other: &Self) -> bool {
         self.cbSize == other.cbSize
@@ -3274,11 +3200,7 @@ impl ::core::cmp::PartialEq for ICONMETRICSA {
             && self.lfFont == other.lfFont
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for ICONMETRICSA {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for ICONMETRICSA {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 76u32 as usize);
@@ -3309,8 +3231,6 @@ impl FromIntoMemory for ICONMETRICSA {
         76u32 as usize
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct ICONMETRICSW {
     pub cbSize: u32,
     pub iHorzSpacing: i32,
@@ -3318,18 +3238,12 @@ pub struct ICONMETRICSW {
     pub iTitleWrap: i32,
     pub lfFont: super::super::Graphics::Gdi::LOGFONTW,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for ICONMETRICSW {}
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for ICONMETRICSW {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for ICONMETRICSW {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_struct("ICONMETRICSW")
@@ -3341,8 +3255,6 @@ impl ::core::fmt::Debug for ICONMETRICSW {
             .finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for ICONMETRICSW {
     fn eq(&self, other: &Self) -> bool {
         self.cbSize == other.cbSize
@@ -3352,11 +3264,7 @@ impl ::core::cmp::PartialEq for ICONMETRICSW {
             && self.lfFont == other.lfFont
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for ICONMETRICSW {}
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for ICONMETRICSW {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 76u32 as usize);
@@ -4224,8 +4132,6 @@ impl FromIntoMemory for MENUGETOBJECTINFO_FLAGS {
         4
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct MENUINFO {
     pub cbSize: u32,
     pub fMask: MENUINFO_MASK,
@@ -4235,18 +4141,12 @@ pub struct MENUINFO {
     pub dwContextHelpID: u32,
     pub dwMenuData: PtrRepr,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for MENUINFO {}
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for MENUINFO {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for MENUINFO {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_struct("MENUINFO")
@@ -4260,8 +4160,6 @@ impl ::core::fmt::Debug for MENUINFO {
             .finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for MENUINFO {
     fn eq(&self, other: &Self) -> bool {
         self.cbSize == other.cbSize
@@ -4273,11 +4171,7 @@ impl ::core::cmp::PartialEq for MENUINFO {
             && self.dwMenuData == other.dwMenuData
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for MENUINFO {}
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for MENUINFO {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 28u32 as usize);
@@ -4439,8 +4333,6 @@ impl FromIntoMemory for MENUINFO_STYLE {
         4
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct MENUITEMINFOA {
     pub cbSize: u32,
     pub fMask: MENU_ITEM_MASK,
@@ -4455,18 +4347,12 @@ pub struct MENUITEMINFOA {
     pub cch: u32,
     pub hbmpItem: super::super::Graphics::Gdi::HBITMAP,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for MENUITEMINFOA {}
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for MENUITEMINFOA {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for MENUITEMINFOA {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_struct("MENUITEMINFOA")
@@ -4485,8 +4371,6 @@ impl ::core::fmt::Debug for MENUITEMINFOA {
             .finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for MENUITEMINFOA {
     fn eq(&self, other: &Self) -> bool {
         self.cbSize == other.cbSize
@@ -4503,11 +4387,7 @@ impl ::core::cmp::PartialEq for MENUITEMINFOA {
             && self.hbmpItem == other.hbmpItem
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for MENUITEMINFOA {}
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for MENUITEMINFOA {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 48u32 as usize);
@@ -4560,8 +4440,6 @@ impl FromIntoMemory for MENUITEMINFOA {
         48u32 as usize
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct MENUITEMINFOW {
     pub cbSize: u32,
     pub fMask: MENU_ITEM_MASK,
@@ -4576,18 +4454,12 @@ pub struct MENUITEMINFOW {
     pub cch: u32,
     pub hbmpItem: super::super::Graphics::Gdi::HBITMAP,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for MENUITEMINFOW {}
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for MENUITEMINFOW {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for MENUITEMINFOW {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_struct("MENUITEMINFOW")
@@ -4606,8 +4478,6 @@ impl ::core::fmt::Debug for MENUITEMINFOW {
             .finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for MENUITEMINFOW {
     fn eq(&self, other: &Self) -> bool {
         self.cbSize == other.cbSize
@@ -4624,11 +4494,7 @@ impl ::core::cmp::PartialEq for MENUITEMINFOW {
             && self.hbmpItem == other.hbmpItem
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for MENUITEMINFOW {}
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for MENUITEMINFOW {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 48u32 as usize);
@@ -6508,8 +6374,6 @@ pub const NID_INTEGRATED_PEN: u32 = 4u32;
 pub const NID_INTEGRATED_TOUCH: u32 = 1u32;
 pub const NID_MULTI_INPUT: u32 = 64u32;
 pub const NID_READY: u32 = 128u32;
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct NONCLIENTMETRICSA {
     pub cbSize: u32,
     pub iBorderWidth: i32,
@@ -6528,18 +6392,12 @@ pub struct NONCLIENTMETRICSA {
     pub lfMessageFont: super::super::Graphics::Gdi::LOGFONTA,
     pub iPaddedBorderWidth: i32,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for NONCLIENTMETRICSA {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for NONCLIENTMETRICSA {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for NONCLIENTMETRICSA {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_struct("NONCLIENTMETRICSA")
@@ -6562,8 +6420,6 @@ impl ::core::fmt::Debug for NONCLIENTMETRICSA {
             .finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for NONCLIENTMETRICSA {
     fn eq(&self, other: &Self) -> bool {
         self.cbSize == other.cbSize
@@ -6584,11 +6440,7 @@ impl ::core::cmp::PartialEq for NONCLIENTMETRICSA {
             && self.iPaddedBorderWidth == other.iPaddedBorderWidth
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for NONCLIENTMETRICSA {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for NONCLIENTMETRICSA {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 344u32 as usize);
@@ -6661,8 +6513,6 @@ impl FromIntoMemory for NONCLIENTMETRICSA {
         344u32 as usize
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct NONCLIENTMETRICSW {
     pub cbSize: u32,
     pub iBorderWidth: i32,
@@ -6681,18 +6531,12 @@ pub struct NONCLIENTMETRICSW {
     pub lfMessageFont: super::super::Graphics::Gdi::LOGFONTW,
     pub iPaddedBorderWidth: i32,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for NONCLIENTMETRICSW {}
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for NONCLIENTMETRICSW {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for NONCLIENTMETRICSW {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_struct("NONCLIENTMETRICSW")
@@ -6715,8 +6559,6 @@ impl ::core::fmt::Debug for NONCLIENTMETRICSW {
             .finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for NONCLIENTMETRICSW {
     fn eq(&self, other: &Self) -> bool {
         self.cbSize == other.cbSize
@@ -6737,11 +6579,7 @@ impl ::core::cmp::PartialEq for NONCLIENTMETRICSW {
             && self.iPaddedBorderWidth == other.iPaddedBorderWidth
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for NONCLIENTMETRICSW {}
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for NONCLIENTMETRICSW {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 344u32 as usize);
@@ -9136,8 +8974,6 @@ pub const UIS_INITIALIZE: u32 = 3u32;
 pub const UIS_SET: u32 = 1u32;
 pub const UNICODE_NOCHAR: u32 = 65535u32;
 pub const UOI_TIMERPROC_EXCEPTION_SUPPRESSION: u32 = 7u32;
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct UPDATELAYEREDWINDOWINFO {
     pub cbSize: u32,
     pub hdcDst: super::super::Graphics::Gdi::HDC,
@@ -9150,18 +8986,12 @@ pub struct UPDATELAYEREDWINDOWINFO {
     pub dwFlags: UPDATE_LAYERED_WINDOW_FLAGS,
     pub prcDirty: ConstPtr<super::super::Foundation::RECT>,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for UPDATELAYEREDWINDOWINFO {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for UPDATELAYEREDWINDOWINFO {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for UPDATELAYEREDWINDOWINFO {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_struct("UPDATELAYEREDWINDOWINFO")
@@ -9178,8 +9008,6 @@ impl ::core::fmt::Debug for UPDATELAYEREDWINDOWINFO {
             .finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for UPDATELAYEREDWINDOWINFO {
     fn eq(&self, other: &Self) -> bool {
         self.cbSize == other.cbSize
@@ -9194,11 +9022,7 @@ impl ::core::cmp::PartialEq for UPDATELAYEREDWINDOWINFO {
             && self.prcDirty == other.prcDirty
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for UPDATELAYEREDWINDOWINFO {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for UPDATELAYEREDWINDOWINFO {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 40u32 as usize);
@@ -10201,8 +10025,6 @@ pub const WM_WTSSESSION_CHANGE: u32 = 689u32;
 pub const WM_XBUTTONDBLCLK: u32 = 525u32;
 pub const WM_XBUTTONDOWN: u32 = 523u32;
 pub const WM_XBUTTONUP: u32 = 524u32;
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct WNDCLASSA {
     pub style: WNDCLASS_STYLES,
     pub lpfnWndProc: WNDPROC,
@@ -10215,18 +10037,12 @@ pub struct WNDCLASSA {
     pub lpszMenuName: PCSTR,
     pub lpszClassName: PCSTR,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for WNDCLASSA {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for WNDCLASSA {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for WNDCLASSA {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_struct("WNDCLASSA")
@@ -10243,8 +10059,6 @@ impl ::core::fmt::Debug for WNDCLASSA {
             .finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for WNDCLASSA {
     fn eq(&self, other: &Self) -> bool {
         self.style == other.style
@@ -10259,11 +10073,7 @@ impl ::core::cmp::PartialEq for WNDCLASSA {
             && self.lpszClassName == other.lpszClassName
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for WNDCLASSA {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for WNDCLASSA {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 40u32 as usize);
@@ -10309,8 +10119,6 @@ impl FromIntoMemory for WNDCLASSA {
         40u32 as usize
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct WNDCLASSEXA {
     pub cbSize: u32,
     pub style: WNDCLASS_STYLES,
@@ -10325,18 +10133,12 @@ pub struct WNDCLASSEXA {
     pub lpszClassName: PCSTR,
     pub hIconSm: HICON,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for WNDCLASSEXA {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for WNDCLASSEXA {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for WNDCLASSEXA {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_struct("WNDCLASSEXA")
@@ -10355,8 +10157,6 @@ impl ::core::fmt::Debug for WNDCLASSEXA {
             .finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for WNDCLASSEXA {
     fn eq(&self, other: &Self) -> bool {
         self.cbSize == other.cbSize
@@ -10373,11 +10173,7 @@ impl ::core::cmp::PartialEq for WNDCLASSEXA {
             && self.hIconSm == other.hIconSm
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for WNDCLASSEXA {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for WNDCLASSEXA {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 48u32 as usize);
@@ -10429,8 +10225,6 @@ impl FromIntoMemory for WNDCLASSEXA {
         48u32 as usize
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct WNDCLASSEXW {
     pub cbSize: u32,
     pub style: WNDCLASS_STYLES,
@@ -10445,18 +10239,12 @@ pub struct WNDCLASSEXW {
     pub lpszClassName: PCWSTR,
     pub hIconSm: HICON,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for WNDCLASSEXW {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for WNDCLASSEXW {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for WNDCLASSEXW {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_struct("WNDCLASSEXW")
@@ -10475,8 +10263,6 @@ impl ::core::fmt::Debug for WNDCLASSEXW {
             .finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for WNDCLASSEXW {
     fn eq(&self, other: &Self) -> bool {
         self.cbSize == other.cbSize
@@ -10493,11 +10279,7 @@ impl ::core::cmp::PartialEq for WNDCLASSEXW {
             && self.hIconSm == other.hIconSm
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for WNDCLASSEXW {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for WNDCLASSEXW {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 48u32 as usize);
@@ -10549,8 +10331,6 @@ impl FromIntoMemory for WNDCLASSEXW {
         48u32 as usize
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct WNDCLASSW {
     pub style: WNDCLASS_STYLES,
     pub lpfnWndProc: WNDPROC,
@@ -10563,18 +10343,12 @@ pub struct WNDCLASSW {
     pub lpszMenuName: PCWSTR,
     pub lpszClassName: PCWSTR,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for WNDCLASSW {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for WNDCLASSW {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for WNDCLASSW {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_struct("WNDCLASSW")
@@ -10591,8 +10365,6 @@ impl ::core::fmt::Debug for WNDCLASSW {
             .finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for WNDCLASSW {
     fn eq(&self, other: &Self) -> bool {
         self.style == other.style
@@ -10607,11 +10379,7 @@ impl ::core::cmp::PartialEq for WNDCLASSW {
             && self.lpszClassName == other.lpszClassName
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for WNDCLASSW {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for WNDCLASSW {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 40u32 as usize);
@@ -11077,8 +10845,6 @@ pub trait Api {
     fn CreateAcceleratorTableW(&self, paccel: ConstPtr<ACCEL>, c_accel: i32) -> HACCEL {
         todo!("CreateAcceleratorTableW")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn CreateCaret(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -11173,8 +10939,6 @@ pub trait Api {
     ) -> HICON {
         todo!("CreateIconFromResourceEx")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn CreateIconIndirect(&self, piconinfo: ConstPtr<ICONINFO>) -> HICON {
         todo!("CreateIconIndirect")
     }
@@ -11429,8 +11193,6 @@ pub trait Api {
     ) -> u32 {
         todo!("DragObject")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn DrawIcon(
         &self,
         h_dc: super::super::Graphics::Gdi::HDC,
@@ -11440,8 +11202,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("DrawIcon")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn DrawIconEx(
         &self,
         hdc: super::super::Graphics::Gdi::HDC,
@@ -11611,8 +11371,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetCaretPos")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn GetClassInfoA(
         &self,
         h_instance: super::super::Foundation::HINSTANCE,
@@ -11621,8 +11379,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetClassInfoA")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn GetClassInfoExA(
         &self,
         h_instance: super::super::Foundation::HINSTANCE,
@@ -11631,8 +11387,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetClassInfoExA")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn GetClassInfoExW(
         &self,
         h_instance: super::super::Foundation::HINSTANCE,
@@ -11641,8 +11395,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetClassInfoExW")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn GetClassInfoW(
         &self,
         h_instance: super::super::Foundation::HINSTANCE,
@@ -11780,8 +11532,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetGUIThreadInfo")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn GetIconInfo(
         &self,
         h_icon: HICON,
@@ -11789,8 +11539,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetIconInfo")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn GetIconInfoExA(
         &self,
         hicon: HICON,
@@ -11798,8 +11546,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetIconInfoExA")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn GetIconInfoExW(
         &self,
         hicon: HICON,
@@ -11848,8 +11594,6 @@ pub trait Api {
     ) -> u32 {
         todo!("GetMenuDefaultItem")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn GetMenuInfo(
         &self,
         param_0: HMENU,
@@ -11863,8 +11607,6 @@ pub trait Api {
     fn GetMenuItemID(&self, h_menu: HMENU, n_pos: i32) -> u32 {
         todo!("GetMenuItemID")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn GetMenuItemInfoA(
         &self,
         hmenu: HMENU,
@@ -11874,8 +11616,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetMenuItemInfoA")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn GetMenuItemInfoW(
         &self,
         hmenu: HMENU,
@@ -12206,8 +11946,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("InsertMenuA")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn InsertMenuItemA(
         &self,
         hmenu: HMENU,
@@ -12217,8 +11955,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("InsertMenuItemA")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn InsertMenuItemW(
         &self,
         hmenu: HMENU,
@@ -12732,23 +12468,15 @@ pub trait Api {
     ) -> u32 {
         todo!("RealGetWindowClassW")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn RegisterClassA(&self, lp_wnd_class: ConstPtr<WNDCLASSA>) -> u16 {
         todo!("RegisterClassA")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn RegisterClassExA(&self, param_0: ConstPtr<WNDCLASSEXA>) -> u16 {
         todo!("RegisterClassExA")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn RegisterClassExW(&self, param_0: ConstPtr<WNDCLASSEXW>) -> u16 {
         todo!("RegisterClassExW")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn RegisterClassW(&self, lp_wnd_class: ConstPtr<WNDCLASSW>) -> u16 {
         todo!("RegisterClassW")
     }
@@ -12812,8 +12540,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("ReplyMessage")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn ScrollDC(
         &self,
         h_dc: super::super::Graphics::Gdi::HDC,
@@ -12836,8 +12562,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("ScrollWindow")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn ScrollWindowEx(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -13077,8 +12801,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetMenuDefaultItem")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn SetMenuInfo(
         &self,
         param_0: HMENU,
@@ -13086,8 +12808,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetMenuInfo")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn SetMenuItemBitmaps(
         &self,
         h_menu: HMENU,
@@ -13098,8 +12818,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetMenuItemBitmaps")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn SetMenuItemInfoA(
         &self,
         hmenu: HMENU,
@@ -13109,8 +12827,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetMenuItemInfoA")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn SetMenuItemInfoW(
         &self,
         hmenu: HMENU,
@@ -13431,8 +13147,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("UnregisterClassW")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn UpdateLayeredWindow(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -13447,8 +13161,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("UpdateLayeredWindow")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn UpdateLayeredWindowIndirect(
         &self,
         h_wnd: super::super::Foundation::HWND,

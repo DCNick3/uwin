@@ -9,6 +9,7 @@ const EXCLUDE_NAMESPACES: &[&str] = &["Windows.Win32.Interop"];
 const INCLUDE_NAMESPACES: &[&str] = &[
     "Windows.Win32.Foundation",
     "Windows.Win32.Globalization",
+    "Windows.Win32.Graphics.Gdi",
     "Windows.Win32.Storage.FileSystem",
     "Windows.Win32.System.Console",
     "Windows.Win32.System.Diagnostics.Debug",
@@ -252,6 +253,34 @@ const EXCLUDE_ITEMS: &[(&str, &[&str])] = &[
     (
         "Windows.Win32.System.SystemServices",
         &["DISPATCHER_CONTEXT_NONVOLREG_ARM64"],
+    ),
+    (
+        "Windows.Win32.Graphics.Gdi",
+        &[
+            "EMRSETMITERLIMIT",
+            "EMRPOLYTEXTOUTA",
+            "EMREXTTEXTOUTA",
+            "EMRANGLEARC",
+            "ABCFLOAT",
+            "XFORM",
+            "EMRTRANSPARENTBLT",
+            "EMRSTRETCHBLT",
+            "EMRSETWORLDTRANSFORM",
+            "EMRPLGBLT",
+            "EMRMODIFYWORLDTRANSFORM",
+            "EMRMASKBLT",
+            "EMRBITBLT",
+            "EMRALPHABLEND",
+            "SetWorldTransform",
+            "ModifyWorldTransform",
+            "GetWorldTransform",
+            "GetCharABCWidthsFloatW",
+            "GetCharABCWidthsFloatA",
+            "ExtCreateRegion",
+            "CombineTransform",
+            "AngleArc",
+            "SetMiterLimit",
+        ],
     ),
 ];
 const UNWINDABLE_FUNCTIONS: &[&str] = &["ExitThread", "ExitProcess"];

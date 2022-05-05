@@ -191,7 +191,7 @@ fn main_impl() {
 
     panic_control::chain_hook_ignoring::<UnwindReason>();
 
-    let executor = InterpretedExecutor {};
+    let executor = RecompiledExecutor {};
 
     match std::panic::catch_unwind(AssertUnwindSafe(|| {
         for (dll, info) in PROGRAM_IMAGE.modules.values() {

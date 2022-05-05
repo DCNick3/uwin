@@ -9,7 +9,15 @@ fn main() {
     let msvc_dir = manifest_dir.join("..").join("test_exes/msvc");
 
     let (exe_name, dll_names) = (
-        PathBuf::from("simple_dll_user.exe"),
+        PathBuf::from(
+            // "simple_dll_user.exe"
+            // "hello_world.exe"
+            // "indirect.exe"
+            // "hello_console.exe"
+            // "cf1031B.exe"
+            // "weird_repro.exe"
+            "window_init.exe",
+        ),
         vec![PathBuf::from("simple_dll.dll")],
     );
 
@@ -22,7 +30,7 @@ fn main() {
     //     // .join("test_exes/msvc/hello_world.exe")
     //     // .join("test_exes/msvc/indirect.exe")
     //     // .join("test_exes/msvc/hello_console.exe")
-    //     .join("test_exes/msvc/cf1031B.exe")
+    //     // .join("test_exes/msvc/cf1031B.exe")
     //     // .join("test_exes/msvc/weird_repro.exe")
     //     // .join("test_exes/test.exe")
     //     // .join("test_exes/test_cp1251.exe")

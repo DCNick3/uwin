@@ -20012,34 +20012,22 @@ impl FromIntoMemory for userHMETAFILEPICT_0 {
         todo!()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct userHPALETTE {
     pub fContext: i32,
     pub u: userHPALETTE_0,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for userHPALETTE {}
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for userHPALETTE {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for userHPALETTE {
     fn eq(&self, other: &Self) -> bool {
         self.fContext == other.fContext && self.u == other.u
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for userHPALETTE {}
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for userHPALETTE {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 24u32 as usize);
@@ -20059,25 +20047,17 @@ impl FromIntoMemory for userHPALETTE {
         24u32 as usize
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct userHPALETTE_0 {
     pub hInproc: i32,
     pub hRemote: MutPtr<super::super::Graphics::Gdi::LOGPALETTE>,
     pub hInproc64: i64,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for userHPALETTE_0 {}
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for userHPALETTE_0 {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for userHPALETTE_0 {
     fn eq(&self, other: &Self) -> bool {
         self.hInproc == other.hInproc
@@ -20085,11 +20065,7 @@ impl ::core::cmp::PartialEq for userHPALETTE_0 {
             && self.hInproc64 == other.hInproc64
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for userHPALETTE_0 {}
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for userHPALETTE_0 {
     fn from_bytes(from: &[u8]) -> Self {
         todo!()

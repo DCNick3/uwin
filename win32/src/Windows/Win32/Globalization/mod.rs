@@ -845,24 +845,16 @@ pub const ELS_GUID_TRANSLITERATION_HANT_TO_HANS: crate::core::GUID =
     crate::core::GUID::from_u128(0xa3a8333b_f4fc_42f6_a0c4_0462fe7317cb);
 pub const ELS_GUID_TRANSLITERATION_MALAYALAM_TO_LATIN: crate::core::GUID =
     crate::core::GUID::from_u128(0xd8b983b1_f8bf_4a2b_bcd5_5b5ea20613e1);
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct ENUMTEXTMETRICA {
     pub etmNewTextMetricEx: NEWTEXTMETRICEXA,
     pub etmAxesList: super::Graphics::Gdi::AXESLISTA,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for ENUMTEXTMETRICA {}
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for ENUMTEXTMETRICA {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for ENUMTEXTMETRICA {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_struct("ENUMTEXTMETRICA")
@@ -871,18 +863,12 @@ impl ::core::fmt::Debug for ENUMTEXTMETRICA {
             .finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for ENUMTEXTMETRICA {
     fn eq(&self, other: &Self) -> bool {
         self.etmNewTextMetricEx == other.etmNewTextMetricEx && self.etmAxesList == other.etmAxesList
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for ENUMTEXTMETRICA {}
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for ENUMTEXTMETRICA {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 488u32 as usize);
@@ -904,24 +890,16 @@ impl FromIntoMemory for ENUMTEXTMETRICA {
         488u32 as usize
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct ENUMTEXTMETRICW {
     pub etmNewTextMetricEx: NEWTEXTMETRICEXW,
     pub etmAxesList: super::Graphics::Gdi::AXESLISTW,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for ENUMTEXTMETRICW {}
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for ENUMTEXTMETRICW {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for ENUMTEXTMETRICW {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_struct("ENUMTEXTMETRICW")
@@ -930,18 +908,12 @@ impl ::core::fmt::Debug for ENUMTEXTMETRICW {
             .finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for ENUMTEXTMETRICW {
     fn eq(&self, other: &Self) -> bool {
         self.etmNewTextMetricEx == other.etmNewTextMetricEx && self.etmAxesList == other.etmAxesList
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for ENUMTEXTMETRICW {}
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for ENUMTEXTMETRICW {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 488u32 as usize);
@@ -2796,24 +2768,16 @@ impl FromIntoMemory for MULTI_BYTE_TO_WIDE_CHAR_FLAGS {
         4
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct NEWTEXTMETRICEXA {
     pub ntmTm: super::Graphics::Gdi::NEWTEXTMETRICA,
     pub ntmFontSig: FONTSIGNATURE,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for NEWTEXTMETRICEXA {}
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for NEWTEXTMETRICEXA {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for NEWTEXTMETRICEXA {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_struct("NEWTEXTMETRICEXA")
@@ -2822,18 +2786,12 @@ impl ::core::fmt::Debug for NEWTEXTMETRICEXA {
             .finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for NEWTEXTMETRICEXA {
     fn eq(&self, other: &Self) -> bool {
         self.ntmTm == other.ntmTm && self.ntmFontSig == other.ntmFontSig
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for NEWTEXTMETRICEXA {}
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for NEWTEXTMETRICEXA {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 96u32 as usize);
@@ -2854,24 +2812,16 @@ impl FromIntoMemory for NEWTEXTMETRICEXA {
         96u32 as usize
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct NEWTEXTMETRICEXW {
     pub ntmTm: super::Graphics::Gdi::NEWTEXTMETRICW,
     pub ntmFontSig: FONTSIGNATURE,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for NEWTEXTMETRICEXW {}
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for NEWTEXTMETRICEXW {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for NEWTEXTMETRICEXW {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_struct("NEWTEXTMETRICEXW")
@@ -2880,18 +2830,12 @@ impl ::core::fmt::Debug for NEWTEXTMETRICEXW {
             .finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for NEWTEXTMETRICEXW {
     fn eq(&self, other: &Self) -> bool {
         self.ntmTm == other.ntmTm && self.ntmFontSig == other.ntmFontSig
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for NEWTEXTMETRICEXW {}
-#[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for NEWTEXTMETRICEXW {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 96u32 as usize);
@@ -12904,13 +12848,9 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("GetSystemPreferredUILanguages")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn GetTextCharset(&self, hdc: super::Graphics::Gdi::HDC) -> i32 {
         todo!("GetTextCharset")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn GetTextCharsetInfo(
         &self,
         hdc: super::Graphics::Gdi::HDC,
@@ -13228,8 +13168,6 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("ScriptApplyDigitSubstitution")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn ScriptApplyLogicalWidth(
         &self,
         pi_dx: ConstPtr<i32>,
@@ -13267,8 +13205,6 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("ScriptCPtoX")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn ScriptCacheGetHeight(
         &self,
         hdc: super::Graphics::Gdi::HDC,
@@ -13280,8 +13216,6 @@ pub trait Api {
     fn ScriptFreeCache(&self, psc: MutPtr<ConstPtr<::core::ffi::c_void>>) -> crate::core::HRESULT {
         todo!("ScriptFreeCache")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn ScriptGetCMap(
         &self,
         hdc: super::Graphics::Gdi::HDC,
@@ -13293,8 +13227,6 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("ScriptGetCMap")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn ScriptGetFontAlternateGlyphs(
         &self,
         hdc: super::Graphics::Gdi::HDC,
@@ -13310,8 +13242,6 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("ScriptGetFontAlternateGlyphs")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn ScriptGetFontFeatureTags(
         &self,
         hdc: super::Graphics::Gdi::HDC,
@@ -13325,8 +13255,6 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("ScriptGetFontFeatureTags")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn ScriptGetFontLanguageTags(
         &self,
         hdc: super::Graphics::Gdi::HDC,
@@ -13339,8 +13267,6 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("ScriptGetFontLanguageTags")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn ScriptGetFontProperties(
         &self,
         hdc: super::Graphics::Gdi::HDC,
@@ -13349,8 +13275,6 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("ScriptGetFontProperties")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn ScriptGetFontScriptTags(
         &self,
         hdc: super::Graphics::Gdi::HDC,
@@ -13362,8 +13286,6 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("ScriptGetFontScriptTags")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn ScriptGetGlyphABCWidth(
         &self,
         hdc: super::Graphics::Gdi::HDC,
@@ -13445,8 +13367,6 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("ScriptLayout")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn ScriptPlace(
         &self,
         hdc: super::Graphics::Gdi::HDC,
@@ -13461,8 +13381,6 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("ScriptPlace")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn ScriptPlaceOpenType(
         &self,
         hdc: super::Graphics::Gdi::HDC,
@@ -13486,8 +13404,6 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("ScriptPlaceOpenType")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn ScriptPositionSingleGlyph(
         &self,
         hdc: super::Graphics::Gdi::HDC,
@@ -13512,8 +13428,6 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("ScriptRecordDigitSubstitution")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn ScriptShape(
         &self,
         hdc: super::Graphics::Gdi::HDC,
@@ -13529,8 +13443,6 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("ScriptShape")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn ScriptShapeOpenType(
         &self,
         hdc: super::Graphics::Gdi::HDC,
@@ -13552,8 +13464,6 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("ScriptShapeOpenType")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn ScriptStringAnalyse(
         &self,
         hdc: super::Graphics::Gdi::HDC,
@@ -13601,8 +13511,6 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("ScriptStringGetOrder")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn ScriptStringOut(
         &self,
         ssa: ConstPtr<::core::ffi::c_void>,
@@ -13640,8 +13548,6 @@ pub trait Api {
     fn ScriptString_pcOutChars(&self, ssa: ConstPtr<::core::ffi::c_void>) -> MutPtr<i32> {
         todo!("ScriptString_pcOutChars")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn ScriptSubstituteSingleGlyph(
         &self,
         hdc: super::Graphics::Gdi::HDC,
@@ -13656,8 +13562,6 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("ScriptSubstituteSingleGlyph")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn ScriptTextOut(
         &self,
         hdc: super::Graphics::Gdi::HDC,
