@@ -251,7 +251,11 @@ fn main_impl() {
 fn main() {
     tracing_subscriber::registry()
         // .with(tracing_tracy::TracyLayer::new())
-        .with(tracing_subscriber::fmt::Layer::new().event_format(format().compact()))
+        .with(
+            tracing_subscriber::fmt::Layer::new()
+                .event_format(format().compact())
+                .with_writer(std::io::stderr),
+        )
         .with(tracing_subscriber::EnvFilter::from_default_env())
         .init();
 
