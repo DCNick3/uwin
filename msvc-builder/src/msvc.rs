@@ -148,6 +148,7 @@ impl Msvc {
             "uuid.lib",
             "odbc32.lib",
             "odbccp32.lib",
+            "ddraw.lib",
             "/nologo",
             "/machine:I386",
             "/debug",

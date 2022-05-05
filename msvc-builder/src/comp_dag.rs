@@ -54,7 +54,7 @@ pub struct CompileUnit {
 
 impl CompileUnit {
     // TODO: support multiple source files?
-    pub fn parse(base_dir: &Path, path: &Path) -> Result<Self> {
+    pub fn parse(_base_dir: &Path, path: &Path) -> Result<Self> {
         let build_params = parse_magic_comment(path).context("Parsing magic comment")?;
 
         let name = path.file_stem().unwrap().to_str().unwrap().to_string();
