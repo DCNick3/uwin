@@ -16,5 +16,6 @@ pub mod Kernel;
 pub mod LibraryLoader;
 pub mod Memory;
 pub mod SystemInformation;
+pub mod SystemServices;
 pub mod Threading;
 pub mod WindowsProgramming;

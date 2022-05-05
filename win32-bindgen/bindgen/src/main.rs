@@ -13,12 +13,13 @@ const INCLUDE_NAMESPACES: &[&str] = &[
     "Windows.Win32.System.Console",
     "Windows.Win32.System.Diagnostics.Debug",
     "Windows.Win32.System.Environment",
-    "Windows.Win32.System.SystemInformation",
-    "Windows.Win32.System.Threading",
     "Windows.Win32.System.IO",
+    "Windows.Win32.System.Kernel",
     "Windows.Win32.System.LibraryLoader",
     "Windows.Win32.System.Memory",
-    "Windows.Win32.System.Kernel",
+    "Windows.Win32.System.SystemInformation",
+    "Windows.Win32.System.SystemServices",
+    "Windows.Win32.System.Threading",
     "Windows.Win32.System.WindowsProgramming",
     "Windows.Win32.UI.WindowsAndMessaging",
 ];
@@ -247,6 +248,10 @@ const EXCLUDE_ITEMS: &[(&str, &[&str])] = &[
     (
         "Windows.Win32.System.Console",
         &["GetConsoleFontSize", "GetLargestConsoleWindowSize"],
+    ),
+    (
+        "Windows.Win32.System.SystemServices",
+        &["DISPATCHER_CONTEXT_NONVOLREG_ARM64"],
     ),
 ];
 const UNWINDABLE_FUNCTIONS: &[&str] = &["ExitThread", "ExitProcess"];

@@ -140,25 +140,28 @@ impl MemoryManager {
         Ok(AddressRange::new(hole.start, size))
     }
 
-    fn align_range(range: AddressRange) -> Result<AddressRange> {
-        // should follow VirtualAlloc's semantics: https://docs.microsoft.com/en-us/windows/win32/api/memoryapi/nf-memoryapi-virtualalloc
-        // addr: If the memory is being reserved, the specified address is rounded down to the nearest multiple of the allocation granularity
-        // size: The allocated pages include all pages containing one or more bytes in the range from lpAddress to lpAddress+dwSize.
-        //        This means that a 2-byte range straddling a page boundary causes both pages to be included in the allocated region.
+    /// Align the range with the VirtualAlloc semantics: https://docs.microsoft.com/en-us/windows/win32/api/memoryapi/nf-memoryapi-virtualalloc
+    ///
+    // addr: If the memory is being reserved, the specified address is rounded down to the nearest multiple of the allocation granularity
+    // size: The allocated pages include all pages containing one or more bytes in the range from lpAddress to lpAddress+dwSize.
+    //        This means that a 2-byte range straddling a page boundary causes both pages to be included in the allocated region.
+    ///
+    /// Address will be aligned to addr_alignment (usually PAGE_SIZE or REGION_ALIGNMENT) and size will be aligned to PAGE_SIZE
+    fn align_range(range: AddressRange, addr_alignment: PtrRepr) -> Result<AddressRange> {
         let addr = range.start;
         let size = range.size;
 
         // unaligned portion of the address
-        let addr_unalign = addr % REGION_ALIGNMENT;
+        let addr_unalign = addr % addr_alignment;
 
-        let aligned_addr = align::floor(addr, REGION_ALIGNMENT);
+        let aligned_addr = align::floor(addr, addr_alignment);
         let aligned_size = align::ceil(size.checked_add(addr_unalign).unwrap(), PAGE_SIZE);
 
         AddressRange::try_new(aligned_addr, aligned_size)
     }
 
     pub fn reserve_static(&mut self, range: AddressRange) -> Result<AddressRange> {
-        let range = Self::align_range(range)?;
+        let range = Self::align_range(range, REGION_ALIGNMENT)?;
 
         if range.start == 0 {
             return Err(Error::ReserveZeroAddress);
@@ -215,9 +218,10 @@ impl MemoryManager {
     }
 
     pub fn commit(&mut self, range: AddressRange, protection: Protection) -> Result<AddressRange> {
-        let range = Self::align_range(range)?;
+        let range = Self::align_range(range, PAGE_SIZE)?;
+        let region_range = Self::align_range(range, REGION_ALIGNMENT)?;
 
-        let (region_range, state) = Self::find_region_mut(&mut self.regions, range)?;
+        let (region_range, state) = Self::find_region_mut(&mut self.regions, region_range)?;
 
         let region_page_indices = region_range.pages_indices(range);
 
@@ -241,7 +245,7 @@ impl MemoryManager {
         let mut rollback_ops = Vec::new();
 
         for (address_range, state) in
-            state.iter_page_runs_in_range(region_range.start, region_page_indices.clone())
+            state.iter_page_runs_in_range(range.start, region_page_indices.clone())
         {
             let res = match state {
                 PageState::Uncommitted => {
@@ -290,9 +294,10 @@ impl MemoryManager {
     ///
     /// Returns the "old" protection of the first page
     pub fn protect(&mut self, range: AddressRange, protection: Protection) -> Result<Protection> {
-        let range = Self::align_range(range)?;
+        let range = Self::align_range(range, PAGE_SIZE)?;
+        let region_range = Self::align_range(range, REGION_ALIGNMENT)?;
 
-        let (region_range, state) = Self::find_region_mut(&mut self.regions, range)?;
+        let (region_range, state) = Self::find_region_mut(&mut self.regions, region_range)?;
 
         let region_page_indices = region_range.pages_indices(range);
 
@@ -309,7 +314,7 @@ impl MemoryManager {
         };
 
         for (address_range, state) in
-            state.iter_page_runs_in_range(region_range.start, region_page_indices.clone())
+            state.iter_page_runs_in_range(range.start, region_page_indices.clone())
         {
             match state {
                 PageState::Uncommitted => unreachable!(), // checked above
@@ -332,14 +337,15 @@ impl MemoryManager {
     }
 
     pub fn uncommit(&mut self, range: AddressRange) -> Result<()> {
-        let range = Self::align_range(range)?;
+        let range = Self::align_range(range, PAGE_SIZE)?;
+        let region_range = Self::align_range(range, REGION_ALIGNMENT)?;
 
-        let (region_range, state) = Self::find_region_mut(&mut self.regions, range)?;
+        let (region_range, state) = Self::find_region_mut(&mut self.regions, region_range)?;
 
         let region_page_indices = region_range.pages_indices(range);
 
         for (address_range, state) in
-            state.iter_page_runs_in_range(region_range.start, region_page_indices.clone())
+            state.iter_page_runs_in_range(range.start, region_page_indices.clone())
         {
             match state {
                 PageState::Uncommitted => {} // already uncommitted =)
@@ -701,16 +707,17 @@ mod test {
                 )
                 .unwrap();
 
-                let ptr1 = ctx.to_native_ptr(range.start);
-                unsafe { std::ptr::write(ptr1, 12) };
-
-                let ptr2 = ctx.to_native_ptr(range.start + 0x2000);
-                unsafe { std::ptr::write(ptr2, 13) };
-
-                mgr.uncommit(range).unwrap();
-
                 unsafe {
                     let bulletproof = Bulletproof::new();
+
+                    let ptr1 = ctx.to_native_ptr(range.start);
+                    bulletproof.store(ptr1, &12).unwrap();
+
+                    let ptr2 = ctx.to_native_ptr(range.start + 0x2000);
+                    bulletproof.store(ptr2, &13).unwrap();
+
+                    mgr.uncommit(range).unwrap();
+
                     assert!(bulletproof.load(ptr1).is_err());
                     assert!(bulletproof.load(ptr2).is_err());
                 }
@@ -732,6 +739,20 @@ mod test {
                 mgr.protect(range, Protection::READ_WRITE).unwrap_err(),
                 Error::ProtectUncommitted
             ));
+        }
+
+        #[test]
+        fn commit_alignment() {
+            let mut mgr = MemoryManager::new().unwrap();
+            let range = mgr.reserve_dynamic(0x4000).unwrap();
+
+            let subrange = AddressRange::new(range.start + 0x1000, 0x1000);
+
+            // subrange is already aligned, should not change
+            assert_eq!(
+                mgr.commit(subrange, Protection::READ_WRITE).unwrap(),
+                subrange
+            );
         }
     }
 }

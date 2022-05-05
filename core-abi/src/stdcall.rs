@@ -115,9 +115,7 @@ impl<'a, Tok: StdcallCallbackToken + 'a> StdCallerHelper<'a, Tok> {
     /// # Safety
     ///
     /// Don't forget to run .execute() method, as otherwise ABI crimes will happen
-    pub unsafe fn new(mut token: Tok) -> Self {
-        token.push_retaddr();
-
+    pub unsafe fn new(token: Tok) -> Self {
         Self {
             token,
             phantom: Default::default(),
@@ -135,10 +133,11 @@ impl<'a, Tok: StdcallCallbackToken + 'a> StdCallerHelper<'a, Tok> {
 
         value.into_bytes(&mut data[..size]);
 
-        self.push(data);
+        self.token.push(data);
     }
 
     pub fn execute<R: FromIntoMemory>(mut self, target_address: PtrRepr) -> R {
+        self.token.push_retaddr();
         let res = self.token.dispatch(target_address);
 
         let size = R::size();

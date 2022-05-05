@@ -5,7 +5,24 @@ use rusty_x86::interp::backend::InterpBuilder;
 use rusty_x86::types::ControlFlow;
 use tracing::debug;
 
-pub unsafe fn run_interp(context: &mut ExtendedContext, memory: FlatMemoryCtx, eip: u32) -> u32 {
+fn interp_call_bb<const TRY_LEAVE: bool>(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+    eip: u32,
+) -> u32 {
+    if TRY_LEAVE {
+        debug!("Trying to leave interpreter to EIP = {:#010x}", eip);
+        execute_recompiled_code(context, memory, eip)
+    } else {
+        run_interp::<false>(context, memory, eip)
+    }
+}
+
+pub fn run_interp<const TRY_LEAVE: bool>(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+    eip: u32,
+) -> u32 {
     unsafe fn call_thunk(
         context: &mut ExtendedContext,
         memory: FlatMemoryCtx,
@@ -21,19 +38,15 @@ pub unsafe fn run_interp(context: &mut ExtendedContext, memory: FlatMemoryCtx, e
         }
     }
 
-    fn leave_interpreter(context: &mut ExtendedContext, memory: FlatMemoryCtx, eip: u32) -> u32 {
-        debug!("Trying to leave interpreter to EIP = {:#010x}", eip);
-        execute_recompiled_code(context, memory, eip)
-    }
-
     context.interpreted_blocks.insert(eip);
 
-    let mut builder = {
+    let mut builder = unsafe {
         InterpBuilder::new(
             std::mem::transmute_copy(&context),
             memory.base_ptr(),
             std::mem::transmute(
-                run_interp as unsafe fn(&mut ExtendedContext, FlatMemoryCtx, u32) -> u32,
+                interp_call_bb::<TRY_LEAVE>
+                    as unsafe fn(&mut ExtendedContext, FlatMemoryCtx, u32) -> u32,
             ),
             std::mem::transmute(
                 call_thunk as unsafe fn(&mut ExtendedContext, FlatMemoryCtx, u32) -> u32,
@@ -41,7 +54,7 @@ pub unsafe fn run_interp(context: &mut ExtendedContext, memory: FlatMemoryCtx, e
         )
     };
 
-    let data = std::slice::from_raw_parts(memory.base_ptr(), 1usize << 32);
+    let data = unsafe { std::slice::from_raw_parts(memory.base_ptr(), 1usize << 32) };
     let mut decoder = Decoder::new(32, data, DecoderOptions::NONE);
 
     decoder.set_ip(eip as u64);
@@ -63,11 +76,11 @@ pub unsafe fn run_interp(context: &mut ExtendedContext, memory: FlatMemoryCtx, e
         match flow {
             ControlFlow::NextInstruction => {}
             ControlFlow::DirectJump(eip) => {
-                return leave_interpreter(context, memory, eip);
+                return interp_call_bb::<TRY_LEAVE>(context, memory, eip);
             }
             ControlFlow::IndirectJump(eip) => {
                 let eip = eip.as_u32().unwrap();
-                return leave_interpreter(context, memory, eip);
+                return interp_call_bb::<TRY_LEAVE>(context, memory, eip);
             }
             ControlFlow::CallCheck(eip) => {
                 let eip = eip.as_u32().unwrap();
@@ -81,7 +94,7 @@ pub unsafe fn run_interp(context: &mut ExtendedContext, memory: FlatMemoryCtx, e
             }
             ControlFlow::Conditional(cond, eip) => {
                 if cond {
-                    return leave_interpreter(context, memory, eip);
+                    return interp_call_bb::<TRY_LEAVE>(context, memory, eip);
                 }
             }
         }

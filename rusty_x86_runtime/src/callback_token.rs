@@ -11,7 +11,7 @@ pub struct RustyX86CallbackToken<'a> {
     executor: &'a DynRustyExecutor,
     context: &'a mut ExtendedContext,
     memory_ctx: DefaultMemoryCtx,
-    ret_esp: PtrRepr,
+    ret_esp: Option<PtrRepr>,
 }
 
 impl<'a> RustyX86CallbackToken<'a> {
@@ -24,21 +24,21 @@ impl<'a> RustyX86CallbackToken<'a> {
             executor,
             context,
             memory_ctx,
-            ret_esp: 0,
+            ret_esp: None,
         }
     }
 }
 
 impl<'a> StdcallCallbackToken for RustyX86CallbackToken<'a> {
     fn push_retaddr(&mut self) {
-        // as per stdcall, the callee must cleanup the stack
-        // here we save the old esp value to check that the esp value was properly restored by the caller
-        self.ret_esp = self.context.cpu.get_esp();
-
         self.push(FN_PTR_RET_ADDR.to_le_bytes());
     }
 
     fn push(&mut self, value: [u8; 4]) {
+        // as per stdcall, the callee must cleanup the stack
+        // here we save the old esp value on first argument push to check that the esp value was properly restored by the caller
+        self.ret_esp = self.ret_esp.or_else(|| Some(self.context.cpu.get_esp()));
+
         let esp = self.context.cpu.get_esp() - 4;
         self.context.cpu.set_esp(esp);
 
@@ -57,11 +57,9 @@ impl<'a> StdcallCallbackToken for RustyX86CallbackToken<'a> {
             panic_any(reason.clone());
         } else {
             assert_eq!(ret_addr, FN_PTR_RET_ADDR);
-            assert_eq!(self.context.cpu.get_esp(), self.ret_esp);
+            assert_eq!(self.context.cpu.get_esp(), self.ret_esp.unwrap());
 
-            let res = self.context.cpu.get_eax().to_le_bytes();
-
-            return res;
+            self.context.cpu.get_eax().to_le_bytes()
         }
     }
 }

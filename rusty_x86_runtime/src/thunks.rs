@@ -35443,6 +35443,48 @@ extern "C" fn thunk_VerifyVersionInfoW(
     )
 }
 #[no_mangle]
+extern "C" fn thunk_UnregisterDeviceNotification(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "UnregisterDeviceNotification",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::System::SystemServices::get_api(win32);
+            let handle = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("    args = {{handle = {:?}}}", handle)
+                            as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.UnregisterDeviceNotification(handle);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
 extern "C" fn thunk_AcquireSRWLockExclusive(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
@@ -38138,6 +38180,50 @@ extern "C" fn thunk_EnterSynchronizationBarrier(
                 );
             }
             let res = api.EnterSynchronizationBarrier(lp_barrier, dw_flags);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
+}
+#[no_mangle]
+extern "C" fn thunk_EnterUmsSchedulingMode(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "EnterUmsSchedulingMode",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, win32, trace_event_enabled, callsite| {
+            let api = win32::Win32::System::Threading::get_api(win32);
+            let scheduler_startup_info = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{scheduler_startup_info = {:?}}}",
+                            scheduler_startup_info
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let res = api.EnterUmsSchedulingMode(scheduler_startup_info);
             if trace_event_enabled {
                 let fields = callsite.metadata().fields();
                 tracing::event::Event::dispatch(

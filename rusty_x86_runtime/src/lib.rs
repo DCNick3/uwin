@@ -95,7 +95,9 @@ unsafe extern "C" fn uwin_missing_bb(
         eip
     );
 
-    let res = std::panic::catch_unwind(AssertUnwindSafe(|| run_interp(context, memory, eip)));
+    let res = std::panic::catch_unwind(AssertUnwindSafe(|| {
+        run_interp::<true>(context, memory, eip)
+    }));
     match res {
         Ok(r) => r,
         Err(_) => {
@@ -124,6 +126,7 @@ type DynRustyExecutor = dyn Executor<
 
 // TODO: implement more executors (like pure interpreter ones and instrumented interpreters)
 pub struct RecompiledExecutor {}
+pub struct InterpretedExecutor {}
 
 impl Executor for RecompiledExecutor {
     type Context = ExtendedContext;
@@ -137,5 +140,20 @@ impl Executor for RecompiledExecutor {
         eip: u32,
     ) -> u32 {
         execute_recompiled_code(context, memory, eip)
+    }
+}
+
+impl Executor for InterpretedExecutor {
+    type Context = ExtendedContext;
+    type CpuContext = CpuContext;
+    type MemoryContext = DefaultMemoryCtx;
+
+    fn execute_recompiled_code(
+        &self,
+        context: &mut Self::Context,
+        memory: Self::MemoryContext,
+        eip: u32,
+    ) -> u32 {
+        run_interp::<false>(context, memory, eip)
     }
 }

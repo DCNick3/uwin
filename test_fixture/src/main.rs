@@ -3,7 +3,6 @@ extern crate core;
 mod r#impl;
 
 use crate::r#impl::*;
-use core_abi::context::Executor;
 use core_abi::stdcall_fn_ptr::StdCallFnPtr;
 use core_abi::unwind_token::UnwindReason;
 use core_mem::ptr::{PtrDiffRepr, PtrRepr};
@@ -13,17 +12,19 @@ use core_str::AnsiString;
 use itertools::Itertools;
 use recompiler::memory_image::{MemoryImageItem, Protection};
 use rusty_x86_runtime::{
-    CpuContext, ExtendedContext, RecompiledExecutor, RustyX86CallbackToken, PROGRAM_IMAGE,
+    CpuContext, ExtendedContext, InterpretedExecutor, RecompiledExecutor, RustyX86CallbackToken,
+    PROGRAM_IMAGE,
 };
 use std::collections::HashSet;
 use std::panic::AssertUnwindSafe;
 use std::sync::{Arc, Mutex};
-use tracing::{debug, error, info, trace};
+use tracing::{debug, info};
 use tracing_subscriber::fmt::format;
 use tracing_subscriber::layer::SubscriberExt;
 use tracing_subscriber::util::SubscriberInitExt;
 use win32::core::Win32Context;
-use win32::Win32::Foundation::HINSTANCE;
+use win32::Win32::Foundation::{BOOL, HINSTANCE};
+use win32::Win32::System::SystemServices::DLL_PROCESS_ATTACH;
 use win32_heapmgr::HeapMgr;
 use win32_io::IoDispatcher;
 use win32_kobj::{KernelHandleTable, KernelObject};
@@ -48,6 +49,7 @@ fn map_item(mgr: &mut MemoryManager, item: &MemoryImageItem) -> core_memmgr::Res
     Ok(())
 }
 
+type DllEntrypointFnPtr = StdCallFnPtr<(HINSTANCE, u32, PtrRepr), BOOL>;
 type EntrypointFnPtr = StdCallFnPtr<(), ()>;
 
 fn main_impl() {
@@ -62,6 +64,8 @@ fn main_impl() {
         assert_eq!(res.start, info.base_addr);
         assert!(res.size >= info.image_size);
     }
+
+    debug!("Program memory map:\n{}", PROGRAM_IMAGE.memory.map());
 
     for item in PROGRAM_IMAGE.memory.iter() {
         map_item(&mut memory_mgr, item).expect("Mapping program memory")
@@ -187,12 +191,35 @@ fn main_impl() {
 
     panic_control::chain_hook_ignoring::<UnwindReason>();
 
-    let executor = RecompiledExecutor {};
-
-    let entry = EntrypointFnPtr::new(PROGRAM_IMAGE.exe_entrypoint);
-    let callback_token = RustyX86CallbackToken::new(&executor, &mut context, memory_ctx);
+    let executor = InterpretedExecutor {};
 
     match std::panic::catch_unwind(AssertUnwindSafe(|| {
+        for (dll, info) in PROGRAM_IMAGE.modules.values() {
+            if info.base_addr != PROGRAM_IMAGE.main_module_base {
+                let entry = dll.entry();
+                if entry == 0 {
+                    continue;
+                }
+                let entry = DllEntrypointFnPtr::new(info.base_addr + entry);
+
+                let instance = HINSTANCE(info.base_addr as PtrDiffRepr);
+
+                let callback_token =
+                    RustyX86CallbackToken::new(&executor, &mut context, memory_ctx);
+                // call process attachment callbacks
+                // no thread callbacks (at least for now, when we don't have any threads =))
+                let res = entry
+                    .call(callback_token, instance, DLL_PROCESS_ATTACH, 1)
+                    .as_bool();
+                if !res {
+                    panic!("DllMain for {} failed", dll.name());
+                }
+            }
+        }
+
+        let entry = EntrypointFnPtr::new(PROGRAM_IMAGE.exe_entrypoint);
+
+        let callback_token = RustyX86CallbackToken::new(&executor, &mut context, memory_ctx);
         entry.call(callback_token);
     })) {
         Ok(_) => {
@@ -215,6 +242,7 @@ fn main_impl() {
             .interpreted_blocks
             .iter()
             .cloned()
+            .sorted()
             .map(|f| format!("  {:#010x}", f))
             .join("\n")
     )

@@ -2055,8 +2055,6 @@ pub const PROC_THREAD_ATTRIBUTE_REPLACE_VALUE: u32 = 1u32;
 pub const PROC_THREAD_ATTRIBUTE_SECURITY_CAPABILITIES: u32 = 131081u32;
 pub const PROC_THREAD_ATTRIBUTE_UMS_THREAD: u32 = 196614u32;
 pub const PROC_THREAD_ATTRIBUTE_WIN32K_FILTER: u32 = 131088u32;
-#[doc = "*Required namespaces: 'Windows.Win32.System.SystemServices'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub type PRTL_UMS_SCHEDULER_ENTRY_POINT = StdCallFnPtr<
     (
         super::SystemServices::RTL_UMS_SCHEDULER_REASON,
@@ -3739,26 +3737,18 @@ impl FromIntoMemory for TimerQueueHandle {
         std::mem::size_of::<PtrDiffRepr>()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.SystemServices'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct UMS_SCHEDULER_STARTUP_INFO {
     pub UmsVersion: u32,
     pub CompletionList: MutPtr<::core::ffi::c_void>,
     pub SchedulerProc: PRTL_UMS_SCHEDULER_ENTRY_POINT,
     pub SchedulerParam: MutPtr<::core::ffi::c_void>,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.SystemServices'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for UMS_SCHEDULER_STARTUP_INFO {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.SystemServices'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for UMS_SCHEDULER_STARTUP_INFO {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.SystemServices'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for UMS_SCHEDULER_STARTUP_INFO {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_struct("UMS_SCHEDULER_STARTUP_INFO")
@@ -3769,8 +3759,6 @@ impl ::core::fmt::Debug for UMS_SCHEDULER_STARTUP_INFO {
             .finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.SystemServices'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for UMS_SCHEDULER_STARTUP_INFO {
     fn eq(&self, other: &Self) -> bool {
         self.UmsVersion == other.UmsVersion
@@ -3779,11 +3767,7 @@ impl ::core::cmp::PartialEq for UMS_SCHEDULER_STARTUP_INFO {
             && self.SchedulerParam == other.SchedulerParam
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.SystemServices'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for UMS_SCHEDULER_STARTUP_INFO {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.SystemServices'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for UMS_SCHEDULER_STARTUP_INFO {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 16u32 as usize);
@@ -4675,8 +4659,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("EnterSynchronizationBarrier")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.SystemServices'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn EnterUmsSchedulingMode(
         &self,
         scheduler_startup_info: ConstPtr<UMS_SCHEDULER_STARTUP_INFO>,

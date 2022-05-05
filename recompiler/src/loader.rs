@@ -2,7 +2,7 @@ use itertools::Itertools;
 use lazy_static::lazy_static;
 use memory_image::{MemoryImage, Protection};
 use num::Integer;
-use object::pe::ImageNtHeaders32;
+use object::pe::{ImageNtHeaders32, IMAGE_REL_BASED_HIGHLOW};
 use object::read::pe::{ExportTarget, ImageNtHeaders, Import};
 use object::{pe, LittleEndian, Object};
 use serde::{Deserialize, Serialize};
@@ -96,12 +96,25 @@ impl PeFile {
 
         // no relocations for now
         if image_base_diff != 0 {
-            // "handle" relocations
-            if let Some(_reloc) = pe
+            // handle relocations
+            if let Some(mut reloc) = pe
                 .data_directories()
                 .relocation_blocks(pe.data(), &pe.section_table())?
             {
-                todo!("relocations")
+                while let Some(reloc) = reloc.next()? {
+                    for reloc in reloc {
+                        let addr = addr + reloc.virtual_address;
+                        if reloc.typ == IMAGE_REL_BASED_HIGHLOW {
+                            let val = u32::from_le_bytes(
+                                (&image.read_all_at(addr)[..4]).try_into().unwrap(),
+                            );
+                            let new_val = val.wrapping_add(image_base_diff);
+                            image.modify_all_at(addr)[..4].copy_from_slice(&new_val.to_le_bytes());
+                        } else {
+                            todo!("Relocation type {:#06x}", reloc.typ)
+                        }
+                    }
+                }
             }
         }
 
@@ -246,8 +259,9 @@ pub fn load_process_image(executable: PeFile, dlls: Vec<PeFile>) -> Result<Loade
     }
 
     let thunk_function_indices = required_dlls
-        .values()
-        .flatten()
+        .iter()
+        .filter(|(nm, _)| !dlls.contains_key(nm.as_str()))
+        .flat_map(|(_, vals)| vals)
         .unique()
         .enumerate()
         .map(|(i, name)| (name.to_string(), i as u32))

@@ -6,21 +6,35 @@ use std::process::Command;
 
 fn main() {
     let manifest_dir = PathBuf::from(env::var("CARGO_MANIFEST_DIR").unwrap());
-    let executable = manifest_dir
-        .join("..")
-        // .join("test_exes/msvc/hello_world.exe")
-        // .join("test_exes/msvc/indirect.exe")
-        // .join("test_exes/msvc/hello_console.exe")
-        .join("test_exes/msvc/cf1031B.exe")
-        // .join("test_exes/msvc/weird_repro.exe")
-        // .join("test_exes/test.exe")
-        // .join("test_exes/test_cp1251.exe")
-        // ----
-        ;
+    let msvc_dir = manifest_dir.join("..").join("test_exes/msvc");
+
+    let (exe_name, dll_names) = (
+        PathBuf::from("simple_dll_user.exe"),
+        vec![PathBuf::from("simple_dll.dll")],
+    );
+
+    let executable = msvc_dir.join(exe_name);
+
+    let dlls = dll_names.into_iter().map(|p| msvc_dir.join(p));
+
+    // let executable = manifest_dir
+    //     .join("..")
+    //     // .join("test_exes/msvc/hello_world.exe")
+    //     // .join("test_exes/msvc/indirect.exe")
+    //     // .join("test_exes/msvc/hello_console.exe")
+    //     .join("test_exes/msvc/cf1031B.exe")
+    //     // .join("test_exes/msvc/weird_repro.exe")
+    //     // .join("test_exes/test.exe")
+    //     // .join("test_exes/test_cp1251.exe")
+    //     // ----
+    //     ;
 
     let exe = PeFile::parse_from_path(&executable).expect("Loading exe file");
+    let dlls = dlls
+        .map(|dll| PeFile::parse_from_path(&dll).expect("Loading dll file"))
+        .collect::<Vec<_>>();
 
-    let image = load_process_image(exe, Vec::new()).expect("Loading process image");
+    let image = load_process_image(exe, dlls).expect("Loading process image");
 
     let ctx = Context::create();
 

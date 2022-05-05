@@ -308,7 +308,10 @@ fn execute_rusty_x86_llvm(
 
     module.verify().unwrap();
 
-    debug!("Compiling the module...");
+    let module_bc = module.write_bitcode_to_memory();
+    let size = module_bc.get_size();
+
+    debug!("Compiling the module... (size = {})", size);
     let execution_engine = module
         .create_jit_execution_engine(
             OptimizationLevel::Aggressive, /* TODO: do we want optimizations? */

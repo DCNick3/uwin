@@ -28,12 +28,30 @@ impl<ParamTy, RetTy> Clone for StdCallFnPtr<ParamTy, RetTy> {
     }
 }
 
-// b"uwfn"
-impl StdCallFnPtr<(), ()> {
-    pub fn call<'a, Tok: StdcallCallbackToken + 'a>(&self, token: Tok) {
+impl<R: FromIntoMemory> StdCallFnPtr<(), R> {
+    pub fn call<'a, Tok: StdcallCallbackToken + 'a>(&self, token: Tok) -> R {
         let call = unsafe { StdCallerHelper::new(token) };
 
-        call.execute::<()>(self.ptr);
+        call.execute::<R>(self.ptr)
+    }
+}
+
+impl<T1: FromIntoMemory, T2: FromIntoMemory, T3: FromIntoMemory, R: FromIntoMemory>
+    StdCallFnPtr<(T1, T2, T3), R>
+{
+    pub fn call<'a, Tok: StdcallCallbackToken + 'a>(
+        &self,
+        token: Tok,
+        arg1: T1,
+        arg2: T2,
+        arg3: T3,
+    ) -> R {
+        let mut call = unsafe { StdCallerHelper::new(token) };
+
+        call.push(arg3);
+        call.push(arg2);
+        call.push(arg1);
+        call.execute::<R>(self.ptr)
     }
 }
 
