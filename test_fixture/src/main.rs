@@ -30,6 +30,7 @@ use win32_io::IoDispatcher;
 use win32_kobj::{KernelHandleTable, KernelObject};
 use win32_module_table::ModuleTable;
 use win32_virtmem::VirtualMemoryManager;
+use win32_wobj::WindowsHandleTable;
 
 fn map_item(mgr: &mut MemoryManager, item: &MemoryImageItem) -> core_memmgr::Result<()> {
     let range = AddressRange::new(item.addr, item.data.len() as PtrRepr);
@@ -126,10 +127,14 @@ fn main_impl() {
 
     let handle_table = Arc::new(Mutex::new(handle_table));
 
+    let windows_handle_table = WindowsHandleTable::new(memory_mgr.clone(), 0x10000);
+    let windows_handle_table = Arc::new(Mutex::new(windows_handle_table));
+
     // ===
 
     context.win32.insert(Arc::new(WindowsAndMessaging {
         process_ctx: process_ctx.clone(),
+        windows_handle_table,
     })
         as Arc<dyn win32::Win32::UI::WindowsAndMessaging::Api>);
 

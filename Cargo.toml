@@ -27,6 +27,7 @@ members = [
     "win32-module-table",
     "win32-kobj",
     "win32-io",
+    "win32-wobj",
 
     "win32-bindgen/bindgen",
     "win32-bindgen/bindgenlib",

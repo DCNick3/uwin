@@ -1,7 +1,7 @@
 use core_abi::unwind_token::{UnwindReason, UnwindToken};
 use core_heap::{Heap, RawHeapBox};
 use core_mem::ctx::DefaultMemoryCtx;
-use core_mem::ptr::{ConstPtr, MutPtr, PtrRepr};
+use core_mem::ptr::{ConstPtr, MutPtr, PtrDiffRepr, PtrRepr};
 use core_memmgr::MemoryManager;
 use core_str::heap_helper::AnsiStringHeapBox;
 use core_str::{AnsiString, PWSTR};
@@ -20,11 +20,12 @@ use win32::Win32::System::Memory::{
 };
 use win32::Win32::System::Threading::STARTUPINFOA;
 use win32::Win32::System::IO::OVERLAPPED;
-use win32::Win32::UI::WindowsAndMessaging::{MESSAGEBOX_RESULT, MESSAGEBOX_STYLE};
+use win32::Win32::UI::WindowsAndMessaging::{HCURSOR, HICON, MESSAGEBOX_RESULT, MESSAGEBOX_STYLE};
 use win32_heapmgr::HeapMgr;
 use win32_io::IoDispatcher;
 use win32_module_table::ModuleTable;
 use win32_virtmem::VirtualMemoryManager;
+use win32_wobj::{WindowsHandleTable, WindowsObject};
 
 #[derive(Clone)]
 pub struct ProcessContext {
@@ -36,10 +37,25 @@ pub struct ProcessContext {
 
 pub struct WindowsAndMessaging {
     pub process_ctx: ProcessContext,
+    pub windows_handle_table: Arc<Mutex<WindowsHandleTable>>,
 }
 
 #[allow(non_snake_case)]
 impl win32::Win32::UI::WindowsAndMessaging::Api for WindowsAndMessaging {
+    fn LoadCursorA(&self, _h_instance: HINSTANCE, _lp_cursor_name: PCSTR) -> HCURSOR {
+        let mut ht = self.windows_handle_table.lock().unwrap();
+        let res = ht.put(WindowsObject::Cursor());
+
+        HCURSOR(res as PtrDiffRepr)
+    }
+
+    fn LoadIconA(&self, _h_instance: HINSTANCE, _lp_icon_name: PCSTR) -> HICON {
+        let mut ht = self.windows_handle_table.lock().unwrap();
+        let res = ht.put(WindowsObject::Icon());
+
+        HICON(res as PtrDiffRepr)
+    }
+
     fn MessageBoxA(
         &self,
         h_wnd: HWND,
@@ -248,6 +264,14 @@ pub struct Environment {
 }
 #[allow(non_snake_case)]
 impl win32::Win32::System::Environment::Api for Environment {
+    fn FreeEnvironmentStringsA(&self, penv: PCSTR) -> BOOL {
+        let mut heap = self.process_ctx.process_heap.lock().unwrap();
+
+        heap.free(penv.0.repr()).unwrap();
+
+        BOOL(1)
+    }
+
     fn GetCommandLineA(&self) -> PSTR {
         self.command_line_ansi.ptr_mut()
     }
@@ -261,14 +285,6 @@ impl win32::Win32::System::Environment::Api for Environment {
         .unwrap();
 
         PSTR::new(res.leak())
-    }
-
-    fn FreeEnvironmentStringsA(&self, penv: PCSTR) -> BOOL {
-        let mut heap = self.process_ctx.process_heap.lock().unwrap();
-
-        heap.free(penv.0.repr()).unwrap();
-
-        BOOL(1)
     }
 
     // report no unicode support, like on Windows 9x

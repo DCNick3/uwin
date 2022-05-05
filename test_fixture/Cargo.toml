@@ -20,6 +20,7 @@ win32-virtmem = { path = "../win32-virtmem" }
 win32-module-table = { path = "../win32-module-table" }
 win32-kobj = { path = "../win32-kobj" }
 win32-io = { path = "../win32-io" }
+win32-wobj = { path = "../win32-wobj" }
 
 tracing = "0.1.33"
 tracing-subscriber = { version = "0.3.11", features = ["env-filter"] }

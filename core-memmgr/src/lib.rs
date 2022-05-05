@@ -8,8 +8,11 @@ mod address_range;
 mod manager;
 mod page_region_state;
 mod page_state;
+mod region_holder;
 
-pub use crate::{address_range::*, manager::*, mapper::MapperError, page_state::*};
+pub use crate::{
+    address_range::*, manager::*, mapper::MapperError, page_state::*, region_holder::*,
+};
 pub use memory_image::Protection;
 
 pub const PAGE_SIZE: PtrRepr = 4096;
