@@ -146,6 +146,10 @@ fn main_impl() {
     })
         as Arc<dyn win32::Win32::UI::WindowsAndMessaging::Api>);
 
+    context.win32.insert(Arc::new(Gdi {
+        process_ctx: process_ctx.clone(),
+    }) as Arc<dyn win32::Win32::Graphics::Gdi::Api>);
+
     context.win32.insert(Arc::new(SystemInformation {
         process_ctx: process_ctx.clone(),
     })
