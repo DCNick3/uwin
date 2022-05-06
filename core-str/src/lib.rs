@@ -121,7 +121,7 @@ impl PCSTR {
         let mut ptr = self.0;
 
         loop {
-            let c = ptr.read_with::<u8, _>(ctx);
+            let c = ptr.read_with(ctx);
             ptr = ptr.offset(1);
 
             if c == 0 {

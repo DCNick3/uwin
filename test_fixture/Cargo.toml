@@ -21,6 +21,8 @@ win32-module-table = { path = "../win32-module-table" }
 win32-kobj = { path = "../win32-kobj" }
 win32-io = { path = "../win32-io" }
 win32-wobj = { path = "../win32-wobj" }
+win32-windows = { path = "../win32-windows" }
+win32-atoms = { path = "../win32-atoms" }
 
 tracing = "0.1.33"
 tracing-subscriber = { version = "0.3.11", features = ["env-filter"] }

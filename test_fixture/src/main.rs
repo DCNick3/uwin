@@ -25,11 +25,13 @@ use tracing_subscriber::util::SubscriberInitExt;
 use win32::core::Win32Context;
 use win32::Win32::Foundation::{BOOL, HINSTANCE};
 use win32::Win32::System::SystemServices::DLL_PROCESS_ATTACH;
+use win32_atoms::AtomTable;
 use win32_heapmgr::HeapMgr;
 use win32_io::IoDispatcher;
 use win32_kobj::{KernelHandleTable, KernelObject};
 use win32_module_table::ModuleTable;
 use win32_virtmem::VirtualMemoryManager;
+use win32_windows::ClassRegistry;
 use win32_wobj::WindowsHandleTable;
 
 fn map_item(mgr: &mut MemoryManager, item: &MemoryImageItem) -> core_memmgr::Result<()> {
@@ -130,11 +132,15 @@ fn main_impl() {
     let windows_handle_table = WindowsHandleTable::new(memory_mgr.clone(), 0x10000);
     let windows_handle_table = Arc::new(Mutex::new(windows_handle_table));
 
+    let user_atom_table = Arc::new(Mutex::new(AtomTable::new()));
+    let window_classes_registry = Mutex::new(ClassRegistry::new(user_atom_table));
+
     // ===
 
     context.win32.insert(Arc::new(WindowsAndMessaging {
         process_ctx: process_ctx.clone(),
         windows_handle_table,
+        window_classes_registry,
     })
         as Arc<dyn win32::Win32::UI::WindowsAndMessaging::Api>);
 

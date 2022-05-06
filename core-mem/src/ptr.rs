@@ -79,10 +79,10 @@ impl<T> MutPtr<T> {
     }
 }
 impl<T: FromIntoMemory> MutPtr<T> {
-    pub fn read_with<N: FromIntoMemory, MCtx: MemoryCtx>(&self, ctx: MCtx) -> N {
+    pub fn read_with<MCtx: MemoryCtx>(&self, ctx: MCtx) -> T {
         self.0.read_with(ctx)
     }
-    pub fn write_with<N: FromIntoMemory, MCtx: MemoryCtx>(&self, ctx: MCtx, value: N) {
+    pub fn write_with<MCtx: MemoryCtx>(&self, ctx: MCtx, value: T) {
         self.0.write_with(ctx, value)
     }
 
@@ -157,7 +157,7 @@ impl ConstPtr<u8> {
     }
 }
 impl<T: FromIntoMemory> ConstPtr<T> {
-    pub fn read_with<N: FromIntoMemory, MCtx: MemoryCtx>(&self, ctx: MCtx) -> N {
+    pub fn read_with<MCtx: MemoryCtx>(&self, ctx: MCtx) -> T {
         self.0.read_with(ctx)
     }
 

@@ -20,11 +20,14 @@ use win32::Win32::System::Memory::{
 };
 use win32::Win32::System::Threading::STARTUPINFOA;
 use win32::Win32::System::IO::OVERLAPPED;
-use win32::Win32::UI::WindowsAndMessaging::{HCURSOR, HICON, MESSAGEBOX_RESULT, MESSAGEBOX_STYLE};
+use win32::Win32::UI::WindowsAndMessaging::{
+    HCURSOR, HICON, MESSAGEBOX_RESULT, MESSAGEBOX_STYLE, WNDCLASSA,
+};
 use win32_heapmgr::HeapMgr;
 use win32_io::IoDispatcher;
 use win32_module_table::ModuleTable;
 use win32_virtmem::VirtualMemoryManager;
+use win32_windows::{ClassRegistry, WindowClass};
 use win32_wobj::{WindowsHandleTable, WindowsObject};
 
 #[derive(Clone)]
@@ -38,6 +41,7 @@ pub struct ProcessContext {
 pub struct WindowsAndMessaging {
     pub process_ctx: ProcessContext,
     pub windows_handle_table: Arc<Mutex<WindowsHandleTable>>,
+    pub window_classes_registry: Mutex<ClassRegistry>,
 }
 
 #[allow(non_snake_case)]
@@ -76,6 +80,27 @@ impl win32::Win32::UI::WindowsAndMessaging::Api for WindowsAndMessaging {
         );
 
         MESSAGEBOX_RESULT(0)
+    }
+
+    fn RegisterClassA(&self, lp_wnd_class: ConstPtr<WNDCLASSA>) -> u16 {
+        let ctx = self.process_ctx.memory_ctx;
+
+        let wnd_class = lp_wnd_class.read_with(ctx);
+
+        let name = wnd_class
+            .lpszClassName
+            .read_with(ctx)
+            .as_utf8(self.process_ctx.ansi_encoding)
+            .to_string();
+
+        let class = WindowClass {
+            name,
+            wndproc: wnd_class.lpfnWndProc,
+        };
+
+        let mut registry = self.window_classes_registry.lock().unwrap();
+
+        registry.register(class)
     }
 }
 

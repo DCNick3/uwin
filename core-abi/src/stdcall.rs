@@ -76,7 +76,7 @@ impl<'a, MCtx: MemoryCtx, CpuCtx: X86Context> StdCalleeHelper<'a, MCtx, CpuCtx> 
         );
 
         let mut bytes = [0u8; 4];
-        value.into_bytes(&mut bytes);
+        value.into_bytes(&mut bytes[..size]);
 
         self.cpu_ctx.set_esp(self.cpu_ctx.get_esp() + self.offset);
 

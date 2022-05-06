@@ -30,6 +30,7 @@ members = [
     "win32-io",
     "win32-wobj",
     "win32-atoms",
+    "win32-windows",
 
     "win32-bindgen/bindgen",
     "win32-bindgen/bindgenlib",
