@@ -1,6 +1,6 @@
+use core_handletable::{Handle, HandleTable};
 use core_mem::ptr::PtrRepr;
 use core_memmgr::{MemoryManager, RegionHolder};
-use std::cmp::min;
 use std::sync::{Arc, Mutex};
 
 pub enum WindowsObject {
@@ -8,27 +8,43 @@ pub enum WindowsObject {
     Cursor(), // dummy
 }
 
-pub struct WindowsHandleTable {
-    region: RegionHolder,
-    table: Vec<Option<Box<WindowsObject>>>,
-    start_free_search_idx: usize,
-}
+#[derive(Clone, Copy)]
+struct HandleWrapper(PtrRepr);
 
-impl WindowsHandleTable {
-    fn index_to_handle(&self, index: usize) -> PtrRepr {
-        let region = self.region.region();
-        assert!(index < region.size as usize);
-
-        region.start + index as u32
-    }
-
-    fn handle_to_index(&self, handle: PtrRepr) -> usize {
-        let region = self.region.region();
+impl Handle<RegionHolder> for HandleWrapper {
+    fn to_index(self, region: &RegionHolder) -> usize {
+        let region = region.region();
+        let handle = self.into();
         assert!(region.contains_addr(handle));
 
         (handle - region.start) as usize
     }
 
+    fn from_index(index: usize, region: &RegionHolder) -> Self {
+        let region = region.region();
+        assert!(index < region.size as usize);
+
+        (region.start + index as u32).into()
+    }
+}
+
+impl From<PtrRepr> for HandleWrapper {
+    fn from(handle: PtrRepr) -> Self {
+        Self(handle)
+    }
+}
+
+impl From<HandleWrapper> for PtrRepr {
+    fn from(handle: HandleWrapper) -> Self {
+        handle.0
+    }
+}
+
+pub struct WindowsHandleTable {
+    table: HandleTable<RegionHolder, HandleWrapper, WindowsObject, true>,
+}
+
+impl WindowsHandleTable {
     pub fn new(mgr: Arc<Mutex<MemoryManager>>, region_size: PtrRepr) -> Self {
         let region = {
             let mut mgr = mgr.lock().unwrap();
@@ -37,54 +53,24 @@ impl WindowsHandleTable {
 
         let region = RegionHolder::new(mgr, region);
 
-        let mut table = Vec::new();
-        table.resize_with(region.region().size as usize, || None);
+        let table = HandleTable::new(region, 16);
 
-        Self {
-            region,
-            table,
-            start_free_search_idx: 0,
-        }
+        Self { table }
     }
 
     pub fn put(&mut self, object: WindowsObject) -> PtrRepr {
-        for (i, v) in self
-            .table
-            .iter_mut()
-            .enumerate()
-            .skip(self.start_free_search_idx as usize)
-        {
-            if v.is_none() {
-                *v = Some(Box::new(object));
-                self.start_free_search_idx = i;
-                return self.index_to_handle(i);
-            }
-        }
-
-        panic!(
-            "Could not find free slots in handle table, doubling the size (size = {})",
-            self.table.len()
-        );
+        self.table.put(object).into()
     }
 
     pub fn find(&self, handle: PtrRepr) -> Option<&WindowsObject> {
-        self.table
-            .get(self.handle_to_index(handle))?
-            .as_ref()
-            .map(|obj| obj.as_ref())
+        self.table.find(handle.into())
     }
 
     pub fn find_mut(&mut self, handle: PtrRepr) -> Option<&mut WindowsObject> {
-        let index = self.handle_to_index(handle);
-        self.table.get_mut(index)?.as_mut().map(|obj| obj.as_mut())
+        self.table.find_mut(handle.into())
     }
 
-    pub fn remove(&mut self, handle: PtrRepr) -> Option<Box<WindowsObject>> {
-        let index = self.handle_to_index(handle);
-        let obj = self.table.get_mut(index)?;
-        obj.take().map(|obj| {
-            self.start_free_search_idx = min(self.start_free_search_idx, index);
-            obj
-        })
+    pub fn remove(&mut self, handle: PtrRepr) -> Option<WindowsObject> {
+        self.table.remove(handle.into())
     }
 }

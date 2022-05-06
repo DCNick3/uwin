@@ -20,6 +20,7 @@ members = [
     "core-abi",
     "core-str",
     "core-console",
+    "core-handletable",
 
     "win32",
     "win32-heapmgr",
@@ -28,6 +29,7 @@ members = [
     "win32-kobj",
     "win32-io",
     "win32-wobj",
+    "win32-atoms",
 
     "win32-bindgen/bindgen",
     "win32-bindgen/bindgenlib",

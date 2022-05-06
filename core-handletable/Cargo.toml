@@ -1,11 +1,9 @@
 [package]
-name = "win32-wobj"
+name = "core-handletable"
 version = "0.1.0"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-core-mem = { path = "../core-mem" }
-core-memmgr = { path = "../core-memmgr" }
-core-handletable = { path = "../core-handletable" }
+tracing = "0.1.34"

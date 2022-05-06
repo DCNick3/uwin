@@ -1,8 +1,7 @@
 use core_console::Console;
+use core_handletable::{Handle, HandleTable};
 use core_mem::ptr::PtrRepr;
-use std::cmp::min;
 use std::sync::Arc;
-use tracing::trace;
 use win32::Win32::Foundation::HANDLE;
 
 #[non_exhaustive]
@@ -11,65 +10,54 @@ pub enum KernelObject {
     Console(Arc<dyn Console>),
 }
 
+#[derive(Clone, Copy)]
+struct HANDLE_(PtrRepr);
+
+impl Handle for HANDLE_ {
+    fn to_index(self, _: &()) -> usize {
+        let handle: usize = self.0.try_into().unwrap();
+        (handle >> 2) - 10
+    }
+
+    fn from_index(index: usize, _: &()) -> Self {
+        let index = (index + 10) << 2;
+        Self(index.try_into().unwrap())
+    }
+}
+
+impl From<HANDLE_> for HANDLE {
+    fn from(handle: HANDLE_) -> Self {
+        Self(handle.0)
+    }
+}
+
+impl From<HANDLE> for HANDLE_ {
+    fn from(handle: HANDLE) -> Self {
+        Self(handle.0)
+    }
+}
+
 pub struct KernelHandleTable {
-    table: Vec<Option<Arc<KernelObject>>>,
-    start_free_search_idx: usize,
+    inner: HandleTable<(), HANDLE_, Arc<KernelObject>, true>,
 }
 
 impl KernelHandleTable {
     pub fn new() -> Self {
         Self {
-            table: vec![None; 16],
-            start_free_search_idx: 0,
+            inner: HandleTable::new((), 16),
         }
-    }
-
-    fn handle_to_index(handle: HANDLE) -> usize {
-        let handle = handle.0 as usize;
-        (handle >> 2) - 10
-    }
-
-    fn index_to_handle(index: usize) -> HANDLE {
-        let index = (index + 10) << 2;
-        HANDLE(index as PtrRepr)
     }
 
     pub fn put(&mut self, object: Arc<KernelObject>) -> HANDLE {
-        for (i, v) in self
-            .table
-            .iter_mut()
-            .enumerate()
-            .skip(self.start_free_search_idx as usize)
-        {
-            if v.is_none() {
-                *v = Some(object);
-                self.start_free_search_idx = i;
-                return Self::index_to_handle(i);
-            }
-        }
-
-        // no free slot found, need  to expand the table
-        trace!(
-            "Could not find free slots in handle table, doubling the size (current size = {})",
-            self.table.len()
-        );
-
-        self.table.resize(self.table.len() * 2, None);
-
-        self.put(object)
+        self.inner.put(object).into()
     }
 
     pub fn find(&self, handle: HANDLE) -> Option<Arc<KernelObject>> {
-        self.table.get(Self::handle_to_index(handle)).cloned()?
+        self.inner.find(handle.into()).cloned()
     }
 
     pub fn remove(&mut self, handle: HANDLE) -> Option<Arc<KernelObject>> {
-        let index = Self::handle_to_index(handle);
-        let obj = self.table.get_mut(index)?;
-        obj.take().map(|obj| {
-            self.start_free_search_idx = min(self.start_free_search_idx, index);
-            obj
-        })
+        self.inner.remove(handle.into())
     }
 }
 
@@ -93,7 +81,7 @@ mod test {
     fn test() {
         let mut table = KernelHandleTable::new();
 
-        assert_eq!(table.table.len(), 16);
+        assert_eq!(table.inner.capacity(), 16);
 
         let mut handles = Vec::new();
         for _ in 0..17 {
@@ -107,7 +95,7 @@ mod test {
         }
 
         // handle table was resized!
-        assert_eq!(table.table.len(), 32);
+        assert_eq!(table.inner.capacity(), 32);
 
         assert!(table.remove(handles[0]).is_some());
 
