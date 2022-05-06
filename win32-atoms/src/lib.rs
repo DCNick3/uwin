@@ -76,6 +76,14 @@ impl AtomTable {
         }
     }
 
+    pub fn find_atom(&self, value: &str) -> Option<u16> {
+        if value.starts_with('#') {
+            todo!("Integer atoms")
+        }
+
+        self.value_to_atom.get(value).map(|s| s.0)
+    }
+
     pub fn find_value(&self, atom: u16) -> Option<Cow<str>> /* Cow for the case of integer atoms */
     {
         if atom < MAXINTATOM {

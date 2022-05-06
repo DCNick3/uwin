@@ -7,4 +7,5 @@ edition = "2021"
 
 [dependencies]
 win32-atoms = { path = "../win32-atoms" }
+core-handletable = { path = "../core-handletable" }
 win32 = { path = "../win32" }

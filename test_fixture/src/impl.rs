@@ -21,13 +21,14 @@ use win32::Win32::System::Memory::{
 use win32::Win32::System::Threading::STARTUPINFOA;
 use win32::Win32::System::IO::OVERLAPPED;
 use win32::Win32::UI::WindowsAndMessaging::{
-    HCURSOR, HICON, MESSAGEBOX_RESULT, MESSAGEBOX_STYLE, WNDCLASSA,
+    HCURSOR, HICON, HMENU, MESSAGEBOX_RESULT, MESSAGEBOX_STYLE, SHOW_WINDOW_CMD, WINDOW_EX_STYLE,
+    WINDOW_STYLE, WNDCLASSA,
 };
 use win32_heapmgr::HeapMgr;
 use win32_io::IoDispatcher;
 use win32_module_table::ModuleTable;
 use win32_virtmem::VirtualMemoryManager;
-use win32_windows::{ClassRegistry, WindowClass};
+use win32_windows::{ClassRegistry, Window, WindowClass, WindowsRegistry};
 use win32_wobj::{WindowsHandleTable, WindowsObject};
 
 #[derive(Clone)]
@@ -42,10 +43,46 @@ pub struct WindowsAndMessaging {
     pub process_ctx: ProcessContext,
     pub windows_handle_table: Arc<Mutex<WindowsHandleTable>>,
     pub window_classes_registry: Mutex<ClassRegistry>,
+    pub windows_registry: Mutex<WindowsRegistry>,
 }
 
 #[allow(non_snake_case)]
 impl win32::Win32::UI::WindowsAndMessaging::Api for WindowsAndMessaging {
+    fn CreateWindowExA(
+        &self,
+        _dw_ex_style: WINDOW_EX_STYLE,
+        lp_class_name: PCSTR,
+        _lp_window_name: PCSTR,
+        _dw_style: WINDOW_STYLE,
+        _x: i32,
+        _y: i32,
+        _n_width: i32,
+        _n_height: i32,
+        _h_wnd_parent: HWND,
+        _h_menu: HMENU,
+        _h_instance: HINSTANCE,
+        lp_param: ConstPtr<c_void>,
+    ) -> HWND {
+        let ctx = self.process_ctx.memory_ctx;
+        let class_name = lp_class_name.read_with(ctx);
+        let class_name = class_name.as_utf8(self.process_ctx.ansi_encoding);
+        let class = self
+            .window_classes_registry
+            .lock()
+            .unwrap()
+            .find(&class_name)
+            .expect("Creation of window with a non-existing class");
+
+        let window = Window {
+            class,
+            class_argument: lp_param.repr(),
+        };
+
+        let mut window_registry = self.windows_registry.lock().unwrap();
+
+        window_registry.create(window)
+    }
+
     fn LoadCursorA(&self, _h_instance: HINSTANCE, _lp_cursor_name: PCSTR) -> HCURSOR {
         let mut ht = self.windows_handle_table.lock().unwrap();
         let res = ht.put(WindowsObject::Cursor());
@@ -101,6 +138,14 @@ impl win32::Win32::UI::WindowsAndMessaging::Api for WindowsAndMessaging {
         let mut registry = self.window_classes_registry.lock().unwrap();
 
         registry.register(class)
+    }
+
+    fn ShowWindow(&self, h_wnd: HWND, n_cmd_show: SHOW_WINDOW_CMD) -> BOOL {
+        warn!(
+            "No-op stub for ShowWindow({:?}, {:?}) called",
+            h_wnd, n_cmd_show
+        );
+        BOOL(1)
     }
 }
 

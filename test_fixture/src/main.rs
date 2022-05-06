@@ -31,7 +31,7 @@ use win32_io::IoDispatcher;
 use win32_kobj::{KernelHandleTable, KernelObject};
 use win32_module_table::ModuleTable;
 use win32_virtmem::VirtualMemoryManager;
-use win32_windows::ClassRegistry;
+use win32_windows::{ClassRegistry, WindowsRegistry};
 use win32_wobj::WindowsHandleTable;
 
 fn map_item(mgr: &mut MemoryManager, item: &MemoryImageItem) -> core_memmgr::Result<()> {
@@ -134,6 +134,7 @@ fn main_impl() {
 
     let user_atom_table = Arc::new(Mutex::new(AtomTable::new()));
     let window_classes_registry = Mutex::new(ClassRegistry::new(user_atom_table));
+    let windows_registry = Mutex::new(WindowsRegistry::new());
 
     // ===
 
@@ -141,6 +142,7 @@ fn main_impl() {
         process_ctx: process_ctx.clone(),
         windows_handle_table,
         window_classes_registry,
+        windows_registry,
     })
         as Arc<dyn win32::Win32::UI::WindowsAndMessaging::Api>);
 
