@@ -1,15 +1,10 @@
-[package]
-name = "dummy"
-version = "0.0.0"
-resolver = "2"
-edition = "2021"
-
 [profile.release]
 opt-level = 3
 debug = true
 lto = "thin"
 
 [workspace]
+resolver = "2"
 members = [
     "rusty-x86",
     "rusty-x86_derive",
