@@ -26,6 +26,7 @@ members = [
     "win32-wobj",
     "win32-atoms",
     "win32-windows",
+    "win32-message-queue",
 
     "win32-bindgen/bindgen",
     "win32-bindgen/bindgenlib",

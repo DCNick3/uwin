@@ -29,6 +29,7 @@ use win32_atoms::AtomTable;
 use win32_heapmgr::HeapMgr;
 use win32_io::IoDispatcher;
 use win32_kobj::{KernelHandleTable, KernelObject};
+use win32_message_queue::MessageQueueRegistry;
 use win32_module_table::ModuleTable;
 use win32_virtmem::VirtualMemoryManager;
 use win32_windows::{ClassRegistry, WindowsRegistry};
@@ -136,6 +137,8 @@ fn main_impl() {
     let window_classes_registry = Mutex::new(ClassRegistry::new(user_atom_table));
     let windows_registry = Mutex::new(WindowsRegistry::new());
 
+    let message_queue_registry = Mutex::new(MessageQueueRegistry::new());
+
     // ===
 
     context.win32.insert(Arc::new(WindowsAndMessaging {
@@ -143,6 +146,7 @@ fn main_impl() {
         windows_handle_table,
         window_classes_registry,
         windows_registry,
+        message_queue_registry,
     })
         as Arc<dyn win32::Win32::UI::WindowsAndMessaging::Api>);
 

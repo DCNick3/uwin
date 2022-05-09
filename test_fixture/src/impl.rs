@@ -8,9 +8,12 @@ use core_str::{AnsiString, PWSTR};
 use encoding_rs::Encoding;
 use std::ffi::c_void;
 use std::sync::{Arc, Mutex};
+use std::thread;
 use tracing::{info, warn};
 use win32::core::prelude::{PCSTR, PSTR};
-use win32::Win32::Foundation::{BOOL, HANDLE, HINSTANCE, HWND, INVALID_HANDLE_VALUE};
+use win32::Win32::Foundation::{
+    BOOL, HANDLE, HINSTANCE, HWND, INVALID_HANDLE_VALUE, LPARAM, POINT, WPARAM,
+};
 use win32::Win32::Globalization::CPINFO;
 use win32::Win32::System::Console::{
     STD_ERROR_HANDLE, STD_HANDLE, STD_INPUT_HANDLE, STD_OUTPUT_HANDLE,
@@ -21,11 +24,12 @@ use win32::Win32::System::Memory::{
 use win32::Win32::System::Threading::STARTUPINFOA;
 use win32::Win32::System::IO::OVERLAPPED;
 use win32::Win32::UI::WindowsAndMessaging::{
-    HCURSOR, HICON, HMENU, MESSAGEBOX_RESULT, MESSAGEBOX_STYLE, SHOW_WINDOW_CMD, WINDOW_EX_STYLE,
-    WINDOW_STYLE, WNDCLASSA,
+    HCURSOR, HICON, HMENU, MESSAGEBOX_RESULT, MESSAGEBOX_STYLE, MSG, SHOW_WINDOW_CMD,
+    WINDOW_EX_STYLE, WINDOW_STYLE, WM_QUIT, WNDCLASSA,
 };
 use win32_heapmgr::HeapMgr;
 use win32_io::IoDispatcher;
+use win32_message_queue::MessageQueueRegistry;
 use win32_module_table::ModuleTable;
 use win32_virtmem::VirtualMemoryManager;
 use win32_windows::{ClassRegistry, Window, WindowClass, WindowsRegistry};
@@ -44,6 +48,7 @@ pub struct WindowsAndMessaging {
     pub windows_handle_table: Arc<Mutex<WindowsHandleTable>>,
     pub window_classes_registry: Mutex<ClassRegistry>,
     pub windows_registry: Mutex<WindowsRegistry>,
+    pub message_queue_registry: Mutex<MessageQueueRegistry>,
 }
 
 #[allow(non_snake_case)]
@@ -80,7 +85,58 @@ impl win32::Win32::UI::WindowsAndMessaging::Api for WindowsAndMessaging {
 
         let mut window_registry = self.windows_registry.lock().unwrap();
 
-        window_registry.create(window)
+        // preventively create the message queue (well, it will be needed to handle the window messages
+        let mut registry = self.message_queue_registry.lock().unwrap();
+
+        let thread_id = thread::current().id();
+
+        let (sender, _) = registry.insert(thread_id);
+
+        let hwnd = window_registry.create(window);
+
+        // FIXME: currently we immediately send a WM_QUIT to the newly created window to be able to test stuff
+        sender
+            .send(MSG {
+                message: WM_QUIT,
+                wParam: WPARAM(0),
+                lParam: LPARAM(0),
+                hwnd,
+                pt: POINT {
+                    // TODO: somehow control the cursor coordinates (probably best done with some middleware)
+                    x: 0,
+                    y: 0,
+                },
+                time: 0, // TODO: time
+            })
+            .unwrap();
+
+        hwnd
+    }
+
+    fn GetMessageA(
+        &self,
+        lp_msg: MutPtr<MSG>,
+        h_wnd: HWND,
+        w_msg_filter_min: u32,
+        w_msg_filter_max: u32,
+    ) -> BOOL {
+        // we don't support any filtering
+        assert_eq!(h_wnd, HWND::default());
+        assert_eq!(w_msg_filter_max, 0);
+        assert_eq!(w_msg_filter_min, 0);
+
+        let registry = self.message_queue_registry.lock().unwrap();
+        let thread_id = thread::current().id();
+
+        let receiver = registry.get_receiver(thread_id).unwrap();
+
+        let msg = receiver.recv().unwrap();
+
+        let memory = self.process_ctx.memory_ctx;
+
+        lp_msg.write_with(memory, msg);
+
+        (msg.message != WM_QUIT).into()
     }
 
     fn LoadCursorA(&self, _h_instance: HINSTANCE, _lp_cursor_name: PCSTR) -> HCURSOR {
