@@ -96,7 +96,7 @@ impl Win32Context {
         Self(AnyMap::new())
     }
 
-    pub fn get<T: ?Sized>(&self) -> &T
+    pub fn get<T: ?Sized>(&self) -> Arc<T>
     where
         Arc<T>: IntoBox<dyn Any>,
     {
@@ -108,7 +108,7 @@ impl Win32Context {
                     std::any::type_name::<T>()
                 )
             })
-            .as_ref()
+            .clone()
     }
 
     pub fn insert<T: ?Sized>(&mut self, value: Arc<T>)

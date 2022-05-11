@@ -284,6 +284,7 @@ const EXCLUDE_ITEMS: &[(&str, &[&str])] = &[
     ),
 ];
 const UNWINDABLE_FUNCTIONS: &[&str] = &["ExitThread", "ExitProcess"];
+const CALLBACKING_FUNCTIONS: &[&str] = &["CreateWindowExA"];
 
 const EXCLUDE_LIBRARIES: &[&str] = &["icu", "clfsw32", "dbghelp", "mrmsupport", "dciman32"];
 
@@ -365,6 +366,7 @@ fn gen_tree(output: &std::path::Path, _root: &'static str, tree: &TypeTreeGen) -
             .collect(),
         excluded_libraries: EXCLUDE_LIBRARIES.iter().copied().collect(),
         unwindable_functions: UNWINDABLE_FUNCTIONS.iter().copied().collect(),
+        callbacking_functions: CALLBACKING_FUNCTIONS.iter().copied().collect(),
         namespace: tree.namespace,
         min_xaml: true,
         cfg: true,

@@ -16821,6 +16821,6 @@ pub trait Api {
         todo!("wglSwapMultipleBuffers")
     }
 }
-pub fn get_api(ctx: &crate::core::Win32Context) -> &dyn Api {
+pub fn get_api(ctx: &crate::core::Win32Context) -> std::sync::Arc<dyn Api> {
     ctx.get::<dyn Api>()
 }

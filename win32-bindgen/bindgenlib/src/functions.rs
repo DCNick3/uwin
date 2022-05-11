@@ -30,6 +30,7 @@ pub fn gen_function_declaration(def: &MethodDef, gen: &Gen) -> TokenStream {
 
     let signature = def.signature(&[]);
     let unwindable = gen.function_unwindable(def.name());
+    let callbacking = gen.function_callbacking(def.name());
 
     let params = if unwindable {
         vec![quote!(unwind_token: &mut UnwindToken)]
@@ -37,6 +38,14 @@ pub fn gen_function_declaration(def: &MethodDef, gen: &Gen) -> TokenStream {
         vec![]
     }
     .into_iter()
+    .chain(
+        if callbacking {
+            vec![quote!(callback_token: &mut dyn StdcallCallbackTokenTrait)]
+        } else {
+            vec![]
+        }
+        .into_iter(),
+    )
     .chain(signature.params.iter().map(|p| {
         let name = gen_param_name(&p.def);
         let tokens = gen_element_name(&p.ty, gen);
@@ -86,8 +95,9 @@ pub fn gen_thunk_function(def: &MethodDef, gen: &Gen, namespace: &TokenStream) -
     let signature = def.signature(&[]);
 
     let unwindable = gen.function_unwindable(name);
+    let callbacking = gen.function_callbacking(name);
 
-    let arg_names = signature
+    let base_args = signature
         .params
         .iter()
         .map(|param| {
@@ -97,18 +107,36 @@ pub fn gen_thunk_function(def: &MethodDef, gen: &Gen, namespace: &TokenStream) -
         })
         .collect::<Vec<_>>();
 
-    let call = if unwindable {
-        quote! {
-            let unwind_token = call.unwind_token();
-            let res = api.#ident(unwind_token, #(#arg_names),*);
-        }
-    } else {
-        quote! {
-            let res = api.#ident(#(#arg_names),*);
+    let mut precall = TokenStream::new();
+
+    let mut args = Vec::new();
+    if unwindable {
+        precall.combine(&quote! {
+            let mut unwind_token = call.unwind_token();
+        });
+
+        args.push(quote!(&mut unwind_token));
+    }
+
+    if callbacking {
+        precall.combine(&quote! {
+            let mut callback_token = call.callback_token();
+        });
+
+        args.push(quote!(&mut callback_token));
+    }
+
+    args.extend(base_args.clone().into_iter());
+
+    let call = quote! {
+        {
+            let api = #namespace get_api(&call.context().win32);
+            #precall
+            api.#ident(#(#args),*)
         }
     };
 
-    let arguments_fmt = arg_names
+    let arguments_fmt = base_args
         .iter()
         .map(|arg| format!("{} = {{:?}}", arg))
         .join(", ");
@@ -117,22 +145,20 @@ pub fn gen_thunk_function(def: &MethodDef, gen: &Gen, namespace: &TokenStream) -
     let body = quote! {
         static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), #name);
 
-        crate::thunk_helper(context, memory, &SPAN_CALLSITE, |mut call, win32, trace_event_enabled, callsite| {
-            let api = #namespace get_api(win32);
-
-            #(let #arg_names = call.get_arg();)*
+        crate::thunk_helper(context, memory, &SPAN_CALLSITE, |mut call, trace_event_enabled, callsite| {
+            #(let #base_args = call.get_arg();)*
 
             if trace_event_enabled {
                 let fields = callsite.metadata().fields();
                 tracing::event::Event::dispatch(callsite.metadata(),
                     &fields.value_set(&[(
                         &unsafe { fields.iter().next().unwrap_unchecked() },
-                        Some(&format_args!(#arguments_fmt, #(#arg_names),*)
+                        Some(&format_args!(#arguments_fmt, #(#base_args),*)
                             as &dyn tracing::Value),
                     )]));
             }
 
-            #call
+            let res = #call;
 
             if trace_event_enabled {
                 let fields = callsite.metadata().fields();
@@ -178,7 +204,7 @@ pub fn gen_functions(tree: &TypeTree, gen: &Gen) -> TokenStream {
                 #tokens
             }
 
-            pub fn get_api(ctx: &crate::core::Win32Context) -> &dyn Api {
+            pub fn get_api(ctx: &crate::core::Win32Context) -> std::sync::Arc<dyn Api> {
                 ctx.get::<dyn Api>()
             }
         }

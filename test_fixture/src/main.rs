@@ -3,6 +3,7 @@ extern crate core;
 mod r#impl;
 
 use crate::r#impl::*;
+use core_abi::callback_token::StdcallCallbackToken;
 use core_abi::stdcall_fn_ptr::StdCallFnPtr;
 use core_abi::unwind_token::UnwindReason;
 use core_mem::ptr::{PtrDiffRepr, PtrRepr};
@@ -11,7 +12,7 @@ use core_str::heap_helper::AnsiStringHeapBox;
 use core_str::AnsiString;
 use itertools::Itertools;
 use recompiler::memory_image::{MemoryImageItem, Protection};
-use rusty_x86_runtime::{CpuContext, ExtendedContext, RustyX86CallbackToken, PROGRAM_IMAGE};
+use rusty_x86_runtime::{CpuContext, ExtendedContext, PROGRAM_IMAGE};
 #[allow(unused)]
 use rusty_x86_runtime::{InterpretedExecutor, RecompiledExecutor};
 use std::collections::HashSet;
@@ -74,11 +75,14 @@ fn main_impl() {
         map_item(&mut memory_mgr, item).expect("Mapping program memory")
     }
 
+    let executor = RecompiledExecutor {};
+
     let mut context = ExtendedContext {
         cpu: CpuContext::default(),
         win32: Win32Context::new(),
         unwind_reason: None,
         interpreted_blocks: HashSet::new(),
+        executor: Arc::new(executor.clone()),
     };
 
     let tlb = memory_mgr
@@ -211,8 +215,6 @@ fn main_impl() {
 
     panic_control::chain_hook_ignoring::<UnwindReason>();
 
-    let executor = RecompiledExecutor {};
-
     match std::panic::catch_unwind(AssertUnwindSafe(|| {
         for (dll, info) in PROGRAM_IMAGE.modules.values() {
             if info.base_addr != PROGRAM_IMAGE.main_module_base {
@@ -224,8 +226,7 @@ fn main_impl() {
 
                 let instance = HINSTANCE(info.base_addr as PtrDiffRepr);
 
-                let callback_token =
-                    RustyX86CallbackToken::new(&executor, &mut context, memory_ctx);
+                let callback_token = StdcallCallbackToken::new(&mut context, memory_ctx);
                 // call process attachment callbacks
                 // no thread callbacks (at least for now, when we don't have any threads =))
                 let res = entry
@@ -239,7 +240,7 @@ fn main_impl() {
 
         let entry = EntrypointFnPtr::new(PROGRAM_IMAGE.exe_entrypoint);
 
-        let callback_token = RustyX86CallbackToken::new(&executor, &mut context, memory_ctx);
+        let callback_token = StdcallCallbackToken::new(&mut context, memory_ctx);
         entry.call(callback_token);
     })) {
         Ok(_) => {

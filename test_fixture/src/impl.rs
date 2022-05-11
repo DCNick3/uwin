@@ -1,3 +1,4 @@
+use core_abi::callback_token::StdcallCallbackTokenTrait;
 use core_abi::unwind_token::{UnwindReason, UnwindToken};
 use core_heap::{Heap, RawHeapBox};
 use core_mem::ctx::DefaultMemoryCtx;
@@ -53,6 +54,7 @@ pub struct WindowsAndMessaging {
 impl win32::Win32::UI::WindowsAndMessaging::Api for WindowsAndMessaging {
     fn CreateWindowExA(
         &self,
+        _callback_token: &mut dyn StdcallCallbackTokenTrait,
         _dw_ex_style: WINDOW_EX_STYLE,
         lp_class_name: PCSTR,
         _lp_window_name: PCSTR,

@@ -7,6 +7,7 @@ pub struct Gen<'a> {
     pub excluded_items: HashSet<&'a str>,
     pub excluded_libraries: HashSet<&'a str>,
     pub unwindable_functions: HashSet<&'a str>,
+    pub callbacking_functions: HashSet<&'a str>,
     pub namespace: &'a str,
     pub sys: bool,
     pub flatten: bool,
@@ -100,5 +101,9 @@ impl Gen<'_> {
 
     pub(crate) fn function_unwindable(&self, function_name: &str) -> bool {
         self.unwindable_functions.contains(function_name)
+    }
+
+    pub(crate) fn function_callbacking(&self, function_name: &str) -> bool {
+        self.callbacking_functions.contains(function_name)
     }
 }

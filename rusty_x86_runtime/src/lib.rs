@@ -1,9 +1,7 @@
-mod callback_token;
 mod interp;
 mod thunk_helper;
 mod thunks;
 
-pub use crate::callback_token::RustyX86CallbackToken;
 pub use core_abi::stdcall::StdCalleeHelper;
 pub use core_mem::ctx::FlatMemoryCtx;
 pub use rusty_x86::types::CpuContext;
@@ -19,6 +17,7 @@ use recompiler::LoadedProcessImage;
 use std::collections::HashSet;
 use std::ffi::c_void;
 use std::panic::AssertUnwindSafe;
+use std::sync::Arc;
 use tracing::warn;
 use win32::core::Win32Context;
 
@@ -33,10 +32,12 @@ pub struct ExtendedContext {
     pub win32: Win32Context,
     pub unwind_reason: Option<UnwindReason>,
     pub interpreted_blocks: HashSet<PtrRepr>,
+    pub executor: Arc<DynRustyExecutor>, // this is ewww... But helps to "defeat" the borrow checker =)
 }
 
 impl Context for ExtendedContext {
     type CpuContext = CpuContext;
+    type MemoryContext = FlatMemoryCtx;
 
     fn cpu_context(&self) -> &Self::CpuContext {
         &self.cpu
@@ -48,6 +49,16 @@ impl Context for ExtendedContext {
 
     fn get_unwind_reason(&self) -> Option<UnwindReason> {
         self.unwind_reason.clone()
+    }
+
+    fn set_unwind_reason(&mut self, reason: Option<UnwindReason>) {
+        self.unwind_reason = reason;
+    }
+
+    fn execute_recompiled_code(&mut self, memory: Self::MemoryContext, eip: u32) -> u32 {
+        self.executor
+            .clone()
+            .execute_recompiled_code(self, memory, eip)
     }
 }
 
@@ -125,7 +136,9 @@ type DynRustyExecutor = dyn Executor<
 >;
 
 // TODO: implement more executors (like pure interpreter ones and instrumented interpreters)
+#[derive(Clone)]
 pub struct RecompiledExecutor {}
+#[derive(Clone)]
 pub struct InterpretedExecutor {}
 
 impl Executor for RecompiledExecutor {

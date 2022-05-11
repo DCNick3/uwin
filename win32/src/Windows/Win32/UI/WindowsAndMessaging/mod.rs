@@ -10980,6 +10980,7 @@ pub trait Api {
     }
     fn CreateWindowExA(
         &self,
+        callback_token: &mut dyn StdcallCallbackTokenTrait,
         dw_ex_style: WINDOW_EX_STYLE,
         lp_class_name: PCSTR,
         lp_window_name: PCSTR,
@@ -13196,6 +13197,6 @@ pub trait Api {
         todo!("wvsprintfW")
     }
 }
-pub fn get_api(ctx: &crate::core::Win32Context) -> &dyn Api {
+pub fn get_api(ctx: &crate::core::Win32Context) -> std::sync::Arc<dyn Api> {
     ctx.get::<dyn Api>()
 }

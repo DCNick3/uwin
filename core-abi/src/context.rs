@@ -119,11 +119,15 @@ impl X86Context for rusty_x86::types::CpuContext {
 
 pub trait Context {
     type CpuContext: X86Context;
+    type MemoryContext: MemoryCtx;
 
     fn cpu_context(&self) -> &Self::CpuContext;
     fn cpu_context_mut(&mut self) -> &mut Self::CpuContext;
 
     fn get_unwind_reason(&self) -> Option<UnwindReason>;
+    fn set_unwind_reason(&mut self, reason: Option<UnwindReason>);
+
+    fn execute_recompiled_code(&mut self, memory: Self::MemoryContext, eip: u32) -> u32;
 }
 
 pub trait Executor {

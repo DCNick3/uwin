@@ -1,4 +1,4 @@
-use crate::callback_token::StdcallCallbackToken;
+use crate::callback_token::StdcallCallbackTokenTrait;
 use crate::stdcall::StdCallerHelper;
 use core_mem::conv::FromIntoMemory;
 use core_mem::ptr::PtrRepr;
@@ -29,7 +29,7 @@ impl<ParamTy, RetTy> Clone for StdCallFnPtr<ParamTy, RetTy> {
 }
 
 impl<R: FromIntoMemory> StdCallFnPtr<(), R> {
-    pub fn call<'a, Tok: StdcallCallbackToken + 'a>(&self, token: Tok) -> R {
+    pub fn call<'a, Tok: StdcallCallbackTokenTrait + 'a>(&self, token: Tok) -> R {
         let call = unsafe { StdCallerHelper::new(token) };
 
         call.execute::<R>(self.ptr)
@@ -39,7 +39,7 @@ impl<R: FromIntoMemory> StdCallFnPtr<(), R> {
 impl<T1: FromIntoMemory, T2: FromIntoMemory, T3: FromIntoMemory, R: FromIntoMemory>
     StdCallFnPtr<(T1, T2, T3), R>
 {
-    pub fn call<'a, Tok: StdcallCallbackToken + 'a>(
+    pub fn call<'a, Tok: StdcallCallbackTokenTrait + 'a>(
         &self,
         token: Tok,
         arg1: T1,

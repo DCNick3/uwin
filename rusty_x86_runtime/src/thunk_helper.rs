@@ -5,7 +5,6 @@ use core_mem::ptr::PtrRepr;
 use rusty_x86::types::CpuContext;
 use tracing::subscriber::Interest;
 use tracing::{Callsite, Metadata};
-use win32::core::Win32Context;
 
 pub(crate) struct MyCallsite {
     metadata: Metadata<'static>,
@@ -61,14 +60,13 @@ pub(crate) fn thunk_helper(
     memory: FlatMemoryCtx,
     span_callsite: &'static MyCallsite,
     body: fn(
-        StdCalleeHelper<FlatMemoryCtx, CpuContext>,
-        &Win32Context,
+        StdCalleeHelper<ExtendedContext, CpuContext, FlatMemoryCtx>,
         bool, // trace_enabled
         &'static MyCallsite,
     ) -> PtrRepr,
 ) -> PtrRepr {
     let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
-        let call = StdCalleeHelper::new(memory, &mut context.cpu, &mut context.unwind_reason);
+        let call = StdCalleeHelper::new(context, memory);
 
         let span = tracing::Span::new(
             span_callsite.metadata(),
@@ -96,7 +94,7 @@ pub(crate) fn thunk_helper(
             );
         }
 
-        body(call, &context.win32, trace_event_enabled, &CALLSITE)
+        body(call, trace_event_enabled, &CALLSITE)
     }));
     match result {
         Ok(ret) => ret,
