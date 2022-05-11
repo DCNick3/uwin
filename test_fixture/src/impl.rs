@@ -12,9 +12,7 @@ use std::sync::{Arc, Mutex};
 use std::thread;
 use tracing::{info, warn};
 use win32::core::prelude::{PCSTR, PSTR};
-use win32::Win32::Foundation::{
-    BOOL, HANDLE, HINSTANCE, HWND, INVALID_HANDLE_VALUE, LPARAM, POINT, WPARAM,
-};
+use win32::Win32::Foundation::{BOOL, HANDLE, HINSTANCE, HWND, INVALID_HANDLE_VALUE};
 use win32::Win32::Globalization::CPINFO;
 use win32::Win32::System::Console::{
     STD_ERROR_HANDLE, STD_HANDLE, STD_INPUT_HANDLE, STD_OUTPUT_HANDLE,

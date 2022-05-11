@@ -11,10 +11,9 @@ use core_str::heap_helper::AnsiStringHeapBox;
 use core_str::AnsiString;
 use itertools::Itertools;
 use recompiler::memory_image::{MemoryImageItem, Protection};
-use rusty_x86_runtime::{
-    CpuContext, ExtendedContext, InterpretedExecutor, RecompiledExecutor, RustyX86CallbackToken,
-    PROGRAM_IMAGE,
-};
+use rusty_x86_runtime::{CpuContext, ExtendedContext, RustyX86CallbackToken, PROGRAM_IMAGE};
+#[allow(unused)]
+use rusty_x86_runtime::{InterpretedExecutor, RecompiledExecutor};
 use std::collections::HashSet;
 use std::panic::AssertUnwindSafe;
 use std::sync::{Arc, Mutex};
