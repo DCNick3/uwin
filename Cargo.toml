@@ -16,6 +16,7 @@ members = [
     "core-str",
     "core-console",
     "core-handletable",
+    "core-message-queue",
 
     "win32",
     "win32-heapmgr",

@@ -3,6 +3,7 @@ use core_heap::{Heap, RawHeapBox};
 use core_mem::ctx::DefaultMemoryCtx;
 use core_mem::ptr::{ConstPtr, MutPtr, PtrDiffRepr, PtrRepr};
 use core_memmgr::MemoryManager;
+use core_message_queue::{Message, MessagePayload};
 use core_str::heap_helper::AnsiStringHeapBox;
 use core_str::{AnsiString, PWSTR};
 use encoding_rs::Encoding;
@@ -90,23 +91,16 @@ impl win32::Win32::UI::WindowsAndMessaging::Api for WindowsAndMessaging {
 
         let thread_id = thread::current().id();
 
-        let (sender, _) = registry.insert(thread_id);
+        let queue = registry.insert(thread_id);
+        let sender = queue.get_sender();
 
         let hwnd = window_registry.create(window);
 
         // FIXME: currently we immediately send a WM_QUIT to the newly created window to be able to test stuff
         sender
-            .send(MSG {
-                message: WM_QUIT,
-                wParam: WPARAM(0),
-                lParam: LPARAM(0),
-                hwnd,
-                pt: POINT {
-                    // TODO: somehow control the cursor coordinates (probably best done with some middleware)
-                    x: 0,
-                    y: 0,
-                },
-                time: 0, // TODO: time
+            .send(Message {
+                hwnd: hwnd.0 as PtrRepr,
+                payload: MessagePayload::Quit { status: 0 },
             })
             .unwrap();
 
@@ -128,9 +122,9 @@ impl win32::Win32::UI::WindowsAndMessaging::Api for WindowsAndMessaging {
         let registry = self.message_queue_registry.lock().unwrap();
         let thread_id = thread::current().id();
 
-        let receiver = registry.get_receiver(thread_id).unwrap();
+        let queue = registry.get_queue(thread_id).unwrap();
 
-        let msg = receiver.recv().unwrap();
+        let msg = queue.get_message();
 
         let memory = self.process_ctx.memory_ctx;
 
