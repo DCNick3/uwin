@@ -1,4 +1,6 @@
 use core_handletable::{Handle, HandleTable};
+use core_message_queue::Sender;
+use core_windows::{WindowCreation, WindowsContext};
 use std::collections::BTreeMap;
 use std::sync::{Arc, Mutex};
 use win32::core::prelude::{PtrDiffRepr, PtrRepr};
@@ -12,8 +14,8 @@ pub struct WindowClass {
 }
 
 pub struct Window {
-    pub class: Arc<WindowClass>,
-    pub class_argument: PtrRepr,
+    class: Arc<WindowClass>,
+    wndproc_argument: PtrRepr,
 }
 
 pub struct ClassRegistry {
@@ -76,17 +78,38 @@ impl From<HWND_> for HWND {
 
 pub struct WindowsRegistry {
     windows: HandleTable<(), HWND_, Window, true>,
+    windows_context: WindowsContext,
 }
 
 impl WindowsRegistry {
     pub fn new() -> Self {
         Self {
             windows: HandleTable::new((), 16),
+            windows_context: WindowsContext::new(),
         }
     }
 
-    pub fn create(&mut self, window: Window) -> HWND {
-        self.windows.put(window).into()
+    pub fn create(
+        &mut self,
+        class: Arc<WindowClass>,
+        wndproc_argument: PtrRepr,
+        size: (u32, u32),
+        message_queue: Sender,
+    ) -> HWND {
+        let window = Window {
+            class,
+            wndproc_argument,
+        };
+
+        let hwnd = self.windows.put(window);
+
+        self.windows_context.create_window(WindowCreation {
+            hwnd: hwnd.0,
+            message_queue,
+            size,
+        });
+
+        hwnd.into()
     }
 }
 

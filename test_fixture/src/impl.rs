@@ -3,7 +3,6 @@ use core_heap::{Heap, RawHeapBox};
 use core_mem::ctx::DefaultMemoryCtx;
 use core_mem::ptr::{ConstPtr, MutPtr, PtrDiffRepr, PtrRepr};
 use core_memmgr::MemoryManager;
-use core_message_queue::{Message, MessagePayload};
 use core_str::heap_helper::AnsiStringHeapBox;
 use core_str::{AnsiString, PWSTR};
 use encoding_rs::Encoding;
@@ -31,7 +30,7 @@ use win32_io::IoDispatcher;
 use win32_message_queue::MessageQueueRegistry;
 use win32_module_table::ModuleTable;
 use win32_virtmem::VirtualMemoryManager;
-use win32_windows::{ClassRegistry, Window, WindowClass, WindowsRegistry};
+use win32_windows::{ClassRegistry, WindowClass, WindowsRegistry};
 use win32_wobj::{WindowsHandleTable, WindowsObject};
 
 #[derive(Clone)]
@@ -60,8 +59,8 @@ impl win32::Win32::UI::WindowsAndMessaging::Api for WindowsAndMessaging {
         _dw_style: WINDOW_STYLE,
         _x: i32,
         _y: i32,
-        _n_width: i32,
-        _n_height: i32,
+        n_width: i32,
+        n_height: i32,
         _h_wnd_parent: HWND,
         _h_menu: HMENU,
         _h_instance: HINSTANCE,
@@ -77,11 +76,6 @@ impl win32::Win32::UI::WindowsAndMessaging::Api for WindowsAndMessaging {
             .find(&class_name)
             .expect("Creation of window with a non-existing class");
 
-        let window = Window {
-            class,
-            class_argument: lp_param.repr(),
-        };
-
         let mut window_registry = self.windows_registry.lock().unwrap();
 
         // preventively create the message queue (well, it will be needed to handle the window messages
@@ -92,15 +86,20 @@ impl win32::Win32::UI::WindowsAndMessaging::Api for WindowsAndMessaging {
         let queue = registry.insert(thread_id);
         let sender = queue.get_sender();
 
-        let hwnd = window_registry.create(window);
+        let hwnd = window_registry.create(
+            class,
+            lp_param.repr(),
+            (n_width as u32, n_height as u32),
+            sender,
+        );
 
-        // FIXME: currently we immediately send a WM_QUIT to the newly created window to be able to test stuff
-        sender
-            .send(Message {
-                hwnd: hwnd.0 as PtrRepr,
-                payload: MessagePayload::Quit { status: 0 },
-            })
-            .unwrap();
+        // TODO: call the WndProc with the WM_CREATE message
+        // sender
+        //     .send(Message {
+        //         hwnd: hwnd.0 as PtrRepr,
+        //         payload: MessagePayload::Quit { status: 0 },
+        //     })
+        //     .unwrap();
 
         hwnd
     }

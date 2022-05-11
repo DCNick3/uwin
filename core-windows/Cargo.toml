@@ -1,14 +1,14 @@
 [package]
-name = "win32-windows"
+name = "core-windows"
 version = "0.1.0"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-core-handletable = { path = "../core-handletable" }
+core-mem = { path = "../core-mem" }
 core-message-queue = { path = "../core-message-queue" }
-core-windows = { path = "../core-windows" }
 
-win32-atoms = { path = "../win32-atoms" }
-win32 = { path = "../win32" }
+tracing = "0.1.34"
+crossbeam-channel = "0.5.4"
+winit = "0.26.1"
