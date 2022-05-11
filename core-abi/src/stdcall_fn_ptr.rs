@@ -29,7 +29,7 @@ impl<ParamTy, RetTy> Clone for StdCallFnPtr<ParamTy, RetTy> {
 }
 
 impl<R: FromIntoMemory> StdCallFnPtr<(), R> {
-    pub fn call<'a, Tok: StdcallCallbackTokenTrait + 'a>(&self, token: Tok) -> R {
+    pub fn call<'a, Tok: StdcallCallbackTokenTrait + 'a>(&self, token: &mut Tok) -> R {
         let call = unsafe { StdCallerHelper::new(token) };
 
         call.execute::<R>(self.ptr)
@@ -41,13 +41,39 @@ impl<T1: FromIntoMemory, T2: FromIntoMemory, T3: FromIntoMemory, R: FromIntoMemo
 {
     pub fn call<'a, Tok: StdcallCallbackTokenTrait + 'a>(
         &self,
-        token: Tok,
+        token: &mut Tok,
         arg1: T1,
         arg2: T2,
         arg3: T3,
     ) -> R {
         let mut call = unsafe { StdCallerHelper::new(token) };
 
+        call.push(arg3);
+        call.push(arg2);
+        call.push(arg1);
+        call.execute::<R>(self.ptr)
+    }
+}
+
+impl<
+        T1: FromIntoMemory,
+        T2: FromIntoMemory,
+        T3: FromIntoMemory,
+        T4: FromIntoMemory,
+        R: FromIntoMemory,
+    > StdCallFnPtr<(T1, T2, T3, T4), R>
+{
+    pub fn call<'a, Tok: StdcallCallbackTokenTrait + 'a + ?Sized>(
+        &self,
+        token: &mut Tok,
+        arg1: T1,
+        arg2: T2,
+        arg3: T3,
+        arg4: T4,
+    ) -> R {
+        let mut call = unsafe { StdCallerHelper::new(token) };
+
+        call.push(arg4);
         call.push(arg3);
         call.push(arg2);
         call.push(arg1);

@@ -226,11 +226,11 @@ fn main_impl() {
 
                 let instance = HINSTANCE(info.base_addr as PtrDiffRepr);
 
-                let callback_token = StdcallCallbackToken::new(&mut context, memory_ctx);
+                let mut callback_token = StdcallCallbackToken::new(&mut context, memory_ctx);
                 // call process attachment callbacks
                 // no thread callbacks (at least for now, when we don't have any threads =))
                 let res = entry
-                    .call(callback_token, instance, DLL_PROCESS_ATTACH, 1)
+                    .call(&mut callback_token, instance, DLL_PROCESS_ATTACH, 1)
                     .as_bool();
                 if !res {
                     panic!("DllMain for {} failed", dll.name());
@@ -240,8 +240,8 @@ fn main_impl() {
 
         let entry = EntrypointFnPtr::new(PROGRAM_IMAGE.exe_entrypoint);
 
-        let callback_token = StdcallCallbackToken::new(&mut context, memory_ctx);
-        entry.call(callback_token);
+        let mut callback_token = StdcallCallbackToken::new(&mut context, memory_ctx);
+        entry.call(&mut callback_token);
     })) {
         Ok(_) => {
             debug!("The entrypoint returned");
@@ -271,7 +271,7 @@ fn main_impl() {
 
 fn main() {
     tracing_subscriber::registry()
-        // .with(tracing_tracy::TracyLayer::new())
+        .with(tracing_tracy::TracyLayer::new())
         .with(
             tracing_subscriber::fmt::Layer::new()
                 .event_format(format().compact())

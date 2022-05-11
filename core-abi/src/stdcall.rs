@@ -128,16 +128,16 @@ impl<
     }
 }
 
-pub(crate) struct StdCallerHelper<'a, Tok: StdcallCallbackTokenTrait + 'a> {
-    token: Tok,
+pub(crate) struct StdCallerHelper<'a, Tok: StdcallCallbackTokenTrait + 'a + ?Sized> {
+    token: &'a mut Tok,
     phantom: PhantomData<&'a ()>,
 }
 
-impl<'a, Tok: StdcallCallbackTokenTrait + 'a> StdCallerHelper<'a, Tok> {
+impl<'a, Tok: StdcallCallbackTokenTrait + 'a + ?Sized> StdCallerHelper<'a, Tok> {
     /// # Safety
     ///
     /// Don't forget to run .execute() method, as otherwise ABI crimes will happen
-    pub unsafe fn new(token: Tok) -> Self {
+    pub unsafe fn new(token: &'a mut Tok) -> Self {
         Self {
             token,
             phantom: Default::default(),

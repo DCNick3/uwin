@@ -26,13 +26,16 @@ long FAR PASCAL WindowProc( HWND hWnd, UINT message,
     switch( message )
     {
         case WM_ACTIVATEAPP:
+            printf("WM_ACTIVATEAPP\n");
             bActive = wParam;
             break;
 
         case WM_CREATE:
+            printf("WM_CREATE\n");
             break;
 
         case WM_KEYDOWN:
+            printf("WM_KEYDOWN(0x%08x)\n", wParam);
             switch( wParam )
             {
                 case VK_ESCAPE:
@@ -43,6 +46,7 @@ long FAR PASCAL WindowProc( HWND hWnd, UINT message,
             break;
 
         case WM_DESTROY:
+            printf("WM_DESTROY\n");
             PostQuitMessage( 0 );
             break;
     }

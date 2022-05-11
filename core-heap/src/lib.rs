@@ -1,10 +1,12 @@
 use btreemultimap::{btreemultimap, BTreeMultiMap};
 use core_mem::align;
+use core_mem::conv::FromIntoMemory;
 use core_mem::ctx::MemoryCtx;
 use core_mem::ptr::{ConstPtr, MutPtr, PtrDiffRepr, PtrRepr};
 use core_memmgr::{AddressRange, MemoryManager, Protection};
 use derive_more::{Add, From, Into, Sub};
 use std::collections::{HashMap, HashSet};
+use std::marker::PhantomData;
 use std::mem::ManuallyDrop;
 use std::ops::Add;
 use std::sync::{Arc, Mutex};
@@ -315,5 +317,31 @@ impl Drop for RawHeapBox {
         let mut heap = self.heap.lock().unwrap();
         heap.free(self.ptr.0)
             .expect("Freeing a value in a RawHeapBox");
+    }
+}
+
+pub struct HeapBox<T: FromIntoMemory> {
+    inner: RawHeapBox,
+    phantom: PhantomData<T>,
+}
+
+impl<T: FromIntoMemory> HeapBox<T> {
+    pub fn new(memory_ctx: impl MemoryCtx, heap: Arc<Mutex<Heap>>, value: T) -> Result<Self> {
+        let inner = RawHeapBox::new(heap, T::size().try_into().unwrap())?;
+
+        inner.ptr_mut::<T>().write_with(memory_ctx, value);
+
+        Ok(Self {
+            inner,
+            phantom: PhantomData::default(),
+        })
+    }
+
+    pub fn ptr(&self) -> ConstPtr<T> {
+        self.inner.ptr()
+    }
+
+    pub fn ptr_mut(&mut self) -> MutPtr<T> {
+        self.inner.ptr_mut()
     }
 }

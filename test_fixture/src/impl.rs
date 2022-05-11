@@ -1,6 +1,6 @@
 use core_abi::callback_token::StdcallCallbackTokenTrait;
 use core_abi::unwind_token::{UnwindReason, UnwindToken};
-use core_heap::{Heap, RawHeapBox};
+use core_heap::{Heap, HeapBox, RawHeapBox};
 use core_mem::ctx::DefaultMemoryCtx;
 use core_mem::ptr::{ConstPtr, MutPtr, PtrDiffRepr, PtrRepr};
 use core_memmgr::MemoryManager;
@@ -10,9 +10,11 @@ use encoding_rs::Encoding;
 use std::ffi::c_void;
 use std::sync::{Arc, Mutex};
 use std::thread;
-use tracing::{info, warn};
+use tracing::{info, trace, warn};
 use win32::core::prelude::{PCSTR, PSTR};
-use win32::Win32::Foundation::{BOOL, HANDLE, HINSTANCE, HWND, INVALID_HANDLE_VALUE};
+use win32::Win32::Foundation::{
+    BOOL, HANDLE, HINSTANCE, HWND, INVALID_HANDLE_VALUE, LPARAM, LRESULT, WPARAM,
+};
 use win32::Win32::Globalization::CPINFO;
 use win32::Win32::System::Console::{
     STD_ERROR_HANDLE, STD_HANDLE, STD_INPUT_HANDLE, STD_OUTPUT_HANDLE,
@@ -23,8 +25,8 @@ use win32::Win32::System::Memory::{
 use win32::Win32::System::Threading::STARTUPINFOA;
 use win32::Win32::System::IO::OVERLAPPED;
 use win32::Win32::UI::WindowsAndMessaging::{
-    HCURSOR, HICON, HMENU, MESSAGEBOX_RESULT, MESSAGEBOX_STYLE, MSG, SHOW_WINDOW_CMD,
-    WINDOW_EX_STYLE, WINDOW_STYLE, WM_QUIT, WNDCLASSA,
+    CREATESTRUCTA, HCURSOR, HICON, HMENU, MESSAGEBOX_RESULT, MESSAGEBOX_STYLE, MSG,
+    SHOW_WINDOW_CMD, WINDOW_EX_STYLE, WINDOW_STYLE, WM_CREATE, WM_NCCREATE, WM_QUIT, WNDCLASSA,
 };
 use win32_heapmgr::HeapMgr;
 use win32_io::IoDispatcher;
@@ -54,18 +56,18 @@ pub struct WindowsAndMessaging {
 impl win32::Win32::UI::WindowsAndMessaging::Api for WindowsAndMessaging {
     fn CreateWindowExA(
         &self,
-        _callback_token: &mut dyn StdcallCallbackTokenTrait,
-        _dw_ex_style: WINDOW_EX_STYLE,
+        callback_token: &mut dyn StdcallCallbackTokenTrait,
+        dw_ex_style: WINDOW_EX_STYLE,
         lp_class_name: PCSTR,
-        _lp_window_name: PCSTR,
-        _dw_style: WINDOW_STYLE,
-        _x: i32,
-        _y: i32,
+        lp_window_name: PCSTR,
+        dw_style: WINDOW_STYLE,
+        x: i32,
+        y: i32,
         n_width: i32,
         n_height: i32,
-        _h_wnd_parent: HWND,
-        _h_menu: HMENU,
-        _h_instance: HINSTANCE,
+        h_wnd_parent: HWND,
+        h_menu: HMENU,
+        h_instance: HINSTANCE,
         lp_param: ConstPtr<c_void>,
     ) -> HWND {
         let ctx = self.process_ctx.memory_ctx;
@@ -88,6 +90,8 @@ impl win32::Win32::UI::WindowsAndMessaging::Api for WindowsAndMessaging {
         let queue = registry.insert(thread_id);
         let sender = queue.get_sender();
 
+        let wndproc = class.wndproc;
+
         let hwnd = window_registry.create(
             class,
             lp_param.repr(),
@@ -95,15 +99,63 @@ impl win32::Win32::UI::WindowsAndMessaging::Api for WindowsAndMessaging {
             sender,
         );
 
-        // TODO: call the WndProc with the WM_CREATE message
-        // sender
-        //     .send(Message {
-        //         hwnd: hwnd.0 as PtrRepr,
-        //         payload: MessagePayload::Quit { status: 0 },
-        //     })
-        //     .unwrap();
+        let create_struct_box = HeapBox::new(
+            ctx,
+            self.process_ctx.process_heap.clone(),
+            CREATESTRUCTA {
+                lpCreateParams: MutPtr::new(lp_param.repr()),
+                hInstance: h_instance,
+                hMenu: h_menu,
+                hwndParent: h_wnd_parent,
+                cy: n_height,
+                cx: n_width,
+                y,
+                x,
+                style: dw_style.0 as i32,
+                lpszName: lp_window_name,
+                lpszClass: lp_class_name,
+                dwExStyle: dw_ex_style.0,
+            },
+        )
+        .unwrap();
+
+        trace!("Calling wndproc with WM_NCCREATE message");
+        let res = wndproc.call(
+            callback_token,
+            hwnd,
+            WM_NCCREATE,
+            WPARAM::default(),
+            LPARAM(create_struct_box.ptr().repr() as PtrDiffRepr),
+        );
+
+        assert_ne!(
+            res.0, 0,
+            "WM_NCCREATE handler asked us not to create the window"
+        );
+
+        trace!("Calling wndproc with WM_CREATE message");
+        let res = wndproc.call(
+            callback_token,
+            hwnd,
+            WM_CREATE,
+            WPARAM::default(),
+            LPARAM(create_struct_box.ptr().repr() as PtrDiffRepr),
+        );
+
+        assert_eq!(
+            res.0, 0,
+            "WM_CREATE handler returned something different than 0"
+        );
 
         hwnd
+    }
+
+    fn DefWindowProcA(&self, h_wnd: HWND, msg: u32, w_param: WPARAM, l_param: LPARAM) -> LRESULT {
+        match msg {
+            WM_NCCREATE => LRESULT(1),
+            WM_CREATE => LRESULT(0),
+            _ => todo!("Window message {:#010x}", msg),
+        }
     }
 
     fn GetMessageA(
