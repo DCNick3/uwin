@@ -1,9 +1,9 @@
 use anyhow::{Context, Result};
-use object::pe::IMAGE_DIRECTORY_ENTRY_DEBUG;
+use object::pe::{IMAGE_DIRECTORY_ENTRY_DEBUG, IMAGE_DIRECTORY_ENTRY_EXPORT};
 use object::read::pe::PeFile32;
 use object::{LittleEndian, Object, ObjectSymbol};
 use std::fs::File;
-use std::io::{Read, Write};
+use std::io::{Read, Seek, Write};
 use std::path::Path;
 
 const LE: LittleEndian = LittleEndian {};
@@ -11,6 +11,7 @@ const LE: LittleEndian = LittleEndian {};
 const PE_HEADER_TIMESTAMP_OFFSET: u32 = 8;
 const DEBUG_DIRECTORY_ENTRY_SIZE: usize = 28;
 const DEBUG_DIRECTORY_ENTRY_TIMESTAMP_OFFSET: u32 = 4;
+const EXPORT_DIRECTORY_TIMESTAMP_OFFSET: u32 = 4;
 
 const OPTIONAL_HEADER_SIZE: u32 = 0x78;
 const DATA_DIRECTORY_SIZE: u32 = 8;
@@ -18,14 +19,35 @@ const DATA_DIRECTORY_SIZE: u32 = 8;
 const SYMBOL_SIZE: u32 = 18;
 const SYMBOL_VALUE_OFFSET: u32 = 8;
 
-pub fn fixup_msvc_pe(path: &Path) -> Result<()> {
+pub fn fixup_file(
+    path: &Path,
+    fixup: impl FnOnce(&[u8]) -> Result<Vec<(u32, Vec<u8>)>>,
+) -> Result<()> {
     let mut data = Vec::new();
     File::open(path)
         .context("Opening PE file for reading")?
         .read_to_end(&mut data)
         .context("Reading the PE file")?;
 
-    let pe = PeFile32::parse(data.as_slice()).context("Parsing the PE file")?;
+    let patches = fixup(&data)?;
+
+    for (offset, val) in patches {
+        let offset = offset as usize;
+        (&mut data[offset..offset + val.len()])
+            .write_all(&val)
+            .unwrap();
+    }
+
+    File::create(path)
+        .context("Opening the PE file for writing")?
+        .write_all(&data)
+        .context("Writing an updated PE file back")?;
+
+    Ok(())
+}
+
+pub fn fixup_msvc_pe(data: &[u8]) -> Result<Vec<(u32, Vec<u8>)>> {
+    let pe = PeFile32::parse(data).context("Parsing the PE file")?;
 
     let pe_header_offset = pe.dos_header().e_lfanew.get(LE);
 
@@ -49,6 +71,20 @@ pub fn fixup_msvc_pe(path: &Path) -> Result<()> {
             // zero out the timestamp in the debug directory entries
             patches.push((datetime_offset, 0u32.to_le_bytes().to_vec()))
         }
+    }
+
+    if let Some(export) = pe.data_directory(IMAGE_DIRECTORY_ENTRY_EXPORT) {
+        let (offset, size) = pe
+            .section_table()
+            .pe_file_range_at(export.virtual_address.get(LE))
+            .unwrap();
+
+        assert!(size >= export.size.get(LE));
+
+        println!("{:?}", export);
+        let datetime_offset = offset + EXPORT_DIRECTORY_TIMESTAMP_OFFSET;
+
+        patches.push((datetime_offset, 0u32.to_le_bytes().to_vec()));
     }
 
     let symbol_table_offset = pe.nt_headers().file_header.pointer_to_symbol_table.get(LE);
@@ -86,19 +122,13 @@ pub fn fixup_msvc_pe(path: &Path) -> Result<()> {
         vec![0u8; DATA_DIRECTORY_SIZE as usize],
     ));
 
-    // pe.nt_headers().optional_header.number_of_rva_and_sizes();
+    Ok(patches)
+}
 
-    for (offset, val) in patches {
-        let offset = offset as usize;
-        (&mut data[offset..offset + val.len()])
-            .write_all(&val)
-            .unwrap();
-    }
+pub fn patch_msvc_import_lib(file: &mut (impl Read + Write + Seek)) -> Result<()> {
+    let mut ar = crate::ar::Archive::new(file);
 
-    File::create(path)
-        .context("Opening the PE file for writing")?
-        .write_all(&data)
-        .context("Writing an updated PE file back")?;
+    ar.patch_timestamps()?;
 
     Ok(())
 }

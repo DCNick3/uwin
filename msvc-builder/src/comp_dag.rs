@@ -1,3 +1,4 @@
+use crate::fixups::{fixup_file, patch_msvc_import_lib};
 use crate::{fixup_msvc_pe, Msvc, WinePrefix};
 use anyhow::{anyhow, Context, Result};
 use lazy_static::lazy_static;
@@ -5,6 +6,7 @@ use log::{info, warn};
 use regex::Regex;
 use serde::Deserialize;
 use std::collections::{BTreeMap, HashSet};
+use std::fs::OpenOptions;
 use std::path::{Path, PathBuf};
 
 #[derive(Deserialize, Debug, PartialEq, Eq)]
@@ -68,11 +70,7 @@ impl CompileUnit {
 
         let outputs = match build_params.kind {
             Kind::Exe => vec![primary_output],
-            Kind::Dll => vec![
-                primary_output,
-                path.with_extension("exp"),
-                path.with_extension("lib"),
-            ],
+            Kind::Dll => vec![primary_output, path.with_extension("lib")],
         };
 
         Ok(Self {
@@ -148,7 +146,18 @@ impl CompileUnit {
                 .context("Compiling dll")?,
         }
 
-        fixup_msvc_pe(&primary_output).context("Zeroing out the timestamps")?;
+        fixup_file(primary_output, fixup_msvc_pe).context("Zeroing out the timestamps")?;
+
+        if self.kind == Kind::Dll {
+            let path = &self.expected_outputs[1];
+
+            let exp_file = path.with_extension("exp");
+            std::fs::remove_file(exp_file)?;
+
+            let mut imp_file = OpenOptions::new().write(true).read(true).open(path)?;
+
+            patch_msvc_import_lib(&mut imp_file).expect("Opening import lib");
+        }
 
         Ok(())
     }

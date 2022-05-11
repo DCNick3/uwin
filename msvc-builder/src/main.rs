@@ -8,6 +8,7 @@ use std::env;
 use std::path::{Path, PathBuf};
 use tempdir::TempDir;
 
+mod ar;
 mod comp_dag;
 mod fixups;
 mod msvc;
