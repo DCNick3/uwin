@@ -11178,7 +11178,11 @@ pub trait Api {
     fn DisableProcessWindowsGhosting(&self) {
         todo!("DisableProcessWindowsGhosting")
     }
-    fn DispatchMessageA(&self, lp_msg: ConstPtr<MSG>) -> super::super::Foundation::LRESULT {
+    fn DispatchMessageA(
+        &self,
+        callback_token: &mut dyn StdcallCallbackTokenTrait,
+        lp_msg: ConstPtr<MSG>,
+    ) -> super::super::Foundation::LRESULT {
         todo!("DispatchMessageA")
     }
     fn DispatchMessageW(&self, lp_msg: ConstPtr<MSG>) -> super::super::Foundation::LRESULT {

@@ -4,16 +4,17 @@ use std::collections::HashMap;
 use std::thread::ThreadId;
 use win32::core::prelude::PtrDiffRepr;
 use win32::Win32::Foundation::{HWND, LPARAM, POINT, WPARAM};
-use win32::Win32::UI::WindowsAndMessaging::{MSG, WM_QUIT};
+use win32::Win32::UI::WindowsAndMessaging::{MSG, WM_MOUSEMOVE, WM_QUIT};
 
 fn convert_message(message: Message) -> MSG {
     let (message_type, w_param, l_param) = match message.payload {
         MessagePayload::Quit { status } => (WM_QUIT, status as _, 0),
+        MessagePayload::MouseMove(m) => (WM_MOUSEMOVE, m.w_param(), m.l_param()),
         _ => todo!(),
     };
 
     MSG {
-        hwnd: HWND(message_type as PtrDiffRepr),
+        hwnd: HWND(message.hwnd as PtrDiffRepr),
         message: message_type,
         wParam: WPARAM(w_param),
         lParam: LPARAM(l_param),

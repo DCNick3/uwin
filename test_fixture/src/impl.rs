@@ -26,7 +26,8 @@ use win32::Win32::System::Threading::STARTUPINFOA;
 use win32::Win32::System::IO::OVERLAPPED;
 use win32::Win32::UI::WindowsAndMessaging::{
     CREATESTRUCTA, HCURSOR, HICON, HMENU, MESSAGEBOX_RESULT, MESSAGEBOX_STYLE, MSG,
-    SHOW_WINDOW_CMD, WINDOW_EX_STYLE, WINDOW_STYLE, WM_CREATE, WM_NCCREATE, WM_QUIT, WNDCLASSA,
+    SHOW_WINDOW_CMD, WINDOW_EX_STYLE, WINDOW_STYLE, WM_CREATE, WM_MOUSEMOVE, WM_NCCREATE, WM_QUIT,
+    WNDCLASSA,
 };
 use win32_heapmgr::HeapMgr;
 use win32_io::IoDispatcher;
@@ -150,12 +151,37 @@ impl win32::Win32::UI::WindowsAndMessaging::Api for WindowsAndMessaging {
         hwnd
     }
 
-    fn DefWindowProcA(&self, h_wnd: HWND, msg: u32, w_param: WPARAM, l_param: LPARAM) -> LRESULT {
+    fn DefWindowProcA(
+        &self,
+        _h_wnd: HWND,
+        msg: u32,
+        _w_param: WPARAM,
+        _l_param: LPARAM,
+    ) -> LRESULT {
         match msg {
             WM_NCCREATE => LRESULT(1),
             WM_CREATE => LRESULT(0),
+            WM_MOUSEMOVE => LRESULT(1),
             _ => todo!("Window message {:#010x}", msg),
         }
+    }
+
+    fn DispatchMessageA(
+        &self,
+        callback_token: &mut dyn StdcallCallbackTokenTrait,
+        lp_msg: ConstPtr<MSG>,
+    ) -> LRESULT {
+        let ctx = self.process_ctx.memory_ctx;
+        let msg = lp_msg.read_with(ctx);
+        let hwnd = msg.hwnd;
+
+        let wndproc = {
+            let windows_registry = self.windows_registry.lock().unwrap();
+            let window = windows_registry.find(hwnd).unwrap();
+            window.wndproc()
+        };
+
+        wndproc.call(callback_token, hwnd, msg.message, msg.wParam, msg.lParam)
     }
 
     fn GetMessageA(
@@ -247,6 +273,11 @@ impl win32::Win32::UI::WindowsAndMessaging::Api for WindowsAndMessaging {
             h_wnd, n_cmd_show
         );
         BOOL(1)
+    }
+
+    fn TranslateMessage(&self, _lp_msg: ConstPtr<MSG>) -> BOOL {
+        // nothing to do (at least yet)
+        BOOL(0)
     }
 }
 

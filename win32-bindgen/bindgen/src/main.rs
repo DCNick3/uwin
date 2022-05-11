@@ -284,7 +284,7 @@ const EXCLUDE_ITEMS: &[(&str, &[&str])] = &[
     ),
 ];
 const UNWINDABLE_FUNCTIONS: &[&str] = &["ExitThread", "ExitProcess"];
-const CALLBACKING_FUNCTIONS: &[&str] = &["CreateWindowExA"];
+const CALLBACKING_FUNCTIONS: &[&str] = &["CreateWindowExA", "DispatchMessageA"];
 
 const EXCLUDE_LIBRARIES: &[&str] = &["icu", "clfsw32", "dbghelp", "mrmsupport", "dciman32"];
 

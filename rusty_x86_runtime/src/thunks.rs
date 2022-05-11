@@ -79020,7 +79020,8 @@ extern "C" fn thunk_DispatchMessageA(
             }
             let res = {
                 let api = win32::Win32::UI::WindowsAndMessaging::get_api(&call.context().win32);
-                api.DispatchMessageA(lp_msg)
+                let mut callback_token = call.callback_token();
+                api.DispatchMessageA(&mut callback_token, lp_msg)
             };
             if trace_event_enabled {
                 let fields = callsite.metadata().fields();

@@ -34,6 +34,10 @@ long FAR PASCAL WindowProc( HWND hWnd, UINT message,
             printf("WM_CREATE\n");
             break;
 
+        case WM_MOUSEMOVE:
+            printf("WM_MOUSEMOVE(x=%5d, y=%5d)\n", GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
+            break;
+
         case WM_KEYDOWN:
             printf("WM_KEYDOWN(0x%08x)\n", wParam);
             switch( wParam )

@@ -10,7 +10,7 @@ use winit::event_loop::{ControlFlow, EventLoop, EventLoopProxy};
 use winit::platform::unix::EventLoopExtUnix;
 
 use core_mem::ptr::PtrRepr;
-use core_message_queue::{Message, MessagePayload, Sender};
+use core_message_queue::{Message, MessagePayload, MouseMessage, Sender};
 use winit::window::WindowId;
 
 #[derive(Debug)]
@@ -66,9 +66,29 @@ impl WindowsContextImpl {
                     } else if let WindowEvent::Destroyed = event {
                         // ignore it, the window was dropped already
                     } else {
-                        let _window = self.windows.get(&window_id).unwrap();
+                        let window = self.windows.get(&window_id).unwrap();
 
-                        // TODO: handle those various events
+                        match event {
+                            WindowEvent::CursorMoved { position, .. } => {
+                                let position = position.cast::<i16>();
+
+                                window
+                                    .message_queue
+                                    .send(Message {
+                                        hwnd: window.hwnd,
+                                        payload: MessagePayload::MouseMove(MouseMessage {
+                                            point: position.into(),
+                                            keys: (),
+                                        }),
+                                    })
+                                    .unwrap();
+                            }
+                            // WindowEvent::CursorEntered { .. } => {}
+                            // WindowEvent::CursorLeft { .. } => {}
+                            // WindowEvent::MouseWheel { .. } => {}
+                            // WindowEvent::MouseInput { .. } => {}
+                            _ => {}
+                        }
                     }
                 }
                 Event::UserEvent(event) => {
@@ -81,6 +101,7 @@ impl WindowsContextImpl {
                         }) => {
                             let winit_window = winit::window::WindowBuilder::new()
                                 .with_inner_size(PhysicalSize::new(size.0, size.1))
+                                .with_resizable(false)
                                 .build(target)
                                 .expect("Could not create a window");
 

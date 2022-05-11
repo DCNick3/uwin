@@ -18,6 +18,16 @@ pub struct Window {
     wndproc_argument: PtrRepr,
 }
 
+impl Window {
+    pub fn class(&self) -> &Arc<WindowClass> {
+        &self.class
+    }
+
+    pub fn wndproc(&self) -> WNDPROC {
+        self.class.wndproc
+    }
+}
+
 pub struct ClassRegistry {
     user_atom_table: Arc<Mutex<AtomTable>>,
     classes: BTreeMap<u16, Arc<WindowClass>>,
@@ -110,6 +120,10 @@ impl WindowsRegistry {
         });
 
         hwnd.into()
+    }
+
+    pub fn find(&self, handle: HWND) -> Option<&Window> {
+        self.windows.find(handle.into())
     }
 }
 
