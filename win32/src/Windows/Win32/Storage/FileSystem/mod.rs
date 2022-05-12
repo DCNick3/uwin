@@ -7244,6 +7244,165 @@ impl FromIntoMemory for HIORING__ {
         4u32 as usize
     }
 }
+#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
+pub struct IDiskQuotaControl(crate::core::IUnknown);
+#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
+impl ::core::clone::Clone for IDiskQuotaControl {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
+impl ::core::marker::Copy for IDiskQuotaControl {}
+#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
+impl ::core::cmp::PartialEq for IDiskQuotaControl {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
+impl ::core::cmp::Eq for IDiskQuotaControl {}
+#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
+impl ::core::fmt::Debug for IDiskQuotaControl {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDiskQuotaControl").field(&self.0).finish()
+    }
+}
+#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
+impl FromIntoMemory for IDiskQuotaControl {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDiskQuotaEvents(crate::core::IUnknown);
+impl ::core::clone::Clone for IDiskQuotaEvents {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDiskQuotaEvents {}
+impl ::core::cmp::PartialEq for IDiskQuotaEvents {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDiskQuotaEvents {}
+impl ::core::fmt::Debug for IDiskQuotaEvents {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDiskQuotaEvents").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDiskQuotaEvents {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDiskQuotaUser(crate::core::IUnknown);
+impl ::core::clone::Clone for IDiskQuotaUser {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDiskQuotaUser {}
+impl ::core::cmp::PartialEq for IDiskQuotaUser {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDiskQuotaUser {}
+impl ::core::fmt::Debug for IDiskQuotaUser {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDiskQuotaUser").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDiskQuotaUser {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDiskQuotaUserBatch(crate::core::IUnknown);
+impl ::core::clone::Clone for IDiskQuotaUserBatch {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDiskQuotaUserBatch {}
+impl ::core::cmp::PartialEq for IDiskQuotaUserBatch {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDiskQuotaUserBatch {}
+impl ::core::fmt::Debug for IDiskQuotaUserBatch {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDiskQuotaUserBatch").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDiskQuotaUserBatch {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IEnumDiskQuotaUsers(crate::core::IUnknown);
+impl ::core::clone::Clone for IEnumDiskQuotaUsers {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IEnumDiskQuotaUsers {}
+impl ::core::cmp::PartialEq for IEnumDiskQuotaUsers {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IEnumDiskQuotaUsers {}
+impl ::core::fmt::Debug for IEnumDiskQuotaUsers {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IEnumDiskQuotaUsers").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IEnumDiskQuotaUsers {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
 pub const INVALID_FILE_ATTRIBUTES: u32 = 4294967295u32;
 pub const INVALID_SET_FILE_POINTER: u32 = 4294967295u32;
 pub const IOCTL_VOLUME_ALLOCATE_BC_STREAM: u32 = 5685312u32;
@@ -17157,134 +17316,6 @@ impl FromIntoMemory for TXFS_MINIVERSION {
         4
     }
 }
-pub struct TXF_ID {
-    pub Anonymous: TXF_ID_0,
-}
-impl ::core::marker::Copy for TXF_ID {}
-impl ::core::clone::Clone for TXF_ID {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for TXF_ID {
-    fn eq(&self, other: &Self) -> bool {
-        self.Anonymous == other.Anonymous
-    }
-}
-impl ::core::cmp::Eq for TXF_ID {}
-impl FromIntoMemory for TXF_ID {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
-        let f_Anonymous = <TXF_ID_0 as FromIntoMemory>::from_bytes(&from[0..0 + 16]);
-        Self {
-            Anonymous: f_Anonymous,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
-        FromIntoMemory::into_bytes(self.Anonymous, &mut into[0..0 + 16]);
-    }
-    fn size() -> usize {
-        16u32 as usize
-    }
-}
-pub struct TXF_ID_0 {
-    pub LowPart: i64,
-    pub HighPart: i64,
-}
-impl ::core::marker::Copy for TXF_ID_0 {}
-impl ::core::clone::Clone for TXF_ID_0 {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for TXF_ID_0 {
-    fn eq(&self, other: &Self) -> bool {
-        self.LowPart == other.LowPart && self.HighPart == other.HighPart
-    }
-}
-impl ::core::cmp::Eq for TXF_ID_0 {}
-impl FromIntoMemory for TXF_ID_0 {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
-        let f_LowPart = <i64 as FromIntoMemory>::from_bytes(&from[0..0 + 8]);
-        let f_HighPart = <i64 as FromIntoMemory>::from_bytes(&from[8..8 + 8]);
-        Self {
-            LowPart: f_LowPart,
-            HighPart: f_HighPart,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
-        FromIntoMemory::into_bytes(self.LowPart, &mut into[0..0 + 8]);
-        FromIntoMemory::into_bytes(self.HighPart, &mut into[8..8 + 8]);
-    }
-    fn size() -> usize {
-        16u32 as usize
-    }
-}
-pub struct TXF_LOG_RECORD_AFFECTED_FILE {
-    pub Version: u16,
-    pub RecordLength: u32,
-    pub Flags: u32,
-    pub TxfFileId: TXF_ID,
-    pub KtmGuid: crate::core::GUID,
-    pub FileNameLength: u32,
-    pub FileNameByteOffsetInStructure: u32,
-}
-impl ::core::marker::Copy for TXF_LOG_RECORD_AFFECTED_FILE {}
-impl ::core::clone::Clone for TXF_LOG_RECORD_AFFECTED_FILE {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for TXF_LOG_RECORD_AFFECTED_FILE {
-    fn eq(&self, other: &Self) -> bool {
-        self.Version == other.Version
-            && self.RecordLength == other.RecordLength
-            && self.Flags == other.Flags
-            && self.TxfFileId == other.TxfFileId
-            && self.KtmGuid == other.KtmGuid
-            && self.FileNameLength == other.FileNameLength
-            && self.FileNameByteOffsetInStructure == other.FileNameByteOffsetInStructure
-    }
-}
-impl ::core::cmp::Eq for TXF_LOG_RECORD_AFFECTED_FILE {}
-impl FromIntoMemory for TXF_LOG_RECORD_AFFECTED_FILE {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 56u32 as usize);
-        let f_Version = <u16 as FromIntoMemory>::from_bytes(&from[0..0 + 2]);
-        let f_RecordLength = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        let f_Flags = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_TxfFileId = <TXF_ID as FromIntoMemory>::from_bytes(&from[16..16 + 16]);
-        let f_KtmGuid = <crate::core::GUID as FromIntoMemory>::from_bytes(&from[32..32 + 16]);
-        let f_FileNameLength = <u32 as FromIntoMemory>::from_bytes(&from[48..48 + 4]);
-        let f_FileNameByteOffsetInStructure =
-            <u32 as FromIntoMemory>::from_bytes(&from[52..52 + 4]);
-        Self {
-            Version: f_Version,
-            RecordLength: f_RecordLength,
-            Flags: f_Flags,
-            TxfFileId: f_TxfFileId,
-            KtmGuid: f_KtmGuid,
-            FileNameLength: f_FileNameLength,
-            FileNameByteOffsetInStructure: f_FileNameByteOffsetInStructure,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 56u32 as usize);
-        FromIntoMemory::into_bytes(self.Version, &mut into[0..0 + 2]);
-        FromIntoMemory::into_bytes(self.RecordLength, &mut into[4..4 + 4]);
-        FromIntoMemory::into_bytes(self.Flags, &mut into[8..8 + 4]);
-        FromIntoMemory::into_bytes(self.TxfFileId, &mut into[16..16 + 16]);
-        FromIntoMemory::into_bytes(self.KtmGuid, &mut into[32..32 + 16]);
-        FromIntoMemory::into_bytes(self.FileNameLength, &mut into[48..48 + 4]);
-        FromIntoMemory::into_bytes(self.FileNameByteOffsetInStructure, &mut into[52..52 + 4]);
-    }
-    fn size() -> usize {
-        56u32 as usize
-    }
-}
 pub struct TXF_LOG_RECORD_BASE {
     pub Version: u16,
     pub RecordType: TXF_LOG_RECORD_TYPE,
@@ -17339,78 +17370,6 @@ pub const TXF_LOG_RECORD_GENERIC_TYPE_ABORT: u32 = 2u32;
 pub const TXF_LOG_RECORD_GENERIC_TYPE_COMMIT: u32 = 1u32;
 pub const TXF_LOG_RECORD_GENERIC_TYPE_DATA: u32 = 8u32;
 pub const TXF_LOG_RECORD_GENERIC_TYPE_PREPARE: u32 = 4u32;
-pub struct TXF_LOG_RECORD_TRUNCATE {
-    pub Version: u16,
-    pub RecordType: u16,
-    pub RecordLength: u32,
-    pub Flags: u32,
-    pub TxfFileId: TXF_ID,
-    pub KtmGuid: crate::core::GUID,
-    pub NewFileSize: i64,
-    pub FileNameLength: u32,
-    pub FileNameByteOffsetInStructure: u32,
-}
-impl ::core::marker::Copy for TXF_LOG_RECORD_TRUNCATE {}
-impl ::core::clone::Clone for TXF_LOG_RECORD_TRUNCATE {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for TXF_LOG_RECORD_TRUNCATE {
-    fn eq(&self, other: &Self) -> bool {
-        self.Version == other.Version
-            && self.RecordType == other.RecordType
-            && self.RecordLength == other.RecordLength
-            && self.Flags == other.Flags
-            && self.TxfFileId == other.TxfFileId
-            && self.KtmGuid == other.KtmGuid
-            && self.NewFileSize == other.NewFileSize
-            && self.FileNameLength == other.FileNameLength
-            && self.FileNameByteOffsetInStructure == other.FileNameByteOffsetInStructure
-    }
-}
-impl ::core::cmp::Eq for TXF_LOG_RECORD_TRUNCATE {}
-impl FromIntoMemory for TXF_LOG_RECORD_TRUNCATE {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 64u32 as usize);
-        let f_Version = <u16 as FromIntoMemory>::from_bytes(&from[0..0 + 2]);
-        let f_RecordType = <u16 as FromIntoMemory>::from_bytes(&from[2..2 + 2]);
-        let f_RecordLength = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        let f_Flags = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_TxfFileId = <TXF_ID as FromIntoMemory>::from_bytes(&from[16..16 + 16]);
-        let f_KtmGuid = <crate::core::GUID as FromIntoMemory>::from_bytes(&from[32..32 + 16]);
-        let f_NewFileSize = <i64 as FromIntoMemory>::from_bytes(&from[48..48 + 8]);
-        let f_FileNameLength = <u32 as FromIntoMemory>::from_bytes(&from[56..56 + 4]);
-        let f_FileNameByteOffsetInStructure =
-            <u32 as FromIntoMemory>::from_bytes(&from[60..60 + 4]);
-        Self {
-            Version: f_Version,
-            RecordType: f_RecordType,
-            RecordLength: f_RecordLength,
-            Flags: f_Flags,
-            TxfFileId: f_TxfFileId,
-            KtmGuid: f_KtmGuid,
-            NewFileSize: f_NewFileSize,
-            FileNameLength: f_FileNameLength,
-            FileNameByteOffsetInStructure: f_FileNameByteOffsetInStructure,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 64u32 as usize);
-        FromIntoMemory::into_bytes(self.Version, &mut into[0..0 + 2]);
-        FromIntoMemory::into_bytes(self.RecordType, &mut into[2..2 + 2]);
-        FromIntoMemory::into_bytes(self.RecordLength, &mut into[4..4 + 4]);
-        FromIntoMemory::into_bytes(self.Flags, &mut into[8..8 + 4]);
-        FromIntoMemory::into_bytes(self.TxfFileId, &mut into[16..16 + 16]);
-        FromIntoMemory::into_bytes(self.KtmGuid, &mut into[32..32 + 16]);
-        FromIntoMemory::into_bytes(self.NewFileSize, &mut into[48..48 + 8]);
-        FromIntoMemory::into_bytes(self.FileNameLength, &mut into[56..56 + 4]);
-        FromIntoMemory::into_bytes(self.FileNameByteOffsetInStructure, &mut into[60..60 + 4]);
-    }
-    fn size() -> usize {
-        64u32 as usize
-    }
-}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct TXF_LOG_RECORD_TYPE(pub u16);
 pub const TXF_LOG_RECORD_TYPE_AFFECTED_FILE: TXF_LOG_RECORD_TYPE = TXF_LOG_RECORD_TYPE(4u16);
@@ -17441,88 +17400,6 @@ impl FromIntoMemory for TXF_LOG_RECORD_TYPE {
     }
     fn size() -> usize {
         2
-    }
-}
-pub struct TXF_LOG_RECORD_WRITE {
-    pub Version: u16,
-    pub RecordType: u16,
-    pub RecordLength: u32,
-    pub Flags: u32,
-    pub TxfFileId: TXF_ID,
-    pub KtmGuid: crate::core::GUID,
-    pub ByteOffsetInFile: i64,
-    pub NumBytesWritten: u32,
-    pub ByteOffsetInStructure: u32,
-    pub FileNameLength: u32,
-    pub FileNameByteOffsetInStructure: u32,
-}
-impl ::core::marker::Copy for TXF_LOG_RECORD_WRITE {}
-impl ::core::clone::Clone for TXF_LOG_RECORD_WRITE {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for TXF_LOG_RECORD_WRITE {
-    fn eq(&self, other: &Self) -> bool {
-        self.Version == other.Version
-            && self.RecordType == other.RecordType
-            && self.RecordLength == other.RecordLength
-            && self.Flags == other.Flags
-            && self.TxfFileId == other.TxfFileId
-            && self.KtmGuid == other.KtmGuid
-            && self.ByteOffsetInFile == other.ByteOffsetInFile
-            && self.NumBytesWritten == other.NumBytesWritten
-            && self.ByteOffsetInStructure == other.ByteOffsetInStructure
-            && self.FileNameLength == other.FileNameLength
-            && self.FileNameByteOffsetInStructure == other.FileNameByteOffsetInStructure
-    }
-}
-impl ::core::cmp::Eq for TXF_LOG_RECORD_WRITE {}
-impl FromIntoMemory for TXF_LOG_RECORD_WRITE {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 72u32 as usize);
-        let f_Version = <u16 as FromIntoMemory>::from_bytes(&from[0..0 + 2]);
-        let f_RecordType = <u16 as FromIntoMemory>::from_bytes(&from[2..2 + 2]);
-        let f_RecordLength = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        let f_Flags = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_TxfFileId = <TXF_ID as FromIntoMemory>::from_bytes(&from[16..16 + 16]);
-        let f_KtmGuid = <crate::core::GUID as FromIntoMemory>::from_bytes(&from[32..32 + 16]);
-        let f_ByteOffsetInFile = <i64 as FromIntoMemory>::from_bytes(&from[48..48 + 8]);
-        let f_NumBytesWritten = <u32 as FromIntoMemory>::from_bytes(&from[56..56 + 4]);
-        let f_ByteOffsetInStructure = <u32 as FromIntoMemory>::from_bytes(&from[60..60 + 4]);
-        let f_FileNameLength = <u32 as FromIntoMemory>::from_bytes(&from[64..64 + 4]);
-        let f_FileNameByteOffsetInStructure =
-            <u32 as FromIntoMemory>::from_bytes(&from[68..68 + 4]);
-        Self {
-            Version: f_Version,
-            RecordType: f_RecordType,
-            RecordLength: f_RecordLength,
-            Flags: f_Flags,
-            TxfFileId: f_TxfFileId,
-            KtmGuid: f_KtmGuid,
-            ByteOffsetInFile: f_ByteOffsetInFile,
-            NumBytesWritten: f_NumBytesWritten,
-            ByteOffsetInStructure: f_ByteOffsetInStructure,
-            FileNameLength: f_FileNameLength,
-            FileNameByteOffsetInStructure: f_FileNameByteOffsetInStructure,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 72u32 as usize);
-        FromIntoMemory::into_bytes(self.Version, &mut into[0..0 + 2]);
-        FromIntoMemory::into_bytes(self.RecordType, &mut into[2..2 + 2]);
-        FromIntoMemory::into_bytes(self.RecordLength, &mut into[4..4 + 4]);
-        FromIntoMemory::into_bytes(self.Flags, &mut into[8..8 + 4]);
-        FromIntoMemory::into_bytes(self.TxfFileId, &mut into[16..16 + 16]);
-        FromIntoMemory::into_bytes(self.KtmGuid, &mut into[32..32 + 16]);
-        FromIntoMemory::into_bytes(self.ByteOffsetInFile, &mut into[48..48 + 8]);
-        FromIntoMemory::into_bytes(self.NumBytesWritten, &mut into[56..56 + 4]);
-        FromIntoMemory::into_bytes(self.ByteOffsetInStructure, &mut into[60..60 + 4]);
-        FromIntoMemory::into_bytes(self.FileNameLength, &mut into[64..64 + 4]);
-        FromIntoMemory::into_bytes(self.FileNameByteOffsetInStructure, &mut into[68..68 + 4]);
-    }
-    fn size() -> usize {
-        72u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -21903,76 +21780,6 @@ pub trait Api {
     }
     fn TxfGetThreadMiniVersionForCreate(&self, mini_version: MutPtr<u16>) {
         todo!("TxfGetThreadMiniVersionForCreate")
-    }
-    fn TxfLogCreateFileReadContext(
-        &self,
-        log_path: PCWSTR,
-        beginning_lsn: CLS_LSN,
-        ending_lsn: CLS_LSN,
-        txf_file_id: ConstPtr<TXF_ID>,
-        txf_log_context: MutPtr<ConstPtr<::core::ffi::c_void>>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("TxfLogCreateFileReadContext")
-    }
-    fn TxfLogCreateRangeReadContext(
-        &self,
-        log_path: PCWSTR,
-        beginning_lsn: CLS_LSN,
-        ending_lsn: CLS_LSN,
-        beginning_virtual_clock: ConstPtr<i64>,
-        ending_virtual_clock: ConstPtr<i64>,
-        record_type_mask: u32,
-        txf_log_context: MutPtr<ConstPtr<::core::ffi::c_void>>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("TxfLogCreateRangeReadContext")
-    }
-    fn TxfLogDestroyReadContext(
-        &self,
-        txf_log_context: ConstPtr<::core::ffi::c_void>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("TxfLogDestroyReadContext")
-    }
-    fn TxfLogReadRecords(
-        &self,
-        txf_log_context: ConstPtr<::core::ffi::c_void>,
-        buffer_length: u32,
-        buffer: MutPtr<::core::ffi::c_void>,
-        bytes_used: MutPtr<u32>,
-        record_count: MutPtr<u32>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("TxfLogReadRecords")
-    }
-    fn TxfLogRecordGetFileName(
-        &self,
-        record_buffer: ConstPtr<::core::ffi::c_void>,
-        record_buffer_length_in_bytes: u32,
-        name_buffer: PWSTR,
-        name_buffer_length_in_bytes: MutPtr<u32>,
-        txf_id: MutPtr<TXF_ID>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("TxfLogRecordGetFileName")
-    }
-    fn TxfLogRecordGetGenericType(
-        &self,
-        record_buffer: ConstPtr<::core::ffi::c_void>,
-        record_buffer_length_in_bytes: u32,
-        generic_type: MutPtr<u32>,
-        virtual_clock: MutPtr<i64>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("TxfLogRecordGetGenericType")
-    }
-    fn TxfReadMetadataInfo(
-        &self,
-        file_handle: super::super::Foundation::HANDLE,
-        txf_file_id: MutPtr<TXF_ID>,
-        last_lsn: MutPtr<CLS_LSN>,
-        transaction_state: MutPtr<u32>,
-        locking_transaction: MutPtr<crate::core::GUID>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("TxfReadMetadataInfo")
-    }
-    fn TxfSetThreadMiniVersionForCreate(&self, mini_version: u16) {
-        todo!("TxfSetThreadMiniVersionForCreate")
     }
     fn UnlockFile(
         &self,

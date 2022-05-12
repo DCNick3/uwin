@@ -5,6 +5,7 @@ use anymap::AnyMap;
 use core_mem::from_into_mem_impl_for_wrapper;
 #[allow(unused)]
 use prelude::*;
+use std::fmt::{Debug, Formatter};
 use std::sync::Arc;
 
 /// An error code value returned by most COM functions.
@@ -121,5 +122,45 @@ impl Win32Context {
                 std::any::type_name::<T>()
             )
         };
+    }
+}
+
+pub type IID = GUID;
+
+pub trait ComInterface {
+    type Super: ComInterface;
+    const IID: IID;
+}
+
+#[derive(Eq, PartialEq, Copy, Clone)]
+struct InterfacePtr(PtrRepr);
+
+impl Debug for InterfacePtr {
+    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+        write!(f, "InterfacePtr {{{:#010x}}}", self.0)
+    }
+}
+
+// by a convention that came from C#, we denote pointers to an interface as the interface itself
+#[derive(Debug, Eq, PartialEq, Copy, Clone)]
+pub struct IUnknown(InterfacePtr);
+
+const IID_IUnknown: IID = IID::from_u128(0x00000000_0000_0000_c000_000000000046);
+
+impl ComInterface for IUnknown {
+    type Super = IUnknown;
+    const IID: IID = IID_IUnknown;
+}
+impl FromIntoMemory for IUnknown {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(InterfacePtr(PtrRepr::from_bytes(from)))
+    }
+
+    fn into_bytes(self, into: &mut [u8]) {
+        self.0 .0.into_bytes(into)
+    }
+
+    fn size() -> usize {
+        PtrRepr::size()
     }
 }

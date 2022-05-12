@@ -542,57 +542,6 @@ impl FromIntoMemory for BITMAPCOREINFO {
         16u32 as usize
     }
 }
-pub struct BITMAPFILEHEADER {
-    pub bfType: u16,
-    pub bfSize: u32,
-    pub bfReserved1: u16,
-    pub bfReserved2: u16,
-    pub bfOffBits: u32,
-}
-impl ::core::marker::Copy for BITMAPFILEHEADER {}
-impl ::core::clone::Clone for BITMAPFILEHEADER {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for BITMAPFILEHEADER {
-    fn eq(&self, other: &Self) -> bool {
-        self.bfType == other.bfType
-            && self.bfSize == other.bfSize
-            && self.bfReserved1 == other.bfReserved1
-            && self.bfReserved2 == other.bfReserved2
-            && self.bfOffBits == other.bfOffBits
-    }
-}
-impl ::core::cmp::Eq for BITMAPFILEHEADER {}
-impl FromIntoMemory for BITMAPFILEHEADER {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
-        let f_bfType = <u16 as FromIntoMemory>::from_bytes(&from[0..0 + 2]);
-        let f_bfSize = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        let f_bfReserved1 = <u16 as FromIntoMemory>::from_bytes(&from[8..8 + 2]);
-        let f_bfReserved2 = <u16 as FromIntoMemory>::from_bytes(&from[10..10 + 2]);
-        let f_bfOffBits = <u32 as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
-        Self {
-            bfType: f_bfType,
-            bfSize: f_bfSize,
-            bfReserved1: f_bfReserved1,
-            bfReserved2: f_bfReserved2,
-            bfOffBits: f_bfOffBits,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
-        FromIntoMemory::into_bytes(self.bfType, &mut into[0..0 + 2]);
-        FromIntoMemory::into_bytes(self.bfSize, &mut into[4..4 + 4]);
-        FromIntoMemory::into_bytes(self.bfReserved1, &mut into[8..8 + 2]);
-        FromIntoMemory::into_bytes(self.bfReserved2, &mut into[10..10 + 2]);
-        FromIntoMemory::into_bytes(self.bfOffBits, &mut into[12..12 + 4]);
-    }
-    fn size() -> usize {
-        16u32 as usize
-    }
-}
 pub struct BITMAPINFO {
     pub bmiHeader: BITMAPINFOHEADER,
     pub bmiColors: [RGBQUAD; 1],
@@ -10406,67 +10355,6 @@ impl FromIntoMemory for MAT2 {
 }
 pub const MAXSTRETCHBLTMODE: u32 = 4u32;
 pub const METAFILE_DRIVER: u32 = 2049u32;
-pub struct METAHEADER {
-    pub mtType: u16,
-    pub mtHeaderSize: u16,
-    pub mtVersion: u16,
-    pub mtSize: u32,
-    pub mtNoObjects: u16,
-    pub mtMaxRecord: u32,
-    pub mtNoParameters: u16,
-}
-impl ::core::marker::Copy for METAHEADER {}
-impl ::core::clone::Clone for METAHEADER {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for METAHEADER {
-    fn eq(&self, other: &Self) -> bool {
-        self.mtType == other.mtType
-            && self.mtHeaderSize == other.mtHeaderSize
-            && self.mtVersion == other.mtVersion
-            && self.mtSize == other.mtSize
-            && self.mtNoObjects == other.mtNoObjects
-            && self.mtMaxRecord == other.mtMaxRecord
-            && self.mtNoParameters == other.mtNoParameters
-    }
-}
-impl ::core::cmp::Eq for METAHEADER {}
-impl FromIntoMemory for METAHEADER {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 24u32 as usize);
-        let f_mtType = <u16 as FromIntoMemory>::from_bytes(&from[0..0 + 2]);
-        let f_mtHeaderSize = <u16 as FromIntoMemory>::from_bytes(&from[2..2 + 2]);
-        let f_mtVersion = <u16 as FromIntoMemory>::from_bytes(&from[4..4 + 2]);
-        let f_mtSize = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_mtNoObjects = <u16 as FromIntoMemory>::from_bytes(&from[12..12 + 2]);
-        let f_mtMaxRecord = <u32 as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
-        let f_mtNoParameters = <u16 as FromIntoMemory>::from_bytes(&from[20..20 + 2]);
-        Self {
-            mtType: f_mtType,
-            mtHeaderSize: f_mtHeaderSize,
-            mtVersion: f_mtVersion,
-            mtSize: f_mtSize,
-            mtNoObjects: f_mtNoObjects,
-            mtMaxRecord: f_mtMaxRecord,
-            mtNoParameters: f_mtNoParameters,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 24u32 as usize);
-        FromIntoMemory::into_bytes(self.mtType, &mut into[0..0 + 2]);
-        FromIntoMemory::into_bytes(self.mtHeaderSize, &mut into[2..2 + 2]);
-        FromIntoMemory::into_bytes(self.mtVersion, &mut into[4..4 + 2]);
-        FromIntoMemory::into_bytes(self.mtSize, &mut into[8..8 + 4]);
-        FromIntoMemory::into_bytes(self.mtNoObjects, &mut into[12..12 + 2]);
-        FromIntoMemory::into_bytes(self.mtMaxRecord, &mut into[16..16 + 4]);
-        FromIntoMemory::into_bytes(self.mtNoParameters, &mut into[20..20 + 2]);
-    }
-    fn size() -> usize {
-        24u32 as usize
-    }
-}
 pub struct METARECORD {
     pub rdSize: u32,
     pub rdFunction: u16,

@@ -2252,6 +2252,190 @@ impl FromIntoMemory for HW_PROFILE_INFOW {
         124u32 as usize
     }
 }
+pub struct ICameraUIControl(crate::core::IUnknown);
+impl ::core::clone::Clone for ICameraUIControl {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for ICameraUIControl {}
+impl ::core::cmp::PartialEq for ICameraUIControl {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for ICameraUIControl {}
+impl ::core::fmt::Debug for ICameraUIControl {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("ICameraUIControl").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for ICameraUIControl {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct ICameraUIControlEventCallback(crate::core::IUnknown);
+impl ::core::clone::Clone for ICameraUIControlEventCallback {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for ICameraUIControlEventCallback {}
+impl ::core::cmp::PartialEq for ICameraUIControlEventCallback {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for ICameraUIControlEventCallback {}
+impl ::core::fmt::Debug for ICameraUIControlEventCallback {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("ICameraUIControlEventCallback")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for ICameraUIControlEventCallback {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IClipServiceNotificationHelper(crate::core::IUnknown);
+impl ::core::clone::Clone for IClipServiceNotificationHelper {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IClipServiceNotificationHelper {}
+impl ::core::cmp::PartialEq for IClipServiceNotificationHelper {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IClipServiceNotificationHelper {}
+impl ::core::fmt::Debug for IClipServiceNotificationHelper {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IClipServiceNotificationHelper")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IClipServiceNotificationHelper {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IContainerActivationHelper(crate::core::IUnknown);
+impl ::core::clone::Clone for IContainerActivationHelper {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IContainerActivationHelper {}
+impl ::core::cmp::PartialEq for IContainerActivationHelper {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IContainerActivationHelper {}
+impl ::core::fmt::Debug for IContainerActivationHelper {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IContainerActivationHelper")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IContainerActivationHelper {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDefaultBrowserSyncSettings(crate::core::IUnknown);
+impl ::core::clone::Clone for IDefaultBrowserSyncSettings {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDefaultBrowserSyncSettings {}
+impl ::core::cmp::PartialEq for IDefaultBrowserSyncSettings {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDefaultBrowserSyncSettings {}
+impl ::core::fmt::Debug for IDefaultBrowserSyncSettings {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDefaultBrowserSyncSettings")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDefaultBrowserSyncSettings {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDeleteBrowsingHistory(crate::core::IUnknown);
+impl ::core::clone::Clone for IDeleteBrowsingHistory {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDeleteBrowsingHistory {}
+impl ::core::cmp::PartialEq for IDeleteBrowsingHistory {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDeleteBrowsingHistory {}
+impl ::core::fmt::Debug for IDeleteBrowsingHistory {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDeleteBrowsingHistory")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDeleteBrowsingHistory {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
 pub const IE4_BACKNEW: u32 = 2u32;
 pub const IE4_EXTRAINCREFCNT: u32 = 2048u32;
 pub const IE4_FRDOALL: u32 = 256u32;
@@ -2273,6 +2457,68 @@ pub const IE_HARDWARE: i32 = -10i32;
 pub const IE_MEMORY: i32 = -4i32;
 pub const IE_NOPEN: i32 = -3i32;
 pub const IE_OPEN: i32 = -2i32;
+pub struct IEditionUpgradeBroker(crate::core::IUnknown);
+impl ::core::clone::Clone for IEditionUpgradeBroker {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IEditionUpgradeBroker {}
+impl ::core::cmp::PartialEq for IEditionUpgradeBroker {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IEditionUpgradeBroker {}
+impl ::core::fmt::Debug for IEditionUpgradeBroker {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IEditionUpgradeBroker")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IEditionUpgradeBroker {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IEditionUpgradeHelper(crate::core::IUnknown);
+impl ::core::clone::Clone for IEditionUpgradeHelper {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IEditionUpgradeHelper {}
+impl ::core::cmp::PartialEq for IEditionUpgradeHelper {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IEditionUpgradeHelper {}
+impl ::core::fmt::Debug for IEditionUpgradeHelper {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IEditionUpgradeHelper")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IEditionUpgradeHelper {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
 pub const IF_GENERIC: u32 = 512u32;
 pub const IF_MIB: u32 = 514u32;
 pub const IGNORE: u32 = 0u32;
@@ -2878,6 +3124,37 @@ pub const IR_STRINGEND: u32 = 257u32;
 pub const IR_STRINGEX: u32 = 384u32;
 pub const IR_STRINGSTART: u32 = 256u32;
 pub const IR_UNDETERMINE: u32 = 368u32;
+pub struct IWindowsLockModeHelper(crate::core::IUnknown);
+impl ::core::clone::Clone for IWindowsLockModeHelper {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IWindowsLockModeHelper {}
+impl ::core::cmp::PartialEq for IWindowsLockModeHelper {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IWindowsLockModeHelper {}
+impl ::core::fmt::Debug for IWindowsLockModeHelper {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IWindowsLockModeHelper")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IWindowsLockModeHelper {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
 pub struct JAVA_TRUST {
     pub cbSize: u32,
     pub flag: u32,

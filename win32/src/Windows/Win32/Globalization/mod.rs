@@ -1429,10 +1429,157 @@ impl FromIntoMemory for HSAVEDUILANGUAGES {
         std::mem::size_of::<PtrDiffRepr>()
     }
 }
+pub struct IComprehensiveSpellCheckProvider(crate::core::IUnknown);
+impl ::core::clone::Clone for IComprehensiveSpellCheckProvider {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IComprehensiveSpellCheckProvider {}
+impl ::core::cmp::PartialEq for IComprehensiveSpellCheckProvider {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IComprehensiveSpellCheckProvider {}
+impl ::core::fmt::Debug for IComprehensiveSpellCheckProvider {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IComprehensiveSpellCheckProvider")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IComprehensiveSpellCheckProvider {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
 pub const IDN_ALLOW_UNASSIGNED: u32 = 1u32;
 pub const IDN_EMAIL_ADDRESS: u32 = 4u32;
 pub const IDN_RAW_PUNYCODE: u32 = 8u32;
 pub const IDN_USE_STD3_ASCII_RULES: u32 = 2u32;
+pub struct IEnumCodePage(crate::core::IUnknown);
+impl ::core::clone::Clone for IEnumCodePage {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IEnumCodePage {}
+impl ::core::cmp::PartialEq for IEnumCodePage {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IEnumCodePage {}
+impl ::core::fmt::Debug for IEnumCodePage {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IEnumCodePage").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IEnumCodePage {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IEnumRfc1766(crate::core::IUnknown);
+impl ::core::clone::Clone for IEnumRfc1766 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IEnumRfc1766 {}
+impl ::core::cmp::PartialEq for IEnumRfc1766 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IEnumRfc1766 {}
+impl ::core::fmt::Debug for IEnumRfc1766 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IEnumRfc1766").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IEnumRfc1766 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IEnumScript(crate::core::IUnknown);
+impl ::core::clone::Clone for IEnumScript {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IEnumScript {}
+impl ::core::cmp::PartialEq for IEnumScript {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IEnumScript {}
+impl ::core::fmt::Debug for IEnumScript {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IEnumScript").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IEnumScript {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IEnumSpellingError(crate::core::IUnknown);
+impl ::core::clone::Clone for IEnumSpellingError {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IEnumSpellingError {}
+impl ::core::cmp::PartialEq for IEnumSpellingError {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IEnumSpellingError {}
+impl ::core::fmt::Debug for IEnumSpellingError {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IEnumSpellingError").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IEnumSpellingError {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
 pub const IME_CMODE_ALPHANUMERIC: u32 = 0u32;
 pub const IME_CMODE_CHARCODE: u32 = 32u32;
 pub const IME_CMODE_CHINESE: u32 = 1u32;
@@ -1445,6 +1592,416 @@ pub const IME_CMODE_LANGUAGE: u32 = 3u32;
 pub const IME_CMODE_NATIVE: u32 = 1u32;
 pub const IME_CMODE_NATIVESYMBOL: u32 = 128u32;
 pub const IME_CMODE_ROMAN: u32 = 16u32;
+pub struct IMLangCodePages(crate::core::IUnknown);
+impl ::core::clone::Clone for IMLangCodePages {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IMLangCodePages {}
+impl ::core::cmp::PartialEq for IMLangCodePages {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IMLangCodePages {}
+impl ::core::fmt::Debug for IMLangCodePages {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IMLangCodePages").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IMLangCodePages {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IMLangConvertCharset(crate::core::IUnknown);
+impl ::core::clone::Clone for IMLangConvertCharset {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IMLangConvertCharset {}
+impl ::core::cmp::PartialEq for IMLangConvertCharset {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IMLangConvertCharset {}
+impl ::core::fmt::Debug for IMLangConvertCharset {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IMLangConvertCharset")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IMLangConvertCharset {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IMLangFontLink(crate::core::IUnknown);
+impl ::core::clone::Clone for IMLangFontLink {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IMLangFontLink {}
+impl ::core::cmp::PartialEq for IMLangFontLink {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IMLangFontLink {}
+impl ::core::fmt::Debug for IMLangFontLink {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IMLangFontLink").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IMLangFontLink {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IMLangFontLink2(crate::core::IUnknown);
+impl ::core::clone::Clone for IMLangFontLink2 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IMLangFontLink2 {}
+impl ::core::cmp::PartialEq for IMLangFontLink2 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IMLangFontLink2 {}
+impl ::core::fmt::Debug for IMLangFontLink2 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IMLangFontLink2").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IMLangFontLink2 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IMLangLineBreakConsole(crate::core::IUnknown);
+impl ::core::clone::Clone for IMLangLineBreakConsole {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IMLangLineBreakConsole {}
+impl ::core::cmp::PartialEq for IMLangLineBreakConsole {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IMLangLineBreakConsole {}
+impl ::core::fmt::Debug for IMLangLineBreakConsole {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IMLangLineBreakConsole")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IMLangLineBreakConsole {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IMLangString(crate::core::IUnknown);
+impl ::core::clone::Clone for IMLangString {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IMLangString {}
+impl ::core::cmp::PartialEq for IMLangString {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IMLangString {}
+impl ::core::fmt::Debug for IMLangString {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IMLangString").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IMLangString {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IMLangStringAStr(crate::core::IUnknown);
+impl ::core::clone::Clone for IMLangStringAStr {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IMLangStringAStr {}
+impl ::core::cmp::PartialEq for IMLangStringAStr {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IMLangStringAStr {}
+impl ::core::fmt::Debug for IMLangStringAStr {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IMLangStringAStr").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IMLangStringAStr {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IMLangStringBufA(crate::core::IUnknown);
+impl ::core::clone::Clone for IMLangStringBufA {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IMLangStringBufA {}
+impl ::core::cmp::PartialEq for IMLangStringBufA {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IMLangStringBufA {}
+impl ::core::fmt::Debug for IMLangStringBufA {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IMLangStringBufA").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IMLangStringBufA {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IMLangStringBufW(crate::core::IUnknown);
+impl ::core::clone::Clone for IMLangStringBufW {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IMLangStringBufW {}
+impl ::core::cmp::PartialEq for IMLangStringBufW {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IMLangStringBufW {}
+impl ::core::fmt::Debug for IMLangStringBufW {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IMLangStringBufW").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IMLangStringBufW {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IMLangStringWStr(crate::core::IUnknown);
+impl ::core::clone::Clone for IMLangStringWStr {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IMLangStringWStr {}
+impl ::core::cmp::PartialEq for IMLangStringWStr {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IMLangStringWStr {}
+impl ::core::fmt::Debug for IMLangStringWStr {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IMLangStringWStr").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IMLangStringWStr {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IMultiLanguage(crate::core::IUnknown);
+impl ::core::clone::Clone for IMultiLanguage {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IMultiLanguage {}
+impl ::core::cmp::PartialEq for IMultiLanguage {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IMultiLanguage {}
+impl ::core::fmt::Debug for IMultiLanguage {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IMultiLanguage").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IMultiLanguage {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IMultiLanguage2(crate::core::IUnknown);
+impl ::core::clone::Clone for IMultiLanguage2 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IMultiLanguage2 {}
+impl ::core::cmp::PartialEq for IMultiLanguage2 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IMultiLanguage2 {}
+impl ::core::fmt::Debug for IMultiLanguage2 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IMultiLanguage2").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IMultiLanguage2 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IMultiLanguage3(crate::core::IUnknown);
+impl ::core::clone::Clone for IMultiLanguage3 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IMultiLanguage3 {}
+impl ::core::cmp::PartialEq for IMultiLanguage3 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IMultiLanguage3 {}
+impl ::core::fmt::Debug for IMultiLanguage3 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IMultiLanguage3").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IMultiLanguage3 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IOptionDescription(crate::core::IUnknown);
+impl ::core::clone::Clone for IOptionDescription {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IOptionDescription {}
+impl ::core::cmp::PartialEq for IOptionDescription {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IOptionDescription {}
+impl ::core::fmt::Debug for IOptionDescription {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IOptionDescription").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IOptionDescription {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct IS_TEXT_UNICODE_RESULT(pub u32);
 pub const IS_TEXT_UNICODE_ASCII16: IS_TEXT_UNICODE_RESULT = IS_TEXT_UNICODE_RESULT(1u32);
@@ -1553,6 +2110,246 @@ impl FromIntoMemory for IS_VALID_LOCALE_FLAGS {
     }
     fn size() -> usize {
         4
+    }
+}
+pub struct ISpellCheckProvider(crate::core::IUnknown);
+impl ::core::clone::Clone for ISpellCheckProvider {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for ISpellCheckProvider {}
+impl ::core::cmp::PartialEq for ISpellCheckProvider {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for ISpellCheckProvider {}
+impl ::core::fmt::Debug for ISpellCheckProvider {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("ISpellCheckProvider").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for ISpellCheckProvider {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct ISpellCheckProviderFactory(crate::core::IUnknown);
+impl ::core::clone::Clone for ISpellCheckProviderFactory {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for ISpellCheckProviderFactory {}
+impl ::core::cmp::PartialEq for ISpellCheckProviderFactory {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for ISpellCheckProviderFactory {}
+impl ::core::fmt::Debug for ISpellCheckProviderFactory {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("ISpellCheckProviderFactory")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for ISpellCheckProviderFactory {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct ISpellChecker(crate::core::IUnknown);
+impl ::core::clone::Clone for ISpellChecker {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for ISpellChecker {}
+impl ::core::cmp::PartialEq for ISpellChecker {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for ISpellChecker {}
+impl ::core::fmt::Debug for ISpellChecker {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("ISpellChecker").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for ISpellChecker {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct ISpellChecker2(crate::core::IUnknown);
+impl ::core::clone::Clone for ISpellChecker2 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for ISpellChecker2 {}
+impl ::core::cmp::PartialEq for ISpellChecker2 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for ISpellChecker2 {}
+impl ::core::fmt::Debug for ISpellChecker2 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("ISpellChecker2").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for ISpellChecker2 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct ISpellCheckerChangedEventHandler(crate::core::IUnknown);
+impl ::core::clone::Clone for ISpellCheckerChangedEventHandler {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for ISpellCheckerChangedEventHandler {}
+impl ::core::cmp::PartialEq for ISpellCheckerChangedEventHandler {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for ISpellCheckerChangedEventHandler {}
+impl ::core::fmt::Debug for ISpellCheckerChangedEventHandler {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("ISpellCheckerChangedEventHandler")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for ISpellCheckerChangedEventHandler {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct ISpellCheckerFactory(crate::core::IUnknown);
+impl ::core::clone::Clone for ISpellCheckerFactory {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for ISpellCheckerFactory {}
+impl ::core::cmp::PartialEq for ISpellCheckerFactory {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for ISpellCheckerFactory {}
+impl ::core::fmt::Debug for ISpellCheckerFactory {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("ISpellCheckerFactory")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for ISpellCheckerFactory {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct ISpellingError(crate::core::IUnknown);
+impl ::core::clone::Clone for ISpellingError {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for ISpellingError {}
+impl ::core::cmp::PartialEq for ISpellingError {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for ISpellingError {}
+impl ::core::fmt::Debug for ISpellingError {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("ISpellingError").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for ISpellingError {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IUserDictionariesRegistrar(crate::core::IUnknown);
+impl ::core::clone::Clone for IUserDictionariesRegistrar {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IUserDictionariesRegistrar {}
+impl ::core::cmp::PartialEq for IUserDictionariesRegistrar {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IUserDictionariesRegistrar {}
+impl ::core::fmt::Debug for IUserDictionariesRegistrar {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IUserDictionariesRegistrar")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IUserDictionariesRegistrar {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
     }
 }
 pub type LANGGROUPLOCALE_ENUMPROCA =

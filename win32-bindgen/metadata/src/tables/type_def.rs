@@ -165,11 +165,21 @@ impl TypeDef {
         if kind_ == TypeKind::Delegate {
             return Type::USize.layout();
         }
+        if kind_ == TypeKind::Interface {
+            // In C# we use the interface type name directly but what is actually stored is a pointer
+            return Type::USize.layout();
+        }
         if kind_ == TypeKind::Enum {
             return self.underlying_type().layout();
         }
 
         assert_eq!(kind_, TypeKind::Struct);
+        let layout = self.class_layout();
+        assert!(
+            layout.is_none(),
+            "Struct {} has some special layout requirements, which is not supported",
+            self.name()
+        );
         match self.field_offsets().last() {
             None => (0, 1).into(),
             Some(&last_offset) => {
@@ -587,6 +597,7 @@ impl TypeDef {
                 }
             }
             TypeKind::Enum => true,
+            TypeKind::Interface => true, // we don't manage the lifetime of the ourselves, so it's "blittable" in this sense
             TypeKind::Delegate => !self.is_winrt(),
             _ => false,
         }

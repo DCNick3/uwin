@@ -8,4 +8,5 @@
 )]
 #[allow(unused)]
 use win32::core::prelude::*;
+pub mod DirectDraw;
 pub mod Gdi;

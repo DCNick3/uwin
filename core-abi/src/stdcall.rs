@@ -158,7 +158,7 @@ impl<'a, Tok: StdcallCallbackTokenTrait + 'a + ?Sized> StdCallerHelper<'a, Tok> 
         self.token.push(data);
     }
 
-    pub fn execute<R: FromIntoMemory>(mut self, target_address: PtrRepr) -> R {
+    pub fn execute<R: FromIntoMemory>(self, target_address: PtrRepr) -> R {
         self.token.push_retaddr();
         let res = self.token.dispatch(target_address);
 

@@ -1,13 +1,7 @@
 use super::*;
 
-pub fn gen(_def: &TypeDef, _gen: &Gen) -> TokenStream {
-    quote! {}
-
-    // if gen.sys {
-    //     gen_sys_interface(def, gen)
-    // } else {
-    //     gen_win_interface(def, gen)
-    // }
+pub fn gen(def: &TypeDef, gen: &Gen) -> TokenStream {
+    gen_win_interface(def, gen)
 }
 
 // fn gen_sys_interface(def: &TypeDef, gen: &Gen) -> TokenStream {
@@ -25,42 +19,87 @@ pub fn gen(_def: &TypeDef, _gen: &Gen) -> TokenStream {
 //     }
 // }
 //
-// fn gen_win_interface(def: &TypeDef, gen: &Gen) -> TokenStream {
-//     let name = gen_type_ident(def, gen);
-//     let is_exclusive = def.is_exclusive();
-//     let phantoms = gen_phantoms(def, gen);
-//     let constraints = gen_type_constraints(def, gen);
-//     let cfg = def.cfg();
-//     let doc = gen.doc(&cfg);
-//     let features = gen.cfg(&cfg);
-//
-//     let mut tokens = if is_exclusive {
-//         quote! { #[doc(hidden)] }
-//     } else {
-//         quote! { #doc }
-//     };
-//
-//     tokens.combine(&quote! {
-//         #features
-//         pub struct #name(::windows::core::IUnknown, #(#phantoms)*) where #(#constraints)*;
-//     });
-//
-//     if !is_exclusive {
-//         tokens.combine(&gen_methods(def, &cfg, gen));
-//         tokens.combine(&gen_conversions(def, &cfg, gen));
-//         tokens.combine(&gen_std_traits(def, &cfg, gen));
-//         tokens.combine(&gen_runtime_trait(def, &cfg, gen));
-//         tokens.combine(&gen_async(def, &cfg, gen));
-//         // TODO: what does this mean?
-//         // Do we want to care?
-//         //tokens.combine(&gen_agile(def, gen));
-//     }
-//
-//     tokens.combine(&gen_interface_trait(def, &cfg, gen));
-//     tokens.combine(&gen_vtbl(def, &cfg, gen));
-//     tokens
-// }
-//
+fn gen_win_interface(def: &TypeDef, gen: &Gen) -> TokenStream {
+    let name = gen_type_ident(def, gen);
+    let is_exclusive = def.is_exclusive();
+    let phantoms = gen_phantoms(def, gen);
+    let constraints = gen_type_constraints(def, gen);
+    let cfg = def.cfg();
+    let doc = gen.doc(&cfg);
+    let features = gen.cfg(&cfg);
+
+    let mut tokens = if is_exclusive {
+        quote! { #[doc(hidden)] }
+    } else {
+        quote! { #doc }
+    };
+
+    tokens.combine(&quote! {
+        #features
+        pub struct #name(crate::core::IUnknown, #(#phantoms)*) where #(#constraints)*;
+    });
+
+    if !is_exclusive {
+        // tokens.combine(&gen_methods(def, &cfg, gen));
+        // tokens.combine(&gen_conversions(def, &cfg, gen));
+        tokens.combine(&gen_std_traits(def, &cfg, gen));
+        // tokens.combine(&gen_runtime_trait(def, &cfg, gen));
+        // tokens.combine(&gen_async(def, &cfg, gen));
+        // TODO: what does this mean?
+        // Do we want to care?
+        //tokens.combine(&gen_agile(def, gen));
+    }
+
+    // tokens.combine(&gen_interface_trait(def, &cfg, gen));
+    // tokens.combine(&gen_vtbl(def, &cfg, gen));
+    tokens
+}
+
+pub fn gen_std_traits(def: &TypeDef, cfg: &Cfg, gen: &Gen) -> TokenStream {
+    let ident = gen_type_ident(def, gen);
+    let name = ident.as_str();
+    let constraints = gen_type_constraints(def, gen);
+    let phantoms = gen_phantoms(def, gen);
+    let cfg = gen.cfg(cfg);
+
+    quote! {
+        #cfg
+        impl<#(#constraints)*> ::core::clone::Clone for #ident {
+            fn clone(&self) -> Self {
+                Self(self.0.clone(), #(#phantoms)*)
+            }
+        }
+        #cfg
+        impl<#(#constraints)*> ::core::marker::Copy for #ident {}
+        #cfg
+        impl<#(#constraints)*> ::core::cmp::PartialEq for #ident {
+            fn eq(&self, other: &Self) -> bool {
+                self.0 == other.0
+            }
+        }
+        #cfg
+        impl<#(#constraints)*> ::core::cmp::Eq for #ident {}
+        #cfg
+        impl<#(#constraints)*> ::core::fmt::Debug for #ident {
+            fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+                f.debug_tuple(#name).field(&self.0).finish()
+            }
+        }
+        #cfg
+        impl FromIntoMemory for #ident {
+            fn from_bytes(from: &[u8]) -> Self {
+                Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+            }
+            fn into_bytes(self, into: &mut [u8]) {
+                FromIntoMemory::into_bytes(self.0, into)
+            }
+            fn size() -> usize {
+                std::mem::size_of::<crate::core::IUnknown>()
+            }
+        }
+    }
+}
+
 // fn gen_methods(def: &TypeDef, cfg: &Cfg, gen: &Gen) -> TokenStream {
 //     let name = gen_type_ident(def, gen);
 //     let constraints = gen_type_constraints(def, gen);

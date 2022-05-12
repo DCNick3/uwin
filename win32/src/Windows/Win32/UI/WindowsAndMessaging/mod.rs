@@ -1483,67 +1483,6 @@ pub const DLGC_WANTARROWS: u32 = 1u32;
 pub const DLGC_WANTCHARS: u32 = 128u32;
 pub const DLGC_WANTMESSAGE: u32 = 4u32;
 pub const DLGC_WANTTAB: u32 = 2u32;
-pub struct DLGITEMTEMPLATE {
-    pub style: u32,
-    pub dwExtendedStyle: u32,
-    pub x: i16,
-    pub y: i16,
-    pub cx: i16,
-    pub cy: i16,
-    pub id: u16,
-}
-impl ::core::marker::Copy for DLGITEMTEMPLATE {}
-impl ::core::clone::Clone for DLGITEMTEMPLATE {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for DLGITEMTEMPLATE {
-    fn eq(&self, other: &Self) -> bool {
-        self.style == other.style
-            && self.dwExtendedStyle == other.dwExtendedStyle
-            && self.x == other.x
-            && self.y == other.y
-            && self.cx == other.cx
-            && self.cy == other.cy
-            && self.id == other.id
-    }
-}
-impl ::core::cmp::Eq for DLGITEMTEMPLATE {}
-impl FromIntoMemory for DLGITEMTEMPLATE {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 20u32 as usize);
-        let f_style = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_dwExtendedStyle = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        let f_x = <i16 as FromIntoMemory>::from_bytes(&from[8..8 + 2]);
-        let f_y = <i16 as FromIntoMemory>::from_bytes(&from[10..10 + 2]);
-        let f_cx = <i16 as FromIntoMemory>::from_bytes(&from[12..12 + 2]);
-        let f_cy = <i16 as FromIntoMemory>::from_bytes(&from[14..14 + 2]);
-        let f_id = <u16 as FromIntoMemory>::from_bytes(&from[16..16 + 2]);
-        Self {
-            style: f_style,
-            dwExtendedStyle: f_dwExtendedStyle,
-            x: f_x,
-            y: f_y,
-            cx: f_cx,
-            cy: f_cy,
-            id: f_id,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 20u32 as usize);
-        FromIntoMemory::into_bytes(self.style, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.dwExtendedStyle, &mut into[4..4 + 4]);
-        FromIntoMemory::into_bytes(self.x, &mut into[8..8 + 2]);
-        FromIntoMemory::into_bytes(self.y, &mut into[10..10 + 2]);
-        FromIntoMemory::into_bytes(self.cx, &mut into[12..12 + 2]);
-        FromIntoMemory::into_bytes(self.cy, &mut into[14..14 + 2]);
-        FromIntoMemory::into_bytes(self.id, &mut into[16..16 + 2]);
-    }
-    fn size() -> usize {
-        20u32 as usize
-    }
-}
 pub type DLGPROC = StdCallFnPtr<
     (
         super::super::Foundation::HWND,
@@ -1553,67 +1492,6 @@ pub type DLGPROC = StdCallFnPtr<
     ),
     PtrDiffRepr,
 >;
-pub struct DLGTEMPLATE {
-    pub style: u32,
-    pub dwExtendedStyle: u32,
-    pub cdit: u16,
-    pub x: i16,
-    pub y: i16,
-    pub cx: i16,
-    pub cy: i16,
-}
-impl ::core::marker::Copy for DLGTEMPLATE {}
-impl ::core::clone::Clone for DLGTEMPLATE {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for DLGTEMPLATE {
-    fn eq(&self, other: &Self) -> bool {
-        self.style == other.style
-            && self.dwExtendedStyle == other.dwExtendedStyle
-            && self.cdit == other.cdit
-            && self.x == other.x
-            && self.y == other.y
-            && self.cx == other.cx
-            && self.cy == other.cy
-    }
-}
-impl ::core::cmp::Eq for DLGTEMPLATE {}
-impl FromIntoMemory for DLGTEMPLATE {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 20u32 as usize);
-        let f_style = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_dwExtendedStyle = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        let f_cdit = <u16 as FromIntoMemory>::from_bytes(&from[8..8 + 2]);
-        let f_x = <i16 as FromIntoMemory>::from_bytes(&from[10..10 + 2]);
-        let f_y = <i16 as FromIntoMemory>::from_bytes(&from[12..12 + 2]);
-        let f_cx = <i16 as FromIntoMemory>::from_bytes(&from[14..14 + 2]);
-        let f_cy = <i16 as FromIntoMemory>::from_bytes(&from[16..16 + 2]);
-        Self {
-            style: f_style,
-            dwExtendedStyle: f_dwExtendedStyle,
-            cdit: f_cdit,
-            x: f_x,
-            y: f_y,
-            cx: f_cx,
-            cy: f_cy,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 20u32 as usize);
-        FromIntoMemory::into_bytes(self.style, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.dwExtendedStyle, &mut into[4..4 + 4]);
-        FromIntoMemory::into_bytes(self.cdit, &mut into[8..8 + 2]);
-        FromIntoMemory::into_bytes(self.x, &mut into[10..10 + 2]);
-        FromIntoMemory::into_bytes(self.y, &mut into[12..12 + 2]);
-        FromIntoMemory::into_bytes(self.cx, &mut into[14..14 + 2]);
-        FromIntoMemory::into_bytes(self.cy, &mut into[16..16 + 2]);
-    }
-    fn size() -> usize {
-        20u32 as usize
-    }
-}
 pub const DLGWINDOWEXTRA: u32 = 30u32;
 pub const DM_GETDEFID: u32 = 1024u32;
 pub const DM_POINTERHITTEST: u32 = 592u32;
@@ -10866,26 +10744,6 @@ pub trait Api {
     ) -> HCURSOR {
         todo!("CreateCursor")
     }
-    fn CreateDialogIndirectParamA(
-        &self,
-        h_instance: super::super::Foundation::HINSTANCE,
-        lp_template: ConstPtr<DLGTEMPLATE>,
-        h_wnd_parent: super::super::Foundation::HWND,
-        lp_dialog_func: DLGPROC,
-        dw_init_param: super::super::Foundation::LPARAM,
-    ) -> super::super::Foundation::HWND {
-        todo!("CreateDialogIndirectParamA")
-    }
-    fn CreateDialogIndirectParamW(
-        &self,
-        h_instance: super::super::Foundation::HINSTANCE,
-        lp_template: ConstPtr<DLGTEMPLATE>,
-        h_wnd_parent: super::super::Foundation::HWND,
-        lp_dialog_func: DLGPROC,
-        dw_init_param: super::super::Foundation::LPARAM,
-    ) -> super::super::Foundation::HWND {
-        todo!("CreateDialogIndirectParamW")
-    }
     fn CreateDialogParamA(
         &self,
         h_instance: super::super::Foundation::HINSTANCE,
@@ -11134,26 +10992,6 @@ pub trait Api {
         h_wnd: super::super::Foundation::HWND,
     ) -> super::super::Foundation::BOOL {
         todo!("DestroyWindow")
-    }
-    fn DialogBoxIndirectParamA(
-        &self,
-        h_instance: super::super::Foundation::HINSTANCE,
-        h_dialog_template: ConstPtr<DLGTEMPLATE>,
-        h_wnd_parent: super::super::Foundation::HWND,
-        lp_dialog_func: DLGPROC,
-        dw_init_param: super::super::Foundation::LPARAM,
-    ) -> PtrDiffRepr {
-        todo!("DialogBoxIndirectParamA")
-    }
-    fn DialogBoxIndirectParamW(
-        &self,
-        h_instance: super::super::Foundation::HINSTANCE,
-        h_dialog_template: ConstPtr<DLGTEMPLATE>,
-        h_wnd_parent: super::super::Foundation::HWND,
-        lp_dialog_func: DLGPROC,
-        dw_init_param: super::super::Foundation::LPARAM,
-    ) -> PtrDiffRepr {
-        todo!("DialogBoxIndirectParamW")
     }
     fn DialogBoxParamA(
         &self,

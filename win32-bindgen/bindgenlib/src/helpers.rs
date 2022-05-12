@@ -1,37 +1,5 @@
 use super::*;
 
-#[allow(unused)]
-pub fn gen_std_traits(def: &TypeDef, cfg: &Cfg, gen: &Gen) -> TokenStream {
-    let ident = gen_type_ident(def, gen);
-    let name = ident.as_str();
-    let constraints = gen_type_constraints(def, gen);
-    let phantoms = gen_phantoms(def, gen);
-    let cfg = gen.cfg(cfg);
-
-    quote! {
-        #cfg
-        impl<#(#constraints)*> ::core::clone::Clone for #ident {
-            fn clone(&self) -> Self {
-                Self(self.0.clone(), #(#phantoms)*)
-            }
-        }
-        #cfg
-        impl<#(#constraints)*> ::core::cmp::PartialEq for #ident {
-            fn eq(&self, other: &Self) -> bool {
-                self.0 == other.0
-            }
-        }
-        #cfg
-        impl<#(#constraints)*> ::core::cmp::Eq for #ident {}
-        #cfg
-        impl<#(#constraints)*> ::core::fmt::Debug for #ident {
-            fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
-                f.debug_tuple(#name).field(&self.0).finish()
-            }
-        }
-    }
-}
-
 // pub fn gen_vtbl_signature(def: &TypeDef, method: &MethodDef, gen: &Gen) -> TokenStream {
 //     let is_winrt = def.is_winrt();
 //     let signature = method.signature(&def.generics);

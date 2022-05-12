@@ -83,7 +83,7 @@ impl Type {
 
             String => todo!(),
             GUID => (16, 4),
-            IUnknown => todo!(),
+            IUnknown => (4, 4), // In C# we use the interface type name directly but what is actually stored is a pointer
             IInspectable => todo!(),
             TypeName => todo!(),
             GenericParam(_) => todo!(),
@@ -176,25 +176,28 @@ impl Type {
     pub fn is_blittable(&self) -> bool {
         match self {
             Self::TypeDef(t) => t.is_blittable(),
-            Self::String | Self::IInspectable | Self::IUnknown | Self::GenericParam(_) => false,
+            Self::IInspectable | Self::IUnknown => true, // we don't manage the lifetime of the ourselves, so it's "blittable" in this sense
+            Self::String | Self::GenericParam(_) => false,
             Self::Win32Array((kind, _)) => kind.is_blittable(),
             _ => true,
         }
     }
 
     pub fn is_convertible(&self) -> bool {
-        match self {
-            Self::TypeDef(t) => t.is_convertible(),
-            Self::String
-            | Self::IInspectable
-            | Self::GUID
-            | Self::IUnknown
-            | Self::GenericParam(_)
-            | Self::PCSTR
-            | Self::PCWSTR => true,
-            Self::WinrtConstRef(kind) => kind.is_convertible(),
-            _ => false,
-        }
+        todo!("Remove this dead code?")
+
+        // match self {
+        //     Self::TypeDef(t) => t.is_convertible(),
+        //     Self::String
+        //     | Self::IInspectable
+        //     | Self::GUID
+        //     | Self::IUnknown
+        //     | Self::GenericParam(_)
+        //     | Self::PCSTR
+        //     | Self::PCWSTR => true,
+        //     Self::WinrtConstRef(kind) => kind.is_convertible(),
+        //     _ => false,
+        // }
     }
 
     pub fn is_callback(&self) -> bool {

@@ -142,180 +142,6 @@ impl FromIntoMemory for ADDRESS_MODE {
     }
 }
 pub const ADDRESS_TYPE_INDEX_NOT_FOUND: u32 = 11u32;
-pub struct AER_BRIDGE_DESCRIPTOR_FLAGS {
-    pub Anonymous: AER_BRIDGE_DESCRIPTOR_FLAGS_0,
-    pub AsUSHORT: u16,
-}
-impl ::core::marker::Copy for AER_BRIDGE_DESCRIPTOR_FLAGS {}
-impl ::core::clone::Clone for AER_BRIDGE_DESCRIPTOR_FLAGS {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for AER_BRIDGE_DESCRIPTOR_FLAGS {
-    fn eq(&self, other: &Self) -> bool {
-        self.Anonymous == other.Anonymous && self.AsUSHORT == other.AsUSHORT
-    }
-}
-impl ::core::cmp::Eq for AER_BRIDGE_DESCRIPTOR_FLAGS {}
-impl FromIntoMemory for AER_BRIDGE_DESCRIPTOR_FLAGS {
-    fn from_bytes(from: &[u8]) -> Self {
-        todo!()
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        todo!()
-    }
-    fn size() -> usize {
-        todo!()
-    }
-}
-pub struct AER_BRIDGE_DESCRIPTOR_FLAGS_0 {
-    pub _bitfield: u16,
-}
-impl ::core::marker::Copy for AER_BRIDGE_DESCRIPTOR_FLAGS_0 {}
-impl ::core::clone::Clone for AER_BRIDGE_DESCRIPTOR_FLAGS_0 {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for AER_BRIDGE_DESCRIPTOR_FLAGS_0 {
-    fn eq(&self, other: &Self) -> bool {
-        self._bitfield == other._bitfield
-    }
-}
-impl ::core::cmp::Eq for AER_BRIDGE_DESCRIPTOR_FLAGS_0 {}
-impl FromIntoMemory for AER_BRIDGE_DESCRIPTOR_FLAGS_0 {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 2u32 as usize);
-        let f__bitfield = <u16 as FromIntoMemory>::from_bytes(&from[0..0 + 2]);
-        Self {
-            _bitfield: f__bitfield,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 2u32 as usize);
-        FromIntoMemory::into_bytes(self._bitfield, &mut into[0..0 + 2]);
-    }
-    fn size() -> usize {
-        2u32 as usize
-    }
-}
-pub struct AER_ENDPOINT_DESCRIPTOR_FLAGS {
-    pub Anonymous: AER_ENDPOINT_DESCRIPTOR_FLAGS_0,
-    pub AsUSHORT: u16,
-}
-impl ::core::marker::Copy for AER_ENDPOINT_DESCRIPTOR_FLAGS {}
-impl ::core::clone::Clone for AER_ENDPOINT_DESCRIPTOR_FLAGS {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for AER_ENDPOINT_DESCRIPTOR_FLAGS {
-    fn eq(&self, other: &Self) -> bool {
-        self.Anonymous == other.Anonymous && self.AsUSHORT == other.AsUSHORT
-    }
-}
-impl ::core::cmp::Eq for AER_ENDPOINT_DESCRIPTOR_FLAGS {}
-impl FromIntoMemory for AER_ENDPOINT_DESCRIPTOR_FLAGS {
-    fn from_bytes(from: &[u8]) -> Self {
-        todo!()
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        todo!()
-    }
-    fn size() -> usize {
-        todo!()
-    }
-}
-pub struct AER_ENDPOINT_DESCRIPTOR_FLAGS_0 {
-    pub _bitfield: u16,
-}
-impl ::core::marker::Copy for AER_ENDPOINT_DESCRIPTOR_FLAGS_0 {}
-impl ::core::clone::Clone for AER_ENDPOINT_DESCRIPTOR_FLAGS_0 {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for AER_ENDPOINT_DESCRIPTOR_FLAGS_0 {
-    fn eq(&self, other: &Self) -> bool {
-        self._bitfield == other._bitfield
-    }
-}
-impl ::core::cmp::Eq for AER_ENDPOINT_DESCRIPTOR_FLAGS_0 {}
-impl FromIntoMemory for AER_ENDPOINT_DESCRIPTOR_FLAGS_0 {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 2u32 as usize);
-        let f__bitfield = <u16 as FromIntoMemory>::from_bytes(&from[0..0 + 2]);
-        Self {
-            _bitfield: f__bitfield,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 2u32 as usize);
-        FromIntoMemory::into_bytes(self._bitfield, &mut into[0..0 + 2]);
-    }
-    fn size() -> usize {
-        2u32 as usize
-    }
-}
-pub struct AER_ROOTPORT_DESCRIPTOR_FLAGS {
-    pub Anonymous: AER_ROOTPORT_DESCRIPTOR_FLAGS_0,
-    pub AsUSHORT: u16,
-}
-impl ::core::marker::Copy for AER_ROOTPORT_DESCRIPTOR_FLAGS {}
-impl ::core::clone::Clone for AER_ROOTPORT_DESCRIPTOR_FLAGS {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for AER_ROOTPORT_DESCRIPTOR_FLAGS {
-    fn eq(&self, other: &Self) -> bool {
-        self.Anonymous == other.Anonymous && self.AsUSHORT == other.AsUSHORT
-    }
-}
-impl ::core::cmp::Eq for AER_ROOTPORT_DESCRIPTOR_FLAGS {}
-impl FromIntoMemory for AER_ROOTPORT_DESCRIPTOR_FLAGS {
-    fn from_bytes(from: &[u8]) -> Self {
-        todo!()
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        todo!()
-    }
-    fn size() -> usize {
-        todo!()
-    }
-}
-pub struct AER_ROOTPORT_DESCRIPTOR_FLAGS_0 {
-    pub _bitfield: u16,
-}
-impl ::core::marker::Copy for AER_ROOTPORT_DESCRIPTOR_FLAGS_0 {}
-impl ::core::clone::Clone for AER_ROOTPORT_DESCRIPTOR_FLAGS_0 {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for AER_ROOTPORT_DESCRIPTOR_FLAGS_0 {
-    fn eq(&self, other: &Self) -> bool {
-        self._bitfield == other._bitfield
-    }
-}
-impl ::core::cmp::Eq for AER_ROOTPORT_DESCRIPTOR_FLAGS_0 {}
-impl FromIntoMemory for AER_ROOTPORT_DESCRIPTOR_FLAGS_0 {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 2u32 as usize);
-        let f__bitfield = <u16 as FromIntoMemory>::from_bytes(&from[0..0 + 2]);
-        Self {
-            _bitfield: f__bitfield,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 2u32 as usize);
-        FromIntoMemory::into_bytes(self._bitfield, &mut into[0..0 + 2]);
-    }
-    fn size() -> usize {
-        2u32 as usize
-    }
-}
 pub struct API_VERSION {
     pub MajorVersion: u16,
     pub MinorVersion: u16,
@@ -875,6 +701,37 @@ impl FromIntoMemory for ArrayDimension {
     }
     fn size() -> usize {
         24u32 as usize
+    }
+}
+pub struct AsyncIDebugApplicationNodeEvents(crate::core::IUnknown);
+impl ::core::clone::Clone for AsyncIDebugApplicationNodeEvents {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for AsyncIDebugApplicationNodeEvents {}
+impl ::core::cmp::PartialEq for AsyncIDebugApplicationNodeEvents {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for AsyncIDebugApplicationNodeEvents {}
+impl ::core::fmt::Debug for AsyncIDebugApplicationNodeEvents {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("AsyncIDebugApplicationNodeEvents")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for AsyncIDebugApplicationNodeEvents {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
     }
 }
 pub const BIND_ALL_IMAGES: u32 = 4u32;
@@ -2566,120 +2423,6 @@ impl FromIntoMemory for CONTEXT {
     }
     fn size() -> usize {
         716u32 as usize
-    }
-}
-pub struct CPU_INFORMATION {
-    pub X86CpuInfo: CPU_INFORMATION_1,
-    pub OtherCpuInfo: CPU_INFORMATION_0,
-}
-impl ::core::marker::Copy for CPU_INFORMATION {}
-impl ::core::clone::Clone for CPU_INFORMATION {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for CPU_INFORMATION {
-    fn eq(&self, other: &Self) -> bool {
-        self.X86CpuInfo == other.X86CpuInfo && self.OtherCpuInfo == other.OtherCpuInfo
-    }
-}
-impl ::core::cmp::Eq for CPU_INFORMATION {}
-impl FromIntoMemory for CPU_INFORMATION {
-    fn from_bytes(from: &[u8]) -> Self {
-        todo!()
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        todo!()
-    }
-    fn size() -> usize {
-        todo!()
-    }
-}
-pub struct CPU_INFORMATION_0 {
-    pub ProcessorFeatures: [u64; 2],
-}
-impl ::core::marker::Copy for CPU_INFORMATION_0 {}
-impl ::core::clone::Clone for CPU_INFORMATION_0 {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for CPU_INFORMATION_0 {
-    fn eq(&self, other: &Self) -> bool {
-        self.ProcessorFeatures == other.ProcessorFeatures
-    }
-}
-impl ::core::cmp::Eq for CPU_INFORMATION_0 {}
-impl FromIntoMemory for CPU_INFORMATION_0 {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
-        let f_ProcessorFeatures = <[u64; 2] as FromIntoMemory>::from_bytes(&from[0..0 + 16]);
-        Self {
-            ProcessorFeatures: f_ProcessorFeatures,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
-        FromIntoMemory::into_bytes(self.ProcessorFeatures, &mut into[0..0 + 16]);
-    }
-    fn size() -> usize {
-        16u32 as usize
-    }
-}
-pub struct CPU_INFORMATION_1 {
-    pub VendorId: [u32; 3],
-    pub VersionInformation: u32,
-    pub FeatureInformation: u32,
-    pub AMDExtendedCpuFeatures: u32,
-}
-impl ::core::marker::Copy for CPU_INFORMATION_1 {}
-impl ::core::clone::Clone for CPU_INFORMATION_1 {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::fmt::Debug for CPU_INFORMATION_1 {
-    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
-        f.debug_struct("CPU_INFORMATION_1")
-            .field("VendorId", &self.VendorId)
-            .field("VersionInformation", &self.VersionInformation)
-            .field("FeatureInformation", &self.FeatureInformation)
-            .field("AMDExtendedCpuFeatures", &self.AMDExtendedCpuFeatures)
-            .finish()
-    }
-}
-impl ::core::cmp::PartialEq for CPU_INFORMATION_1 {
-    fn eq(&self, other: &Self) -> bool {
-        self.VendorId == other.VendorId
-            && self.VersionInformation == other.VersionInformation
-            && self.FeatureInformation == other.FeatureInformation
-            && self.AMDExtendedCpuFeatures == other.AMDExtendedCpuFeatures
-    }
-}
-impl ::core::cmp::Eq for CPU_INFORMATION_1 {}
-impl FromIntoMemory for CPU_INFORMATION_1 {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 24u32 as usize);
-        let f_VendorId = <[u32; 3] as FromIntoMemory>::from_bytes(&from[0..0 + 12]);
-        let f_VersionInformation = <u32 as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
-        let f_FeatureInformation = <u32 as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
-        let f_AMDExtendedCpuFeatures = <u32 as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
-        Self {
-            VendorId: f_VendorId,
-            VersionInformation: f_VersionInformation,
-            FeatureInformation: f_FeatureInformation,
-            AMDExtendedCpuFeatures: f_AMDExtendedCpuFeatures,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 24u32 as usize);
-        FromIntoMemory::into_bytes(self.VendorId, &mut into[0..0 + 12]);
-        FromIntoMemory::into_bytes(self.VersionInformation, &mut into[12..12 + 4]);
-        FromIntoMemory::into_bytes(self.FeatureInformation, &mut into[16..16 + 4]);
-        FromIntoMemory::into_bytes(self.AMDExtendedCpuFeatures, &mut into[20..20 + 4]);
-    }
-    fn size() -> usize {
-        24u32 as usize
     }
 }
 pub struct CREATE_PROCESS_DEBUG_INFO {
@@ -7811,6 +7554,68 @@ impl FromIntoMemory for DUMP_HEADER64_0 {
 }
 pub const DUMP_SUMMARY_VALID_CURRENT_USER_VA: u32 = 2u32;
 pub const DUMP_SUMMARY_VALID_KERNEL_VA: u32 = 1u32;
+pub struct DebugBaseEventCallbacks(crate::core::IUnknown);
+impl ::core::clone::Clone for DebugBaseEventCallbacks {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for DebugBaseEventCallbacks {}
+impl ::core::cmp::PartialEq for DebugBaseEventCallbacks {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for DebugBaseEventCallbacks {}
+impl ::core::fmt::Debug for DebugBaseEventCallbacks {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("DebugBaseEventCallbacks")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for DebugBaseEventCallbacks {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct DebugBaseEventCallbacksWide(crate::core::IUnknown);
+impl ::core::clone::Clone for DebugBaseEventCallbacksWide {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for DebugBaseEventCallbacksWide {}
+impl ::core::cmp::PartialEq for DebugBaseEventCallbacksWide {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for DebugBaseEventCallbacksWide {}
+impl ::core::fmt::Debug for DebugBaseEventCallbacksWide {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("DebugBaseEventCallbacksWide")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for DebugBaseEventCallbacksWide {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
 pub const DefaultDebugSessionProvider: crate::core::GUID =
     crate::core::GUID::from_u128(0x834128a2_51f4_11d0_8f20_00805f2cd064);
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -9740,6 +9545,6148 @@ impl FromIntoMemory for GET_TEB_ADDRESS {
         8u32 as usize
     }
 }
+pub struct IActiveScript(crate::core::IUnknown);
+impl ::core::clone::Clone for IActiveScript {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IActiveScript {}
+impl ::core::cmp::PartialEq for IActiveScript {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IActiveScript {}
+impl ::core::fmt::Debug for IActiveScript {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IActiveScript").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IActiveScript {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IActiveScriptAuthor(crate::core::IUnknown);
+impl ::core::clone::Clone for IActiveScriptAuthor {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IActiveScriptAuthor {}
+impl ::core::cmp::PartialEq for IActiveScriptAuthor {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IActiveScriptAuthor {}
+impl ::core::fmt::Debug for IActiveScriptAuthor {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IActiveScriptAuthor").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IActiveScriptAuthor {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IActiveScriptAuthorProcedure(crate::core::IUnknown);
+impl ::core::clone::Clone for IActiveScriptAuthorProcedure {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IActiveScriptAuthorProcedure {}
+impl ::core::cmp::PartialEq for IActiveScriptAuthorProcedure {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IActiveScriptAuthorProcedure {}
+impl ::core::fmt::Debug for IActiveScriptAuthorProcedure {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IActiveScriptAuthorProcedure")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IActiveScriptAuthorProcedure {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IActiveScriptDebug32(crate::core::IUnknown);
+impl ::core::clone::Clone for IActiveScriptDebug32 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IActiveScriptDebug32 {}
+impl ::core::cmp::PartialEq for IActiveScriptDebug32 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IActiveScriptDebug32 {}
+impl ::core::fmt::Debug for IActiveScriptDebug32 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IActiveScriptDebug32")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IActiveScriptDebug32 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IActiveScriptDebug64(crate::core::IUnknown);
+impl ::core::clone::Clone for IActiveScriptDebug64 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IActiveScriptDebug64 {}
+impl ::core::cmp::PartialEq for IActiveScriptDebug64 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IActiveScriptDebug64 {}
+impl ::core::fmt::Debug for IActiveScriptDebug64 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IActiveScriptDebug64")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IActiveScriptDebug64 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IActiveScriptEncode(crate::core::IUnknown);
+impl ::core::clone::Clone for IActiveScriptEncode {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IActiveScriptEncode {}
+impl ::core::cmp::PartialEq for IActiveScriptEncode {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IActiveScriptEncode {}
+impl ::core::fmt::Debug for IActiveScriptEncode {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IActiveScriptEncode").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IActiveScriptEncode {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IActiveScriptError(crate::core::IUnknown);
+impl ::core::clone::Clone for IActiveScriptError {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IActiveScriptError {}
+impl ::core::cmp::PartialEq for IActiveScriptError {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IActiveScriptError {}
+impl ::core::fmt::Debug for IActiveScriptError {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IActiveScriptError").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IActiveScriptError {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IActiveScriptError64(crate::core::IUnknown);
+impl ::core::clone::Clone for IActiveScriptError64 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IActiveScriptError64 {}
+impl ::core::cmp::PartialEq for IActiveScriptError64 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IActiveScriptError64 {}
+impl ::core::fmt::Debug for IActiveScriptError64 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IActiveScriptError64")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IActiveScriptError64 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IActiveScriptErrorDebug(crate::core::IUnknown);
+impl ::core::clone::Clone for IActiveScriptErrorDebug {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IActiveScriptErrorDebug {}
+impl ::core::cmp::PartialEq for IActiveScriptErrorDebug {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IActiveScriptErrorDebug {}
+impl ::core::fmt::Debug for IActiveScriptErrorDebug {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IActiveScriptErrorDebug")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IActiveScriptErrorDebug {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IActiveScriptErrorDebug110(crate::core::IUnknown);
+impl ::core::clone::Clone for IActiveScriptErrorDebug110 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IActiveScriptErrorDebug110 {}
+impl ::core::cmp::PartialEq for IActiveScriptErrorDebug110 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IActiveScriptErrorDebug110 {}
+impl ::core::fmt::Debug for IActiveScriptErrorDebug110 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IActiveScriptErrorDebug110")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IActiveScriptErrorDebug110 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IActiveScriptGarbageCollector(crate::core::IUnknown);
+impl ::core::clone::Clone for IActiveScriptGarbageCollector {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IActiveScriptGarbageCollector {}
+impl ::core::cmp::PartialEq for IActiveScriptGarbageCollector {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IActiveScriptGarbageCollector {}
+impl ::core::fmt::Debug for IActiveScriptGarbageCollector {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IActiveScriptGarbageCollector")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IActiveScriptGarbageCollector {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IActiveScriptHostEncode(crate::core::IUnknown);
+impl ::core::clone::Clone for IActiveScriptHostEncode {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IActiveScriptHostEncode {}
+impl ::core::cmp::PartialEq for IActiveScriptHostEncode {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IActiveScriptHostEncode {}
+impl ::core::fmt::Debug for IActiveScriptHostEncode {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IActiveScriptHostEncode")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IActiveScriptHostEncode {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IActiveScriptParse32(crate::core::IUnknown);
+impl ::core::clone::Clone for IActiveScriptParse32 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IActiveScriptParse32 {}
+impl ::core::cmp::PartialEq for IActiveScriptParse32 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IActiveScriptParse32 {}
+impl ::core::fmt::Debug for IActiveScriptParse32 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IActiveScriptParse32")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IActiveScriptParse32 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IActiveScriptParse64(crate::core::IUnknown);
+impl ::core::clone::Clone for IActiveScriptParse64 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IActiveScriptParse64 {}
+impl ::core::cmp::PartialEq for IActiveScriptParse64 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IActiveScriptParse64 {}
+impl ::core::fmt::Debug for IActiveScriptParse64 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IActiveScriptParse64")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IActiveScriptParse64 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IActiveScriptParseProcedure2_32(crate::core::IUnknown);
+impl ::core::clone::Clone for IActiveScriptParseProcedure2_32 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IActiveScriptParseProcedure2_32 {}
+impl ::core::cmp::PartialEq for IActiveScriptParseProcedure2_32 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IActiveScriptParseProcedure2_32 {}
+impl ::core::fmt::Debug for IActiveScriptParseProcedure2_32 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IActiveScriptParseProcedure2_32")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IActiveScriptParseProcedure2_32 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IActiveScriptParseProcedure2_64(crate::core::IUnknown);
+impl ::core::clone::Clone for IActiveScriptParseProcedure2_64 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IActiveScriptParseProcedure2_64 {}
+impl ::core::cmp::PartialEq for IActiveScriptParseProcedure2_64 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IActiveScriptParseProcedure2_64 {}
+impl ::core::fmt::Debug for IActiveScriptParseProcedure2_64 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IActiveScriptParseProcedure2_64")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IActiveScriptParseProcedure2_64 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IActiveScriptParseProcedure32(crate::core::IUnknown);
+impl ::core::clone::Clone for IActiveScriptParseProcedure32 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IActiveScriptParseProcedure32 {}
+impl ::core::cmp::PartialEq for IActiveScriptParseProcedure32 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IActiveScriptParseProcedure32 {}
+impl ::core::fmt::Debug for IActiveScriptParseProcedure32 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IActiveScriptParseProcedure32")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IActiveScriptParseProcedure32 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IActiveScriptParseProcedure64(crate::core::IUnknown);
+impl ::core::clone::Clone for IActiveScriptParseProcedure64 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IActiveScriptParseProcedure64 {}
+impl ::core::cmp::PartialEq for IActiveScriptParseProcedure64 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IActiveScriptParseProcedure64 {}
+impl ::core::fmt::Debug for IActiveScriptParseProcedure64 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IActiveScriptParseProcedure64")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IActiveScriptParseProcedure64 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IActiveScriptParseProcedureOld32(crate::core::IUnknown);
+impl ::core::clone::Clone for IActiveScriptParseProcedureOld32 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IActiveScriptParseProcedureOld32 {}
+impl ::core::cmp::PartialEq for IActiveScriptParseProcedureOld32 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IActiveScriptParseProcedureOld32 {}
+impl ::core::fmt::Debug for IActiveScriptParseProcedureOld32 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IActiveScriptParseProcedureOld32")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IActiveScriptParseProcedureOld32 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IActiveScriptParseProcedureOld64(crate::core::IUnknown);
+impl ::core::clone::Clone for IActiveScriptParseProcedureOld64 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IActiveScriptParseProcedureOld64 {}
+impl ::core::cmp::PartialEq for IActiveScriptParseProcedureOld64 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IActiveScriptParseProcedureOld64 {}
+impl ::core::fmt::Debug for IActiveScriptParseProcedureOld64 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IActiveScriptParseProcedureOld64")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IActiveScriptParseProcedureOld64 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IActiveScriptProfilerCallback(crate::core::IUnknown);
+impl ::core::clone::Clone for IActiveScriptProfilerCallback {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IActiveScriptProfilerCallback {}
+impl ::core::cmp::PartialEq for IActiveScriptProfilerCallback {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IActiveScriptProfilerCallback {}
+impl ::core::fmt::Debug for IActiveScriptProfilerCallback {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IActiveScriptProfilerCallback")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IActiveScriptProfilerCallback {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IActiveScriptProfilerCallback2(crate::core::IUnknown);
+impl ::core::clone::Clone for IActiveScriptProfilerCallback2 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IActiveScriptProfilerCallback2 {}
+impl ::core::cmp::PartialEq for IActiveScriptProfilerCallback2 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IActiveScriptProfilerCallback2 {}
+impl ::core::fmt::Debug for IActiveScriptProfilerCallback2 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IActiveScriptProfilerCallback2")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IActiveScriptProfilerCallback2 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IActiveScriptProfilerCallback3(crate::core::IUnknown);
+impl ::core::clone::Clone for IActiveScriptProfilerCallback3 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IActiveScriptProfilerCallback3 {}
+impl ::core::cmp::PartialEq for IActiveScriptProfilerCallback3 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IActiveScriptProfilerCallback3 {}
+impl ::core::fmt::Debug for IActiveScriptProfilerCallback3 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IActiveScriptProfilerCallback3")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IActiveScriptProfilerCallback3 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IActiveScriptProfilerControl(crate::core::IUnknown);
+impl ::core::clone::Clone for IActiveScriptProfilerControl {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IActiveScriptProfilerControl {}
+impl ::core::cmp::PartialEq for IActiveScriptProfilerControl {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IActiveScriptProfilerControl {}
+impl ::core::fmt::Debug for IActiveScriptProfilerControl {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IActiveScriptProfilerControl")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IActiveScriptProfilerControl {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IActiveScriptProfilerControl2(crate::core::IUnknown);
+impl ::core::clone::Clone for IActiveScriptProfilerControl2 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IActiveScriptProfilerControl2 {}
+impl ::core::cmp::PartialEq for IActiveScriptProfilerControl2 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IActiveScriptProfilerControl2 {}
+impl ::core::fmt::Debug for IActiveScriptProfilerControl2 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IActiveScriptProfilerControl2")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IActiveScriptProfilerControl2 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IActiveScriptProfilerControl3(crate::core::IUnknown);
+impl ::core::clone::Clone for IActiveScriptProfilerControl3 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IActiveScriptProfilerControl3 {}
+impl ::core::cmp::PartialEq for IActiveScriptProfilerControl3 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IActiveScriptProfilerControl3 {}
+impl ::core::fmt::Debug for IActiveScriptProfilerControl3 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IActiveScriptProfilerControl3")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IActiveScriptProfilerControl3 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IActiveScriptProfilerControl4(crate::core::IUnknown);
+impl ::core::clone::Clone for IActiveScriptProfilerControl4 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IActiveScriptProfilerControl4 {}
+impl ::core::cmp::PartialEq for IActiveScriptProfilerControl4 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IActiveScriptProfilerControl4 {}
+impl ::core::fmt::Debug for IActiveScriptProfilerControl4 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IActiveScriptProfilerControl4")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IActiveScriptProfilerControl4 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IActiveScriptProfilerControl5(crate::core::IUnknown);
+impl ::core::clone::Clone for IActiveScriptProfilerControl5 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IActiveScriptProfilerControl5 {}
+impl ::core::cmp::PartialEq for IActiveScriptProfilerControl5 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IActiveScriptProfilerControl5 {}
+impl ::core::fmt::Debug for IActiveScriptProfilerControl5 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IActiveScriptProfilerControl5")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IActiveScriptProfilerControl5 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IActiveScriptProfilerHeapEnum(crate::core::IUnknown);
+impl ::core::clone::Clone for IActiveScriptProfilerHeapEnum {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IActiveScriptProfilerHeapEnum {}
+impl ::core::cmp::PartialEq for IActiveScriptProfilerHeapEnum {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IActiveScriptProfilerHeapEnum {}
+impl ::core::fmt::Debug for IActiveScriptProfilerHeapEnum {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IActiveScriptProfilerHeapEnum")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IActiveScriptProfilerHeapEnum {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IActiveScriptProperty(crate::core::IUnknown);
+impl ::core::clone::Clone for IActiveScriptProperty {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IActiveScriptProperty {}
+impl ::core::cmp::PartialEq for IActiveScriptProperty {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IActiveScriptProperty {}
+impl ::core::fmt::Debug for IActiveScriptProperty {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IActiveScriptProperty")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IActiveScriptProperty {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IActiveScriptSIPInfo(crate::core::IUnknown);
+impl ::core::clone::Clone for IActiveScriptSIPInfo {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IActiveScriptSIPInfo {}
+impl ::core::cmp::PartialEq for IActiveScriptSIPInfo {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IActiveScriptSIPInfo {}
+impl ::core::fmt::Debug for IActiveScriptSIPInfo {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IActiveScriptSIPInfo")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IActiveScriptSIPInfo {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IActiveScriptSite(crate::core::IUnknown);
+impl ::core::clone::Clone for IActiveScriptSite {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IActiveScriptSite {}
+impl ::core::cmp::PartialEq for IActiveScriptSite {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IActiveScriptSite {}
+impl ::core::fmt::Debug for IActiveScriptSite {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IActiveScriptSite").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IActiveScriptSite {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IActiveScriptSiteDebug32(crate::core::IUnknown);
+impl ::core::clone::Clone for IActiveScriptSiteDebug32 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IActiveScriptSiteDebug32 {}
+impl ::core::cmp::PartialEq for IActiveScriptSiteDebug32 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IActiveScriptSiteDebug32 {}
+impl ::core::fmt::Debug for IActiveScriptSiteDebug32 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IActiveScriptSiteDebug32")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IActiveScriptSiteDebug32 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IActiveScriptSiteDebug64(crate::core::IUnknown);
+impl ::core::clone::Clone for IActiveScriptSiteDebug64 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IActiveScriptSiteDebug64 {}
+impl ::core::cmp::PartialEq for IActiveScriptSiteDebug64 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IActiveScriptSiteDebug64 {}
+impl ::core::fmt::Debug for IActiveScriptSiteDebug64 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IActiveScriptSiteDebug64")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IActiveScriptSiteDebug64 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IActiveScriptSiteDebugEx(crate::core::IUnknown);
+impl ::core::clone::Clone for IActiveScriptSiteDebugEx {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IActiveScriptSiteDebugEx {}
+impl ::core::cmp::PartialEq for IActiveScriptSiteDebugEx {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IActiveScriptSiteDebugEx {}
+impl ::core::fmt::Debug for IActiveScriptSiteDebugEx {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IActiveScriptSiteDebugEx")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IActiveScriptSiteDebugEx {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IActiveScriptSiteInterruptPoll(crate::core::IUnknown);
+impl ::core::clone::Clone for IActiveScriptSiteInterruptPoll {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IActiveScriptSiteInterruptPoll {}
+impl ::core::cmp::PartialEq for IActiveScriptSiteInterruptPoll {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IActiveScriptSiteInterruptPoll {}
+impl ::core::fmt::Debug for IActiveScriptSiteInterruptPoll {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IActiveScriptSiteInterruptPoll")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IActiveScriptSiteInterruptPoll {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IActiveScriptSiteTraceInfo(crate::core::IUnknown);
+impl ::core::clone::Clone for IActiveScriptSiteTraceInfo {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IActiveScriptSiteTraceInfo {}
+impl ::core::cmp::PartialEq for IActiveScriptSiteTraceInfo {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IActiveScriptSiteTraceInfo {}
+impl ::core::fmt::Debug for IActiveScriptSiteTraceInfo {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IActiveScriptSiteTraceInfo")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IActiveScriptSiteTraceInfo {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IActiveScriptSiteUIControl(crate::core::IUnknown);
+impl ::core::clone::Clone for IActiveScriptSiteUIControl {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IActiveScriptSiteUIControl {}
+impl ::core::cmp::PartialEq for IActiveScriptSiteUIControl {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IActiveScriptSiteUIControl {}
+impl ::core::fmt::Debug for IActiveScriptSiteUIControl {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IActiveScriptSiteUIControl")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IActiveScriptSiteUIControl {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IActiveScriptSiteWindow(crate::core::IUnknown);
+impl ::core::clone::Clone for IActiveScriptSiteWindow {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IActiveScriptSiteWindow {}
+impl ::core::cmp::PartialEq for IActiveScriptSiteWindow {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IActiveScriptSiteWindow {}
+impl ::core::fmt::Debug for IActiveScriptSiteWindow {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IActiveScriptSiteWindow")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IActiveScriptSiteWindow {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IActiveScriptStats(crate::core::IUnknown);
+impl ::core::clone::Clone for IActiveScriptStats {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IActiveScriptStats {}
+impl ::core::cmp::PartialEq for IActiveScriptStats {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IActiveScriptStats {}
+impl ::core::fmt::Debug for IActiveScriptStats {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IActiveScriptStats").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IActiveScriptStats {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IActiveScriptStringCompare(crate::core::IUnknown);
+impl ::core::clone::Clone for IActiveScriptStringCompare {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IActiveScriptStringCompare {}
+impl ::core::cmp::PartialEq for IActiveScriptStringCompare {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IActiveScriptStringCompare {}
+impl ::core::fmt::Debug for IActiveScriptStringCompare {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IActiveScriptStringCompare")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IActiveScriptStringCompare {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IActiveScriptTraceInfo(crate::core::IUnknown);
+impl ::core::clone::Clone for IActiveScriptTraceInfo {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IActiveScriptTraceInfo {}
+impl ::core::cmp::PartialEq for IActiveScriptTraceInfo {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IActiveScriptTraceInfo {}
+impl ::core::fmt::Debug for IActiveScriptTraceInfo {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IActiveScriptTraceInfo")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IActiveScriptTraceInfo {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IActiveScriptWinRTErrorDebug(crate::core::IUnknown);
+impl ::core::clone::Clone for IActiveScriptWinRTErrorDebug {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IActiveScriptWinRTErrorDebug {}
+impl ::core::cmp::PartialEq for IActiveScriptWinRTErrorDebug {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IActiveScriptWinRTErrorDebug {}
+impl ::core::fmt::Debug for IActiveScriptWinRTErrorDebug {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IActiveScriptWinRTErrorDebug")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IActiveScriptWinRTErrorDebug {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IApplicationDebugger(crate::core::IUnknown);
+impl ::core::clone::Clone for IApplicationDebugger {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IApplicationDebugger {}
+impl ::core::cmp::PartialEq for IApplicationDebugger {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IApplicationDebugger {}
+impl ::core::fmt::Debug for IApplicationDebugger {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IApplicationDebugger")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IApplicationDebugger {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IApplicationDebuggerUI(crate::core::IUnknown);
+impl ::core::clone::Clone for IApplicationDebuggerUI {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IApplicationDebuggerUI {}
+impl ::core::cmp::PartialEq for IApplicationDebuggerUI {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IApplicationDebuggerUI {}
+impl ::core::fmt::Debug for IApplicationDebuggerUI {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IApplicationDebuggerUI")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IApplicationDebuggerUI {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IBindEventHandler(crate::core::IUnknown);
+impl ::core::clone::Clone for IBindEventHandler {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IBindEventHandler {}
+impl ::core::cmp::PartialEq for IBindEventHandler {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IBindEventHandler {}
+impl ::core::fmt::Debug for IBindEventHandler {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IBindEventHandler").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IBindEventHandler {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct ICodeAddressConcept(crate::core::IUnknown);
+impl ::core::clone::Clone for ICodeAddressConcept {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for ICodeAddressConcept {}
+impl ::core::cmp::PartialEq for ICodeAddressConcept {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for ICodeAddressConcept {}
+impl ::core::fmt::Debug for ICodeAddressConcept {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("ICodeAddressConcept").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for ICodeAddressConcept {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IComparableConcept(crate::core::IUnknown);
+impl ::core::clone::Clone for IComparableConcept {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IComparableConcept {}
+impl ::core::cmp::PartialEq for IComparableConcept {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IComparableConcept {}
+impl ::core::fmt::Debug for IComparableConcept {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IComparableConcept").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IComparableConcept {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDataModelConcept(crate::core::IUnknown);
+impl ::core::clone::Clone for IDataModelConcept {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDataModelConcept {}
+impl ::core::cmp::PartialEq for IDataModelConcept {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDataModelConcept {}
+impl ::core::fmt::Debug for IDataModelConcept {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDataModelConcept").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDataModelConcept {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDataModelManager(crate::core::IUnknown);
+impl ::core::clone::Clone for IDataModelManager {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDataModelManager {}
+impl ::core::cmp::PartialEq for IDataModelManager {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDataModelManager {}
+impl ::core::fmt::Debug for IDataModelManager {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDataModelManager").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDataModelManager {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDataModelManager2(crate::core::IUnknown);
+impl ::core::clone::Clone for IDataModelManager2 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDataModelManager2 {}
+impl ::core::cmp::PartialEq for IDataModelManager2 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDataModelManager2 {}
+impl ::core::fmt::Debug for IDataModelManager2 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDataModelManager2").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDataModelManager2 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDataModelNameBinder(crate::core::IUnknown);
+impl ::core::clone::Clone for IDataModelNameBinder {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDataModelNameBinder {}
+impl ::core::cmp::PartialEq for IDataModelNameBinder {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDataModelNameBinder {}
+impl ::core::fmt::Debug for IDataModelNameBinder {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDataModelNameBinder")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDataModelNameBinder {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDataModelScript(crate::core::IUnknown);
+impl ::core::clone::Clone for IDataModelScript {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDataModelScript {}
+impl ::core::cmp::PartialEq for IDataModelScript {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDataModelScript {}
+impl ::core::fmt::Debug for IDataModelScript {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDataModelScript").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDataModelScript {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDataModelScriptClient(crate::core::IUnknown);
+impl ::core::clone::Clone for IDataModelScriptClient {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDataModelScriptClient {}
+impl ::core::cmp::PartialEq for IDataModelScriptClient {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDataModelScriptClient {}
+impl ::core::fmt::Debug for IDataModelScriptClient {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDataModelScriptClient")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDataModelScriptClient {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDataModelScriptDebug(crate::core::IUnknown);
+impl ::core::clone::Clone for IDataModelScriptDebug {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDataModelScriptDebug {}
+impl ::core::cmp::PartialEq for IDataModelScriptDebug {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDataModelScriptDebug {}
+impl ::core::fmt::Debug for IDataModelScriptDebug {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDataModelScriptDebug")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDataModelScriptDebug {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDataModelScriptDebug2(crate::core::IUnknown);
+impl ::core::clone::Clone for IDataModelScriptDebug2 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDataModelScriptDebug2 {}
+impl ::core::cmp::PartialEq for IDataModelScriptDebug2 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDataModelScriptDebug2 {}
+impl ::core::fmt::Debug for IDataModelScriptDebug2 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDataModelScriptDebug2")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDataModelScriptDebug2 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDataModelScriptDebugBreakpoint(crate::core::IUnknown);
+impl ::core::clone::Clone for IDataModelScriptDebugBreakpoint {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDataModelScriptDebugBreakpoint {}
+impl ::core::cmp::PartialEq for IDataModelScriptDebugBreakpoint {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDataModelScriptDebugBreakpoint {}
+impl ::core::fmt::Debug for IDataModelScriptDebugBreakpoint {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDataModelScriptDebugBreakpoint")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDataModelScriptDebugBreakpoint {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDataModelScriptDebugBreakpointEnumerator(crate::core::IUnknown);
+impl ::core::clone::Clone for IDataModelScriptDebugBreakpointEnumerator {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDataModelScriptDebugBreakpointEnumerator {}
+impl ::core::cmp::PartialEq for IDataModelScriptDebugBreakpointEnumerator {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDataModelScriptDebugBreakpointEnumerator {}
+impl ::core::fmt::Debug for IDataModelScriptDebugBreakpointEnumerator {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDataModelScriptDebugBreakpointEnumerator")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDataModelScriptDebugBreakpointEnumerator {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDataModelScriptDebugClient(crate::core::IUnknown);
+impl ::core::clone::Clone for IDataModelScriptDebugClient {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDataModelScriptDebugClient {}
+impl ::core::cmp::PartialEq for IDataModelScriptDebugClient {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDataModelScriptDebugClient {}
+impl ::core::fmt::Debug for IDataModelScriptDebugClient {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDataModelScriptDebugClient")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDataModelScriptDebugClient {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDataModelScriptDebugStack(crate::core::IUnknown);
+impl ::core::clone::Clone for IDataModelScriptDebugStack {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDataModelScriptDebugStack {}
+impl ::core::cmp::PartialEq for IDataModelScriptDebugStack {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDataModelScriptDebugStack {}
+impl ::core::fmt::Debug for IDataModelScriptDebugStack {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDataModelScriptDebugStack")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDataModelScriptDebugStack {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDataModelScriptDebugStackFrame(crate::core::IUnknown);
+impl ::core::clone::Clone for IDataModelScriptDebugStackFrame {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDataModelScriptDebugStackFrame {}
+impl ::core::cmp::PartialEq for IDataModelScriptDebugStackFrame {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDataModelScriptDebugStackFrame {}
+impl ::core::fmt::Debug for IDataModelScriptDebugStackFrame {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDataModelScriptDebugStackFrame")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDataModelScriptDebugStackFrame {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDataModelScriptDebugVariableSetEnumerator(crate::core::IUnknown);
+impl ::core::clone::Clone for IDataModelScriptDebugVariableSetEnumerator {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDataModelScriptDebugVariableSetEnumerator {}
+impl ::core::cmp::PartialEq for IDataModelScriptDebugVariableSetEnumerator {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDataModelScriptDebugVariableSetEnumerator {}
+impl ::core::fmt::Debug for IDataModelScriptDebugVariableSetEnumerator {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDataModelScriptDebugVariableSetEnumerator")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDataModelScriptDebugVariableSetEnumerator {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDataModelScriptHostContext(crate::core::IUnknown);
+impl ::core::clone::Clone for IDataModelScriptHostContext {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDataModelScriptHostContext {}
+impl ::core::cmp::PartialEq for IDataModelScriptHostContext {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDataModelScriptHostContext {}
+impl ::core::fmt::Debug for IDataModelScriptHostContext {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDataModelScriptHostContext")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDataModelScriptHostContext {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDataModelScriptManager(crate::core::IUnknown);
+impl ::core::clone::Clone for IDataModelScriptManager {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDataModelScriptManager {}
+impl ::core::cmp::PartialEq for IDataModelScriptManager {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDataModelScriptManager {}
+impl ::core::fmt::Debug for IDataModelScriptManager {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDataModelScriptManager")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDataModelScriptManager {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDataModelScriptProvider(crate::core::IUnknown);
+impl ::core::clone::Clone for IDataModelScriptProvider {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDataModelScriptProvider {}
+impl ::core::cmp::PartialEq for IDataModelScriptProvider {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDataModelScriptProvider {}
+impl ::core::fmt::Debug for IDataModelScriptProvider {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDataModelScriptProvider")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDataModelScriptProvider {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDataModelScriptProviderEnumerator(crate::core::IUnknown);
+impl ::core::clone::Clone for IDataModelScriptProviderEnumerator {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDataModelScriptProviderEnumerator {}
+impl ::core::cmp::PartialEq for IDataModelScriptProviderEnumerator {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDataModelScriptProviderEnumerator {}
+impl ::core::fmt::Debug for IDataModelScriptProviderEnumerator {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDataModelScriptProviderEnumerator")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDataModelScriptProviderEnumerator {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDataModelScriptTemplate(crate::core::IUnknown);
+impl ::core::clone::Clone for IDataModelScriptTemplate {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDataModelScriptTemplate {}
+impl ::core::cmp::PartialEq for IDataModelScriptTemplate {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDataModelScriptTemplate {}
+impl ::core::fmt::Debug for IDataModelScriptTemplate {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDataModelScriptTemplate")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDataModelScriptTemplate {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDataModelScriptTemplateEnumerator(crate::core::IUnknown);
+impl ::core::clone::Clone for IDataModelScriptTemplateEnumerator {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDataModelScriptTemplateEnumerator {}
+impl ::core::cmp::PartialEq for IDataModelScriptTemplateEnumerator {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDataModelScriptTemplateEnumerator {}
+impl ::core::fmt::Debug for IDataModelScriptTemplateEnumerator {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDataModelScriptTemplateEnumerator")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDataModelScriptTemplateEnumerator {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugAdvanced(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugAdvanced {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugAdvanced {}
+impl ::core::cmp::PartialEq for IDebugAdvanced {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugAdvanced {}
+impl ::core::fmt::Debug for IDebugAdvanced {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugAdvanced").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugAdvanced {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugAdvanced2(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugAdvanced2 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugAdvanced2 {}
+impl ::core::cmp::PartialEq for IDebugAdvanced2 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugAdvanced2 {}
+impl ::core::fmt::Debug for IDebugAdvanced2 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugAdvanced2").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugAdvanced2 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugAdvanced3(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugAdvanced3 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugAdvanced3 {}
+impl ::core::cmp::PartialEq for IDebugAdvanced3 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugAdvanced3 {}
+impl ::core::fmt::Debug for IDebugAdvanced3 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugAdvanced3").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugAdvanced3 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugAdvanced4(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugAdvanced4 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugAdvanced4 {}
+impl ::core::cmp::PartialEq for IDebugAdvanced4 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugAdvanced4 {}
+impl ::core::fmt::Debug for IDebugAdvanced4 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugAdvanced4").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugAdvanced4 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugApplication11032(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugApplication11032 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugApplication11032 {}
+impl ::core::cmp::PartialEq for IDebugApplication11032 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugApplication11032 {}
+impl ::core::fmt::Debug for IDebugApplication11032 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugApplication11032")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDebugApplication11032 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugApplication11064(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugApplication11064 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugApplication11064 {}
+impl ::core::cmp::PartialEq for IDebugApplication11064 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugApplication11064 {}
+impl ::core::fmt::Debug for IDebugApplication11064 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugApplication11064")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDebugApplication11064 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugApplication32(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugApplication32 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugApplication32 {}
+impl ::core::cmp::PartialEq for IDebugApplication32 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugApplication32 {}
+impl ::core::fmt::Debug for IDebugApplication32 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugApplication32").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugApplication32 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugApplication64(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugApplication64 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugApplication64 {}
+impl ::core::cmp::PartialEq for IDebugApplication64 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugApplication64 {}
+impl ::core::fmt::Debug for IDebugApplication64 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugApplication64").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugApplication64 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugApplicationNode(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugApplicationNode {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugApplicationNode {}
+impl ::core::cmp::PartialEq for IDebugApplicationNode {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugApplicationNode {}
+impl ::core::fmt::Debug for IDebugApplicationNode {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugApplicationNode")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDebugApplicationNode {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugApplicationNode100(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugApplicationNode100 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugApplicationNode100 {}
+impl ::core::cmp::PartialEq for IDebugApplicationNode100 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugApplicationNode100 {}
+impl ::core::fmt::Debug for IDebugApplicationNode100 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugApplicationNode100")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDebugApplicationNode100 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugApplicationNodeEvents(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugApplicationNodeEvents {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugApplicationNodeEvents {}
+impl ::core::cmp::PartialEq for IDebugApplicationNodeEvents {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugApplicationNodeEvents {}
+impl ::core::fmt::Debug for IDebugApplicationNodeEvents {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugApplicationNodeEvents")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDebugApplicationNodeEvents {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugApplicationThread(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugApplicationThread {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugApplicationThread {}
+impl ::core::cmp::PartialEq for IDebugApplicationThread {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugApplicationThread {}
+impl ::core::fmt::Debug for IDebugApplicationThread {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugApplicationThread")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDebugApplicationThread {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugApplicationThread11032(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugApplicationThread11032 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugApplicationThread11032 {}
+impl ::core::cmp::PartialEq for IDebugApplicationThread11032 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugApplicationThread11032 {}
+impl ::core::fmt::Debug for IDebugApplicationThread11032 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugApplicationThread11032")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDebugApplicationThread11032 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugApplicationThread11064(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugApplicationThread11064 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugApplicationThread11064 {}
+impl ::core::cmp::PartialEq for IDebugApplicationThread11064 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugApplicationThread11064 {}
+impl ::core::fmt::Debug for IDebugApplicationThread11064 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugApplicationThread11064")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDebugApplicationThread11064 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugApplicationThread64(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugApplicationThread64 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugApplicationThread64 {}
+impl ::core::cmp::PartialEq for IDebugApplicationThread64 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugApplicationThread64 {}
+impl ::core::fmt::Debug for IDebugApplicationThread64 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugApplicationThread64")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDebugApplicationThread64 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugApplicationThreadEvents110(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugApplicationThreadEvents110 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugApplicationThreadEvents110 {}
+impl ::core::cmp::PartialEq for IDebugApplicationThreadEvents110 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugApplicationThreadEvents110 {}
+impl ::core::fmt::Debug for IDebugApplicationThreadEvents110 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugApplicationThreadEvents110")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDebugApplicationThreadEvents110 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugAsyncOperation(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugAsyncOperation {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugAsyncOperation {}
+impl ::core::cmp::PartialEq for IDebugAsyncOperation {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugAsyncOperation {}
+impl ::core::fmt::Debug for IDebugAsyncOperation {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugAsyncOperation")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDebugAsyncOperation {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugAsyncOperationCallBack(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugAsyncOperationCallBack {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugAsyncOperationCallBack {}
+impl ::core::cmp::PartialEq for IDebugAsyncOperationCallBack {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugAsyncOperationCallBack {}
+impl ::core::fmt::Debug for IDebugAsyncOperationCallBack {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugAsyncOperationCallBack")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDebugAsyncOperationCallBack {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugBreakpoint(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugBreakpoint {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugBreakpoint {}
+impl ::core::cmp::PartialEq for IDebugBreakpoint {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugBreakpoint {}
+impl ::core::fmt::Debug for IDebugBreakpoint {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugBreakpoint").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugBreakpoint {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugBreakpoint2(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugBreakpoint2 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugBreakpoint2 {}
+impl ::core::cmp::PartialEq for IDebugBreakpoint2 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugBreakpoint2 {}
+impl ::core::fmt::Debug for IDebugBreakpoint2 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugBreakpoint2").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugBreakpoint2 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugBreakpoint3(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugBreakpoint3 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugBreakpoint3 {}
+impl ::core::cmp::PartialEq for IDebugBreakpoint3 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugBreakpoint3 {}
+impl ::core::fmt::Debug for IDebugBreakpoint3 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugBreakpoint3").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugBreakpoint3 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugClient(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugClient {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugClient {}
+impl ::core::cmp::PartialEq for IDebugClient {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugClient {}
+impl ::core::fmt::Debug for IDebugClient {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugClient").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugClient {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugClient2(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugClient2 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugClient2 {}
+impl ::core::cmp::PartialEq for IDebugClient2 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugClient2 {}
+impl ::core::fmt::Debug for IDebugClient2 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugClient2").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugClient2 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugClient3(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugClient3 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugClient3 {}
+impl ::core::cmp::PartialEq for IDebugClient3 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugClient3 {}
+impl ::core::fmt::Debug for IDebugClient3 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugClient3").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugClient3 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugClient4(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugClient4 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugClient4 {}
+impl ::core::cmp::PartialEq for IDebugClient4 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugClient4 {}
+impl ::core::fmt::Debug for IDebugClient4 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugClient4").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugClient4 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugClient5(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugClient5 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugClient5 {}
+impl ::core::cmp::PartialEq for IDebugClient5 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugClient5 {}
+impl ::core::fmt::Debug for IDebugClient5 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugClient5").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugClient5 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugClient6(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugClient6 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugClient6 {}
+impl ::core::cmp::PartialEq for IDebugClient6 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugClient6 {}
+impl ::core::fmt::Debug for IDebugClient6 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugClient6").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugClient6 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugClient7(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugClient7 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugClient7 {}
+impl ::core::cmp::PartialEq for IDebugClient7 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugClient7 {}
+impl ::core::fmt::Debug for IDebugClient7 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugClient7").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugClient7 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugClient8(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugClient8 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugClient8 {}
+impl ::core::cmp::PartialEq for IDebugClient8 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugClient8 {}
+impl ::core::fmt::Debug for IDebugClient8 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugClient8").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugClient8 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugCodeContext(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugCodeContext {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugCodeContext {}
+impl ::core::cmp::PartialEq for IDebugCodeContext {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugCodeContext {}
+impl ::core::fmt::Debug for IDebugCodeContext {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugCodeContext").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugCodeContext {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugControl(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugControl {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugControl {}
+impl ::core::cmp::PartialEq for IDebugControl {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugControl {}
+impl ::core::fmt::Debug for IDebugControl {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugControl").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugControl {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugControl2(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugControl2 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugControl2 {}
+impl ::core::cmp::PartialEq for IDebugControl2 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugControl2 {}
+impl ::core::fmt::Debug for IDebugControl2 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugControl2").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugControl2 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugControl3(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugControl3 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugControl3 {}
+impl ::core::cmp::PartialEq for IDebugControl3 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugControl3 {}
+impl ::core::fmt::Debug for IDebugControl3 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugControl3").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugControl3 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugControl4(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugControl4 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugControl4 {}
+impl ::core::cmp::PartialEq for IDebugControl4 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugControl4 {}
+impl ::core::fmt::Debug for IDebugControl4 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugControl4").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugControl4 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugControl5(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugControl5 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugControl5 {}
+impl ::core::cmp::PartialEq for IDebugControl5 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugControl5 {}
+impl ::core::fmt::Debug for IDebugControl5 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugControl5").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugControl5 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugControl6(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugControl6 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugControl6 {}
+impl ::core::cmp::PartialEq for IDebugControl6 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugControl6 {}
+impl ::core::fmt::Debug for IDebugControl6 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugControl6").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugControl6 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugControl7(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugControl7 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugControl7 {}
+impl ::core::cmp::PartialEq for IDebugControl7 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugControl7 {}
+impl ::core::fmt::Debug for IDebugControl7 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugControl7").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugControl7 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugCookie(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugCookie {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugCookie {}
+impl ::core::cmp::PartialEq for IDebugCookie {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugCookie {}
+impl ::core::fmt::Debug for IDebugCookie {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugCookie").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugCookie {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugDataSpaces(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugDataSpaces {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugDataSpaces {}
+impl ::core::cmp::PartialEq for IDebugDataSpaces {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugDataSpaces {}
+impl ::core::fmt::Debug for IDebugDataSpaces {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugDataSpaces").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugDataSpaces {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugDataSpaces2(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugDataSpaces2 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugDataSpaces2 {}
+impl ::core::cmp::PartialEq for IDebugDataSpaces2 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugDataSpaces2 {}
+impl ::core::fmt::Debug for IDebugDataSpaces2 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugDataSpaces2").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugDataSpaces2 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugDataSpaces3(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugDataSpaces3 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugDataSpaces3 {}
+impl ::core::cmp::PartialEq for IDebugDataSpaces3 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugDataSpaces3 {}
+impl ::core::fmt::Debug for IDebugDataSpaces3 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugDataSpaces3").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugDataSpaces3 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugDataSpaces4(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugDataSpaces4 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugDataSpaces4 {}
+impl ::core::cmp::PartialEq for IDebugDataSpaces4 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugDataSpaces4 {}
+impl ::core::fmt::Debug for IDebugDataSpaces4 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugDataSpaces4").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugDataSpaces4 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugDocument(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugDocument {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugDocument {}
+impl ::core::cmp::PartialEq for IDebugDocument {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugDocument {}
+impl ::core::fmt::Debug for IDebugDocument {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugDocument").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugDocument {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugDocumentContext(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugDocumentContext {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugDocumentContext {}
+impl ::core::cmp::PartialEq for IDebugDocumentContext {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugDocumentContext {}
+impl ::core::fmt::Debug for IDebugDocumentContext {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugDocumentContext")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDebugDocumentContext {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugDocumentHelper32(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugDocumentHelper32 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugDocumentHelper32 {}
+impl ::core::cmp::PartialEq for IDebugDocumentHelper32 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugDocumentHelper32 {}
+impl ::core::fmt::Debug for IDebugDocumentHelper32 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugDocumentHelper32")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDebugDocumentHelper32 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugDocumentHelper64(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugDocumentHelper64 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugDocumentHelper64 {}
+impl ::core::cmp::PartialEq for IDebugDocumentHelper64 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugDocumentHelper64 {}
+impl ::core::fmt::Debug for IDebugDocumentHelper64 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugDocumentHelper64")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDebugDocumentHelper64 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugDocumentHost(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugDocumentHost {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugDocumentHost {}
+impl ::core::cmp::PartialEq for IDebugDocumentHost {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugDocumentHost {}
+impl ::core::fmt::Debug for IDebugDocumentHost {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugDocumentHost").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugDocumentHost {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugDocumentInfo(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugDocumentInfo {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugDocumentInfo {}
+impl ::core::cmp::PartialEq for IDebugDocumentInfo {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugDocumentInfo {}
+impl ::core::fmt::Debug for IDebugDocumentInfo {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugDocumentInfo").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugDocumentInfo {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugDocumentProvider(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugDocumentProvider {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugDocumentProvider {}
+impl ::core::cmp::PartialEq for IDebugDocumentProvider {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugDocumentProvider {}
+impl ::core::fmt::Debug for IDebugDocumentProvider {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugDocumentProvider")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDebugDocumentProvider {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugDocumentText(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugDocumentText {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugDocumentText {}
+impl ::core::cmp::PartialEq for IDebugDocumentText {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugDocumentText {}
+impl ::core::fmt::Debug for IDebugDocumentText {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugDocumentText").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugDocumentText {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugDocumentTextAuthor(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugDocumentTextAuthor {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugDocumentTextAuthor {}
+impl ::core::cmp::PartialEq for IDebugDocumentTextAuthor {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugDocumentTextAuthor {}
+impl ::core::fmt::Debug for IDebugDocumentTextAuthor {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugDocumentTextAuthor")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDebugDocumentTextAuthor {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugDocumentTextEvents(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugDocumentTextEvents {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugDocumentTextEvents {}
+impl ::core::cmp::PartialEq for IDebugDocumentTextEvents {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugDocumentTextEvents {}
+impl ::core::fmt::Debug for IDebugDocumentTextEvents {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugDocumentTextEvents")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDebugDocumentTextEvents {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugDocumentTextExternalAuthor(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugDocumentTextExternalAuthor {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugDocumentTextExternalAuthor {}
+impl ::core::cmp::PartialEq for IDebugDocumentTextExternalAuthor {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugDocumentTextExternalAuthor {}
+impl ::core::fmt::Debug for IDebugDocumentTextExternalAuthor {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugDocumentTextExternalAuthor")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDebugDocumentTextExternalAuthor {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugEventCallbacks(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugEventCallbacks {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugEventCallbacks {}
+impl ::core::cmp::PartialEq for IDebugEventCallbacks {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugEventCallbacks {}
+impl ::core::fmt::Debug for IDebugEventCallbacks {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugEventCallbacks")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDebugEventCallbacks {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugEventCallbacksWide(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugEventCallbacksWide {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugEventCallbacksWide {}
+impl ::core::cmp::PartialEq for IDebugEventCallbacksWide {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugEventCallbacksWide {}
+impl ::core::fmt::Debug for IDebugEventCallbacksWide {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugEventCallbacksWide")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDebugEventCallbacksWide {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugEventContextCallbacks(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugEventContextCallbacks {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugEventContextCallbacks {}
+impl ::core::cmp::PartialEq for IDebugEventContextCallbacks {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugEventContextCallbacks {}
+impl ::core::fmt::Debug for IDebugEventContextCallbacks {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugEventContextCallbacks")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDebugEventContextCallbacks {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugExpression(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugExpression {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugExpression {}
+impl ::core::cmp::PartialEq for IDebugExpression {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugExpression {}
+impl ::core::fmt::Debug for IDebugExpression {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugExpression").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugExpression {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugExpressionCallBack(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugExpressionCallBack {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugExpressionCallBack {}
+impl ::core::cmp::PartialEq for IDebugExpressionCallBack {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugExpressionCallBack {}
+impl ::core::fmt::Debug for IDebugExpressionCallBack {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugExpressionCallBack")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDebugExpressionCallBack {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugExpressionContext(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugExpressionContext {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugExpressionContext {}
+impl ::core::cmp::PartialEq for IDebugExpressionContext {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugExpressionContext {}
+impl ::core::fmt::Debug for IDebugExpressionContext {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugExpressionContext")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDebugExpressionContext {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugExtendedProperty(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugExtendedProperty {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugExtendedProperty {}
+impl ::core::cmp::PartialEq for IDebugExtendedProperty {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugExtendedProperty {}
+impl ::core::fmt::Debug for IDebugExtendedProperty {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugExtendedProperty")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDebugExtendedProperty {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugFormatter(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugFormatter {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugFormatter {}
+impl ::core::cmp::PartialEq for IDebugFormatter {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugFormatter {}
+impl ::core::fmt::Debug for IDebugFormatter {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugFormatter").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugFormatter {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugHelper(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugHelper {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugHelper {}
+impl ::core::cmp::PartialEq for IDebugHelper {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugHelper {}
+impl ::core::fmt::Debug for IDebugHelper {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugHelper").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugHelper {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugHost(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugHost {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugHost {}
+impl ::core::cmp::PartialEq for IDebugHost {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugHost {}
+impl ::core::fmt::Debug for IDebugHost {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugHost").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugHost {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugHostBaseClass(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugHostBaseClass {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugHostBaseClass {}
+impl ::core::cmp::PartialEq for IDebugHostBaseClass {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugHostBaseClass {}
+impl ::core::fmt::Debug for IDebugHostBaseClass {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugHostBaseClass").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugHostBaseClass {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugHostConstant(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugHostConstant {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugHostConstant {}
+impl ::core::cmp::PartialEq for IDebugHostConstant {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugHostConstant {}
+impl ::core::fmt::Debug for IDebugHostConstant {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugHostConstant").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugHostConstant {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugHostContext(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugHostContext {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugHostContext {}
+impl ::core::cmp::PartialEq for IDebugHostContext {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugHostContext {}
+impl ::core::fmt::Debug for IDebugHostContext {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugHostContext").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugHostContext {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugHostData(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugHostData {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugHostData {}
+impl ::core::cmp::PartialEq for IDebugHostData {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugHostData {}
+impl ::core::fmt::Debug for IDebugHostData {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugHostData").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugHostData {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugHostErrorSink(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugHostErrorSink {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugHostErrorSink {}
+impl ::core::cmp::PartialEq for IDebugHostErrorSink {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugHostErrorSink {}
+impl ::core::fmt::Debug for IDebugHostErrorSink {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugHostErrorSink").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugHostErrorSink {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugHostEvaluator(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugHostEvaluator {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugHostEvaluator {}
+impl ::core::cmp::PartialEq for IDebugHostEvaluator {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugHostEvaluator {}
+impl ::core::fmt::Debug for IDebugHostEvaluator {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugHostEvaluator").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugHostEvaluator {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugHostEvaluator2(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugHostEvaluator2 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugHostEvaluator2 {}
+impl ::core::cmp::PartialEq for IDebugHostEvaluator2 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugHostEvaluator2 {}
+impl ::core::fmt::Debug for IDebugHostEvaluator2 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugHostEvaluator2")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDebugHostEvaluator2 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugHostExtensibility(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugHostExtensibility {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugHostExtensibility {}
+impl ::core::cmp::PartialEq for IDebugHostExtensibility {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugHostExtensibility {}
+impl ::core::fmt::Debug for IDebugHostExtensibility {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugHostExtensibility")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDebugHostExtensibility {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugHostField(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugHostField {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugHostField {}
+impl ::core::cmp::PartialEq for IDebugHostField {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugHostField {}
+impl ::core::fmt::Debug for IDebugHostField {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugHostField").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugHostField {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugHostMemory(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugHostMemory {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugHostMemory {}
+impl ::core::cmp::PartialEq for IDebugHostMemory {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugHostMemory {}
+impl ::core::fmt::Debug for IDebugHostMemory {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugHostMemory").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugHostMemory {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugHostMemory2(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugHostMemory2 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugHostMemory2 {}
+impl ::core::cmp::PartialEq for IDebugHostMemory2 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugHostMemory2 {}
+impl ::core::fmt::Debug for IDebugHostMemory2 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugHostMemory2").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugHostMemory2 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugHostModule(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugHostModule {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugHostModule {}
+impl ::core::cmp::PartialEq for IDebugHostModule {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugHostModule {}
+impl ::core::fmt::Debug for IDebugHostModule {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugHostModule").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugHostModule {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugHostModule2(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugHostModule2 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugHostModule2 {}
+impl ::core::cmp::PartialEq for IDebugHostModule2 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugHostModule2 {}
+impl ::core::fmt::Debug for IDebugHostModule2 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugHostModule2").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugHostModule2 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugHostModuleSignature(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugHostModuleSignature {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugHostModuleSignature {}
+impl ::core::cmp::PartialEq for IDebugHostModuleSignature {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugHostModuleSignature {}
+impl ::core::fmt::Debug for IDebugHostModuleSignature {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugHostModuleSignature")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDebugHostModuleSignature {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugHostPublic(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugHostPublic {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugHostPublic {}
+impl ::core::cmp::PartialEq for IDebugHostPublic {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugHostPublic {}
+impl ::core::fmt::Debug for IDebugHostPublic {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugHostPublic").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugHostPublic {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugHostScriptHost(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugHostScriptHost {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugHostScriptHost {}
+impl ::core::cmp::PartialEq for IDebugHostScriptHost {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugHostScriptHost {}
+impl ::core::fmt::Debug for IDebugHostScriptHost {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugHostScriptHost")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDebugHostScriptHost {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugHostStatus(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugHostStatus {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugHostStatus {}
+impl ::core::cmp::PartialEq for IDebugHostStatus {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugHostStatus {}
+impl ::core::fmt::Debug for IDebugHostStatus {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugHostStatus").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugHostStatus {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugHostSymbol(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugHostSymbol {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugHostSymbol {}
+impl ::core::cmp::PartialEq for IDebugHostSymbol {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugHostSymbol {}
+impl ::core::fmt::Debug for IDebugHostSymbol {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugHostSymbol").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugHostSymbol {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugHostSymbol2(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugHostSymbol2 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugHostSymbol2 {}
+impl ::core::cmp::PartialEq for IDebugHostSymbol2 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugHostSymbol2 {}
+impl ::core::fmt::Debug for IDebugHostSymbol2 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugHostSymbol2").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugHostSymbol2 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugHostSymbolEnumerator(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugHostSymbolEnumerator {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugHostSymbolEnumerator {}
+impl ::core::cmp::PartialEq for IDebugHostSymbolEnumerator {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugHostSymbolEnumerator {}
+impl ::core::fmt::Debug for IDebugHostSymbolEnumerator {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugHostSymbolEnumerator")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDebugHostSymbolEnumerator {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugHostSymbols(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugHostSymbols {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugHostSymbols {}
+impl ::core::cmp::PartialEq for IDebugHostSymbols {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugHostSymbols {}
+impl ::core::fmt::Debug for IDebugHostSymbols {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugHostSymbols").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugHostSymbols {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugHostType(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugHostType {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugHostType {}
+impl ::core::cmp::PartialEq for IDebugHostType {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugHostType {}
+impl ::core::fmt::Debug for IDebugHostType {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugHostType").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugHostType {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugHostType2(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugHostType2 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugHostType2 {}
+impl ::core::cmp::PartialEq for IDebugHostType2 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugHostType2 {}
+impl ::core::fmt::Debug for IDebugHostType2 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugHostType2").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugHostType2 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugHostTypeSignature(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugHostTypeSignature {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugHostTypeSignature {}
+impl ::core::cmp::PartialEq for IDebugHostTypeSignature {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugHostTypeSignature {}
+impl ::core::fmt::Debug for IDebugHostTypeSignature {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugHostTypeSignature")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDebugHostTypeSignature {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugInputCallbacks(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugInputCallbacks {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugInputCallbacks {}
+impl ::core::cmp::PartialEq for IDebugInputCallbacks {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugInputCallbacks {}
+impl ::core::fmt::Debug for IDebugInputCallbacks {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugInputCallbacks")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDebugInputCallbacks {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugOutputCallbacks(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugOutputCallbacks {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugOutputCallbacks {}
+impl ::core::cmp::PartialEq for IDebugOutputCallbacks {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugOutputCallbacks {}
+impl ::core::fmt::Debug for IDebugOutputCallbacks {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugOutputCallbacks")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDebugOutputCallbacks {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugOutputCallbacks2(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugOutputCallbacks2 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugOutputCallbacks2 {}
+impl ::core::cmp::PartialEq for IDebugOutputCallbacks2 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugOutputCallbacks2 {}
+impl ::core::fmt::Debug for IDebugOutputCallbacks2 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugOutputCallbacks2")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDebugOutputCallbacks2 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugOutputCallbacksWide(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugOutputCallbacksWide {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugOutputCallbacksWide {}
+impl ::core::cmp::PartialEq for IDebugOutputCallbacksWide {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugOutputCallbacksWide {}
+impl ::core::fmt::Debug for IDebugOutputCallbacksWide {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugOutputCallbacksWide")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDebugOutputCallbacksWide {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugOutputStream(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugOutputStream {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugOutputStream {}
+impl ::core::cmp::PartialEq for IDebugOutputStream {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugOutputStream {}
+impl ::core::fmt::Debug for IDebugOutputStream {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugOutputStream").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugOutputStream {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugPlmClient(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugPlmClient {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugPlmClient {}
+impl ::core::cmp::PartialEq for IDebugPlmClient {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugPlmClient {}
+impl ::core::fmt::Debug for IDebugPlmClient {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugPlmClient").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugPlmClient {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugPlmClient2(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugPlmClient2 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugPlmClient2 {}
+impl ::core::cmp::PartialEq for IDebugPlmClient2 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugPlmClient2 {}
+impl ::core::fmt::Debug for IDebugPlmClient2 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugPlmClient2").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugPlmClient2 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugPlmClient3(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugPlmClient3 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugPlmClient3 {}
+impl ::core::cmp::PartialEq for IDebugPlmClient3 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugPlmClient3 {}
+impl ::core::fmt::Debug for IDebugPlmClient3 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugPlmClient3").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugPlmClient3 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugProperty(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugProperty {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugProperty {}
+impl ::core::cmp::PartialEq for IDebugProperty {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugProperty {}
+impl ::core::fmt::Debug for IDebugProperty {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugProperty").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugProperty {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugPropertyEnumType_All(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugPropertyEnumType_All {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugPropertyEnumType_All {}
+impl ::core::cmp::PartialEq for IDebugPropertyEnumType_All {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugPropertyEnumType_All {}
+impl ::core::fmt::Debug for IDebugPropertyEnumType_All {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugPropertyEnumType_All")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDebugPropertyEnumType_All {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugPropertyEnumType_Arguments(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugPropertyEnumType_Arguments {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugPropertyEnumType_Arguments {}
+impl ::core::cmp::PartialEq for IDebugPropertyEnumType_Arguments {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugPropertyEnumType_Arguments {}
+impl ::core::fmt::Debug for IDebugPropertyEnumType_Arguments {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugPropertyEnumType_Arguments")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDebugPropertyEnumType_Arguments {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugPropertyEnumType_Locals(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugPropertyEnumType_Locals {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugPropertyEnumType_Locals {}
+impl ::core::cmp::PartialEq for IDebugPropertyEnumType_Locals {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugPropertyEnumType_Locals {}
+impl ::core::fmt::Debug for IDebugPropertyEnumType_Locals {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugPropertyEnumType_Locals")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDebugPropertyEnumType_Locals {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugPropertyEnumType_LocalsPlusArgs(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugPropertyEnumType_LocalsPlusArgs {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugPropertyEnumType_LocalsPlusArgs {}
+impl ::core::cmp::PartialEq for IDebugPropertyEnumType_LocalsPlusArgs {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugPropertyEnumType_LocalsPlusArgs {}
+impl ::core::fmt::Debug for IDebugPropertyEnumType_LocalsPlusArgs {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugPropertyEnumType_LocalsPlusArgs")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDebugPropertyEnumType_LocalsPlusArgs {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugPropertyEnumType_Registers(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugPropertyEnumType_Registers {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugPropertyEnumType_Registers {}
+impl ::core::cmp::PartialEq for IDebugPropertyEnumType_Registers {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugPropertyEnumType_Registers {}
+impl ::core::fmt::Debug for IDebugPropertyEnumType_Registers {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugPropertyEnumType_Registers")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDebugPropertyEnumType_Registers {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugRegisters(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugRegisters {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugRegisters {}
+impl ::core::cmp::PartialEq for IDebugRegisters {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugRegisters {}
+impl ::core::fmt::Debug for IDebugRegisters {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugRegisters").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugRegisters {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugRegisters2(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugRegisters2 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugRegisters2 {}
+impl ::core::cmp::PartialEq for IDebugRegisters2 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugRegisters2 {}
+impl ::core::fmt::Debug for IDebugRegisters2 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugRegisters2").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugRegisters2 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugSessionProvider(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugSessionProvider {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugSessionProvider {}
+impl ::core::cmp::PartialEq for IDebugSessionProvider {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugSessionProvider {}
+impl ::core::fmt::Debug for IDebugSessionProvider {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugSessionProvider")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDebugSessionProvider {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugStackFrame(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugStackFrame {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugStackFrame {}
+impl ::core::cmp::PartialEq for IDebugStackFrame {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugStackFrame {}
+impl ::core::fmt::Debug for IDebugStackFrame {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugStackFrame").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugStackFrame {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugStackFrame110(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugStackFrame110 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugStackFrame110 {}
+impl ::core::cmp::PartialEq for IDebugStackFrame110 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugStackFrame110 {}
+impl ::core::fmt::Debug for IDebugStackFrame110 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugStackFrame110").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugStackFrame110 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugStackFrameSniffer(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugStackFrameSniffer {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugStackFrameSniffer {}
+impl ::core::cmp::PartialEq for IDebugStackFrameSniffer {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugStackFrameSniffer {}
+impl ::core::fmt::Debug for IDebugStackFrameSniffer {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugStackFrameSniffer")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDebugStackFrameSniffer {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugStackFrameSnifferEx32(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugStackFrameSnifferEx32 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugStackFrameSnifferEx32 {}
+impl ::core::cmp::PartialEq for IDebugStackFrameSnifferEx32 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugStackFrameSnifferEx32 {}
+impl ::core::fmt::Debug for IDebugStackFrameSnifferEx32 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugStackFrameSnifferEx32")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDebugStackFrameSnifferEx32 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugStackFrameSnifferEx64(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugStackFrameSnifferEx64 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugStackFrameSnifferEx64 {}
+impl ::core::cmp::PartialEq for IDebugStackFrameSnifferEx64 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugStackFrameSnifferEx64 {}
+impl ::core::fmt::Debug for IDebugStackFrameSnifferEx64 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugStackFrameSnifferEx64")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDebugStackFrameSnifferEx64 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugSymbolGroup(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugSymbolGroup {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugSymbolGroup {}
+impl ::core::cmp::PartialEq for IDebugSymbolGroup {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugSymbolGroup {}
+impl ::core::fmt::Debug for IDebugSymbolGroup {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugSymbolGroup").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugSymbolGroup {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugSymbolGroup2(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugSymbolGroup2 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugSymbolGroup2 {}
+impl ::core::cmp::PartialEq for IDebugSymbolGroup2 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugSymbolGroup2 {}
+impl ::core::fmt::Debug for IDebugSymbolGroup2 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugSymbolGroup2").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugSymbolGroup2 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugSymbols(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugSymbols {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugSymbols {}
+impl ::core::cmp::PartialEq for IDebugSymbols {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugSymbols {}
+impl ::core::fmt::Debug for IDebugSymbols {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugSymbols").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugSymbols {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugSymbols2(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugSymbols2 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugSymbols2 {}
+impl ::core::cmp::PartialEq for IDebugSymbols2 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugSymbols2 {}
+impl ::core::fmt::Debug for IDebugSymbols2 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugSymbols2").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugSymbols2 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugSymbols3(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugSymbols3 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugSymbols3 {}
+impl ::core::cmp::PartialEq for IDebugSymbols3 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugSymbols3 {}
+impl ::core::fmt::Debug for IDebugSymbols3 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugSymbols3").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugSymbols3 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugSymbols4(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugSymbols4 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugSymbols4 {}
+impl ::core::cmp::PartialEq for IDebugSymbols4 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugSymbols4 {}
+impl ::core::fmt::Debug for IDebugSymbols4 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugSymbols4").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugSymbols4 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugSymbols5(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugSymbols5 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugSymbols5 {}
+impl ::core::cmp::PartialEq for IDebugSymbols5 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugSymbols5 {}
+impl ::core::fmt::Debug for IDebugSymbols5 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugSymbols5").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugSymbols5 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugSyncOperation(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugSyncOperation {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugSyncOperation {}
+impl ::core::cmp::PartialEq for IDebugSyncOperation {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugSyncOperation {}
+impl ::core::fmt::Debug for IDebugSyncOperation {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugSyncOperation").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugSyncOperation {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugSystemObjects(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugSystemObjects {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugSystemObjects {}
+impl ::core::cmp::PartialEq for IDebugSystemObjects {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugSystemObjects {}
+impl ::core::fmt::Debug for IDebugSystemObjects {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugSystemObjects").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugSystemObjects {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugSystemObjects2(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugSystemObjects2 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugSystemObjects2 {}
+impl ::core::cmp::PartialEq for IDebugSystemObjects2 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugSystemObjects2 {}
+impl ::core::fmt::Debug for IDebugSystemObjects2 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugSystemObjects2")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDebugSystemObjects2 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugSystemObjects3(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugSystemObjects3 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugSystemObjects3 {}
+impl ::core::cmp::PartialEq for IDebugSystemObjects3 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugSystemObjects3 {}
+impl ::core::fmt::Debug for IDebugSystemObjects3 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugSystemObjects3")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDebugSystemObjects3 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugSystemObjects4(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugSystemObjects4 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugSystemObjects4 {}
+impl ::core::cmp::PartialEq for IDebugSystemObjects4 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugSystemObjects4 {}
+impl ::core::fmt::Debug for IDebugSystemObjects4 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugSystemObjects4")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDebugSystemObjects4 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugThreadCall32(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugThreadCall32 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugThreadCall32 {}
+impl ::core::cmp::PartialEq for IDebugThreadCall32 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugThreadCall32 {}
+impl ::core::fmt::Debug for IDebugThreadCall32 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugThreadCall32").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugThreadCall32 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDebugThreadCall64(crate::core::IUnknown);
+impl ::core::clone::Clone for IDebugThreadCall64 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDebugThreadCall64 {}
+impl ::core::cmp::PartialEq for IDebugThreadCall64 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDebugThreadCall64 {}
+impl ::core::fmt::Debug for IDebugThreadCall64 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDebugThreadCall64").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IDebugThreadCall64 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDynamicConceptProviderConcept(crate::core::IUnknown);
+impl ::core::clone::Clone for IDynamicConceptProviderConcept {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDynamicConceptProviderConcept {}
+impl ::core::cmp::PartialEq for IDynamicConceptProviderConcept {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDynamicConceptProviderConcept {}
+impl ::core::fmt::Debug for IDynamicConceptProviderConcept {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDynamicConceptProviderConcept")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDynamicConceptProviderConcept {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IDynamicKeyProviderConcept(crate::core::IUnknown);
+impl ::core::clone::Clone for IDynamicKeyProviderConcept {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IDynamicKeyProviderConcept {}
+impl ::core::cmp::PartialEq for IDynamicKeyProviderConcept {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IDynamicKeyProviderConcept {}
+impl ::core::fmt::Debug for IDynamicKeyProviderConcept {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IDynamicKeyProviderConcept")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IDynamicKeyProviderConcept {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IEnumDebugApplicationNodes(crate::core::IUnknown);
+impl ::core::clone::Clone for IEnumDebugApplicationNodes {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IEnumDebugApplicationNodes {}
+impl ::core::cmp::PartialEq for IEnumDebugApplicationNodes {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IEnumDebugApplicationNodes {}
+impl ::core::fmt::Debug for IEnumDebugApplicationNodes {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IEnumDebugApplicationNodes")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IEnumDebugApplicationNodes {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IEnumDebugCodeContexts(crate::core::IUnknown);
+impl ::core::clone::Clone for IEnumDebugCodeContexts {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IEnumDebugCodeContexts {}
+impl ::core::cmp::PartialEq for IEnumDebugCodeContexts {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IEnumDebugCodeContexts {}
+impl ::core::fmt::Debug for IEnumDebugCodeContexts {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IEnumDebugCodeContexts")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IEnumDebugCodeContexts {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IEnumDebugExpressionContexts(crate::core::IUnknown);
+impl ::core::clone::Clone for IEnumDebugExpressionContexts {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IEnumDebugExpressionContexts {}
+impl ::core::cmp::PartialEq for IEnumDebugExpressionContexts {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IEnumDebugExpressionContexts {}
+impl ::core::fmt::Debug for IEnumDebugExpressionContexts {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IEnumDebugExpressionContexts")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IEnumDebugExpressionContexts {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IEnumDebugExtendedPropertyInfo(crate::core::IUnknown);
+impl ::core::clone::Clone for IEnumDebugExtendedPropertyInfo {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IEnumDebugExtendedPropertyInfo {}
+impl ::core::cmp::PartialEq for IEnumDebugExtendedPropertyInfo {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IEnumDebugExtendedPropertyInfo {}
+impl ::core::fmt::Debug for IEnumDebugExtendedPropertyInfo {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IEnumDebugExtendedPropertyInfo")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IEnumDebugExtendedPropertyInfo {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IEnumDebugPropertyInfo(crate::core::IUnknown);
+impl ::core::clone::Clone for IEnumDebugPropertyInfo {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IEnumDebugPropertyInfo {}
+impl ::core::cmp::PartialEq for IEnumDebugPropertyInfo {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IEnumDebugPropertyInfo {}
+impl ::core::fmt::Debug for IEnumDebugPropertyInfo {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IEnumDebugPropertyInfo")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IEnumDebugPropertyInfo {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IEnumDebugStackFrames(crate::core::IUnknown);
+impl ::core::clone::Clone for IEnumDebugStackFrames {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IEnumDebugStackFrames {}
+impl ::core::cmp::PartialEq for IEnumDebugStackFrames {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IEnumDebugStackFrames {}
+impl ::core::fmt::Debug for IEnumDebugStackFrames {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IEnumDebugStackFrames")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IEnumDebugStackFrames {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IEnumDebugStackFrames64(crate::core::IUnknown);
+impl ::core::clone::Clone for IEnumDebugStackFrames64 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IEnumDebugStackFrames64 {}
+impl ::core::cmp::PartialEq for IEnumDebugStackFrames64 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IEnumDebugStackFrames64 {}
+impl ::core::fmt::Debug for IEnumDebugStackFrames64 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IEnumDebugStackFrames64")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IEnumDebugStackFrames64 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IEnumJsStackFrames(crate::core::IUnknown);
+impl ::core::clone::Clone for IEnumJsStackFrames {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IEnumJsStackFrames {}
+impl ::core::cmp::PartialEq for IEnumJsStackFrames {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IEnumJsStackFrames {}
+impl ::core::fmt::Debug for IEnumJsStackFrames {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IEnumJsStackFrames").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IEnumJsStackFrames {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IEnumRemoteDebugApplicationThreads(crate::core::IUnknown);
+impl ::core::clone::Clone for IEnumRemoteDebugApplicationThreads {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IEnumRemoteDebugApplicationThreads {}
+impl ::core::cmp::PartialEq for IEnumRemoteDebugApplicationThreads {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IEnumRemoteDebugApplicationThreads {}
+impl ::core::fmt::Debug for IEnumRemoteDebugApplicationThreads {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IEnumRemoteDebugApplicationThreads")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IEnumRemoteDebugApplicationThreads {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IEnumRemoteDebugApplications(crate::core::IUnknown);
+impl ::core::clone::Clone for IEnumRemoteDebugApplications {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IEnumRemoteDebugApplications {}
+impl ::core::cmp::PartialEq for IEnumRemoteDebugApplications {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IEnumRemoteDebugApplications {}
+impl ::core::fmt::Debug for IEnumRemoteDebugApplications {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IEnumRemoteDebugApplications")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IEnumRemoteDebugApplications {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IEquatableConcept(crate::core::IUnknown);
+impl ::core::clone::Clone for IEquatableConcept {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IEquatableConcept {}
+impl ::core::cmp::PartialEq for IEquatableConcept {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IEquatableConcept {}
+impl ::core::fmt::Debug for IEquatableConcept {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IEquatableConcept").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IEquatableConcept {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
 pub const IG_DISASSEMBLE_BUFFER: u32 = 44u32;
 pub const IG_DUMP_SYMBOL_INFO: u32 = 22u32;
 pub const IG_FIND_FILE: u32 = 40u32;
@@ -9790,6 +15737,387 @@ pub const IG_WRITE_IO_SPACE_EX: u32 = 9u32;
 pub const IG_WRITE_MSR: u32 = 13u32;
 pub const IG_WRITE_PHYSICAL: u32 = 7u32;
 pub const IG_WRITE_PHYSICAL_WITH_FLAGS: u32 = 34u32;
+pub struct IHostDataModelAccess(crate::core::IUnknown);
+impl ::core::clone::Clone for IHostDataModelAccess {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IHostDataModelAccess {}
+impl ::core::cmp::PartialEq for IHostDataModelAccess {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IHostDataModelAccess {}
+impl ::core::fmt::Debug for IHostDataModelAccess {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IHostDataModelAccess")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IHostDataModelAccess {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IIndexableConcept(crate::core::IUnknown);
+impl ::core::clone::Clone for IIndexableConcept {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IIndexableConcept {}
+impl ::core::cmp::PartialEq for IIndexableConcept {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IIndexableConcept {}
+impl ::core::fmt::Debug for IIndexableConcept {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IIndexableConcept").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IIndexableConcept {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IIterableConcept(crate::core::IUnknown);
+impl ::core::clone::Clone for IIterableConcept {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IIterableConcept {}
+impl ::core::cmp::PartialEq for IIterableConcept {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IIterableConcept {}
+impl ::core::fmt::Debug for IIterableConcept {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IIterableConcept").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IIterableConcept {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IJsDebug(crate::core::IUnknown);
+impl ::core::clone::Clone for IJsDebug {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IJsDebug {}
+impl ::core::cmp::PartialEq for IJsDebug {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IJsDebug {}
+impl ::core::fmt::Debug for IJsDebug {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IJsDebug").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IJsDebug {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IJsDebugBreakPoint(crate::core::IUnknown);
+impl ::core::clone::Clone for IJsDebugBreakPoint {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IJsDebugBreakPoint {}
+impl ::core::cmp::PartialEq for IJsDebugBreakPoint {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IJsDebugBreakPoint {}
+impl ::core::fmt::Debug for IJsDebugBreakPoint {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IJsDebugBreakPoint").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IJsDebugBreakPoint {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IJsDebugDataTarget(crate::core::IUnknown);
+impl ::core::clone::Clone for IJsDebugDataTarget {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IJsDebugDataTarget {}
+impl ::core::cmp::PartialEq for IJsDebugDataTarget {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IJsDebugDataTarget {}
+impl ::core::fmt::Debug for IJsDebugDataTarget {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IJsDebugDataTarget").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IJsDebugDataTarget {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IJsDebugFrame(crate::core::IUnknown);
+impl ::core::clone::Clone for IJsDebugFrame {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IJsDebugFrame {}
+impl ::core::cmp::PartialEq for IJsDebugFrame {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IJsDebugFrame {}
+impl ::core::fmt::Debug for IJsDebugFrame {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IJsDebugFrame").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IJsDebugFrame {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IJsDebugProcess(crate::core::IUnknown);
+impl ::core::clone::Clone for IJsDebugProcess {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IJsDebugProcess {}
+impl ::core::cmp::PartialEq for IJsDebugProcess {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IJsDebugProcess {}
+impl ::core::fmt::Debug for IJsDebugProcess {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IJsDebugProcess").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IJsDebugProcess {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IJsDebugProperty(crate::core::IUnknown);
+impl ::core::clone::Clone for IJsDebugProperty {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IJsDebugProperty {}
+impl ::core::cmp::PartialEq for IJsDebugProperty {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IJsDebugProperty {}
+impl ::core::fmt::Debug for IJsDebugProperty {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IJsDebugProperty").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IJsDebugProperty {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IJsDebugStackWalker(crate::core::IUnknown);
+impl ::core::clone::Clone for IJsDebugStackWalker {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IJsDebugStackWalker {}
+impl ::core::cmp::PartialEq for IJsDebugStackWalker {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IJsDebugStackWalker {}
+impl ::core::fmt::Debug for IJsDebugStackWalker {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IJsDebugStackWalker").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IJsDebugStackWalker {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IJsEnumDebugProperty(crate::core::IUnknown);
+impl ::core::clone::Clone for IJsEnumDebugProperty {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IJsEnumDebugProperty {}
+impl ::core::cmp::PartialEq for IJsEnumDebugProperty {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IJsEnumDebugProperty {}
+impl ::core::fmt::Debug for IJsEnumDebugProperty {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IJsEnumDebugProperty")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IJsEnumDebugProperty {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IKeyEnumerator(crate::core::IUnknown);
+impl ::core::clone::Clone for IKeyEnumerator {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IKeyEnumerator {}
+impl ::core::cmp::PartialEq for IKeyEnumerator {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IKeyEnumerator {}
+impl ::core::fmt::Debug for IKeyEnumerator {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IKeyEnumerator").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IKeyEnumerator {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IKeyStore(crate::core::IUnknown);
+impl ::core::clone::Clone for IKeyStore {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IKeyStore {}
+impl ::core::cmp::PartialEq for IKeyStore {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IKeyStore {}
+impl ::core::fmt::Debug for IKeyStore {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IKeyStore").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IKeyStore {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
 pub struct IMAGEHLP_CBA_EVENT {
     pub severity: IMAGEHLP_CBA_EVENT_SEVERITY,
     pub code: u32,
@@ -13555,76 +19883,6 @@ impl FromIntoMemory for IMAGE_FUNCTION_ENTRY {
         12u32 as usize
     }
 }
-pub struct IMAGE_FUNCTION_ENTRY64 {
-    pub StartingAddress: u64,
-    pub EndingAddress: u64,
-    pub Anonymous: IMAGE_FUNCTION_ENTRY64_0,
-}
-impl ::core::marker::Copy for IMAGE_FUNCTION_ENTRY64 {}
-impl ::core::clone::Clone for IMAGE_FUNCTION_ENTRY64 {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for IMAGE_FUNCTION_ENTRY64 {
-    fn eq(&self, other: &Self) -> bool {
-        self.StartingAddress == other.StartingAddress
-            && self.EndingAddress == other.EndingAddress
-            && self.Anonymous == other.Anonymous
-    }
-}
-impl ::core::cmp::Eq for IMAGE_FUNCTION_ENTRY64 {}
-impl FromIntoMemory for IMAGE_FUNCTION_ENTRY64 {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 32u32 as usize);
-        let f_StartingAddress = <u64 as FromIntoMemory>::from_bytes(&from[0..0 + 8]);
-        let f_EndingAddress = <u64 as FromIntoMemory>::from_bytes(&from[8..8 + 8]);
-        let f_Anonymous =
-            <IMAGE_FUNCTION_ENTRY64_0 as FromIntoMemory>::from_bytes(&from[16..16 + 16]);
-        Self {
-            StartingAddress: f_StartingAddress,
-            EndingAddress: f_EndingAddress,
-            Anonymous: f_Anonymous,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 32u32 as usize);
-        FromIntoMemory::into_bytes(self.StartingAddress, &mut into[0..0 + 8]);
-        FromIntoMemory::into_bytes(self.EndingAddress, &mut into[8..8 + 8]);
-        FromIntoMemory::into_bytes(self.Anonymous, &mut into[16..16 + 16]);
-    }
-    fn size() -> usize {
-        32u32 as usize
-    }
-}
-pub struct IMAGE_FUNCTION_ENTRY64_0 {
-    pub EndOfPrologue: u64,
-    pub UnwindInfoAddress: u64,
-}
-impl ::core::marker::Copy for IMAGE_FUNCTION_ENTRY64_0 {}
-impl ::core::clone::Clone for IMAGE_FUNCTION_ENTRY64_0 {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for IMAGE_FUNCTION_ENTRY64_0 {
-    fn eq(&self, other: &Self) -> bool {
-        self.EndOfPrologue == other.EndOfPrologue
-            && self.UnwindInfoAddress == other.UnwindInfoAddress
-    }
-}
-impl ::core::cmp::Eq for IMAGE_FUNCTION_ENTRY64_0 {}
-impl FromIntoMemory for IMAGE_FUNCTION_ENTRY64_0 {
-    fn from_bytes(from: &[u8]) -> Self {
-        todo!()
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        todo!()
-    }
-    fn size() -> usize {
-        todo!()
-    }
-}
 pub struct IMAGE_LOAD_CONFIG_CODE_INTEGRITY {
     pub Flags: u16,
     pub Catalog: u16,
@@ -14081,305 +20339,6 @@ impl FromIntoMemory for IMAGE_LOAD_CONFIG_DIRECTORY32 {
         188u32 as usize
     }
 }
-pub struct IMAGE_LOAD_CONFIG_DIRECTORY64 {
-    pub Size: u32,
-    pub TimeDateStamp: u32,
-    pub MajorVersion: u16,
-    pub MinorVersion: u16,
-    pub GlobalFlagsClear: u32,
-    pub GlobalFlagsSet: u32,
-    pub CriticalSectionDefaultTimeout: u32,
-    pub DeCommitFreeBlockThreshold: u64,
-    pub DeCommitTotalFreeThreshold: u64,
-    pub LockPrefixTable: u64,
-    pub MaximumAllocationSize: u64,
-    pub VirtualMemoryThreshold: u64,
-    pub ProcessAffinityMask: u64,
-    pub ProcessHeapFlags: u32,
-    pub CSDVersion: u16,
-    pub DependentLoadFlags: u16,
-    pub EditList: u64,
-    pub SecurityCookie: u64,
-    pub SEHandlerTable: u64,
-    pub SEHandlerCount: u64,
-    pub GuardCFCheckFunctionPointer: u64,
-    pub GuardCFDispatchFunctionPointer: u64,
-    pub GuardCFFunctionTable: u64,
-    pub GuardCFFunctionCount: u64,
-    pub GuardFlags: u32,
-    pub CodeIntegrity: IMAGE_LOAD_CONFIG_CODE_INTEGRITY,
-    pub GuardAddressTakenIatEntryTable: u64,
-    pub GuardAddressTakenIatEntryCount: u64,
-    pub GuardLongJumpTargetTable: u64,
-    pub GuardLongJumpTargetCount: u64,
-    pub DynamicValueRelocTable: u64,
-    pub CHPEMetadataPointer: u64,
-    pub GuardRFFailureRoutine: u64,
-    pub GuardRFFailureRoutineFunctionPointer: u64,
-    pub DynamicValueRelocTableOffset: u32,
-    pub DynamicValueRelocTableSection: u16,
-    pub Reserved2: u16,
-    pub GuardRFVerifyStackPointerFunctionPointer: u64,
-    pub HotPatchTableOffset: u32,
-    pub Reserved3: u32,
-    pub EnclaveConfigurationPointer: u64,
-    pub VolatileMetadataPointer: u64,
-    pub GuardEHContinuationTable: u64,
-    pub GuardEHContinuationCount: u64,
-    pub GuardXFGCheckFunctionPointer: u64,
-    pub GuardXFGDispatchFunctionPointer: u64,
-    pub GuardXFGTableDispatchFunctionPointer: u64,
-    pub CastGuardOsDeterminedFailureMode: u64,
-}
-impl ::core::marker::Copy for IMAGE_LOAD_CONFIG_DIRECTORY64 {}
-impl ::core::clone::Clone for IMAGE_LOAD_CONFIG_DIRECTORY64 {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for IMAGE_LOAD_CONFIG_DIRECTORY64 {
-    fn eq(&self, other: &Self) -> bool {
-        self.Size == other.Size
-            && self.TimeDateStamp == other.TimeDateStamp
-            && self.MajorVersion == other.MajorVersion
-            && self.MinorVersion == other.MinorVersion
-            && self.GlobalFlagsClear == other.GlobalFlagsClear
-            && self.GlobalFlagsSet == other.GlobalFlagsSet
-            && self.CriticalSectionDefaultTimeout == other.CriticalSectionDefaultTimeout
-            && self.DeCommitFreeBlockThreshold == other.DeCommitFreeBlockThreshold
-            && self.DeCommitTotalFreeThreshold == other.DeCommitTotalFreeThreshold
-            && self.LockPrefixTable == other.LockPrefixTable
-            && self.MaximumAllocationSize == other.MaximumAllocationSize
-            && self.VirtualMemoryThreshold == other.VirtualMemoryThreshold
-            && self.ProcessAffinityMask == other.ProcessAffinityMask
-            && self.ProcessHeapFlags == other.ProcessHeapFlags
-            && self.CSDVersion == other.CSDVersion
-            && self.DependentLoadFlags == other.DependentLoadFlags
-            && self.EditList == other.EditList
-            && self.SecurityCookie == other.SecurityCookie
-            && self.SEHandlerTable == other.SEHandlerTable
-            && self.SEHandlerCount == other.SEHandlerCount
-            && self.GuardCFCheckFunctionPointer == other.GuardCFCheckFunctionPointer
-            && self.GuardCFDispatchFunctionPointer == other.GuardCFDispatchFunctionPointer
-            && self.GuardCFFunctionTable == other.GuardCFFunctionTable
-            && self.GuardCFFunctionCount == other.GuardCFFunctionCount
-            && self.GuardFlags == other.GuardFlags
-            && self.CodeIntegrity == other.CodeIntegrity
-            && self.GuardAddressTakenIatEntryTable == other.GuardAddressTakenIatEntryTable
-            && self.GuardAddressTakenIatEntryCount == other.GuardAddressTakenIatEntryCount
-            && self.GuardLongJumpTargetTable == other.GuardLongJumpTargetTable
-            && self.GuardLongJumpTargetCount == other.GuardLongJumpTargetCount
-            && self.DynamicValueRelocTable == other.DynamicValueRelocTable
-            && self.CHPEMetadataPointer == other.CHPEMetadataPointer
-            && self.GuardRFFailureRoutine == other.GuardRFFailureRoutine
-            && self.GuardRFFailureRoutineFunctionPointer
-                == other.GuardRFFailureRoutineFunctionPointer
-            && self.DynamicValueRelocTableOffset == other.DynamicValueRelocTableOffset
-            && self.DynamicValueRelocTableSection == other.DynamicValueRelocTableSection
-            && self.Reserved2 == other.Reserved2
-            && self.GuardRFVerifyStackPointerFunctionPointer
-                == other.GuardRFVerifyStackPointerFunctionPointer
-            && self.HotPatchTableOffset == other.HotPatchTableOffset
-            && self.Reserved3 == other.Reserved3
-            && self.EnclaveConfigurationPointer == other.EnclaveConfigurationPointer
-            && self.VolatileMetadataPointer == other.VolatileMetadataPointer
-            && self.GuardEHContinuationTable == other.GuardEHContinuationTable
-            && self.GuardEHContinuationCount == other.GuardEHContinuationCount
-            && self.GuardXFGCheckFunctionPointer == other.GuardXFGCheckFunctionPointer
-            && self.GuardXFGDispatchFunctionPointer == other.GuardXFGDispatchFunctionPointer
-            && self.GuardXFGTableDispatchFunctionPointer
-                == other.GuardXFGTableDispatchFunctionPointer
-            && self.CastGuardOsDeterminedFailureMode == other.CastGuardOsDeterminedFailureMode
-    }
-}
-impl ::core::cmp::Eq for IMAGE_LOAD_CONFIG_DIRECTORY64 {}
-impl FromIntoMemory for IMAGE_LOAD_CONFIG_DIRECTORY64 {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 312u32 as usize);
-        let f_Size = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_TimeDateStamp = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        let f_MajorVersion = <u16 as FromIntoMemory>::from_bytes(&from[8..8 + 2]);
-        let f_MinorVersion = <u16 as FromIntoMemory>::from_bytes(&from[10..10 + 2]);
-        let f_GlobalFlagsClear = <u32 as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
-        let f_GlobalFlagsSet = <u32 as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
-        let f_CriticalSectionDefaultTimeout =
-            <u32 as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
-        let f_DeCommitFreeBlockThreshold = <u64 as FromIntoMemory>::from_bytes(&from[24..24 + 8]);
-        let f_DeCommitTotalFreeThreshold = <u64 as FromIntoMemory>::from_bytes(&from[32..32 + 8]);
-        let f_LockPrefixTable = <u64 as FromIntoMemory>::from_bytes(&from[40..40 + 8]);
-        let f_MaximumAllocationSize = <u64 as FromIntoMemory>::from_bytes(&from[48..48 + 8]);
-        let f_VirtualMemoryThreshold = <u64 as FromIntoMemory>::from_bytes(&from[56..56 + 8]);
-        let f_ProcessAffinityMask = <u64 as FromIntoMemory>::from_bytes(&from[64..64 + 8]);
-        let f_ProcessHeapFlags = <u32 as FromIntoMemory>::from_bytes(&from[72..72 + 4]);
-        let f_CSDVersion = <u16 as FromIntoMemory>::from_bytes(&from[76..76 + 2]);
-        let f_DependentLoadFlags = <u16 as FromIntoMemory>::from_bytes(&from[78..78 + 2]);
-        let f_EditList = <u64 as FromIntoMemory>::from_bytes(&from[80..80 + 8]);
-        let f_SecurityCookie = <u64 as FromIntoMemory>::from_bytes(&from[88..88 + 8]);
-        let f_SEHandlerTable = <u64 as FromIntoMemory>::from_bytes(&from[96..96 + 8]);
-        let f_SEHandlerCount = <u64 as FromIntoMemory>::from_bytes(&from[104..104 + 8]);
-        let f_GuardCFCheckFunctionPointer =
-            <u64 as FromIntoMemory>::from_bytes(&from[112..112 + 8]);
-        let f_GuardCFDispatchFunctionPointer =
-            <u64 as FromIntoMemory>::from_bytes(&from[120..120 + 8]);
-        let f_GuardCFFunctionTable = <u64 as FromIntoMemory>::from_bytes(&from[128..128 + 8]);
-        let f_GuardCFFunctionCount = <u64 as FromIntoMemory>::from_bytes(&from[136..136 + 8]);
-        let f_GuardFlags = <u32 as FromIntoMemory>::from_bytes(&from[144..144 + 4]);
-        let f_CodeIntegrity =
-            <IMAGE_LOAD_CONFIG_CODE_INTEGRITY as FromIntoMemory>::from_bytes(&from[148..148 + 12]);
-        let f_GuardAddressTakenIatEntryTable =
-            <u64 as FromIntoMemory>::from_bytes(&from[160..160 + 8]);
-        let f_GuardAddressTakenIatEntryCount =
-            <u64 as FromIntoMemory>::from_bytes(&from[168..168 + 8]);
-        let f_GuardLongJumpTargetTable = <u64 as FromIntoMemory>::from_bytes(&from[176..176 + 8]);
-        let f_GuardLongJumpTargetCount = <u64 as FromIntoMemory>::from_bytes(&from[184..184 + 8]);
-        let f_DynamicValueRelocTable = <u64 as FromIntoMemory>::from_bytes(&from[192..192 + 8]);
-        let f_CHPEMetadataPointer = <u64 as FromIntoMemory>::from_bytes(&from[200..200 + 8]);
-        let f_GuardRFFailureRoutine = <u64 as FromIntoMemory>::from_bytes(&from[208..208 + 8]);
-        let f_GuardRFFailureRoutineFunctionPointer =
-            <u64 as FromIntoMemory>::from_bytes(&from[216..216 + 8]);
-        let f_DynamicValueRelocTableOffset =
-            <u32 as FromIntoMemory>::from_bytes(&from[224..224 + 4]);
-        let f_DynamicValueRelocTableSection =
-            <u16 as FromIntoMemory>::from_bytes(&from[228..228 + 2]);
-        let f_Reserved2 = <u16 as FromIntoMemory>::from_bytes(&from[230..230 + 2]);
-        let f_GuardRFVerifyStackPointerFunctionPointer =
-            <u64 as FromIntoMemory>::from_bytes(&from[232..232 + 8]);
-        let f_HotPatchTableOffset = <u32 as FromIntoMemory>::from_bytes(&from[240..240 + 4]);
-        let f_Reserved3 = <u32 as FromIntoMemory>::from_bytes(&from[244..244 + 4]);
-        let f_EnclaveConfigurationPointer =
-            <u64 as FromIntoMemory>::from_bytes(&from[248..248 + 8]);
-        let f_VolatileMetadataPointer = <u64 as FromIntoMemory>::from_bytes(&from[256..256 + 8]);
-        let f_GuardEHContinuationTable = <u64 as FromIntoMemory>::from_bytes(&from[264..264 + 8]);
-        let f_GuardEHContinuationCount = <u64 as FromIntoMemory>::from_bytes(&from[272..272 + 8]);
-        let f_GuardXFGCheckFunctionPointer =
-            <u64 as FromIntoMemory>::from_bytes(&from[280..280 + 8]);
-        let f_GuardXFGDispatchFunctionPointer =
-            <u64 as FromIntoMemory>::from_bytes(&from[288..288 + 8]);
-        let f_GuardXFGTableDispatchFunctionPointer =
-            <u64 as FromIntoMemory>::from_bytes(&from[296..296 + 8]);
-        let f_CastGuardOsDeterminedFailureMode =
-            <u64 as FromIntoMemory>::from_bytes(&from[304..304 + 8]);
-        Self {
-            Size: f_Size,
-            TimeDateStamp: f_TimeDateStamp,
-            MajorVersion: f_MajorVersion,
-            MinorVersion: f_MinorVersion,
-            GlobalFlagsClear: f_GlobalFlagsClear,
-            GlobalFlagsSet: f_GlobalFlagsSet,
-            CriticalSectionDefaultTimeout: f_CriticalSectionDefaultTimeout,
-            DeCommitFreeBlockThreshold: f_DeCommitFreeBlockThreshold,
-            DeCommitTotalFreeThreshold: f_DeCommitTotalFreeThreshold,
-            LockPrefixTable: f_LockPrefixTable,
-            MaximumAllocationSize: f_MaximumAllocationSize,
-            VirtualMemoryThreshold: f_VirtualMemoryThreshold,
-            ProcessAffinityMask: f_ProcessAffinityMask,
-            ProcessHeapFlags: f_ProcessHeapFlags,
-            CSDVersion: f_CSDVersion,
-            DependentLoadFlags: f_DependentLoadFlags,
-            EditList: f_EditList,
-            SecurityCookie: f_SecurityCookie,
-            SEHandlerTable: f_SEHandlerTable,
-            SEHandlerCount: f_SEHandlerCount,
-            GuardCFCheckFunctionPointer: f_GuardCFCheckFunctionPointer,
-            GuardCFDispatchFunctionPointer: f_GuardCFDispatchFunctionPointer,
-            GuardCFFunctionTable: f_GuardCFFunctionTable,
-            GuardCFFunctionCount: f_GuardCFFunctionCount,
-            GuardFlags: f_GuardFlags,
-            CodeIntegrity: f_CodeIntegrity,
-            GuardAddressTakenIatEntryTable: f_GuardAddressTakenIatEntryTable,
-            GuardAddressTakenIatEntryCount: f_GuardAddressTakenIatEntryCount,
-            GuardLongJumpTargetTable: f_GuardLongJumpTargetTable,
-            GuardLongJumpTargetCount: f_GuardLongJumpTargetCount,
-            DynamicValueRelocTable: f_DynamicValueRelocTable,
-            CHPEMetadataPointer: f_CHPEMetadataPointer,
-            GuardRFFailureRoutine: f_GuardRFFailureRoutine,
-            GuardRFFailureRoutineFunctionPointer: f_GuardRFFailureRoutineFunctionPointer,
-            DynamicValueRelocTableOffset: f_DynamicValueRelocTableOffset,
-            DynamicValueRelocTableSection: f_DynamicValueRelocTableSection,
-            Reserved2: f_Reserved2,
-            GuardRFVerifyStackPointerFunctionPointer: f_GuardRFVerifyStackPointerFunctionPointer,
-            HotPatchTableOffset: f_HotPatchTableOffset,
-            Reserved3: f_Reserved3,
-            EnclaveConfigurationPointer: f_EnclaveConfigurationPointer,
-            VolatileMetadataPointer: f_VolatileMetadataPointer,
-            GuardEHContinuationTable: f_GuardEHContinuationTable,
-            GuardEHContinuationCount: f_GuardEHContinuationCount,
-            GuardXFGCheckFunctionPointer: f_GuardXFGCheckFunctionPointer,
-            GuardXFGDispatchFunctionPointer: f_GuardXFGDispatchFunctionPointer,
-            GuardXFGTableDispatchFunctionPointer: f_GuardXFGTableDispatchFunctionPointer,
-            CastGuardOsDeterminedFailureMode: f_CastGuardOsDeterminedFailureMode,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 312u32 as usize);
-        FromIntoMemory::into_bytes(self.Size, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.TimeDateStamp, &mut into[4..4 + 4]);
-        FromIntoMemory::into_bytes(self.MajorVersion, &mut into[8..8 + 2]);
-        FromIntoMemory::into_bytes(self.MinorVersion, &mut into[10..10 + 2]);
-        FromIntoMemory::into_bytes(self.GlobalFlagsClear, &mut into[12..12 + 4]);
-        FromIntoMemory::into_bytes(self.GlobalFlagsSet, &mut into[16..16 + 4]);
-        FromIntoMemory::into_bytes(self.CriticalSectionDefaultTimeout, &mut into[20..20 + 4]);
-        FromIntoMemory::into_bytes(self.DeCommitFreeBlockThreshold, &mut into[24..24 + 8]);
-        FromIntoMemory::into_bytes(self.DeCommitTotalFreeThreshold, &mut into[32..32 + 8]);
-        FromIntoMemory::into_bytes(self.LockPrefixTable, &mut into[40..40 + 8]);
-        FromIntoMemory::into_bytes(self.MaximumAllocationSize, &mut into[48..48 + 8]);
-        FromIntoMemory::into_bytes(self.VirtualMemoryThreshold, &mut into[56..56 + 8]);
-        FromIntoMemory::into_bytes(self.ProcessAffinityMask, &mut into[64..64 + 8]);
-        FromIntoMemory::into_bytes(self.ProcessHeapFlags, &mut into[72..72 + 4]);
-        FromIntoMemory::into_bytes(self.CSDVersion, &mut into[76..76 + 2]);
-        FromIntoMemory::into_bytes(self.DependentLoadFlags, &mut into[78..78 + 2]);
-        FromIntoMemory::into_bytes(self.EditList, &mut into[80..80 + 8]);
-        FromIntoMemory::into_bytes(self.SecurityCookie, &mut into[88..88 + 8]);
-        FromIntoMemory::into_bytes(self.SEHandlerTable, &mut into[96..96 + 8]);
-        FromIntoMemory::into_bytes(self.SEHandlerCount, &mut into[104..104 + 8]);
-        FromIntoMemory::into_bytes(self.GuardCFCheckFunctionPointer, &mut into[112..112 + 8]);
-        FromIntoMemory::into_bytes(self.GuardCFDispatchFunctionPointer, &mut into[120..120 + 8]);
-        FromIntoMemory::into_bytes(self.GuardCFFunctionTable, &mut into[128..128 + 8]);
-        FromIntoMemory::into_bytes(self.GuardCFFunctionCount, &mut into[136..136 + 8]);
-        FromIntoMemory::into_bytes(self.GuardFlags, &mut into[144..144 + 4]);
-        FromIntoMemory::into_bytes(self.CodeIntegrity, &mut into[148..148 + 12]);
-        FromIntoMemory::into_bytes(self.GuardAddressTakenIatEntryTable, &mut into[160..160 + 8]);
-        FromIntoMemory::into_bytes(self.GuardAddressTakenIatEntryCount, &mut into[168..168 + 8]);
-        FromIntoMemory::into_bytes(self.GuardLongJumpTargetTable, &mut into[176..176 + 8]);
-        FromIntoMemory::into_bytes(self.GuardLongJumpTargetCount, &mut into[184..184 + 8]);
-        FromIntoMemory::into_bytes(self.DynamicValueRelocTable, &mut into[192..192 + 8]);
-        FromIntoMemory::into_bytes(self.CHPEMetadataPointer, &mut into[200..200 + 8]);
-        FromIntoMemory::into_bytes(self.GuardRFFailureRoutine, &mut into[208..208 + 8]);
-        FromIntoMemory::into_bytes(
-            self.GuardRFFailureRoutineFunctionPointer,
-            &mut into[216..216 + 8],
-        );
-        FromIntoMemory::into_bytes(self.DynamicValueRelocTableOffset, &mut into[224..224 + 4]);
-        FromIntoMemory::into_bytes(self.DynamicValueRelocTableSection, &mut into[228..228 + 2]);
-        FromIntoMemory::into_bytes(self.Reserved2, &mut into[230..230 + 2]);
-        FromIntoMemory::into_bytes(
-            self.GuardRFVerifyStackPointerFunctionPointer,
-            &mut into[232..232 + 8],
-        );
-        FromIntoMemory::into_bytes(self.HotPatchTableOffset, &mut into[240..240 + 4]);
-        FromIntoMemory::into_bytes(self.Reserved3, &mut into[244..244 + 4]);
-        FromIntoMemory::into_bytes(self.EnclaveConfigurationPointer, &mut into[248..248 + 8]);
-        FromIntoMemory::into_bytes(self.VolatileMetadataPointer, &mut into[256..256 + 8]);
-        FromIntoMemory::into_bytes(self.GuardEHContinuationTable, &mut into[264..264 + 8]);
-        FromIntoMemory::into_bytes(self.GuardEHContinuationCount, &mut into[272..272 + 8]);
-        FromIntoMemory::into_bytes(self.GuardXFGCheckFunctionPointer, &mut into[280..280 + 8]);
-        FromIntoMemory::into_bytes(
-            self.GuardXFGDispatchFunctionPointer,
-            &mut into[288..288 + 8],
-        );
-        FromIntoMemory::into_bytes(
-            self.GuardXFGTableDispatchFunctionPointer,
-            &mut into[296..296 + 8],
-        );
-        FromIntoMemory::into_bytes(
-            self.CastGuardOsDeterminedFailureMode,
-            &mut into[304..304 + 8],
-        );
-    }
-    fn size() -> usize {
-        312u32 as usize
-    }
-}
 pub struct IMAGE_NT_HEADERS32 {
     pub Signature: u32,
     pub FileHeader: IMAGE_FILE_HEADER,
@@ -14429,48 +20388,6 @@ impl FromIntoMemory for IMAGE_NT_HEADERS32 {
     }
     fn size() -> usize {
         248u32 as usize
-    }
-}
-pub struct IMAGE_NT_HEADERS64 {
-    pub Signature: u32,
-    pub FileHeader: IMAGE_FILE_HEADER,
-    pub OptionalHeader: IMAGE_OPTIONAL_HEADER64,
-}
-impl ::core::marker::Copy for IMAGE_NT_HEADERS64 {}
-impl ::core::clone::Clone for IMAGE_NT_HEADERS64 {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for IMAGE_NT_HEADERS64 {
-    fn eq(&self, other: &Self) -> bool {
-        self.Signature == other.Signature
-            && self.FileHeader == other.FileHeader
-            && self.OptionalHeader == other.OptionalHeader
-    }
-}
-impl ::core::cmp::Eq for IMAGE_NT_HEADERS64 {}
-impl FromIntoMemory for IMAGE_NT_HEADERS64 {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 264u32 as usize);
-        let f_Signature = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_FileHeader = <IMAGE_FILE_HEADER as FromIntoMemory>::from_bytes(&from[4..4 + 20]);
-        let f_OptionalHeader =
-            <IMAGE_OPTIONAL_HEADER64 as FromIntoMemory>::from_bytes(&from[24..24 + 240]);
-        Self {
-            Signature: f_Signature,
-            FileHeader: f_FileHeader,
-            OptionalHeader: f_OptionalHeader,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 264u32 as usize);
-        FromIntoMemory::into_bytes(self.Signature, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.FileHeader, &mut into[4..4 + 20]);
-        FromIntoMemory::into_bytes(self.OptionalHeader, &mut into[24..24 + 240]);
-    }
-    fn size() -> usize {
-        264u32 as usize
     }
 }
 pub struct IMAGE_OPTIONAL_HEADER32 {
@@ -14697,184 +20614,6 @@ impl FromIntoMemory for IMAGE_OPTIONAL_HEADER32 {
     }
     fn size() -> usize {
         224u32 as usize
-    }
-}
-pub struct IMAGE_OPTIONAL_HEADER64 {
-    pub Magic: IMAGE_OPTIONAL_HEADER_MAGIC,
-    pub MajorLinkerVersion: u8,
-    pub MinorLinkerVersion: u8,
-    pub SizeOfCode: u32,
-    pub SizeOfInitializedData: u32,
-    pub SizeOfUninitializedData: u32,
-    pub AddressOfEntryPoint: u32,
-    pub BaseOfCode: u32,
-    pub ImageBase: u64,
-    pub SectionAlignment: u32,
-    pub FileAlignment: u32,
-    pub MajorOperatingSystemVersion: u16,
-    pub MinorOperatingSystemVersion: u16,
-    pub MajorImageVersion: u16,
-    pub MinorImageVersion: u16,
-    pub MajorSubsystemVersion: u16,
-    pub MinorSubsystemVersion: u16,
-    pub Win32VersionValue: u32,
-    pub SizeOfImage: u32,
-    pub SizeOfHeaders: u32,
-    pub CheckSum: u32,
-    pub Subsystem: IMAGE_SUBSYSTEM,
-    pub DllCharacteristics: IMAGE_DLL_CHARACTERISTICS,
-    pub SizeOfStackReserve: u64,
-    pub SizeOfStackCommit: u64,
-    pub SizeOfHeapReserve: u64,
-    pub SizeOfHeapCommit: u64,
-    pub LoaderFlags: u32,
-    pub NumberOfRvaAndSizes: u32,
-    pub DataDirectory: [IMAGE_DATA_DIRECTORY; 16],
-}
-impl ::core::marker::Copy for IMAGE_OPTIONAL_HEADER64 {}
-impl ::core::clone::Clone for IMAGE_OPTIONAL_HEADER64 {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for IMAGE_OPTIONAL_HEADER64 {
-    fn eq(&self, other: &Self) -> bool {
-        self.Magic == other.Magic
-            && self.MajorLinkerVersion == other.MajorLinkerVersion
-            && self.MinorLinkerVersion == other.MinorLinkerVersion
-            && self.SizeOfCode == other.SizeOfCode
-            && self.SizeOfInitializedData == other.SizeOfInitializedData
-            && self.SizeOfUninitializedData == other.SizeOfUninitializedData
-            && self.AddressOfEntryPoint == other.AddressOfEntryPoint
-            && self.BaseOfCode == other.BaseOfCode
-            && self.ImageBase == other.ImageBase
-            && self.SectionAlignment == other.SectionAlignment
-            && self.FileAlignment == other.FileAlignment
-            && self.MajorOperatingSystemVersion == other.MajorOperatingSystemVersion
-            && self.MinorOperatingSystemVersion == other.MinorOperatingSystemVersion
-            && self.MajorImageVersion == other.MajorImageVersion
-            && self.MinorImageVersion == other.MinorImageVersion
-            && self.MajorSubsystemVersion == other.MajorSubsystemVersion
-            && self.MinorSubsystemVersion == other.MinorSubsystemVersion
-            && self.Win32VersionValue == other.Win32VersionValue
-            && self.SizeOfImage == other.SizeOfImage
-            && self.SizeOfHeaders == other.SizeOfHeaders
-            && self.CheckSum == other.CheckSum
-            && self.Subsystem == other.Subsystem
-            && self.DllCharacteristics == other.DllCharacteristics
-            && self.SizeOfStackReserve == other.SizeOfStackReserve
-            && self.SizeOfStackCommit == other.SizeOfStackCommit
-            && self.SizeOfHeapReserve == other.SizeOfHeapReserve
-            && self.SizeOfHeapCommit == other.SizeOfHeapCommit
-            && self.LoaderFlags == other.LoaderFlags
-            && self.NumberOfRvaAndSizes == other.NumberOfRvaAndSizes
-            && self.DataDirectory == other.DataDirectory
-    }
-}
-impl ::core::cmp::Eq for IMAGE_OPTIONAL_HEADER64 {}
-impl FromIntoMemory for IMAGE_OPTIONAL_HEADER64 {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 240u32 as usize);
-        let f_Magic = <IMAGE_OPTIONAL_HEADER_MAGIC as FromIntoMemory>::from_bytes(&from[0..0 + 2]);
-        let f_MajorLinkerVersion = <u8 as FromIntoMemory>::from_bytes(&from[2..2 + 1]);
-        let f_MinorLinkerVersion = <u8 as FromIntoMemory>::from_bytes(&from[3..3 + 1]);
-        let f_SizeOfCode = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        let f_SizeOfInitializedData = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_SizeOfUninitializedData = <u32 as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
-        let f_AddressOfEntryPoint = <u32 as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
-        let f_BaseOfCode = <u32 as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
-        let f_ImageBase = <u64 as FromIntoMemory>::from_bytes(&from[24..24 + 8]);
-        let f_SectionAlignment = <u32 as FromIntoMemory>::from_bytes(&from[32..32 + 4]);
-        let f_FileAlignment = <u32 as FromIntoMemory>::from_bytes(&from[36..36 + 4]);
-        let f_MajorOperatingSystemVersion = <u16 as FromIntoMemory>::from_bytes(&from[40..40 + 2]);
-        let f_MinorOperatingSystemVersion = <u16 as FromIntoMemory>::from_bytes(&from[42..42 + 2]);
-        let f_MajorImageVersion = <u16 as FromIntoMemory>::from_bytes(&from[44..44 + 2]);
-        let f_MinorImageVersion = <u16 as FromIntoMemory>::from_bytes(&from[46..46 + 2]);
-        let f_MajorSubsystemVersion = <u16 as FromIntoMemory>::from_bytes(&from[48..48 + 2]);
-        let f_MinorSubsystemVersion = <u16 as FromIntoMemory>::from_bytes(&from[50..50 + 2]);
-        let f_Win32VersionValue = <u32 as FromIntoMemory>::from_bytes(&from[52..52 + 4]);
-        let f_SizeOfImage = <u32 as FromIntoMemory>::from_bytes(&from[56..56 + 4]);
-        let f_SizeOfHeaders = <u32 as FromIntoMemory>::from_bytes(&from[60..60 + 4]);
-        let f_CheckSum = <u32 as FromIntoMemory>::from_bytes(&from[64..64 + 4]);
-        let f_Subsystem = <IMAGE_SUBSYSTEM as FromIntoMemory>::from_bytes(&from[68..68 + 2]);
-        let f_DllCharacteristics =
-            <IMAGE_DLL_CHARACTERISTICS as FromIntoMemory>::from_bytes(&from[70..70 + 2]);
-        let f_SizeOfStackReserve = <u64 as FromIntoMemory>::from_bytes(&from[72..72 + 8]);
-        let f_SizeOfStackCommit = <u64 as FromIntoMemory>::from_bytes(&from[80..80 + 8]);
-        let f_SizeOfHeapReserve = <u64 as FromIntoMemory>::from_bytes(&from[88..88 + 8]);
-        let f_SizeOfHeapCommit = <u64 as FromIntoMemory>::from_bytes(&from[96..96 + 8]);
-        let f_LoaderFlags = <u32 as FromIntoMemory>::from_bytes(&from[104..104 + 4]);
-        let f_NumberOfRvaAndSizes = <u32 as FromIntoMemory>::from_bytes(&from[108..108 + 4]);
-        let f_DataDirectory =
-            <[IMAGE_DATA_DIRECTORY; 16] as FromIntoMemory>::from_bytes(&from[112..112 + 128]);
-        Self {
-            Magic: f_Magic,
-            MajorLinkerVersion: f_MajorLinkerVersion,
-            MinorLinkerVersion: f_MinorLinkerVersion,
-            SizeOfCode: f_SizeOfCode,
-            SizeOfInitializedData: f_SizeOfInitializedData,
-            SizeOfUninitializedData: f_SizeOfUninitializedData,
-            AddressOfEntryPoint: f_AddressOfEntryPoint,
-            BaseOfCode: f_BaseOfCode,
-            ImageBase: f_ImageBase,
-            SectionAlignment: f_SectionAlignment,
-            FileAlignment: f_FileAlignment,
-            MajorOperatingSystemVersion: f_MajorOperatingSystemVersion,
-            MinorOperatingSystemVersion: f_MinorOperatingSystemVersion,
-            MajorImageVersion: f_MajorImageVersion,
-            MinorImageVersion: f_MinorImageVersion,
-            MajorSubsystemVersion: f_MajorSubsystemVersion,
-            MinorSubsystemVersion: f_MinorSubsystemVersion,
-            Win32VersionValue: f_Win32VersionValue,
-            SizeOfImage: f_SizeOfImage,
-            SizeOfHeaders: f_SizeOfHeaders,
-            CheckSum: f_CheckSum,
-            Subsystem: f_Subsystem,
-            DllCharacteristics: f_DllCharacteristics,
-            SizeOfStackReserve: f_SizeOfStackReserve,
-            SizeOfStackCommit: f_SizeOfStackCommit,
-            SizeOfHeapReserve: f_SizeOfHeapReserve,
-            SizeOfHeapCommit: f_SizeOfHeapCommit,
-            LoaderFlags: f_LoaderFlags,
-            NumberOfRvaAndSizes: f_NumberOfRvaAndSizes,
-            DataDirectory: f_DataDirectory,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 240u32 as usize);
-        FromIntoMemory::into_bytes(self.Magic, &mut into[0..0 + 2]);
-        FromIntoMemory::into_bytes(self.MajorLinkerVersion, &mut into[2..2 + 1]);
-        FromIntoMemory::into_bytes(self.MinorLinkerVersion, &mut into[3..3 + 1]);
-        FromIntoMemory::into_bytes(self.SizeOfCode, &mut into[4..4 + 4]);
-        FromIntoMemory::into_bytes(self.SizeOfInitializedData, &mut into[8..8 + 4]);
-        FromIntoMemory::into_bytes(self.SizeOfUninitializedData, &mut into[12..12 + 4]);
-        FromIntoMemory::into_bytes(self.AddressOfEntryPoint, &mut into[16..16 + 4]);
-        FromIntoMemory::into_bytes(self.BaseOfCode, &mut into[20..20 + 4]);
-        FromIntoMemory::into_bytes(self.ImageBase, &mut into[24..24 + 8]);
-        FromIntoMemory::into_bytes(self.SectionAlignment, &mut into[32..32 + 4]);
-        FromIntoMemory::into_bytes(self.FileAlignment, &mut into[36..36 + 4]);
-        FromIntoMemory::into_bytes(self.MajorOperatingSystemVersion, &mut into[40..40 + 2]);
-        FromIntoMemory::into_bytes(self.MinorOperatingSystemVersion, &mut into[42..42 + 2]);
-        FromIntoMemory::into_bytes(self.MajorImageVersion, &mut into[44..44 + 2]);
-        FromIntoMemory::into_bytes(self.MinorImageVersion, &mut into[46..46 + 2]);
-        FromIntoMemory::into_bytes(self.MajorSubsystemVersion, &mut into[48..48 + 2]);
-        FromIntoMemory::into_bytes(self.MinorSubsystemVersion, &mut into[50..50 + 2]);
-        FromIntoMemory::into_bytes(self.Win32VersionValue, &mut into[52..52 + 4]);
-        FromIntoMemory::into_bytes(self.SizeOfImage, &mut into[56..56 + 4]);
-        FromIntoMemory::into_bytes(self.SizeOfHeaders, &mut into[60..60 + 4]);
-        FromIntoMemory::into_bytes(self.CheckSum, &mut into[64..64 + 4]);
-        FromIntoMemory::into_bytes(self.Subsystem, &mut into[68..68 + 2]);
-        FromIntoMemory::into_bytes(self.DllCharacteristics, &mut into[70..70 + 2]);
-        FromIntoMemory::into_bytes(self.SizeOfStackReserve, &mut into[72..72 + 8]);
-        FromIntoMemory::into_bytes(self.SizeOfStackCommit, &mut into[80..80 + 8]);
-        FromIntoMemory::into_bytes(self.SizeOfHeapReserve, &mut into[88..88 + 8]);
-        FromIntoMemory::into_bytes(self.SizeOfHeapCommit, &mut into[96..96 + 8]);
-        FromIntoMemory::into_bytes(self.LoaderFlags, &mut into[104..104 + 4]);
-        FromIntoMemory::into_bytes(self.NumberOfRvaAndSizes, &mut into[108..108 + 4]);
-        FromIntoMemory::into_bytes(self.DataDirectory, &mut into[112..112 + 128]);
-    }
-    fn size() -> usize {
-        240u32 as usize
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -15421,6 +21160,275 @@ impl FromIntoMemory for IMAGE_SUBSYSTEM {
         2
     }
 }
+pub struct IMachineDebugManager(crate::core::IUnknown);
+impl ::core::clone::Clone for IMachineDebugManager {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IMachineDebugManager {}
+impl ::core::cmp::PartialEq for IMachineDebugManager {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IMachineDebugManager {}
+impl ::core::fmt::Debug for IMachineDebugManager {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IMachineDebugManager")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IMachineDebugManager {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IMachineDebugManagerCookie(crate::core::IUnknown);
+impl ::core::clone::Clone for IMachineDebugManagerCookie {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IMachineDebugManagerCookie {}
+impl ::core::cmp::PartialEq for IMachineDebugManagerCookie {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IMachineDebugManagerCookie {}
+impl ::core::fmt::Debug for IMachineDebugManagerCookie {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IMachineDebugManagerCookie")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IMachineDebugManagerCookie {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IMachineDebugManagerEvents(crate::core::IUnknown);
+impl ::core::clone::Clone for IMachineDebugManagerEvents {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IMachineDebugManagerEvents {}
+impl ::core::cmp::PartialEq for IMachineDebugManagerEvents {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IMachineDebugManagerEvents {}
+impl ::core::fmt::Debug for IMachineDebugManagerEvents {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IMachineDebugManagerEvents")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IMachineDebugManagerEvents {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IModelIterator(crate::core::IUnknown);
+impl ::core::clone::Clone for IModelIterator {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IModelIterator {}
+impl ::core::cmp::PartialEq for IModelIterator {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IModelIterator {}
+impl ::core::fmt::Debug for IModelIterator {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IModelIterator").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IModelIterator {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IModelKeyReference(crate::core::IUnknown);
+impl ::core::clone::Clone for IModelKeyReference {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IModelKeyReference {}
+impl ::core::cmp::PartialEq for IModelKeyReference {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IModelKeyReference {}
+impl ::core::fmt::Debug for IModelKeyReference {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IModelKeyReference").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IModelKeyReference {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IModelKeyReference2(crate::core::IUnknown);
+impl ::core::clone::Clone for IModelKeyReference2 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IModelKeyReference2 {}
+impl ::core::cmp::PartialEq for IModelKeyReference2 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IModelKeyReference2 {}
+impl ::core::fmt::Debug for IModelKeyReference2 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IModelKeyReference2").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IModelKeyReference2 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IModelMethod(crate::core::IUnknown);
+impl ::core::clone::Clone for IModelMethod {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IModelMethod {}
+impl ::core::cmp::PartialEq for IModelMethod {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IModelMethod {}
+impl ::core::fmt::Debug for IModelMethod {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IModelMethod").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IModelMethod {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IModelObject(crate::core::IUnknown);
+impl ::core::clone::Clone for IModelObject {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IModelObject {}
+impl ::core::cmp::PartialEq for IModelObject {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IModelObject {}
+impl ::core::fmt::Debug for IModelObject {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IModelObject").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IModelObject {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IModelPropertyAccessor(crate::core::IUnknown);
+impl ::core::clone::Clone for IModelPropertyAccessor {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IModelPropertyAccessor {}
+impl ::core::cmp::PartialEq for IModelPropertyAccessor {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IModelPropertyAccessor {}
+impl ::core::fmt::Debug for IModelPropertyAccessor {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IModelPropertyAccessor")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IModelPropertyAccessor {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
 pub const INCORRECT_VERSION_INFO: u32 = 7u32;
 pub struct INLINE_FRAME_CONTEXT {
     pub ContextValue: u32,
@@ -15855,64 +21863,36 @@ impl FromIntoMemory for IOSPACE_EX64 {
         32u32 as usize
     }
 }
-pub const IPMI_IOCTL_INDEX: u32 = 1024u32;
-pub struct IPMI_OS_SEL_RECORD {
-    pub Signature: u32,
-    pub Version: u32,
-    pub Length: u32,
-    pub RecordType: IPMI_OS_SEL_RECORD_TYPE,
-    pub DataLength: u32,
-    pub Data: [u8; 1],
-}
-impl ::core::marker::Copy for IPMI_OS_SEL_RECORD {}
-impl ::core::clone::Clone for IPMI_OS_SEL_RECORD {
+pub struct IObjectSafety(crate::core::IUnknown);
+impl ::core::clone::Clone for IObjectSafety {
     fn clone(&self) -> Self {
-        *self
+        Self(self.0.clone())
     }
 }
-impl ::core::cmp::PartialEq for IPMI_OS_SEL_RECORD {
+impl ::core::marker::Copy for IObjectSafety {}
+impl ::core::cmp::PartialEq for IObjectSafety {
     fn eq(&self, other: &Self) -> bool {
-        self.Signature == other.Signature
-            && self.Version == other.Version
-            && self.Length == other.Length
-            && self.RecordType == other.RecordType
-            && self.DataLength == other.DataLength
-            && self.Data == other.Data
+        self.0 == other.0
     }
 }
-impl ::core::cmp::Eq for IPMI_OS_SEL_RECORD {}
-impl FromIntoMemory for IPMI_OS_SEL_RECORD {
+impl ::core::cmp::Eq for IObjectSafety {}
+impl ::core::fmt::Debug for IObjectSafety {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IObjectSafety").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IObjectSafety {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 24u32 as usize);
-        let f_Signature = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_Version = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        let f_Length = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_RecordType =
-            <IPMI_OS_SEL_RECORD_TYPE as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
-        let f_DataLength = <u32 as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
-        let f_Data = <[u8; 1] as FromIntoMemory>::from_bytes(&from[20..20 + 1]);
-        Self {
-            Signature: f_Signature,
-            Version: f_Version,
-            Length: f_Length,
-            RecordType: f_RecordType,
-            DataLength: f_DataLength,
-            Data: f_Data,
-        }
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 24u32 as usize);
-        FromIntoMemory::into_bytes(self.Signature, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.Version, &mut into[4..4 + 4]);
-        FromIntoMemory::into_bytes(self.Length, &mut into[8..8 + 4]);
-        FromIntoMemory::into_bytes(self.RecordType, &mut into[12..12 + 4]);
-        FromIntoMemory::into_bytes(self.DataLength, &mut into[16..16 + 4]);
-        FromIntoMemory::into_bytes(self.Data, &mut into[20..20 + 1]);
+        FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        24u32 as usize
+        std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+pub const IPMI_IOCTL_INDEX: u32 = 1024u32;
 pub const IPMI_OS_SEL_RECORD_MASK: u32 = 65535u32;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct IPMI_OS_SEL_RECORD_TYPE(pub i32);
@@ -15961,6 +21941,647 @@ impl FromIntoMemory for IPMI_OS_SEL_RECORD_TYPE {
 }
 pub const IPMI_OS_SEL_RECORD_VERSION: u32 = 1u32;
 pub const IPMI_OS_SEL_RECORD_VERSION_1: u32 = 1u32;
+pub struct IPerPropertyBrowsing2(crate::core::IUnknown);
+impl ::core::clone::Clone for IPerPropertyBrowsing2 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IPerPropertyBrowsing2 {}
+impl ::core::cmp::PartialEq for IPerPropertyBrowsing2 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IPerPropertyBrowsing2 {}
+impl ::core::fmt::Debug for IPerPropertyBrowsing2 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IPerPropertyBrowsing2")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IPerPropertyBrowsing2 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IPreferredRuntimeTypeConcept(crate::core::IUnknown);
+impl ::core::clone::Clone for IPreferredRuntimeTypeConcept {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IPreferredRuntimeTypeConcept {}
+impl ::core::cmp::PartialEq for IPreferredRuntimeTypeConcept {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IPreferredRuntimeTypeConcept {}
+impl ::core::fmt::Debug for IPreferredRuntimeTypeConcept {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IPreferredRuntimeTypeConcept")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IPreferredRuntimeTypeConcept {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IProcessDebugManager32(crate::core::IUnknown);
+impl ::core::clone::Clone for IProcessDebugManager32 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IProcessDebugManager32 {}
+impl ::core::cmp::PartialEq for IProcessDebugManager32 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IProcessDebugManager32 {}
+impl ::core::fmt::Debug for IProcessDebugManager32 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IProcessDebugManager32")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IProcessDebugManager32 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IProcessDebugManager64(crate::core::IUnknown);
+impl ::core::clone::Clone for IProcessDebugManager64 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IProcessDebugManager64 {}
+impl ::core::cmp::PartialEq for IProcessDebugManager64 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IProcessDebugManager64 {}
+impl ::core::fmt::Debug for IProcessDebugManager64 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IProcessDebugManager64")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IProcessDebugManager64 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IProvideExpressionContexts(crate::core::IUnknown);
+impl ::core::clone::Clone for IProvideExpressionContexts {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IProvideExpressionContexts {}
+impl ::core::cmp::PartialEq for IProvideExpressionContexts {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IProvideExpressionContexts {}
+impl ::core::fmt::Debug for IProvideExpressionContexts {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IProvideExpressionContexts")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IProvideExpressionContexts {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IRawEnumerator(crate::core::IUnknown);
+impl ::core::clone::Clone for IRawEnumerator {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IRawEnumerator {}
+impl ::core::cmp::PartialEq for IRawEnumerator {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IRawEnumerator {}
+impl ::core::fmt::Debug for IRawEnumerator {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IRawEnumerator").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IRawEnumerator {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IRemoteDebugApplication(crate::core::IUnknown);
+impl ::core::clone::Clone for IRemoteDebugApplication {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IRemoteDebugApplication {}
+impl ::core::cmp::PartialEq for IRemoteDebugApplication {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IRemoteDebugApplication {}
+impl ::core::fmt::Debug for IRemoteDebugApplication {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IRemoteDebugApplication")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IRemoteDebugApplication {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IRemoteDebugApplication110(crate::core::IUnknown);
+impl ::core::clone::Clone for IRemoteDebugApplication110 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IRemoteDebugApplication110 {}
+impl ::core::cmp::PartialEq for IRemoteDebugApplication110 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IRemoteDebugApplication110 {}
+impl ::core::fmt::Debug for IRemoteDebugApplication110 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IRemoteDebugApplication110")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IRemoteDebugApplication110 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IRemoteDebugApplicationEvents(crate::core::IUnknown);
+impl ::core::clone::Clone for IRemoteDebugApplicationEvents {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IRemoteDebugApplicationEvents {}
+impl ::core::cmp::PartialEq for IRemoteDebugApplicationEvents {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IRemoteDebugApplicationEvents {}
+impl ::core::fmt::Debug for IRemoteDebugApplicationEvents {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IRemoteDebugApplicationEvents")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IRemoteDebugApplicationEvents {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IRemoteDebugApplicationThread(crate::core::IUnknown);
+impl ::core::clone::Clone for IRemoteDebugApplicationThread {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IRemoteDebugApplicationThread {}
+impl ::core::cmp::PartialEq for IRemoteDebugApplicationThread {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IRemoteDebugApplicationThread {}
+impl ::core::fmt::Debug for IRemoteDebugApplicationThread {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IRemoteDebugApplicationThread")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IRemoteDebugApplicationThread {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IRemoteDebugCriticalErrorEvent110(crate::core::IUnknown);
+impl ::core::clone::Clone for IRemoteDebugCriticalErrorEvent110 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IRemoteDebugCriticalErrorEvent110 {}
+impl ::core::cmp::PartialEq for IRemoteDebugCriticalErrorEvent110 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IRemoteDebugCriticalErrorEvent110 {}
+impl ::core::fmt::Debug for IRemoteDebugCriticalErrorEvent110 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IRemoteDebugCriticalErrorEvent110")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IRemoteDebugCriticalErrorEvent110 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IRemoteDebugInfoEvent110(crate::core::IUnknown);
+impl ::core::clone::Clone for IRemoteDebugInfoEvent110 {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IRemoteDebugInfoEvent110 {}
+impl ::core::cmp::PartialEq for IRemoteDebugInfoEvent110 {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IRemoteDebugInfoEvent110 {}
+impl ::core::fmt::Debug for IRemoteDebugInfoEvent110 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IRemoteDebugInfoEvent110")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IRemoteDebugInfoEvent110 {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IScriptEntry(crate::core::IUnknown);
+impl ::core::clone::Clone for IScriptEntry {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IScriptEntry {}
+impl ::core::cmp::PartialEq for IScriptEntry {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IScriptEntry {}
+impl ::core::fmt::Debug for IScriptEntry {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IScriptEntry").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IScriptEntry {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IScriptInvocationContext(crate::core::IUnknown);
+impl ::core::clone::Clone for IScriptInvocationContext {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IScriptInvocationContext {}
+impl ::core::cmp::PartialEq for IScriptInvocationContext {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IScriptInvocationContext {}
+impl ::core::fmt::Debug for IScriptInvocationContext {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IScriptInvocationContext")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IScriptInvocationContext {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IScriptNode(crate::core::IUnknown);
+impl ::core::clone::Clone for IScriptNode {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IScriptNode {}
+impl ::core::cmp::PartialEq for IScriptNode {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IScriptNode {}
+impl ::core::fmt::Debug for IScriptNode {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IScriptNode").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IScriptNode {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IScriptScriptlet(crate::core::IUnknown);
+impl ::core::clone::Clone for IScriptScriptlet {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IScriptScriptlet {}
+impl ::core::cmp::PartialEq for IScriptScriptlet {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IScriptScriptlet {}
+impl ::core::fmt::Debug for IScriptScriptlet {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IScriptScriptlet").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for IScriptScriptlet {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct ISimpleConnectionPoint(crate::core::IUnknown);
+impl ::core::clone::Clone for ISimpleConnectionPoint {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for ISimpleConnectionPoint {}
+impl ::core::cmp::PartialEq for ISimpleConnectionPoint {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for ISimpleConnectionPoint {}
+impl ::core::fmt::Debug for ISimpleConnectionPoint {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("ISimpleConnectionPoint")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for ISimpleConnectionPoint {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IStringDisplayableConcept(crate::core::IUnknown);
+impl ::core::clone::Clone for IStringDisplayableConcept {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IStringDisplayableConcept {}
+impl ::core::cmp::PartialEq for IStringDisplayableConcept {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IStringDisplayableConcept {}
+impl ::core::fmt::Debug for IStringDisplayableConcept {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IStringDisplayableConcept")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IStringDisplayableConcept {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct ITridentEventSink(crate::core::IUnknown);
+impl ::core::clone::Clone for ITridentEventSink {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for ITridentEventSink {}
+impl ::core::cmp::PartialEq for ITridentEventSink {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for ITridentEventSink {}
+impl ::core::fmt::Debug for ITridentEventSink {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("ITridentEventSink").field(&self.0).finish()
+    }
+}
+impl FromIntoMemory for ITridentEventSink {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IWebAppDiagnosticsObjectInitialization(crate::core::IUnknown);
+impl ::core::clone::Clone for IWebAppDiagnosticsObjectInitialization {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IWebAppDiagnosticsObjectInitialization {}
+impl ::core::cmp::PartialEq for IWebAppDiagnosticsObjectInitialization {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IWebAppDiagnosticsObjectInitialization {}
+impl ::core::fmt::Debug for IWebAppDiagnosticsObjectInitialization {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IWebAppDiagnosticsObjectInitialization")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IWebAppDiagnosticsObjectInitialization {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
+pub struct IWebAppDiagnosticsSetup(crate::core::IUnknown);
+impl ::core::clone::Clone for IWebAppDiagnosticsSetup {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
+    }
+}
+impl ::core::marker::Copy for IWebAppDiagnosticsSetup {}
+impl ::core::cmp::PartialEq for IWebAppDiagnosticsSetup {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl ::core::cmp::Eq for IWebAppDiagnosticsSetup {}
+impl ::core::fmt::Debug for IWebAppDiagnosticsSetup {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_tuple("IWebAppDiagnosticsSetup")
+            .field(&self.0)
+            .finish()
+    }
+}
+impl FromIntoMemory for IWebAppDiagnosticsSetup {
+    fn from_bytes(from: &[u8]) -> Self {
+        Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        FromIntoMemory::into_bytes(self.0, into)
+    }
+    fn size() -> usize {
+        std::mem::size_of::<crate::core::IUnknown>()
+    }
+}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct IntrinsicKind(pub i32);
 pub const IntrinsicVoid: IntrinsicKind = IntrinsicKind(0i32);
@@ -18676,280 +25297,6 @@ impl FromIntoMemory for LDT_ENTRY_0_1 {
         4u32 as usize
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-pub struct LOADED_IMAGE {
-    pub ModuleName: PSTR,
-    pub hFile: super::super::super::Foundation::HANDLE,
-    pub MappedAddress: MutPtr<u8>,
-    pub FileHeader: MutPtr<IMAGE_NT_HEADERS64>,
-    pub LastRvaSection: MutPtr<IMAGE_SECTION_HEADER>,
-    pub NumberOfSections: u32,
-    pub Sections: MutPtr<IMAGE_SECTION_HEADER>,
-    pub Characteristics: IMAGE_FILE_CHARACTERISTICS2,
-    pub fSystemImage: super::super::super::Foundation::BOOLEAN,
-    pub fDOSImage: super::super::super::Foundation::BOOLEAN,
-    pub fReadOnly: super::super::super::Foundation::BOOLEAN,
-    pub Version: u8,
-    pub Links: super::super::Kernel::LIST_ENTRY,
-    pub SizeOfImage: u32,
-}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl ::core::marker::Copy for LOADED_IMAGE {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl ::core::clone::Clone for LOADED_IMAGE {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl ::core::fmt::Debug for LOADED_IMAGE {
-    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
-        f.debug_struct("LOADED_IMAGE")
-            .field("ModuleName", &self.ModuleName)
-            .field("hFile", &self.hFile)
-            .field("MappedAddress", &self.MappedAddress)
-            .field("FileHeader", &self.FileHeader)
-            .field("LastRvaSection", &self.LastRvaSection)
-            .field("NumberOfSections", &self.NumberOfSections)
-            .field("Sections", &self.Sections)
-            .field("Characteristics", &self.Characteristics)
-            .field("fSystemImage", &self.fSystemImage)
-            .field("fDOSImage", &self.fDOSImage)
-            .field("fReadOnly", &self.fReadOnly)
-            .field("Version", &self.Version)
-            .field("Links", &self.Links)
-            .field("SizeOfImage", &self.SizeOfImage)
-            .finish()
-    }
-}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl ::core::cmp::PartialEq for LOADED_IMAGE {
-    fn eq(&self, other: &Self) -> bool {
-        self.ModuleName == other.ModuleName
-            && self.hFile == other.hFile
-            && self.MappedAddress == other.MappedAddress
-            && self.FileHeader == other.FileHeader
-            && self.LastRvaSection == other.LastRvaSection
-            && self.NumberOfSections == other.NumberOfSections
-            && self.Sections == other.Sections
-            && self.Characteristics == other.Characteristics
-            && self.fSystemImage == other.fSystemImage
-            && self.fDOSImage == other.fDOSImage
-            && self.fReadOnly == other.fReadOnly
-            && self.Version == other.Version
-            && self.Links == other.Links
-            && self.SizeOfImage == other.SizeOfImage
-    }
-}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl ::core::cmp::Eq for LOADED_IMAGE {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl FromIntoMemory for LOADED_IMAGE {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 48u32 as usize);
-        let f_ModuleName = <PSTR as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_hFile = <super::super::super::Foundation::HANDLE as FromIntoMemory>::from_bytes(
-            &from[4..4 + 4],
-        );
-        let f_MappedAddress = <MutPtr<u8> as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_FileHeader =
-            <MutPtr<IMAGE_NT_HEADERS64> as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
-        let f_LastRvaSection =
-            <MutPtr<IMAGE_SECTION_HEADER> as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
-        let f_NumberOfSections = <u32 as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
-        let f_Sections =
-            <MutPtr<IMAGE_SECTION_HEADER> as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
-        let f_Characteristics =
-            <IMAGE_FILE_CHARACTERISTICS2 as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
-        let f_fSystemImage =
-            <super::super::super::Foundation::BOOLEAN as FromIntoMemory>::from_bytes(
-                &from[32..32 + 1],
-            );
-        let f_fDOSImage = <super::super::super::Foundation::BOOLEAN as FromIntoMemory>::from_bytes(
-            &from[33..33 + 1],
-        );
-        let f_fReadOnly = <super::super::super::Foundation::BOOLEAN as FromIntoMemory>::from_bytes(
-            &from[34..34 + 1],
-        );
-        let f_Version = <u8 as FromIntoMemory>::from_bytes(&from[35..35 + 1]);
-        let f_Links =
-            <super::super::Kernel::LIST_ENTRY as FromIntoMemory>::from_bytes(&from[36..36 + 8]);
-        let f_SizeOfImage = <u32 as FromIntoMemory>::from_bytes(&from[44..44 + 4]);
-        Self {
-            ModuleName: f_ModuleName,
-            hFile: f_hFile,
-            MappedAddress: f_MappedAddress,
-            FileHeader: f_FileHeader,
-            LastRvaSection: f_LastRvaSection,
-            NumberOfSections: f_NumberOfSections,
-            Sections: f_Sections,
-            Characteristics: f_Characteristics,
-            fSystemImage: f_fSystemImage,
-            fDOSImage: f_fDOSImage,
-            fReadOnly: f_fReadOnly,
-            Version: f_Version,
-            Links: f_Links,
-            SizeOfImage: f_SizeOfImage,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 48u32 as usize);
-        FromIntoMemory::into_bytes(self.ModuleName, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.hFile, &mut into[4..4 + 4]);
-        FromIntoMemory::into_bytes(self.MappedAddress, &mut into[8..8 + 4]);
-        FromIntoMemory::into_bytes(self.FileHeader, &mut into[12..12 + 4]);
-        FromIntoMemory::into_bytes(self.LastRvaSection, &mut into[16..16 + 4]);
-        FromIntoMemory::into_bytes(self.NumberOfSections, &mut into[20..20 + 4]);
-        FromIntoMemory::into_bytes(self.Sections, &mut into[24..24 + 4]);
-        FromIntoMemory::into_bytes(self.Characteristics, &mut into[28..28 + 4]);
-        FromIntoMemory::into_bytes(self.fSystemImage, &mut into[32..32 + 1]);
-        FromIntoMemory::into_bytes(self.fDOSImage, &mut into[33..33 + 1]);
-        FromIntoMemory::into_bytes(self.fReadOnly, &mut into[34..34 + 1]);
-        FromIntoMemory::into_bytes(self.Version, &mut into[35..35 + 1]);
-        FromIntoMemory::into_bytes(self.Links, &mut into[36..36 + 8]);
-        FromIntoMemory::into_bytes(self.SizeOfImage, &mut into[44..44 + 4]);
-    }
-    fn size() -> usize {
-        48u32 as usize
-    }
-}
-pub struct LOADED_IMAGE {
-    pub ModuleName: PSTR,
-    pub hFile: super::super::super::Foundation::HANDLE,
-    pub MappedAddress: MutPtr<u8>,
-    pub FileHeader: MutPtr<IMAGE_NT_HEADERS32>,
-    pub LastRvaSection: MutPtr<IMAGE_SECTION_HEADER>,
-    pub NumberOfSections: u32,
-    pub Sections: MutPtr<IMAGE_SECTION_HEADER>,
-    pub Characteristics: IMAGE_FILE_CHARACTERISTICS2,
-    pub fSystemImage: super::super::super::Foundation::BOOLEAN,
-    pub fDOSImage: super::super::super::Foundation::BOOLEAN,
-    pub fReadOnly: super::super::super::Foundation::BOOLEAN,
-    pub Version: u8,
-    pub Links: super::super::Kernel::LIST_ENTRY,
-    pub SizeOfImage: u32,
-}
-impl ::core::marker::Copy for LOADED_IMAGE {}
-impl ::core::clone::Clone for LOADED_IMAGE {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::fmt::Debug for LOADED_IMAGE {
-    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
-        f.debug_struct("LOADED_IMAGE")
-            .field("ModuleName", &self.ModuleName)
-            .field("hFile", &self.hFile)
-            .field("MappedAddress", &self.MappedAddress)
-            .field("FileHeader", &self.FileHeader)
-            .field("LastRvaSection", &self.LastRvaSection)
-            .field("NumberOfSections", &self.NumberOfSections)
-            .field("Sections", &self.Sections)
-            .field("Characteristics", &self.Characteristics)
-            .field("fSystemImage", &self.fSystemImage)
-            .field("fDOSImage", &self.fDOSImage)
-            .field("fReadOnly", &self.fReadOnly)
-            .field("Version", &self.Version)
-            .field("Links", &self.Links)
-            .field("SizeOfImage", &self.SizeOfImage)
-            .finish()
-    }
-}
-impl ::core::cmp::PartialEq for LOADED_IMAGE {
-    fn eq(&self, other: &Self) -> bool {
-        self.ModuleName == other.ModuleName
-            && self.hFile == other.hFile
-            && self.MappedAddress == other.MappedAddress
-            && self.FileHeader == other.FileHeader
-            && self.LastRvaSection == other.LastRvaSection
-            && self.NumberOfSections == other.NumberOfSections
-            && self.Sections == other.Sections
-            && self.Characteristics == other.Characteristics
-            && self.fSystemImage == other.fSystemImage
-            && self.fDOSImage == other.fDOSImage
-            && self.fReadOnly == other.fReadOnly
-            && self.Version == other.Version
-            && self.Links == other.Links
-            && self.SizeOfImage == other.SizeOfImage
-    }
-}
-impl ::core::cmp::Eq for LOADED_IMAGE {}
-impl FromIntoMemory for LOADED_IMAGE {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 48u32 as usize);
-        let f_ModuleName = <PSTR as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_hFile = <super::super::super::Foundation::HANDLE as FromIntoMemory>::from_bytes(
-            &from[4..4 + 4],
-        );
-        let f_MappedAddress = <MutPtr<u8> as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_FileHeader =
-            <MutPtr<IMAGE_NT_HEADERS32> as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
-        let f_LastRvaSection =
-            <MutPtr<IMAGE_SECTION_HEADER> as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
-        let f_NumberOfSections = <u32 as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
-        let f_Sections =
-            <MutPtr<IMAGE_SECTION_HEADER> as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
-        let f_Characteristics =
-            <IMAGE_FILE_CHARACTERISTICS2 as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
-        let f_fSystemImage =
-            <super::super::super::Foundation::BOOLEAN as FromIntoMemory>::from_bytes(
-                &from[32..32 + 1],
-            );
-        let f_fDOSImage = <super::super::super::Foundation::BOOLEAN as FromIntoMemory>::from_bytes(
-            &from[33..33 + 1],
-        );
-        let f_fReadOnly = <super::super::super::Foundation::BOOLEAN as FromIntoMemory>::from_bytes(
-            &from[34..34 + 1],
-        );
-        let f_Version = <u8 as FromIntoMemory>::from_bytes(&from[35..35 + 1]);
-        let f_Links =
-            <super::super::Kernel::LIST_ENTRY as FromIntoMemory>::from_bytes(&from[36..36 + 8]);
-        let f_SizeOfImage = <u32 as FromIntoMemory>::from_bytes(&from[44..44 + 4]);
-        Self {
-            ModuleName: f_ModuleName,
-            hFile: f_hFile,
-            MappedAddress: f_MappedAddress,
-            FileHeader: f_FileHeader,
-            LastRvaSection: f_LastRvaSection,
-            NumberOfSections: f_NumberOfSections,
-            Sections: f_Sections,
-            Characteristics: f_Characteristics,
-            fSystemImage: f_fSystemImage,
-            fDOSImage: f_fDOSImage,
-            fReadOnly: f_fReadOnly,
-            Version: f_Version,
-            Links: f_Links,
-            SizeOfImage: f_SizeOfImage,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 48u32 as usize);
-        FromIntoMemory::into_bytes(self.ModuleName, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.hFile, &mut into[4..4 + 4]);
-        FromIntoMemory::into_bytes(self.MappedAddress, &mut into[8..8 + 4]);
-        FromIntoMemory::into_bytes(self.FileHeader, &mut into[12..12 + 4]);
-        FromIntoMemory::into_bytes(self.LastRvaSection, &mut into[16..16 + 4]);
-        FromIntoMemory::into_bytes(self.NumberOfSections, &mut into[20..20 + 4]);
-        FromIntoMemory::into_bytes(self.Sections, &mut into[24..24 + 4]);
-        FromIntoMemory::into_bytes(self.Characteristics, &mut into[28..28 + 4]);
-        FromIntoMemory::into_bytes(self.fSystemImage, &mut into[32..32 + 1]);
-        FromIntoMemory::into_bytes(self.fDOSImage, &mut into[33..33 + 1]);
-        FromIntoMemory::into_bytes(self.fReadOnly, &mut into[34..34 + 1]);
-        FromIntoMemory::into_bytes(self.Version, &mut into[35..35 + 1]);
-        FromIntoMemory::into_bytes(self.Links, &mut into[36..36 + 8]);
-        FromIntoMemory::into_bytes(self.SizeOfImage, &mut into[44..44 + 4]);
-    }
-    fn size() -> usize {
-        48u32 as usize
-    }
-}
 pub struct LOAD_DLL_DEBUG_INFO {
     pub hFile: super::super::super::Foundation::HANDLE,
     pub lpBaseOfDll: MutPtr<::core::ffi::c_void>,
@@ -19178,422 +25525,6 @@ impl FromIntoMemory for M128A {
 }
 pub const MAX_SYM_NAME: u32 = 2000u32;
 pub const MEMORY_READ_ERROR: u32 = 1u32;
-pub struct MINIDUMP_CALLBACK_INFORMATION {
-    pub CallbackRoutine: MINIDUMP_CALLBACK_ROUTINE,
-    pub CallbackParam: MutPtr<::core::ffi::c_void>,
-}
-impl ::core::marker::Copy for MINIDUMP_CALLBACK_INFORMATION {}
-impl ::core::clone::Clone for MINIDUMP_CALLBACK_INFORMATION {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_CALLBACK_INFORMATION {
-    fn eq(&self, other: &Self) -> bool {
-        self.CallbackRoutine == other.CallbackRoutine && self.CallbackParam == other.CallbackParam
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_CALLBACK_INFORMATION {}
-impl FromIntoMemory for MINIDUMP_CALLBACK_INFORMATION {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 8u32 as usize);
-        let f_CallbackRoutine =
-            <MINIDUMP_CALLBACK_ROUTINE as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_CallbackParam =
-            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        Self {
-            CallbackRoutine: f_CallbackRoutine,
-            CallbackParam: f_CallbackParam,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 8u32 as usize);
-        FromIntoMemory::into_bytes(self.CallbackRoutine, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.CallbackParam, &mut into[4..4 + 4]);
-    }
-    fn size() -> usize {
-        8u32 as usize
-    }
-}
-pub struct MINIDUMP_CALLBACK_INPUT {
-    pub ProcessId: u32,
-    pub ProcessHandle: super::super::super::Foundation::HANDLE,
-    pub CallbackType: u32,
-    pub Anonymous: MINIDUMP_CALLBACK_INPUT_0,
-}
-impl ::core::marker::Copy for MINIDUMP_CALLBACK_INPUT {}
-impl ::core::clone::Clone for MINIDUMP_CALLBACK_INPUT {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_CALLBACK_INPUT {
-    fn eq(&self, other: &Self) -> bool {
-        self.ProcessId == other.ProcessId
-            && self.ProcessHandle == other.ProcessHandle
-            && self.CallbackType == other.CallbackType
-            && self.Anonymous == other.Anonymous
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_CALLBACK_INPUT {}
-impl FromIntoMemory for MINIDUMP_CALLBACK_INPUT {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 6728u32 as usize);
-        let f_ProcessId = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_ProcessHandle =
-            <super::super::super::Foundation::HANDLE as FromIntoMemory>::from_bytes(
-                &from[4..4 + 4],
-            );
-        let f_CallbackType = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_Anonymous =
-            <MINIDUMP_CALLBACK_INPUT_0 as FromIntoMemory>::from_bytes(&from[16..16 + 6712]);
-        Self {
-            ProcessId: f_ProcessId,
-            ProcessHandle: f_ProcessHandle,
-            CallbackType: f_CallbackType,
-            Anonymous: f_Anonymous,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 6728u32 as usize);
-        FromIntoMemory::into_bytes(self.ProcessId, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.ProcessHandle, &mut into[4..4 + 4]);
-        FromIntoMemory::into_bytes(self.CallbackType, &mut into[8..8 + 4]);
-        FromIntoMemory::into_bytes(self.Anonymous, &mut into[16..16 + 6712]);
-    }
-    fn size() -> usize {
-        6728u32 as usize
-    }
-}
-pub struct MINIDUMP_CALLBACK_INPUT_0 {
-    pub Status: crate::core::HRESULT,
-    pub Thread: MINIDUMP_THREAD_CALLBACK,
-    pub ThreadEx: MINIDUMP_THREAD_EX_CALLBACK,
-    pub Module: MINIDUMP_MODULE_CALLBACK,
-    pub IncludeThread: MINIDUMP_INCLUDE_THREAD_CALLBACK,
-    pub IncludeModule: MINIDUMP_INCLUDE_MODULE_CALLBACK,
-    pub Io: MINIDUMP_IO_CALLBACK,
-    pub ReadMemoryFailure: MINIDUMP_READ_MEMORY_FAILURE_CALLBACK,
-    pub SecondaryFlags: u32,
-    pub VmQuery: MINIDUMP_VM_QUERY_CALLBACK,
-    pub VmPreRead: MINIDUMP_VM_PRE_READ_CALLBACK,
-    pub VmPostRead: MINIDUMP_VM_POST_READ_CALLBACK,
-}
-impl ::core::marker::Copy for MINIDUMP_CALLBACK_INPUT_0 {}
-impl ::core::clone::Clone for MINIDUMP_CALLBACK_INPUT_0 {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_CALLBACK_INPUT_0 {
-    fn eq(&self, other: &Self) -> bool {
-        self.Status == other.Status
-            && self.Thread == other.Thread
-            && self.ThreadEx == other.ThreadEx
-            && self.Module == other.Module
-            && self.IncludeThread == other.IncludeThread
-            && self.IncludeModule == other.IncludeModule
-            && self.Io == other.Io
-            && self.ReadMemoryFailure == other.ReadMemoryFailure
-            && self.SecondaryFlags == other.SecondaryFlags
-            && self.VmQuery == other.VmQuery
-            && self.VmPreRead == other.VmPreRead
-            && self.VmPostRead == other.VmPostRead
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_CALLBACK_INPUT_0 {}
-impl FromIntoMemory for MINIDUMP_CALLBACK_INPUT_0 {
-    fn from_bytes(from: &[u8]) -> Self {
-        todo!()
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        todo!()
-    }
-    fn size() -> usize {
-        todo!()
-    }
-}
-pub struct MINIDUMP_CALLBACK_OUTPUT {
-    pub Anonymous: MINIDUMP_CALLBACK_OUTPUT_0,
-}
-impl ::core::marker::Copy for MINIDUMP_CALLBACK_OUTPUT {}
-impl ::core::clone::Clone for MINIDUMP_CALLBACK_OUTPUT {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_CALLBACK_OUTPUT {
-    fn eq(&self, other: &Self) -> bool {
-        self.Anonymous == other.Anonymous
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_CALLBACK_OUTPUT {}
-impl FromIntoMemory for MINIDUMP_CALLBACK_OUTPUT {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 176u32 as usize);
-        let f_Anonymous =
-            <MINIDUMP_CALLBACK_OUTPUT_0 as FromIntoMemory>::from_bytes(&from[0..0 + 176]);
-        Self {
-            Anonymous: f_Anonymous,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 176u32 as usize);
-        FromIntoMemory::into_bytes(self.Anonymous, &mut into[0..0 + 176]);
-    }
-    fn size() -> usize {
-        176u32 as usize
-    }
-}
-pub struct MINIDUMP_CALLBACK_OUTPUT_0 {
-    pub ModuleWriteFlags: u32,
-    pub ThreadWriteFlags: u32,
-    pub SecondaryFlags: u32,
-    pub Anonymous1: MINIDUMP_CALLBACK_OUTPUT_0_0,
-    pub Anonymous2: MINIDUMP_CALLBACK_OUTPUT_0_1,
-    pub Handle: super::super::super::Foundation::HANDLE,
-    pub Anonymous3: MINIDUMP_CALLBACK_OUTPUT_0_2,
-    pub Anonymous4: MINIDUMP_CALLBACK_OUTPUT_0_3,
-    pub Anonymous5: MINIDUMP_CALLBACK_OUTPUT_0_4,
-    pub Status: crate::core::HRESULT,
-}
-impl ::core::marker::Copy for MINIDUMP_CALLBACK_OUTPUT_0 {}
-impl ::core::clone::Clone for MINIDUMP_CALLBACK_OUTPUT_0 {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_CALLBACK_OUTPUT_0 {
-    fn eq(&self, other: &Self) -> bool {
-        self.ModuleWriteFlags == other.ModuleWriteFlags
-            && self.ThreadWriteFlags == other.ThreadWriteFlags
-            && self.SecondaryFlags == other.SecondaryFlags
-            && self.Anonymous1 == other.Anonymous1
-            && self.Anonymous2 == other.Anonymous2
-            && self.Handle == other.Handle
-            && self.Anonymous3 == other.Anonymous3
-            && self.Anonymous4 == other.Anonymous4
-            && self.Anonymous5 == other.Anonymous5
-            && self.Status == other.Status
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_CALLBACK_OUTPUT_0 {}
-impl FromIntoMemory for MINIDUMP_CALLBACK_OUTPUT_0 {
-    fn from_bytes(from: &[u8]) -> Self {
-        todo!()
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        todo!()
-    }
-    fn size() -> usize {
-        todo!()
-    }
-}
-pub struct MINIDUMP_CALLBACK_OUTPUT_0_0 {
-    pub MemoryBase: u64,
-    pub MemorySize: u32,
-}
-impl ::core::marker::Copy for MINIDUMP_CALLBACK_OUTPUT_0_0 {}
-impl ::core::clone::Clone for MINIDUMP_CALLBACK_OUTPUT_0_0 {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_CALLBACK_OUTPUT_0_0 {
-    fn eq(&self, other: &Self) -> bool {
-        self.MemoryBase == other.MemoryBase && self.MemorySize == other.MemorySize
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_CALLBACK_OUTPUT_0_0 {}
-impl FromIntoMemory for MINIDUMP_CALLBACK_OUTPUT_0_0 {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
-        let f_MemoryBase = <u64 as FromIntoMemory>::from_bytes(&from[0..0 + 8]);
-        let f_MemorySize = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        Self {
-            MemoryBase: f_MemoryBase,
-            MemorySize: f_MemorySize,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
-        FromIntoMemory::into_bytes(self.MemoryBase, &mut into[0..0 + 8]);
-        FromIntoMemory::into_bytes(self.MemorySize, &mut into[8..8 + 4]);
-    }
-    fn size() -> usize {
-        16u32 as usize
-    }
-}
-pub struct MINIDUMP_CALLBACK_OUTPUT_0_1 {
-    pub CheckCancel: super::super::super::Foundation::BOOL,
-    pub Cancel: super::super::super::Foundation::BOOL,
-}
-impl ::core::marker::Copy for MINIDUMP_CALLBACK_OUTPUT_0_1 {}
-impl ::core::clone::Clone for MINIDUMP_CALLBACK_OUTPUT_0_1 {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::fmt::Debug for MINIDUMP_CALLBACK_OUTPUT_0_1 {
-    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
-        f.debug_struct("MINIDUMP_CALLBACK_OUTPUT_0_1")
-            .field("CheckCancel", &self.CheckCancel)
-            .field("Cancel", &self.Cancel)
-            .finish()
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_CALLBACK_OUTPUT_0_1 {
-    fn eq(&self, other: &Self) -> bool {
-        self.CheckCancel == other.CheckCancel && self.Cancel == other.Cancel
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_CALLBACK_OUTPUT_0_1 {}
-impl FromIntoMemory for MINIDUMP_CALLBACK_OUTPUT_0_1 {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 8u32 as usize);
-        let f_CheckCancel =
-            <super::super::super::Foundation::BOOL as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_Cancel =
-            <super::super::super::Foundation::BOOL as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        Self {
-            CheckCancel: f_CheckCancel,
-            Cancel: f_Cancel,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 8u32 as usize);
-        FromIntoMemory::into_bytes(self.CheckCancel, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.Cancel, &mut into[4..4 + 4]);
-    }
-    fn size() -> usize {
-        8u32 as usize
-    }
-}
-pub struct MINIDUMP_CALLBACK_OUTPUT_0_2 {
-    pub VmRegion: MINIDUMP_MEMORY_INFO,
-    pub Continue: super::super::super::Foundation::BOOL,
-}
-impl ::core::marker::Copy for MINIDUMP_CALLBACK_OUTPUT_0_2 {}
-impl ::core::clone::Clone for MINIDUMP_CALLBACK_OUTPUT_0_2 {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_CALLBACK_OUTPUT_0_2 {
-    fn eq(&self, other: &Self) -> bool {
-        self.VmRegion == other.VmRegion && self.Continue == other.Continue
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_CALLBACK_OUTPUT_0_2 {}
-impl FromIntoMemory for MINIDUMP_CALLBACK_OUTPUT_0_2 {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 56u32 as usize);
-        let f_VmRegion = <MINIDUMP_MEMORY_INFO as FromIntoMemory>::from_bytes(&from[0..0 + 48]);
-        let f_Continue = <super::super::super::Foundation::BOOL as FromIntoMemory>::from_bytes(
-            &from[48..48 + 4],
-        );
-        Self {
-            VmRegion: f_VmRegion,
-            Continue: f_Continue,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 56u32 as usize);
-        FromIntoMemory::into_bytes(self.VmRegion, &mut into[0..0 + 48]);
-        FromIntoMemory::into_bytes(self.Continue, &mut into[48..48 + 4]);
-    }
-    fn size() -> usize {
-        56u32 as usize
-    }
-}
-pub struct MINIDUMP_CALLBACK_OUTPUT_0_3 {
-    pub VmQueryStatus: crate::core::HRESULT,
-    pub VmQueryResult: MINIDUMP_MEMORY_INFO,
-}
-impl ::core::marker::Copy for MINIDUMP_CALLBACK_OUTPUT_0_3 {}
-impl ::core::clone::Clone for MINIDUMP_CALLBACK_OUTPUT_0_3 {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_CALLBACK_OUTPUT_0_3 {
-    fn eq(&self, other: &Self) -> bool {
-        self.VmQueryStatus == other.VmQueryStatus && self.VmQueryResult == other.VmQueryResult
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_CALLBACK_OUTPUT_0_3 {}
-impl FromIntoMemory for MINIDUMP_CALLBACK_OUTPUT_0_3 {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 56u32 as usize);
-        let f_VmQueryStatus = <crate::core::HRESULT as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_VmQueryResult =
-            <MINIDUMP_MEMORY_INFO as FromIntoMemory>::from_bytes(&from[8..8 + 48]);
-        Self {
-            VmQueryStatus: f_VmQueryStatus,
-            VmQueryResult: f_VmQueryResult,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 56u32 as usize);
-        FromIntoMemory::into_bytes(self.VmQueryStatus, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.VmQueryResult, &mut into[8..8 + 48]);
-    }
-    fn size() -> usize {
-        56u32 as usize
-    }
-}
-pub struct MINIDUMP_CALLBACK_OUTPUT_0_4 {
-    pub VmReadStatus: crate::core::HRESULT,
-    pub VmReadBytesCompleted: u32,
-}
-impl ::core::marker::Copy for MINIDUMP_CALLBACK_OUTPUT_0_4 {}
-impl ::core::clone::Clone for MINIDUMP_CALLBACK_OUTPUT_0_4 {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::fmt::Debug for MINIDUMP_CALLBACK_OUTPUT_0_4 {
-    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
-        f.debug_struct("MINIDUMP_CALLBACK_OUTPUT_0_4")
-            .field("VmReadStatus", &self.VmReadStatus)
-            .field("VmReadBytesCompleted", &self.VmReadBytesCompleted)
-            .finish()
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_CALLBACK_OUTPUT_0_4 {
-    fn eq(&self, other: &Self) -> bool {
-        self.VmReadStatus == other.VmReadStatus
-            && self.VmReadBytesCompleted == other.VmReadBytesCompleted
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_CALLBACK_OUTPUT_0_4 {}
-impl FromIntoMemory for MINIDUMP_CALLBACK_OUTPUT_0_4 {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 8u32 as usize);
-        let f_VmReadStatus = <crate::core::HRESULT as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_VmReadBytesCompleted = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        Self {
-            VmReadStatus: f_VmReadStatus,
-            VmReadBytesCompleted: f_VmReadBytesCompleted,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 8u32 as usize);
-        FromIntoMemory::into_bytes(self.VmReadStatus, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.VmReadBytesCompleted, &mut into[4..4 + 4]);
-    }
-    fn size() -> usize {
-        8u32 as usize
-    }
-}
-pub type MINIDUMP_CALLBACK_ROUTINE = StdCallFnPtr<
-    (
-        MutPtr<::core::ffi::c_void>,
-        ConstPtr<MINIDUMP_CALLBACK_INPUT>,
-        MutPtr<MINIDUMP_CALLBACK_OUTPUT>,
-    ),
-    super::super::super::Foundation::BOOL,
->;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct MINIDUMP_CALLBACK_TYPE(pub i32);
 pub const ModuleCallback: MINIDUMP_CALLBACK_TYPE = MINIDUMP_CALLBACK_TYPE(0i32);
@@ -19688,258 +25619,6 @@ impl FromIntoMemory for MINIDUMP_DIRECTORY {
     }
     fn size() -> usize {
         12u32 as usize
-    }
-}
-pub struct MINIDUMP_EXCEPTION {
-    pub ExceptionCode: u32,
-    pub ExceptionFlags: u32,
-    pub ExceptionRecord: u64,
-    pub ExceptionAddress: u64,
-    pub NumberParameters: u32,
-    pub __unusedAlignment: u32,
-    pub ExceptionInformation: [u64; 15],
-}
-impl ::core::marker::Copy for MINIDUMP_EXCEPTION {}
-impl ::core::clone::Clone for MINIDUMP_EXCEPTION {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_EXCEPTION {
-    fn eq(&self, other: &Self) -> bool {
-        self.ExceptionCode == other.ExceptionCode
-            && self.ExceptionFlags == other.ExceptionFlags
-            && self.ExceptionRecord == other.ExceptionRecord
-            && self.ExceptionAddress == other.ExceptionAddress
-            && self.NumberParameters == other.NumberParameters
-            && self.__unusedAlignment == other.__unusedAlignment
-            && self.ExceptionInformation == other.ExceptionInformation
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_EXCEPTION {}
-impl FromIntoMemory for MINIDUMP_EXCEPTION {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 152u32 as usize);
-        let f_ExceptionCode = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_ExceptionFlags = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        let f_ExceptionRecord = <u64 as FromIntoMemory>::from_bytes(&from[8..8 + 8]);
-        let f_ExceptionAddress = <u64 as FromIntoMemory>::from_bytes(&from[16..16 + 8]);
-        let f_NumberParameters = <u32 as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
-        let f___unusedAlignment = <u32 as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
-        let f_ExceptionInformation = <[u64; 15] as FromIntoMemory>::from_bytes(&from[32..32 + 120]);
-        Self {
-            ExceptionCode: f_ExceptionCode,
-            ExceptionFlags: f_ExceptionFlags,
-            ExceptionRecord: f_ExceptionRecord,
-            ExceptionAddress: f_ExceptionAddress,
-            NumberParameters: f_NumberParameters,
-            __unusedAlignment: f___unusedAlignment,
-            ExceptionInformation: f_ExceptionInformation,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 152u32 as usize);
-        FromIntoMemory::into_bytes(self.ExceptionCode, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.ExceptionFlags, &mut into[4..4 + 4]);
-        FromIntoMemory::into_bytes(self.ExceptionRecord, &mut into[8..8 + 8]);
-        FromIntoMemory::into_bytes(self.ExceptionAddress, &mut into[16..16 + 8]);
-        FromIntoMemory::into_bytes(self.NumberParameters, &mut into[24..24 + 4]);
-        FromIntoMemory::into_bytes(self.__unusedAlignment, &mut into[28..28 + 4]);
-        FromIntoMemory::into_bytes(self.ExceptionInformation, &mut into[32..32 + 120]);
-    }
-    fn size() -> usize {
-        152u32 as usize
-    }
-}
-pub struct MINIDUMP_EXCEPTION_INFORMATION {
-    pub ThreadId: u32,
-    pub ExceptionPointers: MutPtr<EXCEPTION_POINTERS>,
-    pub ClientPointers: super::super::super::Foundation::BOOL,
-}
-impl ::core::marker::Copy for MINIDUMP_EXCEPTION_INFORMATION {}
-impl ::core::clone::Clone for MINIDUMP_EXCEPTION_INFORMATION {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_EXCEPTION_INFORMATION {
-    fn eq(&self, other: &Self) -> bool {
-        self.ThreadId == other.ThreadId
-            && self.ExceptionPointers == other.ExceptionPointers
-            && self.ClientPointers == other.ClientPointers
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_EXCEPTION_INFORMATION {}
-impl FromIntoMemory for MINIDUMP_EXCEPTION_INFORMATION {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 12u32 as usize);
-        let f_ThreadId = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_ExceptionPointers =
-            <MutPtr<EXCEPTION_POINTERS> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        let f_ClientPointers =
-            <super::super::super::Foundation::BOOL as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        Self {
-            ThreadId: f_ThreadId,
-            ExceptionPointers: f_ExceptionPointers,
-            ClientPointers: f_ClientPointers,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 12u32 as usize);
-        FromIntoMemory::into_bytes(self.ThreadId, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.ExceptionPointers, &mut into[4..4 + 4]);
-        FromIntoMemory::into_bytes(self.ClientPointers, &mut into[8..8 + 4]);
-    }
-    fn size() -> usize {
-        12u32 as usize
-    }
-}
-pub struct MINIDUMP_EXCEPTION_INFORMATION64 {
-    pub ThreadId: u32,
-    pub ExceptionRecord: u64,
-    pub ContextRecord: u64,
-    pub ClientPointers: super::super::super::Foundation::BOOL,
-}
-impl ::core::marker::Copy for MINIDUMP_EXCEPTION_INFORMATION64 {}
-impl ::core::clone::Clone for MINIDUMP_EXCEPTION_INFORMATION64 {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_EXCEPTION_INFORMATION64 {
-    fn eq(&self, other: &Self) -> bool {
-        self.ThreadId == other.ThreadId
-            && self.ExceptionRecord == other.ExceptionRecord
-            && self.ContextRecord == other.ContextRecord
-            && self.ClientPointers == other.ClientPointers
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_EXCEPTION_INFORMATION64 {}
-impl FromIntoMemory for MINIDUMP_EXCEPTION_INFORMATION64 {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 32u32 as usize);
-        let f_ThreadId = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_ExceptionRecord = <u64 as FromIntoMemory>::from_bytes(&from[8..8 + 8]);
-        let f_ContextRecord = <u64 as FromIntoMemory>::from_bytes(&from[16..16 + 8]);
-        let f_ClientPointers =
-            <super::super::super::Foundation::BOOL as FromIntoMemory>::from_bytes(
-                &from[24..24 + 4],
-            );
-        Self {
-            ThreadId: f_ThreadId,
-            ExceptionRecord: f_ExceptionRecord,
-            ContextRecord: f_ContextRecord,
-            ClientPointers: f_ClientPointers,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 32u32 as usize);
-        FromIntoMemory::into_bytes(self.ThreadId, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.ExceptionRecord, &mut into[8..8 + 8]);
-        FromIntoMemory::into_bytes(self.ContextRecord, &mut into[16..16 + 8]);
-        FromIntoMemory::into_bytes(self.ClientPointers, &mut into[24..24 + 4]);
-    }
-    fn size() -> usize {
-        32u32 as usize
-    }
-}
-pub struct MINIDUMP_EXCEPTION_STREAM {
-    pub ThreadId: u32,
-    pub __alignment: u32,
-    pub ExceptionRecord: MINIDUMP_EXCEPTION,
-    pub ThreadContext: MINIDUMP_LOCATION_DESCRIPTOR,
-}
-impl ::core::marker::Copy for MINIDUMP_EXCEPTION_STREAM {}
-impl ::core::clone::Clone for MINIDUMP_EXCEPTION_STREAM {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_EXCEPTION_STREAM {
-    fn eq(&self, other: &Self) -> bool {
-        self.ThreadId == other.ThreadId
-            && self.__alignment == other.__alignment
-            && self.ExceptionRecord == other.ExceptionRecord
-            && self.ThreadContext == other.ThreadContext
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_EXCEPTION_STREAM {}
-impl FromIntoMemory for MINIDUMP_EXCEPTION_STREAM {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 168u32 as usize);
-        let f_ThreadId = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f___alignment = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        let f_ExceptionRecord =
-            <MINIDUMP_EXCEPTION as FromIntoMemory>::from_bytes(&from[8..8 + 152]);
-        let f_ThreadContext =
-            <MINIDUMP_LOCATION_DESCRIPTOR as FromIntoMemory>::from_bytes(&from[160..160 + 8]);
-        Self {
-            ThreadId: f_ThreadId,
-            __alignment: f___alignment,
-            ExceptionRecord: f_ExceptionRecord,
-            ThreadContext: f_ThreadContext,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 168u32 as usize);
-        FromIntoMemory::into_bytes(self.ThreadId, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.__alignment, &mut into[4..4 + 4]);
-        FromIntoMemory::into_bytes(self.ExceptionRecord, &mut into[8..8 + 152]);
-        FromIntoMemory::into_bytes(self.ThreadContext, &mut into[160..160 + 8]);
-    }
-    fn size() -> usize {
-        168u32 as usize
-    }
-}
-pub struct MINIDUMP_FUNCTION_TABLE_DESCRIPTOR {
-    pub MinimumAddress: u64,
-    pub MaximumAddress: u64,
-    pub BaseAddress: u64,
-    pub EntryCount: u32,
-    pub SizeOfAlignPad: u32,
-}
-impl ::core::marker::Copy for MINIDUMP_FUNCTION_TABLE_DESCRIPTOR {}
-impl ::core::clone::Clone for MINIDUMP_FUNCTION_TABLE_DESCRIPTOR {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_FUNCTION_TABLE_DESCRIPTOR {
-    fn eq(&self, other: &Self) -> bool {
-        self.MinimumAddress == other.MinimumAddress
-            && self.MaximumAddress == other.MaximumAddress
-            && self.BaseAddress == other.BaseAddress
-            && self.EntryCount == other.EntryCount
-            && self.SizeOfAlignPad == other.SizeOfAlignPad
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_FUNCTION_TABLE_DESCRIPTOR {}
-impl FromIntoMemory for MINIDUMP_FUNCTION_TABLE_DESCRIPTOR {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 32u32 as usize);
-        let f_MinimumAddress = <u64 as FromIntoMemory>::from_bytes(&from[0..0 + 8]);
-        let f_MaximumAddress = <u64 as FromIntoMemory>::from_bytes(&from[8..8 + 8]);
-        let f_BaseAddress = <u64 as FromIntoMemory>::from_bytes(&from[16..16 + 8]);
-        let f_EntryCount = <u32 as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
-        let f_SizeOfAlignPad = <u32 as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
-        Self {
-            MinimumAddress: f_MinimumAddress,
-            MaximumAddress: f_MaximumAddress,
-            BaseAddress: f_BaseAddress,
-            EntryCount: f_EntryCount,
-            SizeOfAlignPad: f_SizeOfAlignPad,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 32u32 as usize);
-        FromIntoMemory::into_bytes(self.MinimumAddress, &mut into[0..0 + 8]);
-        FromIntoMemory::into_bytes(self.MaximumAddress, &mut into[8..8 + 8]);
-        FromIntoMemory::into_bytes(self.BaseAddress, &mut into[16..16 + 8]);
-        FromIntoMemory::into_bytes(self.EntryCount, &mut into[24..24 + 4]);
-        FromIntoMemory::into_bytes(self.SizeOfAlignPad, &mut into[28..28 + 4]);
-    }
-    fn size() -> usize {
-        32u32 as usize
     }
 }
 pub struct MINIDUMP_FUNCTION_TABLE_STREAM {
@@ -20064,138 +25743,6 @@ impl FromIntoMemory for MINIDUMP_HANDLE_DATA_STREAM {
     }
     fn size() -> usize {
         16u32 as usize
-    }
-}
-pub struct MINIDUMP_HANDLE_DESCRIPTOR {
-    pub Handle: u64,
-    pub TypeNameRva: u32,
-    pub ObjectNameRva: u32,
-    pub Attributes: u32,
-    pub GrantedAccess: u32,
-    pub HandleCount: u32,
-    pub PointerCount: u32,
-}
-impl ::core::marker::Copy for MINIDUMP_HANDLE_DESCRIPTOR {}
-impl ::core::clone::Clone for MINIDUMP_HANDLE_DESCRIPTOR {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_HANDLE_DESCRIPTOR {
-    fn eq(&self, other: &Self) -> bool {
-        self.Handle == other.Handle
-            && self.TypeNameRva == other.TypeNameRva
-            && self.ObjectNameRva == other.ObjectNameRva
-            && self.Attributes == other.Attributes
-            && self.GrantedAccess == other.GrantedAccess
-            && self.HandleCount == other.HandleCount
-            && self.PointerCount == other.PointerCount
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_HANDLE_DESCRIPTOR {}
-impl FromIntoMemory for MINIDUMP_HANDLE_DESCRIPTOR {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 32u32 as usize);
-        let f_Handle = <u64 as FromIntoMemory>::from_bytes(&from[0..0 + 8]);
-        let f_TypeNameRva = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_ObjectNameRva = <u32 as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
-        let f_Attributes = <u32 as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
-        let f_GrantedAccess = <u32 as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
-        let f_HandleCount = <u32 as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
-        let f_PointerCount = <u32 as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
-        Self {
-            Handle: f_Handle,
-            TypeNameRva: f_TypeNameRva,
-            ObjectNameRva: f_ObjectNameRva,
-            Attributes: f_Attributes,
-            GrantedAccess: f_GrantedAccess,
-            HandleCount: f_HandleCount,
-            PointerCount: f_PointerCount,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 32u32 as usize);
-        FromIntoMemory::into_bytes(self.Handle, &mut into[0..0 + 8]);
-        FromIntoMemory::into_bytes(self.TypeNameRva, &mut into[8..8 + 4]);
-        FromIntoMemory::into_bytes(self.ObjectNameRva, &mut into[12..12 + 4]);
-        FromIntoMemory::into_bytes(self.Attributes, &mut into[16..16 + 4]);
-        FromIntoMemory::into_bytes(self.GrantedAccess, &mut into[20..20 + 4]);
-        FromIntoMemory::into_bytes(self.HandleCount, &mut into[24..24 + 4]);
-        FromIntoMemory::into_bytes(self.PointerCount, &mut into[28..28 + 4]);
-    }
-    fn size() -> usize {
-        32u32 as usize
-    }
-}
-pub struct MINIDUMP_HANDLE_DESCRIPTOR_2 {
-    pub Handle: u64,
-    pub TypeNameRva: u32,
-    pub ObjectNameRva: u32,
-    pub Attributes: u32,
-    pub GrantedAccess: u32,
-    pub HandleCount: u32,
-    pub PointerCount: u32,
-    pub ObjectInfoRva: u32,
-    pub Reserved0: u32,
-}
-impl ::core::marker::Copy for MINIDUMP_HANDLE_DESCRIPTOR_2 {}
-impl ::core::clone::Clone for MINIDUMP_HANDLE_DESCRIPTOR_2 {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_HANDLE_DESCRIPTOR_2 {
-    fn eq(&self, other: &Self) -> bool {
-        self.Handle == other.Handle
-            && self.TypeNameRva == other.TypeNameRva
-            && self.ObjectNameRva == other.ObjectNameRva
-            && self.Attributes == other.Attributes
-            && self.GrantedAccess == other.GrantedAccess
-            && self.HandleCount == other.HandleCount
-            && self.PointerCount == other.PointerCount
-            && self.ObjectInfoRva == other.ObjectInfoRva
-            && self.Reserved0 == other.Reserved0
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_HANDLE_DESCRIPTOR_2 {}
-impl FromIntoMemory for MINIDUMP_HANDLE_DESCRIPTOR_2 {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 40u32 as usize);
-        let f_Handle = <u64 as FromIntoMemory>::from_bytes(&from[0..0 + 8]);
-        let f_TypeNameRva = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_ObjectNameRva = <u32 as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
-        let f_Attributes = <u32 as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
-        let f_GrantedAccess = <u32 as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
-        let f_HandleCount = <u32 as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
-        let f_PointerCount = <u32 as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
-        let f_ObjectInfoRva = <u32 as FromIntoMemory>::from_bytes(&from[32..32 + 4]);
-        let f_Reserved0 = <u32 as FromIntoMemory>::from_bytes(&from[36..36 + 4]);
-        Self {
-            Handle: f_Handle,
-            TypeNameRva: f_TypeNameRva,
-            ObjectNameRva: f_ObjectNameRva,
-            Attributes: f_Attributes,
-            GrantedAccess: f_GrantedAccess,
-            HandleCount: f_HandleCount,
-            PointerCount: f_PointerCount,
-            ObjectInfoRva: f_ObjectInfoRva,
-            Reserved0: f_Reserved0,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 40u32 as usize);
-        FromIntoMemory::into_bytes(self.Handle, &mut into[0..0 + 8]);
-        FromIntoMemory::into_bytes(self.TypeNameRva, &mut into[8..8 + 4]);
-        FromIntoMemory::into_bytes(self.ObjectNameRva, &mut into[12..12 + 4]);
-        FromIntoMemory::into_bytes(self.Attributes, &mut into[16..16 + 4]);
-        FromIntoMemory::into_bytes(self.GrantedAccess, &mut into[20..20 + 4]);
-        FromIntoMemory::into_bytes(self.HandleCount, &mut into[24..24 + 4]);
-        FromIntoMemory::into_bytes(self.PointerCount, &mut into[28..28 + 4]);
-        FromIntoMemory::into_bytes(self.ObjectInfoRva, &mut into[32..32 + 4]);
-        FromIntoMemory::into_bytes(self.Reserved0, &mut into[36..36 + 4]);
-    }
-    fn size() -> usize {
-        40u32 as usize
     }
 }
 pub struct MINIDUMP_HANDLE_OBJECT_INFORMATION {
@@ -20355,212 +25902,6 @@ impl FromIntoMemory for MINIDUMP_HANDLE_OPERATION_LIST {
         16u32 as usize
     }
 }
-pub struct MINIDUMP_HEADER {
-    pub Signature: u32,
-    pub Version: u32,
-    pub NumberOfStreams: u32,
-    pub StreamDirectoryRva: u32,
-    pub CheckSum: u32,
-    pub Anonymous: MINIDUMP_HEADER_0,
-    pub Flags: u64,
-}
-impl ::core::marker::Copy for MINIDUMP_HEADER {}
-impl ::core::clone::Clone for MINIDUMP_HEADER {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_HEADER {
-    fn eq(&self, other: &Self) -> bool {
-        self.Signature == other.Signature
-            && self.Version == other.Version
-            && self.NumberOfStreams == other.NumberOfStreams
-            && self.StreamDirectoryRva == other.StreamDirectoryRva
-            && self.CheckSum == other.CheckSum
-            && self.Anonymous == other.Anonymous
-            && self.Flags == other.Flags
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_HEADER {}
-impl FromIntoMemory for MINIDUMP_HEADER {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 40u32 as usize);
-        let f_Signature = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_Version = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        let f_NumberOfStreams = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_StreamDirectoryRva = <u32 as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
-        let f_CheckSum = <u32 as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
-        let f_Anonymous = <MINIDUMP_HEADER_0 as FromIntoMemory>::from_bytes(&from[20..20 + 8]);
-        let f_Flags = <u64 as FromIntoMemory>::from_bytes(&from[32..32 + 8]);
-        Self {
-            Signature: f_Signature,
-            Version: f_Version,
-            NumberOfStreams: f_NumberOfStreams,
-            StreamDirectoryRva: f_StreamDirectoryRva,
-            CheckSum: f_CheckSum,
-            Anonymous: f_Anonymous,
-            Flags: f_Flags,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 40u32 as usize);
-        FromIntoMemory::into_bytes(self.Signature, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.Version, &mut into[4..4 + 4]);
-        FromIntoMemory::into_bytes(self.NumberOfStreams, &mut into[8..8 + 4]);
-        FromIntoMemory::into_bytes(self.StreamDirectoryRva, &mut into[12..12 + 4]);
-        FromIntoMemory::into_bytes(self.CheckSum, &mut into[16..16 + 4]);
-        FromIntoMemory::into_bytes(self.Anonymous, &mut into[20..20 + 8]);
-        FromIntoMemory::into_bytes(self.Flags, &mut into[32..32 + 8]);
-    }
-    fn size() -> usize {
-        40u32 as usize
-    }
-}
-pub struct MINIDUMP_HEADER_0 {
-    pub Reserved: u32,
-    pub TimeDateStamp: u32,
-}
-impl ::core::marker::Copy for MINIDUMP_HEADER_0 {}
-impl ::core::clone::Clone for MINIDUMP_HEADER_0 {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_HEADER_0 {
-    fn eq(&self, other: &Self) -> bool {
-        self.Reserved == other.Reserved && self.TimeDateStamp == other.TimeDateStamp
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_HEADER_0 {}
-impl FromIntoMemory for MINIDUMP_HEADER_0 {
-    fn from_bytes(from: &[u8]) -> Self {
-        todo!()
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        todo!()
-    }
-    fn size() -> usize {
-        todo!()
-    }
-}
-pub struct MINIDUMP_INCLUDE_MODULE_CALLBACK {
-    pub BaseOfImage: u64,
-}
-impl ::core::marker::Copy for MINIDUMP_INCLUDE_MODULE_CALLBACK {}
-impl ::core::clone::Clone for MINIDUMP_INCLUDE_MODULE_CALLBACK {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_INCLUDE_MODULE_CALLBACK {
-    fn eq(&self, other: &Self) -> bool {
-        self.BaseOfImage == other.BaseOfImage
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_INCLUDE_MODULE_CALLBACK {}
-impl FromIntoMemory for MINIDUMP_INCLUDE_MODULE_CALLBACK {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 8u32 as usize);
-        let f_BaseOfImage = <u64 as FromIntoMemory>::from_bytes(&from[0..0 + 8]);
-        Self {
-            BaseOfImage: f_BaseOfImage,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 8u32 as usize);
-        FromIntoMemory::into_bytes(self.BaseOfImage, &mut into[0..0 + 8]);
-    }
-    fn size() -> usize {
-        8u32 as usize
-    }
-}
-pub struct MINIDUMP_INCLUDE_THREAD_CALLBACK {
-    pub ThreadId: u32,
-}
-impl ::core::marker::Copy for MINIDUMP_INCLUDE_THREAD_CALLBACK {}
-impl ::core::clone::Clone for MINIDUMP_INCLUDE_THREAD_CALLBACK {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::fmt::Debug for MINIDUMP_INCLUDE_THREAD_CALLBACK {
-    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
-        f.debug_struct("MINIDUMP_INCLUDE_THREAD_CALLBACK")
-            .field("ThreadId", &self.ThreadId)
-            .finish()
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_INCLUDE_THREAD_CALLBACK {
-    fn eq(&self, other: &Self) -> bool {
-        self.ThreadId == other.ThreadId
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_INCLUDE_THREAD_CALLBACK {}
-impl FromIntoMemory for MINIDUMP_INCLUDE_THREAD_CALLBACK {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 4u32 as usize);
-        let f_ThreadId = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        Self {
-            ThreadId: f_ThreadId,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 4u32 as usize);
-        FromIntoMemory::into_bytes(self.ThreadId, &mut into[0..0 + 4]);
-    }
-    fn size() -> usize {
-        4u32 as usize
-    }
-}
-pub struct MINIDUMP_IO_CALLBACK {
-    pub Handle: super::super::super::Foundation::HANDLE,
-    pub Offset: u64,
-    pub Buffer: MutPtr<::core::ffi::c_void>,
-    pub BufferBytes: u32,
-}
-impl ::core::marker::Copy for MINIDUMP_IO_CALLBACK {}
-impl ::core::clone::Clone for MINIDUMP_IO_CALLBACK {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_IO_CALLBACK {
-    fn eq(&self, other: &Self) -> bool {
-        self.Handle == other.Handle
-            && self.Offset == other.Offset
-            && self.Buffer == other.Buffer
-            && self.BufferBytes == other.BufferBytes
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_IO_CALLBACK {}
-impl FromIntoMemory for MINIDUMP_IO_CALLBACK {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 24u32 as usize);
-        let f_Handle = <super::super::super::Foundation::HANDLE as FromIntoMemory>::from_bytes(
-            &from[0..0 + 4],
-        );
-        let f_Offset = <u64 as FromIntoMemory>::from_bytes(&from[8..8 + 8]);
-        let f_Buffer =
-            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
-        let f_BufferBytes = <u32 as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
-        Self {
-            Handle: f_Handle,
-            Offset: f_Offset,
-            Buffer: f_Buffer,
-            BufferBytes: f_BufferBytes,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 24u32 as usize);
-        FromIntoMemory::into_bytes(self.Handle, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.Offset, &mut into[8..8 + 8]);
-        FromIntoMemory::into_bytes(self.Buffer, &mut into[16..16 + 4]);
-        FromIntoMemory::into_bytes(self.BufferBytes, &mut into[20..20 + 4]);
-    }
-    fn size() -> usize {
-        24u32 as usize
-    }
-}
 pub struct MINIDUMP_LOCATION_DESCRIPTOR {
     pub DataSize: u32,
     pub Rva: u32,
@@ -20602,305 +25943,6 @@ impl FromIntoMemory for MINIDUMP_LOCATION_DESCRIPTOR {
     }
     fn size() -> usize {
         8u32 as usize
-    }
-}
-pub struct MINIDUMP_LOCATION_DESCRIPTOR64 {
-    pub DataSize: u64,
-    pub Rva: u64,
-}
-impl ::core::marker::Copy for MINIDUMP_LOCATION_DESCRIPTOR64 {}
-impl ::core::clone::Clone for MINIDUMP_LOCATION_DESCRIPTOR64 {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_LOCATION_DESCRIPTOR64 {
-    fn eq(&self, other: &Self) -> bool {
-        self.DataSize == other.DataSize && self.Rva == other.Rva
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_LOCATION_DESCRIPTOR64 {}
-impl FromIntoMemory for MINIDUMP_LOCATION_DESCRIPTOR64 {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
-        let f_DataSize = <u64 as FromIntoMemory>::from_bytes(&from[0..0 + 8]);
-        let f_Rva = <u64 as FromIntoMemory>::from_bytes(&from[8..8 + 8]);
-        Self {
-            DataSize: f_DataSize,
-            Rva: f_Rva,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
-        FromIntoMemory::into_bytes(self.DataSize, &mut into[0..0 + 8]);
-        FromIntoMemory::into_bytes(self.Rva, &mut into[8..8 + 8]);
-    }
-    fn size() -> usize {
-        16u32 as usize
-    }
-}
-pub struct MINIDUMP_MEMORY64_LIST {
-    pub NumberOfMemoryRanges: u64,
-    pub BaseRva: u64,
-    pub MemoryRanges: [MINIDUMP_MEMORY_DESCRIPTOR64; 1],
-}
-impl ::core::marker::Copy for MINIDUMP_MEMORY64_LIST {}
-impl ::core::clone::Clone for MINIDUMP_MEMORY64_LIST {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_MEMORY64_LIST {
-    fn eq(&self, other: &Self) -> bool {
-        self.NumberOfMemoryRanges == other.NumberOfMemoryRanges
-            && self.BaseRva == other.BaseRva
-            && self.MemoryRanges == other.MemoryRanges
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_MEMORY64_LIST {}
-impl FromIntoMemory for MINIDUMP_MEMORY64_LIST {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 32u32 as usize);
-        let f_NumberOfMemoryRanges = <u64 as FromIntoMemory>::from_bytes(&from[0..0 + 8]);
-        let f_BaseRva = <u64 as FromIntoMemory>::from_bytes(&from[8..8 + 8]);
-        let f_MemoryRanges =
-            <[MINIDUMP_MEMORY_DESCRIPTOR64; 1] as FromIntoMemory>::from_bytes(&from[16..16 + 16]);
-        Self {
-            NumberOfMemoryRanges: f_NumberOfMemoryRanges,
-            BaseRva: f_BaseRva,
-            MemoryRanges: f_MemoryRanges,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 32u32 as usize);
-        FromIntoMemory::into_bytes(self.NumberOfMemoryRanges, &mut into[0..0 + 8]);
-        FromIntoMemory::into_bytes(self.BaseRva, &mut into[8..8 + 8]);
-        FromIntoMemory::into_bytes(self.MemoryRanges, &mut into[16..16 + 16]);
-    }
-    fn size() -> usize {
-        32u32 as usize
-    }
-}
-pub struct MINIDUMP_MEMORY_DESCRIPTOR {
-    pub StartOfMemoryRange: u64,
-    pub Memory: MINIDUMP_LOCATION_DESCRIPTOR,
-}
-impl ::core::marker::Copy for MINIDUMP_MEMORY_DESCRIPTOR {}
-impl ::core::clone::Clone for MINIDUMP_MEMORY_DESCRIPTOR {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_MEMORY_DESCRIPTOR {
-    fn eq(&self, other: &Self) -> bool {
-        self.StartOfMemoryRange == other.StartOfMemoryRange && self.Memory == other.Memory
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_MEMORY_DESCRIPTOR {}
-impl FromIntoMemory for MINIDUMP_MEMORY_DESCRIPTOR {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
-        let f_StartOfMemoryRange = <u64 as FromIntoMemory>::from_bytes(&from[0..0 + 8]);
-        let f_Memory =
-            <MINIDUMP_LOCATION_DESCRIPTOR as FromIntoMemory>::from_bytes(&from[8..8 + 8]);
-        Self {
-            StartOfMemoryRange: f_StartOfMemoryRange,
-            Memory: f_Memory,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
-        FromIntoMemory::into_bytes(self.StartOfMemoryRange, &mut into[0..0 + 8]);
-        FromIntoMemory::into_bytes(self.Memory, &mut into[8..8 + 8]);
-    }
-    fn size() -> usize {
-        16u32 as usize
-    }
-}
-pub struct MINIDUMP_MEMORY_DESCRIPTOR64 {
-    pub StartOfMemoryRange: u64,
-    pub DataSize: u64,
-}
-impl ::core::marker::Copy for MINIDUMP_MEMORY_DESCRIPTOR64 {}
-impl ::core::clone::Clone for MINIDUMP_MEMORY_DESCRIPTOR64 {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_MEMORY_DESCRIPTOR64 {
-    fn eq(&self, other: &Self) -> bool {
-        self.StartOfMemoryRange == other.StartOfMemoryRange && self.DataSize == other.DataSize
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_MEMORY_DESCRIPTOR64 {}
-impl FromIntoMemory for MINIDUMP_MEMORY_DESCRIPTOR64 {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
-        let f_StartOfMemoryRange = <u64 as FromIntoMemory>::from_bytes(&from[0..0 + 8]);
-        let f_DataSize = <u64 as FromIntoMemory>::from_bytes(&from[8..8 + 8]);
-        Self {
-            StartOfMemoryRange: f_StartOfMemoryRange,
-            DataSize: f_DataSize,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
-        FromIntoMemory::into_bytes(self.StartOfMemoryRange, &mut into[0..0 + 8]);
-        FromIntoMemory::into_bytes(self.DataSize, &mut into[8..8 + 8]);
-    }
-    fn size() -> usize {
-        16u32 as usize
-    }
-}
-pub struct MINIDUMP_MEMORY_INFO {
-    pub BaseAddress: u64,
-    pub AllocationBase: u64,
-    pub AllocationProtect: u32,
-    pub __alignment1: u32,
-    pub RegionSize: u64,
-    pub State: super::super::Memory::VIRTUAL_ALLOCATION_TYPE,
-    pub Protect: u32,
-    pub Type: u32,
-    pub __alignment2: u32,
-}
-impl ::core::marker::Copy for MINIDUMP_MEMORY_INFO {}
-impl ::core::clone::Clone for MINIDUMP_MEMORY_INFO {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_MEMORY_INFO {
-    fn eq(&self, other: &Self) -> bool {
-        self.BaseAddress == other.BaseAddress
-            && self.AllocationBase == other.AllocationBase
-            && self.AllocationProtect == other.AllocationProtect
-            && self.__alignment1 == other.__alignment1
-            && self.RegionSize == other.RegionSize
-            && self.State == other.State
-            && self.Protect == other.Protect
-            && self.Type == other.Type
-            && self.__alignment2 == other.__alignment2
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_MEMORY_INFO {}
-impl FromIntoMemory for MINIDUMP_MEMORY_INFO {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 48u32 as usize);
-        let f_BaseAddress = <u64 as FromIntoMemory>::from_bytes(&from[0..0 + 8]);
-        let f_AllocationBase = <u64 as FromIntoMemory>::from_bytes(&from[8..8 + 8]);
-        let f_AllocationProtect = <u32 as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
-        let f___alignment1 = <u32 as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
-        let f_RegionSize = <u64 as FromIntoMemory>::from_bytes(&from[24..24 + 8]);
-        let f_State = <super::super::Memory::VIRTUAL_ALLOCATION_TYPE as FromIntoMemory>::from_bytes(
-            &from[32..32 + 4],
-        );
-        let f_Protect = <u32 as FromIntoMemory>::from_bytes(&from[36..36 + 4]);
-        let f_Type = <u32 as FromIntoMemory>::from_bytes(&from[40..40 + 4]);
-        let f___alignment2 = <u32 as FromIntoMemory>::from_bytes(&from[44..44 + 4]);
-        Self {
-            BaseAddress: f_BaseAddress,
-            AllocationBase: f_AllocationBase,
-            AllocationProtect: f_AllocationProtect,
-            __alignment1: f___alignment1,
-            RegionSize: f_RegionSize,
-            State: f_State,
-            Protect: f_Protect,
-            Type: f_Type,
-            __alignment2: f___alignment2,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 48u32 as usize);
-        FromIntoMemory::into_bytes(self.BaseAddress, &mut into[0..0 + 8]);
-        FromIntoMemory::into_bytes(self.AllocationBase, &mut into[8..8 + 8]);
-        FromIntoMemory::into_bytes(self.AllocationProtect, &mut into[16..16 + 4]);
-        FromIntoMemory::into_bytes(self.__alignment1, &mut into[20..20 + 4]);
-        FromIntoMemory::into_bytes(self.RegionSize, &mut into[24..24 + 8]);
-        FromIntoMemory::into_bytes(self.State, &mut into[32..32 + 4]);
-        FromIntoMemory::into_bytes(self.Protect, &mut into[36..36 + 4]);
-        FromIntoMemory::into_bytes(self.Type, &mut into[40..40 + 4]);
-        FromIntoMemory::into_bytes(self.__alignment2, &mut into[44..44 + 4]);
-    }
-    fn size() -> usize {
-        48u32 as usize
-    }
-}
-pub struct MINIDUMP_MEMORY_INFO_LIST {
-    pub SizeOfHeader: u32,
-    pub SizeOfEntry: u32,
-    pub NumberOfEntries: u64,
-}
-impl ::core::marker::Copy for MINIDUMP_MEMORY_INFO_LIST {}
-impl ::core::clone::Clone for MINIDUMP_MEMORY_INFO_LIST {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_MEMORY_INFO_LIST {
-    fn eq(&self, other: &Self) -> bool {
-        self.SizeOfHeader == other.SizeOfHeader
-            && self.SizeOfEntry == other.SizeOfEntry
-            && self.NumberOfEntries == other.NumberOfEntries
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_MEMORY_INFO_LIST {}
-impl FromIntoMemory for MINIDUMP_MEMORY_INFO_LIST {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
-        let f_SizeOfHeader = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_SizeOfEntry = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        let f_NumberOfEntries = <u64 as FromIntoMemory>::from_bytes(&from[8..8 + 8]);
-        Self {
-            SizeOfHeader: f_SizeOfHeader,
-            SizeOfEntry: f_SizeOfEntry,
-            NumberOfEntries: f_NumberOfEntries,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
-        FromIntoMemory::into_bytes(self.SizeOfHeader, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.SizeOfEntry, &mut into[4..4 + 4]);
-        FromIntoMemory::into_bytes(self.NumberOfEntries, &mut into[8..8 + 8]);
-    }
-    fn size() -> usize {
-        16u32 as usize
-    }
-}
-pub struct MINIDUMP_MEMORY_LIST {
-    pub NumberOfMemoryRanges: u32,
-    pub MemoryRanges: [MINIDUMP_MEMORY_DESCRIPTOR; 1],
-}
-impl ::core::marker::Copy for MINIDUMP_MEMORY_LIST {}
-impl ::core::clone::Clone for MINIDUMP_MEMORY_LIST {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_MEMORY_LIST {
-    fn eq(&self, other: &Self) -> bool {
-        self.NumberOfMemoryRanges == other.NumberOfMemoryRanges
-            && self.MemoryRanges == other.MemoryRanges
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_MEMORY_LIST {}
-impl FromIntoMemory for MINIDUMP_MEMORY_LIST {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 24u32 as usize);
-        let f_NumberOfMemoryRanges = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_MemoryRanges =
-            <[MINIDUMP_MEMORY_DESCRIPTOR; 1] as FromIntoMemory>::from_bytes(&from[8..8 + 16]);
-        Self {
-            NumberOfMemoryRanges: f_NumberOfMemoryRanges,
-            MemoryRanges: f_MemoryRanges,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 24u32 as usize);
-        FromIntoMemory::into_bytes(self.NumberOfMemoryRanges, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.MemoryRanges, &mut into[8..8 + 16]);
-    }
-    fn size() -> usize {
-        24u32 as usize
     }
 }
 pub const MINIDUMP_MISC1_PROCESSOR_POWER_INFO: u32 = 4u32;
@@ -21376,147 +26418,6 @@ impl FromIntoMemory for MINIDUMP_MISC_INFO_4 {
         468u32 as usize
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Time'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-pub struct MINIDUMP_MISC_INFO_5 {
-    pub SizeOfInfo: u32,
-    pub Flags1: u32,
-    pub ProcessId: u32,
-    pub ProcessCreateTime: u32,
-    pub ProcessUserTime: u32,
-    pub ProcessKernelTime: u32,
-    pub ProcessorMaxMhz: u32,
-    pub ProcessorCurrentMhz: u32,
-    pub ProcessorMhzLimit: u32,
-    pub ProcessorMaxIdleState: u32,
-    pub ProcessorCurrentIdleState: u32,
-    pub ProcessIntegrityLevel: u32,
-    pub ProcessExecuteFlags: u32,
-    pub ProtectedProcess: u32,
-    pub TimeZoneId: u32,
-    pub TimeZone: super::super::Time::TIME_ZONE_INFORMATION,
-    pub BuildString: [u16; 260],
-    pub DbgBldStr: [u16; 40],
-    pub XStateData: XSTATE_CONFIG_FEATURE_MSC_INFO,
-    pub ProcessCookie: u32,
-}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Time'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl ::core::marker::Copy for MINIDUMP_MISC_INFO_5 {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Time'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl ::core::clone::Clone for MINIDUMP_MISC_INFO_5 {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Time'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl ::core::cmp::PartialEq for MINIDUMP_MISC_INFO_5 {
-    fn eq(&self, other: &Self) -> bool {
-        self.SizeOfInfo == other.SizeOfInfo
-            && self.Flags1 == other.Flags1
-            && self.ProcessId == other.ProcessId
-            && self.ProcessCreateTime == other.ProcessCreateTime
-            && self.ProcessUserTime == other.ProcessUserTime
-            && self.ProcessKernelTime == other.ProcessKernelTime
-            && self.ProcessorMaxMhz == other.ProcessorMaxMhz
-            && self.ProcessorCurrentMhz == other.ProcessorCurrentMhz
-            && self.ProcessorMhzLimit == other.ProcessorMhzLimit
-            && self.ProcessorMaxIdleState == other.ProcessorMaxIdleState
-            && self.ProcessorCurrentIdleState == other.ProcessorCurrentIdleState
-            && self.ProcessIntegrityLevel == other.ProcessIntegrityLevel
-            && self.ProcessExecuteFlags == other.ProcessExecuteFlags
-            && self.ProtectedProcess == other.ProtectedProcess
-            && self.TimeZoneId == other.TimeZoneId
-            && self.TimeZone == other.TimeZone
-            && self.BuildString == other.BuildString
-            && self.DbgBldStr == other.DbgBldStr
-            && self.XStateData == other.XStateData
-            && self.ProcessCookie == other.ProcessCookie
-    }
-}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Time'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl ::core::cmp::Eq for MINIDUMP_MISC_INFO_5 {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Time'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl FromIntoMemory for MINIDUMP_MISC_INFO_5 {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 1008u32 as usize);
-        let f_SizeOfInfo = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_Flags1 = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        let f_ProcessId = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_ProcessCreateTime = <u32 as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
-        let f_ProcessUserTime = <u32 as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
-        let f_ProcessKernelTime = <u32 as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
-        let f_ProcessorMaxMhz = <u32 as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
-        let f_ProcessorCurrentMhz = <u32 as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
-        let f_ProcessorMhzLimit = <u32 as FromIntoMemory>::from_bytes(&from[32..32 + 4]);
-        let f_ProcessorMaxIdleState = <u32 as FromIntoMemory>::from_bytes(&from[36..36 + 4]);
-        let f_ProcessorCurrentIdleState = <u32 as FromIntoMemory>::from_bytes(&from[40..40 + 4]);
-        let f_ProcessIntegrityLevel = <u32 as FromIntoMemory>::from_bytes(&from[44..44 + 4]);
-        let f_ProcessExecuteFlags = <u32 as FromIntoMemory>::from_bytes(&from[48..48 + 4]);
-        let f_ProtectedProcess = <u32 as FromIntoMemory>::from_bytes(&from[52..52 + 4]);
-        let f_TimeZoneId = <u32 as FromIntoMemory>::from_bytes(&from[56..56 + 4]);
-        let f_TimeZone = <super::super::Time::TIME_ZONE_INFORMATION as FromIntoMemory>::from_bytes(
-            &from[60..60 + 108],
-        );
-        let f_BuildString = <[u16; 260] as FromIntoMemory>::from_bytes(&from[168..168 + 260]);
-        let f_DbgBldStr = <[u16; 40] as FromIntoMemory>::from_bytes(&from[428..428 + 40]);
-        let f_XStateData =
-            <XSTATE_CONFIG_FEATURE_MSC_INFO as FromIntoMemory>::from_bytes(&from[472..472 + 528]);
-        let f_ProcessCookie = <u32 as FromIntoMemory>::from_bytes(&from[1000..1000 + 4]);
-        Self {
-            SizeOfInfo: f_SizeOfInfo,
-            Flags1: f_Flags1,
-            ProcessId: f_ProcessId,
-            ProcessCreateTime: f_ProcessCreateTime,
-            ProcessUserTime: f_ProcessUserTime,
-            ProcessKernelTime: f_ProcessKernelTime,
-            ProcessorMaxMhz: f_ProcessorMaxMhz,
-            ProcessorCurrentMhz: f_ProcessorCurrentMhz,
-            ProcessorMhzLimit: f_ProcessorMhzLimit,
-            ProcessorMaxIdleState: f_ProcessorMaxIdleState,
-            ProcessorCurrentIdleState: f_ProcessorCurrentIdleState,
-            ProcessIntegrityLevel: f_ProcessIntegrityLevel,
-            ProcessExecuteFlags: f_ProcessExecuteFlags,
-            ProtectedProcess: f_ProtectedProcess,
-            TimeZoneId: f_TimeZoneId,
-            TimeZone: f_TimeZone,
-            BuildString: f_BuildString,
-            DbgBldStr: f_DbgBldStr,
-            XStateData: f_XStateData,
-            ProcessCookie: f_ProcessCookie,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 1008u32 as usize);
-        FromIntoMemory::into_bytes(self.SizeOfInfo, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.Flags1, &mut into[4..4 + 4]);
-        FromIntoMemory::into_bytes(self.ProcessId, &mut into[8..8 + 4]);
-        FromIntoMemory::into_bytes(self.ProcessCreateTime, &mut into[12..12 + 4]);
-        FromIntoMemory::into_bytes(self.ProcessUserTime, &mut into[16..16 + 4]);
-        FromIntoMemory::into_bytes(self.ProcessKernelTime, &mut into[20..20 + 4]);
-        FromIntoMemory::into_bytes(self.ProcessorMaxMhz, &mut into[24..24 + 4]);
-        FromIntoMemory::into_bytes(self.ProcessorCurrentMhz, &mut into[28..28 + 4]);
-        FromIntoMemory::into_bytes(self.ProcessorMhzLimit, &mut into[32..32 + 4]);
-        FromIntoMemory::into_bytes(self.ProcessorMaxIdleState, &mut into[36..36 + 4]);
-        FromIntoMemory::into_bytes(self.ProcessorCurrentIdleState, &mut into[40..40 + 4]);
-        FromIntoMemory::into_bytes(self.ProcessIntegrityLevel, &mut into[44..44 + 4]);
-        FromIntoMemory::into_bytes(self.ProcessExecuteFlags, &mut into[48..48 + 4]);
-        FromIntoMemory::into_bytes(self.ProtectedProcess, &mut into[52..52 + 4]);
-        FromIntoMemory::into_bytes(self.TimeZoneId, &mut into[56..56 + 4]);
-        FromIntoMemory::into_bytes(self.TimeZone, &mut into[60..60 + 108]);
-        FromIntoMemory::into_bytes(self.BuildString, &mut into[168..168 + 260]);
-        FromIntoMemory::into_bytes(self.DbgBldStr, &mut into[428..428 + 40]);
-        FromIntoMemory::into_bytes(self.XStateData, &mut into[472..472 + 528]);
-        FromIntoMemory::into_bytes(self.ProcessCookie, &mut into[1000..1000 + 4]);
-    }
-    fn size() -> usize {
-        1008u32 as usize
-    }
-}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct MINIDUMP_MISC_INFO_FLAGS(pub u32);
 pub const MINIDUMP_MISC1_PROCESS_ID: MINIDUMP_MISC_INFO_FLAGS = MINIDUMP_MISC_INFO_FLAGS(1u32);
@@ -21578,456 +26479,11 @@ impl FromIntoMemory for MINIDUMP_MISC_INFO_FLAGS {
         4
     }
 }
-pub struct MINIDUMP_MODULE {
-    pub BaseOfImage: u64,
-    pub SizeOfImage: u32,
-    pub CheckSum: u32,
-    pub TimeDateStamp: u32,
-    pub ModuleNameRva: u32,
-    pub VersionInfo: super::super::super::Storage::FileSystem::VS_FIXEDFILEINFO,
-    pub CvRecord: MINIDUMP_LOCATION_DESCRIPTOR,
-    pub MiscRecord: MINIDUMP_LOCATION_DESCRIPTOR,
-    pub Reserved0: u64,
-    pub Reserved1: u64,
-}
-impl ::core::marker::Copy for MINIDUMP_MODULE {}
-impl ::core::clone::Clone for MINIDUMP_MODULE {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_MODULE {
-    fn eq(&self, other: &Self) -> bool {
-        self.BaseOfImage == other.BaseOfImage
-            && self.SizeOfImage == other.SizeOfImage
-            && self.CheckSum == other.CheckSum
-            && self.TimeDateStamp == other.TimeDateStamp
-            && self.ModuleNameRva == other.ModuleNameRva
-            && self.VersionInfo == other.VersionInfo
-            && self.CvRecord == other.CvRecord
-            && self.MiscRecord == other.MiscRecord
-            && self.Reserved0 == other.Reserved0
-            && self.Reserved1 == other.Reserved1
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_MODULE {}
-impl FromIntoMemory for MINIDUMP_MODULE {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 112u32 as usize);
-        let f_BaseOfImage = <u64 as FromIntoMemory>::from_bytes(&from[0..0 + 8]);
-        let f_SizeOfImage = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_CheckSum = <u32 as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
-        let f_TimeDateStamp = <u32 as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
-        let f_ModuleNameRva = <u32 as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
-        let f_VersionInfo = < super::super::super::Storage::FileSystem:: VS_FIXEDFILEINFO as FromIntoMemory > :: from_bytes ( & from [ 24 .. 24 + 52 ] ) ;
-        let f_CvRecord =
-            <MINIDUMP_LOCATION_DESCRIPTOR as FromIntoMemory>::from_bytes(&from[76..76 + 8]);
-        let f_MiscRecord =
-            <MINIDUMP_LOCATION_DESCRIPTOR as FromIntoMemory>::from_bytes(&from[84..84 + 8]);
-        let f_Reserved0 = <u64 as FromIntoMemory>::from_bytes(&from[96..96 + 8]);
-        let f_Reserved1 = <u64 as FromIntoMemory>::from_bytes(&from[104..104 + 8]);
-        Self {
-            BaseOfImage: f_BaseOfImage,
-            SizeOfImage: f_SizeOfImage,
-            CheckSum: f_CheckSum,
-            TimeDateStamp: f_TimeDateStamp,
-            ModuleNameRva: f_ModuleNameRva,
-            VersionInfo: f_VersionInfo,
-            CvRecord: f_CvRecord,
-            MiscRecord: f_MiscRecord,
-            Reserved0: f_Reserved0,
-            Reserved1: f_Reserved1,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 112u32 as usize);
-        FromIntoMemory::into_bytes(self.BaseOfImage, &mut into[0..0 + 8]);
-        FromIntoMemory::into_bytes(self.SizeOfImage, &mut into[8..8 + 4]);
-        FromIntoMemory::into_bytes(self.CheckSum, &mut into[12..12 + 4]);
-        FromIntoMemory::into_bytes(self.TimeDateStamp, &mut into[16..16 + 4]);
-        FromIntoMemory::into_bytes(self.ModuleNameRva, &mut into[20..20 + 4]);
-        FromIntoMemory::into_bytes(self.VersionInfo, &mut into[24..24 + 52]);
-        FromIntoMemory::into_bytes(self.CvRecord, &mut into[76..76 + 8]);
-        FromIntoMemory::into_bytes(self.MiscRecord, &mut into[84..84 + 8]);
-        FromIntoMemory::into_bytes(self.Reserved0, &mut into[96..96 + 8]);
-        FromIntoMemory::into_bytes(self.Reserved1, &mut into[104..104 + 8]);
-    }
-    fn size() -> usize {
-        112u32 as usize
-    }
-}
-pub struct MINIDUMP_MODULE_CALLBACK {
-    pub FullPath: PWSTR,
-    pub BaseOfImage: u64,
-    pub SizeOfImage: u32,
-    pub CheckSum: u32,
-    pub TimeDateStamp: u32,
-    pub VersionInfo: super::super::super::Storage::FileSystem::VS_FIXEDFILEINFO,
-    pub CvRecord: MutPtr<::core::ffi::c_void>,
-    pub SizeOfCvRecord: u32,
-    pub MiscRecord: MutPtr<::core::ffi::c_void>,
-    pub SizeOfMiscRecord: u32,
-}
-impl ::core::marker::Copy for MINIDUMP_MODULE_CALLBACK {}
-impl ::core::clone::Clone for MINIDUMP_MODULE_CALLBACK {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_MODULE_CALLBACK {
-    fn eq(&self, other: &Self) -> bool {
-        self.FullPath == other.FullPath
-            && self.BaseOfImage == other.BaseOfImage
-            && self.SizeOfImage == other.SizeOfImage
-            && self.CheckSum == other.CheckSum
-            && self.TimeDateStamp == other.TimeDateStamp
-            && self.VersionInfo == other.VersionInfo
-            && self.CvRecord == other.CvRecord
-            && self.SizeOfCvRecord == other.SizeOfCvRecord
-            && self.MiscRecord == other.MiscRecord
-            && self.SizeOfMiscRecord == other.SizeOfMiscRecord
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_MODULE_CALLBACK {}
-impl FromIntoMemory for MINIDUMP_MODULE_CALLBACK {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 96u32 as usize);
-        let f_FullPath = <PWSTR as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_BaseOfImage = <u64 as FromIntoMemory>::from_bytes(&from[8..8 + 8]);
-        let f_SizeOfImage = <u32 as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
-        let f_CheckSum = <u32 as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
-        let f_TimeDateStamp = <u32 as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
-        let f_VersionInfo = < super::super::super::Storage::FileSystem:: VS_FIXEDFILEINFO as FromIntoMemory > :: from_bytes ( & from [ 28 .. 28 + 52 ] ) ;
-        let f_CvRecord =
-            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[80..80 + 4]);
-        let f_SizeOfCvRecord = <u32 as FromIntoMemory>::from_bytes(&from[84..84 + 4]);
-        let f_MiscRecord =
-            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[88..88 + 4]);
-        let f_SizeOfMiscRecord = <u32 as FromIntoMemory>::from_bytes(&from[92..92 + 4]);
-        Self {
-            FullPath: f_FullPath,
-            BaseOfImage: f_BaseOfImage,
-            SizeOfImage: f_SizeOfImage,
-            CheckSum: f_CheckSum,
-            TimeDateStamp: f_TimeDateStamp,
-            VersionInfo: f_VersionInfo,
-            CvRecord: f_CvRecord,
-            SizeOfCvRecord: f_SizeOfCvRecord,
-            MiscRecord: f_MiscRecord,
-            SizeOfMiscRecord: f_SizeOfMiscRecord,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 96u32 as usize);
-        FromIntoMemory::into_bytes(self.FullPath, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.BaseOfImage, &mut into[8..8 + 8]);
-        FromIntoMemory::into_bytes(self.SizeOfImage, &mut into[16..16 + 4]);
-        FromIntoMemory::into_bytes(self.CheckSum, &mut into[20..20 + 4]);
-        FromIntoMemory::into_bytes(self.TimeDateStamp, &mut into[24..24 + 4]);
-        FromIntoMemory::into_bytes(self.VersionInfo, &mut into[28..28 + 52]);
-        FromIntoMemory::into_bytes(self.CvRecord, &mut into[80..80 + 4]);
-        FromIntoMemory::into_bytes(self.SizeOfCvRecord, &mut into[84..84 + 4]);
-        FromIntoMemory::into_bytes(self.MiscRecord, &mut into[88..88 + 4]);
-        FromIntoMemory::into_bytes(self.SizeOfMiscRecord, &mut into[92..92 + 4]);
-    }
-    fn size() -> usize {
-        96u32 as usize
-    }
-}
-pub struct MINIDUMP_MODULE_LIST {
-    pub NumberOfModules: u32,
-    pub Modules: [MINIDUMP_MODULE; 1],
-}
-impl ::core::marker::Copy for MINIDUMP_MODULE_LIST {}
-impl ::core::clone::Clone for MINIDUMP_MODULE_LIST {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_MODULE_LIST {
-    fn eq(&self, other: &Self) -> bool {
-        self.NumberOfModules == other.NumberOfModules && self.Modules == other.Modules
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_MODULE_LIST {}
-impl FromIntoMemory for MINIDUMP_MODULE_LIST {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 120u32 as usize);
-        let f_NumberOfModules = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_Modules = <[MINIDUMP_MODULE; 1] as FromIntoMemory>::from_bytes(&from[8..8 + 112]);
-        Self {
-            NumberOfModules: f_NumberOfModules,
-            Modules: f_Modules,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 120u32 as usize);
-        FromIntoMemory::into_bytes(self.NumberOfModules, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.Modules, &mut into[8..8 + 112]);
-    }
-    fn size() -> usize {
-        120u32 as usize
-    }
-}
 pub const MINIDUMP_PROCESS_VM_COUNTERS: u32 = 1u32;
-pub struct MINIDUMP_PROCESS_VM_COUNTERS_1 {
-    pub Revision: u16,
-    pub PageFaultCount: u32,
-    pub PeakWorkingSetSize: u64,
-    pub WorkingSetSize: u64,
-    pub QuotaPeakPagedPoolUsage: u64,
-    pub QuotaPagedPoolUsage: u64,
-    pub QuotaPeakNonPagedPoolUsage: u64,
-    pub QuotaNonPagedPoolUsage: u64,
-    pub PagefileUsage: u64,
-    pub PeakPagefileUsage: u64,
-    pub PrivateUsage: u64,
-}
-impl ::core::marker::Copy for MINIDUMP_PROCESS_VM_COUNTERS_1 {}
-impl ::core::clone::Clone for MINIDUMP_PROCESS_VM_COUNTERS_1 {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_PROCESS_VM_COUNTERS_1 {
-    fn eq(&self, other: &Self) -> bool {
-        self.Revision == other.Revision
-            && self.PageFaultCount == other.PageFaultCount
-            && self.PeakWorkingSetSize == other.PeakWorkingSetSize
-            && self.WorkingSetSize == other.WorkingSetSize
-            && self.QuotaPeakPagedPoolUsage == other.QuotaPeakPagedPoolUsage
-            && self.QuotaPagedPoolUsage == other.QuotaPagedPoolUsage
-            && self.QuotaPeakNonPagedPoolUsage == other.QuotaPeakNonPagedPoolUsage
-            && self.QuotaNonPagedPoolUsage == other.QuotaNonPagedPoolUsage
-            && self.PagefileUsage == other.PagefileUsage
-            && self.PeakPagefileUsage == other.PeakPagefileUsage
-            && self.PrivateUsage == other.PrivateUsage
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_PROCESS_VM_COUNTERS_1 {}
-impl FromIntoMemory for MINIDUMP_PROCESS_VM_COUNTERS_1 {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 80u32 as usize);
-        let f_Revision = <u16 as FromIntoMemory>::from_bytes(&from[0..0 + 2]);
-        let f_PageFaultCount = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        let f_PeakWorkingSetSize = <u64 as FromIntoMemory>::from_bytes(&from[8..8 + 8]);
-        let f_WorkingSetSize = <u64 as FromIntoMemory>::from_bytes(&from[16..16 + 8]);
-        let f_QuotaPeakPagedPoolUsage = <u64 as FromIntoMemory>::from_bytes(&from[24..24 + 8]);
-        let f_QuotaPagedPoolUsage = <u64 as FromIntoMemory>::from_bytes(&from[32..32 + 8]);
-        let f_QuotaPeakNonPagedPoolUsage = <u64 as FromIntoMemory>::from_bytes(&from[40..40 + 8]);
-        let f_QuotaNonPagedPoolUsage = <u64 as FromIntoMemory>::from_bytes(&from[48..48 + 8]);
-        let f_PagefileUsage = <u64 as FromIntoMemory>::from_bytes(&from[56..56 + 8]);
-        let f_PeakPagefileUsage = <u64 as FromIntoMemory>::from_bytes(&from[64..64 + 8]);
-        let f_PrivateUsage = <u64 as FromIntoMemory>::from_bytes(&from[72..72 + 8]);
-        Self {
-            Revision: f_Revision,
-            PageFaultCount: f_PageFaultCount,
-            PeakWorkingSetSize: f_PeakWorkingSetSize,
-            WorkingSetSize: f_WorkingSetSize,
-            QuotaPeakPagedPoolUsage: f_QuotaPeakPagedPoolUsage,
-            QuotaPagedPoolUsage: f_QuotaPagedPoolUsage,
-            QuotaPeakNonPagedPoolUsage: f_QuotaPeakNonPagedPoolUsage,
-            QuotaNonPagedPoolUsage: f_QuotaNonPagedPoolUsage,
-            PagefileUsage: f_PagefileUsage,
-            PeakPagefileUsage: f_PeakPagefileUsage,
-            PrivateUsage: f_PrivateUsage,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 80u32 as usize);
-        FromIntoMemory::into_bytes(self.Revision, &mut into[0..0 + 2]);
-        FromIntoMemory::into_bytes(self.PageFaultCount, &mut into[4..4 + 4]);
-        FromIntoMemory::into_bytes(self.PeakWorkingSetSize, &mut into[8..8 + 8]);
-        FromIntoMemory::into_bytes(self.WorkingSetSize, &mut into[16..16 + 8]);
-        FromIntoMemory::into_bytes(self.QuotaPeakPagedPoolUsage, &mut into[24..24 + 8]);
-        FromIntoMemory::into_bytes(self.QuotaPagedPoolUsage, &mut into[32..32 + 8]);
-        FromIntoMemory::into_bytes(self.QuotaPeakNonPagedPoolUsage, &mut into[40..40 + 8]);
-        FromIntoMemory::into_bytes(self.QuotaNonPagedPoolUsage, &mut into[48..48 + 8]);
-        FromIntoMemory::into_bytes(self.PagefileUsage, &mut into[56..56 + 8]);
-        FromIntoMemory::into_bytes(self.PeakPagefileUsage, &mut into[64..64 + 8]);
-        FromIntoMemory::into_bytes(self.PrivateUsage, &mut into[72..72 + 8]);
-    }
-    fn size() -> usize {
-        80u32 as usize
-    }
-}
-pub struct MINIDUMP_PROCESS_VM_COUNTERS_2 {
-    pub Revision: u16,
-    pub Flags: u16,
-    pub PageFaultCount: u32,
-    pub PeakWorkingSetSize: u64,
-    pub WorkingSetSize: u64,
-    pub QuotaPeakPagedPoolUsage: u64,
-    pub QuotaPagedPoolUsage: u64,
-    pub QuotaPeakNonPagedPoolUsage: u64,
-    pub QuotaNonPagedPoolUsage: u64,
-    pub PagefileUsage: u64,
-    pub PeakPagefileUsage: u64,
-    pub PeakVirtualSize: u64,
-    pub VirtualSize: u64,
-    pub PrivateUsage: u64,
-    pub PrivateWorkingSetSize: u64,
-    pub SharedCommitUsage: u64,
-    pub JobSharedCommitUsage: u64,
-    pub JobPrivateCommitUsage: u64,
-    pub JobPeakPrivateCommitUsage: u64,
-    pub JobPrivateCommitLimit: u64,
-    pub JobTotalCommitLimit: u64,
-}
-impl ::core::marker::Copy for MINIDUMP_PROCESS_VM_COUNTERS_2 {}
-impl ::core::clone::Clone for MINIDUMP_PROCESS_VM_COUNTERS_2 {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_PROCESS_VM_COUNTERS_2 {
-    fn eq(&self, other: &Self) -> bool {
-        self.Revision == other.Revision
-            && self.Flags == other.Flags
-            && self.PageFaultCount == other.PageFaultCount
-            && self.PeakWorkingSetSize == other.PeakWorkingSetSize
-            && self.WorkingSetSize == other.WorkingSetSize
-            && self.QuotaPeakPagedPoolUsage == other.QuotaPeakPagedPoolUsage
-            && self.QuotaPagedPoolUsage == other.QuotaPagedPoolUsage
-            && self.QuotaPeakNonPagedPoolUsage == other.QuotaPeakNonPagedPoolUsage
-            && self.QuotaNonPagedPoolUsage == other.QuotaNonPagedPoolUsage
-            && self.PagefileUsage == other.PagefileUsage
-            && self.PeakPagefileUsage == other.PeakPagefileUsage
-            && self.PeakVirtualSize == other.PeakVirtualSize
-            && self.VirtualSize == other.VirtualSize
-            && self.PrivateUsage == other.PrivateUsage
-            && self.PrivateWorkingSetSize == other.PrivateWorkingSetSize
-            && self.SharedCommitUsage == other.SharedCommitUsage
-            && self.JobSharedCommitUsage == other.JobSharedCommitUsage
-            && self.JobPrivateCommitUsage == other.JobPrivateCommitUsage
-            && self.JobPeakPrivateCommitUsage == other.JobPeakPrivateCommitUsage
-            && self.JobPrivateCommitLimit == other.JobPrivateCommitLimit
-            && self.JobTotalCommitLimit == other.JobTotalCommitLimit
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_PROCESS_VM_COUNTERS_2 {}
-impl FromIntoMemory for MINIDUMP_PROCESS_VM_COUNTERS_2 {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 152u32 as usize);
-        let f_Revision = <u16 as FromIntoMemory>::from_bytes(&from[0..0 + 2]);
-        let f_Flags = <u16 as FromIntoMemory>::from_bytes(&from[2..2 + 2]);
-        let f_PageFaultCount = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        let f_PeakWorkingSetSize = <u64 as FromIntoMemory>::from_bytes(&from[8..8 + 8]);
-        let f_WorkingSetSize = <u64 as FromIntoMemory>::from_bytes(&from[16..16 + 8]);
-        let f_QuotaPeakPagedPoolUsage = <u64 as FromIntoMemory>::from_bytes(&from[24..24 + 8]);
-        let f_QuotaPagedPoolUsage = <u64 as FromIntoMemory>::from_bytes(&from[32..32 + 8]);
-        let f_QuotaPeakNonPagedPoolUsage = <u64 as FromIntoMemory>::from_bytes(&from[40..40 + 8]);
-        let f_QuotaNonPagedPoolUsage = <u64 as FromIntoMemory>::from_bytes(&from[48..48 + 8]);
-        let f_PagefileUsage = <u64 as FromIntoMemory>::from_bytes(&from[56..56 + 8]);
-        let f_PeakPagefileUsage = <u64 as FromIntoMemory>::from_bytes(&from[64..64 + 8]);
-        let f_PeakVirtualSize = <u64 as FromIntoMemory>::from_bytes(&from[72..72 + 8]);
-        let f_VirtualSize = <u64 as FromIntoMemory>::from_bytes(&from[80..80 + 8]);
-        let f_PrivateUsage = <u64 as FromIntoMemory>::from_bytes(&from[88..88 + 8]);
-        let f_PrivateWorkingSetSize = <u64 as FromIntoMemory>::from_bytes(&from[96..96 + 8]);
-        let f_SharedCommitUsage = <u64 as FromIntoMemory>::from_bytes(&from[104..104 + 8]);
-        let f_JobSharedCommitUsage = <u64 as FromIntoMemory>::from_bytes(&from[112..112 + 8]);
-        let f_JobPrivateCommitUsage = <u64 as FromIntoMemory>::from_bytes(&from[120..120 + 8]);
-        let f_JobPeakPrivateCommitUsage = <u64 as FromIntoMemory>::from_bytes(&from[128..128 + 8]);
-        let f_JobPrivateCommitLimit = <u64 as FromIntoMemory>::from_bytes(&from[136..136 + 8]);
-        let f_JobTotalCommitLimit = <u64 as FromIntoMemory>::from_bytes(&from[144..144 + 8]);
-        Self {
-            Revision: f_Revision,
-            Flags: f_Flags,
-            PageFaultCount: f_PageFaultCount,
-            PeakWorkingSetSize: f_PeakWorkingSetSize,
-            WorkingSetSize: f_WorkingSetSize,
-            QuotaPeakPagedPoolUsage: f_QuotaPeakPagedPoolUsage,
-            QuotaPagedPoolUsage: f_QuotaPagedPoolUsage,
-            QuotaPeakNonPagedPoolUsage: f_QuotaPeakNonPagedPoolUsage,
-            QuotaNonPagedPoolUsage: f_QuotaNonPagedPoolUsage,
-            PagefileUsage: f_PagefileUsage,
-            PeakPagefileUsage: f_PeakPagefileUsage,
-            PeakVirtualSize: f_PeakVirtualSize,
-            VirtualSize: f_VirtualSize,
-            PrivateUsage: f_PrivateUsage,
-            PrivateWorkingSetSize: f_PrivateWorkingSetSize,
-            SharedCommitUsage: f_SharedCommitUsage,
-            JobSharedCommitUsage: f_JobSharedCommitUsage,
-            JobPrivateCommitUsage: f_JobPrivateCommitUsage,
-            JobPeakPrivateCommitUsage: f_JobPeakPrivateCommitUsage,
-            JobPrivateCommitLimit: f_JobPrivateCommitLimit,
-            JobTotalCommitLimit: f_JobTotalCommitLimit,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 152u32 as usize);
-        FromIntoMemory::into_bytes(self.Revision, &mut into[0..0 + 2]);
-        FromIntoMemory::into_bytes(self.Flags, &mut into[2..2 + 2]);
-        FromIntoMemory::into_bytes(self.PageFaultCount, &mut into[4..4 + 4]);
-        FromIntoMemory::into_bytes(self.PeakWorkingSetSize, &mut into[8..8 + 8]);
-        FromIntoMemory::into_bytes(self.WorkingSetSize, &mut into[16..16 + 8]);
-        FromIntoMemory::into_bytes(self.QuotaPeakPagedPoolUsage, &mut into[24..24 + 8]);
-        FromIntoMemory::into_bytes(self.QuotaPagedPoolUsage, &mut into[32..32 + 8]);
-        FromIntoMemory::into_bytes(self.QuotaPeakNonPagedPoolUsage, &mut into[40..40 + 8]);
-        FromIntoMemory::into_bytes(self.QuotaNonPagedPoolUsage, &mut into[48..48 + 8]);
-        FromIntoMemory::into_bytes(self.PagefileUsage, &mut into[56..56 + 8]);
-        FromIntoMemory::into_bytes(self.PeakPagefileUsage, &mut into[64..64 + 8]);
-        FromIntoMemory::into_bytes(self.PeakVirtualSize, &mut into[72..72 + 8]);
-        FromIntoMemory::into_bytes(self.VirtualSize, &mut into[80..80 + 8]);
-        FromIntoMemory::into_bytes(self.PrivateUsage, &mut into[88..88 + 8]);
-        FromIntoMemory::into_bytes(self.PrivateWorkingSetSize, &mut into[96..96 + 8]);
-        FromIntoMemory::into_bytes(self.SharedCommitUsage, &mut into[104..104 + 8]);
-        FromIntoMemory::into_bytes(self.JobSharedCommitUsage, &mut into[112..112 + 8]);
-        FromIntoMemory::into_bytes(self.JobPrivateCommitUsage, &mut into[120..120 + 8]);
-        FromIntoMemory::into_bytes(self.JobPeakPrivateCommitUsage, &mut into[128..128 + 8]);
-        FromIntoMemory::into_bytes(self.JobPrivateCommitLimit, &mut into[136..136 + 8]);
-        FromIntoMemory::into_bytes(self.JobTotalCommitLimit, &mut into[144..144 + 8]);
-    }
-    fn size() -> usize {
-        152u32 as usize
-    }
-}
 pub const MINIDUMP_PROCESS_VM_COUNTERS_EX: u32 = 4u32;
 pub const MINIDUMP_PROCESS_VM_COUNTERS_EX2: u32 = 8u32;
 pub const MINIDUMP_PROCESS_VM_COUNTERS_JOB: u32 = 16u32;
 pub const MINIDUMP_PROCESS_VM_COUNTERS_VIRTUALSIZE: u32 = 2u32;
-pub struct MINIDUMP_READ_MEMORY_FAILURE_CALLBACK {
-    pub Offset: u64,
-    pub Bytes: u32,
-    pub FailureStatus: crate::core::HRESULT,
-}
-impl ::core::marker::Copy for MINIDUMP_READ_MEMORY_FAILURE_CALLBACK {}
-impl ::core::clone::Clone for MINIDUMP_READ_MEMORY_FAILURE_CALLBACK {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_READ_MEMORY_FAILURE_CALLBACK {
-    fn eq(&self, other: &Self) -> bool {
-        self.Offset == other.Offset
-            && self.Bytes == other.Bytes
-            && self.FailureStatus == other.FailureStatus
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_READ_MEMORY_FAILURE_CALLBACK {}
-impl FromIntoMemory for MINIDUMP_READ_MEMORY_FAILURE_CALLBACK {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
-        let f_Offset = <u64 as FromIntoMemory>::from_bytes(&from[0..0 + 8]);
-        let f_Bytes = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_FailureStatus =
-            <crate::core::HRESULT as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
-        Self {
-            Offset: f_Offset,
-            Bytes: f_Bytes,
-            FailureStatus: f_FailureStatus,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
-        FromIntoMemory::into_bytes(self.Offset, &mut into[0..0 + 8]);
-        FromIntoMemory::into_bytes(self.Bytes, &mut into[8..8 + 4]);
-        FromIntoMemory::into_bytes(self.FailureStatus, &mut into[12..12 + 4]);
-    }
-    fn size() -> usize {
-        16u32 as usize
-    }
-}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct MINIDUMP_SECONDARY_FLAGS(pub i32);
 pub const MiniSecondaryWithoutPowerInfo: MINIDUMP_SECONDARY_FLAGS = MINIDUMP_SECONDARY_FLAGS(1i32);
@@ -22178,1597 +26634,6 @@ pub const MINIDUMP_SYSMEMINFO1_BASICPERF: u32 = 2u32;
 pub const MINIDUMP_SYSMEMINFO1_FILECACHE_TRANSITIONREPURPOSECOUNT_FLAGS: u32 = 1u32;
 pub const MINIDUMP_SYSMEMINFO1_PERF_CCTOTALDIRTYPAGES_CCDIRTYPAGETHRESHOLD: u32 = 4u32;
 pub const MINIDUMP_SYSMEMINFO1_PERF_RESIDENTAVAILABLEPAGES_SHAREDCOMMITPAGES: u32 = 8u32;
-pub struct MINIDUMP_SYSTEM_BASIC_INFORMATION {
-    pub TimerResolution: u32,
-    pub PageSize: u32,
-    pub NumberOfPhysicalPages: u32,
-    pub LowestPhysicalPageNumber: u32,
-    pub HighestPhysicalPageNumber: u32,
-    pub AllocationGranularity: u32,
-    pub MinimumUserModeAddress: u64,
-    pub MaximumUserModeAddress: u64,
-    pub ActiveProcessorsAffinityMask: u64,
-    pub NumberOfProcessors: u32,
-}
-impl ::core::marker::Copy for MINIDUMP_SYSTEM_BASIC_INFORMATION {}
-impl ::core::clone::Clone for MINIDUMP_SYSTEM_BASIC_INFORMATION {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_SYSTEM_BASIC_INFORMATION {
-    fn eq(&self, other: &Self) -> bool {
-        self.TimerResolution == other.TimerResolution
-            && self.PageSize == other.PageSize
-            && self.NumberOfPhysicalPages == other.NumberOfPhysicalPages
-            && self.LowestPhysicalPageNumber == other.LowestPhysicalPageNumber
-            && self.HighestPhysicalPageNumber == other.HighestPhysicalPageNumber
-            && self.AllocationGranularity == other.AllocationGranularity
-            && self.MinimumUserModeAddress == other.MinimumUserModeAddress
-            && self.MaximumUserModeAddress == other.MaximumUserModeAddress
-            && self.ActiveProcessorsAffinityMask == other.ActiveProcessorsAffinityMask
-            && self.NumberOfProcessors == other.NumberOfProcessors
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_SYSTEM_BASIC_INFORMATION {}
-impl FromIntoMemory for MINIDUMP_SYSTEM_BASIC_INFORMATION {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 56u32 as usize);
-        let f_TimerResolution = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_PageSize = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        let f_NumberOfPhysicalPages = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_LowestPhysicalPageNumber = <u32 as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
-        let f_HighestPhysicalPageNumber = <u32 as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
-        let f_AllocationGranularity = <u32 as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
-        let f_MinimumUserModeAddress = <u64 as FromIntoMemory>::from_bytes(&from[24..24 + 8]);
-        let f_MaximumUserModeAddress = <u64 as FromIntoMemory>::from_bytes(&from[32..32 + 8]);
-        let f_ActiveProcessorsAffinityMask = <u64 as FromIntoMemory>::from_bytes(&from[40..40 + 8]);
-        let f_NumberOfProcessors = <u32 as FromIntoMemory>::from_bytes(&from[48..48 + 4]);
-        Self {
-            TimerResolution: f_TimerResolution,
-            PageSize: f_PageSize,
-            NumberOfPhysicalPages: f_NumberOfPhysicalPages,
-            LowestPhysicalPageNumber: f_LowestPhysicalPageNumber,
-            HighestPhysicalPageNumber: f_HighestPhysicalPageNumber,
-            AllocationGranularity: f_AllocationGranularity,
-            MinimumUserModeAddress: f_MinimumUserModeAddress,
-            MaximumUserModeAddress: f_MaximumUserModeAddress,
-            ActiveProcessorsAffinityMask: f_ActiveProcessorsAffinityMask,
-            NumberOfProcessors: f_NumberOfProcessors,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 56u32 as usize);
-        FromIntoMemory::into_bytes(self.TimerResolution, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.PageSize, &mut into[4..4 + 4]);
-        FromIntoMemory::into_bytes(self.NumberOfPhysicalPages, &mut into[8..8 + 4]);
-        FromIntoMemory::into_bytes(self.LowestPhysicalPageNumber, &mut into[12..12 + 4]);
-        FromIntoMemory::into_bytes(self.HighestPhysicalPageNumber, &mut into[16..16 + 4]);
-        FromIntoMemory::into_bytes(self.AllocationGranularity, &mut into[20..20 + 4]);
-        FromIntoMemory::into_bytes(self.MinimumUserModeAddress, &mut into[24..24 + 8]);
-        FromIntoMemory::into_bytes(self.MaximumUserModeAddress, &mut into[32..32 + 8]);
-        FromIntoMemory::into_bytes(self.ActiveProcessorsAffinityMask, &mut into[40..40 + 8]);
-        FromIntoMemory::into_bytes(self.NumberOfProcessors, &mut into[48..48 + 4]);
-    }
-    fn size() -> usize {
-        56u32 as usize
-    }
-}
-pub struct MINIDUMP_SYSTEM_BASIC_PERFORMANCE_INFORMATION {
-    pub AvailablePages: u64,
-    pub CommittedPages: u64,
-    pub CommitLimit: u64,
-    pub PeakCommitment: u64,
-}
-impl ::core::marker::Copy for MINIDUMP_SYSTEM_BASIC_PERFORMANCE_INFORMATION {}
-impl ::core::clone::Clone for MINIDUMP_SYSTEM_BASIC_PERFORMANCE_INFORMATION {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_SYSTEM_BASIC_PERFORMANCE_INFORMATION {
-    fn eq(&self, other: &Self) -> bool {
-        self.AvailablePages == other.AvailablePages
-            && self.CommittedPages == other.CommittedPages
-            && self.CommitLimit == other.CommitLimit
-            && self.PeakCommitment == other.PeakCommitment
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_SYSTEM_BASIC_PERFORMANCE_INFORMATION {}
-impl FromIntoMemory for MINIDUMP_SYSTEM_BASIC_PERFORMANCE_INFORMATION {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 32u32 as usize);
-        let f_AvailablePages = <u64 as FromIntoMemory>::from_bytes(&from[0..0 + 8]);
-        let f_CommittedPages = <u64 as FromIntoMemory>::from_bytes(&from[8..8 + 8]);
-        let f_CommitLimit = <u64 as FromIntoMemory>::from_bytes(&from[16..16 + 8]);
-        let f_PeakCommitment = <u64 as FromIntoMemory>::from_bytes(&from[24..24 + 8]);
-        Self {
-            AvailablePages: f_AvailablePages,
-            CommittedPages: f_CommittedPages,
-            CommitLimit: f_CommitLimit,
-            PeakCommitment: f_PeakCommitment,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 32u32 as usize);
-        FromIntoMemory::into_bytes(self.AvailablePages, &mut into[0..0 + 8]);
-        FromIntoMemory::into_bytes(self.CommittedPages, &mut into[8..8 + 8]);
-        FromIntoMemory::into_bytes(self.CommitLimit, &mut into[16..16 + 8]);
-        FromIntoMemory::into_bytes(self.PeakCommitment, &mut into[24..24 + 8]);
-    }
-    fn size() -> usize {
-        32u32 as usize
-    }
-}
-pub struct MINIDUMP_SYSTEM_FILECACHE_INFORMATION {
-    pub CurrentSize: u64,
-    pub PeakSize: u64,
-    pub PageFaultCount: u32,
-    pub MinimumWorkingSet: u64,
-    pub MaximumWorkingSet: u64,
-    pub CurrentSizeIncludingTransitionInPages: u64,
-    pub PeakSizeIncludingTransitionInPages: u64,
-    pub TransitionRePurposeCount: u32,
-    pub Flags: u32,
-}
-impl ::core::marker::Copy for MINIDUMP_SYSTEM_FILECACHE_INFORMATION {}
-impl ::core::clone::Clone for MINIDUMP_SYSTEM_FILECACHE_INFORMATION {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_SYSTEM_FILECACHE_INFORMATION {
-    fn eq(&self, other: &Self) -> bool {
-        self.CurrentSize == other.CurrentSize
-            && self.PeakSize == other.PeakSize
-            && self.PageFaultCount == other.PageFaultCount
-            && self.MinimumWorkingSet == other.MinimumWorkingSet
-            && self.MaximumWorkingSet == other.MaximumWorkingSet
-            && self.CurrentSizeIncludingTransitionInPages
-                == other.CurrentSizeIncludingTransitionInPages
-            && self.PeakSizeIncludingTransitionInPages == other.PeakSizeIncludingTransitionInPages
-            && self.TransitionRePurposeCount == other.TransitionRePurposeCount
-            && self.Flags == other.Flags
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_SYSTEM_FILECACHE_INFORMATION {}
-impl FromIntoMemory for MINIDUMP_SYSTEM_FILECACHE_INFORMATION {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 64u32 as usize);
-        let f_CurrentSize = <u64 as FromIntoMemory>::from_bytes(&from[0..0 + 8]);
-        let f_PeakSize = <u64 as FromIntoMemory>::from_bytes(&from[8..8 + 8]);
-        let f_PageFaultCount = <u32 as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
-        let f_MinimumWorkingSet = <u64 as FromIntoMemory>::from_bytes(&from[24..24 + 8]);
-        let f_MaximumWorkingSet = <u64 as FromIntoMemory>::from_bytes(&from[32..32 + 8]);
-        let f_CurrentSizeIncludingTransitionInPages =
-            <u64 as FromIntoMemory>::from_bytes(&from[40..40 + 8]);
-        let f_PeakSizeIncludingTransitionInPages =
-            <u64 as FromIntoMemory>::from_bytes(&from[48..48 + 8]);
-        let f_TransitionRePurposeCount = <u32 as FromIntoMemory>::from_bytes(&from[56..56 + 4]);
-        let f_Flags = <u32 as FromIntoMemory>::from_bytes(&from[60..60 + 4]);
-        Self {
-            CurrentSize: f_CurrentSize,
-            PeakSize: f_PeakSize,
-            PageFaultCount: f_PageFaultCount,
-            MinimumWorkingSet: f_MinimumWorkingSet,
-            MaximumWorkingSet: f_MaximumWorkingSet,
-            CurrentSizeIncludingTransitionInPages: f_CurrentSizeIncludingTransitionInPages,
-            PeakSizeIncludingTransitionInPages: f_PeakSizeIncludingTransitionInPages,
-            TransitionRePurposeCount: f_TransitionRePurposeCount,
-            Flags: f_Flags,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 64u32 as usize);
-        FromIntoMemory::into_bytes(self.CurrentSize, &mut into[0..0 + 8]);
-        FromIntoMemory::into_bytes(self.PeakSize, &mut into[8..8 + 8]);
-        FromIntoMemory::into_bytes(self.PageFaultCount, &mut into[16..16 + 4]);
-        FromIntoMemory::into_bytes(self.MinimumWorkingSet, &mut into[24..24 + 8]);
-        FromIntoMemory::into_bytes(self.MaximumWorkingSet, &mut into[32..32 + 8]);
-        FromIntoMemory::into_bytes(
-            self.CurrentSizeIncludingTransitionInPages,
-            &mut into[40..40 + 8],
-        );
-        FromIntoMemory::into_bytes(
-            self.PeakSizeIncludingTransitionInPages,
-            &mut into[48..48 + 8],
-        );
-        FromIntoMemory::into_bytes(self.TransitionRePurposeCount, &mut into[56..56 + 4]);
-        FromIntoMemory::into_bytes(self.Flags, &mut into[60..60 + 4]);
-    }
-    fn size() -> usize {
-        64u32 as usize
-    }
-}
-pub struct MINIDUMP_SYSTEM_INFO {
-    pub ProcessorArchitecture: PROCESSOR_ARCHITECTURE,
-    pub ProcessorLevel: u16,
-    pub ProcessorRevision: u16,
-    pub Anonymous1: MINIDUMP_SYSTEM_INFO_0,
-    pub MajorVersion: u32,
-    pub MinorVersion: u32,
-    pub BuildNumber: u32,
-    pub PlatformId: VER_PLATFORM,
-    pub CSDVersionRva: u32,
-    pub Anonymous2: MINIDUMP_SYSTEM_INFO_1,
-    pub Cpu: CPU_INFORMATION,
-}
-impl ::core::marker::Copy for MINIDUMP_SYSTEM_INFO {}
-impl ::core::clone::Clone for MINIDUMP_SYSTEM_INFO {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_SYSTEM_INFO {
-    fn eq(&self, other: &Self) -> bool {
-        self.ProcessorArchitecture == other.ProcessorArchitecture
-            && self.ProcessorLevel == other.ProcessorLevel
-            && self.ProcessorRevision == other.ProcessorRevision
-            && self.Anonymous1 == other.Anonymous1
-            && self.MajorVersion == other.MajorVersion
-            && self.MinorVersion == other.MinorVersion
-            && self.BuildNumber == other.BuildNumber
-            && self.PlatformId == other.PlatformId
-            && self.CSDVersionRva == other.CSDVersionRva
-            && self.Anonymous2 == other.Anonymous2
-            && self.Cpu == other.Cpu
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_SYSTEM_INFO {}
-impl FromIntoMemory for MINIDUMP_SYSTEM_INFO {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 80u32 as usize);
-        let f_ProcessorArchitecture =
-            <PROCESSOR_ARCHITECTURE as FromIntoMemory>::from_bytes(&from[0..0 + 2]);
-        let f_ProcessorLevel = <u16 as FromIntoMemory>::from_bytes(&from[2..2 + 2]);
-        let f_ProcessorRevision = <u16 as FromIntoMemory>::from_bytes(&from[4..4 + 2]);
-        let f_Anonymous1 = <MINIDUMP_SYSTEM_INFO_0 as FromIntoMemory>::from_bytes(&from[6..6 + 4]);
-        let f_MajorVersion = <u32 as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
-        let f_MinorVersion = <u32 as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
-        let f_BuildNumber = <u32 as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
-        let f_PlatformId = <VER_PLATFORM as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
-        let f_CSDVersionRva = <u32 as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
-        let f_Anonymous2 =
-            <MINIDUMP_SYSTEM_INFO_1 as FromIntoMemory>::from_bytes(&from[32..32 + 8]);
-        let f_Cpu = <CPU_INFORMATION as FromIntoMemory>::from_bytes(&from[40..40 + 40]);
-        Self {
-            ProcessorArchitecture: f_ProcessorArchitecture,
-            ProcessorLevel: f_ProcessorLevel,
-            ProcessorRevision: f_ProcessorRevision,
-            Anonymous1: f_Anonymous1,
-            MajorVersion: f_MajorVersion,
-            MinorVersion: f_MinorVersion,
-            BuildNumber: f_BuildNumber,
-            PlatformId: f_PlatformId,
-            CSDVersionRva: f_CSDVersionRva,
-            Anonymous2: f_Anonymous2,
-            Cpu: f_Cpu,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 80u32 as usize);
-        FromIntoMemory::into_bytes(self.ProcessorArchitecture, &mut into[0..0 + 2]);
-        FromIntoMemory::into_bytes(self.ProcessorLevel, &mut into[2..2 + 2]);
-        FromIntoMemory::into_bytes(self.ProcessorRevision, &mut into[4..4 + 2]);
-        FromIntoMemory::into_bytes(self.Anonymous1, &mut into[6..6 + 4]);
-        FromIntoMemory::into_bytes(self.MajorVersion, &mut into[12..12 + 4]);
-        FromIntoMemory::into_bytes(self.MinorVersion, &mut into[16..16 + 4]);
-        FromIntoMemory::into_bytes(self.BuildNumber, &mut into[20..20 + 4]);
-        FromIntoMemory::into_bytes(self.PlatformId, &mut into[24..24 + 4]);
-        FromIntoMemory::into_bytes(self.CSDVersionRva, &mut into[28..28 + 4]);
-        FromIntoMemory::into_bytes(self.Anonymous2, &mut into[32..32 + 8]);
-        FromIntoMemory::into_bytes(self.Cpu, &mut into[40..40 + 40]);
-    }
-    fn size() -> usize {
-        80u32 as usize
-    }
-}
-pub struct MINIDUMP_SYSTEM_INFO_0 {
-    pub Reserved0: u16,
-    pub Anonymous: MINIDUMP_SYSTEM_INFO_0_0,
-}
-impl ::core::marker::Copy for MINIDUMP_SYSTEM_INFO_0 {}
-impl ::core::clone::Clone for MINIDUMP_SYSTEM_INFO_0 {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_SYSTEM_INFO_0 {
-    fn eq(&self, other: &Self) -> bool {
-        self.Reserved0 == other.Reserved0 && self.Anonymous == other.Anonymous
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_SYSTEM_INFO_0 {}
-impl FromIntoMemory for MINIDUMP_SYSTEM_INFO_0 {
-    fn from_bytes(from: &[u8]) -> Self {
-        todo!()
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        todo!()
-    }
-    fn size() -> usize {
-        todo!()
-    }
-}
-pub struct MINIDUMP_SYSTEM_INFO_0_0 {
-    pub NumberOfProcessors: u8,
-    pub ProductType: u8,
-}
-impl ::core::marker::Copy for MINIDUMP_SYSTEM_INFO_0_0 {}
-impl ::core::clone::Clone for MINIDUMP_SYSTEM_INFO_0_0 {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::fmt::Debug for MINIDUMP_SYSTEM_INFO_0_0 {
-    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
-        f.debug_struct("MINIDUMP_SYSTEM_INFO_0_0")
-            .field("NumberOfProcessors", &self.NumberOfProcessors)
-            .field("ProductType", &self.ProductType)
-            .finish()
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_SYSTEM_INFO_0_0 {
-    fn eq(&self, other: &Self) -> bool {
-        self.NumberOfProcessors == other.NumberOfProcessors && self.ProductType == other.ProductType
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_SYSTEM_INFO_0_0 {}
-impl FromIntoMemory for MINIDUMP_SYSTEM_INFO_0_0 {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 2u32 as usize);
-        let f_NumberOfProcessors = <u8 as FromIntoMemory>::from_bytes(&from[0..0 + 1]);
-        let f_ProductType = <u8 as FromIntoMemory>::from_bytes(&from[1..1 + 1]);
-        Self {
-            NumberOfProcessors: f_NumberOfProcessors,
-            ProductType: f_ProductType,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 2u32 as usize);
-        FromIntoMemory::into_bytes(self.NumberOfProcessors, &mut into[0..0 + 1]);
-        FromIntoMemory::into_bytes(self.ProductType, &mut into[1..1 + 1]);
-    }
-    fn size() -> usize {
-        2u32 as usize
-    }
-}
-pub struct MINIDUMP_SYSTEM_INFO_1 {
-    pub Reserved1: u32,
-    pub Anonymous: MINIDUMP_SYSTEM_INFO_1_0,
-}
-impl ::core::marker::Copy for MINIDUMP_SYSTEM_INFO_1 {}
-impl ::core::clone::Clone for MINIDUMP_SYSTEM_INFO_1 {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_SYSTEM_INFO_1 {
-    fn eq(&self, other: &Self) -> bool {
-        self.Reserved1 == other.Reserved1 && self.Anonymous == other.Anonymous
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_SYSTEM_INFO_1 {}
-impl FromIntoMemory for MINIDUMP_SYSTEM_INFO_1 {
-    fn from_bytes(from: &[u8]) -> Self {
-        todo!()
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        todo!()
-    }
-    fn size() -> usize {
-        todo!()
-    }
-}
-pub struct MINIDUMP_SYSTEM_INFO_1_0 {
-    pub SuiteMask: u16,
-    pub Reserved2: u16,
-}
-impl ::core::marker::Copy for MINIDUMP_SYSTEM_INFO_1_0 {}
-impl ::core::clone::Clone for MINIDUMP_SYSTEM_INFO_1_0 {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::fmt::Debug for MINIDUMP_SYSTEM_INFO_1_0 {
-    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
-        f.debug_struct("MINIDUMP_SYSTEM_INFO_1_0")
-            .field("SuiteMask", &self.SuiteMask)
-            .field("Reserved2", &self.Reserved2)
-            .finish()
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_SYSTEM_INFO_1_0 {
-    fn eq(&self, other: &Self) -> bool {
-        self.SuiteMask == other.SuiteMask && self.Reserved2 == other.Reserved2
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_SYSTEM_INFO_1_0 {}
-impl FromIntoMemory for MINIDUMP_SYSTEM_INFO_1_0 {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 4u32 as usize);
-        let f_SuiteMask = <u16 as FromIntoMemory>::from_bytes(&from[0..0 + 2]);
-        let f_Reserved2 = <u16 as FromIntoMemory>::from_bytes(&from[2..2 + 2]);
-        Self {
-            SuiteMask: f_SuiteMask,
-            Reserved2: f_Reserved2,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 4u32 as usize);
-        FromIntoMemory::into_bytes(self.SuiteMask, &mut into[0..0 + 2]);
-        FromIntoMemory::into_bytes(self.Reserved2, &mut into[2..2 + 2]);
-    }
-    fn size() -> usize {
-        4u32 as usize
-    }
-}
-pub struct MINIDUMP_SYSTEM_MEMORY_INFO_1 {
-    pub Revision: u16,
-    pub Flags: u16,
-    pub BasicInfo: MINIDUMP_SYSTEM_BASIC_INFORMATION,
-    pub FileCacheInfo: MINIDUMP_SYSTEM_FILECACHE_INFORMATION,
-    pub BasicPerfInfo: MINIDUMP_SYSTEM_BASIC_PERFORMANCE_INFORMATION,
-    pub PerfInfo: MINIDUMP_SYSTEM_PERFORMANCE_INFORMATION,
-}
-impl ::core::marker::Copy for MINIDUMP_SYSTEM_MEMORY_INFO_1 {}
-impl ::core::clone::Clone for MINIDUMP_SYSTEM_MEMORY_INFO_1 {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_SYSTEM_MEMORY_INFO_1 {
-    fn eq(&self, other: &Self) -> bool {
-        self.Revision == other.Revision
-            && self.Flags == other.Flags
-            && self.BasicInfo == other.BasicInfo
-            && self.FileCacheInfo == other.FileCacheInfo
-            && self.BasicPerfInfo == other.BasicPerfInfo
-            && self.PerfInfo == other.PerfInfo
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_SYSTEM_MEMORY_INFO_1 {}
-impl FromIntoMemory for MINIDUMP_SYSTEM_MEMORY_INFO_1 {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 504u32 as usize);
-        let f_Revision = <u16 as FromIntoMemory>::from_bytes(&from[0..0 + 2]);
-        let f_Flags = <u16 as FromIntoMemory>::from_bytes(&from[2..2 + 2]);
-        let f_BasicInfo =
-            <MINIDUMP_SYSTEM_BASIC_INFORMATION as FromIntoMemory>::from_bytes(&from[8..8 + 56]);
-        let f_FileCacheInfo = <MINIDUMP_SYSTEM_FILECACHE_INFORMATION as FromIntoMemory>::from_bytes(
-            &from[64..64 + 64],
-        );
-        let f_BasicPerfInfo =
-            <MINIDUMP_SYSTEM_BASIC_PERFORMANCE_INFORMATION as FromIntoMemory>::from_bytes(
-                &from[128..128 + 32],
-            );
-        let f_PerfInfo = <MINIDUMP_SYSTEM_PERFORMANCE_INFORMATION as FromIntoMemory>::from_bytes(
-            &from[160..160 + 344],
-        );
-        Self {
-            Revision: f_Revision,
-            Flags: f_Flags,
-            BasicInfo: f_BasicInfo,
-            FileCacheInfo: f_FileCacheInfo,
-            BasicPerfInfo: f_BasicPerfInfo,
-            PerfInfo: f_PerfInfo,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 504u32 as usize);
-        FromIntoMemory::into_bytes(self.Revision, &mut into[0..0 + 2]);
-        FromIntoMemory::into_bytes(self.Flags, &mut into[2..2 + 2]);
-        FromIntoMemory::into_bytes(self.BasicInfo, &mut into[8..8 + 56]);
-        FromIntoMemory::into_bytes(self.FileCacheInfo, &mut into[64..64 + 64]);
-        FromIntoMemory::into_bytes(self.BasicPerfInfo, &mut into[128..128 + 32]);
-        FromIntoMemory::into_bytes(self.PerfInfo, &mut into[160..160 + 344]);
-    }
-    fn size() -> usize {
-        504u32 as usize
-    }
-}
-pub struct MINIDUMP_SYSTEM_PERFORMANCE_INFORMATION {
-    pub IdleProcessTime: u64,
-    pub IoReadTransferCount: u64,
-    pub IoWriteTransferCount: u64,
-    pub IoOtherTransferCount: u64,
-    pub IoReadOperationCount: u32,
-    pub IoWriteOperationCount: u32,
-    pub IoOtherOperationCount: u32,
-    pub AvailablePages: u32,
-    pub CommittedPages: u32,
-    pub CommitLimit: u32,
-    pub PeakCommitment: u32,
-    pub PageFaultCount: u32,
-    pub CopyOnWriteCount: u32,
-    pub TransitionCount: u32,
-    pub CacheTransitionCount: u32,
-    pub DemandZeroCount: u32,
-    pub PageReadCount: u32,
-    pub PageReadIoCount: u32,
-    pub CacheReadCount: u32,
-    pub CacheIoCount: u32,
-    pub DirtyPagesWriteCount: u32,
-    pub DirtyWriteIoCount: u32,
-    pub MappedPagesWriteCount: u32,
-    pub MappedWriteIoCount: u32,
-    pub PagedPoolPages: u32,
-    pub NonPagedPoolPages: u32,
-    pub PagedPoolAllocs: u32,
-    pub PagedPoolFrees: u32,
-    pub NonPagedPoolAllocs: u32,
-    pub NonPagedPoolFrees: u32,
-    pub FreeSystemPtes: u32,
-    pub ResidentSystemCodePage: u32,
-    pub TotalSystemDriverPages: u32,
-    pub TotalSystemCodePages: u32,
-    pub NonPagedPoolLookasideHits: u32,
-    pub PagedPoolLookasideHits: u32,
-    pub AvailablePagedPoolPages: u32,
-    pub ResidentSystemCachePage: u32,
-    pub ResidentPagedPoolPage: u32,
-    pub ResidentSystemDriverPage: u32,
-    pub CcFastReadNoWait: u32,
-    pub CcFastReadWait: u32,
-    pub CcFastReadResourceMiss: u32,
-    pub CcFastReadNotPossible: u32,
-    pub CcFastMdlReadNoWait: u32,
-    pub CcFastMdlReadWait: u32,
-    pub CcFastMdlReadResourceMiss: u32,
-    pub CcFastMdlReadNotPossible: u32,
-    pub CcMapDataNoWait: u32,
-    pub CcMapDataWait: u32,
-    pub CcMapDataNoWaitMiss: u32,
-    pub CcMapDataWaitMiss: u32,
-    pub CcPinMappedDataCount: u32,
-    pub CcPinReadNoWait: u32,
-    pub CcPinReadWait: u32,
-    pub CcPinReadNoWaitMiss: u32,
-    pub CcPinReadWaitMiss: u32,
-    pub CcCopyReadNoWait: u32,
-    pub CcCopyReadWait: u32,
-    pub CcCopyReadNoWaitMiss: u32,
-    pub CcCopyReadWaitMiss: u32,
-    pub CcMdlReadNoWait: u32,
-    pub CcMdlReadWait: u32,
-    pub CcMdlReadNoWaitMiss: u32,
-    pub CcMdlReadWaitMiss: u32,
-    pub CcReadAheadIos: u32,
-    pub CcLazyWriteIos: u32,
-    pub CcLazyWritePages: u32,
-    pub CcDataFlushes: u32,
-    pub CcDataPages: u32,
-    pub ContextSwitches: u32,
-    pub FirstLevelTbFills: u32,
-    pub SecondLevelTbFills: u32,
-    pub SystemCalls: u32,
-    pub CcTotalDirtyPages: u64,
-    pub CcDirtyPageThreshold: u64,
-    pub ResidentAvailablePages: i64,
-    pub SharedCommittedPages: u64,
-}
-impl ::core::marker::Copy for MINIDUMP_SYSTEM_PERFORMANCE_INFORMATION {}
-impl ::core::clone::Clone for MINIDUMP_SYSTEM_PERFORMANCE_INFORMATION {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_SYSTEM_PERFORMANCE_INFORMATION {
-    fn eq(&self, other: &Self) -> bool {
-        self.IdleProcessTime == other.IdleProcessTime
-            && self.IoReadTransferCount == other.IoReadTransferCount
-            && self.IoWriteTransferCount == other.IoWriteTransferCount
-            && self.IoOtherTransferCount == other.IoOtherTransferCount
-            && self.IoReadOperationCount == other.IoReadOperationCount
-            && self.IoWriteOperationCount == other.IoWriteOperationCount
-            && self.IoOtherOperationCount == other.IoOtherOperationCount
-            && self.AvailablePages == other.AvailablePages
-            && self.CommittedPages == other.CommittedPages
-            && self.CommitLimit == other.CommitLimit
-            && self.PeakCommitment == other.PeakCommitment
-            && self.PageFaultCount == other.PageFaultCount
-            && self.CopyOnWriteCount == other.CopyOnWriteCount
-            && self.TransitionCount == other.TransitionCount
-            && self.CacheTransitionCount == other.CacheTransitionCount
-            && self.DemandZeroCount == other.DemandZeroCount
-            && self.PageReadCount == other.PageReadCount
-            && self.PageReadIoCount == other.PageReadIoCount
-            && self.CacheReadCount == other.CacheReadCount
-            && self.CacheIoCount == other.CacheIoCount
-            && self.DirtyPagesWriteCount == other.DirtyPagesWriteCount
-            && self.DirtyWriteIoCount == other.DirtyWriteIoCount
-            && self.MappedPagesWriteCount == other.MappedPagesWriteCount
-            && self.MappedWriteIoCount == other.MappedWriteIoCount
-            && self.PagedPoolPages == other.PagedPoolPages
-            && self.NonPagedPoolPages == other.NonPagedPoolPages
-            && self.PagedPoolAllocs == other.PagedPoolAllocs
-            && self.PagedPoolFrees == other.PagedPoolFrees
-            && self.NonPagedPoolAllocs == other.NonPagedPoolAllocs
-            && self.NonPagedPoolFrees == other.NonPagedPoolFrees
-            && self.FreeSystemPtes == other.FreeSystemPtes
-            && self.ResidentSystemCodePage == other.ResidentSystemCodePage
-            && self.TotalSystemDriverPages == other.TotalSystemDriverPages
-            && self.TotalSystemCodePages == other.TotalSystemCodePages
-            && self.NonPagedPoolLookasideHits == other.NonPagedPoolLookasideHits
-            && self.PagedPoolLookasideHits == other.PagedPoolLookasideHits
-            && self.AvailablePagedPoolPages == other.AvailablePagedPoolPages
-            && self.ResidentSystemCachePage == other.ResidentSystemCachePage
-            && self.ResidentPagedPoolPage == other.ResidentPagedPoolPage
-            && self.ResidentSystemDriverPage == other.ResidentSystemDriverPage
-            && self.CcFastReadNoWait == other.CcFastReadNoWait
-            && self.CcFastReadWait == other.CcFastReadWait
-            && self.CcFastReadResourceMiss == other.CcFastReadResourceMiss
-            && self.CcFastReadNotPossible == other.CcFastReadNotPossible
-            && self.CcFastMdlReadNoWait == other.CcFastMdlReadNoWait
-            && self.CcFastMdlReadWait == other.CcFastMdlReadWait
-            && self.CcFastMdlReadResourceMiss == other.CcFastMdlReadResourceMiss
-            && self.CcFastMdlReadNotPossible == other.CcFastMdlReadNotPossible
-            && self.CcMapDataNoWait == other.CcMapDataNoWait
-            && self.CcMapDataWait == other.CcMapDataWait
-            && self.CcMapDataNoWaitMiss == other.CcMapDataNoWaitMiss
-            && self.CcMapDataWaitMiss == other.CcMapDataWaitMiss
-            && self.CcPinMappedDataCount == other.CcPinMappedDataCount
-            && self.CcPinReadNoWait == other.CcPinReadNoWait
-            && self.CcPinReadWait == other.CcPinReadWait
-            && self.CcPinReadNoWaitMiss == other.CcPinReadNoWaitMiss
-            && self.CcPinReadWaitMiss == other.CcPinReadWaitMiss
-            && self.CcCopyReadNoWait == other.CcCopyReadNoWait
-            && self.CcCopyReadWait == other.CcCopyReadWait
-            && self.CcCopyReadNoWaitMiss == other.CcCopyReadNoWaitMiss
-            && self.CcCopyReadWaitMiss == other.CcCopyReadWaitMiss
-            && self.CcMdlReadNoWait == other.CcMdlReadNoWait
-            && self.CcMdlReadWait == other.CcMdlReadWait
-            && self.CcMdlReadNoWaitMiss == other.CcMdlReadNoWaitMiss
-            && self.CcMdlReadWaitMiss == other.CcMdlReadWaitMiss
-            && self.CcReadAheadIos == other.CcReadAheadIos
-            && self.CcLazyWriteIos == other.CcLazyWriteIos
-            && self.CcLazyWritePages == other.CcLazyWritePages
-            && self.CcDataFlushes == other.CcDataFlushes
-            && self.CcDataPages == other.CcDataPages
-            && self.ContextSwitches == other.ContextSwitches
-            && self.FirstLevelTbFills == other.FirstLevelTbFills
-            && self.SecondLevelTbFills == other.SecondLevelTbFills
-            && self.SystemCalls == other.SystemCalls
-            && self.CcTotalDirtyPages == other.CcTotalDirtyPages
-            && self.CcDirtyPageThreshold == other.CcDirtyPageThreshold
-            && self.ResidentAvailablePages == other.ResidentAvailablePages
-            && self.SharedCommittedPages == other.SharedCommittedPages
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_SYSTEM_PERFORMANCE_INFORMATION {}
-impl FromIntoMemory for MINIDUMP_SYSTEM_PERFORMANCE_INFORMATION {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 344u32 as usize);
-        let f_IdleProcessTime = <u64 as FromIntoMemory>::from_bytes(&from[0..0 + 8]);
-        let f_IoReadTransferCount = <u64 as FromIntoMemory>::from_bytes(&from[8..8 + 8]);
-        let f_IoWriteTransferCount = <u64 as FromIntoMemory>::from_bytes(&from[16..16 + 8]);
-        let f_IoOtherTransferCount = <u64 as FromIntoMemory>::from_bytes(&from[24..24 + 8]);
-        let f_IoReadOperationCount = <u32 as FromIntoMemory>::from_bytes(&from[32..32 + 4]);
-        let f_IoWriteOperationCount = <u32 as FromIntoMemory>::from_bytes(&from[36..36 + 4]);
-        let f_IoOtherOperationCount = <u32 as FromIntoMemory>::from_bytes(&from[40..40 + 4]);
-        let f_AvailablePages = <u32 as FromIntoMemory>::from_bytes(&from[44..44 + 4]);
-        let f_CommittedPages = <u32 as FromIntoMemory>::from_bytes(&from[48..48 + 4]);
-        let f_CommitLimit = <u32 as FromIntoMemory>::from_bytes(&from[52..52 + 4]);
-        let f_PeakCommitment = <u32 as FromIntoMemory>::from_bytes(&from[56..56 + 4]);
-        let f_PageFaultCount = <u32 as FromIntoMemory>::from_bytes(&from[60..60 + 4]);
-        let f_CopyOnWriteCount = <u32 as FromIntoMemory>::from_bytes(&from[64..64 + 4]);
-        let f_TransitionCount = <u32 as FromIntoMemory>::from_bytes(&from[68..68 + 4]);
-        let f_CacheTransitionCount = <u32 as FromIntoMemory>::from_bytes(&from[72..72 + 4]);
-        let f_DemandZeroCount = <u32 as FromIntoMemory>::from_bytes(&from[76..76 + 4]);
-        let f_PageReadCount = <u32 as FromIntoMemory>::from_bytes(&from[80..80 + 4]);
-        let f_PageReadIoCount = <u32 as FromIntoMemory>::from_bytes(&from[84..84 + 4]);
-        let f_CacheReadCount = <u32 as FromIntoMemory>::from_bytes(&from[88..88 + 4]);
-        let f_CacheIoCount = <u32 as FromIntoMemory>::from_bytes(&from[92..92 + 4]);
-        let f_DirtyPagesWriteCount = <u32 as FromIntoMemory>::from_bytes(&from[96..96 + 4]);
-        let f_DirtyWriteIoCount = <u32 as FromIntoMemory>::from_bytes(&from[100..100 + 4]);
-        let f_MappedPagesWriteCount = <u32 as FromIntoMemory>::from_bytes(&from[104..104 + 4]);
-        let f_MappedWriteIoCount = <u32 as FromIntoMemory>::from_bytes(&from[108..108 + 4]);
-        let f_PagedPoolPages = <u32 as FromIntoMemory>::from_bytes(&from[112..112 + 4]);
-        let f_NonPagedPoolPages = <u32 as FromIntoMemory>::from_bytes(&from[116..116 + 4]);
-        let f_PagedPoolAllocs = <u32 as FromIntoMemory>::from_bytes(&from[120..120 + 4]);
-        let f_PagedPoolFrees = <u32 as FromIntoMemory>::from_bytes(&from[124..124 + 4]);
-        let f_NonPagedPoolAllocs = <u32 as FromIntoMemory>::from_bytes(&from[128..128 + 4]);
-        let f_NonPagedPoolFrees = <u32 as FromIntoMemory>::from_bytes(&from[132..132 + 4]);
-        let f_FreeSystemPtes = <u32 as FromIntoMemory>::from_bytes(&from[136..136 + 4]);
-        let f_ResidentSystemCodePage = <u32 as FromIntoMemory>::from_bytes(&from[140..140 + 4]);
-        let f_TotalSystemDriverPages = <u32 as FromIntoMemory>::from_bytes(&from[144..144 + 4]);
-        let f_TotalSystemCodePages = <u32 as FromIntoMemory>::from_bytes(&from[148..148 + 4]);
-        let f_NonPagedPoolLookasideHits = <u32 as FromIntoMemory>::from_bytes(&from[152..152 + 4]);
-        let f_PagedPoolLookasideHits = <u32 as FromIntoMemory>::from_bytes(&from[156..156 + 4]);
-        let f_AvailablePagedPoolPages = <u32 as FromIntoMemory>::from_bytes(&from[160..160 + 4]);
-        let f_ResidentSystemCachePage = <u32 as FromIntoMemory>::from_bytes(&from[164..164 + 4]);
-        let f_ResidentPagedPoolPage = <u32 as FromIntoMemory>::from_bytes(&from[168..168 + 4]);
-        let f_ResidentSystemDriverPage = <u32 as FromIntoMemory>::from_bytes(&from[172..172 + 4]);
-        let f_CcFastReadNoWait = <u32 as FromIntoMemory>::from_bytes(&from[176..176 + 4]);
-        let f_CcFastReadWait = <u32 as FromIntoMemory>::from_bytes(&from[180..180 + 4]);
-        let f_CcFastReadResourceMiss = <u32 as FromIntoMemory>::from_bytes(&from[184..184 + 4]);
-        let f_CcFastReadNotPossible = <u32 as FromIntoMemory>::from_bytes(&from[188..188 + 4]);
-        let f_CcFastMdlReadNoWait = <u32 as FromIntoMemory>::from_bytes(&from[192..192 + 4]);
-        let f_CcFastMdlReadWait = <u32 as FromIntoMemory>::from_bytes(&from[196..196 + 4]);
-        let f_CcFastMdlReadResourceMiss = <u32 as FromIntoMemory>::from_bytes(&from[200..200 + 4]);
-        let f_CcFastMdlReadNotPossible = <u32 as FromIntoMemory>::from_bytes(&from[204..204 + 4]);
-        let f_CcMapDataNoWait = <u32 as FromIntoMemory>::from_bytes(&from[208..208 + 4]);
-        let f_CcMapDataWait = <u32 as FromIntoMemory>::from_bytes(&from[212..212 + 4]);
-        let f_CcMapDataNoWaitMiss = <u32 as FromIntoMemory>::from_bytes(&from[216..216 + 4]);
-        let f_CcMapDataWaitMiss = <u32 as FromIntoMemory>::from_bytes(&from[220..220 + 4]);
-        let f_CcPinMappedDataCount = <u32 as FromIntoMemory>::from_bytes(&from[224..224 + 4]);
-        let f_CcPinReadNoWait = <u32 as FromIntoMemory>::from_bytes(&from[228..228 + 4]);
-        let f_CcPinReadWait = <u32 as FromIntoMemory>::from_bytes(&from[232..232 + 4]);
-        let f_CcPinReadNoWaitMiss = <u32 as FromIntoMemory>::from_bytes(&from[236..236 + 4]);
-        let f_CcPinReadWaitMiss = <u32 as FromIntoMemory>::from_bytes(&from[240..240 + 4]);
-        let f_CcCopyReadNoWait = <u32 as FromIntoMemory>::from_bytes(&from[244..244 + 4]);
-        let f_CcCopyReadWait = <u32 as FromIntoMemory>::from_bytes(&from[248..248 + 4]);
-        let f_CcCopyReadNoWaitMiss = <u32 as FromIntoMemory>::from_bytes(&from[252..252 + 4]);
-        let f_CcCopyReadWaitMiss = <u32 as FromIntoMemory>::from_bytes(&from[256..256 + 4]);
-        let f_CcMdlReadNoWait = <u32 as FromIntoMemory>::from_bytes(&from[260..260 + 4]);
-        let f_CcMdlReadWait = <u32 as FromIntoMemory>::from_bytes(&from[264..264 + 4]);
-        let f_CcMdlReadNoWaitMiss = <u32 as FromIntoMemory>::from_bytes(&from[268..268 + 4]);
-        let f_CcMdlReadWaitMiss = <u32 as FromIntoMemory>::from_bytes(&from[272..272 + 4]);
-        let f_CcReadAheadIos = <u32 as FromIntoMemory>::from_bytes(&from[276..276 + 4]);
-        let f_CcLazyWriteIos = <u32 as FromIntoMemory>::from_bytes(&from[280..280 + 4]);
-        let f_CcLazyWritePages = <u32 as FromIntoMemory>::from_bytes(&from[284..284 + 4]);
-        let f_CcDataFlushes = <u32 as FromIntoMemory>::from_bytes(&from[288..288 + 4]);
-        let f_CcDataPages = <u32 as FromIntoMemory>::from_bytes(&from[292..292 + 4]);
-        let f_ContextSwitches = <u32 as FromIntoMemory>::from_bytes(&from[296..296 + 4]);
-        let f_FirstLevelTbFills = <u32 as FromIntoMemory>::from_bytes(&from[300..300 + 4]);
-        let f_SecondLevelTbFills = <u32 as FromIntoMemory>::from_bytes(&from[304..304 + 4]);
-        let f_SystemCalls = <u32 as FromIntoMemory>::from_bytes(&from[308..308 + 4]);
-        let f_CcTotalDirtyPages = <u64 as FromIntoMemory>::from_bytes(&from[312..312 + 8]);
-        let f_CcDirtyPageThreshold = <u64 as FromIntoMemory>::from_bytes(&from[320..320 + 8]);
-        let f_ResidentAvailablePages = <i64 as FromIntoMemory>::from_bytes(&from[328..328 + 8]);
-        let f_SharedCommittedPages = <u64 as FromIntoMemory>::from_bytes(&from[336..336 + 8]);
-        Self {
-            IdleProcessTime: f_IdleProcessTime,
-            IoReadTransferCount: f_IoReadTransferCount,
-            IoWriteTransferCount: f_IoWriteTransferCount,
-            IoOtherTransferCount: f_IoOtherTransferCount,
-            IoReadOperationCount: f_IoReadOperationCount,
-            IoWriteOperationCount: f_IoWriteOperationCount,
-            IoOtherOperationCount: f_IoOtherOperationCount,
-            AvailablePages: f_AvailablePages,
-            CommittedPages: f_CommittedPages,
-            CommitLimit: f_CommitLimit,
-            PeakCommitment: f_PeakCommitment,
-            PageFaultCount: f_PageFaultCount,
-            CopyOnWriteCount: f_CopyOnWriteCount,
-            TransitionCount: f_TransitionCount,
-            CacheTransitionCount: f_CacheTransitionCount,
-            DemandZeroCount: f_DemandZeroCount,
-            PageReadCount: f_PageReadCount,
-            PageReadIoCount: f_PageReadIoCount,
-            CacheReadCount: f_CacheReadCount,
-            CacheIoCount: f_CacheIoCount,
-            DirtyPagesWriteCount: f_DirtyPagesWriteCount,
-            DirtyWriteIoCount: f_DirtyWriteIoCount,
-            MappedPagesWriteCount: f_MappedPagesWriteCount,
-            MappedWriteIoCount: f_MappedWriteIoCount,
-            PagedPoolPages: f_PagedPoolPages,
-            NonPagedPoolPages: f_NonPagedPoolPages,
-            PagedPoolAllocs: f_PagedPoolAllocs,
-            PagedPoolFrees: f_PagedPoolFrees,
-            NonPagedPoolAllocs: f_NonPagedPoolAllocs,
-            NonPagedPoolFrees: f_NonPagedPoolFrees,
-            FreeSystemPtes: f_FreeSystemPtes,
-            ResidentSystemCodePage: f_ResidentSystemCodePage,
-            TotalSystemDriverPages: f_TotalSystemDriverPages,
-            TotalSystemCodePages: f_TotalSystemCodePages,
-            NonPagedPoolLookasideHits: f_NonPagedPoolLookasideHits,
-            PagedPoolLookasideHits: f_PagedPoolLookasideHits,
-            AvailablePagedPoolPages: f_AvailablePagedPoolPages,
-            ResidentSystemCachePage: f_ResidentSystemCachePage,
-            ResidentPagedPoolPage: f_ResidentPagedPoolPage,
-            ResidentSystemDriverPage: f_ResidentSystemDriverPage,
-            CcFastReadNoWait: f_CcFastReadNoWait,
-            CcFastReadWait: f_CcFastReadWait,
-            CcFastReadResourceMiss: f_CcFastReadResourceMiss,
-            CcFastReadNotPossible: f_CcFastReadNotPossible,
-            CcFastMdlReadNoWait: f_CcFastMdlReadNoWait,
-            CcFastMdlReadWait: f_CcFastMdlReadWait,
-            CcFastMdlReadResourceMiss: f_CcFastMdlReadResourceMiss,
-            CcFastMdlReadNotPossible: f_CcFastMdlReadNotPossible,
-            CcMapDataNoWait: f_CcMapDataNoWait,
-            CcMapDataWait: f_CcMapDataWait,
-            CcMapDataNoWaitMiss: f_CcMapDataNoWaitMiss,
-            CcMapDataWaitMiss: f_CcMapDataWaitMiss,
-            CcPinMappedDataCount: f_CcPinMappedDataCount,
-            CcPinReadNoWait: f_CcPinReadNoWait,
-            CcPinReadWait: f_CcPinReadWait,
-            CcPinReadNoWaitMiss: f_CcPinReadNoWaitMiss,
-            CcPinReadWaitMiss: f_CcPinReadWaitMiss,
-            CcCopyReadNoWait: f_CcCopyReadNoWait,
-            CcCopyReadWait: f_CcCopyReadWait,
-            CcCopyReadNoWaitMiss: f_CcCopyReadNoWaitMiss,
-            CcCopyReadWaitMiss: f_CcCopyReadWaitMiss,
-            CcMdlReadNoWait: f_CcMdlReadNoWait,
-            CcMdlReadWait: f_CcMdlReadWait,
-            CcMdlReadNoWaitMiss: f_CcMdlReadNoWaitMiss,
-            CcMdlReadWaitMiss: f_CcMdlReadWaitMiss,
-            CcReadAheadIos: f_CcReadAheadIos,
-            CcLazyWriteIos: f_CcLazyWriteIos,
-            CcLazyWritePages: f_CcLazyWritePages,
-            CcDataFlushes: f_CcDataFlushes,
-            CcDataPages: f_CcDataPages,
-            ContextSwitches: f_ContextSwitches,
-            FirstLevelTbFills: f_FirstLevelTbFills,
-            SecondLevelTbFills: f_SecondLevelTbFills,
-            SystemCalls: f_SystemCalls,
-            CcTotalDirtyPages: f_CcTotalDirtyPages,
-            CcDirtyPageThreshold: f_CcDirtyPageThreshold,
-            ResidentAvailablePages: f_ResidentAvailablePages,
-            SharedCommittedPages: f_SharedCommittedPages,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 344u32 as usize);
-        FromIntoMemory::into_bytes(self.IdleProcessTime, &mut into[0..0 + 8]);
-        FromIntoMemory::into_bytes(self.IoReadTransferCount, &mut into[8..8 + 8]);
-        FromIntoMemory::into_bytes(self.IoWriteTransferCount, &mut into[16..16 + 8]);
-        FromIntoMemory::into_bytes(self.IoOtherTransferCount, &mut into[24..24 + 8]);
-        FromIntoMemory::into_bytes(self.IoReadOperationCount, &mut into[32..32 + 4]);
-        FromIntoMemory::into_bytes(self.IoWriteOperationCount, &mut into[36..36 + 4]);
-        FromIntoMemory::into_bytes(self.IoOtherOperationCount, &mut into[40..40 + 4]);
-        FromIntoMemory::into_bytes(self.AvailablePages, &mut into[44..44 + 4]);
-        FromIntoMemory::into_bytes(self.CommittedPages, &mut into[48..48 + 4]);
-        FromIntoMemory::into_bytes(self.CommitLimit, &mut into[52..52 + 4]);
-        FromIntoMemory::into_bytes(self.PeakCommitment, &mut into[56..56 + 4]);
-        FromIntoMemory::into_bytes(self.PageFaultCount, &mut into[60..60 + 4]);
-        FromIntoMemory::into_bytes(self.CopyOnWriteCount, &mut into[64..64 + 4]);
-        FromIntoMemory::into_bytes(self.TransitionCount, &mut into[68..68 + 4]);
-        FromIntoMemory::into_bytes(self.CacheTransitionCount, &mut into[72..72 + 4]);
-        FromIntoMemory::into_bytes(self.DemandZeroCount, &mut into[76..76 + 4]);
-        FromIntoMemory::into_bytes(self.PageReadCount, &mut into[80..80 + 4]);
-        FromIntoMemory::into_bytes(self.PageReadIoCount, &mut into[84..84 + 4]);
-        FromIntoMemory::into_bytes(self.CacheReadCount, &mut into[88..88 + 4]);
-        FromIntoMemory::into_bytes(self.CacheIoCount, &mut into[92..92 + 4]);
-        FromIntoMemory::into_bytes(self.DirtyPagesWriteCount, &mut into[96..96 + 4]);
-        FromIntoMemory::into_bytes(self.DirtyWriteIoCount, &mut into[100..100 + 4]);
-        FromIntoMemory::into_bytes(self.MappedPagesWriteCount, &mut into[104..104 + 4]);
-        FromIntoMemory::into_bytes(self.MappedWriteIoCount, &mut into[108..108 + 4]);
-        FromIntoMemory::into_bytes(self.PagedPoolPages, &mut into[112..112 + 4]);
-        FromIntoMemory::into_bytes(self.NonPagedPoolPages, &mut into[116..116 + 4]);
-        FromIntoMemory::into_bytes(self.PagedPoolAllocs, &mut into[120..120 + 4]);
-        FromIntoMemory::into_bytes(self.PagedPoolFrees, &mut into[124..124 + 4]);
-        FromIntoMemory::into_bytes(self.NonPagedPoolAllocs, &mut into[128..128 + 4]);
-        FromIntoMemory::into_bytes(self.NonPagedPoolFrees, &mut into[132..132 + 4]);
-        FromIntoMemory::into_bytes(self.FreeSystemPtes, &mut into[136..136 + 4]);
-        FromIntoMemory::into_bytes(self.ResidentSystemCodePage, &mut into[140..140 + 4]);
-        FromIntoMemory::into_bytes(self.TotalSystemDriverPages, &mut into[144..144 + 4]);
-        FromIntoMemory::into_bytes(self.TotalSystemCodePages, &mut into[148..148 + 4]);
-        FromIntoMemory::into_bytes(self.NonPagedPoolLookasideHits, &mut into[152..152 + 4]);
-        FromIntoMemory::into_bytes(self.PagedPoolLookasideHits, &mut into[156..156 + 4]);
-        FromIntoMemory::into_bytes(self.AvailablePagedPoolPages, &mut into[160..160 + 4]);
-        FromIntoMemory::into_bytes(self.ResidentSystemCachePage, &mut into[164..164 + 4]);
-        FromIntoMemory::into_bytes(self.ResidentPagedPoolPage, &mut into[168..168 + 4]);
-        FromIntoMemory::into_bytes(self.ResidentSystemDriverPage, &mut into[172..172 + 4]);
-        FromIntoMemory::into_bytes(self.CcFastReadNoWait, &mut into[176..176 + 4]);
-        FromIntoMemory::into_bytes(self.CcFastReadWait, &mut into[180..180 + 4]);
-        FromIntoMemory::into_bytes(self.CcFastReadResourceMiss, &mut into[184..184 + 4]);
-        FromIntoMemory::into_bytes(self.CcFastReadNotPossible, &mut into[188..188 + 4]);
-        FromIntoMemory::into_bytes(self.CcFastMdlReadNoWait, &mut into[192..192 + 4]);
-        FromIntoMemory::into_bytes(self.CcFastMdlReadWait, &mut into[196..196 + 4]);
-        FromIntoMemory::into_bytes(self.CcFastMdlReadResourceMiss, &mut into[200..200 + 4]);
-        FromIntoMemory::into_bytes(self.CcFastMdlReadNotPossible, &mut into[204..204 + 4]);
-        FromIntoMemory::into_bytes(self.CcMapDataNoWait, &mut into[208..208 + 4]);
-        FromIntoMemory::into_bytes(self.CcMapDataWait, &mut into[212..212 + 4]);
-        FromIntoMemory::into_bytes(self.CcMapDataNoWaitMiss, &mut into[216..216 + 4]);
-        FromIntoMemory::into_bytes(self.CcMapDataWaitMiss, &mut into[220..220 + 4]);
-        FromIntoMemory::into_bytes(self.CcPinMappedDataCount, &mut into[224..224 + 4]);
-        FromIntoMemory::into_bytes(self.CcPinReadNoWait, &mut into[228..228 + 4]);
-        FromIntoMemory::into_bytes(self.CcPinReadWait, &mut into[232..232 + 4]);
-        FromIntoMemory::into_bytes(self.CcPinReadNoWaitMiss, &mut into[236..236 + 4]);
-        FromIntoMemory::into_bytes(self.CcPinReadWaitMiss, &mut into[240..240 + 4]);
-        FromIntoMemory::into_bytes(self.CcCopyReadNoWait, &mut into[244..244 + 4]);
-        FromIntoMemory::into_bytes(self.CcCopyReadWait, &mut into[248..248 + 4]);
-        FromIntoMemory::into_bytes(self.CcCopyReadNoWaitMiss, &mut into[252..252 + 4]);
-        FromIntoMemory::into_bytes(self.CcCopyReadWaitMiss, &mut into[256..256 + 4]);
-        FromIntoMemory::into_bytes(self.CcMdlReadNoWait, &mut into[260..260 + 4]);
-        FromIntoMemory::into_bytes(self.CcMdlReadWait, &mut into[264..264 + 4]);
-        FromIntoMemory::into_bytes(self.CcMdlReadNoWaitMiss, &mut into[268..268 + 4]);
-        FromIntoMemory::into_bytes(self.CcMdlReadWaitMiss, &mut into[272..272 + 4]);
-        FromIntoMemory::into_bytes(self.CcReadAheadIos, &mut into[276..276 + 4]);
-        FromIntoMemory::into_bytes(self.CcLazyWriteIos, &mut into[280..280 + 4]);
-        FromIntoMemory::into_bytes(self.CcLazyWritePages, &mut into[284..284 + 4]);
-        FromIntoMemory::into_bytes(self.CcDataFlushes, &mut into[288..288 + 4]);
-        FromIntoMemory::into_bytes(self.CcDataPages, &mut into[292..292 + 4]);
-        FromIntoMemory::into_bytes(self.ContextSwitches, &mut into[296..296 + 4]);
-        FromIntoMemory::into_bytes(self.FirstLevelTbFills, &mut into[300..300 + 4]);
-        FromIntoMemory::into_bytes(self.SecondLevelTbFills, &mut into[304..304 + 4]);
-        FromIntoMemory::into_bytes(self.SystemCalls, &mut into[308..308 + 4]);
-        FromIntoMemory::into_bytes(self.CcTotalDirtyPages, &mut into[312..312 + 8]);
-        FromIntoMemory::into_bytes(self.CcDirtyPageThreshold, &mut into[320..320 + 8]);
-        FromIntoMemory::into_bytes(self.ResidentAvailablePages, &mut into[328..328 + 8]);
-        FromIntoMemory::into_bytes(self.SharedCommittedPages, &mut into[336..336 + 8]);
-    }
-    fn size() -> usize {
-        344u32 as usize
-    }
-}
-pub struct MINIDUMP_THREAD {
-    pub ThreadId: u32,
-    pub SuspendCount: u32,
-    pub PriorityClass: u32,
-    pub Priority: u32,
-    pub Teb: u64,
-    pub Stack: MINIDUMP_MEMORY_DESCRIPTOR,
-    pub ThreadContext: MINIDUMP_LOCATION_DESCRIPTOR,
-}
-impl ::core::marker::Copy for MINIDUMP_THREAD {}
-impl ::core::clone::Clone for MINIDUMP_THREAD {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_THREAD {
-    fn eq(&self, other: &Self) -> bool {
-        self.ThreadId == other.ThreadId
-            && self.SuspendCount == other.SuspendCount
-            && self.PriorityClass == other.PriorityClass
-            && self.Priority == other.Priority
-            && self.Teb == other.Teb
-            && self.Stack == other.Stack
-            && self.ThreadContext == other.ThreadContext
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_THREAD {}
-impl FromIntoMemory for MINIDUMP_THREAD {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 48u32 as usize);
-        let f_ThreadId = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_SuspendCount = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        let f_PriorityClass = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_Priority = <u32 as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
-        let f_Teb = <u64 as FromIntoMemory>::from_bytes(&from[16..16 + 8]);
-        let f_Stack =
-            <MINIDUMP_MEMORY_DESCRIPTOR as FromIntoMemory>::from_bytes(&from[24..24 + 16]);
-        let f_ThreadContext =
-            <MINIDUMP_LOCATION_DESCRIPTOR as FromIntoMemory>::from_bytes(&from[40..40 + 8]);
-        Self {
-            ThreadId: f_ThreadId,
-            SuspendCount: f_SuspendCount,
-            PriorityClass: f_PriorityClass,
-            Priority: f_Priority,
-            Teb: f_Teb,
-            Stack: f_Stack,
-            ThreadContext: f_ThreadContext,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 48u32 as usize);
-        FromIntoMemory::into_bytes(self.ThreadId, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.SuspendCount, &mut into[4..4 + 4]);
-        FromIntoMemory::into_bytes(self.PriorityClass, &mut into[8..8 + 4]);
-        FromIntoMemory::into_bytes(self.Priority, &mut into[12..12 + 4]);
-        FromIntoMemory::into_bytes(self.Teb, &mut into[16..16 + 8]);
-        FromIntoMemory::into_bytes(self.Stack, &mut into[24..24 + 16]);
-        FromIntoMemory::into_bytes(self.ThreadContext, &mut into[40..40 + 8]);
-    }
-    fn size() -> usize {
-        48u32 as usize
-    }
-}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-pub struct MINIDUMP_THREAD_CALLBACK {
-    pub ThreadId: u32,
-    pub ThreadHandle: super::super::super::Foundation::HANDLE,
-    pub Pad: u32,
-    pub Context: CONTEXT,
-    pub SizeOfContext: u32,
-    pub StackBase: u64,
-    pub StackEnd: u64,
-}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl ::core::marker::Copy for MINIDUMP_THREAD_CALLBACK {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl ::core::clone::Clone for MINIDUMP_THREAD_CALLBACK {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl ::core::cmp::PartialEq for MINIDUMP_THREAD_CALLBACK {
-    fn eq(&self, other: &Self) -> bool {
-        self.ThreadId == other.ThreadId
-            && self.ThreadHandle == other.ThreadHandle
-            && self.Pad == other.Pad
-            && self.Context == other.Context
-            && self.SizeOfContext == other.SizeOfContext
-            && self.StackBase == other.StackBase
-            && self.StackEnd == other.StackEnd
-    }
-}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl ::core::cmp::Eq for MINIDUMP_THREAD_CALLBACK {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl FromIntoMemory for MINIDUMP_THREAD_CALLBACK {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 3248u32 as usize);
-        let f_ThreadId = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_ThreadHandle =
-            <super::super::super::Foundation::HANDLE as FromIntoMemory>::from_bytes(
-                &from[4..4 + 4],
-            );
-        let f_Pad = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_Context = <CONTEXT as FromIntoMemory>::from_bytes(&from[16..16 + 3208]);
-        let f_SizeOfContext = <u32 as FromIntoMemory>::from_bytes(&from[3224..3224 + 4]);
-        let f_StackBase = <u64 as FromIntoMemory>::from_bytes(&from[3232..3232 + 8]);
-        let f_StackEnd = <u64 as FromIntoMemory>::from_bytes(&from[3240..3240 + 8]);
-        Self {
-            ThreadId: f_ThreadId,
-            ThreadHandle: f_ThreadHandle,
-            Pad: f_Pad,
-            Context: f_Context,
-            SizeOfContext: f_SizeOfContext,
-            StackBase: f_StackBase,
-            StackEnd: f_StackEnd,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 3248u32 as usize);
-        FromIntoMemory::into_bytes(self.ThreadId, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.ThreadHandle, &mut into[4..4 + 4]);
-        FromIntoMemory::into_bytes(self.Pad, &mut into[8..8 + 4]);
-        FromIntoMemory::into_bytes(self.Context, &mut into[16..16 + 3208]);
-        FromIntoMemory::into_bytes(self.SizeOfContext, &mut into[3224..3224 + 4]);
-        FromIntoMemory::into_bytes(self.StackBase, &mut into[3232..3232 + 8]);
-        FromIntoMemory::into_bytes(self.StackEnd, &mut into[3240..3240 + 8]);
-    }
-    fn size() -> usize {
-        3248u32 as usize
-    }
-}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-pub struct MINIDUMP_THREAD_CALLBACK {
-    pub ThreadId: u32,
-    pub ThreadHandle: super::super::super::Foundation::HANDLE,
-    pub Context: CONTEXT,
-    pub SizeOfContext: u32,
-    pub StackBase: u64,
-    pub StackEnd: u64,
-}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl ::core::marker::Copy for MINIDUMP_THREAD_CALLBACK {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl ::core::clone::Clone for MINIDUMP_THREAD_CALLBACK {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl ::core::cmp::PartialEq for MINIDUMP_THREAD_CALLBACK {
-    fn eq(&self, other: &Self) -> bool {
-        self.ThreadId == other.ThreadId
-            && self.ThreadHandle == other.ThreadHandle
-            && self.Context == other.Context
-            && self.SizeOfContext == other.SizeOfContext
-            && self.StackBase == other.StackBase
-            && self.StackEnd == other.StackEnd
-    }
-}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl ::core::cmp::Eq for MINIDUMP_THREAD_CALLBACK {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl FromIntoMemory for MINIDUMP_THREAD_CALLBACK {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 3240u32 as usize);
-        let f_ThreadId = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_ThreadHandle =
-            <super::super::super::Foundation::HANDLE as FromIntoMemory>::from_bytes(
-                &from[4..4 + 4],
-            );
-        let f_Context = <CONTEXT as FromIntoMemory>::from_bytes(&from[8..8 + 3208]);
-        let f_SizeOfContext = <u32 as FromIntoMemory>::from_bytes(&from[3216..3216 + 4]);
-        let f_StackBase = <u64 as FromIntoMemory>::from_bytes(&from[3224..3224 + 8]);
-        let f_StackEnd = <u64 as FromIntoMemory>::from_bytes(&from[3232..3232 + 8]);
-        Self {
-            ThreadId: f_ThreadId,
-            ThreadHandle: f_ThreadHandle,
-            Context: f_Context,
-            SizeOfContext: f_SizeOfContext,
-            StackBase: f_StackBase,
-            StackEnd: f_StackEnd,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 3240u32 as usize);
-        FromIntoMemory::into_bytes(self.ThreadId, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.ThreadHandle, &mut into[4..4 + 4]);
-        FromIntoMemory::into_bytes(self.Context, &mut into[8..8 + 3208]);
-        FromIntoMemory::into_bytes(self.SizeOfContext, &mut into[3216..3216 + 4]);
-        FromIntoMemory::into_bytes(self.StackBase, &mut into[3224..3224 + 8]);
-        FromIntoMemory::into_bytes(self.StackEnd, &mut into[3232..3232 + 8]);
-    }
-    fn size() -> usize {
-        3240u32 as usize
-    }
-}
-pub struct MINIDUMP_THREAD_CALLBACK {
-    pub ThreadId: u32,
-    pub ThreadHandle: super::super::super::Foundation::HANDLE,
-    pub Context: CONTEXT,
-    pub SizeOfContext: u32,
-    pub StackBase: u64,
-    pub StackEnd: u64,
-}
-impl ::core::marker::Copy for MINIDUMP_THREAD_CALLBACK {}
-impl ::core::clone::Clone for MINIDUMP_THREAD_CALLBACK {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_THREAD_CALLBACK {
-    fn eq(&self, other: &Self) -> bool {
-        self.ThreadId == other.ThreadId
-            && self.ThreadHandle == other.ThreadHandle
-            && self.Context == other.Context
-            && self.SizeOfContext == other.SizeOfContext
-            && self.StackBase == other.StackBase
-            && self.StackEnd == other.StackEnd
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_THREAD_CALLBACK {}
-impl FromIntoMemory for MINIDUMP_THREAD_CALLBACK {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 3240u32 as usize);
-        let f_ThreadId = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_ThreadHandle =
-            <super::super::super::Foundation::HANDLE as FromIntoMemory>::from_bytes(
-                &from[4..4 + 4],
-            );
-        let f_Context = <CONTEXT as FromIntoMemory>::from_bytes(&from[8..8 + 3208]);
-        let f_SizeOfContext = <u32 as FromIntoMemory>::from_bytes(&from[3216..3216 + 4]);
-        let f_StackBase = <u64 as FromIntoMemory>::from_bytes(&from[3224..3224 + 8]);
-        let f_StackEnd = <u64 as FromIntoMemory>::from_bytes(&from[3232..3232 + 8]);
-        Self {
-            ThreadId: f_ThreadId,
-            ThreadHandle: f_ThreadHandle,
-            Context: f_Context,
-            SizeOfContext: f_SizeOfContext,
-            StackBase: f_StackBase,
-            StackEnd: f_StackEnd,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 3240u32 as usize);
-        FromIntoMemory::into_bytes(self.ThreadId, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.ThreadHandle, &mut into[4..4 + 4]);
-        FromIntoMemory::into_bytes(self.Context, &mut into[8..8 + 3208]);
-        FromIntoMemory::into_bytes(self.SizeOfContext, &mut into[3216..3216 + 4]);
-        FromIntoMemory::into_bytes(self.StackBase, &mut into[3224..3224 + 8]);
-        FromIntoMemory::into_bytes(self.StackEnd, &mut into[3232..3232 + 8]);
-    }
-    fn size() -> usize {
-        3240u32 as usize
-    }
-}
-pub struct MINIDUMP_THREAD_EX {
-    pub ThreadId: u32,
-    pub SuspendCount: u32,
-    pub PriorityClass: u32,
-    pub Priority: u32,
-    pub Teb: u64,
-    pub Stack: MINIDUMP_MEMORY_DESCRIPTOR,
-    pub ThreadContext: MINIDUMP_LOCATION_DESCRIPTOR,
-    pub BackingStore: MINIDUMP_MEMORY_DESCRIPTOR,
-}
-impl ::core::marker::Copy for MINIDUMP_THREAD_EX {}
-impl ::core::clone::Clone for MINIDUMP_THREAD_EX {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_THREAD_EX {
-    fn eq(&self, other: &Self) -> bool {
-        self.ThreadId == other.ThreadId
-            && self.SuspendCount == other.SuspendCount
-            && self.PriorityClass == other.PriorityClass
-            && self.Priority == other.Priority
-            && self.Teb == other.Teb
-            && self.Stack == other.Stack
-            && self.ThreadContext == other.ThreadContext
-            && self.BackingStore == other.BackingStore
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_THREAD_EX {}
-impl FromIntoMemory for MINIDUMP_THREAD_EX {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 64u32 as usize);
-        let f_ThreadId = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_SuspendCount = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        let f_PriorityClass = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_Priority = <u32 as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
-        let f_Teb = <u64 as FromIntoMemory>::from_bytes(&from[16..16 + 8]);
-        let f_Stack =
-            <MINIDUMP_MEMORY_DESCRIPTOR as FromIntoMemory>::from_bytes(&from[24..24 + 16]);
-        let f_ThreadContext =
-            <MINIDUMP_LOCATION_DESCRIPTOR as FromIntoMemory>::from_bytes(&from[40..40 + 8]);
-        let f_BackingStore =
-            <MINIDUMP_MEMORY_DESCRIPTOR as FromIntoMemory>::from_bytes(&from[48..48 + 16]);
-        Self {
-            ThreadId: f_ThreadId,
-            SuspendCount: f_SuspendCount,
-            PriorityClass: f_PriorityClass,
-            Priority: f_Priority,
-            Teb: f_Teb,
-            Stack: f_Stack,
-            ThreadContext: f_ThreadContext,
-            BackingStore: f_BackingStore,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 64u32 as usize);
-        FromIntoMemory::into_bytes(self.ThreadId, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.SuspendCount, &mut into[4..4 + 4]);
-        FromIntoMemory::into_bytes(self.PriorityClass, &mut into[8..8 + 4]);
-        FromIntoMemory::into_bytes(self.Priority, &mut into[12..12 + 4]);
-        FromIntoMemory::into_bytes(self.Teb, &mut into[16..16 + 8]);
-        FromIntoMemory::into_bytes(self.Stack, &mut into[24..24 + 16]);
-        FromIntoMemory::into_bytes(self.ThreadContext, &mut into[40..40 + 8]);
-        FromIntoMemory::into_bytes(self.BackingStore, &mut into[48..48 + 16]);
-    }
-    fn size() -> usize {
-        64u32 as usize
-    }
-}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-pub struct MINIDUMP_THREAD_EX_CALLBACK {
-    pub ThreadId: u32,
-    pub ThreadHandle: super::super::super::Foundation::HANDLE,
-    pub Pad: u32,
-    pub Context: CONTEXT,
-    pub SizeOfContext: u32,
-    pub StackBase: u64,
-    pub StackEnd: u64,
-    pub BackingStoreBase: u64,
-    pub BackingStoreEnd: u64,
-}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl ::core::marker::Copy for MINIDUMP_THREAD_EX_CALLBACK {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl ::core::clone::Clone for MINIDUMP_THREAD_EX_CALLBACK {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl ::core::cmp::PartialEq for MINIDUMP_THREAD_EX_CALLBACK {
-    fn eq(&self, other: &Self) -> bool {
-        self.ThreadId == other.ThreadId
-            && self.ThreadHandle == other.ThreadHandle
-            && self.Pad == other.Pad
-            && self.Context == other.Context
-            && self.SizeOfContext == other.SizeOfContext
-            && self.StackBase == other.StackBase
-            && self.StackEnd == other.StackEnd
-            && self.BackingStoreBase == other.BackingStoreBase
-            && self.BackingStoreEnd == other.BackingStoreEnd
-    }
-}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl ::core::cmp::Eq for MINIDUMP_THREAD_EX_CALLBACK {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl FromIntoMemory for MINIDUMP_THREAD_EX_CALLBACK {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 3264u32 as usize);
-        let f_ThreadId = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_ThreadHandle =
-            <super::super::super::Foundation::HANDLE as FromIntoMemory>::from_bytes(
-                &from[4..4 + 4],
-            );
-        let f_Pad = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_Context = <CONTEXT as FromIntoMemory>::from_bytes(&from[16..16 + 3208]);
-        let f_SizeOfContext = <u32 as FromIntoMemory>::from_bytes(&from[3224..3224 + 4]);
-        let f_StackBase = <u64 as FromIntoMemory>::from_bytes(&from[3232..3232 + 8]);
-        let f_StackEnd = <u64 as FromIntoMemory>::from_bytes(&from[3240..3240 + 8]);
-        let f_BackingStoreBase = <u64 as FromIntoMemory>::from_bytes(&from[3248..3248 + 8]);
-        let f_BackingStoreEnd = <u64 as FromIntoMemory>::from_bytes(&from[3256..3256 + 8]);
-        Self {
-            ThreadId: f_ThreadId,
-            ThreadHandle: f_ThreadHandle,
-            Pad: f_Pad,
-            Context: f_Context,
-            SizeOfContext: f_SizeOfContext,
-            StackBase: f_StackBase,
-            StackEnd: f_StackEnd,
-            BackingStoreBase: f_BackingStoreBase,
-            BackingStoreEnd: f_BackingStoreEnd,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 3264u32 as usize);
-        FromIntoMemory::into_bytes(self.ThreadId, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.ThreadHandle, &mut into[4..4 + 4]);
-        FromIntoMemory::into_bytes(self.Pad, &mut into[8..8 + 4]);
-        FromIntoMemory::into_bytes(self.Context, &mut into[16..16 + 3208]);
-        FromIntoMemory::into_bytes(self.SizeOfContext, &mut into[3224..3224 + 4]);
-        FromIntoMemory::into_bytes(self.StackBase, &mut into[3232..3232 + 8]);
-        FromIntoMemory::into_bytes(self.StackEnd, &mut into[3240..3240 + 8]);
-        FromIntoMemory::into_bytes(self.BackingStoreBase, &mut into[3248..3248 + 8]);
-        FromIntoMemory::into_bytes(self.BackingStoreEnd, &mut into[3256..3256 + 8]);
-    }
-    fn size() -> usize {
-        3264u32 as usize
-    }
-}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-pub struct MINIDUMP_THREAD_EX_CALLBACK {
-    pub ThreadId: u32,
-    pub ThreadHandle: super::super::super::Foundation::HANDLE,
-    pub Context: CONTEXT,
-    pub SizeOfContext: u32,
-    pub StackBase: u64,
-    pub StackEnd: u64,
-    pub BackingStoreBase: u64,
-    pub BackingStoreEnd: u64,
-}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl ::core::marker::Copy for MINIDUMP_THREAD_EX_CALLBACK {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl ::core::clone::Clone for MINIDUMP_THREAD_EX_CALLBACK {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl ::core::cmp::PartialEq for MINIDUMP_THREAD_EX_CALLBACK {
-    fn eq(&self, other: &Self) -> bool {
-        self.ThreadId == other.ThreadId
-            && self.ThreadHandle == other.ThreadHandle
-            && self.Context == other.Context
-            && self.SizeOfContext == other.SizeOfContext
-            && self.StackBase == other.StackBase
-            && self.StackEnd == other.StackEnd
-            && self.BackingStoreBase == other.BackingStoreBase
-            && self.BackingStoreEnd == other.BackingStoreEnd
-    }
-}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl ::core::cmp::Eq for MINIDUMP_THREAD_EX_CALLBACK {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Kernel'*"]
-#[cfg(dummy_option_that_does_not_exist)]
-impl FromIntoMemory for MINIDUMP_THREAD_EX_CALLBACK {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 3256u32 as usize);
-        let f_ThreadId = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_ThreadHandle =
-            <super::super::super::Foundation::HANDLE as FromIntoMemory>::from_bytes(
-                &from[4..4 + 4],
-            );
-        let f_Context = <CONTEXT as FromIntoMemory>::from_bytes(&from[8..8 + 3208]);
-        let f_SizeOfContext = <u32 as FromIntoMemory>::from_bytes(&from[3216..3216 + 4]);
-        let f_StackBase = <u64 as FromIntoMemory>::from_bytes(&from[3224..3224 + 8]);
-        let f_StackEnd = <u64 as FromIntoMemory>::from_bytes(&from[3232..3232 + 8]);
-        let f_BackingStoreBase = <u64 as FromIntoMemory>::from_bytes(&from[3240..3240 + 8]);
-        let f_BackingStoreEnd = <u64 as FromIntoMemory>::from_bytes(&from[3248..3248 + 8]);
-        Self {
-            ThreadId: f_ThreadId,
-            ThreadHandle: f_ThreadHandle,
-            Context: f_Context,
-            SizeOfContext: f_SizeOfContext,
-            StackBase: f_StackBase,
-            StackEnd: f_StackEnd,
-            BackingStoreBase: f_BackingStoreBase,
-            BackingStoreEnd: f_BackingStoreEnd,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 3256u32 as usize);
-        FromIntoMemory::into_bytes(self.ThreadId, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.ThreadHandle, &mut into[4..4 + 4]);
-        FromIntoMemory::into_bytes(self.Context, &mut into[8..8 + 3208]);
-        FromIntoMemory::into_bytes(self.SizeOfContext, &mut into[3216..3216 + 4]);
-        FromIntoMemory::into_bytes(self.StackBase, &mut into[3224..3224 + 8]);
-        FromIntoMemory::into_bytes(self.StackEnd, &mut into[3232..3232 + 8]);
-        FromIntoMemory::into_bytes(self.BackingStoreBase, &mut into[3240..3240 + 8]);
-        FromIntoMemory::into_bytes(self.BackingStoreEnd, &mut into[3248..3248 + 8]);
-    }
-    fn size() -> usize {
-        3256u32 as usize
-    }
-}
-pub struct MINIDUMP_THREAD_EX_CALLBACK {
-    pub ThreadId: u32,
-    pub ThreadHandle: super::super::super::Foundation::HANDLE,
-    pub Context: CONTEXT,
-    pub SizeOfContext: u32,
-    pub StackBase: u64,
-    pub StackEnd: u64,
-    pub BackingStoreBase: u64,
-    pub BackingStoreEnd: u64,
-}
-impl ::core::marker::Copy for MINIDUMP_THREAD_EX_CALLBACK {}
-impl ::core::clone::Clone for MINIDUMP_THREAD_EX_CALLBACK {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_THREAD_EX_CALLBACK {
-    fn eq(&self, other: &Self) -> bool {
-        self.ThreadId == other.ThreadId
-            && self.ThreadHandle == other.ThreadHandle
-            && self.Context == other.Context
-            && self.SizeOfContext == other.SizeOfContext
-            && self.StackBase == other.StackBase
-            && self.StackEnd == other.StackEnd
-            && self.BackingStoreBase == other.BackingStoreBase
-            && self.BackingStoreEnd == other.BackingStoreEnd
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_THREAD_EX_CALLBACK {}
-impl FromIntoMemory for MINIDUMP_THREAD_EX_CALLBACK {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 3256u32 as usize);
-        let f_ThreadId = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_ThreadHandle =
-            <super::super::super::Foundation::HANDLE as FromIntoMemory>::from_bytes(
-                &from[4..4 + 4],
-            );
-        let f_Context = <CONTEXT as FromIntoMemory>::from_bytes(&from[8..8 + 3208]);
-        let f_SizeOfContext = <u32 as FromIntoMemory>::from_bytes(&from[3216..3216 + 4]);
-        let f_StackBase = <u64 as FromIntoMemory>::from_bytes(&from[3224..3224 + 8]);
-        let f_StackEnd = <u64 as FromIntoMemory>::from_bytes(&from[3232..3232 + 8]);
-        let f_BackingStoreBase = <u64 as FromIntoMemory>::from_bytes(&from[3240..3240 + 8]);
-        let f_BackingStoreEnd = <u64 as FromIntoMemory>::from_bytes(&from[3248..3248 + 8]);
-        Self {
-            ThreadId: f_ThreadId,
-            ThreadHandle: f_ThreadHandle,
-            Context: f_Context,
-            SizeOfContext: f_SizeOfContext,
-            StackBase: f_StackBase,
-            StackEnd: f_StackEnd,
-            BackingStoreBase: f_BackingStoreBase,
-            BackingStoreEnd: f_BackingStoreEnd,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 3256u32 as usize);
-        FromIntoMemory::into_bytes(self.ThreadId, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.ThreadHandle, &mut into[4..4 + 4]);
-        FromIntoMemory::into_bytes(self.Context, &mut into[8..8 + 3208]);
-        FromIntoMemory::into_bytes(self.SizeOfContext, &mut into[3216..3216 + 4]);
-        FromIntoMemory::into_bytes(self.StackBase, &mut into[3224..3224 + 8]);
-        FromIntoMemory::into_bytes(self.StackEnd, &mut into[3232..3232 + 8]);
-        FromIntoMemory::into_bytes(self.BackingStoreBase, &mut into[3240..3240 + 8]);
-        FromIntoMemory::into_bytes(self.BackingStoreEnd, &mut into[3248..3248 + 8]);
-    }
-    fn size() -> usize {
-        3256u32 as usize
-    }
-}
-pub struct MINIDUMP_THREAD_EX_LIST {
-    pub NumberOfThreads: u32,
-    pub Threads: [MINIDUMP_THREAD_EX; 1],
-}
-impl ::core::marker::Copy for MINIDUMP_THREAD_EX_LIST {}
-impl ::core::clone::Clone for MINIDUMP_THREAD_EX_LIST {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_THREAD_EX_LIST {
-    fn eq(&self, other: &Self) -> bool {
-        self.NumberOfThreads == other.NumberOfThreads && self.Threads == other.Threads
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_THREAD_EX_LIST {}
-impl FromIntoMemory for MINIDUMP_THREAD_EX_LIST {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 72u32 as usize);
-        let f_NumberOfThreads = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_Threads = <[MINIDUMP_THREAD_EX; 1] as FromIntoMemory>::from_bytes(&from[8..8 + 64]);
-        Self {
-            NumberOfThreads: f_NumberOfThreads,
-            Threads: f_Threads,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 72u32 as usize);
-        FromIntoMemory::into_bytes(self.NumberOfThreads, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.Threads, &mut into[8..8 + 64]);
-    }
-    fn size() -> usize {
-        72u32 as usize
-    }
-}
-pub struct MINIDUMP_THREAD_INFO {
-    pub ThreadId: u32,
-    pub DumpFlags: MINIDUMP_THREAD_INFO_DUMP_FLAGS,
-    pub DumpError: u32,
-    pub ExitStatus: u32,
-    pub CreateTime: u64,
-    pub ExitTime: u64,
-    pub KernelTime: u64,
-    pub UserTime: u64,
-    pub StartAddress: u64,
-    pub Affinity: u64,
-}
-impl ::core::marker::Copy for MINIDUMP_THREAD_INFO {}
-impl ::core::clone::Clone for MINIDUMP_THREAD_INFO {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_THREAD_INFO {
-    fn eq(&self, other: &Self) -> bool {
-        self.ThreadId == other.ThreadId
-            && self.DumpFlags == other.DumpFlags
-            && self.DumpError == other.DumpError
-            && self.ExitStatus == other.ExitStatus
-            && self.CreateTime == other.CreateTime
-            && self.ExitTime == other.ExitTime
-            && self.KernelTime == other.KernelTime
-            && self.UserTime == other.UserTime
-            && self.StartAddress == other.StartAddress
-            && self.Affinity == other.Affinity
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_THREAD_INFO {}
-impl FromIntoMemory for MINIDUMP_THREAD_INFO {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 64u32 as usize);
-        let f_ThreadId = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_DumpFlags =
-            <MINIDUMP_THREAD_INFO_DUMP_FLAGS as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        let f_DumpError = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_ExitStatus = <u32 as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
-        let f_CreateTime = <u64 as FromIntoMemory>::from_bytes(&from[16..16 + 8]);
-        let f_ExitTime = <u64 as FromIntoMemory>::from_bytes(&from[24..24 + 8]);
-        let f_KernelTime = <u64 as FromIntoMemory>::from_bytes(&from[32..32 + 8]);
-        let f_UserTime = <u64 as FromIntoMemory>::from_bytes(&from[40..40 + 8]);
-        let f_StartAddress = <u64 as FromIntoMemory>::from_bytes(&from[48..48 + 8]);
-        let f_Affinity = <u64 as FromIntoMemory>::from_bytes(&from[56..56 + 8]);
-        Self {
-            ThreadId: f_ThreadId,
-            DumpFlags: f_DumpFlags,
-            DumpError: f_DumpError,
-            ExitStatus: f_ExitStatus,
-            CreateTime: f_CreateTime,
-            ExitTime: f_ExitTime,
-            KernelTime: f_KernelTime,
-            UserTime: f_UserTime,
-            StartAddress: f_StartAddress,
-            Affinity: f_Affinity,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 64u32 as usize);
-        FromIntoMemory::into_bytes(self.ThreadId, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.DumpFlags, &mut into[4..4 + 4]);
-        FromIntoMemory::into_bytes(self.DumpError, &mut into[8..8 + 4]);
-        FromIntoMemory::into_bytes(self.ExitStatus, &mut into[12..12 + 4]);
-        FromIntoMemory::into_bytes(self.CreateTime, &mut into[16..16 + 8]);
-        FromIntoMemory::into_bytes(self.ExitTime, &mut into[24..24 + 8]);
-        FromIntoMemory::into_bytes(self.KernelTime, &mut into[32..32 + 8]);
-        FromIntoMemory::into_bytes(self.UserTime, &mut into[40..40 + 8]);
-        FromIntoMemory::into_bytes(self.StartAddress, &mut into[48..48 + 8]);
-        FromIntoMemory::into_bytes(self.Affinity, &mut into[56..56 + 8]);
-    }
-    fn size() -> usize {
-        64u32 as usize
-    }
-}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct MINIDUMP_THREAD_INFO_DUMP_FLAGS(pub u32);
 pub const MINIDUMP_THREAD_INFO_ERROR_THREAD: MINIDUMP_THREAD_INFO_DUMP_FLAGS =
@@ -23862,210 +26727,6 @@ impl FromIntoMemory for MINIDUMP_THREAD_INFO_LIST {
         12u32 as usize
     }
 }
-pub struct MINIDUMP_THREAD_LIST {
-    pub NumberOfThreads: u32,
-    pub Threads: [MINIDUMP_THREAD; 1],
-}
-impl ::core::marker::Copy for MINIDUMP_THREAD_LIST {}
-impl ::core::clone::Clone for MINIDUMP_THREAD_LIST {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_THREAD_LIST {
-    fn eq(&self, other: &Self) -> bool {
-        self.NumberOfThreads == other.NumberOfThreads && self.Threads == other.Threads
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_THREAD_LIST {}
-impl FromIntoMemory for MINIDUMP_THREAD_LIST {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 56u32 as usize);
-        let f_NumberOfThreads = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_Threads = <[MINIDUMP_THREAD; 1] as FromIntoMemory>::from_bytes(&from[8..8 + 48]);
-        Self {
-            NumberOfThreads: f_NumberOfThreads,
-            Threads: f_Threads,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 56u32 as usize);
-        FromIntoMemory::into_bytes(self.NumberOfThreads, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.Threads, &mut into[8..8 + 48]);
-    }
-    fn size() -> usize {
-        56u32 as usize
-    }
-}
-pub struct MINIDUMP_THREAD_NAME {
-    pub ThreadId: u32,
-    pub RvaOfThreadName: u64,
-}
-impl ::core::marker::Copy for MINIDUMP_THREAD_NAME {}
-impl ::core::clone::Clone for MINIDUMP_THREAD_NAME {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_THREAD_NAME {
-    fn eq(&self, other: &Self) -> bool {
-        self.ThreadId == other.ThreadId && self.RvaOfThreadName == other.RvaOfThreadName
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_THREAD_NAME {}
-impl FromIntoMemory for MINIDUMP_THREAD_NAME {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
-        let f_ThreadId = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_RvaOfThreadName = <u64 as FromIntoMemory>::from_bytes(&from[8..8 + 8]);
-        Self {
-            ThreadId: f_ThreadId,
-            RvaOfThreadName: f_RvaOfThreadName,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
-        FromIntoMemory::into_bytes(self.ThreadId, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.RvaOfThreadName, &mut into[8..8 + 8]);
-    }
-    fn size() -> usize {
-        16u32 as usize
-    }
-}
-pub struct MINIDUMP_THREAD_NAME_LIST {
-    pub NumberOfThreadNames: u32,
-    pub ThreadNames: [MINIDUMP_THREAD_NAME; 1],
-}
-impl ::core::marker::Copy for MINIDUMP_THREAD_NAME_LIST {}
-impl ::core::clone::Clone for MINIDUMP_THREAD_NAME_LIST {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_THREAD_NAME_LIST {
-    fn eq(&self, other: &Self) -> bool {
-        self.NumberOfThreadNames == other.NumberOfThreadNames
-            && self.ThreadNames == other.ThreadNames
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_THREAD_NAME_LIST {}
-impl FromIntoMemory for MINIDUMP_THREAD_NAME_LIST {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 24u32 as usize);
-        let f_NumberOfThreadNames = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_ThreadNames =
-            <[MINIDUMP_THREAD_NAME; 1] as FromIntoMemory>::from_bytes(&from[8..8 + 16]);
-        Self {
-            NumberOfThreadNames: f_NumberOfThreadNames,
-            ThreadNames: f_ThreadNames,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 24u32 as usize);
-        FromIntoMemory::into_bytes(self.NumberOfThreadNames, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.ThreadNames, &mut into[8..8 + 16]);
-    }
-    fn size() -> usize {
-        24u32 as usize
-    }
-}
-pub struct MINIDUMP_TOKEN_INFO_HEADER {
-    pub TokenSize: u32,
-    pub TokenId: u32,
-    pub TokenHandle: u64,
-}
-impl ::core::marker::Copy for MINIDUMP_TOKEN_INFO_HEADER {}
-impl ::core::clone::Clone for MINIDUMP_TOKEN_INFO_HEADER {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_TOKEN_INFO_HEADER {
-    fn eq(&self, other: &Self) -> bool {
-        self.TokenSize == other.TokenSize
-            && self.TokenId == other.TokenId
-            && self.TokenHandle == other.TokenHandle
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_TOKEN_INFO_HEADER {}
-impl FromIntoMemory for MINIDUMP_TOKEN_INFO_HEADER {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
-        let f_TokenSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_TokenId = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        let f_TokenHandle = <u64 as FromIntoMemory>::from_bytes(&from[8..8 + 8]);
-        Self {
-            TokenSize: f_TokenSize,
-            TokenId: f_TokenId,
-            TokenHandle: f_TokenHandle,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
-        FromIntoMemory::into_bytes(self.TokenSize, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.TokenId, &mut into[4..4 + 4]);
-        FromIntoMemory::into_bytes(self.TokenHandle, &mut into[8..8 + 8]);
-    }
-    fn size() -> usize {
-        16u32 as usize
-    }
-}
-pub struct MINIDUMP_TOKEN_INFO_LIST {
-    pub TokenListSize: u32,
-    pub TokenListEntries: u32,
-    pub ListHeaderSize: u32,
-    pub ElementHeaderSize: u32,
-}
-impl ::core::marker::Copy for MINIDUMP_TOKEN_INFO_LIST {}
-impl ::core::clone::Clone for MINIDUMP_TOKEN_INFO_LIST {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::fmt::Debug for MINIDUMP_TOKEN_INFO_LIST {
-    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
-        f.debug_struct("MINIDUMP_TOKEN_INFO_LIST")
-            .field("TokenListSize", &self.TokenListSize)
-            .field("TokenListEntries", &self.TokenListEntries)
-            .field("ListHeaderSize", &self.ListHeaderSize)
-            .field("ElementHeaderSize", &self.ElementHeaderSize)
-            .finish()
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_TOKEN_INFO_LIST {
-    fn eq(&self, other: &Self) -> bool {
-        self.TokenListSize == other.TokenListSize
-            && self.TokenListEntries == other.TokenListEntries
-            && self.ListHeaderSize == other.ListHeaderSize
-            && self.ElementHeaderSize == other.ElementHeaderSize
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_TOKEN_INFO_LIST {}
-impl FromIntoMemory for MINIDUMP_TOKEN_INFO_LIST {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
-        let f_TokenListSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_TokenListEntries = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        let f_ListHeaderSize = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_ElementHeaderSize = <u32 as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
-        Self {
-            TokenListSize: f_TokenListSize,
-            TokenListEntries: f_TokenListEntries,
-            ListHeaderSize: f_ListHeaderSize,
-            ElementHeaderSize: f_ElementHeaderSize,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
-        FromIntoMemory::into_bytes(self.TokenListSize, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.TokenListEntries, &mut into[4..4 + 4]);
-        FromIntoMemory::into_bytes(self.ListHeaderSize, &mut into[8..8 + 4]);
-        FromIntoMemory::into_bytes(self.ElementHeaderSize, &mut into[12..12 + 4]);
-    }
-    fn size() -> usize {
-        16u32 as usize
-    }
-}
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct MINIDUMP_TYPE(pub u32);
 pub const MiniDumpNormal: MINIDUMP_TYPE = MINIDUMP_TYPE(0u32);
@@ -24150,107 +26811,6 @@ impl FromIntoMemory for MINIDUMP_TYPE {
         4
     }
 }
-pub struct MINIDUMP_UNLOADED_MODULE {
-    pub BaseOfImage: u64,
-    pub SizeOfImage: u32,
-    pub CheckSum: u32,
-    pub TimeDateStamp: u32,
-    pub ModuleNameRva: u32,
-}
-impl ::core::marker::Copy for MINIDUMP_UNLOADED_MODULE {}
-impl ::core::clone::Clone for MINIDUMP_UNLOADED_MODULE {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_UNLOADED_MODULE {
-    fn eq(&self, other: &Self) -> bool {
-        self.BaseOfImage == other.BaseOfImage
-            && self.SizeOfImage == other.SizeOfImage
-            && self.CheckSum == other.CheckSum
-            && self.TimeDateStamp == other.TimeDateStamp
-            && self.ModuleNameRva == other.ModuleNameRva
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_UNLOADED_MODULE {}
-impl FromIntoMemory for MINIDUMP_UNLOADED_MODULE {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 24u32 as usize);
-        let f_BaseOfImage = <u64 as FromIntoMemory>::from_bytes(&from[0..0 + 8]);
-        let f_SizeOfImage = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_CheckSum = <u32 as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
-        let f_TimeDateStamp = <u32 as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
-        let f_ModuleNameRva = <u32 as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
-        Self {
-            BaseOfImage: f_BaseOfImage,
-            SizeOfImage: f_SizeOfImage,
-            CheckSum: f_CheckSum,
-            TimeDateStamp: f_TimeDateStamp,
-            ModuleNameRva: f_ModuleNameRva,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 24u32 as usize);
-        FromIntoMemory::into_bytes(self.BaseOfImage, &mut into[0..0 + 8]);
-        FromIntoMemory::into_bytes(self.SizeOfImage, &mut into[8..8 + 4]);
-        FromIntoMemory::into_bytes(self.CheckSum, &mut into[12..12 + 4]);
-        FromIntoMemory::into_bytes(self.TimeDateStamp, &mut into[16..16 + 4]);
-        FromIntoMemory::into_bytes(self.ModuleNameRva, &mut into[20..20 + 4]);
-    }
-    fn size() -> usize {
-        24u32 as usize
-    }
-}
-pub struct MINIDUMP_UNLOADED_MODULE_LIST {
-    pub SizeOfHeader: u32,
-    pub SizeOfEntry: u32,
-    pub NumberOfEntries: u32,
-}
-impl ::core::marker::Copy for MINIDUMP_UNLOADED_MODULE_LIST {}
-impl ::core::clone::Clone for MINIDUMP_UNLOADED_MODULE_LIST {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::fmt::Debug for MINIDUMP_UNLOADED_MODULE_LIST {
-    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
-        f.debug_struct("MINIDUMP_UNLOADED_MODULE_LIST")
-            .field("SizeOfHeader", &self.SizeOfHeader)
-            .field("SizeOfEntry", &self.SizeOfEntry)
-            .field("NumberOfEntries", &self.NumberOfEntries)
-            .finish()
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_UNLOADED_MODULE_LIST {
-    fn eq(&self, other: &Self) -> bool {
-        self.SizeOfHeader == other.SizeOfHeader
-            && self.SizeOfEntry == other.SizeOfEntry
-            && self.NumberOfEntries == other.NumberOfEntries
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_UNLOADED_MODULE_LIST {}
-impl FromIntoMemory for MINIDUMP_UNLOADED_MODULE_LIST {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 12u32 as usize);
-        let f_SizeOfHeader = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_SizeOfEntry = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        let f_NumberOfEntries = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        Self {
-            SizeOfHeader: f_SizeOfHeader,
-            SizeOfEntry: f_SizeOfEntry,
-            NumberOfEntries: f_NumberOfEntries,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 12u32 as usize);
-        FromIntoMemory::into_bytes(self.SizeOfHeader, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.SizeOfEntry, &mut into[4..4 + 4]);
-        FromIntoMemory::into_bytes(self.NumberOfEntries, &mut into[8..8 + 4]);
-    }
-    fn size() -> usize {
-        12u32 as usize
-    }
-}
 pub struct MINIDUMP_USER_RECORD {
     pub Type: u32,
     pub Memory: MINIDUMP_LOCATION_DESCRIPTOR,
@@ -24295,204 +26855,7 @@ impl FromIntoMemory for MINIDUMP_USER_RECORD {
         12u32 as usize
     }
 }
-pub struct MINIDUMP_USER_STREAM {
-    pub Type: u32,
-    pub BufferSize: u32,
-    pub Buffer: MutPtr<::core::ffi::c_void>,
-}
-impl ::core::marker::Copy for MINIDUMP_USER_STREAM {}
-impl ::core::clone::Clone for MINIDUMP_USER_STREAM {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_USER_STREAM {
-    fn eq(&self, other: &Self) -> bool {
-        self.Type == other.Type
-            && self.BufferSize == other.BufferSize
-            && self.Buffer == other.Buffer
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_USER_STREAM {}
-impl FromIntoMemory for MINIDUMP_USER_STREAM {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 12u32 as usize);
-        let f_Type = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_BufferSize = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        let f_Buffer = <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        Self {
-            Type: f_Type,
-            BufferSize: f_BufferSize,
-            Buffer: f_Buffer,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 12u32 as usize);
-        FromIntoMemory::into_bytes(self.Type, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.BufferSize, &mut into[4..4 + 4]);
-        FromIntoMemory::into_bytes(self.Buffer, &mut into[8..8 + 4]);
-    }
-    fn size() -> usize {
-        12u32 as usize
-    }
-}
-pub struct MINIDUMP_USER_STREAM_INFORMATION {
-    pub UserStreamCount: u32,
-    pub UserStreamArray: MutPtr<MINIDUMP_USER_STREAM>,
-}
-impl ::core::marker::Copy for MINIDUMP_USER_STREAM_INFORMATION {}
-impl ::core::clone::Clone for MINIDUMP_USER_STREAM_INFORMATION {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_USER_STREAM_INFORMATION {
-    fn eq(&self, other: &Self) -> bool {
-        self.UserStreamCount == other.UserStreamCount
-            && self.UserStreamArray == other.UserStreamArray
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_USER_STREAM_INFORMATION {}
-impl FromIntoMemory for MINIDUMP_USER_STREAM_INFORMATION {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 8u32 as usize);
-        let f_UserStreamCount = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_UserStreamArray =
-            <MutPtr<MINIDUMP_USER_STREAM> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        Self {
-            UserStreamCount: f_UserStreamCount,
-            UserStreamArray: f_UserStreamArray,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 8u32 as usize);
-        FromIntoMemory::into_bytes(self.UserStreamCount, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.UserStreamArray, &mut into[4..4 + 4]);
-    }
-    fn size() -> usize {
-        8u32 as usize
-    }
-}
 pub const MINIDUMP_VERSION: u32 = 42899u32;
-pub struct MINIDUMP_VM_POST_READ_CALLBACK {
-    pub Offset: u64,
-    pub Buffer: MutPtr<::core::ffi::c_void>,
-    pub Size: u32,
-    pub Completed: u32,
-    pub Status: crate::core::HRESULT,
-}
-impl ::core::marker::Copy for MINIDUMP_VM_POST_READ_CALLBACK {}
-impl ::core::clone::Clone for MINIDUMP_VM_POST_READ_CALLBACK {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_VM_POST_READ_CALLBACK {
-    fn eq(&self, other: &Self) -> bool {
-        self.Offset == other.Offset
-            && self.Buffer == other.Buffer
-            && self.Size == other.Size
-            && self.Completed == other.Completed
-            && self.Status == other.Status
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_VM_POST_READ_CALLBACK {}
-impl FromIntoMemory for MINIDUMP_VM_POST_READ_CALLBACK {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 24u32 as usize);
-        let f_Offset = <u64 as FromIntoMemory>::from_bytes(&from[0..0 + 8]);
-        let f_Buffer = <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_Size = <u32 as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
-        let f_Completed = <u32 as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
-        let f_Status = <crate::core::HRESULT as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
-        Self {
-            Offset: f_Offset,
-            Buffer: f_Buffer,
-            Size: f_Size,
-            Completed: f_Completed,
-            Status: f_Status,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 24u32 as usize);
-        FromIntoMemory::into_bytes(self.Offset, &mut into[0..0 + 8]);
-        FromIntoMemory::into_bytes(self.Buffer, &mut into[8..8 + 4]);
-        FromIntoMemory::into_bytes(self.Size, &mut into[12..12 + 4]);
-        FromIntoMemory::into_bytes(self.Completed, &mut into[16..16 + 4]);
-        FromIntoMemory::into_bytes(self.Status, &mut into[20..20 + 4]);
-    }
-    fn size() -> usize {
-        24u32 as usize
-    }
-}
-pub struct MINIDUMP_VM_PRE_READ_CALLBACK {
-    pub Offset: u64,
-    pub Buffer: MutPtr<::core::ffi::c_void>,
-    pub Size: u32,
-}
-impl ::core::marker::Copy for MINIDUMP_VM_PRE_READ_CALLBACK {}
-impl ::core::clone::Clone for MINIDUMP_VM_PRE_READ_CALLBACK {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_VM_PRE_READ_CALLBACK {
-    fn eq(&self, other: &Self) -> bool {
-        self.Offset == other.Offset && self.Buffer == other.Buffer && self.Size == other.Size
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_VM_PRE_READ_CALLBACK {}
-impl FromIntoMemory for MINIDUMP_VM_PRE_READ_CALLBACK {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
-        let f_Offset = <u64 as FromIntoMemory>::from_bytes(&from[0..0 + 8]);
-        let f_Buffer = <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_Size = <u32 as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
-        Self {
-            Offset: f_Offset,
-            Buffer: f_Buffer,
-            Size: f_Size,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
-        FromIntoMemory::into_bytes(self.Offset, &mut into[0..0 + 8]);
-        FromIntoMemory::into_bytes(self.Buffer, &mut into[8..8 + 4]);
-        FromIntoMemory::into_bytes(self.Size, &mut into[12..12 + 4]);
-    }
-    fn size() -> usize {
-        16u32 as usize
-    }
-}
-pub struct MINIDUMP_VM_QUERY_CALLBACK {
-    pub Offset: u64,
-}
-impl ::core::marker::Copy for MINIDUMP_VM_QUERY_CALLBACK {}
-impl ::core::clone::Clone for MINIDUMP_VM_QUERY_CALLBACK {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for MINIDUMP_VM_QUERY_CALLBACK {
-    fn eq(&self, other: &Self) -> bool {
-        self.Offset == other.Offset
-    }
-}
-impl ::core::cmp::Eq for MINIDUMP_VM_QUERY_CALLBACK {}
-impl FromIntoMemory for MINIDUMP_VM_QUERY_CALLBACK {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 8u32 as usize);
-        let f_Offset = <u64 as FromIntoMemory>::from_bytes(&from[0..0 + 8]);
-        Self { Offset: f_Offset }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 8u32 as usize);
-        FromIntoMemory::into_bytes(self.Offset, &mut into[0..0 + 8]);
-    }
-    fn size() -> usize {
-        8u32 as usize
-    }
-}
 pub struct MODLOAD_CVMISC {
     pub oCV: u32,
     pub cCV: PtrRepr,
@@ -31111,280 +33474,6 @@ impl FromIntoMemory for WDBGEXTS_THREAD_OS_INFO {
         64u32 as usize
     }
 }
-pub struct WHEA_AER_BRIDGE_DESCRIPTOR {
-    pub Type: u16,
-    pub Enabled: super::super::super::Foundation::BOOLEAN,
-    pub Reserved: u8,
-    pub BusNumber: u32,
-    pub Slot: WHEA_PCI_SLOT_NUMBER,
-    pub DeviceControl: u16,
-    pub Flags: AER_BRIDGE_DESCRIPTOR_FLAGS,
-    pub UncorrectableErrorMask: u32,
-    pub UncorrectableErrorSeverity: u32,
-    pub CorrectableErrorMask: u32,
-    pub AdvancedCapsAndControl: u32,
-    pub SecondaryUncorrectableErrorMask: u32,
-    pub SecondaryUncorrectableErrorSev: u32,
-    pub SecondaryCapsAndControl: u32,
-}
-impl ::core::marker::Copy for WHEA_AER_BRIDGE_DESCRIPTOR {}
-impl ::core::clone::Clone for WHEA_AER_BRIDGE_DESCRIPTOR {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for WHEA_AER_BRIDGE_DESCRIPTOR {
-    fn eq(&self, other: &Self) -> bool {
-        self.Type == other.Type
-            && self.Enabled == other.Enabled
-            && self.Reserved == other.Reserved
-            && self.BusNumber == other.BusNumber
-            && self.Slot == other.Slot
-            && self.DeviceControl == other.DeviceControl
-            && self.Flags == other.Flags
-            && self.UncorrectableErrorMask == other.UncorrectableErrorMask
-            && self.UncorrectableErrorSeverity == other.UncorrectableErrorSeverity
-            && self.CorrectableErrorMask == other.CorrectableErrorMask
-            && self.AdvancedCapsAndControl == other.AdvancedCapsAndControl
-            && self.SecondaryUncorrectableErrorMask == other.SecondaryUncorrectableErrorMask
-            && self.SecondaryUncorrectableErrorSev == other.SecondaryUncorrectableErrorSev
-            && self.SecondaryCapsAndControl == other.SecondaryCapsAndControl
-    }
-}
-impl ::core::cmp::Eq for WHEA_AER_BRIDGE_DESCRIPTOR {}
-impl FromIntoMemory for WHEA_AER_BRIDGE_DESCRIPTOR {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 52u32 as usize);
-        let f_Type = <u16 as FromIntoMemory>::from_bytes(&from[0..0 + 2]);
-        let f_Enabled = <super::super::super::Foundation::BOOLEAN as FromIntoMemory>::from_bytes(
-            &from[2..2 + 1],
-        );
-        let f_Reserved = <u8 as FromIntoMemory>::from_bytes(&from[3..3 + 1]);
-        let f_BusNumber = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        let f_Slot = <WHEA_PCI_SLOT_NUMBER as FromIntoMemory>::from_bytes(&from[8..8 + 8]);
-        let f_DeviceControl = <u16 as FromIntoMemory>::from_bytes(&from[16..16 + 2]);
-        let f_Flags =
-            <AER_BRIDGE_DESCRIPTOR_FLAGS as FromIntoMemory>::from_bytes(&from[18..18 + 4]);
-        let f_UncorrectableErrorMask = <u32 as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
-        let f_UncorrectableErrorSeverity = <u32 as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
-        let f_CorrectableErrorMask = <u32 as FromIntoMemory>::from_bytes(&from[32..32 + 4]);
-        let f_AdvancedCapsAndControl = <u32 as FromIntoMemory>::from_bytes(&from[36..36 + 4]);
-        let f_SecondaryUncorrectableErrorMask =
-            <u32 as FromIntoMemory>::from_bytes(&from[40..40 + 4]);
-        let f_SecondaryUncorrectableErrorSev =
-            <u32 as FromIntoMemory>::from_bytes(&from[44..44 + 4]);
-        let f_SecondaryCapsAndControl = <u32 as FromIntoMemory>::from_bytes(&from[48..48 + 4]);
-        Self {
-            Type: f_Type,
-            Enabled: f_Enabled,
-            Reserved: f_Reserved,
-            BusNumber: f_BusNumber,
-            Slot: f_Slot,
-            DeviceControl: f_DeviceControl,
-            Flags: f_Flags,
-            UncorrectableErrorMask: f_UncorrectableErrorMask,
-            UncorrectableErrorSeverity: f_UncorrectableErrorSeverity,
-            CorrectableErrorMask: f_CorrectableErrorMask,
-            AdvancedCapsAndControl: f_AdvancedCapsAndControl,
-            SecondaryUncorrectableErrorMask: f_SecondaryUncorrectableErrorMask,
-            SecondaryUncorrectableErrorSev: f_SecondaryUncorrectableErrorSev,
-            SecondaryCapsAndControl: f_SecondaryCapsAndControl,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 52u32 as usize);
-        FromIntoMemory::into_bytes(self.Type, &mut into[0..0 + 2]);
-        FromIntoMemory::into_bytes(self.Enabled, &mut into[2..2 + 1]);
-        FromIntoMemory::into_bytes(self.Reserved, &mut into[3..3 + 1]);
-        FromIntoMemory::into_bytes(self.BusNumber, &mut into[4..4 + 4]);
-        FromIntoMemory::into_bytes(self.Slot, &mut into[8..8 + 8]);
-        FromIntoMemory::into_bytes(self.DeviceControl, &mut into[16..16 + 2]);
-        FromIntoMemory::into_bytes(self.Flags, &mut into[18..18 + 4]);
-        FromIntoMemory::into_bytes(self.UncorrectableErrorMask, &mut into[24..24 + 4]);
-        FromIntoMemory::into_bytes(self.UncorrectableErrorSeverity, &mut into[28..28 + 4]);
-        FromIntoMemory::into_bytes(self.CorrectableErrorMask, &mut into[32..32 + 4]);
-        FromIntoMemory::into_bytes(self.AdvancedCapsAndControl, &mut into[36..36 + 4]);
-        FromIntoMemory::into_bytes(self.SecondaryUncorrectableErrorMask, &mut into[40..40 + 4]);
-        FromIntoMemory::into_bytes(self.SecondaryUncorrectableErrorSev, &mut into[44..44 + 4]);
-        FromIntoMemory::into_bytes(self.SecondaryCapsAndControl, &mut into[48..48 + 4]);
-    }
-    fn size() -> usize {
-        52u32 as usize
-    }
-}
-pub struct WHEA_AER_ENDPOINT_DESCRIPTOR {
-    pub Type: u16,
-    pub Enabled: super::super::super::Foundation::BOOLEAN,
-    pub Reserved: u8,
-    pub BusNumber: u32,
-    pub Slot: WHEA_PCI_SLOT_NUMBER,
-    pub DeviceControl: u16,
-    pub Flags: AER_ENDPOINT_DESCRIPTOR_FLAGS,
-    pub UncorrectableErrorMask: u32,
-    pub UncorrectableErrorSeverity: u32,
-    pub CorrectableErrorMask: u32,
-    pub AdvancedCapsAndControl: u32,
-}
-impl ::core::marker::Copy for WHEA_AER_ENDPOINT_DESCRIPTOR {}
-impl ::core::clone::Clone for WHEA_AER_ENDPOINT_DESCRIPTOR {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for WHEA_AER_ENDPOINT_DESCRIPTOR {
-    fn eq(&self, other: &Self) -> bool {
-        self.Type == other.Type
-            && self.Enabled == other.Enabled
-            && self.Reserved == other.Reserved
-            && self.BusNumber == other.BusNumber
-            && self.Slot == other.Slot
-            && self.DeviceControl == other.DeviceControl
-            && self.Flags == other.Flags
-            && self.UncorrectableErrorMask == other.UncorrectableErrorMask
-            && self.UncorrectableErrorSeverity == other.UncorrectableErrorSeverity
-            && self.CorrectableErrorMask == other.CorrectableErrorMask
-            && self.AdvancedCapsAndControl == other.AdvancedCapsAndControl
-    }
-}
-impl ::core::cmp::Eq for WHEA_AER_ENDPOINT_DESCRIPTOR {}
-impl FromIntoMemory for WHEA_AER_ENDPOINT_DESCRIPTOR {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 40u32 as usize);
-        let f_Type = <u16 as FromIntoMemory>::from_bytes(&from[0..0 + 2]);
-        let f_Enabled = <super::super::super::Foundation::BOOLEAN as FromIntoMemory>::from_bytes(
-            &from[2..2 + 1],
-        );
-        let f_Reserved = <u8 as FromIntoMemory>::from_bytes(&from[3..3 + 1]);
-        let f_BusNumber = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        let f_Slot = <WHEA_PCI_SLOT_NUMBER as FromIntoMemory>::from_bytes(&from[8..8 + 8]);
-        let f_DeviceControl = <u16 as FromIntoMemory>::from_bytes(&from[16..16 + 2]);
-        let f_Flags =
-            <AER_ENDPOINT_DESCRIPTOR_FLAGS as FromIntoMemory>::from_bytes(&from[18..18 + 4]);
-        let f_UncorrectableErrorMask = <u32 as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
-        let f_UncorrectableErrorSeverity = <u32 as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
-        let f_CorrectableErrorMask = <u32 as FromIntoMemory>::from_bytes(&from[32..32 + 4]);
-        let f_AdvancedCapsAndControl = <u32 as FromIntoMemory>::from_bytes(&from[36..36 + 4]);
-        Self {
-            Type: f_Type,
-            Enabled: f_Enabled,
-            Reserved: f_Reserved,
-            BusNumber: f_BusNumber,
-            Slot: f_Slot,
-            DeviceControl: f_DeviceControl,
-            Flags: f_Flags,
-            UncorrectableErrorMask: f_UncorrectableErrorMask,
-            UncorrectableErrorSeverity: f_UncorrectableErrorSeverity,
-            CorrectableErrorMask: f_CorrectableErrorMask,
-            AdvancedCapsAndControl: f_AdvancedCapsAndControl,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 40u32 as usize);
-        FromIntoMemory::into_bytes(self.Type, &mut into[0..0 + 2]);
-        FromIntoMemory::into_bytes(self.Enabled, &mut into[2..2 + 1]);
-        FromIntoMemory::into_bytes(self.Reserved, &mut into[3..3 + 1]);
-        FromIntoMemory::into_bytes(self.BusNumber, &mut into[4..4 + 4]);
-        FromIntoMemory::into_bytes(self.Slot, &mut into[8..8 + 8]);
-        FromIntoMemory::into_bytes(self.DeviceControl, &mut into[16..16 + 2]);
-        FromIntoMemory::into_bytes(self.Flags, &mut into[18..18 + 4]);
-        FromIntoMemory::into_bytes(self.UncorrectableErrorMask, &mut into[24..24 + 4]);
-        FromIntoMemory::into_bytes(self.UncorrectableErrorSeverity, &mut into[28..28 + 4]);
-        FromIntoMemory::into_bytes(self.CorrectableErrorMask, &mut into[32..32 + 4]);
-        FromIntoMemory::into_bytes(self.AdvancedCapsAndControl, &mut into[36..36 + 4]);
-    }
-    fn size() -> usize {
-        40u32 as usize
-    }
-}
-pub struct WHEA_AER_ROOTPORT_DESCRIPTOR {
-    pub Type: u16,
-    pub Enabled: super::super::super::Foundation::BOOLEAN,
-    pub Reserved: u8,
-    pub BusNumber: u32,
-    pub Slot: WHEA_PCI_SLOT_NUMBER,
-    pub DeviceControl: u16,
-    pub Flags: AER_ROOTPORT_DESCRIPTOR_FLAGS,
-    pub UncorrectableErrorMask: u32,
-    pub UncorrectableErrorSeverity: u32,
-    pub CorrectableErrorMask: u32,
-    pub AdvancedCapsAndControl: u32,
-    pub RootErrorCommand: u32,
-}
-impl ::core::marker::Copy for WHEA_AER_ROOTPORT_DESCRIPTOR {}
-impl ::core::clone::Clone for WHEA_AER_ROOTPORT_DESCRIPTOR {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for WHEA_AER_ROOTPORT_DESCRIPTOR {
-    fn eq(&self, other: &Self) -> bool {
-        self.Type == other.Type
-            && self.Enabled == other.Enabled
-            && self.Reserved == other.Reserved
-            && self.BusNumber == other.BusNumber
-            && self.Slot == other.Slot
-            && self.DeviceControl == other.DeviceControl
-            && self.Flags == other.Flags
-            && self.UncorrectableErrorMask == other.UncorrectableErrorMask
-            && self.UncorrectableErrorSeverity == other.UncorrectableErrorSeverity
-            && self.CorrectableErrorMask == other.CorrectableErrorMask
-            && self.AdvancedCapsAndControl == other.AdvancedCapsAndControl
-            && self.RootErrorCommand == other.RootErrorCommand
-    }
-}
-impl ::core::cmp::Eq for WHEA_AER_ROOTPORT_DESCRIPTOR {}
-impl FromIntoMemory for WHEA_AER_ROOTPORT_DESCRIPTOR {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 44u32 as usize);
-        let f_Type = <u16 as FromIntoMemory>::from_bytes(&from[0..0 + 2]);
-        let f_Enabled = <super::super::super::Foundation::BOOLEAN as FromIntoMemory>::from_bytes(
-            &from[2..2 + 1],
-        );
-        let f_Reserved = <u8 as FromIntoMemory>::from_bytes(&from[3..3 + 1]);
-        let f_BusNumber = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        let f_Slot = <WHEA_PCI_SLOT_NUMBER as FromIntoMemory>::from_bytes(&from[8..8 + 8]);
-        let f_DeviceControl = <u16 as FromIntoMemory>::from_bytes(&from[16..16 + 2]);
-        let f_Flags =
-            <AER_ROOTPORT_DESCRIPTOR_FLAGS as FromIntoMemory>::from_bytes(&from[18..18 + 4]);
-        let f_UncorrectableErrorMask = <u32 as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
-        let f_UncorrectableErrorSeverity = <u32 as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
-        let f_CorrectableErrorMask = <u32 as FromIntoMemory>::from_bytes(&from[32..32 + 4]);
-        let f_AdvancedCapsAndControl = <u32 as FromIntoMemory>::from_bytes(&from[36..36 + 4]);
-        let f_RootErrorCommand = <u32 as FromIntoMemory>::from_bytes(&from[40..40 + 4]);
-        Self {
-            Type: f_Type,
-            Enabled: f_Enabled,
-            Reserved: f_Reserved,
-            BusNumber: f_BusNumber,
-            Slot: f_Slot,
-            DeviceControl: f_DeviceControl,
-            Flags: f_Flags,
-            UncorrectableErrorMask: f_UncorrectableErrorMask,
-            UncorrectableErrorSeverity: f_UncorrectableErrorSeverity,
-            CorrectableErrorMask: f_CorrectableErrorMask,
-            AdvancedCapsAndControl: f_AdvancedCapsAndControl,
-            RootErrorCommand: f_RootErrorCommand,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 44u32 as usize);
-        FromIntoMemory::into_bytes(self.Type, &mut into[0..0 + 2]);
-        FromIntoMemory::into_bytes(self.Enabled, &mut into[2..2 + 1]);
-        FromIntoMemory::into_bytes(self.Reserved, &mut into[3..3 + 1]);
-        FromIntoMemory::into_bytes(self.BusNumber, &mut into[4..4 + 4]);
-        FromIntoMemory::into_bytes(self.Slot, &mut into[8..8 + 8]);
-        FromIntoMemory::into_bytes(self.DeviceControl, &mut into[16..16 + 2]);
-        FromIntoMemory::into_bytes(self.Flags, &mut into[18..18 + 4]);
-        FromIntoMemory::into_bytes(self.UncorrectableErrorMask, &mut into[24..24 + 4]);
-        FromIntoMemory::into_bytes(self.UncorrectableErrorSeverity, &mut into[28..28 + 4]);
-        FromIntoMemory::into_bytes(self.CorrectableErrorMask, &mut into[32..32 + 4]);
-        FromIntoMemory::into_bytes(self.AdvancedCapsAndControl, &mut into[36..36 + 4]);
-        FromIntoMemory::into_bytes(self.RootErrorCommand, &mut into[40..40 + 4]);
-    }
-    fn size() -> usize {
-        44u32 as usize
-    }
-}
 pub const WHEA_BAD_PAGE_LIST_LOCATION: u32 = 15u32;
 pub const WHEA_BAD_PAGE_LIST_MAX_SIZE: u32 = 14u32;
 pub const WHEA_CMCI_THRESHOLD_COUNT: u32 = 10u32;
@@ -31397,501 +33486,8 @@ pub const WHEA_DEVICE_DRIVER_CONFIG_MAX: u32 = 2u32;
 pub const WHEA_DEVICE_DRIVER_CONFIG_MIN: u32 = 1u32;
 pub const WHEA_DEVICE_DRIVER_CONFIG_V1: u32 = 1u32;
 pub const WHEA_DEVICE_DRIVER_CONFIG_V2: u32 = 2u32;
-pub struct WHEA_DEVICE_DRIVER_DESCRIPTOR {
-    pub Type: u16,
-    pub Enabled: super::super::super::Foundation::BOOLEAN,
-    pub Reserved: u8,
-    pub SourceGuid: crate::core::GUID,
-    pub LogTag: u16,
-    pub Reserved2: u16,
-    pub PacketLength: u32,
-    pub PacketCount: u32,
-    pub PacketBuffer: MutPtr<u8>,
-    pub Config: WHEA_ERROR_SOURCE_CONFIGURATION_DD,
-    pub CreatorId: crate::core::GUID,
-    pub PartitionId: crate::core::GUID,
-    pub MaxSectionDataLength: u32,
-    pub MaxSectionsPerRecord: u32,
-    pub PacketStateBuffer: MutPtr<u8>,
-    pub OpenHandles: i32,
-}
-impl ::core::marker::Copy for WHEA_DEVICE_DRIVER_DESCRIPTOR {}
-impl ::core::clone::Clone for WHEA_DEVICE_DRIVER_DESCRIPTOR {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for WHEA_DEVICE_DRIVER_DESCRIPTOR {
-    fn eq(&self, other: &Self) -> bool {
-        self.Type == other.Type
-            && self.Enabled == other.Enabled
-            && self.Reserved == other.Reserved
-            && self.SourceGuid == other.SourceGuid
-            && self.LogTag == other.LogTag
-            && self.Reserved2 == other.Reserved2
-            && self.PacketLength == other.PacketLength
-            && self.PacketCount == other.PacketCount
-            && self.PacketBuffer == other.PacketBuffer
-            && self.Config == other.Config
-            && self.CreatorId == other.CreatorId
-            && self.PartitionId == other.PartitionId
-            && self.MaxSectionDataLength == other.MaxSectionDataLength
-            && self.MaxSectionsPerRecord == other.MaxSectionsPerRecord
-            && self.PacketStateBuffer == other.PacketStateBuffer
-            && self.OpenHandles == other.OpenHandles
-    }
-}
-impl ::core::cmp::Eq for WHEA_DEVICE_DRIVER_DESCRIPTOR {}
-impl FromIntoMemory for WHEA_DEVICE_DRIVER_DESCRIPTOR {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 96u32 as usize);
-        let f_Type = <u16 as FromIntoMemory>::from_bytes(&from[0..0 + 2]);
-        let f_Enabled = <super::super::super::Foundation::BOOLEAN as FromIntoMemory>::from_bytes(
-            &from[2..2 + 1],
-        );
-        let f_Reserved = <u8 as FromIntoMemory>::from_bytes(&from[3..3 + 1]);
-        let f_SourceGuid = <crate::core::GUID as FromIntoMemory>::from_bytes(&from[4..4 + 16]);
-        let f_LogTag = <u16 as FromIntoMemory>::from_bytes(&from[20..20 + 2]);
-        let f_Reserved2 = <u16 as FromIntoMemory>::from_bytes(&from[22..22 + 2]);
-        let f_PacketLength = <u32 as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
-        let f_PacketCount = <u32 as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
-        let f_PacketBuffer = <MutPtr<u8> as FromIntoMemory>::from_bytes(&from[32..32 + 4]);
-        let f_Config =
-            <WHEA_ERROR_SOURCE_CONFIGURATION_DD as FromIntoMemory>::from_bytes(&from[36..36 + 12]);
-        let f_CreatorId = <crate::core::GUID as FromIntoMemory>::from_bytes(&from[48..48 + 16]);
-        let f_PartitionId = <crate::core::GUID as FromIntoMemory>::from_bytes(&from[64..64 + 16]);
-        let f_MaxSectionDataLength = <u32 as FromIntoMemory>::from_bytes(&from[80..80 + 4]);
-        let f_MaxSectionsPerRecord = <u32 as FromIntoMemory>::from_bytes(&from[84..84 + 4]);
-        let f_PacketStateBuffer = <MutPtr<u8> as FromIntoMemory>::from_bytes(&from[88..88 + 4]);
-        let f_OpenHandles = <i32 as FromIntoMemory>::from_bytes(&from[92..92 + 4]);
-        Self {
-            Type: f_Type,
-            Enabled: f_Enabled,
-            Reserved: f_Reserved,
-            SourceGuid: f_SourceGuid,
-            LogTag: f_LogTag,
-            Reserved2: f_Reserved2,
-            PacketLength: f_PacketLength,
-            PacketCount: f_PacketCount,
-            PacketBuffer: f_PacketBuffer,
-            Config: f_Config,
-            CreatorId: f_CreatorId,
-            PartitionId: f_PartitionId,
-            MaxSectionDataLength: f_MaxSectionDataLength,
-            MaxSectionsPerRecord: f_MaxSectionsPerRecord,
-            PacketStateBuffer: f_PacketStateBuffer,
-            OpenHandles: f_OpenHandles,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 96u32 as usize);
-        FromIntoMemory::into_bytes(self.Type, &mut into[0..0 + 2]);
-        FromIntoMemory::into_bytes(self.Enabled, &mut into[2..2 + 1]);
-        FromIntoMemory::into_bytes(self.Reserved, &mut into[3..3 + 1]);
-        FromIntoMemory::into_bytes(self.SourceGuid, &mut into[4..4 + 16]);
-        FromIntoMemory::into_bytes(self.LogTag, &mut into[20..20 + 2]);
-        FromIntoMemory::into_bytes(self.Reserved2, &mut into[22..22 + 2]);
-        FromIntoMemory::into_bytes(self.PacketLength, &mut into[24..24 + 4]);
-        FromIntoMemory::into_bytes(self.PacketCount, &mut into[28..28 + 4]);
-        FromIntoMemory::into_bytes(self.PacketBuffer, &mut into[32..32 + 4]);
-        FromIntoMemory::into_bytes(self.Config, &mut into[36..36 + 12]);
-        FromIntoMemory::into_bytes(self.CreatorId, &mut into[48..48 + 16]);
-        FromIntoMemory::into_bytes(self.PartitionId, &mut into[64..64 + 16]);
-        FromIntoMemory::into_bytes(self.MaxSectionDataLength, &mut into[80..80 + 4]);
-        FromIntoMemory::into_bytes(self.MaxSectionsPerRecord, &mut into[84..84 + 4]);
-        FromIntoMemory::into_bytes(self.PacketStateBuffer, &mut into[88..88 + 4]);
-        FromIntoMemory::into_bytes(self.OpenHandles, &mut into[92..92 + 4]);
-    }
-    fn size() -> usize {
-        96u32 as usize
-    }
-}
 pub const WHEA_DISABLE_DUMMY_WRITE: u32 = 6u32;
 pub const WHEA_DISABLE_OFFLINE: u32 = 0u32;
-pub struct WHEA_DRIVER_BUFFER_SET {
-    pub Version: u32,
-    pub Data: MutPtr<u8>,
-    pub DataSize: u32,
-    pub SectionTypeGuid: MutPtr<crate::core::GUID>,
-    pub SectionFriendlyName: MutPtr<u8>,
-    pub Flags: MutPtr<u8>,
-}
-impl ::core::marker::Copy for WHEA_DRIVER_BUFFER_SET {}
-impl ::core::clone::Clone for WHEA_DRIVER_BUFFER_SET {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for WHEA_DRIVER_BUFFER_SET {
-    fn eq(&self, other: &Self) -> bool {
-        self.Version == other.Version
-            && self.Data == other.Data
-            && self.DataSize == other.DataSize
-            && self.SectionTypeGuid == other.SectionTypeGuid
-            && self.SectionFriendlyName == other.SectionFriendlyName
-            && self.Flags == other.Flags
-    }
-}
-impl ::core::cmp::Eq for WHEA_DRIVER_BUFFER_SET {}
-impl FromIntoMemory for WHEA_DRIVER_BUFFER_SET {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 24u32 as usize);
-        let f_Version = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_Data = <MutPtr<u8> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        let f_DataSize = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_SectionTypeGuid =
-            <MutPtr<crate::core::GUID> as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
-        let f_SectionFriendlyName = <MutPtr<u8> as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
-        let f_Flags = <MutPtr<u8> as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
-        Self {
-            Version: f_Version,
-            Data: f_Data,
-            DataSize: f_DataSize,
-            SectionTypeGuid: f_SectionTypeGuid,
-            SectionFriendlyName: f_SectionFriendlyName,
-            Flags: f_Flags,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 24u32 as usize);
-        FromIntoMemory::into_bytes(self.Version, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.Data, &mut into[4..4 + 4]);
-        FromIntoMemory::into_bytes(self.DataSize, &mut into[8..8 + 4]);
-        FromIntoMemory::into_bytes(self.SectionTypeGuid, &mut into[12..12 + 4]);
-        FromIntoMemory::into_bytes(self.SectionFriendlyName, &mut into[16..16 + 4]);
-        FromIntoMemory::into_bytes(self.Flags, &mut into[20..20 + 4]);
-    }
-    fn size() -> usize {
-        24u32 as usize
-    }
-}
-pub struct WHEA_ERROR_SOURCE_CONFIGURATION_DD {
-    pub Initialize: WHEA_ERROR_SOURCE_INITIALIZE_DEVICE_DRIVER,
-    pub Uninitialize: WHEA_ERROR_SOURCE_UNINITIALIZE_DEVICE_DRIVER,
-    pub Correct: WHEA_ERROR_SOURCE_CORRECT_DEVICE_DRIVER,
-}
-impl ::core::marker::Copy for WHEA_ERROR_SOURCE_CONFIGURATION_DD {}
-impl ::core::clone::Clone for WHEA_ERROR_SOURCE_CONFIGURATION_DD {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for WHEA_ERROR_SOURCE_CONFIGURATION_DD {
-    fn eq(&self, other: &Self) -> bool {
-        self.Initialize == other.Initialize
-            && self.Uninitialize == other.Uninitialize
-            && self.Correct == other.Correct
-    }
-}
-impl ::core::cmp::Eq for WHEA_ERROR_SOURCE_CONFIGURATION_DD {}
-impl FromIntoMemory for WHEA_ERROR_SOURCE_CONFIGURATION_DD {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 12u32 as usize);
-        let f_Initialize =
-            <WHEA_ERROR_SOURCE_INITIALIZE_DEVICE_DRIVER as FromIntoMemory>::from_bytes(
-                &from[0..0 + 4],
-            );
-        let f_Uninitialize =
-            <WHEA_ERROR_SOURCE_UNINITIALIZE_DEVICE_DRIVER as FromIntoMemory>::from_bytes(
-                &from[4..4 + 4],
-            );
-        let f_Correct = <WHEA_ERROR_SOURCE_CORRECT_DEVICE_DRIVER as FromIntoMemory>::from_bytes(
-            &from[8..8 + 4],
-        );
-        Self {
-            Initialize: f_Initialize,
-            Uninitialize: f_Uninitialize,
-            Correct: f_Correct,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 12u32 as usize);
-        FromIntoMemory::into_bytes(self.Initialize, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.Uninitialize, &mut into[4..4 + 4]);
-        FromIntoMemory::into_bytes(self.Correct, &mut into[8..8 + 4]);
-    }
-    fn size() -> usize {
-        12u32 as usize
-    }
-}
-pub struct WHEA_ERROR_SOURCE_CONFIGURATION_DEVICE_DRIVER {
-    pub Version: u32,
-    pub SourceGuid: crate::core::GUID,
-    pub LogTag: u16,
-    pub Reserved: [u8; 6],
-    pub Initialize: WHEA_ERROR_SOURCE_INITIALIZE_DEVICE_DRIVER,
-    pub Uninitialize: WHEA_ERROR_SOURCE_UNINITIALIZE_DEVICE_DRIVER,
-    pub MaxSectionDataLength: u32,
-    pub MaxSectionsPerReport: u32,
-    pub CreatorId: crate::core::GUID,
-    pub PartitionId: crate::core::GUID,
-}
-impl ::core::marker::Copy for WHEA_ERROR_SOURCE_CONFIGURATION_DEVICE_DRIVER {}
-impl ::core::clone::Clone for WHEA_ERROR_SOURCE_CONFIGURATION_DEVICE_DRIVER {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for WHEA_ERROR_SOURCE_CONFIGURATION_DEVICE_DRIVER {
-    fn eq(&self, other: &Self) -> bool {
-        self.Version == other.Version
-            && self.SourceGuid == other.SourceGuid
-            && self.LogTag == other.LogTag
-            && self.Reserved == other.Reserved
-            && self.Initialize == other.Initialize
-            && self.Uninitialize == other.Uninitialize
-            && self.MaxSectionDataLength == other.MaxSectionDataLength
-            && self.MaxSectionsPerReport == other.MaxSectionsPerReport
-            && self.CreatorId == other.CreatorId
-            && self.PartitionId == other.PartitionId
-    }
-}
-impl ::core::cmp::Eq for WHEA_ERROR_SOURCE_CONFIGURATION_DEVICE_DRIVER {}
-impl FromIntoMemory for WHEA_ERROR_SOURCE_CONFIGURATION_DEVICE_DRIVER {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 76u32 as usize);
-        let f_Version = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_SourceGuid = <crate::core::GUID as FromIntoMemory>::from_bytes(&from[4..4 + 16]);
-        let f_LogTag = <u16 as FromIntoMemory>::from_bytes(&from[20..20 + 2]);
-        let f_Reserved = <[u8; 6] as FromIntoMemory>::from_bytes(&from[22..22 + 6]);
-        let f_Initialize =
-            <WHEA_ERROR_SOURCE_INITIALIZE_DEVICE_DRIVER as FromIntoMemory>::from_bytes(
-                &from[28..28 + 4],
-            );
-        let f_Uninitialize =
-            <WHEA_ERROR_SOURCE_UNINITIALIZE_DEVICE_DRIVER as FromIntoMemory>::from_bytes(
-                &from[32..32 + 4],
-            );
-        let f_MaxSectionDataLength = <u32 as FromIntoMemory>::from_bytes(&from[36..36 + 4]);
-        let f_MaxSectionsPerReport = <u32 as FromIntoMemory>::from_bytes(&from[40..40 + 4]);
-        let f_CreatorId = <crate::core::GUID as FromIntoMemory>::from_bytes(&from[44..44 + 16]);
-        let f_PartitionId = <crate::core::GUID as FromIntoMemory>::from_bytes(&from[60..60 + 16]);
-        Self {
-            Version: f_Version,
-            SourceGuid: f_SourceGuid,
-            LogTag: f_LogTag,
-            Reserved: f_Reserved,
-            Initialize: f_Initialize,
-            Uninitialize: f_Uninitialize,
-            MaxSectionDataLength: f_MaxSectionDataLength,
-            MaxSectionsPerReport: f_MaxSectionsPerReport,
-            CreatorId: f_CreatorId,
-            PartitionId: f_PartitionId,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 76u32 as usize);
-        FromIntoMemory::into_bytes(self.Version, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.SourceGuid, &mut into[4..4 + 16]);
-        FromIntoMemory::into_bytes(self.LogTag, &mut into[20..20 + 2]);
-        FromIntoMemory::into_bytes(self.Reserved, &mut into[22..22 + 6]);
-        FromIntoMemory::into_bytes(self.Initialize, &mut into[28..28 + 4]);
-        FromIntoMemory::into_bytes(self.Uninitialize, &mut into[32..32 + 4]);
-        FromIntoMemory::into_bytes(self.MaxSectionDataLength, &mut into[36..36 + 4]);
-        FromIntoMemory::into_bytes(self.MaxSectionsPerReport, &mut into[40..40 + 4]);
-        FromIntoMemory::into_bytes(self.CreatorId, &mut into[44..44 + 16]);
-        FromIntoMemory::into_bytes(self.PartitionId, &mut into[60..60 + 16]);
-    }
-    fn size() -> usize {
-        76u32 as usize
-    }
-}
-pub struct WHEA_ERROR_SOURCE_CONFIGURATION_DEVICE_DRIVER_V1 {
-    pub Version: u32,
-    pub SourceGuid: crate::core::GUID,
-    pub LogTag: u16,
-    pub Reserved: [u8; 6],
-    pub Initialize: WHEA_ERROR_SOURCE_INITIALIZE_DEVICE_DRIVER,
-    pub Uninitialize: WHEA_ERROR_SOURCE_UNINITIALIZE_DEVICE_DRIVER,
-}
-impl ::core::marker::Copy for WHEA_ERROR_SOURCE_CONFIGURATION_DEVICE_DRIVER_V1 {}
-impl ::core::clone::Clone for WHEA_ERROR_SOURCE_CONFIGURATION_DEVICE_DRIVER_V1 {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for WHEA_ERROR_SOURCE_CONFIGURATION_DEVICE_DRIVER_V1 {
-    fn eq(&self, other: &Self) -> bool {
-        self.Version == other.Version
-            && self.SourceGuid == other.SourceGuid
-            && self.LogTag == other.LogTag
-            && self.Reserved == other.Reserved
-            && self.Initialize == other.Initialize
-            && self.Uninitialize == other.Uninitialize
-    }
-}
-impl ::core::cmp::Eq for WHEA_ERROR_SOURCE_CONFIGURATION_DEVICE_DRIVER_V1 {}
-impl FromIntoMemory for WHEA_ERROR_SOURCE_CONFIGURATION_DEVICE_DRIVER_V1 {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 36u32 as usize);
-        let f_Version = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_SourceGuid = <crate::core::GUID as FromIntoMemory>::from_bytes(&from[4..4 + 16]);
-        let f_LogTag = <u16 as FromIntoMemory>::from_bytes(&from[20..20 + 2]);
-        let f_Reserved = <[u8; 6] as FromIntoMemory>::from_bytes(&from[22..22 + 6]);
-        let f_Initialize =
-            <WHEA_ERROR_SOURCE_INITIALIZE_DEVICE_DRIVER as FromIntoMemory>::from_bytes(
-                &from[28..28 + 4],
-            );
-        let f_Uninitialize =
-            <WHEA_ERROR_SOURCE_UNINITIALIZE_DEVICE_DRIVER as FromIntoMemory>::from_bytes(
-                &from[32..32 + 4],
-            );
-        Self {
-            Version: f_Version,
-            SourceGuid: f_SourceGuid,
-            LogTag: f_LogTag,
-            Reserved: f_Reserved,
-            Initialize: f_Initialize,
-            Uninitialize: f_Uninitialize,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 36u32 as usize);
-        FromIntoMemory::into_bytes(self.Version, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.SourceGuid, &mut into[4..4 + 16]);
-        FromIntoMemory::into_bytes(self.LogTag, &mut into[20..20 + 2]);
-        FromIntoMemory::into_bytes(self.Reserved, &mut into[22..22 + 6]);
-        FromIntoMemory::into_bytes(self.Initialize, &mut into[28..28 + 4]);
-        FromIntoMemory::into_bytes(self.Uninitialize, &mut into[32..32 + 4]);
-    }
-    fn size() -> usize {
-        36u32 as usize
-    }
-}
-pub type WHEA_ERROR_SOURCE_CORRECT_DEVICE_DRIVER = StdCallFnPtr<
-    (MutPtr<::core::ffi::c_void>, MutPtr<u32>),
-    super::super::super::Foundation::NTSTATUS,
->;
-pub struct WHEA_ERROR_SOURCE_DESCRIPTOR {
-    pub Length: u32,
-    pub Version: u32,
-    pub Type: WHEA_ERROR_SOURCE_TYPE,
-    pub State: WHEA_ERROR_SOURCE_STATE,
-    pub MaxRawDataLength: u32,
-    pub NumRecordsToPreallocate: u32,
-    pub MaxSectionsPerRecord: u32,
-    pub ErrorSourceId: u32,
-    pub PlatformErrorSourceId: u32,
-    pub Flags: u32,
-    pub Info: WHEA_ERROR_SOURCE_DESCRIPTOR_0,
-}
-impl ::core::marker::Copy for WHEA_ERROR_SOURCE_DESCRIPTOR {}
-impl ::core::clone::Clone for WHEA_ERROR_SOURCE_DESCRIPTOR {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for WHEA_ERROR_SOURCE_DESCRIPTOR {
-    fn eq(&self, other: &Self) -> bool {
-        self.Length == other.Length
-            && self.Version == other.Version
-            && self.Type == other.Type
-            && self.State == other.State
-            && self.MaxRawDataLength == other.MaxRawDataLength
-            && self.NumRecordsToPreallocate == other.NumRecordsToPreallocate
-            && self.MaxSectionsPerRecord == other.MaxSectionsPerRecord
-            && self.ErrorSourceId == other.ErrorSourceId
-            && self.PlatformErrorSourceId == other.PlatformErrorSourceId
-            && self.Flags == other.Flags
-            && self.Info == other.Info
-    }
-}
-impl ::core::cmp::Eq for WHEA_ERROR_SOURCE_DESCRIPTOR {}
-impl FromIntoMemory for WHEA_ERROR_SOURCE_DESCRIPTOR {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 3000u32 as usize);
-        let f_Length = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_Version = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        let f_Type = <WHEA_ERROR_SOURCE_TYPE as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_State = <WHEA_ERROR_SOURCE_STATE as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
-        let f_MaxRawDataLength = <u32 as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
-        let f_NumRecordsToPreallocate = <u32 as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
-        let f_MaxSectionsPerRecord = <u32 as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
-        let f_ErrorSourceId = <u32 as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
-        let f_PlatformErrorSourceId = <u32 as FromIntoMemory>::from_bytes(&from[32..32 + 4]);
-        let f_Flags = <u32 as FromIntoMemory>::from_bytes(&from[36..36 + 4]);
-        let f_Info =
-            <WHEA_ERROR_SOURCE_DESCRIPTOR_0 as FromIntoMemory>::from_bytes(&from[40..40 + 2960]);
-        Self {
-            Length: f_Length,
-            Version: f_Version,
-            Type: f_Type,
-            State: f_State,
-            MaxRawDataLength: f_MaxRawDataLength,
-            NumRecordsToPreallocate: f_NumRecordsToPreallocate,
-            MaxSectionsPerRecord: f_MaxSectionsPerRecord,
-            ErrorSourceId: f_ErrorSourceId,
-            PlatformErrorSourceId: f_PlatformErrorSourceId,
-            Flags: f_Flags,
-            Info: f_Info,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 3000u32 as usize);
-        FromIntoMemory::into_bytes(self.Length, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.Version, &mut into[4..4 + 4]);
-        FromIntoMemory::into_bytes(self.Type, &mut into[8..8 + 4]);
-        FromIntoMemory::into_bytes(self.State, &mut into[12..12 + 4]);
-        FromIntoMemory::into_bytes(self.MaxRawDataLength, &mut into[16..16 + 4]);
-        FromIntoMemory::into_bytes(self.NumRecordsToPreallocate, &mut into[20..20 + 4]);
-        FromIntoMemory::into_bytes(self.MaxSectionsPerRecord, &mut into[24..24 + 4]);
-        FromIntoMemory::into_bytes(self.ErrorSourceId, &mut into[28..28 + 4]);
-        FromIntoMemory::into_bytes(self.PlatformErrorSourceId, &mut into[32..32 + 4]);
-        FromIntoMemory::into_bytes(self.Flags, &mut into[36..36 + 4]);
-        FromIntoMemory::into_bytes(self.Info, &mut into[40..40 + 2960]);
-    }
-    fn size() -> usize {
-        3000u32 as usize
-    }
-}
-pub struct WHEA_ERROR_SOURCE_DESCRIPTOR_0 {
-    pub XpfMceDescriptor: WHEA_XPF_MCE_DESCRIPTOR,
-    pub XpfCmcDescriptor: WHEA_XPF_CMC_DESCRIPTOR,
-    pub XpfNmiDescriptor: WHEA_XPF_NMI_DESCRIPTOR,
-    pub IpfMcaDescriptor: WHEA_IPF_MCA_DESCRIPTOR,
-    pub IpfCmcDescriptor: WHEA_IPF_CMC_DESCRIPTOR,
-    pub IpfCpeDescriptor: WHEA_IPF_CPE_DESCRIPTOR,
-    pub AerRootportDescriptor: WHEA_AER_ROOTPORT_DESCRIPTOR,
-    pub AerEndpointDescriptor: WHEA_AER_ENDPOINT_DESCRIPTOR,
-    pub AerBridgeDescriptor: WHEA_AER_BRIDGE_DESCRIPTOR,
-    pub GenErrDescriptor: WHEA_GENERIC_ERROR_DESCRIPTOR,
-    pub GenErrDescriptorV2: WHEA_GENERIC_ERROR_DESCRIPTOR_V2,
-    pub DeviceDriverDescriptor: WHEA_DEVICE_DRIVER_DESCRIPTOR,
-}
-impl ::core::marker::Copy for WHEA_ERROR_SOURCE_DESCRIPTOR_0 {}
-impl ::core::clone::Clone for WHEA_ERROR_SOURCE_DESCRIPTOR_0 {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for WHEA_ERROR_SOURCE_DESCRIPTOR_0 {
-    fn eq(&self, other: &Self) -> bool {
-        self.XpfMceDescriptor == other.XpfMceDescriptor
-            && self.XpfCmcDescriptor == other.XpfCmcDescriptor
-            && self.XpfNmiDescriptor == other.XpfNmiDescriptor
-            && self.IpfMcaDescriptor == other.IpfMcaDescriptor
-            && self.IpfCmcDescriptor == other.IpfCmcDescriptor
-            && self.IpfCpeDescriptor == other.IpfCpeDescriptor
-            && self.AerRootportDescriptor == other.AerRootportDescriptor
-            && self.AerEndpointDescriptor == other.AerEndpointDescriptor
-            && self.AerBridgeDescriptor == other.AerBridgeDescriptor
-            && self.GenErrDescriptor == other.GenErrDescriptor
-            && self.GenErrDescriptorV2 == other.GenErrDescriptorV2
-            && self.DeviceDriverDescriptor == other.DeviceDriverDescriptor
-    }
-}
-impl ::core::cmp::Eq for WHEA_ERROR_SOURCE_DESCRIPTOR_0 {}
-impl FromIntoMemory for WHEA_ERROR_SOURCE_DESCRIPTOR_0 {
-    fn from_bytes(from: &[u8]) -> Self {
-        todo!()
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        todo!()
-    }
-    fn size() -> usize {
-        todo!()
-    }
-}
 pub const WHEA_ERROR_SOURCE_DESCRIPTOR_TYPE_AERBRIDGE: u32 = 8u32;
 pub const WHEA_ERROR_SOURCE_DESCRIPTOR_TYPE_AERENDPOINT: u32 = 7u32;
 pub const WHEA_ERROR_SOURCE_DESCRIPTOR_TYPE_AERROOTPORT: u32 = 6u32;
@@ -31909,8 +33505,6 @@ pub const WHEA_ERROR_SOURCE_FLAG_DEFAULTSOURCE: u32 = 2147483648u32;
 pub const WHEA_ERROR_SOURCE_FLAG_FIRMWAREFIRST: u32 = 1u32;
 pub const WHEA_ERROR_SOURCE_FLAG_GHES_ASSIST: u32 = 4u32;
 pub const WHEA_ERROR_SOURCE_FLAG_GLOBAL: u32 = 2u32;
-pub type WHEA_ERROR_SOURCE_INITIALIZE_DEVICE_DRIVER =
-    StdCallFnPtr<(MutPtr<::core::ffi::c_void>, u32), super::super::super::Foundation::NTSTATUS>;
 pub const WHEA_ERROR_SOURCE_INVALID_RELATED_SOURCE: u32 = 65535u32;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct WHEA_ERROR_SOURCE_STATE(pub i32);
@@ -31996,897 +33590,12 @@ impl FromIntoMemory for WHEA_ERROR_SOURCE_TYPE {
         4
     }
 }
-pub type WHEA_ERROR_SOURCE_UNINITIALIZE_DEVICE_DRIVER =
-    StdCallFnPtr<(MutPtr<::core::ffi::c_void>,), ()>;
-pub struct WHEA_GENERIC_ERROR_DESCRIPTOR {
-    pub Type: u16,
-    pub Reserved: u8,
-    pub Enabled: u8,
-    pub ErrStatusBlockLength: u32,
-    pub RelatedErrorSourceId: u32,
-    pub ErrStatusAddressSpaceID: u8,
-    pub ErrStatusAddressBitWidth: u8,
-    pub ErrStatusAddressBitOffset: u8,
-    pub ErrStatusAddressAccessSize: u8,
-    pub ErrStatusAddress: i64,
-    pub Notify: WHEA_NOTIFICATION_DESCRIPTOR,
-}
-impl ::core::marker::Copy for WHEA_GENERIC_ERROR_DESCRIPTOR {}
-impl ::core::clone::Clone for WHEA_GENERIC_ERROR_DESCRIPTOR {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for WHEA_GENERIC_ERROR_DESCRIPTOR {
-    fn eq(&self, other: &Self) -> bool {
-        self.Type == other.Type
-            && self.Reserved == other.Reserved
-            && self.Enabled == other.Enabled
-            && self.ErrStatusBlockLength == other.ErrStatusBlockLength
-            && self.RelatedErrorSourceId == other.RelatedErrorSourceId
-            && self.ErrStatusAddressSpaceID == other.ErrStatusAddressSpaceID
-            && self.ErrStatusAddressBitWidth == other.ErrStatusAddressBitWidth
-            && self.ErrStatusAddressBitOffset == other.ErrStatusAddressBitOffset
-            && self.ErrStatusAddressAccessSize == other.ErrStatusAddressAccessSize
-            && self.ErrStatusAddress == other.ErrStatusAddress
-            && self.Notify == other.Notify
-    }
-}
-impl ::core::cmp::Eq for WHEA_GENERIC_ERROR_DESCRIPTOR {}
-impl FromIntoMemory for WHEA_GENERIC_ERROR_DESCRIPTOR {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 208u32 as usize);
-        let f_Type = <u16 as FromIntoMemory>::from_bytes(&from[0..0 + 2]);
-        let f_Reserved = <u8 as FromIntoMemory>::from_bytes(&from[2..2 + 1]);
-        let f_Enabled = <u8 as FromIntoMemory>::from_bytes(&from[3..3 + 1]);
-        let f_ErrStatusBlockLength = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        let f_RelatedErrorSourceId = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_ErrStatusAddressSpaceID = <u8 as FromIntoMemory>::from_bytes(&from[12..12 + 1]);
-        let f_ErrStatusAddressBitWidth = <u8 as FromIntoMemory>::from_bytes(&from[13..13 + 1]);
-        let f_ErrStatusAddressBitOffset = <u8 as FromIntoMemory>::from_bytes(&from[14..14 + 1]);
-        let f_ErrStatusAddressAccessSize = <u8 as FromIntoMemory>::from_bytes(&from[15..15 + 1]);
-        let f_ErrStatusAddress = <i64 as FromIntoMemory>::from_bytes(&from[16..16 + 8]);
-        let f_Notify =
-            <WHEA_NOTIFICATION_DESCRIPTOR as FromIntoMemory>::from_bytes(&from[24..24 + 180]);
-        Self {
-            Type: f_Type,
-            Reserved: f_Reserved,
-            Enabled: f_Enabled,
-            ErrStatusBlockLength: f_ErrStatusBlockLength,
-            RelatedErrorSourceId: f_RelatedErrorSourceId,
-            ErrStatusAddressSpaceID: f_ErrStatusAddressSpaceID,
-            ErrStatusAddressBitWidth: f_ErrStatusAddressBitWidth,
-            ErrStatusAddressBitOffset: f_ErrStatusAddressBitOffset,
-            ErrStatusAddressAccessSize: f_ErrStatusAddressAccessSize,
-            ErrStatusAddress: f_ErrStatusAddress,
-            Notify: f_Notify,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 208u32 as usize);
-        FromIntoMemory::into_bytes(self.Type, &mut into[0..0 + 2]);
-        FromIntoMemory::into_bytes(self.Reserved, &mut into[2..2 + 1]);
-        FromIntoMemory::into_bytes(self.Enabled, &mut into[3..3 + 1]);
-        FromIntoMemory::into_bytes(self.ErrStatusBlockLength, &mut into[4..4 + 4]);
-        FromIntoMemory::into_bytes(self.RelatedErrorSourceId, &mut into[8..8 + 4]);
-        FromIntoMemory::into_bytes(self.ErrStatusAddressSpaceID, &mut into[12..12 + 1]);
-        FromIntoMemory::into_bytes(self.ErrStatusAddressBitWidth, &mut into[13..13 + 1]);
-        FromIntoMemory::into_bytes(self.ErrStatusAddressBitOffset, &mut into[14..14 + 1]);
-        FromIntoMemory::into_bytes(self.ErrStatusAddressAccessSize, &mut into[15..15 + 1]);
-        FromIntoMemory::into_bytes(self.ErrStatusAddress, &mut into[16..16 + 8]);
-        FromIntoMemory::into_bytes(self.Notify, &mut into[24..24 + 180]);
-    }
-    fn size() -> usize {
-        208u32 as usize
-    }
-}
-pub struct WHEA_GENERIC_ERROR_DESCRIPTOR_V2 {
-    pub Type: u16,
-    pub Reserved: u8,
-    pub Enabled: u8,
-    pub ErrStatusBlockLength: u32,
-    pub RelatedErrorSourceId: u32,
-    pub ErrStatusAddressSpaceID: u8,
-    pub ErrStatusAddressBitWidth: u8,
-    pub ErrStatusAddressBitOffset: u8,
-    pub ErrStatusAddressAccessSize: u8,
-    pub ErrStatusAddress: i64,
-    pub Notify: WHEA_NOTIFICATION_DESCRIPTOR,
-    pub ReadAckAddressSpaceID: u8,
-    pub ReadAckAddressBitWidth: u8,
-    pub ReadAckAddressBitOffset: u8,
-    pub ReadAckAddressAccessSize: u8,
-    pub ReadAckAddress: i64,
-    pub ReadAckPreserveMask: u64,
-    pub ReadAckWriteMask: u64,
-}
-impl ::core::marker::Copy for WHEA_GENERIC_ERROR_DESCRIPTOR_V2 {}
-impl ::core::clone::Clone for WHEA_GENERIC_ERROR_DESCRIPTOR_V2 {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for WHEA_GENERIC_ERROR_DESCRIPTOR_V2 {
-    fn eq(&self, other: &Self) -> bool {
-        self.Type == other.Type
-            && self.Reserved == other.Reserved
-            && self.Enabled == other.Enabled
-            && self.ErrStatusBlockLength == other.ErrStatusBlockLength
-            && self.RelatedErrorSourceId == other.RelatedErrorSourceId
-            && self.ErrStatusAddressSpaceID == other.ErrStatusAddressSpaceID
-            && self.ErrStatusAddressBitWidth == other.ErrStatusAddressBitWidth
-            && self.ErrStatusAddressBitOffset == other.ErrStatusAddressBitOffset
-            && self.ErrStatusAddressAccessSize == other.ErrStatusAddressAccessSize
-            && self.ErrStatusAddress == other.ErrStatusAddress
-            && self.Notify == other.Notify
-            && self.ReadAckAddressSpaceID == other.ReadAckAddressSpaceID
-            && self.ReadAckAddressBitWidth == other.ReadAckAddressBitWidth
-            && self.ReadAckAddressBitOffset == other.ReadAckAddressBitOffset
-            && self.ReadAckAddressAccessSize == other.ReadAckAddressAccessSize
-            && self.ReadAckAddress == other.ReadAckAddress
-            && self.ReadAckPreserveMask == other.ReadAckPreserveMask
-            && self.ReadAckWriteMask == other.ReadAckWriteMask
-    }
-}
-impl ::core::cmp::Eq for WHEA_GENERIC_ERROR_DESCRIPTOR_V2 {}
-impl FromIntoMemory for WHEA_GENERIC_ERROR_DESCRIPTOR_V2 {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 232u32 as usize);
-        let f_Type = <u16 as FromIntoMemory>::from_bytes(&from[0..0 + 2]);
-        let f_Reserved = <u8 as FromIntoMemory>::from_bytes(&from[2..2 + 1]);
-        let f_Enabled = <u8 as FromIntoMemory>::from_bytes(&from[3..3 + 1]);
-        let f_ErrStatusBlockLength = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        let f_RelatedErrorSourceId = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_ErrStatusAddressSpaceID = <u8 as FromIntoMemory>::from_bytes(&from[12..12 + 1]);
-        let f_ErrStatusAddressBitWidth = <u8 as FromIntoMemory>::from_bytes(&from[13..13 + 1]);
-        let f_ErrStatusAddressBitOffset = <u8 as FromIntoMemory>::from_bytes(&from[14..14 + 1]);
-        let f_ErrStatusAddressAccessSize = <u8 as FromIntoMemory>::from_bytes(&from[15..15 + 1]);
-        let f_ErrStatusAddress = <i64 as FromIntoMemory>::from_bytes(&from[16..16 + 8]);
-        let f_Notify =
-            <WHEA_NOTIFICATION_DESCRIPTOR as FromIntoMemory>::from_bytes(&from[24..24 + 180]);
-        let f_ReadAckAddressSpaceID = <u8 as FromIntoMemory>::from_bytes(&from[204..204 + 1]);
-        let f_ReadAckAddressBitWidth = <u8 as FromIntoMemory>::from_bytes(&from[205..205 + 1]);
-        let f_ReadAckAddressBitOffset = <u8 as FromIntoMemory>::from_bytes(&from[206..206 + 1]);
-        let f_ReadAckAddressAccessSize = <u8 as FromIntoMemory>::from_bytes(&from[207..207 + 1]);
-        let f_ReadAckAddress = <i64 as FromIntoMemory>::from_bytes(&from[208..208 + 8]);
-        let f_ReadAckPreserveMask = <u64 as FromIntoMemory>::from_bytes(&from[216..216 + 8]);
-        let f_ReadAckWriteMask = <u64 as FromIntoMemory>::from_bytes(&from[224..224 + 8]);
-        Self {
-            Type: f_Type,
-            Reserved: f_Reserved,
-            Enabled: f_Enabled,
-            ErrStatusBlockLength: f_ErrStatusBlockLength,
-            RelatedErrorSourceId: f_RelatedErrorSourceId,
-            ErrStatusAddressSpaceID: f_ErrStatusAddressSpaceID,
-            ErrStatusAddressBitWidth: f_ErrStatusAddressBitWidth,
-            ErrStatusAddressBitOffset: f_ErrStatusAddressBitOffset,
-            ErrStatusAddressAccessSize: f_ErrStatusAddressAccessSize,
-            ErrStatusAddress: f_ErrStatusAddress,
-            Notify: f_Notify,
-            ReadAckAddressSpaceID: f_ReadAckAddressSpaceID,
-            ReadAckAddressBitWidth: f_ReadAckAddressBitWidth,
-            ReadAckAddressBitOffset: f_ReadAckAddressBitOffset,
-            ReadAckAddressAccessSize: f_ReadAckAddressAccessSize,
-            ReadAckAddress: f_ReadAckAddress,
-            ReadAckPreserveMask: f_ReadAckPreserveMask,
-            ReadAckWriteMask: f_ReadAckWriteMask,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 232u32 as usize);
-        FromIntoMemory::into_bytes(self.Type, &mut into[0..0 + 2]);
-        FromIntoMemory::into_bytes(self.Reserved, &mut into[2..2 + 1]);
-        FromIntoMemory::into_bytes(self.Enabled, &mut into[3..3 + 1]);
-        FromIntoMemory::into_bytes(self.ErrStatusBlockLength, &mut into[4..4 + 4]);
-        FromIntoMemory::into_bytes(self.RelatedErrorSourceId, &mut into[8..8 + 4]);
-        FromIntoMemory::into_bytes(self.ErrStatusAddressSpaceID, &mut into[12..12 + 1]);
-        FromIntoMemory::into_bytes(self.ErrStatusAddressBitWidth, &mut into[13..13 + 1]);
-        FromIntoMemory::into_bytes(self.ErrStatusAddressBitOffset, &mut into[14..14 + 1]);
-        FromIntoMemory::into_bytes(self.ErrStatusAddressAccessSize, &mut into[15..15 + 1]);
-        FromIntoMemory::into_bytes(self.ErrStatusAddress, &mut into[16..16 + 8]);
-        FromIntoMemory::into_bytes(self.Notify, &mut into[24..24 + 180]);
-        FromIntoMemory::into_bytes(self.ReadAckAddressSpaceID, &mut into[204..204 + 1]);
-        FromIntoMemory::into_bytes(self.ReadAckAddressBitWidth, &mut into[205..205 + 1]);
-        FromIntoMemory::into_bytes(self.ReadAckAddressBitOffset, &mut into[206..206 + 1]);
-        FromIntoMemory::into_bytes(self.ReadAckAddressAccessSize, &mut into[207..207 + 1]);
-        FromIntoMemory::into_bytes(self.ReadAckAddress, &mut into[208..208 + 8]);
-        FromIntoMemory::into_bytes(self.ReadAckPreserveMask, &mut into[216..216 + 8]);
-        FromIntoMemory::into_bytes(self.ReadAckWriteMask, &mut into[224..224 + 8]);
-    }
-    fn size() -> usize {
-        232u32 as usize
-    }
-}
-pub struct WHEA_IPF_CMC_DESCRIPTOR {
-    pub Type: u16,
-    pub Enabled: u8,
-    pub Reserved: u8,
-}
-impl ::core::marker::Copy for WHEA_IPF_CMC_DESCRIPTOR {}
-impl ::core::clone::Clone for WHEA_IPF_CMC_DESCRIPTOR {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for WHEA_IPF_CMC_DESCRIPTOR {
-    fn eq(&self, other: &Self) -> bool {
-        self.Type == other.Type && self.Enabled == other.Enabled && self.Reserved == other.Reserved
-    }
-}
-impl ::core::cmp::Eq for WHEA_IPF_CMC_DESCRIPTOR {}
-impl FromIntoMemory for WHEA_IPF_CMC_DESCRIPTOR {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 4u32 as usize);
-        let f_Type = <u16 as FromIntoMemory>::from_bytes(&from[0..0 + 2]);
-        let f_Enabled = <u8 as FromIntoMemory>::from_bytes(&from[2..2 + 1]);
-        let f_Reserved = <u8 as FromIntoMemory>::from_bytes(&from[3..3 + 1]);
-        Self {
-            Type: f_Type,
-            Enabled: f_Enabled,
-            Reserved: f_Reserved,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 4u32 as usize);
-        FromIntoMemory::into_bytes(self.Type, &mut into[0..0 + 2]);
-        FromIntoMemory::into_bytes(self.Enabled, &mut into[2..2 + 1]);
-        FromIntoMemory::into_bytes(self.Reserved, &mut into[3..3 + 1]);
-    }
-    fn size() -> usize {
-        4u32 as usize
-    }
-}
-pub struct WHEA_IPF_CPE_DESCRIPTOR {
-    pub Type: u16,
-    pub Enabled: u8,
-    pub Reserved: u8,
-}
-impl ::core::marker::Copy for WHEA_IPF_CPE_DESCRIPTOR {}
-impl ::core::clone::Clone for WHEA_IPF_CPE_DESCRIPTOR {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for WHEA_IPF_CPE_DESCRIPTOR {
-    fn eq(&self, other: &Self) -> bool {
-        self.Type == other.Type && self.Enabled == other.Enabled && self.Reserved == other.Reserved
-    }
-}
-impl ::core::cmp::Eq for WHEA_IPF_CPE_DESCRIPTOR {}
-impl FromIntoMemory for WHEA_IPF_CPE_DESCRIPTOR {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 4u32 as usize);
-        let f_Type = <u16 as FromIntoMemory>::from_bytes(&from[0..0 + 2]);
-        let f_Enabled = <u8 as FromIntoMemory>::from_bytes(&from[2..2 + 1]);
-        let f_Reserved = <u8 as FromIntoMemory>::from_bytes(&from[3..3 + 1]);
-        Self {
-            Type: f_Type,
-            Enabled: f_Enabled,
-            Reserved: f_Reserved,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 4u32 as usize);
-        FromIntoMemory::into_bytes(self.Type, &mut into[0..0 + 2]);
-        FromIntoMemory::into_bytes(self.Enabled, &mut into[2..2 + 1]);
-        FromIntoMemory::into_bytes(self.Reserved, &mut into[3..3 + 1]);
-    }
-    fn size() -> usize {
-        4u32 as usize
-    }
-}
-pub struct WHEA_IPF_MCA_DESCRIPTOR {
-    pub Type: u16,
-    pub Enabled: u8,
-    pub Reserved: u8,
-}
-impl ::core::marker::Copy for WHEA_IPF_MCA_DESCRIPTOR {}
-impl ::core::clone::Clone for WHEA_IPF_MCA_DESCRIPTOR {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for WHEA_IPF_MCA_DESCRIPTOR {
-    fn eq(&self, other: &Self) -> bool {
-        self.Type == other.Type && self.Enabled == other.Enabled && self.Reserved == other.Reserved
-    }
-}
-impl ::core::cmp::Eq for WHEA_IPF_MCA_DESCRIPTOR {}
-impl FromIntoMemory for WHEA_IPF_MCA_DESCRIPTOR {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 4u32 as usize);
-        let f_Type = <u16 as FromIntoMemory>::from_bytes(&from[0..0 + 2]);
-        let f_Enabled = <u8 as FromIntoMemory>::from_bytes(&from[2..2 + 1]);
-        let f_Reserved = <u8 as FromIntoMemory>::from_bytes(&from[3..3 + 1]);
-        Self {
-            Type: f_Type,
-            Enabled: f_Enabled,
-            Reserved: f_Reserved,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 4u32 as usize);
-        FromIntoMemory::into_bytes(self.Type, &mut into[0..0 + 2]);
-        FromIntoMemory::into_bytes(self.Enabled, &mut into[2..2 + 1]);
-        FromIntoMemory::into_bytes(self.Reserved, &mut into[3..3 + 1]);
-    }
-    fn size() -> usize {
-        4u32 as usize
-    }
-}
 pub const WHEA_MAX_MC_BANKS: u32 = 32u32;
 pub const WHEA_MEM_PERSISTOFFLINE: u32 = 1u32;
 pub const WHEA_MEM_PFA_DISABLE: u32 = 2u32;
 pub const WHEA_MEM_PFA_PAGECOUNT: u32 = 3u32;
 pub const WHEA_MEM_PFA_THRESHOLD: u32 = 4u32;
 pub const WHEA_MEM_PFA_TIMEOUT: u32 = 5u32;
-pub struct WHEA_NOTIFICATION_DESCRIPTOR {
-    pub Type: u8,
-    pub Length: u8,
-    pub Flags: WHEA_NOTIFICATION_FLAGS,
-    pub u: WHEA_NOTIFICATION_DESCRIPTOR_0,
-}
-impl ::core::marker::Copy for WHEA_NOTIFICATION_DESCRIPTOR {}
-impl ::core::clone::Clone for WHEA_NOTIFICATION_DESCRIPTOR {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for WHEA_NOTIFICATION_DESCRIPTOR {
-    fn eq(&self, other: &Self) -> bool {
-        self.Type == other.Type
-            && self.Length == other.Length
-            && self.Flags == other.Flags
-            && self.u == other.u
-    }
-}
-impl ::core::cmp::Eq for WHEA_NOTIFICATION_DESCRIPTOR {}
-impl FromIntoMemory for WHEA_NOTIFICATION_DESCRIPTOR {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 180u32 as usize);
-        let f_Type = <u8 as FromIntoMemory>::from_bytes(&from[0..0 + 1]);
-        let f_Length = <u8 as FromIntoMemory>::from_bytes(&from[1..1 + 1]);
-        let f_Flags = <WHEA_NOTIFICATION_FLAGS as FromIntoMemory>::from_bytes(&from[2..2 + 4]);
-        let f_u = <WHEA_NOTIFICATION_DESCRIPTOR_0 as FromIntoMemory>::from_bytes(&from[8..8 + 172]);
-        Self {
-            Type: f_Type,
-            Length: f_Length,
-            Flags: f_Flags,
-            u: f_u,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 180u32 as usize);
-        FromIntoMemory::into_bytes(self.Type, &mut into[0..0 + 1]);
-        FromIntoMemory::into_bytes(self.Length, &mut into[1..1 + 1]);
-        FromIntoMemory::into_bytes(self.Flags, &mut into[2..2 + 4]);
-        FromIntoMemory::into_bytes(self.u, &mut into[8..8 + 172]);
-    }
-    fn size() -> usize {
-        180u32 as usize
-    }
-}
-pub struct WHEA_NOTIFICATION_DESCRIPTOR_0 {
-    pub Polled: WHEA_NOTIFICATION_DESCRIPTOR_0_4,
-    pub Interrupt: WHEA_NOTIFICATION_DESCRIPTOR_0_1,
-    pub LocalInterrupt: WHEA_NOTIFICATION_DESCRIPTOR_0_2,
-    pub Sci: WHEA_NOTIFICATION_DESCRIPTOR_0_5,
-    pub Nmi: WHEA_NOTIFICATION_DESCRIPTOR_0_3,
-    pub Sea: WHEA_NOTIFICATION_DESCRIPTOR_0_6,
-    pub Sei: WHEA_NOTIFICATION_DESCRIPTOR_0_7,
-    pub Gsiv: WHEA_NOTIFICATION_DESCRIPTOR_0_0,
-}
-impl ::core::marker::Copy for WHEA_NOTIFICATION_DESCRIPTOR_0 {}
-impl ::core::clone::Clone for WHEA_NOTIFICATION_DESCRIPTOR_0 {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for WHEA_NOTIFICATION_DESCRIPTOR_0 {
-    fn eq(&self, other: &Self) -> bool {
-        self.Polled == other.Polled
-            && self.Interrupt == other.Interrupt
-            && self.LocalInterrupt == other.LocalInterrupt
-            && self.Sci == other.Sci
-            && self.Nmi == other.Nmi
-            && self.Sea == other.Sea
-            && self.Sei == other.Sei
-            && self.Gsiv == other.Gsiv
-    }
-}
-impl ::core::cmp::Eq for WHEA_NOTIFICATION_DESCRIPTOR_0 {}
-impl FromIntoMemory for WHEA_NOTIFICATION_DESCRIPTOR_0 {
-    fn from_bytes(from: &[u8]) -> Self {
-        todo!()
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        todo!()
-    }
-    fn size() -> usize {
-        todo!()
-    }
-}
-pub struct WHEA_NOTIFICATION_DESCRIPTOR_0_0 {
-    pub PollInterval: u32,
-    pub Vector: u32,
-    pub SwitchToPollingThreshold: u32,
-    pub SwitchToPollingWindow: u32,
-    pub ErrorThreshold: u32,
-    pub ErrorThresholdWindow: u32,
-}
-impl ::core::marker::Copy for WHEA_NOTIFICATION_DESCRIPTOR_0_0 {}
-impl ::core::clone::Clone for WHEA_NOTIFICATION_DESCRIPTOR_0_0 {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for WHEA_NOTIFICATION_DESCRIPTOR_0_0 {
-    fn eq(&self, other: &Self) -> bool {
-        self.PollInterval == other.PollInterval
-            && self.Vector == other.Vector
-            && self.SwitchToPollingThreshold == other.SwitchToPollingThreshold
-            && self.SwitchToPollingWindow == other.SwitchToPollingWindow
-            && self.ErrorThreshold == other.ErrorThreshold
-            && self.ErrorThresholdWindow == other.ErrorThresholdWindow
-    }
-}
-impl ::core::cmp::Eq for WHEA_NOTIFICATION_DESCRIPTOR_0_0 {}
-impl FromIntoMemory for WHEA_NOTIFICATION_DESCRIPTOR_0_0 {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 24u32 as usize);
-        let f_PollInterval = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_Vector = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        let f_SwitchToPollingThreshold = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_SwitchToPollingWindow = <u32 as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
-        let f_ErrorThreshold = <u32 as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
-        let f_ErrorThresholdWindow = <u32 as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
-        Self {
-            PollInterval: f_PollInterval,
-            Vector: f_Vector,
-            SwitchToPollingThreshold: f_SwitchToPollingThreshold,
-            SwitchToPollingWindow: f_SwitchToPollingWindow,
-            ErrorThreshold: f_ErrorThreshold,
-            ErrorThresholdWindow: f_ErrorThresholdWindow,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 24u32 as usize);
-        FromIntoMemory::into_bytes(self.PollInterval, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.Vector, &mut into[4..4 + 4]);
-        FromIntoMemory::into_bytes(self.SwitchToPollingThreshold, &mut into[8..8 + 4]);
-        FromIntoMemory::into_bytes(self.SwitchToPollingWindow, &mut into[12..12 + 4]);
-        FromIntoMemory::into_bytes(self.ErrorThreshold, &mut into[16..16 + 4]);
-        FromIntoMemory::into_bytes(self.ErrorThresholdWindow, &mut into[20..20 + 4]);
-    }
-    fn size() -> usize {
-        24u32 as usize
-    }
-}
-pub struct WHEA_NOTIFICATION_DESCRIPTOR_0_1 {
-    pub PollInterval: u32,
-    pub Vector: u32,
-    pub SwitchToPollingThreshold: u32,
-    pub SwitchToPollingWindow: u32,
-    pub ErrorThreshold: u32,
-    pub ErrorThresholdWindow: u32,
-}
-impl ::core::marker::Copy for WHEA_NOTIFICATION_DESCRIPTOR_0_1 {}
-impl ::core::clone::Clone for WHEA_NOTIFICATION_DESCRIPTOR_0_1 {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for WHEA_NOTIFICATION_DESCRIPTOR_0_1 {
-    fn eq(&self, other: &Self) -> bool {
-        self.PollInterval == other.PollInterval
-            && self.Vector == other.Vector
-            && self.SwitchToPollingThreshold == other.SwitchToPollingThreshold
-            && self.SwitchToPollingWindow == other.SwitchToPollingWindow
-            && self.ErrorThreshold == other.ErrorThreshold
-            && self.ErrorThresholdWindow == other.ErrorThresholdWindow
-    }
-}
-impl ::core::cmp::Eq for WHEA_NOTIFICATION_DESCRIPTOR_0_1 {}
-impl FromIntoMemory for WHEA_NOTIFICATION_DESCRIPTOR_0_1 {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 24u32 as usize);
-        let f_PollInterval = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_Vector = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        let f_SwitchToPollingThreshold = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_SwitchToPollingWindow = <u32 as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
-        let f_ErrorThreshold = <u32 as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
-        let f_ErrorThresholdWindow = <u32 as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
-        Self {
-            PollInterval: f_PollInterval,
-            Vector: f_Vector,
-            SwitchToPollingThreshold: f_SwitchToPollingThreshold,
-            SwitchToPollingWindow: f_SwitchToPollingWindow,
-            ErrorThreshold: f_ErrorThreshold,
-            ErrorThresholdWindow: f_ErrorThresholdWindow,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 24u32 as usize);
-        FromIntoMemory::into_bytes(self.PollInterval, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.Vector, &mut into[4..4 + 4]);
-        FromIntoMemory::into_bytes(self.SwitchToPollingThreshold, &mut into[8..8 + 4]);
-        FromIntoMemory::into_bytes(self.SwitchToPollingWindow, &mut into[12..12 + 4]);
-        FromIntoMemory::into_bytes(self.ErrorThreshold, &mut into[16..16 + 4]);
-        FromIntoMemory::into_bytes(self.ErrorThresholdWindow, &mut into[20..20 + 4]);
-    }
-    fn size() -> usize {
-        24u32 as usize
-    }
-}
-pub struct WHEA_NOTIFICATION_DESCRIPTOR_0_2 {
-    pub PollInterval: u32,
-    pub Vector: u32,
-    pub SwitchToPollingThreshold: u32,
-    pub SwitchToPollingWindow: u32,
-    pub ErrorThreshold: u32,
-    pub ErrorThresholdWindow: u32,
-}
-impl ::core::marker::Copy for WHEA_NOTIFICATION_DESCRIPTOR_0_2 {}
-impl ::core::clone::Clone for WHEA_NOTIFICATION_DESCRIPTOR_0_2 {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for WHEA_NOTIFICATION_DESCRIPTOR_0_2 {
-    fn eq(&self, other: &Self) -> bool {
-        self.PollInterval == other.PollInterval
-            && self.Vector == other.Vector
-            && self.SwitchToPollingThreshold == other.SwitchToPollingThreshold
-            && self.SwitchToPollingWindow == other.SwitchToPollingWindow
-            && self.ErrorThreshold == other.ErrorThreshold
-            && self.ErrorThresholdWindow == other.ErrorThresholdWindow
-    }
-}
-impl ::core::cmp::Eq for WHEA_NOTIFICATION_DESCRIPTOR_0_2 {}
-impl FromIntoMemory for WHEA_NOTIFICATION_DESCRIPTOR_0_2 {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 24u32 as usize);
-        let f_PollInterval = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_Vector = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        let f_SwitchToPollingThreshold = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_SwitchToPollingWindow = <u32 as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
-        let f_ErrorThreshold = <u32 as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
-        let f_ErrorThresholdWindow = <u32 as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
-        Self {
-            PollInterval: f_PollInterval,
-            Vector: f_Vector,
-            SwitchToPollingThreshold: f_SwitchToPollingThreshold,
-            SwitchToPollingWindow: f_SwitchToPollingWindow,
-            ErrorThreshold: f_ErrorThreshold,
-            ErrorThresholdWindow: f_ErrorThresholdWindow,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 24u32 as usize);
-        FromIntoMemory::into_bytes(self.PollInterval, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.Vector, &mut into[4..4 + 4]);
-        FromIntoMemory::into_bytes(self.SwitchToPollingThreshold, &mut into[8..8 + 4]);
-        FromIntoMemory::into_bytes(self.SwitchToPollingWindow, &mut into[12..12 + 4]);
-        FromIntoMemory::into_bytes(self.ErrorThreshold, &mut into[16..16 + 4]);
-        FromIntoMemory::into_bytes(self.ErrorThresholdWindow, &mut into[20..20 + 4]);
-    }
-    fn size() -> usize {
-        24u32 as usize
-    }
-}
-pub struct WHEA_NOTIFICATION_DESCRIPTOR_0_3 {
-    pub PollInterval: u32,
-    pub Vector: u32,
-    pub SwitchToPollingThreshold: u32,
-    pub SwitchToPollingWindow: u32,
-    pub ErrorThreshold: u32,
-    pub ErrorThresholdWindow: u32,
-}
-impl ::core::marker::Copy for WHEA_NOTIFICATION_DESCRIPTOR_0_3 {}
-impl ::core::clone::Clone for WHEA_NOTIFICATION_DESCRIPTOR_0_3 {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for WHEA_NOTIFICATION_DESCRIPTOR_0_3 {
-    fn eq(&self, other: &Self) -> bool {
-        self.PollInterval == other.PollInterval
-            && self.Vector == other.Vector
-            && self.SwitchToPollingThreshold == other.SwitchToPollingThreshold
-            && self.SwitchToPollingWindow == other.SwitchToPollingWindow
-            && self.ErrorThreshold == other.ErrorThreshold
-            && self.ErrorThresholdWindow == other.ErrorThresholdWindow
-    }
-}
-impl ::core::cmp::Eq for WHEA_NOTIFICATION_DESCRIPTOR_0_3 {}
-impl FromIntoMemory for WHEA_NOTIFICATION_DESCRIPTOR_0_3 {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 24u32 as usize);
-        let f_PollInterval = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_Vector = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        let f_SwitchToPollingThreshold = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_SwitchToPollingWindow = <u32 as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
-        let f_ErrorThreshold = <u32 as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
-        let f_ErrorThresholdWindow = <u32 as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
-        Self {
-            PollInterval: f_PollInterval,
-            Vector: f_Vector,
-            SwitchToPollingThreshold: f_SwitchToPollingThreshold,
-            SwitchToPollingWindow: f_SwitchToPollingWindow,
-            ErrorThreshold: f_ErrorThreshold,
-            ErrorThresholdWindow: f_ErrorThresholdWindow,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 24u32 as usize);
-        FromIntoMemory::into_bytes(self.PollInterval, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.Vector, &mut into[4..4 + 4]);
-        FromIntoMemory::into_bytes(self.SwitchToPollingThreshold, &mut into[8..8 + 4]);
-        FromIntoMemory::into_bytes(self.SwitchToPollingWindow, &mut into[12..12 + 4]);
-        FromIntoMemory::into_bytes(self.ErrorThreshold, &mut into[16..16 + 4]);
-        FromIntoMemory::into_bytes(self.ErrorThresholdWindow, &mut into[20..20 + 4]);
-    }
-    fn size() -> usize {
-        24u32 as usize
-    }
-}
-pub struct WHEA_NOTIFICATION_DESCRIPTOR_0_4 {
-    pub PollInterval: u32,
-}
-impl ::core::marker::Copy for WHEA_NOTIFICATION_DESCRIPTOR_0_4 {}
-impl ::core::clone::Clone for WHEA_NOTIFICATION_DESCRIPTOR_0_4 {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for WHEA_NOTIFICATION_DESCRIPTOR_0_4 {
-    fn eq(&self, other: &Self) -> bool {
-        self.PollInterval == other.PollInterval
-    }
-}
-impl ::core::cmp::Eq for WHEA_NOTIFICATION_DESCRIPTOR_0_4 {}
-impl FromIntoMemory for WHEA_NOTIFICATION_DESCRIPTOR_0_4 {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 4u32 as usize);
-        let f_PollInterval = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        Self {
-            PollInterval: f_PollInterval,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 4u32 as usize);
-        FromIntoMemory::into_bytes(self.PollInterval, &mut into[0..0 + 4]);
-    }
-    fn size() -> usize {
-        4u32 as usize
-    }
-}
-pub struct WHEA_NOTIFICATION_DESCRIPTOR_0_5 {
-    pub PollInterval: u32,
-    pub Vector: u32,
-    pub SwitchToPollingThreshold: u32,
-    pub SwitchToPollingWindow: u32,
-    pub ErrorThreshold: u32,
-    pub ErrorThresholdWindow: u32,
-}
-impl ::core::marker::Copy for WHEA_NOTIFICATION_DESCRIPTOR_0_5 {}
-impl ::core::clone::Clone for WHEA_NOTIFICATION_DESCRIPTOR_0_5 {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for WHEA_NOTIFICATION_DESCRIPTOR_0_5 {
-    fn eq(&self, other: &Self) -> bool {
-        self.PollInterval == other.PollInterval
-            && self.Vector == other.Vector
-            && self.SwitchToPollingThreshold == other.SwitchToPollingThreshold
-            && self.SwitchToPollingWindow == other.SwitchToPollingWindow
-            && self.ErrorThreshold == other.ErrorThreshold
-            && self.ErrorThresholdWindow == other.ErrorThresholdWindow
-    }
-}
-impl ::core::cmp::Eq for WHEA_NOTIFICATION_DESCRIPTOR_0_5 {}
-impl FromIntoMemory for WHEA_NOTIFICATION_DESCRIPTOR_0_5 {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 24u32 as usize);
-        let f_PollInterval = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_Vector = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        let f_SwitchToPollingThreshold = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_SwitchToPollingWindow = <u32 as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
-        let f_ErrorThreshold = <u32 as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
-        let f_ErrorThresholdWindow = <u32 as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
-        Self {
-            PollInterval: f_PollInterval,
-            Vector: f_Vector,
-            SwitchToPollingThreshold: f_SwitchToPollingThreshold,
-            SwitchToPollingWindow: f_SwitchToPollingWindow,
-            ErrorThreshold: f_ErrorThreshold,
-            ErrorThresholdWindow: f_ErrorThresholdWindow,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 24u32 as usize);
-        FromIntoMemory::into_bytes(self.PollInterval, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.Vector, &mut into[4..4 + 4]);
-        FromIntoMemory::into_bytes(self.SwitchToPollingThreshold, &mut into[8..8 + 4]);
-        FromIntoMemory::into_bytes(self.SwitchToPollingWindow, &mut into[12..12 + 4]);
-        FromIntoMemory::into_bytes(self.ErrorThreshold, &mut into[16..16 + 4]);
-        FromIntoMemory::into_bytes(self.ErrorThresholdWindow, &mut into[20..20 + 4]);
-    }
-    fn size() -> usize {
-        24u32 as usize
-    }
-}
-pub struct WHEA_NOTIFICATION_DESCRIPTOR_0_6 {
-    pub PollInterval: u32,
-    pub Vector: u32,
-    pub SwitchToPollingThreshold: u32,
-    pub SwitchToPollingWindow: u32,
-    pub ErrorThreshold: u32,
-    pub ErrorThresholdWindow: u32,
-}
-impl ::core::marker::Copy for WHEA_NOTIFICATION_DESCRIPTOR_0_6 {}
-impl ::core::clone::Clone for WHEA_NOTIFICATION_DESCRIPTOR_0_6 {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for WHEA_NOTIFICATION_DESCRIPTOR_0_6 {
-    fn eq(&self, other: &Self) -> bool {
-        self.PollInterval == other.PollInterval
-            && self.Vector == other.Vector
-            && self.SwitchToPollingThreshold == other.SwitchToPollingThreshold
-            && self.SwitchToPollingWindow == other.SwitchToPollingWindow
-            && self.ErrorThreshold == other.ErrorThreshold
-            && self.ErrorThresholdWindow == other.ErrorThresholdWindow
-    }
-}
-impl ::core::cmp::Eq for WHEA_NOTIFICATION_DESCRIPTOR_0_6 {}
-impl FromIntoMemory for WHEA_NOTIFICATION_DESCRIPTOR_0_6 {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 24u32 as usize);
-        let f_PollInterval = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_Vector = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        let f_SwitchToPollingThreshold = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_SwitchToPollingWindow = <u32 as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
-        let f_ErrorThreshold = <u32 as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
-        let f_ErrorThresholdWindow = <u32 as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
-        Self {
-            PollInterval: f_PollInterval,
-            Vector: f_Vector,
-            SwitchToPollingThreshold: f_SwitchToPollingThreshold,
-            SwitchToPollingWindow: f_SwitchToPollingWindow,
-            ErrorThreshold: f_ErrorThreshold,
-            ErrorThresholdWindow: f_ErrorThresholdWindow,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 24u32 as usize);
-        FromIntoMemory::into_bytes(self.PollInterval, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.Vector, &mut into[4..4 + 4]);
-        FromIntoMemory::into_bytes(self.SwitchToPollingThreshold, &mut into[8..8 + 4]);
-        FromIntoMemory::into_bytes(self.SwitchToPollingWindow, &mut into[12..12 + 4]);
-        FromIntoMemory::into_bytes(self.ErrorThreshold, &mut into[16..16 + 4]);
-        FromIntoMemory::into_bytes(self.ErrorThresholdWindow, &mut into[20..20 + 4]);
-    }
-    fn size() -> usize {
-        24u32 as usize
-    }
-}
-pub struct WHEA_NOTIFICATION_DESCRIPTOR_0_7 {
-    pub PollInterval: u32,
-    pub Vector: u32,
-    pub SwitchToPollingThreshold: u32,
-    pub SwitchToPollingWindow: u32,
-    pub ErrorThreshold: u32,
-    pub ErrorThresholdWindow: u32,
-}
-impl ::core::marker::Copy for WHEA_NOTIFICATION_DESCRIPTOR_0_7 {}
-impl ::core::clone::Clone for WHEA_NOTIFICATION_DESCRIPTOR_0_7 {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for WHEA_NOTIFICATION_DESCRIPTOR_0_7 {
-    fn eq(&self, other: &Self) -> bool {
-        self.PollInterval == other.PollInterval
-            && self.Vector == other.Vector
-            && self.SwitchToPollingThreshold == other.SwitchToPollingThreshold
-            && self.SwitchToPollingWindow == other.SwitchToPollingWindow
-            && self.ErrorThreshold == other.ErrorThreshold
-            && self.ErrorThresholdWindow == other.ErrorThresholdWindow
-    }
-}
-impl ::core::cmp::Eq for WHEA_NOTIFICATION_DESCRIPTOR_0_7 {}
-impl FromIntoMemory for WHEA_NOTIFICATION_DESCRIPTOR_0_7 {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 24u32 as usize);
-        let f_PollInterval = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_Vector = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        let f_SwitchToPollingThreshold = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_SwitchToPollingWindow = <u32 as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
-        let f_ErrorThreshold = <u32 as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
-        let f_ErrorThresholdWindow = <u32 as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
-        Self {
-            PollInterval: f_PollInterval,
-            Vector: f_Vector,
-            SwitchToPollingThreshold: f_SwitchToPollingThreshold,
-            SwitchToPollingWindow: f_SwitchToPollingWindow,
-            ErrorThreshold: f_ErrorThreshold,
-            ErrorThresholdWindow: f_ErrorThresholdWindow,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 24u32 as usize);
-        FromIntoMemory::into_bytes(self.PollInterval, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.Vector, &mut into[4..4 + 4]);
-        FromIntoMemory::into_bytes(self.SwitchToPollingThreshold, &mut into[8..8 + 4]);
-        FromIntoMemory::into_bytes(self.SwitchToPollingWindow, &mut into[12..12 + 4]);
-        FromIntoMemory::into_bytes(self.ErrorThreshold, &mut into[16..16 + 4]);
-        FromIntoMemory::into_bytes(self.ErrorThresholdWindow, &mut into[20..20 + 4]);
-    }
-    fn size() -> usize {
-        24u32 as usize
-    }
-}
-pub struct WHEA_NOTIFICATION_FLAGS {
-    pub Anonymous: WHEA_NOTIFICATION_FLAGS_0,
-    pub AsUSHORT: u16,
-}
-impl ::core::marker::Copy for WHEA_NOTIFICATION_FLAGS {}
-impl ::core::clone::Clone for WHEA_NOTIFICATION_FLAGS {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for WHEA_NOTIFICATION_FLAGS {
-    fn eq(&self, other: &Self) -> bool {
-        self.Anonymous == other.Anonymous && self.AsUSHORT == other.AsUSHORT
-    }
-}
-impl ::core::cmp::Eq for WHEA_NOTIFICATION_FLAGS {}
-impl FromIntoMemory for WHEA_NOTIFICATION_FLAGS {
-    fn from_bytes(from: &[u8]) -> Self {
-        todo!()
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        todo!()
-    }
-    fn size() -> usize {
-        todo!()
-    }
-}
-pub struct WHEA_NOTIFICATION_FLAGS_0 {
-    pub _bitfield: u16,
-}
-impl ::core::marker::Copy for WHEA_NOTIFICATION_FLAGS_0 {}
-impl ::core::clone::Clone for WHEA_NOTIFICATION_FLAGS_0 {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for WHEA_NOTIFICATION_FLAGS_0 {
-    fn eq(&self, other: &Self) -> bool {
-        self._bitfield == other._bitfield
-    }
-}
-impl ::core::cmp::Eq for WHEA_NOTIFICATION_FLAGS_0 {}
-impl FromIntoMemory for WHEA_NOTIFICATION_FLAGS_0 {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 2u32 as usize);
-        let f__bitfield = <u16 as FromIntoMemory>::from_bytes(&from[0..0 + 2]);
-        Self {
-            _bitfield: f__bitfield,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 2u32 as usize);
-        FromIntoMemory::into_bytes(self._bitfield, &mut into[0..0 + 2]);
-    }
-    fn size() -> usize {
-        2u32 as usize
-    }
-}
 pub const WHEA_NOTIFICATION_TYPE_ARMV8_SEA: u32 = 8u32;
 pub const WHEA_NOTIFICATION_TYPE_ARMV8_SEI: u32 = 9u32;
 pub const WHEA_NOTIFICATION_TYPE_CMCI: u32 = 5u32;
@@ -32900,334 +33609,13 @@ pub const WHEA_NOTIFICATION_TYPE_POLLED: u32 = 0u32;
 pub const WHEA_NOTIFICATION_TYPE_SCI: u32 = 3u32;
 pub const WHEA_NOTIFICATION_TYPE_SDEI: u32 = 11u32;
 pub const WHEA_NOTIFY_ALL_OFFLINES: u32 = 16u32;
-pub struct WHEA_PCI_SLOT_NUMBER {
-    pub u: WHEA_PCI_SLOT_NUMBER_0,
-}
-impl ::core::marker::Copy for WHEA_PCI_SLOT_NUMBER {}
-impl ::core::clone::Clone for WHEA_PCI_SLOT_NUMBER {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for WHEA_PCI_SLOT_NUMBER {
-    fn eq(&self, other: &Self) -> bool {
-        self.u == other.u
-    }
-}
-impl ::core::cmp::Eq for WHEA_PCI_SLOT_NUMBER {}
-impl FromIntoMemory for WHEA_PCI_SLOT_NUMBER {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 8u32 as usize);
-        let f_u = <WHEA_PCI_SLOT_NUMBER_0 as FromIntoMemory>::from_bytes(&from[0..0 + 8]);
-        Self { u: f_u }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 8u32 as usize);
-        FromIntoMemory::into_bytes(self.u, &mut into[0..0 + 8]);
-    }
-    fn size() -> usize {
-        8u32 as usize
-    }
-}
-pub struct WHEA_PCI_SLOT_NUMBER_0 {
-    pub bits: WHEA_PCI_SLOT_NUMBER_0_0,
-    pub AsULONG: u32,
-}
-impl ::core::marker::Copy for WHEA_PCI_SLOT_NUMBER_0 {}
-impl ::core::clone::Clone for WHEA_PCI_SLOT_NUMBER_0 {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for WHEA_PCI_SLOT_NUMBER_0 {
-    fn eq(&self, other: &Self) -> bool {
-        self.bits == other.bits && self.AsULONG == other.AsULONG
-    }
-}
-impl ::core::cmp::Eq for WHEA_PCI_SLOT_NUMBER_0 {}
-impl FromIntoMemory for WHEA_PCI_SLOT_NUMBER_0 {
-    fn from_bytes(from: &[u8]) -> Self {
-        todo!()
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        todo!()
-    }
-    fn size() -> usize {
-        todo!()
-    }
-}
-pub struct WHEA_PCI_SLOT_NUMBER_0_0 {
-    pub _bitfield: u32,
-}
-impl ::core::marker::Copy for WHEA_PCI_SLOT_NUMBER_0_0 {}
-impl ::core::clone::Clone for WHEA_PCI_SLOT_NUMBER_0_0 {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for WHEA_PCI_SLOT_NUMBER_0_0 {
-    fn eq(&self, other: &Self) -> bool {
-        self._bitfield == other._bitfield
-    }
-}
-impl ::core::cmp::Eq for WHEA_PCI_SLOT_NUMBER_0_0 {}
-impl FromIntoMemory for WHEA_PCI_SLOT_NUMBER_0_0 {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 4u32 as usize);
-        let f__bitfield = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        Self {
-            _bitfield: f__bitfield,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 4u32 as usize);
-        FromIntoMemory::into_bytes(self._bitfield, &mut into[0..0 + 4]);
-    }
-    fn size() -> usize {
-        4u32 as usize
-    }
-}
 pub const WHEA_PENDING_PAGE_LIST_SZ: u32 = 13u32;
 pub const WHEA_RESTORE_CMCI_ATTEMPTS: u32 = 8u32;
 pub const WHEA_RESTORE_CMCI_ENABLED: u32 = 7u32;
 pub const WHEA_RESTORE_CMCI_ERR_LIMIT: u32 = 9u32;
-pub struct WHEA_XPF_CMC_DESCRIPTOR {
-    pub Type: u16,
-    pub Enabled: super::super::super::Foundation::BOOLEAN,
-    pub NumberOfBanks: u8,
-    pub Reserved: u32,
-    pub Notify: WHEA_NOTIFICATION_DESCRIPTOR,
-    pub Banks: [WHEA_XPF_MC_BANK_DESCRIPTOR; 32],
-}
-impl ::core::marker::Copy for WHEA_XPF_CMC_DESCRIPTOR {}
-impl ::core::clone::Clone for WHEA_XPF_CMC_DESCRIPTOR {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for WHEA_XPF_CMC_DESCRIPTOR {
-    fn eq(&self, other: &Self) -> bool {
-        self.Type == other.Type
-            && self.Enabled == other.Enabled
-            && self.NumberOfBanks == other.NumberOfBanks
-            && self.Reserved == other.Reserved
-            && self.Notify == other.Notify
-            && self.Banks == other.Banks
-    }
-}
-impl ::core::cmp::Eq for WHEA_XPF_CMC_DESCRIPTOR {}
-impl FromIntoMemory for WHEA_XPF_CMC_DESCRIPTOR {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 1216u32 as usize);
-        let f_Type = <u16 as FromIntoMemory>::from_bytes(&from[0..0 + 2]);
-        let f_Enabled = <super::super::super::Foundation::BOOLEAN as FromIntoMemory>::from_bytes(
-            &from[2..2 + 1],
-        );
-        let f_NumberOfBanks = <u8 as FromIntoMemory>::from_bytes(&from[3..3 + 1]);
-        let f_Reserved = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        let f_Notify =
-            <WHEA_NOTIFICATION_DESCRIPTOR as FromIntoMemory>::from_bytes(&from[8..8 + 180]);
-        let f_Banks = <[WHEA_XPF_MC_BANK_DESCRIPTOR; 32] as FromIntoMemory>::from_bytes(
-            &from[192..192 + 1024],
-        );
-        Self {
-            Type: f_Type,
-            Enabled: f_Enabled,
-            NumberOfBanks: f_NumberOfBanks,
-            Reserved: f_Reserved,
-            Notify: f_Notify,
-            Banks: f_Banks,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 1216u32 as usize);
-        FromIntoMemory::into_bytes(self.Type, &mut into[0..0 + 2]);
-        FromIntoMemory::into_bytes(self.Enabled, &mut into[2..2 + 1]);
-        FromIntoMemory::into_bytes(self.NumberOfBanks, &mut into[3..3 + 1]);
-        FromIntoMemory::into_bytes(self.Reserved, &mut into[4..4 + 4]);
-        FromIntoMemory::into_bytes(self.Notify, &mut into[8..8 + 180]);
-        FromIntoMemory::into_bytes(self.Banks, &mut into[192..192 + 1024]);
-    }
-    fn size() -> usize {
-        1216u32 as usize
-    }
-}
-pub struct WHEA_XPF_MCE_DESCRIPTOR {
-    pub Type: u16,
-    pub Enabled: u8,
-    pub NumberOfBanks: u8,
-    pub Flags: XPF_MCE_FLAGS,
-    pub MCG_Capability: u64,
-    pub MCG_GlobalControl: u64,
-    pub Banks: [WHEA_XPF_MC_BANK_DESCRIPTOR; 32],
-}
-impl ::core::marker::Copy for WHEA_XPF_MCE_DESCRIPTOR {}
-impl ::core::clone::Clone for WHEA_XPF_MCE_DESCRIPTOR {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for WHEA_XPF_MCE_DESCRIPTOR {
-    fn eq(&self, other: &Self) -> bool {
-        self.Type == other.Type
-            && self.Enabled == other.Enabled
-            && self.NumberOfBanks == other.NumberOfBanks
-            && self.Flags == other.Flags
-            && self.MCG_Capability == other.MCG_Capability
-            && self.MCG_GlobalControl == other.MCG_GlobalControl
-            && self.Banks == other.Banks
-    }
-}
-impl ::core::cmp::Eq for WHEA_XPF_MCE_DESCRIPTOR {}
-impl FromIntoMemory for WHEA_XPF_MCE_DESCRIPTOR {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 1056u32 as usize);
-        let f_Type = <u16 as FromIntoMemory>::from_bytes(&from[0..0 + 2]);
-        let f_Enabled = <u8 as FromIntoMemory>::from_bytes(&from[2..2 + 1]);
-        let f_NumberOfBanks = <u8 as FromIntoMemory>::from_bytes(&from[3..3 + 1]);
-        let f_Flags = <XPF_MCE_FLAGS as FromIntoMemory>::from_bytes(&from[4..4 + 8]);
-        let f_MCG_Capability = <u64 as FromIntoMemory>::from_bytes(&from[16..16 + 8]);
-        let f_MCG_GlobalControl = <u64 as FromIntoMemory>::from_bytes(&from[24..24 + 8]);
-        let f_Banks =
-            <[WHEA_XPF_MC_BANK_DESCRIPTOR; 32] as FromIntoMemory>::from_bytes(&from[32..32 + 1024]);
-        Self {
-            Type: f_Type,
-            Enabled: f_Enabled,
-            NumberOfBanks: f_NumberOfBanks,
-            Flags: f_Flags,
-            MCG_Capability: f_MCG_Capability,
-            MCG_GlobalControl: f_MCG_GlobalControl,
-            Banks: f_Banks,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 1056u32 as usize);
-        FromIntoMemory::into_bytes(self.Type, &mut into[0..0 + 2]);
-        FromIntoMemory::into_bytes(self.Enabled, &mut into[2..2 + 1]);
-        FromIntoMemory::into_bytes(self.NumberOfBanks, &mut into[3..3 + 1]);
-        FromIntoMemory::into_bytes(self.Flags, &mut into[4..4 + 8]);
-        FromIntoMemory::into_bytes(self.MCG_Capability, &mut into[16..16 + 8]);
-        FromIntoMemory::into_bytes(self.MCG_GlobalControl, &mut into[24..24 + 8]);
-        FromIntoMemory::into_bytes(self.Banks, &mut into[32..32 + 1024]);
-    }
-    fn size() -> usize {
-        1056u32 as usize
-    }
-}
-pub struct WHEA_XPF_MC_BANK_DESCRIPTOR {
-    pub BankNumber: u8,
-    pub ClearOnInitialization: super::super::super::Foundation::BOOLEAN,
-    pub StatusDataFormat: u8,
-    pub Flags: XPF_MC_BANK_FLAGS,
-    pub ControlMsr: u32,
-    pub StatusMsr: u32,
-    pub AddressMsr: u32,
-    pub MiscMsr: u32,
-    pub ControlData: u64,
-}
-impl ::core::marker::Copy for WHEA_XPF_MC_BANK_DESCRIPTOR {}
-impl ::core::clone::Clone for WHEA_XPF_MC_BANK_DESCRIPTOR {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for WHEA_XPF_MC_BANK_DESCRIPTOR {
-    fn eq(&self, other: &Self) -> bool {
-        self.BankNumber == other.BankNumber
-            && self.ClearOnInitialization == other.ClearOnInitialization
-            && self.StatusDataFormat == other.StatusDataFormat
-            && self.Flags == other.Flags
-            && self.ControlMsr == other.ControlMsr
-            && self.StatusMsr == other.StatusMsr
-            && self.AddressMsr == other.AddressMsr
-            && self.MiscMsr == other.MiscMsr
-            && self.ControlData == other.ControlData
-    }
-}
-impl ::core::cmp::Eq for WHEA_XPF_MC_BANK_DESCRIPTOR {}
-impl FromIntoMemory for WHEA_XPF_MC_BANK_DESCRIPTOR {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 32u32 as usize);
-        let f_BankNumber = <u8 as FromIntoMemory>::from_bytes(&from[0..0 + 1]);
-        let f_ClearOnInitialization =
-            <super::super::super::Foundation::BOOLEAN as FromIntoMemory>::from_bytes(
-                &from[1..1 + 1],
-            );
-        let f_StatusDataFormat = <u8 as FromIntoMemory>::from_bytes(&from[2..2 + 1]);
-        let f_Flags = <XPF_MC_BANK_FLAGS as FromIntoMemory>::from_bytes(&from[3..3 + 2]);
-        let f_ControlMsr = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_StatusMsr = <u32 as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
-        let f_AddressMsr = <u32 as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
-        let f_MiscMsr = <u32 as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
-        let f_ControlData = <u64 as FromIntoMemory>::from_bytes(&from[24..24 + 8]);
-        Self {
-            BankNumber: f_BankNumber,
-            ClearOnInitialization: f_ClearOnInitialization,
-            StatusDataFormat: f_StatusDataFormat,
-            Flags: f_Flags,
-            ControlMsr: f_ControlMsr,
-            StatusMsr: f_StatusMsr,
-            AddressMsr: f_AddressMsr,
-            MiscMsr: f_MiscMsr,
-            ControlData: f_ControlData,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 32u32 as usize);
-        FromIntoMemory::into_bytes(self.BankNumber, &mut into[0..0 + 1]);
-        FromIntoMemory::into_bytes(self.ClearOnInitialization, &mut into[1..1 + 1]);
-        FromIntoMemory::into_bytes(self.StatusDataFormat, &mut into[2..2 + 1]);
-        FromIntoMemory::into_bytes(self.Flags, &mut into[3..3 + 2]);
-        FromIntoMemory::into_bytes(self.ControlMsr, &mut into[8..8 + 4]);
-        FromIntoMemory::into_bytes(self.StatusMsr, &mut into[12..12 + 4]);
-        FromIntoMemory::into_bytes(self.AddressMsr, &mut into[16..16 + 4]);
-        FromIntoMemory::into_bytes(self.MiscMsr, &mut into[20..20 + 4]);
-        FromIntoMemory::into_bytes(self.ControlData, &mut into[24..24 + 8]);
-    }
-    fn size() -> usize {
-        32u32 as usize
-    }
-}
 pub const WHEA_XPF_MC_BANK_STATUSFORMAT_AMD64MCA: u32 = 2u32;
 pub const WHEA_XPF_MC_BANK_STATUSFORMAT_IA32MCA: u32 = 0u32;
 pub const WHEA_XPF_MC_BANK_STATUSFORMAT_Intel64MCA: u32 = 1u32;
-pub struct WHEA_XPF_NMI_DESCRIPTOR {
-    pub Type: u16,
-    pub Enabled: super::super::super::Foundation::BOOLEAN,
-}
-impl ::core::marker::Copy for WHEA_XPF_NMI_DESCRIPTOR {}
-impl ::core::clone::Clone for WHEA_XPF_NMI_DESCRIPTOR {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for WHEA_XPF_NMI_DESCRIPTOR {
-    fn eq(&self, other: &Self) -> bool {
-        self.Type == other.Type && self.Enabled == other.Enabled
-    }
-}
-impl ::core::cmp::Eq for WHEA_XPF_NMI_DESCRIPTOR {}
-impl FromIntoMemory for WHEA_XPF_NMI_DESCRIPTOR {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 4u32 as usize);
-        let f_Type = <u16 as FromIntoMemory>::from_bytes(&from[0..0 + 2]);
-        let f_Enabled = <super::super::super::Foundation::BOOLEAN as FromIntoMemory>::from_bytes(
-            &from[2..2 + 1],
-        );
-        Self {
-            Type: f_Type,
-            Enabled: f_Enabled,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 4u32 as usize);
-        FromIntoMemory::into_bytes(self.Type, &mut into[0..0 + 2]);
-        FromIntoMemory::into_bytes(self.Enabled, &mut into[2..2 + 1]);
-    }
-    fn size() -> usize {
-        4u32 as usize
-    }
-}
 pub struct WINDBG_EXTENSION_APIS {
     pub nSize: u32,
     pub lpOutputRoutine: PWINDBG_OUTPUT_ROUTINE,
@@ -34246,129 +34634,6 @@ impl FromIntoMemory for WOW64_LDT_ENTRY_0_1 {
 }
 pub const WOW64_MAXIMUM_SUPPORTED_EXTENSION: u32 = 512u32;
 pub const WOW64_SIZE_OF_80387_REGISTERS: u32 = 80u32;
-pub struct XPF_MCE_FLAGS {
-    pub Anonymous: XPF_MCE_FLAGS_0,
-    pub AsULONG: u32,
-}
-impl ::core::marker::Copy for XPF_MCE_FLAGS {}
-impl ::core::clone::Clone for XPF_MCE_FLAGS {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for XPF_MCE_FLAGS {
-    fn eq(&self, other: &Self) -> bool {
-        self.Anonymous == other.Anonymous && self.AsULONG == other.AsULONG
-    }
-}
-impl ::core::cmp::Eq for XPF_MCE_FLAGS {}
-impl FromIntoMemory for XPF_MCE_FLAGS {
-    fn from_bytes(from: &[u8]) -> Self {
-        todo!()
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        todo!()
-    }
-    fn size() -> usize {
-        todo!()
-    }
-}
-pub struct XPF_MCE_FLAGS_0 {
-    pub _bitfield: u32,
-}
-impl ::core::marker::Copy for XPF_MCE_FLAGS_0 {}
-impl ::core::clone::Clone for XPF_MCE_FLAGS_0 {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for XPF_MCE_FLAGS_0 {
-    fn eq(&self, other: &Self) -> bool {
-        self._bitfield == other._bitfield
-    }
-}
-impl ::core::cmp::Eq for XPF_MCE_FLAGS_0 {}
-impl FromIntoMemory for XPF_MCE_FLAGS_0 {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 4u32 as usize);
-        let f__bitfield = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        Self {
-            _bitfield: f__bitfield,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 4u32 as usize);
-        FromIntoMemory::into_bytes(self._bitfield, &mut into[0..0 + 4]);
-    }
-    fn size() -> usize {
-        4u32 as usize
-    }
-}
-pub struct XPF_MC_BANK_FLAGS {
-    pub Anonymous: XPF_MC_BANK_FLAGS_0,
-    pub AsUCHAR: u8,
-}
-impl ::core::marker::Copy for XPF_MC_BANK_FLAGS {}
-impl ::core::clone::Clone for XPF_MC_BANK_FLAGS {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for XPF_MC_BANK_FLAGS {
-    fn eq(&self, other: &Self) -> bool {
-        self.Anonymous == other.Anonymous && self.AsUCHAR == other.AsUCHAR
-    }
-}
-impl ::core::cmp::Eq for XPF_MC_BANK_FLAGS {}
-impl FromIntoMemory for XPF_MC_BANK_FLAGS {
-    fn from_bytes(from: &[u8]) -> Self {
-        todo!()
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        todo!()
-    }
-    fn size() -> usize {
-        todo!()
-    }
-}
-pub struct XPF_MC_BANK_FLAGS_0 {
-    pub _bitfield: u8,
-}
-impl ::core::marker::Copy for XPF_MC_BANK_FLAGS_0 {}
-impl ::core::clone::Clone for XPF_MC_BANK_FLAGS_0 {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::fmt::Debug for XPF_MC_BANK_FLAGS_0 {
-    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
-        f.debug_struct("XPF_MC_BANK_FLAGS_0")
-            .field("_bitfield", &self._bitfield)
-            .finish()
-    }
-}
-impl ::core::cmp::PartialEq for XPF_MC_BANK_FLAGS_0 {
-    fn eq(&self, other: &Self) -> bool {
-        self._bitfield == other._bitfield
-    }
-}
-impl ::core::cmp::Eq for XPF_MC_BANK_FLAGS_0 {}
-impl FromIntoMemory for XPF_MC_BANK_FLAGS_0 {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 1u32 as usize);
-        let f__bitfield = <u8 as FromIntoMemory>::from_bytes(&from[0..0 + 1]);
-        Self {
-            _bitfield: f__bitfield,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 1u32 as usize);
-        FromIntoMemory::into_bytes(self._bitfield, &mut into[0..0 + 1]);
-    }
-    fn size() -> usize {
-        1u32 as usize
-    }
-}
 pub struct XSAVE_AREA {
     pub LegacyState: XSAVE_FORMAT,
     pub Header: XSAVE_AREA_HEADER,
@@ -34892,52 +35157,6 @@ impl FromIntoMemory for XSTATE_CONFIGURATION_0_0 {
     }
     fn size() -> usize {
         4u32 as usize
-    }
-}
-pub struct XSTATE_CONFIG_FEATURE_MSC_INFO {
-    pub SizeOfInfo: u32,
-    pub ContextSize: u32,
-    pub EnabledFeatures: u64,
-    pub Features: [XSTATE_FEATURE; 64],
-}
-impl ::core::marker::Copy for XSTATE_CONFIG_FEATURE_MSC_INFO {}
-impl ::core::clone::Clone for XSTATE_CONFIG_FEATURE_MSC_INFO {
-    fn clone(&self) -> Self {
-        *self
-    }
-}
-impl ::core::cmp::PartialEq for XSTATE_CONFIG_FEATURE_MSC_INFO {
-    fn eq(&self, other: &Self) -> bool {
-        self.SizeOfInfo == other.SizeOfInfo
-            && self.ContextSize == other.ContextSize
-            && self.EnabledFeatures == other.EnabledFeatures
-            && self.Features == other.Features
-    }
-}
-impl ::core::cmp::Eq for XSTATE_CONFIG_FEATURE_MSC_INFO {}
-impl FromIntoMemory for XSTATE_CONFIG_FEATURE_MSC_INFO {
-    fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 528u32 as usize);
-        let f_SizeOfInfo = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_ContextSize = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        let f_EnabledFeatures = <u64 as FromIntoMemory>::from_bytes(&from[8..8 + 8]);
-        let f_Features = <[XSTATE_FEATURE; 64] as FromIntoMemory>::from_bytes(&from[16..16 + 512]);
-        Self {
-            SizeOfInfo: f_SizeOfInfo,
-            ContextSize: f_ContextSize,
-            EnabledFeatures: f_EnabledFeatures,
-            Features: f_Features,
-        }
-    }
-    fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 528u32 as usize);
-        FromIntoMemory::into_bytes(self.SizeOfInfo, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.ContextSize, &mut into[4..4 + 4]);
-        FromIntoMemory::into_bytes(self.EnabledFeatures, &mut into[8..8 + 8]);
-        FromIntoMemory::into_bytes(self.Features, &mut into[16..16 + 512]);
-    }
-    fn size() -> usize {
-        528u32 as usize
     }
 }
 #[doc = "*Required namespaces: *"]
