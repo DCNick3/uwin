@@ -211,6 +211,10 @@ fn main_impl() {
         io_dispatcher: IoDispatcher::new(handle_table.clone()),
     }) as Arc<dyn win32::Win32::Storage::FileSystem::Api>);
 
+    context.win32.insert(Arc::new(DirectDraw {
+        process_ctx: process_ctx.clone(),
+    }) as Arc<dyn win32::Win32::Graphics::DirectDraw::Api>);
+
     // =======
 
     panic_control::chain_hook_ignoring::<UnwindReason>();

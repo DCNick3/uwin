@@ -128,7 +128,7 @@ impl PeFile {
 // TODO: populate this list
 lazy_static! {
     static ref STUBBUABLE_DLLS: HashSet<&'static str> =
-        HashSet::from(["kernel32.dll", "user32.dll"]);
+        HashSet::from(["kernel32.dll", "user32.dll", "ddraw.dll"]);
 }
 
 #[derive(Serialize, Deserialize)]

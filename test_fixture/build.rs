@@ -16,7 +16,8 @@ fn main() {
             // "hello_console.exe"
             // "cf1031B.exe"
             // "weird_repro.exe"
-            "window_init.exe",
+            // "window_init.exe",
+            "dd_init.exe",
         ),
         vec![PathBuf::from("simple_dll.dll")],
     );

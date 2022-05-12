@@ -12,10 +12,12 @@ use std::sync::{Arc, Mutex};
 use std::thread;
 use tracing::{info, trace, warn};
 use win32::core::prelude::{PCSTR, PSTR};
+use win32::core::{IUnknown, GUID, HRESULT};
 use win32::Win32::Foundation::{
     BOOL, HANDLE, HINSTANCE, HWND, INVALID_HANDLE_VALUE, LPARAM, LRESULT, WPARAM,
 };
 use win32::Win32::Globalization::CPINFO;
+use win32::Win32::Graphics::DirectDraw::IDirectDraw;
 use win32::Win32::System::Console::{
     STD_ERROR_HANDLE, STD_HANDLE, STD_INPUT_HANDLE, STD_OUTPUT_HANDLE,
 };
@@ -26,8 +28,8 @@ use win32::Win32::System::Threading::STARTUPINFOA;
 use win32::Win32::System::IO::OVERLAPPED;
 use win32::Win32::UI::WindowsAndMessaging::{
     CREATESTRUCTA, HCURSOR, HICON, HMENU, MESSAGEBOX_RESULT, MESSAGEBOX_STYLE, MSG,
-    SHOW_WINDOW_CMD, WINDOW_EX_STYLE, WINDOW_STYLE, WM_CREATE, WM_MOUSEMOVE, WM_NCCREATE, WM_QUIT,
-    WNDCLASSA,
+    SHOW_WINDOW_CMD, SM_CXSCREEN, SM_CYSCREEN, SYSTEM_METRICS_INDEX, WINDOW_EX_STYLE, WINDOW_STYLE,
+    WM_CREATE, WM_MOUSEMOVE, WM_NCCREATE, WM_QUIT, WNDCLASSA,
 };
 use win32_heapmgr::HeapMgr;
 use win32_io::IoDispatcher;
@@ -208,6 +210,17 @@ impl win32::Win32::UI::WindowsAndMessaging::Api for WindowsAndMessaging {
         lp_msg.write_with(memory, msg);
 
         (msg.message != WM_QUIT).into()
+    }
+
+    fn GetSystemMetrics(&self, n_index: SYSTEM_METRICS_INDEX) -> i32 {
+        // TODO: these are clearly stubs
+        if n_index == SM_CXSCREEN {
+            800
+        } else if n_index == SM_CYSCREEN {
+            600
+        } else {
+            todo!("GetSystemMetrics({:?})", n_index)
+        }
     }
 
     fn LoadCursorA(&self, _h_instance: HINSTANCE, _lp_cursor_name: PCSTR) -> HCURSOR {
@@ -580,5 +593,26 @@ impl win32::Win32::Storage::FileSystem::Api for FileSystem {
         lp_number_of_bytes_written.write_with(ctx, written);
 
         ok.into()
+    }
+}
+
+pub struct DirectDraw {
+    pub process_ctx: ProcessContext,
+}
+
+#[allow(non_snake_case)]
+impl win32::Win32::Graphics::DirectDraw::Api for DirectDraw {
+    fn DirectDrawCreate(
+        &self,
+        lp_guid: MutPtr<GUID>,
+        _lplp_dd: MutPtr<IDirectDraw>,
+        p_unk_outer: IUnknown,
+    ) -> HRESULT {
+        let ctx = self.process_ctx.memory_ctx;
+
+        assert_eq!(lp_guid, MutPtr::null());
+        assert_eq!(p_unk_outer.raw_ptr(), 0);
+
+        todo!()
     }
 }

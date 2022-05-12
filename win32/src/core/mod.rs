@@ -54,6 +54,13 @@ impl GUID {
             data4: (uuid as u64).to_be_bytes(),
         }
     }
+
+    pub fn into_u128(self) -> u128 {
+        u64::from_be_bytes(self.data4) as u128
+            | ((self.data3 as u128) << 64)
+            | ((self.data2 as u128) << 80)
+            | ((self.data1 as u128) << 96)
+    }
 }
 
 impl core::fmt::Debug for GUID {
@@ -78,15 +85,15 @@ impl core::fmt::Debug for GUID {
 
 impl FromIntoMemory for GUID {
     fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+        GUID::from_u128(u128::from_bytes(from))
     }
 
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        self.into_u128().into_bytes(into)
     }
 
     fn size() -> usize {
-        todo!()
+        u128::size()
     }
 }
 
@@ -116,7 +123,7 @@ impl Win32Context {
     where
         Arc<T>: IntoBox<dyn Any>,
     {
-        if !self.0.insert(value).is_none() {
+        if self.0.insert(value).is_some() {
             panic!(
                 "Multiple Api implementations registered for {}",
                 std::any::type_name::<T>()
@@ -145,6 +152,12 @@ impl Debug for InterfacePtr {
 #[derive(Debug, Eq, PartialEq, Copy, Clone)]
 pub struct IUnknown(InterfacePtr);
 
+impl IUnknown {
+    pub fn raw_ptr(&self) -> PtrRepr {
+        self.0 .0
+    }
+}
+
 const IID_IUnknown: IID = IID::from_u128(0x00000000_0000_0000_c000_000000000046);
 
 impl ComInterface for IUnknown {
@@ -162,5 +175,16 @@ impl FromIntoMemory for IUnknown {
 
     fn size() -> usize {
         PtrRepr::size()
+    }
+}
+
+#[cfg(test)]
+mod test {
+    use crate::core::GUID;
+
+    #[test]
+    fn guid_u128_roundtrip() {
+        let v = 0x1234567890135791;
+        assert_eq!(GUID::from_u128(v).into_u128(), v);
     }
 }
