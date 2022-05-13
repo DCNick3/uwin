@@ -1,14 +1,14 @@
 use crate::ProcessContext;
 use core_mem::ptr::MutPtr;
-use win32::core::{IUnknown, GUID, HRESULT};
-use win32::Win32::Graphics::DirectDraw::IDirectDraw;
+use win32::core::{IUnknown, IUnknown_Trait, GUID, HRESULT};
+use win32::Win32::Graphics::DirectDraw::{IDirectDraw, IDirectDraw_Trait};
 
-pub struct DirectDraw {
+pub struct DirectDrawApi {
     pub process_ctx: ProcessContext,
 }
 
 #[allow(non_snake_case)]
-impl win32::Win32::Graphics::DirectDraw::Api for DirectDraw {
+impl win32::Win32::Graphics::DirectDraw::Api for DirectDrawApi {
     fn DirectDrawCreate(
         &self,
         lp_guid: MutPtr<GUID>,
@@ -23,3 +23,9 @@ impl win32::Win32::Graphics::DirectDraw::Api for DirectDraw {
         todo!()
     }
 }
+
+struct DirectDrawCls {}
+
+impl IUnknown_Trait for DirectDrawCls {}
+
+impl IDirectDraw_Trait for DirectDrawCls {}

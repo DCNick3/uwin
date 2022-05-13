@@ -21,6 +21,7 @@ enum MyEvent {
 struct WindowContextImpl {
     pub hwnd: PtrRepr,
     pub message_queue: Sender,
+    #[allow(unused)]
     pub winit_window: winit::window::Window,
 }
 
@@ -131,6 +132,7 @@ pub struct WindowCreation {
 }
 
 pub struct WindowsContext {
+    #[allow(unused)]
     event_thread: JoinHandle<()>,
     proxy: EventLoopProxy<MyEvent>,
 }

@@ -5,7 +5,6 @@ use anymap::AnyMap;
 use core_mem::from_into_mem_impl_for_wrapper;
 #[allow(unused)]
 use prelude::*;
-use std::ffi::c_void;
 use std::fmt::{Debug, Formatter};
 use std::sync::Arc;
 
@@ -160,9 +159,10 @@ impl IUnknown {
 }
 
 pub trait IUnknown_Trait {
-    fn QueryInterface(&self, riid: ConstPtr<GUID>, ppvObject: MutPtr<MutPtr<c_void>>) -> HRESULT;
-    fn AddRef(&self) -> u32;
-    fn Release(&self) -> u32;
+    // these should be generated as they work with quite the low level stuff. Probably should be left in the thunks...
+    // fn QueryInterface(&self, riid: ConstPtr<GUID>, ppvObject: MutPtr<MutPtr<c_void>>) -> HRESULT;
+    // fn AddRef(&self) -> u32;
+    // fn Release(&self) -> u32;
 }
 
 const IID_IUnknown: IID = IID::from_u128(0x00000000_0000_0000_c000_000000000046);

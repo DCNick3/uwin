@@ -15,6 +15,7 @@ pub struct WindowClass {
 
 pub struct Window {
     class: Arc<WindowClass>,
+    #[allow(unused)]
     wndproc_argument: PtrRepr,
 }
 

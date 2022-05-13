@@ -25,7 +25,7 @@ use win32::Win32::System::SystemServices::DLL_PROCESS_ATTACH;
 use win32_atoms::AtomTable;
 use win32_heapmgr::HeapMgr;
 use win32_impl::{
-    Console, DirectDraw, Environment, FileSystem, Gdi, Globalization, LibraryLoader, Memory,
+    Console, DirectDrawApi, Environment, FileSystem, Gdi, Globalization, LibraryLoader, Memory,
     ProcessContext, SystemInformation, Threading, WindowsAndMessaging, WindowsProgramming,
 };
 use win32_io::IoDispatcher;
@@ -212,7 +212,7 @@ fn main_impl() {
         io_dispatcher: IoDispatcher::new(handle_table.clone()),
     }) as Arc<dyn win32::Win32::Storage::FileSystem::Api>);
 
-    context.win32.insert(Arc::new(DirectDraw {
+    context.win32.insert(Arc::new(DirectDrawApi {
         process_ctx: process_ctx.clone(),
     }) as Arc<dyn win32::Win32::Graphics::DirectDraw::Api>);
 
