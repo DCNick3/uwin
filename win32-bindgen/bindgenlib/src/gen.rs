@@ -1,13 +1,11 @@
 use super::*;
-use std::collections::HashSet;
 
-#[derive(Default)]
 pub struct Gen<'a> {
-    pub enabled_namespaces: &'a [&'a str],
-    pub excluded_items: HashSet<&'a str>,
-    pub excluded_libraries: HashSet<&'a str>,
-    pub unwindable_functions: HashSet<&'a str>,
-    pub callbacking_functions: HashSet<&'a str>,
+    pub included_namespaces: &'a BTreeSet<String>,
+    pub excluded_items: &'a BTreeSet<String>,
+    pub excluded_libraries: &'a BTreeSet<String>,
+    pub unwindable_functions: &'a BTreeSet<String>,
+    pub callbacking_functions: &'a BTreeSet<String>,
     pub namespace: &'a str,
     pub sys: bool,
     pub flatten: bool,
@@ -59,8 +57,10 @@ impl Gen<'_> {
         let features = cfg.features(self.namespace);
 
         let arch_enabled = arches.is_empty() || arches.contains("x86");
-        let features_enabled =
-            features.is_empty() || features.iter().all(|f| self.enabled_namespaces.contains(f));
+        let features_enabled = features.is_empty()
+            || features
+                .iter()
+                .all(|&f| self.included_namespaces.contains(f));
 
         arch_enabled && features_enabled
     }

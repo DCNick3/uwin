@@ -11,3 +11,5 @@ metadata = { package = "windows-metadata", path = "../metadata", version = "0.32
 win32-bindgenlib = { package = "win32-bindgenlib", path = "../bindgenlib", version = "0.0.1" }
 
 rayon = "1.5.1"
+serde = { version = "1.0.137", features = ["derive"] }
+serde_yaml = "0.8.24"
