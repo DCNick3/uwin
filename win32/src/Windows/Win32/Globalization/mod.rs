@@ -1460,6 +1460,11 @@ impl FromIntoMemory for IComprehensiveSpellCheckProvider {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IComprehensiveSpellCheckProvider {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x0c58f8de_8e94_479e_9717_70c42c4ad2c3);
+}
 pub const IDN_ALLOW_UNASSIGNED: u32 = 1u32;
 pub const IDN_EMAIL_ADDRESS: u32 = 4u32;
 pub const IDN_RAW_PUNYCODE: u32 = 8u32;
@@ -1493,6 +1498,11 @@ impl FromIntoMemory for IEnumCodePage {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IEnumCodePage {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x275c23e3_3747_11d0_9fea_00aa003f8646);
+}
 pub struct IEnumRfc1766(crate::core::IUnknown);
 impl ::core::clone::Clone for IEnumRfc1766 {
     fn clone(&self) -> Self {
@@ -1521,6 +1531,11 @@ impl FromIntoMemory for IEnumRfc1766 {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IEnumRfc1766 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x3dc39d1d_c030_11d0_b81b_00c04fc9b31f);
 }
 pub struct IEnumScript(crate::core::IUnknown);
 impl ::core::clone::Clone for IEnumScript {
@@ -1551,6 +1566,11 @@ impl FromIntoMemory for IEnumScript {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IEnumScript {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xae5f1430_388b_11d2_8380_00c04f8f5da1);
+}
 pub struct IEnumSpellingError(crate::core::IUnknown);
 impl ::core::clone::Clone for IEnumSpellingError {
     fn clone(&self) -> Self {
@@ -1579,6 +1599,11 @@ impl FromIntoMemory for IEnumSpellingError {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IEnumSpellingError {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x803e3bd4_2828_4410_8290_418d1d73c762);
 }
 pub const IME_CMODE_ALPHANUMERIC: u32 = 0u32;
 pub const IME_CMODE_CHARCODE: u32 = 32u32;
@@ -1621,6 +1646,11 @@ impl FromIntoMemory for IMLangCodePages {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IMLangCodePages {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x359f3443_bd4a_11d0_b188_00aa0038c969);
+}
 pub struct IMLangConvertCharset(crate::core::IUnknown);
 impl ::core::clone::Clone for IMLangConvertCharset {
     fn clone(&self) -> Self {
@@ -1652,6 +1682,11 @@ impl FromIntoMemory for IMLangConvertCharset {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IMLangConvertCharset {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xd66d6f98_cdaa_11d0_b822_00c04fc9b31f);
+}
 pub struct IMLangFontLink(crate::core::IUnknown);
 impl ::core::clone::Clone for IMLangFontLink {
     fn clone(&self) -> Self {
@@ -1681,6 +1716,11 @@ impl FromIntoMemory for IMLangFontLink {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IMLangFontLink {
+    type Super = IMLangCodePages;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x359f3441_bd4a_11d0_b188_00aa0038c969);
+}
 pub struct IMLangFontLink2(crate::core::IUnknown);
 impl ::core::clone::Clone for IMLangFontLink2 {
     fn clone(&self) -> Self {
@@ -1709,6 +1749,11 @@ impl FromIntoMemory for IMLangFontLink2 {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IMLangFontLink2 {
+    type Super = IMLangCodePages;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xdccfc162_2b38_11d2_b7ec_00c04f8f5d9a);
 }
 pub struct IMLangLineBreakConsole(crate::core::IUnknown);
 impl ::core::clone::Clone for IMLangLineBreakConsole {
@@ -1741,6 +1786,11 @@ impl FromIntoMemory for IMLangLineBreakConsole {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IMLangLineBreakConsole {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xf5be2ee1_bfd7_11d0_b188_00aa0038c969);
+}
 pub struct IMLangString(crate::core::IUnknown);
 impl ::core::clone::Clone for IMLangString {
     fn clone(&self) -> Self {
@@ -1769,6 +1819,11 @@ impl FromIntoMemory for IMLangString {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IMLangString {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xc04d65ce_b70d_11d0_b188_00aa0038c969);
 }
 pub struct IMLangStringAStr(crate::core::IUnknown);
 impl ::core::clone::Clone for IMLangStringAStr {
@@ -1799,6 +1854,11 @@ impl FromIntoMemory for IMLangStringAStr {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IMLangStringAStr {
+    type Super = IMLangString;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xc04d65d2_b70d_11d0_b188_00aa0038c969);
+}
 pub struct IMLangStringBufA(crate::core::IUnknown);
 impl ::core::clone::Clone for IMLangStringBufA {
     fn clone(&self) -> Self {
@@ -1827,6 +1887,11 @@ impl FromIntoMemory for IMLangStringBufA {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IMLangStringBufA {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xd24acd23_ba72_11d0_b188_00aa0038c969);
 }
 pub struct IMLangStringBufW(crate::core::IUnknown);
 impl ::core::clone::Clone for IMLangStringBufW {
@@ -1857,6 +1922,11 @@ impl FromIntoMemory for IMLangStringBufW {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IMLangStringBufW {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xd24acd21_ba72_11d0_b188_00aa0038c969);
+}
 pub struct IMLangStringWStr(crate::core::IUnknown);
 impl ::core::clone::Clone for IMLangStringWStr {
     fn clone(&self) -> Self {
@@ -1885,6 +1955,11 @@ impl FromIntoMemory for IMLangStringWStr {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IMLangStringWStr {
+    type Super = IMLangString;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xc04d65d0_b70d_11d0_b188_00aa0038c969);
 }
 pub struct IMultiLanguage(crate::core::IUnknown);
 impl ::core::clone::Clone for IMultiLanguage {
@@ -1915,6 +1990,11 @@ impl FromIntoMemory for IMultiLanguage {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IMultiLanguage {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x275c23e1_3747_11d0_9fea_00aa003f8646);
+}
 pub struct IMultiLanguage2(crate::core::IUnknown);
 impl ::core::clone::Clone for IMultiLanguage2 {
     fn clone(&self) -> Self {
@@ -1943,6 +2023,11 @@ impl FromIntoMemory for IMultiLanguage2 {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IMultiLanguage2 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xdccfc164_2b38_11d2_b7ec_00c04f8f5d9a);
 }
 pub struct IMultiLanguage3(crate::core::IUnknown);
 impl ::core::clone::Clone for IMultiLanguage3 {
@@ -1973,6 +2058,11 @@ impl FromIntoMemory for IMultiLanguage3 {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IMultiLanguage3 {
+    type Super = IMultiLanguage2;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x4e5868ab_b157_4623_9acc_6a1d9caebe04);
+}
 pub struct IOptionDescription(crate::core::IUnknown);
 impl ::core::clone::Clone for IOptionDescription {
     fn clone(&self) -> Self {
@@ -2001,6 +2091,11 @@ impl FromIntoMemory for IOptionDescription {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IOptionDescription {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x432e5f85_35cf_4606_a801_6f70277e1d7a);
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct IS_TEXT_UNICODE_RESULT(pub u32);
@@ -2141,6 +2236,11 @@ impl FromIntoMemory for ISpellCheckProvider {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for ISpellCheckProvider {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x73e976e0_8ed4_4eb1_80d7_1be0a16b0c38);
+}
 pub struct ISpellCheckProviderFactory(crate::core::IUnknown);
 impl ::core::clone::Clone for ISpellCheckProviderFactory {
     fn clone(&self) -> Self {
@@ -2172,6 +2272,11 @@ impl FromIntoMemory for ISpellCheckProviderFactory {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for ISpellCheckProviderFactory {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x9f671e11_77d6_4c92_aefb_615215e3a4be);
+}
 pub struct ISpellChecker(crate::core::IUnknown);
 impl ::core::clone::Clone for ISpellChecker {
     fn clone(&self) -> Self {
@@ -2201,6 +2306,11 @@ impl FromIntoMemory for ISpellChecker {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for ISpellChecker {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xb6fd0b71_e2bc_4653_8d05_f197e412770b);
+}
 pub struct ISpellChecker2(crate::core::IUnknown);
 impl ::core::clone::Clone for ISpellChecker2 {
     fn clone(&self) -> Self {
@@ -2229,6 +2339,11 @@ impl FromIntoMemory for ISpellChecker2 {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for ISpellChecker2 {
+    type Super = ISpellChecker;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xe7ed1c71_87f7_4378_a840_c9200dacee47);
 }
 pub struct ISpellCheckerChangedEventHandler(crate::core::IUnknown);
 impl ::core::clone::Clone for ISpellCheckerChangedEventHandler {
@@ -2261,6 +2376,11 @@ impl FromIntoMemory for ISpellCheckerChangedEventHandler {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for ISpellCheckerChangedEventHandler {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x0b83a5b0_792f_4eab_9799_acf52c5ed08a);
+}
 pub struct ISpellCheckerFactory(crate::core::IUnknown);
 impl ::core::clone::Clone for ISpellCheckerFactory {
     fn clone(&self) -> Self {
@@ -2292,6 +2412,11 @@ impl FromIntoMemory for ISpellCheckerFactory {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for ISpellCheckerFactory {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x8e018a9d_2415_4677_bf08_794ea61f94bb);
+}
 pub struct ISpellingError(crate::core::IUnknown);
 impl ::core::clone::Clone for ISpellingError {
     fn clone(&self) -> Self {
@@ -2320,6 +2445,11 @@ impl FromIntoMemory for ISpellingError {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for ISpellingError {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xb7c82d61_fbe8_4b47_9b27_6c0d2e0de0a3);
 }
 pub struct IUserDictionariesRegistrar(crate::core::IUnknown);
 impl ::core::clone::Clone for IUserDictionariesRegistrar {
@@ -2351,6 +2481,11 @@ impl FromIntoMemory for IUserDictionariesRegistrar {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IUserDictionariesRegistrar {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xaa176b85_0e12_4844_8e1a_eef1da77f586);
 }
 pub type LANGGROUPLOCALE_ENUMPROCA =
     StdCallFnPtr<(u32, u32, PCSTR, PtrDiffRepr), super::Foundation::BOOL>;

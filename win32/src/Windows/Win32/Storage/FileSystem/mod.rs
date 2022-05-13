@@ -7287,6 +7287,13 @@ impl FromIntoMemory for IDiskQuotaControl {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
+impl crate::core::ComInterface for IDiskQuotaControl {
+    type Super = super::super::System::Com::IConnectionPointContainer;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x7988b572_ec89_11cf_9c00_00aa00a14f56);
+}
 pub struct IDiskQuotaEvents(crate::core::IUnknown);
 impl ::core::clone::Clone for IDiskQuotaEvents {
     fn clone(&self) -> Self {
@@ -7315,6 +7322,11 @@ impl FromIntoMemory for IDiskQuotaEvents {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDiskQuotaEvents {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x7988b579_ec89_11cf_9c00_00aa00a14f56);
 }
 pub struct IDiskQuotaUser(crate::core::IUnknown);
 impl ::core::clone::Clone for IDiskQuotaUser {
@@ -7345,6 +7357,11 @@ impl FromIntoMemory for IDiskQuotaUser {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDiskQuotaUser {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x7988b574_ec89_11cf_9c00_00aa00a14f56);
+}
 pub struct IDiskQuotaUserBatch(crate::core::IUnknown);
 impl ::core::clone::Clone for IDiskQuotaUserBatch {
     fn clone(&self) -> Self {
@@ -7374,6 +7391,11 @@ impl FromIntoMemory for IDiskQuotaUserBatch {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDiskQuotaUserBatch {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x7988b576_ec89_11cf_9c00_00aa00a14f56);
+}
 pub struct IEnumDiskQuotaUsers(crate::core::IUnknown);
 impl ::core::clone::Clone for IEnumDiskQuotaUsers {
     fn clone(&self) -> Self {
@@ -7402,6 +7424,11 @@ impl FromIntoMemory for IEnumDiskQuotaUsers {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IEnumDiskQuotaUsers {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x7988b577_ec89_11cf_9c00_00aa00a14f56);
 }
 pub const INVALID_FILE_ATTRIBUTES: u32 = 4294967295u32;
 pub const INVALID_SET_FILE_POINTER: u32 = 4294967295u32;

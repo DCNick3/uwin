@@ -734,6 +734,11 @@ impl FromIntoMemory for AsyncIDebugApplicationNodeEvents {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for AsyncIDebugApplicationNodeEvents {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xa2e3aa3b_aa8d_4ebf_84cd_648b737b8c13);
+}
 pub const BIND_ALL_IMAGES: u32 = 4u32;
 pub const BIND_CACHE_IMPORT_DLLS: u32 = 8u32;
 pub const BIND_NO_BOUND_IMPORTS: u32 = 1u32;
@@ -7585,6 +7590,10 @@ impl FromIntoMemory for DebugBaseEventCallbacks {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for DebugBaseEventCallbacks {
+    type Super = IDebugEventCallbacks;
+    const IID: crate::core::GUID = crate::core::GUID::zeroed();
+}
 pub struct DebugBaseEventCallbacksWide(crate::core::IUnknown);
 impl ::core::clone::Clone for DebugBaseEventCallbacksWide {
     fn clone(&self) -> Self {
@@ -7615,6 +7624,10 @@ impl FromIntoMemory for DebugBaseEventCallbacksWide {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for DebugBaseEventCallbacksWide {
+    type Super = IDebugEventCallbacksWide;
+    const IID: crate::core::GUID = crate::core::GUID::zeroed();
 }
 pub const DefaultDebugSessionProvider: crate::core::GUID =
     crate::core::GUID::from_u128(0x834128a2_51f4_11d0_8f20_00805f2cd064);
@@ -9574,6 +9587,11 @@ impl FromIntoMemory for IActiveScript {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IActiveScript {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xbb1a2ae1_a4f9_11cf_8f20_00805f2cd064);
+}
 pub struct IActiveScriptAuthor(crate::core::IUnknown);
 impl ::core::clone::Clone for IActiveScriptAuthor {
     fn clone(&self) -> Self {
@@ -9602,6 +9620,11 @@ impl FromIntoMemory for IActiveScriptAuthor {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IActiveScriptAuthor {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x9c109da0_7006_11d1_b36c_00a0c911e8b2);
 }
 pub struct IActiveScriptAuthorProcedure(crate::core::IUnknown);
 impl ::core::clone::Clone for IActiveScriptAuthorProcedure {
@@ -9634,6 +9657,11 @@ impl FromIntoMemory for IActiveScriptAuthorProcedure {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IActiveScriptAuthorProcedure {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x7e2d4b70_bd9a_11d0_9336_00a0c90dcaa9);
+}
 pub struct IActiveScriptDebug32(crate::core::IUnknown);
 impl ::core::clone::Clone for IActiveScriptDebug32 {
     fn clone(&self) -> Self {
@@ -9664,6 +9692,11 @@ impl FromIntoMemory for IActiveScriptDebug32 {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IActiveScriptDebug32 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x51973c10_cb0c_11d0_b5c9_00a0244a0e7a);
 }
 pub struct IActiveScriptDebug64(crate::core::IUnknown);
 impl ::core::clone::Clone for IActiveScriptDebug64 {
@@ -9696,6 +9729,11 @@ impl FromIntoMemory for IActiveScriptDebug64 {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IActiveScriptDebug64 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xbc437e23_f5b8_47f4_bb79_7d1ce5483b86);
+}
 pub struct IActiveScriptEncode(crate::core::IUnknown);
 impl ::core::clone::Clone for IActiveScriptEncode {
     fn clone(&self) -> Self {
@@ -9725,6 +9763,11 @@ impl FromIntoMemory for IActiveScriptEncode {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IActiveScriptEncode {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xbb1a2ae3_a4f9_11cf_8f20_00805f2cd064);
+}
 pub struct IActiveScriptError(crate::core::IUnknown);
 impl ::core::clone::Clone for IActiveScriptError {
     fn clone(&self) -> Self {
@@ -9753,6 +9796,11 @@ impl FromIntoMemory for IActiveScriptError {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IActiveScriptError {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xeae1ba61_a4ed_11cf_8f20_00805f2cd064);
 }
 pub struct IActiveScriptError64(crate::core::IUnknown);
 impl ::core::clone::Clone for IActiveScriptError64 {
@@ -9785,6 +9833,11 @@ impl FromIntoMemory for IActiveScriptError64 {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IActiveScriptError64 {
+    type Super = IActiveScriptError;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xb21fb2a1_5b8f_4963_8c21_21450f84ed7f);
+}
 pub struct IActiveScriptErrorDebug(crate::core::IUnknown);
 impl ::core::clone::Clone for IActiveScriptErrorDebug {
     fn clone(&self) -> Self {
@@ -9815,6 +9868,11 @@ impl FromIntoMemory for IActiveScriptErrorDebug {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IActiveScriptErrorDebug {
+    type Super = IActiveScriptError;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x51973c12_cb0c_11d0_b5c9_00a0244a0e7a);
 }
 pub struct IActiveScriptErrorDebug110(crate::core::IUnknown);
 impl ::core::clone::Clone for IActiveScriptErrorDebug110 {
@@ -9847,6 +9905,11 @@ impl FromIntoMemory for IActiveScriptErrorDebug110 {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IActiveScriptErrorDebug110 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x516e42b6_89a8_4530_937b_5f0708431442);
+}
 pub struct IActiveScriptGarbageCollector(crate::core::IUnknown);
 impl ::core::clone::Clone for IActiveScriptGarbageCollector {
     fn clone(&self) -> Self {
@@ -9877,6 +9940,11 @@ impl FromIntoMemory for IActiveScriptGarbageCollector {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IActiveScriptGarbageCollector {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x6aa2c4a0_2b53_11d4_a2a0_00104bd35090);
 }
 pub struct IActiveScriptHostEncode(crate::core::IUnknown);
 impl ::core::clone::Clone for IActiveScriptHostEncode {
@@ -9909,6 +9977,11 @@ impl FromIntoMemory for IActiveScriptHostEncode {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IActiveScriptHostEncode {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xbee9b76e_cfe3_11d1_b747_00c04fc2b085);
+}
 pub struct IActiveScriptParse32(crate::core::IUnknown);
 impl ::core::clone::Clone for IActiveScriptParse32 {
     fn clone(&self) -> Self {
@@ -9939,6 +10012,11 @@ impl FromIntoMemory for IActiveScriptParse32 {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IActiveScriptParse32 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xbb1a2ae2_a4f9_11cf_8f20_00805f2cd064);
 }
 pub struct IActiveScriptParse64(crate::core::IUnknown);
 impl ::core::clone::Clone for IActiveScriptParse64 {
@@ -9971,6 +10049,11 @@ impl FromIntoMemory for IActiveScriptParse64 {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IActiveScriptParse64 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xc7ef7658_e1ee_480e_97ea_d52cb4d76d17);
+}
 pub struct IActiveScriptParseProcedure2_32(crate::core::IUnknown);
 impl ::core::clone::Clone for IActiveScriptParseProcedure2_32 {
     fn clone(&self) -> Self {
@@ -10001,6 +10084,11 @@ impl FromIntoMemory for IActiveScriptParseProcedure2_32 {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IActiveScriptParseProcedure2_32 {
+    type Super = IActiveScriptParseProcedure32;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x71ee5b20_fb04_11d1_b3a8_00a0c911e8b2);
 }
 pub struct IActiveScriptParseProcedure2_64(crate::core::IUnknown);
 impl ::core::clone::Clone for IActiveScriptParseProcedure2_64 {
@@ -10033,6 +10121,11 @@ impl FromIntoMemory for IActiveScriptParseProcedure2_64 {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IActiveScriptParseProcedure2_64 {
+    type Super = IActiveScriptParseProcedure64;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xfe7c4271_210c_448d_9f54_76dab7047b28);
+}
 pub struct IActiveScriptParseProcedure32(crate::core::IUnknown);
 impl ::core::clone::Clone for IActiveScriptParseProcedure32 {
     fn clone(&self) -> Self {
@@ -10063,6 +10156,11 @@ impl FromIntoMemory for IActiveScriptParseProcedure32 {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IActiveScriptParseProcedure32 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xaa5b6a80_b834_11d0_932f_00a0c90dcaa9);
 }
 pub struct IActiveScriptParseProcedure64(crate::core::IUnknown);
 impl ::core::clone::Clone for IActiveScriptParseProcedure64 {
@@ -10095,6 +10193,11 @@ impl FromIntoMemory for IActiveScriptParseProcedure64 {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IActiveScriptParseProcedure64 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xc64713b6_e029_4cc5_9200_438b72890b6a);
+}
 pub struct IActiveScriptParseProcedureOld32(crate::core::IUnknown);
 impl ::core::clone::Clone for IActiveScriptParseProcedureOld32 {
     fn clone(&self) -> Self {
@@ -10125,6 +10228,11 @@ impl FromIntoMemory for IActiveScriptParseProcedureOld32 {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IActiveScriptParseProcedureOld32 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x1cff0050_6fdd_11d0_9328_00a0c90dcaa9);
 }
 pub struct IActiveScriptParseProcedureOld64(crate::core::IUnknown);
 impl ::core::clone::Clone for IActiveScriptParseProcedureOld64 {
@@ -10157,6 +10265,11 @@ impl FromIntoMemory for IActiveScriptParseProcedureOld64 {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IActiveScriptParseProcedureOld64 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x21f57128_08c9_4638_ba12_22d15d88dc5c);
+}
 pub struct IActiveScriptProfilerCallback(crate::core::IUnknown);
 impl ::core::clone::Clone for IActiveScriptProfilerCallback {
     fn clone(&self) -> Self {
@@ -10187,6 +10300,11 @@ impl FromIntoMemory for IActiveScriptProfilerCallback {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IActiveScriptProfilerCallback {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x740eca23_7d9d_42e5_ba9d_f8b24b1c7a9b);
 }
 pub struct IActiveScriptProfilerCallback2(crate::core::IUnknown);
 impl ::core::clone::Clone for IActiveScriptProfilerCallback2 {
@@ -10219,6 +10337,11 @@ impl FromIntoMemory for IActiveScriptProfilerCallback2 {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IActiveScriptProfilerCallback2 {
+    type Super = IActiveScriptProfilerCallback;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x31b7f8ad_a637_409c_b22f_040995b6103d);
+}
 pub struct IActiveScriptProfilerCallback3(crate::core::IUnknown);
 impl ::core::clone::Clone for IActiveScriptProfilerCallback3 {
     fn clone(&self) -> Self {
@@ -10249,6 +10372,11 @@ impl FromIntoMemory for IActiveScriptProfilerCallback3 {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IActiveScriptProfilerCallback3 {
+    type Super = IActiveScriptProfilerCallback2;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x6ac5ad25_2037_4687_91df_b59979d93d73);
 }
 pub struct IActiveScriptProfilerControl(crate::core::IUnknown);
 impl ::core::clone::Clone for IActiveScriptProfilerControl {
@@ -10281,6 +10409,11 @@ impl FromIntoMemory for IActiveScriptProfilerControl {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IActiveScriptProfilerControl {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x784b5ff0_69b0_47d1_a7dc_2518f4230e90);
+}
 pub struct IActiveScriptProfilerControl2(crate::core::IUnknown);
 impl ::core::clone::Clone for IActiveScriptProfilerControl2 {
     fn clone(&self) -> Self {
@@ -10311,6 +10444,11 @@ impl FromIntoMemory for IActiveScriptProfilerControl2 {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IActiveScriptProfilerControl2 {
+    type Super = IActiveScriptProfilerControl;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x47810165_498f_40be_94f1_653557e9e7da);
 }
 pub struct IActiveScriptProfilerControl3(crate::core::IUnknown);
 impl ::core::clone::Clone for IActiveScriptProfilerControl3 {
@@ -10343,6 +10481,11 @@ impl FromIntoMemory for IActiveScriptProfilerControl3 {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IActiveScriptProfilerControl3 {
+    type Super = IActiveScriptProfilerControl2;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x0b403015_f381_4023_a5d0_6fed076de716);
+}
 pub struct IActiveScriptProfilerControl4(crate::core::IUnknown);
 impl ::core::clone::Clone for IActiveScriptProfilerControl4 {
     fn clone(&self) -> Self {
@@ -10373,6 +10516,11 @@ impl FromIntoMemory for IActiveScriptProfilerControl4 {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IActiveScriptProfilerControl4 {
+    type Super = IActiveScriptProfilerControl3;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x160f94fd_9dbc_40d4_9eac_2b71db3132f4);
 }
 pub struct IActiveScriptProfilerControl5(crate::core::IUnknown);
 impl ::core::clone::Clone for IActiveScriptProfilerControl5 {
@@ -10405,6 +10553,11 @@ impl FromIntoMemory for IActiveScriptProfilerControl5 {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IActiveScriptProfilerControl5 {
+    type Super = IActiveScriptProfilerControl4;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x1c01a2d1_8f0f_46a5_9720_0d7ed2c62f0a);
+}
 pub struct IActiveScriptProfilerHeapEnum(crate::core::IUnknown);
 impl ::core::clone::Clone for IActiveScriptProfilerHeapEnum {
     fn clone(&self) -> Self {
@@ -10435,6 +10588,11 @@ impl FromIntoMemory for IActiveScriptProfilerHeapEnum {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IActiveScriptProfilerHeapEnum {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x32e4694e_0d37_419b_b93d_fa20ded6e8ea);
 }
 pub struct IActiveScriptProperty(crate::core::IUnknown);
 impl ::core::clone::Clone for IActiveScriptProperty {
@@ -10467,6 +10625,11 @@ impl FromIntoMemory for IActiveScriptProperty {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IActiveScriptProperty {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x4954e0d0_fbc7_11d1_8410_006008c3fbfc);
+}
 pub struct IActiveScriptSIPInfo(crate::core::IUnknown);
 impl ::core::clone::Clone for IActiveScriptSIPInfo {
     fn clone(&self) -> Self {
@@ -10498,6 +10661,11 @@ impl FromIntoMemory for IActiveScriptSIPInfo {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IActiveScriptSIPInfo {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x764651d0_38de_11d4_a2a3_00104bd35090);
+}
 pub struct IActiveScriptSite(crate::core::IUnknown);
 impl ::core::clone::Clone for IActiveScriptSite {
     fn clone(&self) -> Self {
@@ -10526,6 +10694,11 @@ impl FromIntoMemory for IActiveScriptSite {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IActiveScriptSite {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xdb01a1e3_a42b_11cf_8f20_00805f2cd064);
 }
 pub struct IActiveScriptSiteDebug32(crate::core::IUnknown);
 impl ::core::clone::Clone for IActiveScriptSiteDebug32 {
@@ -10558,6 +10731,11 @@ impl FromIntoMemory for IActiveScriptSiteDebug32 {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IActiveScriptSiteDebug32 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x51973c11_cb0c_11d0_b5c9_00a0244a0e7a);
+}
 pub struct IActiveScriptSiteDebug64(crate::core::IUnknown);
 impl ::core::clone::Clone for IActiveScriptSiteDebug64 {
     fn clone(&self) -> Self {
@@ -10588,6 +10766,11 @@ impl FromIntoMemory for IActiveScriptSiteDebug64 {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IActiveScriptSiteDebug64 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xd6b96b0a_7463_402c_92ac_89984226942f);
 }
 pub struct IActiveScriptSiteDebugEx(crate::core::IUnknown);
 impl ::core::clone::Clone for IActiveScriptSiteDebugEx {
@@ -10620,6 +10803,11 @@ impl FromIntoMemory for IActiveScriptSiteDebugEx {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IActiveScriptSiteDebugEx {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xbb722ccb_6ad2_41c6_b780_af9c03ee69f5);
+}
 pub struct IActiveScriptSiteInterruptPoll(crate::core::IUnknown);
 impl ::core::clone::Clone for IActiveScriptSiteInterruptPoll {
     fn clone(&self) -> Self {
@@ -10650,6 +10838,11 @@ impl FromIntoMemory for IActiveScriptSiteInterruptPoll {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IActiveScriptSiteInterruptPoll {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x539698a0_cdca_11cf_a5eb_00aa0047a063);
 }
 pub struct IActiveScriptSiteTraceInfo(crate::core::IUnknown);
 impl ::core::clone::Clone for IActiveScriptSiteTraceInfo {
@@ -10682,6 +10875,11 @@ impl FromIntoMemory for IActiveScriptSiteTraceInfo {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IActiveScriptSiteTraceInfo {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x4b7272ae_1955_4bfe_98b0_780621888569);
+}
 pub struct IActiveScriptSiteUIControl(crate::core::IUnknown);
 impl ::core::clone::Clone for IActiveScriptSiteUIControl {
     fn clone(&self) -> Self {
@@ -10712,6 +10910,11 @@ impl FromIntoMemory for IActiveScriptSiteUIControl {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IActiveScriptSiteUIControl {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xaedae97e_d7ee_4796_b960_7f092ae844ab);
 }
 pub struct IActiveScriptSiteWindow(crate::core::IUnknown);
 impl ::core::clone::Clone for IActiveScriptSiteWindow {
@@ -10744,6 +10947,11 @@ impl FromIntoMemory for IActiveScriptSiteWindow {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IActiveScriptSiteWindow {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xd10f6761_83e9_11cf_8f20_00805f2cd064);
+}
 pub struct IActiveScriptStats(crate::core::IUnknown);
 impl ::core::clone::Clone for IActiveScriptStats {
     fn clone(&self) -> Self {
@@ -10772,6 +10980,11 @@ impl FromIntoMemory for IActiveScriptStats {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IActiveScriptStats {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xb8da6310_e19b_11d0_933c_00a0c90dcaa9);
 }
 pub struct IActiveScriptStringCompare(crate::core::IUnknown);
 impl ::core::clone::Clone for IActiveScriptStringCompare {
@@ -10804,6 +11017,11 @@ impl FromIntoMemory for IActiveScriptStringCompare {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IActiveScriptStringCompare {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x58562769_ed52_42f7_8403_4963514e1f11);
+}
 pub struct IActiveScriptTraceInfo(crate::core::IUnknown);
 impl ::core::clone::Clone for IActiveScriptTraceInfo {
     fn clone(&self) -> Self {
@@ -10834,6 +11052,11 @@ impl FromIntoMemory for IActiveScriptTraceInfo {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IActiveScriptTraceInfo {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xc35456e7_bebf_4a1b_86a9_24d56be8b369);
 }
 pub struct IActiveScriptWinRTErrorDebug(crate::core::IUnknown);
 impl ::core::clone::Clone for IActiveScriptWinRTErrorDebug {
@@ -10866,6 +11089,11 @@ impl FromIntoMemory for IActiveScriptWinRTErrorDebug {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IActiveScriptWinRTErrorDebug {
+    type Super = IActiveScriptError;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x73a3f82a_0fe9_4b33_ba3b_fe095f697e0a);
+}
 pub struct IApplicationDebugger(crate::core::IUnknown);
 impl ::core::clone::Clone for IApplicationDebugger {
     fn clone(&self) -> Self {
@@ -10896,6 +11124,11 @@ impl FromIntoMemory for IApplicationDebugger {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IApplicationDebugger {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x51973c2a_cb0c_11d0_b5c9_00a0244a0e7a);
 }
 pub struct IApplicationDebuggerUI(crate::core::IUnknown);
 impl ::core::clone::Clone for IApplicationDebuggerUI {
@@ -10928,6 +11161,11 @@ impl FromIntoMemory for IApplicationDebuggerUI {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IApplicationDebuggerUI {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x51973c2b_cb0c_11d0_b5c9_00a0244a0e7a);
+}
 pub struct IBindEventHandler(crate::core::IUnknown);
 impl ::core::clone::Clone for IBindEventHandler {
     fn clone(&self) -> Self {
@@ -10956,6 +11194,11 @@ impl FromIntoMemory for IBindEventHandler {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IBindEventHandler {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x63cdbcb0_c1b1_11d0_9336_00a0c90dcaa9);
 }
 pub struct ICodeAddressConcept(crate::core::IUnknown);
 impl ::core::clone::Clone for ICodeAddressConcept {
@@ -10986,6 +11229,11 @@ impl FromIntoMemory for ICodeAddressConcept {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for ICodeAddressConcept {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xc7371568_5c78_4a00_a4ab_6ef8823184cb);
+}
 pub struct IComparableConcept(crate::core::IUnknown);
 impl ::core::clone::Clone for IComparableConcept {
     fn clone(&self) -> Self {
@@ -11014,6 +11262,11 @@ impl FromIntoMemory for IComparableConcept {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IComparableConcept {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xa7830646_9f0c_4a31_ba19_503f33e6c8a3);
 }
 pub struct IDataModelConcept(crate::core::IUnknown);
 impl ::core::clone::Clone for IDataModelConcept {
@@ -11044,6 +11297,11 @@ impl FromIntoMemory for IDataModelConcept {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDataModelConcept {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xfcb98d1d_1114_4fbf_b24c_effcb5def0d3);
+}
 pub struct IDataModelManager(crate::core::IUnknown);
 impl ::core::clone::Clone for IDataModelManager {
     fn clone(&self) -> Self {
@@ -11073,6 +11331,11 @@ impl FromIntoMemory for IDataModelManager {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDataModelManager {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x73fe19f4_a110_4500_8ed9_3c28896f508c);
+}
 pub struct IDataModelManager2(crate::core::IUnknown);
 impl ::core::clone::Clone for IDataModelManager2 {
     fn clone(&self) -> Self {
@@ -11101,6 +11364,11 @@ impl FromIntoMemory for IDataModelManager2 {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDataModelManager2 {
+    type Super = IDataModelManager;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xf412c5ea_2284_4622_a660_a697160d3312);
 }
 pub struct IDataModelNameBinder(crate::core::IUnknown);
 impl ::core::clone::Clone for IDataModelNameBinder {
@@ -11133,6 +11401,11 @@ impl FromIntoMemory for IDataModelNameBinder {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDataModelNameBinder {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xaf352b7b_8292_4c01_b360_2dc3696c65e7);
+}
 pub struct IDataModelScript(crate::core::IUnknown);
 impl ::core::clone::Clone for IDataModelScript {
     fn clone(&self) -> Self {
@@ -11161,6 +11434,11 @@ impl FromIntoMemory for IDataModelScript {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDataModelScript {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x7b4d30fc_b14a_49f8_8d87_d9a1480c97f7);
 }
 pub struct IDataModelScriptClient(crate::core::IUnknown);
 impl ::core::clone::Clone for IDataModelScriptClient {
@@ -11193,6 +11471,11 @@ impl FromIntoMemory for IDataModelScriptClient {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDataModelScriptClient {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x3b362b0e_89f0_46c6_a663_dfdc95194aef);
+}
 pub struct IDataModelScriptDebug(crate::core::IUnknown);
 impl ::core::clone::Clone for IDataModelScriptDebug {
     fn clone(&self) -> Self {
@@ -11223,6 +11506,11 @@ impl FromIntoMemory for IDataModelScriptDebug {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDataModelScriptDebug {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xde8e0945_9750_4471_ab76_a8f79d6ec350);
 }
 pub struct IDataModelScriptDebug2(crate::core::IUnknown);
 impl ::core::clone::Clone for IDataModelScriptDebug2 {
@@ -11255,6 +11543,11 @@ impl FromIntoMemory for IDataModelScriptDebug2 {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDataModelScriptDebug2 {
+    type Super = IDataModelScriptDebug;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xcbb10ed3_839e_426c_9243_e23535c1ae1a);
+}
 pub struct IDataModelScriptDebugBreakpoint(crate::core::IUnknown);
 impl ::core::clone::Clone for IDataModelScriptDebugBreakpoint {
     fn clone(&self) -> Self {
@@ -11285,6 +11578,11 @@ impl FromIntoMemory for IDataModelScriptDebugBreakpoint {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDataModelScriptDebugBreakpoint {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x6bb27b35_02e6_47cb_90a0_5371244032de);
 }
 pub struct IDataModelScriptDebugBreakpointEnumerator(crate::core::IUnknown);
 impl ::core::clone::Clone for IDataModelScriptDebugBreakpointEnumerator {
@@ -11317,6 +11615,11 @@ impl FromIntoMemory for IDataModelScriptDebugBreakpointEnumerator {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDataModelScriptDebugBreakpointEnumerator {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x39484a75_b4f3_4799_86da_691afa57b299);
+}
 pub struct IDataModelScriptDebugClient(crate::core::IUnknown);
 impl ::core::clone::Clone for IDataModelScriptDebugClient {
     fn clone(&self) -> Self {
@@ -11347,6 +11650,11 @@ impl FromIntoMemory for IDataModelScriptDebugClient {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDataModelScriptDebugClient {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x53159b6d_d4c4_471b_a863_5b110ca800ca);
 }
 pub struct IDataModelScriptDebugStack(crate::core::IUnknown);
 impl ::core::clone::Clone for IDataModelScriptDebugStack {
@@ -11379,6 +11687,11 @@ impl FromIntoMemory for IDataModelScriptDebugStack {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDataModelScriptDebugStack {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x051364dd_e449_443e_9762_fe578f4a5473);
+}
 pub struct IDataModelScriptDebugStackFrame(crate::core::IUnknown);
 impl ::core::clone::Clone for IDataModelScriptDebugStackFrame {
     fn clone(&self) -> Self {
@@ -11409,6 +11722,11 @@ impl FromIntoMemory for IDataModelScriptDebugStackFrame {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDataModelScriptDebugStackFrame {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xdec6ed5e_6360_4941_ab4c_a26409de4f82);
 }
 pub struct IDataModelScriptDebugVariableSetEnumerator(crate::core::IUnknown);
 impl ::core::clone::Clone for IDataModelScriptDebugVariableSetEnumerator {
@@ -11441,6 +11759,11 @@ impl FromIntoMemory for IDataModelScriptDebugVariableSetEnumerator {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDataModelScriptDebugVariableSetEnumerator {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x0f9feed7_d045_4ac3_98a8_a98942cf6a35);
+}
 pub struct IDataModelScriptHostContext(crate::core::IUnknown);
 impl ::core::clone::Clone for IDataModelScriptHostContext {
     fn clone(&self) -> Self {
@@ -11471,6 +11794,11 @@ impl FromIntoMemory for IDataModelScriptHostContext {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDataModelScriptHostContext {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x014d366a_1f23_4981_9219_b2db8b402054);
 }
 pub struct IDataModelScriptManager(crate::core::IUnknown);
 impl ::core::clone::Clone for IDataModelScriptManager {
@@ -11503,6 +11831,11 @@ impl FromIntoMemory for IDataModelScriptManager {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDataModelScriptManager {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x6fd11e33_e5ad_410b_8011_68c6bc4bf80d);
+}
 pub struct IDataModelScriptProvider(crate::core::IUnknown);
 impl ::core::clone::Clone for IDataModelScriptProvider {
     fn clone(&self) -> Self {
@@ -11533,6 +11866,11 @@ impl FromIntoMemory for IDataModelScriptProvider {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDataModelScriptProvider {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x513461e0_4fca_48ce_8658_32f3e2056f3b);
 }
 pub struct IDataModelScriptProviderEnumerator(crate::core::IUnknown);
 impl ::core::clone::Clone for IDataModelScriptProviderEnumerator {
@@ -11565,6 +11903,11 @@ impl FromIntoMemory for IDataModelScriptProviderEnumerator {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDataModelScriptProviderEnumerator {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x95ba00e2_704a_4fe2_a8f1_a7e7d8fb0941);
+}
 pub struct IDataModelScriptTemplate(crate::core::IUnknown);
 impl ::core::clone::Clone for IDataModelScriptTemplate {
     fn clone(&self) -> Self {
@@ -11595,6 +11938,11 @@ impl FromIntoMemory for IDataModelScriptTemplate {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDataModelScriptTemplate {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x1303dec4_fa3b_4f1b_9224_b953d16babb5);
 }
 pub struct IDataModelScriptTemplateEnumerator(crate::core::IUnknown);
 impl ::core::clone::Clone for IDataModelScriptTemplateEnumerator {
@@ -11627,6 +11975,11 @@ impl FromIntoMemory for IDataModelScriptTemplateEnumerator {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDataModelScriptTemplateEnumerator {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x69ce6ae2_2268_4e6f_b062_20ce62bfe677);
+}
 pub struct IDebugAdvanced(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugAdvanced {
     fn clone(&self) -> Self {
@@ -11655,6 +12008,11 @@ impl FromIntoMemory for IDebugAdvanced {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDebugAdvanced {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xf2df5f53_071f_47bd_9de6_5734c3fed689);
 }
 pub struct IDebugAdvanced2(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugAdvanced2 {
@@ -11685,6 +12043,11 @@ impl FromIntoMemory for IDebugAdvanced2 {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugAdvanced2 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x716d14c9_119b_4ba5_af1f_0890e672416a);
+}
 pub struct IDebugAdvanced3(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugAdvanced3 {
     fn clone(&self) -> Self {
@@ -11714,6 +12077,11 @@ impl FromIntoMemory for IDebugAdvanced3 {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugAdvanced3 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xcba4abb4_84c4_444d_87ca_a04e13286739);
+}
 pub struct IDebugAdvanced4(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugAdvanced4 {
     fn clone(&self) -> Self {
@@ -11742,6 +12110,11 @@ impl FromIntoMemory for IDebugAdvanced4 {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDebugAdvanced4 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xd1069067_2a65_4bf0_ae97_76184b67856b);
 }
 pub struct IDebugApplication11032(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugApplication11032 {
@@ -11774,6 +12147,11 @@ impl FromIntoMemory for IDebugApplication11032 {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugApplication11032 {
+    type Super = IRemoteDebugApplication110;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xbdb3b5de_89f2_4e11_84a5_97445f941c7d);
+}
 pub struct IDebugApplication11064(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugApplication11064 {
     fn clone(&self) -> Self {
@@ -11805,6 +12183,11 @@ impl FromIntoMemory for IDebugApplication11064 {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugApplication11064 {
+    type Super = IRemoteDebugApplication110;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x2039d958_4eeb_496a_87bb_2e5201eadeef);
+}
 pub struct IDebugApplication32(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugApplication32 {
     fn clone(&self) -> Self {
@@ -11834,6 +12217,11 @@ impl FromIntoMemory for IDebugApplication32 {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugApplication32 {
+    type Super = IRemoteDebugApplication;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x51973c32_cb0c_11d0_b5c9_00a0244a0e7a);
+}
 pub struct IDebugApplication64(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugApplication64 {
     fn clone(&self) -> Self {
@@ -11862,6 +12250,11 @@ impl FromIntoMemory for IDebugApplication64 {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDebugApplication64 {
+    type Super = IRemoteDebugApplication;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x4dedc754_04c7_4f10_9e60_16a390fe6e62);
 }
 pub struct IDebugApplicationNode(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugApplicationNode {
@@ -11894,6 +12287,11 @@ impl FromIntoMemory for IDebugApplicationNode {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugApplicationNode {
+    type Super = IDebugDocumentProvider;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x51973c34_cb0c_11d0_b5c9_00a0244a0e7a);
+}
 pub struct IDebugApplicationNode100(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugApplicationNode100 {
     fn clone(&self) -> Self {
@@ -11924,6 +12322,11 @@ impl FromIntoMemory for IDebugApplicationNode100 {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDebugApplicationNode100 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x90a7734e_841b_4f77_9384_a2891e76e7e2);
 }
 pub struct IDebugApplicationNodeEvents(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugApplicationNodeEvents {
@@ -11956,6 +12359,11 @@ impl FromIntoMemory for IDebugApplicationNodeEvents {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugApplicationNodeEvents {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x51973c35_cb0c_11d0_b5c9_00a0244a0e7a);
+}
 pub struct IDebugApplicationThread(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugApplicationThread {
     fn clone(&self) -> Self {
@@ -11986,6 +12394,11 @@ impl FromIntoMemory for IDebugApplicationThread {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDebugApplicationThread {
+    type Super = IRemoteDebugApplicationThread;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x51973c38_cb0c_11d0_b5c9_00a0244a0e7a);
 }
 pub struct IDebugApplicationThread11032(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugApplicationThread11032 {
@@ -12018,6 +12431,11 @@ impl FromIntoMemory for IDebugApplicationThread11032 {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugApplicationThread11032 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x2194ac5c_6561_404a_a2e9_f57d72de3702);
+}
 pub struct IDebugApplicationThread11064(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugApplicationThread11064 {
     fn clone(&self) -> Self {
@@ -12048,6 +12466,11 @@ impl FromIntoMemory for IDebugApplicationThread11064 {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDebugApplicationThread11064 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x420aa4cc_efd8_4dac_983b_47127826917d);
 }
 pub struct IDebugApplicationThread64(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugApplicationThread64 {
@@ -12080,6 +12503,11 @@ impl FromIntoMemory for IDebugApplicationThread64 {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugApplicationThread64 {
+    type Super = IDebugApplicationThread;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x9dac5886_dbad_456d_9dee_5dec39ab3dda);
+}
 pub struct IDebugApplicationThreadEvents110(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugApplicationThreadEvents110 {
     fn clone(&self) -> Self {
@@ -12110,6 +12538,11 @@ impl FromIntoMemory for IDebugApplicationThreadEvents110 {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDebugApplicationThreadEvents110 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x84e5e468_d5da_48a8_83f4_40366429007b);
 }
 pub struct IDebugAsyncOperation(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugAsyncOperation {
@@ -12142,6 +12575,11 @@ impl FromIntoMemory for IDebugAsyncOperation {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugAsyncOperation {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x51973c1b_cb0c_11d0_b5c9_00a0244a0e7a);
+}
 pub struct IDebugAsyncOperationCallBack(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugAsyncOperationCallBack {
     fn clone(&self) -> Self {
@@ -12173,6 +12611,11 @@ impl FromIntoMemory for IDebugAsyncOperationCallBack {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugAsyncOperationCallBack {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x51973c1c_cb0c_11d0_b5c9_00a0244a0e7a);
+}
 pub struct IDebugBreakpoint(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugBreakpoint {
     fn clone(&self) -> Self {
@@ -12201,6 +12644,11 @@ impl FromIntoMemory for IDebugBreakpoint {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDebugBreakpoint {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x5bd9d474_5975_423a_b88b_65a8e7110e65);
 }
 pub struct IDebugBreakpoint2(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugBreakpoint2 {
@@ -12231,6 +12679,11 @@ impl FromIntoMemory for IDebugBreakpoint2 {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugBreakpoint2 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x1b278d20_79f2_426e_a3f9_c1ddf375d48e);
+}
 pub struct IDebugBreakpoint3(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugBreakpoint3 {
     fn clone(&self) -> Self {
@@ -12259,6 +12712,11 @@ impl FromIntoMemory for IDebugBreakpoint3 {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDebugBreakpoint3 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x38f5c249_b448_43bb_9835_579d4ec02249);
 }
 pub struct IDebugClient(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugClient {
@@ -12289,6 +12747,11 @@ impl FromIntoMemory for IDebugClient {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugClient {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x27fe5639_8407_4f47_8364_ee118fb08ac8);
+}
 pub struct IDebugClient2(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugClient2 {
     fn clone(&self) -> Self {
@@ -12317,6 +12780,11 @@ impl FromIntoMemory for IDebugClient2 {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDebugClient2 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xedbed635_372e_4dab_bbfe_ed0d2f63be81);
 }
 pub struct IDebugClient3(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugClient3 {
@@ -12347,6 +12815,11 @@ impl FromIntoMemory for IDebugClient3 {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugClient3 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xdd492d7f_71b8_4ad6_a8dc_1c887479ff91);
+}
 pub struct IDebugClient4(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugClient4 {
     fn clone(&self) -> Self {
@@ -12375,6 +12848,11 @@ impl FromIntoMemory for IDebugClient4 {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDebugClient4 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xca83c3de_5089_4cf8_93c8_d892387f2a5e);
 }
 pub struct IDebugClient5(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugClient5 {
@@ -12405,6 +12883,11 @@ impl FromIntoMemory for IDebugClient5 {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugClient5 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xe3acb9d7_7ec2_4f0c_a0da_e81e0cbbe628);
+}
 pub struct IDebugClient6(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugClient6 {
     fn clone(&self) -> Self {
@@ -12433,6 +12916,11 @@ impl FromIntoMemory for IDebugClient6 {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDebugClient6 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xfd28b4c5_c498_4686_a28e_62cad2154eb3);
 }
 pub struct IDebugClient7(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugClient7 {
@@ -12463,6 +12951,11 @@ impl FromIntoMemory for IDebugClient7 {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugClient7 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x13586be3_542e_481e_b1f2_8497ba74f9a9);
+}
 pub struct IDebugClient8(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugClient8 {
     fn clone(&self) -> Self {
@@ -12491,6 +12984,11 @@ impl FromIntoMemory for IDebugClient8 {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDebugClient8 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xcec43add_6375_469e_83d5_414e4033c19a);
 }
 pub struct IDebugCodeContext(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugCodeContext {
@@ -12521,6 +13019,11 @@ impl FromIntoMemory for IDebugCodeContext {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugCodeContext {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x51973c13_cb0c_11d0_b5c9_00a0244a0e7a);
+}
 pub struct IDebugControl(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugControl {
     fn clone(&self) -> Self {
@@ -12549,6 +13052,11 @@ impl FromIntoMemory for IDebugControl {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDebugControl {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x5182e668_105e_416e_ad92_24ef800424ba);
 }
 pub struct IDebugControl2(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugControl2 {
@@ -12579,6 +13087,11 @@ impl FromIntoMemory for IDebugControl2 {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugControl2 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xd4366723_44df_4bed_8c7e_4c05424f4588);
+}
 pub struct IDebugControl3(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugControl3 {
     fn clone(&self) -> Self {
@@ -12607,6 +13120,11 @@ impl FromIntoMemory for IDebugControl3 {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDebugControl3 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x7df74a86_b03f_407f_90ab_a20dadcead08);
 }
 pub struct IDebugControl4(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugControl4 {
@@ -12637,6 +13155,11 @@ impl FromIntoMemory for IDebugControl4 {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugControl4 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x94e60ce9_9b41_4b19_9fc0_6d9eb35272b3);
+}
 pub struct IDebugControl5(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugControl5 {
     fn clone(&self) -> Self {
@@ -12665,6 +13188,11 @@ impl FromIntoMemory for IDebugControl5 {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDebugControl5 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xb2ffe162_2412_429f_8d1d_5bf6dd824696);
 }
 pub struct IDebugControl6(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugControl6 {
@@ -12695,6 +13223,11 @@ impl FromIntoMemory for IDebugControl6 {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugControl6 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xbc0d583f_126d_43a1_9cc4_a860ab1d537b);
+}
 pub struct IDebugControl7(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugControl7 {
     fn clone(&self) -> Self {
@@ -12723,6 +13256,11 @@ impl FromIntoMemory for IDebugControl7 {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDebugControl7 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xb86fb3b1_80d4_475b_aea3_cf06539cf63a);
 }
 pub struct IDebugCookie(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugCookie {
@@ -12753,6 +13291,11 @@ impl FromIntoMemory for IDebugCookie {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugCookie {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x51973c39_cb0c_11d0_b5c9_00a0244a0e7a);
+}
 pub struct IDebugDataSpaces(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugDataSpaces {
     fn clone(&self) -> Self {
@@ -12781,6 +13324,11 @@ impl FromIntoMemory for IDebugDataSpaces {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDebugDataSpaces {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x88f7dfab_3ea7_4c3a_aefb_c4e8106173aa);
 }
 pub struct IDebugDataSpaces2(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugDataSpaces2 {
@@ -12811,6 +13359,11 @@ impl FromIntoMemory for IDebugDataSpaces2 {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugDataSpaces2 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x7a5e852f_96e9_468f_ac1b_0b3addc4a049);
+}
 pub struct IDebugDataSpaces3(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugDataSpaces3 {
     fn clone(&self) -> Self {
@@ -12839,6 +13392,11 @@ impl FromIntoMemory for IDebugDataSpaces3 {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDebugDataSpaces3 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x23f79d6c_8aaf_4f7c_a607_9995f5407e63);
 }
 pub struct IDebugDataSpaces4(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugDataSpaces4 {
@@ -12869,6 +13427,11 @@ impl FromIntoMemory for IDebugDataSpaces4 {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugDataSpaces4 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xd98ada1f_29e9_4ef5_a6c0_e53349883212);
+}
 pub struct IDebugDocument(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugDocument {
     fn clone(&self) -> Self {
@@ -12897,6 +13460,11 @@ impl FromIntoMemory for IDebugDocument {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDebugDocument {
+    type Super = IDebugDocumentInfo;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x51973c21_cb0c_11d0_b5c9_00a0244a0e7a);
 }
 pub struct IDebugDocumentContext(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugDocumentContext {
@@ -12929,6 +13497,11 @@ impl FromIntoMemory for IDebugDocumentContext {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugDocumentContext {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x51973c28_cb0c_11d0_b5c9_00a0244a0e7a);
+}
 pub struct IDebugDocumentHelper32(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugDocumentHelper32 {
     fn clone(&self) -> Self {
@@ -12959,6 +13532,11 @@ impl FromIntoMemory for IDebugDocumentHelper32 {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDebugDocumentHelper32 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x51973c26_cb0c_11d0_b5c9_00a0244a0e7a);
 }
 pub struct IDebugDocumentHelper64(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugDocumentHelper64 {
@@ -12991,6 +13569,11 @@ impl FromIntoMemory for IDebugDocumentHelper64 {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugDocumentHelper64 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xc4c7363c_20fd_47f9_bd82_4855e0150871);
+}
 pub struct IDebugDocumentHost(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugDocumentHost {
     fn clone(&self) -> Self {
@@ -13020,6 +13603,11 @@ impl FromIntoMemory for IDebugDocumentHost {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugDocumentHost {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x51973c27_cb0c_11d0_b5c9_00a0244a0e7a);
+}
 pub struct IDebugDocumentInfo(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugDocumentInfo {
     fn clone(&self) -> Self {
@@ -13048,6 +13636,11 @@ impl FromIntoMemory for IDebugDocumentInfo {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDebugDocumentInfo {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x51973c1f_cb0c_11d0_b5c9_00a0244a0e7a);
 }
 pub struct IDebugDocumentProvider(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugDocumentProvider {
@@ -13080,6 +13673,11 @@ impl FromIntoMemory for IDebugDocumentProvider {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugDocumentProvider {
+    type Super = IDebugDocumentInfo;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x51973c20_cb0c_11d0_b5c9_00a0244a0e7a);
+}
 pub struct IDebugDocumentText(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugDocumentText {
     fn clone(&self) -> Self {
@@ -13108,6 +13706,11 @@ impl FromIntoMemory for IDebugDocumentText {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDebugDocumentText {
+    type Super = IDebugDocument;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x51973c22_cb0c_11d0_b5c9_00a0244a0e7a);
 }
 pub struct IDebugDocumentTextAuthor(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugDocumentTextAuthor {
@@ -13140,6 +13743,11 @@ impl FromIntoMemory for IDebugDocumentTextAuthor {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugDocumentTextAuthor {
+    type Super = IDebugDocumentText;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x51973c24_cb0c_11d0_b5c9_00a0244a0e7a);
+}
 pub struct IDebugDocumentTextEvents(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugDocumentTextEvents {
     fn clone(&self) -> Self {
@@ -13170,6 +13778,11 @@ impl FromIntoMemory for IDebugDocumentTextEvents {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDebugDocumentTextEvents {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x51973c23_cb0c_11d0_b5c9_00a0244a0e7a);
 }
 pub struct IDebugDocumentTextExternalAuthor(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugDocumentTextExternalAuthor {
@@ -13202,6 +13815,11 @@ impl FromIntoMemory for IDebugDocumentTextExternalAuthor {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugDocumentTextExternalAuthor {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x51973c25_cb0c_11d0_b5c9_00a0244a0e7a);
+}
 pub struct IDebugEventCallbacks(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugEventCallbacks {
     fn clone(&self) -> Self {
@@ -13232,6 +13850,11 @@ impl FromIntoMemory for IDebugEventCallbacks {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDebugEventCallbacks {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x337be28b_5036_4d72_b6bf_c45fbb9f2eaa);
 }
 pub struct IDebugEventCallbacksWide(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugEventCallbacksWide {
@@ -13264,6 +13887,11 @@ impl FromIntoMemory for IDebugEventCallbacksWide {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugEventCallbacksWide {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x0690e046_9c23_45ac_a04f_987ac29ad0d3);
+}
 pub struct IDebugEventContextCallbacks(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugEventContextCallbacks {
     fn clone(&self) -> Self {
@@ -13295,6 +13923,11 @@ impl FromIntoMemory for IDebugEventContextCallbacks {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugEventContextCallbacks {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x61a4905b_23f9_4247_b3c5_53d087529ab7);
+}
 pub struct IDebugExpression(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugExpression {
     fn clone(&self) -> Self {
@@ -13323,6 +13956,11 @@ impl FromIntoMemory for IDebugExpression {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDebugExpression {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x51973c14_cb0c_11d0_b5c9_00a0244a0e7a);
 }
 pub struct IDebugExpressionCallBack(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugExpressionCallBack {
@@ -13355,6 +13993,11 @@ impl FromIntoMemory for IDebugExpressionCallBack {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugExpressionCallBack {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x51973c16_cb0c_11d0_b5c9_00a0244a0e7a);
+}
 pub struct IDebugExpressionContext(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugExpressionContext {
     fn clone(&self) -> Self {
@@ -13385,6 +14028,11 @@ impl FromIntoMemory for IDebugExpressionContext {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDebugExpressionContext {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x51973c15_cb0c_11d0_b5c9_00a0244a0e7a);
 }
 pub struct IDebugExtendedProperty(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugExtendedProperty {
@@ -13417,6 +14065,11 @@ impl FromIntoMemory for IDebugExtendedProperty {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugExtendedProperty {
+    type Super = IDebugProperty;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x51973c52_cb0c_11d0_b5c9_00a0244a0e7a);
+}
 pub struct IDebugFormatter(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugFormatter {
     fn clone(&self) -> Self {
@@ -13445,6 +14098,11 @@ impl FromIntoMemory for IDebugFormatter {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDebugFormatter {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x51973c05_cb0c_11d0_b5c9_00a0244a0e7a);
 }
 pub struct IDebugHelper(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugHelper {
@@ -13475,6 +14133,11 @@ impl FromIntoMemory for IDebugHelper {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugHelper {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x51973c3f_cb0c_11d0_b5c9_00a0244a0e7a);
+}
 pub struct IDebugHost(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugHost {
     fn clone(&self) -> Self {
@@ -13503,6 +14166,11 @@ impl FromIntoMemory for IDebugHost {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDebugHost {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xb8c74943_6b2c_4eeb_b5c5_35d378a6d99d);
 }
 pub struct IDebugHostBaseClass(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugHostBaseClass {
@@ -13533,6 +14201,11 @@ impl FromIntoMemory for IDebugHostBaseClass {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugHostBaseClass {
+    type Super = IDebugHostSymbol;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xb94d57d2_390b_40f7_b5b4_b6db897d974b);
+}
 pub struct IDebugHostConstant(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugHostConstant {
     fn clone(&self) -> Self {
@@ -13561,6 +14234,11 @@ impl FromIntoMemory for IDebugHostConstant {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDebugHostConstant {
+    type Super = IDebugHostSymbol;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x62787edc_fa76_4690_bd71_5e8c3e2937ec);
 }
 pub struct IDebugHostContext(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugHostContext {
@@ -13591,6 +14269,11 @@ impl FromIntoMemory for IDebugHostContext {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugHostContext {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xa68c70d8_5ec0_46e5_b775_3134a48ea2e3);
+}
 pub struct IDebugHostData(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugHostData {
     fn clone(&self) -> Self {
@@ -13619,6 +14302,11 @@ impl FromIntoMemory for IDebugHostData {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDebugHostData {
+    type Super = IDebugHostSymbol;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xa3d64993_826c_44fa_897d_926f2fe7ad0b);
 }
 pub struct IDebugHostErrorSink(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugHostErrorSink {
@@ -13649,6 +14337,11 @@ impl FromIntoMemory for IDebugHostErrorSink {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugHostErrorSink {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xc8ff0f0b_fce9_467e_8bb3_5d69ef109c00);
+}
 pub struct IDebugHostEvaluator(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugHostEvaluator {
     fn clone(&self) -> Self {
@@ -13677,6 +14370,11 @@ impl FromIntoMemory for IDebugHostEvaluator {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDebugHostEvaluator {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x0fef9a21_577e_4997_ac7b_1c4883241d99);
 }
 pub struct IDebugHostEvaluator2(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugHostEvaluator2 {
@@ -13709,6 +14407,11 @@ impl FromIntoMemory for IDebugHostEvaluator2 {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugHostEvaluator2 {
+    type Super = IDebugHostEvaluator;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xa117a435_1fb4_4092_a2ab_a929576c1e87);
+}
 pub struct IDebugHostExtensibility(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugHostExtensibility {
     fn clone(&self) -> Self {
@@ -13740,6 +14443,11 @@ impl FromIntoMemory for IDebugHostExtensibility {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugHostExtensibility {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x3c2b24e1_11d0_4f86_8ae5_4df166f73253);
+}
 pub struct IDebugHostField(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugHostField {
     fn clone(&self) -> Self {
@@ -13768,6 +14476,11 @@ impl FromIntoMemory for IDebugHostField {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDebugHostField {
+    type Super = IDebugHostSymbol;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xe06f6495_16bc_4cc9_b11d_2a6b23fa72f3);
 }
 pub struct IDebugHostMemory(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugHostMemory {
@@ -13798,6 +14511,11 @@ impl FromIntoMemory for IDebugHostMemory {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugHostMemory {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x212149c9_9183_4a3e_b00e_4fd1dc95339b);
+}
 pub struct IDebugHostMemory2(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugHostMemory2 {
     fn clone(&self) -> Self {
@@ -13826,6 +14544,11 @@ impl FromIntoMemory for IDebugHostMemory2 {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDebugHostMemory2 {
+    type Super = IDebugHostMemory;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xeea033de_38f6_416b_a251_1d3771001270);
 }
 pub struct IDebugHostModule(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugHostModule {
@@ -13856,6 +14579,11 @@ impl FromIntoMemory for IDebugHostModule {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugHostModule {
+    type Super = IDebugHostSymbol;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xc9ba3e18_d070_4378_bbd0_34613b346e1e);
+}
 pub struct IDebugHostModule2(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugHostModule2 {
     fn clone(&self) -> Self {
@@ -13884,6 +14612,11 @@ impl FromIntoMemory for IDebugHostModule2 {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDebugHostModule2 {
+    type Super = IDebugHostModule;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xb51887e8_bcd0_4e8f_a8c7_434398b78c37);
 }
 pub struct IDebugHostModuleSignature(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugHostModuleSignature {
@@ -13916,6 +14649,11 @@ impl FromIntoMemory for IDebugHostModuleSignature {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugHostModuleSignature {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x31e53a5a_01ee_4bbb_b899_4b46ae7d595c);
+}
 pub struct IDebugHostPublic(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugHostPublic {
     fn clone(&self) -> Self {
@@ -13944,6 +14682,11 @@ impl FromIntoMemory for IDebugHostPublic {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDebugHostPublic {
+    type Super = IDebugHostSymbol;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x6c597ac9_fb4d_4f6d_9f39_22488539f8f4);
 }
 pub struct IDebugHostScriptHost(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugHostScriptHost {
@@ -13976,6 +14719,11 @@ impl FromIntoMemory for IDebugHostScriptHost {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugHostScriptHost {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xb70334a4_b92c_4570_93a1_d3eb686649a0);
+}
 pub struct IDebugHostStatus(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugHostStatus {
     fn clone(&self) -> Self {
@@ -14004,6 +14752,11 @@ impl FromIntoMemory for IDebugHostStatus {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDebugHostStatus {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x4f3e1ce2_86b2_4c7a_9c65_d0a9d0eecf44);
 }
 pub struct IDebugHostSymbol(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugHostSymbol {
@@ -14034,6 +14787,11 @@ impl FromIntoMemory for IDebugHostSymbol {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugHostSymbol {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x0f819103_87de_4e96_8277_e05cd441fb22);
+}
 pub struct IDebugHostSymbol2(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugHostSymbol2 {
     fn clone(&self) -> Self {
@@ -14062,6 +14820,11 @@ impl FromIntoMemory for IDebugHostSymbol2 {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDebugHostSymbol2 {
+    type Super = IDebugHostSymbol;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x21515b67_6720_4257_8a68_077dc944471c);
 }
 pub struct IDebugHostSymbolEnumerator(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugHostSymbolEnumerator {
@@ -14094,6 +14857,11 @@ impl FromIntoMemory for IDebugHostSymbolEnumerator {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugHostSymbolEnumerator {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x28d96c86_10a3_4976_b14e_eaef4790aa1f);
+}
 pub struct IDebugHostSymbols(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugHostSymbols {
     fn clone(&self) -> Self {
@@ -14122,6 +14890,11 @@ impl FromIntoMemory for IDebugHostSymbols {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDebugHostSymbols {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x854fd751_c2e1_4eb2_b525_6619cb97a588);
 }
 pub struct IDebugHostType(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugHostType {
@@ -14152,6 +14925,11 @@ impl FromIntoMemory for IDebugHostType {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugHostType {
+    type Super = IDebugHostSymbol;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x3aadc353_2b14_4abb_9893_5e03458e07ee);
+}
 pub struct IDebugHostType2(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugHostType2 {
     fn clone(&self) -> Self {
@@ -14180,6 +14958,11 @@ impl FromIntoMemory for IDebugHostType2 {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDebugHostType2 {
+    type Super = IDebugHostType;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xb28632b9_8506_4676_87ce_8f7e05e59876);
 }
 pub struct IDebugHostTypeSignature(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugHostTypeSignature {
@@ -14212,6 +14995,11 @@ impl FromIntoMemory for IDebugHostTypeSignature {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugHostTypeSignature {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x3aadc353_2b14_4abb_9893_5e03458e07ee);
+}
 pub struct IDebugInputCallbacks(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugInputCallbacks {
     fn clone(&self) -> Self {
@@ -14242,6 +15030,11 @@ impl FromIntoMemory for IDebugInputCallbacks {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDebugInputCallbacks {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x9f50e42c_f136_499e_9a97_73036c94ed2d);
 }
 pub struct IDebugOutputCallbacks(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugOutputCallbacks {
@@ -14274,6 +15067,11 @@ impl FromIntoMemory for IDebugOutputCallbacks {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugOutputCallbacks {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x4bf58045_d654_4c40_b0af_683090f356dc);
+}
 pub struct IDebugOutputCallbacks2(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugOutputCallbacks2 {
     fn clone(&self) -> Self {
@@ -14304,6 +15102,11 @@ impl FromIntoMemory for IDebugOutputCallbacks2 {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDebugOutputCallbacks2 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x67721fe9_56d2_4a44_a325_2b65513ce6eb);
 }
 pub struct IDebugOutputCallbacksWide(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugOutputCallbacksWide {
@@ -14336,6 +15139,11 @@ impl FromIntoMemory for IDebugOutputCallbacksWide {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugOutputCallbacksWide {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x4c7fd663_c394_4e26_8ef1_34ad5ed3764c);
+}
 pub struct IDebugOutputStream(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugOutputStream {
     fn clone(&self) -> Self {
@@ -14364,6 +15172,11 @@ impl FromIntoMemory for IDebugOutputStream {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDebugOutputStream {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x7782d8f2_2b85_4059_ab88_28ceddca1c80);
 }
 pub struct IDebugPlmClient(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugPlmClient {
@@ -14394,6 +15207,11 @@ impl FromIntoMemory for IDebugPlmClient {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugPlmClient {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xa02b66c4_aea3_4234_a9f7_fe4c383d4e29);
+}
 pub struct IDebugPlmClient2(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugPlmClient2 {
     fn clone(&self) -> Self {
@@ -14422,6 +15240,11 @@ impl FromIntoMemory for IDebugPlmClient2 {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDebugPlmClient2 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x597c980d_e7bd_4309_962c_9d9b69a7372c);
 }
 pub struct IDebugPlmClient3(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugPlmClient3 {
@@ -14452,6 +15275,11 @@ impl FromIntoMemory for IDebugPlmClient3 {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugPlmClient3 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xd4a5dbd1_ca02_4d90_856a_2a92bfd0f20f);
+}
 pub struct IDebugProperty(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugProperty {
     fn clone(&self) -> Self {
@@ -14480,6 +15308,11 @@ impl FromIntoMemory for IDebugProperty {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDebugProperty {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x51973c50_cb0c_11d0_b5c9_00a0244a0e7a);
 }
 pub struct IDebugPropertyEnumType_All(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugPropertyEnumType_All {
@@ -14512,6 +15345,11 @@ impl FromIntoMemory for IDebugPropertyEnumType_All {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugPropertyEnumType_All {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x51973c55_cb0c_11d0_b5c9_00a0244a0e7a);
+}
 pub struct IDebugPropertyEnumType_Arguments(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugPropertyEnumType_Arguments {
     fn clone(&self) -> Self {
@@ -14542,6 +15380,11 @@ impl FromIntoMemory for IDebugPropertyEnumType_Arguments {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDebugPropertyEnumType_Arguments {
+    type Super = IDebugPropertyEnumType_All;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x51973c57_cb0c_11d0_b5c9_00a0244a0e7a);
 }
 pub struct IDebugPropertyEnumType_Locals(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugPropertyEnumType_Locals {
@@ -14574,6 +15417,11 @@ impl FromIntoMemory for IDebugPropertyEnumType_Locals {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugPropertyEnumType_Locals {
+    type Super = IDebugPropertyEnumType_All;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x51973c56_cb0c_11d0_b5c9_00a0244a0e7a);
+}
 pub struct IDebugPropertyEnumType_LocalsPlusArgs(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugPropertyEnumType_LocalsPlusArgs {
     fn clone(&self) -> Self {
@@ -14604,6 +15452,11 @@ impl FromIntoMemory for IDebugPropertyEnumType_LocalsPlusArgs {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDebugPropertyEnumType_LocalsPlusArgs {
+    type Super = IDebugPropertyEnumType_All;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x51973c58_cb0c_11d0_b5c9_00a0244a0e7a);
 }
 pub struct IDebugPropertyEnumType_Registers(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugPropertyEnumType_Registers {
@@ -14636,6 +15489,11 @@ impl FromIntoMemory for IDebugPropertyEnumType_Registers {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugPropertyEnumType_Registers {
+    type Super = IDebugPropertyEnumType_All;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x51973c59_cb0c_11d0_b5c9_00a0244a0e7a);
+}
 pub struct IDebugRegisters(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugRegisters {
     fn clone(&self) -> Self {
@@ -14665,6 +15523,11 @@ impl FromIntoMemory for IDebugRegisters {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugRegisters {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xce289126_9e84_45a7_937e_67bb18691493);
+}
 pub struct IDebugRegisters2(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugRegisters2 {
     fn clone(&self) -> Self {
@@ -14693,6 +15556,11 @@ impl FromIntoMemory for IDebugRegisters2 {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDebugRegisters2 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x1656afa9_19c6_4e3a_97e7_5dc9160cf9c4);
 }
 pub struct IDebugSessionProvider(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugSessionProvider {
@@ -14725,6 +15593,11 @@ impl FromIntoMemory for IDebugSessionProvider {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugSessionProvider {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x51973c29_cb0c_11d0_b5c9_00a0244a0e7a);
+}
 pub struct IDebugStackFrame(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugStackFrame {
     fn clone(&self) -> Self {
@@ -14754,6 +15627,11 @@ impl FromIntoMemory for IDebugStackFrame {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugStackFrame {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x51973c17_cb0c_11d0_b5c9_00a0244a0e7a);
+}
 pub struct IDebugStackFrame110(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugStackFrame110 {
     fn clone(&self) -> Self {
@@ -14782,6 +15660,11 @@ impl FromIntoMemory for IDebugStackFrame110 {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDebugStackFrame110 {
+    type Super = IDebugStackFrame;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x4b509611_b6ea_4b24_adcb_d0ccfd1a7e33);
 }
 pub struct IDebugStackFrameSniffer(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugStackFrameSniffer {
@@ -14814,6 +15697,11 @@ impl FromIntoMemory for IDebugStackFrameSniffer {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugStackFrameSniffer {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x51973c18_cb0c_11d0_b5c9_00a0244a0e7a);
+}
 pub struct IDebugStackFrameSnifferEx32(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugStackFrameSnifferEx32 {
     fn clone(&self) -> Self {
@@ -14844,6 +15732,11 @@ impl FromIntoMemory for IDebugStackFrameSnifferEx32 {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDebugStackFrameSnifferEx32 {
+    type Super = IDebugStackFrameSniffer;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x51973c19_cb0c_11d0_b5c9_00a0244a0e7a);
 }
 pub struct IDebugStackFrameSnifferEx64(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugStackFrameSnifferEx64 {
@@ -14876,6 +15769,11 @@ impl FromIntoMemory for IDebugStackFrameSnifferEx64 {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugStackFrameSnifferEx64 {
+    type Super = IDebugStackFrameSniffer;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x8cd12af4_49c1_4d52_8d8a_c146f47581aa);
+}
 pub struct IDebugSymbolGroup(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugSymbolGroup {
     fn clone(&self) -> Self {
@@ -14904,6 +15802,11 @@ impl FromIntoMemory for IDebugSymbolGroup {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDebugSymbolGroup {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xf2528316_0f1a_4431_aeed_11d096e1e2ab);
 }
 pub struct IDebugSymbolGroup2(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugSymbolGroup2 {
@@ -14934,6 +15837,11 @@ impl FromIntoMemory for IDebugSymbolGroup2 {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugSymbolGroup2 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x6a7ccc5f_fb5e_4dcc_b41c_6c20307bccc7);
+}
 pub struct IDebugSymbols(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugSymbols {
     fn clone(&self) -> Self {
@@ -14962,6 +15870,11 @@ impl FromIntoMemory for IDebugSymbols {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDebugSymbols {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x8c31e98c_983a_48a5_9016_6fe5d667a950);
 }
 pub struct IDebugSymbols2(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugSymbols2 {
@@ -14992,6 +15905,11 @@ impl FromIntoMemory for IDebugSymbols2 {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugSymbols2 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x3a707211_afdd_4495_ad4f_56fecdf8163f);
+}
 pub struct IDebugSymbols3(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugSymbols3 {
     fn clone(&self) -> Self {
@@ -15020,6 +15938,11 @@ impl FromIntoMemory for IDebugSymbols3 {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDebugSymbols3 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xf02fbecc_50ac_4f36_9ad9_c975e8f32ff8);
 }
 pub struct IDebugSymbols4(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugSymbols4 {
@@ -15050,6 +15973,11 @@ impl FromIntoMemory for IDebugSymbols4 {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugSymbols4 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xe391bbd8_9d8c_4418_840b_c006592a1752);
+}
 pub struct IDebugSymbols5(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugSymbols5 {
     fn clone(&self) -> Self {
@@ -15078,6 +16006,11 @@ impl FromIntoMemory for IDebugSymbols5 {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDebugSymbols5 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xc65fa83e_1e69_475e_8e0e_b5d79e9cc17e);
 }
 pub struct IDebugSyncOperation(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugSyncOperation {
@@ -15108,6 +16041,11 @@ impl FromIntoMemory for IDebugSyncOperation {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugSyncOperation {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x51973c1a_cb0c_11d0_b5c9_00a0244a0e7a);
+}
 pub struct IDebugSystemObjects(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugSystemObjects {
     fn clone(&self) -> Self {
@@ -15136,6 +16074,11 @@ impl FromIntoMemory for IDebugSystemObjects {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDebugSystemObjects {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x6b86fe2c_2c4f_4f0c_9da2_174311acc327);
 }
 pub struct IDebugSystemObjects2(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugSystemObjects2 {
@@ -15168,6 +16111,11 @@ impl FromIntoMemory for IDebugSystemObjects2 {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugSystemObjects2 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x0ae9f5ff_1852_4679_b055_494bee6407ee);
+}
 pub struct IDebugSystemObjects3(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugSystemObjects3 {
     fn clone(&self) -> Self {
@@ -15198,6 +16146,11 @@ impl FromIntoMemory for IDebugSystemObjects3 {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDebugSystemObjects3 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xe9676e2f_e286_4ea3_b0f9_dfe5d9fc330e);
 }
 pub struct IDebugSystemObjects4(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugSystemObjects4 {
@@ -15230,6 +16183,11 @@ impl FromIntoMemory for IDebugSystemObjects4 {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugSystemObjects4 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x489468e6_7d0f_4af5_87ab_25207454d553);
+}
 pub struct IDebugThreadCall32(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugThreadCall32 {
     fn clone(&self) -> Self {
@@ -15259,6 +16217,11 @@ impl FromIntoMemory for IDebugThreadCall32 {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDebugThreadCall32 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x51973c36_cb0c_11d0_b5c9_00a0244a0e7a);
+}
 pub struct IDebugThreadCall64(crate::core::IUnknown);
 impl ::core::clone::Clone for IDebugThreadCall64 {
     fn clone(&self) -> Self {
@@ -15287,6 +16250,11 @@ impl FromIntoMemory for IDebugThreadCall64 {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDebugThreadCall64 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xcb3fa335_e979_42fd_9fcf_a7546a0f3905);
 }
 pub struct IDynamicConceptProviderConcept(crate::core::IUnknown);
 impl ::core::clone::Clone for IDynamicConceptProviderConcept {
@@ -15319,6 +16287,11 @@ impl FromIntoMemory for IDynamicConceptProviderConcept {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDynamicConceptProviderConcept {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x95a7f7dd_602e_483f_9d06_a15c0ee13174);
+}
 pub struct IDynamicKeyProviderConcept(crate::core::IUnknown);
 impl ::core::clone::Clone for IDynamicKeyProviderConcept {
     fn clone(&self) -> Self {
@@ -15349,6 +16322,11 @@ impl FromIntoMemory for IDynamicKeyProviderConcept {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDynamicKeyProviderConcept {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xe7983fa1_80a7_498c_988f_518ddc5d4025);
 }
 pub struct IEnumDebugApplicationNodes(crate::core::IUnknown);
 impl ::core::clone::Clone for IEnumDebugApplicationNodes {
@@ -15381,6 +16359,11 @@ impl FromIntoMemory for IEnumDebugApplicationNodes {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IEnumDebugApplicationNodes {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x51973c3a_cb0c_11d0_b5c9_00a0244a0e7a);
+}
 pub struct IEnumDebugCodeContexts(crate::core::IUnknown);
 impl ::core::clone::Clone for IEnumDebugCodeContexts {
     fn clone(&self) -> Self {
@@ -15411,6 +16394,11 @@ impl FromIntoMemory for IEnumDebugCodeContexts {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IEnumDebugCodeContexts {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x51973c1d_cb0c_11d0_b5c9_00a0244a0e7a);
 }
 pub struct IEnumDebugExpressionContexts(crate::core::IUnknown);
 impl ::core::clone::Clone for IEnumDebugExpressionContexts {
@@ -15443,6 +16431,11 @@ impl FromIntoMemory for IEnumDebugExpressionContexts {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IEnumDebugExpressionContexts {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x51973c40_cb0c_11d0_b5c9_00a0244a0e7a);
+}
 pub struct IEnumDebugExtendedPropertyInfo(crate::core::IUnknown);
 impl ::core::clone::Clone for IEnumDebugExtendedPropertyInfo {
     fn clone(&self) -> Self {
@@ -15473,6 +16466,11 @@ impl FromIntoMemory for IEnumDebugExtendedPropertyInfo {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IEnumDebugExtendedPropertyInfo {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x51973c53_cb0c_11d0_b5c9_00a0244a0e7a);
 }
 pub struct IEnumDebugPropertyInfo(crate::core::IUnknown);
 impl ::core::clone::Clone for IEnumDebugPropertyInfo {
@@ -15505,6 +16503,11 @@ impl FromIntoMemory for IEnumDebugPropertyInfo {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IEnumDebugPropertyInfo {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x51973c51_cb0c_11d0_b5c9_00a0244a0e7a);
+}
 pub struct IEnumDebugStackFrames(crate::core::IUnknown);
 impl ::core::clone::Clone for IEnumDebugStackFrames {
     fn clone(&self) -> Self {
@@ -15535,6 +16538,11 @@ impl FromIntoMemory for IEnumDebugStackFrames {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IEnumDebugStackFrames {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x51973c1e_cb0c_11d0_b5c9_00a0244a0e7a);
 }
 pub struct IEnumDebugStackFrames64(crate::core::IUnknown);
 impl ::core::clone::Clone for IEnumDebugStackFrames64 {
@@ -15567,6 +16575,11 @@ impl FromIntoMemory for IEnumDebugStackFrames64 {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IEnumDebugStackFrames64 {
+    type Super = IEnumDebugStackFrames;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x0dc38853_c1b0_4176_a984_b298361027af);
+}
 pub struct IEnumJsStackFrames(crate::core::IUnknown);
 impl ::core::clone::Clone for IEnumJsStackFrames {
     fn clone(&self) -> Self {
@@ -15595,6 +16608,11 @@ impl FromIntoMemory for IEnumJsStackFrames {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IEnumJsStackFrames {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x5e7da34b_fb51_4791_abe7_cb5bdf419755);
 }
 pub struct IEnumRemoteDebugApplicationThreads(crate::core::IUnknown);
 impl ::core::clone::Clone for IEnumRemoteDebugApplicationThreads {
@@ -15627,6 +16645,11 @@ impl FromIntoMemory for IEnumRemoteDebugApplicationThreads {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IEnumRemoteDebugApplicationThreads {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x51973c3c_cb0c_11d0_b5c9_00a0244a0e7a);
+}
 pub struct IEnumRemoteDebugApplications(crate::core::IUnknown);
 impl ::core::clone::Clone for IEnumRemoteDebugApplications {
     fn clone(&self) -> Self {
@@ -15658,6 +16681,11 @@ impl FromIntoMemory for IEnumRemoteDebugApplications {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IEnumRemoteDebugApplications {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x51973c3b_cb0c_11d0_b5c9_00a0244a0e7a);
+}
 pub struct IEquatableConcept(crate::core::IUnknown);
 impl ::core::clone::Clone for IEquatableConcept {
     fn clone(&self) -> Self {
@@ -15686,6 +16714,11 @@ impl FromIntoMemory for IEquatableConcept {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IEquatableConcept {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xc52d5d3d_609d_4d5d_8a82_46b0acdec4f4);
 }
 pub const IG_DISASSEMBLE_BUFFER: u32 = 44u32;
 pub const IG_DUMP_SYMBOL_INFO: u32 = 22u32;
@@ -15768,6 +16801,11 @@ impl FromIntoMemory for IHostDataModelAccess {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IHostDataModelAccess {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xf2bce54e_4835_4f8a_836e_7981e29904d1);
+}
 pub struct IIndexableConcept(crate::core::IUnknown);
 impl ::core::clone::Clone for IIndexableConcept {
     fn clone(&self) -> Self {
@@ -15796,6 +16834,11 @@ impl FromIntoMemory for IIndexableConcept {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IIndexableConcept {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xd1fad99f_3f53_4457_850c_8051df2d3fb5);
 }
 pub struct IIterableConcept(crate::core::IUnknown);
 impl ::core::clone::Clone for IIterableConcept {
@@ -15826,6 +16869,11 @@ impl FromIntoMemory for IIterableConcept {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IIterableConcept {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xf5d49d0c_0b02_4301_9c9b_b3a6037628f3);
+}
 pub struct IJsDebug(crate::core::IUnknown);
 impl ::core::clone::Clone for IJsDebug {
     fn clone(&self) -> Self {
@@ -15854,6 +16902,11 @@ impl FromIntoMemory for IJsDebug {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IJsDebug {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xbe0e89da_2ac5_4c04_ac5e_59956aae3613);
 }
 pub struct IJsDebugBreakPoint(crate::core::IUnknown);
 impl ::core::clone::Clone for IJsDebugBreakPoint {
@@ -15884,6 +16937,11 @@ impl FromIntoMemory for IJsDebugBreakPoint {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IJsDebugBreakPoint {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xdf6773e3_ed8d_488b_8a3e_5812577d1542);
+}
 pub struct IJsDebugDataTarget(crate::core::IUnknown);
 impl ::core::clone::Clone for IJsDebugDataTarget {
     fn clone(&self) -> Self {
@@ -15912,6 +16970,11 @@ impl FromIntoMemory for IJsDebugDataTarget {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IJsDebugDataTarget {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x53b28977_53a1_48e5_9000_5d0dfa893931);
 }
 pub struct IJsDebugFrame(crate::core::IUnknown);
 impl ::core::clone::Clone for IJsDebugFrame {
@@ -15942,6 +17005,11 @@ impl FromIntoMemory for IJsDebugFrame {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IJsDebugFrame {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xc9196637_ab9d_44b2_bad2_13b95b3f390e);
+}
 pub struct IJsDebugProcess(crate::core::IUnknown);
 impl ::core::clone::Clone for IJsDebugProcess {
     fn clone(&self) -> Self {
@@ -15970,6 +17038,11 @@ impl FromIntoMemory for IJsDebugProcess {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IJsDebugProcess {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x3d587168_6a2d_4041_bd3b_0de674502862);
 }
 pub struct IJsDebugProperty(crate::core::IUnknown);
 impl ::core::clone::Clone for IJsDebugProperty {
@@ -16000,6 +17073,11 @@ impl FromIntoMemory for IJsDebugProperty {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IJsDebugProperty {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xf8ffcf2b_3aa4_4320_85c3_52a312ba9633);
+}
 pub struct IJsDebugStackWalker(crate::core::IUnknown);
 impl ::core::clone::Clone for IJsDebugStackWalker {
     fn clone(&self) -> Self {
@@ -16028,6 +17106,11 @@ impl FromIntoMemory for IJsDebugStackWalker {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IJsDebugStackWalker {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xdb24b094_73c4_456c_a4ec_e90ea00bdfe3);
 }
 pub struct IJsEnumDebugProperty(crate::core::IUnknown);
 impl ::core::clone::Clone for IJsEnumDebugProperty {
@@ -16060,6 +17143,11 @@ impl FromIntoMemory for IJsEnumDebugProperty {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IJsEnumDebugProperty {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x4092432f_2f0f_4fe1_b638_5b74a52cdcbe);
+}
 pub struct IKeyEnumerator(crate::core::IUnknown);
 impl ::core::clone::Clone for IKeyEnumerator {
     fn clone(&self) -> Self {
@@ -16089,6 +17177,11 @@ impl FromIntoMemory for IKeyEnumerator {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IKeyEnumerator {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x345fa92e_5e00_4319_9cae_971f7601cdcf);
+}
 pub struct IKeyStore(crate::core::IUnknown);
 impl ::core::clone::Clone for IKeyStore {
     fn clone(&self) -> Self {
@@ -16117,6 +17210,11 @@ impl FromIntoMemory for IKeyStore {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IKeyStore {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x0fc7557d_401d_4fca_9365_da1e9850697c);
 }
 pub struct IMAGEHLP_CBA_EVENT {
     pub severity: IMAGEHLP_CBA_EVENT_SEVERITY,
@@ -21191,6 +22289,11 @@ impl FromIntoMemory for IMachineDebugManager {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IMachineDebugManager {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x51973c2c_cb0c_11d0_b5c9_00a0244a0e7a);
+}
 pub struct IMachineDebugManagerCookie(crate::core::IUnknown);
 impl ::core::clone::Clone for IMachineDebugManagerCookie {
     fn clone(&self) -> Self {
@@ -21221,6 +22324,11 @@ impl FromIntoMemory for IMachineDebugManagerCookie {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IMachineDebugManagerCookie {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x51973c2d_cb0c_11d0_b5c9_00a0244a0e7a);
 }
 pub struct IMachineDebugManagerEvents(crate::core::IUnknown);
 impl ::core::clone::Clone for IMachineDebugManagerEvents {
@@ -21253,6 +22361,11 @@ impl FromIntoMemory for IMachineDebugManagerEvents {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IMachineDebugManagerEvents {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x51973c2e_cb0c_11d0_b5c9_00a0244a0e7a);
+}
 pub struct IModelIterator(crate::core::IUnknown);
 impl ::core::clone::Clone for IModelIterator {
     fn clone(&self) -> Self {
@@ -21281,6 +22394,11 @@ impl FromIntoMemory for IModelIterator {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IModelIterator {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xe4622136_927d_4490_874f_581f3e4e3688);
 }
 pub struct IModelKeyReference(crate::core::IUnknown);
 impl ::core::clone::Clone for IModelKeyReference {
@@ -21311,6 +22429,11 @@ impl FromIntoMemory for IModelKeyReference {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IModelKeyReference {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x5253dcf8_5aff_4c62_b302_56a289e00998);
+}
 pub struct IModelKeyReference2(crate::core::IUnknown);
 impl ::core::clone::Clone for IModelKeyReference2 {
     fn clone(&self) -> Self {
@@ -21339,6 +22462,11 @@ impl FromIntoMemory for IModelKeyReference2 {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IModelKeyReference2 {
+    type Super = IModelKeyReference;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x80e2f7c5_7159_4e92_887e_7e0347e88406);
 }
 pub struct IModelMethod(crate::core::IUnknown);
 impl ::core::clone::Clone for IModelMethod {
@@ -21369,6 +22497,11 @@ impl FromIntoMemory for IModelMethod {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IModelMethod {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x80600c1f_b90b_4896_82ad_1c00207909e8);
+}
 pub struct IModelObject(crate::core::IUnknown);
 impl ::core::clone::Clone for IModelObject {
     fn clone(&self) -> Self {
@@ -21397,6 +22530,11 @@ impl FromIntoMemory for IModelObject {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IModelObject {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xe28c7893_3f4b_4b96_baca_293cdc55f45d);
 }
 pub struct IModelPropertyAccessor(crate::core::IUnknown);
 impl ::core::clone::Clone for IModelPropertyAccessor {
@@ -21428,6 +22566,11 @@ impl FromIntoMemory for IModelPropertyAccessor {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IModelPropertyAccessor {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x5a0c63d9_0526_42b8_960c_9516a3254c85);
 }
 pub const INCORRECT_VERSION_INFO: u32 = 7u32;
 pub struct INLINE_FRAME_CONTEXT {
@@ -21892,6 +23035,11 @@ impl FromIntoMemory for IObjectSafety {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IObjectSafety {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xcb5bdc81_93c1_11cf_8f20_00805f2cd064);
+}
 pub const IPMI_IOCTL_INDEX: u32 = 1024u32;
 pub const IPMI_OS_SEL_RECORD_MASK: u32 = 65535u32;
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -21972,6 +23120,11 @@ impl FromIntoMemory for IPerPropertyBrowsing2 {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IPerPropertyBrowsing2 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x51973c54_cb0c_11d0_b5c9_00a0244a0e7a);
+}
 pub struct IPreferredRuntimeTypeConcept(crate::core::IUnknown);
 impl ::core::clone::Clone for IPreferredRuntimeTypeConcept {
     fn clone(&self) -> Self {
@@ -22002,6 +23155,11 @@ impl FromIntoMemory for IPreferredRuntimeTypeConcept {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IPreferredRuntimeTypeConcept {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x9d6c1d7b_a76f_4618_8068_5f76bd9a4e8a);
 }
 pub struct IProcessDebugManager32(crate::core::IUnknown);
 impl ::core::clone::Clone for IProcessDebugManager32 {
@@ -22034,6 +23192,11 @@ impl FromIntoMemory for IProcessDebugManager32 {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IProcessDebugManager32 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x51973c2f_cb0c_11d0_b5c9_00a0244a0e7a);
+}
 pub struct IProcessDebugManager64(crate::core::IUnknown);
 impl ::core::clone::Clone for IProcessDebugManager64 {
     fn clone(&self) -> Self {
@@ -22064,6 +23227,11 @@ impl FromIntoMemory for IProcessDebugManager64 {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IProcessDebugManager64 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x56b9fc1c_63a9_4cc1_ac21_087d69a17fab);
 }
 pub struct IProvideExpressionContexts(crate::core::IUnknown);
 impl ::core::clone::Clone for IProvideExpressionContexts {
@@ -22096,6 +23264,11 @@ impl FromIntoMemory for IProvideExpressionContexts {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IProvideExpressionContexts {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x51973c41_cb0c_11d0_b5c9_00a0244a0e7a);
+}
 pub struct IRawEnumerator(crate::core::IUnknown);
 impl ::core::clone::Clone for IRawEnumerator {
     fn clone(&self) -> Self {
@@ -22124,6 +23297,11 @@ impl FromIntoMemory for IRawEnumerator {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IRawEnumerator {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xe13613f9_3a3c_40b5_8f48_1e5ebfb9b21b);
 }
 pub struct IRemoteDebugApplication(crate::core::IUnknown);
 impl ::core::clone::Clone for IRemoteDebugApplication {
@@ -22156,6 +23334,11 @@ impl FromIntoMemory for IRemoteDebugApplication {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IRemoteDebugApplication {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x51973c30_cb0c_11d0_b5c9_00a0244a0e7a);
+}
 pub struct IRemoteDebugApplication110(crate::core::IUnknown);
 impl ::core::clone::Clone for IRemoteDebugApplication110 {
     fn clone(&self) -> Self {
@@ -22186,6 +23369,11 @@ impl FromIntoMemory for IRemoteDebugApplication110 {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IRemoteDebugApplication110 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xd5fe005b_2836_485e_b1f9_89d91aa24fd4);
 }
 pub struct IRemoteDebugApplicationEvents(crate::core::IUnknown);
 impl ::core::clone::Clone for IRemoteDebugApplicationEvents {
@@ -22218,6 +23406,11 @@ impl FromIntoMemory for IRemoteDebugApplicationEvents {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IRemoteDebugApplicationEvents {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x51973c33_cb0c_11d0_b5c9_00a0244a0e7a);
+}
 pub struct IRemoteDebugApplicationThread(crate::core::IUnknown);
 impl ::core::clone::Clone for IRemoteDebugApplicationThread {
     fn clone(&self) -> Self {
@@ -22248,6 +23441,11 @@ impl FromIntoMemory for IRemoteDebugApplicationThread {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IRemoteDebugApplicationThread {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x51973c37_cb0c_11d0_b5c9_00a0244a0e7a);
 }
 pub struct IRemoteDebugCriticalErrorEvent110(crate::core::IUnknown);
 impl ::core::clone::Clone for IRemoteDebugCriticalErrorEvent110 {
@@ -22280,6 +23478,11 @@ impl FromIntoMemory for IRemoteDebugCriticalErrorEvent110 {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IRemoteDebugCriticalErrorEvent110 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x2f69c611_6b14_47e8_9260_4bb7c52f504b);
+}
 pub struct IRemoteDebugInfoEvent110(crate::core::IUnknown);
 impl ::core::clone::Clone for IRemoteDebugInfoEvent110 {
     fn clone(&self) -> Self {
@@ -22311,6 +23514,11 @@ impl FromIntoMemory for IRemoteDebugInfoEvent110 {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IRemoteDebugInfoEvent110 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x9ff56bb6_eb89_4c0f_8823_cc2a4c0b7f26);
+}
 pub struct IScriptEntry(crate::core::IUnknown);
 impl ::core::clone::Clone for IScriptEntry {
     fn clone(&self) -> Self {
@@ -22339,6 +23547,11 @@ impl FromIntoMemory for IScriptEntry {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IScriptEntry {
+    type Super = IScriptNode;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x0aee2a95_bcbb_11d0_8c72_00c04fc2b085);
 }
 pub struct IScriptInvocationContext(crate::core::IUnknown);
 impl ::core::clone::Clone for IScriptInvocationContext {
@@ -22371,6 +23584,11 @@ impl FromIntoMemory for IScriptInvocationContext {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IScriptInvocationContext {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x5d7741b7_af7e_4a2a_85e5_c77f4d0659fb);
+}
 pub struct IScriptNode(crate::core::IUnknown);
 impl ::core::clone::Clone for IScriptNode {
     fn clone(&self) -> Self {
@@ -22400,6 +23618,11 @@ impl FromIntoMemory for IScriptNode {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IScriptNode {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x0aee2a94_bcbb_11d0_8c72_00c04fc2b085);
+}
 pub struct IScriptScriptlet(crate::core::IUnknown);
 impl ::core::clone::Clone for IScriptScriptlet {
     fn clone(&self) -> Self {
@@ -22428,6 +23651,11 @@ impl FromIntoMemory for IScriptScriptlet {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IScriptScriptlet {
+    type Super = IScriptEntry;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x0aee2a96_bcbb_11d0_8c72_00c04fc2b085);
 }
 pub struct ISimpleConnectionPoint(crate::core::IUnknown);
 impl ::core::clone::Clone for ISimpleConnectionPoint {
@@ -22460,6 +23688,11 @@ impl FromIntoMemory for ISimpleConnectionPoint {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for ISimpleConnectionPoint {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x51973c3e_cb0c_11d0_b5c9_00a0244a0e7a);
+}
 pub struct IStringDisplayableConcept(crate::core::IUnknown);
 impl ::core::clone::Clone for IStringDisplayableConcept {
     fn clone(&self) -> Self {
@@ -22491,6 +23724,11 @@ impl FromIntoMemory for IStringDisplayableConcept {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IStringDisplayableConcept {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xd28e8d70_6c00_4205_940d_501016601ea3);
+}
 pub struct ITridentEventSink(crate::core::IUnknown);
 impl ::core::clone::Clone for ITridentEventSink {
     fn clone(&self) -> Self {
@@ -22519,6 +23757,11 @@ impl FromIntoMemory for ITridentEventSink {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for ITridentEventSink {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x1dc9ca50_06ef_11d2_8415_006008c3fbfc);
 }
 pub struct IWebAppDiagnosticsObjectInitialization(crate::core::IUnknown);
 impl ::core::clone::Clone for IWebAppDiagnosticsObjectInitialization {
@@ -22551,6 +23794,11 @@ impl FromIntoMemory for IWebAppDiagnosticsObjectInitialization {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IWebAppDiagnosticsObjectInitialization {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x16ff3a42_a5f5_432b_b625_8e8e16f57e15);
+}
 pub struct IWebAppDiagnosticsSetup(crate::core::IUnknown);
 impl ::core::clone::Clone for IWebAppDiagnosticsSetup {
     fn clone(&self) -> Self {
@@ -22581,6 +23829,11 @@ impl FromIntoMemory for IWebAppDiagnosticsSetup {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IWebAppDiagnosticsSetup {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x379bfbe1_c6c9_432a_93e1_6d17656c538c);
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
 pub struct IntrinsicKind(pub i32);

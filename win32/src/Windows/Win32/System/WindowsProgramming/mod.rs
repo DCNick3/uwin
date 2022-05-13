@@ -2281,6 +2281,11 @@ impl FromIntoMemory for ICameraUIControl {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for ICameraUIControl {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xb8733adf_3d68_4b8f_bb08_e28a0bed0376);
+}
 pub struct ICameraUIControlEventCallback(crate::core::IUnknown);
 impl ::core::clone::Clone for ICameraUIControlEventCallback {
     fn clone(&self) -> Self {
@@ -2311,6 +2316,11 @@ impl FromIntoMemory for ICameraUIControlEventCallback {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for ICameraUIControlEventCallback {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x1bfa0c2c_fbcd_4776_bda4_88bf974e74f4);
 }
 pub struct IClipServiceNotificationHelper(crate::core::IUnknown);
 impl ::core::clone::Clone for IClipServiceNotificationHelper {
@@ -2343,6 +2353,11 @@ impl FromIntoMemory for IClipServiceNotificationHelper {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IClipServiceNotificationHelper {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xc39948f0_6142_44fd_98ca_e1681a8d68b5);
+}
 pub struct IContainerActivationHelper(crate::core::IUnknown);
 impl ::core::clone::Clone for IContainerActivationHelper {
     fn clone(&self) -> Self {
@@ -2373,6 +2388,11 @@ impl FromIntoMemory for IContainerActivationHelper {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IContainerActivationHelper {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xb524f93f_80d5_4ec7_ae9e_d66e93ade1fa);
 }
 pub struct IDefaultBrowserSyncSettings(crate::core::IUnknown);
 impl ::core::clone::Clone for IDefaultBrowserSyncSettings {
@@ -2405,6 +2425,11 @@ impl FromIntoMemory for IDefaultBrowserSyncSettings {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDefaultBrowserSyncSettings {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x7a27faad_5ae6_4255_9030_c530936292e3);
+}
 pub struct IDeleteBrowsingHistory(crate::core::IUnknown);
 impl ::core::clone::Clone for IDeleteBrowsingHistory {
     fn clone(&self) -> Self {
@@ -2435,6 +2460,11 @@ impl FromIntoMemory for IDeleteBrowsingHistory {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDeleteBrowsingHistory {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xcf38ed4b_2be7_4461_8b5e_9a466dc82ae3);
 }
 pub const IE4_BACKNEW: u32 = 2u32;
 pub const IE4_EXTRAINCREFCNT: u32 = 2048u32;
@@ -2488,6 +2518,11 @@ impl FromIntoMemory for IEditionUpgradeBroker {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IEditionUpgradeBroker {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xff19cbcf_9455_4937_b872_6b7929a460af);
+}
 pub struct IEditionUpgradeHelper(crate::core::IUnknown);
 impl ::core::clone::Clone for IEditionUpgradeHelper {
     fn clone(&self) -> Self {
@@ -2518,6 +2553,11 @@ impl FromIntoMemory for IEditionUpgradeHelper {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IEditionUpgradeHelper {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xd3e9e342_5deb_43b6_849e_6913b85d503a);
 }
 pub const IF_GENERIC: u32 = 512u32;
 pub const IF_MIB: u32 = 514u32;
@@ -3154,6 +3194,11 @@ impl FromIntoMemory for IWindowsLockModeHelper {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IWindowsLockModeHelper {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xf342d19e_cc22_4648_bb5d_03ccf75b47c5);
 }
 pub struct JAVA_TRUST {
     pub cbSize: u32,

@@ -455,6 +455,21 @@ impl TypeDef {
         (result, inspectable)
     }
 
+    pub fn base_interface(&self) -> BaseInterface {
+        assert_eq!(self.kind(), TypeKind::Interface);
+
+        let impls = self
+            .interface_impls()
+            .map(|i| i.generic_interface(&[]))
+            .collect::<Vec<_>>();
+        assert_eq!(impls.len(), 1);
+        match impls.into_iter().next().unwrap() {
+            Type::IUnknown => BaseInterface::IUnknown,
+            Type::TypeDef(t) => BaseInterface::TypeDef(t),
+            _ => unimplemented!(),
+        }
+    }
+
     pub fn vtable_types(&self) -> Vec<Type> {
         let mut result = Vec::new();
 
@@ -807,4 +822,9 @@ impl Iterator for Bases {
             Some(self.0.clone())
         }
     }
+}
+
+pub enum BaseInterface {
+    IUnknown,
+    TypeDef(TypeDef),
 }

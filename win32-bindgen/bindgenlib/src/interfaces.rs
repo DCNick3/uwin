@@ -50,7 +50,7 @@ fn gen_win_interface(def: &TypeDef, gen: &Gen) -> TokenStream {
         //tokens.combine(&gen_agile(def, gen));
     }
 
-    // tokens.combine(&gen_interface_trait(def, &cfg, gen));
+    tokens.combine(&gen_interface_trait(def, &cfg, gen));
     // tokens.combine(&gen_vtbl(def, &cfg, gen));
     tokens
 }
@@ -97,6 +97,71 @@ pub fn gen_std_traits(def: &TypeDef, cfg: &Cfg, gen: &Gen) -> TokenStream {
                 std::mem::size_of::<crate::core::IUnknown>()
             }
         }
+    }
+}
+
+pub fn gen_interface_trait(def: &TypeDef, cfg: &Cfg, gen: &Gen) -> TokenStream {
+    let cfg = gen.cfg(cfg);
+
+    let base = def.base_interface();
+    let base = match base {
+        BaseInterface::IUnknown => quote! {
+            crate::core::IUnknown
+        },
+        BaseInterface::TypeDef(t) => {
+            let ident = gen_type_ident(&t, gen);
+            let namespace = gen.namespace(t.namespace());
+            quote! {
+                #namespace #ident
+            }
+        }
+    };
+
+    if let Some(_default) = def.default_interface() {
+        unimplemented!("What is this?");
+
+        // let name = gen_type_ident(def, gen);
+        // let default_name = gen_type_ident(&default, gen);
+        // let vtbl = gen_vtbl_ident(&default, gen);
+        // let namespace = gen.namespace(default.namespace());
+
+        // quote! {
+        //     #cfg
+        //     impl crate::core::ComInterface for #name {
+        //         const IID: ::windows::core::GUID = <#namespace #default_name as crate::core::ComInterface>::IID;
+        //     }
+        // }
+    } else {
+        let name = gen_type_ident(def, gen);
+        let constraints = gen_type_constraints(def, gen);
+        // let vtbl = gen_vtbl_ident(def, gen);
+        let guid = gen_type_guid(def, gen, &"Self".into());
+
+        quote! {
+            #cfg
+            impl<#(#constraints)*> crate::core::ComInterface for #name {
+                type Super = #base;
+                const IID: crate::core::GUID = #guid;
+            }
+        }
+    }
+}
+
+fn gen_type_guid(def: &TypeDef, gen: &Gen, _type_name: &TokenStream) -> TokenStream {
+    if def.generics.is_empty() {
+        match GUID::from_attributes(def.attributes()) {
+            Some(guid) => gen_guid(&guid, gen),
+            None => {
+                quote! {
+                    crate::core::GUID::zeroed()
+                }
+            }
+        }
+    } else {
+        unimplemented!("Generics")
+        // quote! {
+        //     crate::core::GUID::from_signature(<#type_name as crate::core::RuntimeType>::SIGNATURE)
+        // }
     }
 }
 

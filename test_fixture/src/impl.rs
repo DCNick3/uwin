@@ -608,7 +608,7 @@ impl win32::Win32::Graphics::DirectDraw::Api for DirectDraw {
         _lplp_dd: MutPtr<IDirectDraw>,
         p_unk_outer: IUnknown,
     ) -> HRESULT {
-        let ctx = self.process_ctx.memory_ctx;
+        let _ctx = self.process_ctx.memory_ctx;
 
         assert_eq!(lp_guid, MutPtr::null());
         assert_eq!(p_unk_outer.raw_ptr(), 0);

@@ -22704,6 +22704,11 @@ impl FromIntoMemory for IDDVideoPortContainer {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDDVideoPortContainer {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x6c142760_a733_11ce_a521_0020af0be560);
+}
 pub struct IDirectDraw(crate::core::IUnknown);
 impl ::core::clone::Clone for IDirectDraw {
     fn clone(&self) -> Self {
@@ -22732,6 +22737,11 @@ impl FromIntoMemory for IDirectDraw {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDirectDraw {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x6c14db80_a733_11ce_a521_0020af0be560);
 }
 pub struct IDirectDraw2(crate::core::IUnknown);
 impl ::core::clone::Clone for IDirectDraw2 {
@@ -22762,6 +22772,11 @@ impl FromIntoMemory for IDirectDraw2 {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDirectDraw2 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xb3a6f3e0_2b43_11cf_a2de_00aa00b93356);
+}
 pub struct IDirectDraw4(crate::core::IUnknown);
 impl ::core::clone::Clone for IDirectDraw4 {
     fn clone(&self) -> Self {
@@ -22790,6 +22805,11 @@ impl FromIntoMemory for IDirectDraw4 {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDirectDraw4 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x9c59509a_39bd_11d1_8c4a_00c04fd930c5);
 }
 pub struct IDirectDraw7(crate::core::IUnknown);
 impl ::core::clone::Clone for IDirectDraw7 {
@@ -22820,6 +22840,11 @@ impl FromIntoMemory for IDirectDraw7 {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDirectDraw7 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x15e65ec0_3b9c_11d2_b92f_00609797ea5b);
+}
 pub struct IDirectDrawClipper(crate::core::IUnknown);
 impl ::core::clone::Clone for IDirectDrawClipper {
     fn clone(&self) -> Self {
@@ -22848,6 +22873,11 @@ impl FromIntoMemory for IDirectDrawClipper {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDirectDrawClipper {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x6c14db85_a733_11ce_a521_0020af0be560);
 }
 pub struct IDirectDrawColorControl(crate::core::IUnknown);
 impl ::core::clone::Clone for IDirectDrawColorControl {
@@ -22880,6 +22910,11 @@ impl FromIntoMemory for IDirectDrawColorControl {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDirectDrawColorControl {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x4b9f0ee0_0d7e_11d0_9b06_00a0c903a3b8);
+}
 pub struct IDirectDrawGammaControl(crate::core::IUnknown);
 impl ::core::clone::Clone for IDirectDrawGammaControl {
     fn clone(&self) -> Self {
@@ -22911,6 +22946,11 @@ impl FromIntoMemory for IDirectDrawGammaControl {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDirectDrawGammaControl {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x69c11c3e_b46b_11d1_ad7a_00c04fc29b4e);
+}
 pub struct IDirectDrawKernel(crate::core::IUnknown);
 impl ::core::clone::Clone for IDirectDrawKernel {
     fn clone(&self) -> Self {
@@ -22939,6 +22979,11 @@ impl FromIntoMemory for IDirectDrawKernel {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDirectDrawKernel {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x8d56c120_6a08_11d0_9b06_00a0c903a3b8);
 }
 pub struct IDirectDrawPalette(crate::core::IUnknown);
 impl ::core::clone::Clone for IDirectDrawPalette {
@@ -22969,6 +23014,11 @@ impl FromIntoMemory for IDirectDrawPalette {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDirectDrawPalette {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x6c14db84_a733_11ce_a521_0020af0be560);
+}
 pub struct IDirectDrawSurface(crate::core::IUnknown);
 impl ::core::clone::Clone for IDirectDrawSurface {
     fn clone(&self) -> Self {
@@ -22997,6 +23047,11 @@ impl FromIntoMemory for IDirectDrawSurface {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDirectDrawSurface {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x6c14db81_a733_11ce_a521_0020af0be560);
 }
 pub struct IDirectDrawSurface2(crate::core::IUnknown);
 impl ::core::clone::Clone for IDirectDrawSurface2 {
@@ -23027,6 +23082,11 @@ impl FromIntoMemory for IDirectDrawSurface2 {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDirectDrawSurface2 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x57805885_6eec_11cf_9441_a82303c10e27);
+}
 pub struct IDirectDrawSurface3(crate::core::IUnknown);
 impl ::core::clone::Clone for IDirectDrawSurface3 {
     fn clone(&self) -> Self {
@@ -23055,6 +23115,11 @@ impl FromIntoMemory for IDirectDrawSurface3 {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDirectDrawSurface3 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xda044e00_69b2_11d0_a1d5_00aa00b8dfbb);
 }
 pub struct IDirectDrawSurface4(crate::core::IUnknown);
 impl ::core::clone::Clone for IDirectDrawSurface4 {
@@ -23085,6 +23150,11 @@ impl FromIntoMemory for IDirectDrawSurface4 {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDirectDrawSurface4 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x0b2b8630_ad35_11d0_8ea6_00609797ea5b);
+}
 pub struct IDirectDrawSurface7(crate::core::IUnknown);
 impl ::core::clone::Clone for IDirectDrawSurface7 {
     fn clone(&self) -> Self {
@@ -23113,6 +23183,11 @@ impl FromIntoMemory for IDirectDrawSurface7 {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDirectDrawSurface7 {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x06675a80_3b9b_11d2_b92f_00609797ea5b);
 }
 pub struct IDirectDrawSurfaceKernel(crate::core::IUnknown);
 impl ::core::clone::Clone for IDirectDrawSurfaceKernel {
@@ -23145,6 +23220,11 @@ impl FromIntoMemory for IDirectDrawSurfaceKernel {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDirectDrawSurfaceKernel {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0x60755da0_6a40_11d0_9b06_00a0c903a3b8);
+}
 pub struct IDirectDrawVideoPort(crate::core::IUnknown);
 impl ::core::clone::Clone for IDirectDrawVideoPort {
     fn clone(&self) -> Self {
@@ -23176,6 +23256,11 @@ impl FromIntoMemory for IDirectDrawVideoPort {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+impl crate::core::ComInterface for IDirectDrawVideoPort {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xb36d93e0_2b43_11cf_a2de_00aa00b93356);
+}
 pub struct IDirectDrawVideoPortNotify(crate::core::IUnknown);
 impl ::core::clone::Clone for IDirectDrawVideoPortNotify {
     fn clone(&self) -> Self {
@@ -23206,6 +23291,11 @@ impl FromIntoMemory for IDirectDrawVideoPortNotify {
     fn size() -> usize {
         std::mem::size_of::<crate::core::IUnknown>()
     }
+}
+impl crate::core::ComInterface for IDirectDrawVideoPortNotify {
+    type Super = crate::core::IUnknown;
+    const IID: crate::core::GUID =
+        crate::core::GUID::from_u128(0xa655fb94_0589_4e57_b333_567a89468c88);
 }
 pub const IRQINFO_HANDLED: u32 = 1u32;
 pub const IRQINFO_NOTHANDLED: u32 = 2u32;
