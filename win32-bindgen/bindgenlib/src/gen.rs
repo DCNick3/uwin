@@ -1,4 +1,11 @@
 use super::*;
+use serde::Deserialize;
+
+#[derive(Deserialize)]
+pub struct ComClass {
+    pub name: String,
+    pub interfaces: Vec<String>,
+}
 
 pub struct Gen<'a> {
     pub included_namespaces: &'a BTreeSet<String>,
@@ -6,6 +13,7 @@ pub struct Gen<'a> {
     pub excluded_libraries: &'a BTreeSet<String>,
     pub unwindable_functions: &'a BTreeSet<String>,
     pub callbacking_functions: &'a BTreeSet<String>,
+    pub com_classes: &'a Vec<ComClass>,
     pub namespace: &'a str,
     pub sys: bool,
     pub flatten: bool,

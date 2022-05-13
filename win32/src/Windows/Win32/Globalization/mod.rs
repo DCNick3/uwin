@@ -1430,6 +1430,15 @@ impl FromIntoMemory for HSAVEDUILANGUAGES {
     }
 }
 pub struct IComprehensiveSpellCheckProvider(crate::core::IUnknown);
+pub trait IComprehensiveSpellCheckProvider_Trait: crate::core::IUnknown_Trait {
+    fn ComprehensiveCheck(
+        &self,
+        text: PCWSTR,
+        value: MutPtr<IEnumSpellingError>,
+    ) -> crate::core::HRESULT {
+        todo!("ComprehensiveCheck")
+    }
+}
 impl ::core::clone::Clone for IComprehensiveSpellCheckProvider {
     fn clone(&self) -> Self {
         Self(self.0.clone())
@@ -1470,6 +1479,25 @@ pub const IDN_EMAIL_ADDRESS: u32 = 4u32;
 pub const IDN_RAW_PUNYCODE: u32 = 8u32;
 pub const IDN_USE_STD3_ASCII_RULES: u32 = 2u32;
 pub struct IEnumCodePage(crate::core::IUnknown);
+pub trait IEnumCodePage_Trait: crate::core::IUnknown_Trait {
+    fn Clone(&self, pp_enum: MutPtr<IEnumCodePage>) -> crate::core::HRESULT {
+        todo!("Clone")
+    }
+    fn Next(
+        &self,
+        celt: u32,
+        rgelt: MutPtr<MIMECPINFO>,
+        pcelt_fetched: MutPtr<u32>,
+    ) -> crate::core::HRESULT {
+        todo!("Next")
+    }
+    fn Reset(&self) -> crate::core::HRESULT {
+        todo!("Reset")
+    }
+    fn Skip(&self, celt: u32) -> crate::core::HRESULT {
+        todo!("Skip")
+    }
+}
 impl ::core::clone::Clone for IEnumCodePage {
     fn clone(&self) -> Self {
         Self(self.0.clone())
@@ -1504,6 +1532,25 @@ impl crate::core::ComInterface for IEnumCodePage {
         crate::core::GUID::from_u128(0x275c23e3_3747_11d0_9fea_00aa003f8646);
 }
 pub struct IEnumRfc1766(crate::core::IUnknown);
+pub trait IEnumRfc1766_Trait: crate::core::IUnknown_Trait {
+    fn Clone(&self, pp_enum: MutPtr<IEnumRfc1766>) -> crate::core::HRESULT {
+        todo!("Clone")
+    }
+    fn Next(
+        &self,
+        celt: u32,
+        rgelt: MutPtr<RFC1766INFO>,
+        pcelt_fetched: MutPtr<u32>,
+    ) -> crate::core::HRESULT {
+        todo!("Next")
+    }
+    fn Reset(&self) -> crate::core::HRESULT {
+        todo!("Reset")
+    }
+    fn Skip(&self, celt: u32) -> crate::core::HRESULT {
+        todo!("Skip")
+    }
+}
 impl ::core::clone::Clone for IEnumRfc1766 {
     fn clone(&self) -> Self {
         Self(self.0.clone())
@@ -1538,6 +1585,25 @@ impl crate::core::ComInterface for IEnumRfc1766 {
         crate::core::GUID::from_u128(0x3dc39d1d_c030_11d0_b81b_00c04fc9b31f);
 }
 pub struct IEnumScript(crate::core::IUnknown);
+pub trait IEnumScript_Trait: crate::core::IUnknown_Trait {
+    fn Clone(&self, pp_enum: MutPtr<IEnumScript>) -> crate::core::HRESULT {
+        todo!("Clone")
+    }
+    fn Next(
+        &self,
+        celt: u32,
+        rgelt: MutPtr<SCRIPTINFO>,
+        pcelt_fetched: MutPtr<u32>,
+    ) -> crate::core::HRESULT {
+        todo!("Next")
+    }
+    fn Reset(&self) -> crate::core::HRESULT {
+        todo!("Reset")
+    }
+    fn Skip(&self, celt: u32) -> crate::core::HRESULT {
+        todo!("Skip")
+    }
+}
 impl ::core::clone::Clone for IEnumScript {
     fn clone(&self) -> Self {
         Self(self.0.clone())
@@ -1572,6 +1638,11 @@ impl crate::core::ComInterface for IEnumScript {
         crate::core::GUID::from_u128(0xae5f1430_388b_11d2_8380_00c04f8f5da1);
 }
 pub struct IEnumSpellingError(crate::core::IUnknown);
+pub trait IEnumSpellingError_Trait: crate::core::IUnknown_Trait {
+    fn Next(&self, value: MutPtr<ISpellingError>) -> crate::core::HRESULT {
+        todo!("Next")
+    }
+}
 impl ::core::clone::Clone for IEnumSpellingError {
     fn clone(&self) -> Self {
         Self(self.0.clone())
@@ -1618,6 +1689,36 @@ pub const IME_CMODE_NATIVE: u32 = 1u32;
 pub const IME_CMODE_NATIVESYMBOL: u32 = 128u32;
 pub const IME_CMODE_ROMAN: u32 = 16u32;
 pub struct IMLangCodePages(crate::core::IUnknown);
+pub trait IMLangCodePages_Trait: crate::core::IUnknown_Trait {
+    fn GetCharCodePages(&self, ch_src: u16, pdw_code_pages: MutPtr<u32>) -> crate::core::HRESULT {
+        todo!("GetCharCodePages")
+    }
+    fn GetStrCodePages(
+        &self,
+        psz_src: PCWSTR,
+        cch_src: i32,
+        dw_priority_code_pages: u32,
+        pdw_code_pages: MutPtr<u32>,
+        pcch_code_pages: MutPtr<i32>,
+    ) -> crate::core::HRESULT {
+        todo!("GetStrCodePages")
+    }
+    fn CodePageToCodePages(
+        &self,
+        u_code_page: u32,
+        pdw_code_pages: MutPtr<u32>,
+    ) -> crate::core::HRESULT {
+        todo!("CodePageToCodePages")
+    }
+    fn CodePagesToCodePage(
+        &self,
+        dw_code_pages: u32,
+        u_default_code_page: u32,
+        pu_code_page: MutPtr<u32>,
+    ) -> crate::core::HRESULT {
+        todo!("CodePagesToCodePage")
+    }
+}
 impl ::core::clone::Clone for IMLangCodePages {
     fn clone(&self) -> Self {
         Self(self.0.clone())
@@ -1652,6 +1753,52 @@ impl crate::core::ComInterface for IMLangCodePages {
         crate::core::GUID::from_u128(0x359f3443_bd4a_11d0_b188_00aa0038c969);
 }
 pub struct IMLangConvertCharset(crate::core::IUnknown);
+pub trait IMLangConvertCharset_Trait: crate::core::IUnknown_Trait {
+    fn Initialize(
+        &self,
+        ui_src_code_page: u32,
+        ui_dst_code_page: u32,
+        dw_property: u32,
+    ) -> crate::core::HRESULT {
+        todo!("Initialize")
+    }
+    fn GetSourceCodePage(&self, pui_src_code_page: MutPtr<u32>) -> crate::core::HRESULT {
+        todo!("GetSourceCodePage")
+    }
+    fn GetDestinationCodePage(&self, pui_dst_code_page: MutPtr<u32>) -> crate::core::HRESULT {
+        todo!("GetDestinationCodePage")
+    }
+    fn GetProperty(&self, pdw_property: MutPtr<u32>) -> crate::core::HRESULT {
+        todo!("GetProperty")
+    }
+    fn DoConversion(
+        &self,
+        p_src_str: ConstPtr<u8>,
+        pc_src_size: MutPtr<u32>,
+        p_dst_str: MutPtr<u8>,
+        pc_dst_size: MutPtr<u32>,
+    ) -> crate::core::HRESULT {
+        todo!("DoConversion")
+    }
+    fn DoConversionToUnicode(
+        &self,
+        p_src_str: PCSTR,
+        pc_src_size: MutPtr<u32>,
+        p_dst_str: PWSTR,
+        pc_dst_size: MutPtr<u32>,
+    ) -> crate::core::HRESULT {
+        todo!("DoConversionToUnicode")
+    }
+    fn DoConversionFromUnicode(
+        &self,
+        p_src_str: PCWSTR,
+        pc_src_size: MutPtr<u32>,
+        p_dst_str: PSTR,
+        pc_dst_size: MutPtr<u32>,
+    ) -> crate::core::HRESULT {
+        todo!("DoConversionFromUnicode")
+    }
+}
 impl ::core::clone::Clone for IMLangConvertCharset {
     fn clone(&self) -> Self {
         Self(self.0.clone())
@@ -1688,6 +1835,31 @@ impl crate::core::ComInterface for IMLangConvertCharset {
         crate::core::GUID::from_u128(0xd66d6f98_cdaa_11d0_b822_00c04fc9b31f);
 }
 pub struct IMLangFontLink(crate::core::IUnknown);
+pub trait IMLangFontLink_Trait: IMLangCodePages_Trait {
+    fn GetFontCodePages(
+        &self,
+        h_dc: super::Graphics::Gdi::HDC,
+        h_font: super::Graphics::Gdi::HFONT,
+        pdw_code_pages: MutPtr<u32>,
+    ) -> crate::core::HRESULT {
+        todo!("GetFontCodePages")
+    }
+    fn MapFont(
+        &self,
+        h_dc: super::Graphics::Gdi::HDC,
+        dw_code_pages: u32,
+        h_src_font: super::Graphics::Gdi::HFONT,
+        ph_dest_font: MutPtr<super::Graphics::Gdi::HFONT>,
+    ) -> crate::core::HRESULT {
+        todo!("MapFont")
+    }
+    fn ReleaseFont(&self, h_font: super::Graphics::Gdi::HFONT) -> crate::core::HRESULT {
+        todo!("ReleaseFont")
+    }
+    fn ResetFontMapping(&self) -> crate::core::HRESULT {
+        todo!("ResetFontMapping")
+    }
+}
 impl ::core::clone::Clone for IMLangFontLink {
     fn clone(&self) -> Self {
         Self(self.0.clone())
@@ -1722,6 +1894,51 @@ impl crate::core::ComInterface for IMLangFontLink {
         crate::core::GUID::from_u128(0x359f3441_bd4a_11d0_b188_00aa0038c969);
 }
 pub struct IMLangFontLink2(crate::core::IUnknown);
+pub trait IMLangFontLink2_Trait: IMLangCodePages_Trait {
+    fn GetFontCodePages(
+        &self,
+        h_dc: super::Graphics::Gdi::HDC,
+        h_font: super::Graphics::Gdi::HFONT,
+        pdw_code_pages: MutPtr<u32>,
+    ) -> crate::core::HRESULT {
+        todo!("GetFontCodePages")
+    }
+    fn ReleaseFont(&self, h_font: super::Graphics::Gdi::HFONT) -> crate::core::HRESULT {
+        todo!("ReleaseFont")
+    }
+    fn ResetFontMapping(&self) -> crate::core::HRESULT {
+        todo!("ResetFontMapping")
+    }
+    fn MapFont(
+        &self,
+        h_dc: super::Graphics::Gdi::HDC,
+        dw_code_pages: u32,
+        ch_src: u16,
+        p_font: MutPtr<super::Graphics::Gdi::HFONT>,
+    ) -> crate::core::HRESULT {
+        todo!("MapFont")
+    }
+    fn GetFontUnicodeRanges(
+        &self,
+        h_dc: super::Graphics::Gdi::HDC,
+        pui_ranges: ConstPtr<u32>,
+        p_uranges: MutPtr<UNICODERANGE>,
+    ) -> crate::core::HRESULT {
+        todo!("GetFontUnicodeRanges")
+    }
+    fn GetScriptFontInfo(
+        &self,
+        sid: u8,
+        dw_flags: u32,
+        pui_fonts: MutPtr<u32>,
+        p_script_font: MutPtr<tagSCRIPFONTINFO>,
+    ) -> crate::core::HRESULT {
+        todo!("GetScriptFontInfo")
+    }
+    fn CodePageToScriptID(&self, ui_code_page: u32, p_sid: MutPtr<u8>) -> crate::core::HRESULT {
+        todo!("CodePageToScriptID")
+    }
+}
 impl ::core::clone::Clone for IMLangFontLink2 {
     fn clone(&self) -> Self {
         Self(self.0.clone())
@@ -1756,6 +1973,43 @@ impl crate::core::ComInterface for IMLangFontLink2 {
         crate::core::GUID::from_u128(0xdccfc162_2b38_11d2_b7ec_00c04f8f5d9a);
 }
 pub struct IMLangLineBreakConsole(crate::core::IUnknown);
+pub trait IMLangLineBreakConsole_Trait: crate::core::IUnknown_Trait {
+    fn BreakLineML(
+        &self,
+        p_src_ml_str: IMLangString,
+        l_src_pos: i32,
+        l_src_len: i32,
+        c_min_columns: i32,
+        c_max_columns: i32,
+        pl_line_len: MutPtr<i32>,
+        pl_skip_len: MutPtr<i32>,
+    ) -> crate::core::HRESULT {
+        todo!("BreakLineML")
+    }
+    fn BreakLineW(
+        &self,
+        locale: u32,
+        psz_src: PCWSTR,
+        cch_src: i32,
+        c_max_columns: i32,
+        pcch_line: MutPtr<i32>,
+        pcch_skip: MutPtr<i32>,
+    ) -> crate::core::HRESULT {
+        todo!("BreakLineW")
+    }
+    fn BreakLineA(
+        &self,
+        locale: u32,
+        u_code_page: u32,
+        psz_src: PCSTR,
+        cch_src: i32,
+        c_max_columns: i32,
+        pcch_line: MutPtr<i32>,
+        pcch_skip: MutPtr<i32>,
+    ) -> crate::core::HRESULT {
+        todo!("BreakLineA")
+    }
+}
 impl ::core::clone::Clone for IMLangLineBreakConsole {
     fn clone(&self) -> Self {
         Self(self.0.clone())
@@ -1792,6 +2046,37 @@ impl crate::core::ComInterface for IMLangLineBreakConsole {
         crate::core::GUID::from_u128(0xf5be2ee1_bfd7_11d0_b188_00aa0038c969);
 }
 pub struct IMLangString(crate::core::IUnknown);
+pub trait IMLangString_Trait: crate::core::IUnknown_Trait {
+    fn Sync(&self, f_no_access: super::Foundation::BOOL) -> crate::core::HRESULT {
+        todo!("Sync")
+    }
+    fn GetLength(&self, pl_len: MutPtr<i32>) -> crate::core::HRESULT {
+        todo!("GetLength")
+    }
+    fn SetMLStr(
+        &self,
+        l_dest_pos: i32,
+        l_dest_len: i32,
+        p_src_ml_str: crate::core::IUnknown,
+        l_src_pos: i32,
+        l_src_len: i32,
+    ) -> crate::core::HRESULT {
+        todo!("SetMLStr")
+    }
+    fn GetMLStr(
+        &self,
+        l_src_pos: i32,
+        l_src_len: i32,
+        p_unk_outer: crate::core::IUnknown,
+        dw_cls_context: u32,
+        piid: ConstPtr<crate::core::GUID>,
+        pp_dest_ml_str: MutPtr<crate::core::IUnknown>,
+        pl_dest_pos: MutPtr<i32>,
+        pl_dest_len: MutPtr<i32>,
+    ) -> crate::core::HRESULT {
+        todo!("GetMLStr")
+    }
+}
 impl ::core::clone::Clone for IMLangString {
     fn clone(&self) -> Self {
         Self(self.0.clone())
@@ -1826,6 +2111,90 @@ impl crate::core::ComInterface for IMLangString {
         crate::core::GUID::from_u128(0xc04d65ce_b70d_11d0_b188_00aa0038c969);
 }
 pub struct IMLangStringAStr(crate::core::IUnknown);
+pub trait IMLangStringAStr_Trait: IMLangString_Trait {
+    fn SetAStr(
+        &self,
+        l_dest_pos: i32,
+        l_dest_len: i32,
+        u_code_page: u32,
+        psz_src: PCSTR,
+        cch_src: i32,
+        pcch_actual: MutPtr<i32>,
+        pl_actual_len: MutPtr<i32>,
+    ) -> crate::core::HRESULT {
+        todo!("SetAStr")
+    }
+    fn SetStrBufA(
+        &self,
+        l_dest_pos: i32,
+        l_dest_len: i32,
+        u_code_page: u32,
+        p_src_buf: IMLangStringBufA,
+        pcch_actual: MutPtr<i32>,
+        pl_actual_len: MutPtr<i32>,
+    ) -> crate::core::HRESULT {
+        todo!("SetStrBufA")
+    }
+    fn GetAStr(
+        &self,
+        l_src_pos: i32,
+        l_src_len: i32,
+        u_code_page_in: u32,
+        pu_code_page_out: MutPtr<u32>,
+        psz_dest: PSTR,
+        cch_dest: i32,
+        pcch_actual: MutPtr<i32>,
+        pl_actual_len: MutPtr<i32>,
+    ) -> crate::core::HRESULT {
+        todo!("GetAStr")
+    }
+    fn GetStrBufA(
+        &self,
+        l_src_pos: i32,
+        l_src_max_len: i32,
+        pu_dest_code_page: MutPtr<u32>,
+        pp_dest_buf: MutPtr<IMLangStringBufA>,
+        pl_dest_len: MutPtr<i32>,
+    ) -> crate::core::HRESULT {
+        todo!("GetStrBufA")
+    }
+    fn LockAStr(
+        &self,
+        l_src_pos: i32,
+        l_src_len: i32,
+        l_flags: i32,
+        u_code_page_in: u32,
+        cch_request: i32,
+        pu_code_page_out: MutPtr<u32>,
+        ppsz_dest: MutPtr<PSTR>,
+        pcch_dest: MutPtr<i32>,
+        pl_dest_len: MutPtr<i32>,
+    ) -> crate::core::HRESULT {
+        todo!("LockAStr")
+    }
+    fn UnlockAStr(
+        &self,
+        psz_src: PCSTR,
+        cch_src: i32,
+        pcch_actual: MutPtr<i32>,
+        pl_actual_len: MutPtr<i32>,
+    ) -> crate::core::HRESULT {
+        todo!("UnlockAStr")
+    }
+    fn SetLocale(&self, l_dest_pos: i32, l_dest_len: i32, locale: u32) -> crate::core::HRESULT {
+        todo!("SetLocale")
+    }
+    fn GetLocale(
+        &self,
+        l_src_pos: i32,
+        l_src_max_len: i32,
+        plocale: MutPtr<u32>,
+        pl_locale_pos: MutPtr<i32>,
+        pl_locale_len: MutPtr<i32>,
+    ) -> crate::core::HRESULT {
+        todo!("GetLocale")
+    }
+}
 impl ::core::clone::Clone for IMLangStringAStr {
     fn clone(&self) -> Self {
         Self(self.0.clone())
@@ -1860,6 +2229,34 @@ impl crate::core::ComInterface for IMLangStringAStr {
         crate::core::GUID::from_u128(0xc04d65d2_b70d_11d0_b188_00aa0038c969);
 }
 pub struct IMLangStringBufA(crate::core::IUnknown);
+pub trait IMLangStringBufA_Trait: crate::core::IUnknown_Trait {
+    fn GetStatus(&self, pl_flags: MutPtr<i32>, pcch_buf: MutPtr<i32>) -> crate::core::HRESULT {
+        todo!("GetStatus")
+    }
+    fn LockBuf(
+        &self,
+        cch_offset: i32,
+        cch_max_lock: i32,
+        ppsz_buf: MutPtr<ConstPtr<super::Foundation::CHAR>>,
+        pcch_buf: MutPtr<i32>,
+    ) -> crate::core::HRESULT {
+        todo!("LockBuf")
+    }
+    fn UnlockBuf(&self, psz_buf: PCSTR, cch_offset: i32, cch_write: i32) -> crate::core::HRESULT {
+        todo!("UnlockBuf")
+    }
+    fn Insert(
+        &self,
+        cch_offset: i32,
+        cch_max_insert: i32,
+        pcch_actual: MutPtr<i32>,
+    ) -> crate::core::HRESULT {
+        todo!("Insert")
+    }
+    fn Delete(&self, cch_offset: i32, cch_delete: i32) -> crate::core::HRESULT {
+        todo!("Delete")
+    }
+}
 impl ::core::clone::Clone for IMLangStringBufA {
     fn clone(&self) -> Self {
         Self(self.0.clone())
@@ -1894,6 +2291,34 @@ impl crate::core::ComInterface for IMLangStringBufA {
         crate::core::GUID::from_u128(0xd24acd23_ba72_11d0_b188_00aa0038c969);
 }
 pub struct IMLangStringBufW(crate::core::IUnknown);
+pub trait IMLangStringBufW_Trait: crate::core::IUnknown_Trait {
+    fn GetStatus(&self, pl_flags: MutPtr<i32>, pcch_buf: MutPtr<i32>) -> crate::core::HRESULT {
+        todo!("GetStatus")
+    }
+    fn LockBuf(
+        &self,
+        cch_offset: i32,
+        cch_max_lock: i32,
+        ppsz_buf: MutPtr<ConstPtr<u16>>,
+        pcch_buf: MutPtr<i32>,
+    ) -> crate::core::HRESULT {
+        todo!("LockBuf")
+    }
+    fn UnlockBuf(&self, psz_buf: PCWSTR, cch_offset: i32, cch_write: i32) -> crate::core::HRESULT {
+        todo!("UnlockBuf")
+    }
+    fn Insert(
+        &self,
+        cch_offset: i32,
+        cch_max_insert: i32,
+        pcch_actual: MutPtr<i32>,
+    ) -> crate::core::HRESULT {
+        todo!("Insert")
+    }
+    fn Delete(&self, cch_offset: i32, cch_delete: i32) -> crate::core::HRESULT {
+        todo!("Delete")
+    }
+}
 impl ::core::clone::Clone for IMLangStringBufW {
     fn clone(&self) -> Self {
         Self(self.0.clone())
@@ -1928,6 +2353,83 @@ impl crate::core::ComInterface for IMLangStringBufW {
         crate::core::GUID::from_u128(0xd24acd21_ba72_11d0_b188_00aa0038c969);
 }
 pub struct IMLangStringWStr(crate::core::IUnknown);
+pub trait IMLangStringWStr_Trait: IMLangString_Trait {
+    fn SetWStr(
+        &self,
+        l_dest_pos: i32,
+        l_dest_len: i32,
+        psz_src: PCWSTR,
+        cch_src: i32,
+        pcch_actual: MutPtr<i32>,
+        pl_actual_len: MutPtr<i32>,
+    ) -> crate::core::HRESULT {
+        todo!("SetWStr")
+    }
+    fn SetStrBufW(
+        &self,
+        l_dest_pos: i32,
+        l_dest_len: i32,
+        p_src_buf: IMLangStringBufW,
+        pcch_actual: MutPtr<i32>,
+        pl_actual_len: MutPtr<i32>,
+    ) -> crate::core::HRESULT {
+        todo!("SetStrBufW")
+    }
+    fn GetWStr(
+        &self,
+        l_src_pos: i32,
+        l_src_len: i32,
+        psz_dest: PWSTR,
+        cch_dest: i32,
+        pcch_actual: MutPtr<i32>,
+        pl_actual_len: MutPtr<i32>,
+    ) -> crate::core::HRESULT {
+        todo!("GetWStr")
+    }
+    fn GetStrBufW(
+        &self,
+        l_src_pos: i32,
+        l_src_max_len: i32,
+        pp_dest_buf: MutPtr<IMLangStringBufW>,
+        pl_dest_len: MutPtr<i32>,
+    ) -> crate::core::HRESULT {
+        todo!("GetStrBufW")
+    }
+    fn LockWStr(
+        &self,
+        l_src_pos: i32,
+        l_src_len: i32,
+        l_flags: i32,
+        cch_request: i32,
+        ppsz_dest: MutPtr<PWSTR>,
+        pcch_dest: MutPtr<i32>,
+        pl_dest_len: MutPtr<i32>,
+    ) -> crate::core::HRESULT {
+        todo!("LockWStr")
+    }
+    fn UnlockWStr(
+        &self,
+        psz_src: PCWSTR,
+        cch_src: i32,
+        pcch_actual: MutPtr<i32>,
+        pl_actual_len: MutPtr<i32>,
+    ) -> crate::core::HRESULT {
+        todo!("UnlockWStr")
+    }
+    fn SetLocale(&self, l_dest_pos: i32, l_dest_len: i32, locale: u32) -> crate::core::HRESULT {
+        todo!("SetLocale")
+    }
+    fn GetLocale(
+        &self,
+        l_src_pos: i32,
+        l_src_max_len: i32,
+        plocale: MutPtr<u32>,
+        pl_locale_pos: MutPtr<i32>,
+        pl_locale_len: MutPtr<i32>,
+    ) -> crate::core::HRESULT {
+        todo!("GetLocale")
+    }
+}
 impl ::core::clone::Clone for IMLangStringWStr {
     fn clone(&self) -> Self {
         Self(self.0.clone())
@@ -1962,6 +2464,112 @@ impl crate::core::ComInterface for IMLangStringWStr {
         crate::core::GUID::from_u128(0xc04d65d0_b70d_11d0_b188_00aa0038c969);
 }
 pub struct IMultiLanguage(crate::core::IUnknown);
+pub trait IMultiLanguage_Trait: crate::core::IUnknown_Trait {
+    fn GetNumberOfCodePageInfo(&self, pc_code_page: MutPtr<u32>) -> crate::core::HRESULT {
+        todo!("GetNumberOfCodePageInfo")
+    }
+    fn GetCodePageInfo(
+        &self,
+        ui_code_page: u32,
+        p_code_page_info: MutPtr<MIMECPINFO>,
+    ) -> crate::core::HRESULT {
+        todo!("GetCodePageInfo")
+    }
+    fn GetFamilyCodePage(
+        &self,
+        ui_code_page: u32,
+        pui_family_code_page: MutPtr<u32>,
+    ) -> crate::core::HRESULT {
+        todo!("GetFamilyCodePage")
+    }
+    fn EnumCodePages(
+        &self,
+        grf_flags: u32,
+        pp_enum_code_page: MutPtr<IEnumCodePage>,
+    ) -> crate::core::HRESULT {
+        todo!("EnumCodePages")
+    }
+    fn GetCharsetInfo(
+        &self,
+        charset: super::Foundation::BSTR,
+        p_charset_info: MutPtr<MIMECSETINFO>,
+    ) -> crate::core::HRESULT {
+        todo!("GetCharsetInfo")
+    }
+    fn IsConvertible(&self, dw_src_encoding: u32, dw_dst_encoding: u32) -> crate::core::HRESULT {
+        todo!("IsConvertible")
+    }
+    fn ConvertString(
+        &self,
+        pdw_mode: MutPtr<u32>,
+        dw_src_encoding: u32,
+        dw_dst_encoding: u32,
+        p_src_str: ConstPtr<u8>,
+        pc_src_size: MutPtr<u32>,
+        p_dst_str: MutPtr<u8>,
+        pc_dst_size: MutPtr<u32>,
+    ) -> crate::core::HRESULT {
+        todo!("ConvertString")
+    }
+    fn ConvertStringToUnicode(
+        &self,
+        pdw_mode: MutPtr<u32>,
+        dw_encoding: u32,
+        p_src_str: PCSTR,
+        pc_src_size: MutPtr<u32>,
+        p_dst_str: PWSTR,
+        pc_dst_size: MutPtr<u32>,
+    ) -> crate::core::HRESULT {
+        todo!("ConvertStringToUnicode")
+    }
+    fn ConvertStringFromUnicode(
+        &self,
+        pdw_mode: MutPtr<u32>,
+        dw_encoding: u32,
+        p_src_str: PCWSTR,
+        pc_src_size: MutPtr<u32>,
+        p_dst_str: PSTR,
+        pc_dst_size: MutPtr<u32>,
+    ) -> crate::core::HRESULT {
+        todo!("ConvertStringFromUnicode")
+    }
+    fn ConvertStringReset(&self) -> crate::core::HRESULT {
+        todo!("ConvertStringReset")
+    }
+    fn GetRfc1766FromLcid(
+        &self,
+        locale: u32,
+        pbstr_rfc_1766: MutPtr<super::Foundation::BSTR>,
+    ) -> crate::core::HRESULT {
+        todo!("GetRfc1766FromLcid")
+    }
+    fn GetLcidFromRfc1766(
+        &self,
+        p_locale: MutPtr<u32>,
+        bstr_rfc_1766: super::Foundation::BSTR,
+    ) -> crate::core::HRESULT {
+        todo!("GetLcidFromRfc1766")
+    }
+    fn EnumRfc1766(&self, pp_enum_rfc_1766: MutPtr<IEnumRfc1766>) -> crate::core::HRESULT {
+        todo!("EnumRfc1766")
+    }
+    fn GetRfc1766Info(
+        &self,
+        locale: u32,
+        p_rfc_1766_info: MutPtr<RFC1766INFO>,
+    ) -> crate::core::HRESULT {
+        todo!("GetRfc1766Info")
+    }
+    fn CreateConvertCharset(
+        &self,
+        ui_src_code_page: u32,
+        ui_dst_code_page: u32,
+        dw_property: u32,
+        pp_m_lang_convert_charset: MutPtr<IMLangConvertCharset>,
+    ) -> crate::core::HRESULT {
+        todo!("CreateConvertCharset")
+    }
+}
 impl ::core::clone::Clone for IMultiLanguage {
     fn clone(&self) -> Self {
         Self(self.0.clone())
@@ -1995,24 +2603,257 @@ impl crate::core::ComInterface for IMultiLanguage {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x275c23e1_3747_11d0_9fea_00aa003f8646);
 }
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 pub struct IMultiLanguage2(crate::core::IUnknown);
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
+#[cfg(dummy_option_that_does_not_exist)]
+pub trait IMultiLanguage2_Trait: crate::core::IUnknown_Trait {
+    fn GetNumberOfCodePageInfo(&self, pc_code_page: MutPtr<u32>) -> crate::core::HRESULT {
+        todo!("GetNumberOfCodePageInfo")
+    }
+    fn GetCodePageInfo(
+        &self,
+        ui_code_page: u32,
+        lang_id: u16,
+        p_code_page_info: MutPtr<MIMECPINFO>,
+    ) -> crate::core::HRESULT {
+        todo!("GetCodePageInfo")
+    }
+    fn GetFamilyCodePage(
+        &self,
+        ui_code_page: u32,
+        pui_family_code_page: MutPtr<u32>,
+    ) -> crate::core::HRESULT {
+        todo!("GetFamilyCodePage")
+    }
+    fn EnumCodePages(
+        &self,
+        grf_flags: u32,
+        lang_id: u16,
+        pp_enum_code_page: MutPtr<IEnumCodePage>,
+    ) -> crate::core::HRESULT {
+        todo!("EnumCodePages")
+    }
+    fn GetCharsetInfo(
+        &self,
+        charset: super::Foundation::BSTR,
+        p_charset_info: MutPtr<MIMECSETINFO>,
+    ) -> crate::core::HRESULT {
+        todo!("GetCharsetInfo")
+    }
+    fn IsConvertible(&self, dw_src_encoding: u32, dw_dst_encoding: u32) -> crate::core::HRESULT {
+        todo!("IsConvertible")
+    }
+    fn ConvertString(
+        &self,
+        pdw_mode: MutPtr<u32>,
+        dw_src_encoding: u32,
+        dw_dst_encoding: u32,
+        p_src_str: ConstPtr<u8>,
+        pc_src_size: MutPtr<u32>,
+        p_dst_str: MutPtr<u8>,
+        pc_dst_size: MutPtr<u32>,
+    ) -> crate::core::HRESULT {
+        todo!("ConvertString")
+    }
+    fn ConvertStringToUnicode(
+        &self,
+        pdw_mode: MutPtr<u32>,
+        dw_encoding: u32,
+        p_src_str: PCSTR,
+        pc_src_size: MutPtr<u32>,
+        p_dst_str: PWSTR,
+        pc_dst_size: MutPtr<u32>,
+    ) -> crate::core::HRESULT {
+        todo!("ConvertStringToUnicode")
+    }
+    fn ConvertStringFromUnicode(
+        &self,
+        pdw_mode: MutPtr<u32>,
+        dw_encoding: u32,
+        p_src_str: PCWSTR,
+        pc_src_size: MutPtr<u32>,
+        p_dst_str: PSTR,
+        pc_dst_size: MutPtr<u32>,
+    ) -> crate::core::HRESULT {
+        todo!("ConvertStringFromUnicode")
+    }
+    fn ConvertStringReset(&self) -> crate::core::HRESULT {
+        todo!("ConvertStringReset")
+    }
+    fn GetRfc1766FromLcid(
+        &self,
+        locale: u32,
+        pbstr_rfc_1766: MutPtr<super::Foundation::BSTR>,
+    ) -> crate::core::HRESULT {
+        todo!("GetRfc1766FromLcid")
+    }
+    fn GetLcidFromRfc1766(
+        &self,
+        p_locale: MutPtr<u32>,
+        bstr_rfc_1766: super::Foundation::BSTR,
+    ) -> crate::core::HRESULT {
+        todo!("GetLcidFromRfc1766")
+    }
+    fn EnumRfc1766(
+        &self,
+        lang_id: u16,
+        pp_enum_rfc_1766: MutPtr<IEnumRfc1766>,
+    ) -> crate::core::HRESULT {
+        todo!("EnumRfc1766")
+    }
+    fn GetRfc1766Info(
+        &self,
+        locale: u32,
+        lang_id: u16,
+        p_rfc_1766_info: MutPtr<RFC1766INFO>,
+    ) -> crate::core::HRESULT {
+        todo!("GetRfc1766Info")
+    }
+    fn CreateConvertCharset(
+        &self,
+        ui_src_code_page: u32,
+        ui_dst_code_page: u32,
+        dw_property: u32,
+        pp_m_lang_convert_charset: MutPtr<IMLangConvertCharset>,
+    ) -> crate::core::HRESULT {
+        todo!("CreateConvertCharset")
+    }
+    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
+    #[cfg(dummy_option_that_does_not_exist)]
+    fn ConvertStringInIStream(
+        &self,
+        pdw_mode: MutPtr<u32>,
+        dw_flag: u32,
+        lp_fall_back: PCWSTR,
+        dw_src_encoding: u32,
+        dw_dst_encoding: u32,
+        pstm_in: super::System::Com::IStream,
+        pstm_out: super::System::Com::IStream,
+    ) -> crate::core::HRESULT {
+        todo!("ConvertStringInIStream")
+    }
+    fn ConvertStringToUnicodeEx(
+        &self,
+        pdw_mode: MutPtr<u32>,
+        dw_encoding: u32,
+        p_src_str: PCSTR,
+        pc_src_size: MutPtr<u32>,
+        p_dst_str: PWSTR,
+        pc_dst_size: MutPtr<u32>,
+        dw_flag: u32,
+        lp_fall_back: PCWSTR,
+    ) -> crate::core::HRESULT {
+        todo!("ConvertStringToUnicodeEx")
+    }
+    fn ConvertStringFromUnicodeEx(
+        &self,
+        pdw_mode: MutPtr<u32>,
+        dw_encoding: u32,
+        p_src_str: PCWSTR,
+        pc_src_size: MutPtr<u32>,
+        p_dst_str: PSTR,
+        pc_dst_size: MutPtr<u32>,
+        dw_flag: u32,
+        lp_fall_back: PCWSTR,
+    ) -> crate::core::HRESULT {
+        todo!("ConvertStringFromUnicodeEx")
+    }
+    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
+    #[cfg(dummy_option_that_does_not_exist)]
+    fn DetectCodepageInIStream(
+        &self,
+        dw_flag: u32,
+        dw_pref_win_code_page: u32,
+        pstm_in: super::System::Com::IStream,
+        lp_encoding: MutPtr<DetectEncodingInfo>,
+        pn_scores: MutPtr<i32>,
+    ) -> crate::core::HRESULT {
+        todo!("DetectCodepageInIStream")
+    }
+    fn DetectInputCodepage(
+        &self,
+        dw_flag: u32,
+        dw_pref_win_code_page: u32,
+        p_src_str: PCSTR,
+        pc_src_size: MutPtr<i32>,
+        lp_encoding: MutPtr<DetectEncodingInfo>,
+        pn_scores: MutPtr<i32>,
+    ) -> crate::core::HRESULT {
+        todo!("DetectInputCodepage")
+    }
+    fn ValidateCodePage(
+        &self,
+        ui_code_page: u32,
+        hwnd: super::Foundation::HWND,
+    ) -> crate::core::HRESULT {
+        todo!("ValidateCodePage")
+    }
+    fn GetCodePageDescription(
+        &self,
+        ui_code_page: u32,
+        lcid: u32,
+        lp_wide_char_str: PWSTR,
+        cch_wide_char: i32,
+    ) -> crate::core::HRESULT {
+        todo!("GetCodePageDescription")
+    }
+    fn IsCodePageInstallable(&self, ui_code_page: u32) -> crate::core::HRESULT {
+        todo!("IsCodePageInstallable")
+    }
+    fn SetMimeDBSource(&self, dw_source: MIMECONTF) -> crate::core::HRESULT {
+        todo!("SetMimeDBSource")
+    }
+    fn GetNumberOfScripts(&self, pn_scripts: MutPtr<u32>) -> crate::core::HRESULT {
+        todo!("GetNumberOfScripts")
+    }
+    fn EnumScripts(
+        &self,
+        dw_flags: u32,
+        lang_id: u16,
+        pp_enum_script: MutPtr<IEnumScript>,
+    ) -> crate::core::HRESULT {
+        todo!("EnumScripts")
+    }
+    fn ValidateCodePageEx(
+        &self,
+        ui_code_page: u32,
+        hwnd: super::Foundation::HWND,
+        dwf_iod_control: u32,
+    ) -> crate::core::HRESULT {
+        todo!("ValidateCodePageEx")
+    }
+}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for IMultiLanguage2 {
     fn clone(&self) -> Self {
         Self(self.0.clone())
     }
 }
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for IMultiLanguage2 {}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for IMultiLanguage2 {
     fn eq(&self, other: &Self) -> bool {
         self.0 == other.0
     }
 }
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for IMultiLanguage2 {}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for IMultiLanguage2 {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("IMultiLanguage2").field(&self.0).finish()
     }
 }
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for IMultiLanguage2 {
     fn from_bytes(from: &[u8]) -> Self {
         Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
@@ -2024,29 +2865,76 @@ impl FromIntoMemory for IMultiLanguage2 {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl crate::core::ComInterface for IMultiLanguage2 {
     type Super = crate::core::IUnknown;
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xdccfc164_2b38_11d2_b7ec_00c04f8f5d9a);
 }
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 pub struct IMultiLanguage3(crate::core::IUnknown);
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
+#[cfg(dummy_option_that_does_not_exist)]
+pub trait IMultiLanguage3_Trait: IMultiLanguage2_Trait {
+    fn DetectOutboundCodePage(
+        &self,
+        dw_flags: u32,
+        lp_wide_char_str: PCWSTR,
+        cch_wide_char: u32,
+        pui_preferred_code_pages: ConstPtr<u32>,
+        n_preferred_code_pages: u32,
+        pui_detected_code_pages: MutPtr<u32>,
+        pn_detected_code_pages: MutPtr<u32>,
+        lp_special_char: PCWSTR,
+    ) -> crate::core::HRESULT {
+        todo!("DetectOutboundCodePage")
+    }
+    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
+    #[cfg(dummy_option_that_does_not_exist)]
+    fn DetectOutboundCodePageInIStream(
+        &self,
+        dw_flags: u32,
+        p_str_in: super::System::Com::IStream,
+        pui_preferred_code_pages: ConstPtr<u32>,
+        n_preferred_code_pages: u32,
+        pui_detected_code_pages: MutPtr<u32>,
+        pn_detected_code_pages: MutPtr<u32>,
+        lp_special_char: PCWSTR,
+    ) -> crate::core::HRESULT {
+        todo!("DetectOutboundCodePageInIStream")
+    }
+}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for IMultiLanguage3 {
     fn clone(&self) -> Self {
         Self(self.0.clone())
     }
 }
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for IMultiLanguage3 {}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for IMultiLanguage3 {
     fn eq(&self, other: &Self) -> bool {
         self.0 == other.0
     }
 }
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for IMultiLanguage3 {}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for IMultiLanguage3 {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("IMultiLanguage3").field(&self.0).finish()
     }
 }
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for IMultiLanguage3 {
     fn from_bytes(from: &[u8]) -> Self {
         Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
@@ -2058,29 +2946,63 @@ impl FromIntoMemory for IMultiLanguage3 {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl crate::core::ComInterface for IMultiLanguage3 {
     type Super = IMultiLanguage2;
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x4e5868ab_b157_4623_9acc_6a1d9caebe04);
 }
+#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 pub struct IOptionDescription(crate::core::IUnknown);
+#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
+pub trait IOptionDescription_Trait: crate::core::IUnknown_Trait {
+    fn get_Id(&self, value: MutPtr<PWSTR>) -> crate::core::HRESULT {
+        todo!("get_Id")
+    }
+    fn get_Heading(&self, value: MutPtr<PWSTR>) -> crate::core::HRESULT {
+        todo!("get_Heading")
+    }
+    fn get_Description(&self, value: MutPtr<PWSTR>) -> crate::core::HRESULT {
+        todo!("get_Description")
+    }
+    #[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+    #[cfg(dummy_option_that_does_not_exist)]
+    fn get_Labels(&self, value: MutPtr<super::System::Com::IEnumString>) -> crate::core::HRESULT {
+        todo!("get_Labels")
+    }
+}
+#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for IOptionDescription {
     fn clone(&self) -> Self {
         Self(self.0.clone())
     }
 }
+#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for IOptionDescription {}
+#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for IOptionDescription {
     fn eq(&self, other: &Self) -> bool {
         self.0 == other.0
     }
 }
+#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for IOptionDescription {}
+#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for IOptionDescription {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("IOptionDescription").field(&self.0).finish()
     }
 }
+#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for IOptionDescription {
     fn from_bytes(from: &[u8]) -> Self {
         Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
@@ -2092,6 +3014,8 @@ impl FromIntoMemory for IOptionDescription {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl crate::core::ComInterface for IOptionDescription {
     type Super = crate::core::IUnknown;
     const IID: crate::core::GUID =
@@ -2207,24 +3131,95 @@ impl FromIntoMemory for IS_VALID_LOCALE_FLAGS {
         4
     }
 }
+#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 pub struct ISpellCheckProvider(crate::core::IUnknown);
+#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
+pub trait ISpellCheckProvider_Trait: crate::core::IUnknown_Trait {
+    fn get_LanguageTag(&self, value: MutPtr<PWSTR>) -> crate::core::HRESULT {
+        todo!("get_LanguageTag")
+    }
+    fn Check(&self, text: PCWSTR, value: MutPtr<IEnumSpellingError>) -> crate::core::HRESULT {
+        todo!("Check")
+    }
+    #[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+    #[cfg(dummy_option_that_does_not_exist)]
+    fn Suggest(
+        &self,
+        word: PCWSTR,
+        value: MutPtr<super::System::Com::IEnumString>,
+    ) -> crate::core::HRESULT {
+        todo!("Suggest")
+    }
+    fn GetOptionValue(&self, option_id: PCWSTR, value: MutPtr<u8>) -> crate::core::HRESULT {
+        todo!("GetOptionValue")
+    }
+    fn SetOptionValue(&self, option_id: PCWSTR, value: u8) -> crate::core::HRESULT {
+        todo!("SetOptionValue")
+    }
+    #[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+    #[cfg(dummy_option_that_does_not_exist)]
+    fn get_OptionIds(
+        &self,
+        value: MutPtr<super::System::Com::IEnumString>,
+    ) -> crate::core::HRESULT {
+        todo!("get_OptionIds")
+    }
+    fn get_Id(&self, value: MutPtr<PWSTR>) -> crate::core::HRESULT {
+        todo!("get_Id")
+    }
+    fn get_LocalizedName(&self, value: MutPtr<PWSTR>) -> crate::core::HRESULT {
+        todo!("get_LocalizedName")
+    }
+    #[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+    #[cfg(dummy_option_that_does_not_exist)]
+    fn GetOptionDescription(
+        &self,
+        option_id: PCWSTR,
+        value: MutPtr<IOptionDescription>,
+    ) -> crate::core::HRESULT {
+        todo!("GetOptionDescription")
+    }
+    #[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+    #[cfg(dummy_option_that_does_not_exist)]
+    fn InitializeWordlist(
+        &self,
+        wordlist_type: WORDLIST_TYPE,
+        words: super::System::Com::IEnumString,
+    ) -> crate::core::HRESULT {
+        todo!("InitializeWordlist")
+    }
+}
+#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for ISpellCheckProvider {
     fn clone(&self) -> Self {
         Self(self.0.clone())
     }
 }
+#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for ISpellCheckProvider {}
+#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for ISpellCheckProvider {
     fn eq(&self, other: &Self) -> bool {
         self.0 == other.0
     }
 }
+#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for ISpellCheckProvider {}
+#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for ISpellCheckProvider {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("ISpellCheckProvider").field(&self.0).finish()
     }
 }
+#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for ISpellCheckProvider {
     fn from_bytes(from: &[u8]) -> Self {
         Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
@@ -2236,24 +3231,66 @@ impl FromIntoMemory for ISpellCheckProvider {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl crate::core::ComInterface for ISpellCheckProvider {
     type Super = crate::core::IUnknown;
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x73e976e0_8ed4_4eb1_80d7_1be0a16b0c38);
 }
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 pub struct ISpellCheckProviderFactory(crate::core::IUnknown);
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
+pub trait ISpellCheckProviderFactory_Trait: crate::core::IUnknown_Trait {
+    #[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+    #[cfg(dummy_option_that_does_not_exist)]
+    fn get_SupportedLanguages(
+        &self,
+        value: MutPtr<super::System::Com::IEnumString>,
+    ) -> crate::core::HRESULT {
+        todo!("get_SupportedLanguages")
+    }
+    fn IsSupported(
+        &self,
+        language_tag: PCWSTR,
+        value: MutPtr<super::Foundation::BOOL>,
+    ) -> crate::core::HRESULT {
+        todo!("IsSupported")
+    }
+    #[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+    #[cfg(dummy_option_that_does_not_exist)]
+    fn CreateSpellCheckProvider(
+        &self,
+        language_tag: PCWSTR,
+        value: MutPtr<ISpellCheckProvider>,
+    ) -> crate::core::HRESULT {
+        todo!("CreateSpellCheckProvider")
+    }
+}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for ISpellCheckProviderFactory {
     fn clone(&self) -> Self {
         Self(self.0.clone())
     }
 }
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for ISpellCheckProviderFactory {}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for ISpellCheckProviderFactory {
     fn eq(&self, other: &Self) -> bool {
         self.0 == other.0
     }
 }
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for ISpellCheckProviderFactory {}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for ISpellCheckProviderFactory {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("ISpellCheckProviderFactory")
@@ -2261,6 +3298,8 @@ impl ::core::fmt::Debug for ISpellCheckProviderFactory {
             .finish()
     }
 }
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for ISpellCheckProviderFactory {
     fn from_bytes(from: &[u8]) -> Self {
         Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
@@ -2272,29 +3311,118 @@ impl FromIntoMemory for ISpellCheckProviderFactory {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl crate::core::ComInterface for ISpellCheckProviderFactory {
     type Super = crate::core::IUnknown;
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x9f671e11_77d6_4c92_aefb_615215e3a4be);
 }
+#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 pub struct ISpellChecker(crate::core::IUnknown);
+#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
+pub trait ISpellChecker_Trait: crate::core::IUnknown_Trait {
+    fn get_LanguageTag(&self, value: MutPtr<PWSTR>) -> crate::core::HRESULT {
+        todo!("get_LanguageTag")
+    }
+    fn Check(&self, text: PCWSTR, value: MutPtr<IEnumSpellingError>) -> crate::core::HRESULT {
+        todo!("Check")
+    }
+    #[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+    #[cfg(dummy_option_that_does_not_exist)]
+    fn Suggest(
+        &self,
+        word: PCWSTR,
+        value: MutPtr<super::System::Com::IEnumString>,
+    ) -> crate::core::HRESULT {
+        todo!("Suggest")
+    }
+    fn Add(&self, word: PCWSTR) -> crate::core::HRESULT {
+        todo!("Add")
+    }
+    fn Ignore(&self, word: PCWSTR) -> crate::core::HRESULT {
+        todo!("Ignore")
+    }
+    fn AutoCorrect(&self, from: PCWSTR, to: PCWSTR) -> crate::core::HRESULT {
+        todo!("AutoCorrect")
+    }
+    fn GetOptionValue(&self, option_id: PCWSTR, value: MutPtr<u8>) -> crate::core::HRESULT {
+        todo!("GetOptionValue")
+    }
+    #[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+    #[cfg(dummy_option_that_does_not_exist)]
+    fn get_OptionIds(
+        &self,
+        value: MutPtr<super::System::Com::IEnumString>,
+    ) -> crate::core::HRESULT {
+        todo!("get_OptionIds")
+    }
+    fn get_Id(&self, value: MutPtr<PWSTR>) -> crate::core::HRESULT {
+        todo!("get_Id")
+    }
+    fn get_LocalizedName(&self, value: MutPtr<PWSTR>) -> crate::core::HRESULT {
+        todo!("get_LocalizedName")
+    }
+    #[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+    #[cfg(dummy_option_that_does_not_exist)]
+    fn add_SpellCheckerChanged(
+        &self,
+        handler: ISpellCheckerChangedEventHandler,
+        event_cookie: MutPtr<u32>,
+    ) -> crate::core::HRESULT {
+        todo!("add_SpellCheckerChanged")
+    }
+    fn remove_SpellCheckerChanged(&self, event_cookie: u32) -> crate::core::HRESULT {
+        todo!("remove_SpellCheckerChanged")
+    }
+    #[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+    #[cfg(dummy_option_that_does_not_exist)]
+    fn GetOptionDescription(
+        &self,
+        option_id: PCWSTR,
+        value: MutPtr<IOptionDescription>,
+    ) -> crate::core::HRESULT {
+        todo!("GetOptionDescription")
+    }
+    fn ComprehensiveCheck(
+        &self,
+        text: PCWSTR,
+        value: MutPtr<IEnumSpellingError>,
+    ) -> crate::core::HRESULT {
+        todo!("ComprehensiveCheck")
+    }
+}
+#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for ISpellChecker {
     fn clone(&self) -> Self {
         Self(self.0.clone())
     }
 }
+#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for ISpellChecker {}
+#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for ISpellChecker {
     fn eq(&self, other: &Self) -> bool {
         self.0 == other.0
     }
 }
+#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for ISpellChecker {}
+#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for ISpellChecker {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("ISpellChecker").field(&self.0).finish()
     }
 }
+#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for ISpellChecker {
     fn from_bytes(from: &[u8]) -> Self {
         Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
@@ -2306,29 +3434,52 @@ impl FromIntoMemory for ISpellChecker {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl crate::core::ComInterface for ISpellChecker {
     type Super = crate::core::IUnknown;
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xb6fd0b71_e2bc_4653_8d05_f197e412770b);
 }
+#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 pub struct ISpellChecker2(crate::core::IUnknown);
+#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
+pub trait ISpellChecker2_Trait: ISpellChecker_Trait {
+    fn Remove(&self, word: PCWSTR) -> crate::core::HRESULT {
+        todo!("Remove")
+    }
+}
+#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for ISpellChecker2 {
     fn clone(&self) -> Self {
         Self(self.0.clone())
     }
 }
+#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for ISpellChecker2 {}
+#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for ISpellChecker2 {
     fn eq(&self, other: &Self) -> bool {
         self.0 == other.0
     }
 }
+#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for ISpellChecker2 {}
+#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for ISpellChecker2 {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("ISpellChecker2").field(&self.0).finish()
     }
 }
+#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for ISpellChecker2 {
     fn from_bytes(from: &[u8]) -> Self {
         Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
@@ -2340,24 +3491,47 @@ impl FromIntoMemory for ISpellChecker2 {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl crate::core::ComInterface for ISpellChecker2 {
     type Super = ISpellChecker;
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xe7ed1c71_87f7_4378_a840_c9200dacee47);
 }
+#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 pub struct ISpellCheckerChangedEventHandler(crate::core::IUnknown);
+#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
+pub trait ISpellCheckerChangedEventHandler_Trait: crate::core::IUnknown_Trait {
+    #[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+    #[cfg(dummy_option_that_does_not_exist)]
+    fn Invoke(&self, sender: ISpellChecker) -> crate::core::HRESULT {
+        todo!("Invoke")
+    }
+}
+#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for ISpellCheckerChangedEventHandler {
     fn clone(&self) -> Self {
         Self(self.0.clone())
     }
 }
+#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for ISpellCheckerChangedEventHandler {}
+#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for ISpellCheckerChangedEventHandler {
     fn eq(&self, other: &Self) -> bool {
         self.0 == other.0
     }
 }
+#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for ISpellCheckerChangedEventHandler {}
+#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for ISpellCheckerChangedEventHandler {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("ISpellCheckerChangedEventHandler")
@@ -2365,6 +3539,8 @@ impl ::core::fmt::Debug for ISpellCheckerChangedEventHandler {
             .finish()
     }
 }
+#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for ISpellCheckerChangedEventHandler {
     fn from_bytes(from: &[u8]) -> Self {
         Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
@@ -2376,24 +3552,66 @@ impl FromIntoMemory for ISpellCheckerChangedEventHandler {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl crate::core::ComInterface for ISpellCheckerChangedEventHandler {
     type Super = crate::core::IUnknown;
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x0b83a5b0_792f_4eab_9799_acf52c5ed08a);
 }
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 pub struct ISpellCheckerFactory(crate::core::IUnknown);
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
+pub trait ISpellCheckerFactory_Trait: crate::core::IUnknown_Trait {
+    #[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+    #[cfg(dummy_option_that_does_not_exist)]
+    fn get_SupportedLanguages(
+        &self,
+        value: MutPtr<super::System::Com::IEnumString>,
+    ) -> crate::core::HRESULT {
+        todo!("get_SupportedLanguages")
+    }
+    fn IsSupported(
+        &self,
+        language_tag: PCWSTR,
+        value: MutPtr<super::Foundation::BOOL>,
+    ) -> crate::core::HRESULT {
+        todo!("IsSupported")
+    }
+    #[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+    #[cfg(dummy_option_that_does_not_exist)]
+    fn CreateSpellChecker(
+        &self,
+        language_tag: PCWSTR,
+        value: MutPtr<ISpellChecker>,
+    ) -> crate::core::HRESULT {
+        todo!("CreateSpellChecker")
+    }
+}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for ISpellCheckerFactory {
     fn clone(&self) -> Self {
         Self(self.0.clone())
     }
 }
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for ISpellCheckerFactory {}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for ISpellCheckerFactory {
     fn eq(&self, other: &Self) -> bool {
         self.0 == other.0
     }
 }
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for ISpellCheckerFactory {}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for ISpellCheckerFactory {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("ISpellCheckerFactory")
@@ -2401,6 +3619,8 @@ impl ::core::fmt::Debug for ISpellCheckerFactory {
             .finish()
     }
 }
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for ISpellCheckerFactory {
     fn from_bytes(from: &[u8]) -> Self {
         Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
@@ -2412,12 +3632,28 @@ impl FromIntoMemory for ISpellCheckerFactory {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl crate::core::ComInterface for ISpellCheckerFactory {
     type Super = crate::core::IUnknown;
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x8e018a9d_2415_4677_bf08_794ea61f94bb);
 }
 pub struct ISpellingError(crate::core::IUnknown);
+pub trait ISpellingError_Trait: crate::core::IUnknown_Trait {
+    fn get_StartIndex(&self, value: MutPtr<u32>) -> crate::core::HRESULT {
+        todo!("get_StartIndex")
+    }
+    fn get_Length(&self, value: MutPtr<u32>) -> crate::core::HRESULT {
+        todo!("get_Length")
+    }
+    fn get_CorrectiveAction(&self, value: MutPtr<CORRECTIVE_ACTION>) -> crate::core::HRESULT {
+        todo!("get_CorrectiveAction")
+    }
+    fn get_Replacement(&self, value: MutPtr<PWSTR>) -> crate::core::HRESULT {
+        todo!("get_Replacement")
+    }
+}
 impl ::core::clone::Clone for ISpellingError {
     fn clone(&self) -> Self {
         Self(self.0.clone())
@@ -2452,6 +3688,22 @@ impl crate::core::ComInterface for ISpellingError {
         crate::core::GUID::from_u128(0xb7c82d61_fbe8_4b47_9b27_6c0d2e0de0a3);
 }
 pub struct IUserDictionariesRegistrar(crate::core::IUnknown);
+pub trait IUserDictionariesRegistrar_Trait: crate::core::IUnknown_Trait {
+    fn RegisterUserDictionary(
+        &self,
+        dictionary_path: PCWSTR,
+        language_tag: PCWSTR,
+    ) -> crate::core::HRESULT {
+        todo!("RegisterUserDictionary")
+    }
+    fn UnregisterUserDictionary(
+        &self,
+        dictionary_path: PCWSTR,
+        language_tag: PCWSTR,
+    ) -> crate::core::HRESULT {
+        todo!("UnregisterUserDictionary")
+    }
+}
 impl ::core::clone::Clone for IUserDictionariesRegistrar {
     fn clone(&self) -> Self {
         Self(self.0.clone())

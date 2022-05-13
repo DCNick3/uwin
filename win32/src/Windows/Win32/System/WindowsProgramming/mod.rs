@@ -2252,24 +2252,90 @@ impl FromIntoMemory for HW_PROFILE_INFOW {
         124u32 as usize
     }
 }
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 pub struct ICameraUIControl(crate::core::IUnknown);
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
+pub trait ICameraUIControl_Trait: crate::core::IUnknown_Trait {
+    fn Show(
+        &self,
+        p_window: crate::core::IUnknown,
+        mode: CameraUIControlMode,
+        selection_mode: CameraUIControlLinearSelectionMode,
+        capture_mode: CameraUIControlCaptureMode,
+        photo_format: CameraUIControlPhotoFormat,
+        video_format: CameraUIControlVideoFormat,
+        b_has_close_button: super::super::Foundation::BOOL,
+        p_event_callback: ICameraUIControlEventCallback,
+    ) -> crate::core::HRESULT {
+        todo!("Show")
+    }
+    fn Close(&self) -> crate::core::HRESULT {
+        todo!("Close")
+    }
+    fn Suspend(
+        &self,
+        pb_deferral_required: MutPtr<super::super::Foundation::BOOL>,
+    ) -> crate::core::HRESULT {
+        todo!("Suspend")
+    }
+    fn Resume(&self) -> crate::core::HRESULT {
+        todo!("Resume")
+    }
+    fn GetCurrentViewType(
+        &self,
+        p_view_type: MutPtr<CameraUIControlViewType>,
+    ) -> crate::core::HRESULT {
+        todo!("GetCurrentViewType")
+    }
+    fn GetActiveItem(
+        &self,
+        pbstr_active_item_path: MutPtr<super::super::Foundation::BSTR>,
+    ) -> crate::core::HRESULT {
+        todo!("GetActiveItem")
+    }
+    #[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+    #[cfg(dummy_option_that_does_not_exist)]
+    fn GetSelectedItems(
+        &self,
+        pp_selected_item_paths: MutPtr<ConstPtr<super::Com::SAFEARRAY>>,
+    ) -> crate::core::HRESULT {
+        todo!("GetSelectedItems")
+    }
+    fn RemoveCapturedItem(&self, psz_path: PCWSTR) -> crate::core::HRESULT {
+        todo!("RemoveCapturedItem")
+    }
+}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for ICameraUIControl {
     fn clone(&self) -> Self {
         Self(self.0.clone())
     }
 }
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for ICameraUIControl {}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for ICameraUIControl {
     fn eq(&self, other: &Self) -> bool {
         self.0 == other.0
     }
 }
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for ICameraUIControl {}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for ICameraUIControl {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("ICameraUIControl").field(&self.0).finish()
     }
 }
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for ICameraUIControl {
     fn from_bytes(from: &[u8]) -> Self {
         Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
@@ -2281,12 +2347,31 @@ impl FromIntoMemory for ICameraUIControl {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl crate::core::ComInterface for ICameraUIControl {
     type Super = crate::core::IUnknown;
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xb8733adf_3d68_4b8f_bb08_e28a0bed0376);
 }
 pub struct ICameraUIControlEventCallback(crate::core::IUnknown);
+pub trait ICameraUIControlEventCallback_Trait: crate::core::IUnknown_Trait {
+    fn OnStartupComplete(&self) {
+        todo!("OnStartupComplete")
+    }
+    fn OnSuspendComplete(&self) {
+        todo!("OnSuspendComplete")
+    }
+    fn OnItemCaptured(&self, psz_path: PCWSTR) {
+        todo!("OnItemCaptured")
+    }
+    fn OnItemDeleted(&self, psz_path: PCWSTR) {
+        todo!("OnItemDeleted")
+    }
+    fn OnClosed(&self) {
+        todo!("OnClosed")
+    }
+}
 impl ::core::clone::Clone for ICameraUIControlEventCallback {
     fn clone(&self) -> Self {
         Self(self.0.clone())
@@ -2323,6 +2408,18 @@ impl crate::core::ComInterface for ICameraUIControlEventCallback {
         crate::core::GUID::from_u128(0x1bfa0c2c_fbcd_4776_bda4_88bf974e74f4);
 }
 pub struct IClipServiceNotificationHelper(crate::core::IUnknown);
+pub trait IClipServiceNotificationHelper_Trait: crate::core::IUnknown_Trait {
+    fn ShowToast(
+        &self,
+        title_text: super::super::Foundation::BSTR,
+        body_text: super::super::Foundation::BSTR,
+        package_name: super::super::Foundation::BSTR,
+        app_id: super::super::Foundation::BSTR,
+        launch_command: super::super::Foundation::BSTR,
+    ) -> crate::core::HRESULT {
+        todo!("ShowToast")
+    }
+}
 impl ::core::clone::Clone for IClipServiceNotificationHelper {
     fn clone(&self) -> Self {
         Self(self.0.clone())
@@ -2359,6 +2456,11 @@ impl crate::core::ComInterface for IClipServiceNotificationHelper {
         crate::core::GUID::from_u128(0xc39948f0_6142_44fd_98ca_e1681a8d68b5);
 }
 pub struct IContainerActivationHelper(crate::core::IUnknown);
+pub trait IContainerActivationHelper_Trait: crate::core::IUnknown_Trait {
+    fn CanActivateClientVM(&self, is_allowed: MutPtr<i16>) -> crate::core::HRESULT {
+        todo!("CanActivateClientVM")
+    }
+}
 impl ::core::clone::Clone for IContainerActivationHelper {
     fn clone(&self) -> Self {
         Self(self.0.clone())
@@ -2395,6 +2497,11 @@ impl crate::core::ComInterface for IContainerActivationHelper {
         crate::core::GUID::from_u128(0xb524f93f_80d5_4ec7_ae9e_d66e93ade1fa);
 }
 pub struct IDefaultBrowserSyncSettings(crate::core::IUnknown);
+pub trait IDefaultBrowserSyncSettings_Trait: crate::core::IUnknown_Trait {
+    fn IsEnabled(&self) -> super::super::Foundation::BOOL {
+        todo!("IsEnabled")
+    }
+}
 impl ::core::clone::Clone for IDefaultBrowserSyncSettings {
     fn clone(&self) -> Self {
         Self(self.0.clone())
@@ -2431,6 +2538,11 @@ impl crate::core::ComInterface for IDefaultBrowserSyncSettings {
         crate::core::GUID::from_u128(0x7a27faad_5ae6_4255_9030_c530936292e3);
 }
 pub struct IDeleteBrowsingHistory(crate::core::IUnknown);
+pub trait IDeleteBrowsingHistory_Trait: crate::core::IUnknown_Trait {
+    fn DeleteBrowsingHistory(&self, dw_flags: u32) -> crate::core::HRESULT {
+        todo!("DeleteBrowsingHistory")
+    }
+}
 impl ::core::clone::Clone for IDeleteBrowsingHistory {
     fn clone(&self) -> Self {
         Self(self.0.clone())
@@ -2488,6 +2600,23 @@ pub const IE_MEMORY: i32 = -4i32;
 pub const IE_NOPEN: i32 = -3i32;
 pub const IE_OPEN: i32 = -2i32;
 pub struct IEditionUpgradeBroker(crate::core::IUnknown);
+pub trait IEditionUpgradeBroker_Trait: crate::core::IUnknown_Trait {
+    fn InitializeParentWindow(&self, parent_handle: u32) -> crate::core::HRESULT {
+        todo!("InitializeParentWindow")
+    }
+    fn UpdateOperatingSystem(
+        &self,
+        parameter: super::super::Foundation::BSTR,
+    ) -> crate::core::HRESULT {
+        todo!("UpdateOperatingSystem")
+    }
+    fn ShowProductKeyUI(&self) -> crate::core::HRESULT {
+        todo!("ShowProductKeyUI")
+    }
+    fn CanUpgrade(&self) -> crate::core::HRESULT {
+        todo!("CanUpgrade")
+    }
+}
 impl ::core::clone::Clone for IEditionUpgradeBroker {
     fn clone(&self) -> Self {
         Self(self.0.clone())
@@ -2524,6 +2653,29 @@ impl crate::core::ComInterface for IEditionUpgradeBroker {
         crate::core::GUID::from_u128(0xff19cbcf_9455_4937_b872_6b7929a460af);
 }
 pub struct IEditionUpgradeHelper(crate::core::IUnknown);
+pub trait IEditionUpgradeHelper_Trait: crate::core::IUnknown_Trait {
+    fn CanUpgrade(
+        &self,
+        is_allowed: MutPtr<super::super::Foundation::BOOL>,
+    ) -> crate::core::HRESULT {
+        todo!("CanUpgrade")
+    }
+    fn UpdateOperatingSystem(&self, content_id: PCWSTR) -> crate::core::HRESULT {
+        todo!("UpdateOperatingSystem")
+    }
+    fn ShowProductKeyUI(&self) -> crate::core::HRESULT {
+        todo!("ShowProductKeyUI")
+    }
+    fn GetOsProductContentId(&self, content_id: MutPtr<PWSTR>) -> crate::core::HRESULT {
+        todo!("GetOsProductContentId")
+    }
+    fn GetGenuineLocalStatus(
+        &self,
+        is_genuine: MutPtr<super::super::Foundation::BOOL>,
+    ) -> crate::core::HRESULT {
+        todo!("GetGenuineLocalStatus")
+    }
+}
 impl ::core::clone::Clone for IEditionUpgradeHelper {
     fn clone(&self) -> Self {
         Self(self.0.clone())
@@ -3165,6 +3317,11 @@ pub const IR_STRINGEX: u32 = 384u32;
 pub const IR_STRINGSTART: u32 = 256u32;
 pub const IR_UNDETERMINE: u32 = 368u32;
 pub struct IWindowsLockModeHelper(crate::core::IUnknown);
+pub trait IWindowsLockModeHelper_Trait: crate::core::IUnknown_Trait {
+    fn GetSMode(&self, is_smode: MutPtr<super::super::Foundation::BOOL>) -> crate::core::HRESULT {
+        todo!("GetSMode")
+    }
+}
 impl ::core::clone::Clone for IWindowsLockModeHelper {
     fn clone(&self) -> Self {
         Self(self.0.clone())

@@ -7244,37 +7244,139 @@ impl FromIntoMemory for HIORING__ {
         4u32 as usize
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct IDiskQuotaControl(crate::core::IUnknown);
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
+pub trait IDiskQuotaControl_Trait:
+    super::super::System::Com::IConnectionPointContainer_Trait
+{
+    fn Initialize(
+        &self,
+        psz_path: PCWSTR,
+        b_read_write: super::super::Foundation::BOOL,
+    ) -> crate::core::HRESULT {
+        todo!("Initialize")
+    }
+    fn SetQuotaState(&self, dw_state: u32) -> crate::core::HRESULT {
+        todo!("SetQuotaState")
+    }
+    fn GetQuotaState(&self, pdw_state: MutPtr<u32>) -> crate::core::HRESULT {
+        todo!("GetQuotaState")
+    }
+    fn SetQuotaLogFlags(&self, dw_flags: u32) -> crate::core::HRESULT {
+        todo!("SetQuotaLogFlags")
+    }
+    fn GetQuotaLogFlags(&self, pdw_flags: MutPtr<u32>) -> crate::core::HRESULT {
+        todo!("GetQuotaLogFlags")
+    }
+    fn SetDefaultQuotaThreshold(&self, ll_threshold: i64) -> crate::core::HRESULT {
+        todo!("SetDefaultQuotaThreshold")
+    }
+    fn GetDefaultQuotaThreshold(&self, pll_threshold: MutPtr<i64>) -> crate::core::HRESULT {
+        todo!("GetDefaultQuotaThreshold")
+    }
+    fn GetDefaultQuotaThresholdText(
+        &self,
+        psz_text: PCWSTR,
+        cch_text: u32,
+    ) -> crate::core::HRESULT {
+        todo!("GetDefaultQuotaThresholdText")
+    }
+    fn SetDefaultQuotaLimit(&self, ll_limit: i64) -> crate::core::HRESULT {
+        todo!("SetDefaultQuotaLimit")
+    }
+    fn GetDefaultQuotaLimit(&self, pll_limit: MutPtr<i64>) -> crate::core::HRESULT {
+        todo!("GetDefaultQuotaLimit")
+    }
+    fn GetDefaultQuotaLimitText(&self, psz_text: PCWSTR, cch_text: u32) -> crate::core::HRESULT {
+        todo!("GetDefaultQuotaLimitText")
+    }
+    fn AddUserSid(
+        &self,
+        p_user_sid: super::super::Foundation::PSID,
+        f_name_resolution: DISKQUOTA_USERNAME_RESOLVE,
+        pp_user: MutPtr<IDiskQuotaUser>,
+    ) -> crate::core::HRESULT {
+        todo!("AddUserSid")
+    }
+    fn AddUserName(
+        &self,
+        psz_logon_name: PCWSTR,
+        f_name_resolution: DISKQUOTA_USERNAME_RESOLVE,
+        pp_user: MutPtr<IDiskQuotaUser>,
+    ) -> crate::core::HRESULT {
+        todo!("AddUserName")
+    }
+    fn DeleteUser(&self, p_user: IDiskQuotaUser) -> crate::core::HRESULT {
+        todo!("DeleteUser")
+    }
+    fn FindUserSid(
+        &self,
+        p_user_sid: super::super::Foundation::PSID,
+        f_name_resolution: DISKQUOTA_USERNAME_RESOLVE,
+        pp_user: MutPtr<IDiskQuotaUser>,
+    ) -> crate::core::HRESULT {
+        todo!("FindUserSid")
+    }
+    fn FindUserName(
+        &self,
+        psz_logon_name: PCWSTR,
+        pp_user: MutPtr<IDiskQuotaUser>,
+    ) -> crate::core::HRESULT {
+        todo!("FindUserName")
+    }
+    fn CreateEnumUsers(
+        &self,
+        rgp_user_sids: MutPtr<super::super::Foundation::PSID>,
+        cp_sids: u32,
+        f_name_resolution: DISKQUOTA_USERNAME_RESOLVE,
+        pp_enum: MutPtr<IEnumDiskQuotaUsers>,
+    ) -> crate::core::HRESULT {
+        todo!("CreateEnumUsers")
+    }
+    fn CreateUserBatch(&self, pp_batch: MutPtr<IDiskQuotaUserBatch>) -> crate::core::HRESULT {
+        todo!("CreateUserBatch")
+    }
+    fn InvalidateSidNameCache(&self) -> crate::core::HRESULT {
+        todo!("InvalidateSidNameCache")
+    }
+    fn GiveUserNameResolutionPriority(&self, p_user: IDiskQuotaUser) -> crate::core::HRESULT {
+        todo!("GiveUserNameResolutionPriority")
+    }
+    fn ShutdownNameResolution(&self) -> crate::core::HRESULT {
+        todo!("ShutdownNameResolution")
+    }
+}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for IDiskQuotaControl {
     fn clone(&self) -> Self {
         Self(self.0.clone())
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for IDiskQuotaControl {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for IDiskQuotaControl {
     fn eq(&self, other: &Self) -> bool {
         self.0 == other.0
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for IDiskQuotaControl {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for IDiskQuotaControl {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("IDiskQuotaControl").field(&self.0).finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for IDiskQuotaControl {
     fn from_bytes(from: &[u8]) -> Self {
@@ -7287,7 +7389,7 @@ impl FromIntoMemory for IDiskQuotaControl {
         std::mem::size_of::<crate::core::IUnknown>()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 impl crate::core::ComInterface for IDiskQuotaControl {
     type Super = super::super::System::Com::IConnectionPointContainer;
@@ -7295,6 +7397,11 @@ impl crate::core::ComInterface for IDiskQuotaControl {
         crate::core::GUID::from_u128(0x7988b572_ec89_11cf_9c00_00aa00a14f56);
 }
 pub struct IDiskQuotaEvents(crate::core::IUnknown);
+pub trait IDiskQuotaEvents_Trait: crate::core::IUnknown_Trait {
+    fn OnUserNameChanged(&self, p_user: IDiskQuotaUser) -> crate::core::HRESULT {
+        todo!("OnUserNameChanged")
+    }
+}
 impl ::core::clone::Clone for IDiskQuotaEvents {
     fn clone(&self) -> Self {
         Self(self.0.clone())
@@ -7329,6 +7436,73 @@ impl crate::core::ComInterface for IDiskQuotaEvents {
         crate::core::GUID::from_u128(0x7988b579_ec89_11cf_9c00_00aa00a14f56);
 }
 pub struct IDiskQuotaUser(crate::core::IUnknown);
+pub trait IDiskQuotaUser_Trait: crate::core::IUnknown_Trait {
+    fn GetID(&self, pul_id: MutPtr<u32>) -> crate::core::HRESULT {
+        todo!("GetID")
+    }
+    fn GetName(
+        &self,
+        psz_account_container: PCWSTR,
+        cch_account_container: u32,
+        psz_logon_name: PCWSTR,
+        cch_logon_name: u32,
+        psz_display_name: PCWSTR,
+        cch_display_name: u32,
+    ) -> crate::core::HRESULT {
+        todo!("GetName")
+    }
+    fn GetSidLength(&self, pdw_length: MutPtr<u32>) -> crate::core::HRESULT {
+        todo!("GetSidLength")
+    }
+    fn GetSid(&self, pb_sid_buffer: MutPtr<u8>, cb_sid_buffer: u32) -> crate::core::HRESULT {
+        todo!("GetSid")
+    }
+    fn GetQuotaThreshold(&self, pll_threshold: MutPtr<i64>) -> crate::core::HRESULT {
+        todo!("GetQuotaThreshold")
+    }
+    fn GetQuotaThresholdText(&self, psz_text: PCWSTR, cch_text: u32) -> crate::core::HRESULT {
+        todo!("GetQuotaThresholdText")
+    }
+    fn GetQuotaLimit(&self, pll_limit: MutPtr<i64>) -> crate::core::HRESULT {
+        todo!("GetQuotaLimit")
+    }
+    fn GetQuotaLimitText(&self, psz_text: PCWSTR, cch_text: u32) -> crate::core::HRESULT {
+        todo!("GetQuotaLimitText")
+    }
+    fn GetQuotaUsed(&self, pll_used: MutPtr<i64>) -> crate::core::HRESULT {
+        todo!("GetQuotaUsed")
+    }
+    fn GetQuotaUsedText(&self, psz_text: PCWSTR, cch_text: u32) -> crate::core::HRESULT {
+        todo!("GetQuotaUsedText")
+    }
+    fn GetQuotaInformation(
+        &self,
+        pb_quota_info: MutPtr<::core::ffi::c_void>,
+        cb_quota_info: u32,
+    ) -> crate::core::HRESULT {
+        todo!("GetQuotaInformation")
+    }
+    fn SetQuotaThreshold(
+        &self,
+        ll_threshold: i64,
+        f_write_through: super::super::Foundation::BOOL,
+    ) -> crate::core::HRESULT {
+        todo!("SetQuotaThreshold")
+    }
+    fn SetQuotaLimit(
+        &self,
+        ll_limit: i64,
+        f_write_through: super::super::Foundation::BOOL,
+    ) -> crate::core::HRESULT {
+        todo!("SetQuotaLimit")
+    }
+    fn Invalidate(&self) -> crate::core::HRESULT {
+        todo!("Invalidate")
+    }
+    fn GetAccountStatus(&self, pdw_status: MutPtr<u32>) -> crate::core::HRESULT {
+        todo!("GetAccountStatus")
+    }
+}
 impl ::core::clone::Clone for IDiskQuotaUser {
     fn clone(&self) -> Self {
         Self(self.0.clone())
@@ -7363,6 +7537,20 @@ impl crate::core::ComInterface for IDiskQuotaUser {
         crate::core::GUID::from_u128(0x7988b574_ec89_11cf_9c00_00aa00a14f56);
 }
 pub struct IDiskQuotaUserBatch(crate::core::IUnknown);
+pub trait IDiskQuotaUserBatch_Trait: crate::core::IUnknown_Trait {
+    fn Add(&self, p_user: IDiskQuotaUser) -> crate::core::HRESULT {
+        todo!("Add")
+    }
+    fn Remove(&self, p_user: IDiskQuotaUser) -> crate::core::HRESULT {
+        todo!("Remove")
+    }
+    fn RemoveAll(&self) -> crate::core::HRESULT {
+        todo!("RemoveAll")
+    }
+    fn FlushToDisk(&self) -> crate::core::HRESULT {
+        todo!("FlushToDisk")
+    }
+}
 impl ::core::clone::Clone for IDiskQuotaUserBatch {
     fn clone(&self) -> Self {
         Self(self.0.clone())
@@ -7397,6 +7585,25 @@ impl crate::core::ComInterface for IDiskQuotaUserBatch {
         crate::core::GUID::from_u128(0x7988b576_ec89_11cf_9c00_00aa00a14f56);
 }
 pub struct IEnumDiskQuotaUsers(crate::core::IUnknown);
+pub trait IEnumDiskQuotaUsers_Trait: crate::core::IUnknown_Trait {
+    fn Next(
+        &self,
+        c_users: u32,
+        rg_users: MutPtr<IDiskQuotaUser>,
+        pc_users_fetched: MutPtr<u32>,
+    ) -> crate::core::HRESULT {
+        todo!("Next")
+    }
+    fn Skip(&self, c_users: u32) -> crate::core::HRESULT {
+        todo!("Skip")
+    }
+    fn Reset(&self) -> crate::core::HRESULT {
+        todo!("Reset")
+    }
+    fn Clone(&self, pp_enum: MutPtr<IEnumDiskQuotaUsers>) -> crate::core::HRESULT {
+        todo!("Clone")
+    }
+}
 impl ::core::clone::Clone for IEnumDiskQuotaUsers {
     fn clone(&self) -> Self {
         Self(self.0.clone())

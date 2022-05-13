@@ -22674,6 +22674,41 @@ impl FromIntoMemory for HEAPALIGNMENT {
     }
 }
 pub struct IDDVideoPortContainer(crate::core::IUnknown);
+pub trait IDDVideoPortContainer_Trait: crate::core::IUnknown_Trait {
+    fn CreateVideoPort(
+        &self,
+        param_0: u32,
+        param_1: MutPtr<DDVIDEOPORTDESC>,
+        param_2: MutPtr<IDirectDrawVideoPort>,
+        param_3: crate::core::IUnknown,
+    ) -> crate::core::HRESULT {
+        todo!("CreateVideoPort")
+    }
+    fn EnumVideoPorts(
+        &self,
+        param_0: u32,
+        param_1: MutPtr<DDVIDEOPORTCAPS>,
+        param_2: MutPtr<::core::ffi::c_void>,
+        param_3: LPDDENUMVIDEOCALLBACK,
+    ) -> crate::core::HRESULT {
+        todo!("EnumVideoPorts")
+    }
+    fn GetVideoPortConnectInfo(
+        &self,
+        param_0: u32,
+        pc_info: MutPtr<u32>,
+        param_2: MutPtr<DDVIDEOPORTCONNECT>,
+    ) -> crate::core::HRESULT {
+        todo!("GetVideoPortConnectInfo")
+    }
+    fn QueryVideoPortStatus(
+        &self,
+        param_0: u32,
+        param_1: MutPtr<DDVIDEOPORTSTATUS>,
+    ) -> crate::core::HRESULT {
+        todo!("QueryVideoPortStatus")
+    }
+}
 impl ::core::clone::Clone for IDDVideoPortContainer {
     fn clone(&self) -> Self {
         Self(self.0.clone())
@@ -22710,6 +22745,112 @@ impl crate::core::ComInterface for IDDVideoPortContainer {
         crate::core::GUID::from_u128(0x6c142760_a733_11ce_a521_0020af0be560);
 }
 pub struct IDirectDraw(crate::core::IUnknown);
+pub trait IDirectDraw_Trait: crate::core::IUnknown_Trait {
+    fn Compact(&self) -> crate::core::HRESULT {
+        todo!("Compact")
+    }
+    fn CreateClipper(
+        &self,
+        param_0: u32,
+        param_1: MutPtr<IDirectDrawClipper>,
+        param_2: crate::core::IUnknown,
+    ) -> crate::core::HRESULT {
+        todo!("CreateClipper")
+    }
+    fn CreatePalette(
+        &self,
+        param_0: u32,
+        param_1: MutPtr<super::Gdi::PALETTEENTRY>,
+        param_2: MutPtr<IDirectDrawPalette>,
+        param_3: crate::core::IUnknown,
+    ) -> crate::core::HRESULT {
+        todo!("CreatePalette")
+    }
+    fn CreateSurface(
+        &self,
+        param_0: MutPtr<DDSURFACEDESC>,
+        param_1: MutPtr<IDirectDrawSurface>,
+        param_2: crate::core::IUnknown,
+    ) -> crate::core::HRESULT {
+        todo!("CreateSurface")
+    }
+    fn DuplicateSurface(
+        &self,
+        param_0: IDirectDrawSurface,
+        param_1: MutPtr<IDirectDrawSurface>,
+    ) -> crate::core::HRESULT {
+        todo!("DuplicateSurface")
+    }
+    fn EnumDisplayModes(
+        &self,
+        param_0: u32,
+        param_1: MutPtr<DDSURFACEDESC>,
+        param_2: MutPtr<::core::ffi::c_void>,
+        param_3: LPDDENUMMODESCALLBACK,
+    ) -> crate::core::HRESULT {
+        todo!("EnumDisplayModes")
+    }
+    fn EnumSurfaces(
+        &self,
+        param_0: u32,
+        param_1: MutPtr<DDSURFACEDESC>,
+        param_2: MutPtr<::core::ffi::c_void>,
+        param_3: LPDDENUMSURFACESCALLBACK,
+    ) -> crate::core::HRESULT {
+        todo!("EnumSurfaces")
+    }
+    fn FlipToGDISurface(&self) -> crate::core::HRESULT {
+        todo!("FlipToGDISurface")
+    }
+    fn GetCaps(
+        &self,
+        param_0: MutPtr<DDCAPS_DX7>,
+        param_1: MutPtr<DDCAPS_DX7>,
+    ) -> crate::core::HRESULT {
+        todo!("GetCaps")
+    }
+    fn GetDisplayMode(&self, param_0: MutPtr<DDSURFACEDESC>) -> crate::core::HRESULT {
+        todo!("GetDisplayMode")
+    }
+    fn GetFourCCCodes(&self, param_0: MutPtr<u32>, param_1: MutPtr<u32>) -> crate::core::HRESULT {
+        todo!("GetFourCCCodes")
+    }
+    fn GetGDISurface(&self, param_0: MutPtr<IDirectDrawSurface>) -> crate::core::HRESULT {
+        todo!("GetGDISurface")
+    }
+    fn GetMonitorFrequency(&self, param_0: MutPtr<u32>) -> crate::core::HRESULT {
+        todo!("GetMonitorFrequency")
+    }
+    fn GetScanLine(&self, param_0: MutPtr<u32>) -> crate::core::HRESULT {
+        todo!("GetScanLine")
+    }
+    fn GetVerticalBlankStatus(&self, param_0: MutPtr<i32>) -> crate::core::HRESULT {
+        todo!("GetVerticalBlankStatus")
+    }
+    fn Initialize(&self, param_0: MutPtr<crate::core::GUID>) -> crate::core::HRESULT {
+        todo!("Initialize")
+    }
+    fn RestoreDisplayMode(&self) -> crate::core::HRESULT {
+        todo!("RestoreDisplayMode")
+    }
+    fn SetCooperativeLevel(
+        &self,
+        param_0: super::super::Foundation::HWND,
+        param_1: u32,
+    ) -> crate::core::HRESULT {
+        todo!("SetCooperativeLevel")
+    }
+    fn SetDisplayMode(&self, param_0: u32, param_1: u32, param_2: u32) -> crate::core::HRESULT {
+        todo!("SetDisplayMode")
+    }
+    fn WaitForVerticalBlank(
+        &self,
+        param_0: u32,
+        param_1: super::super::Foundation::HANDLE,
+    ) -> crate::core::HRESULT {
+        todo!("WaitForVerticalBlank")
+    }
+}
 impl ::core::clone::Clone for IDirectDraw {
     fn clone(&self) -> Self {
         Self(self.0.clone())
@@ -22744,6 +22885,127 @@ impl crate::core::ComInterface for IDirectDraw {
         crate::core::GUID::from_u128(0x6c14db80_a733_11ce_a521_0020af0be560);
 }
 pub struct IDirectDraw2(crate::core::IUnknown);
+pub trait IDirectDraw2_Trait: crate::core::IUnknown_Trait {
+    fn Compact(&self) -> crate::core::HRESULT {
+        todo!("Compact")
+    }
+    fn CreateClipper(
+        &self,
+        param_0: u32,
+        param_1: MutPtr<IDirectDrawClipper>,
+        param_2: crate::core::IUnknown,
+    ) -> crate::core::HRESULT {
+        todo!("CreateClipper")
+    }
+    fn CreatePalette(
+        &self,
+        param_0: u32,
+        param_1: MutPtr<super::Gdi::PALETTEENTRY>,
+        param_2: MutPtr<IDirectDrawPalette>,
+        param_3: crate::core::IUnknown,
+    ) -> crate::core::HRESULT {
+        todo!("CreatePalette")
+    }
+    fn CreateSurface(
+        &self,
+        param_0: MutPtr<DDSURFACEDESC>,
+        param_1: MutPtr<IDirectDrawSurface>,
+        param_2: crate::core::IUnknown,
+    ) -> crate::core::HRESULT {
+        todo!("CreateSurface")
+    }
+    fn DuplicateSurface(
+        &self,
+        param_0: IDirectDrawSurface,
+        param_1: MutPtr<IDirectDrawSurface>,
+    ) -> crate::core::HRESULT {
+        todo!("DuplicateSurface")
+    }
+    fn EnumDisplayModes(
+        &self,
+        param_0: u32,
+        param_1: MutPtr<DDSURFACEDESC>,
+        param_2: MutPtr<::core::ffi::c_void>,
+        param_3: LPDDENUMMODESCALLBACK,
+    ) -> crate::core::HRESULT {
+        todo!("EnumDisplayModes")
+    }
+    fn EnumSurfaces(
+        &self,
+        param_0: u32,
+        param_1: MutPtr<DDSURFACEDESC>,
+        param_2: MutPtr<::core::ffi::c_void>,
+        param_3: LPDDENUMSURFACESCALLBACK,
+    ) -> crate::core::HRESULT {
+        todo!("EnumSurfaces")
+    }
+    fn FlipToGDISurface(&self) -> crate::core::HRESULT {
+        todo!("FlipToGDISurface")
+    }
+    fn GetCaps(
+        &self,
+        param_0: MutPtr<DDCAPS_DX7>,
+        param_1: MutPtr<DDCAPS_DX7>,
+    ) -> crate::core::HRESULT {
+        todo!("GetCaps")
+    }
+    fn GetDisplayMode(&self, param_0: MutPtr<DDSURFACEDESC>) -> crate::core::HRESULT {
+        todo!("GetDisplayMode")
+    }
+    fn GetFourCCCodes(&self, param_0: MutPtr<u32>, param_1: MutPtr<u32>) -> crate::core::HRESULT {
+        todo!("GetFourCCCodes")
+    }
+    fn GetGDISurface(&self, param_0: MutPtr<IDirectDrawSurface>) -> crate::core::HRESULT {
+        todo!("GetGDISurface")
+    }
+    fn GetMonitorFrequency(&self, param_0: MutPtr<u32>) -> crate::core::HRESULT {
+        todo!("GetMonitorFrequency")
+    }
+    fn GetScanLine(&self, param_0: MutPtr<u32>) -> crate::core::HRESULT {
+        todo!("GetScanLine")
+    }
+    fn GetVerticalBlankStatus(&self, param_0: MutPtr<i32>) -> crate::core::HRESULT {
+        todo!("GetVerticalBlankStatus")
+    }
+    fn Initialize(&self, param_0: MutPtr<crate::core::GUID>) -> crate::core::HRESULT {
+        todo!("Initialize")
+    }
+    fn RestoreDisplayMode(&self) -> crate::core::HRESULT {
+        todo!("RestoreDisplayMode")
+    }
+    fn SetCooperativeLevel(
+        &self,
+        param_0: super::super::Foundation::HWND,
+        param_1: u32,
+    ) -> crate::core::HRESULT {
+        todo!("SetCooperativeLevel")
+    }
+    fn SetDisplayMode(
+        &self,
+        param_0: u32,
+        param_1: u32,
+        param_2: u32,
+        param_3: u32,
+        param_4: u32,
+    ) -> crate::core::HRESULT {
+        todo!("SetDisplayMode")
+    }
+    fn WaitForVerticalBlank(
+        &self,
+        param_0: u32,
+        param_1: super::super::Foundation::HANDLE,
+    ) -> crate::core::HRESULT {
+        todo!("WaitForVerticalBlank")
+    }
+    fn GetAvailableVidMem(
+        &self,
+        param_0: MutPtr<DDSCAPS>,
+        param_1: MutPtr<u32>,
+        param_2: MutPtr<u32>,
+    ) -> crate::core::HRESULT {
+        todo!("GetAvailableVidMem")
+    }
+}
 impl ::core::clone::Clone for IDirectDraw2 {
     fn clone(&self) -> Self {
         Self(self.0.clone())
@@ -22778,6 +23040,147 @@ impl crate::core::ComInterface for IDirectDraw2 {
         crate::core::GUID::from_u128(0xb3a6f3e0_2b43_11cf_a2de_00aa00b93356);
 }
 pub struct IDirectDraw4(crate::core::IUnknown);
+pub trait IDirectDraw4_Trait: crate::core::IUnknown_Trait {
+    fn Compact(&self) -> crate::core::HRESULT {
+        todo!("Compact")
+    }
+    fn CreateClipper(
+        &self,
+        param_0: u32,
+        param_1: MutPtr<IDirectDrawClipper>,
+        param_2: crate::core::IUnknown,
+    ) -> crate::core::HRESULT {
+        todo!("CreateClipper")
+    }
+    fn CreatePalette(
+        &self,
+        param_0: u32,
+        param_1: MutPtr<super::Gdi::PALETTEENTRY>,
+        param_2: MutPtr<IDirectDrawPalette>,
+        param_3: crate::core::IUnknown,
+    ) -> crate::core::HRESULT {
+        todo!("CreatePalette")
+    }
+    fn CreateSurface(
+        &self,
+        param_0: MutPtr<DDSURFACEDESC2>,
+        param_1: MutPtr<IDirectDrawSurface4>,
+        param_2: crate::core::IUnknown,
+    ) -> crate::core::HRESULT {
+        todo!("CreateSurface")
+    }
+    fn DuplicateSurface(
+        &self,
+        param_0: IDirectDrawSurface4,
+        param_1: MutPtr<IDirectDrawSurface4>,
+    ) -> crate::core::HRESULT {
+        todo!("DuplicateSurface")
+    }
+    fn EnumDisplayModes(
+        &self,
+        param_0: u32,
+        param_1: MutPtr<DDSURFACEDESC2>,
+        param_2: MutPtr<::core::ffi::c_void>,
+        param_3: LPDDENUMMODESCALLBACK2,
+    ) -> crate::core::HRESULT {
+        todo!("EnumDisplayModes")
+    }
+    fn EnumSurfaces(
+        &self,
+        param_0: u32,
+        param_1: MutPtr<DDSURFACEDESC2>,
+        param_2: MutPtr<::core::ffi::c_void>,
+        param_3: LPDDENUMSURFACESCALLBACK2,
+    ) -> crate::core::HRESULT {
+        todo!("EnumSurfaces")
+    }
+    fn FlipToGDISurface(&self) -> crate::core::HRESULT {
+        todo!("FlipToGDISurface")
+    }
+    fn GetCaps(
+        &self,
+        param_0: MutPtr<DDCAPS_DX7>,
+        param_1: MutPtr<DDCAPS_DX7>,
+    ) -> crate::core::HRESULT {
+        todo!("GetCaps")
+    }
+    fn GetDisplayMode(&self, param_0: MutPtr<DDSURFACEDESC2>) -> crate::core::HRESULT {
+        todo!("GetDisplayMode")
+    }
+    fn GetFourCCCodes(&self, param_0: MutPtr<u32>, param_1: MutPtr<u32>) -> crate::core::HRESULT {
+        todo!("GetFourCCCodes")
+    }
+    fn GetGDISurface(&self, param_0: MutPtr<IDirectDrawSurface4>) -> crate::core::HRESULT {
+        todo!("GetGDISurface")
+    }
+    fn GetMonitorFrequency(&self, param_0: MutPtr<u32>) -> crate::core::HRESULT {
+        todo!("GetMonitorFrequency")
+    }
+    fn GetScanLine(&self, param_0: MutPtr<u32>) -> crate::core::HRESULT {
+        todo!("GetScanLine")
+    }
+    fn GetVerticalBlankStatus(&self, param_0: MutPtr<i32>) -> crate::core::HRESULT {
+        todo!("GetVerticalBlankStatus")
+    }
+    fn Initialize(&self, param_0: MutPtr<crate::core::GUID>) -> crate::core::HRESULT {
+        todo!("Initialize")
+    }
+    fn RestoreDisplayMode(&self) -> crate::core::HRESULT {
+        todo!("RestoreDisplayMode")
+    }
+    fn SetCooperativeLevel(
+        &self,
+        param_0: super::super::Foundation::HWND,
+        param_1: u32,
+    ) -> crate::core::HRESULT {
+        todo!("SetCooperativeLevel")
+    }
+    fn SetDisplayMode(
+        &self,
+        param_0: u32,
+        param_1: u32,
+        param_2: u32,
+        param_3: u32,
+        param_4: u32,
+    ) -> crate::core::HRESULT {
+        todo!("SetDisplayMode")
+    }
+    fn WaitForVerticalBlank(
+        &self,
+        param_0: u32,
+        param_1: super::super::Foundation::HANDLE,
+    ) -> crate::core::HRESULT {
+        todo!("WaitForVerticalBlank")
+    }
+    fn GetAvailableVidMem(
+        &self,
+        param_0: MutPtr<DDSCAPS2>,
+        param_1: MutPtr<u32>,
+        param_2: MutPtr<u32>,
+    ) -> crate::core::HRESULT {
+        todo!("GetAvailableVidMem")
+    }
+    fn GetSurfaceFromDC(
+        &self,
+        param_0: super::Gdi::HDC,
+        param_1: MutPtr<IDirectDrawSurface4>,
+    ) -> crate::core::HRESULT {
+        todo!("GetSurfaceFromDC")
+    }
+    fn RestoreAllSurfaces(&self) -> crate::core::HRESULT {
+        todo!("RestoreAllSurfaces")
+    }
+    fn TestCooperativeLevel(&self) -> crate::core::HRESULT {
+        todo!("TestCooperativeLevel")
+    }
+    fn GetDeviceIdentifier(
+        &self,
+        param_0: MutPtr<DDDEVICEIDENTIFIER>,
+        param_1: u32,
+    ) -> crate::core::HRESULT {
+        todo!("GetDeviceIdentifier")
+    }
+}
 impl ::core::clone::Clone for IDirectDraw4 {
     fn clone(&self) -> Self {
         Self(self.0.clone())
@@ -22812,6 +23215,158 @@ impl crate::core::ComInterface for IDirectDraw4 {
         crate::core::GUID::from_u128(0x9c59509a_39bd_11d1_8c4a_00c04fd930c5);
 }
 pub struct IDirectDraw7(crate::core::IUnknown);
+pub trait IDirectDraw7_Trait: crate::core::IUnknown_Trait {
+    fn Compact(&self) -> crate::core::HRESULT {
+        todo!("Compact")
+    }
+    fn CreateClipper(
+        &self,
+        param_0: u32,
+        param_1: MutPtr<IDirectDrawClipper>,
+        param_2: crate::core::IUnknown,
+    ) -> crate::core::HRESULT {
+        todo!("CreateClipper")
+    }
+    fn CreatePalette(
+        &self,
+        param_0: u32,
+        param_1: MutPtr<super::Gdi::PALETTEENTRY>,
+        param_2: MutPtr<IDirectDrawPalette>,
+        param_3: crate::core::IUnknown,
+    ) -> crate::core::HRESULT {
+        todo!("CreatePalette")
+    }
+    fn CreateSurface(
+        &self,
+        param_0: MutPtr<DDSURFACEDESC2>,
+        param_1: MutPtr<IDirectDrawSurface7>,
+        param_2: crate::core::IUnknown,
+    ) -> crate::core::HRESULT {
+        todo!("CreateSurface")
+    }
+    fn DuplicateSurface(
+        &self,
+        param_0: IDirectDrawSurface7,
+        param_1: MutPtr<IDirectDrawSurface7>,
+    ) -> crate::core::HRESULT {
+        todo!("DuplicateSurface")
+    }
+    fn EnumDisplayModes(
+        &self,
+        param_0: u32,
+        param_1: MutPtr<DDSURFACEDESC2>,
+        param_2: MutPtr<::core::ffi::c_void>,
+        param_3: LPDDENUMMODESCALLBACK2,
+    ) -> crate::core::HRESULT {
+        todo!("EnumDisplayModes")
+    }
+    fn EnumSurfaces(
+        &self,
+        param_0: u32,
+        param_1: MutPtr<DDSURFACEDESC2>,
+        param_2: MutPtr<::core::ffi::c_void>,
+        param_3: LPDDENUMSURFACESCALLBACK7,
+    ) -> crate::core::HRESULT {
+        todo!("EnumSurfaces")
+    }
+    fn FlipToGDISurface(&self) -> crate::core::HRESULT {
+        todo!("FlipToGDISurface")
+    }
+    fn GetCaps(
+        &self,
+        param_0: MutPtr<DDCAPS_DX7>,
+        param_1: MutPtr<DDCAPS_DX7>,
+    ) -> crate::core::HRESULT {
+        todo!("GetCaps")
+    }
+    fn GetDisplayMode(&self, param_0: MutPtr<DDSURFACEDESC2>) -> crate::core::HRESULT {
+        todo!("GetDisplayMode")
+    }
+    fn GetFourCCCodes(&self, param_0: MutPtr<u32>, param_1: MutPtr<u32>) -> crate::core::HRESULT {
+        todo!("GetFourCCCodes")
+    }
+    fn GetGDISurface(&self, param_0: MutPtr<IDirectDrawSurface7>) -> crate::core::HRESULT {
+        todo!("GetGDISurface")
+    }
+    fn GetMonitorFrequency(&self, param_0: MutPtr<u32>) -> crate::core::HRESULT {
+        todo!("GetMonitorFrequency")
+    }
+    fn GetScanLine(&self, param_0: MutPtr<u32>) -> crate::core::HRESULT {
+        todo!("GetScanLine")
+    }
+    fn GetVerticalBlankStatus(&self, param_0: MutPtr<i32>) -> crate::core::HRESULT {
+        todo!("GetVerticalBlankStatus")
+    }
+    fn Initialize(&self, param_0: MutPtr<crate::core::GUID>) -> crate::core::HRESULT {
+        todo!("Initialize")
+    }
+    fn RestoreDisplayMode(&self) -> crate::core::HRESULT {
+        todo!("RestoreDisplayMode")
+    }
+    fn SetCooperativeLevel(
+        &self,
+        param_0: super::super::Foundation::HWND,
+        param_1: u32,
+    ) -> crate::core::HRESULT {
+        todo!("SetCooperativeLevel")
+    }
+    fn SetDisplayMode(
+        &self,
+        param_0: u32,
+        param_1: u32,
+        param_2: u32,
+        param_3: u32,
+        param_4: u32,
+    ) -> crate::core::HRESULT {
+        todo!("SetDisplayMode")
+    }
+    fn WaitForVerticalBlank(
+        &self,
+        param_0: u32,
+        param_1: super::super::Foundation::HANDLE,
+    ) -> crate::core::HRESULT {
+        todo!("WaitForVerticalBlank")
+    }
+    fn GetAvailableVidMem(
+        &self,
+        param_0: MutPtr<DDSCAPS2>,
+        param_1: MutPtr<u32>,
+        param_2: MutPtr<u32>,
+    ) -> crate::core::HRESULT {
+        todo!("GetAvailableVidMem")
+    }
+    fn GetSurfaceFromDC(
+        &self,
+        param_0: super::Gdi::HDC,
+        param_1: MutPtr<IDirectDrawSurface7>,
+    ) -> crate::core::HRESULT {
+        todo!("GetSurfaceFromDC")
+    }
+    fn RestoreAllSurfaces(&self) -> crate::core::HRESULT {
+        todo!("RestoreAllSurfaces")
+    }
+    fn TestCooperativeLevel(&self) -> crate::core::HRESULT {
+        todo!("TestCooperativeLevel")
+    }
+    fn GetDeviceIdentifier(
+        &self,
+        param_0: MutPtr<DDDEVICEIDENTIFIER2>,
+        param_1: u32,
+    ) -> crate::core::HRESULT {
+        todo!("GetDeviceIdentifier")
+    }
+    fn StartModeTest(
+        &self,
+        param_0: MutPtr<super::super::Foundation::SIZE>,
+        param_1: u32,
+        param_2: u32,
+    ) -> crate::core::HRESULT {
+        todo!("StartModeTest")
+    }
+    fn EvaluateMode(&self, param_0: u32, param_1: MutPtr<u32>) -> crate::core::HRESULT {
+        todo!("EvaluateMode")
+    }
+}
 impl ::core::clone::Clone for IDirectDraw7 {
     fn clone(&self) -> Self {
         Self(self.0.clone())
@@ -22846,6 +23401,42 @@ impl crate::core::ComInterface for IDirectDraw7 {
         crate::core::GUID::from_u128(0x15e65ec0_3b9c_11d2_b92f_00609797ea5b);
 }
 pub struct IDirectDrawClipper(crate::core::IUnknown);
+pub trait IDirectDrawClipper_Trait: crate::core::IUnknown_Trait {
+    fn GetClipList(
+        &self,
+        param_0: MutPtr<super::super::Foundation::RECT>,
+        param_1: MutPtr<super::Gdi::RGNDATA>,
+        param_2: MutPtr<u32>,
+    ) -> crate::core::HRESULT {
+        todo!("GetClipList")
+    }
+    fn GetHWnd(&self, param_0: MutPtr<super::super::Foundation::HWND>) -> crate::core::HRESULT {
+        todo!("GetHWnd")
+    }
+    fn Initialize(&self, param_0: IDirectDraw, param_1: u32) -> crate::core::HRESULT {
+        todo!("Initialize")
+    }
+    fn IsClipListChanged(
+        &self,
+        param_0: MutPtr<super::super::Foundation::BOOL>,
+    ) -> crate::core::HRESULT {
+        todo!("IsClipListChanged")
+    }
+    fn SetClipList(
+        &self,
+        param_0: MutPtr<super::Gdi::RGNDATA>,
+        param_1: u32,
+    ) -> crate::core::HRESULT {
+        todo!("SetClipList")
+    }
+    fn SetHWnd(
+        &self,
+        param_0: u32,
+        param_1: super::super::Foundation::HWND,
+    ) -> crate::core::HRESULT {
+        todo!("SetHWnd")
+    }
+}
 impl ::core::clone::Clone for IDirectDrawClipper {
     fn clone(&self) -> Self {
         Self(self.0.clone())
@@ -22880,6 +23471,14 @@ impl crate::core::ComInterface for IDirectDrawClipper {
         crate::core::GUID::from_u128(0x6c14db85_a733_11ce_a521_0020af0be560);
 }
 pub struct IDirectDrawColorControl(crate::core::IUnknown);
+pub trait IDirectDrawColorControl_Trait: crate::core::IUnknown_Trait {
+    fn GetColorControls(&self, param_0: MutPtr<DDCOLORCONTROL>) -> crate::core::HRESULT {
+        todo!("GetColorControls")
+    }
+    fn SetColorControls(&self, param_0: MutPtr<DDCOLORCONTROL>) -> crate::core::HRESULT {
+        todo!("SetColorControls")
+    }
+}
 impl ::core::clone::Clone for IDirectDrawColorControl {
     fn clone(&self) -> Self {
         Self(self.0.clone())
@@ -22916,6 +23515,14 @@ impl crate::core::ComInterface for IDirectDrawColorControl {
         crate::core::GUID::from_u128(0x4b9f0ee0_0d7e_11d0_9b06_00a0c903a3b8);
 }
 pub struct IDirectDrawGammaControl(crate::core::IUnknown);
+pub trait IDirectDrawGammaControl_Trait: crate::core::IUnknown_Trait {
+    fn GetGammaRamp(&self, param_0: u32, param_1: MutPtr<DDGAMMARAMP>) -> crate::core::HRESULT {
+        todo!("GetGammaRamp")
+    }
+    fn SetGammaRamp(&self, param_0: u32, param_1: MutPtr<DDGAMMARAMP>) -> crate::core::HRESULT {
+        todo!("SetGammaRamp")
+    }
+}
 impl ::core::clone::Clone for IDirectDrawGammaControl {
     fn clone(&self) -> Self {
         Self(self.0.clone())
@@ -22952,6 +23559,17 @@ impl crate::core::ComInterface for IDirectDrawGammaControl {
         crate::core::GUID::from_u128(0x69c11c3e_b46b_11d1_ad7a_00c04fc29b4e);
 }
 pub struct IDirectDrawKernel(crate::core::IUnknown);
+pub trait IDirectDrawKernel_Trait: crate::core::IUnknown_Trait {
+    fn GetCaps(&self, param_0: MutPtr<DDKERNELCAPS>) -> crate::core::HRESULT {
+        todo!("GetCaps")
+    }
+    fn GetKernelHandle(&self, param_0: MutPtr<PtrRepr>) -> crate::core::HRESULT {
+        todo!("GetKernelHandle")
+    }
+    fn ReleaseKernelHandle(&self) -> crate::core::HRESULT {
+        todo!("ReleaseKernelHandle")
+    }
+}
 impl ::core::clone::Clone for IDirectDrawKernel {
     fn clone(&self) -> Self {
         Self(self.0.clone())
@@ -22986,6 +23604,37 @@ impl crate::core::ComInterface for IDirectDrawKernel {
         crate::core::GUID::from_u128(0x8d56c120_6a08_11d0_9b06_00a0c903a3b8);
 }
 pub struct IDirectDrawPalette(crate::core::IUnknown);
+pub trait IDirectDrawPalette_Trait: crate::core::IUnknown_Trait {
+    fn GetCaps(&self, param_0: MutPtr<u32>) -> crate::core::HRESULT {
+        todo!("GetCaps")
+    }
+    fn GetEntries(
+        &self,
+        param_0: u32,
+        param_1: u32,
+        param_2: u32,
+        param_3: MutPtr<super::Gdi::PALETTEENTRY>,
+    ) -> crate::core::HRESULT {
+        todo!("GetEntries")
+    }
+    fn Initialize(
+        &self,
+        param_0: IDirectDraw,
+        param_1: u32,
+        param_2: MutPtr<super::Gdi::PALETTEENTRY>,
+    ) -> crate::core::HRESULT {
+        todo!("Initialize")
+    }
+    fn SetEntries(
+        &self,
+        param_0: u32,
+        param_1: u32,
+        param_2: u32,
+        param_3: MutPtr<super::Gdi::PALETTEENTRY>,
+    ) -> crate::core::HRESULT {
+        todo!("SetEntries")
+    }
+}
 impl ::core::clone::Clone for IDirectDrawPalette {
     fn clone(&self) -> Self {
         Self(self.0.clone())
@@ -23020,6 +23669,171 @@ impl crate::core::ComInterface for IDirectDrawPalette {
         crate::core::GUID::from_u128(0x6c14db84_a733_11ce_a521_0020af0be560);
 }
 pub struct IDirectDrawSurface(crate::core::IUnknown);
+pub trait IDirectDrawSurface_Trait: crate::core::IUnknown_Trait {
+    fn AddAttachedSurface(&self, param_0: IDirectDrawSurface) -> crate::core::HRESULT {
+        todo!("AddAttachedSurface")
+    }
+    fn AddOverlayDirtyRect(
+        &self,
+        param_0: MutPtr<super::super::Foundation::RECT>,
+    ) -> crate::core::HRESULT {
+        todo!("AddOverlayDirtyRect")
+    }
+    fn Blt(
+        &self,
+        param_0: MutPtr<super::super::Foundation::RECT>,
+        param_1: IDirectDrawSurface,
+        param_2: MutPtr<super::super::Foundation::RECT>,
+        param_3: u32,
+        param_4: MutPtr<DDBLTFX>,
+    ) -> crate::core::HRESULT {
+        todo!("Blt")
+    }
+    fn BltBatch(
+        &self,
+        param_0: MutPtr<DDBLTBATCH>,
+        param_1: u32,
+        param_2: u32,
+    ) -> crate::core::HRESULT {
+        todo!("BltBatch")
+    }
+    fn BltFast(
+        &self,
+        param_0: u32,
+        param_1: u32,
+        param_2: IDirectDrawSurface,
+        param_3: MutPtr<super::super::Foundation::RECT>,
+        param_4: u32,
+    ) -> crate::core::HRESULT {
+        todo!("BltFast")
+    }
+    fn DeleteAttachedSurface(
+        &self,
+        param_0: u32,
+        param_1: IDirectDrawSurface,
+    ) -> crate::core::HRESULT {
+        todo!("DeleteAttachedSurface")
+    }
+    fn EnumAttachedSurfaces(
+        &self,
+        param_0: MutPtr<::core::ffi::c_void>,
+        param_1: LPDDENUMSURFACESCALLBACK,
+    ) -> crate::core::HRESULT {
+        todo!("EnumAttachedSurfaces")
+    }
+    fn EnumOverlayZOrders(
+        &self,
+        param_0: u32,
+        param_1: MutPtr<::core::ffi::c_void>,
+        param_2: LPDDENUMSURFACESCALLBACK,
+    ) -> crate::core::HRESULT {
+        todo!("EnumOverlayZOrders")
+    }
+    fn Flip(&self, param_0: IDirectDrawSurface, param_1: u32) -> crate::core::HRESULT {
+        todo!("Flip")
+    }
+    fn GetAttachedSurface(
+        &self,
+        param_0: MutPtr<DDSCAPS>,
+        param_1: MutPtr<IDirectDrawSurface>,
+    ) -> crate::core::HRESULT {
+        todo!("GetAttachedSurface")
+    }
+    fn GetBltStatus(&self, param_0: u32) -> crate::core::HRESULT {
+        todo!("GetBltStatus")
+    }
+    fn GetCaps(&self, param_0: MutPtr<DDSCAPS>) -> crate::core::HRESULT {
+        todo!("GetCaps")
+    }
+    fn GetClipper(&self, param_0: MutPtr<IDirectDrawClipper>) -> crate::core::HRESULT {
+        todo!("GetClipper")
+    }
+    fn GetColorKey(&self, param_0: u32, param_1: MutPtr<DDCOLORKEY>) -> crate::core::HRESULT {
+        todo!("GetColorKey")
+    }
+    fn GetDC(&self, param_0: MutPtr<super::Gdi::HDC>) -> crate::core::HRESULT {
+        todo!("GetDC")
+    }
+    fn GetFlipStatus(&self, param_0: u32) -> crate::core::HRESULT {
+        todo!("GetFlipStatus")
+    }
+    fn GetOverlayPosition(
+        &self,
+        param_0: MutPtr<i32>,
+        param_1: MutPtr<i32>,
+    ) -> crate::core::HRESULT {
+        todo!("GetOverlayPosition")
+    }
+    fn GetPalette(&self, param_0: MutPtr<IDirectDrawPalette>) -> crate::core::HRESULT {
+        todo!("GetPalette")
+    }
+    fn GetPixelFormat(&self, param_0: MutPtr<DDPIXELFORMAT>) -> crate::core::HRESULT {
+        todo!("GetPixelFormat")
+    }
+    fn GetSurfaceDesc(&self, param_0: MutPtr<DDSURFACEDESC>) -> crate::core::HRESULT {
+        todo!("GetSurfaceDesc")
+    }
+    fn Initialize(
+        &self,
+        param_0: IDirectDraw,
+        param_1: MutPtr<DDSURFACEDESC>,
+    ) -> crate::core::HRESULT {
+        todo!("Initialize")
+    }
+    fn IsLost(&self) -> crate::core::HRESULT {
+        todo!("IsLost")
+    }
+    fn Lock(
+        &self,
+        param_0: MutPtr<super::super::Foundation::RECT>,
+        param_1: MutPtr<DDSURFACEDESC>,
+        param_2: u32,
+        param_3: super::super::Foundation::HANDLE,
+    ) -> crate::core::HRESULT {
+        todo!("Lock")
+    }
+    fn ReleaseDC(&self, param_0: super::Gdi::HDC) -> crate::core::HRESULT {
+        todo!("ReleaseDC")
+    }
+    fn Restore(&self) -> crate::core::HRESULT {
+        todo!("Restore")
+    }
+    fn SetClipper(&self, param_0: IDirectDrawClipper) -> crate::core::HRESULT {
+        todo!("SetClipper")
+    }
+    fn SetColorKey(&self, param_0: u32, param_1: MutPtr<DDCOLORKEY>) -> crate::core::HRESULT {
+        todo!("SetColorKey")
+    }
+    fn SetOverlayPosition(&self, param_0: i32, param_1: i32) -> crate::core::HRESULT {
+        todo!("SetOverlayPosition")
+    }
+    fn SetPalette(&self, param_0: IDirectDrawPalette) -> crate::core::HRESULT {
+        todo!("SetPalette")
+    }
+    fn Unlock(&self, param_0: MutPtr<::core::ffi::c_void>) -> crate::core::HRESULT {
+        todo!("Unlock")
+    }
+    fn UpdateOverlay(
+        &self,
+        param_0: MutPtr<super::super::Foundation::RECT>,
+        param_1: IDirectDrawSurface,
+        param_2: MutPtr<super::super::Foundation::RECT>,
+        param_3: u32,
+        param_4: MutPtr<DDOVERLAYFX>,
+    ) -> crate::core::HRESULT {
+        todo!("UpdateOverlay")
+    }
+    fn UpdateOverlayDisplay(&self, param_0: u32) -> crate::core::HRESULT {
+        todo!("UpdateOverlayDisplay")
+    }
+    fn UpdateOverlayZOrder(
+        &self,
+        param_0: u32,
+        param_1: IDirectDrawSurface,
+    ) -> crate::core::HRESULT {
+        todo!("UpdateOverlayZOrder")
+    }
+}
 impl ::core::clone::Clone for IDirectDrawSurface {
     fn clone(&self) -> Self {
         Self(self.0.clone())
@@ -23054,6 +23868,183 @@ impl crate::core::ComInterface for IDirectDrawSurface {
         crate::core::GUID::from_u128(0x6c14db81_a733_11ce_a521_0020af0be560);
 }
 pub struct IDirectDrawSurface2(crate::core::IUnknown);
+pub trait IDirectDrawSurface2_Trait: crate::core::IUnknown_Trait {
+    fn AddAttachedSurface(&self, param_0: IDirectDrawSurface2) -> crate::core::HRESULT {
+        todo!("AddAttachedSurface")
+    }
+    fn AddOverlayDirtyRect(
+        &self,
+        param_0: MutPtr<super::super::Foundation::RECT>,
+    ) -> crate::core::HRESULT {
+        todo!("AddOverlayDirtyRect")
+    }
+    fn Blt(
+        &self,
+        param_0: MutPtr<super::super::Foundation::RECT>,
+        param_1: IDirectDrawSurface2,
+        param_2: MutPtr<super::super::Foundation::RECT>,
+        param_3: u32,
+        param_4: MutPtr<DDBLTFX>,
+    ) -> crate::core::HRESULT {
+        todo!("Blt")
+    }
+    fn BltBatch(
+        &self,
+        param_0: MutPtr<DDBLTBATCH>,
+        param_1: u32,
+        param_2: u32,
+    ) -> crate::core::HRESULT {
+        todo!("BltBatch")
+    }
+    fn BltFast(
+        &self,
+        param_0: u32,
+        param_1: u32,
+        param_2: IDirectDrawSurface2,
+        param_3: MutPtr<super::super::Foundation::RECT>,
+        param_4: u32,
+    ) -> crate::core::HRESULT {
+        todo!("BltFast")
+    }
+    fn DeleteAttachedSurface(
+        &self,
+        param_0: u32,
+        param_1: IDirectDrawSurface2,
+    ) -> crate::core::HRESULT {
+        todo!("DeleteAttachedSurface")
+    }
+    fn EnumAttachedSurfaces(
+        &self,
+        param_0: MutPtr<::core::ffi::c_void>,
+        param_1: LPDDENUMSURFACESCALLBACK,
+    ) -> crate::core::HRESULT {
+        todo!("EnumAttachedSurfaces")
+    }
+    fn EnumOverlayZOrders(
+        &self,
+        param_0: u32,
+        param_1: MutPtr<::core::ffi::c_void>,
+        param_2: LPDDENUMSURFACESCALLBACK,
+    ) -> crate::core::HRESULT {
+        todo!("EnumOverlayZOrders")
+    }
+    fn Flip(&self, param_0: IDirectDrawSurface2, param_1: u32) -> crate::core::HRESULT {
+        todo!("Flip")
+    }
+    fn GetAttachedSurface(
+        &self,
+        param_0: MutPtr<DDSCAPS>,
+        param_1: MutPtr<IDirectDrawSurface2>,
+    ) -> crate::core::HRESULT {
+        todo!("GetAttachedSurface")
+    }
+    fn GetBltStatus(&self, param_0: u32) -> crate::core::HRESULT {
+        todo!("GetBltStatus")
+    }
+    fn GetCaps(&self, param_0: MutPtr<DDSCAPS>) -> crate::core::HRESULT {
+        todo!("GetCaps")
+    }
+    fn GetClipper(&self, param_0: MutPtr<IDirectDrawClipper>) -> crate::core::HRESULT {
+        todo!("GetClipper")
+    }
+    fn GetColorKey(&self, param_0: u32, param_1: MutPtr<DDCOLORKEY>) -> crate::core::HRESULT {
+        todo!("GetColorKey")
+    }
+    fn GetDC(&self, param_0: MutPtr<super::Gdi::HDC>) -> crate::core::HRESULT {
+        todo!("GetDC")
+    }
+    fn GetFlipStatus(&self, param_0: u32) -> crate::core::HRESULT {
+        todo!("GetFlipStatus")
+    }
+    fn GetOverlayPosition(
+        &self,
+        param_0: MutPtr<i32>,
+        param_1: MutPtr<i32>,
+    ) -> crate::core::HRESULT {
+        todo!("GetOverlayPosition")
+    }
+    fn GetPalette(&self, param_0: MutPtr<IDirectDrawPalette>) -> crate::core::HRESULT {
+        todo!("GetPalette")
+    }
+    fn GetPixelFormat(&self, param_0: MutPtr<DDPIXELFORMAT>) -> crate::core::HRESULT {
+        todo!("GetPixelFormat")
+    }
+    fn GetSurfaceDesc(&self, param_0: MutPtr<DDSURFACEDESC>) -> crate::core::HRESULT {
+        todo!("GetSurfaceDesc")
+    }
+    fn Initialize(
+        &self,
+        param_0: IDirectDraw,
+        param_1: MutPtr<DDSURFACEDESC>,
+    ) -> crate::core::HRESULT {
+        todo!("Initialize")
+    }
+    fn IsLost(&self) -> crate::core::HRESULT {
+        todo!("IsLost")
+    }
+    fn Lock(
+        &self,
+        param_0: MutPtr<super::super::Foundation::RECT>,
+        param_1: MutPtr<DDSURFACEDESC>,
+        param_2: u32,
+        param_3: super::super::Foundation::HANDLE,
+    ) -> crate::core::HRESULT {
+        todo!("Lock")
+    }
+    fn ReleaseDC(&self, param_0: super::Gdi::HDC) -> crate::core::HRESULT {
+        todo!("ReleaseDC")
+    }
+    fn Restore(&self) -> crate::core::HRESULT {
+        todo!("Restore")
+    }
+    fn SetClipper(&self, param_0: IDirectDrawClipper) -> crate::core::HRESULT {
+        todo!("SetClipper")
+    }
+    fn SetColorKey(&self, param_0: u32, param_1: MutPtr<DDCOLORKEY>) -> crate::core::HRESULT {
+        todo!("SetColorKey")
+    }
+    fn SetOverlayPosition(&self, param_0: i32, param_1: i32) -> crate::core::HRESULT {
+        todo!("SetOverlayPosition")
+    }
+    fn SetPalette(&self, param_0: IDirectDrawPalette) -> crate::core::HRESULT {
+        todo!("SetPalette")
+    }
+    fn Unlock(&self, param_0: MutPtr<::core::ffi::c_void>) -> crate::core::HRESULT {
+        todo!("Unlock")
+    }
+    fn UpdateOverlay(
+        &self,
+        param_0: MutPtr<super::super::Foundation::RECT>,
+        param_1: IDirectDrawSurface2,
+        param_2: MutPtr<super::super::Foundation::RECT>,
+        param_3: u32,
+        param_4: MutPtr<DDOVERLAYFX>,
+    ) -> crate::core::HRESULT {
+        todo!("UpdateOverlay")
+    }
+    fn UpdateOverlayDisplay(&self, param_0: u32) -> crate::core::HRESULT {
+        todo!("UpdateOverlayDisplay")
+    }
+    fn UpdateOverlayZOrder(
+        &self,
+        param_0: u32,
+        param_1: IDirectDrawSurface2,
+    ) -> crate::core::HRESULT {
+        todo!("UpdateOverlayZOrder")
+    }
+    fn GetDDInterface(
+        &self,
+        param_0: MutPtr<ConstPtr<::core::ffi::c_void>>,
+    ) -> crate::core::HRESULT {
+        todo!("GetDDInterface")
+    }
+    fn PageLock(&self, param_0: u32) -> crate::core::HRESULT {
+        todo!("PageLock")
+    }
+    fn PageUnlock(&self, param_0: u32) -> crate::core::HRESULT {
+        todo!("PageUnlock")
+    }
+}
 impl ::core::clone::Clone for IDirectDrawSurface2 {
     fn clone(&self) -> Self {
         Self(self.0.clone())
@@ -23088,6 +24079,186 @@ impl crate::core::ComInterface for IDirectDrawSurface2 {
         crate::core::GUID::from_u128(0x57805885_6eec_11cf_9441_a82303c10e27);
 }
 pub struct IDirectDrawSurface3(crate::core::IUnknown);
+pub trait IDirectDrawSurface3_Trait: crate::core::IUnknown_Trait {
+    fn AddAttachedSurface(&self, param_0: IDirectDrawSurface3) -> crate::core::HRESULT {
+        todo!("AddAttachedSurface")
+    }
+    fn AddOverlayDirtyRect(
+        &self,
+        param_0: MutPtr<super::super::Foundation::RECT>,
+    ) -> crate::core::HRESULT {
+        todo!("AddOverlayDirtyRect")
+    }
+    fn Blt(
+        &self,
+        param_0: MutPtr<super::super::Foundation::RECT>,
+        param_1: IDirectDrawSurface3,
+        param_2: MutPtr<super::super::Foundation::RECT>,
+        param_3: u32,
+        param_4: MutPtr<DDBLTFX>,
+    ) -> crate::core::HRESULT {
+        todo!("Blt")
+    }
+    fn BltBatch(
+        &self,
+        param_0: MutPtr<DDBLTBATCH>,
+        param_1: u32,
+        param_2: u32,
+    ) -> crate::core::HRESULT {
+        todo!("BltBatch")
+    }
+    fn BltFast(
+        &self,
+        param_0: u32,
+        param_1: u32,
+        param_2: IDirectDrawSurface3,
+        param_3: MutPtr<super::super::Foundation::RECT>,
+        param_4: u32,
+    ) -> crate::core::HRESULT {
+        todo!("BltFast")
+    }
+    fn DeleteAttachedSurface(
+        &self,
+        param_0: u32,
+        param_1: IDirectDrawSurface3,
+    ) -> crate::core::HRESULT {
+        todo!("DeleteAttachedSurface")
+    }
+    fn EnumAttachedSurfaces(
+        &self,
+        param_0: MutPtr<::core::ffi::c_void>,
+        param_1: LPDDENUMSURFACESCALLBACK,
+    ) -> crate::core::HRESULT {
+        todo!("EnumAttachedSurfaces")
+    }
+    fn EnumOverlayZOrders(
+        &self,
+        param_0: u32,
+        param_1: MutPtr<::core::ffi::c_void>,
+        param_2: LPDDENUMSURFACESCALLBACK,
+    ) -> crate::core::HRESULT {
+        todo!("EnumOverlayZOrders")
+    }
+    fn Flip(&self, param_0: IDirectDrawSurface3, param_1: u32) -> crate::core::HRESULT {
+        todo!("Flip")
+    }
+    fn GetAttachedSurface(
+        &self,
+        param_0: MutPtr<DDSCAPS>,
+        param_1: MutPtr<IDirectDrawSurface3>,
+    ) -> crate::core::HRESULT {
+        todo!("GetAttachedSurface")
+    }
+    fn GetBltStatus(&self, param_0: u32) -> crate::core::HRESULT {
+        todo!("GetBltStatus")
+    }
+    fn GetCaps(&self, param_0: MutPtr<DDSCAPS>) -> crate::core::HRESULT {
+        todo!("GetCaps")
+    }
+    fn GetClipper(&self, param_0: MutPtr<IDirectDrawClipper>) -> crate::core::HRESULT {
+        todo!("GetClipper")
+    }
+    fn GetColorKey(&self, param_0: u32, param_1: MutPtr<DDCOLORKEY>) -> crate::core::HRESULT {
+        todo!("GetColorKey")
+    }
+    fn GetDC(&self, param_0: MutPtr<super::Gdi::HDC>) -> crate::core::HRESULT {
+        todo!("GetDC")
+    }
+    fn GetFlipStatus(&self, param_0: u32) -> crate::core::HRESULT {
+        todo!("GetFlipStatus")
+    }
+    fn GetOverlayPosition(
+        &self,
+        param_0: MutPtr<i32>,
+        param_1: MutPtr<i32>,
+    ) -> crate::core::HRESULT {
+        todo!("GetOverlayPosition")
+    }
+    fn GetPalette(&self, param_0: MutPtr<IDirectDrawPalette>) -> crate::core::HRESULT {
+        todo!("GetPalette")
+    }
+    fn GetPixelFormat(&self, param_0: MutPtr<DDPIXELFORMAT>) -> crate::core::HRESULT {
+        todo!("GetPixelFormat")
+    }
+    fn GetSurfaceDesc(&self, param_0: MutPtr<DDSURFACEDESC>) -> crate::core::HRESULT {
+        todo!("GetSurfaceDesc")
+    }
+    fn Initialize(
+        &self,
+        param_0: IDirectDraw,
+        param_1: MutPtr<DDSURFACEDESC>,
+    ) -> crate::core::HRESULT {
+        todo!("Initialize")
+    }
+    fn IsLost(&self) -> crate::core::HRESULT {
+        todo!("IsLost")
+    }
+    fn Lock(
+        &self,
+        param_0: MutPtr<super::super::Foundation::RECT>,
+        param_1: MutPtr<DDSURFACEDESC>,
+        param_2: u32,
+        param_3: super::super::Foundation::HANDLE,
+    ) -> crate::core::HRESULT {
+        todo!("Lock")
+    }
+    fn ReleaseDC(&self, param_0: super::Gdi::HDC) -> crate::core::HRESULT {
+        todo!("ReleaseDC")
+    }
+    fn Restore(&self) -> crate::core::HRESULT {
+        todo!("Restore")
+    }
+    fn SetClipper(&self, param_0: IDirectDrawClipper) -> crate::core::HRESULT {
+        todo!("SetClipper")
+    }
+    fn SetColorKey(&self, param_0: u32, param_1: MutPtr<DDCOLORKEY>) -> crate::core::HRESULT {
+        todo!("SetColorKey")
+    }
+    fn SetOverlayPosition(&self, param_0: i32, param_1: i32) -> crate::core::HRESULT {
+        todo!("SetOverlayPosition")
+    }
+    fn SetPalette(&self, param_0: IDirectDrawPalette) -> crate::core::HRESULT {
+        todo!("SetPalette")
+    }
+    fn Unlock(&self, param_0: MutPtr<::core::ffi::c_void>) -> crate::core::HRESULT {
+        todo!("Unlock")
+    }
+    fn UpdateOverlay(
+        &self,
+        param_0: MutPtr<super::super::Foundation::RECT>,
+        param_1: IDirectDrawSurface3,
+        param_2: MutPtr<super::super::Foundation::RECT>,
+        param_3: u32,
+        param_4: MutPtr<DDOVERLAYFX>,
+    ) -> crate::core::HRESULT {
+        todo!("UpdateOverlay")
+    }
+    fn UpdateOverlayDisplay(&self, param_0: u32) -> crate::core::HRESULT {
+        todo!("UpdateOverlayDisplay")
+    }
+    fn UpdateOverlayZOrder(
+        &self,
+        param_0: u32,
+        param_1: IDirectDrawSurface3,
+    ) -> crate::core::HRESULT {
+        todo!("UpdateOverlayZOrder")
+    }
+    fn GetDDInterface(
+        &self,
+        param_0: MutPtr<ConstPtr<::core::ffi::c_void>>,
+    ) -> crate::core::HRESULT {
+        todo!("GetDDInterface")
+    }
+    fn PageLock(&self, param_0: u32) -> crate::core::HRESULT {
+        todo!("PageLock")
+    }
+    fn PageUnlock(&self, param_0: u32) -> crate::core::HRESULT {
+        todo!("PageUnlock")
+    }
+    fn SetSurfaceDesc(&self, param_0: MutPtr<DDSURFACEDESC>, param_1: u32) -> crate::core::HRESULT {
+        todo!("SetSurfaceDesc")
+    }
+}
 impl ::core::clone::Clone for IDirectDrawSurface3 {
     fn clone(&self) -> Self {
         Self(self.0.clone())
@@ -23122,6 +24293,216 @@ impl crate::core::ComInterface for IDirectDrawSurface3 {
         crate::core::GUID::from_u128(0xda044e00_69b2_11d0_a1d5_00aa00b8dfbb);
 }
 pub struct IDirectDrawSurface4(crate::core::IUnknown);
+pub trait IDirectDrawSurface4_Trait: crate::core::IUnknown_Trait {
+    fn AddAttachedSurface(&self, param_0: IDirectDrawSurface4) -> crate::core::HRESULT {
+        todo!("AddAttachedSurface")
+    }
+    fn AddOverlayDirtyRect(
+        &self,
+        param_0: MutPtr<super::super::Foundation::RECT>,
+    ) -> crate::core::HRESULT {
+        todo!("AddOverlayDirtyRect")
+    }
+    fn Blt(
+        &self,
+        param_0: MutPtr<super::super::Foundation::RECT>,
+        param_1: IDirectDrawSurface4,
+        param_2: MutPtr<super::super::Foundation::RECT>,
+        param_3: u32,
+        param_4: MutPtr<DDBLTFX>,
+    ) -> crate::core::HRESULT {
+        todo!("Blt")
+    }
+    fn BltBatch(
+        &self,
+        param_0: MutPtr<DDBLTBATCH>,
+        param_1: u32,
+        param_2: u32,
+    ) -> crate::core::HRESULT {
+        todo!("BltBatch")
+    }
+    fn BltFast(
+        &self,
+        param_0: u32,
+        param_1: u32,
+        param_2: IDirectDrawSurface4,
+        param_3: MutPtr<super::super::Foundation::RECT>,
+        param_4: u32,
+    ) -> crate::core::HRESULT {
+        todo!("BltFast")
+    }
+    fn DeleteAttachedSurface(
+        &self,
+        param_0: u32,
+        param_1: IDirectDrawSurface4,
+    ) -> crate::core::HRESULT {
+        todo!("DeleteAttachedSurface")
+    }
+    fn EnumAttachedSurfaces(
+        &self,
+        param_0: MutPtr<::core::ffi::c_void>,
+        param_1: LPDDENUMSURFACESCALLBACK2,
+    ) -> crate::core::HRESULT {
+        todo!("EnumAttachedSurfaces")
+    }
+    fn EnumOverlayZOrders(
+        &self,
+        param_0: u32,
+        param_1: MutPtr<::core::ffi::c_void>,
+        param_2: LPDDENUMSURFACESCALLBACK2,
+    ) -> crate::core::HRESULT {
+        todo!("EnumOverlayZOrders")
+    }
+    fn Flip(&self, param_0: IDirectDrawSurface4, param_1: u32) -> crate::core::HRESULT {
+        todo!("Flip")
+    }
+    fn GetAttachedSurface(
+        &self,
+        param_0: MutPtr<DDSCAPS2>,
+        param_1: MutPtr<IDirectDrawSurface4>,
+    ) -> crate::core::HRESULT {
+        todo!("GetAttachedSurface")
+    }
+    fn GetBltStatus(&self, param_0: u32) -> crate::core::HRESULT {
+        todo!("GetBltStatus")
+    }
+    fn GetCaps(&self, param_0: MutPtr<DDSCAPS2>) -> crate::core::HRESULT {
+        todo!("GetCaps")
+    }
+    fn GetClipper(&self, param_0: MutPtr<IDirectDrawClipper>) -> crate::core::HRESULT {
+        todo!("GetClipper")
+    }
+    fn GetColorKey(&self, param_0: u32, param_1: MutPtr<DDCOLORKEY>) -> crate::core::HRESULT {
+        todo!("GetColorKey")
+    }
+    fn GetDC(&self, param_0: MutPtr<super::Gdi::HDC>) -> crate::core::HRESULT {
+        todo!("GetDC")
+    }
+    fn GetFlipStatus(&self, param_0: u32) -> crate::core::HRESULT {
+        todo!("GetFlipStatus")
+    }
+    fn GetOverlayPosition(
+        &self,
+        param_0: MutPtr<i32>,
+        param_1: MutPtr<i32>,
+    ) -> crate::core::HRESULT {
+        todo!("GetOverlayPosition")
+    }
+    fn GetPalette(&self, param_0: MutPtr<IDirectDrawPalette>) -> crate::core::HRESULT {
+        todo!("GetPalette")
+    }
+    fn GetPixelFormat(&self, param_0: MutPtr<DDPIXELFORMAT>) -> crate::core::HRESULT {
+        todo!("GetPixelFormat")
+    }
+    fn GetSurfaceDesc(&self, param_0: MutPtr<DDSURFACEDESC2>) -> crate::core::HRESULT {
+        todo!("GetSurfaceDesc")
+    }
+    fn Initialize(
+        &self,
+        param_0: IDirectDraw,
+        param_1: MutPtr<DDSURFACEDESC2>,
+    ) -> crate::core::HRESULT {
+        todo!("Initialize")
+    }
+    fn IsLost(&self) -> crate::core::HRESULT {
+        todo!("IsLost")
+    }
+    fn Lock(
+        &self,
+        param_0: MutPtr<super::super::Foundation::RECT>,
+        param_1: MutPtr<DDSURFACEDESC2>,
+        param_2: u32,
+        param_3: super::super::Foundation::HANDLE,
+    ) -> crate::core::HRESULT {
+        todo!("Lock")
+    }
+    fn ReleaseDC(&self, param_0: super::Gdi::HDC) -> crate::core::HRESULT {
+        todo!("ReleaseDC")
+    }
+    fn Restore(&self) -> crate::core::HRESULT {
+        todo!("Restore")
+    }
+    fn SetClipper(&self, param_0: IDirectDrawClipper) -> crate::core::HRESULT {
+        todo!("SetClipper")
+    }
+    fn SetColorKey(&self, param_0: u32, param_1: MutPtr<DDCOLORKEY>) -> crate::core::HRESULT {
+        todo!("SetColorKey")
+    }
+    fn SetOverlayPosition(&self, param_0: i32, param_1: i32) -> crate::core::HRESULT {
+        todo!("SetOverlayPosition")
+    }
+    fn SetPalette(&self, param_0: IDirectDrawPalette) -> crate::core::HRESULT {
+        todo!("SetPalette")
+    }
+    fn Unlock(&self, param_0: MutPtr<super::super::Foundation::RECT>) -> crate::core::HRESULT {
+        todo!("Unlock")
+    }
+    fn UpdateOverlay(
+        &self,
+        param_0: MutPtr<super::super::Foundation::RECT>,
+        param_1: IDirectDrawSurface4,
+        param_2: MutPtr<super::super::Foundation::RECT>,
+        param_3: u32,
+        param_4: MutPtr<DDOVERLAYFX>,
+    ) -> crate::core::HRESULT {
+        todo!("UpdateOverlay")
+    }
+    fn UpdateOverlayDisplay(&self, param_0: u32) -> crate::core::HRESULT {
+        todo!("UpdateOverlayDisplay")
+    }
+    fn UpdateOverlayZOrder(
+        &self,
+        param_0: u32,
+        param_1: IDirectDrawSurface4,
+    ) -> crate::core::HRESULT {
+        todo!("UpdateOverlayZOrder")
+    }
+    fn GetDDInterface(
+        &self,
+        param_0: MutPtr<ConstPtr<::core::ffi::c_void>>,
+    ) -> crate::core::HRESULT {
+        todo!("GetDDInterface")
+    }
+    fn PageLock(&self, param_0: u32) -> crate::core::HRESULT {
+        todo!("PageLock")
+    }
+    fn PageUnlock(&self, param_0: u32) -> crate::core::HRESULT {
+        todo!("PageUnlock")
+    }
+    fn SetSurfaceDesc(
+        &self,
+        param_0: MutPtr<DDSURFACEDESC2>,
+        param_1: u32,
+    ) -> crate::core::HRESULT {
+        todo!("SetSurfaceDesc")
+    }
+    fn SetPrivateData(
+        &self,
+        param_0: ConstPtr<crate::core::GUID>,
+        param_1: MutPtr<::core::ffi::c_void>,
+        param_2: u32,
+        param_3: u32,
+    ) -> crate::core::HRESULT {
+        todo!("SetPrivateData")
+    }
+    fn GetPrivateData(
+        &self,
+        param_0: ConstPtr<crate::core::GUID>,
+        param_1: MutPtr<::core::ffi::c_void>,
+        param_2: MutPtr<u32>,
+    ) -> crate::core::HRESULT {
+        todo!("GetPrivateData")
+    }
+    fn FreePrivateData(&self, param_0: ConstPtr<crate::core::GUID>) -> crate::core::HRESULT {
+        todo!("FreePrivateData")
+    }
+    fn GetUniquenessValue(&self, param_0: MutPtr<u32>) -> crate::core::HRESULT {
+        todo!("GetUniquenessValue")
+    }
+    fn ChangeUniquenessValue(&self) -> crate::core::HRESULT {
+        todo!("ChangeUniquenessValue")
+    }
+}
 impl ::core::clone::Clone for IDirectDrawSurface4 {
     fn clone(&self) -> Self {
         Self(self.0.clone())
@@ -23156,6 +24537,228 @@ impl crate::core::ComInterface for IDirectDrawSurface4 {
         crate::core::GUID::from_u128(0x0b2b8630_ad35_11d0_8ea6_00609797ea5b);
 }
 pub struct IDirectDrawSurface7(crate::core::IUnknown);
+pub trait IDirectDrawSurface7_Trait: crate::core::IUnknown_Trait {
+    fn AddAttachedSurface(&self, param_0: IDirectDrawSurface7) -> crate::core::HRESULT {
+        todo!("AddAttachedSurface")
+    }
+    fn AddOverlayDirtyRect(
+        &self,
+        param_0: MutPtr<super::super::Foundation::RECT>,
+    ) -> crate::core::HRESULT {
+        todo!("AddOverlayDirtyRect")
+    }
+    fn Blt(
+        &self,
+        param_0: MutPtr<super::super::Foundation::RECT>,
+        param_1: IDirectDrawSurface7,
+        param_2: MutPtr<super::super::Foundation::RECT>,
+        param_3: u32,
+        param_4: MutPtr<DDBLTFX>,
+    ) -> crate::core::HRESULT {
+        todo!("Blt")
+    }
+    fn BltBatch(
+        &self,
+        param_0: MutPtr<DDBLTBATCH>,
+        param_1: u32,
+        param_2: u32,
+    ) -> crate::core::HRESULT {
+        todo!("BltBatch")
+    }
+    fn BltFast(
+        &self,
+        param_0: u32,
+        param_1: u32,
+        param_2: IDirectDrawSurface7,
+        param_3: MutPtr<super::super::Foundation::RECT>,
+        param_4: u32,
+    ) -> crate::core::HRESULT {
+        todo!("BltFast")
+    }
+    fn DeleteAttachedSurface(
+        &self,
+        param_0: u32,
+        param_1: IDirectDrawSurface7,
+    ) -> crate::core::HRESULT {
+        todo!("DeleteAttachedSurface")
+    }
+    fn EnumAttachedSurfaces(
+        &self,
+        param_0: MutPtr<::core::ffi::c_void>,
+        param_1: LPDDENUMSURFACESCALLBACK7,
+    ) -> crate::core::HRESULT {
+        todo!("EnumAttachedSurfaces")
+    }
+    fn EnumOverlayZOrders(
+        &self,
+        param_0: u32,
+        param_1: MutPtr<::core::ffi::c_void>,
+        param_2: LPDDENUMSURFACESCALLBACK7,
+    ) -> crate::core::HRESULT {
+        todo!("EnumOverlayZOrders")
+    }
+    fn Flip(&self, param_0: IDirectDrawSurface7, param_1: u32) -> crate::core::HRESULT {
+        todo!("Flip")
+    }
+    fn GetAttachedSurface(
+        &self,
+        param_0: MutPtr<DDSCAPS2>,
+        param_1: MutPtr<IDirectDrawSurface7>,
+    ) -> crate::core::HRESULT {
+        todo!("GetAttachedSurface")
+    }
+    fn GetBltStatus(&self, param_0: u32) -> crate::core::HRESULT {
+        todo!("GetBltStatus")
+    }
+    fn GetCaps(&self, param_0: MutPtr<DDSCAPS2>) -> crate::core::HRESULT {
+        todo!("GetCaps")
+    }
+    fn GetClipper(&self, param_0: MutPtr<IDirectDrawClipper>) -> crate::core::HRESULT {
+        todo!("GetClipper")
+    }
+    fn GetColorKey(&self, param_0: u32, param_1: MutPtr<DDCOLORKEY>) -> crate::core::HRESULT {
+        todo!("GetColorKey")
+    }
+    fn GetDC(&self, param_0: MutPtr<super::Gdi::HDC>) -> crate::core::HRESULT {
+        todo!("GetDC")
+    }
+    fn GetFlipStatus(&self, param_0: u32) -> crate::core::HRESULT {
+        todo!("GetFlipStatus")
+    }
+    fn GetOverlayPosition(
+        &self,
+        param_0: MutPtr<i32>,
+        param_1: MutPtr<i32>,
+    ) -> crate::core::HRESULT {
+        todo!("GetOverlayPosition")
+    }
+    fn GetPalette(&self, param_0: MutPtr<IDirectDrawPalette>) -> crate::core::HRESULT {
+        todo!("GetPalette")
+    }
+    fn GetPixelFormat(&self, param_0: MutPtr<DDPIXELFORMAT>) -> crate::core::HRESULT {
+        todo!("GetPixelFormat")
+    }
+    fn GetSurfaceDesc(&self, param_0: MutPtr<DDSURFACEDESC2>) -> crate::core::HRESULT {
+        todo!("GetSurfaceDesc")
+    }
+    fn Initialize(
+        &self,
+        param_0: IDirectDraw,
+        param_1: MutPtr<DDSURFACEDESC2>,
+    ) -> crate::core::HRESULT {
+        todo!("Initialize")
+    }
+    fn IsLost(&self) -> crate::core::HRESULT {
+        todo!("IsLost")
+    }
+    fn Lock(
+        &self,
+        param_0: MutPtr<super::super::Foundation::RECT>,
+        param_1: MutPtr<DDSURFACEDESC2>,
+        param_2: u32,
+        param_3: super::super::Foundation::HANDLE,
+    ) -> crate::core::HRESULT {
+        todo!("Lock")
+    }
+    fn ReleaseDC(&self, param_0: super::Gdi::HDC) -> crate::core::HRESULT {
+        todo!("ReleaseDC")
+    }
+    fn Restore(&self) -> crate::core::HRESULT {
+        todo!("Restore")
+    }
+    fn SetClipper(&self, param_0: IDirectDrawClipper) -> crate::core::HRESULT {
+        todo!("SetClipper")
+    }
+    fn SetColorKey(&self, param_0: u32, param_1: MutPtr<DDCOLORKEY>) -> crate::core::HRESULT {
+        todo!("SetColorKey")
+    }
+    fn SetOverlayPosition(&self, param_0: i32, param_1: i32) -> crate::core::HRESULT {
+        todo!("SetOverlayPosition")
+    }
+    fn SetPalette(&self, param_0: IDirectDrawPalette) -> crate::core::HRESULT {
+        todo!("SetPalette")
+    }
+    fn Unlock(&self, param_0: MutPtr<super::super::Foundation::RECT>) -> crate::core::HRESULT {
+        todo!("Unlock")
+    }
+    fn UpdateOverlay(
+        &self,
+        param_0: MutPtr<super::super::Foundation::RECT>,
+        param_1: IDirectDrawSurface7,
+        param_2: MutPtr<super::super::Foundation::RECT>,
+        param_3: u32,
+        param_4: MutPtr<DDOVERLAYFX>,
+    ) -> crate::core::HRESULT {
+        todo!("UpdateOverlay")
+    }
+    fn UpdateOverlayDisplay(&self, param_0: u32) -> crate::core::HRESULT {
+        todo!("UpdateOverlayDisplay")
+    }
+    fn UpdateOverlayZOrder(
+        &self,
+        param_0: u32,
+        param_1: IDirectDrawSurface7,
+    ) -> crate::core::HRESULT {
+        todo!("UpdateOverlayZOrder")
+    }
+    fn GetDDInterface(
+        &self,
+        param_0: MutPtr<ConstPtr<::core::ffi::c_void>>,
+    ) -> crate::core::HRESULT {
+        todo!("GetDDInterface")
+    }
+    fn PageLock(&self, param_0: u32) -> crate::core::HRESULT {
+        todo!("PageLock")
+    }
+    fn PageUnlock(&self, param_0: u32) -> crate::core::HRESULT {
+        todo!("PageUnlock")
+    }
+    fn SetSurfaceDesc(
+        &self,
+        param_0: MutPtr<DDSURFACEDESC2>,
+        param_1: u32,
+    ) -> crate::core::HRESULT {
+        todo!("SetSurfaceDesc")
+    }
+    fn SetPrivateData(
+        &self,
+        param_0: ConstPtr<crate::core::GUID>,
+        param_1: MutPtr<::core::ffi::c_void>,
+        param_2: u32,
+        param_3: u32,
+    ) -> crate::core::HRESULT {
+        todo!("SetPrivateData")
+    }
+    fn GetPrivateData(
+        &self,
+        param_0: ConstPtr<crate::core::GUID>,
+        param_1: MutPtr<::core::ffi::c_void>,
+        param_2: MutPtr<u32>,
+    ) -> crate::core::HRESULT {
+        todo!("GetPrivateData")
+    }
+    fn FreePrivateData(&self, param_0: ConstPtr<crate::core::GUID>) -> crate::core::HRESULT {
+        todo!("FreePrivateData")
+    }
+    fn GetUniquenessValue(&self, param_0: MutPtr<u32>) -> crate::core::HRESULT {
+        todo!("GetUniquenessValue")
+    }
+    fn ChangeUniquenessValue(&self) -> crate::core::HRESULT {
+        todo!("ChangeUniquenessValue")
+    }
+    fn SetPriority(&self, param_0: u32) -> crate::core::HRESULT {
+        todo!("SetPriority")
+    }
+    fn GetPriority(&self, param_0: MutPtr<u32>) -> crate::core::HRESULT {
+        todo!("GetPriority")
+    }
+    fn SetLOD(&self, param_0: u32) -> crate::core::HRESULT {
+        todo!("SetLOD")
+    }
+    fn GetLOD(&self, param_0: MutPtr<u32>) -> crate::core::HRESULT {
+        todo!("GetLOD")
+    }
+}
 impl ::core::clone::Clone for IDirectDrawSurface7 {
     fn clone(&self) -> Self {
         Self(self.0.clone())
@@ -23190,6 +24793,14 @@ impl crate::core::ComInterface for IDirectDrawSurface7 {
         crate::core::GUID::from_u128(0x06675a80_3b9b_11d2_b92f_00609797ea5b);
 }
 pub struct IDirectDrawSurfaceKernel(crate::core::IUnknown);
+pub trait IDirectDrawSurfaceKernel_Trait: crate::core::IUnknown_Trait {
+    fn GetKernelHandle(&self, param_0: MutPtr<PtrRepr>) -> crate::core::HRESULT {
+        todo!("GetKernelHandle")
+    }
+    fn ReleaseKernelHandle(&self) -> crate::core::HRESULT {
+        todo!("ReleaseKernelHandle")
+    }
+}
 impl ::core::clone::Clone for IDirectDrawSurfaceKernel {
     fn clone(&self) -> Self {
         Self(self.0.clone())
@@ -23226,6 +24837,68 @@ impl crate::core::ComInterface for IDirectDrawSurfaceKernel {
         crate::core::GUID::from_u128(0x60755da0_6a40_11d0_9b06_00a0c903a3b8);
 }
 pub struct IDirectDrawVideoPort(crate::core::IUnknown);
+pub trait IDirectDrawVideoPort_Trait: crate::core::IUnknown_Trait {
+    fn Flip(&self, param_0: IDirectDrawSurface, param_1: u32) -> crate::core::HRESULT {
+        todo!("Flip")
+    }
+    fn GetBandwidthInfo(
+        &self,
+        param_0: MutPtr<DDPIXELFORMAT>,
+        param_1: u32,
+        param_2: u32,
+        param_3: u32,
+        param_4: MutPtr<DDVIDEOPORTBANDWIDTH>,
+    ) -> crate::core::HRESULT {
+        todo!("GetBandwidthInfo")
+    }
+    fn GetColorControls(&self, param_0: MutPtr<DDCOLORCONTROL>) -> crate::core::HRESULT {
+        todo!("GetColorControls")
+    }
+    fn GetInputFormats(
+        &self,
+        lp_num_formats: MutPtr<u32>,
+        param_1: MutPtr<DDPIXELFORMAT>,
+        param_2: u32,
+    ) -> crate::core::HRESULT {
+        todo!("GetInputFormats")
+    }
+    fn GetOutputFormats(
+        &self,
+        param_0: MutPtr<DDPIXELFORMAT>,
+        lp_num_formats: MutPtr<u32>,
+        param_2: MutPtr<DDPIXELFORMAT>,
+        param_3: u32,
+    ) -> crate::core::HRESULT {
+        todo!("GetOutputFormats")
+    }
+    fn GetFieldPolarity(&self, param_0: MutPtr<i32>) -> crate::core::HRESULT {
+        todo!("GetFieldPolarity")
+    }
+    fn GetVideoLine(&self, param_0: MutPtr<u32>) -> crate::core::HRESULT {
+        todo!("GetVideoLine")
+    }
+    fn GetVideoSignalStatus(&self, param_0: MutPtr<u32>) -> crate::core::HRESULT {
+        todo!("GetVideoSignalStatus")
+    }
+    fn SetColorControls(&self, param_0: MutPtr<DDCOLORCONTROL>) -> crate::core::HRESULT {
+        todo!("SetColorControls")
+    }
+    fn SetTargetSurface(&self, param_0: IDirectDrawSurface, param_1: u32) -> crate::core::HRESULT {
+        todo!("SetTargetSurface")
+    }
+    fn StartVideo(&self, param_0: MutPtr<DDVIDEOPORTINFO>) -> crate::core::HRESULT {
+        todo!("StartVideo")
+    }
+    fn StopVideo(&self) -> crate::core::HRESULT {
+        todo!("StopVideo")
+    }
+    fn UpdateVideo(&self, param_0: MutPtr<DDVIDEOPORTINFO>) -> crate::core::HRESULT {
+        todo!("UpdateVideo")
+    }
+    fn WaitForSync(&self, param_0: u32, param_1: u32, param_2: u32) -> crate::core::HRESULT {
+        todo!("WaitForSync")
+    }
+}
 impl ::core::clone::Clone for IDirectDrawVideoPort {
     fn clone(&self) -> Self {
         Self(self.0.clone())
@@ -23262,6 +24935,21 @@ impl crate::core::ComInterface for IDirectDrawVideoPort {
         crate::core::GUID::from_u128(0xb36d93e0_2b43_11cf_a2de_00aa00b93356);
 }
 pub struct IDirectDrawVideoPortNotify(crate::core::IUnknown);
+pub trait IDirectDrawVideoPortNotify_Trait: crate::core::IUnknown_Trait {
+    fn AcquireNotification(
+        &self,
+        param_0: MutPtr<super::super::Foundation::HANDLE>,
+        param_1: MutPtr<DDVIDEOPORTNOTIFY>,
+    ) -> crate::core::HRESULT {
+        todo!("AcquireNotification")
+    }
+    fn ReleaseNotification(
+        &self,
+        param_0: super::super::Foundation::HANDLE,
+    ) -> crate::core::HRESULT {
+        todo!("ReleaseNotification")
+    }
+}
 impl ::core::clone::Clone for IDirectDrawVideoPortNotify {
     fn clone(&self) -> Self {
         Self(self.0.clone())

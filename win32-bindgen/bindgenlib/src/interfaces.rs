@@ -21,6 +21,22 @@ pub fn gen(def: &TypeDef, gen: &Gen) -> TokenStream {
 //
 fn gen_win_interface(def: &TypeDef, gen: &Gen) -> TokenStream {
     let name = gen_type_ident(def, gen);
+    let trait_name = gen_trait_ident(def, gen);
+
+    let base = def.base_interface();
+    let base_name = match base {
+        BaseInterface::IUnknown => quote! {
+            crate::core::IUnknown_Trait
+        },
+        BaseInterface::TypeDef(t) => {
+            let ident = gen_trait_ident(&t, gen);
+            let namespace = gen.namespace(t.namespace());
+            quote! {
+                #namespace #ident
+            }
+        }
+    };
+
     let is_exclusive = def.is_exclusive();
     let phantoms = gen_phantoms(def, gen);
     let constraints = gen_type_constraints(def, gen);
@@ -34,9 +50,19 @@ fn gen_win_interface(def: &TypeDef, gen: &Gen) -> TokenStream {
         quote! { #doc }
     };
 
+    let mut functions = TokenStream::new();
+
+    for method in def.methods() {
+        functions.combine(&gen_function_declaration(&method, gen));
+    }
+
     tokens.combine(&quote! {
         #features
         pub struct #name(crate::core::IUnknown, #(#phantoms)*) where #(#constraints)*;
+        #features
+        pub trait #trait_name: #base_name {
+            #functions
+        }
     });
 
     if !is_exclusive {
@@ -104,7 +130,7 @@ pub fn gen_interface_trait(def: &TypeDef, cfg: &Cfg, gen: &Gen) -> TokenStream {
     let cfg = gen.cfg(cfg);
 
     let base = def.base_interface();
-    let base = match base {
+    let base_name = match base {
         BaseInterface::IUnknown => quote! {
             crate::core::IUnknown
         },
@@ -140,7 +166,7 @@ pub fn gen_interface_trait(def: &TypeDef, cfg: &Cfg, gen: &Gen) -> TokenStream {
         quote! {
             #cfg
             impl<#(#constraints)*> crate::core::ComInterface for #name {
-                type Super = #base;
+                type Super = #base_name;
                 const IID: crate::core::GUID = #guid;
             }
         }

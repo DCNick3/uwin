@@ -10,3 +10,4 @@ metadata = { package = "windows-metadata", path = "../metadata", version = "0.32
 
 convert_case = "0.5.0"
 itertools = "0.10.3"
+serde = { version = "1.0.137", features = ["derive"] }

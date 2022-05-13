@@ -786,6 +786,12 @@ impl TypeDef {
                                 cfg.add_feature(def.namespace());
                             }
                         }
+                        for def in self.methods() {
+                            def.combine_cfg(cfg)
+                        }
+                        if let BaseInterface::TypeDef(def) = self.base_interface() {
+                            def.combine_cfg(cfg)
+                        }
                     }
                 }
                 TypeKind::Struct => {

@@ -5,7 +5,7 @@ use std::collections::{BTreeMap, BTreeSet};
 use std::io::Write;
 use tokens::{quote, TokenStream};
 use win32_bindgenlib as bindgen;
-use win32_bindgenlib::GeneratedNamespace;
+use win32_bindgenlib::{ComClass, GeneratedNamespace};
 
 const CONFIG: &str = include_str!("config.yml");
 
@@ -16,6 +16,7 @@ struct BindgenConfig {
     pub exclude_libraries: BTreeSet<String>,
     pub unwindable_functions: BTreeSet<String>,
     pub callbacking_functions: BTreeSet<String>,
+    pub com_classes: BTreeMap<String, Vec<ComClass>>,
 }
 
 fn main() {
@@ -92,6 +93,7 @@ fn gen_tree(
     println!("{}", tree.namespace);
 
     let empty_set = BTreeSet::new();
+    let empty_class_list = Vec::new();
 
     let path = std::path::PathBuf::from(output).join(tree.namespace.replace('.', "/"));
     let gen = bindgen::Gen {
@@ -103,6 +105,10 @@ fn gen_tree(
         excluded_libraries: &config.exclude_libraries,
         unwindable_functions: &config.unwindable_functions,
         callbacking_functions: &config.callbacking_functions,
+        com_classes: config
+            .com_classes
+            .get(tree.namespace)
+            .unwrap_or(&empty_class_list),
         namespace: tree.namespace,
         sys: false,
         min_xaml: true,

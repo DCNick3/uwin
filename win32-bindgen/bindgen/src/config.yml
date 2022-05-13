@@ -137,6 +137,14 @@ exclude_items:
     - MINIDUMP_VM_PRE_READ_CALLBACK
     - MINIDUMP_VM_QUERY_CALLBACK
 
+    - IActiveScriptProfilerHeapEnum
+    - IActiveScriptProfilerControl3
+    - IActiveScriptProfilerControl4
+    - IActiveScriptProfilerControl5
+    - IDebugApplicationNode100
+    - IDebugDataSpaces3
+    - IDebugDataSpaces4
+
     - ExtendedDebugPropertyInfo
     - DebugPropertyInfo
     - DebugHelper
@@ -421,3 +429,9 @@ unwindable_functions:
 callbacking_functions:
   - CreateWindowExA
   - DispatchMessageA
+
+com_classes:
+  Windows.Win32.Graphics.DirectDraw:
+    - name: DirectDraw
+      interfaces:
+        - Windows.Win32.Graphics.DirectDraw.IDirectDraw

@@ -126,7 +126,7 @@ fn gen_type_impl(def: &Type, gen: &Gen) -> TokenStream {
             }
             let def = &def.clone().with_generics();
             match def.kind() {
-                TypeKind::Class => classes::gen(def, gen),
+                TypeKind::Class => unimplemented!(),
                 TypeKind::Interface => interfaces::gen(def, gen),
                 TypeKind::Enum => enums::gen(def, gen),
                 TypeKind::Struct => structs::gen(def, gen),
