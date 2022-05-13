@@ -20,6 +20,7 @@ members = [
     "core-windows",
 
     "win32",
+    "win32-impl",
     "win32-heapmgr",
     "win32-virtmem",
     "win32-module-table",

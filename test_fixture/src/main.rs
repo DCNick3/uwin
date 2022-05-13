@@ -1,8 +1,5 @@
 extern crate core;
 
-mod r#impl;
-
-use crate::r#impl::*;
 use core_abi::callback_token::StdcallCallbackToken;
 use core_abi::stdcall_fn_ptr::StdCallFnPtr;
 use core_abi::unwind_token::UnwindReason;
@@ -27,6 +24,10 @@ use win32::Win32::Foundation::{BOOL, HINSTANCE};
 use win32::Win32::System::SystemServices::DLL_PROCESS_ATTACH;
 use win32_atoms::AtomTable;
 use win32_heapmgr::HeapMgr;
+use win32_impl::{
+    Console, DirectDraw, Environment, FileSystem, Gdi, Globalization, LibraryLoader, Memory,
+    ProcessContext, SystemInformation, Threading, WindowsAndMessaging, WindowsProgramming,
+};
 use win32_io::IoDispatcher;
 use win32_kobj::{KernelHandleTable, KernelObject};
 use win32_message_queue::MessageQueueRegistry;

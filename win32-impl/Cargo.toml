@@ -1,12 +1,11 @@
 [package]
-name = "test_fixture"
+name = "win32-impl"
 version = "0.1.0"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-rusty_x86_runtime = { path = "../rusty_x86_runtime" }
 recompiler = { path = "../recompiler" }
 core-mem = { path = "../core-mem" }
 core-memmgr = { path = "../core-memmgr" }
@@ -16,7 +15,6 @@ core-str = { path = "../core-str" }
 core-console = { path = "../core-console" }
 core-message-queue = { path = "../core-message-queue" }
 win32 = { path = "../win32" }
-win32-impl = { path = "../win32-impl" }
 win32-heapmgr = { path = "../win32-heapmgr" }
 win32-virtmem = { path = "../win32-virtmem" }
 win32-module-table = { path = "../win32-module-table" }
@@ -27,13 +25,5 @@ win32-windows = { path = "../win32-windows" }
 win32-atoms = { path = "../win32-atoms" }
 win32-message-queue = { path = "../win32-message-queue" }
 
-tracing = "0.1.33"
-tracing-subscriber = { version = "0.3.11", features = ["env-filter"] }
-tracing-tracy = { version = "0.8.0", features = [] }
-tracy-client = { version = "0.12.7" }
 encoding_rs = "0.8.31"
-itertools = "0.10.3"
-panic-control = "0.1.4"
-
-[build-dependencies]
-recompiler = { path = "../recompiler", features = ["recompilation", "mmap"] }
+tracing = "0.1.34"
