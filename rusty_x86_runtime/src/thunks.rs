@@ -16,7 +16,10 @@ use core_mem::ptr::PtrRepr;
 #[allow(unused)]
 use tracing::Callsite;
 #[no_mangle]
-extern "C" fn thunk_CloseHandle(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_CloseHandle(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "CloseHandle");
     crate::thunk_helper(
@@ -55,7 +58,7 @@ extern "C" fn thunk_CloseHandle(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CompareObjectHandles(
+extern "C" fn thunk_dll_CompareObjectHandles(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -93,7 +96,7 @@ extern "C" fn thunk_CompareObjectHandles(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DuplicateHandle(
+extern "C" fn thunk_dll_DuplicateHandle(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -144,7 +147,7 @@ extern "C" fn thunk_DuplicateHandle(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetHandleInformation(
+extern "C" fn thunk_dll_GetHandleInformation(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -191,7 +194,10 @@ extern "C" fn thunk_GetHandleInformation(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetLastError(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetLastError(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetLastError",
@@ -230,7 +236,7 @@ extern "C" fn thunk_GetLastError(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetHandleInformation(
+extern "C" fn thunk_dll_SetHandleInformation(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -278,7 +284,10 @@ extern "C" fn thunk_SetHandleInformation(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetLastError(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_SetLastError(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "SetLastError",
@@ -321,7 +330,7 @@ extern "C" fn thunk_SetLastError(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CompareStringA(
+extern "C" fn thunk_dll_CompareStringA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -370,7 +379,7 @@ extern "C" fn thunk_CompareStringA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CompareStringEx(
+extern "C" fn thunk_dll_CompareStringEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -425,7 +434,7 @@ extern "C" fn thunk_CompareStringEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CompareStringOrdinal(
+extern "C" fn thunk_dll_CompareStringOrdinal(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -472,7 +481,7 @@ extern "C" fn thunk_CompareStringOrdinal(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CompareStringW(
+extern "C" fn thunk_dll_CompareStringW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -521,7 +530,7 @@ extern "C" fn thunk_CompareStringW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ConvertDefaultLocale(
+extern "C" fn thunk_dll_ConvertDefaultLocale(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -565,7 +574,7 @@ extern "C" fn thunk_ConvertDefaultLocale(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumCalendarInfoA(
+extern "C" fn thunk_dll_EnumCalendarInfoA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -605,7 +614,7 @@ extern "C" fn thunk_EnumCalendarInfoA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumCalendarInfoExA(
+extern "C" fn thunk_dll_EnumCalendarInfoExA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -645,7 +654,7 @@ extern "C" fn thunk_EnumCalendarInfoExA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumCalendarInfoExEx(
+extern "C" fn thunk_dll_EnumCalendarInfoExEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -694,7 +703,7 @@ extern "C" fn thunk_EnumCalendarInfoExEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumCalendarInfoExW(
+extern "C" fn thunk_dll_EnumCalendarInfoExW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -734,7 +743,7 @@ extern "C" fn thunk_EnumCalendarInfoExW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumCalendarInfoW(
+extern "C" fn thunk_dll_EnumCalendarInfoW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -774,7 +783,7 @@ extern "C" fn thunk_EnumCalendarInfoW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumDateFormatsA(
+extern "C" fn thunk_dll_EnumDateFormatsA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -813,7 +822,7 @@ extern "C" fn thunk_EnumDateFormatsA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumDateFormatsExA(
+extern "C" fn thunk_dll_EnumDateFormatsExA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -852,7 +861,7 @@ extern "C" fn thunk_EnumDateFormatsExA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumDateFormatsExEx(
+extern "C" fn thunk_dll_EnumDateFormatsExEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -897,7 +906,7 @@ extern "C" fn thunk_EnumDateFormatsExEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumDateFormatsExW(
+extern "C" fn thunk_dll_EnumDateFormatsExW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -936,7 +945,7 @@ extern "C" fn thunk_EnumDateFormatsExW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumDateFormatsW(
+extern "C" fn thunk_dll_EnumDateFormatsW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -975,7 +984,7 @@ extern "C" fn thunk_EnumDateFormatsW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumLanguageGroupLocalesA(
+extern "C" fn thunk_dll_EnumLanguageGroupLocalesA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -1020,7 +1029,7 @@ extern "C" fn thunk_EnumLanguageGroupLocalesA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumLanguageGroupLocalesW(
+extern "C" fn thunk_dll_EnumLanguageGroupLocalesW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -1065,7 +1074,7 @@ extern "C" fn thunk_EnumLanguageGroupLocalesW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumSystemCodePagesA(
+extern "C" fn thunk_dll_EnumSystemCodePagesA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -1112,7 +1121,7 @@ extern "C" fn thunk_EnumSystemCodePagesA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumSystemCodePagesW(
+extern "C" fn thunk_dll_EnumSystemCodePagesW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -1159,7 +1168,7 @@ extern "C" fn thunk_EnumSystemCodePagesW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumSystemGeoID(
+extern "C" fn thunk_dll_EnumSystemGeoID(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -1198,7 +1207,7 @@ extern "C" fn thunk_EnumSystemGeoID(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumSystemGeoNames(
+extern "C" fn thunk_dll_EnumSystemGeoNames(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -1246,7 +1255,7 @@ extern "C" fn thunk_EnumSystemGeoNames(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumSystemLanguageGroupsA(
+extern "C" fn thunk_dll_EnumSystemLanguageGroupsA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -1285,7 +1294,7 @@ extern "C" fn thunk_EnumSystemLanguageGroupsA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumSystemLanguageGroupsW(
+extern "C" fn thunk_dll_EnumSystemLanguageGroupsW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -1324,7 +1333,7 @@ extern "C" fn thunk_EnumSystemLanguageGroupsW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumSystemLocalesA(
+extern "C" fn thunk_dll_EnumSystemLocalesA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -1371,7 +1380,7 @@ extern "C" fn thunk_EnumSystemLocalesA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumSystemLocalesEx(
+extern "C" fn thunk_dll_EnumSystemLocalesEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -1411,7 +1420,7 @@ extern "C" fn thunk_EnumSystemLocalesEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumSystemLocalesW(
+extern "C" fn thunk_dll_EnumSystemLocalesW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -1458,7 +1467,7 @@ extern "C" fn thunk_EnumSystemLocalesW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumTimeFormatsA(
+extern "C" fn thunk_dll_EnumTimeFormatsA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -1497,7 +1506,7 @@ extern "C" fn thunk_EnumTimeFormatsA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumTimeFormatsEx(
+extern "C" fn thunk_dll_EnumTimeFormatsEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -1537,7 +1546,7 @@ extern "C" fn thunk_EnumTimeFormatsEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumTimeFormatsW(
+extern "C" fn thunk_dll_EnumTimeFormatsW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -1576,7 +1585,7 @@ extern "C" fn thunk_EnumTimeFormatsW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumUILanguagesA(
+extern "C" fn thunk_dll_EnumUILanguagesA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -1615,7 +1624,7 @@ extern "C" fn thunk_EnumUILanguagesA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumUILanguagesW(
+extern "C" fn thunk_dll_EnumUILanguagesW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -1654,7 +1663,10 @@ extern "C" fn thunk_EnumUILanguagesW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FindNLSString(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_FindNLSString(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "FindNLSString",
@@ -1702,7 +1714,7 @@ extern "C" fn thunk_FindNLSString(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FindNLSStringEx(
+extern "C" fn thunk_dll_FindNLSStringEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -1759,7 +1771,7 @@ extern "C" fn thunk_FindNLSStringEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FindStringOrdinal(
+extern "C" fn thunk_dll_FindStringOrdinal(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -1808,7 +1820,10 @@ extern "C" fn thunk_FindStringOrdinal(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FoldStringA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_FoldStringA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "FoldStringA");
     crate::thunk_helper(
@@ -1844,7 +1859,10 @@ extern "C" fn thunk_FoldStringA(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FoldStringW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_FoldStringW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "FoldStringW");
     crate::thunk_helper(
@@ -1880,7 +1898,7 @@ extern "C" fn thunk_FoldStringW(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetACP(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetACP(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetACP");
     crate::thunk_helper(
@@ -1917,7 +1935,7 @@ extern "C" fn thunk_GetACP(context: &mut ExtendedContext, memory: FlatMemoryCtx)
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetCPInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetCPInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetCPInfo");
     crate::thunk_helper(
@@ -1959,7 +1977,10 @@ extern "C" fn thunk_GetCPInfo(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetCPInfoExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetCPInfoExA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetCPInfoExA",
@@ -1995,7 +2016,10 @@ extern "C" fn thunk_GetCPInfoExA(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetCPInfoExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetCPInfoExW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetCPInfoExW",
@@ -2031,7 +2055,7 @@ extern "C" fn thunk_GetCPInfoExW(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetCalendarInfoA(
+extern "C" fn thunk_dll_GetCalendarInfoA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -2073,7 +2097,7 @@ extern "C" fn thunk_GetCalendarInfoA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetCalendarInfoEx(
+extern "C" fn thunk_dll_GetCalendarInfoEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -2124,7 +2148,7 @@ extern "C" fn thunk_GetCalendarInfoEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetCalendarInfoW(
+extern "C" fn thunk_dll_GetCalendarInfoW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -2166,7 +2190,7 @@ extern "C" fn thunk_GetCalendarInfoW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetCurrencyFormatA(
+extern "C" fn thunk_dll_GetCurrencyFormatA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -2215,7 +2239,7 @@ extern "C" fn thunk_GetCurrencyFormatA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetCurrencyFormatEx(
+extern "C" fn thunk_dll_GetCurrencyFormatEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -2264,7 +2288,7 @@ extern "C" fn thunk_GetCurrencyFormatEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetCurrencyFormatW(
+extern "C" fn thunk_dll_GetCurrencyFormatW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -2313,7 +2337,7 @@ extern "C" fn thunk_GetCurrencyFormatW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetDateFormatA(
+extern "C" fn thunk_dll_GetDateFormatA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -2355,7 +2379,7 @@ extern "C" fn thunk_GetDateFormatA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetDateFormatEx(
+extern "C" fn thunk_dll_GetDateFormatEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -2406,7 +2430,7 @@ extern "C" fn thunk_GetDateFormatEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetDateFormatW(
+extern "C" fn thunk_dll_GetDateFormatW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -2448,7 +2472,7 @@ extern "C" fn thunk_GetDateFormatW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetDistanceOfClosestLanguageInList(
+extern "C" fn thunk_dll_GetDistanceOfClosestLanguageInList(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -2493,7 +2517,7 @@ extern "C" fn thunk_GetDistanceOfClosestLanguageInList(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetDurationFormat(
+extern "C" fn thunk_dll_GetDurationFormat(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -2544,7 +2568,7 @@ extern "C" fn thunk_GetDurationFormat(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetDurationFormatEx(
+extern "C" fn thunk_dll_GetDurationFormatEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -2595,7 +2619,7 @@ extern "C" fn thunk_GetDurationFormatEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetFileMUIInfo(
+extern "C" fn thunk_dll_GetFileMUIInfo(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -2640,7 +2664,7 @@ extern "C" fn thunk_GetFileMUIInfo(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetFileMUIPath(
+extern "C" fn thunk_dll_GetFileMUIPath(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -2691,7 +2715,10 @@ extern "C" fn thunk_GetFileMUIPath(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetGeoInfoA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetGeoInfoA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetGeoInfoA");
     crate::thunk_helper(
@@ -2727,7 +2754,10 @@ extern "C" fn thunk_GetGeoInfoA(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetGeoInfoEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetGeoInfoEx(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetGeoInfoEx",
@@ -2764,7 +2794,10 @@ extern "C" fn thunk_GetGeoInfoEx(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetGeoInfoW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetGeoInfoW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetGeoInfoW");
     crate::thunk_helper(
@@ -2800,7 +2833,7 @@ extern "C" fn thunk_GetGeoInfoW(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetLocaleInfoA(
+extern "C" fn thunk_dll_GetLocaleInfoA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -2840,7 +2873,7 @@ extern "C" fn thunk_GetLocaleInfoA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetLocaleInfoEx(
+extern "C" fn thunk_dll_GetLocaleInfoEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -2880,7 +2913,7 @@ extern "C" fn thunk_GetLocaleInfoEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetLocaleInfoW(
+extern "C" fn thunk_dll_GetLocaleInfoW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -2920,7 +2953,10 @@ extern "C" fn thunk_GetLocaleInfoW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetNLSVersion(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetNLSVersion(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetNLSVersion",
@@ -2956,7 +2992,7 @@ extern "C" fn thunk_GetNLSVersion(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetNLSVersionEx(
+extern "C" fn thunk_dll_GetNLSVersionEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -2995,7 +3031,7 @@ extern "C" fn thunk_GetNLSVersionEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetNumberFormatA(
+extern "C" fn thunk_dll_GetNumberFormatA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -3044,7 +3080,7 @@ extern "C" fn thunk_GetNumberFormatA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetNumberFormatEx(
+extern "C" fn thunk_dll_GetNumberFormatEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -3093,7 +3129,7 @@ extern "C" fn thunk_GetNumberFormatEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetNumberFormatW(
+extern "C" fn thunk_dll_GetNumberFormatW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -3142,7 +3178,7 @@ extern "C" fn thunk_GetNumberFormatW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetOEMCP(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetOEMCP(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetOEMCP");
     crate::thunk_helper(
@@ -3179,7 +3215,7 @@ extern "C" fn thunk_GetOEMCP(context: &mut ExtendedContext, memory: FlatMemoryCt
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetProcessPreferredUILanguages(
+extern "C" fn thunk_dll_GetProcessPreferredUILanguages(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -3224,7 +3260,7 @@ extern "C" fn thunk_GetProcessPreferredUILanguages(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetStringScripts(
+extern "C" fn thunk_dll_GetStringScripts(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -3265,7 +3301,7 @@ extern "C" fn thunk_GetStringScripts(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetStringTypeA(
+extern "C" fn thunk_dll_GetStringTypeA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -3306,7 +3342,7 @@ extern "C" fn thunk_GetStringTypeA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetStringTypeExA(
+extern "C" fn thunk_dll_GetStringTypeExA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -3347,7 +3383,7 @@ extern "C" fn thunk_GetStringTypeExA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetStringTypeExW(
+extern "C" fn thunk_dll_GetStringTypeExW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -3388,7 +3424,7 @@ extern "C" fn thunk_GetStringTypeExW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetStringTypeW(
+extern "C" fn thunk_dll_GetStringTypeW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -3428,7 +3464,7 @@ extern "C" fn thunk_GetStringTypeW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetSystemDefaultLCID(
+extern "C" fn thunk_dll_GetSystemDefaultLCID(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -3470,7 +3506,7 @@ extern "C" fn thunk_GetSystemDefaultLCID(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetSystemDefaultLangID(
+extern "C" fn thunk_dll_GetSystemDefaultLangID(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -3512,7 +3548,7 @@ extern "C" fn thunk_GetSystemDefaultLangID(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetSystemDefaultLocaleName(
+extern "C" fn thunk_dll_GetSystemDefaultLocaleName(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -3559,7 +3595,7 @@ extern "C" fn thunk_GetSystemDefaultLocaleName(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetSystemDefaultUILanguage(
+extern "C" fn thunk_dll_GetSystemDefaultUILanguage(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -3601,7 +3637,7 @@ extern "C" fn thunk_GetSystemDefaultUILanguage(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetSystemPreferredUILanguages(
+extern "C" fn thunk_dll_GetSystemPreferredUILanguages(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -3646,7 +3682,7 @@ extern "C" fn thunk_GetSystemPreferredUILanguages(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetTextCharset(
+extern "C" fn thunk_dll_GetTextCharset(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -3683,7 +3719,7 @@ extern "C" fn thunk_GetTextCharset(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetTextCharsetInfo(
+extern "C" fn thunk_dll_GetTextCharsetInfo(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -3731,7 +3767,7 @@ extern "C" fn thunk_GetTextCharsetInfo(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetThreadLocale(
+extern "C" fn thunk_dll_GetThreadLocale(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -3773,7 +3809,7 @@ extern "C" fn thunk_GetThreadLocale(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetThreadPreferredUILanguages(
+extern "C" fn thunk_dll_GetThreadPreferredUILanguages(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -3818,7 +3854,7 @@ extern "C" fn thunk_GetThreadPreferredUILanguages(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetThreadUILanguage(
+extern "C" fn thunk_dll_GetThreadUILanguage(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -3860,7 +3896,7 @@ extern "C" fn thunk_GetThreadUILanguage(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetTimeFormatA(
+extern "C" fn thunk_dll_GetTimeFormatA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -3902,7 +3938,7 @@ extern "C" fn thunk_GetTimeFormatA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetTimeFormatEx(
+extern "C" fn thunk_dll_GetTimeFormatEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -3951,7 +3987,7 @@ extern "C" fn thunk_GetTimeFormatEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetTimeFormatW(
+extern "C" fn thunk_dll_GetTimeFormatW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -3993,7 +4029,7 @@ extern "C" fn thunk_GetTimeFormatW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetUILanguageInfo(
+extern "C" fn thunk_dll_GetUILanguageInfo(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -4040,7 +4076,7 @@ extern "C" fn thunk_GetUILanguageInfo(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetUserDefaultGeoName(
+extern "C" fn thunk_dll_GetUserDefaultGeoName(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -4087,7 +4123,7 @@ extern "C" fn thunk_GetUserDefaultGeoName(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetUserDefaultLCID(
+extern "C" fn thunk_dll_GetUserDefaultLCID(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -4129,7 +4165,7 @@ extern "C" fn thunk_GetUserDefaultLCID(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetUserDefaultLangID(
+extern "C" fn thunk_dll_GetUserDefaultLangID(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -4171,7 +4207,7 @@ extern "C" fn thunk_GetUserDefaultLangID(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetUserDefaultLocaleName(
+extern "C" fn thunk_dll_GetUserDefaultLocaleName(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -4218,7 +4254,7 @@ extern "C" fn thunk_GetUserDefaultLocaleName(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetUserDefaultUILanguage(
+extern "C" fn thunk_dll_GetUserDefaultUILanguage(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -4260,7 +4296,10 @@ extern "C" fn thunk_GetUserDefaultUILanguage(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetUserGeoID(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetUserGeoID(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetUserGeoID",
@@ -4301,7 +4340,7 @@ extern "C" fn thunk_GetUserGeoID(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetUserPreferredUILanguages(
+extern "C" fn thunk_dll_GetUserPreferredUILanguages(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -4346,7 +4385,10 @@ extern "C" fn thunk_GetUserPreferredUILanguages(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IdnToAscii(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_IdnToAscii(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "IdnToAscii");
     crate::thunk_helper(
@@ -4388,7 +4430,7 @@ extern "C" fn thunk_IdnToAscii(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IdnToNameprepUnicode(
+extern "C" fn thunk_dll_IdnToNameprepUnicode(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -4435,7 +4477,10 @@ extern "C" fn thunk_IdnToNameprepUnicode(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IdnToUnicode(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_IdnToUnicode(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "IdnToUnicode",
@@ -4479,7 +4524,7 @@ extern "C" fn thunk_IdnToUnicode(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IsDBCSLeadByte(
+extern "C" fn thunk_dll_IsDBCSLeadByte(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -4523,7 +4568,7 @@ extern "C" fn thunk_IsDBCSLeadByte(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IsDBCSLeadByteEx(
+extern "C" fn thunk_dll_IsDBCSLeadByteEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -4570,7 +4615,7 @@ extern "C" fn thunk_IsDBCSLeadByteEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IsNLSDefinedString(
+extern "C" fn thunk_dll_IsNLSDefinedString(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -4617,7 +4662,7 @@ extern "C" fn thunk_IsNLSDefinedString(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IsNormalizedString(
+extern "C" fn thunk_dll_IsNormalizedString(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -4665,7 +4710,10 @@ extern "C" fn thunk_IsNormalizedString(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IsTextUnicode(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_IsTextUnicode(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "IsTextUnicode",
@@ -4710,7 +4758,7 @@ extern "C" fn thunk_IsTextUnicode(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IsValidCodePage(
+extern "C" fn thunk_dll_IsValidCodePage(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -4754,7 +4802,7 @@ extern "C" fn thunk_IsValidCodePage(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IsValidLanguageGroup(
+extern "C" fn thunk_dll_IsValidLanguageGroup(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -4801,7 +4849,10 @@ extern "C" fn thunk_IsValidLanguageGroup(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IsValidLocale(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_IsValidLocale(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "IsValidLocale",
@@ -4845,7 +4896,7 @@ extern "C" fn thunk_IsValidLocale(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IsValidLocaleName(
+extern "C" fn thunk_dll_IsValidLocaleName(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -4891,7 +4942,7 @@ extern "C" fn thunk_IsValidLocaleName(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IsValidNLSVersion(
+extern "C" fn thunk_dll_IsValidNLSVersion(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -4930,7 +4981,7 @@ extern "C" fn thunk_IsValidNLSVersion(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IsWellFormedTag(
+extern "C" fn thunk_dll_IsWellFormedTag(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -4974,7 +5025,7 @@ extern "C" fn thunk_IsWellFormedTag(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LCIDToLocaleName(
+extern "C" fn thunk_dll_LCIDToLocaleName(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -5014,7 +5065,10 @@ extern "C" fn thunk_LCIDToLocaleName(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LCMapStringA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_LCMapStringA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "LCMapStringA",
@@ -5060,7 +5114,10 @@ extern "C" fn thunk_LCMapStringA(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LCMapStringEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_LCMapStringEx(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "LCMapStringEx",
@@ -5112,7 +5169,10 @@ extern "C" fn thunk_LCMapStringEx(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LCMapStringW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_LCMapStringW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "LCMapStringW",
@@ -5158,7 +5218,7 @@ extern "C" fn thunk_LCMapStringW(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LocaleNameToLCID(
+extern "C" fn thunk_dll_LocaleNameToLCID(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -5205,7 +5265,7 @@ extern "C" fn thunk_LocaleNameToLCID(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_MappingDoAction(
+extern "C" fn thunk_dll_MappingDoAction(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -5244,7 +5304,7 @@ extern "C" fn thunk_MappingDoAction(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_MappingFreePropertyBag(
+extern "C" fn thunk_dll_MappingFreePropertyBag(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -5288,7 +5348,7 @@ extern "C" fn thunk_MappingFreePropertyBag(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_MappingFreeServices(
+extern "C" fn thunk_dll_MappingFreeServices(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -5334,7 +5394,7 @@ extern "C" fn thunk_MappingFreeServices(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_MappingGetServices(
+extern "C" fn thunk_dll_MappingGetServices(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -5373,7 +5433,7 @@ extern "C" fn thunk_MappingGetServices(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_MappingRecognizeText(
+extern "C" fn thunk_dll_MappingRecognizeText(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -5422,7 +5482,7 @@ extern "C" fn thunk_MappingRecognizeText(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_MultiByteToWideChar(
+extern "C" fn thunk_dll_MultiByteToWideChar(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -5471,7 +5531,7 @@ extern "C" fn thunk_MultiByteToWideChar(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_NormalizeString(
+extern "C" fn thunk_dll_NormalizeString(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -5518,7 +5578,7 @@ extern "C" fn thunk_NormalizeString(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_NotifyUILanguageChange(
+extern "C" fn thunk_dll_NotifyUILanguageChange(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -5565,7 +5625,7 @@ extern "C" fn thunk_NotifyUILanguageChange(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ResolveLocaleName(
+extern "C" fn thunk_dll_ResolveLocaleName(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -5604,7 +5664,7 @@ extern "C" fn thunk_ResolveLocaleName(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RestoreThreadPreferredUILanguages(
+extern "C" fn thunk_dll_RestoreThreadPreferredUILanguages(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -5648,7 +5708,7 @@ extern "C" fn thunk_RestoreThreadPreferredUILanguages(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ScriptApplyDigitSubstitution(
+extern "C" fn thunk_dll_ScriptApplyDigitSubstitution(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -5696,7 +5756,7 @@ extern "C" fn thunk_ScriptApplyDigitSubstitution(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ScriptApplyLogicalWidth(
+extern "C" fn thunk_dll_ScriptApplyLogicalWidth(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -5751,7 +5811,10 @@ extern "C" fn thunk_ScriptApplyLogicalWidth(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ScriptBreak(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_ScriptBreak(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "ScriptBreak");
     crate::thunk_helper(
@@ -5786,7 +5849,10 @@ extern "C" fn thunk_ScriptBreak(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ScriptCPtoX(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_ScriptCPtoX(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "ScriptCPtoX");
     crate::thunk_helper(
@@ -5836,7 +5902,7 @@ extern "C" fn thunk_ScriptCPtoX(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ScriptCacheGetHeight(
+extern "C" fn thunk_dll_ScriptCacheGetHeight(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -5884,7 +5950,7 @@ extern "C" fn thunk_ScriptCacheGetHeight(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ScriptFreeCache(
+extern "C" fn thunk_dll_ScriptFreeCache(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -5921,7 +5987,10 @@ extern "C" fn thunk_ScriptFreeCache(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ScriptGetCMap(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_ScriptGetCMap(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "ScriptGetCMap",
@@ -5960,7 +6029,7 @@ extern "C" fn thunk_ScriptGetCMap(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ScriptGetFontAlternateGlyphs(
+extern "C" fn thunk_dll_ScriptGetFontAlternateGlyphs(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -6017,7 +6086,7 @@ extern "C" fn thunk_ScriptGetFontAlternateGlyphs(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ScriptGetFontFeatureTags(
+extern "C" fn thunk_dll_ScriptGetFontFeatureTags(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -6070,7 +6139,7 @@ extern "C" fn thunk_ScriptGetFontFeatureTags(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ScriptGetFontLanguageTags(
+extern "C" fn thunk_dll_ScriptGetFontLanguageTags(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -6121,7 +6190,7 @@ extern "C" fn thunk_ScriptGetFontLanguageTags(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ScriptGetFontProperties(
+extern "C" fn thunk_dll_ScriptGetFontProperties(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -6169,7 +6238,7 @@ extern "C" fn thunk_ScriptGetFontProperties(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ScriptGetFontScriptTags(
+extern "C" fn thunk_dll_ScriptGetFontScriptTags(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -6211,7 +6280,7 @@ extern "C" fn thunk_ScriptGetFontScriptTags(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ScriptGetGlyphABCWidth(
+extern "C" fn thunk_dll_ScriptGetGlyphABCWidth(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -6260,7 +6329,7 @@ extern "C" fn thunk_ScriptGetGlyphABCWidth(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ScriptGetLogicalWidths(
+extern "C" fn thunk_dll_ScriptGetLogicalWidths(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -6311,7 +6380,7 @@ extern "C" fn thunk_ScriptGetLogicalWidths(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ScriptGetProperties(
+extern "C" fn thunk_dll_ScriptGetProperties(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -6358,7 +6427,7 @@ extern "C" fn thunk_ScriptGetProperties(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ScriptIsComplex(
+extern "C" fn thunk_dll_ScriptIsComplex(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -6397,7 +6466,10 @@ extern "C" fn thunk_ScriptIsComplex(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ScriptItemize(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_ScriptItemize(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "ScriptItemize",
@@ -6445,7 +6517,7 @@ extern "C" fn thunk_ScriptItemize(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ScriptItemizeOpenType(
+extern "C" fn thunk_dll_ScriptItemizeOpenType(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -6498,7 +6570,10 @@ extern "C" fn thunk_ScriptItemizeOpenType(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ScriptJustify(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_ScriptJustify(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "ScriptJustify",
@@ -6537,7 +6612,10 @@ extern "C" fn thunk_ScriptJustify(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ScriptLayout(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_ScriptLayout(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "ScriptLayout",
@@ -6574,7 +6652,10 @@ extern "C" fn thunk_ScriptLayout(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ScriptPlace(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_ScriptPlace(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "ScriptPlace");
     crate::thunk_helper(
@@ -6616,7 +6697,7 @@ extern "C" fn thunk_ScriptPlace(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ScriptPlaceOpenType(
+extern "C" fn thunk_dll_ScriptPlaceOpenType(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -6689,7 +6770,7 @@ extern "C" fn thunk_ScriptPlaceOpenType(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ScriptPositionSingleGlyph(
+extern "C" fn thunk_dll_ScriptPositionSingleGlyph(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -6750,7 +6831,7 @@ extern "C" fn thunk_ScriptPositionSingleGlyph(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ScriptRecordDigitSubstitution(
+extern "C" fn thunk_dll_ScriptRecordDigitSubstitution(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -6797,7 +6878,10 @@ extern "C" fn thunk_ScriptRecordDigitSubstitution(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ScriptShape(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_ScriptShape(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "ScriptShape");
     crate::thunk_helper(
@@ -6849,7 +6933,7 @@ extern "C" fn thunk_ScriptShape(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ScriptShapeOpenType(
+extern "C" fn thunk_dll_ScriptShapeOpenType(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -6918,7 +7002,7 @@ extern "C" fn thunk_ScriptShapeOpenType(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ScriptStringAnalyse(
+extern "C" fn thunk_dll_ScriptStringAnalyse(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -6981,7 +7065,7 @@ extern "C" fn thunk_ScriptStringAnalyse(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ScriptStringCPtoX(
+extern "C" fn thunk_dll_ScriptStringCPtoX(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -7030,7 +7114,7 @@ extern "C" fn thunk_ScriptStringCPtoX(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ScriptStringFree(
+extern "C" fn thunk_dll_ScriptStringFree(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -7074,7 +7158,7 @@ extern "C" fn thunk_ScriptStringFree(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ScriptStringGetLogicalWidths(
+extern "C" fn thunk_dll_ScriptStringGetLogicalWidths(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -7121,7 +7205,7 @@ extern "C" fn thunk_ScriptStringGetLogicalWidths(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ScriptStringGetOrder(
+extern "C" fn thunk_dll_ScriptStringGetOrder(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -7168,7 +7252,7 @@ extern "C" fn thunk_ScriptStringGetOrder(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ScriptStringOut(
+extern "C" fn thunk_dll_ScriptStringOut(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -7214,7 +7298,7 @@ extern "C" fn thunk_ScriptStringOut(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ScriptStringValidate(
+extern "C" fn thunk_dll_ScriptStringValidate(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -7251,7 +7335,7 @@ extern "C" fn thunk_ScriptStringValidate(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ScriptStringXtoCP(
+extern "C" fn thunk_dll_ScriptStringXtoCP(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -7291,7 +7375,7 @@ extern "C" fn thunk_ScriptStringXtoCP(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ScriptString_pLogAttr(
+extern "C" fn thunk_dll_ScriptString_pLogAttr(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -7328,7 +7412,7 @@ extern "C" fn thunk_ScriptString_pLogAttr(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ScriptString_pSize(
+extern "C" fn thunk_dll_ScriptString_pSize(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -7365,7 +7449,7 @@ extern "C" fn thunk_ScriptString_pSize(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ScriptString_pcOutChars(
+extern "C" fn thunk_dll_ScriptString_pcOutChars(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -7402,7 +7486,7 @@ extern "C" fn thunk_ScriptString_pcOutChars(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ScriptSubstituteSingleGlyph(
+extern "C" fn thunk_dll_ScriptSubstituteSingleGlyph(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -7457,7 +7541,10 @@ extern "C" fn thunk_ScriptSubstituteSingleGlyph(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ScriptTextOut(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_ScriptTextOut(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "ScriptTextOut",
@@ -7519,7 +7606,10 @@ extern "C" fn thunk_ScriptTextOut(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ScriptXtoCP(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_ScriptXtoCP(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "ScriptXtoCP");
     crate::thunk_helper(
@@ -7569,7 +7659,7 @@ extern "C" fn thunk_ScriptXtoCP(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetCalendarInfoA(
+extern "C" fn thunk_dll_SetCalendarInfoA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -7609,7 +7699,7 @@ extern "C" fn thunk_SetCalendarInfoA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetCalendarInfoW(
+extern "C" fn thunk_dll_SetCalendarInfoW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -7649,7 +7739,7 @@ extern "C" fn thunk_SetCalendarInfoW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetLocaleInfoA(
+extern "C" fn thunk_dll_SetLocaleInfoA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -7697,7 +7787,7 @@ extern "C" fn thunk_SetLocaleInfoA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetLocaleInfoW(
+extern "C" fn thunk_dll_SetLocaleInfoW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -7745,7 +7835,7 @@ extern "C" fn thunk_SetLocaleInfoW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetProcessPreferredUILanguages(
+extern "C" fn thunk_dll_SetProcessPreferredUILanguages(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -7788,7 +7878,7 @@ extern "C" fn thunk_SetProcessPreferredUILanguages(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetThreadLocale(
+extern "C" fn thunk_dll_SetThreadLocale(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -7832,7 +7922,7 @@ extern "C" fn thunk_SetThreadLocale(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetThreadPreferredUILanguages(
+extern "C" fn thunk_dll_SetThreadPreferredUILanguages(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -7875,7 +7965,7 @@ extern "C" fn thunk_SetThreadPreferredUILanguages(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetThreadPreferredUILanguages2(
+extern "C" fn thunk_dll_SetThreadPreferredUILanguages2(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -7915,7 +8005,7 @@ extern "C" fn thunk_SetThreadPreferredUILanguages2(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetThreadUILanguage(
+extern "C" fn thunk_dll_SetThreadUILanguage(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -7959,7 +8049,10 @@ extern "C" fn thunk_SetThreadUILanguage(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetUserGeoID(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_SetUserGeoID(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "SetUserGeoID",
@@ -8000,7 +8093,7 @@ extern "C" fn thunk_SetUserGeoID(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetUserGeoName(
+extern "C" fn thunk_dll_SetUserGeoName(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -8044,7 +8137,7 @@ extern "C" fn thunk_SetUserGeoName(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_TranslateCharsetInfo(
+extern "C" fn thunk_dll_TranslateCharsetInfo(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -8092,7 +8185,10 @@ extern "C" fn thunk_TranslateCharsetInfo(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_VerifyScripts(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_VerifyScripts(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "VerifyScripts",
@@ -8136,7 +8232,7 @@ extern "C" fn thunk_VerifyScripts(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WideCharToMultiByte(
+extern "C" fn thunk_dll_WideCharToMultiByte(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -8189,7 +8285,7 @@ extern "C" fn thunk_WideCharToMultiByte(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_lstrcatA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_lstrcatA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "lstrcatA");
     crate::thunk_helper(
@@ -8231,7 +8327,7 @@ extern "C" fn thunk_lstrcatA(context: &mut ExtendedContext, memory: FlatMemoryCt
     )
 }
 #[no_mangle]
-extern "C" fn thunk_lstrcatW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_lstrcatW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "lstrcatW");
     crate::thunk_helper(
@@ -8273,7 +8369,7 @@ extern "C" fn thunk_lstrcatW(context: &mut ExtendedContext, memory: FlatMemoryCt
     )
 }
 #[no_mangle]
-extern "C" fn thunk_lstrcmpA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_lstrcmpA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "lstrcmpA");
     crate::thunk_helper(
@@ -8315,7 +8411,7 @@ extern "C" fn thunk_lstrcmpA(context: &mut ExtendedContext, memory: FlatMemoryCt
     )
 }
 #[no_mangle]
-extern "C" fn thunk_lstrcmpW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_lstrcmpW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "lstrcmpW");
     crate::thunk_helper(
@@ -8357,7 +8453,7 @@ extern "C" fn thunk_lstrcmpW(context: &mut ExtendedContext, memory: FlatMemoryCt
     )
 }
 #[no_mangle]
-extern "C" fn thunk_lstrcmpiA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_lstrcmpiA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "lstrcmpiA");
     crate::thunk_helper(
@@ -8399,7 +8495,7 @@ extern "C" fn thunk_lstrcmpiA(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_lstrcmpiW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_lstrcmpiW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "lstrcmpiW");
     crate::thunk_helper(
@@ -8441,7 +8537,7 @@ extern "C" fn thunk_lstrcmpiW(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_lstrcpyA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_lstrcpyA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "lstrcpyA");
     crate::thunk_helper(
@@ -8483,7 +8579,7 @@ extern "C" fn thunk_lstrcpyA(context: &mut ExtendedContext, memory: FlatMemoryCt
     )
 }
 #[no_mangle]
-extern "C" fn thunk_lstrcpyW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_lstrcpyW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "lstrcpyW");
     crate::thunk_helper(
@@ -8525,7 +8621,7 @@ extern "C" fn thunk_lstrcpyW(context: &mut ExtendedContext, memory: FlatMemoryCt
     )
 }
 #[no_mangle]
-extern "C" fn thunk_lstrcpynA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_lstrcpynA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "lstrcpynA");
     crate::thunk_helper(
@@ -8559,7 +8655,7 @@ extern "C" fn thunk_lstrcpynA(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_lstrcpynW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_lstrcpynW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "lstrcpynW");
     crate::thunk_helper(
@@ -8593,7 +8689,7 @@ extern "C" fn thunk_lstrcpynW(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_lstrlenA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_lstrlenA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "lstrlenA");
     crate::thunk_helper(
@@ -8632,7 +8728,7 @@ extern "C" fn thunk_lstrlenA(context: &mut ExtendedContext, memory: FlatMemoryCt
     )
 }
 #[no_mangle]
-extern "C" fn thunk_lstrlenW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_lstrlenW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "lstrlenW");
     crate::thunk_helper(
@@ -8671,7 +8767,7 @@ extern "C" fn thunk_lstrlenW(context: &mut ExtendedContext, memory: FlatMemoryCt
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DirectDrawCreate(
+extern "C" fn thunk_dll_DirectDrawCreate(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -8719,7 +8815,7 @@ extern "C" fn thunk_DirectDrawCreate(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DirectDrawCreateClipper(
+extern "C" fn thunk_dll_DirectDrawCreateClipper(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -8758,7 +8854,7 @@ extern "C" fn thunk_DirectDrawCreateClipper(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DirectDrawCreateEx(
+extern "C" fn thunk_dll_DirectDrawCreateEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -8798,7 +8894,7 @@ extern "C" fn thunk_DirectDrawCreateEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DirectDrawEnumerateA(
+extern "C" fn thunk_dll_DirectDrawEnumerateA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -8845,7 +8941,7 @@ extern "C" fn thunk_DirectDrawEnumerateA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DirectDrawEnumerateExA(
+extern "C" fn thunk_dll_DirectDrawEnumerateExA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -8893,7 +8989,7 @@ extern "C" fn thunk_DirectDrawEnumerateExA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DirectDrawEnumerateExW(
+extern "C" fn thunk_dll_DirectDrawEnumerateExW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -8941,7 +9037,7 @@ extern "C" fn thunk_DirectDrawEnumerateExW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DirectDrawEnumerateW(
+extern "C" fn thunk_dll_DirectDrawEnumerateW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -8988,7 +9084,7 @@ extern "C" fn thunk_DirectDrawEnumerateW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_AbortPath(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_AbortPath(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "AbortPath");
     crate::thunk_helper(
@@ -9020,7 +9116,7 @@ extern "C" fn thunk_AbortPath(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_AddFontMemResourceEx(
+extern "C" fn thunk_dll_AddFontMemResourceEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -9060,7 +9156,7 @@ extern "C" fn thunk_AddFontMemResourceEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_AddFontResourceA(
+extern "C" fn thunk_dll_AddFontResourceA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -9104,7 +9200,7 @@ extern "C" fn thunk_AddFontResourceA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_AddFontResourceExA(
+extern "C" fn thunk_dll_AddFontResourceExA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -9152,7 +9248,7 @@ extern "C" fn thunk_AddFontResourceExA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_AddFontResourceExW(
+extern "C" fn thunk_dll_AddFontResourceExW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -9200,7 +9296,7 @@ extern "C" fn thunk_AddFontResourceExW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_AddFontResourceW(
+extern "C" fn thunk_dll_AddFontResourceW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -9244,7 +9340,10 @@ extern "C" fn thunk_AddFontResourceW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_AlphaBlend(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_AlphaBlend(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "AlphaBlend");
     crate::thunk_helper(
@@ -9298,7 +9397,7 @@ extern "C" fn thunk_AlphaBlend(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_AnimatePalette(
+extern "C" fn thunk_dll_AnimatePalette(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -9338,7 +9437,7 @@ extern "C" fn thunk_AnimatePalette(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_Arc(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_Arc(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "Arc");
     crate::thunk_helper(
@@ -9378,7 +9477,7 @@ extern "C" fn thunk_Arc(context: &mut ExtendedContext, memory: FlatMemoryCtx) ->
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ArcTo(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_ArcTo(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "ArcTo");
     crate::thunk_helper(
@@ -9418,7 +9517,10 @@ extern "C" fn thunk_ArcTo(context: &mut ExtendedContext, memory: FlatMemoryCtx) 
     )
 }
 #[no_mangle]
-extern "C" fn thunk_BeginPaint(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_BeginPaint(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "BeginPaint");
     crate::thunk_helper(
@@ -9460,7 +9562,7 @@ extern "C" fn thunk_BeginPaint(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_BeginPath(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_BeginPath(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "BeginPath");
     crate::thunk_helper(
@@ -9492,7 +9594,7 @@ extern "C" fn thunk_BeginPath(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_BitBlt(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_BitBlt(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "BitBlt");
     crate::thunk_helper(
@@ -9532,7 +9634,7 @@ extern "C" fn thunk_BitBlt(context: &mut ExtendedContext, memory: FlatMemoryCtx)
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CancelDC(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_CancelDC(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "CancelDC");
     crate::thunk_helper(
@@ -9564,7 +9666,7 @@ extern "C" fn thunk_CancelDC(context: &mut ExtendedContext, memory: FlatMemoryCt
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ChangeDisplaySettingsA(
+extern "C" fn thunk_dll_ChangeDisplaySettingsA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -9611,7 +9713,7 @@ extern "C" fn thunk_ChangeDisplaySettingsA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ChangeDisplaySettingsExA(
+extern "C" fn thunk_dll_ChangeDisplaySettingsExA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -9652,7 +9754,7 @@ extern "C" fn thunk_ChangeDisplaySettingsExA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ChangeDisplaySettingsExW(
+extern "C" fn thunk_dll_ChangeDisplaySettingsExW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -9693,7 +9795,7 @@ extern "C" fn thunk_ChangeDisplaySettingsExW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ChangeDisplaySettingsW(
+extern "C" fn thunk_dll_ChangeDisplaySettingsW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -9740,7 +9842,7 @@ extern "C" fn thunk_ChangeDisplaySettingsW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_Chord(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_Chord(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "Chord");
     crate::thunk_helper(
@@ -9780,7 +9882,7 @@ extern "C" fn thunk_Chord(context: &mut ExtendedContext, memory: FlatMemoryCtx) 
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ClientToScreen(
+extern "C" fn thunk_dll_ClientToScreen(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -9827,7 +9929,7 @@ extern "C" fn thunk_ClientToScreen(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CloseEnhMetaFile(
+extern "C" fn thunk_dll_CloseEnhMetaFile(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -9864,7 +9966,10 @@ extern "C" fn thunk_CloseEnhMetaFile(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CloseFigure(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_CloseFigure(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "CloseFigure");
     crate::thunk_helper(
@@ -9896,7 +10001,10 @@ extern "C" fn thunk_CloseFigure(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CloseMetaFile(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_CloseMetaFile(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "CloseMetaFile",
@@ -9930,7 +10038,10 @@ extern "C" fn thunk_CloseMetaFile(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CombineRgn(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_CombineRgn(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "CombineRgn");
     crate::thunk_helper(
@@ -9965,7 +10076,7 @@ extern "C" fn thunk_CombineRgn(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CopyEnhMetaFileA(
+extern "C" fn thunk_dll_CopyEnhMetaFileA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -10012,7 +10123,7 @@ extern "C" fn thunk_CopyEnhMetaFileA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CopyEnhMetaFileW(
+extern "C" fn thunk_dll_CopyEnhMetaFileW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -10059,7 +10170,10 @@ extern "C" fn thunk_CopyEnhMetaFileW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CopyMetaFileA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_CopyMetaFileA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "CopyMetaFileA",
@@ -10103,7 +10217,10 @@ extern "C" fn thunk_CopyMetaFileA(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CopyMetaFileW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_CopyMetaFileW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "CopyMetaFileW",
@@ -10147,7 +10264,7 @@ extern "C" fn thunk_CopyMetaFileW(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CopyRect(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_CopyRect(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "CopyRect");
     crate::thunk_helper(
@@ -10189,7 +10306,10 @@ extern "C" fn thunk_CopyRect(context: &mut ExtendedContext, memory: FlatMemoryCt
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateBitmap(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_CreateBitmap(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "CreateBitmap",
@@ -10227,7 +10347,7 @@ extern "C" fn thunk_CreateBitmap(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateBitmapIndirect(
+extern "C" fn thunk_dll_CreateBitmapIndirect(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -10264,7 +10384,7 @@ extern "C" fn thunk_CreateBitmapIndirect(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateBrushIndirect(
+extern "C" fn thunk_dll_CreateBrushIndirect(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -10308,7 +10428,7 @@ extern "C" fn thunk_CreateBrushIndirect(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateCompatibleBitmap(
+extern "C" fn thunk_dll_CreateCompatibleBitmap(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -10356,7 +10476,7 @@ extern "C" fn thunk_CreateCompatibleBitmap(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateCompatibleDC(
+extern "C" fn thunk_dll_CreateCompatibleDC(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -10393,7 +10513,7 @@ extern "C" fn thunk_CreateCompatibleDC(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateDCA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_CreateDCA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "CreateDCA");
     crate::thunk_helper(
@@ -10428,7 +10548,7 @@ extern "C" fn thunk_CreateDCA(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateDCW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_CreateDCW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "CreateDCW");
     crate::thunk_helper(
@@ -10463,7 +10583,7 @@ extern "C" fn thunk_CreateDCW(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateDIBPatternBrush(
+extern "C" fn thunk_dll_CreateDIBPatternBrush(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -10510,7 +10630,7 @@ extern "C" fn thunk_CreateDIBPatternBrush(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateDIBPatternBrushPt(
+extern "C" fn thunk_dll_CreateDIBPatternBrushPt(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -10557,7 +10677,7 @@ extern "C" fn thunk_CreateDIBPatternBrushPt(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateDIBSection(
+extern "C" fn thunk_dll_CreateDIBSection(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -10599,7 +10719,7 @@ extern "C" fn thunk_CreateDIBSection(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateDIBitmap(
+extern "C" fn thunk_dll_CreateDIBitmap(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -10641,7 +10761,7 @@ extern "C" fn thunk_CreateDIBitmap(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateDiscardableBitmap(
+extern "C" fn thunk_dll_CreateDiscardableBitmap(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -10689,7 +10809,7 @@ extern "C" fn thunk_CreateDiscardableBitmap(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateEllipticRgn(
+extern "C" fn thunk_dll_CreateEllipticRgn(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -10738,7 +10858,7 @@ extern "C" fn thunk_CreateEllipticRgn(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateEllipticRgnIndirect(
+extern "C" fn thunk_dll_CreateEllipticRgnIndirect(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -10782,7 +10902,7 @@ extern "C" fn thunk_CreateEllipticRgnIndirect(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateEnhMetaFileA(
+extern "C" fn thunk_dll_CreateEnhMetaFileA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -10822,7 +10942,7 @@ extern "C" fn thunk_CreateEnhMetaFileA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateEnhMetaFileW(
+extern "C" fn thunk_dll_CreateEnhMetaFileW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -10862,7 +10982,10 @@ extern "C" fn thunk_CreateEnhMetaFileW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateFontA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_CreateFontA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "CreateFontA");
     crate::thunk_helper(
@@ -10922,7 +11045,7 @@ extern "C" fn thunk_CreateFontA(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateFontIndirectA(
+extern "C" fn thunk_dll_CreateFontIndirectA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -10966,7 +11089,7 @@ extern "C" fn thunk_CreateFontIndirectA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateFontIndirectExA(
+extern "C" fn thunk_dll_CreateFontIndirectExA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -11010,7 +11133,7 @@ extern "C" fn thunk_CreateFontIndirectExA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateFontIndirectExW(
+extern "C" fn thunk_dll_CreateFontIndirectExW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -11054,7 +11177,7 @@ extern "C" fn thunk_CreateFontIndirectExW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateFontIndirectW(
+extern "C" fn thunk_dll_CreateFontIndirectW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -11098,7 +11221,7 @@ extern "C" fn thunk_CreateFontIndirectW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateFontPackage(
+extern "C" fn thunk_dll_CreateFontPackage(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -11169,7 +11292,10 @@ extern "C" fn thunk_CreateFontPackage(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateFontW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_CreateFontW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "CreateFontW");
     crate::thunk_helper(
@@ -11229,7 +11355,7 @@ extern "C" fn thunk_CreateFontW(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateHalftonePalette(
+extern "C" fn thunk_dll_CreateHalftonePalette(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -11266,7 +11392,7 @@ extern "C" fn thunk_CreateHalftonePalette(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateHatchBrush(
+extern "C" fn thunk_dll_CreateHatchBrush(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -11313,7 +11439,7 @@ extern "C" fn thunk_CreateHatchBrush(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateICA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_CreateICA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "CreateICA");
     crate::thunk_helper(
@@ -11348,7 +11474,7 @@ extern "C" fn thunk_CreateICA(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateICW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_CreateICW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "CreateICW");
     crate::thunk_helper(
@@ -11383,7 +11509,7 @@ extern "C" fn thunk_CreateICW(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateMetaFileA(
+extern "C" fn thunk_dll_CreateMetaFileA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -11427,7 +11553,7 @@ extern "C" fn thunk_CreateMetaFileA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateMetaFileW(
+extern "C" fn thunk_dll_CreateMetaFileW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -11471,7 +11597,10 @@ extern "C" fn thunk_CreateMetaFileW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreatePalette(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_CreatePalette(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "CreatePalette",
@@ -11512,7 +11641,7 @@ extern "C" fn thunk_CreatePalette(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreatePatternBrush(
+extern "C" fn thunk_dll_CreatePatternBrush(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -11549,7 +11678,7 @@ extern "C" fn thunk_CreatePatternBrush(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreatePen(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_CreatePen(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "CreatePen");
     crate::thunk_helper(
@@ -11592,7 +11721,7 @@ extern "C" fn thunk_CreatePen(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreatePenIndirect(
+extern "C" fn thunk_dll_CreatePenIndirect(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -11636,7 +11765,7 @@ extern "C" fn thunk_CreatePenIndirect(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreatePolyPolygonRgn(
+extern "C" fn thunk_dll_CreatePolyPolygonRgn(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -11685,7 +11814,7 @@ extern "C" fn thunk_CreatePolyPolygonRgn(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreatePolygonRgn(
+extern "C" fn thunk_dll_CreatePolygonRgn(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -11733,7 +11862,10 @@ extern "C" fn thunk_CreatePolygonRgn(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateRectRgn(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_CreateRectRgn(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "CreateRectRgn",
@@ -11779,7 +11911,7 @@ extern "C" fn thunk_CreateRectRgn(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateRectRgnIndirect(
+extern "C" fn thunk_dll_CreateRectRgnIndirect(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -11823,7 +11955,7 @@ extern "C" fn thunk_CreateRectRgnIndirect(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateRoundRectRgn(
+extern "C" fn thunk_dll_CreateRoundRectRgn(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -11865,7 +11997,7 @@ extern "C" fn thunk_CreateRoundRectRgn(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateScalableFontResourceA(
+extern "C" fn thunk_dll_CreateScalableFontResourceA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -11905,7 +12037,7 @@ extern "C" fn thunk_CreateScalableFontResourceA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateScalableFontResourceW(
+extern "C" fn thunk_dll_CreateScalableFontResourceW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -11945,7 +12077,7 @@ extern "C" fn thunk_CreateScalableFontResourceW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateSolidBrush(
+extern "C" fn thunk_dll_CreateSolidBrush(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -11989,7 +12121,7 @@ extern "C" fn thunk_CreateSolidBrush(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DPtoLP(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_DPtoLP(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "DPtoLP");
     crate::thunk_helper(
@@ -12032,7 +12164,7 @@ extern "C" fn thunk_DPtoLP(context: &mut ExtendedContext, memory: FlatMemoryCtx)
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DeleteDC(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_DeleteDC(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "DeleteDC");
     crate::thunk_helper(
@@ -12064,7 +12196,7 @@ extern "C" fn thunk_DeleteDC(context: &mut ExtendedContext, memory: FlatMemoryCt
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DeleteEnhMetaFile(
+extern "C" fn thunk_dll_DeleteEnhMetaFile(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -12101,7 +12233,7 @@ extern "C" fn thunk_DeleteEnhMetaFile(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DeleteMetaFile(
+extern "C" fn thunk_dll_DeleteMetaFile(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -12138,7 +12270,10 @@ extern "C" fn thunk_DeleteMetaFile(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DeleteObject(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_DeleteObject(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "DeleteObject",
@@ -12178,7 +12313,7 @@ extern "C" fn thunk_DeleteObject(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DrawAnimatedRects(
+extern "C" fn thunk_dll_DrawAnimatedRects(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -12218,7 +12353,10 @@ extern "C" fn thunk_DrawAnimatedRects(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DrawCaption(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_DrawCaption(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "DrawCaption");
     crate::thunk_helper(
@@ -12262,7 +12400,7 @@ extern "C" fn thunk_DrawCaption(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DrawEdge(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_DrawEdge(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "DrawEdge");
     crate::thunk_helper(
@@ -12306,7 +12444,10 @@ extern "C" fn thunk_DrawEdge(context: &mut ExtendedContext, memory: FlatMemoryCt
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DrawEscape(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_DrawEscape(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "DrawEscape");
     crate::thunk_helper(
@@ -12341,7 +12482,10 @@ extern "C" fn thunk_DrawEscape(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DrawFocusRect(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_DrawFocusRect(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "DrawFocusRect",
@@ -12385,7 +12529,7 @@ extern "C" fn thunk_DrawFocusRect(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DrawFrameControl(
+extern "C" fn thunk_dll_DrawFrameControl(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -12425,7 +12569,10 @@ extern "C" fn thunk_DrawFrameControl(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DrawStateA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_DrawStateA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "DrawStateA");
     crate::thunk_helper(
@@ -12477,7 +12624,10 @@ extern "C" fn thunk_DrawStateA(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DrawStateW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_DrawStateW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "DrawStateW");
     crate::thunk_helper(
@@ -12529,7 +12679,7 @@ extern "C" fn thunk_DrawStateW(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DrawTextA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_DrawTextA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "DrawTextA");
     crate::thunk_helper(
@@ -12565,7 +12715,10 @@ extern "C" fn thunk_DrawTextA(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DrawTextExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_DrawTextExA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "DrawTextExA");
     crate::thunk_helper(
@@ -12602,7 +12755,10 @@ extern "C" fn thunk_DrawTextExA(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DrawTextExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_DrawTextExW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "DrawTextExW");
     crate::thunk_helper(
@@ -12639,7 +12795,7 @@ extern "C" fn thunk_DrawTextExW(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DrawTextW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_DrawTextW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "DrawTextW");
     crate::thunk_helper(
@@ -12675,7 +12831,7 @@ extern "C" fn thunk_DrawTextW(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_Ellipse(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_Ellipse(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "Ellipse");
     crate::thunk_helper(
@@ -12711,7 +12867,7 @@ extern "C" fn thunk_Ellipse(context: &mut ExtendedContext, memory: FlatMemoryCtx
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EndPaint(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_EndPaint(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "EndPaint");
     crate::thunk_helper(
@@ -12753,7 +12909,7 @@ extern "C" fn thunk_EndPaint(context: &mut ExtendedContext, memory: FlatMemoryCt
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EndPath(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_EndPath(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "EndPath");
     crate::thunk_helper(
@@ -12785,7 +12941,7 @@ extern "C" fn thunk_EndPath(context: &mut ExtendedContext, memory: FlatMemoryCtx
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumDisplayDevicesA(
+extern "C" fn thunk_dll_EnumDisplayDevicesA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -12825,7 +12981,7 @@ extern "C" fn thunk_EnumDisplayDevicesA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumDisplayDevicesW(
+extern "C" fn thunk_dll_EnumDisplayDevicesW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -12865,7 +13021,7 @@ extern "C" fn thunk_EnumDisplayDevicesW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumDisplayMonitors(
+extern "C" fn thunk_dll_EnumDisplayMonitors(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -12905,7 +13061,7 @@ extern "C" fn thunk_EnumDisplayMonitors(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumDisplaySettingsA(
+extern "C" fn thunk_dll_EnumDisplaySettingsA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -12944,7 +13100,7 @@ extern "C" fn thunk_EnumDisplaySettingsA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumDisplaySettingsExA(
+extern "C" fn thunk_dll_EnumDisplaySettingsExA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -12984,7 +13140,7 @@ extern "C" fn thunk_EnumDisplaySettingsExA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumDisplaySettingsExW(
+extern "C" fn thunk_dll_EnumDisplaySettingsExW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -13024,7 +13180,7 @@ extern "C" fn thunk_EnumDisplaySettingsExW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumDisplaySettingsW(
+extern "C" fn thunk_dll_EnumDisplaySettingsW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -13063,7 +13219,7 @@ extern "C" fn thunk_EnumDisplaySettingsW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumEnhMetaFile(
+extern "C" fn thunk_dll_EnumEnhMetaFile(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -13104,7 +13260,7 @@ extern "C" fn thunk_EnumEnhMetaFile(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumFontFamiliesA(
+extern "C" fn thunk_dll_EnumFontFamiliesA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -13144,7 +13300,7 @@ extern "C" fn thunk_EnumFontFamiliesA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumFontFamiliesExA(
+extern "C" fn thunk_dll_EnumFontFamiliesExA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -13185,7 +13341,7 @@ extern "C" fn thunk_EnumFontFamiliesExA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumFontFamiliesExW(
+extern "C" fn thunk_dll_EnumFontFamiliesExW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -13226,7 +13382,7 @@ extern "C" fn thunk_EnumFontFamiliesExW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumFontFamiliesW(
+extern "C" fn thunk_dll_EnumFontFamiliesW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -13266,7 +13422,10 @@ extern "C" fn thunk_EnumFontFamiliesW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumFontsA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_EnumFontsA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "EnumFontsA");
     crate::thunk_helper(
@@ -13301,7 +13460,10 @@ extern "C" fn thunk_EnumFontsA(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumFontsW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_EnumFontsW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "EnumFontsW");
     crate::thunk_helper(
@@ -13336,7 +13498,10 @@ extern "C" fn thunk_EnumFontsW(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumMetaFile(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_EnumMetaFile(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "EnumMetaFile",
@@ -13382,7 +13547,10 @@ extern "C" fn thunk_EnumMetaFile(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumObjects(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_EnumObjects(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "EnumObjects");
     crate::thunk_helper(
@@ -13417,7 +13585,7 @@ extern "C" fn thunk_EnumObjects(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EqualRect(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_EqualRect(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "EqualRect");
     crate::thunk_helper(
@@ -13459,7 +13627,7 @@ extern "C" fn thunk_EqualRect(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EqualRgn(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_EqualRgn(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "EqualRgn");
     crate::thunk_helper(
@@ -13501,7 +13669,7 @@ extern "C" fn thunk_EqualRgn(context: &mut ExtendedContext, memory: FlatMemoryCt
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ExcludeClipRect(
+extern "C" fn thunk_dll_ExcludeClipRect(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -13542,7 +13710,7 @@ extern "C" fn thunk_ExcludeClipRect(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ExcludeUpdateRgn(
+extern "C" fn thunk_dll_ExcludeUpdateRgn(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -13589,7 +13757,10 @@ extern "C" fn thunk_ExcludeUpdateRgn(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ExtCreatePen(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_ExtCreatePen(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "ExtCreatePen",
@@ -13627,7 +13798,10 @@ extern "C" fn thunk_ExtCreatePen(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ExtFloodFill(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_ExtFloodFill(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "ExtFloodFill",
@@ -13665,7 +13839,7 @@ extern "C" fn thunk_ExtFloodFill(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ExtSelectClipRgn(
+extern "C" fn thunk_dll_ExtSelectClipRgn(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -13713,7 +13887,10 @@ extern "C" fn thunk_ExtSelectClipRgn(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ExtTextOutA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_ExtTextOutA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "ExtTextOutA");
     crate::thunk_helper(
@@ -13752,7 +13929,10 @@ extern "C" fn thunk_ExtTextOutA(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ExtTextOutW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_ExtTextOutW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "ExtTextOutW");
     crate::thunk_helper(
@@ -13791,7 +13971,7 @@ extern "C" fn thunk_ExtTextOutW(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FillPath(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_FillPath(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "FillPath");
     crate::thunk_helper(
@@ -13823,7 +14003,7 @@ extern "C" fn thunk_FillPath(context: &mut ExtendedContext, memory: FlatMemoryCt
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FillRect(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_FillRect(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "FillRect");
     crate::thunk_helper(
@@ -13866,7 +14046,7 @@ extern "C" fn thunk_FillRect(context: &mut ExtendedContext, memory: FlatMemoryCt
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FillRgn(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_FillRgn(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "FillRgn");
     crate::thunk_helper(
@@ -13909,7 +14089,10 @@ extern "C" fn thunk_FillRgn(context: &mut ExtendedContext, memory: FlatMemoryCtx
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FixBrushOrgEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_FixBrushOrgEx(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "FixBrushOrgEx",
@@ -13955,7 +14138,10 @@ extern "C" fn thunk_FixBrushOrgEx(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FlattenPath(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_FlattenPath(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "FlattenPath");
     crate::thunk_helper(
@@ -13987,7 +14173,7 @@ extern "C" fn thunk_FlattenPath(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FloodFill(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_FloodFill(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "FloodFill");
     crate::thunk_helper(
@@ -14031,7 +14217,7 @@ extern "C" fn thunk_FloodFill(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FrameRect(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_FrameRect(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "FrameRect");
     crate::thunk_helper(
@@ -14074,7 +14260,7 @@ extern "C" fn thunk_FrameRect(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FrameRgn(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_FrameRgn(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "FrameRgn");
     crate::thunk_helper(
@@ -14110,7 +14296,10 @@ extern "C" fn thunk_FrameRgn(context: &mut ExtendedContext, memory: FlatMemoryCt
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GdiAlphaBlend(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GdiAlphaBlend(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GdiAlphaBlend",
@@ -14166,7 +14355,10 @@ extern "C" fn thunk_GdiAlphaBlend(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GdiComment(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GdiComment(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GdiComment");
     crate::thunk_helper(
@@ -14209,7 +14401,7 @@ extern "C" fn thunk_GdiComment(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GdiFlush(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GdiFlush(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GdiFlush");
     crate::thunk_helper(
@@ -14246,7 +14438,7 @@ extern "C" fn thunk_GdiFlush(context: &mut ExtendedContext, memory: FlatMemoryCt
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GdiGetBatchLimit(
+extern "C" fn thunk_dll_GdiGetBatchLimit(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -14288,7 +14480,7 @@ extern "C" fn thunk_GdiGetBatchLimit(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GdiGradientFill(
+extern "C" fn thunk_dll_GdiGradientFill(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -14330,7 +14522,7 @@ extern "C" fn thunk_GdiGradientFill(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GdiSetBatchLimit(
+extern "C" fn thunk_dll_GdiSetBatchLimit(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -14373,7 +14565,7 @@ extern "C" fn thunk_GdiSetBatchLimit(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GdiTransparentBlt(
+extern "C" fn thunk_dll_GdiTransparentBlt(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -14432,7 +14624,7 @@ extern "C" fn thunk_GdiTransparentBlt(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetArcDirection(
+extern "C" fn thunk_dll_GetArcDirection(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -14469,7 +14661,7 @@ extern "C" fn thunk_GetArcDirection(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetAspectRatioFilterEx(
+extern "C" fn thunk_dll_GetAspectRatioFilterEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -14516,7 +14708,10 @@ extern "C" fn thunk_GetAspectRatioFilterEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetBitmapBits(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetBitmapBits(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetBitmapBits",
@@ -14561,7 +14756,7 @@ extern "C" fn thunk_GetBitmapBits(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetBitmapDimensionEx(
+extern "C" fn thunk_dll_GetBitmapDimensionEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -14608,7 +14803,10 @@ extern "C" fn thunk_GetBitmapDimensionEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetBkColor(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetBkColor(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetBkColor");
     crate::thunk_helper(
@@ -14640,7 +14838,7 @@ extern "C" fn thunk_GetBkColor(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetBkMode(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetBkMode(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetBkMode");
     crate::thunk_helper(
@@ -14672,7 +14870,10 @@ extern "C" fn thunk_GetBkMode(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetBoundsRect(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetBoundsRect(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetBoundsRect",
@@ -14717,7 +14918,10 @@ extern "C" fn thunk_GetBoundsRect(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetBrushOrgEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetBrushOrgEx(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetBrushOrgEx",
@@ -14761,7 +14965,7 @@ extern "C" fn thunk_GetBrushOrgEx(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetCharABCWidthsA(
+extern "C" fn thunk_dll_GetCharABCWidthsA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -14801,7 +15005,7 @@ extern "C" fn thunk_GetCharABCWidthsA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetCharABCWidthsI(
+extern "C" fn thunk_dll_GetCharABCWidthsI(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -14842,7 +15046,7 @@ extern "C" fn thunk_GetCharABCWidthsI(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetCharABCWidthsW(
+extern "C" fn thunk_dll_GetCharABCWidthsW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -14882,7 +15086,7 @@ extern "C" fn thunk_GetCharABCWidthsW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetCharWidth32A(
+extern "C" fn thunk_dll_GetCharWidth32A(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -14922,7 +15126,7 @@ extern "C" fn thunk_GetCharWidth32A(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetCharWidth32W(
+extern "C" fn thunk_dll_GetCharWidth32W(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -14962,7 +15166,10 @@ extern "C" fn thunk_GetCharWidth32W(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetCharWidthA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetCharWidthA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetCharWidthA",
@@ -14999,7 +15206,7 @@ extern "C" fn thunk_GetCharWidthA(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetCharWidthFloatA(
+extern "C" fn thunk_dll_GetCharWidthFloatA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -15039,7 +15246,7 @@ extern "C" fn thunk_GetCharWidthFloatA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetCharWidthFloatW(
+extern "C" fn thunk_dll_GetCharWidthFloatW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -15079,7 +15286,10 @@ extern "C" fn thunk_GetCharWidthFloatW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetCharWidthI(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetCharWidthI(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetCharWidthI",
@@ -15117,7 +15327,10 @@ extern "C" fn thunk_GetCharWidthI(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetCharWidthW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetCharWidthW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetCharWidthW",
@@ -15154,7 +15367,7 @@ extern "C" fn thunk_GetCharWidthW(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetCharacterPlacementA(
+extern "C" fn thunk_dll_GetCharacterPlacementA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -15203,7 +15416,7 @@ extern "C" fn thunk_GetCharacterPlacementA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetCharacterPlacementW(
+extern "C" fn thunk_dll_GetCharacterPlacementW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -15252,7 +15465,10 @@ extern "C" fn thunk_GetCharacterPlacementW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetClipBox(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetClipBox(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetClipBox");
     crate::thunk_helper(
@@ -15294,7 +15510,10 @@ extern "C" fn thunk_GetClipBox(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetClipRgn(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetClipRgn(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetClipRgn");
     crate::thunk_helper(
@@ -15336,7 +15555,7 @@ extern "C" fn thunk_GetClipRgn(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetColorAdjustment(
+extern "C" fn thunk_dll_GetColorAdjustment(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -15383,7 +15602,7 @@ extern "C" fn thunk_GetColorAdjustment(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetCurrentObject(
+extern "C" fn thunk_dll_GetCurrentObject(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -15430,7 +15649,7 @@ extern "C" fn thunk_GetCurrentObject(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetCurrentPositionEx(
+extern "C" fn thunk_dll_GetCurrentPositionEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -15477,7 +15696,7 @@ extern "C" fn thunk_GetCurrentPositionEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetDC(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetDC(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetDC");
     crate::thunk_helper(
@@ -15516,7 +15735,7 @@ extern "C" fn thunk_GetDC(context: &mut ExtendedContext, memory: FlatMemoryCtx) 
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetDCBrushColor(
+extern "C" fn thunk_dll_GetDCBrushColor(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -15553,7 +15772,7 @@ extern "C" fn thunk_GetDCBrushColor(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetDCEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetDCEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetDCEx");
     crate::thunk_helper(
@@ -15596,7 +15815,10 @@ extern "C" fn thunk_GetDCEx(context: &mut ExtendedContext, memory: FlatMemoryCtx
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetDCOrgEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetDCOrgEx(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetDCOrgEx");
     crate::thunk_helper(
@@ -15638,7 +15860,10 @@ extern "C" fn thunk_GetDCOrgEx(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetDCPenColor(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetDCPenColor(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetDCPenColor",
@@ -15672,7 +15897,7 @@ extern "C" fn thunk_GetDCPenColor(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetDIBColorTable(
+extern "C" fn thunk_dll_GetDIBColorTable(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -15712,7 +15937,7 @@ extern "C" fn thunk_GetDIBColorTable(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetDIBits(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetDIBits(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetDIBits");
     crate::thunk_helper(
@@ -15750,7 +15975,10 @@ extern "C" fn thunk_GetDIBits(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetDeviceCaps(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetDeviceCaps(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetDeviceCaps",
@@ -15794,7 +16022,7 @@ extern "C" fn thunk_GetDeviceCaps(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetEnhMetaFileA(
+extern "C" fn thunk_dll_GetEnhMetaFileA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -15838,7 +16066,7 @@ extern "C" fn thunk_GetEnhMetaFileA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetEnhMetaFileBits(
+extern "C" fn thunk_dll_GetEnhMetaFileBits(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -15886,7 +16114,7 @@ extern "C" fn thunk_GetEnhMetaFileBits(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetEnhMetaFileDescriptionA(
+extern "C" fn thunk_dll_GetEnhMetaFileDescriptionA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -15934,7 +16162,7 @@ extern "C" fn thunk_GetEnhMetaFileDescriptionA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetEnhMetaFileDescriptionW(
+extern "C" fn thunk_dll_GetEnhMetaFileDescriptionW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -15982,7 +16210,7 @@ extern "C" fn thunk_GetEnhMetaFileDescriptionW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetEnhMetaFileHeader(
+extern "C" fn thunk_dll_GetEnhMetaFileHeader(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -16030,7 +16258,7 @@ extern "C" fn thunk_GetEnhMetaFileHeader(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetEnhMetaFilePaletteEntries(
+extern "C" fn thunk_dll_GetEnhMetaFilePaletteEntries(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -16069,7 +16297,7 @@ extern "C" fn thunk_GetEnhMetaFilePaletteEntries(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetEnhMetaFileW(
+extern "C" fn thunk_dll_GetEnhMetaFileW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -16113,7 +16341,10 @@ extern "C" fn thunk_GetEnhMetaFileW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetFontData(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetFontData(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetFontData");
     crate::thunk_helper(
@@ -16149,7 +16380,7 @@ extern "C" fn thunk_GetFontData(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetFontLanguageInfo(
+extern "C" fn thunk_dll_GetFontLanguageInfo(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -16186,7 +16417,7 @@ extern "C" fn thunk_GetFontLanguageInfo(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetFontUnicodeRanges(
+extern "C" fn thunk_dll_GetFontUnicodeRanges(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -16233,7 +16464,7 @@ extern "C" fn thunk_GetFontUnicodeRanges(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetGlyphIndicesA(
+extern "C" fn thunk_dll_GetGlyphIndicesA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -16274,7 +16505,7 @@ extern "C" fn thunk_GetGlyphIndicesA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetGlyphIndicesW(
+extern "C" fn thunk_dll_GetGlyphIndicesW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -16315,7 +16546,7 @@ extern "C" fn thunk_GetGlyphIndicesW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetGlyphOutlineA(
+extern "C" fn thunk_dll_GetGlyphOutlineA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -16358,7 +16589,7 @@ extern "C" fn thunk_GetGlyphOutlineA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetGlyphOutlineW(
+extern "C" fn thunk_dll_GetGlyphOutlineW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -16401,7 +16632,7 @@ extern "C" fn thunk_GetGlyphOutlineW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetGraphicsMode(
+extern "C" fn thunk_dll_GetGraphicsMode(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -16438,7 +16669,7 @@ extern "C" fn thunk_GetGraphicsMode(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetKerningPairsA(
+extern "C" fn thunk_dll_GetKerningPairsA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -16486,7 +16717,7 @@ extern "C" fn thunk_GetKerningPairsA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetKerningPairsW(
+extern "C" fn thunk_dll_GetKerningPairsW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -16534,7 +16765,7 @@ extern "C" fn thunk_GetKerningPairsW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetLayout(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetLayout(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetLayout");
     crate::thunk_helper(
@@ -16566,7 +16797,10 @@ extern "C" fn thunk_GetLayout(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetMapMode(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetMapMode(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetMapMode");
     crate::thunk_helper(
@@ -16598,7 +16832,10 @@ extern "C" fn thunk_GetMapMode(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetMetaFileA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetMetaFileA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetMetaFileA",
@@ -16639,7 +16876,7 @@ extern "C" fn thunk_GetMetaFileA(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetMetaFileBitsEx(
+extern "C" fn thunk_dll_GetMetaFileBitsEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -16687,7 +16924,10 @@ extern "C" fn thunk_GetMetaFileBitsEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetMetaFileW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetMetaFileW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetMetaFileW",
@@ -16728,7 +16968,10 @@ extern "C" fn thunk_GetMetaFileW(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetMetaRgn(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetMetaRgn(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetMetaRgn");
     crate::thunk_helper(
@@ -16770,7 +17013,10 @@ extern "C" fn thunk_GetMetaRgn(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetMiterLimit(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetMiterLimit(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetMiterLimit",
@@ -16814,7 +17060,7 @@ extern "C" fn thunk_GetMiterLimit(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetMonitorInfoA(
+extern "C" fn thunk_dll_GetMonitorInfoA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -16861,7 +17107,7 @@ extern "C" fn thunk_GetMonitorInfoA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetMonitorInfoW(
+extern "C" fn thunk_dll_GetMonitorInfoW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -16908,7 +17154,7 @@ extern "C" fn thunk_GetMonitorInfoW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetNearestColor(
+extern "C" fn thunk_dll_GetNearestColor(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -16955,7 +17201,7 @@ extern "C" fn thunk_GetNearestColor(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetNearestPaletteIndex(
+extern "C" fn thunk_dll_GetNearestPaletteIndex(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -17002,7 +17248,10 @@ extern "C" fn thunk_GetNearestPaletteIndex(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetObjectA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetObjectA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetObjectA");
     crate::thunk_helper(
@@ -17045,7 +17294,10 @@ extern "C" fn thunk_GetObjectA(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetObjectType(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetObjectType(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetObjectType",
@@ -17085,7 +17337,10 @@ extern "C" fn thunk_GetObjectType(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetObjectW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetObjectW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetObjectW");
     crate::thunk_helper(
@@ -17128,7 +17383,7 @@ extern "C" fn thunk_GetObjectW(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetOutlineTextMetricsA(
+extern "C" fn thunk_dll_GetOutlineTextMetricsA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -17176,7 +17431,7 @@ extern "C" fn thunk_GetOutlineTextMetricsA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetOutlineTextMetricsW(
+extern "C" fn thunk_dll_GetOutlineTextMetricsW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -17224,7 +17479,7 @@ extern "C" fn thunk_GetOutlineTextMetricsW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetPaletteEntries(
+extern "C" fn thunk_dll_GetPaletteEntries(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -17264,7 +17519,7 @@ extern "C" fn thunk_GetPaletteEntries(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetPath(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetPath(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetPath");
     crate::thunk_helper(
@@ -17308,7 +17563,7 @@ extern "C" fn thunk_GetPath(context: &mut ExtendedContext, memory: FlatMemoryCtx
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetPixel(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetPixel(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetPixel");
     crate::thunk_helper(
@@ -17351,7 +17606,7 @@ extern "C" fn thunk_GetPixel(context: &mut ExtendedContext, memory: FlatMemoryCt
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetPolyFillMode(
+extern "C" fn thunk_dll_GetPolyFillMode(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -17388,7 +17643,7 @@ extern "C" fn thunk_GetPolyFillMode(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetROP2(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetROP2(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetROP2");
     crate::thunk_helper(
@@ -17420,7 +17675,10 @@ extern "C" fn thunk_GetROP2(context: &mut ExtendedContext, memory: FlatMemoryCtx
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetRandomRgn(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetRandomRgn(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetRandomRgn",
@@ -17465,7 +17723,7 @@ extern "C" fn thunk_GetRandomRgn(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetRasterizerCaps(
+extern "C" fn thunk_dll_GetRasterizerCaps(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -17512,7 +17770,10 @@ extern "C" fn thunk_GetRasterizerCaps(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetRegionData(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetRegionData(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetRegionData",
@@ -17557,7 +17818,7 @@ extern "C" fn thunk_GetRegionData(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetRgnBox(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetRgnBox(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetRgnBox");
     crate::thunk_helper(
@@ -17599,7 +17860,7 @@ extern "C" fn thunk_GetRgnBox(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetStockObject(
+extern "C" fn thunk_dll_GetStockObject(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -17642,7 +17903,7 @@ extern "C" fn thunk_GetStockObject(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetStretchBltMode(
+extern "C" fn thunk_dll_GetStretchBltMode(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -17679,7 +17940,7 @@ extern "C" fn thunk_GetStretchBltMode(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetSysColorBrush(
+extern "C" fn thunk_dll_GetSysColorBrush(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -17723,7 +17984,7 @@ extern "C" fn thunk_GetSysColorBrush(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetSystemPaletteEntries(
+extern "C" fn thunk_dll_GetSystemPaletteEntries(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -17763,7 +18024,7 @@ extern "C" fn thunk_GetSystemPaletteEntries(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetSystemPaletteUse(
+extern "C" fn thunk_dll_GetSystemPaletteUse(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -17800,7 +18061,7 @@ extern "C" fn thunk_GetSystemPaletteUse(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetTabbedTextExtentA(
+extern "C" fn thunk_dll_GetTabbedTextExtentA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -17847,7 +18108,7 @@ extern "C" fn thunk_GetTabbedTextExtentA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetTabbedTextExtentW(
+extern "C" fn thunk_dll_GetTabbedTextExtentW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -17894,7 +18155,10 @@ extern "C" fn thunk_GetTabbedTextExtentW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetTextAlign(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetTextAlign(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetTextAlign",
@@ -17928,7 +18192,7 @@ extern "C" fn thunk_GetTextAlign(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetTextCharacterExtra(
+extern "C" fn thunk_dll_GetTextCharacterExtra(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -17965,7 +18229,10 @@ extern "C" fn thunk_GetTextCharacterExtra(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetTextColor(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetTextColor(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetTextColor",
@@ -17999,7 +18266,7 @@ extern "C" fn thunk_GetTextColor(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetTextExtentExPointA(
+extern "C" fn thunk_dll_GetTextExtentExPointA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -18050,7 +18317,7 @@ extern "C" fn thunk_GetTextExtentExPointA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetTextExtentExPointI(
+extern "C" fn thunk_dll_GetTextExtentExPointI(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -18101,7 +18368,7 @@ extern "C" fn thunk_GetTextExtentExPointI(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetTextExtentExPointW(
+extern "C" fn thunk_dll_GetTextExtentExPointW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -18152,7 +18419,7 @@ extern "C" fn thunk_GetTextExtentExPointW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetTextExtentPoint32A(
+extern "C" fn thunk_dll_GetTextExtentPoint32A(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -18201,7 +18468,7 @@ extern "C" fn thunk_GetTextExtentPoint32A(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetTextExtentPoint32W(
+extern "C" fn thunk_dll_GetTextExtentPoint32W(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -18250,7 +18517,7 @@ extern "C" fn thunk_GetTextExtentPoint32W(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetTextExtentPointA(
+extern "C" fn thunk_dll_GetTextExtentPointA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -18299,7 +18566,7 @@ extern "C" fn thunk_GetTextExtentPointA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetTextExtentPointI(
+extern "C" fn thunk_dll_GetTextExtentPointI(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -18348,7 +18615,7 @@ extern "C" fn thunk_GetTextExtentPointI(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetTextExtentPointW(
+extern "C" fn thunk_dll_GetTextExtentPointW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -18397,7 +18664,10 @@ extern "C" fn thunk_GetTextExtentPointW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetTextFaceA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetTextFaceA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetTextFaceA",
@@ -18442,7 +18712,10 @@ extern "C" fn thunk_GetTextFaceA(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetTextFaceW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetTextFaceW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetTextFaceW",
@@ -18487,7 +18760,7 @@ extern "C" fn thunk_GetTextFaceW(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetTextMetricsA(
+extern "C" fn thunk_dll_GetTextMetricsA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -18534,7 +18807,7 @@ extern "C" fn thunk_GetTextMetricsA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetTextMetricsW(
+extern "C" fn thunk_dll_GetTextMetricsW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -18581,7 +18854,10 @@ extern "C" fn thunk_GetTextMetricsW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetUpdateRect(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetUpdateRect(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetUpdateRect",
@@ -18626,7 +18902,10 @@ extern "C" fn thunk_GetUpdateRect(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetUpdateRgn(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetUpdateRgn(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetUpdateRgn",
@@ -18671,7 +18950,7 @@ extern "C" fn thunk_GetUpdateRgn(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetViewportExtEx(
+extern "C" fn thunk_dll_GetViewportExtEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -18718,7 +18997,7 @@ extern "C" fn thunk_GetViewportExtEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetViewportOrgEx(
+extern "C" fn thunk_dll_GetViewportOrgEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -18765,7 +19044,7 @@ extern "C" fn thunk_GetViewportOrgEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetWinMetaFileBits(
+extern "C" fn thunk_dll_GetWinMetaFileBits(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -18806,7 +19085,10 @@ extern "C" fn thunk_GetWinMetaFileBits(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetWindowDC(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetWindowDC(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetWindowDC");
     crate::thunk_helper(
@@ -18845,7 +19127,7 @@ extern "C" fn thunk_GetWindowDC(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetWindowExtEx(
+extern "C" fn thunk_dll_GetWindowExtEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -18892,7 +19174,7 @@ extern "C" fn thunk_GetWindowExtEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetWindowOrgEx(
+extern "C" fn thunk_dll_GetWindowOrgEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -18939,7 +19221,10 @@ extern "C" fn thunk_GetWindowOrgEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetWindowRgn(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetWindowRgn(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetWindowRgn",
@@ -18983,7 +19268,7 @@ extern "C" fn thunk_GetWindowRgn(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetWindowRgnBox(
+extern "C" fn thunk_dll_GetWindowRgnBox(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -19030,7 +19315,10 @@ extern "C" fn thunk_GetWindowRgnBox(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GradientFill(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GradientFill(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GradientFill",
@@ -19069,7 +19357,10 @@ extern "C" fn thunk_GradientFill(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GrayStringA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GrayStringA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GrayStringA");
     crate::thunk_helper(
@@ -19119,7 +19410,10 @@ extern "C" fn thunk_GrayStringA(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GrayStringW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GrayStringW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GrayStringW");
     crate::thunk_helper(
@@ -19169,7 +19463,10 @@ extern "C" fn thunk_GrayStringW(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_InflateRect(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_InflateRect(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "InflateRect");
     crate::thunk_helper(
@@ -19212,7 +19509,7 @@ extern "C" fn thunk_InflateRect(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IntersectClipRect(
+extern "C" fn thunk_dll_IntersectClipRect(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -19253,7 +19550,10 @@ extern "C" fn thunk_IntersectClipRect(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IntersectRect(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_IntersectRect(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "IntersectRect",
@@ -19298,7 +19598,7 @@ extern "C" fn thunk_IntersectRect(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_InvalidateRect(
+extern "C" fn thunk_dll_InvalidateRect(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -19346,7 +19646,10 @@ extern "C" fn thunk_InvalidateRect(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_InvalidateRgn(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_InvalidateRgn(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "InvalidateRgn",
@@ -19391,7 +19694,10 @@ extern "C" fn thunk_InvalidateRgn(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_InvertRect(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_InvertRect(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "InvertRect");
     crate::thunk_helper(
@@ -19433,7 +19739,7 @@ extern "C" fn thunk_InvertRect(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_InvertRgn(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_InvertRgn(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "InvertRgn");
     crate::thunk_helper(
@@ -19475,7 +19781,10 @@ extern "C" fn thunk_InvertRgn(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IsRectEmpty(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_IsRectEmpty(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "IsRectEmpty");
     crate::thunk_helper(
@@ -19514,7 +19823,7 @@ extern "C" fn thunk_IsRectEmpty(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LPtoDP(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_LPtoDP(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "LPtoDP");
     crate::thunk_helper(
@@ -19557,7 +19866,7 @@ extern "C" fn thunk_LPtoDP(context: &mut ExtendedContext, memory: FlatMemoryCtx)
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LineDDA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_LineDDA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "LineDDA");
     crate::thunk_helper(
@@ -19594,7 +19903,7 @@ extern "C" fn thunk_LineDDA(context: &mut ExtendedContext, memory: FlatMemoryCtx
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LineTo(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_LineTo(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "LineTo");
     crate::thunk_helper(
@@ -19637,7 +19946,10 @@ extern "C" fn thunk_LineTo(context: &mut ExtendedContext, memory: FlatMemoryCtx)
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LoadBitmapA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_LoadBitmapA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "LoadBitmapA");
     crate::thunk_helper(
@@ -19679,7 +19991,10 @@ extern "C" fn thunk_LoadBitmapA(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LoadBitmapW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_LoadBitmapW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "LoadBitmapW");
     crate::thunk_helper(
@@ -19721,7 +20036,7 @@ extern "C" fn thunk_LoadBitmapW(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LockWindowUpdate(
+extern "C" fn thunk_dll_LockWindowUpdate(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -19767,7 +20082,7 @@ extern "C" fn thunk_LockWindowUpdate(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_MapWindowPoints(
+extern "C" fn thunk_dll_MapWindowPoints(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -19807,7 +20122,7 @@ extern "C" fn thunk_MapWindowPoints(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_MaskBlt(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_MaskBlt(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "MaskBlt");
     crate::thunk_helper(
@@ -19853,7 +20168,7 @@ extern "C" fn thunk_MaskBlt(context: &mut ExtendedContext, memory: FlatMemoryCtx
     )
 }
 #[no_mangle]
-extern "C" fn thunk_MergeFontPackage(
+extern "C" fn thunk_dll_MergeFontPackage(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -19914,7 +20229,7 @@ extern "C" fn thunk_MergeFontPackage(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_MonitorFromPoint(
+extern "C" fn thunk_dll_MonitorFromPoint(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -19961,7 +20276,7 @@ extern "C" fn thunk_MonitorFromPoint(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_MonitorFromRect(
+extern "C" fn thunk_dll_MonitorFromRect(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -20008,7 +20323,7 @@ extern "C" fn thunk_MonitorFromRect(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_MonitorFromWindow(
+extern "C" fn thunk_dll_MonitorFromWindow(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -20055,7 +20370,7 @@ extern "C" fn thunk_MonitorFromWindow(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_MoveToEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_MoveToEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "MoveToEx");
     crate::thunk_helper(
@@ -20099,7 +20414,10 @@ extern "C" fn thunk_MoveToEx(context: &mut ExtendedContext, memory: FlatMemoryCt
     )
 }
 #[no_mangle]
-extern "C" fn thunk_OffsetClipRgn(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_OffsetClipRgn(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "OffsetClipRgn",
@@ -20144,7 +20462,10 @@ extern "C" fn thunk_OffsetClipRgn(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_OffsetRect(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_OffsetRect(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "OffsetRect");
     crate::thunk_helper(
@@ -20187,7 +20508,7 @@ extern "C" fn thunk_OffsetRect(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_OffsetRgn(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_OffsetRgn(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "OffsetRgn");
     crate::thunk_helper(
@@ -20230,7 +20551,7 @@ extern "C" fn thunk_OffsetRgn(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_OffsetViewportOrgEx(
+extern "C" fn thunk_dll_OffsetViewportOrgEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -20279,7 +20600,7 @@ extern "C" fn thunk_OffsetViewportOrgEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_OffsetWindowOrgEx(
+extern "C" fn thunk_dll_OffsetWindowOrgEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -20328,7 +20649,10 @@ extern "C" fn thunk_OffsetWindowOrgEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_PaintDesktop(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_PaintDesktop(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "PaintDesktop",
@@ -20362,7 +20686,7 @@ extern "C" fn thunk_PaintDesktop(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_PaintRgn(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_PaintRgn(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "PaintRgn");
     crate::thunk_helper(
@@ -20404,7 +20728,7 @@ extern "C" fn thunk_PaintRgn(context: &mut ExtendedContext, memory: FlatMemoryCt
     )
 }
 #[no_mangle]
-extern "C" fn thunk_PatBlt(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_PatBlt(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "PatBlt");
     crate::thunk_helper(
@@ -20441,7 +20765,10 @@ extern "C" fn thunk_PatBlt(context: &mut ExtendedContext, memory: FlatMemoryCtx)
     )
 }
 #[no_mangle]
-extern "C" fn thunk_PathToRegion(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_PathToRegion(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "PathToRegion",
@@ -20475,7 +20802,7 @@ extern "C" fn thunk_PathToRegion(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_Pie(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_Pie(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "Pie");
     crate::thunk_helper(
@@ -20515,7 +20842,7 @@ extern "C" fn thunk_Pie(context: &mut ExtendedContext, memory: FlatMemoryCtx) ->
     )
 }
 #[no_mangle]
-extern "C" fn thunk_PlayEnhMetaFile(
+extern "C" fn thunk_dll_PlayEnhMetaFile(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -20563,7 +20890,7 @@ extern "C" fn thunk_PlayEnhMetaFile(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_PlayEnhMetaFileRecord(
+extern "C" fn thunk_dll_PlayEnhMetaFileRecord(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -20612,7 +20939,10 @@ extern "C" fn thunk_PlayEnhMetaFileRecord(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_PlayMetaFile(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_PlayMetaFile(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "PlayMetaFile",
@@ -20656,7 +20986,7 @@ extern "C" fn thunk_PlayMetaFile(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_PlayMetaFileRecord(
+extern "C" fn thunk_dll_PlayMetaFileRecord(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -20696,7 +21026,7 @@ extern "C" fn thunk_PlayMetaFileRecord(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_PlgBlt(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_PlgBlt(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "PlgBlt");
     crate::thunk_helper(
@@ -20740,7 +21070,10 @@ extern "C" fn thunk_PlgBlt(context: &mut ExtendedContext, memory: FlatMemoryCtx)
     )
 }
 #[no_mangle]
-extern "C" fn thunk_PolyBezier(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_PolyBezier(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "PolyBezier");
     crate::thunk_helper(
@@ -20783,7 +21116,10 @@ extern "C" fn thunk_PolyBezier(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_PolyBezierTo(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_PolyBezierTo(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "PolyBezierTo",
@@ -20828,7 +21164,7 @@ extern "C" fn thunk_PolyBezierTo(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_PolyDraw(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_PolyDraw(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "PolyDraw");
     crate::thunk_helper(
@@ -20872,7 +21208,10 @@ extern "C" fn thunk_PolyDraw(context: &mut ExtendedContext, memory: FlatMemoryCt
     )
 }
 #[no_mangle]
-extern "C" fn thunk_PolyPolygon(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_PolyPolygon(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "PolyPolygon");
     crate::thunk_helper(
@@ -20916,7 +21255,10 @@ extern "C" fn thunk_PolyPolygon(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_PolyPolyline(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_PolyPolyline(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "PolyPolyline",
@@ -20962,7 +21304,10 @@ extern "C" fn thunk_PolyPolyline(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_PolyTextOutA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_PolyTextOutA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "PolyTextOutA",
@@ -21007,7 +21352,10 @@ extern "C" fn thunk_PolyTextOutA(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_PolyTextOutW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_PolyTextOutW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "PolyTextOutW",
@@ -21052,7 +21400,7 @@ extern "C" fn thunk_PolyTextOutW(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_Polygon(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_Polygon(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "Polygon");
     crate::thunk_helper(
@@ -21095,7 +21443,7 @@ extern "C" fn thunk_Polygon(context: &mut ExtendedContext, memory: FlatMemoryCtx
     )
 }
 #[no_mangle]
-extern "C" fn thunk_Polyline(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_Polyline(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "Polyline");
     crate::thunk_helper(
@@ -21138,7 +21486,10 @@ extern "C" fn thunk_Polyline(context: &mut ExtendedContext, memory: FlatMemoryCt
     )
 }
 #[no_mangle]
-extern "C" fn thunk_PolylineTo(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_PolylineTo(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "PolylineTo");
     crate::thunk_helper(
@@ -21181,7 +21532,7 @@ extern "C" fn thunk_PolylineTo(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_PtInRect(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_PtInRect(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "PtInRect");
     crate::thunk_helper(
@@ -21223,7 +21574,10 @@ extern "C" fn thunk_PtInRect(context: &mut ExtendedContext, memory: FlatMemoryCt
     )
 }
 #[no_mangle]
-extern "C" fn thunk_PtInRegion(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_PtInRegion(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "PtInRegion");
     crate::thunk_helper(
@@ -21266,7 +21620,7 @@ extern "C" fn thunk_PtInRegion(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_PtVisible(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_PtVisible(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "PtVisible");
     crate::thunk_helper(
@@ -21309,7 +21663,7 @@ extern "C" fn thunk_PtVisible(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RealizePalette(
+extern "C" fn thunk_dll_RealizePalette(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -21346,7 +21700,10 @@ extern "C" fn thunk_RealizePalette(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RectInRegion(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_RectInRegion(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "RectInRegion",
@@ -21390,7 +21747,10 @@ extern "C" fn thunk_RectInRegion(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RectVisible(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_RectVisible(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "RectVisible");
     crate::thunk_helper(
@@ -21432,7 +21792,7 @@ extern "C" fn thunk_RectVisible(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_Rectangle(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_Rectangle(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "Rectangle");
     crate::thunk_helper(
@@ -21468,7 +21828,10 @@ extern "C" fn thunk_Rectangle(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RedrawWindow(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_RedrawWindow(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "RedrawWindow",
@@ -21505,7 +21868,7 @@ extern "C" fn thunk_RedrawWindow(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ReleaseDC(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_ReleaseDC(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "ReleaseDC");
     crate::thunk_helper(
@@ -21547,7 +21910,7 @@ extern "C" fn thunk_ReleaseDC(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RemoveFontMemResourceEx(
+extern "C" fn thunk_dll_RemoveFontMemResourceEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -21590,7 +21953,7 @@ extern "C" fn thunk_RemoveFontMemResourceEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RemoveFontResourceA(
+extern "C" fn thunk_dll_RemoveFontResourceA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -21636,7 +21999,7 @@ extern "C" fn thunk_RemoveFontResourceA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RemoveFontResourceExA(
+extern "C" fn thunk_dll_RemoveFontResourceExA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -21684,7 +22047,7 @@ extern "C" fn thunk_RemoveFontResourceExA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RemoveFontResourceExW(
+extern "C" fn thunk_dll_RemoveFontResourceExW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -21732,7 +22095,7 @@ extern "C" fn thunk_RemoveFontResourceExW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RemoveFontResourceW(
+extern "C" fn thunk_dll_RemoveFontResourceW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -21778,7 +22141,7 @@ extern "C" fn thunk_RemoveFontResourceW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ResetDCA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_ResetDCA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "ResetDCA");
     crate::thunk_helper(
@@ -21820,7 +22183,7 @@ extern "C" fn thunk_ResetDCA(context: &mut ExtendedContext, memory: FlatMemoryCt
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ResetDCW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_ResetDCW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "ResetDCW");
     crate::thunk_helper(
@@ -21862,7 +22225,10 @@ extern "C" fn thunk_ResetDCW(context: &mut ExtendedContext, memory: FlatMemoryCt
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ResizePalette(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_ResizePalette(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "ResizePalette",
@@ -21906,7 +22272,7 @@ extern "C" fn thunk_ResizePalette(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RestoreDC(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_RestoreDC(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "RestoreDC");
     crate::thunk_helper(
@@ -21948,7 +22314,7 @@ extern "C" fn thunk_RestoreDC(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RoundRect(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_RoundRect(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "RoundRect");
     crate::thunk_helper(
@@ -21986,7 +22352,7 @@ extern "C" fn thunk_RoundRect(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SaveDC(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_SaveDC(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "SaveDC");
     crate::thunk_helper(
@@ -22018,7 +22384,7 @@ extern "C" fn thunk_SaveDC(context: &mut ExtendedContext, memory: FlatMemoryCtx)
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ScaleViewportExtEx(
+extern "C" fn thunk_dll_ScaleViewportExtEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -22060,7 +22426,7 @@ extern "C" fn thunk_ScaleViewportExtEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ScaleWindowExtEx(
+extern "C" fn thunk_dll_ScaleWindowExtEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -22102,7 +22468,7 @@ extern "C" fn thunk_ScaleWindowExtEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ScreenToClient(
+extern "C" fn thunk_dll_ScreenToClient(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -22149,7 +22515,7 @@ extern "C" fn thunk_ScreenToClient(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SelectClipPath(
+extern "C" fn thunk_dll_SelectClipPath(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -22196,7 +22562,10 @@ extern "C" fn thunk_SelectClipPath(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SelectClipRgn(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_SelectClipRgn(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "SelectClipRgn",
@@ -22240,7 +22609,10 @@ extern "C" fn thunk_SelectClipRgn(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SelectObject(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_SelectObject(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "SelectObject",
@@ -22282,7 +22654,10 @@ extern "C" fn thunk_SelectObject(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SelectPalette(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_SelectPalette(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "SelectPalette",
@@ -22327,7 +22702,7 @@ extern "C" fn thunk_SelectPalette(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetArcDirection(
+extern "C" fn thunk_dll_SetArcDirection(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -22374,7 +22749,10 @@ extern "C" fn thunk_SetArcDirection(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetBitmapBits(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_SetBitmapBits(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "SetBitmapBits",
@@ -22419,7 +22797,7 @@ extern "C" fn thunk_SetBitmapBits(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetBitmapDimensionEx(
+extern "C" fn thunk_dll_SetBitmapDimensionEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -22468,7 +22846,10 @@ extern "C" fn thunk_SetBitmapDimensionEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetBkColor(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_SetBkColor(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "SetBkColor");
     crate::thunk_helper(
@@ -22510,7 +22891,7 @@ extern "C" fn thunk_SetBkColor(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetBkMode(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_SetBkMode(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "SetBkMode");
     crate::thunk_helper(
@@ -22552,7 +22933,10 @@ extern "C" fn thunk_SetBkMode(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetBoundsRect(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_SetBoundsRect(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "SetBoundsRect",
@@ -22597,7 +22981,10 @@ extern "C" fn thunk_SetBoundsRect(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetBrushOrgEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_SetBrushOrgEx(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "SetBrushOrgEx",
@@ -22643,7 +23030,7 @@ extern "C" fn thunk_SetBrushOrgEx(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetColorAdjustment(
+extern "C" fn thunk_dll_SetColorAdjustment(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -22690,7 +23077,7 @@ extern "C" fn thunk_SetColorAdjustment(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetDCBrushColor(
+extern "C" fn thunk_dll_SetDCBrushColor(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -22737,7 +23124,10 @@ extern "C" fn thunk_SetDCBrushColor(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetDCPenColor(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_SetDCPenColor(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "SetDCPenColor",
@@ -22781,7 +23171,7 @@ extern "C" fn thunk_SetDCPenColor(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetDIBColorTable(
+extern "C" fn thunk_dll_SetDIBColorTable(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -22821,7 +23211,7 @@ extern "C" fn thunk_SetDIBColorTable(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetDIBits(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_SetDIBits(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "SetDIBits");
     crate::thunk_helper(
@@ -22859,7 +23249,7 @@ extern "C" fn thunk_SetDIBits(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetDIBitsToDevice(
+extern "C" fn thunk_dll_SetDIBitsToDevice(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -22910,7 +23300,7 @@ extern "C" fn thunk_SetDIBitsToDevice(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetEnhMetaFileBits(
+extern "C" fn thunk_dll_SetEnhMetaFileBits(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -22957,7 +23347,7 @@ extern "C" fn thunk_SetEnhMetaFileBits(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetGraphicsMode(
+extern "C" fn thunk_dll_SetGraphicsMode(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -23004,7 +23394,7 @@ extern "C" fn thunk_SetGraphicsMode(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetLayout(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_SetLayout(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "SetLayout");
     crate::thunk_helper(
@@ -23044,7 +23434,10 @@ extern "C" fn thunk_SetLayout(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetMapMode(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_SetMapMode(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "SetMapMode");
     crate::thunk_helper(
@@ -23086,7 +23479,7 @@ extern "C" fn thunk_SetMapMode(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetMapperFlags(
+extern "C" fn thunk_dll_SetMapperFlags(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -23133,7 +23526,7 @@ extern "C" fn thunk_SetMapperFlags(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetMetaFileBitsEx(
+extern "C" fn thunk_dll_SetMetaFileBitsEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -23180,7 +23573,10 @@ extern "C" fn thunk_SetMetaFileBitsEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetMetaRgn(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_SetMetaRgn(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "SetMetaRgn");
     crate::thunk_helper(
@@ -23212,7 +23608,7 @@ extern "C" fn thunk_SetMetaRgn(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetPaletteEntries(
+extern "C" fn thunk_dll_SetPaletteEntries(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -23252,7 +23648,7 @@ extern "C" fn thunk_SetPaletteEntries(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetPixel(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_SetPixel(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "SetPixel");
     crate::thunk_helper(
@@ -23296,7 +23692,7 @@ extern "C" fn thunk_SetPixel(context: &mut ExtendedContext, memory: FlatMemoryCt
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetPixelV(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_SetPixelV(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "SetPixelV");
     crate::thunk_helper(
@@ -23340,7 +23736,7 @@ extern "C" fn thunk_SetPixelV(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetPolyFillMode(
+extern "C" fn thunk_dll_SetPolyFillMode(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -23387,7 +23783,7 @@ extern "C" fn thunk_SetPolyFillMode(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetROP2(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_SetROP2(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "SetROP2");
     crate::thunk_helper(
@@ -23429,7 +23825,7 @@ extern "C" fn thunk_SetROP2(context: &mut ExtendedContext, memory: FlatMemoryCtx
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetRect(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_SetRect(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "SetRect");
     crate::thunk_helper(
@@ -23465,7 +23861,10 @@ extern "C" fn thunk_SetRect(context: &mut ExtendedContext, memory: FlatMemoryCtx
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetRectEmpty(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_SetRectEmpty(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "SetRectEmpty",
@@ -23506,7 +23905,10 @@ extern "C" fn thunk_SetRectEmpty(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetRectRgn(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_SetRectRgn(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "SetRectRgn");
     crate::thunk_helper(
@@ -23542,7 +23944,7 @@ extern "C" fn thunk_SetRectRgn(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetStretchBltMode(
+extern "C" fn thunk_dll_SetStretchBltMode(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -23589,7 +23991,7 @@ extern "C" fn thunk_SetStretchBltMode(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetSystemPaletteUse(
+extern "C" fn thunk_dll_SetSystemPaletteUse(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -23636,7 +24038,10 @@ extern "C" fn thunk_SetSystemPaletteUse(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetTextAlign(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_SetTextAlign(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "SetTextAlign",
@@ -23680,7 +24085,7 @@ extern "C" fn thunk_SetTextAlign(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetTextCharacterExtra(
+extern "C" fn thunk_dll_SetTextCharacterExtra(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -23727,7 +24132,10 @@ extern "C" fn thunk_SetTextCharacterExtra(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetTextColor(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_SetTextColor(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "SetTextColor",
@@ -23771,7 +24179,7 @@ extern "C" fn thunk_SetTextColor(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetTextJustification(
+extern "C" fn thunk_dll_SetTextJustification(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -23819,7 +24227,7 @@ extern "C" fn thunk_SetTextJustification(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetViewportExtEx(
+extern "C" fn thunk_dll_SetViewportExtEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -23868,7 +24276,7 @@ extern "C" fn thunk_SetViewportExtEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetViewportOrgEx(
+extern "C" fn thunk_dll_SetViewportOrgEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -23917,7 +24325,7 @@ extern "C" fn thunk_SetViewportOrgEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetWindowExtEx(
+extern "C" fn thunk_dll_SetWindowExtEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -23966,7 +24374,7 @@ extern "C" fn thunk_SetWindowExtEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetWindowOrgEx(
+extern "C" fn thunk_dll_SetWindowOrgEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -24015,7 +24423,10 @@ extern "C" fn thunk_SetWindowOrgEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetWindowRgn(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_SetWindowRgn(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "SetWindowRgn",
@@ -24060,7 +24471,10 @@ extern "C" fn thunk_SetWindowRgn(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_StretchBlt(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_StretchBlt(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "StretchBlt");
     crate::thunk_helper(
@@ -24105,7 +24519,10 @@ extern "C" fn thunk_StretchBlt(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_StretchDIBits(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_StretchDIBits(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "StretchDIBits",
@@ -24165,7 +24582,7 @@ extern "C" fn thunk_StretchDIBits(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_StrokeAndFillPath(
+extern "C" fn thunk_dll_StrokeAndFillPath(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -24202,7 +24619,10 @@ extern "C" fn thunk_StrokeAndFillPath(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_StrokePath(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_StrokePath(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "StrokePath");
     crate::thunk_helper(
@@ -24234,7 +24654,10 @@ extern "C" fn thunk_StrokePath(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SubtractRect(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_SubtractRect(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "SubtractRect",
@@ -24279,7 +24702,7 @@ extern "C" fn thunk_SubtractRect(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_TTCharToUnicode(
+extern "C" fn thunk_dll_TTCharToUnicode(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -24328,7 +24751,7 @@ extern "C" fn thunk_TTCharToUnicode(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_TTDeleteEmbeddedFont(
+extern "C" fn thunk_dll_TTDeleteEmbeddedFont(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -24367,7 +24790,10 @@ extern "C" fn thunk_TTDeleteEmbeddedFont(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_TTEmbedFont(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_TTEmbedFont(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "TTEmbedFont");
     crate::thunk_helper(
@@ -24421,7 +24847,10 @@ extern "C" fn thunk_TTEmbedFont(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_TTEmbedFontEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_TTEmbedFontEx(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "TTEmbedFontEx",
@@ -24477,7 +24906,7 @@ extern "C" fn thunk_TTEmbedFontEx(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_TTEmbedFontFromFileA(
+extern "C" fn thunk_dll_TTEmbedFontFromFileA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -24540,7 +24969,7 @@ extern "C" fn thunk_TTEmbedFontFromFileA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_TTEnableEmbeddingForFacename(
+extern "C" fn thunk_dll_TTEnableEmbeddingForFacename(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -24587,7 +25016,7 @@ extern "C" fn thunk_TTEnableEmbeddingForFacename(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_TTGetEmbeddedFontInfo(
+extern "C" fn thunk_dll_TTGetEmbeddedFontInfo(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -24638,7 +25067,7 @@ extern "C" fn thunk_TTGetEmbeddedFontInfo(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_TTGetEmbeddingType(
+extern "C" fn thunk_dll_TTGetEmbeddingType(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -24685,7 +25114,7 @@ extern "C" fn thunk_TTGetEmbeddingType(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_TTGetNewFontName(
+extern "C" fn thunk_dll_TTGetNewFontName(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -24732,7 +25161,7 @@ extern "C" fn thunk_TTGetNewFontName(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_TTIsEmbeddingEnabled(
+extern "C" fn thunk_dll_TTIsEmbeddingEnabled(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -24779,7 +25208,7 @@ extern "C" fn thunk_TTIsEmbeddingEnabled(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_TTIsEmbeddingEnabledForFacename(
+extern "C" fn thunk_dll_TTIsEmbeddingEnabledForFacename(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -24826,7 +25255,7 @@ extern "C" fn thunk_TTIsEmbeddingEnabledForFacename(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_TTLoadEmbeddedFont(
+extern "C" fn thunk_dll_TTLoadEmbeddedFont(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -24883,7 +25312,7 @@ extern "C" fn thunk_TTLoadEmbeddedFont(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_TTRunValidationTests(
+extern "C" fn thunk_dll_TTRunValidationTests(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -24930,7 +25359,7 @@ extern "C" fn thunk_TTRunValidationTests(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_TTRunValidationTestsEx(
+extern "C" fn thunk_dll_TTRunValidationTestsEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -24977,7 +25406,7 @@ extern "C" fn thunk_TTRunValidationTestsEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_TabbedTextOutA(
+extern "C" fn thunk_dll_TabbedTextOutA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -25030,7 +25459,7 @@ extern "C" fn thunk_TabbedTextOutA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_TabbedTextOutW(
+extern "C" fn thunk_dll_TabbedTextOutW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -25083,7 +25512,7 @@ extern "C" fn thunk_TabbedTextOutW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_TextOutA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_TextOutA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "TextOutA");
     crate::thunk_helper(
@@ -25119,7 +25548,7 @@ extern "C" fn thunk_TextOutA(context: &mut ExtendedContext, memory: FlatMemoryCt
     )
 }
 #[no_mangle]
-extern "C" fn thunk_TextOutW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_TextOutW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "TextOutW");
     crate::thunk_helper(
@@ -25155,7 +25584,7 @@ extern "C" fn thunk_TextOutW(context: &mut ExtendedContext, memory: FlatMemoryCt
     )
 }
 #[no_mangle]
-extern "C" fn thunk_TransparentBlt(
+extern "C" fn thunk_dll_TransparentBlt(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -25214,7 +25643,7 @@ extern "C" fn thunk_TransparentBlt(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_UnionRect(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_UnionRect(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "UnionRect");
     crate::thunk_helper(
@@ -25257,7 +25686,7 @@ extern "C" fn thunk_UnionRect(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_UnrealizeObject(
+extern "C" fn thunk_dll_UnrealizeObject(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -25300,7 +25729,10 @@ extern "C" fn thunk_UnrealizeObject(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_UpdateColors(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_UpdateColors(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "UpdateColors",
@@ -25334,7 +25766,10 @@ extern "C" fn thunk_UpdateColors(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_UpdateWindow(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_UpdateWindow(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "UpdateWindow",
@@ -25375,7 +25810,10 @@ extern "C" fn thunk_UpdateWindow(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ValidateRect(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_ValidateRect(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "ValidateRect",
@@ -25419,7 +25857,10 @@ extern "C" fn thunk_ValidateRect(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ValidateRgn(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_ValidateRgn(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "ValidateRgn");
     crate::thunk_helper(
@@ -25461,7 +25902,7 @@ extern "C" fn thunk_ValidateRgn(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WidenPath(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_WidenPath(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "WidenPath");
     crate::thunk_helper(
@@ -25493,7 +25934,10 @@ extern "C" fn thunk_WidenPath(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WindowFromDC(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_WindowFromDC(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "WindowFromDC",
@@ -25534,7 +25978,7 @@ extern "C" fn thunk_WindowFromDC(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_wglSwapMultipleBuffers(
+extern "C" fn thunk_dll_wglSwapMultipleBuffers(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -25581,7 +26025,7 @@ extern "C" fn thunk_wglSwapMultipleBuffers(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_AreFileApisANSI(
+extern "C" fn thunk_dll_AreFileApisANSI(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -25623,7 +26067,7 @@ extern "C" fn thunk_AreFileApisANSI(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_AreShortNamesEnabled(
+extern "C" fn thunk_dll_AreShortNamesEnabled(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -25670,7 +26114,10 @@ extern "C" fn thunk_AreShortNamesEnabled(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_BackupRead(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_BackupRead(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "BackupRead");
     crate::thunk_helper(
@@ -25716,7 +26163,10 @@ extern "C" fn thunk_BackupRead(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_BackupSeek(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_BackupSeek(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "BackupSeek");
     crate::thunk_helper(
@@ -25760,7 +26210,10 @@ extern "C" fn thunk_BackupSeek(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_BackupWrite(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_BackupWrite(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "BackupWrite");
     crate::thunk_helper(
@@ -25806,7 +26259,7 @@ extern "C" fn thunk_BackupWrite(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_BuildIoRingRegisterBuffers(
+extern "C" fn thunk_dll_BuildIoRingRegisterBuffers(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -25846,7 +26299,7 @@ extern "C" fn thunk_BuildIoRingRegisterBuffers(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_BuildIoRingRegisterFileHandles(
+extern "C" fn thunk_dll_BuildIoRingRegisterFileHandles(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -25886,7 +26339,7 @@ extern "C" fn thunk_BuildIoRingRegisterFileHandles(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CheckNameLegalDOS8Dot3A(
+extern "C" fn thunk_dll_CheckNameLegalDOS8Dot3A(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -25933,7 +26386,7 @@ extern "C" fn thunk_CheckNameLegalDOS8Dot3A(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CheckNameLegalDOS8Dot3W(
+extern "C" fn thunk_dll_CheckNameLegalDOS8Dot3W(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -25980,7 +26433,7 @@ extern "C" fn thunk_CheckNameLegalDOS8Dot3W(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CloseEncryptedFileRaw(
+extern "C" fn thunk_dll_CloseEncryptedFileRaw(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -26026,7 +26479,10 @@ extern "C" fn thunk_CloseEncryptedFileRaw(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CloseIoRing(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_CloseIoRing(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "CloseIoRing");
     crate::thunk_helper(
@@ -26065,7 +26521,7 @@ extern "C" fn thunk_CloseIoRing(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CommitComplete(
+extern "C" fn thunk_dll_CommitComplete(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -26112,7 +26568,7 @@ extern "C" fn thunk_CommitComplete(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CommitEnlistment(
+extern "C" fn thunk_dll_CommitEnlistment(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -26159,7 +26615,7 @@ extern "C" fn thunk_CommitEnlistment(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CommitTransaction(
+extern "C" fn thunk_dll_CommitTransaction(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -26205,7 +26661,7 @@ extern "C" fn thunk_CommitTransaction(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CommitTransactionAsync(
+extern "C" fn thunk_dll_CommitTransactionAsync(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -26251,7 +26707,7 @@ extern "C" fn thunk_CommitTransactionAsync(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CompareFileTime(
+extern "C" fn thunk_dll_CompareFileTime(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -26298,7 +26754,7 @@ extern "C" fn thunk_CompareFileTime(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CopyFile2(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_CopyFile2(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "CopyFile2");
     crate::thunk_helper(
@@ -26336,7 +26792,7 @@ extern "C" fn thunk_CopyFile2(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CopyFileA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_CopyFileA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "CopyFileA");
     crate::thunk_helper(
@@ -26370,7 +26826,10 @@ extern "C" fn thunk_CopyFileA(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CopyFileExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_CopyFileExA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "CopyFileExA");
     crate::thunk_helper(
@@ -26414,7 +26873,10 @@ extern "C" fn thunk_CopyFileExA(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CopyFileExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_CopyFileExW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "CopyFileExW");
     crate::thunk_helper(
@@ -26458,7 +26920,7 @@ extern "C" fn thunk_CopyFileExW(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CopyFileFromAppW(
+extern "C" fn thunk_dll_CopyFileFromAppW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -26497,7 +26959,7 @@ extern "C" fn thunk_CopyFileFromAppW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CopyFileTransactedA(
+extern "C" fn thunk_dll_CopyFileTransactedA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -26548,7 +27010,7 @@ extern "C" fn thunk_CopyFileTransactedA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CopyFileTransactedW(
+extern "C" fn thunk_dll_CopyFileTransactedW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -26599,7 +27061,7 @@ extern "C" fn thunk_CopyFileTransactedW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CopyFileW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_CopyFileW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "CopyFileW");
     crate::thunk_helper(
@@ -26633,7 +27095,10 @@ extern "C" fn thunk_CopyFileW(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CopyLZFile(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_CopyLZFile(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "CopyLZFile");
     crate::thunk_helper(
@@ -26675,7 +27140,10 @@ extern "C" fn thunk_CopyLZFile(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateIoRing(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_CreateIoRing(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "CreateIoRing",
@@ -26719,7 +27187,7 @@ extern "C" fn thunk_CreateIoRing(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateSymbolicLinkA(
+extern "C" fn thunk_dll_CreateSymbolicLinkA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -26758,7 +27226,7 @@ extern "C" fn thunk_CreateSymbolicLinkA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateSymbolicLinkTransactedA(
+extern "C" fn thunk_dll_CreateSymbolicLinkTransactedA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -26803,7 +27271,7 @@ extern "C" fn thunk_CreateSymbolicLinkTransactedA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateSymbolicLinkTransactedW(
+extern "C" fn thunk_dll_CreateSymbolicLinkTransactedW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -26848,7 +27316,7 @@ extern "C" fn thunk_CreateSymbolicLinkTransactedW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateSymbolicLinkW(
+extern "C" fn thunk_dll_CreateSymbolicLinkW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -26887,7 +27355,7 @@ extern "C" fn thunk_CreateSymbolicLinkW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateTapePartition(
+extern "C" fn thunk_dll_CreateTapePartition(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -26927,7 +27395,10 @@ extern "C" fn thunk_CreateTapePartition(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DecryptFileA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_DecryptFileA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "DecryptFileA",
@@ -26971,7 +27442,10 @@ extern "C" fn thunk_DecryptFileA(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DecryptFileW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_DecryptFileW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "DecryptFileW",
@@ -27015,7 +27489,7 @@ extern "C" fn thunk_DecryptFileW(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DefineDosDeviceA(
+extern "C" fn thunk_dll_DefineDosDeviceA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -27054,7 +27528,7 @@ extern "C" fn thunk_DefineDosDeviceA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DefineDosDeviceW(
+extern "C" fn thunk_dll_DefineDosDeviceW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -27093,7 +27567,10 @@ extern "C" fn thunk_DefineDosDeviceW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DeleteFileA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_DeleteFileA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "DeleteFileA");
     crate::thunk_helper(
@@ -27134,7 +27611,7 @@ extern "C" fn thunk_DeleteFileA(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DeleteFileFromAppW(
+extern "C" fn thunk_dll_DeleteFileFromAppW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -27180,7 +27657,7 @@ extern "C" fn thunk_DeleteFileFromAppW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DeleteFileTransactedA(
+extern "C" fn thunk_dll_DeleteFileTransactedA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -27227,7 +27704,7 @@ extern "C" fn thunk_DeleteFileTransactedA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DeleteFileTransactedW(
+extern "C" fn thunk_dll_DeleteFileTransactedW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -27274,7 +27751,10 @@ extern "C" fn thunk_DeleteFileTransactedW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DeleteFileW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_DeleteFileW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "DeleteFileW");
     crate::thunk_helper(
@@ -27315,7 +27795,7 @@ extern "C" fn thunk_DeleteFileW(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DeleteVolumeMountPointA(
+extern "C" fn thunk_dll_DeleteVolumeMountPointA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -27361,7 +27841,7 @@ extern "C" fn thunk_DeleteVolumeMountPointA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DeleteVolumeMountPointW(
+extern "C" fn thunk_dll_DeleteVolumeMountPointW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -27407,7 +27887,10 @@ extern "C" fn thunk_DeleteVolumeMountPointW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EncryptFileA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_EncryptFileA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "EncryptFileA",
@@ -27450,7 +27933,10 @@ extern "C" fn thunk_EncryptFileA(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EncryptFileW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_EncryptFileW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "EncryptFileW",
@@ -27493,7 +27979,7 @@ extern "C" fn thunk_EncryptFileW(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EncryptionDisable(
+extern "C" fn thunk_dll_EncryptionDisable(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -27540,7 +28026,7 @@ extern "C" fn thunk_EncryptionDisable(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EraseTape(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_EraseTape(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "EraseTape");
     crate::thunk_helper(
@@ -27574,7 +28060,7 @@ extern "C" fn thunk_EraseTape(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FileEncryptionStatusA(
+extern "C" fn thunk_dll_FileEncryptionStatusA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -27621,7 +28107,7 @@ extern "C" fn thunk_FileEncryptionStatusA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FileEncryptionStatusW(
+extern "C" fn thunk_dll_FileEncryptionStatusW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -27668,7 +28154,7 @@ extern "C" fn thunk_FileEncryptionStatusW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FileTimeToLocalFileTime(
+extern "C" fn thunk_dll_FileTimeToLocalFileTime(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -27715,7 +28201,7 @@ extern "C" fn thunk_FileTimeToLocalFileTime(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FindClose(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_FindClose(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "FindClose");
     crate::thunk_helper(
@@ -27756,7 +28242,7 @@ extern "C" fn thunk_FindClose(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FindCloseChangeNotification(
+extern "C" fn thunk_dll_FindCloseChangeNotification(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -27802,7 +28288,7 @@ extern "C" fn thunk_FindCloseChangeNotification(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FindFirstChangeNotificationA(
+extern "C" fn thunk_dll_FindFirstChangeNotificationA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -27841,7 +28327,7 @@ extern "C" fn thunk_FindFirstChangeNotificationA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FindFirstChangeNotificationW(
+extern "C" fn thunk_dll_FindFirstChangeNotificationW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -27880,7 +28366,7 @@ extern "C" fn thunk_FindFirstChangeNotificationW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FindFirstFileA(
+extern "C" fn thunk_dll_FindFirstFileA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -27927,7 +28413,7 @@ extern "C" fn thunk_FindFirstFileA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FindFirstFileExA(
+extern "C" fn thunk_dll_FindFirstFileExA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -27976,7 +28462,7 @@ extern "C" fn thunk_FindFirstFileExA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FindFirstFileExFromAppW(
+extern "C" fn thunk_dll_FindFirstFileExFromAppW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -28025,7 +28511,7 @@ extern "C" fn thunk_FindFirstFileExFromAppW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FindFirstFileExW(
+extern "C" fn thunk_dll_FindFirstFileExW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -28074,7 +28560,7 @@ extern "C" fn thunk_FindFirstFileExW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FindFirstFileNameTransactedW(
+extern "C" fn thunk_dll_FindFirstFileNameTransactedW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -28121,7 +28607,7 @@ extern "C" fn thunk_FindFirstFileNameTransactedW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FindFirstFileNameW(
+extern "C" fn thunk_dll_FindFirstFileNameW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -28161,7 +28647,7 @@ extern "C" fn thunk_FindFirstFileNameW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FindFirstFileTransactedA(
+extern "C" fn thunk_dll_FindFirstFileTransactedA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -28212,7 +28698,7 @@ extern "C" fn thunk_FindFirstFileTransactedA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FindFirstFileTransactedW(
+extern "C" fn thunk_dll_FindFirstFileTransactedW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -28263,7 +28749,7 @@ extern "C" fn thunk_FindFirstFileTransactedW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FindFirstFileW(
+extern "C" fn thunk_dll_FindFirstFileW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -28310,7 +28796,7 @@ extern "C" fn thunk_FindFirstFileW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FindFirstStreamTransactedW(
+extern "C" fn thunk_dll_FindFirstStreamTransactedW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -28357,7 +28843,7 @@ extern "C" fn thunk_FindFirstStreamTransactedW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FindFirstStreamW(
+extern "C" fn thunk_dll_FindFirstStreamW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -28397,7 +28883,7 @@ extern "C" fn thunk_FindFirstStreamW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FindFirstVolumeA(
+extern "C" fn thunk_dll_FindFirstVolumeA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -28444,7 +28930,7 @@ extern "C" fn thunk_FindFirstVolumeA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FindFirstVolumeMountPointA(
+extern "C" fn thunk_dll_FindFirstVolumeMountPointA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -28487,7 +28973,7 @@ extern "C" fn thunk_FindFirstVolumeMountPointA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FindFirstVolumeMountPointW(
+extern "C" fn thunk_dll_FindFirstVolumeMountPointW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -28530,7 +29016,7 @@ extern "C" fn thunk_FindFirstVolumeMountPointW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FindFirstVolumeW(
+extern "C" fn thunk_dll_FindFirstVolumeW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -28577,7 +29063,7 @@ extern "C" fn thunk_FindFirstVolumeW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FindNextChangeNotification(
+extern "C" fn thunk_dll_FindNextChangeNotification(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -28623,7 +29109,10 @@ extern "C" fn thunk_FindNextChangeNotification(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FindNextFileA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_FindNextFileA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "FindNextFileA",
@@ -28667,7 +29156,7 @@ extern "C" fn thunk_FindNextFileA(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FindNextFileNameW(
+extern "C" fn thunk_dll_FindNextFileNameW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -28706,7 +29195,10 @@ extern "C" fn thunk_FindNextFileNameW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FindNextFileW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_FindNextFileW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "FindNextFileW",
@@ -28750,7 +29242,7 @@ extern "C" fn thunk_FindNextFileW(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FindNextStreamW(
+extern "C" fn thunk_dll_FindNextStreamW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -28797,7 +29289,7 @@ extern "C" fn thunk_FindNextStreamW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FindNextVolumeA(
+extern "C" fn thunk_dll_FindNextVolumeA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -28836,7 +29328,7 @@ extern "C" fn thunk_FindNextVolumeA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FindNextVolumeMountPointA(
+extern "C" fn thunk_dll_FindNextVolumeMountPointA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -28879,7 +29371,7 @@ extern "C" fn thunk_FindNextVolumeMountPointA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FindNextVolumeMountPointW(
+extern "C" fn thunk_dll_FindNextVolumeMountPointW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -28922,7 +29414,7 @@ extern "C" fn thunk_FindNextVolumeMountPointW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FindNextVolumeW(
+extern "C" fn thunk_dll_FindNextVolumeW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -28961,7 +29453,7 @@ extern "C" fn thunk_FindNextVolumeW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FindVolumeClose(
+extern "C" fn thunk_dll_FindVolumeClose(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -29007,7 +29499,7 @@ extern "C" fn thunk_FindVolumeClose(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FindVolumeMountPointClose(
+extern "C" fn thunk_dll_FindVolumeMountPointClose(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -29053,7 +29545,7 @@ extern "C" fn thunk_FindVolumeMountPointClose(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FlushFileBuffers(
+extern "C" fn thunk_dll_FlushFileBuffers(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -29097,7 +29589,7 @@ extern "C" fn thunk_FlushFileBuffers(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FreeEncryptedFileMetadata(
+extern "C" fn thunk_dll_FreeEncryptedFileMetadata(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -29143,7 +29635,7 @@ extern "C" fn thunk_FreeEncryptedFileMetadata(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetBinaryTypeA(
+extern "C" fn thunk_dll_GetBinaryTypeA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -29190,7 +29682,7 @@ extern "C" fn thunk_GetBinaryTypeA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetBinaryTypeW(
+extern "C" fn thunk_dll_GetBinaryTypeW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -29237,7 +29729,7 @@ extern "C" fn thunk_GetBinaryTypeW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetCompressedFileSizeA(
+extern "C" fn thunk_dll_GetCompressedFileSizeA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -29284,7 +29776,7 @@ extern "C" fn thunk_GetCompressedFileSizeA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetCompressedFileSizeTransactedA(
+extern "C" fn thunk_dll_GetCompressedFileSizeTransactedA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -29323,7 +29815,7 @@ extern "C" fn thunk_GetCompressedFileSizeTransactedA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetCompressedFileSizeTransactedW(
+extern "C" fn thunk_dll_GetCompressedFileSizeTransactedW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -29362,7 +29854,7 @@ extern "C" fn thunk_GetCompressedFileSizeTransactedW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetCompressedFileSizeW(
+extern "C" fn thunk_dll_GetCompressedFileSizeW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -29409,7 +29901,7 @@ extern "C" fn thunk_GetCompressedFileSizeW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetCurrentClockTransactionManager(
+extern "C" fn thunk_dll_GetCurrentClockTransactionManager(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -29447,7 +29939,7 @@ extern "C" fn thunk_GetCurrentClockTransactionManager(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetDiskFreeSpaceA(
+extern "C" fn thunk_dll_GetDiskFreeSpaceA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -29494,7 +29986,7 @@ extern "C" fn thunk_GetDiskFreeSpaceA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetDiskFreeSpaceExA(
+extern "C" fn thunk_dll_GetDiskFreeSpaceExA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -29539,7 +30031,7 @@ extern "C" fn thunk_GetDiskFreeSpaceExA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetDiskFreeSpaceExW(
+extern "C" fn thunk_dll_GetDiskFreeSpaceExW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -29584,7 +30076,7 @@ extern "C" fn thunk_GetDiskFreeSpaceExW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetDiskFreeSpaceW(
+extern "C" fn thunk_dll_GetDiskFreeSpaceW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -29631,7 +30123,7 @@ extern "C" fn thunk_GetDiskFreeSpaceW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetDiskSpaceInformationA(
+extern "C" fn thunk_dll_GetDiskSpaceInformationA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -29678,7 +30170,7 @@ extern "C" fn thunk_GetDiskSpaceInformationA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetDiskSpaceInformationW(
+extern "C" fn thunk_dll_GetDiskSpaceInformationW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -29725,7 +30217,10 @@ extern "C" fn thunk_GetDiskSpaceInformationW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetDriveTypeA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetDriveTypeA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetDriveTypeA",
@@ -29768,7 +30263,10 @@ extern "C" fn thunk_GetDriveTypeA(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetDriveTypeW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetDriveTypeW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetDriveTypeW",
@@ -29811,7 +30309,7 @@ extern "C" fn thunk_GetDriveTypeW(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetEncryptedFileMetadata(
+extern "C" fn thunk_dll_GetEncryptedFileMetadata(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -29850,7 +30348,7 @@ extern "C" fn thunk_GetEncryptedFileMetadata(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetEnlistmentId(
+extern "C" fn thunk_dll_GetEnlistmentId(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -29897,7 +30395,7 @@ extern "C" fn thunk_GetEnlistmentId(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetEnlistmentRecoveryInformation(
+extern "C" fn thunk_dll_GetEnlistmentRecoveryInformation(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -29942,7 +30440,7 @@ extern "C" fn thunk_GetEnlistmentRecoveryInformation(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetExpandedNameA(
+extern "C" fn thunk_dll_GetExpandedNameA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -29989,7 +30487,7 @@ extern "C" fn thunk_GetExpandedNameA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetExpandedNameW(
+extern "C" fn thunk_dll_GetExpandedNameW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -30036,7 +30534,7 @@ extern "C" fn thunk_GetExpandedNameW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetFileAttributesA(
+extern "C" fn thunk_dll_GetFileAttributesA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -30082,7 +30580,7 @@ extern "C" fn thunk_GetFileAttributesA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetFileAttributesExA(
+extern "C" fn thunk_dll_GetFileAttributesExA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -30121,7 +30619,7 @@ extern "C" fn thunk_GetFileAttributesExA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetFileAttributesExFromAppW(
+extern "C" fn thunk_dll_GetFileAttributesExFromAppW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -30160,7 +30658,7 @@ extern "C" fn thunk_GetFileAttributesExFromAppW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetFileAttributesExW(
+extern "C" fn thunk_dll_GetFileAttributesExW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -30199,7 +30697,7 @@ extern "C" fn thunk_GetFileAttributesExW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetFileAttributesTransactedA(
+extern "C" fn thunk_dll_GetFileAttributesTransactedA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -30244,7 +30742,7 @@ extern "C" fn thunk_GetFileAttributesTransactedA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetFileAttributesTransactedW(
+extern "C" fn thunk_dll_GetFileAttributesTransactedW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -30289,7 +30787,7 @@ extern "C" fn thunk_GetFileAttributesTransactedW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetFileAttributesW(
+extern "C" fn thunk_dll_GetFileAttributesW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -30335,7 +30833,7 @@ extern "C" fn thunk_GetFileAttributesW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetFileBandwidthReservation(
+extern "C" fn thunk_dll_GetFileBandwidthReservation(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -30384,7 +30882,7 @@ extern "C" fn thunk_GetFileBandwidthReservation(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetFileInformationByHandle(
+extern "C" fn thunk_dll_GetFileInformationByHandle(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -30431,7 +30929,7 @@ extern "C" fn thunk_GetFileInformationByHandle(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetFileInformationByHandleEx(
+extern "C" fn thunk_dll_GetFileInformationByHandleEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -30476,7 +30974,10 @@ extern "C" fn thunk_GetFileInformationByHandleEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetFileSize(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetFileSize(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetFileSize");
     crate::thunk_helper(
@@ -30518,7 +31019,10 @@ extern "C" fn thunk_GetFileSize(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetFileSizeEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetFileSizeEx(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetFileSizeEx",
@@ -30562,7 +31066,10 @@ extern "C" fn thunk_GetFileSizeEx(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetFileTime(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetFileTime(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetFileTime");
     crate::thunk_helper(
@@ -30602,7 +31109,10 @@ extern "C" fn thunk_GetFileTime(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetFileType(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetFileType(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetFileType");
     crate::thunk_helper(
@@ -30641,7 +31151,7 @@ extern "C" fn thunk_GetFileType(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetFileVersionInfoA(
+extern "C" fn thunk_dll_GetFileVersionInfoA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -30681,7 +31191,7 @@ extern "C" fn thunk_GetFileVersionInfoA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetFileVersionInfoExA(
+extern "C" fn thunk_dll_GetFileVersionInfoExA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -30722,7 +31232,7 @@ extern "C" fn thunk_GetFileVersionInfoExA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetFileVersionInfoExW(
+extern "C" fn thunk_dll_GetFileVersionInfoExW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -30763,7 +31273,7 @@ extern "C" fn thunk_GetFileVersionInfoExW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetFileVersionInfoSizeA(
+extern "C" fn thunk_dll_GetFileVersionInfoSizeA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -30810,7 +31320,7 @@ extern "C" fn thunk_GetFileVersionInfoSizeA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetFileVersionInfoSizeExA(
+extern "C" fn thunk_dll_GetFileVersionInfoSizeExA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -30849,7 +31359,7 @@ extern "C" fn thunk_GetFileVersionInfoSizeExA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetFileVersionInfoSizeExW(
+extern "C" fn thunk_dll_GetFileVersionInfoSizeExW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -30888,7 +31398,7 @@ extern "C" fn thunk_GetFileVersionInfoSizeExW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetFileVersionInfoSizeW(
+extern "C" fn thunk_dll_GetFileVersionInfoSizeW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -30935,7 +31445,7 @@ extern "C" fn thunk_GetFileVersionInfoSizeW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetFileVersionInfoW(
+extern "C" fn thunk_dll_GetFileVersionInfoW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -30975,7 +31485,7 @@ extern "C" fn thunk_GetFileVersionInfoW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetFinalPathNameByHandleA(
+extern "C" fn thunk_dll_GetFinalPathNameByHandleA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -31015,7 +31525,7 @@ extern "C" fn thunk_GetFinalPathNameByHandleA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetFinalPathNameByHandleW(
+extern "C" fn thunk_dll_GetFinalPathNameByHandleW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -31055,7 +31565,7 @@ extern "C" fn thunk_GetFinalPathNameByHandleW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetFullPathNameA(
+extern "C" fn thunk_dll_GetFullPathNameA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -31095,7 +31605,7 @@ extern "C" fn thunk_GetFullPathNameA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetFullPathNameTransactedA(
+extern "C" fn thunk_dll_GetFullPathNameTransactedA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -31142,7 +31652,7 @@ extern "C" fn thunk_GetFullPathNameTransactedA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetFullPathNameTransactedW(
+extern "C" fn thunk_dll_GetFullPathNameTransactedW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -31189,7 +31699,7 @@ extern "C" fn thunk_GetFullPathNameTransactedW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetFullPathNameW(
+extern "C" fn thunk_dll_GetFullPathNameW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -31229,7 +31739,10 @@ extern "C" fn thunk_GetFullPathNameW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetIoRingInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetIoRingInfo(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetIoRingInfo",
@@ -31273,7 +31786,7 @@ extern "C" fn thunk_GetIoRingInfo(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetLogicalDriveStringsA(
+extern "C" fn thunk_dll_GetLogicalDriveStringsA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -31320,7 +31833,7 @@ extern "C" fn thunk_GetLogicalDriveStringsA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetLogicalDriveStringsW(
+extern "C" fn thunk_dll_GetLogicalDriveStringsW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -31367,7 +31880,7 @@ extern "C" fn thunk_GetLogicalDriveStringsW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetLogicalDrives(
+extern "C" fn thunk_dll_GetLogicalDrives(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -31409,7 +31922,7 @@ extern "C" fn thunk_GetLogicalDrives(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetLongPathNameA(
+extern "C" fn thunk_dll_GetLongPathNameA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -31448,7 +31961,7 @@ extern "C" fn thunk_GetLongPathNameA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetLongPathNameTransactedA(
+extern "C" fn thunk_dll_GetLongPathNameTransactedA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -31493,7 +32006,7 @@ extern "C" fn thunk_GetLongPathNameTransactedA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetLongPathNameTransactedW(
+extern "C" fn thunk_dll_GetLongPathNameTransactedW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -31538,7 +32051,7 @@ extern "C" fn thunk_GetLongPathNameTransactedW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetLongPathNameW(
+extern "C" fn thunk_dll_GetLongPathNameW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -31577,7 +32090,7 @@ extern "C" fn thunk_GetLongPathNameW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetNotificationResourceManager(
+extern "C" fn thunk_dll_GetNotificationResourceManager(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -31624,7 +32137,7 @@ extern "C" fn thunk_GetNotificationResourceManager(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetNotificationResourceManagerAsync(
+extern "C" fn thunk_dll_GetNotificationResourceManagerAsync(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -31671,7 +32184,7 @@ extern "C" fn thunk_GetNotificationResourceManagerAsync(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetShortPathNameA(
+extern "C" fn thunk_dll_GetShortPathNameA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -31710,7 +32223,7 @@ extern "C" fn thunk_GetShortPathNameA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetShortPathNameW(
+extern "C" fn thunk_dll_GetShortPathNameW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -31749,7 +32262,7 @@ extern "C" fn thunk_GetShortPathNameW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetTapeParameters(
+extern "C" fn thunk_dll_GetTapeParameters(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -31789,7 +32302,7 @@ extern "C" fn thunk_GetTapeParameters(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetTapePosition(
+extern "C" fn thunk_dll_GetTapePosition(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -31836,7 +32349,10 @@ extern "C" fn thunk_GetTapePosition(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetTapeStatus(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetTapeStatus(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetTapeStatus",
@@ -31877,7 +32393,7 @@ extern "C" fn thunk_GetTapeStatus(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetTempFileNameA(
+extern "C" fn thunk_dll_GetTempFileNameA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -31917,7 +32433,7 @@ extern "C" fn thunk_GetTempFileNameA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetTempFileNameW(
+extern "C" fn thunk_dll_GetTempFileNameW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -31957,7 +32473,10 @@ extern "C" fn thunk_GetTempFileNameW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetTempPath2A(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetTempPath2A(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetTempPath2A",
@@ -32001,7 +32520,10 @@ extern "C" fn thunk_GetTempPath2A(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetTempPath2W(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetTempPath2W(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetTempPath2W",
@@ -32045,7 +32567,10 @@ extern "C" fn thunk_GetTempPath2W(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetTempPathA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetTempPathA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetTempPathA",
@@ -32089,7 +32614,10 @@ extern "C" fn thunk_GetTempPathA(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetTempPathW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetTempPathW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetTempPathW",
@@ -32133,7 +32661,7 @@ extern "C" fn thunk_GetTempPathW(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetTransactionId(
+extern "C" fn thunk_dll_GetTransactionId(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -32180,7 +32708,7 @@ extern "C" fn thunk_GetTransactionId(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetTransactionInformation(
+extern "C" fn thunk_dll_GetTransactionInformation(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -32231,7 +32759,7 @@ extern "C" fn thunk_GetTransactionInformation(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetTransactionManagerId(
+extern "C" fn thunk_dll_GetTransactionManagerId(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -32269,7 +32797,7 @@ extern "C" fn thunk_GetTransactionManagerId(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetVolumeInformationA(
+extern "C" fn thunk_dll_GetVolumeInformationA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -32322,7 +32850,7 @@ extern "C" fn thunk_GetVolumeInformationA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetVolumeInformationByHandleW(
+extern "C" fn thunk_dll_GetVolumeInformationByHandleW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -32375,7 +32903,7 @@ extern "C" fn thunk_GetVolumeInformationByHandleW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetVolumeInformationW(
+extern "C" fn thunk_dll_GetVolumeInformationW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -32428,7 +32956,7 @@ extern "C" fn thunk_GetVolumeInformationW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetVolumeNameForVolumeMountPointA(
+extern "C" fn thunk_dll_GetVolumeNameForVolumeMountPointA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -32471,7 +32999,7 @@ extern "C" fn thunk_GetVolumeNameForVolumeMountPointA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetVolumeNameForVolumeMountPointW(
+extern "C" fn thunk_dll_GetVolumeNameForVolumeMountPointW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -32514,7 +33042,7 @@ extern "C" fn thunk_GetVolumeNameForVolumeMountPointW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetVolumePathNameA(
+extern "C" fn thunk_dll_GetVolumePathNameA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -32553,7 +33081,7 @@ extern "C" fn thunk_GetVolumePathNameA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetVolumePathNameW(
+extern "C" fn thunk_dll_GetVolumePathNameW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -32592,7 +33120,7 @@ extern "C" fn thunk_GetVolumePathNameW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetVolumePathNamesForVolumeNameA(
+extern "C" fn thunk_dll_GetVolumePathNamesForVolumeNameA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -32637,7 +33165,7 @@ extern "C" fn thunk_GetVolumePathNamesForVolumeNameA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetVolumePathNamesForVolumeNameW(
+extern "C" fn thunk_dll_GetVolumePathNamesForVolumeNameW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -32682,7 +33210,7 @@ extern "C" fn thunk_GetVolumePathNamesForVolumeNameW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IsIoRingOpSupported(
+extern "C" fn thunk_dll_IsIoRingOpSupported(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -32729,7 +33257,7 @@ extern "C" fn thunk_IsIoRingOpSupported(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LZClose(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_LZClose(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "LZClose");
     crate::thunk_helper(
@@ -32768,7 +33296,7 @@ extern "C" fn thunk_LZClose(context: &mut ExtendedContext, memory: FlatMemoryCtx
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LZCopy(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_LZCopy(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "LZCopy");
     crate::thunk_helper(
@@ -32810,7 +33338,7 @@ extern "C" fn thunk_LZCopy(context: &mut ExtendedContext, memory: FlatMemoryCtx)
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LZDone(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_LZDone(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "LZDone");
     crate::thunk_helper(
@@ -32847,7 +33375,7 @@ extern "C" fn thunk_LZDone(context: &mut ExtendedContext, memory: FlatMemoryCtx)
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LZInit(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_LZInit(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "LZInit");
     crate::thunk_helper(
@@ -32886,7 +33414,10 @@ extern "C" fn thunk_LZInit(context: &mut ExtendedContext, memory: FlatMemoryCtx)
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LZOpenFileA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_LZOpenFileA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "LZOpenFileA");
     crate::thunk_helper(
@@ -32920,7 +33451,10 @@ extern "C" fn thunk_LZOpenFileA(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LZOpenFileW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_LZOpenFileW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "LZOpenFileW");
     crate::thunk_helper(
@@ -32954,7 +33488,7 @@ extern "C" fn thunk_LZOpenFileW(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LZRead(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_LZRead(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "LZRead");
     crate::thunk_helper(
@@ -32997,7 +33531,7 @@ extern "C" fn thunk_LZRead(context: &mut ExtendedContext, memory: FlatMemoryCtx)
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LZSeek(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_LZSeek(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "LZSeek");
     crate::thunk_helper(
@@ -33040,7 +33574,7 @@ extern "C" fn thunk_LZSeek(context: &mut ExtendedContext, memory: FlatMemoryCtx)
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LZStart(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_LZStart(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "LZStart");
     crate::thunk_helper(
@@ -33077,7 +33611,7 @@ extern "C" fn thunk_LZStart(context: &mut ExtendedContext, memory: FlatMemoryCtx
     )
 }
 #[no_mangle]
-extern "C" fn thunk_MoveFileA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_MoveFileA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "MoveFileA");
     crate::thunk_helper(
@@ -33119,7 +33653,10 @@ extern "C" fn thunk_MoveFileA(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_MoveFileExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_MoveFileExA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "MoveFileExA");
     crate::thunk_helper(
@@ -33153,7 +33690,10 @@ extern "C" fn thunk_MoveFileExA(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_MoveFileExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_MoveFileExW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "MoveFileExW");
     crate::thunk_helper(
@@ -33187,7 +33727,7 @@ extern "C" fn thunk_MoveFileExW(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_MoveFileFromAppW(
+extern "C" fn thunk_dll_MoveFileFromAppW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -33234,7 +33774,7 @@ extern "C" fn thunk_MoveFileFromAppW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_MoveFileTransactedA(
+extern "C" fn thunk_dll_MoveFileTransactedA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -33283,7 +33823,7 @@ extern "C" fn thunk_MoveFileTransactedA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_MoveFileTransactedW(
+extern "C" fn thunk_dll_MoveFileTransactedW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -33332,7 +33872,7 @@ extern "C" fn thunk_MoveFileTransactedW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_MoveFileW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_MoveFileW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "MoveFileW");
     crate::thunk_helper(
@@ -33374,7 +33914,7 @@ extern "C" fn thunk_MoveFileW(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_MoveFileWithProgressA(
+extern "C" fn thunk_dll_MoveFileWithProgressA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -33421,7 +33961,7 @@ extern "C" fn thunk_MoveFileWithProgressA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_MoveFileWithProgressW(
+extern "C" fn thunk_dll_MoveFileWithProgressW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -33468,7 +34008,7 @@ extern "C" fn thunk_MoveFileWithProgressW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_NetConnectionEnum(
+extern "C" fn thunk_dll_NetConnectionEnum(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -33521,7 +34061,10 @@ extern "C" fn thunk_NetConnectionEnum(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_NetFileClose(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_NetFileClose(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "NetFileClose",
@@ -33565,7 +34108,10 @@ extern "C" fn thunk_NetFileClose(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_NetFileEnum(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_NetFileEnum(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "NetFileEnum");
     crate::thunk_helper(
@@ -33615,7 +34161,7 @@ extern "C" fn thunk_NetFileEnum(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_NetFileGetInfo(
+extern "C" fn thunk_dll_NetFileGetInfo(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -33655,7 +34201,7 @@ extern "C" fn thunk_NetFileGetInfo(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_NetServerAliasAdd(
+extern "C" fn thunk_dll_NetServerAliasAdd(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -33703,7 +34249,7 @@ extern "C" fn thunk_NetServerAliasAdd(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_NetServerAliasDel(
+extern "C" fn thunk_dll_NetServerAliasDel(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -33751,7 +34297,7 @@ extern "C" fn thunk_NetServerAliasDel(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_NetServerAliasEnum(
+extern "C" fn thunk_dll_NetServerAliasEnum(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -33802,7 +34348,10 @@ extern "C" fn thunk_NetServerAliasEnum(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_NetSessionDel(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_NetSessionDel(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "NetSessionDel",
@@ -33838,7 +34387,7 @@ extern "C" fn thunk_NetSessionDel(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_NetSessionEnum(
+extern "C" fn thunk_dll_NetSessionEnum(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -33893,7 +34442,7 @@ extern "C" fn thunk_NetSessionEnum(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_NetSessionGetInfo(
+extern "C" fn thunk_dll_NetSessionGetInfo(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -33934,7 +34483,10 @@ extern "C" fn thunk_NetSessionGetInfo(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_NetShareAdd(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_NetShareAdd(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "NetShareAdd");
     crate::thunk_helper(
@@ -33969,7 +34521,10 @@ extern "C" fn thunk_NetShareAdd(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_NetShareCheck(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_NetShareCheck(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "NetShareCheck",
@@ -34014,7 +34569,10 @@ extern "C" fn thunk_NetShareCheck(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_NetShareDel(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_NetShareDel(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "NetShareDel");
     crate::thunk_helper(
@@ -34057,7 +34615,10 @@ extern "C" fn thunk_NetShareDel(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_NetShareDelEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_NetShareDelEx(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "NetShareDelEx",
@@ -34102,7 +34663,7 @@ extern "C" fn thunk_NetShareDelEx(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_NetShareDelSticky(
+extern "C" fn thunk_dll_NetShareDelSticky(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -34150,7 +34711,10 @@ extern "C" fn thunk_NetShareDelSticky(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_NetShareEnum(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_NetShareEnum(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "NetShareEnum",
@@ -34198,7 +34762,7 @@ extern "C" fn thunk_NetShareEnum(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_NetShareEnumSticky(
+extern "C" fn thunk_dll_NetShareEnumSticky(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -34249,7 +34813,7 @@ extern "C" fn thunk_NetShareEnumSticky(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_NetShareGetInfo(
+extern "C" fn thunk_dll_NetShareGetInfo(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -34289,7 +34853,7 @@ extern "C" fn thunk_NetShareGetInfo(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_NetShareSetInfo(
+extern "C" fn thunk_dll_NetShareSetInfo(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -34330,7 +34894,7 @@ extern "C" fn thunk_NetShareSetInfo(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_NetStatisticsGet(
+extern "C" fn thunk_dll_NetStatisticsGet(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -34371,7 +34935,10 @@ extern "C" fn thunk_NetStatisticsGet(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_NtCreateFile(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_NtCreateFile(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "NtCreateFile",
@@ -34427,7 +34994,7 @@ extern "C" fn thunk_NtCreateFile(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_OpenEncryptedFileRawA(
+extern "C" fn thunk_dll_OpenEncryptedFileRawA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -34466,7 +35033,7 @@ extern "C" fn thunk_OpenEncryptedFileRawA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_OpenEncryptedFileRawW(
+extern "C" fn thunk_dll_OpenEncryptedFileRawW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -34505,7 +35072,7 @@ extern "C" fn thunk_OpenEncryptedFileRawW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_OpenEnlistment(
+extern "C" fn thunk_dll_OpenEnlistment(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -34544,7 +35111,7 @@ extern "C" fn thunk_OpenEnlistment(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_OpenFile(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_OpenFile(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "OpenFile");
     crate::thunk_helper(
@@ -34578,7 +35145,7 @@ extern "C" fn thunk_OpenFile(context: &mut ExtendedContext, memory: FlatMemoryCt
     )
 }
 #[no_mangle]
-extern "C" fn thunk_OpenResourceManager(
+extern "C" fn thunk_dll_OpenResourceManager(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -34617,7 +35184,7 @@ extern "C" fn thunk_OpenResourceManager(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_OpenTransaction(
+extern "C" fn thunk_dll_OpenTransaction(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -34664,7 +35231,7 @@ extern "C" fn thunk_OpenTransaction(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_OpenTransactionManager(
+extern "C" fn thunk_dll_OpenTransactionManager(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -34703,7 +35270,7 @@ extern "C" fn thunk_OpenTransactionManager(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_OpenTransactionManagerById(
+extern "C" fn thunk_dll_OpenTransactionManagerById(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -34742,7 +35309,7 @@ extern "C" fn thunk_OpenTransactionManagerById(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_PopIoRingCompletion(
+extern "C" fn thunk_dll_PopIoRingCompletion(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -34789,7 +35356,7 @@ extern "C" fn thunk_PopIoRingCompletion(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_PrePrepareComplete(
+extern "C" fn thunk_dll_PrePrepareComplete(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -34836,7 +35403,7 @@ extern "C" fn thunk_PrePrepareComplete(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_PrePrepareEnlistment(
+extern "C" fn thunk_dll_PrePrepareEnlistment(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -34883,7 +35450,7 @@ extern "C" fn thunk_PrePrepareEnlistment(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_PrepareComplete(
+extern "C" fn thunk_dll_PrepareComplete(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -34930,7 +35497,7 @@ extern "C" fn thunk_PrepareComplete(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_PrepareEnlistment(
+extern "C" fn thunk_dll_PrepareEnlistment(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -34977,7 +35544,10 @@ extern "C" fn thunk_PrepareEnlistment(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_PrepareTape(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_PrepareTape(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "PrepareTape");
     crate::thunk_helper(
@@ -35011,7 +35581,7 @@ extern "C" fn thunk_PrepareTape(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_QueryDosDeviceA(
+extern "C" fn thunk_dll_QueryDosDeviceA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -35050,7 +35620,7 @@ extern "C" fn thunk_QueryDosDeviceA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_QueryDosDeviceW(
+extern "C" fn thunk_dll_QueryDosDeviceW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -35089,7 +35659,7 @@ extern "C" fn thunk_QueryDosDeviceW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_QueryIoRingCapabilities(
+extern "C" fn thunk_dll_QueryIoRingCapabilities(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -35135,7 +35705,10 @@ extern "C" fn thunk_QueryIoRingCapabilities(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ReOpenFile(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_ReOpenFile(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "ReOpenFile");
     crate::thunk_helper(
@@ -35175,7 +35748,7 @@ extern "C" fn thunk_ReOpenFile(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ReadDirectoryChangesExW(
+extern "C" fn thunk_dll_ReadDirectoryChangesExW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -35230,7 +35803,7 @@ extern "C" fn thunk_ReadDirectoryChangesExW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ReadDirectoryChangesW(
+extern "C" fn thunk_dll_ReadDirectoryChangesW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -35283,7 +35856,7 @@ extern "C" fn thunk_ReadDirectoryChangesW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ReadEncryptedFileRaw(
+extern "C" fn thunk_dll_ReadEncryptedFileRaw(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -35322,7 +35895,7 @@ extern "C" fn thunk_ReadEncryptedFileRaw(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ReadFile(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_ReadFile(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "ReadFile");
     crate::thunk_helper(
@@ -35364,7 +35937,10 @@ extern "C" fn thunk_ReadFile(context: &mut ExtendedContext, memory: FlatMemoryCt
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ReadFileEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_ReadFileEx(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "ReadFileEx");
     crate::thunk_helper(
@@ -35406,7 +35982,7 @@ extern "C" fn thunk_ReadFileEx(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ReadFileScatter(
+extern "C" fn thunk_dll_ReadFileScatter(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -35453,7 +36029,7 @@ extern "C" fn thunk_ReadFileScatter(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ReadOnlyEnlistment(
+extern "C" fn thunk_dll_ReadOnlyEnlistment(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -35500,7 +36076,7 @@ extern "C" fn thunk_ReadOnlyEnlistment(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RecoverEnlistment(
+extern "C" fn thunk_dll_RecoverEnlistment(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -35547,7 +36123,7 @@ extern "C" fn thunk_RecoverEnlistment(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RecoverResourceManager(
+extern "C" fn thunk_dll_RecoverResourceManager(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -35593,7 +36169,7 @@ extern "C" fn thunk_RecoverResourceManager(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RecoverTransactionManager(
+extern "C" fn thunk_dll_RecoverTransactionManager(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -35639,7 +36215,7 @@ extern "C" fn thunk_RecoverTransactionManager(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RemoveDirectoryA(
+extern "C" fn thunk_dll_RemoveDirectoryA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -35685,7 +36261,7 @@ extern "C" fn thunk_RemoveDirectoryA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RemoveDirectoryFromAppW(
+extern "C" fn thunk_dll_RemoveDirectoryFromAppW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -35731,7 +36307,7 @@ extern "C" fn thunk_RemoveDirectoryFromAppW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RemoveDirectoryTransactedA(
+extern "C" fn thunk_dll_RemoveDirectoryTransactedA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -35778,7 +36354,7 @@ extern "C" fn thunk_RemoveDirectoryTransactedA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RemoveDirectoryTransactedW(
+extern "C" fn thunk_dll_RemoveDirectoryTransactedW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -35825,7 +36401,7 @@ extern "C" fn thunk_RemoveDirectoryTransactedW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RemoveDirectoryW(
+extern "C" fn thunk_dll_RemoveDirectoryW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -35871,7 +36447,7 @@ extern "C" fn thunk_RemoveDirectoryW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RenameTransactionManager(
+extern "C" fn thunk_dll_RenameTransactionManager(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -35909,7 +36485,10 @@ extern "C" fn thunk_RenameTransactionManager(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ReplaceFileA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_ReplaceFileA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "ReplaceFileA",
@@ -35955,7 +36534,7 @@ extern "C" fn thunk_ReplaceFileA(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ReplaceFileFromAppW(
+extern "C" fn thunk_dll_ReplaceFileFromAppW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -36004,7 +36583,10 @@ extern "C" fn thunk_ReplaceFileFromAppW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ReplaceFileW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_ReplaceFileW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "ReplaceFileW",
@@ -36050,7 +36632,7 @@ extern "C" fn thunk_ReplaceFileW(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RollbackComplete(
+extern "C" fn thunk_dll_RollbackComplete(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -36097,7 +36679,7 @@ extern "C" fn thunk_RollbackComplete(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RollbackEnlistment(
+extern "C" fn thunk_dll_RollbackEnlistment(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -36144,7 +36726,7 @@ extern "C" fn thunk_RollbackEnlistment(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RollbackTransaction(
+extern "C" fn thunk_dll_RollbackTransaction(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -36190,7 +36772,7 @@ extern "C" fn thunk_RollbackTransaction(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RollbackTransactionAsync(
+extern "C" fn thunk_dll_RollbackTransactionAsync(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -36236,7 +36818,7 @@ extern "C" fn thunk_RollbackTransactionAsync(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RollforwardTransactionManager(
+extern "C" fn thunk_dll_RollforwardTransactionManager(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -36274,7 +36856,10 @@ extern "C" fn thunk_RollforwardTransactionManager(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SearchPathA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_SearchPathA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "SearchPathA");
     crate::thunk_helper(
@@ -36318,7 +36903,10 @@ extern "C" fn thunk_SearchPathA(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SearchPathW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_SearchPathW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "SearchPathW");
     crate::thunk_helper(
@@ -36362,7 +36950,10 @@ extern "C" fn thunk_SearchPathW(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetEndOfFile(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_SetEndOfFile(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "SetEndOfFile",
@@ -36403,7 +36994,7 @@ extern "C" fn thunk_SetEndOfFile(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetEnlistmentRecoveryInformation(
+extern "C" fn thunk_dll_SetEnlistmentRecoveryInformation(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -36442,7 +37033,7 @@ extern "C" fn thunk_SetEnlistmentRecoveryInformation(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetFileApisToANSI(
+extern "C" fn thunk_dll_SetFileApisToANSI(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -36484,7 +37075,7 @@ extern "C" fn thunk_SetFileApisToANSI(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetFileApisToOEM(
+extern "C" fn thunk_dll_SetFileApisToOEM(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -36526,7 +37117,7 @@ extern "C" fn thunk_SetFileApisToOEM(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetFileAttributesA(
+extern "C" fn thunk_dll_SetFileAttributesA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -36573,7 +37164,7 @@ extern "C" fn thunk_SetFileAttributesA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetFileAttributesFromAppW(
+extern "C" fn thunk_dll_SetFileAttributesFromAppW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -36620,7 +37211,7 @@ extern "C" fn thunk_SetFileAttributesFromAppW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetFileAttributesTransactedA(
+extern "C" fn thunk_dll_SetFileAttributesTransactedA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -36659,7 +37250,7 @@ extern "C" fn thunk_SetFileAttributesTransactedA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetFileAttributesTransactedW(
+extern "C" fn thunk_dll_SetFileAttributesTransactedW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -36698,7 +37289,7 @@ extern "C" fn thunk_SetFileAttributesTransactedW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetFileAttributesW(
+extern "C" fn thunk_dll_SetFileAttributesW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -36745,7 +37336,7 @@ extern "C" fn thunk_SetFileAttributesW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetFileBandwidthReservation(
+extern "C" fn thunk_dll_SetFileBandwidthReservation(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -36794,7 +37385,7 @@ extern "C" fn thunk_SetFileBandwidthReservation(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetFileCompletionNotificationModes(
+extern "C" fn thunk_dll_SetFileCompletionNotificationModes(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -36841,7 +37432,7 @@ extern "C" fn thunk_SetFileCompletionNotificationModes(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetFileInformationByHandle(
+extern "C" fn thunk_dll_SetFileInformationByHandle(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -36886,7 +37477,7 @@ extern "C" fn thunk_SetFileInformationByHandle(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetFileIoOverlappedRange(
+extern "C" fn thunk_dll_SetFileIoOverlappedRange(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -36925,7 +37516,7 @@ extern "C" fn thunk_SetFileIoOverlappedRange(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetFilePointer(
+extern "C" fn thunk_dll_SetFilePointer(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -36970,7 +37561,7 @@ extern "C" fn thunk_SetFilePointer(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetFilePointerEx(
+extern "C" fn thunk_dll_SetFilePointerEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -37015,7 +37606,7 @@ extern "C" fn thunk_SetFilePointerEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetFileShortNameA(
+extern "C" fn thunk_dll_SetFileShortNameA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -37062,7 +37653,7 @@ extern "C" fn thunk_SetFileShortNameA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetFileShortNameW(
+extern "C" fn thunk_dll_SetFileShortNameW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -37109,7 +37700,10 @@ extern "C" fn thunk_SetFileShortNameW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetFileTime(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_SetFileTime(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "SetFileTime");
     crate::thunk_helper(
@@ -37149,7 +37743,7 @@ extern "C" fn thunk_SetFileTime(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetFileValidData(
+extern "C" fn thunk_dll_SetFileValidData(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -37196,7 +37790,7 @@ extern "C" fn thunk_SetFileValidData(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetIoRingCompletionEvent(
+extern "C" fn thunk_dll_SetIoRingCompletionEvent(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -37243,7 +37837,7 @@ extern "C" fn thunk_SetIoRingCompletionEvent(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetResourceManagerCompletionPort(
+extern "C" fn thunk_dll_SetResourceManagerCompletionPort(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -37286,7 +37880,7 @@ extern "C" fn thunk_SetResourceManagerCompletionPort(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetSearchPathMode(
+extern "C" fn thunk_dll_SetSearchPathMode(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -37330,7 +37924,7 @@ extern "C" fn thunk_SetSearchPathMode(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetTapeParameters(
+extern "C" fn thunk_dll_SetTapeParameters(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -37369,7 +37963,7 @@ extern "C" fn thunk_SetTapeParameters(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetTapePosition(
+extern "C" fn thunk_dll_SetTapePosition(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -37418,7 +38012,7 @@ extern "C" fn thunk_SetTapePosition(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetTransactionInformation(
+extern "C" fn thunk_dll_SetTransactionInformation(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -37465,7 +38059,7 @@ extern "C" fn thunk_SetTransactionInformation(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetVolumeLabelA(
+extern "C" fn thunk_dll_SetVolumeLabelA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -37512,7 +38106,7 @@ extern "C" fn thunk_SetVolumeLabelA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetVolumeLabelW(
+extern "C" fn thunk_dll_SetVolumeLabelW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -37559,7 +38153,7 @@ extern "C" fn thunk_SetVolumeLabelW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetVolumeMountPointA(
+extern "C" fn thunk_dll_SetVolumeMountPointA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -37597,7 +38191,7 @@ extern "C" fn thunk_SetVolumeMountPointA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetVolumeMountPointW(
+extern "C" fn thunk_dll_SetVolumeMountPointW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -37635,7 +38229,7 @@ extern "C" fn thunk_SetVolumeMountPointW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SinglePhaseReject(
+extern "C" fn thunk_dll_SinglePhaseReject(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -37682,7 +38276,10 @@ extern "C" fn thunk_SinglePhaseReject(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SubmitIoRing(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_SubmitIoRing(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "SubmitIoRing",
@@ -37719,7 +38316,7 @@ extern "C" fn thunk_SubmitIoRing(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_TxfGetThreadMiniVersionForCreate(
+extern "C" fn thunk_dll_TxfGetThreadMiniVersionForCreate(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -37765,7 +38362,10 @@ extern "C" fn thunk_TxfGetThreadMiniVersionForCreate(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_UnlockFile(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_UnlockFile(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "UnlockFile");
     crate::thunk_helper(
@@ -37807,7 +38407,10 @@ extern "C" fn thunk_UnlockFile(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_UnlockFileEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_UnlockFileEx(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "UnlockFileEx",
@@ -37851,7 +38454,10 @@ extern "C" fn thunk_UnlockFileEx(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_VerFindFileA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_VerFindFileA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "VerFindFileA",
@@ -37901,7 +38507,10 @@ extern "C" fn thunk_VerFindFileA(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_VerFindFileW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_VerFindFileW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "VerFindFileW",
@@ -37951,7 +38560,7 @@ extern "C" fn thunk_VerFindFileW(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_VerInstallFileA(
+extern "C" fn thunk_dll_VerInstallFileA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -38004,7 +38613,7 @@ extern "C" fn thunk_VerInstallFileA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_VerInstallFileW(
+extern "C" fn thunk_dll_VerInstallFileW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -38057,7 +38666,7 @@ extern "C" fn thunk_VerInstallFileW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_VerLanguageNameA(
+extern "C" fn thunk_dll_VerLanguageNameA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -38105,7 +38714,7 @@ extern "C" fn thunk_VerLanguageNameA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_VerLanguageNameW(
+extern "C" fn thunk_dll_VerLanguageNameW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -38153,7 +38762,7 @@ extern "C" fn thunk_VerLanguageNameW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_VerQueryValueA(
+extern "C" fn thunk_dll_VerQueryValueA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -38193,7 +38802,7 @@ extern "C" fn thunk_VerQueryValueA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_VerQueryValueW(
+extern "C" fn thunk_dll_VerQueryValueW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -38233,7 +38842,7 @@ extern "C" fn thunk_VerQueryValueW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WofEnumEntries(
+extern "C" fn thunk_dll_WofEnumEntries(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -38273,7 +38882,7 @@ extern "C" fn thunk_WofEnumEntries(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WofFileEnumFiles(
+extern "C" fn thunk_dll_WofFileEnumFiles(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -38313,7 +38922,7 @@ extern "C" fn thunk_WofFileEnumFiles(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WofGetDriverVersion(
+extern "C" fn thunk_dll_WofGetDriverVersion(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -38352,7 +38961,7 @@ extern "C" fn thunk_WofGetDriverVersion(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WofIsExternalFile(
+extern "C" fn thunk_dll_WofIsExternalFile(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -38399,7 +39008,7 @@ extern "C" fn thunk_WofIsExternalFile(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WofSetFileDataLocation(
+extern "C" fn thunk_dll_WofSetFileDataLocation(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -38439,7 +39048,7 @@ extern "C" fn thunk_WofSetFileDataLocation(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WofShouldCompressBinaries(
+extern "C" fn thunk_dll_WofShouldCompressBinaries(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -38486,7 +39095,7 @@ extern "C" fn thunk_WofShouldCompressBinaries(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WofWimAddEntry(
+extern "C" fn thunk_dll_WofWimAddEntry(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -38527,7 +39136,7 @@ extern "C" fn thunk_WofWimAddEntry(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WofWimEnumFiles(
+extern "C" fn thunk_dll_WofWimEnumFiles(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -38567,7 +39176,7 @@ extern "C" fn thunk_WofWimEnumFiles(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WofWimRemoveEntry(
+extern "C" fn thunk_dll_WofWimRemoveEntry(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -38614,7 +39223,7 @@ extern "C" fn thunk_WofWimRemoveEntry(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WofWimSuspendEntry(
+extern "C" fn thunk_dll_WofWimSuspendEntry(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -38661,7 +39270,7 @@ extern "C" fn thunk_WofWimSuspendEntry(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WofWimUpdateEntry(
+extern "C" fn thunk_dll_WofWimUpdateEntry(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -38700,7 +39309,7 @@ extern "C" fn thunk_WofWimUpdateEntry(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_Wow64DisableWow64FsRedirection(
+extern "C" fn thunk_dll_Wow64DisableWow64FsRedirection(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -38744,7 +39353,7 @@ extern "C" fn thunk_Wow64DisableWow64FsRedirection(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_Wow64EnableWow64FsRedirection(
+extern "C" fn thunk_dll_Wow64EnableWow64FsRedirection(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -38790,7 +39399,7 @@ extern "C" fn thunk_Wow64EnableWow64FsRedirection(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_Wow64RevertWow64FsRedirection(
+extern "C" fn thunk_dll_Wow64RevertWow64FsRedirection(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -38834,7 +39443,7 @@ extern "C" fn thunk_Wow64RevertWow64FsRedirection(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WriteEncryptedFileRaw(
+extern "C" fn thunk_dll_WriteEncryptedFileRaw(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -38873,7 +39482,7 @@ extern "C" fn thunk_WriteEncryptedFileRaw(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WriteFile(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_WriteFile(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "WriteFile");
     crate::thunk_helper(
@@ -38915,7 +39524,10 @@ extern "C" fn thunk_WriteFile(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WriteFileEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_WriteFileEx(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "WriteFileEx");
     crate::thunk_helper(
@@ -38957,7 +39569,7 @@ extern "C" fn thunk_WriteFileEx(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WriteFileGather(
+extern "C" fn thunk_dll_WriteFileGather(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -39004,7 +39616,10 @@ extern "C" fn thunk_WriteFileGather(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WriteTapemark(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_WriteTapemark(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "WriteTapemark",
@@ -39041,7 +39656,7 @@ extern "C" fn thunk_WriteTapemark(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_AddConsoleAliasA(
+extern "C" fn thunk_dll_AddConsoleAliasA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -39089,7 +39704,7 @@ extern "C" fn thunk_AddConsoleAliasA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_AddConsoleAliasW(
+extern "C" fn thunk_dll_AddConsoleAliasW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -39137,7 +39752,10 @@ extern "C" fn thunk_AddConsoleAliasW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_AllocConsole(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_AllocConsole(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "AllocConsole",
@@ -39176,7 +39794,10 @@ extern "C" fn thunk_AllocConsole(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_AttachConsole(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_AttachConsole(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "AttachConsole",
@@ -39219,7 +39840,7 @@ extern "C" fn thunk_AttachConsole(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ClosePseudoConsole(
+extern "C" fn thunk_dll_ClosePseudoConsole(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -39263,7 +39884,7 @@ extern "C" fn thunk_ClosePseudoConsole(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreatePseudoConsole(
+extern "C" fn thunk_dll_CreatePseudoConsole(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -39304,7 +39925,7 @@ extern "C" fn thunk_CreatePseudoConsole(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ExpungeConsoleCommandHistoryA(
+extern "C" fn thunk_dll_ExpungeConsoleCommandHistoryA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -39348,7 +39969,7 @@ extern "C" fn thunk_ExpungeConsoleCommandHistoryA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ExpungeConsoleCommandHistoryW(
+extern "C" fn thunk_dll_ExpungeConsoleCommandHistoryW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -39392,7 +40013,7 @@ extern "C" fn thunk_ExpungeConsoleCommandHistoryW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FillConsoleOutputAttribute(
+extern "C" fn thunk_dll_FillConsoleOutputAttribute(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -39439,7 +40060,7 @@ extern "C" fn thunk_FillConsoleOutputAttribute(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FillConsoleOutputCharacterA(
+extern "C" fn thunk_dll_FillConsoleOutputCharacterA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -39486,7 +40107,7 @@ extern "C" fn thunk_FillConsoleOutputCharacterA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FillConsoleOutputCharacterW(
+extern "C" fn thunk_dll_FillConsoleOutputCharacterW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -39533,7 +40154,7 @@ extern "C" fn thunk_FillConsoleOutputCharacterW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FlushConsoleInputBuffer(
+extern "C" fn thunk_dll_FlushConsoleInputBuffer(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -39579,7 +40200,10 @@ extern "C" fn thunk_FlushConsoleInputBuffer(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FreeConsole(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_FreeConsole(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "FreeConsole");
     crate::thunk_helper(
@@ -39616,7 +40240,7 @@ extern "C" fn thunk_FreeConsole(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GenerateConsoleCtrlEvent(
+extern "C" fn thunk_dll_GenerateConsoleCtrlEvent(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -39663,7 +40287,7 @@ extern "C" fn thunk_GenerateConsoleCtrlEvent(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetConsoleAliasA(
+extern "C" fn thunk_dll_GetConsoleAliasA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -39703,7 +40327,7 @@ extern "C" fn thunk_GetConsoleAliasA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetConsoleAliasExesA(
+extern "C" fn thunk_dll_GetConsoleAliasExesA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -39750,7 +40374,7 @@ extern "C" fn thunk_GetConsoleAliasExesA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetConsoleAliasExesLengthA(
+extern "C" fn thunk_dll_GetConsoleAliasExesLengthA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -39792,7 +40416,7 @@ extern "C" fn thunk_GetConsoleAliasExesLengthA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetConsoleAliasExesLengthW(
+extern "C" fn thunk_dll_GetConsoleAliasExesLengthW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -39834,7 +40458,7 @@ extern "C" fn thunk_GetConsoleAliasExesLengthW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetConsoleAliasExesW(
+extern "C" fn thunk_dll_GetConsoleAliasExesW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -39881,7 +40505,7 @@ extern "C" fn thunk_GetConsoleAliasExesW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetConsoleAliasW(
+extern "C" fn thunk_dll_GetConsoleAliasW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -39921,7 +40545,7 @@ extern "C" fn thunk_GetConsoleAliasW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetConsoleAliasesA(
+extern "C" fn thunk_dll_GetConsoleAliasesA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -39960,7 +40584,7 @@ extern "C" fn thunk_GetConsoleAliasesA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetConsoleAliasesLengthA(
+extern "C" fn thunk_dll_GetConsoleAliasesLengthA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -40004,7 +40628,7 @@ extern "C" fn thunk_GetConsoleAliasesLengthA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetConsoleAliasesLengthW(
+extern "C" fn thunk_dll_GetConsoleAliasesLengthW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -40048,7 +40672,7 @@ extern "C" fn thunk_GetConsoleAliasesLengthW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetConsoleAliasesW(
+extern "C" fn thunk_dll_GetConsoleAliasesW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -40087,7 +40711,10 @@ extern "C" fn thunk_GetConsoleAliasesW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetConsoleCP(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetConsoleCP(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetConsoleCP",
@@ -40126,7 +40753,7 @@ extern "C" fn thunk_GetConsoleCP(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetConsoleCommandHistoryA(
+extern "C" fn thunk_dll_GetConsoleCommandHistoryA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -40165,7 +40792,7 @@ extern "C" fn thunk_GetConsoleCommandHistoryA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetConsoleCommandHistoryLengthA(
+extern "C" fn thunk_dll_GetConsoleCommandHistoryLengthA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -40209,7 +40836,7 @@ extern "C" fn thunk_GetConsoleCommandHistoryLengthA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetConsoleCommandHistoryLengthW(
+extern "C" fn thunk_dll_GetConsoleCommandHistoryLengthW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -40253,7 +40880,7 @@ extern "C" fn thunk_GetConsoleCommandHistoryLengthW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetConsoleCommandHistoryW(
+extern "C" fn thunk_dll_GetConsoleCommandHistoryW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -40292,7 +40919,7 @@ extern "C" fn thunk_GetConsoleCommandHistoryW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetConsoleCursorInfo(
+extern "C" fn thunk_dll_GetConsoleCursorInfo(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -40339,7 +40966,7 @@ extern "C" fn thunk_GetConsoleCursorInfo(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetConsoleDisplayMode(
+extern "C" fn thunk_dll_GetConsoleDisplayMode(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -40385,7 +41012,7 @@ extern "C" fn thunk_GetConsoleDisplayMode(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetConsoleHistoryInfo(
+extern "C" fn thunk_dll_GetConsoleHistoryInfo(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -40431,7 +41058,7 @@ extern "C" fn thunk_GetConsoleHistoryInfo(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetConsoleMode(
+extern "C" fn thunk_dll_GetConsoleMode(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -40478,7 +41105,7 @@ extern "C" fn thunk_GetConsoleMode(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetConsoleOriginalTitleA(
+extern "C" fn thunk_dll_GetConsoleOriginalTitleA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -40525,7 +41152,7 @@ extern "C" fn thunk_GetConsoleOriginalTitleA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetConsoleOriginalTitleW(
+extern "C" fn thunk_dll_GetConsoleOriginalTitleW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -40572,7 +41199,7 @@ extern "C" fn thunk_GetConsoleOriginalTitleW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetConsoleOutputCP(
+extern "C" fn thunk_dll_GetConsoleOutputCP(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -40614,7 +41241,7 @@ extern "C" fn thunk_GetConsoleOutputCP(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetConsoleProcessList(
+extern "C" fn thunk_dll_GetConsoleProcessList(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -40661,7 +41288,7 @@ extern "C" fn thunk_GetConsoleProcessList(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetConsoleScreenBufferInfo(
+extern "C" fn thunk_dll_GetConsoleScreenBufferInfo(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -40699,7 +41326,7 @@ extern "C" fn thunk_GetConsoleScreenBufferInfo(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetConsoleScreenBufferInfoEx(
+extern "C" fn thunk_dll_GetConsoleScreenBufferInfoEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -40737,7 +41364,7 @@ extern "C" fn thunk_GetConsoleScreenBufferInfoEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetConsoleSelectionInfo(
+extern "C" fn thunk_dll_GetConsoleSelectionInfo(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -40783,7 +41410,7 @@ extern "C" fn thunk_GetConsoleSelectionInfo(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetConsoleTitleA(
+extern "C" fn thunk_dll_GetConsoleTitleA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -40830,7 +41457,7 @@ extern "C" fn thunk_GetConsoleTitleA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetConsoleTitleW(
+extern "C" fn thunk_dll_GetConsoleTitleW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -40877,7 +41504,7 @@ extern "C" fn thunk_GetConsoleTitleW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetConsoleWindow(
+extern "C" fn thunk_dll_GetConsoleWindow(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -40919,7 +41546,7 @@ extern "C" fn thunk_GetConsoleWindow(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetCurrentConsoleFont(
+extern "C" fn thunk_dll_GetCurrentConsoleFont(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -40962,7 +41589,7 @@ extern "C" fn thunk_GetCurrentConsoleFont(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetCurrentConsoleFontEx(
+extern "C" fn thunk_dll_GetCurrentConsoleFontEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -41005,7 +41632,7 @@ extern "C" fn thunk_GetCurrentConsoleFontEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetNumberOfConsoleInputEvents(
+extern "C" fn thunk_dll_GetNumberOfConsoleInputEvents(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -41052,7 +41679,7 @@ extern "C" fn thunk_GetNumberOfConsoleInputEvents(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetNumberOfConsoleMouseButtons(
+extern "C" fn thunk_dll_GetNumberOfConsoleMouseButtons(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -41098,7 +41725,10 @@ extern "C" fn thunk_GetNumberOfConsoleMouseButtons(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetStdHandle(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetStdHandle(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetStdHandle",
@@ -41141,7 +41771,7 @@ extern "C" fn thunk_GetStdHandle(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_PeekConsoleInputA(
+extern "C" fn thunk_dll_PeekConsoleInputA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -41186,7 +41816,7 @@ extern "C" fn thunk_PeekConsoleInputA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_PeekConsoleInputW(
+extern "C" fn thunk_dll_PeekConsoleInputW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -41231,7 +41861,10 @@ extern "C" fn thunk_PeekConsoleInputW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ReadConsoleA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_ReadConsoleA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "ReadConsoleA",
@@ -41275,7 +41908,7 @@ extern "C" fn thunk_ReadConsoleA(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ReadConsoleInputA(
+extern "C" fn thunk_dll_ReadConsoleInputA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -41320,7 +41953,7 @@ extern "C" fn thunk_ReadConsoleInputA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ReadConsoleInputW(
+extern "C" fn thunk_dll_ReadConsoleInputW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -41365,7 +41998,7 @@ extern "C" fn thunk_ReadConsoleInputW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ReadConsoleOutputA(
+extern "C" fn thunk_dll_ReadConsoleOutputA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -41412,7 +42045,7 @@ extern "C" fn thunk_ReadConsoleOutputA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ReadConsoleOutputAttribute(
+extern "C" fn thunk_dll_ReadConsoleOutputAttribute(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -41459,7 +42092,7 @@ extern "C" fn thunk_ReadConsoleOutputAttribute(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ReadConsoleOutputCharacterA(
+extern "C" fn thunk_dll_ReadConsoleOutputCharacterA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -41506,7 +42139,7 @@ extern "C" fn thunk_ReadConsoleOutputCharacterA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ReadConsoleOutputCharacterW(
+extern "C" fn thunk_dll_ReadConsoleOutputCharacterW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -41553,7 +42186,7 @@ extern "C" fn thunk_ReadConsoleOutputCharacterW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ReadConsoleOutputW(
+extern "C" fn thunk_dll_ReadConsoleOutputW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -41600,7 +42233,10 @@ extern "C" fn thunk_ReadConsoleOutputW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ReadConsoleW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_ReadConsoleW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "ReadConsoleW",
@@ -41644,7 +42280,7 @@ extern "C" fn thunk_ReadConsoleW(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ResizePseudoConsole(
+extern "C" fn thunk_dll_ResizePseudoConsole(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -41691,7 +42327,7 @@ extern "C" fn thunk_ResizePseudoConsole(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ScrollConsoleScreenBufferA(
+extern "C" fn thunk_dll_ScrollConsoleScreenBufferA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -41738,7 +42374,7 @@ extern "C" fn thunk_ScrollConsoleScreenBufferA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ScrollConsoleScreenBufferW(
+extern "C" fn thunk_dll_ScrollConsoleScreenBufferW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -41785,7 +42421,7 @@ extern "C" fn thunk_ScrollConsoleScreenBufferW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetConsoleActiveScreenBuffer(
+extern "C" fn thunk_dll_SetConsoleActiveScreenBuffer(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -41831,7 +42467,10 @@ extern "C" fn thunk_SetConsoleActiveScreenBuffer(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetConsoleCP(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_SetConsoleCP(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "SetConsoleCP",
@@ -41874,7 +42513,7 @@ extern "C" fn thunk_SetConsoleCP(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetConsoleCtrlHandler(
+extern "C" fn thunk_dll_SetConsoleCtrlHandler(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -41921,7 +42560,7 @@ extern "C" fn thunk_SetConsoleCtrlHandler(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetConsoleCursorInfo(
+extern "C" fn thunk_dll_SetConsoleCursorInfo(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -41968,7 +42607,7 @@ extern "C" fn thunk_SetConsoleCursorInfo(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetConsoleCursorPosition(
+extern "C" fn thunk_dll_SetConsoleCursorPosition(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -42015,7 +42654,7 @@ extern "C" fn thunk_SetConsoleCursorPosition(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetConsoleDisplayMode(
+extern "C" fn thunk_dll_SetConsoleDisplayMode(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -42058,7 +42697,7 @@ extern "C" fn thunk_SetConsoleDisplayMode(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetConsoleHistoryInfo(
+extern "C" fn thunk_dll_SetConsoleHistoryInfo(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -42104,7 +42743,7 @@ extern "C" fn thunk_SetConsoleHistoryInfo(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetConsoleMode(
+extern "C" fn thunk_dll_SetConsoleMode(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -42151,7 +42790,7 @@ extern "C" fn thunk_SetConsoleMode(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetConsoleNumberOfCommandsA(
+extern "C" fn thunk_dll_SetConsoleNumberOfCommandsA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -42198,7 +42837,7 @@ extern "C" fn thunk_SetConsoleNumberOfCommandsA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetConsoleNumberOfCommandsW(
+extern "C" fn thunk_dll_SetConsoleNumberOfCommandsW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -42245,7 +42884,7 @@ extern "C" fn thunk_SetConsoleNumberOfCommandsW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetConsoleOutputCP(
+extern "C" fn thunk_dll_SetConsoleOutputCP(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -42291,7 +42930,7 @@ extern "C" fn thunk_SetConsoleOutputCP(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetConsoleScreenBufferInfoEx(
+extern "C" fn thunk_dll_SetConsoleScreenBufferInfoEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -42329,7 +42968,7 @@ extern "C" fn thunk_SetConsoleScreenBufferInfoEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetConsoleScreenBufferSize(
+extern "C" fn thunk_dll_SetConsoleScreenBufferSize(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -42376,7 +43015,7 @@ extern "C" fn thunk_SetConsoleScreenBufferSize(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetConsoleTextAttribute(
+extern "C" fn thunk_dll_SetConsoleTextAttribute(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -42423,7 +43062,7 @@ extern "C" fn thunk_SetConsoleTextAttribute(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetConsoleTitleA(
+extern "C" fn thunk_dll_SetConsoleTitleA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -42469,7 +43108,7 @@ extern "C" fn thunk_SetConsoleTitleA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetConsoleTitleW(
+extern "C" fn thunk_dll_SetConsoleTitleW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -42515,7 +43154,7 @@ extern "C" fn thunk_SetConsoleTitleW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetConsoleWindowInfo(
+extern "C" fn thunk_dll_SetConsoleWindowInfo(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -42554,7 +43193,7 @@ extern "C" fn thunk_SetConsoleWindowInfo(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetCurrentConsoleFontEx(
+extern "C" fn thunk_dll_SetCurrentConsoleFontEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -42597,7 +43236,10 @@ extern "C" fn thunk_SetCurrentConsoleFontEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetStdHandle(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_SetStdHandle(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "SetStdHandle",
@@ -42641,7 +43283,7 @@ extern "C" fn thunk_SetStdHandle(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetStdHandleEx(
+extern "C" fn thunk_dll_SetStdHandleEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -42680,7 +43322,10 @@ extern "C" fn thunk_SetStdHandleEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WriteConsoleA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_WriteConsoleA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "WriteConsoleA",
@@ -42724,7 +43369,7 @@ extern "C" fn thunk_WriteConsoleA(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WriteConsoleInputA(
+extern "C" fn thunk_dll_WriteConsoleInputA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -42769,7 +43414,7 @@ extern "C" fn thunk_WriteConsoleInputA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WriteConsoleInputW(
+extern "C" fn thunk_dll_WriteConsoleInputW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -42814,7 +43459,7 @@ extern "C" fn thunk_WriteConsoleInputW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WriteConsoleOutputA(
+extern "C" fn thunk_dll_WriteConsoleOutputA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -42861,7 +43506,7 @@ extern "C" fn thunk_WriteConsoleOutputA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WriteConsoleOutputAttribute(
+extern "C" fn thunk_dll_WriteConsoleOutputAttribute(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -42908,7 +43553,7 @@ extern "C" fn thunk_WriteConsoleOutputAttribute(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WriteConsoleOutputCharacterA(
+extern "C" fn thunk_dll_WriteConsoleOutputCharacterA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -42955,7 +43600,7 @@ extern "C" fn thunk_WriteConsoleOutputCharacterA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WriteConsoleOutputCharacterW(
+extern "C" fn thunk_dll_WriteConsoleOutputCharacterW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -43002,7 +43647,7 @@ extern "C" fn thunk_WriteConsoleOutputCharacterW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WriteConsoleOutputW(
+extern "C" fn thunk_dll_WriteConsoleOutputW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -43049,7 +43694,10 @@ extern "C" fn thunk_WriteConsoleOutputW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WriteConsoleW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_WriteConsoleW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "WriteConsoleW",
@@ -43093,7 +43741,7 @@ extern "C" fn thunk_WriteConsoleW(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RtlUnwind(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_RtlUnwind(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "RtlUnwind");
     crate::thunk_helper(
@@ -43128,7 +43776,7 @@ extern "C" fn thunk_RtlUnwind(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_UnhandledExceptionFilter(
+extern "C" fn thunk_dll_UnhandledExceptionFilter(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -43174,7 +43822,10 @@ extern "C" fn thunk_UnhandledExceptionFilter(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CallEnclave(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_CallEnclave(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "CallEnclave");
     crate::thunk_helper(
@@ -43209,7 +43860,10 @@ extern "C" fn thunk_CallEnclave(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateEnclave(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_CreateEnclave(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "CreateEnclave",
@@ -43259,7 +43913,7 @@ extern "C" fn thunk_CreateEnclave(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateEnvironmentBlock(
+extern "C" fn thunk_dll_CreateEnvironmentBlock(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -43298,7 +43952,10 @@ extern "C" fn thunk_CreateEnvironmentBlock(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DeleteEnclave(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_DeleteEnclave(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "DeleteEnclave",
@@ -43341,7 +43998,7 @@ extern "C" fn thunk_DeleteEnclave(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DestroyEnvironmentBlock(
+extern "C" fn thunk_dll_DestroyEnvironmentBlock(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -43387,7 +44044,7 @@ extern "C" fn thunk_DestroyEnvironmentBlock(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnclaveGetAttestationReport(
+extern "C" fn thunk_dll_EnclaveGetAttestationReport(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -43427,7 +44084,7 @@ extern "C" fn thunk_EnclaveGetAttestationReport(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnclaveSealData(
+extern "C" fn thunk_dll_EnclaveSealData(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -43478,7 +44135,7 @@ extern "C" fn thunk_EnclaveSealData(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnclaveVerifyAttestationReport(
+extern "C" fn thunk_dll_EnclaveVerifyAttestationReport(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -43526,7 +44183,7 @@ extern "C" fn thunk_EnclaveVerifyAttestationReport(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ExpandEnvironmentStringsA(
+extern "C" fn thunk_dll_ExpandEnvironmentStringsA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -43574,7 +44231,7 @@ extern "C" fn thunk_ExpandEnvironmentStringsA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ExpandEnvironmentStringsForUserA(
+extern "C" fn thunk_dll_ExpandEnvironmentStringsForUserA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -43614,7 +44271,7 @@ extern "C" fn thunk_ExpandEnvironmentStringsForUserA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ExpandEnvironmentStringsForUserW(
+extern "C" fn thunk_dll_ExpandEnvironmentStringsForUserW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -43654,7 +44311,7 @@ extern "C" fn thunk_ExpandEnvironmentStringsForUserW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ExpandEnvironmentStringsW(
+extern "C" fn thunk_dll_ExpandEnvironmentStringsW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -43702,7 +44359,7 @@ extern "C" fn thunk_ExpandEnvironmentStringsW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FreeEnvironmentStringsA(
+extern "C" fn thunk_dll_FreeEnvironmentStringsA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -43746,7 +44403,7 @@ extern "C" fn thunk_FreeEnvironmentStringsA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FreeEnvironmentStringsW(
+extern "C" fn thunk_dll_FreeEnvironmentStringsW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -43790,7 +44447,7 @@ extern "C" fn thunk_FreeEnvironmentStringsW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetCommandLineA(
+extern "C" fn thunk_dll_GetCommandLineA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -43832,7 +44489,7 @@ extern "C" fn thunk_GetCommandLineA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetCommandLineW(
+extern "C" fn thunk_dll_GetCommandLineW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -43874,7 +44531,7 @@ extern "C" fn thunk_GetCommandLineW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetCurrentDirectoryA(
+extern "C" fn thunk_dll_GetCurrentDirectoryA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -43921,7 +44578,7 @@ extern "C" fn thunk_GetCurrentDirectoryA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetCurrentDirectoryW(
+extern "C" fn thunk_dll_GetCurrentDirectoryW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -43968,7 +44625,7 @@ extern "C" fn thunk_GetCurrentDirectoryW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetEnvironmentStrings(
+extern "C" fn thunk_dll_GetEnvironmentStrings(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -44010,7 +44667,7 @@ extern "C" fn thunk_GetEnvironmentStrings(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetEnvironmentStringsW(
+extern "C" fn thunk_dll_GetEnvironmentStringsW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -44052,7 +44709,7 @@ extern "C" fn thunk_GetEnvironmentStringsW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetEnvironmentVariableA(
+extern "C" fn thunk_dll_GetEnvironmentVariableA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -44100,7 +44757,7 @@ extern "C" fn thunk_GetEnvironmentVariableA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetEnvironmentVariableW(
+extern "C" fn thunk_dll_GetEnvironmentVariableW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -44148,7 +44805,7 @@ extern "C" fn thunk_GetEnvironmentVariableW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_InitializeEnclave(
+extern "C" fn thunk_dll_InitializeEnclave(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -44195,7 +44852,7 @@ extern "C" fn thunk_InitializeEnclave(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IsEnclaveTypeSupported(
+extern "C" fn thunk_dll_IsEnclaveTypeSupported(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -44241,7 +44898,7 @@ extern "C" fn thunk_IsEnclaveTypeSupported(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LoadEnclaveData(
+extern "C" fn thunk_dll_LoadEnclaveData(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -44296,7 +44953,7 @@ extern "C" fn thunk_LoadEnclaveData(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LoadEnclaveImageA(
+extern "C" fn thunk_dll_LoadEnclaveImageA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -44343,7 +45000,7 @@ extern "C" fn thunk_LoadEnclaveImageA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LoadEnclaveImageW(
+extern "C" fn thunk_dll_LoadEnclaveImageW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -44390,7 +45047,7 @@ extern "C" fn thunk_LoadEnclaveImageW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_NeedCurrentDirectoryForExePathA(
+extern "C" fn thunk_dll_NeedCurrentDirectoryForExePathA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -44434,7 +45091,7 @@ extern "C" fn thunk_NeedCurrentDirectoryForExePathA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_NeedCurrentDirectoryForExePathW(
+extern "C" fn thunk_dll_NeedCurrentDirectoryForExePathW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -44478,7 +45135,7 @@ extern "C" fn thunk_NeedCurrentDirectoryForExePathW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetCurrentDirectoryA(
+extern "C" fn thunk_dll_SetCurrentDirectoryA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -44524,7 +45181,7 @@ extern "C" fn thunk_SetCurrentDirectoryA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetCurrentDirectoryW(
+extern "C" fn thunk_dll_SetCurrentDirectoryW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -44570,7 +45227,7 @@ extern "C" fn thunk_SetCurrentDirectoryW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetEnvironmentStringsW(
+extern "C" fn thunk_dll_SetEnvironmentStringsW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -44616,7 +45273,7 @@ extern "C" fn thunk_SetEnvironmentStringsW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetEnvironmentVariableA(
+extern "C" fn thunk_dll_SetEnvironmentVariableA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -44663,7 +45320,7 @@ extern "C" fn thunk_SetEnvironmentVariableA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetEnvironmentVariableW(
+extern "C" fn thunk_dll_SetEnvironmentVariableW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -44710,7 +45367,7 @@ extern "C" fn thunk_SetEnvironmentVariableW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_TerminateEnclave(
+extern "C" fn thunk_dll_TerminateEnclave(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -44757,7 +45414,7 @@ extern "C" fn thunk_TerminateEnclave(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_BindIoCompletionCallback(
+extern "C" fn thunk_dll_BindIoCompletionCallback(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -44805,7 +45462,7 @@ extern "C" fn thunk_BindIoCompletionCallback(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CancelIo(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_CancelIo(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "CancelIo");
     crate::thunk_helper(
@@ -44844,7 +45501,10 @@ extern "C" fn thunk_CancelIo(context: &mut ExtendedContext, memory: FlatMemoryCt
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CancelIoEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_CancelIoEx(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "CancelIoEx");
     crate::thunk_helper(
@@ -44886,7 +45546,7 @@ extern "C" fn thunk_CancelIoEx(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CancelSynchronousIo(
+extern "C" fn thunk_dll_CancelSynchronousIo(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -44930,7 +45590,7 @@ extern "C" fn thunk_CancelSynchronousIo(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateIoCompletionPort(
+extern "C" fn thunk_dll_CreateIoCompletionPort(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -44975,7 +45635,7 @@ extern "C" fn thunk_CreateIoCompletionPort(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DeviceIoControl(
+extern "C" fn thunk_dll_DeviceIoControl(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -45028,7 +45688,7 @@ extern "C" fn thunk_DeviceIoControl(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetOverlappedResult(
+extern "C" fn thunk_dll_GetOverlappedResult(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -45073,7 +45733,7 @@ extern "C" fn thunk_GetOverlappedResult(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetOverlappedResultEx(
+extern "C" fn thunk_dll_GetOverlappedResultEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -45120,7 +45780,7 @@ extern "C" fn thunk_GetOverlappedResultEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetQueuedCompletionStatus(
+extern "C" fn thunk_dll_GetQueuedCompletionStatus(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -45167,7 +45827,7 @@ extern "C" fn thunk_GetQueuedCompletionStatus(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetQueuedCompletionStatusEx(
+extern "C" fn thunk_dll_GetQueuedCompletionStatusEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -45216,7 +45876,7 @@ extern "C" fn thunk_GetQueuedCompletionStatusEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_PostQueuedCompletionStatus(
+extern "C" fn thunk_dll_PostQueuedCompletionStatus(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -45261,7 +45921,7 @@ extern "C" fn thunk_PostQueuedCompletionStatus(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RtlFirstEntrySList(
+extern "C" fn thunk_dll_RtlFirstEntrySList(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -45305,7 +45965,7 @@ extern "C" fn thunk_RtlFirstEntrySList(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RtlInitializeSListHead(
+extern "C" fn thunk_dll_RtlInitializeSListHead(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -45349,7 +46009,7 @@ extern "C" fn thunk_RtlInitializeSListHead(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RtlInterlockedFlushSList(
+extern "C" fn thunk_dll_RtlInterlockedFlushSList(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -45393,7 +46053,7 @@ extern "C" fn thunk_RtlInterlockedFlushSList(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RtlInterlockedPopEntrySList(
+extern "C" fn thunk_dll_RtlInterlockedPopEntrySList(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -45437,7 +46097,7 @@ extern "C" fn thunk_RtlInterlockedPopEntrySList(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RtlInterlockedPushEntrySList(
+extern "C" fn thunk_dll_RtlInterlockedPushEntrySList(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -45484,7 +46144,7 @@ extern "C" fn thunk_RtlInterlockedPushEntrySList(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RtlInterlockedPushListSListEx(
+extern "C" fn thunk_dll_RtlInterlockedPushListSListEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -45524,7 +46184,7 @@ extern "C" fn thunk_RtlInterlockedPushListSListEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RtlQueryDepthSList(
+extern "C" fn thunk_dll_RtlQueryDepthSList(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -45568,7 +46228,7 @@ extern "C" fn thunk_RtlQueryDepthSList(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_AddDllDirectory(
+extern "C" fn thunk_dll_AddDllDirectory(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -45614,7 +46274,7 @@ extern "C" fn thunk_AddDllDirectory(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_BeginUpdateResourceA(
+extern "C" fn thunk_dll_BeginUpdateResourceA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -45661,7 +46321,7 @@ extern "C" fn thunk_BeginUpdateResourceA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_BeginUpdateResourceW(
+extern "C" fn thunk_dll_BeginUpdateResourceW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -45708,7 +46368,7 @@ extern "C" fn thunk_BeginUpdateResourceW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DisableThreadLibraryCalls(
+extern "C" fn thunk_dll_DisableThreadLibraryCalls(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -45754,7 +46414,7 @@ extern "C" fn thunk_DisableThreadLibraryCalls(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EndUpdateResourceA(
+extern "C" fn thunk_dll_EndUpdateResourceA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -45801,7 +46461,7 @@ extern "C" fn thunk_EndUpdateResourceA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EndUpdateResourceW(
+extern "C" fn thunk_dll_EndUpdateResourceW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -45848,7 +46508,7 @@ extern "C" fn thunk_EndUpdateResourceW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumResourceLanguagesA(
+extern "C" fn thunk_dll_EnumResourceLanguagesA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -45889,7 +46549,7 @@ extern "C" fn thunk_EnumResourceLanguagesA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumResourceLanguagesExA(
+extern "C" fn thunk_dll_EnumResourceLanguagesExA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -45940,7 +46600,7 @@ extern "C" fn thunk_EnumResourceLanguagesExA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumResourceLanguagesExW(
+extern "C" fn thunk_dll_EnumResourceLanguagesExW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -45991,7 +46651,7 @@ extern "C" fn thunk_EnumResourceLanguagesExW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumResourceLanguagesW(
+extern "C" fn thunk_dll_EnumResourceLanguagesW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -46032,7 +46692,7 @@ extern "C" fn thunk_EnumResourceLanguagesW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumResourceNamesA(
+extern "C" fn thunk_dll_EnumResourceNamesA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -46072,7 +46732,7 @@ extern "C" fn thunk_EnumResourceNamesA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumResourceNamesExA(
+extern "C" fn thunk_dll_EnumResourceNamesExA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -46121,7 +46781,7 @@ extern "C" fn thunk_EnumResourceNamesExA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumResourceNamesExW(
+extern "C" fn thunk_dll_EnumResourceNamesExW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -46170,7 +46830,7 @@ extern "C" fn thunk_EnumResourceNamesExW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumResourceNamesW(
+extern "C" fn thunk_dll_EnumResourceNamesW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -46210,7 +46870,7 @@ extern "C" fn thunk_EnumResourceNamesW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumResourceTypesA(
+extern "C" fn thunk_dll_EnumResourceTypesA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -46258,7 +46918,7 @@ extern "C" fn thunk_EnumResourceTypesA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumResourceTypesExA(
+extern "C" fn thunk_dll_EnumResourceTypesExA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -46299,7 +46959,7 @@ extern "C" fn thunk_EnumResourceTypesExA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumResourceTypesExW(
+extern "C" fn thunk_dll_EnumResourceTypesExW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -46340,7 +47000,7 @@ extern "C" fn thunk_EnumResourceTypesExW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumResourceTypesW(
+extern "C" fn thunk_dll_EnumResourceTypesW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -46388,7 +47048,10 @@ extern "C" fn thunk_EnumResourceTypesW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FindResourceA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_FindResourceA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "FindResourceA",
@@ -46433,7 +47096,7 @@ extern "C" fn thunk_FindResourceA(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FindResourceExA(
+extern "C" fn thunk_dll_FindResourceExA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -46473,7 +47136,7 @@ extern "C" fn thunk_FindResourceExA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FindResourceExW(
+extern "C" fn thunk_dll_FindResourceExW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -46513,7 +47176,10 @@ extern "C" fn thunk_FindResourceExW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FindResourceW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_FindResourceW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "FindResourceW",
@@ -46558,7 +47224,10 @@ extern "C" fn thunk_FindResourceW(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FreeLibrary(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_FreeLibrary(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "FreeLibrary");
     crate::thunk_helper(
@@ -46599,7 +47268,7 @@ extern "C" fn thunk_FreeLibrary(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FreeLibraryAndExitThread(
+extern "C" fn thunk_dll_FreeLibraryAndExitThread(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -46646,7 +47315,10 @@ extern "C" fn thunk_FreeLibraryAndExitThread(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FreeResource(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_FreeResource(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "FreeResource",
@@ -46689,7 +47361,7 @@ extern "C" fn thunk_FreeResource(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetDllDirectoryA(
+extern "C" fn thunk_dll_GetDllDirectoryA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -46736,7 +47408,7 @@ extern "C" fn thunk_GetDllDirectoryA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetDllDirectoryW(
+extern "C" fn thunk_dll_GetDllDirectoryW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -46783,7 +47455,7 @@ extern "C" fn thunk_GetDllDirectoryW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetModuleFileNameA(
+extern "C" fn thunk_dll_GetModuleFileNameA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -46831,7 +47503,7 @@ extern "C" fn thunk_GetModuleFileNameA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetModuleFileNameW(
+extern "C" fn thunk_dll_GetModuleFileNameW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -46879,7 +47551,7 @@ extern "C" fn thunk_GetModuleFileNameW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetModuleHandleA(
+extern "C" fn thunk_dll_GetModuleHandleA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -46925,7 +47597,7 @@ extern "C" fn thunk_GetModuleHandleA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetModuleHandleExA(
+extern "C" fn thunk_dll_GetModuleHandleExA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -46964,7 +47636,7 @@ extern "C" fn thunk_GetModuleHandleExA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetModuleHandleExW(
+extern "C" fn thunk_dll_GetModuleHandleExW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -47003,7 +47675,7 @@ extern "C" fn thunk_GetModuleHandleExW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetModuleHandleW(
+extern "C" fn thunk_dll_GetModuleHandleW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -47049,7 +47721,7 @@ extern "C" fn thunk_GetModuleHandleW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetProcAddress(
+extern "C" fn thunk_dll_GetProcAddress(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -47096,7 +47768,10 @@ extern "C" fn thunk_GetProcAddress(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LoadLibraryA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_LoadLibraryA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "LoadLibraryA",
@@ -47139,7 +47814,7 @@ extern "C" fn thunk_LoadLibraryA(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LoadLibraryExA(
+extern "C" fn thunk_dll_LoadLibraryExA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -47178,7 +47853,7 @@ extern "C" fn thunk_LoadLibraryExA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LoadLibraryExW(
+extern "C" fn thunk_dll_LoadLibraryExW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -47217,7 +47892,10 @@ extern "C" fn thunk_LoadLibraryExW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LoadLibraryW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_LoadLibraryW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "LoadLibraryW",
@@ -47260,7 +47938,10 @@ extern "C" fn thunk_LoadLibraryW(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LoadModule(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_LoadModule(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "LoadModule");
     crate::thunk_helper(
@@ -47302,7 +47983,7 @@ extern "C" fn thunk_LoadModule(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LoadPackagedLibrary(
+extern "C" fn thunk_dll_LoadPackagedLibrary(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -47349,7 +48030,10 @@ extern "C" fn thunk_LoadPackagedLibrary(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LoadResource(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_LoadResource(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "LoadResource",
@@ -47393,7 +48077,10 @@ extern "C" fn thunk_LoadResource(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LockResource(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_LockResource(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "LockResource",
@@ -47436,7 +48123,7 @@ extern "C" fn thunk_LockResource(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RemoveDllDirectory(
+extern "C" fn thunk_dll_RemoveDllDirectory(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -47480,7 +48167,7 @@ extern "C" fn thunk_RemoveDllDirectory(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetDefaultDllDirectories(
+extern "C" fn thunk_dll_SetDefaultDllDirectories(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -47526,7 +48213,7 @@ extern "C" fn thunk_SetDefaultDllDirectories(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetDllDirectoryA(
+extern "C" fn thunk_dll_SetDllDirectoryA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -47572,7 +48259,7 @@ extern "C" fn thunk_SetDllDirectoryA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetDllDirectoryW(
+extern "C" fn thunk_dll_SetDllDirectoryW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -47618,7 +48305,7 @@ extern "C" fn thunk_SetDllDirectoryW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SizeofResource(
+extern "C" fn thunk_dll_SizeofResource(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -47665,7 +48352,7 @@ extern "C" fn thunk_SizeofResource(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_UpdateResourceA(
+extern "C" fn thunk_dll_UpdateResourceA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -47707,7 +48394,7 @@ extern "C" fn thunk_UpdateResourceA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_UpdateResourceW(
+extern "C" fn thunk_dll_UpdateResourceW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -47749,7 +48436,7 @@ extern "C" fn thunk_UpdateResourceW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_AddSecureMemoryCacheCallback(
+extern "C" fn thunk_dll_AddSecureMemoryCacheCallback(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -47795,7 +48482,7 @@ extern "C" fn thunk_AddSecureMemoryCacheCallback(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_AllocateUserPhysicalPages(
+extern "C" fn thunk_dll_AllocateUserPhysicalPages(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -47834,7 +48521,7 @@ extern "C" fn thunk_AllocateUserPhysicalPages(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_AllocateUserPhysicalPages2(
+extern "C" fn thunk_dll_AllocateUserPhysicalPages2(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -47881,7 +48568,7 @@ extern "C" fn thunk_AllocateUserPhysicalPages2(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_AllocateUserPhysicalPagesNuma(
+extern "C" fn thunk_dll_AllocateUserPhysicalPagesNuma(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -47926,7 +48613,7 @@ extern "C" fn thunk_AllocateUserPhysicalPagesNuma(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateMemoryResourceNotification(
+extern "C" fn thunk_dll_CreateMemoryResourceNotification(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -47972,7 +48659,7 @@ extern "C" fn thunk_CreateMemoryResourceNotification(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DiscardVirtualMemory(
+extern "C" fn thunk_dll_DiscardVirtualMemory(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -48019,7 +48706,7 @@ extern "C" fn thunk_DiscardVirtualMemory(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FlushViewOfFile(
+extern "C" fn thunk_dll_FlushViewOfFile(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -48057,7 +48744,7 @@ extern "C" fn thunk_FlushViewOfFile(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FreeUserPhysicalPages(
+extern "C" fn thunk_dll_FreeUserPhysicalPages(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -48096,7 +48783,7 @@ extern "C" fn thunk_FreeUserPhysicalPages(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetLargePageMinimum(
+extern "C" fn thunk_dll_GetLargePageMinimum(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -48138,7 +48825,7 @@ extern "C" fn thunk_GetLargePageMinimum(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetMemoryErrorHandlingCapabilities(
+extern "C" fn thunk_dll_GetMemoryErrorHandlingCapabilities(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -48184,7 +48871,7 @@ extern "C" fn thunk_GetMemoryErrorHandlingCapabilities(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetProcessHeap(
+extern "C" fn thunk_dll_GetProcessHeap(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -48226,7 +48913,7 @@ extern "C" fn thunk_GetProcessHeap(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetProcessHeaps(
+extern "C" fn thunk_dll_GetProcessHeaps(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -48273,7 +48960,7 @@ extern "C" fn thunk_GetProcessHeaps(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetProcessWorkingSetSizeEx(
+extern "C" fn thunk_dll_GetProcessWorkingSetSizeEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -48318,7 +49005,7 @@ extern "C" fn thunk_GetProcessWorkingSetSizeEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetSystemFileCacheSize(
+extern "C" fn thunk_dll_GetSystemFileCacheSize(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -48361,7 +49048,10 @@ extern "C" fn thunk_GetSystemFileCacheSize(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetWriteWatch(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetWriteWatch(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetWriteWatch",
@@ -48407,7 +49097,10 @@ extern "C" fn thunk_GetWriteWatch(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GlobalAlloc(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GlobalAlloc(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GlobalAlloc");
     crate::thunk_helper(
@@ -48449,7 +49142,10 @@ extern "C" fn thunk_GlobalAlloc(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GlobalFlags(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GlobalFlags(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GlobalFlags");
     crate::thunk_helper(
@@ -48488,7 +49184,10 @@ extern "C" fn thunk_GlobalFlags(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GlobalFree(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GlobalFree(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GlobalFree");
     crate::thunk_helper(
@@ -48527,7 +49226,10 @@ extern "C" fn thunk_GlobalFree(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GlobalHandle(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GlobalHandle(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GlobalHandle",
@@ -48568,7 +49270,10 @@ extern "C" fn thunk_GlobalHandle(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GlobalLock(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GlobalLock(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GlobalLock");
     crate::thunk_helper(
@@ -48607,7 +49312,10 @@ extern "C" fn thunk_GlobalLock(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GlobalReAlloc(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GlobalReAlloc(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GlobalReAlloc",
@@ -48652,7 +49360,10 @@ extern "C" fn thunk_GlobalReAlloc(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GlobalSize(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GlobalSize(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GlobalSize");
     crate::thunk_helper(
@@ -48691,7 +49402,10 @@ extern "C" fn thunk_GlobalSize(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GlobalUnlock(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GlobalUnlock(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GlobalUnlock",
@@ -48732,7 +49446,7 @@ extern "C" fn thunk_GlobalUnlock(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_HeapAlloc(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_HeapAlloc(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "HeapAlloc");
     crate::thunk_helper(
@@ -48775,7 +49489,10 @@ extern "C" fn thunk_HeapAlloc(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_HeapCompact(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_HeapCompact(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "HeapCompact");
     crate::thunk_helper(
@@ -48817,7 +49534,10 @@ extern "C" fn thunk_HeapCompact(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_HeapCreate(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_HeapCreate(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "HeapCreate");
     crate::thunk_helper(
@@ -48851,7 +49571,10 @@ extern "C" fn thunk_HeapCreate(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_HeapDestroy(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_HeapDestroy(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "HeapDestroy");
     crate::thunk_helper(
@@ -48890,7 +49613,7 @@ extern "C" fn thunk_HeapDestroy(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_HeapFree(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_HeapFree(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "HeapFree");
     crate::thunk_helper(
@@ -48933,7 +49656,7 @@ extern "C" fn thunk_HeapFree(context: &mut ExtendedContext, memory: FlatMemoryCt
     )
 }
 #[no_mangle]
-extern "C" fn thunk_HeapLock(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_HeapLock(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "HeapLock");
     crate::thunk_helper(
@@ -48972,7 +49695,7 @@ extern "C" fn thunk_HeapLock(context: &mut ExtendedContext, memory: FlatMemoryCt
     )
 }
 #[no_mangle]
-extern "C" fn thunk_HeapQueryInformation(
+extern "C" fn thunk_dll_HeapQueryInformation(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -49019,7 +49742,10 @@ extern "C" fn thunk_HeapQueryInformation(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_HeapReAlloc(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_HeapReAlloc(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "HeapReAlloc");
     crate::thunk_helper(
@@ -49054,7 +49780,7 @@ extern "C" fn thunk_HeapReAlloc(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_HeapSetInformation(
+extern "C" fn thunk_dll_HeapSetInformation(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -49099,7 +49825,7 @@ extern "C" fn thunk_HeapSetInformation(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_HeapSize(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_HeapSize(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "HeapSize");
     crate::thunk_helper(
@@ -49142,7 +49868,10 @@ extern "C" fn thunk_HeapSize(context: &mut ExtendedContext, memory: FlatMemoryCt
     )
 }
 #[no_mangle]
-extern "C" fn thunk_HeapSummary(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_HeapSummary(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "HeapSummary");
     crate::thunk_helper(
@@ -49185,7 +49914,10 @@ extern "C" fn thunk_HeapSummary(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_HeapUnlock(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_HeapUnlock(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "HeapUnlock");
     crate::thunk_helper(
@@ -49224,7 +49956,10 @@ extern "C" fn thunk_HeapUnlock(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_HeapValidate(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_HeapValidate(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "HeapValidate",
@@ -49269,7 +50004,7 @@ extern "C" fn thunk_HeapValidate(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_HeapWalk(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_HeapWalk(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "HeapWalk");
     crate::thunk_helper(
@@ -49311,7 +50046,10 @@ extern "C" fn thunk_HeapWalk(context: &mut ExtendedContext, memory: FlatMemoryCt
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IsBadCodePtr(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_IsBadCodePtr(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "IsBadCodePtr",
@@ -49352,7 +50090,10 @@ extern "C" fn thunk_IsBadCodePtr(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IsBadReadPtr(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_IsBadReadPtr(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "IsBadReadPtr",
@@ -49396,7 +50137,7 @@ extern "C" fn thunk_IsBadReadPtr(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IsBadStringPtrA(
+extern "C" fn thunk_dll_IsBadStringPtrA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -49443,7 +50184,7 @@ extern "C" fn thunk_IsBadStringPtrA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IsBadStringPtrW(
+extern "C" fn thunk_dll_IsBadStringPtrW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -49490,7 +50231,10 @@ extern "C" fn thunk_IsBadStringPtrW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IsBadWritePtr(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_IsBadWritePtr(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "IsBadWritePtr",
@@ -49534,7 +50278,10 @@ extern "C" fn thunk_IsBadWritePtr(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LocalAlloc(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_LocalAlloc(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "LocalAlloc");
     crate::thunk_helper(
@@ -49576,7 +50323,10 @@ extern "C" fn thunk_LocalAlloc(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LocalFlags(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_LocalFlags(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "LocalFlags");
     crate::thunk_helper(
@@ -49615,7 +50365,7 @@ extern "C" fn thunk_LocalFlags(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LocalFree(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_LocalFree(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "LocalFree");
     crate::thunk_helper(
@@ -49654,7 +50404,10 @@ extern "C" fn thunk_LocalFree(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LocalHandle(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_LocalHandle(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "LocalHandle");
     crate::thunk_helper(
@@ -49693,7 +50446,7 @@ extern "C" fn thunk_LocalHandle(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LocalLock(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_LocalLock(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "LocalLock");
     crate::thunk_helper(
@@ -49732,7 +50485,10 @@ extern "C" fn thunk_LocalLock(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LocalReAlloc(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_LocalReAlloc(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "LocalReAlloc",
@@ -49777,7 +50533,7 @@ extern "C" fn thunk_LocalReAlloc(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LocalSize(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_LocalSize(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "LocalSize");
     crate::thunk_helper(
@@ -49816,7 +50572,10 @@ extern "C" fn thunk_LocalSize(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LocalUnlock(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_LocalUnlock(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "LocalUnlock");
     crate::thunk_helper(
@@ -49855,7 +50614,7 @@ extern "C" fn thunk_LocalUnlock(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_MapUserPhysicalPages(
+extern "C" fn thunk_dll_MapUserPhysicalPages(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -49894,7 +50653,7 @@ extern "C" fn thunk_MapUserPhysicalPages(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_MapUserPhysicalPagesScatter(
+extern "C" fn thunk_dll_MapUserPhysicalPagesScatter(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -49933,7 +50692,10 @@ extern "C" fn thunk_MapUserPhysicalPagesScatter(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_MapViewOfFile(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_MapViewOfFile(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "MapViewOfFile",
@@ -49977,7 +50739,7 @@ extern "C" fn thunk_MapViewOfFile(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_MapViewOfFile3(
+extern "C" fn thunk_dll_MapViewOfFile3(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -50032,7 +50794,7 @@ extern "C" fn thunk_MapViewOfFile3(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_MapViewOfFile3FromApp(
+extern "C" fn thunk_dll_MapViewOfFile3FromApp(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -50087,7 +50849,7 @@ extern "C" fn thunk_MapViewOfFile3FromApp(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_MapViewOfFileEx(
+extern "C" fn thunk_dll_MapViewOfFileEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -50136,7 +50898,7 @@ extern "C" fn thunk_MapViewOfFileEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_MapViewOfFileExNuma(
+extern "C" fn thunk_dll_MapViewOfFileExNuma(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -50187,7 +50949,7 @@ extern "C" fn thunk_MapViewOfFileExNuma(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_MapViewOfFileFromApp(
+extern "C" fn thunk_dll_MapViewOfFileFromApp(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -50232,7 +50994,7 @@ extern "C" fn thunk_MapViewOfFileFromApp(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_MapViewOfFileNuma2(
+extern "C" fn thunk_dll_MapViewOfFileNuma2(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -50285,7 +51047,7 @@ extern "C" fn thunk_MapViewOfFileNuma2(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_OfferVirtualMemory(
+extern "C" fn thunk_dll_OfferVirtualMemory(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -50333,7 +51095,7 @@ extern "C" fn thunk_OfferVirtualMemory(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_OpenDedicatedMemoryPartition(
+extern "C" fn thunk_dll_OpenDedicatedMemoryPartition(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -50378,7 +51140,7 @@ extern "C" fn thunk_OpenDedicatedMemoryPartition(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_OpenFileMappingA(
+extern "C" fn thunk_dll_OpenFileMappingA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -50417,7 +51179,7 @@ extern "C" fn thunk_OpenFileMappingA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_OpenFileMappingFromApp(
+extern "C" fn thunk_dll_OpenFileMappingFromApp(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -50456,7 +51218,7 @@ extern "C" fn thunk_OpenFileMappingFromApp(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_OpenFileMappingW(
+extern "C" fn thunk_dll_OpenFileMappingW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -50495,7 +51257,7 @@ extern "C" fn thunk_OpenFileMappingW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_PrefetchVirtualMemory(
+extern "C" fn thunk_dll_PrefetchVirtualMemory(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -50535,7 +51297,7 @@ extern "C" fn thunk_PrefetchVirtualMemory(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_QueryMemoryResourceNotification(
+extern "C" fn thunk_dll_QueryMemoryResourceNotification(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -50573,7 +51335,7 @@ extern "C" fn thunk_QueryMemoryResourceNotification(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_QueryPartitionInformation(
+extern "C" fn thunk_dll_QueryPartitionInformation(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -50618,7 +51380,7 @@ extern "C" fn thunk_QueryPartitionInformation(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_QueryVirtualMemoryInformation(
+extern "C" fn thunk_dll_QueryVirtualMemoryInformation(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -50667,7 +51429,7 @@ extern "C" fn thunk_QueryVirtualMemoryInformation(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ReclaimVirtualMemory(
+extern "C" fn thunk_dll_ReclaimVirtualMemory(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -50714,7 +51476,7 @@ extern "C" fn thunk_ReclaimVirtualMemory(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RegisterBadMemoryNotification(
+extern "C" fn thunk_dll_RegisterBadMemoryNotification(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -50758,7 +51520,7 @@ extern "C" fn thunk_RegisterBadMemoryNotification(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RemoveSecureMemoryCacheCallback(
+extern "C" fn thunk_dll_RemoveSecureMemoryCacheCallback(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -50804,7 +51566,7 @@ extern "C" fn thunk_RemoveSecureMemoryCacheCallback(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ResetWriteWatch(
+extern "C" fn thunk_dll_ResetWriteWatch(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -50851,7 +51613,7 @@ extern "C" fn thunk_ResetWriteWatch(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RtlCompareMemory(
+extern "C" fn thunk_dll_RtlCompareMemory(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -50899,7 +51661,7 @@ extern "C" fn thunk_RtlCompareMemory(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RtlCrc32(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_RtlCrc32(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "RtlCrc32");
     crate::thunk_helper(
@@ -50942,7 +51704,7 @@ extern "C" fn thunk_RtlCrc32(context: &mut ExtendedContext, memory: FlatMemoryCt
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RtlCrc64(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_RtlCrc64(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "RtlCrc64");
     crate::thunk_helper(
@@ -50985,7 +51747,7 @@ extern "C" fn thunk_RtlCrc64(context: &mut ExtendedContext, memory: FlatMemoryCt
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RtlIsZeroMemory(
+extern "C" fn thunk_dll_RtlIsZeroMemory(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -51032,7 +51794,7 @@ extern "C" fn thunk_RtlIsZeroMemory(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetProcessValidCallTargets(
+extern "C" fn thunk_dll_SetProcessValidCallTargets(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -51079,7 +51841,7 @@ extern "C" fn thunk_SetProcessValidCallTargets(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetProcessValidCallTargetsForMappedView(
+extern "C" fn thunk_dll_SetProcessValidCallTargetsForMappedView(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -51130,7 +51892,7 @@ extern "C" fn thunk_SetProcessValidCallTargetsForMappedView(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetProcessWorkingSetSizeEx(
+extern "C" fn thunk_dll_SetProcessWorkingSetSizeEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -51175,7 +51937,7 @@ extern "C" fn thunk_SetProcessWorkingSetSizeEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetSystemFileCacheSize(
+extern "C" fn thunk_dll_SetSystemFileCacheSize(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -51214,7 +51976,7 @@ extern "C" fn thunk_SetSystemFileCacheSize(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_UnmapViewOfFile(
+extern "C" fn thunk_dll_UnmapViewOfFile(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -51260,7 +52022,7 @@ extern "C" fn thunk_UnmapViewOfFile(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_UnmapViewOfFile2(
+extern "C" fn thunk_dll_UnmapViewOfFile2(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -51299,7 +52061,7 @@ extern "C" fn thunk_UnmapViewOfFile2(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_UnmapViewOfFileEx(
+extern "C" fn thunk_dll_UnmapViewOfFileEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -51346,7 +52108,7 @@ extern "C" fn thunk_UnmapViewOfFileEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_UnregisterBadMemoryNotification(
+extern "C" fn thunk_dll_UnregisterBadMemoryNotification(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -51392,7 +52154,10 @@ extern "C" fn thunk_UnregisterBadMemoryNotification(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_VirtualAlloc(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_VirtualAlloc(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "VirtualAlloc",
@@ -51429,7 +52194,10 @@ extern "C" fn thunk_VirtualAlloc(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_VirtualAlloc2(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_VirtualAlloc2(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "VirtualAlloc2",
@@ -51477,7 +52245,7 @@ extern "C" fn thunk_VirtualAlloc2(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_VirtualAlloc2FromApp(
+extern "C" fn thunk_dll_VirtualAlloc2FromApp(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -51528,7 +52296,7 @@ extern "C" fn thunk_VirtualAlloc2FromApp(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_VirtualAllocEx(
+extern "C" fn thunk_dll_VirtualAllocEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -51575,7 +52343,7 @@ extern "C" fn thunk_VirtualAllocEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_VirtualAllocExNuma(
+extern "C" fn thunk_dll_VirtualAllocExNuma(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -51624,7 +52392,7 @@ extern "C" fn thunk_VirtualAllocExNuma(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_VirtualAllocFromApp(
+extern "C" fn thunk_dll_VirtualAllocFromApp(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -51664,7 +52432,10 @@ extern "C" fn thunk_VirtualAllocFromApp(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_VirtualFree(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_VirtualFree(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "VirtualFree");
     crate::thunk_helper(
@@ -51707,7 +52478,10 @@ extern "C" fn thunk_VirtualFree(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_VirtualFreeEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_VirtualFreeEx(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "VirtualFreeEx",
@@ -51744,7 +52518,10 @@ extern "C" fn thunk_VirtualFreeEx(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_VirtualLock(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_VirtualLock(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "VirtualLock");
     crate::thunk_helper(
@@ -51786,7 +52563,7 @@ extern "C" fn thunk_VirtualLock(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_VirtualProtect(
+extern "C" fn thunk_dll_VirtualProtect(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -51826,7 +52603,7 @@ extern "C" fn thunk_VirtualProtect(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_VirtualProtectEx(
+extern "C" fn thunk_dll_VirtualProtectEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -51873,7 +52650,7 @@ extern "C" fn thunk_VirtualProtectEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_VirtualProtectFromApp(
+extern "C" fn thunk_dll_VirtualProtectFromApp(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -51913,7 +52690,10 @@ extern "C" fn thunk_VirtualProtectFromApp(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_VirtualQuery(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_VirtualQuery(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "VirtualQuery",
@@ -51958,7 +52738,7 @@ extern "C" fn thunk_VirtualQuery(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_VirtualQueryEx(
+extern "C" fn thunk_dll_VirtualQueryEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -51998,7 +52778,10 @@ extern "C" fn thunk_VirtualQueryEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_VirtualUnlock(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_VirtualUnlock(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "VirtualUnlock",
@@ -52042,7 +52825,7 @@ extern "C" fn thunk_VirtualUnlock(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_VirtualUnlockEx(
+extern "C" fn thunk_dll_VirtualUnlockEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -52090,7 +52873,7 @@ extern "C" fn thunk_VirtualUnlockEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetComputerNameExA(
+extern "C" fn thunk_dll_GetComputerNameExA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -52138,7 +52921,7 @@ extern "C" fn thunk_GetComputerNameExA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetComputerNameExW(
+extern "C" fn thunk_dll_GetComputerNameExW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -52186,7 +52969,10 @@ extern "C" fn thunk_GetComputerNameExW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetLocalTime(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetLocalTime(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetLocalTime",
@@ -52229,7 +53015,7 @@ extern "C" fn thunk_GetLocalTime(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetLogicalProcessorInformation(
+extern "C" fn thunk_dll_GetLogicalProcessorInformation(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -52276,7 +53062,7 @@ extern "C" fn thunk_GetLogicalProcessorInformation(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetLogicalProcessorInformationEx(
+extern "C" fn thunk_dll_GetLogicalProcessorInformationEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -52315,7 +53101,7 @@ extern "C" fn thunk_GetLogicalProcessorInformationEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetNativeSystemInfo(
+extern "C" fn thunk_dll_GetNativeSystemInfo(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -52361,7 +53147,7 @@ extern "C" fn thunk_GetNativeSystemInfo(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetOsManufacturingMode(
+extern "C" fn thunk_dll_GetOsManufacturingMode(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -52407,7 +53193,7 @@ extern "C" fn thunk_GetOsManufacturingMode(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetOsSafeBootMode(
+extern "C" fn thunk_dll_GetOsSafeBootMode(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -52451,7 +53237,7 @@ extern "C" fn thunk_GetOsSafeBootMode(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetPhysicallyInstalledSystemMemory(
+extern "C" fn thunk_dll_GetPhysicallyInstalledSystemMemory(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -52497,7 +53283,7 @@ extern "C" fn thunk_GetPhysicallyInstalledSystemMemory(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetProcessorSystemCycleTime(
+extern "C" fn thunk_dll_GetProcessorSystemCycleTime(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -52545,7 +53331,7 @@ extern "C" fn thunk_GetProcessorSystemCycleTime(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetProductInfo(
+extern "C" fn thunk_dll_GetProductInfo(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -52592,7 +53378,7 @@ extern "C" fn thunk_GetProductInfo(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetSystemCpuSetInformation(
+extern "C" fn thunk_dll_GetSystemCpuSetInformation(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -52639,7 +53425,7 @@ extern "C" fn thunk_GetSystemCpuSetInformation(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetSystemDEPPolicy(
+extern "C" fn thunk_dll_GetSystemDEPPolicy(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -52681,7 +53467,7 @@ extern "C" fn thunk_GetSystemDEPPolicy(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetSystemDirectoryA(
+extern "C" fn thunk_dll_GetSystemDirectoryA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -52728,7 +53514,7 @@ extern "C" fn thunk_GetSystemDirectoryA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetSystemDirectoryW(
+extern "C" fn thunk_dll_GetSystemDirectoryW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -52775,7 +53561,7 @@ extern "C" fn thunk_GetSystemDirectoryW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetSystemFirmwareTable(
+extern "C" fn thunk_dll_GetSystemFirmwareTable(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -52820,7 +53606,10 @@ extern "C" fn thunk_GetSystemFirmwareTable(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetSystemInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetSystemInfo(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetSystemInfo",
@@ -52863,7 +53652,7 @@ extern "C" fn thunk_GetSystemInfo(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetSystemLeapSecondInformation(
+extern "C" fn thunk_dll_GetSystemLeapSecondInformation(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -52910,7 +53699,10 @@ extern "C" fn thunk_GetSystemLeapSecondInformation(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetSystemTime(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetSystemTime(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetSystemTime",
@@ -52953,7 +53745,7 @@ extern "C" fn thunk_GetSystemTime(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetSystemTimeAdjustment(
+extern "C" fn thunk_dll_GetSystemTimeAdjustment(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -52996,7 +53788,7 @@ extern "C" fn thunk_GetSystemTimeAdjustment(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetSystemTimeAdjustmentPrecise(
+extern "C" fn thunk_dll_GetSystemTimeAdjustmentPrecise(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -53039,7 +53831,7 @@ extern "C" fn thunk_GetSystemTimeAdjustmentPrecise(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetSystemTimeAsFileTime(
+extern "C" fn thunk_dll_GetSystemTimeAsFileTime(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -53085,7 +53877,7 @@ extern "C" fn thunk_GetSystemTimeAsFileTime(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetSystemTimePreciseAsFileTime(
+extern "C" fn thunk_dll_GetSystemTimePreciseAsFileTime(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -53131,7 +53923,7 @@ extern "C" fn thunk_GetSystemTimePreciseAsFileTime(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetSystemWindowsDirectoryA(
+extern "C" fn thunk_dll_GetSystemWindowsDirectoryA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -53178,7 +53970,7 @@ extern "C" fn thunk_GetSystemWindowsDirectoryA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetSystemWindowsDirectoryW(
+extern "C" fn thunk_dll_GetSystemWindowsDirectoryW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -53225,7 +54017,7 @@ extern "C" fn thunk_GetSystemWindowsDirectoryW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetSystemWow64Directory2A(
+extern "C" fn thunk_dll_GetSystemWow64Directory2A(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -53264,7 +54056,7 @@ extern "C" fn thunk_GetSystemWow64Directory2A(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetSystemWow64Directory2W(
+extern "C" fn thunk_dll_GetSystemWow64Directory2W(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -53303,7 +54095,7 @@ extern "C" fn thunk_GetSystemWow64Directory2W(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetSystemWow64DirectoryA(
+extern "C" fn thunk_dll_GetSystemWow64DirectoryA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -53350,7 +54142,7 @@ extern "C" fn thunk_GetSystemWow64DirectoryA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetSystemWow64DirectoryW(
+extern "C" fn thunk_dll_GetSystemWow64DirectoryW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -53397,7 +54189,10 @@ extern "C" fn thunk_GetSystemWow64DirectoryW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetTickCount(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetTickCount(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetTickCount",
@@ -53436,7 +54231,7 @@ extern "C" fn thunk_GetTickCount(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetTickCount64(
+extern "C" fn thunk_dll_GetTickCount64(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -53478,7 +54273,10 @@ extern "C" fn thunk_GetTickCount64(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetVersion(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetVersion(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetVersion");
     crate::thunk_helper(
@@ -53515,7 +54313,10 @@ extern "C" fn thunk_GetVersion(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetVersionExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetVersionExA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetVersionExA",
@@ -53558,7 +54359,10 @@ extern "C" fn thunk_GetVersionExA(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetVersionExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetVersionExW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetVersionExW",
@@ -53601,7 +54405,7 @@ extern "C" fn thunk_GetVersionExW(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetWindowsDirectoryA(
+extern "C" fn thunk_dll_GetWindowsDirectoryA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -53648,7 +54452,7 @@ extern "C" fn thunk_GetWindowsDirectoryA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetWindowsDirectoryW(
+extern "C" fn thunk_dll_GetWindowsDirectoryW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -53695,7 +54499,7 @@ extern "C" fn thunk_GetWindowsDirectoryW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GlobalMemoryStatus(
+extern "C" fn thunk_dll_GlobalMemoryStatus(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -53739,7 +54543,7 @@ extern "C" fn thunk_GlobalMemoryStatus(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GlobalMemoryStatusEx(
+extern "C" fn thunk_dll_GlobalMemoryStatusEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -53783,7 +54587,7 @@ extern "C" fn thunk_GlobalMemoryStatusEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RtlConvertDeviceFamilyInfoToString(
+extern "C" fn thunk_dll_RtlConvertDeviceFamilyInfoToString(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -53828,7 +54632,7 @@ extern "C" fn thunk_RtlConvertDeviceFamilyInfoToString(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RtlGetDeviceFamilyInfoEnum(
+extern "C" fn thunk_dll_RtlGetDeviceFamilyInfoEnum(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -53867,7 +54671,7 @@ extern "C" fn thunk_RtlGetDeviceFamilyInfoEnum(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RtlGetProductInfo(
+extern "C" fn thunk_dll_RtlGetProductInfo(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -53914,7 +54718,7 @@ extern "C" fn thunk_RtlGetProductInfo(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RtlGetSystemGlobalData(
+extern "C" fn thunk_dll_RtlGetSystemGlobalData(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -53962,7 +54766,7 @@ extern "C" fn thunk_RtlGetSystemGlobalData(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RtlOsDeploymentState(
+extern "C" fn thunk_dll_RtlOsDeploymentState(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -54006,7 +54810,7 @@ extern "C" fn thunk_RtlOsDeploymentState(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RtlSwitchedVVI(
+extern "C" fn thunk_dll_RtlSwitchedVVI(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -54045,7 +54849,7 @@ extern "C" fn thunk_RtlSwitchedVVI(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetComputerNameA(
+extern "C" fn thunk_dll_SetComputerNameA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -54091,7 +54895,7 @@ extern "C" fn thunk_SetComputerNameA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetComputerNameEx2W(
+extern "C" fn thunk_dll_SetComputerNameEx2W(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -54139,7 +54943,7 @@ extern "C" fn thunk_SetComputerNameEx2W(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetComputerNameExA(
+extern "C" fn thunk_dll_SetComputerNameExA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -54186,7 +54990,7 @@ extern "C" fn thunk_SetComputerNameExA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetComputerNameExW(
+extern "C" fn thunk_dll_SetComputerNameExW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -54233,7 +55037,7 @@ extern "C" fn thunk_SetComputerNameExW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetComputerNameW(
+extern "C" fn thunk_dll_SetComputerNameW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -54279,7 +55083,10 @@ extern "C" fn thunk_SetComputerNameW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetLocalTime(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_SetLocalTime(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "SetLocalTime",
@@ -54322,7 +55129,10 @@ extern "C" fn thunk_SetLocalTime(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetSystemTime(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_SetSystemTime(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "SetSystemTime",
@@ -54365,7 +55175,7 @@ extern "C" fn thunk_SetSystemTime(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetSystemTimeAdjustment(
+extern "C" fn thunk_dll_SetSystemTimeAdjustment(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -54403,7 +55213,7 @@ extern "C" fn thunk_SetSystemTimeAdjustment(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetSystemTimeAdjustmentPrecise(
+extern "C" fn thunk_dll_SetSystemTimeAdjustmentPrecise(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -54441,7 +55251,7 @@ extern "C" fn thunk_SetSystemTimeAdjustmentPrecise(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_VerSetConditionMask(
+extern "C" fn thunk_dll_VerSetConditionMask(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -54480,7 +55290,7 @@ extern "C" fn thunk_VerSetConditionMask(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_VerifyVersionInfoA(
+extern "C" fn thunk_dll_VerifyVersionInfoA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -54519,7 +55329,7 @@ extern "C" fn thunk_VerifyVersionInfoA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_VerifyVersionInfoW(
+extern "C" fn thunk_dll_VerifyVersionInfoW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -54558,7 +55368,7 @@ extern "C" fn thunk_VerifyVersionInfoW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_UnregisterDeviceNotification(
+extern "C" fn thunk_dll_UnregisterDeviceNotification(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -54602,7 +55412,7 @@ extern "C" fn thunk_UnregisterDeviceNotification(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_AcquireSRWLockExclusive(
+extern "C" fn thunk_dll_AcquireSRWLockExclusive(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -54646,7 +55456,7 @@ extern "C" fn thunk_AcquireSRWLockExclusive(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_AcquireSRWLockShared(
+extern "C" fn thunk_dll_AcquireSRWLockShared(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -54690,7 +55500,7 @@ extern "C" fn thunk_AcquireSRWLockShared(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_AddIntegrityLabelToBoundaryDescriptor(
+extern "C" fn thunk_dll_AddIntegrityLabelToBoundaryDescriptor(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -54737,7 +55547,7 @@ extern "C" fn thunk_AddIntegrityLabelToBoundaryDescriptor(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_AddSIDToBoundaryDescriptor(
+extern "C" fn thunk_dll_AddSIDToBoundaryDescriptor(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -54784,7 +55594,7 @@ extern "C" fn thunk_AddSIDToBoundaryDescriptor(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_AttachThreadInput(
+extern "C" fn thunk_dll_AttachThreadInput(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -54832,7 +55642,7 @@ extern "C" fn thunk_AttachThreadInput(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_AvQuerySystemResponsiveness(
+extern "C" fn thunk_dll_AvQuerySystemResponsiveness(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -54879,7 +55689,7 @@ extern "C" fn thunk_AvQuerySystemResponsiveness(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_AvRevertMmThreadCharacteristics(
+extern "C" fn thunk_dll_AvRevertMmThreadCharacteristics(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -54925,7 +55735,7 @@ extern "C" fn thunk_AvRevertMmThreadCharacteristics(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_AvRtCreateThreadOrderingGroup(
+extern "C" fn thunk_dll_AvRtCreateThreadOrderingGroup(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -54965,7 +55775,7 @@ extern "C" fn thunk_AvRtCreateThreadOrderingGroup(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_AvRtCreateThreadOrderingGroupExA(
+extern "C" fn thunk_dll_AvRtCreateThreadOrderingGroupExA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -55012,7 +55822,7 @@ extern "C" fn thunk_AvRtCreateThreadOrderingGroupExA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_AvRtCreateThreadOrderingGroupExW(
+extern "C" fn thunk_dll_AvRtCreateThreadOrderingGroupExW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -55059,7 +55869,7 @@ extern "C" fn thunk_AvRtCreateThreadOrderingGroupExW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_AvRtDeleteThreadOrderingGroup(
+extern "C" fn thunk_dll_AvRtDeleteThreadOrderingGroup(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -55103,7 +55913,7 @@ extern "C" fn thunk_AvRtDeleteThreadOrderingGroup(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_AvRtJoinThreadOrderingGroup(
+extern "C" fn thunk_dll_AvRtJoinThreadOrderingGroup(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -55142,7 +55952,7 @@ extern "C" fn thunk_AvRtJoinThreadOrderingGroup(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_AvRtLeaveThreadOrderingGroup(
+extern "C" fn thunk_dll_AvRtLeaveThreadOrderingGroup(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -55186,7 +55996,7 @@ extern "C" fn thunk_AvRtLeaveThreadOrderingGroup(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_AvRtWaitOnThreadOrderingGroup(
+extern "C" fn thunk_dll_AvRtWaitOnThreadOrderingGroup(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -55230,7 +56040,7 @@ extern "C" fn thunk_AvRtWaitOnThreadOrderingGroup(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_AvSetMmMaxThreadCharacteristicsA(
+extern "C" fn thunk_dll_AvSetMmMaxThreadCharacteristicsA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -55269,7 +56079,7 @@ extern "C" fn thunk_AvSetMmMaxThreadCharacteristicsA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_AvSetMmMaxThreadCharacteristicsW(
+extern "C" fn thunk_dll_AvSetMmMaxThreadCharacteristicsW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -55308,7 +56118,7 @@ extern "C" fn thunk_AvSetMmMaxThreadCharacteristicsW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_AvSetMmThreadCharacteristicsA(
+extern "C" fn thunk_dll_AvSetMmThreadCharacteristicsA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -55355,7 +56165,7 @@ extern "C" fn thunk_AvSetMmThreadCharacteristicsA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_AvSetMmThreadCharacteristicsW(
+extern "C" fn thunk_dll_AvSetMmThreadCharacteristicsW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -55402,7 +56212,7 @@ extern "C" fn thunk_AvSetMmThreadCharacteristicsW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_AvSetMmThreadPriority(
+extern "C" fn thunk_dll_AvSetMmThreadPriority(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -55449,7 +56259,7 @@ extern "C" fn thunk_AvSetMmThreadPriority(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CallbackMayRunLong(
+extern "C" fn thunk_dll_CallbackMayRunLong(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -55486,7 +56296,7 @@ extern "C" fn thunk_CallbackMayRunLong(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CancelThreadpoolIo(
+extern "C" fn thunk_dll_CancelThreadpoolIo(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -55523,7 +56333,7 @@ extern "C" fn thunk_CancelThreadpoolIo(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CancelWaitableTimer(
+extern "C" fn thunk_dll_CancelWaitableTimer(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -55567,7 +56377,7 @@ extern "C" fn thunk_CancelWaitableTimer(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ChangeTimerQueueTimer(
+extern "C" fn thunk_dll_ChangeTimerQueueTimer(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -55607,7 +56417,7 @@ extern "C" fn thunk_ChangeTimerQueueTimer(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ClosePrivateNamespace(
+extern "C" fn thunk_dll_ClosePrivateNamespace(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -55654,7 +56464,7 @@ extern "C" fn thunk_ClosePrivateNamespace(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CloseThreadpool(
+extern "C" fn thunk_dll_CloseThreadpool(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -55698,7 +56508,7 @@ extern "C" fn thunk_CloseThreadpool(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CloseThreadpoolCleanupGroup(
+extern "C" fn thunk_dll_CloseThreadpoolCleanupGroup(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -55742,7 +56552,7 @@ extern "C" fn thunk_CloseThreadpoolCleanupGroup(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CloseThreadpoolCleanupGroupMembers(
+extern "C" fn thunk_dll_CloseThreadpoolCleanupGroupMembers(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -55785,7 +56595,7 @@ extern "C" fn thunk_CloseThreadpoolCleanupGroupMembers(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CloseThreadpoolIo(
+extern "C" fn thunk_dll_CloseThreadpoolIo(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -55822,7 +56632,7 @@ extern "C" fn thunk_CloseThreadpoolIo(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CloseThreadpoolTimer(
+extern "C" fn thunk_dll_CloseThreadpoolTimer(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -55859,7 +56669,7 @@ extern "C" fn thunk_CloseThreadpoolTimer(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CloseThreadpoolWait(
+extern "C" fn thunk_dll_CloseThreadpoolWait(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -55896,7 +56706,7 @@ extern "C" fn thunk_CloseThreadpoolWait(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CloseThreadpoolWork(
+extern "C" fn thunk_dll_CloseThreadpoolWork(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -55933,7 +56743,7 @@ extern "C" fn thunk_CloseThreadpoolWork(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ConvertFiberToThread(
+extern "C" fn thunk_dll_ConvertFiberToThread(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -55975,7 +56785,7 @@ extern "C" fn thunk_ConvertFiberToThread(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ConvertThreadToFiber(
+extern "C" fn thunk_dll_ConvertThreadToFiber(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -56021,7 +56831,7 @@ extern "C" fn thunk_ConvertThreadToFiber(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ConvertThreadToFiberEx(
+extern "C" fn thunk_dll_ConvertThreadToFiberEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -56068,7 +56878,7 @@ extern "C" fn thunk_ConvertThreadToFiberEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateBoundaryDescriptorA(
+extern "C" fn thunk_dll_CreateBoundaryDescriptorA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -56115,7 +56925,7 @@ extern "C" fn thunk_CreateBoundaryDescriptorA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateBoundaryDescriptorW(
+extern "C" fn thunk_dll_CreateBoundaryDescriptorW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -56162,7 +56972,10 @@ extern "C" fn thunk_CreateBoundaryDescriptorW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateFiber(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_CreateFiber(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "CreateFiber");
     crate::thunk_helper(
@@ -56196,7 +57009,10 @@ extern "C" fn thunk_CreateFiber(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateFiberEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_CreateFiberEx(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "CreateFiberEx",
@@ -56240,7 +57056,7 @@ extern "C" fn thunk_CreateFiberEx(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateProcessWithLogonW(
+extern "C" fn thunk_dll_CreateProcessWithLogonW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -56299,7 +57115,7 @@ extern "C" fn thunk_CreateProcessWithLogonW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateProcessWithTokenW(
+extern "C" fn thunk_dll_CreateProcessWithTokenW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -56354,7 +57170,7 @@ extern "C" fn thunk_CreateProcessWithTokenW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateThreadpool(
+extern "C" fn thunk_dll_CreateThreadpool(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -56398,7 +57214,7 @@ extern "C" fn thunk_CreateThreadpool(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateThreadpoolCleanupGroup(
+extern "C" fn thunk_dll_CreateThreadpoolCleanupGroup(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -56440,7 +57256,7 @@ extern "C" fn thunk_CreateThreadpoolCleanupGroup(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateThreadpoolIo(
+extern "C" fn thunk_dll_CreateThreadpoolIo(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -56489,7 +57305,7 @@ extern "C" fn thunk_CreateThreadpoolIo(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateThreadpoolTimer(
+extern "C" fn thunk_dll_CreateThreadpoolTimer(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -56537,7 +57353,7 @@ extern "C" fn thunk_CreateThreadpoolTimer(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateThreadpoolWait(
+extern "C" fn thunk_dll_CreateThreadpoolWait(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -56585,7 +57401,7 @@ extern "C" fn thunk_CreateThreadpoolWait(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateThreadpoolWork(
+extern "C" fn thunk_dll_CreateThreadpoolWork(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -56633,7 +57449,7 @@ extern "C" fn thunk_CreateThreadpoolWork(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateTimerQueue(
+extern "C" fn thunk_dll_CreateTimerQueue(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -56675,7 +57491,7 @@ extern "C" fn thunk_CreateTimerQueue(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateTimerQueueTimer(
+extern "C" fn thunk_dll_CreateTimerQueueTimer(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -56726,7 +57542,7 @@ extern "C" fn thunk_CreateTimerQueueTimer(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateUmsCompletionList(
+extern "C" fn thunk_dll_CreateUmsCompletionList(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -56772,7 +57588,7 @@ extern "C" fn thunk_CreateUmsCompletionList(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateUmsThreadContext(
+extern "C" fn thunk_dll_CreateUmsThreadContext(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -56818,7 +57634,7 @@ extern "C" fn thunk_CreateUmsThreadContext(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DeleteBoundaryDescriptor(
+extern "C" fn thunk_dll_DeleteBoundaryDescriptor(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -56864,7 +57680,7 @@ extern "C" fn thunk_DeleteBoundaryDescriptor(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DeleteCriticalSection(
+extern "C" fn thunk_dll_DeleteCriticalSection(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -56910,7 +57726,10 @@ extern "C" fn thunk_DeleteCriticalSection(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DeleteFiber(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_DeleteFiber(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "DeleteFiber");
     crate::thunk_helper(
@@ -56949,7 +57768,7 @@ extern "C" fn thunk_DeleteFiber(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DeleteProcThreadAttributeList(
+extern "C" fn thunk_dll_DeleteProcThreadAttributeList(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -56995,7 +57814,7 @@ extern "C" fn thunk_DeleteProcThreadAttributeList(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DeleteSynchronizationBarrier(
+extern "C" fn thunk_dll_DeleteSynchronizationBarrier(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -57041,7 +57860,7 @@ extern "C" fn thunk_DeleteSynchronizationBarrier(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DeleteTimerQueue(
+extern "C" fn thunk_dll_DeleteTimerQueue(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -57087,7 +57906,7 @@ extern "C" fn thunk_DeleteTimerQueue(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DeleteTimerQueueEx(
+extern "C" fn thunk_dll_DeleteTimerQueueEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -57134,7 +57953,7 @@ extern "C" fn thunk_DeleteTimerQueueEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DeleteTimerQueueTimer(
+extern "C" fn thunk_dll_DeleteTimerQueueTimer(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -57173,7 +57992,7 @@ extern "C" fn thunk_DeleteTimerQueueTimer(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DeleteUmsCompletionList(
+extern "C" fn thunk_dll_DeleteUmsCompletionList(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -57219,7 +58038,7 @@ extern "C" fn thunk_DeleteUmsCompletionList(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DeleteUmsThreadContext(
+extern "C" fn thunk_dll_DeleteUmsThreadContext(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -57265,7 +58084,7 @@ extern "C" fn thunk_DeleteUmsThreadContext(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DequeueUmsCompletionListItems(
+extern "C" fn thunk_dll_DequeueUmsCompletionListItems(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -57308,7 +58127,7 @@ extern "C" fn thunk_DequeueUmsCompletionListItems(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DisassociateCurrentThreadFromCallback(
+extern "C" fn thunk_dll_DisassociateCurrentThreadFromCallback(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -57345,7 +58164,7 @@ extern "C" fn thunk_DisassociateCurrentThreadFromCallback(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnterCriticalSection(
+extern "C" fn thunk_dll_EnterCriticalSection(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -57391,7 +58210,7 @@ extern "C" fn thunk_EnterCriticalSection(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnterSynchronizationBarrier(
+extern "C" fn thunk_dll_EnterSynchronizationBarrier(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -57438,7 +58257,7 @@ extern "C" fn thunk_EnterSynchronizationBarrier(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnterUmsSchedulingMode(
+extern "C" fn thunk_dll_EnterUmsSchedulingMode(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -57484,7 +58303,7 @@ extern "C" fn thunk_EnterUmsSchedulingMode(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ExecuteUmsThread(
+extern "C" fn thunk_dll_ExecuteUmsThread(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -57530,7 +58349,10 @@ extern "C" fn thunk_ExecuteUmsThread(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ExitProcess(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_ExitProcess(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "ExitProcess");
     crate::thunk_helper(
@@ -57572,7 +58394,10 @@ extern "C" fn thunk_ExitProcess(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ExitThread(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_ExitThread(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "ExitThread");
     crate::thunk_helper(
@@ -57614,7 +58439,7 @@ extern "C" fn thunk_ExitThread(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FlsAlloc(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_FlsAlloc(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "FlsAlloc");
     crate::thunk_helper(
@@ -57655,7 +58480,7 @@ extern "C" fn thunk_FlsAlloc(context: &mut ExtendedContext, memory: FlatMemoryCt
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FlsFree(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_FlsFree(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "FlsFree");
     crate::thunk_helper(
@@ -57696,7 +58521,10 @@ extern "C" fn thunk_FlsFree(context: &mut ExtendedContext, memory: FlatMemoryCtx
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FlsGetValue(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_FlsGetValue(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "FlsGetValue");
     crate::thunk_helper(
@@ -57737,7 +58565,10 @@ extern "C" fn thunk_FlsGetValue(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FlsSetValue(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_FlsSetValue(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "FlsSetValue");
     crate::thunk_helper(
@@ -57779,7 +58610,7 @@ extern "C" fn thunk_FlsSetValue(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FlushProcessWriteBuffers(
+extern "C" fn thunk_dll_FlushProcessWriteBuffers(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -57821,7 +58652,7 @@ extern "C" fn thunk_FlushProcessWriteBuffers(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FreeLibraryWhenCallbackReturns(
+extern "C" fn thunk_dll_FreeLibraryWhenCallbackReturns(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -57868,7 +58699,7 @@ extern "C" fn thunk_FreeLibraryWhenCallbackReturns(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetActiveProcessorCount(
+extern "C" fn thunk_dll_GetActiveProcessorCount(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -57914,7 +58745,7 @@ extern "C" fn thunk_GetActiveProcessorCount(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetActiveProcessorGroupCount(
+extern "C" fn thunk_dll_GetActiveProcessorGroupCount(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -57956,7 +58787,7 @@ extern "C" fn thunk_GetActiveProcessorGroupCount(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetCurrentProcess(
+extern "C" fn thunk_dll_GetCurrentProcess(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -57998,7 +58829,7 @@ extern "C" fn thunk_GetCurrentProcess(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetCurrentProcessId(
+extern "C" fn thunk_dll_GetCurrentProcessId(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -58040,7 +58871,7 @@ extern "C" fn thunk_GetCurrentProcessId(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetCurrentProcessorNumber(
+extern "C" fn thunk_dll_GetCurrentProcessorNumber(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -58082,7 +58913,7 @@ extern "C" fn thunk_GetCurrentProcessorNumber(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetCurrentProcessorNumberEx(
+extern "C" fn thunk_dll_GetCurrentProcessorNumberEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -58128,7 +58959,7 @@ extern "C" fn thunk_GetCurrentProcessorNumberEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetCurrentThread(
+extern "C" fn thunk_dll_GetCurrentThread(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -58170,7 +59001,7 @@ extern "C" fn thunk_GetCurrentThread(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetCurrentThreadId(
+extern "C" fn thunk_dll_GetCurrentThreadId(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -58212,7 +59043,7 @@ extern "C" fn thunk_GetCurrentThreadId(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetCurrentThreadStackLimits(
+extern "C" fn thunk_dll_GetCurrentThreadStackLimits(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -58259,7 +59090,7 @@ extern "C" fn thunk_GetCurrentThreadStackLimits(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetCurrentUmsThread(
+extern "C" fn thunk_dll_GetCurrentUmsThread(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -58301,7 +59132,7 @@ extern "C" fn thunk_GetCurrentUmsThread(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetExitCodeProcess(
+extern "C" fn thunk_dll_GetExitCodeProcess(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -58348,7 +59179,7 @@ extern "C" fn thunk_GetExitCodeProcess(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetExitCodeThread(
+extern "C" fn thunk_dll_GetExitCodeThread(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -58395,7 +59226,7 @@ extern "C" fn thunk_GetExitCodeThread(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetGuiResources(
+extern "C" fn thunk_dll_GetGuiResources(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -58442,7 +59273,7 @@ extern "C" fn thunk_GetGuiResources(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetMachineTypeAttributes(
+extern "C" fn thunk_dll_GetMachineTypeAttributes(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -58489,7 +59320,7 @@ extern "C" fn thunk_GetMachineTypeAttributes(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetMaximumProcessorCount(
+extern "C" fn thunk_dll_GetMaximumProcessorCount(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -58535,7 +59366,7 @@ extern "C" fn thunk_GetMaximumProcessorCount(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetMaximumProcessorGroupCount(
+extern "C" fn thunk_dll_GetMaximumProcessorGroupCount(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -58577,7 +59408,7 @@ extern "C" fn thunk_GetMaximumProcessorGroupCount(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetNextUmsListItem(
+extern "C" fn thunk_dll_GetNextUmsListItem(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -58623,7 +59454,7 @@ extern "C" fn thunk_GetNextUmsListItem(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetNumaAvailableMemoryNode(
+extern "C" fn thunk_dll_GetNumaAvailableMemoryNode(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -58670,7 +59501,7 @@ extern "C" fn thunk_GetNumaAvailableMemoryNode(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetNumaAvailableMemoryNodeEx(
+extern "C" fn thunk_dll_GetNumaAvailableMemoryNodeEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -58717,7 +59548,7 @@ extern "C" fn thunk_GetNumaAvailableMemoryNodeEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetNumaHighestNodeNumber(
+extern "C" fn thunk_dll_GetNumaHighestNodeNumber(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -58763,7 +59594,7 @@ extern "C" fn thunk_GetNumaHighestNodeNumber(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetNumaNodeNumberFromHandle(
+extern "C" fn thunk_dll_GetNumaNodeNumberFromHandle(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -58810,7 +59641,7 @@ extern "C" fn thunk_GetNumaNodeNumberFromHandle(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetNumaNodeProcessorMask(
+extern "C" fn thunk_dll_GetNumaNodeProcessorMask(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -58857,7 +59688,7 @@ extern "C" fn thunk_GetNumaNodeProcessorMask(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetNumaNodeProcessorMask2(
+extern "C" fn thunk_dll_GetNumaNodeProcessorMask2(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -58902,7 +59733,7 @@ extern "C" fn thunk_GetNumaNodeProcessorMask2(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetNumaNodeProcessorMaskEx(
+extern "C" fn thunk_dll_GetNumaNodeProcessorMaskEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -58949,7 +59780,7 @@ extern "C" fn thunk_GetNumaNodeProcessorMaskEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetNumaProcessorNode(
+extern "C" fn thunk_dll_GetNumaProcessorNode(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -58996,7 +59827,7 @@ extern "C" fn thunk_GetNumaProcessorNode(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetNumaProcessorNodeEx(
+extern "C" fn thunk_dll_GetNumaProcessorNodeEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -59043,7 +59874,7 @@ extern "C" fn thunk_GetNumaProcessorNodeEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetNumaProximityNode(
+extern "C" fn thunk_dll_GetNumaProximityNode(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -59090,7 +59921,7 @@ extern "C" fn thunk_GetNumaProximityNode(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetNumaProximityNodeEx(
+extern "C" fn thunk_dll_GetNumaProximityNodeEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -59137,7 +59968,7 @@ extern "C" fn thunk_GetNumaProximityNodeEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetPriorityClass(
+extern "C" fn thunk_dll_GetPriorityClass(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -59181,7 +60012,7 @@ extern "C" fn thunk_GetPriorityClass(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetProcessAffinityMask(
+extern "C" fn thunk_dll_GetProcessAffinityMask(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -59224,7 +60055,7 @@ extern "C" fn thunk_GetProcessAffinityMask(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetProcessDEPPolicy(
+extern "C" fn thunk_dll_GetProcessDEPPolicy(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -59272,7 +60103,7 @@ extern "C" fn thunk_GetProcessDEPPolicy(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetProcessDefaultCpuSetMasks(
+extern "C" fn thunk_dll_GetProcessDefaultCpuSetMasks(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -59317,7 +60148,7 @@ extern "C" fn thunk_GetProcessDefaultCpuSetMasks(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetProcessDefaultCpuSets(
+extern "C" fn thunk_dll_GetProcessDefaultCpuSets(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -59362,7 +60193,7 @@ extern "C" fn thunk_GetProcessDefaultCpuSets(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetProcessGroupAffinity(
+extern "C" fn thunk_dll_GetProcessGroupAffinity(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -59401,7 +60232,7 @@ extern "C" fn thunk_GetProcessGroupAffinity(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetProcessHandleCount(
+extern "C" fn thunk_dll_GetProcessHandleCount(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -59448,7 +60279,10 @@ extern "C" fn thunk_GetProcessHandleCount(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetProcessId(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetProcessId(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetProcessId",
@@ -59489,7 +60323,7 @@ extern "C" fn thunk_GetProcessId(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetProcessIdOfThread(
+extern "C" fn thunk_dll_GetProcessIdOfThread(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -59533,7 +60367,7 @@ extern "C" fn thunk_GetProcessIdOfThread(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetProcessInformation(
+extern "C" fn thunk_dll_GetProcessInformation(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -59578,7 +60412,7 @@ extern "C" fn thunk_GetProcessInformation(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetProcessIoCounters(
+extern "C" fn thunk_dll_GetProcessIoCounters(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -59625,7 +60459,7 @@ extern "C" fn thunk_GetProcessIoCounters(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetProcessMitigationPolicy(
+extern "C" fn thunk_dll_GetProcessMitigationPolicy(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -59665,7 +60499,7 @@ extern "C" fn thunk_GetProcessMitigationPolicy(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetProcessPriorityBoost(
+extern "C" fn thunk_dll_GetProcessPriorityBoost(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -59712,7 +60546,7 @@ extern "C" fn thunk_GetProcessPriorityBoost(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetProcessShutdownParameters(
+extern "C" fn thunk_dll_GetProcessShutdownParameters(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -59759,7 +60593,7 @@ extern "C" fn thunk_GetProcessShutdownParameters(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetProcessTimes(
+extern "C" fn thunk_dll_GetProcessTimes(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -59806,7 +60640,7 @@ extern "C" fn thunk_GetProcessTimes(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetProcessVersion(
+extern "C" fn thunk_dll_GetProcessVersion(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -59852,7 +60686,7 @@ extern "C" fn thunk_GetProcessVersion(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetProcessWorkingSetSize(
+extern "C" fn thunk_dll_GetProcessWorkingSetSize(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -59895,7 +60729,7 @@ extern "C" fn thunk_GetProcessWorkingSetSize(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetStartupInfoA(
+extern "C" fn thunk_dll_GetStartupInfoA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -59941,7 +60775,7 @@ extern "C" fn thunk_GetStartupInfoA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetStartupInfoW(
+extern "C" fn thunk_dll_GetStartupInfoW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -59987,7 +60821,7 @@ extern "C" fn thunk_GetStartupInfoW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetSystemTimes(
+extern "C" fn thunk_dll_GetSystemTimes(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -60026,7 +60860,7 @@ extern "C" fn thunk_GetSystemTimes(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetThreadDescription(
+extern "C" fn thunk_dll_GetThreadDescription(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -60073,7 +60907,7 @@ extern "C" fn thunk_GetThreadDescription(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetThreadGroupAffinity(
+extern "C" fn thunk_dll_GetThreadGroupAffinity(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -60120,7 +60954,7 @@ extern "C" fn thunk_GetThreadGroupAffinity(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetThreadIOPendingFlag(
+extern "C" fn thunk_dll_GetThreadIOPendingFlag(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -60167,7 +61001,10 @@ extern "C" fn thunk_GetThreadIOPendingFlag(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetThreadId(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetThreadId(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetThreadId");
     crate::thunk_helper(
@@ -60206,7 +61043,7 @@ extern "C" fn thunk_GetThreadId(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetThreadIdealProcessorEx(
+extern "C" fn thunk_dll_GetThreadIdealProcessorEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -60253,7 +61090,7 @@ extern "C" fn thunk_GetThreadIdealProcessorEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetThreadInformation(
+extern "C" fn thunk_dll_GetThreadInformation(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -60298,7 +61135,7 @@ extern "C" fn thunk_GetThreadInformation(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetThreadPriority(
+extern "C" fn thunk_dll_GetThreadPriority(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -60342,7 +61179,7 @@ extern "C" fn thunk_GetThreadPriority(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetThreadPriorityBoost(
+extern "C" fn thunk_dll_GetThreadPriorityBoost(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -60389,7 +61226,7 @@ extern "C" fn thunk_GetThreadPriorityBoost(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetThreadSelectedCpuSetMasks(
+extern "C" fn thunk_dll_GetThreadSelectedCpuSetMasks(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -60434,7 +61271,7 @@ extern "C" fn thunk_GetThreadSelectedCpuSetMasks(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetThreadSelectedCpuSets(
+extern "C" fn thunk_dll_GetThreadSelectedCpuSets(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -60479,7 +61316,7 @@ extern "C" fn thunk_GetThreadSelectedCpuSets(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetThreadTimes(
+extern "C" fn thunk_dll_GetThreadTimes(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -60526,7 +61363,7 @@ extern "C" fn thunk_GetThreadTimes(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetUmsCompletionListEvent(
+extern "C" fn thunk_dll_GetUmsCompletionListEvent(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -60564,7 +61401,7 @@ extern "C" fn thunk_GetUmsCompletionListEvent(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetUmsSystemThreadInformation(
+extern "C" fn thunk_dll_GetUmsSystemThreadInformation(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -60611,7 +61448,7 @@ extern "C" fn thunk_GetUmsSystemThreadInformation(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_InitOnceBeginInitialize(
+extern "C" fn thunk_dll_InitOnceBeginInitialize(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -60651,7 +61488,7 @@ extern "C" fn thunk_InitOnceBeginInitialize(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_InitOnceComplete(
+extern "C" fn thunk_dll_InitOnceComplete(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -60690,7 +61527,7 @@ extern "C" fn thunk_InitOnceComplete(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_InitOnceExecuteOnce(
+extern "C" fn thunk_dll_InitOnceExecuteOnce(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -60730,7 +61567,7 @@ extern "C" fn thunk_InitOnceExecuteOnce(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_InitOnceInitialize(
+extern "C" fn thunk_dll_InitOnceInitialize(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -60774,7 +61611,7 @@ extern "C" fn thunk_InitOnceInitialize(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_InitializeConditionVariable(
+extern "C" fn thunk_dll_InitializeConditionVariable(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -60820,7 +61657,7 @@ extern "C" fn thunk_InitializeConditionVariable(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_InitializeCriticalSection(
+extern "C" fn thunk_dll_InitializeCriticalSection(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -60866,7 +61703,7 @@ extern "C" fn thunk_InitializeCriticalSection(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_InitializeCriticalSectionAndSpinCount(
+extern "C" fn thunk_dll_InitializeCriticalSectionAndSpinCount(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -60913,7 +61750,7 @@ extern "C" fn thunk_InitializeCriticalSectionAndSpinCount(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_InitializeCriticalSectionEx(
+extern "C" fn thunk_dll_InitializeCriticalSectionEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -60952,7 +61789,7 @@ extern "C" fn thunk_InitializeCriticalSectionEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_InitializeProcThreadAttributeList(
+extern "C" fn thunk_dll_InitializeProcThreadAttributeList(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -60997,7 +61834,7 @@ extern "C" fn thunk_InitializeProcThreadAttributeList(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_InitializeSListHead(
+extern "C" fn thunk_dll_InitializeSListHead(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -61041,7 +61878,7 @@ extern "C" fn thunk_InitializeSListHead(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_InitializeSRWLock(
+extern "C" fn thunk_dll_InitializeSRWLock(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -61085,7 +61922,7 @@ extern "C" fn thunk_InitializeSRWLock(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_InitializeSynchronizationBarrier(
+extern "C" fn thunk_dll_InitializeSynchronizationBarrier(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -61124,7 +61961,7 @@ extern "C" fn thunk_InitializeSynchronizationBarrier(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_InterlockedFlushSList(
+extern "C" fn thunk_dll_InterlockedFlushSList(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -61168,7 +62005,7 @@ extern "C" fn thunk_InterlockedFlushSList(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_InterlockedPopEntrySList(
+extern "C" fn thunk_dll_InterlockedPopEntrySList(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -61212,7 +62049,7 @@ extern "C" fn thunk_InterlockedPopEntrySList(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_InterlockedPushEntrySList(
+extern "C" fn thunk_dll_InterlockedPushEntrySList(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -61259,7 +62096,7 @@ extern "C" fn thunk_InterlockedPushEntrySList(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_InterlockedPushListSListEx(
+extern "C" fn thunk_dll_InterlockedPushListSListEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -61299,7 +62136,7 @@ extern "C" fn thunk_InterlockedPushListSListEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IsImmersiveProcess(
+extern "C" fn thunk_dll_IsImmersiveProcess(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -61343,7 +62180,7 @@ extern "C" fn thunk_IsImmersiveProcess(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IsProcessCritical(
+extern "C" fn thunk_dll_IsProcessCritical(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -61390,7 +62227,7 @@ extern "C" fn thunk_IsProcessCritical(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IsProcessorFeaturePresent(
+extern "C" fn thunk_dll_IsProcessorFeaturePresent(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -61436,7 +62273,7 @@ extern "C" fn thunk_IsProcessorFeaturePresent(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IsThreadAFiber(
+extern "C" fn thunk_dll_IsThreadAFiber(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -61478,7 +62315,7 @@ extern "C" fn thunk_IsThreadAFiber(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IsThreadpoolTimerSet(
+extern "C" fn thunk_dll_IsThreadpoolTimerSet(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -61515,7 +62352,7 @@ extern "C" fn thunk_IsThreadpoolTimerSet(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IsWow64Process(
+extern "C" fn thunk_dll_IsWow64Process(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -61562,7 +62399,7 @@ extern "C" fn thunk_IsWow64Process(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IsWow64Process2(
+extern "C" fn thunk_dll_IsWow64Process2(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -61601,7 +62438,7 @@ extern "C" fn thunk_IsWow64Process2(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LeaveCriticalSection(
+extern "C" fn thunk_dll_LeaveCriticalSection(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -61647,7 +62484,7 @@ extern "C" fn thunk_LeaveCriticalSection(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LeaveCriticalSectionWhenCallbackReturns(
+extern "C" fn thunk_dll_LeaveCriticalSectionWhenCallbackReturns(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -61694,7 +62531,7 @@ extern "C" fn thunk_LeaveCriticalSectionWhenCallbackReturns(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_NtQueryInformationProcess(
+extern "C" fn thunk_dll_NtQueryInformationProcess(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -61741,7 +62578,7 @@ extern "C" fn thunk_NtQueryInformationProcess(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_NtQueryInformationThread(
+extern "C" fn thunk_dll_NtQueryInformationThread(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -61788,7 +62625,7 @@ extern "C" fn thunk_NtQueryInformationThread(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_NtSetInformationThread(
+extern "C" fn thunk_dll_NtSetInformationThread(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -61833,7 +62670,10 @@ extern "C" fn thunk_NtSetInformationThread(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_OpenEventA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_OpenEventA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "OpenEventA");
     crate::thunk_helper(
@@ -61867,7 +62707,10 @@ extern "C" fn thunk_OpenEventA(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_OpenEventW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_OpenEventW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "OpenEventW");
     crate::thunk_helper(
@@ -61901,7 +62744,10 @@ extern "C" fn thunk_OpenEventW(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_OpenMutexW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_OpenMutexW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "OpenMutexW");
     crate::thunk_helper(
@@ -61935,7 +62781,7 @@ extern "C" fn thunk_OpenMutexW(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_OpenPrivateNamespaceA(
+extern "C" fn thunk_dll_OpenPrivateNamespaceA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -61982,7 +62828,7 @@ extern "C" fn thunk_OpenPrivateNamespaceA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_OpenPrivateNamespaceW(
+extern "C" fn thunk_dll_OpenPrivateNamespaceW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -62029,7 +62875,10 @@ extern "C" fn thunk_OpenPrivateNamespaceW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_OpenProcess(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_OpenProcess(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "OpenProcess");
     crate::thunk_helper(
@@ -62063,7 +62912,7 @@ extern "C" fn thunk_OpenProcess(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_OpenSemaphoreW(
+extern "C" fn thunk_dll_OpenSemaphoreW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -62102,7 +62951,10 @@ extern "C" fn thunk_OpenSemaphoreW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_OpenThread(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_OpenThread(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "OpenThread");
     crate::thunk_helper(
@@ -62136,7 +62988,7 @@ extern "C" fn thunk_OpenThread(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_OpenWaitableTimerW(
+extern "C" fn thunk_dll_OpenWaitableTimerW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -62175,7 +63027,10 @@ extern "C" fn thunk_OpenWaitableTimerW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_PulseEvent(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_PulseEvent(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "PulseEvent");
     crate::thunk_helper(
@@ -62214,7 +63069,7 @@ extern "C" fn thunk_PulseEvent(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_QueryDepthSList(
+extern "C" fn thunk_dll_QueryDepthSList(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -62258,7 +63113,7 @@ extern "C" fn thunk_QueryDepthSList(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_QueryFullProcessImageNameA(
+extern "C" fn thunk_dll_QueryFullProcessImageNameA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -62298,7 +63153,7 @@ extern "C" fn thunk_QueryFullProcessImageNameA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_QueryFullProcessImageNameW(
+extern "C" fn thunk_dll_QueryFullProcessImageNameW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -62338,7 +63193,7 @@ extern "C" fn thunk_QueryFullProcessImageNameW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_QueryProcessAffinityUpdateMode(
+extern "C" fn thunk_dll_QueryProcessAffinityUpdateMode(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -62385,7 +63240,7 @@ extern "C" fn thunk_QueryProcessAffinityUpdateMode(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_QueryProtectedPolicy(
+extern "C" fn thunk_dll_QueryProtectedPolicy(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -62432,7 +63287,7 @@ extern "C" fn thunk_QueryProtectedPolicy(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_QueryThreadpoolStackInformation(
+extern "C" fn thunk_dll_QueryThreadpoolStackInformation(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -62479,7 +63334,7 @@ extern "C" fn thunk_QueryThreadpoolStackInformation(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_QueryUmsThreadInformation(
+extern "C" fn thunk_dll_QueryUmsThreadInformation(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -62526,7 +63381,10 @@ extern "C" fn thunk_QueryUmsThreadInformation(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_QueueUserAPC(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_QueueUserAPC(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "QueueUserAPC",
@@ -62571,7 +63429,10 @@ extern "C" fn thunk_QueueUserAPC(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_QueueUserAPC2(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_QueueUserAPC2(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "QueueUserAPC2",
@@ -62608,7 +63469,7 @@ extern "C" fn thunk_QueueUserAPC2(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_QueueUserWorkItem(
+extern "C" fn thunk_dll_QueueUserWorkItem(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -62656,7 +63517,7 @@ extern "C" fn thunk_QueueUserWorkItem(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RegisterWaitForSingleObject(
+extern "C" fn thunk_dll_RegisterWaitForSingleObject(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -62705,7 +63566,10 @@ extern "C" fn thunk_RegisterWaitForSingleObject(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ReleaseMutex(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_ReleaseMutex(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "ReleaseMutex",
@@ -62746,7 +63610,7 @@ extern "C" fn thunk_ReleaseMutex(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ReleaseMutexWhenCallbackReturns(
+extern "C" fn thunk_dll_ReleaseMutexWhenCallbackReturns(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -62793,7 +63657,7 @@ extern "C" fn thunk_ReleaseMutexWhenCallbackReturns(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ReleaseSRWLockExclusive(
+extern "C" fn thunk_dll_ReleaseSRWLockExclusive(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -62837,7 +63701,7 @@ extern "C" fn thunk_ReleaseSRWLockExclusive(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ReleaseSRWLockShared(
+extern "C" fn thunk_dll_ReleaseSRWLockShared(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -62881,7 +63745,7 @@ extern "C" fn thunk_ReleaseSRWLockShared(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ReleaseSemaphore(
+extern "C" fn thunk_dll_ReleaseSemaphore(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -62920,7 +63784,7 @@ extern "C" fn thunk_ReleaseSemaphore(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ReleaseSemaphoreWhenCallbackReturns(
+extern "C" fn thunk_dll_ReleaseSemaphoreWhenCallbackReturns(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -62968,7 +63832,10 @@ extern "C" fn thunk_ReleaseSemaphoreWhenCallbackReturns(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ResetEvent(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_ResetEvent(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "ResetEvent");
     crate::thunk_helper(
@@ -63007,7 +63874,10 @@ extern "C" fn thunk_ResetEvent(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ResumeThread(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_ResumeThread(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "ResumeThread",
@@ -63048,7 +63918,7 @@ extern "C" fn thunk_ResumeThread(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetCriticalSectionSpinCount(
+extern "C" fn thunk_dll_SetCriticalSectionSpinCount(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -63095,7 +63965,7 @@ extern "C" fn thunk_SetCriticalSectionSpinCount(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetEvent(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_SetEvent(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "SetEvent");
     crate::thunk_helper(
@@ -63134,7 +64004,7 @@ extern "C" fn thunk_SetEvent(context: &mut ExtendedContext, memory: FlatMemoryCt
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetEventWhenCallbackReturns(
+extern "C" fn thunk_dll_SetEventWhenCallbackReturns(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -63181,7 +64051,7 @@ extern "C" fn thunk_SetEventWhenCallbackReturns(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetPriorityClass(
+extern "C" fn thunk_dll_SetPriorityClass(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -63228,7 +64098,7 @@ extern "C" fn thunk_SetPriorityClass(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetProcessAffinityMask(
+extern "C" fn thunk_dll_SetProcessAffinityMask(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -63275,7 +64145,7 @@ extern "C" fn thunk_SetProcessAffinityMask(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetProcessAffinityUpdateMode(
+extern "C" fn thunk_dll_SetProcessAffinityUpdateMode(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -63322,7 +64192,7 @@ extern "C" fn thunk_SetProcessAffinityUpdateMode(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetProcessDEPPolicy(
+extern "C" fn thunk_dll_SetProcessDEPPolicy(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -63366,7 +64236,7 @@ extern "C" fn thunk_SetProcessDEPPolicy(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetProcessDefaultCpuSetMasks(
+extern "C" fn thunk_dll_SetProcessDefaultCpuSetMasks(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -63405,7 +64275,7 @@ extern "C" fn thunk_SetProcessDefaultCpuSetMasks(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetProcessDefaultCpuSets(
+extern "C" fn thunk_dll_SetProcessDefaultCpuSets(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -63444,7 +64314,7 @@ extern "C" fn thunk_SetProcessDefaultCpuSets(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetProcessDynamicEHContinuationTargets(
+extern "C" fn thunk_dll_SetProcessDynamicEHContinuationTargets(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -63483,7 +64353,7 @@ extern "C" fn thunk_SetProcessDynamicEHContinuationTargets(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetProcessDynamicEnforcedCetCompatibleRanges(
+extern "C" fn thunk_dll_SetProcessDynamicEnforcedCetCompatibleRanges(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -63531,7 +64401,7 @@ extern "C" fn thunk_SetProcessDynamicEnforcedCetCompatibleRanges(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetProcessInformation(
+extern "C" fn thunk_dll_SetProcessInformation(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -63576,7 +64446,7 @@ extern "C" fn thunk_SetProcessInformation(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetProcessMitigationPolicy(
+extern "C" fn thunk_dll_SetProcessMitigationPolicy(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -63615,7 +64485,7 @@ extern "C" fn thunk_SetProcessMitigationPolicy(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetProcessPriorityBoost(
+extern "C" fn thunk_dll_SetProcessPriorityBoost(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -63662,7 +64532,7 @@ extern "C" fn thunk_SetProcessPriorityBoost(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetProcessRestrictionExemption(
+extern "C" fn thunk_dll_SetProcessRestrictionExemption(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -63708,7 +64578,7 @@ extern "C" fn thunk_SetProcessRestrictionExemption(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetProcessShutdownParameters(
+extern "C" fn thunk_dll_SetProcessShutdownParameters(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -63755,7 +64625,7 @@ extern "C" fn thunk_SetProcessShutdownParameters(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetProcessWorkingSetSize(
+extern "C" fn thunk_dll_SetProcessWorkingSetSize(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -63798,7 +64668,7 @@ extern "C" fn thunk_SetProcessWorkingSetSize(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetProtectedPolicy(
+extern "C" fn thunk_dll_SetProtectedPolicy(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -63837,7 +64707,7 @@ extern "C" fn thunk_SetProtectedPolicy(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetThreadAffinityMask(
+extern "C" fn thunk_dll_SetThreadAffinityMask(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -63884,7 +64754,7 @@ extern "C" fn thunk_SetThreadAffinityMask(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetThreadDescription(
+extern "C" fn thunk_dll_SetThreadDescription(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -63931,7 +64801,7 @@ extern "C" fn thunk_SetThreadDescription(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetThreadGroupAffinity(
+extern "C" fn thunk_dll_SetThreadGroupAffinity(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -63970,7 +64840,7 @@ extern "C" fn thunk_SetThreadGroupAffinity(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetThreadIdealProcessor(
+extern "C" fn thunk_dll_SetThreadIdealProcessor(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -64017,7 +64887,7 @@ extern "C" fn thunk_SetThreadIdealProcessor(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetThreadIdealProcessorEx(
+extern "C" fn thunk_dll_SetThreadIdealProcessorEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -64060,7 +64930,7 @@ extern "C" fn thunk_SetThreadIdealProcessorEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetThreadInformation(
+extern "C" fn thunk_dll_SetThreadInformation(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -64105,7 +64975,7 @@ extern "C" fn thunk_SetThreadInformation(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetThreadPriority(
+extern "C" fn thunk_dll_SetThreadPriority(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -64152,7 +65022,7 @@ extern "C" fn thunk_SetThreadPriority(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetThreadPriorityBoost(
+extern "C" fn thunk_dll_SetThreadPriorityBoost(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -64199,7 +65069,7 @@ extern "C" fn thunk_SetThreadPriorityBoost(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetThreadSelectedCpuSetMasks(
+extern "C" fn thunk_dll_SetThreadSelectedCpuSetMasks(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -64238,7 +65108,7 @@ extern "C" fn thunk_SetThreadSelectedCpuSetMasks(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetThreadSelectedCpuSets(
+extern "C" fn thunk_dll_SetThreadSelectedCpuSets(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -64277,7 +65147,7 @@ extern "C" fn thunk_SetThreadSelectedCpuSets(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetThreadStackGuarantee(
+extern "C" fn thunk_dll_SetThreadStackGuarantee(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -64323,7 +65193,7 @@ extern "C" fn thunk_SetThreadStackGuarantee(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetThreadToken(
+extern "C" fn thunk_dll_SetThreadToken(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -64370,7 +65240,7 @@ extern "C" fn thunk_SetThreadToken(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetThreadpoolStackInformation(
+extern "C" fn thunk_dll_SetThreadpoolStackInformation(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -64417,7 +65287,7 @@ extern "C" fn thunk_SetThreadpoolStackInformation(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetThreadpoolThreadMaximum(
+extern "C" fn thunk_dll_SetThreadpoolThreadMaximum(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -64464,7 +65334,7 @@ extern "C" fn thunk_SetThreadpoolThreadMaximum(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetThreadpoolThreadMinimum(
+extern "C" fn thunk_dll_SetThreadpoolThreadMinimum(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -64511,7 +65381,7 @@ extern "C" fn thunk_SetThreadpoolThreadMinimum(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetThreadpoolTimer(
+extern "C" fn thunk_dll_SetThreadpoolTimer(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -64551,7 +65421,7 @@ extern "C" fn thunk_SetThreadpoolTimer(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetThreadpoolTimerEx(
+extern "C" fn thunk_dll_SetThreadpoolTimerEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -64591,7 +65461,7 @@ extern "C" fn thunk_SetThreadpoolTimerEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetThreadpoolWait(
+extern "C" fn thunk_dll_SetThreadpoolWait(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -64639,7 +65509,7 @@ extern "C" fn thunk_SetThreadpoolWait(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetThreadpoolWaitEx(
+extern "C" fn thunk_dll_SetThreadpoolWaitEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -64679,7 +65549,7 @@ extern "C" fn thunk_SetThreadpoolWaitEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetTimerQueueTimer(
+extern "C" fn thunk_dll_SetTimerQueueTimer(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -64728,7 +65598,7 @@ extern "C" fn thunk_SetTimerQueueTimer(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetUmsThreadInformation(
+extern "C" fn thunk_dll_SetUmsThreadInformation(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -64773,7 +65643,7 @@ extern "C" fn thunk_SetUmsThreadInformation(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetWaitableTimer(
+extern "C" fn thunk_dll_SetWaitableTimer(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -64822,7 +65692,7 @@ extern "C" fn thunk_SetWaitableTimer(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetWaitableTimerEx(
+extern "C" fn thunk_dll_SetWaitableTimerEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -64873,7 +65743,7 @@ extern "C" fn thunk_SetWaitableTimerEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_Sleep(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_Sleep(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "Sleep");
     crate::thunk_helper(
@@ -64914,7 +65784,7 @@ extern "C" fn thunk_Sleep(context: &mut ExtendedContext, memory: FlatMemoryCtx) 
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SleepConditionVariableCS(
+extern "C" fn thunk_dll_SleepConditionVariableCS(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -64953,7 +65823,7 @@ extern "C" fn thunk_SleepConditionVariableCS(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SleepConditionVariableSRW(
+extern "C" fn thunk_dll_SleepConditionVariableSRW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -64993,7 +65863,7 @@ extern "C" fn thunk_SleepConditionVariableSRW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SleepEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_SleepEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "SleepEx");
     crate::thunk_helper(
@@ -65035,7 +65905,7 @@ extern "C" fn thunk_SleepEx(context: &mut ExtendedContext, memory: FlatMemoryCtx
     )
 }
 #[no_mangle]
-extern "C" fn thunk_StartThreadpoolIo(
+extern "C" fn thunk_dll_StartThreadpoolIo(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -65072,7 +65942,7 @@ extern "C" fn thunk_StartThreadpoolIo(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SubmitThreadpoolWork(
+extern "C" fn thunk_dll_SubmitThreadpoolWork(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -65109,7 +65979,10 @@ extern "C" fn thunk_SubmitThreadpoolWork(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SuspendThread(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_SuspendThread(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "SuspendThread",
@@ -65150,7 +66023,10 @@ extern "C" fn thunk_SuspendThread(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SwitchToFiber(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_SwitchToFiber(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "SwitchToFiber",
@@ -65191,7 +66067,7 @@ extern "C" fn thunk_SwitchToFiber(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SwitchToThread(
+extern "C" fn thunk_dll_SwitchToThread(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -65233,7 +66109,7 @@ extern "C" fn thunk_SwitchToThread(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_TerminateProcess(
+extern "C" fn thunk_dll_TerminateProcess(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -65280,7 +66156,7 @@ extern "C" fn thunk_TerminateProcess(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_TerminateThread(
+extern "C" fn thunk_dll_TerminateThread(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -65327,7 +66203,7 @@ extern "C" fn thunk_TerminateThread(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_TlsAlloc(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_TlsAlloc(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "TlsAlloc");
     crate::thunk_helper(
@@ -65364,7 +66240,7 @@ extern "C" fn thunk_TlsAlloc(context: &mut ExtendedContext, memory: FlatMemoryCt
     )
 }
 #[no_mangle]
-extern "C" fn thunk_TlsFree(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_TlsFree(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "TlsFree");
     crate::thunk_helper(
@@ -65405,7 +66281,10 @@ extern "C" fn thunk_TlsFree(context: &mut ExtendedContext, memory: FlatMemoryCtx
     )
 }
 #[no_mangle]
-extern "C" fn thunk_TlsGetValue(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_TlsGetValue(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "TlsGetValue");
     crate::thunk_helper(
@@ -65446,7 +66325,10 @@ extern "C" fn thunk_TlsGetValue(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_TlsSetValue(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_TlsSetValue(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "TlsSetValue");
     crate::thunk_helper(
@@ -65488,7 +66370,7 @@ extern "C" fn thunk_TlsSetValue(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_TryAcquireSRWLockExclusive(
+extern "C" fn thunk_dll_TryAcquireSRWLockExclusive(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -65532,7 +66414,7 @@ extern "C" fn thunk_TryAcquireSRWLockExclusive(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_TryAcquireSRWLockShared(
+extern "C" fn thunk_dll_TryAcquireSRWLockShared(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -65576,7 +66458,7 @@ extern "C" fn thunk_TryAcquireSRWLockShared(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_TryEnterCriticalSection(
+extern "C" fn thunk_dll_TryEnterCriticalSection(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -65622,7 +66504,7 @@ extern "C" fn thunk_TryEnterCriticalSection(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_TrySubmitThreadpoolCallback(
+extern "C" fn thunk_dll_TrySubmitThreadpoolCallback(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -65670,7 +66552,7 @@ extern "C" fn thunk_TrySubmitThreadpoolCallback(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_UmsThreadYield(
+extern "C" fn thunk_dll_UmsThreadYield(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -65716,7 +66598,7 @@ extern "C" fn thunk_UmsThreadYield(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_UnregisterWait(
+extern "C" fn thunk_dll_UnregisterWait(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -65762,7 +66644,7 @@ extern "C" fn thunk_UnregisterWait(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_UnregisterWaitEx(
+extern "C" fn thunk_dll_UnregisterWaitEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -65809,7 +66691,7 @@ extern "C" fn thunk_UnregisterWaitEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_UpdateProcThreadAttribute(
+extern "C" fn thunk_dll_UpdateProcThreadAttribute(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -65860,7 +66742,7 @@ extern "C" fn thunk_UpdateProcThreadAttribute(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WaitForInputIdle(
+extern "C" fn thunk_dll_WaitForInputIdle(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -65907,7 +66789,7 @@ extern "C" fn thunk_WaitForInputIdle(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WaitForMultipleObjects(
+extern "C" fn thunk_dll_WaitForMultipleObjects(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -65947,7 +66829,7 @@ extern "C" fn thunk_WaitForMultipleObjects(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WaitForMultipleObjectsEx(
+extern "C" fn thunk_dll_WaitForMultipleObjectsEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -65994,7 +66876,7 @@ extern "C" fn thunk_WaitForMultipleObjectsEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WaitForSingleObject(
+extern "C" fn thunk_dll_WaitForSingleObject(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -66041,7 +66923,7 @@ extern "C" fn thunk_WaitForSingleObject(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WaitForSingleObjectEx(
+extern "C" fn thunk_dll_WaitForSingleObjectEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -66080,7 +66962,7 @@ extern "C" fn thunk_WaitForSingleObjectEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WaitForThreadpoolIoCallbacks(
+extern "C" fn thunk_dll_WaitForThreadpoolIoCallbacks(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -66127,7 +67009,7 @@ extern "C" fn thunk_WaitForThreadpoolIoCallbacks(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WaitForThreadpoolTimerCallbacks(
+extern "C" fn thunk_dll_WaitForThreadpoolTimerCallbacks(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -66174,7 +67056,7 @@ extern "C" fn thunk_WaitForThreadpoolTimerCallbacks(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WaitForThreadpoolWaitCallbacks(
+extern "C" fn thunk_dll_WaitForThreadpoolWaitCallbacks(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -66221,7 +67103,7 @@ extern "C" fn thunk_WaitForThreadpoolWaitCallbacks(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WaitForThreadpoolWorkCallbacks(
+extern "C" fn thunk_dll_WaitForThreadpoolWorkCallbacks(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -66268,7 +67150,10 @@ extern "C" fn thunk_WaitForThreadpoolWorkCallbacks(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WaitOnAddress(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_WaitOnAddress(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "WaitOnAddress",
@@ -66305,7 +67190,7 @@ extern "C" fn thunk_WaitOnAddress(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WakeAllConditionVariable(
+extern "C" fn thunk_dll_WakeAllConditionVariable(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -66351,7 +67236,7 @@ extern "C" fn thunk_WakeAllConditionVariable(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WakeByAddressAll(
+extern "C" fn thunk_dll_WakeByAddressAll(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -66395,7 +67280,7 @@ extern "C" fn thunk_WakeByAddressAll(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WakeByAddressSingle(
+extern "C" fn thunk_dll_WakeByAddressSingle(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -66439,7 +67324,7 @@ extern "C" fn thunk_WakeByAddressSingle(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WakeConditionVariable(
+extern "C" fn thunk_dll_WakeConditionVariable(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -66485,7 +67370,7 @@ extern "C" fn thunk_WakeConditionVariable(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WinExec(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_WinExec(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "WinExec");
     crate::thunk_helper(
@@ -66527,7 +67412,7 @@ extern "C" fn thunk_WinExec(context: &mut ExtendedContext, memory: FlatMemoryCtx
     )
 }
 #[no_mangle]
-extern "C" fn thunk_Wow64SetThreadDefaultGuestMachine(
+extern "C" fn thunk_dll_Wow64SetThreadDefaultGuestMachine(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -66571,7 +67456,7 @@ extern "C" fn thunk_Wow64SetThreadDefaultGuestMachine(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_Wow64SuspendThread(
+extern "C" fn thunk_dll_Wow64SuspendThread(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -66615,7 +67500,7 @@ extern "C" fn thunk_Wow64SuspendThread(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_AddDelBackupEntryA(
+extern "C" fn thunk_dll_AddDelBackupEntryA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -66655,7 +67540,7 @@ extern "C" fn thunk_AddDelBackupEntryA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_AddDelBackupEntryW(
+extern "C" fn thunk_dll_AddDelBackupEntryW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -66695,7 +67580,7 @@ extern "C" fn thunk_AddDelBackupEntryW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_AdvInstallFileA(
+extern "C" fn thunk_dll_AdvInstallFileA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -66746,7 +67631,7 @@ extern "C" fn thunk_AdvInstallFileA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_AdvInstallFileW(
+extern "C" fn thunk_dll_AdvInstallFileW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -66797,7 +67682,7 @@ extern "C" fn thunk_AdvInstallFileW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ApphelpCheckShellObject(
+extern "C" fn thunk_dll_ApphelpCheckShellObject(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -66836,7 +67721,7 @@ extern "C" fn thunk_ApphelpCheckShellObject(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CancelDeviceWakeupRequest(
+extern "C" fn thunk_dll_CancelDeviceWakeupRequest(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -66880,7 +67765,7 @@ extern "C" fn thunk_CancelDeviceWakeupRequest(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CancelTimerQueueTimer(
+extern "C" fn thunk_dll_CancelTimerQueueTimer(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -66927,7 +67812,7 @@ extern "C" fn thunk_CancelTimerQueueTimer(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CloseINFEngine(
+extern "C" fn thunk_dll_CloseINFEngine(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -66971,7 +67856,7 @@ extern "C" fn thunk_CloseINFEngine(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ConvertAuxiliaryCounterToPerformanceCounter(
+extern "C" fn thunk_dll_ConvertAuxiliaryCounterToPerformanceCounter(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -67014,7 +67899,7 @@ extern "C" fn thunk_ConvertAuxiliaryCounterToPerformanceCounter(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ConvertPerformanceCounterToAuxiliaryCounter(
+extern "C" fn thunk_dll_ConvertPerformanceCounterToAuxiliaryCounter(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -67057,7 +67942,7 @@ extern "C" fn thunk_ConvertPerformanceCounterToAuxiliaryCounter(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DelNodeA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_DelNodeA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "DelNodeA");
     crate::thunk_helper(
@@ -67099,7 +67984,7 @@ extern "C" fn thunk_DelNodeA(context: &mut ExtendedContext, memory: FlatMemoryCt
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DelNodeRunDLL32W(
+extern "C" fn thunk_dll_DelNodeRunDLL32W(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -67139,7 +68024,7 @@ extern "C" fn thunk_DelNodeRunDLL32W(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DelNodeW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_DelNodeW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "DelNodeW");
     crate::thunk_helper(
@@ -67181,7 +68066,7 @@ extern "C" fn thunk_DelNodeW(context: &mut ExtendedContext, memory: FlatMemoryCt
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DnsHostnameToComputerNameA(
+extern "C" fn thunk_dll_DnsHostnameToComputerNameA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -67229,7 +68114,7 @@ extern "C" fn thunk_DnsHostnameToComputerNameA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DnsHostnameToComputerNameW(
+extern "C" fn thunk_dll_DnsHostnameToComputerNameW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -67277,7 +68162,7 @@ extern "C" fn thunk_DnsHostnameToComputerNameW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DosDateTimeToFileTime(
+extern "C" fn thunk_dll_DosDateTimeToFileTime(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -67316,7 +68201,7 @@ extern "C" fn thunk_DosDateTimeToFileTime(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnableProcessOptionalXStateFeatures(
+extern "C" fn thunk_dll_EnableProcessOptionalXStateFeatures(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -67360,7 +68245,10 @@ extern "C" fn thunk_EnableProcessOptionalXStateFeatures(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ExecuteCabA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_ExecuteCabA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "ExecuteCabA");
     crate::thunk_helper(
@@ -67403,7 +68291,10 @@ extern "C" fn thunk_ExecuteCabA(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ExecuteCabW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_ExecuteCabW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "ExecuteCabW");
     crate::thunk_helper(
@@ -67446,7 +68337,10 @@ extern "C" fn thunk_ExecuteCabW(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ExtractFilesA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_ExtractFilesA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "ExtractFilesA",
@@ -67492,7 +68386,10 @@ extern "C" fn thunk_ExtractFilesA(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ExtractFilesW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_ExtractFilesW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "ExtractFilesW",
@@ -67538,7 +68435,7 @@ extern "C" fn thunk_ExtractFilesW(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FileSaveMarkNotExistA(
+extern "C" fn thunk_dll_FileSaveMarkNotExistA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -67577,7 +68474,7 @@ extern "C" fn thunk_FileSaveMarkNotExistA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FileSaveMarkNotExistW(
+extern "C" fn thunk_dll_FileSaveMarkNotExistW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -67616,7 +68513,7 @@ extern "C" fn thunk_FileSaveMarkNotExistW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FileSaveRestoreOnINFA(
+extern "C" fn thunk_dll_FileSaveRestoreOnINFA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -67667,7 +68564,7 @@ extern "C" fn thunk_FileSaveRestoreOnINFA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FileSaveRestoreOnINFW(
+extern "C" fn thunk_dll_FileSaveRestoreOnINFW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -67718,7 +68615,7 @@ extern "C" fn thunk_FileSaveRestoreOnINFW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FileSaveRestoreW(
+extern "C" fn thunk_dll_FileSaveRestoreW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -67759,7 +68656,7 @@ extern "C" fn thunk_FileSaveRestoreW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FileTimeToDosDateTime(
+extern "C" fn thunk_dll_FileTimeToDosDateTime(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -67798,7 +68695,10 @@ extern "C" fn thunk_FileTimeToDosDateTime(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GdiEntry13(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GdiEntry13(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GdiEntry13");
     crate::thunk_helper(
@@ -67835,7 +68735,7 @@ extern "C" fn thunk_GdiEntry13(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetComputerNameA(
+extern "C" fn thunk_dll_GetComputerNameA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -67882,7 +68782,7 @@ extern "C" fn thunk_GetComputerNameA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetComputerNameW(
+extern "C" fn thunk_dll_GetComputerNameW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -67929,7 +68829,7 @@ extern "C" fn thunk_GetComputerNameW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetCurrentHwProfileA(
+extern "C" fn thunk_dll_GetCurrentHwProfileA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -67975,7 +68875,7 @@ extern "C" fn thunk_GetCurrentHwProfileA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetCurrentHwProfileW(
+extern "C" fn thunk_dll_GetCurrentHwProfileW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -68021,7 +68921,7 @@ extern "C" fn thunk_GetCurrentHwProfileW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetFeatureEnabledState(
+extern "C" fn thunk_dll_GetFeatureEnabledState(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -68068,7 +68968,7 @@ extern "C" fn thunk_GetFeatureEnabledState(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetFeatureVariant(
+extern "C" fn thunk_dll_GetFeatureVariant(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -68108,7 +69008,7 @@ extern "C" fn thunk_GetFeatureVariant(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetFirmwareEnvironmentVariableA(
+extern "C" fn thunk_dll_GetFirmwareEnvironmentVariableA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -68148,7 +69048,7 @@ extern "C" fn thunk_GetFirmwareEnvironmentVariableA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetFirmwareEnvironmentVariableExA(
+extern "C" fn thunk_dll_GetFirmwareEnvironmentVariableExA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -68195,7 +69095,7 @@ extern "C" fn thunk_GetFirmwareEnvironmentVariableExA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetFirmwareEnvironmentVariableExW(
+extern "C" fn thunk_dll_GetFirmwareEnvironmentVariableExW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -68242,7 +69142,7 @@ extern "C" fn thunk_GetFirmwareEnvironmentVariableExW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetFirmwareEnvironmentVariableW(
+extern "C" fn thunk_dll_GetFirmwareEnvironmentVariableW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -68282,7 +69182,7 @@ extern "C" fn thunk_GetFirmwareEnvironmentVariableW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetPrivateProfileIntA(
+extern "C" fn thunk_dll_GetPrivateProfileIntA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -68322,7 +69222,7 @@ extern "C" fn thunk_GetPrivateProfileIntA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetPrivateProfileIntW(
+extern "C" fn thunk_dll_GetPrivateProfileIntW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -68362,7 +69262,7 @@ extern "C" fn thunk_GetPrivateProfileIntW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetPrivateProfileSectionA(
+extern "C" fn thunk_dll_GetPrivateProfileSectionA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -68402,7 +69302,7 @@ extern "C" fn thunk_GetPrivateProfileSectionA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetPrivateProfileSectionNamesA(
+extern "C" fn thunk_dll_GetPrivateProfileSectionNamesA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -68441,7 +69341,7 @@ extern "C" fn thunk_GetPrivateProfileSectionNamesA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetPrivateProfileSectionNamesW(
+extern "C" fn thunk_dll_GetPrivateProfileSectionNamesW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -68480,7 +69380,7 @@ extern "C" fn thunk_GetPrivateProfileSectionNamesW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetPrivateProfileSectionW(
+extern "C" fn thunk_dll_GetPrivateProfileSectionW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -68520,7 +69420,7 @@ extern "C" fn thunk_GetPrivateProfileSectionW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetPrivateProfileStringA(
+extern "C" fn thunk_dll_GetPrivateProfileStringA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -68569,7 +69469,7 @@ extern "C" fn thunk_GetPrivateProfileStringA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetPrivateProfileStringW(
+extern "C" fn thunk_dll_GetPrivateProfileStringW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -68618,7 +69518,7 @@ extern "C" fn thunk_GetPrivateProfileStringW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetPrivateProfileStructA(
+extern "C" fn thunk_dll_GetPrivateProfileStructA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -68665,7 +69565,7 @@ extern "C" fn thunk_GetPrivateProfileStructA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetPrivateProfileStructW(
+extern "C" fn thunk_dll_GetPrivateProfileStructW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -68712,7 +69612,7 @@ extern "C" fn thunk_GetPrivateProfileStructW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetProfileIntA(
+extern "C" fn thunk_dll_GetProfileIntA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -68751,7 +69651,7 @@ extern "C" fn thunk_GetProfileIntA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetProfileIntW(
+extern "C" fn thunk_dll_GetProfileIntW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -68790,7 +69690,7 @@ extern "C" fn thunk_GetProfileIntW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetProfileSectionA(
+extern "C" fn thunk_dll_GetProfileSectionA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -68829,7 +69729,7 @@ extern "C" fn thunk_GetProfileSectionA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetProfileSectionW(
+extern "C" fn thunk_dll_GetProfileSectionW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -68868,7 +69768,7 @@ extern "C" fn thunk_GetProfileSectionW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetProfileStringA(
+extern "C" fn thunk_dll_GetProfileStringA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -68915,7 +69815,7 @@ extern "C" fn thunk_GetProfileStringA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetProfileStringW(
+extern "C" fn thunk_dll_GetProfileStringW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -68962,7 +69862,7 @@ extern "C" fn thunk_GetProfileStringW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetSystemRegistryQuota(
+extern "C" fn thunk_dll_GetSystemRegistryQuota(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -69009,7 +69909,7 @@ extern "C" fn thunk_GetSystemRegistryQuota(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetThreadEnabledXStateFeatures(
+extern "C" fn thunk_dll_GetThreadEnabledXStateFeatures(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -69051,7 +69951,10 @@ extern "C" fn thunk_GetThreadEnabledXStateFeatures(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetUserNameA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetUserNameA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetUserNameA",
@@ -69095,7 +69998,10 @@ extern "C" fn thunk_GetUserNameA(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetUserNameW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetUserNameW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetUserNameW",
@@ -69139,7 +70045,7 @@ extern "C" fn thunk_GetUserNameW(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetVersionFromFileA(
+extern "C" fn thunk_dll_GetVersionFromFileA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -69179,7 +70085,7 @@ extern "C" fn thunk_GetVersionFromFileA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetVersionFromFileExA(
+extern "C" fn thunk_dll_GetVersionFromFileExA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -69219,7 +70125,7 @@ extern "C" fn thunk_GetVersionFromFileExA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetVersionFromFileExW(
+extern "C" fn thunk_dll_GetVersionFromFileExW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -69259,7 +70165,7 @@ extern "C" fn thunk_GetVersionFromFileExW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetVersionFromFileW(
+extern "C" fn thunk_dll_GetVersionFromFileW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -69299,7 +70205,10 @@ extern "C" fn thunk_GetVersionFromFileW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GlobalCompact(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GlobalCompact(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GlobalCompact",
@@ -69342,7 +70251,7 @@ extern "C" fn thunk_GlobalCompact(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GlobalFix(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GlobalFix(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GlobalFix");
     crate::thunk_helper(
@@ -69381,7 +70290,10 @@ extern "C" fn thunk_GlobalFix(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GlobalUnWire(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GlobalUnWire(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GlobalUnWire",
@@ -69422,7 +70334,10 @@ extern "C" fn thunk_GlobalUnWire(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GlobalUnfix(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GlobalUnfix(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GlobalUnfix");
     crate::thunk_helper(
@@ -69461,7 +70376,10 @@ extern "C" fn thunk_GlobalUnfix(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GlobalWire(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GlobalWire(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GlobalWire");
     crate::thunk_helper(
@@ -69500,7 +70418,10 @@ extern "C" fn thunk_GlobalWire(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IMPGetIMEA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_IMPGetIMEA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "IMPGetIMEA");
     crate::thunk_helper(
@@ -69542,7 +70463,10 @@ extern "C" fn thunk_IMPGetIMEA(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IMPGetIMEW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_IMPGetIMEW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "IMPGetIMEW");
     crate::thunk_helper(
@@ -69584,7 +70508,10 @@ extern "C" fn thunk_IMPGetIMEW(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IMPQueryIMEA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_IMPQueryIMEA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "IMPQueryIMEA",
@@ -69625,7 +70552,10 @@ extern "C" fn thunk_IMPQueryIMEA(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IMPQueryIMEW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_IMPQueryIMEW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "IMPQueryIMEW",
@@ -69666,7 +70596,10 @@ extern "C" fn thunk_IMPQueryIMEW(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IMPSetIMEA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_IMPSetIMEA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "IMPSetIMEA");
     crate::thunk_helper(
@@ -69708,7 +70641,10 @@ extern "C" fn thunk_IMPSetIMEA(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IMPSetIMEW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_IMPSetIMEW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "IMPSetIMEW");
     crate::thunk_helper(
@@ -69750,7 +70686,7 @@ extern "C" fn thunk_IMPSetIMEW(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IsApiSetImplemented(
+extern "C" fn thunk_dll_IsApiSetImplemented(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -69794,7 +70730,7 @@ extern "C" fn thunk_IsApiSetImplemented(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IsBadHugeReadPtr(
+extern "C" fn thunk_dll_IsBadHugeReadPtr(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -69841,7 +70777,7 @@ extern "C" fn thunk_IsBadHugeReadPtr(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IsBadHugeWritePtr(
+extern "C" fn thunk_dll_IsBadHugeWritePtr(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -69888,7 +70824,7 @@ extern "C" fn thunk_IsBadHugeWritePtr(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IsNTAdmin(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_IsNTAdmin(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "IsNTAdmin");
     crate::thunk_helper(
@@ -69930,7 +70866,7 @@ extern "C" fn thunk_IsNTAdmin(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IsNativeVhdBoot(
+extern "C" fn thunk_dll_IsNativeVhdBoot(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -69976,7 +70912,7 @@ extern "C" fn thunk_IsNativeVhdBoot(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IsTokenUntrusted(
+extern "C" fn thunk_dll_IsTokenUntrusted(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -70022,7 +70958,7 @@ extern "C" fn thunk_IsTokenUntrusted(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LaunchINFSectionExW(
+extern "C" fn thunk_dll_LaunchINFSectionExW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -70062,7 +70998,7 @@ extern "C" fn thunk_LaunchINFSectionExW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LaunchINFSectionW(
+extern "C" fn thunk_dll_LaunchINFSectionW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -70102,7 +71038,10 @@ extern "C" fn thunk_LaunchINFSectionW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LocalCompact(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_LocalCompact(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "LocalCompact",
@@ -70145,7 +71084,10 @@ extern "C" fn thunk_LocalCompact(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LocalShrink(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_LocalShrink(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "LocalShrink");
     crate::thunk_helper(
@@ -70187,7 +71129,7 @@ extern "C" fn thunk_LocalShrink(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_MulDiv(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_MulDiv(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "MulDiv");
     crate::thunk_helper(
@@ -70221,7 +71163,10 @@ extern "C" fn thunk_MulDiv(context: &mut ExtendedContext, memory: FlatMemoryCtx)
     )
 }
 #[no_mangle]
-extern "C" fn thunk_NeedReboot(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_NeedReboot(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "NeedReboot");
     crate::thunk_helper(
@@ -70262,7 +71207,7 @@ extern "C" fn thunk_NeedReboot(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_NeedRebootInit(
+extern "C" fn thunk_dll_NeedRebootInit(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -70304,7 +71249,7 @@ extern "C" fn thunk_NeedRebootInit(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_NtClose(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_NtClose(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "NtClose");
     crate::thunk_helper(
@@ -70343,7 +71288,7 @@ extern "C" fn thunk_NtClose(context: &mut ExtendedContext, memory: FlatMemoryCtx
     )
 }
 #[no_mangle]
-extern "C" fn thunk_NtDeviceIoControlFile(
+extern "C" fn thunk_dll_NtDeviceIoControlFile(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -70400,7 +71345,7 @@ extern "C" fn thunk_NtDeviceIoControlFile(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_NtNotifyChangeMultipleKeys(
+extern "C" fn thunk_dll_NtNotifyChangeMultipleKeys(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -70461,7 +71406,10 @@ extern "C" fn thunk_NtNotifyChangeMultipleKeys(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_NtOpenFile(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_NtOpenFile(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "NtOpenFile");
     crate::thunk_helper(
@@ -70505,7 +71453,7 @@ extern "C" fn thunk_NtOpenFile(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_NtQueryMultipleValueKey(
+extern "C" fn thunk_dll_NtQueryMultipleValueKey(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -70554,7 +71502,10 @@ extern "C" fn thunk_NtQueryMultipleValueKey(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_NtQueryObject(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_NtQueryObject(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "NtQueryObject",
@@ -70598,7 +71549,7 @@ extern "C" fn thunk_NtQueryObject(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_NtQuerySystemInformation(
+extern "C" fn thunk_dll_NtQuerySystemInformation(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -70643,7 +71594,7 @@ extern "C" fn thunk_NtQuerySystemInformation(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_NtQuerySystemTime(
+extern "C" fn thunk_dll_NtQuerySystemTime(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -70689,7 +71640,7 @@ extern "C" fn thunk_NtQuerySystemTime(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_NtQueryTimerResolution(
+extern "C" fn thunk_dll_NtQueryTimerResolution(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -70728,7 +71679,10 @@ extern "C" fn thunk_NtQueryTimerResolution(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_NtRenameKey(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_NtRenameKey(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "NtRenameKey");
     crate::thunk_helper(
@@ -70770,7 +71724,7 @@ extern "C" fn thunk_NtRenameKey(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_NtSetInformationKey(
+extern "C" fn thunk_dll_NtSetInformationKey(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -70815,7 +71769,7 @@ extern "C" fn thunk_NtSetInformationKey(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_NtWaitForSingleObject(
+extern "C" fn thunk_dll_NtWaitForSingleObject(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -70863,7 +71817,7 @@ extern "C" fn thunk_NtWaitForSingleObject(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_OpenINFEngineA(
+extern "C" fn thunk_dll_OpenINFEngineA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -70910,7 +71864,7 @@ extern "C" fn thunk_OpenINFEngineA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_OpenINFEngineW(
+extern "C" fn thunk_dll_OpenINFEngineW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -70957,7 +71911,10 @@ extern "C" fn thunk_OpenINFEngineW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_OpenMutexA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_OpenMutexA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "OpenMutexA");
     crate::thunk_helper(
@@ -70991,7 +71948,7 @@ extern "C" fn thunk_OpenMutexA(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_OpenSemaphoreA(
+extern "C" fn thunk_dll_OpenSemaphoreA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -71030,7 +71987,7 @@ extern "C" fn thunk_OpenSemaphoreA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_OpenWaitableTimerA(
+extern "C" fn thunk_dll_OpenWaitableTimerA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -71069,7 +72026,7 @@ extern "C" fn thunk_OpenWaitableTimerA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_QueryAuxiliaryCounterFrequency(
+extern "C" fn thunk_dll_QueryAuxiliaryCounterFrequency(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -71115,7 +72072,7 @@ extern "C" fn thunk_QueryAuxiliaryCounterFrequency(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_QueryIdleProcessorCycleTime(
+extern "C" fn thunk_dll_QueryIdleProcessorCycleTime(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -71162,7 +72119,7 @@ extern "C" fn thunk_QueryIdleProcessorCycleTime(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_QueryIdleProcessorCycleTimeEx(
+extern "C" fn thunk_dll_QueryIdleProcessorCycleTimeEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -71201,7 +72158,7 @@ extern "C" fn thunk_QueryIdleProcessorCycleTimeEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_QueryInterruptTime(
+extern "C" fn thunk_dll_QueryInterruptTime(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -71247,7 +72204,7 @@ extern "C" fn thunk_QueryInterruptTime(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_QueryInterruptTimePrecise(
+extern "C" fn thunk_dll_QueryInterruptTimePrecise(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -71293,7 +72250,7 @@ extern "C" fn thunk_QueryInterruptTimePrecise(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_QueryProcessCycleTime(
+extern "C" fn thunk_dll_QueryProcessCycleTime(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -71340,7 +72297,7 @@ extern "C" fn thunk_QueryProcessCycleTime(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_QueryThreadCycleTime(
+extern "C" fn thunk_dll_QueryThreadCycleTime(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -71387,7 +72344,7 @@ extern "C" fn thunk_QueryThreadCycleTime(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_QueryUnbiasedInterruptTime(
+extern "C" fn thunk_dll_QueryUnbiasedInterruptTime(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -71433,7 +72390,7 @@ extern "C" fn thunk_QueryUnbiasedInterruptTime(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_QueryUnbiasedInterruptTimePrecise(
+extern "C" fn thunk_dll_QueryUnbiasedInterruptTimePrecise(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -71479,7 +72436,7 @@ extern "C" fn thunk_QueryUnbiasedInterruptTimePrecise(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RaiseCustomSystemEventTrigger(
+extern "C" fn thunk_dll_RaiseCustomSystemEventTrigger(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -71525,7 +72482,7 @@ extern "C" fn thunk_RaiseCustomSystemEventTrigger(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RebootCheckOnInstallA(
+extern "C" fn thunk_dll_RebootCheckOnInstallA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -71565,7 +72522,7 @@ extern "C" fn thunk_RebootCheckOnInstallA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RebootCheckOnInstallW(
+extern "C" fn thunk_dll_RebootCheckOnInstallW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -71605,7 +72562,7 @@ extern "C" fn thunk_RebootCheckOnInstallW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RecordFeatureError(
+extern "C" fn thunk_dll_RecordFeatureError(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -71652,7 +72609,7 @@ extern "C" fn thunk_RecordFeatureError(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RecordFeatureUsage(
+extern "C" fn thunk_dll_RecordFeatureUsage(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -71692,7 +72649,10 @@ extern "C" fn thunk_RecordFeatureUsage(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RegInstallA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_RegInstallA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "RegInstallA");
     crate::thunk_helper(
@@ -71735,7 +72695,10 @@ extern "C" fn thunk_RegInstallA(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RegInstallW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_RegInstallW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "RegInstallW");
     crate::thunk_helper(
@@ -71778,7 +72741,7 @@ extern "C" fn thunk_RegInstallW(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ReplacePartitionUnit(
+extern "C" fn thunk_dll_ReplacePartitionUnit(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -71817,7 +72780,7 @@ extern "C" fn thunk_ReplacePartitionUnit(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RequestDeviceWakeup(
+extern "C" fn thunk_dll_RequestDeviceWakeup(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -71861,7 +72824,7 @@ extern "C" fn thunk_RequestDeviceWakeup(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RtlAnsiStringToUnicodeString(
+extern "C" fn thunk_dll_RtlAnsiStringToUnicodeString(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -71904,7 +72867,7 @@ extern "C" fn thunk_RtlAnsiStringToUnicodeString(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RtlCharToInteger(
+extern "C" fn thunk_dll_RtlCharToInteger(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -71952,7 +72915,7 @@ extern "C" fn thunk_RtlCharToInteger(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RtlFreeAnsiString(
+extern "C" fn thunk_dll_RtlFreeAnsiString(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -71998,7 +72961,7 @@ extern "C" fn thunk_RtlFreeAnsiString(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RtlFreeOemString(
+extern "C" fn thunk_dll_RtlFreeOemString(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -72044,7 +73007,7 @@ extern "C" fn thunk_RtlFreeOemString(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RtlFreeUnicodeString(
+extern "C" fn thunk_dll_RtlFreeUnicodeString(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -72090,7 +73053,7 @@ extern "C" fn thunk_RtlFreeUnicodeString(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RtlGetReturnAddressHijackTarget(
+extern "C" fn thunk_dll_RtlGetReturnAddressHijackTarget(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -72132,7 +73095,7 @@ extern "C" fn thunk_RtlGetReturnAddressHijackTarget(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RtlInitAnsiString(
+extern "C" fn thunk_dll_RtlInitAnsiString(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -72179,7 +73142,7 @@ extern "C" fn thunk_RtlInitAnsiString(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RtlInitAnsiStringEx(
+extern "C" fn thunk_dll_RtlInitAnsiStringEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -72226,7 +73189,10 @@ extern "C" fn thunk_RtlInitAnsiStringEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RtlInitString(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_RtlInitString(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "RtlInitString",
@@ -72270,7 +73236,7 @@ extern "C" fn thunk_RtlInitString(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RtlInitStringEx(
+extern "C" fn thunk_dll_RtlInitStringEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -72317,7 +73283,7 @@ extern "C" fn thunk_RtlInitStringEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RtlInitUnicodeString(
+extern "C" fn thunk_dll_RtlInitUnicodeString(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -72364,7 +73330,7 @@ extern "C" fn thunk_RtlInitUnicodeString(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RtlIsNameLegalDOS8Dot3(
+extern "C" fn thunk_dll_RtlIsNameLegalDOS8Dot3(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -72403,7 +73369,7 @@ extern "C" fn thunk_RtlIsNameLegalDOS8Dot3(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RtlLocalTimeToSystemTime(
+extern "C" fn thunk_dll_RtlLocalTimeToSystemTime(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -72450,7 +73416,7 @@ extern "C" fn thunk_RtlLocalTimeToSystemTime(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RtlRaiseCustomSystemEventTrigger(
+extern "C" fn thunk_dll_RtlRaiseCustomSystemEventTrigger(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -72496,7 +73462,7 @@ extern "C" fn thunk_RtlRaiseCustomSystemEventTrigger(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RtlTimeToSecondsSince1970(
+extern "C" fn thunk_dll_RtlTimeToSecondsSince1970(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -72543,7 +73509,7 @@ extern "C" fn thunk_RtlTimeToSecondsSince1970(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RtlUnicodeStringToAnsiString(
+extern "C" fn thunk_dll_RtlUnicodeStringToAnsiString(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -72586,7 +73552,7 @@ extern "C" fn thunk_RtlUnicodeStringToAnsiString(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RtlUnicodeStringToOemString(
+extern "C" fn thunk_dll_RtlUnicodeStringToOemString(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -72629,7 +73595,7 @@ extern "C" fn thunk_RtlUnicodeStringToOemString(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RtlUnicodeToMultiByteSize(
+extern "C" fn thunk_dll_RtlUnicodeToMultiByteSize(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -72672,7 +73638,10 @@ extern "C" fn thunk_RtlUnicodeToMultiByteSize(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RtlUniform(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_RtlUniform(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "RtlUniform");
     crate::thunk_helper(
@@ -72711,7 +73680,7 @@ extern "C" fn thunk_RtlUniform(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RunSetupCommandA(
+extern "C" fn thunk_dll_RunSetupCommandA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -72764,7 +73733,7 @@ extern "C" fn thunk_RunSetupCommandA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RunSetupCommandW(
+extern "C" fn thunk_dll_RunSetupCommandW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -72817,7 +73786,7 @@ extern "C" fn thunk_RunSetupCommandW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SendIMEMessageExA(
+extern "C" fn thunk_dll_SendIMEMessageExA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -72864,7 +73833,7 @@ extern "C" fn thunk_SendIMEMessageExA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SendIMEMessageExW(
+extern "C" fn thunk_dll_SendIMEMessageExW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -72911,7 +73880,7 @@ extern "C" fn thunk_SendIMEMessageExW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetEnvironmentStringsA(
+extern "C" fn thunk_dll_SetEnvironmentStringsA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -72957,7 +73926,7 @@ extern "C" fn thunk_SetEnvironmentStringsA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetFirmwareEnvironmentVariableA(
+extern "C" fn thunk_dll_SetFirmwareEnvironmentVariableA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -72997,7 +73966,7 @@ extern "C" fn thunk_SetFirmwareEnvironmentVariableA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetFirmwareEnvironmentVariableExA(
+extern "C" fn thunk_dll_SetFirmwareEnvironmentVariableExA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -73044,7 +74013,7 @@ extern "C" fn thunk_SetFirmwareEnvironmentVariableExA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetFirmwareEnvironmentVariableExW(
+extern "C" fn thunk_dll_SetFirmwareEnvironmentVariableExW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -73091,7 +74060,7 @@ extern "C" fn thunk_SetFirmwareEnvironmentVariableExW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetFirmwareEnvironmentVariableW(
+extern "C" fn thunk_dll_SetFirmwareEnvironmentVariableW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -73131,7 +74100,7 @@ extern "C" fn thunk_SetFirmwareEnvironmentVariableW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetHandleCount(
+extern "C" fn thunk_dll_SetHandleCount(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -73175,7 +74144,7 @@ extern "C" fn thunk_SetHandleCount(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetMessageWaitingIndicator(
+extern "C" fn thunk_dll_SetMessageWaitingIndicator(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -73222,7 +74191,7 @@ extern "C" fn thunk_SetMessageWaitingIndicator(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetPerUserSecValuesA(
+extern "C" fn thunk_dll_SetPerUserSecValuesA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -73268,7 +74237,7 @@ extern "C" fn thunk_SetPerUserSecValuesA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetPerUserSecValuesW(
+extern "C" fn thunk_dll_SetPerUserSecValuesW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -73314,7 +74283,7 @@ extern "C" fn thunk_SetPerUserSecValuesW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SignalObjectAndWait(
+extern "C" fn thunk_dll_SignalObjectAndWait(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -73359,7 +74328,7 @@ extern "C" fn thunk_SignalObjectAndWait(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SubscribeFeatureStateChangeNotification(
+extern "C" fn thunk_dll_SubscribeFeatureStateChangeNotification(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -73407,7 +74376,7 @@ extern "C" fn thunk_SubscribeFeatureStateChangeNotification(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_TranslateInfStringA(
+extern "C" fn thunk_dll_TranslateInfStringA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -73460,7 +74429,7 @@ extern "C" fn thunk_TranslateInfStringA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_TranslateInfStringExA(
+extern "C" fn thunk_dll_TranslateInfStringExA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -73513,7 +74482,7 @@ extern "C" fn thunk_TranslateInfStringExA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_TranslateInfStringExW(
+extern "C" fn thunk_dll_TranslateInfStringExW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -73566,7 +74535,7 @@ extern "C" fn thunk_TranslateInfStringExW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_TranslateInfStringW(
+extern "C" fn thunk_dll_TranslateInfStringW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -73619,7 +74588,7 @@ extern "C" fn thunk_TranslateInfStringW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_UnsubscribeFeatureStateChangeNotification(
+extern "C" fn thunk_dll_UnsubscribeFeatureStateChangeNotification(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -73665,7 +74634,7 @@ extern "C" fn thunk_UnsubscribeFeatureStateChangeNotification(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_UserInstStubWrapperA(
+extern "C" fn thunk_dll_UserInstStubWrapperA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -73705,7 +74674,7 @@ extern "C" fn thunk_UserInstStubWrapperA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_UserInstStubWrapperW(
+extern "C" fn thunk_dll_UserInstStubWrapperW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -73745,7 +74714,7 @@ extern "C" fn thunk_UserInstStubWrapperW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_UserUnInstStubWrapperA(
+extern "C" fn thunk_dll_UserUnInstStubWrapperA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -73785,7 +74754,7 @@ extern "C" fn thunk_UserUnInstStubWrapperA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_UserUnInstStubWrapperW(
+extern "C" fn thunk_dll_UserUnInstStubWrapperW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -73825,7 +74794,7 @@ extern "C" fn thunk_UserUnInstStubWrapperW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WINNLSEnableIME(
+extern "C" fn thunk_dll_WINNLSEnableIME(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -73872,7 +74841,7 @@ extern "C" fn thunk_WINNLSEnableIME(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WINNLSGetEnableStatus(
+extern "C" fn thunk_dll_WINNLSGetEnableStatus(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -73916,7 +74885,7 @@ extern "C" fn thunk_WINNLSGetEnableStatus(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WINNLSGetIMEHotkey(
+extern "C" fn thunk_dll_WINNLSGetIMEHotkey(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -73960,7 +74929,7 @@ extern "C" fn thunk_WINNLSGetIMEHotkey(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WldpGetLockdownPolicy(
+extern "C" fn thunk_dll_WldpGetLockdownPolicy(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -73999,7 +74968,7 @@ extern "C" fn thunk_WldpGetLockdownPolicy(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WldpIsClassInApprovedList(
+extern "C" fn thunk_dll_WldpIsClassInApprovedList(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -74044,7 +75013,7 @@ extern "C" fn thunk_WldpIsClassInApprovedList(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WldpIsDynamicCodePolicyEnabled(
+extern "C" fn thunk_dll_WldpIsDynamicCodePolicyEnabled(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -74090,7 +75059,7 @@ extern "C" fn thunk_WldpIsDynamicCodePolicyEnabled(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WldpQueryDeviceSecurityInformation(
+extern "C" fn thunk_dll_WldpQueryDeviceSecurityInformation(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -74133,7 +75102,7 @@ extern "C" fn thunk_WldpQueryDeviceSecurityInformation(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WldpQueryDynamicCodeTrust(
+extern "C" fn thunk_dll_WldpQueryDynamicCodeTrust(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -74172,7 +75141,7 @@ extern "C" fn thunk_WldpQueryDynamicCodeTrust(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WldpSetDynamicCodeTrust(
+extern "C" fn thunk_dll_WldpSetDynamicCodeTrust(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -74218,7 +75187,7 @@ extern "C" fn thunk_WldpSetDynamicCodeTrust(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WritePrivateProfileSectionA(
+extern "C" fn thunk_dll_WritePrivateProfileSectionA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -74257,7 +75226,7 @@ extern "C" fn thunk_WritePrivateProfileSectionA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WritePrivateProfileSectionW(
+extern "C" fn thunk_dll_WritePrivateProfileSectionW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -74296,7 +75265,7 @@ extern "C" fn thunk_WritePrivateProfileSectionW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WritePrivateProfileStringA(
+extern "C" fn thunk_dll_WritePrivateProfileStringA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -74336,7 +75305,7 @@ extern "C" fn thunk_WritePrivateProfileStringA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WritePrivateProfileStringW(
+extern "C" fn thunk_dll_WritePrivateProfileStringW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -74376,7 +75345,7 @@ extern "C" fn thunk_WritePrivateProfileStringW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WritePrivateProfileStructA(
+extern "C" fn thunk_dll_WritePrivateProfileStructA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -74423,7 +75392,7 @@ extern "C" fn thunk_WritePrivateProfileStructA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WritePrivateProfileStructW(
+extern "C" fn thunk_dll_WritePrivateProfileStructW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -74470,7 +75439,7 @@ extern "C" fn thunk_WritePrivateProfileStructW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WriteProfileSectionA(
+extern "C" fn thunk_dll_WriteProfileSectionA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -74517,7 +75486,7 @@ extern "C" fn thunk_WriteProfileSectionA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WriteProfileSectionW(
+extern "C" fn thunk_dll_WriteProfileSectionW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -74564,7 +75533,7 @@ extern "C" fn thunk_WriteProfileSectionW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WriteProfileStringA(
+extern "C" fn thunk_dll_WriteProfileStringA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -74603,7 +75572,7 @@ extern "C" fn thunk_WriteProfileStringA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WriteProfileStringW(
+extern "C" fn thunk_dll_WriteProfileStringW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -74642,7 +75611,7 @@ extern "C" fn thunk_WriteProfileStringW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk__hread(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll__hread(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "_hread");
     crate::thunk_helper(
@@ -74685,7 +75654,7 @@ extern "C" fn thunk__hread(context: &mut ExtendedContext, memory: FlatMemoryCtx)
     )
 }
 #[no_mangle]
-extern "C" fn thunk__hwrite(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll__hwrite(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "_hwrite");
     crate::thunk_helper(
@@ -74728,7 +75697,7 @@ extern "C" fn thunk__hwrite(context: &mut ExtendedContext, memory: FlatMemoryCtx
     )
 }
 #[no_mangle]
-extern "C" fn thunk__lclose(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll__lclose(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "_lclose");
     crate::thunk_helper(
@@ -74767,7 +75736,7 @@ extern "C" fn thunk__lclose(context: &mut ExtendedContext, memory: FlatMemoryCtx
     )
 }
 #[no_mangle]
-extern "C" fn thunk__lcreat(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll__lcreat(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "_lcreat");
     crate::thunk_helper(
@@ -74809,7 +75778,7 @@ extern "C" fn thunk__lcreat(context: &mut ExtendedContext, memory: FlatMemoryCtx
     )
 }
 #[no_mangle]
-extern "C" fn thunk__llseek(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll__llseek(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "_llseek");
     crate::thunk_helper(
@@ -74852,7 +75821,7 @@ extern "C" fn thunk__llseek(context: &mut ExtendedContext, memory: FlatMemoryCtx
     )
 }
 #[no_mangle]
-extern "C" fn thunk__lopen(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll__lopen(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "_lopen");
     crate::thunk_helper(
@@ -74894,7 +75863,7 @@ extern "C" fn thunk__lopen(context: &mut ExtendedContext, memory: FlatMemoryCtx)
     )
 }
 #[no_mangle]
-extern "C" fn thunk__lread(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll__lread(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "_lread");
     crate::thunk_helper(
@@ -74937,7 +75906,7 @@ extern "C" fn thunk__lread(context: &mut ExtendedContext, memory: FlatMemoryCtx)
     )
 }
 #[no_mangle]
-extern "C" fn thunk__lwrite(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll__lwrite(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "_lwrite");
     crate::thunk_helper(
@@ -74980,7 +75949,7 @@ extern "C" fn thunk__lwrite(context: &mut ExtendedContext, memory: FlatMemoryCtx
     )
 }
 #[no_mangle]
-extern "C" fn thunk_AdjustWindowRect(
+extern "C" fn thunk_dll_AdjustWindowRect(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -75028,7 +75997,7 @@ extern "C" fn thunk_AdjustWindowRect(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_AdjustWindowRectEx(
+extern "C" fn thunk_dll_AdjustWindowRectEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -75068,7 +76037,7 @@ extern "C" fn thunk_AdjustWindowRectEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_AllowSetForegroundWindow(
+extern "C" fn thunk_dll_AllowSetForegroundWindow(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -75114,7 +76083,10 @@ extern "C" fn thunk_AllowSetForegroundWindow(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_AnimateWindow(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_AnimateWindow(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "AnimateWindow",
@@ -75159,7 +76131,7 @@ extern "C" fn thunk_AnimateWindow(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_AnyPopup(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_AnyPopup(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "AnyPopup");
     crate::thunk_helper(
@@ -75196,7 +76168,10 @@ extern "C" fn thunk_AnyPopup(context: &mut ExtendedContext, memory: FlatMemoryCt
     )
 }
 #[no_mangle]
-extern "C" fn thunk_AppendMenuA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_AppendMenuA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "AppendMenuA");
     crate::thunk_helper(
@@ -75231,7 +76206,10 @@ extern "C" fn thunk_AppendMenuA(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_AppendMenuW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_AppendMenuW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "AppendMenuW");
     crate::thunk_helper(
@@ -75266,7 +76244,7 @@ extern "C" fn thunk_AppendMenuW(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ArrangeIconicWindows(
+extern "C" fn thunk_dll_ArrangeIconicWindows(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -75310,7 +76288,7 @@ extern "C" fn thunk_ArrangeIconicWindows(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_BeginDeferWindowPos(
+extern "C" fn thunk_dll_BeginDeferWindowPos(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -75356,7 +76334,7 @@ extern "C" fn thunk_BeginDeferWindowPos(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_BringWindowToTop(
+extern "C" fn thunk_dll_BringWindowToTop(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -75400,7 +76378,7 @@ extern "C" fn thunk_BringWindowToTop(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CalculatePopupWindowPosition(
+extern "C" fn thunk_dll_CalculatePopupWindowPosition(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -75447,7 +76425,7 @@ extern "C" fn thunk_CalculatePopupWindowPosition(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CallMsgFilterA(
+extern "C" fn thunk_dll_CallMsgFilterA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -75494,7 +76472,7 @@ extern "C" fn thunk_CallMsgFilterA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CallMsgFilterW(
+extern "C" fn thunk_dll_CallMsgFilterW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -75541,7 +76519,7 @@ extern "C" fn thunk_CallMsgFilterW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CallNextHookEx(
+extern "C" fn thunk_dll_CallNextHookEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -75581,7 +76559,7 @@ extern "C" fn thunk_CallNextHookEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CallWindowProcA(
+extern "C" fn thunk_dll_CallWindowProcA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -75622,7 +76600,7 @@ extern "C" fn thunk_CallWindowProcA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CallWindowProcW(
+extern "C" fn thunk_dll_CallWindowProcW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -75663,7 +76641,7 @@ extern "C" fn thunk_CallWindowProcW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CancelShutdown(
+extern "C" fn thunk_dll_CancelShutdown(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -75705,7 +76683,7 @@ extern "C" fn thunk_CancelShutdown(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CascadeWindows(
+extern "C" fn thunk_dll_CascadeWindows(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -75746,7 +76724,10 @@ extern "C" fn thunk_CascadeWindows(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ChangeMenuA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_ChangeMenuA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "ChangeMenuA");
     crate::thunk_helper(
@@ -75782,7 +76763,10 @@ extern "C" fn thunk_ChangeMenuA(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ChangeMenuW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_ChangeMenuW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "ChangeMenuW");
     crate::thunk_helper(
@@ -75818,7 +76802,7 @@ extern "C" fn thunk_ChangeMenuW(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ChangeWindowMessageFilter(
+extern "C" fn thunk_dll_ChangeWindowMessageFilter(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -75865,7 +76849,7 @@ extern "C" fn thunk_ChangeWindowMessageFilter(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ChangeWindowMessageFilterEx(
+extern "C" fn thunk_dll_ChangeWindowMessageFilterEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -75905,7 +76889,10 @@ extern "C" fn thunk_ChangeWindowMessageFilterEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CharLowerA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_CharLowerA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "CharLowerA");
     crate::thunk_helper(
@@ -75944,7 +76931,7 @@ extern "C" fn thunk_CharLowerA(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CharLowerBuffA(
+extern "C" fn thunk_dll_CharLowerBuffA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -75991,7 +76978,7 @@ extern "C" fn thunk_CharLowerBuffA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CharLowerBuffW(
+extern "C" fn thunk_dll_CharLowerBuffW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -76038,7 +77025,10 @@ extern "C" fn thunk_CharLowerBuffW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CharLowerW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_CharLowerW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "CharLowerW");
     crate::thunk_helper(
@@ -76077,7 +77067,7 @@ extern "C" fn thunk_CharLowerW(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CharNextA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_CharNextA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "CharNextA");
     crate::thunk_helper(
@@ -76116,7 +77106,10 @@ extern "C" fn thunk_CharNextA(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CharNextExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_CharNextExA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "CharNextExA");
     crate::thunk_helper(
@@ -76150,7 +77143,7 @@ extern "C" fn thunk_CharNextExA(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CharNextW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_CharNextW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "CharNextW");
     crate::thunk_helper(
@@ -76189,7 +77182,7 @@ extern "C" fn thunk_CharNextW(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CharPrevA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_CharPrevA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "CharPrevA");
     crate::thunk_helper(
@@ -76231,7 +77224,10 @@ extern "C" fn thunk_CharPrevA(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CharPrevExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_CharPrevExA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "CharPrevExA");
     crate::thunk_helper(
@@ -76266,7 +77262,7 @@ extern "C" fn thunk_CharPrevExA(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CharPrevW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_CharPrevW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "CharPrevW");
     crate::thunk_helper(
@@ -76308,7 +77304,10 @@ extern "C" fn thunk_CharPrevW(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CharToOemA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_CharToOemA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "CharToOemA");
     crate::thunk_helper(
@@ -76350,7 +77349,7 @@ extern "C" fn thunk_CharToOemA(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CharToOemBuffA(
+extern "C" fn thunk_dll_CharToOemBuffA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -76389,7 +77388,7 @@ extern "C" fn thunk_CharToOemBuffA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CharToOemBuffW(
+extern "C" fn thunk_dll_CharToOemBuffW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -76428,7 +77427,10 @@ extern "C" fn thunk_CharToOemBuffW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CharToOemW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_CharToOemW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "CharToOemW");
     crate::thunk_helper(
@@ -76470,7 +77472,10 @@ extern "C" fn thunk_CharToOemW(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CharUpperA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_CharUpperA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "CharUpperA");
     crate::thunk_helper(
@@ -76509,7 +77514,7 @@ extern "C" fn thunk_CharUpperA(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CharUpperBuffA(
+extern "C" fn thunk_dll_CharUpperBuffA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -76556,7 +77561,7 @@ extern "C" fn thunk_CharUpperBuffA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CharUpperBuffW(
+extern "C" fn thunk_dll_CharUpperBuffW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -76603,7 +77608,10 @@ extern "C" fn thunk_CharUpperBuffW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CharUpperW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_CharUpperW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "CharUpperW");
     crate::thunk_helper(
@@ -76642,7 +77650,10 @@ extern "C" fn thunk_CharUpperW(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CheckMenuItem(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_CheckMenuItem(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "CheckMenuItem",
@@ -76687,7 +77698,7 @@ extern "C" fn thunk_CheckMenuItem(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CheckMenuRadioItem(
+extern "C" fn thunk_dll_CheckMenuRadioItem(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -76728,7 +77739,7 @@ extern "C" fn thunk_CheckMenuRadioItem(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ChildWindowFromPoint(
+extern "C" fn thunk_dll_ChildWindowFromPoint(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -76775,7 +77786,7 @@ extern "C" fn thunk_ChildWindowFromPoint(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ChildWindowFromPointEx(
+extern "C" fn thunk_dll_ChildWindowFromPointEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -76823,7 +77834,10 @@ extern "C" fn thunk_ChildWindowFromPointEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ClipCursor(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_ClipCursor(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "ClipCursor");
     crate::thunk_helper(
@@ -76862,7 +77876,10 @@ extern "C" fn thunk_ClipCursor(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CloseWindow(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_CloseWindow(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "CloseWindow");
     crate::thunk_helper(
@@ -76901,7 +77918,7 @@ extern "C" fn thunk_CloseWindow(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CopyAcceleratorTableA(
+extern "C" fn thunk_dll_CopyAcceleratorTableA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -76940,7 +77957,7 @@ extern "C" fn thunk_CopyAcceleratorTableA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CopyAcceleratorTableW(
+extern "C" fn thunk_dll_CopyAcceleratorTableW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -76979,7 +77996,7 @@ extern "C" fn thunk_CopyAcceleratorTableW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CopyIcon(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_CopyIcon(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "CopyIcon");
     crate::thunk_helper(
@@ -77018,7 +78035,7 @@ extern "C" fn thunk_CopyIcon(context: &mut ExtendedContext, memory: FlatMemoryCt
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CopyImage(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_CopyImage(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "CopyImage");
     crate::thunk_helper(
@@ -77054,7 +78071,7 @@ extern "C" fn thunk_CopyImage(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateAcceleratorTableA(
+extern "C" fn thunk_dll_CreateAcceleratorTableA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -77101,7 +78118,7 @@ extern "C" fn thunk_CreateAcceleratorTableA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateAcceleratorTableW(
+extern "C" fn thunk_dll_CreateAcceleratorTableW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -77148,7 +78165,10 @@ extern "C" fn thunk_CreateAcceleratorTableW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateCaret(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_CreateCaret(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "CreateCaret");
     crate::thunk_helper(
@@ -77183,7 +78203,10 @@ extern "C" fn thunk_CreateCaret(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateCursor(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_CreateCursor(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "CreateCursor",
@@ -77231,7 +78254,7 @@ extern "C" fn thunk_CreateCursor(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateDialogParamA(
+extern "C" fn thunk_dll_CreateDialogParamA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -77278,7 +78301,7 @@ extern "C" fn thunk_CreateDialogParamA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateDialogParamW(
+extern "C" fn thunk_dll_CreateDialogParamW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -77325,7 +78348,10 @@ extern "C" fn thunk_CreateDialogParamW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateIcon(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_CreateIcon(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "CreateIcon");
     crate::thunk_helper(
@@ -77371,7 +78397,7 @@ extern "C" fn thunk_CreateIcon(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateIconFromResource(
+extern "C" fn thunk_dll_CreateIconFromResource(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -77411,7 +78437,7 @@ extern "C" fn thunk_CreateIconFromResource(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateIconFromResourceEx(
+extern "C" fn thunk_dll_CreateIconFromResourceEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -77462,7 +78488,7 @@ extern "C" fn thunk_CreateIconFromResourceEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateIconIndirect(
+extern "C" fn thunk_dll_CreateIconIndirect(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -77506,7 +78532,7 @@ extern "C" fn thunk_CreateIconIndirect(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateMDIWindowA(
+extern "C" fn thunk_dll_CreateMDIWindowA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -77563,7 +78589,7 @@ extern "C" fn thunk_CreateMDIWindowA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateMDIWindowW(
+extern "C" fn thunk_dll_CreateMDIWindowW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -77620,7 +78646,10 @@ extern "C" fn thunk_CreateMDIWindowW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateMenu(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_CreateMenu(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "CreateMenu");
     crate::thunk_helper(
@@ -77657,7 +78686,7 @@ extern "C" fn thunk_CreateMenu(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreatePopupMenu(
+extern "C" fn thunk_dll_CreatePopupMenu(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -77699,7 +78728,7 @@ extern "C" fn thunk_CreatePopupMenu(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateWindowExA(
+extern "C" fn thunk_dll_CreateWindowExA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -77762,7 +78791,7 @@ extern "C" fn thunk_CreateWindowExA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_CreateWindowExW(
+extern "C" fn thunk_dll_CreateWindowExW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -77823,7 +78852,10 @@ extern "C" fn thunk_CreateWindowExW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DefDlgProcA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_DefDlgProcA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "DefDlgProcA");
     crate::thunk_helper(
@@ -77858,7 +78890,10 @@ extern "C" fn thunk_DefDlgProcA(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DefDlgProcW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_DefDlgProcW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "DefDlgProcW");
     crate::thunk_helper(
@@ -77893,7 +78928,10 @@ extern "C" fn thunk_DefDlgProcW(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DefFrameProcA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_DefFrameProcA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "DefFrameProcA",
@@ -77931,7 +78969,10 @@ extern "C" fn thunk_DefFrameProcA(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DefFrameProcW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_DefFrameProcW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "DefFrameProcW",
@@ -77969,7 +79010,7 @@ extern "C" fn thunk_DefFrameProcW(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DefMDIChildProcA(
+extern "C" fn thunk_dll_DefMDIChildProcA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -78009,7 +79050,7 @@ extern "C" fn thunk_DefMDIChildProcA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DefMDIChildProcW(
+extern "C" fn thunk_dll_DefMDIChildProcW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -78049,7 +79090,7 @@ extern "C" fn thunk_DefMDIChildProcW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DefWindowProcA(
+extern "C" fn thunk_dll_DefWindowProcA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -78089,7 +79130,7 @@ extern "C" fn thunk_DefWindowProcA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DefWindowProcW(
+extern "C" fn thunk_dll_DefWindowProcW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -78129,7 +79170,7 @@ extern "C" fn thunk_DefWindowProcW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DeferWindowPos(
+extern "C" fn thunk_dll_DeferWindowPos(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -78182,7 +79223,10 @@ extern "C" fn thunk_DeferWindowPos(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DeleteMenu(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_DeleteMenu(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "DeleteMenu");
     crate::thunk_helper(
@@ -78225,7 +79269,7 @@ extern "C" fn thunk_DeleteMenu(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DeregisterShellHookWindow(
+extern "C" fn thunk_dll_DeregisterShellHookWindow(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -78269,7 +79313,7 @@ extern "C" fn thunk_DeregisterShellHookWindow(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DestroyAcceleratorTable(
+extern "C" fn thunk_dll_DestroyAcceleratorTable(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -78313,7 +79357,10 @@ extern "C" fn thunk_DestroyAcceleratorTable(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DestroyCaret(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_DestroyCaret(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "DestroyCaret",
@@ -78352,7 +79399,10 @@ extern "C" fn thunk_DestroyCaret(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DestroyCursor(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_DestroyCursor(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "DestroyCursor",
@@ -78393,7 +79443,10 @@ extern "C" fn thunk_DestroyCursor(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DestroyIcon(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_DestroyIcon(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "DestroyIcon");
     crate::thunk_helper(
@@ -78432,7 +79485,10 @@ extern "C" fn thunk_DestroyIcon(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DestroyMenu(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_DestroyMenu(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "DestroyMenu");
     crate::thunk_helper(
@@ -78471,7 +79527,10 @@ extern "C" fn thunk_DestroyMenu(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DestroyWindow(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_DestroyWindow(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "DestroyWindow",
@@ -78512,7 +79571,7 @@ extern "C" fn thunk_DestroyWindow(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DialogBoxParamA(
+extern "C" fn thunk_dll_DialogBoxParamA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -78559,7 +79618,7 @@ extern "C" fn thunk_DialogBoxParamA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DialogBoxParamW(
+extern "C" fn thunk_dll_DialogBoxParamW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -78606,7 +79665,7 @@ extern "C" fn thunk_DialogBoxParamW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DisableProcessWindowsGhosting(
+extern "C" fn thunk_dll_DisableProcessWindowsGhosting(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -78648,7 +79707,7 @@ extern "C" fn thunk_DisableProcessWindowsGhosting(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DispatchMessageA(
+extern "C" fn thunk_dll_DispatchMessageA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -78693,7 +79752,7 @@ extern "C" fn thunk_DispatchMessageA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DispatchMessageW(
+extern "C" fn thunk_dll_DispatchMessageW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -78737,7 +79796,10 @@ extern "C" fn thunk_DispatchMessageW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DragObject(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_DragObject(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "DragObject");
     crate::thunk_helper(
@@ -78773,7 +79835,7 @@ extern "C" fn thunk_DragObject(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DrawIcon(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_DrawIcon(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "DrawIcon");
     crate::thunk_helper(
@@ -78817,7 +79879,10 @@ extern "C" fn thunk_DrawIcon(context: &mut ExtendedContext, memory: FlatMemoryCt
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DrawIconEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_DrawIconEx(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "DrawIconEx");
     crate::thunk_helper(
@@ -78867,7 +79932,10 @@ extern "C" fn thunk_DrawIconEx(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_DrawMenuBar(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_DrawMenuBar(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "DrawMenuBar");
     crate::thunk_helper(
@@ -78906,7 +79974,7 @@ extern "C" fn thunk_DrawMenuBar(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnableMenuItem(
+extern "C" fn thunk_dll_EnableMenuItem(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -78945,7 +80013,7 @@ extern "C" fn thunk_EnableMenuItem(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EndDeferWindowPos(
+extern "C" fn thunk_dll_EndDeferWindowPos(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -78991,7 +80059,7 @@ extern "C" fn thunk_EndDeferWindowPos(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EndDialog(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_EndDialog(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "EndDialog");
     crate::thunk_helper(
@@ -79033,7 +80101,7 @@ extern "C" fn thunk_EndDialog(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EndMenu(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_EndMenu(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "EndMenu");
     crate::thunk_helper(
@@ -79070,7 +80138,7 @@ extern "C" fn thunk_EndMenu(context: &mut ExtendedContext, memory: FlatMemoryCtx
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumChildWindows(
+extern "C" fn thunk_dll_EnumChildWindows(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -79109,7 +80177,10 @@ extern "C" fn thunk_EnumChildWindows(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumPropsA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_EnumPropsA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "EnumPropsA");
     crate::thunk_helper(
@@ -79151,7 +80222,10 @@ extern "C" fn thunk_EnumPropsA(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumPropsExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_EnumPropsExA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "EnumPropsExA",
@@ -79196,7 +80270,10 @@ extern "C" fn thunk_EnumPropsExA(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumPropsExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_EnumPropsExW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "EnumPropsExW",
@@ -79241,7 +80318,10 @@ extern "C" fn thunk_EnumPropsExW(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumPropsW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_EnumPropsW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "EnumPropsW");
     crate::thunk_helper(
@@ -79283,7 +80363,7 @@ extern "C" fn thunk_EnumPropsW(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumThreadWindows(
+extern "C" fn thunk_dll_EnumThreadWindows(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -79331,7 +80411,10 @@ extern "C" fn thunk_EnumThreadWindows(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_EnumWindows(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_EnumWindows(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "EnumWindows");
     crate::thunk_helper(
@@ -79373,7 +80456,10 @@ extern "C" fn thunk_EnumWindows(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FindWindowA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_FindWindowA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "FindWindowA");
     crate::thunk_helper(
@@ -79415,7 +80501,10 @@ extern "C" fn thunk_FindWindowA(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FindWindowExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_FindWindowExA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "FindWindowExA",
@@ -79452,7 +80541,10 @@ extern "C" fn thunk_FindWindowExA(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FindWindowExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_FindWindowExW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "FindWindowExW",
@@ -79489,7 +80581,10 @@ extern "C" fn thunk_FindWindowExW(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FindWindowW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_FindWindowW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "FindWindowW");
     crate::thunk_helper(
@@ -79531,7 +80626,10 @@ extern "C" fn thunk_FindWindowW(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FlashWindow(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_FlashWindow(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "FlashWindow");
     crate::thunk_helper(
@@ -79573,7 +80671,10 @@ extern "C" fn thunk_FlashWindow(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_FlashWindowEx(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_FlashWindowEx(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "FlashWindowEx",
@@ -79614,7 +80715,7 @@ extern "C" fn thunk_FlashWindowEx(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetAltTabInfoA(
+extern "C" fn thunk_dll_GetAltTabInfoA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -79655,7 +80756,7 @@ extern "C" fn thunk_GetAltTabInfoA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetAltTabInfoW(
+extern "C" fn thunk_dll_GetAltTabInfoW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -79696,7 +80797,10 @@ extern "C" fn thunk_GetAltTabInfoW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetAncestor(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetAncestor(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetAncestor");
     crate::thunk_helper(
@@ -79738,7 +80842,7 @@ extern "C" fn thunk_GetAncestor(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetCaretBlinkTime(
+extern "C" fn thunk_dll_GetCaretBlinkTime(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -79780,7 +80884,10 @@ extern "C" fn thunk_GetCaretBlinkTime(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetCaretPos(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetCaretPos(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetCaretPos");
     crate::thunk_helper(
@@ -79819,7 +80926,10 @@ extern "C" fn thunk_GetCaretPos(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetClassInfoA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetClassInfoA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetClassInfoA",
@@ -79855,7 +80965,7 @@ extern "C" fn thunk_GetClassInfoA(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetClassInfoExA(
+extern "C" fn thunk_dll_GetClassInfoExA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -79903,7 +81013,7 @@ extern "C" fn thunk_GetClassInfoExA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetClassInfoExW(
+extern "C" fn thunk_dll_GetClassInfoExW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -79951,7 +81061,10 @@ extern "C" fn thunk_GetClassInfoExW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetClassInfoW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetClassInfoW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetClassInfoW",
@@ -79987,7 +81100,10 @@ extern "C" fn thunk_GetClassInfoW(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetClassLongA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetClassLongA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetClassLongA",
@@ -80031,7 +81147,10 @@ extern "C" fn thunk_GetClassLongA(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetClassLongW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetClassLongW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetClassLongW",
@@ -80075,7 +81194,10 @@ extern "C" fn thunk_GetClassLongW(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetClassNameA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetClassNameA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetClassNameA",
@@ -80120,7 +81242,10 @@ extern "C" fn thunk_GetClassNameA(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetClassNameW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetClassNameW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetClassNameW",
@@ -80165,7 +81290,10 @@ extern "C" fn thunk_GetClassNameW(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetClassWord(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetClassWord(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetClassWord",
@@ -80209,7 +81337,10 @@ extern "C" fn thunk_GetClassWord(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetClientRect(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetClientRect(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetClientRect",
@@ -80253,7 +81384,10 @@ extern "C" fn thunk_GetClientRect(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetClipCursor(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetClipCursor(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetClipCursor",
@@ -80294,7 +81428,7 @@ extern "C" fn thunk_GetClipCursor(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetCursor(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetCursor(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetCursor");
     crate::thunk_helper(
@@ -80331,7 +81465,10 @@ extern "C" fn thunk_GetCursor(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetCursorInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetCursorInfo(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetCursorInfo",
@@ -80365,7 +81502,10 @@ extern "C" fn thunk_GetCursorInfo(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetCursorPos(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetCursorPos(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetCursorPos",
@@ -80406,7 +81546,7 @@ extern "C" fn thunk_GetCursorPos(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetDesktopWindow(
+extern "C" fn thunk_dll_GetDesktopWindow(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -80448,7 +81588,7 @@ extern "C" fn thunk_GetDesktopWindow(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetDialogBaseUnits(
+extern "C" fn thunk_dll_GetDialogBaseUnits(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -80490,7 +81630,10 @@ extern "C" fn thunk_GetDialogBaseUnits(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetDlgCtrlID(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetDlgCtrlID(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetDlgCtrlID",
@@ -80531,7 +81674,10 @@ extern "C" fn thunk_GetDlgCtrlID(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetDlgItem(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetDlgItem(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetDlgItem");
     crate::thunk_helper(
@@ -80573,7 +81719,10 @@ extern "C" fn thunk_GetDlgItem(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetDlgItemInt(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetDlgItemInt(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetDlgItemInt",
@@ -80610,7 +81759,7 @@ extern "C" fn thunk_GetDlgItemInt(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetDlgItemTextA(
+extern "C" fn thunk_dll_GetDlgItemTextA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -80650,7 +81799,7 @@ extern "C" fn thunk_GetDlgItemTextA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetDlgItemTextW(
+extern "C" fn thunk_dll_GetDlgItemTextW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -80690,7 +81839,7 @@ extern "C" fn thunk_GetDlgItemTextW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetForegroundWindow(
+extern "C" fn thunk_dll_GetForegroundWindow(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -80732,7 +81881,7 @@ extern "C" fn thunk_GetForegroundWindow(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetGUIThreadInfo(
+extern "C" fn thunk_dll_GetGUIThreadInfo(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -80779,7 +81928,10 @@ extern "C" fn thunk_GetGUIThreadInfo(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetIconInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetIconInfo(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetIconInfo");
     crate::thunk_helper(
@@ -80821,7 +81973,7 @@ extern "C" fn thunk_GetIconInfo(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetIconInfoExA(
+extern "C" fn thunk_dll_GetIconInfoExA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -80868,7 +82020,7 @@ extern "C" fn thunk_GetIconInfoExA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetIconInfoExW(
+extern "C" fn thunk_dll_GetIconInfoExW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -80915,7 +82067,10 @@ extern "C" fn thunk_GetIconInfoExW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetInputState(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetInputState(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetInputState",
@@ -80954,7 +82109,7 @@ extern "C" fn thunk_GetInputState(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetLastActivePopup(
+extern "C" fn thunk_dll_GetLastActivePopup(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -80998,7 +82153,7 @@ extern "C" fn thunk_GetLastActivePopup(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetLayeredWindowAttributes(
+extern "C" fn thunk_dll_GetLayeredWindowAttributes(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -81038,7 +82193,7 @@ extern "C" fn thunk_GetLayeredWindowAttributes(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetMenu(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetMenu(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetMenu");
     crate::thunk_helper(
@@ -81077,7 +82232,7 @@ extern "C" fn thunk_GetMenu(context: &mut ExtendedContext, memory: FlatMemoryCtx
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetMenuBarInfo(
+extern "C" fn thunk_dll_GetMenuBarInfo(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -81117,7 +82272,7 @@ extern "C" fn thunk_GetMenuBarInfo(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetMenuCheckMarkDimensions(
+extern "C" fn thunk_dll_GetMenuCheckMarkDimensions(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -81159,7 +82314,7 @@ extern "C" fn thunk_GetMenuCheckMarkDimensions(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetMenuDefaultItem(
+extern "C" fn thunk_dll_GetMenuDefaultItem(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -81207,7 +82362,10 @@ extern "C" fn thunk_GetMenuDefaultItem(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetMenuInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetMenuInfo(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetMenuInfo");
     crate::thunk_helper(
@@ -81249,7 +82407,7 @@ extern "C" fn thunk_GetMenuInfo(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetMenuItemCount(
+extern "C" fn thunk_dll_GetMenuItemCount(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -81293,7 +82451,10 @@ extern "C" fn thunk_GetMenuItemCount(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetMenuItemID(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetMenuItemID(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetMenuItemID",
@@ -81337,7 +82498,7 @@ extern "C" fn thunk_GetMenuItemID(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetMenuItemInfoA(
+extern "C" fn thunk_dll_GetMenuItemInfoA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -81377,7 +82538,7 @@ extern "C" fn thunk_GetMenuItemInfoA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetMenuItemInfoW(
+extern "C" fn thunk_dll_GetMenuItemInfoW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -81417,7 +82578,7 @@ extern "C" fn thunk_GetMenuItemInfoW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetMenuItemRect(
+extern "C" fn thunk_dll_GetMenuItemRect(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -81457,7 +82618,10 @@ extern "C" fn thunk_GetMenuItemRect(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetMenuState(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetMenuState(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetMenuState",
@@ -81502,7 +82666,7 @@ extern "C" fn thunk_GetMenuState(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetMenuStringA(
+extern "C" fn thunk_dll_GetMenuStringA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -81543,7 +82707,7 @@ extern "C" fn thunk_GetMenuStringA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetMenuStringW(
+extern "C" fn thunk_dll_GetMenuStringW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -81584,7 +82748,10 @@ extern "C" fn thunk_GetMenuStringW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetMessageA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetMessageA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetMessageA");
     crate::thunk_helper(
@@ -81619,7 +82786,7 @@ extern "C" fn thunk_GetMessageA(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetMessageExtraInfo(
+extern "C" fn thunk_dll_GetMessageExtraInfo(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -81661,7 +82828,10 @@ extern "C" fn thunk_GetMessageExtraInfo(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetMessagePos(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetMessagePos(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetMessagePos",
@@ -81700,7 +82870,7 @@ extern "C" fn thunk_GetMessagePos(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetMessageTime(
+extern "C" fn thunk_dll_GetMessageTime(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -81742,7 +82912,10 @@ extern "C" fn thunk_GetMessageTime(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetMessageW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetMessageW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetMessageW");
     crate::thunk_helper(
@@ -81777,7 +82950,7 @@ extern "C" fn thunk_GetMessageW(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetNextDlgGroupItem(
+extern "C" fn thunk_dll_GetNextDlgGroupItem(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -81825,7 +82998,7 @@ extern "C" fn thunk_GetNextDlgGroupItem(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetNextDlgTabItem(
+extern "C" fn thunk_dll_GetNextDlgTabItem(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -81873,7 +83046,7 @@ extern "C" fn thunk_GetNextDlgTabItem(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetParent(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetParent(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetParent");
     crate::thunk_helper(
@@ -81912,7 +83085,7 @@ extern "C" fn thunk_GetParent(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetPhysicalCursorPos(
+extern "C" fn thunk_dll_GetPhysicalCursorPos(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -81956,7 +83129,7 @@ extern "C" fn thunk_GetPhysicalCursorPos(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetProcessDefaultLayout(
+extern "C" fn thunk_dll_GetProcessDefaultLayout(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -82002,7 +83175,7 @@ extern "C" fn thunk_GetProcessDefaultLayout(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetPropA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetPropA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetPropA");
     crate::thunk_helper(
@@ -82044,7 +83217,7 @@ extern "C" fn thunk_GetPropA(context: &mut ExtendedContext, memory: FlatMemoryCt
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetPropW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetPropW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetPropW");
     crate::thunk_helper(
@@ -82086,7 +83259,7 @@ extern "C" fn thunk_GetPropW(context: &mut ExtendedContext, memory: FlatMemoryCt
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetQueueStatus(
+extern "C" fn thunk_dll_GetQueueStatus(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -82130,7 +83303,7 @@ extern "C" fn thunk_GetQueueStatus(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetScrollBarInfo(
+extern "C" fn thunk_dll_GetScrollBarInfo(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -82178,7 +83351,10 @@ extern "C" fn thunk_GetScrollBarInfo(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetScrollInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetScrollInfo(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetScrollInfo",
@@ -82223,7 +83399,10 @@ extern "C" fn thunk_GetScrollInfo(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetScrollPos(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetScrollPos(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetScrollPos",
@@ -82267,7 +83446,7 @@ extern "C" fn thunk_GetScrollPos(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetScrollRange(
+extern "C" fn thunk_dll_GetScrollRange(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -82307,7 +83486,7 @@ extern "C" fn thunk_GetScrollRange(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetShellWindow(
+extern "C" fn thunk_dll_GetShellWindow(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -82349,7 +83528,10 @@ extern "C" fn thunk_GetShellWindow(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetSubMenu(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetSubMenu(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetSubMenu");
     crate::thunk_helper(
@@ -82391,7 +83573,10 @@ extern "C" fn thunk_GetSubMenu(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetSysColor(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetSysColor(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetSysColor");
     crate::thunk_helper(
@@ -82430,7 +83615,10 @@ extern "C" fn thunk_GetSysColor(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetSystemMenu(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetSystemMenu(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetSystemMenu",
@@ -82474,7 +83662,7 @@ extern "C" fn thunk_GetSystemMenu(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetSystemMetrics(
+extern "C" fn thunk_dll_GetSystemMetrics(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -82518,7 +83706,7 @@ extern "C" fn thunk_GetSystemMetrics(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetTitleBarInfo(
+extern "C" fn thunk_dll_GetTitleBarInfo(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -82565,7 +83753,10 @@ extern "C" fn thunk_GetTitleBarInfo(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetTopWindow(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetTopWindow(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetTopWindow",
@@ -82606,7 +83797,7 @@ extern "C" fn thunk_GetTopWindow(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetWindow(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetWindow(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "GetWindow");
     crate::thunk_helper(
@@ -82648,7 +83839,7 @@ extern "C" fn thunk_GetWindow(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetWindowDisplayAffinity(
+extern "C" fn thunk_dll_GetWindowDisplayAffinity(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -82695,7 +83886,10 @@ extern "C" fn thunk_GetWindowDisplayAffinity(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetWindowInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetWindowInfo(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetWindowInfo",
@@ -82739,7 +83933,7 @@ extern "C" fn thunk_GetWindowInfo(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetWindowLongA(
+extern "C" fn thunk_dll_GetWindowLongA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -82786,7 +83980,7 @@ extern "C" fn thunk_GetWindowLongA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetWindowLongW(
+extern "C" fn thunk_dll_GetWindowLongW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -82833,7 +84027,7 @@ extern "C" fn thunk_GetWindowLongW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetWindowModuleFileNameA(
+extern "C" fn thunk_dll_GetWindowModuleFileNameA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -82872,7 +84066,7 @@ extern "C" fn thunk_GetWindowModuleFileNameA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetWindowModuleFileNameW(
+extern "C" fn thunk_dll_GetWindowModuleFileNameW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -82911,7 +84105,7 @@ extern "C" fn thunk_GetWindowModuleFileNameW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetWindowPlacement(
+extern "C" fn thunk_dll_GetWindowPlacement(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -82958,7 +84152,10 @@ extern "C" fn thunk_GetWindowPlacement(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetWindowRect(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetWindowRect(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetWindowRect",
@@ -83002,7 +84199,7 @@ extern "C" fn thunk_GetWindowRect(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetWindowTextA(
+extern "C" fn thunk_dll_GetWindowTextA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -83050,7 +84247,7 @@ extern "C" fn thunk_GetWindowTextA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetWindowTextLengthA(
+extern "C" fn thunk_dll_GetWindowTextLengthA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -83094,7 +84291,7 @@ extern "C" fn thunk_GetWindowTextLengthA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetWindowTextLengthW(
+extern "C" fn thunk_dll_GetWindowTextLengthW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -83138,7 +84335,7 @@ extern "C" fn thunk_GetWindowTextLengthW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetWindowTextW(
+extern "C" fn thunk_dll_GetWindowTextW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -83186,7 +84383,7 @@ extern "C" fn thunk_GetWindowTextW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetWindowThreadProcessId(
+extern "C" fn thunk_dll_GetWindowThreadProcessId(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -83233,7 +84430,10 @@ extern "C" fn thunk_GetWindowThreadProcessId(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_GetWindowWord(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_GetWindowWord(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "GetWindowWord",
@@ -83277,7 +84477,7 @@ extern "C" fn thunk_GetWindowWord(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_HideCaret(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_HideCaret(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "HideCaret");
     crate::thunk_helper(
@@ -83316,7 +84516,7 @@ extern "C" fn thunk_HideCaret(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_HiliteMenuItem(
+extern "C" fn thunk_dll_HiliteMenuItem(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -83356,7 +84556,10 @@ extern "C" fn thunk_HiliteMenuItem(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_InSendMessage(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_InSendMessage(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "InSendMessage",
@@ -83395,7 +84598,7 @@ extern "C" fn thunk_InSendMessage(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_InSendMessageEx(
+extern "C" fn thunk_dll_InSendMessageEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -83441,7 +84644,7 @@ extern "C" fn thunk_InSendMessageEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_InheritWindowMonitor(
+extern "C" fn thunk_dll_InheritWindowMonitor(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -83488,7 +84691,10 @@ extern "C" fn thunk_InheritWindowMonitor(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_InsertMenuA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_InsertMenuA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "InsertMenuA");
     crate::thunk_helper(
@@ -83524,7 +84730,7 @@ extern "C" fn thunk_InsertMenuA(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_InsertMenuItemA(
+extern "C" fn thunk_dll_InsertMenuItemA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -83564,7 +84770,7 @@ extern "C" fn thunk_InsertMenuItemA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_InsertMenuItemW(
+extern "C" fn thunk_dll_InsertMenuItemW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -83604,7 +84810,10 @@ extern "C" fn thunk_InsertMenuItemW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_InsertMenuW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_InsertMenuW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "InsertMenuW");
     crate::thunk_helper(
@@ -83640,7 +84849,7 @@ extern "C" fn thunk_InsertMenuW(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_InternalGetWindowText(
+extern "C" fn thunk_dll_InternalGetWindowText(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -83688,7 +84897,10 @@ extern "C" fn thunk_InternalGetWindowText(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IsCharAlphaA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_IsCharAlphaA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "IsCharAlphaA",
@@ -83728,7 +84940,7 @@ extern "C" fn thunk_IsCharAlphaA(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IsCharAlphaNumericA(
+extern "C" fn thunk_dll_IsCharAlphaNumericA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -83771,7 +84983,7 @@ extern "C" fn thunk_IsCharAlphaNumericA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IsCharAlphaNumericW(
+extern "C" fn thunk_dll_IsCharAlphaNumericW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -83814,7 +85026,10 @@ extern "C" fn thunk_IsCharAlphaNumericW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IsCharAlphaW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_IsCharAlphaW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "IsCharAlphaW",
@@ -83854,7 +85069,10 @@ extern "C" fn thunk_IsCharAlphaW(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IsCharLowerA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_IsCharLowerA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "IsCharLowerA",
@@ -83894,7 +85112,10 @@ extern "C" fn thunk_IsCharLowerA(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IsCharUpperA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_IsCharUpperA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "IsCharUpperA",
@@ -83934,7 +85155,10 @@ extern "C" fn thunk_IsCharUpperA(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IsCharUpperW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_IsCharUpperW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "IsCharUpperW",
@@ -83974,7 +85198,7 @@ extern "C" fn thunk_IsCharUpperW(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IsChild(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_IsChild(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "IsChild");
     crate::thunk_helper(
@@ -84016,7 +85240,7 @@ extern "C" fn thunk_IsChild(context: &mut ExtendedContext, memory: FlatMemoryCtx
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IsDialogMessageA(
+extern "C" fn thunk_dll_IsDialogMessageA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -84063,7 +85287,7 @@ extern "C" fn thunk_IsDialogMessageA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IsDialogMessageW(
+extern "C" fn thunk_dll_IsDialogMessageW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -84110,7 +85334,10 @@ extern "C" fn thunk_IsDialogMessageW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IsGUIThread(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_IsGUIThread(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "IsGUIThread");
     crate::thunk_helper(
@@ -84149,7 +85376,7 @@ extern "C" fn thunk_IsGUIThread(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IsHungAppWindow(
+extern "C" fn thunk_dll_IsHungAppWindow(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -84193,7 +85420,7 @@ extern "C" fn thunk_IsHungAppWindow(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IsIconic(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_IsIconic(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "IsIconic");
     crate::thunk_helper(
@@ -84232,7 +85459,7 @@ extern "C" fn thunk_IsIconic(context: &mut ExtendedContext, memory: FlatMemoryCt
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IsMenu(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_IsMenu(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "IsMenu");
     crate::thunk_helper(
@@ -84271,7 +85498,7 @@ extern "C" fn thunk_IsMenu(context: &mut ExtendedContext, memory: FlatMemoryCtx)
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IsProcessDPIAware(
+extern "C" fn thunk_dll_IsProcessDPIAware(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -84313,7 +85540,7 @@ extern "C" fn thunk_IsProcessDPIAware(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IsWindow(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_IsWindow(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "IsWindow");
     crate::thunk_helper(
@@ -84352,7 +85579,7 @@ extern "C" fn thunk_IsWindow(context: &mut ExtendedContext, memory: FlatMemoryCt
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IsWindowUnicode(
+extern "C" fn thunk_dll_IsWindowUnicode(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -84396,7 +85623,7 @@ extern "C" fn thunk_IsWindowUnicode(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IsWindowVisible(
+extern "C" fn thunk_dll_IsWindowVisible(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -84440,7 +85667,7 @@ extern "C" fn thunk_IsWindowVisible(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IsWow64Message(
+extern "C" fn thunk_dll_IsWow64Message(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -84482,7 +85709,7 @@ extern "C" fn thunk_IsWow64Message(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_IsZoomed(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_IsZoomed(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "IsZoomed");
     crate::thunk_helper(
@@ -84521,7 +85748,7 @@ extern "C" fn thunk_IsZoomed(context: &mut ExtendedContext, memory: FlatMemoryCt
     )
 }
 #[no_mangle]
-extern "C" fn thunk_KillTimer(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_KillTimer(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "KillTimer");
     crate::thunk_helper(
@@ -84563,7 +85790,7 @@ extern "C" fn thunk_KillTimer(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LoadAcceleratorsA(
+extern "C" fn thunk_dll_LoadAcceleratorsA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -84610,7 +85837,7 @@ extern "C" fn thunk_LoadAcceleratorsA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LoadAcceleratorsW(
+extern "C" fn thunk_dll_LoadAcceleratorsW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -84657,7 +85884,10 @@ extern "C" fn thunk_LoadAcceleratorsW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LoadCursorA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_LoadCursorA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "LoadCursorA");
     crate::thunk_helper(
@@ -84699,7 +85929,7 @@ extern "C" fn thunk_LoadCursorA(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LoadCursorFromFileA(
+extern "C" fn thunk_dll_LoadCursorFromFileA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -84745,7 +85975,7 @@ extern "C" fn thunk_LoadCursorFromFileA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LoadCursorFromFileW(
+extern "C" fn thunk_dll_LoadCursorFromFileW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -84791,7 +86021,10 @@ extern "C" fn thunk_LoadCursorFromFileW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LoadCursorW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_LoadCursorW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "LoadCursorW");
     crate::thunk_helper(
@@ -84833,7 +86066,7 @@ extern "C" fn thunk_LoadCursorW(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LoadIconA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_LoadIconA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "LoadIconA");
     crate::thunk_helper(
@@ -84875,7 +86108,7 @@ extern "C" fn thunk_LoadIconA(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LoadIconW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_LoadIconW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "LoadIconW");
     crate::thunk_helper(
@@ -84917,7 +86150,10 @@ extern "C" fn thunk_LoadIconW(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LoadImageA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_LoadImageA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "LoadImageA");
     crate::thunk_helper(
@@ -84954,7 +86190,10 @@ extern "C" fn thunk_LoadImageA(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LoadImageW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_LoadImageW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "LoadImageW");
     crate::thunk_helper(
@@ -84991,7 +86230,7 @@ extern "C" fn thunk_LoadImageW(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LoadMenuA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_LoadMenuA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "LoadMenuA");
     crate::thunk_helper(
@@ -85033,7 +86272,7 @@ extern "C" fn thunk_LoadMenuA(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LoadMenuIndirectA(
+extern "C" fn thunk_dll_LoadMenuIndirectA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -85079,7 +86318,7 @@ extern "C" fn thunk_LoadMenuIndirectA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LoadMenuIndirectW(
+extern "C" fn thunk_dll_LoadMenuIndirectW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -85125,7 +86364,7 @@ extern "C" fn thunk_LoadMenuIndirectW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LoadMenuW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_LoadMenuW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "LoadMenuW");
     crate::thunk_helper(
@@ -85167,7 +86406,10 @@ extern "C" fn thunk_LoadMenuW(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LoadStringA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_LoadStringA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "LoadStringA");
     crate::thunk_helper(
@@ -85202,7 +86444,10 @@ extern "C" fn thunk_LoadStringA(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LoadStringW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_LoadStringW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "LoadStringW");
     crate::thunk_helper(
@@ -85237,7 +86482,7 @@ extern "C" fn thunk_LoadStringW(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LockSetForegroundWindow(
+extern "C" fn thunk_dll_LockSetForegroundWindow(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -85283,7 +86528,7 @@ extern "C" fn thunk_LockSetForegroundWindow(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LogicalToPhysicalPoint(
+extern "C" fn thunk_dll_LogicalToPhysicalPoint(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -85330,7 +86575,7 @@ extern "C" fn thunk_LogicalToPhysicalPoint(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LookupIconIdFromDirectory(
+extern "C" fn thunk_dll_LookupIconIdFromDirectory(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -85377,7 +86622,7 @@ extern "C" fn thunk_LookupIconIdFromDirectory(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_LookupIconIdFromDirectoryEx(
+extern "C" fn thunk_dll_LookupIconIdFromDirectoryEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -85418,7 +86663,10 @@ extern "C" fn thunk_LookupIconIdFromDirectoryEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_MapDialogRect(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_MapDialogRect(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "MapDialogRect",
@@ -85462,7 +86710,7 @@ extern "C" fn thunk_MapDialogRect(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_MenuItemFromPoint(
+extern "C" fn thunk_dll_MenuItemFromPoint(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -85510,7 +86758,10 @@ extern "C" fn thunk_MenuItemFromPoint(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_MessageBoxA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_MessageBoxA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "MessageBoxA");
     crate::thunk_helper(
@@ -85545,7 +86796,10 @@ extern "C" fn thunk_MessageBoxA(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_MessageBoxExA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_MessageBoxExA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "MessageBoxExA",
@@ -85583,7 +86837,10 @@ extern "C" fn thunk_MessageBoxExA(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_MessageBoxExW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_MessageBoxExW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "MessageBoxExW",
@@ -85621,7 +86878,10 @@ extern "C" fn thunk_MessageBoxExW(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_MessageBoxW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_MessageBoxW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "MessageBoxW");
     crate::thunk_helper(
@@ -85656,7 +86916,10 @@ extern "C" fn thunk_MessageBoxW(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ModifyMenuA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_ModifyMenuA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "ModifyMenuA");
     crate::thunk_helper(
@@ -85692,7 +86955,10 @@ extern "C" fn thunk_ModifyMenuA(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ModifyMenuW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_ModifyMenuW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "ModifyMenuW");
     crate::thunk_helper(
@@ -85728,7 +86994,10 @@ extern "C" fn thunk_ModifyMenuW(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_MoveWindow(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_MoveWindow(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "MoveWindow");
     crate::thunk_helper(
@@ -85765,7 +87034,7 @@ extern "C" fn thunk_MoveWindow(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_MsgWaitForMultipleObjects(
+extern "C" fn thunk_dll_MsgWaitForMultipleObjects(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -85812,7 +87081,7 @@ extern "C" fn thunk_MsgWaitForMultipleObjects(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_MsgWaitForMultipleObjectsEx(
+extern "C" fn thunk_dll_MsgWaitForMultipleObjectsEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -85859,7 +87128,10 @@ extern "C" fn thunk_MsgWaitForMultipleObjectsEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_OemToCharA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_OemToCharA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "OemToCharA");
     crate::thunk_helper(
@@ -85901,7 +87173,7 @@ extern "C" fn thunk_OemToCharA(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_OemToCharBuffA(
+extern "C" fn thunk_dll_OemToCharBuffA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -85940,7 +87212,7 @@ extern "C" fn thunk_OemToCharBuffA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_OemToCharBuffW(
+extern "C" fn thunk_dll_OemToCharBuffW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -85979,7 +87251,10 @@ extern "C" fn thunk_OemToCharBuffW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_OemToCharW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_OemToCharW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "OemToCharW");
     crate::thunk_helper(
@@ -86021,7 +87296,7 @@ extern "C" fn thunk_OemToCharW(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_OpenIcon(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_OpenIcon(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "OpenIcon");
     crate::thunk_helper(
@@ -86060,7 +87335,10 @@ extern "C" fn thunk_OpenIcon(context: &mut ExtendedContext, memory: FlatMemoryCt
     )
 }
 #[no_mangle]
-extern "C" fn thunk_PeekMessageA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_PeekMessageA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "PeekMessageA",
@@ -86104,7 +87382,10 @@ extern "C" fn thunk_PeekMessageA(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_PeekMessageW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_PeekMessageW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "PeekMessageW",
@@ -86148,7 +87429,7 @@ extern "C" fn thunk_PeekMessageW(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_PhysicalToLogicalPoint(
+extern "C" fn thunk_dll_PhysicalToLogicalPoint(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -86195,7 +87476,10 @@ extern "C" fn thunk_PhysicalToLogicalPoint(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_PostMessageA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_PostMessageA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "PostMessageA",
@@ -86232,7 +87516,10 @@ extern "C" fn thunk_PostMessageA(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_PostMessageW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_PostMessageW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "PostMessageW",
@@ -86269,7 +87556,7 @@ extern "C" fn thunk_PostMessageW(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_PostQuitMessage(
+extern "C" fn thunk_dll_PostQuitMessage(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -86315,7 +87602,7 @@ extern "C" fn thunk_PostQuitMessage(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_PostThreadMessageA(
+extern "C" fn thunk_dll_PostThreadMessageA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -86355,7 +87642,7 @@ extern "C" fn thunk_PostThreadMessageA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_PostThreadMessageW(
+extern "C" fn thunk_dll_PostThreadMessageW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -86395,7 +87682,7 @@ extern "C" fn thunk_PostThreadMessageW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_PrivateExtractIconsA(
+extern "C" fn thunk_dll_PrivateExtractIconsA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -86448,7 +87735,7 @@ extern "C" fn thunk_PrivateExtractIconsA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_PrivateExtractIconsW(
+extern "C" fn thunk_dll_PrivateExtractIconsW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -86501,7 +87788,7 @@ extern "C" fn thunk_PrivateExtractIconsW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RealChildWindowFromPoint(
+extern "C" fn thunk_dll_RealChildWindowFromPoint(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -86548,7 +87835,7 @@ extern "C" fn thunk_RealChildWindowFromPoint(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RealGetWindowClassA(
+extern "C" fn thunk_dll_RealGetWindowClassA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -86587,7 +87874,7 @@ extern "C" fn thunk_RealGetWindowClassA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RealGetWindowClassW(
+extern "C" fn thunk_dll_RealGetWindowClassW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -86626,7 +87913,7 @@ extern "C" fn thunk_RealGetWindowClassW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RegisterClassA(
+extern "C" fn thunk_dll_RegisterClassA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -86672,7 +87959,7 @@ extern "C" fn thunk_RegisterClassA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RegisterClassExA(
+extern "C" fn thunk_dll_RegisterClassExA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -86716,7 +88003,7 @@ extern "C" fn thunk_RegisterClassExA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RegisterClassExW(
+extern "C" fn thunk_dll_RegisterClassExW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -86760,7 +88047,7 @@ extern "C" fn thunk_RegisterClassExW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RegisterClassW(
+extern "C" fn thunk_dll_RegisterClassW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -86806,7 +88093,7 @@ extern "C" fn thunk_RegisterClassW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RegisterShellHookWindow(
+extern "C" fn thunk_dll_RegisterShellHookWindow(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -86850,7 +88137,7 @@ extern "C" fn thunk_RegisterShellHookWindow(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RegisterWindowMessageA(
+extern "C" fn thunk_dll_RegisterWindowMessageA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -86894,7 +88181,7 @@ extern "C" fn thunk_RegisterWindowMessageA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RegisterWindowMessageW(
+extern "C" fn thunk_dll_RegisterWindowMessageW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -86938,7 +88225,10 @@ extern "C" fn thunk_RegisterWindowMessageW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RemoveMenu(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_RemoveMenu(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "RemoveMenu");
     crate::thunk_helper(
@@ -86981,7 +88271,10 @@ extern "C" fn thunk_RemoveMenu(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RemovePropA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_RemovePropA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "RemovePropA");
     crate::thunk_helper(
@@ -87023,7 +88316,10 @@ extern "C" fn thunk_RemovePropA(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_RemovePropW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_RemovePropW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "RemovePropW");
     crate::thunk_helper(
@@ -87065,7 +88361,10 @@ extern "C" fn thunk_RemovePropW(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ReplyMessage(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_ReplyMessage(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "ReplyMessage",
@@ -87106,7 +88405,7 @@ extern "C" fn thunk_ReplyMessage(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ScrollDC(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_ScrollDC(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "ScrollDC");
     crate::thunk_helper(
@@ -87152,7 +88451,10 @@ extern "C" fn thunk_ScrollDC(context: &mut ExtendedContext, memory: FlatMemoryCt
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ScrollWindow(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_ScrollWindow(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "ScrollWindow",
@@ -87190,7 +88492,7 @@ extern "C" fn thunk_ScrollWindow(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ScrollWindowEx(
+extern "C" fn thunk_dll_ScrollWindowEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -87243,7 +88545,7 @@ extern "C" fn thunk_ScrollWindowEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SendDlgItemMessageA(
+extern "C" fn thunk_dll_SendDlgItemMessageA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -87284,7 +88586,7 @@ extern "C" fn thunk_SendDlgItemMessageA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SendDlgItemMessageW(
+extern "C" fn thunk_dll_SendDlgItemMessageW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -87325,7 +88627,10 @@ extern "C" fn thunk_SendDlgItemMessageW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SendMessageA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_SendMessageA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "SendMessageA",
@@ -87362,7 +88667,7 @@ extern "C" fn thunk_SendMessageA(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SendMessageCallbackA(
+extern "C" fn thunk_dll_SendMessageCallbackA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -87404,7 +88709,7 @@ extern "C" fn thunk_SendMessageCallbackA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SendMessageCallbackW(
+extern "C" fn thunk_dll_SendMessageCallbackW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -87446,7 +88751,7 @@ extern "C" fn thunk_SendMessageCallbackW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SendMessageTimeoutA(
+extern "C" fn thunk_dll_SendMessageTimeoutA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -87497,7 +88802,7 @@ extern "C" fn thunk_SendMessageTimeoutA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SendMessageTimeoutW(
+extern "C" fn thunk_dll_SendMessageTimeoutW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -87548,7 +88853,10 @@ extern "C" fn thunk_SendMessageTimeoutW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SendMessageW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_SendMessageW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "SendMessageW",
@@ -87585,7 +88893,7 @@ extern "C" fn thunk_SendMessageW(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SendNotifyMessageA(
+extern "C" fn thunk_dll_SendNotifyMessageA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -87625,7 +88933,7 @@ extern "C" fn thunk_SendNotifyMessageA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SendNotifyMessageW(
+extern "C" fn thunk_dll_SendNotifyMessageW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -87665,7 +88973,7 @@ extern "C" fn thunk_SendNotifyMessageW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetCaretBlinkTime(
+extern "C" fn thunk_dll_SetCaretBlinkTime(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -87711,7 +89019,10 @@ extern "C" fn thunk_SetCaretBlinkTime(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetCaretPos(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_SetCaretPos(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "SetCaretPos");
     crate::thunk_helper(
@@ -87751,7 +89062,10 @@ extern "C" fn thunk_SetCaretPos(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetClassLongA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_SetClassLongA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "SetClassLongA",
@@ -87796,7 +89110,10 @@ extern "C" fn thunk_SetClassLongA(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetClassLongW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_SetClassLongW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "SetClassLongW",
@@ -87841,7 +89158,10 @@ extern "C" fn thunk_SetClassLongW(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetClassWord(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_SetClassWord(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "SetClassWord",
@@ -87886,7 +89206,7 @@ extern "C" fn thunk_SetClassWord(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetCoalescableTimer(
+extern "C" fn thunk_dll_SetCoalescableTimer(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -87933,7 +89253,7 @@ extern "C" fn thunk_SetCoalescableTimer(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetCursor(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_SetCursor(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "SetCursor");
     crate::thunk_helper(
@@ -87972,7 +89292,10 @@ extern "C" fn thunk_SetCursor(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetCursorPos(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_SetCursorPos(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "SetCursorPos",
@@ -88014,7 +89337,7 @@ extern "C" fn thunk_SetCursorPos(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetDebugErrorLevel(
+extern "C" fn thunk_dll_SetDebugErrorLevel(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -88058,7 +89381,10 @@ extern "C" fn thunk_SetDebugErrorLevel(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetDlgItemInt(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_SetDlgItemInt(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "SetDlgItemInt",
@@ -88095,7 +89421,7 @@ extern "C" fn thunk_SetDlgItemInt(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetDlgItemTextA(
+extern "C" fn thunk_dll_SetDlgItemTextA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -88143,7 +89469,7 @@ extern "C" fn thunk_SetDlgItemTextA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetDlgItemTextW(
+extern "C" fn thunk_dll_SetDlgItemTextW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -88191,7 +89517,7 @@ extern "C" fn thunk_SetDlgItemTextW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetForegroundWindow(
+extern "C" fn thunk_dll_SetForegroundWindow(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -88235,7 +89561,7 @@ extern "C" fn thunk_SetForegroundWindow(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetLayeredWindowAttributes(
+extern "C" fn thunk_dll_SetLayeredWindowAttributes(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -88275,7 +89601,7 @@ extern "C" fn thunk_SetLayeredWindowAttributes(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetMenu(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_SetMenu(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "SetMenu");
     crate::thunk_helper(
@@ -88317,7 +89643,7 @@ extern "C" fn thunk_SetMenu(context: &mut ExtendedContext, memory: FlatMemoryCtx
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetMenuDefaultItem(
+extern "C" fn thunk_dll_SetMenuDefaultItem(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -88365,7 +89691,10 @@ extern "C" fn thunk_SetMenuDefaultItem(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetMenuInfo(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_SetMenuInfo(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "SetMenuInfo");
     crate::thunk_helper(
@@ -88407,7 +89736,7 @@ extern "C" fn thunk_SetMenuInfo(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetMenuItemBitmaps(
+extern "C" fn thunk_dll_SetMenuItemBitmaps(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -88454,7 +89783,7 @@ extern "C" fn thunk_SetMenuItemBitmaps(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetMenuItemInfoA(
+extern "C" fn thunk_dll_SetMenuItemInfoA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -88494,7 +89823,7 @@ extern "C" fn thunk_SetMenuItemInfoA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetMenuItemInfoW(
+extern "C" fn thunk_dll_SetMenuItemInfoW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -88534,7 +89863,7 @@ extern "C" fn thunk_SetMenuItemInfoW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetMessageExtraInfo(
+extern "C" fn thunk_dll_SetMessageExtraInfo(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -88578,7 +89907,7 @@ extern "C" fn thunk_SetMessageExtraInfo(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetMessageQueue(
+extern "C" fn thunk_dll_SetMessageQueue(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -88624,7 +89953,7 @@ extern "C" fn thunk_SetMessageQueue(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetParent(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_SetParent(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "SetParent");
     crate::thunk_helper(
@@ -88666,7 +89995,7 @@ extern "C" fn thunk_SetParent(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetPhysicalCursorPos(
+extern "C" fn thunk_dll_SetPhysicalCursorPos(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -88711,7 +90040,7 @@ extern "C" fn thunk_SetPhysicalCursorPos(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetProcessDPIAware(
+extern "C" fn thunk_dll_SetProcessDPIAware(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -88753,7 +90082,7 @@ extern "C" fn thunk_SetProcessDPIAware(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetProcessDefaultLayout(
+extern "C" fn thunk_dll_SetProcessDefaultLayout(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -88799,7 +90128,7 @@ extern "C" fn thunk_SetProcessDefaultLayout(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetPropA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_SetPropA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "SetPropA");
     crate::thunk_helper(
@@ -88842,7 +90171,7 @@ extern "C" fn thunk_SetPropA(context: &mut ExtendedContext, memory: FlatMemoryCt
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetPropW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_SetPropW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "SetPropW");
     crate::thunk_helper(
@@ -88885,7 +90214,10 @@ extern "C" fn thunk_SetPropW(context: &mut ExtendedContext, memory: FlatMemoryCt
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetSysColors(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_SetSysColors(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "SetSysColors",
@@ -88921,7 +90253,7 @@ extern "C" fn thunk_SetSysColors(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetSystemCursor(
+extern "C" fn thunk_dll_SetSystemCursor(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -88968,7 +90300,7 @@ extern "C" fn thunk_SetSystemCursor(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetTimer(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_SetTimer(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "SetTimer");
     crate::thunk_helper(
@@ -89003,7 +90335,7 @@ extern "C" fn thunk_SetTimer(context: &mut ExtendedContext, memory: FlatMemoryCt
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetWindowDisplayAffinity(
+extern "C" fn thunk_dll_SetWindowDisplayAffinity(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -89050,7 +90382,7 @@ extern "C" fn thunk_SetWindowDisplayAffinity(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetWindowLongA(
+extern "C" fn thunk_dll_SetWindowLongA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -89098,7 +90430,7 @@ extern "C" fn thunk_SetWindowLongA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetWindowLongW(
+extern "C" fn thunk_dll_SetWindowLongW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -89146,7 +90478,7 @@ extern "C" fn thunk_SetWindowLongW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetWindowPlacement(
+extern "C" fn thunk_dll_SetWindowPlacement(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -89193,7 +90525,10 @@ extern "C" fn thunk_SetWindowPlacement(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetWindowPos(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_SetWindowPos(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "SetWindowPos",
@@ -89233,7 +90568,7 @@ extern "C" fn thunk_SetWindowPos(context: &mut ExtendedContext, memory: FlatMemo
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetWindowTextA(
+extern "C" fn thunk_dll_SetWindowTextA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -89280,7 +90615,7 @@ extern "C" fn thunk_SetWindowTextA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetWindowTextW(
+extern "C" fn thunk_dll_SetWindowTextW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -89327,7 +90662,10 @@ extern "C" fn thunk_SetWindowTextW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetWindowWord(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_SetWindowWord(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
         tracing::callsite::Identifier(&SPAN_CALLSITE),
         "SetWindowWord",
@@ -89372,7 +90710,7 @@ extern "C" fn thunk_SetWindowWord(context: &mut ExtendedContext, memory: FlatMem
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetWindowsHookA(
+extern "C" fn thunk_dll_SetWindowsHookA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -89419,7 +90757,7 @@ extern "C" fn thunk_SetWindowsHookA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetWindowsHookExA(
+extern "C" fn thunk_dll_SetWindowsHookExA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -89459,7 +90797,7 @@ extern "C" fn thunk_SetWindowsHookExA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetWindowsHookExW(
+extern "C" fn thunk_dll_SetWindowsHookExW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -89499,7 +90837,7 @@ extern "C" fn thunk_SetWindowsHookExW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SetWindowsHookW(
+extern "C" fn thunk_dll_SetWindowsHookW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -89546,7 +90884,7 @@ extern "C" fn thunk_SetWindowsHookW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ShowCaret(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_ShowCaret(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "ShowCaret");
     crate::thunk_helper(
@@ -89585,7 +90923,10 @@ extern "C" fn thunk_ShowCaret(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ShowCursor(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_ShowCursor(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "ShowCursor");
     crate::thunk_helper(
@@ -89624,7 +90965,7 @@ extern "C" fn thunk_ShowCursor(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ShowOwnedPopups(
+extern "C" fn thunk_dll_ShowOwnedPopups(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -89671,7 +91012,10 @@ extern "C" fn thunk_ShowOwnedPopups(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ShowWindow(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_ShowWindow(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "ShowWindow");
     crate::thunk_helper(
@@ -89713,7 +91057,7 @@ extern "C" fn thunk_ShowWindow(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_ShowWindowAsync(
+extern "C" fn thunk_dll_ShowWindowAsync(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -89760,7 +91104,10 @@ extern "C" fn thunk_ShowWindowAsync(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SoundSentry(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_SoundSentry(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "SoundSentry");
     crate::thunk_helper(
@@ -89797,7 +91144,7 @@ extern "C" fn thunk_SoundSentry(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SwitchToThisWindow(
+extern "C" fn thunk_dll_SwitchToThisWindow(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -89844,7 +91191,7 @@ extern "C" fn thunk_SwitchToThisWindow(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SystemParametersInfoA(
+extern "C" fn thunk_dll_SystemParametersInfoA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -89884,7 +91231,7 @@ extern "C" fn thunk_SystemParametersInfoA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_SystemParametersInfoW(
+extern "C" fn thunk_dll_SystemParametersInfoW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -89924,7 +91271,10 @@ extern "C" fn thunk_SystemParametersInfoW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_TileWindows(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_TileWindows(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "TileWindows");
     crate::thunk_helper(
@@ -89960,7 +91310,7 @@ extern "C" fn thunk_TileWindows(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_TrackPopupMenu(
+extern "C" fn thunk_dll_TrackPopupMenu(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -90003,7 +91353,7 @@ extern "C" fn thunk_TrackPopupMenu(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_TrackPopupMenuEx(
+extern "C" fn thunk_dll_TrackPopupMenuEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -90045,7 +91395,7 @@ extern "C" fn thunk_TrackPopupMenuEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_TranslateAcceleratorA(
+extern "C" fn thunk_dll_TranslateAcceleratorA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -90093,7 +91443,7 @@ extern "C" fn thunk_TranslateAcceleratorA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_TranslateAcceleratorW(
+extern "C" fn thunk_dll_TranslateAcceleratorW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -90141,7 +91491,7 @@ extern "C" fn thunk_TranslateAcceleratorW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_TranslateMDISysAccel(
+extern "C" fn thunk_dll_TranslateMDISysAccel(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -90188,7 +91538,7 @@ extern "C" fn thunk_TranslateMDISysAccel(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_TranslateMessage(
+extern "C" fn thunk_dll_TranslateMessage(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -90232,7 +91582,7 @@ extern "C" fn thunk_TranslateMessage(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_UnhookWindowsHook(
+extern "C" fn thunk_dll_UnhookWindowsHook(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -90279,7 +91629,7 @@ extern "C" fn thunk_UnhookWindowsHook(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_UnhookWindowsHookEx(
+extern "C" fn thunk_dll_UnhookWindowsHookEx(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -90316,7 +91666,7 @@ extern "C" fn thunk_UnhookWindowsHookEx(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_UnregisterClassA(
+extern "C" fn thunk_dll_UnregisterClassA(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -90363,7 +91713,7 @@ extern "C" fn thunk_UnregisterClassA(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_UnregisterClassW(
+extern "C" fn thunk_dll_UnregisterClassW(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -90410,7 +91760,7 @@ extern "C" fn thunk_UnregisterClassW(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_UpdateLayeredWindow(
+extern "C" fn thunk_dll_UpdateLayeredWindow(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -90457,7 +91807,7 @@ extern "C" fn thunk_UpdateLayeredWindow(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_UpdateLayeredWindowIndirect(
+extern "C" fn thunk_dll_UpdateLayeredWindowIndirect(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -90504,7 +91854,10 @@ extern "C" fn thunk_UpdateLayeredWindowIndirect(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WaitMessage(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_WaitMessage(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "WaitMessage");
     crate::thunk_helper(
@@ -90541,7 +91894,7 @@ extern "C" fn thunk_WaitMessage(context: &mut ExtendedContext, memory: FlatMemor
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WindowFromPhysicalPoint(
+extern "C" fn thunk_dll_WindowFromPhysicalPoint(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -90585,7 +91938,7 @@ extern "C" fn thunk_WindowFromPhysicalPoint(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_WindowFromPoint(
+extern "C" fn thunk_dll_WindowFromPoint(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
@@ -90629,7 +91982,7 @@ extern "C" fn thunk_WindowFromPoint(
     )
 }
 #[no_mangle]
-extern "C" fn thunk_wsprintfA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_wsprintfA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "wsprintfA");
     crate::thunk_helper(
@@ -90671,7 +92024,7 @@ extern "C" fn thunk_wsprintfA(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_wsprintfW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_wsprintfW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "wsprintfW");
     crate::thunk_helper(
@@ -90713,7 +92066,10 @@ extern "C" fn thunk_wsprintfW(context: &mut ExtendedContext, memory: FlatMemoryC
     )
 }
 #[no_mangle]
-extern "C" fn thunk_wvsprintfA(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_wvsprintfA(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "wvsprintfA");
     crate::thunk_helper(
@@ -90756,7 +92112,10 @@ extern "C" fn thunk_wvsprintfA(context: &mut ExtendedContext, memory: FlatMemory
     )
 }
 #[no_mangle]
-extern "C" fn thunk_wvsprintfW(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+extern "C" fn thunk_dll_wvsprintfW(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "wvsprintfW");
     crate::thunk_helper(

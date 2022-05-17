@@ -14,6 +14,7 @@ use std::sync::Arc;
 use crate::error::{Error, Result};
 use crate::make_dll_stub;
 use crate::pe_file::{LoadedPeInfo, PeFile, ProcessImageSymbol};
+use crate::thunk_id_allocator::ThunkIdAllocator;
 
 pub const LE: LittleEndian = LittleEndian {};
 
@@ -258,14 +259,7 @@ pub fn load_process_image(executable: PeFile, dlls: Vec<PeFile>) -> Result<Loade
         required_dlls.insert(dll, functions);
     }
 
-    let thunk_function_indices = required_dlls
-        .iter()
-        .filter(|(nm, _)| !dlls.contains_key(nm.as_str()))
-        .flat_map(|(_, vals)| vals)
-        .unique()
-        .enumerate()
-        .map(|(i, name)| (name.to_string(), i as u32))
-        .collect::<BTreeMap<_, _>>();
+    let mut thunk_allocator = ThunkIdAllocator::new();
 
     println!("All dep dlls collected: {:#?}", required_dlls);
 
@@ -274,12 +268,8 @@ pub fn load_process_image(executable: PeFile, dlls: Vec<PeFile>) -> Result<Loade
             println!("FOUND {}", dll_name)
         } else if STUBBUABLE_DLLS.contains(dll_name.as_str()) {
             println!("STUB  {}", dll_name);
-            let fns = fns
-                .iter()
-                .map(|name| (name.to_string(), *thunk_function_indices.get(name).unwrap()))
-                .collect();
 
-            let stub = make_dll_stub(dll_name, &fns).unwrap();
+            let stub = make_dll_stub(dll_name, &mut thunk_allocator, fns).unwrap();
             dlls.insert(dll_name.clone(), stub);
         } else {
             println!("WHERE {}", dll_name);
@@ -287,10 +277,7 @@ pub fn load_process_image(executable: PeFile, dlls: Vec<PeFile>) -> Result<Loade
         }
     }
 
-    let thunk_functions = thunk_function_indices
-        .into_iter()
-        .map(|(name, idx)| (idx, name))
-        .collect::<BTreeMap<_, _>>();
+    let thunk_functions = thunk_allocator.to_thunk_functions();
 
     let exe_entrypoint = executable.entry() + executable.base_addr();
     let exe_base_addr = executable.base_addr();

@@ -1,16 +1,34 @@
+//! This module generates stub dlls that contain thunks to native functions
+//!
+//! The generated DLL contains only two sections: .text and .edata
+//!
+//! The text section contains a series of thunks (one for each win32 function used),
+//!  which are basically x86 far jumps with the 0x7775 segment and address being the thunk index.
+//!
+//! Those jumps are treated specially by rusty-x86 and calls to runtime are issued directly.
+//!
+//! Currently it consists of mostly manual generation (because the object crate does not provide that much abstractions)
+
 use crate::error::Result;
 use crate::loader::PAGE_ALIGNMENT;
 use crate::pe_file::{PeFile, PeSymbol, SymbolKind};
+use crate::thunk_id_allocator::ThunkIdAllocator;
 use object::pe;
 use object::write::pe::{NtHeaders, SectionRange, Writer};
 use std::collections::{BTreeMap, HashMap};
 
-fn gen_text_section(stubs: &BTreeMap<String, u32>) -> (Vec<u8>, BTreeMap<String, u32>) {
+fn gen_text_section(
+    thunk_id_allocator: &mut ThunkIdAllocator,
+    functions: &[impl AsRef<str>],
+) -> (Vec<u8>, BTreeMap<String, u32>) {
     let mut output = Vec::new();
-    let mut labels = BTreeMap::new();
+    let mut exports = BTreeMap::new();
 
-    for (name, index) in stubs {
-        labels.insert(name.clone(), output.len() as u32);
+    for name in functions {
+        let name = name.as_ref();
+        let index = thunk_id_allocator.get_plain_function(name);
+
+        exports.insert(name.to_string(), output.len() as u32);
         // FAR JUMP opcode
         output.push(0xea);
 
@@ -20,12 +38,12 @@ fn gen_text_section(stubs: &BTreeMap<String, u32>) -> (Vec<u8>, BTreeMap<String,
         output.extend(0x7775u16.to_le_bytes());
     }
 
-    (output, labels)
+    (output, exports)
 }
 
 type StringTable = (Vec<u8>, HashMap<String, u32>);
 
-fn gen_edata_stringtable(name: &str, text_labels: &BTreeMap<String, u32>) -> StringTable {
+fn gen_edata_string_table(name: &str, text_exports: &BTreeMap<String, u32>) -> StringTable {
     let mut res = Vec::new();
     let mut positions = HashMap::new();
 
@@ -39,7 +57,7 @@ fn gen_edata_stringtable(name: &str, text_labels: &BTreeMap<String, u32>) -> Str
     };
 
     put_str(name);
-    for name in text_labels.keys() {
+    for name in text_exports.keys() {
         put_str(name)
     }
 
@@ -59,18 +77,18 @@ fn edata_len(_name: &str, text_labels: &BTreeMap<String, u32>, string_table: &St
 
 fn gen_edata(
     name: &str,
-    text_labels: &BTreeMap<String, u32>,
+    text_exports: &BTreeMap<String, u32>,
     string_table: &StringTable,
     edata_range: SectionRange,
     text_range: SectionRange,
 ) -> Vec<u8> {
     let mut output = Vec::new();
 
-    let function_count = text_labels.len() as u32;
+    let function_count = text_exports.len() as u32;
     let export_address_table_rva = edata_range.virtual_address + 10 * 4 /* header */;
-    let export_name_pointer_table_rva = export_address_table_rva + 4 * text_labels.len() as u32;
-    let export_ordinal_table = export_name_pointer_table_rva + 4 * text_labels.len() as u32;
-    let string_table_rva = export_ordinal_table + 2 * text_labels.len() as u32;
+    let export_name_pointer_table_rva = export_address_table_rva + 4 * text_exports.len() as u32;
+    let export_ordinal_table = export_name_pointer_table_rva + 4 * text_exports.len() as u32;
+    let string_table_rva = export_ordinal_table + 2 * text_exports.len() as u32;
 
     // flags
     output.extend(0u32.to_le_bytes());
@@ -100,7 +118,7 @@ fn gen_edata(
         export_address_table_rva
     );
     // Export Address Table
-    for offset in text_labels.values() {
+    for offset in text_exports.values() {
         let rva = text_range.virtual_address + offset;
         output.extend(rva.to_le_bytes());
     }
@@ -110,7 +128,7 @@ fn gen_edata(
         export_name_pointer_table_rva
     );
     // Export Name Pointer Table
-    for name in text_labels.keys() {
+    for name in text_exports.keys() {
         let name_offset = string_table.1.get(name).unwrap();
         let name_rva = string_table_rva + name_offset;
         output.extend(name_rva.to_le_bytes());
@@ -121,7 +139,7 @@ fn gen_edata(
         export_ordinal_table
     );
     // Export Ordinal Table
-    for (i, _) in text_labels.iter().enumerate() {
+    for (i, _) in text_exports.iter().enumerate() {
         output.extend((i as u16).to_le_bytes());
     }
 
@@ -137,7 +155,8 @@ fn gen_edata(
 
 fn make_dll_stub_impl(
     name: &str,
-    stubs: &BTreeMap<String, u32>,
+    thunk_id_allocator: &mut ThunkIdAllocator,
+    functions: &[impl AsRef<str>],
 ) -> Result<(Vec<u8>, BTreeMap<u32, PeSymbol>)> {
     let mut out_data = Vec::new();
     let mut writer = Writer::new(false, PAGE_ALIGNMENT, 0x200, &mut out_data);
@@ -147,16 +166,16 @@ fn make_dll_stub_impl(
     // writer.reserve_section_headers()
     writer.reserve_section_headers(2); // we are fine with only .text & .edata
 
-    let (text_data, text_labels) = gen_text_section(stubs);
+    let (text_data, text_exports) = gen_text_section(thunk_id_allocator, functions);
 
     let text_range = writer.reserve_text_section(text_data.len() as u32);
 
-    let edata_strings = gen_edata_stringtable(name, &text_labels);
-    let edata_size = edata_len(name, &text_labels, &edata_strings);
+    let edata_strings = gen_edata_string_table(name, &text_exports);
+    let edata_size = edata_len(name, &text_exports, &edata_strings);
 
     let edata_range = writer.reserve_edata_section(edata_size);
 
-    let edata = gen_edata(name, &text_labels, &edata_strings, edata_range, text_range);
+    let edata = gen_edata(name, &text_exports, &edata_strings, edata_range, text_range);
 
     assert_eq!(edata.len() as u32, edata_size);
 
@@ -189,7 +208,7 @@ fn make_dll_stub_impl(
     writer.write_section(text_range.file_offset, &text_data);
     writer.write_section(edata_range.file_offset, &edata);
 
-    let symbols = text_labels
+    let symbols = text_exports
         .into_iter()
         .map(|(name, addr)| {
             (
@@ -204,8 +223,12 @@ fn make_dll_stub_impl(
     Ok((out_data, symbols))
 }
 
-pub fn make_dll_stub(name: &str, stubs: &BTreeMap<String, u32>) -> Result<PeFile> {
-    let (bytes, symbols) = make_dll_stub_impl(name, stubs)?;
+pub fn make_dll_stub(
+    name: &str,
+    thunk_id_allocator: &mut ThunkIdAllocator,
+    functions: &[impl AsRef<str>],
+) -> Result<PeFile> {
+    let (bytes, symbols) = make_dll_stub_impl(name, thunk_id_allocator, functions)?;
 
     let pe = PeFile::parse_from_memory(name.to_string(), bytes)?.with_symbols(symbols);
 

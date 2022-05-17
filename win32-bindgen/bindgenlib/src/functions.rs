@@ -174,7 +174,7 @@ pub fn gen_thunk_function(def: &MethodDef, gen: &Gen, namespace: &TokenStream) -
         })
     };
 
-    let thunk_name = gen_ident(&format!("thunk_{}", def.name()));
+    let thunk_name = gen_ident(&format!("thunk_dll_{}", def.name()));
 
     quote! {
         #[no_mangle]
