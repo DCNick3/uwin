@@ -2254,7 +2254,7 @@ impl FromIntoMemory for HW_PROFILE_INFOW {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct ICameraUIControl(crate::core::IUnknown);
+pub struct ICameraUIControl(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait ICameraUIControl_Trait: crate::core::IUnknown_Trait {
@@ -2344,7 +2344,7 @@ impl FromIntoMemory for ICameraUIControl {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
@@ -2354,7 +2354,7 @@ impl crate::core::ComInterface for ICameraUIControl {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xb8733adf_3d68_4b8f_bb08_e28a0bed0376);
 }
-pub struct ICameraUIControlEventCallback(crate::core::IUnknown);
+pub struct ICameraUIControlEventCallback(pub crate::core::IUnknown);
 pub trait ICameraUIControlEventCallback_Trait: crate::core::IUnknown_Trait {
     fn OnStartupComplete(&self) {
         todo!("OnStartupComplete")
@@ -2399,7 +2399,7 @@ impl FromIntoMemory for ICameraUIControlEventCallback {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for ICameraUIControlEventCallback {
@@ -2407,7 +2407,7 @@ impl crate::core::ComInterface for ICameraUIControlEventCallback {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x1bfa0c2c_fbcd_4776_bda4_88bf974e74f4);
 }
-pub struct IClipServiceNotificationHelper(crate::core::IUnknown);
+pub struct IClipServiceNotificationHelper(pub crate::core::IUnknown);
 pub trait IClipServiceNotificationHelper_Trait: crate::core::IUnknown_Trait {
     fn ShowToast(
         &self,
@@ -2447,7 +2447,7 @@ impl FromIntoMemory for IClipServiceNotificationHelper {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IClipServiceNotificationHelper {
@@ -2455,7 +2455,7 @@ impl crate::core::ComInterface for IClipServiceNotificationHelper {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xc39948f0_6142_44fd_98ca_e1681a8d68b5);
 }
-pub struct IContainerActivationHelper(crate::core::IUnknown);
+pub struct IContainerActivationHelper(pub crate::core::IUnknown);
 pub trait IContainerActivationHelper_Trait: crate::core::IUnknown_Trait {
     fn CanActivateClientVM(&self, is_allowed: MutPtr<i16>) -> crate::core::HRESULT {
         todo!("CanActivateClientVM")
@@ -2488,7 +2488,7 @@ impl FromIntoMemory for IContainerActivationHelper {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IContainerActivationHelper {
@@ -2496,7 +2496,7 @@ impl crate::core::ComInterface for IContainerActivationHelper {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xb524f93f_80d5_4ec7_ae9e_d66e93ade1fa);
 }
-pub struct IDefaultBrowserSyncSettings(crate::core::IUnknown);
+pub struct IDefaultBrowserSyncSettings(pub crate::core::IUnknown);
 pub trait IDefaultBrowserSyncSettings_Trait: crate::core::IUnknown_Trait {
     fn IsEnabled(&self) -> super::super::Foundation::BOOL {
         todo!("IsEnabled")
@@ -2529,7 +2529,7 @@ impl FromIntoMemory for IDefaultBrowserSyncSettings {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDefaultBrowserSyncSettings {
@@ -2537,7 +2537,7 @@ impl crate::core::ComInterface for IDefaultBrowserSyncSettings {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x7a27faad_5ae6_4255_9030_c530936292e3);
 }
-pub struct IDeleteBrowsingHistory(crate::core::IUnknown);
+pub struct IDeleteBrowsingHistory(pub crate::core::IUnknown);
 pub trait IDeleteBrowsingHistory_Trait: crate::core::IUnknown_Trait {
     fn DeleteBrowsingHistory(&self, dw_flags: u32) -> crate::core::HRESULT {
         todo!("DeleteBrowsingHistory")
@@ -2570,7 +2570,7 @@ impl FromIntoMemory for IDeleteBrowsingHistory {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDeleteBrowsingHistory {
@@ -2599,7 +2599,7 @@ pub const IE_HARDWARE: i32 = -10i32;
 pub const IE_MEMORY: i32 = -4i32;
 pub const IE_NOPEN: i32 = -3i32;
 pub const IE_OPEN: i32 = -2i32;
-pub struct IEditionUpgradeBroker(crate::core::IUnknown);
+pub struct IEditionUpgradeBroker(pub crate::core::IUnknown);
 pub trait IEditionUpgradeBroker_Trait: crate::core::IUnknown_Trait {
     fn InitializeParentWindow(&self, parent_handle: u32) -> crate::core::HRESULT {
         todo!("InitializeParentWindow")
@@ -2644,7 +2644,7 @@ impl FromIntoMemory for IEditionUpgradeBroker {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IEditionUpgradeBroker {
@@ -2652,7 +2652,7 @@ impl crate::core::ComInterface for IEditionUpgradeBroker {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xff19cbcf_9455_4937_b872_6b7929a460af);
 }
-pub struct IEditionUpgradeHelper(crate::core::IUnknown);
+pub struct IEditionUpgradeHelper(pub crate::core::IUnknown);
 pub trait IEditionUpgradeHelper_Trait: crate::core::IUnknown_Trait {
     fn CanUpgrade(
         &self,
@@ -2703,7 +2703,7 @@ impl FromIntoMemory for IEditionUpgradeHelper {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IEditionUpgradeHelper {
@@ -3316,7 +3316,7 @@ pub const IR_STRINGEND: u32 = 257u32;
 pub const IR_STRINGEX: u32 = 384u32;
 pub const IR_STRINGSTART: u32 = 256u32;
 pub const IR_UNDETERMINE: u32 = 368u32;
-pub struct IWindowsLockModeHelper(crate::core::IUnknown);
+pub struct IWindowsLockModeHelper(pub crate::core::IUnknown);
 pub trait IWindowsLockModeHelper_Trait: crate::core::IUnknown_Trait {
     fn GetSMode(&self, is_smode: MutPtr<super::super::Foundation::BOOL>) -> crate::core::HRESULT {
         todo!("GetSMode")
@@ -3349,7 +3349,7 @@ impl FromIntoMemory for IWindowsLockModeHelper {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IWindowsLockModeHelper {

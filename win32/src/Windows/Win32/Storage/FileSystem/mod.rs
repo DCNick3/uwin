@@ -7246,7 +7246,7 @@ impl FromIntoMemory for HIORING__ {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IDiskQuotaControl(crate::core::IUnknown);
+pub struct IDiskQuotaControl(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IDiskQuotaControl_Trait:
@@ -7386,7 +7386,7 @@ impl FromIntoMemory for IDiskQuotaControl {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
@@ -7396,7 +7396,7 @@ impl crate::core::ComInterface for IDiskQuotaControl {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x7988b572_ec89_11cf_9c00_00aa00a14f56);
 }
-pub struct IDiskQuotaEvents(crate::core::IUnknown);
+pub struct IDiskQuotaEvents(pub crate::core::IUnknown);
 pub trait IDiskQuotaEvents_Trait: crate::core::IUnknown_Trait {
     fn OnUserNameChanged(&self, p_user: IDiskQuotaUser) -> crate::core::HRESULT {
         todo!("OnUserNameChanged")
@@ -7427,7 +7427,7 @@ impl FromIntoMemory for IDiskQuotaEvents {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDiskQuotaEvents {
@@ -7435,7 +7435,7 @@ impl crate::core::ComInterface for IDiskQuotaEvents {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x7988b579_ec89_11cf_9c00_00aa00a14f56);
 }
-pub struct IDiskQuotaUser(crate::core::IUnknown);
+pub struct IDiskQuotaUser(pub crate::core::IUnknown);
 pub trait IDiskQuotaUser_Trait: crate::core::IUnknown_Trait {
     fn GetID(&self, pul_id: MutPtr<u32>) -> crate::core::HRESULT {
         todo!("GetID")
@@ -7528,7 +7528,7 @@ impl FromIntoMemory for IDiskQuotaUser {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDiskQuotaUser {
@@ -7536,7 +7536,7 @@ impl crate::core::ComInterface for IDiskQuotaUser {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x7988b574_ec89_11cf_9c00_00aa00a14f56);
 }
-pub struct IDiskQuotaUserBatch(crate::core::IUnknown);
+pub struct IDiskQuotaUserBatch(pub crate::core::IUnknown);
 pub trait IDiskQuotaUserBatch_Trait: crate::core::IUnknown_Trait {
     fn Add(&self, p_user: IDiskQuotaUser) -> crate::core::HRESULT {
         todo!("Add")
@@ -7576,7 +7576,7 @@ impl FromIntoMemory for IDiskQuotaUserBatch {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDiskQuotaUserBatch {
@@ -7584,7 +7584,7 @@ impl crate::core::ComInterface for IDiskQuotaUserBatch {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x7988b576_ec89_11cf_9c00_00aa00a14f56);
 }
-pub struct IEnumDiskQuotaUsers(crate::core::IUnknown);
+pub struct IEnumDiskQuotaUsers(pub crate::core::IUnknown);
 pub trait IEnumDiskQuotaUsers_Trait: crate::core::IUnknown_Trait {
     fn Next(
         &self,
@@ -7629,7 +7629,7 @@ impl FromIntoMemory for IEnumDiskQuotaUsers {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IEnumDiskQuotaUsers {

@@ -223,6 +223,27 @@ impl Heap {
         Ok(ptr.into())
     }
 
+    pub fn alloc_init(&mut self, memory_ctx: impl MemoryCtx, value: &[u8]) -> Result<PtrRepr> {
+        let ptr = { MutPtr::<u8>::new(self.alloc(value.len() as PtrRepr, false)?) };
+        for (i, &v) in value.iter().enumerate() {
+            ptr.offset(i as PtrDiffRepr).write_with(memory_ctx, v)
+        }
+        Ok(ptr.repr())
+    }
+
+    pub fn alloc_typed<T: FromIntoMemory>(
+        &mut self,
+        memory_ctx: impl MemoryCtx,
+        value: T,
+    ) -> Result<MutPtr<T>> {
+        let res = self.alloc(T::size().try_into().unwrap(), false)?;
+        let res = MutPtr::new(res);
+
+        res.write_with(memory_ctx, value);
+
+        Ok(res)
+    }
+
     pub fn free(&mut self, ptr: PtrRepr) -> Result<()> {
         let ptr: Ptr = ptr.into();
         if self.mmap_allocations.contains(&ptr) {
@@ -282,14 +303,11 @@ impl RawHeapBox {
     ) -> Result<Self> {
         let ptr = {
             let mut heap = heap.lock().unwrap();
-            MutPtr::<u8>::new(heap.alloc(value.len() as PtrRepr, false)?)
+            heap.alloc_init(memory_ctx, value)?
         };
-        for (i, &v) in value.iter().enumerate() {
-            ptr.offset(i as PtrDiffRepr).write_with(memory_ctx, v)
-        }
         Ok(Self {
             heap,
-            ptr: ptr.repr().into(),
+            ptr: ptr.into(),
         })
     }
 

@@ -156,6 +156,9 @@ impl IUnknown {
     pub fn raw_ptr(&self) -> PtrRepr {
         self.0 .0
     }
+    pub fn from_raw_ptr(ptr: PtrRepr) -> Self {
+        IUnknown(InterfacePtr(ptr))
+    }
 }
 
 pub trait IUnknown_Trait {

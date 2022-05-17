@@ -703,7 +703,7 @@ impl FromIntoMemory for ArrayDimension {
         24u32 as usize
     }
 }
-pub struct AsyncIDebugApplicationNodeEvents(crate::core::IUnknown);
+pub struct AsyncIDebugApplicationNodeEvents(pub crate::core::IUnknown);
 pub trait AsyncIDebugApplicationNodeEvents_Trait: crate::core::IUnknown_Trait {
     fn Begin_onAddChild(&self, prddp_child: IDebugApplicationNode) -> crate::core::HRESULT {
         todo!("Begin_onAddChild")
@@ -757,7 +757,7 @@ impl FromIntoMemory for AsyncIDebugApplicationNodeEvents {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for AsyncIDebugApplicationNodeEvents {
@@ -7585,7 +7585,7 @@ impl FromIntoMemory for DUMP_HEADER64_0 {
 }
 pub const DUMP_SUMMARY_VALID_CURRENT_USER_VA: u32 = 2u32;
 pub const DUMP_SUMMARY_VALID_KERNEL_VA: u32 = 1u32;
-pub struct DebugBaseEventCallbacks(crate::core::IUnknown);
+pub struct DebugBaseEventCallbacks(pub crate::core::IUnknown);
 pub trait DebugBaseEventCallbacks_Trait: IDebugEventCallbacks_Trait {}
 impl ::core::clone::Clone for DebugBaseEventCallbacks {
     fn clone(&self) -> Self {
@@ -7614,14 +7614,14 @@ impl FromIntoMemory for DebugBaseEventCallbacks {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for DebugBaseEventCallbacks {
     type Super = IDebugEventCallbacks;
     const IID: crate::core::GUID = crate::core::GUID::zeroed();
 }
-pub struct DebugBaseEventCallbacksWide(crate::core::IUnknown);
+pub struct DebugBaseEventCallbacksWide(pub crate::core::IUnknown);
 pub trait DebugBaseEventCallbacksWide_Trait: IDebugEventCallbacksWide_Trait {}
 impl ::core::clone::Clone for DebugBaseEventCallbacksWide {
     fn clone(&self) -> Self {
@@ -7650,7 +7650,7 @@ impl FromIntoMemory for DebugBaseEventCallbacksWide {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for DebugBaseEventCallbacksWide {
@@ -9588,7 +9588,7 @@ impl FromIntoMemory for GET_TEB_ADDRESS {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IActiveScript(crate::core::IUnknown);
+pub struct IActiveScript(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IActiveScript_Trait: crate::core::IUnknown_Trait {
@@ -9704,7 +9704,7 @@ impl FromIntoMemory for IActiveScript {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -9716,7 +9716,7 @@ impl crate::core::ComInterface for IActiveScript {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IActiveScriptAuthor(crate::core::IUnknown);
+pub struct IActiveScriptAuthor(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IActiveScriptAuthor_Trait: crate::core::IUnknown_Trait {
@@ -9880,7 +9880,7 @@ impl FromIntoMemory for IActiveScriptAuthor {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -9892,7 +9892,7 @@ impl crate::core::ComInterface for IActiveScriptAuthor {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IActiveScriptAuthorProcedure(crate::core::IUnknown);
+pub struct IActiveScriptAuthorProcedure(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IActiveScriptAuthorProcedure_Trait: crate::core::IUnknown_Trait {
@@ -9951,7 +9951,7 @@ impl FromIntoMemory for IActiveScriptAuthorProcedure {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -9961,7 +9961,7 @@ impl crate::core::ComInterface for IActiveScriptAuthorProcedure {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x7e2d4b70_bd9a_11d0_9336_00a0c90dcaa9);
 }
-pub struct IActiveScriptDebug32(crate::core::IUnknown);
+pub struct IActiveScriptDebug32(pub crate::core::IUnknown);
 pub trait IActiveScriptDebug32_Trait: crate::core::IUnknown_Trait {
     fn GetScriptTextAttributes(
         &self,
@@ -10020,7 +10020,7 @@ impl FromIntoMemory for IActiveScriptDebug32 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IActiveScriptDebug32 {
@@ -10028,7 +10028,7 @@ impl crate::core::ComInterface for IActiveScriptDebug32 {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x51973c10_cb0c_11d0_b5c9_00a0244a0e7a);
 }
-pub struct IActiveScriptDebug64(crate::core::IUnknown);
+pub struct IActiveScriptDebug64(pub crate::core::IUnknown);
 pub trait IActiveScriptDebug64_Trait: crate::core::IUnknown_Trait {
     fn GetScriptTextAttributes(
         &self,
@@ -10087,7 +10087,7 @@ impl FromIntoMemory for IActiveScriptDebug64 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IActiveScriptDebug64 {
@@ -10095,7 +10095,7 @@ impl crate::core::ComInterface for IActiveScriptDebug64 {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xbc437e23_f5b8_47f4_bb79_7d1ce5483b86);
 }
-pub struct IActiveScriptEncode(crate::core::IUnknown);
+pub struct IActiveScriptEncode(pub crate::core::IUnknown);
 pub trait IActiveScriptEncode_Trait: crate::core::IUnknown_Trait {
     fn EncodeSection(
         &self,
@@ -10149,7 +10149,7 @@ impl FromIntoMemory for IActiveScriptEncode {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IActiveScriptEncode {
@@ -10159,7 +10159,7 @@ impl crate::core::ComInterface for IActiveScriptEncode {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IActiveScriptError(crate::core::IUnknown);
+pub struct IActiveScriptError(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IActiveScriptError_Trait: crate::core::IUnknown_Trait {
@@ -10223,7 +10223,7 @@ impl FromIntoMemory for IActiveScriptError {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
@@ -10235,7 +10235,7 @@ impl crate::core::ComInterface for IActiveScriptError {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IActiveScriptError64(crate::core::IUnknown);
+pub struct IActiveScriptError64(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IActiveScriptError64_Trait: IActiveScriptError_Trait {
@@ -10287,7 +10287,7 @@ impl FromIntoMemory for IActiveScriptError64 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
@@ -10299,7 +10299,7 @@ impl crate::core::ComInterface for IActiveScriptError64 {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IActiveScriptErrorDebug(crate::core::IUnknown);
+pub struct IActiveScriptErrorDebug(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IActiveScriptErrorDebug_Trait: IActiveScriptError_Trait {
@@ -10351,7 +10351,7 @@ impl FromIntoMemory for IActiveScriptErrorDebug {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -10361,7 +10361,7 @@ impl crate::core::ComInterface for IActiveScriptErrorDebug {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x51973c12_cb0c_11d0_b5c9_00a0244a0e7a);
 }
-pub struct IActiveScriptErrorDebug110(crate::core::IUnknown);
+pub struct IActiveScriptErrorDebug110(pub crate::core::IUnknown);
 pub trait IActiveScriptErrorDebug110_Trait: crate::core::IUnknown_Trait {
     fn GetExceptionThrownKind(
         &self,
@@ -10397,7 +10397,7 @@ impl FromIntoMemory for IActiveScriptErrorDebug110 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IActiveScriptErrorDebug110 {
@@ -10405,7 +10405,7 @@ impl crate::core::ComInterface for IActiveScriptErrorDebug110 {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x516e42b6_89a8_4530_937b_5f0708431442);
 }
-pub struct IActiveScriptGarbageCollector(crate::core::IUnknown);
+pub struct IActiveScriptGarbageCollector(pub crate::core::IUnknown);
 pub trait IActiveScriptGarbageCollector_Trait: crate::core::IUnknown_Trait {
     fn CollectGarbage(&self, scriptgctype: SCRIPTGCTYPE) -> crate::core::HRESULT {
         todo!("CollectGarbage")
@@ -10438,7 +10438,7 @@ impl FromIntoMemory for IActiveScriptGarbageCollector {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IActiveScriptGarbageCollector {
@@ -10446,7 +10446,7 @@ impl crate::core::ComInterface for IActiveScriptGarbageCollector {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x6aa2c4a0_2b53_11d4_a2a0_00104bd35090);
 }
-pub struct IActiveScriptHostEncode(crate::core::IUnknown);
+pub struct IActiveScriptHostEncode(pub crate::core::IUnknown);
 pub trait IActiveScriptHostEncode_Trait: crate::core::IUnknown_Trait {
     fn EncodeScriptHostFile(
         &self,
@@ -10485,7 +10485,7 @@ impl FromIntoMemory for IActiveScriptHostEncode {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IActiveScriptHostEncode {
@@ -10495,7 +10495,7 @@ impl crate::core::ComInterface for IActiveScriptHostEncode {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IActiveScriptParse32(crate::core::IUnknown);
+pub struct IActiveScriptParse32(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IActiveScriptParse32_Trait: crate::core::IUnknown_Trait {
@@ -10576,7 +10576,7 @@ impl FromIntoMemory for IActiveScriptParse32 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -10588,7 +10588,7 @@ impl crate::core::ComInterface for IActiveScriptParse32 {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IActiveScriptParse64(crate::core::IUnknown);
+pub struct IActiveScriptParse64(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IActiveScriptParse64_Trait: crate::core::IUnknown_Trait {
@@ -10669,7 +10669,7 @@ impl FromIntoMemory for IActiveScriptParse64 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -10681,7 +10681,7 @@ impl crate::core::ComInterface for IActiveScriptParse64 {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IActiveScriptParseProcedure2_32(crate::core::IUnknown);
+pub struct IActiveScriptParseProcedure2_32(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IActiveScriptParseProcedure2_32_Trait: IActiveScriptParseProcedure32_Trait {}
@@ -10724,7 +10724,7 @@ impl FromIntoMemory for IActiveScriptParseProcedure2_32 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -10736,7 +10736,7 @@ impl crate::core::ComInterface for IActiveScriptParseProcedure2_32 {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IActiveScriptParseProcedure2_64(crate::core::IUnknown);
+pub struct IActiveScriptParseProcedure2_64(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IActiveScriptParseProcedure2_64_Trait: IActiveScriptParseProcedure64_Trait {}
@@ -10779,7 +10779,7 @@ impl FromIntoMemory for IActiveScriptParseProcedure2_64 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -10791,7 +10791,7 @@ impl crate::core::ComInterface for IActiveScriptParseProcedure2_64 {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IActiveScriptParseProcedure32(crate::core::IUnknown);
+pub struct IActiveScriptParseProcedure32(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IActiveScriptParseProcedure32_Trait: crate::core::IUnknown_Trait {
@@ -10852,7 +10852,7 @@ impl FromIntoMemory for IActiveScriptParseProcedure32 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -10864,7 +10864,7 @@ impl crate::core::ComInterface for IActiveScriptParseProcedure32 {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IActiveScriptParseProcedure64(crate::core::IUnknown);
+pub struct IActiveScriptParseProcedure64(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IActiveScriptParseProcedure64_Trait: crate::core::IUnknown_Trait {
@@ -10925,7 +10925,7 @@ impl FromIntoMemory for IActiveScriptParseProcedure64 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -10937,7 +10937,7 @@ impl crate::core::ComInterface for IActiveScriptParseProcedure64 {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IActiveScriptParseProcedureOld32(crate::core::IUnknown);
+pub struct IActiveScriptParseProcedureOld32(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IActiveScriptParseProcedureOld32_Trait: crate::core::IUnknown_Trait {
@@ -10997,7 +10997,7 @@ impl FromIntoMemory for IActiveScriptParseProcedureOld32 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -11009,7 +11009,7 @@ impl crate::core::ComInterface for IActiveScriptParseProcedureOld32 {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IActiveScriptParseProcedureOld64(crate::core::IUnknown);
+pub struct IActiveScriptParseProcedureOld64(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IActiveScriptParseProcedureOld64_Trait: crate::core::IUnknown_Trait {
@@ -11069,7 +11069,7 @@ impl FromIntoMemory for IActiveScriptParseProcedureOld64 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -11079,7 +11079,7 @@ impl crate::core::ComInterface for IActiveScriptParseProcedureOld64 {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x21f57128_08c9_4638_ba12_22d15d88dc5c);
 }
-pub struct IActiveScriptProfilerCallback(crate::core::IUnknown);
+pub struct IActiveScriptProfilerCallback(pub crate::core::IUnknown);
 pub trait IActiveScriptProfilerCallback_Trait: crate::core::IUnknown_Trait {
     fn Initialize(&self, dw_context: u32) -> crate::core::HRESULT {
         todo!("Initialize")
@@ -11139,7 +11139,7 @@ impl FromIntoMemory for IActiveScriptProfilerCallback {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IActiveScriptProfilerCallback {
@@ -11147,7 +11147,7 @@ impl crate::core::ComInterface for IActiveScriptProfilerCallback {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x740eca23_7d9d_42e5_ba9d_f8b24b1c7a9b);
 }
-pub struct IActiveScriptProfilerCallback2(crate::core::IUnknown);
+pub struct IActiveScriptProfilerCallback2(pub crate::core::IUnknown);
 pub trait IActiveScriptProfilerCallback2_Trait: IActiveScriptProfilerCallback_Trait {
     fn OnFunctionEnterByName(
         &self,
@@ -11191,7 +11191,7 @@ impl FromIntoMemory for IActiveScriptProfilerCallback2 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IActiveScriptProfilerCallback2 {
@@ -11199,7 +11199,7 @@ impl crate::core::ComInterface for IActiveScriptProfilerCallback2 {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x31b7f8ad_a637_409c_b22f_040995b6103d);
 }
-pub struct IActiveScriptProfilerCallback3(crate::core::IUnknown);
+pub struct IActiveScriptProfilerCallback3(pub crate::core::IUnknown);
 pub trait IActiveScriptProfilerCallback3_Trait: IActiveScriptProfilerCallback2_Trait {
     fn SetWebWorkerId(&self, web_worker_id: u32) -> crate::core::HRESULT {
         todo!("SetWebWorkerId")
@@ -11232,7 +11232,7 @@ impl FromIntoMemory for IActiveScriptProfilerCallback3 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IActiveScriptProfilerCallback3 {
@@ -11240,7 +11240,7 @@ impl crate::core::ComInterface for IActiveScriptProfilerCallback3 {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x6ac5ad25_2037_4687_91df_b59979d93d73);
 }
-pub struct IActiveScriptProfilerControl(crate::core::IUnknown);
+pub struct IActiveScriptProfilerControl(pub crate::core::IUnknown);
 pub trait IActiveScriptProfilerControl_Trait: crate::core::IUnknown_Trait {
     fn StartProfiling(
         &self,
@@ -11284,7 +11284,7 @@ impl FromIntoMemory for IActiveScriptProfilerControl {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IActiveScriptProfilerControl {
@@ -11292,7 +11292,7 @@ impl crate::core::ComInterface for IActiveScriptProfilerControl {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x784b5ff0_69b0_47d1_a7dc_2518f4230e90);
 }
-pub struct IActiveScriptProfilerControl2(crate::core::IUnknown);
+pub struct IActiveScriptProfilerControl2(pub crate::core::IUnknown);
 pub trait IActiveScriptProfilerControl2_Trait: IActiveScriptProfilerControl_Trait {
     fn CompleteProfilerStart(&self) -> crate::core::HRESULT {
         todo!("CompleteProfilerStart")
@@ -11328,7 +11328,7 @@ impl FromIntoMemory for IActiveScriptProfilerControl2 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IActiveScriptProfilerControl2 {
@@ -11338,7 +11338,7 @@ impl crate::core::ComInterface for IActiveScriptProfilerControl2 {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IActiveScriptProperty(crate::core::IUnknown);
+pub struct IActiveScriptProperty(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IActiveScriptProperty_Trait: crate::core::IUnknown_Trait {
@@ -11402,7 +11402,7 @@ impl FromIntoMemory for IActiveScriptProperty {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -11412,7 +11412,7 @@ impl crate::core::ComInterface for IActiveScriptProperty {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x4954e0d0_fbc7_11d1_8410_006008c3fbfc);
 }
-pub struct IActiveScriptSIPInfo(crate::core::IUnknown);
+pub struct IActiveScriptSIPInfo(pub crate::core::IUnknown);
 pub trait IActiveScriptSIPInfo_Trait: crate::core::IUnknown_Trait {
     fn GetSIPOID(&self, poid_sip: MutPtr<crate::core::GUID>) -> crate::core::HRESULT {
         todo!("GetSIPOID")
@@ -11445,7 +11445,7 @@ impl FromIntoMemory for IActiveScriptSIPInfo {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IActiveScriptSIPInfo {
@@ -11455,7 +11455,7 @@ impl crate::core::ComInterface for IActiveScriptSIPInfo {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IActiveScriptSite(crate::core::IUnknown);
+pub struct IActiveScriptSite(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IActiveScriptSite_Trait: crate::core::IUnknown_Trait {
@@ -11540,7 +11540,7 @@ impl FromIntoMemory for IActiveScriptSite {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -11552,7 +11552,7 @@ impl crate::core::ComInterface for IActiveScriptSite {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IActiveScriptSiteDebug32(crate::core::IUnknown);
+pub struct IActiveScriptSiteDebug32(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IActiveScriptSiteDebug32_Trait: crate::core::IUnknown_Trait {
@@ -11626,7 +11626,7 @@ impl FromIntoMemory for IActiveScriptSiteDebug32 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -11638,7 +11638,7 @@ impl crate::core::ComInterface for IActiveScriptSiteDebug32 {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IActiveScriptSiteDebug64(crate::core::IUnknown);
+pub struct IActiveScriptSiteDebug64(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IActiveScriptSiteDebug64_Trait: crate::core::IUnknown_Trait {
@@ -11712,7 +11712,7 @@ impl FromIntoMemory for IActiveScriptSiteDebug64 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -11724,7 +11724,7 @@ impl crate::core::ComInterface for IActiveScriptSiteDebug64 {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IActiveScriptSiteDebugEx(crate::core::IUnknown);
+pub struct IActiveScriptSiteDebugEx(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IActiveScriptSiteDebugEx_Trait: crate::core::IUnknown_Trait {
@@ -11777,7 +11777,7 @@ impl FromIntoMemory for IActiveScriptSiteDebugEx {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -11787,7 +11787,7 @@ impl crate::core::ComInterface for IActiveScriptSiteDebugEx {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xbb722ccb_6ad2_41c6_b780_af9c03ee69f5);
 }
-pub struct IActiveScriptSiteInterruptPoll(crate::core::IUnknown);
+pub struct IActiveScriptSiteInterruptPoll(pub crate::core::IUnknown);
 pub trait IActiveScriptSiteInterruptPoll_Trait: crate::core::IUnknown_Trait {
     fn QueryContinue(&self) -> crate::core::HRESULT {
         todo!("QueryContinue")
@@ -11820,7 +11820,7 @@ impl FromIntoMemory for IActiveScriptSiteInterruptPoll {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IActiveScriptSiteInterruptPoll {
@@ -11828,7 +11828,7 @@ impl crate::core::ComInterface for IActiveScriptSiteInterruptPoll {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x539698a0_cdca_11cf_a5eb_00aa0047a063);
 }
-pub struct IActiveScriptSiteTraceInfo(crate::core::IUnknown);
+pub struct IActiveScriptSiteTraceInfo(pub crate::core::IUnknown);
 pub trait IActiveScriptSiteTraceInfo_Trait: crate::core::IUnknown_Trait {
     fn SendScriptTraceInfo(
         &self,
@@ -11869,7 +11869,7 @@ impl FromIntoMemory for IActiveScriptSiteTraceInfo {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IActiveScriptSiteTraceInfo {
@@ -11877,7 +11877,7 @@ impl crate::core::ComInterface for IActiveScriptSiteTraceInfo {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x4b7272ae_1955_4bfe_98b0_780621888569);
 }
-pub struct IActiveScriptSiteUIControl(crate::core::IUnknown);
+pub struct IActiveScriptSiteUIControl(pub crate::core::IUnknown);
 pub trait IActiveScriptSiteUIControl_Trait: crate::core::IUnknown_Trait {
     fn GetUIBehavior(
         &self,
@@ -11914,7 +11914,7 @@ impl FromIntoMemory for IActiveScriptSiteUIControl {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IActiveScriptSiteUIControl {
@@ -11922,7 +11922,7 @@ impl crate::core::ComInterface for IActiveScriptSiteUIControl {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xaedae97e_d7ee_4796_b960_7f092ae844ab);
 }
-pub struct IActiveScriptSiteWindow(crate::core::IUnknown);
+pub struct IActiveScriptSiteWindow(pub crate::core::IUnknown);
 pub trait IActiveScriptSiteWindow_Trait: crate::core::IUnknown_Trait {
     fn GetWindow(
         &self,
@@ -11964,7 +11964,7 @@ impl FromIntoMemory for IActiveScriptSiteWindow {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IActiveScriptSiteWindow {
@@ -11972,7 +11972,7 @@ impl crate::core::ComInterface for IActiveScriptSiteWindow {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xd10f6761_83e9_11cf_8f20_00805f2cd064);
 }
-pub struct IActiveScriptStats(crate::core::IUnknown);
+pub struct IActiveScriptStats(pub crate::core::IUnknown);
 pub trait IActiveScriptStats_Trait: crate::core::IUnknown_Trait {
     fn GetStat(&self, stid: u32, plu_hi: MutPtr<u32>, plu_lo: MutPtr<u32>) -> crate::core::HRESULT {
         todo!("GetStat")
@@ -12014,7 +12014,7 @@ impl FromIntoMemory for IActiveScriptStats {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IActiveScriptStats {
@@ -12022,7 +12022,7 @@ impl crate::core::ComInterface for IActiveScriptStats {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xb8da6310_e19b_11d0_933c_00a0c90dcaa9);
 }
-pub struct IActiveScriptStringCompare(crate::core::IUnknown);
+pub struct IActiveScriptStringCompare(pub crate::core::IUnknown);
 pub trait IActiveScriptStringCompare_Trait: crate::core::IUnknown_Trait {
     fn StrComp(
         &self,
@@ -12060,7 +12060,7 @@ impl FromIntoMemory for IActiveScriptStringCompare {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IActiveScriptStringCompare {
@@ -12068,7 +12068,7 @@ impl crate::core::ComInterface for IActiveScriptStringCompare {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x58562769_ed52_42f7_8403_4963514e1f11);
 }
-pub struct IActiveScriptTraceInfo(crate::core::IUnknown);
+pub struct IActiveScriptTraceInfo(pub crate::core::IUnknown);
 pub trait IActiveScriptTraceInfo_Trait: crate::core::IUnknown_Trait {
     fn StartScriptTracing(
         &self,
@@ -12108,7 +12108,7 @@ impl FromIntoMemory for IActiveScriptTraceInfo {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IActiveScriptTraceInfo {
@@ -12118,7 +12118,7 @@ impl crate::core::ComInterface for IActiveScriptTraceInfo {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IActiveScriptWinRTErrorDebug(crate::core::IUnknown);
+pub struct IActiveScriptWinRTErrorDebug(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IActiveScriptWinRTErrorDebug_Trait: IActiveScriptError_Trait {
@@ -12180,7 +12180,7 @@ impl FromIntoMemory for IActiveScriptWinRTErrorDebug {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
@@ -12192,7 +12192,7 @@ impl crate::core::ComInterface for IActiveScriptWinRTErrorDebug {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IApplicationDebugger(crate::core::IUnknown);
+pub struct IApplicationDebugger(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IApplicationDebugger_Trait: crate::core::IUnknown_Trait {
@@ -12272,7 +12272,7 @@ impl FromIntoMemory for IApplicationDebugger {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -12282,7 +12282,7 @@ impl crate::core::ComInterface for IApplicationDebugger {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x51973c2a_cb0c_11d0_b5c9_00a0244a0e7a);
 }
-pub struct IApplicationDebuggerUI(crate::core::IUnknown);
+pub struct IApplicationDebuggerUI(pub crate::core::IUnknown);
 pub trait IApplicationDebuggerUI_Trait: crate::core::IUnknown_Trait {
     fn BringDocumentToTop(&self, pddt: IDebugDocumentText) -> crate::core::HRESULT {
         todo!("BringDocumentToTop")
@@ -12318,7 +12318,7 @@ impl FromIntoMemory for IApplicationDebuggerUI {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IApplicationDebuggerUI {
@@ -12328,7 +12328,7 @@ impl crate::core::ComInterface for IApplicationDebuggerUI {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IBindEventHandler(crate::core::IUnknown);
+pub struct IBindEventHandler(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IBindEventHandler_Trait: crate::core::IUnknown_Trait {
@@ -12379,7 +12379,7 @@ impl FromIntoMemory for IBindEventHandler {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -12391,7 +12391,7 @@ impl crate::core::ComInterface for IBindEventHandler {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct ICodeAddressConcept(crate::core::IUnknown);
+pub struct ICodeAddressConcept(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait ICodeAddressConcept_Trait: crate::core::IUnknown_Trait {
@@ -12442,7 +12442,7 @@ impl FromIntoMemory for ICodeAddressConcept {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -12454,7 +12454,7 @@ impl crate::core::ComInterface for ICodeAddressConcept {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IComparableConcept(crate::core::IUnknown);
+pub struct IComparableConcept(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IComparableConcept_Trait: crate::core::IUnknown_Trait {
@@ -12506,7 +12506,7 @@ impl FromIntoMemory for IComparableConcept {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -12518,7 +12518,7 @@ impl crate::core::ComInterface for IComparableConcept {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IDataModelConcept(crate::core::IUnknown);
+pub struct IDataModelConcept(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IDataModelConcept_Trait: crate::core::IUnknown_Trait {
@@ -12576,7 +12576,7 @@ impl FromIntoMemory for IDataModelConcept {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -12588,7 +12588,7 @@ impl crate::core::ComInterface for IDataModelConcept {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IDataModelManager(crate::core::IUnknown);
+pub struct IDataModelManager(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IDataModelManager_Trait: crate::core::IUnknown_Trait {
@@ -12799,7 +12799,7 @@ impl FromIntoMemory for IDataModelManager {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -12811,7 +12811,7 @@ impl crate::core::ComInterface for IDataModelManager {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IDataModelManager2(crate::core::IUnknown);
+pub struct IDataModelManager2(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IDataModelManager2_Trait: IDataModelManager_Trait {
@@ -12876,7 +12876,7 @@ impl FromIntoMemory for IDataModelManager2 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -12888,7 +12888,7 @@ impl crate::core::ComInterface for IDataModelManager2 {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IDataModelNameBinder(crate::core::IUnknown);
+pub struct IDataModelNameBinder(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IDataModelNameBinder_Trait: crate::core::IUnknown_Trait {
@@ -12972,7 +12972,7 @@ impl FromIntoMemory for IDataModelNameBinder {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -12984,7 +12984,7 @@ impl crate::core::ComInterface for IDataModelNameBinder {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IDataModelScript(crate::core::IUnknown);
+pub struct IDataModelScript(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IDataModelScript_Trait: crate::core::IUnknown_Trait {
@@ -13052,7 +13052,7 @@ impl FromIntoMemory for IDataModelScript {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
@@ -13062,7 +13062,7 @@ impl crate::core::ComInterface for IDataModelScript {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x7b4d30fc_b14a_49f8_8d87_d9a1480c97f7);
 }
-pub struct IDataModelScriptClient(crate::core::IUnknown);
+pub struct IDataModelScriptClient(pub crate::core::IUnknown);
 pub trait IDataModelScriptClient_Trait: crate::core::IUnknown_Trait {
     fn ReportError(
         &self,
@@ -13102,7 +13102,7 @@ impl FromIntoMemory for IDataModelScriptClient {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDataModelScriptClient {
@@ -13112,7 +13112,7 @@ impl crate::core::ComInterface for IDataModelScriptClient {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IDataModelScriptDebug(crate::core::IUnknown);
+pub struct IDataModelScriptDebug(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IDataModelScriptDebug_Trait: crate::core::IUnknown_Trait {
@@ -13217,7 +13217,7 @@ impl FromIntoMemory for IDataModelScriptDebug {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.System.Ole'*"]
@@ -13229,7 +13229,7 @@ impl crate::core::ComInterface for IDataModelScriptDebug {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IDataModelScriptDebug2(crate::core::IUnknown);
+pub struct IDataModelScriptDebug2(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IDataModelScriptDebug2_Trait: IDataModelScriptDebug_Trait {
@@ -13280,7 +13280,7 @@ impl FromIntoMemory for IDataModelScriptDebug2 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.System.Ole'*"]
@@ -13290,7 +13290,7 @@ impl crate::core::ComInterface for IDataModelScriptDebug2 {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xcbb10ed3_839e_426c_9243_e23535c1ae1a);
 }
-pub struct IDataModelScriptDebugBreakpoint(crate::core::IUnknown);
+pub struct IDataModelScriptDebugBreakpoint(pub crate::core::IUnknown);
 pub trait IDataModelScriptDebugBreakpoint_Trait: crate::core::IUnknown_Trait {
     fn GetId(&self) -> u64 {
         todo!("GetId")
@@ -13343,7 +13343,7 @@ impl FromIntoMemory for IDataModelScriptDebugBreakpoint {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDataModelScriptDebugBreakpoint {
@@ -13351,7 +13351,7 @@ impl crate::core::ComInterface for IDataModelScriptDebugBreakpoint {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x6bb27b35_02e6_47cb_90a0_5371244032de);
 }
-pub struct IDataModelScriptDebugBreakpointEnumerator(crate::core::IUnknown);
+pub struct IDataModelScriptDebugBreakpointEnumerator(pub crate::core::IUnknown);
 pub trait IDataModelScriptDebugBreakpointEnumerator_Trait: crate::core::IUnknown_Trait {
     fn Reset(&self) -> crate::core::HRESULT {
         todo!("Reset")
@@ -13387,7 +13387,7 @@ impl FromIntoMemory for IDataModelScriptDebugBreakpointEnumerator {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDataModelScriptDebugBreakpointEnumerator {
@@ -13397,7 +13397,7 @@ impl crate::core::ComInterface for IDataModelScriptDebugBreakpointEnumerator {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IDataModelScriptDebugClient(crate::core::IUnknown);
+pub struct IDataModelScriptDebugClient(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IDataModelScriptDebugClient_Trait: crate::core::IUnknown_Trait {
@@ -13452,7 +13452,7 @@ impl FromIntoMemory for IDataModelScriptDebugClient {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.System.Ole'*"]
@@ -13464,7 +13464,7 @@ impl crate::core::ComInterface for IDataModelScriptDebugClient {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IDataModelScriptDebugStack(crate::core::IUnknown);
+pub struct IDataModelScriptDebugStack(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IDataModelScriptDebugStack_Trait: crate::core::IUnknown_Trait {
@@ -13520,7 +13520,7 @@ impl FromIntoMemory for IDataModelScriptDebugStack {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.System.Ole'*"]
@@ -13532,7 +13532,7 @@ impl crate::core::ComInterface for IDataModelScriptDebugStack {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IDataModelScriptDebugStackFrame(crate::core::IUnknown);
+pub struct IDataModelScriptDebugStackFrame(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IDataModelScriptDebugStackFrame_Trait: crate::core::IUnknown_Trait {
@@ -13624,7 +13624,7 @@ impl FromIntoMemory for IDataModelScriptDebugStackFrame {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.System.Ole'*"]
@@ -13636,7 +13636,7 @@ impl crate::core::ComInterface for IDataModelScriptDebugStackFrame {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IDataModelScriptDebugVariableSetEnumerator(crate::core::IUnknown);
+pub struct IDataModelScriptDebugVariableSetEnumerator(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IDataModelScriptDebugVariableSetEnumerator_Trait: crate::core::IUnknown_Trait {
@@ -13693,7 +13693,7 @@ impl FromIntoMemory for IDataModelScriptDebugVariableSetEnumerator {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -13705,7 +13705,7 @@ impl crate::core::ComInterface for IDataModelScriptDebugVariableSetEnumerator {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IDataModelScriptHostContext(crate::core::IUnknown);
+pub struct IDataModelScriptHostContext(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IDataModelScriptHostContext_Trait: crate::core::IUnknown_Trait {
@@ -13763,7 +13763,7 @@ impl FromIntoMemory for IDataModelScriptHostContext {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.System.Ole'*"]
@@ -13775,7 +13775,7 @@ impl crate::core::ComInterface for IDataModelScriptHostContext {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IDataModelScriptManager(crate::core::IUnknown);
+pub struct IDataModelScriptManager(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IDataModelScriptManager_Trait: crate::core::IUnknown_Trait {
@@ -13863,7 +13863,7 @@ impl FromIntoMemory for IDataModelScriptManager {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.System.Ole'*"]
@@ -13875,7 +13875,7 @@ impl crate::core::ComInterface for IDataModelScriptManager {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IDataModelScriptProvider(crate::core::IUnknown);
+pub struct IDataModelScriptProvider(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IDataModelScriptProvider_Trait: crate::core::IUnknown_Trait {
@@ -13949,7 +13949,7 @@ impl FromIntoMemory for IDataModelScriptProvider {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
@@ -13961,7 +13961,7 @@ impl crate::core::ComInterface for IDataModelScriptProvider {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IDataModelScriptProviderEnumerator(crate::core::IUnknown);
+pub struct IDataModelScriptProviderEnumerator(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IDataModelScriptProviderEnumerator_Trait: crate::core::IUnknown_Trait {
@@ -14013,7 +14013,7 @@ impl FromIntoMemory for IDataModelScriptProviderEnumerator {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
@@ -14025,7 +14025,7 @@ impl crate::core::ComInterface for IDataModelScriptProviderEnumerator {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IDataModelScriptTemplate(crate::core::IUnknown);
+pub struct IDataModelScriptTemplate(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IDataModelScriptTemplate_Trait: crate::core::IUnknown_Trait {
@@ -14089,7 +14089,7 @@ impl FromIntoMemory for IDataModelScriptTemplate {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
@@ -14101,7 +14101,7 @@ impl crate::core::ComInterface for IDataModelScriptTemplate {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IDataModelScriptTemplateEnumerator(crate::core::IUnknown);
+pub struct IDataModelScriptTemplateEnumerator(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IDataModelScriptTemplateEnumerator_Trait: crate::core::IUnknown_Trait {
@@ -14153,7 +14153,7 @@ impl FromIntoMemory for IDataModelScriptTemplateEnumerator {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
@@ -14163,7 +14163,7 @@ impl crate::core::ComInterface for IDataModelScriptTemplateEnumerator {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x69ce6ae2_2268_4e6f_b062_20ce62bfe677);
 }
-pub struct IDebugAdvanced(crate::core::IUnknown);
+pub struct IDebugAdvanced(pub crate::core::IUnknown);
 pub trait IDebugAdvanced_Trait: crate::core::IUnknown_Trait {
     fn GetThreadContext(
         &self,
@@ -14205,7 +14205,7 @@ impl FromIntoMemory for IDebugAdvanced {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugAdvanced {
@@ -14213,7 +14213,7 @@ impl crate::core::ComInterface for IDebugAdvanced {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xf2df5f53_071f_47bd_9de6_5734c3fed689);
 }
-pub struct IDebugAdvanced2(crate::core::IUnknown);
+pub struct IDebugAdvanced2(pub crate::core::IUnknown);
 pub trait IDebugAdvanced2_Trait: crate::core::IUnknown_Trait {
     fn GetThreadContext(
         &self,
@@ -14318,7 +14318,7 @@ impl FromIntoMemory for IDebugAdvanced2 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugAdvanced2 {
@@ -14326,7 +14326,7 @@ impl crate::core::ComInterface for IDebugAdvanced2 {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x716d14c9_119b_4ba5_af1f_0890e672416a);
 }
-pub struct IDebugAdvanced3(crate::core::IUnknown);
+pub struct IDebugAdvanced3(pub crate::core::IUnknown);
 pub trait IDebugAdvanced3_Trait: crate::core::IUnknown_Trait {
     fn GetThreadContext(
         &self,
@@ -14472,7 +14472,7 @@ impl FromIntoMemory for IDebugAdvanced3 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugAdvanced3 {
@@ -14480,7 +14480,7 @@ impl crate::core::ComInterface for IDebugAdvanced3 {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xcba4abb4_84c4_444d_87ca_a04e13286739);
 }
-pub struct IDebugAdvanced4(crate::core::IUnknown);
+pub struct IDebugAdvanced4(pub crate::core::IUnknown);
 pub trait IDebugAdvanced4_Trait: crate::core::IUnknown_Trait {
     fn GetThreadContext(
         &self,
@@ -14641,7 +14641,7 @@ impl FromIntoMemory for IDebugAdvanced4 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugAdvanced4 {
@@ -14651,7 +14651,7 @@ impl crate::core::ComInterface for IDebugAdvanced4 {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IDebugApplication11032(crate::core::IUnknown);
+pub struct IDebugApplication11032(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IDebugApplication11032_Trait: IRemoteDebugApplication110_Trait {
@@ -14721,7 +14721,7 @@ impl FromIntoMemory for IDebugApplication11032 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -14733,7 +14733,7 @@ impl crate::core::ComInterface for IDebugApplication11032 {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IDebugApplication11064(crate::core::IUnknown);
+pub struct IDebugApplication11064(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IDebugApplication11064_Trait: IRemoteDebugApplication110_Trait {
@@ -14803,7 +14803,7 @@ impl FromIntoMemory for IDebugApplication11064 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -14815,7 +14815,7 @@ impl crate::core::ComInterface for IDebugApplication11064 {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IDebugApplication32(crate::core::IUnknown);
+pub struct IDebugApplication32(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IDebugApplication32_Trait: IRemoteDebugApplication_Trait {
@@ -14969,7 +14969,7 @@ impl FromIntoMemory for IDebugApplication32 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -14981,7 +14981,7 @@ impl crate::core::ComInterface for IDebugApplication32 {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IDebugApplication64(crate::core::IUnknown);
+pub struct IDebugApplication64(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IDebugApplication64_Trait: IRemoteDebugApplication_Trait {
@@ -15135,7 +15135,7 @@ impl FromIntoMemory for IDebugApplication64 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -15145,7 +15145,7 @@ impl crate::core::ComInterface for IDebugApplication64 {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x4dedc754_04c7_4f10_9e60_16a390fe6e62);
 }
-pub struct IDebugApplicationNode(crate::core::IUnknown);
+pub struct IDebugApplicationNode(pub crate::core::IUnknown);
 pub trait IDebugApplicationNode_Trait: IDebugDocumentProvider_Trait {
     fn EnumChildren(&self, pperddp: MutPtr<IEnumDebugApplicationNodes>) -> crate::core::HRESULT {
         todo!("EnumChildren")
@@ -15193,7 +15193,7 @@ impl FromIntoMemory for IDebugApplicationNode {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugApplicationNode {
@@ -15201,7 +15201,7 @@ impl crate::core::ComInterface for IDebugApplicationNode {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x51973c34_cb0c_11d0_b5c9_00a0244a0e7a);
 }
-pub struct IDebugApplicationNodeEvents(crate::core::IUnknown);
+pub struct IDebugApplicationNodeEvents(pub crate::core::IUnknown);
 pub trait IDebugApplicationNodeEvents_Trait: crate::core::IUnknown_Trait {
     fn onAddChild(&self, prddp_child: IDebugApplicationNode) -> crate::core::HRESULT {
         todo!("onAddChild")
@@ -15243,7 +15243,7 @@ impl FromIntoMemory for IDebugApplicationNodeEvents {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugApplicationNodeEvents {
@@ -15253,7 +15253,7 @@ impl crate::core::ComInterface for IDebugApplicationNodeEvents {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IDebugApplicationThread(crate::core::IUnknown);
+pub struct IDebugApplicationThread(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IDebugApplicationThread_Trait: IRemoteDebugApplicationThread_Trait {
@@ -15318,7 +15318,7 @@ impl FromIntoMemory for IDebugApplicationThread {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -15328,7 +15328,7 @@ impl crate::core::ComInterface for IDebugApplicationThread {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x51973c38_cb0c_11d0_b5c9_00a0244a0e7a);
 }
-pub struct IDebugApplicationThread11032(crate::core::IUnknown);
+pub struct IDebugApplicationThread11032(pub crate::core::IUnknown);
 pub trait IDebugApplicationThread11032_Trait: crate::core::IUnknown_Trait {
     fn GetActiveThreadRequestCount(
         &self,
@@ -15385,7 +15385,7 @@ impl FromIntoMemory for IDebugApplicationThread11032 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugApplicationThread11032 {
@@ -15393,7 +15393,7 @@ impl crate::core::ComInterface for IDebugApplicationThread11032 {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x2194ac5c_6561_404a_a2e9_f57d72de3702);
 }
-pub struct IDebugApplicationThread11064(crate::core::IUnknown);
+pub struct IDebugApplicationThread11064(pub crate::core::IUnknown);
 pub trait IDebugApplicationThread11064_Trait: crate::core::IUnknown_Trait {
     fn GetActiveThreadRequestCount(
         &self,
@@ -15450,7 +15450,7 @@ impl FromIntoMemory for IDebugApplicationThread11064 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugApplicationThread11064 {
@@ -15460,7 +15460,7 @@ impl crate::core::ComInterface for IDebugApplicationThread11064 {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IDebugApplicationThread64(crate::core::IUnknown);
+pub struct IDebugApplicationThread64(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IDebugApplicationThread64_Trait: IDebugApplicationThread_Trait {
@@ -15513,7 +15513,7 @@ impl FromIntoMemory for IDebugApplicationThread64 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -15523,7 +15523,7 @@ impl crate::core::ComInterface for IDebugApplicationThread64 {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x9dac5886_dbad_456d_9dee_5dec39ab3dda);
 }
-pub struct IDebugApplicationThreadEvents110(crate::core::IUnknown);
+pub struct IDebugApplicationThreadEvents110(pub crate::core::IUnknown);
 pub trait IDebugApplicationThreadEvents110_Trait: crate::core::IUnknown_Trait {
     fn OnSuspendForBreakPoint(&self) -> crate::core::HRESULT {
         todo!("OnSuspendForBreakPoint")
@@ -15565,7 +15565,7 @@ impl FromIntoMemory for IDebugApplicationThreadEvents110 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugApplicationThreadEvents110 {
@@ -15575,7 +15575,7 @@ impl crate::core::ComInterface for IDebugApplicationThreadEvents110 {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IDebugAsyncOperation(crate::core::IUnknown);
+pub struct IDebugAsyncOperation(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IDebugAsyncOperation_Trait: crate::core::IUnknown_Trait {
@@ -15640,7 +15640,7 @@ impl FromIntoMemory for IDebugAsyncOperation {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -15650,7 +15650,7 @@ impl crate::core::ComInterface for IDebugAsyncOperation {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x51973c1b_cb0c_11d0_b5c9_00a0244a0e7a);
 }
-pub struct IDebugAsyncOperationCallBack(crate::core::IUnknown);
+pub struct IDebugAsyncOperationCallBack(pub crate::core::IUnknown);
 pub trait IDebugAsyncOperationCallBack_Trait: crate::core::IUnknown_Trait {
     fn onComplete(&self) -> crate::core::HRESULT {
         todo!("onComplete")
@@ -15683,7 +15683,7 @@ impl FromIntoMemory for IDebugAsyncOperationCallBack {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugAsyncOperationCallBack {
@@ -15691,7 +15691,7 @@ impl crate::core::ComInterface for IDebugAsyncOperationCallBack {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x51973c1c_cb0c_11d0_b5c9_00a0244a0e7a);
 }
-pub struct IDebugBreakpoint(crate::core::IUnknown);
+pub struct IDebugBreakpoint(pub crate::core::IUnknown);
 pub trait IDebugBreakpoint_Trait: crate::core::IUnknown_Trait {
     fn GetId(&self, id: MutPtr<u32>) -> crate::core::HRESULT {
         todo!("GetId")
@@ -15796,7 +15796,7 @@ impl FromIntoMemory for IDebugBreakpoint {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugBreakpoint {
@@ -15804,7 +15804,7 @@ impl crate::core::ComInterface for IDebugBreakpoint {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x5bd9d474_5975_423a_b88b_65a8e7110e65);
 }
-pub struct IDebugBreakpoint2(crate::core::IUnknown);
+pub struct IDebugBreakpoint2(pub crate::core::IUnknown);
 pub trait IDebugBreakpoint2_Trait: crate::core::IUnknown_Trait {
     fn GetId(&self, id: MutPtr<u32>) -> crate::core::HRESULT {
         todo!("GetId")
@@ -15931,7 +15931,7 @@ impl FromIntoMemory for IDebugBreakpoint2 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugBreakpoint2 {
@@ -15939,7 +15939,7 @@ impl crate::core::ComInterface for IDebugBreakpoint2 {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x1b278d20_79f2_426e_a3f9_c1ddf375d48e);
 }
-pub struct IDebugBreakpoint3(crate::core::IUnknown);
+pub struct IDebugBreakpoint3(pub crate::core::IUnknown);
 pub trait IDebugBreakpoint3_Trait: crate::core::IUnknown_Trait {
     fn GetId(&self, id: MutPtr<u32>) -> crate::core::HRESULT {
         todo!("GetId")
@@ -16069,7 +16069,7 @@ impl FromIntoMemory for IDebugBreakpoint3 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugBreakpoint3 {
@@ -16077,7 +16077,7 @@ impl crate::core::ComInterface for IDebugBreakpoint3 {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x38f5c249_b448_43bb_9835_579d4ec02249);
 }
-pub struct IDebugClient(crate::core::IUnknown);
+pub struct IDebugClient(pub crate::core::IUnknown);
 pub trait IDebugClient_Trait: crate::core::IUnknown_Trait {
     fn AttachKernel(&self, flags: u32, connect_options: PCSTR) -> crate::core::HRESULT {
         todo!("AttachKernel")
@@ -16314,7 +16314,7 @@ impl FromIntoMemory for IDebugClient {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugClient {
@@ -16322,7 +16322,7 @@ impl crate::core::ComInterface for IDebugClient {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x27fe5639_8407_4f47_8364_ee118fb08ac8);
 }
-pub struct IDebugClient2(crate::core::IUnknown);
+pub struct IDebugClient2(pub crate::core::IUnknown);
 pub trait IDebugClient2_Trait: crate::core::IUnknown_Trait {
     fn AttachKernel(&self, flags: u32, connect_options: PCSTR) -> crate::core::HRESULT {
         todo!("AttachKernel")
@@ -16589,7 +16589,7 @@ impl FromIntoMemory for IDebugClient2 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugClient2 {
@@ -16597,7 +16597,7 @@ impl crate::core::ComInterface for IDebugClient2 {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xedbed635_372e_4dab_bbfe_ed0d2f63be81);
 }
-pub struct IDebugClient3(crate::core::IUnknown);
+pub struct IDebugClient3(pub crate::core::IUnknown);
 pub trait IDebugClient3_Trait: crate::core::IUnknown_Trait {
     fn AttachKernel(&self, flags: u32, connect_options: PCSTR) -> crate::core::HRESULT {
         todo!("AttachKernel")
@@ -16905,7 +16905,7 @@ impl FromIntoMemory for IDebugClient3 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugClient3 {
@@ -16913,7 +16913,7 @@ impl crate::core::ComInterface for IDebugClient3 {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xdd492d7f_71b8_4ad6_a8dc_1c887479ff91);
 }
-pub struct IDebugClient4(crate::core::IUnknown);
+pub struct IDebugClient4(pub crate::core::IUnknown);
 pub trait IDebugClient4_Trait: crate::core::IUnknown_Trait {
     fn AttachKernel(&self, flags: u32, connect_options: PCSTR) -> crate::core::HRESULT {
         todo!("AttachKernel")
@@ -17267,7 +17267,7 @@ impl FromIntoMemory for IDebugClient4 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugClient4 {
@@ -17275,7 +17275,7 @@ impl crate::core::ComInterface for IDebugClient4 {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xca83c3de_5089_4cf8_93c8_d892387f2a5e);
 }
-pub struct IDebugClient5(crate::core::IUnknown);
+pub struct IDebugClient5(pub crate::core::IUnknown);
 pub trait IDebugClient5_Trait: crate::core::IUnknown_Trait {
     fn AttachKernel(&self, flags: u32, connect_options: PCSTR) -> crate::core::HRESULT {
         todo!("AttachKernel")
@@ -17810,7 +17810,7 @@ impl FromIntoMemory for IDebugClient5 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugClient5 {
@@ -17818,7 +17818,7 @@ impl crate::core::ComInterface for IDebugClient5 {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xe3acb9d7_7ec2_4f0c_a0da_e81e0cbbe628);
 }
-pub struct IDebugClient6(crate::core::IUnknown);
+pub struct IDebugClient6(pub crate::core::IUnknown);
 pub trait IDebugClient6_Trait: crate::core::IUnknown_Trait {
     fn AttachKernel(&self, flags: u32, connect_options: PCSTR) -> crate::core::HRESULT {
         todo!("AttachKernel")
@@ -18359,7 +18359,7 @@ impl FromIntoMemory for IDebugClient6 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugClient6 {
@@ -18367,7 +18367,7 @@ impl crate::core::ComInterface for IDebugClient6 {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xfd28b4c5_c498_4686_a28e_62cad2154eb3);
 }
-pub struct IDebugClient7(crate::core::IUnknown);
+pub struct IDebugClient7(pub crate::core::IUnknown);
 pub trait IDebugClient7_Trait: crate::core::IUnknown_Trait {
     fn AttachKernel(&self, flags: u32, connect_options: PCSTR) -> crate::core::HRESULT {
         todo!("AttachKernel")
@@ -18915,7 +18915,7 @@ impl FromIntoMemory for IDebugClient7 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugClient7 {
@@ -18923,7 +18923,7 @@ impl crate::core::ComInterface for IDebugClient7 {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x13586be3_542e_481e_b1f2_8497ba74f9a9);
 }
-pub struct IDebugClient8(crate::core::IUnknown);
+pub struct IDebugClient8(pub crate::core::IUnknown);
 pub trait IDebugClient8_Trait: crate::core::IUnknown_Trait {
     fn AttachKernel(&self, flags: u32, connect_options: PCSTR) -> crate::core::HRESULT {
         todo!("AttachKernel")
@@ -19479,7 +19479,7 @@ impl FromIntoMemory for IDebugClient8 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugClient8 {
@@ -19487,7 +19487,7 @@ impl crate::core::ComInterface for IDebugClient8 {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xcec43add_6375_469e_83d5_414e4033c19a);
 }
-pub struct IDebugCodeContext(crate::core::IUnknown);
+pub struct IDebugCodeContext(pub crate::core::IUnknown);
 pub trait IDebugCodeContext_Trait: crate::core::IUnknown_Trait {
     fn GetDocumentContext(&self, ppsc: MutPtr<IDebugDocumentContext>) -> crate::core::HRESULT {
         todo!("GetDocumentContext")
@@ -19521,7 +19521,7 @@ impl FromIntoMemory for IDebugCodeContext {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugCodeContext {
@@ -19529,7 +19529,7 @@ impl crate::core::ComInterface for IDebugCodeContext {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x51973c13_cb0c_11d0_b5c9_00a0244a0e7a);
 }
-pub struct IDebugControl(crate::core::IUnknown);
+pub struct IDebugControl(pub crate::core::IUnknown);
 pub trait IDebugControl_Trait: crate::core::IUnknown_Trait {
     fn GetInterrupt(&self) -> crate::core::HRESULT {
         todo!("GetInterrupt")
@@ -20077,7 +20077,7 @@ impl FromIntoMemory for IDebugControl {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugControl {
@@ -20085,7 +20085,7 @@ impl crate::core::ComInterface for IDebugControl {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x5182e668_105e_416e_ad92_24ef800424ba);
 }
-pub struct IDebugControl2(crate::core::IUnknown);
+pub struct IDebugControl2(pub crate::core::IUnknown);
 pub trait IDebugControl2_Trait: crate::core::IUnknown_Trait {
     fn GetInterrupt(&self) -> crate::core::HRESULT {
         todo!("GetInterrupt")
@@ -20667,7 +20667,7 @@ impl FromIntoMemory for IDebugControl2 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugControl2 {
@@ -20675,7 +20675,7 @@ impl crate::core::ComInterface for IDebugControl2 {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xd4366723_44df_4bed_8c7e_4c05424f4588);
 }
-pub struct IDebugControl3(crate::core::IUnknown);
+pub struct IDebugControl3(pub crate::core::IUnknown);
 pub trait IDebugControl3_Trait: crate::core::IUnknown_Trait {
     fn GetInterrupt(&self) -> crate::core::HRESULT {
         todo!("GetInterrupt")
@@ -21317,7 +21317,7 @@ impl FromIntoMemory for IDebugControl3 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugControl3 {
@@ -21325,7 +21325,7 @@ impl crate::core::ComInterface for IDebugControl3 {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x7df74a86_b03f_407f_90ab_a20dadcead08);
 }
-pub struct IDebugControl4(crate::core::IUnknown);
+pub struct IDebugControl4(pub crate::core::IUnknown);
 pub trait IDebugControl4_Trait: crate::core::IUnknown_Trait {
     fn GetInterrupt(&self) -> crate::core::HRESULT {
         todo!("GetInterrupt")
@@ -22375,7 +22375,7 @@ impl FromIntoMemory for IDebugControl4 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugControl4 {
@@ -22383,7 +22383,7 @@ impl crate::core::ComInterface for IDebugControl4 {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x94e60ce9_9b41_4b19_9fc0_6d9eb35272b3);
 }
-pub struct IDebugControl5(crate::core::IUnknown);
+pub struct IDebugControl5(pub crate::core::IUnknown);
 pub trait IDebugControl5_Trait: crate::core::IUnknown_Trait {
     fn GetInterrupt(&self) -> crate::core::HRESULT {
         todo!("GetInterrupt")
@@ -23485,7 +23485,7 @@ impl FromIntoMemory for IDebugControl5 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugControl5 {
@@ -23493,7 +23493,7 @@ impl crate::core::ComInterface for IDebugControl5 {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xb2ffe162_2412_429f_8d1d_5bf6dd824696);
 }
-pub struct IDebugControl6(crate::core::IUnknown);
+pub struct IDebugControl6(pub crate::core::IUnknown);
 pub trait IDebugControl6_Trait: crate::core::IUnknown_Trait {
     fn GetInterrupt(&self) -> crate::core::HRESULT {
         todo!("GetInterrupt")
@@ -24605,7 +24605,7 @@ impl FromIntoMemory for IDebugControl6 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugControl6 {
@@ -24613,7 +24613,7 @@ impl crate::core::ComInterface for IDebugControl6 {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xbc0d583f_126d_43a1_9cc4_a860ab1d537b);
 }
-pub struct IDebugControl7(crate::core::IUnknown);
+pub struct IDebugControl7(pub crate::core::IUnknown);
 pub trait IDebugControl7_Trait: crate::core::IUnknown_Trait {
     fn GetInterrupt(&self) -> crate::core::HRESULT {
         todo!("GetInterrupt")
@@ -25733,7 +25733,7 @@ impl FromIntoMemory for IDebugControl7 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugControl7 {
@@ -25741,7 +25741,7 @@ impl crate::core::ComInterface for IDebugControl7 {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xb86fb3b1_80d4_475b_aea3_cf06539cf63a);
 }
-pub struct IDebugCookie(crate::core::IUnknown);
+pub struct IDebugCookie(pub crate::core::IUnknown);
 pub trait IDebugCookie_Trait: crate::core::IUnknown_Trait {
     fn SetDebugCookie(&self, dw_debug_app_cookie: u32) -> crate::core::HRESULT {
         todo!("SetDebugCookie")
@@ -25772,7 +25772,7 @@ impl FromIntoMemory for IDebugCookie {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugCookie {
@@ -25780,7 +25780,7 @@ impl crate::core::ComInterface for IDebugCookie {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x51973c39_cb0c_11d0_b5c9_00a0244a0e7a);
 }
-pub struct IDebugDataSpaces(crate::core::IUnknown);
+pub struct IDebugDataSpaces(pub crate::core::IUnknown);
 pub trait IDebugDataSpaces_Trait: crate::core::IUnknown_Trait {
     fn ReadVirtual(
         &self,
@@ -25985,7 +25985,7 @@ impl FromIntoMemory for IDebugDataSpaces {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugDataSpaces {
@@ -25993,7 +25993,7 @@ impl crate::core::ComInterface for IDebugDataSpaces {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x88f7dfab_3ea7_4c3a_aefb_c4e8106173aa);
 }
-pub struct IDebugDataSpaces2(crate::core::IUnknown);
+pub struct IDebugDataSpaces2(pub crate::core::IUnknown);
 pub trait IDebugDataSpaces2_Trait: crate::core::IUnknown_Trait {
     fn ReadVirtual(
         &self,
@@ -26247,7 +26247,7 @@ impl FromIntoMemory for IDebugDataSpaces2 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugDataSpaces2 {
@@ -26255,7 +26255,7 @@ impl crate::core::ComInterface for IDebugDataSpaces2 {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x7a5e852f_96e9_468f_ac1b_0b3addc4a049);
 }
-pub struct IDebugDocument(crate::core::IUnknown);
+pub struct IDebugDocument(pub crate::core::IUnknown);
 pub trait IDebugDocument_Trait: IDebugDocumentInfo_Trait {}
 impl ::core::clone::Clone for IDebugDocument {
     fn clone(&self) -> Self {
@@ -26282,7 +26282,7 @@ impl FromIntoMemory for IDebugDocument {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugDocument {
@@ -26290,7 +26290,7 @@ impl crate::core::ComInterface for IDebugDocument {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x51973c21_cb0c_11d0_b5c9_00a0244a0e7a);
 }
-pub struct IDebugDocumentContext(crate::core::IUnknown);
+pub struct IDebugDocumentContext(pub crate::core::IUnknown);
 pub trait IDebugDocumentContext_Trait: crate::core::IUnknown_Trait {
     fn GetDocument(&self, ppsd: MutPtr<IDebugDocument>) -> crate::core::HRESULT {
         todo!("GetDocument")
@@ -26326,7 +26326,7 @@ impl FromIntoMemory for IDebugDocumentContext {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugDocumentContext {
@@ -26336,7 +26336,7 @@ impl crate::core::ComInterface for IDebugDocumentContext {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IDebugDocumentHelper32(crate::core::IUnknown);
+pub struct IDebugDocumentHelper32(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IDebugDocumentHelper32_Trait: crate::core::IUnknown_Trait {
@@ -26474,7 +26474,7 @@ impl FromIntoMemory for IDebugDocumentHelper32 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -26486,7 +26486,7 @@ impl crate::core::ComInterface for IDebugDocumentHelper32 {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IDebugDocumentHelper64(crate::core::IUnknown);
+pub struct IDebugDocumentHelper64(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IDebugDocumentHelper64_Trait: crate::core::IUnknown_Trait {
@@ -26624,7 +26624,7 @@ impl FromIntoMemory for IDebugDocumentHelper64 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -26634,7 +26634,7 @@ impl crate::core::ComInterface for IDebugDocumentHelper64 {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xc4c7363c_20fd_47f9_bd82_4855e0150871);
 }
-pub struct IDebugDocumentHost(crate::core::IUnknown);
+pub struct IDebugDocumentHost(pub crate::core::IUnknown);
 pub trait IDebugDocumentHost_Trait: crate::core::IUnknown_Trait {
     fn GetDeferredText(
         &self,
@@ -26704,7 +26704,7 @@ impl FromIntoMemory for IDebugDocumentHost {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugDocumentHost {
@@ -26712,7 +26712,7 @@ impl crate::core::ComInterface for IDebugDocumentHost {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x51973c27_cb0c_11d0_b5c9_00a0244a0e7a);
 }
-pub struct IDebugDocumentInfo(crate::core::IUnknown);
+pub struct IDebugDocumentInfo(pub crate::core::IUnknown);
 pub trait IDebugDocumentInfo_Trait: crate::core::IUnknown_Trait {
     fn GetName(
         &self,
@@ -26753,7 +26753,7 @@ impl FromIntoMemory for IDebugDocumentInfo {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugDocumentInfo {
@@ -26761,7 +26761,7 @@ impl crate::core::ComInterface for IDebugDocumentInfo {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x51973c1f_cb0c_11d0_b5c9_00a0244a0e7a);
 }
-pub struct IDebugDocumentProvider(crate::core::IUnknown);
+pub struct IDebugDocumentProvider(pub crate::core::IUnknown);
 pub trait IDebugDocumentProvider_Trait: IDebugDocumentInfo_Trait {
     fn GetDocument(&self, ppssd: MutPtr<IDebugDocument>) -> crate::core::HRESULT {
         todo!("GetDocument")
@@ -26794,7 +26794,7 @@ impl FromIntoMemory for IDebugDocumentProvider {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugDocumentProvider {
@@ -26802,7 +26802,7 @@ impl crate::core::ComInterface for IDebugDocumentProvider {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x51973c20_cb0c_11d0_b5c9_00a0244a0e7a);
 }
-pub struct IDebugDocumentText(crate::core::IUnknown);
+pub struct IDebugDocumentText(pub crate::core::IUnknown);
 pub trait IDebugDocumentText_Trait: IDebugDocument_Trait {
     fn GetDocumentAttributes(&self, ptextdocattr: MutPtr<u32>) -> crate::core::HRESULT {
         todo!("GetDocumentAttributes")
@@ -26881,7 +26881,7 @@ impl FromIntoMemory for IDebugDocumentText {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugDocumentText {
@@ -26889,7 +26889,7 @@ impl crate::core::ComInterface for IDebugDocumentText {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x51973c22_cb0c_11d0_b5c9_00a0244a0e7a);
 }
-pub struct IDebugDocumentTextAuthor(crate::core::IUnknown);
+pub struct IDebugDocumentTextAuthor(pub crate::core::IUnknown);
 pub trait IDebugDocumentTextAuthor_Trait: IDebugDocumentText_Trait {
     fn InsertText(
         &self,
@@ -26938,7 +26938,7 @@ impl FromIntoMemory for IDebugDocumentTextAuthor {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugDocumentTextAuthor {
@@ -26946,7 +26946,7 @@ impl crate::core::ComInterface for IDebugDocumentTextAuthor {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x51973c24_cb0c_11d0_b5c9_00a0244a0e7a);
 }
-pub struct IDebugDocumentTextEvents(crate::core::IUnknown);
+pub struct IDebugDocumentTextEvents(pub crate::core::IUnknown);
 pub trait IDebugDocumentTextEvents_Trait: crate::core::IUnknown_Trait {
     fn onDestroy(&self) -> crate::core::HRESULT {
         todo!("onDestroy")
@@ -27010,7 +27010,7 @@ impl FromIntoMemory for IDebugDocumentTextEvents {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugDocumentTextEvents {
@@ -27018,7 +27018,7 @@ impl crate::core::ComInterface for IDebugDocumentTextEvents {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x51973c23_cb0c_11d0_b5c9_00a0244a0e7a);
 }
-pub struct IDebugDocumentTextExternalAuthor(crate::core::IUnknown);
+pub struct IDebugDocumentTextExternalAuthor(pub crate::core::IUnknown);
 pub trait IDebugDocumentTextExternalAuthor_Trait: crate::core::IUnknown_Trait {
     fn GetPathName(
         &self,
@@ -27064,7 +27064,7 @@ impl FromIntoMemory for IDebugDocumentTextExternalAuthor {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugDocumentTextExternalAuthor {
@@ -27072,7 +27072,7 @@ impl crate::core::ComInterface for IDebugDocumentTextExternalAuthor {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x51973c25_cb0c_11d0_b5c9_00a0244a0e7a);
 }
-pub struct IDebugEventCallbacks(crate::core::IUnknown);
+pub struct IDebugEventCallbacks(pub crate::core::IUnknown);
 pub trait IDebugEventCallbacks_Trait: crate::core::IUnknown_Trait {
     fn GetInterestMask(&self, mask: MutPtr<u32>) -> crate::core::HRESULT {
         todo!("GetInterestMask")
@@ -27175,7 +27175,7 @@ impl FromIntoMemory for IDebugEventCallbacks {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugEventCallbacks {
@@ -27183,7 +27183,7 @@ impl crate::core::ComInterface for IDebugEventCallbacks {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x337be28b_5036_4d72_b6bf_c45fbb9f2eaa);
 }
-pub struct IDebugEventCallbacksWide(crate::core::IUnknown);
+pub struct IDebugEventCallbacksWide(pub crate::core::IUnknown);
 pub trait IDebugEventCallbacksWide_Trait: crate::core::IUnknown_Trait {
     fn GetInterestMask(&self, mask: MutPtr<u32>) -> crate::core::HRESULT {
         todo!("GetInterestMask")
@@ -27286,7 +27286,7 @@ impl FromIntoMemory for IDebugEventCallbacksWide {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugEventCallbacksWide {
@@ -27294,7 +27294,7 @@ impl crate::core::ComInterface for IDebugEventCallbacksWide {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x0690e046_9c23_45ac_a04f_987ac29ad0d3);
 }
-pub struct IDebugEventContextCallbacks(crate::core::IUnknown);
+pub struct IDebugEventContextCallbacks(pub crate::core::IUnknown);
 pub trait IDebugEventContextCallbacks_Trait: crate::core::IUnknown_Trait {
     fn GetInterestMask(&self, mask: MutPtr<u32>) -> crate::core::HRESULT {
         todo!("GetInterestMask")
@@ -27446,7 +27446,7 @@ impl FromIntoMemory for IDebugEventContextCallbacks {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugEventContextCallbacks {
@@ -27456,7 +27456,7 @@ impl crate::core::ComInterface for IDebugEventContextCallbacks {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IDebugExpression(crate::core::IUnknown);
+pub struct IDebugExpression(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IDebugExpression_Trait: crate::core::IUnknown_Trait {
@@ -27523,7 +27523,7 @@ impl FromIntoMemory for IDebugExpression {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -27533,7 +27533,7 @@ impl crate::core::ComInterface for IDebugExpression {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x51973c14_cb0c_11d0_b5c9_00a0244a0e7a);
 }
-pub struct IDebugExpressionCallBack(crate::core::IUnknown);
+pub struct IDebugExpressionCallBack(pub crate::core::IUnknown);
 pub trait IDebugExpressionCallBack_Trait: crate::core::IUnknown_Trait {
     fn onComplete(&self) -> crate::core::HRESULT {
         todo!("onComplete")
@@ -27566,7 +27566,7 @@ impl FromIntoMemory for IDebugExpressionCallBack {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugExpressionCallBack {
@@ -27576,7 +27576,7 @@ impl crate::core::ComInterface for IDebugExpressionCallBack {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IDebugExpressionContext(crate::core::IUnknown);
+pub struct IDebugExpressionContext(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IDebugExpressionContext_Trait: crate::core::IUnknown_Trait {
@@ -27639,7 +27639,7 @@ impl FromIntoMemory for IDebugExpressionContext {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -27651,7 +27651,7 @@ impl crate::core::ComInterface for IDebugExpressionContext {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IDebugExtendedProperty(crate::core::IUnknown);
+pub struct IDebugExtendedProperty(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IDebugExtendedProperty_Trait: IDebugProperty_Trait {
@@ -27715,7 +27715,7 @@ impl FromIntoMemory for IDebugExtendedProperty {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.System.Ole'*"]
@@ -27727,7 +27727,7 @@ impl crate::core::ComInterface for IDebugExtendedProperty {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IDebugFormatter(crate::core::IUnknown);
+pub struct IDebugFormatter(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IDebugFormatter_Trait: crate::core::IUnknown_Trait {
@@ -27798,7 +27798,7 @@ impl FromIntoMemory for IDebugFormatter {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -27810,7 +27810,7 @@ impl crate::core::ComInterface for IDebugFormatter {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IDebugHelper(crate::core::IUnknown);
+pub struct IDebugHelper(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IDebugHelper_Trait: crate::core::IUnknown_Trait {
@@ -27884,7 +27884,7 @@ impl FromIntoMemory for IDebugHelper {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -27896,7 +27896,7 @@ impl crate::core::ComInterface for IDebugHelper {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IDebugHost(crate::core::IUnknown);
+pub struct IDebugHost(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IDebugHost_Trait: crate::core::IUnknown_Trait {
@@ -27955,7 +27955,7 @@ impl FromIntoMemory for IDebugHost {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -27965,7 +27965,7 @@ impl crate::core::ComInterface for IDebugHost {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xb8c74943_6b2c_4eeb_b5c5_35d378a6d99d);
 }
-pub struct IDebugHostBaseClass(crate::core::IUnknown);
+pub struct IDebugHostBaseClass(pub crate::core::IUnknown);
 pub trait IDebugHostBaseClass_Trait: IDebugHostSymbol_Trait {
     fn GetOffset(&self, offset: MutPtr<u64>) -> crate::core::HRESULT {
         todo!("GetOffset")
@@ -27996,7 +27996,7 @@ impl FromIntoMemory for IDebugHostBaseClass {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugHostBaseClass {
@@ -28006,7 +28006,7 @@ impl crate::core::ComInterface for IDebugHostBaseClass {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IDebugHostConstant(crate::core::IUnknown);
+pub struct IDebugHostConstant(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IDebugHostConstant_Trait: IDebugHostSymbol_Trait {
@@ -28053,7 +28053,7 @@ impl FromIntoMemory for IDebugHostConstant {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -28063,7 +28063,7 @@ impl crate::core::ComInterface for IDebugHostConstant {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x62787edc_fa76_4690_bd71_5e8c3e2937ec);
 }
-pub struct IDebugHostContext(crate::core::IUnknown);
+pub struct IDebugHostContext(pub crate::core::IUnknown);
 pub trait IDebugHostContext_Trait: crate::core::IUnknown_Trait {
     fn IsEqualTo(
         &self,
@@ -28098,7 +28098,7 @@ impl FromIntoMemory for IDebugHostContext {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugHostContext {
@@ -28108,7 +28108,7 @@ impl crate::core::ComInterface for IDebugHostContext {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IDebugHostData(crate::core::IUnknown);
+pub struct IDebugHostData(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IDebugHostData_Trait: IDebugHostSymbol_Trait {
@@ -28161,7 +28161,7 @@ impl FromIntoMemory for IDebugHostData {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -28171,7 +28171,7 @@ impl crate::core::ComInterface for IDebugHostData {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xa3d64993_826c_44fa_897d_926f2fe7ad0b);
 }
-pub struct IDebugHostErrorSink(crate::core::IUnknown);
+pub struct IDebugHostErrorSink(pub crate::core::IUnknown);
 pub trait IDebugHostErrorSink_Trait: crate::core::IUnknown_Trait {
     fn ReportError(
         &self,
@@ -28207,7 +28207,7 @@ impl FromIntoMemory for IDebugHostErrorSink {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugHostErrorSink {
@@ -28217,7 +28217,7 @@ impl crate::core::ComInterface for IDebugHostErrorSink {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IDebugHostEvaluator(crate::core::IUnknown);
+pub struct IDebugHostEvaluator(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IDebugHostEvaluator_Trait: crate::core::IUnknown_Trait {
@@ -28283,7 +28283,7 @@ impl FromIntoMemory for IDebugHostEvaluator {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -28295,7 +28295,7 @@ impl crate::core::ComInterface for IDebugHostEvaluator {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IDebugHostEvaluator2(crate::core::IUnknown);
+pub struct IDebugHostEvaluator2(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IDebugHostEvaluator2_Trait: IDebugHostEvaluator_Trait {
@@ -28350,7 +28350,7 @@ impl FromIntoMemory for IDebugHostEvaluator2 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -28362,7 +28362,7 @@ impl crate::core::ComInterface for IDebugHostEvaluator2 {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IDebugHostExtensibility(crate::core::IUnknown);
+pub struct IDebugHostExtensibility(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IDebugHostExtensibility_Trait: crate::core::IUnknown_Trait {
@@ -28418,7 +28418,7 @@ impl FromIntoMemory for IDebugHostExtensibility {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -28430,7 +28430,7 @@ impl crate::core::ComInterface for IDebugHostExtensibility {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IDebugHostField(crate::core::IUnknown);
+pub struct IDebugHostField(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IDebugHostField_Trait: IDebugHostSymbol_Trait {
@@ -28486,7 +28486,7 @@ impl FromIntoMemory for IDebugHostField {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -28496,7 +28496,7 @@ impl crate::core::ComInterface for IDebugHostField {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xe06f6495_16bc_4cc9_b11d_2a6b23fa72f3);
 }
-pub struct IDebugHostMemory(crate::core::IUnknown);
+pub struct IDebugHostMemory(pub crate::core::IUnknown);
 pub trait IDebugHostMemory_Trait: crate::core::IUnknown_Trait {
     fn ReadBytes(
         &self,
@@ -28571,7 +28571,7 @@ impl FromIntoMemory for IDebugHostMemory {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugHostMemory {
@@ -28579,7 +28579,7 @@ impl crate::core::ComInterface for IDebugHostMemory {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x212149c9_9183_4a3e_b00e_4fd1dc95339b);
 }
-pub struct IDebugHostMemory2(crate::core::IUnknown);
+pub struct IDebugHostMemory2(pub crate::core::IUnknown);
 pub trait IDebugHostMemory2_Trait: IDebugHostMemory_Trait {
     fn LinearizeLocation(
         &self,
@@ -28615,7 +28615,7 @@ impl FromIntoMemory for IDebugHostMemory2 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugHostMemory2 {
@@ -28623,7 +28623,7 @@ impl crate::core::ComInterface for IDebugHostMemory2 {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xeea033de_38f6_416b_a251_1d3771001270);
 }
-pub struct IDebugHostModule(crate::core::IUnknown);
+pub struct IDebugHostModule(pub crate::core::IUnknown);
 pub trait IDebugHostModule_Trait: IDebugHostSymbol_Trait {
     fn GetImageName(
         &self,
@@ -28685,7 +28685,7 @@ impl FromIntoMemory for IDebugHostModule {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugHostModule {
@@ -28693,7 +28693,7 @@ impl crate::core::ComInterface for IDebugHostModule {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xc9ba3e18_d070_4378_bbd0_34613b346e1e);
 }
-pub struct IDebugHostModule2(crate::core::IUnknown);
+pub struct IDebugHostModule2(pub crate::core::IUnknown);
 pub trait IDebugHostModule2_Trait: IDebugHostModule_Trait {
     fn FindContainingSymbolByRVA(
         &self,
@@ -28729,7 +28729,7 @@ impl FromIntoMemory for IDebugHostModule2 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugHostModule2 {
@@ -28737,7 +28737,7 @@ impl crate::core::ComInterface for IDebugHostModule2 {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xb51887e8_bcd0_4e8f_a8c7_434398b78c37);
 }
-pub struct IDebugHostModuleSignature(crate::core::IUnknown);
+pub struct IDebugHostModuleSignature(pub crate::core::IUnknown);
 pub trait IDebugHostModuleSignature_Trait: crate::core::IUnknown_Trait {
     fn IsMatch(&self, p_module: IDebugHostModule, is_match: MutPtr<bool>) -> crate::core::HRESULT {
         todo!("IsMatch")
@@ -28770,7 +28770,7 @@ impl FromIntoMemory for IDebugHostModuleSignature {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugHostModuleSignature {
@@ -28778,7 +28778,7 @@ impl crate::core::ComInterface for IDebugHostModuleSignature {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x31e53a5a_01ee_4bbb_b899_4b46ae7d595c);
 }
-pub struct IDebugHostPublic(crate::core::IUnknown);
+pub struct IDebugHostPublic(pub crate::core::IUnknown);
 pub trait IDebugHostPublic_Trait: IDebugHostSymbol_Trait {
     fn GetLocationKind(&self, location_kind: MutPtr<LocationKind>) -> crate::core::HRESULT {
         todo!("GetLocationKind")
@@ -28812,7 +28812,7 @@ impl FromIntoMemory for IDebugHostPublic {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugHostPublic {
@@ -28822,7 +28822,7 @@ impl crate::core::ComInterface for IDebugHostPublic {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IDebugHostScriptHost(crate::core::IUnknown);
+pub struct IDebugHostScriptHost(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IDebugHostScriptHost_Trait: crate::core::IUnknown_Trait {
@@ -28875,7 +28875,7 @@ impl FromIntoMemory for IDebugHostScriptHost {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.System.Ole'*"]
@@ -28885,7 +28885,7 @@ impl crate::core::ComInterface for IDebugHostScriptHost {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xb70334a4_b92c_4570_93a1_d3eb686649a0);
 }
-pub struct IDebugHostStatus(crate::core::IUnknown);
+pub struct IDebugHostStatus(pub crate::core::IUnknown);
 pub trait IDebugHostStatus_Trait: crate::core::IUnknown_Trait {
     fn PollUserInterrupt(&self, interrupt_requested: MutPtr<bool>) -> crate::core::HRESULT {
         todo!("PollUserInterrupt")
@@ -28916,7 +28916,7 @@ impl FromIntoMemory for IDebugHostStatus {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugHostStatus {
@@ -28924,7 +28924,7 @@ impl crate::core::ComInterface for IDebugHostStatus {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x4f3e1ce2_86b2_4c7a_9c65_d0a9d0eecf44);
 }
-pub struct IDebugHostSymbol(crate::core::IUnknown);
+pub struct IDebugHostSymbol(pub crate::core::IUnknown);
 pub trait IDebugHostSymbol_Trait: crate::core::IUnknown_Trait {
     fn GetContext(&self, context: MutPtr<IDebugHostContext>) -> crate::core::HRESULT {
         todo!("GetContext")
@@ -28989,7 +28989,7 @@ impl FromIntoMemory for IDebugHostSymbol {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugHostSymbol {
@@ -28997,7 +28997,7 @@ impl crate::core::ComInterface for IDebugHostSymbol {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x0f819103_87de_4e96_8277_e05cd441fb22);
 }
-pub struct IDebugHostSymbol2(crate::core::IUnknown);
+pub struct IDebugHostSymbol2(pub crate::core::IUnknown);
 pub trait IDebugHostSymbol2_Trait: IDebugHostSymbol_Trait {
     fn GetLanguage(&self, p_kind: MutPtr<LanguageKind>) -> crate::core::HRESULT {
         todo!("GetLanguage")
@@ -29028,7 +29028,7 @@ impl FromIntoMemory for IDebugHostSymbol2 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugHostSymbol2 {
@@ -29036,7 +29036,7 @@ impl crate::core::ComInterface for IDebugHostSymbol2 {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x21515b67_6720_4257_8a68_077dc944471c);
 }
-pub struct IDebugHostSymbolEnumerator(crate::core::IUnknown);
+pub struct IDebugHostSymbolEnumerator(pub crate::core::IUnknown);
 pub trait IDebugHostSymbolEnumerator_Trait: crate::core::IUnknown_Trait {
     fn Reset(&self) -> crate::core::HRESULT {
         todo!("Reset")
@@ -29072,7 +29072,7 @@ impl FromIntoMemory for IDebugHostSymbolEnumerator {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugHostSymbolEnumerator {
@@ -29080,7 +29080,7 @@ impl crate::core::ComInterface for IDebugHostSymbolEnumerator {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x28d96c86_10a3_4976_b14e_eaef4790aa1f);
 }
-pub struct IDebugHostSymbols(crate::core::IUnknown);
+pub struct IDebugHostSymbols(pub crate::core::IUnknown);
 pub trait IDebugHostSymbols_Trait: crate::core::IUnknown_Trait {
     fn CreateModuleSignature(
         &self,
@@ -29168,7 +29168,7 @@ impl FromIntoMemory for IDebugHostSymbols {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugHostSymbols {
@@ -29176,7 +29176,7 @@ impl crate::core::ComInterface for IDebugHostSymbols {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x854fd751_c2e1_4eb2_b525_6619cb97a588);
 }
-pub struct IDebugHostType(crate::core::IUnknown);
+pub struct IDebugHostType(pub crate::core::IUnknown);
 pub trait IDebugHostType_Trait: IDebugHostSymbol_Trait {
     fn GetTypeKind(&self, kind: MutPtr<TypeKind>) -> crate::core::HRESULT {
         todo!("GetTypeKind")
@@ -29293,7 +29293,7 @@ impl FromIntoMemory for IDebugHostType {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugHostType {
@@ -29301,7 +29301,7 @@ impl crate::core::ComInterface for IDebugHostType {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x3aadc353_2b14_4abb_9893_5e03458e07ee);
 }
-pub struct IDebugHostType2(crate::core::IUnknown);
+pub struct IDebugHostType2(pub crate::core::IUnknown);
 pub trait IDebugHostType2_Trait: IDebugHostType_Trait {
     fn IsTypedef(&self, is_typedef: MutPtr<bool>) -> crate::core::HRESULT {
         todo!("IsTypedef")
@@ -29350,7 +29350,7 @@ impl FromIntoMemory for IDebugHostType2 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugHostType2 {
@@ -29358,7 +29358,7 @@ impl crate::core::ComInterface for IDebugHostType2 {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xb28632b9_8506_4676_87ce_8f7e05e59876);
 }
-pub struct IDebugHostTypeSignature(crate::core::IUnknown);
+pub struct IDebugHostTypeSignature(pub crate::core::IUnknown);
 pub trait IDebugHostTypeSignature_Trait: crate::core::IUnknown_Trait {
     fn GetHashCode(&self, hash_code: MutPtr<u32>) -> crate::core::HRESULT {
         todo!("GetHashCode")
@@ -29406,7 +29406,7 @@ impl FromIntoMemory for IDebugHostTypeSignature {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugHostTypeSignature {
@@ -29414,7 +29414,7 @@ impl crate::core::ComInterface for IDebugHostTypeSignature {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x3aadc353_2b14_4abb_9893_5e03458e07ee);
 }
-pub struct IDebugInputCallbacks(crate::core::IUnknown);
+pub struct IDebugInputCallbacks(pub crate::core::IUnknown);
 pub trait IDebugInputCallbacks_Trait: crate::core::IUnknown_Trait {
     fn StartInput(&self, buffer_size: u32) -> crate::core::HRESULT {
         todo!("StartInput")
@@ -29450,7 +29450,7 @@ impl FromIntoMemory for IDebugInputCallbacks {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugInputCallbacks {
@@ -29458,7 +29458,7 @@ impl crate::core::ComInterface for IDebugInputCallbacks {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x9f50e42c_f136_499e_9a97_73036c94ed2d);
 }
-pub struct IDebugOutputCallbacks(crate::core::IUnknown);
+pub struct IDebugOutputCallbacks(pub crate::core::IUnknown);
 pub trait IDebugOutputCallbacks_Trait: crate::core::IUnknown_Trait {
     fn Output(&self, mask: u32, text: PCSTR) -> crate::core::HRESULT {
         todo!("Output")
@@ -29491,7 +29491,7 @@ impl FromIntoMemory for IDebugOutputCallbacks {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugOutputCallbacks {
@@ -29499,7 +29499,7 @@ impl crate::core::ComInterface for IDebugOutputCallbacks {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x4bf58045_d654_4c40_b0af_683090f356dc);
 }
-pub struct IDebugOutputCallbacks2(crate::core::IUnknown);
+pub struct IDebugOutputCallbacks2(pub crate::core::IUnknown);
 pub trait IDebugOutputCallbacks2_Trait: crate::core::IUnknown_Trait {
     fn Output(&self, mask: u32, text: PCSTR) -> crate::core::HRESULT {
         todo!("Output")
@@ -29538,7 +29538,7 @@ impl FromIntoMemory for IDebugOutputCallbacks2 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugOutputCallbacks2 {
@@ -29546,7 +29546,7 @@ impl crate::core::ComInterface for IDebugOutputCallbacks2 {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x67721fe9_56d2_4a44_a325_2b65513ce6eb);
 }
-pub struct IDebugOutputCallbacksWide(crate::core::IUnknown);
+pub struct IDebugOutputCallbacksWide(pub crate::core::IUnknown);
 pub trait IDebugOutputCallbacksWide_Trait: crate::core::IUnknown_Trait {
     fn Output(&self, mask: u32, text: PCWSTR) -> crate::core::HRESULT {
         todo!("Output")
@@ -29579,7 +29579,7 @@ impl FromIntoMemory for IDebugOutputCallbacksWide {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugOutputCallbacksWide {
@@ -29587,7 +29587,7 @@ impl crate::core::ComInterface for IDebugOutputCallbacksWide {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x4c7fd663_c394_4e26_8ef1_34ad5ed3764c);
 }
-pub struct IDebugOutputStream(crate::core::IUnknown);
+pub struct IDebugOutputStream(pub crate::core::IUnknown);
 pub trait IDebugOutputStream_Trait: crate::core::IUnknown_Trait {
     fn Write(&self, psz: PCWSTR) -> crate::core::HRESULT {
         todo!("Write")
@@ -29618,7 +29618,7 @@ impl FromIntoMemory for IDebugOutputStream {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugOutputStream {
@@ -29626,7 +29626,7 @@ impl crate::core::ComInterface for IDebugOutputStream {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x7782d8f2_2b85_4059_ab88_28ceddca1c80);
 }
-pub struct IDebugPlmClient(crate::core::IUnknown);
+pub struct IDebugPlmClient(pub crate::core::IUnknown);
 pub trait IDebugPlmClient_Trait: crate::core::IUnknown_Trait {
     fn LaunchPlmPackageForDebugWide(
         &self,
@@ -29666,7 +29666,7 @@ impl FromIntoMemory for IDebugPlmClient {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugPlmClient {
@@ -29674,7 +29674,7 @@ impl crate::core::ComInterface for IDebugPlmClient {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xa02b66c4_aea3_4234_a9f7_fe4c383d4e29);
 }
-pub struct IDebugPlmClient2(crate::core::IUnknown);
+pub struct IDebugPlmClient2(pub crate::core::IUnknown);
 pub trait IDebugPlmClient2_Trait: crate::core::IUnknown_Trait {
     fn LaunchPlmPackageForDebugWide(
         &self,
@@ -29725,7 +29725,7 @@ impl FromIntoMemory for IDebugPlmClient2 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugPlmClient2 {
@@ -29733,7 +29733,7 @@ impl crate::core::ComInterface for IDebugPlmClient2 {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x597c980d_e7bd_4309_962c_9d9b69a7372c);
 }
-pub struct IDebugPlmClient3(crate::core::IUnknown);
+pub struct IDebugPlmClient3(pub crate::core::IUnknown);
 pub trait IDebugPlmClient3_Trait: crate::core::IUnknown_Trait {
     fn LaunchPlmPackageForDebugWide(
         &self,
@@ -29843,7 +29843,7 @@ impl FromIntoMemory for IDebugPlmClient3 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugPlmClient3 {
@@ -29853,7 +29853,7 @@ impl crate::core::ComInterface for IDebugPlmClient3 {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IDebugProperty(crate::core::IUnknown);
+pub struct IDebugProperty(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IDebugProperty_Trait: crate::core::IUnknown_Trait {
@@ -29934,7 +29934,7 @@ impl FromIntoMemory for IDebugProperty {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -29944,7 +29944,7 @@ impl crate::core::ComInterface for IDebugProperty {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x51973c50_cb0c_11d0_b5c9_00a0244a0e7a);
 }
-pub struct IDebugPropertyEnumType_All(crate::core::IUnknown);
+pub struct IDebugPropertyEnumType_All(pub crate::core::IUnknown);
 pub trait IDebugPropertyEnumType_All_Trait: crate::core::IUnknown_Trait {
     fn GetName(
         &self,
@@ -29980,7 +29980,7 @@ impl FromIntoMemory for IDebugPropertyEnumType_All {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugPropertyEnumType_All {
@@ -29988,7 +29988,7 @@ impl crate::core::ComInterface for IDebugPropertyEnumType_All {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x51973c55_cb0c_11d0_b5c9_00a0244a0e7a);
 }
-pub struct IDebugPropertyEnumType_Arguments(crate::core::IUnknown);
+pub struct IDebugPropertyEnumType_Arguments(pub crate::core::IUnknown);
 pub trait IDebugPropertyEnumType_Arguments_Trait: IDebugPropertyEnumType_All_Trait {}
 impl ::core::clone::Clone for IDebugPropertyEnumType_Arguments {
     fn clone(&self) -> Self {
@@ -30017,7 +30017,7 @@ impl FromIntoMemory for IDebugPropertyEnumType_Arguments {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugPropertyEnumType_Arguments {
@@ -30025,7 +30025,7 @@ impl crate::core::ComInterface for IDebugPropertyEnumType_Arguments {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x51973c57_cb0c_11d0_b5c9_00a0244a0e7a);
 }
-pub struct IDebugPropertyEnumType_Locals(crate::core::IUnknown);
+pub struct IDebugPropertyEnumType_Locals(pub crate::core::IUnknown);
 pub trait IDebugPropertyEnumType_Locals_Trait: IDebugPropertyEnumType_All_Trait {}
 impl ::core::clone::Clone for IDebugPropertyEnumType_Locals {
     fn clone(&self) -> Self {
@@ -30054,7 +30054,7 @@ impl FromIntoMemory for IDebugPropertyEnumType_Locals {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugPropertyEnumType_Locals {
@@ -30062,7 +30062,7 @@ impl crate::core::ComInterface for IDebugPropertyEnumType_Locals {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x51973c56_cb0c_11d0_b5c9_00a0244a0e7a);
 }
-pub struct IDebugPropertyEnumType_LocalsPlusArgs(crate::core::IUnknown);
+pub struct IDebugPropertyEnumType_LocalsPlusArgs(pub crate::core::IUnknown);
 pub trait IDebugPropertyEnumType_LocalsPlusArgs_Trait: IDebugPropertyEnumType_All_Trait {}
 impl ::core::clone::Clone for IDebugPropertyEnumType_LocalsPlusArgs {
     fn clone(&self) -> Self {
@@ -30091,7 +30091,7 @@ impl FromIntoMemory for IDebugPropertyEnumType_LocalsPlusArgs {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugPropertyEnumType_LocalsPlusArgs {
@@ -30099,7 +30099,7 @@ impl crate::core::ComInterface for IDebugPropertyEnumType_LocalsPlusArgs {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x51973c58_cb0c_11d0_b5c9_00a0244a0e7a);
 }
-pub struct IDebugPropertyEnumType_Registers(crate::core::IUnknown);
+pub struct IDebugPropertyEnumType_Registers(pub crate::core::IUnknown);
 pub trait IDebugPropertyEnumType_Registers_Trait: IDebugPropertyEnumType_All_Trait {}
 impl ::core::clone::Clone for IDebugPropertyEnumType_Registers {
     fn clone(&self) -> Self {
@@ -30128,7 +30128,7 @@ impl FromIntoMemory for IDebugPropertyEnumType_Registers {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugPropertyEnumType_Registers {
@@ -30136,7 +30136,7 @@ impl crate::core::ComInterface for IDebugPropertyEnumType_Registers {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x51973c59_cb0c_11d0_b5c9_00a0244a0e7a);
 }
-pub struct IDebugRegisters(crate::core::IUnknown);
+pub struct IDebugRegisters(pub crate::core::IUnknown);
 pub trait IDebugRegisters_Trait: crate::core::IUnknown_Trait {
     fn GetNumberRegisters(&self, number: MutPtr<u32>) -> crate::core::HRESULT {
         todo!("GetNumberRegisters")
@@ -30216,7 +30216,7 @@ impl FromIntoMemory for IDebugRegisters {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugRegisters {
@@ -30224,7 +30224,7 @@ impl crate::core::ComInterface for IDebugRegisters {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xce289126_9e84_45a7_937e_67bb18691493);
 }
-pub struct IDebugRegisters2(crate::core::IUnknown);
+pub struct IDebugRegisters2(pub crate::core::IUnknown);
 pub trait IDebugRegisters2_Trait: crate::core::IUnknown_Trait {
     fn GetNumberRegisters(&self, number: MutPtr<u32>) -> crate::core::HRESULT {
         todo!("GetNumberRegisters")
@@ -30405,7 +30405,7 @@ impl FromIntoMemory for IDebugRegisters2 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugRegisters2 {
@@ -30415,7 +30415,7 @@ impl crate::core::ComInterface for IDebugRegisters2 {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IDebugSessionProvider(crate::core::IUnknown);
+pub struct IDebugSessionProvider(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IDebugSessionProvider_Trait: crate::core::IUnknown_Trait {
@@ -30464,7 +30464,7 @@ impl FromIntoMemory for IDebugSessionProvider {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -30476,7 +30476,7 @@ impl crate::core::ComInterface for IDebugSessionProvider {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IDebugStackFrame(crate::core::IUnknown);
+pub struct IDebugStackFrame(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IDebugStackFrame_Trait: crate::core::IUnknown_Trait {
@@ -30545,7 +30545,7 @@ impl FromIntoMemory for IDebugStackFrame {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -30557,7 +30557,7 @@ impl crate::core::ComInterface for IDebugStackFrame {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IDebugStackFrame110(crate::core::IUnknown);
+pub struct IDebugStackFrame110(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IDebugStackFrame110_Trait: IDebugStackFrame_Trait {
@@ -30611,7 +30611,7 @@ impl FromIntoMemory for IDebugStackFrame110 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -30623,7 +30623,7 @@ impl crate::core::ComInterface for IDebugStackFrame110 {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IDebugStackFrameSniffer(crate::core::IUnknown);
+pub struct IDebugStackFrameSniffer(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IDebugStackFrameSniffer_Trait: crate::core::IUnknown_Trait {
@@ -30672,7 +30672,7 @@ impl FromIntoMemory for IDebugStackFrameSniffer {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -30684,7 +30684,7 @@ impl crate::core::ComInterface for IDebugStackFrameSniffer {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IDebugStackFrameSnifferEx32(crate::core::IUnknown);
+pub struct IDebugStackFrameSnifferEx32(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IDebugStackFrameSnifferEx32_Trait: IDebugStackFrameSniffer_Trait {
@@ -30737,7 +30737,7 @@ impl FromIntoMemory for IDebugStackFrameSnifferEx32 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -30749,7 +30749,7 @@ impl crate::core::ComInterface for IDebugStackFrameSnifferEx32 {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IDebugStackFrameSnifferEx64(crate::core::IUnknown);
+pub struct IDebugStackFrameSnifferEx64(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IDebugStackFrameSnifferEx64_Trait: IDebugStackFrameSniffer_Trait {
@@ -30802,7 +30802,7 @@ impl FromIntoMemory for IDebugStackFrameSnifferEx64 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -30812,7 +30812,7 @@ impl crate::core::ComInterface for IDebugStackFrameSnifferEx64 {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x8cd12af4_49c1_4d52_8d8a_c146f47581aa);
 }
-pub struct IDebugSymbolGroup(crate::core::IUnknown);
+pub struct IDebugSymbolGroup(pub crate::core::IUnknown);
 pub trait IDebugSymbolGroup_Trait: crate::core::IUnknown_Trait {
     fn GetNumberSymbols(&self, number: MutPtr<u32>) -> crate::core::HRESULT {
         todo!("GetNumberSymbols")
@@ -30891,7 +30891,7 @@ impl FromIntoMemory for IDebugSymbolGroup {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugSymbolGroup {
@@ -30899,7 +30899,7 @@ impl crate::core::ComInterface for IDebugSymbolGroup {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xf2528316_0f1a_4431_aeed_11d096e1e2ab);
 }
-pub struct IDebugSymbolGroup2(crate::core::IUnknown);
+pub struct IDebugSymbolGroup2(pub crate::core::IUnknown);
 pub trait IDebugSymbolGroup2_Trait: crate::core::IUnknown_Trait {
     fn GetNumberSymbols(&self, number: MutPtr<u32>) -> crate::core::HRESULT {
         todo!("GetNumberSymbols")
@@ -31051,7 +31051,7 @@ impl FromIntoMemory for IDebugSymbolGroup2 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugSymbolGroup2 {
@@ -31059,7 +31059,7 @@ impl crate::core::ComInterface for IDebugSymbolGroup2 {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x6a7ccc5f_fb5e_4dcc_b41c_6c20307bccc7);
 }
-pub struct IDebugSymbols(crate::core::IUnknown);
+pub struct IDebugSymbols(pub crate::core::IUnknown);
 pub trait IDebugSymbols_Trait: crate::core::IUnknown_Trait {
     fn GetSymbolOptions(&self, options: MutPtr<u32>) -> crate::core::HRESULT {
         todo!("GetSymbolOptions")
@@ -31417,7 +31417,7 @@ impl FromIntoMemory for IDebugSymbols {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugSymbols {
@@ -31425,7 +31425,7 @@ impl crate::core::ComInterface for IDebugSymbols {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x8c31e98c_983a_48a5_9016_6fe5d667a950);
 }
-pub struct IDebugSymbols2(crate::core::IUnknown);
+pub struct IDebugSymbols2(pub crate::core::IUnknown);
 pub trait IDebugSymbols2_Trait: crate::core::IUnknown_Trait {
     fn GetSymbolOptions(&self, options: MutPtr<u32>) -> crate::core::HRESULT {
         todo!("GetSymbolOptions")
@@ -31839,7 +31839,7 @@ impl FromIntoMemory for IDebugSymbols2 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugSymbols2 {
@@ -31847,7 +31847,7 @@ impl crate::core::ComInterface for IDebugSymbols2 {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x3a707211_afdd_4495_ad4f_56fecdf8163f);
 }
-pub struct IDebugSymbols3(crate::core::IUnknown);
+pub struct IDebugSymbols3(pub crate::core::IUnknown);
 pub trait IDebugSymbols3_Trait: crate::core::IUnknown_Trait {
     fn GetSymbolOptions(&self, options: MutPtr<u32>) -> crate::core::HRESULT {
         todo!("GetSymbolOptions")
@@ -32781,7 +32781,7 @@ impl FromIntoMemory for IDebugSymbols3 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugSymbols3 {
@@ -32789,7 +32789,7 @@ impl crate::core::ComInterface for IDebugSymbols3 {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xf02fbecc_50ac_4f36_9ad9_c975e8f32ff8);
 }
-pub struct IDebugSymbols4(crate::core::IUnknown);
+pub struct IDebugSymbols4(pub crate::core::IUnknown);
 pub trait IDebugSymbols4_Trait: crate::core::IUnknown_Trait {
     fn GetSymbolOptions(&self, options: MutPtr<u32>) -> crate::core::HRESULT {
         todo!("GetSymbolOptions")
@@ -33796,7 +33796,7 @@ impl FromIntoMemory for IDebugSymbols4 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugSymbols4 {
@@ -33804,7 +33804,7 @@ impl crate::core::ComInterface for IDebugSymbols4 {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xe391bbd8_9d8c_4418_840b_c006592a1752);
 }
-pub struct IDebugSymbols5(crate::core::IUnknown);
+pub struct IDebugSymbols5(pub crate::core::IUnknown);
 pub trait IDebugSymbols5_Trait: crate::core::IUnknown_Trait {
     fn GetSymbolOptions(&self, options: MutPtr<u32>) -> crate::core::HRESULT {
         todo!("GetSymbolOptions")
@@ -34817,7 +34817,7 @@ impl FromIntoMemory for IDebugSymbols5 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugSymbols5 {
@@ -34827,7 +34827,7 @@ impl crate::core::ComInterface for IDebugSymbols5 {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IDebugSyncOperation(crate::core::IUnknown);
+pub struct IDebugSyncOperation(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IDebugSyncOperation_Trait: crate::core::IUnknown_Trait {
@@ -34883,7 +34883,7 @@ impl FromIntoMemory for IDebugSyncOperation {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -34893,7 +34893,7 @@ impl crate::core::ComInterface for IDebugSyncOperation {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x51973c1a_cb0c_11d0_b5c9_00a0244a0e7a);
 }
-pub struct IDebugSystemObjects(crate::core::IUnknown);
+pub struct IDebugSystemObjects(pub crate::core::IUnknown);
 pub trait IDebugSystemObjects_Trait: crate::core::IUnknown_Trait {
     fn GetEventThread(&self, id: MutPtr<u32>) -> crate::core::HRESULT {
         todo!("GetEventThread")
@@ -35029,7 +35029,7 @@ impl FromIntoMemory for IDebugSystemObjects {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugSystemObjects {
@@ -35037,7 +35037,7 @@ impl crate::core::ComInterface for IDebugSystemObjects {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x6b86fe2c_2c4f_4f0c_9da2_174311acc327);
 }
-pub struct IDebugSystemObjects2(crate::core::IUnknown);
+pub struct IDebugSystemObjects2(pub crate::core::IUnknown);
 pub trait IDebugSystemObjects2_Trait: crate::core::IUnknown_Trait {
     fn GetEventThread(&self, id: MutPtr<u32>) -> crate::core::HRESULT {
         todo!("GetEventThread")
@@ -35190,7 +35190,7 @@ impl FromIntoMemory for IDebugSystemObjects2 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugSystemObjects2 {
@@ -35198,7 +35198,7 @@ impl crate::core::ComInterface for IDebugSystemObjects2 {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x0ae9f5ff_1852_4679_b055_494bee6407ee);
 }
-pub struct IDebugSystemObjects3(crate::core::IUnknown);
+pub struct IDebugSystemObjects3(pub crate::core::IUnknown);
 pub trait IDebugSystemObjects3_Trait: crate::core::IUnknown_Trait {
     fn GetEventThread(&self, id: MutPtr<u32>) -> crate::core::HRESULT {
         todo!("GetEventThread")
@@ -35395,7 +35395,7 @@ impl FromIntoMemory for IDebugSystemObjects3 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugSystemObjects3 {
@@ -35403,7 +35403,7 @@ impl crate::core::ComInterface for IDebugSystemObjects3 {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xe9676e2f_e286_4ea3_b0f9_dfe5d9fc330e);
 }
-pub struct IDebugSystemObjects4(crate::core::IUnknown);
+pub struct IDebugSystemObjects4(pub crate::core::IUnknown);
 pub trait IDebugSystemObjects4_Trait: crate::core::IUnknown_Trait {
     fn GetEventThread(&self, id: MutPtr<u32>) -> crate::core::HRESULT {
         todo!("GetEventThread")
@@ -35616,7 +35616,7 @@ impl FromIntoMemory for IDebugSystemObjects4 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugSystemObjects4 {
@@ -35624,7 +35624,7 @@ impl crate::core::ComInterface for IDebugSystemObjects4 {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x489468e6_7d0f_4af5_87ab_25207454d553);
 }
-pub struct IDebugThreadCall32(crate::core::IUnknown);
+pub struct IDebugThreadCall32(pub crate::core::IUnknown);
 pub trait IDebugThreadCall32_Trait: crate::core::IUnknown_Trait {
     fn ThreadCallHandler(
         &self,
@@ -35660,7 +35660,7 @@ impl FromIntoMemory for IDebugThreadCall32 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugThreadCall32 {
@@ -35668,7 +35668,7 @@ impl crate::core::ComInterface for IDebugThreadCall32 {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x51973c36_cb0c_11d0_b5c9_00a0244a0e7a);
 }
-pub struct IDebugThreadCall64(crate::core::IUnknown);
+pub struct IDebugThreadCall64(pub crate::core::IUnknown);
 pub trait IDebugThreadCall64_Trait: crate::core::IUnknown_Trait {
     fn ThreadCallHandler(
         &self,
@@ -35704,7 +35704,7 @@ impl FromIntoMemory for IDebugThreadCall64 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDebugThreadCall64 {
@@ -35714,7 +35714,7 @@ impl crate::core::ComInterface for IDebugThreadCall64 {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IDynamicConceptProviderConcept(crate::core::IUnknown);
+pub struct IDynamicConceptProviderConcept(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IDynamicConceptProviderConcept_Trait: crate::core::IUnknown_Trait {
@@ -35794,7 +35794,7 @@ impl FromIntoMemory for IDynamicConceptProviderConcept {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -35806,7 +35806,7 @@ impl crate::core::ComInterface for IDynamicConceptProviderConcept {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IDynamicKeyProviderConcept(crate::core::IUnknown);
+pub struct IDynamicKeyProviderConcept(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IDynamicKeyProviderConcept_Trait: crate::core::IUnknown_Trait {
@@ -35882,7 +35882,7 @@ impl FromIntoMemory for IDynamicKeyProviderConcept {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -35892,7 +35892,7 @@ impl crate::core::ComInterface for IDynamicKeyProviderConcept {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xe7983fa1_80a7_498c_988f_518ddc5d4025);
 }
-pub struct IEnumDebugApplicationNodes(crate::core::IUnknown);
+pub struct IEnumDebugApplicationNodes(pub crate::core::IUnknown);
 pub trait IEnumDebugApplicationNodes_Trait: crate::core::IUnknown_Trait {
     fn Next(
         &self,
@@ -35939,7 +35939,7 @@ impl FromIntoMemory for IEnumDebugApplicationNodes {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IEnumDebugApplicationNodes {
@@ -35947,7 +35947,7 @@ impl crate::core::ComInterface for IEnumDebugApplicationNodes {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x51973c3a_cb0c_11d0_b5c9_00a0244a0e7a);
 }
-pub struct IEnumDebugCodeContexts(crate::core::IUnknown);
+pub struct IEnumDebugCodeContexts(pub crate::core::IUnknown);
 pub trait IEnumDebugCodeContexts_Trait: crate::core::IUnknown_Trait {
     fn Next(
         &self,
@@ -35994,7 +35994,7 @@ impl FromIntoMemory for IEnumDebugCodeContexts {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IEnumDebugCodeContexts {
@@ -36004,7 +36004,7 @@ impl crate::core::ComInterface for IEnumDebugCodeContexts {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IEnumDebugExpressionContexts(crate::core::IUnknown);
+pub struct IEnumDebugExpressionContexts(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IEnumDebugExpressionContexts_Trait: crate::core::IUnknown_Trait {
@@ -36069,7 +36069,7 @@ impl FromIntoMemory for IEnumDebugExpressionContexts {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -36081,7 +36081,7 @@ impl crate::core::ComInterface for IEnumDebugExpressionContexts {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IEnumDebugExtendedPropertyInfo(crate::core::IUnknown);
+pub struct IEnumDebugExtendedPropertyInfo(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IEnumDebugExtendedPropertyInfo_Trait: crate::core::IUnknown_Trait {
@@ -36149,7 +36149,7 @@ impl FromIntoMemory for IEnumDebugExtendedPropertyInfo {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.System.Ole'*"]
@@ -36161,7 +36161,7 @@ impl crate::core::ComInterface for IEnumDebugExtendedPropertyInfo {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IEnumDebugPropertyInfo(crate::core::IUnknown);
+pub struct IEnumDebugPropertyInfo(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IEnumDebugPropertyInfo_Trait: crate::core::IUnknown_Trait {
@@ -36229,7 +36229,7 @@ impl FromIntoMemory for IEnumDebugPropertyInfo {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -36241,7 +36241,7 @@ impl crate::core::ComInterface for IEnumDebugPropertyInfo {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IEnumDebugStackFrames(crate::core::IUnknown);
+pub struct IEnumDebugStackFrames(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IEnumDebugStackFrames_Trait: crate::core::IUnknown_Trait {
@@ -36306,7 +36306,7 @@ impl FromIntoMemory for IEnumDebugStackFrames {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -36318,7 +36318,7 @@ impl crate::core::ComInterface for IEnumDebugStackFrames {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IEnumDebugStackFrames64(crate::core::IUnknown);
+pub struct IEnumDebugStackFrames64(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IEnumDebugStackFrames64_Trait: IEnumDebugStackFrames_Trait {
@@ -36372,7 +36372,7 @@ impl FromIntoMemory for IEnumDebugStackFrames64 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -36382,7 +36382,7 @@ impl crate::core::ComInterface for IEnumDebugStackFrames64 {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x0dc38853_c1b0_4176_a984_b298361027af);
 }
-pub struct IEnumJsStackFrames(crate::core::IUnknown);
+pub struct IEnumJsStackFrames(pub crate::core::IUnknown);
 pub trait IEnumJsStackFrames_Trait: crate::core::IUnknown_Trait {
     fn Next(
         &self,
@@ -36421,7 +36421,7 @@ impl FromIntoMemory for IEnumJsStackFrames {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IEnumJsStackFrames {
@@ -36431,7 +36431,7 @@ impl crate::core::ComInterface for IEnumJsStackFrames {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IEnumRemoteDebugApplicationThreads(crate::core::IUnknown);
+pub struct IEnumRemoteDebugApplicationThreads(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IEnumRemoteDebugApplicationThreads_Trait: crate::core::IUnknown_Trait {
@@ -36496,7 +36496,7 @@ impl FromIntoMemory for IEnumRemoteDebugApplicationThreads {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -36508,7 +36508,7 @@ impl crate::core::ComInterface for IEnumRemoteDebugApplicationThreads {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IEnumRemoteDebugApplications(crate::core::IUnknown);
+pub struct IEnumRemoteDebugApplications(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IEnumRemoteDebugApplications_Trait: crate::core::IUnknown_Trait {
@@ -36573,7 +36573,7 @@ impl FromIntoMemory for IEnumRemoteDebugApplications {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -36585,7 +36585,7 @@ impl crate::core::ComInterface for IEnumRemoteDebugApplications {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IEquatableConcept(crate::core::IUnknown);
+pub struct IEquatableConcept(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IEquatableConcept_Trait: crate::core::IUnknown_Trait {
@@ -36637,7 +36637,7 @@ impl FromIntoMemory for IEquatableConcept {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -36699,7 +36699,7 @@ pub const IG_WRITE_PHYSICAL: u32 = 7u32;
 pub const IG_WRITE_PHYSICAL_WITH_FLAGS: u32 = 34u32;
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IHostDataModelAccess(crate::core::IUnknown);
+pub struct IHostDataModelAccess(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IHostDataModelAccess_Trait: crate::core::IUnknown_Trait {
@@ -36752,7 +36752,7 @@ impl FromIntoMemory for IHostDataModelAccess {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -36764,7 +36764,7 @@ impl crate::core::ComInterface for IHostDataModelAccess {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IIndexableConcept(crate::core::IUnknown);
+pub struct IIndexableConcept(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IIndexableConcept_Trait: crate::core::IUnknown_Trait {
@@ -36838,7 +36838,7 @@ impl FromIntoMemory for IIndexableConcept {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -36850,7 +36850,7 @@ impl crate::core::ComInterface for IIndexableConcept {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IIterableConcept(crate::core::IUnknown);
+pub struct IIterableConcept(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IIterableConcept_Trait: crate::core::IUnknown_Trait {
@@ -36910,7 +36910,7 @@ impl FromIntoMemory for IIterableConcept {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -36920,7 +36920,7 @@ impl crate::core::ComInterface for IIterableConcept {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xf5d49d0c_0b02_4301_9c9b_b3a6037628f3);
 }
-pub struct IJsDebug(crate::core::IUnknown);
+pub struct IJsDebug(pub crate::core::IUnknown);
 pub trait IJsDebug_Trait: crate::core::IUnknown_Trait {
     fn OpenVirtualProcess(
         &self,
@@ -36957,7 +36957,7 @@ impl FromIntoMemory for IJsDebug {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IJsDebug {
@@ -36965,7 +36965,7 @@ impl crate::core::ComInterface for IJsDebug {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xbe0e89da_2ac5_4c04_ac5e_59956aae3613);
 }
-pub struct IJsDebugBreakPoint(crate::core::IUnknown);
+pub struct IJsDebugBreakPoint(pub crate::core::IUnknown);
 pub trait IJsDebugBreakPoint_Trait: crate::core::IUnknown_Trait {
     fn IsEnabled(
         &self,
@@ -37016,7 +37016,7 @@ impl FromIntoMemory for IJsDebugBreakPoint {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IJsDebugBreakPoint {
@@ -37024,7 +37024,7 @@ impl crate::core::ComInterface for IJsDebugBreakPoint {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xdf6773e3_ed8d_488b_8a3e_5812577d1542);
 }
-pub struct IJsDebugDataTarget(crate::core::IUnknown);
+pub struct IJsDebugDataTarget(pub crate::core::IUnknown);
 pub trait IJsDebugDataTarget_Trait: crate::core::IUnknown_Trait {
     fn ReadMemory(
         &self,
@@ -37118,7 +37118,7 @@ impl FromIntoMemory for IJsDebugDataTarget {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IJsDebugDataTarget {
@@ -37126,7 +37126,7 @@ impl crate::core::ComInterface for IJsDebugDataTarget {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x53b28977_53a1_48e5_9000_5d0dfa893931);
 }
-pub struct IJsDebugFrame(crate::core::IUnknown);
+pub struct IJsDebugFrame(pub crate::core::IUnknown);
 pub trait IJsDebugFrame_Trait: crate::core::IUnknown_Trait {
     fn GetStackRange(&self, p_start: MutPtr<u64>, p_end: MutPtr<u64>) -> crate::core::HRESULT {
         todo!("GetStackRange")
@@ -37196,7 +37196,7 @@ impl FromIntoMemory for IJsDebugFrame {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IJsDebugFrame {
@@ -37204,7 +37204,7 @@ impl crate::core::ComInterface for IJsDebugFrame {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xc9196637_ab9d_44b2_bad2_13b95b3f390e);
 }
-pub struct IJsDebugProcess(crate::core::IUnknown);
+pub struct IJsDebugProcess(pub crate::core::IUnknown);
 pub trait IJsDebugProcess_Trait: crate::core::IUnknown_Trait {
     fn CreateStackWalker(
         &self,
@@ -37255,7 +37255,7 @@ impl FromIntoMemory for IJsDebugProcess {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IJsDebugProcess {
@@ -37263,7 +37263,7 @@ impl crate::core::ComInterface for IJsDebugProcess {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x3d587168_6a2d_4041_bd3b_0de674502862);
 }
-pub struct IJsDebugProperty(crate::core::IUnknown);
+pub struct IJsDebugProperty(pub crate::core::IUnknown);
 pub trait IJsDebugProperty_Trait: crate::core::IUnknown_Trait {
     fn GetPropertyInfo(
         &self,
@@ -37305,7 +37305,7 @@ impl FromIntoMemory for IJsDebugProperty {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IJsDebugProperty {
@@ -37313,7 +37313,7 @@ impl crate::core::ComInterface for IJsDebugProperty {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xf8ffcf2b_3aa4_4320_85c3_52a312ba9633);
 }
-pub struct IJsDebugStackWalker(crate::core::IUnknown);
+pub struct IJsDebugStackWalker(pub crate::core::IUnknown);
 pub trait IJsDebugStackWalker_Trait: crate::core::IUnknown_Trait {
     fn GetNext(&self, pp_frame: MutPtr<IJsDebugFrame>) -> crate::core::HRESULT {
         todo!("GetNext")
@@ -37344,7 +37344,7 @@ impl FromIntoMemory for IJsDebugStackWalker {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IJsDebugStackWalker {
@@ -37352,7 +37352,7 @@ impl crate::core::ComInterface for IJsDebugStackWalker {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xdb24b094_73c4_456c_a4ec_e90ea00bdfe3);
 }
-pub struct IJsEnumDebugProperty(crate::core::IUnknown);
+pub struct IJsEnumDebugProperty(pub crate::core::IUnknown);
 pub trait IJsEnumDebugProperty_Trait: crate::core::IUnknown_Trait {
     fn Next(
         &self,
@@ -37393,7 +37393,7 @@ impl FromIntoMemory for IJsEnumDebugProperty {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IJsEnumDebugProperty {
@@ -37403,7 +37403,7 @@ impl crate::core::ComInterface for IJsEnumDebugProperty {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IKeyEnumerator(crate::core::IUnknown);
+pub struct IKeyEnumerator(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IKeyEnumerator_Trait: crate::core::IUnknown_Trait {
@@ -37458,7 +37458,7 @@ impl FromIntoMemory for IKeyEnumerator {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -37470,7 +37470,7 @@ impl crate::core::ComInterface for IKeyEnumerator {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IKeyStore(crate::core::IUnknown);
+pub struct IKeyStore(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IKeyStore_Trait: crate::core::IUnknown_Trait {
@@ -37550,7 +37550,7 @@ impl FromIntoMemory for IKeyStore {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -42604,7 +42604,7 @@ impl FromIntoMemory for IMAGE_SUBSYSTEM {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IMachineDebugManager(crate::core::IUnknown);
+pub struct IMachineDebugManager(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IMachineDebugManager_Trait: crate::core::IUnknown_Trait {
@@ -42668,7 +42668,7 @@ impl FromIntoMemory for IMachineDebugManager {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -42680,7 +42680,7 @@ impl crate::core::ComInterface for IMachineDebugManager {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IMachineDebugManagerCookie(crate::core::IUnknown);
+pub struct IMachineDebugManagerCookie(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IMachineDebugManagerCookie_Trait: crate::core::IUnknown_Trait {
@@ -42749,7 +42749,7 @@ impl FromIntoMemory for IMachineDebugManagerCookie {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -42761,7 +42761,7 @@ impl crate::core::ComInterface for IMachineDebugManagerCookie {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IMachineDebugManagerEvents(crate::core::IUnknown);
+pub struct IMachineDebugManagerEvents(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IMachineDebugManagerEvents_Trait: crate::core::IUnknown_Trait {
@@ -42823,7 +42823,7 @@ impl FromIntoMemory for IMachineDebugManagerEvents {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -42835,7 +42835,7 @@ impl crate::core::ComInterface for IMachineDebugManagerEvents {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IModelIterator(crate::core::IUnknown);
+pub struct IModelIterator(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IModelIterator_Trait: crate::core::IUnknown_Trait {
@@ -42891,7 +42891,7 @@ impl FromIntoMemory for IModelIterator {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -42903,7 +42903,7 @@ impl crate::core::ComInterface for IModelIterator {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IModelKeyReference(crate::core::IUnknown);
+pub struct IModelKeyReference(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IModelKeyReference_Trait: crate::core::IUnknown_Trait {
@@ -42989,7 +42989,7 @@ impl FromIntoMemory for IModelKeyReference {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -43001,7 +43001,7 @@ impl crate::core::ComInterface for IModelKeyReference {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IModelKeyReference2(crate::core::IUnknown);
+pub struct IModelKeyReference2(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IModelKeyReference2_Trait: IModelKeyReference_Trait {
@@ -43048,7 +43048,7 @@ impl FromIntoMemory for IModelKeyReference2 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -43060,7 +43060,7 @@ impl crate::core::ComInterface for IModelKeyReference2 {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IModelMethod(crate::core::IUnknown);
+pub struct IModelMethod(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IModelMethod_Trait: crate::core::IUnknown_Trait {
@@ -43114,7 +43114,7 @@ impl FromIntoMemory for IModelMethod {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -43126,7 +43126,7 @@ impl crate::core::ComInterface for IModelMethod {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IModelObject(crate::core::IUnknown);
+pub struct IModelObject(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IModelObject_Trait: crate::core::IUnknown_Trait {
@@ -43405,7 +43405,7 @@ impl FromIntoMemory for IModelObject {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -43417,7 +43417,7 @@ impl crate::core::ComInterface for IModelObject {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IModelPropertyAccessor(crate::core::IUnknown);
+pub struct IModelPropertyAccessor(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IModelPropertyAccessor_Trait: crate::core::IUnknown_Trait {
@@ -43481,7 +43481,7 @@ impl FromIntoMemory for IModelPropertyAccessor {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -43925,7 +43925,7 @@ impl FromIntoMemory for IOSPACE_EX64 {
         32u32 as usize
     }
 }
-pub struct IObjectSafety(crate::core::IUnknown);
+pub struct IObjectSafety(pub crate::core::IUnknown);
 pub trait IObjectSafety_Trait: crate::core::IUnknown_Trait {
     fn GetInterfaceSafetyOptions(
         &self,
@@ -43969,7 +43969,7 @@ impl FromIntoMemory for IObjectSafety {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IObjectSafety {
@@ -44028,7 +44028,7 @@ pub const IPMI_OS_SEL_RECORD_VERSION: u32 = 1u32;
 pub const IPMI_OS_SEL_RECORD_VERSION_1: u32 = 1u32;
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IPerPropertyBrowsing2(crate::core::IUnknown);
+pub struct IPerPropertyBrowsing2(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IPerPropertyBrowsing2_Trait: crate::core::IUnknown_Trait {
@@ -44099,7 +44099,7 @@ impl FromIntoMemory for IPerPropertyBrowsing2 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Ole'*"]
@@ -44111,7 +44111,7 @@ impl crate::core::ComInterface for IPerPropertyBrowsing2 {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IPreferredRuntimeTypeConcept(crate::core::IUnknown);
+pub struct IPreferredRuntimeTypeConcept(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IPreferredRuntimeTypeConcept_Trait: crate::core::IUnknown_Trait {
@@ -44164,7 +44164,7 @@ impl FromIntoMemory for IPreferredRuntimeTypeConcept {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -44176,7 +44176,7 @@ impl crate::core::ComInterface for IPreferredRuntimeTypeConcept {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IProcessDebugManager32(crate::core::IUnknown);
+pub struct IProcessDebugManager32(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IProcessDebugManager32_Trait: crate::core::IUnknown_Trait {
@@ -44251,7 +44251,7 @@ impl FromIntoMemory for IProcessDebugManager32 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -44263,7 +44263,7 @@ impl crate::core::ComInterface for IProcessDebugManager32 {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IProcessDebugManager64(crate::core::IUnknown);
+pub struct IProcessDebugManager64(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IProcessDebugManager64_Trait: crate::core::IUnknown_Trait {
@@ -44338,7 +44338,7 @@ impl FromIntoMemory for IProcessDebugManager64 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -44350,7 +44350,7 @@ impl crate::core::ComInterface for IProcessDebugManager64 {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IProvideExpressionContexts(crate::core::IUnknown);
+pub struct IProvideExpressionContexts(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IProvideExpressionContexts_Trait: crate::core::IUnknown_Trait {
@@ -44402,7 +44402,7 @@ impl FromIntoMemory for IProvideExpressionContexts {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -44414,7 +44414,7 @@ impl crate::core::ComInterface for IProvideExpressionContexts {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IRawEnumerator(crate::core::IUnknown);
+pub struct IRawEnumerator(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IRawEnumerator_Trait: crate::core::IUnknown_Trait {
@@ -44469,7 +44469,7 @@ impl FromIntoMemory for IRawEnumerator {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -44481,7 +44481,7 @@ impl crate::core::ComInterface for IRawEnumerator {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IRemoteDebugApplication(crate::core::IUnknown);
+pub struct IRemoteDebugApplication(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IRemoteDebugApplication_Trait: crate::core::IUnknown_Trait {
@@ -44589,7 +44589,7 @@ impl FromIntoMemory for IRemoteDebugApplication {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -44601,7 +44601,7 @@ impl crate::core::ComInterface for IRemoteDebugApplication {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IRemoteDebugApplication110(crate::core::IUnknown);
+pub struct IRemoteDebugApplication110(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IRemoteDebugApplication110_Trait: crate::core::IUnknown_Trait {
@@ -44666,7 +44666,7 @@ impl FromIntoMemory for IRemoteDebugApplication110 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -44678,7 +44678,7 @@ impl crate::core::ComInterface for IRemoteDebugApplication110 {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IRemoteDebugApplicationEvents(crate::core::IUnknown);
+pub struct IRemoteDebugApplicationEvents(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IRemoteDebugApplicationEvents_Trait: crate::core::IUnknown_Trait {
@@ -44768,7 +44768,7 @@ impl FromIntoMemory for IRemoteDebugApplicationEvents {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -44780,7 +44780,7 @@ impl crate::core::ComInterface for IRemoteDebugApplicationEvents {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IRemoteDebugApplicationThread(crate::core::IUnknown);
+pub struct IRemoteDebugApplicationThread(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IRemoteDebugApplicationThread_Trait: crate::core::IUnknown_Trait {
@@ -44865,7 +44865,7 @@ impl FromIntoMemory for IRemoteDebugApplicationThread {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -44875,7 +44875,7 @@ impl crate::core::ComInterface for IRemoteDebugApplicationThread {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x51973c37_cb0c_11d0_b5c9_00a0244a0e7a);
 }
-pub struct IRemoteDebugCriticalErrorEvent110(crate::core::IUnknown);
+pub struct IRemoteDebugCriticalErrorEvent110(pub crate::core::IUnknown);
 pub trait IRemoteDebugCriticalErrorEvent110_Trait: crate::core::IUnknown_Trait {
     fn GetErrorInfo(
         &self,
@@ -44914,7 +44914,7 @@ impl FromIntoMemory for IRemoteDebugCriticalErrorEvent110 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IRemoteDebugCriticalErrorEvent110 {
@@ -44922,7 +44922,7 @@ impl crate::core::ComInterface for IRemoteDebugCriticalErrorEvent110 {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x2f69c611_6b14_47e8_9260_4bb7c52f504b);
 }
-pub struct IRemoteDebugInfoEvent110(crate::core::IUnknown);
+pub struct IRemoteDebugInfoEvent110(pub crate::core::IUnknown);
 pub trait IRemoteDebugInfoEvent110_Trait: crate::core::IUnknown_Trait {
     fn GetEventInfo(
         &self,
@@ -44961,7 +44961,7 @@ impl FromIntoMemory for IRemoteDebugInfoEvent110 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IRemoteDebugInfoEvent110 {
@@ -44971,7 +44971,7 @@ impl crate::core::ComInterface for IRemoteDebugInfoEvent110 {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IScriptEntry(crate::core::IUnknown);
+pub struct IScriptEntry(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IScriptEntry_Trait: IScriptNode_Trait {
@@ -45070,7 +45070,7 @@ impl FromIntoMemory for IScriptEntry {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -45080,7 +45080,7 @@ impl crate::core::ComInterface for IScriptEntry {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x0aee2a95_bcbb_11d0_8c72_00c04fc2b085);
 }
-pub struct IScriptInvocationContext(crate::core::IUnknown);
+pub struct IScriptInvocationContext(pub crate::core::IUnknown);
 pub trait IScriptInvocationContext_Trait: crate::core::IUnknown_Trait {
     fn GetContextType(
         &self,
@@ -45128,7 +45128,7 @@ impl FromIntoMemory for IScriptInvocationContext {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IScriptInvocationContext {
@@ -45138,7 +45138,7 @@ impl crate::core::ComInterface for IScriptInvocationContext {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IScriptNode(crate::core::IUnknown);
+pub struct IScriptNode(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IScriptNode_Trait: crate::core::IUnknown_Trait {
@@ -45239,7 +45239,7 @@ impl FromIntoMemory for IScriptNode {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -45251,7 +45251,7 @@ impl crate::core::ComInterface for IScriptNode {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IScriptScriptlet(crate::core::IUnknown);
+pub struct IScriptScriptlet(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IScriptScriptlet_Trait: IScriptEntry_Trait {
@@ -45320,7 +45320,7 @@ impl FromIntoMemory for IScriptScriptlet {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -45332,7 +45332,7 @@ impl crate::core::ComInterface for IScriptScriptlet {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct ISimpleConnectionPoint(crate::core::IUnknown);
+pub struct ISimpleConnectionPoint(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait ISimpleConnectionPoint_Trait: crate::core::IUnknown_Trait {
@@ -45401,7 +45401,7 @@ impl FromIntoMemory for ISimpleConnectionPoint {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -45413,7 +45413,7 @@ impl crate::core::ComInterface for ISimpleConnectionPoint {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IStringDisplayableConcept(crate::core::IUnknown);
+pub struct IStringDisplayableConcept(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IStringDisplayableConcept_Trait: crate::core::IUnknown_Trait {
@@ -45467,7 +45467,7 @@ impl FromIntoMemory for IStringDisplayableConcept {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -45479,7 +45479,7 @@ impl crate::core::ComInterface for IStringDisplayableConcept {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct ITridentEventSink(crate::core::IUnknown);
+pub struct ITridentEventSink(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait ITridentEventSink_Trait: crate::core::IUnknown_Trait {
@@ -45532,7 +45532,7 @@ impl FromIntoMemory for ITridentEventSink {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com', 'Windows.Win32.System.Ole'*"]
@@ -45542,7 +45542,7 @@ impl crate::core::ComInterface for ITridentEventSink {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x1dc9ca50_06ef_11d2_8415_006008c3fbfc);
 }
-pub struct IWebAppDiagnosticsObjectInitialization(crate::core::IUnknown);
+pub struct IWebAppDiagnosticsObjectInitialization(pub crate::core::IUnknown);
 pub trait IWebAppDiagnosticsObjectInitialization_Trait: crate::core::IUnknown_Trait {
     fn Initialize(
         &self,
@@ -45579,7 +45579,7 @@ impl FromIntoMemory for IWebAppDiagnosticsObjectInitialization {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IWebAppDiagnosticsObjectInitialization {
@@ -45587,7 +45587,7 @@ impl crate::core::ComInterface for IWebAppDiagnosticsObjectInitialization {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x16ff3a42_a5f5_432b_b625_8e8e16f57e15);
 }
-pub struct IWebAppDiagnosticsSetup(crate::core::IUnknown);
+pub struct IWebAppDiagnosticsSetup(pub crate::core::IUnknown);
 pub trait IWebAppDiagnosticsSetup_Trait: crate::core::IUnknown_Trait {
     fn DiagnosticsSupported(&self, p_ret_val: MutPtr<i16>) -> crate::core::HRESULT {
         todo!("DiagnosticsSupported")
@@ -45629,7 +45629,7 @@ impl FromIntoMemory for IWebAppDiagnosticsSetup {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IWebAppDiagnosticsSetup {

@@ -1429,7 +1429,7 @@ impl FromIntoMemory for HSAVEDUILANGUAGES {
         std::mem::size_of::<PtrDiffRepr>()
     }
 }
-pub struct IComprehensiveSpellCheckProvider(crate::core::IUnknown);
+pub struct IComprehensiveSpellCheckProvider(pub crate::core::IUnknown);
 pub trait IComprehensiveSpellCheckProvider_Trait: crate::core::IUnknown_Trait {
     fn ComprehensiveCheck(
         &self,
@@ -1466,7 +1466,7 @@ impl FromIntoMemory for IComprehensiveSpellCheckProvider {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IComprehensiveSpellCheckProvider {
@@ -1478,7 +1478,7 @@ pub const IDN_ALLOW_UNASSIGNED: u32 = 1u32;
 pub const IDN_EMAIL_ADDRESS: u32 = 4u32;
 pub const IDN_RAW_PUNYCODE: u32 = 8u32;
 pub const IDN_USE_STD3_ASCII_RULES: u32 = 2u32;
-pub struct IEnumCodePage(crate::core::IUnknown);
+pub struct IEnumCodePage(pub crate::core::IUnknown);
 pub trait IEnumCodePage_Trait: crate::core::IUnknown_Trait {
     fn Clone(&self, pp_enum: MutPtr<IEnumCodePage>) -> crate::core::HRESULT {
         todo!("Clone")
@@ -1523,7 +1523,7 @@ impl FromIntoMemory for IEnumCodePage {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IEnumCodePage {
@@ -1531,7 +1531,7 @@ impl crate::core::ComInterface for IEnumCodePage {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x275c23e3_3747_11d0_9fea_00aa003f8646);
 }
-pub struct IEnumRfc1766(crate::core::IUnknown);
+pub struct IEnumRfc1766(pub crate::core::IUnknown);
 pub trait IEnumRfc1766_Trait: crate::core::IUnknown_Trait {
     fn Clone(&self, pp_enum: MutPtr<IEnumRfc1766>) -> crate::core::HRESULT {
         todo!("Clone")
@@ -1576,7 +1576,7 @@ impl FromIntoMemory for IEnumRfc1766 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IEnumRfc1766 {
@@ -1584,7 +1584,7 @@ impl crate::core::ComInterface for IEnumRfc1766 {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x3dc39d1d_c030_11d0_b81b_00c04fc9b31f);
 }
-pub struct IEnumScript(crate::core::IUnknown);
+pub struct IEnumScript(pub crate::core::IUnknown);
 pub trait IEnumScript_Trait: crate::core::IUnknown_Trait {
     fn Clone(&self, pp_enum: MutPtr<IEnumScript>) -> crate::core::HRESULT {
         todo!("Clone")
@@ -1629,7 +1629,7 @@ impl FromIntoMemory for IEnumScript {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IEnumScript {
@@ -1637,7 +1637,7 @@ impl crate::core::ComInterface for IEnumScript {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xae5f1430_388b_11d2_8380_00c04f8f5da1);
 }
-pub struct IEnumSpellingError(crate::core::IUnknown);
+pub struct IEnumSpellingError(pub crate::core::IUnknown);
 pub trait IEnumSpellingError_Trait: crate::core::IUnknown_Trait {
     fn Next(&self, value: MutPtr<ISpellingError>) -> crate::core::HRESULT {
         todo!("Next")
@@ -1668,7 +1668,7 @@ impl FromIntoMemory for IEnumSpellingError {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IEnumSpellingError {
@@ -1688,7 +1688,7 @@ pub const IME_CMODE_LANGUAGE: u32 = 3u32;
 pub const IME_CMODE_NATIVE: u32 = 1u32;
 pub const IME_CMODE_NATIVESYMBOL: u32 = 128u32;
 pub const IME_CMODE_ROMAN: u32 = 16u32;
-pub struct IMLangCodePages(crate::core::IUnknown);
+pub struct IMLangCodePages(pub crate::core::IUnknown);
 pub trait IMLangCodePages_Trait: crate::core::IUnknown_Trait {
     fn GetCharCodePages(&self, ch_src: u16, pdw_code_pages: MutPtr<u32>) -> crate::core::HRESULT {
         todo!("GetCharCodePages")
@@ -1744,7 +1744,7 @@ impl FromIntoMemory for IMLangCodePages {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IMLangCodePages {
@@ -1752,7 +1752,7 @@ impl crate::core::ComInterface for IMLangCodePages {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x359f3443_bd4a_11d0_b188_00aa0038c969);
 }
-pub struct IMLangConvertCharset(crate::core::IUnknown);
+pub struct IMLangConvertCharset(pub crate::core::IUnknown);
 pub trait IMLangConvertCharset_Trait: crate::core::IUnknown_Trait {
     fn Initialize(
         &self,
@@ -1826,7 +1826,7 @@ impl FromIntoMemory for IMLangConvertCharset {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IMLangConvertCharset {
@@ -1834,7 +1834,7 @@ impl crate::core::ComInterface for IMLangConvertCharset {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xd66d6f98_cdaa_11d0_b822_00c04fc9b31f);
 }
-pub struct IMLangFontLink(crate::core::IUnknown);
+pub struct IMLangFontLink(pub crate::core::IUnknown);
 pub trait IMLangFontLink_Trait: IMLangCodePages_Trait {
     fn GetFontCodePages(
         &self,
@@ -1885,7 +1885,7 @@ impl FromIntoMemory for IMLangFontLink {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IMLangFontLink {
@@ -1893,7 +1893,7 @@ impl crate::core::ComInterface for IMLangFontLink {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x359f3441_bd4a_11d0_b188_00aa0038c969);
 }
-pub struct IMLangFontLink2(crate::core::IUnknown);
+pub struct IMLangFontLink2(pub crate::core::IUnknown);
 pub trait IMLangFontLink2_Trait: IMLangCodePages_Trait {
     fn GetFontCodePages(
         &self,
@@ -1964,7 +1964,7 @@ impl FromIntoMemory for IMLangFontLink2 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IMLangFontLink2 {
@@ -1972,7 +1972,7 @@ impl crate::core::ComInterface for IMLangFontLink2 {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xdccfc162_2b38_11d2_b7ec_00c04f8f5d9a);
 }
-pub struct IMLangLineBreakConsole(crate::core::IUnknown);
+pub struct IMLangLineBreakConsole(pub crate::core::IUnknown);
 pub trait IMLangLineBreakConsole_Trait: crate::core::IUnknown_Trait {
     fn BreakLineML(
         &self,
@@ -2037,7 +2037,7 @@ impl FromIntoMemory for IMLangLineBreakConsole {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IMLangLineBreakConsole {
@@ -2045,7 +2045,7 @@ impl crate::core::ComInterface for IMLangLineBreakConsole {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xf5be2ee1_bfd7_11d0_b188_00aa0038c969);
 }
-pub struct IMLangString(crate::core::IUnknown);
+pub struct IMLangString(pub crate::core::IUnknown);
 pub trait IMLangString_Trait: crate::core::IUnknown_Trait {
     fn Sync(&self, f_no_access: super::Foundation::BOOL) -> crate::core::HRESULT {
         todo!("Sync")
@@ -2102,7 +2102,7 @@ impl FromIntoMemory for IMLangString {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IMLangString {
@@ -2110,7 +2110,7 @@ impl crate::core::ComInterface for IMLangString {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xc04d65ce_b70d_11d0_b188_00aa0038c969);
 }
-pub struct IMLangStringAStr(crate::core::IUnknown);
+pub struct IMLangStringAStr(pub crate::core::IUnknown);
 pub trait IMLangStringAStr_Trait: IMLangString_Trait {
     fn SetAStr(
         &self,
@@ -2220,7 +2220,7 @@ impl FromIntoMemory for IMLangStringAStr {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IMLangStringAStr {
@@ -2228,7 +2228,7 @@ impl crate::core::ComInterface for IMLangStringAStr {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xc04d65d2_b70d_11d0_b188_00aa0038c969);
 }
-pub struct IMLangStringBufA(crate::core::IUnknown);
+pub struct IMLangStringBufA(pub crate::core::IUnknown);
 pub trait IMLangStringBufA_Trait: crate::core::IUnknown_Trait {
     fn GetStatus(&self, pl_flags: MutPtr<i32>, pcch_buf: MutPtr<i32>) -> crate::core::HRESULT {
         todo!("GetStatus")
@@ -2282,7 +2282,7 @@ impl FromIntoMemory for IMLangStringBufA {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IMLangStringBufA {
@@ -2290,7 +2290,7 @@ impl crate::core::ComInterface for IMLangStringBufA {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xd24acd23_ba72_11d0_b188_00aa0038c969);
 }
-pub struct IMLangStringBufW(crate::core::IUnknown);
+pub struct IMLangStringBufW(pub crate::core::IUnknown);
 pub trait IMLangStringBufW_Trait: crate::core::IUnknown_Trait {
     fn GetStatus(&self, pl_flags: MutPtr<i32>, pcch_buf: MutPtr<i32>) -> crate::core::HRESULT {
         todo!("GetStatus")
@@ -2344,7 +2344,7 @@ impl FromIntoMemory for IMLangStringBufW {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IMLangStringBufW {
@@ -2352,7 +2352,7 @@ impl crate::core::ComInterface for IMLangStringBufW {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xd24acd21_ba72_11d0_b188_00aa0038c969);
 }
-pub struct IMLangStringWStr(crate::core::IUnknown);
+pub struct IMLangStringWStr(pub crate::core::IUnknown);
 pub trait IMLangStringWStr_Trait: IMLangString_Trait {
     fn SetWStr(
         &self,
@@ -2455,7 +2455,7 @@ impl FromIntoMemory for IMLangStringWStr {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IMLangStringWStr {
@@ -2463,7 +2463,7 @@ impl crate::core::ComInterface for IMLangStringWStr {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xc04d65d0_b70d_11d0_b188_00aa0038c969);
 }
-pub struct IMultiLanguage(crate::core::IUnknown);
+pub struct IMultiLanguage(pub crate::core::IUnknown);
 pub trait IMultiLanguage_Trait: crate::core::IUnknown_Trait {
     fn GetNumberOfCodePageInfo(&self, pc_code_page: MutPtr<u32>) -> crate::core::HRESULT {
         todo!("GetNumberOfCodePageInfo")
@@ -2595,7 +2595,7 @@ impl FromIntoMemory for IMultiLanguage {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IMultiLanguage {
@@ -2605,7 +2605,7 @@ impl crate::core::ComInterface for IMultiLanguage {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IMultiLanguage2(crate::core::IUnknown);
+pub struct IMultiLanguage2(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IMultiLanguage2_Trait: crate::core::IUnknown_Trait {
@@ -2862,7 +2862,7 @@ impl FromIntoMemory for IMultiLanguage2 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
@@ -2874,7 +2874,7 @@ impl crate::core::ComInterface for IMultiLanguage2 {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IMultiLanguage3(crate::core::IUnknown);
+pub struct IMultiLanguage3(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IMultiLanguage3_Trait: IMultiLanguage2_Trait {
@@ -2943,7 +2943,7 @@ impl FromIntoMemory for IMultiLanguage3 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
@@ -2955,7 +2955,7 @@ impl crate::core::ComInterface for IMultiLanguage3 {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct IOptionDescription(crate::core::IUnknown);
+pub struct IOptionDescription(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait IOptionDescription_Trait: crate::core::IUnknown_Trait {
@@ -3011,7 +3011,7 @@ impl FromIntoMemory for IOptionDescription {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
@@ -3133,7 +3133,7 @@ impl FromIntoMemory for IS_VALID_LOCALE_FLAGS {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct ISpellCheckProvider(crate::core::IUnknown);
+pub struct ISpellCheckProvider(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait ISpellCheckProvider_Trait: crate::core::IUnknown_Trait {
@@ -3228,7 +3228,7 @@ impl FromIntoMemory for ISpellCheckProvider {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
@@ -3240,7 +3240,7 @@ impl crate::core::ComInterface for ISpellCheckProvider {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct ISpellCheckProviderFactory(crate::core::IUnknown);
+pub struct ISpellCheckProviderFactory(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait ISpellCheckProviderFactory_Trait: crate::core::IUnknown_Trait {
@@ -3308,7 +3308,7 @@ impl FromIntoMemory for ISpellCheckProviderFactory {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
@@ -3320,7 +3320,7 @@ impl crate::core::ComInterface for ISpellCheckProviderFactory {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct ISpellChecker(crate::core::IUnknown);
+pub struct ISpellChecker(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait ISpellChecker_Trait: crate::core::IUnknown_Trait {
@@ -3431,7 +3431,7 @@ impl FromIntoMemory for ISpellChecker {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
@@ -3443,7 +3443,7 @@ impl crate::core::ComInterface for ISpellChecker {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct ISpellChecker2(crate::core::IUnknown);
+pub struct ISpellChecker2(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait ISpellChecker2_Trait: ISpellChecker_Trait {
@@ -3488,7 +3488,7 @@ impl FromIntoMemory for ISpellChecker2 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
@@ -3500,7 +3500,7 @@ impl crate::core::ComInterface for ISpellChecker2 {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct ISpellCheckerChangedEventHandler(crate::core::IUnknown);
+pub struct ISpellCheckerChangedEventHandler(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait ISpellCheckerChangedEventHandler_Trait: crate::core::IUnknown_Trait {
@@ -3549,7 +3549,7 @@ impl FromIntoMemory for ISpellCheckerChangedEventHandler {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
@@ -3561,7 +3561,7 @@ impl crate::core::ComInterface for ISpellCheckerChangedEventHandler {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
 #[cfg(dummy_option_that_does_not_exist)]
-pub struct ISpellCheckerFactory(crate::core::IUnknown);
+pub struct ISpellCheckerFactory(pub crate::core::IUnknown);
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
 #[cfg(dummy_option_that_does_not_exist)]
 pub trait ISpellCheckerFactory_Trait: crate::core::IUnknown_Trait {
@@ -3629,7 +3629,7 @@ impl FromIntoMemory for ISpellCheckerFactory {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
@@ -3639,7 +3639,7 @@ impl crate::core::ComInterface for ISpellCheckerFactory {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x8e018a9d_2415_4677_bf08_794ea61f94bb);
 }
-pub struct ISpellingError(crate::core::IUnknown);
+pub struct ISpellingError(pub crate::core::IUnknown);
 pub trait ISpellingError_Trait: crate::core::IUnknown_Trait {
     fn get_StartIndex(&self, value: MutPtr<u32>) -> crate::core::HRESULT {
         todo!("get_StartIndex")
@@ -3679,7 +3679,7 @@ impl FromIntoMemory for ISpellingError {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for ISpellingError {
@@ -3687,7 +3687,7 @@ impl crate::core::ComInterface for ISpellingError {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xb7c82d61_fbe8_4b47_9b27_6c0d2e0de0a3);
 }
-pub struct IUserDictionariesRegistrar(crate::core::IUnknown);
+pub struct IUserDictionariesRegistrar(pub crate::core::IUnknown);
 pub trait IUserDictionariesRegistrar_Trait: crate::core::IUnknown_Trait {
     fn RegisterUserDictionary(
         &self,
@@ -3731,7 +3731,7 @@ impl FromIntoMemory for IUserDictionariesRegistrar {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IUserDictionariesRegistrar {

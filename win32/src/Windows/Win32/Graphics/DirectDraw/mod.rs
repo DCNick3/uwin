@@ -22673,7 +22673,7 @@ impl FromIntoMemory for HEAPALIGNMENT {
         236u32 as usize
     }
 }
-pub struct IDDVideoPortContainer(crate::core::IUnknown);
+pub struct IDDVideoPortContainer(pub crate::core::IUnknown);
 pub trait IDDVideoPortContainer_Trait: crate::core::IUnknown_Trait {
     fn CreateVideoPort(
         &self,
@@ -22736,7 +22736,7 @@ impl FromIntoMemory for IDDVideoPortContainer {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDDVideoPortContainer {
@@ -22744,7 +22744,7 @@ impl crate::core::ComInterface for IDDVideoPortContainer {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x6c142760_a733_11ce_a521_0020af0be560);
 }
-pub struct IDirectDraw(crate::core::IUnknown);
+pub struct IDirectDraw(pub crate::core::IUnknown);
 pub trait IDirectDraw_Trait: crate::core::IUnknown_Trait {
     fn Compact(&self) -> crate::core::HRESULT {
         todo!("Compact")
@@ -22876,7 +22876,7 @@ impl FromIntoMemory for IDirectDraw {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDirectDraw {
@@ -22884,7 +22884,7 @@ impl crate::core::ComInterface for IDirectDraw {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x6c14db80_a733_11ce_a521_0020af0be560);
 }
-pub struct IDirectDraw2(crate::core::IUnknown);
+pub struct IDirectDraw2(pub crate::core::IUnknown);
 pub trait IDirectDraw2_Trait: crate::core::IUnknown_Trait {
     fn Compact(&self) -> crate::core::HRESULT {
         todo!("Compact")
@@ -23031,7 +23031,7 @@ impl FromIntoMemory for IDirectDraw2 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDirectDraw2 {
@@ -23039,7 +23039,7 @@ impl crate::core::ComInterface for IDirectDraw2 {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xb3a6f3e0_2b43_11cf_a2de_00aa00b93356);
 }
-pub struct IDirectDraw4(crate::core::IUnknown);
+pub struct IDirectDraw4(pub crate::core::IUnknown);
 pub trait IDirectDraw4_Trait: crate::core::IUnknown_Trait {
     fn Compact(&self) -> crate::core::HRESULT {
         todo!("Compact")
@@ -23206,7 +23206,7 @@ impl FromIntoMemory for IDirectDraw4 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDirectDraw4 {
@@ -23214,7 +23214,7 @@ impl crate::core::ComInterface for IDirectDraw4 {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x9c59509a_39bd_11d1_8c4a_00c04fd930c5);
 }
-pub struct IDirectDraw7(crate::core::IUnknown);
+pub struct IDirectDraw7(pub crate::core::IUnknown);
 pub trait IDirectDraw7_Trait: crate::core::IUnknown_Trait {
     fn Compact(&self) -> crate::core::HRESULT {
         todo!("Compact")
@@ -23392,7 +23392,7 @@ impl FromIntoMemory for IDirectDraw7 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDirectDraw7 {
@@ -23400,7 +23400,7 @@ impl crate::core::ComInterface for IDirectDraw7 {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x15e65ec0_3b9c_11d2_b92f_00609797ea5b);
 }
-pub struct IDirectDrawClipper(crate::core::IUnknown);
+pub struct IDirectDrawClipper(pub crate::core::IUnknown);
 pub trait IDirectDrawClipper_Trait: crate::core::IUnknown_Trait {
     fn GetClipList(
         &self,
@@ -23462,7 +23462,7 @@ impl FromIntoMemory for IDirectDrawClipper {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDirectDrawClipper {
@@ -23470,7 +23470,7 @@ impl crate::core::ComInterface for IDirectDrawClipper {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x6c14db85_a733_11ce_a521_0020af0be560);
 }
-pub struct IDirectDrawColorControl(crate::core::IUnknown);
+pub struct IDirectDrawColorControl(pub crate::core::IUnknown);
 pub trait IDirectDrawColorControl_Trait: crate::core::IUnknown_Trait {
     fn GetColorControls(&self, param_0: MutPtr<DDCOLORCONTROL>) -> crate::core::HRESULT {
         todo!("GetColorControls")
@@ -23506,7 +23506,7 @@ impl FromIntoMemory for IDirectDrawColorControl {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDirectDrawColorControl {
@@ -23514,7 +23514,7 @@ impl crate::core::ComInterface for IDirectDrawColorControl {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x4b9f0ee0_0d7e_11d0_9b06_00a0c903a3b8);
 }
-pub struct IDirectDrawGammaControl(crate::core::IUnknown);
+pub struct IDirectDrawGammaControl(pub crate::core::IUnknown);
 pub trait IDirectDrawGammaControl_Trait: crate::core::IUnknown_Trait {
     fn GetGammaRamp(&self, param_0: u32, param_1: MutPtr<DDGAMMARAMP>) -> crate::core::HRESULT {
         todo!("GetGammaRamp")
@@ -23550,7 +23550,7 @@ impl FromIntoMemory for IDirectDrawGammaControl {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDirectDrawGammaControl {
@@ -23558,7 +23558,7 @@ impl crate::core::ComInterface for IDirectDrawGammaControl {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x69c11c3e_b46b_11d1_ad7a_00c04fc29b4e);
 }
-pub struct IDirectDrawKernel(crate::core::IUnknown);
+pub struct IDirectDrawKernel(pub crate::core::IUnknown);
 pub trait IDirectDrawKernel_Trait: crate::core::IUnknown_Trait {
     fn GetCaps(&self, param_0: MutPtr<DDKERNELCAPS>) -> crate::core::HRESULT {
         todo!("GetCaps")
@@ -23595,7 +23595,7 @@ impl FromIntoMemory for IDirectDrawKernel {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDirectDrawKernel {
@@ -23603,7 +23603,7 @@ impl crate::core::ComInterface for IDirectDrawKernel {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x8d56c120_6a08_11d0_9b06_00a0c903a3b8);
 }
-pub struct IDirectDrawPalette(crate::core::IUnknown);
+pub struct IDirectDrawPalette(pub crate::core::IUnknown);
 pub trait IDirectDrawPalette_Trait: crate::core::IUnknown_Trait {
     fn GetCaps(&self, param_0: MutPtr<u32>) -> crate::core::HRESULT {
         todo!("GetCaps")
@@ -23660,7 +23660,7 @@ impl FromIntoMemory for IDirectDrawPalette {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDirectDrawPalette {
@@ -23668,7 +23668,7 @@ impl crate::core::ComInterface for IDirectDrawPalette {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x6c14db84_a733_11ce_a521_0020af0be560);
 }
-pub struct IDirectDrawSurface(crate::core::IUnknown);
+pub struct IDirectDrawSurface(pub crate::core::IUnknown);
 pub trait IDirectDrawSurface_Trait: crate::core::IUnknown_Trait {
     fn AddAttachedSurface(&self, param_0: IDirectDrawSurface) -> crate::core::HRESULT {
         todo!("AddAttachedSurface")
@@ -23859,7 +23859,7 @@ impl FromIntoMemory for IDirectDrawSurface {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDirectDrawSurface {
@@ -23867,7 +23867,7 @@ impl crate::core::ComInterface for IDirectDrawSurface {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x6c14db81_a733_11ce_a521_0020af0be560);
 }
-pub struct IDirectDrawSurface2(crate::core::IUnknown);
+pub struct IDirectDrawSurface2(pub crate::core::IUnknown);
 pub trait IDirectDrawSurface2_Trait: crate::core::IUnknown_Trait {
     fn AddAttachedSurface(&self, param_0: IDirectDrawSurface2) -> crate::core::HRESULT {
         todo!("AddAttachedSurface")
@@ -24070,7 +24070,7 @@ impl FromIntoMemory for IDirectDrawSurface2 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDirectDrawSurface2 {
@@ -24078,7 +24078,7 @@ impl crate::core::ComInterface for IDirectDrawSurface2 {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x57805885_6eec_11cf_9441_a82303c10e27);
 }
-pub struct IDirectDrawSurface3(crate::core::IUnknown);
+pub struct IDirectDrawSurface3(pub crate::core::IUnknown);
 pub trait IDirectDrawSurface3_Trait: crate::core::IUnknown_Trait {
     fn AddAttachedSurface(&self, param_0: IDirectDrawSurface3) -> crate::core::HRESULT {
         todo!("AddAttachedSurface")
@@ -24284,7 +24284,7 @@ impl FromIntoMemory for IDirectDrawSurface3 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDirectDrawSurface3 {
@@ -24292,7 +24292,7 @@ impl crate::core::ComInterface for IDirectDrawSurface3 {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xda044e00_69b2_11d0_a1d5_00aa00b8dfbb);
 }
-pub struct IDirectDrawSurface4(crate::core::IUnknown);
+pub struct IDirectDrawSurface4(pub crate::core::IUnknown);
 pub trait IDirectDrawSurface4_Trait: crate::core::IUnknown_Trait {
     fn AddAttachedSurface(&self, param_0: IDirectDrawSurface4) -> crate::core::HRESULT {
         todo!("AddAttachedSurface")
@@ -24528,7 +24528,7 @@ impl FromIntoMemory for IDirectDrawSurface4 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDirectDrawSurface4 {
@@ -24536,7 +24536,7 @@ impl crate::core::ComInterface for IDirectDrawSurface4 {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x0b2b8630_ad35_11d0_8ea6_00609797ea5b);
 }
-pub struct IDirectDrawSurface7(crate::core::IUnknown);
+pub struct IDirectDrawSurface7(pub crate::core::IUnknown);
 pub trait IDirectDrawSurface7_Trait: crate::core::IUnknown_Trait {
     fn AddAttachedSurface(&self, param_0: IDirectDrawSurface7) -> crate::core::HRESULT {
         todo!("AddAttachedSurface")
@@ -24784,7 +24784,7 @@ impl FromIntoMemory for IDirectDrawSurface7 {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDirectDrawSurface7 {
@@ -24792,7 +24792,7 @@ impl crate::core::ComInterface for IDirectDrawSurface7 {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x06675a80_3b9b_11d2_b92f_00609797ea5b);
 }
-pub struct IDirectDrawSurfaceKernel(crate::core::IUnknown);
+pub struct IDirectDrawSurfaceKernel(pub crate::core::IUnknown);
 pub trait IDirectDrawSurfaceKernel_Trait: crate::core::IUnknown_Trait {
     fn GetKernelHandle(&self, param_0: MutPtr<PtrRepr>) -> crate::core::HRESULT {
         todo!("GetKernelHandle")
@@ -24828,7 +24828,7 @@ impl FromIntoMemory for IDirectDrawSurfaceKernel {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDirectDrawSurfaceKernel {
@@ -24836,7 +24836,7 @@ impl crate::core::ComInterface for IDirectDrawSurfaceKernel {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x60755da0_6a40_11d0_9b06_00a0c903a3b8);
 }
-pub struct IDirectDrawVideoPort(crate::core::IUnknown);
+pub struct IDirectDrawVideoPort(pub crate::core::IUnknown);
 pub trait IDirectDrawVideoPort_Trait: crate::core::IUnknown_Trait {
     fn Flip(&self, param_0: IDirectDrawSurface, param_1: u32) -> crate::core::HRESULT {
         todo!("Flip")
@@ -24926,7 +24926,7 @@ impl FromIntoMemory for IDirectDrawVideoPort {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDirectDrawVideoPort {
@@ -24934,7 +24934,7 @@ impl crate::core::ComInterface for IDirectDrawVideoPort {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xb36d93e0_2b43_11cf_a2de_00aa00b93356);
 }
-pub struct IDirectDrawVideoPortNotify(crate::core::IUnknown);
+pub struct IDirectDrawVideoPortNotify(pub crate::core::IUnknown);
 pub trait IDirectDrawVideoPortNotify_Trait: crate::core::IUnknown_Trait {
     fn AcquireNotification(
         &self,
@@ -24977,7 +24977,7 @@ impl FromIntoMemory for IDirectDrawVideoPortNotify {
         FromIntoMemory::into_bytes(self.0, into)
     }
     fn size() -> usize {
-        std::mem::size_of::<crate::core::IUnknown>()
+        <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
 impl crate::core::ComInterface for IDirectDrawVideoPortNotify {
@@ -26424,6 +26424,34 @@ pub struct _DD_DESTROYDRIVERDATA(pub u8);
 pub struct _DD_GETVPORTAUTOFLIPSURFACEDATA(pub u8);
 pub struct _DD_SETMODEDATA(pub u8);
 pub const _FACDD: u32 = 2166u32;
+pub struct DirectDraw_Repr {
+    pub vtable_IDirectDraw: PtrRepr,
+    pub implementation: *const dyn IDirectDraw_Trait,
+}
+impl FromIntoMemory for DirectDraw_Repr {
+    fn from_bytes(from: &[u8]) -> Self {
+        const IMPL_SIZE: usize = std::mem::size_of::<*const dyn IDirectDraw_Trait>();
+        assert_eq!(from.len(), Self::size());
+        let vtable_IDirectDraw =
+            <PtrRepr as FromIntoMemory>::from_bytes(&from[0usize..0usize + 4usize]);
+        let implementation = <[u8; IMPL_SIZE]>::from_bytes(&from[(1usize * 4usize)..]);
+        let implementation = unsafe { std::mem::transmute(implementation) };
+        Self {
+            vtable_IDirectDraw,
+            implementation,
+        }
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        const IMPL_SIZE: usize = std::mem::size_of::<*const dyn IDirectDraw_Trait>();
+        assert_eq!(into.len(), Self::size());
+        FromIntoMemory::into_bytes(self.vtable_IDirectDraw, &mut into[0usize..0usize + 4usize]);
+        let implementation: [u8; IMPL_SIZE] = unsafe { std::mem::transmute(self.implementation) };
+        into[(1usize * 4usize)..].copy_from_slice(&implementation);
+    }
+    fn size() -> usize {
+        1usize * 4usize + std::mem::size_of::<*const dyn IDirectDraw_Trait>()
+    }
+}
 pub trait Api {
     fn DirectDrawCreate(
         &self,

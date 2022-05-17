@@ -80,23 +80,34 @@ impl TypeReader {
                 let enclosing = row.enclosing_type();
                 let name = enclosed.name();
 
-                nested.entry(enclosing.row.clone()).or_default().insert(name, enclosed);
+                nested
+                    .entry(enclosing.row.clone())
+                    .or_default()
+                    .insert(name, enclosed);
             }
         }
 
         Self { nested, types }
     }
 
-    pub fn nested_types(&'static self, enclosing: &TypeDef) -> Option<&BTreeMap<&'static str, TypeDef>> {
+    pub fn nested_types(
+        &'static self,
+        enclosing: &TypeDef,
+    ) -> Option<&BTreeMap<&'static str, TypeDef>> {
         self.nested.get(&enclosing.row)
     }
 
     pub fn get_type_entry<T: HasTypeName>(&'static self, type_name: T) -> Option<&Vec<Type>> {
-        self.types.get_namespace(type_name.namespace()).and_then(|tree| tree.get_type(type_name.name()))
+        self.types
+            .get_namespace(type_name.namespace())
+            .and_then(|tree| tree.get_type(type_name.name()))
     }
 
     pub fn get_type<T: HasTypeName>(&'static self, type_name: T) -> Option<&Type> {
-        self.types.get_namespace(type_name.namespace()).and_then(|tree| tree.get_type(type_name.name())).and_then(|entry| entry.first())
+        self.types
+            .get_namespace(type_name.namespace())
+            .and_then(|tree| tree.get_type(type_name.name()))
+            .and_then(|entry| entry.first())
     }
 
     pub fn get_namespace(&self, namespace: &str) -> Option<&TypeTree> {
@@ -104,22 +115,54 @@ impl TypeReader {
     }
 
     pub fn expect_type_def<T: HasTypeName>(&'static self, type_name: T) -> TypeDef {
-        self.get_type(type_name).and_then(|def| if let Type::TypeDef(def) = def { Some(def.clone()) } else { None }).unwrap_or_else(|| panic!("Expected type not found `{}.{}`", type_name.namespace(), type_name.name()))
+        self.get_type(type_name)
+            .and_then(|def| {
+                if let Type::TypeDef(def) = def {
+                    Some(def.clone())
+                } else {
+                    None
+                }
+            })
+            .unwrap_or_else(|| {
+                panic!(
+                    "Expected type not found `{}.{}`",
+                    type_name.namespace(),
+                    type_name.name()
+                )
+            })
     }
 
-    pub fn expect_type_ref(&'static self, enclosing: Option<&TypeDef>, type_ref: &TypeRef) -> TypeDef {
+    pub fn expect_type_ref(
+        &'static self,
+        enclosing: Option<&TypeDef>,
+        type_ref: &TypeRef,
+    ) -> TypeDef {
         let type_name = type_ref.type_name();
 
         if let Some(enclosing) = enclosing {
             if type_name.namespace.is_empty() {
-                return self.nested[&enclosing.row].get(type_name.name).unwrap_or_else(|| panic!("Could not find nested type `{}` in `{}`", type_name.name, enclosing.type_name(),)).clone();
+                return self.nested[&enclosing.row]
+                    .get(type_name.name)
+                    .unwrap_or_else(|| {
+                        panic!(
+                            "Could not find nested type `{}` in `{}`",
+                            type_name.name,
+                            enclosing.type_name(),
+                        )
+                    })
+                    .clone();
             }
         }
 
         self.expect_type_def(type_name)
     }
 
-    pub fn type_from_code(&'static self, code: &TypeDefOrRef, enclosing: Option<&TypeDef>, generics: &[Type]) -> Type {
+    pub fn type_from_code(
+        &'static self,
+        code: &TypeDefOrRef,
+        enclosing: Option<&TypeDef>,
+        generics: &[Type],
+    ) -> Type {
         if let TypeDefOrRef::TypeSpec(def) = code {
             let mut blob = def.blob();
             return self.type_from_blob_impl(&mut blob, enclosing, generics);
@@ -142,8 +185,16 @@ impl TypeReader {
         code.resolve(enclosing).into()
     }
 
-    pub fn type_from_blob(&'static self, blob: &mut Blob, enclosing: Option<&TypeDef>, generics: &[Type]) -> Option<Type> {
-        let is_winrt_const_ref = blob.read_modifiers().iter().any(|def| def.type_name() == TypeName::IsConst);
+    pub fn type_from_blob(
+        &'static self,
+        blob: &mut Blob,
+        enclosing: Option<&TypeDef>,
+        generics: &[Type],
+    ) -> Option<Type> {
+        let is_winrt_const_ref = blob
+            .read_modifiers()
+            .iter()
+            .any(|def| def.type_name() == TypeName::IsConst);
 
         let is_winrt_array_ref = blob.read_expected(0x10);
 
@@ -178,7 +229,12 @@ impl TypeReader {
         })
     }
 
-    fn type_from_blob_impl(&'static self, blob: &mut Blob, enclosing: Option<&TypeDef>, generics: &[Type]) -> Type {
+    fn type_from_blob_impl(
+        &'static self,
+        blob: &mut Blob,
+        enclosing: Option<&TypeDef>,
+        generics: &[Type],
+    ) -> Type {
         let code = blob.read_unsigned();
 
         if let Some(code) = Type::from_code(code) {
@@ -186,8 +242,15 @@ impl TypeReader {
         }
 
         match code {
-            0x11 | 0x12 => self.type_from_code(&TypeDefOrRef::decode(blob.file, blob.read_unsigned()), enclosing, generics),
-            0x13 => generics.get(blob.read_unsigned() as usize).unwrap_or(&Type::Void).clone(),
+            0x11 | 0x12 => self.type_from_code(
+                &TypeDefOrRef::decode(blob.file, blob.read_unsigned()),
+                enclosing,
+                generics,
+            ),
+            0x13 => generics
+                .get(blob.read_unsigned() as usize)
+                .unwrap_or(&Type::Void)
+                .clone(),
             0x14 => {
                 let kind = self.type_from_blob(blob, enclosing, generics).unwrap();
                 let _rank = blob.read_unsigned();
@@ -198,11 +261,13 @@ impl TypeReader {
             0x15 => {
                 blob.read_unsigned();
 
-                let mut def = TypeDefOrRef::decode(blob.file, blob.read_unsigned()).resolve(enclosing);
+                let mut def =
+                    TypeDefOrRef::decode(blob.file, blob.read_unsigned()).resolve(enclosing);
                 let args = blob.read_unsigned();
 
                 for _ in 0..args {
-                    def.generics.push(self.type_from_blob_impl(blob, enclosing, generics));
+                    def.generics
+                        .push(self.type_from_blob_impl(blob, enclosing, generics));
                 }
 
                 Type::TypeDef(def)
@@ -224,4 +289,16 @@ fn is_well_known(type_name: TypeName) -> bool {
 
 const REMAP_TYPES: [(TypeName, TypeName); 1] = [(TypeName::D2D_MATRIX_3X2_F, TypeName::Matrix3x2)];
 
-const WELL_KNOWN_TYPES: [(TypeName, Type); 11] = [(TypeName::GUID, Type::GUID), (TypeName::IUnknown, Type::IUnknown), (TypeName::HResult, Type::HRESULT), (TypeName::HRESULT, Type::HRESULT), (TypeName::HSTRING, Type::String), (TypeName::IInspectable, Type::IInspectable), (TypeName::LARGE_INTEGER, Type::I64), (TypeName::ULARGE_INTEGER, Type::U64), (TypeName::Type, Type::TypeName), (TypeName::PSTR, Type::PSTR), (TypeName::PWSTR, Type::PWSTR)];
+const WELL_KNOWN_TYPES: [(TypeName, Type); 11] = [
+    (TypeName::GUID, Type::GUID),
+    (TypeName::IUnknown, Type::IUnknown),
+    (TypeName::HResult, Type::HRESULT),
+    (TypeName::HRESULT, Type::HRESULT),
+    (TypeName::HSTRING, Type::String),
+    (TypeName::IInspectable, Type::IInspectable),
+    (TypeName::LARGE_INTEGER, Type::I64),
+    (TypeName::ULARGE_INTEGER, Type::U64),
+    (TypeName::Type, Type::TypeName),
+    (TypeName::PSTR, Type::PSTR),
+    (TypeName::PWSTR, Type::PWSTR),
+];

@@ -21,6 +21,7 @@ use helpers::*;
 use metadata::*;
 // use method_names::*;
 // use methods::*;
+use crate::classes::gen_classes;
 use names::*;
 use signatures::*;
 use tokens::*;
@@ -62,6 +63,7 @@ pub fn gen_namespace(gen: &Gen, child_namespaces: &Vec<String>) -> GeneratedName
     // let functions = gen_sys_functions(tree, gen);
     let types = gen_non_sys_function_types(tree, gen);
     let api_trait = gen_functions(tree, gen);
+    let classes = gen_classes(gen);
 
     let tokens = quote! {
         #![allow(non_snake_case, non_camel_case_types, non_upper_case_globals, clashing_extern_declarations, unused_assignments, clippy::all)]
@@ -69,6 +71,7 @@ pub fn gen_namespace(gen: &Gen, child_namespaces: &Vec<String>) -> GeneratedName
         use ::win32::core::prelude::*;
         #(#namespaces)*
         #types
+        #classes
         #api_trait
     };
 

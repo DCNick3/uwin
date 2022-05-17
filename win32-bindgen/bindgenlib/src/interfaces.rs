@@ -58,7 +58,7 @@ fn gen_win_interface(def: &TypeDef, gen: &Gen) -> TokenStream {
 
     tokens.combine(&quote! {
         #features
-        pub struct #name(crate::core::IUnknown, #(#phantoms)*) where #(#constraints)*;
+        pub struct #name(pub crate::core::IUnknown, #(#phantoms)*) where #(#constraints)*;
         #features
         pub trait #trait_name: #base_name {
             #functions
@@ -120,7 +120,7 @@ pub fn gen_std_traits(def: &TypeDef, cfg: &Cfg, gen: &Gen) -> TokenStream {
                 FromIntoMemory::into_bytes(self.0, into)
             }
             fn size() -> usize {
-                std::mem::size_of::<crate::core::IUnknown>()
+                <crate::core::IUnknown as FromIntoMemory>::size()
             }
         }
     }

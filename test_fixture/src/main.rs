@@ -76,7 +76,7 @@ fn main_impl() {
         map_item(&mut memory_mgr, item).expect("Mapping program memory")
     }
 
-    let executor = RecompiledExecutor {};
+    let executor = InterpretedExecutor {};
 
     let mut context = ExtendedContext {
         cpu: CpuContext::default(),
