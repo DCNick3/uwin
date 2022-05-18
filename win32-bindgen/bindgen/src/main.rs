@@ -34,14 +34,23 @@ fn main() {
 
     let mut trees = Vec::new();
     collect_trees(config, &output, root.namespace, root, &mut trees);
-    let thunk_functions = trees
+    let generated_trees = trees
         // .par_iter()
         .iter()
         .map(|tree| gen_tree(config, &output, root.namespace, tree))
         .collect::<Vec<_>>();
 
     let output = PathBuf::from("rusty_x86_runtime/src/thunks.rs");
-    gen_thunks(&output, thunk_functions);
+    gen_thunks(
+        &output,
+        generated_trees.iter().map(|tree| &tree.thunk_functions),
+    );
+
+    let output = PathBuf::from("recompiler/src/com_stubs_params.rs");
+    gen_com_stubs_params(
+        &output,
+        generated_trees.iter().map(|tree| &tree.com_stub_params),
+    );
 }
 
 struct TypeTreeGen<'a> {
@@ -80,12 +89,17 @@ fn collect_trees<'a>(
     include || include_nested
 }
 
+struct GeneratedTree {
+    pub thunk_functions: TokenStream,
+    pub com_stub_params: TokenStream,
+}
+
 fn gen_tree(
     config: &'static BindgenConfig,
     output: &std::path::Path,
     _root: &'static str,
     tree: &TypeTreeGen,
-) -> TokenStream {
+) -> GeneratedTree {
     let TypeTreeGen {
         tree,
         child_namespaces,
@@ -123,15 +137,19 @@ fn gen_tree(
     let GeneratedNamespace {
         module: mut tokens,
         thunk_functions,
+        com_stub_params,
     } = bindgen::gen_namespace(&gen, &child_namespaces);
     fmt_tokens(tree.namespace, &mut tokens);
 
     std::fs::write(path.join("mod.rs"), tokens).unwrap();
 
-    thunk_functions
+    GeneratedTree {
+        thunk_functions,
+        com_stub_params,
+    }
 }
 
-fn gen_thunks(output: &std::path::Path, tokens: Vec<TokenStream>) {
+fn gen_thunks<'a>(output: &std::path::Path, tokens: impl Iterator<Item = &'a TokenStream>) {
     // output rusty_x86 thunk functions separately
     let mut tokens = quote! {
         //!Auto-generated glue file
@@ -151,9 +169,35 @@ fn gen_thunks(output: &std::path::Path, tokens: Vec<TokenStream>) {
 
         #(#tokens)*
     }
-    .into_string();
+        .into_string();
 
     fmt_tokens("thunks", &mut tokens);
+
+    std::fs::write(output, tokens).unwrap();
+}
+
+fn gen_com_stubs_params<'a>(
+    output: &std::path::Path,
+    tokens: impl Iterator<Item = &'a TokenStream>,
+) {
+    let mut tokens = quote! {
+        //! Auto-generated glue file (well, it will be in the future)
+
+        #[allow(unused)]
+        use crate::com_stubs::{ComStubClassParams, ComStubParams, ComStubVtableParams};
+        use lazy_static::lazy_static;
+
+        lazy_static! {
+            pub(crate) static ref COM_STUB_PARAMS: ComStubParams = ComStubParams {
+                classes: vec![
+                    #(#tokens)*
+                ],
+            };
+        }
+    }
+    .into_string();
+
+    fmt_tokens("com_stubs_params", &mut tokens);
 
     std::fs::write(output, tokens).unwrap();
 }

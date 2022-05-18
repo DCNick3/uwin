@@ -13,7 +13,150 @@ pub fn gen_classes(gen: &Gen) -> TokenStream {
 }
 
 pub fn gen_class_thunks(gen: &Gen) -> TokenStream {
-    todo!()
+    let mut tokens = TokenStream::new();
+
+    let type_reader = TypeReader::get();
+
+    for class in gen.com_classes {
+        let class_name = &class.name;
+
+        for iface in class.interfaces.iter() {
+            let (namespace, name) = iface.rsplit_once('.').unwrap();
+            let type_ = type_reader
+                .get_type((namespace, name))
+                .expect("Find the interface referenced by com_interfaces")
+                .clone();
+            let type_ = match type_ {
+                Type::TypeDef(def) => def,
+                _ => unimplemented!(),
+            };
+
+            fn emit_interface(
+                class_name: &str,
+                iface_name: &str,
+                tokens: &mut TokenStream,
+                interface: BaseInterface,
+            ) {
+                match interface {
+                    BaseInterface::IUnknown => {
+                        let query_interface = gen_ident(&format!(
+                            "thunk_com_{}_as_{}_QueryInterface",
+                            class_name, iface_name
+                        ));
+                        let add_ref = gen_ident(&format!(
+                            "thunk_com_{}_as_{}_AddRef",
+                            class_name, iface_name
+                        ));
+                        let release = gen_ident(&format!(
+                            "thunk_com_{}_as_{}_Release",
+                            class_name, iface_name
+                        ));
+
+                        tokens.combine(&quote! {
+                                #[no_mangle]
+                                extern "C" fn #query_interface(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+                                    std::process::abort();
+                                }
+                                #[no_mangle]
+                                extern "C" fn #add_ref(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+                                    std::process::abort();
+                                }
+                                #[no_mangle]
+                                extern "C" fn #release(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+                                    std::process::abort();
+                                }
+                        });
+                    }
+                    BaseInterface::TypeDef(def) => {
+                        emit_interface(class_name, iface_name, tokens, def.base_interface());
+
+                        for method in def.methods() {
+                            let method = method.name();
+
+                            let thunk_name = gen_ident(&format!(
+                                "thunk_com_{}_as_{}_{}",
+                                class_name, iface_name, method
+                            ));
+
+                            tokens.combine(&quote! {
+                                #[no_mangle]
+                                extern "C" fn #thunk_name(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
+                                    std::process::abort();
+                                }
+                            });
+                        }
+                    }
+                }
+            }
+
+            emit_interface(class_name, name, &mut tokens, BaseInterface::TypeDef(type_));
+        }
+    }
+
+    tokens
+}
+
+pub fn gen_com_stub_params(gen: &Gen) -> TokenStream {
+    let mut tokens = TokenStream::new();
+
+    let type_reader = TypeReader::get();
+
+    for class in gen.com_classes {
+        let name = &class.name;
+
+        let vtables = class.interfaces.iter().map(|iface| {
+            let (namespace, name) = iface.rsplit_once('.').unwrap();
+            let type_ = type_reader
+                .get_type((namespace, name))
+                .expect("Find the interface referenced by com_interfaces")
+                .clone();
+            let type_ = match type_ {
+                Type::TypeDef(def) => def,
+                _ => unimplemented!(),
+            };
+
+            let mut tokens = TokenStream::new();
+
+            fn emit_interface(name: &str, tokens: &mut TokenStream, interface: BaseInterface) {
+                match interface {
+                    BaseInterface::IUnknown => {
+                        tokens.combine(&quote! {
+                            (#name.to_string(), "QueryInterface".to_string()),
+                            (#name.to_string(), "AddRef".to_string()),
+                            (#name.to_string(), "Release".to_string()),
+                        });
+                    }
+                    BaseInterface::TypeDef(def) => {
+                        emit_interface(name, tokens, def.base_interface());
+
+                        for method in def.methods() {
+                            let method = method.name();
+                            tokens.combine(&quote! {
+                                (#name.to_string(), #method.to_string()),
+                            });
+                        }
+                    }
+                }
+            }
+
+            emit_interface(name, &mut tokens, BaseInterface::TypeDef(type_));
+
+            tokens
+        });
+
+        tokens.combine(&quote! {
+            ComStubClassParams {
+                name: #name.to_string(),
+                vtables: vec![#(ComStubVtableParams {
+                    function_names: vec![
+                        #vtables
+                    ]
+                })*],
+            }
+        });
+    }
+
+    tokens
 }
 
 fn gen_class(class: &ComClass, gen: &Gen, type_reader: &'static TypeReader) -> TokenStream {

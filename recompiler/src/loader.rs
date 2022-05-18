@@ -281,7 +281,7 @@ pub fn load_process_image(executable: PeFile, dlls: Vec<PeFile>) -> Result<Loade
     }
 
     println!("COMSTUB");
-    let (com_stub_dll, com_thunks_info) =
+    let (com_stub_dll, mut com_thunks_info) =
         make_com_stub_dll(&mut thunk_allocator, &COM_STUB_PARAMS).unwrap();
     dlls.insert(COM_STUB_DLL_NAME.to_string(), com_stub_dll);
 
@@ -316,6 +316,9 @@ pub fn load_process_image(executable: PeFile, dlls: Vec<PeFile>) -> Result<Loade
     for (_, dll) in dlls {
         load_into_first_free(dll)?;
     }
+
+    // now that the uwin_com.dll is loaded, we can have proper addresses for the vtables and thunks
+    com_thunks_info.offset(modules.get(&COM_STUB_DLL_NAME).unwrap().1.base_addr);
 
     let exports = build_exports_index(&modules)?;
 

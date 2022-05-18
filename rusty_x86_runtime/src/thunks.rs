@@ -9085,6 +9085,167 @@ extern "C" fn thunk_dll_DirectDrawEnumerateW(
     )
 }
 #[no_mangle]
+extern "C" fn thunk_com_DirectDraw_as_IDirectDraw_QueryInterface(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    std::process::abort();
+}
+#[no_mangle]
+extern "C" fn thunk_com_DirectDraw_as_IDirectDraw_AddRef(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    std::process::abort();
+}
+#[no_mangle]
+extern "C" fn thunk_com_DirectDraw_as_IDirectDraw_Release(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    std::process::abort();
+}
+#[no_mangle]
+extern "C" fn thunk_com_DirectDraw_as_IDirectDraw_Compact(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    std::process::abort();
+}
+#[no_mangle]
+extern "C" fn thunk_com_DirectDraw_as_IDirectDraw_CreateClipper(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    std::process::abort();
+}
+#[no_mangle]
+extern "C" fn thunk_com_DirectDraw_as_IDirectDraw_CreatePalette(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    std::process::abort();
+}
+#[no_mangle]
+extern "C" fn thunk_com_DirectDraw_as_IDirectDraw_CreateSurface(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    std::process::abort();
+}
+#[no_mangle]
+extern "C" fn thunk_com_DirectDraw_as_IDirectDraw_DuplicateSurface(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    std::process::abort();
+}
+#[no_mangle]
+extern "C" fn thunk_com_DirectDraw_as_IDirectDraw_EnumDisplayModes(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    std::process::abort();
+}
+#[no_mangle]
+extern "C" fn thunk_com_DirectDraw_as_IDirectDraw_EnumSurfaces(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    std::process::abort();
+}
+#[no_mangle]
+extern "C" fn thunk_com_DirectDraw_as_IDirectDraw_FlipToGDISurface(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    std::process::abort();
+}
+#[no_mangle]
+extern "C" fn thunk_com_DirectDraw_as_IDirectDraw_GetCaps(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    std::process::abort();
+}
+#[no_mangle]
+extern "C" fn thunk_com_DirectDraw_as_IDirectDraw_GetDisplayMode(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    std::process::abort();
+}
+#[no_mangle]
+extern "C" fn thunk_com_DirectDraw_as_IDirectDraw_GetFourCCCodes(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    std::process::abort();
+}
+#[no_mangle]
+extern "C" fn thunk_com_DirectDraw_as_IDirectDraw_GetGDISurface(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    std::process::abort();
+}
+#[no_mangle]
+extern "C" fn thunk_com_DirectDraw_as_IDirectDraw_GetMonitorFrequency(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    std::process::abort();
+}
+#[no_mangle]
+extern "C" fn thunk_com_DirectDraw_as_IDirectDraw_GetScanLine(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    std::process::abort();
+}
+#[no_mangle]
+extern "C" fn thunk_com_DirectDraw_as_IDirectDraw_GetVerticalBlankStatus(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    std::process::abort();
+}
+#[no_mangle]
+extern "C" fn thunk_com_DirectDraw_as_IDirectDraw_Initialize(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    std::process::abort();
+}
+#[no_mangle]
+extern "C" fn thunk_com_DirectDraw_as_IDirectDraw_RestoreDisplayMode(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    std::process::abort();
+}
+#[no_mangle]
+extern "C" fn thunk_com_DirectDraw_as_IDirectDraw_SetCooperativeLevel(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    std::process::abort();
+}
+#[no_mangle]
+extern "C" fn thunk_com_DirectDraw_as_IDirectDraw_SetDisplayMode(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    std::process::abort();
+}
+#[no_mangle]
+extern "C" fn thunk_com_DirectDraw_as_IDirectDraw_WaitForVerticalBlank(
+    context: &mut ExtendedContext,
+    memory: FlatMemoryCtx,
+) -> PtrRepr {
+    std::process::abort();
+}
+#[no_mangle]
 extern "C" fn thunk_dll_AbortPath(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
     static SPAN_CALLSITE: crate::MyCallsite =
         crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), "AbortPath");

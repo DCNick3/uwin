@@ -21,7 +21,7 @@ use helpers::*;
 use metadata::*;
 // use method_names::*;
 // use methods::*;
-use crate::classes::gen_classes;
+use crate::classes::{gen_class_thunks, gen_classes, gen_com_stub_params};
 use names::*;
 use signatures::*;
 use tokens::*;
@@ -45,6 +45,7 @@ use tokens::*;
 pub struct GeneratedNamespace {
     pub module: String,
     pub thunk_functions: TokenStream,
+    pub com_stub_params: TokenStream,
 }
 
 pub fn gen_namespace(gen: &Gen, child_namespaces: &Vec<String>) -> GeneratedNamespace {
@@ -76,10 +77,19 @@ pub fn gen_namespace(gen: &Gen, child_namespaces: &Vec<String>) -> GeneratedName
     };
 
     let thunk_functions = gen_rusty_x86_thunk_functions(tree, gen);
+    let com_thunks = gen_class_thunks(gen);
+
+    let thunk_functions = quote! {
+        #thunk_functions
+        #com_thunks
+    };
+
+    let com_stub_params = gen_com_stub_params(gen);
 
     GeneratedNamespace {
         module: tokens.into_string(),
         thunk_functions,
+        com_stub_params,
     }
 }
 
