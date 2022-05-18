@@ -1,4 +1,4 @@
-use crate::com_stubs::{make_com_stub_dll, ComThunksInfo, COM_STUB_DLL_NAME};
+use crate::com_stubs::{make_com_stub_dll, offset_thunks, ComThunksInfo, COM_STUB_DLL_NAME};
 use crate::com_stubs_params::COM_STUB_PARAMS;
 use itertools::Itertools;
 use lazy_static::lazy_static;
@@ -318,7 +318,10 @@ pub fn load_process_image(executable: PeFile, dlls: Vec<PeFile>) -> Result<Loade
     }
 
     // now that the uwin_com.dll is loaded, we can have proper addresses for the vtables and thunks
-    com_thunks_info.offset(modules.get(&COM_STUB_DLL_NAME).unwrap().1.base_addr);
+    offset_thunks(
+        &mut com_thunks_info,
+        modules.get(COM_STUB_DLL_NAME).unwrap().1.base_addr,
+    );
 
     let exports = build_exports_index(&modules)?;
 

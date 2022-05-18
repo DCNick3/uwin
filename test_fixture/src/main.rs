@@ -223,6 +223,10 @@ fn main_impl() {
 
     // =======
 
+    let com_thunks_info = &PROGRAM_IMAGE.com_thunks_info;
+
+    // =======
+
     panic_control::chain_hook_ignoring::<UnwindReason>();
 
     match std::panic::catch_unwind(AssertUnwindSafe(|| {

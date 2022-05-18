@@ -4,8 +4,8 @@ use crate::pe_file::PeSymbol;
 use crate::thunk_id_allocator::ThunkIdAllocator;
 use crate::{PeFile, Thunk};
 use object::pe;
+use object::pe::IMAGE_REL_BASED_HIGHLOW;
 use object::write::pe::{NtHeaders, Writer};
-use serde::{Deserialize, Serialize};
 use std::collections::BTreeMap;
 
 // ===
@@ -17,6 +17,7 @@ pub(crate) struct ComStubParams {
 }
 
 pub(crate) struct ComStubClassParams {
+    pub namespace: String,
     pub name: String,
     pub vtables: Vec<ComStubVtableParams>,
 }
@@ -29,29 +30,12 @@ pub(crate) struct ComStubVtableParams {
 // Those are the results of the com generation process
 // they are embedded as metadata as part of LoadedProcessImage structure
 
-#[derive(Serialize, Deserialize)]
-pub struct ComThunksInfo {
-    pub classes: BTreeMap<String, ComThunksClassInfo>,
-}
+pub type ComThunksInfo = BTreeMap<String, Vec<u32>>;
 
-#[derive(Serialize, Deserialize)]
-pub struct ComThunksClassInfo {
-    pub vtables: Vec<ComThunksVtableInfo>,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct ComThunksVtableInfo {
-    pub function_addresses: Vec<u32>,
-}
-
-impl ComThunksInfo {
-    pub fn offset(&mut self, offset: u32) {
-        for (_, class) in self.classes.iter_mut() {
-            for vtable in class.vtables.iter_mut() {
-                for address in vtable.function_addresses.iter_mut() {
-                    *address += offset;
-                }
-            }
+pub(crate) fn offset_thunks(self_: &mut ComThunksInfo, offset: u32) {
+    for (_, class) in self_.iter_mut() {
+        for vtable in class.iter_mut() {
+            *vtable += offset;
         }
     }
 }
@@ -59,25 +43,17 @@ impl ComThunksInfo {
 fn gen_text_section(
     thunk_id_allocator: &mut ThunkIdAllocator,
     params: &ComStubParams,
-) -> (Vec<u8>, ComThunksInfo) {
+) -> (Vec<u8>, BTreeMap<String, Vec<Vec<u32>>>) {
     let mut output = Vec::new();
-    let mut thunks_info = ComThunksInfo {
-        classes: BTreeMap::new(),
-    };
+    let mut classes_info = BTreeMap::new();
 
     for class in params.classes.iter() {
-        let class_info =
-            thunks_info
-                .classes
-                .entry(class.name.clone())
-                .or_insert(ComThunksClassInfo {
-                    vtables: Vec::new(),
-                });
+        let class_info = classes_info
+            .entry(format!("{}.{}", class.namespace, class.name))
+            .or_insert_with(Vec::new);
         for vtable in class.vtables.iter() {
-            class_info.vtables.push(ComThunksVtableInfo {
-                function_addresses: Vec::new(),
-            });
-            let vtable_info = class_info.vtables.last_mut().unwrap();
+            class_info.push(Vec::new());
+            let vtable_contents = class_info.last_mut().unwrap();
             for (interface, method) in vtable.function_names.iter() {
                 let thunk = Thunk::ComMethod {
                     class: &class.name,
@@ -86,9 +62,7 @@ fn gen_text_section(
                 };
                 let index = thunk_id_allocator.get_thunk(thunk);
 
-                vtable_info
-                    .function_addresses
-                    .push(output.len().try_into().unwrap());
+                vtable_contents.push(output.len().try_into().unwrap());
 
                 // FAR JUMP opcode
                 output.push(0xea);
@@ -101,7 +75,32 @@ fn gen_text_section(
         }
     }
 
-    (output, thunks_info)
+    (output, classes_info)
+}
+
+fn gen_rodata_section(
+    vtable_contents: &BTreeMap<String, Vec<Vec<u32>>>,
+) -> (Vec<u8>, ComThunksInfo, Vec<(u16, u32)>) {
+    let mut output = Vec::new();
+    let mut relocations = Vec::new();
+    let mut thunks_info = BTreeMap::new();
+
+    for (name, class) in vtable_contents.iter() {
+        let class_info = thunks_info.entry(name.clone()).or_insert(Vec::new());
+        for vtable in class.iter() {
+            let offset = output.len().try_into().unwrap();
+            class_info.push(offset);
+
+            for function in vtable.iter() {
+                let offset = output.len().try_into().unwrap();
+
+                relocations.push((IMAGE_REL_BASED_HIGHLOW, offset));
+                output.extend_from_slice(&function.to_le_bytes());
+            }
+        }
+    }
+
+    (output, thunks_info, relocations)
 }
 
 fn make_com_stub_dll_impl(
@@ -114,17 +113,39 @@ fn make_com_stub_dll_impl(
     let mut writer = Writer::new(false, PAGE_ALIGNMENT, FILE_ALIGNMENT, &mut out_data);
 
     writer.reserve_dos_header();
-    writer.reserve_nt_headers(0);
+    writer.reserve_nt_headers(16);
     // writer.reserve_section_headers()
-    writer.reserve_section_headers(1); // only .text needed
+    writer.reserve_section_headers(3); // only .text, .rodata and .reloc needed
 
-    let (text_data, mut com_thunks_info) = gen_text_section(thunk_id_allocator, params);
+    // .text contains the thunks code
+    let (text_data, mut vtable_contents) = gen_text_section(thunk_id_allocator, params);
 
     let text_range = writer.reserve_text_section(text_data.len() as u32);
 
+    for (_, class) in vtable_contents.iter_mut() {
+        for vtable in class.iter_mut() {
+            for entry in vtable.iter_mut() {
+                *entry += text_range.virtual_address;
+            }
+        }
+    }
+
+    // .rodata contains the vtables themselves
+    let (rodata_data, mut com_thunks_info, rodata_relocations) =
+        gen_rodata_section(&vtable_contents);
+
+    let rodata_range = writer.reserve_rdata_section(text_data.len() as u32);
+
+    for (reloc_type, offset) in rodata_relocations {
+        let address = rodata_range.virtual_address + offset;
+        writer.add_reloc(address, reloc_type);
+    }
+
+    writer.reserve_reloc_section();
+
     // gen_text_section generates offsets from the start of the text section
     // now translate these offsets to RVAs
-    com_thunks_info.offset(text_range.virtual_address);
+    offset_thunks(&mut com_thunks_info, rodata_range.virtual_address);
 
     writer.write_empty_dos_header()?;
     writer.write_nt_headers(NtHeaders {
@@ -153,6 +174,8 @@ fn make_com_stub_dll_impl(
     });
     writer.write_section_headers();
     writer.write_section(text_range.file_offset, &text_data);
+    writer.write_section(rodata_range.file_offset, &rodata_data);
+    writer.write_reloc_section();
 
     // TODO: generate symbols
     let symbols = BTreeMap::new();

@@ -5,6 +5,7 @@ use lazy_static::lazy_static;
 lazy_static! {
     pub(crate) static ref COM_STUB_PARAMS: ComStubParams = ComStubParams {
         classes: vec![ComStubClassParams {
+            namespace: "Windows.Win32.Graphics.DirectDraw".to_string(),
             name: "DirectDraw".to_string(),
             vtables: vec![ComStubVtableParams {
                 function_names: vec![

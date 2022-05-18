@@ -102,7 +102,8 @@ pub fn gen_com_stub_params(gen: &Gen) -> TokenStream {
     let type_reader = TypeReader::get();
 
     for class in gen.com_classes {
-        let name = &class.name;
+        let class_name = &class.name;
+        let namespace = gen.namespace;
 
         let vtables = class.interfaces.iter().map(|iface| {
             let (namespace, name) = iface.rsplit_once('.').unwrap();
@@ -146,7 +147,8 @@ pub fn gen_com_stub_params(gen: &Gen) -> TokenStream {
 
         tokens.combine(&quote! {
             ComStubClassParams {
-                name: #name.to_string(),
+                namespace: #namespace.to_string(),
+                name: #class_name.to_string(),
                 vtables: vec![#(ComStubVtableParams {
                     function_names: vec![
                         #vtables
