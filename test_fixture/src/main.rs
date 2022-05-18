@@ -219,11 +219,13 @@ fn main_impl() {
 
     context.win32.insert(Arc::new(DirectDrawApi {
         process_ctx: process_ctx.clone(),
+        direct_draw_vtable: *PROGRAM_IMAGE
+            .com_thunks_info
+            .get("Windows.Win32.Graphics.DirectDraw.DirectDraw")
+            .expect("Getting DirectDraw vtable")
+            .first()
+            .unwrap(),
     }) as Arc<dyn win32::Win32::Graphics::DirectDraw::Api>);
-
-    // =======
-
-    let com_thunks_info = &PROGRAM_IMAGE.com_thunks_info;
 
     // =======
 

@@ -1,12 +1,14 @@
 use crate::ProcessContext;
-use core_mem::ptr::MutPtr;
+use core_mem::ptr::{MutPtr, PtrRepr};
 use std::sync::Arc;
+use tracing::trace;
 use win32::core::{IUnknown, IUnknown_Trait, GUID, HRESULT};
 use win32::Win32::Foundation::S_OK;
 use win32::Win32::Graphics::DirectDraw::{DirectDraw_Repr, IDirectDraw, IDirectDraw_Trait};
 
 pub struct DirectDrawApi {
     pub process_ctx: ProcessContext,
+    pub direct_draw_vtable: PtrRepr, // Would __really__ want to have some generalized API for handling those
 }
 
 #[allow(non_snake_case)]
@@ -31,18 +33,20 @@ impl win32::Win32::Graphics::DirectDraw::Api for DirectDrawApi {
             .alloc_typed(
                 ctx,
                 DirectDraw_Repr {
-                    vtable_IDirectDraw: 0,
+                    vtable_IDirectDraw: self.direct_draw_vtable,
                     implementation: Arc::into_raw(cls),
                 },
             )
             .expect("Allocating memory for the DirectDraw object");
+
+        trace!("Allocated a DirectDraw object at {:#010x}", res.repr());
 
         // TODO: use some API to cast the class repr to an interface ptr
         // would probably be useful for QueryInterface implementations
 
         lplp_dd.write_with(ctx, IDirectDraw(IUnknown::from_raw_ptr(res.repr())));
 
-        todo!("Generate vtable for COM classes");
+        // todo!("Generate vtable for COM classes");
 
         S_OK
     }
