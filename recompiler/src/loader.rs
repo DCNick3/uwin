@@ -1,3 +1,5 @@
+use crate::com_stubs::{make_com_stub_dll, ComThunksInfo, COM_STUB_DLL_NAME};
+use crate::com_stubs_params::COM_STUB_PARAMS;
 use itertools::Itertools;
 use lazy_static::lazy_static;
 use memory_image::{MemoryImage, Protection};
@@ -137,7 +139,8 @@ pub struct LoadedProcessImage {
     pub memory: MemoryImage,
     pub modules: BTreeMap<String, (PeFile, LoadedPeInfo)>,
     pub symbols: BTreeMap<u32, ProcessImageSymbol>,
-    pub thunk_functions: BTreeMap<u32, String>,
+    pub thunk_names: BTreeMap<u32, String>,
+    pub com_thunks_info: ComThunksInfo,
     pub exe_entrypoint: u32,
     pub main_module_base: u32,
     pub main_module_name: String,
@@ -277,6 +280,11 @@ pub fn load_process_image(executable: PeFile, dlls: Vec<PeFile>) -> Result<Loade
         }
     }
 
+    println!("COMSTUB");
+    let (com_stub_dll, com_thunks_info) =
+        make_com_stub_dll(&mut thunk_allocator, &COM_STUB_PARAMS).unwrap();
+    dlls.insert(COM_STUB_DLL_NAME.to_string(), com_stub_dll);
+
     let thunk_functions = thunk_allocator.to_thunk_functions();
 
     let exe_entrypoint = executable.entry() + executable.base_addr();
@@ -290,7 +298,7 @@ pub fn load_process_image(executable: PeFile, dlls: Vec<PeFile>) -> Result<Loade
     let mut modules = BTreeMap::new();
 
     let mut load_into_first_free = |pe: PeFile| -> Result<_> {
-        println!("LOAD {}", pe.name());
+        println!("LOAD  {}", pe.name());
         let info = pe.load_into(free_addr, &mut memory, pe.name())?;
 
         free_addr += info.image_size;
@@ -305,8 +313,7 @@ pub fn load_process_image(executable: PeFile, dlls: Vec<PeFile>) -> Result<Loade
 
     load_into_first_free(executable)?;
 
-    for (dll, _) in required_dlls.iter() {
-        let dll = dlls.remove(dll).unwrap();
+    for (_, dll) in dlls {
         load_into_first_free(dll)?;
     }
 
@@ -347,7 +354,8 @@ pub fn load_process_image(executable: PeFile, dlls: Vec<PeFile>) -> Result<Loade
         memory,
         modules,
         symbols,
-        thunk_functions,
+        thunk_names: thunk_functions,
+        com_thunks_info,
         exe_entrypoint,
         main_module_base: exe_base_addr,
         main_module_name: exe_name,

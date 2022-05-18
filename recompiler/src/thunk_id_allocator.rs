@@ -5,7 +5,7 @@ use std::collections::BTreeMap;
 pub enum Thunk<'a> {
     PlainFunction(&'a str),
     ComMethod {
-        object: &'a str,
+        class: &'a str,
         interface: &'a str,
         method: &'a str,
     },
@@ -16,7 +16,7 @@ impl<'a> Thunk<'a> {
         match self {
             Thunk::PlainFunction(name) => format!("dll_{}", name),
             Thunk::ComMethod {
-                object,
+                class: object,
                 interface,
                 method,
             } => format!("com_{}_as_{}_{}", object, interface, method),
@@ -41,20 +41,28 @@ impl ThunkIdAllocator {
     }
 
     pub fn get_plain_function(&mut self, name: &str) -> u32 {
-        // TODO: this can be optimized, but copying is easier for now=)
-        let thunk = Thunk::PlainFunction(name);
-        let thunk_name = thunk.to_string();
+        self.get_thunk(Thunk::PlainFunction(name))
+    }
 
+    pub fn get_thunk(&mut self, thunk: Thunk) -> u32 {
+        // TODO: this can be optimized, but copying is easier for now =)
+        let thunk_name = thunk.to_string();
         if let Some(&id) = self.thunk_names_to_id.get(&thunk_name) {
             id
         } else {
-            self.next(thunk)
+            self.allocate(thunk_name)
         }
     }
 
-    pub fn next(&mut self, thunk: Thunk) -> u32 {
-        let thunk_name = thunk.to_string();
+    pub fn get_thunk_by_name(&mut self, thunk_name: &str) -> u32 {
+        if let Some(&id) = self.thunk_names_to_id.get(thunk_name) {
+            id
+        } else {
+            self.allocate(thunk_name.to_string())
+        }
+    }
 
+    fn allocate(&mut self, thunk_name: String) -> u32 {
         let res = self.next_thunk_id;
         self.next_thunk_id += 1;
 

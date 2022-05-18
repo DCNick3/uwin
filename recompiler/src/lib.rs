@@ -1,6 +1,7 @@
 extern crate core;
 
 mod com_stubs;
+mod com_stubs_params;
 mod error;
 mod loader;
 mod pe_file;

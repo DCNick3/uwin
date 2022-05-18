@@ -3,6 +3,7 @@ use rayon::prelude::*;
 use serde::Deserialize;
 use std::collections::{BTreeMap, BTreeSet};
 use std::io::Write;
+use std::path::PathBuf;
 use tokens::{quote, TokenStream};
 use win32_bindgenlib as bindgen;
 use win32_bindgenlib::{ComClass, GeneratedNamespace};
@@ -39,7 +40,7 @@ fn main() {
         .map(|tree| gen_tree(config, &output, root.namespace, tree))
         .collect::<Vec<_>>();
 
-    let output = std::path::PathBuf::from("rusty_x86_runtime/src/thunks.rs");
+    let output = PathBuf::from("rusty_x86_runtime/src/thunks.rs");
     gen_thunks(&output, thunk_functions);
 }
 
@@ -133,6 +134,7 @@ fn gen_tree(
 fn gen_thunks(output: &std::path::Path, tokens: Vec<TokenStream>) {
     // output rusty_x86 thunk functions separately
     let mut tokens = quote! {
+        //!Auto-generated glue file
         #![allow(non_snake_case, non_camel_case_types, non_upper_case_globals, clashing_extern_declarations, clippy::all, unused_mut, unused_variables)]
 
         #[allow(unused)]

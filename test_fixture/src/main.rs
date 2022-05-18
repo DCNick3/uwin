@@ -37,6 +37,11 @@ use win32_windows::{ClassRegistry, WindowsRegistry};
 use win32_wobj::WindowsHandleTable;
 
 fn map_item(mgr: &mut MemoryManager, item: &MemoryImageItem) -> core_memmgr::Result<()> {
+    if item.data.is_empty() {
+        // no need to do anything in this case
+        return Ok(());
+    }
+
     let range = AddressRange::new(item.addr, item.data.len() as PtrRepr);
 
     assert_eq!(range.start, item.addr);

@@ -38,7 +38,7 @@ pub fn recompile_image<'ctx>(
     let module = rusty_x86::llvm::recompile(
         llvm_context,
         types.clone(),
-        &image.thunk_functions,
+        &image.thunk_names,
         &image.memory,
         &basic_blocks,
     );
