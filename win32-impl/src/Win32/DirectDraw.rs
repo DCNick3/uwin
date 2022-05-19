@@ -5,7 +5,8 @@ use tracing::trace;
 use win32::core::{IUnknown, IUnknown_Trait, GUID, HRESULT};
 use win32::Win32::Foundation::{HWND, S_OK};
 use win32::Win32::Graphics::DirectDraw::{
-    DirectDraw_Repr, IDirectDraw, IDirectDraw_Trait, DDSCL_EXCLUSIVE, DDSCL_FULLSCREEN,
+    DirectDraw_Repr, IDirectDraw, IDirectDraw_Trait, DDSCL_ALLOWREBOOT, DDSCL_EXCLUSIVE,
+    DDSCL_FULLSCREEN,
 };
 use win32_windows::{Window, WindowsRegistry};
 
@@ -70,7 +71,11 @@ impl IUnknown_Trait for DirectDrawCls {}
 
 impl IDirectDraw_Trait for DirectDrawCls {
     fn SetCooperativeLevel(&self, hWnd: HWND, dwFlags: u32) -> HRESULT {
-        assert_eq!(dwFlags as i32, DDSCL_FULLSCREEN | DDSCL_EXCLUSIVE);
+        // ignore DDSCL_ALLOWREBOOT, otherwise allow only DDSCL_FULLSCREEN | DDSCL_EXCLUSIVE
+        assert_eq!(
+            dwFlags as i32 & !DDSCL_ALLOWREBOOT,
+            DDSCL_FULLSCREEN | DDSCL_EXCLUSIVE
+        );
 
         let window = {
             let registry = self.windows_registry.lock().unwrap();

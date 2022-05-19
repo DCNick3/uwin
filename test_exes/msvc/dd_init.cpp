@@ -11,6 +11,7 @@
 #include <ddraw.h>
 #include <stdlib.h>
 #include <stdarg.h>
+#include <comdef.h>
 
 #define TIMER_ID        1
 #define TIMER_RATE      500
@@ -18,10 +19,12 @@
 #define WIDTH 800
 #define HEIGHT 600
 
-LPDIRECTDRAW            lpDD;           // DirectDraw object
-LPDIRECTDRAWSURFACE     lpDDSPrimary;   // DirectDraw primary surface
-LPDIRECTDRAWSURFACE     lpDDSBack;      // DirectDraw back surface
-BOOL                    bActive;        // is application active?
+LPDIRECTDRAW            lpDD = NULL;           // DirectDraw object
+LPDIRECTDRAWSURFACE     lpDDSPrimary = NULL;   // DirectDraw primary surface
+LPDIRECTDRAWSURFACE     lpDDSBack = NULL;      // DirectDraw back surface
+INT                     clickCounter = 0;      // Click Counter
+RECT                    rect;
+
 
 /*
  * finiObjects
@@ -46,6 +49,48 @@ char szMsg[] = "Page Flipping Test: Press F12 to exit";
 char szFrontMsg[] = "Front buffer (F12 to quit)";
 char szBackMsg[] = "Back buffer (F12 to quit)";
 
+WORD colors[] = {0xfe30, 0x5630, 0x52b9};
+
+VOID UpdateScreen(VOID) {
+    DWORD         i, j;
+    DDSURFACEDESC desc;
+    HRESULT       ddrval;
+    char          buf[256];
+    WORD          color;
+    DDBLTFX       fx;
+
+    memset(&fx, 0, sizeof(fx));
+    fx.dwSize = sizeof(fx);
+
+    memset(&desc, 0, sizeof(desc));
+    desc.dwSize = sizeof(desc);
+
+    color = colors[clickCounter % 3];
+
+    ddrval = lpDDSBack->Lock(/* rect */NULL, &desc, DDLOCK_WAIT, /* hEvent */NULL);
+    if (ddrval == DD_OK)
+    {
+        LONG pitch = desc.lPitch;
+        WORD* buffer = (WORD*)desc.lpSurface;
+
+        for (j = 0; j < desc.dwHeight; j++)
+        for (i = 0; i < desc.dwWidth; i++)
+            buffer[j * pitch / sizeof(WORD) + i] = color;
+
+        lpDDSBack->Unlock(desc.lpSurface);
+        ddrval = lpDDSPrimary->Blt(&rect, lpDDSBack, &rect, 0, &fx);
+        if (ddrval == DD_OK)
+        {
+            return;
+        }
+    }
+
+
+//    _com_error err(ddrval);
+    wsprintf( buf, "Direct Draw Error during UpdateScreen (%08lx)\n", ddrval/*, err.ErrorMessage()*/ );
+    MessageBox( 0, buf, "ERROR", MB_OK );
+}
+
 long FAR PASCAL WindowProc( HWND hWnd, UINT message,
                             WPARAM wParam, LPARAM lParam )
 {
@@ -56,10 +101,6 @@ long FAR PASCAL WindowProc( HWND hWnd, UINT message,
 
     switch( message )
     {
-        case WM_ACTIVATEAPP:
-            bActive = wParam;
-            break;
-
         case WM_CREATE:
             break;
 
@@ -67,50 +108,10 @@ long FAR PASCAL WindowProc( HWND hWnd, UINT message,
             SetCursor(NULL);
             return TRUE;
 
-            /*case WM_TIMER:
-                // Flip surfaces
-                if( bActive )
-                {
-                    if (lpDDSBack->Lock(&hdc) == DD_OK)
-                    {
-                        SetBkColor( hdc, RGB( 0, 0, 255 ) );
-                        SetTextColor( hdc, RGB( 255, 255, 0 ) );
-                        if( phase )
-                        {
-                            TextOut( hdc, 0, 0, szFrontMsg, lstrlen(szBackMsg) );
-                            phase = 0;
-                        }
-                        else
-                        {
-                            TextOut( hdc, 0, 0, szBackMsg, lstrlen(szBackMsg) );
-                            phase = 1;
-                        }
-                        lpDDSBack->ReleaseDC(hdc);
-                    }
-
-                    while( 1 )
-                    {
-                        HRESULT ddrval;
-                        ddrval = lpDDSPrimary->Flip( NULL, 0 );
-                        if( ddrval == DD_OK )
-                        {
-                            break;
-                        }
-                        if( ddrval == DDERR_SURFACELOST )
-                        {
-                            ddrval = lpDDSPrimary->Restore();
-                            if( ddrval != DD_OK )
-                            {
-                                break;
-                            }
-                        }
-                        if( ddrval != DDERR_WASSTILLDRAWING )
-                        {
-                            break;
-                        }
-                    }
-                }
-                break;*/
+        case WM_LBUTTONDOWN:
+            UpdateScreen();
+            clickCounter++;
+            break;
 
         case WM_KEYDOWN:
             switch( wParam )
@@ -143,7 +144,6 @@ static BOOL doInit( HINSTANCE hInstance, int nCmdShow )
     DDSURFACEDESC       ddsd;
     DDSCAPS             ddscaps;
     HRESULT             ddrval;
-    HDC                 hdc;
     char                buf[256];
 
     /*
@@ -193,42 +193,40 @@ static BOOL doInit( HINSTANCE hInstance, int nCmdShow )
     {
         // Get exclusive mode
         ddrval = lpDD->SetCooperativeLevel( hwnd,
-                                            DDSCL_EXCLUSIVE | DDSCL_FULLSCREEN );
+                                            DDSCL_ALLOWREBOOT | DDSCL_EXCLUSIVE | DDSCL_FULLSCREEN );
         if(ddrval == DD_OK )
         {
             ddrval = lpDD->SetDisplayMode( WIDTH, HEIGHT, 16 );
             if( ddrval == DD_OK )
             {
-                return TRUE;
-
                 // Create the primary surface with 1 back buffer
                 ddsd.dwSize = sizeof( ddsd );
-                ddsd.dwFlags = DDSD_CAPS | DDSD_BACKBUFFERCOUNT;
-                ddsd.ddsCaps.dwCaps = DDSCAPS_PRIMARYSURFACE |
-                                      DDSCAPS_FLIP |
-                                      DDSCAPS_COMPLEX;
-                ddsd.dwBackBufferCount = 1;
+                ddsd.dwFlags = DDSD_CAPS;
+                ddsd.ddsCaps.dwCaps = DDSCAPS_PRIMARYSURFACE;
                 ddrval = lpDD->CreateSurface( &ddsd, &lpDDSPrimary, NULL );
                 if( ddrval == DD_OK )
                 {
-                    // Get a pointer to the back buffer
-                    ddscaps.dwCaps = DDSCAPS_BACKBUFFER;
-                    ddrval = lpDDSPrimary->GetAttachedSurface(&ddscaps,
-                                                              &lpDDSBack);
+                    ddsd.dwFlags = DDSD_CAPS | DDSD_WIDTH | DDSD_HEIGHT;
+                    ddsd.ddsCaps.dwCaps = DDSCAPS_SYSTEMMEMORY | DDSCAPS_OFFSCREENPLAIN;
+                    ddsd.dwHeight = HEIGHT;
+                    ddsd.dwWidth = WIDTH;
+                    ddrval = lpDD->CreateSurface( &ddsd, &lpDDSBack, NULL );
                     if( ddrval == DD_OK )
                     {
-                        // Create a timer to flip the pages
-                        if( SetTimer( hwnd, TIMER_ID, TIMER_RATE, NULL ) )
-                        {
-                            return TRUE;
-                        }
+                        rect.left = 0;
+                        rect.top = 0;
+                        rect.right = WIDTH;
+                        rect.bottom = HEIGHT;
+
+                        return TRUE;
                     }
                 }
             }
         }
     }
 
-    wsprintf(buf, "Direct Draw Init Failed (%08lx)\n", ddrval );
+    //_com_error err(ddrval);
+    wsprintf( buf, "Direct Draw Init Error (%08lx)\n", ddrval/*, err.ErrorMessage()*/ );
     MessageBox( hwnd, buf, "ERROR", MB_OK );
     finiObjects();
     DestroyWindow( hwnd );
