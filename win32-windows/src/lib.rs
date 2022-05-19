@@ -17,6 +17,7 @@ pub struct Window {
     class: Arc<WindowClass>,
     #[allow(unused)]
     wndproc_argument: PtrRepr,
+    pub size: (u32, u32),
 }
 
 impl Window {
@@ -88,7 +89,7 @@ impl From<HWND_> for HWND {
 }
 
 pub struct WindowsRegistry {
-    windows: HandleTable<(), HWND_, Window, true>,
+    windows: HandleTable<(), HWND_, Arc<Window>, true>,
     windows_context: WindowsContext,
 }
 
@@ -110,9 +111,10 @@ impl WindowsRegistry {
         let window = Window {
             class,
             wndproc_argument,
+            size,
         };
 
-        let hwnd = self.windows.put(window);
+        let hwnd = self.windows.put(Arc::new(window));
 
         self.windows_context.create_window(WindowCreation {
             hwnd: hwnd.0,
@@ -123,8 +125,8 @@ impl WindowsRegistry {
         hwnd.into()
     }
 
-    pub fn find(&self, handle: HWND) -> Option<&Window> {
-        self.windows.find(handle.into())
+    pub fn find(&self, handle: HWND) -> Option<Arc<Window>> {
+        self.windows.find(handle.into()).cloned()
     }
 }
 

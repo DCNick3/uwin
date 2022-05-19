@@ -15,6 +15,9 @@
 #define TIMER_ID        1
 #define TIMER_RATE      500
 
+#define WIDTH 800
+#define HEIGHT 600
+
 LPDIRECTDRAW            lpDD;           // DirectDraw object
 LPDIRECTDRAWSURFACE     lpDDSPrimary;   // DirectDraw primary surface
 LPDIRECTDRAWSURFACE     lpDDSBack;      // DirectDraw back surface
@@ -167,8 +170,8 @@ static BOOL doInit( HINSTANCE hInstance, int nCmdShow )
             TITLE,
             WS_POPUP,
             0, 0,
-            GetSystemMetrics( SM_CXSCREEN ),
-            GetSystemMetrics( SM_CYSCREEN ),
+            WIDTH,
+            HEIGHT,
             NULL,
             NULL,
             hInstance,
@@ -193,7 +196,7 @@ static BOOL doInit( HINSTANCE hInstance, int nCmdShow )
                                             DDSCL_EXCLUSIVE | DDSCL_FULLSCREEN );
         if(ddrval == DD_OK )
         {
-            ddrval = lpDD->SetDisplayMode( 640, 480, 8 );
+            ddrval = lpDD->SetDisplayMode( WIDTH, HEIGHT, 16 );
             if( ddrval == DD_OK )
             {
                 return TRUE;

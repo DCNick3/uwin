@@ -21,7 +21,7 @@ pub struct WindowsAndMessaging {
     pub process_ctx: ProcessContext,
     pub windows_handle_table: Arc<Mutex<WindowsHandleTable>>,
     pub window_classes_registry: Mutex<ClassRegistry>,
-    pub windows_registry: Mutex<WindowsRegistry>,
+    pub windows_registry: Arc<Mutex<WindowsRegistry>>,
     pub message_queue_registry: Mutex<MessageQueueRegistry>,
 }
 

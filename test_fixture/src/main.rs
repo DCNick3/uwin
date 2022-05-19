@@ -144,7 +144,7 @@ fn main_impl() {
 
     let user_atom_table = Arc::new(Mutex::new(AtomTable::new()));
     let window_classes_registry = Mutex::new(ClassRegistry::new(user_atom_table));
-    let windows_registry = Mutex::new(WindowsRegistry::new());
+    let windows_registry = Arc::new(Mutex::new(WindowsRegistry::new()));
 
     let message_queue_registry = Mutex::new(MessageQueueRegistry::new());
 
@@ -154,7 +154,7 @@ fn main_impl() {
         process_ctx: process_ctx.clone(),
         windows_handle_table,
         window_classes_registry,
-        windows_registry,
+        windows_registry: windows_registry.clone(),
         message_queue_registry,
     })
         as Arc<dyn win32::Win32::UI::WindowsAndMessaging::Api>);
@@ -225,6 +225,7 @@ fn main_impl() {
             .expect("Getting DirectDraw vtable")
             .first()
             .unwrap(),
+        windows_registry: windows_registry.clone(),
     }) as Arc<dyn win32::Win32::Graphics::DirectDraw::Api>);
 
     // =======
