@@ -126,6 +126,10 @@ impl<
     pub fn context_mut(&mut self) -> &mut ExtendedContext {
         self.ctx
     }
+
+    pub fn memory_context(&self) -> &MemoryContext {
+        &self.mem_ctx
+    }
 }
 
 pub(crate) struct StdCallerHelper<'a, Tok: StdcallCallbackTokenTrait + 'a + ?Sized> {

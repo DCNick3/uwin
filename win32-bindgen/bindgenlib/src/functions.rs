@@ -83,8 +83,11 @@ pub fn gen_function_declaration(def: &MethodDef, gen: &Gen) -> TokenStream {
     res
 }
 
-pub fn gen_thunk_function(def: &MethodDef, gen: &Gen, namespace: &TokenStream) -> TokenStream {
+pub fn gen_thunk_function(def: &MethodDef, gen: &Gen) -> TokenStream {
     let cfg = def.cfg();
+    // can't use .namespace method of gen because the code lives in another crate
+    // so do it manually, lol
+    let namespace = gen.thunk_namespace();
 
     if !gen.is_cfg_enabled(&cfg) {
         return quote! {};
@@ -216,26 +219,13 @@ pub fn gen_functions(tree: &TypeTree, gen: &Gen) -> TokenStream {
 pub fn gen_rusty_x86_thunk_functions(tree: &TypeTree, gen: &Gen) -> TokenStream {
     let mut thunk_functions = TokenStream::new();
 
-    // can't use .namespace method of gen because the code lives in another crate
-    // so do it manually, lol
-
-    let namespace = {
-        let mut tokens = quote!(win32::);
-        let namespace = tree.namespace.split('.').skip(1); // strip the "Windows" part
-
-        for namespace in namespace {
-            tokens.push_str(namespace);
-            tokens.push_str("::");
-        }
-
-        tokens
-    };
+    gen.thunk_namespace();
 
     for entry in tree.types.values() {
         for def in entry {
             if let Type::MethodDef(def) = def {
                 if !gen.excluded_items.contains(def.name()) && gen.dll_enabled(def.dll_import()) {
-                    thunk_functions.combine(&gen_thunk_function(def, gen, &namespace));
+                    thunk_functions.combine(&gen_thunk_function(def, gen));
                 }
             }
         }

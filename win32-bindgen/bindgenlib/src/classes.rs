@@ -1,4 +1,5 @@
 use super::*;
+use itertools::Itertools;
 
 pub fn gen_classes(gen: &Gen) -> TokenStream {
     let mut tokens = TokenStream::new();
@@ -18,8 +19,6 @@ pub fn gen_class_thunks(gen: &Gen) -> TokenStream {
     let type_reader = TypeReader::get();
 
     for class in gen.com_classes {
-        let class_name = &class.name;
-
         for iface in class.interfaces.iter() {
             let (namespace, name) = iface.rsplit_once('.').unwrap();
             let type_ = type_reader
@@ -32,7 +31,8 @@ pub fn gen_class_thunks(gen: &Gen) -> TokenStream {
             };
 
             fn emit_interface(
-                class_name: &str,
+                gen: &Gen,
+                class: &ComClass,
                 iface_name: &str,
                 tokens: &mut TokenStream,
                 interface: BaseInterface,
@@ -41,16 +41,18 @@ pub fn gen_class_thunks(gen: &Gen) -> TokenStream {
                     BaseInterface::IUnknown => {
                         let query_interface = gen_ident(&format!(
                             "thunk_com_{}_as_{}_QueryInterface",
-                            class_name, iface_name
+                            class.name, iface_name
                         ));
                         let add_ref = gen_ident(&format!(
                             "thunk_com_{}_as_{}_AddRef",
-                            class_name, iface_name
+                            class.name, iface_name
                         ));
                         let release = gen_ident(&format!(
                             "thunk_com_{}_as_{}_Release",
-                            class_name, iface_name
+                            class.name, iface_name
                         ));
+
+                        // TODO: generate __at least something__
 
                         tokens.combine(&quote! {
                                 #[no_mangle]
@@ -68,20 +70,97 @@ pub fn gen_class_thunks(gen: &Gen) -> TokenStream {
                         });
                     }
                     BaseInterface::TypeDef(def) => {
-                        emit_interface(class_name, iface_name, tokens, def.base_interface());
+                        emit_interface(gen, class, iface_name, tokens, def.base_interface());
 
-                        for method in def.methods() {
-                            let method = method.name();
+                        // can't use .namespace method of gen because the code lives in another crate
+                        // so do it manually, lol
+                        let namespace = gen.thunk_namespace();
+
+                        for def in def.methods() {
+                            let method = def.name();
+                            let ident = gen_ident(method);
 
                             let thunk_name = gen_ident(&format!(
                                 "thunk_com_{}_as_{}_{}",
-                                class_name, iface_name, method
+                                class.name, iface_name, method
                             ));
+
+                            let name = format!("{}::{}", class.name, method);
+
+                            let signature = def.signature(&[]);
+
+                            let base_args = signature
+                                .params
+                                .iter()
+                                .map(|param| {
+                                    let name = gen_param_name(&param.def);
+                                    assert!(!name.is_empty());
+                                    name
+                                })
+                                .collect::<Vec<_>>();
+
+                            // these are needed for handing unwinding and callbacking functions (in the future)
+                            let mut args = Vec::new();
+                            args.extend(base_args.clone().into_iter());
+
+                            let arguments_fmt = [TokenStream::from("self")]
+                                .iter()
+                                .chain(base_args.iter())
+                                .map(|arg| format!("{} = {{:?}}", arg))
+                                .join(", ");
+                            let arguments_fmt = format!("    args = {{{{{}}}}}", arguments_fmt);
+
+                            let repr_type = gen_ident(&format!("{}_Repr", class.name));
+                            let repr_type = quote! { #namespace #repr_type };
+
+                            let body = quote! {
+                                static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(tracing::callsite::Identifier(&SPAN_CALLSITE), #name);
+
+                                crate::thunk_helper(
+                                    context,
+                                    memory,
+                                    &SPAN_CALLSITE,
+                                    |mut call, trace_event_enabled, callsite| {
+                                        // TODO: adjust pointer if multiple vtables are used
+                                        let self_: core_mem::ptr::ConstPtr<#repr_type> = call.get_arg();
+
+                                        #(let #base_args = call.get_arg();)*
+
+                                        if trace_event_enabled {
+                                            let fields = callsite.metadata().fields();
+                                            tracing::event::Event::dispatch(callsite.metadata(),
+                                                &fields.value_set(&[(
+                                                    &unsafe { fields.iter().next().unwrap_unchecked() },
+                                                    Some(&format_args!(#arguments_fmt, self_, #(#base_args),*)
+                                                        as &dyn tracing::Value),
+                                                )]));
+                                        }
+
+                                        let self_ = self_.read_with(*call.memory_context());
+                                        // SAFETY: The implementation is constructed from Arc, so it should safe though
+                                        // target program can mess with this part of memory though
+                                        let self_ = unsafe { &*self_.implementation };
+                                        let res = self_.#ident(#(#args),*);
+
+                                        if trace_event_enabled {
+                                            let fields = callsite.metadata().fields();
+                                            tracing::event::Event::dispatch(callsite.metadata(),
+                                                &fields.value_set(&[(
+                                                    &unsafe { fields.iter().next().unwrap_unchecked() },
+                                                    Some(&format_args!("  result = {:?}", res)
+                                                        as &dyn tracing::Value),
+                                                )]));
+                                        }
+
+                                        call.finish(res)
+                                    }
+                                )
+                            };
 
                             tokens.combine(&quote! {
                                 #[no_mangle]
                                 extern "C" fn #thunk_name(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {
-                                    std::process::abort();
+                                    #body
                                 }
                             });
                         }
@@ -89,7 +168,7 @@ pub fn gen_class_thunks(gen: &Gen) -> TokenStream {
                 }
             }
 
-            emit_interface(class_name, name, &mut tokens, BaseInterface::TypeDef(type_));
+            emit_interface(gen, class, name, &mut tokens, BaseInterface::TypeDef(type_));
         }
     }
 

@@ -9110,140 +9110,917 @@ extern "C" fn thunk_com_DirectDraw_as_IDirectDraw_Compact(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
-    std::process::abort();
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "DirectDraw::Compact",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, trace_event_enabled, callsite| {
+            let self_: core_mem::ptr::ConstPtr<
+                win32::Win32::Graphics::DirectDraw::DirectDraw_Repr,
+            > = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("    args = {{self = {:?}}}", self_,)
+                            as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let self_ = self_.read_with(*call.memory_context());
+            let self_ = unsafe { &*self_.implementation };
+            let res = self_.Compact();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
 }
 #[no_mangle]
 extern "C" fn thunk_com_DirectDraw_as_IDirectDraw_CreateClipper(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
-    std::process::abort();
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "DirectDraw::CreateClipper",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, trace_event_enabled, callsite| {
+            let self_: core_mem::ptr::ConstPtr<
+                win32::Win32::Graphics::DirectDraw::DirectDraw_Repr,
+            > = call.get_arg();
+            let param_0 = call.get_arg();
+            let param_1 = call.get_arg();
+            let param_2 = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{self = {:?}, param_0 = {:?}, param_1 = {:?}, param_2 = {:?}}}" , self_ , param_0 , param_1 , param_2 ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let self_ = self_.read_with(*call.memory_context());
+            let self_ = unsafe { &*self_.implementation };
+            let res = self_.CreateClipper(param_0, param_1, param_2);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
 }
 #[no_mangle]
 extern "C" fn thunk_com_DirectDraw_as_IDirectDraw_CreatePalette(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
-    std::process::abort();
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "DirectDraw::CreatePalette",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, trace_event_enabled, callsite| {
+            let self_: core_mem::ptr::ConstPtr<
+                win32::Win32::Graphics::DirectDraw::DirectDraw_Repr,
+            > = call.get_arg();
+            let param_0 = call.get_arg();
+            let param_1 = call.get_arg();
+            let param_2 = call.get_arg();
+            let param_3 = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{self = {:?}, param_0 = {:?}, param_1 = {:?}, param_2 = {:?}, param_3 = {:?}}}" , self_ , param_0 , param_1 , param_2 , param_3 ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let self_ = self_.read_with(*call.memory_context());
+            let self_ = unsafe { &*self_.implementation };
+            let res = self_.CreatePalette(param_0, param_1, param_2, param_3);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
 }
 #[no_mangle]
 extern "C" fn thunk_com_DirectDraw_as_IDirectDraw_CreateSurface(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
-    std::process::abort();
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "DirectDraw::CreateSurface",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, trace_event_enabled, callsite| {
+            let self_: core_mem::ptr::ConstPtr<
+                win32::Win32::Graphics::DirectDraw::DirectDraw_Repr,
+            > = call.get_arg();
+            let param_0 = call.get_arg();
+            let param_1 = call.get_arg();
+            let param_2 = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{self = {:?}, param_0 = {:?}, param_1 = {:?}, param_2 = {:?}}}" , self_ , param_0 , param_1 , param_2 ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let self_ = self_.read_with(*call.memory_context());
+            let self_ = unsafe { &*self_.implementation };
+            let res = self_.CreateSurface(param_0, param_1, param_2);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
 }
 #[no_mangle]
 extern "C" fn thunk_com_DirectDraw_as_IDirectDraw_DuplicateSurface(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
-    std::process::abort();
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "DirectDraw::DuplicateSurface",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, trace_event_enabled, callsite| {
+            let self_: core_mem::ptr::ConstPtr<
+                win32::Win32::Graphics::DirectDraw::DirectDraw_Repr,
+            > = call.get_arg();
+            let param_0 = call.get_arg();
+            let param_1 = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{self = {:?}, param_0 = {:?}, param_1 = {:?}}}",
+                            self_, param_0, param_1
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let self_ = self_.read_with(*call.memory_context());
+            let self_ = unsafe { &*self_.implementation };
+            let res = self_.DuplicateSurface(param_0, param_1);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
 }
 #[no_mangle]
 extern "C" fn thunk_com_DirectDraw_as_IDirectDraw_EnumDisplayModes(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
-    std::process::abort();
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "DirectDraw::EnumDisplayModes",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, trace_event_enabled, callsite| {
+            let self_: core_mem::ptr::ConstPtr<
+                win32::Win32::Graphics::DirectDraw::DirectDraw_Repr,
+            > = call.get_arg();
+            let param_0 = call.get_arg();
+            let param_1 = call.get_arg();
+            let param_2 = call.get_arg();
+            let param_3 = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{self = {:?}, param_0 = {:?}, param_1 = {:?}, param_2 = {:?}, param_3 = {:?}}}" , self_ , param_0 , param_1 , param_2 , param_3 ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let self_ = self_.read_with(*call.memory_context());
+            let self_ = unsafe { &*self_.implementation };
+            let res = self_.EnumDisplayModes(param_0, param_1, param_2, param_3);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
 }
 #[no_mangle]
 extern "C" fn thunk_com_DirectDraw_as_IDirectDraw_EnumSurfaces(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
-    std::process::abort();
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "DirectDraw::EnumSurfaces",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, trace_event_enabled, callsite| {
+            let self_: core_mem::ptr::ConstPtr<
+                win32::Win32::Graphics::DirectDraw::DirectDraw_Repr,
+            > = call.get_arg();
+            let param_0 = call.get_arg();
+            let param_1 = call.get_arg();
+            let param_2 = call.get_arg();
+            let param_3 = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{self = {:?}, param_0 = {:?}, param_1 = {:?}, param_2 = {:?}, param_3 = {:?}}}" , self_ , param_0 , param_1 , param_2 , param_3 ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let self_ = self_.read_with(*call.memory_context());
+            let self_ = unsafe { &*self_.implementation };
+            let res = self_.EnumSurfaces(param_0, param_1, param_2, param_3);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
 }
 #[no_mangle]
 extern "C" fn thunk_com_DirectDraw_as_IDirectDraw_FlipToGDISurface(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
-    std::process::abort();
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "DirectDraw::FlipToGDISurface",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, trace_event_enabled, callsite| {
+            let self_: core_mem::ptr::ConstPtr<
+                win32::Win32::Graphics::DirectDraw::DirectDraw_Repr,
+            > = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("    args = {{self = {:?}}}", self_,)
+                            as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let self_ = self_.read_with(*call.memory_context());
+            let self_ = unsafe { &*self_.implementation };
+            let res = self_.FlipToGDISurface();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
 }
 #[no_mangle]
 extern "C" fn thunk_com_DirectDraw_as_IDirectDraw_GetCaps(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
-    std::process::abort();
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "DirectDraw::GetCaps",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, trace_event_enabled, callsite| {
+            let self_: core_mem::ptr::ConstPtr<
+                win32::Win32::Graphics::DirectDraw::DirectDraw_Repr,
+            > = call.get_arg();
+            let param_0 = call.get_arg();
+            let param_1 = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{self = {:?}, param_0 = {:?}, param_1 = {:?}}}",
+                            self_, param_0, param_1
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let self_ = self_.read_with(*call.memory_context());
+            let self_ = unsafe { &*self_.implementation };
+            let res = self_.GetCaps(param_0, param_1);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
 }
 #[no_mangle]
 extern "C" fn thunk_com_DirectDraw_as_IDirectDraw_GetDisplayMode(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
-    std::process::abort();
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "DirectDraw::GetDisplayMode",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, trace_event_enabled, callsite| {
+            let self_: core_mem::ptr::ConstPtr<
+                win32::Win32::Graphics::DirectDraw::DirectDraw_Repr,
+            > = call.get_arg();
+            let param_0 = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{self = {:?}, param_0 = {:?}}}",
+                            self_, param_0
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let self_ = self_.read_with(*call.memory_context());
+            let self_ = unsafe { &*self_.implementation };
+            let res = self_.GetDisplayMode(param_0);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
 }
 #[no_mangle]
 extern "C" fn thunk_com_DirectDraw_as_IDirectDraw_GetFourCCCodes(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
-    std::process::abort();
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "DirectDraw::GetFourCCCodes",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, trace_event_enabled, callsite| {
+            let self_: core_mem::ptr::ConstPtr<
+                win32::Win32::Graphics::DirectDraw::DirectDraw_Repr,
+            > = call.get_arg();
+            let param_0 = call.get_arg();
+            let param_1 = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{self = {:?}, param_0 = {:?}, param_1 = {:?}}}",
+                            self_, param_0, param_1
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let self_ = self_.read_with(*call.memory_context());
+            let self_ = unsafe { &*self_.implementation };
+            let res = self_.GetFourCCCodes(param_0, param_1);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
 }
 #[no_mangle]
 extern "C" fn thunk_com_DirectDraw_as_IDirectDraw_GetGDISurface(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
-    std::process::abort();
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "DirectDraw::GetGDISurface",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, trace_event_enabled, callsite| {
+            let self_: core_mem::ptr::ConstPtr<
+                win32::Win32::Graphics::DirectDraw::DirectDraw_Repr,
+            > = call.get_arg();
+            let param_0 = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{self = {:?}, param_0 = {:?}}}",
+                            self_, param_0
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let self_ = self_.read_with(*call.memory_context());
+            let self_ = unsafe { &*self_.implementation };
+            let res = self_.GetGDISurface(param_0);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
 }
 #[no_mangle]
 extern "C" fn thunk_com_DirectDraw_as_IDirectDraw_GetMonitorFrequency(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
-    std::process::abort();
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "DirectDraw::GetMonitorFrequency",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, trace_event_enabled, callsite| {
+            let self_: core_mem::ptr::ConstPtr<
+                win32::Win32::Graphics::DirectDraw::DirectDraw_Repr,
+            > = call.get_arg();
+            let param_0 = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{self = {:?}, param_0 = {:?}}}",
+                            self_, param_0
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let self_ = self_.read_with(*call.memory_context());
+            let self_ = unsafe { &*self_.implementation };
+            let res = self_.GetMonitorFrequency(param_0);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
 }
 #[no_mangle]
 extern "C" fn thunk_com_DirectDraw_as_IDirectDraw_GetScanLine(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
-    std::process::abort();
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "DirectDraw::GetScanLine",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, trace_event_enabled, callsite| {
+            let self_: core_mem::ptr::ConstPtr<
+                win32::Win32::Graphics::DirectDraw::DirectDraw_Repr,
+            > = call.get_arg();
+            let param_0 = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{self = {:?}, param_0 = {:?}}}",
+                            self_, param_0
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let self_ = self_.read_with(*call.memory_context());
+            let self_ = unsafe { &*self_.implementation };
+            let res = self_.GetScanLine(param_0);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
 }
 #[no_mangle]
 extern "C" fn thunk_com_DirectDraw_as_IDirectDraw_GetVerticalBlankStatus(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
-    std::process::abort();
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "DirectDraw::GetVerticalBlankStatus",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, trace_event_enabled, callsite| {
+            let self_: core_mem::ptr::ConstPtr<
+                win32::Win32::Graphics::DirectDraw::DirectDraw_Repr,
+            > = call.get_arg();
+            let param_0 = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{self = {:?}, param_0 = {:?}}}",
+                            self_, param_0
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let self_ = self_.read_with(*call.memory_context());
+            let self_ = unsafe { &*self_.implementation };
+            let res = self_.GetVerticalBlankStatus(param_0);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
 }
 #[no_mangle]
 extern "C" fn thunk_com_DirectDraw_as_IDirectDraw_Initialize(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
-    std::process::abort();
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "DirectDraw::Initialize",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, trace_event_enabled, callsite| {
+            let self_: core_mem::ptr::ConstPtr<
+                win32::Win32::Graphics::DirectDraw::DirectDraw_Repr,
+            > = call.get_arg();
+            let param_0 = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{self = {:?}, param_0 = {:?}}}",
+                            self_, param_0
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let self_ = self_.read_with(*call.memory_context());
+            let self_ = unsafe { &*self_.implementation };
+            let res = self_.Initialize(param_0);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
 }
 #[no_mangle]
 extern "C" fn thunk_com_DirectDraw_as_IDirectDraw_RestoreDisplayMode(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
-    std::process::abort();
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "DirectDraw::RestoreDisplayMode",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, trace_event_enabled, callsite| {
+            let self_: core_mem::ptr::ConstPtr<
+                win32::Win32::Graphics::DirectDraw::DirectDraw_Repr,
+            > = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("    args = {{self = {:?}}}", self_,)
+                            as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let self_ = self_.read_with(*call.memory_context());
+            let self_ = unsafe { &*self_.implementation };
+            let res = self_.RestoreDisplayMode();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
 }
 #[no_mangle]
 extern "C" fn thunk_com_DirectDraw_as_IDirectDraw_SetCooperativeLevel(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
-    std::process::abort();
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "DirectDraw::SetCooperativeLevel",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, trace_event_enabled, callsite| {
+            let self_: core_mem::ptr::ConstPtr<
+                win32::Win32::Graphics::DirectDraw::DirectDraw_Repr,
+            > = call.get_arg();
+            let param_0 = call.get_arg();
+            let param_1 = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{self = {:?}, param_0 = {:?}, param_1 = {:?}}}",
+                            self_, param_0, param_1
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let self_ = self_.read_with(*call.memory_context());
+            let self_ = unsafe { &*self_.implementation };
+            let res = self_.SetCooperativeLevel(param_0, param_1);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
 }
 #[no_mangle]
 extern "C" fn thunk_com_DirectDraw_as_IDirectDraw_SetDisplayMode(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
-    std::process::abort();
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "DirectDraw::SetDisplayMode",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, trace_event_enabled, callsite| {
+            let self_: core_mem::ptr::ConstPtr<
+                win32::Win32::Graphics::DirectDraw::DirectDraw_Repr,
+            > = call.get_arg();
+            let param_0 = call.get_arg();
+            let param_1 = call.get_arg();
+            let param_2 = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing :: event :: Event :: dispatch ( callsite . metadata ( ) , & fields . value_set ( & [ ( & unsafe { fields . iter ( ) . next ( ) . unwrap_unchecked ( ) } , Some ( & format_args ! ( "    args = {{self = {:?}, param_0 = {:?}, param_1 = {:?}, param_2 = {:?}}}" , self_ , param_0 , param_1 , param_2 ) as & dyn tracing :: Value ) , ) ] ) ) ;
+            }
+            let self_ = self_.read_with(*call.memory_context());
+            let self_ = unsafe { &*self_.implementation };
+            let res = self_.SetDisplayMode(param_0, param_1, param_2);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
 }
 #[no_mangle]
 extern "C" fn thunk_com_DirectDraw_as_IDirectDraw_WaitForVerticalBlank(
     context: &mut ExtendedContext,
     memory: FlatMemoryCtx,
 ) -> PtrRepr {
-    std::process::abort();
+    static SPAN_CALLSITE: crate::MyCallsite = crate::MyCallsite::new_span(
+        tracing::callsite::Identifier(&SPAN_CALLSITE),
+        "DirectDraw::WaitForVerticalBlank",
+    );
+    crate::thunk_helper(
+        context,
+        memory,
+        &SPAN_CALLSITE,
+        |mut call, trace_event_enabled, callsite| {
+            let self_: core_mem::ptr::ConstPtr<
+                win32::Win32::Graphics::DirectDraw::DirectDraw_Repr,
+            > = call.get_arg();
+            let param_0 = call.get_arg();
+            let param_1 = call.get_arg();
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!(
+                            "    args = {{self = {:?}, param_0 = {:?}, param_1 = {:?}}}",
+                            self_, param_0, param_1
+                        ) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            let self_ = self_.read_with(*call.memory_context());
+            let self_ = unsafe { &*self_.implementation };
+            let res = self_.WaitForVerticalBlank(param_0, param_1);
+            if trace_event_enabled {
+                let fields = callsite.metadata().fields();
+                tracing::event::Event::dispatch(
+                    callsite.metadata(),
+                    &fields.value_set(&[(
+                        &unsafe { fields.iter().next().unwrap_unchecked() },
+                        Some(&format_args!("  result = {:?}", res) as &dyn tracing::Value),
+                    )]),
+                );
+            }
+            call.finish(res)
+        },
+    )
 }
 #[no_mangle]
 extern "C" fn thunk_dll_AbortPath(context: &mut ExtendedContext, memory: FlatMemoryCtx) -> PtrRepr {

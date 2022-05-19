@@ -55,6 +55,19 @@ impl Gen<'_> {
         }
     }
 
+    /// Generates a namespace tokens to be used outside of win32 crate
+    pub(crate) fn thunk_namespace(&self) -> TokenStream {
+        let mut tokens = quote!(win32::);
+        let namespace = self.namespace.split('.').skip(1); // strip the "Windows" part
+
+        for namespace in namespace {
+            tokens.push_str(namespace);
+            tokens.push_str("::");
+        }
+
+        tokens
+    }
+
     pub(crate) fn doc(&self, _cfg: &Cfg) -> TokenStream {
         // Required Features was generated here. In uwin we don't care
         quote! {}
