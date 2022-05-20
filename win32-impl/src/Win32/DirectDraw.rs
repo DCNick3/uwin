@@ -5,8 +5,8 @@ use tracing::trace;
 use win32::core::{IUnknown, IUnknown_Trait, GUID, HRESULT};
 use win32::Win32::Foundation::{HWND, S_OK};
 use win32::Win32::Graphics::DirectDraw::{
-    DirectDraw_Repr, IDirectDraw, IDirectDraw_Trait, DDSCL_ALLOWREBOOT, DDSCL_EXCLUSIVE,
-    DDSCL_FULLSCREEN,
+    DirectDraw_Repr, IDirectDraw, IDirectDrawSurface, IDirectDraw_Trait, DDSCL_ALLOWREBOOT,
+    DDSCL_EXCLUSIVE, DDSCL_FULLSCREEN, DDSURFACEDESC,
 };
 use win32_windows::{Window, WindowsRegistry};
 
@@ -32,6 +32,7 @@ impl win32::Win32::Graphics::DirectDraw::Api for DirectDrawApi {
         let mut heap = self.process_ctx.process_heap.lock().unwrap();
 
         let cls = Arc::new(DirectDrawCls {
+            process_ctx: self.process_ctx.clone(),
             inner: Mutex::new(DirectDrawInner { window: None }),
             windows_registry: self.windows_registry.clone(),
         });
@@ -63,6 +64,7 @@ struct DirectDrawInner {
 }
 
 struct DirectDrawCls {
+    process_ctx: ProcessContext,
     inner: Mutex<DirectDrawInner>,
     windows_registry: Arc<Mutex<WindowsRegistry>>,
 }
@@ -70,6 +72,21 @@ struct DirectDrawCls {
 impl IUnknown_Trait for DirectDrawCls {}
 
 impl IDirectDraw_Trait for DirectDrawCls {
+    fn CreateSurface(
+        &self,
+        lpDDSurfaceDesc: MutPtr<DDSURFACEDESC>,
+        _lplpDDSurface: MutPtr<IDirectDrawSurface>,
+        pUnkOther: IUnknown,
+    ) -> HRESULT {
+        assert_eq!(pUnkOther.raw_ptr(), 0);
+
+        let ctx = self.process_ctx.memory_ctx;
+
+        let _desc = lpDDSurfaceDesc.read_with(ctx);
+
+        todo!()
+    }
+
     fn SetCooperativeLevel(&self, hWnd: HWND, dwFlags: u32) -> HRESULT {
         // ignore DDSCL_ALLOWREBOOT, otherwise allow only DDSCL_FULLSCREEN | DDSCL_EXCLUSIVE
         assert_eq!(

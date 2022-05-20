@@ -296,6 +296,17 @@ impl RawHeapBox {
         })
     }
 
+    pub fn new_zeroed(heap: Arc<Mutex<Heap>>, size: PtrRepr) -> Result<Self> {
+        let ptr = {
+            let mut heap = heap.lock().unwrap();
+            heap.alloc(size, true)?
+        };
+        Ok(Self {
+            heap,
+            ptr: ptr.into(),
+        })
+    }
+
     pub fn new_init(
         memory_ctx: impl MemoryCtx,
         heap: Arc<Mutex<Heap>>,
